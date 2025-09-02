@@ -1,0 +1,13 @@
+services:
+  - type: worker
+    name: naijaprizegate-bot
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python app.py"
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_USER_ID
+        sync: false
+      - key: PAY_LINK
+        sync: false
