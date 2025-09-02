@@ -6,8 +6,8 @@ services:
     startCommand: "python app.py"
     envVars:
       - key: BOT_TOKEN
-        sync: false
+        value: ""
       - key: ADMIN_USER_ID
-        sync: false
+        value: ""
       - key: PAY_LINK
-        sync: false
+        value: ""
