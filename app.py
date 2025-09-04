@@ -354,25 +354,13 @@ async def on_startup():
     app_telegram.add_handler(CommandHandler("stats", stats_cmd))
     app_telegram.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo_autowelcome))
 
-    await app_telegram.initialize()
-    await app_telegram.start()
-    await app_telegram.updater.start_polling(drop_pending_updates=True)
-
-
-async def on_shutdown():
-    await app_telegram.updater.stop()
-    await app_telegram.stop()
-    await app_telegram.shutdown()
+    # Run bot polling as a background task
+    asyncio.create_task(app_telegram.run_polling(drop_pending_updates=True))
 
 
 @api.on_event("startup")
 async def _startup_event():
     await on_startup()
-
-
-@api.on_event("shutdown")
-async def _shutdown_event():
-    await on_shutdown()
 
 
 if __name__ == "__main__":
