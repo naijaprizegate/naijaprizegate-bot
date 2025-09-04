@@ -1,4 +1,4 @@
-import os 
+import os
 import asyncio
 import logging
 from datetime import datetime
@@ -33,20 +33,17 @@ logger = logging.getLogger("naijaprizegate")
 # Environment
 # =========================
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-ADMIN_USER_ID = os.getenv("ADMIN_USER_ID")
+ADMIN_USER_ID = os.getenv("ADMIN_USER_ID")  # numeric telegram user id
 PAY_LINK = os.getenv("PAY_LINK")
 PUBLIC_CHANNEL = os.getenv("PUBLIC_CHANNEL", "@NaijaPrizeGateWinners")
 WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", 14600))
-SECRET_HASH = os.getenv("FLW_SECRET_HASH")
-FLW_PUBLIC_KEY = os.getenv("FLW_PUBLIC_KEY")
-FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")
-
+SECRET_HASH = os.getenv("FLW_SECRET_HASH")  # Flutterwave webhook secret
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./db.sqlite3")
 
 if not BOT_TOKEN:
     raise RuntimeError("BOT_TOKEN is required")
 if not SECRET_HASH:
-    logger.warning("FLW_SECRET_HASH not set — webhook verification will FAIL in production!")
+    logger.warning("⚠️ FLW_SECRET_HASH not set — webhook verification will FAIL in production!")
 
 # =========================
 # Database
@@ -58,6 +55,7 @@ engine = create_engine(
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 Base = declarative_base()
 
+
 class User(Base):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True)
@@ -68,17 +66,20 @@ class User(Base):
     tries = Column(Integer, default=0)
     welcomed = Column(Boolean, default=False)
 
+
 class Play(Base):
     __tablename__ = "plays"
     id = Column(Integer, primary_key=True)
     tg_id = Column(BigInteger, index=True, nullable=False)
     ts = Column(DateTime, default=datetime.utcnow)
-    result = Column(String(16), default="lose")
+    result = Column(String(16), default="lose")  # "win" or "lose"
+
 
 class Meta(Base):
     __tablename__ = "meta"
     key = Column(String(64), primary_key=True)
     value = Column(Text)
+
 
 class Winner(Base):
     __tablename__ = "winners"
@@ -88,11 +89,15 @@ class Winner(Base):
     code = Column(String(32), unique=True)
     ts = Column(DateTime, default=datetime.utcnow)
 
+
 Base.metadata.create_all(engine)
 
+
+# Helpers
 def get_counter(db) -> int:
     row = db.query(Meta).filter(Meta.key == "try_counter").one_or_none()
     return int(row.value) if row else 0
+
 
 def set_counter(db, value: int):
     row = db.query(Meta).filter(Meta.key == "try_counter").one_or_none()
@@ -103,10 +108,11 @@ def set_counter(db, value: int):
         row.value = str(value)
     db.commit()
 
+
 # =========================
 # Telegram Bot
 # =========================
-app_telegram: Application
+app_telegram: Optional[Application] = None
 
 WELCOME_TEXT = (
     "🎉 Welcome to *NaijaPrizeGate!*\n\n"
@@ -115,6 +121,7 @@ WELCOME_TEXT = (
     "👉 After payment is confirmed, use /tryluck\n\n"
     "Good luck! 🍀"
 )
+
 
 async def ensure_user(update: Update) -> User:
     db = SessionLocal()
@@ -132,6 +139,7 @@ async def ensure_user(update: Update) -> User:
     finally:
         db.close()
 
+
 async def autowelcome(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message is None:
         return
@@ -146,9 +154,11 @@ async def autowelcome(update: Update, context: ContextTypes.DEFAULT_TYPE):
     finally:
         db.close()
 
+
 async def start_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await ensure_user(update)
     await update.message.reply_text(WELCOME_TEXT, parse_mode=ParseMode.MARKDOWN)
+
 
 async def pay_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     db = SessionLocal()
@@ -164,6 +174,7 @@ async def pay_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
     finally:
         db.close()
+
 
 async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     db = SessionLocal()
@@ -237,6 +248,7 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     finally:
         db.close()
 
+
 async def stats_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if str(update.effective_user.id) != str(ADMIN_USER_ID):
         await update.message.reply_text("⛔ You are not authorized.")
@@ -257,19 +269,23 @@ async def stats_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     finally:
         db.close()
 
+
 async def echo_autowelcome(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await autowelcome(update, context)
     if update.message and update.message.text and not update.message.text.startswith("/"):
         await update.message.reply_text("Use /pay to begin, then /tryluck after confirmation ✨")
+
 
 # =========================
 # FastAPI for Flutterwave Webhook
 # =========================
 api = FastAPI()
 
+
 @api.get("/")
 async def root():
     return {"status": "ok", "service": "NaijaPrizeGate"}
+
 
 @api.post("/webhooks/flutterwave")
 async def flutterwave_webhook(request: Request):
@@ -278,9 +294,9 @@ async def flutterwave_webhook(request: Request):
         raise HTTPException(status_code=401, detail="Invalid signature")
 
     payload = await request.json()
-    status = payload.get("status")
     data = payload.get("data", {})
-    tx_ref = data.get("tx_ref") or payload.get("tx_ref")
+    status = data.get("status")
+    tx_ref = data.get("tx_ref")
 
     if str(status).lower() not in {"successful", "success"}:
         return JSONResponse({"received": True, "ignored": True})
@@ -291,10 +307,6 @@ async def flutterwave_webhook(request: Request):
             tg_id = int(str(tx_ref).split("-", 1)[0].replace("TG", ""))
         except Exception:
             tg_id = None
-
-    if tg_id is None:
-        meta = data.get("meta") or {}
-        tg_id = meta.get("tg_id") if isinstance(meta, dict) else None
 
     if not tg_id:
         logger.warning(f"Webhook without tg_id mapping. tx_ref={tx_ref}")
@@ -316,15 +328,13 @@ async def flutterwave_webhook(request: Request):
     try:
         await app_telegram.bot.send_message(
             chat_id=int(tg_id),
-            text=(
-                "✅ Payment confirmed! You can now use /tryluck to spin for the iPhone 16 Pro Max.\n"
-                "Good luck! 🍀"
-            ),
+            text="✅ Payment confirmed! You can now use /tryluck to spin for the iPhone 16 Pro Max.\nGood luck! 🍀",
         )
     except Exception as e:
         logger.warning(f"Could not DM user after payment: {e}")
 
     return {"received": True}
+
 
 # =========================
 # Bootstrapping
@@ -348,18 +358,22 @@ async def on_startup():
     await app_telegram.start()
     await app_telegram.updater.start_polling(drop_pending_updates=True)
 
+
 async def on_shutdown():
     await app_telegram.updater.stop()
     await app_telegram.stop()
     await app_telegram.shutdown()
 
+
 @api.on_event("startup")
 async def _startup_event():
     await on_startup()
+
 
 @api.on_event("shutdown")
 async def _shutdown_event():
     await on_shutdown()
 
+
 if __name__ == "__main__":
-    uvicorn.run("app:api", host="0.0.0.0", port=int(os.getenv("PORT", 8000)), reload=False)
+    uvicorn.run("app:api", host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
