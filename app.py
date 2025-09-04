@@ -4,7 +4,7 @@ import logging
 from datetime import datetime
 from typing import Optional
 
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request, HTTPException, Response
 from fastapi.responses import JSONResponse
 import uvicorn
 
@@ -33,7 +33,7 @@ logger = logging.getLogger("naijaprizegate")
 # Environment
 # =========================
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-ADMIN_USER_ID = os.getenv("ADMIN_USER_ID")  # numeric telegram user id
+ADMIN_USER_ID = os.getenv("ADMIN_USER_ID")  # numeric telegram user id (string or int)
 PAY_LINK = os.getenv("PAY_LINK")
 PUBLIC_CHANNEL = os.getenv("PUBLIC_CHANNEL", "@NaijaPrizeGateWinners")
 WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", 14600))
@@ -92,8 +92,9 @@ class Winner(Base):
 
 Base.metadata.create_all(engine)
 
-
+# =========================
 # Helpers
+# =========================
 def get_counter(db) -> int:
     row = db.query(Meta).filter(Meta.key == "try_counter").one_or_none()
     return int(row.value) if row else 0
@@ -107,7 +108,6 @@ def set_counter(db, value: int):
     else:
         row.value = str(value)
     db.commit()
-
 
 # =========================
 # Telegram Bot
@@ -215,6 +215,7 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 parse_mode=ParseMode.MARKDOWN,
             )
 
+            # Announce in channel (bot must be an admin there)
             try:
                 await context.bot.send_message(
                     chat_id=PUBLIC_CHANNEL,
@@ -229,11 +230,15 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             except Exception as e:
                 logger.error(f"Failed to publish winner: {e}")
 
+            # Notify admin
             if ADMIN_USER_ID:
-                await context.bot.send_message(
-                    chat_id=int(ADMIN_USER_ID),
-                    text=f"✅ WINNER ALERT!\nUser: @{u.username}\nID: {u.tg_id}\nCode: {code}",
-                )
+                try:
+                    await context.bot.send_message(
+                        chat_id=int(ADMIN_USER_ID),
+                        text=f"✅ WINNER ALERT!\nUser: @{u.username}\nID: {u.tg_id}\nCode: {code}",
+                    )
+                except Exception as e:
+                    logger.warning(f"Could not DM admin: {e}")
 
             play.result = "win"
             db.merge(play)
@@ -250,7 +255,7 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def stats_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if str(update.effective_user.id) != str(ADMIN_USER_ID):
+    if not ADMIN_USER_ID or str(update.effective_user.id) != str(ADMIN_USER_ID):
         await update.message.reply_text("⛔ You are not authorized.")
         return
     db = SessionLocal()
@@ -275,32 +280,37 @@ async def echo_autowelcome(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message and update.message.text and not update.message.text.startswith("/"):
         await update.message.reply_text("Use /pay to begin, then /tryluck after confirmation ✨")
 
-
 # =========================
-# FastAPI for Flutterwave Webhook
+# FastAPI (Webhook)
 # =========================
 api = FastAPI()
-
 
 @api.get("/")
 async def root():
     return {"status": "ok", "service": "NaijaPrizeGate"}
 
+@api.head("/")
+async def head_root():
+    # Render sometimes probes with HEAD; return 200
+    return Response(status_code=200)
 
 @api.post("/webhooks/flutterwave")
 async def flutterwave_webhook(request: Request):
-    signature = request.headers.get("verif-hash")
+    # Verify signature using secret hash per Flutterwave docs
+    signature = request.headers.get("verif-hash") or request.headers.get("Verif-Hash")
     if not SECRET_HASH or signature != SECRET_HASH:
         raise HTTPException(status_code=401, detail="Invalid signature")
 
     payload = await request.json()
-    data = payload.get("data", {})
-    status = data.get("status")
+    data = payload.get("data", {}) or {}
+    status = (data.get("status") or "").lower()
     tx_ref = data.get("tx_ref")
 
-    if str(status).lower() not in {"successful", "success"}:
+    # Only act on successful charge events
+    if status not in {"successful", "success"}:
         return JSONResponse({"received": True, "ignored": True})
 
+    # Expect tx_ref like TG<tg_id>-<timestamp>
     tg_id: Optional[int] = None
     if tx_ref and str(tx_ref).startswith("TG") and "-" in str(tx_ref):
         try:
@@ -312,6 +322,7 @@ async def flutterwave_webhook(request: Request):
         logger.warning(f"Webhook without tg_id mapping. tx_ref={tx_ref}")
         return JSONResponse({"received": True, "mapped": False})
 
+    # Mark user as paid
     db = SessionLocal()
     try:
         u = db.query(User).filter(User.tg_id == int(tg_id)).one_or_none()
@@ -325,21 +336,26 @@ async def flutterwave_webhook(request: Request):
     finally:
         db.close()
 
+    # Best-effort notify the payer
     try:
-        await app_telegram.bot.send_message(
-            chat_id=int(tg_id),
-            text="✅ Payment confirmed! You can now use /tryluck to spin for the iPhone 16 Pro Max.\nGood luck! 🍀",
-        )
+        if app_telegram:
+            await app_telegram.bot.send_message(
+                chat_id=int(tg_id),
+                text="✅ Payment confirmed! You can now use /tryluck to spin for the iPhone 16 Pro Max.\nGood luck! 🍀",
+            )
     except Exception as e:
         logger.warning(f"Could not DM user after payment: {e}")
 
     return {"received": True}
 
-
 # =========================
-# Bootstrapping
+# Bootstrapping (no run_polling)
 # =========================
 async def on_startup():
+    """
+    Initialize & start the Telegram bot within FastAPI's event loop,
+    without blocking (no run_polling).
+    """
     global app_telegram
     app_telegram = (
         ApplicationBuilder()
@@ -348,20 +364,45 @@ async def on_startup():
         .build()
     )
 
+    # Handlers
     app_telegram.add_handler(CommandHandler("start", start_cmd))
     app_telegram.add_handler(CommandHandler("pay", pay_cmd))
     app_telegram.add_handler(CommandHandler("tryluck", tryluck_cmd))
     app_telegram.add_handler(CommandHandler("stats", stats_cmd))
     app_telegram.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo_autowelcome))
 
-    # Run bot polling as a background task
-    asyncio.create_task(app_telegram.run_polling(drop_pending_updates=True))
+    # Proper non-blocking startup sequence
+    await app_telegram.initialize()
+    await app_telegram.start()
+    # Updater exists after initialize(); start polling but don't await forever
+    if app_telegram.updater:
+        await app_telegram.updater.start_polling(drop_pending_updates=True)
+    logger.info("Telegram bot started.")
 
+async def on_shutdown():
+    """
+    Stop polling & shut down cleanly.
+    """
+    if app_telegram:
+        try:
+            if app_telegram.updater:
+                await app_telegram.updater.stop()
+        except Exception as e:
+            logger.warning(f"Updater stop warning: {e}")
+        try:
+            await app_telegram.stop()
+            await app_telegram.shutdown()
+        except Exception as e:
+            logger.warning(f"Bot shutdown warning: {e}")
+    logger.info("Telegram bot stopped.")
 
 @api.on_event("startup")
 async def _startup_event():
     await on_startup()
 
+@api.on_event("shutdown")
+async def _shutdown_event():
+    await on_shutdown()
 
 if __name__ == "__main__":
     uvicorn.run("app:api", host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
