@@ -1,13 +1,28 @@
 services:
-  - type: worker
+  - type: web
     name: naijaprizegate-bot
     env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "python app.py"
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:api --host 0.0.0.0 --port $PORT
     envVars:
       - key: BOT_TOKEN
-        value: ""
+        sync: false
       - key: ADMIN_USER_ID
-        value: ""
+        sync: false
       - key: PAY_LINK
-        value: ""
+        sync: false
+      - key: PUBLIC_CHANNEL
+        sync: false
+      - key: WIN_THRESHOLD
+        value: "14600"
+      - key: FLW_SECRET_HASH
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: naijaprizegate-db
+          property: connectionString
+
+databases:
+  - name: naijaprizegate-db
+    plan: free
