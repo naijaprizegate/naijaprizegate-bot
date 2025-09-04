@@ -1,4 +1,4 @@
-import os
+import os 
 import asyncio
 import logging
 from datetime import datetime
@@ -33,11 +33,11 @@ logger = logging.getLogger("naijaprizegate")
 # Environment
 # =========================
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-ADMIN_USER_ID = os.getenv("ADMIN_USER_ID")  # numeric telegram user id as string
-PAY_LINK = os.getenv("PAY_LINK")  # fallback/link hub visible to users
-PUBLIC_CHANNEL = os.getenv("PUBLIC_CHANNEL", "@NaijaPrizeGateWinners")  # channel username or chat_id
+ADMIN_USER_ID = os.getenv("ADMIN_USER_ID")
+PAY_LINK = os.getenv("PAY_LINK")
+PUBLIC_CHANNEL = os.getenv("PUBLIC_CHANNEL", "@NaijaPrizeGateWinners")
 WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", 14600))
-SECRET_HASH = os.getenv("FLW_SECRET_HASH")  # Flutterwave webhook verification (Dashboard > Settings)
+SECRET_HASH = os.getenv("FLW_SECRET_HASH")
 FLW_PUBLIC_KEY = os.getenv("FLW_PUBLIC_KEY")
 FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")
 
@@ -73,7 +73,7 @@ class Play(Base):
     id = Column(Integer, primary_key=True)
     tg_id = Column(BigInteger, index=True, nullable=False)
     ts = Column(DateTime, default=datetime.utcnow)
-    result = Column(String(16), default="lose")  # "win" or "lose"
+    result = Column(String(16), default="lose")
 
 class Meta(Base):
     __tablename__ = "meta"
@@ -90,7 +90,6 @@ class Winner(Base):
 
 Base.metadata.create_all(engine)
 
-# Helpers for meta counter
 def get_counter(db) -> int:
     row = db.query(Meta).filter(Meta.key == "try_counter").one_or_none()
     return int(row.value) if row else 0
@@ -105,7 +104,7 @@ def set_counter(db, value: int):
     db.commit()
 
 # =========================
-# Telegram Bot (python-telegram-bot v20+)
+# Telegram Bot
 # =========================
 app_telegram: Application
 
@@ -134,7 +133,7 @@ async def ensure_user(update: Update) -> User:
         db.close()
 
 async def autowelcome(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if update.message is None:  # ignore non-message updates
+    if update.message is None:
         return
     db = SessionLocal()
     try:
@@ -155,8 +154,6 @@ async def pay_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     db = SessionLocal()
     try:
         u = await ensure_user(update)
-        # Provide static pay link OR instruct to DM proof; ideally generate tx_ref & dynamic link.
-        # You can also construct a querystring to carry tg_id/tx_ref if your link supports it.
         tx_ref = f"TG{u.tg_id}-{int(datetime.utcnow().timestamp())}"
         await update.message.reply_text(
             (
@@ -178,7 +175,6 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
             return
 
-        # increment global counter stored in DB
         counter = get_counter(db) + 1
         set_counter(db, counter)
 
@@ -188,7 +184,6 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         db.add(play)
 
         if counter >= WIN_THRESHOLD:
-            # reset counter & mark winner
             set_counter(db, 0)
             from random import randint
             code = f"{randint(1000, 9999)}-{randint(1000, 9999)}"
@@ -209,7 +204,6 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 parse_mode=ParseMode.MARKDOWN,
             )
 
-            # Publish to winners channel
             try:
                 await context.bot.send_message(
                     chat_id=PUBLIC_CHANNEL,
@@ -224,7 +218,6 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             except Exception as e:
                 logger.error(f"Failed to publish winner: {e}")
 
-            # Notify admin
             if ADMIN_USER_ID:
                 await context.bot.send_message(
                     chat_id=int(ADMIN_USER_ID),
@@ -264,11 +257,9 @@ async def stats_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     finally:
         db.close()
 
-# A catch-all to auto-welcome new users who send any text without /start
 async def echo_autowelcome(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await autowelcome(update, context)
-    # Optionally guide them
-    if update.message and update.message.text and update.message.text.startswith("/") is False:
+    if update.message and update.message.text and not update.message.text.startswith("/"):
         await update.message.reply_text("Use /pay to begin, then /tryluck after confirmation ✨")
 
 # =========================
@@ -282,33 +273,26 @@ async def root():
 
 @api.post("/webhooks/flutterwave")
 async def flutterwave_webhook(request: Request):
-    # Verify signature using secret hash per Flutterwave docs
     signature = request.headers.get("verif-hash")
     if not SECRET_HASH or signature != SECRET_HASH:
         raise HTTPException(status_code=401, detail="Invalid signature")
 
     payload = await request.json()
-    event = payload.get("event") or payload.get("event.type") or ""
-
+    status = payload.get("status")
     data = payload.get("data", {})
-    status = data.get("status") or payload.get("status")
     tx_ref = data.get("tx_ref") or payload.get("tx_ref")
-    amount = data.get("amount") or (data.get("amount_settled") if isinstance(data, dict) else None)
 
-    # Only act on successful charge events
     if str(status).lower() not in {"successful", "success"}:
         return JSONResponse({"received": True, "ignored": True})
 
-    # Expect tx_ref to contain TG<tg_id>-<timestamp>
     tg_id: Optional[int] = None
     if tx_ref and str(tx_ref).startswith("TG") and "-" in str(tx_ref):
         try:
             tg_id = int(str(tx_ref).split("-", 1)[0].replace("TG", ""))
-        except Exception:  # fall back to meta
+        except Exception:
             tg_id = None
 
     if tg_id is None:
-        # try to pull from meta/customer fields if you attached it when generating the payment
         meta = data.get("meta") or {}
         tg_id = meta.get("tg_id") if isinstance(meta, dict) else None
 
@@ -316,7 +300,6 @@ async def flutterwave_webhook(request: Request):
         logger.warning(f"Webhook without tg_id mapping. tx_ref={tx_ref}")
         return JSONResponse({"received": True, "mapped": False})
 
-    # Mark user as paid
     db = SessionLocal()
     try:
         u = db.query(User).filter(User.tg_id == int(tg_id)).one_or_none()
@@ -330,7 +313,6 @@ async def flutterwave_webhook(request: Request):
     finally:
         db.close()
 
-    # Optionally notify user in Telegram (best-effort)
     try:
         await app_telegram.bot.send_message(
             chat_id=int(tg_id),
@@ -345,7 +327,7 @@ async def flutterwave_webhook(request: Request):
     return {"received": True}
 
 # =========================
-# Bootstrapping both FastAPI (for webhooks) and Telegram bot
+# Bootstrapping
 # =========================
 async def on_startup():
     global app_telegram
@@ -356,26 +338,21 @@ async def on_startup():
         .build()
     )
 
-    # Handlers
     app_telegram.add_handler(CommandHandler("start", start_cmd))
     app_telegram.add_handler(CommandHandler("pay", pay_cmd))
     app_telegram.add_handler(CommandHandler("tryluck", tryluck_cmd))
     app_telegram.add_handler(CommandHandler("stats", stats_cmd))
-
-    # Auto-welcome on any text (first-time users don't need to type /start)
     app_telegram.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo_autowelcome))
 
-    # Run bot as a background task (long polling)
-    asyncio.create_task(app_telegram.initialize())
-    asyncio.create_task(app_telegram.start())
-    asyncio.create_task(app_telegram.updater.start_polling(drop_pending_updates=True))
+    await app_telegram.initialize()
+    await app_telegram.start()
+    await app_telegram.updater.start_polling(drop_pending_updates=True)
 
 async def on_shutdown():
     await app_telegram.updater.stop()
     await app_telegram.stop()
     await app_telegram.shutdown()
 
-# FastAPI lifespan hooks
 @api.on_event("startup")
 async def _startup_event():
     await on_startup()
@@ -385,5 +362,4 @@ async def _shutdown_event():
     await on_shutdown()
 
 if __name__ == "__main__":
-    # Local dev: uvicorn app:api --reload
     uvicorn.run("app:api", host="0.0.0.0", port=int(os.getenv("PORT", 8000)), reload=False)
