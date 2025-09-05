@@ -6,6 +6,7 @@ from typing import Optional
 from fastapi import FastAPI, Request, HTTPException, Response, Header
 from fastapi.responses import JSONResponse
 import uvicorn
+import httpx  # 🔹 added for Flutterwave requests
 
 from sqlalchemy import (
     create_engine, Column, Integer, String, DateTime, Boolean, BigInteger, Text
@@ -33,10 +34,10 @@ logger = logging.getLogger("naijaprizegate")
 # =========================
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 ADMIN_USER_ID = os.getenv("ADMIN_USER_ID")
-PAY_LINK = os.getenv("PAY_LINK")
 PUBLIC_CHANNEL = os.getenv("PUBLIC_CHANNEL", "@NaijaPrizeGateWinners")
 WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", 14600))
 SECRET_HASH = os.getenv("FLW_SECRET_HASH")
+FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")  # 🔹 Flutterwave secret key
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./db.sqlite3")
 
 # Telegram webhook secret (protects against fake POSTs)
@@ -46,6 +47,8 @@ if not BOT_TOKEN:
     raise RuntimeError("BOT_TOKEN is required")
 if not SECRET_HASH:
     logger.warning("⚠️ FLW_SECRET_HASH not set — webhook verification will FAIL in production!")
+if not FLW_SECRET_KEY:
+    logger.warning("⚠️ FLW_SECRET_KEY not set — Flutterwave dynamic payments will FAIL!")
 
 # =========================
 # Database
@@ -151,18 +154,47 @@ async def start_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await ensure_user(update)
     await update.message.reply_text(WELCOME_TEXT, parse_mode=ParseMode.MARKDOWN)
 
+# 🔹 NEW pay_cmd (dynamic Flutterwave payment)
 async def pay_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     db = SessionLocal()
     try:
         u = await ensure_user(update)
         tx_ref = f"TG{u.tg_id}-{int(datetime.utcnow().timestamp())}"
-        await update.message.reply_text(
-            (
-                "💳 Pay ₦500 using your personal link below. After payment, wait a few seconds for confirmation.\n\n"
-                f"Payment link: {PAY_LINK}\n"
+
+        url = "https://api.flutterwave.com/v3/payments"
+        headers = {
+            "Authorization": f"Bearer {FLW_SECRET_KEY}",
+            "Content-Type": "application/json",
+        }
+        payload = {
+            "tx_ref": tx_ref,
+            "amount": "500",
+            "currency": "NGN",
+            "redirect_url": "https://naijaprizegate-bot-oo2x.onrender.com/payment/thanks",
+            "customer": {
+                "email": f"user{u.tg_id}@naijaprizegate.com",
+                "phonenumber": "0000000000",
+                "name": u.username or str(u.tg_id),
+            },
+            "customizations": {
+                "title": "NaijaPrizeGate",
+                "description": "Try your luck for iPhone 16 Pro Max 🎁",
+                "logo": "https://your-logo-url.com/logo.png",
+            },
+        }
+
+        async with httpx.AsyncClient() as client:
+            resp = await client.post(url, headers=headers, json=payload)
+            data = resp.json()
+
+        if data.get("status") == "success":
+            link = data["data"]["link"]
+            await update.message.reply_text(
+                f"💳 Pay ₦500 using this secure link:\n\n{link}\n\n"
                 f"Reference (save this): {tx_ref}"
             )
-        )
+        else:
+            await update.message.reply_text("⚠️ Payment link could not be generated. Try again later.")
     finally:
         db.close()
 
