@@ -1,7 +1,7 @@
-# NaijaPrizeGate Bot (Merged + Clean) with /stats
-# ==============================================
-
+# NaijaPrizeGate Bot Full Version
+# ====================================================================
 import os
+import re
 import uuid
 import logging
 from datetime import datetime
@@ -37,24 +37,27 @@ logger = logging.getLogger("naijaprizegate")
 # Environment
 # =========================
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-ADMIN_USER_ID = os.getenv("ADMIN_USER_ID")  # must be set to your Telegram numeric ID (string is fine)
+ADMIN_USER_ID = os.getenv("ADMIN_USER_ID")
 PUBLIC_CHANNEL = os.getenv("PUBLIC_CHANNEL", "@NaijaPrizeGateWinners")
 WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", 14600))
-FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")  # set this in Flutterwave dashboard (Webhook settings)
-FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")    # Flutterwave secret key
+FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")
+FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./db.sqlite3")
-WEBHOOK_SECRET = os.getenv("TG_WEBHOOK_SECRET", "my-secret")  # Telegram webhook secret token
-PAY_REDIRECT_URL = os.getenv("PAY_REDIRECT_URL", "https://naijaprizegate-bot-oo2x.onrender.com/payment/verify")
+WEBHOOK_SECRET = os.getenv("TG_WEBHOOK_SECRET", "my-secret")
+PAY_REDIRECT_URL = os.getenv(
+    "PAY_REDIRECT_URL",
+    "https://naijaprizegate-bot-oo2x.onrender.com/payment/verify"
+)
 
 if not BOT_TOKEN:
     raise RuntimeError("BOT_TOKEN is required")
 if not FLW_SECRET_KEY:
     logger.warning("⚠️ FLW_SECRET_KEY not set — Flutterwave dynamic payments will FAIL!")
 if not FLW_SECRET_HASH:
-    logger.warning("⚠️ FLW_SECRET_HASH not set — webhook signature verification disabled (not secure)!")
+    logger.warning("⚠️ FLW_SECRET_HASH not set — webhook signature verification disabled!")
 
 # =========================
-# Database (SQLAlchemy)
+# Database
 # =========================
 engine = create_engine(
     DATABASE_URL,
@@ -69,8 +72,8 @@ class User(Base):
     tg_id = Column(BigInteger, unique=True, index=True, nullable=False)
     username = Column(String(255))
     first_seen = Column(DateTime, default=datetime.utcnow)
-    has_paid = Column(Boolean, default=False)  # marks if user has 1 credit to play
-    tries = Column(Integer, default=0)         # total attempts made
+    has_paid = Column(Boolean, default=False)
+    tries = Column(Integer, default=0)
     welcomed = Column(Boolean, default=False)
 
 class Play(Base):
@@ -145,7 +148,10 @@ WELCOME_TEXT = (
     "Good luck! 🍀"
 )
 
-# ---------- Handlers ----------
+# ---------- Helpers ----------
+def is_valid_email(email: str) -> bool:
+    return bool(re.match(r"[^@]+@[^@]+\.[^@]+", email))
+
 async def ensure_user(update: Update) -> User:
     db = SessionLocal()
     try:
@@ -159,6 +165,7 @@ async def ensure_user(update: Update) -> User:
     finally:
         db.close()
 
+# ---------- Handlers ----------
 async def autowelcome(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message is None:
         return
@@ -176,11 +183,25 @@ async def autowelcome(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def start_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await autowelcome(update, context)
 
-# 🔹 Pay command (dynamic Flutterwave link)
+# 🔹 Step 1: Ask for email
 async def pay_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await ensure_user(update)
+    await update.message.reply_text("📧 Please reply with your email address for payment receipt.")
+    context.user_data["awaiting_email"] = True
+
+# 🔹 Step 2: Handle email + generate Flutterwave link
+async def handle_email(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if not context.user_data.get("awaiting_email"):
+        return
+
+    email = update.message.text.strip()
+    if not is_valid_email(email):
+        await update.message.reply_text("⚠️ That doesn’t look like a valid email. Try again.")
+        return
+
+    context.user_data["awaiting_email"] = False
     user_id = update.effective_user.id
-    amount = "500"  # string works fine with Flutterwave API
+    amount = "500"
     tx_ref = f"TG-{user_id}-{uuid.uuid4().hex[:8]}"
 
     url = "https://api.flutterwave.com/v3/payments"
@@ -194,7 +215,7 @@ async def pay_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "currency": "NGN",
         "redirect_url": PAY_REDIRECT_URL,
         "customer": {
-            "email": f"user{user_id}@naijaprizegate.local",
+            "email": email,
             "phonenumber": "0000000000",
             "name": (update.effective_user.full_name or str(user_id)),
         },
@@ -208,26 +229,24 @@ async def pay_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         async with httpx.AsyncClient(timeout=15.0) as client:
             resp = await client.post(url, headers=headers, json=payload)
             data = resp.json()
-    except Exception as e:
+    except Exception:
         logger.exception("Failed to contact Flutterwave API")
         await update.message.reply_text("⚠️ Could not contact payment provider. Try again later.")
         return
 
     if data.get("status") == "success" and data.get("data", {}).get("link"):
         payment_link = data["data"]["link"]
-        # send link and short instruction
         await update.message.reply_text(
             "💳 Your payment link (valid for a short time):\n\n"
             f"{payment_link}\n\n"
-            "👉 After completing payment, return here and type /tryluck 🎰\n"
-            "If the link expired, type /pay again to get a new one."
+            "👉 After completing payment, return here and type /tryluck 🎰"
         )
-        logger.info(f"Generated payment link for tg={user_id} tx_ref={tx_ref}")
+        logger.info(f"Generated payment link for tg={user_id} tx_ref={tx_ref} email={email}")
     else:
         logger.warning("Flutterwave response did not contain a usable link: %s", data)
         await update.message.reply_text("⚠️ Sorry, could not create payment link. Try again later.")
 
-# 🔹 Tryluck command: consumes 1 paid credit (has_paid), so user must pay again for another try
+# 🔹 Tryluck command
 async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     if not has_paid(user_id):
@@ -236,188 +255,105 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     db = SessionLocal()
     try:
-        u = await ensure_user(update)
-
-        # consume the paid credit
-        u.has_paid = False
-
         counter = get_counter(db) + 1
         set_counter(db, counter)
 
-        await update.message.reply_text("🎰 Spinning…")
-        play = Play(tg_id=u.tg_id)
+        play = Play(tg_id=user_id, result="lose")
         db.add(play)
 
-        if counter >= WIN_THRESHOLD:
-            set_counter(db, 0)
-            from random import randint
-            code = f"{randint(1000,9999)}-{randint(1000,9999)}"
-            w = Winner(tg_id=u.tg_id, username=u.username, code=code)
-            db.add(w)
-
-            u.tries += 1
-            db.merge(u)
+        if counter % WIN_THRESHOLD == 0:
+            code = f"WIN-{uuid.uuid4().hex[:6].upper()}"
+            winner = Winner(
+                tg_id=user_id,
+                username=update.effective_user.username or "",
+                code=code,
+            )
+            db.add(winner)
+            play.result = "win"
             db.commit()
 
             await update.message.reply_text(
-                f"🎉 CONGRATULATIONS! You WON!\nWinner Code: *{code}*\n\nSend your Name, Phone & Address to the admin.",
+                f"🎉 Congratulations! You just WON!\n\nYour Winner Code: `{code}`\n\n"
+                f"📢 You’ll be featured in {PUBLIC_CHANNEL}",
                 parse_mode=ParseMode.MARKDOWN,
             )
-
-            # announce publicly
-            try:
-                await context.bot.send_message(
-                    chat_id=PUBLIC_CHANNEL,
-                    text=(
-                        "🏆 *WINNER ANNOUNCEMENT*\n"
-                        f"User: @{(u.username or 'unknown')} (ID: {u.tg_id})\n"
-                        f"Code: {code}\n"
-                        f"Date: {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}"
-                    ),
-                    parse_mode=ParseMode.MARKDOWN,
-                )
-            except Exception as e:
-                logger.error(f"Failed to publish winner: {e}")
-
-            # notify admin
-            if ADMIN_USER_ID:
-                try:
-                    await context.bot.send_message(
-                        chat_id=int(ADMIN_USER_ID),
-                        text=f"✅ WINNER ALERT: @{u.username}, ID: {u.tg_id}, Code: {code}"
-                    )
-                except Exception as e:
-                    logger.warning(f"Admin notify failed: {e}")
-
-            play.result = "win"
-            db.merge(play)
-            db.commit()
+            return
         else:
-            u.tries += 1
-            db.merge(u)
             db.commit()
-            play.result = "lose"
-            await update.message.reply_text("❌ Not a winner this time. Try again!")
+            await update.message.reply_text("🙁 Sorry, not a win this time. Try again!")
     finally:
         db.close()
 
-async def echo_autowelcome(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    # welcome first-time users on any message or /start
-    await autowelcome(update, context)
-    # short guidance if message is plain text (not a command)
-    if update.message and update.message.text and not update.message.text.startswith("/"):
-        await update.message.reply_text("Use /pay to get your link, then /tryluck after payment ✨")
-
-# =========================
-# Admin: /stats command
 async def stats_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    # Only admin can run this
-    if not ADMIN_USER_ID or str(update.effective_user.id) != str(ADMIN_USER_ID):
-        await update.message.reply_text("⛔ You are not authorized to view stats.")
+    if str(update.effective_user.id) != str(ADMIN_USER_ID):
         return
-
     db = SessionLocal()
     try:
-        counter = get_counter(db)
-        paid = db.query(User).filter(User.has_paid == True).count()
         total_users = db.query(User).count()
-        wins = db.query(Winner).count()
-        plays = db.query(Play).count()
+        total_paid = db.query(User).filter(User.has_paid == True).count()
+        total_plays = db.query(Play).count()
+        winners = db.query(Winner).count()
+        counter = get_counter(db)
+
         await update.message.reply_text(
-            (
-                f"📊 Counter: {counter}/{WIN_THRESHOLD}\n"
-                f"👥 Users: {total_users} (paid: {paid})\n"
-                f"🎮 Plays logged: {plays}\n"
-                f"🏆 Winners: {wins}"
-            )
+            f"📊 Stats:\n"
+            f"Users: {total_users}\n"
+            f"Paid: {total_paid}\n"
+            f"Plays: {total_plays}\n"
+            f"Winners: {winners}\n"
+            f"Counter: {counter}"
         )
     finally:
         db.close()
 
+async def echo_autowelcome(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await autowelcome(update, context)
+    if update.message and update.message.text and not update.message.text.startswith("/"):
+        await update.message.reply_text("Use /pay to get your link, then /tryluck after payment ✨")
+
 # =========================
-# FastAPI (Webhook + simple pages)
+# FastAPI + Webhooks
 # =========================
 api = FastAPI()
 
 @api.get("/")
 async def root():
-    return {"status": "ok", "service": "NaijaPrizeGate"}
+    return HTMLResponse("<h3>✅ NaijaPrizeGate Bot is running.</h3>")
 
 @api.get("/payment/verify")
-async def payment_verify():
-    # simple page shown after a user finishes payment (redirect from Flutterwave)
-    html = """
-    <html><body>
-      <h2>Payment received (or in process)</h2>
-      <p>✅ Thank you. Please return to Telegram and type <strong>/tryluck</strong> to use your attempt.</p>
-      <p>If your payment was successful but /tryluck says you haven't paid, wait a few seconds for webhook processing.</p>
-    </body></html>
-    """
-    return HTMLResponse(content=html, status_code=200)
+async def verify_payment(request: Request):
+    return HTMLResponse(
+        "<h3>Payment verification not yet implemented here.</h3>"
+    )
 
-# Telegram webhook (if you use Telegram webhook to deliver updates to this service)
 @api.post("/telegram/webhook")
-async def telegram_webhook(
-    request: Request,
-    x_telegram_secret: str = Header(None, alias="X-Telegram-Bot-Api-Secret-Token"),
-):
-    if WEBHOOK_SECRET and x_telegram_secret != WEBHOOK_SECRET:
-        raise HTTPException(status_code=401, detail="Invalid secret token")
-    data = await request.json()
-    update = Update.de_json(data, app_telegram.bot)
-    await app_telegram.process_update(update)
-    return {"ok": True}
+async def telegram_webhook(update: dict, x_webhook_secret: str = Header(None)):
+    if x_webhook_secret != WEBHOOK_SECRET:
+        raise HTTPException(status_code=403, detail="Invalid secret")
+    if app_telegram:
+        await app_telegram.process_update(Update.de_json(update, app_telegram.bot))
+    return JSONResponse({"ok": True})
 
-# Flutterwave webhook
 @api.post("/webhooks/flutterwave")
-async def flutterwave_webhook(request: Request):
-    # verify signature header if configured
-    signature = request.headers.get("verif-hash") or request.headers.get("Verif-Hash")
-    if FLW_SECRET_HASH:
-        if not signature or signature != FLW_SECRET_HASH:
-            logger.warning("Invalid webhook signature: %s", signature)
-            raise HTTPException(status_code=401, detail="Invalid signature")
-    else:
-        # not recommended for production
-        logger.warning("FLW_SECRET_HASH not set — webhook not signature-verified")
+async def webhook_flutterwave(request: Request):
+    try:
+        body = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid JSON")
 
-    payload = await request.json()
-    data = payload.get("data", {}) or {}
-    status = (data.get("status") or "").lower()
-    tx_ref = data.get("tx_ref")
+    event = body.get("event")
+    data = body.get("data", {})
 
-    if status not in {"successful", "success"}:
-        # ignore non-success events
-        return JSONResponse({"received": True, "ignored": True})
-
-    if tx_ref and str(tx_ref).startswith("TG-"):
-        try:
-            # our tx_ref format: TG-<tg_id>-<random>
-            parts = str(tx_ref).split("-")
-            tg_id = int(parts[1])
+    if event == "charge.completed" and data.get("status") == "successful":
+        tx_ref = data.get("tx_ref")
+        if tx_ref and tx_ref.startswith("TG-"):
+            tg_id = int(tx_ref.split("-")[1])
             mark_user_paid(tg_id)
-            logger.info("✅ Payment confirmed for Telegram user %s (tx_ref=%s)", tg_id, tx_ref)
-
-            # notify user in Telegram (best-effort)
-            try:
-                if app_telegram:
-                    await app_telegram.bot.send_message(
-                        chat_id=int(tg_id),
-                        text="✅ Payment confirmed! You can now use /tryluck 🎰"
-                    )
-            except Exception as e:
-                logger.warning("Could not DM user after payment: %s", e)
-        except Exception as e:
-            logger.exception("Failed to process webhook tx_ref=%s: %s", tx_ref, e)
-            return JSONResponse({"received": True, "error": "processing_failed"})
-    else:
-        logger.warning("Webhook without tg_id mapping. tx_ref=%s", tx_ref)
-        return JSONResponse({"received": True, "mapped": False})
-
-    return {"received": True}
+            logger.info(f"✅ Payment confirmed for tg_id={tg_id}")
+    return JSONResponse({"ok": True})
 
 # =========================
-# Bootstrapping (Telegram bot in webhook mode)
+# Bootstrapping
 # =========================
 async def on_startup():
     global app_telegram
@@ -428,11 +364,11 @@ async def on_startup():
         .build()
     )
 
-    # register handlers
     app_telegram.add_handler(CommandHandler("start", start_cmd))
     app_telegram.add_handler(CommandHandler("pay", pay_cmd))
     app_telegram.add_handler(CommandHandler("tryluck", tryluck_cmd))
     app_telegram.add_handler(CommandHandler("stats", stats_cmd))
+    app_telegram.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_email))
     app_telegram.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo_autowelcome))
 
     await app_telegram.initialize()
@@ -441,20 +377,13 @@ async def on_startup():
 
 async def on_shutdown():
     if app_telegram:
-        try:
-            await app_telegram.stop()
-            await app_telegram.shutdown()
-        except Exception as e:
-            logger.warning("Bot shutdown warning: %s", e)
-    logger.info("✅ Telegram bot stopped.")
-
-@api.on_event("startup")
-async def _startup_event():
-    await on_startup()
-
-@api.on_event("shutdown")
-async def _shutdown_event():
-    await on_shutdown()
+        await app_telegram.stop()
+        await app_telegram.shutdown()
 
 if __name__ == "__main__":
-    uvicorn.run("app:api", host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
+    uvicorn.run(
+        "app:api",
+        host="0.0.0.0",
+        port=int(os.getenv("PORT", 8000)),
+        reload=True,
+    )
