@@ -1,5 +1,27 @@
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.sqlite3
+*.db
+
+# Virtual environment
 .env
+.venv/
+venv/
+env/
+*.env
+
+# Local SQLite database
+db.sqlite3
+
+# VSCode / IDE files
+.vscode/
+.idea/
+
+# Mac / OS files
+.DS_Store
+
+# Logs
+*.log
