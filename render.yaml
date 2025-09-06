@@ -2,26 +2,33 @@ services:
   - type: web
     name: naijaprizegate-bot
     env: python
-    plan: free   # change to starter/standard if you need more uptime
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app:api --host 0.0.0.0 --port $PORT
-
+    plan: free
     envVars:
       - key: BOT_TOKEN
-        sync: false   # set in Render Dashboard (your Telegram Bot Token)
+        sync: false   # set manually in Render Dashboard
       - key: ADMIN_USER_ID
-        sync: false   # your personal Telegram user ID
+        sync: false
       - key: PUBLIC_CHANNEL
         value: "@NaijaPrizeGateWinners"
       - key: WIN_THRESHOLD
         value: "14600"
       - key: FLW_SECRET_KEY
-        sync: false   # Flutterwave Secret Key
+        sync: false
       - key: FLW_SECRET_HASH
-        sync: false   # Flutterwave webhook signature hash
-      - key: DATABASE_URL
-        value: "sqlite:///./db.sqlite3"   # or your Postgres URL if using Render Postgres
+        sync: false
       - key: TG_WEBHOOK_SECRET
-        value: "my-secret"   # pick any random strong string
+        value: "my-secret"
       - key: PAY_REDIRECT_URL
         value: "https://naijaprizegate-bot.onrender.com/payment/verify"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: naijaprizegate-db
+          property: connectionString
+
+databases:
+  - name: naijaprizegate-db
+    databaseName: naijaprizegate_bot
+    user: naijaprizegate_bot_user
+    plan: free
