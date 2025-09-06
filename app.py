@@ -510,15 +510,19 @@ async def verify_payment(tx_ref: Optional[str] = Query(None)):
         "<p>If your tries are not credited automatically, return to Telegram and wait a few moments.</p>"
     )
 
-@api.post("/telegram/webhook")
-async def telegram_webhook(update: dict, x_webhook_secret: str = Header(None)):
+@api.post("/telegram/webhook/{secret}")
+async def telegram_webhook(secret: str, update: dict):
     """
-    Telegram webhook entrypoint. Telegram should POST updates here with header x-webhook-secret set.
+    Telegram webhook entrypoint. 
+    We secure this by including a secret token in the URL.
+    Example webhook URL: https://<your-app>.onrender.com/telegram/webhook/my-secret
     """
-    if x_webhook_secret != WEBHOOK_SECRET:
-        raise HTTPException(status_code=403, detail="Invalid secret")
+    if secret != WEBHOOK_SECRET:
+        raise HTTPException(status_code=403, detail="Invalid webhook secret")
+
     if app_telegram:
         await app_telegram.process_update(Update.de_json(update, app_telegram.bot))
+
     return JSONResponse({"ok": True})
 
 @api.post("/payment/webhook")
