@@ -525,6 +525,17 @@ async def telegram_webhook(secret: str, update: dict):
 
     return JSONResponse({"ok": True})
 
+# Fallback: accept Telegram webhook without secret
+@api.post("/telegram/webhook")
+async def telegram_webhook_fallback(update: dict):
+    """
+    Fallback route in case Telegram calls /telegram/webhook without the secret.
+    Less secure, but prevents 404 errors if Telegram ignores the secret.
+    """
+    if app_telegram:
+        await app_telegram.process_update(Update.de_json(update, app_telegram.bot))
+    return JSONResponse({"ok": True})
+
 @api.post("/payment/webhook")
 async def flutterwave_webhook(request: Request, verif_hash: str = Header(None, convert_underscores=False)):
     """
