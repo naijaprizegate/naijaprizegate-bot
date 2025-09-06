@@ -83,7 +83,7 @@ class User(Base):
     first_seen = Column(DateTime, default=datetime.utcnow)
     tries = Column(Integer, default=0)       # how many tries user currently has
     welcomed = Column(Boolean, default=False)
-    referral_code = Column(String(64), nullable=True)  # optional for future referral feature
+   # referral_code = Column(String(64), nullable=True)  # optional for future referral feature
 
 class Payment(Base):
     __tablename__ = "payments"
