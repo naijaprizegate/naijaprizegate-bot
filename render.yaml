@@ -1,35 +1,27 @@
-envVars:
-  - key: BOT_TOKEN
-    value: "<your_telegram_bot_token_here>"
+services:
+  - type: web
+    name: naijaprizegate-bot
+    env: python
+    plan: free   # change to starter/standard if you need more uptime
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:api --host 0.0.0.0 --port $PORT
 
-  - key: ADMIN_USER_ID
-    value: "<your_personal_telegram_user_id>"
-
-  - key: PUBLIC_CHANNEL
-    value: "@NaijaPrizeGateWinners"
-
-  - key: WIN_THRESHOLD
-    value: "14600"
-
-  # 🔑 Flutterwave Keys
-  - key: FLW_SECRET_KEY
-    value: "<your_flutterwave_secret_key>"
-
-  - key: FLW_SECRET_HASH
-    value: "<your_flutterwave_hash_secret>"
-
-  # 🔗 Redirect URL (MUST match what you set in Flutterwave dashboard)
-  - key: PAY_REDIRECT_URL
-    value: "https://<your-app-name>.onrender.com/payment/verify"
-
-  # 🗄️ Database (SQLite default or Postgres if using Render DB)
-  - key: DATABASE_URL
-    value: "sqlite:///./db.sqlite3"
-
-  # 🔒 Telegram webhook secret (pick any random string, must also be set in bot webhook config)
-  - key: TG_WEBHOOK_SECRET
-    value: "my-secret"
-
-  # 🌐 Render port
-  - key: PORT
-    value: "8000"
+    envVars:
+      - key: BOT_TOKEN
+        sync: false   # set in Render Dashboard (your Telegram Bot Token)
+      - key: ADMIN_USER_ID
+        sync: false   # your personal Telegram user ID
+      - key: PUBLIC_CHANNEL
+        value: "@NaijaPrizeGateWinners"
+      - key: WIN_THRESHOLD
+        value: "14600"
+      - key: FLW_SECRET_KEY
+        sync: false   # Flutterwave Secret Key
+      - key: FLW_SECRET_HASH
+        sync: false   # Flutterwave webhook signature hash
+      - key: DATABASE_URL
+        value: "sqlite:///./db.sqlite3"   # or your Postgres URL if using Render Postgres
+      - key: TG_WEBHOOK_SECRET
+        value: "my-secret"   # pick any random strong string
+      - key: PAY_REDIRECT_URL
+        value: "https://naijaprizegate-bot.onrender.com/payment/verify"
