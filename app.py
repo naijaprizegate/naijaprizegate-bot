@@ -23,8 +23,8 @@ api = FastAPI()
 # Webhook configuration
 # -----------------------------
 BASE_URL = os.getenv("RENDER_EXTERNAL_URL", "").rstrip("/")
-WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET", "changeme") # must be set in Render env
-WEBHOOK_PATH = f"/telegram/webhook/{WEBHOOK_SECRET}"
+WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET", "") # must be set in Render env
+WEBHOOK_PATH = f"/telegram/webhook/{WEBHOOK_SECRET}" if WEBHOOK_SECRET else "/telegram/webhook"
 WEBHOOK_URL = f"{BASE_URL}{WEBHOOK_PATH}"
 
 from sqlalchemy import (
@@ -926,6 +926,7 @@ from telegram.ext import Application, ApplicationBuilder, CommandHandler, Messag
 app_telegram: Application | None = None
 
 
+@api.on_event("startup")
 async def on_startup():
     global app_telegram
     app_telegram = (
@@ -947,16 +948,21 @@ async def on_startup():
     # Text handler
     app_telegram.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, text_handler))
 
-    # Initialize & start
+    # Initialize & start the bot
     await app_telegram.initialize()
     await app_telegram.start()
 
-    # 🚀 Tell Telegram where to send updates (using Render's public URL)
-    if not WEBHOOK_URL.startswith("https://"):
-        raise RuntimeError(f"Invalid webhook URL: {WEBHOOK_URL}")
+    # 🚀 Build secure webhook URL with secret
+    secret = os.getenv("WEBHOOK_SECRET")
+    if not secret:
+        raise RuntimeError("WEBHOOK_SECRET not set!")
 
-    await app_telegram.bot.set_webhook(WEBHOOK_URL)
-    logger.info(f"✅ Telegram bot started (webhook set to {WEBHOOK_URL}).")
+    webhook_url = f"{BASE_URL}/telegram/webhook/{secret}"
+    if not webhook_url.startswith("https://"):
+        raise RuntimeError(f"Invalid webhook URL: {webhook_url}")
+
+    await app_telegram.bot.set_webhook(webhook_url)
+    logger.info(f"✅ Telegram bot started (webhook set to {webhook_url}).")
 
 
 async def on_shutdown():
