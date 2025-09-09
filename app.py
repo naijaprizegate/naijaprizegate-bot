@@ -19,6 +19,14 @@ from fastapi.responses import JSONResponse, HTMLResponse
 # initialize FastAPI
 api = FastAPI()
 
+# -----------------------------
+# Webhook configuration
+# -----------------------------
+BASE_URL = os.getenv("RENDER_EXTERNAL_URL", "").rstrip("/")
+WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET", "changeme") # must be set in Render env
+WEBHOOK_PATH = f"/telegram/webhook/{WEBHOOK_SECRET}"
+WEBHOOK_URL = f"{BASE_URL}{WEBHOOK_PATH}"
+
 from sqlalchemy import (
    create_engine, Column, Integer, String, DateTime, Boolean, BigInteger, Text
 )
@@ -943,13 +951,12 @@ async def on_startup():
     await app_telegram.initialize()
     await app_telegram.start()
 
-    # 🚀 Tell Telegram where to send updates (secret included)
-    public_url = os.getenv("PUBLIC_URL")
-    secret = os.getenv("WEBHOOK_SECRET")
-    webhook_url = f"{public_url}/telegram/webhook/{secret}"
-    await app_telegram.bot.set_webhook(webhook_url)
+    # 🚀 Tell Telegram where to send updates (using Render's public URL)
+    if not WEBHOOK_URL.startswith("https://"):
+        raise RuntimeError(f"Invalid webhook URL: {WEBHOOK_URL}")
 
-    logger.info(f"✅ Telegram bot started (webhook set to {webhook_url}).")
+    await app_telegram.bot.set_webhook(WEBHOOK_URL)
+    logger.info(f"✅ Telegram bot started (webhook set to {WEBHOOK_URL}).")
 
 
 async def on_shutdown():
