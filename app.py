@@ -44,7 +44,7 @@ from telegram.ext import (
 )
 
  # 👇 add this pattern (matches hello, hi, hey, good morning, etc.)
-greeting_pattern = r'^(?i)(hello|hi|hey|good\s*morning|good\s*afternoon|good\s*evening)$'
+greeting_pattern = r'(?i)^(hello|hi|hey|good\s*morning|good\s*afternoon|good\s*evening)$'
 
 # 👇 add this function (reuses your /start welcome message)
 async def greet(update: Update, context: ContextTypes.DEFAULT_TYPE):
