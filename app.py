@@ -42,6 +42,14 @@ from telegram.ext import (
    Application, ApplicationBuilder, CommandHandler, ContextTypes,
    MessageHandler, filters, CallbackQueryHandler
 )
+
+ # 👇 add this pattern (matches hello, hi, hey, good morning, etc.)
+greeting_pattern = r'^(?i)(hello|hi|hey|good\s*morning|good\s*afternoon|good\s*evening)$'
+
+# 👇 add this function (reuses your /start welcome message)
+async def greet(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    return await start_cmd(update, context)
+
 import ipaddress
 
 # Telegram's published IP ranges (as of 2025)
@@ -1429,6 +1437,9 @@ async def on_startup():
     # Callback queries
     app_telegram.add_handler(CallbackQueryHandler(callback_query_handler))
 
+    # 👇 Greeting trigger (hello, hi, hey, good morning, etc.)
+    app_telegram.add_handler(MessageHandler(filters.Regex(greeting_pattern), greet))
+    
     # Text handler
     app_telegram.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, text_handler))
 
