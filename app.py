@@ -994,25 +994,26 @@ def is_telegram_ip(ip: str) -> bool:
     except Exception:
         return False
 
-
 # =========================
 # Main secured webhook (secret in URL)
 # =========================
 @api.post("/telegram/webhook/{secret}")
-async def telegram_webhook(secret: str, update: dict):
+async def telegram_webhook(secret: str, request: Request):
     if secret != WEBHOOK_SECRET:
         logger.warning("❌ Invalid secret in webhook URL attempt.")
-        raise HTTPException(status_code=403, detail="Invalid webhook secret")
+        return JSONResponse({"ok": False, "error": "Invalid webhook secret"})  # ✅ Always 200
 
     if not app_telegram:
         logger.error("⚠️ Telegram app not initialized yet.")
-        raise HTTPException(status_code=500, detail="Bot not ready")
+        return JSONResponse({"ok": False, "error": "Bot not ready"})  # ✅ Always 200
 
     try:
-        await app_telegram.process_update(Update.de_json(update, app_telegram.bot))
+        body = await request.json()
+        update = Update.de_json(body, app_telegram.bot)
+        await app_telegram.process_update(update)
     except Exception as e:
         logger.exception("Error processing Telegram update (secured webhook): %s", e)
-        raise HTTPException(status_code=500, detail="Processing error")
+        return JSONResponse({"ok": False, "error": "Processing error"})  # ✅ Always 200
 
     return JSONResponse({"ok": True})
 
@@ -1022,35 +1023,33 @@ async def telegram_webhook(secret: str, update: dict):
 # =========================
 @api.post("/telegram/webhook")
 async def telegram_webhook_fallback(
-    update: dict,
     request: Request,
-    x_fallback_token: str = Header(None, alias="X-Fallback-Token")  # use proper alias
+    x_fallback_token: str = Header(None, alias="X-Fallback-Token")
 ):
     client_ip = request.client.host
 
     # 1) Verify request is from Telegram IP range
     if not is_telegram_ip(client_ip):
         logger.warning("❌ Blocked non-Telegram IP %s on fallback webhook", client_ip)
-        raise HTTPException(status_code=403, detail="Not allowed")
+        return JSONResponse({"ok": False, "error": "Not allowed"})  # ✅ Always 200
 
     # 2) Optional: check fallback token if configured
     fallback_token = os.getenv("TELEGRAM_FALLBACK_TOKEN")
-    if fallback_token:
-        if x_fallback_token != fallback_token:
-            logger.warning("❌ Invalid fallback token from IP %s", client_ip)
-            raise HTTPException(status_code=403, detail="Invalid token")
-    else:
-        logger.debug("ℹ️ TELEGRAM_FALLBACK_TOKEN not set — relying on IP check only.")
+    if fallback_token and x_fallback_token != fallback_token:
+        logger.warning("❌ Invalid fallback token from IP %s", client_ip)
+        return JSONResponse({"ok": False, "error": "Invalid token"})  # ✅ Always 200
 
     if not app_telegram:
         logger.error("⚠️ Telegram app not initialized yet (fallback).")
-        raise HTTPException(status_code=500, detail="Bot not ready")
+        return JSONResponse({"ok": False, "error": "Bot not ready"})  # ✅ Always 200
 
     try:
-        await app_telegram.process_update(Update.de_json(update, app_telegram.bot))
+        body = await request.json()
+        update = Update.de_json(body, app_telegram.bot)
+        await app_telegram.process_update(update)
     except Exception as e:
         logger.exception("Error processing Telegram update (fallback webhook): %s", e)
-        raise HTTPException(status_code=500, detail="Processing error")
+        return JSONResponse({"ok": False, "error": "Processing error"})  # ✅ Always 200
 
     return JSONResponse({"ok": True})
 
