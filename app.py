@@ -1465,12 +1465,25 @@ api.add_event_handler("startup", on_startup)
 api.add_event_handler("shutdown", on_shutdown)
 
 # =========================
-# Run with uvicorn if executed directly
+# Run Bot + API together
 # =========================
 if __name__ == "__main__":
-    uvicorn.run(
-        "app:api",
-        host="0.0.0.0",
-        port=int(os.getenv("PORT", 8000)),
-        reload=True,
-    )
+    import asyncio
+    import uvicorn
+
+    async def main():
+        # 1) Start Telegram bot in background (if configured)
+        if app_telegram:
+            asyncio.create_task(app_telegram.run_polling())
+
+        # 2) Start FastAPI server (for webhook + admin API)
+        config = uvicorn.Config(
+            "app:api",
+            host="0.0.0.0",
+            port=int(os.getenv("PORT", 8000)),
+            log_level="info"
+        )
+        server = uvicorn.Server(config)
+        await server.serve()
+
+    asyncio.run(main())
