@@ -8,7 +8,8 @@ import asyncio
 import hmac
 import hashlib
 import logging
-from datetime import datetime
+import time
+from datetime import datetime, timedelta
 from typing import Optional, Dict
 
 import httpx
@@ -28,9 +29,10 @@ WEBHOOK_PATH = f"/telegram/webhook/{WEBHOOK_SECRET}" if WEBHOOK_SECRET else "/te
 WEBHOOK_URL = f"{BASE_URL}{WEBHOOK_PATH}"
 
 from sqlalchemy import (
-   create_engine, Column, Integer, String, DateTime, Boolean, BigInteger, Text
+   create_engine, Column, Integer, String, DateTime, Boolean, BigInteger, Text, select
 )
 from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy.exc import IntegrityError
 
 from telegram import (
    Update, InlineKeyboardButton, InlineKeyboardMarkup
@@ -85,6 +87,7 @@ FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")    # Flutterwave secret key (for AP
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./db.sqlite3")
 WEBHOOK_SECRET = os.getenv("TG_WEBHOOK_SECRET", "my-secret")
 PAY_REDIRECT_URL = os.getenv("PAY_REDIRECT_URL", "https://yourdomain.com/payment/verify")
+PAYMENT_EXPIRE_HOURS = int(os.getenv("PAYMENT_EXPIRE_HOURS", "2"))  # payment link lifetime (hours)
 
 if not BOT_TOKEN:
    raise RuntimeError("BOT_TOKEN is required")
@@ -122,14 +125,18 @@ class User(Base):
   # referral_code = Column(String(64), nullable=True)  # optional for future referral feature
 
 class Payment(Base):
-   __tablename__ = "payments"
-   id = Column(Integer, primary_key=True)
-   tg_id = Column(BigInteger, index=True, nullable=False)
-   tx_ref = Column(String(128), unique=True, index=True, nullable=False)
-   amount = Column(Integer, nullable=False)
-   tries = Column(Integer, nullable=False, default=0)  # number of tries this payment should credit
-   status = Column(String(32), default="pending")  # pending / successful / failed
-   created_at = Column(DateTime, default=datetime.utcnow)
+    __tablename__ = "payments"
+    id = Column(Integer, primary_key=True)
+    tg_id = Column(BigInteger, index=True, nullable=False)
+    tx_ref = Column(String(128), unique=True, index=True, nullable=False)
+    amount = Column(Integer, nullable=False)
+    tries = Column(Integer, nullable=False, default=0)  # number of tries this payment should credit
+    status = Column(String(32), default="pending")  # pending / successful / failed / expired
+    created_at = Column(DateTime, default=datetime.utcnow)
+    expires_at = Column(DateTime, nullable=True)  # new: expiry timestamp for the payment link
+
+    # <-- add this new column
+    fw_transaction_id = Column(String, unique=True, nullable=True, index=True)
 
 class Play(Base):
    __tablename__ = "plays"
@@ -158,58 +165,203 @@ Base.metadata.create_all(engine)
 # DB helper functions
 # =========================
 def get_counter(db) -> int:
-   row = db.query(Meta).filter(Meta.key == "try_counter").one_or_none()
-   return int(row.value) if row else 0
+    """Return current try counter as int (0 if missing)."""
+    row = db.query(Meta).filter(Meta.key == "try_counter").one_or_none()
+    return int(row.value) if row else 0
 
-def set_counter(db, value: int):
-   row = db.query(Meta).filter(Meta.key == "try_counter").one_or_none()
-   if not row:
-       row = Meta(key="try_counter", value=str(value))
-       db.add(row)
-   else:
-       row.value = str(value)
-   db.commit()
+def set_counter(db, value: int, force: bool = False) -> bool:
+    """
+    Set try_counter to `value`.
 
-def increment_counter(db) -> int:
-   """
-   Increment and return the new counter.
-   Note: This is fine for low-to-moderate traffic. For very high concurrency,
-   consider using DB transactions/locks or a Redis counter.
-   """
-   current = get_counter(db) + 1
-   set_counter(db, current)
-   return current
+    - By default this WILL NOT lower the counter (prevents accidental resets).
+    - Pass force=True to allow lowering (admin use).
+    - Returns True when the DB was changed, False when ignored.
+    """
+    row = db.query(Meta).filter(Meta.key == "try_counter").one_or_none()
+    if not row:
+        row = Meta(key="try_counter", value=str(value))
+        db.add(row)
+        db.commit()
+        logger.info("try_counter initialized to %s", value)
+        return True
 
-def ensure_user_by_update(update: Update):
-   """
-   Ensure user exists and return the User object (fresh session required).
-   This helper doesn't commit closing manager; caller must handle session.
-   """
-   db = SessionLocal()
-   try:
-       uid = update.effective_user.id
-       u = db.query(User).filter(User.tg_id == uid).one_or_none()
-       if not u:
-           u = User(tg_id=uid, username=(update.effective_user.username or ""))
-           db.add(u)
-           db.commit()
-           db.refresh(u)
-       return u
-   finally:
-       db.close()
+    try:
+        current = int(row.value)
+    except Exception:
+        current = 0
 
-def ensure_user_return_obj(tg_id: int, username: str = ""):
-   db = SessionLocal()
-   try:
-       u = db.query(User).filter(User.tg_id == tg_id).one_or_none()
-       if not u:
-           u = User(tg_id=tg_id, username=username)
-           db.add(u)
-           db.commit()
-           db.refresh(u)
-       return u
-   finally:
-       db.close()
+    if value < current and not force:
+        logger.warning(
+            "Attempt to lower try_counter from %s to %s blocked (force=False)", current, value
+        )
+        return False
+
+    row.value = str(value)
+    db.merge(row)
+    db.commit()
+    logger.info("try_counter set to %s (force=%s)", value, force)
+    return True
+
+def increment_counter(db, max_retries: int = 5) -> int:
+    """
+    Atomically increment and return the new counter value.
+
+    - If the meta row is missing, initialize it to (plays_count + 1) so the counter
+      won't unexpectedly reset to 1 after a restore or manual deletion.
+    - Uses SELECT ... FOR UPDATE on Postgres for safety; falls back to a retry loop
+      for SQLite/MySQL (optimistic update).
+    """
+    # --- Postgres: strong row lock approach ---
+    try:
+        if engine.dialect.name == "postgresql":
+            new_value = None 
+            # start a transaction; commit happens when context exits successfully
+            with db.begin():
+                res = db.execute(
+                    select(Meta).where(Meta.key == "try_counter").with_for_update()
+                )
+                row = res.scalars().one_or_none()
+                if not row:
+                    plays_count = db.query(Play).count()
+                    new_value = plays_count + 1
+                    row = Meta(key="try_counter", value=str(new_value))
+                    db.add(row)
+                else:
+                    new_value = int(row.value) + 1
+                    row.value = str(new_value)
+                    db.add(row)
+            return new_value
+    except Exception:
+        # If FOR UPDATE branch fails (e.g. not supported), rollback and fall back
+        try:
+            db.rollback()
+        except Exception:
+            pass
+
+    # --- Fallback: optimistic CAS-style loop (SQLite, MySQL, other) ---
+    for attempt in range(max_retries):
+        try:
+            row = db.query(Meta).filter(Meta.key == "try_counter").one_or_none()
+            if not row:
+                plays_count = db.query(Play).count()
+                new_value = plays_count + 1
+                row = Meta(key="try_counter", value=str(new_value))
+                db.add(row)
+                db.commit()
+                return new_value
+
+            old_value = int(row.value)
+
+            updated_count = db.query(Meta).filter(
+                Meta.key == "try_counter", Meta.value == str(old_value)
+            ).update({"value": str(old_value + 1)}, synchronize_session=False)
+
+            if updated_count:
+                db.commit()
+                return old_value + 1
+
+            # If update_count == 0, someone else changed the row — retry
+            db.rollback()
+            time.sleep(0.01 * (attempt + 1))
+            continue
+
+        except Exception:
+            # On any DB error, rollback and retry a bit
+            try:
+                db.rollback()
+            except Exception:
+                pass
+            time.sleep(0.01 * (attempt + 1))
+            continue
+
+    # --- Final fallback: best-effort increment (should rarely happen) ---
+    try:
+        row = db.query(Meta).filter(Meta.key == "try_counter").one_or_none()
+        if not row:
+            plays_count = db.query(Play).count()
+            new_value = plays_count + 1
+            row = Meta(key="try_counter", value=str(new_value))
+            db.add(row)
+            db.commit()
+            return new_value
+        row.value = str(int(row.value) + 1)
+        db.commit()
+        return int(row.value)
+    except Exception as e:
+        try:
+            db.rollback()
+        except Exception:
+            pass
+        logger.exception("Failed to increment try_counter (final fallback): %s", e)
+        raise
+
+def ensure_counter_initialized():
+    """
+    Ensure the try_counter meta row exists and is at least the number of recorded plays.
+    Call this once at startup so the counter cannot be accidentally lower than plays count.
+    """
+    db = SessionLocal()
+    try:
+        plays = db.query(Play).count()
+        row = db.query(Meta).filter(Meta.key == "try_counter").one_or_none()
+        if not row:
+            set_counter(db, plays, force=True)
+            logger.info("Initialized try_counter to existing plays_count=%s", plays)
+        else:
+            try:
+                current = int(row.value)
+            except Exception:
+                current = 0
+            if current < plays:
+                set_counter(db, plays, force=True)
+                logger.info(
+                    "Bumped try_counter from %s to plays_count=%s to keep consistency", current, plays
+                )
+    finally:
+        db.close()
+
+
+async def reset_counter_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """
+    Admin-only command to force-reset try_counter.
+    Usage: /resetcounter <new_value>
+    Only users in ADMIN_USER_ID env (comma-separated) are allowed.
+    """
+    admin_env = os.getenv("ADMIN_USER_ID", "")
+    try:
+        admin_ids = [int(x.strip()) for x in admin_env.split(",") if x.strip()]
+    except Exception:
+        admin_ids = []
+
+    caller_id = update.effective_user.id if update.effective_user else None
+    if caller_id not in admin_ids:
+        try:
+            await update.message.reply_text("❌ You are not authorized to use this command.")
+        except Exception:
+            pass
+        return
+
+    args = context.args if hasattr(context, "args") else []
+    if not args:
+        await update.message.reply_text("Usage: /resetcounter <new_integer_value> (admin only)")
+        return
+
+    try:
+        new_value = int(args[0])
+    except Exception:
+        await update.message.reply_text("Please provide a valid integer value.")
+        return
+
+    db = SessionLocal()
+    try:
+        ok = set_counter(db, new_value, force=True)
+        if ok:
+            await update.message.reply_text(f"✅ try_counter force-set to {new_value}")
+        else:
+            await update.message.reply_text("⚠️ Failed to set try_counter.")
+    finally:
+        db.close()
+
 
 # =========================
 # Telegram bot setup
@@ -242,6 +394,22 @@ def packages_keyboard():
 # ---------- Helpers ----------
 def is_valid_email(email: str) -> bool:
    return bool(re.match(r"[^@]+@[^@]+\.[^@]+", email))
+
+def format_display_name(user_obj) -> str:
+    """
+    Return a safe display name for announcements.
+    - If the Telegram user has a username, return '@username'
+    - Otherwise return 'User<tg_id>' so we never show '@None'
+    """
+    # Try common attributes the telegram User object has
+    uname = getattr(user_obj, "username", None)
+    uid = getattr(user_obj, "id", None) or getattr(user_obj, "tg_id", None)
+
+    if uname:
+        return f"@{uname}"
+    # fallback to numeric id with a readable prefix
+    return f"User{uid if uid is not None else 'unknown'}"
+
 
 async def create_flutterwave_payment_link(tx_ref: str, amount: int, email: str, name: str) -> Optional[str]:
    """
@@ -338,11 +506,28 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
             # store chosen package in user_data and ask for email
             context.user_data["awaiting_email"] = True
             context.user_data["selected_package"] = key
+
+            # Provide a Cancel inline button so user can abort easily
+            cancel_kb = InlineKeyboardMarkup(
+                [[InlineKeyboardButton("❌ Cancel", callback_data="pay:cancel")]]
+            )
+
             await query.edit_message_text(
-                f"You selected *{pkg['label']}*.\n\nPlease reply with your email address for the payment receipt.",
-                parse_mode=ParseMode.MARKDOWN
+                f"You selected *{pkg['label']}*.\n\n"
+                "Please reply with your email address for the payment receipt.\n\n"
+                "If you want to cancel, press the Cancel button or type 'cancel'.",
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=cancel_kb
             )
             return
+
+    # User pressed the Cancel button for the payment flow
+    if data == "pay:cancel":
+        # clear any awaiting flags for this user
+        context.user_data.pop("awaiting_email", None)
+        context.user_data.pop("selected_package", None)
+        await query.edit_message_text("Payment flow cancelled. Back to menu:", reply_markup=main_menu_keyboard())
+        return
 
     if data == "pay:back":
         await query.edit_message_text("Back to menu:", reply_markup=main_menu_keyboard())
@@ -374,6 +559,7 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
     Single text handler used for:
     - accepting emails when awaiting_email is True (from inline package flow)
+    - allowing the user to type 'cancel' to abort the pay flow
     - fallback welcome/help message
     """
     if update.message is None:
@@ -383,14 +569,24 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     uid = update.effective_user.id
     uname = update.effective_user.username or ""
 
-    # If awaiting_email is set for this user, treat this text as email
+    # If awaiting_email is set for this user, treat this text as email or cancellation
     if context.user_data.get("awaiting_email"):
-        email = text
-        if not is_valid_email(email):
-            await update.message.reply_text("⚠️ That doesn’t look like a valid email. Try again.")
+        # Support cancel by typing 'cancel' or '/cancel'
+        if text.lower() in ("cancel", "/cancel", "❌"):
+            context.user_data.pop("awaiting_email", None)
+            context.user_data.pop("selected_package", None)
+            await update.message.reply_text("❌ Payment cancelled. Back to the menu:", reply_markup=main_menu_keyboard())
             return
 
-        # clear awaiting flag
+        email = text
+        if not is_valid_email(email):
+            # give a clear instruction and remind about cancel option
+            await update.message.reply_text(
+                "⚠️ That doesn’t look like a valid email. Reply with a valid email or type 'cancel' to stop."
+            )
+            return
+
+        # clear awaiting flag (we got a valid email)
         context.user_data["awaiting_email"] = False
         selected_key = context.user_data.get("selected_package", "500")
         pkg = PACKAGES.get(selected_key, PACKAGES["500"])
@@ -401,6 +597,21 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         tx_ref = f"TG-{uid}-{uuid.uuid4().hex[:8]}"
         db = SessionLocal()
         try:
+            # Defensive check: ensure selected package is valid (defense-in-depth)
+            selected_key = context.user_data.get("selected_package", "500")
+            pkg = PACKAGES.get(selected_key)
+            if not pkg:
+                logger.warning("Invalid selected_package for user %s", uid, selected_key)
+                await update.message.reply_text(
+                    "⚠️ The package you selected is invalid. Please press 💳 Pay Now and choose a package again."
+                )
+                context.user_data.pop("selected_package", None)
+                return
+            
+            # use canonical package values (don't trust client input)
+            amount = pkg["amount"]
+            tries_to_credit = pkg["tries"]
+
             # ensure user exists
             u = db.query(User).filter(User.tg_id == uid).one_or_none()
             if not u:
@@ -409,23 +620,37 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 db.commit()
                 db.refresh(u)
 
+            # setexpiry for this payment (default from PAYMENT_EXPIRE_HOURS)
+            expires = datetime.utcnow() + timedelta(hours=PAYMENT_EXPIRE_HOURS)
+            
             payment = Payment(
                 tg_id=uid,
                 tx_ref=tx_ref,
                 amount=amount,
                 tries=tries_to_credit,
-                status="pending"
+                status="pending",
+                expires_at=expires 
             )
             db.add(payment)
             db.commit()
+            db.refresh(payment)
+
             logger.info(
-                "Created payment record tx_ref=%s, tg_id=%s, amount=%s, tries=%s",
-                tx_ref, uid, amount, tries_to_credit
+                "Created payment record tx_ref=%s, tg_id=%s, amount=%s, tries=%s, expires_at=%s",
+                tx_ref, uid, amount, tries_to_credit, expires.isoformat()
             )
 
-        except Exception:
-            logger.exception("Failed to create payment record for tg_id=%s", uid)
+        except IntegrityError:
             db.rollback()
+            logger.exception("TX_REF collision creating payment record for tg_id=%s tx_ref=%s", uid, tx_ref)
+            await update.message.reply_text("⚠️ An internal error occurred creating your payment. Please try again.")
+            return
+
+        except Exception:
+            db.rollback()
+            logger.exception("Failed to create payment record for tg_id=%s", uid)
+            await update.message.reply_text("⚠️ An unexpected error occurred. Please try again later.")
+            return
 
         finally:
             db.close()
@@ -482,7 +707,7 @@ async def autowelcome_fallback(update: Update, context: ContextTypes.DEFAULT_TYP
     )
 
 
-async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE): 
     """
     Try luck command with slot machine style spinning animation + database integration.
     Handles both callback_query and direct /tryluck command.
@@ -496,101 +721,250 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         answer_target = update.message
 
     uid = user.id
+
     db = SessionLocal()
+    code = None  # will hold the winner code if this play wins
+    msg = None
+
     try:
         # Find user
         u = db.query(User).filter(User.tg_id == uid).one_or_none()
-        if not u or u.tries <= 0:
+        if not u or (u.tries or 0) <= 0:
             await answer_target.reply_text(
                 "⚠️ You have no tries left. Please buy tries using Pay Now 💳"
             )
             return
 
-        # Consume a try
-        u.tries -= 1
+        # Consume a try and record the play as a 'lose' by default
+        u.tries = (u.tries or 0) - 1
         play = Play(tg_id=uid, result="lose")
         db.add(play)
         db.merge(u)
         db.commit()
 
-        # Increment global counter
+        # refresh objects if you plan to use them further
+        try:
+            db.refresh(u)
+        except Exception:
+            pass  # ignore refresh errors on simple setups
+
+        # Increment global counter (stored in Meta table)
         counter = increment_counter(db)
         logger.info(f"User {uid} played. Counter={counter}, remaining_tries={u.tries}")
 
         # Initial spinning message
         msg = await answer_target.reply_text("🎰 Spinning...")
 
-        # Animate slot reels (5 frames)
-        for _ in range(5):
+        # Animate slot reels (randomized frames & delays to reduce Telegram edit queuing)
+        frames = random.randint(3, 6)  # play between 3 and 6 frames (tweak as desired)
+        for i in range(frames):
             reel = " | ".join(random.choices(SLOT_SYMBOLS, k=3))
-            await asyncio.sleep(1)
-            await msg.edit_text(f"🎰 {reel}")
 
-        # Check if this play is a win
-        if counter % WIN_THRESHOLD == 0:
-            code = f"WIN-{uuid.uuid4().hex[:6].upper()}"
-            winner = Winner(tg_id=uid, username=(user.username or ""), code=code)
-            play.result = "win"
-            db.add(winner)
-            db.merge(play)
-            db.commit()
+            # Use a short delay at the start and a slightly longer one towards the end
+            # to simulate the reels slowing down and reduce heavy edit load on Telegram.
+            min_delay = 0.5   # shortest pause between edits (seconds)
+            max_delay = 1.3   # longest pause at the end (seconds)
+            progress = i / (frames - 1) if frames > 1 else 1.0
+            # easing makes the slowdown feel more natural (progress**1.5)
+            delay = min_delay + (max_delay - min_delay) * (progress ** 1.5)
 
-            # Jackpot reel
+            try:
+                # Try to edit the same message with the new reel
+                await msg.edit_text(f"🎰 {reel}")
+            except Exception:
+                # On slow/unstable networks the edit may fail (message deleted, rate-limited).
+                # We catch the error and continue so the bot doesn't crash.
+                logger.debug("Could not edit spin message; continuing animation.")
+            await asyncio.sleep(delay)
+
+        # Determine win
+        is_win = (counter % WIN_THRESHOLD == 0)
+
+        if is_win:
+            try:
+                # Step 1: create winner row without code (get unique id from DB)
+                winner = Winner(tg_id=uid, username=(user.username or ""), code=None)
+                db.add(winner)
+
+                play.result = "win"
+                db.merge(play)
+
+                db.commit()
+                db.refresh(winner)  # ensure we have winner.id
+
+            except Exception:
+                db.rollback()
+                logger.exception("Failed to create winner record for user %s", uid)
+                await msg.edit_text(
+                    "⚠️ An error occurred while recording your win. Please contact support.",
+                    reply_markup=main_menu_keyboard()
+                )
+                return
+
+            # Step 2: build code using DB id + random suffix (guaranteed unique)
+            try:
+                code = f"WIN-{winner.id}-{uuid.uuid4().hex[:6].upper()}"
+                winner.code = code
+                db.merge(winner)
+                db.commit()
+            except Exception:
+                db.rollback()
+                logger.exception("Failed to assign code for winner id=%s", winner.id)
+                await msg.edit_text(
+                    "⚠️ An error occurred while finalizing your win. Please contact support.",
+                    reply_markup=main_menu_keyboard()
+                )
+                return
+
+            # Step 3: now safely announce
             final_reel = "💎 | 💎 | 💎"
+            display_name = format_display_name(user)
             await msg.edit_text(
                 f"🎉 JACKPOT!!!\n\n{final_reel}\n\n"
-                f"🥳 Congratulations @{user.username or uid}, You WON!\n"
+                f"🥳 Congratulations {display_name}, You WON!\n"
                 f"Your Winner Code: `{code}`\n\n"
                 f"📢 You’ll be featured in {PUBLIC_CHANNEL}",
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=main_menu_keyboard()
             )
+
+        else:
+            # Losing outcome: show a random final reel
+            final_reel = " | ".join(random.choices(SLOT_SYMBOLS, k=3))
+            await msg.edit_text(
+                f"{final_reel}\n\n🙁 Not a win this time. Try again!",
+                reply_markup=main_menu_keyboard()
+            )
+
+
     except Exception as e:
         logger.exception("Error during play: %s", e)
-        await answer_target.reply_text("⚠️ An error occurred. Please try again later.")
+        try:
+            if msg:
+                await msg.edit_text("⚠️ An error occurred. Please try again later.")
+            else:
+                await answer_target.reply_text("⚠️ An error occurred. Please try again later.")
+        except Exception:
+            pass  # avoid raising inside error handler
 
-    finally:
-         db.close()
-    # Announce in public channel
-    try:
-        await context.bot.send_message(
-            chat_id=PUBLIC_CHANNEL,
-            text=f"🎊 Winner Alert! @{user.username or uid} just won an iPhone 16 Pro Max! Code: {code}"
-        )
-    except Exception:
-        logger.exception("Failed to announce winner in public channel.")
-    else:
-        # Random losing reel
-        final_reel = " | ".join(random.choices(SLOT_SYMBOLS, k=3))
-        await msg.edit_text(
-            f"{final_reel}\n\n🙁 Not a win this time. Try again!",
-            reply_markup=main_menu_keyboard()
-        )
     finally:
         db.close()
 
+    # Announce in public channel — ONLY if winner was created
+    if code:
+        display_name = format_display_name(user)
+        try:
+            await context.bot.send_message(
+                chat_id=PUBLIC_CHANNEL,
+                text=f"🎊 Winner Alert! {display_name} just won an iPhone 16 Pro Max! Code: {code}"
+            )
+        except Exception:
+            logger.exception("Failed to announce winner in public channel.")
+
+
+
 async def stats_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if str(update.effective_user.id) != str(ADMIN_USER_ID):
+    """
+    Admin-only /stats command.
+
+    - ADMIN_USER_ID may be a single integer or comma-separated integers in the env.
+    - This function sends the stats as a private message (DM) to the admin to avoid leaking
+      information in public chats. If DM fails (e.g. admin has not started the bot),
+      it falls back to replying in the current chat.
+    """
+    # Read admin IDs from env (use the global ADMIN_USER_ID if set)
+    admin_env = ADMIN_USER_ID or os.getenv("ADMIN_USER_ID")
+    if not admin_env:
+        logger.warning("ADMIN_USER_ID not configured; rejecting /stats call.")
+        # Safe user-facing reply (do not reveal stats)
+        try:
+            if update.callback_query:
+                await update.callback_query.answer("❌ Admins not configured. This command is unavailable.", show_alert=True)
+            elif update.message:
+                await update.message.reply_text("❌ Admins not configured. This command is unavailable.")
+        except Exception:
+            logger.exception("Failed to send admin-missing reply.")
         return
 
+    # Parse admin IDs (support comma-separated list)
+    try:
+        admin_ids = [int(x.strip()) for x in admin_env.split(",") if x.strip()]
+        if not admin_ids:
+            raise ValueError("No valid admin IDs found")
+    except Exception:
+        logger.exception("Invalid ADMIN_USER_ID format. Expected integer or comma-separated integers.")
+        try:
+            if update.callback_query:
+                await update.callback_query.answer("❌ Admin configuration error. Contact the developer.", show_alert=True)
+            elif update.message:
+                await update.message.reply_text("❌ Admin configuration error. Contact the developer.")
+        except Exception:
+            logger.exception("Failed to send admin-config-error reply.")
+        return
+
+    # Identify caller
+    caller_id = update.effective_user.id if update.effective_user else None
+    if caller_id not in admin_ids:
+        logger.info("Unauthorized /stats attempt by %s", caller_id)
+        try:
+            if update.callback_query:
+                await update.callback_query.answer("❌ You are not authorized to use this command.", show_alert=True)
+            elif update.message:
+                await update.message.reply_text("❌ You are not authorized to use this command.")
+        except Exception:
+            logger.debug("Failed to send unauthorized-reply (maybe missing message object).")
+        return
+
+    # Authorized: collect stats and send privately to the admin
     db = SessionLocal()
     try:
         total_users = db.query(User).count()
-        total_tries_allocated = sum([u.tries for u in db.query(User).all()])  # small data ok
+        # For small DBs this is fine; for large DBs change to a single SUM query.
+        total_tries_allocated = sum([u.tries or 0 for u in db.query(User).all()])
         total_plays = db.query(Play).count()
         winners = db.query(Winner).count()
         counter = get_counter(db)
 
-        await update.message.reply_text(
-            f"📊 Stats:\n"
+        stats_text = (
+            f"📊 NaijaPrizeGate Stats\n\n"
             f"Users: {total_users}\n"
             f"Tries (remaining sum): {total_tries_allocated}\n"
             f"Plays: {total_plays}\n"
             f"Winners: {winners}\n"
-            f"Counter: {counter}"
+            f"Counter: {counter}\n"
         )
+
+        # Try to DM the admin (private message). This avoids leaking stats in a group chat.
+        try:
+            await context.bot.send_message(chat_id=caller_id, text=stats_text)
+            # Acknowledge in the invoking chat that the stats were sent privately
+            try:
+                if update.callback_query:
+                    await update.callback_query.answer("✅ Stats sent to your private chat.", show_alert=False)
+                elif update.message:
+                    # If invoked in a chat, gently tell the admin to check their DM
+                    await update.message.reply_text("✅ Stats sent to your private chat.")
+            except Exception:
+                # Acknowledge failure to reply inline is non-fatal
+                logger.debug("Could not send inline acknowledgement after DMing admin.")
+        except Exception:
+            # Bot could not DM (likely admin hasn't started a private chat with the bot).
+            # Fallback: reply in-place (less ideal, but ensures admin sees stats).
+            logger.exception("Failed to DM admin. Falling back to replying in chat.")
+            try:
+                if update.message:
+                    await update.message.reply_text(stats_text)
+                elif update.callback_query and update.callback_query.message:
+                    await update.callback_query.message.reply_text(stats_text)
+                else:
+                    # As a last resort, try to send directly to caller_id (may fail)
+                    await context.bot.send_message(chat_id=caller_id, text=stats_text)
+            except Exception:
+                logger.exception("Failed to deliver stats to admin.")
     finally:
         db.close()
+
+
 
 # =========================
 # FastAPI app + webhook endpoints
@@ -673,7 +1047,7 @@ async def telegram_webhook_fallback(
     return JSONResponse({"ok": True})
 
 
-# =========================
+# ========================= 
 # Flutterwave Webhook
 # =========================
 @api.post("/payment/webhook")
@@ -682,83 +1056,141 @@ async def flutterwave_webhook(
     verif_hash: str = Header(None, convert_underscores=False)
 ):
     """
-    Flutterwave will POST payment events to this endpoint.
-    We verify header `verif-hash` against FLW_SECRET_HASH,
-    then update DB and credit tries.
+    Secure Flutterwave webhook handler with strict server-side verification.
+    Steps:
+      1) Verify 'verif-hash' header matches FLW_SECRET_HASH (if set)
+      2) Parse payload; only handle charge.completed with status 'successful'
+      3) Look up our Payment row by tx_ref and ensure it exists and is not expired
+      4) Call Flutterwave verify API (requires FLW_SECRET_KEY) and confirm:
+           - API response status is success
+           - payment status is 'successful'
+           - tx_ref matches
+           - amount and currency match what we expect
+      5) Only then mark payment successful and credit tries
     """
     raw_body = await request.body()
+    header_value = (request.headers.get("verif-hash") or verif_hash or "").strip()
 
-    # Verify header
-    header_value = request.headers.get("verif-hash") or verif_hash
+    # 1) Verify webhook header (if configured)
     if FLW_SECRET_HASH:
         if not header_value:
             logger.warning("No verif-hash header present in webhook.")
             raise HTTPException(status_code=403, detail="Missing signature header")
-        if header_value != FLW_SECRET_HASH:
+        if not hmac.compare_digest(header_value, FLW_SECRET_HASH):
             logger.warning("Invalid verif-hash in webhook. Provided: %s", header_value)
             raise HTTPException(status_code=403, detail="Invalid webhook signature")
     else:
         logger.warning("FLW_SECRET_HASH not set; skipping webhook header verification (NOT recommended).")
 
-    # Parse JSON payload
+    # 2) Parse JSON payload
     try:
         payload = await request.json()
-    except Exception:
-        logger.exception("Failed to parse webhook JSON. Body: %s", raw_body.decode("utf-8", errors="ignore"))
-        raise HTTPException(status_code=400, detail="Invalid JSON")
+    except Exception as e:
+        logger.error("❌ Failed to parse webhook JSON. Body=%s Error=%s",
+                     raw_body.decode("utf-8", errors="ignore"), str(e))
+        return JSONResponse({"ok": False, "reason": "invalid_json"}, status_code=400)
 
     event = payload.get("event")
     data = payload.get("data", {}) or {}
 
-    # Only care about completed charges
+    # Only handle completed successful charges
     if event == "charge.completed" and data.get("status") == "successful":
-        tx_ref = data.get("tx_ref")
+        tx_ref = data.get("tx_ref") or data.get("txref")
+        transaction_id = data.get("id") or data.get("transaction_id")
+
         if not tx_ref:
             logger.warning("Webhook with successful charge missing tx_ref: %s", data)
             return JSONResponse({"ok": False, "reason": "missing_tx_ref"}, status_code=200)
 
-        # Optional: verify payment via Flutterwave API
-        verify_ok = True
-        if FLW_SECRET_KEY:
-            try:
-                transaction_id = data.get("id")
-                if transaction_id:
-                    verify_url = f"https://api.flutterwave.com/v3/transactions/{transaction_id}/verify"
-                    async with httpx.AsyncClient(timeout=15.0) as client:
-                        resp = await client.get(
-                            verify_url,
-                            headers={"Authorization": f"Bearer {FLW_SECRET_KEY}"}
-                        )
-                        verify_data = resp.json()
-                        verify_status = verify_data.get("data", {}).get("status")
-                        if verify_status != "successful":
-                            logger.warning("Flutterwave verify API disagrees: %s", verify_data)
-                            verify_ok = False
-            except Exception:
-                logger.exception("Error calling Flutterwave verify API")
-                verify_ok = False
-        else:
-            logger.warning("FLW_SECRET_KEY not set — skipping API verify step")
+        # We require the FLW API key to perform server-side verification
+        if not FLW_SECRET_KEY:
+            logger.error("FLW_SECRET_KEY not set — cannot verify transaction via API. Aborting credit.")
+            return JSONResponse({"ok": False, "reason": "no_api_key"}, status_code=200)
 
-        if not verify_ok:
-            logger.warning("Payment verification failed for tx_ref=%s", tx_ref)
-            return JSONResponse({"ok": False, "reason": "verify_failed"}, status_code=200)
+        if not transaction_id:
+            logger.warning("No transaction id in webhook payload; cannot verify via API. Payload: %s", data)
+            return JSONResponse({"ok": False, "reason": "missing_transaction_id"}, status_code=200)
 
-        # Update DB and credit tries
         db = SessionLocal()
         try:
+            # Find matching payment row
             payment = db.query(Payment).filter(Payment.tx_ref == tx_ref).one_or_none()
             if not payment:
                 logger.warning("No payment row found for tx_ref=%s", tx_ref)
                 return JSONResponse({"ok": False, "reason": "no_payment_record"}, status_code=200)
 
+            # Reject if already processed
             if payment.status == "successful":
                 logger.info("Payment already processed tx_ref=%s", tx_ref)
-                return JSONResponse({"ok": True})
+                return JSONResponse({"ok": True}, status_code=200)
 
-            # Mark successful + credit tries
+            # Reject expired payment links
+            if payment.expires_at and datetime.utcnow() > payment.expires_at:
+                logger.info("Payment link expired for tx_ref=%s (expires_at=%s)", tx_ref, payment.expires_at)
+                payment.status = "expired"
+                db.merge(payment)
+                db.commit()
+                return JSONResponse({"ok": False, "reason": "payment_expired"}, status_code=200)
+
+            # Call Flutterwave verify API
+            verify_ok = False
+            verify_data = {}
+            try:
+                verify_url = f"https://api.flutterwave.com/v3/transactions/{transaction_id}/verify"
+                async with httpx.AsyncClient(timeout=15.0) as client:
+                    resp = await client.get(
+                        verify_url,
+                        headers={"Authorization": f"Bearer {FLW_SECRET_KEY}"}
+                    )
+                    # (1): log HTTP status if not 200
+                    if resp.status_code != 200:
+                        logger.warning("Verify API returned HTTP %s for tx_ref=%s, body=%s",
+                                       resp.status_code, tx_ref, resp.text)    
+                    
+                    verify_data = resp.json()
+                    status_ok = verify_data.get("status") == "success"
+                    tx_status = verify_data.get("data", {}).get("status")
+                    verify_tx_ref = verify_data.get("data", {}).get("tx_ref") or verify_data.get("data", {}).get("txref")
+                    verify_amount_raw = verify_data.get("data", {}).get("amount")
+                    verify_currency = verify_data.get("data", {}).get("currency")
+
+                    # normalize amount to integer Naira when possible
+                    try:
+                        verify_amount_int = int(float(verify_amount_raw)) if verify_amount_raw is not None else None
+                    except Exception:
+                        verify_amount_int = None
+
+                    # Strict checks: API agrees it's successful, tx_ref matches, amount matches, currency is NGN (if provided)
+                    if (
+                        status_ok
+                        and tx_status == "successful"
+                        and verify_tx_ref == tx_ref
+                        and verify_amount_int == payment.amount
+                        and (verify_currency is None or str(verify_currency).upper() == "NGN")
+                    ):
+                        verify_ok = True
+                    else:
+                        logger.warning("Flutterwave verify mismatch for tx_ref=%s: %s", tx_ref, verify_data)
+
+            except Exception:
+                logger.exception("Error calling Flutterwave verify API")
+                verify_ok = False
+
+            if not verify_ok:
+                logger.warning("Payment verification failed for tx_ref=%s", tx_ref)
+                return JSONResponse({"ok": False, "reason": "verify_failed"}, status_code=200)
+
+            # All checks passed -> mark payment successful and credit tries
+            # <-- change here (3a): add replay protection
+            if payment.fw_transaction_id and payment.fw_transaction_id != transaction_id:
+                logger.warning("Replay attack? tx_ref=%s already linked to fw_txn_id=%s, got different id=%s",
+                               tx_ref, payment.fw_transaction_id, transaction_id)
+                return JSONResponse({"ok": False, "reason": "txn_id_mismatch"}, status_code=200)
+
             payment.status = "successful"
+            payment.fw_transaction_id = transaction_id  # <-- change here (3b): save verified FW transaction ID
             db.merge(payment)
+            
 
             user = db.query(User).filter(User.tg_id == payment.tg_id).one_or_none()
             if not user:
@@ -772,11 +1204,12 @@ async def flutterwave_webhook(
             db.commit()
 
             logger.info(
-                "✅ Payment confirmed and tries credited: tx_ref=%s, tg_id=%s, tries=%s",
-                tx_ref, payment.tg_id, payment.tries
+                # <-- change here (4): log tx_ref + fw txn id
+                "✅ Payment confirmed and tries credited: tx_ref=%s, fw_txn_id=%s, tg_id=%s, tries=%s",
+                tx_ref, transaction_id, payment.tg_id, payment.tries
             )
 
-            # Notify user via Telegram
+            # Notify user via Telegram (best-effort)
             try:
                 if app_telegram:
                     await app_telegram.bot.send_message(
@@ -796,10 +1229,8 @@ async def flutterwave_webhook(
         finally:
             db.close()
 
-        return JSONResponse({"ok": True})
-
-    # Default: ignore other events
-    return JSONResponse({"status": "received", "event": event})
+    # Always return 200 so Flutterwave doesn’t retry endlessly
+    return JSONResponse({"ok": True})
 
 
 # =========================
@@ -812,7 +1243,7 @@ async def verify_payment(request: Request):
     Accepts GET or POST from Flutterwave, extracts tx_ref, optionally verifies,
     updates DB, and shows a friendly HTML page.
     """
-    # 1) Extract tx_ref from query or body
+    # 1) Extract tx_ref
     tx_ref = (
         request.query_params.get("tx_ref")
         or request.query_params.get("txref")
@@ -849,7 +1280,7 @@ async def verify_payment(request: Request):
             pass
         return HTMLResponse(html, status_code=400)
 
-    # 2) Try to verify with Flutterwave
+    # 2) Verify with Flutterwave if possible
     verified = False
     verify_details = {}
     if FLW_SECRET_KEY:
@@ -875,47 +1306,97 @@ async def verify_payment(request: Request):
     db = SessionLocal()
     try:
         payment = db.query(Payment).filter(Payment.tx_ref == tx_ref).one_or_none()
-        if payment and payment.status != "successful" and verified:
-            payment.status = "successful"
+        if not payment:
+            logger.warning("No payment row found for tx_ref=%s", tx_ref)
+            return JSONResponse({"ok": False, "reason": "no_payment_record"}, status_code=200)
+
+        # 🕒 Expiry check first
+        if payment.expires_at and datetime.utcnow() > payment.expires_at:
+            logger.warning("Redirect verify: payment expired for tx_ref=%s (expires_at=%s)", tx_ref, payment.expires_at)
+            payment.status = "expired"
             db.merge(payment)
-
-            user = db.query(User).filter(User.tg_id == payment.tg_id).one_or_none()
-            if not user:
-                user = User(tg_id=payment.tg_id, username="")
-                db.add(user)
-                db.commit()
-                db.refresh(user)
-
-            user.tries = (user.tries or 0) + (payment.tries or 0)
-            db.merge(user)
             db.commit()
+            return JSONResponse({"ok": False, "reason": "payment_expired"}, status_code=200)
 
-            logger.info(
-                "✅ Redirect verification credited tries: tx_ref=%s tg_id=%s tries=%s",
-                tx_ref, payment.tg_id, payment.tries
+        # --- VALIDATION: only accept amounts defined in PACKAGES ---
+        allowed_amounts = {p["amount"] for p in PACKAGES.values()}
+        if payment.amount not in allowed_amounts:
+            logger.warning(
+                "Invalid package amount for tx_ref=%s: %s not in allowed %s",
+                tx_ref, payment.amount, allowed_amounts
             )
+            payment.status = "failed"
+            db.merge(payment)
+            db.commit()
+            return JSONResponse({"ok": False, "reason": "invalid_package_amount"}, status_code=200)
 
-        elif payment and payment.status == "successful":
-            logger.info("Redirect verify: payment already marked successful: tx_ref=%s", tx_ref)
+        # Additional defence: verify Flutterwave amount & currency matches our DB row
+        try:
+            fw_amount_raw = verify_data.get("data", {}).get("amount")
+            fw_currency = verify_data.get("data", {}).get("currency") or verify_data.get("data", {}).get("currency_code")
+            fw_amount = None
+            if fw_amount_raw is not None:
+                fw_amount = int(float(fw_amount_raw))
+            if fw_amount is None or fw_amount != int(payment.amount) or (fw_currency and fw_currency.upper() != "NGN"):
+                logger.warning(
+                    "Flutterwave amount/currency mismatch for tx_ref=%s: fw=%s %s, db=%s",
+                    tx_ref, fw_amount_raw, fw_currency, payment.amount
+                )
+                payment.status = "failed"
+                db.merge(payment)
+                db.commit()
+                return JSONResponse({"ok": False, "reason": "amount_mismatch"}, status_code=200)
+        except Exception:
+            logger.exception("Error validating Flutterwave amount for tx_ref=%s", tx_ref)
+            payment.status = "failed"
+            db.merge(payment)
+            db.commit()
+            return JSONResponse({"ok": False, "reason": "amount_validation_error"}, status_code=200)
+
+        if payment.status == "successful":
+            logger.info("Payment already processed tx_ref=%s", tx_ref)
+            return JSONResponse({"ok": True})
+
+        # ✅ Mark successful + credit tries
+        payment.status = "successful"
+        db.merge(payment)
+
+        user = db.query(User).filter(User.tg_id == payment.tg_id).one_or_none()
+        if not user:
+            user = User(tg_id=payment.tg_id, username="")
+            db.add(user)
+            db.commit()
+            db.refresh(user)
+
+        user.tries = (user.tries or 0) + (payment.tries or 0)
+        db.merge(user)
+        db.commit()
+
+        logger.info(
+            "✅ Redirect verification credited tries: tx_ref=%s, tg_id=%s, tries=%s",
+            tx_ref, payment.tg_id, payment.tries
+        )
+
+        # Notify user via Telegram
+        try:
+            if app_telegram:
+                await app_telegram.bot.send_message(
+                    chat_id=payment.tg_id,
+                    text=(
+                        f"✅ Payment confirmed! {payment.tries} "
+                        f"{'try' if payment.tries == 1 else 'tries'} "
+                        "have been credited to your account.\n\n"
+                        "Press *Try Luck* 🎰 to play now."
+                    ),
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=main_menu_keyboard()
+                )
+        except Exception:
+            logger.exception("Failed to notify user (tries still saved in DB).")
 
     finally:
         db.close()
 
-    # 4) Show friendly HTML page to user
-    html = "<h3>Payment processed — thank you!</h3>"
-    html += f"<p>Transaction reference: <strong>{tx_ref}</strong></p>"
-    if verified:
-        html += "<p>✅ Your tries should be credited shortly. Return to Telegram and press <strong>Try Luck</strong>.</p>"
-    else:
-        html += (
-            "<p>⚠️ We couldn't confirm the payment automatically. "
-            "If your tries are not credited in a few minutes, please return to Telegram and try again or contact support.</p>"
-        )
-
-    # Optional debugging:
-    # html += f"<pre>{verify_details}</pre>"
-
-    return HTMLResponse(html)
 
 # =========================
 # Bootstrapping bot (startup/shutdown)
@@ -942,12 +1423,18 @@ async def on_startup():
     app_telegram.add_handler(CommandHandler("stats", stats_cmd))
     app_telegram.add_handler(CommandHandler("stat", stats_cmd))  # alias
 
+    # Admin-only command to force-reset the try counter (register it here)
+    app_telegram.add_handler(CommandHandler("resetcounter", reset_counter_cmd))
+    
     # Callback queries
     app_telegram.add_handler(CallbackQueryHandler(callback_query_handler))
 
     # Text handler
     app_telegram.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, text_handler))
 
+    # Ensure try_counter is initialized (prevents accidental low resets)
+    ensure_counter_initialized()
+    
     # Initialize & start the bot
     await app_telegram.initialize()
     await app_telegram.start()
