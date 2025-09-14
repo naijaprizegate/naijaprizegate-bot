@@ -1,31 +1,65 @@
-# Python cache
+# ==========================================
+# Python cache & bytecode
+# ==========================================
 __pycache__/
 *.py[cod]
 *$py.class
 
+# ==========================================
 # Virtual environments
+# ==========================================
 .venv/
 venv/
 env/
 ENV/
 
+# ==========================================
 # Environment variables / secrets
+# (Never commit API keys, tokens, or DB URLs)
+# ==========================================
 .env
 *.env
 
-# Local SQLite databases (we use Postgres in production)
+# ==========================================
+# Databases
+# (We use Postgres in production, ignore local files)
+# ==========================================
 db.sqlite3
 *.db
 
+# ==========================================
 # Logs
+# ==========================================
 *.log
 
+# ==========================================
+# Build & packaging artifacts
+# ==========================================
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+*.whl
+
+# ==========================================
+# Test / Coverage
+# ==========================================
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# ==========================================
 # IDE / Editor settings
+# ==========================================
 .vscode/
 .idea/
 *.swp
 *.swo
 
+# ==========================================
 # OS-specific files
+# ==========================================
 .DS_Store
 Thumbs.db
