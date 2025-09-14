@@ -1,7 +1,7 @@
 fastapi
 uvicorn[standard]
 httpx
-python-telegram-bot[ext]
+python-telegram-bot[webhooks]
 sqlalchemy
 psycopg2-binary
 python-dotenv
