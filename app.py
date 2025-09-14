@@ -1053,7 +1053,6 @@ async def telegram_webhook_fallback(
 
     return JSONResponse({"ok": True})
 
-
 # ========================= 
 # Flutterwave Webhook
 # =========================
@@ -1445,10 +1444,6 @@ async def on_startup():
     # Ensure try_counter is initialized (prevents accidental low resets)
     ensure_counter_initialized()
     
-    # Initialize & start the bot
-    await app_telegram.initialize()
-    await app_telegram.start()
-
     # 🚀 Build secure webhook URL with secret
     secret = os.getenv("WEBHOOK_SECRET")
     if not secret:
@@ -1458,16 +1453,40 @@ async def on_startup():
     if not webhook_url.startswith("https://"):
         raise RuntimeError(f"Invalid webhook URL: {webhook_url}")
 
-    await app_telegram.bot.set_webhook(webhook_url)
-    logger.info(f"✅ Telegram bot started (webhook set to {webhook_url}).")
+    #  ✅ Instead, run bot startup in background so FastAPI won't crash if Telegram is slow
+    async def init_bot():
+        try:
+            await app_telegram.initialize()
+            await app_telegram.start()
 
+            secret = os.getenv("WEBHOOK_SECRET")
+            if not secret:
+                raise RuntimeError("WEBHOOK_SECRET not set!")
 
+            webhook_url = f"{BASE_URL}/telegram/webhook/{secret}"
+            if not webhook_url.startswith("https://"):
+                raise RuntimeError(f"Invalid webhook URL: {webhook_url}")
+
+            await app_telegram.bot.set_webhook(webhook_url, drop_pending_updates=True)
+            logger.info(f"✅ Telegram bot started (webhook set to {webhook_url}).")
+        except Exception as e:
+            logger.warning(f"⚠️ Bot init failed in background: {e}")
+
+    # 👇 This makes it run in the background after FastAPI starts
+    import asyncio
+    asyncio.create_task(init_bot())  
+# =========================
+# Shutdown (cleanup)
+# =========================
 async def on_shutdown():
     global app_telegram
     if app_telegram:
-        await app_telegram.shutdown()
-        await app_telegram.stop()
-        logger.info("🛑 Telegram bot stopped.")
+        try:
+            await app_telegram.stop()
+            await app_telegram.shutdown()
+            logger.info("🛑 Telegram bot stopped cleanly.")
+        except Exception as e:
+            logger.warning(f"⚠️ Error while shutting down bot: {e}")
 
 
 # Register lifecycle hooks with FastAPI
@@ -1475,25 +1494,14 @@ api.add_event_handler("startup", on_startup)
 api.add_event_handler("shutdown", on_shutdown)
 
 # =========================
-# Run Bot + API together
+# Run API server only
 # =========================
 if __name__ == "__main__":
-    import asyncio
     import uvicorn
-
-    async def main():
-        # 1) Start Telegram bot in background (if configured)
-        if app_telegram:
-            asyncio.create_task(app_telegram.run_polling())
-
-        # 2) Start FastAPI server (for webhook + admin API)
-        config = uvicorn.Config(
-            "app:api",
-            host="0.0.0.0",
-            port=int(os.getenv("PORT", 8000)),
-            log_level="info"
+    uvicorn.run(
+        "app:api",
+        host="0.0.0.0",
+        port=int(os.getenv("PORT", 8000)),
+        log_level="info"
         )
-        server = uvicorn.Server(config)
-        await server.serve()
-
-    asyncio.run(main())
+        
