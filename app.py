@@ -1463,11 +1463,15 @@ async def on_startup():
                 raise RuntimeError("WEBHOOK_SECRET not set!")
 
             webhook_url = f"{BASE_URL}/telegram/webhook/{secret}"
-            if not webhook_url.startswith("https://"):
-                raise RuntimeError(f"Invalid webhook URL: {webhook_url}")
-
-            await app_telegram.bot.set_webhook(webhook_url, drop_pending_updates=True)
-            logger.info(f"✅ Telegram bot started (webhook set to {webhook_url}).")
+            
+            # 🔹 Check current webhook first
+            current = await app_telegram.bot.get_webhook_info()
+            if current.url != webhook_url:
+                await app_telegram.bot.set_webhook(webhook_url, drop_pending_updates=True)
+                logger.info(f"✅ Telegram bot started (webhook set to {webhook_url}).")
+            else:
+                logger.info(f"ℹ️ Webhook already set to {webhook_url}, skipping reset.")
+        
         except Exception as e:
             logger.warning(f"⚠️ Bot init failed in background: {e}")
 
