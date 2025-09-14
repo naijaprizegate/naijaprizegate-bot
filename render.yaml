@@ -3,7 +3,7 @@ services:
     name: naijaprizegate-bot
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn app:api --host 0.0.0.0 --port $PORT
+    startCommand: uvicorn app:api --host 0.0.0.0 --port $PORT --log-level info
     plan: free
     envVars:
       - key: BOT_TOKEN
@@ -18,7 +18,7 @@ services:
         sync: false
       - key: FLW_SECRET_HASH
         sync: false
-      - key: TG_WEBHOOK_SECRET
+      - key: WEBHOOK_SECRET    # 🔑 changed from TG_WEBHOOK_SECRET
         value: "my-secret"
       - key: PAY_REDIRECT_URL
         value: "https://naijaprizegate-bot.onrender.com/payment/verify"
