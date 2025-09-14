@@ -1,5 +1,5 @@
 # app.py - NaijaPrizeGate (improved, full version)
-# ===================================================================
+# ====================================================================
 import os
 import re
 import uuid
@@ -1457,7 +1457,6 @@ async def on_startup():
     async def init_bot():
         try:
             await app_telegram.initialize()
-            await app_telegram.start()
 
             secret = os.getenv("WEBHOOK_SECRET")
             if not secret:
