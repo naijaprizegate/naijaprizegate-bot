@@ -20,6 +20,11 @@ from fastapi.responses import JSONResponse, HTMLResponse
 # initialize FastAPI
 api = FastAPI()
 
+# 👇 Add this root route (right after creating the FastAPI app)
+@api.get("/")
+async def root():
+    return {"status": "ok", "message": "NaijaPrizeGate bot is running 🚀"}
+
 # -----------------------------
 # Webhook configuration
 # -----------------------------
