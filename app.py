@@ -383,9 +383,13 @@ app_telegram: Optional[Application] = None
 
 WELCOME_TEXT = (
    "🎉 Welcome to *NaijaPrizeGate!*\n\n"
+   "We are running the *iPhone 16 Pro Max Lucky Draw Campaign* 📱✨\n\n"
+   "✅ Each try costs just ₦500\n"
    "Buy tries and stand a chance to win an iPhone 16 Pro Max!\n\n"
+   "👇 Use the buttons below to buy tries, check your balance, or play:"
    "👉 Tap *Pay Now* to pick a package and get a payment link.\n"
    "👉 After payment is confirmed, tap *Try Luck* to play.\n\n"
+   "💡 Stay tuned to see real winners and unboxing videos!\n\n"
    "Good luck! 🍀"
 )
 
@@ -486,7 +490,15 @@ async def start_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
            db.merge(u)
            db.commit()
        else:
-           await update.message.reply_text("Welcome back! Use the buttons below:", reply_markup=main_menu_keyboard())
+           await update.message.reply_text(
+               "👋 Welcome back!\n\n"
+               "🎁 Reminder: This is the *NaijaPrizeGate iPhone 16 Pro Max Lucky Draw Campaign*.\n\n"
+               "Each try costs ₦500. One lucky winner gets the iPhone 16 Pro Max.\n\n"
+               "👇 Use the buttons below to continue:",
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=main_menu_keyboard()
+        )
+               
    finally:
        db.close()
 
