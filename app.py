@@ -570,10 +570,27 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
         try:
             u = db.query(User).filter(User.tg_id == user.id).one_or_none()
             tries = u.tries if u else 0
-            await query.edit_message_text(
-                f"You have *{tries}* tries remaining. You can buy more tries using Pay Now 💳",
-                parse_mode=ParseMode.MARKDOWN
-            )
+
+            # 👇 CHANGE this whole block to improve the UX
+            if tries <= 0:
+                # Case 1: No tries left → show packages directly
+                await query.edit_message_text(
+                    "😔 You have *no tries left*.\n\n"
+                    "👉 Please buy tries using the button below:",
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=packages_keyboard()   # show payment packages inline
+                )
+            else:
+                # Case 2: User still has tries → show balance + quick buy/back buttons
+                await query.edit_message_text(
+                    f"🎟 You currently have *{tries} tries* left!\n\n"
+                    "💳 Need more? Tap below to buy more tries:",
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup([
+                        [InlineKeyboardButton("💳 Buy More Tries", callback_data="pay:start")],
+                        [InlineKeyboardButton("⬅️ Back to Menu", callback_data="pay:back")]
+                    ])
+                )
         finally:
             db.close()
         return
