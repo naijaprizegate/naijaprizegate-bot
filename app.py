@@ -571,7 +571,7 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
             u = db.query(User).filter(User.tg_id == user.id).one_or_none()
             tries = u.tries if u else 0
             await query.edit_message_text(
-                f"You have *{tries}* tries remaining.",
+                f"You have *{tries}* tries remaining. You can buy more tries using Pay Now 💳",
                 parse_mode=ParseMode.MARKDOWN
             )
         finally:
