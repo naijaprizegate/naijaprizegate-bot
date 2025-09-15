@@ -98,7 +98,7 @@ WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", 14600))
 FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")  # webhook verification secret from Flutterwave
 FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")    # Flutterwave secret key (for API)
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./db.sqlite3")
-WEBHOOK_SECRET = os.getenv("TG_WEBHOOK_SECRET", "my-secret")
+WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET", "my-secret")
 PAY_REDIRECT_URL = os.getenv("PAY_REDIRECT_URL", "https://yourdomain.com/payment/verify")
 PAYMENT_EXPIRE_HOURS = int(os.getenv("PAYMENT_EXPIRE_HOURS", "2"))  # payment link lifetime (hours)
 
