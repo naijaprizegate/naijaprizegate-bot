@@ -77,7 +77,7 @@ def is_telegram_ip(ip: str) -> bool:
         return False
     return False
 
-SLOT_SYMBOLS = ["🍒", "🍋", "🍊", "🍉", "🍇", "⭐", "🍀", "💎"]
+SLOT_SYMBOLS = ["📱", "🍏", "⌚", "🎧", "1️⃣", "2️⃣", "3️⃣", "7️⃣", "⭐", "🍀", "💎"]
 
 # =========================
 # Logging
@@ -561,10 +561,33 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
         return
 
     if data == "tryluck:start":
-        # call tryluck logic using same context
-        await tryluck_cmd(update, context)
-        return
+        db = SessionLocal()
+        try:
+            u = db.query(User).filter(User.tg_id == user.id).one_or_none()
+            tries = u.tries if u else 0
 
+            if tries <= 0:
+                # ❌ User has no tries → show Pay Now + Back to Menu buttons
+                back_kb = InlineKeyboardMarkup([
+                    [InlineKeyboardButton("💳 Pay Now", callback_data="pay:start")],
+                    [InlineKeyboardButton("⬅️ Back to Menu", callback_data="pay:back")]
+                ])
+
+                await query.edit_message_text(
+                    "😔 You don’t have any tries left!\n\n"
+                    "👉 Please buy tries to continue.\n\n"
+                    "🎁 Remember: The more tries you play, the higher your chances of winning the *iPhone 16 Pro Max*! 🚀",
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=back_kb
+                )
+            else:
+                # ✅ User has tries → proceed with tryluck as before
+                await tryluck_cmd(update, context)
+
+        finally:
+            db.close()
+        return
+        
     if data == "mytries":
         db = SessionLocal()
         try:
@@ -576,7 +599,8 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
                 # Case 1: No tries left → show packages directly
                 await query.edit_message_text(
                     "😔 You have *no tries left*.\n\n"
-                    "👉 Please buy tries using the button below:",
+                    "👉 Please buy tries using the button below.\n\n"
+                    "🎁 Remember: The more tries you play, the higher your chances of winning the *iPhone 16 Pro Max*! 🚀",
                     parse_mode=ParseMode.MARKDOWN,
                     reply_markup=packages_keyboard()   # show payment packages inline
                 )
@@ -775,7 +799,11 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         u = db.query(User).filter(User.tg_id == uid).one_or_none()
         if not u or (u.tries or 0) <= 0:
             await answer_target.reply_text(
-                "⚠️ You have no tries left. Please buy tries using Pay Now 💳"
+                "😔 You don’t have any tries left!\n\n"
+                "👉 Please buy tries to continue.\n\n"
+                "🎁 Remember: The more tries you play, the higher your chances of winning the *iPhone 16 Pro Max*! 🚀",
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=main_menu_keyboard()
             )
             return
 
@@ -876,7 +904,10 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             # Losing outcome: show a random final reel
             final_reel = " | ".join(random.choices(SLOT_SYMBOLS, k=3))
             await msg.edit_text(
-                f"{final_reel}\n\n🙁 Not a win this time. Try again!",
+                f"{final_reel}\n\n🙁 Not a win this time.\n\n"
+                "👉 Remember: *The more you try, the higher your chances of winning the iPhone 16 Pro Max!* 📱\n\n"
+                "Use the buttons below to play again or buy more tries 👇",
+                parse_mode=ParseMode.MARKDOWN,
                 reply_markup=main_menu_keyboard()
             )
 
