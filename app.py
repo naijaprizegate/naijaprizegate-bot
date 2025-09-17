@@ -134,6 +134,7 @@ class User(Base):
    username = Column(String(255))
    first_seen = Column(DateTime, default=datetime.utcnow)
    tries = Column(Integer, default=0)       # how many tries user currently has
+   bonus_tries = Column(Integer, default=0) # <-- NEW: separate count for bonus (free) tries
    welcomed = Column(Boolean, default=False)
   # referral_code = Column(String(64), nullable=True)  # optional for future referral feature
 
@@ -157,6 +158,15 @@ class Play(Base):
    tg_id = Column(BigInteger, index=True, nullable=False)
    ts = Column(DateTime, default=datetime.utcnow)
    result = Column(String(16), default="lose")
+
+class Proof(Base):
+    __tablename__ = "proofs"
+
+    id = Column(Integer, primary_key=True)
+    tg_id = Column(BigInteger, index=True, nullable=False)   # Telegram user id who submitted proof
+    file_id = Column(String, nullable=False)                  # Telegram file_id of the photo
+    status = Column(String(32), default="pending")            # pending / approved / rejected
+    created_at = Column(DateTime, default=datetime.utcnow)
 
 class Meta(Base):
    __tablename__ = "meta"
@@ -399,7 +409,8 @@ def main_menu_keyboard():
        [InlineKeyboardButton("💳 Pay Now", callback_data="pay:start")],
        [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck:start")],
        [InlineKeyboardButton("📊 My Tries", callback_data="mytries")]
-   ])
+       [InlineKeyboardButton("🎁 Get Free Tries", callback_data="free_tries")]
+    ])
 
 def packages_keyboard():
    # show package buttons with amounts
@@ -618,6 +629,25 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
         finally:
             db.close()
         return
+    
+    if data == "free_tries":
+        # Show instructions + ask user to send screenshot proof
+        await query.edit_message_text(
+            "🎁 *Get Free Tries!*\n\n"
+            "Follow these steps to earn free tries:\n"
+            "1️⃣ Follow us on Facebook\n"
+            "2️⃣ Follow us on Instagram\n"
+            "3️⃣ Follow us on TikTok\n"
+            "4️⃣ Subscribe on YouTube\n"
+            "5️⃣ Refer your friends to join\n\n"
+            "📸 After following, send us a screenshot here.\n"
+            "✅ Once verified, we’ll credit your free tries!",
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("⬅️ Back to Menu", callback_data="pay:back")]
+            ])
+        )
+        return
 
     # Unhandled callback
     await query.edit_message_text("Unknown action. Use /start to show the menu.")
@@ -797,7 +827,9 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         # Find user
         u = db.query(User).filter(User.tg_id == uid).one_or_none()
-        if not u or (u.tries or 0) <= 0:
+        
+        # >>> CHANGE HERE: Check both paid and bonus tries <<<
+        if not u or ((u.tries or 0) <= 0 and (u.bonus_tries or 0) <= 0):
             await answer_target.reply_text(
                 "😔 You don’t have any tries left!\n\n"
                 "👉 Please buy tries to continue.\n\n"
@@ -807,22 +839,40 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
             return
 
-        # Consume a try and record the play as a 'lose' by default
-        u.tries = (u.tries or 0) - 1
-        play = Play(tg_id=uid, result="lose")
-        db.add(play)
-        db.merge(u)
-        db.commit()
+        #  >>> CHANGE HERE: Decide whether we consume a paid or bonus try <<<
+        used_bonus = False
+        if (u.tries or 0) > 0:
+            # Paid try → reduce tries and increment global counter
+            u.tries -= 1
+            play = Play(tg_id=uid, result="lose")
+            db.add(play)
+            db.merge(u)
+            db.commit()
 
-        # refresh objects if you plan to use them further
-        try:
-            db.refresh(u)
-        except Exception:
-            pass  # ignore refresh errors on simple setups
+            try:
+                db.refresh(u)
+            except Exception:
+                pass
 
-        # Increment global counter (stored in Meta table)
-        counter = increment_counter(db)
-        logger.info(f"User {uid} played. Counter={counter}, remaining_tries={u.tries}")
+            counter = increment_counter(db)   # Only for paid tries
+            logger.info(f"User {uid} played PAID try. Counter={counter}, remaining_tries={u.tries}")
+
+        else:
+            # Bonus try → reduce bonus_tries, DO NOT increment counter
+            u.bonus_tries -= 1
+            play = Play(tg_id=uid, result="lose")  # You can add a 'bonus' column to Play if you want
+            db.add(play)
+            db.merge(u)
+            db.commit()
+
+            try:
+                db.refresh(u)
+            except Exception:
+                pass  
+
+            used_bonus = True
+            counter = None  # no counter increment
+            logger.info(f"User {uid} played BONUS try. Remaining_bonus={u.bonus_tries}")
 
         # Initial spinning message
         msg = await answer_target.reply_text("🎰 Spinning...")
@@ -850,7 +900,7 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await asyncio.sleep(delay)
 
         # Determine win
-        is_win = (counter % WIN_THRESHOLD == 0)
+        is_win = (not used_bonus) and (counter is not None) and (counter % WIN_THRESHOLD == 0)
 
         if is_win:
             try:
@@ -1039,7 +1089,30 @@ async def stats_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     finally:
         db.close()
 
+# -----------------------------
+# Photo handler for proof uploads
+# -----------------------------
+async def handle_proof_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_id = update.effective_user.id
 
+    if not update.message.photo:
+        return await update.message.reply_text("❌ Please send a valid screenshot/photo.")
+
+    # Get the largest available photo file
+    photo = update.message.photo[-1]
+    file_id = photo.file_id
+
+    # Save to DB as pending proof
+    session = sessionmaker(bind=engine)()
+    proof = Proof(user_id=user_id, file_id=file_id, status="pending")
+    session.add(proof)
+    session.commit()
+    session.close()
+
+    await update.message.reply_text(
+        "✅ Screenshot received! Admin will review it shortly.\n"
+        "If approved, you’ll get free tries 🎉"
+    )
 
 # =========================
 # FastAPI app + webhook endpoints
@@ -1507,6 +1580,8 @@ async def on_startup():
     
     # Text handler
     app_telegram.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, text_handler))
+
+    app_telegram.add_handler(MessageHandler(filters.PHOTO, handle_proof_photo))
 
     # Ensure try_counter is initialized (prevents accidental low resets)
     ensure_counter_initialized()
