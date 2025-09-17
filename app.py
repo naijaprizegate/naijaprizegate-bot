@@ -48,6 +48,17 @@ from telegram.ext import (
    MessageHandler, filters, CallbackQueryHandler
 )
 
+# ---------- Your error handler ----------
+async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
+    # Print the exception in console
+    print(f"Exception while handling an update: {context.error}")
+
+    # Optionally, send a friendly message to the user
+    if update and isinstance(update, Update) and update.effective_message:
+        await update.effective_message.reply_text(
+            "Oops! Something went wrong. Please try again later."
+        )
+
  # 👇 add this pattern (matches hello, hi, hey, good morning, etc.)
 greeting_pattern = r'(?i)^(hello|hi|hey|good\s*morning|good\s*afternoon|good\s*evening)$'
 
@@ -408,7 +419,7 @@ def main_menu_keyboard():
    return InlineKeyboardMarkup([
        [InlineKeyboardButton("💳 Pay Now", callback_data="pay:start")],
        [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck:start")],
-       [InlineKeyboardButton("📊 My Tries", callback_data="mytries")]
+       [InlineKeyboardButton("📊 My Tries", callback_data="mytries")],
        [InlineKeyboardButton("🎁 Get Free Tries", callback_data="free_tries")]
     ])
 
@@ -1583,6 +1594,9 @@ async def on_startup():
 
     app_telegram.add_handler(MessageHandler(filters.PHOTO, handle_proof_photo))
 
+    # Add the global error handler
+    app_telegram.add_error_handler(error_handler)
+    
     # Ensure try_counter is initialized (prevents accidental low resets)
     ensure_counter_initialized()
     
