@@ -67,3 +67,41 @@ def md_escape(value: Optional[str]) -> str:
     s = "" if value is None else str(value)
     # escape_markdown handles the heavy lifting; ensure we explicitly pass version=2 where used later
     return escape_markdown(s, version=2)
+
+# =========================
+# Step 2 — Global constants
+# =========================
+
+# Payment packages
+PACKAGES = {
+    "500": {
+        "label": "₦500 (1 try)",
+        "amount": 500,
+        "tries": 1,
+    },
+    "2000": {
+        "label": "₦2000 (5 tries)",
+        "amount": 2000,
+        "tries": 5,
+    },
+    "5000": {
+        "label": "₦5000 (15 tries)",
+        "amount": 5000,
+        "tries": 15,
+    },
+}
+
+# Common static strings (we’ll reuse them in handlers)
+WELCOME_MSG = (
+    "👋 Welcome to *NaijaPrizeGate!* 🎉\n\n"
+    "Try your luck to win an *iPhone 16 Pro Max* 📱🔥\n\n"
+    "Choose *💳 Pay Now* to buy tries and play."
+)
+
+HELP_MSG = (
+    "ℹ️ *How it works:*\n\n"
+    "1️⃣ Pick a package (₦500, ₦2000, or ₦5000).\n"
+    "2️⃣ Get your tries credited.\n"
+    "3️⃣ Each try is a chance to win the iPhone!\n\n"
+    f"Winner unboxing videos will be posted in {PUBLIC_CHANNEL}."
+)
