@@ -755,8 +755,25 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
 
     if data == "referral:link":
         user_id = update.effective_user.id
-        referral_link = f"https://t.me/{context.bot.username}?start=ref_{user_id}"
 
+        # ✅ Properly fetch bot info
+        me = await context.bot.get_me()
+
+        referral_link = f"https://t.me/{context.bot.username}?start=ref_{user_id}"
+        
+        share_text = (
+            "🎉 Win an *iPhone 16 Pro Max*! 🚀\n\n"
+            "Join NaijaPrizeGate and try your luck today.\n"
+            f"👉 Click here: {referral_link}"
+        )
+        
+        # Inline keyboard with deep link + native share button
+        kb = InlineKeyboardMarkup([
+            [InlineKeyboardButton("🔗 Open Referral Link", url=referral_link)],
+            [InlineKeyboardButton("📤 Share via Telegram", switch_inline_query=referral_link)],
+            [InlineKeyboardButton("⬅️ Back to Free Tries", callback_data="free_tries")]
+        ])
+        
         await query.edit_message_text(
             "👥 *Your Referral Link:*\n\n"
             f"{referral_link}\n\n"
