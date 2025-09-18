@@ -760,11 +760,13 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
         me = await context.bot.get_me()
 
         referral_link = f"https://t.me/{context.bot.username}?start=ref_{user_id}"
-        
+        escaped_link = referral_link.replace("_", r"\_")  # escape underscore
+
+        # Share text for the Telegram inline share button
         share_text = (
             "🎉 Win an *iPhone 16 Pro Max*! 🚀\n\n"
             "Join NaijaPrizeGate and try your luck today.\n"
-            f"👉 Click here: {referral_link}"
+            f"👉 Click here: {escaped_link}"
         )
         
         # Inline keyboard with deep link + native share button
@@ -779,7 +781,7 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
             f"{referral_link}\n\n"
             "👉 Share this link with friends everywhere and enjoy more spins!. "
             "🎁 Every time someone joins with your link, you earn a *free try!* 🎉\n",
-            parse_mode=ParseMode.MARKDOWN,
+            parse_mode=ParseMode.MARKDOWN_V2,
             reply_markup=InlineKeyboardMarkup([
                 [InlineKeyboardButton("⬅️ Back to Free Tries", callback_data="free_tries")]
             ])
