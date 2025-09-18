@@ -48,6 +48,8 @@ from telegram.ext import (
    MessageHandler, filters, CallbackQueryHandler
 )
 
+from telegram.helpers import escape_markdown
+
 # ✅ MarkdownV2 escape helper
 def escape_md_v2(text: str) -> str:
     escape_chars = r"_*[]()~`>#+-=|{}.!"
@@ -433,20 +435,32 @@ WELCOME_TEXT = (
 )
 
 def main_menu_keyboard():
-   return InlineKeyboardMarkup([
-       [InlineKeyboardButton("💳 Pay Now", callback_data="pay:start")],
-       [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck:start")],
-       [InlineKeyboardButton("📊 My Tries", callback_data="mytries")],
-       [InlineKeyboardButton("🎁 Get Free Tries", callback_data="free_tries")]
+    """
+    Main menu buttons.
+    These are mostly static labels, but escape anyway in case we ever reuse text in messages.
+    """
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton(escape_markdown("💳 Pay Now", version=2), callback_data="pay:start")],
+        [InlineKeyboardButton(escape_markdown("🎰 Try Luck", version=2), callback_data="tryluck:start")],
+        [InlineKeyboardButton(escape_markdown("📊 My Tries", version=2), callback_data="mytries")],
+        [InlineKeyboardButton(escape_markdown("🎁 Get Free Tries", version=2), callback_data="free_tries")]
     ])
 
+
 def packages_keyboard():
-   # show package buttons with amounts
-   buttons = []
-   for key, p in PACKAGES.items():
-       buttons.append([InlineKeyboardButton(p["label"], callback_data=f"pay:package:{key}")])
-   buttons.append([InlineKeyboardButton("⬅️ Back", callback_data="pay:back")])
-   return InlineKeyboardMarkup(buttons)
+    """
+    Generates package buttons dynamically from PACKAGES dict.
+    Escape each label to prevent MarkdownV2 errors if we display it in messages.
+    """
+    buttons = []
+    for key, p in PACKAGES.items():
+        # Escape the label safely
+        safe_label = escape_markdown(p["label"], version=2)
+        buttons.append([InlineKeyboardButton(safe_label, callback_data=f"pay:package:{key}")])
+    
+    # Add back button
+    buttons.append([InlineKeyboardButton(escape_markdown("⬅️ Back", version=2), callback_data="pay:back")])
+    return InlineKeyboardMarkup(buttons)
 
 # ---------- Helpers ----------
 def is_valid_email(email: str) -> bool:
@@ -533,31 +547,36 @@ async def create_flutterwave_payment_link(tx_ref: str, amount: int, email: str, 
 # =========================
 # Telegram Handlers
 # =========================
-async def start_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
-   # welcome and show main menu
-   db = SessionLocal()
-   try:
-       uid = update.effective_user.id
-       u = db.query(User).filter(User.tg_id == uid).one_or_none()
-       if not u:
-           u = User(tg_id=uid, username=(update.effective_user.username or ""))
-           db.add(u)
-           db.commit()
+async def start_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE): 
+    """
+    Handles /start command:
+    - Registers new users
+    - Captures referral links
+    - Awards bonus tries
+    - Shows welcome messages safely with MarkdownV2 escaping
+    """
+    db = SessionLocal()
+    try:
+        uid = update.effective_user.id
+        username = update.effective_user.username or ""
+        safe_username = escape_markdown(username, version=2)  # escape username for MarkdownV2
 
-        # 1️⃣ NEW: Capture referral argument (/start ref_<id>)
-       args = context.args  # this captures anything after /start
-       if args and args[0].startswith("ref_"):
+        # Fetch or create user
+        u = db.query(User).filter(User.tg_id == uid).one_or_none()
+        if not u:
+            u = User(tg_id=uid, username=username)
+            db.add(u)
+            db.commit()
+
+        # 1️⃣ Handle referral argument (/start ref_<id>)
+        args = context.args
+        if args and args[0].startswith("ref_"):
             referrer_id = int(args[0].replace("ref_", ""))
 
             if referrer_id != uid:  # prevent self-referral
-                # Check if already recorded
-                already = (
-                    db.query(Referral)
-                    .filter_by(referrer_id=referrer_id, new_user_id=uid)
-                    .first()
-                )
+                already = db.query(Referral).filter_by(referrer_id=referrer_id, new_user_id=uid).first()
                 if not already:
-                    # Insert referral
+                    # Insert referral record
                     referral = Referral(referrer_id=referrer_id, new_user_id=uid)
                     db.add(referral)
 
@@ -567,51 +586,64 @@ async def start_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
                         referrer.bonus_tries += 1
                         db.merge(referrer)
 
-                    # Reward new user (optional)
+                    # Reward new user
                     u.bonus_tries += 1
                     db.merge(u)
-
                     db.commit()
 
-                    # Notify referrer
+                    # Notify referrer (ignore errors if blocked)
                     try:
                         await context.bot.send_message(
                             chat_id=referrer_id,
                             text="🎉 Someone joined with your referral link!\nYou earned 1 free try!"
                         )
                     except Exception:
-                        pass  # ignore if referrer blocked bot
-                    
+                        pass
+
+                    # Notify new user about bonus safely
                     try:
+                        bonus_text = (
+                            f"🎁 Welcome, *{safe_username}*! You received 1 bonus try for joining via a referral link.\n"
+                            "👉 Check 'My Tries' to see your balance and start playing!"
+                        )
                         await update.message.reply_text(
-                            "🎁 Welcome! You received 1 bonus try for joining via a referral link.\n"
-                            "👉 Check 'My Tries' to see your balance and start playing!",
-                            parse_mode=ParseMode.MARKDOWN,
+                            bonus_text,
+                            parse_mode=ParseMode.MARKDOWN_V2,
                             reply_markup=main_menu_keyboard()
                         )
                     except Exception:
-                        pass  # ignore errors if message fails 
+                        pass
 
-        # 2️⃣ Your existing welcome flow stays the same
+        # 2️⃣ Standard welcome flow
+        if not u.welcomed:
+            # Escape WELCOME_TEXT if it contains dynamic parts
+            safe_welcome_text = escape_markdown(WELCOME_TEXT, version=2)
+            await update.message.reply_text(
+                safe_welcome_text,
+                parse_mode=ParseMode.MARKDOWN_V2,
+                reply_markup=main_menu_keyboard()
+            )
+            u.welcomed = True
+            db.merge(u)
+            db.commit()
+        else:
+            # Escape dynamic content (like tries) in the message if needed
+            welcome_back_text = (
+                "👋 Welcome back!\n\n"
+                "🎁 Reminder: This is the *NaijaPrizeGate iPhone 16 Pro Max Lucky Draw Campaign*.\n\n"
+                "Each try costs ₦500. One lucky winner gets the iPhone 16 Pro Max.\n\n"
+                "✅ Your chances increase with more tries\n\n"
+                "👇 Use the buttons below to continue:"
+            )
+            safe_text = escape_markdown(welcome_back_text, version=2)
+            await update.message.reply_text(
+                safe_text,
+                parse_mode=ParseMode.MARKDOWN_V2,
+                reply_markup=main_menu_keyboard()
+            )
 
-       if not u.welcomed:
-           await update.message.reply_text(WELCOME_TEXT, parse_mode=ParseMode.MARKDOWN, reply_markup=main_menu_keyboard())
-           u.welcomed = True
-           db.merge(u)
-           db.commit()
-       else:
-           await update.message.reply_text(
-               "👋 Welcome back!\n\n"
-               "🎁 Reminder: This is the *NaijaPrizeGate iPhone 16 Pro Max Lucky Draw Campaign*.\n\n"
-               "Each try costs ₦500. One lucky winner gets the iPhone 16 Pro Max.\n\n"
-               "✅ Your chances increase with more tries\n\n"
-               "👇 Use the buttons below to continue:",
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=main_menu_keyboard()
-        )
-               
-   finally:
-       db.close()
+    finally:
+        db.close()
 
 async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
@@ -621,28 +653,47 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
     - pay:back -> back to main
     - tryluck:start -> call tryluck_cmd
     - mytries -> show user's tries
+    - free_tries -> show instructions and referral
+    - referral:link -> show referral link + share buttons
     """
     query = update.callback_query
     await query.answer()  # acknowledge callback quickly
     data = query.data or ""
     user = query.from_user
 
+    # ------------------------------
+    # 1️⃣ Pay: Start
+    # ------------------------------
     if data == "pay:start":
-        await query.edit_message_text("Choose a package to buy:", reply_markup=packages_keyboard())
+        await query.edit_message_text(
+            "Choose a package to buy:",
+            parse_mode=ParseMode.MARKDOWN_V2,
+            reply_markup=packages_keyboard()
+        )
         return
 
+    #------------------------------
+    # 2️⃣ Pay: Specific package selected
+    # ------------------------------
     if data.startswith("pay:package:"):
         parts = data.split(":")
         if len(parts) == 3:
             key = parts[2]
             pkg = PACKAGES.get(key)
             if not pkg:
-                await query.edit_message_text("Invalid package selected.")
+                await query.edit_message_text(
+                    "Invalid package selected.",
+                    parse_mode=ParseMode.MARKDOWN_V2
+                )
                 return
+            
             # store chosen package in user_data and ask for email
             context.user_data["awaiting_email"] = True
             context.user_data["selected_package"] = key
 
+            # Escape package label for MarkdownV2
+            pkg_label_safe = escape_markdown(pkg['label'], version=2)
+            
             # Provide a Cancel inline button so user can abort easily
             cancel_kb = InlineKeyboardMarkup(
                 [[InlineKeyboardButton("❌ Cancel", callback_data="pay:cancel")]]
@@ -652,23 +703,39 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
                 f"You selected *{pkg['label']}*.\n\n"
                 "Please reply with your email address for the payment receipt.\n\n"
                 "If you want to cancel, press the Cancel button or type 'cancel'.",
-                parse_mode=ParseMode.MARKDOWN,
+                parse_mode=ParseMode.MARKDOWN_V2,
                 reply_markup=cancel_kb
             )
             return
 
     # User pressed the Cancel button for the payment flow
+    # -----------------------------
+    # 3️⃣ Cancel payment flow
+    # ------------------------------
     if data == "pay:cancel":
-        # clear any awaiting flags for this user
         context.user_data.pop("awaiting_email", None)
         context.user_data.pop("selected_package", None)
-        await query.edit_message_text("Payment flow cancelled. Back to menu:", reply_markup=main_menu_keyboard())
+        await query.edit_message_text(
+            "Payment flow cancelled. Back to menu:",
+            parse_mode=ParseMode.MARKDOWN_V2,
+            reply_markup=main_menu_keyboard()
+        )
         return
 
+    # ------------------------------
+    # 4️⃣ Back to menu
+    # ------------------------------
     if data == "pay:back":
-        await query.edit_message_text("Back to menu:", reply_markup=main_menu_keyboard())
+        await query.edit_message_text(
+            "Back to menu:",
+            parse_mode=ParseMode.MARKDOWN_V2,
+            reply_markup=main_menu_keyboard()
+        )
         return
 
+    # ------------------------------
+    # 5️⃣ Try Luck
+    # ------------------------------
     if data == "tryluck:start":
         db = SessionLocal()
         try:
@@ -676,55 +743,54 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
             tries = u.tries if u else 0
 
             if tries <= 0:
-                # ❌ User has no tries → show Pay Now + Back to Menu buttons
                 back_kb = InlineKeyboardMarkup([
                     [InlineKeyboardButton("💳 Pay Now", callback_data="pay:start")],
                     [InlineKeyboardButton("⬅️ Back to Menu", callback_data="pay:back")]
                 ])
-
                 await query.edit_message_text(
                     "😔 You don’t have any tries left!\n\n"
                     "👉 Please buy tries to continue.\n\n"
                     "🎁 Remember: The more tries you play, the higher your chances of winning the *iPhone 16 Pro Max*! 🚀",
-                    parse_mode=ParseMode.MARKDOWN,
+                    parse_mode=ParseMode.MARKDOWN_V2,
                     reply_markup=back_kb
                 )
             else:
-                # ✅ User has tries → proceed with tryluck as before
+                # User has tries → proceed
                 await tryluck_cmd(update, context)
 
         finally:
             db.close()
         return
         
+    # -----------------------------
+    # 6️⃣ Show My Tries
+    # ------------------------------
     if data == "mytries":
         db = SessionLocal()
         try:
             u = db.query(User).filter(User.tg_id == user.id).one_or_none()
-
-            # ✅ Always define these safely
             tries = u.tries if u else 0
             bonus = u.bonus_tries if u else 0
             total = tries + bonus
 
             if total <= 0:
-                # Case 1: No tries at all → show packages directly
+                # No tries → show packages
                 await query.edit_message_text(
                     "😔 You have *no tries left*.\n\n"
                     "👉 Please buy tries using the button below.\n\n"
                     "🎁 Remember: The more tries you play, the higher your chances of winning the *iPhone 16 Pro Max*! 🚀",
-                    parse_mode=ParseMode.MARKDOWN,
+                    parse_mode=ParseMode.MARKDOWN_V2,
                     reply_markup=packages_keyboard()
                 )
             else:
-                # Case 2: Show breakdown of tries
+                # Show breakdown of tries
                 await query.edit_message_text(
                     f"🎟 *Your Tries:*\n\n"
                     f"- Paid tries: *{tries}*\n"
                     f"- Bonus tries: *{bonus}*\n"
                     f"➡️ Total: *{total}*\n\n"
                     "💳 Need more? Tap below to buy more tries:",
-                    parse_mode=ParseMode.MARKDOWN,
+                    parse_mode=ParseMode.MARKDOWN_V2,
                     reply_markup=InlineKeyboardMarkup([
                         [InlineKeyboardButton("💳 Buy More Tries", callback_data="pay:start")],
                         [InlineKeyboardButton("⬅️ Back to Menu", callback_data="pay:back")]
@@ -732,10 +798,12 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
                 )
         finally:
             db.close()
-        return
+       
 
+    # ------------------------------
+    # 7️⃣ Free Tries instructions
+    # ------------------------------
     if data == "free_tries":
-        # Show instructions + ask user to send screenshot proof
         await query.edit_message_text(
             "🎁 *Get Free Tries!*\n\n"
             "Follow these steps to earn free tries:\n"
@@ -746,7 +814,7 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
             "5️⃣ Refer your friends to join (use the button below 👇)\n\n"
             "📸 After following, send us a screenshot here.\n"
             "✅ Once verified, we’ll credit your free tries!",
-            parse_mode=ParseMode.MARKDOWN,
+            parse_mode=ParseMode.MARKDOWN_V2,
             reply_markup=InlineKeyboardMarkup([
                 [InlineKeyboardButton("Facebook", url="https://web.facebook.com/Naijaprizegate/")],
                 [InlineKeyboardButton("Instagram", url="https://www.instagram.com/naijaprizegate/")],
@@ -758,42 +826,44 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
         )
         return
 
+    # ------------------------------
+    # 8️⃣ Referral link + share buttons
+    # ------------------------------
     if data == "referral:link":
         user_id = update.effective_user.id
-
         # Build referral link
         referral_link = f"https://t.me/{context.bot.username}?start=ref_{user_id}"
-        escaped_link = escape_md_v2(referral_link)
-        
-        # Share text for the Telegram inline share button
+        # Escape for MarkdownV2
+        escaped_link = escape_markdown(referral_link, version=2)
+
+        # Text shown to user
         share_text = (
             "🎉 Win an *iPhone 16 Pro Max*! 🚀\n\n"
             "Join NaijaPrizeGate and try your luck today.\n"
             f"👉 Click here: {escaped_link}"
         )
-        
-        # Inline keyboard with deep link + native share button
+
+        # Keyboard buttons
         kb = InlineKeyboardMarkup([
             [InlineKeyboardButton("🔗 Open Referral Link", url=referral_link)],
             [InlineKeyboardButton("📤 Share via Telegram", switch_inline_query=referral_link)],
             [InlineKeyboardButton("⬅️ Back to Free Tries", callback_data="free_tries")]
         ])
-        
+
         await query.edit_message_text(
-            "👥 *Your Referral Link:*\n\n"
-            f"{referral_link}\n\n"
-            "👉 Share this link with friends everywhere and enjoy more spins!. "
-            "🎁 Every time someone joins with your link, you earn a *free try!* 🎉\n",
+            share_text,
             parse_mode=ParseMode.MARKDOWN_V2,
-            reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("⬅️ Back to Free Tries", callback_data="free_tries")]
-            ])
+            reply_markup=kb
         )
         return
 
-    # Unhandled callback
-    await query.edit_message_text("Unknown action. Use /start to show the menu.")
-
+    # ------------------------------
+    # 9️⃣ Fallback for unknown callbacks
+    # ------------------------------
+    await query.edit_message_text(
+        "Unknown action. Use /start to show the menu.",
+        parse_mode=ParseMode.MARKDOWN_V2
+    )
 
 async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
