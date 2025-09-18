@@ -34,7 +34,7 @@ WEBHOOK_PATH = f"/telegram/webhook/{WEBHOOK_SECRET}" if WEBHOOK_SECRET else "/te
 WEBHOOK_URL = f"{BASE_URL}{WEBHOOK_PATH}"
 
 from sqlalchemy import (
-   create_engine, Column, Integer, String, DateTime, Boolean, UniqueConstraint, BigInteger, Text, select
+   create_engine, Column, Integer, String, DateTime, Boolean, BigInteger, Text, select
 )
 from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy.exc import IntegrityError
@@ -47,24 +47,6 @@ from telegram.ext import (
    Application, ApplicationBuilder, CommandHandler, ContextTypes,
    MessageHandler, filters, CallbackQueryHandler
 )
-
-from telegram.helpers import escape_markdown
-
-# ✅ MarkdownV2 escape helper
-def escape_md_v2(text: str) -> str:
-    escape_chars = r"_*[]()~`>#+-=|{}.!"
-    return ''.join(f"\\{c}" if c in escape_chars else c for c in text)
-
-# ---------- Your error handler ----------
-async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
-    # Print the exception in console
-    print(f"Exception while handling an update: {context.error}")
-
-    # Optionally, send a friendly message to the user
-    if update and isinstance(update, Update) and update.effective_message:
-        await update.effective_message.reply_text(
-            "Oops! Something went wrong. Please try again later."
-        )
 
  # 👇 add this pattern (matches hello, hi, hey, good morning, etc.)
 greeting_pattern = r'(?i)^(hello|hi|hey|good\s*morning|good\s*afternoon|good\s*evening)$'
@@ -152,7 +134,6 @@ class User(Base):
    username = Column(String(255))
    first_seen = Column(DateTime, default=datetime.utcnow)
    tries = Column(Integer, default=0)       # how many tries user currently has
-   bonus_tries = Column(Integer, default=0) # <-- NEW: separate count for bonus (free) tries
    welcomed = Column(Boolean, default=False)
   # referral_code = Column(String(64), nullable=True)  # optional for future referral feature
 
@@ -177,15 +158,6 @@ class Play(Base):
    ts = Column(DateTime, default=datetime.utcnow)
    result = Column(String(16), default="lose")
 
-class Proof(Base):
-    __tablename__ = "proofs"
-
-    id = Column(Integer, primary_key=True)
-    tg_id = Column(BigInteger, index=True, nullable=False)   # Telegram user id who submitted proof
-    file_id = Column(String, nullable=False)                  # Telegram file_id of the photo
-    status = Column(String(32), default="pending")            # pending / approved / rejected
-    created_at = Column(DateTime, default=datetime.utcnow)
-
 class Meta(Base):
    __tablename__ = "meta"
    key = Column(String(64), primary_key=True)
@@ -201,18 +173,6 @@ class Winner(Base):
 
 # Create tables if they don't exist (for simple deployments)
 Base.metadata.create_all(engine)
-
-class Referral(Base):
-    __tablename__ = "referrals"
-
-    id = Column(Integer, primary_key=True)
-    referrer_id = Column(BigInteger, index=True, nullable=False)   # tg_id of the referrer
-    new_user_id = Column(BigInteger, index=True, nullable=False)   # tg_id of the new user
-    ts = Column(DateTime, default=datetime.utcnow)
-
-    __table_args__ = (
-        UniqueConstraint("referrer_id", "new_user_id", name="uq_referral_once"),  # prevent duplicates
-    )
 
 # =========================
 # DB helper functions
@@ -435,32 +395,19 @@ WELCOME_TEXT = (
 )
 
 def main_menu_keyboard():
-    """
-    Main menu buttons.
-    These are mostly static labels, but escape anyway in case we ever reuse text in messages.
-    """
-    return InlineKeyboardMarkup([
-        [InlineKeyboardButton(escape_markdown("💳 Pay Now", version=2), callback_data="pay:start")],
-        [InlineKeyboardButton(escape_markdown("🎰 Try Luck", version=2), callback_data="tryluck:start")],
-        [InlineKeyboardButton(escape_markdown("📊 My Tries", version=2), callback_data="mytries")],
-        [InlineKeyboardButton(escape_markdown("🎁 Get Free Tries", version=2), callback_data="free_tries")]
-    ])
-
+   return InlineKeyboardMarkup([
+       [InlineKeyboardButton("💳 Pay Now", callback_data="pay:start")],
+       [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck:start")],
+       [InlineKeyboardButton("📊 My Tries", callback_data="mytries")]
+   ])
 
 def packages_keyboard():
-    """
-    Generates package buttons dynamically from PACKAGES dict.
-    Escape each label to prevent MarkdownV2 errors if we display it in messages.
-    """
-    buttons = []
-    for key, p in PACKAGES.items():
-        # Escape the label safely
-        safe_label = escape_markdown(p["label"], version=2)
-        buttons.append([InlineKeyboardButton(safe_label, callback_data=f"pay:package:{key}")])
-    
-    # Add back button
-    buttons.append([InlineKeyboardButton(escape_markdown("⬅️ Back", version=2), callback_data="pay:back")])
-    return InlineKeyboardMarkup(buttons)
+   # show package buttons with amounts
+   buttons = []
+   for key, p in PACKAGES.items():
+       buttons.append([InlineKeyboardButton(p["label"], callback_data=f"pay:package:{key}")])
+   buttons.append([InlineKeyboardButton("⬅️ Back", callback_data="pay:back")])
+   return InlineKeyboardMarkup(buttons)
 
 # ---------- Helpers ----------
 def is_valid_email(email: str) -> bool:
@@ -481,25 +428,6 @@ def format_display_name(user_obj) -> str:
     # fallback to numeric id with a readable prefix
     return f"User{uid if uid is not None else 'unknown'}"
 
-def format_balance(user: User) -> str:
-    paid = user.tries or 0
-    bonus = user.bonus_tries or 0
-    total = paid + bonus
-    return (
-        f"🎟 *Your Balance:*\n"
-        f"▫️ Paid Tries: {paid}\n"
-        f"▫️ Bonus Tries: {bonus}\n"
-        f"▫️ Total Tries: {total}"
-    )
-
-def format_tries_balance(user_obj):
-    """
-    Returns a nicely formatted string showing paid and bonus tries.
-    """
-    paid = user_obj.tries or 0
-    bonus = user_obj.bonus_tries or 0
-    total = paid + bonus
-    return f"🎟 Paid: {paid}\n🎁 Bonus: {bonus}\nTotal: {total}"
 
 async def create_flutterwave_payment_link(tx_ref: str, amount: int, email: str, name: str) -> Optional[str]:
    """
@@ -547,103 +475,34 @@ async def create_flutterwave_payment_link(tx_ref: str, amount: int, email: str, 
 # =========================
 # Telegram Handlers
 # =========================
-async def start_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE): 
-    """
-    Handles /start command:
-    - Registers new users
-    - Captures referral links
-    - Awards bonus tries
-    - Shows welcome messages safely with MarkdownV2 escaping
-    """
-    db = SessionLocal()
-    try:
-        uid = update.effective_user.id
-        username = update.effective_user.username or ""
-        safe_username = escape_markdown(username, version=2)  # escape username for MarkdownV2
-
-        # Fetch or create user
-        u = db.query(User).filter(User.tg_id == uid).one_or_none()
-        if not u:
-            u = User(tg_id=uid, username=username)
-            db.add(u)
-            db.commit()
-
-        # 1️⃣ Handle referral argument (/start ref_<id>)
-        args = context.args
-        if args and args[0].startswith("ref_"):
-            referrer_id = int(args[0].replace("ref_", ""))
-
-            if referrer_id != uid:  # prevent self-referral
-                already = db.query(Referral).filter_by(referrer_id=referrer_id, new_user_id=uid).first()
-                if not already:
-                    # Insert referral record
-                    referral = Referral(referrer_id=referrer_id, new_user_id=uid)
-                    db.add(referral)
-
-                    # Reward referrer
-                    referrer = db.query(User).filter_by(tg_id=referrer_id).one_or_none()
-                    if referrer:
-                        referrer.bonus_tries += 1
-                        db.merge(referrer)
-
-                    # Reward new user
-                    u.bonus_tries += 1
-                    db.merge(u)
-                    db.commit()
-
-                    # Notify referrer (ignore errors if blocked)
-                    try:
-                        await context.bot.send_message(
-                            chat_id=referrer_id,
-                            text="🎉 Someone joined with your referral link!\nYou earned 1 free try!"
-                        )
-                    except Exception:
-                        pass
-
-                    # Notify new user about bonus safely
-                    try:
-                        bonus_text = (
-                            f"🎁 Welcome, *{safe_username}*! You received 1 bonus try for joining via a referral link.\n"
-                            "👉 Check 'My Tries' to see your balance and start playing!"
-                        )
-                        await update.message.reply_text(
-                            bonus_text,
-                            parse_mode=ParseMode.MARKDOWN_V2,
-                            reply_markup=main_menu_keyboard()
-                        )
-                    except Exception:
-                        pass
-
-        # 2️⃣ Standard welcome flow
-        if not u.welcomed:
-            # Escape WELCOME_TEXT if it contains dynamic parts
-            safe_welcome_text = escape_markdown(WELCOME_TEXT, version=2)
-            await update.message.reply_text(
-                safe_welcome_text,
-                parse_mode=ParseMode.MARKDOWN_V2,
-                reply_markup=main_menu_keyboard()
-            )
-            u.welcomed = True
-            db.merge(u)
-            db.commit()
-        else:
-            # Escape dynamic content (like tries) in the message if needed
-            welcome_back_text = (
-                "👋 Welcome back!\n\n"
-                "🎁 Reminder: This is the *NaijaPrizeGate iPhone 16 Pro Max Lucky Draw Campaign*.\n\n"
-                "Each try costs ₦500. One lucky winner gets the iPhone 16 Pro Max.\n\n"
-                "✅ Your chances increase with more tries\n\n"
-                "👇 Use the buttons below to continue:"
-            )
-            safe_text = escape_markdown(welcome_back_text, version=2)
-            await update.message.reply_text(
-                safe_text,
-                parse_mode=ParseMode.MARKDOWN_V2,
-                reply_markup=main_menu_keyboard()
-            )
-
-    finally:
-        db.close()
+async def start_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
+   # welcome and show main menu
+   db = SessionLocal()
+   try:
+       uid = update.effective_user.id
+       u = db.query(User).filter(User.tg_id == uid).one_or_none()
+       if not u:
+           u = User(tg_id=uid, username=(update.effective_user.username or ""))
+           db.add(u)
+           db.commit()
+       if not u.welcomed:
+           await update.message.reply_text(WELCOME_TEXT, parse_mode=ParseMode.MARKDOWN, reply_markup=main_menu_keyboard())
+           u.welcomed = True
+           db.merge(u)
+           db.commit()
+       else:
+           await update.message.reply_text(
+               "👋 Welcome back!\n\n"
+               "🎁 Reminder: This is the *NaijaPrizeGate iPhone 16 Pro Max Lucky Draw Campaign*.\n\n"
+               "Each try costs ₦500. One lucky winner gets the iPhone 16 Pro Max.\n\n"
+               "✅ Your chances increase with more tries\n\n"
+               "👇 Use the buttons below to continue:",
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=main_menu_keyboard()
+        )
+               
+   finally:
+       db.close()
 
 async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
@@ -653,47 +512,28 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
     - pay:back -> back to main
     - tryluck:start -> call tryluck_cmd
     - mytries -> show user's tries
-    - free_tries -> show instructions and referral
-    - referral:link -> show referral link + share buttons
     """
     query = update.callback_query
     await query.answer()  # acknowledge callback quickly
     data = query.data or ""
     user = query.from_user
 
-    # ------------------------------
-    # 1️⃣ Pay: Start
-    # ------------------------------
     if data == "pay:start":
-        await query.edit_message_text(
-            "Choose a package to buy:",
-            parse_mode=ParseMode.MARKDOWN_V2,
-            reply_markup=packages_keyboard()
-        )
+        await query.edit_message_text("Choose a package to buy:", reply_markup=packages_keyboard())
         return
 
-    #------------------------------
-    # 2️⃣ Pay: Specific package selected
-    # ------------------------------
     if data.startswith("pay:package:"):
         parts = data.split(":")
         if len(parts) == 3:
             key = parts[2]
             pkg = PACKAGES.get(key)
             if not pkg:
-                await query.edit_message_text(
-                    "Invalid package selected.",
-                    parse_mode=ParseMode.MARKDOWN_V2
-                )
+                await query.edit_message_text("Invalid package selected.")
                 return
-            
             # store chosen package in user_data and ask for email
             context.user_data["awaiting_email"] = True
             context.user_data["selected_package"] = key
 
-            # Escape package label for MarkdownV2
-            pkg_label_safe = escape_markdown(pkg['label'], version=2)
-            
             # Provide a Cancel inline button so user can abort easily
             cancel_kb = InlineKeyboardMarkup(
                 [[InlineKeyboardButton("❌ Cancel", callback_data="pay:cancel")]]
@@ -703,39 +543,23 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
                 f"You selected *{pkg['label']}*.\n\n"
                 "Please reply with your email address for the payment receipt.\n\n"
                 "If you want to cancel, press the Cancel button or type 'cancel'.",
-                parse_mode=ParseMode.MARKDOWN_V2,
+                parse_mode=ParseMode.MARKDOWN,
                 reply_markup=cancel_kb
             )
             return
 
     # User pressed the Cancel button for the payment flow
-    # -----------------------------
-    # 3️⃣ Cancel payment flow
-    # ------------------------------
     if data == "pay:cancel":
+        # clear any awaiting flags for this user
         context.user_data.pop("awaiting_email", None)
         context.user_data.pop("selected_package", None)
-        await query.edit_message_text(
-            "Payment flow cancelled. Back to menu:",
-            parse_mode=ParseMode.MARKDOWN_V2,
-            reply_markup=main_menu_keyboard()
-        )
+        await query.edit_message_text("Payment flow cancelled. Back to menu:", reply_markup=main_menu_keyboard())
         return
 
-    # ------------------------------
-    # 4️⃣ Back to menu
-    # ------------------------------
     if data == "pay:back":
-        await query.edit_message_text(
-            "Back to menu:",
-            parse_mode=ParseMode.MARKDOWN_V2,
-            reply_markup=main_menu_keyboard()
-        )
+        await query.edit_message_text("Back to menu:", reply_markup=main_menu_keyboard())
         return
 
-    # ------------------------------
-    # 5️⃣ Try Luck
-    # ------------------------------
     if data == "tryluck:start":
         db = SessionLocal()
         try:
@@ -743,54 +567,49 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
             tries = u.tries if u else 0
 
             if tries <= 0:
+                # ❌ User has no tries → show Pay Now + Back to Menu buttons
                 back_kb = InlineKeyboardMarkup([
                     [InlineKeyboardButton("💳 Pay Now", callback_data="pay:start")],
                     [InlineKeyboardButton("⬅️ Back to Menu", callback_data="pay:back")]
                 ])
+
                 await query.edit_message_text(
                     "😔 You don’t have any tries left!\n\n"
                     "👉 Please buy tries to continue.\n\n"
                     "🎁 Remember: The more tries you play, the higher your chances of winning the *iPhone 16 Pro Max*! 🚀",
-                    parse_mode=ParseMode.MARKDOWN_V2,
+                    parse_mode=ParseMode.MARKDOWN,
                     reply_markup=back_kb
                 )
             else:
-                # User has tries → proceed
+                # ✅ User has tries → proceed with tryluck as before
                 await tryluck_cmd(update, context)
 
         finally:
             db.close()
         return
         
-    # -----------------------------
-    # 6️⃣ Show My Tries
-    # ------------------------------
     if data == "mytries":
         db = SessionLocal()
         try:
             u = db.query(User).filter(User.tg_id == user.id).one_or_none()
             tries = u.tries if u else 0
-            bonus = u.bonus_tries if u else 0
-            total = tries + bonus
 
-            if total <= 0:
-                # No tries → show packages
+            # 👇 CHANGE this whole block to improve the UX
+            if tries <= 0:
+                # Case 1: No tries left → show packages directly
                 await query.edit_message_text(
                     "😔 You have *no tries left*.\n\n"
                     "👉 Please buy tries using the button below.\n\n"
                     "🎁 Remember: The more tries you play, the higher your chances of winning the *iPhone 16 Pro Max*! 🚀",
-                    parse_mode=ParseMode.MARKDOWN_V2,
-                    reply_markup=packages_keyboard()
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=packages_keyboard()   # show payment packages inline
                 )
             else:
-                # Show breakdown of tries
+                # Case 2: User still has tries → show balance + quick buy/back buttons
                 await query.edit_message_text(
-                    f"🎟 *Your Tries:*\n\n"
-                    f"- Paid tries: *{tries}*\n"
-                    f"- Bonus tries: *{bonus}*\n"
-                    f"➡️ Total: *{total}*\n\n"
+                    f"🎟 You currently have *{tries} tries* left!\n\n"
                     "💳 Need more? Tap below to buy more tries:",
-                    parse_mode=ParseMode.MARKDOWN_V2,
+                    parse_mode=ParseMode.MARKDOWN,
                     reply_markup=InlineKeyboardMarkup([
                         [InlineKeyboardButton("💳 Buy More Tries", callback_data="pay:start")],
                         [InlineKeyboardButton("⬅️ Back to Menu", callback_data="pay:back")]
@@ -798,72 +617,11 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
                 )
         finally:
             db.close()
-       
-
-    # ------------------------------
-    # 7️⃣ Free Tries instructions
-    # ------------------------------
-    if data == "free_tries":
-        await query.edit_message_text(
-            "🎁 *Get Free Tries!*\n\n"
-            "Follow these steps to earn free tries:\n"
-            "1️⃣ Follow us on Facebook\n"
-            "2️⃣ Follow us on Instagram\n"
-            "3️⃣ Follow us on TikTok\n"
-            "4️⃣ Subscribe on YouTube\n"
-            "5️⃣ Refer your friends to join (use the button below 👇)\n\n"
-            "📸 After following, send us a screenshot here.\n"
-            "✅ Once verified, we’ll credit your free tries!",
-            parse_mode=ParseMode.MARKDOWN_V2,
-            reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("Facebook", url="https://web.facebook.com/Naijaprizegate/")],
-                [InlineKeyboardButton("Instagram", url="https://www.instagram.com/naijaprizegate/")],
-                [InlineKeyboardButton("TikTok", url="https://www.tiktok.com/@naijaprizegate")],
-                [InlineKeyboardButton("YouTube", url="https://www.youtube.com/@Naijaprizegate")],
-                [InlineKeyboardButton("👥 Refer a Friend", callback_data="referral:link")],
-                [InlineKeyboardButton("⬅️ Back to Menu", callback_data="pay:back")]
-            ])
-        )
         return
 
-    # ------------------------------
-    # 8️⃣ Referral link + share buttons
-    # ------------------------------
-    if data == "referral:link":
-        user_id = update.effective_user.id
-        # Build referral link
-        referral_link = f"https://t.me/{context.bot.username}?start=ref_{user_id}"
-        # Escape for MarkdownV2
-        escaped_link = escape_markdown(referral_link, version=2)
+    # Unhandled callback
+    await query.edit_message_text("Unknown action. Use /start to show the menu.")
 
-        # Text shown to user
-        share_text = (
-            "🎉 Win an *iPhone 16 Pro Max*! 🚀\n\n"
-            "Join NaijaPrizeGate and try your luck today.\n"
-            f"👉 Click here: {escaped_link}"
-        )
-
-        # Keyboard buttons
-        kb = InlineKeyboardMarkup([
-            [InlineKeyboardButton("🔗 Open Referral Link", url=referral_link)],
-            [InlineKeyboardButton("📤 Share via Telegram", switch_inline_query=referral_link)],
-            [InlineKeyboardButton("⬅️ Back to Free Tries", callback_data="free_tries")]
-        ])
-
-        await query.edit_message_text(
-            share_text,
-            parse_mode=ParseMode.MARKDOWN_V2,
-            reply_markup=kb
-        )
-        return
-
-    # ------------------------------
-    # 9️⃣ Fallback for unknown callbacks
-    # ------------------------------
-    await query.edit_message_text(
-        "Unknown action. Use /start to show the menu.",
-        parse_mode=ParseMode.MARKDOWN_V2
-    )
 
 async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
@@ -1039,9 +797,7 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         # Find user
         u = db.query(User).filter(User.tg_id == uid).one_or_none()
-        
-        # >>> CHANGE HERE: Check both paid and bonus tries <<<
-        if not u or ((u.tries or 0) <= 0 and (u.bonus_tries or 0) <= 0):
+        if not u or (u.tries or 0) <= 0:
             await answer_target.reply_text(
                 "😔 You don’t have any tries left!\n\n"
                 "👉 Please buy tries to continue.\n\n"
@@ -1051,28 +807,22 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
             return
 
-        #  >>> CHANGE HERE: Decide whether we consume a paid or bonus try <<<
-        used_bonus = False
-        if (u.bonus_tries or 0) > 0:
-            # Bonus try → reduce bonus_tries, DO NOT increment counter
-            u.bonus_tries -= 1
-            play = Play(tg_id=uid, result="lose")
-            db.add(play)
-            db.merge(u)
-            db.commit()
-            used_bonus = True
-            counter = None  # no counter increment
-            logger.info(f"User {uid} played BONUS try. Remaining_bonus={u.bonus_tries}")
+        # Consume a try and record the play as a 'lose' by default
+        u.tries = (u.tries or 0) - 1
+        play = Play(tg_id=uid, result="lose")
+        db.add(play)
+        db.merge(u)
+        db.commit()
 
-        else:
-            # Paid try → reduce tries and increment global counter
-            u.tries -= 1
-            play = Play(tg_id=uid, result="lose")
-            db.add(play)
-            db.merge(u)
-            db.commit()
-            counter = increment_counter(db)   # Only for paid tries
-            logger.info(f"User {uid} played PAID try. Counter={counter}, remaining_tries={u.tries}")
+        # refresh objects if you plan to use them further
+        try:
+            db.refresh(u)
+        except Exception:
+            pass  # ignore refresh errors on simple setups
+
+        # Increment global counter (stored in Meta table)
+        counter = increment_counter(db)
+        logger.info(f"User {uid} played. Counter={counter}, remaining_tries={u.tries}")
 
         # Initial spinning message
         msg = await answer_target.reply_text("🎰 Spinning...")
@@ -1100,7 +850,7 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await asyncio.sleep(delay)
 
         # Determine win
-        is_win = (not used_bonus) and (counter is not None) and (counter % WIN_THRESHOLD == 0)
+        is_win = (counter % WIN_THRESHOLD == 0)
 
         if is_win:
             try:
@@ -1145,7 +895,6 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"🎉 JACKPOT!!!\n\n{final_reel}\n\n"
                 f"🥳 Congratulations {display_name}, You WON!\n"
                 f"Your Winner Code: `{code}`\n\n"
-                f"{format_balance(u)}\n\n"
                 f"📢 You’ll be featured in {PUBLIC_CHANNEL}",
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=main_menu_keyboard()
@@ -1156,12 +905,12 @@ async def tryluck_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
             final_reel = " | ".join(random.choices(SLOT_SYMBOLS, k=3))
             await msg.edit_text(
                 f"{final_reel}\n\n🙁 Not a win this time.\n\n"
-                f"{format_balance(u)}\n\n"
                 "👉 Remember: *The more you try, the higher your chances of winning the iPhone 16 Pro Max!* 📱\n\n"
                 "Use the buttons below to play again or buy more tries 👇",
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=main_menu_keyboard()
             )
+
 
     except Exception as e:
         logger.exception("Error during play: %s", e)
@@ -1290,30 +1039,7 @@ async def stats_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     finally:
         db.close()
 
-# -----------------------------
-# Photo handler for proof uploads
-# -----------------------------
-async def handle_proof_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user_id = update.effective_user.id
 
-    if not update.message.photo:
-        return await update.message.reply_text("❌ Please send a valid screenshot/photo.")
-
-    # Get the largest available photo file
-    photo = update.message.photo[-1]
-    file_id = photo.file_id
-
-    # Save to DB as pending proof
-    session = sessionmaker(bind=engine)()
-    proof = Proof(user_id=user_id, file_id=file_id, status="pending")
-    session.add(proof)
-    session.commit()
-    session.close()
-
-    await update.message.reply_text(
-        "✅ Screenshot received! Admin will review it shortly.\n"
-        "If approved, you’ll get free tries 🎉"
-    )
 
 # =========================
 # FastAPI app + webhook endpoints
@@ -1782,11 +1508,6 @@ async def on_startup():
     # Text handler
     app_telegram.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, text_handler))
 
-    app_telegram.add_handler(MessageHandler(filters.PHOTO, handle_proof_photo))
-
-    # Add the global error handler
-    app_telegram.add_error_handler(error_handler)
-    
     # Ensure try_counter is initialized (prevents accidental low resets)
     ensure_counter_initialized()
     
@@ -1848,7 +1569,7 @@ api.add_event_handler("shutdown", on_shutdown)
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(
-        "app:api",
+        "app:api",https://accountscenter.instagram.com/profiles/100001608348586/manage/
         host="0.0.0.0",
         port=int(os.getenv("PORT", 8000)),
         log_level="info"
