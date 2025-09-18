@@ -48,6 +48,11 @@ from telegram.ext import (
    MessageHandler, filters, CallbackQueryHandler
 )
 
+# ✅ MarkdownV2 escape helper
+def escape_md_v2(text: str) -> str:
+    escape_chars = r"_*[]()~`>#+-=|{}.!"
+    return ''.join(f"\\{c}" if c in escape_chars else c for c in text)
+
 # ---------- Your error handler ----------
 async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
     # Print the exception in console
@@ -756,12 +761,10 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
     if data == "referral:link":
         user_id = update.effective_user.id
 
-        # ✅ Properly fetch bot info
-        me = await context.bot.get_me()
-
+        # Build referral link
         referral_link = f"https://t.me/{context.bot.username}?start=ref_{user_id}"
-        escaped_link = referral_link.replace("_", r"\_")  # escape underscore
-
+        escaped_link = escape_md_v2(referral_link)
+        
         # Share text for the Telegram inline share button
         share_text = (
             "🎉 Win an *iPhone 16 Pro Max*! 🚀\n\n"
