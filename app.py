@@ -10,11 +10,13 @@ import ipaddress
 import uuid
 import random
 import asyncio
+import uvicorn 
 from datetime import datetime, timedelta
 from typing import Optional
 
 # FastAPI (used for webhook endpoint)
 from fastapi import FastAPI
+from fastapi import Request
 
 # telegram helper for MarkdownV2 escaping (we'll use this to keep messages safe)
 from telegram.helpers import escape_markdown
@@ -166,6 +168,8 @@ if not WEBHOOK_SECRET:
     logger.warning("WEBHOOK_SECRET not set — webhook endpoint will be unprotected until you set this.")
 if not RENDER_EXTERNAL_URL:
     logger.info("RENDER_EXTERNAL_URL not set. Webhook won't be auto-registered on startup.")
+
+application = Application.builder().token(BOT_TOKEN).build()
 
 async def verify_payment(tx_ref: str):
     """
@@ -749,12 +753,57 @@ def main():
     application.add_handler(CallbackQueryHandler(transactions_pagination, pattern="^txn_"))
     application.add_handler(CommandHandler("stat", stat_cmd))
 
-    # Start polling (good for local dev). On Render we’ll later switch to webhook.
-    application.run_polling()
+    application.run_polling()   # (local dev)
+    
+# =========================
+# Entrypoint (Production-ready: FastAPI + Webhooks)
+# =========================
+import os
+import uvicorn
+import httpx
+from fastapi import Request
+from telegram import Update
+
+# ⚡ FastAPI app is already defined above as `app`
+# ⚡ `application` (telegram.ext.Application) is also defined above
+
+
+@app.on_event("startup")
+async def startup_event():
+    """
+    When app starts, set Telegram webhook automatically.
+    This ensures Telegram knows where to send updates.
+    """
+    render_url = os.getenv("RENDER_EXTERNAL_URL")  # Render sets this automatically
+    if render_url:
+        webhook_url = f"{render_url}/telegram/webhook"
+        async with httpx.AsyncClient() as client:
+            await client.post(
+                f"https://api.telegram.org/bot{BOT_TOKEN}/setWebhook",
+                json={"url": webhook_url}
+            )
+        print(f"✅ Webhook set to: {webhook_url}")
+    else:
+        print("⚠️ No RENDER_EXTERNAL_URL found. Using polling mode (local dev).")
+        application.run_polling()
+
+
+# =========================
+# Telegram Webhook Endpoint
+# =========================
+@app.post("/telegram/webhook")
+async def telegram_webhook(request: Request):
+    """
+    Receives updates from Telegram and passes them to the bot.
+    """
+    update = Update.de_json(await request.json(), application.bot)
+    await application.process_update(update)
+    return {"status": "ok"}
 
 
 # =========================
 # Entrypoint
 # =========================
 if __name__ == "__main__":
-    main()
+    PORT = int(os.getenv("PORT", 8080))  # Render injects PORT
+    uvicorn.run("app:app", host="0.0.0.0", port=PORT, reload=False)
