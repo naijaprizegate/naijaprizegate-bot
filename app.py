@@ -768,42 +768,48 @@ from telegram import Update
 # ⚡ `application` (telegram.ext.Application) is also defined above
 
 
+# =========================
+# Startup / Webhook setup
+# =========================
 @app.on_event("startup")
 async def startup_event():
     """
-    When app starts, set Telegram webhook automatically.
-    This ensures Telegram knows where to send updates.
+    Initialize Telegram bot and set webhook automatically.
     """
-    render_url = os.getenv("RENDER_EXTERNAL_URL")  # Render sets this automatically
+    # Initialize the Application (important!)
+    await application.initialize()
+
+    render_url = os.getenv("RENDER_EXTERNAL_URL")
     if render_url:
         webhook_url = f"{render_url}/telegram/webhook"
-        async with httpx.AsyncClient() as client:
-            await client.post(
-                f"https://api.telegram.org/bot{BOT_TOKEN}/setWebhook",
-                json={"url": webhook_url}
-            )
-        print(f"✅ Webhook set to: {webhook_url}")
+        # Set webhook with Telegram
+        await application.bot.set_webhook(webhook_url)
+        print(f"✅ Telegram webhook set to: {webhook_url}")
     else:
-        print("⚠️ No RENDER_EXTERNAL_URL found. Using polling mode (local dev).")
-        application.run_polling()
-
+        print("⚠️ RENDER_EXTERNAL_URL not set. Webhook cannot be registered automatically.")
 
 # =========================
-# Telegram Webhook Endpoint
+# Telegram webhook endpoint
 # =========================
 @app.post("/telegram/webhook")
 async def telegram_webhook(request: Request):
     """
     Receives updates from Telegram and passes them to the bot.
     """
-    update = Update.de_json(await request.json(), application.bot)
+    # Ensure Application is initialized (safe)
+    await application.initialize()
+
+    update_data = await request.json()
+    update = Update.de_json(update_data, application.bot)
     await application.process_update(update)
+
     return {"status": "ok"}
 
-
 # =========================
-# Entrypoint
+# Entrypoint for Render
 # =========================
 if __name__ == "__main__":
-    PORT = int(os.getenv("PORT", 8080))  # Render injects PORT
+    import uvicorn
+
+    PORT = int(os.getenv("PORT", 8080))  # Render automatically sets $PORT
     uvicorn.run("app:app", host="0.0.0.0", port=PORT, reload=False)
