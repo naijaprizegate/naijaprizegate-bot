@@ -742,22 +742,22 @@ async def verify_payment(tx_ref: str):
 # Dispatcher / Handler Registration
 # =========================
 
-    # Register command handlers
-    application.add_handler(CommandHandler("start", start_cmd))
-    application.add_handler(CommandHandler("balance", balance_cmd))
-    application.add_handler(CommandHandler("pay", pay_cmd))
+# Register command handlers
+application.add_handler(CommandHandler("start", start_cmd))
+application.add_handler(CommandHandler("balance", balance_cmd))
+application.add_handler(CommandHandler("pay", pay_cmd))
 
-    # Register callback query handlers
-    application.add_handler(CallbackQueryHandler(handle_package_selection, pattern="^package:"))
-    application.add_handler(CallbackQueryHandler(handle_payment_back, pattern="^pay:back$"))
-    application.add_handler(CallbackQueryHandler(handle_payment_cancel, pattern="^pay:cancel$"))
-    application.add_handler(CallbackQueryHandler(transactions_pagination, pattern="^txn_"))
+# Register callback query handlers
+application.add_handler(CallbackQueryHandler(handle_package_selection, pattern="^package:"))
+application.add_handler(CallbackQueryHandler(handle_payment_back, pattern="^pay:back$"))
+application.add_handler(CallbackQueryHandler(handle_payment_cancel, pattern="^pay:cancel$"))
+application.add_handler(CallbackQueryHandler(transactions_pagination, pattern="^txn_"))
 
-    # Add more handlers as we build other features (tryluck, free_tries, etc.)
+# Add more handlers as we build other features (tryluck, free_tries, etc.)
       
-    application.add_handler(CommandHandler("transactions", transactions_cmd))
+application.add_handler(CommandHandler("transactions", transactions_cmd))
     
-    application.add_handler(CommandHandler("stat", stat_cmd))
+application.add_handler(CommandHandler("stat", stat_cmd))
     
 # =========================
 # Entrypoint (Production-ready: FastAPI + Webhooks)
