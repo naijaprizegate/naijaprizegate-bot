@@ -43,110 +43,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger("naijaprizegate")
 
-# -------------------------
-# FastAPI app (webhook receiver)
-# -------------------------
-app = FastAPI()
-
-@app.get("/")
-async def root():
-    return {"status": "ok", "message": "NaijaPrizeGate bot is running 🚀"}
-
-from fastapi import Request, HTTPException
-from telegram import Bot
-
-@app.post("/flutterwave/webhook")
-async def flutterwave_webhook(request: Request):
-    try:
-        payload = await request.json()
-
-        # ✅ Verify the webhook signature (security check)
-        signature = request.headers.get("verif-hash")
-        if signature != FLW_SECRET_HASH:  # set FLW_SECRET_HASH in .env
-            raise HTTPException(status_code=403, detail="Invalid signature")
-
-        data = payload.get("data", {})
-        tx_ref = data.get("tx_ref")
-
-        if not tx_ref:
-            raise HTTPException(status_code=400, detail="Missing tx_ref")
-
-        # 🔹 Double-check with Flutterwave API
-        try:
-            verification = await verify_payment(tx_ref)
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=f"Verification failed: {str(e)}")
-
-        # ✅ Extract confirmed values
-        status = verification.get("data", {}).get("status")
-        amount = verification.get("data", {}).get("amount")
-        currency = verification.get("data", {}).get("currency")
-
-        # Extract payment ID from tx_ref (remember we used tx_{payment.id})
-        payment_id = int(tx_ref.split("_")[1])
-
-        session = SessionLocal()
-
-        # 🔹 Always log this transaction
-        log_entry = TransactionLog(
-            tx_ref=tx_ref,
-            status=status,
-            amount=amount,
-            raw_data=json.dumps(payload)  # still store raw webhook JSON
-        )
-        session.add(log_entry)
-
-        payment = session.query(Payment).filter(Payment.id == payment_id).first()
-        bot = Bot(token=BOT_TOKEN)
-
-        if payment:
-            user = session.query(User).filter(User.id == payment.user_id).first()
-
-            if status == "successful":
-                # ✅ Mark as completed
-                payment.status = "completed"
-
-                # Credit user with tries
-                if user:
-                    tries = PACKAGES.get(payment.amount, 0)
-                    user.balance += tries
-
-                    # Confirmation message
-                    await bot.send_message(
-                        chat_id=user.telegram_id,
-                        text=(
-                            f"🎉 *Payment confirmed!*\n\n"
-                            f"✅ Amount: ₦{payment.amount}\n"
-                            f"🎰 You have been credited with *{tries} tries*.\n"
-                            f"📊 New balance: {user.balance} tries."
-                        ),
-                        parse_mode="Markdown"
-                    )
-
-            else:
-                # ❌ Payment failed or abandoned
-                payment.status = "failed"
-
-                if user:
-                    await bot.send_message(
-                        chat_id=user.telegram_id,
-                        text=(
-                            f"⚠️ Payment *failed* or was not completed.\n\n"
-                            f"❌ Amount: ₦{payment.amount}\n"
-                            "Please try again from the /pay menu."
-                        ),
-                        parse_mode="Markdown"
-                    )
-
-        session.commit()
-        session.close()
-
-        return {"status": "ok"}
-
-    except Exception as e:
-        print("Webhook error:", str(e))
-        raise HTTPException(status_code=500, detail="Webhook processing failed")
-
 # Environment / configuration
 # -------------------------
 # Note: set these in Render (Environment) or locally before running
@@ -171,70 +67,14 @@ if not RENDER_EXTERNAL_URL:
 
 application = Application.builder().token(BOT_TOKEN).build()
 
-async def verify_payment(tx_ref: str):
-    """
-    Verify a payment on Flutterwave by transaction reference.
-    Returns JSON response with payment details.
-    """
-    url = f"https://api.flutterwave.com/v3/transactions/verify_by_reference?tx_ref={tx_ref}"
-    headers = {
-        "Authorization": f"Bearer {FLW_SECRET_KEY}",
-        "Content-Type": "application/json"
-    }
-    async with httpx.AsyncClient() as client:
-        response = await client.get(url, headers=headers)
-        response.raise_for_status()
-        return response.json()
-
 # -------------------------
-# MarkdownV2 escaping helper
+# FastAPI app (webhook receiver)
 # -------------------------
-def md_escape(value: Optional[str]) -> str:
-    """
-    Return the given value escaped for MarkdownV2 using telegram.helpers.escape_markdown.
-    Accepts None and returns an empty string in that case.
-    Use this for any dynamic text inserted into parse_mode=MARKDOWN_V2 messages.
-    """
-    s = "" if value is None else str(value)
-    # escape_markdown handles the heavy lifting; ensure we explicitly pass version=2 where used later
-    return escape_markdown(s, version=2)
+app = FastAPI()
 
-# -----------------------
-# Helper to Check admin
-# -----------------------
-def is_admin(user_id: int) -> bool:
-    return user_id == ADMIN_ID
-
-# =========================
-# Step 2 — Global constants
-# =========================
-
-# Payment packages
-PACKAGES = {
-    "500": {
-        "label": "₦500 (1 try)",
-        "amount": 500,
-        "tries": 1,
-    },
-    "2000": {
-        "label": "₦2000 (5 tries)",
-        "amount": 2000,
-        "tries": 5,
-    },
-    "5000": {
-        "label": "₦5000 (15 tries)",
-        "amount": 5000,
-        "tries": 15,
-    },
-}
-
-HELP_MSG = (
-    "ℹ️ *How it works:*\n\n"
-    "1️⃣ Pick a package (₦500, ₦2000, or ₦5000).\n"
-    "2️⃣ Get your tries credited.\n"
-    "3️⃣ Each try is a chance to win the iPhone!\n\n"
-    f"Winner unboxing videos will be posted in {PUBLIC_CHANNEL}."
-)
+@app.get("/")
+async def root():
+    return {"status": "ok", "message": "NaijaPrizeGate bot is running 🚀"}
 
 # -----------------------------
 # Database Setup (SQLAlchemy)
@@ -254,6 +94,9 @@ engine = create_engine(
 )
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 Base = declarative_base()
+
+from fastapi import Request, HTTPException
+from telegram import Bot
 
 # -----------------------------
 # User table
@@ -306,6 +149,63 @@ class Play(Base):
 # -----------------------------
 Base.metadata.create_all(bind=engine)
 
+# -------------------
+# Telegram Application
+# -------------------
+application = Application.builder().token(BOT_TOKEN).build()
+
+# -------------------------
+# MarkdownV2 escaping helper
+# -------------------------
+def md_escape(value: Optional[str]) -> str:
+    """
+    Return the given value escaped for MarkdownV2 using telegram.helpers.escape_markdown.
+    Accepts None and returns an empty string in that case.
+    Use this for any dynamic text inserted into parse_mode=MARKDOWN_V2 messages.
+    """
+    s = "" if value is None else str(value)
+    # escape_markdown handles the heavy lifting; ensure we explicitly pass version=2 where used later
+    return escape_markdown(s, version=2)
+
+# -----------------------
+# Helper to Check admin
+# -----------------------
+def is_admin(user_id: int) -> bool:
+    return user_id == ADMIN_ID
+
+# =========================
+# Step 2 — Global constants
+# =========================
+
+# Payment packages
+PACKAGES = {
+    "500": {
+        "label": "₦500 (1 try)",
+        "amount": 500,
+        "tries": 1,
+    },
+    "2000": {
+        "label": "₦2000 (5 tries)",
+        "amount": 2000,
+        "tries": 5,
+    },
+    "5000": {
+        "label": "₦5000 (15 tries)",
+        "amount": 5000,
+        "tries": 15,
+    },
+}
+
+HELP_MSG = (
+    "ℹ️ *How it works:*\n\n"
+    "1️⃣ Pick a package (₦500, ₦2000, or ₦5000).\n"
+    "2️⃣ Get your tries credited.\n"
+    "3️⃣ Each try is a chance to win the iPhone!\n\n"
+    f"Winner unboxing videos will be posted in {PUBLIC_CHANNEL}."
+)
+
+
+
 # =========================
 # Step 3 — Keyboards
 # =========================
@@ -350,7 +250,6 @@ WELCOME_TEXT = (
     f"{PUBLIC_CHANNEL} — don’t miss them!\n\n"
     "👉 Tap a button below to get started!"
 )
-
 
 async def start_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handles the /start command"""
@@ -731,11 +630,117 @@ async def stat_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text(msg, parse_mode="Markdown")
 
+@app.post("/flutterwave/webhook")
+async def flutterwave_webhook(request: Request):
+    try:
+        payload = await request.json()
+
+        # ✅ Verify the webhook signature (security check)
+        signature = request.headers.get("verif-hash")
+        if signature != FLW_SECRET_HASH:  # set FLW_SECRET_HASH in .env
+            raise HTTPException(status_code=403, detail="Invalid signature")
+
+        data = payload.get("data", {})
+        tx_ref = data.get("tx_ref")
+
+        if not tx_ref:
+            raise HTTPException(status_code=400, detail="Missing tx_ref")
+
+        # 🔹 Double-check with Flutterwave API
+        try:
+            verification = await verify_payment(tx_ref)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Verification failed: {str(e)}")
+
+        # ✅ Extract confirmed values
+        status = verification.get("data", {}).get("status")
+        amount = verification.get("data", {}).get("amount")
+        currency = verification.get("data", {}).get("currency")
+
+        # Extract payment ID from tx_ref (remember we used tx_{payment.id})
+        payment_id = int(tx_ref.split("_")[1])
+
+        session = SessionLocal()
+
+        # 🔹 Always log this transaction
+        log_entry = TransactionLog(
+            tx_ref=tx_ref,
+            status=status,
+            amount=amount,
+            raw_data=json.dumps(payload)  # still store raw webhook JSON
+        )
+        session.add(log_entry)
+
+        payment = session.query(Payment).filter(Payment.id == payment_id).first()
+        bot = Bot(token=BOT_TOKEN)
+
+        if payment:
+            user = session.query(User).filter(User.id == payment.user_id).first()
+
+            if status == "successful":
+                # ✅ Mark as completed
+                payment.status = "completed"
+
+                # Credit user with tries
+                if user:
+                    tries = PACKAGES.get(payment.amount, 0)
+                    user.balance += tries
+
+                    # Confirmation message
+                    await bot.send_message(
+                        chat_id=user.telegram_id,
+                        text=(
+                            f"🎉 *Payment confirmed!*\n\n"
+                            f"✅ Amount: ₦{payment.amount}\n"
+                            f"🎰 You have been credited with *{tries} tries*.\n"
+                            f"📊 New balance: {user.balance} tries."
+                        ),
+                        parse_mode="Markdown"
+                    )
+
+            else:
+                # ❌ Payment failed or abandoned
+                payment.status = "failed"
+
+                if user:
+                    await bot.send_message(
+                        chat_id=user.telegram_id,
+                        text=(
+                            f"⚠️ Payment *failed* or was not completed.\n\n"
+                            f"❌ Amount: ₦{payment.amount}\n"
+                            "Please try again from the /pay menu."
+                        ),
+                        parse_mode="Markdown"
+                    )
+
+        session.commit()
+        session.close()
+
+        return {"status": "ok"}
+
+    except Exception as e:
+        print("Webhook error:", str(e))
+        raise HTTPException(status_code=500, detail="Webhook processing failed")
+
+
+async def verify_payment(tx_ref: str):
+    """
+    Verify a payment on Flutterwave by transaction reference.
+    Returns JSON response with payment details.
+    """
+    url = f"https://api.flutterwave.com/v3/transactions/verify_by_reference?tx_ref={tx_ref}"
+    headers = {
+        "Authorization": f"Bearer {FLW_SECRET_KEY}",
+        "Content-Type": "application/json"
+    }
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url, headers=headers)
+        response.raise_for_status()
+        return response.json()
+
 # =========================
 # Dispatcher / Handler Registration
 # =========================
-def main():
-    application = Application.builder().token(BOT_TOKEN).build()
 
     # Register command handlers
     application.add_handler(CommandHandler("start", start_cmd))
@@ -746,14 +751,13 @@ def main():
     application.add_handler(CallbackQueryHandler(handle_package_selection, pattern="^package:"))
     application.add_handler(CallbackQueryHandler(handle_payment_back, pattern="^pay:back$"))
     application.add_handler(CallbackQueryHandler(handle_payment_cancel, pattern="^pay:cancel$"))
+    application.add_handler(CallbackQueryHandler(transactions_pagination, pattern="^txn_"))
 
     # Add more handlers as we build other features (tryluck, free_tries, etc.)
       
     application.add_handler(CommandHandler("transactions", transactions_cmd))
-    application.add_handler(CallbackQueryHandler(transactions_pagination, pattern="^txn_"))
+    
     application.add_handler(CommandHandler("stat", stat_cmd))
-
-    application.run_polling()   # (local dev)
     
 # =========================
 # Entrypoint (Production-ready: FastAPI + Webhooks)
@@ -766,7 +770,6 @@ from telegram import Update
 
 # ⚡ FastAPI app is already defined above as `app`
 # ⚡ `application` (telegram.ext.Application) is also defined above
-
 
 # =========================
 # Startup / Webhook setup
