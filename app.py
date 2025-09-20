@@ -550,19 +550,19 @@ def is_admin(user_id: int) -> bool:
 # -----------------------------
 # Sync helper: Get or create user
 # -----------------------------
-def _get_or_create_user_sync(tg_id: int, username: str = ""):
-    """Sync version for use inside asyncio.to_thread. Creates user if not found."""
-    from sqlalchemy.orm import Session
-    from sqlalchemy import select
-
-    with Session(bind=engine) as session:
-        result = session.execute(select(User).where(User.tg_id == tg_id))
+# -----------------------------
+# Async helper: Get or create user
+# -----------------------------
+async def get_or_create_user(tg_id: int, username: str = ""):
+    """Fully async: Get an existing user or create a new one."""
+    async with AsyncSessionLocal() as session:
+        result = await session.execute(select(User).where(User.tg_id == tg_id))
         user = result.scalars().first()
 
         if user:
             return user
 
-        # Create new user
+        # Create new user if not found
         user = User(
             tg_id=tg_id,
             username=username,
@@ -571,8 +571,8 @@ def _get_or_create_user_sync(tg_id: int, username: str = ""):
             created_at=datetime.utcnow(),
         )
         session.add(user)
-        session.commit()
-        session.refresh(user)
+        await session.commit()
+        await session.refresh(user)
         return user
 
 # =========================
@@ -648,26 +648,6 @@ WELCOME_TEXT = (
     f"{md_escape(PUBLIC_CHANNEL)} — don’t miss them\\!\n\n"
     "👉 Tap a button below to get started\\!"
 )
-
-# ----- Async wrapper for getting or creating a user -----
-async def get_or_create_user(tg_id: int, username: str = ""):
-    """
-    Get an existing user or create a new one.
-    Adds an `is_new` attribute to indicate if the user was just created.
-    """
-    def _sync():
-        user = _get_or_create_user_sync(tg_id, username)  # your existing sync helper
-        user.is_new = False
-        if user:
-            # If the user existed before, is_new stays False
-            return user
-        else:
-            # If somehow _get_or_create_user_sync returned None (safety)
-            user = _get_or_create_user_sync(tg_id, username)
-            user.is_new = True
-            return user
-
-    return await asyncio.to_thread(_sync)
 
 async def start_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.message.from_user.id
