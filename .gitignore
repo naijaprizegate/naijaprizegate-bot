@@ -1,65 +1,32 @@
-# ==========================================
-# Python cache & bytecode
-# ==========================================
+# Python
 __pycache__/
-*.py[cod]
-*$py.class
-
-# ==========================================
-# Virtual environments
-# ==========================================
-.venv/
-venv/
-env/
-ENV/
-
-# ==========================================
-# Environment variables / secrets
-# (Never commit API keys, tokens, or DB URLs)
-# ==========================================
-.env
-*.env
-
-# ==========================================
-# Databases
-# (We use Postgres in production, ignore local files)
-# ==========================================
-db.sqlite3
+*.pyc
+*.pyo
+*.pyd
 *.db
+*.sqlite3
 
-# ==========================================
-# Logs
-# ==========================================
-*.log
+# Env
+.env
+.env.*
+!.env.example
 
-# ==========================================
-# Build & packaging artifacts
-# ==========================================
-build/
-dist/
-*.egg-info/
-.eggs/
-pip-wheel-metadata/
-*.whl
+# Alembic
+alembic.ini
+migrations/versions/*
 
-# ==========================================
-# Test / Coverage
-# ==========================================
-.pytest_cache/
-.coverage
-coverage.xml
-htmlcov/
-
-# ==========================================
-# IDE / Editor settings
-# ==========================================
+# IDE/editor
 .vscode/
 .idea/
 *.swp
-*.swo
-
-# ==========================================
-# OS-specific files
-# ==========================================
 .DS_Store
-Thumbs.db
+
+# Bytecode + logs
+*.log
+*.out
+*.err
+
+# Tests / coverage
+.pytest_cache/
+.coverage
+htmlcov/
