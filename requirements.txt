@@ -1,11 +1,34 @@
-fastapi==0.115.0
-uvicorn==0.30.6
-gunicorn==23.0.0
-python-telegram-bot
-sqlalchemy[asyncio]==2.0.36
+# FastAPI for the web framework
+fastapi==0.109.0
+
+# Telegram Bot (async, v20+)
+python-telegram-bot==20.3
+
+# Async Postgres driver (prebuilt binary avoids gcc compilation)
 asyncpg==0.29.0
-alembic==1.13.2
-httpx==0.27.2
-python-dotenv==1.0.1
-sentry-sdk==2.15.0
-pytest==8.3.3
+
+# Sync Postgres driver (for migrations & scripts)
+psycopg2-binary==2.9.9
+
+# SQLAlchemy (asyncio support)
+SQLAlchemy==2.0.23
+
+# Alembic for migrations
+alembic==1.12.0
+
+# HTTP client for external requests (Flutterwave API)
+httpx==0.26.2
+
+# Gunicorn + Uvicorn for production server
+gunicorn==21.2.0
+uvicorn==0.26.1
+
+# Environment variables loader (for local dev)
+python-dotenv==1.0.0
+
+# Sentry for error reporting (optional)
+sentry-sdk==1.24.0
+
+# Testing & dev tools
+pytest==7.4.0
+pytest-asyncio==0.22.0
