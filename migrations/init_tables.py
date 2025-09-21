@@ -25,18 +25,12 @@ def main():
             username TEXT,
             tries_paid INT DEFAULT 0,
             tries_bonus INT DEFAULT 0,
+            referred_by UUID REFERENCES users(id) ON DELETE SET NULL,
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
         cur.execute("""CREATE INDEX IF NOT EXISTS idx_users_tg_id ON users(tg_id);""")
         print("✅ users table & index created")
-
-        # Add self-referencing FK for referrals
-        cur.execute("""
-        ALTER TABLE users
-        ADD COLUMN IF NOT EXISTS referred_by UUID REFERENCES users(id) ON DELETE SET NULL;
-        """)
-        print("✅ referred_by FK added to users")
 
         # ----------------------
         # 2. Global Counter table
