@@ -51,9 +51,9 @@ async def on_startup():
     # start backgrounf tasks
     asyncio.create_task(periodic_tasks())
 
-# =========================
+# -------------------
 # Shutdown (cleanup)
-# =========================
+# -------------------
 @app.on_event("shutdown")
 async def on_shutdown():
     global application
