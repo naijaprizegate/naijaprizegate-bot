@@ -2,9 +2,24 @@
 # helpers.py
 #===============================================================
 import html
+import logging
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 from models import User, GlobalCounter, Play
+
+# ----------------------
+# Logger setup
+# ----------------------
+logger = logging.getLogger("telegram_bot")
+logger.setLevel(logging.INFO)
+
+# Add console handler (so logs appear on Render dashboard)
+if not logger.handlers:
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.INFO)
+    formatter = logging.Formatter("[%(asctime)s] %(levelname)s - %(message)s")
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
 
 
 # Escape MarkdownV2 for Telegram messages
