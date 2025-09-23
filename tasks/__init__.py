@@ -8,7 +8,7 @@ Background tasks package for NaijaPrizeGate Bot.
 import asyncio
 from typing import List
 
-from helpers import logger
+from logger import logger
 from . import sweeper, notifier, cleanup, periodic_tasks
 
 __all__ = ["start_background_tasks", "stop_background_tasks"]
