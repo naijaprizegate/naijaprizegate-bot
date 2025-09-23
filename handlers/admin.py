@@ -81,3 +81,11 @@ async def admin_callback(update: Update, context: CallbackContext):
         await session.commit()
         await query.edit_message_caption(caption=caption, parse_mode="MarkdownV2")
 
+# ----------------------------
+# Handler registration helper
+# ----------------------------
+def register_admin_handlers(application):
+    """Register admin command and callback handlers"""
+    application.add_handler(CommandHandler("pending_proofs", pending_proofs))
+    application.add_handler(CallbackQueryHandler(admin_callback, pattern="^admin_"))
+
