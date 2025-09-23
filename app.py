@@ -67,13 +67,18 @@ async def on_startup():
 @app.on_event("shutdown")
 async def on_shutdown():
     global application
-    if application:
-        try:
+    try:
+        # Stop background tasks first
+        from tasks import stop_background_tasks
+        await stop_background_tasks()
+
+        # Then stop Telegram app
+        if application:
             await application.stop()
             await application.shutdown()
             logger.info("🛑 Telegram bot stopped cleanly.")
-        except Exception as e:
-            logger.warning(f"⚠️ Error while shutting down Telegram bot: {e}")
+    except Exception as e:
+        logger.warning(f"⚠️ Error while shutting down: {e}")
 
 
 # --------------------------------------------------------------
@@ -111,3 +116,4 @@ async def flutterwave_webhook(secret: str, request: Request):
 @app.get("/health")
 async def health_check():
     return {"status": "ok", "bot_initialized": application is not None}
+
