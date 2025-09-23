@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 
 from db import get_async_session
 from models import Payment
-from helpers import logger
+from logger import logger
 
 CHECK_INTERVAL_SECONDS = 60 * 60 * 24  # 24h
 
