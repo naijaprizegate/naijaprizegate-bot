@@ -3,24 +3,26 @@
 # ========================================================
 """
 Wrapper for periodic background tasks.
-This file exists so app.py can safely import `periodic_tasks`
-without causing ImportError.
+Central place to start sweeper, notifier, and cleanup loops.
 """
 
 import asyncio
 from logger import logger
 from . import sweeper, notifier, cleanup
 
-async def start_all_tasks(loop: asyncio.AbstractEventLoop = None) -> None:
+async def start_all_tasks(loop: asyncio.AbstractEventLoop = None) -> list[asyncio.Task]:
     """
     Start all background task loops: sweeper, notifier, cleanup.
+    Returns a list of created tasks.
     """
     if loop is None:
-        loop = asyncio.get_event_loop()
+        loop = asyncio.get_running_loop()  # safer in Python 3.13+
 
-    loop.create_task(sweeper.expire_pending_payments_loop())
-    loop.create_task(notifier.retry_failed_notifications_loop())
-    loop.create_task(cleanup.cleanup_loop())
+    tasks = [
+        loop.create_task(sweeper.expire_pending_payments_loop(), name="SweeperLoop"),
+        loop.create_task(notifier.retry_failed_notifications_loop(), name="NotifierLoop"),
+        loop.create_task(cleanup.cleanup_loop(), name="CleanupLoop"),
+    ]
 
     logger.info("✅ All periodic tasks started from periodic_tasks.py")
-
+    return tasks
