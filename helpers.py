@@ -2,24 +2,9 @@
 # helpers.py
 #===============================================================
 import html
-import logging
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 from models import User, GlobalCounter, Play
-
-# ----------------------
-# Logger setup
-# ----------------------
-logger = logging.getLogger("telegram_bot")
-logger.setLevel(logging.INFO)
-
-# Add console handler (so logs appear on Render dashboard)
-if not logger.handlers:
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.INFO)
-    formatter = logging.Formatter("[%(asctime)s] %(levelname)s - %(message)s")
-    ch.setFormatter(formatter)
-    logger.addHandler(ch)
 
 
 # Escape MarkdownV2 for Telegram messages
@@ -80,3 +65,12 @@ async def record_play(session: AsyncSession, user: User, result: str):
     session.add(play)
     await session.commit()
     return play
+
+
+# Check if a user is admin
+def is_admin(user: User) -> bool:
+    """
+    Return True if the user is marked as admin.
+    Assumes the User model has an `is_admin` boolean column.
+    """
+    return getattr(user, "is_admin", False)
