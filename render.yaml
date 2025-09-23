@@ -2,9 +2,12 @@ services:
   - type: web
     name: naijaprizegate-bot
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn app:api --host 0.0.0.0 --port $PORT --log-level info
     plan: free
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+    startCommand: >
+      gunicorn -k uvicorn.workers.UvicornWorker app:app --bind 0.0.0.0:$PORT
     envVars:
       - key: BOT_TOKEN
         sync: false   # set manually in Render Dashboard
@@ -18,7 +21,7 @@ services:
         sync: false
       - key: FLW_SECRET_HASH
         sync: false
-      - key: WEBHOOK_SECRET    # 🔑 changed from TG_WEBHOOK_SECRET
+      - key: WEBHOOK_SECRET   # ✅ changed from TG_WEBHOOK_SECRET
         value: "my-secret"
       - key: PAY_REDIRECT_URL
         value: "https://naijaprizegate-bot.onrender.com/payment/verify"
