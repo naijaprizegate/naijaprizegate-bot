@@ -3,10 +3,11 @@
 #=================================================================
 import uuid
 from sqlalchemy import (
-    Column, String, Integer, ForeignKey, Text, TIMESTAMP, CheckConstraint
+    Column, String, Integer, ForeignKey, Text, TIMESTAMP, CheckConstraint, Boolean
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.sql import func
 
 Base = declarative_base()
 
@@ -22,7 +23,8 @@ class User(Base):
     tries_paid = Column(Integer, default=0)
     tries_bonus = Column(Integer, default=0)
     referred_by = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"))
-    created_at = Column(TIMESTAMP, server_default="CURRENT_TIMESTAMP")
+    created_at = Column(TIMESTAMP, server_default=func.now())
+    is_admin = Column(Boolean, default=False, nullable=False)  # ✅ new column
 
     # relationships
     referrer = relationship("User", remote_side=[id])
@@ -50,7 +52,7 @@ class Play(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     result = Column(String, nullable=False)
-    created_at = Column(TIMESTAMP, server_default="CURRENT_TIMESTAMP")
+    created_at = Column(TIMESTAMP, server_default=func.now())
 
     __table_args__ = (
         CheckConstraint("result IN ('win','lose','pending')", name="check_play_result"),
@@ -71,10 +73,10 @@ class Payment(Base):
     tx_ref = Column(String, unique=True, nullable=False)
     status = Column(String, default="pending")
     amount = Column(Integer, nullable=False)
-    created_at = Column(TIMESTAMP, server_default="CURRENT_TIMESTAMP")
+    created_at = Column(TIMESTAMP, server_default=func.now())
 
     __table_args__ = (
-        CheckConstraint("status IN ('pending','successful','failed')", name="check_payment_status"),
+        CheckConstraint("status IN ('pending','successful','failed','expired')", name="check_payment_status"),  # ✅ added expired
     )
 
     user = relationship("User", back_populates="payments")
@@ -90,7 +92,7 @@ class Proof(Base):
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     file_id = Column(Text, nullable=False)
     status = Column(String, default="pending")
-    created_at = Column(TIMESTAMP, server_default="CURRENT_TIMESTAMP")
+    created_at = Column(TIMESTAMP, server_default=func.now())
 
     __table_args__ = (
         CheckConstraint("status IN ('pending','approved','rejected')", name="check_proof_status"),
@@ -108,4 +110,4 @@ class TransactionLog(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     provider = Column(String, nullable=False)
     payload = Column(Text, nullable=False)
-    created_at = Column(TIMESTAMP, server_default="CURRENT_TIMESTAMP")
+    created_at = Column(TIMESTAMP, server_default=func.now())
