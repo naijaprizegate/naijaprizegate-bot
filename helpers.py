@@ -58,6 +58,10 @@ async def consume_try(session: AsyncSession, user: User) -> str:
 
     return None
 
+# Get user by UUID (database id)
+async def get_user_by_id(session: AsyncSession, user_id) -> User | None:
+    result = await session.execute(select(User).where(User.id == user_id))
+    return result.scalar_one_or_none()
 
 # Record a play
 async def record_play(session: AsyncSession, user: User, result: str):
@@ -66,7 +70,6 @@ async def record_play(session: AsyncSession, user: User, result: str):
     await session.commit()
     return play
 
-
 # Check if a user is admin
 def is_admin(user: User) -> bool:
     """
@@ -74,3 +77,4 @@ def is_admin(user: User) -> bool:
     Assumes the User model has an `is_admin` boolean column.
     """
     return getattr(user, "is_admin", False)
+
