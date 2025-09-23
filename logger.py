@@ -1,20 +1,13 @@
 # ===========================================================
 # logger.py
 # ===========================================================
-import logging
 import traceback
 from telegram import Update
 from telegram.ext import ContextTypes
 
-# Logger setup
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)  # Or use LOG_LEVEL from env
-handler = logging.StreamHandler()
-formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
-handler.setFormatter(formatter)
-logger.addHandler(handler)
+# Import central logger from logging_setup
+from logging_setup import logger
 
-# Your Admin Telegram ID
 from os import getenv
 ADMIN_ID = int(getenv("ADMIN_ID", 0))
 
@@ -24,7 +17,10 @@ async def tg_error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -
     Logs the error, optionally sends to Sentry, and notifies admin.
     """
     # 1️⃣ Log the exception
-    logger.error("Exception in Telegram update:\n%s", "".join(traceback.format_exception(None, context.error, context.error.__traceback__)))
+    logger.error(
+        "Exception in Telegram update:\n%s",
+        "".join(traceback.format_exception(None, context.error, context.error.__traceback__))
+    )
 
     # 2️⃣ Optionally notify admin on Telegram
     try:
@@ -34,7 +30,7 @@ async def tg_error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -
     except Exception as e:
         logger.error("Failed to notify admin: %s", e)
 
-    # 3️⃣ Optional: Sentry capture (if you use it)
+    # 3️⃣ Optional: Sentry capture (if installed + configured)
     try:
         import sentry_sdk
         sentry_sdk.capture_exception(context.error)
