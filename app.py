@@ -5,6 +5,7 @@ import os
 import logging
 import asyncio
 from tasks import periodic_tasks
+from tasks import register_background_tasks
 from tasks import start_background_tasks
 from fastapi import FastAPI, Request, HTTPException
 from telegram import Update
@@ -50,6 +51,8 @@ async def on_startup():
 
     # start backgrounf tasks
     asyncio.create_task(periodic_tasks())
+    
+    register_background_tasks
 
 # -------------------
 # Shutdown (cleanup)
@@ -92,3 +95,4 @@ async def flutterwave_webhook(request: Request):
 @app.get("/health")
 async def health_check():
     return {"status": "ok", "bot_initialized": application is not None}
+
