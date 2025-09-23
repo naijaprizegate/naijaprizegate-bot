@@ -1,29 +1,28 @@
 # =======================================================
 # tasks/__init__.py
-# ======================================================
+# =======================================================
 """
 Background tasks package for NaijaPrizeGate Bot.
+Provides a unified entrypoint for starting all periodic tasks.
 """
 
-import asyncio
-from typing import Optional
+from helpers import logger
+from . import sweeper, notifier, cleanup, periodic_tasks
 
-from logger import logger
-from tasks import sweeper, notifier, cleanup
+__all__ = [
+    "start_background_tasks",
+    "sweeper",
+    "notifier",
+    "cleanup",
+    "periodic_tasks",
+]
 
-__all__ = ["register_background_tasks", "sweeper", "notifier", "cleanup"]
 
-def register_background_tasks(loop: Optional[asyncio.AbstractEventLoop] = None) -> None:
+async def start_background_tasks():
     """
-    Register background tasks with the given event loop.
-    Call this from your FastAPI startup.
+    Unified entrypoint: starts all background tasks
+    defined in periodic_tasks.py.
+    Call this in app.py on startup.
     """
-    if loop is None:
-        loop = asyncio.get_event_loop()
-
-    loop.create_task(sweeper.expire_pending_payments_loop())
-    loop.create_task(notifier.retry_failed_notifications_loop())
-    loop.create_task(cleanup.cleanup_loop())
-
-    logger.info("Background tasks registered ✅")
-
+    await periodic_tasks.start_all_tasks()
+    logger.info("Background tasks started ✅")
