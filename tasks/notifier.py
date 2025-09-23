@@ -6,7 +6,7 @@ Notifier task: retry failed notifications.
 """
 
 import asyncio
-from helpers import logger
+from logger import logger
 
 CHECK_INTERVAL_SECONDS = 60 * 60  # 1h
 
