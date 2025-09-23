@@ -8,7 +8,7 @@ without causing ImportError.
 """
 
 import asyncio
-from helpers import logger
+from logger import logger
 from . import sweeper, notifier, cleanup
 
 async def start_all_tasks(loop: asyncio.AbstractEventLoop = None) -> None:
