@@ -8,8 +8,8 @@ Background tasks package for NaijaPrizeGate Bot.
 import asyncio
 from typing import Optional
 
-from helpers import logger
-from . import sweeper, notifier, cleanup
+from logger import logger
+from tasks import sweeper, notifier, cleanup
 
 __all__ = ["register_background_tasks", "sweeper", "notifier", "cleanup"]
 
