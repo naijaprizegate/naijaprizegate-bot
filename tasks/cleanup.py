@@ -6,7 +6,7 @@ Cleanup task: housekeeping (temp files, old logs, etc).
 """
 
 import asyncio
-from helpers import logger
+from logger import logger
 
 CHECK_INTERVAL_SECONDS = 60 * 60 * 6  # every 6h
 
