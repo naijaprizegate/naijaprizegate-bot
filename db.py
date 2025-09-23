@@ -4,6 +4,7 @@
 import os
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
+from contextlib import asynccontextmanager
 
 # Import your models so metadata is available
 from models import Base
@@ -33,8 +34,14 @@ AsyncSessionLocal = sessionmaker(
     class_=AsyncSession
 )
 
-# Dependency: get an async session
+# Dependency: get an async session (FastAPI-style)
 async def get_session() -> AsyncSession:
+    async with AsyncSessionLocal() as session:
+        yield session
+
+# Added: get_async_session for tasks and services that call it directly
+@asynccontextmanager
+async def get_async_session() -> AsyncSession:
     async with AsyncSessionLocal() as session:
         yield session
 
