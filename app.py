@@ -1,17 +1,16 @@
 # ==============================================================
 # app.py
 # ==============================================================
+
 import os
 import logging
-import asyncio
 from fastapi import FastAPI, Request, HTTPException
 from telegram import Update
 from telegram.ext import Application
 
 from logger import tg_error_handler
 from handlers import core, payments, free, admin, tryluck  # ensure handlers register
-from tasks import register_background_tasks
-from tasks import periodic_tasks  # module with start_all_tasks()
+from tasks import start_background_tasks  # unified entrypoint
 
 # --------------------------------------------------------------
 # Load environment variables
@@ -58,9 +57,8 @@ async def on_startup():
     await application.bot.set_webhook(webhook_url)
     logger.info(f"Webhook set to {webhook_url} ✅")
 
-    # Background tasks
-    register_background_tasks(asyncio.get_event_loop())   # from tasks/__init__.py
-    await periodic_tasks.start_all_tasks()               # from tasks/periodic_tasks.py
+    # ✅ Start background tasks (unified entrypoint)
+    await start_background_tasks()
 
 
 # --------------------------------------------------------------
@@ -113,4 +111,3 @@ async def flutterwave_webhook(secret: str, request: Request):
 @app.get("/health")
 async def health_check():
     return {"status": "ok", "bot_initialized": application is not None}
-
