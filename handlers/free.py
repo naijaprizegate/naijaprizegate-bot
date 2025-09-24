@@ -153,7 +153,7 @@ def proof_approved_text(user, bonus_tries: int):
     )
 
 # --- REGISTRATION ---
-def register_free_handlers(application):
+def register_handlers(application):
     application.add_handler(CommandHandler("free", free_menu))
     application.add_handler(CallbackQueryHandler(send_referral_link, pattern="^get_referral$"))
     application.add_handler(CallbackQueryHandler(ask_proof_upload, pattern="^upload_proof$"))
