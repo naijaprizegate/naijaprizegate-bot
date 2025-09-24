@@ -22,8 +22,11 @@ WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET")
 # --------------------------------------------------------------
 # Logging setup
 # --------------------------------------------------------------
-logging.basicConfig(level=os.getenv("LOG_LEVEL", "INFO"))
-logger = logging.getLogger(__name__)
+logging.basicConfig(
+    format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
+    level=os.getenv("LOG_LEVEL", "INFO"),
+)
+logger = logging.getLogger("app")
 
 # --------------------------------------------------------------
 # FastAPI app
@@ -31,14 +34,18 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 application: Application = None  # Telegram Application (global)
 
-# Added root route
+
+# --------------------------------------------------------------
+# Root route
+# --------------------------------------------------------------
 @app.get("/")
 async def root():
     return {
         "status": "ok",
         "message": "NaijaPrizeGate Bot is running ✅",
-        "health": f"Check /health for bot status",
+        "health": "Check /health for bot status",
     }
+
 
 # --------------------------------------------------------------
 # Startup event
@@ -47,25 +54,35 @@ async def root():
 async def on_startup():
     global application
     if not BOT_TOKEN or not RENDER_EXTERNAL_URL or not WEBHOOK_SECRET:
-        logger.error("❌ Missing one or more required env vars: BOT_TOKEN, RENDER_EXTERNAL_URL, WEBHOOK_SECRET")
+        logger.error(
+            "❌ Missing one or more required env vars: BOT_TOKEN, RENDER_EXTERNAL_URL, WEBHOOK_SECRET"
+        )
         raise RuntimeError("Missing required environment variables.")
 
     # Telegram Bot Application
     application = Application.builder().token(BOT_TOKEN).build()
 
-    # Initialize bot
+    # Initialize & start bot
     await application.initialize()
-    logger.info("Telegram Application initialized ✅")
+    await application.start()
+    logger.info("Telegram Application initialized & started ✅")
 
     # Add error handler
     application.add_error_handler(tg_error_handler)
+
+    # Register all handlers
+    core.register_handlers(application)
+    free.register_free_handlers(application)
+    payments.register_payment_handlers(application)
+    admin.register_admin_handlers(application)
+    tryluck.register_tryluck_handlers(application)
 
     # Webhook setup
     webhook_url = f"{RENDER_EXTERNAL_URL}/telegram/webhook/{WEBHOOK_SECRET}"
     await application.bot.set_webhook(webhook_url)
     logger.info(f"Webhook set to {webhook_url} ✅")
 
-    # ✅ Start background tasks (unified entrypoint)
+    # ✅ Start background tasks
     await start_background_tasks()
 
 
@@ -78,6 +95,7 @@ async def on_shutdown():
     try:
         # Stop background tasks first
         from tasks import stop_background_tasks
+
         await stop_background_tasks()
 
         # Then stop Telegram app
@@ -124,4 +142,3 @@ async def flutterwave_webhook(secret: str, request: Request):
 @app.get("/health")
 async def health_check():
     return {"status": "ok", "bot_initialized": application is not None}
-
