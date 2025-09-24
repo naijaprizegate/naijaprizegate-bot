@@ -6,7 +6,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, filters
 from helpers import md_escape, get_or_create_user
 from models import Proof
-from db import AsyncSessionLocal
+from db import AsyncSessionLocal, get_async_session
 from sqlalchemy import insert
 import os
 import random
@@ -15,8 +15,9 @@ BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
 
 # --- FREE MENU HANDLER ---
 async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Show free try options: referral + social media proof."""
-    user = await get_or_create_user(update.effective_user)
+    async with get_async_session() as session:
+
+        user = await get_or_create_user(session, update.effective_user.id, update.effective_user.username)
 
     text = (
         f"🎁 *Hey {md_escape(user.username or user.first_name)}!* \n\n"
@@ -120,10 +121,11 @@ async def handle_proof_photo(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     photo = update.message.photo[-1]  # get best resolution
     file_id = photo.file_id
-    user = await get_or_create_user(update.effective_user)
+    
 
     # Save proof to DB
-    async with AsyncSessionLocal() as session:
+    async with get_async_session() as session:
+        user = await get_or_create_user(session, update.effective_user.id, update.effective_user.username)
         stmt = insert(Proof).values(user_id=user.id, file_id=file_id, status="pending")
         await session.execute(stmt)
         await session.commit()
