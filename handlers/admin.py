@@ -15,7 +15,7 @@ ADMIN_ID = int(os.getenv("ADMIN_ID", 0))
 # ----------------------------
 # Command: /pending_proofs
 # ----------------------------
-async def pending_proofs(update: Update, context: CallbackContext):
+async def pending_proofs(update: Update, context: ContextTypes.DEFAULT_TYPES):
     """List all pending proofs with Approve/Reject buttons"""
     if update.effective_user.id != ADMIN_ID:
         return await update.message.reply_text("❌ Access denied.")
@@ -50,7 +50,7 @@ async def pending_proofs(update: Update, context: CallbackContext):
 # ----------------------------
 # Callback: Approve / Reject
 # ----------------------------
-async def admin_callback(update: Update, context: CallbackContext):
+async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle Approve/Reject button clicks"""
     query = update.callback_query
     await query.answer()
@@ -84,7 +84,7 @@ async def admin_callback(update: Update, context: CallbackContext):
 # ----------------------------
 # Handler registration helper
 # ----------------------------
-def register_admin_handlers(application):
+def register_handlers(application):
     """Register admin command and callback handlers"""
     application.add_handler(CommandHandler("pending_proofs", pending_proofs))
     application.add_handler(CallbackQueryHandler(admin_callback, pattern="^admin_"))
