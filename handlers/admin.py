@@ -3,7 +3,7 @@
 # ==============================================================
 import os
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext import CallbackContext, CommandHandler, CallbackQueryHandler
+from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler
 from sqlalchemy.future import select
 from db import AsyncSessionLocal
 from helpers import add_tries, get_user_by_id, md_escape
