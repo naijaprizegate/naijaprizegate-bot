@@ -6,9 +6,10 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CallbackQueryHandler, CommandHandler
 from helpers import md_escape, get_or_create_user, add_tries
 from models import Payment
-from db import AsyncSessionLocal
-from services.payments import create_checkout, verify_payment
+from db import AsyncSessionLocal, get_async_session
+from services.payments import create_checkout
 from sqlalchemy import insert, update, select
+from datetime import datetime, timedelta
 import uuid
 import os
 
@@ -33,8 +34,9 @@ def payment_success_text(user, amount, tries_added):
 
 # --- /buy entrypoint ---
 async def buy_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Show package options."""
-    user = await get_or_create_user(update.effective_user)
+    async with get_async_session() as session:
+
+        user = await get_or_create_user(session, update.effective_user.id, update.effective_user.username)
 
     keyboard = [
         [InlineKeyboardButton(f"💳 Buy {tries} Try{'s' if tries>1 else ''} — ₦{price}", callback_data=f"buy_{price}")]
@@ -56,7 +58,7 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     if not data.startswith("buy_"):
         return
 
-    price = int(data.split("_")[1])
+    price = int(query.data.split("_")[1])
     tries = dict(PACKAGES)[price]
 
     # Generate tx_ref (unique per user)
@@ -102,13 +104,13 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
             .where(Payment.user_id == query.from_user.id, Payment.status == "pending")
             .order_by(Payment.created_at.desc())
         )
-        pending_payment = result.scalars().first()
+        pending = result.scalars().first()
 
         # Delete if exists
-        if pending_payment:
-            await session.delete(pending_payment)
+        if pending:
+            await session.delete(pending)
             await session.commit()
-
+       
     # Back to menu
     keyboard = [
         [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
@@ -151,9 +153,6 @@ async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: 
     )
 
 # ----Expire Old Payments ----
-from datetime import datetime, timedelta
-from sqlalchemy import update
-
 async def expire_old_payments():
     cutoff = datetime.utcnow() - timedelta(hours=24)
     async with AsyncSessionLocal() as session:
