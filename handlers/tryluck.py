@@ -5,7 +5,6 @@ import asyncio
 import random
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes, CallbackQueryHandler, CommandHandler
-
 from helpers import md_escape, get_or_create_user
 from services.tryluck import spin_logic
 from db import get_async_session
@@ -31,7 +30,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Handle outcomes
     if outcome == "no_tries":
-        await update.effective_message.reply_text(
+        return await update.effective_message.reply_text(
             "😅 You don't have any tries left! Buy more spins or earn free ones.",
             parse_mode="MarkdownV2"
         )
@@ -82,3 +81,4 @@ async def tryluck_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def register_handlers(application):
     application.add_handler(CommandHandler("tryluck", tryluck_handler))
     application.add_handler(CallbackQueryHandler(tryluck_callback, pattern="^tryluck$"))
+
