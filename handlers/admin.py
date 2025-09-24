@@ -15,7 +15,7 @@ ADMIN_ID = int(os.getenv("ADMIN_ID", 0))
 # ----------------------------
 # Command: /pending_proofs
 # ----------------------------
-async def pending_proofs(update: Update, context: ContextTypes.DEFAULT_TYPES):
+async def pending_proofs(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """List all pending proofs with Approve/Reject buttons"""
     if update.effective_user.id != ADMIN_ID:
         return await update.message.reply_text("❌ Access denied.")
