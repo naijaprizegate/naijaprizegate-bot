@@ -1,4 +1,6 @@
+# ===============================================================
 # handlers/core.py
+# ================================================================
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters
 
@@ -105,3 +107,4 @@ def register_handlers(application):
     application.add_handler(CommandHandler("help", help_cmd))
     application.add_handler(CommandHandler("mytries", mytries))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, fallback))
+
