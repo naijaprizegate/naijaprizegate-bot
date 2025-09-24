@@ -31,6 +31,14 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 application: Application = None  # Telegram Application (global)
 
+# Added root route
+@app.get("/")
+async def root():
+    return {
+        "status": "ok",
+        "message": "NaijaPrizeGate Bot is running ✅",
+        "health": f"Check /health for bot status",
+    }
 
 # --------------------------------------------------------------
 # Startup event
