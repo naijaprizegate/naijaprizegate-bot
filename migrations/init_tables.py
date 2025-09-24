@@ -26,6 +26,7 @@ def main():
             username TEXT,
             tries_paid INT DEFAULT 0,
             tries_bonus INT DEFAULT 0,
+            is_admin BOOLEAN DEFAULT FALSE,  -- ✅ Added field
             referred_by UUID REFERENCES users(id) ON DELETE SET NULL,
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
