@@ -1,18 +1,15 @@
 import os
 import psycopg2
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
 
 def main():
-    if not DATABASE_URL:
+    # ✅ fetch inside main (no UnboundLocalError)
+    database_url = os.environ.get("DATABASE_URL")
+    if not database_url:
         print("ERROR: DATABASE_URL not found in env")
         return
 
-    # psycopg2 does not understand "+asyncpg" in DSN
-    if DATABASE_URL.startswith("postgresql+asyncpg://"):
-        DATABASE_URL = DATABASE_URL.replace("postgresql+asyncpg://", "postgresql://", 1)
-
-    conn = psycopg2.connect(DATABASE_URL)
+    conn = psycopg2.connect(database_url)
     cur = conn.cursor()
 
     try:
@@ -124,6 +121,7 @@ def main():
     finally:
         cur.close()
         conn.close()
+
 
 if __name__ == "__main__":
     main()
