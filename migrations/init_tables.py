@@ -8,6 +8,10 @@ def main():
         print("ERROR: DATABASE_URL not found in env")
         return
 
+    # psycopg2 does not understand "+asyncpg" in DSN
+    if DATABASE_URL.startswith("postgresql+asyncpg://"):
+        DATABASE_URL = DATABASE_URL.replace("postgresql+asyncpg://", "postgresql://", 1)
+
     conn = psycopg2.connect(DATABASE_URL)
     cur = conn.cursor()
 
