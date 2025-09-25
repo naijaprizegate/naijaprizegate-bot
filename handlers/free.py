@@ -151,6 +151,8 @@ def proof_approved_text(user, bonus_tries: int):
 # --- REGISTRATION ---
 def register_handlers(application):
     application.add_handler(CommandHandler("free", free_menu))
+    # ✅ Make "🎁 Free Tries" button from /start work
+    application.add_handler(CallbackQueryHandler(free_menu, pattern="^free$"))
     application.add_handler(CallbackQueryHandler(send_referral_link, pattern="^get_referral_link$"))
     application.add_handler(CallbackQueryHandler(ask_proof_upload, pattern="^upload_proof$"))
     application.add_handler(MessageHandler(filters.PHOTO, handle_proof_photo))
