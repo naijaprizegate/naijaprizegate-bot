@@ -25,17 +25,16 @@ BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
 # --- SUCCESS MESSAGE ---
 def payment_success_text(user, amount, tries_added):
     return (
-        f"💸 *Boom!* Payment received!\n\n"
+        f"💸 *Boom\\!* Payment received\\!\n\n"
         f"🎉 *{md_escape(user.first_name)}*, you just unlocked *{tries_added} new spins* 🚀\n"
-        f"(Top-up: ₦{amount:,})\n\n"
+        f"(Top\\-up: ₦{amount:,})\n\n"
         "Your arsenal is loaded, your chances just went way up ⚡\n\n"
-        "👉 Don’t keep luck waiting — hit *Try Luck* now and chase that jackpot! 🏆🔥"
+        "👉 Don’t keep luck waiting — hit *Try Luck* now and chase that jackpot\\! 🏆🔥"
     )
 
 # --- /buy entrypoint ---
 async def buy_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     async with get_async_session() as session:
-
         user = await get_or_create_user(session, update.effective_user.id, update.effective_user.username)
 
     keyboard = [
@@ -44,7 +43,7 @@ async def buy_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ]
 
     await update.message.reply_text(
-        f"🛒 *Choose your top-up package, {md_escape(user.first_name)}:*",
+        f"🛒 *Choose your top\\-up package, {md_escape(user.first_name)}:*",
         reply_markup=InlineKeyboardMarkup(keyboard),
         parse_mode="MarkdownV2"
     )
@@ -87,7 +86,7 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
 
     await query.edit_message_text(
         f"💳 *Package selected:* {tries} Try{'s' if tries>1 else ''} for ₦{price}\n\n"
-        "👉 Click below to confirm payment, or cancel to go back.",
+        "👉 Click below to confirm payment, or cancel to go back\\.",
         reply_markup=InlineKeyboardMarkup(keyboard),
         parse_mode="MarkdownV2"
     )
@@ -119,11 +118,11 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
     ]
 
     await query.edit_message_text(
-        "❌ Payment cancelled. Pending transaction cleared.\n\n"
-        "You’re back at the main menu!",
-        reply_markup=InlineKeyboardMarkup(keyboard)
+        "❌ Payment cancelled\\. Pending transaction cleared\\.\n\n"
+        "You’re back at the main menu\\!",
+        reply_markup=InlineKeyboardMarkup(keyboard),
+        parse_mode="MarkdownV2"
     )
-
 
 # --- Webhook success handler (called from app.py webhook endpoint) ---
 async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: int, bot):
@@ -168,4 +167,3 @@ def register_handlers(application):
     application.add_handler(CommandHandler("buy", buy_menu))
     application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy_"))
     application.add_handler(CallbackQueryHandler(handle_cancel_payment, pattern="^cancel_payment$"))
-
