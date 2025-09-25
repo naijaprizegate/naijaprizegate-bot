@@ -24,18 +24,18 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # TODO: handle referral (your get_or_create_user doesn’t take referred_by currently)
 
     text = (
-        f"👋 Hey *{md_escape(user.first_name)}*!\n\n"
+        f"👋 Hey *{md_escape(user.first_name)}*\\!\n\n"
         "Welcome to *NaijaPrizeGate* 🎰\n\n"
         "Your golden ticket to daily wins 💸🔥\n\n"
-        "You can become the *winner* of an *iPhone 16 Pro Max*\n\n"
+        "You can become the *winner* of an *iPhone 16 Pro Max*\\!\n\n"
         "Here’s how you unlock the gate:\n"
         "✨ `Try Luck` → Spin now & feel the thrill\n"
-        "💳 `Buy` → Load up more spins (paid tries)\n"
-        "🎁 `Free` → Earn bonus spins (invite & win)\n"
+        "💳 `Buy` → Load up more spins \\(paid tries\\)\n"
+        "🎁 `Free` → Earn bonus spins \\(invite & win\\)\n"
         "📊 `/mytries` → See your balance of chances\n\n"
         "⚡ Every spin counts towards the *Jackpot*\n"
         "…and someone *will* take it home 👑\n\n"
-        "Ready? 🎯 Tap *Try Luck* and let’s roll!"
+        "Ready\\? 🎯 Tap *Try Luck* and let’s roll\\!"
     )
 
     keyboard = [
@@ -62,10 +62,10 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "• `/start` → begin or refresh menu\n"
         "✨ `Try Luck` → Spin the wheel, feel the thrill\n"
         "💳 `Buy` → Load up paid spins & chase the jackpot\n"
-        "🎁 `Free` → Earn bonus spins (invite friends = more chances)\n"
+        "🎁 `Free` → Earn bonus spins \\(invite friends = more chances\\)\n"
         "📊 `/mytries` → Track your spin balance\n"
         "🏆 Jackpot → Every spin moves us closer to the big win 🔥\n\n"
-        "👉 Don’t just stand at the gate… *spin your way through!* 🚀"
+        "👉 Don’t just stand at the gate… *spin your way through* 🚀 "
         "Hit it and be the next winner 🎉"
     )
     await update.message.reply_text(text, parse_mode="MarkdownV2")
@@ -107,4 +107,3 @@ def register_handlers(application):
     application.add_handler(CommandHandler("help", help_cmd))
     application.add_handler(CommandHandler("mytries", mytries))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, fallback))
-
