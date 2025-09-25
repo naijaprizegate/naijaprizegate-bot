@@ -3,7 +3,7 @@
 #=================================================================
 import uuid
 from sqlalchemy import (
-    Column, String, Integer, ForeignKey, Text, TIMESTAMP, CheckConstraint, Boolean
+    Column, String, Integer, ForeignKey, Text, TIMESTAMP, CheckConstraint, Boolean, BigInteger
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship, declarative_base
@@ -18,13 +18,13 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    tg_id = Column(Integer, unique=True, nullable=False)
+    tg_id = Column(BigInteger, unique=True, nullable=False)   # ✅ FIX: BigInteger for Telegram IDs
     username = Column(String, nullable=True)
     tries_paid = Column(Integer, default=0)
     tries_bonus = Column(Integer, default=0)
     referred_by = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"))
     created_at = Column(TIMESTAMP, server_default=func.now())
-    is_admin = Column(Boolean, default=False, nullable=False)  # ✅ new column
+    is_admin = Column(Boolean, default=False, nullable=False)
 
     # relationships
     referrer = relationship("User", remote_side=[id])
@@ -76,7 +76,7 @@ class Payment(Base):
     created_at = Column(TIMESTAMP, server_default=func.now())
 
     __table_args__ = (
-        CheckConstraint("status IN ('pending','successful','failed','expired')", name="check_payment_status"),  # ✅ added expired
+        CheckConstraint("status IN ('pending','successful','failed','expired')", name="check_payment_status"),
     )
 
     user = relationship("User", back_populates="payments")
