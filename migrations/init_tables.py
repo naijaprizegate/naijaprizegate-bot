@@ -3,13 +3,12 @@ import psycopg2
 
 
 def main():
-    # ✅ fetch inside main
     database_url = os.environ.get("DATABASE_URL")
     if not database_url:
         print("ERROR: DATABASE_URL not found in env")
         return
 
-    # ✅ psycopg2 does not understand "+asyncpg", strip it
+    # psycopg2 does not understand "+asyncpg", strip it
     if database_url.startswith("postgresql+asyncpg://"):
         database_url = database_url.replace("postgresql+asyncpg://", "postgresql://", 1)
 
@@ -31,7 +30,7 @@ def main():
             username TEXT,
             tries_paid INT DEFAULT 0,
             tries_bonus INT DEFAULT 0,
-            is_admin BOOLEAN DEFAULT FALSE,  -- ✅ Added field
+            is_admin BOOLEAN DEFAULT FALSE NOT NULL,
             referred_by UUID REFERENCES users(id) ON DELETE SET NULL,
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
@@ -40,7 +39,7 @@ def main():
         print("✅ users table & index created")
 
         # ----------------------
-        # 2. Global Counter table
+        # 2. Global Counter
         # ----------------------
         cur.execute("DROP TABLE IF EXISTS global_counter CASCADE;")
         cur.execute("""
@@ -52,7 +51,7 @@ def main():
         print("✅ global_counter table created")
 
         # ----------------------
-        # 3. Plays table
+        # 3. Plays
         # ----------------------
         cur.execute("DROP TABLE IF EXISTS plays CASCADE;")
         cur.execute("""
@@ -67,7 +66,7 @@ def main():
         print("✅ plays table & index created")
 
         # ----------------------
-        # 4. Payments table
+        # 4. Payments
         # ----------------------
         cur.execute("DROP TABLE IF EXISTS payments CASCADE;")
         cur.execute("""
@@ -75,7 +74,7 @@ def main():
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
             user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
             tx_ref TEXT NOT NULL UNIQUE,
-            status TEXT DEFAULT 'pending' CHECK (status IN ('pending','successful','failed')),
+            status TEXT DEFAULT 'pending' CHECK (status IN ('pending','successful','failed','expired')),
             amount INT NOT NULL,
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
@@ -84,7 +83,7 @@ def main():
         print("✅ payments table & index created")
 
         # ----------------------
-        # 5. Proofs table
+        # 5. Proofs
         # ----------------------
         cur.execute("DROP TABLE IF EXISTS proofs CASCADE;")
         cur.execute("""
@@ -100,7 +99,7 @@ def main():
         print("✅ proofs table & index created")
 
         # ----------------------
-        # 6. Transaction Logs table
+        # 6. Transaction Logs
         # ----------------------
         cur.execute("DROP TABLE IF EXISTS transaction_logs CASCADE;")
         cur.execute("""
