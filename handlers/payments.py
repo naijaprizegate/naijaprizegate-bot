@@ -1,7 +1,6 @@
-# ===============================================================
+# =============================================================== 
 # handlers/payments.py
 # ===============================================================
-
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CallbackQueryHandler, CommandHandler
 from helpers import md_escape, get_or_create_user, add_tries
@@ -26,7 +25,7 @@ BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
 def payment_success_text(user, amount, tries_added):
     return (
         f"💸 *Boom\\!* Payment received\\!\n\n"
-        f"🎉 *{md_escape(user.first_name)}*, you just unlocked *{tries_added} new spins* 🚀\n"
+        f"🎉 *{md_escape(user.username or user.first_name or 'Friend')}*, you just unlocked *{tries_added} new spins* 🚀\n"
         f"(Top\\-up: ₦{amount:,})\n\n"
         "Your arsenal is loaded, your chances just went way up ⚡\n\n"
         "👉 Don’t keep luck waiting — hit *Try Luck* now and chase that jackpot\\! 🏆🔥"
@@ -35,18 +34,29 @@ def payment_success_text(user, amount, tries_added):
 # --- /buy entrypoint ---
 async def buy_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     async with get_async_session() as session:
-        user = await get_or_create_user(session, update.effective_user.id, update.effective_user.username)
+        user = await get_or_create_user(
+            session, update.effective_user.id, update.effective_user.username
+        )
 
     keyboard = [
         [InlineKeyboardButton(f"💳 Buy {tries} Try{'s' if tries>1 else ''} — ₦{price}", callback_data=f"buy_{price}")]
         for price, tries in PACKAGES
     ]
 
-    await update.message.reply_text(
-        f"🛒 *Choose your top\\-up package, {md_escape(user.first_name)}:*",
-        reply_markup=InlineKeyboardMarkup(keyboard),
-        parse_mode="MarkdownV2"
-    )
+    # Works for both command (/buy) and callback (Buy Tries button)
+    if update.message:
+        await update.message.reply_text(
+            f"🛒 *Choose your top\\-up package, {md_escape(user.username or 'Friend')}:*",
+            reply_markup=InlineKeyboardMarkup(keyboard),
+            parse_mode="MarkdownV2"
+        )
+    elif update.callback_query:
+        await update.callback_query.answer()
+        await update.callback_query.edit_message_text(
+            f"🛒 *Choose your top\\-up package, {md_escape(user.username or 'Friend')}:*",
+            reply_markup=InlineKeyboardMarkup(keyboard),
+            parse_mode="MarkdownV2"
+        )
 
 # --- Handle package selection ---
 async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -60,10 +70,8 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     price = int(query.data.split("_")[1])
     tries = dict(PACKAGES)[price]
 
-    # Generate tx_ref (unique per user)
     tx_ref = str(uuid.uuid4())
 
-    # Create pending Payment row
     async with AsyncSessionLocal() as session:
         stmt = insert(Payment).values(
             user_id=query.from_user.id,
@@ -75,10 +83,8 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         await session.execute(stmt)
         await session.commit()
 
-    # Create checkout link via Flutterwave
     checkout_url = await create_checkout(amount=price, tx_ref=tx_ref, user_id=query.from_user.id)
 
-    # Show Confirm & Cancel
     keyboard = [
         [InlineKeyboardButton("✅ Confirm & Pay", url=checkout_url)],
         [InlineKeyboardButton("❌ Cancel", callback_data="cancel_payment")]
@@ -97,24 +103,20 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
     await query.answer()
 
     async with AsyncSessionLocal() as session:
-        # Find their most recent pending payment
         result = await session.execute(
             select(Payment)
             .where(Payment.user_id == query.from_user.id, Payment.status == "pending")
             .order_by(Payment.created_at.desc())
         )
         pending = result.scalars().first()
-
-        # Delete if exists
         if pending:
             await session.delete(pending)
             await session.commit()
        
-    # Back to menu
     keyboard = [
         [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
-        [InlineKeyboardButton("💳 Buy Tries", callback_data="buy_menu")],
-        [InlineKeyboardButton("🎁 Free Tries", callback_data="free_menu")],
+        [InlineKeyboardButton("💳 Buy Tries", callback_data="buy")],
+        [InlineKeyboardButton("🎁 Free Tries", callback_data="free")],
     ]
 
     await query.edit_message_text(
@@ -124,11 +126,9 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
         parse_mode="MarkdownV2"
     )
 
-# --- Webhook success handler (called from app.py webhook endpoint) ---
+# --- Webhook success handler ---
 async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: int, bot):
-    """Called after webhook verifies payment with Flutterwave."""
-    async with AsyncSessionLocal() as session:
-        # Mark row as successful
+    async with get_async_session() as session:
         stmt = (
             update(Payment)
             .where(Payment.tx_ref == tx_ref)
@@ -137,21 +137,17 @@ async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: 
         await session.execute(stmt)
         await session.commit()
 
-    # Add tries to user
+        db_user = await get_or_create_user(session, user_id)
+
     await add_tries(user_id, tries, paid=True)
 
-    # Notify user
     await bot.send_message(
         chat_id=user_id,
-        text=payment_success_text(
-            user=await get_or_create_user({"id": user_id}),  # minimal fallback
-            amount=amount,
-            tries_added=tries,
-        ),
+        text=payment_success_text(db_user, amount, tries),
         parse_mode="MarkdownV2"
     )
 
-# ----Expire Old Payments ----
+# ---- Expire Old Payments ----
 async def expire_old_payments():
     cutoff = datetime.utcnow() - timedelta(hours=24)
     async with AsyncSessionLocal() as session:
@@ -165,5 +161,6 @@ async def expire_old_payments():
 # --- Register handlers ---
 def register_handlers(application):
     application.add_handler(CommandHandler("buy", buy_menu))
+    application.add_handler(CallbackQueryHandler(buy_menu, pattern="^buy$"))  # ✅ makes Buy Tries button work
     application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy_"))
     application.add_handler(CallbackQueryHandler(handle_cancel_payment, pattern="^cancel_payment$"))
