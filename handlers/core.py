@@ -54,15 +54,14 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # Register handlers
 # ---------------------------------------------------------
 from telegram.ext import MessageHandler, filters
-
+import re
 def register_handlers(application):
     # /start command
     application.add_handler(CommandHandler("start", start))
 
     # 👋 greetings like hi, hello, hey
-    greetings = filters.Regex(
-        r'(?i)^(hi|hello|hey|howdy|sup|good\s?(morning|afternoon|evening))'
-    )
+    greetings = filters.Regex(re.compile(r"^(hi|hello|hey|howdy|sup|good\s?(morning|afternoon|evening))", re.IGNORECASE))
+
     application.add_handler(MessageHandler(greetings, start))
 
 
@@ -122,3 +121,4 @@ def register_handlers(application):
     application.add_handler(CommandHandler("help", help_cmd))
     application.add_handler(CommandHandler("mytries", mytries))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, fallback))
+
