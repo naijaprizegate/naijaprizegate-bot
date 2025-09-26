@@ -16,10 +16,13 @@ BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
 # --- FREE MENU HANDLER ---
 async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     async with get_async_session() as session:
-        user = await get_or_create_user(session, update.effective_user.id, update.effective_user.username)
+        db_user = await get_or_create_user(session, update.effective_user.id, update.effective_user.username)
+
+    tg_user = update.effective_user
+    display_name = md_escape(tg_user.first_name or tg_user.username or "Friend")
 
     text = (
-        f"🎁 *Hey {md_escape(user.username or user.first_name)}*\\! \n\n"
+        f"🎁 *Hey {display_name}*\\! \n\n"
         "Wanna grab some *FREE spins*? ⬇️\n\n"
         "🤩 Don’t sleep on this — it’s your golden chance to stack up extra tries and chase the jackpot\\! 💎🔥\n\n"
         "1️⃣ *Invite a friend*: Drop your referral link. Every signup through YOU = +1 free try ⚡ (the more friends, the more spins\\!)\n\n"
@@ -28,8 +31,7 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "👉 Pick your move below and start racking up those FREE shots at glory:"
     )
 
-    display_name = md_escape(user.first_name or user.username or "Friend")
-    ref_link = f"https://t.me/NaijaPrizeGateBot?start={user.id}"
+    ref_link = f"https://t.me/NaijaPrizeGateBot?start={db_user.id}"
 
     share_variants = [
         (
@@ -76,15 +78,21 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         parse_mode="MarkdownV2"
     )
 
-
 # --- REFERRAL LINK HANDLER ---
 async def send_referral_link(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Send the user their personal referral link."""
-    user = update.effective_user
-    ref_link = f"https://t.me/{BOT_USERNAME}?start={user.id}"
+    tg_user = update.effective_user
+
+    # ✅ Use DB user.id for referral links
+    async with get_async_session() as session:
+        db_user = await get_or_create_user(session, tg_user.id, tg_user.username)
+
+    ref_link = f"https://t.me/{BOT_USERNAME}?start={db_user.id}"
+
+    display_name = md_escape(tg_user.first_name or tg_user.username or "Friend")
 
     text = (
-        f"🚀 *Boom, {md_escape(user.first_name)}*\\! Your golden referral link is ready:\n\n"
+        f"🚀 *Boom, {display_name}*\\! Your golden referral link is ready:\n\n"
         f"🔗 {md_escape(ref_link)}\n\n"
         "👥 Every friend who joins through *your* link = you unlock *+1 FREE try\\!* 🎉\n\n"
         "📢 Share this link with friends. "
@@ -95,7 +103,6 @@ async def send_referral_link(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     await update.callback_query.answer()
     await update.callback_query.edit_message_text(text, parse_mode="MarkdownV2")
-
 
 # --- PROOF UPLOAD HANDLER ---
 async def ask_proof_upload(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -119,8 +126,12 @@ async def handle_proof_photo(update: Update, context: ContextTypes.DEFAULT_TYPE)
     file_id = photo.file_id
 
     async with get_async_session() as session:
-        user = await get_or_create_user(session, update.effective_user.id, update.effective_user.username)
-        stmt = insert(Proof).values(user_id=user.id, file_id=file_id, status="pending")
+        db_user = await get_or_create_user(
+            session,
+            update.effective_user.id,
+            update.effective_user.username
+        )
+        stmt = insert(Proof).values(user_id=db_user.id, file_id=file_id, status="pending")
         await session.execute(stmt)
         await session.commit()
 
@@ -135,10 +146,12 @@ async def handle_proof_photo(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
 
 # --- NOTIFICATION FOR APPROVAL ---
-def proof_approved_text(user, bonus_tries: int):
+def proof_approved_text(db_user, bonus_tries: int):
     """Text sent when admin approves proof and user is credited."""
+    display_name = md_escape(db_user.username or "Friend")
+
     return (
-        f"🎉 *Congrats {md_escape(user.first_name)}*\\! \n\n"
+        f"🎉 *Congrats {display_name}*\\! \n\n"
         f"✅ Your proof has been approved by our team. \n"
         f"💎 You just earned *{bonus_tries} FREE spin(s)*\\!\n\n"
         "🔥 That’s one more shot at grabbing the jackpot. Remember… every extra spin takes you closer to the *BIG WIN\\!* 💎💰\n\n"
