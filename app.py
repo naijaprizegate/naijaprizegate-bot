@@ -1,4 +1,4 @@
-# ==============================================================
+# =====================================================
 # app.py
 # ==============================================================
 
@@ -63,7 +63,6 @@ async def on_startup():
     application = Application.builder().token(BOT_TOKEN).build()
 
     # ✅ Register all handlers here
-    from handlers import core, free, payments, admin, tryluck
     core.register_handlers(application)
     free.register_handlers(application)
     payments.register_handlers(application)
@@ -78,7 +77,6 @@ async def on_startup():
     # Add error handler
     application.add_error_handler(tg_error_handler)
 
-    
     # Webhook setup
     webhook_url = f"{RENDER_EXTERNAL_URL}/telegram/webhook/{WEBHOOK_SECRET}"
     await application.bot.set_webhook(webhook_url)
@@ -144,4 +142,3 @@ async def flutterwave_webhook(secret: str, request: Request):
 @app.get("/health")
 async def health_check():
     return {"status": "ok", "bot_initialized": application is not None}
-
