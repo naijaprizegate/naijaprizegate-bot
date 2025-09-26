@@ -64,3 +64,61 @@ def register_handlers(application):
         r'(?i)^(hi|hello|hey|howdy|sup|good\s?(morning|afternoon|evening))'
     )
     application.add_handler(MessageHandler(greetings, start))
+
+
+# ---------------------------------------------------------
+# /help handler
+# ---------------------------------------------------------
+async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    text = (
+        "🆘 *Need a quick tour?* \n\n"
+        "NaijaPrizeGate 🎰 is your gateway to *daily wins* 💸.\n\n"
+        "Here’s your control panel:\n"
+        "• `/start` → begin or refresh menu\n"
+        "✨ `Try Luck` → Spin the wheel, feel the thrill\n"
+        "💳 `Buy` → Load up paid spins & chase the jackpot\n"
+        "🎁 `Free` → Earn bonus spins \\(invite friends = more chances\\)\n"
+        "📊 `/mytries` → Track your spin balance\n"
+        "🏆 Jackpot → Every spin moves us closer to the big win 🔥\n\n"
+        "👉 Don’t just stand at the gate… *spin your way through* 🚀 "
+        "Hit it and be the next winner 🎉"
+    )
+    await update.message.reply_text(text, parse_mode="MarkdownV2")
+
+
+# ---------------------------------------------------------
+# /mytries handler
+# ---------------------------------------------------------
+async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user = update.effective_user
+    async with get_async_session() as session:
+        db_user = await get_or_create_user(session, user.id, user.username)
+
+    text = (
+        f"🧮 *Your Tries*\n\n"
+        f"• Paid: `{db_user.tries_paid}`\n"
+        f"• Free: `{db_user.tries_bonus}`"
+    )
+
+    await update.message.reply_text(text, parse_mode="MarkdownV2")
+
+
+# ---------------------------------------------------------
+# Fallback text handler
+# ---------------------------------------------------------
+async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    text = (
+        "🤔 I didn’t understand that.\n"
+        "Use the menu buttons or try `/help`."
+    )
+    await update.message.reply_text(text, parse_mode="MarkdownV2")
+
+
+# ---------------------------------------------------------
+# Register handlers
+# ---------------------------------------------------------
+def register_handlers(application):
+    application.add_handler(CommandHandler("start", start))
+    application.add_handler(CommandHandler("help", help_cmd))
+    application.add_handler(CommandHandler("mytries", mytries))
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, fallback))
