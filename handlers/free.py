@@ -72,11 +72,19 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("📸 Upload Proof & Claim", callback_data="upload_proof")],
     ]
 
-    await update.message.reply_text(
-        text,
-        reply_markup=InlineKeyboardMarkup(keyboard),
-        parse_mode="MarkdownV2"
-    )
+    if update.callback_query:  # triggered by button
+        await update.callback_query.answer()
+        await update.callback_query.edit_message_text(
+            text,
+            reply_markup=InlineKeyboardMarkup(keyboard),
+            parse_mode="MarkdownV2"
+        )
+    else:  # triggered by /free command
+        await update.message.reply_text(
+            text,
+            reply_markup=InlineKeyboardMarkup(keyboard),
+            parse_mode="MarkdownV2"
+        )
 
 # --- REFERRAL LINK HANDLER ---
 async def send_referral_link(update: Update, context: ContextTypes.DEFAULT_TYPE):
