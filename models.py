@@ -73,6 +73,7 @@ class Payment(Base):
     tx_ref = Column(String, unique=True, nullable=False)
     status = Column(String, default="pending")
     amount = Column(Integer, nullable=False)
+    tries = Column(Integer, nullable=False, default=0)  # ✅ new column
     created_at = Column(TIMESTAMP, server_default=func.now())
 
     __table_args__ = (
@@ -111,3 +112,4 @@ class TransactionLog(Base):
     provider = Column(String, nullable=False)
     payload = Column(Text, nullable=False)
     created_at = Column(TIMESTAMP, server_default=func.now())
+
