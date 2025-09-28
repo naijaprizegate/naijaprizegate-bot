@@ -76,6 +76,7 @@ def main():
             tx_ref TEXT NOT NULL UNIQUE,
             status TEXT DEFAULT 'pending' CHECK (status IN ('pending','successful','failed','expired')),
             amount INT NOT NULL,
+            tries INT DEFAULT 0,  -- ✅ Added column for number of spins in this payment
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
