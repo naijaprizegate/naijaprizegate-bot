@@ -6,6 +6,7 @@ from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters
 
 from helpers import md_escape, get_or_create_user, is_admin
 from db import get_async_session
+import re
 
 # ---------------------------------------------------------
 # /start handler (with optional referral arg)
@@ -51,21 +52,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 # ---------------------------------------------------------
-# Register handlers
-# ---------------------------------------------------------
-from telegram.ext import MessageHandler, filters
-import re
-def register_handlers(application):
-    # /start command
-    application.add_handler(CommandHandler("start", start))
-
-    # 👋 greetings like hi, hello, hey
-    greetings = filters.Regex(re.compile(r"^(hi|hello|hey|howdy|sup|good\s?(morning|afternoon|evening))", re.IGNORECASE))
-
-    application.add_handler(MessageHandler(greetings, start))
-
-
-# ---------------------------------------------------------
 # /help handler
 # ---------------------------------------------------------
 async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -106,19 +92,35 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # Fallback text handler
 # ---------------------------------------------------------
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    # Escape MarkdownV2 special chars (like / and .)
     text = (
         "🤔 I didn’t understand that.\n"
         "Use the menu buttons or try `/help`."
     )
-    await update.message.reply_text(text, parse_mode="MarkdownV2")
 
+    await update.message.reply_text(
+        md_escape(text),  # ✅ safely escaped
+        parse_mode="MarkdownV2"
+    )
 
 # ---------------------------------------------------------
-# Register handlers
+# Register handlers (unified)
 # ---------------------------------------------------------
 def register_handlers(application):
+    # /start command
     application.add_handler(CommandHandler("start", start))
+
+    # 👋 greetings like hi, hello, hey
+    greetings = filters.Regex(re.compile(
+        r"^(hi|hello|hey|howdy|sup|good\s?(morning|afternoon|evening))",
+        re.IGNORECASE
+    ))
+    application.add_handler(MessageHandler(greetings, start))
+
+    # core commands
     application.add_handler(CommandHandler("help", help_cmd))
     application.add_handler(CommandHandler("mytries", mytries))
+
+    # fallback for unrecognized text
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, fallback))
 
