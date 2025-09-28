@@ -6,7 +6,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, filters
 from helpers import md_escape, get_or_create_user
 from models import Proof
-from db import AsyncSessionLocal, get_async_session
+from db import get_async_session
 from sqlalchemy import insert
 import os
 import random
@@ -31,7 +31,8 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "👉 Pick your move below and start racking up those FREE shots at glory:"
     )
 
-    ref_link = f"https://t.me/NaijaPrizeGateBot?start={db_user.id}"
+    ref_link = f"https://t.me/{BOT_USERNAME}?start={db_user.id}"
+    ref_link_md = md_escape(ref_link)  # ✅ escape before using in Markdown
 
     share_variants = [
         (
@@ -39,18 +40,18 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"Don’t sleep on this 👇\n\n"
             f"I’m spinning on *NaijaPrizeGate* and cashing out free tries and a chance to win an iPhone 16 Pro Max 🔥\n"
             f"Jump in with my link before you miss it ⏳\n\n"
-            f"👉 {ref_link}"
+            f"👉 {ref_link_md}"
         ),
         (
             f"🚀 *{display_name}* just scored free spins on *NaijaPrizeGate* 🎉\n\n"
             f"Ready to try your luck? Use my referral link now & claim yours fast 👇\n\n"
-            f"👉 {ref_link}"
+            f"👉 {ref_link_md}"
         ),
         (
             f"🔥 Hey, *{display_name}* is already playing\\! \n\n"
             f"NaijaPrizeGate is giving out free spins for a chance to win an iPhone 16 Pro Max 🎰💸\n"
             f"Click my link & don’t get left behind 👇\n\n"
-            f"👉 {ref_link}"
+            f"👉 {ref_link_md}"
         ),
     ]
 
@@ -96,12 +97,13 @@ async def send_referral_link(update: Update, context: ContextTypes.DEFAULT_TYPE)
         db_user = await get_or_create_user(session, tg_user.id, tg_user.username)
 
     ref_link = f"https://t.me/{BOT_USERNAME}?start={db_user.id}"
+    ref_link_md = md_escape(ref_link)  # ✅ escape before sending
 
     display_name = md_escape(tg_user.first_name or tg_user.username or "Friend")
 
     text = (
         f"🚀 *Boom, {display_name}*\\! Your golden referral link is ready:\n\n"
-        f"🔗 {md_escape(ref_link)}\n\n"
+        f"🔗 {ref_link_md}\n\n"
         "👥 Every friend who joins through *your* link = you unlock *+1 FREE try\\!* 🎉\n\n"
         "📢 Share this link with friends. "
         "🔥 The more you share, the more spins you stack. Imagine hitting the jackpot while others are still watching 👀\n\n"
