@@ -35,7 +35,7 @@ async def create_checkout(user_id: str, amount: int, tx_ref: str) -> str:
         "currency": "NGN",
         "redirect_url": "https://yourapp.com/payment/callback",  # optional if webhook is used
         "customer": {"email": "test@example.com"},  # replace with real user email
-        "customizations": {"title": "TryLuck Spins"},
+        "customizations": {"title": "NaijaPrizeGate"},
     }
 
     async with httpx.AsyncClient() as client:
