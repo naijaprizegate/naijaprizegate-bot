@@ -107,18 +107,23 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
 async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
+    print("❌ Cancel button pressed by", query.from_user.id)
 
     async with AsyncSessionLocal() as session:
+        # ✅ Fetch db_user properly
+        db_user = await get_or_create_user(session, query.from_user.id, query.from_user.username)
+
         result = await session.execute(
             select(Payment)
-            .where(Payment.user_id == query.from_user.id, Payment.status == "pending")
+            .where(Payment.user_id == db_user.id, Payment.status == "pending")
             .order_by(Payment.created_at.desc())
         )
         pending = result.scalars().first()
         if pending:
             await session.delete(pending)
             await session.commit()
-       
+            print(f"Deleted pending payment {pending.tx_ref} for {db_user.id}")
+
     keyboard = [
         [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
         [InlineKeyboardButton("💳 Buy Tries", callback_data="buy")],
