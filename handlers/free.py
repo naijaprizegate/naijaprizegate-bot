@@ -25,9 +25,9 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"🎁 *Hey {display_name}*\\! \n\n"
         "Wanna grab some *FREE spins*? ⬇️\n\n"
         "🤩 Don’t sleep on this — it’s your golden chance to stack up extra tries and chase the jackpot\\! 💎🔥\n\n"
-        "1️⃣ *Invite a friend*: Drop your referral link. Every signup through YOU = +1 free try ⚡ (the more friends, the more spins\\!)\n\n"
-        "2️⃣ *Follow us everywhere*: Facebook, Instagram, TikTok, YouTube 📲. Snap a proof pic 📸 → once approved, BOOM, another +1 free try lands in your account 🚀\n\n"
-        "⚠️ Don’t wait — others are already stacking free spins while you’re still reading this 👀. Be the one who wins, not the one who watches\\! 🏆\n\n"
+        "1️⃣ *Invite a friend*: Drop your referral link\\. Every signup through YOU = \\+1 free try ⚡ \\(the more friends, the more spins\\!\\)\n\n"
+        "2️⃣ *Follow us everywhere*: Facebook, Instagram, TikTok, YouTube 📲\\. Snap a proof pic 📸 → once approved, BOOM, another \\+1 free try lands in your account 🚀\n\n"
+        "⚠️ Don’t wait — others are already stacking free spins while you’re still reading this 👀\\. Be the one who wins, not the one who watches\\! 🏆\n\n"
         "👉 Pick your move below and start racking up those FREE shots at glory:"
     )
 
@@ -179,3 +179,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(send_referral_link, pattern="^get_referral_link$"))
     application.add_handler(CallbackQueryHandler(ask_proof_upload, pattern="^upload_proof$"))
     application.add_handler(MessageHandler(filters.PHOTO, handle_proof_photo))
+
