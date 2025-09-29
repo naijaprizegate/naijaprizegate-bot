@@ -62,7 +62,7 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "• `/start` → begin or refresh menu\\n"
         "✨ `Try Luck` → Spin the wheel, feel the thrill\\n"
         "💳 `Buy` → Load up paid spins & chase the jackpot\\n"
-        "🎁 `Free` → Earn bonus spins \\(invite friends = more chances\\)\\n"
+        "🎁 `Free` → Earn bonus spins \\(invite friends \\= more chances\\)\\n"
         "📊 `/mytries` → Track your spin balance\\n"
         "🏆 Jackpot → Every spin moves us closer to the big win 🔥\\n\\n"
         "👉 Don’t just stand at the gate… *spin your way through* 🚀 "
