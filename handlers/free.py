@@ -105,7 +105,7 @@ async def send_referral_link(update: Update, context: ContextTypes.DEFAULT_TYPE)
         f"🚀 *Boom, {display_name}*\\! Your golden referral link is ready:\n\n"
         f"🔗 {ref_link_md}\n\n"
         "👥 Every friend who joins through *your* link \\= you unlock *\\+1 FREE try\\!* 🎉\n\n"
-        "📢 Share this link with friends. "
+        "📢 Share this link with friends\\. "
         "🔥 The more you share, the more spins you stack\\. Imagine hitting the jackpot while others are still watching 👀\n\n"
         "Don’t sit back — blast your link in your groups, drop it in DMs, post it everywhere\\. "
         "*First movers win BIG\\!* 💰💎"
