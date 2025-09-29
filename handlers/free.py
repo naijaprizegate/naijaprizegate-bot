@@ -25,7 +25,7 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"🎁 *Hey {display_name}*\\! \n\n"
         "Wanna grab some *FREE spins*? ⬇️\n\n"
         "🤩 Don’t sleep on this — it’s your golden chance to stack up extra tries and chase the jackpot\\! 💎🔥\n\n"
-        "1️⃣ *Invite a friend*: Drop your referral link\\. Every signup through YOU = \\+1 free try ⚡ \\(the more friends, the more spins\\!\\)\n\n"
+        "1️⃣ *Invite a friend*: Drop your referral link\\. Every signup through YOU \\= \\+1 free try ⚡ \\(the more friends, the more spins\\!\\)\n\n"
         "2️⃣ *Follow us everywhere*: Facebook, Instagram, TikTok, YouTube 📲\\. Snap a proof pic 📸 → once approved, BOOM, another \\+1 free try lands in your account 🚀\n\n"
         "⚠️ Don’t wait — others are already stacking free spins while you’re still reading this 👀\\. Be the one who wins, not the one who watches\\! 🏆\n\n"
         "👉 Pick your move below and start racking up those FREE shots at glory:"
@@ -104,10 +104,10 @@ async def send_referral_link(update: Update, context: ContextTypes.DEFAULT_TYPE)
     text = (
         f"🚀 *Boom, {display_name}*\\! Your golden referral link is ready:\n\n"
         f"🔗 {ref_link_md}\n\n"
-        "👥 Every friend who joins through *your* link = you unlock *+1 FREE try\\!* 🎉\n\n"
+        "👥 Every friend who joins through *your* link \\= you unlock *\\+1 FREE try\\!* 🎉\n\n"
         "📢 Share this link with friends. "
-        "🔥 The more you share, the more spins you stack. Imagine hitting the jackpot while others are still watching 👀\n\n"
-        "Don’t sit back — blast your link in your groups, drop it in DMs, post it everywhere. "
+        "🔥 The more you share, the more spins you stack\\. Imagine hitting the jackpot while others are still watching 👀\n\n"
+        "Don’t sit back — blast your link in your groups, drop it in DMs, post it everywhere\\. "
         "*First movers win BIG\\!* 💰💎"
     )
 
@@ -121,7 +121,7 @@ async def ask_proof_upload(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.callback_query.edit_message_text(
         "📤 Please send a *photo screenshot* showing that you followed us "
         "on social media.\n\n"
-        "Once an admin approves it, you’ll receive +1 free try 🎉",
+        "Once an admin approves it, you’ll receive \\+1 free try 🎉",
         parse_mode="MarkdownV2"
     )
     context.user_data["awaiting_proof"] = True
@@ -147,7 +147,7 @@ async def handle_proof_photo(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     await update.message.reply_text(
         "✅ Proof received\\! \n\n"
-        "An admin will review it shortly. "
+        "An admin will review it shortly\\. "
         "You’ll be notified once approved 🎉",
         parse_mode="MarkdownV2"
     )
@@ -162,10 +162,10 @@ def proof_approved_text(db_user, bonus_tries: int):
 
     return (
         f"🎉 *Congrats {display_name}*\\! \n\n"
-        f"✅ Your proof has been approved by our team. \n"
+        f"✅ Your proof has been approved by our team\\. \n"
         f"💎 You just earned *{bonus_tries} FREE spin(s)*\\!\n\n"
-        "🔥 That’s one more shot at grabbing the jackpot. Remember… every extra spin takes you closer to the *BIG WIN\\!* 💎💰\n\n"
-        "📢 Don’t stop here — keep stacking free tries by inviting friends and smashing those social follows. "
+        "🔥 That’s one more shot at grabbing the jackpot\\. Remember… every extra spin takes you closer to the *BIG WIN\\!* 💎💰\n\n"
+        "📢 Don’t stop here — keep stacking free tries by inviting friends and smashing those social follows\\. "
         "*The ones who keep pushing are the ones who win BIG\\!* 🚀"
         "👉 Head back to *Try Luck* and put it to work 🔥"
     )
