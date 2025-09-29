@@ -56,20 +56,19 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ---------------------------------------------------------
 async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = (
-        "🆘 *Need a quick tour?* \n\n"
-        "NaijaPrizeGate 🎰 is your gateway to *daily wins* 💸.\n\n"
-        "Here’s your control panel:\n"
-        "• `/start` → begin or refresh menu\n"
-        "✨ `Try Luck` → Spin the wheel, feel the thrill\n"
-        "💳 `Buy` → Load up paid spins & chase the jackpot\n"
-        "🎁 `Free` → Earn bonus spins \\(invite friends = more chances\\)\n"
-        "📊 `/mytries` → Track your spin balance\n"
-        "🏆 Jackpot → Every spin moves us closer to the big win 🔥\n\n"
+        "🆘 *Need a quick tour?* \\n\\n"
+        "NaijaPrizeGate 🎰 is your gateway to *daily wins* 💸\\n\\n"
+        "Here’s your control panel:\\n"
+        "• `/start` → begin or refresh menu\\n"
+        "✨ `Try Luck` → Spin the wheel, feel the thrill\\n"
+        "💳 `Buy` → Load up paid spins & chase the jackpot\\n"
+        "🎁 `Free` → Earn bonus spins \\(invite friends = more chances\\)\\n"
+        "📊 `/mytries` → Track your spin balance\\n"
+        "🏆 Jackpot → Every spin moves us closer to the big win 🔥\\n\\n"
         "👉 Don’t just stand at the gate… *spin your way through* 🚀 "
         "Hit it and be the next winner 🎉"
     )
     await update.message.reply_text(text, parse_mode="MarkdownV2")
-
 
 # ---------------------------------------------------------
 # /mytries handler
@@ -94,8 +93,8 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Escape MarkdownV2 special chars (like / and .)
     text = (
-        "🤔 I didn’t understand that.\n"
-        "Use the menu buttons or try `/help`."
+        "🤔 I didn’t understand that\n"
+        "Use the menu buttons or try `/help`"
     )
 
     await update.message.reply_text(
