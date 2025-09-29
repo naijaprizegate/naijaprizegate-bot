@@ -73,8 +73,14 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     tx_ref = str(uuid.uuid4())
 
     async with AsyncSessionLocal() as session:
+        # ✅ Get or create the DB user
+        db_user = await get_or_create_user(
+            session, query.from_user.id, query.from_user.username
+        )
+
+        # ✅ Insert with db_user.id (UUID), not tg_id
         stmt = insert(Payment).values(
-            user_id=query.from_user.id,
+            user_id=db_user.id,
             amount=price,
             tries=tries,
             tx_ref=tx_ref,
@@ -164,3 +170,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(buy_menu, pattern="^buy$"))  # ✅ makes Buy Tries button work
     application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy_"))
     application.add_handler(CallbackQueryHandler(handle_cancel_payment, pattern="^cancel_payment$"))
+
