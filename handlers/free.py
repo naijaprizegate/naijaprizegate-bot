@@ -40,18 +40,18 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"Don’t sleep on this 👇\n\n"
             f"I’m spinning on *NaijaPrizeGate* and cashing out free tries and a chance to win an iPhone 16 Pro Max 🔥\n"
             f"Jump in with my link before you miss it ⏳\n\n"
-            f"👉 {ref_link_md}"
+            f"👉 {ref_link}"
         ),
         (
             f"🚀 *{display_name}* just scored free spins on *NaijaPrizeGate* 🎉\n\n"
             f"Ready to try your luck? Use my referral link now & claim yours fast 👇\n\n"
-            f"👉 {ref_link_md}"
+            f"👉 {ref_link}"
         ),
         (
             f"🔥 Hey, *{display_name}* is already playing\\! \n\n"
             f"NaijaPrizeGate is giving out free spins for a chance to win an iPhone 16 Pro Max 🎰💸\n"
             f"Click my link & don’t get left behind 👇\n\n"
-            f"👉 {ref_link_md}"
+            f"👉 {ref_link}"
         ),
     ]
 
