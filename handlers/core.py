@@ -91,16 +91,31 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # Fallback text handler
 # ---------------------------------------------------------
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    # Escape MarkdownV2 special chars (like / and .)
     text = (
-        "🤔 I didn’t understand that\n"
-        "Use the menu buttons or try `/help`"
+        "🤔 Sorry, I didn’t understand that\n"
+        "Use the menu buttons or try /help"
     )
+    safe_text = md_escape(text)
 
-    await update.message.reply_text(
-        md_escape(text),  # ✅ safely escaped
-        parse_mode="MarkdownV2"
-    )
+    keyboard = [
+        [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
+        [InlineKeyboardButton("💳 Buy Tries", callback_data="buy")],
+        [InlineKeyboardButton("🎁 Free Tries", callback_data="free")],
+    ]
+
+    if update.message:  # User typed something
+        await update.message.reply_text(
+            safe_text,
+            reply_markup=InlineKeyboardMarkup(keyboard),
+            parse_mode="MarkdownV2",
+        )
+    elif update.callback_query:  # User pressed an inline button
+        await update.callback_query.answer()
+        await update.callback_query.edit_message_text(
+            safe_text,
+            reply_markup=InlineKeyboardMarkup(keyboard),
+            parse_mode="MarkdownV2",
+        )
 
 # ---------------------------------------------------------
 # Register handlers (unified)
