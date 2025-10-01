@@ -3,11 +3,11 @@
 # ==============================================================
 import os
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler
-from sqlalchemy.future import select
+from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, filters
+from sqlalchemy.future import select, func
 from db import AsyncSessionLocal
 from helpers import add_tries, get_user_by_id, md_escape
-from models import Proof
+from models import Proof, User, GameState  # ✅ GameState tracks cycles & paid tries
 
 # Admin ID from environment
 ADMIN_ID = int(os.getenv("ADMIN_ID", 0))
@@ -48,9 +48,8 @@ async def pending_proofs(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return await update.message.reply_text("✅ No pending proofs at the moment\\.", parse_mode="MarkdownV2")
 
     for proof in proofs:
-        # Optional: fetch user details for better display
         user = await get_user_by_id(proof.user_id)
-        user_name = md_escape(user.first_name if user else str(proof.user_id))
+        user_name = md_escape(user.username or user.first_name if user else str(proof.user_id))
 
         caption = (
             f"*Pending Proof*\n"
@@ -73,7 +72,7 @@ async def pending_proofs(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
 
 # ----------------------------
-# Callback: Approve / Reject
+# Callback: Approve / Reject + Menus
 # ----------------------------
 async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle Approve/Reject and menu clicks"""
@@ -89,37 +88,50 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         action = query.data.split(":")[1]
 
         if action == "pending_proofs":
-            # Replace message with pending proofs list
             await pending_proofs(update, context)
+
         elif action == "stats":
-            await query.edit_message_text(
-                "📊 Stats panel coming soon...",
-                parse_mode="MarkdownV2"
+            async with AsyncSessionLocal() as session:
+                # Users
+                total_users = await session.scalar(select(func.count(User.id)))
+                # Proofs
+                total_proofs = await session.scalar(select(func.count(Proof.id)))
+                approved = await session.scalar(select(func.count(Proof.id)).where(Proof.status == "approved"))
+                rejected = await session.scalar(select(func.count(Proof.id)).where(Proof.status == "rejected"))
+                pending = await session.scalar(select(func.count(Proof.id)).where(Proof.status == "pending"))
+                # Game cycles
+                state = await session.scalar(select(GameState).limit(1))
+                cycle = state.current_cycle if state else 1
+                paid_tries = state.paid_tries if state else 0
+
+            stats_text = (
+                f"📊 *Bot Stats*\n\n"
+                f"👥 Total Users: *{total_users}*\n"
+                f"📝 Proofs: {total_proofs} (✅ {approved}, ❌ {rejected}, ⏳ {pending})\n\n"
+                f"🔄 Current Cycle: *{cycle}*\n"
+                f"💎 Paid Tries this Cycle: *{paid_tries}*"
             )
+            await query.edit_message_text(stats_text, parse_mode="MarkdownV2")
+
         elif action == "user_search":
+            context.user_data["awaiting_user_search"] = True
             await query.edit_message_text(
-                "👤 User search coming soon...",
+                "👤 Send me a user’s Telegram ID or username to search:",
                 parse_mode="MarkdownV2"
             )
         return
-    
+
     # --- Handle approve/reject proof ---
     try:
         action, proof_id = query.data.split(":")
         proof_id = int(proof_id)
     except Exception:
-        return await query.edit_message_caption(
-            caption="⚠️ Invalid callback data\\.",
-            parse_mode="MarkdownV2"
-        )
+        return await query.edit_message_caption(caption="⚠️ Invalid callback data\\.", parse_mode="MarkdownV2")
 
     async with AsyncSessionLocal() as session:
         proof = await session.get(Proof, proof_id)
         if not proof or proof.status != "pending":
-            return await query.edit_message_caption(
-                caption="⚠️ Proof already processed\\.",
-                parse_mode="MarkdownV2"
-            )
+            return await query.edit_message_caption(caption="⚠️ Proof already processed\\.", parse_mode="MarkdownV2")
 
         if action == "admin_approve":
             proof.status = "approved"
@@ -133,10 +145,42 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.edit_message_caption(caption=caption, parse_mode="MarkdownV2")
 
 # ----------------------------
+# User Search (text input)
+# ----------------------------
+async def user_search_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if update.effective_user.id != ADMIN_ID or not context.user_data.get("awaiting_user_search"):
+        return
+
+    query_text = update.message.text.strip()
+    async with AsyncSessionLocal() as session:
+        user = None
+        if query_text.isdigit():
+            user = await session.get(User, query_text)  # UUID search would need explicit cast
+        else:
+            result = await session.execute(select(User).where(User.username == query_text))
+            user = result.scalars().first()
+
+    if not user:
+        await update.message.reply_text("⚠️ No user found.", parse_mode="MarkdownV2")
+    else:
+        reply = (
+            f"👤 *User Info*\n"
+            f"🆔 UUID: `{user.id}`\n"
+            f"📛 Username: {md_escape(user.username or '-')}\n"
+            f"🎲 Paid Tries: {user.tries_paid}\n"
+            f"🎁 Bonus Tries: {user.tries_bonus}\n"
+            f"👥 Referred By: {user.referred_by or 'None'}"
+        )
+        await update.message.reply_text(reply, parse_mode="MarkdownV2")
+
+    context.user_data["awaiting_user_search"] = False
+
+# ----------------------------
 # Handler registration helper
 # ----------------------------
 def register_handlers(application):
     """Register admin command and callback handlers"""
+    application.add_handler(CommandHandler("admin", admin_panel))
     application.add_handler(CommandHandler("pending_proofs", pending_proofs))
     application.add_handler(CallbackQueryHandler(admin_callback, pattern="^admin_"))
-
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, user_search_handler))
