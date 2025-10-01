@@ -129,16 +129,49 @@ async def telegram_webhook(secret: str, request: Request):
 
 
 # --------------------------------------------------------------
-# Flutterwave webhook placeholder
+# Flutterwave webhook (real handler)
 # --------------------------------------------------------------
+from fastapi import Request, HTTPException
+from db import AsyncSessionLocal
+from models import Payment
+from sqlalchemy import select, update
+from logger import logger
+
 @app.post("/flw/webhook/{secret}")
 async def flutterwave_webhook(secret: str, request: Request):
     if secret != WEBHOOK_SECRET:
         raise HTTPException(status_code=403, detail="Invalid secret")
 
-    body = await request.json()
-    # TODO: implement verify_webhook() in services/payments.py
-    return {"ok": True}
+    data = await request.json()
+    logger.info(f"💳 Flutterwave webhook received: {data}")
+
+    # ✅ Verify Flutterwave signature (recommended)
+    signature = request.headers.get("verif-hash")
+    if signature != FLW_HASH_SECRET:  # from your Flutterwave dashboard
+        raise HTTPException(status_code=403, detail="Invalid signature")
+
+    tx_status = data.get("status")   # "successful", "failed", etc.
+    tx_id = data.get("id")           # Flutterwave transaction ID
+    ref = data.get("tx_ref")         # your payment reference
+
+    # ✅ Update payment in DB
+    async with AsyncSessionLocal() as session:
+        result = await session.execute(select(Payment).where(Payment.tx_ref == ref))
+        payment = result.scalars().first()
+
+        if not payment:
+            logger.warning(f"No Payment record found for ref {ref}")
+        else:
+            stmt = (
+                update(Payment)
+                .where(Payment.id == payment.id)
+                .values(status=tx_status, flw_tx_id=tx_id)
+            )
+            await session.execute(stmt)
+            await session.commit()
+            logger.info(f"✅ Payment {ref} updated to {tx_status}")
+
+    return {"status": "success"}
 
 
 # --------------------------------------------------------------
