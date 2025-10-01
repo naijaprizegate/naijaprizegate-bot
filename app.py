@@ -139,22 +139,25 @@ from logger import logger
 
 @app.post("/flw/webhook/{secret}")
 async def flutterwave_webhook(secret: str, request: Request):
+    # 1️⃣ Check URL secret
     if secret != WEBHOOK_SECRET:
         raise HTTPException(status_code=403, detail="Invalid secret")
 
+    # 2️⃣ Parse body
     data = await request.json()
     logger.info(f"💳 Flutterwave webhook received: {data}")
 
-    # ✅ Verify Flutterwave signature (recommended)
+    # 3️⃣ Verify Flutterwave signature
     signature = request.headers.get("verif-hash")
-    if signature != FLW_HASH_SECRET:  # from your Flutterwave dashboard
+    if not signature or signature != FLW_HASH_SECRET:
         raise HTTPException(status_code=403, detail="Invalid signature")
 
-    tx_status = data.get("status")   # "successful", "failed", etc.
-    tx_id = data.get("id")           # Flutterwave transaction ID
-    ref = data.get("tx_ref")         # your payment reference
+    # 4️⃣ Extract values
+    tx_status = data.get("status")   # "successful", "failed"
+    tx_id = data.get("id")           # Flutterwave tx id
+    ref = data.get("tx_ref")         # your own payment reference
 
-    # ✅ Update payment in DB
+    # 5️⃣ Update DB
     async with AsyncSessionLocal() as session:
         result = await session.execute(select(Payment).where(Payment.tx_ref == ref))
         payment = result.scalars().first()
