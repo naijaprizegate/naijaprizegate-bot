@@ -49,8 +49,12 @@ class GameState(Base):
     __tablename__ = "game_state"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    current_cycle = Column(Integer, default=1)          # ✅ how many jackpot rounds completed
-    paid_tries_this_cycle = Column(Integer, default=0)  # ✅ resets each cycle
+    # Which jackpot cycle we're on (1,2,3,...)
+    current_cycle = Column(Integer, default=1, nullable=False)
+    # Paid tries accumulated during this cycle (resets when a cycle completes)
+    paid_tries_this_cycle = Column(Integer, default=0, nullable=False)
+    created_at = Column(TIMESTAMP, server_default=func.now())
+    updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
 
 # ----------------------
 # 3. Plays
