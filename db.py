@@ -39,7 +39,7 @@ AsyncSessionLocal = sessionmaker(
 )
 
 # Dependency: get an async session
-async def get_session() -> AsyncSession:
+async def get_async_session() -> AsyncSession:
     async with AsyncSessionLocal() as session:
         yield session
 
