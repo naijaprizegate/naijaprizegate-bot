@@ -1,4 +1,4 @@
-import os
+import os 
 import psycopg2
 
 
@@ -112,6 +112,20 @@ def main():
         );
         """)
         print("✅ transaction_logs table created")
+
+        # ----------------------
+        # 7. Game State
+        # ----------------------
+        cur.execute("DROP TABLE IF EXISTS game_state CASCADE;")
+        cur.execute("""
+        CREATE TABLE game_state (
+            id SERIAL PRIMARY KEY,
+            current_cycle INT DEFAULT 1,
+            paid_tries_this_cycle INT DEFAULT 0,
+            updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+        );
+        """)
+        print("✅ game_state table created")
 
         # Commit all changes
         conn.commit()
