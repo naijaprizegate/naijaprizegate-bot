@@ -4,7 +4,7 @@
 import os
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, filters
-from sqlalchemy.future import select, func
+from sqlalchemy import select, func
 from db import AsyncSessionLocal
 from helpers import add_tries, get_user_by_id, md_escape
 from models import Proof, User, GameState  # ✅ GameState tracks cycles & paid tries
