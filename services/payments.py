@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, update
 from datetime import datetime
 
-from db import get_session
+from db import get_async_session
 from models import Payment, TransactionLog, GlobalCounter
 
 # ==== Config ====
