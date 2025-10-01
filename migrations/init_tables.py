@@ -122,6 +122,7 @@ def main():
             id SERIAL PRIMARY KEY,
             current_cycle INT DEFAULT 1,
             paid_tries_this_cycle INT DEFAULT 0,
+            created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
