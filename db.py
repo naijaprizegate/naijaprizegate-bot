@@ -7,7 +7,6 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import select
 from models import GlobalCounter, GameState
-from contextlib import asynccontextmanager
 
 logger = logging.getLogger(__name__)
 
@@ -39,8 +38,15 @@ AsyncSessionLocal = sessionmaker(
     class_=AsyncSession
 )
 
+from contextlib import asynccontextmanager
+
+# For routes (dependency injection)
+async def get_session():
+    async with AsyncSessionLocal() as session:
+        yield session
+        
 # Dependency: get an async session
-async def get_async_session() -> AsyncSession:
+async def get_async_session():
     async with AsyncSessionLocal() as session:
         yield session
 
