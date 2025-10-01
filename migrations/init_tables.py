@@ -1,4 +1,4 @@
-import os 
+import os
 import psycopg2
 
 
@@ -22,9 +22,8 @@ def main():
         # ----------------------
         # 1. Users table
         # ----------------------
-        cur.execute("DROP TABLE IF EXISTS users CASCADE;")
         cur.execute("""
-        CREATE TABLE users (
+        CREATE TABLE IF NOT EXISTS users (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
             tg_id BIGINT NOT NULL UNIQUE,
             username TEXT,
@@ -35,60 +34,56 @@ def main():
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
-        cur.execute("CREATE INDEX idx_users_tg_id ON users(tg_id);")
-        print("✅ users table & index created")
+        cur.execute("CREATE INDEX IF NOT EXISTS idx_users_tg_id ON users(tg_id);")
+        print("✅ users table ensured")
 
         # ----------------------
         # 2. Global Counter
         # ----------------------
-        cur.execute("DROP TABLE IF EXISTS global_counter CASCADE;")
         cur.execute("""
-        CREATE TABLE global_counter (
+        CREATE TABLE IF NOT EXISTS global_counter (
             id SERIAL PRIMARY KEY,
             paid_tries_total INT DEFAULT 0
         );
         """)
-        print("✅ global_counter table created")
+        print("✅ global_counter table ensured")
 
         # ----------------------
         # 3. Plays
         # ----------------------
-        cur.execute("DROP TABLE IF EXISTS plays CASCADE;")
         cur.execute("""
-        CREATE TABLE plays (
+        CREATE TABLE IF NOT EXISTS plays (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
             user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
             result TEXT NOT NULL CHECK (result IN ('win','lose','pending')),
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
-        cur.execute("CREATE INDEX idx_plays_user_id ON plays(user_id);")
-        print("✅ plays table & index created")
+        cur.execute("CREATE INDEX IF NOT EXISTS idx_plays_user_id ON plays(user_id);")
+        print("✅ plays table ensured")
 
         # ----------------------
         # 4. Payments
         # ----------------------
-        cur.execute("DROP TABLE IF EXISTS payments CASCADE;")
         cur.execute("""
-        CREATE TABLE payments (
+        CREATE TABLE IF NOT EXISTS payments (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
             user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
             tx_ref TEXT NOT NULL UNIQUE,
             status TEXT DEFAULT 'pending' CHECK (status IN ('pending','successful','failed','expired')),
             amount INT NOT NULL,
-            tries INT DEFAULT 0,  -- ✅ Added column for number of spins in this payment
+            tries INT DEFAULT 0,
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
-        cur.execute("CREATE INDEX idx_payments_user_id ON payments(user_id);")
-        print("✅ payments table & index created")
+        cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_user_id ON payments(user_id);")
+        print("✅ payments table ensured")
 
         # ----------------------
         # 5. Proofs
         # ----------------------
-        cur.execute("DROP TABLE IF EXISTS proofs CASCADE;")
         cur.execute("""
-        CREATE TABLE proofs (
+        CREATE TABLE IF NOT EXISTS proofs (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
             user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
             file_id TEXT NOT NULL,
@@ -96,29 +91,27 @@ def main():
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
-        cur.execute("CREATE INDEX idx_proofs_user_id ON proofs(user_id);")
-        print("✅ proofs table & index created")
+        cur.execute("CREATE INDEX IF NOT EXISTS idx_proofs_user_id ON proofs(user_id);")
+        print("✅ proofs table ensured")
 
         # ----------------------
         # 6. Transaction Logs
         # ----------------------
-        cur.execute("DROP TABLE IF EXISTS transaction_logs CASCADE;")
         cur.execute("""
-        CREATE TABLE transaction_logs (
+        CREATE TABLE IF NOT EXISTS transaction_logs (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
             provider TEXT NOT NULL,
             payload TEXT NOT NULL,
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
-        print("✅ transaction_logs table created")
+        print("✅ transaction_logs table ensured")
 
         # ----------------------
         # 7. Game State
         # ----------------------
-        cur.execute("DROP TABLE IF EXISTS game_state CASCADE;")
         cur.execute("""
-        CREATE TABLE game_state (
+        CREATE TABLE IF NOT EXISTS game_state (
             id SERIAL PRIMARY KEY,
             current_cycle INT DEFAULT 1,
             paid_tries_this_cycle INT DEFAULT 0,
@@ -126,11 +119,11 @@ def main():
             updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
-        print("✅ game_state table created")
+        print("✅ game_state table ensured")
 
         # Commit all changes
         conn.commit()
-        print("🎉 Migration completed successfully!")
+        print("🎉 Non-destructive migration completed successfully!")
 
     except Exception as e:
         conn.rollback()
