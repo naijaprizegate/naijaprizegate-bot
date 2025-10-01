@@ -72,7 +72,7 @@ async def pending_proofs(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
 
 # ----------------------------
-# Callback: Approve / Reject + Menus
+# Callback: Approve / Reject
 # ----------------------------
 async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle Approve/Reject and menu clicks"""
@@ -88,35 +88,38 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         action = query.data.split(":")[1]
 
         if action == "pending_proofs":
+            # Replace message with pending proofs list
             await pending_proofs(update, context)
 
         elif action == "stats":
+            # ✅ Fetch stats from DB
+            from models import GlobalCounter, GameState
             async with AsyncSessionLocal() as session:
-                # Users
-                total_users = await session.scalar(select(func.count(User.id)))
-                # Proofs
-                total_proofs = await session.scalar(select(func.count(Proof.id)))
-                approved = await session.scalar(select(func.count(Proof.id)).where(Proof.status == "approved"))
-                rejected = await session.scalar(select(func.count(Proof.id)).where(Proof.status == "rejected"))
-                pending = await session.scalar(select(func.count(Proof.id)).where(Proof.status == "pending"))
-                # Game cycles
-                state = await session.scalar(select(GameState).limit(1))
-                cycle = state.current_cycle if state else 1
-                paid_tries = state.paid_tries if state else 0
+                # GlobalCounter (lifetime total paid tries)
+                gc = await session.get(GlobalCounter, 1)
+
+                # GameState (cycle-based tracking)
+                gs = await session.get(GameState, 1)
+
+            lifetime_paid = gc.paid_tries_total if gc else 0
+            current_cycle = gs.current_cycle if gs else 1
+            paid_this_cycle = gs.paid_tries_this_cycle if gs else 0
 
             stats_text = (
-                f"📊 *Bot Stats*\n\n"
-                f"👥 Total Users: *{total_users}*\n"
-                f"📝 Proofs: {total_proofs} (✅ {approved}, ❌ {rejected}, ⏳ {pending})\n\n"
-                f"🔄 Current Cycle: *{cycle}*\n"
-                f"💎 Paid Tries this Cycle: *{paid_tries}*"
+                "📊 *Bot Stats*\n\n"
+                f"💰 Lifetime Paid Tries: *{lifetime_paid}*\n"
+                f"🔄 Current Cycle: *{current_cycle}*\n"
+                f"🎯 Paid Tries (this cycle): *{paid_this_cycle}*"
             )
-            await query.edit_message_text(stats_text, parse_mode="MarkdownV2")
+
+            await query.edit_message_text(
+                stats_text,
+                parse_mode="MarkdownV2"
+            )
 
         elif action == "user_search":
-            context.user_data["awaiting_user_search"] = True
             await query.edit_message_text(
-                "👤 Send me a user’s Telegram ID or username to search:",
+                "👤 User search coming soon...",
                 parse_mode="MarkdownV2"
             )
         return
@@ -184,3 +187,4 @@ def register_handlers(application):
     application.add_handler(CommandHandler("pending_proofs", pending_proofs))
     application.add_handler(CallbackQueryHandler(admin_callback, pattern="^admin_"))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, user_search_handler))
+
