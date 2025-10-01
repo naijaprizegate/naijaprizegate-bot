@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import select
 from models import GlobalCounter, GameState
+from contextlib import asynccontextmanager
 
 logger = logging.getLogger(__name__)
 
