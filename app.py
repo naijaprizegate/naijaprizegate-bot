@@ -12,6 +12,8 @@ from logger import tg_error_handler
 from handlers import core, payments, free, admin, tryluck  # ensure handlers register
 from tasks import start_background_tasks  # unified entrypoint
 
+from db import init_game_state
+
 # --------------------------------------------------------------
 # Load environment variables
 # --------------------------------------------------------------
@@ -58,6 +60,9 @@ async def on_startup():
             "❌ Missing one or more required env vars: BOT_TOKEN, RENDER_EXTERNAL_URL, WEBHOOK_SECRET"
         )
         raise RuntimeError("Missing required environment variables.")
+    
+    #  👈 Ensure GameState & GlobalCounter rows exist
+    await init_game_state()
 
     # Telegram Bot Application
     application = Application.builder().token(BOT_TOKEN).build()
@@ -142,3 +147,4 @@ async def flutterwave_webhook(secret: str, request: Request):
 @app.get("/health")
 async def health_check():
     return {"status": "ok", "bot_initialized": application is not None}
+
