@@ -40,12 +40,13 @@ AsyncSessionLocal = sessionmaker(
 
 from contextlib import asynccontextmanager
 
-# For routes (dependency injection)
+# For FastAPI dependency injection
 async def get_session():
     async with AsyncSessionLocal() as session:
         yield session
         
-# Dependency: get an async session
+# For background tasks (e.g. sweeper)
+@asynccontextmanager
 async def get_async_session():
     async with AsyncSessionLocal() as session:
         yield session
