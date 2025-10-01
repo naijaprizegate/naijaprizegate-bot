@@ -18,7 +18,7 @@ ADMIN_ID = int(os.getenv("ADMIN_ID", 0))
 async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Show the admin main panel with options"""
     if update.effective_user.id != ADMIN_ID:
-        return await update.message.reply_text("❌ Access denied.", parse_mode="MarkdownV2")
+        return await update.message.reply_text("❌ Access denied\\.", parse_mode="MarkdownV2")
 
     keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("📂 Pending Proofs", callback_data="admin_menu:pending_proofs")],
@@ -81,7 +81,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
 
     if user_id != ADMIN_ID:
-        return await query.edit_message_caption(caption="❌ Access denied.", parse_mode="MarkdownV2")
+        return await query.edit_message_caption(caption="❌ Access denied\\.", parse_mode="MarkdownV2")
 
     # --- Handle main menu clicks ---
     if query.data.startswith("admin_menu:"):
