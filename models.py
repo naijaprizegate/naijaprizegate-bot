@@ -42,6 +42,15 @@ class GlobalCounter(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     paid_tries_total = Column(Integer, default=0)
 
+# ----------------------
+# 2b. Game State
+# ----------------------
+class GameState(Base):
+    __tablename__ = "game_state"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    current_cycle = Column(Integer, default=1)          # ✅ how many jackpot rounds completed
+    paid_tries_this_cycle = Column(Integer, default=0)  # ✅ resets each cycle
 
 # ----------------------
 # 3. Plays
