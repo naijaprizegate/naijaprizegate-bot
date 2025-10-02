@@ -141,6 +141,8 @@ from db import AsyncSessionLocal
 from models import Payment
 from sqlalchemy import select, update
 from logger import logger
+from services.payments import FLW_SECRET_HASH
+
 
 @app.post("/flw/webhook/{secret}")
 async def flutterwave_webhook(secret: str, request: Request):
@@ -154,7 +156,7 @@ async def flutterwave_webhook(secret: str, request: Request):
 
     # 3️⃣ Verify Flutterwave signature
     signature = request.headers.get("verif-hash")
-    if not signature or signature != FLW_HASH_SECRET:
+    if not signature or signature != FLW_SECRET_HASH:
         raise HTTPException(status_code=403, detail="Invalid signature")
 
     # 4️⃣ Extract values
