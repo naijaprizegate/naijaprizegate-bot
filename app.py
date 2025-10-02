@@ -41,6 +41,7 @@ application: Application = None  # Telegram Application (global)
 # Root route
 # --------------------------------------------------------------
 @app.get("/")
+@app.head("/")
 async def root():
     return {
         "status": "ok",
@@ -200,6 +201,7 @@ async def flutterwave_webhook(secret: str, request: Request):
 # Health check endpoint
 # --------------------------------------------------------------
 @app.get("/health")
+@app.head("/health")
 async def health_check():
     return {"status": "ok", "bot_initialized": application is not None}
 
