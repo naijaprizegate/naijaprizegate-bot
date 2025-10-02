@@ -174,7 +174,7 @@ async def flutterwave_webhook(secret: str, request: Request):
             stmt = (
                 update(Payment)
                 .where(Payment.id == payment.id)
-                .values(status=tx_status, flw_tx_id=tx_id)
+                .values(status=tx_status, flw_tx_id=tx_id, updated_at=datetime.utcnow())
             )
             await session.execute(stmt)
             await session.commit()
