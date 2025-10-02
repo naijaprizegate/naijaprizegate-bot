@@ -206,14 +206,20 @@ async def flutterwave_webhook(secret: str, request: Request):
 # --------------------------------------------------------------
 # Flutterwave Redirect (after checkout)
 # --------------------------------------------------------------
+from fastapi import Request, Depends
 from fastapi.responses import HTMLResponse
 from sqlalchemy.ext.asyncio import AsyncSession
-from fastapi import Depends
-from db import get_async_session
+
+from db import get_async_session   # ✅ import the right dependency
 from services.payments import verify_payment
 
+
 @app.get("/flw/redirect", response_class=HTMLResponse)
-async def flutterwave_redirect(tx_ref: str, status: str, session: AsyncSession = Depends(get_async_session)):
+async def flutterwave_redirect(
+    tx_ref: str,
+    status: str,
+    session: AsyncSession = Depends(get_async_session),  # ✅ FastAPI injects a real session
+):
     """
     Redirect endpoint for users after Flutterwave checkout.
     Verifies payment and shows success/failure message.
