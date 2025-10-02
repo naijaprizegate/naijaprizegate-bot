@@ -89,7 +89,17 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         await session.execute(stmt)
         await session.commit()
 
-    checkout_url = await create_checkout(amount=price, tx_ref=tx_ref, user_id=query.from_user.id)
+    # ✅ Pass Telegram username (fallback to user_id if missing)
+    username = query.from_user.username or f"user_{query.from_user.id}"
+    email = f"{username}@naijaprizegate.ng"  # synthetic email for Flutterwave
+
+    checkout_url = await create_checkout(
+        amount=price,
+        tx_ref=tx_ref,
+        user_id=query.from_user.id,
+        username=username,
+        email=email
+    )
 
     keyboard = [
         [InlineKeyboardButton("✅ Confirm & Pay", url=checkout_url)],
