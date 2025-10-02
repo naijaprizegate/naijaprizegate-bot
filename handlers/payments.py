@@ -28,7 +28,7 @@ def payment_success_text(user, amount, tries_added):
         f"🎉 *{md_escape(user.username or user.first_name or 'Friend')}*, you just unlocked *{tries_added} new spins* 🚀\n"
         f"(Top\\-up: ₦{amount:,})\n\n"
         "Your arsenal is loaded, your chances just went way up ⚡\n\n"
-        "👉 Don’t keep luck waiting — hit *Try Luck* now and chase that jackpot\\! 🏆🔥"
+        "👉 Don’t keep luck waiting\\. Hit *Try Luck* now and chase that jackpot\\! 🏆🔥"
     )
 
 # --- /buy entrypoint ---
@@ -107,13 +107,16 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     ]
 
     await query.edit_message_text(
-        f"💳 *Package selected:* {tries} Try{'s' if tries>1 else ''} for ₦{price}\n\n"
-        "👉 Click the button below to confirm payment.\n\n"
-        f"If the button doesn’t work, copy this link and open it in your browser:\n{checkout_url}",
-        reply_markup=InlineKeyboardMarkup(keyboard),
-        parse_mode="MarkdownV2"
-    )
-
+    text=(
+        f"💳 <b>Package selected:</b> {tries} Try{'s' if tries>1 else ''} for ₦{price}<br><br>"
+        "👉 Click the button below to confirm payment.<br><br>"
+        f"If the button doesn’t work, copy this link and open it in your browser:<br>"
+        f'<a href="{checkout_url}">{checkout_url}</a>'
+    ),
+    reply_markup=InlineKeyboardMarkup(keyboard),
+    parse_mode="HTML",
+    disable_web_page_preview=True
+)
 
 # --- Cancel payment ---
 async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TYPE):
