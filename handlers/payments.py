@@ -108,10 +108,12 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
 
     await query.edit_message_text(
         f"💳 *Package selected:* {tries} Try{'s' if tries>1 else ''} for ₦{price}\n\n"
-        "👉 Click below to confirm payment, or cancel to go back\\.",
+        "👉 Click the button below to confirm payment.\n\n"
+        f"If the button doesn’t work, copy this link and open it in your browser:\n{checkout_url}",
         reply_markup=InlineKeyboardMarkup(keyboard),
         parse_mode="MarkdownV2"
     )
+
 
 # --- Cancel payment ---
 async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TYPE):
