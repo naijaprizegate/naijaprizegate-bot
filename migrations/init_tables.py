@@ -73,11 +73,28 @@ def main():
             status TEXT DEFAULT 'pending' CHECK (status IN ('pending','successful','failed','expired')),
             amount INT NOT NULL,
             tries INT DEFAULT 0,
+            flw_tx_id TEXT,
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
+        # Ensure indexes
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_user_id ON payments(user_id);")
-        print("✅ payments table ensured")
+
+        # ✅ If payments table already exists but is missing flw_tx_id, add it
+        cur.execute("""
+        DO $$
+        BEGIN
+            IF NOT EXISTS (
+                SELECT 1 FROM information_schema.columns
+                WHERE table_name='payments' AND column_name='flw_tx_id'
+            ) THEN
+                ALTER TABLE payments ADD COLUMN flw_tx_id TEXT;
+                CREATE INDEX IF NOT EXISTS idx_payments_flw_tx_id ON payments(flw_tx_id);
+            END IF;
+        END$$;
+        """)
+
+        print("✅ payments table ensured (with flw_tx_id)")
 
         # ----------------------
         # 5. Proofs
