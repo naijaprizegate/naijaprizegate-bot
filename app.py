@@ -21,6 +21,10 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 RENDER_EXTERNAL_URL = os.getenv("RENDER_EXTERNAL_URL")
 WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET")
 
+FLW_HASH_SECRET = os.getenv("FLW_HASH_SECRET")
+if not FLW_HASH_SECRET:
+    raise RuntimeError("❌ FLW_HASH_SECRET not set in environment")
+
 # --------------------------------------------------------------
 # Logging setup
 # --------------------------------------------------------------
