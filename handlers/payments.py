@@ -108,11 +108,12 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
 
     await query.edit_message_text(
     text=(
-        f"💳 <b>Package selected:</b> {tries} Try{'s' if tries>1 else ''} for ₦{price}<br><br>"
-        "👉 Click the button below to confirm payment.<br><br>"
-        f"If the button doesn’t work, copy this link and open it in your browser:<br>"
+        f"💳 <b>Package selected:</b> {tries} Try{'s' if tries>1 else ''} for ₦{price}\n\n"
+        "👉 Click the button below to confirm payment.\n\n"
+        f"If the button doesn’t work, copy this link and open it in your browser:\n"
         f'<a href="{checkout_url}">{checkout_url}</a>'
     ),
+
     reply_markup=InlineKeyboardMarkup(keyboard),
     parse_mode="HTML",
     disable_web_page_preview=True
