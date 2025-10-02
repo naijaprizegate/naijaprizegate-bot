@@ -85,6 +85,7 @@ class Payment(Base):
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     tx_ref = Column(String, unique=True, nullable=False)
     status = Column(String, default="pending")
+    flw_tx_id = Column(String, nullable=True, index=True)
     amount = Column(Integer, nullable=False)
     tries = Column(Integer, nullable=False, default=0)  # ✅ new column
     created_at = Column(TIMESTAMP, server_default=func.now())
