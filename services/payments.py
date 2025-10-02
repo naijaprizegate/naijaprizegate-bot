@@ -1,12 +1,13 @@
-#================================================================
+# ==============================================================
 # services/payments.py
-#================================================================
+# ==============================================================
+
 import os
 import httpx
 import hmac
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select, update
 from datetime import datetime
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
 
 from db import get_async_session
 from models import Payment, TransactionLog, GlobalCounter
@@ -25,25 +26,41 @@ WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "14600"))
 # ------------------------------------------------------
 async def create_checkout(user_id: str, amount: int, tx_ref: str) -> str:
     """
-    Creates a Flutterwave payment checkout link.
+    Creates a Flutterwave payment checkout link and returns the hosted link.
     """
+    if not FLW_SECRET_KEY:
+        raise RuntimeError("❌ Missing FLW_SECRET_KEY environment variable")
+
     url = f"{FLW_BASE_URL}/payments"
     headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}"}
+
     payload = {
         "tx_ref": tx_ref,
         "amount": amount,
         "currency": "NGN",
-        "redirect_url": "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect",  # optional if webhook is used
-        "customer": {"email": "test@example.com"},  # replace with real user email
-        "customizations": {"title": "NaijaPrizeGate"},
+        "redirect_url": "https://naijaprizegate.onrender.com/flw/redirect",  # ✅ keep consistent with app.py
+        "customer": {
+            "email": f"user{user_id}@naijaprizegate.com",
+            "phonenumber": "08000000000",
+            "name": str(user_id),
+        },
+        "payment_options": "card, banktransfer, ussd",
+        "customizations": {
+            "title": "NaijaPrizeGate",
+            "description": f"Purchase of spins worth ₦{amount}",
+        },
     }
 
-    async with httpx.AsyncClient() as client:
-        r = await client.post(url, json=payload, headers=headers)
-        r.raise_for_status()
-        data = r.json()
+    async with httpx.AsyncClient(timeout=30) as client:
+        response = await client.post(url, json=payload, headers=headers)
+        response.raise_for_status()
+        data = response.json()
 
-    return data["data"]["link"]  # return payment link to redirect user
+    if data.get("status") != "success" or "link" not in data.get("data", {}):
+        raise RuntimeError(f"❌ Failed to create checkout: {data}")
+
+    # ✅ Always return checkout.flutterwave.com link
+    return data["data"]["link"]
 
 
 # ------------------------------------------------------
@@ -55,16 +72,18 @@ async def verify_payment(tx_ref: str, session: AsyncSession) -> bool:
     Updates the Payment row in DB if successful.
     Also increments the global counter and resets if WIN_THRESHOLD is reached.
     """
+    if not FLW_SECRET_KEY:
+        raise RuntimeError("❌ Missing FLW_SECRET_KEY environment variable")
+
     url = f"{FLW_BASE_URL}/transactions/verify_by_reference?tx_ref={tx_ref}"
     headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}"}
 
-    async with httpx.AsyncClient() as client:
-        r = await client.get(url, headers=headers)
-        r.raise_for_status()
-        data = r.json()
+    async with httpx.AsyncClient(timeout=30) as client:
+        response = await client.get(url, headers=headers)
+        response.raise_for_status()
+        data = response.json()
 
-    # Only mark as successful if Flutterwave confirms
-    if data["status"] == "success" and data["data"]["status"] == "successful":
+    if data.get("status") == "success" and data["data"].get("status") == "successful":
         stmt = select(Payment).where(Payment.tx_ref == tx_ref)
         result = await session.execute(stmt)
         payment = result.scalar_one_or_none()
@@ -80,7 +99,6 @@ async def verify_payment(tx_ref: str, session: AsyncSession) -> bool:
             counter = counter_result.scalar_one_or_none()
 
             if not counter:
-                # If counter row doesn’t exist, create it
                 counter = GlobalCounter(paid_tries_total=0)
                 session.add(counter)
                 await session.flush()
@@ -95,6 +113,7 @@ async def verify_payment(tx_ref: str, session: AsyncSession) -> bool:
             await session.commit()
 
         return True
+
     return False
 
 
