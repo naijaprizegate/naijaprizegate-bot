@@ -141,8 +141,6 @@ from db import AsyncSessionLocal
 from models import Payment
 from sqlalchemy import select, update
 from logger import logger
-from services.payments import FLW_SECRET_HASH
-
 
 @app.post("/flw/webhook/{secret}")
 async def flutterwave_webhook(secret: str, request: Request):
@@ -151,19 +149,20 @@ async def flutterwave_webhook(secret: str, request: Request):
         raise HTTPException(status_code=403, detail="Invalid secret")
 
     # 2️⃣ Parse body
-    data = await request.json()
-    logger.info(f"💳 Flutterwave webhook received: {data}")
+    payload = await request.json()
+    logger.info(f"💳 Flutterwave webhook received: {payload}")
 
     # 3️⃣ Verify Flutterwave signature
     signature = request.headers.get("verif-hash")
-    if not signature or signature != FLW_SECRET_HASH:
+    if signature != FLW_SECRET_HASH:
         raise HTTPException(status_code=403, detail="Invalid signature")
 
     # 4️⃣ Extract values
-    tx_status = data.get("status")   # "successful", "failed"
-    tx_id = data.get("id")           # Flutterwave tx id
-    ref = data.get("tx_ref")         # your own payment reference
-
+    flw_data = payload.get("data", {})
+    tx_status = flw_data.get("status")
+    tx_id = flw_data.get("id")
+    ref = flw_data.get("tx_ref")
+    
     # 5️⃣ Update DB
     async with AsyncSessionLocal() as session:
         result = await session.execute(select(Payment).where(Payment.tx_ref == ref))
@@ -180,7 +179,7 @@ async def flutterwave_webhook(secret: str, request: Request):
             await session.execute(stmt)
             await session.commit()
             logger.info(f"✅ Payment {ref} updated to {tx_status}")
-
+            
             # ✅ Notify user on Telegram if payment is successful
             if tx_status == "successful":
                 try:
@@ -200,7 +199,9 @@ async def flutterwave_webhook(secret: str, request: Request):
                 except Exception as e:
                     logger.exception(f"❌ Failed to notify user {payment.user_id}: {e}")
 
+ 
     return {"status": "success"}
+
 
 # --------------------------------------------------------------
 # Flutterwave Redirect (after checkout)
