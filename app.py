@@ -174,6 +174,25 @@ async def flutterwave_webhook(secret: str, request: Request):
             await session.commit()
             logger.info(f"✅ Payment {ref} updated to {tx_status}")
 
+            # ✅ Notify user on Telegram if payment is successful
+            if tx_status == "successful":
+                try:
+                    keyboard = [
+                        [InlineKeyboardButton("🎰 TryLuck", callback_data="tryluck")],
+                        [InlineKeyboardButton("🎟️ MyTries", callback_data="mytries")],
+                        [InlineKeyboardButton("❌ Cancel", callback_data="cancel")]
+                    ]
+                    reply_markup = InlineKeyboardMarkup(keyboard)
+
+                    await bot_app.bot.send_message(
+                        chat_id=payment.user_id,  # assumes you stored user_id in Payment table
+                        text=f"✅ Payment received! You’ve been credited.\n\nRef: {ref}",
+                        reply_markup=reply_markup
+                    )
+                    logger.info(f"🎉 Notified user {payment.user_id} about successful payment.")
+                except Exception as e:
+                    logger.exception(f"❌ Failed to notify user {payment.user_id}: {e}")
+
     return {"status": "success"}
 
 
