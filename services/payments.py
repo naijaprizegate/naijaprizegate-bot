@@ -33,7 +33,7 @@ async def create_checkout(user_id: str, amount: int, tx_ref: str) -> str:
         "tx_ref": tx_ref,
         "amount": amount,
         "currency": "NGN",
-        "redirect_url": "https://yourapp.com/payment/callback",  # optional if webhook is used
+        "redirect_url": "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect",  # optional if webhook is used
         "customer": {"email": "test@example.com"},  # replace with real user email
         "customizations": {"title": "NaijaPrizeGate"},
     }
