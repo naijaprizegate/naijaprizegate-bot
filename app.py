@@ -200,6 +200,68 @@ async def flutterwave_webhook(secret: str, request: Request):
 
     return {"status": "success"}
 
+# --------------------------------------------------------------
+# Flutterwave Redirect (after checkout)
+# --------------------------------------------------------------
+from fastapi.responses import HTMLResponse
+from sqlalchemy.ext.asyncio import AsyncSession
+from fastapi import Depends
+from db import get_async_session
+from services.payments import verify_payment
+
+@app.get("/flw/redirect", response_class=HTMLResponse)
+async def flutterwave_redirect(tx_ref: str, status: str, session: AsyncSession = Depends(get_async_session)):
+    """
+    Redirect endpoint for users after Flutterwave checkout.
+    Verifies payment and shows success/failure message.
+    """
+
+    verified = await verify_payment(tx_ref, session)
+
+    if status.lower() == "successful" and verified:
+        html_content = f"""
+        <html>
+            <head>
+                <title>Payment Success</title>
+                <script>
+                    // Auto-close after 5 seconds
+                    setTimeout(function() {{
+                        window.open('', '_self').close();
+                    }}, 5000);
+                </script>
+            </head>
+            <body style="font-family: Arial; text-align:center; padding:40px;">
+                <h2 style="color:green;">✅ Payment Successful</h2>
+                <p>Transaction Reference: <b>{tx_ref}</b></p>
+                <p>Thank you for your payment! 🎉</p>
+                <p>This tab will close automatically in 5 seconds.</p>
+                <p><a href="https://t.me/NaijaPrizeGateBot" style="color:blue;">Return to Telegram Bot now</a></p>
+            </body>
+        </html>
+        """
+    else:
+        html_content = f"""
+        <html>
+            <head>
+                <title>Payment Failed</title>
+                <script>
+                    // Auto-close after 8 seconds
+                    setTimeout(function() {{
+                        window.open('', '_self').close();
+                    }}, 8000);
+                </script>
+            </head>
+            <body style="font-family: Arial; text-align:center; padding:40px;">
+                <h2 style="color:red;">❌ Payment Failed</h2>
+                <p>Transaction Reference: <b>{tx_ref}</b></p>
+                <p>If money was deducted, please contact support.</p>
+                <p>This tab will close automatically in 8 seconds.</p>
+                <p><a href="https://t.me/NaijaPrizeGateBot" style="color:blue;">Return to Telegram Bot now</a></p>
+            </body>
+        </html>
+        """
+
+    return HTMLResponse(content=html_content, status_code=200)
 
 # --------------------------------------------------------------
 # Health check endpoint
