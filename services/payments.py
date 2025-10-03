@@ -48,7 +48,7 @@ async def create_checkout(user_id: str, amount: int, tx_ref: str, username: str 
         "tx_ref": tx_ref,
         "amount": amount,
         "currency": "NGN",
-        "redirect_url": "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect/status",  # optional
+        "redirect_url": "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect",  # optional
         "customer": {
             "email": customer_email,
             "name": username or f"User {user_id}"
@@ -66,8 +66,9 @@ async def create_checkout(user_id: str, amount: int, tx_ref: str, username: str 
 
     return data["data"]["link"]
 
+
 # ----------------------------------------------------
-# Verify Payment (final clean version)
+# 2. Verify Payment (final clean version)
 # ----------------------------------------------------
 from datetime import datetime
 import httpx
@@ -213,13 +214,12 @@ async def log_transaction(session: AsyncSession, provider: str, payload: str):
     await session.commit()
 
 # ----------------------------------------------------
-# 5. Credit User Tries (Improved)
-# ---------------------------------------------------
+# 5. Credit User Tries (Final)
+# ----------------------------------------------------
 from models import User, Payment
-from sqlalchemy import select
 from logger import logger
 
-# Conversion table
+# Conversion table (amount → number of tries)
 PRICE_TO_TRIES = {
     500: 1,
     2000: 5,
@@ -229,9 +229,9 @@ PRICE_TO_TRIES = {
 async def credit_user_tries(session, payment: Payment):
     """
     Safely credits a user with tries based on Payment.amount.
-    - Calculates tries from PRICE_TO_TRIES mapping.
-    - Updates User.tries_paid.
-    - Updates Payment.credited_tries (idempotent).
+    - Idempotent: will not credit again if already credited.
+    - Updates both User.tries_paid and Payment.credited_tries.
+    - Returns (success: bool, tries: int).
     """
 
     # 1️⃣ Load user
@@ -240,24 +240,24 @@ async def credit_user_tries(session, payment: Payment):
         logger.error(f"❌ No user found for payment {payment.tx_ref}")
         return False, 0
 
-    # 2️⃣ Prevent double-credit (idempotency)
+    # 2️⃣ Prevent double-credit
     if payment.credited_tries and payment.credited_tries > 0:
         logger.info(f"ℹ️ Payment {payment.tx_ref} already credited with {payment.credited_tries} tries → skipping")
         return True, payment.credited_tries
 
-    # 3️⃣ Calculate tries
+    # 3️⃣ Calculate tries from amount
     tries = PRICE_TO_TRIES.get(int(payment.amount), 0)
-    if tries == 0:
+    if tries <= 0:
         logger.warning(f"⚠️ No tries mapping for amount {payment.amount} (Payment {payment.tx_ref})")
         return False, 0
 
     # 4️⃣ Apply credit
     user.tries_paid = (user.tries_paid or 0) + tries
-    payment.credited_tries = tries  # ✅ record inside Payment
+    payment.credited_tries = tries  # ✅ record credited amount in Payment
 
+    # Persist changes
     await session.commit()
 
     logger.info(f"🎉 Credited {tries} tries to user {user.tg_id} ({user.username}), payment {payment.tx_ref}")
 
     return True, tries
-
