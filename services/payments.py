@@ -66,31 +66,58 @@ async def create_checkout(user_id: str, amount: int, tx_ref: str, username: str 
 
     return data["data"]["link"]
 
-# ------------------------------------------------------
-# 2. Verify Payment (update DB + global counter)
-# ------------------------------------------------------
-async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: bool = True) -> bool:
+# ----------------------------------------------------
+# Verify Payment (fixed to avoid deprecated endpoint)
+# ----------------------------------------------------
+from datetime import datetime
+import httpx, os
+from sqlalchemy.future import select
+from models import Payment, GlobalCounter
+from config import FLW_BASE_URL, FLW_SECRET_KEY, WIN_THRESHOLD
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+async def verify_payment(
+    tx_ref: str, 
+    session, 
+    bot=None, 
+    credit: bool = True
+) -> bool:
     """
     Verifies payment status from Flutterwave.
     - If `credit=True` (webhook), credit user if not already credited.
     - If `credit=False` (redirect), only check status (no crediting).
     """
-    url = f"{FLW_BASE_URL}/transactions/verify_by_reference?reference={tx_ref}"
+
+    # ✅ use supported tx_ref filter endpoint
+    url = f"{FLW_BASE_URL}/transactions?tx_ref={tx_ref}"
     headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}"}
 
-    async with httpx.AsyncClient() as client:
-        r = await client.get(url, headers=headers)
-        r.raise_for_status()
-        data = r.json()
+    async with httpx.AsyncClient(timeout=20.0) as client:
+        try:
+            r = await client.get(url, headers=headers)
+            r.raise_for_status()
+            data = r.json()
+        except Exception as e:
+            logger.exception(f"❌ Failed to verify payment {tx_ref}: {e}")
+            return False
 
     logger.info(f"🔎 Flutterwave verification for {tx_ref}: {data}")
 
-    if data.get("status") != "success":
+    # --- No data returned ---
+    if data.get("status") != "success" or not data.get("data"):
+        logger.warning(f"⚠️ No transaction found for {tx_ref}")
         return False
 
-    tx_status = data["data"].get("status")
-    amount = data["data"].get("amount")
+    # Pick first tx result
+    tx_data = data["data"][0]
+    tx_status = tx_data.get("status")
+    amount = tx_data.get("amount")
 
+    # --- Find Payment record ---
     stmt = select(Payment).where(Payment.tx_ref == tx_ref)
     result = await session.execute(stmt)
     payment = result.scalar_one_or_none()
@@ -99,7 +126,7 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
         logger.warning(f"⚠️ No Payment record found for {tx_ref}")
         return False
 
-    # --- Always update DB status (but only credit once) ---
+    # --- Always update DB status ---
     payment.amount = amount
     payment.updated_at = datetime.utcnow()
 
@@ -107,14 +134,14 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
         if payment.status != "successful":
             payment.status = "successful"
 
-            # ✅ Only webhook credits (redirect uses credit=False)
+            # ✅ Only credit via webhook (not redirect)
             if credit:
                 try:
                     from services.payments import credit_user_tries
                     user, tries = await credit_user_tries(session, payment.user_id, amount)
                     logger.info(f"🎉 Credited {tries} tries to user {user.id} (tg_id={user.tg_id})")
 
-                    # Telegram notification
+                    # Telegram notify
                     if bot and user.tg_id:
                         keyboard = [
                             [InlineKeyboardButton("🎰 TryLuck", callback_data="tryluck")],
@@ -133,7 +160,7 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
                 except Exception as e:
                     logger.exception(f"❌ Failed to credit user {payment.user_id} or notify Telegram: {e}")
 
-            # --- Global counter update ---
+            # --- Update Global Counter ---
             if credit:
                 counter_stmt = select(GlobalCounter).limit(1)
                 counter_result = await session.execute(counter_stmt)
@@ -157,7 +184,7 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
         await session.commit()
         return False
 
-    # Pending
+    # Still pending
     await session.commit()
     return False
 
