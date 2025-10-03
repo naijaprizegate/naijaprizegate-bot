@@ -13,7 +13,7 @@ logging.basicConfig(
     level=LOG_LEVEL,
     format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
 )
-logger = logging.getLogger("tryluck_bot")
+logger = logging.getLogger("NaijaPrizeGateBot")
 
 # 2️⃣ Optional: Initialize Sentry
 if SENTRY_DSN:
