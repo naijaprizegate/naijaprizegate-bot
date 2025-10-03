@@ -159,11 +159,11 @@ async def flutterwave_webhook(secret: str, request: Request):
 
     # 4️⃣ Extract values
     flw_data = payload.get("data", {})
-    tx_status = flw_data.get("status")
+    tx_status = flw_data.get("status", "").lower()
     tx_id = flw_data.get("id")
     ref = flw_data.get("tx_ref")
-    
-    # 5️⃣ Update DB
+
+    # 5️⃣ Update DB + credit user
     async with AsyncSessionLocal() as session:
         result = await session.execute(select(Payment).where(Payment.tx_ref == ref))
         payment = result.scalars().first()
@@ -177,11 +177,16 @@ async def flutterwave_webhook(secret: str, request: Request):
                 .values(status=tx_status, flw_tx_id=tx_id, updated_at=datetime.utcnow())
             )
             await session.execute(stmt)
-            await session.commit()
-            logger.info(f"✅ Payment {ref} updated to {tx_status}")
-            
-            # ✅ Notify user on Telegram if payment is successful
-            if tx_status == "successful":
+
+            # ✅ credit user tries
+            if tx_status in ["successful", "completed"]:
+                try:
+                    await credit_user_tries(session, payment.user_id, payment.amount)
+                    logger.info(f"🎉 Credited {payment.amount} tries to user {payment.user_id}")
+                except Exception as e:
+                    logger.exception(f"❌ Failed to credit tries: {e}")
+
+                # ✅ Notify user on Telegram
                 try:
                     keyboard = [
                         [InlineKeyboardButton("🎰 TryLuck", callback_data="tryluck")],
@@ -191,17 +196,16 @@ async def flutterwave_webhook(secret: str, request: Request):
                     reply_markup = InlineKeyboardMarkup(keyboard)
 
                     await bot_app.bot.send_message(
-                        chat_id=payment.user_id,  # assumes you stored user_id in Payment table
+                        chat_id=payment.user_id,
                         text=f"✅ Payment received! You’ve been credited.\n\nRef: {ref}",
                         reply_markup=reply_markup
                     )
-                    logger.info(f"🎉 Notified user {payment.user_id} about successful payment.")
                 except Exception as e:
                     logger.exception(f"❌ Failed to notify user {payment.user_id}: {e}")
 
- 
-    return {"status": "success"}
+            await session.commit()
 
+    return {"status": "success"}
 
 # --------------------------------------------------------------
 # Flutterwave Redirect (after checkout)
