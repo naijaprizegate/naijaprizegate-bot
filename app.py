@@ -219,25 +219,29 @@ async def flutterwave_webhook(secret: str, request: Request):
 # Flutterwave Redirect (after checkout)
 # --------------------------------------------------------------
 from fastapi import Request, Depends
-from fastapi.responses import HTMLResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from db import get_async_session   # ✅ import the right dependency
 from services.payments import verify_payment
+
+from fastapi.responses import HTMLResponse
+
+# ✅ import your bot app and verify_payment
+from bot_app import bot_app
 
 
 @app.get("/flw/redirect", response_class=HTMLResponse)
 async def flutterwave_redirect(
     tx_ref: str,
     status: str,
-    session: AsyncSession = Depends(get_async_session),  # ✅ FastAPI injects a real session
+    session: AsyncSession = Depends(get_async_session),  # ✅ DB session
 ):
     """
     Redirect endpoint for users after Flutterwave checkout.
-    Verifies payment and shows success/failure message.
+    Verifies payment, notifies user on Telegram, and shows success/failure page.
     """
 
-    verified = await verify_payment(tx_ref, session)
+    verified = await verify_payment(tx_ref, session, bot=bot_app.bot)
 
     if status.lower() == "successful" and verified:
         html_content = f"""
@@ -256,7 +260,7 @@ async def flutterwave_redirect(
                 <p>Transaction Reference: <b>{tx_ref}</b></p>
                 <p>Thank you for your payment! 🎉</p>
                 <p>This tab will close automatically in 5 seconds.</p>
-                <p><a href="https://t.me/NaijaPrizeGateBot" style="color:blue;">Return to Telegram Bot now</a></p>
+                <p><a href="https://t.me/NaijaPrizeGateBot" style="color:blue; font-weight:bold;">Return to Telegram Bot now</a></p>
             </body>
         </html>
         """
@@ -277,12 +281,13 @@ async def flutterwave_redirect(
                 <p>Transaction Reference: <b>{tx_ref}</b></p>
                 <p>If money was deducted, please contact support.</p>
                 <p>This tab will close automatically in 8 seconds.</p>
-                <p><a href="https://t.me/NaijaPrizeGateBot" style="color:blue;">Return to Telegram Bot now</a></p>
+                <p><a href="https://t.me/NaijaPrizeGateBot" style="color:blue; font-weight:bold;">Return to Telegram Bot now</a></p>
             </body>
         </html>
         """
 
     return HTMLResponse(content=html_content, status_code=200)
+
 
 # --------------------------------------------------------------
 # Health check endpoint
