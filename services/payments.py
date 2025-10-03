@@ -69,12 +69,11 @@ async def create_checkout(user_id: str, amount: int, tx_ref: str, username: str 
 # ------------------------------------------------------
 # 2. Verify Payment (update DB + global counter)
 # ------------------------------------------------------
-async def verify_payment(tx_ref: str, session: AsyncSession, bot=None) -> bool:
+async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: bool = True) -> bool:
     """
-    Verifies payment status from Flutterwave by transaction reference.
-    Updates the Payment row in DB if successful.
-    Credits the user with tries.
-    Notifies the user on Telegram if bot is provided.
+    Verifies payment status from Flutterwave.
+    - If `credit=True` (webhook), credit user if not already credited.
+    - If `credit=False` (redirect), only check status (no crediting).
     """
     url = f"{FLW_BASE_URL}/transactions/verify_by_reference?reference={tx_ref}"
     headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}"}
@@ -84,67 +83,83 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None) -> bool:
         r.raise_for_status()
         data = r.json()
 
-    # Log verification result
     logger.info(f"🔎 Flutterwave verification for {tx_ref}: {data}")
 
-    if data.get("status") == "success" and data["data"].get("status") == "successful":
-        stmt = select(Payment).where(Payment.tx_ref == tx_ref)
-        result = await session.execute(stmt)
-        payment = result.scalar_one_or_none()
+    if data.get("status") != "success":
+        return False
 
-        if payment and payment.status != "successful":
-            # ✅ Mark as successful
+    tx_status = data["data"].get("status")
+    amount = data["data"].get("amount")
+
+    stmt = select(Payment).where(Payment.tx_ref == tx_ref)
+    result = await session.execute(stmt)
+    payment = result.scalar_one_or_none()
+
+    if not payment:
+        logger.warning(f"⚠️ No Payment record found for {tx_ref}")
+        return False
+
+    # --- Always update DB status (but only credit once) ---
+    payment.amount = amount
+    payment.updated_at = datetime.utcnow()
+
+    if tx_status == "successful":
+        if payment.status != "successful":
             payment.status = "successful"
-            payment.amount = data["data"]["amount"]
-            payment.updated_at = datetime.utcnow()
 
-            # ✅ Credit user tries
-            try:
-                from services.payments import credit_user_tries
-                user, tries = await credit_user_tries(session, payment.user_id, payment.amount)
-                logger.info(f"🎉 Credited {tries} tries to user {user.id} (tg_id={user.tg_id})")
+            # ✅ Only webhook credits (redirect uses credit=False)
+            if credit:
+                try:
+                    from services.payments import credit_user_tries
+                    user, tries = await credit_user_tries(session, payment.user_id, amount)
+                    logger.info(f"🎉 Credited {tries} tries to user {user.id} (tg_id={user.tg_id})")
 
-                # ✅ Telegram notification
-                if bot and user.tg_id:
-                    keyboard = [
-                        [InlineKeyboardButton("🎰 TryLuck", callback_data="tryluck")],
-                        [InlineKeyboardButton("🎟️ MyTries", callback_data="mytries")],
-                        [InlineKeyboardButton("❌ Cancel", callback_data="cancel")]
-                    ]
-                    reply_markup = InlineKeyboardMarkup(keyboard)
+                    # Telegram notification
+                    if bot and user.tg_id:
+                        keyboard = [
+                            [InlineKeyboardButton("🎰 TryLuck", callback_data="tryluck")],
+                            [InlineKeyboardButton("🎟️ MyTries", callback_data="mytries")],
+                            [InlineKeyboardButton("❌ Cancel", callback_data="cancel")]
+                        ]
+                        reply_markup = InlineKeyboardMarkup(keyboard)
 
-                    await bot.send_message(
-                        chat_id=user.tg_id,
-                        text=f"✅ Payment of ₦{payment.amount} verified!\n"
-                             f"You’ve been credited with {tries} tries 🎉\n\nRef: {tx_ref}",
-                        reply_markup=reply_markup
-                    )
+                        await bot.send_message(
+                            chat_id=user.tg_id,
+                            text=f"✅ Payment of ₦{amount} verified!\n"
+                                 f"You’ve been credited with {tries} tries 🎉\n\nRef: {tx_ref}",
+                            reply_markup=reply_markup
+                        )
 
-            except Exception as e:
-                logger.exception(f"❌ Failed to credit user {payment.user_id} or notify Telegram: {e}")
+                except Exception as e:
+                    logger.exception(f"❌ Failed to credit user {payment.user_id} or notify Telegram: {e}")
 
-            # --- Update global counter ---
-            counter_stmt = select(GlobalCounter).limit(1)
-            counter_result = await session.execute(counter_stmt)
-            counter = counter_result.scalar_one_or_none()
+            # --- Global counter update ---
+            if credit:
+                counter_stmt = select(GlobalCounter).limit(1)
+                counter_result = await session.execute(counter_stmt)
+                counter = counter_result.scalar_one_or_none()
 
-            if not counter:
-                counter = GlobalCounter(paid_tries_total=0)
-                session.add(counter)
-                await session.flush()
+                if not counter:
+                    counter = GlobalCounter(paid_tries_total=0)
+                    session.add(counter)
+                    await session.flush()
 
-            counter.paid_tries_total += 1
+                counter.paid_tries_total += 1
+                if counter.paid_tries_total >= WIN_THRESHOLD:
+                    counter.paid_tries_total = 0
+                    logger.info(f"🎉 WIN threshold {WIN_THRESHOLD} reached → counter reset!")
 
-            if counter.paid_tries_total >= WIN_THRESHOLD:
-                counter.paid_tries_total = 0
-                logger.info(f"🎉 WIN threshold {WIN_THRESHOLD} reached → counter reset!")
-
-            await session.commit()
-
+        await session.commit()
         return True
 
-    return False
+    elif tx_status in ["failed", "expired"]:
+        payment.status = tx_status
+        await session.commit()
+        return False
 
+    # Pending
+    await session.commit()
+    return False
 
 # ------------------------------------------------------
 # 3. Validate Webhook Signature
