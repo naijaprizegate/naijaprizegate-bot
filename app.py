@@ -134,7 +134,7 @@ async def telegram_webhook(secret: str, request: Request):
 
 
 # --------------------------------------------------------------
-# Flutterwave webhook (real handler)
+# Flutterwave webhook (SINGLE SOURCE OF TRUTH)
 # --------------------------------------------------------------
 from fastapi import Request, HTTPException
 from db import AsyncSessionLocal
@@ -155,41 +155,26 @@ async def flutterwave_webhook(secret: str, request: Request):
     if signature != FLW_SECRET_HASH:
         raise HTTPException(status_code=403, detail="Invalid signature")
 
-    # 4️⃣ Extract reference (needed to verify)
+    # 4️⃣ Extract tx_ref
     flw_data = payload.get("data", {})
     ref = flw_data.get("tx_ref")
     if not ref:
         logger.warning("⚠️ Webhook payload missing tx_ref")
         return {"status": "ignored"}
 
-    # 5️⃣ Use verify_payment as SINGLE SOURCE OF TRUTH
+    # 5️⃣ Call verify_payment with credit=True → CREDIT HAPPENS ONLY HERE
     async with AsyncSessionLocal() as session:
         success = await verify_payment(ref, session, bot=bot_app.bot, credit=True)
 
     logger.info(f"✅ Webhook processed for {ref}, success={success}")
     return {"status": "success" if success else "ignored"}
 
+
 # --------------------------------------------------------------
-# Flutterwave Redirect (after checkout)
+# Flutterwave Redirect (user lands here after checkout)
 # --------------------------------------------------------------
-from fastapi import Request, Depends, Query
-from sqlalchemy.ext.asyncio import AsyncSession
-from models import Payment
-from sqlalchemy import select
-from db import get_async_session   # ✅ import the right dependency
-from services.payments import verify_payment
-
-from fastapi.responses import HTMLResponse, JSONResponse
-
-
 @app.get("/flw/redirect", response_class=HTMLResponse)
-async def flutterwave_redirect(
-    tx_ref: str = Query(...),
-):
-    """
-    Initial redirect page → shows loading spinner.
-    Then polls /flw/redirect/status until payment is verified.
-    """
+async def flutterwave_redirect(tx_ref: str = Query(...)):
     html_content = f"""
     <html>
         <head>
@@ -209,9 +194,7 @@ async def flutterwave_redirect(
                     border-radius: 50%;
                     animation: spin 1s linear infinite;
                 }}
-                @keyframes spin {{
-                    to {{ transform: rotate(360deg); }}
-                }}
+                @keyframes spin {{ to {{ transform: rotate(360deg); }} }}
             </style>
             <script>
                 async function checkStatus() {{
@@ -235,22 +218,19 @@ async def flutterwave_redirect(
     """
     return HTMLResponse(content=html_content, status_code=200)
 
-# ---------------------------------------------
-# Flw Redirect Status
-# ---------------------------------------------
-
+# --------------------------------------------------------------
+# Flw Redirect Status (polls DB until webhook credits user)
+# --------------------------------------------------------------
 @app.get("/flw/redirect/status")
 async def flutterwave_redirect_status(
     tx_ref: str,
     session: AsyncSession = Depends(get_async_session),
 ):
     """
-    Polled by /flw/redirect page until payment verification is complete.
+    Polled by /flw/redirect until webhook updates payment in DB.
+    This does NOT credit tries — webhook is the source of truth.
     """
-    # Try to verify payment
-    verified = await verify_payment(tx_ref, session, bot=application.bot, credit=False)
-
-    # Fetch updated payment
+    # ✅ Do NOT credit here, only check DB
     stmt = select(Payment).where(Payment.tx_ref == tx_ref)
     result = await session.execute(stmt)
     payment = result.scalar_one_or_none()
@@ -262,13 +242,11 @@ async def flutterwave_redirect_status(
         html = f"""
         <h2 style="color:green;">✅ Payment Successful</h2>
         <p>Transaction Reference: <b>{tx_ref}</b></p>
-        <p>Thank you for your payment! 🎉</p>
+        <p>You’ve been credited with <b>{payment.credited_tries}</b> tries 🎉</p>
         <p>This tab will close automatically in 5 seconds.</p>
-        <p><a href="https://t.me/NaijaPrizeGateBot" style="color:blue; font-weight:bold;">Return to Telegram Bot now</a></p>
+        <p><a href="https://t.me/NaijaPrizeGateBot" style="color:blue; font-weight:bold;">Return to Telegram Bot</a></p>
         <script>
-            setTimeout(function() {{
-                window.open('', '_self').close();
-            }}, 5000);
+            setTimeout(function() {{ window.open('', '_self').close(); }}, 5000);
         </script>
         """
         return JSONResponse({"done": True, "html": html})
@@ -279,17 +257,16 @@ async def flutterwave_redirect_status(
         <p>Transaction Reference: <b>{tx_ref}</b></p>
         <p>If money was deducted, please contact support.</p>
         <p>This tab will close automatically in 8 seconds.</p>
-        <p><a href="https://t.me/NaijaPrizeGateBot" style="color:blue; font-weight:bold;">Return to Telegram Bot now</a></p>
+        <p><a href="https://t.me/NaijaPrizeGateBot" style="color:blue; font-weight:bold;">Return to Telegram Bot</a></p>
         <script>
-            setTimeout(function() {{
-                window.open('', '_self').close();
-            }}, 8000);
+            setTimeout(function() {{ window.open('', '_self').close(); }}, 8000);
         </script>
         """
         return JSONResponse({"done": True, "html": html})
 
     # Still pending → keep polling
     return JSONResponse({"done": False})
+
 
 # --------------------------------------------------------------
 # Health check endpoint
@@ -298,5 +275,3 @@ async def flutterwave_redirect_status(
 @app.head("/health")
 async def health_check():
     return {"status": "ok", "bot_initialized": application is not None}
-
-
