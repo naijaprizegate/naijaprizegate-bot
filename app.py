@@ -214,7 +214,6 @@ async def flutterwave_webhook(secret: str, request: Request):
 
     return {"status": "success"}
 
-
 # --------------------------------------------------------------
 # Flutterwave Redirect (after checkout)
 # --------------------------------------------------------------
@@ -227,12 +226,7 @@ from services.payments import verify_payment
 
 from fastapi.responses import HTMLResponse, JSONResponse
 
-# ✅ import your bot app and verify_payment
-from bot_app import bot_app
 
-# ---------------------------------------------
-# Flw Redirect Status
-# ---------------------------------------------
 @app.get("/flw/redirect", response_class=HTMLResponse)
 async def flutterwave_redirect(
     tx_ref: str = Query(...),
@@ -286,6 +280,9 @@ async def flutterwave_redirect(
     """
     return HTMLResponse(content=html_content, status_code=200)
 
+# ---------------------------------------------
+# Flw Redirect Status
+# ---------------------------------------------
 
 @app.get("/flw/redirect/status")
 async def flutterwave_redirect_status(
@@ -296,7 +293,7 @@ async def flutterwave_redirect_status(
     Polled by /flw/redirect page until payment verification is complete.
     """
     # Try to verify payment
-    verified = await verify_payment(tx_ref, session, bot=bot_app.bot)
+    verified = await verify_payment(tx_ref, session, bot=application.bot)
 
     # Fetch updated payment
     stmt = select(Payment).where(Payment.tx_ref == tx_ref)
@@ -346,4 +343,5 @@ async def flutterwave_redirect_status(
 @app.head("/health")
 async def health_check():
     return {"status": "ok", "bot_initialized": application is not None}
+
 
