@@ -4,7 +4,7 @@
 
 import os
 import logging
-from fastapi import FastAPI, Query, Request, HTTPException, Depends
+from fastapi import FastAPI, Query, Request, HTTPException,
 from fastapi.responses import HTMLResponse
 from telegram import Update
 from telegram.ext import Application
@@ -15,7 +15,13 @@ from tasks import start_background_tasks  # unified entrypoint
 
 from db import init_game_state, get_async_session
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select
+from services.verify import verify_payment
+from telegram import Bot
+
+# Initialize your Telegram bot
+bot = Bot(token="7509078520:AAFIl2rDYykEacOdKyWlA35IQBsH1S2E-LE")
+
+app = FastAPI()
 
 # --------------------------------------------------------------
 # Load environment variables
@@ -143,34 +149,34 @@ from fastapi import Request, HTTPException
 from db import AsyncSessionLocal
 from logger import logger
 
-@app.post("/flw/webhook/{secret}")
-async def flutterwave_webhook(secret: str, request: Request):
-    # 1️⃣ Validate URL secret
-    if secret != WEBHOOK_SECRET:
-        raise HTTPException(status_code=403, detail="Invalid secret")
+from fastapi import FastAPI, Request, Depends
+from sqlalchemy.ext.asyncio import AsyncSession
+from database import get_session
+from services.verify import verify_payment
+from telegram import Bot
 
-    # 2️⃣ Parse payload
-    payload = await request.json()
-    logger.info(f"💳 Flutterwave webhook received: {payload}")
+app = FastAPI()
 
-    # 3️⃣ Verify Flutterwave signature
-    signature = request.headers.get("verif-hash")
-    if signature != FLW_SECRET_HASH:
-        raise HTTPException(status_code=403, detail="Invalid signature")
+# Initialize your Telegram bot
+bot = Bot(token="YOUR_TELEGRAM_BOT_TOKEN")
 
-    # 4️⃣ Extract tx_ref
-    flw_data = payload.get("data", {})
-    ref = flw_data.get("tx_ref")
-    if not ref:
-        logger.warning("⚠️ Webhook payload missing tx_ref")
-        return {"status": "ignored"}
+@app.post("/flw/webhook")
+async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(get_session)):
+    """
+    Flutterwave webhook endpoint.
+    This is called by Flutterwave after a payment.
+    It MUST return 200 quickly, so do lightweight work here.
+    """
+    body = await request.json()
+    tx_ref = body.get("data", {}).get("tx_ref")
 
-    # 5️⃣ Call verify_payment with credit=True → CREDIT HAPPENS ONLY HERE
-    async with AsyncSessionLocal() as session:
-        success = await verify_payment(ref, session, bot=bot_app.bot, credit=True)
+    if not tx_ref:
+        return {"status": "error", "message": "No tx_ref in webhook"}
 
-    logger.info(f"✅ Webhook processed for {ref}, success={success}")
-    return {"status": "success" if success else "ignored"}
+    # Call your verify_payment with credit=True so user gets credited
+    ok = await verify_payment(tx_ref, session, bot=bot, credit=True)
+
+    return {"status": "success" if ok else "failed"}
 
 
 # --------------------------------------------------------------
@@ -278,3 +284,4 @@ async def flutterwave_redirect_status(
 @app.head("/health")
 async def health_check():
     return {"status": "ok", "bot_initialized": application is not None}
+
