@@ -186,26 +186,50 @@ async def log_transaction(session: AsyncSession, provider: str, payload: str):
     await session.commit()
 
 # ----------------------------------------------------
-# 5. Credit User Tries
+# 5. Credit User Tries (Improved)
 # ---------------------------------------------------
 from models import User, Payment
+from sqlalchemy import select
+from logger import logger
+
+# Conversion table
+PRICE_TO_TRIES = {
+    500: 1,
+    2000: 5,
+    5000: 15,
+}
 
 async def credit_user_tries(session, payment: Payment):
     """
-    Credits the user with the number of tries recorded in the Payment.
-    Updates User.tries_paid and commits.
+    Safely credits a user with tries based on Payment.amount.
+    - Calculates tries from PRICE_TO_TRIES mapping.
+    - Updates User.tries_paid.
+    - Updates Payment.credited_tries (idempotent).
     """
-    # 1️⃣ Find the user
+
+    # 1️⃣ Load user
     user = await session.get(User, payment.user_id)
     if not user:
-        print(f"❌ No user found for payment {payment.tx_ref}")
-        return False
+        logger.error(f"❌ No user found for payment {payment.tx_ref}")
+        return False, 0
 
-    # 2️⃣ Credit tries (from Payment.tries)
-    user.tries_paid = (user.tries_paid or 0) + (payment.tries or 0)
+    # 2️⃣ Prevent double-credit (idempotency)
+    if payment.credited_tries and payment.credited_tries > 0:
+        logger.info(f"ℹ️ Payment {payment.tx_ref} already credited with {payment.credited_tries} tries → skipping")
+        return True, payment.credited_tries
 
-    # 3️⃣ Commit
+    # 3️⃣ Calculate tries
+    tries = PRICE_TO_TRIES.get(int(payment.amount), 0)
+    if tries == 0:
+        logger.warning(f"⚠️ No tries mapping for amount {payment.amount} (Payment {payment.tx_ref})")
+        return False, 0
+
+    # 4️⃣ Apply credit
+    user.tries_paid = (user.tries_paid or 0) + tries
+    payment.credited_tries = tries  # ✅ record inside Payment
+
     await session.commit()
-    print(f"🎉 Credited {payment.tries} tries to user {user.tg_id} ({user.username})")
 
-    return True
+    logger.info(f"🎉 Credited {tries} tries to user {user.tg_id} ({user.username}), payment {payment.tx_ref}")
+
+    return True, tries
