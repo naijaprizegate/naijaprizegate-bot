@@ -145,3 +145,27 @@ async def log_transaction(session: AsyncSession, provider: str, payload: str):
     session.add(log)
     await session.commit()
 
+# ----------------------------------------------------
+# 5. Credit User Tries
+# ---------------------------------------------------
+from models import User, Payment
+
+async def credit_user_tries(session, payment: Payment):
+    """
+    Credits the user with the number of tries recorded in the Payment.
+    Updates User.tries_paid and commits.
+    """
+    # 1️⃣ Find the user
+    user = await session.get(User, payment.user_id)
+    if not user:
+        print(f"❌ No user found for payment {payment.tx_ref}")
+        return False
+
+    # 2️⃣ Credit tries (from Payment.tries)
+    user.tries_paid = (user.tries_paid or 0) + (payment.tries or 0)
+
+    # 3️⃣ Commit
+    await session.commit()
+    print(f"🎉 Credited {payment.tries} tries to user {user.tg_id} ({user.username})")
+
+    return True
