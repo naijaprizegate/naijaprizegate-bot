@@ -1,6 +1,6 @@
 #================================================================
 # services/payments.py
-#================================================================
+# ================================================================
 import os
 import httpx
 import hmac
@@ -48,7 +48,7 @@ async def create_checkout(user_id: str, amount: int, tx_ref: str, username: str 
         "tx_ref": tx_ref,
         "amount": amount,
         "currency": "NGN",
-        "redirect_url": "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect",  # optional
+        "redirect_url": "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect/status",  # optional
         "customer": {
             "email": customer_email,
             "name": username or f"User {user_id}"
@@ -66,6 +66,9 @@ async def create_checkout(user_id: str, amount: int, tx_ref: str, username: str 
 
     return data["data"]["link"]
 
+# ------------------------------------------------------
+# 2. Verify Payment (update DB + global counter)
+# ------------------------------------------------------
 # ----------------------------------------------------
 # Verify Payment (fixed to avoid deprecated endpoint)
 # ----------------------------------------------------
@@ -73,7 +76,7 @@ from datetime import datetime
 import httpx, os
 from sqlalchemy.future import select
 from models import Payment, GlobalCounter
-from config import FLW_BASE_URL, FLW_SECRET_KEY, WIN_THRESHOLD
+from services.payments import FLW_BASE_URL, FLW_SECRET_KEY, WIN_THRESHOLD
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 import logging
 
@@ -188,6 +191,7 @@ async def verify_payment(
     await session.commit()
     return False
 
+
 # ------------------------------------------------------
 # 3. Validate Webhook Signature
 # ------------------------------------------------------
@@ -260,3 +264,4 @@ async def credit_user_tries(session, payment: Payment):
     logger.info(f"🎉 Credited {tries} tries to user {user.tg_id} ({user.username}), payment {payment.tx_ref}")
 
     return True, tries
+
