@@ -15,6 +15,7 @@ from tasks import start_background_tasks  # unified entrypoint
 
 from db import init_game_state, get_async_session
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
 
 # --------------------------------------------------------------
 # Load environment variables
