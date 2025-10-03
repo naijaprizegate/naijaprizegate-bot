@@ -4,7 +4,7 @@
 
 import os
 import logging
-from fastapi import FastAPI, Query, Request, Depends, HTTPException
+from fastapi import FastAPI, Query, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from telegram import Update
 from telegram.ext import Application
@@ -13,7 +13,8 @@ from logger import tg_error_handler
 from handlers import core, payments, free, admin, tryluck  # ensure handlers register
 from tasks import start_background_tasks  # unified entrypoint
 
-from db import init_game_state
+from db import init_game_state, get_async_session
+from sqlalchemy.ext.asyncio import AsyncSession
 
 # --------------------------------------------------------------
 # Load environment variables
