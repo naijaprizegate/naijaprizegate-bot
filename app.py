@@ -166,11 +166,12 @@ async def flutterwave_webhook(secret: str, request: Request):
     # 5️⃣ Update DB + credit user
     async with AsyncSessionLocal() as session:
         result = await session.execute(select(Payment).where(Payment.tx_ref == ref))
-        payment = result.scalars().first()
+        payment: Payment = result.scalars().first()
 
         if not payment:
             logger.warning(f"No Payment record found for ref {ref}")
         else:
+            # Update payment record
             stmt = (
                 update(Payment)
                 .where(Payment.id == payment.id)
@@ -178,34 +179,41 @@ async def flutterwave_webhook(secret: str, request: Request):
             )
             await session.execute(stmt)
 
-            # ✅ credit user tries
+            # ✅ Credit user tries + Notify if successful
             if tx_status in ["successful", "completed"]:
                 try:
-                    await credit_user_tries(session, payment.user_id, payment.amount)
-                    logger.info(f"🎉 Credited {payment.amount} tries to user {payment.user_id}")
-                except Exception as e:
-                    logger.exception(f"❌ Failed to credit tries: {e}")
+                    # Credit tries
+                    from services.payments import credit_user_tries
+                    await credit_user_tries(session, payment)
 
-                # ✅ Notify user on Telegram
-                try:
-                    keyboard = [
-                        [InlineKeyboardButton("🎰 TryLuck", callback_data="tryluck")],
-                        [InlineKeyboardButton("🎟️ MyTries", callback_data="mytries")],
-                        [InlineKeyboardButton("❌ Cancel", callback_data="cancel")]
-                    ]
-                    reply_markup = InlineKeyboardMarkup(keyboard)
+                    # Get user to fetch tg_id
+                    result = await session.execute(select(User).where(User.id == payment.user_id))
+                    user: User = result.scalars().first()
 
-                    await bot_app.bot.send_message(
-                        chat_id=payment.user_id,
-                        text=f"✅ Payment received! You’ve been credited.\n\nRef: {ref}",
-                        reply_markup=reply_markup
-                    )
+                    if user and user.tg_id:
+                        keyboard = [
+                            [InlineKeyboardButton("🎰 TryLuck", callback_data="tryluck")],
+                            [InlineKeyboardButton("🎟️ MyTries", callback_data="mytries")],
+                            [InlineKeyboardButton("❌ Cancel", callback_data="cancel")]
+                        ]
+                        reply_markup = InlineKeyboardMarkup(keyboard)
+
+                        await bot_app.bot.send_message(
+                            chat_id=user.tg_id,
+                            text=f"✅ Payment received! You’ve been credited with {payment.tries} tries 🎉\n\nRef: {ref}",
+                            reply_markup=reply_markup
+                        )
+                        logger.info(f"🎉 Notified user {user.id} (tg_id={user.tg_id}) about successful payment.")
+                    else:
+                        logger.warning(f"User {payment.user_id} not found or has no tg_id")
+
                 except Exception as e:
-                    logger.exception(f"❌ Failed to notify user {payment.user_id}: {e}")
+                    logger.exception(f"❌ Failed to credit/notify user {payment.user_id}: {e}")
 
             await session.commit()
 
     return {"status": "success"}
+
 
 # --------------------------------------------------------------
 # Flutterwave Redirect (after checkout)
