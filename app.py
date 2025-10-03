@@ -5,6 +5,7 @@
 import os
 import logging
 from fastapi import FastAPI, Request, HTTPException
+from fastapi.responses import HTMLResponse
 from telegram import Update
 from telegram.ext import Application
 
