@@ -69,13 +69,14 @@ async def create_checkout(user_id: str, amount: int, tx_ref: str, username: str 
 # ------------------------------------------------------
 # 2. Verify Payment (update DB + global counter)
 # ------------------------------------------------------
-async def verify_payment(tx_ref: str, session: AsyncSession) -> bool:
+async def verify_payment(tx_ref: str, session: AsyncSession, bot=None) -> bool:
     """
     Verifies payment status from Flutterwave by transaction reference.
     Updates the Payment row in DB if successful.
-    Also increments the global counter and resets if WIN_THRESHOLD is reached.
+    Credits the user with tries.
+    Notifies the user on Telegram if bot is provided.
     """
-    url = f"{FLW_BASE_URL}/transactions/verify_by_reference?tx_ref={tx_ref}"
+    url = f"{FLW_BASE_URL}/transactions/verify_by_reference?reference={tx_ref}"
     headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}"}
 
     async with httpx.AsyncClient() as client:
@@ -86,16 +87,41 @@ async def verify_payment(tx_ref: str, session: AsyncSession) -> bool:
     # Log verification result
     logger.info(f"🔎 Flutterwave verification for {tx_ref}: {data}")
 
-    # Only mark as successful if Flutterwave confirms
-    if data["status"] == "success" and data["data"]["status"] == "successful":
+    if data.get("status") == "success" and data["data"].get("status") == "successful":
         stmt = select(Payment).where(Payment.tx_ref == tx_ref)
         result = await session.execute(stmt)
         payment = result.scalar_one_or_none()
 
         if payment and payment.status != "successful":
+            # ✅ Mark as successful
             payment.status = "successful"
             payment.amount = data["data"]["amount"]
             payment.updated_at = datetime.utcnow()
+
+            # ✅ Credit user tries
+            try:
+                from services.payments import credit_user_tries
+                user, tries = await credit_user_tries(session, payment.user_id, payment.amount)
+                logger.info(f"🎉 Credited {tries} tries to user {user.id} (tg_id={user.tg_id})")
+
+                # ✅ Telegram notification
+                if bot and user.tg_id:
+                    keyboard = [
+                        [InlineKeyboardButton("🎰 TryLuck", callback_data="tryluck")],
+                        [InlineKeyboardButton("🎟️ MyTries", callback_data="mytries")],
+                        [InlineKeyboardButton("❌ Cancel", callback_data="cancel")]
+                    ]
+                    reply_markup = InlineKeyboardMarkup(keyboard)
+
+                    await bot.send_message(
+                        chat_id=user.tg_id,
+                        text=f"✅ Payment of ₦{payment.amount} verified!\n"
+                             f"You’ve been credited with {tries} tries 🎉\n\nRef: {tx_ref}",
+                        reply_markup=reply_markup
+                    )
+
+            except Exception as e:
+                logger.exception(f"❌ Failed to credit user {payment.user_id} or notify Telegram: {e}")
 
             # --- Update global counter ---
             counter_stmt = select(GlobalCounter).limit(1)
@@ -103,14 +129,12 @@ async def verify_payment(tx_ref: str, session: AsyncSession) -> bool:
             counter = counter_result.scalar_one_or_none()
 
             if not counter:
-                # If counter row doesn’t exist, create it
                 counter = GlobalCounter(paid_tries_total=0)
                 session.add(counter)
                 await session.flush()
 
             counter.paid_tries_total += 1
 
-            # Reset if threshold is reached
             if counter.paid_tries_total >= WIN_THRESHOLD:
                 counter.paid_tries_total = 0
                 logger.info(f"🎉 WIN threshold {WIN_THRESHOLD} reached → counter reset!")
@@ -118,6 +142,7 @@ async def verify_payment(tx_ref: str, session: AsyncSession) -> bool:
             await session.commit()
 
         return True
+
     return False
 
 
