@@ -138,17 +138,15 @@ async def telegram_webhook(secret: str, request: Request):
 # --------------------------------------------------------------
 from fastapi import Request, HTTPException
 from db import AsyncSessionLocal
-from models import Payment
-from sqlalchemy import select, update
 from logger import logger
 
 @app.post("/flw/webhook/{secret}")
 async def flutterwave_webhook(secret: str, request: Request):
-    # 1️⃣ Check URL secret
+    # 1️⃣ Validate URL secret
     if secret != WEBHOOK_SECRET:
         raise HTTPException(status_code=403, detail="Invalid secret")
 
-    # 2️⃣ Parse body
+    # 2️⃣ Parse payload
     payload = await request.json()
     logger.info(f"💳 Flutterwave webhook received: {payload}")
 
@@ -157,62 +155,19 @@ async def flutterwave_webhook(secret: str, request: Request):
     if signature != FLW_SECRET_HASH:
         raise HTTPException(status_code=403, detail="Invalid signature")
 
-    # 4️⃣ Extract values
+    # 4️⃣ Extract reference (needed to verify)
     flw_data = payload.get("data", {})
-    tx_status = flw_data.get("status", "").lower()
-    tx_id = flw_data.get("id")
     ref = flw_data.get("tx_ref")
+    if not ref:
+        logger.warning("⚠️ Webhook payload missing tx_ref")
+        return {"status": "ignored"}
 
-    # 5️⃣ Update DB + credit user
+    # 5️⃣ Use verify_payment as SINGLE SOURCE OF TRUTH
     async with AsyncSessionLocal() as session:
-        result = await session.execute(select(Payment).where(Payment.tx_ref == ref))
-        payment: Payment = result.scalars().first()
+        success = await verify_payment(ref, session, bot=bot_app.bot, credit=True)
 
-        if not payment:
-            logger.warning(f"No Payment record found for ref {ref}")
-        else:
-            # Update payment record
-            stmt = (
-                update(Payment)
-                .where(Payment.id == payment.id)
-                .values(status=tx_status, flw_tx_id=tx_id, updated_at=datetime.utcnow())
-            )
-            await session.execute(stmt)
-
-            # ✅ Credit user tries + Notify if successful
-            if tx_status in ["successful", "completed"]:
-                try:
-                    # Credit tries
-                    from services.payments import credit_user_tries
-                    await credit_user_tries(session, payment)
-
-                    # Get user to fetch tg_id
-                    result = await session.execute(select(User).where(User.id == payment.user_id))
-                    user: User = result.scalars().first()
-
-                    if user and user.tg_id:
-                        keyboard = [
-                            [InlineKeyboardButton("🎰 TryLuck", callback_data="tryluck")],
-                            [InlineKeyboardButton("🎟️ MyTries", callback_data="mytries")],
-                            [InlineKeyboardButton("❌ Cancel", callback_data="cancel")]
-                        ]
-                        reply_markup = InlineKeyboardMarkup(keyboard)
-
-                        await bot_app.bot.send_message(
-                            chat_id=user.tg_id,
-                            text=f"✅ Payment received! You’ve been credited with {payment.tries} tries 🎉\n\nRef: {ref}",
-                            reply_markup=reply_markup
-                        )
-                        logger.info(f"🎉 Notified user {user.id} (tg_id={user.tg_id}) about successful payment.")
-                    else:
-                        logger.warning(f"User {payment.user_id} not found or has no tg_id")
-
-                except Exception as e:
-                    logger.exception(f"❌ Failed to credit/notify user {payment.user_id}: {e}")
-
-            await session.commit()
-
-    return {"status": "success"}
+    logger.info(f"✅ Webhook processed for {ref}, success={success}")
+    return {"status": "success" if success else "ignored"}
 
 # --------------------------------------------------------------
 # Flutterwave Redirect (after checkout)
