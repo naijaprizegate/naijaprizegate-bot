@@ -66,16 +66,13 @@ async def create_checkout(user_id: str, amount: int, tx_ref: str, username: str 
 
     return data["data"]["link"]
 
-# ------------------------------------------------------
-# 2. Verify Payment (update DB + global counter)
-# ------------------------------------------------------
 # ----------------------------------------------------
-# Verify Payment (fixed to avoid deprecated endpoint)
+# Verify Payment (final clean version)
 # ----------------------------------------------------
 from datetime import datetime
-import httpx, os
+import httpx
 from sqlalchemy.future import select
-from models import Payment, GlobalCounter
+from models import Payment, GlobalCounter, User
 from services.payments import FLW_BASE_URL, FLW_SECRET_KEY, WIN_THRESHOLD
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 import logging
@@ -84,18 +81,17 @@ logger = logging.getLogger(__name__)
 
 
 async def verify_payment(
-    tx_ref: str, 
-    session, 
-    bot=None, 
+    tx_ref: str,
+    session,
+    bot=None,
     credit: bool = True
 ) -> bool:
     """
     Verifies payment status from Flutterwave.
     - If `credit=True` (webhook), credit user if not already credited.
-    - If `credit=False` (redirect), only check status (no crediting).
+    - If `credit=False` (redirect), only update DB + return status (no crediting).
     """
 
-    # ✅ use supported tx_ref filter endpoint
     url = f"{FLW_BASE_URL}/transactions?tx_ref={tx_ref}"
     headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}"}
 
@@ -110,17 +106,17 @@ async def verify_payment(
 
     logger.info(f"🔎 Flutterwave verification for {tx_ref}: {data}")
 
-    # --- No data returned ---
+    # --- No data ---
     if data.get("status") != "success" or not data.get("data"):
         logger.warning(f"⚠️ No transaction found for {tx_ref}")
         return False
 
-    # Pick first tx result
+    # Take first transaction
     tx_data = data["data"][0]
     tx_status = tx_data.get("status")
     amount = tx_data.get("amount")
 
-    # --- Find Payment record ---
+    # --- Lookup Payment row ---
     stmt = select(Payment).where(Payment.tx_ref == tx_ref)
     result = await session.execute(stmt)
     payment = result.scalar_one_or_none()
@@ -129,22 +125,23 @@ async def verify_payment(
         logger.warning(f"⚠️ No Payment record found for {tx_ref}")
         return False
 
-    # --- Always update DB status ---
+    # Always update DB fields
     payment.amount = amount
     payment.updated_at = datetime.utcnow()
 
+    # ✅ SUCCESSFUL PAYMENT
     if tx_status == "successful":
-        if payment.status != "successful":
+        if payment.status != "successful":  # not yet processed
             payment.status = "successful"
 
-            # ✅ Only credit via webhook (not redirect)
             if credit:
                 try:
+                    # --- Credit user tries ---
                     from services.payments import credit_user_tries
-                    user, tries = await credit_user_tries(session, payment.user_id, amount)
+                    user, tries = await credit_user_tries(session, payment)
                     logger.info(f"🎉 Credited {tries} tries to user {user.id} (tg_id={user.tg_id})")
 
-                    # Telegram notify
+                    # --- Telegram notify ---
                     if bot and user.tg_id:
                         keyboard = [
                             [InlineKeyboardButton("🎰 TryLuck", callback_data="tryluck")],
@@ -163,8 +160,7 @@ async def verify_payment(
                 except Exception as e:
                     logger.exception(f"❌ Failed to credit user {payment.user_id} or notify Telegram: {e}")
 
-            # --- Update Global Counter ---
-            if credit:
+                # --- Global counter update ---
                 counter_stmt = select(GlobalCounter).limit(1)
                 counter_result = await session.execute(counter_stmt)
                 counter = counter_result.scalar_one_or_none()
@@ -182,15 +178,15 @@ async def verify_payment(
         await session.commit()
         return True
 
+    # ❌ FAILED / EXPIRED
     elif tx_status in ["failed", "expired"]:
         payment.status = tx_status
         await session.commit()
         return False
 
-    # Still pending
+    # ⏳ PENDING
     await session.commit()
     return False
-
 
 # ------------------------------------------------------
 # 3. Validate Webhook Signature
