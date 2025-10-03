@@ -293,7 +293,7 @@ async def flutterwave_redirect_status(
     Polled by /flw/redirect page until payment verification is complete.
     """
     # Try to verify payment
-    verified = await verify_payment(tx_ref, session, bot=application.bot)
+    verified = await verify_payment(tx_ref, session, bot=application.bot, credit=False)
 
     # Fetch updated payment
     stmt = select(Payment).where(Payment.tx_ref == tx_ref)
