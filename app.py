@@ -2,42 +2,46 @@
 # app.py
 # ==============================================================
 
-import os
-import logging
+import os, logging
 from fastapi import FastAPI, Query, Request, HTTPException, Depends
-from fastapi.responses import HTMLResponse
-from telegram import Update
+from fastapi.responses import HTMLResponse, JSONResponse
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+from telegram import Update, Bot
 from telegram.ext import Application
 
-from logger import tg_error_handler
-from handlers import core, payments, free, admin, tryluck  # ensure handlers register
-from tasks import start_background_tasks  # unified entrypoint
-
-from db import init_game_state, get_async_session
-from db import get_session
-from sqlalchemy.ext.asyncio import AsyncSession
+# local imports
+from logger import tg_error_handler, logger
+from handlers import core, payments, free, admin, tryluck
+from tasks import start_background_tasks, stop_background_tasks
+from db import init_game_state, get_async_session, get_session
 from services.payments import verify_payment
-from telegram import Bot
+from models import Payment
 
-# Initialize your Telegram bot
-BOT_TOKEN = os.getenv("BOT_TOKEN")
-if not BOT_TOKEN:
-    raise RuntimeError("❌ BOT_TOKEN not set in environment")
-
-bot = Bot(token=BOT_TOKEN)
-
-app = FastAPI()
-
-# --------------------------------------------------------------
-# Load environment variables
-# --------------------------------------------------------------
+# -------------------------------------------------
+# Initialize
+# -------------------------------------------------
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 RENDER_EXTERNAL_URL = os.getenv("RENDER_EXTERNAL_URL")
 WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET")
-
 FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")
-if not FLW_SECRET_HASH:
-    raise RuntimeError("❌ FLW_SECRET_HASH not set in environment")
+
+if not BOT_TOKEN or not RENDER_EXTERNAL_URL or not WEBHOOK_SECRET or not FLW_SECRET_HASH:
+    raise RuntimeError("❌ Missing required environment variables")
+
+bot = Bot(token=BOT_TOKEN)
+app = FastAPI()
+application: Application = None
+
+# -------------------------------------------------
+# Routes
+# -------------------------------------------------
+
+@app.get("/")
+@app.head("/")
+async def root():
+    return {"status": "ok", "message": "NaijaPrizeGate Bot is running ✅"}
+
 
 # --------------------------------------------------------------
 # Logging setup
@@ -53,20 +57,6 @@ logger = logging.getLogger("app")
 # --------------------------------------------------------------
 app = FastAPI()
 application: Application = None  # Telegram Application (global)
-
-
-# --------------------------------------------------------------
-# Root route
-# --------------------------------------------------------------
-@app.get("/")
-@app.head("/")
-async def root():
-    return {
-        "status": "ok",
-        "message": "NaijaPrizeGate Bot is running ✅",
-        "health": "Check /health for bot status",
-    }
-
 
 # --------------------------------------------------------------
 # Startup event
@@ -150,15 +140,6 @@ async def telegram_webhook(secret: str, request: Request):
 # --------------------------------------------------------------
 # Flutterwave webhook (SINGLE SOURCE OF TRUTH)
 # --------------------------------------------------------------
-from fastapi import Request, HTTPException
-from db import AsyncSessionLocal
-from logger import logger
-
-from fastapi import FastAPI, Request, Depends
-from sqlalchemy.ext.asyncio import AsyncSession
-from telegram import Bot
-
-app = FastAPI()
 
 @app.post("/flw/webhook")
 async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(get_session)):
