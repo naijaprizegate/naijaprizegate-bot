@@ -15,7 +15,7 @@ from tasks import start_background_tasks  # unified entrypoint
 
 from db import init_game_state, get_async_session
 from sqlalchemy.ext.asyncio import AsyncSession
-from services.verify import verify_payment
+from services.payments import verify_payment
 from telegram import Bot
 
 # Initialize your Telegram bot
