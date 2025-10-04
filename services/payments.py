@@ -11,6 +11,13 @@ from datetime import datetime
 
 from db import get_async_session
 from models import Payment, TransactionLog, GlobalCounter
+from sqlalchemy.future import select
+from models import Payment, GlobalCounter, User
+from services.payments import FLW_BASE_URL, FLW_SECRET_KEY, WIN_THRESHOLD
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+
+logger = logging.getLogger(__name__)
+
 
 # ==== Config ====
 FLW_BASE_URL = "https://api.flutterwave.com/v3"
@@ -68,22 +75,15 @@ async def create_checkout(user_id: str, amount: int, tx_ref: str, username: str 
 
 
 # ----------------------------------------------------
-# 2. Verify Payment (final clean version)
+# Verify Payment (fixed & improved)
 # ----------------------------------------------------
 from datetime import datetime
-import httpx
-from sqlalchemy.future import select
-from models import Payment, GlobalCounter, User
-from services.payments import FLW_BASE_URL, FLW_SECRET_KEY, WIN_THRESHOLD
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-import logging
-
-logger = logging.getLogger(__name__)
-
+from sqlalchemy import select
+from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 
 async def verify_payment(
     tx_ref: str,
-    session,
+    session: AsyncSession,
     bot=None,
     credit: bool = True
 ) -> bool:
@@ -92,7 +92,6 @@ async def verify_payment(
     - If `credit=True` (webhook), credit user if not already credited.
     - If `credit=False` (redirect), only update DB + return status (no crediting).
     """
-
     url = f"{FLW_BASE_URL}/transactions?tx_ref={tx_ref}"
     headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}"}
 
@@ -138,43 +137,55 @@ async def verify_payment(
             if credit:
                 try:
                     # --- Credit user tries ---
-                    from services.payments import credit_user_tries
                     user, tries = await credit_user_tries(session, payment)
                     logger.info(f"🎉 Credited {tries} tries to user {user.id} (tg_id={user.tg_id})")
+
+                    # --- Commit before notifying Telegram ---
+                    await session.commit()
 
                     # --- Telegram notify ---
                     if bot and user.tg_id:
                         keyboard = [
-                            [InlineKeyboardButton("🎰 TryLuck", callback_data="tryluck")],
-                            [InlineKeyboardButton("🎟️ MyTries", callback_data="mytries")],
+                            [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
+                            [InlineKeyboardButton("🎟️ My Tries", callback_data="mytries")],
                             [InlineKeyboardButton("❌ Cancel", callback_data="cancel")]
                         ]
                         reply_markup = InlineKeyboardMarkup(keyboard)
 
                         await bot.send_message(
                             chat_id=user.tg_id,
-                            text=f"✅ Payment of ₦{amount} verified!\n"
-                                 f"You’ve been credited with {tries} tries 🎉\n\nRef: {tx_ref}",
+                            text=(
+                                f"✅ Payment of ₦{amount} verified!\n\n"
+                                f"You’ve been credited with <b>{tries}</b> tries 🎉\n\n"
+                                f"Ref: <code>{tx_ref}</code>"
+                            ),
+                            parse_mode="HTML",
                             reply_markup=reply_markup
                         )
 
                 except Exception as e:
-                    logger.exception(f"❌ Failed to credit user {payment.user_id} or notify Telegram: {e}")
+                    logger.exception(f"❌ Failed to credit or notify user {payment.user_id}: {e}")
+                    await session.rollback()
+                    return False
 
                 # --- Global counter update ---
-                counter_stmt = select(GlobalCounter).limit(1)
-                counter_result = await session.execute(counter_stmt)
-                counter = counter_result.scalar_one_or_none()
+                try:
+                    counter_stmt = select(GlobalCounter).limit(1)
+                    counter_result = await session.execute(counter_stmt)
+                    counter = counter_result.scalar_one_or_none()
 
-                if not counter:
-                    counter = GlobalCounter(paid_tries_total=0)
-                    session.add(counter)
-                    await session.flush()
+                    if not counter:
+                        counter = GlobalCounter(paid_tries_total=0)
+                        session.add(counter)
+                        await session.flush()
 
-                counter.paid_tries_total += 1
-                if counter.paid_tries_total >= WIN_THRESHOLD:
-                    counter.paid_tries_total = 0
-                    logger.info(f"🎉 WIN threshold {WIN_THRESHOLD} reached → counter reset!")
+                    counter.paid_tries_total += 1
+                    if counter.paid_tries_total >= WIN_THRESHOLD:
+                        counter.paid_tries_total = 0
+                        logger.info(f"🎉 WIN threshold {WIN_THRESHOLD} reached → counter reset!")
+
+                except Exception as e:
+                    logger.warning(f"⚠️ Could not update GlobalCounter: {e}")
 
         await session.commit()
         return True
