@@ -1,6 +1,6 @@
 # =====================================================
 # app.py
-# ==============================================================
+# =====================================================
 
 import os, logging
 from fastapi import FastAPI, Query, Request, HTTPException, Depends
@@ -19,7 +19,7 @@ from services.payments import verify_payment
 from models import Payment
 
 # -------------------------------------------------
-# Initialize
+# Environment setup
 # -------------------------------------------------
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 RENDER_EXTERNAL_URL = os.getenv("RENDER_EXTERNAL_URL")
@@ -29,54 +29,49 @@ FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")
 if not BOT_TOKEN or not RENDER_EXTERNAL_URL or not WEBHOOK_SECRET or not FLW_SECRET_HASH:
     raise RuntimeError("❌ Missing required environment variables")
 
-bot = Bot(token=BOT_TOKEN)
-app = FastAPI()
-application: Application = None
-
 # -------------------------------------------------
-# Routes
-# -------------------------------------------------
-
-@app.get("/")
-@app.head("/")
-async def root():
-    return {"status": "ok", "message": "NaijaPrizeGate Bot is running ✅"}
-
-
-# --------------------------------------------------------------
 # Logging setup
-# --------------------------------------------------------------
+# -------------------------------------------------
 logging.basicConfig(
     format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
     level=os.getenv("LOG_LEVEL", "INFO"),
 )
 logger = logging.getLogger("app")
 
-# --------------------------------------------------------------
-# FastAPI app
-# --------------------------------------------------------------
+# -------------------------------------------------
+# Initialize FastAPI + Telegram bot
+# -------------------------------------------------
+bot = Bot(token=BOT_TOKEN)
 app = FastAPI()
 application: Application = None  # Telegram Application (global)
 
-# --------------------------------------------------------------
+# -------------------------------------------------
+# Root route
+# -------------------------------------------------
+@app.get("/")
+@app.head("/")
+async def root():
+    return {
+        "status": "ok",
+        "message": "NaijaPrizeGate Bot is running ✅",
+        "health": "Check /health for bot status",
+    }
+
+# -------------------------------------------------
 # Startup event
-# --------------------------------------------------------------
+# -------------------------------------------------
 @app.on_event("startup")
 async def on_startup():
     global application
-    if not BOT_TOKEN or not RENDER_EXTERNAL_URL or not WEBHOOK_SECRET:
-        logger.error(
-            "❌ Missing one or more required env vars: BOT_TOKEN, RENDER_EXTERNAL_URL, WEBHOOK_SECRET"
-        )
-        raise RuntimeError("Missing required environment variables.")
-    
-    #  👈 Ensure GameState & GlobalCounter rows exist
+    logger.info("🚀 Starting up NaijaPrizeGate...")
+
+    # Ensure GameState & GlobalCounter rows exist
     await init_game_state()
 
     # Telegram Bot Application
     application = Application.builder().token(BOT_TOKEN).build()
 
-    # ✅ Register all handlers here
+    # ✅ Register handlers
     core.register_handlers(application)
     free.register_handlers(application)
     payments.register_handlers(application)
@@ -98,18 +93,16 @@ async def on_startup():
 
     # ✅ Start background tasks
     await start_background_tasks()
+    logger.info("✅ Background tasks started.")
 
-
-# --------------------------------------------------------------
+# -------------------------------------------------
 # Shutdown event
-# --------------------------------------------------------------
+# -------------------------------------------------
 @app.on_event("shutdown")
 async def on_shutdown():
     global application
     try:
         # Stop background tasks first
-        from tasks import stop_background_tasks
-
         await stop_background_tasks()
 
         # Then stop Telegram app
@@ -120,10 +113,9 @@ async def on_shutdown():
     except Exception as e:
         logger.warning(f"⚠️ Error while shutting down: {e}")
 
-
-# --------------------------------------------------------------
+# -------------------------------------------------
 # Telegram webhook endpoint
-# --------------------------------------------------------------
+# -------------------------------------------------
 @app.post("/telegram/webhook/{secret}")
 async def telegram_webhook(secret: str, request: Request):
     if secret != WEBHOOK_SECRET:
@@ -136,33 +128,26 @@ async def telegram_webhook(secret: str, request: Request):
     await application.process_update(update)
     return {"ok": True}
 
-
-# --------------------------------------------------------------
-# Flutterwave webhook (SINGLE SOURCE OF TRUTH)
-# --------------------------------------------------------------
-
+# -------------------------------------------------
+# Flutterwave webhook (source of truth)
+# -------------------------------------------------
 @app.post("/flw/webhook")
-async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(get_session)):
-    """
-    Flutterwave webhook endpoint.
-    This is called by Flutterwave after a payment.
-    It MUST return 200 quickly, so do lightweight work here.
-    """
+async def flutterwave_webhook(
+    request: Request,
+    session: AsyncSession = Depends(get_session)
+):
     body = await request.json()
     tx_ref = body.get("data", {}).get("tx_ref")
 
     if not tx_ref:
         return {"status": "error", "message": "No tx_ref in webhook"}
 
-    # Call your verify_payment with credit=True so user gets credited
     ok = await verify_payment(tx_ref, session, bot=bot, credit=True)
-
     return {"status": "success" if ok else "failed"}
 
-
-# --------------------------------------------------------------
+# -------------------------------------------------
 # Flutterwave Redirect (user lands here after checkout)
-# --------------------------------------------------------------
+# -------------------------------------------------
 @app.get("/flw/redirect", response_class=HTMLResponse)
 async def flutterwave_redirect(tx_ref: str = Query(...)):
     html_content = f"""
@@ -208,19 +193,14 @@ async def flutterwave_redirect(tx_ref: str = Query(...)):
     """
     return HTMLResponse(content=html_content, status_code=200)
 
-# --------------------------------------------------------------
-# Flw Redirect Status (polls DB until webhook credits user)
-# --------------------------------------------------------------
+# -------------------------------------------------
+# Flutterwave Redirect Status (polls DB until webhook credits user)
+# -------------------------------------------------
 @app.get("/flw/redirect/status")
 async def flutterwave_redirect_status(
     tx_ref: str,
     session: AsyncSession = Depends(get_async_session),
 ):
-    """
-    Polled by /flw/redirect until webhook updates payment in DB.
-    This does NOT credit tries — webhook is the source of truth.
-    """
-    # ✅ Do NOT credit here, only check DB
     stmt = select(Payment).where(Payment.tx_ref == tx_ref)
     result = await session.execute(stmt)
     payment = result.scalar_one_or_none()
@@ -254,15 +234,12 @@ async def flutterwave_redirect_status(
         """
         return JSONResponse({"done": True, "html": html})
 
-    # Still pending → keep polling
     return JSONResponse({"done": False})
 
-
-# --------------------------------------------------------------
+# -------------------------------------------------
 # Health check endpoint
-# --------------------------------------------------------------
+# -------------------------------------------------
 @app.get("/health")
 @app.head("/health")
 async def health_check():
     return {"status": "ok", "bot_initialized": application is not None}
-
