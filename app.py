@@ -194,21 +194,25 @@ async def flutterwave_redirect(tx_ref: str = Query(...)):
     return HTMLResponse(content=html_content, status_code=200)
 
 # -------------------------------------------------
-# Flutterwave Redirect Status (polls DB until webhook credits user)
+# Flutterwave Redirect Status (with deep link to Telegram)
 # -------------------------------------------------
 @app.get("/flw/redirect/status")
 async def flutterwave_redirect_status(
     tx_ref: str,
-    session: AsyncSession = Depends(get_session),   # ✅ use get_session, not get_async_session
+    session: AsyncSession = Depends(get_session),
 ):
     stmt = select(Payment).where(Payment.tx_ref == tx_ref)
     result = await session.execute(stmt)
     payment = result.scalar_one_or_none()
 
     if not payment:
-        return JSONResponse(
-            {"done": True, "html": "<h2 style='color:red;'>❌ Payment not found</h2>"}
-        )
+        html = """
+        <h2 style="color:red;">❌ Payment not found</h2>
+        <p><a href="https://t.me/NaijaPrizeGateBot?start=payment_notfound"
+              style="color:blue; font-weight:bold;">Return to Telegram Bot</a></p>
+        <script>setTimeout(function(){ window.open('', '_self').close(); }, 5000);</script>
+        """
+        return JSONResponse({"done": True, "html": html})
 
     if payment.status == "successful":
         html = f"""
@@ -216,10 +220,13 @@ async def flutterwave_redirect_status(
         <p>Transaction Reference: <b>{tx_ref}</b></p>
         <p>You’ve been credited with <b>{payment.credited_tries}</b> tries 🎉</p>
         <p>This tab will close automatically in 5 seconds.</p>
-        <p><a href="https://t.me/NaijaPrizeGateBot" style="color:blue; font-weight:bold;">Return to Telegram Bot</a></p>
-        <script>
-            setTimeout(function() {{ window.open('', '_self').close(); }}, 5000);
-        </script>
+        <p>
+            <a href="https://t.me/NaijaPrizeGateBot?start=payment_success_{tx_ref}"
+               style="color:blue; font-weight:bold;">
+               Return to Telegram Bot
+            </a>
+        </p>
+        <script>setTimeout(function(){ window.location.href="https://t.me/NaijaPrizeGateBot?start=payment_success_{tx_ref}"; }, 5000);</script>
         """
         return JSONResponse({"done": True, "html": html})
 
@@ -229,15 +236,19 @@ async def flutterwave_redirect_status(
         <p>Transaction Reference: <b>{tx_ref}</b></p>
         <p>If money was deducted, please contact support.</p>
         <p>This tab will close automatically in 8 seconds.</p>
-        <p><a href="https://t.me/NaijaPrizeGateBot" style="color:blue; font-weight:bold;">Return to Telegram Bot</a></p>
-        <script>
-            setTimeout(function() {{ window.open('', '_self').close(); }}, 8000);
-        </script>
+        <p>
+            <a href="https://t.me/NaijaPrizeGateBot?start=payment_failed_{tx_ref}"
+               style="color:blue; font-weight:bold;">
+               Return to Telegram Bot
+            </a>
+        </p>
+        <script>setTimeout(function(){ window.location.href="https://t.me/NaijaPrizeGateBot?start=payment_failed_{tx_ref}"; }, 8000);</script>
         """
         return JSONResponse({"done": True, "html": html})
 
     # Still pending → keep polling
     return JSONResponse({"done": False})
+
 
 # -------------------------------------------------
 # Health check endpoint
