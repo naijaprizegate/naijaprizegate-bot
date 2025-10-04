@@ -155,14 +155,9 @@ from logger import logger
 
 from fastapi import FastAPI, Request, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
-from database import get_session
-from services.verify import verify_payment
 from telegram import Bot
 
 app = FastAPI()
-
-# Initialize your Telegram bot
-bot = Bot(token="YOUR_TELEGRAM_BOT_TOKEN")
 
 @app.post("/flw/webhook")
 async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(get_session)):
