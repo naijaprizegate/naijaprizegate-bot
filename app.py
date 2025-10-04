@@ -223,7 +223,7 @@ async def flutterwave_redirect_status(
     html_template = f"""
     <h2 id="status" style="color:orange;">⏳ Payment Pending</h2>
     <p>Transaction Reference: <b>{tx_ref}</b></p>
-    <p>You’ve been credited with <b id="tries">{payment.credited_tries or 0}</b> tries 🎉</p>
+    <p>You’ve been credited with <b id="tries">{payment.tries or 0}</b> tries 🎉</p>
     <p>This tab will automatically update and redirect to Telegram when confirmed.</p>
     <p>
         <a id="telegram-link" href="{success_url}" style="color:blue; font-weight:bold;">
