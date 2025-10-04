@@ -13,7 +13,6 @@ from db import get_async_session
 from models import Payment, TransactionLog, GlobalCounter
 from sqlalchemy.future import select
 from models import Payment, GlobalCounter, User
-from services.payments import FLW_BASE_URL, FLW_SECRET_KEY, WIN_THRESHOLD
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 logger = logging.getLogger(__name__)
