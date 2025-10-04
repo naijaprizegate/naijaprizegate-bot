@@ -199,14 +199,16 @@ async def flutterwave_redirect(tx_ref: str = Query(...)):
 @app.get("/flw/redirect/status")
 async def flutterwave_redirect_status(
     tx_ref: str,
-    session: AsyncSession = Depends(get_async_session),
+    session: AsyncSession = Depends(get_session),   # ✅ use get_session, not get_async_session
 ):
     stmt = select(Payment).where(Payment.tx_ref == tx_ref)
     result = await session.execute(stmt)
     payment = result.scalar_one_or_none()
 
     if not payment:
-        return JSONResponse({"done": True, "html": "<h2 style='color:red;'>❌ Payment not found</h2>"})
+        return JSONResponse(
+            {"done": True, "html": "<h2 style='color:red;'>❌ Payment not found</h2>"}
+        )
 
     if payment.status == "successful":
         html = f"""
@@ -221,7 +223,7 @@ async def flutterwave_redirect_status(
         """
         return JSONResponse({"done": True, "html": html})
 
-    elif payment.status in ["failed", "expired"]:
+    if payment.status in ["failed", "expired"]:
         html = f"""
         <h2 style="color:red;">❌ Payment Failed</h2>
         <p>Transaction Reference: <b>{tx_ref}</b></p>
@@ -234,6 +236,7 @@ async def flutterwave_redirect_status(
         """
         return JSONResponse({"done": True, "html": html})
 
+    # Still pending → keep polling
     return JSONResponse({"done": False})
 
 # -------------------------------------------------
