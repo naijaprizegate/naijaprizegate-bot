@@ -4,7 +4,7 @@
 
 import os
 import logging
-from fastapi import FastAPI, Query, Request, HTTPException
+from fastapi import FastAPI, Query, Request, HTTPException, Depends
 from fastapi.responses import HTMLResponse
 from telegram import Update
 from telegram.ext import Application
@@ -14,6 +14,7 @@ from handlers import core, payments, free, admin, tryluck  # ensure handlers reg
 from tasks import start_background_tasks  # unified entrypoint
 
 from db import init_game_state, get_async_session
+from db import get_session
 from sqlalchemy.ext.asyncio import AsyncSession
 from services.payments import verify_payment
 from telegram import Bot
