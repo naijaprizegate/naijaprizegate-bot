@@ -19,7 +19,11 @@ from services.verify import verify_payment
 from telegram import Bot
 
 # Initialize your Telegram bot
-bot = Bot(token="7509078520:AAFIl2rDYykEacOdKyWlA35IQBsH1S2E-LE")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+if not BOT_TOKEN:
+    raise RuntimeError("❌ BOT_TOKEN not set in environment")
+
+bot = Bot(token=BOT_TOKEN)
 
 app = FastAPI()
 
