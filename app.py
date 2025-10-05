@@ -2,21 +2,25 @@
 # app.py
 # =====================================================
 
-import os, logging
+import os
+import logging
+import httpx
+
 from fastapi import FastAPI, Query, Request, HTTPException, Depends
 from fastapi.responses import HTMLResponse, JSONResponse
-from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
+
 from telegram import Update, Bot
 from telegram.ext import Application
 
-# local imports
+# Local imports
 from logger import tg_error_handler, logger
 from handlers import core, payments, free, admin, tryluck
 from tasks import start_background_tasks, stop_background_tasks
 from db import init_game_state, get_async_session, get_session
-from services.payments import verify_payment
 from models import Payment
+from services.payments import FLW_BASE_URL, FLW_SECRET_KEY  # ✅ Keep these two only
 
 # -------------------------------------------------
 # Environment setup
@@ -173,12 +177,17 @@ async def flutterwave_redirect(tx_ref: str = Query(...)):
             </style>
             <script>
                 async function checkStatus() {{
-                    let response = await fetch("/flw/redirect/status?tx_ref={tx_ref}");
-                    let data = await response.json();
-                    if (data.done) {{
-                        document.body.innerHTML = data.html;
-                    }} else {{
-                        setTimeout(checkStatus, 2000);
+                    try {{
+                        const response = await fetch("/flw/redirect/status?tx_ref={tx_ref}");
+                        const data = await response.json();
+                        if (data.done) {{
+                            document.body.innerHTML = data.html;
+                        }} else {{
+                            setTimeout(checkStatus, 2500);
+                        }}
+                    }} catch (err) {{
+                        console.error("Polling error:", err);
+                        setTimeout(checkStatus, 3000);
                     }}
                 }}
                 window.onload = checkStatus;
@@ -193,8 +202,9 @@ async def flutterwave_redirect(tx_ref: str = Query(...)):
     """
     return HTMLResponse(content=html_content, status_code=200)
 
+
 # -------------------------------------------------
-# Flutterwave Redirect Status (auto-polling + dynamic tries + Telegram deep link)
+# Flutterwave Redirect Status (verifies + auto credits)
 # -------------------------------------------------
 @app.get("/flw/redirect/status")
 async def flutterwave_redirect_status(
@@ -205,72 +215,27 @@ async def flutterwave_redirect_status(
     result = await session.execute(stmt)
     payment = result.scalar_one_or_none()
 
-    # Default URLs
     success_url = f"https://t.me/NaijaPrizeGateBot?start=payment_success_{tx_ref}"
     failed_url = f"https://t.me/NaijaPrizeGateBot?start=payment_failed_{tx_ref}"
     notfound_url = "https://t.me/NaijaPrizeGateBot?start=payment_notfound"
 
+    # --- Payment not found ---
     if not payment:
         html = f"""
         <h2 style="color:red;">❌ Payment not found</h2>
-        <p><a href="{notfound_url}" style="color:blue; font-weight:bold;">
-           Return to Telegram Bot
-        </a></p>
-        <script>setTimeout(function(){{ window.open('', '_self').close(); }}, 5000);</script>
+        <p><a href="{notfound_url}" style="color:blue; font-weight:bold;">Return to Telegram Bot</a></p>
+        <script>setTimeout(() => window.open('', '_self').close(), 5000);</script>
         """
         return JSONResponse({"done": True, "html": html})
 
-    html_template = f"""
-    <h2 id="status" style="color:orange;">⏳ Payment Pending</h2>
-    <p>Transaction Reference: <b>{tx_ref}</b></p>
-    <p>You’ve been credited with <b id="tries">{payment.tries or 0}</b> tries 🎉</p>
-    <p>This tab will automatically update and redirect to Telegram when confirmed.</p>
-    <p>
-        <a id="telegram-link" href="{success_url}" style="color:blue; font-weight:bold;">
-           Return to Telegram Bot
-        </a>
-    </p>
-    <script>
-        let attempts = 0;
-        const maxAttempts = 10;
-        const interval = setInterval(async function() {{
-            attempts++;
-            try {{
-                const res = await fetch('/flw/redirect/status?tx_ref={tx_ref}');
-                const data = await res.json();
-                if(data.done) {{
-                    clearInterval(interval);
-                    document.body.innerHTML = data.html;
-                }} else if(data.html) {{
-                    // Update tries dynamically without reload
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = data.html;
-                    const newTries = tempDiv.querySelector('#tries');
-                    if(newTries) document.getElementById('tries').innerText = newTries.innerText;
-                }}
-            }} catch(e) {{
-                console.warn('Polling error', e);
-            }}
-            if(attempts >= maxAttempts) clearInterval(interval);
-        }}, 2000);
-    </script>
-    """
-
-    # Pending or successful/failed will reuse this template
+    # --- Check local DB first ---
     if payment.status == "successful":
         html = f"""
         <h2 style="color:green;">✅ Payment Successful</h2>
         <p>Transaction Reference: <b>{tx_ref}</b></p>
         <p>You’ve been credited with <b>{payment.credited_tries}</b> tries 🎉</p>
         <p>This tab will redirect to Telegram in 5 seconds...</p>
-        <p>
-            <a href="{success_url}" style="color:blue; font-weight:bold;">
-               Return to Telegram Bot
-            </a>
-        </p>
-        <script>
-            setTimeout(function(){{ window.location.href="{success_url}"; }}, 5000);
-        </script>
+        <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
         """
         return JSONResponse({"done": True, "html": html})
 
@@ -279,19 +244,44 @@ async def flutterwave_redirect_status(
         <h2 style="color:red;">❌ Payment Failed</h2>
         <p>Transaction Reference: <b>{tx_ref}</b></p>
         <p>If money was deducted, please contact support.</p>
-        <p>This tab will redirect to Telegram in 8 seconds...</p>
-        <p>
-            <a href="{failed_url}" style="color:blue; font-weight:bold;">
-               Return to Telegram Bot
-            </a>
-        </p>
-        <script>
-            setTimeout(function(){{ window.location.href="{failed_url}"; }}, 8000);
-        </script>
+        <script>setTimeout(() => window.location.href="{failed_url}", 8000);</script>
         """
         return JSONResponse({"done": True, "html": html})
 
-    # Still pending → send template with dynamic polling
+    # --- Still pending → fallback verify directly from Flutterwave ---
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            resp = await client.get(
+                f"{FLW_BASE_URL}/transactions/verify_by_reference?tx_ref={tx_ref}",
+                headers={"Authorization": f"Bearer {FLW_SECRET_KEY}"},
+            )
+        data = resp.json()
+        logger.info(f"Verification for {tx_ref}: {data}")
+
+        if data.get("status") == "success" and data["data"]["status"] == "successful":
+            payment.status = "successful"
+            payment.flw_tx_id = data["data"]["id"]
+            payment.credited_tries = 1  # or set dynamically based on plan
+            await session.commit()
+
+            html = f"""
+            <h2 style="color:green;">✅ Payment Verified Successfully</h2>
+            <p>Transaction Reference: <b>{tx_ref}</b></p>
+            <p>You’ve been credited with <b>{payment.credited_tries}</b> tries 🎉</p>
+            <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
+            """
+            return JSONResponse({"done": True, "html": html})
+
+    except Exception as e:
+        logger.error(f"Verification error for {tx_ref}: {e}")
+
+    # --- Pending still ---
+    html_template = f"""
+    <h2 style="color:orange;">⏳ Payment Pending</h2>
+    <p>Transaction Reference: <b>{tx_ref}</b></p>
+    <p>You’ve been credited with <b>{payment.credited_tries or 0}</b> tries 🎯</p>
+    <p>This tab will automatically update once confirmed.</p>
+    """
     return JSONResponse({"done": False, "html": html_template})
 
 
