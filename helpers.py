@@ -1,6 +1,6 @@
-#===============================================================
+# ===============================================================
 # helpers.py
-#===============================================================
+# ===============================================================
 import html
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -13,20 +13,35 @@ def md_escape(text: str) -> str:
     return "".join(f"\\{c}" if c in escape_chars else c for c in text)
 
 
+# -------------------------------------------------
 # Create or get an existing user
-async def get_or_create_user(session: AsyncSession, tg_id: int, username: str = None) -> User:
+# -------------------------------------------------
+async def get_or_create_user(
+    session: AsyncSession,
+    tg_id: int,
+    username: str | None = None
+) -> User:
+    """
+    Fetch a User by Telegram ID, or create one if not exists.
+    Uses the provided AsyncSession (don't close it here).
+    """
     result = await session.execute(select(User).where(User.tg_id == tg_id))
     user = result.scalar_one_or_none()
 
-    if not user:
-        user = User(tg_id=tg_id, username=username)
-        session.add(user)
-        await session.commit()
-        await session.refresh(user)
+    if user:
+        return user
+
+    # Create new user
+    user = User(tg_id=tg_id, username=username)
+    session.add(user)
+    await session.commit()
+    await session.refresh(user)  # ensures ID and defaults are loaded
     return user
 
 
+# -------------------------------------------------
 # Add tries (paid or bonus)
+# -------------------------------------------------
 async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = True):
     if paid:
         user.tries_paid += count
@@ -35,8 +50,10 @@ async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = 
     await session.commit()
 
 
+# -------------------------------------------------
 # Consume one try (bonus first, then paid)
-async def consume_try(session: AsyncSession, user: User) -> str:
+# -------------------------------------------------
+async def consume_try(session: AsyncSession, user: User):
     if user.tries_bonus > 0:
         user.tries_bonus -= 1
         await session.commit()
@@ -58,23 +75,31 @@ async def consume_try(session: AsyncSession, user: User) -> str:
 
     return None
 
-# Get user by UUID (database id)
+
+# -------------------------------------------------
+# Get user by DB ID
+# -------------------------------------------------
 async def get_user_by_id(session: AsyncSession, user_id) -> User | None:
     result = await session.execute(select(User).where(User.id == user_id))
     return result.scalar_one_or_none()
 
+
+# -------------------------------------------------
 # Record a play
+# -------------------------------------------------
 async def record_play(session: AsyncSession, user: User, result: str):
     play = Play(user_id=user.id, result=result)
     session.add(play)
     await session.commit()
     return play
 
+
+# -------------------------------------------------
 # Check if a user is admin
+# -------------------------------------------------
 def is_admin(user: User) -> bool:
     """
     Return True if the user is marked as admin.
     Assumes the User model has an `is_admin` boolean column.
     """
     return getattr(user, "is_admin", False)
-
