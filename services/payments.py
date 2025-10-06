@@ -110,7 +110,8 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
                 user, tries = await credit_user_tries(session, payment)
                 await session.commit()
 
-                if bot and user.tg_id:
+                # ✅ Make sure bot is passed in so user gets a Telegram notification
+                if bot and user and user.tg_id:
                     deep_link = f"https://t.me/NaijaPrizeGateBot?start=payment_success_{tx_ref}"
                     keyboard = [
                         [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
@@ -193,6 +194,17 @@ PRICE_TO_TRIES = {
     5000: 15,
 }
 
+def calculate_tries(amount: int) -> int:
+    """
+    Returns tries for given amount.
+    - Exact matches use PRICE_TO_TRIES
+    - Otherwise fallback: 1 try per ₦500
+    """
+    if amount in PRICE_TO_TRIES:
+        return PRICE_TO_TRIES[amount]
+    return amount // 500  # fallback
+
+
 async def credit_user_tries(session, payment: Payment):
     user = await session.get(User, payment.user_id)
     if not user:
@@ -203,7 +215,7 @@ async def credit_user_tries(session, payment: Payment):
         logger.info(f"ℹ️ Payment {payment.tx_ref} already credited → skipping")
         return user, payment.credited_tries
 
-    tries = PRICE_TO_TRIES.get(int(payment.amount), 0)
+    tries = calculate_tries(int(payment.amount))
     if tries <= 0:
         logger.warning(f"⚠️ No tries mapping for amount {payment.amount}")
         return user, 0
