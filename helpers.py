@@ -46,15 +46,17 @@ async def get_or_create_user(
 # -------------------------------------------------
 # Add tries (paid or bonus)
 # -------------------------------------------------
-async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = True):
+async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = True) -> User:
     """
-    Increment user's tries (paid or bonus).
+    Increment user's tries (paid or bonus) inside an active session.
+    Caller controls session lifecycle and commit.
     """
     if paid:
         user.tries_paid = (user.tries_paid or 0) + count
     else:
         user.tries_bonus = (user.tries_bonus or 0) + count
 
+    session.add(user)   # ensure user is tracked
     await session.commit()
     await session.refresh(user)
     return user
