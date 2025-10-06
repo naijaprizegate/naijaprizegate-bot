@@ -1,66 +1,76 @@
-#===============================================================
+# ===============================================================
 # db.py
-#===============================================================
+# ===============================================================
 import os
 import logging
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
-from sqlalchemy.orm import sessionmaker
+from contextlib import asynccontextmanager
+from sqlalchemy.ext.asyncio import (
+    create_async_engine,
+    AsyncSession,
+    async_sessionmaker,
+)
 from sqlalchemy import select
-from models import GlobalCounter, GameState
+
+from models import Base, User, Play, Payment, Proof, TransactionLog, GlobalCounter, GameState
 
 logger = logging.getLogger(__name__)
 
-# Import your models so metadata is available
-from models import Base, User, Play, Payment, Proof, TransactionLog
-
-# Get DATABASE_URL from environment
+# -------------------------------------------------
+# Database URL setup
+# -------------------------------------------------
 DATABASE_URL = os.getenv("DATABASE_URL")
 if not DATABASE_URL:
     raise RuntimeError("❌ DATABASE_URL not set in environment variables")
 
-# Ensure asyncpg format (Render often gives psycopg2 style)
+# Ensure asyncpg driver is used (Render often gives psycopg2 style)
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+asyncpg://", 1)
 elif DATABASE_URL.startswith("postgresql://") and "+asyncpg" not in DATABASE_URL:
     DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
 
-# Create async engine
+# -------------------------------------------------
+# Engine & Session
+# -------------------------------------------------
 engine = create_async_engine(
     DATABASE_URL,
-    future=True,
-    echo=os.getenv("SQL_ECHO", "false").lower() == "true"  # set to true for debug logging
+    echo=os.getenv("SQL_ECHO", "false").lower() == "true",  # SQL logs if enabled
+    pool_pre_ping=True,     # ✅ checks if connection is alive
+    pool_recycle=1800,      # ✅ recycle connections every 30 mins
 )
 
-# Session factory (each request/handler will use this)
-AsyncSessionLocal = sessionmaker(
+# ✅ async_sessionmaker is the modern factory
+AsyncSessionLocal = async_sessionmaker(
     engine,
     expire_on_commit=False,
-    class_=AsyncSession
+    class_=AsyncSession,
 )
 
-from contextlib import asynccontextmanager
-
-# For FastAPI dependency injection
-async def get_session():
+# -------------------------------------------------
+# FastAPI Dependencies
+# -------------------------------------------------
+async def get_session() -> AsyncSession:
+    """Use inside FastAPI routes via Depends()."""
     async with AsyncSessionLocal() as session:
         yield session
-        
-# For background tasks (e.g. sweeper)
+
 @asynccontextmanager
 async def get_async_session():
+    """Use in background tasks (not request-bound)."""
     async with AsyncSessionLocal() as session:
         yield session
 
-# ⚠️ For local development only
-# In production, don’t run this — rely on migrations
+# -------------------------------------------------
+# Database Init (dev only!)
+# -------------------------------------------------
 async def init_db():
+    """Create tables locally if no migrations (⚠️ not for prod)."""
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     print("✅ Database initialized (dev only)")
 
-# ----------------
-# init_game_state
-# ----------------
+# -------------------------------------------------
+# Ensure Global State Rows
+# -------------------------------------------------
 async def init_game_state():
     """
     Ensure the DB has exactly one GlobalCounter row and one GameState row.
@@ -83,4 +93,3 @@ async def init_game_state():
 
         await session.commit()
         logger.info("init_game_state: done (global counter & game state ensured)")
-
