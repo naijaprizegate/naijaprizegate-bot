@@ -24,6 +24,7 @@ from models import Payment
 from services.payments import (
     FLW_BASE_URL,
     FLW_SECRET_KEY,
+    calculate_tries,
     verify_payment,   # <- This is the key import you needed
 )
 
@@ -228,6 +229,7 @@ async def flutterwave_redirect(tx_ref: str = Query(...)):
 # -------------------------------------------------
 # Flutterwave Redirect Status (verifies + auto credits)
 # -------------------------------------------------
+
 @app.get("/flw/redirect/status")
 async def flutterwave_redirect_status(
     tx_ref: str,
@@ -283,7 +285,11 @@ async def flutterwave_redirect_status(
         if data.get("status") == "success" and data["data"]["status"] == "successful":
             payment.status = "successful"
             payment.flw_tx_id = data["data"]["id"]
-            payment.credited_tries = 1  # or set dynamically based on plan
+
+            # ✅ Use calculate_tries instead of hardcoding
+            amount = data["data"]["amount"]
+            payment.credited_tries = calculate_tries(amount)
+
             await session.commit()
 
             html = f"""
@@ -305,7 +311,6 @@ async def flutterwave_redirect_status(
     <p>This tab will automatically update once confirmed.</p>
     """
     return JSONResponse({"done": False, "html": html_template})
-
 
 # -------------------------------------------------
 # Health check endpoint
