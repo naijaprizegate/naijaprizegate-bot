@@ -4,7 +4,7 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CallbackQueryHandler, CommandHandler
 from helpers import md_escape, get_or_create_user, add_tries
-from models import Payment
+from models import Payment, User
 from db import AsyncSessionLocal, get_async_session
 from services.payments import create_checkout
 from sqlalchemy import insert, update, select
@@ -150,31 +150,32 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
 # --- Webhook success handler ---
 async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: int, bot):
     async with get_async_session() as session:
-        # ✅ Update both status AND credited_tries
+        # 1. Mark payment successful
         stmt = (
             update(Payment)
             .where(Payment.tx_ref == tx_ref)
             .values(
                 status="successful",
-                credited_tries=tries,  # ✅ persist how many spins this payment gave
-                completed_at=datetime.utcnow()  # optional, if you have a timestamp field
+                credited_tries=tries,
+                completed_at=datetime.utcnow()
             )
         )
         await session.execute(stmt)
+
+        # 2. Fetch & credit user in same session
+        db_user = await get_or_create_user(session, user_id)
+        db_user.tries_paid += tries
+
+        # 3. Commit everything atomically
         await session.commit()
 
-        db_user = await get_or_create_user(session, user_id)
-
-    # ✅ Also increment the user's tries
-    await add_tries(user_id, tries, paid=True)
-
-    # ✅ Notify user in Telegram
+    # 4. Notify user
     await bot.send_message(
         chat_id=user_id,
         text=payment_success_text(db_user, amount, tries),
         parse_mode="MarkdownV2"
     )
-
+    
 # ---- Expire Old Payments ----
 async def expire_old_payments():
     cutoff = datetime.utcnow() - timedelta(hours=24)
