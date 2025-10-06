@@ -1,7 +1,6 @@
 # =====================================================
 # app.py
 # =====================================================
-
 import os
 import logging
 import httpx
@@ -20,7 +19,13 @@ from handlers import core, payments, free, admin, tryluck
 from tasks import start_background_tasks, stop_background_tasks
 from db import init_game_state, get_async_session, get_session
 from models import Payment
-from services.payments import FLW_BASE_URL, FLW_SECRET_KEY  # ✅ Keep these two only
+
+# ✅ Import everything Flutterwave-related from one place
+from services.payments import (
+    FLW_BASE_URL,
+    FLW_SECRET_KEY,
+    verify_payment,   # <- This is the key import you needed
+)
 
 # -------------------------------------------------
 # Environment setup
