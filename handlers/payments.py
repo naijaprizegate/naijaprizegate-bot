@@ -43,7 +43,6 @@ async def buy_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         for price, tries in PACKAGES
     ]
 
-    # Works for both command (/buy) and callback (Buy Tries button)
     if update.message:
         await update.message.reply_text(
             f"🛒 *Choose your top\\-up package, {md_escape(user.username or 'Friend')}:*",
@@ -73,25 +72,22 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     tx_ref = str(uuid.uuid4())
 
     async with AsyncSessionLocal() as session:
-        # ✅ Get or create the DB user
         db_user = await get_or_create_user(
             session, query.from_user.id, query.from_user.username
         )
 
-        # ✅ Insert with db_user.id (UUID), not tg_id
         stmt = insert(Payment).values(
             user_id=db_user.id,
             amount=price,
-            tries=tries,
+            credited_tries=tries,   # ✅ FIXED: renamed column
             tx_ref=tx_ref,
             status="pending"
         )
         await session.execute(stmt)
         await session.commit()
 
-    # ✅ Pass Telegram username (fallback to user_id if missing)
     username = query.from_user.username or f"user_{query.from_user.id}"
-    email = f"{username}@naijaprizegate.ng"  # synthetic email for Flutterwave
+    email = f"{username}@naijaprizegate.ng"
 
     checkout_url = await create_checkout(
         amount=price,
@@ -107,17 +103,16 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     ]
 
     await query.edit_message_text(
-    text=(
-        f"💳 <b>Package selected:</b> {tries} Try{'s' if tries>1 else ''} for ₦{price}\n\n"
-        "👉 Click the button below to confirm payment.\n\n"
-        f"If the button doesn’t work, copy this link and open it in your browser:\n"
-        f'<a href="{checkout_url}">{checkout_url}</a>'
-    ),
-
-    reply_markup=InlineKeyboardMarkup(keyboard),
-    parse_mode="HTML",
-    disable_web_page_preview=True
-)
+        text=(
+            f"💳 <b>Package selected:</b> {tries} Try{'s' if tries>1 else ''} for ₦{price}\n\n"
+            "👉 Click the button below to confirm payment.\n\n"
+            f"If the button doesn’t work, copy this link and open it in your browser:\n"
+            f'<a href="{checkout_url}">{checkout_url}</a>'
+        ),
+        reply_markup=InlineKeyboardMarkup(keyboard),
+        parse_mode="HTML",
+        disable_web_page_preview=True
+    )
 
 # --- Cancel payment ---
 async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -126,7 +121,6 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
     print("❌ Cancel button pressed by", query.from_user.id)
 
     async with AsyncSessionLocal() as session:
-        # ✅ Fetch db_user properly
         db_user = await get_or_create_user(session, query.from_user.id, query.from_user.username)
 
         result = await session.execute(
@@ -188,7 +182,6 @@ async def expire_old_payments():
 # --- Register handlers ---
 def register_handlers(application):
     application.add_handler(CommandHandler("buy", buy_menu))
-    application.add_handler(CallbackQueryHandler(buy_menu, pattern="^buy$"))  # ✅ makes Buy Tries button work
+    application.add_handler(CallbackQueryHandler(buy_menu, pattern="^buy$"))
     application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy_"))
     application.add_handler(CallbackQueryHandler(handle_cancel_payment, pattern="^cancel_payment$"))
-
