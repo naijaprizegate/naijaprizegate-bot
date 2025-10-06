@@ -136,23 +136,40 @@ async def telegram_webhook(secret: str, request: Request):
     update = Update.de_json(payload, application.bot)
     await application.process_update(update)
     return {"ok": True}
-
+    
 # -------------------------------------------------
 # Flutterwave webhook (source of truth)
 # -------------------------------------------------
+from services.payments import (
+    verify_payment,
+    validate_webhook,   # ✅ import signature validator
+)
+
 @app.post("/flw/webhook")
 async def flutterwave_webhook(
     request: Request,
     session: AsyncSession = Depends(get_session)
 ):
+    # ✅ Validate Flutterwave signature first
+    raw_body = await request.body()
+    if not validate_webhook(request.headers, raw_body.decode("utf-8")):
+        logger.warning("⚠️ Invalid Flutterwave webhook signature")
+        raise HTTPException(status_code=403, detail="Invalid signature")
+
     body = await request.json()
     tx_ref = body.get("data", {}).get("tx_ref")
 
     if not tx_ref:
+        logger.error("❌ Webhook received without tx_ref")
         return {"status": "error", "message": "No tx_ref in webhook"}
 
+    logger.info(f"🌍 Flutterwave webhook received for tx_ref={tx_ref}")
+
+    # ✅ Pass bot into verify_payment so Telegram notification fires
     ok = await verify_payment(tx_ref, session, bot=bot, credit=True)
-    return {"status": "success" if ok else "failed"}
+
+    return {"status": "success" if ok else "failed", "tx_ref": tx_ref}
+
 
 # -------------------------------------------------
 # Flutterwave Redirect (user lands here after checkout)
