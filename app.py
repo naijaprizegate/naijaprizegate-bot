@@ -225,10 +225,11 @@ async def flutterwave_redirect(tx_ref: str = Query(...)):
     """
     return HTMLResponse(content=html_content, status_code=200)
 
-
 # -------------------------------------------------
 # Flutterwave Redirect Status (verifies + auto credits)
 # -------------------------------------------------
+from helpers import get_or_create_user, add_tries
+from services.payments import calculate_tries
 
 @app.get("/flw/redirect/status")
 async def flutterwave_redirect_status(
@@ -252,7 +253,7 @@ async def flutterwave_redirect_status(
         """
         return JSONResponse({"done": True, "html": html})
 
-    # --- Check local DB first ---
+    # --- Already marked successful ---
     if payment.status == "successful":
         html = f"""
         <h2 style="color:green;">✅ Payment Successful</h2>
@@ -263,6 +264,7 @@ async def flutterwave_redirect_status(
         """
         return JSONResponse({"done": True, "html": html})
 
+    # --- Failed or expired ---
     if payment.status in ["failed", "expired"]:
         html = f"""
         <h2 style="color:red;">❌ Payment Failed</h2>
@@ -286,16 +288,25 @@ async def flutterwave_redirect_status(
             payment.status = "successful"
             payment.flw_tx_id = data["data"]["id"]
 
-            # ✅ Use calculate_tries instead of hardcoding
+            # ✅ Dynamically calculate tries
             amount = data["data"]["amount"]
-            payment.credited_tries = calculate_tries(amount)
+            credited_tries = calculate_tries(amount)
+            payment.credited_tries = credited_tries
+
+            # ✅ Ensure user exists before crediting
+            user = await get_or_create_user(
+                session,
+                tg_id=payment.tg_id,          # assumes Payment has tg_id field
+                username=payment.username     # optional if stored
+            )
+            await add_tries(session, user, credited_tries, paid=True)
 
             await session.commit()
 
             html = f"""
             <h2 style="color:green;">✅ Payment Verified Successfully</h2>
             <p>Transaction Reference: <b>{tx_ref}</b></p>
-            <p>You’ve been credited with <b>{payment.credited_tries}</b> tries 🎉</p>
+            <p>You’ve been credited with <b>{credited_tries}</b> tries 🎉</p>
             <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
             """
             return JSONResponse({"done": True, "html": html})
@@ -303,7 +314,7 @@ async def flutterwave_redirect_status(
     except Exception as e:
         logger.error(f"Verification error for {tx_ref}: {e}")
 
-    # --- Pending still ---
+    # --- Still pending ---
     html_template = f"""
     <h2 style="color:orange;">⏳ Payment Pending</h2>
     <p>Transaction Reference: <b>{tx_ref}</b></p>
@@ -311,6 +322,7 @@ async def flutterwave_redirect_status(
     <p>This tab will automatically update once confirmed.</p>
     """
     return JSONResponse({"done": False, "html": html_template})
+
 
 # -------------------------------------------------
 # Health check endpoint
