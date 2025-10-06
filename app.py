@@ -19,6 +19,7 @@ from handlers import core, payments, free, admin, tryluck
 from tasks import start_background_tasks, stop_background_tasks
 from db import init_game_state, get_async_session, get_session
 from models import Payment
+from helpers import get_or_create_user, add_tries
 
 # ✅ Import everything Flutterwave-related from one place
 from services.payments import (
@@ -228,9 +229,6 @@ async def flutterwave_redirect(tx_ref: str = Query(...)):
 # -------------------------------------------------
 # Flutterwave Redirect Status (verifies + auto credits)
 # -------------------------------------------------
-from helpers import get_or_create_user, add_tries
-from services.payments import calculate_tries
-
 @app.get("/flw/redirect/status")
 async def flutterwave_redirect_status(
     tx_ref: str,
