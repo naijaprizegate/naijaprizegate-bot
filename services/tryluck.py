@@ -1,10 +1,11 @@
 # ===============================================================
 # services/tryluck.py
-# =============================================================
+# ===============================================================
 import os
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
-from models import Play, User, GlobalCounter
+from models import Play, User
+from helpers import consume_try  # ✅ centralize try deduction
 
 WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "14600"))
 
@@ -12,28 +13,20 @@ WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "14600"))
 # ------------------------------------------------------
 # Consume a try + spin
 # ------------------------------------------------------
-async def consume_and_spin(user_id: str, session: AsyncSession) -> dict:
+async def consume_and_spin(user: User, session: AsyncSession) -> dict:
     """
-    Deduct a try (bonus first, else paid), update global counter atomically,
-    decide win/lose, insert Play row, and return result.
+    Deduct a try (bonus first, else paid) via helpers.consume_try,
+    update global counter if paid, decide win/lose, insert Play row,
+    and return structured result.
     """
 
-    # Fetch user row (for tries)
-    user: User = await session.get(User, user_id)
-    if not user:
-        return {"result": "error", "error": "User not found"}
-
-    paid_spin = False
-    if user.tries_bonus > 0:
-        user.tries_bonus -= 1
-    elif user.tries_paid > 0:
-        user.tries_paid -= 1
-        paid_spin = True
-    else:
+    spin_type = await consume_try(session, user)
+    if spin_type is None:
         return {"result": "no_tries"}
 
     result = "lose"
     is_winner = False
+    paid_spin = spin_type != "bonus"
 
     if paid_spin:
         # Ensure global counter row exists
@@ -61,12 +54,8 @@ async def consume_and_spin(user_id: str, session: AsyncSession) -> dict:
             is_winner = True
 
     # Insert play record (timestamp handled by DB default)
-    play = Play(
-        user_id=user.id,
-        result=result,
-    )
+    play = Play(user_id=user.id, result=result)
     session.add(play)
-
     await session.commit()
 
     return {
@@ -84,13 +73,8 @@ async def consume_and_spin(user_id: str, session: AsyncSession) -> dict:
 async def spin_logic(session: AsyncSession, user: User) -> str:
     """
     Wrapper so handlers/tryluck.py keeps working.
-    Calls consume_and_spin() and returns a simplified outcome.
+    Returns simplified outcome: 'no_tries', 'win', or 'lose'.
     """
-    outcome = await consume_and_spin(user.id, session)
+    outcome = await consume_and_spin(user, session)
 
-    if outcome["result"] == "no_tries":
-        return "no_tries"
-    elif outcome["result"] == "win":
-        return "win"
-    else:
-        return "lose"
+    return outcome["result"]
