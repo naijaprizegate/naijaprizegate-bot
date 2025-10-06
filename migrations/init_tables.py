@@ -20,7 +20,7 @@ def main():
         cur.execute("CREATE EXTENSION IF NOT EXISTS pgcrypto;")
 
         # ----------------------
-        # 1. Users table
+        # 1. Users
         # ----------------------
         cur.execute("""
         CREATE TABLE IF NOT EXISTS users (
@@ -78,11 +78,10 @@ def main():
             updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
-        # Ensure indexes
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_user_id ON payments(user_id);")
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_flw_tx_id ON payments(flw_tx_id);")
 
-        # ✅ Migration: if old column 'tries' exists, rename it safely to 'credited_tries'
+        # ✅ Migration: if old column 'tries' exists, rename it
         cur.execute("""
         DO $$
         BEGIN
@@ -94,7 +93,22 @@ def main():
             END IF;
         END$$;
         """)
-        print("✅ payments table ensured (credited_tries aligned)")
+
+        # ✅ Migration: if 'updated_at' column is missing, add it
+        cur.execute("""
+        DO $$
+        BEGIN
+            IF NOT EXISTS (
+                SELECT 1 FROM information_schema.columns
+                WHERE table_name='payments' AND column_name='updated_at'
+            ) THEN
+                ALTER TABLE payments
+                ADD COLUMN updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP;
+            END IF;
+        END$$;
+        """)
+
+        print("✅ payments table ensured (credited_tries + updated_at aligned)")
 
         # ----------------------
         # 5. Proofs
@@ -138,7 +152,6 @@ def main():
         """)
         print("✅ game_state table ensured")
 
-        # Commit all changes
         conn.commit()
         print("🎉 Migration completed successfully!")
 
