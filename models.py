@@ -12,9 +12,9 @@ from sqlalchemy.sql import func
 Base = declarative_base()
 
 
-# ----------------------
+# -----------------------
 # 1. Users
-# ----------------------
+# -----------------------
 class User(Base):
     __tablename__ = "users"
 
