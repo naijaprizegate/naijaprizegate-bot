@@ -29,6 +29,10 @@ async def get_or_create_user(
     user = result.scalar_one_or_none()
 
     if user:
+        # update username if changed
+        if username and user.username != username:
+            user.username = username
+            await session.commit()
         return user
 
     # Create new user
@@ -43,17 +47,30 @@ async def get_or_create_user(
 # Add tries (paid or bonus)
 # -------------------------------------------------
 async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = True):
+    """
+    Increment user's tries (paid or bonus).
+    """
     if paid:
-        user.tries_paid += count
+        user.tries_paid = (user.tries_paid or 0) + count
     else:
-        user.tries_bonus += count
+        user.tries_bonus = (user.tries_bonus or 0) + count
+
     await session.commit()
+    await session.refresh(user)
+    return user
 
 
 # -------------------------------------------------
 # Consume one try (bonus first, then paid)
 # -------------------------------------------------
 async def consume_try(session: AsyncSession, user: User):
+    """
+    Deduct one try. Uses bonus first, then paid.
+    Returns:
+      - "bonus" if bonus used
+      - int new_global_count if paid used
+      - None if no tries left
+    """
     if user.tries_bonus > 0:
         user.tries_bonus -= 1
         await session.commit()
@@ -71,7 +88,7 @@ async def consume_try(session: AsyncSession, user: User):
         )
         new_count = result.scalar_one()
         await session.commit()
-        return new_count  # Return counter value for win-check
+        return new_count
 
     return None
 
