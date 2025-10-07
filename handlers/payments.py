@@ -11,6 +11,9 @@ from sqlalchemy import insert, update, select
 from datetime import datetime, timedelta
 import uuid
 import os
+import logging
+
+logger = logging.getLogger(__name__)
 
 # --- HARDCODED PACKAGES ---
 PACKAGES = [
@@ -147,29 +150,49 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
         parse_mode="MarkdownV2"
     )
 
+
 # --- Webhook success handler ---
 async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: int, bot):
-    async with get_async_session() as session:
-        # 1. Mark payment successful
-        stmt = (
-            update(Payment)
-            .where(Payment.tx_ref == tx_ref)
-            .values(
-                status="successful",
-                credited_tries=tries,
-                completed_at=datetime.utcnow()
+    try:
+        async with get_async_session() as session:
+            # 1. Mark payment successful
+            stmt = (
+                update(Payment)
+                .where(Payment.tx_ref == tx_ref)
+                .values(
+                    status="successful",
+                    credited_tries=tries,
+                    completed_at=datetime.utcnow()
+                )
             )
+            await session.execute(stmt)
+
+            # 2. Fetch & credit user in same session
+            db_user = await get_or_create_user(session, user_id)
+            db_user.tries_paid += tries
+
+            # 3. Commit everything atomically
+            await session.commit()
+
+            # 4. Refresh db_user so we have the latest values after commit
+            await session.refresh(db_user)
+
+            # ✅ Success log
+            logger.info(
+                f"✅ Credited {tries} tries for user_id={user_id} "
+                f"(tx_ref={tx_ref}, amount={amount})"
+            )
+
+    except Exception as e:
+        # ❌ Error log
+        logger.error(
+            f"❌ Failed to credit tries for user_id={user_id}, "
+            f"tx_ref={tx_ref}, amount={amount}, tries={tries} → {e}",
+            exc_info=True
         )
-        await session.execute(stmt)
+        return  # exit early if DB update failed
 
-        # 2. Fetch & credit user in same session
-        db_user = await get_or_create_user(session, user_id)
-        db_user.tries_paid += tries
-
-        # 3. Commit everything atomically
-        await session.commit()
-
-    # 4. Notify user
+    # 5. Notify user only if DB commit succeeded
     await bot.send_message(
         chat_id=user_id,
         text=payment_success_text(db_user, amount, tries),
@@ -193,3 +216,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(buy_menu, pattern="^buy$"))
     application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy_"))
     application.add_handler(CallbackQueryHandler(handle_cancel_payment, pattern="^cancel_payment$"))
+
