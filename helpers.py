@@ -51,14 +51,22 @@ async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = 
     Increment user's tries (paid or bonus) inside an active session.
     Caller controls session lifecycle and commit.
     """
+    from loguru import logger  # local import so helpers.py doesn’t break if logger not global
+
+    logger.info(f"🌀 Adding {count} {'paid' if paid else 'bonus'} tries → user_id={user.id}")
+
     if paid:
         user.tries_paid = (user.tries_paid or 0) + count
     else:
         user.tries_bonus = (user.tries_bonus or 0) + count
 
-    session.add(user)   # ensure user is tracked
+    session.add(user)  # ensure user is tracked
     await session.commit()
     await session.refresh(user)
+
+    logger.info(
+        f"✅ User {user.id} now has paid={user.tries_paid}, bonus={user.tries_bonus} after adding {count}"
+    )
     return user
 
 
@@ -73,9 +81,19 @@ async def consume_try(session: AsyncSession, user: User):
       - int new_global_count if paid used
       - None if no tries left
     """
+    from loguru import logger
+
+    logger.info(
+        f"🎲 Attempting to consume try for user_id={user.id} "
+        f"(paid={user.tries_paid}, bonus={user.tries_bonus})"
+    )
+
     if user.tries_bonus > 0:
         user.tries_bonus -= 1
         await session.commit()
+        logger.info(
+            f"➖ Consumed 1 bonus try → user_id={user.id}, remaining bonus={user.tries_bonus}"
+        )
         return "bonus"
 
     if user.tries_paid > 0:
@@ -90,8 +108,14 @@ async def consume_try(session: AsyncSession, user: User):
         )
         new_count = result.scalar_one()
         await session.commit()
+
+        logger.info(
+            f"➖ Consumed 1 paid try → user_id={user.id}, remaining paid={user.tries_paid}, "
+            f"new_global_count={new_count}"
+        )
         return new_count
 
+    logger.warning(f"⚠️ No tries left to consume for user_id={user.id}")
     return None
 
 
@@ -107,9 +131,17 @@ async def get_user_by_id(session: AsyncSession, user_id) -> User | None:
 # Record a play
 # -------------------------------------------------
 async def record_play(session: AsyncSession, user: User, result: str):
+    from loguru import logger
+
     play = Play(user_id=user.id, result=result)
     session.add(play)
     await session.commit()
+    await session.refresh(play)
+
+    logger.info(
+        f"📝 Recorded play → play_id={play.id}, user_id={user.id}, result='{result}'"
+    )
+
     return play
 
 
