@@ -82,7 +82,8 @@ async def consume_try(session: AsyncSession, user: User):
       - int new_global_count if paid used
       - None if no tries left
     """
-    from loguru import logger
+    import logging
+    logger = logging.getLogger(__name__)
 
     logger.info(
         f"🎲 Attempting to consume try for user_id={user.id} "
@@ -132,7 +133,8 @@ async def get_user_by_id(session: AsyncSession, user_id) -> User | None:
 # Record a play
 # -------------------------------------------------
 async def record_play(session: AsyncSession, user: User, result: str):
-    from loguru import logger
+    import logging
+    logger = logging.getLogger(__name__)
 
     play = Play(user_id=user.id, result=result)
     session.add(play)
