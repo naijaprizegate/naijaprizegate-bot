@@ -3,11 +3,14 @@
 # ===============================================================
 import asyncio
 import random
+import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes, CallbackQueryHandler, CommandHandler
 from helpers import md_escape, get_or_create_user
 from services.tryluck import spin_logic
 from db import get_async_session
+
+logger = logging.getLogger(__name__)
 
 # Inline keyboard for retry
 try_again_keyboard = InlineKeyboardMarkup.from_row([
@@ -16,17 +19,29 @@ try_again_keyboard = InlineKeyboardMarkup.from_row([
 
 async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handler for /tryluck command or inline button callback"""
+    tg_user = update.effective_user
+    logger.info(f"🔔 /tryluck called by tg_id={tg_user.id}, username={tg_user.username}")
 
     # Always open DB session
     async with get_async_session() as session:
         user = await get_or_create_user(
             session,
-            tg_id=update.effective_user.id,
-            username=update.effective_user.username
+            tg_id=tg_user.id,
+            username=tg_user.username
+        )
+
+        logger.info(
+            f"📊 Before spin: User {user.id} (tg_id={user.tg_id}) "
+            f"has paid={user.tries_paid}, bonus={user.tries_bonus}"
         )
 
         # Spin the wheel using core game logic
         outcome = await spin_logic(session, user)
+
+        logger.info(
+            f"🎲 Outcome for user {user.id} = {outcome} | "
+            f"After spin tries: paid={user.tries_paid}, bonus={user.tries_bonus}"
+        )
 
     # Handle outcomes
     if outcome == "no_tries":
@@ -34,8 +49,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "😅 You don’t have any tries left\\! Buy more spins or earn free ones\\.",
             parse_mode="MarkdownV2"
         )
-        return
-    
+
     # Initial spinning message
     msg = await update.effective_message.reply_text("🎰 Spinning\\.\\.\\.", parse_mode="MarkdownV2")
 
@@ -53,7 +67,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if outcome == "win":
         final_frame = " ".join(["💎"] * num_reels)
         final_text = (
-            f"🏆 *Congratulations {md_escape(update.effective_user.first_name)}\\!* 🎉\n\n"
+            f"🏆 *Congratulations {md_escape(tg_user.first_name)}\\!* 🎉\n\n"
             f"You just won the jackpot\\!\n\n"
             "Your arsenal is loaded, your chances just went way up ⚡\n"
             "👉 Don’t keep luck waiting — hit *Try Luck* now and chase that jackpot 🏆🔥"
@@ -61,7 +75,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:  # outcome == "lose"
         final_frame = " ".join(random.choice(spinner_emojis) for _ in range(num_reels))
         final_text = (
-            f"😅 {md_escape(update.effective_user.first_name)}, no win this time\\.\n\n"
+            f"😅 {md_escape(tg_user.first_name)}, no win this time\\.\n\n"
             "Better luck next spin\\! Try again and chase that jackpot 🎰🔥"
         )
 
@@ -81,3 +95,4 @@ async def tryluck_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def register_handlers(application):
     application.add_handler(CommandHandler("tryluck", tryluck_handler))
     application.add_handler(CallbackQueryHandler(tryluck_callback, pattern="^tryluck$"))
+
