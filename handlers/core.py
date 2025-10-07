@@ -3,10 +3,12 @@
 # ================================================================
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters
-
 from helpers import md_escape, get_or_create_user, is_admin
 from db import get_async_session
 import re
+import logging
+
+logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------
 # /start handler (with optional referral arg)
@@ -75,17 +77,25 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ---------------------------------------------------------
 async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
+    logger.info(f"🔔 /mytries called by tg_id={user.id}, username={user.username}")
+
     async with get_async_session() as session:
         db_user = await get_or_create_user(session, user.id, user.username)
 
-    text = (
-        f"🧮 *Your Tries*\n\n"
-        f"• Paid: `{db_user.tries_paid}`\n"
-        f"• Free: `{db_user.tries_bonus}`"
-    )
+        # Log what we actually fetched from DB
+        logger.info(
+            f"📊 User {db_user.id} (tg_id={db_user.tg_id}) has "
+            f"paid={db_user.tries_paid}, bonus={db_user.tries_bonus}"
+        )
 
-    await update.message.reply_text(text, parse_mode="MarkdownV2")
+        text = (
+            f"🧮 *Your Tries*\n\n"
+            f"• Paid: `{db_user.tries_paid or 0}`\n"
+            f"• Free: `{db_user.tries_bonus or 0}`"
+        )
 
+    # Escape just in case user fields cause Markdown issues
+    await update.message.reply_text(md_escape(text), parse_mode="MarkdownV2")
 
 # ---------------------------------------------------------
 # Fallback text handler
