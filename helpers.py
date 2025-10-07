@@ -51,7 +51,8 @@ async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = 
     Increment user's tries (paid or bonus) inside an active session.
     Caller controls session lifecycle and commit.
     """
-    from loguru import logger  # local import so helpers.py doesn’t break if logger not global
+    import logging
+    logger = logging.getLogger(__name__)
 
     logger.info(f"🌀 Adding {count} {'paid' if paid else 'bonus'} tries → user_id={user.id}")
 
