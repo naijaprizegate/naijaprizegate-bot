@@ -177,10 +177,14 @@ async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: 
             # 4. Refresh db_user so we have the latest values after commit
             await session.refresh(db_user)
 
-            # ✅ Success log
+            # ✅ Success logs
             logger.info(
                 f"✅ Credited {tries} tries for user_id={user_id} "
                 f"(tx_ref={tx_ref}, amount={amount})"
+            )
+            logger.info(
+                f"📊 After credit: db_user.id={db_user.id}, tg_id={db_user.tg_id}, "
+                f"paid={db_user.tries_paid}, bonus={db_user.tries_bonus}"
             )
 
     except Exception as e:
@@ -198,6 +202,7 @@ async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: 
         text=payment_success_text(db_user, amount, tries),
         parse_mode="MarkdownV2"
     )
+
     
 # ---- Expire Old Payments ----
 async def expire_old_payments():
