@@ -221,6 +221,7 @@ async def credit_user_tries(session, payment: Payment):
     """
     Credits a user's account with tries based on the payment amount.
     Ensures we don't double-credit the same payment.
+    NOTE: Commit is controlled by caller (verify_payment).
     """
     user = await session.get(User, payment.user_id)
     if not user:
@@ -241,7 +242,7 @@ async def credit_user_tries(session, payment: Payment):
     user.tries_paid = (user.tries_paid or 0) + tries
     payment.credited_tries = tries
 
-    await session.flush()  # stage changes (commit will happen outside)
+    await session.flush()  # only stage changes, do not commit here
     logger.info(f"🎉 Credited {tries} tries to user {user.tg_id} ({user.username}) — tx_ref={payment.tx_ref}")
 
     return user, tries
