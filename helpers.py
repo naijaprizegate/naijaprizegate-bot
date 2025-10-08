@@ -70,53 +70,44 @@ async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = 
     )
     return user
 
-
 # -------------------------------------------------
 # Consume one try (bonus first, then paid)
 # -------------------------------------------------
+from sqlalchemy.ext.asyncio import AsyncSession
+import logging
+
+logger = logging.getLogger(__name__)
+
 async def consume_try(session: AsyncSession, user: User):
     """
     Deduct one try. Uses bonus first, then paid.
     Returns:
-      - "bonus" if bonus used
-      - int new_global_count if paid used
+      - "bonus" if a bonus try was used
+      - "paid" if a paid try was used
       - None if no tries left
+    NOTE: This function does not commit — caller must handle commit.
     """
-    import logging
-    logger = logging.getLogger(__name__)
-
 
     logger.info(
         f"🎲 Attempting to consume try for user_id={user.id} "
         f"(paid={user.tries_paid}, bonus={user.tries_bonus})"
     )
 
-    if user.tries_bonus > 0:
+    if user.tries_bonus and user.tries_bonus > 0:
         user.tries_bonus -= 1
-        await session.commit()
+        await session.flush()
         logger.info(
             f"➖ Consumed 1 bonus try → user_id={user.id}, remaining bonus={user.tries_bonus}"
         )
         return "bonus"
 
-    if user.tries_paid > 0:
+    if user.tries_paid and user.tries_paid > 0:
         user.tries_paid -= 1
-
-        # Atomically increment global counter
-        result = await session.execute(
-            update(GlobalCounter)
-            .where(GlobalCounter.id == 1)
-            .values(paid_tries_total=GlobalCounter.paid_tries_total + 1)
-            .returning(GlobalCounter.paid_tries_total)
-        )
-        new_count = result.scalar_one()
-        await session.commit()
-
+        await session.flush()
         logger.info(
-            f"➖ Consumed 1 paid try → user_id={user.id}, remaining paid={user.tries_paid}, "
-            f"new_global_count={new_count}"
+            f"➖ Consumed 1 paid try → user_id={user.id}, remaining paid={user.tries_paid}"
         )
-        return new_count
+        return "paid"
 
     logger.warning(f"⚠️ No tries left to consume for user_id={user.id}")
     return None
@@ -159,3 +150,4 @@ def is_admin(user: User) -> bool:
     Assumes the User model has an `is_admin` boolean column.
     """
     return getattr(user, "is_admin", False)
+
