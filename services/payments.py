@@ -197,9 +197,9 @@ async def log_transaction(session: AsyncSession, provider: str, payload: str):
     await session.commit()
 
 
-# ------------------------------------------------------
+# ------------------------------------------------------ 
 # 5. Credit User Tries
-# ------------------------------------------------------
+# ------------------------------------------------------ 
 PRICE_TO_TRIES = {
     500: 1,
     2000: 5,
@@ -208,21 +208,26 @@ PRICE_TO_TRIES = {
 
 def calculate_tries(amount: int) -> int:
     """
-    Returns tries for given amount.
+    Returns number of tries for given amount.
     - Exact matches use PRICE_TO_TRIES
     - Otherwise fallback: 1 try per ₦500
     """
     if amount in PRICE_TO_TRIES:
         return PRICE_TO_TRIES[amount]
-    return amount // 500  # fallback
+    return max(1, amount // 500)  # never return 0 for valid payments
 
 
 async def credit_user_tries(session, payment: Payment):
+    """
+    Credits a user's account with tries based on the payment amount.
+    Ensures we don't double-credit the same payment.
+    """
     user = await session.get(User, payment.user_id)
     if not user:
         logger.error(f"❌ No user found for payment {payment.tx_ref}")
-        return False, 0
+        return None, 0
 
+    # Prevent double-credit
     if payment.credited_tries and payment.credited_tries > 0:
         logger.info(f"ℹ️ Payment {payment.tx_ref} already credited → skipping")
         return user, payment.credited_tries
@@ -232,11 +237,12 @@ async def credit_user_tries(session, payment: Payment):
         logger.warning(f"⚠️ No tries mapping for amount {payment.amount}")
         return user, 0
 
+    # ✅ Update user balance
     user.tries_paid = (user.tries_paid or 0) + tries
     payment.credited_tries = tries
-    await session.commit()
 
-    logger.info(f"🎉 Credited {tries} tries to user {user.tg_id} ({user.username}) — {payment.tx_ref}")
+    await session.flush()  # stage changes (commit will happen outside)
+    logger.info(f"🎉 Credited {tries} tries to user {user.tg_id} ({user.username}) — tx_ref={payment.tx_ref}")
+
     return user, tries
-
 
