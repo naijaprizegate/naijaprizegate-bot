@@ -9,12 +9,17 @@ import sys
 # Force unbuffered output (Render needs this for real-time logs)
 os.environ["PYTHONUNBUFFERED"] = "1"
 
-# Configure logger
+
 logging.basicConfig(
-    level=logging.INFO,  # Show INFO and above
-    format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
+    level=logging.INFO,  # Capture INFO and above
+    format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",  # clean timestamp
     handlers=[logging.StreamHandler(sys.stdout)]
 )
+
+# Example of setting uvicorn/gunicorn loggers to match
+for noisy_logger in ("uvicorn", "uvicorn.error", "uvicorn.access", "gunicorn", "gunicorn.error", "gunicorn.access"):
+    logging.getLogger(noisy_logger).setLevel(logging.INFO)
 
 # Optional: make sure our own logger is at INFO
 logger = logging.getLogger("payments")
@@ -61,11 +66,24 @@ if not BOT_TOKEN or not RENDER_EXTERNAL_URL or not WEBHOOK_SECRET or not FLW_SEC
 # -------------------------------------------------
 # Logging setup
 # -------------------------------------------------
+
+# Parse log level safely (default = INFO)
+log_level = os.getenv("LOG_LEVEL", "INFO").upper()
+numeric_level = getattr(logging, log_level, logging.INFO)
+
 logging.basicConfig(
-    format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
-    level=os.getenv("LOG_LEVEL", "INFO"),
+    level=numeric_level,
+    format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+    handlers=[logging.StreamHandler(sys.stdout)]
 )
+
 logger = logging.getLogger("app")
+
+# Ensure gunicorn/uvicorn logs also go through this setup
+for noisy_logger in ("uvicorn", "uvicorn.error", "uvicorn.access", "gunicorn", "gunicorn.error", "gunicorn.access"):
+    logging.getLogger(noisy_logger).handlers = []
+    logging.getLogger(noisy_logger).propagate = True
 
 # -------------------------------------------------
 # Initialize FastAPI + Telegram bot
