@@ -155,6 +155,30 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
 async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: int, bot):
     try:
         async with get_async_session() as session:
+            # 🔍 First, fetch the current Payment row state
+            result = await session.execute(
+                select(Payment).where(Payment.tx_ref == tx_ref)
+            )
+            payment_row = result.scalar_one_or_none()
+
+            if not payment_row:
+                logger.error(f"❌ No Payment row found for tx_ref={tx_ref}")
+                return
+
+            logger.info(
+                f"🔎 Incoming webhook for tx_ref={tx_ref} → "
+                f"DB status={payment_row.status}, "
+                f"credited_tries={payment_row.credited_tries}, "
+                f"completed_at={payment_row.completed_at}"
+            )
+
+            # 🚦 Idempotency check: skip if already credited
+            if payment_row.status == "successful":
+                logger.info(
+                    f"ℹ️ Payment {tx_ref} already credited → skipping re-credit"
+                )
+                return
+
             # 1. Mark payment successful
             stmt = (
                 update(Payment)
@@ -202,23 +226,4 @@ async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: 
         text=payment_success_text(db_user, amount, tries),
         parse_mode="MarkdownV2"
     )
-
-    
-# ---- Expire Old Payments ----
-async def expire_old_payments():
-    cutoff = datetime.utcnow() - timedelta(hours=24)
-    async with AsyncSessionLocal() as session:
-        await session.execute(
-            update(Payment)
-            .where(Payment.status == "pending", Payment.created_at < cutoff)
-            .values(status="expired")
-        )
-        await session.commit()
-
-# --- Register handlers ---
-def register_handlers(application):
-    application.add_handler(CommandHandler("buy", buy_menu))
-    application.add_handler(CallbackQueryHandler(buy_menu, pattern="^buy$"))
-    application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy_"))
-    application.add_handler(CallbackQueryHandler(handle_cancel_payment, pattern="^cancel_payment$"))
 
