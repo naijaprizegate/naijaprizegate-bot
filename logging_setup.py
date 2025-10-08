@@ -2,18 +2,31 @@
 # logging_setup.py
 # ===============================================================
 import logging
-import os
+import os, sys
 import sentry_sdk
 
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
 SENTRY_DSN = os.getenv("SENTRY_DSN")  # optional, leave empty if not using
 
 # 1️⃣ Configure Python logging
+
+# Read log level from env (default = INFO)
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
+numeric_level = getattr(logging, LOG_LEVEL, logging.INFO)
+
 logging.basicConfig(
-    level=LOG_LEVEL,
-    format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
+    level=numeric_level,
+    format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+    handlers=[logging.StreamHandler(sys.stdout)]
 )
+
 logger = logging.getLogger("NaijaPrizeGateBot")
+
+# 🔄 Make sure uvicorn/gunicorn logs flow through this formatter
+for noisy in ("uvicorn", "uvicorn.error", "uvicorn.access", "gunicorn", "gunicorn.error", "gunicorn.access"):
+    logging.getLogger(noisy).handlers = []
+    logging.getLogger(noisy).propagate = True
 
 # 2️⃣ Optional: Initialize Sentry
 if SENTRY_DSN:
@@ -49,3 +62,4 @@ async def tg_error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
                 )
             except Exception as inner_exc:
                 logger.warning(f"Failed to notify admin: {inner_exc}")
+
