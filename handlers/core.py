@@ -76,25 +76,30 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # /mytries handler
 # ---------------------------------------------------------
 async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user = update.effective_user
-    logger.info(f"🔔 /mytries called by tg_id={user.id}, username={user.username}")
+    tg_user = update.effective_user
+    logger.info(f"🔔 /mytries called by tg_id={tg_user.id}, username={tg_user.username}")
 
     async with get_async_session() as session:
-        db_user = await get_or_create_user(session, user.id, user.username)
+        db_user = await get_or_create_user(session, tg_id=tg_user.id, username=tg_user.username)
 
-        # Log what we actually fetched from DB
+        # 📊 Log what we actually fetched from DB
         logger.info(
-            f"📊 User {db_user.id} (tg_id={db_user.tg_id}) has "
+            f"📊 /mytries fetched: db_user.id={db_user.id}, tg_id={db_user.tg_id}, "
             f"paid={db_user.tries_paid}, bonus={db_user.tries_bonus}"
         )
 
+        # 🚨 Extra summary log if user has no tries
+        if (db_user.tries_paid or 0) == 0 and (db_user.tries_bonus or 0) == 0:
+            logger.warning(f"🚨 User {db_user.id} (tg_id={db_user.tg_id}) has NO tries left!")
+
+        # Construct response text
         text = (
             f"🧮 *Your Tries*\n\n"
             f"• Paid: `{db_user.tries_paid or 0}`\n"
             f"• Free: `{db_user.tries_bonus or 0}`"
         )
 
-    # Escape just in case user fields cause Markdown issues
+    # Send reply (escape to avoid markdown issues)
     await update.message.reply_text(md_escape(text), parse_mode="MarkdownV2")
 
 # ---------------------------------------------------------
