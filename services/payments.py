@@ -196,7 +196,6 @@ async def log_transaction(session: AsyncSession, provider: str, payload: str):
     session.add(log)
     await session.commit()
 
-
 # ------------------------------------------------------ 
 # 5. Credit User Tries
 # ------------------------------------------------------ 
@@ -220,7 +219,7 @@ def calculate_tries(amount: int) -> int:
 async def credit_user_tries(session, payment: Payment):
     """
     Credits a user's account with tries based on the payment amount.
-    Ensures we don't double-credit the same payment.
+    Uses add_tries() under the hood to avoid duplicate logic.
     NOTE: Commit is controlled by caller (verify_payment).
     """
     user = await session.get(User, payment.user_id)
@@ -238,12 +237,14 @@ async def credit_user_tries(session, payment: Payment):
         logger.warning(f"⚠️ No tries mapping for amount {payment.amount}")
         return user, 0
 
-    # ✅ Update user balance
-    user.tries_paid = (user.tries_paid or 0) + tries
+    # ✅ Use add_tries helper for consistency
+    user = await add_tries(session, user, tries, paid=True)
+
+    # Track credited tries in the payment record
     payment.credited_tries = tries
+    await session.flush()  # stage changes (verify_payment will commit)
 
-    await session.flush()  # only stage changes, do not commit here
     logger.info(f"🎉 Credited {tries} tries to user {user.tg_id} ({user.username}) — tx_ref={payment.tx_ref}")
-
     return user, tries
+
 
