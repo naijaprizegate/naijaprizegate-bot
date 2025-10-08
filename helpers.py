@@ -49,7 +49,7 @@ async def get_or_create_user(
 async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = True) -> User:
     """
     Increment user's tries (paid or bonus) inside an active session.
-    Caller controls session lifecycle and commit.
+    NOTE: This function does not commit — caller must handle commit.
     """
     import logging
     logger = logging.getLogger(__name__)
@@ -62,8 +62,8 @@ async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = 
         user.tries_bonus = (user.tries_bonus or 0) + count
 
     session.add(user)  # ensure user is tracked
-    await session.commit()
-    await session.refresh(user)
+    await session.flush()      # stage changes
+    await session.refresh(user)  # refresh values from DB
 
     logger.info(
         f"✅ User {user.id} now has paid={user.tries_paid}, bonus={user.tries_bonus} after adding {count}"
@@ -84,6 +84,7 @@ async def consume_try(session: AsyncSession, user: User):
     """
     import logging
     logger = logging.getLogger(__name__)
+
 
     logger.info(
         f"🎲 Attempting to consume try for user_id={user.id} "
@@ -135,6 +136,7 @@ async def get_user_by_id(session: AsyncSession, user_id) -> User | None:
 async def record_play(session: AsyncSession, user: User, result: str):
     import logging
     logger = logging.getLogger(__name__)
+
 
     play = Play(user_id=user.id, result=result)
     session.add(play)
