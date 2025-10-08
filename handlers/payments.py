@@ -150,12 +150,11 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
         parse_mode="MarkdownV2"
     )
 
-
 # --- Webhook success handler ---
 async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: int, bot):
     try:
         async with get_async_session() as session:
-            # 🔍 First, fetch the current Payment row state
+            # 🔍 Fetch the current Payment row state
             result = await session.execute(
                 select(Payment).where(Payment.tx_ref == tx_ref)
             )
@@ -172,33 +171,24 @@ async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: 
                 f"completed_at={payment_row.completed_at}"
             )
 
-            # 🚦 Idempotency check: skip if already credited
+            # 🚦 Idempotency check
             if payment_row.status == "successful":
-                logger.info(
-                    f"ℹ️ Payment {tx_ref} already credited → skipping re-credit"
-                )
+                logger.info(f"ℹ️ Payment {tx_ref} already credited → skipping re-credit")
                 return
 
-            # 1. Mark payment successful
-            stmt = (
-                update(Payment)
-                .where(Payment.tx_ref == tx_ref)
-                .values(
-                    status="successful",
-                    credited_tries=tries,
-                    completed_at=datetime.utcnow()
-                )
-            )
-            await session.execute(stmt)
-
-            # 2. Fetch & credit user in same session
+            # 1. Fetch & credit user
             db_user = await get_or_create_user(session, user_id)
             db_user.tries_paid += tries
 
-            # 3. Commit everything atomically
+            # 2. Mark payment successful (in same session/transaction)
+            payment_row.status = "successful"
+            payment_row.credited_tries = tries
+            payment_row.completed_at = datetime.utcnow()
+
+            # 3. Commit both changes atomically
             await session.commit()
 
-            # 4. Refresh db_user so we have the latest values after commit
+            # 4. Refresh user so we have latest values
             await session.refresh(db_user)
 
             # ✅ Success logs
@@ -212,13 +202,12 @@ async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: 
             )
 
     except Exception as e:
-        # ❌ Error log
         logger.error(
             f"❌ Failed to credit tries for user_id={user_id}, "
             f"tx_ref={tx_ref}, amount={amount}, tries={tries} → {e}",
             exc_info=True
         )
-        return  # exit early if DB update failed
+        return
 
     # 5. Notify user only if DB commit succeeded
     await bot.send_message(
@@ -226,7 +215,6 @@ async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: 
         text=payment_success_text(db_user, amount, tries),
         parse_mode="MarkdownV2"
     )
-
     
 # ---- Expire Old Payments ----
 async def expire_old_payments():
