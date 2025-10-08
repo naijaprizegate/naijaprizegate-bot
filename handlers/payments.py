@@ -180,10 +180,19 @@ async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: 
             db_user = await get_or_create_user(session, user_id)
             db_user.tries_paid += tries
 
-            # 2. Mark payment successful (in same session/transaction)
+            # 2. Mark payment successful (in same transaction)
             payment_row.status = "successful"
             payment_row.credited_tries = tries
             payment_row.completed_at = datetime.utcnow()
+
+            # 📝 Diagnostic log BEFORE commit
+            logger.info(
+                f"📝 Pre-commit state → "
+                f"user_id={db_user.id}, tg_id={db_user.tg_id}, "
+                f"paid={db_user.tries_paid}, bonus={db_user.tries_bonus}; "
+                f"payment.status={payment_row.status}, "
+                f"credited_tries={payment_row.credited_tries}"
+            )
 
             # 3. Commit both changes atomically
             await session.commit()
