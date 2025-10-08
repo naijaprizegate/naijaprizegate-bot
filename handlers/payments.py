@@ -227,3 +227,22 @@ async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: 
         parse_mode="MarkdownV2"
     )
 
+    
+# ---- Expire Old Payments ----
+async def expire_old_payments():
+    cutoff = datetime.utcnow() - timedelta(hours=24)
+    async with AsyncSessionLocal() as session:
+        await session.execute(
+            update(Payment)
+            .where(Payment.status == "pending", Payment.created_at < cutoff)
+            .values(status="expired")
+        )
+        await session.commit()
+
+# --- Register handlers ---
+def register_handlers(application):
+    application.add_handler(CommandHandler("buy", buy_menu))
+    application.add_handler(CallbackQueryHandler(buy_menu, pattern="^buy$"))
+    application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy_"))
+    application.add_handler(CallbackQueryHandler(handle_cancel_payment, pattern="^cancel_payment$"))
+
