@@ -171,9 +171,12 @@ async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: 
                 f"completed_at={payment_row.completed_at}"
             )
 
-            # 🚦 Idempotency check
-            if payment_row.status == "successful":
-                logger.info(f"ℹ️ Payment {tx_ref} already credited → skipping re-credit")
+            # 🚦 Idempotency check (skip ONLY if both status=successful AND tries already credited)
+            if payment_row.status == "successful" and payment_row.credited_tries > 0:
+                logger.info(
+                    f"ℹ️ Payment {tx_ref} already credited "
+                    f"({payment_row.credited_tries} tries) → skipping re-credit"
+                )
                 return
 
             # 1. Fetch & credit user
@@ -202,7 +205,7 @@ async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: 
 
             # ✅ Success logs
             logger.info(
-                f"✅ Credited {tries} tries for user_id={user_id} "
+                f"🎉 Credited {tries} tries for user {user_id} "
                 f"(tx_ref={tx_ref}, amount={amount})"
             )
             logger.info(
