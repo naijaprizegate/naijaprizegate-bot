@@ -71,14 +71,15 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
     url = f"{FLW_BASE_URL}/transactions/verify_by_reference?tx_ref={tx_ref}"
     headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}"}
 
-    async with httpx.AsyncClient(timeout=20.0) as client:
-        try:
+    # --- Step 1: Call Flutterwave API ---
+    try:
+        async with httpx.AsyncClient(timeout=20.0) as client:
             r = await client.get(url, headers=headers)
             r.raise_for_status()
             data = r.json()
-        except Exception as e:
-            logger.exception(f"❌ Verification failed for {tx_ref}: {e}")
-            return False
+    except Exception as e:
+        logger.exception(f"❌ Verification failed for {tx_ref}: {e}")
+        return False
 
     logger.info(f"🔎 Flutterwave verification for {tx_ref}: {data}")
 
@@ -90,7 +91,7 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
     tx_status = tx_data.get("status")
     amount = tx_data.get("amount")
 
-    # Retrieve payment record
+    # --- Step 2: Get payment record from DB ---
     result = await session.execute(select(Payment).where(Payment.tx_ref == tx_ref))
     payment = result.scalar_one_or_none()
 
@@ -101,16 +102,23 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
     payment.amount = amount
     payment.updated_at = datetime.utcnow()
 
-    # ----------------- SUCCESS -----------------
-    if tx_status == "successful" and payment.status != "successful":
-        payment.status = "successful"
+    # ----------------- SUCCESS CASE -----------------
+    if tx_status == "successful":
+        if payment.status == "successful":
+            logger.info(f"ℹ️ Payment {tx_ref} already marked successful → skipping re-credit")
+            return True
 
         if credit:
             try:
+                logger.info(f"💳 Crediting user {payment.user_id} for tx_ref={tx_ref} ...")
                 user, tries = await credit_user_tries(session, payment)
-                await session.commit()
 
-                # ✅ Make sure bot is passed in so user gets a Telegram notification
+                # ✅ Mark successful only AFTER tries credited
+                payment.status = "successful"
+                await session.commit()
+                logger.info(f"✅ User {user.tg_id} credited with {tries} tries for tx_ref={tx_ref}")
+
+                # --- Notify user on Telegram ---
                 if bot and user and user.tg_id:
                     deep_link = f"https://t.me/NaijaPrizeGateBot?start=payment_success_{tx_ref}"
                     keyboard = [
@@ -132,12 +140,13 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
                         reply_markup=reply_markup,
                         disable_web_page_preview=True
                     )
+
             except Exception as e:
-                logger.exception(f"❌ Failed to credit user {payment.user_id}: {e}")
+                logger.exception(f"❌ Failed to credit user {payment.user_id} for tx_ref={tx_ref}: {e}")
                 await session.rollback()
                 return False
 
-            # Update Global Counter
+            # --- Update Global Counter ---
             try:
                 counter_result = await session.execute(select(GlobalCounter).limit(1))
                 counter = counter_result.scalar_one_or_none()
@@ -150,19 +159,22 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
                 if counter.paid_tries_total >= WIN_THRESHOLD:
                     counter.paid_tries_total = 0
                     logger.info(f"🎉 WIN threshold {WIN_THRESHOLD} reached → counter reset!")
+                await session.commit()
             except Exception as e:
-                logger.warning(f"⚠️ Could not update GlobalCounter: {e}")
+                logger.warning(f"⚠️ Could not update GlobalCounter for tx_ref={tx_ref}: {e}")
 
-        await session.commit()
         return True
 
     # ----------------- FAILED / EXPIRED -----------------
     elif tx_status in ["failed", "expired"]:
         payment.status = tx_status
         await session.commit()
+        logger.info(f"❌ Payment {tx_ref} marked as {tx_status}")
         return False
 
+    # ----------------- STILL PENDING -----------------
     await session.commit()
+    logger.info(f"⏳ Payment {tx_ref} still pending (status={tx_status})")
     return False
 
 
@@ -226,3 +238,5 @@ async def credit_user_tries(session, payment: Payment):
 
     logger.info(f"🎉 Credited {tries} tries to user {user.tg_id} ({user.username}) — {payment.tx_ref}")
     return user, tries
+
+
