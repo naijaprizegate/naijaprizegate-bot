@@ -30,17 +30,23 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             username=tg_user.username
         )
 
+        # 📊 Log BEFORE spin
         logger.info(
-            f"📊 Before spin: User {user.id} (tg_id={user.tg_id}) "
-            f"has paid={user.tries_paid}, bonus={user.tries_bonus}"
+            f"📊 Before spin: db_user.id={user.id}, tg_id={user.tg_id}, "
+            f"paid={user.tries_paid}, bonus={user.tries_bonus}"
         )
 
         # Spin the wheel using core game logic
         outcome = await spin_logic(session, user)
 
+        # Commit any changes from spin_logic before logging after-state
+        await session.commit()
+        await session.refresh(user)
+
+        # 🎲 Log AFTER spin
         logger.info(
-            f"🎲 Outcome for user {user.id} = {outcome} | "
-            f"After spin tries: paid={user.tries_paid}, bonus={user.tries_bonus}"
+            f"🎲 Outcome={outcome} | After spin: db_user.id={user.id}, "
+            f"tg_id={user.tg_id}, paid={user.tries_paid}, bonus={user.tries_bonus}"
         )
 
     # Handle outcomes
@@ -95,4 +101,3 @@ async def tryluck_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def register_handlers(application):
     application.add_handler(CommandHandler("tryluck", tryluck_handler))
     application.add_handler(CallbackQueryHandler(tryluck_callback, pattern="^tryluck$"))
-
