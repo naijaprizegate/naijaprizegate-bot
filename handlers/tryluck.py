@@ -22,38 +22,50 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg_user = update.effective_user
     logger.info(f"🔔 /tryluck called by tg_id={tg_user.id}, username={tg_user.username}")
 
-    # Always open DB session
+    outcome = "no_tries"
+
     async with get_async_session() as session:
-        # Ensure user exists in DB
-        user = await get_or_create_user(
-            session,
-            tg_id=tg_user.id,
-            username=tg_user.username
-        )
+        try:
+            # Begin transaction
+            async with session.begin():
+                # Ensure user exists
+                user = await get_or_create_user(
+                    session,
+                    tg_id=tg_user.id,
+                    username=tg_user.username
+                )
 
-        # 📊 Log BEFORE spin
-        logger.info(
-            f"📊 Before spin: user_id={user.id}, tg_id={user.tg_id}, "
-            f"paid={user.tries_paid}, bonus={user.tries_bonus}"
-        )
+                # 📊 Log BEFORE spin
+                logger.info(
+                    f"📊 Before spin: user_id={user.id}, tg_id={user.tg_id}, "
+                    f"paid={user.tries_paid}, bonus={user.tries_bonus}"
+                )
 
-        # Run core game logic (this should decrement tries if available)
-        outcome = await spin_logic(session, user)
+                # Run core game logic (consume + spin + record play)
+                outcome = await spin_logic(session, user)
 
-        # Commit any changes (tries decrement, etc.)
-        await session.commit()
-        await session.refresh(user)
+                # After transaction, refresh user state
+                await session.refresh(user)
 
-        # 🎲 Log AFTER spin
-        logger.info(
-            f"🎲 Outcome={outcome} | After spin: user_id={user.id}, "
-            f"tg_id={user.tg_id}, paid={user.tries_paid}, bonus={user.tries_bonus}"
-        )
+                # 🎲 Log AFTER spin
+                logger.info(
+                    f"🎲 Outcome={outcome} | After spin: user_id={user.id}, "
+                    f"tg_id={user.tg_id}, paid={user.tries_paid}, bonus={user.tries_bonus}"
+                )
 
-    # Handle outcome when no tries are left
+        except Exception as e:
+            logger.exception(f"❌ Error during /tryluck for tg_id={tg_user.id}: {e}")
+            outcome = "error"
+
+    # ----------------- Outcome Handling -----------------
     if outcome == "no_tries":
         return await update.effective_message.reply_text(
             "😅 You don’t have any tries left! Buy more spins or earn free ones.",
+            parse_mode="MarkdownV2"
+        )
+    if outcome == "error":
+        return await update.effective_message.reply_text(
+            "⚠️ Oops! Something went wrong while processing your spin. Please try again.",
             parse_mode="MarkdownV2"
         )
 
@@ -70,7 +82,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await msg.edit_text(f"🎰 {frame}", parse_mode="MarkdownV2")
         await asyncio.sleep(0.4)
 
-    # Final result message
+    # Final frame + text
     if outcome == "win":
         final_frame = " ".join(["💎"] * num_reels)
         final_text = (
