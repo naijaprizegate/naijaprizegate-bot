@@ -9,25 +9,6 @@ import sys
 # Force unbuffered output (Render needs this for real-time logs)
 os.environ["PYTHONUNBUFFERED"] = "1"
 
-
-logging.basicConfig(
-    level=logging.INFO,  # Capture INFO and above
-    format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",  # clean timestamp
-    handlers=[logging.StreamHandler(sys.stdout)]
-)
-
-# Example of setting uvicorn/gunicorn loggers to match
-for noisy_logger in ("uvicorn", "uvicorn.error", "uvicorn.access", "gunicorn", "gunicorn.error", "gunicorn.access"):
-    logging.getLogger(noisy_logger).setLevel(logging.INFO)
-
-# Optional: make sure our own logger is at INFO
-logger = logging.getLogger("payments")
-logger.setLevel(logging.INFO)
-
-# Test log
-logger.info("🚀 Logger initialized, ready to stream logs on Render")
-
 from fastapi import FastAPI, Query, Request, HTTPException, Depends
 from fastapi.responses import HTMLResponse, JSONResponse
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -43,6 +24,7 @@ from tasks import start_background_tasks, stop_background_tasks
 from db import init_game_state, get_async_session, get_session
 from models import Payment
 from helpers import get_or_create_user, add_tries
+from logging_setup import logger
 
 # ✅ Import everything Flutterwave-related from one place
 from services.payments import (
@@ -62,28 +44,6 @@ FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")
 
 if not BOT_TOKEN or not RENDER_EXTERNAL_URL or not WEBHOOK_SECRET or not FLW_SECRET_HASH:
     raise RuntimeError("❌ Missing required environment variables")
-
-# -------------------------------------------------
-# Logging setup
-# -------------------------------------------------
-
-# Parse log level safely (default = INFO)
-log_level = os.getenv("LOG_LEVEL", "INFO").upper()
-numeric_level = getattr(logging, log_level, logging.INFO)
-
-logging.basicConfig(
-    level=numeric_level,
-    format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",
-    handlers=[logging.StreamHandler(sys.stdout)]
-)
-
-logger = logging.getLogger("app")
-
-# Ensure gunicorn/uvicorn logs also go through this setup
-for noisy_logger in ("uvicorn", "uvicorn.error", "uvicorn.access", "gunicorn", "gunicorn.error", "gunicorn.access"):
-    logging.getLogger(noisy_logger).handlers = []
-    logging.getLogger(noisy_logger).propagate = True
 
 # -------------------------------------------------
 # Initialize FastAPI + Telegram bot
