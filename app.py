@@ -4,6 +4,24 @@
 import os
 import logging
 import httpx
+import sys
+
+# Force unbuffered output (Render needs this for real-time logs)
+os.environ["PYTHONUNBUFFERED"] = "1"
+
+# Configure logger
+logging.basicConfig(
+    level=logging.INFO,  # Show INFO and above
+    format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
+    handlers=[logging.StreamHandler(sys.stdout)]
+)
+
+# Optional: make sure our own logger is at INFO
+logger = logging.getLogger("payments")
+logger.setLevel(logging.INFO)
+
+# Test log
+logger.info("🚀 Logger initialized, ready to stream logs on Render")
 
 from fastapi import FastAPI, Query, Request, HTTPException, Depends
 from fastapi.responses import HTMLResponse, JSONResponse
@@ -329,3 +347,4 @@ async def flutterwave_redirect_status(
 @app.head("/health")
 async def health_check():
     return {"status": "ok", "bot_initialized": application is not None}
+
