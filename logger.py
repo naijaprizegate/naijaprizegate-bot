@@ -9,7 +9,7 @@ from telegram.ext import ContextTypes
 from logging_setup import logger
 
 from os import getenv
-ADMIN_ID = int(getenv("ADMIN_ID", 0))
+ADMIN_USER_ID = int(getenv("ADMIN_USER_ID", 0))
 
 async def tg_error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
     """
@@ -24,9 +24,9 @@ async def tg_error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -
 
     # 2️⃣ Optionally notify admin on Telegram
     try:
-        if ADMIN_ID and context.bot:
+        if ADMIN_USER_ID and context.bot:
             msg = f"⚠️ Exception in bot:\n{type(context.error).__name__}: {context.error}"
-            await context.bot.send_message(chat_id=ADMIN_ID, text=msg)
+            await context.bot.send_message(chat_id=ADMIN_USER_ID, text=msg)
     except Exception as e:
         logger.error("Failed to notify admin: %s", e)
 
