@@ -314,19 +314,82 @@ async def flutterwave_redirect(
     return HTMLResponse(content=html_content, status_code=200)
 
 # ------------------------------------------------------
-# Redirect status polling with countdown refresh
+# Redirect status polling with countdown + verify fallback
 # ------------------------------------------------------
 @router.get("/flw/redirect/status")
 async def flutterwave_redirect_status(
     tx_ref: str,
     session: AsyncSession = Depends(get_session),
 ):
+    import httpx
+    from services.payments import calculate_tries, add_tries, get_or_create_user
+
     stmt = select(Payment).where(Payment.tx_ref == tx_ref)
     result = await session.execute(stmt)
     payment = result.scalar_one_or_none()
 
     success_url = f"https://t.me/NaijaPrizeGateBot?start=payment_success_{tx_ref}"
     failed_url = f"https://t.me/NaijaPrizeGateBot?start=payment_failed_{tx_ref}"
+
+    # 🌍 If payment not found or still pending, verify directly with Flutterwave
+    if not payment or payment.status not in ["successful", "failed", "expired"]:
+        verify_url = f"{FLW_BASE_URL}/transactions/verify_by_reference?tx_ref={tx_ref}"
+        async with httpx.AsyncClient() as client:
+            resp = await client.get(
+                verify_url,
+                headers={"Authorization": f"Bearer {FLW_SECRET_KEY}"}
+            )
+
+        if resp.status_code == 200:
+            data = resp.json().get("data", {})
+            flw_status = data.get("status")
+            amount = data.get("amount")
+            tg_id = data.get("meta", {}).get("tg_id")
+            username = data.get("meta", {}).get("username")
+
+            if flw_status == "successful":
+                credited_tries = calculate_tries(amount)
+
+                # Insert or update payment
+                if not payment:
+                    payment = Payment(
+                        tx_ref=tx_ref,
+                        status="successful",
+                        credited_tries=credited_tries,
+                        flw_tx_id=data.get("id"),
+                        tg_id=tg_id,
+                        username=username,
+                    )
+                    session.add(payment)
+                else:
+                    payment.status = "successful"
+                    payment.credited_tries = credited_tries
+                    payment.flw_tx_id = data.get("id")
+
+                # Credit user
+                user = await get_or_create_user(session, tg_id=tg_id, username=username)
+                await add_tries(session, user, credited_tries, paid=True)
+                await session.commit()
+
+            elif flw_status in ["failed", "expired"]:
+                if not payment:
+                    payment = Payment(
+                        tx_ref=tx_ref,
+                        status=flw_status,
+                        flw_tx_id=data.get("id"),
+                        tg_id=tg_id,
+                        username=username,
+                    )
+                    session.add(payment)
+                else:
+                    payment.status = flw_status
+                    payment.flw_tx_id = data.get("id")
+                await session.commit()
+
+    # 🔄 Re-fetch after possible update
+    stmt = select(Payment).where(Payment.tx_ref == tx_ref)
+    result = await session.execute(stmt)
+    payment = result.scalar_one_or_none()
 
     if not payment:
         return JSONResponse({
@@ -358,7 +421,7 @@ async def flutterwave_redirect_status(
             """
         })
 
-    # Still pending → spinner + countdown
+    # Still pending → show spinner
     return JSONResponse({
         "done": False,
         "html": f"""
