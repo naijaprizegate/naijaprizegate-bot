@@ -10,14 +10,14 @@ from helpers import add_tries, get_user_by_id, md_escape
 from models import Proof, User, GameState  # ✅ GameState tracks cycles & paid tries
 
 # Admin ID from environment
-ADMIN_ID = int(os.getenv("ADMIN_ID", 0))
+ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
 
 # ----------------------------
 # Command: /admin (Main Panel)
 # ----------------------------
 async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Show the admin main panel with options"""
-    if update.effective_user.id != ADMIN_ID:
+    if update.effective_user.id != ADMIN_USER_ID:
         return await update.message.reply_text("❌ Access denied\\.", parse_mode="MarkdownV2")
 
     keyboard = InlineKeyboardMarkup([
@@ -37,7 +37,7 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ----------------------------
 async def pending_proofs(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """List all pending proofs with Approve/Reject buttons"""
-    if update.effective_user.id != ADMIN_ID:
+    if update.effective_user.id != ADMIN_USER_ID:
         return await update.message.reply_text("❌ Access denied\\.", parse_mode="MarkdownV2")
 
     async with AsyncSessionLocal() as session:
@@ -80,7 +80,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     user_id = update.effective_user.id
 
-    if user_id != ADMIN_ID:
+    if user_id != ADMIN_USER_ID:
         return await query.edit_message_caption(caption="❌ Access denied\\.", parse_mode="MarkdownV2")
 
     # --- Handle main menu clicks ---
@@ -151,7 +151,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # User Search (text input)
 # ----------------------------
 async def user_search_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if update.effective_user.id != ADMIN_ID or not context.user_data.get("awaiting_user_search"):
+    if update.effective_user.id != ADMIN_USER_ID or not context.user_data.get("awaiting_user_search"):
         return
 
     query_text = update.message.text.strip()
