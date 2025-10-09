@@ -51,12 +51,12 @@ async def tg_error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
         if SENTRY_DSN:
             sentry_sdk.capture_exception(e)
         
-        # Notify admin if ADMIN_ID is set
-        ADMIN_ID = int(os.getenv("ADMIN_ID", 0))
-        if ADMIN_ID and isinstance(update, Update):
+        # Notify admin if ADMIN_USER_ID is set
+        ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
+        if ADMIN_USER_ID and isinstance(update, Update):
             try:
                 await context.bot.send_message(
-                    chat_id=ADMIN_ID,
+                    chat_id=ADMIN_USER_ID,
                     text=f"⚠️ Exception occurred:\n<pre>{e}</pre>",
                     parse_mode="HTML",
                 )
