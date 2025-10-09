@@ -33,8 +33,6 @@ from services.payments import (
     calculate_tries,
     verify_payment,
     validate_webhook,
-    get_or_create_user,
-    add_tries,
 )
 
 logger = logging.getLogger(__name__)
