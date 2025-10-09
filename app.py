@@ -228,74 +228,14 @@ async def flutterwave_redirect(
     transaction_id: str | None = None,
     session: AsyncSession = Depends(get_session),
 ):
-    import httpx
-    from services.payments import calculate_tries, add_tries, get_or_create_user
+    from services.payments import resolve_payment_status
 
     success_url = f"https://t.me/NaijaPrizeGateBot?start=payment_success_{tx_ref}"
     failed_url = f"https://t.me/NaijaPrizeGateBot?start=payment_failed_{tx_ref}"
 
-    # 1. Check DB first
-    stmt = select(Payment).where(Payment.tx_ref == tx_ref)
-    result = await session.execute(stmt)
-    payment = result.scalar_one_or_none()
+    # 🔎 Always resolve via central helper
+    payment = await resolve_payment_status(tx_ref, session)
 
-    # 2. If not found/pending → fallback verify with Flutterwave
-    if not payment or payment.status not in ["successful", "failed", "expired"]:
-        verify_url = f"{FLW_BASE_URL}/transactions/verify_by_reference?tx_ref={tx_ref}"
-        async with httpx.AsyncClient() as client:
-            resp = await client.get(
-                verify_url,
-                headers={"Authorization": f"Bearer {FLW_SECRET_KEY}"}
-            )
-
-        if resp.status_code == 200:
-            data = resp.json().get("data", {}) or {}
-            flw_status = data.get("status")
-            amount = data.get("amount")
-            tg_id = data.get("meta", {}).get("tg_id")
-            username = data.get("meta", {}).get("username")
-
-            if flw_status == "successful":
-                credited_tries = calculate_tries(amount)
-                if not payment:
-                    payment = Payment(
-                        tx_ref=tx_ref,
-                        status="successful",
-                        credited_tries=credited_tries,
-                        flw_tx_id=data.get("id"),
-                        tg_id=tg_id,
-                        username=username,
-                    )
-                    session.add(payment)
-                else:
-                    payment.status = "successful"
-                    payment.credited_tries = credited_tries
-                    payment.flw_tx_id = data.get("id")
-                user = await get_or_create_user(session, tg_id=tg_id, username=username)
-                await add_tries(session, user, credited_tries, paid=True)
-                await session.commit()
-
-            elif flw_status in ["failed", "expired"]:
-                if not payment:
-                    payment = Payment(
-                        tx_ref=tx_ref,
-                        status=flw_status,
-                        flw_tx_id=data.get("id"),
-                        tg_id=tg_id,
-                        username=username,
-                    )
-                    session.add(payment)
-                else:
-                    payment.status = flw_status
-                    payment.flw_tx_id = data.get("id")
-                await session.commit()
-
-        # re-fetch after possible update
-        stmt = select(Payment).where(Payment.tx_ref == tx_ref)
-        result = await session.execute(stmt)
-        payment = result.scalar_one_or_none()
-
-    # 3. If resolved → return final HTML immediately
     if payment:
         if payment.status == "successful":
             credited_text = f"{payment.credited_tries} spin{'s' if payment.credited_tries > 1 else ''}"
@@ -314,7 +254,7 @@ async def flutterwave_redirect(
                 <script>setTimeout(() => window.location.href="{failed_url}", 5000);</script>
             """, status_code=200)
 
-    # 4. If still pending → show the original spinner + polling
+    # If still pending → spinner page with polling
     html_content = f"""
     <html>
         <head>
@@ -335,70 +275,29 @@ async def flutterwave_redirect(
                     animation: spin 1s linear infinite;
                 }}
                 @keyframes spin {{ to {{ transform: rotate(360deg); }} }}
-                .countdown {{
-                    font-weight: bold;
-                    color: #f39c12;
-                }}
             </style>
             <script>
-                let countdown = 5;
-                let totalWait = 0;
-                const fallbackLimit = 120; // 2 minutes
-
-                function startCountdown() {{
-                    const cdElem = document.getElementById("countdown");
-                    countdown = 5;
-                    cdElem.textContent = countdown;
-                    const interval = setInterval(() => {{
-                        countdown -= 1;
-                        if (countdown <= 0) {{
-                            clearInterval(interval);
-                        }}
-                        cdElem.textContent = countdown;
-                    }}, 1000);
-                }}
-
-                async function checkStatus() {{
-                    try {{
-                        const response = await fetch("/flw/redirect/status?tx_ref={tx_ref}");
-                        const data = await response.json();
-                        if (data.done) {{
-                            document.body.innerHTML = data.html;
-                        }} else {{
-                            totalWait += 5;
-                            if (totalWait >= fallbackLimit) {{
-                                window.location.href = "https://t.me/NaijaPrizeGateBot?start=payment_pending_{tx_ref}";
-                                return;
-                            }}
-                            startCountdown();
-                            setTimeout(checkStatus, 5000);
-                        }}
-                    }} catch (err) {{
-                        console.error("Polling error:", err);
-                        totalWait += 5;
-                        if (totalWait >= fallbackLimit) {{
-                            window.location.href = "https://t.me/NaijaPrizeGateBot?start=payment_pending_{tx_ref}";
-                            return;
-                        }}
-                        setTimeout(checkStatus, 5000);
+                async function poll() {{
+                    const res = await fetch("/flw/redirect/status?tx_ref={tx_ref}");
+                    const data = await res.json();
+                    if (data.done) {{
+                        document.body.innerHTML = data.html;
+                    }} else {{
+                        setTimeout(poll, 5000);
                     }}
                 }}
-
-                window.onload = () => {{
-                    startCountdown();
-                    checkStatus();
-                }};
+                window.onload = poll;
             </script>
         </head>
         <body>
             <h2>⏳ Verifying your payment...</h2>
             <div class="spinner"></div>
-            <p>✅ Please wait, we’re checking Flutterwave every <span id="countdown">5</span> seconds.</p>
-            <p>(Auto-redirecting if nothing happens after 2 minutes)</p>
+            <p>✅ Please wait, we’re checking Flutterwave every 5 seconds.</p>
         </body>
     </html>
     """
     return HTMLResponse(content=html_content, status_code=200)
+
 
 # ------------------------------------------------------
 # Redirect status polling with countdown + verify fallback
@@ -408,76 +307,14 @@ async def flutterwave_redirect_status(
     tx_ref: str,
     session: AsyncSession = Depends(get_session),
 ):
-    import httpx
-    from services.payments import calculate_tries, add_tries, get_or_create_user
-
-    stmt = select(Payment).where(Payment.tx_ref == tx_ref)
-    result = await session.execute(stmt)
-    payment = result.scalar_one_or_none()
+    from services.payments import resolve_payment_status
 
     success_url = f"https://t.me/NaijaPrizeGateBot?start=payment_success_{tx_ref}"
     failed_url = f"https://t.me/NaijaPrizeGateBot?start=payment_failed_{tx_ref}"
 
-    # 🌍 If payment not found or still pending, verify directly with Flutterwave
-    if not payment or payment.status not in ["successful", "failed", "expired"]:
-        verify_url = f"{FLW_BASE_URL}/transactions/verify_by_reference?tx_ref={tx_ref}"
-        async with httpx.AsyncClient() as client:
-            resp = await client.get(
-                verify_url,
-                headers={"Authorization": f"Bearer {FLW_SECRET_KEY}"}
-            )
+    payment = await resolve_payment_status(tx_ref, session)
 
-        if resp.status_code == 200:
-            data = resp.json().get("data", {}) or {}
-            flw_status = data.get("status")
-            amount = data.get("amount")
-            tg_id = data.get("meta", {}).get("tg_id")
-            username = data.get("meta", {}).get("username")
-
-            if flw_status == "successful":
-                credited_tries = calculate_tries(amount)
-
-                if not payment:
-                    payment = Payment(
-                        tx_ref=tx_ref,
-                        status="successful",
-                        credited_tries=credited_tries,
-                        flw_tx_id=data.get("id"),
-                        tg_id=tg_id,
-                        username=username,
-                    )
-                    session.add(payment)
-                else:
-                    payment.status = "successful"
-                    payment.credited_tries = credited_tries
-                    payment.flw_tx_id = data.get("id")
-
-                # ✅ Credit user
-                user = await get_or_create_user(session, tg_id=tg_id, username=username)
-                await add_tries(session, user, credited_tries, paid=True)
-                await session.commit()
-
-            elif flw_status in ["failed", "expired"]:
-                if not payment:
-                    payment = Payment(
-                        tx_ref=tx_ref,
-                        status=flw_status,
-                        flw_tx_id=data.get("id"),
-                        tg_id=tg_id,
-                        username=username,
-                    )
-                    session.add(payment)
-                else:
-                    payment.status = flw_status
-                    payment.flw_tx_id = data.get("id")
-                await session.commit()
-
-    # 🔄 Re-fetch after possible update
-    stmt = select(Payment).where(Payment.tx_ref == tx_ref)
-    result = await session.execute(stmt)
-    payment = result.scalar_one_or_none()
-
-    # 🚨 Case 1: Nothing at all
+    # Case 1: Not found
     if not payment:
         return JSONResponse({
             "done": True,
@@ -485,7 +322,7 @@ async def flutterwave_redirect_status(
                     f"<p><a href='{failed_url}'>Return to Telegram</a></p>"
         })
 
-    # 🚨 Case 2: Already successful → instant success page
+    # Case 2: Successful
     if payment.status == "successful":
         credited_text = f"{payment.credited_tries} spin{'s' if payment.credited_tries > 1 else ''}"
         return JSONResponse({
@@ -499,7 +336,7 @@ async def flutterwave_redirect_status(
             """
         })
 
-    # 🚨 Case 3: Already failed/expired → instant fail page
+    # Case 3: Failed/Expired
     if payment.status in ["failed", "expired"]:
         return JSONResponse({
             "done": True,
@@ -510,27 +347,14 @@ async def flutterwave_redirect_status(
             """
         })
 
-    # 🚨 Case 4: Still pending → keep polling with spinner
+    # Case 4: Still pending → keep polling
     return JSONResponse({
         "done": False,
         "html": f"""
         <h2 style="color:orange;">⏳ Payment Pending</h2>
         <p>Transaction Reference: <b>{tx_ref}</b></p>
         <p>⚠️ Your payment is still being processed by Flutterwave.</p>
-        <p>✅ Don’t close this tab — once confirmed, your spins will be credited automatically 🎁</p>
         <div class="spinner" style="margin:20px auto;height:40px;width:40px;border:5px solid #ccc;border-top-color:#f39c12;border-radius:50%;animation:spin 1s linear infinite;"></div>
-        <p>🔄 Checking again in <span id="countdown">5</span> seconds...</p>
-        <script>
-            let countdown = 5;
-            const cdElem = document.getElementById("countdown");
-            setInterval(() => {{
-                countdown -= 1;
-                if (countdown <= 0) {{
-                    countdown = 5;
-                }}
-                cdElem.textContent = countdown;
-            }}, 1000);
-        </script>
         <style>@keyframes spin {{ to {{ transform: rotate(360deg); }} }}</style>
         """
     })
