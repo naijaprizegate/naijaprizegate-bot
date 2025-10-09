@@ -199,6 +199,17 @@ async def flutterwave_webhook(
         await session.commit()
 
         logger.info(f"🎁 User {user.id} credited with {credited_tries} tries")
+
+        # ✅ Send Telegram DM immediately
+        try:
+            bot = Bot(token=BOT_TOKEN)
+            await bot.send_message(
+                chat_id=user.tg_id,
+                text=f"🎁 You’ve been credited with {credited_tries} spin{'s' if credited_tries > 1 else ''}! 🎉\n\nUse /spin to try your luck."
+            )
+        except Exception as e:
+            logger.error(f"⚠️ Failed to send Telegram DM: {e}")
+
         return {"status": "success", "tx_ref": tx_ref}
 
     # Non-success cases
@@ -206,7 +217,6 @@ async def flutterwave_webhook(
         payment.status = status or "failed"
         await session.commit()
     return {"status": "failed", "tx_ref": tx_ref}
-
 
 # ------------------------------------------------------
 # Redirect: user-friendly "verifying payment" page
