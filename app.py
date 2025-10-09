@@ -341,7 +341,7 @@ async def flutterwave_redirect_status(
             )
 
         if resp.status_code == 200:
-            data = resp.json().get("data", {})
+            data = resp.json().get("data", {}) or {}
             flw_status = data.get("status")
             amount = data.get("amount")
             tg_id = data.get("meta", {}).get("tg_id")
@@ -350,7 +350,6 @@ async def flutterwave_redirect_status(
             if flw_status == "successful":
                 credited_tries = calculate_tries(amount)
 
-                # Insert or update payment
                 if not payment:
                     payment = Payment(
                         tx_ref=tx_ref,
@@ -366,7 +365,7 @@ async def flutterwave_redirect_status(
                     payment.credited_tries = credited_tries
                     payment.flw_tx_id = data.get("id")
 
-                # Credit user
+                # ✅ Credit user
                 user = await get_or_create_user(session, tg_id=tg_id, username=username)
                 await add_tries(session, user, credited_tries, paid=True)
                 await session.commit()
@@ -391,6 +390,7 @@ async def flutterwave_redirect_status(
     result = await session.execute(stmt)
     payment = result.scalar_one_or_none()
 
+    # 🚨 Case 1: Nothing at all
     if not payment:
         return JSONResponse({
             "done": True,
@@ -398,6 +398,7 @@ async def flutterwave_redirect_status(
                     f"<p><a href='{failed_url}'>Return to Telegram</a></p>"
         })
 
+    # 🚨 Case 2: Already successful → instant success page
     if payment.status == "successful":
         credited_text = f"{payment.credited_tries} spin{'s' if payment.credited_tries > 1 else ''}"
         return JSONResponse({
@@ -411,6 +412,7 @@ async def flutterwave_redirect_status(
             """
         })
 
+    # 🚨 Case 3: Already failed/expired → instant fail page
     if payment.status in ["failed", "expired"]:
         return JSONResponse({
             "done": True,
@@ -421,7 +423,7 @@ async def flutterwave_redirect_status(
             """
         })
 
-    # Still pending → show spinner
+    # 🚨 Case 4: Still pending → keep polling with spinner
     return JSONResponse({
         "done": False,
         "html": f"""
