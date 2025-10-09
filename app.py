@@ -226,7 +226,95 @@ async def flutterwave_redirect(
     tx_ref: str = Query(...),
     status: str | None = None,
     transaction_id: str | None = None,
+    session: AsyncSession = Depends(get_session),
 ):
+    import httpx
+    from services.payments import calculate_tries, add_tries, get_or_create_user
+
+    success_url = f"https://t.me/NaijaPrizeGateBot?start=payment_success_{tx_ref}"
+    failed_url = f"https://t.me/NaijaPrizeGateBot?start=payment_failed_{tx_ref}"
+
+    # 1. Check DB first
+    stmt = select(Payment).where(Payment.tx_ref == tx_ref)
+    result = await session.execute(stmt)
+    payment = result.scalar_one_or_none()
+
+    # 2. If not found/pending → fallback verify with Flutterwave
+    if not payment or payment.status not in ["successful", "failed", "expired"]:
+        verify_url = f"{FLW_BASE_URL}/transactions/verify_by_reference?tx_ref={tx_ref}"
+        async with httpx.AsyncClient() as client:
+            resp = await client.get(
+                verify_url,
+                headers={"Authorization": f"Bearer {FLW_SECRET_KEY}"}
+            )
+
+        if resp.status_code == 200:
+            data = resp.json().get("data", {}) or {}
+            flw_status = data.get("status")
+            amount = data.get("amount")
+            tg_id = data.get("meta", {}).get("tg_id")
+            username = data.get("meta", {}).get("username")
+
+            if flw_status == "successful":
+                credited_tries = calculate_tries(amount)
+                if not payment:
+                    payment = Payment(
+                        tx_ref=tx_ref,
+                        status="successful",
+                        credited_tries=credited_tries,
+                        flw_tx_id=data.get("id"),
+                        tg_id=tg_id,
+                        username=username,
+                    )
+                    session.add(payment)
+                else:
+                    payment.status = "successful"
+                    payment.credited_tries = credited_tries
+                    payment.flw_tx_id = data.get("id")
+                user = await get_or_create_user(session, tg_id=tg_id, username=username)
+                await add_tries(session, user, credited_tries, paid=True)
+                await session.commit()
+
+            elif flw_status in ["failed", "expired"]:
+                if not payment:
+                    payment = Payment(
+                        tx_ref=tx_ref,
+                        status=flw_status,
+                        flw_tx_id=data.get("id"),
+                        tg_id=tg_id,
+                        username=username,
+                    )
+                    session.add(payment)
+                else:
+                    payment.status = flw_status
+                    payment.flw_tx_id = data.get("id")
+                await session.commit()
+
+        # re-fetch after possible update
+        stmt = select(Payment).where(Payment.tx_ref == tx_ref)
+        result = await session.execute(stmt)
+        payment = result.scalar_one_or_none()
+
+    # 3. If resolved → return final HTML immediately
+    if payment:
+        if payment.status == "successful":
+            credited_text = f"{payment.credited_tries} spin{'s' if payment.credited_tries > 1 else ''}"
+            return HTMLResponse(f"""
+                <h2 style="color:green;">✅ Payment Successful</h2>
+                <p>Transaction Reference: <b>{tx_ref}</b></p>
+                <p>🎁 You’ve been credited with <b>{credited_text}</b>! 🎉</p>
+                <p>This tab will redirect to Telegram in 5 seconds...</p>
+                <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
+            """, status_code=200)
+
+        if payment.status in ["failed", "expired"]:
+            return HTMLResponse(f"""
+                <h2 style="color:red;">❌ Payment Failed</h2>
+                <p>Transaction Reference: <b>{tx_ref}</b></p>
+                <script>setTimeout(() => window.location.href="{failed_url}", 5000);</script>
+            """, status_code=200)
+
+    # 4. If still pending → show the original spinner + polling
     html_content = f"""
     <html>
         <head>
@@ -255,7 +343,7 @@ async def flutterwave_redirect(
             <script>
                 let countdown = 5;
                 let totalWait = 0;
-                const fallbackLimit = 120; // 120s = 2 minutes
+                const fallbackLimit = 120; // 2 minutes
 
                 function startCountdown() {{
                     const cdElem = document.getElementById("countdown");
@@ -279,7 +367,6 @@ async def flutterwave_redirect(
                         }} else {{
                             totalWait += 5;
                             if (totalWait >= fallbackLimit) {{
-                                // Fallback redirect: send user to Telegram with tx_ref
                                 window.location.href = "https://t.me/NaijaPrizeGateBot?start=payment_pending_{tx_ref}";
                                 return;
                             }}
