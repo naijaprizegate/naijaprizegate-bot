@@ -243,8 +243,29 @@ async def flutterwave_redirect(tx_ref: str = Query(...)):
                     animation: spin 1s linear infinite;
                 }}
                 @keyframes spin {{ to {{ transform: rotate(360deg); }} }}
+                .countdown {{
+                    font-weight: bold;
+                    color: #f39c12;
+                }}
             </style>
             <script>
+                let countdown = 5;
+                let totalWait = 0;
+                const fallbackLimit = 120; // 120s = 2 minutes
+
+                function startCountdown() {{
+                    const cdElem = document.getElementById("countdown");
+                    countdown = 5;
+                    cdElem.textContent = countdown;
+                    const interval = setInterval(() => {{
+                        countdown -= 1;
+                        if (countdown <= 0) {{
+                            clearInterval(interval);
+                        }}
+                        cdElem.textContent = countdown;
+                    }}, 1000);
+                }}
+
                 async function checkStatus() {{
                     try {{
                         const response = await fetch("/flw/redirect/status?tx_ref={tx_ref}");
@@ -252,20 +273,37 @@ async def flutterwave_redirect(tx_ref: str = Query(...)):
                         if (data.done) {{
                             document.body.innerHTML = data.html;
                         }} else {{
-                            setTimeout(checkStatus, 2500);
+                            totalWait += 5;
+                            if (totalWait >= fallbackLimit) {{
+                                // Fallback redirect: send user to Telegram with tx_ref
+                                window.location.href = "https://t.me/NaijaPrizeGateBot?start=payment_pending_{tx_ref}";
+                                return;
+                            }}
+                            startCountdown();
+                            setTimeout(checkStatus, 5000);
                         }}
                     }} catch (err) {{
                         console.error("Polling error:", err);
-                        setTimeout(checkStatus, 3000);
+                        totalWait += 5;
+                        if (totalWait >= fallbackLimit) {{
+                            window.location.href = "https://t.me/NaijaPrizeGateBot?start=payment_pending_{tx_ref}";
+                            return;
+                        }}
+                        setTimeout(checkStatus, 5000);
                     }}
                 }}
-                window.onload = checkStatus;
+
+                window.onload = () => {{
+                    startCountdown();
+                    checkStatus();
+                }};
             </script>
         </head>
         <body>
             <h2>⏳ Verifying your payment...</h2>
             <div class="spinner"></div>
-            <p>Please wait a few seconds.</p>
+            <p>✅ Please wait, we’re checking Flutterwave every <span id="countdown">5</span> seconds.</p>
+            <p>(Auto-redirecting if nothing happens after 2 minutes)</p>
         </body>
     </html>
     """
