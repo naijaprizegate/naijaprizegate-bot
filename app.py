@@ -222,7 +222,11 @@ async def flutterwave_webhook(
 # Redirect: user-friendly "verifying payment" page
 # ------------------------------------------------------
 @router.get("/flw/redirect", response_class=HTMLResponse)
-async def flutterwave_redirect(tx_ref: str = Query(...)):
+async def flutterwave_redirect(
+    tx_ref: str = Query(...),
+    status: str | None = None,
+    transaction_id: str | None = None,
+):
     html_content = f"""
     <html>
         <head>
