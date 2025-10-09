@@ -271,9 +271,8 @@ async def flutterwave_redirect(tx_ref: str = Query(...)):
     """
     return HTMLResponse(content=html_content, status_code=200)
 
-
 # ------------------------------------------------------
-# Redirect status polling
+# Redirect status polling with countdown refresh
 # ------------------------------------------------------
 @router.get("/flw/redirect/status")
 async def flutterwave_redirect_status(
@@ -295,12 +294,13 @@ async def flutterwave_redirect_status(
         })
 
     if payment.status == "successful":
+        credited_text = f"{payment.credited_tries} spin{'s' if payment.credited_tries > 1 else ''}"
         return JSONResponse({
             "done": True,
             "html": f"""
             <h2 style="color:green;">✅ Payment Successful</h2>
             <p>Transaction Reference: <b>{tx_ref}</b></p>
-            <p>You’ve been credited with <b>{payment.credited_tries}</b> tries 🎉</p>
+            <p>🎁 You’ve been credited with <b>{credited_text}</b>! 🎉</p>
             <p>This tab will redirect to Telegram in 5 seconds...</p>
             <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
             """
@@ -316,15 +316,31 @@ async def flutterwave_redirect_status(
             """
         })
 
-    # Still pending → show spinner
+    # Still pending → spinner + countdown
     return JSONResponse({
         "done": False,
         "html": f"""
         <h2 style="color:orange;">⏳ Payment Pending</h2>
         <p>Transaction Reference: <b>{tx_ref}</b></p>
-        <p>Please wait...</p>
+        <p>⚠️ Your payment is still being processed by Flutterwave.</p>
+        <p>✅ Don’t close this tab — once confirmed, your spins will be credited automatically 🎁</p>
+        <div class="spinner" style="margin:20px auto;height:40px;width:40px;border:5px solid #ccc;border-top-color:#f39c12;border-radius:50%;animation:spin 1s linear infinite;"></div>
+        <p>🔄 Checking again in <span id="countdown">5</span> seconds...</p>
+        <script>
+            let countdown = 5;
+            const cdElem = document.getElementById("countdown");
+            setInterval(() => {{
+                countdown -= 1;
+                if (countdown <= 0) {{
+                    countdown = 5;
+                }}
+                cdElem.textContent = countdown;
+            }}, 1000);
+        </script>
+        <style>@keyframes spin {{ to {{ transform: rotate(360deg); }} }}</style>
         """
     })
+
 
 # -------------------------------------------------
 # Health check endpoint
