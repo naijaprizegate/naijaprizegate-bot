@@ -9,7 +9,7 @@ import sys
 # Force unbuffered output (Render needs this for real-time logs)
 os.environ["PYTHONUNBUFFERED"] = "1"
 
-from fastapi import FastAPI, Query, Request, HTTPException, Depends
+from fastapi import FastAPI, Query, Request, HTTPException, Depends, APIRouter
 from fastapi.responses import HTMLResponse, JSONResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
@@ -22,17 +22,24 @@ from logger import tg_error_handler, logger
 from handlers import core, payments, free, admin, tryluck
 from tasks import start_background_tasks, stop_background_tasks
 from db import init_game_state, get_async_session, get_session
-from models import Payment
+from models import Payment, User
 from helpers import get_or_create_user, add_tries
 from logging_setup import logger
 
-# ✅ Import everything Flutterwave-related from one place
+# ✅ Import Flutterwave-related functions/constants
 from services.payments import (
     FLW_BASE_URL,
     FLW_SECRET_KEY,
     calculate_tries,
-    verify_payment,   # <- This is the key import you needed
+    verify_payment,
+    validate_webhook,
+    get_or_create_user,
+    add_tries,
 )
+
+logger = logging.getLogger(__name__)
+
+router = APIRouter()
 
 # -------------------------------------------------
 # Environment setup
@@ -44,6 +51,7 @@ FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")
 
 if not BOT_TOKEN or not RENDER_EXTERNAL_URL or not WEBHOOK_SECRET or not FLW_SECRET_HASH:
     raise RuntimeError("❌ Missing required environment variables")
+
 
 # -------------------------------------------------
 # Initialize FastAPI + Telegram bot
@@ -135,44 +143,77 @@ async def telegram_webhook(secret: str, request: Request):
     await application.process_update(update)
     return {"ok": True}
     
-# -------------------------------------------------
-# Flutterwave webhook (source of truth)
-# -------------------------------------------------
-from services.payments import (
-    verify_payment,
-    validate_webhook,   # ✅ import signature validator
-)
-
-@app.post("/flw/webhook")
+# ------------------------------------------------------
+# Webhook: called by Flutterwave after payment
+# ------------------------------------------------------
+@router.post("/flw/webhook")
 async def flutterwave_webhook(
     request: Request,
-    session: AsyncSession = Depends(get_session)
+    session: AsyncSession = Depends(get_session),
 ):
-    # ✅ Validate Flutterwave signature first
     raw_body = await request.body()
     if not validate_webhook(request.headers, raw_body.decode("utf-8")):
         logger.warning("⚠️ Invalid Flutterwave webhook signature")
         raise HTTPException(status_code=403, detail="Invalid signature")
 
     body = await request.json()
-    tx_ref = body.get("data", {}).get("tx_ref")
+    data = body.get("data", {})
+    tx_ref = data.get("tx_ref")
+    status = data.get("status")
 
     if not tx_ref:
         logger.error("❌ Webhook received without tx_ref")
         return {"status": "error", "message": "No tx_ref in webhook"}
 
-    logger.info(f"🌍 Flutterwave webhook received for tx_ref={tx_ref}")
+    logger.info(f"🌍 Webhook received for tx_ref={tx_ref}, status={status}")
 
-    # ✅ Pass bot into verify_payment so Telegram notification fires
-    ok = await verify_payment(tx_ref, session, bot=bot, credit=True)
+    stmt = select(Payment).where(Payment.tx_ref == tx_ref)
+    result = await session.execute(stmt)
+    payment = result.scalar_one_or_none()
 
-    return {"status": "success" if ok else "failed", "tx_ref": tx_ref}
+    if status == "successful":
+        amount = data.get("amount")
+        credited_tries = calculate_tries(amount)
+
+        # Ensure payment row exists
+        if not payment:
+            payment = Payment(
+                tx_ref=tx_ref,
+                status="successful",
+                credited_tries=credited_tries,
+                flw_tx_id=data.get("id"),
+                tg_id=data.get("meta", {}).get("tg_id"),
+                username=data.get("meta", {}).get("username"),
+            )
+            session.add(payment)
+        else:
+            payment.status = "successful"
+            payment.credited_tries = credited_tries
+            payment.flw_tx_id = data.get("id")
+
+        # Credit user
+        user = await get_or_create_user(
+            session,
+            tg_id=payment.tg_id,
+            username=payment.username
+        )
+        await add_tries(session, user, credited_tries, paid=True)
+        await session.commit()
+
+        logger.info(f"🎁 User {user.id} credited with {credited_tries} tries")
+        return {"status": "success", "tx_ref": tx_ref}
+
+    # Non-success cases
+    if payment:
+        payment.status = status or "failed"
+        await session.commit()
+    return {"status": "failed", "tx_ref": tx_ref}
 
 
-# -------------------------------------------------
-# Flutterwave Redirect (user lands here after checkout)
-# -------------------------------------------------
-@app.get("/flw/redirect", response_class=HTMLResponse)
+# ------------------------------------------------------
+# Redirect: user-friendly "verifying payment" page
+# ------------------------------------------------------
+@router.get("/flw/redirect", response_class=HTMLResponse)
 async def flutterwave_redirect(tx_ref: str = Query(...)):
     html_content = f"""
     <html>
@@ -222,10 +263,11 @@ async def flutterwave_redirect(tx_ref: str = Query(...)):
     """
     return HTMLResponse(content=html_content, status_code=200)
 
-# -------------------------------------------------
-# Flutterwave Redirect Status (verifies + auto credits)
-# -------------------------------------------------
-@app.get("/flw/redirect/status")
+
+# ------------------------------------------------------
+# Redirect status polling
+# ------------------------------------------------------
+@router.get("/flw/redirect/status")
 async def flutterwave_redirect_status(
     tx_ref: str,
     session: AsyncSession = Depends(get_session),
@@ -236,87 +278,45 @@ async def flutterwave_redirect_status(
 
     success_url = f"https://t.me/NaijaPrizeGateBot?start=payment_success_{tx_ref}"
     failed_url = f"https://t.me/NaijaPrizeGateBot?start=payment_failed_{tx_ref}"
-    notfound_url = "https://t.me/NaijaPrizeGateBot?start=payment_notfound"
 
-    # --- Payment not found ---
     if not payment:
-        html = f"""
-        <h2 style="color:red;">❌ Payment not found</h2>
-        <p><a href="{notfound_url}" style="color:blue; font-weight:bold;">Return to Telegram Bot</a></p>
-        <script>setTimeout(() => window.open('', '_self').close(), 5000);</script>
-        """
-        return JSONResponse({"done": True, "html": html})
+        return JSONResponse({
+            "done": True,
+            "html": f"<h2 style='color:red;'>❌ Payment not found</h2>"
+                    f"<p><a href='{failed_url}'>Return to Telegram</a></p>"
+        })
 
-    # --- Already marked successful ---
     if payment.status == "successful":
-        html = f"""
-        <h2 style="color:green;">✅ Payment Successful</h2>
-        <p>Transaction Reference: <b>{tx_ref}</b></p>
-        <p>You’ve been credited with <b>{payment.credited_tries}</b> tries 🎉</p>
-        <p>This tab will redirect to Telegram in 5 seconds...</p>
-        <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
-        """
-        return JSONResponse({"done": True, "html": html})
-
-    # --- Failed or expired ---
-    if payment.status in ["failed", "expired"]:
-        html = f"""
-        <h2 style="color:red;">❌ Payment Failed</h2>
-        <p>Transaction Reference: <b>{tx_ref}</b></p>
-        <p>If money was deducted, please contact support.</p>
-        <script>setTimeout(() => window.location.href="{failed_url}", 8000);</script>
-        """
-        return JSONResponse({"done": True, "html": html})
-
-    # --- Still pending → fallback verify directly from Flutterwave ---
-    try:
-        async with httpx.AsyncClient(timeout=10.0) as client:
-            resp = await client.get(
-                f"{FLW_BASE_URL}/transactions/verify_by_reference?tx_ref={tx_ref}",
-                headers={"Authorization": f"Bearer {FLW_SECRET_KEY}"},
-            )
-        data = resp.json()
-        logger.info(f"Verification for {tx_ref}: {data}")
-
-        if data.get("status") == "success" and data["data"]["status"] == "successful":
-            payment.status = "successful"
-            payment.flw_tx_id = data["data"]["id"]
-
-            # ✅ Dynamically calculate tries
-            amount = data["data"]["amount"]
-            credited_tries = calculate_tries(amount)
-            payment.credited_tries = credited_tries
-
-            # ✅ Ensure user exists before crediting
-            user = await get_or_create_user(
-                session,
-                tg_id=payment.tg_id,          # assumes Payment has tg_id field
-                username=payment.username     # optional if stored
-            )
-            await add_tries(session, user, credited_tries, paid=True)
-
-            await session.commit()
-
-            html = f"""
-            <h2 style="color:green;">✅ Payment Verified Successfully</h2>
+        return JSONResponse({
+            "done": True,
+            "html": f"""
+            <h2 style="color:green;">✅ Payment Successful</h2>
             <p>Transaction Reference: <b>{tx_ref}</b></p>
-            <p>You’ve been credited with <b>{credited_tries}</b> tries 🎉</p>
+            <p>You’ve been credited with <b>{payment.credited_tries}</b> tries 🎉</p>
+            <p>This tab will redirect to Telegram in 5 seconds...</p>
             <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
             """
-            return JSONResponse({"done": True, "html": html})
+        })
 
-    except Exception as e:
-        logger.error(f"Verification error for {tx_ref}: {e}")
+    if payment.status in ["failed", "expired"]:
+        return JSONResponse({
+            "done": True,
+            "html": f"""
+            <h2 style="color:red;">❌ Payment Failed</h2>
+            <p>Transaction Reference: <b>{tx_ref}</b></p>
+            <script>setTimeout(() => window.location.href="{failed_url}", 5000);</script>
+            """
+        })
 
-    # --- Still pending ---
-    html_template = f"""
-    <h2 style="color:orange;">⏳ Payment Pending</h2>
-    <p>Transaction Reference: <b>{tx_ref}</b></p>
-    <p>You’ve been credited with <b>{payment.credited_tries or 0}</b> tries 🎯</p>
-    <p>This tab will automatically update once confirmed.</p>
-    """
-    return JSONResponse({"done": False, "html": html_template})
-
+    # Still pending → show spinner
+    return JSONResponse({
+        "done": False,
+        "html": f"""
+        <h2 style="color:orange;">⏳ Payment Pending</h2>
+        <p>Transaction Reference: <b>{tx_ref}</b></p>
+        <p>Please wait...</p>
+        """
+    })
 
 # -------------------------------------------------
 # Health check endpoint
