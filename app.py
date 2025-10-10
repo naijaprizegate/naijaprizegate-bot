@@ -236,6 +236,13 @@ async def flutterwave_redirect(
     # 🔎 Always resolve via central helper
     payment = await resolve_payment_status(tx_ref, session)
 
+
+    # 🛠️ If still pending and Flutterwave sent us transaction_id → verify directly
+    if (not payment or payment.status not in ["successful", "failed", "expired"]) and transaction_id:
+        from services.payments import verify_payment
+        await verify_payment(tx_ref, session, credit=True)
+        payment = await resolve_payment_status(tx_ref, session)
+
     if payment:
         if payment.status == "successful":
             credited_text = f"{payment.credited_tries} spin{'s' if payment.credited_tries > 1 else ''}"
@@ -313,6 +320,13 @@ async def flutterwave_redirect_status(
     failed_url = f"https://t.me/NaijaPrizeGateBot?start=payment_failed_{tx_ref}"
 
     payment = await resolve_payment_status(tx_ref, session)
+
+    # 🧠 If still pending after several polls, try direct verify again
+    if payment and payment.status not in ["successful", "failed", "expired"]:
+        from services.payments import verify_payment
+        await verify_payment(tx_ref, session, credit=True)
+        payment = await resolve_payment_status(tx_ref, session)
+
 
     # Case 1: Not found
     if not payment:
