@@ -38,18 +38,30 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def pending_proofs(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """List all pending proofs with Approve/Reject buttons"""
     if update.effective_user.id != ADMIN_USER_ID:
-        return await update.message.reply_text("❌ Access denied\\.", parse_mode="MarkdownV2")
+        return await update.effective_message.reply_text(
+            "❌ Access denied\\.", parse_mode="MarkdownV2"
+        )
 
     async with AsyncSessionLocal() as session:
         result = await session.execute(select(Proof).where(Proof.status == "pending"))
         proofs = result.scalars().all()
 
     if not proofs:
-        return await update.message.reply_text("✅ No pending proofs at the moment\\.", parse_mode="MarkdownV2")
+        # If triggered from a button → edit the message
+        if update.callback_query:
+            return await update.callback_query.edit_message_text(
+                "✅ No pending proofs at the moment\\.", parse_mode="MarkdownV2"
+            )
+        # If triggered from command → send a new message
+        return await update.effective_message.reply_text(
+            "✅ No pending proofs at the moment\\.", parse_mode="MarkdownV2"
+        )
 
     for proof in proofs:
         user = await get_user_by_id(proof.user_id)
-        user_name = md_escape(user.username or user.first_name if user else str(proof.user_id))
+        user_name = md_escape(
+            user.username or user.first_name if user else str(proof.user_id)
+        )
 
         caption = (
             f"*Pending Proof*\n"
@@ -64,7 +76,7 @@ async def pending_proofs(update: Update, context: ContextTypes.DEFAULT_TYPE):
             ]]
         )
 
-        await update.message.reply_photo(
+        await update.effective_message.reply_photo(
             photo=proof.file_id,
             caption=caption,
             parse_mode="MarkdownV2",
