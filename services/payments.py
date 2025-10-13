@@ -45,7 +45,14 @@ async def create_checkout(user_id: str, amount: int, tx_ref: str, username: str 
             "email": customer_email,
             "name": username or f"User {user_id}"
         },
-        "customizations": {"title": "NaijaPrizeGate"},
+        "customizations": {
+            "title": "NaijaPrizeGate",
+        },
+        # ✅ Add meta info so webhook knows who paid
+        "meta": {
+            "tg_id": str(user_id),
+            "username": username or "Anonymous",
+        },
     }
 
     async with httpx.AsyncClient() as client:
@@ -55,7 +62,6 @@ async def create_checkout(user_id: str, amount: int, tx_ref: str, username: str 
 
     logger.info(f"✅ Flutterwave checkout created for {customer_email}: {data}")
     return data["data"]["link"]
-
 
 # ------------------------------------------------------
 # 2. Verify Payment (via tx_ref)
@@ -291,3 +297,4 @@ async def resolve_payment_status(tx_ref: str, session: AsyncSession) -> Payment 
     stmt = select(Payment).where(Payment.tx_ref == tx_ref)
     result = await session.execute(stmt)
     return result.scalar_one_or_none()
+
