@@ -150,7 +150,10 @@ async def flutterwave_webhook(
     session: AsyncSession = Depends(get_session),
 ):
     raw_body = await request.body()
-    if not validate_webhook(request.headers, raw_body.decode("utf-8")):
+    body_str = raw_body.decode("utf-8")
+
+    # ✅ Validate Flutterwave signature
+    if not validate_webhook(request.headers, body_str):
         logger.warning("⚠️ Invalid Flutterwave webhook signature")
         raise HTTPException(status_code=403, detail="Invalid signature")
 
@@ -165,46 +168,51 @@ async def flutterwave_webhook(
 
     logger.info(f"🌍 Webhook received for tx_ref={tx_ref}, status={status}")
 
+    # 🔎 Fetch existing payment
     stmt = select(Payment).where(Payment.tx_ref == tx_ref)
     result = await session.execute(stmt)
     payment = result.scalar_one_or_none()
 
+    # ✅ Extract user info safely
+    meta = data.get("meta", {})
+    tg_id = meta.get("tg_id")
+    username = meta.get("username")
+    amount = data.get("amount")
+
+    # ✅ If transaction is successful
     if status == "successful":
-        amount = data.get("amount")
         credited_tries = calculate_tries(amount)
 
-        # Ensure payment row exists
         if not payment:
             payment = Payment(
                 tx_ref=tx_ref,
                 status="successful",
                 credited_tries=credited_tries,
                 flw_tx_id=data.get("id"),
-                tg_id=data.get("meta", {}).get("tg_id"),
-                username=data.get("meta", {}).get("username"),
+                tg_id=tg_id,
+                username=username,
+                amount=amount,
             )
             session.add(payment)
         else:
             payment.status = "successful"
             payment.credited_tries = credited_tries
             payment.flw_tx_id = data.get("id")
+            payment.tg_id = tg_id
+            payment.username = username
 
-        # Credit user
-        user = await get_or_create_user(
-            session,
-            tg_id=payment.tg_id,
-            username=payment.username
-        )
+        # ✅ Credit the user
+        user = await get_or_create_user(session, tg_id=tg_id, username=username)
         await add_tries(session, user, credited_tries, paid=True)
         await session.commit()
 
         logger.info(f"🎁 User {user.id} credited with {credited_tries} tries")
 
-        # ✅ Send Telegram DM immediately
+        # ✅ Try sending a Telegram message
         try:
             bot = Bot(token=BOT_TOKEN)
             await bot.send_message(
-                chat_id=user.tg_id,
+                chat_id=tg_id,
                 text=f"🎁 You’ve been credited with {credited_tries} spin{'s' if credited_tries > 1 else ''}! 🎉\n\nUse /spin to try your luck."
             )
         except Exception as e:
@@ -212,10 +220,11 @@ async def flutterwave_webhook(
 
         return {"status": "success", "tx_ref": tx_ref}
 
-    # Non-success cases
+    # ❌ Handle failed or incomplete payments
     if payment:
         payment.status = status or "failed"
         await session.commit()
+
     return {"status": "failed", "tx_ref": tx_ref}
 
 # ------------------------------------------------------
@@ -382,6 +391,6 @@ async def flutterwave_redirect_status(
 async def health_check():
     return {"status": "ok", "bot_initialized": application is not None}
 
-
 # ✅ Register all Flutterwave routes
 app.include_router(router)
+
