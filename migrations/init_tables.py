@@ -62,7 +62,7 @@ def main():
         cur.execute("CREATE INDEX IF NOT EXISTS idx_plays_user_id ON plays(user_id);")
         print("✅ plays table ensured")
 
-        # ----------------------
+                # ----------------------
         # 4. Payments
         # ----------------------
         cur.execute("""
@@ -74,12 +74,15 @@ def main():
             amount INT NOT NULL,
             credited_tries INT DEFAULT 0,
             flw_tx_id TEXT,
+            tg_id BIGINT,                -- ✅ Telegram ID for quick linking
+            username TEXT,               -- ✅ Telegram username
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_user_id ON payments(user_id);")
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_flw_tx_id ON payments(flw_tx_id);")
+        cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_tg_id ON payments(tg_id);")
 
         # ✅ Migration: if old column 'tries' exists, rename it
         cur.execute("""
@@ -94,21 +97,34 @@ def main():
         END$$;
         """)
 
-        # ✅ Migration: if 'updated_at' column is missing, add it
+        # ✅ Migration: add missing columns if not exist
         cur.execute("""
         DO $$
         BEGIN
             IF NOT EXISTS (
                 SELECT 1 FROM information_schema.columns
+                WHERE table_name='payments' AND column_name='tg_id'
+            ) THEN
+                ALTER TABLE payments ADD COLUMN tg_id BIGINT;
+            END IF;
+
+            IF NOT EXISTS (
+                SELECT 1 FROM information_schema.columns
+                WHERE table_name='payments' AND column_name='username'
+            ) THEN
+                ALTER TABLE payments ADD COLUMN username TEXT;
+            END IF;
+
+            IF NOT EXISTS (
+                SELECT 1 FROM information_schema.columns
                 WHERE table_name='payments' AND column_name='updated_at'
             ) THEN
-                ALTER TABLE payments
-                ADD COLUMN updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP;
+                ALTER TABLE payments ADD COLUMN updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP;
             END IF;
         END$$;
         """)
 
-        print("✅ payments table ensured (credited_tries + updated_at aligned)")
+        print("✅ payments table ensured (credited_tries + tg_id + username aligned)")
 
         # ----------------------
         # 5. Proofs
