@@ -382,3 +382,6 @@ async def flutterwave_redirect_status(
 async def health_check():
     return {"status": "ok", "bot_initialized": application is not None}
 
+
+# ✅ Register all Flutterwave routes
+app.include_router(router)
