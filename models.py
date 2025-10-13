@@ -8,6 +8,7 @@ from sqlalchemy import (
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship, declarative_base
 from sqlalchemy.sql import func
+from db import Base
 
 Base = declarative_base()
 
@@ -84,21 +85,30 @@ class Payment(Base):
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+
     tx_ref = Column(String, unique=True, nullable=False)
     status = Column(String, default="pending")  # pending / successful / failed / expired
     flw_tx_id = Column(String, nullable=True, index=True)
+
     amount = Column(Integer, nullable=False)
-    credited_tries = Column(Integer, nullable=False, default=0)  # ✅ renamed for consistency
+    credited_tries = Column(Integer, nullable=False, default=0)
+
+    # ✅ Added for webhook linking and debugging
+    tg_id = Column(BigInteger, nullable=True, index=True)       # Telegram user ID
+    username = Column(String, nullable=True)                    # Telegram username
+
     created_at = Column(TIMESTAMP, server_default=func.now())
     updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
 
     __table_args__ = (
-        CheckConstraint("status IN ('pending','successful','failed','expired')", name="check_payment_status"),
+        CheckConstraint(
+            "status IN ('pending','successful','failed','expired')",
+            name="check_payment_status"
+        ),
     )
 
     # relationships
     user = relationship("User", back_populates="payments")
-
 
 # ----------------------
 # 5. Proofs
@@ -130,3 +140,4 @@ class TransactionLog(Base):
     provider = Column(String, nullable=False)   # e.g. "flutterwave"
     payload = Column(Text, nullable=False)      # raw JSON payload
     created_at = Column(TIMESTAMP, server_default=func.now())
+
