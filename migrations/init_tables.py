@@ -62,7 +62,8 @@ def main():
         cur.execute("CREATE INDEX IF NOT EXISTS idx_plays_user_id ON plays(user_id);")
         print("✅ plays table ensured")
 
-                # ----------------------
+
+        # ----------------------
         # 4. Payments
         # ----------------------
         cur.execute("""
@@ -74,15 +75,12 @@ def main():
             amount INT NOT NULL,
             credited_tries INT DEFAULT 0,
             flw_tx_id TEXT,
-            tg_id BIGINT,                -- ✅ Telegram ID for quick linking
-            username TEXT,               -- ✅ Telegram username
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_user_id ON payments(user_id);")
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_flw_tx_id ON payments(flw_tx_id);")
-        cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_tg_id ON payments(tg_id);")
 
         # ✅ Migration: if old column 'tries' exists, rename it
         cur.execute("""
@@ -123,6 +121,9 @@ def main():
             END IF;
         END$$;
         """)
+
+        # ✅ Now that tg_id exists, create index safely
+        cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_tg_id ON payments(tg_id);")
 
         print("✅ payments table ensured (credited_tries + tg_id + username aligned)")
 
