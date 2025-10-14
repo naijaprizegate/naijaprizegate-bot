@@ -1,16 +1,15 @@
 #=================================================================
-# models.py (cleaned + aligned)
+# models.py (cleaned + circular-import-free)
 #=================================================================
 import uuid
 from sqlalchemy import (
-    Column, String, Integer, ForeignKey, Text, TIMESTAMP, CheckConstraint, Boolean, BigInteger
+    Column, String, Integer, ForeignKey, Text, TIMESTAMP, CheckConstraint,
+    Boolean, BigInteger
 )
 from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-from db import Base
-
-Base = declarative_base()
+from base import Base  # ✅ import from base.py (not db.py)
 
 
 # -----------------------
@@ -84,7 +83,7 @@ class Payment(Base):
     __tablename__ = "payments"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=True)
 
     tx_ref = Column(String, unique=True, nullable=False)
     status = Column(String, default="pending")  # pending / successful / failed / expired
@@ -109,6 +108,7 @@ class Payment(Base):
 
     # relationships
     user = relationship("User", back_populates="payments")
+
 
 # ----------------------
 # 5. Proofs
@@ -140,4 +140,3 @@ class TransactionLog(Base):
     provider = Column(String, nullable=False)   # e.g. "flutterwave"
     payload = Column(Text, nullable=False)      # raw JSON payload
     created_at = Column(TIMESTAMP, server_default=func.now())
-
