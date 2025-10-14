@@ -150,6 +150,7 @@ async def flutterwave_webhook(
     session: AsyncSession = Depends(get_session),
 ):
     raw_body = await request.body()
+    logger.info("⚡ Flutterwave webhook triggered!")
     body_str = raw_body.decode("utf-8")
 
     # ✅ Allow Flutterwave dashboard test pings (no signature)
