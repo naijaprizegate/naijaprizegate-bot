@@ -86,24 +86,64 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
 
     logger.info(f"🔎 Flutterwave verification for {tx_ref}: {data}")
 
+    # ✅ Sanity checks
     if not data.get("status") == "success" or not data.get("data"):
-        logger.warning(f"⚠️ Invalid response for tx_ref={tx_ref}")
+        logger.warning(f"⚠️ Invalid or empty response for tx_ref={tx_ref}")
         return False
 
     tx_data = data["data"]
     tx_status = tx_data.get("status")
     amount = tx_data.get("amount")
+    meta = tx_data.get("meta", {}) or {}
 
+    # ✅ Try finding payment in DB
     result = await session.execute(select(Payment).where(Payment.tx_ref == tx_ref))
     payment = result.scalar_one_or_none()
 
+    # ✅ Create a placeholder Payment record if missing
     if not payment:
-        logger.warning(f"⚠️ No Payment record found for {tx_ref}")
-        return False
+        logger.warning(f"⚠️ No Payment record found for {tx_ref} → creating a new one.")
+        from models import User
+        tg_id = meta.get("tg_id")
+        username = meta.get("username") or "Unknown"
 
+        if tg_id:
+            result = await session.execute(select(User).where(User.tg_id == tg_id))
+            user = result.scalar_one_or_none()
+            if not user:
+                # Create user if not found (optional safety net)
+                user = User(tg_id=tg_id, username=username)
+                session.add(user)
+                await session.flush()
+        else:
+            user = None
+
+        payment = Payment(
+            tx_ref=tx_ref,
+            amount=amount,
+            status=tx_status or "pending",
+            user_id=user.id if user else None,
+            credited_tries=0
+        )
+        session.add(payment)
+        await session.commit()
+        logger.info(f"🆕 Payment placeholder created for tx_ref={tx_ref}")
+
+    # ✅ Update existing payment fields
     payment.amount = amount
     payment.updated_at = datetime.utcnow()
 
+    # ✅ Backfill missing user_id from meta (if available)
+    if not payment.user_id and meta.get("tg_id"):
+        result = await session.execute(select(User).where(User.tg_id == meta["tg_id"]))
+        user = result.scalar_one_or_none()
+        if user:
+            payment.user_id = user.id
+            logger.info(f"🔗 Linked payment {tx_ref} to user {user.tg_id} from meta data")
+
+    # ----------------------------------
+    # ✅ Handle payment outcomes
+    # ----------------------------------
     if tx_status == "successful":
         if payment.status == "successful":
             logger.info(f"ℹ️ Payment {tx_ref} already marked successful → skipping re-credit")
@@ -118,6 +158,7 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
                 await session.commit()
                 logger.info(f"✅ User {user.tg_id} credited with {tries} tries for tx_ref={tx_ref}")
 
+                # ✅ Notify user via Telegram (optional)
                 if bot and user and user.tg_id:
                     deep_link = f"https://t.me/NaijaPrizeGateBot?start=payment_success_{tx_ref}"
                     keyboard = [
@@ -145,6 +186,7 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
                 await session.rollback()
                 return False
 
+            # ✅ Update global counter
             try:
                 counter_result = await session.execute(select(GlobalCounter).limit(1))
                 counter = counter_result.scalar_one_or_none()
@@ -169,6 +211,7 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
         logger.info(f"❌ Payment {tx_ref} marked as {tx_status}")
         return False
 
+    # Pending / unknown status
     await session.commit()
     logger.info(f"⏳ Payment {tx_ref} still pending (status={tx_status})")
     return False
