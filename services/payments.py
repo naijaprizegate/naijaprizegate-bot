@@ -14,6 +14,7 @@ from db import get_async_session
 from models import Payment, TransactionLog, GlobalCounter, User
 from helpers import add_tries  # ✅ FIX: Missing import
 
+
 # ==== Config ====
 FLW_BASE_URL = "https://api.flutterwave.com/v3"
 FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")
@@ -120,7 +121,7 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
             user = None
 
         payment = Payment(
-            tx_ref=tx_ref,
+            tx_ref = str(tx_ref),  # ✅ ensure always string
             amount=amount,
             status=tx_status or "pending",
             user_id=user.id if user else None,
@@ -142,9 +143,9 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
             payment.user_id = user.id
             logger.info(f"🔗 Linked payment {tx_ref} to user {user.tg_id} from meta data")
 
-    # ----------------------------------
+    # -------------------------------------
     # ✅ Handle payment outcomes
-    # ----------------------------------
+    # -------------------------------------
     if tx_status == "successful":
         if payment.status == "successful":
             logger.info(f"ℹ️ Payment {tx_ref} already marked successful → skipping re-credit")
@@ -293,7 +294,7 @@ async def resolve_payment_status(tx_ref: str, session: AsyncSession) -> Payment 
     if payment and payment.status in ["successful", "failed", "expired"]:
         return payment
 
-    verify_url = f"{FLW_BASE_URL}/transactions/verify_by_reference?tx_ref={tx_ref}"
+    verify_url = f"{FLW_BASE_URL}/transactions/verify_by_reference?tx_ref={str(tx_ref)}"
     headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}"}
 
     try:
@@ -313,7 +314,7 @@ async def resolve_payment_status(tx_ref: str, session: AsyncSession) -> Payment 
 
     if not payment:
         payment = Payment(
-            tx_ref=tx_ref,
+            tx_ref = str(tx_ref),  # ✅ ensure always string
             amount=amount,
             status=flw_status,
             flw_tx_id=data.get("id"),
