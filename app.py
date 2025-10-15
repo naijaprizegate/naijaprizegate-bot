@@ -213,7 +213,7 @@ async def flutterwave_webhook(
                 tx_ref=tx_ref,
                 status="successful",
                 credited_tries=credited_tries,
-                flw_tx_id=data.get("id"),
+                flw_tx_id=str(data.get("id")),   # ✅ cast to str
                 user_id=user.id,
                 amount=amount,
             )
@@ -221,7 +221,7 @@ async def flutterwave_webhook(
         else:
             payment.status = "successful"
             payment.credited_tries = credited_tries
-            payment.flw_tx_id = data.get("id")
+            payment.flw_tx_id = str(data.get("id"))  # ✅ also here
 
         # ✅ Credit user tries
         user = await get_or_create_user(session, tg_id=tg_id, username=username)
