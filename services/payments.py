@@ -74,6 +74,10 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
     - If credit=True: credit the user and notify via Telegram.
     - If credit=False: only updates DB.
     """
+
+    # 🔧 Ensure tx_ref is always a string — prevents "expected str, got int" crash
+    tx_ref = str(tx_ref)
+
     url = f"{FLW_BASE_URL}/transactions/verify_by_reference?tx_ref={tx_ref}"
     headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}"}
 
@@ -98,6 +102,11 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
     amount = tx_data.get("amount")
     meta = tx_data.get("meta", {}) or {}
 
+    # ✅ Force tg_id to string if it exists (prevents same asyncpg error)
+    if "tg_id" in meta and meta["tg_id"] is not None:
+        meta["tg_id"] = str(meta["tg_id"])
+
+
     # ✅ Try finding payment in DB
     result = await session.execute(select(Payment).where(Payment.tx_ref == tx_ref))
     payment = result.scalar_one_or_none()
@@ -110,6 +119,9 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
         username = meta.get("username") or "Unknown"
 
         if tg_id:
+            # 🔧 Ensure tg_id is string here too, in case it’s int
+            tg_id = str(tg_id)
+
             result = await session.execute(select(User).where(User.tg_id == tg_id))
             user = result.scalar_one_or_none()
             if not user:
@@ -143,9 +155,8 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
             payment.user_id = user.id
             logger.info(f"🔗 Linked payment {tx_ref} to user {user.tg_id} from meta data")
 
-    # -------------------------------------
+    
     # ✅ Handle payment outcomes
-    # -------------------------------------
     if tx_status == "successful":
         if payment.status == "successful":
             logger.info(f"ℹ️ Payment {tx_ref} already marked successful → skipping re-credit")
