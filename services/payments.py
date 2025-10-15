@@ -12,6 +12,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 from db import get_async_session
 from models import Payment, TransactionLog, GlobalCounter, User
+from helpers import add_tries  # ✅ FIX: Missing import
 
 # ==== Config ====
 FLW_BASE_URL = "https://api.flutterwave.com/v3"
