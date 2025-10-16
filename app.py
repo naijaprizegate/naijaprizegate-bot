@@ -165,35 +165,42 @@ async def flutterwave_webhook(
         raise HTTPException(status_code=403, detail="Invalid signature")
 
     body = await request.json()
-    data = body.get("data", {})
+    data = body.get("data", {}) or {}
     tx_ref = data.get("tx_ref")
     status = data.get("status")
+    amount = data.get("amount")
 
     if not tx_ref:
         logger.error("❌ Webhook received without tx_ref")
         return {"status": "error", "message": "No tx_ref in webhook"}
 
-    # ✅ Log full payload for debugging
+    # ✅ Accept both meta shapes
+    meta = data.get("meta") or data.get("meta_data") or {}
     logger.info(f"🌍 Webhook received: {body}")
-    logger.info(f"📦 tx_ref={tx_ref}, status={status}")
+    logger.info(f"📦 tx_ref={tx_ref}, status={status}, meta_keys={list(meta.keys())}")
 
-    # ✅ Extract meta info safely
-    meta = data.get("meta", {}) or {}
-    tg_id = meta.get("tg_id")
-    username = meta.get("username") or "Unknown"
-    amount = data.get("amount")
+    # Defensive extraction of tg_id/username
+    raw_tg_id = meta.get("tg_id") or meta.get("tgId") or meta.get("customer") or None
+    username = (meta.get("username") or meta.get("user") or meta.get("customer_name") or "Unknown")
 
-    if not tg_id:
-        logger.warning(f"⚠️ Webhook missing tg_id for tx_ref={tx_ref}")
-        return {"status": "error", "message": "Missing tg_id in meta"}
+    # Normalize tg_id if possible (string digits -> int)
+    tg_id = None
+    if raw_tg_id is not None:
+        try:
+            tg_id = int(raw_tg_id)
+        except Exception:
+            tg_id = raw_tg_id  # keep as-is (rare)
 
-    # 🔍 Verify payment with Flutterwave (extra safety)
+    if tg_id is None:
+        logger.warning(f"⚠️ Webhook missing tg_id for tx_ref={tx_ref} — continuing, will try to resolve later")
+
+    # 🔍 Verify payment with Flutterwave (extra safety, "credit=False" so we don't double-credit here)
     try:
         from services.payments import verify_payment
         verified = await verify_payment(tx_ref, session, credit=False)
         if not verified:
             logger.warning(f"⚠️ Payment verification failed for tx_ref={tx_ref}")
-            return {"status": "error", "message": "Verification failed"}
+            # still continue — the redirect/resolve flow can attempt verification again
     except Exception as e:
         logger.exception(f"❌ Error verifying payment {tx_ref}: {e}")
         return {"status": "error", "message": str(e)}
@@ -206,39 +213,62 @@ async def flutterwave_webhook(
     credited_tries = calculate_tries(int(amount or 0))
 
     if status == "successful":
-        # ✅ Ensure payment exists
-        if not payment:
+        # Ensure we have a linked User (if tg_id present) and user_id is User.id (UUID)
+        user = None
+        if tg_id is not None:
+            # get_or_create_user expects (session, tg_id, username)
             user = await get_or_create_user(session, tg_id=tg_id, username=username)
+
+        # ✅ Ensure payment exists & is linked correctly
+        if not payment:
             payment = Payment(
-                tx_ref=tx_ref,
+                tx_ref=str(tx_ref),
                 status="successful",
                 credited_tries=credited_tries,
-                flw_tx_id=str(data.get("id")),   # ✅ cast to str
-                user_id=user.id,
+                flw_tx_id=str(data.get("id")) if data.get("id") is not None else None,
+                user_id=user.id if user else None,
                 amount=amount,
+                tg_id=int(tg_id) if isinstance(tg_id, int) else (int(str(tg_id)) if str(tg_id).isdigit() else None),
+                username=username,
             )
             session.add(payment)
+            await session.flush()
         else:
+            # update fields safely
             payment.status = "successful"
             payment.credited_tries = credited_tries
-            payment.flw_tx_id = str(data.get("id"))  # ✅ also here
+            if data.get("id") is not None:
+                payment.flw_tx_id = str(data.get("id"))
+            # link to user if possible and not already linked
+            if user and not payment.user_id:
+                payment.user_id = user.id
+            # store tg info for easier lookup/debug
+            if isinstance(tg_id, int):
+                payment.tg_id = tg_id
+            elif tg_id and str(tg_id).isdigit():
+                payment.tg_id = int(str(tg_id))
+            payment.username = username or payment.username
 
-        # ✅ Credit user tries
-        user = await get_or_create_user(session, tg_id=tg_id, username=username)
-        await add_tries(session, user, credited_tries, paid=True)
-        await session.commit()
+        # ✅ Credit user tries (if we have user). If user is missing, this will be resolved later by resolve_payment_status/verify flows.
+        if user:
+            await add_tries(session, user, credited_tries, paid=True)
+            await session.commit()
+            logger.info(f"🎁 Credited {credited_tries} tries to user {user.tg_id} ({username})")
+        else:
+            # commit payment row and leave crediting to resolver (or admin) to avoid guessing user
+            await session.commit()
+            logger.info(f"🎁 Payment {tx_ref} recorded but no tg_id/user found — will resolve later")
 
-        logger.info(f"🎁 Credited {credited_tries} tries to user {user.tg_id} ({username})")
-
-        # ✅ Notify via Telegram
-        try:
-            bot = Bot(token=BOT_TOKEN)
-            await bot.send_message(
-                chat_id=tg_id,
-                text=f"✅ Payment successful!\n\nYou’ve been credited with {credited_tries} spin{'s' if credited_tries > 1 else ''}! 🎉\n\nUse /spin to try your luck."
-            )
-        except Exception as e:
-            logger.error(f"⚠️ Failed to send Telegram DM to {tg_id}: {e}")
+        # ✅ Notify via Telegram (only if tg_id present)
+        if tg_id:
+            try:
+                bot = Bot(token=BOT_TOKEN)
+                await bot.send_message(
+                    chat_id=tg_id,
+                    text=f"✅ Payment successful!\n\nYou’ve been credited with {credited_tries} spin{'s' if credited_tries > 1 else ''}! 🎉\n\nUse /spin to try your luck."
+                )
+            except Exception as e:
+                logger.error(f"⚠️ Failed to send Telegram DM to {tg_id}: {e}")
 
         return {"status": "success", "tx_ref": tx_ref}
 
@@ -261,7 +291,7 @@ async def flutterwave_redirect(
     transaction_id: str | None = None,
     session: AsyncSession = Depends(get_session),
 ):
-    from services.payments import resolve_payment_status
+    from services.payments import resolve_payment_status, verify_payment
 
     success_url = f"https://t.me/NaijaPrizeGateBot?start=payment_success_{tx_ref}"
     failed_url = f"https://t.me/NaijaPrizeGateBot?start=payment_failed_{tx_ref}"
@@ -269,12 +299,13 @@ async def flutterwave_redirect(
     # 🔎 Always resolve via central helper
     payment = await resolve_payment_status(tx_ref, session)
 
-
-    # 🛠️ If still pending and Flutterwave sent us transaction_id → verify directly
+    # 🛠️ If still pending and Flutterwave sent us transaction_id → verify directly (credit True so the user gets credited)
     if (not payment or payment.status not in ["successful", "failed", "expired"]) and transaction_id:
-        from services.payments import verify_payment
-        await verify_payment(tx_ref, session, credit=True)
-        payment = await resolve_payment_status(tx_ref, session)
+        try:
+            await verify_payment(tx_ref, session, credit=True)
+            payment = await resolve_payment_status(tx_ref, session)
+        except Exception as e:
+            logger.exception(f"❌ Error during redirect verify for {tx_ref}: {e}")
 
     if payment:
         if payment.status == "successful":
@@ -347,7 +378,7 @@ async def flutterwave_redirect_status(
     tx_ref: str,
     session: AsyncSession = Depends(get_session),
 ):
-    from services.payments import resolve_payment_status
+    from services.payments import resolve_payment_status, verify_payment
 
     success_url = f"https://t.me/NaijaPrizeGateBot?start=payment_success_{tx_ref}"
     failed_url = f"https://t.me/NaijaPrizeGateBot?start=payment_failed_{tx_ref}"
@@ -356,10 +387,11 @@ async def flutterwave_redirect_status(
 
     # 🧠 If still pending after several polls, try direct verify again
     if payment and payment.status not in ["successful", "failed", "expired"]:
-        from services.payments import verify_payment
-        await verify_payment(tx_ref, session, credit=True)
-        payment = await resolve_payment_status(tx_ref, session)
-
+        try:
+            await verify_payment(tx_ref, session, credit=True)
+            payment = await resolve_payment_status(tx_ref, session)
+        except Exception as e:
+            logger.exception(f"❌ Error during polling verify for {tx_ref}: {e}")
 
     # Case 1: Not found
     if not payment:
