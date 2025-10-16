@@ -62,27 +62,44 @@ def main():
         cur.execute("CREATE INDEX IF NOT EXISTS idx_plays_user_id ON plays(user_id);")
         print("✅ plays table ensured")
 
-
         # ----------------------
         # 4. Payments
         # ----------------------
         cur.execute("""
         CREATE TABLE IF NOT EXISTS payments (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-            user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+            user_id UUID REFERENCES users(id) ON DELETE CASCADE,
             tx_ref TEXT NOT NULL UNIQUE,
             status TEXT DEFAULT 'pending' CHECK (status IN ('pending','successful','failed','expired')),
             amount INT NOT NULL,
             credited_tries INT DEFAULT 0,
             flw_tx_id TEXT,
+            tg_id BIGINT,
+            username TEXT,
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_user_id ON payments(user_id);")
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_flw_tx_id ON payments(flw_tx_id);")
+        cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_tg_id ON payments(tg_id);")
 
-        # ✅ Migration: if old column 'tries' exists, rename it
+        # ✅ Migration fix: convert flw_tx_id to TEXT if still numeric
+        cur.execute("""
+        DO $$
+        BEGIN
+            IF EXISTS (
+                SELECT 1 FROM information_schema.columns
+                WHERE table_name='payments' AND column_name='flw_tx_id'
+                  AND data_type IN ('integer', 'bigint')
+            ) THEN
+                ALTER TABLE payments ALTER COLUMN flw_tx_id TYPE VARCHAR USING flw_tx_id::varchar;
+                RAISE NOTICE '🔄 Converted flw_tx_id to VARCHAR';
+            END IF;
+        END$$;
+        """)
+
+        # ✅ Migration: rename old 'tries' to 'credited_tries' if needed
         cur.execute("""
         DO $$
         BEGIN
@@ -95,37 +112,7 @@ def main():
         END$$;
         """)
 
-        # ✅ Migration: add missing columns if not exist
-        cur.execute("""
-        DO $$
-        BEGIN
-            IF NOT EXISTS (
-                SELECT 1 FROM information_schema.columns
-                WHERE table_name='payments' AND column_name='tg_id'
-            ) THEN
-                ALTER TABLE payments ADD COLUMN tg_id BIGINT;
-            END IF;
-
-            IF NOT EXISTS (
-                SELECT 1 FROM information_schema.columns
-                WHERE table_name='payments' AND column_name='username'
-            ) THEN
-                ALTER TABLE payments ADD COLUMN username TEXT;
-            END IF;
-
-            IF NOT EXISTS (
-                SELECT 1 FROM information_schema.columns
-                WHERE table_name='payments' AND column_name='updated_at'
-            ) THEN
-                ALTER TABLE payments ADD COLUMN updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP;
-            END IF;
-        END$$;
-        """)
-
-        # ✅ Now that tg_id exists, create index safely
-        cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_tg_id ON payments(tg_id);")
-
-        print("✅ payments table ensured (credited_tries + tg_id + username aligned)")
+        print("✅ payments table ensured (with VARCHAR flw_tx_id)")
 
         # ----------------------
         # 5. Proofs
