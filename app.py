@@ -293,7 +293,7 @@ async def flutterwave_webhook(
             try:
                 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
                 from telegram.ext import CallbackQueryHandler
-                from handlers.start import start_handler  # make sure this exists
+                from handlers.core import start as start_handler  # make sure this exists
 
                 bot = Bot(token=BOT_TOKEN)
 
