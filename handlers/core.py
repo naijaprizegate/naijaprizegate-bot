@@ -44,6 +44,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
         [InlineKeyboardButton("💳 Buy Tries", callback_data="buy")],
         [InlineKeyboardButton("🎁 Free Tries", callback_data="free")]
+        [InlineKeyboardButton("📊 Available Tries", callback_data="show_tries")]
     ]
 
     # 🧠 Check if called via a normal message (/start) or a callback (like "Cancel")
