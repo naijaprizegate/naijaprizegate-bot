@@ -54,6 +54,25 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 # ---------------------------------------------------------
+# Callback: Return to Start (from Cancel button)
+# ---------------------------------------------------------
+from telegram.ext import CallbackQueryHandler
+
+async def go_start_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handles Cancel button — returns user to start screen"""
+    query = update.callback_query
+    await query.answer()
+
+    # Try to delete the previous message to keep chat tidy
+    try:
+        await query.message.delete()
+    except Exception as e:
+        logger.warning(f"⚠️ Could not delete message: {e}")
+
+    # Reuse your existing start() function to show the start menu again
+    await start(update, context)
+
+# ---------------------------------------------------------
 # /help handler
 # ---------------------------------------------------------
 async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -153,3 +172,5 @@ def register_handlers(application):
     # fallback for unrecognized text
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, fallback))
 
+    # ✅ New: handle Cancel button
+    application.add_handler(CallbackQueryHandler(go_start_callback, pattern="^go_start$"))
