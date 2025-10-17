@@ -291,26 +291,47 @@ async def flutterwave_webhook(
         # ✅ Notify via Telegram (only if tg_id present)
         if tg_id:
             try:
+                from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+                from telegram.ext import CallbackQueryHandler
+                from handlers.start import start_handler  # make sure this exists
+
                 bot = Bot(token=BOT_TOKEN)
+
+                # Inline keyboard: Try Luck + Cancel
+                keyboard = [
+                    [
+                        InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck"),
+                        InlineKeyboardButton("❌ Cancel", callback_data="go_start")
+                    ]
+                ]
+                reply_markup = InlineKeyboardMarkup(keyboard)
+
+                # Send payment success message
                 await bot.send_message(
                     chat_id=tg_id,
                     text=(
-                        f"✅ Payment successful!\n\nYou’ve been credited with {credited_tries} "
-                        f"spin{'s' if credited_tries > 1 else ''}! 🎉\n\nUse /spin to try your luck."
+                        f"✅ Payment successful! 🎉\n\n"
+                        f"You’ve been credited with *{credited_tries}* spin"
+                        f"{'s' if credited_tries > 1 else ''}.\n\n"
+                        f"Click the button below to try your luck! 🍀"
                     ),
+                    parse_mode="Markdown",
+                    reply_markup=reply_markup
                 )
+
             except Exception as e:
                 logger.error(f"⚠️ Failed to send Telegram DM to {tg_id}: {e}")
 
         return {"status": "success", "tx_ref": tx_ref}
 
-    # ❌ Handle failed or incomplete payments
-    if payment:
-        payment.status = status or "failed"
-        await session.commit()
-        logger.info(f"❌ Payment {tx_ref} marked as {payment.status}")
 
-    return {"status": "failed", "tx_ref": tx_ref}
+        # ❌ Handle failed or incomplete payments
+        if payment:
+            payment.status = status or "failed"
+            await session.commit()
+            logger.info(f"❌ Payment {tx_ref} marked as {payment.status}")
+
+        return {"status": "failed", "tx_ref": tx_ref}
 
 # ------------------------------------------------------
 # Redirect: user-friendly "verifying payment" page
