@@ -43,7 +43,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
         [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
         [InlineKeyboardButton("💳 Buy Tries", callback_data="buy")],
-        [InlineKeyboardButton("🎁 Free Tries", callback_data="free")]
+        [InlineKeyboardButton("🎁 Free Tries", callback_data="free")],
         [InlineKeyboardButton("📊 Available Tries", callback_data="show_tries")]
     ]
 
