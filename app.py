@@ -141,7 +141,7 @@ async def telegram_webhook(secret: str, request: Request):
     await application.process_update(update)
     return {"ok": True}
     
-# ------------------------------------------------------
+# ------------------------------------------------------ 
 # Webhook: called by Flutterwave after payment
 # ------------------------------------------------------
 @router.post("/flw/webhook")
@@ -174,8 +174,15 @@ async def flutterwave_webhook(
         logger.error("❌ Webhook received without tx_ref")
         return {"status": "error", "message": "No tx_ref in webhook"}
 
-    # ✅ Accept both meta shapes
-    meta = data.get("meta") or data.get("meta_data") or {}
+    # ✅ Accept both meta and meta_data shapes (Flutterwave sometimes swaps them)
+    meta = (
+        data.get("meta")
+        or body.get("meta")
+        or data.get("meta_data")
+        or body.get("meta_data")
+        or {}
+    )
+
     logger.info(f"🌍 Webhook received: {body}")
     logger.info(f"📦 tx_ref={tx_ref}, status={status}, meta_keys={list(meta.keys())}")
 
@@ -203,8 +210,12 @@ async def flutterwave_webhook(
         )
         try:
             from services.payments import verify_payment
-            verified = await verify_payment(tx_ref)
-            meta2 = verified.get("data", {}).get("meta", {}) if verified else {}
+            verified = await verify_payment(tx_ref, session)  # ✅ added session here
+            meta2 = (
+                verified.get("data", {}).get("meta")
+                or verified.get("data", {}).get("meta_data")
+                or {}
+            )
             tg_id = meta2.get("tg_id")
             username = meta2.get("username", username)
             if tg_id:
@@ -300,7 +311,6 @@ async def flutterwave_webhook(
         logger.info(f"❌ Payment {tx_ref} marked as {payment.status}")
 
     return {"status": "failed", "tx_ref": tx_ref}
-
 
 # ------------------------------------------------------
 # Redirect: user-friendly "verifying payment" page
