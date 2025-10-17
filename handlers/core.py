@@ -46,12 +46,22 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🎁 Free Tries", callback_data="free")]
     ]
 
-    # Handles both /start and greeting triggers (update.message always exists here)
-    await update.message.reply_text(
-        text,
-        reply_markup=InlineKeyboardMarkup(keyboard),
-        parse_mode="MarkdownV2"
-    )
+    # 🧠 Check if called via a normal message (/start) or a callback (like "Cancel")
+    if update.message:
+        await update.message.reply_text(
+            text,
+            reply_markup=InlineKeyboardMarkup(keyboard),
+            parse_mode="MarkdownV2"
+        )
+    elif update.callback_query:
+        query = update.callback_query
+        await query.answer()
+        await query.message.reply_text(
+            text,
+            reply_markup=InlineKeyboardMarkup(keyboard),
+            parse_mode="MarkdownV2"
+        )
+
 
 # ---------------------------------------------------------
 # Callback: Return to Start (from Cancel button)
