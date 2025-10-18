@@ -2,15 +2,22 @@
 # handlers/admin.py
 # ==============================================================
 import os
+import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, filters
 from sqlalchemy import select, func
 from db import AsyncSessionLocal
 from helpers import add_tries, get_user_by_id, md_escape
-from models import Proof, User, GameState  # ✅ GameState tracks cycles & paid tries
+from models import Proof, User, GameState, GlobalCounter  # ✅ Added GlobalCounter
+
+logger = logging.getLogger(__name__)
 
 # Admin ID from environment
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
+
+# ----------------------------
+# ✅ ADMIN PANEL — MarkdownV2 Safe Version
+# ----------------------------
 
 # ----------------------------
 # Command: /admin (Main Panel)
@@ -31,6 +38,7 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
         parse_mode="MarkdownV2",
         reply_markup=keyboard
     )
+
 
 # ----------------------------
 # Command: /pending_proofs
@@ -59,9 +67,7 @@ async def pending_proofs(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     for proof in proofs:
         user = await get_user_by_id(proof.user_id)
-        user_name = md_escape(
-            user.username or user.first_name if user else str(proof.user_id)
-        )
+        user_name = md_escape(user.username or user.first_name if user else str(proof.user_id))
 
         caption = (
             f"*Pending Proof*\n"
@@ -83,8 +89,9 @@ async def pending_proofs(update: Update, context: ContextTypes.DEFAULT_TYPE):
             reply_markup=keyboard
         )
 
+
 # ----------------------------
-# Callback: Approve / Reject
+# Callback: Approve / Reject / Menu Actions
 # ----------------------------
 async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle Approve/Reject and menu clicks"""
@@ -93,24 +100,23 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
 
     if user_id != ADMIN_USER_ID:
-        return await query.edit_message_caption(caption="❌ Access denied\\.", parse_mode="MarkdownV2")
+        return await query.edit_message_caption(
+            caption="❌ Access denied\\.", parse_mode="MarkdownV2"
+        )
 
     # --- Handle main menu clicks ---
     if query.data.startswith("admin_menu:"):
         action = query.data.split(":")[1]
 
+        # 🗂 Pending proofs
         if action == "pending_proofs":
-            # Replace message with pending proofs list
             await pending_proofs(update, context)
 
+        # 📊 Stats
         elif action == "stats":
-            # ✅ Fetch stats from DB
             from models import GlobalCounter, GameState
             async with AsyncSessionLocal() as session:
-                # GlobalCounter (lifetime total paid tries)
                 gc = await session.get(GlobalCounter, 1)
-
-                # GameState (cycle-based tracking)
                 gs = await session.get(GameState, 1)
 
             lifetime_paid = gc.paid_tries_total if gc else 0
@@ -119,9 +125,9 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             stats_text = (
                 "📊 *Bot Stats*\n\n"
-                f"💰 Lifetime Paid Tries: *{lifetime_paid}*\n"
-                f"🔄 Current Cycle: *{current_cycle}*\n"
-                f"🎯 Paid Tries (this cycle): *{paid_this_cycle}*"
+                f"💰 *Lifetime Paid Tries:* {lifetime_paid}\n"
+                f"🔄 *Current Cycle:* {current_cycle}\n"
+                f"🎯 *Paid Tries \\(this cycle\\):* {paid_this_cycle}"
             )
 
             await query.edit_message_text(
@@ -129,24 +135,29 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 parse_mode="MarkdownV2"
             )
 
+        # 🔍 User search placeholder
         elif action == "user_search":
             await query.edit_message_text(
-                "👤 User search coming soon...",
+                "👤 User search coming soon\\...",
                 parse_mode="MarkdownV2"
             )
         return
 
-    # --- Handle approve/reject proof ---
+    # --- Handle approve/reject proof actions ---
     try:
         action, proof_id = query.data.split(":")
         proof_id = int(proof_id)
     except Exception:
-        return await query.edit_message_caption(caption="⚠️ Invalid callback data\\.", parse_mode="MarkdownV2")
+        return await query.edit_message_caption(
+            caption="⚠️ Invalid callback data\\.", parse_mode="MarkdownV2"
+        )
 
     async with AsyncSessionLocal() as session:
         proof = await session.get(Proof, proof_id)
         if not proof or proof.status != "pending":
-            return await query.edit_message_caption(caption="⚠️ Proof already processed\\.", parse_mode="MarkdownV2")
+            return await query.edit_message_caption(
+                caption="⚠️ Proof already processed\\.", parse_mode="MarkdownV2"
+            )
 
         if action == "admin_approve":
             proof.status = "approved"
@@ -159,10 +170,12 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await session.commit()
         await query.edit_message_caption(caption=caption, parse_mode="MarkdownV2")
 
+
 # ----------------------------
-# User Search (text input)
+# User Search Handler
 # ----------------------------
 async def user_search_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle user text input for search"""
     if update.effective_user.id != ADMIN_USER_ID or not context.user_data.get("awaiting_user_search"):
         return
 
@@ -170,21 +183,21 @@ async def user_search_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
     async with AsyncSessionLocal() as session:
         user = None
         if query_text.isdigit():
-            user = await session.get(User, query_text)  # UUID search would need explicit cast
+            user = await session.get(User, query_text)
         else:
             result = await session.execute(select(User).where(User.username == query_text))
             user = result.scalars().first()
 
     if not user:
-        await update.message.reply_text("⚠️ No user found.", parse_mode="MarkdownV2")
+        await update.message.reply_text("⚠️ No user found\\.", parse_mode="MarkdownV2")
     else:
         reply = (
             f"👤 *User Info*\n"
-            f"🆔 UUID: `{user.id}`\n"
+            f"🆔 UUID: `{md_escape(str(user.id))}`\n"
             f"📛 Username: {md_escape(user.username or '-')}\n"
             f"🎲 Paid Tries: {user.tries_paid}\n"
             f"🎁 Bonus Tries: {user.tries_bonus}\n"
-            f"👥 Referred By: {user.referred_by or 'None'}"
+            f"👥 Referred By: {md_escape(user.referred_by or 'None')}"
         )
         await update.message.reply_text(reply, parse_mode="MarkdownV2")
 
