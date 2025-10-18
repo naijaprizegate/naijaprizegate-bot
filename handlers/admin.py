@@ -173,8 +173,19 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         # ⬅️ Back to main menu
         elif action == "main":
-            await admin_panel(update, context)
-        return
+            # Safely rebuild admin panel inside a callback
+            keyboard = InlineKeyboardMarkup([
+                [InlineKeyboardButton("📂 Pending Proofs", callback_data="admin_menu:pending_proofs")],
+                [InlineKeyboardButton("📊 Stats", callback_data="admin_menu:stats")],
+                [InlineKeyboardButton("👤 User Search", callback_data="admin_menu:user_search")],
+            ])
+
+            await query.edit_message_text(
+                "⚙️ *Admin Panel*\nChoose an action:",
+                parse_mode="MarkdownV2",
+                reply_markup=keyboard
+            )
+            return
 
     # --- Confirmation step for reset cycle ---
     if query.data.startswith("admin_confirm:"):
