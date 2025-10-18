@@ -44,18 +44,19 @@ class GlobalCounter(Base):
     paid_tries_total = Column(Integer, default=0)
 
 
-# ----------------------
+# ---------------------- 
 # 2b. Game State
 # ----------------------
 class GameState(Base):
     __tablename__ = "game_state"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    current_cycle = Column(Integer, default=1, nullable=False)  # jackpot cycle #
-    paid_tries_this_cycle = Column(Integer, default=0, nullable=False)
+    current_cycle = Column(Integer, default=1, nullable=False)  # 🌀 Jackpot cycle number
+    paid_tries_this_cycle = Column(Integer, default=0, nullable=False)  # 🎟️ Paid tries in current cycle
+    lifetime_paid_tries = Column(Integer, default=0, nullable=False)  # 🌍 Total paid tries since launch
+
     created_at = Column(TIMESTAMP, server_default=func.now())
     updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
-
 
 # ----------------------
 # 3. Plays
