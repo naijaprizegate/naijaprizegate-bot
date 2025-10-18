@@ -22,7 +22,7 @@ from logger import tg_error_handler, logger
 from handlers import core, payments, free, admin, tryluck
 from tasks import start_background_tasks, stop_background_tasks
 from db import init_game_state, get_async_session, get_session
-from models import Payment, User
+from models import Payment, User, GameState
 from helpers import get_or_create_user, add_tries
 from logging_setup import logger
 
@@ -38,6 +38,18 @@ from services.payments import (
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
+
+# -------------------------------------------------
+# Ensure GameState row exists
+# -------------------------------------------------
+async def ensure_game_state_exists():
+    async with get_async_session() as session:
+        gs = await session.get(GameState, 1)
+        if not gs:
+            gs = GameState(id=1)
+            session.add(gs)
+            await session.commit()
+            logger.info("✅ Default GameState(id=1) created")
 
 # -------------------------------------------------
 # Environment setup
@@ -80,6 +92,9 @@ async def on_startup():
 
     # Ensure GameState & GlobalCounter rows exist
     await init_game_state()
+
+    # Ensure GameState(id=1) exists explicitly
+    await ensure_game_state_exists()
 
     # Telegram Bot Application
     application = Application.builder().token(BOT_TOKEN).build()
