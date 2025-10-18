@@ -1,7 +1,6 @@
 import os
 import psycopg2
 
-
 def main():
     database_url = os.environ.get("DATABASE_URL")
     if not database_url:
@@ -84,7 +83,7 @@ def main():
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_flw_tx_id ON payments(flw_tx_id);")
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_tg_id ON payments(tg_id);")
 
-        # ✅ Migration fix: convert flw_tx_id to TEXT if still numeric
+        # ✅ Migration fix: ensure flw_tx_id is TEXT
         cur.execute("""
         DO $$
         BEGIN
@@ -99,7 +98,7 @@ def main():
         END$$;
         """)
 
-        # ✅ Migration: rename old 'tries' to 'credited_tries' if needed
+        # ✅ Rename 'tries' → 'credited_tries' if needed
         cur.execute("""
         DO $$
         BEGIN
@@ -111,7 +110,6 @@ def main():
             END IF;
         END$$;
         """)
-
         print("✅ payments table ensured (with VARCHAR flw_tx_id)")
 
         # ----------------------
@@ -150,11 +148,30 @@ def main():
             id SERIAL PRIMARY KEY,
             current_cycle INT DEFAULT 1,
             paid_tries_this_cycle INT DEFAULT 0,
+            lifetime_paid_tries INT DEFAULT 0,
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
-        print("✅ game_state table ensured")
+        print("✅ game_state table ensured (with lifetime_paid_tries)")
+
+        # ✅ Add lifetime_paid_tries column if missing
+        cur.execute("""
+        DO $$
+        BEGIN
+            IF NOT EXISTS (
+                SELECT 1 FROM information_schema.columns
+                WHERE table_name='game_state' AND column_name='lifetime_paid_tries'
+            ) THEN
+                ALTER TABLE game_state ADD COLUMN lifetime_paid_tries INT DEFAULT 0;
+                RAISE NOTICE '🆕 Added column lifetime_paid_tries to game_state';
+            END IF;
+        END$$;
+        """)
+
+        # ✅ Ensure at least one GameState row exists
+        cur.execute("INSERT INTO game_state (id) VALUES (1) ON CONFLICT (id) DO NOTHING;")
+        print("✅ ensured default game_state row (id=1)")
 
         conn.commit()
         print("🎉 Migration completed successfully!")
