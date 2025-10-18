@@ -2,12 +2,16 @@
 # helpers.py
 # ===============================================================
 import html
+import logging
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
-from models import User, GlobalCounter, Play
+from models import User, GameState, GlobalCounter, Play  # ✅ Ensure these exist and are imported
 
+logger = logging.getLogger(__name__)
 
+# -------------------------------------------------
 # Escape MarkdownV2 for Telegram messages
+# -------------------------------------------------
 def md_escape(text: str) -> str:
     escape_chars = r"_*[]()~`>#+-=|{}.!"
     return "".join(f"\\{c}" if c in escape_chars else c for c in text)
@@ -29,70 +33,75 @@ async def get_or_create_user(
     user = result.scalar_one_or_none()
 
     if user:
-        # update username if changed
         if username and user.username != username:
             user.username = username
             await session.commit()
         return user
 
-    # Create new user
+    # New user
     user = User(tg_id=tg_id, username=username)
     session.add(user)
     await session.commit()
-    await session.refresh(user)  # ensures ID and defaults are loaded
+    await session.refresh(user)
     return user
 
 
 # -------------------------------------------------
 # Add tries (paid or bonus)
 # -------------------------------------------------
-
 async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = True) -> User:
     """
     Increment user's tries (paid or bonus) inside an active session.
     Also updates GameState and GlobalCounter for paid tries.
     NOTE: This function does not commit — caller must handle commit.
     """
-    import logging
-    logger = logging.getLogger(__name__)
-
     logger.info(f"🌀 Adding {count} {'paid' if paid else 'bonus'} tries → user_id={user.id}")
 
     if paid:
         user.tries_paid = (user.tries_paid or 0) + count
 
-        # ✅ Update global + cycle counters
+        # ✅ Ensure GlobalCounter exists
         gc = await session.get(GlobalCounter, 1)
-        gs = await session.get(GameState, 1)
-
-        if gc:
-            gc.paid_tries_total = (gc.paid_tries_total or 0) + count
+        if not gc:
+            gc = GlobalCounter(id=1, paid_tries_total=0)
             session.add(gc)
+            await session.flush()
 
-        if gs:
-            gs.paid_tries_this_cycle = (gs.paid_tries_this_cycle or 0) + count
+        # ✅ Ensure GameState exists
+        gs = await session.get(GameState, 1)
+        if not gs:
+            gs = GameState(id=1, current_cycle=1, paid_tries_this_cycle=0, lifetime_paid_tries=0)
             session.add(gs)
+            await session.flush()
+
+        # ✅ Update counters
+        gc.paid_tries_total = (gc.paid_tries_total or 0) + count
+        gs.paid_tries_this_cycle = (gs.paid_tries_this_cycle or 0) + count
+        gs.lifetime_paid_tries = (gs.lifetime_paid_tries or 0) + count
+
+        session.add_all([gc, gs])
+
+        logger.info(
+            f"📊 Updated GameState → lifetime={gs.lifetime_paid_tries}, cycle={gs.paid_tries_this_cycle}"
+        )
 
     else:
         user.tries_bonus = (user.tries_bonus or 0) + count
+        logger.info(f"🎁 Added {count} bonus tries → user_id={user.id}")
 
-    session.add(user)  # ensure user is tracked
-    await session.flush()       # stage changes
-    await session.refresh(user) # refresh values from DB
+    session.add(user)
+    await session.flush()
+    await session.refresh(user)
 
     logger.info(
-        f"✅ User {user.id} now has paid={user.tries_paid}, bonus={user.tries_bonus} after adding {count}"
+        f"✅ User {user.id} now has paid={user.tries_paid}, bonus={user.tries_bonus}"
     )
     return user
+
 
 # -------------------------------------------------
 # Consume one try (bonus first, then paid)
 # -------------------------------------------------
-from sqlalchemy.ext.asyncio import AsyncSession
-import logging
-
-logger = logging.getLogger(__name__)
-
 async def consume_try(session: AsyncSession, user: User):
     """
     Deduct one try. Uses bonus first, then paid.
@@ -102,7 +111,6 @@ async def consume_try(session: AsyncSession, user: User):
       - None if no tries left
     NOTE: This function does not commit — caller must handle commit.
     """
-
     logger.info(
         f"🎲 Attempting to consume try for user_id={user.id} "
         f"(paid={user.tries_paid}, bonus={user.tries_bonus})"
@@ -111,17 +119,13 @@ async def consume_try(session: AsyncSession, user: User):
     if user.tries_bonus and user.tries_bonus > 0:
         user.tries_bonus -= 1
         await session.flush()
-        logger.info(
-            f"➖ Consumed 1 bonus try → user_id={user.id}, remaining bonus={user.tries_bonus}"
-        )
+        logger.info(f"➖ Consumed 1 bonus try → user_id={user.id}, remaining bonus={user.tries_bonus}")
         return "bonus"
 
     if user.tries_paid and user.tries_paid > 0:
         user.tries_paid -= 1
         await session.flush()
-        logger.info(
-            f"➖ Consumed 1 paid try → user_id={user.id}, remaining paid={user.tries_paid}"
-        )
+        logger.info(f"➖ Consumed 1 paid try → user_id={user.id}, remaining paid={user.tries_paid}")
         return "paid"
 
     logger.warning(f"⚠️ No tries left to consume for user_id={user.id}")
@@ -140,10 +144,6 @@ async def get_user_by_id(session: AsyncSession, user_id) -> User | None:
 # Record a play
 # -------------------------------------------------
 async def record_play(session: AsyncSession, user: User, result: str):
-    import logging
-    logger = logging.getLogger(__name__)
-
-
     play = Play(user_id=user.id, result=result)
     session.add(play)
     await session.commit()
@@ -160,9 +160,5 @@ async def record_play(session: AsyncSession, user: User, result: str):
 # Check if a user is admin
 # -------------------------------------------------
 def is_admin(user: User) -> bool:
-    """
-    Return True if the user is marked as admin.
-    Assumes the User model has an `is_admin` boolean column.
-    """
+    """Return True if the user is marked as admin."""
     return getattr(user, "is_admin", False)
-
