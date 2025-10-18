@@ -1,6 +1,6 @@
-# =============================================================
+# ==============================================================
 # handlers/admin.py
-# =============================================================
+# ==============================================================
 import os
 import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
@@ -100,7 +100,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     user_id = update.effective_user.id
 
-    # --- Helper: Safe edit (handles caption/text safely) ---
+        # --- Helper: Safe edit (handles caption/text safely) ---
     async def safe_edit(query, text, **kwargs):
         try:
             if query.message.photo:
@@ -218,14 +218,24 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # 👇 Instant popup feedback
         await query.answer("✅ Cycle reset successfully!", show_alert=True)
 
+        # Escape MarkdownV2-sensitive characters
+        safe_reset_time = (
+            reset_time
+            .replace("-", "\\-")
+            .replace(":", "\\:")
+            .replace(".", "\\.")
+        )
+
+        # Now send safely
         return await safe_edit(
             query,
-            f"🔁 *Cycle Reset Successfully!*\n\n"
+            f"🔁 *Cycle Reset Successfully\\!*\n\n"
             f"🆕 *New Cycle:* {new_cycle}\n"
-            f"🕒 *Reset Time:* {reset_time}\n\n"
+            f"🕒 *Reset Time:* {safe_reset_time}\n\n"
             "Let the new jackpot hunt begin 🚀",
             parse_mode="MarkdownV2"
         )
+
 
     # --- Handle approve/reject proof actions ---
     try:
@@ -295,4 +305,3 @@ def register_handlers(application):
     application.add_handler(CommandHandler("pending_proofs", pending_proofs))
     application.add_handler(CallbackQueryHandler(admin_callback, pattern="^admin_"))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, user_search_handler))
-
