@@ -9,6 +9,7 @@ from telegram.ext import ContextTypes, CallbackQueryHandler, CommandHandler
 from helpers import md_escape, get_or_create_user
 from services.tryluck import spin_logic
 from db import get_async_session
+from models import GameState  # ✅ added to handle cycle reset
 
 logger = logging.getLogger(__name__)
 
@@ -51,6 +52,15 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     f"tg_id={user.tg_id}, paid={user.tries_paid}, bonus={user.tries_bonus}"
                 )
 
+                # ✅ If jackpot/win: reset the game cycle
+                if outcome == "win":
+                    gs = await session.get(GameState, 1)
+                    if gs:
+                        gs.current_cycle += 1
+                        gs.paid_tries_this_cycle = 0
+                        await session.commit()
+                        logger.info(f"🔁 New game cycle started: {gs.current_cycle}")
+
         except Exception as e:
             logger.exception(f"❌ Error during /tryluck for tg_id={tg_user.id}: {e}")
             outcome = "error"
@@ -86,8 +96,8 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         final_text = (
             f"🏆 *Congratulations {md_escape(tg_user.first_name)}!* 🎉\n\n"
             f"{md_escape('You just won the jackpot!')}\n\n"
-            f"{md_escape('Your arsenal is loaded, your chances just went way up ⚡')}\n"
-            f"{md_escape('👉 Don’t keep luck waiting — hit *Try Luck* now and chase that jackpot 🏆🔥')}"
+            f"{md_escape('The cycle has been reset — a new round begins now 🔁')}\n"
+            f"{md_escape('👉 Don’t keep luck waiting — hit *Try Luck* again and chase the next jackpot 🏆🔥')}"
         )
     else:
         final_frame = " ".join(random.choice(spinner_emojis) for _ in range(num_reels))
