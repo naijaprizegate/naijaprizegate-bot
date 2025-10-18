@@ -5,8 +5,9 @@ import os
 import logging
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
-from models import Play, User
+from models import Play, User, GameState  # ✅ include GameState
 from helpers import consume_try  # ✅ centralize try deduction
+from db import get_async_session  # ✅ for safety (if needed)
 
 logger = logging.getLogger(__name__)
 
@@ -18,7 +19,7 @@ WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "14600"))
 async def consume_and_spin(user: User, session: AsyncSession) -> dict:
     """
     Deduct a try (bonus first, else paid) via helpers.consume_try,
-    update global counter if paid, decide win/lose, insert Play row,
+    update global counter + GameState if paid, decide win/lose, insert Play row,
     and return structured result.
     NOTE: This function does not commit — caller must commit.
     """
@@ -51,11 +52,34 @@ async def consume_and_spin(user: User, session: AsyncSession) -> dict:
         )
         new_total = counter_row.scalar()
 
+        # ✅ Also increment GameState counters
+        gs = await session.get(GameState, 1)
+        if not gs:
+            # create if missing
+            gs = GameState(id=1)
+            session.add(gs)
+            await session.flush()
+
+        gs.paid_tries_this_cycle += 1
+        gs.lifetime_paid_tries += 1
+
+        logger.info(
+            f"🏆 Updated GameState → cycle={gs.current_cycle}, "
+            f"paid_tries_this_cycle={gs.paid_tries_this_cycle}, "
+            f"lifetime_paid_tries={gs.lifetime_paid_tries}"
+        )
+
+        # Check if WIN_THRESHOLD reached
         if new_total is not None and new_total >= WIN_THRESHOLD:
-            # Reset counter and mark user as winner
+            # Reset counter and start new cycle
             await session.execute(text("UPDATE global_counter SET paid_tries_total = 0 WHERE id = 1"))
+
+            gs.current_cycle += 1
+            gs.paid_tries_this_cycle = 0  # reset for new cycle
             result = "win"
             is_winner = True
+
+            logger.info(f"🎉 Jackpot triggered! Starting new cycle → #{gs.current_cycle}")
 
     # Insert play record (timestamp handled by DB default)
     play = Play(user_id=user.id, result=result)
