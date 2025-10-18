@@ -84,23 +84,57 @@ async def go_start_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await start(update, context)
 
 # ---------------------------------------------------------
-# /help handler
+# /help handler (auto-updates message if possible)
 # ---------------------------------------------------------
 async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+
     text = (
         "🆘 *Need a quick tour?*\n\n"
         "*NaijaPrizeGate* 🎰 is your gateway to *daily wins* 💸\n\n"
         "Here’s your control panel:\n\n"
         "• `/start` → Begin or refresh menu\n"
         "• ✨ *Try Luck* → Spin the wheel, feel the thrill\n"
-        "• 💳 *Buy* → Load up paid spins & chase the jackpot\n"
-        "• 🎁 *Free* → Earn bonus spins \\(invite friends \\= more chances\\)\n"
-        "• 📊 `/mytries` → Track your spin balance\n"
+        "• 💳 *Buy Tries* → Load up paid spins & chase the jackpot\n"
+        "• 🎁 *Free Tries* → Earn bonus spins \\(invite friends \\= more chances\\)\n"
+        "• 📊 `Available Tries` → Track your spin balance\n"
         "• 🏆 *Jackpot* → Every spin moves us closer to the big win 🔥\n\n"
         "👉 Don’t just stand at the gate… *spin your way through* 🚀\n"
         "Hit it and be the next winner 🎉"
     )
-    await update.message.reply_text(text, parse_mode="MarkdownV2")
+
+    keyboard = [
+        [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
+        [InlineKeyboardButton("💳 Buy Tries", callback_data="buy")],
+        [InlineKeyboardButton("🎁 Free Tries", callback_data="free")],
+        [InlineKeyboardButton("📊 Available Tries", callback_data="show_tries")]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    # 🧠 Detect whether it came from a message or a callback query
+    if update.callback_query:
+        query = update.callback_query
+        await query.answer()
+        try:
+            # 🧹 Edit existing message for a cleaner UX
+            await query.message.edit_text(
+                text=text,
+                reply_markup=reply_markup,
+                parse_mode="MarkdownV2"
+            )
+        except Exception:
+            # fallback if message can’t be edited (e.g., old message)
+            await query.message.reply_text(
+                text,
+                reply_markup=reply_markup,
+                parse_mode="MarkdownV2"
+            )
+    elif update.message:
+        await update.message.reply_text(
+            text,
+            reply_markup=reply_markup,
+            parse_mode="MarkdownV2"
+        )
 
 # ---------------------------------------------------------
 # /mytries handler
@@ -146,6 +180,7 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
         [InlineKeyboardButton("💳 Buy Tries", callback_data="buy")],
         [InlineKeyboardButton("🎁 Free Tries", callback_data="free")],
+        [InlineKeyboardButton("📊 Available Tries", callback_data="show_tries")]
     ]
 
     if update.message:  # User typed something
