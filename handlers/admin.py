@@ -9,6 +9,7 @@ from sqlalchemy import select, func
 from db import AsyncSessionLocal
 from helpers import add_tries, get_user_by_id, md_escape
 from models import Proof, User, GameState, GlobalCounter  # ✅ Added GlobalCounter
+from datetime import datetime, timezone
 
 logger = logging.getLogger(__name__)
 
