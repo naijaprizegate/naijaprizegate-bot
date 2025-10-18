@@ -144,7 +144,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             else:
                 since_text = "Unknown"
 
-            stats_text = (
+            stats_text = md_escape(
                 "📊 *Bot Stats*\n\n"
                 f"💰 *Lifetime Paid Tries:* {lifetime_paid}\n"
                 f"💎 *Lifetime Paid Tries (GameState):* {lifetime_paid_tries}\n"
