@@ -100,7 +100,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     user_id = update.effective_user.id
 
-        # --- Helper: Safe edit (handles caption/text safely) ---
+    # --- Helper: Safe edit (handles caption/text safely) ---
     async def safe_edit(query, text, **kwargs):
         try:
             if query.message.photo:
@@ -114,9 +114,16 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             except Exception as e2:
                 print(f"[FATAL] Both edit attempts failed: {e2}")
 
+    # --- Helper: MarkdownV2 escape ---
+    def mdv2_escape(text: str) -> str:
+        """Escapes all special MarkdownV2 characters."""
+        for ch in r'_*[]()~`>#+-=|{}.!':
+            text = text.replace(ch, "\\" + ch)
+        return text
+
     # --- Access control ---
     if user_id != ADMIN_USER_ID:
-        return await safe_edit(query, "❌ Access denied.", parse_mode="MarkdownV2")
+        return await safe_edit(query, "❌ Access denied\\.", parse_mode="MarkdownV2")
 
     # --- Handle admin menu navigation ---
     if query.data.startswith("admin_menu:"):
@@ -149,7 +156,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             else:
                 since_text = "Unknown"
 
-            stats_text = md_escape(
+            stats_text = mdv2_escape(
                 "📊 *Bot Stats*\n\n"
                 f"💰 Lifetime Paid Tries: {lifetime_paid}\n"
                 f"💎 Lifetime Paid Tries (GameState): {lifetime_paid_tries}\n"
@@ -167,7 +174,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         # 👤 User search placeholder
         elif action == "user_search":
-            return await safe_edit(query, "👤 User search coming soon...", parse_mode="MarkdownV2")
+            return await safe_edit(query, "👤 User search coming soon\\...", parse_mode="MarkdownV2")
 
         # ⬅️ Back to main menu
         elif action == "main":
@@ -206,7 +213,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         async with AsyncSessionLocal() as session:
             gs = await session.get(GameState, 1)
             if not gs:
-                return await safe_edit(query, "⚠️ GameState not found.", parse_mode="MarkdownV2")
+                return await safe_edit(query, "⚠️ GameState not found\\.", parse_mode="MarkdownV2")
 
             gs.current_cycle += 1
             gs.paid_tries_this_cycle = 0
@@ -218,13 +225,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # 👇 Instant popup feedback
         await query.answer("✅ Cycle reset successfully!", show_alert=True)
 
-        # Escape MarkdownV2-sensitive characters
-        safe_reset_time = (
-            reset_time
-            .replace("-", "\\-")
-            .replace(":", "\\:")
-            .replace(".", "\\.")
-        )
+        safe_reset_time = mdv2_escape(reset_time)
 
         # Now send safely
         return await safe_edit(
@@ -236,28 +237,27 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             parse_mode="MarkdownV2"
         )
 
-
     # --- Handle approve/reject proof actions ---
     try:
         action, proof_id = query.data.split(":")
         proof_id = int(proof_id)
     except Exception:
-        return await safe_edit(query, "⚠️ Invalid callback data.", parse_mode="MarkdownV2")
+        return await safe_edit(query, "⚠️ Invalid callback data\\.", parse_mode="MarkdownV2")
 
     async with AsyncSessionLocal() as session:
         proof = await session.get(Proof, proof_id)
         if not proof or proof.status != "pending":
-            return await safe_edit(query, "⚠️ Proof already processed.", parse_mode="MarkdownV2")
+            return await safe_edit(query, "⚠️ Proof already processed\\.", parse_mode="MarkdownV2")
 
         if action == "admin_approve":
             proof.status = "approved"
             await add_tries(proof.user_id, 1, paid=False)
-            caption = "✅ Proof approved and bonus try added!"
-            await query.answer("✅ Proof approved!")  # popup feedback
+            caption = "✅ Proof approved and bonus try added\\!"
+            await query.answer("✅ Proof approved!", show_alert=False)
         else:
             proof.status = "rejected"
-            caption = "❌ Proof rejected."
-            await query.answer("🚫 Proof rejected.")  # popup feedback
+            caption = "❌ Proof rejected\\."
+            await query.answer("🚫 Proof rejected.", show_alert=False)
 
         await session.commit()
 
@@ -305,3 +305,4 @@ def register_handlers(application):
     application.add_handler(CommandHandler("pending_proofs", pending_proofs))
     application.add_handler(CallbackQueryHandler(admin_callback, pattern="^admin_"))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, user_search_handler))
+
