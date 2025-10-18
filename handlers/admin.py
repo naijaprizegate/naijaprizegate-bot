@@ -115,6 +115,9 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # 📊 Stats
         elif action == "stats":
             from models import GlobalCounter, GameState
+            from datetime import datetime, timezone
+            from telegram import InlineKeyboardMarkup, InlineKeyboardButton
+
             async with AsyncSessionLocal() as session:
                 gc = await session.get(GlobalCounter, 1)
                 gs = await session.get(GameState, 1)
@@ -122,25 +125,103 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             lifetime_paid = gc.paid_tries_total if gc else 0
             current_cycle = gs.current_cycle if gs else 1
             paid_this_cycle = gs.paid_tries_this_cycle if gs else 0
+            lifetime_paid_tries = getattr(gs, "lifetime_paid_tries", 0)
+            created_at = gs.created_at if gs else None
+
+            # 🕒 Time since cycle start
+            if created_at:
+                now = datetime.now(timezone.utc)
+                diff = now - created_at
+                hours = diff.total_seconds() // 3600
+                days = int(hours // 24)
+                hours = int(hours % 24)
+                if days > 0:
+                    since_text = f"{days}d {hours}h ago"
+                elif hours > 0:
+                    since_text = f"{hours}h ago"
+                else:
+                    since_text = "Less than 1h ago"
+            else:
+                since_text = "Unknown"
 
             stats_text = (
                 "📊 *Bot Stats*\n\n"
                 f"💰 *Lifetime Paid Tries:* {lifetime_paid}\n"
+                f"💎 *Lifetime Paid Tries (GameState):* {lifetime_paid_tries}\n"
                 f"🔄 *Current Cycle:* {current_cycle}\n"
-                f"🎯 *Paid Tries \\(this cycle\\):* {paid_this_cycle}"
+                f"🎯 *Paid Tries (this cycle):* {paid_this_cycle}\n"
+                f"🕒 *Cycle Started:* {since_text}"
             )
+
+            keyboard = InlineKeyboardMarkup([
+                [InlineKeyboardButton("🔁 Reset Cycle", callback_data="admin_confirm:reset_cycle")],
+                [InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")]
+            ])
 
             await query.edit_message_text(
                 stats_text,
-                parse_mode="MarkdownV2"
+                parse_mode="MarkdownV2",
+                reply_markup=keyboard
             )
 
-        # 🔍 User search placeholder
+        # 👤 User search placeholder
         elif action == "user_search":
             await query.edit_message_text(
                 "👤 User search coming soon\\...",
                 parse_mode="MarkdownV2"
             )
+
+        # ⬅️ Back to main menu
+        elif action == "main":
+            await admin_panel(update, context)
+        return
+
+    # --- Confirmation step for reset cycle ---
+    if query.data.startswith("admin_confirm:"):
+        action = query.data.split(":")[1]
+        if action == "reset_cycle":
+            keyboard = InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton("✅ Yes, Reset", callback_data="admin_action:reset_cycle"),
+                    InlineKeyboardButton("❌ Cancel", callback_data="admin_menu:stats")
+                ]
+            ])
+            return await query.edit_message_text(
+                "⚠️ *Are you sure you want to reset the current cycle?*\n"
+                "_This will increment the cycle and reset paid tries count._",
+                parse_mode="MarkdownV2",
+                reply_markup=keyboard
+            )
+
+    # --- Handle reset cycle action ---
+    if query.data == "admin_action:reset_cycle":
+        from models import GameState
+        from datetime import datetime
+
+        async with AsyncSessionLocal() as session:
+            gs = await session.get(GameState, 1)
+            if not gs:
+                return await query.edit_message_text(
+                    "⚠️ GameState not found\\.", parse_mode="MarkdownV2"
+                )
+
+            # Reset logic
+            gs.current_cycle += 1
+            gs.paid_tries_this_cycle = 0
+            gs.created_at = datetime.utcnow()
+
+            new_cycle = gs.current_cycle
+            reset_time = gs.created_at.strftime("%Y-%m-%d %H:%M:%S UTC")
+
+            await session.commit()
+
+        await query.edit_message_text(
+            "🔁 *Cycle Reset Successfully\\!*\n\n"
+            f"🆕 *New Cycle:* {new_cycle}\n"
+            f"🕒 *Reset Time:* {reset_time}\n\n"
+            "Let the new jackpot hunt begin 🚀",
+            parse_mode="MarkdownV2"
+        )
         return
 
     # --- Handle approve/reject proof actions ---
