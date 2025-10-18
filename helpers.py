@@ -46,9 +46,11 @@ async def get_or_create_user(
 # -------------------------------------------------
 # Add tries (paid or bonus)
 # -------------------------------------------------
+
 async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = True) -> User:
     """
     Increment user's tries (paid or bonus) inside an active session.
+    Also updates GameState and GlobalCounter for paid tries.
     NOTE: This function does not commit — caller must handle commit.
     """
     import logging
@@ -58,12 +60,25 @@ async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = 
 
     if paid:
         user.tries_paid = (user.tries_paid or 0) + count
+
+        # ✅ Update global + cycle counters
+        gc = await session.get(GlobalCounter, 1)
+        gs = await session.get(GameState, 1)
+
+        if gc:
+            gc.paid_tries_total = (gc.paid_tries_total or 0) + count
+            session.add(gc)
+
+        if gs:
+            gs.paid_tries_this_cycle = (gs.paid_tries_this_cycle or 0) + count
+            session.add(gs)
+
     else:
         user.tries_bonus = (user.tries_bonus or 0) + count
 
     session.add(user)  # ensure user is tracked
-    await session.flush()      # stage changes
-    await session.refresh(user)  # refresh values from DB
+    await session.flush()       # stage changes
+    await session.refresh(user) # refresh values from DB
 
     logger.info(
         f"✅ User {user.id} now has paid={user.tries_paid}, bonus={user.tries_bonus} after adding {count}"
