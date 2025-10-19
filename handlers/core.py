@@ -29,12 +29,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"👋 Hey *{md_escape(user.first_name)}*\\!\n\n"
         "Welcome to *NaijaPrizeGate* 🎰\n\n"
         "Your golden ticket to daily wins 💸🔥\n\n"
-        "You can become the *winner* of an *iPhone 16 Pro Max*\\!\n\n"
-        "Here’s how you unlock the gate:\n"
-        "✨ `Try Luck` → Spin now & feel the thrill\n"
-        "💳 `Buy` → Load up more spins \\(paid tries\\)\n"
-        "🎁 `Free` → Earn bonus spins \\(invite & win\\)\n"
-        "📊 `/mytries` → See your balance of chances\n\n"
+        "You can become the *winner* of *iPhone 16 Pro Max and iPhone 17 Pro Max *\\!\n\n"
         "⚡ Every spin counts towards the *Jackpot*\n"
         "…and someone *will* take it home 👑\n\n"
         "Ready\\? 🎯 Tap *Try Luck* and let’s roll\\!"
@@ -220,3 +215,4 @@ def register_handlers(application):
 
     # ✅ New: handle Cancel button
     application.add_handler(CallbackQueryHandler(go_start_callback, pattern="^go_start$"))
+
