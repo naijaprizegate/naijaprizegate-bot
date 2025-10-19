@@ -26,7 +26,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # TODO: handle referral (your get_or_create_user doesn’t take referred_by currently)
 
     text = (
-        f"👋 Hey *{mdv2_escape(user.first_name)}*\\!\n\n"
+        f"👋 Hey *{md_escape(user.first_name)}*\\!\n\n"
         "Welcome to *NaijaPrizeGate* 🎰\n\n"
         "Your golden ticket to daily wins 💸🔥\n\n"
         "You can become the *winner* of:\n\n"
