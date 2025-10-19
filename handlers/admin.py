@@ -95,10 +95,13 @@ async def pending_proofs(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ----------------------------
 import re
 
-# MarkdownV2 escape helper
 def mdv2_escape(text: str) -> str:
-    """Escapes MarkdownV2 special characters safely."""
-    return re.sub(r'([_*\[\]()~`>#+\-=|{}.!\\])', r'\\\1', text)
+    """
+    Escapes all special characters for MarkdownV2 formatting.
+    Covers underscores, asterisks, brackets, parentheses, tilde, backtick,
+    greater/less, equals, dash, pipe, dot, exclamation, and backslash.
+    """
+    return re.sub(r'([_\*\[\]\(\)~`>#+\-=|{}\.!\\])', r'\\\1', text)
 
 
 async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -233,7 +236,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "Let the new jackpot hunt begin 🚀"
         )
 
-        return await safe_edit(query, reset_msg, parse_mode="MarkdownV2")
+        await safe_edit(query, reset_msg, parse_mode="MarkdownV2")
 
     # --- Handle approve/reject proof actions ---
     try:
