@@ -5,6 +5,7 @@ import asyncio
 import random
 import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram.ext import CommandHandler, CallbackQueryHandler, ContextTypes
 from telegram.ext import ContextTypes
 from helpers import get_or_create_user
 from services.tryluck import spin_logic
