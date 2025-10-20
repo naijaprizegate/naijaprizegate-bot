@@ -98,12 +98,14 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if outcome == "win":
         final_frame = " ".join(["💎"] * num_reels)
+        escaped_name = mdv2_escape(tg_user.first_name)
         final_text = (
-            f"🏆 *{mdv2_escape('Congratulations ' + tg_user.first_name)}*! 🎉\n\n"
+            f"🏆 *Congratulations {escaped_name}*! 🎉\n\n"
             f"{mdv2_escape('You just won the jackpot!')}\n\n"
             f"{mdv2_escape('The cycle has been reset — a new round begins now 🔁')}\n"
             f"👉 {mdv2_escape('Don’t keep luck waiting — hit ')}*Try Luck*{mdv2_escape(' again and chase the next jackpot 🏆🔥')}"
         )
+        
     else:
         final_frame = " ".join(random.choice(spinner_emojis) for _ in range(num_reels))
         final_text = (
