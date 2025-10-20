@@ -1,11 +1,11 @@
 # ===============================================================
-# handlers/tryluck.py  (✅ HTML version — no MarkdownV2 issues)
+# handlers/tryluck.py  (✅ HTML version — Telegram-safe <br/>)
 # ===============================================================
 import asyncio
 import random
 import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext import ContextTypes, CallbackQueryHandler, CommandHandler
+from telegram.ext import ContextTypes
 from helpers import get_or_create_user
 from services.tryluck import spin_logic
 from db import get_async_session
@@ -104,19 +104,19 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if outcome == "win":
         final_frame = "💎 💎 💎"
         final_text = (
-            f"🏆 <b>Congratulations, {player_name}!</b> 🎉<br><br>"
-            "You just <b>won the jackpot!</b><br><br>"
-            "The cycle has been reset — a new round begins now 🔁<br><br>"
+            f"🏆 <b>Congratulations, {player_name}!</b> 🎉<br/><br/>"
+            "You just <b>won the jackpot!</b><br/><br/>"
+            "The cycle has been reset — a new round begins now 🔁<br/><br/>"
             "👉 Don’t keep luck waiting — hit <b>Try Luck</b> again and chase the next jackpot 🏆🔥"
         )
     else:
         final_frame = " ".join(random.choice(spinner_emojis) for _ in range(num_reels))
         final_text = (
-            f"😅 {player_name}, no win this time.<br><br>"
+            f"😅 {player_name}, no win this time.<br/><br/>"
             "Better luck next spin! Try again and chase that jackpot 🎰🔥"
         )
 
-    safe_message = f"<b>🎰 {final_frame}</b><br><br>{final_text}"
+    safe_message = f"<b>🎰 {final_frame}</b><br/><br/>{final_text}"
 
     try:
         await msg.edit_text(
