@@ -1,26 +1,17 @@
 # ===============================================================
-# handlers/tryluck.py
+# handlers/tryluck.py  (✅ HTML version — no MarkdownV2 issues)
 # ===============================================================
-import re
 import asyncio
 import random
 import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes, CallbackQueryHandler, CommandHandler
-from helpers import get_or_create_user, md_escape
+from helpers import get_or_create_user
 from services.tryluck import spin_logic
 from db import get_async_session
 from models import GameState  # ✅ handles game cycle reset
 
 logger = logging.getLogger(__name__)
-
-# --------------------------------
-# MarkdownV2-safe escape function
-# --------------------------------
-def mdv2_escape(text: str) -> str:
-    escape_chars = r"_*[]()~`>#+-=|{}.!\\"
-    return "".join(f"\\{c}" if c in escape_chars else c for c in text)
-
 
 # --------------------
 # Inline Keyboards
@@ -82,18 +73,18 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # -----------------------
     if outcome == "no_tries":
         return await update.effective_message.reply_text(
-            mdv2_escape("😅 You don’t have any tries left! Buy more spins or earn free ones."),
-            parse_mode="MarkdownV2",
+            "😅 You don’t have any tries left! Buy more spins or earn free ones.",
+            parse_mode="HTML",
         )
 
     if outcome == "error":
         return await update.effective_message.reply_text(
-            mdv2_escape("⚠️ Oops! Something went wrong while processing your spin. Please try again."),
-            parse_mode="MarkdownV2",
+            "⚠️ <b>Oops!</b> Something went wrong while processing your spin. Please try again.",
+            parse_mode="HTML",
         )
 
     msg = await update.effective_message.reply_text(
-        mdv2_escape("🎰 Spinning..."), parse_mode="MarkdownV2"
+        "🎰 <i>Spinning...</i>", parse_mode="HTML"
     )
 
     spinner_emojis = ["🍒", "🍋", "🔔", "⭐", "💎", "7️⃣", "🍀", "🎲"]
@@ -102,36 +93,35 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     for _ in range(total_spins):
         frame = " ".join(random.choice(spinner_emojis) for _ in range(num_reels))
-        await msg.edit_text(mdv2_escape(f"🎰 {frame}"), parse_mode="MarkdownV2")
+        await msg.edit_text(f"🎰 {frame}", parse_mode="HTML")
         await asyncio.sleep(0.4)
 
     # ------------------------
     # Final Outcome
     # ------------------------
+    player_name = tg_user.first_name or "Player"
+
     if outcome == "win":
         final_frame = "💎 💎 💎"
-        escaped_name = mdv2_escape(tg_user.first_name or "Player")
         final_text = (
-            f"🏆 *Congratulations {escaped_name}*! 🎉\n\n"
-            f"{mdv2_escape('You just won the jackpot!')}\n\n"
-            f"{mdv2_escape('The cycle has been reset — a new round begins now 🔁')}\n\n"
-            f"👉 {mdv2_escape('Don’t keep luck waiting — hit')} *Try Luck* "
-            f"{mdv2_escape('again and chase the next jackpot 🏆🔥')}"
+            f"🏆 <b>Congratulations, {player_name}!</b> 🎉<br><br>"
+            "You just <b>won the jackpot!</b><br><br>"
+            "The cycle has been reset — a new round begins now 🔁<br><br>"
+            "👉 Don’t keep luck waiting — hit <b>Try Luck</b> again and chase the next jackpot 🏆🔥"
         )
     else:
         final_frame = " ".join(random.choice(spinner_emojis) for _ in range(num_reels))
-        escaped_name = mdv2_escape(tg_user.first_name or "Player")
         final_text = (
-            f"😅 {escaped_name}, {mdv2_escape('no win this time.')}\n\n"
-            f"{mdv2_escape('Better luck next spin! Try again and chase that jackpot 🎰🔥')}"
+            f"😅 {player_name}, no win this time.<br><br>"
+            "Better luck next spin! Try again and chase that jackpot 🎰🔥"
         )
 
-    safe_message = mdv2_escape(f"🎰 {final_frame}\n\n") + final_text
+    safe_message = f"<b>🎰 {final_frame}</b><br><br>{final_text}"
 
     try:
         await msg.edit_text(
             text=safe_message,
-            parse_mode="MarkdownV2",
+            parse_mode="HTML",
             reply_markup=make_tryluck_keyboard(),
         )
     except Exception as e:
@@ -140,12 +130,11 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await context.bot.send_message(
                 chat_id=update.effective_chat.id,
                 text=safe_message,
-                parse_mode="MarkdownV2",
+                parse_mode="HTML",
                 reply_markup=make_tryluck_keyboard(),
             )
         except Exception as inner_e:
             logger.error(f"❌ Failed to send fallback message: {inner_e}")
-
 
 # ---------------------------------------------------------------
 # Callback for "Available Tries" button
