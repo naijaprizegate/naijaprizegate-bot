@@ -6,7 +6,7 @@ import random
 import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes, CallbackQueryHandler, CommandHandler
-from helpers import get_or_create_user
+from helpers import get_or_create_user, md_escape
 from services.tryluck import spin_logic
 from db import get_async_session
 from models import GameState  # ✅ added to handle cycle reset
