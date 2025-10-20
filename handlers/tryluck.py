@@ -1,6 +1,7 @@
 # ===============================================================
 # handlers/tryluck.py  (✅ HTML version — Telegram-safe <br/>)
 # ===============================================================
+import os
 import asyncio
 import random
 import logging
@@ -204,63 +205,77 @@ async def winner_form_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
     choice = context.user_data.get("winner_choice")
 
     if not stage:
-        return  # not part of the form
+        return  # not part of the guided form flow
 
     # --- Step 1: Full Name
     if stage == "ask_name":
         context.user_data["full_name"] = text
         context.user_data["winner_stage"] = "ask_phone"
-        await update.message.reply_text("2️⃣ What’s your <b>phone number?</b>", parse_mode="HTML")
+        await update.message.reply_text(
+            "2️⃣ What’s your <b>phone number?</b>", parse_mode="HTML"
+        )
         return
 
     # --- Step 2: Phone Number
     if stage == "ask_phone":
         context.user_data["phone"] = text
         context.user_data["winner_stage"] = "ask_address"
-        await update.message.reply_text("3️⃣ Please enter your <b>delivery address</b> 🏠", parse_mode="HTML")
+        await update.message.reply_text(
+            "3️⃣ Please enter your <b>delivery address</b> 🏠", parse_mode="HTML"
+        )
         return
 
     # --- Step 3: Delivery Address
     if stage == "ask_address":
         context.user_data["address"] = text
-        context.user_data["winner_stage"] = None  # reset
+        context.user_data["winner_stage"] = None  # reset flow
 
         full_name = context.user_data["full_name"]
         phone = context.user_data["phone"]
         address = context.user_data["address"]
 
-        # Save to DB
+        # ✅ Save to DB
         async with get_async_session() as session:
             async with session.begin():
-                user = await get_or_create_user(session, tg_id=tg_user.id, username=tg_user.username)
+                user = await get_or_create_user(
+                    session, tg_id=tg_user.id, username=tg_user.username
+                )
                 user.full_name = full_name
                 user.phone = phone
                 user.address = address
+                user.choice = choice
                 await session.commit()
 
-        # Confirm to winner
+        # ✅ Confirm to winner
         await update.message.reply_text(
-            "✅ <b>Got it!</b> Your prize will be processed shortly.\n\n"
-            "You’ll receive a confirmation message soon. 📦",
+            "✅ <b>All done!</b>\n\n"
+            "Your delivery details have been recorded successfully. 📦\n"
+            "Our team will contact you soon to arrange your prize delivery. 🚚✨",
             parse_mode="HTML",
         )
 
-        # Notify admin privately
+        # ✅ Notify admin privately
         try:
-            await context.bot.send_message(
-                chat_id=ADMIN_ID,
-                text=(
-                    f"🎉 <b>New Jackpot Winner!</b>\n\n"
-                    f"<b>Name:</b> {full_name}\n"
-                    f"<b>Phone:</b> {phone}\n"
-                    f"<b>Address:</b> {address}\n"
-                    f"<b>Choice:</b> {choice}\n"
-                    f"<b>Telegram:</b> @{tg_user.username or tg_user.first_name}"
-                ),
-                parse_mode="HTML",
-            )
+            if ADMIN_USER_ID:
+                alert_message = (
+                    f"📢 <b>NEW WINNER ALERT!</b>\n\n"
+                    f"👤 <b>Name:</b> {full_name}\n"
+                    f"📱 <b>Phone:</b> {phone}\n"
+                    f"🏠 <b>Address:</b> {address}\n"
+                    f"🎁 <b>Choice:</b> {choice}\n"
+                    f"🆔 <b>Telegram:</b> @{tg_user.username or tg_user.first_name}\n"
+                    f"🕒 <i>Recorded just now</i>"
+                )
+
+                await context.bot.send_message(
+                    chat_id=ADMIN_USER_ID, text=alert_message, parse_mode="HTML"
+                )
+                logger.info(f"📨 Admin notified about winner {tg_user.id}")
+            else:
+                logger.warning("⚠️ ADMIN_USER_ID not set — skipping admin notification")
+
         except Exception as e:
-            logger.error(f"❌ Failed to notify admin: {e}")
+            logger.error(f"❌ Failed to send admin alert: {e}")
 
 
 # ---------------------------------------------------------------
