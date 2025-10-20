@@ -14,6 +14,15 @@ from models import GameState  # ✅ handles game cycle reset
 
 logger = logging.getLogger(__name__)
 
+import re
+
+def md_escape(text: str) -> str:
+    """
+    Escapes MarkdownV2 special characters for Telegram.
+    """
+    escape_chars = r'_*[]()~`>#+-=|{}.!'
+    return re.sub(f'([{re.escape(escape_chars)}])', r'\\\1', text)
+
 # --------------------
 # Inline Keyboards
 # --------------------
