@@ -6,13 +6,16 @@ import random
 import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import CommandHandler, CallbackQueryHandler, ContextTypes
-from telegram.ext import ContextTypes
+from telegram.ext import MessageHandler, filters
 from helpers import get_or_create_user
 from services.tryluck import spin_logic
 from db import get_async_session
 from models import GameState  # ✅ handles game cycle reset
 
 logger = logging.getLogger(__name__)
+
+from os import getenv
+ADMIN_USER_ID = int(getenv("ADMIN_USER_ID", 0))
 
 import re
 
@@ -132,19 +135,133 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await msg.edit_text(
             text=safe_message,
             parse_mode="HTML",
-            reply_markup=make_tryluck_keyboard(),
+            reply_markup=None if outcome == "win" else make_tryluck_keyboard(),
         )
+
+        # ✅ STEP 1: If the user WON, ask them to choose their prize
+        if outcome == "win":
+            choice_keyboard = InlineKeyboardMarkup([
+                [InlineKeyboardButton("📱 iPhone 16 Pro Max", callback_data="choose_iphone16")],
+                [InlineKeyboardButton("📱 iPhone 17 Pro Max", callback_data="choose_iphone17")]
+            ])
+
+            await msg.reply_text(
+                f"🎉 <b>Congratulations again, {player_name}!</b>\n\n"
+                "You’ve unlocked the <b>Grand Jackpot Prize!</b> 🏆\n\n"
+                "Please choose your preferred reward below 👇",
+                parse_mode="HTML",
+                reply_markup=choice_keyboard
+            )
+
     except Exception as e:
         logger.warning(f"⚠️ Could not edit message: {e}")
+        # fallback send
+        await context.bot.send_message(
+            chat_id=update.effective_chat.id,
+            text=safe_message,
+            parse_mode="HTML",
+        )
+
+
+# ---------------------------------------------
+# STEP 2: Handle iPhone choice and guided form
+# ----------------------------------------------
+async def handle_iphone_choice(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    tg_user = query.from_user
+    choice = query.data
+    await query.answer()
+
+    user_choice = "iPhone 17 Pro Max" if choice == "choose_iphone17" else "iPhone 16 Pro Max"
+
+    # Save choice
+    async with get_async_session() as session:
+        async with session.begin():
+            user = await get_or_create_user(session, tg_id=tg_user.id, username=tg_user.username)
+            user.choice = user_choice
+            await session.commit()
+
+    await query.edit_message_text(
+        f"✅ You selected: <b>{user_choice}</b>\n\n"
+        "Let’s get your delivery details next 📦",
+        parse_mode="HTML",
+    )
+
+    context.user_data["winner_stage"] = "ask_name"
+    context.user_data["winner_choice"] = user_choice
+
+    await query.message.reply_text("1️⃣ What’s your <b>full name?</b>", parse_mode="HTML")
+
+
+# -------------------------------------------------------
+# STEP 3: Handle form responses (name → phone → address)
+# --------------------------------------------------------
+async def winner_form_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    tg_user = update.effective_user
+    text = update.message.text.strip()
+
+    stage = context.user_data.get("winner_stage")
+    choice = context.user_data.get("winner_choice")
+
+    if not stage:
+        return  # not part of the form
+
+    # --- Step 1: Full Name
+    if stage == "ask_name":
+        context.user_data["full_name"] = text
+        context.user_data["winner_stage"] = "ask_phone"
+        await update.message.reply_text("2️⃣ What’s your <b>phone number?</b>", parse_mode="HTML")
+        return
+
+    # --- Step 2: Phone Number
+    if stage == "ask_phone":
+        context.user_data["phone"] = text
+        context.user_data["winner_stage"] = "ask_address"
+        await update.message.reply_text("3️⃣ Please enter your <b>delivery address</b> 🏠", parse_mode="HTML")
+        return
+
+    # --- Step 3: Delivery Address
+    if stage == "ask_address":
+        context.user_data["address"] = text
+        context.user_data["winner_stage"] = None  # reset
+
+        full_name = context.user_data["full_name"]
+        phone = context.user_data["phone"]
+        address = context.user_data["address"]
+
+        # Save to DB
+        async with get_async_session() as session:
+            async with session.begin():
+                user = await get_or_create_user(session, tg_id=tg_user.id, username=tg_user.username)
+                user.full_name = full_name
+                user.phone = phone
+                user.address = address
+                await session.commit()
+
+        # Confirm to winner
+        await update.message.reply_text(
+            "✅ <b>Got it!</b> Your prize will be processed shortly.\n\n"
+            "You’ll receive a confirmation message soon. 📦",
+            parse_mode="HTML",
+        )
+
+        # Notify admin privately
         try:
             await context.bot.send_message(
-                chat_id=update.effective_chat.id,
-                text=safe_message,
+                chat_id=ADMIN_ID,
+                text=(
+                    f"🎉 <b>New Jackpot Winner!</b>\n\n"
+                    f"<b>Name:</b> {full_name}\n"
+                    f"<b>Phone:</b> {phone}\n"
+                    f"<b>Address:</b> {address}\n"
+                    f"<b>Choice:</b> {choice}\n"
+                    f"<b>Telegram:</b> @{tg_user.username or tg_user.first_name}"
+                ),
                 parse_mode="HTML",
-                reply_markup=make_tryluck_keyboard(),
             )
-        except Exception as inner_e:
-            logger.error(f"❌ Failed to send fallback message: {inner_e}")
+        except Exception as e:
+            logger.error(f"❌ Failed to notify admin: {e}")
+
 
 # ---------------------------------------------------------------
 # Callback for "Available Tries" button
@@ -183,3 +300,6 @@ def register_handlers(application):
     application.add_handler(CommandHandler("tryluck", tryluck_handler))
     application.add_handler(CallbackQueryHandler(tryluck_callback, pattern="^tryluck$"))
     application.add_handler(CallbackQueryHandler(show_tries_callback, pattern="^show_tries$"))
+    application.add_handler(CallbackQueryHandler(handle_iphone_choice, pattern="^choose_iphone"))
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, winner_form_handler))
+
