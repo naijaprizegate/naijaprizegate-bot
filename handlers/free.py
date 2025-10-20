@@ -37,20 +37,27 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     share_variants = [
         (
             f"🎰 Yo, it’s *{display_name}* here\\!\n\n"
-            f"Don’t sleep on this 👇\n\n"
-            f"I’m spinning on *NaijaPrizeGate* and cashing out free tries and a chance to win an *iPhone 16 Pro Max* and *iPhone 17 Pro Max* 🔥\n"
-            f"Jump in with my link before you miss it ⏳\n\n"
+            f"NaijaPrizeGate is lit rn 🔥 — I’m stacking *free spins* and shooting my shot to win:\n\n"
+            f"✨ *iPhone 16 Pro Max*\n"
+            f"✨ *iPhone 17 Pro Max*\n\n"
+            f"Don’t snooze — tap my link before it’s too late ⏳👇\n"
             f"👉 {ref_link}"
         ),
         (
-            f"🚀 *{display_name}* just scored free spins on *NaijaPrizeGate* 🎉\n\n"
-            f"Ready to try your luck? And win *iPhone 16 Pro Max* and *iPhone 17 Pro Max*\\. Use my referral link now & claim yours fast 👇\n\n"
+            f"🚀 *{display_name}* just unlocked *free spins* on *NaijaPrizeGate* 🎉\n\n"
+            f"Big wins are flying — next up could be:\n"
+            f"💎 *iPhone 16 Pro Max*\n"
+            f"💎 *iPhone 17 Pro Max*\n\n"
+            f"Join in now, spin yours & claim your shot 👇\n"
             f"👉 {ref_link}"
         ),
         (
-            f"🔥 Hey, *{display_name}* is already playing\\! \n\n"
-            f"NaijaPrizeGate is giving out free spins for a chance to win an *iPhone 16 Pro Max* and *iPhone 17* Pro Max 🎰💸\n"
-            f"Click my link & don’t get left behind 👇\n\n"
+            f"🔥 *{display_name}* is already playing\\! \n\n"
+            f"NaijaPrizeGate’s dropping jackpots like crazy 🎰💸\n"
+            f"Up for grabs:\n"
+            f"🏆 *iPhone 16 Pro Max*\n"
+            f"🏆 *iPhone 17 Pro Max*\n\n"
+            f"Click my link — don’t miss the wave 👇\n"
             f"👉 {ref_link}"
         ),
     ]
