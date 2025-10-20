@@ -84,7 +84,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
 
     msg = await update.effective_message.reply_text(
-        mdv2_escape("🎰 Spinning\.\.\."),
+        mdv2_escape("🎰 Spinning..."),
         parse_mode="MarkdownV2"
     )
 
