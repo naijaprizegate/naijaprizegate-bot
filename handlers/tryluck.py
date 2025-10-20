@@ -114,19 +114,19 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if outcome == "win":
         final_frame = "💎 💎 💎"
         final_text = (
-            f"🏆 <b>Congratulations, {player_name}!</b> 🎉<br/><br/>"
-            "You just <b>won the jackpot!</b><br/><br/>"
-            "The cycle has been reset — a new round begins now 🔁<br/><br/>"
+            f"🏆 <b>Congratulations, {player_name}!</b> 🎉\n\n"
+            "You just <b>won the jackpot!</b>\n\n"
+            "The cycle has been reset — a new round begins now 🔁\n\n"
             "👉 Don’t keep luck waiting — hit <b>Try Luck</b> again and chase the next jackpot 🏆🔥"
         )
     else:
         final_frame = " ".join(random.choice(spinner_emojis) for _ in range(num_reels))
         final_text = (
-            f"😅 {player_name}, no win this time.<br/><br/>"
+            f"😅 {player_name}, no win this time.\n\n"
             "Better luck next spin! Try again and chase that jackpot 🎰🔥"
         )
 
-    safe_message = f"<b>🎰 {final_frame}</b><br/><br/>{final_text}"
+    safe_message = f"<b>🎰 {final_frame}</b>\n\n{final_text}"
 
     try:
         await msg.edit_text(
