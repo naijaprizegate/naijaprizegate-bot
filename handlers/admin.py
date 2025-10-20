@@ -8,7 +8,7 @@ import logging
 from datetime import datetime, timezone
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, filters
-from sqlalchemy import select
+from sqlalchemy import select, update
 from db import AsyncSessionLocal
 from helpers import add_tries, get_user_by_id
 from models import Proof, User, GameState, GlobalCounter
@@ -281,6 +281,115 @@ async def user_search_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
 
     context.user_data["awaiting_user_search"] = False
 
+# ---------------------------------------------
+# 🧠 ADMIN-ONLY: View and Manage Winners
+# ---------------------------------------------
+
+async def winners_admin_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    tg_user = update.effective_user
+
+    # ✅ Restrict to admin
+    if tg_user.id != ADMIN_TG_ID:
+        await update.message.reply_text("🚫 You’re not authorized to use this command.")
+        return
+
+    async with get_async_session() as session:
+        result = await session.execute(
+            select(User)
+            .where(User.full_name.isnot(None))
+            .order_by(User.created_at.desc())
+            .limit(10)
+        )
+        winners = result.scalars().all()
+
+        if not winners:
+            await update.message.reply_text("😅 No winners found yet.")
+            return
+
+        for w in winners:
+            text = (
+                f"🏆 <b>Winner:</b> {w.full_name}\n"
+                f"🎁 <b>Choice:</b> {w.choice or 'N/A'}\n"
+                f"📱 <b>Phone:</b> {w.phone}\n"
+                f"🏠 <b>Address:</b> {w.address}\n"
+                f"🆔 <b>Telegram:</b> @{w.username or '—'}\n"
+                f"📦 <b>Status:</b> {w.delivery_status}\n"
+                f"🕒 <i>{w.created_at.strftime('%Y-%m-%d %H:%M')}</i>"
+            )
+
+            keyboard = InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton("🚚 In Transit", callback_data=f"status_transit_{w.id}"),
+                    InlineKeyboardButton("✅ Delivered", callback_data=f"status_delivered_{w.id}")
+                ]
+            ])
+
+            await update.message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
+
+# ------------------------------------------------
+# 📦 Update Winner Delivery Status (Admin Action)
+# ------------------------------------------------
+async def handle_delivery_status(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    tg_user = query.from_user
+    if tg_user.id != ADMIN_TG_ID:
+        await query.answer("🚫 Not authorized.", show_alert=True)
+        return
+
+    data = query.data  # e.g. "status_delivered_<uuid>"
+    if not data.startswith("status_"):
+        return
+
+    _, status, user_id = data.split("_", 2)
+    new_status = "Delivered" if status == "delivered" else "In Transit"
+
+    async with get_async_session() as session:
+        async with session.begin():
+            # ✅ Update DB
+            await session.execute(
+                update(User)
+                .where(User.id == user_id)
+                .values(delivery_status=new_status)
+            )
+
+            # ✅ Get winner details
+            result = await session.execute(select(User).where(User.id == user_id))
+            winner = result.scalar_one_or_none()
+
+        await session.commit()
+
+    # ✅ Acknowledge to admin
+    await query.edit_message_reply_markup(reply_markup=None)
+    await query.message.reply_text(
+        f"✅ Updated status for <b>{winner.full_name}</b> to <b>{new_status}</b>.",
+        parse_mode="HTML"
+    )
+
+    # ✅ Notify winner
+    if winner and winner.tg_id:
+        try:
+            if new_status == "In Transit":
+                msg = (
+                    f"🚚 <b>Good news, {winner.full_name}!</b>\n\n"
+                    "Your prize is <b>on the way</b> 🎁📦\n\n"
+                    "Our delivery team will contact you soon."
+                )
+            else:
+                msg = (
+                    f"✅ <b>Congratulations again, {winner.full_name}!</b>\n\n"
+                    "Your prize has been <b>successfully delivered</b> 🥳🎉\n\n"
+                    "Enjoy your new iPhone and keep spinning on TryLuck! 🍀"
+                )
+
+            await context.bot.send_message(
+                chat_id=winner.tg_id,
+                text=msg,
+                parse_mode="HTML"
+            )
+        except Exception as e:
+            logger.error(f"❌ Failed to notify winner ({winner.tg_id}): {e}")
 
 # ----------------------------
 # Handler registration helper
@@ -291,3 +400,6 @@ def register_handlers(application):
     application.add_handler(CommandHandler("pending_proofs", pending_proofs))
     application.add_handler(CallbackQueryHandler(admin_callback, pattern="^admin_"))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, user_search_handler))
+    application.add_handler(CommandHandler("winners", winners_admin_handler))
+    application.add_handler(CallbackQueryHandler(handle_delivery_status, pattern=r"^status_"))
+
