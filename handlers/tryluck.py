@@ -79,7 +79,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
     if outcome == "error":
         return await update.effective_message.reply_text(
-            mdv2_escape("⚠️ Oops! Something went wrong while processing your spin\. Please try again\."),
+            mdv2_escape("⚠️ Oops\! Something went wrong while processing your spin\. Please try again\."),
             parse_mode="MarkdownV2"
         )
 
