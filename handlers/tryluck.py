@@ -1,4 +1,4 @@
-# =============================================================== 
+# ===============================================================
 # handlers/tryluck.py
 # ===============================================================
 import re
@@ -10,28 +10,39 @@ from telegram.ext import ContextTypes, CallbackQueryHandler, CommandHandler
 from helpers import get_or_create_user, md_escape
 from services.tryluck import spin_logic
 from db import get_async_session
-from models import GameState  # ✅ added to handle cycle reset
+from models import GameState  # ✅ handles game cycle reset
 
 logger = logging.getLogger(__name__)
 
-# MarkdownV2 escape helper
+# --------------------------------
+# MarkdownV2-safe escape function
+# --------------------------------
 def mdv2_escape(text: str) -> str:
-    escape_chars = r'_*[]()~`>#+-=|{}.!'
-    return ''.join('\\' + c if c in escape_chars else c for c in text)
+    escape_chars = r"_*[]()~`>#+-=|{}.!\\"
+    return "".join(f"\\{c}" if c in escape_chars else c for c in text)
 
-# Inline keyboards
+
+# --------------------
+# Inline Keyboards
+# --------------------
 def make_tryluck_keyboard():
-    return InlineKeyboardMarkup([
+    return InlineKeyboardMarkup(
         [
-            InlineKeyboardButton("🎰 Try Again", callback_data="tryluck"),
-            InlineKeyboardButton("📊 Available Tries", callback_data="show_tries")
+            [
+                InlineKeyboardButton("🎰 Try Again", callback_data="tryluck"),
+                InlineKeyboardButton("📊 Available Tries", callback_data="show_tries"),
+            ]
         ]
-    ])
+    )
 
+
+# -------------------------
+# Main TryLuck Handler
+# --------------------------
 async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handler for /tryluck command or inline button callback"""
+    """Handles /tryluck command or button click"""
     tg_user = update.effective_user
-    logger.info(f"🔔 /tryluck called by tg_id={tg_user.id}, username={tg_user.username}")
+    logger.info(f"🔔 /tryluck called by {tg_user.id} ({tg_user.username})")
 
     outcome = "no_tries"
 
@@ -39,26 +50,21 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         try:
             async with session.begin():
                 user = await get_or_create_user(
-                    session,
-                    tg_id=tg_user.id,
-                    username=tg_user.username
+                    session, tg_id=tg_user.id, username=tg_user.username
                 )
 
                 logger.info(
-                    f"📊 Before spin: user_id={user.id}, tg_id={user.tg_id}, "
-                    f"paid={user.tries_paid}, bonus={user.tries_bonus}"
+                    f"📊 Before spin: user_id={user.id}, paid={user.tries_paid}, bonus={user.tries_bonus}"
                 )
 
                 outcome = await spin_logic(session, user)
-
                 await session.refresh(user)
 
                 logger.info(
-                    f"🎲 Outcome={outcome} | After spin: user_id={user.id}, "
-                    f"tg_id={user.tg_id}, paid={user.tries_paid}, bonus={user.tries_bonus}"
+                    f"🎲 Outcome={outcome} | After spin: paid={user.tries_paid}, bonus={user.tries_bonus}"
                 )
 
-                # ✅ If jackpot/win: reset the game cycle
+                # ✅ Reset game cycle on jackpot win
                 if outcome == "win":
                     gs = await session.get(GameState, 1)
                     if gs:
@@ -68,67 +74,78 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                         logger.info(f"🔁 New game cycle started: {gs.current_cycle}")
 
         except Exception as e:
-            logger.exception(f"❌ Error during /tryluck for tg_id={tg_user.id}: {e}")
+            logger.exception(f"❌ Error during /tryluck for {tg_user.id}: {e}")
             outcome = "error"
 
-    # ----------------- Outcome Handling -----------------
+    # -----------------------
+    # Outcome Messaging
+    # -----------------------
     if outcome == "no_tries":
         return await update.effective_message.reply_text(
-            mdv2_escape("😅 You don’t have any tries left\! Buy more spins or earn free ones\."),
-            parse_mode="MarkdownV2"
+            mdv2_escape("😅 You don’t have any tries left! Buy more spins or earn free ones."),
+            parse_mode="MarkdownV2",
         )
+
     if outcome == "error":
         return await update.effective_message.reply_text(
-            mdv2_escape("⚠️ Oops\! Something went wrong while processing your spin\. Please try again\."),
-            parse_mode="MarkdownV2"
+            mdv2_escape("⚠️ Oops! Something went wrong while processing your spin. Please try again."),
+            parse_mode="MarkdownV2",
         )
 
     msg = await update.effective_message.reply_text(
-        mdv2_escape("🎰 Spinning..."),
-        parse_mode="MarkdownV2"
+        mdv2_escape("🎰 Spinning..."), parse_mode="MarkdownV2"
     )
 
     spinner_emojis = ["🍒", "🍋", "🔔", "⭐", "💎", "7️⃣", "🍀", "🎲"]
     num_reels = 3
-
     total_spins = random.randint(6, 10)
+
     for _ in range(total_spins):
         frame = " ".join(random.choice(spinner_emojis) for _ in range(num_reels))
         await msg.edit_text(mdv2_escape(f"🎰 {frame}"), parse_mode="MarkdownV2")
         await asyncio.sleep(0.4)
 
+    # ------------------------
+    # Final Outcome
+    # ------------------------
     if outcome == "win":
-        final_frame = " ".join(["💎"] * num_reels)
-        escaped_name = mdv2_escape(tg_user.first_name)
+        final_frame = "💎 💎 💎"
+        escaped_name = mdv2_escape(tg_user.first_name or "Player")
         final_text = (
-            f"🏆 *Congratulations {escaped_name}*\! 🎉\n\n"
-            f"{mdv2_escape('You just won the jackpot\!')}\n\n"
-            f"{mdv2_escape('The cycle has been reset \— a new round begins now 🔁')}\n"
-            f"👉 {mdv2_escape('Don’t keep luck waiting \— hit ')}*Try Luck*{mdv2_escape(' again and chase the next jackpot 🏆🔥')}"
+            f"🏆 *Congratulations {escaped_name}*! 🎉\n\n"
+            f"{mdv2_escape('You just won the jackpot!')}\n\n"
+            f"{mdv2_escape('The cycle has been reset — a new round begins now 🔁')}\n\n"
+            f"👉 {mdv2_escape('Don’t keep luck waiting — hit')} *Try Luck* "
+            f"{mdv2_escape('again and chase the next jackpot 🏆🔥')}"
         )
-
     else:
         final_frame = " ".join(random.choice(spinner_emojis) for _ in range(num_reels))
+        escaped_name = mdv2_escape(tg_user.first_name or "Player")
         final_text = (
-            f"😅 {mdv2_escape(tg_user.first_name)}, {mdv2_escape('No win this time\.')}\n\n"
-            f"{mdv2_escape('Better luck next spin\! Try again and chase that jackpot 🎰🔥')}"
+            f"😅 {escaped_name}, {mdv2_escape('no win this time.')}\n\n"
+            f"{mdv2_escape('Better luck next spin! Try again and chase that jackpot 🎰🔥')}"
         )
 
+    safe_message = mdv2_escape(f"🎰 {final_frame}\n\n") + final_text
+
     try:
-        safe_message = mdv2_escape(f"🎰 {final_frame}\n\n{final_text}")
         await msg.edit_text(
             text=safe_message,
             parse_mode="MarkdownV2",
-            reply_markup=make_tryluck_keyboard()
+            reply_markup=make_tryluck_keyboard(),
         )
     except Exception as e:
-        logger.warning(f"⚠️ Couldn't edit message: {e}")
-        await context.bot.send_message(
-            chat_id=update.effective_chat.id,
-            text=safe_message,  # ✅ use the escaped version here too
-            parse_mode="MarkdownV2",
-            reply_markup=make_tryluck_keyboard()
-        )
+        logger.warning(f"⚠️ Could not edit message: {e}")
+        try:
+            await context.bot.send_message(
+                chat_id=update.effective_chat.id,
+                text=safe_message,
+                parse_mode="MarkdownV2",
+                reply_markup=make_tryluck_keyboard(),
+            )
+        except Exception as inner_e:
+            logger.error(f"❌ Failed to send fallback message: {inner_e}")
+
 
 # ---------------------------------------------------------------
 # Callback for "Available Tries" button
