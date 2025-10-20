@@ -41,7 +41,7 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"✨ *iPhone 16 Pro Max*\n"
             f"✨ *iPhone 17 Pro Max*\n\n"
             f"Don’t snooze — tap my link before it’s too late ⏳👇\n"
-            f"👉 {md_escape(ref_link)}"
+            f"👉 {ref_link}"
         ),
         (
             f"🚀 *{display_name}* just unlocked *free spins* on *NaijaPrizeGate* 🎉\n\n"
@@ -49,7 +49,7 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"💎 *iPhone 16 Pro Max*\n"
             f"💎 *iPhone 17 Pro Max*\n\n"
             f"Join in now, spin yours & claim your shot 👇\n"
-            f"👉 {md_escape(ref_link)}"
+            f"👉 {ref_link}"
         ),
         (
             f"🔥 *{display_name}* is already playing\\! \n\n"
@@ -58,7 +58,7 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"🏆 *iPhone 16 Pro Max*\n"
             f"🏆 *iPhone 17 Pro Max*\n\n"
             f"Click my link — don’t miss the wave 👇\n"
-            f"👉 {md_escape(ref_link)}"
+            f"👉 {ref_link}"
         ),
     ]
 
