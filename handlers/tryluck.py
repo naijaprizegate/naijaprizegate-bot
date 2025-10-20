@@ -6,12 +6,17 @@ import random
 import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes, CallbackQueryHandler, CommandHandler
-from helpers import md_escape, get_or_create_user
+from helpers import get_or_create_user
 from services.tryluck import spin_logic
 from db import get_async_session
 from models import GameState  # ✅ added to handle cycle reset
 
 logger = logging.getLogger(__name__)
+
+# MarkdownV2 escape helper
+def mdv2_escape(text: str) -> str:
+    escape_chars = r'_*[]()~`>#+-=|{}.!'
+    return ''.join('\\' + c if c in escape_chars else c for c in text)
 
 # Inline keyboards
 def make_tryluck_keyboard():
@@ -68,17 +73,17 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # ----------------- Outcome Handling -----------------
     if outcome == "no_tries":
         return await update.effective_message.reply_text(
-            md_escape("😅 You don’t have any tries left! Buy more spins or earn free ones."),
+            mdv2_escape("😅 You don’t have any tries left! Buy more spins or earn free ones."),
             parse_mode="MarkdownV2"
         )
     if outcome == "error":
         return await update.effective_message.reply_text(
-            md_escape("⚠️ Oops! Something went wrong while processing your spin. Please try again."),
+            mdv2_escape("⚠️ Oops! Something went wrong while processing your spin. Please try again."),
             parse_mode="MarkdownV2"
         )
 
     msg = await update.effective_message.reply_text(
-        md_escape("🎰 Spinning..."),
+        mdv2_escape("🎰 Spinning..."),
         parse_mode="MarkdownV2"
     )
 
@@ -88,26 +93,26 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     total_spins = random.randint(6, 10)
     for _ in range(total_spins):
         frame = " ".join(random.choice(spinner_emojis) for _ in range(num_reels))
-        await msg.edit_text(md_escape(f"🎰 {frame}"), parse_mode="MarkdownV2")
+        await msg.edit_text(mdv2_escape(f"🎰 {frame}"), parse_mode="MarkdownV2")
         await asyncio.sleep(0.4)
 
     if outcome == "win":
         final_frame = " ".join(["💎"] * num_reels)
         final_text = (
-            f"🏆 *Congratulations {md_escape(tg_user.first_name)}!* 🎉\n\n"
-            f"{md_escape('You just won the jackpot!')}\n\n"
-            f"{md_escape('The cycle has been reset — a new round begins now 🔁')}\n"
-            f"{md_escape('👉 Don’t keep luck waiting — hit *Try Luck* again and chase the next jackpot 🏆🔥')}"
+            f"🏆 *{mdv2_escape('Congratulations')} {mdv2_escape(tg_user.first_name)}*\\! 🎉\n\n"
+            f"{mdv2_escape('You just won the jackpot!')}\n\n"
+            f"{mdv2_escape('The cycle has been reset — a new round begins now 🔁')}\n"
+            f"{mdv2_escape('👉 Don’t keep luck waiting — hit *Try Luck* again and chase the next jackpot 🏆🔥')}"
         )
     else:
         final_frame = " ".join(random.choice(spinner_emojis) for _ in range(num_reels))
         final_text = (
-            f"😅 {md_escape(tg_user.first_name)}, {md_escape('no win this time.')}\n\n"
-            f"{md_escape('Better luck next spin! Try again and chase that jackpot 🎰🔥')}"
+            f"😅 {mdv2_escape(tg_user.first_name)}, {mdv2_escape('no win this time.')}\n\n"
+            f"{mdv2_escape('Better luck next spin! Try again and chase that jackpot 🎰🔥')}"
         )
 
     await msg.edit_text(
-        f"🎰 {final_frame}\n\n{final_text}",
+        mdv2_escape(f"🎰 {final_frame}\n\n{final_text}"),
         parse_mode="MarkdownV2",
         reply_markup=make_tryluck_keyboard()
     )
