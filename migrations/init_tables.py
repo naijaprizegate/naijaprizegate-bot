@@ -36,6 +36,45 @@ def main():
         cur.execute("CREATE INDEX IF NOT EXISTS idx_users_tg_id ON users(tg_id);")
         print("✅ users table ensured")
 
+        # ✅ Add new winner fields if they don't exist
+        cur.execute("""
+        DO $$
+        BEGIN
+            IF NOT EXISTS (
+                SELECT 1 FROM information_schema.columns
+                WHERE table_name='users' AND column_name='choice'
+            ) THEN
+                ALTER TABLE users ADD COLUMN choice TEXT;
+                RAISE NOTICE '🆕 Added column choice to users';
+            END IF;
+
+            IF NOT EXISTS (
+                SELECT 1 FROM information_schema.columns
+                WHERE table_name='users' AND column_name='full_name'
+            ) THEN
+                ALTER TABLE users ADD COLUMN full_name TEXT;
+                RAISE NOTICE '🆕 Added column full_name to users';
+            END IF;
+
+            IF NOT EXISTS (
+                SELECT 1 FROM information_schema.columns
+                WHERE table_name='users' AND column_name='phone'
+            ) THEN
+                ALTER TABLE users ADD COLUMN phone TEXT;
+                RAISE NOTICE '🆕 Added column phone to users';
+            END IF;
+
+            IF NOT EXISTS (
+                SELECT 1 FROM information_schema.columns
+                WHERE table_name='users' AND column_name='address'
+            ) THEN
+                ALTER TABLE users ADD COLUMN address TEXT;
+                RAISE NOTICE '🆕 Added column address to users';
+            END IF;
+        END$$;
+        """)
+        print("✅ winner fields ensured (choice, full_name, phone, address)")
+
         # ----------------------
         # 2. Global Counter
         # ----------------------
