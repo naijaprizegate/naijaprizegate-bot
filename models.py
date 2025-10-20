@@ -27,12 +27,17 @@ class User(Base):
     created_at = Column(TIMESTAMP, server_default=func.now())
     is_admin = Column(Boolean, default=False, nullable=False)
 
+    # 🆕 Winner-related fields
+    choice = Column(String, nullable=True)       # iPhone 16 Pro Max or iPhone 17 Pro Max
+    full_name = Column(String, nullable=True)    # Winner's real name
+    phone = Column(String, nullable=True)        # Winner's phone number
+    address = Column(String, nullable=True)      # Delivery address
+
     # relationships
     referrer = relationship("User", remote_side=[id])
     plays = relationship("Play", back_populates="user")
     payments = relationship("Payment", back_populates="user")
     proofs = relationship("Proof", back_populates="user")
-
 
 # ----------------------
 # 2. Global Counter
