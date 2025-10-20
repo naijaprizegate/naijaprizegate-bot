@@ -105,7 +105,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"{mdv2_escape('The cycle has been reset — a new round begins now 🔁')}\n"
             f"👉 {mdv2_escape('Don’t keep luck waiting — hit ')}*Try Luck*{mdv2_escape(' again and chase the next jackpot 🏆🔥')}"
         )
-        
+
     else:
         final_frame = " ".join(random.choice(spinner_emojis) for _ in range(num_reels))
         final_text = (
@@ -113,11 +113,21 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"{mdv2_escape('Better luck next spin! Try again and chase that jackpot 🎰🔥')}"
         )
 
-    await msg.edit_text(
-        (f"🎰 {final_frame}\n\n{final_text}"),
-        parse_mode="MarkdownV2",
-        reply_markup=make_tryluck_keyboard()
-    )
+    try:
+        await msg.edit_text(
+            text=f"🎰 {final_frame}\n\n{final_text}",
+            parse_mode="MarkdownV2",
+            reply_markup=make_tryluck_keyboard()
+        )
+    except Exception as e:
+        # If Telegram blocks the edit, log it and send a new message instead
+        logger.warning(f"⚠️ Couldn't edit message: {e}")
+        await context.bot.send_message(
+            chat_id=update.effective_chat.id,
+            text=f"🎰 {final_frame}\n\n{final_text}",
+            parse_mode="MarkdownV2",
+            reply_markup=make_tryluck_keyboard()
+        )
 
 # ---------------------------------------------------------------
 # Callback for "Available Tries" button
