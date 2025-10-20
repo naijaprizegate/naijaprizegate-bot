@@ -1,6 +1,7 @@
 # =============================================================== 
 # handlers/tryluck.py
 # ===============================================================
+import re
 import asyncio
 import random
 import logging
@@ -73,17 +74,17 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # ----------------- Outcome Handling -----------------
     if outcome == "no_tries":
         return await update.effective_message.reply_text(
-            mdv2_escape("😅 You don’t have any tries left! Buy more spins or earn free ones."),
+            mdv2_escape("😅 You don’t have any tries left\! Buy more spins or earn free ones\."),
             parse_mode="MarkdownV2"
         )
     if outcome == "error":
         return await update.effective_message.reply_text(
-            mdv2_escape("⚠️ Oops! Something went wrong while processing your spin. Please try again."),
+            mdv2_escape("⚠️ Oops! Something went wrong while processing your spin\. Please try again\."),
             parse_mode="MarkdownV2"
         )
 
     msg = await update.effective_message.reply_text(
-        mdv2_escape("🎰 Spinning..."),
+        mdv2_escape("🎰 Spinning\.\.\."),
         parse_mode="MarkdownV2"
     )
 
@@ -100,17 +101,17 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         final_frame = " ".join(["💎"] * num_reels)
         escaped_name = mdv2_escape(tg_user.first_name)
         final_text = (
-            f"🏆 *Congratulations {escaped_name}*! 🎉\n\n"
-            f"{mdv2_escape('You just won the jackpot!')}\n\n"
-            f"{mdv2_escape('The cycle has been reset — a new round begins now 🔁')}\n"
-            f"👉 {mdv2_escape('Don’t keep luck waiting — hit ')}*Try Luck*{mdv2_escape(' again and chase the next jackpot 🏆🔥')}"
+            f"🏆 *Congratulations {escaped_name}*\! 🎉\n\n"
+            f"{mdv2_escape('You just won the jackpot\!')}\n\n"
+            f"{mdv2_escape('The cycle has been reset \— a new round begins now 🔁')}\n"
+            f"👉 {mdv2_escape('Don’t keep luck waiting \— hit ')}*Try Luck*{mdv2_escape(' again and chase the next jackpot 🏆🔥')}"
         )
 
     else:
         final_frame = " ".join(random.choice(spinner_emojis) for _ in range(num_reels))
         final_text = (
-            f"😅 {mdv2_escape(tg_user.first_name)}, {mdv2_escape('no win this time.')}\n\n"
-            f"{mdv2_escape('Better luck next spin! Try again and chase that jackpot 🎰🔥')}"
+            f"😅 {mdv2_escape(tg_user.first_name)}, {mdv2_escape('No win this time\.')}\n\n"
+            f"{mdv2_escape('Better luck next spin\! Try again and chase that jackpot 🎰🔥')}"
         )
 
     try:
