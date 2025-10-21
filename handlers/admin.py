@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, filters
 from sqlalchemy import select, update
-from db import AsyncSessionLocal
+from db import AsyncSessionLocal, get_async_session
 from helpers import add_tries, get_user_by_id
 from models import Proof, User, GameState, GlobalCounter
 
