@@ -289,7 +289,7 @@ async def winners_admin_handler(update: Update, context: ContextTypes.DEFAULT_TY
     tg_user = update.effective_user
 
     # ✅ Restrict to admin
-    if tg_user.id != ADMIN_TG_ID:
+    if tg_user.id != ADMIN_USER_ID:
         await update.message.reply_text("🚫 You’re not authorized to use this command.")
         return
 
@@ -334,7 +334,7 @@ async def handle_delivery_status(update: Update, context: ContextTypes.DEFAULT_T
     await query.answer()
 
     tg_user = query.from_user
-    if tg_user.id != ADMIN_TG_ID:
+    if tg_user.id != ADMIN_USER_ID:
         await query.answer("🚫 Not authorized.", show_alert=True)
         return
 
