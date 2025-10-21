@@ -33,11 +33,14 @@ class User(Base):
     phone = Column(String, nullable=True)        # Winner's phone number
     address = Column(String, nullable=True)      # Delivery address
 
+    delivery_status = Column(String, nullable=True, default="Pending")
+    
     # relationships
     referrer = relationship("User", remote_side=[id])
     plays = relationship("Play", back_populates="user")
     payments = relationship("Payment", back_populates="user")
     proofs = relationship("Proof", back_populates="user")
+
 
 # ----------------------
 # 2. Global Counter
@@ -62,6 +65,7 @@ class GameState(Base):
 
     created_at = Column(TIMESTAMP, server_default=func.now())
     updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
+
 
 # ----------------------
 # 3. Plays
@@ -146,3 +150,4 @@ class TransactionLog(Base):
     provider = Column(String, nullable=False)   # e.g. "flutterwave"
     payload = Column(Text, nullable=False)      # raw JSON payload
     created_at = Column(TIMESTAMP, server_default=func.now())
+
