@@ -27,15 +27,18 @@ class User(Base):
     created_at = Column(TIMESTAMP, server_default=func.now())
     is_admin = Column(Boolean, default=False, nullable=False)
 
-    # 🆕 Winner-related fields
-    choice = Column(String, nullable=True)       # iPhone 16 Pro Max or iPhone 17 Pro Max
-    full_name = Column(String, nullable=True)    # Winner's real name
-    phone = Column(String, nullable=True)        # Winner's phone number
-    address = Column(String, nullable=True)      # Delivery address
+    # 🏆 Winner-related fields
+    choice = Column(String, nullable=True)         # e.g. "iPhone 16 Pro Max" or "iPhone 17 Pro Max"
+    full_name = Column(String, nullable=True)      # Winner's real name
+    phone = Column(String, nullable=True)          # Winner's phone number
+    address = Column(String, nullable=True)        # Delivery address
+    delivery_status = Column(String, nullable=True, default="Pending")  # "Pending", "In Transit", "Delivered"
 
-    delivery_status = Column(String, nullable=True, default="Pending")
-    
-    # relationships
+    # 💾 Persistent form progress fields
+    winner_stage = Column(String, nullable=True)   # "ask_name", "ask_phone", "ask_address"
+    winner_data = Column(JSON, nullable=True, default={})  # Partial form data storage
+
+    # 🧩 Relationships
     referrer = relationship("User", remote_side=[id])
     plays = relationship("Play", back_populates="user")
     payments = relationship("Payment", back_populates="user")
