@@ -214,7 +214,13 @@ def register_handlers(application):
     application.add_handler(CommandHandler("mytries", mytries))
 
     # fallback for unrecognized text
-    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, fallback))
+    application.add_handler(
+    MessageHandler(
+        filters.TEXT & ~filters.COMMAND & ~filters.Regex(r"^[0-9+ ]+$"),
+        fallback
+    )
+)
+
 
     # ✅ New: handle Cancel button
     application.add_handler(CallbackQueryHandler(go_start_callback, pattern="^go_start$"))
