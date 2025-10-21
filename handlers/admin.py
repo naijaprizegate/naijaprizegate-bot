@@ -1,7 +1,6 @@
 # ==============================================================
 # handlers/admin.py — Clean Unified Admin System (HTML Safe)
 # ==============================================================
-
 import os
 import re
 import asyncio
@@ -349,6 +348,57 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
         await update.effective_message.reply_text(full_text, parse_mode="HTML", reply_markup=keyboard)
 
 
+# ------------------------------
+# Show Filtered Winners
+# ------------------------------
+async def show_filtered_winners(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Show winners filtered by delivery status (In Transit or Delivered)"""
+    query = update.callback_query
+    await query.answer()
+
+    # Extract filter value from callback data (e.g. "In Transit" or "Delivered")
+    _, filter_value = query.data.split(":", 1)
+
+    async with get_async_session() as session:
+        result = await session.execute(
+            select(User).where(User.delivery_status == filter_value)
+        )
+        winners = result.scalars().all()
+
+    if not winners:
+        await query.edit_message_text(
+            f"😅 No {filter_value} winners found yet.",
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("⬅️ Back", callback_data="admin_winners:1")]
+            ])
+        )
+        return
+
+    # Build winner list message
+    text_lines = [f"🏆 <b>Jackpot Winners - {filter_value}</b>\n"]
+    for w in winners:
+        text_lines.append(
+            f"👤 <b>{w.full_name or '-'}</b>\n"
+            f"📱 {w.phone or 'N/A'}\n"
+            f"📦 {w.address or 'N/A'}\n"
+            f"🎁 {w.choice or '-'}\n"
+            f"🚚 Status: <b>{w.delivery_status or 'Pending'}</b>\n"
+            f"🔗 @{w.username or 'N/A'}\n"
+        )
+
+    # Inline keyboard for navigation
+    keyboard = InlineKeyboardMarkup([
+        [InlineKeyboardButton("⬅️ Back", callback_data="admin_winners:1")]
+    ])
+
+    await query.edit_message_text(
+        "\n".join(text_lines),
+        parse_mode="HTML",
+        reply_markup=keyboard
+    )
+
+
 # ----------------------------
 # Delivery Status Update (per-winner)
 # ----------------------------
@@ -423,9 +473,13 @@ def register_handlers(application):
     application.add_handler(CommandHandler("admin", admin_panel))
     application.add_handler(CommandHandler("pending_proofs", pending_proofs))
     application.add_handler(CommandHandler("winners", show_winners_section))
+    application.add_handler(CallbackQueryHandler(show_winners_section, pattern="^admin_winners"))
+    application.add_handler(CallbackQueryHandler(show_filtered_winners, pattern="^admin_winners_filter:"))
     # admin callbacks (menu, winners pagination/filters, approvals)
     application.add_handler(CallbackQueryHandler(admin_callback, pattern="^admin_"))
     # delivery status actions (per-winner)
     application.add_handler(CallbackQueryHandler(handle_delivery_status, pattern=r"^status_"))
     # user search text handler
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, user_search_handler))
+
+
