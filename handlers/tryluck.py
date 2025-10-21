@@ -40,10 +40,15 @@ def make_tryluck_keyboard():
         ]
     )
 
+# ------------------------------------------------------
+# 🧠 GLOBAL STORE — MULTI-WINNER SAFE TRYLUCK HANDLER
+# ------------------------------------------------------
+winner_flows = {}  # { user_id: {"stage": ..., "choice": ..., "data": {...}} }
 
-# -------------------------
-# Main TryLuck Handler
-# --------------------------
+
+# ------------------------------
+# 🎰 TRYLUCK HANDLER (Main)
+# ------------------------------
 async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handles /tryluck command or button click"""
     tg_user = update.effective_user
@@ -54,20 +59,9 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     async with get_async_session() as session:
         try:
             async with session.begin():
-                user = await get_or_create_user(
-                    session, tg_id=tg_user.id, username=tg_user.username
-                )
-
-                logger.info(
-                    f"📊 Before spin: user_id={user.id}, paid={user.tries_paid}, bonus={user.tries_bonus}"
-                )
-
+                user = await get_or_create_user(session, tg_id=tg_user.id, username=tg_user.username)
                 outcome = await spin_logic(session, user)
                 await session.refresh(user)
-
-                logger.info(
-                    f"🎲 Outcome={outcome} | After spin: paid={user.tries_paid}, bonus={user.tries_bonus}"
-                )
 
                 # ✅ Reset game cycle on jackpot win
                 if outcome == "win":
@@ -82,9 +76,9 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             logger.exception(f"❌ Error during /tryluck for {tg_user.id}: {e}")
             outcome = "error"
 
-    # -----------------------
-    # Outcome Messaging
-    # -----------------------
+    # -----------------------------
+    # 🪩 OUTCOME HANDLING
+    # ------------------------------
     if outcome == "no_tries":
         return await update.effective_message.reply_text(
             "😅 You don’t have any tries left! Buy more spins or earn free ones.",
@@ -97,9 +91,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             parse_mode="HTML",
         )
 
-    msg = await update.effective_message.reply_text(
-        "🎰 <i>Spinning...</i>", parse_mode="HTML"
-    )
+    msg = await update.effective_message.reply_text("🎰 <i>Spinning...</i>", parse_mode="HTML")
 
     spinner_emojis = ["🍒", "🍋", "🔔", "⭐", "💎", "7️⃣", "🍀", "🎲"]
     num_reels = 3
@@ -110,9 +102,6 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await msg.edit_text(f"🎰 {frame}", parse_mode="HTML")
         await asyncio.sleep(0.4)
 
-    # ------------------------
-    # Final Outcome
-    # ------------------------
     player_name = tg_user.first_name or "Player"
 
     if outcome == "win":
@@ -139,7 +128,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             reply_markup=None if outcome == "win" else make_tryluck_keyboard(),
         )
 
-        # ✅ STEP 1: If the user WON, ask them to choose their prize
+        # ✅ If the user WON, ask them to choose their prize
         if outcome == "win":
             choice_keyboard = InlineKeyboardMarkup([
                 [InlineKeyboardButton("📱 iPhone 16 Pro Max", callback_data="choose_iphone16")],
@@ -156,7 +145,6 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     except Exception as e:
         logger.warning(f"⚠️ Could not edit message: {e}")
-        # fallback send
         await context.bot.send_message(
             chat_id=update.effective_chat.id,
             text=safe_message,
@@ -164,9 +152,9 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
 
 
-# ---------------------------------------------
-# STEP 2: Handle iPhone choice and guided form
-# ----------------------------------------------
+# --------------------------------------
+# 📱 HANDLE iPHONE CHOICE (STEP 2)
+# ---------------------------------------
 async def handle_iphone_choice(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     tg_user = query.from_user
@@ -175,107 +163,88 @@ async def handle_iphone_choice(update: Update, context: ContextTypes.DEFAULT_TYP
 
     user_choice = "iPhone 17 Pro Max" if choice == "choose_iphone17" else "iPhone 16 Pro Max"
 
-    # Save choice
+    # ✅ Save choice + start form
     async with get_async_session() as session:
         async with session.begin():
             user = await get_or_create_user(session, tg_id=tg_user.id, username=tg_user.username)
             user.choice = user_choice
+            user.winner_stage = "ask_name"
+            user.winner_data = {}
             await session.commit()
 
     await query.edit_message_text(
-        f"✅ You selected: <b>{user_choice}</b>\n\n"
-        "Let’s get your delivery details next 📦",
+        f"✅ You selected: <b>{user_choice}</b>\n\nLet’s get your delivery details next 📦",
         parse_mode="HTML",
     )
-
-    context.user_data["winner_stage"] = "ask_name"
-    context.user_data["winner_choice"] = user_choice
 
     await query.message.reply_text("1️⃣ What’s your <b>full name?</b>", parse_mode="HTML")
 
 
 # -------------------------------------------------------
-# STEP 3: Handle form responses (name → phone → address)
-# --------------------------------------------------------
+# 🧠 PERSISTENT WINNER FORM (DB-BACKED)
+# -------------------------------------------------------
 async def winner_form_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg_user = update.effective_user
     text = update.message.text.strip()
 
-    stage = context.user_data.get("winner_stage")
-    choice = context.user_data.get("winner_choice")
+    async with get_async_session() as session:
+        async with session.begin():
+            user = await get_or_create_user(session, tg_id=tg_user.id, username=tg_user.username)
+            stage = user.winner_stage
+            data = user.winner_data or {}
+            choice = user.choice
 
-    if not stage:
-        return  # not part of the guided form flow
-
-    # --- Step 1: Full Name
-    if stage == "ask_name":
-        context.user_data["full_name"] = text
-        context.user_data["winner_stage"] = "ask_phone"
-        await update.message.reply_text(
-            "2️⃣ What’s your <b>phone number?</b>", parse_mode="HTML"
-        )
-        return
-
-    # --- Step 2: Phone Number
-    if stage == "ask_phone":
-        context.user_data["phone"] = text
-        context.user_data["winner_stage"] = "ask_address"
-        await update.message.reply_text(
-            "3️⃣ Please enter your <b>delivery address</b> 🏠", parse_mode="HTML"
-        )
-        return
-
-    # --- Step 3: Delivery Address
-    if stage == "ask_address":
-        context.user_data["address"] = text
-        context.user_data["winner_stage"] = None  # reset flow
-
-        full_name = context.user_data["full_name"]
-        phone = context.user_data["phone"]
-        address = context.user_data["address"]
-
-        # ✅ Save to DB
-        async with get_async_session() as session:
-            async with session.begin():
-                user = await get_or_create_user(
-                    session, tg_id=tg_user.id, username=tg_user.username
+            # 🚨 Ignore if not in a flow
+            if not stage:
+                return await update.message.reply_text(
+                    "🤔 I’m not expecting that right now.\nUse /tryluck to start again 🎰",
+                    parse_mode="HTML",
                 )
-                user.full_name = full_name
-                user.phone = phone
-                user.address = address
-                user.choice = choice
+
+            # --- Step 1: Name
+            if stage == "ask_name":
+                data["full_name"] = text
+                user.winner_stage = "ask_phone"
+                user.winner_data = data
+                await session.commit()
+                return await update.message.reply_text("2️⃣ What’s your <b>phone number?</b>", parse_mode="HTML")
+
+            # --- Step 2: Phone
+            elif stage == "ask_phone":
+                data["phone"] = text
+                user.winner_stage = "ask_address"
+                user.winner_data = data
+                await session.commit()
+                return await update.message.reply_text("3️⃣ Enter your <b>delivery address</b> 🏠", parse_mode="HTML")
+
+            # --- Step 3: Address
+            elif stage == "ask_address":
+                data["address"] = text
+                user.winner_stage = None
+                user.winner_data = {}
                 await session.commit()
 
-        # ✅ Confirm to winner
-        await update.message.reply_text(
-            "✅ <b>All done!</b>\n\n"
-            "Your delivery details have been recorded successfully. 📦\n"
-            "Our team will contact you soon to arrange your prize delivery. 🚚✨",
-            parse_mode="HTML",
-        )
-
-        # ✅ Notify admin privately
-        try:
-            if ADMIN_USER_ID:
-                alert_message = (
-                    f"📢 <b>NEW WINNER ALERT!</b>\n\n"
-                    f"👤 <b>Name:</b> {full_name}\n"
-                    f"📱 <b>Phone:</b> {phone}\n"
-                    f"🏠 <b>Address:</b> {address}\n"
-                    f"🎁 <b>Choice:</b> {choice}\n"
-                    f"🆔 <b>Telegram:</b> @{tg_user.username or tg_user.first_name}\n"
-                    f"🕒 <i>Recorded just now</i>"
+                await update.message.reply_text(
+                    "✅ <b>All done!</b>\n\nYour delivery details have been recorded successfully. 📦\n"
+                    "Our team will contact you soon to arrange your prize delivery. 🚚✨",
+                    parse_mode="HTML",
                 )
 
-                await context.bot.send_message(
-                    chat_id=ADMIN_USER_ID, text=alert_message, parse_mode="HTML"
-                )
-                logger.info(f"📨 Admin notified about winner {tg_user.id}")
-            else:
-                logger.warning("⚠️ ADMIN_USER_ID not set — skipping admin notification")
-
-        except Exception as e:
-            logger.error(f"❌ Failed to send admin alert: {e}")
+                # ✅ Notify Admin
+                try:
+                    if ADMIN_USER_ID:
+                        alert = (
+                            f"📢 <b>NEW WINNER ALERT!</b>\n\n"
+                            f"👤 <b>Name:</b> {data['full_name']}\n"
+                            f"📱 <b>Phone:</b> {data['phone']}\n"
+                            f"🏠 <b>Address:</b> {data['address']}\n"
+                            f"🎁 <b>Choice:</b> {choice}\n"
+                            f"🆔 <b>Telegram:</b> @{tg_user.username or tg_user.first_name}\n"
+                            f"🕒 <i>Recorded just now</i>"
+                        )
+                        await context.bot.send_message(chat_id=ADMIN_USER_ID, text=alert, parse_mode="HTML")
+                except Exception as e:
+                    logger.error(f"❌ Failed to alert admin: {e}")
 
 
 # ---------------------------------------------------------------
