@@ -304,11 +304,11 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
 
     for w in winners:
         text_lines.append(
-            f"👤 <b>{w.full_name or '-'}<\/b>\n"
+            f"👤 <b>{w.full_name or '-'}</b>\n"
             f"📱 {w.phone or 'N/A'}\n"
             f"📦 {w.address or 'N/A'}\n"
             f"🎁 {w.choice or '-'}\n"
-            f"🚚 Status: <b>{(w.delivery_status or 'Pending')}<\/b>\n"
+            f"🚚 Status: <b>{(w.delivery_status or 'Pending')}</b>\n"
             f"🔗 @{(w.username or 'N/A')}\n"
         )
 
