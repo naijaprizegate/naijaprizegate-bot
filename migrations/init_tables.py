@@ -208,6 +208,22 @@ def main():
         END$$;
         """)
 
+        # ✅ Add delivery_status column if missing
+        cur.execute("""
+        DO $$
+        BEGIN
+            IF NOT EXISTS (
+                SELECT 1 FROM information_schema.columns
+                WHERE table_name='users' AND column_name='delivery_status'
+            ) THEN
+                ALTER TABLE users ADD COLUMN delivery_status TEXT DEFAULT 'Pending';
+                RAISE NOTICE '🆕 Added column delivery_status to users';
+            END IF;
+        END$$;
+        """)
+        print("✅ delivery_status column ensured")
+
+        
         # ✅ Ensure at least one GameState row exists
         cur.execute("INSERT INTO game_state (id) VALUES (1) ON CONFLICT (id) DO NOTHING;")
         print("✅ ensured default game_state row (id=1)")
