@@ -154,7 +154,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # --------------------------------------
 # 📱 HANDLE iPHONE CHOICE (STEP 2)
-# ---------------------------------------
+# --------------------------------------
 async def handle_iphone_choice(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     tg_user = query.from_user
@@ -165,12 +165,11 @@ async def handle_iphone_choice(update: Update, context: ContextTypes.DEFAULT_TYP
 
     # ✅ Save choice + start form
     async with get_async_session() as session:
-        async with session.begin():
-            user = await get_or_create_user(session, tg_id=tg_user.id, username=tg_user.username)
-            user.choice = user_choice
-            user.winner_stage = "ask_name"
-            user.winner_data = {}
-            await session.commit()
+        user = await get_or_create_user(session, tg_id=tg_user.id, username=tg_user.username)
+        user.choice = user_choice
+        user.winner_stage = "ask_name"
+        user.winner_data = {}
+        await session.commit()
 
     await query.edit_message_text(
         f"✅ You selected: <b>{user_choice}</b>\n\nLet’s get your delivery details next 📦",
@@ -188,64 +187,128 @@ async def winner_form_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
     text = update.message.text.strip()
 
     async with get_async_session() as session:
-        async with session.begin():
-            user = await get_or_create_user(session, tg_id=tg_user.id, username=tg_user.username)
-            stage = user.winner_stage
-            data = user.winner_data or {}
-            choice = user.choice
+        user = await get_or_create_user(session, tg_id=tg_user.id, username=tg_user.username)
+        stage = user.winner_stage
+        data = user.winner_data or {}
+        choice = user.choice
 
-            # 🚨 Ignore if not in a flow
-            if not stage:
+        # 🚨 Ignore if not in a flow
+        if not stage:
+            return await update.message.reply_text(
+                "🤔 I’m not expecting that right now.\nUse /tryluck to start again 🎰",
+                parse_mode="HTML",
+            )
+
+        # --- Step 1: Name
+        if stage == "ask_name":
+            data["full_name"] = text
+            user.winner_stage = "ask_phone"
+            user.winner_data = data
+            await session.commit()
+            return await update.message.reply_text("2️⃣ What’s your <b>phone number?</b>", parse_mode="HTML")
+
+        # --- Step 2: Phone
+        elif stage == "ask_phone":
+            # ✅ Basic validation
+            if not text.replace("+", "").replace(" ", "").isdigit():
                 return await update.message.reply_text(
-                    "🤔 I’m not expecting that right now.\nUse /tryluck to start again 🎰",
-                    parse_mode="HTML",
+                    "⚠️ Please enter a valid phone number (digits only).", parse_mode="HTML"
                 )
 
-            # --- Step 1: Name
-            if stage == "ask_name":
-                data["full_name"] = text
-                user.winner_stage = "ask_phone"
-                user.winner_data = data
-                await session.commit()
-                return await update.message.reply_text("2️⃣ What’s your <b>phone number?</b>", parse_mode="HTML")
+            data["phone"] = text
+            user.winner_stage = "ask_address"
+            user.winner_data = data
+            await session.commit()
+            return await update.message.reply_text("3️⃣ Enter your <b>delivery address</b> 🏠", parse_mode="HTML")
 
-            # --- Step 2: Phone
-            elif stage == "ask_phone":
-                data["phone"] = text
-                user.winner_stage = "ask_address"
-                user.winner_data = data
-                await session.commit()
-                return await update.message.reply_text("3️⃣ Enter your <b>delivery address</b> 🏠", parse_mode="HTML")
+        # --- Step 3: Address (Final Step Before Confirmation)
+        elif stage == "ask_address":
+            data["address"] = text
 
-            # --- Step 3: Address
-            elif stage == "ask_address":
-                data["address"] = text
-                user.winner_stage = None
-                user.winner_data = {}
-                await session.commit()
+            summary = (
+                f"📋 <b>Please confirm your details:</b>\n\n"
+                f"👤 <b>Name:</b> {data['full_name']}\n"
+                f"📱 <b>Phone:</b> {data['phone']}\n"
+                f"🏠 <b>Address:</b> {data['address']}\n"
+                f"🎁 <b>Selected Prize:</b> {choice}\n\n"
+                "Are these details correct?"
+            )
 
-                await update.message.reply_text(
-                    "✅ <b>All done!</b>\n\nYour delivery details have been recorded successfully. 📦\n"
-                    "Our team will contact you soon to arrange your prize delivery. 🚚✨",
-                    parse_mode="HTML",
-                )
+            keyboard = [
+                [
+                    InlineKeyboardButton("✅ Confirm", callback_data="confirm_yes"),
+                    InlineKeyboardButton("🔁 Edit", callback_data="confirm_no"),
+                ]
+            ]
+            reply_markup = InlineKeyboardMarkup(keyboard)
 
-                # ✅ Notify Admin
-                try:
-                    if ADMIN_USER_ID:
-                        alert = (
-                            f"📢 <b>NEW WINNER ALERT!</b>\n\n"
-                            f"👤 <b>Name:</b> {data['full_name']}\n"
-                            f"📱 <b>Phone:</b> {data['phone']}\n"
-                            f"🏠 <b>Address:</b> {data['address']}\n"
-                            f"🎁 <b>Choice:</b> {choice}\n"
-                            f"🆔 <b>Telegram:</b> @{tg_user.username or tg_user.first_name}\n"
-                            f"🕒 <i>Recorded just now</i>"
-                        )
-                        await context.bot.send_message(chat_id=ADMIN_USER_ID, text=alert, parse_mode="HTML")
-                except Exception as e:
-                    logger.error(f"❌ Failed to alert admin: {e}")
+            user.winner_stage = "confirm_details"
+            user.winner_data = data
+            await session.commit()
 
+            return await update.message.reply_text(summary, parse_mode="HTML", reply_markup=reply_markup)
+
+
+# -------------------------------------------------------
+# 🎯 HANDLE CONFIRMATION BUTTONS
+# -------------------------------------------------------
+async def handle_confirmation_choice(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    tg_user = query.from_user
+    choice = query.data
+    await query.answer()
+
+    async with get_async_session() as session:
+        user = await get_or_create_user(session, tg_id=tg_user.id, username=tg_user.username)
+        data = user.winner_data or {}
+        prize_choice = user.choice
+
+        # --- User wants to edit
+        if choice == "confirm_no":
+            user.winner_stage = "ask_name"
+            user.winner_data = {}
+            await session.commit()
+
+            await query.edit_message_text(
+                "🔁 Okay, let’s start over.\n\n1️⃣ What’s your <b>full name?</b>",
+                parse_mode="HTML",
+            )
+            return
+
+        # --- User confirms
+        elif choice == "confirm_yes":
+            user.winner_stage = None
+            user.winner_data = {}
+            await session.commit()
+
+            await query.edit_message_text(
+                "✅ <b>All done!</b>\n\nYour delivery details have been recorded successfully. 📦\n"
+                "Our team will contact you soon to arrange your prize delivery. 🚚✨",
+                parse_mode="HTML",
+            )
+
+            # ✅ Notify Admin safely
+            try:
+                if ADMIN_USER_ID:
+                    username_display = (
+                        f"@{tg_user.username}"
+                        if tg_user.username
+                        else tg_user.full_name or tg_user.first_name
+                    )
+
+                    alert = (
+                        f"📢 <b>NEW WINNER ALERT!</b>\n\n"
+                        f"👤 <b>Name:</b> {data['full_name']}\n"
+                        f"📱 <b>Phone:</b> {data['phone']}\n"
+                        f"🏠 <b>Address:</b> {data['address']}\n"
+                        f"🎁 <b>Choice:</b> {prize_choice}\n"
+                        f"🆔 <b>Telegram:</b> {username_display}\n"
+                        f"🕒 <i>Recorded just now</i>"
+                    )
+                    await context.bot.send_message(chat_id=ADMIN_USER_ID, text=alert, parse_mode="HTML")
+
+            except Exception as e:
+                logger.error(f"❌ Failed to alert admin: {e}")
 
 # ---------------------------------------------------------------
 # Callback for "Available Tries" button
@@ -285,5 +348,7 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(tryluck_callback, pattern="^tryluck$"))
     application.add_handler(CallbackQueryHandler(show_tries_callback, pattern="^show_tries$"))
     application.add_handler(CallbackQueryHandler(handle_iphone_choice, pattern="^choose_iphone"))
+    application.add_handler(CallbackQueryHandler(handle_confirmation_choice, pattern="^confirm_"))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, winner_form_handler))
+    
 
