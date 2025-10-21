@@ -1,13 +1,19 @@
 # ===============================================================
-# handlers/tryluck.py  (✅ HTML version — Telegram-safe <br/>)
+# handlers/tryluck.py  (✅ Cleaned + Fixed Handler Order)
 # ===============================================================
 import os
 import asyncio
 import random
 import logging
+import re
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext import CommandHandler, CallbackQueryHandler, ContextTypes
-from telegram.ext import MessageHandler, filters
+from telegram.ext import (
+    CommandHandler,
+    CallbackQueryHandler,
+    MessageHandler,
+    ContextTypes,
+    filters,
+)
 from helpers import get_or_create_user
 from services.tryluck import spin_logic
 from db import get_async_session
@@ -15,42 +21,35 @@ from models import GameState  # ✅ handles game cycle reset
 
 logger = logging.getLogger(__name__)
 
-from os import getenv
-ADMIN_USER_ID = int(getenv("ADMIN_USER_ID", 0))
+# -------------------------------
+# 🔐 Admin
+# -------------------------------
+ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
 
-import re
-
+# -------------------------------
+# Markdown escape helper
+# -------------------------------
 def md_escape(text: str) -> str:
-    """
-    Escapes MarkdownV2 special characters for Telegram.
-    """
     escape_chars = r'_*[]()~`>#+-=|{}.!'
     return re.sub(f'([{re.escape(escape_chars)}])', r'\\\1', text)
 
-# --------------------
+
+# -------------------------------
 # Inline Keyboards
-# --------------------
+# -------------------------------
 def make_tryluck_keyboard():
-    return InlineKeyboardMarkup(
+    return InlineKeyboardMarkup([
         [
-            [
-                InlineKeyboardButton("🎰 Try Again", callback_data="tryluck"),
-                InlineKeyboardButton("📊 Available Tries", callback_data="show_tries"),
-            ]
+            InlineKeyboardButton("🎰 Try Again", callback_data="tryluck"),
+            InlineKeyboardButton("📊 Available Tries", callback_data="show_tries"),
         ]
-    )
-
-# ------------------------------------------------------
-# 🧠 GLOBAL STORE — MULTI-WINNER SAFE TRYLUCK HANDLER
-# ------------------------------------------------------
-winner_flows = {}  # { user_id: {"stage": ..., "choice": ..., "data": {...}} }
+    ])
 
 
-# ------------------------------
+# -------------------------------
 # 🎰 TRYLUCK HANDLER (Main)
-# ------------------------------
+# -------------------------------
 async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handles /tryluck command or button click"""
     tg_user = update.effective_user
     logger.info(f"🔔 /tryluck called by {tg_user.id} ({tg_user.username})")
 
@@ -76,9 +75,6 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             logger.exception(f"❌ Error during /tryluck for {tg_user.id}: {e}")
             outcome = "error"
 
-    # -----------------------------
-    # 🪩 OUTCOME HANDLING
-    # ------------------------------
     if outcome == "no_tries":
         return await update.effective_message.reply_text(
             "😅 You don’t have any tries left! Buy more spins or earn free ones.",
@@ -132,7 +128,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if outcome == "win":
             choice_keyboard = InlineKeyboardMarkup([
                 [InlineKeyboardButton("📱 iPhone 16 Pro Max", callback_data="choose_iphone16")],
-                [InlineKeyboardButton("📱 iPhone 17 Pro Max", callback_data="choose_iphone17")]
+                [InlineKeyboardButton("📱 iPhone 17 Pro Max", callback_data="choose_iphone17")],
             ])
 
             await msg.reply_text(
@@ -140,21 +136,17 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 "You’ve unlocked the <b>Grand Jackpot Prize!</b> 🏆\n\n"
                 "Please choose your preferred reward below 👇",
                 parse_mode="HTML",
-                reply_markup=choice_keyboard
+                reply_markup=choice_keyboard,
             )
 
     except Exception as e:
         logger.warning(f"⚠️ Could not edit message: {e}")
-        await context.bot.send_message(
-            chat_id=update.effective_chat.id,
-            text=safe_message,
-            parse_mode="HTML",
-        )
+        await context.bot.send_message(chat_id=update.effective_chat.id, text=safe_message, parse_mode="HTML")
 
 
-# --------------------------------------
+# -------------------------------
 # 📱 HANDLE iPHONE CHOICE (STEP 2)
-# --------------------------------------
+# -------------------------------
 async def handle_iphone_choice(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     tg_user = query.from_user
@@ -163,7 +155,6 @@ async def handle_iphone_choice(update: Update, context: ContextTypes.DEFAULT_TYP
 
     user_choice = "iPhone 17 Pro Max" if choice == "choose_iphone17" else "iPhone 16 Pro Max"
 
-    # ✅ Save choice + start form
     async with get_async_session() as session:
         user = await get_or_create_user(session, tg_id=tg_user.id, username=tg_user.username)
         user.choice = user_choice
@@ -175,13 +166,12 @@ async def handle_iphone_choice(update: Update, context: ContextTypes.DEFAULT_TYP
         f"✅ You selected: <b>{user_choice}</b>\n\nLet’s get your delivery details next 📦",
         parse_mode="HTML",
     )
-
     await query.message.reply_text("1️⃣ What’s your <b>full name?</b>", parse_mode="HTML")
 
 
-# -------------------------------------------------------
-# 🧠 PERSISTENT WINNER FORM (DB-BACKED)
-# -------------------------------------------------------
+# -------------------------------
+# 🧠 WINNER FORM HANDLER
+# -------------------------------
 async def winner_form_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg_user = update.effective_user
     text = update.message.text.strip()
@@ -192,14 +182,13 @@ async def winner_form_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         data = user.winner_data or {}
         choice = user.choice
 
-        # 🚨 Ignore if not in a flow
         if not stage:
             return await update.message.reply_text(
                 "🤔 I’m not expecting that right now.\nUse /tryluck to start again 🎰",
                 parse_mode="HTML",
             )
 
-        # --- Step 1: Name
+        # 1️⃣ Name
         if stage == "ask_name":
             data["full_name"] = text
             user.winner_stage = "ask_phone"
@@ -207,9 +196,8 @@ async def winner_form_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
             await session.commit()
             return await update.message.reply_text("2️⃣ What’s your <b>phone number?</b>", parse_mode="HTML")
 
-        # --- Step 2: Phone
+        # 2️⃣ Phone
         elif stage == "ask_phone":
-            # ✅ Basic validation
             if not text.replace("+", "").replace(" ", "").isdigit():
                 return await update.message.reply_text(
                     "⚠️ Please enter a valid phone number (digits only).", parse_mode="HTML"
@@ -221,10 +209,9 @@ async def winner_form_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
             await session.commit()
             return await update.message.reply_text("3️⃣ Enter your <b>delivery address</b> 🏠", parse_mode="HTML")
 
-        # --- Step 3: Address (Final Step Before Confirmation)
+        # 3️⃣ Address (Final step)
         elif stage == "ask_address":
             data["address"] = text
-
             summary = (
                 f"📋 <b>Please confirm your details:</b>\n\n"
                 f"👤 <b>Name:</b> {data['full_name']}\n"
@@ -245,13 +232,12 @@ async def winner_form_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
             user.winner_stage = "confirm_details"
             user.winner_data = data
             await session.commit()
-
             return await update.message.reply_text(summary, parse_mode="HTML", reply_markup=reply_markup)
 
 
-# -------------------------------------------------------
-# 🎯 HANDLE CONFIRMATION BUTTONS
-# -------------------------------------------------------
+# -------------------------------
+# 🎯 CONFIRMATION HANDLER
+# -------------------------------
 async def handle_confirmation_choice(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     tg_user = query.from_user
@@ -263,19 +249,12 @@ async def handle_confirmation_choice(update: Update, context: ContextTypes.DEFAU
         data = user.winner_data or {}
         prize_choice = user.choice
 
-        # --- User wants to edit
         if choice == "confirm_no":
             user.winner_stage = "ask_name"
             user.winner_data = {}
             await session.commit()
+            return await query.edit_message_text("🔁 Okay, let’s start over.\n\n1️⃣ What’s your <b>full name?</b>", parse_mode="HTML")
 
-            await query.edit_message_text(
-                "🔁 Okay, let’s start over.\n\n1️⃣ What’s your <b>full name?</b>",
-                parse_mode="HTML",
-            )
-            return
-
-        # --- User confirms
         elif choice == "confirm_yes":
             user.winner_stage = None
             user.winner_data = {}
@@ -287,15 +266,10 @@ async def handle_confirmation_choice(update: Update, context: ContextTypes.DEFAU
                 parse_mode="HTML",
             )
 
-            # ✅ Notify Admin safely
+            # Notify Admin safely
             try:
                 if ADMIN_USER_ID:
-                    username_display = (
-                        f"@{tg_user.username}"
-                        if tg_user.username
-                        else tg_user.full_name or tg_user.first_name
-                    )
-
+                    username_display = f"@{tg_user.username}" if tg_user.username else tg_user.full_name or tg_user.first_name
                     alert = (
                         f"📢 <b>NEW WINNER ALERT!</b>\n\n"
                         f"👤 <b>Name:</b> {data['full_name']}\n"
@@ -306,13 +280,13 @@ async def handle_confirmation_choice(update: Update, context: ContextTypes.DEFAU
                         f"🕒 <i>Recorded just now</i>"
                     )
                     await context.bot.send_message(chat_id=ADMIN_USER_ID, text=alert, parse_mode="HTML")
-
             except Exception as e:
                 logger.error(f"❌ Failed to alert admin: {e}")
 
-# ---------------------------------------------------------------
-# Callback for "Available Tries" button
-# ---------------------------------------------------------------
+
+# -------------------------------
+# 📊 SHOW TRIES CALLBACK
+# -------------------------------
 async def show_tries_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg_user = update.effective_user
     logger.info(f"📊 show_tries_callback called by tg_id={tg_user.id}")
@@ -323,7 +297,7 @@ async def show_tries_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         total_bonus = user.tries_bonus or 0
         total = total_paid + total_bonus
 
-        await update.callback_query.answer()  # remove "loading" animation
+        await update.callback_query.answer()
         await update.callback_query.message.reply_text(
             md_escape(
                 f"📊 *Available Tries*\n\n"
@@ -331,24 +305,43 @@ async def show_tries_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
                 f"🎁 Bonus: {total_bonus}\n"
                 f"💫 Total: {total}"
             ),
-            parse_mode="MarkdownV2"
+            parse_mode="MarkdownV2",
         )
 
-# ---------------------------------------------------------------
-# Callback for "Try Again"
-# ---------------------------------------------------------------
+
+# -------------------------------
+# 🎰 TRY AGAIN CALLBACK
+# -------------------------------
 async def tryluck_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await tryluck_handler(update, context)
 
-# ---------------------------------------------------------------
-# Register Handlers
-# ---------------------------------------------------------------
+
+# -------------------------------
+# 🧩 FALLBACK HANDLER
+# -------------------------------
+async def fallback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handles unexpected messages gracefully"""
+    await update.message.reply_text(
+        "🤖 I’m not sure what you meant.\nUse /tryluck to spin again 🎰",
+        parse_mode="HTML",
+    )
+
+
+# -------------------------------
+# 🧩 REGISTER HANDLERS (Order Matters)
+# -------------------------------
 def register_handlers(application):
+    # 1️⃣ Commands
     application.add_handler(CommandHandler("tryluck", tryluck_handler))
+
+    # 2️⃣ Callbacks (specific → general)
     application.add_handler(CallbackQueryHandler(tryluck_callback, pattern="^tryluck$"))
     application.add_handler(CallbackQueryHandler(show_tries_callback, pattern="^show_tries$"))
     application.add_handler(CallbackQueryHandler(handle_iphone_choice, pattern="^choose_iphone"))
     application.add_handler(CallbackQueryHandler(handle_confirmation_choice, pattern="^confirm_"))
-    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, winner_form_handler))
-    
 
+    # 3️⃣ Text input (name, phone, address)
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, winner_form_handler))
+
+    # 4️⃣ Catch-all fallback
+    application.add_handler(MessageHandler(filters.ALL, fallback_handler))
