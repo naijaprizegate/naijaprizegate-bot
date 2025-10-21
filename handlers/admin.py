@@ -1,6 +1,7 @@
 # ==============================================================
 # handlers/admin.py — Clean Unified Admin System (HTML Safe)
 # ==============================================================
+
 import os
 import re
 import asyncio
@@ -251,7 +252,7 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
 
     # parse page & filter
     page = 1
-    filter_status = None  # None| "Pending"|"In Transit"|"Delivered"
+    filter_status = None  # None | "Pending" | "In Transit" | "Delivered"
     if query and query.data.startswith("admin_winners"):
         parts = query.data.split(":")  # e.g. admin_winners:transit:2
         if len(parts) >= 2:
@@ -285,12 +286,32 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
         all_winners = total_query.scalars().all()
         winners = all_winners[offset: offset + WINNERS_PER_PAGE]
 
+    # 🎯 Dynamic "No Winners" section
     if not winners:
-        text = "😅 No winners found for this category."
-        if query:
-            return await query.edit_message_text(text, parse_mode="HTML")
-        return await update.effective_message.reply_text(text, parse_mode="HTML")
+        if filter_status == "In Transit":
+            text = "📦 No winner found in transit yet.\n\n💡 Tip: Try again after marking someone 'In Transit'!"
+        elif filter_status == "Delivered":
+            text = "✅ No delivered winners yet.\n\n💡 Tip: Once a delivery is done, mark it 'Delivered' to see them here."
+        elif filter_status == "Pending":
+            text = "🏆 No confirmed winners yet.\n\n💡 Tip: Winners appear here once they’re selected!"
+        else:
+            text = "🎯 No winners found yet.\n\n💡 Tip: Start a draw or mark someone as a winner!"
 
+        keyboard = InlineKeyboardMarkup([
+            [
+                InlineKeyboardButton("📦 In Transit List", callback_data="admin_winners:transit:1"),
+                InlineKeyboardButton("✅ Delivered List", callback_data="admin_winners:delivered:1")
+            ],
+            [InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")]
+        ])
+
+        if query:
+            return await query.edit_message_text(text, parse_mode="HTML", reply_markup=keyboard)
+        return await update.effective_message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
+
+    # ----------------------------
+    # If winners exist
+    # ----------------------------
     total_pages = max(1, (len(all_winners) + WINNERS_PER_PAGE - 1) // WINNERS_PER_PAGE)
     filter_label = (
         "🟡 Pending Winners" if filter_status == "Pending"
@@ -329,12 +350,11 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
     if nav_buttons:
         rows.append(nav_buttons)
 
-    # filter buttons renamed per your request
-    filter_buttons = [
+    # filter buttons
+    rows.append([
         InlineKeyboardButton("📦 In Transit List", callback_data="admin_winners:transit:1"),
         InlineKeyboardButton("✅ Delivered List", callback_data="admin_winners:delivered:1"),
-    ]
-    rows.append(filter_buttons)
+    ])
 
     # back to admin menu
     rows.append([InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")])
