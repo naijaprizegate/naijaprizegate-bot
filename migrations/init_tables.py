@@ -1,4 +1,4 @@
-import os
+import os 
 import psycopg2
 
 def main():
@@ -40,40 +40,37 @@ def main():
         cur.execute("""
         DO $$
         BEGIN
-            IF NOT EXISTS (
-                SELECT 1 FROM information_schema.columns
-                WHERE table_name='users' AND column_name='choice'
-            ) THEN
+            IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='choice') THEN
                 ALTER TABLE users ADD COLUMN choice TEXT;
-                RAISE NOTICE '🆕 Added column choice to users';
             END IF;
 
-            IF NOT EXISTS (
-                SELECT 1 FROM information_schema.columns
-                WHERE table_name='users' AND column_name='full_name'
-            ) THEN
+            IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='full_name') THEN
                 ALTER TABLE users ADD COLUMN full_name TEXT;
-                RAISE NOTICE '🆕 Added column full_name to users';
             END IF;
 
-            IF NOT EXISTS (
-                SELECT 1 FROM information_schema.columns
-                WHERE table_name='users' AND column_name='phone'
-            ) THEN
+            IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='phone') THEN
                 ALTER TABLE users ADD COLUMN phone TEXT;
-                RAISE NOTICE '🆕 Added column phone to users';
             END IF;
 
-            IF NOT EXISTS (
-                SELECT 1 FROM information_schema.columns
-                WHERE table_name='users' AND column_name='address'
-            ) THEN
+            IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='address') THEN
                 ALTER TABLE users ADD COLUMN address TEXT;
-                RAISE NOTICE '🆕 Added column address to users';
+            END IF;
+
+            IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='delivery_status') THEN
+                ALTER TABLE users ADD COLUMN delivery_status TEXT DEFAULT 'Pending';
+            END IF;
+
+            -- 🆕 Add persistent winner form fields
+            IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='winner_stage') THEN
+                ALTER TABLE users ADD COLUMN winner_stage TEXT;
+            END IF;
+
+            IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='winner_data') THEN
+                ALTER TABLE users ADD COLUMN winner_data JSON DEFAULT '{}'::json;
             END IF;
         END$$;
         """)
-        print("✅ winner fields ensured (choice, full_name, phone, address)")
+        print("✅ winner fields ensured (choice, full_name, phone, address, delivery_status, winner_stage, winner_data)")
 
         # ----------------------
         # 2. Global Counter
@@ -132,7 +129,6 @@ def main():
                   AND data_type IN ('integer', 'bigint')
             ) THEN
                 ALTER TABLE payments ALTER COLUMN flw_tx_id TYPE VARCHAR USING flw_tx_id::varchar;
-                RAISE NOTICE '🔄 Converted flw_tx_id to VARCHAR';
             END IF;
         END$$;
         """)
@@ -192,39 +188,9 @@ def main():
             updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
-        print("✅ game_state table ensured (with lifetime_paid_tries)")
+        print("✅ game_state table ensured")
 
-        # ✅ Add lifetime_paid_tries column if missing
-        cur.execute("""
-        DO $$
-        BEGIN
-            IF NOT EXISTS (
-                SELECT 1 FROM information_schema.columns
-                WHERE table_name='game_state' AND column_name='lifetime_paid_tries'
-            ) THEN
-                ALTER TABLE game_state ADD COLUMN lifetime_paid_tries INT DEFAULT 0;
-                RAISE NOTICE '🆕 Added column lifetime_paid_tries to game_state';
-            END IF;
-        END$$;
-        """)
-
-        # ✅ Add delivery_status column if missing
-        cur.execute("""
-        DO $$
-        BEGIN
-            IF NOT EXISTS (
-                SELECT 1 FROM information_schema.columns
-                WHERE table_name='users' AND column_name='delivery_status'
-            ) THEN
-                ALTER TABLE users ADD COLUMN delivery_status TEXT DEFAULT 'Pending';
-                RAISE NOTICE '🆕 Added column delivery_status to users';
-            END IF;
-        END$$;
-        """)
-        print("✅ delivery_status column ensured")
-
-        
-        # ✅ Ensure at least one GameState row exists
+        # ✅ Ensure default GameState row
         cur.execute("INSERT INTO game_state (id) VALUES (1) ON CONFLICT (id) DO NOTHING;")
         print("✅ ensured default game_state row (id=1)")
 
