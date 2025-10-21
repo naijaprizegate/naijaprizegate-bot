@@ -9,7 +9,7 @@ import logging
 from datetime import datetime, timezone
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, filters
-from sqlalchemy import select, update
+from sqlalchemy import select, update as sql_update
 from db import AsyncSessionLocal, get_async_session
 from helpers import add_tries, get_user_by_id
 from models import Proof, User, GameState, GlobalCounter
@@ -302,7 +302,7 @@ async def handle_delivery_status(update: Update, context: ContextTypes.DEFAULT_T
 
     async with get_async_session() as session:
         async with session.begin():
-            await session.execute(update(User).where(User.id == user_id).values(delivery_status=new_status))
+            await session.execute(sql_update(User).where(User.id == user_id).values(delivery_status=new_status))
             result = await session.execute(select(User).where(User.id == user_id))
             winner = result.scalar_one_or_none()
         await session.commit()
@@ -335,3 +335,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(admin_callback, pattern="^admin_"))
     application.add_handler(CallbackQueryHandler(handle_delivery_status, pattern=r"^status_"))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, user_search_handler))
+
