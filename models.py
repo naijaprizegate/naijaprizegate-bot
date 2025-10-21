@@ -4,7 +4,7 @@
 import uuid
 from sqlalchemy import (
     Column, String, Integer, ForeignKey, Text, TIMESTAMP, CheckConstraint,
-    Boolean, BigInteger
+    Boolean, BigInteger, JSON
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
