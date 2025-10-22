@@ -284,7 +284,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return await safe_edit("🔁 <b>Cycle Reset!</b> New round begins.", parse_mode="HTML")
 
     # ----------------------------
-    # Proof Approve / Reject (✅ Auto-Move + Notify User + Return to Admin Panel)
+    # Proof Approve / Reject (✅ Auto-Move + Notify User + Resubmit Option + Return to Admin Panel)
     # ----------------------------
     try:
         action, proof_id = query.data.split(":")
@@ -303,18 +303,27 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         user = await session.get(User, proof.user_id)
         telegram_id = getattr(user, "tg_id", None)
 
+        # 🎯 Common user main menu buttons
+        user_menu_keyboard = [
+            [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
+            [InlineKeyboardButton("💳 Buy Tries", callback_data="buy")],
+            [InlineKeyboardButton("🎁 Free Tries", callback_data="free")],
+            [InlineKeyboardButton("📊 Available Tries", callback_data="show_tries")],
+        ]
+
         if action == "admin_approve":
             proof.status = "approved"
             await add_tries(session, proof.user_id, count=1, paid=False)
             msg = "✅ Proof approved and bonus try added!"
 
-            # 🎉 Notify user of approval
+            # 🎉 Notify user (with main menu)
             if telegram_id:
                 try:
                     await context.bot.send_message(
                         telegram_id,
                         "🎉 Your proof has been approved! You’ve received 1 bonus try. Good luck 🍀",
-                        parse_mode="HTML"
+                        parse_mode="HTML",
+                        reply_markup=InlineKeyboardMarkup(user_menu_keyboard)
                     )
                 except Exception as e:
                     logger.warning(f"⚠️ Could not notify user {telegram_id}: {e}")
@@ -325,15 +334,22 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             proof.status = "rejected"
             msg = "❌ Proof rejected."
 
-            # ⚠️ Notify user of rejection
+            # ⏪ Add “Resubmit Proof” button at the top
+            reject_keyboard = [
+                [InlineKeyboardButton("📤 Resubmit Proof", callback_data="resubmit_proof")],
+                *user_menu_keyboard
+            ]
+
+            # ⚠️ Notify user (with resubmit + main menu)
             if telegram_id:
                 try:
                     await context.bot.send_message(
-                    telegram_id,
-                    "❌ Your proof has been reviewed but unfortunately was rejected. "
-                    "Please ensure your next proof meets the rules.",
-                    parse_mode="HTML"
-                )
+                        telegram_id,
+                        "❌ Your proof has been reviewed but unfortunately was rejected.\n\n"
+                        "Please ensure your next proof meets the rules and resubmit below 👇",
+                        parse_mode="HTML",
+                        reply_markup=InlineKeyboardMarkup(reject_keyboard)
+                    )
                 except Exception as e:
                     logger.warning(f"⚠️ Could not notify user {telegram_id}: {e}")
             else:
