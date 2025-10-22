@@ -94,14 +94,15 @@ async def pending_proofs(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 )
 
 # ----------------------------
-# Admin Callback Router
+# Admin Callback Router (✅ Fixed)
 # ----------------------------
 async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    await query.answer()  # acknowledge click (prevents spinner)
+    await query.answer()  # acknowledge click
     user_id = update.effective_user.id
 
     async def safe_edit(text, **kwargs):
+        """Safely edit caption/text depending on message type."""
         try:
             if query.message.photo:
                 await query.edit_message_caption(caption=text, **kwargs)
@@ -110,9 +111,13 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         except Exception as e:
             logger.warning(f"[WARN] edit fail: {e}")
 
+    # 🔐 Restrict admin access
     if user_id != ADMIN_USER_ID:
         return await safe_edit("❌ Access denied.", parse_mode="HTML")
 
+    # ----------
+    # Admin Menu Routing
+    # ----------
     if query.data.startswith("admin_menu:"):
         action = query.data.split(":")[1]
 
@@ -125,6 +130,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             async with AsyncSessionLocal() as session:
                 gc = await session.get(GlobalCounter, 1)
                 gs = await session.get(GameState, 1)
+
             lifetime_paid = gc.paid_tries_total if gc else 0
             current_cycle = gs.current_cycle if gs else 1
             paid_this_cycle = gs.paid_tries_this_cycle if gs else 0
@@ -145,21 +151,17 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
             keyboard = InlineKeyboardMarkup([
                 [InlineKeyboardButton("🔁 Reset Cycle", callback_data="admin_confirm:reset_cycle")],
-                [InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")]
+                [InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")],
             ])
             return await safe_edit(text, parse_mode="HTML", reply_markup=keyboard)
 
         # ---- User Search ----
         elif action == "user_search":
             context.user_data["awaiting_user_search"] = True
-            return await safe_edit(
-                "🔍 <b>Send username or user ID</b> to search for a user.",
-                parse_mode="HTML"
-            )
+            return await safe_edit("🔍 <b>Send username or user ID</b> to search for a user.", parse_mode="HTML")
 
-        # ---- Winners (open winners view) ----
+        # ---- Winners ----
         elif action == "winners":
-            # show first page, all winners
             return await show_winners_section(update, context)
 
         # ---- Main Menu ----
@@ -170,35 +172,37 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 [InlineKeyboardButton("👤 User Search", callback_data="admin_menu:user_search")],
                 [InlineKeyboardButton("🏆 Winners", callback_data="admin_menu:winners")],
             ])
-            return await safe_edit(
-                "⚙️ <b>Admin Panel</b>\nChoose an action:",
-                parse_mode="HTML",
-                reply_markup=keyboard
-            )
+            return await safe_edit("⚙️ <b>Admin Panel</b>\nChoose an action:", parse_mode="HTML", reply_markup=keyboard)
 
-    # ---- Cycle reset confirm ----
+    # ----------
+    # Cycle Reset Flow
+    # ----------
     if query.data.startswith("admin_confirm:reset_cycle"):
         keyboard = InlineKeyboardMarkup([
-            [InlineKeyboardButton("✅ Yes, Reset", callback_data="admin_action:reset_cycle"),
-             InlineKeyboardButton("❌ Cancel", callback_data="admin_menu:stats")]
+            [
+                InlineKeyboardButton("✅ Yes, Reset", callback_data="admin_action:reset_cycle"),
+                InlineKeyboardButton("❌ Cancel", callback_data="admin_menu:stats"),
+            ]
         ])
         return await safe_edit("⚠️ Are you sure you want to reset the cycle?", parse_mode="HTML", reply_markup=keyboard)
 
-    # ---- Cycle reset action ----
     if query.data == "admin_action:reset_cycle":
         async with AsyncSessionLocal() as session:
             gs = await session.get(GameState, 1)
             if not gs:
                 return await safe_edit("⚠️ GameState not found.", parse_mode="HTML")
+
             gs.current_cycle += 1
             gs.paid_tries_this_cycle = 0
             gs.created_at = datetime.utcnow()
             await session.commit()
+
         await query.answer("✅ Cycle reset!", show_alert=True)
         return await safe_edit("🔁 <b>Cycle Reset!</b> New round begins.", parse_mode="HTML")
 
-    # ---- Proof approve/reject ----
-    # callback format: admin_approve:<proof_id> or admin_reject:<proof_id>
+    # -------
+    # Proof Approve / Reject
+    # --------
     try:
         action, proof_id = query.data.split(":")
     except ValueError:
@@ -207,16 +211,21 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     async with AsyncSessionLocal() as session:
         proof = await session.get(Proof, proof_id)
         if not proof or proof.status != "pending":
-            return await safe_edit("⚠️ Proof already processed.", parse_mode="HTML")
+            return await safe_edit("⚠️ Proof already processed or not found.", parse_mode="HTML")
 
         if action == "admin_approve":
             proof.status = "approved"
-            await add_tries(proof.user_id, 1, paid=False)
+
+            # ✅ FIXED: pass session into add_tries
+            await add_tries(session, proof.user_id, count=1, paid=False)
+
             msg = "✅ Proof approved and bonus try added!"
         else:
             proof.status = "rejected"
             msg = "❌ Proof rejected."
+
         await session.commit()
+
     return await safe_edit(msg, parse_mode="HTML")
 
 
