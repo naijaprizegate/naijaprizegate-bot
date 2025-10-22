@@ -127,7 +127,7 @@ async def ask_proof_upload(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.callback_query.answer()
     await update.callback_query.edit_message_text(
         "📤 Please send a *photo screenshot* showing that you followed us "
-        "on social media.\n\n"
+        "on social media\\.\n\n"
         "Once an admin approves it, you’ll receive \\+1 free try 🎉",
         parse_mode="MarkdownV2"
     )
