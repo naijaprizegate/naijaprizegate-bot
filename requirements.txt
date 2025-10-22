@@ -32,3 +32,6 @@ sentry-sdk
 # Testing & dev tools
 pytest
 pytest-asyncio
+
+python-multipart
+
