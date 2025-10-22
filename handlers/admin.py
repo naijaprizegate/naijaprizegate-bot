@@ -299,35 +299,45 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not proof or proof.status != "pending":
             return await safe_edit("⚠️ Proof already processed or not found.", parse_mode="HTML")
 
+        # ✅ Fetch the actual Telegram user ID from the User table
+        user = await session.get(User, proof.user_id)
+        telegram_id = getattr(user, "tg_id", None)
+
         if action == "admin_approve":
             proof.status = "approved"
             await add_tries(session, proof.user_id, count=1, paid=False)
             msg = "✅ Proof approved and bonus try added!"
 
             # 🎉 Notify user of approval
-            try:
-                await context.bot.send_message(
-                    proof.user_id,
-                    "🎉 Your proof has been approved! You’ve received 1 bonus try. Good luck 🍀",
-                    parse_mode="HTML"
-                )
-            except Exception as e:
-                logger.warning(f"⚠️ Could not notify user {proof.user_id}: {e}")
+            if telegram_id:
+                try:
+                    await context.bot.send_message(
+                        telegram_id,
+                        "🎉 Your proof has been approved! You’ve received 1 bonus try. Good luck 🍀",
+                        parse_mode="HTML"
+                    )
+                except Exception as e:
+                    logger.warning(f"⚠️ Could not notify user {telegram_id}: {e}")
+            else:
+                logger.warning(f"⚠️ No Telegram ID (tg_id) found for user {proof.user_id}")
 
         else:
             proof.status = "rejected"
             msg = "❌ Proof rejected."
 
             # ⚠️ Notify user of rejection
-            try:
-                await context.bot.send_message(
-                    proof.user_id,
+            if telegram_id:
+                try:
+                    await context.bot.send_message(
+                    telegram_id,
                     "❌ Your proof has been reviewed but unfortunately was rejected. "
                     "Please ensure your next proof meets the rules.",
                     parse_mode="HTML"
                 )
-            except Exception as e:
-                logger.warning(f"⚠️ Could not notify user {proof.user_id}: {e}")
+                except Exception as e:
+                    logger.warning(f"⚠️ Could not notify user {telegram_id}: {e}")
+            else:
+                logger.warning(f"⚠️ No Telegram ID (tg_id) found for user {proof.user_id}")
 
         await session.commit()
 
@@ -355,6 +365,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         parse_mode="HTML",
         reply_markup=keyboard,
     )
+
 
 # ----------------------------
 # User Search Handler
