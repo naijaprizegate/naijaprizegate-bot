@@ -167,7 +167,7 @@ async def show_single_proof(update: Update, context: ContextTypes.DEFAULT_TYPE, 
 
 
 # ----------------------------
-# Admin Callback Router (✅ Final with Proof Navigation)
+# Admin Callback Router (✅ Final with Auto-Move + Proof Navigation)
 # ----------------------------
 async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -189,14 +189,13 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return await safe_edit("❌ Access denied.", parse_mode="HTML")
 
     # ----------------------------
-    # ✅ Proof Navigation (NEW)
+    # ✅ Proof Navigation (Prev / Next)
     # ----------------------------
     if query.data.startswith("admin_proofnav:"):
         try:
             new_index = int(query.data.split(":")[1])
         except ValueError:
             return await query.answer("⚠️ Invalid navigation index.", show_alert=True)
-        # Show selected proof page
         return await show_single_proof(update, context, index=new_index)
 
     # ----------------------------
@@ -285,12 +284,15 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return await safe_edit("🔁 <b>Cycle Reset!</b> New round begins.", parse_mode="HTML")
 
     # ----------------------------
-    # Proof Approve / Reject
+    # Proof Approve / Reject (✅ Auto-Move)
     # ----------------------------
     try:
         action, proof_id = query.data.split(":")
     except ValueError:
         return await safe_edit("⚠️ Invalid callback data.", parse_mode="HTML")
+
+    if action not in ("admin_approve", "admin_reject"):
+        return  # ignore unrelated actions
 
     async with AsyncSessionLocal() as session:
         proof = await session.get(Proof, proof_id)
@@ -307,7 +309,18 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         await session.commit()
 
-    return await safe_edit(msg, parse_mode="HTML")
+    # ✅ Automatically move to the next pending proof
+    current_index = context.user_data.get("proof_index", 0)
+    proof_ids = context.user_data.get("pending_proofs", [])
+
+    if current_index + 1 < len(proof_ids):
+        context.user_data["proof_index"] = current_index + 1
+        await query.answer(msg)
+        return await show_single_proof(update, context, index=current_index + 1)
+    else:
+        # No more proofs left
+        await query.answer(msg)
+        return await safe_edit(f"{msg}\n\n✅ All proofs reviewed!", parse_mode="HTML")
 
 # ----------------------------
 # User Search Handler
@@ -605,5 +618,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(handle_delivery_status, pattern=r"^status_"))
     # user search text handler
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, user_search_handler))
-
 
