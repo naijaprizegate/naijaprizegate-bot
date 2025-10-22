@@ -284,7 +284,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return await safe_edit("🔁 <b>Cycle Reset!</b> New round begins.", parse_mode="HTML")
 
     # ----------------------------
-    # Proof Approve / Reject (✅ Auto-Move)
+    # Proof Approve / Reject (✅ Auto-Move + Notify User + Return to Admin Panel)
     # ----------------------------
     try:
         action, proof_id = query.data.split(":")
@@ -303,9 +303,31 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             proof.status = "approved"
             await add_tries(session, proof.user_id, count=1, paid=False)
             msg = "✅ Proof approved and bonus try added!"
+
+            # 🎉 Notify user of approval
+            try:
+                await context.bot.send_message(
+                    proof.user_id,
+                    "🎉 Your proof has been approved! You’ve received 1 bonus try. Good luck 🍀",
+                    parse_mode="HTML"
+                )
+            except Exception as e:
+                logger.warning(f"⚠️ Could not notify user {proof.user_id}: {e}")
+
         else:
             proof.status = "rejected"
             msg = "❌ Proof rejected."
+
+            # ⚠️ Notify user of rejection
+            try:
+                await context.bot.send_message(
+                    proof.user_id,
+                    "❌ Your proof has been reviewed but unfortunately was rejected. "
+                    "Please ensure your next proof meets the rules.",
+                    parse_mode="HTML"
+                )
+            except Exception as e:
+                logger.warning(f"⚠️ Could not notify user {proof.user_id}: {e}")
 
         await session.commit()
 
@@ -317,10 +339,22 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data["proof_index"] = current_index + 1
         await query.answer(msg)
         return await show_single_proof(update, context, index=current_index + 1)
-    else:
-        # No more proofs left
-        await query.answer(msg)
-        return await safe_edit(f"{msg}\n\n✅ All proofs reviewed!", parse_mode="HTML")
+
+    # ✅ No more proofs left → show admin panel
+    await query.answer(msg)
+
+    keyboard = InlineKeyboardMarkup([
+        [InlineKeyboardButton("📂 Pending Proofs", callback_data="admin_menu:pending_proofs")],
+        [InlineKeyboardButton("📊 Stats", callback_data="admin_menu:stats")],
+        [InlineKeyboardButton("👤 User Search", callback_data="admin_menu:user_search")],
+        [InlineKeyboardButton("🏆 Winners", callback_data="admin_menu:winners")],
+    ])
+
+    return await safe_edit(
+        f"{msg}\n\n✅ All proofs reviewed!\n\n⚙️ <b>Back to Admin Panel</b>",
+        parse_mode="HTML",
+        reply_markup=keyboard,
+    )
 
 # ----------------------------
 # User Search Handler
