@@ -7,6 +7,7 @@ import asyncio
 import logging
 from datetime import datetime, timezone
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram import InputMediaPhoto
 from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, filters
 from sqlalchemy import select, update as sql_update
 from db import AsyncSessionLocal, get_async_session
@@ -72,7 +73,6 @@ async def show_single_proof(update: Update, context: ContextTypes.DEFAULT_TYPE, 
     """Render one proof (by index) with Prev/Next buttons + Back to Admin."""
     proof_ids = context.user_data.get("pending_proofs", [])
     if not proof_ids:
-        # If triggered by callback, edit message; otherwise, reply normally
         if getattr(update, "callback_query", None):
             return await update.callback_query.edit_message_text("✅ No proofs loaded.", parse_mode="HTML")
         return await update.effective_message.reply_text("✅ No proofs loaded.", parse_mode="HTML")
@@ -127,10 +127,20 @@ async def show_single_proof(update: Update, context: ContextTypes.DEFAULT_TYPE, 
     # --- Send or edit the message depending on context
     try:
         if getattr(update, "callback_query", None):
-            await update.callback_query.edit_message_media(
-                media=InputMediaPhoto(media=proof.file_id, caption=caption, parse_mode="HTML"),
-                reply_markup=keyboard,
-            )
+            try:
+                await update.callback_query.edit_message_media(
+                    media=InputMediaPhoto(media=proof.file_id, caption=caption, parse_mode="HTML"),
+                    reply_markup=keyboard,
+                )
+            except Exception as e:
+                # fallback if not a photo message or Telegram rejects edit
+                logger.warning(f"⚠️ Fallback to sending new proof message: {e}")
+                await update.callback_query.message.reply_photo(
+                    photo=proof.file_id,
+                    caption=caption,
+                    parse_mode="HTML",
+                    reply_markup=keyboard,
+                )
         else:
             await update.effective_message.reply_photo(
                 photo=proof.file_id,
@@ -140,17 +150,20 @@ async def show_single_proof(update: Update, context: ContextTypes.DEFAULT_TYPE, 
             )
     except Exception as e:
         logger.error(f"❌ Failed to display proof {proof.id}: {e}")
-        if getattr(update, "callback_query", None):
-            await update.callback_query.edit_message_caption(
-                caption=f"⚠️ Could not display proof #{proof.id}.",
-                parse_mode="HTML",
-                reply_markup=keyboard,
-            )
-        else:
-            await update.effective_message.reply_text(
-                f"⚠️ Could not display proof #{proof.id}.",
-                parse_mode="HTML",
-            )
+        try:
+            if getattr(update, "callback_query", None):
+                await update.callback_query.edit_message_caption(
+                    caption=f"⚠️ Could not display proof #{proof.id}.",
+                    parse_mode="HTML",
+                    reply_markup=keyboard,
+                )
+            else:
+                await update.effective_message.reply_text(
+                    f"⚠️ Could not display proof #{proof.id}.",
+                    parse_mode="HTML",
+                )
+        except Exception as inner_e:
+            logger.error(f"⚠️ Nested Telegram error while showing proof: {inner_e}")
 
 
 # ----------------------------
