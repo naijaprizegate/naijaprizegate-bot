@@ -62,6 +62,7 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ),
     ]
 
+
     share_message = random.choice(share_variants)
 
     keyboard = [
@@ -155,7 +156,8 @@ async def handle_proof_photo(update: Update, context: ContextTypes.DEFAULT_TYPE)
     await update.message.reply_text(
         "✅ Proof received\\! \n\n"
         "An admin will review it shortly\\. "
-        "You’ll be notified once approved 🎉",
+        "You’ll be notified once approved 🎉\n\n"
+        "Type \\*/Start\\* to go back to the main menu\\.",
         parse_mode="MarkdownV2"
     )
 
