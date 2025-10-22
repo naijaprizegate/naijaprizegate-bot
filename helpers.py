@@ -45,16 +45,23 @@ async def get_or_create_user(
     await session.refresh(user)
     return user
 
-
 # -------------------------------------------------
 # Add tries (paid or bonus)
 # -------------------------------------------------
-async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = True) -> User:
+async def add_tries(session: AsyncSession, user_id, count: int, paid: bool = True) -> User:
     """
     Increment user's tries (paid or bonus) inside an active session.
     Also updates GameState and GlobalCounter for paid tries.
     NOTE: This function does not commit — caller must handle commit.
     """
+
+    # ✅ Fetch user first
+    result = await session.execute(select(User).where(User.id == user_id))
+    user = result.scalar_one_or_none()
+    if not user:
+        logger.warning(f"⚠️ Tried to add tries to non-existent user_id={user_id}")
+        return None
+
     logger.info(f"🌀 Adding {count} {'paid' if paid else 'bonus'} tries → user_id={user.id}")
 
     if paid:
@@ -70,7 +77,13 @@ async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = 
         # ✅ Ensure GameState exists
         gs = await session.get(GameState, 1)
         if not gs:
-            gs = GameState(id=1, current_cycle=1, paid_tries_this_cycle=0, lifetime_paid_tries=0)
+            gs = GameState(
+                id=1,
+                current_cycle=1,
+                paid_tries_this_cycle=0,
+                lifetime_paid_tries=0,
+                created_at=datetime.utcnow(),
+            )
             session.add(gs)
             await session.flush()
 
@@ -80,7 +93,6 @@ async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = 
         gs.lifetime_paid_tries = (gs.lifetime_paid_tries or 0) + count
 
         session.add_all([gc, gs])
-
         logger.info(
             f"📊 Updated GameState → lifetime={gs.lifetime_paid_tries}, cycle={gs.paid_tries_this_cycle}"
         )
@@ -97,7 +109,6 @@ async def add_tries(session: AsyncSession, user: User, count: int, paid: bool = 
         f"✅ User {user.id} now has paid={user.tries_paid}, bonus={user.tries_bonus}"
     )
     return user
-
 
 # -------------------------------------------------
 # Consume one try (bonus first, then paid)
