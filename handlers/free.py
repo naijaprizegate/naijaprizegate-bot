@@ -157,7 +157,7 @@ async def handle_proof_photo(update: Update, context: ContextTypes.DEFAULT_TYPE)
         "✅ Proof received\\! \n\n"
         "An admin will review it shortly\\. "
         "You’ll be notified once approved 🎉\n\n"
-        "Type \\*/Start\\* to go back to the main menu\\.",
+        "Type or click \\/Start\\ to go back to the main menu\\.",
         parse_mode="MarkdownV2"
     )
 
