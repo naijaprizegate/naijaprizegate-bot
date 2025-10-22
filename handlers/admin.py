@@ -49,34 +49,49 @@ async def pending_proofs(update: Update, context: ContextTypes.DEFAULT_TYPE):
         result = await session.execute(select(Proof).where(Proof.status == "pending"))
         proofs = result.scalars().all()
 
-    if not proofs:
-        text = "✅ No pending proofs at the moment."
-        if getattr(update, "callback_query", None):
-            return await update.callback_query.edit_message_text(text, parse_mode="HTML")
-        return await update.effective_message.reply_text(text, parse_mode="HTML")
+        if not proofs:
+            text = "✅ No pending proofs at the moment."
+            if getattr(update, "callback_query", None):
+                return await update.callback_query.edit_message_text(text, parse_mode="HTML")
+            return await update.effective_message.reply_text(text, parse_mode="HTML")
 
-    for proof in proofs:
-        user = await get_user_by_id(proof.user_id)
-        user_name = user.username or user.first_name or str(proof.user_id)
-        caption = (
-            f"<b>Pending Proof</b>\n"
-            f"👤 User: @{user_name}\n"
-            f"🆔 Proof ID: <code>{proof.id}</code>"
-        )
-        keyboard = InlineKeyboardMarkup([
-            [
-                InlineKeyboardButton("✅ Approve", callback_data=f"admin_approve:{proof.id}"),
-                InlineKeyboardButton("❌ Reject", callback_data=f"admin_reject:{proof.id}")
-            ]
-        ])
-        # Use HTML parse mode for caption
-        await update.effective_message.reply_photo(
-            photo=proof.file_id,
-            caption=caption,
-            parse_mode="HTML",
-            reply_markup=keyboard
-        )
+        for proof in proofs:
+            # ✅ FIXED: get_user_by_id now correctly called with session
+            user = await get_user_by_id(session, proof.user_id)
 
+            # Handle users with no username gracefully
+            user_name = (
+                f"@{user.username}" if user.username
+                else user.first_name or str(proof.user_id)
+            )
+
+            caption = (
+                f"<b>📤 Pending Proof</b>\n\n"
+                f"👤 User: {user_name}\n"
+                f"🆔 Proof ID: <code>{proof.id}</code>"
+            )
+
+            keyboard = InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton("✅ Approve", callback_data=f"admin_approve:{proof.id}"),
+                    InlineKeyboardButton("❌ Reject", callback_data=f"admin_reject:{proof.id}")
+                ]
+            ])
+
+            # ✅ Use HTML parse mode for caption
+            try:
+                await update.effective_message.reply_photo(
+                    photo=proof.file_id,
+                    caption=caption,
+                    parse_mode="HTML",
+                    reply_markup=keyboard,
+                )
+            except Exception as e:
+                logger.error(f"❌ Failed to send proof {proof.id}: {e}")
+                await update.effective_message.reply_text(
+                    f"⚠️ Could not display proof #{proof.id}.",
+                    parse_mode="HTML"
+                )
 
 # ----------------------------
 # Admin Callback Router
