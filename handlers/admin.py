@@ -1,7 +1,6 @@
 # ==============================================================
 # handlers/admin.py — Clean Unified Admin System (HTML Safe)
 # ==============================================================
-
 import os
 import re
 import asyncio
@@ -39,62 +38,123 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # ----------------------------
-# Pending Proofs
+# Pending Proofs (Paginated View + Back to Admin)
 # ----------------------------
 async def pending_proofs(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Show one pending proof at a time with Next/Prev navigation."""
     if update.effective_user.id != ADMIN_USER_ID:
         return await update.effective_message.reply_text("❌ Access denied.", parse_mode="HTML")
 
+    # --- Fetch pending proofs
     async with AsyncSessionLocal() as session:
         result = await session.execute(select(Proof).where(Proof.status == "pending"))
         proofs = result.scalars().all()
 
-        if not proofs:
-            text = "✅ No pending proofs at the moment."
-            if getattr(update, "callback_query", None):
-                return await update.callback_query.edit_message_text(text, parse_mode="HTML")
-            return await update.effective_message.reply_text(text, parse_mode="HTML")
+    # --- Handle no pending proofs
+    if not proofs:
+        text = "✅ No pending proofs at the moment."
+        if getattr(update, "callback_query", None):
+            return await update.callback_query.edit_message_text(text, parse_mode="HTML")
+        return await update.effective_message.reply_text(text, parse_mode="HTML")
 
-        for proof in proofs:
-            # ✅ FIXED: get_user_by_id now correctly called with session
-            user = await get_user_by_id(session, proof.user_id)
+    # --- Initialize pagination state in context
+    context.user_data["pending_proofs"] = [str(p.id) for p in proofs]
+    context.user_data["proof_index"] = 0
 
-            # Handle users with no username gracefully
-            user_name = (
-                f"@{user.username}" if user.username
-                else user.first_name or str(proof.user_id)
-            )
+    # --- Display the first proof
+    await show_single_proof(update, context, index=0)
 
-            caption = (
-                f"<b>📤 Pending Proof</b>\n\n"
-                f"👤 User: {user_name}\n"
-                f"🆔 Proof ID: <code>{proof.id}</code>"
-            )
-
-            keyboard = InlineKeyboardMarkup([
-                [
-                    InlineKeyboardButton("✅ Approve", callback_data=f"admin_approve:{proof.id}"),
-                    InlineKeyboardButton("❌ Reject", callback_data=f"admin_reject:{proof.id}")
-                ]
-            ])
-
-            # ✅ Use HTML parse mode for caption
-            try:
-                await update.effective_message.reply_photo(
-                    photo=proof.file_id,
-                    caption=caption,
-                    parse_mode="HTML",
-                    reply_markup=keyboard,
-                )
-            except Exception as e:
-                logger.error(f"❌ Failed to send proof {proof.id}: {e}")
-                await update.effective_message.reply_text(
-                    f"⚠️ Could not display proof #{proof.id}.",
-                    parse_mode="HTML"
-                )
 
 # ----------------------------
-# Admin Callback Router (✅ Fixed)
+# Helper: Show a single proof page
+# ----------------------------
+async def show_single_proof(update: Update, context: ContextTypes.DEFAULT_TYPE, index: int):
+    """Render one proof (by index) with Prev/Next buttons + Back to Admin."""
+    proof_ids = context.user_data.get("pending_proofs", [])
+    if not proof_ids:
+        # If triggered by callback, edit message; otherwise, reply normally
+        if getattr(update, "callback_query", None):
+            return await update.callback_query.edit_message_text("✅ No proofs loaded.", parse_mode="HTML")
+        return await update.effective_message.reply_text("✅ No proofs loaded.", parse_mode="HTML")
+
+    # --- Clamp index within range
+    total = len(proof_ids)
+    index = max(0, min(index, total - 1))
+    context.user_data["proof_index"] = index
+    proof_id = proof_ids[index]
+
+    # --- Fetch proof + user info
+    async with AsyncSessionLocal() as session:
+        proof = await session.get(Proof, proof_id)
+        if not proof:
+            if getattr(update, "callback_query", None):
+                return await update.callback_query.edit_message_text("⚠️ Proof not found.", parse_mode="HTML")
+            return await update.effective_message.reply_text("⚠️ Proof not found.", parse_mode="HTML")
+
+        user = await get_user_by_id(session, proof.user_id)
+
+    user_name = (
+        f"@{user.username}" if user and user.username
+        else user.first_name or str(proof.user_id)
+    )
+
+    caption = (
+        f"<b>📤 Pending Proof {index + 1} of {total}</b>\n\n"
+        f"👤 User: {user_name}\n"
+        f"🆔 Proof ID: <code>{proof.id}</code>"
+    )
+
+    # --- Navigation buttons
+    nav_buttons = []
+    if index > 0:
+        nav_buttons.append(InlineKeyboardButton("⬅️ Prev", callback_data=f"admin_proofnav:{index - 1}"))
+    if index < total - 1:
+        nav_buttons.append(InlineKeyboardButton("Next ➡️", callback_data=f"admin_proofnav:{index + 1}"))
+
+    # --- Inline keyboard (Approve/Reject + Nav + Back)
+    keyboard = [
+        [
+            InlineKeyboardButton("✅ Approve", callback_data=f"admin_approve:{proof.id}"),
+            InlineKeyboardButton("❌ Reject", callback_data=f"admin_reject:{proof.id}"),
+        ],
+        nav_buttons,
+        [InlineKeyboardButton("🔙 Back to Admin Menu", callback_data="admin_menu:main")],
+    ]
+
+    # Remove empty rows
+    keyboard = InlineKeyboardMarkup([row for row in keyboard if row])
+
+    # --- Send or edit the message depending on context
+    try:
+        if getattr(update, "callback_query", None):
+            await update.callback_query.edit_message_media(
+                media=InputMediaPhoto(media=proof.file_id, caption=caption, parse_mode="HTML"),
+                reply_markup=keyboard,
+            )
+        else:
+            await update.effective_message.reply_photo(
+                photo=proof.file_id,
+                caption=caption,
+                parse_mode="HTML",
+                reply_markup=keyboard,
+            )
+    except Exception as e:
+        logger.error(f"❌ Failed to display proof {proof.id}: {e}")
+        if getattr(update, "callback_query", None):
+            await update.callback_query.edit_message_caption(
+                caption=f"⚠️ Could not display proof #{proof.id}.",
+                parse_mode="HTML",
+                reply_markup=keyboard,
+            )
+        else:
+            await update.effective_message.reply_text(
+                f"⚠️ Could not display proof #{proof.id}.",
+                parse_mode="HTML",
+            )
+
+
+# ----------------------------
+# Admin Callback Router (✅ Final with Proof Navigation)
 # ----------------------------
 async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -115,9 +175,20 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if user_id != ADMIN_USER_ID:
         return await safe_edit("❌ Access denied.", parse_mode="HTML")
 
-    # ----------
+    # ----------------------------
+    # ✅ Proof Navigation (NEW)
+    # ----------------------------
+    if query.data.startswith("admin_proofnav:"):
+        try:
+            new_index = int(query.data.split(":")[1])
+        except ValueError:
+            return await query.answer("⚠️ Invalid navigation index.", show_alert=True)
+        # Show selected proof page
+        return await show_single_proof(update, context, index=new_index)
+
+    # ----------------------------
     # Admin Menu Routing
-    # ----------
+    # ----------------------------
     if query.data.startswith("admin_menu:"):
         action = query.data.split(":")[1]
 
@@ -174,9 +245,9 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             ])
             return await safe_edit("⚙️ <b>Admin Panel</b>\nChoose an action:", parse_mode="HTML", reply_markup=keyboard)
 
-    # ----------
+    # ----------------------------
     # Cycle Reset Flow
-    # ----------
+    # ----------------------------
     if query.data.startswith("admin_confirm:reset_cycle"):
         keyboard = InlineKeyboardMarkup([
             [
@@ -200,9 +271,9 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.answer("✅ Cycle reset!", show_alert=True)
         return await safe_edit("🔁 <b>Cycle Reset!</b> New round begins.", parse_mode="HTML")
 
-    # -------
+    # ----------------------------
     # Proof Approve / Reject
-    # --------
+    # ----------------------------
     try:
         action, proof_id = query.data.split(":")
     except ValueError:
@@ -215,10 +286,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         if action == "admin_approve":
             proof.status = "approved"
-
-            # ✅ FIXED: pass session into add_tries
             await add_tries(session, proof.user_id, count=1, paid=False)
-
             msg = "✅ Proof approved and bonus try added!"
         else:
             proof.status = "rejected"
@@ -227,7 +295,6 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await session.commit()
 
     return await safe_edit(msg, parse_mode="HTML")
-
 
 # ----------------------------
 # User Search Handler
