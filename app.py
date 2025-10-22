@@ -9,7 +9,7 @@ import sys
 # Force unbuffered output (Render needs this for real-time logs)
 os.environ["PYTHONUNBUFFERED"] = "1"
 
-from fastapi import FastAPI, Query, Request, HTTPException, Depends, APIRouter
+from fastapi import FastAPI, Query, Request, HTTPException, Depends, APIRouter, Form
 from fastapi.responses import HTMLResponse, JSONResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
@@ -514,5 +514,163 @@ async def flutterwave_redirect_status(
 async def health_check():
     return {"status": "ok", "bot_initialized": application is not None}
 
+# ---------------------------------------------------------------
+# 🏆 WINNER FORM — HTML + API (Web-Based Flow)
+# ---------------------------------------------------------------
+# ---------------------------------------------------------------
+# 📝 WINNER FORM PAGE
+# ---------------------------------------------------------------
+@app.get("/winner-form", response_class=HTMLResponse)
+async def winner_form_page(tgid: int, choice: str = "Prize"):
+    """
+    Display the prize claim form for winners.
+    """
+    return f"""
+    <html>
+        <head>
+            <title>Prize Claim Form</title>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    max-width: 420px;
+                    margin: 50px auto;
+                    padding: 25px;
+                    border: 1px solid #ddd;
+                    border-radius: 12px;
+                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                    background-color: #fafafa;
+                }}
+                h2 {{
+                    text-align: center;
+                    color: #333;
+                }}
+                label {{
+                    font-weight: bold;
+                    display: block;
+                    margin-top: 12px;
+                }}
+                input, textarea {{
+                    width: 100%;
+                    padding: 10px;
+                    margin-top: 6px;
+                    border-radius: 6px;
+                    border: 1px solid #ccc;
+                    font-size: 1em;
+                }}
+                button {{
+                    width: 100%;
+                    margin-top: 20px;
+                    padding: 12px;
+                    background-color: #28a745;
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    font-size: 1em;
+                    cursor: pointer;
+                }}
+                button:hover {{
+                    background-color: #218838;
+                }}
+            </style>
+        </head>
+        <body>
+            <h2>🎉 Congratulations!</h2>
+            <p>You’ve won a <b>{choice}</b>!</p>
+            <p>Please provide your delivery details below 👇</p>
+
+            <form action="/api/save_winner" method="post">
+                <input type="hidden" name="tgid" value="{tgid}">
+                <input type="hidden" name="choice" value="{choice}">
+
+                <label>Full Name:</label>
+                <input type="text" name="full_name" placeholder="Enter your full name" required>
+
+                <label>Phone Number:</label>
+                <input type="text" name="phone" placeholder="+234..." required>
+
+                <label>Delivery Address:</label>
+                <textarea name="address" rows="3" placeholder="Enter full delivery address" required></textarea>
+
+                <button type="submit">Submit Details ✅</button>
+            </form>
+        </body>
+    </html>
+    """
+
+
+# ---------------------------------------------------------------
+# 💾 SAVE WINNER FORM SUBMISSION
+# ---------------------------------------------------------------
+@app.post("/api/save_winner", response_class=HTMLResponse)
+async def save_winner(
+    tgid: int = Form(...),
+    choice: str = Form(...),
+    full_name: str = Form(...),
+    phone: str = Form(...),
+    address: str = Form(...),
+):
+    """
+    Receives the winner's form submission and notifies the admin via Telegram.
+    """
+    ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
+
+    # ✅ Save choice to DB
+    async with get_async_session() as session:
+        user = await get_or_create_user(session, tg_id=tgid)
+        user.choice = choice
+        user.winner_stage = None
+        user.winner_data = {}
+        await session.commit()
+
+    # ✅ Notify Admin
+    try:
+        if ADMIN_USER_ID:
+            bot = Bot(token=BOT_TOKEN)
+            msg = (
+                f"📢 <b>NEW WINNER ALERT!</b>\n\n"
+                f"👤 <b>Name:</b> {full_name}\n"
+                f"📱 <b>Phone:</b> {phone}\n"
+                f"🏠 <b>Address:</b> {address}\n"
+                f"🎁 <b>Prize:</b> {choice}\n"
+                f"🆔 <b>Telegram ID:</b> {tgid}\n"
+                f"🕒 <i>Recorded via Web Form</i>"
+            )
+            await bot.send_message(chat_id=ADMIN_USER_ID, text=msg, parse_mode="HTML")
+    except Exception as e:
+        logger.error(f"❌ Failed to alert admin: {e}")
+
+    # ✅ Return success page
+    return HTMLResponse(
+        """
+        <html>
+            <head>
+                <title>Form Submitted</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        text-align: center;
+                        margin-top: 100px;
+                        color: #333;
+                    }
+                    h2 {
+                        color: green;
+                    }
+                    p {
+                        font-size: 1.1em;
+                    }
+                </style>
+            </head>
+            <body>
+                <h2>✅ Thank You!</h2>
+                <p>Your delivery details have been received successfully.</p>
+                <p>Our team will contact you soon to arrange your prize delivery 🚚✨</p>
+            </body>
+        </html>
+        """,
+        status_code=200
+    )
+
+# ------------------------------------------------------
 # ✅ Register all Flutterwave routes
+# ------------------------------------------------------
 app.include_router(router)
