@@ -256,7 +256,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # ---- User Search ----
         elif action == "user_search":
             context.user_data["awaiting_user_search"] = True
-            return await safe_edit("🔍 <b>Send username or user ID</b> to search for a user.", parse_mode="HTML")
+            return await safe_edit(query, "🔍 <b>Send username or user ID</b> to search for a user.", parse_mode="HTML")
 
         # ---- Winners ----
         elif action == "winners":
