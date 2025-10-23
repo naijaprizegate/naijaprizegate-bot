@@ -19,7 +19,7 @@ from services.tryluck import spin_logic
 from db import get_async_session
 from models import GameState
 from handlers.payments import handle_buy_callback
-
+from handlers.free import free_menu
 
 logger = logging.getLogger(__name__)
 
@@ -233,7 +233,7 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(tryluck_callback, pattern="^tryluck$"))
     application.add_handler(CallbackQueryHandler(show_tries_callback, pattern="^show_tries$"))
     application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy$"))
-    application.add_handler(CallbackQueryHandler(free_callback, pattern="^free$"))
+    application.add_handler(CallbackQueryHandler(free_menu, pattern="^free$"))
     application.add_handler(CallbackQueryHandler(handle_iphone_choice, pattern="^choose_iphone"))
 
     # 3️⃣ (No text form handlers needed anymore ✅)
