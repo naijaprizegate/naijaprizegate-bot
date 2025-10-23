@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram import InputMediaPhoto
 from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, filters
+from telegram.error import BadRequest
 from sqlalchemy import select, update as sql_update
 from db import AsyncSessionLocal, get_async_session
 from helpers import add_tries, get_user_by_id
@@ -174,19 +175,30 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()  # acknowledge click
     user_id = update.effective_user.id
 
-    async def safe_edit(text, **kwargs):
-        """Safely edit caption/text depending on message type."""
+    async def safe_edit(query, text: str, **kwargs):
+        """
+        Safely edit a message or caption, ignoring harmless 'Message is not modified' errors.
+        Works for both photo and text messages.
+        """
         try:
             if query.message.photo:
                 await query.edit_message_caption(caption=text, **kwargs)
             else:
                 await query.edit_message_text(text, **kwargs)
+        except BadRequest as e:
+            # ✅ Ignore harmless Telegram error
+            if "message is not modified" in str(e).lower():
+                logger.info("ℹ️ Skipped redundant edit — message not modified.")
+                return
+            else:
+                logger.warning(f"⚠️ Telegram BadRequest: {e}")
+                raise
         except Exception as e:
-            logger.warning(f"[WARN] edit fail: {e}")
+            logger.warning(f"[WARN] safe_edit fail: {e}")
 
-    # 🔐 Restrict admin access
-    if user_id != ADMIN_USER_ID:
-        return await safe_edit("❌ Access denied.", parse_mode="HTML")
+        # 🔐 Restrict admin access
+        if user_id != ADMIN_USER_ID:
+            return await safe_edit("❌ Access denied.", parse_mode="HTML")
 
     # ----------------------------
     # ✅ Proof Navigation (Prev / Next)
@@ -541,7 +553,7 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
 
     full_text = "\n".join(text_lines)
     if query:
-        await query.edit_message_text(full_text, parse_mode="HTML", reply_markup=keyboard)
+        await safe_edit(query, full_text, parse_mode="HTML", reply_markup=keyboard)
     else:
         await update.effective_message.reply_text(full_text, parse_mode="HTML", reply_markup=keyboard)
 
