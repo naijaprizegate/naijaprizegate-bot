@@ -78,7 +78,7 @@ async def pending_proofs(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # --- Handle no pending proofs
     if not proofs:
-        text = "✅ No pending proofs at the moment."
+        text = "✅ No pending proofs at the moment.\n\nClick on /admin to go back to the Admin Panel."
         if getattr(update, "callback_query", None):
             return await update.callback_query.edit_message_text(text, parse_mode="HTML")
         return await update.effective_message.reply_text(text, parse_mode="HTML")
