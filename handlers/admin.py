@@ -426,26 +426,24 @@ async def user_search_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
 
 
 # ----------------------------
-# Winners Section (with Pagination & Filters)
+# Winners Section (Single-Winner Paging)
 # ----------------------------
-WINNERS_PER_PAGE = 5
+WINNERS_PER_PAGE = 1  # one winner per page
 
 async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
-    Displays winners (pageable). Callback data formats handled:
+    Displays winners one at a time (pageable). Callback data formats handled:
     - admin_winners:all:1
     - admin_winners:pending:1
     - admin_winners:transit:1
     - admin_winners:delivered:1
-    - If called from admin_menu:winners, update.callback_query.data will be like "admin_menu:winners"
-      and we default to page 1, all winners.
+    - If called from admin_menu:winners, defaults to page 1, all winners.
     """
     query = getattr(update, "callback_query", None)
-    # do not call query.answer() here (already called upstream in admin_callback or handle_delivery_status)
-
-    # parse page & filter
     page = 1
     filter_status = None  # None | "Pending" | "In Transit" | "Delivered"
+
+    # --- Parse callback data ---
     if query and query.data.startswith("admin_winners"):
         parts = query.data.split(":")  # e.g. admin_winners:transit:2
         if len(parts) >= 2:
@@ -461,26 +459,27 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
         if len(parts) == 3 and parts[2].isdigit():
             page = int(parts[2])
     else:
-        # if called from admin_menu:winners or admin_callback -> default to all page 1
         page = 1
         filter_status = None
 
     offset = (page - 1) * WINNERS_PER_PAGE
 
+    # --- Fetch winners from database ---
     async with get_async_session() as session:
         query_base = select(User).where(User.choice.isnot(None))
         if filter_status:
             if filter_status == "Pending":
-                query_base = query_base.where((User.delivery_status.is_(None)) | (User.delivery_status == "Pending"))
+                query_base = query_base.where(
+                    (User.delivery_status.is_(None)) | (User.delivery_status == "Pending")
+                )
             else:
                 query_base = query_base.where(User.delivery_status == filter_status)
 
-        total_query = await session.execute(query_base.order_by(User.id.desc()))
-        all_winners = total_query.scalars().all()
-        winners = all_winners[offset: offset + WINNERS_PER_PAGE]
+        result = await session.execute(query_base.order_by(User.id.desc()))
+        all_winners = result.scalars().all()
 
-    # 🎯 Dynamic "No Winners" section
-    if not winners:
+    if not all_winners:
+        # 🎯 No Winners Found
         if filter_status == "In Transit":
             text = "📦 No winner found in transit yet.\n\n💡 Tip: Try again after marking someone 'In Transit'!"
         elif filter_status == "Delivered":
@@ -500,12 +499,26 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
 
         if query:
             return await query.edit_message_text(text, parse_mode="HTML", reply_markup=keyboard)
-        return await update.effective_message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
+        else:
+            return await update.effective_message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
 
-    # ----------------------------
-    # If winners exist
-    # ----------------------------
-    total_pages = max(1, (len(all_winners) + WINNERS_PER_PAGE - 1) // WINNERS_PER_PAGE)
+    # --- Calculate pagination ---
+    total_winners = len(all_winners)
+    total_pages = max(1, (total_winners + WINNERS_PER_PAGE - 1) // WINNERS_PER_PAGE)
+
+    # Ensure page bounds
+    if page < 1:
+        page = 1
+    elif page > total_pages:
+        page = total_pages
+
+    winner = all_winners[offset]
+    base_prefix = (
+        f"admin_winners:{'all' if not filter_status else 'pending' if filter_status=='Pending' "
+        f"else 'transit' if filter_status=='In Transit' else 'delivered'}"
+    )
+
+    # --- Build message text ---
     filter_label = (
         "🟡 Pending Winners" if filter_status == "Pending"
         else "📦 In Transit List" if filter_status == "In Transit"
@@ -513,29 +526,26 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
         else "🏆 All Winners"
     )
 
-    text_lines = [f"{filter_label} (Page {page}/{total_pages})\n"]
+    text = (
+        f"{filter_label}\n"
+        f"Winner {page} of {total_winners}\n\n"
+        f"👤 <b>{winner.full_name or '-'}</b>\n"
+        f"📱 {winner.phone or 'N/A'}\n"
+        f"📦 {winner.address or 'N/A'}\n"
+        f"🎁 {winner.choice or '-'}\n"
+        f"🚚 Status: <b>{winner.delivery_status or 'Pending'}</b>\n"
+        f"🔗 @{winner.username or 'N/A'}"
+    )
 
-    for w in winners:
-        text_lines.append(
-            f"👤 <b>{w.full_name or '-'}</b>\n"
-            f"📱 {w.phone or 'N/A'}\n"
-            f"📦 {w.address or 'N/A'}\n"
-            f"🎁 {w.choice or '-'}\n"
-            f"🚚 Status: <b>{(w.delivery_status or 'Pending')}</b>\n"
-            f"🔗 @{(w.username or 'N/A')}\n"
-        )
+    # --- Inline keyboard ---
+    rows = [
+        [
+            InlineKeyboardButton("🚚 Mark In Transit", callback_data=f"status_transit_{winner.id}"),
+            InlineKeyboardButton("✅ Mark Delivered", callback_data=f"status_delivered_{winner.id}")
+        ]
+    ]
 
-    # per-winner action rows
-    rows = []
-    for w in winners:
-        rows.append([
-            InlineKeyboardButton("🚚 Mark In Transit", callback_data=f"status_transit_{w.id}"),
-            InlineKeyboardButton("✅ Mark Delivered", callback_data=f"status_delivered_{w.id}")
-        ])
-
-    # navigation buttons
     nav_buttons = []
-    base_prefix = f"admin_winners:{'all' if not filter_status else 'pending' if filter_status=='Pending' else 'transit' if filter_status=='In Transit' else 'delivered'}"
     if page > 1:
         nav_buttons.append(InlineKeyboardButton("⬅️ Prev", callback_data=f"{base_prefix}:{page-1}"))
     if page < total_pages:
@@ -543,22 +553,19 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
     if nav_buttons:
         rows.append(nav_buttons)
 
-    # filter buttons
     rows.append([
         InlineKeyboardButton("📦 In Transit List", callback_data="admin_winners:transit:1"),
         InlineKeyboardButton("✅ Delivered List", callback_data="admin_winners:delivered:1"),
     ])
 
-    # back to admin menu
     rows.append([InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")])
-
     keyboard = InlineKeyboardMarkup(rows)
 
-    full_text = "\n".join(text_lines)
+    # --- Display message ---
     if query:
-        await safe_edit(query, full_text, parse_mode="HTML", reply_markup=keyboard)
+        await safe_edit(query, text, parse_mode="HTML", reply_markup=keyboard)
     else:
-        await update.effective_message.reply_text(full_text, parse_mode="HTML", reply_markup=keyboard)
+        await update.effective_message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
 
 
 # ------------------------------
