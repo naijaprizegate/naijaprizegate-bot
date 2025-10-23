@@ -156,7 +156,7 @@ async def telegram_webhook(secret: str, request: Request):
     await application.process_update(update)
     return {"ok": True}
     
-# ------------------------------------------------------ 
+# ------------------------------------------------------
 # Webhook: called by Flutterwave after payment
 # ------------------------------------------------------
 @router.post("/flw/webhook")
@@ -164,17 +164,18 @@ async def flutterwave_webhook(
     request: Request,
     session: AsyncSession = Depends(get_session),
 ):
+    """Handles real-time payment confirmation from Flutterwave."""
     raw_body = await request.body()
-    logger.info("⚡ Flutterwave webhook triggered!")
     body_str = raw_body.decode("utf-8")
+    logger.info("⚡ Flutterwave webhook triggered!")
 
-    # ✅ Allow Flutterwave dashboard test pings (no signature)
+    # ✅ Allow test webhook calls (Flutterwave dashboard)
     signature = request.headers.get("verif-hash")
     if not signature:
-        logger.info("🧪 Flutterwave test webhook received — allowing 200 OK response.")
+        logger.info("🧪 Test webhook received (no signature) → returning 200 OK")
         return {"status": "ok", "message": "Test webhook received"}
 
-    # ✅ Validate real payment webhooks
+    # ✅ Validate the signature
     if not validate_webhook(request.headers, body_str):
         logger.warning("⚠️ Invalid Flutterwave webhook signature")
         raise HTTPException(status_code=403, detail="Invalid signature")
@@ -189,7 +190,7 @@ async def flutterwave_webhook(
         logger.error("❌ Webhook received without tx_ref")
         return {"status": "error", "message": "No tx_ref in webhook"}
 
-    # ✅ Accept both meta and meta_data shapes (Flutterwave sometimes swaps them)
+    # ✅ Extract meta (Flutterwave sometimes nests it differently)
     meta = (
         data.get("meta")
         or body.get("meta")
@@ -198,154 +199,114 @@ async def flutterwave_webhook(
         or {}
     )
 
-    logger.info(f"🌍 Webhook received: {body}")
-    logger.info(f"📦 tx_ref={tx_ref}, status={status}, meta_keys={list(meta.keys())}")
+    logger.info(f"🌍 Webhook payload: {body}")
+    logger.info(f"📦 tx_ref={tx_ref}, status={status}, amount={amount}, meta_keys={list(meta.keys())}")
 
-    # Defensive extraction of tg_id/username
-    raw_tg_id = meta.get("tg_id") or meta.get("tgId") or meta.get("customer") or None
-    username = (
-        meta.get("username")
-        or meta.get("user")
-        or meta.get("customer_name")
-        or "Unknown"
-    )
+    # Extract tg_id and username
+    raw_tg_id = meta.get("tg_id") or meta.get("tgId") or meta.get("customer")
+    username = meta.get("username") or meta.get("user") or "Unknown"
 
-    # Normalize tg_id if possible (string digits -> int)
     tg_id = None
-    if raw_tg_id is not None:
+    if raw_tg_id:
         try:
             tg_id = int(raw_tg_id)
-        except Exception:
-            tg_id = raw_tg_id  # keep as-is (rare)
+        except ValueError:
+            tg_id = None
 
-    # ⚙️ Fallback: if tg_id is missing, re-verify with Flutterwave to recover meta
+    # Fallback: verify manually if tg_id missing
     if tg_id is None:
-        logger.warning(
-            f"⚠️ Webhook missing tg_id for tx_ref={tx_ref} — will verify manually"
-        )
+        logger.warning(f"⚠️ Missing tg_id for tx_ref={tx_ref}, re-verifying payment...")
         try:
-            from services.payments import verify_payment
-            verified = await verify_payment(tx_ref, session)  # ✅ added session here
-            meta2 = (
-                verified.get("data", {}).get("meta")
-                or verified.get("data", {}).get("meta_data")
-                or {}
-            )
+            verified = await verify_payment(tx_ref, session)
+            meta2 = verified.get("data", {}).get("meta") or {}
             tg_id = meta2.get("tg_id")
             username = meta2.get("username", username)
             if tg_id:
-                logger.info(f"✅ Recovered tg_id={tg_id} via verify_payment()")
-            else:
-                logger.error(f"❌ Could not recover tg_id for {tx_ref}")
-                return {"status": "error", "msg": "no tg_id found"}
+                logger.info(f"✅ Recovered tg_id={tg_id} from verify_payment()")
         except Exception as e:
-            logger.exception(f"❌ Error verifying to recover tg_id for {tx_ref}: {e}")
-            return {"status": "error", "message": str(e)}
+            logger.exception(f"❌ Could not recover tg_id for {tx_ref}: {e}")
 
-    # 🔍 Verify payment with Flutterwave (extra safety, "credit=False" so we don't double-credit here)
+    # Verify again with Flutterwave to confirm status
+    verified = None
     try:
-        from services.payments import verify_payment
         verified = await verify_payment(tx_ref, session, credit=False)
-        if not verified:
-            logger.warning(f"⚠️ Payment verification failed for tx_ref={tx_ref}")
     except Exception as e:
-        logger.exception(f"❌ Error verifying payment {tx_ref}: {e}")
-        return {"status": "error", "message": str(e)}
+        logger.warning(f"⚠️ Payment verification failed for {tx_ref}: {e}")
 
-    # 🔎 Fetch existing payment
-    stmt = select(Payment).where(Payment.tx_ref == tx_ref)
-    result = await session.execute(stmt)
+    # Lookup payment record
+    result = await session.execute(select(Payment).where(Payment.tx_ref == tx_ref))
     payment = result.scalar_one_or_none()
 
     credited_tries = calculate_tries(int(amount or 0))
 
+    # ✅ Process successful payment
     if status == "successful":
-        # Ensure we have a linked User (if tg_id present) and user_id is User.id (UUID)
         user = None
-        if tg_id is not None:
+        if tg_id:
             user = await get_or_create_user(session, tg_id=tg_id, username=username)
 
-        # ✅ Ensure payment exists & is linked correctly
         if not payment:
             payment = Payment(
                 tx_ref=str(tx_ref),
                 status="successful",
                 credited_tries=credited_tries,
-                flw_tx_id=str(data.get("id")) if data.get("id") is not None else None,
+                flw_tx_id=str(data.get("id")) if data.get("id") else None,
                 user_id=user.id if user else None,
                 amount=amount,
-                tg_id=int(tg_id) if str(tg_id).isdigit() else None,
+                tg_id=tg_id,
                 username=username,
             )
             session.add(payment)
-            await session.flush()
         else:
             payment.status = "successful"
             payment.credited_tries = credited_tries
-            if data.get("id") is not None:
-                payment.flw_tx_id = str(data.get("id"))
+            payment.flw_tx_id = str(data.get("id")) if data.get("id") else payment.flw_tx_id
+            payment.username = username
             if user and not payment.user_id:
                 payment.user_id = user.id
-            if str(tg_id).isdigit():
-                payment.tg_id = int(str(tg_id))
-            payment.username = username or payment.username
 
-        # ✅ Credit user tries (if we have user)
+        # 💰 Credit user tries
         if user:
             await add_tries(session, user, credited_tries, paid=True)
-            await session.commit()
-            logger.info(
-                f"🎁 Credited {credited_tries} tries to user {user.tg_id} ({username})"
-            )
+            logger.info(f"🎁 Credited {credited_tries} tries to user {user.tg_id} ({username})")
         else:
-            await session.commit()
-            logger.info(
-                f"🎁 Payment {tx_ref} recorded but no tg_id/user found — will resolve later"
-            )
+            logger.warning(f"⚠️ No linked user found for tx_ref={tx_ref}")
 
-        # ✅ Notify via Telegram (only if tg_id present)
+        await session.commit()
+
+        # 🎉 Send Telegram confirmation
         if tg_id:
             try:
                 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-                from telegram.ext import CallbackQueryHandler
-                from handlers.core import start as start_handler  # make sure this exists
-
                 bot = Bot(token=BOT_TOKEN)
-
-                # Inline keyboard: Try Luck + Cancel
-                keyboard = [
-                    [
-                        InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck"),
-                        InlineKeyboardButton("❌ Cancel", callback_data="go_start")
-                    ]
-                ]
-                reply_markup = InlineKeyboardMarkup(keyboard)
-
-                # Send payment success message
+                keyboard = InlineKeyboardMarkup([
+                    [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
+                    [InlineKeyboardButton("💳 Buy Tries", callback_data="buy")],
+                    [InlineKeyboardButton("🎁 Free Tries", callback_data="free")],
+                    [InlineKeyboardButton("📊 Available Tries", callback_data="show_tries")]
+                ])
                 await bot.send_message(
                     chat_id=tg_id,
                     text=(
-                        f"✅ Payment successful! 🎉\n\n"
+                        f"✅ Payment confirmed!\n\n"
                         f"You’ve been credited with *{credited_tries}* spin"
-                        f"{'s' if credited_tries > 1 else ''}.\n\n"
-                        f"Click the button below to try your luck! 🍀"
+                        f"{'s' if credited_tries > 1 else ''}. 🎉\n\n"
+                        f"Good luck and have fun 🍀"
                     ),
                     parse_mode="Markdown",
-                    reply_markup=reply_markup
+                    reply_markup=keyboard
                 )
-
             except Exception as e:
                 logger.error(f"⚠️ Failed to send Telegram DM to {tg_id}: {e}")
 
         return {"status": "success", "tx_ref": tx_ref}
 
-
-        # ❌ Handle failed or incomplete payments
+    # ❌ Handle failed payments
+    else:
         if payment:
             payment.status = status or "failed"
             await session.commit()
-            logger.info(f"❌ Payment {tx_ref} marked as {payment.status}")
-
+        logger.warning(f"❌ Payment {tx_ref} failed with status={status}")
         return {"status": "failed", "tx_ref": tx_ref}
 
 # ------------------------------------------------------
