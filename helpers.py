@@ -48,14 +48,19 @@ async def get_or_create_user(
 # -------------------------------------------------
 # Add tries (paid or bonus)
 # -------------------------------------------------
-async def add_tries(session: AsyncSession, user_id, count: int, paid: bool = True) -> User:
+async def add_tries(session: AsyncSession, user_or_id, count: int, paid: bool = True) -> User:
     """
     Increment user's tries (paid or bonus) inside an active session.
     Also updates GameState and GlobalCounter for paid tries.
+
+    Supports both a full User object or a user_id (int).
     NOTE: This function does not commit — caller must handle commit.
     """
 
-    # ✅ Fetch user first
+    # ✅ Accept either User object or user_id
+    user_id = user_or_id.id if hasattr(user_or_id, "id") else user_or_id
+
+    # ✅ Fetch user
     result = await session.execute(select(User).where(User.id == user_id))
     user = result.scalar_one_or_none()
     if not user:
@@ -65,6 +70,7 @@ async def add_tries(session: AsyncSession, user_id, count: int, paid: bool = Tru
     logger.info(f"🌀 Adding {count} {'paid' if paid else 'bonus'} tries → user_id={user.id}")
 
     if paid:
+        # 🪙 Paid tries increment
         user.tries_paid = (user.tries_paid or 0) + count
 
         # ✅ Ensure GlobalCounter exists
@@ -98,9 +104,11 @@ async def add_tries(session: AsyncSession, user_id, count: int, paid: bool = Tru
         )
 
     else:
+        # 🎁 Bonus tries increment (for admin-approved proofs, etc.)
         user.tries_bonus = (user.tries_bonus or 0) + count
         logger.info(f"🎁 Added {count} bonus tries → user_id={user.id}")
 
+    # ✅ Update user record
     session.add(user)
     await session.flush()
     await session.refresh(user)
@@ -108,6 +116,7 @@ async def add_tries(session: AsyncSession, user_id, count: int, paid: bool = Tru
     logger.info(
         f"✅ User {user.id} now has paid={user.tries_paid}, bonus={user.tries_bonus}"
     )
+
     return user
 
 # -------------------------------------------------
