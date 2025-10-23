@@ -19,6 +19,7 @@ from services.tryluck import spin_logic
 from db import get_async_session
 from models import GameState
 
+
 logger = logging.getLogger(__name__)
 
 # -------------------------------
@@ -189,6 +190,19 @@ async def show_tries_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         total_bonus = user.tries_bonus or 0
         total = total_paid + total_bonus
 
+        # --- Create the inline buttons
+        keyboard = [
+            [
+                InlineKeyboardButton("🎯 Try Luck", callback_data="tryluck"),
+                InlineKeyboardButton("💰 Buy Try", callback_data="buy"),
+            ],
+            [
+                InlineKeyboardButton("🎁 Free Tries", callback_data="free"),
+            ],
+        ]
+        reply_markup = InlineKeyboardMarkup(keyboard)
+
+        # --- Answer the callback and send message
         await update.callback_query.answer()
         await update.callback_query.message.reply_text(
             md_escape(
@@ -198,6 +212,7 @@ async def show_tries_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
                 f"💫 Total: {total}"
             ),
             parse_mode="MarkdownV2",
+            reply_markup=reply_markup,
         )
 
 # --------------------------------------------------------------
@@ -216,6 +231,8 @@ def register_handlers(application):
     # 2️⃣ Callbacks (specific → general)
     application.add_handler(CallbackQueryHandler(tryluck_callback, pattern="^tryluck$"))
     application.add_handler(CallbackQueryHandler(show_tries_callback, pattern="^show_tries$"))
+    application.add_handler(CallbackQueryHandler(buy_callback, pattern="^buy$"))
+    application.add_handler(CallbackQueryHandler(free_callback, pattern="^free$"))
     application.add_handler(CallbackQueryHandler(handle_iphone_choice, pattern="^choose_iphone"))
 
     # 3️⃣ (No text form handlers needed anymore ✅)
@@ -223,3 +240,4 @@ def register_handlers(application):
     application.add_handler(
         MessageHandler(filters.ALL, lambda u, c: u.message.reply_text("Use /tryluck to start 🎰"))
     )
+
