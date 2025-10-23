@@ -18,6 +18,7 @@ from helpers import get_or_create_user
 from services.tryluck import spin_logic
 from db import get_async_session
 from models import GameState
+from handlers.payment import handle_buy_callback
 
 
 logger = logging.getLogger(__name__)
@@ -231,7 +232,7 @@ def register_handlers(application):
     # 2️⃣ Callbacks (specific → general)
     application.add_handler(CallbackQueryHandler(tryluck_callback, pattern="^tryluck$"))
     application.add_handler(CallbackQueryHandler(show_tries_callback, pattern="^show_tries$"))
-    application.add_handler(CallbackQueryHandler(buy_callback, pattern="^buy$"))
+    application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy$"))
     application.add_handler(CallbackQueryHandler(free_callback, pattern="^free$"))
     application.add_handler(CallbackQueryHandler(handle_iphone_choice, pattern="^choose_iphone"))
 
