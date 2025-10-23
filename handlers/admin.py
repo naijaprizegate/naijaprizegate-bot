@@ -43,10 +43,6 @@ async def safe_edit(query, text: str, **kwargs):
     except Exception as e:
         logger.warning(f"[WARN] safe_edit fail: {e}")
 
-    # 🔐 Restrict admin access
-    if user_id != ADMIN_USER_ID:
-        return await safe_edit("❌ Access denied.", parse_mode="HTML")
-
 # ----------------------------
 # Command: /admin (Main Panel)
 # ----------------------------
@@ -202,6 +198,10 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()  # acknowledge click
     user_id = update.effective_user.id
+
+    # 🔐 Restrict admin access
+    if user_id != ADMIN_USER_ID:
+        return await safe_edit("❌ Access denied.", parse_mode="HTML")
 
     # ----------------------------
     # ✅ Proof Navigation (Prev / Next)
