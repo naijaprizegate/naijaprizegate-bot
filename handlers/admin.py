@@ -512,11 +512,13 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
     elif page > total_pages:
         page = total_pages
 
-    winner = all_winners[offset]
-    base_prefix = (
-        f"admin_winners:{'all' if not filter_status else 'pending' if filter_status=='Pending' else 'delivered'}"
-        f"else 'transit' if filter_status=='In Transit' else 'delivered'}"
-    )
+    status_map = {
+        None: 'all',
+        'Pending': 'pending',
+        'In Transit': 'transit',
+        'Delivered': 'delivered'
+    }
+    base_prefix = f"admin_winners:{status_map.get(filter_status, 'delivered')}"
 
     # --- Build message text ---
     filter_label = (
