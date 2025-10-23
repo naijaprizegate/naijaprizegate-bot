@@ -426,9 +426,11 @@ async def user_search_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
 
 
 # ----------------------------
-# Winners Section (Single-Winner Paging)
+# 🏆 Winners Section (Single-Winner Paging with Stored Winner Data)
 # ----------------------------
 WINNERS_PER_PAGE = 1  # one winner per page
+admin_offset = {}  # remembers last viewed page per admin
+
 
 async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
@@ -438,8 +440,10 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
     - admin_winners:transit:1
     - admin_winners:delivered:1
     - If called from admin_menu:winners, defaults to page 1, all winners.
+    Includes data submitted via the winner form (full_name, phone, address).
     """
     query = getattr(update, "callback_query", None)
+    admin_id = update.effective_user.id if update.effective_user else None
     page = 1
     filter_status = None  # None | "Pending" | "In Transit" | "Delivered"
 
@@ -459,12 +463,13 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
         if len(parts) == 3 and parts[2].isdigit():
             page = int(parts[2])
     else:
-        page = 1
+        # Default to saved offset or start at 1
+        page = admin_offset.get(admin_id, 1)
         filter_status = None
 
     offset = (page - 1) * WINNERS_PER_PAGE
 
-    # --- Fetch winners from database ---
+    # --- Fetch winners from DB ---
     async with get_async_session() as session:
         query_base = select(User).where(User.choice.isnot(None))
         if filter_status:
@@ -506,21 +511,34 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
     total_winners = len(all_winners)
     total_pages = max(1, (total_winners + WINNERS_PER_PAGE - 1) // WINNERS_PER_PAGE)
 
-    # Ensure page bounds
+    # Ensure page within bounds
     if page < 1:
         page = 1
     elif page > total_pages:
         page = total_pages
 
+    # Remember last viewed page per admin
+    admin_offset[admin_id] = page
+
+    # --- Select winner for current page ---
+    winner = all_winners[offset]
+
+    # --- Try to extract stored winner form data ---
+    form_data = getattr(winner, "winner_data", {}) or {}
+    full_name = form_data.get("full_name") or getattr(winner, "full_name", "-")
+    phone = form_data.get("phone") or getattr(winner, "phone", "N/A")
+    address = form_data.get("address") or getattr(winner, "address", "N/A")
+
+    # --- Determine prefix for pagination callbacks ---
     status_map = {
         None: 'all',
         'Pending': 'pending',
         'In Transit': 'transit',
         'Delivered': 'delivered'
     }
-    base_prefix = f"admin_winners:{status_map.get(filter_status, 'delivered')}"
+    base_prefix = f"admin_winners:{status_map.get(filter_status, 'all')}"
 
-    # --- Build message text ---
+    # --- Label for top section ---
     filter_label = (
         "🟡 Pending Winners" if filter_status == "Pending"
         else "📦 In Transit List" if filter_status == "In Transit"
@@ -528,15 +546,17 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
         else "🏆 All Winners"
     )
 
+    # --- Build message text ---
     text = (
         f"{filter_label}\n"
         f"Winner {page} of {total_winners}\n\n"
-        f"👤 <b>{winner.full_name or '-'}</b>\n"
-        f"📱 {winner.phone or 'N/A'}\n"
-        f"📦 {winner.address or 'N/A'}\n"
-        f"🎁 {winner.choice or '-'}\n"
-        f"🚚 Status: <b>{winner.delivery_status or 'Pending'}</b>\n"
-        f"🔗 @{winner.username or 'N/A'}"
+        f"👤 <b>{full_name}</b>\n"
+        f"📱 <b>{phone}</b>\n"
+        f"🏠 <b>{address}</b>\n"
+        f"🎁 <b>{getattr(winner, 'choice', '-')}</b>\n"
+        f"🚚 <b>Status:</b> {getattr(winner, 'delivery_status', 'Pending') or 'Pending'}\n"
+        f"🆔 <code>{winner.tg_id}</code>\n"
+        f"🔗 @{getattr(winner, 'username', 'N/A')}"
     )
 
     # --- Inline keyboard ---
@@ -547,6 +567,7 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
         ]
     ]
 
+    # Pagination buttons
     nav_buttons = []
     if page > 1:
         nav_buttons.append(InlineKeyboardButton("⬅️ Prev", callback_data=f"{base_prefix}:{page-1}"))
@@ -555,12 +576,13 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
     if nav_buttons:
         rows.append(nav_buttons)
 
+    # Quick filter shortcuts
     rows.append([
         InlineKeyboardButton("📦 In Transit List", callback_data="admin_winners:transit:1"),
         InlineKeyboardButton("✅ Delivered List", callback_data="admin_winners:delivered:1"),
     ])
-
     rows.append([InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")])
+
     keyboard = InlineKeyboardMarkup(rows)
 
     # --- Display message ---
@@ -568,7 +590,6 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
         await safe_edit(query, text, parse_mode="HTML", reply_markup=keyboard)
     else:
         await update.effective_message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
-
 
 # ------------------------------
 # Show Filtered Winners
