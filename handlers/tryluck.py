@@ -36,14 +36,17 @@ def md_escape(text: str) -> str:
     escape_chars = r'_*[]()~`>#+-=|{}.!'
     return re.sub(f'([{re.escape(escape_chars)}])', r'\\\1', text)
 
-# -------------------------------
-# Inline Keyboards
-# -------------------------------
 def make_tryluck_keyboard():
     return InlineKeyboardMarkup([
         [
             InlineKeyboardButton("🎰 Try Again", callback_data="tryluck"),
             InlineKeyboardButton("📊 Available Tries", callback_data="show_tries"),
+        ],
+        [
+            InlineKeyboardButton("💳 Buy Tries", callback_data="buy"),
+        ],
+        [
+            InlineKeyboardButton("🎁 Free Tries", callback_data="free"),
         ]
     ])
 
@@ -112,7 +115,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         final_frame = " ".join(random.choice(spinner_emojis) for _ in range(num_reels))
         final_text = (
             f"😅 {player_name}, no win this time.\n\n"
-            "Better luck next spin! Try again and chase that jackpot 🎰🔥"
+            "Better luck next spin!\n\n Try again and chase that jackpot 🎰🔥"
         )
 
     safe_message = f"<b>🎰 {final_frame}</b>\n\n{final_text}"
