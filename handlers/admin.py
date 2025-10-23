@@ -1,6 +1,6 @@
-# =============================================================
+# ==============================================================
 # handlers/admin.py — Clean Unified Admin System (HTML Safe)
-# =============================================================
+# ==============================================================
 import os
 import re
 import asyncio
@@ -201,7 +201,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # 🔐 Restrict admin access
     if user_id != ADMIN_USER_ID:
-        return await safe_edit("❌ Access denied.", parse_mode="HTML")
+        return await safe_edit(query, "❌ Access denied.", parse_mode="HTML")
 
     # ----------------------------
     # ✅ Proof Navigation (Prev / Next)
@@ -251,7 +251,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 [InlineKeyboardButton("🔁 Reset Cycle", callback_data="admin_confirm:reset_cycle")],
                 [InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")],
             ])
-            return await safe_edit(text, parse_mode="HTML", reply_markup=keyboard)
+            return await safe_edit(query, text, parse_mode="HTML", reply_markup=keyboard)
 
         # ---- User Search ----
         elif action == "user_search":
@@ -272,7 +272,6 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             ])
             return await safe_edit(query, "⚙️ <b>Admin Panel</b>\nChoose an action:", parse_mode="HTML", reply_markup=keyboard)
 
-
     # ----------------------------
     # Cycle Reset Flow
     # ----------------------------
@@ -283,13 +282,13 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 InlineKeyboardButton("❌ Cancel", callback_data="admin_menu:stats"),
             ]
         ])
-        return await safe_edit("⚠️ Are you sure you want to reset the cycle?", parse_mode="HTML", reply_markup=keyboard)
+        return await safe_edit(query, "⚠️ Are you sure you want to reset the cycle?", parse_mode="HTML", reply_markup=keyboard)
 
     if query.data == "admin_action:reset_cycle":
         async with AsyncSessionLocal() as session:
             gs = await session.get(GameState, 1)
             if not gs:
-                return await safe_edit("⚠️ GameState not found.", parse_mode="HTML")
+                return await safe_edit(query, "⚠️ GameState not found.", parse_mode="HTML")
 
             gs.current_cycle += 1
             gs.paid_tries_this_cycle = 0
@@ -297,7 +296,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await session.commit()
 
         await query.answer("✅ Cycle reset!", show_alert=True)
-        return await safe_edit("🔁 <b>Cycle Reset!</b> New round begins.", parse_mode="HTML")
+        return await safe_edit(query, "🔁 <b>Cycle Reset!</b> New round begins.", parse_mode="HTML")
 
     # ----------------------------
     # Proof Approve / Reject (✅ Auto-Move + Notify User + Resubmit Option + Return to Admin Panel)
@@ -305,7 +304,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         action, proof_id = query.data.split(":")
     except ValueError:
-        return await safe_edit("⚠️ Invalid callback data.", parse_mode="HTML")
+        return await safe_edit(query, "⚠️ Invalid callback data.", parse_mode="HTML")
 
     if action not in ("admin_approve", "admin_reject"):
         return  # ignore unrelated actions
@@ -313,7 +312,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     async with AsyncSessionLocal() as session:
         proof = await session.get(Proof, proof_id)
         if not proof or proof.status != "pending":
-            return await safe_edit("⚠️ Proof already processed or not found.", parse_mode="HTML")
+            return await safe_edit(query, "⚠️ Proof already processed or not found.", parse_mode="HTML")
 
         # ✅ Fetch the actual Telegram user ID from the User table
         user = await session.get(User, proof.user_id)
@@ -392,7 +391,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🏆 Winners", callback_data="admin_menu:winners")],
     ])
 
-    return await safe_edit(
+    return await safe_edit(query, 
         f"{msg}\n\n✅ All proofs reviewed!\n\n⚙️ <b>Back to Admin Panel</b>",
         parse_mode="HTML",
         reply_markup=keyboard,
