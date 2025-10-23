@@ -242,6 +242,6 @@ def register_handlers(application):
     # 3️⃣ (No text form handlers needed anymore ✅)
     # 4️⃣ You may keep a fallback if desired:
     application.add_handler(
-        MessageHandler(filters.ALL, lambda u, c: u.message.reply_text("Use /tryluck to start 🎰"))
+        MessageHandler(filters.ALL, lambda u, c: u.message.reply_text("Use /start to begin the journey 🎰"))
     )
 
