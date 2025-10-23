@@ -270,7 +270,8 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 [InlineKeyboardButton("👤 User Search", callback_data="admin_menu:user_search")],
                 [InlineKeyboardButton("🏆 Winners", callback_data="admin_menu:winners")],
             ])
-            return await safe_edit("⚙️ <b>Admin Panel</b>\nChoose an action:", parse_mode="HTML", reply_markup=keyboard)
+            return await safe_edit(query, "⚙️ <b>Admin Panel</b>\nChoose an action:", parse_mode="HTML", reply_markup=keyboard)
+
 
     # ----------------------------
     # Cycle Reset Flow
