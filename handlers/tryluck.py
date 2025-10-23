@@ -18,7 +18,7 @@ from helpers import get_or_create_user
 from services.tryluck import spin_logic
 from db import get_async_session
 from models import GameState
-from handlers.payment import handle_buy_callback
+from handlers.payments import handle_buy_callback
 
 
 logger = logging.getLogger(__name__)
