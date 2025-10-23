@@ -514,7 +514,7 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
 
     winner = all_winners[offset]
     base_prefix = (
-        f"admin_winners:{'all' if not filter_status else 'pending' if filter_status=='Pending' "
+        f"admin_winners:{'all' if not filter_status else 'pending' if filter_status=='Pending' else 'delivered'}"
         f"else 'transit' if filter_status=='In Transit' else 'delivered'}"
     )
 
