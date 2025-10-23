@@ -20,6 +20,34 @@ logger = logging.getLogger(__name__)
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
 
 # ----------------------------
+# SAFE EDIT FUNCTION
+# ----------------------------
+async def safe_edit(query, text: str, **kwargs):
+    """
+    Safely edit a message or caption, ignoring harmless 'Message is not modified' errors.
+    Works for both photo and text messages.
+    """
+    try:
+        if query.message.photo:
+            await query.edit_message_caption(caption=text, **kwargs)
+        else:
+            await query.edit_message_text(text, **kwargs)
+    except BadRequest as e:
+        # ✅ Ignore harmless Telegram error
+        if "message is not modified" in str(e).lower():
+            logger.info("ℹ️ Skipped redundant edit — message not modified.")
+            return
+        else:
+            logger.warning(f"⚠️ Telegram BadRequest: {e}")
+            raise
+    except Exception as e:
+        logger.warning(f"[WARN] safe_edit fail: {e}")
+
+    # 🔐 Restrict admin access
+    if user_id != ADMIN_USER_ID:
+        return await safe_edit("❌ Access denied.", parse_mode="HTML")
+
+# ----------------------------
 # Command: /admin (Main Panel)
 # ----------------------------
 async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -174,31 +202,6 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()  # acknowledge click
     user_id = update.effective_user.id
-
-    async def safe_edit(query, text: str, **kwargs):
-        """
-        Safely edit a message or caption, ignoring harmless 'Message is not modified' errors.
-        Works for both photo and text messages.
-        """
-        try:
-            if query.message.photo:
-                await query.edit_message_caption(caption=text, **kwargs)
-            else:
-                await query.edit_message_text(text, **kwargs)
-        except BadRequest as e:
-            # ✅ Ignore harmless Telegram error
-            if "message is not modified" in str(e).lower():
-                logger.info("ℹ️ Skipped redundant edit — message not modified.")
-                return
-            else:
-                logger.warning(f"⚠️ Telegram BadRequest: {e}")
-                raise
-        except Exception as e:
-            logger.warning(f"[WARN] safe_edit fail: {e}")
-
-        # 🔐 Restrict admin access
-        if user_id != ADMIN_USER_ID:
-            return await safe_edit("❌ Access denied.", parse_mode="HTML")
 
     # ----------------------------
     # ✅ Proof Navigation (Prev / Next)
