@@ -61,8 +61,13 @@ def main():
         # ----------------------
         # 2. Prize Winners ✅ FINAL CORRECT VERSION
         # ----------------------
+        # Drop old structure if exists
+        cur.execute("DROP TABLE IF EXISTS prize_winners CASCADE;")
+        print("🗑️ old prize_winners table removed (if existed)")
+
         cur.execute("""
-        CREATE TABLE IF NOT EXISTS prize_winners (
+        CREATE TABLE prize_winners (
+
             id SERIAL PRIMARY KEY,
             user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
             tg_id BIGINT NOT NULL,
