@@ -22,9 +22,10 @@ from logger import tg_error_handler, logger
 from handlers import core, payments, free, admin, tryluck
 from tasks import start_background_tasks, stop_background_tasks
 from db import init_game_state, get_async_session, get_session
-from models import Payment, User, GameState
+from models import Payment, User, GameState, PrizeWinner
 from helpers import get_or_create_user, add_tries
 from logging_setup import logger
+from datetime import datetime
 
 # ✅ Import Flutterwave-related functions/constants
 from services.payments import (
@@ -561,8 +562,8 @@ async def winner_form_page(tgid: int, choice: str = "Prize"):
     """
 
 
-# --------------------------------------------------------------- 
-# 💾 SAVE WINNER FORM SUBMISSION (FIXED)
+# ---------------------------------------------------------------
+# 💾 SAVE WINNER FORM SUBMISSION (FINAL + CORRECT)
 # ---------------------------------------------------------------
 @app.post("/api/save_winner", response_class=HTMLResponse)
 async def save_winner(
@@ -572,31 +573,34 @@ async def save_winner(
     phone: str = Form(...),
     address: str = Form(...),
 ):
-    """
-    Receives the winner's form submission and notifies the admin via Telegram.
-    """
     ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
+    BOT_TOKEN = os.getenv("BOT_TOKEN")
 
-    # ✅ Save details to DB
     async with get_async_session() as session:
+        # Find existing User or create new
         user = await get_or_create_user(session, tg_id=tgid)
-        user.choice = choice
 
-        # ✅ Ensure new winners remain PENDING until admin updates
-        user.delivery_status = "Pending"
-
-        # ✅ Save submitted form data
-        user.winner_data = {
-            "full_name": full_name,
-            "phone": phone,
-            "address": address
-        }
-
+        # ✅ Create a new PrizeWinner record instead of changing user info
+        pw = PrizeWinner(
+            user_id=user.id,
+            tg_id=tgid,
+            choice=choice,
+            delivery_status="Pending",  # ✅ Always start Pending!
+            submitted_at=datetime.utcnow(),
+            pending_at=datetime.utcnow(),
+            delivery_data={
+                "full_name": full_name,
+                "phone": phone,
+                "address": address
+            }
+        )
+        session.add(pw)
         await session.commit()
+        await session.refresh(pw)
 
-    # ✅ Notify Admin
+    # ✅ Notify Admin via Telegram
     try:
-        if ADMIN_USER_ID:
+        if ADMIN_USER_ID and BOT_TOKEN:
             bot = Bot(token=BOT_TOKEN)
             msg = (
                 f"📢 <b>NEW WINNER ALERT!</b>\n\n"
@@ -605,31 +609,22 @@ async def save_winner(
                 f"🏠 <b>Address:</b> {address}\n"
                 f"🎁 <b>Prize:</b> {choice}\n"
                 f"🆔 <b>Telegram ID:</b> {tgid}\n"
-                f"🕒 <i>Recorded via Web Form</i>"
+                f"🆔 <b>Record ID:</b> <code>{pw.id}</code>\n"
+                f"🕒 <i>Submitted via Winner Form</i>"
             )
             await bot.send_message(chat_id=ADMIN_USER_ID, text=msg, parse_mode="HTML")
     except Exception as e:
-        logger.error(f"❌ Failed to alert admin: {e}")
+        logger.exception("❌ Failed to notify admin", exc_info=e)
 
-    # ✅ Return success page
+    # ✅ Return success HTML page
     return HTMLResponse(
         """
         <html>
             <head>
                 <title>Form Submitted</title>
                 <style>
-                    body {
-                        font-family: Arial, sans-serif;
-                        text-align: center;
-                        margin-top: 100px;
-                        color: #333;
-                    }
-                    h2 {
-                        color: green;
-                    }
-                    p {
-                        font-size: 1.1em;
-                    }
+                    body { font-family: Arial; text-align: center; margin-top: 100px; color: #333; }
+                    h2 { color: green; }
                 </style>
             </head>
             <body>
