@@ -82,6 +82,7 @@ async def root():
         "health": "Check /health for bot status",
     }
 
+
 # -------------------------------------------------
 # Startup event
 # -------------------------------------------------
@@ -308,6 +309,7 @@ async def flutterwave_webhook(
             await session.commit()
         logger.warning(f"❌ Payment {tx_ref} failed with status={status}")
         return {"status": "failed", "tx_ref": tx_ref}
+     
 
 # ------------------------------------------------------
 # Redirect: user-friendly "verifying payment" page
@@ -475,7 +477,7 @@ async def flutterwave_redirect_status(
 async def health_check():
     return {"status": "ok", "bot_initialized": application is not None}
 
-# ---------------------------------------------------------------
+# --------------------------------------------------------------
 # 🏆 WINNER FORM — HTML + API (Web-Based Flow)
 # ---------------------------------------------------------------
 # ---------------------------------------------------------------
@@ -559,8 +561,8 @@ async def winner_form_page(tgid: int, choice: str = "Prize"):
     """
 
 
-# ---------------------------------------------------------------
-# 💾 SAVE WINNER FORM SUBMISSION
+# --------------------------------------------------------------- 
+# 💾 SAVE WINNER FORM SUBMISSION (FIXED)
 # ---------------------------------------------------------------
 @app.post("/api/save_winner", response_class=HTMLResponse)
 async def save_winner(
@@ -575,12 +577,21 @@ async def save_winner(
     """
     ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
 
-    # ✅ Save choice to DB
+    # ✅ Save details to DB
     async with get_async_session() as session:
         user = await get_or_create_user(session, tg_id=tgid)
         user.choice = choice
-        user.winner_stage = None
-        user.winner_data = {}
+
+        # ✅ Ensure new winners remain PENDING until admin updates
+        user.delivery_status = "Pending"
+
+        # ✅ Save submitted form data
+        user.winner_data = {
+            "full_name": full_name,
+            "phone": phone,
+            "address": address
+        }
+
         await session.commit()
 
     # ✅ Notify Admin
@@ -631,7 +642,7 @@ async def save_winner(
         status_code=200
     )
 
-# ------------------------------------------------------
+
 # ✅ Register all Flutterwave routes
-# ------------------------------------------------------
 app.include_router(router)
+
