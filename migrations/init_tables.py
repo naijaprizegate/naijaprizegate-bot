@@ -10,7 +10,7 @@ def main():
         print("ERROR: DATABASE_URL not found in env")
         return
 
-    # psycopg2 does not understand "+asyncpg", strip it
+    # psycopg2 does not understand "+asyncpg", fix it
     if database_url.startswith("postgresql+asyncpg://"):
         database_url = database_url.replace("postgresql+asyncpg://", "postgresql://", 1)
 
@@ -18,7 +18,7 @@ def main():
     cur = conn.cursor()
 
     try:
-        # Enable UUID extension
+        # Enable UUID generation extension
         cur.execute("CREATE EXTENSION IF NOT EXISTS pgcrypto;")
 
         # ----------------------
@@ -39,7 +39,7 @@ def main():
         cur.execute("CREATE INDEX IF NOT EXISTS idx_users_tg_id ON users(tg_id);")
         print("✅ users table ensured")
 
-        # ✅ Winner-related fields stay but do not determine delivery_status anymore
+        # Add winner-related columns if missing
         cur.execute("""
         DO $$
         BEGIN
@@ -56,10 +56,10 @@ def main():
             END IF;
         END$$;
         """)
-        print("✅ basic winner fields ensured on users table")
+        print("✅ winner fields ensured on users")
 
         # ----------------------
-        # ✅ NEW: PRIZE WINNERS TABLE
+        # 2. Prize Winners ✅ FINAL CORRECT VERSION
         # ----------------------
         cur.execute("""
         CREATE TABLE IF NOT EXISTS prize_winners (
@@ -69,7 +69,7 @@ def main():
             choice TEXT NOT NULL,
             delivery_status TEXT DEFAULT 'Pending',
             submitted_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP NOT NULL,
-            pending_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+            pending_at TIMESTAMPTZ,
             in_transit_at TIMESTAMPTZ,
             delivered_at TIMESTAMPTZ,
             updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
@@ -78,10 +78,10 @@ def main():
         );
         """)
         cur.execute("CREATE INDEX IF NOT EXISTS idx_prize_winners_tg_id ON prize_winners(tg_id);")
-        print("✅ prize_winners table ensured with correct default status")
+        print("✅ prize_winners table ensured")
 
         # ----------------------
-        # 2. Global Counter
+        # 3. Global Counter
         # ----------------------
         cur.execute("""
         CREATE TABLE IF NOT EXISTS global_counter (
@@ -89,10 +89,10 @@ def main():
             paid_tries_total INT DEFAULT 0
         );
         """)
-        print("✅ global_counter table ensured")
+        print("✅ global_counter ensured")
 
         # ----------------------
-        # 3. Plays
+        # 4. Plays
         # ----------------------
         cur.execute("""
         CREATE TABLE IF NOT EXISTS plays (
@@ -103,10 +103,10 @@ def main():
         );
         """)
         cur.execute("CREATE INDEX IF NOT EXISTS idx_plays_user_id ON plays(user_id);")
-        print("✅ plays table ensured")
+        print("✅ plays ensured")
 
         # ----------------------
-        # 4. Payments
+        # 5. Payments
         # ----------------------
         cur.execute("""
         CREATE TABLE IF NOT EXISTS payments (
@@ -126,10 +126,10 @@ def main():
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_user_id ON payments(user_id);")
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_flw_tx_id ON payments(flw_tx_id);")
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_tg_id ON payments(tg_id);")
-        print("✅ payments table ensured")
+        print("✅ payments ensured")
 
         # ----------------------
-        # 5. Proofs
+        # 6. Proofs
         # ----------------------
         cur.execute("""
         CREATE TABLE IF NOT EXISTS proofs (
@@ -141,10 +141,10 @@ def main():
         );
         """)
         cur.execute("CREATE INDEX IF NOT EXISTS idx_proofs_user_id ON proofs(user_id);")
-        print("✅ proofs table ensured")
+        print("✅ proofs ensured")
 
         # ----------------------
-        # 6. Transaction Logs
+        # 7. Transaction Logs
         # ----------------------
         cur.execute("""
         CREATE TABLE IF NOT EXISTS transaction_logs (
@@ -154,10 +154,10 @@ def main():
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
-        print("✅ transaction_logs table ensured")
+        print("✅ transaction_logs ensured")
 
         # ----------------------
-        # 7. Game State
+        # 8. Game State
         # ----------------------
         cur.execute("""
         CREATE TABLE IF NOT EXISTS game_state (
@@ -169,8 +169,8 @@ def main():
             updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
-        cur.execute("INSERT INTO game_state (id) VALUES (1) ON CONFLICT (id) DO NOTHING;")
-        print("✅ default game_state ensured")
+        cur.execute("INSERT INTO game_state (id) VALUES (1) ON CONFLICT DO NOTHING;")
+        print("✅ game_state ensured")
 
         conn.commit()
         print("🎉 FULL migration completed successfully!")
