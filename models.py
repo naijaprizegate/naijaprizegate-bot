@@ -4,7 +4,7 @@
 import uuid
 from sqlalchemy import (
     Column, String, Integer, ForeignKey, Text, TIMESTAMP, CheckConstraint,
-    Boolean, BigInteger, JSON
+    Boolean, BigInteger, JSON, DateTime
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
@@ -43,7 +43,7 @@ class User(Base):
     plays = relationship("Play", back_populates="user")
     payments = relationship("Payment", back_populates="user")
     proofs = relationship("Proof", back_populates="user")
-
+    prize_wins = relationship("PrizeWinner", back_populates="user", cascade="all, delete-orphan")
 
 # ----------------------
 # 2. Global Counter
@@ -153,4 +153,35 @@ class TransactionLog(Base):
     provider = Column(String, nullable=False)   # e.g. "flutterwave"
     payload = Column(Text, nullable=False)      # raw JSON payload
     created_at = Column(TIMESTAMP, server_default=func.now())
+
+
+# ------------------------
+# 7. Prize Winner
+# --------------------------
+class PrizeWinner(Base):
+    __tablename__ = "prize_winners"
+
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    tg_id = Column(Integer, nullable=False, index=True)  # convenience copy of telegram id
+    choice = Column(String, nullable=False)
+
+    # delivery lifecycle
+    delivery_status = Column(String, nullable=True)  # None | "Pending" | "In Transit" | "Delivered"
+
+    # timestamps
+    submitted_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
+    pending_at = Column(DateTime(timezone=True), nullable=True)
+    in_transit_at = Column(DateTime(timezone=True), nullable=True)
+    delivered_at = Column(DateTime(timezone=True), nullable=True)
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
+
+    # free-form JSON data from the form: full_name, phone, address, etc.
+    delivery_data = Column(JSON, nullable=True, default={})
+
+    # admin who last updated (optional)
+    last_updated_by = Column(Integer, nullable=True)
+
+    # relationship to users table (optional convenience)
+    user = relationship("User", back_populates="prize_wins", lazy="joined")
 
