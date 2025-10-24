@@ -13,7 +13,7 @@ from telegram.error import BadRequest
 from sqlalchemy import select, update as sql_update
 from db import AsyncSessionLocal, get_async_session
 from helpers import add_tries, get_user_by_id
-from models import Proof, User, GameState, GlobalCounter
+from models import Proof, User, GameState, GlobalCounter, PrizeWinner
 
 logger = logging.getLogger(__name__)
 
@@ -426,30 +426,21 @@ async def user_search_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
 
 
 # ----------------------------
-# 🏆 Winners Section (Single-Winner Paging with Stored Winner Data)
+# 🏆 Winners Section (PrizeWinner-based Paging)
 # ----------------------------
-WINNERS_PER_PAGE = 1  # one winner per page
-admin_offset = {}  # remembers last viewed page per admin
+WINNERS_PER_PAGE = 1
+admin_offset = {}  # remembers page per admin
 
 
 async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """
-    Displays winners one at a time (pageable). Callback data formats handled:
-    - admin_winners:all:1
-    - admin_winners:pending:1
-    - admin_winners:transit:1
-    - admin_winners:delivered:1
-    - If called from admin_menu:winners, defaults to page 1, all winners.
-    Includes data submitted via the winner form (full_name, phone, address).
-    """
     query = getattr(update, "callback_query", None)
-    admin_id = update.effective_user.id if update.effective_user else None
+    admin_id = update.effective_user.id
     page = 1
-    filter_status = None  # None | "Pending" | "In Transit" | "Delivered"
+    filter_status = None  # None | Pending | In Transit | Delivered
 
-    # --- Parse callback data ---
+    # Parse callback
     if query and query.data.startswith("admin_winners"):
-        parts = query.data.split(":")  # e.g. admin_winners:transit:2
+        parts = query.data.split(":")
         if len(parts) >= 2:
             key = parts[1]
             if key == "pending":
@@ -463,133 +454,100 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
         if len(parts) == 3 and parts[2].isdigit():
             page = int(parts[2])
     else:
-        # Default to saved offset or start at 1
         page = admin_offset.get(admin_id, 1)
-        filter_status = None
 
     offset = (page - 1) * WINNERS_PER_PAGE
 
-    # --- Fetch winners from DB ---
+    # Fetch from PrizeWinner table ✅
     async with get_async_session() as session:
-        query_base = select(User).where(User.choice.isnot(None))
+        qb = select(PrizeWinner)
         if filter_status:
-            if filter_status == "Pending":
-                query_base = query_base.where(
-                    (User.delivery_status.is_(None)) | (User.delivery_status == "Pending")
-                )
-            else:
-                query_base = query_base.where(User.delivery_status == filter_status)
-
-        result = await session.execute(query_base.order_by(User.id.desc()))
-        all_winners = result.scalars().all()
+            qb = qb.where(PrizeWinner.delivery_status == filter_status)
+        qb = qb.order_by(PrizeWinner.id.desc())
+        res = await session.execute(qb)
+        all_winners = res.scalars().all()
 
     if not all_winners:
-        # 🎯 No Winners Found
-        if filter_status == "In Transit":
-            text = "📦 No winner found in transit yet.\n\n💡 Tip: Try again after marking someone 'In Transit'!"
-        elif filter_status == "Delivered":
-            text = "✅ No delivered winners yet.\n\n💡 Tip: Once a delivery is done, mark it 'Delivered' to see them here."
-        elif filter_status == "Pending":
-            text = "🏆 No confirmed winners yet.\n\n💡 Tip: Winners appear here once they’re selected!"
-        else:
-            text = "🎯 No winners found yet.\n\n💡 Tip: Start a draw or mark someone as a winner!"
-
+        text = (
+            "📭 No winners found for this category.\n\n"
+            "💡 Tip: Mark winners in the correct status to track progress!"
+        )
         keyboard = InlineKeyboardMarkup([
             [
-                InlineKeyboardButton("📦 In Transit List", callback_data="admin_winners:transit:1"),
-                InlineKeyboardButton("✅ Delivered List", callback_data="admin_winners:delivered:1")
+                InlineKeyboardButton("📦 In Transit", callback_data="admin_winners:transit:1"),
+                InlineKeyboardButton("✅ Delivered", callback_data="admin_winners:delivered:1")
             ],
             [InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")]
         ])
+        return await safe_edit(query, text, parse_mode="HTML", reply_markup=keyboard) \
+            if query else await update.effective_message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
 
-        if query:
-            return await query.edit_message_text(text, parse_mode="HTML", reply_markup=keyboard)
-        else:
-            return await update.effective_message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
-
-    # --- Calculate pagination ---
     total_winners = len(all_winners)
-    total_pages = max(1, (total_winners + WINNERS_PER_PAGE - 1) // WINNERS_PER_PAGE)
+    total_pages = total_winners
 
-    # Ensure page within bounds
-    if page < 1:
-        page = 1
-    elif page > total_pages:
-        page = total_pages
-
-    # Remember last viewed page per admin
+    page = max(1, min(page, total_pages))
     admin_offset[admin_id] = page
 
-    # --- Select winner for current page ---
     winner = all_winners[offset]
 
-    # --- Try to extract stored winner form data ---
-    form_data = getattr(winner, "winner_data", {}) or {}
-    full_name = form_data.get("full_name") or getattr(winner, "full_name", "-")
-    phone = form_data.get("phone") or getattr(winner, "phone", "N/A")
-    address = form_data.get("address") or getattr(winner, "address", "N/A")
+    # Form data ✅
+    data = winner.delivery_data or {}
+    full_name = data.get("full_name", "-")
+    phone = data.get("phone", "N/A")
+    address = data.get("address", "N/A")
 
-    # --- Determine prefix for pagination callbacks ---
-    status_map = {
-        None: 'all',
-        'Pending': 'pending',
-        'In Transit': 'transit',
-        'Delivered': 'delivered'
+    status_label_map = {
+        None: "all",
+        "Pending": "pending",
+        "In Transit": "transit",
+        "Delivered": "delivered"
     }
-    base_prefix = f"admin_winners:{status_map.get(filter_status, 'all')}"
+    base_prefix = f"admin_winners:{status_label_map.get(filter_status, 'all')}"
 
-    # --- Label for top section ---
-    filter_label = (
-        "🟡 Pending Winners" if filter_status == "Pending"
-        else "📦 In Transit List" if filter_status == "In Transit"
-        else "✅ Delivered List" if filter_status == "Delivered"
-        else "🏆 All Winners"
-    )
+    filter_label = {
+        None: "🏆 All Winners",
+        "Pending": "🟡 Pending Winners",
+        "In Transit": "📦 In Transit Winners",
+        "Delivered": "✅ Delivered Winners"
+    }[filter_status]
 
-    # --- Build message text ---
     text = (
         f"{filter_label}\n"
         f"Winner {page} of {total_winners}\n\n"
         f"👤 <b>{full_name}</b>\n"
-        f"📱 <b>{phone}</b>\n"
-        f"🏠 <b>{address}</b>\n"
-        f"🎁 <b>{getattr(winner, 'choice', '-')}</b>\n"
-        f"🚚 <b>Status:</b> {getattr(winner, 'delivery_status', 'Pending') or 'Pending'}\n"
+        f"📱 {phone}\n"
+        f"🏠 {address}\n"
+        f"🎁 {winner.choice}\n"
+        f"🚚 Status: <b>{winner.delivery_status or 'Pending'}</b>\n"
         f"🆔 <code>{winner.tg_id}</code>\n"
-        f"🔗 @{getattr(winner, 'username', 'N/A')}"
+        f"📌 PrizeWinner ID: <code>{winner.id}</code>"
     )
 
-    # --- Inline keyboard ---
     rows = [
         [
-            InlineKeyboardButton("🚚 Mark In Transit", callback_data=f"status_transit_{winner.id}"),
-            InlineKeyboardButton("✅ Mark Delivered", callback_data=f"status_delivered_{winner.id}")
+            InlineKeyboardButton("🚚 Mark In Transit", callback_data=f"pw_status_transit_{winner.id}"),
+            InlineKeyboardButton("✅ Mark Delivered", callback_data=f"pw_status_delivered_{winner.id}")
         ]
     ]
 
-    # Pagination buttons
-    nav_buttons = []
+    nav = []
     if page > 1:
-        nav_buttons.append(InlineKeyboardButton("⬅️ Prev", callback_data=f"{base_prefix}:{page-1}"))
+        nav.append(InlineKeyboardButton("⬅️ Prev", callback_data=f"{base_prefix}:{page-1}"))
     if page < total_pages:
-        nav_buttons.append(InlineKeyboardButton("Next ⏩", callback_data=f"{base_prefix}:{page+1}"))
-    if nav_buttons:
-        rows.append(nav_buttons)
+        nav.append(InlineKeyboardButton("Next ⏩", callback_data=f"{base_prefix}:{page+1}"))
+    if nav:
+        rows.append(nav)
 
-    # Quick filter shortcuts
     rows.append([
-        InlineKeyboardButton("📦 In Transit List", callback_data="admin_winners:transit:1"),
-        InlineKeyboardButton("✅ Delivered List", callback_data="admin_winners:delivered:1"),
+        InlineKeyboardButton("📦 In Transit", callback_data="admin_winners:transit:1"),
+        InlineKeyboardButton("✅ Delivered", callback_data="admin_winners:delivered:1")
     ])
     rows.append([InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")])
 
     keyboard = InlineKeyboardMarkup(rows)
 
-    # --- Display message ---
-    if query:
-        await safe_edit(query, text, parse_mode="HTML", reply_markup=keyboard)
-    else:
-        await update.effective_message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
+    return await safe_edit(query, text, parse_mode="HTML", reply_markup=keyboard) \
+        if query else await update.effective_message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
 
 # ------------------------------
 # Show Filtered Winners
@@ -641,72 +599,53 @@ async def show_filtered_winners(update: Update, context: ContextTypes.DEFAULT_TY
         reply_markup=keyboard
     )
 
-
-# ----------------------------
-# Delivery Status Update (per-winner)
-# ----------------------------
-async def handle_delivery_status(update: Update, context: ContextTypes.DEFAULT_TYPE):
+# -----------------------------------
+# ✅ Handler for "Mark In Transit"
+# ----------------------------------
+async def update_delivery_status_transit(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    await query.answer()  # show spinner -> we'll also send a short toast below
-
-    if query.from_user.id != ADMIN_USER_ID:
-        return await query.answer("🚫 Not authorized.", show_alert=True)
-
-    # callback format: status_transit_<uuid> or status_delivered_<uuid>
-    try:
-        _, status, user_id = query.data.split("_", 2)
-    except Exception:
-        return await query.answer("⚠️ Invalid callback data.", show_alert=True)
-
-    new_status = "Delivered" if status == "delivered" else "In Transit"
+    parts = query.data.split("_")  # pw_status_transit_12
+    winner_id = int(parts[-1])
 
     async with get_async_session() as session:
-        async with session.begin():
-            await session.execute(sql_update(User).where(User.id == user_id).values(delivery_status=new_status))
-            result = await session.execute(select(User).where(User.id == user_id))
-            winner = result.scalar_one_or_none()
+        result = await session.execute(select(PrizeWinner).where(PrizeWinner.id == winner_id))
+        winner = result.scalar_one_or_none()
+
+        if not winner:
+            await query.answer("❌ Winner not found!", show_alert=True)
+            return
+
+        # ✅ Update & commit
+        winner.delivery_status = "In Transit"
         await session.commit()
 
-    # Short toast confirmation (non-blocking)
-    try:
-        await query.answer(text="✅ Updated!", show_alert=False)
-    except Exception:
-        # ignore double-answer errors
-        pass
+    await query.answer("✅ Marked as In Transit")
+    # Refresh winner screen
+    await show_winners_section(update, context)
 
-    # Notify the winner privately (if contact exists)
-    if winner and winner.tg_id:
-        try:
-            dm_text = (
-                f"🚚 <b>Good news, {winner.full_name or 'Winner'}!</b>\n\n"
-                "Your prize is now <b>on the way</b> 🎁📦"
-                if new_status == "In Transit" else
-                f"✅ <b>Good news, {winner.full_name or 'Winner'}!</b>\n\nYour prize has been <b>delivered</b> 🎉"
-            )
-            await context.bot.send_message(chat_id=winner.tg_id, text=dm_text, parse_mode="HTML")
-        except Exception as e:
-            logger.error(f"Failed to DM winner: {e}")
+# -------------------------------------
+# ✅ Handler for "Mark Delivered"
+# -------------------------------------
+async def update_delivery_status_delivered(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    parts = query.data.split("_")  # pw_status_delivered_12
+    winner_id = int(parts[-1])
 
-    # Optional: notify admin privately when delivered
-    if new_status == "Delivered":
-        try:
-            await context.bot.send_message(
-                chat_id=ADMIN_USER_ID,
-                text=f"📦 Delivery Confirmed\n🎉 {winner.full_name or 'Winner'}'s prize marked as delivered.",
-                parse_mode="HTML"
-            )
-        except Exception as e:
-            logger.error(f"Failed to DM admin about delivery: {e}")
+    async with get_async_session() as session:
+        result = await session.execute(select(PrizeWinner).where(PrizeWinner.id == winner_id))
+        winner = result.scalar_one_or_none()
 
-    # Finally: refresh the winners list in-place so admin sees updated status (auto-refresh)
-    # Reuse the same callback handling by altering the update.callback_query.data to a winners view request
-    # Fortunately show_winners_section reads current update and will refresh correctly (it ignores the status_* data)
-    try:
-        await show_winners_section(update, context)
-    except Exception as e:
-        logger.error(f"Failed to refresh winners list after status update: {e}")
-        # fallback - send a confirmation message
-        await query.message.reply_text(f"✅ Updated {winner.full_name or 'Winner'} → <b>{new_status}</b>.", parse_mode="HTML")
+        if not winner:
+            await query.answer("❌ Winner not found!", show_alert=True)
+            return
+
+        # ✅ Update & commit
+        winner.delivery_status = "Delivered"
+        await session.commit()
+
+    await query.answer("✅ Marked as Delivered")
+    # Refresh winner screen
+    await show_winners_section(update, context)
 
 
 # ----------------------------
@@ -720,8 +659,9 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(show_filtered_winners, pattern="^admin_winners_filter:"))
     # admin callbacks (menu, winners pagination/filters, approvals)
     application.add_handler(CallbackQueryHandler(admin_callback, pattern="^admin_"))
-    # delivery status actions (per-winner)
-    application.add_handler(CallbackQueryHandler(handle_delivery_status, pattern=r"^status_"))
     # user search text handler
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, user_search_handler))
+    # delivery status actions (per-winner)
+    application.add_handler(CallbackQueryHandler(update_delivery_status_transit, pattern=r"^pw_status_transit_"))
+    application.add_handler(CallbackQueryHandler(update_delivery_status_delivered, pattern=r"^pw_status_delivered_"))
 
