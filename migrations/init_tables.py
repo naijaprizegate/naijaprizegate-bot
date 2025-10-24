@@ -1,5 +1,5 @@
 # ==============================================================
-# migrations/init_tables.py (SAFE VERSION with schema tracking)
+# migrations/init_tables.py (CLEAN VERSION - removes last_updated_by)
 # ==============================================================
 import os
 import json
@@ -13,7 +13,6 @@ def main():
         print("ERROR: DATABASE_URL not found in env")
         return
 
-    # psycopg2 does not understand "+asyncpg", fix it
     if database_url.startswith("postgresql+asyncpg://"):
         database_url = database_url.replace("postgresql+asyncpg://", "postgresql://", 1)
 
@@ -33,9 +32,8 @@ def main():
         """)
         print("✅ schema_migrations table ensured")
 
-        MIGRATION_NAME = "init_tables_v2"
+        MIGRATION_NAME = "init_tables_v3"
 
-        # Skip migration if already applied
         cur.execute("SELECT 1 FROM schema_migrations WHERE name=%s", (MIGRATION_NAME,))
         if cur.fetchone():
             print(f"⚠️ Migration {MIGRATION_NAME} already applied — skipping ✅")
@@ -44,7 +42,6 @@ def main():
 
         print(f"🔧 Starting migration: {MIGRATION_NAME}")
 
-        # Enable UUID generation extension
         cur.execute("CREATE EXTENSION IF NOT EXISTS pgcrypto;")
         print("✅ pgcrypto ensured")
 
@@ -61,19 +58,24 @@ def main():
             is_admin BOOLEAN DEFAULT FALSE NOT NULL,
             referred_by UUID REFERENCES users(id) ON DELETE SET NULL,
             choice TEXT,
+            phone TEXT,
+            address TEXT,
+            delivery_status TEXT DEFAULT 'Pending',
             winner_stage TEXT,
             winner_data JSONB DEFAULT '{}'::jsonb,
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
-        cur.execute("CREATE INDEX IF NOT EXISTS idx_users_tg_id ON users(tg_id);")
         print("✅ users ensured")
 
         # ======================================================
-        # 2. Prize Winners — NO DROPPING ANYMORE ✅
+        # 2. Prize Winners — DROP + CREATE CLEAN TABLE ✅
         # ======================================================
+        cur.execute("DROP TABLE IF EXISTS prize_winners CASCADE;")
+        print("🗑️ Dropped old prize_winners (if existed)")
+
         cur.execute("""
-        CREATE TABLE IF NOT EXISTS prize_winners (
+        CREATE TABLE prize_winners (
             id SERIAL PRIMARY KEY,
             user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
             tg_id BIGINT NOT NULL,
@@ -84,12 +86,11 @@ def main():
             in_transit_at TIMESTAMPTZ,
             delivered_at TIMESTAMPTZ,
             updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-            delivery_data JSONB DEFAULT '{}'::jsonb,
-            last_updated_by UUID REFERENCES users(id) ON DELETE SET NULL
+            delivery_data JSONB DEFAULT '{}'::jsonb
         );
         """)
         cur.execute("CREATE INDEX IF NOT EXISTS idx_prize_winners_tg_id ON prize_winners(tg_id);")
-        print("✅ prize_winners ensured")
+        print("✅ prize_winners recreated cleanly ✅")
 
         # ======================================================
         # 3. Global Counter
@@ -134,9 +135,6 @@ def main():
             updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
-        cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_user_id ON payments(user_id);")
-        cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_flw_tx_id ON payments(flw_tx_id);")
-        cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_tg_id ON payments(tg_id);")
         print("✅ payments ensured")
 
         # ======================================================
@@ -151,7 +149,6 @@ def main():
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
-        cur.execute("CREATE INDEX IF NOT EXISTS idx_proofs_user_id ON proofs(user_id);")
         print("✅ proofs ensured")
 
         # ======================================================
@@ -183,25 +180,20 @@ def main():
         cur.execute("INSERT INTO game_state (id) VALUES (1) ON CONFLICT DO NOTHING;")
         print("✅ game_state ensured")
 
-        # ======================================================
-        # ✅ Record success in schema migrations
-        # ======================================================
-        meta = json.dumps({
-            "applied_by": "render_deploy",
-            "applied_at": datetime.now(timezone.utc).isoformat()
-        })
-
         cur.execute(
             "INSERT INTO schema_migrations (name, meta) VALUES (%s, %s::jsonb)",
-            (MIGRATION_NAME, meta)
+            (MIGRATION_NAME, json.dumps({
+                "applied_by": "manual_update",
+                "applied_at": datetime.now(timezone.utc).isoformat()
+            }))
         )
 
         conn.commit()
-        print("🎉 Migration completed successfully!")
+        print("🎉 Migration completed SUCCESSFULLY ✅")
 
     except Exception as e:
         conn.rollback()
-        print("❌ Migration failed — rolled back. Error:", e)
+        print("❌ Migration failed — rolled back ❌ Error:", e)
         raise
 
     finally:
