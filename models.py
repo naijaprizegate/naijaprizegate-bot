@@ -181,7 +181,6 @@ class PrizeWinner(Base):
 
     delivery_data = Column(JSON, nullable=True, default={})
 
-    last_updated_by = Column(Integer, nullable=True)
 
     user = relationship("User", back_populates="prize_wins", lazy="joined")
 
