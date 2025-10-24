@@ -157,31 +157,31 @@ class TransactionLog(Base):
 
 # ------------------------
 # 7. Prize Winner
-# --------------------------
+# ------------------------
 class PrizeWinner(Base):
     __tablename__ = "prize_winners"
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-    tg_id = Column(Integer, nullable=False, index=True)  # convenience copy of telegram id
+    
+    # ✅ Fix UUID type
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+
+    # ✅ Fix Telegram ID type
+    tg_id = Column(BigInteger, nullable=False, index=True)
+
     choice = Column(String, nullable=False)
 
-    # delivery lifecycle
-    delivery_status = Column(String, nullable=True)  # None | "Pending" | "In Transit" | "Delivered"
+    delivery_status = Column(String, nullable=True)
 
-    # timestamps
     submitted_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     pending_at = Column(DateTime(timezone=True), nullable=True)
     in_transit_at = Column(DateTime(timezone=True), nullable=True)
     delivered_at = Column(DateTime(timezone=True), nullable=True)
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
 
-    # free-form JSON data from the form: full_name, phone, address, etc.
     delivery_data = Column(JSON, nullable=True, default={})
 
-    # admin who last updated (optional)
     last_updated_by = Column(Integer, nullable=True)
 
-    # relationship to users table (optional convenience)
     user = relationship("User", back_populates="prize_wins", lazy="joined")
 
