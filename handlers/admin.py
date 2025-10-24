@@ -549,6 +549,76 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
     return await safe_edit(query, text, parse_mode="HTML", reply_markup=keyboard) \
         if query else await update.effective_message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
 
+# --------------------------------------
+# handle_pwhandle_pw_mark_in_transit
+# --------------------------------------
+async def handle_pw_mark_in_transit(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    data = query.data  # e.g. "pw_status_transit_12"
+    _, _, record_id = data.rpartition("_")
+    if not record_id.isdigit():
+        return await query.edit_message_text("Invalid record id.")
+    rid = int(record_id)
+
+    async with get_async_session() as session:
+        pw = await session.get(PrizeWinner, rid)
+        if not pw:
+            return await query.edit_message_text("Record not found.")
+
+        pw.delivery_status = "In Transit"
+        pw.in_transit_at = datetime.utcnow()
+        pw.last_updated_by = update.effective_user.id
+        await session.commit()
+
+        # notify winner
+        try:
+            bot = Bot(token=os.getenv("BOT_TOKEN"))
+            await bot.send_message(
+                chat_id=pw.tg_id,
+                text=f"🚚 Hi! Your prize ({pw.choice}) is now *In Transit*. We'll update you when it's delivered.",
+                parse_mode="Markdown"
+            )
+        except Exception:
+            logger.exception("Failed to notify winner about In Transit")
+
+    # refresh admin display: stay on same page
+    await show_winners_section(update, context)
+
+# ----------------------------------
+# handle_pw_mark_delivered
+# ------------------------------------
+async def handle_pw_mark_delivered(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    _, _, record_id = query.data.rpartition("_")
+    if not record_id.isdigit():
+        return await query.edit_message_text("Invalid record id.")
+    rid = int(record_id)
+
+    async with get_async_session() as session:
+        pw = await session.get(PrizeWinner, rid)
+        if not pw:
+            return await query.edit_message_text("Record not found.")
+
+        pw.delivery_status = "Delivered"
+        pw.delivered_at = datetime.utcnow()
+        pw.last_updated_by = update.effective_user.id
+        await session.commit()
+
+        try:
+            bot = Bot(token=os.getenv("BOT_TOKEN"))
+            await bot.send_message(
+                chat_id=pw.tg_id,
+                text=f"✅ Hi! Your prize ({pw.choice}) has been *delivered*. Congratulations!",
+                parse_mode="Markdown"
+            )
+        except Exception:
+            logger.exception("Failed to notify winner about Delivered")
+
+    # refresh admin display
+    await show_winners_section(update, context)
+
 # ------------------------------
 # Show Filtered Winners
 # ------------------------------
@@ -558,6 +628,7 @@ async def show_filtered_winners(update: Update, context: ContextTypes.DEFAULT_TY
     await query.answer()
 
     # Extract filter value from callback data (e.g. "In Transit" or "Delivered")
+
     _, filter_value = query.data.split(":", 1)
 
     async with get_async_session() as session:
@@ -664,4 +735,7 @@ def register_handlers(application):
     # delivery status actions (per-winner)
     application.add_handler(CallbackQueryHandler(update_delivery_status_transit, pattern=r"^pw_status_transit_"))
     application.add_handler(CallbackQueryHandler(update_delivery_status_delivered, pattern=r"^pw_status_delivered_"))
+
+    application.add_handler(CallbackQueryHandler(handle_pw_mark_in_transit, pattern=r"^pw_status_transit_\d+$"))
+    application.add_handler(CallbackQueryHandler(handle_pw_mark_delivered, pattern=r"^pw_status_delivered_\d+$"))
 
