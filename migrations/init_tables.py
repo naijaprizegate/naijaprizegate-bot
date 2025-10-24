@@ -1,4 +1,7 @@
-import os 
+# ==============================================================
+# migrations/init_tables.py
+# ==============================================================
+import os
 import psycopg2
 
 def main():
@@ -36,7 +39,7 @@ def main():
         cur.execute("CREATE INDEX IF NOT EXISTS idx_users_tg_id ON users(tg_id);")
         print("✅ users table ensured")
 
-        # ✅ Add new winner fields if they don't exist
+        # ✅ Winner-related fields stay but do not determine delivery_status anymore
         cur.execute("""
         DO $$
         BEGIN
@@ -44,23 +47,6 @@ def main():
                 ALTER TABLE users ADD COLUMN choice TEXT;
             END IF;
 
-            IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='full_name') THEN
-                ALTER TABLE users ADD COLUMN full_name TEXT;
-            END IF;
-
-            IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='phone') THEN
-                ALTER TABLE users ADD COLUMN phone TEXT;
-            END IF;
-
-            IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='address') THEN
-                ALTER TABLE users ADD COLUMN address TEXT;
-            END IF;
-
-            IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='delivery_status') THEN
-                ALTER TABLE users ADD COLUMN delivery_status TEXT DEFAULT 'Pending';
-            END IF;
-
-            -- 🆕 Add persistent winner form fields
             IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='winner_stage') THEN
                 ALTER TABLE users ADD COLUMN winner_stage TEXT;
             END IF;
@@ -70,7 +56,29 @@ def main():
             END IF;
         END$$;
         """)
-        print("✅ winner fields ensured (choice, full_name, phone, address, delivery_status, winner_stage, winner_data)")
+        print("✅ basic winner fields ensured on users table")
+
+        # ----------------------
+        # ✅ NEW: PRIZE WINNERS TABLE
+        # ----------------------
+        cur.execute("""
+        CREATE TABLE IF NOT EXISTS prize_winners (
+            id SERIAL PRIMARY KEY,
+            user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+            tg_id BIGINT NOT NULL,
+            choice TEXT NOT NULL,
+            delivery_status TEXT DEFAULT 'Pending',
+            submitted_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP NOT NULL,
+            pending_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+            in_transit_at TIMESTAMPTZ,
+            delivered_at TIMESTAMPTZ,
+            updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+            delivery_data JSONB DEFAULT '{}'::jsonb,
+            last_updated_by UUID REFERENCES users(id) ON DELETE SET NULL
+        );
+        """)
+        cur.execute("CREATE INDEX IF NOT EXISTS idx_prize_winners_tg_id ON prize_winners(tg_id);")
+        print("✅ prize_winners table ensured with correct default status")
 
         # ----------------------
         # 2. Global Counter
@@ -118,34 +126,7 @@ def main():
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_user_id ON payments(user_id);")
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_flw_tx_id ON payments(flw_tx_id);")
         cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_tg_id ON payments(tg_id);")
-
-        # ✅ Migration fix: ensure flw_tx_id is TEXT
-        cur.execute("""
-        DO $$
-        BEGIN
-            IF EXISTS (
-                SELECT 1 FROM information_schema.columns
-                WHERE table_name='payments' AND column_name='flw_tx_id'
-                  AND data_type IN ('integer', 'bigint')
-            ) THEN
-                ALTER TABLE payments ALTER COLUMN flw_tx_id TYPE VARCHAR USING flw_tx_id::varchar;
-            END IF;
-        END$$;
-        """)
-
-        # ✅ Rename 'tries' → 'credited_tries' if needed
-        cur.execute("""
-        DO $$
-        BEGIN
-            IF EXISTS (
-                SELECT 1 FROM information_schema.columns
-                WHERE table_name='payments' AND column_name='tries'
-            ) THEN
-                ALTER TABLE payments RENAME COLUMN tries TO credited_tries;
-            END IF;
-        END$$;
-        """)
-        print("✅ payments table ensured (with VARCHAR flw_tx_id)")
+        print("✅ payments table ensured")
 
         # ----------------------
         # 5. Proofs
@@ -188,14 +169,11 @@ def main():
             updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
         """)
-        print("✅ game_state table ensured")
-
-        # ✅ Ensure default GameState row
         cur.execute("INSERT INTO game_state (id) VALUES (1) ON CONFLICT (id) DO NOTHING;")
-        print("✅ ensured default game_state row (id=1)")
+        print("✅ default game_state ensured")
 
         conn.commit()
-        print("🎉 Migration completed successfully!")
+        print("🎉 FULL migration completed successfully!")
 
     except Exception as e:
         conn.rollback()
