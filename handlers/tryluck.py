@@ -79,6 +79,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             logger.exception(f"❌ Error during /tryluck for {tg_user.id}: {e}")
             outcome = "error"
 
+    # 🧱 Outcome handling
     if outcome == "no_tries":
         return await update.effective_message.reply_text(
             "😅 You don’t have any tries left! Buy more spins or earn free ones.",
@@ -91,19 +92,38 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             parse_mode="HTML",
         )
 
+    # 🎞️ Start spinner animation
     msg = await update.effective_message.reply_text("🎰 <i>Spinning...</i>", parse_mode="HTML")
 
     spinner_emojis = ["🍒", "🍋", "🔔", "⭐", "💎", "7️⃣", "🍀", "🎲"]
     num_reels = 3
     total_spins = random.randint(6, 10)
 
+    last_frame = None  # 👀 Track last frame to avoid redundant edits
+
     for _ in range(total_spins):
         frame = " ".join(random.choice(spinner_emojis) for _ in range(num_reels))
-        await msg.edit_text(f"🎰 {frame}", parse_mode="HTML")
+        new_text = f"🎰 {frame}"
+
+        # ✅ Prevent “Message is not modified” error
+        if last_frame != new_text:
+            try:
+                await msg.edit_text(new_text, parse_mode="HTML")
+                last_frame = new_text
+            except telegram.error.BadRequest as e:
+                if "Message is not modified" in str(e):
+                    logger.debug("⚠️ Skipped redundant edit_text (same content).")
+                else:
+                    logger.warning(f"⚠️ edit_text failed: {e}")
+        else:
+            logger.debug("⚠️ Skipped redundant frame — identical content.")
+
         await asyncio.sleep(0.4)
 
+    # 🧍 Player name fallback
     player_name = tg_user.first_name or "Player"
 
+    # 🏁 Final result
     if outcome == "win":
         final_frame = "💎 💎 💎"
         final_text = (
@@ -120,6 +140,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     safe_message = f"<b>🎰 {final_frame}</b>\n\n{final_text}"
 
+    # 🧠 Safe message update (with graceful fallback)
     try:
         await msg.edit_text(
             text=safe_message,
@@ -144,7 +165,11 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     except Exception as e:
         logger.warning(f"⚠️ Could not edit message: {e}")
-        await context.bot.send_message(chat_id=update.effective_chat.id, text=safe_message, parse_mode="HTML")
+        await context.bot.send_message(
+            chat_id=update.effective_chat.id,
+            text=safe_message,
+            parse_mode="HTML"
+        )
 
 # ---------------------------------------------------------------
 # 📱 HANDLE iPHONE CHOICE (STEP 2 → Webform)
