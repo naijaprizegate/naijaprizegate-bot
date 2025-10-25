@@ -3,17 +3,20 @@
 # ==============================================================
 import os
 import re
+import csv
+import tempfile
 import asyncio
 import logging
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram import InputMediaPhoto
+from telegram import InputMediaPhoto, InputFile
 from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, filters
 from telegram.error import BadRequest
-from sqlalchemy import select, update as sql_update
+from sqlalchemy import select, update as sql_update, and_
 from db import AsyncSessionLocal, get_async_session
 from helpers import add_tries, get_user_by_id
 from models import Proof, User, GameState, GlobalCounter, PrizeWinner
+from utils.security import is_admin 
 
 logger = logging.getLogger(__name__)
 
@@ -472,13 +475,15 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
             "📭 No winners found for this category.\n\n"
             "💡 Tip: Mark winners in the correct status to track progress!"
         )
-        keyboard = InlineKeyboardMarkup([
+        keybkeyboard = InlineKeyboardMarkup([
             [
                 InlineKeyboardButton("📦 In Transit", callback_data="admin_winners:transit:1"),
                 InlineKeyboardButton("✅ Delivered", callback_data="admin_winners:delivered:1")
             ],
+            [InlineKeyboardButton("📥 Export Winner CSV", callback_data="admin_export_winners")],
             [InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")]
         ])
+
         return await safe_edit(query, text, parse_mode="HTML", reply_markup=keyboard) \
             if query else await update.effective_message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
 
@@ -542,7 +547,15 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
         InlineKeyboardButton("📦 In Transit", callback_data="admin_winners:transit:1"),
         InlineKeyboardButton("✅ Delivered", callback_data="admin_winners:delivered:1")
     ])
-    rows.append([InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")])
+
+    # ✅ Export CSV Button (ALL FILTERS)
+    rows.append([
+        InlineKeyboardButton("📥 Export Winners CSV", callback_data="admin_export_csv")
+    ])
+
+    rows.append([
+        InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")
+    ])
 
     keyboard = InlineKeyboardMarkup(rows)
 
@@ -719,6 +732,128 @@ async def update_delivery_status_delivered(update: Update, context: ContextTypes
     await show_winners_section(update, context)
 
 
+# ----------------------------------------------------
+# 📥 EXPORT WINNERS CSV — with Date Range (UTC-based)
+# ----------------------------------------------------
+# ---------------------------------------------------------------
+# STEP 1 — Show Range Selection Menu
+# ---------------------------------------------------------------
+async def admin_export_csv(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = getattr(update, "callback_query", None)
+    if not query:
+        return
+    
+    # ✅ Verify Admin Access
+    if not await is_admin(update):
+        return await query.answer("⛔ You are not authorized.", show_alert=True)
+
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton("🗓️ Last 7 Days", callback_data="export_csv:7days"),
+            InlineKeyboardButton("📆 Last 30 Days", callback_data="export_csv:30days")
+        ],
+        [
+            InlineKeyboardButton("📅 This Month", callback_data="export_csv:thismonth"),
+            InlineKeyboardButton("🗓️ Last Month", callback_data="export_csv:lastmonth")
+        ],
+        [
+            InlineKeyboardButton("📋 All Time", callback_data="export_csv:all"),
+        ],
+        [InlineKeyboardButton("⬅️ Back", callback_data="admin_winners:all:1")]
+    ])
+
+    text = (
+        "📥 <b>Export Winners CSV</b>\n\n"
+        "Please select a date range for export.\n"
+        "All timestamps are in <b>UTC</b>."
+    )
+
+    await query.edit_message_text(text, parse_mode="HTML", reply_markup=keyboard)
+
+
+# ---------------------------------------------------------------
+# STEP 2 — Handle Range Selection + CSV Creation
+# ---------------------------------------------------------------
+async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = getattr(update, "callback_query", None)
+    if not query:
+        return
+    
+    if not await is_admin(update):
+        return await query.answer("⛔ Unauthorized", show_alert=True)
+
+    now = datetime.now(timezone.utc)
+    start_date, end_date = None, None
+    label = query.data.split(":")[1]
+
+    if label == "7days":
+        start_date = now - timedelta(days=7)
+    elif label == "30days":
+        start_date = now - timedelta(days=30)
+    elif label == "thismonth":
+        start_date = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+    elif label == "lastmonth":
+        first_of_this_month = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+        end_date = first_of_this_month
+        start_date = (first_of_this_month - timedelta(days=1)).replace(day=1)
+    elif label == "all":
+        start_date = datetime(2000, 1, 1, tzinfo=timezone.utc)  # old default
+    else:
+        await query.answer("Invalid selection", show_alert=True)
+        return
+
+    if not end_date:
+        end_date = now
+
+    # ✅ Fetch Data
+    async with get_async_session() as session:
+        qb = select(PrizeWinner).where(
+            and_(
+                PrizeWinner.submitted_at >= start_date,
+                PrizeWinner.submitted_at <= end_date
+            )
+        ).order_by(PrizeWinner.submitted_at.desc())
+        result = await session.execute(qb)
+        winners = result.scalars().all()
+
+    if not winners:
+        return await query.edit_message_text(
+            f"📭 No winners found for this range ({label}).",
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("⬅️ Back", callback_data="admin_export_csv")]
+            ])
+        )
+
+    # ✅ Generate CSV In-Memory
+    output = io.StringIO()
+    writer = csv.writer(output)
+    writer.writerow(["Full Name", "Phone", "Address", "Prize", "Submitted At (UTC)"])
+
+    for w in winners:
+        data = w.delivery_data or {}
+        writer.writerow([
+            data.get("full_name", "-"),
+            data.get("phone", "-"),
+            data.get("address", "-"),
+            w.choice or "-",
+            w.submitted_at.strftime("%Y-%m-%d %H:%M:%S") if w.submitted_at else "-"
+        ])
+
+    output.seek(0)
+    csv_bytes = io.BytesIO(output.getvalue().encode("utf-8"))
+    csv_bytes.name = f"winners_{label}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+
+    # ✅ Send file to Telegram
+    await query.message.reply_document(
+        document=InputFile(csv_bytes),
+        filename=csv_bytes.name,
+        caption=f"📦 Winners Export ({label})\nRange: {start_date.date()} → {end_date.date()} (UTC)"
+    )
+
+    await query.answer("✅ CSV exported successfully!", show_alert=True)
+
+
 # ----------------------------
 # Register Handlers
 # ----------------------------
@@ -738,4 +873,7 @@ def register_handlers(application):
 
     application.add_handler(CallbackQueryHandler(handle_pw_mark_in_transit, pattern=r"^pw_status_transit_\d+$"))
     application.add_handler(CallbackQueryHandler(handle_pw_mark_delivered, pattern=r"^pw_status_delivered_\d+$"))
+
+    application.add_handler(CallbackQueryHandler(admin_export_csv, pattern="^admin_export_csv$"))
+    application.add_handler(CallbackQueryHandler(export_csv_handler, pattern="^export_csv:"))
 
