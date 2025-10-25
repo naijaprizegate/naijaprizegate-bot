@@ -4,7 +4,7 @@
 from telegram import Update
 from sqlalchemy import select
 from models import User
-from database import get_async_session  # adjust path if needed
+from db import get_async_session  # adjust path if needed
 
 
 # ✅ Checks if the user is an admin (via DB or known ID)
