@@ -446,8 +446,12 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
     page = 1
     filter_status = None  # None | Pending | In Transit | Delivered
 
-    # Parse callback
-    if query and query.data.startswith("admin_winners"):
+    # 🧭 Log callback for debugging
+    if query:
+        logger.debug(f"🧭 Callback data received: {query.data}")
+
+    # 🔍 Parse callback data safely
+    if query and query.data and query.data.startswith("admin_winners"):
         parts = query.data.split(":")
         if len(parts) >= 2:
             key = parts[1]
@@ -459,14 +463,17 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
                 filter_status = "Delivered"
             elif key == "all":
                 filter_status = None
+
+        # Page number (optional third part)
         if len(parts) == 3 and parts[2].isdigit():
             page = int(parts[2])
     else:
+        # Restore last page seen by this admin
         page = admin_offset.get(admin_id, 1)
 
     offset = (page - 1) * WINNERS_PER_PAGE
 
-    # Fetch from PrizeWinner table ✅
+    # 📦 Fetch from PrizeWinner table
     async with get_async_session() as session:
         qb = select(PrizeWinner)
         if filter_status:
@@ -475,32 +482,35 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
         res = await session.execute(qb)
         all_winners = res.scalars().all()
 
+    # 📭 No winners found
     if not all_winners:
         text = (
             "📭 No winners found for this category.\n\n"
             "💡 Tip: Mark winners in the correct status to track progress!"
         )
-        keybkeyboard = InlineKeyboardMarkup([
+
+        keyboard = InlineKeyboardMarkup([
             [
                 InlineKeyboardButton("📦 In Transit", callback_data="admin_winners:transit:1"),
                 InlineKeyboardButton("✅ Delivered", callback_data="admin_winners:delivered:1")
             ],
-            [InlineKeyboardButton("📥 Export Winner CSV", callback_data="admin_export_winners")],
+            [InlineKeyboardButton("📥 Export Winners CSV", callback_data="admin_export_winners")],
             [InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")]
         ])
 
         return await safe_edit(query, text, parse_mode="HTML", reply_markup=keyboard) \
             if query else await update.effective_message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
 
+    # 🧮 Pagination setup
     total_winners = len(all_winners)
     total_pages = total_winners
-
     page = max(1, min(page, total_pages))
     admin_offset[admin_id] = page
 
+    # 🎯 Current winner
     winner = all_winners[offset]
 
-    # Form data ✅
+    # 🧾 Extract winner details
     data = winner.delivery_data or {}
     full_name = data.get("full_name", "-")
     phone = data.get("phone", "N/A")
@@ -533,6 +543,7 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
         f"📌 PrizeWinner ID: <code>{winner.id}</code>"
     )
 
+    # 🧩 Action buttons
     rows = [
         [
             InlineKeyboardButton("🚚 Mark In Transit", callback_data=f"pw_status_transit_{winner.id}"),
@@ -540,6 +551,7 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
         ]
     ]
 
+    # 🧭 Navigation
     nav = []
     if page > 1:
         nav.append(InlineKeyboardButton("⬅️ Prev", callback_data=f"{base_prefix}:{page-1}"))
@@ -548,12 +560,12 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
     if nav:
         rows.append(nav)
 
+    # 🗂️ Filter & Export options
     rows.append([
         InlineKeyboardButton("📦 In Transit", callback_data="admin_winners:transit:1"),
         InlineKeyboardButton("✅ Delivered", callback_data="admin_winners:delivered:1")
     ])
 
-    # ✅ Export CSV Button (ALL FILTERS)
     rows.append([
         InlineKeyboardButton("📥 Export Winners CSV", callback_data="admin_export_csv")
     ])
@@ -564,8 +576,14 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
 
     keyboard = InlineKeyboardMarkup(rows)
 
-    return await safe_edit(query, text, parse_mode="HTML", reply_markup=keyboard) \
-        if query else await update.effective_message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
+    # ✅ Edit or send fresh
+    try:
+        return await safe_edit(query, text, parse_mode="HTML", reply_markup=keyboard) \
+            if query else await update.effective_message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
+    except Exception as e:
+        logger.warning(f"⚠️ Could not edit winners message: {e}")
+        return await update.effective_message.reply_text(text, parse_mode="HTML", reply_markup=keyboard)
+
 
 # --------------------------------------
 # handle_pwhandle_pw_mark_in_transit
@@ -1212,7 +1230,15 @@ def register_handlers(application):
     application.add_handler(CommandHandler("pending_proofs", pending_proofs))
     application.add_handler(CommandHandler("winners", show_winners_section))
 
-    # ✅ CSV EXPORT FLOW (MUST BE ABOVE GENERIC TEXT HANDLER!)
+    # ✅ ADMIN SUB-SECTIONS — must come BEFORE generic admin_callback
+    # Each section gets its own clean pattern
+    application.add_handler(CallbackQueryHandler(show_pending_proofs_section, pattern=r"^admin_pending"))
+    application.add_handler(CallbackQueryHandler(show_stats_section, pattern=r"^admin_stats"))
+    application.add_handler(CallbackQueryHandler(show_user_search_section, pattern=r"^admin_usersearch"))
+    application.add_handler(CallbackQueryHandler(show_winners_section, pattern=r"^admin_winners"))
+    application.add_handler(CallbackQueryHandler(show_filtered_winners, pattern=r"^admin_winners_filter:"))
+
+    # ✅ CSV EXPORT FLOW (must be ABOVE generic text handlers)
     application.add_handler(CallbackQueryHandler(admin_export_csv_menu, pattern=r"^admin_export_csv$"))
     application.add_handler(CallbackQueryHandler(export_csv_handler, pattern=r"^export_csv:"))
     application.add_handler(MessageHandler(
@@ -1220,12 +1246,8 @@ def register_handlers(application):
         date_range_message_router
     ))
 
-    # ✅ Admin Menu and main routing
+    # ✅ Admin Menu and main routing (keep AFTER the section-specific handlers)
     application.add_handler(CallbackQueryHandler(admin_callback, pattern=r"^admin_"))
-
-    # ✅ Winners paging and filtering
-    application.add_handler(CallbackQueryHandler(show_winners_section, pattern=r"^admin_winners"))
-    application.add_handler(CallbackQueryHandler(show_filtered_winners, pattern=r"^admin_winners_filter:"))
 
     # ✅ Delivery status updates
     application.add_handler(CallbackQueryHandler(update_delivery_status_transit, pattern=r"^pw_status_transit_\d+$"))
@@ -1233,9 +1255,9 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(handle_pw_mark_in_transit, pattern=r"^pw_status_transit_\d+$"))
     application.add_handler(CallbackQueryHandler(handle_pw_mark_delivered, pattern=r"^pw_status_delivered_\d+$"))
 
-    # ✅ Fallback: User Search Text Handler
-    # (must be LAST text handler!)
+    # ✅ Fallback: User Search Text Handler (must be LAST text handler)
     application.add_handler(MessageHandler(
         filters.TEXT & ~filters.COMMAND,
         user_search_handler
     ))
+
