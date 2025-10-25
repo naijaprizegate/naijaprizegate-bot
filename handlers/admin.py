@@ -1232,9 +1232,8 @@ def register_handlers(application):
 
     # ✅ ADMIN SUB-SECTIONS — must come BEFORE generic admin_callback
     # Each section gets its own clean pattern
-    application.add_handler(CallbackQueryHandler(show_pending_proofs_section, pattern=r"^admin_pending"))
-    application.add_handler(CallbackQueryHandler(show_stats_section, pattern=r"^admin_stats"))
-    application.add_handler(CallbackQueryHandler(show_user_search_section, pattern=r"^admin_usersearch"))
+    application.add_handler(CallbackQueryHandler(pending_proofs, pattern=r"^admin_pending"))
+    application.add_handler(CallbackQueryHandler(user_search_handler, pattern=r"^admin_usersearch"))
     application.add_handler(CallbackQueryHandler(show_winners_section, pattern=r"^admin_winners"))
     application.add_handler(CallbackQueryHandler(show_filtered_winners, pattern=r"^admin_winners_filter:"))
 
@@ -1260,4 +1259,3 @@ def register_handlers(application):
         filters.TEXT & ~filters.COMMAND,
         user_search_handler
     ))
-
