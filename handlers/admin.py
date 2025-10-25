@@ -3,6 +3,7 @@
 # ==============================================================
 import os
 import re
+import io
 import csv
 import tempfile
 import asyncio
@@ -11,6 +12,7 @@ from datetime import datetime, timezone, timedelta
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram import InputMediaPhoto, InputFile
 from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, filters
+from telegram.ext import filters as tg_filters  # to avoid name clash
 from telegram.error import BadRequest
 from sqlalchemy import select, update as sql_update, and_
 from db import AsyncSessionLocal, get_async_session
@@ -21,6 +23,9 @@ from utils.security import is_admin
 logger = logging.getLogger(__name__)
 
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
+
+# Key to store date selection temporary
+DATE_SELECTION_KEY = "csv_export_date_range"
 
 # ----------------------------
 # SAFE EDIT FUNCTION
@@ -598,6 +603,262 @@ async def handle_pw_mark_in_transit(update: Update, context: ContextTypes.DEFAUL
     # refresh admin display: stay on same page
     await show_winners_section(update, context)
 
+
+# -----------------------------
+# ✅ CSV Generation, Upload (temp file), Date Range Flow
+# -----------------------------
+
+DATE_SELECTION_KEY = "csv_export_date_range"
+
+# -------------------------
+# Show Export Range Menu (triggered from admin_winners view)
+# -------------------------
+async def admin_export_csv_menu(update, context):
+    """Show export options (presets + custom). Callback_data previously used: admin_export_winners"""
+    query = getattr(update, "callback_query", None)
+    if not query:
+        return
+
+    # admin check
+    if not await is_admin(update):
+        return await query.answer("⛔ Unauthorized", show_alert=True)
+
+    keyboard = InlineKeyboardMarkup([
+        [InlineKeyboardButton("🕐 Last 24 hours", callback_data="export_csv:24h"),
+         InlineKeyboardButton("🗓 Last 7 days", callback_data="export_csv:7d")],
+        [InlineKeyboardButton("📆 Last 30 days", callback_data="export_csv:30d"),
+         InlineKeyboardButton("📅 This Month", callback_data="export_csv:thismonth")],
+        [InlineKeyboardButton("⬅️ Back", callback_data="admin_winners:all:1")],
+        [InlineKeyboardButton("🔧 Custom range (YYYY-MM-DD)", callback_data="export_csv:custom")]
+    ])
+
+    await query.edit_message_text(
+        "📥 <b>Export Winners CSV</b>\n\n"
+        "Choose a preset or select Custom range (you will be asked to send dates in <b>YYYY-MM-DD</b> format). All times use <b>UTC</b>.",
+        parse_mode="HTML",
+        reply_markup=keyboard
+    )
+
+# -------------------------
+# Handle preset or start custom flow
+# -------------------------
+async def export_csv_handler(update, context):
+    query = getattr(update, "callback_query", None)
+    if not query:
+        return
+
+    # admin check
+    if not await is_admin(update):
+        return await query.answer("⛔ Unauthorized", show_alert=True)
+
+    label = query.data.split(":", 1)[1]
+
+    now = datetime.now(timezone.utc)
+    start = None
+    end = None
+
+    if label == "24h":
+        start = now - timedelta(days=1)
+        end = now
+    elif label == "7d":
+        start = now - timedelta(days=7)
+        end = now
+    elif label == "30d":
+        start = now - timedelta(days=30)
+        end = now
+    elif label == "thismonth":
+        start = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+        end = now
+    elif label == "custom":
+        # begin custom flow: expect start date text next
+        context.user_data[DATE_SELECTION_KEY] = {"stage": "awaiting_start"}
+        await query.edit_message_text(
+            "📅 <b>Custom Range</b>\n\nSend the <b>start date</b> in UTC using format: <code>YYYY-MM-DD</code>",
+            parse_mode="HTML"
+        )
+        return
+    else:
+        await query.answer("⚠️ Invalid selection", show_alert=True)
+        return
+
+    # do the export for preset ranges
+    await query.edit_message_text("⏳ Generating CSV... please wait.")
+    await generate_and_send_csv(update, context, start, end, label=label)
+
+
+# -------------------------
+# Message handler: start/date inputs + end date inputs
+# This will be registered as a MessageHandler(filters.TEXT & ~filters.COMMAND,...)
+# It will quietly return early if not in an export flow.
+# -------------------------
+async def date_range_message_router(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """
+    Captures admin text messages when they are setting start/end dates for CSV export.
+    Expects YYYY-MM-DD strings; stores intermediate state in context.user_data[DATE_SELECTION_KEY].
+    """
+    # only proceed if admin
+    if not await is_admin(update):
+        return  # not admin — do nothing here
+
+    if DATE_SELECTION_KEY not in context.user_data:
+        return  # not in export flow
+
+    state = context.user_data[DATE_SELECTION_KEY]
+    stage = state.get("stage")
+
+    text = (update.message.text or "").strip()
+    # parse date
+    try:
+        parsed = datetime.strptime(text, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    except Exception:
+        return await update.message.reply_text("❌ Invalid format. Send date as: YYYY-MM-DD (UTC)")
+
+    if stage == "awaiting_start":
+        # store start and prompt for end
+        context.user_data[DATE_SELECTION_KEY] = {"stage": "awaiting_end", "start": parsed}
+        return await update.message.reply_text(
+            "✅ Start date recorded.\nNow send the <b>end date</b> (UTC) in format: <code>YYYY-MM-DD</code>",
+            parse_mode="HTML"
+        )
+
+    if stage == "awaiting_end":
+        start_dt = state.get("start")
+        if not start_dt:
+            # missing start — ask to restart
+            context.user_data.pop(DATE_SELECTION_KEY, None)
+            return await update.message.reply_text("❌ Start date missing. Restart export from the menu.")
+
+        end_dt = parsed
+        # normalize end to include entire day (23:59:59.999999)
+        end_dt = end_dt.replace(hour=23, minute=59, second=59, microsecond=999999)
+
+        # clear state
+        context.user_data.pop(DATE_SELECTION_KEY, None)
+
+        # Confirm and generate CSV
+        await update.message.reply_text("⏳ Generating CSV... please wait.")
+        await generate_and_send_csv(update, context, start_dt, end_dt, label=f"custom_{start_dt.date()}_to_{end_dt.date()}")
+        return
+
+    # Otherwise, not expected — clear and inform
+    context.user_data.pop(DATE_SELECTION_KEY, None)
+    return await update.message.reply_text("⚠️ Unexpected state. Please re-open the export menu.")
+
+
+# -------------------------
+# Core CSV generator + sender
+# -------------------------
+async def generate_and_send_csv(update, context, start_dt: datetime, end_dt: datetime, label: str = "range"):
+    """
+    Query PrizeWinner by submitted_at between start_dt and end_dt (both inclusive),
+    create CSV in OS tmp dir (UTF-8 with BOM for Excel), send to admin, then delete file.
+    """
+    # Ensure admin
+    if not await is_admin(update):
+        # If called from callback, answer; if from message, reply
+        if getattr(update, "callback_query", None):
+            return await update.callback_query.answer("⛔ Unauthorized", show_alert=True)
+        return await update.message.reply_text("⛔ Unauthorized")
+
+    # Query DB
+    async with get_async_session() as session:
+        qb = select(PrizeWinner).where(
+            and_(
+                PrizeWinner.submitted_at >= start_dt,
+                PrizeWinner.submitted_at <= end_dt
+            )
+        ).order_by(PrizeWinner.submitted_at.asc())
+
+        result = await session.execute(qb)
+        winners = result.scalars().all()
+
+    if not winners:
+        msg = f"📭 No winners found between {start_dt.isoformat()} and {end_dt.isoformat()} (UTC)."
+        if getattr(update, "callback_query", None):
+            return await update.callback_query.edit_message_text(msg)
+        else:
+            return await update.message.reply_text(msg)
+
+    # Build filename
+    start_str = start_dt.strftime("%Y-%m-%d")
+    end_str = (end_dt if isinstance(end_dt, datetime) else end_dt).strftime("%Y-%m-%d")
+    filename = f"winners_{start_str}_to_{end_str}.csv"
+
+    # Create temp file (safe): using NamedTemporaryFile in tmp dir; delete=False so we can send
+    tmp = tempfile.NamedTemporaryFile(mode="w", encoding="utf-8-sig", newline="", delete=False, suffix=".csv")
+    tmp_path = tmp.name
+
+    try:
+        writer = csv.writer(tmp)
+        # Header
+        writer.writerow(["Full Name", "Phone", "Address", "Prize", "Date Won (UTC)", "Delivery Status"])
+
+        # Rows
+        for w in winners:
+            data = w.delivery_data or {}
+            full_name = data.get("full_name", "")
+            phone = data.get("phone", "")
+            address = data.get("address", "")
+            prize = w.choice or ""
+            date_won = w.submitted_at.astimezone(timezone.utc).strftime("%Y-%m-%d %H:%M:%S") if w.submitted_at else ""
+            status = w.delivery_status or "Pending"
+
+            writer.writerow([full_name, phone, address, prize, date_won, status])
+
+        tmp.flush()
+        tmp.close()
+
+        # Send the file (only to ADMIN_USER_ID)
+        admin_chat_id = update.effective_user.id
+        caption = f"📦 Winners Export — {start_str} → {end_str} (UTC)\nCount: {len(winners)}"
+
+        # Prefer callback_query.message.reply_document if available to preserve edit context
+        try:
+            if getattr(update, "callback_query", None):
+                await update.callback_query.message.reply_document(
+                    document=InputFile(tmp_path, filename=filename),
+                    caption=caption
+                )
+            else:
+                await update.message.reply_document(
+                    document=InputFile(tmp_path, filename=filename),
+                    caption=caption
+                )
+        except Exception as send_err:
+            # Try direct bot send
+            try:
+                await context.bot.send_document(
+                    chat_id=admin_chat_id,
+                    document=InputFile(tmp_path, filename=filename),
+                    caption=caption
+                )
+            except Exception as bot_err:
+                # give a helpful message and keep temp file for manual retrieval (log it)
+                logger.exception("❌ Failed to send CSV to Telegram", exc_info=bot_err)
+                return await (update.callback_query.edit_message_text if getattr(update, "callback_query", None) else update.message.reply_text)(
+                    "❌ Failed to send CSV. Check bot permissions and disk. Temp file at: " + tmp_path
+                )
+
+        # Delete temp file
+        try:
+            os.remove(tmp_path)
+        except Exception as e:
+            logger.warning(f"⚠️ Could not delete temp file {tmp_path}: {e}")
+
+        # Acknowledge to admin (edit message or reply)
+        if getattr(update, "callback_query", None):
+            await update.callback_query.edit_message_text(f"✅ CSV exported and sent to you ({len(winners)} rows).")
+        else:
+            await update.message.reply_text(f"✅ CSV exported and sent to you ({len(winners)} rows).")
+
+    finally:
+        # Safety: ensure file removed if any path remains open
+        try:
+            if os.path.exists(tmp_path):
+                os.remove(tmp_path)
+        except Exception:
+            pass
+
 # ----------------------------------
 # handle_pw_mark_delivered
 # ------------------------------------
@@ -735,9 +996,9 @@ async def update_delivery_status_delivered(update: Update, context: ContextTypes
 # ----------------------------------------------------
 # 📥 EXPORT WINNERS CSV — with Date Range (UTC-based)
 # ----------------------------------------------------
-# ---------------------------------------------------------------
+# ----------------
 # STEP 1 — Show Range Selection Menu
-# ---------------------------------------------------------------
+# ----------------
 async def admin_export_csv(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = getattr(update, "callback_query", None)
     if not query:
@@ -771,9 +1032,9 @@ async def admin_export_csv(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.edit_message_text(text, parse_mode="HTML", reply_markup=keyboard)
 
 
-# ---------------------------------------------------------------
+# -------------
 # STEP 2 — Handle Range Selection + CSV Creation
-# ---------------------------------------------------------------
+# --------------
 async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = getattr(update, "callback_query", None)
     if not query:
@@ -853,27 +1114,128 @@ async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     await query.answer("✅ CSV exported successfully!", show_alert=True)
 
+# ------------------------------------
+# Export Winners Start
+# --------------------------------------
+async def export_winners_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if not is_admin(update.effective_user.id):
+        return await update.effective_message.reply_text("❌ You are not authorized")
+
+    # Clear any previous selections
+    context.user_data.pop(DATE_SELECTION_KEY, None)
+
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton("Last 24h", callback_data="csv_range:24h"),
+            InlineKeyboardButton("Last 7 days", callback_data="csv_range:7d")
+        ],
+        [InlineKeyboardButton("Custom Range", callback_data="csv_range:custom")],
+        [InlineKeyboardButton("⬅️ Cancel", callback_data="admin_winners:all:1")]
+    ])
+
+    await update.callback_query.answer()
+    return await update.callback_query.edit_message_text(
+        "📥 Export Winner CSV\n\nChoose a date range:",
+        reply_markup=keyboard
+    )
+
+# --------------------------
+# Export Winners Quick-Select (24h/7 days)
+# ---------------------------
+async def export_winners_quick(update: Update, context: ContextTypes.DEFAULT_TYPE, period: str):
+    now = datetime.now(timezone.utc)
+
+    if period == "24h":
+        start = now.replace(microsecond=0) - timedelta(days=1)
+    elif period == "7d":
+        start = now.replace(microsecond=0) - timedelta(days=7)
+    else:
+        return
+
+    await generate_and_send_csv(update, context, start, now)
+
+# -----------------------------
+# Custom Date Date Range - Step 1: Ask for Start Date
+# -----------------------------
+async def choose_start_date(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    context.user_data[DATE_SELECTION_KEY] = {}
+
+    await update.callback_query.answer()
+    return await update.callback_query.edit_message_text(
+        "📅 Send Start Date (UTC) in format:\n\n<b>YYYY-MM-DD</b>",
+        parse_mode="HTML"
+    )
+
+# -------------------------
+# Custom Date Range — Step 2: Ask for End Date
+# ---------------------------
+async def handle_start_date_input(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    try:
+        start_date = datetime.strptime(update.message.text, "%Y-%m-%d")
+        start_date = start_date.replace(tzinfo=timezone.utc)
+    except ValueError:
+        return await update.message.reply_text("❌ Invalid format. Use YYYY-MM-DD")
+
+    context.user_data[DATE_SELECTION_KEY]["start"] = start_date
+
+    return await update.message.reply_text(
+        "✅ Start date saved.\nNow send End Date (UTC):\n<b>YYYY-MM-DD</b>",
+        parse_mode="HTML"
+    )
 
 # ----------------------------
-# Register Handlers
+# Final Step — Generate CSV
+# ----------------------------
+async def handle_end_date_input(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    data = context.user_data.get(DATE_SELECTION_KEY, {})
+    if "start" not in data:
+        return await update.message.reply_text("❌ Start date not set. Restart export.")
+
+    try:
+        end_date = datetime.strptime(update.message.text, "%Y-%m-%d")
+        end_date = end_date.replace(tzinfo=timezone.utc)
+    except ValueError:
+        return await update.message.reply_text("❌ Invalid format. Use YYYY-MM-DD")
+
+    start_date = data["start"]
+    context.user_data.pop(DATE_SELECTION_KEY, None)
+
+    await generate_and_send_csv(update, context, start_date, end_date)
+
+# ----------------------------
+# Register Handlers (CLEAN & ORDERED ✅)
 # ----------------------------
 def register_handlers(application):
+
+    # ✅ ADMIN COMMANDS
     application.add_handler(CommandHandler("admin", admin_panel))
     application.add_handler(CommandHandler("pending_proofs", pending_proofs))
     application.add_handler(CommandHandler("winners", show_winners_section))
-    application.add_handler(CallbackQueryHandler(show_winners_section, pattern="^admin_winners"))
-    application.add_handler(CallbackQueryHandler(show_filtered_winners, pattern="^admin_winners_filter:"))
-    # admin callbacks (menu, winners pagination/filters, approvals)
-    application.add_handler(CallbackQueryHandler(admin_callback, pattern="^admin_"))
-    # user search text handler
-    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, user_search_handler))
-    # delivery status actions (per-winner)
-    application.add_handler(CallbackQueryHandler(update_delivery_status_transit, pattern=r"^pw_status_transit_"))
-    application.add_handler(CallbackQueryHandler(update_delivery_status_delivered, pattern=r"^pw_status_delivered_"))
 
+    # ✅ CSV EXPORT FLOW (MUST BE ABOVE GENERIC TEXT HANDLER!)
+    application.add_handler(CallbackQueryHandler(admin_export_csv_menu, pattern=r"^admin_export_csv$"))
+    application.add_handler(CallbackQueryHandler(export_csv_handler, pattern=r"^export_csv:"))
+    application.add_handler(MessageHandler(
+        filters.TEXT & ~filters.COMMAND,
+        date_range_message_router
+    ))
+
+    # ✅ Admin Menu and main routing
+    application.add_handler(CallbackQueryHandler(admin_callback, pattern=r"^admin_"))
+
+    # ✅ Winners paging and filtering
+    application.add_handler(CallbackQueryHandler(show_winners_section, pattern=r"^admin_winners"))
+    application.add_handler(CallbackQueryHandler(show_filtered_winners, pattern=r"^admin_winners_filter:"))
+
+    # ✅ Delivery status updates
+    application.add_handler(CallbackQueryHandler(update_delivery_status_transit, pattern=r"^pw_status_transit_\d+$"))
+    application.add_handler(CallbackQueryHandler(update_delivery_status_delivered, pattern=r"^pw_status_delivered_\d+$"))
     application.add_handler(CallbackQueryHandler(handle_pw_mark_in_transit, pattern=r"^pw_status_transit_\d+$"))
     application.add_handler(CallbackQueryHandler(handle_pw_mark_delivered, pattern=r"^pw_status_delivered_\d+$"))
 
-    application.add_handler(CallbackQueryHandler(admin_export_csv, pattern="^admin_export_csv$"))
-    application.add_handler(CallbackQueryHandler(export_csv_handler, pattern="^export_csv:"))
-
+    # ✅ Fallback: User Search Text Handler
+    # (must be LAST text handler!)
+    application.add_handler(MessageHandler(
+        filters.TEXT & ~filters.COMMAND,
+        user_search_handler
+    ))
