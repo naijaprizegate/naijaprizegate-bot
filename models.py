@@ -162,25 +162,38 @@ class PrizeWinner(Base):
     __tablename__ = "prize_winners"
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    
-    # ✅ Fix UUID type
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-
-    # ✅ Fix Telegram ID type
     tg_id = Column(BigInteger, nullable=False, index=True)
-
     choice = Column(String, nullable=False)
-
     delivery_status = Column(String, nullable=True)
-
     submitted_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     pending_at = Column(DateTime(timezone=True), nullable=True)
     in_transit_at = Column(DateTime(timezone=True), nullable=True)
     delivered_at = Column(DateTime(timezone=True), nullable=True)
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
-
     delivery_data = Column(JSON, nullable=True, default={})
 
-
     user = relationship("User", back_populates="prize_wins", lazy="joined")
+
+    # ✅ CSV EXPORT HELPERS (added)
+    def to_csv_row(self):
+        return [
+            self.user.full_name or "",
+            self.user.username or "",
+            self.user.phone or "",
+            self.choice,
+            self.submitted_at.strftime("%Y-%m-%d %H:%M:%S") if self.submitted_at else "",
+            self.delivery_status or "",
+        ]
+
+    @staticmethod
+    def csv_headers():
+        return [
+            "Full Name",
+            "Telegram Username",
+            "Phone",
+            "Prize",
+            "Date Won",
+            "Delivery Status",
+        ]
 
