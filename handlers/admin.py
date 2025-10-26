@@ -494,7 +494,7 @@ async def show_winners_section(update: Update, context: ContextTypes.DEFAULT_TYP
                 InlineKeyboardButton("📦 In Transit", callback_data="admin_winners:transit:1"),
                 InlineKeyboardButton("✅ Delivered", callback_data="admin_winners:delivered:1")
             ],
-            [InlineKeyboardButton("📥 Export Winners CSV", callback_data="admin_export_winners")],
+            [InlineKeyboardButton("📥 Export Winners CSV", callback_data="admin_export_csv")],
             [InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")]
         ])
 
