@@ -1161,6 +1161,14 @@ async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
         start_date = (first_of_this_month - timedelta(days=1)).replace(day=1)
     elif label == "all":
         start_date = datetime(2000, 1, 1, tzinfo=timezone.utc)  # fallback
+    elif label == "custom":
+        # ✅ Start custom range flow
+        context.user_data["csv_custom_range"] = {"stage": "await_start"}
+        await query.edit_message_text(
+            "📅 <b>Custom Range</b>\n\nSend the <b>start date</b> in format: <code>YYYY-MM-DD</code> (UTC)",
+            parse_mode="HTML"
+        )
+        return
     else:
         await query.answer("⚠️ Invalid selection", show_alert=True)
         return
@@ -1369,4 +1377,3 @@ def register_handlers(application):
         filters.TEXT & ~filters.COMMAND,
         user_search_handler
     ))
-
