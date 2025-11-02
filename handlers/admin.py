@@ -685,10 +685,25 @@ async def export_csv_handler(update, context):
     if not query:
         return
 
-    # admin check
-    if not await is_admin(update):
-        return await query.answer("⛔ Unauthorized", show_alert=True)
+    # 🧩 Resolve user id safely
+    user_id = getattr(getattr(update, "effective_user", None), "id", None)
 
+    # 🛡️ Admin check (robust)
+    if user_id is None or user_id != ADMIN_USER_ID:
+        try:
+            ok = await is_admin(user_id) if user_id is not None else False
+        except TypeError:
+            try:
+                ok = is_admin(user_id)
+            except Exception:
+                ok = False
+        except Exception:
+            ok = False
+
+        if not ok:
+            return await query.answer("⛔ Unauthorized", show_alert=True)
+
+    # ✅ If we’re here, user is admin
     label = query.data.split(":", 1)[1]
 
     now = datetime.now(timezone.utc)
@@ -726,18 +741,33 @@ async def export_csv_handler(update, context):
 
 # -------------------------
 # Message handler: start/date inputs + end date inputs
-# This will be registered as a MessageHandler(filters.TEXT & ~filters.COMMAND,...)
-# It will quietly return early if not in an export flow.
+# Registered as MessageHandler(filters.TEXT & ~filters.COMMAND, ...)
 # -------------------------
 async def date_range_message_router(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
     Captures admin text messages when they are setting start/end dates for CSV export.
     Expects YYYY-MM-DD strings; stores intermediate state in context.user_data[DATE_SELECTION_KEY].
     """
-    # only proceed if admin
-    if not await is_admin(update):
-        return  # not admin — do nothing here
 
+    # 🧩 Resolve user id safely
+    user_id = getattr(getattr(update, "effective_user", None), "id", None)
+
+    # 🛡️ Admin check (robust)
+    if user_id is None or user_id != ADMIN_USER_ID:
+        try:
+            ok = await is_admin(user_id) if user_id is not None else False
+        except TypeError:
+            try:
+                ok = is_admin(user_id)
+            except Exception:
+                ok = False
+        except Exception:
+            ok = False
+
+        if not ok:
+            return await update.message.reply_text("⛔ Unauthorized access.")
+
+    # ✅ Only continue if user is admin and export flow active
     if DATE_SELECTION_KEY not in context.user_data:
         return  # not in export flow
 
@@ -791,14 +821,28 @@ async def generate_and_send_csv(update, context, start_dt: datetime, end_dt: dat
     Query PrizeWinner by submitted_at between start_dt and end_dt (both inclusive),
     create CSV in OS tmp dir (UTF-8 with BOM for Excel), send to admin, then delete file.
     """
-    # Ensure admin
-    if not await is_admin(update):
-        # If called from callback, answer; if from message, reply
-        if getattr(update, "callback_query", None):
-            return await update.callback_query.answer("⛔ Unauthorized", show_alert=True)
-        return await update.message.reply_text("⛔ Unauthorized")
+    # 🧩 Resolve user id safely
+    user_id = getattr(getattr(update, "effective_user", None), "id", None)
 
-    # Query DB
+    # 🛡️ Admin check (robust)
+    if user_id is None or user_id != ADMIN_USER_ID:
+        try:
+            ok = await is_admin(user_id) if user_id is not None else False
+        except TypeError:
+            try:
+                ok = is_admin(user_id)
+            except Exception:
+                ok = False
+        except Exception:
+            ok = False
+
+        if not ok:
+            # If called from callback, show alert; otherwise send text
+            if getattr(update, "callback_query", None):
+                return await update.callback_query.answer("⛔ Unauthorized", show_alert=True)
+            return await update.message.reply_text("⛔ Unauthorized access.")
+
+    # ✅ Continue only if authorized admin
     async with get_async_session() as session:
         qb = select(PrizeWinner).where(
             and_(
@@ -817,21 +861,19 @@ async def generate_and_send_csv(update, context, start_dt: datetime, end_dt: dat
         else:
             return await update.message.reply_text(msg)
 
-    # Build filename
+    # 🗂️ Build filename
     start_str = start_dt.strftime("%Y-%m-%d")
     end_str = (end_dt if isinstance(end_dt, datetime) else end_dt).strftime("%Y-%m-%d")
     filename = f"winners_{start_str}_to_{end_str}.csv"
 
-    # Create temp file (safe): using NamedTemporaryFile in tmp dir; delete=False so we can send
+    # 🧾 Create temporary file safely
     tmp = tempfile.NamedTemporaryFile(mode="w", encoding="utf-8-sig", newline="", delete=False, suffix=".csv")
     tmp_path = tmp.name
 
     try:
         writer = csv.writer(tmp)
-        # Header
         writer.writerow(["Full Name", "Phone", "Address", "Prize", "Date Won (UTC)", "Delivery Status"])
 
-        # Rows
         for w in winners:
             data = w.delivery_data or {}
             full_name = data.get("full_name", "")
@@ -846,11 +888,10 @@ async def generate_and_send_csv(update, context, start_dt: datetime, end_dt: dat
         tmp.flush()
         tmp.close()
 
-        # Send the file (only to ADMIN_USER_ID)
-        admin_chat_id = update.effective_user.id
         caption = f"📦 Winners Export — {start_str} → {end_str} (UTC)\nCount: {len(winners)}"
+        admin_chat_id = update.effective_user.id
 
-        # Prefer callback_query.message.reply_document if available to preserve edit context
+        # ✅ Send file
         try:
             if getattr(update, "callback_query", None):
                 await update.callback_query.message.reply_document(
@@ -862,35 +903,27 @@ async def generate_and_send_csv(update, context, start_dt: datetime, end_dt: dat
                     document=InputFile(tmp_path, filename=filename),
                     caption=caption
                 )
-        except Exception as send_err:
-            # Try direct bot send
-            try:
-                await context.bot.send_document(
-                    chat_id=admin_chat_id,
-                    document=InputFile(tmp_path, filename=filename),
-                    caption=caption
-                )
-            except Exception as bot_err:
-                # give a helpful message and keep temp file for manual retrieval (log it)
-                logger.exception("❌ Failed to send CSV to Telegram", exc_info=bot_err)
-                return await (update.callback_query.edit_message_text if getattr(update, "callback_query", None) else update.message.reply_text)(
-                    "❌ Failed to send CSV. Check bot permissions and disk. Temp file at: " + tmp_path
-                )
+        except Exception:
+            await context.bot.send_document(
+                chat_id=admin_chat_id,
+                document=InputFile(tmp_path, filename=filename),
+                caption=caption
+            )
 
-        # Delete temp file
+        # 🧹 Delete temporary file after sending
         try:
             os.remove(tmp_path)
         except Exception as e:
             logger.warning(f"⚠️ Could not delete temp file {tmp_path}: {e}")
 
-        # Acknowledge to admin (edit message or reply)
+        # ✅ Acknowledge success
         if getattr(update, "callback_query", None):
             await update.callback_query.edit_message_text(f"✅ CSV exported and sent to you ({len(winners)} rows).")
         else:
             await update.message.reply_text(f"✅ CSV exported and sent to you ({len(winners)} rows).")
 
     finally:
-        # Safety: ensure file removed if any path remains open
+        # Extra safety cleanup
         try:
             if os.path.exists(tmp_path):
                 os.remove(tmp_path)
@@ -1042,10 +1075,26 @@ async def admin_export_csv(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not query:
         return
     
-    # ✅ Verify Admin Access
-    if not await is_admin(update):
-        return await query.answer("⛔ You are not authorized.", show_alert=True)
+    # 🧩 Resolve user ID safely
+    user_id = getattr(getattr(update, "effective_user", None), "id", None)
 
+    # 🛡️ Robust Admin Verification
+    if user_id is None or user_id != ADMIN_USER_ID:
+        try:
+            ok = await is_admin(user_id) if user_id is not None else False
+        except TypeError:
+            # maybe it's sync
+            try:
+                ok = is_admin(user_id)
+            except Exception:
+                ok = False
+        except Exception:
+            ok = False
+
+        if not ok:
+            return await query.answer("⛔ Unauthorized access.", show_alert=True)
+
+    # ✅ Admin confirmed — show export range options
     keyboard = InlineKeyboardMarkup([
         [
             InlineKeyboardButton("🗓️ Last 7 Days", callback_data="export_csv:7days"),
@@ -1069,7 +1118,6 @@ async def admin_export_csv(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await query.edit_message_text(text, parse_mode="HTML", reply_markup=keyboard)
 
-
 # -------------
 # STEP 2 — Handle Range Selection + CSV Creation
 # --------------
@@ -1077,10 +1125,26 @@ async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     query = getattr(update, "callback_query", None)
     if not query:
         return
-    
-    if not await is_admin(update):
-        return await query.answer("⛔ Unauthorized", show_alert=True)
 
+    # 🧩 Resolve user ID safely
+    user_id = getattr(getattr(update, "effective_user", None), "id", None)
+
+    # 🛡️ Robust Admin Verification
+    if user_id is None or user_id != ADMIN_USER_ID:
+        try:
+            ok = await is_admin(user_id) if user_id is not None else False
+        except TypeError:
+            try:
+                ok = is_admin(user_id)
+            except Exception:
+                ok = False
+        except Exception:
+            ok = False
+
+        if not ok:
+            return await query.answer("⛔ Unauthorized", show_alert=True)
+
+    # ✅ Authorized admin — continue
     now = datetime.now(timezone.utc)
     start_date, end_date = None, None
     label = query.data.split(":")[1]
@@ -1096,9 +1160,9 @@ async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
         end_date = first_of_this_month
         start_date = (first_of_this_month - timedelta(days=1)).replace(day=1)
     elif label == "all":
-        start_date = datetime(2000, 1, 1, tzinfo=timezone.utc)  # old default
+        start_date = datetime(2000, 1, 1, tzinfo=timezone.utc)  # fallback
     else:
-        await query.answer("Invalid selection", show_alert=True)
+        await query.answer("⚠️ Invalid selection", show_alert=True)
         return
 
     if not end_date:
@@ -1153,12 +1217,32 @@ async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     await query.answer("✅ CSV exported successfully!", show_alert=True)
 
 # ------------------------------------
-# Export Winners Start
+# Export Winners Start (Robust Admin-Safe)
 # --------------------------------------
 async def export_winners_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if not is_admin(update.effective_user.id):
-        return await update.effective_message.reply_text("❌ You are not authorized")
+    query = getattr(update, "callback_query", None)
 
+    # 🧩 Resolve user ID safely
+    user_id = getattr(getattr(update, "effective_user", None), "id", None)
+
+    # 🛡️ Robust admin verification
+    if user_id is None or user_id != ADMIN_USER_ID:
+        try:
+            ok = await is_admin(user_id) if user_id is not None else False
+        except TypeError:
+            try:
+                ok = is_admin(user_id)
+            except Exception:
+                ok = False
+        except Exception:
+            ok = False
+
+        if not ok:
+            if query:
+                return await query.answer("⛔ Unauthorized", show_alert=True)
+            return await update.effective_message.reply_text("⛔ Unauthorized")
+
+    # ✅ Authorized admin — continue
     # Clear any previous selections
     context.user_data.pop(DATE_SELECTION_KEY, None)
 
@@ -1171,11 +1255,17 @@ async def export_winners_start(update: Update, context: ContextTypes.DEFAULT_TYP
         [InlineKeyboardButton("⬅️ Cancel", callback_data="admin_winners:all:1")]
     ])
 
-    await update.callback_query.answer()
-    return await update.callback_query.edit_message_text(
-        "📥 Export Winner CSV\n\nChoose a date range:",
-        reply_markup=keyboard
-    )
+    if query:
+        await query.answer()
+        return await query.edit_message_text(
+            "📥 Export Winner CSV\n\nChoose a date range:",
+            reply_markup=keyboard
+        )
+    else:
+        return await update.effective_message.reply_text(
+            "📥 Export Winner CSV\n\nChoose a date range:",
+            reply_markup=keyboard
+        )
 
 # --------------------------
 # Export Winners Quick-Select (24h/7 days)
@@ -1279,3 +1369,4 @@ def register_handlers(application):
         filters.TEXT & ~filters.COMMAND,
         user_search_handler
     ))
+
