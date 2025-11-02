@@ -663,8 +663,8 @@ async def admin_export_csv_menu(update, context):
 
     keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("🕐 Last 24 hours", callback_data="export_csv:24h"),
-         InlineKeyboardButton("🗓 Last 7 days", callback_data="export_csv:7d")],
-        [InlineKeyboardButton("📆 Last 30 days", callback_data="export_csv:30d"),
+         InlineKeyboardButton("🗓 Last 7 days", callback_data="export_csv:7days")],
+        [InlineKeyboardButton("📆 Last 30 days", callback_data="export_csv:30days"),
          InlineKeyboardButton("📅 This Month", callback_data="export_csv:thismonth")],
         [InlineKeyboardButton("⬅️ Back", callback_data="admin_winners:all:1")],
         [InlineKeyboardButton("🔧 Custom range (YYYY-MM-DD)", callback_data="export_csv:custom")]
@@ -713,10 +713,10 @@ async def export_csv_handler(update, context):
     if label == "24h":
         start = now - timedelta(days=1)
         end = now
-    elif label == "7d":
+    elif label == "7days":
         start = now - timedelta(days=7)
         end = now
-    elif label == "30d":
+    elif label == "30days":
         start = now - timedelta(days=30)
         end = now
     elif label == "thismonth":
@@ -1275,7 +1275,7 @@ async def export_winners_quick(update: Update, context: ContextTypes.DEFAULT_TYP
 
     if period == "24h":
         start = now.replace(microsecond=0) - timedelta(days=1)
-    elif period == "7d":
+    elif period == "7days":
         start = now.replace(microsecond=0) - timedelta(days=7)
     else:
         return
