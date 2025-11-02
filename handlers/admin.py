@@ -637,9 +637,29 @@ async def admin_export_csv_menu(update, context):
     if not query:
         return
 
-    # admin check
-    if not await is_admin(update):
-        return await query.answer("⛔ Unauthorized", show_alert=True)
+    #  Resolve user id safely
+    user_id = None
+    if getattr(update, "effective_user", None):
+        user_id = getattr(update.effective_user, "id", None)
+
+    # --- Admin check (robust)
+    # Preferred simple check using ADMIN_USER_ID (already defined at top of handlers/admin.py)
+    if user_id is None or user_id != ADMIN_USER_ID:
+        # If you also have an is_admin helper, try it as a fallback:
+        try:
+            # if is_admin is async and expects id
+            ok = await is_admin(user_id) if user_id is not None else False
+        except TypeError:
+            # maybe is_admin expects update or is sync; try sync call without await
+            try:
+                ok = is_admin(user_id)
+            except Exception:
+                ok = False
+        except Exception:
+            ok = False
+
+        if not ok:
+            return await query.answer("⛔ Unauthorized", show_alert=True)
 
     keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("🕐 Last 24 hours", callback_data="export_csv:24h"),
