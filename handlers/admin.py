@@ -1065,6 +1065,7 @@ async def update_delivery_status_delivered(update: Update, context: ContextTypes
 # ----------------------------------------------------
 # 📥 EXPORT WINNERS CSV — with Date Range (UTC-based)
 # ----------------------------------------------------
+
 # ----------------
 # STEP 1 — Show Range Selection Menu
 # ----------------
@@ -1072,7 +1073,7 @@ async def admin_export_csv(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = getattr(update, "callback_query", None)
     if not query:
         return
-    
+
     # 🧩 Resolve user ID safely
     user_id = getattr(getattr(update, "effective_user", None), "id", None)
 
@@ -1081,7 +1082,6 @@ async def admin_export_csv(update: Update, context: ContextTypes.DEFAULT_TYPE):
         try:
             ok = await is_admin(user_id) if user_id is not None else False
         except TypeError:
-            # maybe it's sync
             try:
                 ok = is_admin(user_id)
             except Exception:
@@ -1095,16 +1095,18 @@ async def admin_export_csv(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # ✅ Admin confirmed — show export range options
     keyboard = InlineKeyboardMarkup([
         [
-            InlineKeyboardButton("🗓️ Last 7 Days", callback_data="export_csv:7days"),
-            InlineKeyboardButton("📆 Last 30 Days", callback_data="export_csv:30days")
+            InlineKeyboardButton("🕐 Last 24 Hours", callback_data="export_csv:24h"),
+            InlineKeyboardButton("🗓️ Last 7 Days", callback_data="export_csv:7days")
         ],
         [
-            InlineKeyboardButton("📅 This Month", callback_data="export_csv:thismonth"),
-            InlineKeyboardButton("🗓️ Last Month", callback_data="export_csv:lastmonth")
+            InlineKeyboardButton("📆 Last 30 Days", callback_data="export_csv:30days"),
+            InlineKeyboardButton("📅 This Month", callback_data="export_csv:thismonth")
         ],
         [
-            InlineKeyboardButton("📋 All Time", callback_data="export_csv:all"),
+            InlineKeyboardButton("🗓️ Last Month", callback_data="export_csv:lastmonth"),
+            InlineKeyboardButton("📋 All Time", callback_data="export_csv:all")
         ],
+        [InlineKeyboardButton("🔧 Custom Range (YYYY-MM-DD)", callback_data="export_csv:custom")],
         [InlineKeyboardButton("⬅️ Back", callback_data="admin_winners:all:1")]
     ])
 
@@ -1115,6 +1117,7 @@ async def admin_export_csv(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
     await query.edit_message_text(text, parse_mode="HTML", reply_markup=keyboard)
+
 
 # -------------
 # STEP 2 — Handle Range Selection + CSV Creation
@@ -1147,7 +1150,9 @@ async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     start_date, end_date = None, None
     label = query.data.split(":")[1]
 
-    if label == "7days":
+    if label == "24h":
+        start_date = now - timedelta(days=1)
+    elif label == "7days":
         start_date = now - timedelta(days=7)
     elif label == "30days":
         start_date = now - timedelta(days=30)
@@ -1158,10 +1163,10 @@ async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
         end_date = first_of_this_month
         start_date = (first_of_this_month - timedelta(days=1)).replace(day=1)
     elif label == "all":
-        start_date = datetime(2000, 1, 1, tzinfo=timezone.utc)  # fallback
+        start_date = datetime(2000, 1, 1, tzinfo=timezone.utc)  # fallback for "all time"
     elif label == "custom":
-        # ✅ Start custom range flow
-        context.user_data[DATE_SELECTION_KEY] = {"stage": "await_start"}
+        # ✅ Start custom date flow
+        context.user_data[DATE_SELECTION_KEY] = {"stage": "awaiting_start"}
         await query.edit_message_text(
             "📅 <b>Custom Range</b>\n\nSend the <b>start date</b> in format: <code>YYYY-MM-DD</code> (UTC)",
             parse_mode="HTML"
@@ -1222,119 +1227,55 @@ async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     await query.answer("✅ CSV exported successfully!", show_alert=True)
 
-# ------------------------------------
-# Export Winners Start (Robust Admin-Safe)
-# --------------------------------------
-async def export_winners_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = getattr(update, "callback_query", None)
-
-    # 🧩 Resolve user ID safely
-    user_id = getattr(getattr(update, "effective_user", None), "id", None)
-
-    # 🛡️ Robust admin verification
-    if user_id is None or user_id != ADMIN_USER_ID:
-        try:
-            ok = await is_admin(user_id) if user_id is not None else False
-        except TypeError:
-            try:
-                ok = is_admin(user_id)
-            except Exception:
-                ok = False
-        except Exception:
-            ok = False
-
-        if not ok:
-            if query:
-                return await query.answer("⛔ Unauthorized", show_alert=True)
-            return await update.effective_message.reply_text("⛔ Unauthorized")
-
-    # ✅ Authorized admin — continue
-    # Clear any previous selections
-    context.user_data.pop(DATE_SELECTION_KEY, None)
-
-    keyboard = InlineKeyboardMarkup([
-        [
-            InlineKeyboardButton("Last 24h", callback_data="csv_range:24h"),
-            InlineKeyboardButton("Last 7 days", callback_data="csv_range:7d")
-        ],
-        [InlineKeyboardButton("Custom Range", callback_data="csv_range:custom")],
-        [InlineKeyboardButton("⬅️ Cancel", callback_data="admin_winners:all:1")]
-    ])
-
-    if query:
-        await query.answer()
-        return await query.edit_message_text(
-            "📥 Export Winner CSV\n\nChoose a date range:",
-            reply_markup=keyboard
-        )
-    else:
-        return await update.effective_message.reply_text(
-            "📥 Export Winner CSV\n\nChoose a date range:",
-            reply_markup=keyboard
-        )
-
-# --------------------------
-# Export Winners Quick-Select (24h/7 days)
-# ---------------------------
-async def export_winners_quick(update: Update, context: ContextTypes.DEFAULT_TYPE, period: str):
-    now = datetime.now(timezone.utc)
-
-    if period == "24h":
-        start = now.replace(microsecond=0) - timedelta(days=1)
-    elif period == "7days":
-        start = now.replace(microsecond=0) - timedelta(days=7)
-    else:
-        return
-
-    await generate_and_send_csv(update, context, start, now)
-
-# -----------------------------
-# Custom Date Date Range - Step 1: Ask for Start Date
-# -----------------------------
-async def choose_start_date(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    context.user_data[DATE_SELECTION_KEY] = {}
-
-    await update.callback_query.answer()
-    return await update.callback_query.edit_message_text(
-        "📅 Send Start Date (UTC) in format:\n\n<b>YYYY-MM-DD</b>",
-        parse_mode="HTML"
-    )
 
 # -------------------------
-# Custom Date Range — Step 2: Ask for End Date
-# ---------------------------
-async def handle_start_date_input(update: Update, context: ContextTypes.DEFAULT_TYPE):
+# STEP 3 — Custom Range Date Input Router
+# -------------------------
+async def date_range_message_router(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """
+    Captures admin text messages when they are setting start/end dates for CSV export.
+    Expects YYYY-MM-DD strings; stores intermediate state in context.user_data[DATE_SELECTION_KEY].
+    """
+    user_id = getattr(update.effective_user, "id", None)
+    if not await is_admin(update):
+        return
+
+    # Skip if not in export flow
+    if DATE_SELECTION_KEY not in context.user_data:
+        return
+
+    state = context.user_data[DATE_SELECTION_KEY]
+    stage = state.get("stage")
+
+    text = (update.message.text or "").strip()
     try:
-        start_date = datetime.strptime(update.message.text, "%Y-%m-%d")
-        start_date = start_date.replace(tzinfo=timezone.utc)
-    except ValueError:
-        return await update.message.reply_text("❌ Invalid format. Use YYYY-MM-DD")
+        parsed = datetime.strptime(text, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    except Exception:
+        return await update.message.reply_text("❌ Invalid format. Send date as: YYYY-MM-DD (UTC)")
 
-    context.user_data[DATE_SELECTION_KEY]["start"] = start_date
+    if stage == "awaiting_start":
+        context.user_data[DATE_SELECTION_KEY] = {"stage": "awaiting_end", "start": parsed}
+        return await update.message.reply_text(
+            "✅ Start date recorded.\nNow send the <b>end date</b> (UTC) in format: <code>YYYY-MM-DD</code>",
+            parse_mode="HTML"
+        )
 
-    return await update.message.reply_text(
-        "✅ Start date saved.\nNow send End Date (UTC):\n<b>YYYY-MM-DD</b>",
-        parse_mode="HTML"
-    )
+    if stage == "awaiting_end":
+        start_dt = state.get("start")
+        if not start_dt:
+            context.user_data.pop(DATE_SELECTION_KEY, None)
+            return await update.message.reply_text("❌ Start date missing. Restart export from the menu.")
 
-# ----------------------------
-# Final Step — Generate CSV
-# ----------------------------
-async def handle_end_date_input(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    data = context.user_data.get(DATE_SELECTION_KEY, {})
-    if "start" not in data:
-        return await update.message.reply_text("❌ Start date not set. Restart export.")
+        end_dt = parsed.replace(hour=23, minute=59, second=59, microsecond=999999)
+        context.user_data.pop(DATE_SELECTION_KEY, None)
 
-    try:
-        end_date = datetime.strptime(update.message.text, "%Y-%m-%d")
-        end_date = end_date.replace(tzinfo=timezone.utc)
-    except ValueError:
-        return await update.message.reply_text("❌ Invalid format. Use YYYY-MM-DD")
+        await update.message.reply_text("⏳ Generating CSV... please wait.")
+        await generate_and_send_csv(update, context, start_dt, end_dt, label=f"custom_{start_dt.date()}_to_{end_dt.date()}")
+        return
 
-    start_date = data["start"]
+    # Unexpected state
     context.user_data.pop(DATE_SELECTION_KEY, None)
-
-    await generate_and_send_csv(update, context, start_date, end_date)
+    return await update.message.reply_text("⚠️ Unexpected state. Please re-open the export menu.")
 
 # ----------------------------
 # Register Handlers (CLEAN & ORDERED ✅)
@@ -1375,4 +1316,3 @@ def register_handlers(application):
         filters.TEXT & ~filters.COMMAND,
         user_search_handler
     ))
-
