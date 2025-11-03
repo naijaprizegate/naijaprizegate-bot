@@ -14,6 +14,7 @@ from telegram import InputMediaPhoto, InputFile
 from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, filters
 from telegram.ext import filters as tg_filters  # to avoid name clash
 from telegram.error import BadRequest
+from telegram.constants import ParseMode
 from sqlalchemy import select, update as sql_update, and_
 from db import AsyncSessionLocal, get_async_session
 from helpers import add_tries, get_user_by_id
@@ -838,20 +839,25 @@ async def date_range_message_router(update: Update, context: ContextTypes.DEFAUL
     return await update.message.reply_text("⚠️ Unexpected state. Please re-open the export menu.")
 
 
-# -------------------------
-# Core CSV generator + sender (file-based)
-# -------------------------
+# ---------------------------------------------------------
+# Generate and Send CSV (Merged + Final Stable ✅)
+# ---------------------------------------------------------
 async def generate_and_send_csv(update, context, start_dt: datetime, end_dt: datetime, label: str = "range"):
     """
     Query PrizeWinner by submitted_at between start_dt and end_dt (inclusive),
-    create CSV in OS tmp dir (UTF-8 with BOM for Excel), send to admin, then delete file.
+    create CSV in OS tmp dir (UTF-8 with BOM for Excel), send to admin, then delete file safely.
     """
-    # Admin check — same robust logic
-    user_id = getattr(getattr(update, "effective_user", None), "id", None)
 
-    if user_id is None or user_id != ADMIN_USER_ID:
+    # -----------------------------------------------------
+    # Admin validation (robust async / sync fallback)
+    # -----------------------------------------------------
+    user_id = getattr(getattr(update, "effective_user", None), "id", None)
+    ok = False
+    if user_id == ADMIN_USER_ID:
+        ok = True
+    elif user_id is not None:
         try:
-            ok = await is_admin(user_id) if user_id is not None else False
+            ok = await is_admin(user_id)
         except TypeError:
             try:
                 ok = is_admin(user_id)
@@ -860,20 +866,25 @@ async def generate_and_send_csv(update, context, start_dt: datetime, end_dt: dat
         except Exception:
             ok = False
 
-        if not ok:
-            if getattr(update, "callback_query", None):
-                return await update.callback_query.answer("⛔ Unauthorized", show_alert=True)
-            return await update.message.reply_text("⛔ Unauthorized access.")
+    if not ok:
+        if getattr(update, "callback_query", None):
+            return await update.callback_query.answer("⛔ Unauthorized", show_alert=True)
+        return await update.message.reply_text("⛔ Unauthorized access.")
 
-    # Query DB for winners in range
+    # -----------------------------------------------------
+    # Query winners from DB within range
+    # -----------------------------------------------------
     async with get_async_session() as session:
-        qb = select(PrizeWinner).where(
-            and_(
-                PrizeWinner.submitted_at >= start_dt,
-                PrizeWinner.submitted_at <= end_dt
+        qb = (
+            select(PrizeWinner)
+            .where(
+                and_(
+                    PrizeWinner.submitted_at >= start_dt,
+                    PrizeWinner.submitted_at <= end_dt
+                )
             )
-        ).order_by(PrizeWinner.submitted_at.asc())
-
+            .order_by(PrizeWinner.submitted_at.asc())
+        )
         result = await session.execute(qb)
         winners = result.scalars().all()
 
@@ -881,21 +892,21 @@ async def generate_and_send_csv(update, context, start_dt: datetime, end_dt: dat
         msg = f"📭 No winners found between {start_dt.isoformat()} and {end_dt.isoformat()} (UTC)."
         if getattr(update, "callback_query", None):
             return await update.callback_query.edit_message_text(msg)
-        else:
-            return await update.message.reply_text(msg)
+        return await update.message.reply_text(msg)
 
-    # Build filename from dates
+    # -----------------------------------------------------
+    # Build filename and temp CSV file
+    # -----------------------------------------------------
     start_str = start_dt.strftime("%Y-%m-%d")
     end_str = end_dt.strftime("%Y-%m-%d")
     filename = f"winners_{start_str}_to_{end_str}.csv"
 
-    # Create temporary file (utf-8-sig; BOM for Excel)
     tmp = tempfile.NamedTemporaryFile(mode="w", encoding="utf-8-sig", newline="", delete=False, suffix=".csv")
     tmp_path = tmp.name
 
     try:
         writer = csv.writer(tmp)
-        # Column headers (includes delivery status)
+        # Column headers
         writer.writerow(["Full Name", "Phone", "Address", "Prize", "Date Won (UTC)", "Delivery Status"])
 
         for w in winners:
@@ -903,57 +914,74 @@ async def generate_and_send_csv(update, context, start_dt: datetime, end_dt: dat
             full_name = data.get("full_name", "")
             phone = data.get("phone", "")
             address = data.get("address", "")
-            prize = w.choice or ""
-            date_won = w.submitted_at.astimezone(timezone.utc).strftime("%Y-%m-%d %H:%M:%S") if w.submitted_at else ""
-            status = w.delivery_status or "Pending"
+            prize = getattr(w, "choice", "") or getattr(w, "prize_name", "")
+            date_won = (
+                w.submitted_at.astimezone(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+                if getattr(w, "submitted_at", None)
+                else ""
+            )
+            status = getattr(w, "delivery_status", "") or "Pending"
 
             writer.writerow([full_name, phone, address, prize, date_won, status])
 
         tmp.flush()
         tmp.close()
 
-        caption = f"📦 Winners Export — {start_str} → {end_str} (UTC)\nCount: {len(winners)}"
+        # -------------------------------------------------
+        # Send CSV safely to admin
+        # -------------------------------------------------
+        caption = (
+            f"📦 Winners Export — {start_str} → {end_str} (UTC)\n"
+            f"📊 Count: {len(winners)}"
+        )
         admin_chat_id = getattr(getattr(update, "effective_user", None), "id")
+        input_file = InputFile(tmp_path, filename=filename)
 
-        # Try to send using callback context if available, fallback to bot.send_document
         try:
             if getattr(update, "callback_query", None):
-                await update.callback_query.message.reply_document(
-                    document=InputFile(tmp_path, filename=filename),
-                    caption=caption
-                )
+                await update.callback_query.message.reply_document(document=input_file, caption=caption)
             else:
-                await update.message.reply_document(
-                    document=InputFile(tmp_path, filename=filename),
-                    caption=caption
-                )
-        except Exception:
-            # final fallback
+                await update.message.reply_document(document=input_file, caption=caption)
+
+            # Wait to ensure Telegram finishes upload before deletion
+            await asyncio.sleep(1)
+
+        except Exception as e:
+            logger.warning(f"⚠️ send_document failed: {e} — retrying via context.bot")
             await context.bot.send_document(
                 chat_id=admin_chat_id,
                 document=InputFile(tmp_path, filename=filename),
-                caption=caption
+                caption=caption,
+                parse_mode=ParseMode.HTML,
             )
+            await asyncio.sleep(1)
 
-        # Delete temporary file after sending
-        try:
-            os.remove(tmp_path)
-        except Exception as e:
-            logger.warning(f"⚠️ Could not delete temp file {tmp_path}: {e}")
-
-        # Acknowledge success to the admin in-place if called from callback, else via text
+        # -------------------------------------------------
+        # Confirm success to admin
+        # -------------------------------------------------
+        success_msg = f"✅ CSV exported and sent to you ({len(winners)} rows)."
         if getattr(update, "callback_query", None):
-            await update.callback_query.edit_message_text(f"✅ CSV exported and sent to you ({len(winners)} rows).")
+            await update.callback_query.edit_message_text(success_msg)
         else:
-            await update.message.reply_text(f"✅ CSV exported and sent to you ({len(winners)} rows).")
+            await update.message.reply_text(success_msg)
+
+    except Exception as e:
+        logger.error(f"❌ CSV generation failed: {e}", exc_info=True)
+        msg = f"❌ Error generating CSV:\n<code>{e}</code>"
+        if getattr(update, "callback_query", None):
+            await update.callback_query.message.reply_html(msg)
+        else:
+            await update.message.reply_html(msg)
 
     finally:
-        # Extra safety cleanup
+        # -------------------------------------------------
+        # Safe cleanup
+        # -------------------------------------------------
         try:
-            if os.path.exists(tmp_path):
-                os.remove(tmp_path)
-        except Exception:
-            pass
+            os.remove(tmp_path)
+            logger.info(f"🧹 Temp file deleted: {tmp_path}")
+        except Exception as e:
+            logger.warning(f"⚠️ Could not delete temp file {tmp_path}: {e}")
 
 # ----------------------------------
 # handle_pw_mark_delivered
@@ -1128,4 +1156,3 @@ def register_handlers(application):
         filters.TEXT & ~filters.COMMAND,
         user_search_handler
     ))
-
