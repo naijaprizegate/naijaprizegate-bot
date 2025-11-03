@@ -626,8 +626,6 @@ async def handle_pw_mark_in_transit(update: Update, context: ContextTypes.DEFAUL
 # ✅ CSV Generation, Upload (temp file), Date Range Flow
 # -----------------------------
 
-DATE_SELECTION_KEY = "csv_export_date_range"
-
 # -------------------------
 # Show Export Range Menu (triggered from admin_winners view)
 # -------------------------
