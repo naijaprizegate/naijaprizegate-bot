@@ -762,102 +762,80 @@ async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     await generate_and_send_csv(update, context, start_dt, end_dt, label=label)
 
 
-# ---------------------------------------------------------
+# -------------------------
 # Step 3 — Custom Range Date Input Router (MessageHandler)
-# ---------------------------------------------------------
+# -------------------------
 async def date_range_message_router(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
-    Handles admin-entered start/end dates for CSV export.
-    Accepts flexible formats: YYYY-MM-DD, YYYY/MM/DD, YYYY.MM.DD
-    State managed under context.user_data[DATE_SELECTION_KEY].
+    Handles admin text input for custom CSV date ranges.
+    Expects strict YYYY-MM-DD format, stores state in context.user_data[DATE_SELECTION_KEY].
+    Registered before user_search_handler and fallback.
     """
     user_id = getattr(getattr(update, "effective_user", None), "id", None)
 
-    # --- Admin validation ---
-    if not user_id:
-        return
-
-    try:
-        ok = (user_id == ADMIN_USER_ID) or (await is_admin(user_id))
-    except TypeError:
+    # --- Admin check (async/sync safe)
+    if user_id is None or user_id != ADMIN_USER_ID:
         try:
-            ok = (user_id == ADMIN_USER_ID) or is_admin(user_id)
+            ok = await is_admin(user_id) if user_id is not None else False
+        except TypeError:
+            try:
+                ok = is_admin(user_id)
+            except Exception:
+                ok = False
         except Exception:
             ok = False
-    except Exception:
-        ok = False
+        if not ok:
+            return  # Ignore — not admin
 
-    if not ok:
-        return  # silently ignore non-admins
+    # --- Ensure we're inside an active date selection flow
+    state = context.user_data.get(DATE_SELECTION_KEY)
+    if not state or "stage" not in state:
+        return  # Not in date selection mode — let next handlers run
 
-    # --- Check if in date selection flow ---
-    if DATE_SELECTION_KEY not in context.user_data:
-        return
-
-    state = context.user_data.get(DATE_SELECTION_KEY, {})
-    stage = state.get("stage")
-    if not stage:
-        context.user_data.pop(DATE_SELECTION_KEY, None)
-        return
-
-    # --- Clean input ---
+    stage = state["stage"]
     text = (update.message.text or "").strip()
-    for ch in ["\u200b", "\u202f", "\xa0"]:  # zero-width, narrow no-break, etc.
-        text = text.replace(ch, "")
 
-    # --- Parse date in flexible formats ---
-    parsed = None
-    for fmt in ("%Y-%m-%d", "%Y/%m/%d", "%Y.%m.%d"):
-        try:
-            parsed = datetime.strptime(text, fmt).replace(tzinfo=timezone.utc)
-            break
-        except ValueError:
-            continue
-
-    if not parsed:
-        return await update.message.reply_text(
-            "❌ Invalid format. Please send date as <b>YYYY-MM-DD</b> — e.g. <code>2025-11-03</code>",
-            parse_mode="HTML"
+    # --- Parse the date (strict ISO format)
+    try:
+        parsed = datetime.strptime(text, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    except ValueError:
+        await update.message.reply_text(
+            "❌ Invalid date format.\nPlease send the date as exactly: YYYY-MM-DD (UTC)\nExample: 2025-11-03"
         )
+        return ConversationHandler.END  # Stop fallback trigger
 
-    # --- Handle start date ---
+    # --- Handle start date stage
     if stage == "awaiting_start":
-        context.user_data[DATE_SELECTION_KEY] = {
-            "stage": "awaiting_end",
-            "start": parsed
-        }
-        return await update.message.reply_text(
+        context.user_data[DATE_SELECTION_KEY] = {"stage": "awaiting_end", "start": parsed}
+        await update.message.reply_text(
             "✅ Start date recorded.\nNow send the <b>end date</b> (UTC) in format: <code>YYYY-MM-DD</code>",
-            parse_mode="HTML"
+            parse_mode="HTML",
         )
+        return ConversationHandler.END  # Stop further propagation
 
-    # --- Handle end date ---
-    if stage == "awaiting_end":
+    # --- Handle end date stage
+    elif stage == "awaiting_end":
         start_dt = state.get("start")
         if not start_dt:
             context.user_data.pop(DATE_SELECTION_KEY, None)
-            return await update.message.reply_text(
-                "❌ Start date missing. Please restart export from the menu."
-            )
+            await update.message.reply_text("❌ Start date missing. Please restart export from the menu.")
+            return ConversationHandler.END
 
         end_dt = parsed.replace(hour=23, minute=59, second=59, microsecond=999999)
 
-        # Clear flow state
+        # Clear state before generating
         context.user_data.pop(DATE_SELECTION_KEY, None)
 
         await update.message.reply_text("⏳ Generating CSV... please wait.")
-        await generate_and_send_csv(
-            update,
-            context,
-            start_dt,
-            end_dt,
-            label=f"custom_{start_dt.date()}_to_{end_dt.date()}"
-        )
-        return
+        await generate_and_send_csv(update, context, start_dt, end_dt, label=f"custom_{start_dt.date()}_to_{end_dt.date()}")
 
-    # --- Unexpected fallback ---
+        return ConversationHandler.END  # Ensure no fallback triggers
+
+    # --- Unexpected state: clean up
     context.user_data.pop(DATE_SELECTION_KEY, None)
-    await update.message.reply_text("⚠️ Unexpected state. Please reopen the export menu.")
+    await update.message.reply_text("⚠️ Unexpected state. Please re-open the export menu.")
+    return ConversationHandler.END
+
 
 # ---------------------------------------------------------
 # generate_and_send_csv() — Robust final version (drop-in)
