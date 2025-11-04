@@ -762,14 +762,14 @@ async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     await generate_and_send_csv(update, context, start_dt, end_dt, label=label)
 
 
-# -------------------------
-# Step 3 — Custom Range Date Input Router (MessageHandler)
-# -------------------------
+# ---------------------------------------------------------
+# Step 3 — Single Message Custom Range Date Input
+# ---------------------------------------------------------
 async def date_range_message_router(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
     Handles admin text input for custom CSV date ranges.
-    Expects strict YYYY-MM-DD format, stores state in context.user_data[DATE_SELECTION_KEY].
-    Registered before user_search_handler and fallback.
+    Accepts one message like '2025-10-01 to 2025-10-31' or '2025-10-01,2025-10-31'.
+    Generates the CSV immediately.
     """
     user_id = getattr(getattr(update, "effective_user", None), "id", None)
 
@@ -787,55 +787,50 @@ async def date_range_message_router(update: Update, context: ContextTypes.DEFAUL
         if not ok:
             return  # Ignore — not admin
 
-    # --- Ensure we're inside an active date selection flow
-    state = context.user_data.get(DATE_SELECTION_KEY)
-    if not state or "stage" not in state:
-        return  # Not in date selection mode — let next handlers run
-
-    stage = state["stage"]
     text = (update.message.text or "").strip()
+    if not text:
+        return
 
-    # --- Parse the date (strict ISO format)
+    # --- Parse both dates from input
+    separators = ["to", "-", ",", "–", "—"]
+    parts = None
+    for sep in separators:
+        if sep in text:
+            parts = text.replace(" ", "").split(sep)
+            break
+
+    if not parts or len(parts) != 2:
+        await update.message.reply_text(
+            "❌ Please send both dates like:\n\n"
+            "`2025-10-01 to 2025-10-31`\n\nor\n`2025-10-01,2025-10-31`",
+            parse_mode="MarkdownV2",
+        )
+        return ConversationHandler.END
+
+    start_str, end_str = parts[0].strip(), parts[1].strip()
+
+    # --- Parse ISO dates
     try:
-        parsed = datetime.strptime(text, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        start_dt = datetime.strptime(start_str, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        end_dt = datetime.strptime(end_str, "%Y-%m-%d").replace(
+            hour=23, minute=59, second=59, microsecond=999999, tzinfo=timezone.utc
+        )
     except ValueError:
         await update.message.reply_text(
-            "❌ Invalid date format.\nPlease send the date as exactly: YYYY-MM-DD (UTC)\nExample: 2025-11-03"
+            "❌ Invalid date format.\nMake sure both dates are in `YYYY-MM-DD` format.",
+            parse_mode="MarkdownV2",
         )
-        return ConversationHandler.END  # Stop fallback trigger
+        return ConversationHandler.END
 
-    # --- Handle start date stage
-    if stage == "awaiting_start":
-        context.user_data[DATE_SELECTION_KEY] = {"stage": "awaiting_end", "start": parsed}
-        await update.message.reply_text(
-            "✅ Start date recorded.\nNow send the <b>end date</b> (UTC) in format: <code>YYYY-MM-DD</code>",
-            parse_mode="HTML",
-        )
-        return ConversationHandler.END  # Stop further propagation
+    if start_dt > end_dt:
+        await update.message.reply_text("⚠️ Start date must be before end date.")
+        return ConversationHandler.END
 
-    # --- Handle end date stage
-    elif stage == "awaiting_end":
-        start_dt = state.get("start")
-        if not start_dt:
-            context.user_data.pop(DATE_SELECTION_KEY, None)
-            await update.message.reply_text("❌ Start date missing. Please restart export from the menu.")
-            return ConversationHandler.END
+    # --- Generate and send CSV
+    await update.message.reply_text("⏳ Generating CSV... please wait.")
+    await generate_and_send_csv(update, context, start_dt, end_dt, label=f"custom_{start_dt.date()}_to_{end_dt.date()}")
 
-        end_dt = parsed.replace(hour=23, minute=59, second=59, microsecond=999999)
-
-        # Clear state before generating
-        context.user_data.pop(DATE_SELECTION_KEY, None)
-
-        await update.message.reply_text("⏳ Generating CSV... please wait.")
-        await generate_and_send_csv(update, context, start_dt, end_dt, label=f"custom_{start_dt.date()}_to_{end_dt.date()}")
-
-        return ConversationHandler.END  # Ensure no fallback triggers
-
-    # --- Unexpected state: clean up
-    context.user_data.pop(DATE_SELECTION_KEY, None)
-    await update.message.reply_text("⚠️ Unexpected state. Please re-open the export menu.")
     return ConversationHandler.END
-
 
 # ---------------------------------------------------------
 # generate_and_send_csv() — Robust final version (drop-in)
