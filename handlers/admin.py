@@ -761,83 +761,102 @@ async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     await generate_and_send_csv(update, context, start_dt, end_dt, label=label)
 
 
-# -------------------------
+# ---------------------------------------------------------
 # Step 3 — Custom Range Date Input Router (MessageHandler)
-# -------------------------
+# ---------------------------------------------------------
 async def date_range_message_router(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
-    Captures admin text messages when they are setting start/end dates for CSV export.
-    Expects strictly YYYY-MM-DD (no spaces). Stores intermediate state in context.user_data[DATE_SELECTION_KEY].
-    Registered as MessageHandler(filters.TEXT & ~filters.COMMAND, ...)
+    Handles admin-entered start/end dates for CSV export.
+    Accepts flexible formats: YYYY-MM-DD, YYYY/MM/DD, YYYY.MM.DD
+    State managed under context.user_data[DATE_SELECTION_KEY].
     """
-    # First, resolve whether this user is allowed (robust)
     user_id = getattr(getattr(update, "effective_user", None), "id", None)
 
-    # Accept both ADMIN_USER_ID check and is_admin helper (sync/async)
-    if user_id is None or user_id != ADMIN_USER_ID:
+    # --- Admin validation ---
+    if not user_id:
+        return
+
+    try:
+        ok = (user_id == ADMIN_USER_ID) or (await is_admin(user_id))
+    except TypeError:
         try:
-            ok = await is_admin(user_id) if user_id is not None else False
-        except TypeError:
-            try:
-                ok = is_admin(user_id)
-            except Exception:
-                ok = False
+            ok = (user_id == ADMIN_USER_ID) or is_admin(user_id)
         except Exception:
             ok = False
+    except Exception:
+        ok = False
 
-        if not ok:
-            # not an admin — ignore (do not send fallback)
-            return
+    if not ok:
+        return  # silently ignore non-admins
 
-    # If not in export flow, ignore — allows other handlers to process (fallback will run later)
+    # --- Check if in date selection flow ---
     if DATE_SELECTION_KEY not in context.user_data:
         return
 
-    state = context.user_data[DATE_SELECTION_KEY]
-    stage = state.get("stage", None)
+    state = context.user_data.get(DATE_SELECTION_KEY, {})
+    stage = state.get("stage")
     if not stage:
-        # unexpected; clear and ignore
         context.user_data.pop(DATE_SELECTION_KEY, None)
         return
 
-    # Normalize text (strip spaces/newlines)
+    # --- Clean input ---
     text = (update.message.text or "").strip()
+    for ch in ["\u200b", "\u202f", "\xa0"]:  # zero-width, narrow no-break, etc.
+        text = text.replace(ch, "")
 
-    # Parse strictly YYYY-MM-DD
-    try:
-        parsed = datetime.strptime(text, "%Y-%m-%d").replace(tzinfo=timezone.utc)
-    except Exception:
-        # Keep the state so admin can retry; inform user of expected format
-        return await update.message.reply_text("❌ Invalid format. Send date as exactly: YYYY-MM-DD (UTC) — e.g. 2025-11-03")
+    # --- Parse date in flexible formats ---
+    parsed = None
+    for fmt in ("%Y-%m-%d", "%Y/%m/%d", "%Y.%m.%d"):
+        try:
+            parsed = datetime.strptime(text, fmt).replace(tzinfo=timezone.utc)
+            break
+        except ValueError:
+            continue
 
-    # Stage handling
+    if not parsed:
+        return await update.message.reply_text(
+            "❌ Invalid format. Please send date as <b>YYYY-MM-DD</b> — e.g. <code>2025-11-03</code>",
+            parse_mode="HTML"
+        )
+
+    # --- Handle start date ---
     if stage == "awaiting_start":
-        # Save start and prompt for end date
-        context.user_data[DATE_SELECTION_KEY] = {"stage": "awaiting_end", "start": parsed}
+        context.user_data[DATE_SELECTION_KEY] = {
+            "stage": "awaiting_end",
+            "start": parsed
+        }
         return await update.message.reply_text(
             "✅ Start date recorded.\nNow send the <b>end date</b> (UTC) in format: <code>YYYY-MM-DD</code>",
             parse_mode="HTML"
         )
 
+    # --- Handle end date ---
     if stage == "awaiting_end":
         start_dt = state.get("start")
         if not start_dt:
             context.user_data.pop(DATE_SELECTION_KEY, None)
-            return await update.message.reply_text("❌ Start date missing. Restart export from the menu.")
+            return await update.message.reply_text(
+                "❌ Start date missing. Please restart export from the menu."
+            )
 
         end_dt = parsed.replace(hour=23, minute=59, second=59, microsecond=999999)
 
-        # Clear flow state so fallback won't catch subsequent messages
+        # Clear flow state
         context.user_data.pop(DATE_SELECTION_KEY, None)
 
         await update.message.reply_text("⏳ Generating CSV... please wait.")
-        await generate_and_send_csv(update, context, start_dt, end_dt, label=f"custom_{start_dt.date()}_to_{end_dt.date()}")
+        await generate_and_send_csv(
+            update,
+            context,
+            start_dt,
+            end_dt,
+            label=f"custom_{start_dt.date()}_to_{end_dt.date()}"
+        )
         return
 
-    # If we reach here it's unexpected — clear and notify
+    # --- Unexpected fallback ---
     context.user_data.pop(DATE_SELECTION_KEY, None)
-    return await update.message.reply_text("⚠️ Unexpected state. Please re-open the export menu.")
-
+    await update.message.reply_text("⚠️ Unexpected state. Please reopen the export menu.")
 
 # ---------------------------------------------------------
 # generate_and_send_csv() — Robust final version (drop-in)
@@ -1156,7 +1175,6 @@ def register_handlers(application):
     application.add_handler(CommandHandler("winners", show_winners_section))
 
     # ✅ ADMIN SUB-SECTIONS — must come BEFORE generic admin_callback
-    # Each section gets its own clean pattern
     application.add_handler(CallbackQueryHandler(pending_proofs, pattern=r"^admin_pending"))
     application.add_handler(CallbackQueryHandler(user_search_handler, pattern=r"^admin_usersearch"))
     application.add_handler(CallbackQueryHandler(show_winners_section, pattern=r"^admin_winners"))
@@ -1165,12 +1183,15 @@ def register_handlers(application):
     # ✅ CSV EXPORT FLOW (must be ABOVE generic text handlers)
     application.add_handler(CallbackQueryHandler(admin_export_csv_menu, pattern=r"^admin_export_csv$"))
     application.add_handler(CallbackQueryHandler(export_csv_handler, pattern=r"^export_csv:"))
+
+    # 🟩 CRITICAL: Handle custom date input FIRST among text handlers
+    # This ensures it catches YYYY-MM-DD input before fallback or user search
     application.add_handler(MessageHandler(
         filters.TEXT & ~filters.COMMAND,
         date_range_message_router
     ))
 
-    # ✅ Admin Menu and main routing (keep AFTER the section-specific handlers)
+    # ✅ Admin Menu and main routing (keep AFTER section-specific handlers)
     application.add_handler(CallbackQueryHandler(admin_callback, pattern=r"^admin_"))
 
     # ✅ Delivery status updates
@@ -1179,8 +1200,17 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(handle_pw_mark_in_transit, pattern=r"^pw_status_transit_\d+$"))
     application.add_handler(CallbackQueryHandler(handle_pw_mark_delivered, pattern=r"^pw_status_delivered_\d+$"))
 
-    # ✅ Fallback: User Search Text Handler (must be LAST text handler)
+    # 🟩 Fallback text handlers LAST
+    # These only run if the user isn’t inside a date selection flow
     application.add_handler(MessageHandler(
         filters.TEXT & ~filters.COMMAND,
         user_search_handler
     ))
+
+    # ✅ Absolute fallback — catches *everything else* (usually in handlers/core.py)
+    # Place this one at the VERY END of all registrations:
+    application.add_handler(MessageHandler(
+        filters.ALL,
+        fallback
+    ))
+
