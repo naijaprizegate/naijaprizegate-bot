@@ -1,4 +1,3 @@
-
 # ==============================================================
 # handlers/admin.py — Clean Unified Admin System (HTML Safe)
 # ==============================================================
@@ -736,32 +735,32 @@ async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
         start_dt = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
         end_dt = now
     elif label == "lastmonth":
-        # First day of current month (UTC)
         first_of_this_month = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
-        # Last month covers from the first day of last month to the last second of last month
         last_month_end = first_of_this_month - timedelta(microseconds=1)
         last_month_start = last_month_end.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
         start_dt = last_month_start
         end_dt = last_month_end
     elif label == "all":
-        # safe "all time" baseline
         start_dt = datetime(2000, 1, 1, tzinfo=timezone.utc)
         end_dt = now
     elif label == "custom":
-        # Begin custom flow: expect start date next as plain text message
-        context.user_data[DATE_SELECTION_KEY] = {"stage": "awaiting_start"}
+        # NEW: ask for both dates in one message instead of multi-step flow
         await query.edit_message_text(
-            "📅 <b>Custom Range</b>\n\nSend the <b>start date</b> in UTC using format: <code>YYYY-MM-DD</code>",
+            "📅 <b>Custom Range</b>\n\n"
+            "Please send your full range in one message using either format:\n"
+            "<code>2025-10-01 to 2025-10-31</code>\n"
+            "or\n"
+            "<code>2025-10-01,2025-10-31</code>",
             parse_mode="HTML"
         )
+        # You no longer need DATE_SELECTION_KEY
         return
     else:
         return await query.answer("⚠️ Invalid selection", show_alert=True)
 
-    # At this point we have both start_dt and end_dt
+    # For predefined ranges
     await query.edit_message_text("⏳ Generating CSV... please wait.")
     await generate_and_send_csv(update, context, start_dt, end_dt, label=label)
-
 
 # ---------------------------------------------------------
 # Step 3 — Single Message Custom Range Date Input
