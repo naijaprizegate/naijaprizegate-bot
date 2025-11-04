@@ -840,17 +840,19 @@ async def date_range_message_router(update: Update, context: ContextTypes.DEFAUL
 
 
 # ---------------------------------------------------------
-# Generate and Send CSV (Merged + Final Stable ✅)
+# generate_and_send_csv() — Robust final version (drop-in)
 # ---------------------------------------------------------
+
 async def generate_and_send_csv(update, context, start_dt: datetime, end_dt: datetime, label: str = "range"):
     """
     Query PrizeWinner by submitted_at between start_dt and end_dt (inclusive),
-    create CSV in OS tmp dir (UTF-8 with BOM for Excel), send to admin, then delete file safely.
+    create CSV in OS tmp dir (UTF-8 with BOM for Excel), send to admin using an open file object,
+    then delete file safely.
     """
 
-    # -----------------------------------------------------
-    # Admin validation (robust async / sync fallback)
-    # -----------------------------------------------------
+    # ---------------------------
+    # Admin validation
+    # ---------------------------
     user_id = getattr(getattr(update, "effective_user", None), "id", None)
     ok = False
     if user_id == ADMIN_USER_ID:
@@ -871,16 +873,16 @@ async def generate_and_send_csv(update, context, start_dt: datetime, end_dt: dat
             return await update.callback_query.answer("⛔ Unauthorized", show_alert=True)
         return await update.message.reply_text("⛔ Unauthorized access.")
 
-    # -----------------------------------------------------
-    # Query winners from DB within range
-    # -----------------------------------------------------
+    # ---------------------------
+    # Query winners
+    # ---------------------------
     async with get_async_session() as session:
         qb = (
             select(PrizeWinner)
             .where(
                 and_(
                     PrizeWinner.submitted_at >= start_dt,
-                    PrizeWinner.submitted_at <= end_dt
+                    PrizeWinner.submitted_at <= end_dt,
                 )
             )
             .order_by(PrizeWinner.submitted_at.asc())
@@ -894,9 +896,9 @@ async def generate_and_send_csv(update, context, start_dt: datetime, end_dt: dat
             return await update.callback_query.edit_message_text(msg)
         return await update.message.reply_text(msg)
 
-    # -----------------------------------------------------
-    # Build filename and temp CSV file
-    # -----------------------------------------------------
+    # ---------------------------
+    # Create temp CSV file (utf-8-sig for Excel)
+    # ---------------------------
     start_str = start_dt.strftime("%Y-%m-%d")
     end_str = end_dt.strftime("%Y-%m-%d")
     filename = f"winners_{start_str}_to_{end_str}.csv"
@@ -906,15 +908,15 @@ async def generate_and_send_csv(update, context, start_dt: datetime, end_dt: dat
 
     try:
         writer = csv.writer(tmp)
-        # Column headers
+        # header
         writer.writerow(["Full Name", "Phone", "Address", "Prize", "Date Won (UTC)", "Delivery Status"])
 
         for w in winners:
             data = w.delivery_data or {}
-            full_name = data.get("full_name", "")
-            phone = data.get("phone", "")
-            address = data.get("address", "")
-            prize = getattr(w, "choice", "") or getattr(w, "prize_name", "")
+            full_name = data.get("full_name", "") or ""
+            phone = data.get("phone", "") or ""
+            address = data.get("address", "") or ""
+            prize = getattr(w, "choice", "") or getattr(w, "prize_name", "") or ""
             date_won = (
                 w.submitted_at.astimezone(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
                 if getattr(w, "submitted_at", None)
@@ -927,61 +929,87 @@ async def generate_and_send_csv(update, context, start_dt: datetime, end_dt: dat
         tmp.flush()
         tmp.close()
 
-        # -------------------------------------------------
-        # Send CSV safely to admin
-        # -------------------------------------------------
-        caption = (
-            f"📦 Winners Export — {start_str} → {end_str} (UTC)\n"
-            f"📊 Count: {len(winners)}"
-        )
+        caption = f"📦 Winners Export — {start_str} → {end_str} (UTC)\n📊 Count: {len(winners)}"
         admin_chat_id = getattr(getattr(update, "effective_user", None), "id")
-        input_file = InputFile(tmp_path, filename=filename)
 
+        # ---------------------------
+        # Send using an open file object (most robust)
+        # ---------------------------
         try:
-            if getattr(update, "callback_query", None):
-                await update.callback_query.message.reply_document(document=input_file, caption=caption)
-            else:
-                await update.message.reply_document(document=input_file, caption=caption)
+            with open(tmp_path, "rb") as f:
+                input_file = InputFile(f, filename=filename)
 
-            # Wait to ensure Telegram finishes upload before deletion
-            await asyncio.sleep(1)
+                if getattr(update, "callback_query", None):
+                    await update.callback_query.message.reply_document(document=input_file, caption=caption)
+                else:
+                    await update.message.reply_document(document=input_file, caption=caption)
 
-        except Exception as e:
-            logger.warning(f"⚠️ send_document failed: {e} — retrying via context.bot")
-            await context.bot.send_document(
-                chat_id=admin_chat_id,
-                document=InputFile(tmp_path, filename=filename),
-                caption=caption,
-                parse_mode=ParseMode.HTML,
-            )
-            await asyncio.sleep(1)
+                # Slight wait to ensure upload started/completed reading file
+                await asyncio.sleep(0.6)
 
-        # -------------------------------------------------
-        # Confirm success to admin
-        # -------------------------------------------------
+        except Exception as e_send:
+            # Log and attempt fallback with context.bot (also using an open file)
+            logger.warning(f"⚠️ Primary send failed: {e_send}. Retrying via context.bot...")
+
+            try:
+                with open(tmp_path, "rb") as f2:
+                    await context.bot.send_document(
+                        chat_id=admin_chat_id,
+                        document=InputFile(f2, filename=filename),
+                        caption=caption,
+                        parse_mode=ParseMode.HTML,
+                    )
+                await asyncio.sleep(0.6)
+            except Exception as e_fb:
+                # Final fallback: inform admin and attach path (only as last resort)
+                logger.error(f"❌ Both sends failed: primary={e_send}, fallback={e_fb}", exc_info=True)
+                err_msg = (
+                    "❌ Failed to send CSV file automatically. "
+                    "I have saved it to the bot host (path shown below). Please retrieve it manually.\n\n"
+                    f"<code>{tmp_path}</code>"
+                )
+                if getattr(update, "callback_query", None):
+                    await update.callback_query.message.reply_html(err_msg)
+                else:
+                    await update.message.reply_html(err_msg)
+                # in this failure case, we do NOT delete the file so you can retrieve it.
+                return
+
+        # ---------------------------
+        # Acknowledge success
+        # ---------------------------
         success_msg = f"✅ CSV exported and sent to you ({len(winners)} rows)."
         if getattr(update, "callback_query", None):
-            await update.callback_query.edit_message_text(success_msg)
+            # edit the original menu message to show success (keeps chat tidy)
+            try:
+                await update.callback_query.edit_message_text(success_msg)
+            except Exception:
+                # fallback to sending as a message
+                await update.callback_query.message.reply_text(success_msg)
         else:
             await update.message.reply_text(success_msg)
 
     except Exception as e:
-        logger.error(f"❌ CSV generation failed: {e}", exc_info=True)
-        msg = f"❌ Error generating CSV:\n<code>{e}</code>"
+        logger.exception(f"❌ Error during CSV generation/sending: {e}")
+        err_text = f"❌ Error generating CSV: <code>{e}</code>"
         if getattr(update, "callback_query", None):
-            await update.callback_query.message.reply_html(msg)
+            await update.callback_query.message.reply_html(err_text)
         else:
-            await update.message.reply_html(msg)
+            await update.message.reply_html(err_text)
 
     finally:
-        # -------------------------------------------------
-        # Safe cleanup
-        # -------------------------------------------------
+        # ---------------------------
+        # Cleanup: delete temp file if it still exists and we successfully sent it
+        # If file was left for manual retrieval (failure path), don't delete.
+        # ---------------------------
+        # If file still exists and we reached this finally, attempt delete.
         try:
-            os.remove(tmp_path)
-            logger.info(f"🧹 Temp file deleted: {tmp_path}")
-        except Exception as e:
-            logger.warning(f"⚠️ Could not delete temp file {tmp_path}: {e}")
+            if os.path.exists(tmp_path):
+                os.remove(tmp_path)
+                logger.info(f"🧹 Temp file deleted: {tmp_path}")
+        except Exception as e_rm:
+            logger.warning(f"⚠️ Could not delete temp file {tmp_path}: {e_rm}")
+
 
 # ----------------------------------
 # handle_pw_mark_delivered
