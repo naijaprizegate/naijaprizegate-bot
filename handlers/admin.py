@@ -19,7 +19,7 @@ from sqlalchemy import select, update as sql_update, func, and_
 from handlers.core import fallback
 from db import AsyncSessionLocal, get_async_session
 from helpers import add_tries, get_user_by_id
-from models import Proof, User, GameState, GlobalCounter, PrizeWinner
+from models import Proof, User, Payment, GameState, GlobalCounter, PrizeWinner
 from utils.security import is_admin 
 
 logger = logging.getLogger(__name__)
@@ -239,9 +239,6 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 # --- Core objects ---
                 gc = await session.get(GlobalCounter, 1)
                 gs = await session.get(GameState, 1)
-
-                # --- Import models ---
-                from database.models import Payment, User, PrizeWinner  # adjust names if needed
 
                 now = datetime.now(timezone.utc)
                 start_of_today = now.replace(hour=0, minute=0, second=0, microsecond=0)
@@ -1251,3 +1248,4 @@ def register_handlers(application):
         filters.ALL,
         fallback
     ))
+
