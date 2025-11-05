@@ -15,7 +15,7 @@ from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler, Mes
 from telegram.ext import filters as tg_filters  # to avoid name clash
 from telegram.error import BadRequest
 from telegram.constants import ParseMode
-from sqlalchemy import select, update as sql_update, and_
+from sqlalchemy import select, update as sql_update, func, and_
 from handlers.core import fallback
 from db import AsyncSessionLocal, get_async_session
 from helpers import add_tries, get_user_by_id
@@ -234,33 +234,97 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return await pending_proofs(update, context)
 
         # ---- Stats ----
-        elif action == "stats":
+        elif action == "stats" or action == "stats_refresh":
             async with AsyncSessionLocal() as session:
+                # --- Core objects ---
                 gc = await session.get(GlobalCounter, 1)
                 gs = await session.get(GameState, 1)
 
-            lifetime_paid = gc.paid_tries_total if gc else 0
-            current_cycle = gs.current_cycle if gs else 1
-            paid_this_cycle = gs.paid_tries_this_cycle if gs else 0
-            created_at = gs.created_at if gs else None
+                # --- Import models ---
+                from database.models import Payment, User, PrizeWinner  # adjust names if needed
 
-            if created_at:
-                diff = datetime.now(timezone.utc) - created_at
-                since_text = f"{diff.days}d {int(diff.seconds / 3600)}h ago"
-            else:
-                since_text = "Unknown"
+                now = datetime.now(timezone.utc)
+                start_of_today = now.replace(hour=0, minute=0, second=0, microsecond=0)
+                start_of_yesterday = start_of_today - timedelta(days=1)
+                start_of_week = now - timedelta(days=now.weekday())  # Monday start
+                start_of_month = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
 
+                # --- Revenue metrics ---
+                total_revenue = (await session.execute(select(func.sum(Payment.amount)))).scalar() or 0
+                revenue_month = (await session.execute(select(func.sum(Payment.amount)).where(Payment.created_at >= start_of_month))).scalar() or 0
+                revenue_week = (await session.execute(select(func.sum(Payment.amount)).where(Payment.created_at >= start_of_week))).scalar() or 0
+                revenue_today = (await session.execute(select(func.sum(Payment.amount)).where(Payment.created_at >= start_of_today))).scalar() or 0
+                revenue_yesterday = (await session.execute(
+                    select(func.sum(Payment.amount)).where(
+                        and_(Payment.created_at >= start_of_yesterday, Payment.created_at < start_of_today)
+                    )
+                )).scalar() or 0
+
+                # --- Users ---
+                total_users = (await session.execute(select(func.count(User.id)))).scalar() or 0
+
+                # --- Top 3 spenders this month ---
+                top_spenders_q = await session.execute(
+                    select(User.username, func.sum(Payment.amount).label("spent"))
+                    .where(Payment.created_at >= start_of_month)
+                    .join(User, User.id == Payment.user_id)
+                    .group_by(User.username)
+                    .order_by(func.sum(Payment.amount).desc())
+                    .limit(3)
+                )
+                top_spenders = top_spenders_q.all()
+
+                # --- Winners ---
+                total_winners = (await session.execute(select(func.count(PrizeWinner.id)))).scalar() or 0
+
+                # --- Game state ---
+                lifetime_paid = gc.paid_tries_total if gc else 0
+                current_cycle = gs.current_cycle if gs else 1
+                paid_this_cycle = gs.paid_tries_this_cycle if gs else 0
+                created_at = gs.created_at if gs else None
+                since_text = (
+                    f"{(datetime.now(timezone.utc) - created_at).days}d "
+                    f"{int((datetime.now(timezone.utc) - created_at).seconds / 3600)}h ago"
+                    if created_at else "Unknown"
+                )
+
+            # --- Build stats text ---
             text = (
-                f"<b>📊 Bot Stats</b>\n\n"
-                f"💰 Lifetime Paid Tries: {lifetime_paid}\n"
-                f"🔄 Current Cycle: {current_cycle}\n"
-                f"🎯 Paid Tries (cycle): {paid_this_cycle}\n"
-                f"🕒 Cycle Started: {since_text}"
+                f"<b>📊 Bot Statistics</b>\n\n"
+                f"💰 <b>Revenue</b>\n"
+                f"• Total: ${total_revenue:,.2f}\n"
+                f"• This Month: ${revenue_month:,.2f}\n"
+                f"• This Week: ${revenue_week:,.2f}\n"
+                f"• Yesterday: ${revenue_yesterday:,.2f}\n"
+                f"• Today: ${revenue_today:,.2f}\n\n"
+                f"👥 <b>Users</b>\n"
+                f"• Total Registered: {total_users}\n"
             )
+
+            if top_spenders:
+                text += "🏅 <b>Top Spenders (This Month)</b>\n"
+                for i, (username, spent) in enumerate(top_spenders, start=1):
+                    uname = username or f"User{i}"
+                    text += f"  {i}️⃣ @{uname} — ${spent:,.2f}\n"
+            else:
+                text += "🏅 <b>Top Spenders (This Month)</b>\n  None yet\n"
+
+            text += (
+                f"\n🎁 <b>Giveaway</b>\n"
+                f"• Total Winners: {total_winners}\n\n"
+                f"🎯 <b>Cycle</b>\n"
+                f"• Current Cycle: {current_cycle}\n"
+                f"• Paid Tries (cycle): {paid_this_cycle}\n"
+                f"• Started: {since_text}"
+            )
+
+            # --- Inline keyboard (includes Refresh) ---
             keyboard = InlineKeyboardMarkup([
-                [InlineKeyboardButton("🔁 Reset Cycle", callback_data="admin_confirm:reset_cycle")],
+                [InlineKeyboardButton("🔁 Refresh", callback_data="admin_menu:stats_refresh")],
+                [InlineKeyboardButton("🔄 Reset Cycle", callback_data="admin_confirm:reset_cycle")],
                 [InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")],
             ])
+
             return await safe_edit(query, text, parse_mode="HTML", reply_markup=keyboard)
 
         # ---- User Search ----
@@ -1187,4 +1251,3 @@ def register_handlers(application):
         filters.ALL,
         fallback
     ))
-
