@@ -236,20 +236,27 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # ---- Stats ----
         elif action in ("stats", "stats_refresh"):
             async with AsyncSessionLocal() as session:
+                from datetime import datetime, timedelta, timezone
+
                 # --- Core objects ---
                 gc = await session.get(GlobalCounter, 1)
                 gs = await session.get(GameState, 1)
 
-                # --- Use timezone-aware datetimes (always UTC) ---
-                from datetime import datetime, timedelta, timezone
+                # --- Current UTC time (aware)
+                now_aware = datetime.now(timezone.utc)
 
-                now = datetime.now(timezone.utc)  # current UTC time
-                # Always make your "start of" times timezone-aware too
-                start_of_today = now.replace(hour=0, minute=0, second=0, microsecond=0)
+                # --- Convert all to naive UTC (to match DB TIMESTAMP WITHOUT TIME ZONE) ---
+                def naive_utc(dt: datetime):
+                    """Converts a timezone-aware datetime to naive UTC."""
+                    return dt.replace(tzinfo=None)
+
+                start_of_today = naive_utc(now_aware.replace(hour=0, minute=0, second=0, microsecond=0))
                 start_of_yesterday = start_of_today - timedelta(days=1)
-                # Monday = 0, so this calculates start of week (Monday 00:00 UTC)
-                start_of_week = (now - timedelta(days=now.weekday())).replace(hour=0, minute=0, second=0, microsecond=0)
-                start_of_month = datetime(now.year, now.month, 1, tzinfo=timezone.utc)
+                start_of_week = naive_utc(
+                    (now_aware - timedelta(days=now_aware.weekday())).replace(hour=0, minute=0, second=0, microsecond=0)
+                )
+                start_of_month = naive_utc(datetime(now_aware.year, now_aware.month, 1, tzinfo=timezone.utc))
+                now = naive_utc(now_aware)
 
                 # --- Revenue metrics ---
                 total_revenue = (await session.execute(
@@ -272,7 +279,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     select(func.sum(Payment.amount)).where(
                         and_(
                             Payment.created_at >= start_of_yesterday,
-                            Payment.created_at < start_of_today
+                            .created_at < start_of_today
                         )
                     )
                 )).scalar() or 0
