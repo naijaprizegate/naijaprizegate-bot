@@ -279,7 +279,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     select(func.sum(Payment.amount)).where(
                         and_(
                             Payment.created_at >= start_of_yesterday,
-                            .created_at < start_of_today
+                            Payment.created_at < start_of_today
                         )
                     )
                 )).scalar() or 0
