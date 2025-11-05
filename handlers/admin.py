@@ -234,26 +234,46 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return await pending_proofs(update, context)
 
         # ---- Stats ----
-        elif action == "stats" or action == "stats_refresh":
+        elif action in ("stats", "stats_refresh"):
             async with AsyncSessionLocal() as session:
                 # --- Core objects ---
                 gc = await session.get(GlobalCounter, 1)
                 gs = await session.get(GameState, 1)
 
-                now = datetime.now(timezone.utc)
+                # --- Use timezone-aware datetimes (always UTC) ---
+                from datetime import datetime, timedelta, timezone
+
+                now = datetime.now(timezone.utc)  # current UTC time
+                # Always make your "start of" times timezone-aware too
                 start_of_today = now.replace(hour=0, minute=0, second=0, microsecond=0)
                 start_of_yesterday = start_of_today - timedelta(days=1)
-                start_of_week = now - timedelta(days=now.weekday())  # Monday start
-                start_of_month = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+                # Monday = 0, so this calculates start of week (Monday 00:00 UTC)
+                start_of_week = (now - timedelta(days=now.weekday())).replace(hour=0, minute=0, second=0, microsecond=0)
+                start_of_month = datetime(now.year, now.month, 1, tzinfo=timezone.utc)
 
                 # --- Revenue metrics ---
-                total_revenue = (await session.execute(select(func.sum(Payment.amount)))).scalar() or 0
-                revenue_month = (await session.execute(select(func.sum(Payment.amount)).where(Payment.created_at >= start_of_month))).scalar() or 0
-                revenue_week = (await session.execute(select(func.sum(Payment.amount)).where(Payment.created_at >= start_of_week))).scalar() or 0
-                revenue_today = (await session.execute(select(func.sum(Payment.amount)).where(Payment.created_at >= start_of_today))).scalar() or 0
+                total_revenue = (await session.execute(
+                    select(func.sum(Payment.amount))
+                )).scalar() or 0
+
+                revenue_month = (await session.execute(
+                    select(func.sum(Payment.amount)).where(Payment.created_at >= start_of_month)
+                )).scalar() or 0
+
+                revenue_week = (await session.execute(
+                    select(func.sum(Payment.amount)).where(Payment.created_at >= start_of_week)
+                )).scalar() or 0
+
+                revenue_today = (await session.execute(
+                    select(func.sum(Payment.amount)).where(Payment.created_at >= start_of_today)
+                )).scalar() or 0
+
                 revenue_yesterday = (await session.execute(
                     select(func.sum(Payment.amount)).where(
-                        and_(Payment.created_at >= start_of_yesterday, Payment.created_at < start_of_today)
+                        and_(
+                            Payment.created_at >= start_of_yesterday,
+                            Payment.created_at < start_of_today
+                        )
                     )
                 )).scalar() or 0
 
@@ -263,8 +283,8 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 # --- Top 3 spenders this month ---
                 top_spenders_q = await session.execute(
                     select(User.username, func.sum(Payment.amount).label("spent"))
-                    .where(Payment.created_at >= start_of_month)
                     .join(User, User.id == Payment.user_id)
+                    .where(Payment.created_at >= start_of_month)
                     .group_by(User.username)
                     .order_by(func.sum(Payment.amount).desc())
                     .limit(3)
@@ -279,11 +299,12 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 current_cycle = gs.current_cycle if gs else 1
                 paid_this_cycle = gs.paid_tries_this_cycle if gs else 0
                 created_at = gs.created_at if gs else None
-                since_text = (
-                    f"{(datetime.now(timezone.utc) - created_at).days}d "
-                    f"{int((datetime.now(timezone.utc) - created_at).seconds / 3600)}h ago"
-                    if created_at else "Unknown"
-                )
+
+                if created_at:
+                    diff = now - created_at
+                    since_text = f"{diff.days}d {int(diff.seconds / 3600)}h ago"
+                else:
+                    since_text = "Unknown"
 
             # --- Build stats text ---
             text = (
@@ -298,6 +319,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"• Total Registered: {total_users}\n"
             )
 
+            # --- Top Spenders ---
             if top_spenders:
                 text += "🏅 <b>Top Spenders (This Month)</b>\n"
                 for i, (username, spent) in enumerate(top_spenders, start=1):
@@ -306,6 +328,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             else:
                 text += "🏅 <b>Top Spenders (This Month)</b>\n  None yet\n"
 
+            # --- Giveaway & Cycle info ---
             text += (
                 f"\n🎁 <b>Giveaway</b>\n"
                 f"• Total Winners: {total_winners}\n\n"
@@ -322,7 +345,9 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 [InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")],
             ])
 
+            # --- Safe edit reply ---
             return await safe_edit(query, text, parse_mode="HTML", reply_markup=keyboard)
+
 
         # ---- User Search ----
         elif action == "user_search":
@@ -1248,4 +1273,3 @@ def register_handlers(application):
         filters.ALL,
         fallback
     ))
-
