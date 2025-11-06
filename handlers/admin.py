@@ -307,7 +307,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 paid_this_cycle = gs.paid_tries_this_cycle if gs else 0
                 created_at = gs.created_at if gs else None
 
-            
+                now = datetime.now(timezone.utc)
 
                 if created_at:
                     # Ensure created_at is timezone-aware (assume it's UTC if not)
