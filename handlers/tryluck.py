@@ -20,6 +20,7 @@ from db import get_async_session
 from models import GameState
 from handlers.payments import handle_buy_callback
 from handlers.free import free_menu
+from utils.signer import generate_signed_token
 
 logger = logging.getLogger(__name__)
 
@@ -209,7 +210,10 @@ async def handle_phone_choice(update: Update, context: ContextTypes.DEFAULT_TYPE
         )
         return
 
-    winner_url = f"{RENDER_EXTERNAL_URL}/winner-form?tgid={tg_user.id}&choice={user_choice}"
+
+    token = generate_signed_token(tgid=tg_user.id, choice=user_choice, expires_seconds=60*60)  # 1 hour
+    winner_url = f"{RENDER_EXTERNAL_URL}/winner-form?token={token}"
+
 
     # ✅ Confirm selection and share form link
     await query.edit_message_text(
@@ -285,3 +289,4 @@ def register_handlers(application):
     application.add_handler(
         MessageHandler(filters.ALL, lambda u, c: u.message.reply_text("Use /start to begin the journey 🎰"))
     )
+
