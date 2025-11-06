@@ -29,9 +29,12 @@ python-dotenv
 # Sentry for error reporting (optional)
 sentry-sdk
 
+# Token generation and secure signing
+itsdangerous>=2.2.0
+
 # Testing & dev tools
 pytest
 pytest-asyncio
 
+# Multipart form data support
 python-multipart
-
