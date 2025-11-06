@@ -94,11 +94,11 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "*NaijaPrizeGate* 🎰 is your gateway to *daily wins* 💸\n\n"
         "Here’s your control panel:\n\n"
         "• `/start` → Begin or refresh menu\n\n"
-        "• ✨ *Try Luck* → Spin the wheel, feel the thrill\n\n"
+        "• 🎰 *Try Luck* → Spin the wheel, feel the thrill\n\n"
         "• 💳 *Buy Tries* → Load up paid spins & chase the jackpot\n\n"
         "• 🎁 *Free Tries* → Earn bonus spins \\(invite friends \\= more chances\\)\n\n"
-        "• 📊 `Available Tries` → Track your spin balance\n\n"
-        "• 🏆 *Jackpot* → Every spin moves us closer to the big win 🔥\n\n"
+        "• 📊 *Available Tries* → Track your spin balance\n\n"
+        "🏆 *Jackpot* → Every spin moves us closer to the big win 🔥\n\n"
         "👉 Don’t just stand at the gate… *spin your way through* 🚀\n"
         "Hit it and be the next winner 🎉"
     )
@@ -222,8 +222,3 @@ def register_handlers(application):
         fallback
     )
 )
-
-
-    # ✅ New: handle Cancel button
-    application.add_handler(CallbackQueryHandler(go_start_callback, pattern="^go_start$"))
-
