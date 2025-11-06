@@ -153,6 +153,8 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             choice_keyboard = InlineKeyboardMarkup([
                 [InlineKeyboardButton("📱 iPhone 16 Pro Max", callback_data="choose_iphone16")],
                 [InlineKeyboardButton("📱 iPhone 17 Pro Max", callback_data="choose_iphone17")],
+                [InlineKeyboardButton("📱 Samsung Galaxy Z Flip 7", callback_data="choose_flip7")],
+                [InlineKeyboardButton("📱 Samsung Galaxy S25 Ultra", callback_data="choose_s25ultra")],
             ])
 
             await msg.reply_text(
@@ -172,15 +174,26 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
 
 # ---------------------------------------------------------------
-# 📱 HANDLE iPHONE CHOICE (STEP 2 → Webform)
-# ----------------------------------------------------------------
-async def handle_iphone_choice(update: Update, context: ContextTypes.DEFAULT_TYPE):
+# 📱 HANDLE PHONE CHOICE (STEP 2 → Webform)
+# ---------------------------------------------------------------
+async def handle_phone_choice(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     tg_user = query.from_user
     choice = query.data
     await query.answer()
 
-    user_choice = "iPhone 17 Pro Max" if choice == "choose_iphone17" else "iPhone 16 Pro Max"
+    # ✅ Map button callback data to actual phone names
+    choice_map = {
+        "choose_iphone17": "iPhone 17 Pro Max",
+        "choose_iphone16": "iPhone 16 Pro Max",
+        "choose_flip7": "Samsung Galaxy Z Flip 7",
+        "choose_s25ultra": "Samsung Galaxy S25 Ultra",
+    }
+
+    user_choice = choice_map.get(choice)
+    if not user_choice:
+        await query.edit_message_text("⚠️ Invalid choice. Please try again.", parse_mode="HTML")
+        return
 
     # ✅ Save user’s choice
     async with get_async_session() as session:
@@ -198,6 +211,7 @@ async def handle_iphone_choice(update: Update, context: ContextTypes.DEFAULT_TYP
 
     winner_url = f"{RENDER_EXTERNAL_URL}/winner-form?tgid={tg_user.id}&choice={user_choice}"
 
+    # ✅ Confirm selection and share form link
     await query.edit_message_text(
         f"✅ You selected: <b>{user_choice}</b>\n\n"
         f"🎉 Please fill your delivery details securely using the form below 👇\n\n"
@@ -252,7 +266,7 @@ async def tryluck_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # ----------------------------------------------------------------
 # 🧩 REGISTER HANDLERS (Order Matters)
-# ---------------------------------------------------------------
+# ----------------------------------------------------------------
 def register_handlers(application):
     # 1️⃣ Commands
     application.add_handler(CommandHandler("tryluck", tryluck_handler))
@@ -262,11 +276,12 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(show_tries_callback, pattern="^show_tries$"))
     application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy$"))
     application.add_handler(CallbackQueryHandler(free_menu, pattern="^free$"))
-    application.add_handler(CallbackQueryHandler(handle_iphone_choice, pattern="^choose_iphone"))
+
+    # ✅ Handle all phone choices (iPhone + Samsung)
+    application.add_handler(CallbackQueryHandler(handle_phone_choice, pattern=r"^choose_(iphone|flip|s25)"))
 
     # 3️⃣ (No text form handlers needed anymore ✅)
-    # 4️⃣ You may keep a fallback if desired:
+    # 4️⃣ Fallback handler
     application.add_handler(
         MessageHandler(filters.ALL, lambda u, c: u.message.reply_text("Use /start to begin the journey 🎰"))
     )
-
