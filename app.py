@@ -25,7 +25,10 @@ from db import init_game_state, get_async_session, get_session
 from models import Payment, User, GameState, PrizeWinner
 from helpers import get_or_create_user, add_tries
 from logging_setup import logger
-from datetime import datetime
+from datetime import datetime, timezone
+from utils.signer import generate_signed_token, verify_signed_token
+from models.prize_winners import PrizeWinner
+
 
 # ✅ Import Flutterwave-related functions/constants
 from services.payments import (
@@ -485,56 +488,38 @@ async def health_check():
 # 📝 WINNER FORM PAGE
 # ---------------------------------------------------------------
 @app.get("/winner-form", response_class=HTMLResponse)
-async def winner_form_page(tgid: int, choice: str = "Prize"):
+async def winner_form_page(token: str):
     """
-    Display the prize claim form for winners.
+    Secure winner form. Accepts only `token` query param (signed).
+    Token contains tgid, choice and expiry.
     """
-    return f"""
+    ok, payload, err = verify_signed_token(token)
+    if not ok:
+        # show a friendly error page
+        return HTMLResponse(f"""
+            <html><body style="font-family: Arial; text-align:center; padding:40px;">
+            <h2 style="color:red;">⚠️ Invalid or expired link</h2>
+            <p>{err}</p>
+            <p>If you believe this is an error, contact the admin.</p>
+            </body></html>
+        """, status_code=403)
+
+    tgid = payload["tgid"]
+    choice = payload["choice"]
+
+    # Render the same form but *do not* expose the token contents in a way that can be attacked.
+    # We keep the token (hidden) so the form submission can re-verify it server-side.
+    return HTMLResponse(f"""
     <html>
         <head>
             <title>Prize Claim Form</title>
             <style>
-                body {{
-                    font-family: Arial, sans-serif;
-                    max-width: 420px;
-                    margin: 50px auto;
-                    padding: 25px;
-                    border: 1px solid #ddd;
-                    border-radius: 12px;
-                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                    background-color: #fafafa;
-                }}
-                h2 {{
-                    text-align: center;
-                    color: #333;
-                }}
-                label {{
-                    font-weight: bold;
-                    display: block;
-                    margin-top: 12px;
-                }}
-                input, textarea {{
-                    width: 100%;
-                    padding: 10px;
-                    margin-top: 6px;
-                    border-radius: 6px;
-                    border: 1px solid #ccc;
-                    font-size: 1em;
-                }}
-                button {{
-                    width: 100%;
-                    margin-top: 20px;
-                    padding: 12px;
-                    background-color: #28a745;
-                    color: white;
-                    border: none;
-                    border-radius: 6px;
-                    font-size: 1em;
-                    cursor: pointer;
-                }}
-                button:hover {{
-                    background-color: #218838;
-                }}
+                body {{ font-family: Arial, sans-serif; max-width: 420px; margin: 50px auto; padding: 25px; border: 1px solid #ddd; border-radius: 12px; background-color: #fafafa; }}
+                h2 {{ text-align: center; color: #333; }}
+                label {{ font-weight: bold; display: block; margin-top: 12px; }}
+                input, textarea {{ width: 100%; padding: 10px; margin-top: 6px; border-radius: 6px; border: 1px solid #ccc; font-size: 1em; }}
+                button {{ width: 100%; margin-top: 20px; padding: 12px; background-color: #28a745; color: white; border: none; border-radius: 6px; font-size: 1em; cursor: pointer; }}
+                button:hover {{ background-color: #218838; }}
             </style>
         </head>
         <body>
@@ -543,9 +528,7 @@ async def winner_form_page(tgid: int, choice: str = "Prize"):
             <p>Please provide your delivery details below 👇</p>
 
             <form action="/api/save_winner" method="post">
-                <input type="hidden" name="tgid" value="{tgid}">
-                <input type="hidden" name="choice" value="{choice}">
-
+                <input type="hidden" name="token" value="{token}">
                 <label>Full Name:</label>
                 <input type="text" name="full_name" placeholder="Enter your full name" required>
 
@@ -559,7 +542,8 @@ async def winner_form_page(tgid: int, choice: str = "Prize"):
             </form>
         </body>
     </html>
-    """
+    """)
+
 
 
 # ---------------------------------------------------------------
@@ -567,27 +551,40 @@ async def winner_form_page(tgid: int, choice: str = "Prize"):
 # ---------------------------------------------------------------
 @app.post("/api/save_winner", response_class=HTMLResponse)
 async def save_winner(
-    tgid: int = Form(...),
-    choice: str = Form(...),
+    token: str = Form(...),
     full_name: str = Form(...),
     phone: str = Form(...),
     address: str = Form(...),
 ):
+    """
+    Save a winner submission — requires a valid token. Token is verified & used to find/ensure the user.
+    """
     ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
     BOT_TOKEN = os.getenv("BOT_TOKEN")
 
-    async with get_async_session() as session:
-        # Find existing User or create new
-        user = await get_or_create_user(session, tg_id=tgid)
+    ok, payload, err = verify_signed_token(token)
+    if not ok:
+        return HTMLResponse(f"""
+            <html><body style="font-family: Arial; text-align:center; padding:40px;">
+            <h2 style="color:red;">⚠️ Invalid or expired submission</h2>
+            <p>{err}</p>
+            <p>If you believe this is an error, contact the admin.</p>
+            </body></html>
+        """, status_code=403)
 
-        # ✅ Create a new PrizeWinner record instead of changing user info
+    tgid = payload["tgid"]
+    choice = payload["choice"]
+
+    # Now create PrizeWinner record (same as before)
+    async with get_async_session() as session:
+        user = await get_or_create_user(session, tg_id=tgid)
         pw = PrizeWinner(
             user_id=user.id,
             tg_id=tgid,
             choice=choice,
-            delivery_status="Pending",  # ✅ Always start Pending!
-            submitted_at=datetime.utcnow(),
-            pending_at=datetime.utcnow(),
+            delivery_status="Pending",
+            submitted_at=datetime.now(timezone.utc),
+            pending_at=datetime.now(timezone.utc),
             delivery_data={
                 "full_name": full_name,
                 "phone": phone,
@@ -598,7 +595,7 @@ async def save_winner(
         await session.commit()
         await session.refresh(pw)
 
-    # ✅ Notify Admin via Telegram
+    # Notify admin
     try:
         if ADMIN_USER_ID and BOT_TOKEN:
             bot = Bot(token=BOT_TOKEN)
@@ -613,19 +610,16 @@ async def save_winner(
                 f"🕒 <i>Submitted via Winner Form</i>"
             )
             await bot.send_message(chat_id=ADMIN_USER_ID, text=msg, parse_mode="HTML")
-    except Exception as e:
-        logger.exception("❌ Failed to notify admin", exc_info=e)
+    except Exception:
+        logger.exception("❌ Failed to notify admin", exc_info=True)
 
-    # ✅ Return success HTML page
+    # Success page
     return HTMLResponse(
         """
         <html>
             <head>
                 <title>Form Submitted</title>
-                <style>
-                    body { font-family: Arial; text-align: center; margin-top: 100px; color: #333; }
-                    h2 { color: green; }
-                </style>
+                <style>body { font-family: Arial; text-align: center; margin-top: 100px; color: #333; } h2 { color: green; }</style>
             </head>
             <body>
                 <h2>✅ Thank You!</h2>
@@ -640,4 +634,3 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
-
