@@ -307,7 +307,12 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 paid_this_cycle = gs.paid_tries_this_cycle if gs else 0
                 created_at = gs.created_at if gs else None
 
+            
+
                 if created_at:
+                    # Ensure created_at is timezone-aware (assume it's UTC if not)
+                    if created_at.tzinfo is None:
+                        created_at = created_at.replace(tzinfo=timezone.utc)
                     diff = now - created_at
                     since_text = f"{diff.days}d {int(diff.seconds / 3600)}h ago"
                 else:
