@@ -32,6 +32,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "You can become the *winner* of:\n\n"
         "*📱 iPhone 16 Pro Max*\n"
         "*📱 iPhone 17 Pro Max*\n\n"
+        "*📱 Samsung Galaxy Z flip 7*\n\n"
+        "*📱 Samsung Galaxy S25 Ultra*\n\n"
         "⚡ Every spin counts towards the *Jackpot*\n"
         "…and someone *will* take it home 👑\n\n"
         "Ready\\? 🎯 Tap *Try Luck* and let’s roll\\!"
