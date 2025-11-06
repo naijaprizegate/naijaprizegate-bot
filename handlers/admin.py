@@ -236,7 +236,6 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # ---- Stats ----
         elif action in ("stats", "stats_refresh"):
             async with AsyncSessionLocal() as session:
-                from datetime import datetime, timedelta, timezone
 
                 # --- Core objects ---
                 gc = await session.get(GlobalCounter, 1)
