@@ -40,6 +40,8 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"NaijaPrizeGate is lit rn 🔥 — I’m stacking *free spins* and shooting my shot to win:\n\n"
             f"✨ *iPhone 16 Pro Max*\n"
             f"✨ *iPhone 17 Pro Max*\n\n"
+            f"✨ *Samsung Galaxy Z Flip 7*\n"
+            f"✨ *Samsung Galaxy S25 Ultra*\n"
             f"Don’t snooze — tap my link before it’s too late ⏳👇\n"
             f"👉 {ref_link}"
         ),
@@ -48,6 +50,8 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"Big wins are flying — next up could be:\n"
             f"💎 *iPhone 16 Pro Max*\n"
             f"💎 *iPhone 17 Pro Max*\n\n"
+            f"💎 *Samsung Galaxy Z Flip 7*\n\n"
+            f"💎 *Samsung Galaxy S25 Ultra*\n\n"
             f"Join in now, spin yours & claim your shot 👇\n"
             f"👉 {ref_link}"
         ),
@@ -57,6 +61,8 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"Up for grabs:\n"
             f"🏆 *iPhone 16 Pro Max*\n"
             f"🏆 *iPhone 17 Pro Max*\n\n"
+            f"🏆 *Samsung Galaxy Z Flip 7*\n\n"
+            f"🏆 *Samsung Galaxy S25 Ultra*\n\n"
             f"Click my link — don’t miss the wave 👇\n"
             f"👉 {ref_link}"
         ),
@@ -188,4 +194,3 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(send_referral_link, pattern="^get_referral_link$"))
     application.add_handler(CallbackQueryHandler(ask_proof_upload, pattern="^upload_proof$"))
     application.add_handler(MessageHandler(filters.PHOTO, handle_proof_photo))
-
