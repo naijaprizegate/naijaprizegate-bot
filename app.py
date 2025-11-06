@@ -27,7 +27,6 @@ from helpers import get_or_create_user, add_tries
 from logging_setup import logger
 from datetime import datetime, timezone
 from utils.signer import generate_signed_token, verify_signed_token
-from models.prize_winners import PrizeWinner
 
 
 # ✅ Import Flutterwave-related functions/constants
