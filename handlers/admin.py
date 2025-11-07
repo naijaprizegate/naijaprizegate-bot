@@ -394,7 +394,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # ----------------------------
     if query.data.startswith("admin_confirm:reset_cycle"):
         if not is_admin(query.from_user.id):
-        return await query.answer("⛔ Unauthorized access.", show_alert=True)
+            return await query.answer("⛔ Unauthorized access.", show_alert=True)
         
         keyboard = InlineKeyboardMarkup([
             [
