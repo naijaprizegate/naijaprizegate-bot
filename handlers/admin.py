@@ -26,6 +26,13 @@ logger = logging.getLogger(__name__)
 
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
 
+# ----------------------------
+# 🔐 ADMIN SECURITY HELPER
+# ----------------------------
+def is_admin(user_id: int) -> bool:
+    """Checks if the user is the authorized admin."""
+    return user_id == ADMIN_USER_ID
+
 # Key to store date selection temporary
 DATE_SELECTION_KEY = "csv_export_date_range"
 
@@ -235,6 +242,9 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         # ---- Stats ----
         elif action in ("stats", "stats_refresh"):
+            if not is_admin(query.from_user.id):
+                return await query.answer("⛔ Unauthorized access.", show_alert=True)
+ 
             async with AsyncSessionLocal() as session:
 
                 # --- Core objects ---
@@ -383,6 +393,9 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Cycle Reset Flow
     # ----------------------------
     if query.data.startswith("admin_confirm:reset_cycle"):
+        if not is_admin(query.from_user.id):
+        return await query.answer("⛔ Unauthorized access.", show_alert=True)
+        
         keyboard = InlineKeyboardMarkup([
             [
                 InlineKeyboardButton("✅ Yes, Reset", callback_data="admin_action:reset_cycle"),
