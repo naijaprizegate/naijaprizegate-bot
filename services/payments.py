@@ -20,6 +20,10 @@ FLW_BASE_URL = "https://api.flutterwave.com/v3"
 FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")
 FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")  # used to validate webhook requests
 WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "14600"))
+WEBHOOK_REDIRECT_URL = os.getenv("WEBHOOK_REDIRECT_URL", "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect")
+
+# ✅ Define your approved packages (anti-tampering)
+ALLOWED_PACKAGES = {500, 2000, 5000}
 
 # ==== Logger Setup ====
 logger = logging.getLogger("payments")
@@ -29,9 +33,6 @@ logger.setLevel(logging.INFO)
 # ------------------------------------------------------
 # 1. Create Checkout (generate payment link for a user)
 # ------------------------------------------------------
-# ✅ Always store your webhook redirect base in .env
-WEBHOOK_REDIRECT_URL = os.getenv("WEBHOOK_REDIRECT_URL", "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect")
-
 async def create_checkout(
     user_id: str,
     amount: int,
@@ -40,27 +41,38 @@ async def create_checkout(
     email: str = None
 ) -> str:
     """
-    Creates a Flutterwave payment checkout link.
-    Ensures:
-    - Valid amount range
-    - Secure connection to Flutterwave
-    - No user-controlled URLs
+    Creates a Flutterwave payment checkout link securely.
+    Security Features:
+    - Whitelists valid package amounts
+    - Enforces HTTPS webhook redirect
+    - Uses server-side API with secret key
+    - Validates Flutterwave response structure
     """
-    # ✅ Defensive checks
+
+    # ✅ 1. Environment validation
     if not FLW_SECRET_KEY:
         logger.error("❌ Missing FLW_SECRET_KEY in environment!")
         return None
 
+    if not WEBHOOK_REDIRECT_URL.startswith("https://"):
+        logger.error(f"❌ Insecure redirect URL detected: {WEBHOOK_REDIRECT_URL}")
+        return None
+
+    # ✅ 2. Validate payment amount
     if not isinstance(amount, int) or amount <= 0:
         logger.warning(f"⚠️ Invalid payment amount attempt by user {user_id}: {amount}")
         return None
 
-    # ✅ Safe fallback for missing identifiers
+    if amount not in ALLOWED_PACKAGES:
+        logger.warning(f"🚫 Unauthorized payment amount {amount} NGN by user {user_id}. Rejected.")
+        return None
+
+    # ✅ 3. Safe fallback for missing user identifiers
     customer_email = (
         email or (f"{username}@naijaprizegate.ng" if username else f"user{user_id}@naijaprizegate.ng")
     )
 
-    # ✅ Construct payload securely
+    # ✅ 4. Construct secure payload
     payload = {
         "tx_ref": tx_ref,
         "amount": amount,
@@ -86,21 +98,22 @@ async def create_checkout(
         "Content-Type": "application/json",
     }
 
+    # ✅ 5. Secure API call to Flutterwave
     try:
         async with httpx.AsyncClient(timeout=15.0) as client:
             response = await client.post(f"{FLW_BASE_URL}/payments", json=payload, headers=headers)
             response.raise_for_status()
             data = response.json()
     except httpx.HTTPStatusError as e:
-        logger.error(f"🚫 Flutterwave checkout failed: {e.response.text}")
+        logger.error(f"🚫 Flutterwave checkout failed [{e.response.status_code}]: {e.response.text}")
         return None
     except Exception as e:
-        logger.exception(f"⚠️ Unexpected error during checkout: {e}")
+        logger.exception(f"⚠️ Unexpected error during checkout for user {user_id}: {e}")
         return None
 
-    # ✅ Verify API response structure before returning
+    # ✅ 6. Validate API response structure
     if not data.get("status") == "success" or "data" not in data:
-        logger.error(f"🚫 Invalid Flutterwave response: {data}")
+        logger.error(f"🚫 Invalid Flutterwave response structure: {data}")
         return None
 
     payment_link = data["data"].get("link")
@@ -108,8 +121,9 @@ async def create_checkout(
         logger.error(f"🚫 Missing payment link in Flutterwave response: {data}")
         return None
 
-    logger.info(f"✅ Checkout created for {customer_email} ({amount:,} NGN) — {tx_ref}")
+    logger.info(f"✅ Checkout created for {customer_email} ({amount:,} NGN) — TX: {tx_ref}")
     return payment_link
+
 
 # ------------------------------------------------------
 # 2. Verify Payment (via tx_ref)
