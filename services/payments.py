@@ -4,12 +4,12 @@
 import os
 import httpx
 import hmac
+import aiohttp
 import logging
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from datetime import datetime
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-
 from db import get_async_session
 from models import Payment, TransactionLog, GlobalCounter, User
 from helpers import add_tries  # ✅ FIX: Missing import
@@ -535,4 +535,37 @@ async def resolve_payment_status(tx_ref: str, session: AsyncSession) -> Payment 
     stmt = select(Payment).where(Payment.tx_ref == tx_ref)
     result = await session.execute(stmt)
     return result.scalar_one_or_none()
+
+
+async def verify_transaction(tx_ref: str, amount: int) -> bool:
+    """
+    Verifies a Flutterwave transaction directly with Flutterwave's API.
+    Returns True if the transaction is valid and successful.
+    """
+    url = f"https://api.flutterwave.com/v3/transactions/verify_by_reference?tx_ref={tx_ref}"
+    headers = {
+        "Authorization": f"Bearer {FLW_SECRET_KEY}",
+        "Content-Type": "application/json"
+    }
+
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url, headers=headers) as resp:
+                data = await resp.json()
+                logger.info(f"🔍 Verify response for {tx_ref}: {data}")
+
+                # Flutterwave response format:
+                # {"status": "success", "data": {"status": "successful", "amount": 5000, ...}}
+
+                if data.get("status") == "success":
+                    tx_data = data.get("data", {})
+                    if (
+                        tx_data.get("status") == "successful" and
+                        int(tx_data.get("amount", 0)) == int(amount)
+                    ):
+                        return True
+        return False
+    except Exception as e:
+        logger.error(f"❌ verify_transaction() failed for {tx_ref}: {e}", exc_info=True)
+        return False
 
