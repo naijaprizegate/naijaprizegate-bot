@@ -44,8 +44,6 @@ from services.payments import (
 
 logger = logging.getLogger(__name__)
 
-BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")  # Replace with your actual bot username
-
 router = APIRouter()
 
 # -------------------------------------------------
@@ -71,6 +69,7 @@ FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")
 if not BOT_TOKEN or not RENDER_EXTERNAL_URL or not WEBHOOK_SECRET or not FLW_SECRET_HASH:
     raise RuntimeError("❌ Missing required environment variables")
 
+BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")  # Replace with your actual bot username
 
 # -------------------------------------------------
 # Initialize FastAPI + Telegram bot
