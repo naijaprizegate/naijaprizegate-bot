@@ -181,6 +181,12 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
 # --- Webhook success handler ---
 async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: int, bot):
     try:
+        # 🔐 Step 1: Confirm transaction is truly successful
+        is_valid = await verify_transaction(tx_ref, amount)
+        if not is_valid:
+            logger.warning(f"⚠️ Webhook verification failed for tx_ref={tx_ref}")
+            return
+
         async with get_async_session() as session:
             # 🔍 Fetch the current Payment row state
             result = await session.execute(
@@ -273,4 +279,3 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(buy_menu, pattern="^buy$"))
     application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy_"))
     application.add_handler(CallbackQueryHandler(handle_cancel_payment, pattern="^cancel_payment$"))
-
