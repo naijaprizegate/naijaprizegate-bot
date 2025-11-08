@@ -38,3 +38,8 @@ pytest-asyncio
 
 # Multipart form data support
 python-multipart
+
+# HTTP client for async API calls (e.g., Paystack/Flutterwave verification)
+aiohttp==3.10.8
+
+
