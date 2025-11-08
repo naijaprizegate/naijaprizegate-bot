@@ -29,41 +29,87 @@ logger.setLevel(logging.INFO)
 # ------------------------------------------------------
 # 1. Create Checkout (generate payment link for a user)
 # ------------------------------------------------------
-async def create_checkout(user_id: str, amount: int, tx_ref: str, username: str = None, email: str = None) -> str:
+# ✅ Always store your webhook redirect base in .env
+WEBHOOK_REDIRECT_URL = os.getenv("WEBHOOK_REDIRECT_URL", "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect")
+
+async def create_checkout(
+    user_id: str,
+    amount: int,
+    tx_ref: str,
+    username: str = None,
+    email: str = None
+) -> str:
     """
     Creates a Flutterwave payment checkout link.
+    Ensures:
+    - Valid amount range
+    - Secure connection to Flutterwave
+    - No user-controlled URLs
     """
-    url = f"{FLW_BASE_URL}/payments"
-    headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}"}
+    # ✅ Defensive checks
+    if not FLW_SECRET_KEY:
+        logger.error("❌ Missing FLW_SECRET_KEY in environment!")
+        return None
 
-    customer_email = email or (f"{username}@naijaprizegate.ng" if username else f"user{user_id}@naijaprizegate.ng")
+    if not isinstance(amount, int) or amount <= 0:
+        logger.warning(f"⚠️ Invalid payment amount attempt by user {user_id}: {amount}")
+        return None
 
+    # ✅ Safe fallback for missing identifiers
+    customer_email = (
+        email or (f"{username}@naijaprizegate.ng" if username else f"user{user_id}@naijaprizegate.ng")
+    )
+
+    # ✅ Construct payload securely
     payload = {
         "tx_ref": tx_ref,
         "amount": amount,
         "currency": "NGN",
-        "redirect_url": "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect",
+        "redirect_url": WEBHOOK_REDIRECT_URL,
         "customer": {
             "email": customer_email,
             "name": username or f"User {user_id}"
         },
         "customizations": {
             "title": "NaijaPrizeGate",
+            "logo": "https://naijaprizegate.ng/static/logo.png"  # optional
         },
-        # ✅ Add meta info so webhook knows who paid
         "meta": {
             "tg_id": str(user_id),
             "username": username or "Anonymous",
+            "generated_at": datetime.utcnow().isoformat()
         },
     }
 
-    async with httpx.AsyncClient() as client:
-        r = await client.post(url, json=payload, headers=headers)
-        r.raise_for_status()
-        data = r.json()
+    headers = {
+        "Authorization": f"Bearer {FLW_SECRET_KEY}",
+        "Content-Type": "application/json",
+    }
 
-    logger.info(f"✅ Flutterwave checkout created for {customer_email}: {data}")
-    return data["data"]["link"]
+    try:
+        async with httpx.AsyncClient(timeout=15.0) as client:
+            response = await client.post(f"{FLW_BASE_URL}/payments", json=payload, headers=headers)
+            response.raise_for_status()
+            data = response.json()
+    except httpx.HTTPStatusError as e:
+        logger.error(f"🚫 Flutterwave checkout failed: {e.response.text}")
+        return None
+    except Exception as e:
+        logger.exception(f"⚠️ Unexpected error during checkout: {e}")
+        return None
+
+    # ✅ Verify API response structure before returning
+    if not data.get("status") == "success" or "data" not in data:
+        logger.error(f"🚫 Invalid Flutterwave response: {data}")
+        return None
+
+    payment_link = data["data"].get("link")
+    if not payment_link:
+        logger.error(f"🚫 Missing payment link in Flutterwave response: {data}")
+        return None
+
+    logger.info(f"✅ Checkout created for {customer_email} ({amount:,} NGN) — {tx_ref}")
+    return payment_link
 
 # ------------------------------------------------------
 # 2. Verify Payment (via tx_ref)
@@ -475,3 +521,4 @@ async def resolve_payment_status(tx_ref: str, session: AsyncSession) -> Payment 
     stmt = select(Payment).where(Payment.tx_ref == tx_ref)
     result = await session.execute(stmt)
     return result.scalar_one_or_none()
+
