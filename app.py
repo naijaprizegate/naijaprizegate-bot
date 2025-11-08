@@ -178,7 +178,7 @@ async def telegram_webhook(secret: str, request: Request):
 # -----------------------
 # Helper: constant-time webhook validation
 # -----------------------
-def validate_webhook_signature(headers: Dict[str, str], body_str: str) -> bool:
+def validate_webhook_signature(headers: dict, body_str: str) -> bool:
     """
     Compare Flutterwave verif-hash using constant-time comparison.
     Expects header 'verif-hash' and env var FLW_SECRET_HASH populated.
@@ -239,19 +239,6 @@ async def payment_already_processed(session: AsyncSession, tx_ref: str) -> bool:
 # -----------------------
 # ✅ SECURE FLUTTERWAVE WEBHOOK
 # -----------------------
-# 🔐 Secure Signature Validator
-# -----------------------
-def validate_webhook_signature(headers: dict, body_str: str) -> bool:
-    """
-    Verify Flutterwave webhook authenticity.
-    Uses constant-time comparison to prevent timing attacks.
-    """
-    signature = headers.get("verif-hash")
-    if not signature or not FLW_SECRET_HASH:
-        return False
-    # Flutterwave sends a simple header match, no HMAC hash of body
-    return hmac.compare_digest(signature.strip(), FLW_SECRET_HASH.strip())
-
 
 # -----------------------
 # 🔁 Helper – Prevent double crediting
@@ -284,7 +271,7 @@ async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(
         return JSONResponse({"status": "ok", "message": "Test webhook (no signature)"})
 
     # 🔐 Step 1: Verify signature authenticity
-    if not validate_webhook_signature(dict(request.headers), body_str):
+    if not validate_webhook_signature({k.lower(): v for k, v in request.headers.items()}, body_str):
         logger.warning("🚫 Invalid Flutterwave webhook signature")
         raise HTTPException(status_code=403, detail="Invalid signature")
 
@@ -760,3 +747,4 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
+
