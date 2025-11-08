@@ -44,6 +44,8 @@ from services.payments import (
 
 logger = logging.getLogger(__name__)
 
+BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")  # Replace with your actual bot username
+
 router = APIRouter()
 
 # -------------------------------------------------
