@@ -60,7 +60,7 @@ async def buy_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             parse_mode="MarkdownV2"
         )
 
-# --- Handle package selection ---
+# --- Handle package selection (SECURE) ---
 async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -69,26 +69,43 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     if not data.startswith("buy_"):
         return
 
-    price = int(query.data.split("_")[1])
-    tries = dict(PACKAGES)[price]
+    # ✅ Validate package choice from trusted config (no user tampering)
+    valid_packages = {500: 1, 2000: 5, 5000: 15}
+    try:
+        price = int(data.split("_")[1])
+    except (IndexError, ValueError):
+        return await query.answer("❌ Invalid selection.", show_alert=True)
 
+    if price not in valid_packages:
+        return await query.answer("❌ Invalid package.", show_alert=True)
+
+    tries = valid_packages[price]
     tx_ref = str(uuid.uuid4())
 
+    # ✅ Safely register pending payment in DB
     async with AsyncSessionLocal() as session:
-        db_user = await get_or_create_user(
-            session, query.from_user.id, query.from_user.username
+        db_user = await get_or_create_user(session, query.from_user.id, query.from_user.username)
+
+        # Defensive: delete any old "pending" payment for same user
+        await session.execute(
+            Payment.__table__.delete().where(
+                Payment.user_id == db_user.id,
+                Payment.status == "pending"
+            )
         )
 
         stmt = insert(Payment).values(
             user_id=db_user.id,
             amount=price,
-            credited_tries=tries,   # ✅ FIXED: renamed column
+            credited_tries=tries,
             tx_ref=tx_ref,
-            status="pending"
+            status="pending",
+            created_at=datetime.utcnow()
         )
         await session.execute(stmt)
         await session.commit()
 
+    # ✅ Prepare checkout session
     username = query.from_user.username or f"user_{query.from_user.id}"
     email = f"{username}@naijaprizegate.ng"
 
@@ -100,6 +117,14 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         email=email
     )
 
+    # ✅ Safety net: ensure URL was generated properly
+    if not checkout_url:
+        return await query.edit_message_text(
+            "⚠️ Payment service unavailable. Please try again shortly.",
+            parse_mode="HTML"
+        )
+
+    # ✅ Clean UI
     keyboard = [
         [InlineKeyboardButton("✅ Confirm & Pay", url=checkout_url)],
         [InlineKeyboardButton("❌ Cancel", callback_data="cancel_payment")]
@@ -107,13 +132,12 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
 
     await query.edit_message_text(
         text=(
-            f"💳 <b>Package selected:</b> {tries} Try{'s' if tries>1 else ''} for ₦{price}\n\n"
-            "👉 Click the button below to confirm payment.\n\n"
-            f"If the button doesn’t work, copy this link and open it in your browser:\n"
-            f'<a href="{checkout_url}">{checkout_url}</a>\n\n'
-            "💡 <b>Tip:</b> If the payment link doesn’t open, please disable Telegram’s in-app browser "
-            "(<b>Settings → Chat Settings → In-App Browser → Turn off</b>). "
-            "Then tap the link again — it’ll open smoothly in Chrome/Safari. 😎"
+            f"💳 <b>Package selected:</b> {tries} Try{'s' if tries > 1 else ''} for ₦{price:,}\n\n"
+            "👉 Click below to confirm your payment securely.\n\n"
+            f"If the button doesn’t work, copy this link and open it in Chrome or Safari:\n"
+            f"<a href='{checkout_url}'>{checkout_url}</a>\n\n"
+            "💡 <b>Tip:</b> If Telegram blocks it, disable in-app browser in settings.\n"
+            "Then tap again — smooth sailing. 😎"
         ),
         reply_markup=InlineKeyboardMarkup(keyboard),
         parse_mode="HTML",
