@@ -7,6 +7,7 @@ import httpx
 import sys
 import hmac
 import hashlib
+import json
 
 # Force unbuffered output (Render needs this for real-time logs)
 os.environ["PYTHONUNBUFFERED"] = "1"
@@ -32,7 +33,6 @@ from logging_setup import logger
 from datetime import datetime, timezone
 from utils.signer import generate_signed_token, verify_signed_token
 
-
 # ✅ Import Flutterwave-related functions/constants
 from services.payments import (
     FLW_BASE_URL,
@@ -45,6 +45,7 @@ from services.payments import (
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
+
 
 # -------------------------------------------------
 # Ensure GameState row exists
@@ -236,31 +237,58 @@ async def payment_already_processed(session: AsyncSession, tx_ref: str) -> bool:
     return bool(row and row.status == "successful")
 
 # -----------------------
-# Main webhook route
+# ✅ SECURE FLUTTERWAVE WEBHOOK
+# -----------------------
+# 🔐 Secure Signature Validator
+# -----------------------
+def validate_webhook_signature(headers: dict, body_str: str) -> bool:
+    """
+    Verify Flutterwave webhook authenticity.
+    Uses constant-time comparison to prevent timing attacks.
+    """
+    signature = headers.get("verif-hash")
+    if not signature or not FLW_SECRET_HASH:
+        return False
+    # Flutterwave sends a simple header match, no HMAC hash of body
+    return hmac.compare_digest(signature.strip(), FLW_SECRET_HASH.strip())
+
+
+# -----------------------
+# 🔁 Helper – Prevent double crediting
+# -----------------------
+async def payment_already_processed(session: AsyncSession, tx_ref: str) -> bool:
+    result = await session.execute(select(Payment).where(Payment.tx_ref == tx_ref))
+    p = result.scalar_one_or_none()
+    return bool(p and p.status == "successful")
+
+
+# -----------------------
+# 🧩 Main Webhook Route
 # -----------------------
 @router.post("/flw/webhook")
 async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(get_session)):
     """
-    Secure Flutterwave webhook handler.
-    - Validates verif-hash with constant-time compare
-    - Double-verifies transaction with Flutterwave
-    - Protects against replay/double-credit
-    - Sanitizes meta fields
+    Secure Flutterwave webhook handler:
+    ✅ Validates verif-hash header
+    ✅ Double-verifies with Flutterwave API
+    ✅ Prevents replay/double-credit
+    ✅ Sanitizes user meta data
     """
     raw_body = await request.body()
     body_str = raw_body.decode("utf-8", errors="ignore")
 
-    # Allow test webhooks (no signature) to return 200 for dashboard testing
+    # Allow test webhooks from Flutterwave dashboard
     signature_header = request.headers.get("verif-hash")
     if not signature_header:
-        logger.info("🧪 Test webhook received (no verif-hash). Returning 200 OK.")
-        return JSONResponse({"status": "ok", "message": "Test webhook (no signature) received"})
+        logger.info("🧪 Test webhook (no verif-hash). Returning 200 OK.")
+        return JSONResponse({"status": "ok", "message": "Test webhook (no signature)"})
 
-    # Validate signature
+    # 🔐 Step 1: Verify signature authenticity
     if not validate_webhook_signature(dict(request.headers), body_str):
-        logger.warning("⚠️ Invalid Flutterwave webhook signature")
+        logger.warning("🚫 Invalid Flutterwave webhook signature")
         raise HTTPException(status_code=403, detail="Invalid signature")
 
+    # Parse payload safely
     payload = await request.json()
     data = payload.get("data", {}) or {}
     tx_ref = data.get("tx_ref") or data.get("reference") or payload.get("tx_ref")
@@ -271,12 +299,12 @@ async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(
         logger.error("❌ Webhook missing tx_ref; ignoring.")
         raise HTTPException(status_code=400, detail="Missing tx_ref")
 
-    # Prevent double-processing early
+    # 🔁 Step 2: Prevent double-processing early
     if await payment_already_processed(session, tx_ref):
         logger.info(f"🔁 Duplicate webhook ignored for tx_ref={tx_ref}")
         return JSONResponse({"status": "duplicate", "tx_ref": tx_ref})
 
-    # Extract meta safely (possible nesting variations)
+    # Extract & sanitize meta info
     meta = (
         data.get("meta")
         or payload.get("meta")
@@ -285,7 +313,6 @@ async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(
         or {}
     ) or {}
 
-    # sanitize meta fields
     raw_tg_id = meta.get("tg_id") or meta.get("tgId") or meta.get("tgid") or meta.get("customer")
     username = meta.get("username") or meta.get("user") or "Unknown"
     try:
@@ -298,50 +325,38 @@ async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(
         try:
             tg_id = int(raw_tg_id)
         except Exception:
-            logger.warning(f"⚠️ Could not parse tg_id from meta for tx_ref={tx_ref}: {raw_tg_id}")
-            tg_id = None
+            logger.warning(f"⚠️ Could not parse tg_id for tx_ref={tx_ref}: {raw_tg_id}")
 
-    # Double-verify with Flutterwave API
+    # 🔎 Step 3: Verify with Flutterwave API (extra safety)
     fw_data = None
     try:
         fw_resp = await verify_payment(tx_ref)
         fw_data = fw_resp.get("data", {}) or {}
-        # ensure status is successful in remote
         if fw_data.get("status") != "successful":
-            logger.warning(f"⚠️ Flutterwave reports status != successful for {tx_ref}: {fw_data.get('status')}")
+            logger.warning(f"⚠️ Flutterwave reports non-success for {tx_ref}: {fw_data.get('status')}")
     except Exception as e:
-        logger.exception(f"⚠️ Error verifying transaction {tx_ref} with Flutterwave: {e}")
-        # We still proceed to handle webhook body status if verification temporarily fails,
-        # but we will *not* credit unless fw_data indicates success.
-        fw_data = None
+        logger.exception(f"⚠️ Error verifying transaction {tx_ref} via Flutterwave: {e}")
 
-    # Determine final status: prefer fw_data status if available
-    final_status = None
-    if fw_data:
-        final_status = fw_data.get("status")
-        # override amount from fw_data to avoid trusting webhook body
-        try:
-            amount = int(fw_data.get("amount", amount))
-        except Exception:
-            amount = int(amount or 0)
-    else:
-        final_status = status
-
-    # Compute credited tries
+    # Decide final status and trusted amount
+    final_status = fw_data.get("status") if fw_data else status
     try:
-        calc_fn = calculate_tries  # prefer your helper if present
+        amount = int(float(fw_data.get("amount", amount))) if fw_data else int(float(amount))
+    except Exception:
+        amount = 0
+
+    # 🔢 Step 4: Calculate tries
+    try:
+        calc_fn = calculate_tries  # use your main helper
     except NameError:
         calc_fn = _calculate_tries_from_amount
-
     credited_tries = calc_fn(int(amount or 0))
 
-    # Lookup existing payment row
+    # Fetch or create Payment record
     q = await session.execute(select(Payment).where(Payment.tx_ref == tx_ref))
     payment = q.scalar_one_or_none()
 
-    # If we have fw_data and it says successful -> treat as success
     if final_status == "successful":
-        # create or update payment row to successful and credit user
+        # Step 5: Record payment
         if not payment:
             payment = Payment(
                 tx_ref=str(tx_ref),
@@ -354,39 +369,27 @@ async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(
                 username=username,
             )
             session.add(payment)
-            await session.flush()  # ensure payment.id if needed
+            await session.flush()
         else:
             payment.status = "successful"
             payment.credited_tries = credited_tries
             payment.flw_tx_id = str(fw_data.get("id")) if fw_data else payment.flw_tx_id
             payment.username = username or payment.username
-            if tg_id and not payment.user_id:
-                # try to attach existing user if found
-                try:
-                    existing_user_q = await session.execute(select(User).where(User.tg_id == tg_id))
-                    existing_user = existing_user_q.scalar_one_or_none()
-                    if existing_user:
-                        payment.user_id = existing_user.id
-                except Exception:
-                    pass
 
-        # commit payment row & credit user in same session
-        await session.flush()
-
+        # Step 6: Credit user (if Telegram ID known)
         user = None
         if tg_id:
             user = await get_or_create_user(session, tg_id=tg_id, username=username)
 
         if user:
-            # add_tries must be a DB-aware helper that mutates user. Use paid=True to track paid tries.
             await add_tries(session, user, credited_tries, paid=True)
             logger.info(f"🎁 Credited {credited_tries} tries to user {user.tg_id} ({username}) for tx_ref={tx_ref}")
         else:
-            logger.warning(f"⚠️ No linked user found for tx_ref={tx_ref}; payment recorded but not credited to user.")
+            logger.warning(f"⚠️ No user linked for tx_ref={tx_ref}; recorded payment only.")
 
         await session.commit()
 
-        # Notify user via Telegram if we have tg_id
+        # Step 7: Notify user via Telegram
         if tg_id and BOT_TOKEN:
             try:
                 bot = Bot(token=BOT_TOKEN)
@@ -397,24 +400,24 @@ async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(
                     [InlineKeyboardButton("📊 Available Tries", callback_data="show_tries")]
                 ])
                 text = (
-                    f"✅ Payment confirmed!\n\n"
+                    f"✅ *Payment Confirmed!*\n\n"
                     f"You've been credited with *{credited_tries}* spin"
-                    f"{'s' if credited_tries > 1 else ''}. 🎉\n\n"
+                    f"{'s' if credited_tries > 1 else ''} 🎉\n\n"
                     "Good luck and have fun 🍀"
                 )
                 await bot.send_message(chat_id=tg_id, text=text, parse_mode="Markdown", reply_markup=keyboard)
             except Exception as e:
-                logger.exception(f"⚠️ Failed to notify tg_id={tg_id} about tx_ref={tx_ref}: {e}")
+                logger.exception(f"⚠️ Failed to notify user tg_id={tg_id} → {e}")
 
         return JSONResponse({"status": "success", "tx_ref": tx_ref})
 
-    # If status not successful -> mark payment accordingly
-    else:
-        if payment:
-            payment.status = final_status or (status or "failed")
-            await session.commit()
-        logger.warning(f"❌ Payment {tx_ref} failed or not successful (status={final_status})")
-        return JSONResponse({"status": "failed", "tx_ref": tx_ref, "status_value": final_status})
+    # ❌ Step 8: Failed or pending payments
+    if payment:
+        payment.status = final_status or (status or "failed")
+        await session.commit()
+
+    logger.warning(f"❌ Payment {tx_ref} not successful (status={final_status})")
+    return JSONResponse({"status": "failed", "tx_ref": tx_ref, "status_value": final_status})
 
 # -----------------------
 # Redirect endpoint for user-friendly browser redirect after checkout
@@ -757,4 +760,3 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
-
