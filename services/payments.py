@@ -1,571 +1,282 @@
-# ================================================================
-# services/payments.py
-# ================================================================
+# =============================================================== 
+# handlers/payments.py
+# ===============================================================
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import ContextTypes, CallbackQueryHandler, CommandHandler
+from helpers import md_escape, get_or_create_user, add_tries
+from models import Payment, User
+from db import AsyncSessionLocal, get_async_session
+from services.payments import create_checkout
+from sqlalchemy import insert, update, select
+from datetime import datetime, timedelta
+import uuid
 import os
-import httpx
-import hmac
-import aiohttp
 import logging
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select
-from datetime import datetime
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from db import get_async_session
-from models import Payment, TransactionLog, GlobalCounter, User
-from helpers import add_tries  # ✅ FIX: Missing import
 
+logger = logging.getLogger(__name__)
 
-# ==== Config ====
-FLW_BASE_URL = "https://api.flutterwave.com/v3"
-FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")
-FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")  # used to validate webhook requests
-WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "14600"))
-WEBHOOK_REDIRECT_URL = os.getenv("WEBHOOK_REDIRECT_URL", "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect")
+# --- HARDCODED PACKAGES ---
+PACKAGES = [
+    (500, 1),
+    (2000, 5),
+    (5000, 15),
+]
 
-# ✅ Define your approved packages (anti-tampering)
-ALLOWED_PACKAGES = {500, 2000, 5000}
+BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
 
-# ==== Logger Setup ====
-logger = logging.getLogger("payments")
-logger.setLevel(logging.INFO)
-
-
-# ------------------------------------------------------
-# 1. Create Checkout (generate payment link for a user)
-# ------------------------------------------------------
-async def create_checkout(
-    user_id: str,
-    amount: int,
-    tx_ref: str,
-    username: str = None,
-    email: str = None
-) -> str:
-    """
-    Creates a Flutterwave payment checkout link securely.
-    Security Features:
-    - Whitelists valid package amounts
-    - Enforces HTTPS webhook redirect
-    - Uses server-side API with secret key
-    - Validates Flutterwave response structure
-    """
-
-    # ✅ 1. Environment validation
-    if not FLW_SECRET_KEY:
-        logger.error("❌ Missing FLW_SECRET_KEY in environment!")
-        return None
-
-    if not WEBHOOK_REDIRECT_URL.startswith("https://"):
-        logger.error(f"❌ Insecure redirect URL detected: {WEBHOOK_REDIRECT_URL}")
-        return None
-
-    # ✅ 2. Validate payment amount
-    if not isinstance(amount, int) or amount <= 0:
-        logger.warning(f"⚠️ Invalid payment amount attempt by user {user_id}: {amount}")
-        return None
-
-    if amount not in ALLOWED_PACKAGES:
-        logger.warning(f"🚫 Unauthorized payment amount {amount} NGN by user {user_id}. Rejected.")
-        return None
-
-    # ✅ 3. Safe fallback for missing user identifiers
-    customer_email = (
-        email or (f"{username}@naijaprizegate.ng" if username else f"user{user_id}@naijaprizegate.ng")
+# --- SUCCESS MESSAGE ---
+def payment_success_text(user, amount, tries_added):
+    return (
+        f"💸 *Boom\\!* Payment received\\!\n\n"
+        f"🎉 *{md_escape(user.username or user.first_name or 'Friend')}*, you just unlocked *{tries_added} new spins* 🚀\n"
+        f"(Top\\-up: ₦{amount:,})\n\n"
+        "Your arsenal is loaded, your chances just went way up ⚡\n\n"
+        "👉 Don’t keep luck waiting\\. Hit *Try Luck* now and chase that jackpot\\! 🏆🔥"
     )
 
-    # ✅ 4. Construct secure payload
-    payload = {
-        "tx_ref": tx_ref,
-        "amount": amount,
-        "currency": "NGN",
-        "redirect_url": WEBHOOK_REDIRECT_URL,
-        "customer": {
-            "email": customer_email,
-            "name": username or f"User {user_id}"
-        },
-        "customizations": {
-            "title": "NaijaPrizeGate",
-            "logo": "https://naijaprizegate.ng/static/logo.png"  # optional
-        },
-        "meta": {
-            "tg_id": str(user_id),
-            "username": username or "Anonymous",
-            "generated_at": datetime.utcnow().isoformat()
-        },
-    }
-
-    headers = {
-        "Authorization": f"Bearer {FLW_SECRET_KEY}",
-        "Content-Type": "application/json",
-    }
-
-    # ✅ 5. Secure API call to Flutterwave
-    try:
-        async with httpx.AsyncClient(timeout=15.0) as client:
-            response = await client.post(f"{FLW_BASE_URL}/payments", json=payload, headers=headers)
-            response.raise_for_status()
-            data = response.json()
-    except httpx.HTTPStatusError as e:
-        logger.error(f"🚫 Flutterwave checkout failed [{e.response.status_code}]: {e.response.text}")
-        return None
-    except Exception as e:
-        logger.exception(f"⚠️ Unexpected error during checkout for user {user_id}: {e}")
-        return None
-
-    # ✅ 6. Validate API response structure
-    if not data.get("status") == "success" or "data" not in data:
-        logger.error(f"🚫 Invalid Flutterwave response structure: {data}")
-        return None
-
-    payment_link = data["data"].get("link")
-    if not payment_link:
-        logger.error(f"🚫 Missing payment link in Flutterwave response: {data}")
-        return None
-
-    logger.info(f"✅ Checkout created for {customer_email} ({amount:,} NGN) — TX: {tx_ref}")
-    return payment_link
-
-
-# ------------------------------------------------------
-# 2. Verify Payment (via tx_ref)
-# ------------------------------------------------------
-async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: bool = True) -> bool:
-    """
-    Verifies payment status with Flutterwave.
-    - If credit=True: credit the user and notify via Telegram.
-    - If credit=False: only updates DB.
-    """
-    # normalize tx_ref
-    tx_ref = str(tx_ref)
-
-    url = f"{FLW_BASE_URL}/transactions/verify_by_reference?tx_ref={tx_ref}"
-    headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}"}
-
-    try:
-        async with httpx.AsyncClient(timeout=20.0) as client:
-            r = await client.get(url, headers=headers)
-            r.raise_for_status()
-            data = r.json()
-    except Exception as e:
-        logger.exception(f"❌ Verification failed for {tx_ref}: {e}")
-        return False
-
-    logger.info(f"🔎 Flutterwave verification for {tx_ref}: {data}")
-
-    # sanity checks
-    if not data.get("status") == "success" or not data.get("data"):
-        logger.warning(f"⚠️ Invalid or empty response for tx_ref={tx_ref}")
-        return False
-
-    tx_data = data["data"]
-    tx_status = tx_data.get("status")
-    amount = tx_data.get("amount")
-
-    # accept both shapes flutterwave might send
-    meta = tx_data.get("meta") or tx_data.get("meta_data") or {}
-    logger.info(f"🔍 verify_payment meta for {tx_ref}: {meta}")
-
-    # normalize tg_id (we store User.tg_id as BigInteger)
-    tg_id_raw = meta.get("tg_id") or meta.get("tgId") or meta.get("customer_id")
-    tg_id = None
-    if tg_id_raw is not None:
-        try:
-            tg_id = int(tg_id_raw)
-        except Exception:
-            # if it's not an int-like value, keep None (defensive)
-            logger.warning(f"⚠️ Could not parse tg_id from meta for {tx_ref}: {tg_id_raw}")
-            tg_id = None
-
-    username = meta.get("username") or meta.get("name") or None
-
-    # find payment row if exists
-    result = await session.execute(select(Payment).where(Payment.tx_ref == tx_ref))
-    payment = result.scalar_one_or_none()
-
-    # create placeholder payment if missing
-    if not payment:
-        logger.warning(f"⚠️ No Payment record found for {tx_ref} → creating a new one.")
-        from models import User  # local import to avoid circulars
-        user = None
-        if tg_id is not None:
-            result = await session.execute(select(User).where(User.tg_id == tg_id))
-            user = result.scalar_one_or_none()
-            if not user:
-                # optional safety-net: create a user row so we can link payment
-                user = User(tg_id=tg_id, username=username)
-                session.add(user)
-                await session.flush()  # give user.id
-
-        payment = Payment(
-            tx_ref=str(tx_ref),
-            amount=amount,
-            status=tx_status or "pending",
-            user_id=user.id if user else None,
-            credited_tries=0,
-            # helpful debug/link columns
-            tg_id=tg_id if tg_id is not None else None,
-            username=username
+# --- /buy entrypoint ---
+async def buy_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    async with get_async_session() as session:
+        user = await get_or_create_user(
+            session, update.effective_user.id, update.effective_user.username
         )
 
-        # flw id may be numeric — always cast to str if present
-        if tx_data.get("id") is not None:
-            payment.flw_tx_id = str(tx_data.get("id"))
+    keyboard = [
+        [InlineKeyboardButton(f"💳 Buy {tries} Try{'s' if tries>1 else ''} — ₦{price}", callback_data=f"buy_{price}")]
+        for price, tries in PACKAGES
+    ]
 
-        session.add(payment)
-        await session.commit()
-        logger.info(f"🆕 Payment placeholder created for tx_ref={tx_ref} (linked_user_tg={tg_id})")
-
-    # update fields from verification
-    payment.amount = amount
-    if tx_data.get("id") is not None:
-        # ensure stored as string
-        payment.flw_tx_id = str(tx_data.get("id"))
-    payment.updated_at = datetime.utcnow()
-
-    # backfill missing user_id from meta (if available)
-    if not payment.user_id and tg_id is not None:
-        from models import User
-        result = await session.execute(select(User).where(User.tg_id == tg_id))
-        user = result.scalar_one_or_none()
-        if user:
-            payment.user_id = user.id
-            logger.info(f"🔗 Linked payment {tx_ref} to user {user.tg_id} from meta data")
-
-    # handle outcomes
-    if tx_status == "successful":
-        if payment.status == "successful":
-            logger.info(f"ℹ️ Payment {tx_ref} already marked successful → skipping re-credit")
-            # Still update flw_tx_id/amount if needed and commit
-            await session.commit()
-            return True
-
-        if credit:
-            try:
-                logger.info(f"💳 Crediting user {payment.user_id} for tx_ref={tx_ref} ...")
-                user, tries = await credit_user_tries(session, payment)
-
-                payment.status = "successful"
-                await session.commit()
-                logger.info(f"✅ User {getattr(user,'tg_id', None)} credited with {tries} tries for tx_ref={tx_ref}")
-
-                # notify user via Telegram if bot provided
-                if bot and user and getattr(user, "tg_id", None):
-                    deep_link = f"https://t.me/NaijaPrizeGateBot?start=payment_success_{tx_ref}"
-                    keyboard = [
-                        [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
-                        [InlineKeyboardButton("🎟️ My Tries", callback_data="mytries")],
-                        [InlineKeyboardButton("❌ Cancel", callback_data="cancel")]
-                    ]
-                    reply_markup = InlineKeyboardMarkup(keyboard)
-
-                    await bot.send_message(
-                        chat_id=user.tg_id,
-                        text=(
-                            f"✅ Payment of ₦{amount} verified!\n\n"
-                            f"You’ve been credited with <b>{tries}</b> tries 🎉\n\n"
-                            f"Ref: <code>{tx_ref}</code>\n\n"
-                            f"👉 [Return to Bot]({deep_link})"
-                        ),
-                        parse_mode="HTML",
-                        reply_markup=reply_markup,
-                        disable_web_page_preview=True
-                    )
-
-            except Exception as e:
-                logger.exception(f"❌ Failed to credit user {payment.user_id} for tx_ref={tx_ref}: {e}")
-                await session.rollback()
-                return False
-
-            # update global counter (best-effort)
-            try:
-                counter_result = await session.execute(select(GlobalCounter).limit(1))
-                counter = counter_result.scalar_one_or_none()
-                if not counter:
-                    counter = GlobalCounter(paid_tries_total=0)
-                    session.add(counter)
-                    await session.flush()
-
-                counter.paid_tries_total += 1
-                if counter.paid_tries_total >= WIN_THRESHOLD:
-                    counter.paid_tries_total = 0
-                    logger.info(f"🎉 WIN threshold {WIN_THRESHOLD} reached → counter reset!")
-                await session.commit()
-            except Exception as e:
-                logger.warning(f"⚠️ Could not update GlobalCounter for tx_ref={tx_ref}: {e}")
-
-        return True
-
-    elif tx_status in ["failed", "expired"]:
-        payment.status = tx_status
-        await session.commit()
-        logger.info(f"❌ Payment {tx_ref} marked as {tx_status}")
-        return False
-
-    # pending / unknown
-    await session.commit()
-    logger.info(f"⏳ Payment {tx_ref} still pending (status={tx_status})")
-    return False
-
-
-# ------------------------------------------------------
-# 3. Validate Webhook Signature
-# ------------------------------------------------------
-def validate_webhook(request_headers, body: str) -> bool:
-    signature = request_headers.get("verif-hash")
-    if not FLW_SECRET_HASH or not signature:
-        return False
-    return hmac.compare_digest(signature, FLW_SECRET_HASH)
-
-
-# ------------------------------------------------------
-# 4. Log Raw Transaction Payload
-# ------------------------------------------------------
-async def log_transaction(session: AsyncSession, provider: str, payload: str):
-    log = TransactionLog(provider=provider, payload=payload)
-    session.add(log)
-    await session.commit()
-
-
-# ------------------------------------------------------
-# 5. Credit User Tries
-# ------------------------------------------------------
-
-PRICE_TO_TRIES = {
-    500: 1,
-    2000: 5,
-    5000: 15,
-}
-
-def calculate_tries(amount: int) -> int:
-    """Convert amount (₦) to number of tries."""
-    if amount in PRICE_TO_TRIES:
-        return PRICE_TO_TRIES[amount]
-    # fallback rule: 1 try per ₦500
-    return max(1, amount // 500)
-
-
-async def credit_user_tries(session, payment: Payment):
-    """
-    Safely credit user tries based on a verified payment.
-    - Ensures payment.user_id exists and is valid.
-    - Prevents double-crediting.
-    - Logs each step for debugging.
-    """
-
-    # ✅ Step 1: Sanity check for user_id
-    if not payment.user_id:
-        logger.error(f"❌ credit_user_tries: payment {payment.tx_ref} has no user_id linked.")
-        return None, 0
-
-    # ✅ Step 2: Fetch user by UUID (linked via payment.user_id)
-    try:
-        user = await session.get(User, payment.user_id)
-    except Exception as e:
-        logger.exception(f"❌ Failed to fetch user {payment.user_id} for tx_ref={payment.tx_ref}: {e}")
-        return None, 0
-
-    if not user:
-        logger.error(f"❌ No user found for payment {payment.tx_ref} (user_id={payment.user_id})")
-        return None, 0
-
-    # ✅ Step 3: Skip if already credited
-    if payment.credited_tries and payment.credited_tries > 0:
-        logger.info(f"ℹ️ Payment {payment.tx_ref} already credited → skipping re-credit.")
-        return user, payment.credited_tries
-
-    # ✅ Step 4: Calculate tries from amount
-    try:
-        tries = calculate_tries(int(payment.amount))
-    except Exception as e:
-        logger.warning(f"⚠️ Could not calculate tries for amount {payment.amount}: {e}")
-        return user, 0
-
-    if tries <= 0:
-        logger.warning(f"⚠️ No valid tries mapping for amount {payment.amount}")
-        return user, 0
-
-    # ✅ Step 5: Credit user with tries
-    user = await add_tries(session, user, tries, paid=True)
-    payment.credited_tries = tries
-    await session.flush()
-
-    # ✅ Step 6: Log success
-    logger.info(f"🎉 Credited {tries} tries to user {user.tg_id} ({user.username}) — tx_ref={payment.tx_ref}")
-
-    return user, tries
-
-# ------------------------------------------------------ 
-# 6. Resolve Payment Status (helper for redirect/status)
-# ------------------------------------------------------ 
-async def resolve_payment_status(tx_ref: str, session: AsyncSession) -> Payment | None:
-    """
-    Centralized resolver for payment status:
-    - Checks DB
-    - Calls Flutterwave verify if needed
-    - Updates DB & credits user (once only)
-    Returns latest Payment or None.
-    """
-    # 1) look for an existing payment row
-    stmt = select(Payment).where(Payment.tx_ref == tx_ref)
-    result = await session.execute(stmt)
-    payment = result.scalar_one_or_none()
-
-    # If already terminal, return
-    if payment and payment.status in ["successful", "failed", "expired"]:
-        return payment
-
-    # 2) Ask Flutterwave for the canonical status
-    verify_url = f"{FLW_BASE_URL}/transactions/verify_by_reference?tx_ref={str(tx_ref)}"
-    headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}"}
-
-    try:
-        async with httpx.AsyncClient(timeout=15.0) as client:
-            resp = await client.get(verify_url, headers=headers)
-            resp.raise_for_status()
-            data = resp.json().get("data", {}) or {}
-    except Exception as e:
-        logger.warning(f"⚠️ Could not verify payment {tx_ref}: {e}")
-        return payment
-
-    if not data:
-        return payment
-
-    # 3) Extract useful values (defensively)
-    flw_status = data.get("status")
-    amount = data.get("amount")
-    flw_id = data.get("id")
-    meta = data.get("meta") or data.get("meta_data") or {}
-    logger.info(f"🔍 resolve_payment_status meta for {tx_ref}: {meta}")
-
-    # Normalize tg_id if present
-    tg_id_meta = meta.get("tg_id") or meta.get("tgId") or meta.get("customer_id")
-    tg_id_int = None
-    if tg_id_meta is not None:
-        try:
-            # prefer int for tg_id lookups (Telegram IDs are numeric)
-            tg_id_int = int(tg_id_meta)
-        except Exception:
-            tg_id_int = tg_id_meta
-
-    username_meta = meta.get("username") or meta.get("user") or None
-
-    # 4) If payment row doesn't exist, create one and link to a User if possible
-    if not payment:
-        # Attempt to find an existing user by tg_id
-        linked_user_id = None
-        if tg_id_int is not None:
-            result = await session.execute(select(User).where(User.tg_id == tg_id_int))
-            user_obj = result.scalar_one_or_none()
-            if user_obj:
-                linked_user_id = user_obj.id
-            else:
-                # Create a minimal user record so we can credit tries reliably
-                # (This is optional but prevents "no user" errors)
-                user_obj = User(tg_id=tg_id_int, username=username_meta)
-                session.add(user_obj)
-                await session.flush()  # get user_obj.id
-                linked_user_id = user_obj.id
-                logger.info(f"🆕 Created lightweight User for tg_id={tg_id_int} -> id={linked_user_id}")
-
-        payment = Payment(
-            tx_ref=str(tx_ref),
-            amount=amount,
-            status=flw_status or "pending",
-            flw_tx_id=str(flw_id) if flw_id is not None else None,
-            user_id=linked_user_id,
-            tg_id = tg_id_int if tg_id_int is not None else None,
-            username = username_meta,
-            credited_tries=0,
+    if update.message:
+        await update.message.reply_text(
+            f"🛒 *Choose your top\\-up package, {md_escape(user.username or 'Friend')}:*",
+            reply_markup=InlineKeyboardMarkup(keyboard),
+            parse_mode="MarkdownV2"
         )
-        session.add(payment)
-        # don't commit yet — we'll commit after we credit if needed
-        await session.flush()
-        logger.info(f"🆕 Payment placeholder created for tx_ref={tx_ref} (linked_user_id={linked_user_id})")
+    elif update.callback_query:
+        await update.callback_query.answer()
+        await update.callback_query.edit_message_text(
+            f"🛒 *Choose your top\\-up package, {md_escape(user.username or 'Friend')}:*",
+            reply_markup=InlineKeyboardMarkup(keyboard),
+            parse_mode="MarkdownV2"
+        )
 
-    # 5) Update payment fields defensively
-    payment.amount = amount
-    if flw_id is not None:
-        payment.flw_tx_id = str(flw_id)
-    # update debug fields if present
-    if tg_id_int is not None and payment.tg_id is None:
-        payment.tg_id = tg_id_int
-    if username_meta and not payment.username:
-        payment.username = username_meta
-    payment.updated_at = datetime.utcnow()
-    await session.flush()
+# --- Handle package selection (SECURE) ---
+async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
 
-    # 6) If the transaction is successful, ensure we have a user_id and credit tries
-    if flw_status == "successful":
-        # Ensure payment.user_id references a real User; if not, try to link/create
-        if not payment.user_id and tg_id_int is not None:
-            result = await session.execute(select(User).where(User.tg_id == tg_id_int))
-            user_obj = result.scalar_one_or_none()
-            if user_obj:
-                payment.user_id = user_obj.id
-                logger.info(f"🔗 Backfilled payment.user_id from tg_id {tg_id_int} -> {user_obj.id}")
-            else:
-                # Create a minimal user record (again defensive)
-                user_obj = User(tg_id=tg_id_int, username=username_meta)
-                session.add(user_obj)
-                await session.flush()
-                payment.user_id = user_obj.id
-                logger.info(f"🆕 Created User and linked to payment for tg_id={tg_id_int} -> id={user_obj.id}")
+    data = query.data
+    if not data.startswith("buy_"):
+        return
 
-        # Now attempt to credit (credit_user_tries expects payment.user_id to be a User PK)
-        try:
-            user, tries = await credit_user_tries(session, payment)
-            payment.status = "successful"
-            await session.commit()
-            logger.info(f"✅ Payment {tx_ref} resolved & user credited with {tries} tries")
-        except Exception as e:
-            # rollback to avoid partial state; caller/logs will show the problem
-            logger.exception(f"❌ Failed to credit tries for payment {tx_ref}: {e}")
-            await session.rollback()
-            return payment
-
-    elif flw_status in ["failed", "expired"]:
-        payment.status = flw_status
-        await session.commit()
-        logger.info(f"❌ Payment {tx_ref} resolved as {flw_status}")
-    else:
-        # still pending / unknown
-        await session.commit()
-        logger.info(f"⏳ Payment {tx_ref} still pending (status={flw_status})")
-
-    # 7) Return the freshest Payment row
-    stmt = select(Payment).where(Payment.tx_ref == tx_ref)
-    result = await session.execute(stmt)
-    return result.scalar_one_or_none()
-
-
-async def verify_transaction(tx_ref: str, amount: int) -> bool:
-    """
-    Verifies a Flutterwave transaction directly with Flutterwave's API.
-    Returns True if the transaction is valid and successful.
-    """
-    url = f"https://api.flutterwave.com/v3/transactions/verify_by_reference?tx_ref={tx_ref}"
-    headers = {
-        "Authorization": f"Bearer {FLW_SECRET_KEY}",
-        "Content-Type": "application/json"
-    }
-
+    # ✅ Validate package choice from trusted config (no user tampering)
+    valid_packages = {500: 1, 2000: 5, 5000: 15}
     try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(url, headers=headers) as resp:
-                data = await resp.json()
-                logger.info(f"🔍 Verify response for {tx_ref}: {data}")
+        price = int(data.split("_")[1])
+    except (IndexError, ValueError):
+        return await query.answer("❌ Invalid selection.", show_alert=True)
 
-                # Flutterwave response format:
-                # {"status": "success", "data": {"status": "successful", "amount": 5000, ...}}
+    if price not in valid_packages:
+        return await query.answer("❌ Invalid package.", show_alert=True)
 
-                if data.get("status") == "success":
-                    tx_data = data.get("data", {})
-                    if (
-                        tx_data.get("status") == "successful" and
-                        int(tx_data.get("amount", 0)) == int(amount)
-                    ):
-                        return True
-        return False
+    tries = valid_packages[price]
+    tx_ref = str(uuid.uuid4())
+
+    # ✅ Safely register pending payment in DB
+    async with AsyncSessionLocal() as session:
+        db_user = await get_or_create_user(session, query.from_user.id, query.from_user.username)
+
+        # Defensive: delete any old "pending" payment for same user
+        await session.execute(
+            Payment.__table__.delete().where(
+                Payment.user_id == db_user.id,
+                Payment.status == "pending"
+            )
+        )
+
+        stmt = insert(Payment).values(
+            user_id=db_user.id,
+            amount=price,
+            credited_tries=tries,
+            tx_ref=tx_ref,
+            status="pending",
+            created_at=datetime.utcnow()
+        )
+        await session.execute(stmt)
+        await session.commit()
+
+    # ✅ Prepare checkout session
+    username = query.from_user.username or f"user_{query.from_user.id}"
+    email = f"{username}@naijaprizegate.ng"
+
+    checkout_url = await create_checkout(
+        amount=price,
+        tx_ref=tx_ref,
+        user_id=query.from_user.id,
+        username=username,
+        email=email
+    )
+
+    # ✅ Safety net: ensure URL was generated properly
+    if not checkout_url:
+        return await query.edit_message_text(
+            "⚠️ Payment service unavailable. Please try again shortly.",
+            parse_mode="HTML"
+        )
+
+    # ✅ Clean UI
+    keyboard = [
+        [InlineKeyboardButton("✅ Confirm & Pay", url=checkout_url)],
+        [InlineKeyboardButton("❌ Cancel", callback_data="cancel_payment")]
+    ]
+
+    await query.edit_message_text(
+        text=(
+            f"💳 <b>Package selected:</b> {tries} Try{'s' if tries > 1 else ''} for ₦{price:,}\n\n"
+            "👉 Click below to confirm your payment securely.\n\n"
+            f"If the button doesn’t work, copy this link and open it in Chrome or Safari:\n"
+            f"<a href='{checkout_url}'>{checkout_url}</a>\n\n"
+            "💡 <b>Tip:</b> If Telegram blocks it, disable in-app browser in settings.\n"
+            "Then tap again — smooth sailing. 😎"
+        ),
+        reply_markup=InlineKeyboardMarkup(keyboard),
+        parse_mode="HTML",
+        disable_web_page_preview=True
+    )
+
+
+# --- Cancel payment ---
+async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    print("❌ Cancel button pressed by", query.from_user.id)
+
+    async with AsyncSessionLocal() as session:
+        db_user = await get_or_create_user(session, query.from_user.id, query.from_user.username)
+
+        result = await session.execute(
+            select(Payment)
+            .where(Payment.user_id == db_user.id, Payment.status == "pending")
+            .order_by(Payment.created_at.desc())
+        )
+        pending = result.scalars().first()
+        if pending:
+            await session.delete(pending)
+            await session.commit()
+            print(f"Deleted pending payment {pending.tx_ref} for {db_user.id}")
+
+    keyboard = [
+        [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
+        [InlineKeyboardButton("💳 Buy Tries", callback_data="buy")],
+        [InlineKeyboardButton("🎁 Free Tries", callback_data="free")],
+    ]
+
+    await query.edit_message_text(
+        "❌ Payment cancelled\\. Pending transaction cleared\\.\n\n"
+        "You’re back at the main menu\\!",
+        reply_markup=InlineKeyboardMarkup(keyboard),
+        parse_mode="MarkdownV2"
+    )
+
+# --- Webhook success handler ---
+async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: int, bot):
+    try:
+        # 🔐 Step 1: Confirm transaction is truly successful
+        is_valid = await verify_transaction(tx_ref, amount)
+        if not is_valid:
+            logger.warning(f"⚠️ Webhook verification failed for tx_ref={tx_ref}")
+            return
+
+        async with get_async_session() as session:
+            # 🔍 Fetch the current Payment row state
+            result = await session.execute(
+                select(Payment).where(Payment.tx_ref == tx_ref)
+            )
+            payment_row = result.scalar_one_or_none()
+
+            if not payment_row:
+                logger.error(f"❌ No Payment row found for tx_ref={tx_ref}")
+                return
+
+            logger.info(
+                f"🔎 Incoming webhook for tx_ref={tx_ref} → "
+                f"DB status={payment_row.status}, "
+                f"credited_tries={payment_row.credited_tries}, "
+                f"completed_at={payment_row.completed_at}"
+            )
+
+            # 🚦 Idempotency check (skip ONLY if both status=successful AND tries already credited)
+            if payment_row.status == "successful" and payment_row.credited_tries > 0:
+                logger.info(
+                    f"ℹ️ Payment {tx_ref} already credited "
+                    f"({payment_row.credited_tries} tries) → skipping re-credit"
+                )
+                return
+
+            # 1. Fetch & credit user
+            db_user = await get_or_create_user(session, user_id)
+            db_user.tries_paid += tries
+
+            # 2. Mark payment successful (in same transaction)
+            payment_row.status = "successful"
+            payment_row.credited_tries = tries
+            payment_row.completed_at = datetime.utcnow()
+
+            # 📝 Diagnostic log BEFORE commit
+            logger.info(
+                f"📝 Pre-commit state → "
+                f"user_id={db_user.id}, tg_id={db_user.tg_id}, "
+                f"paid={db_user.tries_paid}, bonus={db_user.tries_bonus}; "
+                f"payment.status={payment_row.status}, "
+                f"credited_tries={payment_row.credited_tries}"
+            )
+
+            # 3. Commit both changes atomically
+            await session.commit()
+
+            # 4. Refresh user so we have latest values
+            await session.refresh(db_user)
+
+            # ✅ Success logs
+            logger.info(
+                f"🎉 Credited {tries} tries for user {user_id} "
+                f"(tx_ref={tx_ref}, amount={amount})"
+            )
+            logger.info(
+                f"📊 After credit: db_user.id={db_user.id}, tg_id={db_user.tg_id}, "
+                f"paid={db_user.tries_paid}, bonus={db_user.tries_bonus}"
+            )
+
     except Exception as e:
-        logger.error(f"❌ verify_transaction() failed for {tx_ref}: {e}", exc_info=True)
-        return False
+        logger.error(
+            f"❌ Failed to credit tries for user_id={user_id}, "
+            f"tx_ref={tx_ref}, amount={amount}, tries={tries} → {e}",
+            exc_info=True
+        )
+        return
+
+    # 5. Notify user only if DB commit succeeded
+    await bot.send_message(
+        chat_id=user_id,
+        text=payment_success_text(db_user, amount, tries),
+        parse_mode="MarkdownV2"
+    )
+    
+# ---- Expire Old Payments ----
+async def expire_old_payments():
+    cutoff = datetime.utcnow() - timedelta(hours=24)
+    async with AsyncSessionLocal() as session:
+        await session.execute(
+            update(Payment)
+            .where(Payment.status == "pending", Payment.created_at < cutoff)
+            .values(status="expired")
+        )
+        await session.commit()
+
+# --- Register handlers ---
+def register_handlers(application):
+    application.add_handler(CommandHandler("buy", buy_menu))
+    application.add_handler(CallbackQueryHandler(buy_menu, pattern="^buy$"))
+    application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy_"))
+    application.add_handler(CallbackQueryHandler(handle_cancel_payment, pattern="^cancel_payment$"))
 
