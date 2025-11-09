@@ -33,6 +33,7 @@ from helpers import get_or_create_user, add_tries
 from logging_setup import logger
 from utils.signer import generate_signed_token, verify_signed_token
 from webhook import router as webhook_router
+from bot_instance import bot
 
 # ✅ Import Flutterwave-related functions/constants
 from services.payments import (
@@ -63,20 +64,13 @@ async def ensure_game_state_exists():
 # -------------------------------------------------
 # Environment setup
 # -------------------------------------------------
-BOT_TOKEN = os.getenv("BOT_TOKEN")
 RENDER_EXTERNAL_URL = os.getenv("RENDER_EXTERNAL_URL")
 WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET")
 FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")
 
-if not BOT_TOKEN or not RENDER_EXTERNAL_URL or not WEBHOOK_SECRET or not FLW_SECRET_HASH:
-    raise RuntimeError("❌ Missing required environment variables")
-
-BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")  # Replace with your actual bot username
-
 # -------------------------------------------------
-# Initialize FastAPI + Telegram bot
+# Initialize FastAPI 
 # -------------------------------------------------
-bot = Bot(token=BOT_TOKEN)
 app = FastAPI()
 app.include_router(webhook_router)
 application: Application = None  # Telegram Application (global)
@@ -92,22 +86,6 @@ async def root():
         "message": "NaijaPrizeGate Bot is running ✅",
         "health": "Check /health for bot status",
     }
-
-import time
-
-# 🧱 In-memory rate-limit cache (prevents webhook flooding)
-LAST_WEBHOOK_CALL = {}
-RATE_LIMIT_SECONDS = 10  # block repeated tx_ref within 10 seconds
-
-def is_rate_limited(tx_ref: str) -> bool:
-    """Prevents flooding by blocking the same tx_ref within RATE_LIMIT_SECONDS."""
-    now = time.time()
-    last_call = LAST_WEBHOOK_CALL.get(tx_ref, 0)
-    if now - last_call < RATE_LIMIT_SECONDS:
-        return True
-    LAST_WEBHOOK_CALL[tx_ref] = now
-    return False
-
 
 # -------------------------------------------------
 # Startup event
@@ -770,3 +748,4 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
+
