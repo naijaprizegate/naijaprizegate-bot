@@ -21,6 +21,7 @@ from db import AsyncSessionLocal, get_async_session
 from helpers import add_tries, get_user_by_id
 from models import Proof, User, Payment, GameState, GlobalCounter, PrizeWinner
 from utils.security import is_admin 
+from logging_config import setup_logger
 
 logger = logging.getLogger(__name__)
 
