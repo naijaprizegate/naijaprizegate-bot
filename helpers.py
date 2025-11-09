@@ -6,6 +6,7 @@ import logging
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 from models import User, GameState, GlobalCounter, Play  # ✅ Ensure these exist and are imported
+from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
@@ -44,6 +45,7 @@ async def get_or_create_user(
     await session.commit()
     await session.refresh(user)
     return user
+
 
 # -------------------------------------------------
 # Add tries (paid or bonus)
@@ -182,3 +184,17 @@ async def record_play(session: AsyncSession, user: User, result: str):
 def is_admin(user: User) -> bool:
     """Return True if the user is marked as admin."""
     return getattr(user, "is_admin", False)
+
+
+# ----------------------------
+# 🧩 Mask Sensitive Helper
+# ----------------------------
+def mask_sensitive(data: str, visible: int = 4) -> str:
+    """Mask all but last few visible characters of sensitive data."""
+    if not data:
+        return ""
+    data = str(data)
+    if len(data) <= visible:
+        return data
+    return f"{'*' * (len(data) - visible)}{data[-visible:]}"
+
