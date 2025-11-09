@@ -12,6 +12,17 @@ from datetime import datetime, timedelta
 import uuid
 import os
 import logging
+from logging_config import setup_logger
+from helpers import mask_sensitive
+
+logger = setup_logger("payments")
+
+...
+
+logger.info(
+    f"✅ Payment verified: user={mask_sensitive(str(user_id))}, "
+    f"tx_ref={mask_sensitive(tx_ref)}, amount={amount}"
+)
 
 logger = logging.getLogger(__name__)
 
@@ -279,3 +290,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(buy_menu, pattern="^buy$"))
     application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy_"))
     application.add_handler(CallbackQueryHandler(handle_cancel_payment, pattern="^cancel_payment$"))
+
