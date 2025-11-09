@@ -166,7 +166,7 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
         if pending:
             await session.delete(pending)
             await session.commit()
-            print(f"Deleted pending payment {pending.tx_ref} for {db_user.id}")
+            logger.info(f"🧹 Deleted pending payment {mask_sensitive(pending.tx_ref)} for user={mask_sensitive(str(db_user.id))}")
 
     keyboard = [
         [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
@@ -187,7 +187,7 @@ async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: 
         # 🔐 Step 1: Confirm transaction is truly successful
         is_valid = await verify_transaction(tx_ref, amount)
         if not is_valid:
-            logger.warning(f"⚠️ Webhook verification failed for tx_ref={tx_ref}")
+            logger.warning(f"⚠️ Webhook verification failed for tx_ref={mask_sensitive(tx_ref)}")
             return
 
         async with get_async_session() as session:
@@ -242,18 +242,20 @@ async def handle_payment_success(tx_ref: str, amount: int, user_id: int, tries: 
 
             # ✅ Success logs
             logger.info(
-                f"🎉 Credited {tries} tries for user {user_id} "
-                f"(tx_ref={tx_ref}, amount={amount})"
+                f"🎉 Credited {tries} tries for user {mask_sensitive(str(user_id))} "
+                f"(tx_ref={mask_sensitive(tx_ref)}, amount={amount})"
             )
+
             logger.info(
-                f"📊 After credit: db_user.id={db_user.id}, tg_id={db_user.tg_id}, "
+                f"📊 After credit: db_user.id={mask_sensitive(str(db_user.id))}, tg_id={mask_sensitive(str(db_user.tg_id))}, "
                 f"paid={db_user.tries_paid}, bonus={db_user.tries_bonus}"
             )
 
+
     except Exception as e:
         logger.error(
-            f"❌ Failed to credit tries for user_id={user_id}, "
-            f"tx_ref={tx_ref}, amount={amount}, tries={tries} → {e}",
+            f"❌ Failed to credit tries for user_id={mask_sensitive(str(user_id))}, "
+            f"tx_ref={mask_sensitive(tx_ref)}, amount={amount}, tries={tries} → {e}",
             exc_info=True
         )
         return
@@ -282,4 +284,3 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(buy_menu, pattern="^buy$"))
     application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy_"))
     application.add_handler(CallbackQueryHandler(handle_cancel_payment, pattern="^cancel_payment$"))
-
