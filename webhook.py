@@ -4,7 +4,7 @@
 from fastapi import APIRouter, Request
 from loguru import logger
 from handlers.payments import handle_payment_success
-from app import is_rate_limited
+from helpers import is_rate_limited
 from bot_instance import bot  # Import your bot object (if defined elsewhere)
 
 router = APIRouter()
