@@ -198,3 +198,20 @@ def mask_sensitive(data: str, visible: int = 4) -> str:
         return data
     return f"{'*' * (len(data) - visible)}{data[-visible:]}"
 
+# -------------------------------
+# 🚦 Rate Limiting Helper
+# --------------------------------
+import time
+
+_LAST_WEBHOOK_CALL = {}
+_RATE_LIMIT_SECONDS = 10
+
+def is_rate_limited(tx_ref: str) -> bool:
+    """Prevents flooding by blocking the same tx_ref within RATE_LIMIT_SECONDS."""
+    now = time.time()
+    last_call = _LAST_WEBHOOK_CALL.get(tx_ref, 0)
+    if now - last_call < _RATE_LIMIT_SECONDS:
+        return True
+    _LAST_WEBHOOK_CALL[tx_ref] = now
+    return False
+
