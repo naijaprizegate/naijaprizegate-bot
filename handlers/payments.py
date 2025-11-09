@@ -20,7 +20,7 @@ logger = setup_logger("payments")
 ...
 
 logger.info(
-    f"✅ Payment verified: user={mask_sensitive(str(user_id))}, "
+    f"✅ Payment verified: user={mask_sensitive(str(user.tg_id))}, "
     f"tx_ref={mask_sensitive(tx_ref)}, amount={amount}"
 )
 
