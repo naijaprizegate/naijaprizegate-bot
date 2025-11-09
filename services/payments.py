@@ -13,6 +13,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from db import get_async_session
 from models import Payment, TransactionLog, GlobalCounter, User
 from helpers import add_tries  # ✅ FIX: Missing import
+from helpers import mask_sensitive
 
 
 # ==== Config ====
@@ -149,7 +150,7 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
         logger.exception(f"❌ Verification failed for {tx_ref}: {e}")
         return False
 
-    logger.info(f"🔎 Flutterwave verification for {tx_ref}: {data}")
+    logger.info(f"🔎 Flutterwave verification for {mask_sensitive(tx_ref)}: [response hidden for security]")
 
     # sanity checks
     if not data.get("status") == "success" or not data.get("data"):
@@ -162,7 +163,7 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
 
     # accept both shapes flutterwave might send
     meta = tx_data.get("meta") or tx_data.get("meta_data") or {}
-    logger.info(f"🔍 verify_payment meta for {tx_ref}: {meta}")
+    logger.info(f"🔍 verify_payment meta for {mask_sensitive(tx_ref)}: keys={list(meta.keys())}")
 
     # normalize tg_id (we store User.tg_id as BigInteger)
     tg_id_raw = meta.get("tg_id") or meta.get("tgId") or meta.get("customer_id")
@@ -183,8 +184,8 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
 
     # create placeholder payment if missing
     if not payment:
-        logger.warning(f"⚠️ No Payment record found for {tx_ref} → creating a new one.")
-        from models import User  # local import to avoid circulars
+        logger.warning(f"⚠️ No Payment record found for {mask_sensitive(tx_ref)} → creating a new one.")
+        
         user = None
         if tg_id is not None:
             result = await session.execute(select(User).where(User.tg_id == tg_id))
@@ -228,7 +229,7 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
         user = result.scalar_one_or_none()
         if user:
             payment.user_id = user.id
-            logger.info(f"🔗 Linked payment {tx_ref} to user {user.tg_id} from meta data")
+            logger.info(f"🔗 Linked payment {mask_sensitive(tx_ref)} to user {mask_sensitive(str(user.tg_id))} from meta data")
 
     # handle outcomes
     if tx_status == "successful":
@@ -240,12 +241,12 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
 
         if credit:
             try:
-                logger.info(f"💳 Crediting user {payment.user_id} for tx_ref={tx_ref} ...")
+                logger.info(f"💳 Crediting user {mask_sensitive(str(payment.user_id))} for {mask_sensitive(tx_ref)} ...")
                 user, tries = await credit_user_tries(session, payment)
 
                 payment.status = "successful"
                 await session.commit()
-                logger.info(f"✅ User {getattr(user,'tg_id', None)} credited with {tries} tries for tx_ref={tx_ref}")
+                logger.info(f"✅ User {mask_sensitive(str(getattr(user,'tg_id', None)))} credited with {tries} tries for {mask_sensitive(tx_ref)}")
 
                 # notify user via Telegram if bot provided
                 if bot and user and getattr(user, "tg_id", None):
@@ -568,3 +569,4 @@ async def verify_transaction(tx_ref: str, amount: int) -> bool:
     except Exception as e:
         logger.error(f"❌ verify_transaction() failed for {tx_ref}: {e}", exc_info=True)
         return False
+
