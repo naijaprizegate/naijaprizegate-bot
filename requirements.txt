@@ -42,4 +42,7 @@ python-multipart
 # HTTP client for async API calls (e.g., Paystack/Flutterwave verification)
 aiohttp==3.10.8
 
+# Logging library
+loguru==0.7.2
+
 
