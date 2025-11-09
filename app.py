@@ -21,6 +21,7 @@ from typing import Dict, Any, Optional
 
 from telegram import Update, Bot, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application
+from datetime import datetime, timezone
 
 # Local imports
 from logger import tg_error_handler, logger
@@ -30,8 +31,8 @@ from db import init_game_state, get_async_session, get_session
 from models import Payment, User, GameState, PrizeWinner
 from helpers import get_or_create_user, add_tries
 from logging_setup import logger
-from datetime import datetime, timezone
 from utils.signer import generate_signed_token, verify_signed_token
+from webhook import router as webhook_router
 
 # ✅ Import Flutterwave-related functions/constants
 from services.payments import (
@@ -77,6 +78,7 @@ BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")  # Replace with yo
 # -------------------------------------------------
 bot = Bot(token=BOT_TOKEN)
 app = FastAPI()
+app.include_router(webhook_router)
 application: Application = None  # Telegram Application (global)
 
 # -------------------------------------------------
@@ -90,6 +92,21 @@ async def root():
         "message": "NaijaPrizeGate Bot is running ✅",
         "health": "Check /health for bot status",
     }
+
+import time
+
+# 🧱 In-memory rate-limit cache (prevents webhook flooding)
+LAST_WEBHOOK_CALL = {}
+RATE_LIMIT_SECONDS = 10  # block repeated tx_ref within 10 seconds
+
+def is_rate_limited(tx_ref: str) -> bool:
+    """Prevents flooding by blocking the same tx_ref within RATE_LIMIT_SECONDS."""
+    now = time.time()
+    last_call = LAST_WEBHOOK_CALL.get(tx_ref, 0)
+    if now - last_call < RATE_LIMIT_SECONDS:
+        return True
+    LAST_WEBHOOK_CALL[tx_ref] = now
+    return False
 
 
 # -------------------------------------------------
@@ -281,6 +298,12 @@ async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(
     tx_ref = data.get("tx_ref") or data.get("reference") or payload.get("tx_ref")
     status = data.get("status")
     amount = data.get("amount") or 0
+
+    # 🛡️ Step 0: Rate-limit guard
+    if tx_ref and is_rate_limited(tx_ref):
+        logger.warning(f"🚫 Duplicate webhook within {RATE_LIMIT_SECONDS}s for tx_ref={tx_ref}")
+        return JSONResponse({"status": "ignored", "reason": "too frequent"})
+
 
     if not tx_ref:
         logger.error("❌ Webhook missing tx_ref; ignoring.")
@@ -747,4 +770,3 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
-
