@@ -5,9 +5,7 @@ from fastapi import APIRouter, Request
 from loguru import logger
 from handlers.payments import handle_payment_success
 from helpers import is_rate_limited
-
-# Import your helpers
-from app import bot  # Import your bot object (if defined elsewhere)
+from bot_instance import bot
 
 router = APIRouter()
 
@@ -33,3 +31,4 @@ async def webhook_listener(request: Request):
     # ✅ Step 2: Process the successful payment
     await handle_payment_success(tx_ref, amount, user_id, tries, bot)
     return {"status": "ok"}
+
