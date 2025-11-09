@@ -7,7 +7,7 @@ from handlers.payments import handle_payment_success
 from helpers import is_rate_limited
 
 # Import your helpers
-from bot_instance import bot  # Import your bot object (if defined elsewhere)
+from app import bot  # Import your bot object (if defined elsewhere)
 
 router = APIRouter()
 
