@@ -15,14 +15,6 @@ import logging
 from logging_config import setup_logger
 from helpers import mask_sensitive
 
-logger = setup_logger("payments")
-
-...
-
-logger.info(
-    f"✅ Payment verified: user={mask_sensitive(str(user.tg_id))}, "
-    f"tx_ref={mask_sensitive(tx_ref)}, amount={amount}"
-)
 
 logger = logging.getLogger(__name__)
 
