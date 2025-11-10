@@ -38,7 +38,7 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         (
             f"🎰 Yo, it’s *{display_name}* here\\!\n\n"
             f"NaijaPrizeGate is lit rn 🔥 — I’m stacking *free spins* and shooting my shot to win:\n\n"
-            f"✨ *iPhone 16 Pro Max*\n"
+            f"✨ *iPhone 16 Pro Max*\n\n"
             f"✨ *iPhone 17 Pro Max*\n\n"
             f"✨ *Samsung Galaxy Z Flip 7*\n"
             f"✨ *Samsung Galaxy S25 Ultra*\n"
@@ -48,7 +48,7 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         (
             f"🚀 *{display_name}* just unlocked *free spins* on *NaijaPrizeGate* 🎉\n\n"
             f"Big wins are flying — next up could be:\n"
-            f"💎 *iPhone 16 Pro Max*\n"
+            f"💎 *iPhone 16 Pro Max*\n\n"
             f"💎 *iPhone 17 Pro Max*\n\n"
             f"💎 *Samsung Galaxy Z Flip 7*\n\n"
             f"💎 *Samsung Galaxy S25 Ultra*\n\n"
@@ -59,7 +59,7 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"🔥 *{display_name}* is already playing\\! \n\n"
             f"NaijaPrizeGate’s dropping jackpots like crazy 🎰💸\n"
             f"Up for grabs:\n"
-            f"🏆 *iPhone 16 Pro Max*\n"
+            f"🏆 *iPhone 16 Pro Max*\n\n"
             f"🏆 *iPhone 17 Pro Max*\n\n"
             f"🏆 *Samsung Galaxy Z Flip 7*\n\n"
             f"🏆 *Samsung Galaxy S25 Ultra*\n\n"
