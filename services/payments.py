@@ -193,43 +193,55 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
 
     username = meta.get("username") or meta.get("name")
 
+    # -------------------------------
     # find or create Payment row
+    # -------------------------------
     result = await session.execute(select(Payment).where(Payment.tx_ref == tx_ref))
     payment = result.scalar_one_or_none()
 
     if not payment:
         logger.warning(f"⚠️ No Payment record found for {mask_sensitive(tx_ref)} → creating a new one.")
+
+        # Ensure we always have a user
         user = None
         if tg_id is not None:
             result = await session.execute(select(User).where(User.tg_id == tg_id))
             user = result.scalar_one_or_none()
-            if not user:
-                user = User(tg_id=tg_id, username=username)
-                session.add(user)
-                await session.flush()
+
+        if not user:
+            # create a placeholder user if missing
+            placeholder_tg_id = tg_id if tg_id is not None else 0
+            placeholder_username = username or f"user_{placeholder_tg_id}"
+            user = User(tg_id=placeholder_tg_id, username=placeholder_username)
+            session.add(user)
+            await session.flush()  # assign user.id
 
         payment = Payment(
             tx_ref=tx_ref,
             amount=amount,
             status=tx_status or "pending",
-            user_id=user.id if user else None,
+            user_id=user.id,  # ✅ guaranteed non-None
             credited_tries=0,
             tg_id=tg_id,
-            username=username,
+            username=username or f"user_{tg_id or 0}"
         )
+
         if tx_data.get("id") is not None:
             payment.flw_tx_id = str(tx_data.get("id"))
+
         session.add(payment)
         await session.commit()
-        logger.info(f"🆕 Payment placeholder created for tx_ref={tx_ref} (linked_user_tg={tg_id})")
+        logger.info(f"🆕 Payment placeholder created for tx_ref={tx_ref} (linked_user_tg={user.tg_id})")
 
+    # -------------------------------
     # update payment info
+    # -------------------------------
     payment.amount = amount
     if tx_data.get("id") is not None:
         payment.flw_tx_id = str(tx_data.get("id"))
     payment.updated_at = datetime.utcnow()
 
-    # backfill user_id
+    # backfill user_id if missing
     if not payment.user_id and tg_id is not None:
         result = await session.execute(select(User).where(User.tg_id == tg_id))
         user = result.scalar_one_or_none()
@@ -239,7 +251,9 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
 
     credited_flag = False
 
+    # -------------------------------
     # handle outcomes
+    # -------------------------------
     if tx_status == "successful":
         if payment.status == "successful":
             await session.commit()
@@ -251,8 +265,8 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
                 user, tries = await credit_user_tries(session, payment)
                 payment.status = "successful"
                 await session.commit()
-
                 credited_flag = True
+
                 logger.info(f"✅ User {mask_sensitive(str(getattr(user,'tg_id', None)))} credited with {tries} tries for {mask_sensitive(tx_ref)}")
 
                 # Telegram notification
