@@ -375,7 +375,9 @@ async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(
     # 🔎 Step 3: Verify with Flutterwave API (extra safety)
     fw_data = None
     try:
-        fw_resp = await verify_payment(tx_ref)
+        # ✅ Pass the existing session + bot to verify_payment()
+        bot_instance = Bot(token=BOT_TOKEN) if BOT_TOKEN else None
+        fw_resp = await verify_payment(tx_ref, session, bot=bot_instance, credit=True)
         fw_data = fw_resp.get("data", {}) or {}
         if fw_data.get("status") != "successful":
             logger.warning(f"⚠️ Flutterwave reports non-success for {tx_ref}: {fw_data.get('status')}")
@@ -492,7 +494,8 @@ async def flutterwave_redirect(
         # Attempt verification if payment not found or still pending
         if (not payment or payment.status in (None, "pending")) and transaction_id:
             try:
-                fw_resp = await verify_payment(tx_ref)
+                bot_instance = Bot(token=BOT_TOKEN) if BOT_TOKEN else None
+                fw_resp = await verify_payment(tx_ref, session, bot=None, credit=True)
                 fw_data = fw_resp.get("data") or {}
                 if fw_data.get("status") == "successful":
                     credited = _calculate_tries_from_amount(int(fw_data.get("amount", 0)))
