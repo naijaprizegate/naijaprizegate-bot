@@ -127,42 +127,62 @@ async def create_checkout(
 
 
 # ------------------------------------------------------
-# 2. Verify Payment (via tx_ref)
+# 2. Verify Payment (via tx_ref + transaction_id)
 # ------------------------------------------------------
 async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: bool = True) -> bool:
     """
     Verifies payment status with Flutterwave.
-    - If credit=True: credit the user and notify via Telegram.
-    - If credit=False: only updates DB.
+    - Now uses the correct /transactions/{id}/verify endpoint.
+    - tx_ref is used only for lookup; transaction_id is extracted dynamically.
     """
-    # normalize tx_ref
     tx_ref = str(tx_ref)
-
-    url = f"{FLW_BASE_URL}/transactions/verify_by_reference?tx_ref={tx_ref}"
     headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}"}
 
     try:
+        # 1️⃣ First, get transaction details by tx_ref (for backward compatibility)
+        url_lookup = f"{FLW_BASE_URL}/transactions?tx_ref={tx_ref}"
         async with httpx.AsyncClient(timeout=20.0) as client:
-            r = await client.get(url, headers=headers)
+            lookup_resp = await client.get(url_lookup, headers=headers)
+            lookup_resp.raise_for_status()
+            lookup_data = lookup_resp.json()
+
+        # Extract transaction_id from lookup
+        data_list = lookup_data.get("data")
+        if not data_list or not isinstance(data_list, list):
+            logger.warning(f"⚠️ No transactions found for tx_ref={tx_ref}")
+            return False
+
+        transaction_id = str(data_list[0].get("id"))
+        if not transaction_id:
+            logger.warning(f"⚠️ Could not find transaction_id for tx_ref={tx_ref}")
+            return False
+
+        # 2️⃣ Now, verify transaction directly
+        verify_url = f"{FLW_BASE_URL}/transactions/{transaction_id}/verify"
+        async with httpx.AsyncClient(timeout=20.0) as client:
+            r = await client.get(verify_url, headers=headers)
             r.raise_for_status()
             data = r.json()
+
     except Exception as e:
         logger.exception(f"❌ Verification failed for {tx_ref}: {e}")
         return False
 
-    logger.info(f"🔎 Flutterwave verification for {mask_sensitive(tx_ref)}: [response hidden for security]")
+    # ✅ Security: hide raw response in logs
+    logger.info(f"🔎 Flutterwave verification success for {mask_sensitive(tx_ref)}")
 
-    # sanity checks
-    if not data.get("status") == "success" or not data.get("data"):
-        logger.warning(f"⚠️ Invalid or empty response for tx_ref={tx_ref}")
+    if data.get("status") != "success" or not data.get("data"):
+        logger.warning(f"⚠️ Invalid response for tx_ref={tx_ref}")
         return False
 
     tx_data = data["data"]
     tx_status = tx_data.get("status")
     amount = tx_data.get("amount")
+    meta = tx_data.get("meta") or tx_data.get("meta_data") or {}
 
     # accept both shapes flutterwave might send
     meta = tx_data.get("meta") or tx_data.get("meta_data") or {}
+
     logger.info(f"🔍 verify_payment meta for {mask_sensitive(tx_ref)}: keys={list(meta.keys())}")
 
     # normalize tg_id (we store User.tg_id as BigInteger)
@@ -538,12 +558,13 @@ async def resolve_payment_status(tx_ref: str, session: AsyncSession) -> Payment 
     return result.scalar_one_or_none()
 
 
-async def verify_transaction(tx_ref: str, amount: int) -> bool:
+async def verify_transaction(transaction_id: str, amount: int) -> bool:
     """
     Verifies a Flutterwave transaction directly with Flutterwave's API.
     Returns True if the transaction is valid and successful.
     """
-    url = f"https://api.flutterwave.com/v3/transactions/verify_by_reference?tx_ref={tx_ref}"
+    url = f"https://api.flutterwave.com/v3/transactions/{transaction_id}/verify"
+
     headers = {
         "Authorization": f"Bearer {FLW_SECRET_KEY}",
         "Content-Type": "application/json"
@@ -553,10 +574,7 @@ async def verify_transaction(tx_ref: str, amount: int) -> bool:
         async with aiohttp.ClientSession() as session:
             async with session.get(url, headers=headers) as resp:
                 data = await resp.json()
-                logger.info(f"🔍 Verify response for {tx_ref}: {data}")
-
-                # Flutterwave response format:
-                # {"status": "success", "data": {"status": "successful", "amount": 5000, ...}}
+                logger.info(f"🔍 Verify response for tx_id={transaction_id}: {data}")
 
                 if data.get("status") == "success":
                     tx_data = data.get("data", {})
@@ -567,6 +585,5 @@ async def verify_transaction(tx_ref: str, amount: int) -> bool:
                         return True
         return False
     except Exception as e:
-        logger.error(f"❌ verify_transaction() failed for {tx_ref}: {e}", exc_info=True)
+        logger.error(f"❌ verify_transaction() failed for tx_id={transaction_id}: {e}", exc_info=True)
         return False
-
