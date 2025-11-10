@@ -22,7 +22,6 @@ from typing import Dict, Any, Optional
 
 from telegram import Update, Bot, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application
-from telegram.constants import TELEGRAM_API_URL
 from datetime import datetime, timezone
 
 # Local imports
