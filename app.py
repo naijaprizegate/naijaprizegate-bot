@@ -68,6 +68,10 @@ RENDER_EXTERNAL_URL = os.getenv("RENDER_EXTERNAL_URL")
 WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET")
 FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")
 
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+if not BOT_TOKEN:
+    raise ValueError("❌ BOT_TOKEN is not set. Please define it in your environment variables.")
+
 # -------------------------------------------------
 # Initialize FastAPI 
 # -------------------------------------------------
