@@ -63,7 +63,6 @@ from tasks import start_background_tasks, stop_background_tasks
 from db import init_game_state, get_async_session, get_session
 from models import Payment, User, GameState, PrizeWinner
 from helpers import get_or_create_user, add_tries
-from logging_setup import logger
 from utils.signer import generate_signed_token, verify_signed_token
 from webhook import router as webhook_router
 from bot_instance import bot
@@ -77,6 +76,21 @@ from services.payments import (
     resolve_payment_status,
     validate_webhook,
 )
+# ------------------------------------
+# Simple anti-spam for webhook calls
+# -------------------------------------
+_rate_limit_cache = {}
+
+RATE_LIMIT_SECONDS = 10
+
+def is_rate_limited(key: str, seconds: int = 30) -> bool:
+    import time
+    now = time.time()
+    last_call = _rate_limit_cache.get(key)
+    if last_call and now - last_call < seconds:
+        return True
+    _rate_limit_cache[key] = now
+    return False
 
 # ------------------------------------------------
 # 🔒 Secure Logging Filter (hide Telegram bot token)
@@ -252,32 +266,6 @@ def validate_webhook_signature(headers: dict, body_str: str) -> bool:
         return False
     # Trim whitespace; use compare_digest for constant-time compare
     return hmac.compare_digest(signature.strip(), FLW_SECRET_HASH.strip())
-
-# -----------------------
-# Helper: verify payment with Flutterwave API (double-check)
-# -----------------------
-async def verify_payment(tx_ref: str) -> Dict[str, Any]:
-    """
-    Calls Flutterwave's API to verify a payment by tx_ref.
-    Raises on network / verification errors.
-    Returns the parsed JSON response from Flutterwave.
-    """
-    if not FLW_SECRET_KEY:
-        raise RuntimeError("FLW_SECRET_KEY not configured")
-
-    url = f"https://api.flutterwave.com/v3/transactions/verify_by_reference?tx_ref={tx_ref}"
-    headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}"}
-
-    async with httpx.AsyncClient(timeout=15.0) as client:
-        resp = await client.get(url, headers=headers)
-        resp.raise_for_status()
-        data = resp.json()
-
-    # data structure: {"status": "success", "message": "...", "data": {...}}
-    tx = data.get("data")
-    if not tx:
-        raise ValueError("No transaction data in Flutterwave response")
-    return data
 
 # -----------------------
 # Fallback calculate_tries if you don't have services.payments.calculate_tries
@@ -840,4 +828,3 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
-
