@@ -125,39 +125,40 @@ async def create_checkout(
     logger.info(f"✅ Checkout created for {customer_email} ({amount:,} NGN) — TX: {tx_ref}")
     return payment_link
 
-
 # ------------------------------------------------------
 # 2. Verify Payment (via tx_ref + transaction_id)
 # ------------------------------------------------------
-async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: bool = True) -> bool:
+async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: bool = True) -> dict:
     """
     Verifies payment status with Flutterwave.
-    - Now uses the correct /transactions/{id}/verify endpoint.
-    - tx_ref is used only for lookup; transaction_id is extracted dynamically.
+    Returns a dict (never a bool) with keys:
+      - status: "success", "failed", "pending", or "error"
+      - data: raw Flutterwave response (if any)
+      - credited: bool (whether user was credited)
+      - error: str (if any exception occurred)
     """
     tx_ref = str(tx_ref)
     headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}"}
 
     try:
-        # 1️⃣ First, get transaction details by tx_ref (for backward compatibility)
+        # 1️⃣ Lookup by tx_ref (for backward compatibility)
         url_lookup = f"{FLW_BASE_URL}/transactions?tx_ref={tx_ref}"
         async with httpx.AsyncClient(timeout=20.0) as client:
             lookup_resp = await client.get(url_lookup, headers=headers)
             lookup_resp.raise_for_status()
             lookup_data = lookup_resp.json()
 
-        # Extract transaction_id from lookup
         data_list = lookup_data.get("data")
         if not data_list or not isinstance(data_list, list):
             logger.warning(f"⚠️ No transactions found for tx_ref={tx_ref}")
-            return False
+            return {"status": "failed", "data": {}, "credited": False}
 
         transaction_id = str(data_list[0].get("id"))
         if not transaction_id:
             logger.warning(f"⚠️ Could not find transaction_id for tx_ref={tx_ref}")
-            return False
+            return {"status": "failed", "data": {}, "credited": False}
 
-        # 2️⃣ Now, verify transaction directly
+        # 2️⃣ Verify directly
         verify_url = f"{FLW_BASE_URL}/transactions/{transaction_id}/verify"
         async with httpx.AsyncClient(timeout=20.0) as client:
             r = await client.get(verify_url, headers=headers)
@@ -166,109 +167,95 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
 
     except Exception as e:
         logger.exception(f"❌ Verification failed for {tx_ref}: {e}")
-        return False
+        return {"status": "error", "data": {}, "credited": False, "error": str(e)}
 
-    # ✅ Security: hide raw response in logs
     logger.info(f"🔎 Flutterwave verification success for {mask_sensitive(tx_ref)}")
 
     if data.get("status") != "success" or not data.get("data"):
         logger.warning(f"⚠️ Invalid response for tx_ref={tx_ref}")
-        return False
+        return {"status": "failed", "data": {}, "credited": False}
 
     tx_data = data["data"]
     tx_status = tx_data.get("status")
     amount = tx_data.get("amount")
     meta = tx_data.get("meta") or tx_data.get("meta_data") or {}
 
-    # accept both shapes flutterwave might send
-    meta = tx_data.get("meta") or tx_data.get("meta_data") or {}
-
     logger.info(f"🔍 verify_payment meta for {mask_sensitive(tx_ref)}: keys={list(meta.keys())}")
 
-    # normalize tg_id (we store User.tg_id as BigInteger)
+    # normalize tg_id
     tg_id_raw = meta.get("tg_id") or meta.get("tgId") or meta.get("customer_id")
     tg_id = None
     if tg_id_raw is not None:
         try:
             tg_id = int(tg_id_raw)
         except Exception:
-            # if it's not an int-like value, keep None (defensive)
             logger.warning(f"⚠️ Could not parse tg_id from meta for {tx_ref}: {tg_id_raw}")
-            tg_id = None
 
-    username = meta.get("username") or meta.get("name") or None
+    username = meta.get("username") or meta.get("name")
 
-    # find payment row if exists
+    # find or create Payment row
     result = await session.execute(select(Payment).where(Payment.tx_ref == tx_ref))
     payment = result.scalar_one_or_none()
 
-    # create placeholder payment if missing
     if not payment:
         logger.warning(f"⚠️ No Payment record found for {mask_sensitive(tx_ref)} → creating a new one.")
-        
         user = None
         if tg_id is not None:
             result = await session.execute(select(User).where(User.tg_id == tg_id))
             user = result.scalar_one_or_none()
             if not user:
-                # optional safety-net: create a user row so we can link payment
                 user = User(tg_id=tg_id, username=username)
                 session.add(user)
-                await session.flush()  # give user.id
+                await session.flush()
 
         payment = Payment(
-            tx_ref=str(tx_ref),
+            tx_ref=tx_ref,
             amount=amount,
             status=tx_status or "pending",
             user_id=user.id if user else None,
             credited_tries=0,
-            # helpful debug/link columns
-            tg_id=tg_id if tg_id is not None else None,
-            username=username
+            tg_id=tg_id,
+            username=username,
         )
-
-        # flw id may be numeric — always cast to str if present
         if tx_data.get("id") is not None:
             payment.flw_tx_id = str(tx_data.get("id"))
-
         session.add(payment)
         await session.commit()
         logger.info(f"🆕 Payment placeholder created for tx_ref={tx_ref} (linked_user_tg={tg_id})")
 
-    # update fields from verification
+    # update payment info
     payment.amount = amount
     if tx_data.get("id") is not None:
-        # ensure stored as string
         payment.flw_tx_id = str(tx_data.get("id"))
     payment.updated_at = datetime.utcnow()
 
-    # backfill missing user_id from meta (if available)
+    # backfill user_id
     if not payment.user_id and tg_id is not None:
-        from models import User
         result = await session.execute(select(User).where(User.tg_id == tg_id))
         user = result.scalar_one_or_none()
         if user:
             payment.user_id = user.id
-            logger.info(f"🔗 Linked payment {mask_sensitive(tx_ref)} to user {mask_sensitive(str(user.tg_id))} from meta data")
+            logger.info(f"🔗 Linked payment {mask_sensitive(tx_ref)} to user {mask_sensitive(str(user.tg_id))} from meta")
+
+    credited_flag = False
 
     # handle outcomes
     if tx_status == "successful":
         if payment.status == "successful":
-            logger.info(f"ℹ️ Payment {tx_ref} already marked successful → skipping re-credit")
-            # Still update flw_tx_id/amount if needed and commit
             await session.commit()
-            return True
+            return {"status": "success", "data": data, "credited": False}
 
         if credit:
             try:
                 logger.info(f"💳 Crediting user {mask_sensitive(str(payment.user_id))} for {mask_sensitive(tx_ref)} ...")
                 user, tries = await credit_user_tries(session, payment)
-
                 payment.status = "successful"
                 await session.commit()
+
+                credited_flag = True
                 logger.info(f"✅ User {mask_sensitive(str(getattr(user,'tg_id', None)))} credited with {tries} tries for {mask_sensitive(tx_ref)}")
 
-                # notify user via Telegram if bot provided
+                # Telegram notification
                 if bot and user and getattr(user, "tg_id", None):
                     deep_link = f"https://t.me/NaijaPrizeGateBot?start=payment_success_{tx_ref}"
                     keyboard = [
@@ -277,7 +264,6 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
                         [InlineKeyboardButton("❌ Cancel", callback_data="cancel")]
                     ]
                     reply_markup = InlineKeyboardMarkup(keyboard)
-
                     await bot.send_message(
                         chat_id=user.tg_id,
                         text=(
@@ -290,42 +276,40 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
                         reply_markup=reply_markup,
                         disable_web_page_preview=True
                     )
-
             except Exception as e:
                 logger.exception(f"❌ Failed to credit user {payment.user_id} for tx_ref={tx_ref}: {e}")
                 await session.rollback()
-                return False
+                return {"status": "error", "data": data, "credited": False, "error": str(e)}
 
-            # update global counter (best-effort)
-            try:
-                counter_result = await session.execute(select(GlobalCounter).limit(1))
-                counter = counter_result.scalar_one_or_none()
-                if not counter:
-                    counter = GlobalCounter(paid_tries_total=0)
-                    session.add(counter)
-                    await session.flush()
+        # update GlobalCounter
+        try:
+            counter_result = await session.execute(select(GlobalCounter).limit(1))
+            counter = counter_result.scalar_one_or_none()
+            if not counter:
+                counter = GlobalCounter(paid_tries_total=0)
+                session.add(counter)
+                await session.flush()
 
-                counter.paid_tries_total += 1
-                if counter.paid_tries_total >= WIN_THRESHOLD:
-                    counter.paid_tries_total = 0
-                    logger.info(f"🎉 WIN threshold {WIN_THRESHOLD} reached → counter reset!")
-                await session.commit()
-            except Exception as e:
-                logger.warning(f"⚠️ Could not update GlobalCounter for tx_ref={tx_ref}: {e}")
+            counter.paid_tries_total += 1
+            if counter.paid_tries_total >= WIN_THRESHOLD:
+                counter.paid_tries_total = 0
+                logger.info(f"🎉 WIN threshold {WIN_THRESHOLD} reached → counter reset!")
+            await session.commit()
+        except Exception as e:
+            logger.warning(f"⚠️ Could not update GlobalCounter for tx_ref={tx_ref}: {e}")
 
-        return True
+        return {"status": "success", "data": data, "credited": credited_flag}
 
     elif tx_status in ["failed", "expired"]:
         payment.status = tx_status
         await session.commit()
         logger.info(f"❌ Payment {tx_ref} marked as {tx_status}")
-        return False
+        return {"status": "failed", "data": data, "credited": False}
 
     # pending / unknown
     await session.commit()
     logger.info(f"⏳ Payment {tx_ref} still pending (status={tx_status})")
-    return False
-
+    return {"status": "pending", "data": data, "credited": False}
 
 # ------------------------------------------------------
 # 3. Validate Webhook Signature
