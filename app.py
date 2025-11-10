@@ -9,9 +9,37 @@ import sys
 import hmac
 import hashlib
 import json
+import traceback
+import builtins
 
 # Force unbuffered output (Render needs this for real-time logs)
 os.environ["PYTHONUNBUFFERED"] = "1"
+
+# ------------------------------------------------
+# 🧩 Step 1 — Secure Logging & Print Mask (Double-Lock)
+# ------------------------------------------------
+# Mask any Telegram bot tokens or similar secrets if they ever appear in logs or prints
+class SecretFilter(logging.Filter):
+    TOKEN_PATTERN = re.compile(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b")
+
+    def filter(self, record):
+        record.msg = self.TOKEN_PATTERN.sub("[SECRET]", str(record.msg))
+        if record.args:
+            record.args = tuple(self.TOKEN_PATTERN.sub("[SECRET]", str(a)) for a in record.args)
+        return True
+
+# Apply this filter globally across all loggers
+for name in logging.root.manager.loggerDict:
+    logging.getLogger(name).addFilter(SecretFilter())
+
+# Also secure print() to prevent secrets from leaking
+_real_print = print
+def safe_print(*args, **kwargs):
+    safe_args = [re.sub(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", str(a)) for a in args]
+    _real_print(*safe_args, **kwargs)
+builtins.print = safe_print
+
+# ------------------------------------------------
 
 from fastapi import FastAPI, Query, Request, HTTPException, Depends, APIRouter, Form
 from fastapi.responses import HTMLResponse, JSONResponse
@@ -63,10 +91,10 @@ for name in logging.root.manager.loggerDict:
     logging.getLogger(name).addFilter(TelegramTokenFilter())
 
 logger = logging.getLogger(__name__)
-
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
 router = APIRouter()
+
 
 # -------------------------------------------------
 # Ensure GameState row exists
@@ -80,6 +108,7 @@ async def ensure_game_state_exists():
             await session.commit()
             logger.info("✅ Default GameState(id=1) created")
 
+
 # -------------------------------------------------
 # Environment setup
 # -------------------------------------------------
@@ -91,12 +120,14 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 if not BOT_TOKEN:
     raise ValueError("❌ BOT_TOKEN is not set. Please define it in your environment variables.")
 
+
 # -------------------------------------------------
 # Initialize FastAPI 
 # -------------------------------------------------
 app = FastAPI()
 app.include_router(webhook_router)
 application: Application = None  # Telegram Application (global)
+
 
 # -------------------------------------------------
 # Root route
@@ -110,46 +141,53 @@ async def root():
         "health": "Check /health for bot status",
     }
 
+
 # -------------------------------------------------
 # Startup event
 # -------------------------------------------------
 @app.on_event("startup")
 async def on_startup():
     global application
-    logger.info("🚀 Starting up NaijaPrizeGate...")
+    try:
+        logger.info("🚀 Starting up NaijaPrizeGate...")
 
-    # Ensure GameState & GlobalCounter rows exist
-    await init_game_state()
+        # Ensure GameState & GlobalCounter rows exist
+        await init_game_state()
 
-    # Ensure GameState(id=1) exists explicitly
-    await ensure_game_state_exists()
+        # Ensure GameState(id=1) exists explicitly
+        await ensure_game_state_exists()
 
-    # Telegram Bot Application
-    application = Application.builder().token(BOT_TOKEN).build()
+        # Telegram Bot Application
+        application = Application.builder().token(BOT_TOKEN).build()
 
-    # ✅ Register handlers
-    core.register_handlers(application)
-    free.register_handlers(application)
-    payments.register_handlers(application)
-    admin.register_handlers(application)
-    tryluck.register_handlers(application)
+        # ✅ Register handlers
+        core.register_handlers(application)
+        free.register_handlers(application)
+        payments.register_handlers(application)
+        admin.register_handlers(application)
+        tryluck.register_handlers(application)
 
-    # Initialize & start bot
-    await application.initialize()
-    await application.start()
-    logger.info("Telegram Application initialized & started ✅")
+        # Initialize & start bot
+        await application.initialize()
+        await application.start()
+        logger.info("Telegram Application initialized & started ✅")
 
-    # Add error handler
-    application.add_error_handler(tg_error_handler)
+        # Add error handler
+        application.add_error_handler(tg_error_handler)
 
-    # Webhook setup
-    webhook_url = f"{RENDER_EXTERNAL_URL}/telegram/webhook/{WEBHOOK_SECRET}"
-    await application.bot.set_webhook(webhook_url)
-    logger.info(f"Webhook set to {webhook_url} ✅")
+        # Webhook setup
+        webhook_url = f"{RENDER_EXTERNAL_URL}/telegram/webhook/{WEBHOOK_SECRET}"
+        await application.bot.set_webhook(webhook_url)
+        logger.info(f"Webhook set to {webhook_url} ✅")
 
-    # ✅ Start background tasks
-    await start_background_tasks()
-    logger.info("✅ Background tasks started.")
+        # ✅ Start background tasks
+        await start_background_tasks()
+        logger.info("✅ Background tasks started.")
+
+    except Exception as e:
+        clean_trace = re.sub(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", traceback.format_exc())
+        logger.error(f"Unhandled exception during startup:\n{clean_trace}")
+
 
 # -------------------------------------------------
 # Shutdown event
@@ -167,7 +205,9 @@ async def on_shutdown():
             await application.shutdown()
             logger.info("🛑 Telegram bot stopped cleanly.")
     except Exception as e:
-        logger.warning(f"⚠️ Error while shutting down: {e}")
+        clean_trace = re.sub(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", traceback.format_exc())
+        logger.warning(f"⚠️ Error while shutting down:\n{clean_trace}")
+
 
 # -------------------------------------------------
 # Telegram webhook endpoint
@@ -183,7 +223,7 @@ async def telegram_webhook(secret: str, request: Request):
     update = Update.de_json(payload, application.bot)
     await application.process_update(update)
     return {"ok": True}
-    
+  
 # ------------------------------------------------------
 # Webhook: called by Flutterwave after payment
 # ------------------------------------------------------
