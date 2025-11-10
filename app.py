@@ -2,6 +2,7 @@
 # app.py
 # =====================================================
 import os
+import re
 import logging
 import httpx
 import sys
@@ -21,6 +22,7 @@ from typing import Dict, Any, Optional
 
 from telegram import Update, Bot, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application
+from telegram.constants import TELEGRAM_API_URL
 from datetime import datetime, timezone
 
 # Local imports
@@ -44,10 +46,28 @@ from services.payments import (
     validate_webhook,
 )
 
+# ------------------------------------------------
+# 🔒 Secure Logging Filter (hide Telegram bot token)
+# -------------------------------------------------
+class TelegramTokenFilter(logging.Filter):
+    TOKEN_PATTERN = re.compile(r"(bot[0-9]+:[A-Za-z0-9_-]+)")
+
+    def filter(self, record):
+        # Mask bot tokens in log messages
+        record.msg = self.TOKEN_PATTERN.sub("bot<REDACTED>", str(record.msg))
+        if record.args:
+            record.args = tuple(self.TOKEN_PATTERN.sub("bot<REDACTED>", str(a)) for a in record.args)
+        return True
+
+# Apply this filter globally
+for name in logging.root.manager.loggerDict:
+    logging.getLogger(name).addFilter(TelegramTokenFilter())
+
 logger = logging.getLogger(__name__)
 
-router = APIRouter()
+logging.getLogger("httpx").setLevel(logging.WARNING)
 
+router = APIRouter()
 
 # -------------------------------------------------
 # Ensure GameState row exists
