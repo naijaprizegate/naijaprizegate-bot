@@ -605,7 +605,6 @@ async def flutterwave_redirect_status(
     tx_ref: str,
     session: AsyncSession = Depends(get_session),
 ):
-    from services.payments import resolve_payment_status, verify_payment
 
     success_url = f"https://t.me/{BOT_USERNAME}?start=payment_success_{tx_ref}"
     failed_url = f"https://t.me/{BOT_USERNAME}?start=payment_failed_{tx_ref}"
