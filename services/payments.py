@@ -269,6 +269,11 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
 
                 logger.info(f"✅ User {mask_sensitive(str(getattr(user,'tg_id', None)))} credited with {tries} tries for {mask_sensitive(tx_ref)}")
 
+            except Exception as e:
+                logger.exception(f"❌ Failed to credit user {payment.user_id} for tx_ref={tx_ref}: {e}")
+                await session.rollback()
+                return {"status": "error", "data": data, "credited": False, "error": str(e)}
+
         # update GlobalCounter
         try:
             counter_result = await session.execute(select(GlobalCounter).limit(1))
