@@ -386,6 +386,20 @@ async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(
 
     # Decide final status and trusted amount
     final_status = fw_data.get("status") if fw_data else status
+    
+    #  Normalize Flutterwave statuses to match DB constraint
+    status_map = {
+        "success": "successful",
+        "successful": "successful",
+        "completed": "successful",
+        "failed": "failed",
+        "cancelled": "expired",
+        "canceled": "expired",
+        "expired": "expired",
+        "pending": "pending",
+    }
+    final_status = status_map.get((final_status or "").lower().strip(), "pending")
+
     try:
         amount = int(float(fw_data.get("amount", amount))) if fw_data else int(float(amount))
     except Exception:
@@ -494,10 +508,16 @@ async def flutterwave_redirect(
         # Attempt verification if payment not found or still pending
         if (not payment or payment.status in (None, "pending")) and transaction_id:
             try:
-                bot_instance = Bot(token=BOT_TOKEN) if BOT_TOKEN else None
+                
                 fw_resp = await verify_payment(tx_ref, session, bot=None, credit=True)
                 fw_data = fw_resp.get("data") or {}
-                if fw_data.get("status") == "successful":
+                # ✅ Normalize status before comparing or saving
+                raw_status = (fw_data.get("status") or "").lower().strip()
+                if raw_status == "success":
+                    raw_status = "successful"
+
+                if raw_status == "successful":
+
                     credited = _calculate_tries_from_amount(int(fw_data.get("amount", 0)))
                     meta = fw_data.get("meta") or {}
                     raw_tg = meta.get("tg_id")
@@ -507,13 +527,24 @@ async def flutterwave_redirect(
                     except Exception:
                         tg = None
                     username = meta.get("username") or "Unknown"
-
+                    
                     # Upsert payment
                     existing = await _resolve_payment(tx_ref)
+
+                    # ✅ Normalize status before saving
+                    raw_status = (fw_data.get("status") or "").lower().strip()
+                    if raw_status == "success":
+                        raw_status = "successful"
+                    elif raw_status == "completed":
+                        raw_status = "successful"
+                    elif raw_status == "canceled":
+                        raw_status = "expired"
+
+                    # Then create or update payment
                     if not existing:
                         newp = Payment(
                             tx_ref=tx_ref,
-                            status="successful",
+                            status=raw_status,  # ✅ use normalized version here
                             credited_tries=credited,
                             flw_tx_id=str(fw_data.get("id")) if fw_data.get("id") else None,
                             user_id=None,
@@ -523,6 +554,7 @@ async def flutterwave_redirect(
                         )
                         session.add(newp)
                         await session.flush()
+
                         if tg:
                             user = await get_or_create_user(session, tg_id=tg, username=username)
                             await add_tries(session, user, credited, paid=True)
