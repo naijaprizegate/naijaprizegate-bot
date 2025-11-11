@@ -269,32 +269,6 @@ async def verify_payment(tx_ref: str, session: AsyncSession, bot=None, credit: b
 
                 logger.info(f"✅ User {mask_sensitive(str(getattr(user,'tg_id', None)))} credited with {tries} tries for {mask_sensitive(tx_ref)}")
 
-                # Telegram notification
-                if bot and user and getattr(user, "tg_id", None):
-                    deep_link = f"https://t.me/NaijaPrizeGateBot?start=payment_success_{tx_ref}"
-                    keyboard = [
-                        [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
-                        [InlineKeyboardButton("🎟️ My Tries", callback_data="mytries")],
-                        [InlineKeyboardButton("❌ Cancel", callback_data="cancel")]
-                    ]
-                    reply_markup = InlineKeyboardMarkup(keyboard)
-                    await bot.send_message(
-                        chat_id=user.tg_id,
-                        text=(
-                            f"✅ Payment of ₦{amount} verified!\n\n"
-                            f"You’ve been credited with <b>{tries}</b> tries 🎉\n\n"
-                            f"Ref: <code>{tx_ref}</code>\n\n"
-                            f"👉 [Return to Bot]({deep_link})"
-                        ),
-                        parse_mode="HTML",
-                        reply_markup=reply_markup,
-                        disable_web_page_preview=True
-                    )
-            except Exception as e:
-                logger.exception(f"❌ Failed to credit user {payment.user_id} for tx_ref={tx_ref}: {e}")
-                await session.rollback()
-                return {"status": "error", "data": data, "credited": False, "error": str(e)}
-
         # update GlobalCounter
         try:
             counter_result = await session.execute(select(GlobalCounter).limit(1))
