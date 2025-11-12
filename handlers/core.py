@@ -171,7 +171,7 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ---------------------------------------------------------
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = (
-        "🤔 Sorry, I didn’t understand that\.\n\n"
+        "🤔 Sorry, I didn’t understand that\n\n"
         "Use the menu buttons or try /help"
     )
     safe_text = md_escape(text)
