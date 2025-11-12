@@ -40,7 +40,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "3️⃣ Check your spins anytime with *Available Tries* 📊\n\n"
         "4️⃣ Stay tuned for *winners* on our channel 👉 [NaijaPrizeGate Winners](https://t.me/naijaprizegatewinners)\n\n"
         "⚡ Every spin brings you closer to the *Jackpot!* 👑\n\n"
-        "Ready to play\\? Tap *Try Luck* below and let’s roll\\! 🎯"
+        "Ready to play\\? Tap *Try Luck* below and let’s roll 🎯"
     )
 
 
