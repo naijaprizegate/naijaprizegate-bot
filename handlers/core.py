@@ -36,7 +36,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "•*📱 Samsung Galaxy S25 Ultra*\n\n"
         "⚡ Every spin brings you closer to the *Jackpot\\!* 👑\n\n"
         "Ready to play\\? Tap *Try Luck* below and let’s roll\\! 🎯\n\n"
-        "Want to know how it works\\? Click \help to know more"
+        "Want to know how it works\\? Click /help to know more\\!"
     )
 
 
