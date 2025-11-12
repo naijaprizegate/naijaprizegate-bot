@@ -93,7 +93,7 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "🆘 *Need a quick tour?*\n\n"
         "*NaijaPrizeGate* 🎰 is your gateway to *daily wins* 💸\n\n"
         "Here’s your control panel:\n\n"
-        "• `/start` → Begin or refresh menu\n\n"
+        "• Type or click on /start → To begin or refresh menu\n\n"
         "• Tap 🎰 *Try Luck* → To spin the wheel, feel the thrill, and earn prizes\n\n"
         "• Tap 💳 *Buy Tries* → To load up more spins & chase the jackpot\n\n"
         "• Tap 🎁 *Free Tries* → To earn free spins \\(invite friends and get more chances\\)\n\n"
