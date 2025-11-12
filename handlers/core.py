@@ -38,7 +38,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "1️⃣ Tap *Try Luck* to spin and earn prizes\n\n"
         "2️⃣ Need more spins? Tap *Buy Tries* 💳\n\n"
         "3️⃣ Check your spins anytime with *Available Tries* 📊\n\n"
-        "4️⃣ Stay tuned for *winners* on our channel 👉 [NaijaPrizeGate Winners](https://t.me/naijaprizegatewinners)\n\n"
+        "4️⃣ Stay tuned for *winners* follow us on our page 👉 [NaijaPrizeGate](https://https://web.facebook.com/Naijaprizegate/\n\n"
         "⚡ Every spin brings you closer to the *Jackpot\\!* 👑\n\n"
         "Ready to play\\? Tap *Try Luck* below and let’s roll\\! 🎯"
     )
