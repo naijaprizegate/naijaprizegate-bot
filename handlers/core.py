@@ -99,7 +99,7 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "• 🎁 *Free Tries* → Earn bonus spins \\(invite friends \\= more chances\\)\n\n"
         "• 📊 *Available Tries* → Track your spin balance\n\n"
         "🏆 *Jackpot* → Every spin moves us closer to the big win 🔥\n\n"
-        "👉 Don’t just stand at the gate… *spin your way through* 🚀\n"
+        "👉 Don’t just stand at the gate… *spin your way through* 🚀\n\n"
         "Hit it and be the next winner 🎉"
     )
 
