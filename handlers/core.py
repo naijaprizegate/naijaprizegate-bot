@@ -100,7 +100,7 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "• 📊 *Available Tries* → Track your spin balance\n\n"
         "🏆 *Jackpot* → Every spin moves us closer to the big win 🔥\n\n"
         "👉 Don’t just stand at the gate… *spin your way through* 🚀\n\n"
-        "Hit it and be the next winner 🎉"
+        "⚡Hit it and be the next winner 🎉"
     )
 
     keyboard = [
@@ -171,7 +171,7 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ---------------------------------------------------------
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = (
-        "🤔 Sorry, I didn’t understand that\n"
+        "🤔 Sorry, I didn’t understand that\\.\n\n"
         "Use the menu buttons or try /help"
     )
     safe_text = md_escape(text)
