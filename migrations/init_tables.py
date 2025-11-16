@@ -1,6 +1,6 @@
-# ==============================================================  
-# migrations/reset_db.py (FULL RESET VERSION)  
-# ==============================================================  
+# ==============================================================
+# migrations/reset_db.py (FULL RESET with new reward + trivia tables)
+# ==============================================================
 import os
 import json
 from datetime import datetime, timezone
@@ -31,8 +31,9 @@ def main():
         """)
         print("✅ All tables dropped")
 
+
         # ======================================================
-        # Ensure schema version tracking table
+        # schema_migrations table
         # ======================================================
         cur.execute("""
         CREATE TABLE schema_migrations (
@@ -44,17 +45,17 @@ def main():
         print("✅ schema_migrations table created")
 
         MIGRATION_NAME = "reset_all_tables"
-
         print(f"🔧 Starting migration: {MIGRATION_NAME}")
 
         cur.execute("CREATE EXTENSION IF NOT EXISTS pgcrypto;")
         print("✅ pgcrypto ensured")
 
+
         # ======================================================
-        # 1. Users
+        # 1. USERS
         # ======================================================
         cur.execute("""
-        CREATE TABLE IF NOT EXISTS users (
+        CREATE TABLE users (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
             tg_id BIGINT NOT NULL UNIQUE,
             username TEXT,
@@ -74,8 +75,9 @@ def main():
         """)
         print("✅ users table created")
 
+
         # ======================================================
-        # 2. Prize Winners
+        # 2. PRIZE WINNERS (existing jackpot winners)
         # ======================================================
         cur.execute("""
         CREATE TABLE prize_winners (
@@ -95,8 +97,9 @@ def main():
         cur.execute("CREATE INDEX idx_prize_winners_tg_id ON prize_winners(tg_id);")
         print("✅ prize_winners table created")
 
+
         # ======================================================
-        # 3. Global Counter
+        # 3. GLOBAL COUNTER
         # ======================================================
         cur.execute("""
         CREATE TABLE global_counter (
@@ -106,8 +109,9 @@ def main():
         """)
         print("✅ global_counter table created")
 
+
         # ======================================================
-        # 4. Plays
+        # 4. PLAYS
         # ======================================================
         cur.execute("""
         CREATE TABLE plays (
@@ -120,8 +124,9 @@ def main():
         cur.execute("CREATE INDEX idx_plays_user_id ON plays(user_id);")
         print("✅ plays table created")
 
+
         # ======================================================
-        # 5. Payments
+        # 5. PAYMENTS
         # ======================================================
         cur.execute("""
         CREATE TABLE payments (
@@ -140,8 +145,9 @@ def main():
         """)
         print("✅ payments table created")
 
+
         # ======================================================
-        # 6. Proofs
+        # 6. PROOFS
         # ======================================================
         cur.execute("""
         CREATE TABLE proofs (
@@ -154,8 +160,9 @@ def main():
         """)
         print("✅ proofs table created")
 
+
         # ======================================================
-        # 7. Transaction Logs
+        # 7. TRANSACTION LOGS
         # ======================================================
         cur.execute("""
         CREATE TABLE transaction_logs (
@@ -167,8 +174,9 @@ def main():
         """)
         print("✅ transaction_logs table created")
 
+
         # ======================================================
-        # 8. Game State
+        # 8. GAME STATE
         # ======================================================
         cur.execute("""
         CREATE TABLE game_state (
@@ -184,7 +192,90 @@ def main():
         print("✅ game_state table created")
 
         # ======================================================
-        # Mark migration as applied
+        # 9. NEW — Trivia Questions
+        # ======================================================
+        cur.execute("""
+        CREATE TABLE trivia_questions (
+            id SERIAL PRIMARY KEY,
+            category TEXT NOT NULL,
+            question TEXT NOT NULL,
+            options JSONB NOT NULL,
+            answer TEXT NOT NULL,
+            created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+        );
+        """)
+        print("✅ trivia_questions table created")
+
+
+        # ======================================================
+        # 10. NEW — User Answers
+        # ======================================================
+        cur.execute("""
+        CREATE TABLE user_answers (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+            question_id INT REFERENCES trivia_questions(id) ON DELETE CASCADE,
+            selected TEXT NOT NULL,
+            correct BOOLEAN DEFAULT FALSE,
+            created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+        );
+        """)
+        print("✅ user_answers table created")
+
+
+        # ======================================================
+        # 11. NEW — Spin Results
+        # ======================================================
+        cur.execute("""
+        CREATE TABLE spin_results (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+            tg_id BIGINT,
+            spin_type TEXT NOT NULL,           -- basic / premium
+            outcome TEXT NOT NULL,             -- lose / jackpot / airtime / earpod / speaker
+            extra_data JSONB DEFAULT '{}'::jsonb,
+            created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+        );
+        """)
+        print("✅ spin_results table created")
+
+
+        # ======================================================
+        # 12. NEW — Airtime Payouts
+        # ======================================================
+        cur.execute("""
+        CREATE TABLE airtime_payouts (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+            tg_id BIGINT NOT NULL,
+            phone_number TEXT NOT NULL,
+            amount INT DEFAULT 100,
+            status TEXT DEFAULT 'pending',
+            created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+            sent_at TIMESTAMPTZ
+        );
+        """)
+        print("✅ airtime_payouts table created")
+
+
+        # ======================================================
+        # 13. NEW — Non-Airtime Winners (earpods/speakers)
+        # ======================================================
+        cur.execute("""
+        CREATE TABLE non_airtime_winners (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+            tg_id BIGINT NOT NULL,
+            reward_type TEXT NOT NULL,       -- earpod / speaker
+            notified_admin BOOLEAN DEFAULT FALSE,
+            created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+        );
+        """)
+        print("✅ non_airtime_winners table created")
+
+
+        # ======================================================
+        # MIGRATION COMPLETED
         # ======================================================
         cur.execute(
             "INSERT INTO schema_migrations (name, meta) VALUES (%s, %s::jsonb)",
@@ -195,11 +286,12 @@ def main():
         )
 
         conn.commit()
-        print("🎉 Database fully reset and migration applied successfully ✅")
+        print("🎉 Migration applied successfully!")
 
     except Exception as e:
         conn.rollback()
-        print("❌ Migration failed — rolled back ❌ Error:", e)
+        print("❌ Migration failed — rolled back")
+        print("Error:", e)
         raise
 
     finally:
