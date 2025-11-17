@@ -1,14 +1,20 @@
-# =========================================================
-# trivia.py
-# =========================================================
+# ===========================================================
+# trivia.py (fixed for Render + correct data folder)
+# ===========================================================
 import json
 import random
 import os
 
-# Path → navigate from helpers/ to root folder where questions.json is located
-FILE_PATH = os.path.join(os.path.dirname(__file__), "..", "questions.json")
+# Base directory of the project (this file is inside /src)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Load questions at import time
+# Correct path to data/questions.json
+FILE_PATH = os.path.join(BASE_DIR, "..", "data", "questions.json")
+
+# Normalize path (important for Render)
+FILE_PATH = os.path.abspath(FILE_PATH)
+
+# Load questions at import
 with open(FILE_PATH, "r", encoding="utf-8") as f:
     TRIVIA_DATA = json.load(f)
 
