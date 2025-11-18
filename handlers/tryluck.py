@@ -8,6 +8,7 @@ import random
 import logging
 import re
 import telegram
+import time
 from sqlalchemy import text
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import (
@@ -53,12 +54,17 @@ def make_tryluck_keyboard():
     ])
 
 # ================================================================
-# STEP 1 — Send Trivia Question
+# STEP 1 — Send Trivia Question (with TIMER + COUNTDOWN + LOCK)
 # ================================================================
 async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    import time  # ensure time is available
+
     tg_user = update.effective_user
     logger.info(f"🔔 /tryluck triggered by {tg_user.id}")
 
+    # --------------------------
+    # Deduct tries
+    # --------------------------
     async with get_async_session() as session:
         async with session.begin():
             user = await get_or_create_user(
@@ -67,14 +73,12 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 username=tg_user.username
             )
 
-            # No tries?
             if (user.tries_paid + user.tries_bonus) <= 0:
                 return await update.effective_message.reply_text(
                     "😅 You have no tries left. Buy more or earn free ones.",
                     parse_mode="HTML"
                 )
 
-            # Deduct 1 try NOW
             if user.tries_bonus > 0:
                 user.tries_bonus -= 1
             else:
@@ -82,13 +86,19 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             await session.commit()
 
-    # Send trivia
+    # --------------------------
+    # Load trivia question
+    # --------------------------
     q = get_random_question()
 
     context.user_data["pending_trivia_qid"] = q["id"]
     context.user_data["pending_trivia_answer"] = q["answer"]
+    context.user_data["trivia_answered"] = False   # user hasn’t answered yet
 
-    text = (
+    # Deadline = now + 8 seconds
+    context.user_data["trivia_deadline"] = time.time() + 8
+
+    question_text = (
         f"🧠 *Trivia Time!*\n\n"
         f"{q['question']}\n\n"
         f"A. {q['options']['A']}\n"
@@ -97,6 +107,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"D. {q['options']['D']}"
     )
 
+    # Active answer buttons
     keyboard = InlineKeyboardMarkup([
         [
             InlineKeyboardButton("A", callback_data=f"ans_{q['id']}_A"),
@@ -108,24 +119,131 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ]
     ])
 
-    await update.effective_message.reply_text(
-        text, parse_mode="Markdown", reply_markup=keyboard
+    # Send trivia message
+    sent_msg = await update.effective_message.reply_text(
+        question_text,
+        parse_mode="Markdown",
+        reply_markup=keyboard
+    )
+
+    # ============================================================
+    # ⏳ COUNTDOWN DISPLAY (8 → 1)
+    # ============================================================
+    async def countdown(message, q_text, kb_markup, secs=8):
+        for remaining in range(secs, 0, -1):
+
+            # Stop countdown if user already answered
+            if context.user_data.get("trivia_answered", False):
+                break
+
+            try:
+                await message.edit_text(
+                    f"{q_text}\n\n⏳ *Time left:* {remaining}s",
+                    parse_mode="Markdown",
+                    reply_markup=kb_markup
+                )
+            except telegram.error.BadRequest:
+                # message was edited elsewhere → stop countdown
+                break
+            except Exception:
+                break
+
+            await asyncio.sleep(1)
+
+    asyncio.create_task(countdown(sent_msg, question_text, keyboard))
+
+    # ============================================================
+    # 🕒 TIMEOUT TASK (locks buttons after 8 seconds)
+    # ============================================================
+    old_timer = context.user_data.get("trivia_timer")
+    if isinstance(old_timer, asyncio.Task) and not old_timer.done():
+        old_timer.cancel()
+
+    context.user_data["trivia_timer"] = asyncio.create_task(
+        trivia_timeout_task(
+            update,
+            context,
+            sent_msg.message_id,
+            timeout_seconds=8
+        )
     )
 
 
 # ================================================================
-# STEP 2 — Handle Trivia Answer
+# ⏱️ TRIVIA TIMEOUT TASK
+# ================================================================
+async def trivia_timeout_task(update: Update, context: ContextTypes.DEFAULT_TYPE, message_id: int, timeout_seconds: int):
+    """Automatically triggers BASIC spin if user fails to answer within time."""
+    await asyncio.sleep(timeout_seconds)
+
+    # If already answered — do nothing
+    if context.user_data.get("trivia_answered"):
+        return
+
+    # Mark as answered (to block further input)
+    context.user_data["trivia_answered"] = True
+
+    chat_id = update.effective_chat.id
+
+    try:
+        # Inform user time is up
+        await context.bot.edit_message_text(
+            chat_id=chat_id,
+            message_id=message_id,
+            text="⏳ *Time’s up!* You didn’t answer in time.\n\nYou get a **Basic Spin** 🎰🔥",
+            parse_mode="Markdown"
+        )
+    except:
+        pass
+
+    # Perform the spin as BASIC
+    context.user_data["is_premium_spin"] = False  # force basic spin
+    await run_spin_after_trivia(update, context)
+
+
+# ================================================================
+# STEP 2 — Handle Trivia Answer (with lock + expired protection)
 # ================================================================
 async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
 
+    # ---------------------------------------------------------
+    # ❌ If user tries answering AFTER time expired or answered
+    # ---------------------------------------------------------
+    if context.user_data.get("trivia_answered", False):
+        return await query.edit_message_text(
+            "⏳ Time already expired — you get a **Basic Spin** 🎰🔥",
+            parse_mode="Markdown"
+        )
+
+    # ---------------------------------------------------------
+    # 🔒 LOCK NOW — prevents double clicking
+    # ---------------------------------------------------------
+    context.user_data["trivia_answered"] = True
+
+    # ---------------------------------------------------------
+    # ⛔ Cancel countdown timeout task
+    # ---------------------------------------------------------
+    timer = context.user_data.pop("trivia_timer", None)
+    if isinstance(timer, asyncio.Task) and not timer.done():
+        try:
+            timer.cancel()
+        except:
+            pass
+
+    # ---------------------------------------------------------
+    # 🎯 Evaluate Answer
+    # ---------------------------------------------------------
     _, qid, selected = query.data.split("_")
     correct = context.user_data.get("pending_trivia_answer")
 
     is_correct = (selected == correct)
     context.user_data["is_premium_spin"] = is_correct
 
+    # ---------------------------------------------------------
+    # 📝 Respond to user
+    # ---------------------------------------------------------
     if is_correct:
         await query.edit_message_text(
             "🎯 *Correct!* You unlocked a **Premium Spin** 🔥\n\nSpinning...",
@@ -133,10 +251,13 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
         )
     else:
         await query.edit_message_text(
-            "❌ Wrong — but you still get a **Basic Spin** 🎰🔥\n\nSpinning...",
+            "❌ Wrong — You get a **Basic Spin** 🎰🔥\n\nSpinning...",
             parse_mode="Markdown"
         )
 
+    # ---------------------------------------------------------
+    # 🎰 Continue to spin phase
+    # ---------------------------------------------------------
     await run_spin_after_trivia(update, context)
 
 
@@ -486,6 +607,39 @@ async def show_tries_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         parse_mode="MarkdownV2",
         reply_markup=keyboard,
     )
+
+# ================================================================
+# ⏳ TRIVIA TIMEOUT TASK (locks buttons + forces Basic Spin)
+# ================================================================
+async def trivia_timeout_task(update, context, message_id, timeout_seconds=8):
+    try:
+        # Wait for the allowed time
+        await asyncio.sleep(timeout_seconds)
+
+        # If the user already answered, stop
+        if context.user_data.get("trivia_answered", False):
+            return
+
+        # Mark as answered + lock trivia (prevents buttons being used)
+        context.user_data["trivia_answered"] = True
+        context.user_data["is_premium_spin"] = False   # force BASIC spin
+
+        # Send timeout message
+        try:
+            await update.effective_chat.send_message(
+                "⏳ *Time is up!* You didn’t answer fast enough.\n"
+                "You'll get a **Basic Spin** 🎰🔥",
+                parse_mode="Markdown"
+            )
+        except Exception:
+            pass
+
+        # Run the spin automatically
+        await run_spin_after_trivia(update, context)
+
+    except asyncio.CancelledError:
+        # This happens when the user answers before timeout
+        return
 
 
 # ================================================================
