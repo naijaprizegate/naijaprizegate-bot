@@ -98,7 +98,7 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "*NaijaPrizeGate* 🎰 is your gateway to *daily wins* 💸\n\n"
         "Here's how it works:\n\n"
         "🧠 Answer a quick *Trivia Question*\n\n"
-        "⏳ You have only *8 seconds* to choose an answer!\n\n"
+        "⏳ You have only *8 seconds* to choose an answer\n\n"
         "🎯 Correct answer → *Premium Spin* (higher chances)\n\n"
         "🎰 Wrong/Expired → *Basic Spin*\n\n"
         "Here’s your control panel:\n\n"
