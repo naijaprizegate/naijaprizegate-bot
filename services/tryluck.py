@@ -4,6 +4,7 @@
 import os
 import logging
 import random
+import time
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 from models import Play, User, GameState
@@ -163,14 +164,21 @@ async def spin_logic(
 
     outcome = await consume_and_spin(user, session)
 
-    # ----------------- JACKPOT (UNCHANGED) ----------------------
-    if outcome["winner"] is True:
+    # -------------------------------------------------------------
+    # 🚨 Fix: Protect against "no_tries" return to avoid KeyError
+    # -------------------------------------------------------------
+    if outcome.get("result") == "no_tries":
+        # Treat like loss (prevents crash)
+        return "lose"
+
+    # ----------------- JACKPOT (UNCHANGED) -----------------------
+    if outcome.get("winner") is True:
         return "jackpot"
 
-    # ----------------- SMALL REWARDS ----------------------------
+    # ----------------- SMALL REWARDS -----------------------------
     reward = get_spin_reward(is_premium_spin)
 
-    # ----------------- MULTI-SIZE AIRTIME -----------------------
+    # ----------------- MULTI-SIZE AIRTIME ------------------------
     if reward.startswith("airtime_"):
         amount = int(reward.split("_")[1])
 
@@ -186,7 +194,7 @@ async def spin_logic(
             }
         )
 
-        return reward   # e.g. "airtime_50"
+        return reward   # "airtime_50" / "airtime_100" / "airtime_200"
 
     # ----------------- EARPod -----------------------------------
     if reward == "earpod":
@@ -212,3 +220,4 @@ async def spin_logic(
 
     # ----------------- NO REWARD --------------------------------
     return "lose"
+
