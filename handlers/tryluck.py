@@ -95,8 +95,8 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["pending_trivia_answer"] = q["answer"]
     context.user_data["trivia_answered"] = False   # user hasn’t answered yet
 
-    # Deadline = now + 8 seconds
-    context.user_data["trivia_deadline"] = time.time() + 8
+    # Deadline = now + 20 seconds
+    context.user_data["trivia_deadline"] = time.time() + 20
 
     question_text = (
         f"🧠 *Trivia Time!*\n\n"
@@ -127,9 +127,9 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
     # ============================================================
-    # ⏳ COUNTDOWN DISPLAY (8 → 1)
+    # ⏳ COUNTDOWN DISPLAY (20 → 1)
     # ============================================================
-    async def countdown(message, q_text, kb_markup, secs=8):
+    async def countdown(message, q_text, kb_markup, secs=20):
         for remaining in range(secs, 0, -1):
 
             # Stop countdown if user already answered
@@ -153,7 +153,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     asyncio.create_task(countdown(sent_msg, question_text, keyboard))
 
     # ============================================================
-    # 🕒 TIMEOUT TASK (locks buttons after 8 seconds)
+    # 🕒 TIMEOUT TASK (locks buttons after 20 seconds)
     # ============================================================
     old_timer = context.user_data.get("trivia_timer")
     if isinstance(old_timer, asyncio.Task) and not old_timer.done():
@@ -164,7 +164,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             update,
             context,
             sent_msg.message_id,
-            timeout_seconds=8
+            timeout_seconds=20
         )
     )
 
