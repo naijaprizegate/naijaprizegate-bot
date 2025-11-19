@@ -1,0 +1,1122 @@
+[
+  {
+    "id": 1,
+    "category": "nigeria_history",
+    "question": "Who was the first President of Nigeria?",
+    "options": {"A": "Tafawa Balewa", "B": "Nnamdi Azikiwe", "C": "Olusegun Obasanjo", "D": "Ahmadu Bello"},
+    "answer": "B"
+  },
+  {
+    "id": 2,
+    "category": "nigeria_history",
+    "question": "When did Nigeria gain independence?",
+    "options": {"A": "1960", "B": "1970", "C": "1950", "D": "1980"},
+    "answer": "A"
+  },
+  {
+    "id": 3,
+    "category": "nigeria_history",
+    "question": "Which city was Nigeria’s first capital?",
+    "options": {"A": "Lagos", "B": "Abuja", "C": "Kaduna", "D": "Benin"},
+    "answer": "A"
+  },
+  {
+    "id": 4,
+    "category": "nigeria_history",
+    "question": "What is Nigeria’s national currency?",
+    "options": {"A": "Cedi", "B": "Dollar", "C": "Naira", "D": "Pound"},
+    "answer": "C"
+  },
+  {
+    "id": 5,
+    "category": "nigeria_history",
+    "question": "Who was Nigeria’s first Prime Minister?",
+    "options": {"A": "Obafemi Awolowo", "B": "Tafawa Balewa", "C": "Yakubu Gowon", "D": "Nnamdi Azikiwe"},
+    "answer": "B"
+  },
+  {
+    "id": 6,
+    "category": "nigeria_history",
+    "question": "Which region was led by Obafemi Awolowo?",
+    "options": {"A": "Northern Region", "B": "Eastern Region", "C": "Western Region", "D": "Mid-West Region"},
+    "answer": "C"
+  },
+  {
+    "id": 7,
+    "category": "nigeria_history",
+    "question": "What year did Nigeria become a republic?",
+    "options": {"A": "1963", "B": "1960", "C": "1999", "D": "1983"},
+    "answer": "A"
+  },
+  {
+    "id": 8,
+    "category": "nigeria_history",
+    "question": "Who created Nigeria’s current capital, Abuja?",
+    "options": {"A": "Obasanjo", "B": "Babangida", "C": "Gowon", "D": "Shagari"},
+    "answer": "B"
+  },
+  {
+    "id": 9,
+    "category": "nigeria_history",
+    "question": "Who was the military Head of State during the Nigerian Civil War?",
+    "options": {"A": "Abacha", "B": "Gowon", "C": "Obasanjo", "D": "Ironsi"},
+    "answer": "B"
+  },
+  {
+    "id": 10,
+    "category": "nigeria_history",
+    "question": "Which year did the Nigerian Civil War end?",
+    "options": {"A": "1967", "B": "1970", "C": "1965", "D": "1975"},
+    "answer": "B"
+  },
+  {
+    "id": 11,
+    "category": "nigeria_history",
+    "question": "Which empire was prominent in the Kano region?",
+    "options": {"A": "Benin Empire", "B": "Oyo Empire", "C": "Kanem-Bornu Empire", "D": "Mali Empire"},
+    "answer": "C"
+  },
+  {
+    "id": 12,
+    "category": "nigeria_history",
+    "question": "Who was known as the ‘Sardauna of Sokoto’?",
+    "options": {"A": "Yakubu Gowon", "B": "Ahmadu Bello", "C": "Tafawa Balewa", "D": "Shehu Shagari"},
+    "answer": "B"
+  },
+  {
+    "id": 13,
+    "category": "nigeria_history",
+    "question": "Nigeria is made up of how many states?",
+    "options": {"A": "30", "B": "36", "C": "40", "D": "28"},
+    "answer": "B"
+  },
+  {
+    "id": 14,
+    "category": "nigeria_history",
+    "question": "What is the nickname of Nigeria?",
+    "options": {"A": "Heart of Africa", "B": "Lion of Africa", "C": "Giant of Africa", "D": "Pride of Africa"},
+    "answer": "C"
+  },
+  {
+    "id": 15,
+    "category": "nigeria_history",
+    "question": "The Nigerian flag was designed by?",
+    "options": {"A": "Michael Jackson", "B": "Taiwo Akinkunmi", "C": "Nnamdi Azikiwe", "D": "Ken Saro-Wiwa"},
+    "answer": "B"
+  },
+  {
+    "id": 16,
+    "category": "nigeria_history",
+    "question": "The green color on the Nigerian flag stands for?",
+    "options": {"A": "Peace", "B": "Agriculture", "C": "Unity", "D": "Strength"},
+    "answer": "B"
+  },
+  {
+    "id": 17,
+    "category": "nigeria_history",
+    "question": "Which year did Abuja become the capital?",
+    "options": {"A": "1991", "B": "1980", "C": "2000", "D": "1999"},
+    "answer": "A"
+  },
+  {
+    "id": 18,
+    "category": "nigeria_history",
+    "question": "Who discovered the River Niger?",
+    "options": {"A": "Clapperton", "B": "Mungo Park", "C": "Lord Lugard", "D": "John Hawkins"},
+    "answer": "B"
+  },
+  {
+    "id": 19,
+    "category": "nigeria_history",
+    "question": "Who amalgamated Nigeria?",
+    "options": {"A": "Harold Wilson", "B": "Lord Lugard", "C": "Queen Elizabeth", "D": "Obasanjo"},
+    "answer": "B"
+  },
+  {
+    "id": 20,
+    "category": "nigeria_history",
+    "question": "Who was Nigeria’s first military Head of State?",
+    "options": {"A": "Aguiyi-Ironsi", "B": "Gowon", "C": "Murtala Mohammed", "D": "Abacha"},
+    "answer": "A"
+  },
+  {
+    "id": 21,
+    "category": "nigeria_history",
+    "question": "Which region was led by Nnamdi Azikiwe?",
+    "options": {"A": "Northern", "B": "Eastern", "C": "Western", "D": "Southern"},
+    "answer": "B"
+  },
+  {
+    "id": 22,
+    "category": "nigeria_history",
+    "question": "Who led the Sokoto Caliphate?",
+    "options": {"A": "Usman dan Fodio", "B": "Ahmadu Bello", "C": "Shehu Shagari", "D": "Yakubu Gowon"},
+    "answer": "A"
+  },
+  {
+    "id": 23,
+    "category": "nigeria_history",
+    "question": "Which empire is associated with Queen Idia?",
+    "options": {"A": "Oyo Empire", "B": "Benin Empire", "C": "Kanem-Bornu", "D": "Songhai Empire"},
+    "answer": "B"
+  },
+  {
+    "id": 24,
+    "category": "nigeria_history",
+    "question": "What is the largest ethnic group in Nigeria?",
+    "options": {"A": "Yoruba", "B": "Igbo", "C": "Hausa-Fulani", "D": "Tiv"},
+    "answer": "C"
+  },
+  {
+    "id": 25,
+    "category": "nigeria_history",
+    "question": "Which pre-colonial kingdom was famous for bronze works?",
+    "options": {"A": "Benin Kingdom", "B": "Nupe Kingdom", "C": "Kanuri Kingdom", "D": "Ijebu Kingdom"},
+    "answer": "A"
+  },
+  {
+    "id": 26,
+    "category": "nigeria_history",
+    "question": "When was the amalgamation of Nigeria carried out?",
+    "options": {"A": "1945", "B": "1914", "C": "1930", "D": "1922"},
+    "answer": "B"
+  },
+  {
+    "id": 27,
+    "category": "nigeria_history",
+    "question": "Who was the first Executive President of Nigeria?",
+    "options": {"A": "Obasanjo", "B": "Shehu Shagari", "C": "Jonathan", "D": "Buhari"},
+    "answer": "B"
+  },
+  {
+    "id": 28,
+    "category": "nigeria_history",
+    "question": "Which state is known as the 'Coal City'?",
+    "options": {"A": "Enugu", "B": "Lagos", "C": "Kano", "D": "Jos"},
+    "answer": "A"
+  },
+  {
+    "id": 29,
+    "category": "nigeria_history",
+    "question": "Which group is known for the Nok culture?",
+    "options": {"A": "Niger Delta", "B": "Northern Nigeria", "C": "South West Nigeria", "D": "Eastern Nigeria"},
+    "answer": "B"
+  },
+  {
+    "id": 30,
+    "category": "nigeria_history",
+    "question": "Who was known as 'Zik of Africa'?",
+    "options": {"A": "Awolowo", "B": "Azikiwe", "C": "Balewa", "D": "Ojukwu"},
+    "answer": "B"
+  },
+  {
+    "id": 31,
+    "category": "nigeria_history",
+    "question": "Which city is the commercial capital of Nigeria?",
+    "options": {"A": "Ibadan", "B": "Lagos", "C": "Enugu", "D": "Kano"},
+    "answer": "B"
+  },
+  {
+    "id": 32,
+    "category": "nigeria_history",
+    "question": "Who founded the Oyo Empire?",
+    "options": {"A": "Oranyan", "B": "Oduduwa", "C": "Shango", "D": "Afonja"},
+    "answer": "A"
+  },
+  {
+    "id": 33,
+    "category": "nigeria_history",
+    "question": "Which Nigerian hero led the Biafran side during the Civil War?",
+    "options": {"A": "Awolowo", "B": "Ojukwu", "C": "Ironsi", "D": "Balewa"},
+    "answer": "B"
+  },
+  {
+    "id": 34,
+    "category": "nigeria_history",
+    "question": "Which state is known as the 'Gateway State'?",
+    "options": {"A": "Ogun", "B": "Osun", "C": "Ekiti", "D": "Ondo"},
+    "answer": "A"
+  },
+  {
+    "id": 35,
+    "category": "nigeria_history",
+    "question": "Which constitution introduced Federalism to Nigeria?",
+    "options": {"A": "Clifford", "B": "Macpherson", "C": "Lyttleton", "D": "Independence Constitution"},
+    "answer": "C"
+  },
+  {
+    "id": 36,
+    "category": "nigeria_history",
+    "question": "Which Nigerian leader launched the War Against Indiscipline?",
+    "options": {"A": "Gowon", "B": "Buhari", "C": "Abacha", "D": "Obasanjo"},
+    "answer": "B"
+  },
+  {
+    "id": 37,
+    "category": "nigeria_history",
+    "question": "The Aba Women's Riot took place in what year?",
+    "options": {"A": "1929", "B": "1931", "C": "1914", "D": "1945"},
+    "answer": "A"
+  },
+  {
+    "id": 38,
+    "category": "nigeria_history",
+    "question": "Which region first introduced free primary education?",
+    "options": {"A": "Eastern Region", "B": "Northern Region", "C": "Western Region", "D": "Mid-West Region"},
+    "answer": "C"
+  },
+  {
+    "id": 39,
+    "category": "nigeria_history",
+    "question": "Which governor-general handed over power during independence?",
+    "options": {"A": "Hugh Clifford", "B": "Lord Lugard", "C": "James Robertson", "D": "Bernard Bourdillon"},
+    "answer": "C"
+  },
+  {
+    "id": 40,
+    "category": "nigeria_history",
+    "question": "Where was the first television station in Africa founded?",
+    "options": {"A": "Lagos", "B": "Kaduna", "C": "Ibadan", "D": "Enugu"},
+    "answer": "C"
+  },
+  {
+    "id": 41,
+    "category": "nigeria_entertainment",
+    "question": "Who is known as the 'Queen of Afrobeats'?",
+    "options": {"A": "Tiwa Savage", "B": "Yemi Alade", "C": "Simi", "D": "Tems"},
+    "answer": "A"
+  },
+  {
+    "id": 42,
+    "category": "nigeria_entertainment",
+    "question": "Which Nigerian artist sang 'Fall'?",
+    "options": {"A": "Wizkid", "B": "Davido", "C": "Olamide", "D": "Rema"},
+    "answer": "B"
+  },
+  {
+    "id": 43,
+    "category": "nigeria_entertainment",
+    "question": "Who starred as 'Jenifa' in the comedy series?",
+    "options": {"A": "Funke Akindele", "B": "Mercy Johnson", "C": "Ini Edo", "D": "Tonto Dikeh"},
+    "answer": "A"
+  },
+  {
+    "id": 44,
+    "category": "nigeria_entertainment",
+    "question": "Which musician is known as 'Starboy'?",
+    "options": {"A": "Kizz Daniel", "B": "Wizkid", "C": "Burna Boy", "D": "Adekunle Gold"},
+    "answer": "B"
+  },
+  {
+    "id": 45,
+    "category": "nigeria_entertainment",
+    "question": "Who released the global hit 'Last Last'?",
+    "options": {"A": "Burna Boy", "B": "Rema", "C": "Fireboy DML", "D": "Pheelz"},
+    "answer": "A"
+  },
+  {
+    "id": 46,
+    "category": "nigeria_entertainment",
+    "question": "Which movie is considered Nollywood’s breakout classic?",
+    "options": {"A": "King of Boys", "B": "Living in Bondage", "C": "The Wedding Party", "D": "Osuofia in London"},
+    "answer": "B"
+  },
+  {
+    "id": 47,
+    "category": "nigeria_entertainment",
+    "question": "Who sang the hit track 'Dumebi'?",
+    "options": {"A": "Ruger", "B": "Rema", "C": "Joeboy", "D": "Korede Bello"},
+    "answer": "B"
+  },
+  {
+    "id": 48,
+    "category": "nigeria_entertainment",
+    "question": "Which Nigerian comedian is known as 'Basketmouth'?",
+    "options": {"A": "Bright Okpocha", "B": "AY Makun", "C": "Seyi Law", "D": "Bovi"},
+    "answer": "A"
+  },
+  {
+    "id": 49,
+    "category": "nigeria_entertainment",
+    "question": "Which artist is famous for the song 'Ojuelegba'?",
+    "options": {"A": "Davido", "B": "Wizkid", "C": "Kizz Daniel", "D": "Tekno"},
+    "answer": "B"
+  },
+  {
+    "id": 50,
+    "category": "nigeria_entertainment",
+    "question": "Who played the lead role in 'King of Boys'?",
+    "options": {"A": "Genevieve Nnaji", "B": "Sola Sobowale", "C": "Tonto Dikeh", "D": "Rita Dominic"},
+    "answer": "B"
+  },
+  {
+    "id": 51,
+    "category": "nigeria_entertainment",
+    "question": "Which female artist released 'Johnny'?",
+    "options": {"A": "Tiwa Savage", "B": "Yemi Alade", "C": "Simi", "D": "Tems"},
+    "answer": "B"
+  },
+  {
+    "id": 52,
+    "category": "nigeria_entertainment",
+    "question": "Who sang 'Essence' with Wizkid?",
+    "options": {"A": "Tems", "B": "Tiwa Savage", "C": "Fave", "D": "Ayra Starr"},
+    "answer": "A"
+  },
+  {
+    "id": 53,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian reality TV show?",
+    "options": {"A": "Love Island", "B": "Big Brother Naija", "C": "Survivor Kenya", "D": "The Voice Canada"},
+    "answer": "B"
+  },
+  {
+    "id": 54,
+    "category": "nigeria_entertainment",
+    "question": "Which comedian created the character 'Mama Chinedu'?",
+    "options": {"A": "Sabinus", "B": "Broda Shaggi", "C": "Mr Macaroni", "D": "Taaooma"},
+    "answer": "B"
+  },
+  {
+    "id": 55,
+    "category": "nigeria_entertainment",
+    "question": "Which Nigerian singer is nicknamed 'African Giant'?",
+    "options": {"A": "Olamide", "B": "Burna Boy", "C": "D'banj", "D": "2Baba"},
+    "answer": "B"
+  },
+  {
+    "id": 56,
+    "category": "nigeria_entertainment",
+    "question": "Who is the vocalist behind 'Duduke'?",
+    "options": {"A": "Simi", "B": "Tems", "C": "Waje", "D": "Teni"},
+    "answer": "A"
+  },
+  {
+    "id": 57,
+    "category": "nigeria_entertainment",
+    "question": "Which Nollywood actress starred in ‘Lionheart’?",
+    "options": {"A": "Ini Edo", "B": "Genevieve Nnaji", "C": "Funke Akindele", "D": "Rita Dominic"},
+    "answer": "B"
+  },
+  {
+    "id": 58,
+    "category": "nigeria_entertainment",
+    "question": "Which artist sang 'Calm Down'?",
+    "options": {"A": "Fireboy", "B": "Wizkid", "C": "Rema", "D": "CKay"},
+    "answer": "C"
+  },
+  {
+    "id": 59,
+    "category": "nigeria_entertainment",
+    "question": "Who created the line 'You are doing well!'?",
+    "options": {"A": "Mr Macaroni", "B": "Bovi", "C": "AY", "D": "Seyi Law"},
+    "answer": "A"
+  },
+  {
+    "id": 60,
+    "category": "nigeria_entertainment",
+    "question": "Which movie series features the characters 'Aki and Pawpaw'?",
+    "options": {"A": "The Johnsons", "B": "Aki Na Ukwa", "C": "Jenifa's Diary", "D": "Chief Daddy"},
+    "answer": "B"
+  },
+  {
+    "id": 61,
+    "category": "nigeria_entertainment",
+    "question": "Who sang 'Love Nwantiti'?",
+    "options": {"A": "CKay", "B": "Rema", "C": "Joeboy", "D": "Omah Lay"},
+    "answer": "A"
+  },
+  {
+    "id": 62,
+    "category": "nigeria_entertainment",
+    "question": "Which artist released 'For My Hand' featuring Ed Sheeran?",
+    "options": {"A": "Burna Boy", "B": "Wizkid", "C": "Fireboy", "D": "Rema"},
+    "answer": "A"
+  },
+  {
+    "id": 63,
+    "category": "nigeria_entertainment",
+    "question": "What is the name of the Nigerian annual music awards show?",
+    "options": {"A": "Headies", "B": "Grammys", "C": "AMVCAs", "D": "Oscars"},
+    "answer": "A"
+  },
+  {
+    "id": 64,
+    "category": "nigeria_entertainment",
+    "question": "Which comedian created the character 'Daddy Wa'?",
+    "options": {"A": "Taaooma", "B": "Mr Macaroni", "C": "Sabinus", "D": "Bovi"},
+    "answer": "B"
+  },
+  {
+    "id": 65,
+    "category": "nigeria_entertainment",
+    "question": "Which Nigerian actress is popularly known as ‘Omotola’?",
+    "options": {"A": "Omotola Jalade-Ekeinde", "B": "Omoni Oboli", "C": "Omowunmi Dada", "D": "Mercy Aigbe"},
+    "answer": "A"
+  },
+  {
+    "id": 66,
+    "category": "nigeria_entertainment",
+    "question": "Which singer released 'Peru'?",
+    "options": {"A": "Fireboy DML", "B": "Olamide", "C": "Adekunle Gold", "D": "Kizz Daniel"},
+    "answer": "A"
+  },
+  {
+    "id": 67,
+    "category": "nigeria_entertainment",
+    "question": "Who acted as 'Osuofia'?",
+    "options": {"A": "Nkem Owoh", "B": "John Okafor", "C": "Chiwetalu Agu", "D": "Kanayo O. Kanayo"},
+    "answer": "A"
+  },
+  {
+    "id": 68,
+    "category": "nigeria_entertainment",
+    "question": "Which artist released the album 'Made in Lagos'?",
+    "options": {"A": "Wizkid", "B": "Burna Boy", "C": "Davido", "D": "Phyno"},
+    "answer": "A"
+  },
+  {
+    "id": 69,
+    "category": "nigeria_entertainment",
+    "question": "Which female artist released 'Rush'?",
+    "options": {"A": "Ayra Starr", "B": "Tems", "C": "Teni", "D": "Simi"},
+    "answer": "A"
+  },
+  {
+    "id": 70,
+    "category": "nigeria_entertainment",
+    "question": "Which comedian is popularly called 'Sabinus'?",
+    "options": {"A": "Chukwuemeka Emmanuel", "B": "Bright Okpocha", "C": "Debo Adebayo", "D": "Samuel Perry"},
+    "answer": "A"
+  },
+  {
+    "id": 71,
+    "category": "nigeria_entertainment",
+    "question": "Which music group sang 'Do Me'?",
+    "options": {"A": "Bracket", "B": "P-Square", "C": "Styl-Plus", "D": "Zule Zoo"},
+    "answer": "B"
+  },
+  {
+    "id": 72,
+    "category": "nigeria_entertainment",
+    "question": "Who is popularly known as 'Mama G'?",
+    "options": {"A": "Patience Ozokwor", "B": "Ngozi Ezeonu", "C": "Eucharia Anunobi", "D": "Rita Edochie"},
+    "answer": "A"
+  },
+  {
+    "id": 73,
+    "category": "nigeria_entertainment",
+    "question": "Who sang 'Away'?",
+    "options": {"A": "Omah Lay", "B": "Rema", "C": "Ayra Starr", "D": "Davido"},
+    "answer": "A"
+  },
+  {
+    "id": 74,
+    "category": "nigeria_entertainment",
+    "question": "Who acted as 'Mr Ibu'?",
+    "options": {"A": "John Okafor", "B": "Nkem Owoh", "C": "Chiwetalu Agu", "D": "Kanayo O. Kanayo"},
+    "answer": "A"
+  },
+  {
+    "id": 75,
+    "category": "nigeria_entertainment",
+    "question": "Which award show celebrates African film and TV yearly?",
+    "options": {"A": "AMVCA", "B": "Headies", "C": "Soundcity Awards", "D": "NEA"},
+    "answer": "A"
+  },
+  {
+    "id": 76,
+    "category": "nigeria_entertainment",
+    "question": "Who released the hit song 'Buga'?",
+    "options": {"A": "Kizz Daniel", "B": "Patoranking", "C": "Joeboy", "D": "Fireboy"},
+    "answer": "A"
+  },
+  {
+    "id": 77,
+    "category": "nigeria_entertainment",
+    "question": "Which actress starred in 'Wedding Party'?",
+    "options": {"A": "Adesua Etomi", "B": "Mercy Johnson", "C": "Omoni Oboli", "D": "Chioma Chukwuka"},
+    "answer": "A"
+  },
+  {
+    "id": 78,
+    "category": "nigeria_entertainment",
+    "question": "Who sang 'High' with Davido?",
+    "options": {"A": "Olamide", "B": "Adekunle Gold", "C": "Tekno", "D": "Runtown"},
+    "answer": "B"
+  },
+  {
+    "id": 79,
+    "category": "nigeria_entertainment",
+    "question": "Which artist is known for the hit 'You Go Kill Me'?",
+    "options": {"A": "Sarkodie", "B": "Phyno", "C": "Olamide", "D": "Davido"},
+    "answer": "A"
+  },
+  {
+    "id": 80,
+    "category": "nigeria_entertainment",
+    "question": "Which actress plays 'Nwunye Odogwu' in skits?",
+    "options": {"A": "Taaooma", "B": "Ashmusy", "C": "KieKie", "D": "Layi Wasabi"},
+    "answer": "C"
+  },
+  {
+    "id": 81,
+    "category": "football",
+    "question": "Who is Nigeria’s all-time top scorer?",
+    "options": {"A": "Obafemi Martins", "B": "Rashidi Yekini", "C": "Kanu Nwankwo", "D": "Victor Osimhen"},
+    "answer": "B"
+  },
+  {
+    "id": 82,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {"A": "Brazil", "B": "France", "C": "Argentina", "D": "Germany"},
+    "answer": "C"
+  },
+  {
+    "id": 83,
+    "category": "football",
+    "question": "Who is the captain of the Nigerian Super Eagles (2023)?",
+    "options": {"A": "Ahmed Musa", "B": "Wilfred Ndidi", "C": "William Troost-Ekong", "D": "Victor Osimhen"},
+    "answer": "A"
+  },
+  {
+    "id": 84,
+    "category": "football",
+    "question": "Which Nigerian player won the 1995 African Player of the Year?",
+    "options": {"A": "Daniel Amokachi", "B": "Jay-Jay Okocha", "C": "Kanu Nwankwo", "D": "Rashidi Yekini"},
+    "answer": "C"
+  },
+  {
+    "id": 85,
+    "category": "football",
+    "question": "Which club does Victor Osimhen play for (2023)?",
+    "options": {"A": "Chelsea", "B": "Napoli", "C": "PSG", "D": "Manchester United"},
+    "answer": "B"
+  },
+  {
+    "id": 86,
+    "category": "football",
+    "question": "Which country hosts the Premier League?",
+    "options": {"A": "Spain", "B": "Germany", "C": "Italy", "D": "England"},
+    "answer": "D"
+  },
+  {
+    "id": 87,
+    "category": "football",
+    "question": "Who is widely called ‘The GOAT’ in football debates?",
+    "options": {"A": "Lewandowski", "B": "Messi", "C": "Modrić", "D": "Hazard"},
+    "answer": "B"
+  },
+  {
+    "id": 88,
+    "category": "football",
+    "question": "Which team won AFCON 2013?",
+    "options": {"A": "Ivory Coast", "B": "Nigeria", "C": "Ghana", "D": "Senegal"},
+    "answer": "B"
+  },
+  {
+    "id": 89,
+    "category": "football",
+    "question": "Who is the coach that won AFCON 2013 with Nigeria?",
+    "options": {"A": "Gernot Rohr", "B": "Stephen Keshi", "C": "Sunday Oliseh", "D": "Samson Siasia"},
+    "answer": "B"
+  },
+  {
+    "id": 90,
+    "category": "football",
+    "question": "Which footballer is nicknamed 'El Hadji'?",
+    "options": {"A": "Drogba", "B": "El Hadji Diouf", "C": "Benzema", "D": "Mahrez"},
+    "answer": "B"
+  },
+  {
+    "id": 91,
+    "category": "football",
+    "question": "Which club is known as 'The Red Devils'?",
+    "options": {"A": "Liverpool", "B": "Arsenal", "C": "Manchester United", "D": "Chelsea"},
+    "answer": "C"
+  },
+  {
+    "id": 92,
+    "category": "football",
+    "question": "Who won the 2021 Ballon d'Or?",
+    "options": {"A": "Lewandowski", "B": "Messi", "C": "Mbappé", "D": "Salah"},
+    "answer": "B"
+  },
+  {
+    "id": 93,
+    "category": "football",
+    "question": "Which Nigerian player is famous for dribbling skills?",
+    "options": {"A": "Okocha", "B": "Yobo", "C": "Musa", "D": "Amokachi"},
+    "answer": "A"
+  },
+  {
+    "id": 94,
+    "category": "football",
+    "question": "Which country has won the most World Cups?",
+    "options": {"A": "Germany", "B": "Italy", "C": "Brazil", "D": "Argentina"},
+    "answer": "C"
+  },
+  {
+    "id": 95,
+    "category": "football",
+    "question": "Which footballer is known as 'CR7'?",
+    "options": {"A": "Cristiano Ronaldo", "B": "Ronaldinho", "C": "Ronaldo Nazário", "D": "Ramos"},
+    "answer": "A"
+  },
+  {
+    "id": 96,
+    "category": "football",
+    "question": "Who won the UEFA Champions League in 2023?",
+    "options": {"A": "Liverpool", "B": "Real Madrid", "C": "Man City", "D": "Bayern Munich"},
+    "answer": "C"
+  },
+  {
+    "id": 97,
+    "category": "football",
+    "question": "Which Super Eagles star played for Arsenal?",
+    "options": {"A": "Victor Moses", "B": "Iwobi", "C": "Ndidi", "D": "Ighalo"},
+    "answer": "B"
+  },
+  {
+    "id": 98,
+    "category": "football",
+    "question": "Which Nigerian player scored two goals vs Argentina in 2018 World Cup qualifiers?",
+    "options": {"A": "Ighalo", "B": "Musa", "C": "Osimhen", "D": "Chukwueze"},
+    "answer": "B"
+  },
+  {
+    "id": 99,
+    "category": "football",
+    "question": "Where was the first World Cup hosted?",
+    "options": {"A": "Brazil", "B": "Uruguay", "C": "Italy", "D": "France"},
+    "answer": "B"
+  },
+  {
+    "id": 100,
+    "category": "football",
+    "question": "Which club does Erling Haaland play for (2023)?",
+    "options": {"A": "Real Madrid", "B": "Liverpool", "C": "Manchester City", "D": "Bayern"},
+    "answer": "C"
+  },
+  {
+    "id": 101,
+    "category": "football",
+    "question": "Which Nigerian goalkeeper is known as 'The Cat'?",
+    "options": {"A": "Enyeama", "B": "Shorunmu", "C": "Okoye", "D": "Akpeyi"},
+    "answer": "A"
+  },
+  {
+    "id": 102,
+    "category": "football",
+    "question": "Which club is nicknamed 'The Blues'?",
+    "options": {"A": "Chelsea", "B": "Barcelona", "C": "Everton", "D": "Napoli"},
+    "answer": "A"
+  },
+  {
+    "id": 103,
+    "category": "football",
+    "question": "Which nation hosted AFCON 2023?",
+    "options": {"A": "Egypt", "B": "Ivory Coast", "C": "Nigeria", "D": "Cameroon"},
+    "answer": "B"
+  },
+  {
+    "id": 104,
+    "category": "football",
+    "question": "Who is Nigeria’s youngest-ever goalscorer?",
+    "options": {"A": "Osimhen", "B": "Musa", "C": "Okocha", "D": "Kanu"},
+    "answer": "B"
+  },
+  {
+    "id": 105,
+    "category": "football",
+    "question": "What position does Wilfred Ndidi play?",
+    "options": {"A": "Goalkeeper", "B": "Defender", "C": "Midfielder", "D": "Striker"},
+    "answer": "C"
+  },
+  {
+    "id": 106,
+    "category": "football",
+    "question": "Which club is called 'The Catalans'?",
+    "options": {"A": "Barcelona", "B": "Real Madrid", "C": "Atletico", "D": "Sevilla"},
+    "answer": "A"
+  },
+  {
+    "id": 107,
+    "category": "football",
+    "question": "Who is Africa’s top scorer in Premier League history?",
+    "options": {"A": "Didier Drogba", "B": "Salah", "C": "Mané", "D": "Yaya Touré"},
+    "answer": "B"
+  },
+  {
+    "id": 108,
+    "category": "football",
+    "question": "Which Nigerian scored the winning goal at Atlanta 1996 Olympics?",
+    "options": {"A": "Kanu", "B": "Okocha", "C": "Amokachi", "D": "Amuneke"},
+    "answer": "D"
+  },
+  {
+    "id": 109,
+    "category": "football",
+    "question": "How many players start a football match per team?",
+    "options": {"A": "10", "B": "11", "C": "12", "D": "15"},
+    "answer": "B"
+  },
+  {
+    "id": 110,
+    "category": "football",
+    "question": "Which country won the 2018 World Cup?",
+    "options": {"A": "Brazil", "B": "France", "C": "Germany", "D": "Croatia"},
+    "answer": "B"
+  },
+  {
+    "id": 111,
+    "category": "football",
+    "question": "Which footballer is known as 'The Egyptian King'?",
+    "options": {"A": "Mahrez", "B": "Salah", "C": "Elneny", "D": "Ziyech"},
+    "answer": "B"
+  },
+  {
+    "id": 112,
+    "category": "football",
+    "question": "Which Nigerian star plays for Villarreal?",
+    "options": {"A": "Osimhen", "B": "Chukwueze", "C": "Aribo", "D": "Iwobi"},
+    "answer": "B"
+  },
+  {
+    "id": 113,
+    "category": "football",
+    "question": "Which of these is a football position?",
+    "options": {"A": "Striker", "B": "Runner", "C": "Shooter", "D": "Keeper"},
+    "answer": "A"
+  },
+  {
+    "id": 114,
+    "category": "football",
+    "question": "Which club signed Lionel Messi in 2021?",
+    "options": {"A": "Real Madrid", "B": "PSG", "C": "Man City", "D": "Inter Milan"},
+    "answer": "B"
+  },
+  {
+    "id": 115,
+    "category": "football",
+    "question": "Which African nation has won AFCON the most times?",
+    "options": {"A": "Nigeria", "B": "Egypt", "C": "Cameroon", "D": "Ghana"},
+    "answer": "B"
+  },
+  {
+    "id": 116,
+    "category": "football",
+    "question": "Which ex-Super Eagles striker played for Watford?",
+    "options": {"A": "Ighalo", "B": "Okocha", "C": "Musa", "D": "Osaze"},
+    "answer": "A"
+  },
+  {
+    "id": 117,
+    "category": "football",
+    "question": "Who is known as ‘The Special One’?",
+    "options": {"A": "Guardiola", "B": "Ancelotti", "C": "Mourinho", "D": "Zidane"},
+    "answer": "C"
+  },
+  {
+    "id": 118,
+    "category": "football",
+    "question": "Which Super Eagles player is famous for rainbow flicks?",
+    "options": {"A": "Okocha", "B": "Iwobi", "C": "Amuneke", "D": "Mikel"},
+    "answer": "A"
+  },
+  {
+    "id": 119,
+    "category": "football",
+    "question": "Which club does Mohamed Salah play for (2023)?",
+    "options": {"A": "Chelsea", "B": "Liverpool", "C": "AC Milan", "D": "Barcelona"},
+    "answer": "B"
+  },
+  {
+    "id": 120,
+    "category": "football",
+    "question": "Which country defeated Nigeria in AFCON 2024 final?",
+    "options": {"A": "Ivory Coast", "B": "South Africa", "C": "Ghana", "D": "Morocco"},
+    "answer": "A"
+  },
+  {
+    "id": 121,
+    "category": "geography",
+    "question": "What is the capital of Nigeria?",
+    "options": {"A": "Lagos", "B": "Kano", "C": "Abuja", "D": "Enugu"},
+    "answer": "C"
+  },
+  {
+    "id": 122,
+    "category": "geography",
+    "question": "Which is the largest continent?",
+    "options": {"A": "Africa", "B": "Asia", "C": "Europe", "D": "Australia"},
+    "answer": "B"
+  },
+  {
+    "id": 123,
+    "category": "geography",
+    "question": "Which river is the longest in Africa?",
+    "options": {"A": "River Niger", "B": "River Nile", "C": "Congo River", "D": "Zambezi"},
+    "answer": "B"
+  },
+  {
+    "id": 124,
+    "category": "geography",
+    "question": "Which state is known as the 'Centre of Excellence'?",
+    "options": {"A": "Kaduna", "B": "Lagos", "C": "Abuja", "D": "Rivers"},
+    "answer": "B"
+  },
+  {
+    "id": 125,
+    "category": "geography",
+    "question": "What is the largest ocean in the world?",
+    "options": {"A": "Atlantic", "B": "Indian", "C": "Pacific", "D": "Arctic"},
+    "answer": "C"
+  },
+  {
+    "id": 126,
+    "category": "geography",
+    "question": "Which country is known as the 'Giant of Africa'?",
+    "options": {"A": "Egypt", "B": "South Africa", "C": "Kenya", "D": "Nigeria"},
+    "answer": "D"
+  },
+  {
+    "id": 127,
+    "category": "geography",
+    "question": "Which Nigerian state has the largest land area?",
+    "options": {"A": "Borno", "B": "Niger", "C": "Taraba", "D": "Kaduna"},
+    "answer": "B"
+  },
+  {
+    "id": 128,
+    "category": "geography",
+    "question": "What is the capital of Kenya?",
+    "options": {"A": "Nairobi", "B": "Kigali", "C": "Accra", "D": "Dar es Salaam"},
+    "answer": "A"
+  },
+  {
+    "id": 129,
+    "category": "geography",
+    "question": "Which desert is the largest in the world?",
+    "options": {"A": "Sahara", "B": "Kalahari", "C": "Arabian", "D": "Gobi"},
+    "answer": "A"
+  },
+  {
+    "id": 130,
+    "category": "geography",
+    "question": "Which Nigerian state is known as the 'Food Basket of the Nation'?",
+    "options": {"A": "Kano", "B": "Benue", "C": "Kaduna", "D": "Ogun"},
+    "answer": "B"
+  },
+  {
+    "id": 131,
+    "category": "geography",
+    "question": "Which country is the largest in the world by land area?",
+    "options": {"A": "Russia", "B": "Canada", "C": "China", "D": "USA"},
+    "answer": "A"
+  },
+  {
+    "id": 132,
+    "category": "geography",
+    "question": "Which is the smallest continent?",
+    "options": {"A": "Europe", "B": "Australia", "C": "Antarctica", "D": "South America"},
+    "answer": "B"
+  },
+  {
+    "id": 133,
+    "category": "geography",
+    "question": "What is the capital of Ghana?",
+    "options": {"A": "Accra", "B": "Nairobi", "C": "Dakar", "D": "Abidjan"},
+    "answer": "A"
+  },
+  {
+    "id": 134,
+    "category": "geography",
+    "question": "Which river flows through Lokoja?",
+    "options": {"A": "River Benue", "B": "River Osun", "C": "River Niger", "D": "River Kaduna"},
+    "answer": "C"
+  },
+  {
+    "id": 135,
+    "category": "geography",
+    "question": "Mount Kilimanjaro is located in which country?",
+    "options": {"A": "Tanzania", "B": "Uganda", "C": "Ethiopia", "D": "Rwanda"},
+    "answer": "A"
+  },
+  {
+    "id": 136,
+    "category": "geography",
+    "question": "Which Nigerian state has the longest coastline?",
+    "options": {"A": "Ondo", "B": "Bayelsa", "C": "Lagos", "D": "Rivers"},
+    "answer": "C"
+  },
+  {
+    "id": 137,
+    "category": "geography",
+    "question": "What is the capital of South Africa? (Official)",
+    "options": {"A": "Johannesburg", "B": "Cape Town", "C": "Pretoria", "D": "Durban"},
+    "answer": "C"
+  },
+  {
+    "id": 138,
+    "category": "geography",
+    "question": "Which continent is Nigeria part of?",
+    "options": {"A": "Africa", "B": "Asia", "C": "Europe", "D": "South America"},
+    "answer": "A"
+  },
+  {
+    "id": 139,
+    "category": "geography",
+    "question": "Which state is the 'Coal City'?",
+    "options": {"A": "Lagos", "B": "Enugu", "C": "Edo", "D": "Imo"},
+    "answer": "B"
+  },
+  {
+    "id": 140,
+    "category": "geography",
+    "question": "What is the capital of Egypt?",
+    "options": {"A": "Cairo", "B": "Alexandria", "C": "Lagos", "D": "Casablanca"},
+    "answer": "A"
+  },
+  {
+    "id": 141,
+    "category": "geography",
+    "question": "Which ocean borders Nigeria?",
+    "options": {"A": "Atlantic Ocean", "B": "Indian Ocean", "C": "Pacific Ocean", "D": "Arctic Ocean"},
+    "answer": "A"
+  },
+  {
+    "id": 142,
+    "category": "geography",
+    "question": "Which country is Nigeria’s western neighbor?",
+    "options": {"A": "Chad", "B": "Cameroon", "C": "Benin Republic", "D": "Niger"},
+    "answer": "C"
+  },
+  {
+    "id": 143,
+    "category": "geography",
+    "question": "What is the capital of France?",
+    "options": {"A": "Paris", "B": "Rome", "C": "Berlin", "D": "Madrid"},
+    "answer": "A"
+  },
+  {
+    "id": 144,
+    "category": "geography",
+    "question": "Which Nigerian state is known as the 'Land of Promise'?",
+    "options": {"A": "Akwa Ibom", "B": "Cross River", "C": "Ogun", "D": "Ekiti"},
+    "answer": "A"
+  },
+  {
+    "id": 145,
+    "category": "geography",
+    "question": "Which is the longest river in Nigeria?",
+    "options": {"A": "River Benue", "B": "River Kaduna", "C": "River Cross", "D": "River Niger"},
+    "answer": "D"
+  },
+  {
+    "id": 146,
+    "category": "geography",
+    "question": "What is the capital of Japan?",
+    "options": {"A": "Kyoto", "B": "Tokyo", "C": "Osaka", "D": "Nagasaki"},
+    "answer": "B"
+  },
+  {
+    "id": 147,
+    "category": "geography",
+    "question": "Which state is known as the 'Sunshine State'?",
+    "options": {"A": "Ondo", "B": "Kogi", "C": "Kwara", "D": "Abia"},
+    "answer": "A"
+  },
+  {
+    "id": 148,
+    "category": "geography",
+    "question": "How many continents are in the world?",
+    "options": {"A": "5", "B": "6", "C": "7", "D": "8"},
+    "answer": "C"
+  },
+  {
+    "id": 149,
+    "category": "geography",
+    "question": "Which African country has the highest population?",
+    "options": {"A": "South Africa", "B": "Nigeria", "C": "Egypt", "D": "Kenya"},
+    "answer": "B"
+  },
+  {
+    "id": 150,
+    "category": "geography",
+    "question": "What is the capital of Italy?",
+    "options": {"A": "Rome", "B": "Milan", "C": "Venice", "D": "Florence"},
+    "answer": "A"
+  },
+  {
+    "id": 151,
+    "category": "geography",
+    "question": "Which Nigerian state is the most populated?",
+    "options": {"A": "Lagos", "B": "Kano", "C": "Rivers", "D": "Oyo"},
+    "answer": "A"
+  },
+  {
+    "id": 152,
+    "category": "geography",
+    "question": "Which country is called the 'Pearl of Africa'?",
+    "options": {"A": "Kenya", "B": "Uganda", "C": "Tanzania", "D": "Zambia"},
+    "answer": "B"
+  },
+  {
+    "id": 153,
+    "category": "geography",
+    "question": "What is the capital of the USA?",
+    "options": {"A": "New York", "B": "Washington D.C.", "C": "Los Angeles", "D": "Chicago"},
+    "answer": "B"
+  },
+  {
+    "id": 154,
+    "category": "geography",
+    "question": "Which state is known as the 'Home of Peace'?",
+    "options": {"A": "Plateau", "B": "Taraba", "C": "Borno", "D": "Adamawa"},
+    "answer": "C"
+  },
+  {
+    "id": 155,
+    "category": "geography",
+    "question": "Which of these is NOT a country?",
+    "options": {"A": "Canada", "B": "Sydney", "C": "India", "D": "Mexico"},
+    "answer": "B"
+  },
+  {
+    "id": 156,
+    "category": "geography",
+    "question": "Which African country is famous for the pyramids?",
+    "options": {"A": "Ethiopia", "B": "Morocco", "C": "Egypt", "D": "Libya"},
+    "answer": "C"
+  },
+  {
+    "id": 157,
+    "category": "geography",
+    "question": "What is the capital of China?",
+    "options": {"A": "Beijing", "B": "Shanghai", "C": "Hong Kong", "D": "Shenzhen"},
+    "answer": "A"
+  },
+  {
+    "id": 158,
+    "category": "geography",
+    "question": "Which is the hottest continent on Earth?",
+    "options": {"A": "Asia", "B": "Africa", "C": "Australia", "D": "South America"},
+    "answer": "B"
+  },
+  {
+    "id": 159,
+    "category": "geography",
+    "question": "Which state is called the 'Land of Equity'?",
+    "options": {"A": "Kebbi", "B": "Ekiti", "C": "Kwara", "D": "Edo"},
+    "answer": "B"
+  },
+  {
+    "id": 160,
+    "category": "geography",
+    "question": "The River Niger empties into which ocean?",
+    "options": {"A": "Indian Ocean", "B": "Pacific Ocean", "C": "Atlantic Ocean", "D": "Arctic Ocean"},
+    "answer": "C"
+  }
+]
