@@ -171,6 +171,10 @@ async def spin_logic(
         # Treat like loss (prevents crash)
         return "lose"
 
+    # ❌ Bonus tries NEVER produce rewards
+    if outcome.get("paid_spin") is False:
+        return "lose"
+
     # ----------------- JACKPOT (UNCHANGED) -----------------------
     if outcome.get("winner") is True:
         return "jackpot"
