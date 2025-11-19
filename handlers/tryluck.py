@@ -63,7 +63,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     logger.info(f"🔔 /tryluck triggered by {tg_user.id}")
 
     # --------------------------
-    # Deduct tries
+    # Check tries (NO deduction here!)
     # --------------------------
     async with get_async_session() as session:
         async with session.begin():
@@ -79,11 +79,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     parse_mode="HTML"
                 )
 
-            if user.tries_bonus > 0:
-                user.tries_bonus -= 1
-            else:
-                user.tries_paid -= 1
-
+            # DO NOT deduct here!
             await session.commit()
 
     # --------------------------
