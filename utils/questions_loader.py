@@ -6,7 +6,7 @@ import os
 import random
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # root of project
-QUESTIONS_PATH = os.path.join(BASE_DIR, "data", "questions.json")
+QUESTIONS_PATH = os.path.join(BASE_DIR, "questions.json")
 
 with open(QUESTIONS_PATH, "r", encoding="utf-8") as f:
     ALL_QUESTIONS = json.load(f)
