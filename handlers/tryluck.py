@@ -246,12 +246,12 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
     # ---------------------------------------------------------
     if is_correct:
         await query.edit_message_text(
-            "🎯 *Correct!* You unlocked a **Premium Spin** 🔥\n\nSpinning...",
+            "🎯 *Correct\\!* You unlocked a **Premium Spin** 🔥\n\nSpinning...",
             parse_mode="Markdown"
         )
     else:
         await query.edit_message_text(
-            "❌ Wrong — You get a **Basic Spin** 🎰🔥\n\nSpinning...",
+            "🙈 You're not correct this time — but no worries\\!\nYou still get a **Basic Spin** 🎰🔥\n\nSpinning...",
             parse_mode="Markdown"
         )
 
