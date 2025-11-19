@@ -136,11 +136,18 @@ async def show_single_proof(update: Update, context: ContextTypes.DEFAULT_TYPE, 
 
         user = await get_user_by_id(session, proof.user_id)
 
-    user_name = (
-        f"@{user.username}" if user and user.username
-        else user.first_name or str(proof.user_id)
-    )
+    # --- Determine best user-display name
+    if user:
+        if user.username:
+            user_name = f"@{user.username}"
+        elif getattr(user, "name", None):       # if you store a "name" field
+            user_name = user.name
+        else:
+            user_name = str(proof.user_id)
+    else:
+        user_name = str(proof.user_id)
 
+    # --- Caption
     caption = (
         f"<b>📤 Pending Proof {index + 1} of {total}</b>\n\n"
         f"👤 User: {user_name}\n"
