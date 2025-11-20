@@ -25,24 +25,26 @@ CATEGORY_MAP = {
 def get_random_question(category: str = None):
     """
     Returns a random question.
-    If category=None → choose from all.
-    If user chooses category → map to correct internal key.
+    Supports public category names mapped to internal JSON keys.
+    If category = None → pick from all questions.
     """
 
     if category:
-        # map user-facing category -> internal category key
-        real_key = CATEGORY_MAP.get(category)
+        # Convert user-facing category → internal JSON category key
+        internal = CATEGORY_MAP.get(category, category)
 
-        if not real_key:
+        if not internal:
             raise ValueError(f"Invalid category chosen: {category}")
 
-        # filter based on real key
-        filtered = [q for q in ALL_QUESTIONS if q["category"] == real_key]
+        # Filter questions by internal key
+        filtered = [q for q in ALL_QUESTIONS if q["category"] == internal]
 
         if not filtered:
-            raise ValueError(f"No questions found in category: {real_key}")
+            raise ValueError(
+                f"No questions found for category: {category} → internal key: {internal}"
+            )
 
         return random.choice(filtered)
 
-    # no category → all questions
+    # No category → pick from all questions
     return random.choice(ALL_QUESTIONS)
