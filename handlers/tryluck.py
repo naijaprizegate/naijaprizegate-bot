@@ -71,8 +71,11 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
     # --------------------------
     q = get_random_question(category)
 
-    context.user_data["pending_trivia_qid"] = q["id"]
+    # ✅ SAVE THE FULL QUESTION
+    context.user_data["pending_trivia_question"] = q      # <— IMPORTANT
     context.user_data["pending_trivia_answer"] = q["answer"]
+    context.user_data["pending_trivia_qid"] = q["id"]
+
     context.user_data["trivia_answered"] = False  # user hasn’t answered yet
 
     # Deadline = now + 20 seconds
@@ -105,6 +108,7 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
         parse_mode="Markdown",
         reply_markup=keyboard
     )
+
 
     # ============================================================
     # ⏳ COUNTDOWN DISPLAY (20 → 1)
