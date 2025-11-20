@@ -1,3 +1,27 @@
+# ===========================================================
+# utils/questions_loader.py  (Final Working Category Loader)
+# ===========================================================
+import json
+import os
+import random
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # root of project
+QUESTIONS_PATH = os.path.join(BASE_DIR, "questions.json")
+
+with open(QUESTIONS_PATH, "r", encoding="utf-8") as f:
+    ALL_QUESTIONS = json.load(f)
+
+# ------------------------------
+# CATEGORY TRANSLATION MAP
+# ------------------------------
+CATEGORY_MAP = {
+    "History": "nigeria_history",
+    "Entertainment": "nigeria_entertainment",
+    "Football": "football",
+    "Geography": "geography"
+}
+
+
 def get_random_question(category: str = None):
     """
     Returns a single random question.
