@@ -201,7 +201,7 @@ async def spin_logic(
             {
                 "u": str(user.id),
                 "tg": user.tg_id,
-                "phone": user.phone_number,"
+                "phone": user.phone_number,
                 "amt": amount,
             }
         )
