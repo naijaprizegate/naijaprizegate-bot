@@ -186,14 +186,22 @@ async def spin_logic(
     if reward.startswith("airtime_"):
         amount = int(reward.split("_")[1])
 
+        # 🔒 SAFETY CHECK — user MUST have a phone number
+        if not user.phone_number:
+            logger.error(
+                f"❌ Airtime payout blocked: user {user.id} has NO phone number."
+            )
+            raise ValueError("No phone number on file for airtime payout")
+
         await session.execute(
             text("""
-                INSERT INTO airtime_payouts (user_id, tg_id, amount, status)
+                INSERT INTO airtime_payouts (user_id, tg_id, phone_number, amount, status)
                 VALUES (:u, :tg, :amt, 'pending')
             """),
             {
                 "u": str(user.id),
                 "tg": user.tg_id,
+                "phone": user.phone_number,"
                 "amt": amount,
             }
         )
