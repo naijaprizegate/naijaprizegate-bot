@@ -54,10 +54,121 @@ def make_tryluck_keyboard():
     ])
 
 # ================================================================
+# STEP 0 — Handle Trivia Category Selection
+# ================================================================
+async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    tg_user = query.from_user
+
+    # Extract the chosen category from callback: "cat_History"
+    _, category = query.data.split("_")
+    context.user_data["chosen_trivia_category"] = category
+
+    # --------------------------
+    # Load trivia question (filtered by category)
+    # --------------------------
+    q = get_random_question(category)
+
+    context.user_data["pending_trivia_qid"] = q["id"]
+    context.user_data["pending_trivia_answer"] = q["answer"]
+    context.user_data["trivia_answered"] = False  # user hasn’t answered yet
+
+    # Deadline = now + 20 seconds
+    context.user_data["trivia_deadline"] = time.time() + 20
+
+    question_text = (
+        f"🧠 *{category} Trivia!*\n\n"
+        f"{q['question']}\n\n"
+        f"A. {q['options']['A']}\n"
+        f"B. {q['options']['B']}\n"
+        f"C. {q['options']['C']}\n"
+        f"D. {q['options']['D']}"
+    )
+
+    # Active answer buttons
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton("A", callback_data=f"ans_{q['id']}_A"),
+            InlineKeyboardButton("B", callback_data=f"ans_{q['id']}_B"),
+        ],
+        [
+            InlineKeyboardButton("C", callback_data=f"ans_{q['id']}_C"),
+            InlineKeyboardButton("D", callback_data=f"ans_{q['id']}_D"),
+        ]
+    ])
+
+    # Send trivia message
+    sent_msg = await query.message.reply_text(
+        question_text,
+        parse_mode="Markdown",
+        reply_markup=keyboard
+    )
+
+    # ============================================================
+    # ⏳ COUNTDOWN DISPLAY (20 → 1)
+    # ============================================================
+    async def countdown(message, q_text, kb_markup, secs=20):
+        for remaining in range(secs, 0, -1):
+
+            # Stop countdown if user already answered
+            if context.user_data.get("trivia_answered", False):
+                break
+
+            try:
+                await message.edit_text(
+                    f"{q_text}\n\n⏳ *Time left:* {remaining}s",
+                    parse_mode="Markdown",
+                    reply_markup=kb_markup
+                )
+            except telegram.error.BadRequest:
+                break
+            except Exception:
+                break
+
+            await asyncio.sleep(1)
+
+    asyncio.create_task(countdown(sent_msg, question_text, keyboard))
+
+    # ============================================================
+    # 🕒 TIMEOUT TASK (locks buttons after 20 seconds)
+    # ============================================================
+    old_timer = context.user_data.get("trivia_timer")
+    if isinstance(old_timer, asyncio.Task) and not old_timer.done():
+        old_timer.cancel()
+
+    context.user_data["trivia_timer"] = asyncio.create_task(
+        trivia_timeout_task(
+            update,
+            context,
+            sent_msg.message_id,
+            timeout_seconds=20
+        )
+    )
+
+
+
+# ================================================================
+# STEP 0b — Begin Trivia AFTER category is chosen
+# ================================================================
+async def start_trivia_after_category(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    category = context.user_data.get("chosen_trivia_category")
+
+    # Load question filtered by chosen category
+    q = get_random_question(category)
+
+    # Move into existing trivia workflow
+    return await tryluck_handler(update, context)
+
+
+# ================================================================
 # STEP 1 — Send Trivia Question (with TIMER + COUNTDOWN + LOCK)
 # ================================================================
 async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    import time  # ensure time is available
 
     tg_user = update.effective_user
     logger.info(f"🔔 /tryluck triggered by {tg_user.id}")
@@ -83,85 +194,24 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await session.commit()
 
     # --------------------------
-    # Load trivia question
+    # STEP A — Ask for Trivia Category
     # --------------------------
-    q = get_random_question()
-
-    context.user_data["pending_trivia_qid"] = q["id"]
-    context.user_data["pending_trivia_answer"] = q["answer"]
-    context.user_data["trivia_answered"] = False   # user hasn’t answered yet
-
-    # Deadline = now + 20 seconds
-    context.user_data["trivia_deadline"] = time.time() + 20
-
-    question_text = (
-        f"🧠 *Trivia Time!*\n\n"
-        f"{q['question']}\n\n"
-        f"A. {q['options']['A']}\n"
-        f"B. {q['options']['B']}\n"
-        f"C. {q['options']['C']}\n"
-        f"D. {q['options']['D']}"
-    )
-
-    # Active answer buttons
-    keyboard = InlineKeyboardMarkup([
+    category_keyboard = InlineKeyboardMarkup([
         [
-            InlineKeyboardButton("A", callback_data=f"ans_{q['id']}_A"),
-            InlineKeyboardButton("B", callback_data=f"ans_{q['id']}_B"),
+            InlineKeyboardButton("📘 History", callback_data="cat_History"),
+            InlineKeyboardButton("🎬 Entertainment", callback_data="cat_Entertainment"),
         ],
         [
-            InlineKeyboardButton("C", callback_data=f"ans_{q['id']}_C"),
-            InlineKeyboardButton("D", callback_data=f"ans_{q['id']}_D"),
-        ]
+            InlineKeyboardButton("⚽ Football", callback_data="cat_Football"),
+            InlineKeyboardButton("🌍 Geography", callback_data="cat_Geography"),
+        ],
     ])
 
-    # Send trivia message
-    sent_msg = await update.effective_message.reply_text(
-        question_text,
+    # Stop the handler here — trivia will continue after category selection
+    return await update.effective_message.reply_text(
+        "🧠 *Choose your Trivia Category:*",
         parse_mode="Markdown",
-        reply_markup=keyboard
-    )
-
-    # ============================================================
-    # ⏳ COUNTDOWN DISPLAY (20 → 1)
-    # ============================================================
-    async def countdown(message, q_text, kb_markup, secs=20):
-        for remaining in range(secs, 0, -1):
-
-            # Stop countdown if user already answered
-            if context.user_data.get("trivia_answered", False):
-                break
-
-            try:
-                await message.edit_text(
-                    f"{q_text}\n\n⏳ *Time left:* {remaining}s",
-                    parse_mode="Markdown",
-                    reply_markup=kb_markup
-                )
-            except telegram.error.BadRequest:
-                # message was edited elsewhere → stop countdown
-                break
-            except Exception:
-                break
-
-            await asyncio.sleep(1)
-
-    asyncio.create_task(countdown(sent_msg, question_text, keyboard))
-
-    # ============================================================
-    # 🕒 TIMEOUT TASK (locks buttons after 20 seconds)
-    # ============================================================
-    old_timer = context.user_data.get("trivia_timer")
-    if isinstance(old_timer, asyncio.Task) and not old_timer.done():
-        old_timer.cancel()
-
-    context.user_data["trivia_timer"] = asyncio.create_task(
-        trivia_timeout_task(
-            update,
-            context,
-            sent_msg.message_id,
-            timeout_seconds=20
-        )
+        reply_markup=category_keyboard
     )
 
 
@@ -642,6 +692,12 @@ async def trivia_timeout_task(update, context, message_id, timeout_seconds=8):
 # 🧩 REGISTER ALL HANDLERS
 # ================================================================
 def register_handlers(application):
+
+    # Trivia category selection
+    application.add_handler(
+        CallbackQueryHandler(trivia_category_handler, pattern=r"^cat_")
+    )
+
 
     # Trivia answers
     application.add_handler(
