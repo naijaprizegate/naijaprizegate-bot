@@ -1,50 +1,21 @@
-# ===========================================================
-# utils/questions_loader.py  (Final Working Category Loader)
-# ===========================================================
-import json
-import os
-import random
-
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # root of project
-QUESTIONS_PATH = os.path.join(BASE_DIR, "questions.json")
-
-with open(QUESTIONS_PATH, "r", encoding="utf-8") as f:
-    ALL_QUESTIONS = json.load(f)
-
-# ------------------------------
-# CATEGORY TRANSLATION MAP
-# ------------------------------
-CATEGORY_MAP = {
-    "History": "nigeria_history",
-    "Entertainment": "nigeria_entertainment",
-    "Football": "football",
-    "Geography": "geography"
-}
-
-
 def get_random_question(category: str = None):
     """
-    Returns a random question.
-    Supports public category names mapped to internal JSON keys.
-    If category = None → pick from all questions.
+    Returns a single random question.
+    Supports category filtering with strict mapping.
     """
 
     if category:
-        # Convert user-facing category → internal JSON category key
-        internal = CATEGORY_MAP.get(category, category)
+        real_key = CATEGORY_MAP.get(category)
 
-        if not internal:
-            raise ValueError(f"Invalid category chosen: {category}")
+        if not real_key:
+            raise ValueError(f"Invalid category given: {category}")
 
-        # Filter questions by internal key
-        filtered = [q for q in ALL_QUESTIONS if q["category"] == internal]
+        filtered = [q for q in ALL_QUESTIONS if q.get("category") == real_key]
 
         if not filtered:
-            raise ValueError(
-                f"No questions found for category: {category} → internal key: {internal}"
-            )
+            raise ValueError(f"No questions found under category: {real_key}")
 
         return random.choice(filtered)
 
-    # No category → pick from all questions
+    # No category → return from all
     return random.choice(ALL_QUESTIONS)
