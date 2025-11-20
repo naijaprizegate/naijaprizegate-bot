@@ -283,15 +283,22 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
             pass
 
     # ---------------------------------------------------------
-    # 🎯 Evaluate Answer
+    # 🎯 Evaluate Answer (uses saved question object)
     # ---------------------------------------------------------
     _, qid, selected = query.data.split("_")
 
+    # Get the FULL question stored earlier
     question = context.user_data.get("pending_trivia_question")
-    correct_letter = question["answer"]
-    correct_text = question["options"][correct_letter]
 
+    if not question:
+        return await query.edit_message_text(
+            "⚠️ Error: Trivia expired or missing. Please try again."
+        )
+
+    correct_letter = question["answer"]
     is_correct = (selected == correct_letter)
+
+    # Save premium spin status
     context.user_data["is_premium_spin"] = is_correct
 
     # ---------------------------------------------------------
