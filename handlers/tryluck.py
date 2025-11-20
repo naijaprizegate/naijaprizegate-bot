@@ -282,9 +282,12 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
     # 🎯 Evaluate Answer
     # ---------------------------------------------------------
     _, qid, selected = query.data.split("_")
-    correct = context.user_data.get("pending_trivia_answer")
 
-    is_correct = (selected == correct)
+    question = context.user_data.get("pending_trivia_question")
+    correct_letter = question["answer"]
+    correct_text = question["options"][correct_letter]
+
+    is_correct = (selected == correct_letter)
     context.user_data["is_premium_spin"] = is_correct
 
     # ---------------------------------------------------------
@@ -292,12 +295,16 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
     # ---------------------------------------------------------
     if is_correct:
         await query.edit_message_text(
-            "🎯 *Correct!* \nYou unlocked a **Premium Spin** 🔥\n\nSpinning...",
+            f"🎯 *Correct!* \nYou unlocked a **Premium Spin** 🔥\n\n"
+            f"Spinning...",
             parse_mode="Markdown"
         )
     else:
         await query.edit_message_text(
-            "🙈 You're not correct this time — but no worries!\nYou still get a **Basic Spin** 🎰🔥\n\nSpinning...",
+            f"🙈 *Not correct this time!* \n"
+            f"👉 *Correct answer:* `{correct_letter}` — *{correct_text}*\n\n"
+            f"But no worries — you still get a **Basic Spin** 🎰🔥\n\n"
+            f"Spinning...",
             parse_mode="Markdown"
         )
 
