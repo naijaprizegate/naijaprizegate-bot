@@ -107,18 +107,18 @@ async def consume_and_spin(user: User, session: AsyncSession) -> dict:
 
     # ---------- JACKPOT COUNTER (UNCHANGED) ----------
     if paid_spin:
-        await session.execute("""
+        await session.execute(text("""
             INSERT INTO global_counter (id, paid_tries_total)
             VALUES (1, 0)
             ON CONFLICT (id) DO NOTHING
-        """)
+        """))
 
-        counter_row = await session.execute("""
+        counter_row = await session.execute(text("""
             UPDATE global_counter
             SET paid_tries_total = paid_tries_total + 1
             WHERE id = 1
             RETURNING paid_tries_total
-        """)
+        """))
         new_total = counter_row.scalar()
 
         gs = await session.get(GameState, 1)
@@ -131,9 +131,9 @@ async def consume_and_spin(user: User, session: AsyncSession) -> dict:
         gs.lifetime_paid_tries += 1
 
         if new_total is not None and new_total >= WIN_THRESHOLD:
-            await session.execute(
+            await session.execute(text(
                 text("UPDATE global_counter SET paid_tries_total = 0 WHERE id = 1")
-            )
+            ))
 
             gs.current_cycle += 1
             gs.paid_tries_this_cycle = 0
@@ -224,4 +224,3 @@ async def spin_logic(
 
     # ----------------- NO REWARD --------------------------------
     return "lose"
-
