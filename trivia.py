@@ -93,21 +93,3 @@ def load_questions(force_reload: bool = False) -> List[Dict]:
         logger.error(f"❌ Error loading trivia: {e}")
         TRIVIA_CACHE = FALLBACK_QUESTIONS
         return TRIVIA_CACHE
-
-
-# -----------------------------------------------------------
-# Get a random question (optional category)
-# -----------------------------------------------------------
-def get_random_question(category: Optional[str] = None) -> Dict:
-    questions = load_questions()
-
-    if category:
-        filtered = [
-            q for q in questions
-            if q.get("category", "").lower() == category.lower()
-        ]
-
-        if filtered:
-            return random.choice(filtered)
-
-    return random.choice(questions)
