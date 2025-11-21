@@ -272,11 +272,11 @@ def validate_webhook_signature(headers: dict, body_str: str) -> bool:
 # (Prefer your canonical function; this is a safe default.)
 # -----------------------
 def _calculate_tries_from_amount(amount: int) -> int:
-    if amount >= 5000:
-        return 15
-    if amount >= 2000:
-        return 5
+    if amount >= 1000:
+        return 7
     if amount >= 500:
+        return 3
+    if amount >= 200:
         return 1
     return 0
 
