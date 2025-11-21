@@ -296,6 +296,9 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
         )
 
     correct_letter = question["answer"]
+
+    correct_text = question["options"][correct_letter]
+    
     is_correct = (selected == correct_letter)
 
     # Save premium spin status
