@@ -337,8 +337,8 @@ def calculate_tries(amount: int) -> int:
     """Convert amount (₦) to number of tries."""
     if amount in PRICE_TO_TRIES:
         return PRICE_TO_TRIES[amount]
-    # fallback rule: 1 try per ₦500
-    return max(1, amount // 500)
+    # fallback rule: 1 try per ₦200
+    return max(1, amount // 200)
 
 
 async def credit_user_tries(session, payment: Payment):
