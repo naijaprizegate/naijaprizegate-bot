@@ -21,25 +21,47 @@ CATEGORY_MAP = {
     "Geography": "geography"
 }
 
+# ===========================================================
+# STEP 1 — SHUFFLE-BAG PER CATEGORY (Prevents repeats)
+# ===========================================================
+QUESTION_BAGS = {
+    "nigeria_history": [],
+    "nigeria_entertainment": [],
+    "football": [],
+    "geography": []
+}
 
+
+def _refill_bag(category_key: str):
+    """Refill a category shuffle bag when empty."""
+    QUESTION_BAGS[category_key] = [
+        q for q in ALL_QUESTIONS if q["category"] == category_key
+    ]
+    random.shuffle(QUESTION_BAGS[category_key])
+
+
+# ===========================================================
+# STEP 2 — Modified random question system (uses shuffle bags)
+# ===========================================================
 def get_random_question(category: str = None):
     """
     Returns a single random question.
-    Supports category filtering with strict mapping.
+    Uses shuffle-bags to prevent repeated questions.
     """
 
+    # Category chosen by user
     if category:
         real_key = CATEGORY_MAP.get(category)
 
         if not real_key:
             raise ValueError(f"Invalid category given: {category}")
 
-        filtered = [q for q in ALL_QUESTIONS if q.get("category") == real_key]
+        # Refill shuffle bag if empty
+        if not QUESTION_BAGS[real_key]:
+            _refill_bag(real_key)
 
-        if not filtered:
-            raise ValueError(f"No questions found under category: {real_key}")
+        # Pop one question (guarantees no repeat until bag empties)
+        return QUESTION_BAGS[real_key].pop()
 
-        return random.choice(filtered)
-
-    # No category → return from all
+    # No category → full random (no shuffle bag)
     return random.choice(ALL_QUESTIONS)
