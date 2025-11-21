@@ -24,7 +24,7 @@ WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "14600"))
 WEBHOOK_REDIRECT_URL = os.getenv("WEBHOOK_REDIRECT_URL", "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect")
 
 # ✅ Define your approved packages (anti-tampering)
-ALLOWED_PACKAGES = {500, 2000, 5000}
+ALLOWED_PACKAGES = {200, 500, 1000}
 
 # ==== Logger Setup ====
 logger = logging.getLogger("payments")
@@ -328,9 +328,9 @@ async def log_transaction(session: AsyncSession, provider: str, payload: str):
 # ------------------------------------------------------
 
 PRICE_TO_TRIES = {
-    500: 1,
-    2000: 5,
-    5000: 15,
+    200: 1,
+    500: 3,
+    1000: 7,
 }
 
 def calculate_tries(amount: int) -> int:
