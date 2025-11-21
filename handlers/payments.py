@@ -20,9 +20,9 @@ logger = logging.getLogger(__name__)
 
 # --- HARDCODED PACKAGES ---
 PACKAGES = [
-    (500, 1),
-    (2000, 5),
-    (5000, 15),
+    (200, 1),
+    (500, 3),
+    (1000, 7),
 ]
 
 BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
@@ -73,7 +73,7 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         return
 
     # ✅ Validate package choice from trusted config (no user tampering)
-    valid_packages = {500: 1, 2000: 5, 5000: 15}
+    valid_packages = {200: 1, 500: 3, 1000: 7}
     try:
         price = int(data.split("_")[1])
     except (IndexError, ValueError):
