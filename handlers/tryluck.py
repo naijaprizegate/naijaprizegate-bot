@@ -20,7 +20,7 @@ from telegram.ext import (
 )
 
 from helpers import get_or_create_user
-from trivia import get_random_question
+from utils.questions_loader import get_random_question
 from services.tryluck import spin_logic
 from db import get_async_session
 from models import GameState
