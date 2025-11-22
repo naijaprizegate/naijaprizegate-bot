@@ -273,7 +273,19 @@ def main():
         """)
         print("✅ non_airtime_winners table created")
 
-
+        # =====================================================
+        # 14. NEW - PREMIUM SPIN EENTRIES (for Jackpot weighted random selection)
+        # =====================================================
+        cur.execute("""
+        CREATE TABLE premium_spin_entries (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id UUID NOT NULL,
+            tg_id BIGINT NOT NULL,
+            created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+        );
+        """)
+        print("✅ premium_spin_entries table created")
+        
         # ======================================================
         # MIGRATION COMPLETED
         # ======================================================
