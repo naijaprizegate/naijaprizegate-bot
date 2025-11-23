@@ -16,6 +16,23 @@ logger = logging.getLogger(__name__)
 
 WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "14600"))
 
+# ===============================================================
+# PREMIUM SPIN ENTRIES (weighted tickets for jackpot)
+# ===============================================================
+async def record_premium_spin_entry(session: AsyncSession, user: User):
+    """
+    Save 1 entry per premium paid spin.
+    Each row = 1 ticket toward jackpot.
+    Users with more premium spins have more rows (higher chance).
+    """
+    await session.execute(
+        text("""
+            INSERT INTO premium_spin_entries (user_id, tg_id, created_at)
+            VALUES (:u, :tg, NOW())
+        """),
+        {"u": str(user.id), "tg": user.tg_id}
+    )
+
 
 # ===============================================================
 # STEP 1 — Save Trivia Question (unchanged)
@@ -94,25 +111,37 @@ def get_spin_reward(is_premium: bool) -> str:
 
 
 # ===============================================================
-# STEP 3 — CONSUME TRY + JACKPOT LOGIC (unchanged)
+# STEP 3 — CONSUME TRY + JACKPOT COUNTER (threshold trigger only)
 # ===============================================================
 async def consume_and_spin(user: User, session: AsyncSession) -> dict:
+    """
+    Handles:
+    - Try consumption (bonus → paid)
+    - Global paid try counter
+    - Jackpot threshold detection
+    - NO jackpot winner selection here (done later)
+    """
+    # Consume one try
     spin_type = await consume_try(session, user)
     if spin_type is None:
         return {"result": "no_tries"}
 
     paid_spin = (spin_type == "paid")
     result = "lose"
-    is_jackpot_winner = False
+    jackpot_triggered = False
 
-    # ---------- JACKPOT COUNTER (UNCHANGED) ----------
+    # -----------------------------------------------------------
+    # PAID SPIN → Increment global jackpot counter
+    # -----------------------------------------------------------
     if paid_spin:
+        # Ensure the global counter row exists
         await session.execute(text("""
             INSERT INTO global_counter (id, paid_tries_total)
             VALUES (1, 0)
             ON CONFLICT (id) DO NOTHING
         """))
 
+        # Increment global paid tries counter
         counter_row = await session.execute(text("""
             UPDATE global_counter
             SET paid_tries_total = paid_tries_total + 1
@@ -121,40 +150,57 @@ async def consume_and_spin(user: User, session: AsyncSession) -> dict:
         """))
         new_total = counter_row.scalar()
 
+        # Load or create GameState row
         gs = await session.get(GameState, 1)
         if not gs:
             gs = GameState(id=1)
             session.add(gs)
             await session.flush()
 
+        # Update bookkeeping
         gs.paid_tries_this_cycle += 1
         gs.lifetime_paid_tries += 1
 
+        # -------------------------------------------------------
+        # JACKPOT THRESHOLD REACHED?
+        # -------------------------------------------------------
         if new_total is not None and new_total >= WIN_THRESHOLD:
-            await session.execute(text(
-                text("UPDATE global_counter SET paid_tries_total = 0 WHERE id = 1")
-            ))
+
+            # Reset global counter for next jackpot cycle
+            await session.execute(text("""
+                UPDATE global_counter
+                SET paid_tries_total = 0
+                WHERE id = 1
+            """))
 
             gs.current_cycle += 1
             gs.paid_tries_this_cycle = 0
 
-            result = "win"
-            is_jackpot_winner = True
+            jackpot_triggered = True
+            result = "win"   # a jackpot event occurred this cycle
 
-    # Save play
-    session.add(Play(user_id=user.id, result=result))
+    # -----------------------------------------------------------
+    # Save the spin result (NOT jackpot winner)
+    # -----------------------------------------------------------
+    session.add(Play(
+        user_id=user.id,
+        result=result
+    ))
 
+    # -----------------------------------------------------------
+    # Return structured result
+    # -----------------------------------------------------------
     return {
         "result": result,
-        "winner": is_jackpot_winner,
         "paid_spin": paid_spin,
+        "jackpot_triggered": jackpot_triggered,
         "remaining_bonus": user.tries_bonus,
         "remaining_paid": user.tries_paid,
     }
 
 
 # ===============================================================
-# STEP 4 — WRAPPER WITH REWARDS + DB RECORD CREATION
+# STEP 4 — WRAPPER WITH REWARDS + JACKPOT SELECTION + DM + LOGS
 # ===============================================================
 async def spin_logic(
     session: AsyncSession,
@@ -162,31 +208,131 @@ async def spin_logic(
     is_premium_spin: bool = False
 ) -> str:
 
+    # 1) Consume try and update counters
     outcome = await consume_and_spin(user, session)
 
     # -------------------------------------------------------------
-    # 🚨 Fix: Protect against "no_tries" return to avoid KeyError
+    # 🚨 Safety: No tries left → treat as loss
     # -------------------------------------------------------------
     if outcome.get("result") == "no_tries":
-        # Treat like loss (prevents crash)
         return "lose"
 
-    # ❌ Bonus tries NEVER produce rewards
-    if outcome.get("paid_spin") is False:
+    # -------------------------------------------------------------
+    # ❌ Bonus spins NEVER produce jackpot or rewards
+    # -------------------------------------------------------------
+    if not outcome.get("paid_spin"):
         return "lose"
 
-    # ----------------- JACKPOT (UNCHANGED) -----------------------
+    # -------------------------------------------------------------
+    # 2️⃣ RECORD ONE PREMIUM TICKET (only for paid + premium spins)
+    # -------------------------------------------------------------
+    if is_premium_spin:
+        await session.execute(
+            text("""
+                INSERT INTO premium_spin_entries (user_id, tg_id)
+                VALUES (:uid, :tgid)
+            """),
+            {"uid": str(user.id), "tgid": user.tg_id}
+        )
+
+    # -------------------------------------------------------------
+    # 3️⃣ JACKPOT LOGIC — threshold reached on THIS spin
+    # outcome["winner"] means threshold was hit in consume_and_spin
+    # -------------------------------------------------------------
     if outcome.get("winner") is True:
-        return "jackpot"
 
-    # ----------------- SMALL REWARDS -----------------------------
+        logger.info("💰 Jackpot threshold reached! Selecting random winner (premium only)…")
+
+        # 🎟️ Weighted-random pick (each row = 1 ticket)
+        result = await session.execute(text("""
+            SELECT user_id, tg_id
+            FROM premium_spin_entries
+            ORDER BY RANDOM()
+            LIMIT 1
+        """))
+        row = result.first()
+
+        # If NO premium entries exist (rare)
+        if row is None:
+            jackpot_user_id = user.id
+            jackpot_tg_id = user.tg_id
+            logger.warning(
+                "⚠️ Jackpot triggered but premium_spin_entries empty. "
+                "Defaulting to current spinner."
+            )
+        else:
+            jackpot_user_id = row.user_id
+            jackpot_tg_id = row.tg_id
+
+        # Count tickets for admin report
+        count_res = await session.execute(text("SELECT COUNT(*) FROM premium_spin_entries"))
+        total_tickets = count_res.scalar()
+
+        # Record jackpot play event
+        session.add(Play(user_id=jackpot_user_id, result="jackpot"))
+
+        # 🔄 Reset tickets for next jackpot cycle
+        await session.execute(text("DELETE FROM premium_spin_entries"))
+
+        # ---------------------------------------------------------
+        # 3A — DM jackpot winner
+        # ---------------------------------------------------------
+        try:
+            from app import application
+            bot = application.bot
+
+            await bot.send_message(
+                jackpot_tg_id,
+                "🎉 *Congratulations!* 🎉\n\n"
+                "You have been *randomly selected* as the Jackpot Winner! 🏆🔥\n"
+                "You will now be able to choose your phone prize.",
+                parse_mode="Markdown"
+            )
+        except Exception as e:
+            logger.error(f"❌ Failed to DM jackpot winner: {e}")
+
+        # ---------------------------------------------------------
+        # 3B — Admin jackpot log
+        # ---------------------------------------------------------
+        try:
+            await bot.send_message(
+                ADMIN_USER_ID,
+                f"🏆 *JACKPOT WINNER SELECTED!*\n\n"
+                f"👤 User ID: `{jackpot_user_id}`\n"
+                f"📱 TG ID: `{jackpot_tg_id}`\n"
+                f"🎟️ Total Premium Tickets: *{total_tickets}*\n"
+                f"🔔 Triggered By Spin From User ID: `{user.id}`\n\n"
+                f"Premium ticket pool has been reset.",
+                parse_mode="Markdown"
+            )
+        except:
+            pass
+
+        # ---------------------------------------------------------
+        # If CURRENT spinner is the jackpot winner
+        # ---------------------------------------------------------
+        if str(jackpot_user_id) == str(user.id):
+            logger.info(f"🎉 Jackpot WON by current spinner user_id={user.id}")
+            return "jackpot"
+
+        # ---------------------------------------------------------
+        # If someone else won → current spinner continues
+        # ---------------------------------------------------------
+        logger.info(
+            f"🎉 Jackpot WON by user_id={jackpot_user_id}, "
+            f"triggered by spin from user_id={user.id}"
+        )
+        # Continue into small rewards
+
+    # -------------------------------------------------------------
+    # 4️⃣ SMALL REWARDS (only if no jackpot for current user)
+    # -------------------------------------------------------------
     reward = get_spin_reward(is_premium_spin)
 
-    # ----------------- MULTI-SIZE AIRTIME ------------------------
+    # ------------------ MULTI-SIZE AIRTIME -----------------------
     if reward.startswith("airtime_"):
         amount = int(reward.split("_")[1])
 
-        # 🔒 SAFETY CHECK — user MUST have a phone number
         if not user.phone_number:
             logger.error(
                 f"❌ Airtime payout blocked: user {user.id} has NO phone number."
@@ -196,7 +342,7 @@ async def spin_logic(
         await session.execute(
             text("""
                 INSERT INTO airtime_payouts (user_id, tg_id, phone_number, amount, status)
-                VALUES (:u, :tg, :amt, 'pending')
+                VALUES (:u, :tg, :phone, :amt, 'pending')
             """),
             {
                 "u": str(user.id),
@@ -205,10 +351,9 @@ async def spin_logic(
                 "amt": amount,
             }
         )
+        return reward
 
-        return reward   # "airtime_50" / "airtime_100" / "airtime_200"
-
-    # ----------------- EARPod -----------------------------------
+    # ---------------------- EARPod -------------------------------
     if reward == "earpod":
         await session.execute(
             text("""
@@ -219,7 +364,7 @@ async def spin_logic(
         )
         return "earpod"
 
-    # ----------------- SPEAKER ----------------------------------
+    # ---------------------- SPEAKER ------------------------------
     if reward == "speaker":
         await session.execute(
             text("""
@@ -230,5 +375,5 @@ async def spin_logic(
         )
         return "speaker"
 
-    # ----------------- NO REWARD --------------------------------
+    # ---------------------- NO REWARD ----------------------------
     return "lose"
