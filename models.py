@@ -2,6 +2,7 @@
 # models.py (cleaned + expanded with trivia + spin reward models)
 #=================================================================
 import uuid
+from uuid import uuid4
 from sqlalchemy import (
     Column, String, Integer, ForeignKey, Text, TIMESTAMP, CheckConstraint,
     Boolean, BigInteger, JSON, DateTime
@@ -279,3 +280,15 @@ class NonAirtimeWinner(Base):
     notified_admin = Column(Boolean, default=False)
 
     created_at = Column(TIMESTAMP, server_default=func.now())
+
+
+# ============================================================
+# NEW TABLE 6 - PREMIUM SPIN ENTRIES  (for Jackpot weighted random selection)
+# ============================================================
+class PremiumSpinEntry(Base):
+    __tablename__ = "premium_spin_entries"
+
+    id = Column(String, primary_key=True, default=lambda: str(uuid4()))
+    user_id = Column(String, nullable=False)
+    tg_id = Column(BigInteger, nullable=False)
+    created_at = Column(TIMESTAMP(timezone=True), server_default=text("NOW()"))
