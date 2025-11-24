@@ -14,7 +14,7 @@ from db import get_async_session
 
 logger = logging.getLogger(__name__)
 
-WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "14600"))
+WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "50000"))
 
 # ===============================================================
 # PREMIUM SPIN ENTRIES (weighted tickets for jackpot)
