@@ -73,12 +73,50 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("📊 Stats", callback_data="admin_menu:stats")],
         [InlineKeyboardButton("👤 User Search", callback_data="admin_menu:user_search")],
         [InlineKeyboardButton("🏆 Winners", callback_data="admin_menu:winners")],
+        [InlineKeyboardButton("🎟 Jackpot Tickets", callback_data="admin_menu:jackpot_tickets")],
     ])
     await update.message.reply_text(
         "⚙️ <b>Admin Panel</b>\nChoose an action:",
         parse_mode="HTML",
         reply_markup=keyboard
     )
+
+# -----------------------------------------
+# ADMIN: View Jackpot Tickets
+# -----------------------------------------
+async def show_jackpot_tickets(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if update.effective_user.id != ADMIN_USER_ID:
+        return await update.callback_query.answer("❌ Access denied.", show_alert=True)
+
+    async with AsyncSessionLocal() as session:
+        # Count tickets
+        count_res = await session.execute(text("SELECT COUNT(*) FROM premium_spin_entries"))
+        total_tickets = count_res.scalar() or 0
+
+        # Optional: show top users with most entries
+        detail_res = await session.execute(text("""
+            SELECT user_id, tg_id, COUNT(*) AS tickets
+            FROM premium_spin_entries
+            GROUP BY user_id, tg_id
+            ORDER BY tickets DESC
+            LIMIT 20
+        """))
+        rows = detail_res.fetchall()
+
+    # Create details message
+    details = "\n".join(
+        [f"👤 User {row.user_id} — 🎟 {row.tickets} tickets" for row in rows]
+    ) if rows else "No tickets yet."
+
+    text_msg = (
+        "🎟 <b>Jackpot Ticket Summary</b>\n\n"
+        f"📊 <b>Total Tickets:</b> {total_tickets}\n\n"
+        f"🏅 <b>Top Ticket Holders</b>\n"
+        f"{details}\n\n"
+        "🔙 Back to Admin Menu with /admin"
+    )
+
+    await update.callback_query.edit_message_text(text_msg, parse_mode="HTML")
 
 
 # ----------------------------
@@ -394,6 +432,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 [InlineKeyboardButton("📊 Stats", callback_data="admin_menu:stats")],
                 [InlineKeyboardButton("👤 User Search", callback_data="admin_menu:user_search")],
                 [InlineKeyboardButton("🏆 Winners", callback_data="admin_menu:winners")],
+                [InlineKeyboardButton("🎟 Jackpot Tickets", callback_data="admin_menu:jackpot_tickets")],
             ])
             return await safe_edit(query, "⚙️ <b>Admin Panel</b>\nChoose an action:", parse_mode="HTML", reply_markup=keyboard)
 
@@ -517,6 +556,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("📊 Stats", callback_data="admin_menu:stats")],
         [InlineKeyboardButton("👤 User Search", callback_data="admin_menu:user_search")],
         [InlineKeyboardButton("🏆 Winners", callback_data="admin_menu:winners")],
+        [InlineKeyboardButton("🎟 Jackpot Tickets", callback_data="admin_menu:jackpot_tickets")],
     ])
 
     return await safe_edit(query, 
@@ -1271,7 +1311,10 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(user_search_handler, pattern=r"^admin_usersearch"))
     application.add_handler(CallbackQueryHandler(show_winners_section, pattern=r"^admin_winners"))
     application.add_handler(CallbackQueryHandler(show_filtered_winners, pattern=r"^admin_winners_filter:"))
-
+    application.add_handler(
+        CallbackQueryHandler(show_jackpot_tickets, pattern="admin_menu:jackpot_tickets")
+    )
+    
     # ✅ CSV EXPORT FLOW (must be ABOVE generic text handlers)
     application.add_handler(CallbackQueryHandler(admin_export_csv_menu, pattern=r"^admin_export_csv$"))
     application.add_handler(CallbackQueryHandler(export_csv_handler, pattern=r"^export_csv:"))
