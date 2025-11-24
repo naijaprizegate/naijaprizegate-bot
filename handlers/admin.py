@@ -15,7 +15,7 @@ from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler, Mes
 from telegram.ext import filters as tg_filters  # to avoid name clash
 from telegram.error import BadRequest
 from telegram.constants import ParseMode
-from sqlalchemy import select, update as sql_update, func, and_
+from sqlalchemy import select, text, update as sql_update, func, and_
 from handlers.core import fallback
 from db import AsyncSessionLocal, get_async_session
 from helpers import add_tries, get_user_by_id
