@@ -281,14 +281,22 @@ class NonAirtimeWinner(Base):
 
     created_at = Column(TIMESTAMP, server_default=func.now())
 
-
 # ============================================================
-# NEW TABLE 6 - PREMIUM SPIN ENTRIES  (for Jackpot weighted random selection)
+# PREMIUM SPIN ENTRIES  (FIXED — proper UUID types)
 # ============================================================
 class PremiumSpinEntry(Base):
     __tablename__ = "premium_spin_entries"
 
-    id = Column(String, primary_key=True, default=lambda: str(uuid4()))
-    user_id = Column(String, nullable=False)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+
+    # IMPORTANT: match the User.id type exactly
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+
     tg_id = Column(BigInteger, nullable=False)
-    created_at = Column(TIMESTAMP(timezone=True), server_default=text("NOW()"))
+
+    created_at = Column(
+        TIMESTAMP(timezone=True),
+        server_default=text("NOW()"),
+        nullable=False
+    )
+
