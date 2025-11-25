@@ -2,7 +2,7 @@
 # handlers/core.py
 # ================================================================
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters
+from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters, CallbackQueryHandler
 from helpers import md_escape, get_or_create_user, is_admin
 from db import get_async_session
 import re
@@ -48,7 +48,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
         [InlineKeyboardButton("💳 Buy Tries", callback_data="buy")],
         [InlineKeyboardButton("🎁 Free Tries", callback_data="free")],
-        [InlineKeyboardButton("📊 Available Tries", callback_data="show_tries")]
+        [InlineKeyboardButton("📊 Available Tries", callback_data="show_tries")],
+        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")]
     ]
 
     # 🧠 Check if called via a normal message (/start) or a callback (like "Cancel")
@@ -116,7 +117,8 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
         [InlineKeyboardButton("💳 Buy Tries", callback_data="buy")],
         [InlineKeyboardButton("🎁 Free Tries", callback_data="free")],
-        [InlineKeyboardButton("📊 Available Tries", callback_data="show_tries")]
+        [InlineKeyboardButton("📊 Available Tries", callback_data="show_tries")],
+        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
@@ -189,7 +191,8 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
         [InlineKeyboardButton("💳 Buy Tries", callback_data="buy")],
         [InlineKeyboardButton("🎁 Free Tries", callback_data="free")],
-        [InlineKeyboardButton("📊 Available Tries", callback_data="show_tries")]
+        [InlineKeyboardButton("📊 Available Tries", callback_data="show_tries")],
+        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")]
     ]
 
     if update.message:  # User typed something
@@ -223,6 +226,10 @@ def register_handlers(application):
     # core commands
     application.add_handler(CommandHandler("help", help_cmd))
     application.add_handler(CommandHandler("mytries", mytries))
+
+    # Leaderboard ⬇️ add here
+    from handlers.leaderboard import register_leaderboard_handlers
+    register_leaderboard_handlers(application)
 
     # fallback for unrecognized text
     application.add_handler(
