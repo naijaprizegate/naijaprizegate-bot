@@ -186,7 +186,8 @@ async def leaderboard_render(
             )
             viewer_db_user = res_me.scalars().first()
             if viewer_db_user:
-                viewer_user_id = viewer_db_user.id
+                # QUICK FIX (Option B): always use string form for PremiumSpinEntry.user_id comparisons
+                viewer_user_id = str(viewer_db_user.id)
 
         my_tickets = 0
         my_rank = None
@@ -323,7 +324,7 @@ async def leaderboard_render(
         if nav_row:
             kb_rows.append(nav_row)
 
-        # 👇 NEW: My Achievements button
+        # 👇 My Achievements button
         kb_rows.append(
             [InlineKeyboardButton("📜 View My Achievements", callback_data="my_achievements")]
         )
@@ -371,7 +372,8 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
                 parse_mode="HTML",
             )
 
-        user_id = db_user.id
+        # QUICK FIX (Option B): use string form for PremiumSpinEntry.user_id comparisons
+        user_id = str(db_user.id)
 
         # All-time premium tickets
         total_tickets_all = (
