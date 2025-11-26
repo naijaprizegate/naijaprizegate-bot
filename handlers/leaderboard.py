@@ -1,26 +1,27 @@
 # ===============================================================
-# handlers/leaderboard.py  — Full Featured Public Leaderboard
+# handlers/leaderboard.py  — Public Quiz Leaderboard (Skill-Based)
 # ===============================================================
 
 from datetime import datetime, timezone, timedelta
 
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CallbackQueryHandler, CommandHandler
+from telegram.error import BadRequest
 from sqlalchemy import select, func
 
 from db import get_async_session
-from models import PremiumSpinEntry, User
+from models import PremiumSpinEntry, User  # Model name kept for now (DB), treated as quiz activity
 
 LEADERBOARD_PAGE_SIZE = 10
 
 
 # ---------------------------------------------------------
-# 🏅 Badge helper (premium spins only)
+# 🏅 Badge helper (based on quiz activity)
 # ---------------------------------------------------------
 def _badge_for_tickets(tickets: int) -> str:
     """
-    Simple badge tiers based on premium tickets in the selected scope.
-    Safe for public display: no money mentioned.
+    Simple badge tiers based on the user's premium quiz entries/points
+    in the selected scope. No money or luck implied.
     """
     if tickets >= 200:
         return "🏆 Legend"
@@ -33,16 +34,16 @@ def _badge_for_tickets(tickets: int) -> str:
     if tickets >= 5:
         return "⭐ Active"
     if tickets >= 1:
-        return "🎟 New"
+        return "🎓 New Challenger"
     return "—"
 
 
 # ---------------------------------------------------------
-# 📆 Streak helper (premium spins only)
+# 📆 Streak helper (quiz activity days)
 # ---------------------------------------------------------
 def _compute_streaks(dates) -> tuple[int, int]:
     """
-    Given a list of datetime objects (premium spin timestamps for a user),
+    Given a list of datetime objects (quiz activity timestamps for a user),
     return (current_streak_days, best_streak_days) based on consecutive days.
     """
     if not dates:
@@ -98,11 +99,8 @@ async def leaderboard_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
 
 
 # ---------------------------------------------------------
-# 🏆 LEADERBOARD RENDERER
+# 🏆 LEADERBOARD RENDERER (skill / quiz performance)
 # ---------------------------------------------------------
-
-from telegram.error import BadRequest
-
 async def leaderboard_render(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
@@ -112,10 +110,13 @@ async def leaderboard_render(
     """
     Render a leaderboard page with:
       - Tabs: This Week / This Cycle
-      - Top users by premium tickets
+      - Top users by quiz activity (premium quiz entries)
       - Badges
       - Your personal stats + streaks in footer
       - Button to view full “My Achievements” screen
+
+    All wording here is framed as *quiz performance / activity*,
+    not luck, betting, or gambling.
     """
     tg_user = update.effective_user
     now = datetime.now(timezone.utc)
@@ -136,6 +137,7 @@ async def leaderboard_render(
 
     async with get_async_session() as session:
         # ----- Base query for counts -----
+        # "tickets" here represent *earned premium quiz entries/points*
         base_q = select(
             PremiumSpinEntry.user_id,
             func.count(PremiumSpinEntry.id).label("tickets"),
@@ -220,13 +222,13 @@ async def leaderboard_render(
 
         # ----- Build leaderboard text -----
         text_lines = []
-        text_lines.append("🏆 <b>NaijaPrizeGate Leaderboard</b>")
+        text_lines.append("🏆 <b>NaijaPrizeGate Quiz Leaderboard</b>")
         text_lines.append(f"{scope_label}\n")
 
         if not rows:
-            text_lines.append("No premium spins recorded yet in this scope.\n")
+            text_lines.append("No quiz activity recorded yet in this period.\n")
         else:
-            text_lines.append("Top players (by premium tickets):\n")
+            text_lines.append("Top players (by premium quiz activity):\n")
             rank_start = offset + 1
             for i, (uid, tickets) in enumerate(rows, start=rank_start):
                 u = users_by_id.get(uid)
@@ -239,38 +241,39 @@ async def leaderboard_render(
 
                 badge = _badge_for_tickets(tickets)
                 text_lines.append(
-                    f"<b>{i}.</b> {display_name} — {tickets} ticket(s) {badge}"
+                    f"<b>{i}.</b> {display_name} — {tickets} quiz point(s) {badge}"
                 )
 
         text_lines.append("")
-        text_lines.append(f"🎟️ <b>Total Tickets (this scope):</b> {total_tickets}")
-        text_lines.append(f"👥 <b>Participants:</b> {distinct_users}")
+        text_lines.append(f"📊 <b>Total Quiz Points (this period):</b> {total_tickets}")
+        text_lines.append(f"👥 <b>Active Players:</b> {distinct_users}")
 
         if viewer_user_id:
             badge_me = _badge_for_tickets(my_tickets)
             text_lines.append("\n<b>Your Stats</b>")
             if my_tickets == 0:
                 text_lines.append(
-                    "• You have 0 premium tickets in this scope yet. Spin to climb the board! 🔥"
+                    "• You have 0 premium quiz points in this period yet. "
+                    "Answer more questions to climb the board! 🔥"
                 )
             else:
                 rank_text = f"#{my_rank}" if my_rank is not None else "N/A"
                 text_lines.append(
                     f"• Rank: {rank_text}\n"
-                    f"• Tickets: {my_tickets} ({badge_me})\n"
-                    f"• Current streak: {current_streak} day(s)\n"
-                    f"• Best streak: {best_streak} day(s)"
+                    f"• Premium quiz points: {my_tickets} ({badge_me})\n"
+                    f"• Current activity streak: {current_streak} day(s)\n"
+                    f"• Best activity streak: {best_streak} day(s)"
                 )
 
                 achievements = []
                 if my_tickets >= 1:
-                    achievements.append("🎉 First Spin")
+                    achievements.append("🎉 First Challenge — You joined your first premium quiz round.")
                 if my_tickets >= 10:
-                    achievements.append("🎯 Regular Spinner (10+ tickets)")
+                    achievements.append("🎯 Consistent Player — 10+ premium quiz points earned.")
                 if my_tickets >= 25:
-                    achievements.append("🔥 High Roller (25+ tickets)")
+                    achievements.append("🔥 Dedicated Challenger — 25+ premium quiz points.")
                 if best_streak >= 3:
-                    achievements.append(f"⚡ Hot Streak ({best_streak}+ days in a row)")
+                    achievements.append(f"⚡ Streak Builder — {best_streak}+ days of quiz activity in a row.")
 
                 if achievements:
                     text_lines.append("\n<b>Quick Achievements</b>")
@@ -278,7 +281,11 @@ async def leaderboard_render(
                         text_lines.append(f"• {a}")
 
         text_lines.append(
-            "\nℹ️ Weekly board shows last 7 days only. Cycle board resets whenever the jackpot is hit."
+            "\nℹ️ Weekly view shows the last 7 days only. "
+            "Cycle view covers the current competition cycle."
+        )
+        text_lines.append(
+            "📌 Rankings are based on your quiz activity and knowledge performance."
         )
 
         full_text = "\n".join(text_lines)
@@ -320,6 +327,11 @@ async def leaderboard_render(
 
     # ---------- Reply or Edit (patched!) ----------
     if update.callback_query:
+        # Optional micro-optimization: avoid calling edit if nothing changed
+        msg = update.callback_query.message
+        if msg and msg.text == full_text:
+            return
+
         try:
             await update.callback_query.edit_message_text(
                 full_text,
@@ -337,13 +349,14 @@ async def leaderboard_render(
             reply_markup=keyboard,
         )
 
+
 # ---------------------------------------------------------
-# 📜 FULL “MY ACHIEVEMENTS” SCREEN (premium-only)
+# 📜 FULL “MY ACHIEVEMENTS” SCREEN (quiz-focused)
 # ---------------------------------------------------------
 async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
     Shows a dedicated achievements screen for the current user.
-    Premium spins only (based on PremiumSpinEntry).
+    Based on PremiumSpinEntry, treated as *premium quiz entries / points*.
     """
     tg_user = update.effective_user
     query = update.callback_query
@@ -362,10 +375,9 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
                 parse_mode="HTML",
             )
 
-        # QUICK FIX (Option B): use string form for PremiumSpinEntry.user_id comparisons
         user_id = str(db_user.id)
 
-        # All-time premium tickets
+        # All-time premium quiz entries/points
         total_tickets_all = (
             await session.execute(
                 select(func.count(PremiumSpinEntry.id)).where(
@@ -374,7 +386,7 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
             )
         ).scalar() or 0
 
-        # Last 7 days tickets (for extra context)
+        # Last 7 days quiz points (for extra context)
         now = datetime.now(timezone.utc)
         start_week = now - timedelta(days=7)
         tickets_last_7 = (
@@ -386,7 +398,7 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
             )
         ).scalar() or 0
 
-        # Streaks (based on ALL premium spins)
+        # Streaks (based on ALL premium quiz entries)
         streak_dates_res = await session.execute(
             select(PremiumSpinEntry.created_at).where(
                 PremiumSpinEntry.user_id == user_id
@@ -399,31 +411,39 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
 
     # Build achievements text
     lines = []
-    lines.append("📜 <b>My Achievements</b>\n")
-    lines.append(f"👤 <b>User:</b> @{tg_user.username}" if tg_user.username else "👤 <b>User:</b> You")
+    lines.append("📜 <b>My Quiz Achievements</b>\n")
+    lines.append(
+        f"👤 <b>User:</b> @{tg_user.username}"
+        if tg_user.username
+        else "👤 <b>User:</b> You"
+    )
     lines.append("")
-    lines.append(f"🎟️ <b>Total Premium Spins (all-time):</b> {total_tickets_all}")
-    lines.append(f"🔥 <b>Last 7 Days:</b> {tickets_last_7} premium ticket(s)")
+    lines.append(
+        f"🎟️ <b>Total Premium Quiz Points (all-time):</b> {total_tickets_all}"
+    )
+    lines.append(
+        f"🔥 <b>Last 7 Days:</b> {tickets_last_7} premium quiz point(s) earned"
+    )
     lines.append(f"🏅 <b>Current Badge:</b> {badge}")
-    lines.append(f"⚡ <b>Current Streak:</b> {current_streak} day(s)")
-    lines.append(f"🏆 <b>Best Streak:</b> {best_streak} day(s)\n")
+    lines.append(f"⚡ <b>Current Activity Streak:</b> {current_streak} day(s)")
+    lines.append(f"🏆 <b>Best Activity Streak:</b> {best_streak} day(s)\n")
 
-    # Milestone-style achievements (premium-only)
+    # Milestone-style achievements (quiz-based)
     achievements = []
     if total_tickets_all >= 1:
-        achievements.append("🎉 First Spin — You played your first premium spin!")
+        achievements.append("🎉 First Challenge — You completed your first premium quiz round!")
     if total_tickets_all >= 10:
-        achievements.append("🎯 Regular Spinner — 10+ premium tickets.")
+        achievements.append("🎯 Consistent Player — 10+ premium quiz points collected.")
     if total_tickets_all >= 25:
-        achievements.append("🔥 High Roller — 25+ premium tickets.")
+        achievements.append("🔥 Dedicated Challenger — 25+ premium quiz points.")
     if total_tickets_all >= 50:
-        achievements.append("💎 Elite Spinner — 50+ premium tickets.")
+        achievements.append("💎 Elite Learner — 50+ premium quiz points.")
     if total_tickets_all >= 100:
-        achievements.append("👑 VIP Grinder — 100+ premium tickets.")
+        achievements.append("👑 Quiz Master — 100+ premium quiz points.")
     if best_streak >= 3:
-        achievements.append(f"⚡ Hot Streak — {best_streak}+ days of premium spins in a row.")
+        achievements.append(f"⚡ Streak Builder — {best_streak}+ days of quiz activity in a row.")
     if best_streak >= 7:
-        achievements.append("🔥 Weekly Warrior — 7 days of non-stop premium spins.")
+        achievements.append("🔥 Weekly Warrior — 7 days of non-stop quiz activity.")
 
     if achievements:
         lines.append("<b>Unlocked Milestones</b>")
@@ -431,13 +451,19 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
             lines.append(f"• {a}")
     else:
         lines.append("<b>Unlocked Milestones</b>")
-        lines.append("• None yet — start spinning premium to unlock your first badge! 🚀")
+        lines.append(
+            "• None yet — keep playing quizzes and earning points to unlock your first badge! 🚀"
+        )
 
     # Optional: hint upcoming milestones (static text)
     lines.append("\n<b>Next Milestones</b>")
-    lines.append("• 10 spins → Regular Spinner")
-    lines.append("• 25 spins → High Roller")
-    lines.append("• 3 days streak → Hot Streak")
+    lines.append("• 10 quiz points → Consistent Player")
+    lines.append("• 25 quiz points → Dedicated Challenger")
+    lines.append("• 3-day activity streak → Streak Builder")
+
+    lines.append(
+        "\n📌 All progress here reflects your quiz activity and knowledge performance."
+    )
 
     text = "\n".join(lines)
 
@@ -470,3 +496,4 @@ def register_leaderboard_handlers(application):
     application.add_handler(
         CallbackQueryHandler(my_achievements_handler, pattern=r"^my_achievements$")
     )
+
