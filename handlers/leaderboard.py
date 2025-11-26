@@ -100,6 +100,9 @@ async def leaderboard_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
 # ---------------------------------------------------------
 # 🏆 LEADERBOARD RENDERER
 # ---------------------------------------------------------
+
+from telegram.error import BadRequest
+
 async def leaderboard_render(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
@@ -128,12 +131,11 @@ async def leaderboard_render(
         filter_clause = PremiumSpinEntry.created_at >= start
         scope_label = "🔥 This Week (last 7 days)"
     else:
-        # Default to "cycle": everything in premium_spin_entries
         scope = "cycle"
         scope_label = "🎯 This Cycle"
 
     async with get_async_session() as session:
-        # ---------- Base query for counts ----------
+        # ----- Base query for counts -----
         base_q = select(
             PremiumSpinEntry.user_id,
             func.count(PremiumSpinEntry.id).label("tickets"),
@@ -142,7 +144,7 @@ async def leaderboard_render(
             base_q = base_q.where(filter_clause)
         base_q = base_q.group_by(PremiumSpinEntry.user_id)
 
-        # ---------- Totals ----------
+        # ----- Totals -----
         total_q = select(func.count(PremiumSpinEntry.id))
         distinct_q = select(func.count(func.distinct(PremiumSpinEntry.user_id)))
         if filter_clause is not None:
@@ -152,7 +154,7 @@ async def leaderboard_render(
         total_tickets = (await session.execute(total_q)).scalar() or 0
         distinct_users = (await session.execute(distinct_q)).scalar() or 0
 
-        # ---------- Page of top users ----------
+        # ----- Page of top users -----
         offset = max(page - 1, 0) * LEADERBOARD_PAGE_SIZE
         page_q = (
             base_q
@@ -160,14 +162,12 @@ async def leaderboard_render(
             .offset(offset)
             .limit(LEADERBOARD_PAGE_SIZE)
         )
+        rows = (await session.execute(page_q)).all()
 
-        rows = (await session.execute(page_q)).all()  # list of (user_id, tickets)
-
-        # If page out of range, bounce back to page 1
         if not rows and page != 1:
             return await leaderboard_render(update, context, scope=scope, page=1)
 
-        # ---------- Load user objects in bulk ----------
+        # ----- Load user objects -----
         user_ids = [uid for (uid, _) in rows]
         users_by_id = {}
         if user_ids:
@@ -177,7 +177,7 @@ async def leaderboard_render(
             for u in users_res.scalars():
                 users_by_id[u.id] = u
 
-        # ---------- Current viewer's stats ----------
+        # ----- Viewer info -----
         viewer_db_user = None
         viewer_user_id = None
         if tg_user:
@@ -186,7 +186,6 @@ async def leaderboard_render(
             )
             viewer_db_user = res_me.scalars().first()
             if viewer_db_user:
-                # QUICK FIX (Option B): always use string form for PremiumSpinEntry.user_id comparisons
                 viewer_user_id = str(viewer_db_user.id)
 
         my_tickets = 0
@@ -195,16 +194,15 @@ async def leaderboard_render(
         best_streak = 0
 
         if viewer_user_id:
-            # ticket count in this scope (premium spins only)
             my_count_q = select(func.count(PremiumSpinEntry.id)).where(
                 PremiumSpinEntry.user_id == viewer_user_id
             )
             if filter_clause is not None:
                 my_count_q = my_count_q.where(filter_clause)
+
             my_tickets = (await session.execute(my_count_q)).scalar() or 0
 
             if my_tickets > 0:
-                # rank = 1 + number of users who have strictly more tickets
                 subq = base_q.subquery()
                 better_q = select(func.count()).select_from(subq).where(
                     subq.c.tickets > my_tickets
@@ -212,7 +210,6 @@ async def leaderboard_render(
                 better_count = (await session.execute(better_q)).scalar() or 0
                 my_rank = better_count + 1
 
-                # streaks based on ALL premium entries currently in table for this user
                 streak_dates_res = await session.execute(
                     select(PremiumSpinEntry.created_at).where(
                         PremiumSpinEntry.user_id == viewer_user_id
@@ -221,7 +218,7 @@ async def leaderboard_render(
                 dates = [row[0] for row in streak_dates_res.fetchall()]
                 current_streak, best_streak = _compute_streaks(dates)
 
-        # ---------- Build leaderboard text ----------
+        # ----- Build leaderboard text -----
         text_lines = []
         text_lines.append("🏆 <b>NaijaPrizeGate Leaderboard</b>")
         text_lines.append(f"{scope_label}\n")
@@ -231,12 +228,8 @@ async def leaderboard_render(
         else:
             text_lines.append("Top players (by premium tickets):\n")
             rank_start = offset + 1
-
             for i, (uid, tickets) in enumerate(rows, start=rank_start):
                 u = users_by_id.get(uid)
-                # Safe public identity:
-                #  - prefer @username
-                #  - else show masked ID with last 4 digits of tg_id if available
                 if u and u.username:
                     display_name = f"@{u.username}"
                 elif u and u.tg_id:
@@ -249,16 +242,13 @@ async def leaderboard_render(
                     f"<b>{i}.</b> {display_name} — {tickets} ticket(s) {badge}"
                 )
 
-        # ---------- Summary footer ----------
         text_lines.append("")
         text_lines.append(f"🎟️ <b>Total Tickets (this scope):</b> {total_tickets}")
         text_lines.append(f"👥 <b>Participants:</b> {distinct_users}")
 
-        # ---------- Personal stats / achievements snippet ----------
         if viewer_user_id:
             badge_me = _badge_for_tickets(my_tickets)
             text_lines.append("\n<b>Your Stats</b>")
-
             if my_tickets == 0:
                 text_lines.append(
                     "• You have 0 premium tickets in this scope yet. Spin to climb the board! 🔥"
@@ -272,7 +262,6 @@ async def leaderboard_render(
                     f"• Best streak: {best_streak} day(s)"
                 )
 
-                # Simple achievement text (safe, non-monetary, premium-only)
                 achievements = []
                 if my_tickets >= 1:
                     achievements.append("🎉 First Spin")
@@ -294,7 +283,7 @@ async def leaderboard_render(
 
         full_text = "\n".join(text_lines)
 
-        # ---------- Keyboard (tabs + pagination + achievements) ----------
+        # ----- Keyboard -----
         tabs_row = [
             InlineKeyboardButton(
                 ("🔥 This Week ✅" if scope == "week" else "🔥 This Week"),
@@ -323,29 +312,30 @@ async def leaderboard_render(
         kb_rows = [tabs_row]
         if nav_row:
             kb_rows.append(nav_row)
-
-        # 👇 My Achievements button
         kb_rows.append(
             [InlineKeyboardButton("📜 View My Achievements", callback_data="my_achievements")]
         )
 
         keyboard = InlineKeyboardMarkup(kb_rows)
 
-    # ---------- Reply / edit ----------
+    # ---------- Reply or Edit (patched!) ----------
     if update.callback_query:
-        await update.callback_query.edit_message_text(
-            full_text,
-            parse_mode="HTML",
-            reply_markup=keyboard,
-        )
+        try:
+            await update.callback_query.edit_message_text(
+                full_text,
+                parse_mode="HTML",
+                reply_markup=keyboard,
+            )
+        except BadRequest as e:
+            if "Message is not modified" in str(e):
+                return  # Ignore harmless re-click
+            raise
     else:
-        # Optional: in case you wire a /leaderboard command later
         await update.message.reply_text(
             full_text,
             parse_mode="HTML",
             reply_markup=keyboard,
         )
-
 
 # ---------------------------------------------------------
 # 📜 FULL “MY ACHIEVEMENTS” SCREEN (premium-only)
