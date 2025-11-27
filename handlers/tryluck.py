@@ -50,10 +50,10 @@ def make_play_keyboard():
         [
             [
                 InlineKeyboardButton("🧠 Play Again", callback_data="tryluck"),
-                InlineKeyboardButton("📊 Available Tries", callback_data="show_tries"),
+                InlineKeyboardButton("📊 My Available Questions", callback_data="show_tries"),
             ],
-            [InlineKeyboardButton("➕ Get More Tries", callback_data="buy")],
-            [InlineKeyboardButton("🎁 Free Tries", callback_data="free")],
+            [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
+            [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
         ]
     )
 
@@ -662,10 +662,10 @@ async def show_tries_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("🧠 Play Trivia", callback_data="tryluck"),
-                InlineKeyboardButton("➕ Get More Tries", callback_data="buy"),
+                InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="tryluck"),
+                InlineKeyboardButton("💳 Get More Questions", callback_data="buy"),
             ],
-            [InlineKeyboardButton("🎁 Free Tries", callback_data="free")],
+            [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
         ]
     )
 
