@@ -155,9 +155,9 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
             await session.commit()
 
     keyboard = [
-        [InlineKeyboardButton("🧠 Play Trivia", callback_data="tryluck")],
-        [InlineKeyboardButton("📚 Get More Trivia", callback_data="buy")],
-        [InlineKeyboardButton("🎁 Free Trivia", callback_data="free")],
+        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="tryluck")],
+        [InlineKeyboardButton("📚 Get More Questions", callback_data="buy")],
+        [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
     ]
 
     await query.edit_message_text(
