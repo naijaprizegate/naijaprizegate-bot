@@ -39,7 +39,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
     keyboard = [
-        [InlineKeyboardButton("🧠 Play Trivia", callback_data="tryluck")],
+        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="tryluck")],
         [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
         [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
         [InlineKeyboardButton("📊 My Available Questions", callback_data="show_tries")],
@@ -93,10 +93,10 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
     keyboard = [
-        [InlineKeyboardButton("🧠 Play Trivia", callback_data="tryluck")],
-        [InlineKeyboardButton("💳 Buy More Questions", callback_data="buy")],
+        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="tryluck")],
+        [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
         [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
-        [InlineKeyboardButton("📊 Check My Questions", callback_data="show_tries")],
+        [InlineKeyboardButton("📊 My Available Questions", callback_data="show_tries")],
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")]
     ]
 
@@ -154,10 +154,10 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     safe_text = md_escape(text)
 
     keyboard = [
-        [InlineKeyboardButton("🧠 Play Trivia", callback_data="tryluck")],
+        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="tryluck")],
         [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
         [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
-        [InlineKeyboardButton("📊 My Questions", callback_data="show_tries")],
+        [InlineKeyboardButton("📊 My Available Questions", callback_data="show_tries")],
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")]
     ]
 
