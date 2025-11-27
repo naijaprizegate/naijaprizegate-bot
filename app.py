@@ -455,10 +455,10 @@ async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(
             try:
                 bot = Bot(token=BOT_TOKEN)
                 keyboard = InlineKeyboardMarkup([
-                    [InlineKeyboardButton("🎰 Try Luck", callback_data="tryluck")],
-                    [InlineKeyboardButton("💳 Buy Tries", callback_data="buy")],
-                    [InlineKeyboardButton("🎁 Free Tries", callback_data="free")],
-                    [InlineKeyboardButton("📊 Available Tries", callback_data="show_tries")]
+                    [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="tryluck")],
+                    [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
+                    [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
+                    [InlineKeyboardButton("📊 Available Questions", callback_data="show_tries")]
                 ])
                 text = (
                     f"✅ *Payment Confirmed!*\n\n"
