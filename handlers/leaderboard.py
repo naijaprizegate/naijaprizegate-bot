@@ -2,6 +2,7 @@
 # handlers/leaderboard.py  — Public Quiz Leaderboard (Skill-Based)
 # ===============================================================
 
+import os
 from datetime import datetime, timezone, timedelta
 
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
@@ -10,9 +11,12 @@ from telegram.error import BadRequest
 from sqlalchemy import select, func
 
 from db import get_async_session
-from models import PremiumSpinEntry, User  # Model name kept for now (DB), treated as quiz activity
+from models import PremiumSpinEntry, User, GameState  # PremiumSpinEntry = quiz entry log
 
 LEADERBOARD_PAGE_SIZE = 10
+
+# WIN_THRESHOLD: total paid questions needed this cycle before prize is awarded
+WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "0"))
 
 
 # ---------------------------------------------------------
@@ -220,115 +224,148 @@ async def leaderboard_render(
                 dates = [row[0] for row in streak_dates_res.fetchall()]
                 current_streak, best_streak = _compute_streaks(dates)
 
-        # ----- Build leaderboard text -----
-        text_lines = []
-        text_lines.append("🏆 <b>NaijaPrizeGate Quiz Leaderboard</b>")
-        text_lines.append(f"{scope_label}\n")
+        # ----- Cycle progress for trust & merit messaging -----
+        # Uses GameState.paid_tries_this_cycle (paid questions only)
+        paid_this_cycle = 0
+        if WIN_THRESHOLD > 0:
+            gs = await session.get(GameState, 1)
+            if gs and getattr(gs, "paid_tries_this_cycle", None) is not None:
+                paid_this_cycle = gs.paid_tries_this_cycle
 
-        if not rows:
-            text_lines.append("No quiz activity recorded yet in this period.\n")
-        else:
-            text_lines.append("Top players (by premium quiz activity):\n")
-            rank_start = offset + 1
-            for i, (uid, tickets) in enumerate(rows, start=rank_start):
-                u = users_by_id.get(uid)
-                if u and u.username:
-                    display_name = f"@{u.username}"
-                elif u and u.tg_id:
-                    display_name = f"Player {str(u.tg_id)[-4:]}"
-                else:
-                    display_name = f"Player {str(uid)[-4:]}"
+    # ----- Build leaderboard text -----
+    text_lines = []
+    text_lines.append("🏆 <b>NaijaPrizeGate Quiz Leaderboard</b>")
+    text_lines.append(f"{scope_label}\n")
 
-                badge = _badge_for_tickets(tickets)
-                text_lines.append(
-                    f"<b>{i}.</b> {display_name} — {tickets} quiz point(s) {badge}"
-                )
+    if not rows:
+        text_lines.append("No quiz activity recorded yet in this period.\n")
+    else:
+        text_lines.append("Top players (by premium quiz activity):\n")
+        rank_start = offset + 1
+        for i, (uid, tickets) in enumerate(rows, start=rank_start):
+            u = users_by_id.get(uid)
 
-        text_lines.append("")
-        text_lines.append(f"📊 <b>Total Quiz Points (this period):</b> {total_tickets}")
-        text_lines.append(f"👥 <b>Active Players:</b> {distinct_users}")
-
-        if viewer_user_id:
-            badge_me = _badge_for_tickets(my_tickets)
-            text_lines.append("\n<b>Your Stats</b>")
-            if my_tickets == 0:
-                text_lines.append(
-                    "• You have 0 premium quiz points in this period yet. "
-                    "Answer more questions to climb the board! 🔥"
-                )
+            # Prefer first_name → username → masked ID
+            if u and getattr(u, "first_name", None):
+                display_name = u.first_name
+            elif u and u.username:
+                display_name = f"@{u.username}"
+            elif u and u.tg_id:
+                display_name = f"Player {str(u.tg_id)[-4:]}"
             else:
-                rank_text = f"#{my_rank}" if my_rank is not None else "N/A"
-                text_lines.append(
-                    f"• Rank: {rank_text}\n"
-                    f"• Premium quiz points: {my_tickets} ({badge_me})\n"
-                    f"• Current activity streak: {current_streak} day(s)\n"
-                    f"• Best activity streak: {best_streak} day(s)"
-                )
+                display_name = f"Player {str(uid)[-4:]}"
 
-                achievements = []
-                if my_tickets >= 1:
-                    achievements.append("🎉 First Challenge — You joined your first premium quiz round.")
-                if my_tickets >= 10:
-                    achievements.append("🎯 Consistent Player — 10+ premium quiz points earned.")
-                if my_tickets >= 25:
-                    achievements.append("🔥 Dedicated Challenger — 25+ premium quiz points.")
-                if best_streak >= 3:
-                    achievements.append(f"⚡ Streak Builder — {best_streak}+ days of quiz activity in a row.")
-
-                if achievements:
-                    text_lines.append("\n<b>Quick Achievements</b>")
-                    for a in achievements:
-                        text_lines.append(f"• {a}")
-
-        text_lines.append(
-            "\nℹ️ Weekly view shows the last 7 days only. "
-            "Cycle view covers the current competition cycle."
-        )
-        text_lines.append(
-            "📌 Rankings are based on your quiz activity and knowledge performance."
-        )
-
-        full_text = "\n".join(text_lines)
-
-        # ----- Keyboard -----
-        tabs_row = [
-            InlineKeyboardButton(
-                ("🔥 This Week ✅" if scope == "week" else "🔥 This Week"),
-                callback_data="leaderboard:week:1",
-            ),
-            InlineKeyboardButton(
-                ("🎯 This Cycle ✅" if scope == "cycle" else "🎯 This Cycle"),
-                callback_data="leaderboard:cycle:1",
-            ),
-        ]
-
-        nav_row = []
-        if page > 1:
-            nav_row.append(
-                InlineKeyboardButton(
-                    "⬅️ Prev", callback_data=f"leaderboard:{scope}:{page-1}"
-                )
-            )
-        if len(rows) == LEADERBOARD_PAGE_SIZE:
-            nav_row.append(
-                InlineKeyboardButton(
-                    "Next ➡️", callback_data=f"leaderboard:{scope}:{page+1}"
-                )
+            badge = _badge_for_tickets(tickets)
+            text_lines.append(
+                f"<b>{i}.</b> {display_name} — {tickets} quiz point(s) {badge}"
             )
 
-        kb_rows = [tabs_row]
-        if nav_row:
-            kb_rows.append(nav_row)
-        kb_rows.append(
-            [InlineKeyboardButton("📜 View My Achievements", callback_data="my_achievements")]
+    text_lines.append("")
+    text_lines.append(f"📊 <b>Total Quiz Points (this period):</b> {total_tickets}")
+    text_lines.append(f"👥 <b>Active Players:</b> {distinct_users}")
+
+    if viewer_user_id:
+        badge_me = _badge_for_tickets(my_tickets)
+        text_lines.append("\n<b>Your Stats</b>")
+        if my_tickets == 0:
+            text_lines.append(
+                "• You have 0 premium quiz points in this period yet. "
+                "Answer more questions to climb the board! 🔥"
+            )
+        else:
+            rank_text = f"#{my_rank}" if my_rank is not None else "N/A"
+            text_lines.append(
+                f"• Rank: {rank_text}\n"
+                f"• Premium quiz points: {my_tickets} ({badge_me})\n"
+                f"• Current activity streak: {current_streak} day(s)\n"
+                f"• Best activity streak: {best_streak} day(s)"
+            )
+
+            achievements = []
+            if my_tickets >= 1:
+                achievements.append("🎉 First Challenge — You joined your first premium quiz round.")
+            if my_tickets >= 10:
+                achievements.append("🎯 Consistent Player — 10+ premium quiz points earned.")
+            if my_tickets >= 25:
+                achievements.append("🔥 Dedicated Challenger — 25+ premium quiz points.")
+            if best_streak >= 3:
+                achievements.append(f"⚡ Streak Builder — {best_streak}+ days of quiz activity in a row.")
+
+            if achievements:
+                text_lines.append("\n<b>Quick Achievements</b>")
+                for a in achievements:
+                    text_lines.append(f"• {a}")
+
+    # ---- Cycle progress + trust signal (merit-based winner) ----
+    text_lines.append("")
+    if WIN_THRESHOLD > 0:
+        text_lines.append(
+            f"🎯 <b>Cycle:</b> {paid_this_cycle}/{WIN_THRESHOLD} paid questions answered"
         )
 
-        keyboard = InlineKeyboardMarkup(kb_rows)
+        if paid_this_cycle >= WIN_THRESHOLD:
+            # Winner is already locked automatically by backend logic using top scorer
+            text_lines.append(
+                "🔒 Current cycle prize is locked based on the top scorer on this leaderboard."
+            )
+        else:
+            remaining = WIN_THRESHOLD - paid_this_cycle
+            text_lines.append(
+                f"🟡 <b>{remaining}</b> more paid question(s) until the cycle winner is locked."
+            )
+
+    text_lines.append("🏆 Top scorer at threshold will be awarded the prize.")
+    text_lines.append("✔ 100% Skill-Based — no gambling or chance involved.")
+
+    text_lines.append(
+        "\nℹ️ Weekly view shows the last 7 days only. "
+        "Cycle view covers the current competition cycle."
+    )
+    text_lines.append(
+        "📌 Rankings are based on your quiz activity and knowledge performance."
+    )
+
+    full_text = "\n".join(text_lines)
+
+    # ----- Keyboard -----
+    tabs_row = [
+        InlineKeyboardButton(
+            ("🔥 This Week ✅" if scope == "week" else "🔥 This Week"),
+            callback_data="leaderboard:week:1",
+        ),
+        InlineKeyboardButton(
+            ("🎯 This Cycle ✅" if scope == "cycle" else "🎯 This Cycle"),
+            callback_data="leaderboard:cycle:1",
+        ),
+    ]
+
+    nav_row = []
+    if page > 1:
+        nav_row.append(
+            InlineKeyboardButton(
+                "⬅️ Prev", callback_data=f"leaderboard:{scope}:{page-1}"
+            )
+        )
+    if len(rows) == LEADERBOARD_PAGE_SIZE:
+        nav_row.append(
+            InlineKeyboardButton(
+                "Next ➡️", callback_data=f"leaderboard:{scope}:{page+1}"
+            )
+        )
+
+    kb_rows = [tabs_row]
+    if nav_row:
+        kb_rows.append(nav_row)
+    kb_rows.append(
+        [InlineKeyboardButton("📜 View My Achievements", callback_data="my_achievements")]
+    )
+
+    keyboard = InlineKeyboardMarkup(kb_rows)
 
     # ---------- Reply or Edit (patched!) ----------
     if update.callback_query:
-        # Optional micro-optimization: avoid calling edit if nothing changed
         msg = update.callback_query.message
+        # Micro-guard: avoid edit when text is identical
         if msg and msg.text == full_text:
             return
 
@@ -496,4 +533,3 @@ def register_leaderboard_handlers(application):
     application.add_handler(
         CallbackQueryHandler(my_achievements_handler, pattern=r"^my_achievements$")
     )
-
