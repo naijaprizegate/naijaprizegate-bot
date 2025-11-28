@@ -318,7 +318,7 @@ async def leaderboard_render(
         else:
             text_lines.append(
                 "🏆 Top scorer at the end of the cycle will be awarded the prize.\n"
-                "Keep scoring to reach the top\!"
+                "Keep scoring to reach the top!"
             )
 
 
