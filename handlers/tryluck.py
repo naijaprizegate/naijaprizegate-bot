@@ -524,7 +524,8 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
     await msg.edit_text(
         f"{final}\n\n"
         "ℹ️ No campaign reward unlocked on this attempt.\n\n"
-        "Keep playing trivia to improve your stats and leaderboard position! 🏅",
+        "Keep playing trivia to improve your stats and leaderboard position! 🏅\n\n"
+        "You can click on /start to go back to the main menu",
         parse_mode="Markdown",
         reply_markup=make_play_keyboard(),
     )
