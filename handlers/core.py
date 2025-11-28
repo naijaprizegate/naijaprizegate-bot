@@ -1,18 +1,69 @@
 # =============================================================== 
-# handlers/core.py — Compliance-Safe Version
-# ================================================================
+# handlers/core.py — Compliance-Safe Version (Updated)
+# ===============================================================
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters, CallbackQueryHandler
-from helpers import md_escape, get_or_create_user, is_admin
+from helpers import md_escape, get_or_create_user
 from db import get_async_session
 import re
 import logging
 
 logger = logging.getLogger(__name__)
 
-# ---------------------------------------------------------
+# ===============================================================
+# 📘 /terms COMMAND HANDLER — ADDED
+# ===============================================================
+async def terms_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    text = (
+        "📘 <b>Fair Play & Terms</b>\n\n"
+        "✔ NaijaPrizeGate is a <b>knowledge-based trivia competition</b>\n"
+        "✔ Performance on the <b>leaderboard</b> determines rewards\n"
+        "✔ <b>No gambling</b> — outcomes are not based on chance\n"
+        "✔ Players earn quiz points by <b>answering questions</b>\n"
+        "✔ Paid questions help support the contest operations\n"
+        "✔ A prize unlocks when the cycle’s participation milestone is reached\n"
+        "✔ Winners must provide accurate delivery details\n"
+        "✔ Fraud or cheating will result in disqualification\n\n"
+        "📌 By continuing to use this bot, you agree to the rules above.\n\n"
+        "➡️ Use /start to return to the main menu"
+    )
+
+    if update.callback_query:
+        await update.callback_query.answer()
+        await update.callback_query.edit_message_text(text, parse_mode="HTML")
+    else:
+        await update.message.reply_text(text, parse_mode="HTML")
+
+
+# ===============================================================
+# ❓ FAQ HANDLER — ADDED
+# ===============================================================
+async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    text = (
+        "❓ <b>FAQs — Quick Answers</b>\n\n"
+        "• <b>How do I win?</b>\n"
+        "  → Score high on the leaderboard through quiz performance.\n\n"
+        "• <b>Is this gambling?</b>\n"
+        "  → No. All rewards are based on skill and knowledge.\n\n"
+        "• <b>Are there free questions?</b>\n"
+        "  → Yes! Earn free questions from the menu.\n\n"
+        "• <b>What do I gain from answering questions?</b>\n"
+        "  → Quiz points boost your rank and unlock rewards.\n\n"
+        "• <b>What if I run out of questions?</b>\n"
+        "  → You can earn or buy more through the menu.\n\n"
+        "➡️ Use /start to return to the main menu"
+    )
+
+    if update.callback_query:
+        await update.callback_query.answer()
+        await update.callback_query.edit_message_text(text, parse_mode="HTML")
+    else:
+        await update.message.reply_text(text, parse_mode="HTML")
+
+
+# ===============================================================
 # /start (with optional referral)
-# ---------------------------------------------------------
+# ===============================================================
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
 
@@ -33,7 +84,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "✨ It’s all about *knowledge and performance* — not luck 🔥\n\n"
         "🔒 100% Free to start\n"
         "📊 Rewards are based on leaderboard ranking\n"
-        "📘 See /terms for policy & fair play rules\n\n"
+        "📘 Tap *Fair Play Rules* below for policy & transparency\n\n"
         "Ready to begin?\n"
         "Tap *Play Trivia* below 👇"
     )
@@ -43,7 +94,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
         [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
         [InlineKeyboardButton("📊 My Available Questions", callback_data="show_tries")],
-        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")]
+        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
+        [InlineKeyboardButton("📘 Fair Play Rules", callback_data="terms")],  # NEW
+        [InlineKeyboardButton("❓ FAQs", callback_data="faq")]                # NEW
     ]
 
     if update.message:
@@ -53,41 +106,33 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             parse_mode="MarkdownV2"
         )
     elif update.callback_query:
-        query = update.callback_query
-        await query.answer()
-        await query.message.reply_text(
+        await update.callback_query.answer()
+        await update.callback_query.edit_message_text(
             text,
             reply_markup=InlineKeyboardMarkup(keyboard),
             parse_mode="MarkdownV2"
         )
 
-# ---------------------------------------------------------
-# Callback: Return to Start (from Cancel)
-# ---------------------------------------------------------
+
+# ===============================================================
+# GO BACK (from cancel or menu)
+# ===============================================================
 async def go_start_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    await query.answer()
-
-    try:
-        await query.message.delete()
-    except Exception as e:
-        logger.warning(f"⚠️ Could not delete message: {e}")
-
+    await update.callback_query.answer()
     await start(update, context)
 
-# ---------------------------------------------------------
-# /help — Updated for skill-based focus
-# ---------------------------------------------------------
-async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
+# ===============================================================
+# /help — Skill-based focus (unchanged)
+# ===============================================================
+async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = (
         "🆘 *How to Play*\n\n"
         "1️⃣ Select a trivia category\n"
         "2️⃣ Answer questions correctly to earn reward points\n"
         "3️⃣ Score higher to rise on the leaderboard\n"
-        "4️⃣ Top performers each week unlock special rewards 🎁\n\n"
+        "4️⃣ Top performers unlock special rewards 🎁\n\n"
         "🎯 Knowledge decides your success — not luck\n"
-        "💳 You may get extra trivia questions through the menu\n"
         "🔒 Completely safe and skill-based\n\n"
         "Use the buttons below to continue 👇"
     )
@@ -97,39 +142,23 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
         [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
         [InlineKeyboardButton("📊 My Available Questions", callback_data="show_tries")],
-        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")]
+        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
+        [InlineKeyboardButton("📘 Fair Play Rules", callback_data="terms")],  # NEW
+        [InlineKeyboardButton("❓ FAQs", callback_data="faq")]                # NEW
     ]
 
-    reply_markup = InlineKeyboardMarkup(keyboard)
+    await update.message.reply_text(
+        text,
+        reply_markup=InlineKeyboardMarkup(keyboard),
+        parse_mode="MarkdownV2"
+    )
 
-    if update.callback_query:
-        query = update.callback_query
-        await query.answer()
-        try:
-            await query.message.edit_text(
-                text=text,
-                reply_markup=reply_markup,
-                parse_mode="MarkdownV2"
-            )
-        except Exception:
-            await query.message.reply_text(
-                text,
-                reply_markup=reply_markup,
-                parse_mode="MarkdownV2"
-            )
-    elif update.message:
-        await update.message.reply_text(
-            text,
-            reply_markup=reply_markup,
-            parse_mode="MarkdownV2"
-        )
 
-# ---------------------------------------------------------
-# /mytries — now called "My Questions"
-# ---------------------------------------------------------
+# ===============================================================
+# /mytries — unchanged
+# ===============================================================
 async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg_user = update.effective_user
-    logger.info(f"🧮 /mytries called by tg_id={tg_user.id}")
 
     async with get_async_session() as session:
         db_user = await get_or_create_user(session, tg_id=tg_user.id, username=tg_user.username)
@@ -143,22 +172,23 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text(md_escape(text), parse_mode="MarkdownV2")
 
-# ---------------------------------------------------------
-# Fallback — unchanged but renamed terms
-# ---------------------------------------------------------
+
+# ===============================================================
+# Fallback — unchanged
+# ===============================================================
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    text = (
+    safe_text = md_escape(
         "🤔 Sorry, I didn’t understand that.\n\n"
         "Use /start or tap a menu button ↓"
     )
-    safe_text = md_escape(text)
-
     keyboard = [
         [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="tryluck")],
         [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
         [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
         [InlineKeyboardButton("📊 My Available Questions", callback_data="show_tries")],
-        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")]
+        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
+        [InlineKeyboardButton("📘 Fair Play Rules", callback_data="terms")],  # NEW
+        [InlineKeyboardButton("❓ FAQs", callback_data="faq")]                # NEW
     ]
 
     if update.message:
@@ -175,24 +205,35 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             parse_mode="MarkdownV2"
         )
 
-# ---------------------------------------------------------
-# Register handlers
-# ---------------------------------------------------------
-def register_handlers(application):
-    application.add_handler(CommandHandler("start", start))
 
+# ===============================================================
+# Register Handlers
+# ===============================================================
+def register_handlers(application):
+
+    # Commands
+    application.add_handler(CommandHandler("start", start))
+    application.add_handler(CommandHandler("help", help_cmd))
+    application.add_handler(CommandHandler("mytries", mytries))
+    application.add_handler(CommandHandler("terms", terms_handler))  # NEW
+    application.add_handler(CommandHandler("faq", faq_handler))      # NEW
+
+    # Callback menu buttons
+    application.add_handler(CallbackQueryHandler(terms_handler, pattern="^terms$"))  # NEW
+    application.add_handler(CallbackQueryHandler(faq_handler, pattern="^faq$"))      # NEW
+
+    # Friendly greeting triggers
     greetings = filters.Regex(re.compile(
         r"^(hi|hello|hey|howdy|sup|good\s?(morning|afternoon|evening))",
         re.IGNORECASE
     ))
     application.add_handler(MessageHandler(greetings, start))
 
-    application.add_handler(CommandHandler("help", help_cmd))
-    application.add_handler(CommandHandler("mytries", mytries))
-
+    # Leaderboard routing
     from handlers.leaderboard import register_leaderboard_handlers
     register_leaderboard_handlers(application)
 
+    # Fallback
     application.add_handler(
         MessageHandler(
             filters.TEXT & ~filters.COMMAND & ~filters.Regex(r"^[0-9+ ]+$"),
