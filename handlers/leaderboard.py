@@ -299,20 +299,28 @@ async def leaderboard_render(
     # ---- Cycle progress + trust signal (merit-based winner) ----
     text_lines.append("")
     if WIN_THRESHOLD > 0:
-        text_lines.append(
-            f"🎯 <b>Cycle:</b> {paid_this_cycle}/{WIN_THRESHOLD} paid questions answered"
-        )
+        # Percent progress (rounded)
+        if WIN_THRESHOLD > 0:
+            progress_pct = int((paid_this_cycle / WIN_THRESHOLD) * 100) if paid_this_cycle > 0 else 0
+
+        # Create simple progress bar (10 blocks)
+        total_blocks = 10
+        filled_blocks = int(progress_pct / (100 / total_blocks))
+        progress_bar = "█" * filled_blocks + "░" * (total_blocks - filled_blocks)
+
+        text_lines.append(f"🎯 <b>Cycle Progress:</b> {progress_bar} ({progress_pct}%)")
 
         if paid_this_cycle >= WIN_THRESHOLD:
-            # Winner is already locked automatically by backend logic using top scorer
+            # 🍾 Winner lock state (automatic backend logic)
             text_lines.append(
-                "🔒 Current cycle prize is locked based on the top scorer on this leaderboard."
+                "🔒 Prize unlocked — Top scorer is now being awarded!"
             )
         else:
-            remaining = WIN_THRESHOLD - paid_this_cycle
             text_lines.append(
-                f"🟡 <b>{remaining}</b> more paid question(s) until the cycle winner is locked."
+                "🏆 Top scorer at the end of the cycle will be awarded the prize.\n"
+                "Keep scoring to reach the top\!"
             )
+
 
     text_lines.append("🏆 Top scorer at threshold will be awarded the prize.")
     text_lines.append("✔ 100% Skill-Based — no gambling or chance involved.")
@@ -324,6 +332,13 @@ async def leaderboard_render(
     text_lines.append(
         "📌 Rankings are based on your quiz activity and knowledge performance."
     )
+
+    # Navigation hint back to main menu
+    text_lines.append("")
+    text_lines.append(
+        "➡️ Click /start to go back to the main menu."
+    )
+
 
     full_text = "\n".join(text_lines)
 
