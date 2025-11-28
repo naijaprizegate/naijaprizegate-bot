@@ -33,7 +33,7 @@ def payment_success_text(user, amount, questions_added):
         f"👏 {md_escape(user.username or user.first_name or 'Friend')}, "
         f"you've unlocked *{questions_added} new trivia questions* 🎯\n"
         f"(Top\\-up: ₦{amount:,})\n\n"
-        "🧠 More knowledge, more progress, more leaderboard points\!\n"
+        "🧠 More knowledge, more progress, more leaderboard points!\n"
         "Let’s play and climb the ranks 🚀"
     )
 
