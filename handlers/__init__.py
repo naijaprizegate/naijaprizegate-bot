@@ -1,3 +1,6 @@
+# ==================================================
+# handlers/_init_.py
+# ==================================================
 """
 Telegram Bot Handlers Package.
 
@@ -7,5 +10,5 @@ This package registers command and callback handlers for different bot flows:
 - free.py:    Proof submission & invite handling
 - payments.py: Payment start/verify flows
 - admin.py:   Admin approvals/rejections
-- tryluck.py: Spin-the-wheel game logic
+- playtrivia.py: Trivia-question-performance logic
 """
