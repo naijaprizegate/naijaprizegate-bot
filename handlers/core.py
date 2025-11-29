@@ -18,7 +18,7 @@ async def terms_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "📘 <b>Fair Play & Terms</b>\n\n"
         "✔ NaijaPrizeGate is a <b>knowledge-based trivia competition</b>\n"
         "✔ Performance on the <b>leaderboard</b> determines rewards\n"
-        "✔ <b>No gambling</b> — outcomes are not based on chance\n"
+        "✔ <b>100% Skill-Based</b> — no randomness in determining winners — outcomes are not based on chance\n"
         "✔ Players earn quiz points by <b>answering questions</b>\n"
         "✔ Paid questions help support the contest operations\n"
         "✔ A prize unlocks when the cycle’s participation milestone is reached\n"
@@ -90,7 +90,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
     keyboard = [
-        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="tryluck")],
+        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
         [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
         [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
         [InlineKeyboardButton("📊 My Available Questions", callback_data="show_tries")],
@@ -138,7 +138,7 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
     keyboard = [
-        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="tryluck")],
+        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
         [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
         [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
         [InlineKeyboardButton("📊 My Available Questions", callback_data="show_tries")],
@@ -182,7 +182,7 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "Use /start or tap a menu button ↓"
     )
     keyboard = [
-        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="tryluck")],
+        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
         [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
         [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
         [InlineKeyboardButton("📊 My Available Questions", callback_data="show_tries")],
