@@ -127,7 +127,7 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # -----------------------------------------
 # ADMIN: View Cycle Entries / Score Source
 # -----------------------------------------
-async def show_Top-Tier Campaign Reward_points(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def show_top_tier_campaign_reward_points(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
     Admin view of how many performance  entries (scored attempts) exist,
     and which users have the most recorded entries. This is purely
