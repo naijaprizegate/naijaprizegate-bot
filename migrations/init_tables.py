@@ -77,7 +77,7 @@ def main():
 
 
         # ======================================================
-        # 2. PRIZE WINNERS (existing jackpot winners)
+        # 2. PRIZE WINNERS (existing Top-Tier Campaign Reward winners)
         # ======================================================
         cur.execute("""
         CREATE TABLE prize_winners (
@@ -232,7 +232,7 @@ def main():
             user_id UUID REFERENCES users(id) ON DELETE CASCADE,
             tg_id BIGINT,
             spin_type TEXT NOT NULL,           -- basic / premium
-            outcome TEXT NOT NULL,             -- lose / jackpot / airtime / earpod / speaker
+            outcome TEXT NOT NULL,             -- lose / Top-Tier Campaign Reward / airtime / earpod / speaker
             extra_data JSONB DEFAULT '{}'::jsonb,
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         );
@@ -274,17 +274,17 @@ def main():
         print("✅ non_airtime_winners table created")
 
         # =====================================================
-        # 14. NEW - PREMIUM SPIN EENTRIES (for Jackpot weighted random selection)
+        # 14. NEW - PREMIUM SPIN EENTRIES (for Top-Tier Campaign Reward weighted random selection)
         # =====================================================
         cur.execute("""
-        CREATE TABLE premium_spin_entries (
+        CREATE TABLE premium_reward_entries (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
             user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE, 
             tg_id BIGINT NOT NULL,
             created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
         );
         """)
-        print("✅ premium_spin_entries table created")
+        print("✅ premium_reward_entries table created")
         
         # ======================================================
         # MIGRATION COMPLETED
