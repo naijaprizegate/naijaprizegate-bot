@@ -112,7 +112,7 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [
                 InlineKeyboardButton(
                     "📈 Cycle Entries Overview",
-                    callback_data="admin_menu:Top-Tier Campaign Reward_points",
+                    callback_data="admin_menu:top_tier_campaign_reward_points",
                 )
             ],
         ]
@@ -654,7 +654,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     [
                         InlineKeyboardButton(
                             "📈 Cycle Entries Overview",
-                            callback_data="admin_menu:Top-Tier Campaign Reward_points",
+                            callback_data="admin_menu:top_tier_campaign_reward_points",
                         )
                     ],
                 ]
@@ -865,7 +865,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [
                 InlineKeyboardButton(
                     "📈 Cycle Entries Overview",
-                    callback_data="admin_menu:Top-Tier Campaign Reward_points",
+                    callback_data="admin_menu:top_tier_campaign_reward_points",
                 )
             ],
         ]
@@ -1827,7 +1827,7 @@ def register_handlers(application):
     )
     application.add_handler(
         CallbackQueryHandler(
-            show_Top-Tier Campaign Reward_points, pattern="admin_menu:Top-Tier Campaign Reward_points"
+            show_top_tier_campaign_reward_points, pattern="admin_menu:top_tier_campaign_reward_points"
         )
     )
 
@@ -1884,4 +1884,3 @@ def register_handlers(application):
     # ✅ Absolute fallback — catches *everything else* (usually in handlers/core.py)
     # Place this one at the VERY END of all registrations:
     application.add_handler(MessageHandler(filters.ALL, fallback))
-
