@@ -108,11 +108,11 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     "🏆 Winners", callback_data="admin_menu:winners"
                 )
             ],
-            # Renamed label to avoid “jackpot” / random connotation
+            # Renamed label to avoid “Top-Tier Campaign Reward” / random connotation
             [
                 InlineKeyboardButton(
                     "📈 Cycle Entries Overview",
-                    callback_data="admin_menu:jackpot_tickets",
+                    callback_data="admin_menu:Top-Tier Campaign Reward_points",
                 )
             ],
         ]
@@ -127,11 +127,11 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # -----------------------------------------
 # ADMIN: View Cycle Entries / Score Source
 # -----------------------------------------
-async def show_jackpot_tickets(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def show_Top-Tier Campaign Reward_points(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
-    Admin view of how many premium quiz entries (scored attempts) exist,
+    Admin view of how many performance  entries (scored attempts) exist,
     and which users have the most recorded entries. This is purely
-    merit-based usage of premium_spin_entries as the scoring source.
+    merit-based usage of premium_reward_entries as the scoring source.
     """
     if update.effective_user.id != ADMIN_USER_ID:
         return await update.callback_query.answer(
@@ -139,9 +139,9 @@ async def show_jackpot_tickets(update: Update, context: ContextTypes.DEFAULT_TYP
         )
 
     async with AsyncSessionLocal() as session:
-        # Total number of recorded premium quiz entries
+        # Total number of recorded performance  entries
         count_res = await session.execute(
-            text("SELECT COUNT(*) FROM premium_spin_entries")
+            text("SELECT COUNT(*) FROM premium_reward_entries")
         )
         total_entries = count_res.scalar() or 0
 
@@ -150,7 +150,7 @@ async def show_jackpot_tickets(update: Update, context: ContextTypes.DEFAULT_TYP
             text(
                 """
             SELECT user_id, tg_id, COUNT(*) AS entries
-            FROM premium_spin_entries
+            FROM premium_reward_entries
             GROUP BY user_id, tg_id
             ORDER BY entries DESC
             LIMIT 20
@@ -189,7 +189,7 @@ async def show_jackpot_tickets(update: Update, context: ContextTypes.DEFAULT_TYP
 
     text_msg = (
         "📈 <b>Competition Entries Overview</b>\n\n"
-        "This panel summarises how many <b>premium quiz attempts</b> have been "
+        "This panel summarises how many <b>performance  attempts</b> have been "
         "recorded and who is most active. The main leaderboard uses these "
         "entries to rank users by performance.\n\n"
         f"📊 <b>Total Recorded Entries:</b> {total_entries}"
@@ -654,7 +654,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     [
                         InlineKeyboardButton(
                             "📈 Cycle Entries Overview",
-                            callback_data="admin_menu:jackpot_tickets",
+                            callback_data="admin_menu:Top-Tier Campaign Reward_points",
                         )
                     ],
                 ]
@@ -744,7 +744,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         user_menu_keyboard = [
             [
                 InlineKeyboardButton(
-                    "🧠 Play Trivia Question", callback_data="tryluck"
+                    "🧠 Play Trivia Question", callback_data="playtrivia"
                 )
             ],
             [
@@ -865,7 +865,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [
                 InlineKeyboardButton(
                     "📈 Cycle Entries Overview",
-                    callback_data="admin_menu:jackpot_tickets",
+                    callback_data="admin_menu:Top-Tier Campaign Reward_points",
                 )
             ],
         ]
@@ -1716,7 +1716,7 @@ async def show_filtered_winners(
         return
 
     # Build winner list message
-    text_lines = [f"🏆 <b>Jackpot Winners - {filter_value}</b>\n"]
+    text_lines = [f"🏆 <b>Top-Tier Campaign Reward Winners - {filter_value}</b>\n"]
     for w in winners:
         text_lines.append(
             f"👤 <b>{w.full_name or '-'}</b>\n"
@@ -1827,7 +1827,7 @@ def register_handlers(application):
     )
     application.add_handler(
         CallbackQueryHandler(
-            show_jackpot_tickets, pattern="admin_menu:jackpot_tickets"
+            show_Top-Tier Campaign Reward_points, pattern="admin_menu:Top-Tier Campaign Reward_points"
         )
     )
 
@@ -1884,3 +1884,4 @@ def register_handlers(application):
     # ✅ Absolute fallback — catches *everything else* (usually in handlers/core.py)
     # Place this one at the VERY END of all registrations:
     application.add_handler(MessageHandler(filters.ALL, fallback))
+
