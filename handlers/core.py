@@ -25,7 +25,12 @@ async def terms_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "✔ Winners must provide accurate delivery details\n"
         "✔ Fraud or cheating will result in disqualification\n\n"
         "📌 By continuing to use this bot, you agree to the rules above.\n\n"
-        "➡️ Use /start to return to the main menu"
+        "➡️ Use /start to return to the main menu.\n\n"
+        "🛑 Disclaimer\n"
+        "Brand names or product names shown as prizes (e.g., iPhone, Samsung Galaxy)\n"
+        "are used *only to describe rewards available to top performers*.\n"
+        "Apple Inc. and Samsung Electronics are **not sponsors, partners or affiliated\n"
+        "with this competition in any way."
     )
 
     if update.callback_query:
