@@ -1,5 +1,5 @@
 # ===============================================================
-# handlers/tryluck.py  (🧠 Trivia-Based Rewards Flow – Compliance-Oriented)
+# handlers/playtrivia.py  (🧠 Trivia-Based Rewards Flow – Compliance-Oriented)
 # ===============================================================
 
 import os
@@ -21,7 +21,7 @@ from telegram.ext import (
 
 from helpers import get_or_create_user
 from utils.questions_loader import get_random_question
-from services.tryluck import spin_logic  # ⚠️ Rename later to something like reward_logic
+from services.playtrivia import reward_logic  # ⚠️ Rename later to something like reward_logic
 from db import get_async_session
 from models import GameState
 from handlers.payments import handle_buy_callback
@@ -49,7 +49,7 @@ def make_play_keyboard():
     return InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("🧠 Play Again", callback_data="tryluck"),
+                InlineKeyboardButton("🧠 Play Again", callback_data="playtrivia"),
                 InlineKeyboardButton("📊 My Available Questions", callback_data="show_tries"),
             ],
             [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
@@ -159,9 +159,9 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
 
 
 # ================================================================
-# STEP 1 — Entry point: “Play Trivia” (was /tryluck)
+# STEP 1 — Entry point: “Play Trivia” (was /playtrivia)
 # ================================================================
-async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
     This handler is the main entry for playing a trivia round.
     User-facing language is skill-based: “Play Trivia” instead of “Try Luck”.
@@ -187,7 +187,7 @@ async def tryluck_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     parse_mode="Markdown",
                 )
 
-            # NOTE: Tries deduction is handled inside reward logic (spin_logic).
+            # NOTE: Tries deduction is handled inside reward logic (reward_logic).
             await session.commit()
 
     # --------------------------
@@ -235,7 +235,7 @@ async def trivia_timeout_task(
         return
 
     context.user_data["trivia_answered"] = True
-    context.user_data["is_premium_spin"] = False  # standard reward tier
+    context.user_data["is_premium_reward"] = False  # standard reward tier
 
     chat_id = update.effective_chat.id
 
@@ -305,7 +305,7 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
     # Save reward tier status
     # True  → premium/high tier reward
     # False → standard/basic reward
-    context.user_data["is_premium_spin"] = is_correct
+    context.user_data["is_premium_reward"] = is_correct
 
     # 📝 Respond to user (skill-focused language)
     if is_correct:
@@ -315,14 +315,20 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
             "_Calculating your reward..._",
             parse_mode="Markdown",
         )
-    else:
-        await query.edit_message_text(
-            "🙈 *Not correct this time!*\n"
-            f"👉 *Correct answer:* `{correct_letter}` — *{correct_text}*\n\n"
-            "This attempt will use the *standard reward tier*.\n\n"
-            "_Calculating your reward..._",
-            parse_mode="Markdown",
-        )
+        # CORRECT → continue immediately 🔥
+        return await run_spin_after_trivia(update, context)
+
+    # INCORRECT → show correct answer then delay before reward
+    await query.edit_message_text(
+        "🙈 *Not correct this time!*\n"
+        f"👉 *Correct answer:* `{correct_letter}` — *{correct_text}*\n\n"
+        "This attempt will use the *standard reward tier*.\n\n"
+        "_Calculating your reward..._",
+        parse_mode="Markdown",
+    )
+
+    # Wait before starting reward logic so user sees this
+    await asyncio.sleep(1.5)
 
     # Continue to reward phase
     await run_spin_after_trivia(update, context)
@@ -334,7 +340,9 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
 # ================================================================
 async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg_user = update.effective_user
-    is_premium = context.user_data.pop("is_premium_spin", False)
+
+    # Extract state once & clear ASAP
+    is_premium = context.user_data.pop("is_premium_reward", False)
 
     # Perform reward logic in DB
     async with get_async_session() as session:
@@ -344,12 +352,12 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
                     session, tg_id=tg_user.id, username=tg_user.username
                 )
 
-                # ⚠️ spin_logic should eventually be renamed & adjusted
-                outcome = await spin_logic(session, user, is_premium)
+                # ⚠️ reward_logic should eventually be renamed & adjusted
+                outcome = await reward_logic(session, user, is_premium)
                 await session.refresh(user)
 
                 # Cycle reset logic (internal accounting)
-                if outcome == "jackpot":
+                if outcome == "Top-Tier Campaign Reward":
                     gs = await session.get(GameState, 1)
                     if gs:
                         gs.current_cycle += 1
@@ -365,7 +373,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
 
     # Reward animation (now framed as “processing your reward”)
     msg = await update.effective_message.reply_text(
-        "🔄 *Processing your reward...*",
+        "🔄 *Evaluating your earned reward...*",
         parse_mode="Markdown",
     )
 
@@ -388,10 +396,10 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
     # 🎯 OUTCOME HANDLING (User-facing text = promotional rewards, not gambling)
     # ============================================================
 
-    # 🏆 TOP-TIER REWARD (internal: "jackpot")
-    if outcome == "jackpot":
+    # 🏆 TOP-TIER REWARD (internal: "Top-Tier Campaign Reward")
+    if outcome == "Top-Tier Campaign Reward":
         await msg.edit_text(
-            f"🎉 *Amazing, {player_name}!* \n\n"
+            f"🎉 *Outstanding performance, {player_name}!* \n\n"
             "You’ve unlocked a *top-tier campaign reward* for this round.\n\n"
             "Please choose your preferred reward option below:",
             parse_mode="Markdown",
@@ -663,7 +671,7 @@ async def show_tries_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="tryluck"),
+                InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia"),
                 InlineKeyboardButton("💳 Get More Questions", callback_data="buy"),
             ],
             [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
@@ -699,9 +707,9 @@ def register_handlers(application):
     )
 
     # Main trivia + rewards flow
-    application.add_handler(CommandHandler("tryluck", tryluck_handler))
+    application.add_handler(CommandHandler("playtrivia", playtrivia_handler))
     application.add_handler(
-        CallbackQueryHandler(tryluck_handler, pattern="^tryluck$")
+        CallbackQueryHandler(playtrivia_handler, pattern="^playtrivia$")
     )
 
     # Top-tier reward phone-choice → delivery form
