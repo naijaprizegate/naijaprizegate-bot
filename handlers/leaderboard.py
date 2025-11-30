@@ -11,7 +11,7 @@ from telegram.error import BadRequest
 from sqlalchemy import select, func
 
 from db import get_async_session
-from models import PremiumSpinEntry, User, GameState  # PremiumSpinEntry = quiz entry log
+from models import PremiumRewardEntry, User, GameState  # PremiumRewardEntry = quiz entry log
 
 LEADERBOARD_PAGE_SIZE = 10
 
@@ -22,22 +22,22 @@ WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "0"))
 # ---------------------------------------------------------
 # 🏅 Badge helper (based on quiz activity)
 # ---------------------------------------------------------
-def _badge_for_tickets(tickets: int) -> str:
+def _badge_for_points(points: int) -> str:
     """
-    Simple badge tiers based on the user's premium quiz entries/points
+    Simple badge tiers based on the user's performance  entries/points
     in the selected scope. No money or luck implied.
     """
-    if tickets >= 200:
+    if points >= 200:
         return "🏆 Legend"
-    if tickets >= 100:
+    if points >= 100:
         return "🥇 Gold"
-    if tickets >= 50:
+    if points >= 50:
         return "🥈 Silver"
-    if tickets >= 20:
+    if points >= 20:
         return "🥉 Bronze"
-    if tickets >= 5:
+    if points >= 5:
         return "⭐ Active"
-    if tickets >= 1:
+    if points >= 1:
         return "🎓 New Challenger"
     return "—"
 
@@ -114,7 +114,7 @@ async def leaderboard_render(
     """
     Render a leaderboard page with:
       - Tabs: This Week / This Cycle
-      - Top users by quiz activity (premium quiz entries)
+      - Top users by quiz activity (performance  entries)
       - Badges
       - Your personal stats + streaks in footer
       - Button to view full “My Achievements” screen
@@ -133,7 +133,7 @@ async def leaderboard_render(
 
     if scope == "week":
         start = now - timedelta(days=7)
-        filter_clause = PremiumSpinEntry.created_at >= start
+        filter_clause = PremiumRewardEntry.created_at >= start
         scope_label = "🔥 This Week (last 7 days)"
     else:
         scope = "cycle"
@@ -141,30 +141,30 @@ async def leaderboard_render(
 
     async with get_async_session() as session:
         # ----- Base query for counts -----
-        # "tickets" here represent *earned premium quiz entries/points*
+        # "points" here represent *earned performance  entries/points*
         base_q = select(
-            PremiumSpinEntry.user_id,
-            func.count(PremiumSpinEntry.id).label("tickets"),
+            PremiumRewardEntry.user_id,
+            func.count(PremiumRewardEntry.id).label("points"),
         )
         if filter_clause is not None:
             base_q = base_q.where(filter_clause)
-        base_q = base_q.group_by(PremiumSpinEntry.user_id)
+        base_q = base_q.group_by(PremiumRewardEntry.user_id)
 
         # ----- Totals -----
-        total_q = select(func.count(PremiumSpinEntry.id))
-        distinct_q = select(func.count(func.distinct(PremiumSpinEntry.user_id)))
+        total_q = select(func.count(PremiumRewardEntry.id))
+        distinct_q = select(func.count(func.distinct(PremiumRewardEntry.user_id)))
         if filter_clause is not None:
             total_q = total_q.where(filter_clause)
             distinct_q = distinct_q.where(filter_clause)
 
-        total_tickets = (await session.execute(total_q)).scalar() or 0
+        total_points = (await session.execute(total_q)).scalar() or 0
         distinct_users = (await session.execute(distinct_q)).scalar() or 0
 
         # ----- Page of top users -----
         offset = max(page - 1, 0) * LEADERBOARD_PAGE_SIZE
         page_q = (
             base_q
-            .order_by(func.count(PremiumSpinEntry.id).desc())
+            .order_by(func.count(PremiumRewardEntry.id).desc())
             .offset(offset)
             .limit(LEADERBOARD_PAGE_SIZE)
         )
@@ -194,31 +194,31 @@ async def leaderboard_render(
             if viewer_db_user:
                 viewer_user_id = str(viewer_db_user.id)
 
-        my_tickets = 0
+        my_points = 0
         my_rank = None
         current_streak = 0
         best_streak = 0
 
         if viewer_user_id:
-            my_count_q = select(func.count(PremiumSpinEntry.id)).where(
-                PremiumSpinEntry.user_id == viewer_user_id
+            my_count_q = select(func.count(PremiumRewardEntry.id)).where(
+                PremiumRewardEntry.user_id == viewer_user_id
             )
             if filter_clause is not None:
                 my_count_q = my_count_q.where(filter_clause)
 
-            my_tickets = (await session.execute(my_count_q)).scalar() or 0
+            my_points = (await session.execute(my_count_q)).scalar() or 0
 
-            if my_tickets > 0:
+            if my_points > 0:
                 subq = base_q.subquery()
                 better_q = select(func.count()).select_from(subq).where(
-                    subq.c.tickets > my_tickets
+                    subq.c.points > my_points
                 )
                 better_count = (await session.execute(better_q)).scalar() or 0
                 my_rank = better_count + 1
 
                 streak_dates_res = await session.execute(
-                    select(PremiumSpinEntry.created_at).where(
-                        PremiumSpinEntry.user_id == viewer_user_id
+                    select(PremiumRewardEntry.created_at).where(
+                        PremiumRewardEntry.user_id == viewer_user_id
                     )
                 )
                 dates = [row[0] for row in streak_dates_res.fetchall()]
@@ -240,9 +240,9 @@ async def leaderboard_render(
     if not rows:
         text_lines.append("No quiz activity recorded yet in this period.\n")
     else:
-        text_lines.append("Top players (by premium quiz activity):\n")
+        text_lines.append("Top players (based on earned performance points):\n")
         rank_start = offset + 1
-        for i, (uid, tickets) in enumerate(rows, start=rank_start):
+        for i, (uid, points) in enumerate(rows, start=rank_start):
             u = users_by_id.get(uid)
 
             # Prefer first_name → username → masked ID
@@ -255,39 +255,39 @@ async def leaderboard_render(
             else:
                 display_name = f"Player {str(uid)[-4:]}"
 
-            badge = _badge_for_tickets(tickets)
+            badge = _badge_for_points(points)
             text_lines.append(
-                f"<b>{i}.</b> {display_name} — {tickets} quiz point(s) {badge}"
+                f"<b>{i}.</b> {display_name} — {points} quiz point(s) {badge}"
             )
 
     text_lines.append("")
-    text_lines.append(f"📊 <b>Total Quiz Points (this period):</b> {total_tickets}")
+    text_lines.append(f"📊 <b>Total Quiz Points (this period):</b> {total_points}")
     text_lines.append(f"👥 <b>Active Players:</b> {distinct_users}")
 
     if viewer_user_id:
-        badge_me = _badge_for_tickets(my_tickets)
+        badge_me = _badge_for_points(my_points)
         text_lines.append("\n<b>Your Stats</b>")
-        if my_tickets == 0:
+        if my_points == 0:
             text_lines.append(
-                "• You have 0 premium quiz points in this period yet. "
+                "• You have 0 performance  points in this period yet. "
                 "Answer more questions to climb the board! 🔥"
             )
         else:
             rank_text = f"#{my_rank}" if my_rank is not None else "N/A"
             text_lines.append(
                 f"• Rank: {rank_text}\n"
-                f"• Premium quiz points: {my_tickets} ({badge_me})\n"
+                f"• performance  points: {my_points} ({badge_me})\n"
                 f"• Current activity streak: {current_streak} day(s)\n"
                 f"• Best activity streak: {best_streak} day(s)"
             )
 
             achievements = []
-            if my_tickets >= 1:
-                achievements.append("🎉 First Challenge — You joined your first premium quiz round.")
-            if my_tickets >= 10:
-                achievements.append("🎯 Consistent Player — 10+ premium quiz points earned.")
-            if my_tickets >= 25:
-                achievements.append("🔥 Dedicated Challenger — 25+ premium quiz points.")
+            if my_points >= 1:
+                achievements.append("🎉 First Challenge — You joined your first performance  round.")
+            if my_points >= 10:
+                achievements.append("🎯 Consistent Player — 10+ performance  points earned.")
+            if my_points >= 25:
+                achievements.append("🔥 Dedicated Challenger — 25+ performance  points.")
             if best_streak >= 3:
                 achievements.append(f"⚡ Streak Builder — {best_streak}+ days of quiz activity in a row.")
 
@@ -318,11 +318,9 @@ async def leaderboard_render(
         else:
             text_lines.append(
                 "🏆 Top scorer at the end of the cycle will be awarded the prize.\n"
-                "Keep scoring to reach the top!"
+                "🔥 Keep scoring to reach the top!"
             )
 
-
-    text_lines.append("🏆 Top scorer at threshold will be awarded the prize.")
     text_lines.append("✔ 100% Skill-Based — no gambling or chance involved.")
 
     text_lines.append(
@@ -408,7 +406,7 @@ async def leaderboard_render(
 async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
     Shows a dedicated achievements screen for the current user.
-    Based on PremiumSpinEntry, treated as *premium quiz entries / points*.
+    Based on PremiumRewardEntry, treated as *performance  entries / points*.
     """
     tg_user = update.effective_user
     query = update.callback_query
@@ -429,11 +427,11 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
 
         user_id = str(db_user.id)
 
-        # All-time premium quiz entries/points
-        total_tickets_all = (
+        # All-time performance  entries/points
+        total_points_all = (
             await session.execute(
-                select(func.count(PremiumSpinEntry.id)).where(
-                    PremiumSpinEntry.user_id == user_id
+                select(func.count(PremiumRewardEntry.id)).where(
+                    PremiumRewardEntry.user_id == user_id
                 )
             )
         ).scalar() or 0
@@ -441,25 +439,25 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
         # Last 7 days quiz points (for extra context)
         now = datetime.now(timezone.utc)
         start_week = now - timedelta(days=7)
-        tickets_last_7 = (
+        points_last_7 = (
             await session.execute(
-                select(func.count(PremiumSpinEntry.id)).where(
-                    PremiumSpinEntry.user_id == user_id,
-                    PremiumSpinEntry.created_at >= start_week,
+                select(func.count(PremiumRewardEntry.id)).where(
+                    PremiumRewardEntry.user_id == user_id,
+                    PremiumRewardEntry.created_at >= start_week,
                 )
             )
         ).scalar() or 0
 
-        # Streaks (based on ALL premium quiz entries)
+        # Streaks (based on ALL performance  entries)
         streak_dates_res = await session.execute(
-            select(PremiumSpinEntry.created_at).where(
-                PremiumSpinEntry.user_id == user_id
+            select(PremiumRewardEntry.created_at).where(
+                PremiumRewardEntry.user_id == user_id
             )
         )
         dates = [row[0] for row in streak_dates_res.fetchall()]
         current_streak, best_streak = _compute_streaks(dates)
 
-    badge = _badge_for_tickets(total_tickets_all)
+    badge = _badge_for_points(total_points_all)
 
     # Build achievements text
     lines = []
@@ -471,10 +469,10 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
     )
     lines.append("")
     lines.append(
-        f"🎟️ <b>Total Premium Quiz Points (all-time):</b> {total_tickets_all}"
+        f"🎟️ <b>Total performance  Points (all-time):</b> {total_points_all}"
     )
     lines.append(
-        f"🔥 <b>Last 7 Days:</b> {tickets_last_7} premium quiz point(s) earned"
+        f"🔥 <b>Last 7 Days:</b> {points_last_7} performance  point(s) earned"
     )
     lines.append(f"🏅 <b>Current Badge:</b> {badge}")
     lines.append(f"⚡ <b>Current Activity Streak:</b> {current_streak} day(s)")
@@ -482,16 +480,16 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
 
     # Milestone-style achievements (quiz-based)
     achievements = []
-    if total_tickets_all >= 1:
-        achievements.append("🎉 First Challenge — You completed your first premium quiz round!")
-    if total_tickets_all >= 10:
-        achievements.append("🎯 Consistent Player — 10+ premium quiz points collected.")
-    if total_tickets_all >= 25:
-        achievements.append("🔥 Dedicated Challenger — 25+ premium quiz points.")
-    if total_tickets_all >= 50:
-        achievements.append("💎 Elite Learner — 50+ premium quiz points.")
-    if total_tickets_all >= 100:
-        achievements.append("👑 Quiz Master — 100+ premium quiz points.")
+    if total_points_all >= 1:
+        achievements.append("🎉 First Challenge — You completed your first performance  round!")
+    if total_points_all >= 10:
+        achievements.append("🎯 Consistent Player — 10+ performance  points collected.")
+    if total_points_all >= 25:
+        achievements.append("🔥 Dedicated Challenger — 25+ performance  points.")
+    if total_points_all >= 50:
+        achievements.append("💎 Elite Learner — 50+ performance  points.")
+    if total_points_all >= 100:
+        achievements.append("👑 Quiz Master — 100+ performance  points.")
     if best_streak >= 3:
         achievements.append(f"⚡ Streak Builder — {best_streak}+ days of quiz activity in a row.")
     if best_streak >= 7:
