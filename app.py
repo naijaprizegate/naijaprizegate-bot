@@ -58,7 +58,7 @@ from datetime import datetime, timezone
 
 # Local imports
 from logger import tg_error_handler, logger
-from handlers import core, payments, free, admin, tryluck
+from handlers import core, payments, free, admin, playtrivia
 from tasks import start_background_tasks, stop_background_tasks
 from db import init_game_state, get_async_session, get_session
 from models import Payment, User, GameState, PrizeWinner
@@ -185,7 +185,7 @@ async def on_startup():
         free.register_handlers(application)
         payments.register_handlers(application)
         admin.register_handlers(application)
-        tryluck.register_handlers(application)
+        playtrivia.register_handlers(application)
 
         # Initialize & start bot
         await application.initialize()
@@ -455,7 +455,7 @@ async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(
             try:
                 bot = Bot(token=BOT_TOKEN)
                 keyboard = InlineKeyboardMarkup([
-                    [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="tryluck")],
+                    [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
                     [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
                     [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
                     [InlineKeyboardButton("📊 Available Questions", callback_data="show_tries")]
