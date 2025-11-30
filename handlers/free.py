@@ -23,13 +23,17 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     text = (
         f"🎁 *Hey {display_name}*\\! \n\n"
-        "Wanna grab some *FREE spins*? ⬇️\n\n"
-        "🤩 Don’t sleep on this — it’s your golden chance to stack up extra tries and chase the jackpot\\! 💎🔥\n\n"
-        "1️⃣ *Invite a friend*: Drop your referral link\\. Every signup through YOU \\= \\+1 free try ⚡ \\(the more friends, the more spins\\!\\)\n\n"
-        "2️⃣ *Follow us everywhere*: Facebook, Instagram, TikTok, YouTube 📲\\. Snap a proof pic 📸 → once approved, BOOM, another \\+1 free try lands in your account 🚀\n\n"
-        "⚠️ Don’t wait — others are already stacking free spins while you’re still reading this 👀\\. Be the one who wins, not the one who watches\\! 🏆\n\n"
-        "👉 Pick your move below and start racking up those FREE shots at glory:"
+        "Ready to boost your performance and get ahead on the leaderboard? 😎\n\n"
+        "💡 Every correct answer earns you points.\n"
+        "🏆 Once the performance target is reached, the top scorer wins the prize.\n\n"
+        "*How to earn FREE Trivia Questions* 👇\n"
+        "1️⃣ *Invite friends* — Each friend who joins through your link = *+1 Free Question*\n"
+        "2️⃣ *Follow us on social media* — Upload a screenshot proof = *+1 Free Question* after approval\n\n"
+        "⚡ The more questions you answer, the higher you climb.\n"
+        "Be the player others try to catch — not the one trying to catch up! 🚀\n\n"
+        "👉 Choose an option below to increase your quiz access:"
     )
+
 
     ref_link = f"https://t.me/{BOT_USERNAME}?start={db_user.id}"
     ref_link_md = md_escape(ref_link)  # ✅ escape before using in Markdown
@@ -37,27 +41,33 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     share_variants = [
         (
             f"🎰 Yo, it’s *{display_name}* here\\!\n\n"
-            f"NaijaPrizeGate is lit rn 🔥 — I’m stacking *free spins* and shooting my shot to win:\n\n"
-            f"✨ *iPhone 16 Pro Max*\n\n"
-            f"✨ *iPhone 17 Pro Max*\n\n"
-            f"✨ *Samsung Galaxy Z Flip 7*\n\n"
-            f"✨ *Samsung Galaxy S25 Ultra*\n\n"
+            f"NaijaPrizeGate is lit right now 🔥\n\n"
+            f"🧠 *I'm upgrading my knowledge and climbing the leaderboard on NaijaPrizeGate!* 🚀\n\n"
+            f"Top scorer wins the prize 🎯\n\n"
+            f"Up for grabs this cycle:\n\n"
+            f"📱 iPhone 16 Pro Max\n\n"
+            f"📱 iPhone 17 Pro Max\n\n"
+            f"📱 Samsung Galaxy Z Flip 7\n\n"
+            f"📱 Samsung Galaxy S25 Ultra\n\n"
+            f"Join me by answering fun questions and show what you know 👇\n"
             f"Don’t snooze — tap my link before it’s too late ⏳👇\n"
             f"👉 {ref_link}"
         ),
         (
-            f"🚀 *{display_name}* just unlocked *free spins* on *NaijaPrizeGate* 🎉\n\n"
-            f"Big wins are flying — next up could be:\n"
-            f"💎 *iPhone 16 Pro Max*\n\n"
-            f"💎 *iPhone 17 Pro Max*\n\n"
-            f"💎 *Samsung Galaxy Z Flip 7*\n\n"
-            f"💎 *Samsung Galaxy S25 Ultra*\n\n"
-            f"Join in now, spin yours & claim your shot 👇\n"
+            f"🚀 *{display_name}* just unlocked *free Trivia Questions* on *NaijaPrizeGate* 🎉\n\n"
+            f"I used to scroll endlessly on my phone.\n"
+            f"Now I’m using it to actually challenge my brain 🧠🔥\n\n"
+            f"NaijaPrizeGate is rewarding top scorers with amazing prizes:\n"
+            f"📱 iPhone 16 Pro Max\n\n"
+            f"📱 iPhone 17 Pro Max\n\n"
+            f"📱 Samsung Galaxy Z Flip 7\n\n"
+            f"📱 Samsung Galaxy S25 Ultra\n\n"
+            f"Join me — let’s level up and win smart 👇\n"
             f"👉 {ref_link}"
         ),
         (
             f"🔥 *{display_name}* is already playing\\! \n\n"
-            f"NaijaPrizeGate’s dropping jackpots like crazy 🎰💸\n\n"
+            f"NaijaPrizeGate’s dropping Top-Tier Campaign Rewards like crazy 🎰💸\n\n"
             f"Up for grabs:\n\n"
             f"🏆 *iPhone 16 Pro Max*\n\n"
             f"🏆 *iPhone 17 Pro Max*\n\n"
@@ -116,13 +126,13 @@ async def send_referral_link(update: Update, context: ContextTypes.DEFAULT_TYPE)
     display_name = md_escape(tg_user.first_name or tg_user.username or "Friend")
 
     text = (
-        f"🚀 *Boom, {display_name}*\\! Your golden referral link is ready:\n\n"
+        f"🚀 *Boom, {display_name}*\\! Your personal referral link is ready:\n\n"
         f"🔗 {ref_link_md}\n\n"
-        "👥 Every friend who joins through *your* link \\= you unlock *\\+1 FREE try\\!* 🎉\n\n"
-        "📢 Share this link with friends\\. "
-        "🔥 The more you share, the more spins you stack\\. Imagine hitting the jackpot while others are still watching 👀\n\n"
-        "Don’t sit back — blast your link in your groups, drop it in DMs, post it everywhere\\. "
-        "*First movers win BIG\\!* 💰💎"
+        "👥 Every friend who joins through *your* link \\= *\+1 FREE Trivia Questions\\!* 🎉\n\n"
+        "🧠 More questions = More chances to score higher\\.\n\n" 
+        "💪 Higher score = Better chance to finish #1\n\n"
+        "Share your link everywhere — let’s see how far your knowledge can take you! 🏆"
+        "*Be the first to get to the top\\!* 💰💎"
     )
 
     await update.callback_query.answer()
@@ -135,7 +145,8 @@ async def ask_proof_upload(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.callback_query.edit_message_text(
         "📤 Please send a *photo screenshot* showing that you followed us "
         "on social media\\.\n\n"
-        "Once an admin approves it, you’ll receive \\+1 free try 🎉",
+        "Once approved by our team, you’ll receive *\\+1 free Trivia Question 🎉\n\n" \
+        "📌 Remember: Rewards are skill-based — higher performance wins\\!",
         parse_mode="MarkdownV2"
     )
     context.user_data["awaiting_proof"] = True
@@ -161,8 +172,9 @@ async def handle_proof_photo(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     await update.message.reply_text(
         "✅ Proof received\\! \n\n"
-        "An admin will review it shortly\\. "
-        "You’ll be notified once approved 🎉\n\n"
+        "Our team will review it shortly\\.\n\n "
+        "You’ll be notified once approved 🎉 and your free question is credited 💡\n\n"
+        "📍 Tip: The more questions you answer correctly, the higher you rank.\n\n"
         "Type or click \\/Start\\ to go back to the main menu\\.",
         parse_mode="MarkdownV2"
     )
@@ -178,11 +190,11 @@ def proof_approved_text(db_user, bonus_tries: int):
     return (
         f"🎉 *Congrats {display_name}*\\! \n\n"
         f"✅ Your proof has been approved by our team\\. \n"
-        f"💎 You just earned *{bonus_tries} FREE spin(s)*\\!\n\n"
-        "🔥 That’s one more shot at grabbing the jackpot\\. Remember… every extra spin takes you closer to the *BIG WIN\\!* 💎💰\n\n"
-        "📢 Don’t stop here — keep stacking free tries by inviting friends and smashing those social follows\\. "
-        "*The ones who keep pushing are the ones who win BIG\\!* 🚀"
-        "👉 Head back to *Try Luck* and put it to work 🔥"
+        f"💎 You just earned *{bonus_tries} FREE Trivia Question(s)*\\!\n\n"
+        "🧠 Ready to boost your score even more?\n\n"
+        "📢 Don’t stop here — keep getting free Trivia Questions by inviting friends\\. "
+        "*Leaderboard ranking is based entirely on correct answers\\.\n\n"
+        "👉 Head back to *Play trivia Questions* — every point gets you closer to the top spot 🏆"
     )
 
 
