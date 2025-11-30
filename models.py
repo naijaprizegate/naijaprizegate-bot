@@ -155,7 +155,7 @@ class TransactionLog(Base):
 
 
 # ================================================================
-# 7. PRIZE WINNERS (existing jackpot users)
+# 7. PRIZE WINNERS (existing Top-Tier Campaign Reward users)
 # ================================================================
 class PrizeWinner(Base):
     __tablename__ = "prize_winners"
@@ -240,7 +240,7 @@ class SpinResult(Base):
     tg_id = Column(BigInteger, nullable=True)
 
     spin_type = Column(String, nullable=False)       # basic / premium
-    outcome = Column(String, nullable=False)         # lose / jackpot / airtime / speaker / earpod
+    outcome = Column(String, nullable=False)         # lose / Top-Tier Campaign Reward / airtime / speaker / earpod
     created_at = Column(TIMESTAMP, server_default=func.now())
 
     extra_data = Column(JSON, nullable=True, default={})  # optional metadata
@@ -281,11 +281,12 @@ class NonAirtimeWinner(Base):
 
     created_at = Column(TIMESTAMP, server_default=func.now())
 
+
 # ============================================================
-# PREMIUM SPIN ENTRIES  (FIXED — proper UUID types)
+# premium reward tier ENTRIES  (FIXED — proper UUID types)
 # ============================================================
-class PremiumSpinEntry(Base):
-    __tablename__ = "premium_spin_entries"
+class PremiumRewardEntry(Base):
+    __tablename__ = "premium_reward_entries"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
 
@@ -299,4 +300,3 @@ class PremiumSpinEntry(Base):
         server_default=text("NOW()"),
         nullable=False
     )
-
