@@ -749,17 +749,17 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             ],
             [
                 InlineKeyboardButton(
-                    "💳 Get More Questions", callback_data="buy"
+                    "💳 Get More Trivia Attempts", callback_data="buy"
                 )
             ],
             [
                 InlineKeyboardButton(
-                    "🎁 Earn Free Questions", callback_data="free"
+                    "🎁 Earn Free Trivia Attempts", callback_data="free"
                 )
             ],
             [
                 InlineKeyboardButton(
-                    "📊 Available Questions", callback_data="show_tries"
+                    "📊 Available Trivia Attempts", callback_data="show_tries"
                 )
             ],
         ]
