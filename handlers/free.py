@@ -23,15 +23,15 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     text = (
         f"🎁 *Hey {display_name}*\\! \n\n"
-        "Ready to boost your performance and get ahead on the leaderboard? 😎\n\n"
-        "💡 Every correct answer earns you points.\n"
-        "🏆 Once the performance target is reached, the top scorer wins the prize.\n\n"
+        "Ready to boost your performance and get ahead on the leaderboard\\? 😎\n\n"
+        "💡 Every correct answer earns you points\\.\n"
+        "🏆 Once the performance target is reached, the top scorer wins the prize\\.\n\n"
         "*How to earn FREE Trivia Questions* 👇\n"
-        "1️⃣ *Invite friends* — Each friend who joins through your link = *+1 Free Question*\n"
-        "2️⃣ *Follow us on social media* — Upload a screenshot proof = *+1 Free Question* after approval\n\n"
-        "⚡ The more questions you answer, the higher you climb.\n"
-        "Be the player others try to catch — not the one trying to catch up! 🚀\n\n"
-        "👉 Choose an option below to increase your quiz access:"
+        "1️⃣ *Invite friends* — Each friend who joins through your link = *\\+1 Free Question*\n\n"
+        "2️⃣ *Follow us on social media* — Upload a screenshot proof = *\\+1 Free Question* after approval\n\n"
+        "⚡ The more questions you answer, the higher you climb\\.\n\n"
+        "Be the player others try to catch — not the one trying to catch up\\! 🚀\n\n"
+        "👉 Choose an option below to increase your quiz access\\:"
     )
 
 
@@ -55,7 +55,7 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ),
         (
             f"🚀 *{display_name}* just unlocked *free Trivia Questions* on *NaijaPrizeGate* 🎉\n\n"
-            f"I used to scroll endlessly on my phone.\n"
+            f"I used to scroll endlessly on my phone\\.\n"
             f"Now I’m using it to actually challenge my brain 🧠🔥\n\n"
             f"NaijaPrizeGate is rewarding top scorers with amazing prizes:\n"
             f"📱 iPhone 16 Pro Max\n\n"
@@ -174,8 +174,8 @@ async def handle_proof_photo(update: Update, context: ContextTypes.DEFAULT_TYPE)
         "✅ Proof received\\! \n\n"
         "Our team will review it shortly\\.\n\n "
         "You’ll be notified once approved 🎉 and your free question is credited 💡\n\n"
-        "📍 Tip: The more questions you answer correctly, the higher you rank.\n\n"
-        "Type or click \\/Start\\ to go back to the main menu\.",
+        "📍 Tip: The more questions you answer correctly, the higher you rank\\.\n\n"
+        "Type or click /Start to go back to the main menu\\.",
         parse_mode="MarkdownV2"
     )
 
