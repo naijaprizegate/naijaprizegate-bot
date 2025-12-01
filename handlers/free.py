@@ -31,7 +31,8 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "2️⃣ *Follow us on social media* — Upload a screenshot proof \\= *\\+1 Free Question* after approval\n\n"
         "⚡ The more questions you answer, the higher you climb\\.\n\n"
         "Be the player others try to catch — not the one trying to catch up\\! 🚀\n\n"
-        "👉 Choose an option below to increase your quiz access\\:"
+        "👉 Choose an option below to increase your quiz access\\:\n\n"
+        "To go back to the main menu, click /start"
     )
 
 
