@@ -128,11 +128,11 @@ async def send_referral_link(update: Update, context: ContextTypes.DEFAULT_TYPE)
     text = (
         f"🚀 *Boom, {display_name}*\\! Your personal referral link is ready:\n\n"
         f"🔗 {ref_link_md}\n\n"
-        "👥 Every friend who joins through *your* link \= *\+1 FREE Trivia Questions\!* 🎉\n\n"
-        "🧠 More questions = More chances to score higher\.\n\n" 
+        "👥 Every friend who joins through *your* link \\= *\\+1 FREE Trivia Questions\\!* 🎉\n\n"
+        "🧠 More questions = More chances to score higher\n\n" 
         "💪 Higher score = Better chance to finish #1\n\n"
-        "Share your link everywhere — let’s see how far your knowledge can take you\! 🏆"
-        "*Be the first to get to the top\!* 💰💎"
+        "Share your link everywhere — let’s see how far your knowledge can take you\\! 🏆"
+        "*Be the first to get to the top\\!* 💰💎"
     )
 
     await update.callback_query.answer()
