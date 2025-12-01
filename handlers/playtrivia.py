@@ -407,10 +407,10 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
 
         choice_keyboard = InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("📱 Smartphone Option 1", callback_data="choose_iphone16")],
-                [InlineKeyboardButton("📱 Smartphone Option 2", callback_data="choose_iphone17")],
-                [InlineKeyboardButton("📱 Smartphone Option 3", callback_data="choose_flip7")],
-                [InlineKeyboardButton("📱 Smartphone Option 4", callback_data="choose_s25ultra")],
+                [InlineKeyboardButton("📱 iPhone 16 Pro Max", callback_data="choose_iphone16")],
+                [InlineKeyboardButton("📱 iPhone 17 pro Max", callback_data="choose_iphone17")],
+                [InlineKeyboardButton("📱 Samsung Flip 7", callback_data="choose_flip7")],
+                [InlineKeyboardButton("📱 Samsung S25 Ultra", callback_data="choose_s25ultra")],
             ]
         )
 
