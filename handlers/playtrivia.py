@@ -50,10 +50,10 @@ def make_play_keyboard():
         [
             [
                 InlineKeyboardButton("🧠 Play Again", callback_data="playtrivia"),
-                InlineKeyboardButton("📊 My Available Questions", callback_data="show_tries"),
+                InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries"),
             ],
-            [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
-            [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
+            [InlineKeyboardButton("💳 Get More Trivia Attempts", callback_data="buy")],
+            [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
         ]
     )
 
