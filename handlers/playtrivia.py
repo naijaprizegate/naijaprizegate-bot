@@ -183,7 +183,7 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
             if (user.tries_paid + user.tries_bonus) <= 0:
                 return await update.effective_message.reply_text(
                     "😅 You have no trivia attempts left.\n\n"
-                    "Use *Get More Tries* or *Free Tries* to continue playing.",
+                    "Use *Get More Trivia Attempts* or *Earn Free Trivia Attempts* to continue playing.",
                     parse_mode="Markdown",
                 )
 
