@@ -1,4 +1,4 @@
-# =============================================================== 
+# ==============================================================
 # handlers/core.py — Compliance-Safe Version (Updated)
 # ===============================================================
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
