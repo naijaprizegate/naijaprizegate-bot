@@ -672,9 +672,9 @@ async def show_tries_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         [
             [
                 InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia"),
-                InlineKeyboardButton("💳 Get More Questions", callback_data="buy"),
+                InlineKeyboardButton("💳 Get More Trivia Attempts", callback_data="buy"),
             ],
-            [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
+            [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
         ]
     )
 
