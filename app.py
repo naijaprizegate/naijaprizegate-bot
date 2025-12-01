@@ -462,7 +462,7 @@ async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(
                 ])
                 text = (
                     f"✅ *Payment Confirmed!*\n\n"
-                    f"You've been credited with *{credited_tries}* spin"
+                    f"You've been credited with *{credited_tries}* Trivia Attempts"
                     f"{'s' if credited_tries > 1 else ''} 🎉\n\n"
                     "Good luck and have fun 🍀"
                 )
