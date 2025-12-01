@@ -96,9 +96,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     keyboard = [
         [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
-        [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
-        [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
-        [InlineKeyboardButton("📊 My Available Questions", callback_data="show_tries")],
+        [InlineKeyboardButton("💳 Get More Trivia Attempts", callback_data="buy")],
+        [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
+        [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
         [InlineKeyboardButton("📘 Fair Play Rules", callback_data="terms")],  # NEW
         [InlineKeyboardButton("❓ FAQs", callback_data="faq")]                # NEW
@@ -144,9 +144,9 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     keyboard = [
         [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
-        [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
-        [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
-        [InlineKeyboardButton("📊 My Available Questions", callback_data="show_tries")],
+        [InlineKeyboardButton("💳 Get More Trivia Attempts", callback_data="buy")],
+        [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
+        [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
         [InlineKeyboardButton("📘 Fair Play Rules", callback_data="terms")],  # NEW
         [InlineKeyboardButton("❓ FAQs", callback_data="faq")]                # NEW
@@ -188,9 +188,9 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
     keyboard = [
         [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
-        [InlineKeyboardButton("💳 Get More Questions", callback_data="buy")],
+        [InlineKeyboardButton("💳 Get More Trivia Attempts", callback_data="buy")],
         [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
-        [InlineKeyboardButton("📊 My Available Questions", callback_data="show_tries")],
+        [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
         [InlineKeyboardButton("📘 Fair Play Rules", callback_data="terms")],  # NEW
         [InlineKeyboardButton("❓ FAQs", callback_data="faq")]                # NEW
