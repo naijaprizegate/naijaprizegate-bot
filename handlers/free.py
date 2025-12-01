@@ -128,11 +128,11 @@ async def send_referral_link(update: Update, context: ContextTypes.DEFAULT_TYPE)
     text = (
         f"🚀 *Boom, {display_name}*\\! Your personal referral link is ready:\n\n"
         f"🔗 {ref_link_md}\n\n"
-        "👥 Every friend who joins through *your* link \\= *\+1 FREE Trivia Questions\\!* 🎉\n\n"
-        "🧠 More questions = More chances to score higher\\.\n\n" 
+        "👥 Every friend who joins through *your* link \= *\+1 FREE Trivia Questions\!* 🎉\n\n"
+        "🧠 More questions = More chances to score higher\.\n\n" 
         "💪 Higher score = Better chance to finish #1\n\n"
-        "Share your link everywhere — let’s see how far your knowledge can take you! 🏆"
-        "*Be the first to get to the top\\!* 💰💎"
+        "Share your link everywhere — let’s see how far your knowledge can take you\! 🏆"
+        "*Be the first to get to the top\!* 💰💎"
     )
 
     await update.callback_query.answer()
@@ -145,7 +145,7 @@ async def ask_proof_upload(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.callback_query.edit_message_text(
         "📤 Please send a *photo screenshot* showing that you followed us "
         "on social media\\.\n\n"
-        "Once approved by our team, you’ll receive *\\+1 free Trivia Question 🎉\n\n" \
+        "Once approved by our team, you’ll receive *\+1 free Trivia Question 🎉\n\n" \
         "📌 Remember: Rewards are skill-based — higher performance wins\\!",
         parse_mode="MarkdownV2"
     )
@@ -175,7 +175,7 @@ async def handle_proof_photo(update: Update, context: ContextTypes.DEFAULT_TYPE)
         "Our team will review it shortly\\.\n\n "
         "You’ll be notified once approved 🎉 and your free question is credited 💡\n\n"
         "📍 Tip: The more questions you answer correctly, the higher you rank.\n\n"
-        "Type or click \\/Start\\ to go back to the main menu\\.",
+        "Type or click \\/Start\\ to go back to the main menu\.",
         parse_mode="MarkdownV2"
     )
 
