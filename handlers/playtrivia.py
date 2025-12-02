@@ -26,6 +26,7 @@ from db import get_async_session
 from models import GameState
 from handlers.payments import handle_buy_callback
 from handlers.free import free_menu
+from handlers.core import ask_phone
 from utils.signer import generate_signed_token
 
 logger = logging.getLogger(__name__)
@@ -370,7 +371,10 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
                 "⚠️ Reward processing error. Please try another round.",
                 parse_mode="HTML",
             )
-
+    # 🆕 If user must supply phone number first, redirect now
+    if outcome == "ask_phone":
+        return await ask_phone(update, context)
+    
     # Reward animation (now framed as “processing your reward”)
     msg = await update.effective_message.reply_text(
         "🔄 *Evaluating your earned reward...*",
@@ -400,7 +404,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
     if outcome == "Top-Tier Campaign Reward":
         await msg.edit_text(
             f"🎉 *Outstanding performance, {player_name}!* \n\n"
-            "You’ve unlocked a *top-tier campaign reward* for this round.\n\n"
+            "You’ve unlocked a *top-tier campaign reward* for this round\\.\n\n"
             "Please choose your preferred reward option below:",
             parse_mode="Markdown",
         )
@@ -416,7 +420,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
 
         return await msg.reply_text(
             "🎁 Select a reward option 👇\n\n"
-            "📌 *Rewards are promotional and subject to campaign rules.*",
+            "📌 *Rewards are skill-based and subject to campaign rules\\.*",
             parse_mode="Markdown",
             reply_markup=choice_keyboard,
         )
@@ -430,8 +434,8 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
 
         return await msg.edit_text(
             f"🎉 *You unlocked an airtime bonus of ₦{amount}* 🎉\n\n"
-            "📲 Please send your *phone number* to receive your airtime.\n\n"
-            "📌 Rewards are promotional and subject to verification.",
+            "📲 Please send your *phone number* to receive your airtime\\.\n\n"
+            "📌 Airtime rewards are skill-achievement bonuses\\.",
             parse_mode="Markdown",
         )
 
