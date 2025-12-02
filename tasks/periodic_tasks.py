@@ -13,9 +13,12 @@ from logger import logger
 
 from . import sweeper, notifier, cleanup
 from services.airtime_service import process_single_airtime_payout
+
+# Import correct async session factory from db.py
 from sqlalchemy.ext.asyncio import async_sessionmaker
 
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
+
 
 async def process_pending_airtime_loop() -> None:
     """
@@ -23,16 +26,14 @@ async def process_pending_airtime_loop() -> None:
     Uses Flutterwave via airtime_service.
     """
     from app import application
-    
     bot = application.bot
-    admin_id = ADMIN_USER_ID
 
     logger.info("📲 Airtime payout worker started (Flutterwave)")
 
     while True:
         try:
             async with async_sessionmaker() as session:
-                async with session.begin():
+                async with session.begin():  # auto-commit
                     res = await session.execute(
                         text("""
                             SELECT id
@@ -42,22 +43,24 @@ async def process_pending_airtime_loop() -> None:
                             LIMIT 10
                         """)
                     )
-                    row_ids = [str(r[0]) for r in res.fetchall()]
+                    rows = res.fetchall()
+                    payout_ids = [str(r[0]) for r in rows]
 
-                    if not row_ids:
-                        await asyncio.sleep(10)
-                        return
+                if not payout_ids:
+                    await asyncio.sleep(10)
+                    continue  # <-- never exit loop!
 
-                    for payout_id in row_ids:
-                        await process_single_airtime_payout(
-                            session, payout_id, bot, admin_id
-                        )
+                logger.info(f"🔄 Pending airtime payouts: {len(payout_ids)}")
 
-                    await session.commit()
+                # Process each payout (will update DB inside service)
+                for payout_id in payout_ids:
+                    await process_single_airtime_payout(
+                        session, payout_id, bot, ADMIN_USER_ID
+                    )
 
-            except Exception as e:
-                logger.error(f"❌ Error in airtime payout loop: {e}")
-                await asyncio.sleep(15)
+        except Exception as e:
+            logger.error(f"❌ Error in airtime payout loop: {e}", exc_info=True)
+            await asyncio.sleep(15)
 
 
 async def start_all_tasks(loop: asyncio.AbstractEventLoop = None) -> list[asyncio.Task]:
@@ -78,5 +81,5 @@ async def start_all_tasks(loop: asyncio.AbstractEventLoop = None) -> list[asynci
         loop.create_task(process_pending_airtime_loop(), name="AirtimePayoutLoop"),
     ]
 
-    logger.info("✅ All periodic tasks started from periodic_tasks.py")
+    logger.info("🚀 All periodic tasks started from periodic_tasks.py")
     return tasks
