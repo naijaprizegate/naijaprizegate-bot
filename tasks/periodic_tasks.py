@@ -32,31 +32,32 @@ async def process_pending_airtime_loop() -> None:
     while True:
         try:
             async with async_sessionmaker() as session:
-                res = await session.execute(
-                    text("""
-                        SELECT id
-                        FROM airtime_payouts
-                        WHERE status = 'pending'
-                        ORDER BY created_at ASC
-                        LIMIT 10
-                    """)
-                )
-                row_ids = [str(r[0]) for r in res.fetchall()]
-
-                if not row_ids:
-                    await asyncio.sleep(10)
-                    continue
-
-                for payout_id in row_ids:
-                    await process_single_airtime_payout(
-                        session, payout_id, bot, admin_id
+                async with session.begin():
+                    res = await session.execute(
+                        text("""
+                            SELECT id
+                            FROM airtime_payouts
+                            WHERE status = 'pending'
+                            ORDER BY created_at ASC
+                            LIMIT 10
+                        """)
                     )
+                    row_ids = [str(r[0]) for r in res.fetchall()]
 
-                await session.commit()
+                    if not row_ids:
+                        await asyncio.sleep(10)
+                        return
 
-        except Exception as e:
-            logger.error(f"❌ Error in airtime payout loop: {e}")
-            await asyncio.sleep(15)
+                    for payout_id in row_ids:
+                        await process_single_airtime_payout(
+                            session, payout_id, bot, admin_id
+                        )
+
+                    await session.commit()
+
+            except Exception as e:
+                logger.error(f"❌ Error in airtime payout loop: {e}")
+                await asyncio.sleep(15)
 
 
 async def start_all_tasks(loop: asyncio.AbstractEventLoop = None) -> list[asyncio.Task]:
