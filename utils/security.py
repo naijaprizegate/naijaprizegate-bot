@@ -74,7 +74,7 @@ async def is_admin(update: Update) -> bool:
         result = await session.execute(select(User).where(User.tg_id == user_id))
         user = result.scalar_one_or_none()
 
-    return bool(user && user.is_admin)
+    return bool(user and user.is_admin)
 
 
 # ---------------------------------------------------------------
