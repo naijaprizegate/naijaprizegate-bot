@@ -13,7 +13,7 @@ from logger import logger
 
 from . import sweeper, notifier, cleanup
 from services.airtime_service import process_single_airtime_payout
-from db import async_session_maker
+from sqlalchemy.ext.asyncio import async_sessionmaker
 
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
 
@@ -31,7 +31,7 @@ async def process_pending_airtime_loop() -> None:
 
     while True:
         try:
-            async with async_session_maker() as session:
+            async with async_sessionmaker() as session:
                 res = await session.execute(
                     text("""
                         SELECT id
