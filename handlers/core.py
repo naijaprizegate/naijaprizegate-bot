@@ -5,6 +5,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters, CallbackQueryHandler
 from helpers import md_escape, get_or_create_user
 from db import get_async_session
+from utils.security import validate_phone, detect_provider
 import re
 import logging
 
@@ -64,6 +65,88 @@ async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.callback_query.edit_message_text(text, parse_mode="HTML")
     else:
         await update.message.reply_text(text, parse_mode="HTML")
+
+
+# ===============================================================
+# 📱 PHONE CAPTURE FOR AIRTIME REWARDS
+# ===============================================================
+async def ask_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """
+    Ask the user for their Nigerian phone number when an airtime
+    reward is available but no phone is on file.
+    """
+    target = update.message or update.callback_query
+
+    if isinstance(target, type(update.callback_query)):
+        # If called from a callback query, reply in chat
+        await update.callback_query.answer()
+        await update.callback_query.message.reply_text(
+            "📱 To receive your airtime reward, please send your *11-digit Nigerian phone number*.\n"
+            "Example: 08123456789",
+            parse_mode="Markdown"
+        )
+    else:
+        await update.message.reply_text(
+            "📱 To receive your airtime reward, please send your *11-digit Nigerian phone number*.\n"
+            "Example: 08123456789",
+            parse_mode="Markdown"
+        )
+
+    context.user_data["awaiting_phone"] = True
+
+
+async def handle_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """
+    Handle phone number input when the user is being asked
+    to provide a line for airtime credit.
+    """
+    # Only act if we are expecting a phone number
+    if not context.user_data.get("awaiting_phone"):
+        return
+
+    phone = (update.message.text or "").strip()
+
+    if not validate_phone(phone):
+        await update.message.reply_text(
+            "⚠️ Invalid number format.\n"
+            "Please enter a valid Nigerian phone number e.g.\n*08123456789*",
+            parse_mode="Markdown"
+        )
+        return
+
+    provider = detect_provider(phone)
+    provider_txt = provider or "Your Network"
+
+    # Save phone number to DB
+    async with get_async_session() as session:
+        tg_user = update.effective_user
+        db_user = await get_or_create_user(
+            session,
+            tg_id=tg_user.id,
+            username=tg_user.username,
+        )
+        db_user.phone_number = phone
+        await session.commit()
+
+    context.user_data["awaiting_phone"] = False
+
+    await update.message.reply_text(
+        f"🎉 Great! {provider_txt} line saved successfully!\n"
+        "🔁 Reprocessing your airtime reward now…",
+        parse_mode="Markdown"
+    )
+
+    # Trigger reward logic retry (lazy import to avoid circular dependency)
+    try:
+        from handlers.playtrivia import retry_last_reward
+        await retry_last_reward(update, context)
+    except Exception as e:
+        logger.error(f"❌ Failed to retry reward after phone capture: {e}")
+        await update.message.reply_text(
+            "⚠️ Something went wrong while reprocessing your reward.\n"
+            "But your phone number has been saved. Please try again.",
+            parse_mode="Markdown"
+        )
 
 
 # ===============================================================
@@ -179,7 +262,7 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # ===============================================================
-# Fallback — unchanged
+# Fallback — unchanged (still skips numeric-only messages)
 # ===============================================================
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     safe_text = md_escape(
@@ -223,6 +306,14 @@ def register_handlers(application):
     application.add_handler(CommandHandler("terms", terms_handler))  # NEW
     application.add_handler(CommandHandler("faq", faq_handler))      # NEW
 
+    # Phone capture (numeric-ish text, e.g. 08123456789 or +234...)
+    application.add_handler(
+        MessageHandler(
+            filters.Regex(r"^[0-9+ ]+$"),
+            handle_phone
+        )
+    )
+
     # Callback menu buttons
     application.add_handler(CallbackQueryHandler(terms_handler, pattern="^terms$"))  # NEW
     application.add_handler(CallbackQueryHandler(faq_handler, pattern="^faq$"))      # NEW
@@ -238,7 +329,7 @@ def register_handlers(application):
     from handlers.leaderboard import register_leaderboard_handlers
     register_leaderboard_handlers(application)
 
-    # Fallback
+    # Fallback (non-command, non-numeric text)
     application.add_handler(
         MessageHandler(
             filters.TEXT & ~filters.COMMAND & ~filters.Regex(r"^[0-9+ ]+$"),
