@@ -314,8 +314,6 @@ def register_handlers(application):
         )
     )
 
-    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_phone))
-
     # Callback menu buttons
     application.add_handler(CallbackQueryHandler(terms_handler, pattern="^terms$"))  # NEW
     application.add_handler(CallbackQueryHandler(faq_handler, pattern="^faq$"))      # NEW
