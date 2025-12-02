@@ -13,8 +13,6 @@ from logger import logger
 
 from . import sweeper, notifier, cleanup
 from services.airtime_service import process_single_airtime_payout
-
-# Import correct async session factory from db.py
 from db import async_sessionmaker
 
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
@@ -25,38 +23,42 @@ async def process_pending_airtime_loop() -> None:
     Background worker that auto-processes pending airtime payouts.
     Uses Flutterwave via airtime_service.
     """
+    # Import lazily to avoid circular dependency issues
     from app import application
     bot = application.bot
 
     logger.info("📲 Airtime payout worker started (Flutterwave)")
 
+    async_session_factory = async_sessionmaker()
+
     while True:
         try:
-            async with async_sessionmaker() as session:
-                async with session.begin():  # auto-commit
-                    res = await session.execute(
-                        text("""
-                            SELECT id
-                            FROM airtime_payouts
-                            WHERE status = 'pending'
-                            ORDER BY created_at ASC
-                            LIMIT 10
-                        """)
-                    )
-                    rows = res.fetchall()
-                    payout_ids = [str(r[0]) for r in rows]
+            async with async_session_factory() as session:
+                # Fetch pending airtime payouts
+                res = await session.execute(
+                    text("""
+                        SELECT id
+                        FROM airtime_payouts
+                        WHERE status = 'pending'
+                        ORDER BY created_at ASC
+                        LIMIT 10
+                    """)
+                )
+                payout_ids = [str(row[0]) for row in res.fetchall()]
 
                 if not payout_ids:
                     await asyncio.sleep(10)
-                    continue  # <-- never exit loop!
+                    continue
 
                 logger.info(f"🔄 Pending airtime payouts: {len(payout_ids)}")
 
-                # Process each payout (will update DB inside service)
+                # Process each payout ID
                 for payout_id in payout_ids:
                     await process_single_airtime_payout(
                         session, payout_id, bot, ADMIN_USER_ID
                     )
+
+                await session.commit()  # ensure DB commit after processing
 
         except Exception as e:
             logger.error(f"❌ Error in airtime payout loop: {e}", exc_info=True)
