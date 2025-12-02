@@ -7,21 +7,23 @@ Central place to start sweeper, notifier, cleanup, and airtime payout loops.
 """
 
 import asyncio
+import os
 from sqlalchemy import text
 from logger import logger
 
 from . import sweeper, notifier, cleanup
 from services.airtime_service import process_single_airtime_payout
-from app.config import ADMIN_USER_ID
-from app.app import application
 from db import async_session_maker
 
+ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
 
 async def process_pending_airtime_loop() -> None:
     """
     Background worker that auto-processes pending airtime payouts.
     Uses Flutterwave via airtime_service.
     """
+    from app import application
+    
     bot = application.bot
     admin_id = ADMIN_USER_ID
 
