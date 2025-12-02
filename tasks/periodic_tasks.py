@@ -12,8 +12,8 @@ from logger import logger
 
 from . import sweeper, notifier, cleanup
 from services.airtime_service import process_single_airtime_payout
-from config import ADMIN_USER_ID
-from app import application
+from app.config import ADMIN_USER_ID
+from app.app import application
 from db import async_session_maker
 
 
