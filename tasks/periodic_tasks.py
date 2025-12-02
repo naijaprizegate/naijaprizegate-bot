@@ -15,7 +15,7 @@ from . import sweeper, notifier, cleanup
 from services.airtime_service import process_single_airtime_payout
 
 # Import correct async session factory from db.py
-from sqlalchemy.ext.asyncio import async_sessionmaker
+from db import async_sessionmaker
 
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
 
