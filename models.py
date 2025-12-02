@@ -12,9 +12,8 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from base import Base  # from base.py
 
-
 # ================================================================
-# 1. USERS
+# 1. USERS (CLEAN FIXED VERSION)
 # ================================================================
 class User(Base):
     __tablename__ = "users"
@@ -30,14 +29,15 @@ class User(Base):
     created_at = Column(TIMESTAMP, server_default=func.now())
     is_admin = Column(Boolean, default=False, nullable=False)
 
-    # Winner data (unchanged)
+    # Winner data
     choice = Column(String, nullable=True)
     full_name = Column(String, nullable=True)
-    # phone = Column(String, nullable=True)
-    phone_number = Column("phone", String(20), nullable=True)
+
+    # 🔹 Primary & ONLY DB column for phone number
+    phone = Column(String(20), nullable=True)
+
     address = Column(String, nullable=True)
     delivery_status = Column(String, nullable=True, default="Pending")
-
     winner_stage = Column(String, nullable=True)
     winner_data = Column(JSON, nullable=True, default={})
 
@@ -47,6 +47,15 @@ class User(Base):
     payments = relationship("Payment", back_populates="user")
     proofs = relationship("Proof", back_populates="user")
     prize_wins = relationship("PrizeWinner", back_populates="user", cascade="all, delete-orphan")
+
+    # 🔹 Alias for compatibility with current code
+    @property
+    def phone_number(self):
+        return self.phone
+
+    @phone_number.setter
+    def phone_number(self, value: str):
+        self.phone = value
 
 
 # ================================================================
