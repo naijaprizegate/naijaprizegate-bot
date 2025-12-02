@@ -241,21 +241,37 @@ def main():
 
 
         # ======================================================
-        # 12. NEW — Airtime Payouts
+        # 12. Airtime Payouts (Flutterwave Auto-Credit Live Mode)
         # ======================================================
         cur.execute("""
         CREATE TABLE airtime_payouts (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+
             user_id UUID REFERENCES users(id) ON DELETE CASCADE,
             tg_id BIGINT NOT NULL,
+
+            -- Masked but real phone used for payout
             phone_number TEXT NOT NULL,
-            amount INT DEFAULT 100,
-            status TEXT DEFAULT 'pending',
+
+            -- Reward amount (₦)
+            amount INT NOT NULL DEFAULT 100,
+
+            -- payout status: pending → completed / failed
+            status TEXT NOT NULL DEFAULT 'pending',
+
+            -- Flutterwave transaction ref for traceability & admin audit
+            flutterwave_tx_ref TEXT,
+
+            -- Full provider JSON response saved for accountability
+            provider_response JSONB DEFAULT '{}'::jsonb,
+
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-            sent_at TIMESTAMPTZ
+            sent_at TIMESTAMPTZ,
+            -- When Flutterwave confirms success
+            completed_at TIMESTAMPTZ
         );
         """)
-        print("✅ airtime_payouts table created")
+        print("✅ airtime_payouts table created/updated with Flutterwave fields")
 
 
         # ======================================================
