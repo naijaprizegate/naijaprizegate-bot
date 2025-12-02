@@ -19,21 +19,14 @@ ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
 
 
 async def process_pending_airtime_loop() -> None:
-    """
-    Background worker that auto-processes pending airtime payouts.
-    Uses Flutterwave via airtime_service.
-    """
-    # Import lazily to avoid circular dependency issues
     from app import application
     bot = application.bot
 
     logger.info("📲 Airtime payout worker started (Flutterwave)")
 
-    async_session_factory = async_sessionmaker()
-
     while True:
         try:
-            async with async_session_factory() as session:
+            async with async_sessionmaker() as session:
                 # Fetch pending airtime payouts
                 res = await session.execute(
                     text("""
@@ -52,13 +45,12 @@ async def process_pending_airtime_loop() -> None:
 
                 logger.info(f"🔄 Pending airtime payouts: {len(payout_ids)}")
 
-                # Process each payout ID
                 for payout_id in payout_ids:
                     await process_single_airtime_payout(
                         session, payout_id, bot, ADMIN_USER_ID
                     )
 
-                await session.commit()  # ensure DB commit after processing
+                await session.commit()
 
         except Exception as e:
             logger.error(f"❌ Error in airtime payout loop: {e}", exc_info=True)
