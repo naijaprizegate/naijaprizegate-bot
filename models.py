@@ -33,7 +33,7 @@ class User(Base):
     # Winner data (unchanged)
     choice = Column(String, nullable=True)
     full_name = Column(String, nullable=True)
-    phone = Column(String, nullable=True)
+    # phone = Column(String, nullable=True)
     phone_number = Column("phone", String(20), nullable=True)
     address = Column(String, nullable=True)
     delivery_status = Column(String, nullable=True, default="Pending")
