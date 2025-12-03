@@ -15,7 +15,7 @@ from sqlalchemy import text
 
 from . import sweeper, notifier, cleanup
 from services.airtime_service import process_single_airtime_payout
-from db import AsyncSessionLocal
+from db import AsyncSessionLocal, get_async_session
 
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
 
