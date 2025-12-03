@@ -49,7 +49,7 @@ from fastapi import FastAPI, Query, Request, HTTPException, Depends, APIRouter, 
 from fastapi.responses import HTMLResponse, JSONResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from sqlalchemy import update
+from sqlalchemy import update, text
 from typing import Dict, Any, Optional
 
 from telegram import Update, Bot, InlineKeyboardButton, InlineKeyboardMarkup
@@ -301,9 +301,9 @@ async def payment_already_processed(session: AsyncSession, tx_ref: str) -> bool:
     return bool(p and p.status == "successful")
 
 
-# -----------------------
-# 🧩 Main Webhook Route
-# -----------------------
+# ---------------------------------------------------
+# 🧩 Main Webhook Route - PAYMENTS + AIRTIME (MERGED)
+# ---------------------------------------------------
 @router.post("/flw/webhook")
 async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(get_session)):
     """
@@ -312,12 +312,15 @@ async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(
     ✅ Double-verifies with Flutterwave API
     ✅ Prevents replay/double-credit
     ✅ Sanitizes user meta data
+    Unified Flutterwave webhook:
+    - Handles Payment events (users buying attempts)
+    - Handles Airtime Bill events (auto-credit rewards)
     """
     raw_body = await request.body()
     body_str = raw_body.decode("utf-8", errors="ignore")
 
     # Allow test webhooks from Flutterwave dashboard
-    signature_header = request.headers.get("verif-hash")
+    signature_header = request.headers.get("verif-hash") or request.headers.get("verif_hash")
     if not signature_header:
         logger.info("🧪 Test webhook (no verif-hash). Returning 200 OK.")
         return JSONResponse({"status": "ok", "message": "Test webhook (no signature)"})
@@ -329,15 +332,93 @@ async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(
 
     # Parse payload safely
     payload = await request.json()
-    data = payload.get("data", {}) or {}
-    tx_ref = data.get("tx_ref") or data.get("reference") or payload.get("tx_ref")
-    status = data.get("status")
-    amount = data.get("amount") or 0
+    logger.info(f"📥 Webhook Payload (trimmed): {json.dumps(payload)[:1000]}")
 
-    # 🛡️ Step 0: Rate-limit guard
-    if tx_ref and is_rate_limited(tx_ref):
-        logger.warning(f"🚫 Duplicate webhook within {RATE_LIMIT_SECONDS}s for tx_ref={tx_ref}")
-        return JSONResponse({"status": "ignored", "reason": "too frequent"})
+    data = payload.get("data") or {}
+    tx_ref = (
+        data.get("customer_reference")
+        or data.get("tx_ref")
+        or data.get("reference")
+        or payload.get("tx_ref")
+    )
+    product = (data.get("product") or "").lower().strip()
+    amount = data.get("amount") or 0
+    status_raw = data.get("status") or ""
+
+    if not tx_ref:
+        logger.warning("🚫 Missing tx_ref in webhook")
+        raise HTTPException(400, "Missing tx_ref")
+
+
+    # ==========================================================================================
+    # 🟦 NEW AIRTIME SECTION — Handles Airtime Auto-Credit confirmations
+    # ==========================================================================================
+    if product == "airtime":
+        logger.info("📡 Received Airtime Bill Webhook")
+
+        async with get_async_session() as s:
+            async with s.begin():
+                res = await s.execute(
+                    text("""
+                        SELECT id, tg_id, phone_number, amount
+                        FROM airtime_payouts
+                        WHERE flutterwave_tx_ref = :r
+                        LIMIT 1
+                    """),
+                    {"r": tx_ref},
+                )
+                row = res.first()
+
+                if not row:
+                    logger.warning(f"⚠ Airtime payout not found for tx_ref={tx_ref}")
+                    return JSONResponse({"status": "ignored"})
+
+                payout_id, tg_id, phone, airtime_amount = row
+
+                normalized = status_raw.lower()
+                if normalized in ("success", "successful", "completed"):
+                    await s.execute(
+                        text("""
+                            UPDATE airtime_payouts
+                            SET status='completed',
+                                completed_at = NOW()
+                            WHERE id = :pid
+                        """),
+                        {"pid": payout_id},
+                    )
+
+                    masked = phone[:-4].rjust(len(phone), "•")
+                    try:
+                        await application.bot.send_message(
+                            tg_id,
+                            f"🎉 Airtime Confirmed!\n₦{airtime_amount} → `{masked}`\n🔥 Enjoy!",
+                            parse_mode="Markdown"
+                        )
+                    except Exception as e:
+                        logger.warning(f"⚠ Failed to notify user: {e}")
+
+                    logger.info(f"💚 Airtime Completed | {tx_ref}")
+                    return JSONResponse({"status": "airtime_completed"})
+
+                else:
+                    await s.execute(
+                        text("UPDATE airtime_payouts SET status='failed' WHERE id=:pid"),
+                        {"pid": payout_id},
+                    )
+                    logger.error(f"❌ Airtime Failed | {tx_ref}")
+                    return JSONResponse({"status": "airtime_failed"})
+
+
+    # ==========================================================================================
+    # 🟩 ORIGINAL PAYMENT LOGIC — Unchanged, preserved fully
+    # ==========================================================================================
+    logger.info("💳 Payment webhook detected — using existing logic")
+    
+    if  tx_ref and is_rate_limited(tx_ref):
+        return JSONResponse({"status": "ignored", "reason": "rate_limited"})
+
+    if await payment_already_processed(session, tx_ref):
+        return JSONResponse({"status": "duplicate"})
 
 
     if not tx_ref:
