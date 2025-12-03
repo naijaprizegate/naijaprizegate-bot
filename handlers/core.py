@@ -95,6 +95,9 @@ async def ask_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["awaiting_phone"] = True
 
 
+# ------------------------------------------------
+# Handle Phone number collection
+# -------------------------------------------------
 async def handle_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
     Handle phone number input when the user is being asked
@@ -128,25 +131,26 @@ async def handle_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
         db_user.phone_number = phone
         await session.commit()
 
+        # Update any pending_phone payout to pending so worker can retry
+        await session.execute(text("""
+            UPDATE airtime_payouts
+            SET phone_number = :phone,
+                status = 'pending',
+                last_retry_at = NULL
+            WHERE user_id = :uid
+              AND status = 'pending_phone'
+        """), {"phone": phone, "uid": db_user.id})
+
+        await session.commit()
+
     context.user_data["awaiting_phone"] = False
 
     await update.message.reply_text(
-        f"🎉 Great! {provider_txt} line saved successfully!\n"
-        "🔁 Reprocessing your airtime reward now…",
+        f"🎉 Great! {provider_txt} line saved successfully!\n\n"
+        "🕒 We are now processing your airtime reward.\n"
+        "You will receive a confirmation shortly 📲",
         parse_mode="Markdown"
     )
-
-    # Trigger reward logic retry (lazy import to avoid circular dependency)
-    try:
-        from handlers.playtrivia import retry_last_reward
-        await retry_last_reward(update, context)
-    except Exception as e:
-        logger.error(f"❌ Failed to retry reward after phone capture: {e}")
-        await update.message.reply_text(
-            "⚠️ Something went wrong while reprocessing your reward.\n"
-            "But your phone number has been saved. Please try again.",
-            parse_mode="Markdown"
-        )
 
 
 # ===============================================================
