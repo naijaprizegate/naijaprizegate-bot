@@ -265,6 +265,10 @@ def main():
             -- Full provider JSON response saved for accountability
             provider_response JSONB DEFAULT '{}'::jsonb,
 
+            -- 🆕 Retry support
+            retry_count INT NOT NULL DEFAULT 0,
+            last_retry_at TIMESTAMPTZ,
+
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
             sent_at TIMESTAMPTZ,
             -- When Flutterwave confirms success
