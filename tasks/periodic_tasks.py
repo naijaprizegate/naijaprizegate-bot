@@ -15,7 +15,7 @@ from sqlalchemy import text
 
 from . import sweeper, notifier, cleanup
 from services.airtime_service import process_single_airtime_payout
-from db import async_sessionmaker
+from db import AsyncSessionLocal
 
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
 
@@ -37,7 +37,7 @@ async def process_pending_airtime_loop() -> None:
     while True:
         try:
             # FIXED 🔥 correct session init
-            async with async_sessionmaker()() as session:
+            async with AsyncSessionLocal() as session:
 
                 async with session.begin():
                     res = await session.execute(
@@ -95,4 +95,3 @@ async def start_all_tasks(loop: asyncio.AbstractEventLoop = None) -> list[asynci
 
     logger.info("🚀 All periodic background tasks are now running")
     return tasks
-
