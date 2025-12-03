@@ -1,6 +1,9 @@
 # ==========================================================================
 # services/airtime_service.py
+# Flutterwave Bills API (Airtime - All Nigerian networks)
 # ==========================================================================
+from __future__ import annotations
+
 import os
 import uuid
 import json
@@ -12,45 +15,92 @@ import httpx
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 
+from logger import logger
+
 logger = logging.getLogger(__name__)
 
-FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")  # same key you use for payments
+# -------------------------------------------------------------------
+# ENV + Constants
+# -------------------------------------------------------------------
+FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")  # Required
 FLW_BASE_URL = os.getenv("FLW_BASE_URL", "https://api.flutterwave.com")
-
-# Optional: in case you want a separate env toggle later
 AIRTIME_PROVIDER = os.getenv("AIRTIME_PROVIDER", "flutterwave")
 
+if not FLW_SECRET_KEY:
+    raise RuntimeError("❌ FLW_SECRET_KEY not set in environment variables.")
+
+
+BILLS_ENDPOINT = f"{FLW_BASE_URL.rstrip('/')}/v3/bills"
+COUNTRY = "NG"
+CURRENCY = "NGN"  # Reserved for future usage
+
 
 # -------------------------------------------------------------------
-# Low-level: Call Flutterwave Airtime/Bills API
+# Network prefix detection (fallback to FW if unknown)
 # -------------------------------------------------------------------
-async def call_flutterwave_airtime(phone: str, amount: int) -> Dict[str, Any]:
+NETWORK_PREFIXES = {
+    "MTN": (
+        "234703", "234706", "234803", "234806", "234810",
+        "234813", "234814", "234816", "234903", "234906",
+        "234913", "234916"
+    ),
+    "AIRTEL": (
+        "234701", "234708", "234802", "234808", "234812",
+        "234902", "234907", "234908", "234912"
+    ),
+    "GLO": (
+        "234705", "234805", "234807", "234811", "234815",
+        "234905"
+    ),
+    "9MOBILE": (
+        "234809", "234817", "234818", "234909"
+    ),
+}
+
+
+def normalize_msisdn(raw: str) -> str:
     """
-    Calls Flutterwave Bills/Airtime API to credit airtime.
-    Uses LIVE mode (production secret key).
-    Returns the parsed JSON response.
-
-    Raises:
-        RuntimeError if FLW_SECRET_KEY is missing
-        httpx.HTTPError on network issues
+    Normalize into 234XXXXXXXXXX format.
     """
-    if not FLW_SECRET_KEY:
-        raise RuntimeError("FLW_SECRET_KEY not set in environment")
+    number = raw.strip().replace(" ", "").replace("-", "")
 
-    reference = f"NPGAIRTIME-{uuid.uuid4()}"  # unique ref for traceability
+    if number.startswith("+"):
+        number = number[1:]
 
-    # NOTE: This payload shape follows Flutterwave Bills v3 pattern.
-    # You MUST adjust biller/bill_code to match the exact airtime product
-    # you configured on Flutterwave.
+    if number.startswith("0") and len(number) == 11:
+        number = "234" + number[1:]
+
+    return number
+
+
+def detect_network(msisdn_234: str) -> Optional[str]:
+    """
+    Prefix-based detection for better logging.
+    """
+    for net, prefixes in NETWORK_PREFIXES.items():
+        if any(msisdn_234.startswith(p) for p in prefixes):
+            return net
+    return None
+
+
+# -------------------------------------------------------------------
+# Low-level: Call Flutterwave Airtime API
+# -------------------------------------------------------------------
+async def call_flutterwave_airtime(phone_number: str, amount: int) -> Dict[str, Any]:
+    """
+    Executes an Airtime top-up via Flutterwave Bills API.
+    """
+
+    msisdn = normalize_msisdn(phone_number)
+    network = detect_network(msisdn)  # For logs only
+    reference = f"NPGAIRTIME-{uuid.uuid4().hex}"
+
     payload: Dict[str, Any] = {
-        "country": "NG",
-        "customer": phone,          # Flutterwave often uses "customer" for bills
+        "country": COUNTRY,
+        "customer": msisdn,
         "amount": amount,
-        "type": "AIRTIME",          # some integrations use specific type or biller code
+        "type": "AIRTIME",
         "reference": reference,
-        # If your account uses biller/bill_code instead, replace appropriately:
-        # "biller_name": "AIRTIME",
-        # "bill_code": "BIL076",
     }
 
     headers = {
@@ -59,26 +109,47 @@ async def call_flutterwave_airtime(phone: str, amount: int) -> Dict[str, Any]:
         "Accept": "application/json",
     }
 
-    url = f"{FLW_BASE_URL}/v3/bills"
+    logger.info(
+        f"🌍 FW Airtime → {msisdn} ₦{amount} | ref={reference} "
+        f"(network={network or 'AUTO'})"
+    )
 
-    logger.info(f"📲 Sending Flutterwave airtime request to {phone} for ₦{amount}")
-
-    async with httpx.AsyncClient(timeout=20) as client:
-        resp = await client.post(url, json=payload, headers=headers)
+    async with httpx.AsyncClient(timeout=20.0) as client:
+        resp = await client.post(BILLS_ENDPOINT, json=payload, headers=headers)
 
     try:
         data: Dict[str, Any] = resp.json()
     except Exception:
-        # If Flutterwave returns non-JSON for any reason
-        data = {"raw_text": resp.text, "status_code": resp.status_code}
+        data = {
+            "status": "error",
+            "error": "Non-JSON response from Flutterwave",
+            "raw": resp.text,
+        }
 
-    logger.info(f"📲 Flutterwave airtime response for {phone}: {data}")
+    # Ensure reference exists in the stored record
+    if isinstance(data.get("data"), dict):
+        data["data"].setdefault("reference", reference)
+    else:
+        data["data"] = {"reference": reference}
+
+    status = data.get("status")
+    code = resp.status_code
+
+    if code >= 400 or str(status).lower() != "success":
+        logger.error(
+            f"❌ FW Airtime FAILED [HTTP {code}] → {msisdn} | data={data}"
+        )
+    else:
+        logger.info(
+            f"✅ FW Airtime ACCEPTED → {msisdn} | ref={reference} | data={data}"
+        )
+
     return data
 
 
-# -------------------------------------------------------------------
-# Single payout processor
-# -------------------------------------------------------------------
+# ===================================================================
+# Single airtime payout processor — Flutterwave Bills API
+# ===================================================================
 async def process_single_airtime_payout(
     session: AsyncSession,
     payout_id: str,
@@ -86,189 +157,180 @@ async def process_single_airtime_payout(
     admin_id: int,
 ) -> None:
     """
-    Process one pending airtime payout:
+    Loads a pending AIRTIME payout row → Calls Flutterwave → Updates DB →
+    Sends Telegram alerts to user + admin
 
-      - Load the payout row in `airtime_payouts` with SELECT ... FOR UPDATE
-      - Calls Flutterwave airtime API
-      - Updates DB (status, tx ref, provider_response, completed_at)
-      - Notifies user + admin via Telegram
-
-    Safe to call from a periodic worker.
+    Safe for background worker loops.
     """
 
     if AIRTIME_PROVIDER.lower() != "flutterwave":
-        logger.warning(
-            f"⚠️ Airtime provider '{AIRTIME_PROVIDER}' not supported in this service yet."
-        )
+        logger.warning(f"⚠️ Unsupported airtime provider configured: {AIRTIME_PROVIDER}")
         return
 
-    # Lock the row FOR UPDATE to avoid double-processing
-    res = await session.execute(
-        text(
-            """
-            SELECT id, user_id, tg_id, phone_number, amount
-            FROM airtime_payouts
-            WHERE id = :pid AND status = 'pending'
-            FOR UPDATE
-            """
-        ),
-        {"pid": payout_id},
-    )
-    row = res.first()
-
-    if not row:
-        # Already processed or not found
-        logger.info(f"ℹ️ Airtime payout {payout_id} not found or not pending.")
-        return
-
-    # Access row data safely
-    row_map = row._mapping  # SQLAlchemy RowMapping
-    phone: str = row_map["phone_number"]
-    amount: int = row_map["amount"]
-    tg_id: int = row_map["tg_id"]
-
-    logger.info(
-        f"🚀 Processing airtime payout {payout_id} for TG {tg_id}, phone {phone}, amount ₦{amount}"
-    )
-
-    try:
-        fw_data = await call_flutterwave_airtime(phone, amount)
-
-        status: str = str(fw_data.get("status", "")).lower()
-        # Try to get a stable reference from Flutterwave response
-        data_block: Optional[Dict[str, Any]] = fw_data.get("data") or {}
-        fw_ref: Optional[str] = (
-            data_block.get("reference")
-            or data_block.get("flw_ref")
-            or data_block.get("tx_ref")
-        )
-
-        provider_json_str = json.dumps(fw_data)
-
-        # SUCCESS PATH
-        if status == "success":
-            await session.execute(
-                text(
-                    """
-                    UPDATE airtime_payouts
-                    SET status = 'completed',
-                        flutterwave_tx_ref = :tx,
-                        provider_response = :resp::jsonb,
-                        completed_at = :now
-                    WHERE id = :pid
-                    """
-                ),
-                {
-                    "pid": payout_id,
-                    "tx": fw_ref,
-                    "resp": provider_json_str,
-                    "now": datetime.now(timezone.utc),
-                },
-            )
-
-            # Mask phone: show only last 4 digits to user
-            masked_phone = phone[:-4].rjust(len(phone), "•")
-
-            # Notify user
-            try:
-                await bot.send_message(
-                    tg_id,
-                    (
-                        "🎉 *Airtime Reward Credited!*\n\n"
-                        f"✅ Amount: *₦{amount}*\n"
-                        f"📱 Number: `{masked_phone}`\n\n"
-                        "Keep playing and winning on *NaijaPrizeGate*! 🔥"
-                    ),
-                    parse_mode="Markdown",
-                )
-            except Exception as e:
-                logger.error(f"❌ Failed to send airtime notification to user {tg_id}: {e}")
-
-            # Notify admin
-            try:
-                await bot.send_message(
-                    admin_id,
-                    (
-                        "📲 *Airtime AUTO-CREDITED via Flutterwave*\n\n"
-                        f"👤 TG ID: `{tg_id}`\n"
-                        f"📱 Phone: `{phone}`\n"
-                        f"💸 Amount: *₦{amount}*\n"
-                        f"🔗 FW Ref: `{fw_ref}`\n"
-                    ),
-                    parse_mode="Markdown",
-                )
-            except Exception as e:
-                logger.error(f"❌ Failed to send airtime admin alert for payout {payout_id}: {e}")
-
-            logger.info(f"✅ Airtime payout {payout_id} completed successfully.")
-            return
-
-        # FAILED PATH (but no exception thrown)
-        await session.execute(
+    # ------------------------------------------------------------------
+    # DB — Lock row FOR UPDATE inside transaction
+    # ------------------------------------------------------------------
+    async with session.begin():
+        res = await session.execute(
             text(
                 """
-                UPDATE airtime_payouts
-                SET status = 'failed',
-                    provider_response = :resp::jsonb
-                WHERE id = :pid
-                """
-            ),
-            {
-                "pid": payout_id,
-                "resp": provider_json_str,
-            },
-        )
-
-        # Alert admin of failure so you can manually inspect/decide on re-try
-        try:
-            await bot.send_message(
-                admin_id,
-                (
-                    "⚠️ *Airtime payout FAILED*\n\n"
-                    f"Payout ID: `{payout_id}`\n"
-                    f"TG ID: `{tg_id}`\n"
-                    f"Phone: `{phone}`\n"
-                    f"Amount: ₦{amount}\n"
-                    f"Flutterwave status: `{status}`"
-                ),
-                parse_mode="Markdown",
-            )
-        except Exception as e:
-            logger.error(f"❌ Failed to send admin failure alert for payout {payout_id}: {e}")
-
-        logger.warning(
-            f"⚠️ Airtime payout {payout_id} failed. Flutterwave status: {status}, data: {fw_data}"
-        )
-
-    except Exception as e:
-        # Any unexpected exception path: mark as failed, send admin alert
-        logger.error(f"❌ Exception while processing airtime payout {payout_id}: {e}")
-
-        await session.execute(
-            text(
-                """
-                UPDATE airtime_payouts
-                SET status = 'failed'
-                WHERE id = :pid
+                SELECT id, user_id, tg_id, phone_number, amount
+                FROM airtime_payouts
+                WHERE id = :pid AND status = 'pending'
+                FOR UPDATE
                 """
             ),
             {"pid": payout_id},
         )
+        row = res.first()
 
+        if not row:
+            logger.info(f"ℹ️ No pending payout found for {payout_id}")
+            return
+
+        row_map = row._mapping
+        phone: str = row_map["phone_number"]
+        amount: int = row_map["amount"]
+        tg_id: int = row_map["tg_id"]
+
+        logger.info(f"🚀 Processing payout {payout_id}: ₦{amount} → {phone} (TG {tg_id})")
+
+        # ------------------------------------------------------------------
+        # Call Flutterwave API
+        # ------------------------------------------------------------------
         try:
-            await bot.send_message(
-                admin_id,
-                (
-                    "🚨 *Airtime payout EXCEPTION*\n\n"
-                    f"Payout ID: `{payout_id}`\n"
-                    f"TG ID: `{tg_id}`\n"
-                    f"Phone: `{phone}`\n"
-                    f"Amount: ₦{amount}`\n"
-                    f"Error: `{e}`"
+            fw_data = await call_flutterwave_airtime(phone, amount)
+            status = str(fw_data.get("status", "")).lower()
+
+            data = fw_data.get("data") or {}
+            fw_ref: Optional[str] = (
+                data.get("reference")
+                or data.get("flw_ref")
+                or data.get("tx_ref")
+            )
+
+            provider_json = json.dumps(fw_data)
+
+            # ==============================================================
+            # SUCCESS
+            # ==============================================================
+            if status == "success":
+                await session.execute(
+                    text(
+                        """
+                        UPDATE airtime_payouts
+                        SET status = 'completed',
+                            flutterwave_tx_ref = :tx,
+                            provider_response = :resp::jsonb,
+                            completed_at = :now
+                        WHERE id = :pid
+                        """
+                    ),
+                    {
+                        "pid": payout_id,
+                        "tx": fw_ref,
+                        "resp": provider_json,
+                        "now": datetime.now(timezone.utc),
+                    },
+                )
+
+                masked_phone = phone[:-4].rjust(len(phone), "•")
+
+                # 🎉 Notify user
+                try:
+                    await bot.send_message(
+                        chat_id=tg_id,
+                        text=(
+                            "🎉 *Airtime Reward Credited!*\n\n"
+                            f"📱 `{masked_phone}`\n"
+                            f"💸 *₦{amount}*\n\n"
+                            "Keep playing and winning on *NaijaPrizeGate*! 🔥"
+                        ),
+                        parse_mode="Markdown",
+                    )
+                except Exception as e:
+                    logger.error(f"⚠️ Failed notifying user: {e}")
+
+                #  👑 Notify admin
+                try:
+                    await bot.send_message(
+                        chat_id=admin_id,
+                        text=(
+                            "📲 *Airtime AUTO-CREDITED via Flutterwave*\n\n"
+                            f"TG ID: `{tg_id}`\n"
+                            f"Phone: `{phone}`\n"
+                            f"Amount: ₦{amount}\n"
+                            f"FW Ref: `{fw_ref}`\n"
+                        ),
+                        parse_mode="Markdown",
+                    )
+                except Exception as e:
+                    logger.error(f"⚠️ Failed notifying admin: {e}")
+
+                logger.info(f"✅ Airtime payout {payout_id} completed.")
+                return
+
+            # ==============================================================
+            # FAIL (Unhandled FW Status)
+            # ==============================================================
+            await session.execute(
+                text(
+                    """
+                    UPDATE airtime_payouts
+                    SET status = 'failed',
+                        provider_response = :resp::jsonb
+                    WHERE id = :pid
+                    """
                 ),
-                parse_mode="Markdown",
+                {"pid": payout_id, "resp": provider_json},
             )
-        except Exception as e2:
-            logger.error(
-                f"❌ Failed to send admin EXCEPTION alert for payout {payout_id}: {e2}"
+
+            logger.warning(f"⚠️ Airtime payout failed: FW status={status}, data={fw_data}")
+
+            # Notify admin about failure
+            try:
+                await bot.send_message(
+                    admin_id,
+                    (
+                        "⚠️ *Airtime payout FAILED*\n\n"
+                        f"ID: `{payout_id}`\n"
+                        f"Phone: `{phone}`\n"
+                        f"Amount: ₦{amount}\n"
+                        f"Flutterwave status: `{status}`"
+                    ),
+                    parse_mode="Markdown",
+                )
+            except Exception:
+                pass
+
+        except Exception as e:
+            # ==============================================================
+            # EXCEPTION
+            # ==============================================================
+            logger.error(f"❌ Exception while processing payout {payout_id}: {e}")
+
+            await session.execute(
+                text(
+                    """
+                    UPDATE airtime_payouts
+                    SET status='failed'
+                    WHERE id=:pid
+                    """
+                ),
+                {"pid": payout_id},
             )
+
+            try:
+                await bot.send_message(
+                    admin_id,
+                    (
+                        "🚨 *Airtime payout EXCEPTION*\n\n"
+                        f"Payout ID: `{payout_id}`\n"
+                        f"Phone: `{phone}`\n"
+                        f"Amount: ₦{amount}`\n"
+                        f"Error: `{e}`"
+                    ),
+                    parse_mode="Markdown",
+                )
+            except Exception:
+                pass
