@@ -257,7 +257,7 @@ class SpinResult(Base):
 
 
 # =================================================================
-# NEW TABLE 4 — Airtime Payouts
+# NEW TABLE 4 — Airtime Payouts (UPDATED)
 # =================================================================
 class AirtimePayout(Base):
     __tablename__ = "airtime_payouts"
@@ -270,9 +270,15 @@ class AirtimePayout(Base):
     phone_number = Column(String, nullable=False)
     amount = Column(Integer, default=100)  # default airtime reward
 
-    status = Column(String, default="pending")  # pending / sent
-    created_at = Column(TIMESTAMP, server_default=func.now())
-    sent_at = Column(TIMESTAMP, nullable=True)
+    status = Column(String, default="pending")  # pending / failed / completed
+    created_at = Column(TIMESTAMP(timezone=True), server_default=func.now())
+    sent_at = Column(TIMESTAMP(timezone=True), nullable=True)
+
+    # -----------------------------------------------------------
+    # 🆕 Added columns for retry logic
+    # -----------------------------------------------------------
+    retry_count = Column(Integer, nullable=False, server_default="0")
+    last_retry_at = Column(TIMESTAMP(timezone=True), nullable=True)
 
 
 # =================================================================
