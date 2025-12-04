@@ -386,15 +386,18 @@ async def flutterwave_webhook(
                 )
 
                 masked = phone[:-4].rjust(len(phone), "•")
+                
                 try:
-                    await application.bot.send_message(
+                    bot = Bot(token=BOT_TOKEN)
+                    await bot.send_message(
                         tg_id,
                         f"🎉 Airtime Success!\n₦{airtime_amount} sent to `{masked}` 🔥",
                         parse_mode="Markdown",
                     )
+                    logger.info(f"📩 Telegram notification sent successfully | tg_id={tg_id}")
                 except Exception as e:
                     logger.warning(
-                        f"⚠ [FLW WEBHOOK][AIRTIME] Failed to notify user | tx_ref={tx_ref} error={e}"
+                        f"⚠ [FLW WEBHOOK][AIRTIME] Failed to notify user | tx_ref={tx_ref} | error={e}"
                     )
 
                 logger.info(f"💚 [FLW WEBHOOK][AIRTIME] Completed | tx_ref={tx_ref}")
