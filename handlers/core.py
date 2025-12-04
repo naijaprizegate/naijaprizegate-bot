@@ -1,13 +1,16 @@
 # ===========================================================
 # handlers/core.py — Compliance-Safe Version (Updated)
 # ============================================================
+import re
+import logging
+
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters, CallbackQueryHandler
+from sqlalchemy import text
+
 from helpers import md_escape, get_or_create_user
 from db import get_async_session
 from utils.security import validate_phone, detect_provider
-import re
-import logging
 
 logger = logging.getLogger(__name__)
 
