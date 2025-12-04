@@ -465,8 +465,10 @@ async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(
     except Exception as e:
         logger.exception(f"⚠️ Error verifying transaction {tx_ref} via Flutterwave: {e}")
 
-    # Decide final status and trusted amount
-    final_status = fw_data.get("status") if fw_data else raw_status
+    # ✅ Decide final status and trusted amount
+    #    - Prefer the status from Flutterwave verification (fw_data)
+    #    - Fallback to the original webhook `status` we read earlier
+    final_status = fw_data.get("status") if fw_data else status   
     
     #  Normalize Flutterwave statuses to match DB constraint
     status_map = {
