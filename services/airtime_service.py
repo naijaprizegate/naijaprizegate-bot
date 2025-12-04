@@ -148,24 +148,32 @@ async def call_flutterwave_airtime(phone_number: str, amount: int) -> Dict[str, 
 
 
 # ===================================================================
-# Single airtime payout processor — Flutterwave Bills API
+# Single airtime payout processor — Flutterwave Bills API (Patched)
 # ===================================================================
+from telegram import Bot
+
 async def process_single_airtime_payout(
     session: AsyncSession,
     payout_id: str,
-    bot,
+    bot: Optional[Bot],
     admin_id: int,
 ) -> None:
     """
-    Loads a pending AIRTIME payout row → Calls Flutterwave → Updates DB →
-    Sends Telegram alerts to user + admin
-
+    Loads a pending AIRTIME payout row → Calls Flutterwave → Updates DB → Sends Telegram alerts.
     Safe for background worker loops.
     """
 
     if AIRTIME_PROVIDER.lower() != "flutterwave":
         logger.warning(f"⚠️ Unsupported airtime provider configured: {AIRTIME_PROVIDER}")
         return
+
+    # Create bot instance if not passed from caller
+    if bot is None:
+        try:
+            bot = Bot(token=BOT_TOKEN)
+        except Exception as e:
+            logger.error(f"❌ Failed to init Bot instance: {e}")
+            return
 
     # ------------------------------------------------------------------
     # DB — Lock row FOR UPDATE inside transaction
@@ -193,69 +201,72 @@ async def process_single_airtime_payout(
         amount: int = row_map["amount"]
         tg_id: int = row_map["tg_id"]
 
+        if not phone:
+            logger.warning(f"📵 Missing phone number for payout {payout_id}. Mark pending_phone.")
+            await session.execute(
+                text("""
+                    UPDATE airtime_payouts
+                    SET status='pending_phone',
+                        last_retry_at=NULL
+                    WHERE id=:pid
+                """),
+                {"pid": payout_id}
+            )
+            return
+
         logger.info(f"🚀 Processing payout {payout_id}: ₦{amount} → {phone} (TG {tg_id})")
 
-        # ------------------------------------------------------------------
-        # Call Flutterwave API
-        # ------------------------------------------------------------------
+        # --------------------------------------------------------------
+        # CALL FLUTTERWAVE BILL API
+        # --------------------------------------------------------------
         try:
             fw_data = await call_flutterwave_airtime(phone, amount)
             status = str(fw_data.get("status", "")).lower()
-
             data = fw_data.get("data") or {}
-            fw_ref: Optional[str] = (
-                data.get("reference")
-                or data.get("flw_ref")
-                or data.get("tx_ref")
-            )
-
+            fw_ref = data.get("reference") or data.get("flw_ref") or data.get("tx_ref")
             provider_json = json.dumps(fw_data)
 
-            # ==============================================================
-            # SUCCESS
-            # ==============================================================
+            logger.info(f"📡 FW Response for payout {payout_id}: {provider_json}")
+
+            # ============================================================== SUCCESS
             if status == "success":
                 await session.execute(
                     text(
                         """
                         UPDATE airtime_payouts
-                        SET status = 'completed',
-                            flutterwave_tx_ref = :tx,
-                            provider_response = :resp::jsonb,
-                            completed_at = :now
-                        WHERE id = :pid
+                        SET status='completed',
+                            flutterwave_tx_ref=:tx,
+                            provider_response=:resp::jsonb,
+                            completed_at=NOW()
+                        WHERE id=:pid
                         """
                     ),
-                    {
-                        "pid": payout_id,
-                        "tx": fw_ref,
-                        "resp": provider_json,
-                        "now": datetime.now(timezone.utc),
-                    },
+                    {"pid": payout_id, "tx": fw_ref, "resp": provider_json},
                 )
 
-                masked_phone = phone[:-4].rjust(len(phone), "•")
+                masked = phone[:-4].rjust(len(phone), "•")
 
-                # 🎉 Notify user
+                # Notify user (telegram failure does NOT cause retry failure)
                 try:
                     await bot.send_message(
-                        chat_id=tg_id,
-                        text=(
+                        tg_id,
+                        (
                             "🎉 *Airtime Reward Credited!*\n\n"
-                            f"📱 `{masked_phone}`\n"
+                            f"📱 `{masked}`\n"
                             f"💸 *₦{amount}*\n\n"
                             "Keep playing and winning on *NaijaPrizeGate*! 🔥"
                         ),
                         parse_mode="Markdown",
                     )
+                    logger.info(f"📩 User notified for payout {payout_id}")
                 except Exception as e:
-                    logger.error(f"⚠️ Failed notifying user: {e}")
+                    logger.warning(f"⚠️ User Telegram send failed: {e}")
 
-                #  👑 Notify admin
+                # Notify admin
                 try:
                     await bot.send_message(
-                        chat_id=admin_id,
-                        text=(
+                        admin_id,
+                        (
                             "📲 *Airtime AUTO-CREDITED via Flutterwave*\n\n"
                             f"TG ID: `{tg_id}`\n"
                             f"Phone: `{phone}`\n"
@@ -265,29 +276,26 @@ async def process_single_airtime_payout(
                         parse_mode="Markdown",
                     )
                 except Exception as e:
-                    logger.error(f"⚠️ Failed notifying admin: {e}")
+                    logger.warning(f"⚠️ Admin Telegram send failed: {e}")
 
-                logger.info(f"✅ Airtime payout {payout_id} completed.")
+                logger.info(f"💚 Airtime payout completed | id={payout_id}")
                 return
 
-            # ==============================================================
-            # FAIL (Unhandled FW Status)
-            # ==============================================================
+            # ============================================================== FAILED FW STATUS
             await session.execute(
-                text(
-                    """
+                text("""
                     UPDATE airtime_payouts
-                    SET status = 'failed',
-                        provider_response = :resp::jsonb
-                    WHERE id = :pid
-                    """
-                ),
+                    SET status='failed',
+                        provider_response=:resp::jsonb
+                    WHERE id=:pid
+                """),
                 {"pid": payout_id, "resp": provider_json},
             )
 
-            logger.warning(f"⚠️ Airtime payout failed: FW status={status}, data={fw_data}")
+            logger.warning(
+                f"⚠️ FW returned failure for payout {payout_id}: status={status}"
+            )
 
-            # Notify admin about failure
             try:
                 await bot.send_message(
                     admin_id,
@@ -296,7 +304,7 @@ async def process_single_airtime_payout(
                         f"ID: `{payout_id}`\n"
                         f"Phone: `{phone}`\n"
                         f"Amount: ₦{amount}\n"
-                        f"Flutterwave status: `{status}`"
+                        f"FW Status: `{status}`"
                     ),
                     parse_mode="Markdown",
                 )
@@ -304,19 +312,11 @@ async def process_single_airtime_payout(
                 pass
 
         except Exception as e:
-            # ==============================================================
-            # EXCEPTION
-            # ==============================================================
-            logger.error(f"❌ Exception while processing payout {payout_id}: {e}")
+            # ============================================================== EXCEPTION
+            logger.error(f"❌ Exception in payout {payout_id}: {e}")
 
             await session.execute(
-                text(
-                    """
-                    UPDATE airtime_payouts
-                    SET status='failed'
-                    WHERE id=:pid
-                    """
-                ),
+                text("UPDATE airtime_payouts SET status='failed' WHERE id=:pid"),
                 {"pid": payout_id},
             )
 
@@ -332,5 +332,5 @@ async def process_single_airtime_payout(
                     ),
                     parse_mode="Markdown",
                 )
-            except Exception:
+            except:
                 pass
