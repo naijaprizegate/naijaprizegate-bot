@@ -1,6 +1,6 @@
-# ==============================================================
+# ===========================================================
 # handlers/core.py — Compliance-Safe Version (Updated)
-# ===============================================================
+# ============================================================
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters, CallbackQueryHandler
 from helpers import md_escape, get_or_create_user
