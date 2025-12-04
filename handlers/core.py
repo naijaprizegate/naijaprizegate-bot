@@ -84,12 +84,14 @@ async def ask_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # If called from a callback query, reply in chat
         await update.callback_query.answer()
         await update.callback_query.message.reply_text(
+            "🎊 Hurray! You just earned FREE airtime! 🎊\n"
             "📱 To receive your airtime reward, please send your *11-digit Nigerian phone number*.\n"
             "Example: 08123456789",
             parse_mode="Markdown"
         )
     else:
         await update.message.reply_text(
+            "🎊 Hurray! You just earned FREE airtime! 🎊\n"
             "📱 To receive your airtime reward, please send your *11-digit Nigerian phone number*.\n"
             "Example: 08123456789",
             parse_mode="Markdown"
