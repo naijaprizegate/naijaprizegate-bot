@@ -332,6 +332,7 @@ async def flutterwave_webhook(request: Request, session: AsyncSession = Depends(
 
     # Parse payload safely
     payload = await request.json()
+    status = payload.get("status")
     logger.info(f"📥 Webhook Payload (trimmed): {json.dumps(payload)[:1000]}")
 
     data = payload.get("data") or {}
