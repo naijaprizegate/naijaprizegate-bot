@@ -12,6 +12,7 @@ import asyncio
 import os
 from logger import logger
 from sqlalchemy import text
+from telegram import Bot
 
 from . import sweeper, notifier, cleanup
 from services.airtime_service import process_single_airtime_payout
@@ -120,9 +121,12 @@ async def process_pending_airtime_loop() -> None:
                         and retry_count >= 4
                         and ADMIN_USER_ID is not None
                     ):
+
                         try:
                             masked = phone[:-4].rjust(len(phone), "•") if phone else "Unknown"
-                            await application.bot.send_message(
+
+                            bot = Bot(token=BOT_TOKEN)
+                            await bot.send_message(
                                 chat_id=ADMIN_USER_ID,
                                 text=(
                                     "🚨 *Airtime payout permanently failed*\n\n"
@@ -173,4 +177,3 @@ async def start_all_tasks(loop: asyncio.AbstractEventLoop = None) -> list[asynci
 
     logger.info("🚀 All periodic background tasks are now running")
     return tasks
-
