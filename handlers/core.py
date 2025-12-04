@@ -1,6 +1,6 @@
-# =========================================================
+# ==============================================================
 # handlers/core.py — Compliance-Safe Version (Updated)
-# ==========================================================
+# ===============================================================
 import re
 import logging
 
@@ -99,7 +99,6 @@ async def ask_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     context.user_data["awaiting_phone"] = True
 
-
 # ------------------------------------------------
 # Handle Phone number collection
 # -------------------------------------------------
@@ -136,7 +135,20 @@ async def handle_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
         db_user.phone_number = phone
         await session.commit()
 
-        # Update any pending_phone payout to pending so worker can retry
+        # ⬇️ Create payout row if missing (critical fix)
+        await session.execute(text("""
+            INSERT INTO airtime_payouts (user_id, tg_id, phone_number, amount, status)
+            SELECT :uid, :tg_id, :phone, 100, 'pending'
+            WHERE NOT EXISTS (
+                SELECT 1 FROM airtime_payouts WHERE user_id = :uid
+            )
+        """), {
+            "uid": db_user.id,
+            "tg_id": tg_user.id,
+            "phone": phone,
+        })
+
+        # If payout exists but was waiting for phone → reactivate it
         await session.execute(text("""
             UPDATE airtime_payouts
             SET phone_number = :phone,
