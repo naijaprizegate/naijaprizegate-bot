@@ -13,6 +13,7 @@ import os
 from logger import logger
 from sqlalchemy import text
 from telegram import Bot
+from config import BOT_TOKEN, ADMIN_USER_ID
 
 from . import sweeper, notifier, cleanup
 from services.airtime_service import process_single_airtime_payout
@@ -80,12 +81,13 @@ async def process_pending_airtime_loop() -> None:
                     )
                     await session.commit()
 
+
                     # 3️⃣ Call the single-payout processor (your existing logic)
                     try:
                         await process_single_airtime_payout(
                             session=session,
                             payout_id=str(payout_id),
-                            bot=application.bot,
+                            bot=Bot(token=BOT_TOKEN),
                             admin_id=ADMIN_USER_ID,
                         )
                     except Exception as e:
@@ -93,6 +95,7 @@ async def process_pending_airtime_loop() -> None:
                             f"❌ Exception in process_single_airtime_payout "
                             f"for {payout_id}: {e}"
                         )
+
 
                     # 4️⃣ Check final state; if now failed 4+ times → alert admin
                     res2 = await session.execute(
