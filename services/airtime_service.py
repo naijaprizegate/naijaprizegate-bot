@@ -7,13 +7,14 @@ from __future__ import annotations
 import os
 import uuid
 import json
+import httpx
 import logging
 from datetime import datetime, timezone
 from typing import Any, Dict, Optional
 
-import httpx
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
+from telegram import Bot
 
 from logger import logger
 
@@ -150,7 +151,8 @@ async def call_flutterwave_airtime(phone_number: str, amount: int) -> Dict[str, 
 # ===================================================================
 # Single airtime payout processor — Flutterwave Bills API (Patched)
 # ===================================================================
-from telegram import Bot
+
+MAX_RETRY = 5   # prevents infinite retry loops
 
 async def process_single_airtime_payout(
     session: AsyncSession,
@@ -158,16 +160,12 @@ async def process_single_airtime_payout(
     bot: Optional[Bot],
     admin_id: int,
 ) -> None:
-    """
-    Loads a pending AIRTIME payout row → Calls Flutterwave → Updates DB → Sends Telegram alerts.
-    Safe for background worker loops.
-    """
 
     if AIRTIME_PROVIDER.lower() != "flutterwave":
         logger.warning(f"⚠️ Unsupported airtime provider configured: {AIRTIME_PROVIDER}")
         return
 
-    # Create bot instance if not passed from caller
+    # Create bot instance if missing
     if bot is None:
         try:
             bot = Bot(token=BOT_TOKEN)
@@ -175,34 +173,30 @@ async def process_single_airtime_payout(
             logger.error(f"❌ Failed to init Bot instance: {e}")
             return
 
-    # ------------------------------------------------------------------
-    # DB — Lock row FOR UPDATE inside transaction
-    # ------------------------------------------------------------------
     async with session.begin():
         res = await session.execute(
-            text(
-                """
-                SELECT id, user_id, tg_id, phone_number, amount
+            text("""
+                SELECT id, user_id, tg_id, phone_number, amount, retry_count
                 FROM airtime_payouts
                 WHERE id = :pid AND status = 'pending'
                 FOR UPDATE
-                """
-            ),
+            """),
             {"pid": payout_id},
         )
         row = res.first()
 
         if not row:
-            logger.info(f"ℹ️ No pending payout found for {payout_id}")
+            logger.info(f"ℹ️ No pending payout for {payout_id}")
             return
 
         row_map = row._mapping
-        phone: str = row_map["phone_number"]
-        amount: int = row_map["amount"]
-        tg_id: int = row_map["tg_id"]
+        phone = row_map["phone_number"]
+        amount = row_map["amount"]
+        tg_id = row_map["tg_id"]
+        retry_count = row_map["retry_count"] or 0
 
         if not phone:
-            logger.warning(f"📵 Missing phone number for payout {payout_id}. Mark pending_phone.")
+            logger.warning(f"📵 No phone number for payout {payout_id}")
             await session.execute(
                 text("""
                     UPDATE airtime_payouts
@@ -214,120 +208,125 @@ async def process_single_airtime_payout(
             )
             return
 
-        logger.info(f"🚀 Processing payout {payout_id}: ₦{amount} → {phone} (TG {tg_id})")
-
-        # --------------------------------------------------------------
-        # CALL FLUTTERWAVE BILL API
-        # --------------------------------------------------------------
-        try:
-            fw_data = await call_flutterwave_airtime(phone, amount)
-            status = str(fw_data.get("status", "")).lower()
-            data = fw_data.get("data") or {}
-            fw_ref = data.get("reference") or data.get("flw_ref") or data.get("tx_ref")
-            provider_json = json.dumps(fw_data)
-
-            logger.info(f"📡 FW Response for payout {payout_id}: {provider_json}")
-
-            # ============================================================== SUCCESS
-            if status == "success":
-                await session.execute(
-                    text(
-                        """
-                        UPDATE airtime_payouts
-                        SET status='completed',
-                            flutterwave_tx_ref=:tx,
-                            provider_response=:resp::jsonb,
-                            completed_at=NOW()
-                        WHERE id=:pid
-                        """
-                    ),
-                    {"pid": payout_id, "tx": fw_ref, "resp": provider_json},
-                )
-
-                masked = phone[:-4].rjust(len(phone), "•")
-
-                # Notify user (telegram failure does NOT cause retry failure)
-                try:
-                    await bot.send_message(
-                        tg_id,
-                        (
-                            "🎉 *Airtime Reward Credited!*\n\n"
-                            f"📱 `{masked}`\n"
-                            f"💸 *₦{amount}*\n\n"
-                            "Keep playing and winning on *NaijaPrizeGate*! 🔥"
-                        ),
-                        parse_mode="Markdown",
-                    )
-                    logger.info(f"📩 User notified for payout {payout_id}")
-                except Exception as e:
-                    logger.warning(f"⚠️ User Telegram send failed: {e}")
-
-                # Notify admin
-                try:
-                    await bot.send_message(
-                        admin_id,
-                        (
-                            "📲 *Airtime AUTO-CREDITED via Flutterwave*\n\n"
-                            f"TG ID: `{tg_id}`\n"
-                            f"Phone: `{phone}`\n"
-                            f"Amount: ₦{amount}\n"
-                            f"FW Ref: `{fw_ref}`\n"
-                        ),
-                        parse_mode="Markdown",
-                    )
-                except Exception as e:
-                    logger.warning(f"⚠️ Admin Telegram send failed: {e}")
-
-                logger.info(f"💚 Airtime payout completed | id={payout_id}")
-                return
-
-            # ============================================================== FAILED FW STATUS
+        if retry_count >= MAX_RETRY:
+            logger.error(f"🚫 Retry limit reached for {payout_id}")
             await session.execute(
                 text("""
                     UPDATE airtime_payouts
                     SET status='failed',
-                        provider_response=:resp::jsonb
+                        last_retry_at=NOW()
                     WHERE id=:pid
                 """),
-                {"pid": payout_id, "resp": provider_json},
+                {"pid": payout_id}
             )
+            return
 
-            logger.warning(
-                f"⚠️ FW returned failure for payout {payout_id}: status={status}"
+        logger.info(f"🚀 Processing payout {payout_id}: ₦{amount} → {phone}")
+
+        try:
+            fw_data = await call_flutterwave_airtime(phone, amount)
+            status = str(fw_data.get("status", "")).lower()
+            data = fw_data.get("data") or {}
+            fw_ref = data.get("reference") or data.get("tx_ref")
+            provider_json = json.dumps(fw_data)
+
+            # Save JSONB safely
+            def update_status(new_status):
+                return session.execute(
+                    text("""
+                        UPDATE airtime_payouts
+                        SET status=:sts,
+                            provider_response = CAST(:resp AS JSONB),
+                            retry_count = retry_count + 1,
+                            last_retry_at = NOW()
+                        WHERE id=:pid
+                    """),
+                    {"pid": payout_id, "resp": provider_json, "sts": new_status},
+                )
+
+            # SUCCESS
+            if status == "success":
+                await session.execute(
+                    text("""
+                        UPDATE airtime_payouts
+                        SET status='completed',
+                            flutterwave_tx_ref=:tx,
+                            provider_response = CAST(:resp AS JSONB),
+                            completed_at=NOW()
+                        WHERE id=:pid
+                    """),
+                    {"pid": payout_id, "tx": fw_ref, "resp": provider_json},
+                )
+
+                masked = phone[:-4].rjust(len(phone), "•")
+                try:
+                    await bot.send_message(
+                        tg_id,
+                        (
+                            "🎉 *Airtime Reward Sent!*\n\n"
+                            f"📱 `{masked}`\n"
+                            f"💸 *₦{amount}*\n\n"
+                            "Keep playing & winning! 🔥"
+                        ),
+                        parse_mode="Markdown",
+                    )
+                except Exception:
+                    pass
+
+                await bot.send_message(
+                    admin_id,
+                    f"📲 Airtime sent\nPhone: `{phone}`\nAmount: ₦{amount}\nRef: `{fw_ref}`",
+                    parse_mode="Markdown"
+                )
+
+                logger.info(f"💚 Completed Airtime | ID {payout_id}")
+                return
+
+            # FAILURE FROM API
+            await update_status("failed")
+            logger.warning(f"⚠️ FW returned failure for {payout_id}: {status}")
+
+            await bot.send_message(
+                admin_id,
+                f"⚠️ Airtime FAILED\nPhone: `{phone}`\nAmount: ₦{amount}\nFW Status: `{status}`",
+                parse_mode="Markdown"
             )
+            return
+
+        except Exception as e:
+            err = str(e).lower()
+            logger.error(f"❌ Exception in payout {payout_id}: {e}")
+
+            if "whitelist" in err:
+                await session.execute(
+                    text("""
+                        UPDATE airtime_payouts
+                        SET status='ip_blocked',
+                            last_retry_at=NOW()
+                        WHERE id=:pid
+                    """),
+                    {"pid": payout_id},
+                )
+                logger.critical("🚫 Flutterwave blocking API — IP whitelisting required")
+            else:
+                await session.execute(
+                    text("""
+                        UPDATE airtime_payouts
+                        SET status='failed',
+                            last_retry_at=NOW()
+                        WHERE id=:pid
+                    """),
+                    {"pid": payout_id},
+                )
 
             try:
                 await bot.send_message(
                     admin_id,
                     (
-                        "⚠️ *Airtime payout FAILED*\n\n"
+                        "🚨 *Airtime payout EXCEPTION*\n"
                         f"ID: `{payout_id}`\n"
                         f"Phone: `{phone}`\n"
                         f"Amount: ₦{amount}\n"
-                        f"FW Status: `{status}`"
-                    ),
-                    parse_mode="Markdown",
-                )
-            except Exception:
-                pass
-
-        except Exception as e:
-            # ============================================================== EXCEPTION
-            logger.error(f"❌ Exception in payout {payout_id}: {e}")
-
-            await session.execute(
-                text("UPDATE airtime_payouts SET status='failed' WHERE id=:pid"),
-                {"pid": payout_id},
-            )
-
-            try:
-                await bot.send_message(
-                    admin_id,
-                    (
-                        "🚨 *Airtime payout EXCEPTION*\n\n"
-                        f"Payout ID: `{payout_id}`\n"
-                        f"Phone: `{phone}`\n"
-                        f"Amount: ₦{amount}`\n"
                         f"Error: `{e}`"
                     ),
                     parse_mode="Markdown",
