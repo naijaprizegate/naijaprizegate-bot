@@ -1,6 +1,6 @@
 # ==================================================================
 # migrations/reset_db.py (FULL RESET with new reward + trivia tables)
-# ==================================================================
+# ===================================================================
 import os
 import json
 from datetime import datetime, timezone
