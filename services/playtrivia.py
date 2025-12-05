@@ -1,6 +1,6 @@
-# ===============================================================
+# ==================================================================
 # services/playtrivia.py (SKILL-BASED, LEADERBOARD Top-Tier Campaign Reward VERSION)
-# ===============================================================
+# ==================================================================
 import os
 import logging
 from sqlalchemy.ext.asyncio import AsyncSession
