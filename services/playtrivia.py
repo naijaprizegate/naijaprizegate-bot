@@ -331,20 +331,27 @@ async def reward_logic(
         # Reset premium entries for next Top-Tier Campaign Reward cycle (new race)
         await session.execute(text("DELETE FROM premium_reward_entries"))
 
-        # --- Notify Top-Tier Campaign Reward winner (DM) ---
+        # --- # Notify Top-Tier Campaign Reward winner (DM) --- 
         try:
-            from app import application  # lazy import to avoid circular issues
-            from config import ADMIN_USER_ID  # adjust import path if needed
+            from telegram import Bot
+            from config import BOT_TOKEN, ADMIN_USER_ID  # adjust import path if needed
 
-            bot = application.bot
+            bot = Bot(token=BOT_TOKEN)
 
             await bot.send_message(
-                top_tier_campaign_reward_tg_id,
-                "🎉 *Congratulations!* 🎉\n\n"
-                "You finished this Top-Tier Campaign Reward cycle at the *top of the leaderboard* 🏆🔥\n"
-                "You are our current *Top-Tier Campaign Reward Winner* and will be contacted to claim your prize.",
-                parse_mode="Markdown"
+                chat_id=top_tier_campaign_reward_tg_id,
+                text=(
+                    "🎉 *Congratulations!* 🎉\n\n"
+                    "You finished this Top-Tier Campaign Reward cycle at the "
+                    "*top of the leaderboard* 🏆🔥\n\n"
+                    "You are our current *Top-Tier Campaign Reward Winner* and "
+                    "will be contacted to claim your prize!"
+                ),
+                parse_mode="Markdown",
             )
+
+        except Exception as e:
+            logger.error(f"📩 Failed to notify Top-Tier winner: {e}")
 
             # --- Admin notification ---
             await bot.send_message(
