@@ -100,6 +100,13 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
             ],
             [
                 InlineKeyboardButton(
+                    "📵 Failed Airtime Payouts",
+                    callback_data="admin_airtime_failed:1"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
                     "👤 User Search", callback_data="admin_menu:user_search"
                 )
             ],
@@ -1801,6 +1808,90 @@ async def update_delivery_status_delivered(
     await show_winners_section(update, context)
 
 
+# ===================================================================
+# 📵 Failed Airtime Payouts — Paginated Admin View
+# ===================================================================
+FAILED_PER_PAGE = 10
+
+async def show_failed_airtime(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    page = int(query.data.split(":")[1]) if ":" in query.data else 1
+    offset = (page - 1) * FAILED_PER_PAGE
+
+    async with AsyncSessionLocal() as session:
+        res = await session.execute(
+            text("""
+                SELECT id, tg_id, phone_number, amount, status, updated_at
+                FROM airtime_payouts
+                WHERE status IN ('failed','pending_phone','claim_phone_set')
+                ORDER BY updated_at DESC
+                LIMIT :limit OFFSET :offset
+            """), {"limit": FAILED_PER_PAGE, "offset": offset}
+        )
+        rows = res.fetchall()
+
+        total_rows = await session.scalar(
+            text("""
+                SELECT COUNT(*) FROM airtime_payouts
+                WHERE status IN ('failed','pending_phone','claim_phone_set')
+            """)
+        )
+
+    if not rows:
+        return await safe_edit(
+            query,
+            "🟢 No failed or pending airtime payouts! System clean 🎉",
+            parse_mode="HTML",
+        )
+
+    pages = (total_rows // FAILED_PER_PAGE) + (1 if total_rows % FAILED_PER_PAGE else 0)
+
+    text_lines = []
+    keyboard_rows = []
+
+    for row in rows:
+        p = row._mapping
+        payout_id = p["id"]
+        masked = "Unknown"
+        phone = p["phone_number"]
+        if phone:
+            masked = phone[:-4].rjust(len(phone), "•")
+
+        text_lines.append(
+            f"⚠️ <b>Payout</b> — {payout_id}\n"
+            f"👤 TG: {p['tg_id']}\n"
+            f"📱 {masked}\n"
+            f"💸 ₦{p['amount']}\n"
+            f"⏱️ {p['status']} — {p['updated_at']}\n"
+        )
+
+        keyboard_rows.append([
+            InlineKeyboardButton(
+                f"🔁 Retry {payout_id}",
+                callback_data=f"admin_retry:{payout_id}"
+            )
+        ])
+
+    # Pagination Controls
+    nav = []
+    if page > 1:
+        nav.append(InlineKeyboardButton("⬅️ Prev", callback_data=f"admin_airtime_failed:{page-1}"))
+    if page < pages:
+        nav.append(InlineKeyboardButton("Next ➡️", callback_data=f"admin_airtime_failed:{page+1}"))
+
+    keyboard = InlineKeyboardMarkup(keyboard_rows + [nav] + [[
+        InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")
+    ]])
+
+    await safe_edit(
+        query,
+        "\n".join(text_lines),
+        parse_mode="HTML",
+        reply_markup=keyboard
+    )
+
+
 # ----------------------------
 # Register Handlers (CLEAN & ORDERED ✅)
 # ----------------------------
@@ -1884,3 +1975,8 @@ def register_handlers(application):
     # ✅ Absolute fallback — catches *everything else* (usually in handlers/core.py)
     # Place this one at the VERY END of all registrations:
     application.add_handler(MessageHandler(filters.ALL, fallback))
+
+    # Failed Airtime pagination
+    application.add_handler(
+        CallbackQueryHandler(show_failed_airtime, pattern=r"^admin_airtime_failed")
+    )
