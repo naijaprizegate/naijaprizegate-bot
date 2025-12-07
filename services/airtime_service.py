@@ -17,8 +17,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 from telegram import Bot, Update
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import CallbackQueryHandler, ContextTypes
-from telegram.ext import MessageHandler, filters
 
 PHONE_REGEX = re.compile(r"^(?:\+?234|0)\d{10}$")
 
@@ -619,11 +617,3 @@ async def process_single_airtime_payout(
                 )
             except:
                 pass
-
-
-application.add_handler(
-    MessageHandler(
-        filters.TEXT & ~filters.COMMAND,
-        handle_airtime_claim_phone
-    )
-)
