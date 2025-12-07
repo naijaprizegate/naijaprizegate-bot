@@ -16,7 +16,6 @@ from telegram import Bot
 from config import BOT_TOKEN, ADMIN_USER_ID
 
 from . import sweeper, notifier, cleanup
-from services.airtime_service import process_single_airtime_payout
 from db import AsyncSessionLocal, get_async_session
 
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
@@ -29,7 +28,6 @@ async def process_pending_airtime_loop() -> None:
     Periodic worker that:
       - Picks airtime_payouts with status 'pending' or 'failed'
       - Retries each one up to 4 times (using retry_count column)
-      - Calls process_single_airtime_payout(...) for actual API call
       - Notifies ADMIN_USER_ID when a payout fails 4 times
     """
     logger.info("📲 Airtime payout worker loop started")
