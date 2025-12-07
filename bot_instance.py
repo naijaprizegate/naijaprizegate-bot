@@ -4,6 +4,8 @@
 import os
 from telegram import Bot
 from telegram.ext import CallbackQueryHandler, MessageHandler, filters
+from telegram.ext import Application
+
 from services.airtime_service import (
     handle_claim_airtime_button,
     handle_airtime_claim_phone,
