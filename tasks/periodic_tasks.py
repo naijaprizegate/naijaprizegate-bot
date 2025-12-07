@@ -1,6 +1,6 @@
-# =======================================================
+# ========================================================
 # tasks/periodic_tasks.py
-# =======================================================
+# ========================================================
 """
 Periodic background task manager for:
 - Airtime auto payouts (Flutterwave Bills API)
@@ -82,18 +82,14 @@ async def process_pending_airtime_loop() -> None:
                     await session.commit()
 
 
-                    # 3️⃣ Call the single-payout processor (your existing logic)
-                    try:
-                        await process_single_airtime_payout(
+                    if total_premium_spins in AIRTIME_MILESTONES:
+                        await create_pending_airtime_payout_and_prompt(
                             session=session,
-                            payout_id=str(payout_id),
-                            bot=Bot(token=BOT_TOKEN),
-                            admin_id=ADMIN_USER_ID,
-                        )
-                    except Exception as e:
-                        logger.error(
-                            f"❌ Exception in process_single_airtime_payout "
-                            f"for {payout_id}: {e}"
+                            update=update,
+                            user_id=db_user.id,
+                            tg_id=update.effective_user.id,
+                            username=update.effective_user.username,
+                            total_premium_spins=total_premium_spins,
                         )
 
 
