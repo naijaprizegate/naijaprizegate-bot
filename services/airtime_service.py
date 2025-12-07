@@ -621,18 +621,6 @@ async def process_single_airtime_payout(
                 pass
 
 
-# -------------------------------------
-# Register Handler
-# --------------------------------------
-application.add_handler(
-    CallbackQueryHandler(
-        handle_claim_airtime_button,
-        pattern=r"^claim_airtime:"   # matches 'claim_airtime:<payout_id>'
-    )
-)
-
-from telegram.ext import MessageHandler, filters
-
 application.add_handler(
     MessageHandler(
         filters.TEXT & ~filters.COMMAND,
