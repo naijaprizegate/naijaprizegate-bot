@@ -1,6 +1,6 @@
-# ===================================================
-# app.py
 # ====================================================
+# app.py
+# =====================================================
 # 1️⃣ Import & initialize secure logging first
 # -------------------------------------------------
 from logging_setup import logger, tg_error_handler  # must be first to protect secrets
@@ -343,75 +343,101 @@ async def flutterwave_webhook(
     )
 
     # ==========================================================================
-    # 🟦 AIRTIME SECTION
+    # 🟦 AIRTIME CLAIM CONFIRMATION (Flutterwave Hosted)
     # ==========================================================================
     if product == "airtime":
-        logger.info(f"📡 [FLW WEBHOOK][AIRTIME] Airtime webhook received | tx_ref={tx_ref}")
+        logger.info(f"📩 FW WEBHOOK | AIRTIME | tx_ref={tx_ref}")
 
         async with session.begin():
             res = await session.execute(
                 text("""
                     SELECT id, status, tg_id, phone_number, amount
                     FROM airtime_payouts
-                    WHERE flutterwave_tx_ref = :tx
+                    WHERE flutterwave_tx_ref = :tx_ref
+                     OR ('CLAIM-' || id) = :tx_ref
                     LIMIT 1
                 """),
-                {"tx": tx_ref},
+                {"tx_ref": tx_ref},
             )
             row = res.first()
 
             if not row:
-                logger.warning(f"⚠️ [FLW WEBHOOK][AIRTIME] Airtime tx not found | tx_ref={tx_ref}")
+                logger.warning(f"⚠️ AIRTIME webhook ignored — unknown tx_ref={tx_ref}")
                 return JSONResponse({"status": "ignored"})
 
-            payout_id, existing_status, tg_id, phone, airtime_amount = row
+            payout_id, current_status, tg_id, phone, amount = row
             normalized = fw_status.lower().strip()
             is_success = normalized in ("success", "successful", "completed")
 
-            # 🔁 Idempotency: if already completed, don’t re-notify or re-update
-            if existing_status == "completed":
-                logger.info(
-                    f"🔁 [FLW WEBHOOK][AIRTIME] Already completed | tx_ref={tx_ref} status={existing_status}"
-                )
+            # 🚫 Idempotent — Ignore if already completed
+            if current_status == "completed":
+                logger.info(f"🔁 Duplicate FW AIM success ignored | {tx_ref}")
                 return JSONResponse({"status": "duplicate"})
 
-            if is_success:
+            if not is_success:
+                # Mark failed but DO NOT block future retry
                 await session.execute(
-                    text("""
-                        UPDATE airtime_payouts
-                        SET status='completed', completed_at=NOW()
-                        WHERE id=:pid
-                    """),
-                    {"pid": payout_id},
+                    text("UPDATE airtime_payouts SET status='failed' WHERE id=:pid"),
+                    {"pid": payout_id}
                 )
+                logger.warning(f"❌ FW AIM failed | {tx_ref} | status={fw_status}")
+                return JSONResponse({"status": "airtime_failed"})
 
+            # Normalize phone for masking
+            masked = "Unknown"
+            if phone and len(phone) >= 4:
                 masked = phone[:-4].rjust(len(phone), "•")
-                
-                try:
-                    bot = Bot(token=BOT_TOKEN)
-                    await bot.send_message(
-                        tg_id,
-                        f"🎉 Airtime Success!\n₦{airtime_amount} sent to `{masked}` 🔥",
-                        parse_mode="Markdown",
-                    )
-                    logger.info(f"📩 Telegram notification sent successfully | tg_id={tg_id}")
-                except Exception as e:
-                    logger.warning(
-                        f"⚠ [FLW WEBHOOK][AIRTIME] Failed to notify user | tx_ref={tx_ref} | error={e}"
-                    )
 
-                logger.info(f"💚 [FLW WEBHOOK][AIRTIME] Completed | tx_ref={tx_ref}")
-                return JSONResponse({"status": "airtime_completed"})
-
-            # Mark as failed
+            # Final update
             await session.execute(
-                text("UPDATE airtime_payouts SET status='failed' WHERE id=:pid"),
-                {"pid": payout_id},
+                text("""
+                    UPDATE airtime_payouts
+                    SET status='completed',
+                        flutterwave_tx_ref=:tx_ref,
+                        provider_response=:resp::jsonb,
+                        completed_at=NOW()
+                    WHERE id=:pid
+                """),
+                {"pid": payout_id, "tx_ref": tx_ref, "resp": json.dumps(payload)}
             )
-            logger.warning(
-                f"❌ [FLW WEBHOOK][AIRTIME] Marked failed | tx_ref={tx_ref} fw_status={fw_status}"
+
+        # Notify telegram user
+        try:
+            bot = Bot(token=BOT_TOKEN)
+            await bot.send_message(
+                tg_id,
+                (
+                    "🎉 *Airtime Credited Successfully!*\n\n"
+                    f"📱 `{masked}`\n"
+                    f"💸 *₦{amount} Airtime*\n\n"
+                    "Thank you for playing NaijaPrizeGate 🔥.\n"
+                    "Keep winning! 🏆"
+                ),
+                parse_mode="Markdown",
             )
-            return JSONResponse({"status": "airtime_failed"})
+        except Exception as e:
+            logger.warning(f"⚠️ Could not message user | {e}")
+
+        # Notify admin
+        try:
+            await bot.send_message(
+                ADMIN_USER_ID,
+                (
+                    "📲 *AIRTIME DELIVERED*\n\n"
+                    f"Payout: `{payout_id}`\n"
+                    f"User: `{tg_id}`\n"
+                    f"Number: `{masked}`\n"
+                    f"Amount: ₦{amount}\n"
+                    f"Ref: `{tx_ref}`"
+                ),
+                parse_mode="Markdown",
+            )
+        except Exception:
+            pass
+
+        logger.info(f"💙 Airtime claim completed | payout_id={payout_id}")
+        return JSONResponse({"status": "airtime_completed"})
+
 
     # ==========================================================================
     # 💳 PAYMENT SECTION — TRIVIA CREDITS
