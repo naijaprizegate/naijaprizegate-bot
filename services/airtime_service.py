@@ -17,7 +17,7 @@ from telegram.ext import ContextTypes
 
 from db import AsyncSessionLocal
 from utils.security import validate_phone
-from config import AIRTIME_MILESTONES
+from services.playtrivia import AIRTIME_MILESTONES
 
 logger = logging.getLogger(__name__)
 
