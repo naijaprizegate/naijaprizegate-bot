@@ -1,8 +1,8 @@
-# =====================================================
+# ====================================================
 # app.py
 # =====================================================
 # 1️⃣ Import & initialize secure logging first
-# ----------------------------------------------------
+# -------------------------------------------------
 from logging_setup import logger, tg_error_handler  # must be first to protect secrets
 
 import os
@@ -190,21 +190,22 @@ async def on_startup():
 
         # Initialize & start bot
         await application.initialize()
-        await application.start()
-        logger.info("Telegram Application initialized & started ✅")
-
-        # Add error handler
-        application.add_error_handler(tg_error_handler)
 
         # Webhook setup
         webhook_url = f"{RENDER_EXTERNAL_URL}/telegram/webhook/{WEBHOOK_SECRET}"
         await application.bot.set_webhook(webhook_url)
         logger.info(f"Webhook set to {webhook_url} ✅")
 
+        await application.start()
+        logger.info("Telegram bot polling via Webhook is LIVE 🚀")
+
         # ✅ Start background tasks
         await start_background_tasks()
         logger.info("✅ Background tasks started.")
-
+        
+        # Add error handler
+        application.add_error_handler(tg_error_handler)
+        
     except Exception as e:
         clean_trace = re.sub(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", traceback.format_exc())
         logger.error(f"Unhandled exception during startup:\n{clean_trace}")
@@ -340,8 +341,7 @@ async def flutterwave_webhook(
         logger.error("❌ [FLW WEBHOOK] Missing tx_ref - cannot proceed")
         raise HTTPException(status_code=400, detail="Missing tx_ref")
 
-    logger.info(f"🔎 Event={event_type} product={product} tx_ref={tx_ref} status={fw_status}")
-
+    
     # ======================================================================
     # 🟦 AIRTIME CLAIM — Hosted Checkout Success Confirmation
     # ======================================================================
