@@ -89,16 +89,30 @@ async def create_airtime_checkout_link(
         "amount": amount,
         "currency": "NGN",
         "redirect_url": WEBHOOK_REDIRECT_URL,
-        "customer": {"email": email, "phonenumber": phone, "name": f"User {tg_id}"},
+        "callback_url": f"https://naijaprizegate-bot-oo2x.onrender.com/webhook",
+        "customer": {
+            "email": email,
+            "phonenumber": phone,
+            "name": f"User {tg_id}",
+        },
         "customizations": {
             "title": "Airtime Reward",
             "description": "Your airtime reward is waiting!",
             "logo": "https://naijaprizegate.ng/static/logo.png",
         },
-        "meta": {"payout_id": payout_id, "tg_id": str(tg_id), "phone": phone},
+        "payment_options": "card,ussd,banktransfer",
+        "meta": {
+            "product": "airtime",
+            "payout_id": payout_id,
+            "tg_id": str(tg_id),
+            "phone": phone,
+        },
     }
 
-    headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}", "Content-Type": "application/json"}
+    headers = {
+        "Authorization": f"Bearer {FLW_SECRET_KEY}",
+        "Content-Type": "application/json",
+    }
 
     logger.info(f"🌐 Creating Airtime Checkout → payout={payout_id} ₦{amount} ➜ {phone}")
 
