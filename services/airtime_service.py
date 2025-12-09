@@ -84,23 +84,27 @@ async def create_airtime_checkout_link(
     tx_ref = f"AIRTIME-{payout_id}"
     email = f"user_{tg_id}@naijaprizegate.ng"
 
+    # Our server webhook for Flutterwave confirmation
+    CALLBACK_URL = "https://naijaprizegate-bot-oo2x.onrender.com/flw/webhook"
+
     payload = {
         "tx_ref": tx_ref,
         "amount": amount,
         "currency": "NGN",
-        "redirect_url": WEBHOOK_REDIRECT_URL,
-        "callback_url": f"https://naijaprizegate-bot-oo2x.onrender.com/webhook",
+        # 🔥 We use FLW webhook endpoint for both redirect & callback
+        "redirect_url": CALLBACK_URL,
+        "callback_url": CALLBACK_URL,
         "customer": {
             "email": email,
             "phonenumber": phone,
             "name": f"User {tg_id}",
         },
+        "payment_options": "card,ussd,banktransfer",
         "customizations": {
             "title": "Airtime Reward",
             "description": "Your airtime reward is waiting!",
             "logo": "https://naijaprizegate.ng/static/logo.png",
         },
-        "payment_options": "card,ussd,banktransfer",
         "meta": {
             "product": "airtime",
             "payout_id": payout_id,
@@ -114,7 +118,7 @@ async def create_airtime_checkout_link(
         "Content-Type": "application/json",
     }
 
-    logger.info(f"🌐 Creating Airtime Checkout → payout={payout_id} ₦{amount} ➜ {phone}")
+    logger.info(f"🌐 Creating Airtime Checkout → payout_id={payout_id} amount=₦{amount} phone={phone}")
 
     try:
         async with httpx.AsyncClient(timeout=15.0) as client:
@@ -125,7 +129,6 @@ async def create_airtime_checkout_link(
         return None
 
     return data.get("data", {}).get("link")
-
 
 # -------------------------------------------------------------------
 # Create Airtime Payout Record + Prompt Claim Button
@@ -266,4 +269,3 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
 
     await msg.reply_text("🚀 You can continue playing while it's processing!", reply_markup=keyboard)
     logger.info(f"📩 Airtime checkout sent | payout_id={payout_id} | phone={phone}")
-
