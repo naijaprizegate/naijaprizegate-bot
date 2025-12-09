@@ -1,6 +1,6 @@
-# ===================================================
-# app.py
 # ====================================================
+# app.py
+# =====================================================
 # 1️⃣ Import & initialize secure logging first
 # -------------------------------------------------
 from logging_setup import logger, tg_error_handler  # must be first to protect secrets
@@ -319,13 +319,15 @@ async def flutterwave_webhook(
         logger.error("🚫 [FLW WEBHOOK] Invalid verif-hash signature")
         raise HTTPException(status_code=403, detail="Invalid signature")
 
+    # Parse JSON payload AFTER signature validated
     payload = await request.json()
-    logger.info(f"📥 [FLW WEBHOOK] Raw Payload: {json.dumps(payload)[:1000]}")
-
     data = payload.get("data") or {}
-    fw_status = payload.get("status") or data.get("status") or ""
+    logger.info(f"📥 [FLW WEBHOOK] Raw Payload: {json.dumps(payload)[:1000]}")
+    
+    fw_status = (payload.get("status") or data.get("status") or "").lower().strip()
     product = (data.get("product") or "").lower().strip()
     amount = data.get("amount") or 0
+    event_type = (payload.get("event") or payload.get("event.type") or "").lower().strip()
 
     tx_ref = (
         data.get("tx_ref")
@@ -335,12 +337,10 @@ async def flutterwave_webhook(
     )
 
     if not tx_ref:
-        logger.error("❌ [FLW WEBHOOK] Transaction missing tx_ref")
+        logger.error("❌ [FLW WEBHOOK] Missing tx_ref - cannot proceed")
         raise HTTPException(status_code=400, detail="Missing tx_ref")
 
-    logger.info(
-        f"🔎 [FLW WEBHOOK] Incoming event | product={product} tx_ref={tx_ref} fw_status={fw_status}"
-    )
+    logger.info(f"🔎 Event={event_type} product={product} tx_ref={tx_ref} status={fw_status}")
 
     # ======================================================================
     # 🟦 AIRTIME CLAIM — Hosted Checkout Success Confirmation
