@@ -199,9 +199,6 @@ async def on_startup():
         await application.start()
         logger.info("Telegram bot polling via Webhook is LIVE 🚀")
 
-        await application.process_updates([])
-        logger.info("📬 Telegram Webhook Listener Activated 🚀")
-
         application.job_queue.start()
         
         # ✅ Start background tasks
