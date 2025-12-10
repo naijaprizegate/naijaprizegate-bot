@@ -28,6 +28,7 @@ from handlers.payments import handle_buy_callback
 from handlers.free import free_menu
 from handlers.core import ask_phone
 from utils.signer import generate_signed_token
+from services.airtime_service import create_pending_airtime_payout_and_prompt
 
 logger = logging.getLogger(__name__)
 
