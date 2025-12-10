@@ -425,18 +425,47 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
             reply_markup=choice_keyboard,
         )
 
-    # 🎁 AIRTIME-STYLE REWARD (e.g., outcome "airtime_50")
+    # 🎁 NEW Airtime Reward Flow — No direct phone request here!
     if outcome.startswith("airtime_"):
-        amount = int(outcome.split("_")[1])
+        # Extract airtime value
+        reward_amount = int(outcome.split("_")[1])
 
-        context.user_data["airtime_amount"] = amount
-        context.user_data["awaiting_airtime_number"] = True
+        # Update DB: add milestone spin tracker
+        async with AsyncSessionLocal() as session:
+            await session.execute(
+                text("""
+                    UPDATE users
+                    SET premium_spins = premium_spins + 1
+                    WHERE tg_id = :tg
+                """),
+                {"tg": update.effective_user.id}
+            )
+            await session.commit()
 
+        # Fetch updated premium spin count
+        async with AsyncSessionLocal() as session:
+            res = await session.execute(
+                text("SELECT premium_spins FROM users WHERE tg_id = :tg"),
+                {"tg": update.effective_user.id}
+            )
+            row = res.first()
+            current_premium_spins = row[0] if row else 1
+
+        # Trigger unified payout reward UI 🚀
+        await create_pending_airtime_payout_and_prompt(
+            session=session,
+            update=update,
+            user_id=db_user_id,
+            tg_id=update.effective_user.id,
+            username=update.effective_user.username,
+            total_premium_spins=current_premium_spins
+        )
+
+        # Replace the spinning message with notice
         return await msg.edit_text(
-            f"🎉 *You unlocked an airtime bonus of ₦{amount}* 🎉\n\n"
-            "📲 Please send your *phone number* to receive your airtime\\.\n\n"
-            "📌 Airtime rewards are skill-achievement bonuses\\.",
-            parse_mode="Markdown",
+            f"🎉 You unlocked an airtime bonus of ₦{reward_amount} 🎉\n\n"
+            "👇 Tap the button below to claim your reward.",
+            parse_mode="Markdown"
         )
 
     # 🎧 EARPODS (campaign reward)
@@ -541,79 +570,6 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
         parse_mode="Markdown",
         reply_markup=make_play_keyboard(),
     )
-
-
-# ================================================================
-# 📲 AIRTIME NUMBER HANDLER (AUTO-PAYOUT)
-# ================================================================
-async def airtime_number_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    # Only run if user is indeed submitting a number for airtime
-    if not context.user_data.get("awaiting_airtime_number"):
-        return
-
-    raw_input = update.message.text.strip()
-    user = update.effective_user
-
-    context.user_data["awaiting_airtime_number"] = False
-
-    # Retrieve airtime amount determined during reward processing
-    amount = context.user_data.pop("airtime_amount", 100)
-
-    # Normalize + validate Nigerian numbers
-    number = raw_input.replace(" ", "").replace("-", "")
-
-    if number.startswith("+"):
-        number = number[1:]
-
-    if number.startswith("0"):  # 0803… → 234803…
-        number = "234" + number[1:]
-
-    if not (number.startswith("234") and len(number) == 13):
-        return await update.message.reply_text(
-            "❌ Invalid number format.\n\n"
-            "Please send a valid Nigerian number.\n"
-            "Example: 0803xxxxxxx",
-        )
-
-    # Insert into airtime_payouts table
-    async with get_async_session() as session:
-        async with session.begin():
-            await session.execute(
-                text(
-                    """
-                    INSERT INTO airtime_payouts (user_id, tg_id, phone_number, amount, status)
-                    VALUES (:uid, :tg, :phone, :amt, 'pending')
-                """
-                ),
-                {
-                    "uid": None,  # optional
-                    "tg": user.id,
-                    "phone": number,
-                    "amt": amount,
-                },
-            )
-
-    await update.message.reply_text(
-        f"🎉 Great! Your airtime bonus of *₦{amount}* "
-        f"will be delivered shortly to:\n"
-        f"📱 {number}\n\n"
-        "📌 Rewards are promotional and subject to verification.",
-        parse_mode="Markdown",
-    )
-
-    try:
-        await context.bot.send_message(
-            chat_id=ADMIN_USER_ID,
-            text=(
-                "📲 *New Airtime Payout (AUTO)*\n\n"
-                f"User: {user.id} (@{user.username})\n"
-                f"Amount: ₦{amount}\n"
-                f"Phone: {number}"
-            ),
-            parse_mode="Markdown",
-        )
-    except Exception:
-        pass
 
 
 # ================================================================
