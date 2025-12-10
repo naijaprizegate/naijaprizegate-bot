@@ -425,48 +425,50 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
             reply_markup=choice_keyboard,
         )
 
-    # 🎁 NEW Airtime Reward Flow — No direct phone request here!
+    # 🎁 NEW Airtime Reward Flow — Button-based claim only!
     if outcome.startswith("airtime_"):
-        # Extract airtime value
         reward_amount = int(outcome.split("_")[1])
+        tg_id = update.effective_user.id
+        username = update.effective_user.username
 
-        # Update DB: add milestone spin tracker
         async with AsyncSessionLocal() as session:
-            await session.execute(
-                text("""
-                    UPDATE users
-                    SET premium_spins = premium_spins + 1
-                    WHERE tg_id = :tg
-                """),
-                {"tg": update.effective_user.id}
-            )
-            await session.commit()
+            async with session.begin():
 
-        # Fetch updated premium spin count
-        async with AsyncSessionLocal() as session:
-            res = await session.execute(
-                text("SELECT premium_spins FROM users WHERE tg_id = :tg"),
-                {"tg": update.effective_user.id}
-            )
-            row = res.first()
-            current_premium_spins = row[0] if row else 1
+                # Update premium spin counters
+                await session.execute(
+                    text("""
+                        UPDATE users
+                        SET total_premium_spins = total_premium_spins + 1
+                        WHERE tg_id = :tg
+                    """),
+                    {"tg": tg_id}
+                )
 
-        # Trigger unified payout reward UI 🚀
-        await create_pending_airtime_payout_and_prompt(
-            session=session,
-            update=update,
-            user_id=db_user_id,
-            tg_id=update.effective_user.id,
-            username=update.effective_user.username,
-            total_premium_spins=current_premium_spins
-        )
+                # Fetch updated milestone count
+                res = await session.execute(
+                    text("SELECT total_premium_spins FROM users WHERE tg_id = :tg"),
+                    {"tg": tg_id}
+                )
+                row = res.first()
+                current_premium_spins = row[0] if row else 1
 
-        # Replace the spinning message with notice
+                # Create pending payout + Show claim button
+                payout_id = await create_pending_airtime_payout_and_prompt(
+                    session=session,
+                    update=update,
+                    user_id=db_user_id,
+                    tg_id=tg_id,
+                    username=username,
+                    total_premium_spins=current_premium_spins
+                )
+
+        # Update the wheel spin message
         return await msg.edit_text(
             f"🎉 You unlocked an airtime bonus of ₦{reward_amount} 🎉\n\n"
             "👇 Tap the button below to claim your reward.",
             parse_mode="Markdown"
         )
+
 
     # 🎧 EARPODS (campaign reward)
     if outcome == "earpod":
