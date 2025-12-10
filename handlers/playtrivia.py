@@ -684,17 +684,11 @@ def register_handlers(application):
     application.add_handler(
         CallbackQueryHandler(handle_buy_callback, pattern="^buy$")
     )
-    application.add_handler(CallbackQueryHandler(free_menu, pattern="^free$"))
-
-    # Airtime number handler
     application.add_handler(
-        MessageHandler(
-            filters.TEXT & (~filters.COMMAND),
-            airtime_number_handler,
-        )
+        CallbackQueryHandler(free_menu, pattern="^free$")
     )
 
-    # Fallback
+    # Fallback (generic catch-all message handler)
     application.add_handler(
         MessageHandler(
             filters.ALL,
