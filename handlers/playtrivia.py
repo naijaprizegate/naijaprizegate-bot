@@ -21,8 +21,8 @@ from telegram.ext import (
 
 from helpers import get_or_create_user
 from utils.questions_loader import get_random_question
-from services.playtrivia import reward_logic  # ⚠️ Rename later to something like reward_logic
-from db import get_async_session
+from services.playtrivia import reward_logic  
+from db import get_async_session, AsyncSessionLocal
 from models import GameState
 from handlers.payments import handle_buy_callback
 from handlers.free import free_menu
