@@ -30,6 +30,7 @@ from handlers.core import ask_phone
 from utils.signer import generate_signed_token
 from services.airtime_service import create_pending_airtime_payout_and_prompt
 
+
 logger = logging.getLogger(__name__)
 
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
@@ -446,11 +447,21 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
             reply_markup=choice_keyboard,
         )
 
+
+
     # 🎁 NEW Airtime Reward Flow — Button-based claim only!
     if outcome.startswith("airtime_"):
         reward_amount = int(outcome.split("_")[1])
         tg_id = update.effective_user.id
         username = update.effective_user.username
+
+        # Fetch DB user ID (IMPORTANT)
+        async with AsyncSessionLocal() as session:
+            res = await session.execute(
+                text("SELECT id FROM users WHERE tg_id = :tg"), {"tg": tg_id}
+            )
+            row = res.first()
+            db_user_id = row[0] if row else None
 
         async with AsyncSessionLocal() as session:
             async with session.begin():
@@ -473,8 +484,8 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
                 row = res.first()
                 current_premium_spins = row[0] if row else 1
 
-                # Create pending payout + Show claim button
-                payout_id = await create_pending_airtime_payout_and_prompt(
+                # Create pending payout + SHOW BUTTON MESSAGE
+                await create_pending_airtime_payout_and_prompt(
                     session=session,
                     update=update,
                     user_id=db_user_id,
@@ -483,14 +494,10 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
                     total_premium_spins=current_premium_spins
                 )
 
-        # Update the wheel spin message
-        return await msg.edit_text(
-            f"🎉 You unlocked an airtime bonus of ₦{reward_amount} 🎉\n\n"
-            "👇 Tap the button below to claim your reward.",
-            parse_mode="Markdown"
-        )
+        # Do NOT send another message here!
+        return
 
-
+    
     # 🎧 EARPODS (campaign reward)
     if outcome == "earpod":
         prize_label = "Wireless Earpods"
