@@ -398,6 +398,26 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
     player_name = tg_user.first_name or "Player"
 
     # ============================================================
+    # 🆕 Ensure we have the DB user UUID (needed for payout tables)
+    # ============================================================
+    tg_id = tg_user.id
+
+    async with AsyncSessionLocal() as session:
+        res = await session.execute(
+            text("SELECT id FROM users WHERE tg_id = :tg"),
+            {"tg": tg_id}
+        )
+        row_user = res.first()
+        db_user_id = row_user[0] if row_user else None
+
+        if not db_user_id:
+            logger.error(f"⚠️ DB user not found for tg_id={tg_id}")
+            return await msg.edit_text(
+                "⚠️ Could not verify account details. Try again?",
+                parse_mode="Markdown"
+            )
+
+    # ============================================================
     # 🎯 OUTCOME HANDLING (User-facing text = promotional rewards, not gambling)
     # ============================================================
 
