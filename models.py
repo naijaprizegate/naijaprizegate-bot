@@ -25,6 +25,12 @@ class User(Base):
     tries_paid = Column(Integer, default=0)
     tries_bonus = Column(Integer, default=0)
 
+    # Premium spins remaining for gameplay
+    premium_spins = Column(Integer, default=0, nullable=False)
+
+    # Lifetime premium spins for milestone tracking (e.g. airtime rewards)
+    total_premium_spins = Column(Integer, default=0, nullable=False)
+
     referred_by = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"))
     created_at = Column(TIMESTAMP, server_default=func.now())
     is_admin = Column(Boolean, default=False, nullable=False)
