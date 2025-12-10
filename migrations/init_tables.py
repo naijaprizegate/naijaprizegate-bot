@@ -62,6 +62,8 @@ def main():
             full_name TEXT,
             tries_paid INT DEFAULT 0,
             tries_bonus INT DEFAULT 0,
+            premium_spins INT NOT NULL DEFAULT 0,
+            total_premium_spins INT NOT NULL DEFAULT 0,
             is_admin BOOLEAN DEFAULT FALSE NOT NULL,
             referred_by UUID REFERENCES users(id) ON DELETE SET NULL,
             choice TEXT,
