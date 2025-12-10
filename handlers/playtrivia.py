@@ -457,7 +457,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
                 payout_id = await create_pending_airtime_payout_and_prompt(
                     session=session,
                     update=update,
-                    user_id=db_user_id,
+                    user_id=user_id,
                     tg_id=tg_id,
                     username=username,
                     total_premium_spins=current_premium_spins
