@@ -1,6 +1,6 @@
-#================================================================
+#=================================================================
 # models.py (cleaned + expanded with trivia + spin reward models)
-#================================================================
+#=================================================================
 import uuid
 from uuid import uuid4
 from sqlalchemy import (
@@ -263,28 +263,46 @@ class SpinResult(Base):
 
 
 # =================================================================
-# NEW TABLE 4 — Airtime Payouts (UPDATED)
+# NEW TABLE 4: AIRTIME PAYOUTS — CLEANED, SAFE & FULLY COMPATIBLE MODEL
 # =================================================================
 class AirtimePayout(Base):
     __tablename__ = "airtime_payouts"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
 
+    # User reference
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
     tg_id = Column(BigInteger, nullable=False)
 
-    phone_number = Column(String, nullable=False)
-    amount = Column(Integer, default=100)  # default airtime reward
+    # Phone is unknown at creation → MUST be nullable
+    phone_number = Column(String, nullable=True)
 
-    status = Column(String, default="pending")  # pending / failed / completed
+    # Airtime amount (₦50, ₦100 etc. from milestones)
+    amount = Column(Integer, nullable=False)
+
+    # ------------------------------------------------------------------
+    # Unified status states used across system:
+    #
+    # pending_claim   → payout created, waiting for user to enter phone
+    # claim_phone_set → phone saved, checkout link generated
+    # failed          → checkout or webhook failed
+    # completed       → webhook confirmed airtime delivered
+    # ------------------------------------------------------------------
+    status = Column(String, nullable=False, default="pending_claim")
+
     created_at = Column(TIMESTAMP(timezone=True), server_default=func.now())
     sent_at = Column(TIMESTAMP(timezone=True), nullable=True)
 
-    # -----------------------------------------------------------
-    # 🆕 Added columns for retry logic
-    # -----------------------------------------------------------
+    # Retry logic (future feature)
     retry_count = Column(Integer, nullable=False, server_default="0")
     last_retry_at = Column(TIMESTAMP(timezone=True), nullable=True)
+
+    # ------------------------------------------------------------------
+    # NEW: Required by your webhook
+    # ------------------------------------------------------------------
+    flutterwave_tx_ref = Column(String, nullable=True)
+    provider_response = Column(JSON, nullable=True)
+    completed_at = Column(TIMESTAMP(timezone=True), nullable=True)
 
 
 # =================================================================
