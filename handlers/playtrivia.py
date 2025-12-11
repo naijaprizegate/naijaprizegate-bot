@@ -339,27 +339,31 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
 
 # ================================================================
 # STEP 3 — Reward Calculation After Trivia
-# (Previously “spin”; now treated as reward processing / animation)
+# (Spin animation FIRST, then reveal reward)
 # ================================================================
 async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    tg_user = update.effective_user
 
-    # Extract state once & clear ASAP
+    tg_user = update.effective_user
+    tg_id = tg_user.id
+    username = tg_user.username
+    player_name = tg_user.first_name or "Player"
+
+    # Extract premium flag
     is_premium = context.user_data.pop("is_premium_reward", False)
 
-    # Perform reward logic in DB
+    # --------------------------------------------------------------
+    # 1️⃣ RUN REWARD LOGIC (DB Update)
+    # --------------------------------------------------------------
     async with get_async_session() as session:
         try:
             async with session.begin():
-                user = await get_or_create_user(
-                    session, tg_id=tg_user.id, username=tg_user.username
-                )
+                user = await get_or_create_user(session, tg_id=tg_id, username=username)
 
-                # ⚠️ reward_logic should eventually be renamed & adjusted
+                # Outcome = earpod / speaker / airtime_X / Top-Tier Campaign Reward / none
                 outcome = await reward_logic(session, user, is_premium)
                 await session.refresh(user)
 
-                # Cycle reset logic (internal accounting)
+                # Internal cycle reset
                 if outcome == "Top-Tier Campaign Reward":
                     gs = await session.get(GameState, 1)
                     if gs:
@@ -370,39 +374,39 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
         except Exception:
             logger.exception("Reward processing failure", exc_info=True)
             return await update.effective_message.reply_text(
-                "⚠️ Reward processing error. Please try another round.",
+                "⚠️ Reward processing error. Please try again.",
                 parse_mode="HTML",
             )
-    # 🆕 If user must supply phone number first, redirect now
+
+    # Special redirect: phone is required BEFORE rewards
     if outcome == "ask_phone":
         return await ask_phone(update, context)
-    
-    # Reward animation (now framed as “processing your reward”)
+
+    # --------------------------------------------------------------
+    # 2️⃣ SPIN ANIMATION (ALWAYS before showing ANY reward)
+    # --------------------------------------------------------------
     msg = await update.effective_message.reply_text(
         "🔄 *Evaluating your earned reward...*",
         parse_mode="Markdown",
     )
 
-    # Simple animation using neutral icons
     symbols = ["⭐", "🎯", "💫", "🎉", "📚", "🎁", "🏅", "🔔"]
     last_frame = None
-    for _ in range(random.randint(6, 10)):
+
+    for _ in range(random.randint(7, 12)):
         frame = " ".join(random.choice(symbols) for _ in range(3))
         if frame != last_frame:
             try:
                 await msg.edit_text(f"🔄 {frame}")
-            except Exception:
+            except:
                 pass
             last_frame = frame
-        await asyncio.sleep(0.4)
 
-    player_name = tg_user.first_name or "Player"
+        await asyncio.sleep(0.35)
 
-    # ============================================================
-    # 🆕 Ensure we have the DB user UUID (needed for payout tables)
-    # ============================================================
-    tg_id = tg_user.id
-
+    # --------------------------------------------------------------
+    # 3️⃣ FETCH DB USER UUID (required for payouts)
+    # --------------------------------------------------------------
     async with AsyncSessionLocal() as session:
         res = await session.execute(
             text("SELECT id FROM users WHERE tg_id = :tg"),
@@ -411,100 +415,94 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
         row_user = res.first()
         db_user_id = row_user[0] if row_user else None
 
-        if not db_user_id:
-            logger.error(f"⚠️ DB user not found for tg_id={tg_id}")
-            return await msg.edit_text(
-                "⚠️ Could not verify account details. Try again?",
-                parse_mode="Markdown"
-            )
+    if not db_user_id:
+        logger.error(f"⚠️ DB user not found for tg_id={tg_id}")
+        return await msg.edit_text(
+            "⚠️ Could not verify your account. Try again?",
+            parse_mode="Markdown",
+        )
 
-    # ============================================================
-    # 🎯 OUTCOME HANDLING (User-facing text = promotional rewards, not gambling)
-    # ============================================================
+    # ===============================================================
+    # 4️⃣ REWARD OUTCOMES (after animation)
+    # ===============================================================
 
-    # 🏆 TOP-TIER REWARD (internal: "Top-Tier Campaign Reward")
+    # --------------------------------------------------------------
+    # 🏆 TOP-TIER REWARD
+    # --------------------------------------------------------------
     if outcome == "Top-Tier Campaign Reward":
+
         await msg.edit_text(
             f"🎉 *Outstanding performance, {player_name}!* \n\n"
-            "You’ve unlocked a *top-tier campaign reward* for this round\\.\n\n"
-            "Please choose your preferred reward option below:",
+            "You’ve unlocked a *top-tier campaign reward*.\n\n"
+            "Please choose your preferred reward below:",
             parse_mode="Markdown",
         )
 
-        choice_keyboard = InlineKeyboardMarkup(
-            [
-                [InlineKeyboardButton("📱 iPhone 16 Pro Max", callback_data="choose_iphone16")],
-                [InlineKeyboardButton("📱 iPhone 17 pro Max", callback_data="choose_iphone17")],
-                [InlineKeyboardButton("📱 Samsung Flip 7", callback_data="choose_flip7")],
-                [InlineKeyboardButton("📱 Samsung S25 Ultra", callback_data="choose_s25ultra")],
-            ]
-        )
+        choice_keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("📱 iPhone 16 Pro Max", callback_data="choose_iphone16")],
+            [InlineKeyboardButton("📱 iPhone 17 Pro Max", callback_data="choose_iphone17")],
+            [InlineKeyboardButton("📱 Samsung Flip 7", callback_data="choose_flip7")],
+            [InlineKeyboardButton("📱 Samsung S25 Ultra", callback_data="choose_s25ultra")],
+        ])
 
         return await msg.reply_text(
-            "🎁 Select a reward option 👇\n\n"
-            "📌 *Rewards are skill-based and subject to campaign rules\\.*",
-            parse_mode="Markdown",
+            "🎁 Select your reward option 👇",
             reply_markup=choice_keyboard,
+            parse_mode="Markdown",
         )
 
-
-
-    # 🎁 NEW Airtime Reward Flow — Button-based claim only!
+    # --------------------------------------------------------------
+    # 🎁 AIRTIME MILESTONE REWARD
+    # --------------------------------------------------------------
     if outcome.startswith("airtime_"):
         reward_amount = int(outcome.split("_")[1])
-        tg_id = update.effective_user.id
-        username = update.effective_user.username
 
-        # Fetch DB user ID (IMPORTANT)
-        async with AsyncSessionLocal() as session:
-            res = await session.execute(
-                text("SELECT id FROM users WHERE tg_id = :tg"), {"tg": tg_id}
-            )
-            row = res.first()
-            db_user_id = row[0] if row else None
-
+        # Update milestone counters + create payout
         async with AsyncSessionLocal() as session:
             async with session.begin():
 
-                # Update premium spin counters
                 await session.execute(
                     text("""
-                        UPDATE users
+                        UPDATE users 
                         SET total_premium_spins = total_premium_spins + 1
                         WHERE tg_id = :tg
                     """),
                     {"tg": tg_id}
                 )
 
-                # Fetch updated milestone count
                 res = await session.execute(
                     text("SELECT total_premium_spins FROM users WHERE tg_id = :tg"),
                     {"tg": tg_id}
                 )
-                row = res.first()
-                current_premium_spins = row[0] if row else 1
 
-                # Create pending payout + SHOW BUTTON MESSAGE
+                row = res.first()
+                current_spins = row[0] if row else 1
+
                 await create_pending_airtime_payout_and_prompt(
                     session=session,
                     update=update,
                     user_id=db_user_id,
                     tg_id=tg_id,
                     username=username,
-                    total_premium_spins=current_premium_spins
+                    total_premium_spins=current_spins,
                 )
 
-        # Do NOT send another message here!
-        return
+        # Replace the animation message with final text
+        return await msg.edit_text(
+            f"🎉 You unlocked an airtime bonus of ₦{reward_amount}!\n\n"
+            "👇 Tap the button below to claim your reward.",
+            parse_mode="Markdown",
+        )
 
-    
-    # 🎧 EARPODS (campaign reward)
+    # --------------------------------------------------------------
+    # 🎧 EARPODS
+    # --------------------------------------------------------------
     if outcome == "earpod":
         prize_label = "Wireless Earpods"
 
         await msg.edit_text(
             f"🎉 *You unlocked a campaign reward:* {prize_label} 🎧\n\n"
-            "📌 Rewards are promotional and subject to verification.",
+            "📌 Reward is promotional and subject to verification.",
             parse_mode="Markdown",
         )
 
@@ -512,91 +510,72 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
         try:
             await context.bot.send_message(
                 ADMIN_USER_ID,
-                f"🎧 *Earpods Reward*\nUser: {tg_user.id} (@{tg_user.username})",
+                f"🎧 Earpods Reward — User {tg_id} (@{username})"
             )
-        except Exception:
+        except:
             pass
 
-        if not RENDER_EXTERNAL_URL:
-            return await msg.reply_text(
-                "⚠️ Delivery form unavailable at the moment. Please contact support.",
-                parse_mode="HTML",
-            )
-
+        # Set choice & send form
         async with get_async_session() as session:
             async with session.begin():
-                db_user = await get_or_create_user(
-                    session, tg_id=tg_user.id, username=tg_user.username
-                )
+                db_user = await get_or_create_user(session, tg_id=tg_id, username=username)
                 db_user.choice = prize_label
-                await session.commit()
 
-        token = generate_signed_token(
-            tgid=tg_user.id, choice=prize_label, expires_seconds=3600
-        )
+        token = generate_signed_token(tgid=tg_id, choice=prize_label, expires_seconds=3600)
         link = f"{RENDER_EXTERNAL_URL}/winner-form?token={token}"
 
         return await msg.reply_text(
-            f"🎉 Please complete your delivery details for your <b>{prize_label}</b>:\n\n"
+            f"🎉 Please complete your delivery details:\n\n"
             f"<a href='{link}'>📝 Fill Delivery Form</a>",
             parse_mode="HTML",
             disable_web_page_preview=True,
         )
 
-    # 🔊 BLUETOOTH SPEAKER (campaign reward)
+    # --------------------------------------------------------------
+    # 🔊 SPEAKER
+    # --------------------------------------------------------------
     if outcome == "speaker":
         prize_label = "Bluetooth Speaker"
 
         await msg.edit_text(
             f"🎉 *You unlocked a campaign reward:* {prize_label} 🔊\n\n"
-            "📌 Rewards are promotional and subject to verification.",
+            "📌 Reward is promotional and subject to verification.",
             parse_mode="Markdown",
         )
 
         try:
             await context.bot.send_message(
                 ADMIN_USER_ID,
-                f"🔊 *Speaker Reward*\nUser: {tg_user.id} (@{tg_user.username})",
+                f"🔊 Speaker Reward — User {tg_id} (@{username})"
             )
-        except Exception:
+        except:
             pass
-
-        if not RENDER_EXTERNAL_URL:
-            return await msg.reply_text(
-                "⚠️ Delivery form unavailable at the moment. Please contact support.",
-                parse_mode="HTML",
-            )
 
         async with get_async_session() as session:
             async with session.begin():
-                db_user = await get_or_create_user(
-                    session, tg_id=tg_user.id, username=tg_user.username
-                )
+                db_user = await get_or_create_user(session, tg_id=tg_id, username=username)
                 db_user.choice = prize_label
-                await session.commit()
 
-        token = generate_signed_token(
-            tgid=tg_user.id, choice=prize_label, expires_seconds=3600
-        )
+        token = generate_signed_token(tgid=tg_id, choice=prize_label, expires_seconds=3600)
         link = f"{RENDER_EXTERNAL_URL}/winner-form?token={token}"
 
         return await msg.reply_text(
-            f"🎉 Please complete your delivery details for your <b>{prize_label}</b>:\n\n"
+            f"🎉 Please complete your delivery details:\n\n"
             f"<a href='{link}'>📝 Fill Delivery Form</a>",
             parse_mode="HTML",
             disable_web_page_preview=True,
         )
 
-    # ============================================================
-    # No tangible reward this attempt
-    # ============================================================
+    # --------------------------------------------------------------
+    # 5️⃣ NO REWARD — show neutral final result
+    # --------------------------------------------------------------
     final = " ".join(random.choice(["⭐", "📚", "🎯", "💫"]) for _ in range(3))
 
-    await msg.edit_text(
+    return await msg.edit_text(
         f"{final}\n\n"
-        "ℹ️ No campaign reward unlocked on this attempt.\n\n"
-        "Keep playing trivia to improve your stats and leaderboard position! 🏅\n\n"
-        "You can click on /start to go back to the main menu",
+        "ℹ️ No campaign reward unlocked this time.\n\n"
+        "Keep playing trivia to boost your stats! 🏅\n\n"
+        "Tap /start to return to the menu.",
         parse_mode="Markdown",
         reply_markup=make_play_keyboard(),
     )
