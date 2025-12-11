@@ -228,14 +228,6 @@ def register_handlers(application):
     application.add_handler(CommandHandler("terms", terms_handler))  # NEW
     application.add_handler(CommandHandler("faq", faq_handler))      # NEW
 
-    # Phone capture (numeric-ish text, e.g. 08123456789 or +234...)
-    application.add_handler(
-        MessageHandler(
-            filters.Regex(r"^[0-9+ ]+$"),
-            handle_phone
-        )
-    )
-
     # Callback menu buttons
     application.add_handler(CallbackQueryHandler(terms_handler, pattern="^terms$"))  # NEW
     application.add_handler(CallbackQueryHandler(faq_handler, pattern="^faq$"))      # NEW
