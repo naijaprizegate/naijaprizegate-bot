@@ -343,18 +343,20 @@ async def flutterwave_webhook(
 
     
     # ======================================================================
-    # 🟦 AIRTIME CLAIM — Hosted Checkout Success Confirmation
+    # 🟦 AIRTIME CLAIM — Hosted Checkout Success / Failure Webhook
     # ======================================================================
     event_type = (payload.get("event") or payload.get("event.type") or "").lower().strip()
     logger.info(f"🔎 [FW WEBHOOK][AIRTIME?] event_type={event_type} tx_ref={tx_ref}")
 
-    # Hosted Checkout does NOT include product="airtime"
-    # We detect airtime by TX_REF prefix:  AIRTIME-<payout_id>
+    # Airtime payouts use TX_REF format: AIRTIME-<payout_id>
     if tx_ref.startswith("AIRTIME-"):
         payout_id = tx_ref.replace("AIRTIME-", "").strip()
 
         logger.info(f"📨 [FW WEBHOOK][AIRTIME] payout_id={payout_id}")
 
+        # ----------------------------------------------------------------------
+        # Look up payout record
+        # ----------------------------------------------------------------------
         async with session.begin():
             res = await session.execute(
                 text("""
@@ -372,32 +374,50 @@ async def flutterwave_webhook(
                 return JSONResponse({"status": "ignored"})
 
             payout_id, current_status, tg_id, phone, amount = row
-            normalized = fw_status.lower().strip()
-            is_success = normalized in ("success", "successful", "completed")
 
-            # Idempotent double webhook protection 🚫
+            # Normalize FW status
+            normalized_fw_status = (fw_status or "").lower().strip()
+            is_success = normalized_fw_status in ("success", "successful", "completed")
+
+            # ----------------------------------------------------------------------
+            # Idempotency — avoid double-completing payouts
+            # ----------------------------------------------------------------------
             if current_status == "completed":
                 logger.info(f"🔁 Duplicate Airtime webhook ignored | {tx_ref}")
                 return JSONResponse({"status": "duplicate"})
 
-            # If Flutterwave webhook indicates failure
+            # ----------------------------------------------------------------------
+            # Failure handling
+            # ----------------------------------------------------------------------
             if not is_success:
                 await session.execute(
-                    text("UPDATE airtime_payouts SET status='failed' WHERE id=:pid"),
-                    {"pid": payout_id},
+                    text("""
+                        UPDATE airtime_payouts
+                        SET status='failed',
+                            flutterwave_tx_ref=:ref,
+                            provider_response=:resp::jsonb
+                        WHERE id=:pid
+                    """),
+                    {
+                        "pid": payout_id,
+                        "ref": tx_ref,
+                        "resp": json.dumps(payload)
+                    },
                 )
                 logger.warning(
-                    f"❌ Airtime webhook FAILURE | payout_id={payout_id} "
-                    f"fw_status={fw_status}"
+                    f"❌ Airtime webhook FAILURE | payout_id={payout_id} | fw_status={fw_status}"
                 )
                 return JSONResponse({"status": "failed"})
 
-            # Normalize phone masking (•••••6789)
-            masked = "Unknown"
+            # ----------------------------------------------------------------------
+            # Success — mark payout as completed
+            # ----------------------------------------------------------------------
+            # Mask phone number for notifications
             if phone and len(phone) >= 4:
                 masked = phone[:-4].rjust(len(phone), "•")
+            else:
+                masked = "Unknown"
 
-            # Mark payout as completed 🎯
             await session.execute(
                 text("""
                     UPDATE airtime_payouts
@@ -407,13 +427,19 @@ async def flutterwave_webhook(
                         completed_at=NOW()
                     WHERE id=:pid
                 """),
-                {"pid": payout_id, "ref": tx_ref, "resp": json.dumps(payload)},
+                {
+                    "pid": payout_id,
+                    "ref": tx_ref,
+                    "resp": json.dumps(payload)
+                },
             )
 
-        # Telegram notifications 🚀
+        # ----------------------------------------------------------------------
+        # Telegram Notifications
+        # ----------------------------------------------------------------------
         bot = Bot(token=BOT_TOKEN)
 
-        # User notification 🎉
+        # USER success message
         try:
             await bot.send_message(
                 tg_id,
@@ -427,9 +453,9 @@ async def flutterwave_webhook(
                 parse_mode="Markdown",
             )
         except Exception as e:
-            logger.warning(f"⚠ Could not send message to user | {e}")
+            logger.warning(f"⚠ Could not send user notification | {e}")
 
-        # Admin alert 👑
+        # ADMIN alert
         try:
             await bot.send_message(
                 ADMIN_USER_ID,
@@ -449,7 +475,7 @@ async def flutterwave_webhook(
         logger.info(f"💚 Airtime claim SUCCESS | payout_id={payout_id}")
         return JSONResponse({"status": "airtime_success"})
 
-
+    
     # ==========================================================================
     # 💳 PAYMENT SECTION — TRIVIA CREDITS
     # ==========================================================================
@@ -1003,3 +1029,4 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
+
