@@ -1,6 +1,6 @@
-# ==================================================================
+# ===============================================================
 # services/playtrivia.py (SKILL-BASED, LEADERBOARD Top-Tier Campaign Reward VERSION)
-# ==================================================================
+# ===============================================================
 import os
 import logging
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -20,7 +20,7 @@ WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "50000"))
 # Each key = number of premium (correct) spins a user has reached in total.
 # When user hits exactly that count, they get the configured reward.
 AIRTIME_MILESTONES = {
-    1: 50,     # at 1 correct premium reward tiers → ₦50 airtime
+    1: 50,    # at 1 correct premium reward tiers → ₦50 airtime
     25: 100,   # at 25 correct premium reward tiers → ₦100 airtime
     50: 200,   # at 50 correct premium reward tiers → ₦200 airtime
 }
@@ -213,25 +213,6 @@ async def apply_milestone_reward(
     if total_premium_rewards in AIRTIME_MILESTONES:
         amount = AIRTIME_MILESTONES[total_premium_rewards]
 
-        if not user.phone_number:
-            logger.warning(
-                "Airtime milestone reached but no phone number on file: "
-                f"user_id={user.id}, spins={total_premium_rewards}"
-            )
-            return "ask_phone"
-
-        await session.execute(
-            text("""
-                INSERT INTO airtime_payouts (user_id, tg_id, phone_number, amount, status)
-                VALUES (:u, :tg, :phone, :amt, 'pending')
-            """),
-            {
-                "u": str(user.id),
-                "tg": user.tg_id,
-                "phone": user.phone_number,
-                "amt": amount,
-            }
-        )
         return f"airtime_{amount}"
 
     # 2) Non-airtime milestones (gadgets, accessories)
@@ -384,4 +365,3 @@ async def reward_logic(
 
     # No milestone hit, no Top-Tier Campaign Reward for this user → no reward this spin
     return "lose"
-
