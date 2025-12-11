@@ -252,28 +252,29 @@ def main():
             user_id UUID REFERENCES users(id) ON DELETE CASCADE,
             tg_id BIGINT NOT NULL,
 
-            -- Masked but real phone used for payout
-            phone_number TEXT NOT NULL,
+            -- Phone number becomes available ONLY after user enters it
+            phone_number TEXT,
 
-            -- Reward amount (₦)
-            amount INT NOT NULL DEFAULT 100,
+            -- Airtime reward amount (system will always insert explicitly)
+            amount INT NOT NULL,
 
-            -- payout status: pending → completed / failed
-            status TEXT NOT NULL DEFAULT 'pending',
+            -- Unified status system
+            -- pending_claim → waiting for phone
+            -- claim_phone_set → phone saved, checkout generated
+            -- failed → checkout/webhook failure
+            -- completed → webhook success
+            status TEXT NOT NULL DEFAULT 'pending_claim',
 
-            -- Flutterwave transaction ref for traceability & admin audit
+            -- Flutterwave fields
             flutterwave_tx_ref TEXT,
+            provider_response JSONB,
 
-            -- Full provider JSON response saved for accountability
-            provider_response JSONB DEFAULT '{}'::jsonb,
-
-            -- 🆕 Retry support
+            -- Retry logic (optional future upgrade)
             retry_count INT NOT NULL DEFAULT 0,
             last_retry_at TIMESTAMPTZ,
 
             created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
             sent_at TIMESTAMPTZ,
-            -- When Flutterwave confirms success
             completed_at TIMESTAMPTZ
         );
         """)
