@@ -455,40 +455,33 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
 
         # Update milestone counters + create payout
         async with AsyncSessionLocal() as session:
-            async with session.begin():
 
-                await session.execute(
-                    text("""
-                        UPDATE users 
-                        SET total_premium_spins = total_premium_spins + 1
-                        WHERE tg_id = :tg
-                    """),
-                    {"tg": tg_id}
-                )
+            await session.execute(
+                text("""
+                    UPDATE users 
+                    SET total_premium_spins = total_premium_spins + 1
+                    WHERE tg_id = :tg
+                """),
+                {"tg": tg_id}
+            )
+            await session.commit()  # commit update
 
-                res = await session.execute(
-                    text("SELECT total_premium_spins FROM users WHERE tg_id = :tg"),
-                    {"tg": tg_id}
-                )
+            res = await session.execute(
+                text("SELECT total_premium_spins FROM users WHERE tg_id = :tg"),
+                {"tg": tg_id}
+            )
+            row = res.first()
+            current_spins = row[0] if row else 1
 
-                row = res.first()
-                current_spins = row[0] if row else 1
+            await create_pending_airtime_payout_and_prompt(
+                session=session,
+                update=update,
+                user_id=db_user_id,
+                tg_id=tg_id,
+                username=username,
+                total_premium_spins=current_spins,
+            )
 
-                await create_pending_airtime_payout_and_prompt(
-                    session=session,
-                    update=update,
-                    user_id=db_user_id,
-                    tg_id=tg_id,
-                    username=username,
-                    total_premium_spins=current_spins,
-                )
-
-        # Replace the animation message with final text
-        return await msg.edit_text(
-            f"🎉 You unlocked an airtime bonus of ₦{reward_amount}!\n\n"
-            "👇 Tap the button below to claim your reward.",
-            parse_mode="Markdown",
-        )
 
     # --------------------------------------------------------------
     # 🎧 EARPODS
