@@ -29,7 +29,6 @@ from handlers.free import free_menu
 from utils.signer import generate_signed_token
 from services.airtime_service import create_pending_airtime_payout_and_prompt
 
-
 logger = logging.getLogger(__name__)
 
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
@@ -382,7 +381,6 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
                     # ===========================================================
                     # ⭐ MILESTONE CHECK → 1, 25, 50 spins = Airtime reward
                     # ===========================================================
-                    from services.airtime_service import create_pending_airtime_payout_and_prompt
 
                     await create_pending_airtime_payout_and_prompt(
                         session=session,
@@ -396,6 +394,9 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
                     # Must commit before sending UI messages
                     await session.commit()
 
+                    #⭐ FIX: STOP processing further reward outcomes
+                    return
+                
                 # ===========================================================
                 # ♻️ TOP-TIER CYCLE RESET
                 # ===========================================================
