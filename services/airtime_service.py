@@ -233,6 +233,9 @@ async def handle_claim_airtime_button(update: Update, context: ContextTypes.DEFA
     query = update.callback_query
     await query.answer()
 
+    # 🔥 DEBUG LOG HERE — confirms handler is firing
+    logger.info("✅ claim_airtime callback received")
+    
     # -------------------------------------------------------
     # Validate callback format: "claim_airtime:<payout_id>"
     # -------------------------------------------------------
