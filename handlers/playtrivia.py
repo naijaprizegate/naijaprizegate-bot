@@ -26,7 +26,6 @@ from db import get_async_session, AsyncSessionLocal
 from models import GameState
 from handlers.payments import handle_buy_callback
 from handlers.free import free_menu
-from handlers.core import ask_phone
 from utils.signer import generate_signed_token
 from services.airtime_service import create_pending_airtime_payout_and_prompt
 
@@ -378,10 +377,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
                 parse_mode="HTML",
             )
 
-    # Special redirect: phone is required BEFORE rewards
-    if outcome == "ask_phone":
-        return await ask_phone(update, context)
-
+    
     # --------------------------------------------------------------
     # 2️⃣ SPIN ANIMATION (ALWAYS before showing ANY reward)
     # --------------------------------------------------------------
