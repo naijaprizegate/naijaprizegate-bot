@@ -1,6 +1,6 @@
-# ===========================================================
+# ==============================================================
 # handlers/core.py — Compliance-Safe Version (Updated)
-# ===========================================================
+# ===============================================================
 import re
 import logging
 
@@ -69,105 +69,6 @@ async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         await update.message.reply_text(text, parse_mode="HTML")
 
-
-# ===============================================================
-# 📱 PHONE CAPTURE FOR AIRTIME REWARDS
-# ===============================================================
-async def ask_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """
-    Ask the user for their Nigerian phone number when an airtime
-    reward is available but no phone is on file.
-    """
-    target = update.message or update.callback_query
-
-    if isinstance(target, type(update.callback_query)):
-        # If called from a callback query, reply in chat
-        await update.callback_query.answer()
-        await update.callback_query.message.reply_text(
-            "🎊 Hurray! You just earned FREE airtime! 🎊\n\n"
-            "📱 To receive your airtime reward, please send your *11-digit Nigerian phone number*.\n"
-            "Example: 08123456789",
-            parse_mode="Markdown"
-        )
-    else:
-        await update.message.reply_text(
-            "🎊 Hurray! You just earned FREE airtime! 🎊\n\n"
-            "📱 To receive your airtime reward, please send your *11-digit Nigerian phone number*.\n"
-            "Example: 08123456789",
-            parse_mode="Markdown"
-        )
-
-    context.user_data["awaiting_phone"] = True
-
-# ------------------------------------------------
-# Handle Phone number collection
-# -------------------------------------------------
-async def handle_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """
-    Handle phone number input when the user is being asked
-    to provide a line for airtime credit.
-    """
-    # Only act if we are expecting a phone number
-    if not context.user_data.get("awaiting_phone"):
-        return
-
-    phone = (update.message.text or "").strip()
-
-    if not validate_phone(phone):
-        await update.message.reply_text(
-            "⚠️ Invalid number format.\n"
-            "Please enter a valid Nigerian phone number e.g.\n*08123456789*",
-            parse_mode="Markdown"
-        )
-        return
-
-    provider = detect_provider(phone)
-    provider_txt = provider or "Your Network"
-
-    # Save phone number to DB
-    async with get_async_session() as session:
-        tg_user = update.effective_user
-        db_user = await get_or_create_user(
-            session,
-            tg_id=tg_user.id,
-            username=tg_user.username,
-        )
-        db_user.phone_number = phone
-        await session.commit()
-
-        # ⬇️ Create payout row if missing (critical fix)
-        await session.execute(text("""
-            INSERT INTO airtime_payouts (user_id, tg_id, phone_number, amount, status)
-            SELECT :uid, :tg_id, :phone, 100, 'pending'
-            WHERE NOT EXISTS (
-                SELECT 1 FROM airtime_payouts WHERE user_id = :uid
-            )
-        """), {
-            "uid": db_user.id,
-            "tg_id": tg_user.id,
-            "phone": phone,
-        })
-
-        # If payout exists but was waiting for phone → reactivate it
-        await session.execute(text("""
-            UPDATE airtime_payouts
-            SET phone_number = :phone,
-                status = 'pending',
-                last_retry_at = NULL
-            WHERE user_id = :uid
-              AND status = 'pending_phone'
-        """), {"phone": phone, "uid": db_user.id})
-
-        await session.commit()
-
-    context.user_data["awaiting_phone"] = False
-
-    await update.message.reply_text(
-        f"🎉 Great! {provider_txt} line saved successfully!\n\n"
-        "🕒 We are now processing your airtime reward.\n"
-        "You will receive a confirmation shortly 📲",
-        parse_mode="Markdown"
-    )
 
 
 # ===============================================================
