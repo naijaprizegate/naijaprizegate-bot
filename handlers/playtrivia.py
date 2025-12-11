@@ -276,10 +276,10 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
             parse_mode="Markdown",
         )
 
-    # 🔒 LOCK NOW — prevents double clicking
+    # 🔒 LOCK — prevents double clicking
     context.user_data["trivia_answered"] = True
 
-    # ⛔ Cancel countdown timeout task
+    # ⛔ Cancel countdown timer task if active
     timer = context.user_data.pop("trivia_timer", None)
     if isinstance(timer, asyncio.Task) and not timer.done():
         try:
@@ -287,15 +287,13 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
         except Exception:
             pass
 
-    # 🎯 Evaluate Answer (uses saved question object)
+    # 🎯 Evaluate Answer (extract data)
     _, qid, selected = query.data.split("_")
 
     question = context.user_data.get("pending_trivia_question")
-
     if not question:
         return await query.edit_message_text(
-            "⚠️ Error: Trivia round has expired or data is missing.\n\n"
-            "Please start a new round.",
+            "⚠️ Error: Trivia round expired or missing data.\n\nPlease start a new round.",
             parse_mode="Markdown",
         )
 
@@ -304,12 +302,10 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
 
     is_correct = selected == correct_letter
 
-    # Save reward tier status
-    # True  → premium/high tier reward
-    # False → standard/basic reward
+    # Save premium tier flag for next step
     context.user_data["is_premium_reward"] = is_correct
 
-    # 📝 Respond to user (skill-focused language)
+    # 📝 Respond to user
     if is_correct:
         await query.edit_message_text(
             "🎯 *Correct!*\n\n"
@@ -317,24 +313,20 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
             "_Calculating your reward..._",
             parse_mode="Markdown",
         )
-        # CORRECT → continue immediately 🔥
         return await run_spin_after_trivia(update, context)
 
-    # INCORRECT → show correct answer then delay before reward
+    # INCORRECT
     await query.edit_message_text(
-        "🙈 *Not correct this time!*\n"
-        f"👉 *Correct answer:* `{correct_letter}` — *{correct_text}*\n\n"
+        "🙈 *Not correct!*\n"
+        f"👉 Correct answer: `{correct_letter}` — *{correct_text}*\n\n"
         "This attempt will use the *standard reward tier*.\n\n"
         "_Calculating your reward..._",
         parse_mode="Markdown",
     )
 
-    # Wait before starting reward logic so user sees this
     await asyncio.sleep(1.5)
 
-    # Continue to reward phase
-    await run_spin_after_trivia(update, context)
-
+    return await run_spin_after_trivia(update, context)
 
 # ================================================================
 # STEP 3 — Reward Calculation After Trivia
@@ -347,39 +339,83 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
     username = tg_user.username
     player_name = tg_user.first_name or "Player"
 
-    # Extract premium flag
+    # Extract premium flag (correct answer = True)
     is_premium = context.user_data.pop("is_premium_reward", False)
 
     # --------------------------------------------------------------
-    # 1️⃣ RUN REWARD LOGIC (DB Update)
+    # 1️⃣ RUN REWARD LOGIC + PREMIUM POINTS + MILESTONES
     # --------------------------------------------------------------
     async with get_async_session() as session:
         try:
             async with session.begin():
+                # Ensure user exists
                 user = await get_or_create_user(session, tg_id=tg_id, username=username)
 
-                # Outcome = earpod / speaker / airtime_X / Top-Tier Campaign Reward / none
+                # Core reward logic → earpod / speaker / airtime_X / none / top-tier
                 outcome = await reward_logic(session, user, is_premium)
                 await session.refresh(user)
 
-                # Internal cycle reset
+                # ===========================================================
+                # ⭐ PREMIUM POINT SYSTEM — Earn 1 premium spin per correct answer
+                # ===========================================================
+                if is_premium:
+                    logger.info(f"⭐ Correct answer by {tg_id} → +1 premium spin")
+
+                    await session.execute(
+                        text("""
+                            UPDATE users
+                            SET total_premium_spins = total_premium_spins + 1
+                            WHERE tg_id = :tg
+                        """),
+                        {"tg": tg_id}
+                    )
+
+                    # Fetch updated spin count
+                    res = await session.execute(
+                        text("SELECT total_premium_spins FROM users WHERE tg_id = :tg"),
+                        {"tg": tg_id}
+                    )
+                    current_spins = res.scalar()
+
+                    logger.info(f"🎯 Premium spins updated → {tg_id}: {current_spins}")
+
+                    # ===========================================================
+                    # ⭐ MILESTONE CHECK → 1, 25, 50 spins = Airtime reward
+                    # ===========================================================
+                    from services.airtime_service import create_pending_airtime_payout_and_prompt
+
+                    await create_pending_airtime_payout_and_prompt(
+                        session=session,
+                        update=update,
+                        user_id=user.id,
+                        tg_id=tg_id,
+                        username=username,
+                        total_premium_spins=current_spins,
+                    )
+
+                    # Must commit before sending UI messages
+                    await session.commit()
+
+                # ===========================================================
+                # ♻️ TOP-TIER CYCLE RESET
+                # ===========================================================
                 if outcome == "Top-Tier Campaign Reward":
                     gs = await session.get(GameState, 1)
                     if gs:
                         gs.current_cycle += 1
                         gs.paid_tries_this_cycle = 0
+                        logger.info("♻️ Top-tier reward triggered → Cycle reset")
                         await session.commit()
 
         except Exception:
-            logger.exception("Reward processing failure", exc_info=True)
+            logger.exception("Reward processing error", exc_info=True)
             return await update.effective_message.reply_text(
                 "⚠️ Reward processing error. Please try again.",
                 parse_mode="HTML",
             )
 
-    
     # --------------------------------------------------------------
-    # 2️⃣ SPIN ANIMATION (ALWAYS before showing ANY reward)
+    # 2️⃣ SPIN ANIMATION
     # --------------------------------------------------------------
     msg = await update.effective_message.reply_text(
         "🔄 *Evaluating your earned reward...*",
@@ -397,11 +433,10 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
             except:
                 pass
             last_frame = frame
-
         await asyncio.sleep(0.35)
 
     # --------------------------------------------------------------
-    # 3️⃣ FETCH DB USER UUID (required for payouts)
+    # 3️⃣ GET USER UUID (needed for airtime payouts)
     # --------------------------------------------------------------
     async with AsyncSessionLocal() as session:
         res = await session.execute(
@@ -419,14 +454,13 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
         )
 
     # ===============================================================
-    # 4️⃣ REWARD OUTCOMES (after animation)
+    # 4️⃣ REWARD OUTCOME RESPONSES (AFTER ANIMATION)
     # ===============================================================
 
     # --------------------------------------------------------------
-    # 🏆 TOP-TIER REWARD
+    # 🏆 TOP-TIER REWARD OPTIONS
     # --------------------------------------------------------------
     if outcome == "Top-Tier Campaign Reward":
-
         await msg.edit_text(
             f"🎉 *Outstanding performance, {player_name}!* \n\n"
             "You’ve unlocked a *top-tier campaign reward*.\n\n"
@@ -448,42 +482,6 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
         )
 
     # --------------------------------------------------------------
-    # 🎁 AIRTIME MILESTONE REWARD
-    # --------------------------------------------------------------
-    if outcome.startswith("airtime_"):
-        reward_amount = int(outcome.split("_")[1])
-
-        # Update milestone counters + create payout
-        async with AsyncSessionLocal() as session:
-
-            await session.execute(
-                text("""
-                    UPDATE users 
-                    SET total_premium_spins = total_premium_spins + 1
-                    WHERE tg_id = :tg
-                """),
-                {"tg": tg_id}
-            )
-            await session.commit()  # commit update
-
-            res = await session.execute(
-                text("SELECT total_premium_spins FROM users WHERE tg_id = :tg"),
-                {"tg": tg_id}
-            )
-            row = res.first()
-            current_spins = row[0] if row else 1
-
-            await create_pending_airtime_payout_and_prompt(
-                session=session,
-                update=update,
-                user_id=db_user_id,
-                tg_id=tg_id,
-                username=username,
-                total_premium_spins=current_spins,
-            )
-
-
-    # --------------------------------------------------------------
     # 🎧 EARPODS
     # --------------------------------------------------------------
     if outcome == "earpod":
@@ -495,7 +493,6 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
             parse_mode="Markdown",
         )
 
-        # Notify admin
         try:
             await context.bot.send_message(
                 ADMIN_USER_ID,
@@ -504,7 +501,6 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
         except:
             pass
 
-        # Set choice & send form
         async with get_async_session() as session:
             async with session.begin():
                 db_user = await get_or_create_user(session, tg_id=tg_id, username=username)
@@ -556,7 +552,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
         )
 
     # --------------------------------------------------------------
-    # 5️⃣ NO REWARD — show neutral final result
+    # 5️⃣ NO REWARD → Neutral Ending
     # --------------------------------------------------------------
     final = " ".join(random.choice(["⭐", "📚", "🎯", "💫"]) for _ in range(3))
 
