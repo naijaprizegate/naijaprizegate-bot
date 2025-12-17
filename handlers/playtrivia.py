@@ -381,7 +381,8 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
                     # ===========================================================
                     # ⭐ MILESTONE CHECK → 1, 25, 50 spins = Airtime reward
                     # ===========================================================
-
+                    from services.airtime_service import create_pending_airtime_payout_and_prompt
+                    
                     await create_pending_airtime_payout_and_prompt(
                         session=session,
                         update=update,
