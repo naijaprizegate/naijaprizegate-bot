@@ -226,25 +226,25 @@ async def create_pending_airtime_payout_and_prompt(
 async def handle_claim_airtime_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
     Handles pressing the "Claim Airtime Reward" button.
-    Loads payout_id, sets a temporary claim session, and prompts user
-    for their 11-digit Nigerian phone number.
+    Prompts user for their 11-digit Nigerian phone number.
     """
 
     query = update.callback_query
+
+    logger.info("🔥 CLAIM BUTTON CLICKED")
+    logger.info(f"📩 Callback data: {query.data}")
+
     await query.answer()
 
-    # 🔥 DEBUG LOG HERE — confirms handler is firing
-    logger.info("✅ claim_airtime callback received")
-    
     # -------------------------------------------------------
-    # Validate callback format: "claim_airtime:<payout_id>"
+    # Validate callback format
     # -------------------------------------------------------
     data = (query.data or "").strip()
-    if not data.startswith("claim_airtime:") or ":" not in data:
+    if not data.startswith("claim_airtime:"):
         logger.error(f"⚠️ Invalid claim_airtime callback: {data}")
         return await query.message.reply_text(
             "⚠️ Invalid claim request. Please try again.",
-            parse_mode="Markdown"
+            parse_mode="Markdown",
         )
 
     _, payout_id = data.split(":", 1)
@@ -254,41 +254,37 @@ async def handle_claim_airtime_button(update: Update, context: ContextTypes.DEFA
         logger.error("⚠️ Missing payout_id in callback")
         return await query.message.reply_text(
             "⚠️ Reward reference missing. Please try again.",
-            parse_mode="Markdown"
+            parse_mode="Markdown",
         )
 
     # -------------------------------------------------------
-    # Reset temporary context state for this claim session
+    # SAFE STATE UPDATE (DO NOT CLEAR user_data)
     # -------------------------------------------------------
-    context.user_data.clear()
     expires_at = (datetime.utcnow() + timedelta(minutes=5)).timestamp()
 
-    context.user_data.update({
-        "pending_payout_id": payout_id,
-        "awaiting_airtime_phone": True,
-        "airtime_expiry": expires_at,
-    })
+    context.user_data["pending_payout_id"] = payout_id
+    context.user_data["awaiting_airtime_phone"] = True
+    context.user_data["airtime_expiry"] = expires_at
 
     logger.info(
         f"📲 Airtime claim initiated | user={query.from_user.id} | payout_id={payout_id}"
     )
 
     # -------------------------------------------------------
-    # Send the phone number request message
+    # Always send UI feedback
     # -------------------------------------------------------
     try:
-        return await query.message.reply_text(
+        await query.message.reply_text(
             "📱 Enter your *11-digit Nigerian phone number* to receive your airtime.\n"
             "Example: `08012345678`\n\n"
             "_This session expires in 5 minutes._",
-            parse_mode="Markdown"
+            parse_mode="Markdown",
         )
-
     except Exception as e:
-        logger.error(f"⚠️ Failed to send phone collection prompt: {e}")
-        return await query.message.reply_text(
-            "⚠️ Could not start claim process. Please try again.",
-            parse_mode="Markdown"
+        logger.exception("❌ Failed to prompt for phone number", exc_info=True)
+        await query.message.reply_text(
+            "⚠️ Could not start the airtime claim process. Please try again.",
+            parse_mode="Markdown",
         )
 
 # -------------------------------------------------------------------
@@ -305,7 +301,6 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
     # ---------------------------------
     phone = raw_phone.replace(" ", "").replace("-", "")
 
-    # Convert +234XXXXXXXXXX → 0XXXXXXXXXX
     if phone.startswith("+234") and len(phone) >= 14:
         phone = "0" + phone[4:]
 
@@ -317,39 +312,64 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
     # Validate claim session state
     # ---------------------------------
     if not awaiting or not payout_id:
-        context.user_data.clear()
-        return await msg.reply_text("⛔ Claim session not active — please try again.")
+        return await msg.reply_text(
+            "⛔ Claim session not active. Please tap *Claim Airtime Reward* again.",
+            parse_mode="Markdown",
+        )
 
     if expiry_ts and datetime.utcnow().timestamp() > expiry_ts:
-        context.user_data.clear()
-        return await msg.reply_text("⛔ Claim session expired — start again from rewards.")
+        context.user_data.pop("awaiting_airtime_phone", None)
+        context.user_data.pop("pending_payout_id", None)
+        return await msg.reply_text(
+            "⛔ Claim session expired. Please start again from rewards.",
+            parse_mode="Markdown",
+        )
 
     # ---------------------------------
     # Validate phone number
     # ---------------------------------
-    if (
-        not phone.isdigit() or
-        len(phone) != 11 or
-        not validate_phone(phone)
-    ):
+    if not phone.isdigit() or len(phone) != 11 or not validate_phone(phone):
         return await msg.reply_text(
             "❌ Invalid number — must be like `08123456789`",
-            parse_mode="Markdown"
+            parse_mode="Markdown",
         )
 
-    # Once valid, ensure no repeated prompts
-    context.user_data.pop("awaiting_airtime_phone", None)
-
     # ---------------------------------
-    # Update payout record safely
+    # Atomic payout validation + update (IDEMPOTENT)
     # ---------------------------------
     try:
         async with AsyncSessionLocal() as session:
             async with session.begin():
+                res = await session.execute(
+                    text("""
+                        SELECT status, tg_id
+                        FROM airtime_payouts
+                        WHERE id = :id
+                        FOR UPDATE
+                    """),
+                    {"id": payout_id},
+                )
+                row = res.first()
+
+                if not row:
+                    return await msg.reply_text("⚠️ Invalid payout reference.")
+
+                status, payout_tg_id = row
+
+                if payout_tg_id != update.effective_user.id:
+                    logger.warning("🚨 Payout ownership mismatch")
+                    return await msg.reply_text("⛔ Unauthorized claim attempt.")
+
+                if status != "pending_claim":
+                    return await msg.reply_text(
+                        "ℹ️ This reward is already being processed or completed."
+                    )
+
                 await session.execute(
                     text("""
                         UPDATE airtime_payouts
-                        SET phone_number = :p, status = 'claim_phone_set'
+                        SET phone_number = :p,
+                            status = 'claim_phone_set'
                         WHERE id = :id
                     """),
                     {"p": phone, "id": payout_id},
@@ -357,14 +377,11 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
 
         logger.info(f"☎️ Phone stored | payout_id={payout_id} | phone={phone}")
 
-    except Exception as e:
-        logger.exception(f"DB error updating payout phone: {e}")
-        return await msg.reply_text("⚠️ Could not save your phone — try again shortly.")
-
-    # ---------------------------------
-    # UX: Generate link message
-    # ---------------------------------
-    await msg.reply_text("⏱ Generating your secure airtime link…")
+    except Exception:
+        logger.exception("❌ DB error updating payout phone")
+        return await msg.reply_text(
+            "⚠️ Could not save your phone. Please try again shortly."
+        )
 
     # ---------------------------------
     # Fetch reward amount
@@ -378,11 +395,10 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
         amount = row[0] if row else None
 
     if not amount:
-        logger.error(f"⚠️ No amount found for payout_id={payout_id}")
-        return await msg.reply_text("⚠️ Something went wrong — please retry later.")
+        return await msg.reply_text("⚠️ Something went wrong. Please retry later.")
 
     # ---------------------------------
-    # Create the final checkout link
+    # Generate checkout link
     # ---------------------------------
     checkout_url = await create_airtime_checkout_link(
         payout_id=payout_id,
@@ -391,15 +407,20 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
         amount=amount,
     )
 
-    # Clear local session state after success
-    context.user_data.clear()
-
     if not checkout_url:
-        logger.error(f"⚠️ Failed to generate checkout link for payout_id={payout_id}")
-        return await msg.reply_text("⚠️ Could not generate link — please retry shortly.")
+        return await msg.reply_text(
+            "⚠️ Could not generate airtime link. Please try again."
+        )
 
     # ---------------------------------
-    # Deliver the claim link
+    # Cleanup only OUR keys
+    # ---------------------------------
+    context.user_data.pop("awaiting_airtime_phone", None)
+    context.user_data.pop("pending_payout_id", None)
+    context.user_data.pop("airtime_expiry", None)
+
+    # ---------------------------------
+    # Deliver checkout link
     # ---------------------------------
     await msg.reply_text(
         "🎯 *Almost there!*\n"
@@ -409,9 +430,6 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
         disable_web_page_preview=True,
     )
 
-    # ---------------------------------
-    # Helpful UX buttons so user can continue
-    # ---------------------------------
     keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("🧠 Continue Playing", callback_data="playtrivia")],
         [InlineKeyboardButton("🎁 Check Rewards", callback_data="check_rewards")],
@@ -419,7 +437,7 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
 
     await msg.reply_text(
         "🚀 You can continue playing while it's processing!",
-        reply_markup=keyboard
+        reply_markup=keyboard,
     )
 
     logger.info(
