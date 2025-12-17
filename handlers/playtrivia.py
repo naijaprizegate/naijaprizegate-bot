@@ -391,9 +391,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
                         total_premium_spins=current_spins,
                     )
 
-                    # Must commit before sending UI messages
-                    await session.commit()
-
+                    
                     #⭐ FIX: STOP processing further reward outcomes
                     return
                 
