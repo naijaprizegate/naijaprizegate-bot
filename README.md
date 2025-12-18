@@ -1,95 +1,134 @@
-# NaijaPrizeGate Bot 🇳🇬🎉
+# 🇳🇬 NaijaPrizeGate Bot 🎉
 
-**NaijaPrizeGate Bot** is a Telegram bot that lets users **buy tries**, answer fun **Nigerian–themed trivia**, and spin a **lucky wheel** to win real prizes like **airtime**, **data bundles**, and even **smartphones**.  
+**NaijaPrizeGate Bot** is a paid **trivia-and-reward Telegram bot** built for the Nigerian market.
+Users pay **₦200 per chance** to answer Nigerian–themed trivia questions and earn spins that can lead to **instant rewards** and a **cycle-based jackpot prize**.
 
-It is built for the Nigerian market, with **NGN payments via Flutterwave** and a PostgreSQL backend for tracking users, tries, and payouts.
-
----
-
-## 🎮 What the Bot Does
-
-### Core User Flow
-
-1. **Start the bot**
-   - `/start` — greets the user, explains how NaijaPrizeGate works, and shows the main menu.
-
-2. **Buy tries via Flutterwave**
-   - Users choose a package (e.g. 1, 5, 15 tries — prices configurable in code).
-   - Payment is processed via **Flutterwave Checkout**.
-   - A verified payment automatically credits the user with the appropriate number of tries.
-
-3. **Play “Try Your Luck”**
-   - The user taps the **Try Luck** button.
-   - Selects a trivia category:
-     - 🇳🇬 **History** (`nigeria_history`)
-     - 🎬 **Entertainment** (`nigeria_entertainment`)
-     - ⚽ **Football** (`football`)
-     - 🌍 **Geography** (`geography`)
-   - A Nigerian–themed multiple–choice question is shown with four options (A–D).
-   - The answer is evaluated:
-     - **Correct answer → Premium Spin** 🎯  
-     - **Wrong answer → Basic Spin** 😅  
-   - The bot then runs the spin logic and records the outcome.
-
-4. **Win Real Prizes**
-   Depending on the spin outcome, users can win:
-
-   - 📱 **Airtime recharges**
-   - 📶 **Data bundles**
-   - 📞 **Smartphones / phones** (top–tier prizes)
-   - 🎟️ Or other configurable reward types
-
-   Airtime & data payouts are stored in the database as **pending payouts** for processing, with each record tied to:
-   - User
-   - Phone number
-   - Amount
-   - Status (`pending`, `completed`, etc.)
-
-5. **Stats & Counters**
-   - `/stats` or `/stat` — shows basic statistics (e.g. total tries, winners, etc. depending on what you expose).
-   - Admin command `/resetcounter` — resets try counters (e.g. daily/weekly campaign resets).
+The system rewards **knowledge, consistency, and competition**, not just luck.
 
 ---
 
-## 🌟 Key Features
+## 🎮 How NaijaPrizeGate Works
 
-- ✅ **Trivia before spin** — Users must answer a question before spinning, making it fun and knowledge-based.
-- ✅ **Multiple categories** — History, Entertainment, Football, Geography (mapped cleanly to internal JSON categories).
-- ✅ **Smart spin logic** — Premium vs Basic spins based on trivia result.
-- ✅ **Real rewards** — Airtime, data bundles, and **phones** as prizes.
-- ✅ **Payment Integration** — Flutterwave Standard Checkout with webhook verification.
-- ✅ **Try balance tracking** — Users have a stored number of tries in the database.
-- ✅ **Admin tools** — Safe admin-only operations like resetting counters.
-- ✅ **Background tasks** — Periodic jobs for maintenance / payout follow-up (via a background scheduler).
-- ✅ **PostgreSQL storage** — Persistent records of users, payments, tries, and payouts.
+### 1️⃣ Buy a Chance
+
+* Each trivia attempt costs **₦200**.
+* Users purchase chances via **Flutterwave Checkout (NGN)**.
+* Each successful payment credits the user with **one trivia chance**.
+
+---
+
+### 2️⃣ Answer Trivia
+
+For every chance used, the user answers **one multiple-choice trivia question** from a selected category:
+
+* 🇳🇬 **History**
+* 🎬 **Entertainment**
+* ⚽ **Football**
+* 🌍 **Geography**
+
+Each question has four options (A–D).
+
+---
+
+### 3️⃣ Spin Allocation (Performance-Based)
+
+After answering the question:
+
+* ✅ **Correct Answer → Premium Spin**
+* ❌ **Wrong Answer → Standard Spin**
+
+This ensures **skill directly improves reward quality**.
+
+---
+
+### 4️⃣ Spins, Premium Points & Rewards
+
+* **Standard Spins**
+
+  * Lower-tier rewards or no reward
+* **Premium Spins**
+
+  * Higher-value rewards
+  * Earn **Premium Points**
+
+Each **Premium Spin adds to the user’s Premium Points balance**.
+
+---
+
+### 5️⃣ Premium Points & Game Cycle
+
+* Premium Points **accumulate across multiple plays**
+* A **game cycle** runs until a predefined **win threshold** is reached
+* At the end of the cycle:
+
+  * 🏆 **The user with the highest Premium Points wins the Jackpot Prize**
+
+---
+
+### 6️⃣ Reward Structure
+
+| Reward Tier         | Examples                             |
+| ------------------- | ------------------------------------ |
+| 🎁 Instant Rewards  | Airtime                              |
+| 🔊 Mid-Tier Rewards | Bluetooth speakers, earpods          |
+| 📱 Jackpot Reward   | **Choice smartphone** (cycle winner) |
+
+Airtime and data rewards are recorded as **pending payouts** and processed after validation.
+
+---
+
+## 🌟 Key Principles
+
+* 🧠 **Knowledge-first gameplay** — correct answers matter
+* 🔁 **Repeat play advantage** — consistency builds points
+* 🏆 **Transparent competition** — highest Premium Points wins
+* 🇳🇬 **Localized experience** — Nigerian questions & NGN payments
+* ⚖️ **Fair system** — no guaranteed jackpot without performance
+
+---
+
+## 🧱 System Architecture (High-Level)
+
+```text
+User Payment (₦200)
+      ↓
+Trivia Question
+      ↓
+Correct? ── Yes → Premium Spin → Premium Points
+        └─ No  → Standard Spin
+      ↓
+Reward / Point Accumulation
+      ↓
+Cycle Ends → Highest Points Wins Jackpot
+```
 
 ---
 
 ## 🛠 Tech Stack
 
-- **[FastAPI](https://fastapi.tiangolo.com/)** — Webhook server + REST endpoints  
-- **[python-telegram-bot](https://docs.python-telegram-bot.org/)** — Telegram bot framework (async)  
-- **[SQLAlchemy](https://www.sqlalchemy.org/)** — ORM for PostgreSQL  
-- **[PostgreSQL](https://www.postgresql.org/)** — Main database (tries, payouts, users, etc.)  
-- **[Render](https://render.com/)** — Hosting & deployment  
-- **[Flutterwave](https://flutterwave.com/)** — Payment processing in NGN  
+* **FastAPI** — Webhook server & REST endpoints
+* **python-telegram-bot (async)** — Telegram bot framework
+* **SQLAlchemy** — ORM
+* **PostgreSQL** — Persistent storage
+* **Flutterwave** — NGN payments
+* **Render** — Hosting & deployment
 
 ---
 
-## 📦 Project Structure (Simplified)
+## 🔐 Security & Fair Play
 
-```text
-src/
-  app.py                  # FastAPI app & webhook entrypoint
-  handlers/
-    core.py               # /start, basic commands & menus
-    payments.py           # Buy tries, handle Flutterwave initiation
-    tryluck.py            # Trivia + spin logic integration
-    admin.py              # Admin-only commands (e.g. reset counter)
-  services/
-    payments.py           # Payment verification & tries calculation
-    tryluck.py            # Core spin logic & prize selection
-  utils/
-    questions_loader.py   # Loads and filters trivia questions
-    logger.py             # Centralized structured logging
-  questions.json          # Nigerian trivia questions (160 total)
+* All payments are **verified via Flutterwave webhooks**
+* Trivia answers are **validated server-side**
+* Admin operations are **restricted and logged**
+* Jackpot winner selection is **point-based and auditable**
+
+---
+
+## 📌 Disclaimer
+
+NaijaPrizeGate is a **skill-influenced reward system**.
+Trivia performance affects spin quality and Premium Points accumulation.
+Jackpot rewards are awarded **only at the end of a completed game cycle** to the user with the highest Premium Points.
+
+
+> **Knowledge improves your odds. Consistency wins the jackpot.**
