@@ -58,7 +58,10 @@ async def buy_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"🛒 *Boost Your Trivia Progress*\n\n"
         f"Choose a package below to unlock more quiz challenges and earn "
         f"more leaderboard points, {md_escape(user.username or 'Friend')} 📊"
-    )
+        f"🧠 Correct answers earn *Premium Spins* and *Premium Points*"
+        f"🎯 Premium Points determine leaderboard ranking and jackpot winners\n\n"
+        f"📜 Paid participation is governed by our *Terms & Fair Play Rules*"
+    )   
 
     if update.message:
         await update.message.reply_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode="MarkdownV2")
@@ -128,6 +131,11 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         text=(
             f"📚 <b>Package Selected</b>: {questions} Trivia Question{'' if questions==1 else 's'} "
             f"for ₦{price:,}\n\n"
+            "✔ One trivia question per attempt\n"
+            "✔ Correct answers earn <b>Premium Spins</b> and <b>Premium Points</b>\n"
+            "✔ Premium Points affect leaderboard ranking and jackpot winners\n\n"
+
+            "📜 By proceeding, you agree to our <b>Terms & Fair Play Rules</b>.\n\n"
             "👉 Tap to complete payment via Flutterwave Checkout.\n\n"
             "If the button doesn't work, copy the link and open it manually:\n"
             f"<a href='{checkout_url}'>{checkout_url}</a>"
@@ -221,4 +229,3 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(buy_menu, pattern="^buy$"))
     application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy_"))
     application.add_handler(CallbackQueryHandler(handle_cancel_payment, pattern="^cancel_payment$"))
-
