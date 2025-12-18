@@ -20,22 +20,43 @@ logger = logging.getLogger(__name__)
 async def terms_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = (
         "📘 <b>Fair Play & Terms</b>\n\n"
-        "✔ NaijaPrizeGate is a <b>knowledge-based trivia competition</b>\n"
-        "✔ Performance on the <b>leaderboard</b> determines rewards\n"
-        "✔ <b>100% Skill-Based</b> — no randomness in determining winners — outcomes are not based on chance\n"
-        "✔ Players earn quiz points by <b>answering questions</b>\n"
-        "✔ Paid questions help support the contest operations\n"
-        "✔ A prize unlocks when the cycle’s participation milestone is reached\n"
-        "✔ Winners must provide accurate delivery details\n"
-        "✔ Fraud or cheating will result in disqualification\n\n"
-        "📌 By continuing to use this bot, you agree to the rules above.\n\n"
+
+        "NaijaPrizeGate is a <b>skill-influenced trivia competition</b>.\n\n"
+
+        "✔ Rewards are determined by <b>trivia performance and Premium Points</b>\n"
+        "✔ Correct answers earn <b>Premium Spins</b> and Premium Points\n"
+        "✔ Incorrect answers earn <b>Standard Spins</b>\n"
+        "✔ Premium Points accumulate across plays and determine leaderboard ranking\n"
+        "✔ The <b>highest Premium Points holder</b> at the end of a game cycle wins the jackpot prize\n\n"
+
+        "⚖️ <b>Fair Play Rules</b>\n"
+        "✔ Trivia questions are randomly selected from predefined categories\n"
+        "✔ Answers are validated server-side\n"
+        "✔ Users cannot influence question selection, spins, or point calculations\n"
+        "✔ Any form of cheating, automation, or abuse leads to disqualification\n\n"
+
+        "💳 <b>Payments & Participation</b>\n"
+        "✔ Each trivia attempt requires a paid chance\n"
+        "✔ Paid participation supports contest operations\n"
+        "✔ Chances are non-refundable once a question is served\n\n"
+
+        "🎁 <b>Rewards & Fulfillment</b>\n"
+        "✔ Rewards are <b>not guaranteed</b> on every spin\n"
+        "✔ Airtime and data rewards are processed after validation\n"
+        "✔ Physical prizes require accurate contact and delivery details\n\n"
+
+        "📜 By continuing to use this bot, you agree to the full "
+        "<b>Terms & Conditions</b> governing participation.\n\n"
+
         "➡️ Use /start to return to the main menu.\n\n"
-        "🛑 Disclaimer\n"
-        "Brand names or product names shown as prizes (e.g., iPhone, Samsung Galaxy)\n"
-        "are used *only to describe rewards available to top performers*.\n"
-        "Apple Inc. and Samsung Electronics are **not sponsors, partners or affiliated\n"
-        "with this competition in any way."
+
+        "🛑 <b>Disclaimer</b>\n"
+        "Brand or product names shown as prizes (e.g. iPhone, Samsung Galaxy)\n"
+        "are used <b>only to describe rewards available to top performers</b>.\n"
+        "Apple Inc. and Samsung Electronics are <b>not sponsors, partners, or affiliated</b>\n"
+        "with NaijaPrizeGate in any way."
     )
+
 
     if update.callback_query:
         await update.callback_query.answer()
@@ -94,7 +115,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "✨ It’s all about *knowledge and performance* — not luck 🔥\n\n"
         "🔒 100% Free to start\n"
         "📊 Rewards are based on leaderboard ranking\n"
-        "📘 Tap *Fair Play Rules* below for policy & transparency\n\n"
+        "📘 Tap *Terms & Fair Play* below for policy & transparency\n\n"
+        "📜 By using NaijaPrizeGate, you agree to our Terms & Conditions and Fair Play Rules\n\n"
         "Ready to begin?\n"
         "Tap *Play Trivia* below 👇"
     )
@@ -105,7 +127,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
         [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
-        [InlineKeyboardButton("📘 Fair Play Rules", callback_data="terms")],  # NEW
+        [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],  # NEW
         [InlineKeyboardButton("❓ FAQs", callback_data="faq")]                # NEW
     ]
 
@@ -153,7 +175,7 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
         [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
-        [InlineKeyboardButton("📘 Fair Play Rules", callback_data="terms")],  # NEW
+        [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],  # NEW
         [InlineKeyboardButton("❓ FAQs", callback_data="faq")]                # NEW
     ]
 
@@ -197,7 +219,7 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
         [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
-        [InlineKeyboardButton("📘 Fair Play Rules", callback_data="terms")],  # NEW
+        [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],  # NEW
         [InlineKeyboardButton("❓ FAQs", callback_data="faq")]                # NEW
     ]
 
