@@ -208,7 +208,8 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     )
 
     return await update.effective_message.reply_text(
-        "🧠 *Choose your trivia category:*",
+        "🧠 *Choose your trivia category:*\n\n"
+        "Your correct answers add to your Premium Points",
         parse_mode="Markdown",
         reply_markup=category_keyboard,
     )
