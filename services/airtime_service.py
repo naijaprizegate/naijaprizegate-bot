@@ -9,6 +9,7 @@ import os
 import uuid
 import httpx
 import logging
+import json
 from datetime import datetime, timezone, timedelta
 from typing import Optional, Dict, Any
 
@@ -178,14 +179,29 @@ async def send_airtime_via_clubkonnect(phone: str, amount: int, request_id: Opti
 
 def clubkonnect_is_success(data: Dict[str, Any]) -> bool:
     """
-    Clubkonnect docs show:
-    - ORDER_RECEIVED with statuscode 100
-    - ORDER_COMPLETED with statuscode 200
-    We'll treat both as success (accepted vs delivered).
+    Determine whether a Clubkonnect airtime request was accepted or completed.
+
+    Success cases:
+    - status = ORDER_RECEIVED (statuscode 100)
+    - status = ORDER_COMPLETED (statuscode 200)
+
+    Anything else is treated as failure.
     """
-    status = str(data.get("status") or "").upper()
-    statuscode = str(data.get("statuscode") or "")
-    return (status in ("ORDER_RECEIVED", "ORDER_COMPLETED")) or (statuscode in ("100", "200"))
+
+    if not isinstance(data, dict):
+        return False
+
+    status = str(data.get("status", "")).upper().strip()
+    statuscode = str(data.get("statuscode", "")).strip()
+
+    # Explicit success cases only
+    if status == "ORDER_COMPLETED" and statuscode == "200":
+        return True
+
+    if status == "ORDER_RECEIVED" and statuscode == "100":
+        return True
+
+    return False
 
 
 # -------------------------------------------------------------------
@@ -343,7 +359,9 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
                     text("""
                         UPDATE airtime_payouts
                         SET phone_number = :p,
-                            status = 'processing'
+                            status = 'processing',
+                            retry_count = 0,
+                            last_retry_at = NULL
                         WHERE id = :id
                     """),
                     {"p": phone, "id": payout_id},
@@ -369,10 +387,23 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
 
     # Send airtime automatically (NO checkout link)
     provider_request_id = f"AIRTIME-{payout_id}"
-    data = await send_airtime_via_clubkonnect(phone=phone, amount=int(amount), request_id=provider_request_id)
+    provider_name = "clubkonnect"
 
-    success = clubkonnect_is_success(data)
-    provider_reference = str(data.get("orderid") or "")
+    data = {}
+    provider_reference = ""
+    success = False
+
+    try:
+        data = await send_airtime_via_clubkonnect(
+            phone=phone,
+            amount=int(amount),
+            request_id=provider_request_id
+        )
+        success = clubkonnect_is_success(data)
+        provider_reference = str(data.get("orderid") or "")  # orderid is what they return
+    except Exception:
+        logger.exception("❌ Clubkonnect call failed")
+        success = False
 
     # Update payout status based on provider response
     try:
@@ -382,19 +413,39 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
                     await session.execute(
                         text("""
                             UPDATE airtime_payouts
-                            SET status = 'completed'
+                            SET status = 'completed',
+                                provider = :provider,
+                                provider_reference = :ref,
+                                provider_response = :resp,
+                                sent_at = NOW(),
+                                completed_at = NOW()
                             WHERE id = :id
                         """),
-                        {"id": payout_id},
+                        {
+                            "id": payout_id,
+                            "provider": provider_name,
+                            "ref": provider_reference or provider_request_id,
+                            "resp": json.dumps(data) if data else None,
+                        },
                     )
                 else:
                     await session.execute(
                         text("""
                             UPDATE airtime_payouts
-                            SET status = 'failed'
+                            SET status = 'failed',
+                                provider = :provider,
+                                provider_reference = :ref,
+                                provider_response = :resp,
+                                sent_at = NOW()
                             WHERE id = :id
                         """),
-                        {"id": payout_id},
+                        {
+                            "id": payout_id,
+                            "provider": provider_name,
+                            # keep a ref for debugging even on fail
+                            "ref": provider_reference or provider_request_id,
+                            "resp": json.dumps(data) if data else None,
+                        },
                     )
     except Exception:
         logger.exception("❌ Failed to update payout status after provider call")
