@@ -1,6 +1,7 @@
 # ======================================================================
 # services/airtime_service.py
-# Airtime Rewards via Flutterwave Hosted Checkout (No Bills API)
+# Airtime Rewards via Clubkonnect (Nellobytes) Airtime API (Automatic payout)
+# + Flutterwave Checkout remains for buying trivia attempts
 # ======================================================================
 from __future__ import annotations
 
@@ -8,9 +9,8 @@ import os
 import uuid
 import httpx
 import logging
-import json
 from datetime import datetime, timezone, timedelta
-from typing import Optional
+from typing import Optional, Dict, Any
 
 from sqlalchemy import text
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
@@ -23,7 +23,7 @@ from services.playtrivia import AIRTIME_MILESTONES
 logger = logging.getLogger(__name__)
 
 # -------------------------------------------------------------------
-# Environment & Constants
+# Environment & Constants (Flutterwave still used for buying tries)
 # -------------------------------------------------------------------
 FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")
 FLW_BASE_URL = os.getenv("FLW_BASE_URL", "https://api.flutterwave.com")
@@ -35,9 +35,58 @@ WEBHOOK_REDIRECT_URL = os.getenv(
 if not FLW_SECRET_KEY:
     raise RuntimeError("❌ FLW_SECRET_KEY is not set in environment variables")
 
+# -------------------------------------------------------------------
+# Clubkonnect / Nellobytes Airtime API env vars (used for automatic rewards)
+# -------------------------------------------------------------------
+CK_USER_ID = os.getenv("CLUBKONNECT_USER_ID")
+CK_API_KEY = os.getenv("CLUBKONNECT_API_KEY")
+CK_BASE_URL = os.getenv("CLUBKONNECT_BASE_URL", "https://www.nellobytesystems.com")
+
+if not CK_USER_ID or not CK_API_KEY:
+    # We don't raise here because the bot may still run without airtime rewards in dev,
+    # but we will fail gracefully when attempting payout.
+    logger.warning("⚠️ CLUBKONNECT_USER_ID / CLUBKONNECT_API_KEY not set. Airtime rewards will fail.")
+
+# Network codes from Clubkonnect docs
+NETWORK_CODE = {
+    "mtn": "01",
+    "glo": "02",
+    "9mobile": "03",
+    "airtel": "04",
+}
+
+# A simple prefix map (not exhaustive, but solid enough to start)
+MTN_PREFIX = ("0703", "0706", "0803", "0806", "0810", "0813", "0814", "0816", "0903", "0906", "0913", "0916")
+AIRTEL_PREFIX = ("0701", "0708", "0802", "0808", "0812", "0901", "0902", "0904", "0907", "0912")
+GLO_PREFIX = ("0705", "0805", "0807", "0811", "0815", "0905", "0915")
+ETISALAT_PREFIX = ("0809", "0817", "0818", "0908", "0909")
+
+
+def normalize_ng_phone(raw: str) -> str:
+    phone = (raw or "").strip().replace(" ", "").replace("-", "")
+    if phone.startswith("+234") and len(phone) >= 14:
+        phone = "0" + phone[4:]
+    return "".join(ch for ch in phone if ch.isdigit())
+
+
+def guess_network(phone_11: str) -> Optional[str]:
+    """
+    Guess network based on common prefixes.
+    If we can't confidently detect, return None and ask user to choose later.
+    """
+    if phone_11.startswith(MTN_PREFIX):
+        return "mtn"
+    if phone_11.startswith(AIRTEL_PREFIX):
+        return "airtel"
+    if phone_11.startswith(GLO_PREFIX):
+        return "glo"
+    if phone_11.startswith(ETISALAT_PREFIX):
+        return "9mobile"
+    return None
+
 
 # -------------------------------------------------------------------
-# Create Flutterwave Checkout Link (Trivia Purchases)
+# Flutterwave Checkout Link (Trivia Purchases) - KEEP THIS
 # -------------------------------------------------------------------
 async def create_flutterwave_checkout_link(
     tx_ref: str,
@@ -46,7 +95,6 @@ async def create_flutterwave_checkout_link(
     username: Optional[str] = None,
     email: Optional[str] = None,
 ) -> Optional[str]:
-
     customer_email = email if email and "@" in email else f"user_{tg_id}@naijaprizegate.ng"
     safe_name = (username or f"User {tg_id}")[:64]
 
@@ -76,60 +124,69 @@ async def create_flutterwave_checkout_link(
 
 
 # -------------------------------------------------------------------
-# Airtime Checkout Link (Reward Claim)
+# Clubkonnect/Nellobytes Airtime payout (Automatic)
 # -------------------------------------------------------------------
-async def create_airtime_checkout_link(
-    payout_id: str, tg_id: int, phone: str, amount: int
-) -> Optional[str]:
+async def send_airtime_via_clubkonnect(phone: str, amount: int, request_id: Optional[str] = None) -> Dict[str, Any]:
+    """
+    Sends airtime using Nellobytes/Clubkonnect Airtime API.
+    Uses HTTPS GET with query params and returns JSON dict.
+    """
+    if not CK_USER_ID or not CK_API_KEY:
+        return {"status": "error", "message": "Clubkonnect credentials not configured"}
 
-    tx_ref = f"AIRTIME-{payout_id}"
-    email = f"user_{tg_id}@naijaprizegate.ng"
+    if amount < 50:
+        return {"status": "error", "message": "Minimum airtime amount is 50"}
 
-    # Our server webhook for Flutterwave confirmation
-    CALLBACK_URL = "https://naijaprizegate-bot-oo2x.onrender.com/flw/webhook"
+    net = guess_network(phone)
+    if not net:
+        return {"status": "error", "message": "Could not detect network for this number"}
 
-    payload = {
-        "tx_ref": tx_ref,
-        "amount": amount,
-        "currency": "NGN",
-        # 🔥 We use FLW webhook endpoint for both redirect & callback
-        "redirect_url": CALLBACK_URL,
-        "callback_url": CALLBACK_URL,
-        "customer": {
-            "email": email,
-            "phonenumber": phone,
-            "name": f"User {tg_id}",
-        },
-        "payment_options": "card,ussd,banktransfer",
-        "customizations": {
-            "title": "Airtime Reward",
-            "description": "Your airtime reward is waiting!",
-            "logo": "https://naijaprizegate.ng/static/logo.png",
-        },
-        "meta": {
-            "product": "airtime",
-            "payout_id": payout_id,
-            "tg_id": str(tg_id),
-            "phone": phone,
-        },
+    mobile_network_code = NETWORK_CODE[net]
+    rid = request_id or f"NP-{uuid.uuid4()}"
+
+    params = {
+        "UserID": CK_USER_ID,
+        "APIKey": CK_API_KEY,
+        "MobileNetwork": mobile_network_code,
+        "Amount": str(amount),
+        "MobileNumber": phone,
+        "RequestID": rid,
+        # Optional: CallBackURL can be used later if you want provider to ping your server
+        # "CallBackURL": "https://yourdomain.com/clubkonnect/callback"
     }
 
-    headers = {
-        "Authorization": f"Bearer {FLW_SECRET_KEY}",
-        "Content-Type": "application/json",
-    }
+    url = f"{CK_BASE_URL}/APIAirtimeV1.asp"
 
-    logger.info(f"🌐 Creating Airtime Checkout → payout_id={payout_id} amount=₦{amount} phone={phone}")
+    # IMPORTANT: Don't log APIKey or full URL
+    logger.info(f"📤 Clubkonnect airtime request | phone={phone} amount={amount} network={net} request_id={rid}")
+
+    async with httpx.AsyncClient(timeout=20.0) as client:
+        resp = await client.get(url, params=params)
 
     try:
-        async with httpx.AsyncClient(timeout=15.0) as client:
-            resp = await client.post(f"{FLW_BASE_URL}/v3/payments", json=payload, headers=headers)
         data = resp.json()
-    except Exception as e:
-        logger.exception(f"Airtime checkout failed: {e}")
-        return None
+    except Exception:
+        # Provider sometimes returns non-JSON on error; keep small snippet
+        data = {"status": "error", "message": "Non-JSON response from provider", "raw": resp.text[:200]}
 
-    return data.get("data", {}).get("link")
+    # Log minimal status only
+    logger.info(
+        f"📥 Clubkonnect airtime response | request_id={rid} status={data.get('status')} statuscode={data.get('statuscode')} orderid={data.get('orderid')}"
+    )
+    return data
+
+
+def clubkonnect_is_success(data: Dict[str, Any]) -> bool:
+    """
+    Clubkonnect docs show:
+    - ORDER_RECEIVED with statuscode 100
+    - ORDER_COMPLETED with statuscode 200
+    We'll treat both as success (accepted vs delivered).
+    """
+    status = str(data.get("status") or "").upper()
+    statuscode = str(data.get("statuscode") or "")
+    return (status in ("ORDER_RECEIVED", "ORDER_COMPLETED")) or (statuscode in ("100", "200"))
+
 
 # -------------------------------------------------------------------
 # Create Airtime Payout Record + Prompt Claim Button
@@ -144,10 +201,8 @@ async def create_pending_airtime_payout_and_prompt(
 ):
     """
     Creates a pending airtime payout entry and sends a claim button message.
-    Logic preserved EXACTLY as original; structure improved for consistency.
     """
 
-    # Determine airtime amount based on milestone count
     amount = AIRTIME_MILESTONES.get(total_premium_spins)
     if not amount:
         logger.warning(f"⚠️ No airtime milestone defined for spins={total_premium_spins}")
@@ -156,7 +211,6 @@ async def create_pending_airtime_payout_and_prompt(
     payout_id = str(uuid.uuid4())
     now = datetime.now(timezone.utc)
 
-    # Insert payout entry with NULL phone_number (same behavior as before)
     await session.execute(
         text("""
             INSERT INTO airtime_payouts (
@@ -168,21 +222,11 @@ async def create_pending_airtime_payout_and_prompt(
                 :amt, 'pending_claim', :ts
             )
         """),
-        {
-            "id": payout_id,
-            "uid": user_id,
-            "tg": tg_id,
-            "amt": amount,
-            "ts": now
-        }
+        {"id": payout_id, "uid": user_id, "tg": tg_id, "amt": amount, "ts": now},
     )
-
-    # Commit immediately — required because the next step sends UI
     await session.commit()
 
-    # Build message
     safe_name = username or f"User {tg_id}"
-
     message = (
         f"🏆 *Milestone Unlocked, {safe_name}!* 🎉\n\n"
         f"🎯 You've reached *{total_premium_spins}* premium attempts.\n"
@@ -191,126 +235,63 @@ async def create_pending_airtime_payout_and_prompt(
     )
 
     keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton(
-            "⚡ Claim Airtime Reward",
-            callback_data=f"claim_airtime:{payout_id}"
-        )]
+        [InlineKeyboardButton("⚡ Claim Airtime Reward", callback_data=f"claim_airtime:{payout_id}")]
     ])
 
-    # Send UI in both message + callback contexts, same as before
     try:
         if update.message:
-            await update.message.reply_text(
-                message,
-                reply_markup=keyboard,
-                parse_mode="Markdown"
-            )
+            await update.message.reply_text(message, reply_markup=keyboard, parse_mode="Markdown")
         else:
-            await update.callback_query.message.reply_text(
-                message,
-                reply_markup=keyboard,
-                parse_mode="Markdown"
-            )
+            await update.callback_query.message.reply_text(message, reply_markup=keyboard, parse_mode="Markdown")
     except Exception as e:
         logger.error(f"⚠️ Failed to send airtime claim UI: {e}")
 
-    logger.info(
-        f"🎯 Airtime reward created | tg_id={tg_id} | payout_id={payout_id} | amount={amount}"
-    )
-
+    logger.info(f"🎯 Airtime reward created | tg_id={tg_id} | payout_id={payout_id} | amount={amount}")
     return payout_id
+
 
 # -------------------------------------------------------------------
 # Claim Button → Ask for Phone Number
 # -------------------------------------------------------------------
 async def handle_claim_airtime_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """
-    Handles pressing the "Claim Airtime Reward" button.
-    Prompts user for their 11-digit Nigerian phone number.
-    """
-
     query = update.callback_query
-
-    logger.info("🔥 CLAIM BUTTON CLICKED")
-    logger.info(f"📩 Callback data: {query.data}")
-
     await query.answer()
 
-    # -------------------------------------------------------
-    # Validate callback format
-    # -------------------------------------------------------
     data = (query.data or "").strip()
     if not data.startswith("claim_airtime:"):
-        logger.error(f"⚠️ Invalid claim_airtime callback: {data}")
-        return await query.message.reply_text(
-            "⚠️ Invalid claim request. Please try again.",
-            parse_mode="Markdown",
-        )
+        return await query.message.reply_text("⚠️ Invalid claim request. Please try again.", parse_mode="Markdown")
 
     _, payout_id = data.split(":", 1)
     payout_id = payout_id.strip()
-
     if not payout_id:
-        logger.error("⚠️ Missing payout_id in callback")
-        return await query.message.reply_text(
-            "⚠️ Reward reference missing. Please try again.",
-            parse_mode="Markdown",
-        )
+        return await query.message.reply_text("⚠️ Reward reference missing. Please try again.", parse_mode="Markdown")
 
-    # -------------------------------------------------------
-    # SAFE STATE UPDATE (DO NOT CLEAR user_data)
-    # -------------------------------------------------------
     expires_at = (datetime.utcnow() + timedelta(minutes=5)).timestamp()
-
     context.user_data["pending_payout_id"] = payout_id
     context.user_data["awaiting_airtime_phone"] = True
     context.user_data["airtime_expiry"] = expires_at
 
-    logger.info(
-        f"📲 Airtime claim initiated | user={query.from_user.id} | payout_id={payout_id}"
+    await query.message.reply_text(
+        "📱 Enter your *11-digit Nigerian phone number* to receive your airtime.\n"
+        "Example: `08012345678`\n\n"
+        "_This session expires in 5 minutes._",
+        parse_mode="Markdown",
     )
 
-    # -------------------------------------------------------
-    # Always send UI feedback
-    # -------------------------------------------------------
-    try:
-        await query.message.reply_text(
-            "📱 Enter your *11-digit Nigerian phone number* to receive your airtime.\n"
-            "Example: `08012345678`\n\n"
-            "_This session expires in 5 minutes._",
-            parse_mode="Markdown",
-        )
-    except Exception as e:
-        logger.exception("❌ Failed to prompt for phone number", exc_info=True)
-        await query.message.reply_text(
-            "⚠️ Could not start the airtime claim process. Please try again.",
-            parse_mode="Markdown",
-        )
 
 # -------------------------------------------------------------------
-# User Sends Phone → Validate → Update DB → Generate Checkout Link
+# User Sends Phone → Validate → Update DB → Send Airtime Automatically
 # -------------------------------------------------------------------
 async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handles user submission of phone number for claiming airtime rewards."""
-
     msg = update.message
     raw_phone = (msg.text or "").strip()
-
-    # ---------------------------------
-    # Normalize phone format
-    # ---------------------------------
-    phone = raw_phone.replace(" ", "").replace("-", "")
-
-    if phone.startswith("+234") and len(phone) >= 14:
-        phone = "0" + phone[4:]
+    phone = normalize_ng_phone(raw_phone)
 
     payout_id = context.user_data.get("pending_payout_id")
     awaiting = context.user_data.get("awaiting_airtime_phone")
     expiry_ts = context.user_data.get("airtime_expiry")
 
-    # ---------------------------------
-    # Validate claim session state
-    # ---------------------------------
+    # Validate claim session
     if not awaiting or not payout_id:
         return await msg.reply_text(
             "⛔ Claim session not active. Please tap *Claim Airtime Reward* again.",
@@ -320,23 +301,17 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
     if expiry_ts and datetime.utcnow().timestamp() > expiry_ts:
         context.user_data.pop("awaiting_airtime_phone", None)
         context.user_data.pop("pending_payout_id", None)
+        context.user_data.pop("airtime_expiry", None)
         return await msg.reply_text(
             "⛔ Claim session expired. Please start again from rewards.",
             parse_mode="Markdown",
         )
 
-    # ---------------------------------
-    # Validate phone number
-    # ---------------------------------
+    # Validate phone
     if not phone.isdigit() or len(phone) != 11 or not validate_phone(phone):
-        return await msg.reply_text(
-            "❌ Invalid number — must be like `08123456789`",
-            parse_mode="Markdown",
-        )
+        return await msg.reply_text("❌ Invalid number — must be like `08123456789`", parse_mode="Markdown")
 
-    # ---------------------------------
-    # Atomic payout validation + update (IDEMPOTENT)
-    # ---------------------------------
+    # Lock payout + ownership + status update
     try:
         async with AsyncSessionLocal() as session:
             async with session.begin():
@@ -361,15 +336,14 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
                     return await msg.reply_text("⛔ Unauthorized claim attempt.")
 
                 if status != "pending_claim":
-                    return await msg.reply_text(
-                        "ℹ️ This reward is already being processed or completed."
-                    )
+                    return await msg.reply_text("ℹ️ This reward is already being processed or completed.")
 
+                # Save phone & move to processing
                 await session.execute(
                     text("""
                         UPDATE airtime_payouts
                         SET phone_number = :p,
-                            status = 'claim_phone_set'
+                            status = 'processing'
                         WHERE id = :id
                     """),
                     {"p": phone, "id": payout_id},
@@ -379,13 +353,9 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
 
     except Exception:
         logger.exception("❌ DB error updating payout phone")
-        return await msg.reply_text(
-            "⚠️ Could not save your phone. Please try again shortly."
-        )
+        return await msg.reply_text("⚠️ Could not save your phone. Please try again shortly.")
 
-    # ---------------------------------
     # Fetch reward amount
-    # ---------------------------------
     async with AsyncSessionLocal() as session:
         res = await session.execute(
             text("SELECT amount FROM airtime_payouts WHERE id = :id"),
@@ -397,49 +367,66 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
     if not amount:
         return await msg.reply_text("⚠️ Something went wrong. Please retry later.")
 
-    # ---------------------------------
-    # Generate checkout link
-    # ---------------------------------
-    checkout_url = await create_airtime_checkout_link(
-        payout_id=payout_id,
-        tg_id=update.effective_user.id,
-        phone=phone,
-        amount=amount,
-    )
+    # Send airtime automatically (NO checkout link)
+    provider_request_id = f"AIRTIME-{payout_id}"
+    data = await send_airtime_via_clubkonnect(phone=phone, amount=int(amount), request_id=provider_request_id)
 
-    if not checkout_url:
-        return await msg.reply_text(
-            "⚠️ Could not generate airtime link. Please try again."
-        )
+    success = clubkonnect_is_success(data)
+    provider_reference = str(data.get("orderid") or "")
 
-    # ---------------------------------
+    # Update payout status based on provider response
+    try:
+        async with AsyncSessionLocal() as session:
+            async with session.begin():
+                if success:
+                    await session.execute(
+                        text("""
+                            UPDATE airtime_payouts
+                            SET status = 'completed'
+                            WHERE id = :id
+                        """),
+                        {"id": payout_id},
+                    )
+                else:
+                    await session.execute(
+                        text("""
+                            UPDATE airtime_payouts
+                            SET status = 'failed'
+                            WHERE id = :id
+                        """),
+                        {"id": payout_id},
+                    )
+    except Exception:
+        logger.exception("❌ Failed to update payout status after provider call")
+
     # Cleanup only OUR keys
-    # ---------------------------------
     context.user_data.pop("awaiting_airtime_phone", None)
     context.user_data.pop("pending_payout_id", None)
     context.user_data.pop("airtime_expiry", None)
 
-    # ---------------------------------
-    # Deliver checkout link
-    # ---------------------------------
-    await msg.reply_text(
-        "🎯 *Almost there!*\n"
-        "Tap the link below to *claim your airtime instantly* 🔥\n\n"
-        f"{checkout_url}",
-        parse_mode="Markdown",
-        disable_web_page_preview=True,
-    )
+    # Notify user
+    if success:
+        await msg.reply_text(
+            f"🎉 *Airtime Sent!*\n\n"
+            f"₦{amount} has been credited to *{phone}* ✅\n"
+            f"Ref: `{provider_reference or provider_request_id}`",
+            parse_mode="Markdown",
+        )
+    else:
+        await msg.reply_text(
+            "⚠️ *Airtime Not Sent Yet*\n\n"
+            "We couldn’t complete your airtime reward right now.\n"
+            "Please try again later or contact support.",
+            parse_mode="Markdown",
+        )
 
     keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("🧠 Continue Playing", callback_data="playtrivia")],
-        [InlineKeyboardButton("🎁 Check Rewards", callback_data="check_rewards")],
+        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard")],
     ])
 
-    await msg.reply_text(
-        "🚀 You can continue playing while it's processing!",
-        reply_markup=keyboard,
-    )
+    await msg.reply_text("What would you like to do next?", reply_markup=keyboard)
 
     logger.info(
-        f"📩 Airtime checkout link sent | payout_id={payout_id} | phone={phone} | amount={amount}"
+        f"✅ Airtime payout processed | payout_id={payout_id} | phone={phone} | amount={amount} | success={success} | provider_orderid={provider_reference}"
     )
