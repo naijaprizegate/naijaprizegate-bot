@@ -210,7 +210,7 @@ async def on_startup():
             allow_reentry=True,
         )
 
-        application.add_handler(airtime_conversation)
+        application.add_handler(airtime_conversation, group=-1)
 
         # Initialize & start bot
         await application.initialize()
