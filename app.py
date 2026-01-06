@@ -208,6 +208,7 @@ async def on_startup():
             },
             fallbacks=[],
             allow_reentry=True,
+            block=True,
         )
 
         application.add_handler(airtime_conversation, group=-1)
