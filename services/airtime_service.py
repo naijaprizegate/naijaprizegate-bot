@@ -181,30 +181,29 @@ async def send_airtime_via_clubkonnect(phone: str, amount: int, request_id: Opti
 
 def clubkonnect_is_success(data: Dict[str, Any]) -> bool:
     """
-    Determine whether a Clubkonnect airtime request was accepted or completed.
+    Determine whether a Clubkonnect/Nellobytes airtime request was accepted or completed.
 
-    Success cases:
-    - status = ORDER_RECEIVED (statuscode 100)
-    - status = ORDER_COMPLETED (statuscode 200)
+    Treat as success if EITHER:
+    - statuscode is 100 (received) or 200 (completed), OR
+    - status is ORDER_RECEIVED / ORDER_COMPLETED
 
-    Anything else is treated as failure.
+    This avoids false failures due to inconsistent payloads.
     """
-
     if not isinstance(data, dict):
         return False
 
-    status = str(data.get("status", "")).upper().strip()
-    statuscode = str(data.get("statuscode", "")).strip()
+    status = str(data.get("status") or "").upper().strip()
+    code = str(data.get("statuscode") or "").strip()
 
-    # Explicit success cases only
-    if status == "ORDER_COMPLETED" and statuscode == "200":
+    # Common "accepted" or "completed" codes
+    if code in ("100", "200"):
         return True
 
-    if status == "ORDER_RECEIVED" and statuscode == "100":
+    # Common "accepted" or "completed" statuses
+    if status in ("ORDER_RECEIVED", "ORDER_COMPLETED"):
         return True
 
     return False
-
 
 # -------------------------------------------------------------------
 # Create Airtime Payout Record + Prompt Claim Button
@@ -458,6 +457,7 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
             amount=int(amount),
             request_id=provider_request_id
         )
+        logger.info(f"📦 Clubkonnect raw response | payout_id={payout_id} | data={str(data)[:300]}")
         success = clubkonnect_is_success(data)
         provider_reference = str(data.get("orderid") or "")
     except Exception:
