@@ -17,8 +17,8 @@ from sqlalchemy import text
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes
 from telegram.ext import ConversationHandler
-from app import AIRTIME_PHONE
 
+from utils.conversation_states import AIRTIME_PHONE
 from db import AsyncSessionLocal
 from utils.security import validate_phone
 from services.playtrivia import AIRTIME_MILESTONES
