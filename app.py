@@ -74,8 +74,7 @@ from utils.signer import generate_signed_token, verify_signed_token
 from webhook import router as webhook_router
 from bot_instance import bot
 from services.airtime_service import handle_claim_airtime_button, handle_airtime_claim_phone
-
-AIRTIME_PHONE = 1
+from utils.conversation_states import AIRTIME_PHONE
 
 # ✅ Import Flutterwave-related functions/constants
 from services.payments import (
