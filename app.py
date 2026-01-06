@@ -54,9 +54,14 @@ from typing import Dict, Any, Optional
 from sqlalchemy.dialects.postgresql import insert
 
 from telegram import Update, Bot, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Application
 from datetime import datetime, timezone
-from telegram.ext import CallbackQueryHandler, MessageHandler, filters
+from telegram.ext import (
+    Application,
+    CallbackQueryHandler,
+    MessageHandler,
+    ConversationHandler,
+    filters,
+)
 
 # Local imports
 from logger import tg_error_handler, logger
@@ -69,6 +74,8 @@ from utils.signer import generate_signed_token, verify_signed_token
 from webhook import router as webhook_router
 from bot_instance import bot
 from services.airtime_service import handle_claim_airtime_button, handle_airtime_claim_phone
+
+AIRTIME_PHONE = 1
 
 # ✅ Import Flutterwave-related functions/constants
 from services.payments import (
@@ -191,14 +198,20 @@ async def on_startup():
         playtrivia.register_handlers(application)
 
         # ✅ Airtime claim handlers
-        application.add_handler(
-            CallbackQueryHandler(handle_claim_airtime_button, pattern=r"^claim_airtime:")
+        airtime_conversation = ConversationHandler(
+            entry_points=[
+                CallbackQueryHandler(handle_claim_airtime_button, pattern=r"^claim_airtime:")
+            ],
+            states={
+                AIRTIME_PHONE: [
+                    MessageHandler(filters.TEXT & ~filters.COMMAND, handle_airtime_claim_phone)
+                ],
+            },
+            fallbacks=[],
+            allow_reentry=True,
         )
 
-        application.add_handler(
-            MessageHandler(filters.TEXT & ~filters.COMMAND, handle_airtime_claim_phone)
-        )
-
+        application.add_handler(airtime_conversation)
 
         # Initialize & start bot
         await application.initialize()
