@@ -271,7 +271,6 @@ async def create_pending_airtime_payout_and_prompt(
 # -------------------------------------------------------------------
 async def handle_claim_airtime_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    await query.answer("✅ Button clicked!", show_alert=True)
     await query.answer()
 
     data = (query.data or "").strip()
