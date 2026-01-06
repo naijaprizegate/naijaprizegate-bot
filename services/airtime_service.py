@@ -16,6 +16,8 @@ from typing import Optional, Dict, Any
 from sqlalchemy import text
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes
+from telegram.ext import ConversationHandler
+from app import AIRTIME_PHONE
 
 from db import AsyncSessionLocal
 from utils.security import validate_phone
@@ -270,29 +272,61 @@ async def create_pending_airtime_payout_and_prompt(
 # Claim Button → Ask for Phone Number
 # -------------------------------------------------------------------
 async def handle_claim_airtime_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """
+    Handles pressing the "Claim Airtime Reward" button.
+    Sets user_data state and transitions ConversationHandler to AIRTIME_PHONE.
+    """
     query = update.callback_query
-    await query.answer()
 
+    # Small UX feedback on tap
+    try:
+        await query.answer("Processing...", show_alert=False)
+    except Exception:
+        # If query.answer fails, don't break the flow
+        pass
+
+    # -------------------------------------------------------
+    # Validate callback format
+    # -------------------------------------------------------
     data = (query.data or "").strip()
     if not data.startswith("claim_airtime:"):
-        return await query.message.reply_text("⚠️ Invalid claim request. Please try again.", parse_mode="Markdown")
+        await query.message.reply_text(
+            "⚠️ Invalid claim request. Please try again.",
+            parse_mode="Markdown",
+        )
+        return AIRTIME_PHONE  # keep user in phone state to avoid dead end
 
     _, payout_id = data.split(":", 1)
     payout_id = payout_id.strip()
-    if not payout_id:
-        return await query.message.reply_text("⚠️ Reward reference missing. Please try again.", parse_mode="Markdown")
 
+    if not payout_id:
+        await query.message.reply_text(
+            "⚠️ Reward reference missing. Please try again.",
+            parse_mode="Markdown",
+        )
+        return AIRTIME_PHONE
+
+    # -------------------------------------------------------
+    # Save claim session state (do NOT clear user_data)
+    # -------------------------------------------------------
     expires_at = (datetime.utcnow() + timedelta(minutes=5)).timestamp()
+
     context.user_data["pending_payout_id"] = payout_id
     context.user_data["awaiting_airtime_phone"] = True
     context.user_data["airtime_expiry"] = expires_at
 
+    # -------------------------------------------------------
+    # Prompt for phone number
+    # -------------------------------------------------------
     await query.message.reply_text(
         "📱 Enter your *11-digit Nigerian phone number* to receive your airtime.\n"
         "Example: `08012345678`\n\n"
         "_This session expires in 5 minutes._",
         parse_mode="Markdown",
     )
+
+    # ✅ IMPORTANT: tell ConversationHandler to expect a phone number next
+    return AIRTIME_PHONE
 
 
 # -------------------------------------------------------------------
@@ -307,27 +341,40 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
     awaiting = context.user_data.get("awaiting_airtime_phone")
     expiry_ts = context.user_data.get("airtime_expiry")
 
+    # -------------------------------------------------------
     # Validate claim session
+    # -------------------------------------------------------
     if not awaiting or not payout_id:
-        return await msg.reply_text(
+        await msg.reply_text(
             "⛔ Claim session not active. Please tap *Claim Airtime Reward* again.",
             parse_mode="Markdown",
         )
+        return ConversationHandler.END
 
     if expiry_ts and datetime.utcnow().timestamp() > expiry_ts:
         context.user_data.pop("awaiting_airtime_phone", None)
         context.user_data.pop("pending_payout_id", None)
         context.user_data.pop("airtime_expiry", None)
-        return await msg.reply_text(
+
+        await msg.reply_text(
             "⛔ Claim session expired. Please start again from rewards.",
             parse_mode="Markdown",
         )
+        return ConversationHandler.END
 
-    # Validate phone
+    # -------------------------------------------------------
+    # Validate phone number
+    # -------------------------------------------------------
     if not phone.isdigit() or len(phone) != 11 or not validate_phone(phone):
-        return await msg.reply_text("❌ Invalid number — must be like `08123456789`", parse_mode="Markdown")
+        await msg.reply_text(
+            "❌ Invalid number — must be like `08123456789`",
+            parse_mode="Markdown",
+        )
+        return ConversationHandler.END
 
+    # -------------------------------------------------------
     # Lock payout + ownership + status update
+    # -------------------------------------------------------
     try:
         async with AsyncSessionLocal() as session:
             async with session.begin():
@@ -343,18 +390,22 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
                 row = res.first()
 
                 if not row:
-                    return await msg.reply_text("⚠️ Invalid payout reference.")
+                    await msg.reply_text("⚠️ Invalid payout reference.")
+                    return ConversationHandler.END
 
                 status, payout_tg_id = row
 
                 if payout_tg_id != update.effective_user.id:
                     logger.warning("🚨 Payout ownership mismatch")
-                    return await msg.reply_text("⛔ Unauthorized claim attempt.")
+                    await msg.reply_text("⛔ Unauthorized claim attempt.")
+                    return ConversationHandler.END
 
                 if status != "pending_claim":
-                    return await msg.reply_text("ℹ️ This reward is already being processed or completed.")
+                    await msg.reply_text(
+                        "ℹ️ This reward is already being processed or completed."
+                    )
+                    return ConversationHandler.END
 
-                # Save phone & move to processing
                 await session.execute(
                     text("""
                         UPDATE airtime_payouts
@@ -371,9 +422,14 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
 
     except Exception:
         logger.exception("❌ DB error updating payout phone")
-        return await msg.reply_text("⚠️ Could not save your phone. Please try again shortly.")
+        await msg.reply_text(
+            "⚠️ Could not save your phone. Please try again shortly."
+        )
+        return ConversationHandler.END
 
+    # -------------------------------------------------------
     # Fetch reward amount
+    # -------------------------------------------------------
     async with AsyncSessionLocal() as session:
         res = await session.execute(
             text("SELECT amount FROM airtime_payouts WHERE id = :id"),
@@ -383,9 +439,12 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
         amount = row[0] if row else None
 
     if not amount:
-        return await msg.reply_text("⚠️ Something went wrong. Please retry later.")
+        await msg.reply_text("⚠️ Something went wrong. Please retry later.")
+        return ConversationHandler.END
 
-    # Send airtime automatically (NO checkout link)
+    # -------------------------------------------------------
+    # Send airtime automatically (Clubkonnect)
+    # -------------------------------------------------------
     provider_request_id = f"AIRTIME-{payout_id}"
     provider_name = "clubkonnect"
 
@@ -400,12 +459,14 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
             request_id=provider_request_id
         )
         success = clubkonnect_is_success(data)
-        provider_reference = str(data.get("orderid") or "")  # orderid is what they return
+        provider_reference = str(data.get("orderid") or "")
     except Exception:
         logger.exception("❌ Clubkonnect call failed")
         success = False
 
-    # Update payout status based on provider response
+    # -------------------------------------------------------
+    # Update payout status
+    # -------------------------------------------------------
     try:
         async with AsyncSessionLocal() as session:
             async with session.begin():
@@ -442,7 +503,6 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
                         {
                             "id": payout_id,
                             "provider": provider_name,
-                            # keep a ref for debugging even on fail
                             "ref": provider_reference or provider_request_id,
                             "resp": json.dumps(data) if data else None,
                         },
@@ -450,12 +510,16 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
     except Exception:
         logger.exception("❌ Failed to update payout status after provider call")
 
-    # Cleanup only OUR keys
+    # -------------------------------------------------------
+    # Cleanup session keys
+    # -------------------------------------------------------
     context.user_data.pop("awaiting_airtime_phone", None)
     context.user_data.pop("pending_payout_id", None)
     context.user_data.pop("airtime_expiry", None)
 
+    # -------------------------------------------------------
     # Notify user
+    # -------------------------------------------------------
     if success:
         await msg.reply_text(
             f"🎉 *Airtime Sent!*\n\n"
@@ -479,5 +543,8 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
     await msg.reply_text("What would you like to do next?", reply_markup=keyboard)
 
     logger.info(
-        f"✅ Airtime payout processed | payout_id={payout_id} | phone={phone} | amount={amount} | success={success} | provider_orderid={provider_reference}"
+        f"✅ Airtime payout processed | payout_id={payout_id} | phone={phone} | amount={amount} | success={success}"
     )
+
+    # ✅ VERY IMPORTANT: end the conversation
+    return ConversationHandler.END
