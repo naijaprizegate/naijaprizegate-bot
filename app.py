@@ -56,6 +56,7 @@ from sqlalchemy.dialects.postgresql import insert
 from telegram import Update, Bot, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application
 from datetime import datetime, timezone
+from telegram.ext import CallbackQueryHandler, MessageHandler, filters
 
 # Local imports
 from logger import tg_error_handler, logger
@@ -67,6 +68,7 @@ from helpers import get_or_create_user, add_tries
 from utils.signer import generate_signed_token, verify_signed_token
 from webhook import router as webhook_router
 from bot_instance import bot
+from services.airtime_service import handle_claim_airtime_button, handle_airtime_claim_phone
 
 # ✅ Import Flutterwave-related functions/constants
 from services.payments import (
@@ -188,6 +190,16 @@ async def on_startup():
         admin.register_handlers(application)
         playtrivia.register_handlers(application)
 
+        # ✅ Airtime claim handlers
+        application.add_handler(
+            CallbackQueryHandler(handle_claim_airtime_button, pattern=r"^claim_airtime:")
+        )
+
+        application.add_handler(
+            MessageHandler(filters.TEXT & ~filters.COMMAND, handle_airtime_claim_phone)
+        )
+
+
         # Initialize & start bot
         await application.initialize()
 
@@ -205,6 +217,7 @@ async def on_startup():
         
         # Add error handler
         application.add_error_handler(tg_error_handler)
+
         
     except Exception as e:
         clean_trace = re.sub(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", traceback.format_exc())
@@ -1029,4 +1042,3 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
-
