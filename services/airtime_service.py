@@ -358,6 +358,8 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
         f"✅ AIRTIME PHONE HANDLER HIT | tg_id={update.effective_user.id} | raw={raw_phone}"
     )
 
+    print("✅ HIT airtime phone handler", flush=True)
+    
     phone = normalize_ng_phone(raw_phone)
 
     payout_id = context.user_data.get("pending_payout_id")
