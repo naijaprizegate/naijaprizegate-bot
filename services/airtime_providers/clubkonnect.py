@@ -90,13 +90,13 @@ async def buy_airtime(
     if callback_url:
         params["CallBackURL"] = callback_url
 
-    url = f"{CK_BASE_URL}/APIAirtimeV1.asp"
+    url = f"{CK_BASE_URL}/APIAirtime.asp"
 
     # IMPORTANT: don't log API key or full URL
     logger.info(f"Clubkonnect airtime request | phone={phone} amount={amount} network={net} request_id={rid}")
 
     async with httpx.AsyncClient(timeout=20.0) as client:
-        resp = await client.get(url, params=params)
+        resp = await client.post(url, data=params)
 
     try:
         data = resp.json()
