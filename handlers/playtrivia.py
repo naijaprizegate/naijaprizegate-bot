@@ -682,11 +682,3 @@ def register_handlers(application):
     application.add_handler(
         CallbackQueryHandler(free_menu, pattern="^free$")
     )
-
-    # Fallback (generic catch-all message handler)
-    application.add_handler(
-        MessageHandler(
-            filters.ALL,
-            lambda u, c: u.message.reply_text("Use /start to begin 🧠 Trivia Rewards"),
-        )
-    )
