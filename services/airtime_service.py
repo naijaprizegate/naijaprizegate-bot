@@ -294,12 +294,13 @@ async def handle_claim_airtime_button(update: Update, context: ContextTypes.DEFA
     Sets user_data state and transitions ConversationHandler to AIRTIME_PHONE.
     """
     query = update.callback_query
+    if not query:
+        return ConversationHandler.END
 
     # Small UX feedback on tap
     try:
         await query.answer("Processing...", show_alert=False)
     except Exception:
-        # If query.answer fails, don't break the flow
         pass
 
     # -------------------------------------------------------
@@ -311,23 +312,22 @@ async def handle_claim_airtime_button(update: Update, context: ContextTypes.DEFA
             "⚠️ Invalid claim request. Please try again.",
             parse_mode="Markdown",
         )
-        return AIRTIME_PHONE  # keep user in phone state to avoid dead end
+        return ConversationHandler.END
 
     _, payout_id = data.split(":", 1)
     payout_id = payout_id.strip()
 
     if not payout_id:
         await query.message.reply_text(
-            "⚠️ Reward reference missing. Please try again.",
+            "⚠️ Reward reference missing. Please tap *Claim Airtime Reward* again.",
             parse_mode="Markdown",
         )
-        return AIRTIME_PHONE
+        return ConversationHandler.END
 
     # -------------------------------------------------------
     # Save claim session state (do NOT clear user_data)
     # -------------------------------------------------------
     expires_at = (datetime.utcnow() + timedelta(minutes=5)).timestamp()
-
     context.user_data["pending_payout_id"] = payout_id
     context.user_data["awaiting_airtime_phone"] = True
     context.user_data["airtime_expiry"] = expires_at
@@ -352,6 +352,12 @@ async def handle_claim_airtime_button(update: Update, context: ContextTypes.DEFA
 async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg = update.message
     raw_phone = (msg.text or "").strip()
+
+    # ✅ DEBUG: proves this handler is receiving the phone message
+    logger.info(
+        f"✅ AIRTIME PHONE HANDLER HIT | tg_id={update.effective_user.id} | raw={raw_phone}"
+    )
+
     phone = normalize_ng_phone(raw_phone)
 
     payout_id = context.user_data.get("pending_payout_id")
