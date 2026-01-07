@@ -209,34 +209,54 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # Fallback — unchanged (still skips numeric-only messages)
 # ===============================================================
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    # ✅ Don't interrupt airtime claim flow
+    if context.user_data.get("awaiting_airtime_phone"):
+        return
+
     safe_text = md_escape(
         "🤔 Sorry, I didn’t understand that.\n\n"
         "Use /start or tap a menu button ↓"
     )
-    keyboard = [
+
+    keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
         [InlineKeyboardButton("💳 Get More Trivia Attempts", callback_data="buy")],
         [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
         [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
-        [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],  # NEW
-        [InlineKeyboardButton("❓ FAQs", callback_data="faq")]                # NEW
-    ]
+        [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],
+        [InlineKeyboardButton("❓ FAQs", callback_data="faq")],
+    ])
 
+    # ✅ Reply safely based on update type
     if update.message:
         await update.message.reply_text(
             safe_text,
-            reply_markup=InlineKeyboardMarkup(keyboard),
-            parse_mode="MarkdownV2"
+            reply_markup=keyboard,
+            parse_mode="MarkdownV2",
         )
-    elif update.callback_query:
-        await update.callback_query.answer()
-        await update.callback_query.edit_message_text(
-            safe_text,
-            reply_markup=InlineKeyboardMarkup(keyboard),
-            parse_mode="MarkdownV2"
-        )
+        return
 
+    if update.callback_query:
+        try:
+            await update.callback_query.answer()
+        except Exception:
+            pass
+
+        try:
+            await update.callback_query.edit_message_text(
+                safe_text,
+                reply_markup=keyboard,
+                parse_mode="MarkdownV2",
+            )
+        except Exception:
+            # If edit fails (e.g., message not editable), fall back to sending a new message
+            await update.callback_query.message.reply_text(
+                safe_text,
+                reply_markup=keyboard,
+                parse_mode="MarkdownV2",
+            )
+        return
 
 # ===============================================================
 # Register Handlers
