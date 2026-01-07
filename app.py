@@ -203,19 +203,18 @@ async def on_startup():
             ],
             states={
                 AIRTIME_PHONE: [
-                    # ✅ Only accept valid NG phone formats
-                    MessageHandler(filters.Regex(r"^(?:\+234|0)\d{10}$"), handle_airtime_claim_phone)
+                    # ✅ Accept ALL text; validate inside handler
+                    MessageHandler(filters.TEXT & ~filters.COMMAND, handle_airtime_claim_phone)
                 ],
             },
             fallbacks=[],
             allow_reentry=True,
-            per_message=True,  # ✅ removes your PTB warning and improves tracking
-            block=True,        # ✅ prevents other handlers from also processing this update
+            per_message=True,
+            block=True,
         )
 
-        # ✅ Highest priority so it runs before other text handlers
+        # ✅ Highest priority
         application.add_handler(airtime_conversation, group=-1)
-
 
         # Initialize & start bot
         await application.initialize()
