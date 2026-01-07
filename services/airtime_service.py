@@ -147,12 +147,21 @@ async def create_flutterwave_checkout_link(
 # -------------------------------------------------------------------
 # Clubkonnect/Nellobytes Airtime payout (Automatic)
 # -------------------------------------------------------------------
-async def send_airtime_via_clubkonnect(phone: str, amount: int, request_id: Optional[str] = None) -> Dict[str, Any]:
+async def send_airtime_via_clubkonnect(
+    phone: str,
+    amount: int,
+    request_id: Optional[str] = None
+) -> Dict[str, Any]:
     """
-    Sends airtime using Nellobytes/Clubkonnect Airtime API.
-    Uses HTTPS GET with query params and returns JSON dict.
+    Sends airtime using Clubkonnect/Nellobytes Airtime API (HTTPS GET).
+    Returns a JSON dict (or a structured error dict if provider returns non-JSON/HTML).
     """
+
+    # -------------------------------
+    # Defensive checks
+    # -------------------------------
     if not CK_USER_ID or not CK_API_KEY:
+        logger.error("❌ Clubkonnect credentials missing (CK_USER_ID/CK_API_KEY not set)")
         return {"status": "error", "message": "Clubkonnect credentials not configured"}
 
     if amount < 50:
@@ -162,39 +171,86 @@ async def send_airtime_via_clubkonnect(phone: str, amount: int, request_id: Opti
     if not net:
         return {"status": "error", "message": "Could not detect network for this number"}
 
-    mobile_network_code = NETWORK_CODE[net]
+    if net not in NETWORK_CODE:
+        return {"status": "error", "message": f"Unsupported network detected: {net}"}
+
+    mobile_network_code = str(NETWORK_CODE[net])
     rid = request_id or f"NP-{uuid.uuid4()}"
 
     params = {
         "UserID": CK_USER_ID,
         "APIKey": CK_API_KEY,
         "MobileNetwork": mobile_network_code,
-        "Amount": str(amount),
+        "Amount": str(int(amount)),
         "MobileNumber": phone,
         "RequestID": rid,
-        # Optional: CallBackURL can be used later if you want provider to ping your server
+        # Optional:
         # "CallBackURL": "https://yourdomain.com/clubkonnect/callback"
     }
 
-    url = f"{CK_BASE_URL}/APIAirtimeV1.asp"
+    # -------------------------------
+    # Endpoints (try V1 first, fallback to legacy)
+    # -------------------------------
+    endpoints = [
+        "/APIAirtimeV1.asp",  # recommended / newer
+        "/APIAirtime.asp",    # legacy fallback
+    ]
 
-    # IMPORTANT: Don't log APIKey or full URL
-    logger.info(f"📤 Clubkonnect airtime request | phone={phone} amount={amount} network={net} request_id={rid}")
-
-    async with httpx.AsyncClient(timeout=20.0) as client:
-        resp = await client.get(url, params=params)
-
-    try:
-        data = resp.json()
-    except Exception:
-        # Provider sometimes returns non-JSON on error; keep small snippet
-        data = {"status": "error", "message": "Non-JSON response from provider", "raw": resp.text[:200]}
-
-    # Log minimal status only
+    # IMPORTANT: don't log APIKey or full URL with params
     logger.info(
-        f"📥 Clubkonnect airtime response | request_id={rid} status={data.get('status')} statuscode={data.get('statuscode')} orderid={data.get('orderid')}"
+        f"📤 Clubkonnect airtime request | base={CK_BASE_URL} "
+        f"| phone={phone} amount={amount} net={net} MobileNetwork={mobile_network_code} request_id={rid}"
     )
-    return data
+
+    # -------------------------------
+    # Request + parse
+    # -------------------------------
+    last_error: Optional[Dict[str, Any]] = None
+
+    for ep in endpoints:
+        url = f"{CK_BASE_URL}{ep}"
+
+        try:
+            async with httpx.AsyncClient(timeout=25.0) as client:
+                resp = await client.get(url, params=params)
+
+            body_snip = (resp.text or "")[:300].replace("\n", " ").replace("\r", " ")
+            logger.info(f"🌐 Clubkonnect HTTP | endpoint={ep} status_code={resp.status_code} | body_snip={body_snip}")
+
+            # Try JSON parse
+            try:
+                data = resp.json()
+            except Exception:
+                data = {
+                    "status": "error",
+                    "message": "Non-JSON response from provider",
+                    "http_status": resp.status_code,
+                    "endpoint": ep,
+                    "raw": (resp.text or "")[:500],
+                }
+
+            # Always log parsed payload (short)
+            logger.info(f"📦 Clubkonnect parsed response | endpoint={ep} request_id={rid} | data={str(data)[:500]}")
+
+            # If we got a dict and it looks like a real CK response, return it
+            # (Even if it's failure — your calling code decides success/fail)
+            if isinstance(data, dict):
+                return data
+
+            # Otherwise, store and try next endpoint
+            last_error = {
+                "status": "error",
+                "message": "Unexpected response type from provider",
+                "endpoint": ep,
+                "http_status": resp.status_code,
+            }
+
+        except Exception as e:
+            logger.exception(f"❌ Clubkonnect request failed | endpoint={ep} request_id={rid} | err={e}")
+            last_error = {"status": "error", "message": "Clubkonnect request exception", "endpoint": ep}
+
+    # If both endpoints failed
+    return last_error or {"status": "error", "message": "Clubkonnect request failed"}
 
 
 def clubkonnect_is_success(data: Dict[str, Any]) -> bool:
@@ -357,9 +413,8 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
     logger.info(
         f"✅ AIRTIME PHONE HANDLER HIT | tg_id={update.effective_user.id} | raw={raw_phone}"
     )
-
     print("✅ HIT airtime phone handler", flush=True)
-    
+
     phone = normalize_ng_phone(raw_phone)
 
     payout_id = context.user_data.get("pending_payout_id")
