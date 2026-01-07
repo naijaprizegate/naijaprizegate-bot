@@ -209,7 +209,7 @@ async def on_startup():
             },
             fallbacks=[],
             allow_reentry=True,
-            per_message=True,
+            per_message=False,
             block=True,
         )
 
