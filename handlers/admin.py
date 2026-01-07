@@ -20,6 +20,7 @@ from telegram import (
 )
 from telegram.ext import (
     ContextTypes,
+    ConversationHandler,
     CommandHandler,
     CallbackQueryHandler,
     MessageHandler,
@@ -1284,7 +1285,7 @@ async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
             return await query.answer("⛔ Unauthorized", show_alert=True)
 
     # Parse selection label (after first ":")
-    label = query.data.split(":", 1)[1]
+    label = query.data.split(":", 1)[1].strip().lower()
 
     now = datetime.now(timezone.utc)
     start_dt = None
@@ -1300,38 +1301,37 @@ async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
         start_dt = now - timedelta(days=30)
         end_dt = now
     elif label == "thismonth":
-        start_dt = now.replace(
-            day=1, hour=0, minute=0, second=0, microsecond=0
-        )
+        start_dt = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
         end_dt = now
     elif label == "lastmonth":
-        first_of_this_month = now.replace(
-            day=1, hour=0, minute=0, second=0, microsecond=0
-        )
+        first_of_this_month = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
         last_month_end = first_of_this_month - timedelta(microseconds=1)
-        last_month_start = last_month_end.replace(
-            day=1, hour=0, minute=0, second=0, microsecond=0
-        )
+        last_month_start = last_month_end.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
         start_dt = last_month_start
         end_dt = last_month_end
     elif label == "all":
         start_dt = datetime(2000, 1, 1, tzinfo=timezone.utc)
         end_dt = now
     elif label == "custom":
-        # NEW: ask for both dates in one message instead of multi-step flow
+        # ✅ IMPORTANT: Arm the date input router ONLY for this admin
+        context.user_data["awaiting_date_range"] = True
+
         await query.edit_message_text(
             "📅 <b>Custom Range</b>\n\n"
-            "Please send your full range in one message using either format:\n"
+            "Please send your full range in one message using either format:\n\n"
             "<code>2025-10-01 to 2025-10-31</code>\n"
             "or\n"
-            "<code>2025-10-01,2025-10-31</code>",
+            "<code>2025-10-01,2025-10-31</code>\n\n"
+            "<i>Tip:</i> Send it as plain text (don’t add extra words).",
             parse_mode="HTML",
         )
         return
     else:
         return await query.answer("⚠️ Invalid selection", show_alert=True)
 
-    # For predefined ranges
+    # For predefined ranges: disarm custom mode just in case
+    context.user_data.pop("awaiting_date_range", None)
+
     await query.edit_message_text("⏳ Generating CSV... please wait.")
     await generate_and_send_csv(update, context, start_dt, end_dt, label=label)
 
@@ -1339,13 +1339,13 @@ async def export_csv_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 # ---------------------------------------------------------
 # Step 3 — Single Message Custom Range Date Input
 # ---------------------------------------------------------
-async def date_range_message_router(
-    update: Update, context: ContextTypes.DEFAULT_TYPE
-):
+async def date_range_message_router(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
     Handles admin text input for custom CSV date ranges.
     Accepts one message like '2025-10-01 to 2025-10-31' or '2025-10-01,2025-10-31'.
     Generates the CSV immediately.
+
+    ✅ Will ONLY run when context.user_data["awaiting_date_range"] is True.
     """
     user_id = getattr(getattr(update, "effective_user", None), "id", None)
 
@@ -1363,58 +1363,62 @@ async def date_range_message_router(
         if not ok:
             return  # Ignore — not admin
 
+    # ✅ GUARD: Only process if admin selected "custom" and we asked for dates
+    if not context.user_data.get("awaiting_date_range"):
+        return
+
     text = (update.message.text or "").strip()
     if not text:
         return
 
     # --- Parse both dates from input
-    separators = ["to", "-", ",", "–", "—"]
+    # IMPORTANT: do NOT include "-" because YYYY-MM-DD contains "-"
+    separators = [" to ", "to", ",", "–", "—"]
     parts = None
+
+    # Keep original hyphens (inside dates) intact
+    normalized = text.strip()
+
     for sep in separators:
-        if sep in text:
-            parts = text.replace(" ", "").split(sep)
+        if sep in normalized:
+            parts = [p.strip() for p in normalized.split(sep, 1)]
             break
 
-    if not parts or len(parts) != 2:
+    if not parts or len(parts) != 2 or not parts[0] or not parts[1]:
         await update.message.reply_text(
             "❌ Please send both dates like:\n\n"
             "`2025-10-01 to 2025-10-31`\n\nor\n`2025-10-01,2025-10-31`",
             parse_mode="MarkdownV2",
         )
-        from telegram.ext import ConversationHandler
+        context.user_data.pop("awaiting_date_range", None)
+        return
 
-        return ConversationHandler.END
-
-    start_str, end_str = parts[0].strip(), parts[1].strip()
+    start_str, end_str = parts[0], parts[1]
 
     # --- Parse ISO dates
     try:
-        start_dt = datetime.strptime(start_str, "%Y-%m-%d").replace(
-            tzinfo=timezone.utc
-        )
+        start_dt = datetime.strptime(start_str, "%Y-%m-%d").replace(tzinfo=timezone.utc)
         end_dt = datetime.strptime(end_str, "%Y-%m-%d").replace(
-            hour=23,
-            minute=59,
-            second=59,
-            microsecond=999999,
-            tzinfo=timezone.utc,
+            hour=23, minute=59, second=59, microsecond=999999, tzinfo=timezone.utc
         )
     except ValueError:
         await update.message.reply_text(
             "❌ Invalid date format.\nMake sure both dates are in `YYYY-MM-DD` format.",
             parse_mode="MarkdownV2",
         )
-        from telegram.ext import ConversationHandler
-
-        return ConversationHandler.END
+        context.user_data.pop("awaiting_date_range", None)
+        return
 
     if start_dt > end_dt:
         await update.message.reply_text(
-            "⚠️ Start date must be before end date."
+            "⚠️ Start date must be before end date.",
+            parse_mode="MarkdownV2",
         )
-        from telegram.ext import ConversationHandler
+        context.user_data.pop("awaiting_date_range", None)
+        return
 
-        return ConversationHandler.END
+    # ✅ Disarm immediately (prevents hijacking after success)
+    context.user_data.pop("awaiting_date_range", None)
 
     # --- Generate and send CSV
     await update.message.reply_text("⏳ Generating CSV... please wait.")
@@ -1425,10 +1429,6 @@ async def date_range_message_router(
         end_dt,
         label=f"custom_{start_dt.date()}_to_{end_dt.date()}",
     )
-
-    from telegram.ext import ConversationHandler
-
-    return ConversationHandler.END
 
 
 # ---------------------------------------------------------
@@ -1891,92 +1891,56 @@ async def show_failed_airtime(update: Update, context: ContextTypes.DEFAULT_TYPE
         reply_markup=keyboard
     )
 
-
-# ----------------------------
-# Register Handlers (CLEAN & ORDERED ✅)
-# ----------------------------
+#--------Register Handlers--------------
 def register_handlers(application):
+    ADMIN_GROUP = 10  # ✅ Admin runs later than user flows
+
     # ✅ ADMIN COMMANDS
-    application.add_handler(CommandHandler("admin", admin_panel))
-    application.add_handler(CommandHandler("pending_proofs", pending_proofs))
-    application.add_handler(CommandHandler("winners", show_winners_section))
+    application.add_handler(CommandHandler("admin", admin_panel), group=ADMIN_GROUP)
+    application.add_handler(CommandHandler("pending_proofs", pending_proofs), group=ADMIN_GROUP)
+    application.add_handler(CommandHandler("winners", show_winners_section), group=ADMIN_GROUP)
 
-    # ✅ ADMIN SUB-SECTIONS — must come BEFORE generic admin_callback
+    # ✅ ADMIN SUB-SECTIONS
+    application.add_handler(CallbackQueryHandler(pending_proofs, pattern=r"^admin_pending"), group=ADMIN_GROUP)
+    application.add_handler(CallbackQueryHandler(user_search_handler, pattern=r"^admin_usersearch"), group=ADMIN_GROUP)
+    application.add_handler(CallbackQueryHandler(show_winners_section, pattern=r"^admin_winners"), group=ADMIN_GROUP)
+    application.add_handler(CallbackQueryHandler(show_filtered_winners, pattern=r"^admin_winners_filter:"), group=ADMIN_GROUP)
     application.add_handler(
-        CallbackQueryHandler(pending_proofs, pattern=r"^admin_pending")
-    )
-    application.add_handler(
-        CallbackQueryHandler(user_search_handler, pattern=r"^admin_usersearch")
-    )
-    application.add_handler(
-        CallbackQueryHandler(show_winners_section, pattern=r"^admin_winners")
-    )
-    application.add_handler(
-        CallbackQueryHandler(
-            show_filtered_winners, pattern=r"^admin_winners_filter:"
-        )
-    )
-    application.add_handler(
-        CallbackQueryHandler(
-            show_top_tier_campaign_reward_points, pattern="admin_menu:top_tier_campaign_reward_points"
-        )
+        CallbackQueryHandler(show_top_tier_campaign_reward_points, pattern=r"^admin_menu:top_tier_campaign_reward_points$"),
+        group=ADMIN_GROUP
     )
 
-    # ✅ CSV EXPORT FLOW (must be ABOVE generic text handlers)
+    # ✅ CSV EXPORT FLOW
+    application.add_handler(CallbackQueryHandler(admin_export_csv_menu, pattern=r"^admin_export_csv$"), group=ADMIN_GROUP)
+    application.add_handler(CallbackQueryHandler(export_csv_handler, pattern=r"^export_csv:"), group=ADMIN_GROUP)
+
+    # ✅ Admin custom date input (only acts when awaiting_date_range=True)
     application.add_handler(
-        CallbackQueryHandler(
-            admin_export_csv_menu, pattern=r"^admin_export_csv$"
-        )
-    )
-    application.add_handler(
-        CallbackQueryHandler(export_csv_handler, pattern=r"^export_csv:")
+        MessageHandler(filters.TEXT & ~filters.COMMAND, date_range_message_router),
+        group=ADMIN_GROUP
     )
 
-    # 🟩 CRITICAL: Handle custom date input FIRST among text handlers
-    # This ensures it catches YYYY-MM-DD input before fallback or user search
+    # ✅ Admin Menu routing
+    application.add_handler(CallbackQueryHandler(admin_callback, pattern=r"^admin_"), group=ADMIN_GROUP)
+
+    # ✅ Delivery status updates (NOTE: you have duplicates — keep only ONE per pattern)
     application.add_handler(
-        MessageHandler(filters.TEXT & ~filters.COMMAND, date_range_message_router)
+        CallbackQueryHandler(update_delivery_status_transit, pattern=r"^pw_status_transit_\d+$"),
+        group=ADMIN_GROUP
+    )
+    application.add_handler(
+        CallbackQueryHandler(update_delivery_status_delivered, pattern=r"^pw_status_delivered_\d+$"),
+        group=ADMIN_GROUP
     )
 
-    # ✅ Admin Menu and main routing (keep AFTER section-specific handlers)
+    # ✅ User search text handler (also must be guarded or scoped)
     application.add_handler(
-        CallbackQueryHandler(admin_callback, pattern=r"^admin_")
+        MessageHandler(filters.TEXT & ~filters.COMMAND, user_search_handler),
+        group=ADMIN_GROUP
     )
-
-    # ✅ Delivery status updates
-    application.add_handler(
-        CallbackQueryHandler(
-            update_delivery_status_transit, pattern=r"^pw_status_transit_\d+$"
-        )
-    )
-    application.add_handler(
-        CallbackQueryHandler(
-            update_delivery_status_delivered,
-            pattern=r"^pw_status_delivered_\d+$",
-        )
-    )
-    application.add_handler(
-        CallbackQueryHandler(
-            handle_pw_mark_in_transit, pattern=r"^pw_status_transit_\d+$"
-        )
-    )
-    application.add_handler(
-        CallbackQueryHandler(
-            handle_pw_mark_delivered, pattern=r"^pw_status_delivered_\d+$"
-        )
-    )
-
-    # 🟩 Fallback text handlers LAST
-    # These only run if the user isn’t inside a date selection flow
-    application.add_handler(
-        MessageHandler(filters.TEXT & ~filters.COMMAND, user_search_handler)
-    )
-
-    # ✅ Absolute fallback — catches *everything else* (usually in handlers/core.py)
-    # Place this one at the VERY END of all registrations:
-    application.add_handler(MessageHandler(filters.ALL, fallback))
 
     # Failed Airtime pagination
-    application.add_handler(
-        CallbackQueryHandler(show_failed_airtime, pattern=r"^admin_airtime_failed")
-    )
+    application.add_handler(CallbackQueryHandler(show_failed_airtime, pattern=r"^admin_airtime_failed"), group=ADMIN_GROUP)
+
+    # ✅ Absolute fallback LAST (I recommend keeping this in core.py instead of admin.py)
+    application.add_handler(MessageHandler(filters.ALL, fallback), group=ADMIN_GROUP)
