@@ -98,6 +98,16 @@ async def create_flutterwave_checkout_link(
     username: Optional[str] = None,
     email: Optional[str] = None,
 ) -> Optional[str]:
+    """
+    Creates a Flutterwave hosted checkout link for TRIVIA purchase payments.
+
+    ✅ Enforces a TRIVIA- prefix on tx_ref to keep webhook routing clean.
+    """
+    # ✅ Ensure tx_ref is prefixed for trivia purchases
+    tx_ref = (tx_ref or "").strip()
+    if not tx_ref.startswith("TRIVIA-"):
+        tx_ref = f"TRIVIA-{tx_ref}" if tx_ref else f"TRIVIA-{uuid.uuid4()}"
+
     customer_email = email if email and "@" in email else f"user_{tg_id}@naijaprizegate.ng"
     safe_name = (username or f"User {tg_id}")[:64]
 
@@ -111,6 +121,12 @@ async def create_flutterwave_checkout_link(
             "title": "NaijaPrizeGate",
             "logo": "https://naijaprizegate.ng/static/logo.png",
         },
+        # ✅ optional meta (helps you recover tg_id/username reliably in webhook)
+        "meta": {
+            "tg_id": str(tg_id),
+            "username": username or "",
+            "purpose": "trivia_purchase",
+        },
     }
 
     headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}", "Content-Type": "application/json"}
@@ -123,8 +139,10 @@ async def create_flutterwave_checkout_link(
         logger.exception(f"Checkout creation failed: {e}")
         return None
 
-    return data.get("data", {}).get("link")
+    # Optional: log tx_ref for debugging (no secrets)
+    logger.info(f"✅ Flutterwave checkout created | tx_ref={tx_ref} | amount={amount} | tg_id={tg_id}")
 
+    return data.get("data", {}).get("link")
 
 # -------------------------------------------------------------------
 # Clubkonnect/Nellobytes Airtime payout (Automatic)
