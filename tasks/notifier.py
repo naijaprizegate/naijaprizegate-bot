@@ -33,7 +33,6 @@ BATCH_SIZE = 10
 
 async def process_pending_airtime():
     async with get_async_session() as session:
-        # Pick a batch safely (prevents double processing)
         pick_sql = text(f"""
             WITH picked AS (
                 SELECT id
@@ -108,36 +107,38 @@ async def process_pending_airtime():
                 raw_json = json.dumps(raw, ensure_ascii=False)
                 payload_text = raw_json[:5000]
 
-                if res.success:
-                    # SUCCESS / ACCEPTED
-                    try:
-                        await session.execute(
-                            text("""
-                                UPDATE airtime_payouts
-                                SET status='sent',
-                                    sent_at=COALESCE(sent_at, NOW()),
-                                    provider=:provider,
-                                    provider_ref=:ref,
-                                    provider_response=:response::jsonb,
-                                    provider_payload=:payload
-                                WHERE id=:pid
-                            """),
-                            {
-                                "pid": payout_id,
-                                "provider": provider,
-                                "ref": ref,
-                                "response": raw_json,
-                                "payload": payload_text,
-                            },
-                        )
-                        await session.commit()
-                    except Exception:
-                        logger.exception(f"❌ DB update failed on SUCCESS payout_id={payout_id}")
-                        await session.rollback()
-                        # continue to next row; don't attempt more SQL until rolled back
-                        continue
+                new_status = "sent" if res.success else "failed"
 
-                    # Notify user/admin (Telegram errors shouldn't break DB)
+                # ✅ One unified update with safe CAST
+                try:
+                    await session.execute(
+                        text("""
+                            UPDATE airtime_payouts
+                            SET status=:status,
+                                sent_at=CASE WHEN :status='sent' THEN COALESCE(sent_at, NOW()) ELSE sent_at END,
+                                provider=:provider,
+                                provider_ref=:ref,
+                                provider_response=CAST(:response AS jsonb),
+                                provider_payload=:payload
+                            WHERE id=:pid
+                        """),
+                        {
+                            "pid": payout_id,
+                            "status": new_status,
+                            "provider": provider,
+                            "ref": ref,
+                            "response": raw_json,
+                            "payload": payload_text,
+                        },
+                    )
+                    await session.commit()
+                except Exception:
+                    logger.exception(f"❌ DB update failed payout_id={payout_id} status={new_status}")
+                    await session.rollback()
+                    continue
+
+                # Notify user/admin (Telegram errors shouldn't crash)
+                if res.success:
                     try:
                         await bot.send_message(
                             chat_id=tg_id,
@@ -148,7 +149,7 @@ async def process_pending_airtime():
                             ),
                         )
                     except Exception:
-                        logger.exception(f"⚠️ Failed to notify user tg_id={tg_id} for payout_id={payout_id}")
+                        logger.exception(f"⚠️ Failed to notify user tg_id={tg_id} payout_id={payout_id}")
 
                     if ADMIN_USER_ID:
                         try:
@@ -165,69 +166,37 @@ async def process_pending_airtime():
                             )
                         except Exception:
                             logger.exception("⚠️ Failed to notify admin")
-
-                    continue
-
-                # HARD FAILURE
-                try:
-                    await session.execute(
-                        text("""
-                            UPDATE airtime_payouts
-                            SET status='failed',
-                                provider=:provider,
-                                provider_ref=:ref,
-                                provider_response=:response::jsonb,
-                                provider_payload=:payload
-                            WHERE id=:pid
-                        """),
-                        {
-                            "pid": payout_id,
-                            "provider": provider,
-                            "ref": ref,
-                            "response": raw_json,
-                            "payload": payload_text,
-                        },
-                    )
-                    await session.commit()
-                except Exception:
-                    logger.exception(f"❌ DB update failed on FAILURE payout_id={payout_id}")
-                    await session.rollback()
-                    continue
-
-                try:
-                    await bot.send_message(
-                        chat_id=tg_id,
-                        text=(
-                            "⚠️ Airtime delivery failed.\n"
-                            "We’ll retry automatically if possible. If it persists, contact support."
-                        ),
-                    )
-                except Exception:
-                    logger.exception(f"⚠️ Failed to notify user tg_id={tg_id} for failed payout_id={payout_id}")
-
-                if ADMIN_USER_ID:
+                else:
                     try:
                         await bot.send_message(
-                            chat_id=ADMIN_USER_ID,
+                            chat_id=tg_id,
                             text=(
-                                f"❌ Airtime FAILED: ₦{amount} → {phone}\n"
-                                f"user: {tg_id}\n"
-                                f"payout_id: {payout_id}\n"
-                                f"msg: {res.message}\n"
-                                f"raw: {raw}"
+                                "⚠️ Airtime delivery failed.\n"
+                                "We’ll retry automatically if possible. If it persists, contact support."
                             ),
                         )
                     except Exception:
-                        logger.exception("⚠️ Failed to notify admin")
+                        logger.exception(f"⚠️ Failed to notify user tg_id={tg_id} payout_id={payout_id}")
+
+                    if ADMIN_USER_ID:
+                        try:
+                            await bot.send_message(
+                                chat_id=ADMIN_USER_ID,
+                                text=(
+                                    f"❌ Airtime FAILED: ₦{amount} → {phone}\n"
+                                    f"user: {tg_id}\n"
+                                    f"payout_id: {payout_id}\n"
+                                    f"msg: {res.message or ''}\n"
+                                    f"raw: {raw}"
+                                ),
+                            )
+                        except Exception:
+                            logger.exception("⚠️ Failed to notify admin")
 
             except Exception as e:
-                # External call or unexpected error.
                 logger.exception(f"❌ Exception during airtime sending payout_id={payout_id}: {e}")
-
-                # IMPORTANT: rollback before any further SQL
                 await session.rollback()
 
-                # Mark failed (will retry later if eligible)
                 try:
                     await session.execute(
                         text("UPDATE airtime_payouts SET status='failed' WHERE id=:pid"),
