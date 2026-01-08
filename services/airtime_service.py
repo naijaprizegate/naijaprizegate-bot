@@ -164,7 +164,7 @@ async def send_airtime_via_clubkonnect(
         logger.error("❌ Clubkonnect credentials missing (CK_USER_ID/CK_API_KEY not set)")
         return {"status": "error", "message": "Clubkonnect credentials not configured"}
 
-    if amount < 50:
+    if amount < 100:
         return {"status": "error", "message": "Minimum airtime amount is 50"}
 
     net = guess_network(phone)
