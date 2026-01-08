@@ -20,9 +20,9 @@ WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "50000"))
 # Each key = number of premium (correct) spins a user has reached in total.
 # When user hits exactly that count, they get the configured reward.
 AIRTIME_MILESTONES = {
-    1: 50,    # at 1 correct premium reward tiers → ₦50 airtime
-    25: 100,   # at 25 correct premium reward tiers → ₦100 airtime
-    50: 200,   # at 50 correct premium reward tiers → ₦200 airtime
+    1: 100,    # at 1 correct premium reward tiers → ₦100 airtime
+    25: 1000,   # at 25 correct premium reward tiers → ₦1000 airtime
+    50: 2000,   # at 50 correct premium reward tiers → ₦2000 airtime
 }
 
 NON_AIRTIME_MILESTONES = {
@@ -202,9 +202,9 @@ async def apply_milestone_reward(
     specific premium reward tier milestones.
 
     No randomness here:
-      - If total_premium_rewards == 1  → airtime ₦50
-      - If total_premium_rewards == 25  → airtime ₦100
-      - If total_premium_rewards == 50  → airtime ₦200
+      - If total_premium_rewards == 1  → airtime ₦100
+      - If total_premium_rewards == 25  → airtime ₦1000
+      - If total_premium_rewards == 50  → airtime ₦2000
       - If total_premium_rewards == 400  → earpod
       - If total_premium_rewards == 800 → speaker
     """
