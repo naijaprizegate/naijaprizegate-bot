@@ -67,7 +67,7 @@ async def buy_airtime(
     Calls Nellobytes/Clubkonnect Airtime API (GET) and returns JSON response.
     """
     if amount < 100:
-        return {"status": "error", "message": "Minimum airtime amount is 50"}
+        return {"status": "error", "message": "Minimum airtime amount is 100"}
 
     net = network or guess_network(phone)
     if not net:
