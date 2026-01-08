@@ -4,14 +4,13 @@
 # Using ClubKonnect via services/airtime_providers/service.py
 # ================================================================
 import os
+import json
 import asyncio
 from sqlalchemy import text
 from db import get_async_session
 from telegram import Bot
 
 from logger import logger
-
-# ✅ Use your provider-agnostic service (currently ClubKonnect)
 from services.airtime_providers.service import send_airtime
 
 # -------------------------------------------------------------
@@ -42,7 +41,6 @@ async def process_pending_airtime():
             """)
         )
         rows = result.fetchall()
-
         if not rows:
             return
 
@@ -55,12 +53,9 @@ async def process_pending_airtime():
             logger.info(f"📡 Sending airtime (ClubKonnect) → {phone} (₦{amount})")
 
             try:
-                result = await send_airtime(phone=phone, amount=amount)
+                res = await send_airtime(phone=phone, amount=amount)
 
-                # ---------------------------------------------------
-                # SUCCESS (or accepted/processing depending on your service.py logic)
-                # ---------------------------------------------------
-                if result.success:
+                if res.success:
                     await session.execute(
                         text("""
                             UPDATE airtime_payouts
@@ -68,66 +63,64 @@ async def process_pending_airtime():
                                 sent_at=NOW(),
                                 provider=:provider,
                                 provider_ref=:ref,
-                                provider_response = :response::jsonb,
+                                provider_response=:response::jsonb,
                                 provider_payload=:payload
-                            WHERE id = :pid
+                            WHERE id=:pid
                         """),
                         {
                             "pid": payout_id,
-                            "provider": result.provider,
-                            "ref": result.reference,
-                            "response": json.dumps(result.raw),
-                            "payload": json.dumps(result.raw)[:5000],  # store trimmed payload safely
+                            "provider": res.provider,
+                            "ref": res.reference or "",
+                            "response": json.dumps(res.raw or {}),
+                            "payload": json.dumps(res.raw or {})[:5000],
                         }
                     )
                     await session.commit()
 
-                    # Notify user
                     await bot.send_message(
                         chat_id=tg_id,
                         text=(
                             f"🎉 Your airtime of ₦{amount} has been queued/sent to {phone}!\n"
-                            f"Ref: {result.reference or 'N/A'}"
+                            f"Ref: {res.reference or 'N/A'}"
                         )
                     )
 
-                    # Notify admin
                     if ADMIN_USER_ID:
                         await bot.send_message(
                             chat_id=ADMIN_USER_ID,
                             text=(
                                 f"✅ Airtime processed (ClubKonnect): ₦{amount} → {phone}\n"
                                 f"user: {tg_id}\n"
-                                f"ref: {result.reference or 'N/A'}\n"
-                                f"msg: {result.message or ''}"
+                                f"ref: {res.reference or 'N/A'}\n"
+                                f"msg: {res.message or ''}"
                             )
                         )
 
-                    logger.info(f"✅ Airtime processed → {phone} ref={result.reference}")
+                    logger.info(f"✅ Airtime processed → {phone} ref={res.reference}")
                     continue
 
-                # ---------------------------------------------------
-                # FAILED AIRTIME
-                # ---------------------------------------------------
+                # FAILED
                 await session.execute(
                     text("""
                         UPDATE airtime_payouts
                         SET status='failed',
                             provider=:provider,
                             provider_ref=:ref,
+                            provider_response=:response::jsonb,
                             provider_payload=:payload
-                        WHERE id = :pid
+                        WHERE id=:pid
                     """),
                     {
                         "pid": payout_id,
-                        "provider": result.provider,
-                        "ref": result.reference or "",
-                        "payload": str(result.raw)[:5000],
+                        "provider": res.provider,
+                        "ref": res.reference or "",
+                        "response": json.dumps(res.raw or {}),
+                        "payload": json.dumps(res.raw or {})[:5000],
                     }
                 )
                 await session.commit()
 
-                logger.error(f"❌ ClubKonnect error: {result.message} | raw={result.raw}")
+                logger.error(f"❌ ClubKonnect error: {res.message} | raw={res.raw}")
 
                 await bot.send_message(
                     chat_id=tg_id,
@@ -140,8 +133,8 @@ async def process_pending_airtime():
                         text=(
                             f"❌ Airtime FAILED (ClubKonnect) → {phone} (₦{amount})\n"
                             f"user: {tg_id}\n"
-                            f"msg: {result.message}\n"
-                            f"raw: {result.raw}"
+                            f"msg: {res.message}\n"
+                            f"raw: {res.raw}"
                         )
                     )
 
@@ -149,11 +142,7 @@ async def process_pending_airtime():
                 logger.exception("❌ Exception during airtime sending")
 
                 await session.execute(
-                    text("""
-                        UPDATE airtime_payouts
-                        SET status='failed'
-                        WHERE id = :pid
-                    """),
+                    text("UPDATE airtime_payouts SET status='failed' WHERE id=:pid"),
                     {"pid": payout_id}
                 )
                 await session.commit()
@@ -173,19 +162,25 @@ async def retry_failed_notifications():
     await asyncio.sleep(0.1)
 
 
+async def retry_failed_notifications_loop():
+    while True:
+        try:
+            await retry_failed_notifications()
+        except Exception as e:
+            logger.exception(f"Notifier retry_failed_notifications error: {e}")
+        await asyncio.sleep(RETRY_NOTIFICATIONS_SECONDS)
+
+
 # ================================================================
-# 🔄 MASTER NOTIFIER LOOP
+# 🔄 AIRTIME LOOP (runs every minute)
 # ================================================================
 async def notifier_loop():
-    logger.info("🚀 Notifier started (Airtime + Failed Notifications)...")
-
+    logger.info("🚀 Notifier started (Airtime)...")
     while True:
         try:
             await process_pending_airtime()
-            await retry_failed_notifications()
         except Exception as e:
             logger.exception(f"Notifier loop error: {e}")
-
         await asyncio.sleep(AIRTIME_LOOP_SECONDS)
 
 
