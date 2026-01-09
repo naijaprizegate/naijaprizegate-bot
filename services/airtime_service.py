@@ -558,6 +558,7 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
     return ConversationHandler.END
 
 
+
 async def _finalize_airtime_payout(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
@@ -567,21 +568,60 @@ async def _finalize_airtime_payout(
     airtime_result,
 ):
     """
-    Writes final DB state and notifies user/admin.
+    Writes final DB state and notifies user.
     airtime_result is AirtimeResult from services.airtime_providers.service.send_airtime
     """
+
     tg_id = update.effective_user.id
-    provider_name = airtime_result.provider or "clubkonnect"
-    provider_ref = airtime_result.reference or ""
+    provider_name = (airtime_result.provider or "clubkonnect").lower()
+    provider_ref = str(airtime_result.reference or "").strip()
     raw_payload = airtime_result.raw or {}
 
-    new_status = "completed" if airtime_result.success else "failed"
+    # -------------------------------------------------------
+    # Determine payout status properly (ClubKonnect semantics)
+    # -------------------------------------------------------
+    # You want DB status to reflect reality:
+    # - 200 / ORDER_COMPLETED => completed
+    # - 100/300 / ORDER_RECEIVED/ORDER_PROCESSED => sent (queued/processing)
+    # - otherwise => failed
+    #
+    statuscode = ""
+    status_text = ""
+    try:
+        if isinstance(raw_payload, dict):
+            statuscode = str(raw_payload.get("statuscode") or raw_payload.get("statusCode") or "").strip()
+            status_text = str(raw_payload.get("status") or "").strip().upper()
+    except Exception:
+        pass
 
-    # Important: Use SQLAlchemy bind params only (NO ":response::jsonb" which caused your SQL error)
+    if statuscode == "200" or status_text in ("ORDER_COMPLETED", "COMPLETED", "SUCCESS"):
+        new_status = "completed"
+    elif statuscode in ("100", "300") or status_text in ("ORDER_RECEIVED", "ORDER_PROCESSED"):
+        # accepted/queued by provider -> not completed yet
+        new_status = "sent"
+    elif airtime_result.success:
+        # fallback: if your normalizer marked it success but we can't see codes
+        new_status = "sent"
+    else:
+        new_status = "failed"
+
+    # -------------------------------------------------------
+    # JSON-safe payloads (avoid asyncpg "dict has no encode")
+    # -------------------------------------------------------
+    provider_response_json = json.dumps(raw_payload or {}, ensure_ascii=False)
+    provider_payload_json = provider_response_json[:5000]
+
+    # -------------------------------------------------------
+    # Idempotent DB update:
+    # - do NOT overwrite completed/failed rows
+    # - update only if row is still pending-like
+    # - also verify ownership (tg_id)
+    # -------------------------------------------------------
+    updated = False
     try:
         async with AsyncSessionLocal() as session:
             async with session.begin():
-                await session.execute(
+                res = await session.execute(
                     text("""
                         UPDATE airtime_payouts
                         SET status = :status,
@@ -590,26 +630,36 @@ async def _finalize_airtime_payout(
                             provider_reference = :provider_reference,
                             provider_response = :provider_response,
                             provider_payload = :provider_payload,
-                            sent_at = NOW(),
-                            completed_at = CASE WHEN :status = 'completed' THEN NOW() ELSE completed_at END
+                            sent_at = COALESCE(sent_at, NOW()),
+                            completed_at = CASE
+                                WHEN :status = 'completed' THEN COALESCE(completed_at, NOW())
+                                ELSE completed_at
+                            END
                         WHERE id = :id
+                          AND tg_id = :tg_id
+                          AND status NOT IN ('completed', 'failed')
+                        RETURNING status
                     """),
                     {
                         "id": payout_id,
+                        "tg_id": tg_id,
                         "status": new_status,
                         "provider": provider_name,
                         "provider_ref": provider_ref,
                         "provider_reference": provider_ref,
-                        # provider_response is JSONB column: pass python dict (asyncpg will adapt)
-                        "provider_response": raw_payload,
-                        # provider_payload is text: store a trimmed string
-                        "provider_payload": json.dumps(raw_payload)[:5000],
+                        "provider_response": provider_response_json,  # ✅ string
+                        "provider_payload": provider_payload_json,    # ✅ string
                     },
                 )
+                row = res.first()
+                updated = bool(row)
+
     except Exception:
         logger.exception(f"❌ Failed to update payout status in DB | payout_id={payout_id}")
 
-    # Cleanup state
+    # -------------------------------------------------------
+    # Cleanup conversation/session keys
+    # -------------------------------------------------------
     context.user_data.pop("awaiting_airtime_phone", None)
     context.user_data.pop("awaiting_airtime_network", None)
     context.user_data.pop("pending_payout_id", None)
@@ -617,16 +667,45 @@ async def _finalize_airtime_payout(
     context.user_data.pop("airtime_phone", None)
     context.user_data.pop("airtime_amount", None)
 
-    # Notify user
-    if airtime_result.success:
+    # -------------------------------------------------------
+    # If DB wasn't updated, do NOT spam success/failure twice
+    # (This happens on double-click / duplicate callback delivery)
+    # -------------------------------------------------------
+    if not updated:
+        try:
+            await update.effective_chat.send_message(
+                "ℹ️ This airtime payout has already been processed (or is no longer editable).",
+            )
+        except Exception:
+            pass
+        logger.info(f"ℹ️ Finalize skipped (idempotent) | payout_id={payout_id} | attempted_status={new_status}")
+        return
+
+    # -------------------------------------------------------
+    # Notify user (message matches DB meaning)
+    # -------------------------------------------------------
+    if new_status == "completed":
         await update.effective_chat.send_message(
             text=(
-                f"🎉 *Airtime Sent!*\n\n"
+                f"🎉 *Airtime Delivered!*\n\n"
                 f"₦{amount} has been credited to *{phone}* ✅\n"
                 f"Ref: `{provider_ref or 'N/A'}`"
             ),
             parse_mode="Markdown",
         )
+
+    elif new_status == "sent":
+        # queued / provider accepted
+        await update.effective_chat.send_message(
+            text=(
+                f"✅ *Airtime Request Accepted*\n\n"
+                f"Your airtime of ₦{amount} to *{phone}* has been queued/received by the provider.\n"
+                f"Ref: `{provider_ref or 'N/A'}`\n\n"
+                f"If it doesn’t arrive shortly, we’ll retry/reconcile automatically."
+            ),
+            parse_mode="Markdown",
+        )
+
     else:
         await update.effective_chat.send_message(
             text=(
@@ -644,8 +723,10 @@ async def _finalize_airtime_payout(
     await update.effective_chat.send_message("What would you like to do next?", reply_markup=keyboard)
 
     logger.info(
-        f"✅ Airtime payout finalized | payout_id={payout_id} | phone={phone} | amount={amount} | status={new_status} | ref={provider_ref}"
+        "✅ Airtime payout finalized | payout_id=%s | phone=%s | amount=%s | status=%s | ref=%s",
+        payout_id, phone, amount, new_status, provider_ref
     )
+
 
 async def handle_airtime_network_choice(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """
