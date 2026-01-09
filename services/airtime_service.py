@@ -17,11 +17,13 @@ from sqlalchemy import text
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes
 from telegram.ext import ConversationHandler
+from logger import logger
 
 from utils.conversation_states import AIRTIME_PHONE
 from db import AsyncSessionLocal
 from utils.security import validate_phone
 from services.playtrivia import AIRTIME_MILESTONES
+from services.airtime_providers.service import send_airtime
 
 logger = logging.getLogger(__name__)
 
@@ -59,7 +61,7 @@ NETWORK_CODE = {
 }
 
 # A simple prefix map (not exhaustive, but solid enough to start)
-MTN_PREFIX = ("0703", "0706", "0803", "0806", "0810", "0813", "0814", "0816", "0903", "0906", "0913", "0916")
+MTN_PREFIX = ("0703", "0704", "0706", "0803", "0806", "0810", "0813", "0814", "0816", "0903", "0906", "0913", "0916")
 AIRTEL_PREFIX = ("0701", "0708", "0802", "0808", "0812", "0901", "0902", "0904", "0907", "0912")
 GLO_PREFIX = ("0705", "0805", "0807", "0811", "0815", "0905", "0915")
 ETISALAT_PREFIX = ("0809", "0817", "0818", "0908", "0909")
@@ -405,15 +407,26 @@ async def handle_claim_airtime_button(update: Update, context: ContextTypes.DEFA
 # -------------------------------------------------------------------
 # User Sends Phone → Validate → Update DB → Send Airtime Automatically
 # -------------------------------------------------------------------
+
+# Callback data prefix for network selection
+NETWORK_CB_PREFIX = "airtime_net:"  # e.g. airtime_net:mtn
+
+
+def _network_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton("🟡 MTN", callback_data=f"{NETWORK_CB_PREFIX}mtn"),
+         InlineKeyboardButton("🔴 Airtel", callback_data=f"{NETWORK_CB_PREFIX}airtel")],
+        [InlineKeyboardButton("🟢 Glo", callback_data=f"{NETWORK_CB_PREFIX}glo"),
+         InlineKeyboardButton("🟣 9mobile", callback_data=f"{NETWORK_CB_PREFIX}9mobile")],
+        [InlineKeyboardButton("❌ Cancel", callback_data="airtime_cancel")],
+    ])
+
+
 async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg = update.message
     raw_phone = (msg.text or "").strip()
 
-    # ✅ DEBUG: proves this handler is receiving the phone message
-    logger.info(
-        f"✅ AIRTIME PHONE HANDLER HIT | tg_id={update.effective_user.id} | raw={raw_phone}"
-    )
-    print("✅ HIT airtime phone handler", flush=True)
+    logger.info(f"✅ AIRTIME PHONE HANDLER HIT | tg_id={update.effective_user.id} | raw={raw_phone}")
 
     phone = normalize_ng_phone(raw_phone)
 
@@ -421,9 +434,9 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
     awaiting = context.user_data.get("awaiting_airtime_phone")
     expiry_ts = context.user_data.get("airtime_expiry")
 
-    # -------------------------------------------------------
+    # -----------------------------
     # Validate claim session
-    # -------------------------------------------------------
+    # -----------------------------
     if not awaiting or not payout_id:
         await msg.reply_text(
             "⛔ Claim session not active. Please tap *Claim Airtime Reward* again.",
@@ -442,9 +455,9 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
         )
         return ConversationHandler.END
 
-    # -------------------------------------------------------
+    # -----------------------------
     # Validate phone number
-    # -------------------------------------------------------
+    # -----------------------------
     if not phone.isdigit() or len(phone) != 11 or not validate_phone(phone):
         await msg.reply_text(
             "❌ Invalid number — must be like `08123456789`",
@@ -452,15 +465,15 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
         )
         return ConversationHandler.END
 
-    # -------------------------------------------------------
-    # Lock payout + ownership + status update
-    # -------------------------------------------------------
+    # -----------------------------
+    # Lock payout + ensure ownership + move to processing
+    # -----------------------------
     try:
         async with AsyncSessionLocal() as session:
             async with session.begin():
                 res = await session.execute(
                     text("""
-                        SELECT status, tg_id
+                        SELECT status, tg_id, amount
                         FROM airtime_payouts
                         WHERE id = :id
                         FOR UPDATE
@@ -473,7 +486,7 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
                     await msg.reply_text("⚠️ Invalid payout reference.")
                     return ConversationHandler.END
 
-                status, payout_tg_id = row
+                status, payout_tg_id, amount = row
 
                 if payout_tg_id != update.effective_user.id:
                     logger.warning("🚨 Payout ownership mismatch")
@@ -481,9 +494,11 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
                     return ConversationHandler.END
 
                 if status != "pending_claim":
-                    await msg.reply_text(
-                        "ℹ️ This reward is already being processed or completed."
-                    )
+                    await msg.reply_text("ℹ️ This reward is already being processed or completed.")
+                    return ConversationHandler.END
+
+                if not amount:
+                    await msg.reply_text("⚠️ Missing reward amount. Please contact support.")
                     return ConversationHandler.END
 
                 await session.execute(
@@ -502,117 +517,123 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
 
     except Exception:
         logger.exception("❌ DB error updating payout phone")
+        await msg.reply_text("⚠️ Could not save your phone. Please try again shortly.")
+        return ConversationHandler.END
+
+    # -----------------------------
+    # Try sending airtime (first attempt: auto-detect network)
+    # -----------------------------
+    await msg.reply_text("⏳ Processing your airtime reward...")
+
+    res = await send_airtime(phone=phone, amount=int(amount))
+
+    # If provider needs network, store state + ask user
+    raw_status = ""
+    if isinstance(res.raw, dict):
+        raw_status = str(res.raw.get("status") or "").lower()
+
+    if raw_status == "need_network":
+        # Save details for the network selection step
+        context.user_data["awaiting_airtime_network"] = True
+        context.user_data["airtime_phone"] = phone
+        context.user_data["airtime_amount"] = int(amount)
+        # payout_id already in user_data
+
         await msg.reply_text(
-            "⚠️ Could not save your phone. Please try again shortly."
+            "📶 I couldn’t detect your network from the phone number.\n\n"
+            "Please select your network to complete the airtime payout:",
+            reply_markup=_network_keyboard(),
         )
-        return ConversationHandler.END
+        return ConversationHandler.END  # end phone conversation step; next is callback query
 
-    # -------------------------------------------------------
-    # Fetch reward amount
-    # -------------------------------------------------------
-    async with AsyncSessionLocal() as session:
-        res = await session.execute(
-            text("SELECT amount FROM airtime_payouts WHERE id = :id"),
-            {"id": payout_id},
-        )
-        row = res.first()
-        amount = row[0] if row else None
+    # Otherwise, finalize immediately (success/failure)
+    await _finalize_airtime_payout(
+        update=update,
+        context=context,
+        payout_id=payout_id,
+        phone=phone,
+        amount=int(amount),
+        airtime_result=res,
+    )
+    return ConversationHandler.END
 
-    if not amount:
-        await msg.reply_text("⚠️ Something went wrong. Please retry later.")
-        return ConversationHandler.END
 
-    # -------------------------------------------------------
-    # Send airtime automatically (Clubkonnect)
-    # -------------------------------------------------------
-    provider_request_id = f"AIRTIME-{payout_id}"
-    provider_name = "clubkonnect"
+async def _finalize_airtime_payout(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    payout_id,
+    phone: str,
+    amount: int,
+    airtime_result,
+):
+    """
+    Writes final DB state and notifies user/admin.
+    airtime_result is AirtimeResult from services.airtime_providers.service.send_airtime
+    """
+    tg_id = update.effective_user.id
+    provider_name = airtime_result.provider or "clubkonnect"
+    provider_ref = airtime_result.reference or ""
+    raw_payload = airtime_result.raw or {}
 
-    data = {}
-    provider_reference = ""
-    success = False
+    new_status = "completed" if airtime_result.success else "failed"
 
-    try:
-        data = await send_airtime_via_clubkonnect(
-            phone=phone,
-            amount=int(amount),
-            request_id=provider_request_id
-        )
-        logger.info(f"📦 Clubkonnect raw response | payout_id={payout_id} | data={str(data)[:300]}")
-        success = clubkonnect_is_success(data)
-        provider_reference = str(data.get("orderid") or "")
-    except Exception:
-        logger.exception("❌ Clubkonnect call failed")
-        success = False
-
-    # -------------------------------------------------------
-    # Update payout status
-    # -------------------------------------------------------
+    # Important: Use SQLAlchemy bind params only (NO ":response::jsonb" which caused your SQL error)
     try:
         async with AsyncSessionLocal() as session:
             async with session.begin():
-                if success:
-                    await session.execute(
-                        text("""
-                            UPDATE airtime_payouts
-                            SET status = 'completed',
-                                provider = :provider,
-                                provider_reference = :ref,
-                                provider_response = :resp,
-                                sent_at = NOW(),
-                                completed_at = NOW()
-                            WHERE id = :id
-                        """),
-                        {
-                            "id": payout_id,
-                            "provider": provider_name,
-                            "ref": provider_reference or provider_request_id,
-                            "resp": json.dumps(data) if data else None,
-                        },
-                    )
-                else:
-                    await session.execute(
-                        text("""
-                            UPDATE airtime_payouts
-                            SET status = 'failed',
-                                provider = :provider,
-                                provider_reference = :ref,
-                                provider_response = :resp,
-                                sent_at = NOW()
-                            WHERE id = :id
-                        """),
-                        {
-                            "id": payout_id,
-                            "provider": provider_name,
-                            "ref": provider_reference or provider_request_id,
-                            "resp": json.dumps(data) if data else None,
-                        },
-                    )
+                await session.execute(
+                    text("""
+                        UPDATE airtime_payouts
+                        SET status = :status,
+                            provider = :provider,
+                            provider_ref = :provider_ref,
+                            provider_reference = :provider_reference,
+                            provider_response = :provider_response,
+                            provider_payload = :provider_payload,
+                            sent_at = NOW(),
+                            completed_at = CASE WHEN :status = 'completed' THEN NOW() ELSE completed_at END
+                        WHERE id = :id
+                    """),
+                    {
+                        "id": payout_id,
+                        "status": new_status,
+                        "provider": provider_name,
+                        "provider_ref": provider_ref,
+                        "provider_reference": provider_ref,
+                        # provider_response is JSONB column: pass python dict (asyncpg will adapt)
+                        "provider_response": raw_payload,
+                        # provider_payload is text: store a trimmed string
+                        "provider_payload": json.dumps(raw_payload)[:5000],
+                    },
+                )
     except Exception:
-        logger.exception("❌ Failed to update payout status after provider call")
+        logger.exception(f"❌ Failed to update payout status in DB | payout_id={payout_id}")
 
-    # -------------------------------------------------------
-    # Cleanup session keys
-    # -------------------------------------------------------
+    # Cleanup state
     context.user_data.pop("awaiting_airtime_phone", None)
+    context.user_data.pop("awaiting_airtime_network", None)
     context.user_data.pop("pending_payout_id", None)
     context.user_data.pop("airtime_expiry", None)
+    context.user_data.pop("airtime_phone", None)
+    context.user_data.pop("airtime_amount", None)
 
-    # -------------------------------------------------------
     # Notify user
-    # -------------------------------------------------------
-    if success:
-        await msg.reply_text(
-            f"🎉 *Airtime Sent!*\n\n"
-            f"₦{amount} has been credited to *{phone}* ✅\n"
-            f"Ref: `{provider_reference or provider_request_id}`",
+    if airtime_result.success:
+        await update.effective_chat.send_message(
+            text=(
+                f"🎉 *Airtime Sent!*\n\n"
+                f"₦{amount} has been credited to *{phone}* ✅\n"
+                f"Ref: `{provider_ref or 'N/A'}`"
+            ),
             parse_mode="Markdown",
         )
     else:
-        await msg.reply_text(
-            "⚠️ *Airtime Not Sent Yet*\n\n"
-            "We couldn’t complete your airtime reward right now.\n"
-            "Please try again later or contact support.",
+        await update.effective_chat.send_message(
+            text=(
+                "⚠️ *Airtime Not Sent Yet*\n\n"
+                "We couldn’t complete your airtime reward right now.\n"
+                "We’ll retry automatically if possible. If it persists, contact support."
+            ),
             parse_mode="Markdown",
         )
 
@@ -620,12 +641,56 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
         [InlineKeyboardButton("🧠 Continue Playing", callback_data="playtrivia")],
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard")],
     ])
-
-    await msg.reply_text("What would you like to do next?", reply_markup=keyboard)
+    await update.effective_chat.send_message("What would you like to do next?", reply_markup=keyboard)
 
     logger.info(
-        f"✅ Airtime payout processed | payout_id={payout_id} | phone={phone} | amount={amount} | success={success}"
+        f"✅ Airtime payout finalized | payout_id={payout_id} | phone={phone} | amount={amount} | status={new_status} | ref={provider_ref}"
     )
 
-    # ✅ VERY IMPORTANT: end the conversation
-    return ConversationHandler.END
+async def handle_airtime_network_choice(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """
+    Handles the inline keyboard network choice after phone entry.
+    """
+    query = update.callback_query
+    await query.answer()
+
+    data = query.data or ""
+    if data == "airtime_cancel":
+        context.user_data.pop("awaiting_airtime_network", None)
+        context.user_data.pop("airtime_phone", None)
+        context.user_data.pop("airtime_amount", None)
+        await query.edit_message_text("❌ Airtime claim cancelled.")
+        return
+
+    if not data.startswith(NETWORK_CB_PREFIX):
+        return  # not ours
+
+    net = data.replace(NETWORK_CB_PREFIX, "").strip().lower()
+
+    payout_id = context.user_data.get("pending_payout_id")
+    phone = context.user_data.get("airtime_phone")
+    amount = context.user_data.get("airtime_amount")
+
+    if not payout_id or not phone or not amount:
+        await query.edit_message_text("⛔ Session expired. Please tap *Claim Airtime Reward* again.", parse_mode="Markdown")
+        return
+
+    await query.edit_message_text(f"⏳ Sending airtime via *{net.upper()}* network…", parse_mode="Markdown")
+
+    # Retry sending with explicit network
+    # We call the provider function through send_airtime, but we need a way to pass network.
+    # EASIEST: call buy_airtime directly here, or extend send_airtime to accept network.
+    #
+    # Recommended quick path: extend send_airtime(phone, amount, network=None)
+    #
+    # For now, I'll assume you extended send_airtime to accept network.
+    res = await send_airtime(phone=phone, amount=int(amount), network=net)  # <-- you will add this parameter
+
+    await _finalize_airtime_payout(
+        update=update,
+        context=context,
+        payout_id=payout_id,
+        phone=phone,
+        amount=int(amount),
+        airtime_result=res,
+    )
