@@ -35,6 +35,19 @@ async def send_airtime(phone: str, amount: int) -> AirtimeResult:
 
     data = await buy_airtime(phone=phone, amount=amount)
 
+    # ------------------------------------------------------------
+    # SPECIAL CASE: we need the user to choose a network
+    # (This is returned by our own buy_airtime() when guess_network fails)
+    # ------------------------------------------------------------
+    if _norm_str(data.get("status")).lower() == "need_network":
+        return AirtimeResult(
+            success=False,  # not a provider failure; it needs user action
+            provider="clubkonnect",
+            reference="",
+            message=_norm_str(data.get("message")) or "Please choose your network.",
+            raw=data,
+        )
+
     status_raw = _norm_str(_pick(data, "status", "Status", default=""))
     status = status_raw.upper()
 
