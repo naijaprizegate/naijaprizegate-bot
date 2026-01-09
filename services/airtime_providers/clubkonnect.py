@@ -56,7 +56,7 @@ def guess_network(phone: str) -> Optional[str]:
     """
     p = normalize_phone(phone)
 
-    MTN = ("0703", "0706", "0803", "0806", "0810", "0813", "0814", "0816", "0903", "0906", "0913", "0916")
+    MTN = ("0703", "0704", "0706", "0803", "0806", "0810", "0813", "0814", "0816", "0903", "0906", "0913", "0916")
     AIRTEL = ("0701", "0708", "0802", "0808", "0812", "0901", "0902", "0904", "0907", "0912")
     GLO = ("0705", "0805", "0807", "0811", "0815", "0905", "0915")
     ETISALAT = ("0809", "0817", "0818", "0908", "0909")
@@ -100,12 +100,25 @@ async def buy_airtime(
         return {"status": "error", "message": f"Minimum airtime amount is {CK_MIN_AMOUNT}"}
 
     net = (network or guess_network(p) or "").lower()
+
+    # If we can't detect network automatically, tell the bot to ask the user
     if not net:
-        return {"status": "error", "message": "Could not detect network. Please choose network."}
+        return {
+            "status": "need_network",
+            "message": "Could not detect network. Please choose your network.",
+            "phone": p,
+            "amount": amt,
+        }
 
     mobile_network_code = NETWORK_CODE.get(net)
     if not mobile_network_code:
-        return {"status": "error", "message": f"Unsupported network: {net}"}
+        return {
+            "status": "need_network",
+            "message": "Unsupported/unknown network. Please choose your network.",
+            "phone": p,
+            "amount": amt,
+        }
+
 
     rid = request_id or f"NP-{uuid.uuid4()}"
 
