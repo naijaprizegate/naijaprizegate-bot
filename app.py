@@ -73,7 +73,7 @@ from helpers import get_or_create_user, add_tries
 from utils.signer import generate_signed_token, verify_signed_token
 from webhook import router as webhook_router
 from bot_instance import bot
-from services.airtime_service import handle_claim_airtime_button, handle_airtime_claim_phone
+from services.airtime_service import handle_claim_airtime_button, handle_airtime_claim_phone, handle_airtime_network_choice
 from utils.conversation_states import AIRTIME_PHONE
 
 # ✅ Import Flutterwave-related functions/constants
@@ -196,7 +196,7 @@ async def on_startup():
         admin.register_handlers(application)
         playtrivia.register_handlers(application)
 
-        # ✅ Airtime claim handlers
+        # ✅ Airtime claim handlers (phone entry)
         airtime_conversation = ConversationHandler(
             entry_points=[
                 CallbackQueryHandler(handle_claim_airtime_button, pattern=r"^claim_airtime:")
@@ -213,8 +213,15 @@ async def on_startup():
             block=True,
         )
 
-        # ✅ Highest priority
+        # ✅ Highest priority for phone conversation
         application.add_handler(airtime_conversation, group=-1)
+
+        # ✅ ADD THIS: Network selection callback buttons (after phone if guess fails)
+        # Must be a CallbackQueryHandler (NOT inside the ConversationHandler)
+        application.add_handler(
+            CallbackQueryHandler(handle_airtime_network_choice, pattern=r"^airtime_net:"),
+            group=-1
+        )
 
         # Initialize & start bot
         await application.initialize()
@@ -230,15 +237,13 @@ async def on_startup():
         # ✅ Start background tasks
         await start_background_tasks()
         logger.info("✅ Background tasks started.")
-        
+
         # Add error handler
         application.add_error_handler(tg_error_handler)
 
-        
     except Exception as e:
         clean_trace = re.sub(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", traceback.format_exc())
         logger.error(f"Unhandled exception during startup:\n{clean_trace}")
-
 
 # -------------------------------------------------
 # Shutdown event
