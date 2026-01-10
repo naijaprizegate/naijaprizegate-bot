@@ -699,9 +699,9 @@ async def _finalize_airtime_payout(
         await update.effective_chat.send_message(
             text=(
                 f"✅ *Airtime Request Accepted*\n\n"
-                f"Your airtime of ₦{amount} to *{phone}* has been queued/received by the provider.\n"
+                f"Your airtime of ₦{amount} to *{phone}* has been accepted by the provider and is being delivered now.\n"
                 f"Ref: `{provider_ref or 'N/A'}`\n\n"
-                f"If it doesn’t arrive shortly, we’ll retry/reconcile automatically."
+                f"If it doesn’t reflect within a few minutes, we’ll retry/reconcile automatically."
             ),
             parse_mode="Markdown",
         )
