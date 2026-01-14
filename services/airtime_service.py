@@ -118,16 +118,21 @@ async def create_flutterwave_checkout_link(
         "amount": amount,
         "currency": "NGN",
         "redirect_url": WEBHOOK_REDIRECT_URL,
-        "customer": {"email": customer_email, "name": safe_name},
+
+        # 🔑 THIS IS WHAT THE WEBHOOK NEEDS
+        "meta": {
+            "tg_id": int(tg_id),
+            "username": username or "",
+            "purpose": "trivia_purchase",
+        },
+
+        "customer": {
+            "email": customer_email,
+            "name": safe_name,
+        },
         "customizations": {
             "title": "NaijaPrizeGate",
             "logo": "https://naijaprizegate.ng/static/logo.png",
-        },
-        # ✅ optional meta (helps you recover tg_id/username reliably in webhook)
-        "meta": {
-            "tg_id": str(tg_id),
-            "username": username or "",
-            "purpose": "trivia_purchase",
         },
     }
 
