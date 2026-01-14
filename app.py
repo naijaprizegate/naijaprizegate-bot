@@ -1,6 +1,6 @@
-# ===================================================
-# app.py
 # ====================================================
+# app.py
+# =====================================================
 # 1️⃣ Import & initialize secure logging first
 # -------------------------------------------------
 from logging_setup import logger, tg_error_handler  # must be first to protect secrets
@@ -331,7 +331,7 @@ async def payment_already_processed(session: AsyncSession, tx_ref: str) -> bool:
 
 
 # ---------------------------------------------------
-# 🧩 Main Webhook Route - PAYMENTS
+# 🧩 Flutterwave Webhook — Trivia Payments
 # ---------------------------------------------------
 @router.post("/flw/webhook")
 async def flutterwave_webhook(
@@ -341,24 +341,31 @@ async def flutterwave_webhook(
     raw_body = await request.body()
     body_str = raw_body.decode("utf-8", errors="ignore")
 
-    signature_header = request.headers.get("verif-hash") or request.headers.get("verif_hash")
+    signature = request.headers.get("verif-hash") or request.headers.get("verif_hash")
 
-    # Allow Dashboard test ping
-    if not signature_header:
-        logger.info("🧪 [FLW WEBHOOK] Signature missing: Flutterwave Test Ping")
+    # 🧪 Allow Flutterwave test ping
+    if not signature:
+        logger.info("🧪 [FLW WEBHOOK] Signature missing: Test ping")
         return JSONResponse({"status": "ok", "message": "test"})
 
     # 🔐 Validate authenticity
-    if not validate_webhook_signature({k.lower(): v for k, v in request.headers.items()}, body_str):
+    if not validate_webhook_signature(
+        {k.lower(): v for k, v in request.headers.items()},
+        body_str,
+    ):
         logger.error("🚫 [FLW WEBHOOK] Invalid verif-hash signature")
         raise HTTPException(status_code=403, detail="Invalid signature")
 
     payload = await request.json()
     data = payload.get("data") or {}
+
     logger.info(f"📥 [FLW WEBHOOK] Raw Payload: {json.dumps(payload)[:1000]}")
 
-    fw_status = (payload.get("status") or data.get("status") or "").lower().strip()
+    fw_payload_status = (payload.get("status") or data.get("status") or "").lower().strip()
 
+    # -------------------------
+    # Extract tx_ref
+    # -------------------------
     tx_ref = (
         data.get("tx_ref")
         or data.get("customer_reference")
@@ -367,37 +374,57 @@ async def flutterwave_webhook(
     )
 
     if not tx_ref:
-        logger.error("❌ [FLW WEBHOOK] Missing tx_ref - cannot proceed")
+        logger.error("❌ [FLW WEBHOOK] Missing tx_ref")
         raise HTTPException(status_code=400, detail="Missing tx_ref")
 
-    # 🔒 PAYMENTS-ONLY GUARD (Trivia purchases only)
-    # This prevents this webhook from accidentally processing airtime or other tx_refs.
-    if not tx_ref.startswith("TRIVIA-"):
+    # Trivia-only guard
+    if not (tx_ref.startswith("TRIVIA-") or tx_ref.startswith("TRY-")):
         logger.info(f"ℹ️ [FLW WEBHOOK] Ignored non-trivia tx_ref={tx_ref}")
         return JSONResponse({"status": "ignored"})
 
-    logger.info(f"💳 [FLW WEBHOOK][PAYMENT] tx_ref={tx_ref}")
-    
-    # Idempotency
-    if await payment_already_processed(session, tx_ref):
-        logger.info(f"🔁 [FLW WEBHOOK][PAYMENT] Duplicate already processed | tx_ref={tx_ref}")
+    logger.info(f"💳 [FLW WEBHOOK][PAYMENT] Processing tx_ref={tx_ref}")
+
+    # -------------------------
+    # Fetch existing payment FIRST
+    # -------------------------
+    existing_payment = await session.scalar(
+        select(Payment).where(Payment.tx_ref == tx_ref)
+    )
+
+    previous_status = existing_payment.status if existing_payment else None
+
+    # 🔁 HARD idempotency — already credited
+    if previous_status == "successful":
+        logger.info(f"🔁 [FLW WEBHOOK] Already credited | tx_ref={tx_ref}")
         return JSONResponse({"status": "duplicate"})
 
-    existing_payment = await session.scalar(select(Payment).where(Payment.tx_ref == tx_ref))
-    previous_status = (existing_payment.status if existing_payment else None) or None
-
+    # -------------------------
     # Verify with Flutterwave (source of truth)
-    fw_data = {}
+    # -------------------------
     try:
-        fw_resp = await verify_payment(tx_ref, session, bot=None, credit=False)
+        fw_resp = await verify_payment(
+            tx_ref=tx_ref,
+            session=session,
+            bot=None,
+            credit=False,
+        )
         fw_data = fw_resp.get("data") or {}
         fw_verified_status = (fw_data.get("status") or "").lower().strip()
-        logger.info(f"🌐 [FLW WEBHOOK][PAYMENT] Verification ok | tx_ref={tx_ref} fw_status={fw_verified_status}")
+        logger.info(
+            f"🌐 [FLW WEBHOOK][PAYMENT] Verification ok | "
+            f"tx_ref={tx_ref} fw_status={fw_verified_status}"
+        )
     except Exception as e:
-        logger.warning(f"🌐 [FLW WEBHOOK][PAYMENT] Verification error, falling back | tx_ref={tx_ref} error={e}")
-        fw_verified_status = fw_status.lower().strip()
+        logger.warning(
+            f"🌐 [FLW WEBHOOK][PAYMENT] Verification failed, fallback | "
+            f"tx_ref={tx_ref} error={e}"
+        )
+        fw_data = {}
+        fw_verified_status = fw_payload_status
 
-    final_status = (fw_verified_status or fw_status or "").lower().strip()
+    # -------------------------
+    # Normalize final status
+    # -------------------------
     final_status = {
         "success": "successful",
         "successful": "successful",
@@ -406,15 +433,18 @@ async def flutterwave_webhook(
         "pending": "pending",
         "cancelled": "expired",
         "expired": "expired",
-    }.get(final_status, "pending")
+    }.get(fw_verified_status, "pending")
 
+    # -------------------------
+    # Extract metadata
+    # -------------------------
     meta = (
         data.get("meta")
         or payload.get("meta")
         or data.get("meta_data")
         or payload.get("meta_data")
         or {}
-    ) or {}
+    )
 
     raw_tg_id = meta.get("tg_id") or meta.get("tgId") or meta.get("customer")
     tg_id = int(raw_tg_id) if raw_tg_id and str(raw_tg_id).isdigit() else None
@@ -432,11 +462,14 @@ async def flutterwave_webhook(
         credited_tries = 0
 
     logger.info(
-        f"🧮 [FLW WEBHOOK][PAYMENT] tx_ref={tx_ref} final_status={final_status} "
-        f"amount={amount} credited_tries={credited_tries} tg_id={tg_id}"
+        f"🧮 [FLW WEBHOOK][PAYMENT] tx_ref={tx_ref} "
+        f"final_status={final_status} amount={amount} "
+        f"credited_tries={credited_tries} tg_id={tg_id}"
     )
 
+    # -------------------------
     # Upsert payment record
+    # -------------------------
     stmt = insert(Payment).values(
         tx_ref=tx_ref,
         status=final_status,
@@ -461,44 +494,61 @@ async def flutterwave_webhook(
     await session.execute(stmt)
     await session.commit()
 
-    should_credit_user = (final_status == "successful" and previous_status != "successful")
+    # -------------------------
+    # Credit user ONCE
+    # -------------------------
+    should_credit_user = (
+        final_status == "successful"
+        and previous_status != "successful"
+        and tg_id is not None
+    )
 
     if should_credit_user:
-        logger.info(f"✅ [FLW WEBHOOK][PAYMENT] Crediting user | tx_ref={tx_ref} tg_id={tg_id} tries={credited_tries}")
+        logger.info(
+            f"✅ [FLW WEBHOOK][PAYMENT] Crediting user | "
+            f"tx_ref={tx_ref} tg_id={tg_id} tries={credited_tries}"
+        )
 
-        if tg_id:
-            user = await get_or_create_user(session, tg_id=tg_id, username=username)
-            await add_tries(session, user, credited_tries, paid=True)
-            await session.commit()
+        user = await get_or_create_user(session, tg_id=tg_id, username=username)
+        await add_tries(session, user, credited_tries, paid=True)
+        await session.commit()
 
-            try:
-                bot = Bot(token=BOT_TOKEN)
-                keyboard = InlineKeyboardMarkup([
-                    [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
-                    [InlineKeyboardButton("💳 Buy More Attempts", callback_data="buy")],
-                    [InlineKeyboardButton("🎁 Earn Free Attempts", callback_data="free")],
-                    [InlineKeyboardButton("📊 Check Attempts", callback_data="show_tries")],
-                ])
-                await bot.send_message(
-                    tg_id,
-                    (
-                        f"🎉 *Payment Confirmed!*\n\n"
-                        f"You received *{credited_tries}* Trivia Attempt{'s' if credited_tries > 1 else ''} 🎁\n\n"
-                        "Good luck! 🍀"
-                    ),
-                    parse_mode="Markdown",
-                    reply_markup=keyboard,
-                )
-            except Exception as e:
-                logger.error(f"⚠️ [FLW WEBHOOK][PAYMENT] Telegram send error | tx_ref={tx_ref} error={e}")
+        try:
+            bot = Bot(token=BOT_TOKEN)
+            keyboard = InlineKeyboardMarkup([
+                [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
+                [InlineKeyboardButton("💳 Buy More Attempts", callback_data="buy")],
+                [InlineKeyboardButton("🎁 Earn Free Attempts", callback_data="free")],
+                [InlineKeyboardButton("📊 Check Attempts", callback_data="show_tries")],
+            ])
+            await bot.send_message(
+                tg_id,
+                (
+                    f"🎉 *Payment Confirmed!*\n\n"
+                    f"You received *{credited_tries}* Trivia Attempt"
+                    f"{'s' if credited_tries != 1 else ''} 🎁\n\n"
+                    "Good luck! 🍀"
+                ),
+                parse_mode="Markdown",
+                reply_markup=keyboard,
+            )
+        except Exception as e:
+            logger.error(
+                f"⚠️ [FLW WEBHOOK][PAYMENT] Telegram send error | "
+                f"tx_ref={tx_ref} error={e}"
+            )
 
         return JSONResponse({"status": "success", "tx_ref": tx_ref})
 
+    # -------------------------
+    # Final response
+    # -------------------------
     if final_status == "successful":
         return JSONResponse({"status": "duplicate", "tx_ref": tx_ref})
 
-    return JSONResponse({"status": "failed", "tx_ref": tx_ref, "status_value": final_status})
-
+    return JSONResponse(
+        {"status": "failed", "tx_ref": tx_ref, "status_value": final_status}
+    )
 
 # -----------------------
 # Redirect endpoint for user-friendly browser redirect after checkout
