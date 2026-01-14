@@ -264,22 +264,33 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ===============================================================
 def register_handlers(application):
 
-    # Commands
-    application.add_handler(CommandHandler("start", start))
-    application.add_handler(CommandHandler("help", help_cmd))
-    application.add_handler(CommandHandler("mytries", mytries))
-    application.add_handler(CommandHandler("terms", terms_handler))  # NEW
-    application.add_handler(CommandHandler("faq", faq_handler))      # NEW
+    # ---------------------------------------------------
+    # Commands (BLOCK propagation)
+    # ---------------------------------------------------
+    application.add_handler(CommandHandler("start", start, block=True))
+    application.add_handler(CommandHandler("help", help_cmd, block=True))
+    application.add_handler(CommandHandler("mytries", mytries, block=True))
+    application.add_handler(CommandHandler("terms", terms_handler, block=True))
+    application.add_handler(CommandHandler("faq", faq_handler, block=True))
 
-    # Callback menu buttons
-    application.add_handler(CallbackQueryHandler(terms_handler, pattern="^terms$"))  # NEW
-    application.add_handler(CallbackQueryHandler(faq_handler, pattern="^faq$"))      # NEW
+    # ---------------------------------------------------
+    # Callback buttons
+    # ---------------------------------------------------
+    application.add_handler(
+        CallbackQueryHandler(terms_handler, pattern="^terms$")
+    )
+    application.add_handler(
+        CallbackQueryHandler(faq_handler, pattern="^faq$")
+    )
 
-    # Friendly greeting triggers
+    # ---------------------------------------------------
+    # Friendly greetings → start (non-command only)
+    # ---------------------------------------------------
     greetings = filters.Regex(re.compile(
         r"^(hi|hello|hey|howdy|sup|good\s?(morning|afternoon|evening))",
         re.IGNORECASE
     ))
+
     application.add_handler(
         MessageHandler(
             greetings & ~filters.COMMAND,
@@ -287,14 +298,19 @@ def register_handlers(application):
         )
     )
 
-    # Leaderboard routing
+    # ---------------------------------------------------
+    # Leaderboard
+    # ---------------------------------------------------
     from handlers.leaderboard import register_leaderboard_handlers
     register_leaderboard_handlers(application)
 
-    # Fallback (non-command, non-numeric text)
+    # ---------------------------------------------------
+    # Fallback (LAST)
+    # ---------------------------------------------------
     application.add_handler(
         MessageHandler(
             filters.TEXT & ~filters.COMMAND & ~filters.Regex(r"^[0-9+ ]+$"),
             fallback
         )
     )
+
