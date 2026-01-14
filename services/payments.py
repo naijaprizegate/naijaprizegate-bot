@@ -32,8 +32,9 @@ logger.setLevel(logging.INFO)
 
 
 # ------------------------------------------------------
-# 1. Create Checkout (generate payment link for a user)
+# 1. Create Checkout
 # ------------------------------------------------------
+
 async def create_checkout(
     user_id: str,
     amount: int,
@@ -42,12 +43,9 @@ async def create_checkout(
     email: str = None
 ) -> str:
     """
-    Creates a Flutterwave payment checkout link securely.
-    Security Features:
-    - Whitelists valid package amounts
-    - Enforces HTTPS webhook redirect
-    - Uses server-side API with secret key
-    - Validates Flutterwave response structure
+    Wrapper for trivia purchases.
+    Performs validation ONLY.
+    Delegates Flutterwave logic to airtime_service.
     """
 
     # ✅ 1. Environment validation
@@ -61,69 +59,23 @@ async def create_checkout(
 
     # ✅ 2. Validate payment amount
     if not isinstance(amount, int) or amount <= 0:
-        logger.warning(f"⚠️ Invalid payment amount attempt by user {user_id}: {amount}")
+        logger.warning(f"⚠️ Invalid payment amount by user {user_id}: {amount}")
         return None
 
     if amount not in ALLOWED_PACKAGES:
-        logger.warning(f"🚫 Unauthorized payment amount {amount} NGN by user {user_id}. Rejected.")
+        logger.warning(f"🚫 Unauthorized payment amount {amount} by user {user_id}")
         return None
 
-    # ✅ 3. Safe fallback for missing user identifiers
-    customer_email = (
-        email or (f"{username}@naijaprizegate.ng" if username else f"user{user_id}@naijaprizegate.ng")
+    # ✅ 3. Delegate to the SAFE Flutterwave function
+    from services.airtime_service import create_flutterwave_checkout_link
+
+    return await create_flutterwave_checkout_link(
+        tx_ref=tx_ref,
+        amount=amount,
+        tg_id=int(user_id),
+        username=username,
+        email=email,
     )
-
-    # ✅ 4. Construct secure payload
-    payload = {
-        "tx_ref": tx_ref,
-        "amount": amount,
-        "currency": "NGN",
-        "redirect_url": WEBHOOK_REDIRECT_URL,
-        "customer": {
-            "email": customer_email,
-            "name": username or f"User {user_id}"
-        },
-        "customizations": {
-            "title": "NaijaPrizeGate",
-            "logo": "https://naijaprizegate.ng/static/logo.png"  # optional
-        },
-        "meta": {
-            "tg_id": str(user_id),
-            "username": username or "Anonymous",
-            "generated_at": datetime.utcnow().isoformat()
-        },
-    }
-
-    headers = {
-        "Authorization": f"Bearer {FLW_SECRET_KEY}",
-        "Content-Type": "application/json",
-    }
-
-    # ✅ 5. Secure API call to Flutterwave
-    try:
-        async with httpx.AsyncClient(timeout=15.0) as client:
-            response = await client.post(f"{FLW_BASE_URL}/payments", json=payload, headers=headers)
-            response.raise_for_status()
-            data = response.json()
-    except httpx.HTTPStatusError as e:
-        logger.error(f"🚫 Flutterwave checkout failed [{e.response.status_code}]: {e.response.text}")
-        return None
-    except Exception as e:
-        logger.exception(f"⚠️ Unexpected error during checkout for user {user_id}: {e}")
-        return None
-
-    # ✅ 6. Validate API response structure
-    if not data.get("status") == "success" or "data" not in data:
-        logger.error(f"🚫 Invalid Flutterwave response structure: {data}")
-        return None
-
-    payment_link = data["data"].get("link")
-    if not payment_link:
-        logger.error(f"🚫 Missing payment link in Flutterwave response: {data}")
-        return None
-
-    logger.info(f"✅ Checkout created for {customer_email} ({amount:,} NGN) — TX: {tx_ref}")
-    return payment_link
 
 # ------------------------------------------------------
 # 2. Verify Payment (via tx_ref + transaction_id)
