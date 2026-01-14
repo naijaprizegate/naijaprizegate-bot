@@ -57,8 +57,8 @@ async def buy_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = (
         f"🛒 *Boost Your Trivia Progress*\n\n"
         f"Choose a package below to unlock more quiz challenges and earn "
-        f"more leaderboard points, {md_escape(user.username or 'Friend')} 📊"
-        f"🧠 Correct answers earn *Premium Spins* and *Premium Points*"
+        f"more leaderboard points 📊\n\n"
+        f"🧠 Correct answers earn *Premium Points*\n\n"
         f"🎯 Premium Points determine leaderboard ranking and jackpot winners\n\n"
         f"📜 Paid participation is governed by our *Terms & Fair Play Rules*"
     )   
