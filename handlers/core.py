@@ -258,8 +258,9 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
         return
 
+
 # ===============================================================
-# Register Handlers
+# Register Handlers 
 # ===============================================================
 def register_handlers(application):
 
@@ -279,7 +280,12 @@ def register_handlers(application):
         r"^(hi|hello|hey|howdy|sup|good\s?(morning|afternoon|evening))",
         re.IGNORECASE
     ))
-    application.add_handler(MessageHandler(greetings, start))
+    application.add_handler(
+        MessageHandler(
+            greetings & ~filters.COMMAND,
+            start
+        )
+    )
 
     # Leaderboard routing
     from handlers.leaderboard import register_leaderboard_handlers
