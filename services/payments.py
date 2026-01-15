@@ -30,6 +30,26 @@ ALLOWED_PACKAGES = {200, 500, 1000}
 logger = logging.getLogger("payments")
 logger.setLevel(logging.INFO)
 
+# services/payments.py
+
+PRICE_TO_TRIES = {
+    200: 1,
+    500: 3,
+    1000: 7,
+}
+
+def calculate_tries(amount: int) -> int:
+    """
+    Convert payment amount (₦) into trivia tries.
+    """
+    if not isinstance(amount, int) or amount <= 0:
+        return 0
+
+    if amount in PRICE_TO_TRIES:
+        return PRICE_TO_TRIES[amount]
+
+    # fallback rule: 1 try per ₦200
+    return max(1, amount // 200)
 
 # ------------------------------------------------------
 # 1. Create Checkout
