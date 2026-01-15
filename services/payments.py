@@ -5,6 +5,7 @@ import os
 import httpx
 import hmac
 import aiohttp
+import hashlib
 import logging
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
@@ -30,7 +31,7 @@ ALLOWED_PACKAGES = {200, 500, 1000}
 logger = logging.getLogger("payments")
 logger.setLevel(logging.INFO)
 
-# services/payments.py
+
 
 PRICE_TO_TRIES = {
     200: 1,
@@ -50,6 +51,18 @@ def calculate_tries(amount: int) -> int:
 
     # fallback rule: 1 try per ₦200
     return max(1, amount // 200)
+
+
+def validate_flutterwave_webhook(headers: dict, raw_body: str) -> bool:
+    """
+    Validates Flutterwave webhook using verif-hash header.
+    """
+    signature = headers.get("verif-hash")
+    if not signature or not FLW_SECRET_HASH:
+        return False
+
+    return hmac.compare_digest(signature, FLW_SECRET_HASH)
+
 
 # ------------------------------------------------------
 # 1. Create Checkout
@@ -335,4 +348,3 @@ async def verify_transaction(transaction_id: str, amount: int) -> bool:
     except Exception as e:
         logger.error(f"❌ verify_transaction() failed for tx_id={transaction_id}: {e}", exc_info=True)
         return False
-
