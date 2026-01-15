@@ -395,7 +395,7 @@ async def flutterwave_redirect(
         if (not payment or payment.status in (None, "pending")) and transaction_id:
             try:
                 
-                fw_resp = await verify_payment(tx_ref, session, bot=None, credit=True)
+                fw_resp = await verify_payment(tx_ref, session)
                 fw_data = fw_resp.get("data") or {}
                 # ✅ Normalize status before comparing or saving
                 raw_status = (fw_data.get("status") or "").lower().strip()
