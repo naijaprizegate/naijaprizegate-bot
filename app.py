@@ -83,7 +83,7 @@ from services.payments import (
     calculate_tries,
     verify_payment,
     resolve_payment_status,
-    validate_webhook,
+    validate_flutterwave_webhook,
 )
 # ------------------------------------
 # Simple anti-spam for webhook calls
@@ -282,34 +282,6 @@ async def telegram_webhook(secret: str, request: Request):
     
 
 # -----------------------
-# Helper: constant-time webhook validation
-# -----------------------
-def validate_webhook_signature(headers: dict, body_str: str) -> bool:
-    """
-    Compare Flutterwave verif-hash using constant-time comparison.
-    Expects header 'verif-hash' and env var FLW_SECRET_HASH populated.
-    """
-    signature = headers.get("verif-hash") or headers.get("verif_hash") or ""
-    if not signature or not FLW_SECRET_HASH:
-        return False
-    # Trim whitespace; use compare_digest for constant-time compare
-    return hmac.compare_digest(signature.strip(), FLW_SECRET_HASH.strip())
-
-# -----------------------
-# Fallback calculate_tries if you don't have services.payments.calculate_tries
-# (Prefer your canonical function; this is a safe default.)
-# -----------------------
-def _calculate_tries_from_amount(amount: int) -> int:
-    if amount >= 1000:
-        return 7
-    if amount >= 500:
-        return 3
-    if amount >= 200:
-        return 1
-    return 0
-
-
-# -----------------------
 # 🔁 Helper – Prevent double crediting
 # -----------------------
 async def payment_already_processed(session: AsyncSession, tx_ref: str) -> bool:
@@ -328,7 +300,7 @@ async def flutterwave_webhook(
     raw_body = await request.body()
     body_str = raw_body.decode("utf-8", errors="ignore")
 
-    if not validate_webhook_signature(
+    if not validate_flutterwave_webhook(
         {k.lower(): v for k, v in request.headers.items()},
         body_str,
     ):
