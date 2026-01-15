@@ -131,18 +131,9 @@ async def verify_payment(tx_ref: str, session: AsyncSession) -> dict:
         "meta": tx_data.get("meta") or {},
     }
 
-# ------------------------------------------------------
-# 3. Validate Webhook Signature
-# ------------------------------------------------------
-def validate_webhook(request_headers, body: str) -> bool:
-    signature = request_headers.get("verif-hash")
-    if not FLW_SECRET_HASH or not signature:
-        return False
-    return hmac.compare_digest(signature, FLW_SECRET_HASH)
-
 
 # ------------------------------------------------------
-# 4. Log Raw Transaction Payload
+# Log Raw Transaction Payload
 # ------------------------------------------------------
 async def log_transaction(session: AsyncSession, provider: str, payload: str):
     log = TransactionLog(provider=provider, payload=payload)
@@ -150,73 +141,6 @@ async def log_transaction(session: AsyncSession, provider: str, payload: str):
     await session.commit()
 
 
-# ------------------------------------------------------
-# 5. Credit User Tries
-# ------------------------------------------------------
-
-PRICE_TO_TRIES = {
-    200: 1,
-    500: 3,
-    1000: 7,
-}
-
-def calculate_tries(amount: int) -> int:
-    """Convert amount (₦) to number of tries."""
-    if amount in PRICE_TO_TRIES:
-        return PRICE_TO_TRIES[amount]
-    # fallback rule: 1 try per ₦200
-    return max(1, amount // 200)
-
-
-async def credit_user_tries(session, payment: Payment):
-    """
-    Safely credit user tries based on a verified payment.
-    - Ensures payment.user_id exists and is valid.
-    - Prevents double-crediting.
-    - Logs each step for debugging.
-    """
-
-    # ✅ Step 1: Sanity check for user_id
-    if not payment.user_id:
-        logger.error(f"❌ credit_user_tries: payment {payment.tx_ref} has no user_id linked.")
-        return None, 0
-
-    # ✅ Step 2: Fetch user by UUID (linked via payment.user_id)
-    try:
-        user = await session.get(User, payment.user_id)
-    except Exception as e:
-        logger.exception(f"❌ Failed to fetch user {payment.user_id} for tx_ref={payment.tx_ref}: {e}")
-        return None, 0
-
-    if not user:
-        logger.error(f"❌ No user found for payment {payment.tx_ref} (user_id={payment.user_id})")
-        return None, 0
-
-    # ✅ Step 3: Skip if already credited
-    if payment.credited_tries and payment.credited_tries > 0:
-        logger.info(f"ℹ️ Payment {payment.tx_ref} already credited → skipping re-credit.")
-        return user, payment.credited_tries
-
-    # ✅ Step 4: Calculate tries from amount
-    try:
-        tries = calculate_tries(int(payment.amount))
-    except Exception as e:
-        logger.warning(f"⚠️ Could not calculate tries for amount {payment.amount}: {e}")
-        return user, 0
-
-    if tries <= 0:
-        logger.warning(f"⚠️ No valid tries mapping for amount {payment.amount}")
-        return user, 0
-
-    # ✅ Step 5: Credit user with tries
-    user = await add_tries(session, user, tries, paid=True)
-    payment.credited_tries = tries
-    await session.flush()
-
-    # ✅ Step 6: Log success
-    logger.info(f"🎉 Credited {tries} tries to user {user.tg_id} ({user.username}) — tx_ref={payment.tx_ref}")
-
-    return user, tries
 
 # ------------------------------------------------------ 
 # 6. Resolve Payment Status (helper for redirect/status)
@@ -391,3 +315,4 @@ async def verify_transaction(transaction_id: str, amount: int) -> bool:
     except Exception as e:
         logger.error(f"❌ verify_transaction() failed for tx_id={transaction_id}: {e}", exc_info=True)
         return False
+
