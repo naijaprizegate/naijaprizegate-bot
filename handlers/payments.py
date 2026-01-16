@@ -115,9 +115,13 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     email = f"{username}@naijaprizegate.ng"
 
     checkout_url = await create_checkout(
-        amount=price, tx_ref=tx_ref,
-        user_id=query.from_user.id, username=username, email=email
+        session=session,
+        amount=price,
+        user_id=query.from_user.id,
+        username=username,
+        email=email,
     )
+
 
     if not checkout_url:
         return await query.edit_message_text("⚠️ Payment service unavailable. Please try again shortly.", parse_mode="HTML")
