@@ -121,7 +121,7 @@ async def create_flutterwave_checkout_link(
 
         # 🔑 THIS IS WHAT THE WEBHOOK NEEDS
         "meta": {
-            "tg_id": tg_id,
+            "tg_id": str(tg_id),
             "username": username or "",
             "purpose": "trivia_purchase",
         },
