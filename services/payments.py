@@ -67,7 +67,6 @@ def validate_flutterwave_webhook(headers: dict, raw_body: str) -> bool:
 # ------------------------------------------------------
 # 1. Create Checkout
 # ------------------------------------------------------
-
 async def create_checkout(
     user_id: str,
     amount: int,
@@ -105,8 +104,8 @@ async def create_checkout(
     return await create_flutterwave_checkout_link(
         tx_ref=tx_ref,
         amount=amount,
-        tg_id=update.effective_user.id,
-        username=update.effective_user.username,
+        tg_id=str(user_id),        # ✅ FIXED
+        username=username or "",   # ✅ FIXED
         email=email,
     )
 
