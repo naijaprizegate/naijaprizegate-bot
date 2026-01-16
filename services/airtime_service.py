@@ -94,7 +94,7 @@ def guess_network(phone_11: str) -> Optional[str]:
 # Flutterwave Checkout Link (Trivia Purchases) - KEEP THIS
 # -------------------------------------------------------------------
 async def create_flutterwave_checkout_link(
-    tx_ref: str,
+    tx_ref: Optional[str],
     amount: int,
     tg_id: int,
     username: Optional[str] = None,
@@ -103,25 +103,52 @@ async def create_flutterwave_checkout_link(
     """
     Creates a Flutterwave hosted checkout link for TRIVIA purchase payments.
 
-    ✅ Enforces a TRIVIA- prefix on tx_ref to keep webhook routing clean.
+    ✔ Guarantees TRIVIA- prefixed tx_ref
+    ✔ Guarantees meta.tg_id for webhook crediting
+    ✔ Safe defaults for customer identity
+    ✔ Defensive error handling & logging
     """
-    # ✅ Ensure tx_ref is prefixed for trivia purchases
+
+    # ----------------------------
+    # 1. HARD VALIDATION
+    # ----------------------------
+    if not tg_id:
+        logger.error("❌ Cannot create checkout: tg_id is missing")
+        return None
+
+    if amount <= 0:
+        logger.error(f"❌ Invalid amount: {amount}")
+        return None
+
+    # ----------------------------
+    # 2. NORMALIZE tx_ref
+    # ----------------------------
     tx_ref = (tx_ref or "").strip()
     if not tx_ref.startswith("TRIVIA-"):
         tx_ref = f"TRIVIA-{tx_ref}" if tx_ref else f"TRIVIA-{uuid.uuid4()}"
 
-    customer_email = email if email and "@" in email else f"user_{tg_id}@naijaprizegate.ng"
+    # ----------------------------
+    # 3. CUSTOMER FALLBACKS
+    # ----------------------------
+    customer_email = (
+        email if email and "@" in email
+        else f"user_{tg_id}@naijaprizegate.ng"
+    )
+
     safe_name = (username or f"User {tg_id}")[:64]
 
+    # ----------------------------
+    # 4. PAYLOAD (WEBHOOK-CRITICAL)
+    # ----------------------------
     payload = {
         "tx_ref": tx_ref,
         "amount": amount,
         "currency": "NGN",
         "redirect_url": WEBHOOK_REDIRECT_URL,
 
-        # 🔑 THIS IS WHAT THE WEBHOOK NEEDS
+        # 🔑 REQUIRED FOR WEBHOOK → TELEGRAM CREDITING
         "meta": {
-            "tg_id": str(tg_id),
+            "tg_id": str(tg_id),          # MUST be string
             "username": username or "",
             "purpose": "trivia_purchase",
         },
@@ -130,26 +157,61 @@ async def create_flutterwave_checkout_link(
             "email": customer_email,
             "name": safe_name,
         },
+
         "customizations": {
             "title": "NaijaPrizeGate",
             "logo": "https://naijaprizegate.ng/static/logo.png",
         },
     }
 
-    headers = {"Authorization": f"Bearer {FLW_SECRET_KEY}", "Content-Type": "application/json"}
+    headers = {
+        "Authorization": f"Bearer {FLW_SECRET_KEY}",
+        "Content-Type": "application/json",
+    }
 
+    # ----------------------------
+    # 5. FLUTTERWAVE REQUEST
+    # ----------------------------
     try:
-        async with httpx.AsyncClient(timeout=15.0) as client:
-            resp = await client.post(f"{FLW_BASE_URL}/v3/payments", json=payload, headers=headers)
+        async with httpx.AsyncClient(timeout=20.0) as client:
+            resp = await client.post(
+                f"{FLW_BASE_URL}/v3/payments",
+                json=payload,
+                headers=headers,
+            )
+
         data = resp.json()
+
+        if resp.status_code != 200 or data.get("status") != "success":
+            logger.error(
+                f"❌ Flutterwave error | "
+                f"status={resp.status_code} | "
+                f"tx_ref={tx_ref} | "
+                f"response={data}"
+            )
+            return None
+
     except Exception as e:
-        logger.exception(f"Checkout creation failed: {e}")
+        logger.exception(f"❌ Checkout creation exception | tx_ref={tx_ref} | {e}")
         return None
 
-    # Optional: log tx_ref for debugging (no secrets)
-    logger.info(f"✅ Flutterwave checkout created | tx_ref={tx_ref} | amount={amount} | tg_id={tg_id}")
+    checkout_link = data.get("data", {}).get("link")
 
-    return data.get("data", {}).get("link")
+    if not checkout_link:
+        logger.error(f"❌ No checkout link returned | tx_ref={tx_ref}")
+        return None
+
+    # ----------------------------
+    # 6. SUCCESS LOG
+    # ----------------------------
+    logger.info(
+        f"✅ Flutterwave checkout created | "
+        f"tx_ref={tx_ref} | "
+        f"amount={amount} | "
+        f"tg_id={tg_id}"
+    )
+
+    return checkout_link
 
 # -------------------------------------------------------------------
 # Clubkonnect/Nellobytes Airtime payout (Automatic)
@@ -780,3 +842,4 @@ async def handle_airtime_network_choice(update: Update, context: ContextTypes.DE
         amount=int(amount),
         airtime_result=res,
     )
+
