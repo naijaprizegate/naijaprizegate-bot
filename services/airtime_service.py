@@ -94,124 +94,73 @@ def guess_network(phone_11: str) -> Optional[str]:
 # Flutterwave Checkout Link (Trivia Purchases) - KEEP THIS
 # -------------------------------------------------------------------
 async def create_flutterwave_checkout_link(
-    tx_ref: Optional[str],
-    amount: int,
+    *,
+    session: AsyncSession,
     tg_id: int,
-    username: Optional[str] = None,
-    email: Optional[str] = None,
-) -> Optional[str]:
+    amount: int,
+    username: str | None = None,
+    email: str | None = None,
+) -> str:
     """
-    Creates a Flutterwave hosted checkout link for TRIVIA purchase payments.
-
-    ✔ Guarantees TRIVIA- prefixed tx_ref
-    ✔ Guarantees meta.tg_id for webhook crediting
-    ✔ Safe defaults for customer identity
-    ✔ Defensive error handling & logging
+    Creates a Flutterwave hosted checkout link for TRIVIA purchases.
+    Ensures tx_ref -> tg_id is persisted before redirect.
     """
 
-    # ----------------------------
-    # 1. HARD VALIDATION
-    # ----------------------------
-    if not tg_id:
-        logger.error("❌ Cannot create checkout: tg_id is missing")
-        return None
+    # Always generate a safe tx_ref
+    tx_ref = f"TRIVIA-{uuid.uuid4()}"
 
-    if amount <= 0:
-        logger.error(f"❌ Invalid amount: {amount}")
-        return None
-
-    # ----------------------------
-    # 2. NORMALIZE tx_ref
-    # ----------------------------
-    tx_ref = (tx_ref or "").strip()
-    if not tx_ref.startswith("TRIVIA-"):
-        tx_ref = f"TRIVIA-{tx_ref}" if tx_ref else f"TRIVIA-{uuid.uuid4()}"
-
-    # ----------------------------
-    # 3. CUSTOMER FALLBACKS
-    # ----------------------------
     customer_email = (
-        email if email and "@" in email
-        else f"user_{tg_id}@naijaprizegate.ng"
+        email if email and "@" in email else f"user_{tg_id}@naijaprizegate.ng"
     )
+    safe_username = (username or f"User {tg_id}")[:64]
 
-    safe_name = (username or f"User {tg_id}")[:64]
+    # ✅ Persist payment FIRST (source of truth)
+    payment = Payment(
+        tx_ref=tx_ref,
+        tg_id=tg_id,
+        username=safe_username,
+        amount=amount,
+        status="pending",
+        credited_tries=0,
+    )
+    session.add(payment)
+    await session.commit()
 
-    # ----------------------------
-    # 4. PAYLOAD (WEBHOOK-CRITICAL)
-    # ----------------------------
     payload = {
         "tx_ref": tx_ref,
         "amount": amount,
         "currency": "NGN",
-        "redirect_url": WEBHOOK_REDIRECT_URL,
-
-        # 🔑 REQUIRED FOR WEBHOOK → TELEGRAM CREDITING
-        "meta": {
-            "tg_id": str(tg_id),          # MUST be string
-            "username": username or "",
-            "purpose": "trivia_purchase",
-        },
-
+        "redirect_url": FLUTTERWAVE_REDIRECT_URL,
         "customer": {
             "email": customer_email,
-            "name": safe_name,
+            "name": safe_username,
         },
-
         "customizations": {
-            "title": "NaijaPrizeGate",
-            "logo": "https://naijaprizegate.ng/static/logo.png",
+            "title": "NaijaPrizeGate Trivia",
+            "description": "Trivia attempts purchase",
+            "logo": APP_LOGO_URL,
+        },
+        # Meta is helpful, but NOT relied upon
+        "meta": {
+            "tg_id": tg_id,
+            "username": safe_username,
+            "purpose": "TRIVIA",
         },
     }
 
-    headers = {
-        "Authorization": f"Bearer {FLW_SECRET_KEY}",
-        "Content-Type": "application/json",
-    }
-
-    # ----------------------------
-    # 5. FLUTTERWAVE REQUEST
-    # ----------------------------
-    try:
-        async with httpx.AsyncClient(timeout=20.0) as client:
-            resp = await client.post(
-                f"{FLW_BASE_URL}/v3/payments",
-                json=payload,
-                headers=headers,
-            )
-
+    async with httpx.AsyncClient(timeout=15) as client:
+        resp = await client.post(
+            "https://api.flutterwave.com/v3/payments",
+            json=payload,
+            headers={
+                "Authorization": f"Bearer {FLUTTERWAVE_SECRET_KEY}",
+                "Content-Type": "application/json",
+            },
+        )
+        resp.raise_for_status()
         data = resp.json()
 
-        if resp.status_code != 200 or data.get("status") != "success":
-            logger.error(
-                f"❌ Flutterwave error | "
-                f"status={resp.status_code} | "
-                f"tx_ref={tx_ref} | "
-                f"response={data}"
-            )
-            return None
-
-    except Exception as e:
-        logger.exception(f"❌ Checkout creation exception | tx_ref={tx_ref} | {e}")
-        return None
-
-    checkout_link = data.get("data", {}).get("link")
-
-    if not checkout_link:
-        logger.error(f"❌ No checkout link returned | tx_ref={tx_ref}")
-        return None
-
-    # ----------------------------
-    # 6. SUCCESS LOG
-    # ----------------------------
-    logger.info(
-        f"✅ Flutterwave checkout created | "
-        f"tx_ref={tx_ref} | "
-        f"amount={amount} | "
-        f"tg_id={tg_id}"
-    )
-
-    return checkout_link
+    return data["data"]["link"]
 
 # -------------------------------------------------------------------
 # Clubkonnect/Nellobytes Airtime payout (Automatic)
@@ -842,4 +791,3 @@ async def handle_airtime_network_choice(update: Update, context: ContextTypes.DE
         amount=int(amount),
         airtime_result=res,
     )
-
