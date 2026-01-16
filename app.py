@@ -313,32 +313,43 @@ async def flutterwave_webhook(
     status = (data.get("status") or "").lower()
     tx_ref = data.get("tx_ref")
 
+    # Only process successful trivia payments
     if event != "charge.completed" or status != "successful":
         return JSONResponse({"status": "ignored"})
 
     if not tx_ref or not tx_ref.startswith("TRIVIA-"):
         return JSONResponse({"status": "ignored"})
 
+    # Fetch existing payment (if any)
     payment = await session.scalar(
         select(Payment).where(Payment.tx_ref == tx_ref)
     )
-    if payment and payment.credited_tries > 0:
+
+    # Idempotency: already credited
+    if payment and payment.status == "successful" and payment.credited_tries > 0:
         return JSONResponse({"status": "duplicate"})
 
+    # Try to get tg_id from meta first, then DB
     meta = data.get("meta") or {}
     tg_id_raw = meta.get("tg_id")
+
+    if not tg_id_raw and payment:
+        tg_id_raw = payment.tg_id
+
     if not tg_id_raw:
         logger.error(f"❌ Missing tg_id for tx_ref={tx_ref}")
         return JSONResponse({"status": "ignored"})
 
     tg_id = int(tg_id_raw)
-    username = (meta.get("username") or "Unknown")[:64]
+    username = (meta.get("username") or payment.username or "Unknown")[:64]
     amount = int(data.get("amount"))
+    flw_tx_id = str(data.get("id"))
 
+    # Create or update payment record
     payment = payment or Payment(tx_ref=tx_ref)
     payment.status = "successful"
     payment.amount = amount
-    payment.flw_tx_id = str(data.get("id"))
+    payment.flw_tx_id = flw_tx_id
     payment.tg_id = tg_id
     payment.username = username
     payment.credited_tries = 0
@@ -346,6 +357,7 @@ async def flutterwave_webhook(
     session.add(payment)
     await session.flush()
 
+    # Credit tries
     tries = calculate_tries(amount)
     user = await get_or_create_user(session, tg_id, username)
     await add_tries(session, user, tries, paid=True)
@@ -353,6 +365,7 @@ async def flutterwave_webhook(
     payment.credited_tries = tries
     await session.commit()
 
+    # Notify user (non-fatal)
     try:
         bot = Bot(token=BOT_TOKEN)
         await bot.send_message(
@@ -749,4 +762,3 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
-
