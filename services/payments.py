@@ -105,8 +105,8 @@ async def create_checkout(
     return await create_flutterwave_checkout_link(
         tx_ref=tx_ref,
         amount=amount,
-        tg_id=int(user_id),
-        username=username,
+        tg_id=update.effective_user.id,
+        username=update.effective_user.username,
         email=email,
     )
 
