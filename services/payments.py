@@ -67,17 +67,19 @@ def validate_flutterwave_webhook(headers: dict, raw_body: str) -> bool:
 # ------------------------------------------------------
 # 1. Create Checkout
 # ------------------------------------------------------
+
 async def create_checkout(
-    user_id: str,
+    *,
+    session: AsyncSession,
+    user_id: int,
     amount: int,
-    tx_ref: str,
-    username: str = None,
-    email: str = None
-) -> str:
+    username: str | None = None,
+    email: str | None = None,
+) -> str | None:
     """
     Wrapper for trivia purchases.
     Performs validation ONLY.
-    Delegates Flutterwave logic to airtime_service.
+    Delegates Flutterwave logic to the payment service.
     """
 
     # ✅ 1. Environment validation
@@ -98,14 +100,15 @@ async def create_checkout(
         logger.warning(f"🚫 Unauthorized payment amount {amount} by user {user_id}")
         return None
 
-    # ✅ 3. Delegate to the SAFE Flutterwave function
-    from services.airtime_service import create_flutterwave_checkout_link
+    # ✅ 3. Delegate to SAFE Flutterwave checkout creator
+    from services.payments import create_flutterwave_checkout_link
+    # (adjust import path if yours differs)
 
     return await create_flutterwave_checkout_link(
-        tx_ref=tx_ref,
+        session=session,
+        tg_id=user_id,
         amount=amount,
-        tg_id=str(user_id),        # ✅ FIXED
-        username=username or "",   # ✅ FIXED
+        username=username,
         email=email,
     )
 
