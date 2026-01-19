@@ -26,7 +26,7 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "Ready to boost your performance and get ahead on the leaderboard\\? 😎\n\n"
         "💡 Every correct answer earns you points\\.\n"
         "🏆 Once the performance target is reached, the top scorer wins the prize\\.\n\n"
-        "*How to earn FREE Trivia Questions* 👇\n"
+        "*How to earn FREE Trivia Questions* 👇\n\n"
         "1️⃣ *Invite friends* — Each friend who joins through your link \\= *\\+1 Free Question*\n\n"
         "2️⃣ *Follow us on social media* — Upload a screenshot proof \\= *\\+1 Free Question* after approval\n\n"
         "⚡ The more questions you answer, the higher you climb\\.\n\n"
@@ -129,9 +129,9 @@ async def send_referral_link(update: Update, context: ContextTypes.DEFAULT_TYPE)
     text = (
         f"🚀 *Boom, {display_name}*\\! Your personal referral link is ready:\n\n"
         f"🔗 {ref_link_md}\n\n"
-        "👥 Every friend who joins through *your* link \\= *\\+1 FREE Trivia Questions\\!* 🎉\n\n"
-        "🧠 More questions = More chances to score higher\n\n" 
-        "💪 Higher score = Better chance to finish #1\n\n"
+        "👥 For *every friend* who joins through *your* link you get *\\+1 FREE Trivia Questions\\!* 🎉\n\n"
+        "🧠 More questions means More chances to score higher\n\n" 
+        "💪 Higher score means Better chance to finish #1\n\n"
         "Share your link everywhere — let’s see how far your knowledge can take you\\! 🏆"
         "*Be the first to get to the top\\!* 💰💎"
     )
@@ -207,3 +207,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(send_referral_link, pattern="^get_referral_link$"))
     application.add_handler(CallbackQueryHandler(ask_proof_upload, pattern="^upload_proof$"))
     application.add_handler(MessageHandler(filters.PHOTO, handle_proof_photo))
+
