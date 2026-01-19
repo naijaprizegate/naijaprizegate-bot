@@ -101,7 +101,7 @@ async def create_checkout(
         return None
 
     # ✅ 3. Delegate to SAFE Flutterwave checkout creator
-    from services.payments import create_flutterwave_checkout_link
+    from services.flutterwave import create_flutterwave_checkout_link
     # (adjust import path if yours differs)
 
     return await create_flutterwave_checkout_link(
