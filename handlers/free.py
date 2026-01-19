@@ -147,7 +147,7 @@ async def ask_proof_upload(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "📤 Please send a *photo screenshot* showing that you followed us "
         "on social media\\.\n\n"
         "Once approved by our team, you’ll receive *\\+1 free Trivia Question 🎉\n\n" \
-        "📌 Remember: Rewards are skill-based\\. Higher performance wins\\!",
+        "📌 Remember: Rewards are skill\\-based\\. Higher performance wins\\!",
         parse_mode="MarkdownV2"
     )
     context.user_data["awaiting_proof"] = True
@@ -195,7 +195,7 @@ def proof_approved_text(db_user, bonus_tries: int):
         "🧠 Ready to boost your score even more?\n\n"
         "📢 Don’t stop here — keep getting free Trivia Questions by inviting friends\\. "
         "*Leaderboard ranking is based entirely on correct answers\\.\n\n"
-        "👉 Head back to *Play trivia Questions* — every point gets you closer to the top spot 🏆"
+        "👉 Head back to *Play trivia Questions*\\. Every point gets you closer to the top spot 🏆"
     )
 
 
@@ -207,4 +207,3 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(send_referral_link, pattern="^get_referral_link$"))
     application.add_handler(CallbackQueryHandler(ask_proof_upload, pattern="^upload_proof$"))
     application.add_handler(MessageHandler(filters.PHOTO, handle_proof_photo))
-
