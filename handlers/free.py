@@ -147,7 +147,7 @@ async def ask_proof_upload(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "📤 Please send a *photo screenshot* showing that you followed us "
         "on social media\\.\n\n"
         "Once approved by our team, you’ll receive *\\+1 free Trivia Question 🎉\n\n" \
-        "📌 Remember: Rewards are skill-based — higher performance wins\\!",
+        "📌 Remember: Rewards are skill-based\\. Higher performance wins\\!",
         parse_mode="MarkdownV2"
     )
     context.user_data["awaiting_proof"] = True
