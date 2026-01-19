@@ -21,6 +21,14 @@ if not ADMIN_USER_ID:
 ADMIN_USER_ID = int(ADMIN_USER_ID)
 
 # ----------------------
+# App branding
+# ----------------------
+APP_LOGO_URL = os.getenv(
+    "APP_LOGO_URL",
+    "https://raw.githubusercontent.com/naijaprizegate/naijaprizegate-bot/main/Naijaprizegate%20Logo.png",  # safe fallback
+)
+
+# ----------------------
 # Flutterwave
 # ----------------------
 FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")
@@ -46,3 +54,4 @@ FLUTTERWAVE_REDIRECT_URL = WEBHOOK_REDIRECT_URL
 # Other
 # ----------------------
 AIRTIME_PROVIDER = os.getenv("AIRTIME_PROVIDER", "flutterwave")
+
