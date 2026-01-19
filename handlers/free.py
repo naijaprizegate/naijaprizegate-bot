@@ -131,7 +131,7 @@ async def send_referral_link(update: Update, context: ContextTypes.DEFAULT_TYPE)
         f"🔗 {ref_link_md}\n\n"
         "👥 For *every friend* who joins through *your* link you get *\\+1 FREE Trivia Questions\\!* 🎉\n\n"
         "🧠 More questions means More chances to score higher\n\n" 
-        "💪 Higher score means Better chance to finish #1\n\n"
+        "💪 Higher score means Better chance to finish \\#1\n\n"
         "Share your link everywhere — let’s see how far your knowledge can take you\\! 🏆"
         "*Be the first to get to the top\\!* 💰💎"
     )
