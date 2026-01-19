@@ -210,7 +210,10 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ===============================================================
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # ✅ Don't interrupt airtime claim flow
-    if context.user_data.get("awaiting_airtime_phone"):
+    user_data = context.user_data or {}
+
+    if user_data.get("awaiting_airtime_phone"):
+    
         return
 
     safe_text = md_escape(
