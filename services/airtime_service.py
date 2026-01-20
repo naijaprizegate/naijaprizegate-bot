@@ -89,6 +89,7 @@ def guess_network(phone_11: str) -> Optional[str]:
         return "9mobile"
     return None
 
+
 # -------------------------------------------------------------------
 # Clubkonnect/Nellobytes Airtime payout (Automatic)
 # -------------------------------------------------------------------
@@ -242,7 +243,20 @@ async def create_pending_airtime_payout_and_prompt(
     amount = AIRTIME_MILESTONES.get(total_premium_spins)
     if not amount:
         logger.warning(f"⚠️ No airtime milestone defined for spins={total_premium_spins}")
-        return
+        
+        # ✅ CLOSE THE USER FLOW
+        try:
+            await update.effective_chat.send_message(
+                "🎡 *Spin Complete!*\n\n"
+                "You didn’t unlock any reward this time\\.\n "
+                "But keep answering\\! Big rewards are coming🔥\n\n" 
+                "AirPods, Bluetooth Speakers and Smart Phones",
+                parse_mode="Markdown",
+            )
+        except Exception as e:
+            logger.error(f"⚠️ Failed to send no-reward message: {e}")
+        
+        return None
 
     payout_id = str(uuid.uuid4())
     now = datetime.now(timezone.utc)
