@@ -228,24 +228,30 @@ def clubkonnect_is_success(data: Dict[str, Any]) -> bool:
 # -------------------------------------------------------------------
 # Create Airtime Payout Record + Prompt Claim Button
 # -------------------------------------------------------------------
-async def create_pending_airtime_payout_and_prompt(
+async def create_pending_airtime_payout(
     session,
-    update,
     user_id: str,
     tg_id: int,
-    username: Optional[str],
-    total_premium_spins: int
-):
+    total_premium_spins: int,
+) -> Optional[Dict[str, int | str]]:
     """
-    Creates a pending airtime payout entry and sends a claim button message.
+    Creates a pending airtime payout if a milestone is reached.
+
+    Returns:
+        {
+            "payout_id": str,
+            "amount": int,
+            "spins": int
+        }
+        or None if no milestone was hit.
     """
 
     amount = AIRTIME_MILESTONES.get(total_premium_spins)
     if not amount:
         logger.info(
-            f"ℹ️ No airtime milestone for tg_id={tg_id} | spins={total_premium_spins}"
+            f"ℹ️ No airtime milestone | tg_id={tg_id} | spins={total_premium_spins}"
         )
-        return "NO_MILESTONE"
+        return None
 
     payout_id = str(uuid.uuid4())
     now = datetime.now(timezone.utc)
@@ -253,40 +259,42 @@ async def create_pending_airtime_payout_and_prompt(
     await session.execute(
         text("""
             INSERT INTO airtime_payouts (
-                id, user_id, tg_id, phone_number,
-                amount, status, created_at
+                id,
+                user_id,
+                tg_id,
+                phone_number,
+                amount,
+                status,
+                created_at
             )
             VALUES (
-                :id, :uid, :tg, NULL,
-                :amt, 'pending_claim', :ts
+                :id,
+                :uid,
+                :tg,
+                NULL,
+                :amt,
+                'pending_claim',
+                :ts
             )
         """),
-        {"id": payout_id, "uid": user_id, "tg": tg_id, "amt": amount, "ts": now},
-    )
-    await session.commit()
-
-    safe_name = username or f"User {tg_id}"
-    message = (
-        f"🏆 *Milestone Unlocked, {safe_name}!* 🎉\n\n"
-        f"🎯 You've reached *{total_premium_spins}* premium attempts.\n"
-        f"💸 *₦{amount} Airtime Reward* unlocked!\n\n"
-        "Tap the button below to claim 👇"
+        {
+            "id": payout_id,
+            "uid": user_id,
+            "tg": tg_id,
+            "amt": amount,
+            "ts": now,
+        },
     )
 
-    keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("⚡ Claim Airtime Reward", callback_data=f"claim_airtime:{payout_id}")]
-    ])
+    logger.info(
+        f"🎯 Airtime payout created | tg_id={tg_id} | payout_id={payout_id} | amount={amount}"
+    )
 
-    try:
-        if update.message:
-            await update.message.reply_text(message, reply_markup=keyboard, parse_mode="Markdown")
-        else:
-            await update.callback_query.message.reply_text(message, reply_markup=keyboard, parse_mode="Markdown")
-    except Exception as e:
-        logger.error(f"⚠️ Failed to send airtime claim UI: {e}")
-
-    logger.info(f"🎯 Airtime reward created | tg_id={tg_id} | payout_id={payout_id} | amount={amount}")
-    return payout_id
+    return {
+        "payout_id": payout_id,
+        "amount": amount,
+        "spins": total_premium_spins,
+    }
 
 
 # -------------------------------------------------------------------
