@@ -1,342 +1,260 @@
-#=================================================================
-# models.py (cleaned + expanded with trivia + spin reward models)
-#=================================================================
+# =================================================================
+# models.py — CANONICAL MIRROR OF NEON SCHEMA
+# =================================================================
 import uuid
-from uuid import uuid4
 from sqlalchemy import (
-    Column, String, Integer, ForeignKey, Text, TIMESTAMP, CheckConstraint,
-    Boolean, BigInteger, JSON, DateTime, text
+    Column, String, Integer, ForeignKey, Text, Boolean,
+    BigInteger, DateTime
 )
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import UUID, JSONB
 from sqlalchemy.orm import relationship
-from sqlalchemy.sql import func
-from base import Base  # from base.py
+from base import Base
+
 
 # ================================================================
-# 1. USERS (CLEAN FIXED VERSION)
+# USERS
 # ================================================================
 class User(Base):
     __tablename__ = "users"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    tg_id = Column(BigInteger, unique=True, nullable=False)
-    username = Column(String, nullable=True)
+    id = Column(UUID(as_uuid=True), primary_key=True)
+    tg_id = Column(BigInteger, nullable=False, unique=True)
+    username = Column(Text, nullable=True)
+    full_name = Column(Text, nullable=True)
 
-    tries_paid = Column(Integer, default=0)
-    tries_bonus = Column(Integer, default=0)
+    tries_paid = Column(Integer, nullable=True)
+    tries_bonus = Column(Integer, nullable=True)
 
-    # Premium spins remaining for gameplay
-    premium_spins = Column(Integer, default=0, nullable=False)
+    premium_spins = Column(Integer, nullable=False)
+    total_premium_spins = Column(Integer, nullable=False)
 
-    # Lifetime premium spins for milestone tracking (e.g. airtime rewards)
-    total_premium_spins = Column(Integer, default=0, nullable=False)
-
-    referred_by = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"))
-    created_at = Column(TIMESTAMP, server_default=func.now())
-    is_admin = Column(Boolean, default=False, nullable=False)
-
-    # Winner data
-    choice = Column(String, nullable=True)
-    full_name = Column(String, nullable=True)
-
-    # 🔹 Primary & ONLY DB column for phone number
-    phone = Column(String(20), nullable=True)
-
-    address = Column(String, nullable=True)
-    delivery_status = Column(String, nullable=True, default="Pending")
-    winner_stage = Column(String, nullable=True)
-    winner_data = Column(JSON, nullable=True, default={})
+    created_at = Column(DateTime(timezone=True))
 
     # Relationships
-    referrer = relationship("User", remote_side=[id])
     plays = relationship("Play", back_populates="user")
     payments = relationship("Payment", back_populates="user")
     proofs = relationship("Proof", back_populates="user")
-    prize_wins = relationship("PrizeWinner", back_populates="user", cascade="all, delete-orphan")
-
-    # 🔹 Alias for compatibility with current code
-    @property
-    def phone_number(self):
-        return self.phone
-
-    @phone_number.setter
-    def phone_number(self, value: str):
-        self.phone = value
+    prize_wins = relationship("PrizeWinner", back_populates="user")
 
 
 # ================================================================
-# 2. GLOBAL COUNTER
+# GLOBAL COUNTER
 # ================================================================
 class GlobalCounter(Base):
     __tablename__ = "global_counter"
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    paid_tries_total = Column(Integer, default=0)
+    id = Column(Integer, primary_key=True)
+    paid_tries_total = Column(Integer, nullable=True)
 
 
 # ================================================================
-# 2b. GAME STATE
+# GAME STATE
 # ================================================================
 class GameState(Base):
     __tablename__ = "game_state"
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    current_cycle = Column(Integer, default=1, nullable=False)
-    paid_tries_this_cycle = Column(Integer, default=0, nullable=False)
-    lifetime_paid_tries = Column(Integer, default=0, nullable=False)
+    id = Column(Integer, primary_key=True)
+    current_cycle = Column(Integer, nullable=True)
+    paid_tries_this_cycle = Column(Integer, nullable=True)
+    lifetime_paid_tries = Column(Integer, nullable=True)
 
-    created_at = Column(TIMESTAMP, server_default=func.now())
-    updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
+    created_at = Column(DateTime(timezone=True))
+    updated_at = Column(DateTime(timezone=True))
 
 
 # ================================================================
-# 3. PLAYS
+# PLAYS
 # ================================================================
 class Play(Base):
     __tablename__ = "plays"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-    result = Column(String, nullable=False)
-    created_at = Column(TIMESTAMP, server_default=func.now())
-
-    __table_args__ = (
-        CheckConstraint("result IN ('win','lose','pending')", name="check_play_result"),
-    )
+    id = Column(UUID(as_uuid=True), primary_key=True)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
+    result = Column(Text, nullable=False)
+    created_at = Column(DateTime(timezone=True))
 
     user = relationship("User", back_populates="plays")
 
 
 # ================================================================
-# 4. PAYMENTS
+# PAYMENTS
 # ================================================================
 class Payment(Base):
     __tablename__ = "payments"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=True)
+    id = Column(UUID(as_uuid=True), primary_key=True)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=True)
 
-    tx_ref = Column(String, unique=True, nullable=False)
-    status = Column(String, default="pending")
-    flw_tx_id = Column(String, nullable=True, index=True)
+    tx_ref = Column(Text, nullable=False, unique=True)
+    status = Column(Text, nullable=True)
 
     amount = Column(Integer, nullable=False)
-    credited_tries = Column(Integer, nullable=False, default=0)
+    credited_tries = Column(Integer, nullable=True)
 
-    tg_id = Column(BigInteger, nullable=True, index=True)
-    username = Column(String, nullable=True)
+    flw_tx_id = Column(Text, nullable=True)
+    tg_id = Column(BigInteger, nullable=True)
+    username = Column(Text, nullable=True)
 
-    created_at = Column(TIMESTAMP, server_default=func.now())
-    updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
-
-    __table_args__ = (
-        CheckConstraint(
-            "status IN ('pending','successful','failed','expired')",
-            name="check_payment_status"
-        ),
-    )
+    created_at = Column(DateTime(timezone=True))
+    updated_at = Column(DateTime(timezone=True))
 
     user = relationship("User", back_populates="payments")
 
 
 # ================================================================
-# 5. PROOFS
+# PROOFS
 # ================================================================
 class Proof(Base):
     __tablename__ = "proofs"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    id = Column(UUID(as_uuid=True), primary_key=True)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
     file_id = Column(Text, nullable=False)
-    status = Column(String, default="pending")
-    created_at = Column(TIMESTAMP, server_default=func.now())
-
-    __table_args__ = (
-        CheckConstraint("status IN ('pending','approved','rejected')", name="check_proof_status"),
-    )
+    status = Column(Text, nullable=True)
+    created_at = Column(DateTime(timezone=True))
 
     user = relationship("User", back_populates="proofs")
 
 
 # ================================================================
-# 6. TRANSACTION LOG
+# TRANSACTION LOGS
 # ================================================================
 class TransactionLog(Base):
     __tablename__ = "transaction_logs"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    provider = Column(String, nullable=False)
+    id = Column(UUID(as_uuid=True), primary_key=True)
+    provider = Column(Text, nullable=False)
     payload = Column(Text, nullable=False)
-    created_at = Column(TIMESTAMP, server_default=func.now())
+    created_at = Column(DateTime(timezone=True))
 
 
 # ================================================================
-# 7. PRIZE WINNERS (existing Top-Tier Campaign Reward users)
+# PRIZE WINNERS
 # ================================================================
 class PrizeWinner(Base):
     __tablename__ = "prize_winners"
 
-    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-    tg_id = Column(BigInteger, nullable=False, index=True)
-    choice = Column(String, nullable=False)
-    delivery_status = Column(String, nullable=True)
+    id = Column(Integer, primary_key=True)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
+    tg_id = Column(BigInteger, nullable=False)
+    choice = Column(Text, nullable=False)
 
-    submitted_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
-    pending_at = Column(DateTime(timezone=True), nullable=True)
-    in_transit_at = Column(DateTime(timezone=True), nullable=True)
-    delivered_at = Column(DateTime(timezone=True), nullable=True)
-    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
+    delivery_status = Column(Text, nullable=True)
 
-    delivery_data = Column(JSON, nullable=True, default={})
+    submitted_at = Column(DateTime(timezone=True))
+    pending_at = Column(DateTime(timezone=True))
+    in_transit_at = Column(DateTime(timezone=True))
+    delivered_at = Column(DateTime(timezone=True))
+    updated_at = Column(DateTime(timezone=True))
 
-    user = relationship("User", back_populates="prize_wins", lazy="joined")
+    delivery_data = Column(JSONB, nullable=True)
 
-    def to_csv_row(self):
-        return [
-            self.user.full_name or "",
-            self.user.username or "",
-            self.user.phone or "",
-            self.choice,
-            self.submitted_at.strftime("%Y-%m-%d %H:%M:%S") if self.submitted_at else "",
-            self.delivery_status or "",
-        ]
-
-    @staticmethod
-    def csv_headers():
-        return [
-            "Full Name",
-            "Telegram Username",
-            "Phone",
-            "Prize",
-            "Date Won",
-            "Delivery Status",
-        ]
+    user = relationship("User", back_populates="prize_wins")
 
 
-# =================================================================
-# NEW TABLE 1 — Trivia Questions
-# =================================================================
+# ================================================================
+# TRIVIA QUESTIONS
+# ================================================================
 class TriviaQuestion(Base):
     __tablename__ = "trivia_questions"
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    category = Column(String, nullable=False)
+    id = Column(Integer, primary_key=True)
+    category = Column(Text, nullable=False)
     question = Column(Text, nullable=False)
-    options = Column(JSON, nullable=False)
-    answer = Column(String, nullable=False)
-    created_at = Column(TIMESTAMP, server_default=func.now())
+    options = Column(JSONB, nullable=False)
+    answer = Column(Text, nullable=False)
+    created_at = Column(DateTime(timezone=True))
 
 
-# =================================================================
-# NEW TABLE 2 — User Trivia Answers
-# =================================================================
+# ================================================================
+# USER ANSWERS
+# ================================================================
 class UserAnswer(Base):
     __tablename__ = "user_answers"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    id = Column(UUID(as_uuid=True), primary_key=True)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
 
-    question_id = Column(Integer, ForeignKey("trivia_questions.id", ondelete="CASCADE"))
-    selected = Column(String, nullable=False)
-    correct = Column(Boolean, default=False)
+    question_id = Column(Integer, ForeignKey("trivia_questions.id"), nullable=True)
+    selected = Column(Text, nullable=False)
+    correct = Column(Boolean, nullable=True)
 
-    created_at = Column(TIMESTAMP, server_default=func.now())
+    created_at = Column(DateTime(timezone=True))
 
 
-# =================================================================
-# NEW TABLE 3 — Spin Results (Every Spin Recorded)
-# =================================================================
+# ================================================================
+# SPIN RESULTS
+# ================================================================
 class SpinResult(Base):
     __tablename__ = "spin_results"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
+    id = Column(UUID(as_uuid=True), primary_key=True)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=True)
     tg_id = Column(BigInteger, nullable=True)
 
-    spin_type = Column(String, nullable=False)       # basic / premium
-    outcome = Column(String, nullable=False)         # lose / Top-Tier Campaign Reward / airtime / speaker / earpod
-    created_at = Column(TIMESTAMP, server_default=func.now())
+    spin_type = Column(Text, nullable=False)
+    outcome = Column(Text, nullable=False)
 
-    extra_data = Column(JSON, nullable=True, default={})  # optional metadata
+    extra_data = Column(JSONB, nullable=True)
+    created_at = Column(DateTime(timezone=True))
 
 
-# =================================================================
-# NEW TABLE 4: AIRTIME PAYOUTS — CLEANED, SAFE & FULLY COMPATIBLE MODEL
-# =================================================================
+# ================================================================
+# AIRTIME PAYOUTS (FULL NEON MIRROR)
+# ================================================================
 class AirtimePayout(Base):
     __tablename__ = "airtime_payouts"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-
-    # User reference
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
+    id = Column(UUID(as_uuid=True), primary_key=True)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=True)
     tg_id = Column(BigInteger, nullable=False)
 
-    # Phone is unknown at creation → MUST be nullable
-    phone_number = Column(String, nullable=True)
-
-    # Airtime amount (₦50, ₦100 etc. from milestones)
+    phone_number = Column(Text, nullable=True)
     amount = Column(Integer, nullable=False)
 
-    # ------------------------------------------------------------------
-    # Unified status states used across system:
-    #
-    # pending_claim   → payout created, waiting for user to enter phone
-    # claim_phone_set → phone saved, checkout link generated
-    # failed          → checkout or webhook failed
-    # completed       → webhook confirmed airtime delivered
-    # ------------------------------------------------------------------
-    status = Column(String, nullable=False, default="pending_claim")
+    status = Column(Text, nullable=False)
 
-    created_at = Column(TIMESTAMP(timezone=True), server_default=func.now())
-    sent_at = Column(TIMESTAMP(timezone=True), nullable=True)
+    flutterwave_tx_ref = Column(Text, nullable=True)
 
-    # Retry logic (future feature)
-    retry_count = Column(Integer, nullable=False, server_default="0")
-    last_retry_at = Column(TIMESTAMP(timezone=True), nullable=True)
+    provider = Column(String, nullable=True)
+    provider_reference = Column(String, nullable=True)
+    provider_ref = Column(Text, nullable=True)
+    provider_payload = Column(Text, nullable=True)
 
-    # ------------------------------------------------------------------
-    # NEW: Required by your webhook
-    # ------------------------------------------------------------------
-    flutterwave_tx_ref = Column(String, nullable=True)
-    provider_response = Column(JSON, nullable=True)
-    completed_at = Column(TIMESTAMP(timezone=True), nullable=True)
+    provider_response = Column(JSONB, nullable=True)
+
+    retry_count = Column(Integer, nullable=False)
+    last_retry_at = Column(DateTime(timezone=True), nullable=True)
+
+    created_at = Column(DateTime(timezone=True))
+    sent_at = Column(DateTime(timezone=True))
+    completed_at = Column(DateTime(timezone=True))
 
 
-# =================================================================
-# NEW TABLE 5 — Non-Airtime Winners (earpods / speakers)
-# =================================================================
+# ================================================================
+# NON-AIRTIME WINNERS
+# ================================================================
 class NonAirtimeWinner(Base):
     __tablename__ = "non_airtime_winners"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
+    id = Column(UUID(as_uuid=True), primary_key=True)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=True)
     tg_id = Column(BigInteger, nullable=False)
 
-    reward_type = Column(String, nullable=False)  # "earpod", "speaker"
-    notified_admin = Column(Boolean, default=False)
+    reward_type = Column(Text, nullable=False)
+    notified_admin = Column(Boolean, nullable=True)
 
-    created_at = Column(TIMESTAMP, server_default=func.now())
+    created_at = Column(DateTime(timezone=True))
 
 
-# ============================================================
-# premium reward tier ENTRIES  (FIXED — proper UUID types)
-# ============================================================
+# ================================================================
+# PREMIUM REWARD ENTRIES
+# ================================================================
 class PremiumRewardEntry(Base):
     __tablename__ = "premium_reward_entries"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-
-    # IMPORTANT: match the User.id type exactly
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-
+    id = Column(UUID(as_uuid=True), primary_key=True)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
     tg_id = Column(BigInteger, nullable=False)
 
-    created_at = Column(
-        TIMESTAMP(timezone=True),
-        server_default=text("NOW()"),
-        nullable=False
-    )
+    created_at = Column(DateTime(timezone=True))
