@@ -1,10 +1,17 @@
 # =================================================================
-# models.py — CANONICAL MIRROR OF NEON SCHEMA
+# models.py — CANONICAL MIRROR OF NEON SCHEMA (SQLAlchemy 2.x SAFE)
 # =================================================================
-import uuid
+
 from sqlalchemy import (
-    Column, String, Integer, ForeignKey, Text, Boolean,
-    BigInteger, DateTime
+    Column,
+    String,
+    Integer,
+    ForeignKey,
+    Text,
+    Boolean,
+    BigInteger,
+    DateTime,
+    text,
 )
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 from sqlalchemy.orm import relationship
@@ -17,7 +24,12 @@ from base import Base
 class User(Base):
     __tablename__ = "users"
 
-    id = Column(UUID(as_uuid=True), primary_key=True)
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=text("gen_random_uuid()"),
+    )
+
     tg_id = Column(BigInteger, nullable=False, unique=True)
     username = Column(Text, nullable=True)
     full_name = Column(Text, nullable=True)
@@ -68,7 +80,12 @@ class GameState(Base):
 class Play(Base):
     __tablename__ = "plays"
 
-    id = Column(UUID(as_uuid=True), primary_key=True)
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=text("gen_random_uuid()"),
+    )
+
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
     result = Column(Text, nullable=False)
     created_at = Column(DateTime(timezone=True))
@@ -82,7 +99,12 @@ class Play(Base):
 class Payment(Base):
     __tablename__ = "payments"
 
-    id = Column(UUID(as_uuid=True), primary_key=True)
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=text("gen_random_uuid()"),
+    )
+
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=True)
 
     tx_ref = Column(Text, nullable=False, unique=True)
@@ -107,7 +129,12 @@ class Payment(Base):
 class Proof(Base):
     __tablename__ = "proofs"
 
-    id = Column(UUID(as_uuid=True), primary_key=True)
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=text("gen_random_uuid()"),
+    )
+
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
     file_id = Column(Text, nullable=False)
     status = Column(Text, nullable=True)
@@ -122,7 +149,12 @@ class Proof(Base):
 class TransactionLog(Base):
     __tablename__ = "transaction_logs"
 
-    id = Column(UUID(as_uuid=True), primary_key=True)
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=text("gen_random_uuid()"),
+    )
+
     provider = Column(Text, nullable=False)
     payload = Column(Text, nullable=False)
     created_at = Column(DateTime(timezone=True))
@@ -135,6 +167,7 @@ class PrizeWinner(Base):
     __tablename__ = "prize_winners"
 
     id = Column(Integer, primary_key=True)
+
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
     tg_id = Column(BigInteger, nullable=False)
     choice = Column(Text, nullable=False)
@@ -172,7 +205,12 @@ class TriviaQuestion(Base):
 class UserAnswer(Base):
     __tablename__ = "user_answers"
 
-    id = Column(UUID(as_uuid=True), primary_key=True)
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=text("gen_random_uuid()"),
+    )
+
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
 
     question_id = Column(Integer, ForeignKey("trivia_questions.id"), nullable=True)
@@ -188,7 +226,12 @@ class UserAnswer(Base):
 class SpinResult(Base):
     __tablename__ = "spin_results"
 
-    id = Column(UUID(as_uuid=True), primary_key=True)
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=text("gen_random_uuid()"),
+    )
+
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=True)
     tg_id = Column(BigInteger, nullable=True)
 
@@ -200,12 +243,17 @@ class SpinResult(Base):
 
 
 # ================================================================
-# AIRTIME PAYOUTS (FULL NEON MIRROR)
+# AIRTIME PAYOUTS
 # ================================================================
 class AirtimePayout(Base):
     __tablename__ = "airtime_payouts"
 
-    id = Column(UUID(as_uuid=True), primary_key=True)
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=text("gen_random_uuid()"),
+    )
+
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=True)
     tg_id = Column(BigInteger, nullable=False)
 
@@ -237,7 +285,12 @@ class AirtimePayout(Base):
 class NonAirtimeWinner(Base):
     __tablename__ = "non_airtime_winners"
 
-    id = Column(UUID(as_uuid=True), primary_key=True)
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=text("gen_random_uuid()"),
+    )
+
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=True)
     tg_id = Column(BigInteger, nullable=False)
 
@@ -253,7 +306,12 @@ class NonAirtimeWinner(Base):
 class PremiumRewardEntry(Base):
     __tablename__ = "premium_reward_entries"
 
-    id = Column(UUID(as_uuid=True), primary_key=True)
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=text("gen_random_uuid()"),
+    )
+
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
     tg_id = Column(BigInteger, nullable=False)
 
