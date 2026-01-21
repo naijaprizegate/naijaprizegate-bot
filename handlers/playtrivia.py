@@ -369,7 +369,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
                     await update.effective_message.reply_text(
                         "🚫 You have no spins left.\n\nGet more attempts to keep playing!\n\n"
                         "You could become a proud owner of\n"
-                        "*AirPods*, *Bluetooth Speakers* and *Smart Phones*"",
+                        "*AirPods*, *Bluetooth Speakers* and *Smart Phones*",
                         parse_mode="Markdown",
                     )
                     return
@@ -648,3 +648,4 @@ def register_handlers(application):
     application.add_handler(
         CallbackQueryHandler(free_menu, pattern="^free$")
     )
+
