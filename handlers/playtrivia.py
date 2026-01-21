@@ -183,7 +183,9 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
             if (user.tries_paid + user.tries_bonus) <= 0:
                 return await update.effective_message.reply_text(
                     "😅 You have no trivia attempts left.\n\n"
-                    "Use *Get More Trivia Attempts* or *Earn Free Trivia Attempts* to continue playing.",
+                    "Use *Get More Trivia Attempts* or *Earn Free Trivia Attempts* to continue playing.\n\n"
+                    "You could become a proud owner of\n"
+                    "*AirPods*, *Bluetooth Speakers* and *Smart Phones*",
                     parse_mode="Markdown",
                 )
 
@@ -208,7 +210,9 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     return await update.effective_message.reply_text(
         "🧠 *Choose your trivia category:*\n\n"
-        "Your correct answers add to your Premium Points",
+        "Your correct answers add to your Premium Points\n\n"
+        "You could become a proud owner of\n"
+        "*AirPods*, *Bluetooth Speakers* and *Smart Phones*",
         parse_mode="Markdown",
         reply_markup=category_keyboard,
     )
@@ -271,7 +275,10 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
     if context.user_data.get("trivia_answered", False):
         return await query.edit_message_text(
             "⏳ This trivia round is already closed.\n\n"
-            "Your reward for this attempt will follow the *standard tier* rules.",
+            "Your reward for this attempt will follow the *standard tier* rules.\n\n"
+            "Keep on answering trivia questions and building up your points\n"
+            "You could become a proud owner of\n"
+            "*AirPods*, *Bluetooth Speakers* and *Smart Phones*",
             parse_mode="Markdown",
         )
 
@@ -360,7 +367,9 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
 
                 if outcome == NO_TRIES:
                     await update.effective_message.reply_text(
-                        "🚫 You have no spins left.\n\nGet more attempts to keep playing!",
+                        "🚫 You have no spins left.\n\nGet more attempts to keep playing!\n\n"
+                        "You could become a proud owner of\n"
+                        "*AirPods*, *Bluetooth Speakers* and *Smart Phones*"",
                         parse_mode="Markdown",
                     )
                     return
@@ -443,6 +452,8 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
             f"🏆 *Milestone Unlocked!* 🎉\n\n"
             f"🎯 You've reached *{milestone['spins']}* premium attempts.\n"
             f"💸 *₦{milestone['amount']} Airtime Reward* unlocked!\n\n"
+            "You could become a proud owner of\n"
+            "*AirPods*, *Bluetooth Speakers* and *Smart Phones*\n\n"
             "Tap the button below to claim 👇",
             parse_mode="Markdown",
             reply_markup=keyboard,
@@ -477,6 +488,9 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
 
         await msg.edit_text(
             f"🎉 *You unlocked a campaign reward:* {prize_label} {emoji}\n\n"
+            "Keep answering and building up your points.\n"
+            "You could become a proud owner of\n"
+            "*iPhone* and *Samsung* Smart Phones.\n\n"
             "📌 Reward is promotional and subject to verification.",
             parse_mode="Markdown",
         )
@@ -512,6 +526,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
         "🎡 *Spin Complete!*\n\n"
         "You didn’t unlock any reward this time.\n"
         "But keep answering! Big rewards are coming 🔥\n\n"
+        "You could become a proud owner of\n"
         "*AirPods*, *Bluetooth Speakers* and *Smart Phones*",
         parse_mode="Markdown",
         reply_markup=make_play_keyboard(),
