@@ -110,8 +110,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "🎉 Welcome to *NaijaPrizeGate* — The Nigerian Trivia Challenge 🇳🇬\n\n"
         "🧠 Answer fun questions\n"
         "🎯 Earn reward points\n"
-        "🏆 Climb the leaderboard\n"
-        "🎁 Unlock weekly reward opportunities\n\n"
+        "🏆 Climb the leaderboard\n\n"
+        "🎁 You could become a proud owner of\n"
+        "*AirPods*, *Bluetooth Speakers* and *Smart Phones*"\n\n"
         "✨ It’s all about *knowledge and performance* — not luck 🔥\n\n"
         "🔒 100% Free to start\n"
         "📊 Rewards are based on leaderboard ranking\n"
@@ -213,7 +214,7 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_data = context.user_data or {}
 
     if user_data.get("awaiting_airtime_phone"):
-    
+
         return
 
     safe_text = md_escape(
@@ -316,4 +317,3 @@ def register_handlers(application):
             fallback
         )
     )
-
