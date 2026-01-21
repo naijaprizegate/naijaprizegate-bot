@@ -112,7 +112,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "🎯 Earn reward points\n"
         "🏆 Climb the leaderboard\n\n"
         "🎁 You could become a proud owner of\n"
-        "*AirPods*, *Bluetooth Speakers* and *Smart Phones*"\n\n"
+        "*AirPods*, *Bluetooth Speakers* and *Smart Phones*\n\n"
         "✨ It’s all about *knowledge and performance* — not luck 🔥\n\n"
         "🔒 100% Free to start\n"
         "📊 Rewards are based on leaderboard ranking\n"
