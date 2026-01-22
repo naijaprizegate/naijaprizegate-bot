@@ -648,4 +648,3 @@ def register_handlers(application):
     application.add_handler(
         CallbackQueryHandler(free_menu, pattern="^free$")
     )
-
