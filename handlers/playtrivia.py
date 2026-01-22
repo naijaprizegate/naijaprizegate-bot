@@ -452,6 +452,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
             f"🏆 *Milestone Unlocked!* 🎉\n\n"
             f"🎯 You've reached *{milestone['spins']}* premium attempts.\n"
             f"💸 *₦{milestone['amount']} Airtime Reward* unlocked!\n\n"
+            "Keep answering trivia questions and adding up points\n"
             "You could become a proud owner of\n"
             "*AirPods*, *Bluetooth Speakers* and *Smart Phones*\n\n"
             "Tap the button below to claim 👇",
