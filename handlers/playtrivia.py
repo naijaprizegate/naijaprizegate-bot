@@ -379,7 +379,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
 
                 # ⭐ PREMIUM PERFORMANCE TRACKING (CANONICAL FLOW)
                 if is_premium:
-                    from services.premium_service import (
+                    from services.playtrivia import (
                         record_premium_reward_entry,
                         apply_milestone_reward,
                     )
