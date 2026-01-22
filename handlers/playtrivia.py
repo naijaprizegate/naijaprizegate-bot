@@ -336,7 +336,7 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
 
 # ================================================================
 # STEP 3 — Reward Calculation After Trivia
-# (Spin animation FIRST, then reveal reward)
+# (Spin animation FIRST, then deterministic reward)
 # ================================================================
 async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
@@ -345,62 +345,58 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
     username = tg_user.username
     player_name = tg_user.first_name or "Player"
 
-    outcome: str | None = None
-    milestone: dict | None = None
-
     is_premium = context.user_data.pop("is_premium_reward", False)
 
     TOP_TIER = "Top-Tier Campaign Reward"
     NO_TRIES = "no_tries"
 
+    outcome: str | None = None
+    milestone_outcome: str = "none"
+    total_premium_rewards: int | None = None
+
     # --------------------------------------------------------------
-    # 1️⃣ CORE REWARD LOGIC (NO UI)
+    # 1️⃣ CORE REWARD LOGIC (NO UI, NO SLEEP)
     # --------------------------------------------------------------
     try:
         async with get_async_session() as session:
             async with session.begin():
 
-                user = await get_or_create_user(session, tg_id=tg_id, username=username)
+                user = await get_or_create_user(
+                    session, tg_id=tg_id, username=username
+                )
 
                 outcome = await reward_logic(session, user, is_premium)
-                await session.refresh(user)
 
                 if outcome == NO_TRIES:
                     await update.effective_message.reply_text(
-                        "🚫 You have no spins left.\n\nGet more attempts to keep playing!\n\n"
+                        "🚫 You have no spins left.\n\n"
+                        "Get more attempts to keep playing!\n\n"
                         "You could become a proud owner of\n"
                         "*AirPods*, *Bluetooth Speakers* and *Smart Phones*",
                         parse_mode="Markdown",
                     )
                     return
 
-                # ⭐ Premium spin tracking
+                # ⭐ PREMIUM PERFORMANCE TRACKING (CANONICAL FLOW)
                 if is_premium:
-                    await session.execute(
-                        text("""
-                            UPDATE users
-                            SET total_premium_spins = total_premium_spins + 1
-                            WHERE tg_id = :tg
-                        """),
-                        {"tg": tg_id},
+                    from services.premium_service import (
+                        record_premium_reward_entry,
+                        apply_milestone_reward,
                     )
 
-                    res = await session.execute(
-                        text("SELECT total_premium_spins FROM users WHERE tg_id = :tg"),
-                        {"tg": tg_id},
-                    )
-                    current_spins = res.scalar() or 0
-
-                    from services.airtime_service import create_pending_airtime_payout
-
-                    milestone = await create_pending_airtime_payout(
+                    # INSERT FIRST → COUNT AFTER
+                    total_premium_rewards = await record_premium_reward_entry(
                         session=session,
-                        user_id=user.id,
-                        tg_id=tg_id,
-                        total_premium_spins=current_spins,
+                        user=user,
                     )
 
-                # ♻️ Defensive cycle reset
+                    milestone_outcome = await apply_milestone_reward(
+                        session=session,
+                        user=user,
+                        total_premium_rewards=total_premium_rewards,
+                    )
+
+                # ♻️ Defensive cycle reset (unchanged)
                 if outcome == TOP_TIER:
                     gs = await session.get(GameState, 1)
                     if gs:
@@ -418,7 +414,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
     # 2️⃣ SPIN ANIMATION (ALWAYS RUNS)
     # --------------------------------------------------------------
     msg = await update.effective_message.reply_text(
-        "🔄 *Evaluating your earned reward...*",
+        "🎡 *Spinning...*",
         parse_mode="Markdown",
     )
 
@@ -429,38 +425,87 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
         frame = " ".join(random.choice(symbols) for _ in range(3))
         if frame != last_frame:
             try:
-                await msg.edit_text(f"🔄 {frame}")
+                await msg.edit_text(f"🎡 {frame}")
             except Exception:
                 pass
             last_frame = frame
         await asyncio.sleep(0.35)
 
     # --------------------------------------------------------------
-    # 3️⃣ FINAL OUTCOME (ONE EXIT ONLY)
+    # 3️⃣ FINAL OUTCOME (STRICT PRIORITY ORDER)
     # --------------------------------------------------------------
 
-    # 🎯 MILESTONE REWARD (TOP PRIORITY)
-    if milestone:
+    # 🏆 AIRTIME MILESTONE
+    if milestone_outcome.startswith("airtime_"):
+        amount = milestone_outcome.replace("airtime_", "")
+
         keyboard = InlineKeyboardMarkup([
             [InlineKeyboardButton(
                 "⚡ Claim Airtime Reward",
-                callback_data=f"claim_airtime:{milestone['payout_id']}"
+                callback_data=f"claim_airtime:{tg_id}"
             )]
         ])
 
         return await msg.edit_text(
             f"🏆 *Milestone Unlocked!* 🎉\n\n"
-            f"🎯 You've reached *{milestone['spins']}* premium attempts.\n"
-            f"💸 *₦{milestone['amount']} Airtime Reward* unlocked!\n\n"
-            "Keep answering trivia questions and adding up points\n"
-            "You could become a proud owner of\n"
-            "*AirPods*, *Bluetooth Speakers* and *Smart Phones*\n\n"
-            "Tap the button below to claim 👇",
+            f"🎯 You've reached *{total_premium_rewards}* premium attempts.\n"
+            f"💸 *₦{amount} Airtime Reward* unlocked!\n\n"
+            "Keep getting the answers correct. More rewards await you!\n" \
+            "*Airpods*, *Bluetooth Speakers*, *iPhones* and *Samsung Smart Phone*\n\n"
+            "Tap the button below to claim your airtime 👇",
             parse_mode="Markdown",
             reply_markup=keyboard,
         )
 
-    # 🏆 TOP-TIER REWARD
+    # 🎧 / 🔊 NON-AIRTIME MILESTONE (Earpod / Speaker)
+    if milestone_outcome in {"earpod", "speaker"}:
+        prize_label = (
+            "Wireless Earpods"
+            if milestone_outcome == "earpod"
+            else "Bluetooth Speaker"
+        )
+        emoji = "🎧" if milestone_outcome == "earpod" else "🔊"
+
+        await msg.edit_text(
+            f"🏆 *BIG MILESTONE UNLOCKED!* 🎉🔥\n\n"
+            f"🎯 *{total_premium_rewards} Premium Attempts Achieved*\n"
+            f"🎁 Reward Unlocked: *{prize_label}* {emoji}\n\n"
+            "Please complete your delivery details below 👇",
+            parse_mode="Markdown",
+        )
+
+        # Admin notification
+        try:
+            await context.bot.send_message(
+                ADMIN_USER_ID,
+                f"{emoji} {prize_label} — User {tg_id} (@{username})",
+            )
+        except Exception:
+            pass
+
+        # Save user choice
+        async with get_async_session() as session:
+            async with session.begin():
+                db_user = await get_or_create_user(
+                    session, tg_id=tg_id, username=username
+                )
+                db_user.choice = prize_label
+
+        token = generate_signed_token(
+            tgid=tg_id,
+            choice=prize_label,
+            expires_seconds=3600,
+        )
+
+        link = f"{RENDER_EXTERNAL_URL}/winner-form?token={token}"
+
+        return await msg.reply_text(
+            f"<a href='{link}'>📝 Fill Delivery Form</a>",
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+        )
+
+    # 🏆 TOP-TIER CAMPAIGN REWARD (PHONES)
     if outcome == TOP_TIER:
         await msg.edit_text(
             f"🎉 *Outstanding performance, {player_name}!*\n\n"
@@ -482,43 +527,6 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
             parse_mode="Markdown",
         )
 
-    # 🎧 / 🔊 PHYSICAL REWARDS
-    if outcome in {"earpod", "speaker"}:
-        prize_label = "Wireless Earpods" if outcome == "earpod" else "Bluetooth Speaker"
-        emoji = "🎧" if outcome == "earpod" else "🔊"
-
-        await msg.edit_text(
-            f"🎉 *You unlocked a campaign reward:* {prize_label} {emoji}\n\n"
-            "Keep answering and building up your points.\n"
-            "You could become a proud owner of\n"
-            "*iPhone* and *Samsung* Smart Phones.\n\n"
-            "📌 Reward is promotional and subject to verification.",
-            parse_mode="Markdown",
-        )
-
-        try:
-            await context.bot.send_message(
-                ADMIN_USER_ID,
-                f"{emoji} {prize_label} — User {tg_id} (@{username})",
-            )
-        except Exception:
-            pass
-
-        async with get_async_session() as session:
-            async with session.begin():
-                db_user = await get_or_create_user(session, tg_id=tg_id, username=username)
-                db_user.choice = prize_label
-
-        token = generate_signed_token(tgid=tg_id, choice=prize_label, expires_seconds=3600)
-        link = f"{RENDER_EXTERNAL_URL}/winner-form?token={token}"
-
-        return await msg.reply_text(
-            f"🎉 Please complete your delivery details:\n\n"
-            f"<a href='{link}'>📝 Fill Delivery Form</a>",
-            parse_mode="HTML",
-            disable_web_page_preview=True,
-        )
-
     # 🎡 NO REWARD (FINAL FALLBACK)
     final = " ".join(random.choice(["⭐", "📚", "🎯", "💫"]) for _ in range(3))
 
@@ -527,8 +535,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
         "🎡 *Spin Complete!*\n\n"
         "You didn’t unlock any reward this time.\n"
         "But keep answering! Big rewards are coming 🔥\n\n"
-        "You could become a proud owner of\n"
-        "*AirPods*, *Bluetooth Speakers* and *Smart Phones*",
+        "*AirPods* • *Bluetooth Speakers* • *iPhones and Samsung Smart Phones*",
         parse_mode="Markdown",
         reply_markup=make_play_keyboard(),
     )
