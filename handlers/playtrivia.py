@@ -379,22 +379,32 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
 
                 # ⭐ PREMIUM PERFORMANCE TRACKING (CANONICAL FLOW)
                 if is_premium:
-                    from services.playtrivia import (
-                        record_premium_reward_entry,
-                        apply_milestone_reward,
-                    )
+                    
+                    # 🛑 Guard against double execution for the same trivia answer
+                    if context.user_data.get("premium_recorded"):
+                        logger.warning(
+                            f"⚠️ Duplicate premium insert prevented for tg_id={tg_id}"
+                        )
+                    else:
+                        context.user_data["premium_recorded"] = True
 
-                    # INSERT FIRST → COUNT AFTER
-                    total_premium_rewards = await record_premium_reward_entry(
-                        session=session,
-                        user=user,
-                    )
+                        from services.premium_service import (
+                            record_premium_reward_entry,
+                            apply_milestone_reward,
+                        )
 
-                    milestone_outcome = await apply_milestone_reward(
-                        session=session,
-                        user=user,
-                        total_premium_rewards=total_premium_rewards,
-                    )
+                        # INSERT FIRST → COUNT AFTER
+                        total_premium_rewards = await record_premium_reward_entry(
+                            session=session,
+                            user=user,
+                        )
+
+                        milestone_outcome = await apply_milestone_reward(
+                            session=session,
+                            user=user,
+                            total_premium_rewards=total_premium_rewards,
+                        )
+
 
                 # ♻️ Defensive cycle reset (unchanged)
                 if outcome == TOP_TIER:
@@ -450,8 +460,8 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
             f"🏆 *Milestone Unlocked!* 🎉\n\n"
             f"🎯 You've reached *{total_premium_rewards}* premium attempts.\n"
             f"💸 *₦{amount} Airtime Reward* unlocked!\n\n"
-            "Keep getting the answers correct. More rewards await you!\n" \
-            "*Airpods*, *Bluetooth Speakers*, *iPhones* and *Samsung Smart Phone*\n\n"
+            "Keep getting the answers correct. More rewards await you!\n"
+            "*AirPods*, *Bluetooth Speakers*, *iPhones* and *Samsung Smart Phones*\n\n"
             "Tap the button below to claim your airtime 👇",
             parse_mode="Markdown",
             reply_markup=keyboard,
@@ -505,14 +515,27 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
             disable_web_page_preview=True,
         )
 
-    # 🏆 TOP-TIER CAMPAIGN REWARD (PHONES)
+    # 🏆 TOP-TIER CAMPAIGN REWARD (PHONES) — CONGRATULATIONS RESTORED ✅
     if outcome == TOP_TIER:
         await msg.edit_text(
-            f"🎉 *Outstanding performance, {player_name}!*\n\n"
-            "You’ve unlocked a *top-tier campaign reward*.\n\n"
-            "Please choose your preferred reward below:",
+            f"🎉 *Congratulations, {player_name}!* 🎉\n\n"
+            "You finished this campaign cycle at the *top of the leaderboard* 🏆🔥\n\n"
+            "You are our current *Top-Tier Campaign Reward Winner*.\n"
+            "Please choose your preferred reward below 👇",
             parse_mode="Markdown",
         )
+
+        # Admin notification
+        try:
+            await context.bot.send_message(
+                ADMIN_USER_ID,
+                f"🏆 TOP-TIER CAMPAIGN REWARD WINNER\n\n"
+                f"👤 User: {player_name}\n"
+                f"📱 TG ID: {tg_id}\n"
+                f"🔗 Username: @{username}",
+            )
+        except Exception:
+            pass
 
         keyboard = InlineKeyboardMarkup([
             [InlineKeyboardButton("📱 iPhone 16 Pro Max", callback_data="choose_iphone16")],
