@@ -36,34 +36,38 @@ NON_AIRTIME_MILESTONES = {
 # ===============================================================
 async def record_premium_reward_entry(session: AsyncSession, user: User) -> int:
     """
-    Store one entry per *premium* spin (i.e. correct answer / premium attempt).
+    Store one entry per *premium* spin (i.e. correct answer).
 
-    Each row now represents:
-      - 1 performance point on the "premium leaderboard".
-    Users with more correct premium reward tiers have more entries.
+    Each row represents:
+      - 1 premium performance point.
 
     Returns:
-        total_premium_rewards_for_user (int) after inserting this row.
+        total_premium_rewards_for_user (int)
     """
+
+    # 1️⃣ Insert the premium entry
     await session.execute(
         text("""
             INSERT INTO premium_reward_entries (user_id, tg_id, created_at)
             VALUES (:u, :tg, NOW())
         """),
-        {"u": str(user.id), "tg": user.tg_id}
+        {
+            "u": str(user.id),
+            "tg": user.tg_id,
+        }
     )
 
-    # Count how many premium entries this user has so far
+    # 2️⃣ Count using tg_id (authoritative identifier)
     res = await session.execute(
         text("""
-            SELECT COUNT(*) 
+            SELECT COUNT(*)
             FROM premium_reward_entries
-            WHERE user_id = :u
+            WHERE tg_id = :tg
         """),
-        {"u": str(user.id)}
+        {"tg": user.tg_id}
     )
-    return res.scalar() or 0
 
+    return int(res.scalar() or 0)
 
 # ===============================================================
 # STEP 1 — Save Trivia Question (unchanged, still pure skill)
@@ -83,12 +87,17 @@ async def save_pending_question(session: AsyncSession, user_id: int, question_id
 async def start_playtrivia_question(
     user: User,
     session: AsyncSession,
+    context,
     category: str | None = None
 ) -> dict:
     """
     Start a trivia round by picking a random question from the pool.
     This is *skill-based*: outcome depends on the user's answer.
     """
+
+    # 🔓 RESET premium guard for new question
+    context.user_data.pop("premium_recorded", None)
+
     q = get_random_question(category)
     await save_pending_question(session, user.id, q["id"])
 
@@ -97,7 +106,6 @@ async def start_playtrivia_question(
         "options": q["options"],
         "question_id": q["id"],
     }
-
 
 # ===============================================================
 # STEP 2 — CONSUME TRY + Top-Tier Campaign Reward COUNTER (threshold trigger only)
@@ -198,83 +206,100 @@ async def apply_milestone_reward(
     total_premium_rewards: int
 ) -> str:
     """
-    Deterministically award small rewards when a user hits
-    specific premium reward tier milestones.
+    Deterministically award milestone rewards.
 
-    No randomness here:
-      - If total_premium_rewards == 1  → airtime ₦100
-      - If total_premium_rewards == 25  → airtime ₦1000
-      - If total_premium_rewards == 50  → airtime ₦2000
-      - If total_premium_rewards == 400  → earpod
-      - If total_premium_rewards == 800 → speaker
+    - Airtime: exact milestones
+    - Gadgets: threshold-based (>=) with safety guard
     """
 
-    # 1) Airtime milestones
+    # --------------------------------------------------
+    # 1️⃣ NON-AIRTIME MILESTONES (THRESHOLD + GUARD)
+    # --------------------------------------------------
+    for milestone, reward_type in sorted(
+        NON_AIRTIME_MILESTONES.items()
+    ):
+        if total_premium_rewards >= milestone:
+
+            # Has this reward already been given?
+            res = await session.execute(
+                text("""
+                    SELECT 1
+                    FROM non_airtime_winners
+                    WHERE user_id = :u
+                      AND reward_type = :rtype
+                    LIMIT 1
+                """),
+                {
+                    "u": str(user.id),
+                    "rtype": reward_type,
+                },
+            )
+
+            already_awarded = res.scalar() is not None
+
+            if not already_awarded:
+                await session.execute(
+                    text("""
+                        INSERT INTO non_airtime_winners (user_id, tg_id, reward_type)
+                        VALUES (:u, :tg, :rtype)
+                    """),
+                    {
+                        "u": str(user.id),
+                        "tg": user.tg_id,
+                        "rtype": reward_type,
+                    },
+                )
+                return reward_type
+
+    # --------------------------------------------------
+    # 2️⃣ AIRTIME MILESTONES (EXACT)
+    # --------------------------------------------------
     if total_premium_rewards in AIRTIME_MILESTONES:
         amount = AIRTIME_MILESTONES[total_premium_rewards]
-
         return f"airtime_{amount}"
 
-    # 2) Non-airtime milestones (gadgets, accessories)
-    if total_premium_rewards in NON_AIRTIME_MILESTONES:
-        reward_type = NON_AIRTIME_MILESTONES[total_premium_rewards]
-
-        await session.execute(
-            text("""
-                INSERT INTO non_airtime_winners (user_id, tg_id, reward_type)
-                VALUES (:u, :tg, :rtype)
-            """),
-            {"u": str(user.id), "tg": user.tg_id, "rtype": reward_type}
-        )
-        return reward_type
-
+    # --------------------------------------------------
+    # 3️⃣ NO MILESTONE
+    # --------------------------------------------------
     return "none"
 
-
 # ===============================================================
-# STEP 4 — MAIN LOGIC: Top-Tier Campaign Reward SELECTION + MILESTONE REWARDS
+# STEP 4 - REWARD LOGIC — DECISION ONLY (NO DB INSERTS, NO UI)
 # ===============================================================
 async def reward_logic(
     session: AsyncSession,
     user: User,
-    is_premium_reward: bool = False
+    is_premium_reward: bool = False,
 ) -> str:
     """
-    Unified reward engine.
+    Pure reward decision engine.
 
-    Flow:
-      1) Consume a try (bonus or paid) & update global counters.
-      2) If this was a *premium* spin (correct answer):
-         - record a premium entry (skill/score point).
-         - check milestone rewards deterministically.
-      3) If WIN_THRESHOLD is reached this spin:
-         - select Top-Tier Campaign Reward winner from *leaderboard*:
-           highest premium score, tie-breaker = earliest achiever.
+    Responsibilities:
+      - Consume a spin/try
+      - Detect Top-Tier Campaign Reward threshold
+      - Decide outcome symbolically
+
+    NOT allowed:
+      ❌ premium progress insertion
+      ❌ milestone rewards
+      ❌ UI or messaging
     """
-    # 1) Consume try and update counters
+
+    # 1️⃣ Consume a try
     outcome = await consume_and_spin(user, session)
 
-    # No tries → caller should show "no tries" message
     if outcome.get("result") == "no_tries":
         return "no_tries"
 
-    # 2) PREMIUM PERFORMANCE ENTRY (SKILL POINT)
-    total_premium_rewards = None
-    if is_premium_reward:
-        total_premium_rewards = await record_premium_reward_entry(session, user)
-    else:
-        total_premium_rewards = None
-
-    # 3) LEADERBOARD-BASED Top-Tier Campaign Reward ON THRESHOLD
+    # 2️⃣ Check Top-Tier Campaign Reward trigger
     if outcome.get("Top-Tier Campaign Reward_triggered"):
-        logger.info("🏆 Top-Tier Campaign Reward threshold reached! Selecting leaderboard winner…")
+        logger.info("🏆 Top-Tier Campaign Reward threshold reached")
 
-        # Leaderboard: highest number of premium entries wins.
-        # Tie-breaker: earliest created_at (first to reach that score).
+        # Select leaderboard winner
         result = await session.execute(
             text("""
                 SELECT 
-                    user_id, 
+                    user_id,
                     tg_id,
                     COUNT(*) AS points,
                     MIN(created_at) AS first_at
@@ -284,84 +309,35 @@ async def reward_logic(
                 LIMIT 1
             """)
         )
+
         row = result.first()
 
-        # If no entries (edge case), fall back to current user
-        if row is None:
-            top_tier_campaign_reward_user_id = user.id
-            top_tier_campaign_reward_tg_id = user.tg_id
-            total_points = 1
-            logger.warning(
-                "Top-Tier Campaign Reward triggered but premium_reward_entries empty. "
-                "Defaulting Top-Tier Campaign Reward winner to current user."
-            )
+        # Fallback safety
+        if row:
+            winner_user_id = row.user_id
+            winner_tg_id = row.tg_id
         else:
-            top_tier_campaign_reward_user_id = row.user_id
-            top_tier_campaign_reward_tg_id = row.tg_id
-            total_points = row.points
+            winner_user_id = user.id
+            winner_tg_id = user.tg_id
 
-        # Record Top-Tier Campaign Reward play event
-        session.add(Play(user_id=top_tier_campaign_reward_user_id, result="Top-Tier Campaign Reward"))
-
-        # Count total entries for admin info (before reset)
-        count_res = await session.execute(
-            text("SELECT COUNT(*) FROM premium_reward_entries")
+        # Record campaign win event
+        session.add(
+            Play(
+                user_id=winner_user_id,
+                result="Top-Tier Campaign Reward"
+            )
         )
-        total_points = count_res.scalar() or 0
 
-        # Reset premium entries for next Top-Tier Campaign Reward cycle (new race)
-        await session.execute(text("DELETE FROM premium_reward_entries"))
+        # Reset leaderboard for next cycle
+        await session.execute(
+            text("DELETE FROM premium_reward_entries")
+        )
 
-        # --- # Notify Top-Tier Campaign Reward winner (DM) --- 
-        try:
-            from telegram import Bot
-            from config import BOT_TOKEN, ADMIN_USER_ID  # adjust import path if needed
-
-            bot = Bot(token=BOT_TOKEN)
-
-            await bot.send_message(
-                chat_id=top_tier_campaign_reward_tg_id,
-                text=(
-                    "🎉 *Congratulations!* 🎉\n\n"
-                    "You finished this Top-Tier Campaign Reward cycle at the "
-                    "*top of the leaderboard* 🏆🔥\n\n"
-                    "You are our current *Top-Tier Campaign Reward Winner* and "
-                    "will be contacted to claim your prize!"
-                ),
-                parse_mode="Markdown",
-            )
-
-        except Exception as e:
-            logger.error(f"📩 Failed to notify Top-Tier winner: {e}")
-
-            # --- Admin notification ---
-            await bot.send_message(
-                ADMIN_USER_ID,
-                "🏆 *Top-Tier Campaign Reward WINNER SELECTED (LEADERBOARD)*\n\n"
-                f"👤 User ID: `{top_tier_campaign_reward_user_id}`\n"
-                f"📱 TG ID: `{top_tier_campaign_reward_tg_id}`\n"
-                f"🎯 Premium Points (cycle): *{total_points}*\n"
-                f"🎟️ Total Premium Entries This Cycle: *{total_points}*\n"
-                f"🔔 Cycle triggered by spin from User ID: `{user.id}`\n\n"
-                "Premium leaderboard has been reset for the next cycle.",
-                parse_mode="Markdown"
-            )
-        except Exception as e:
-            logger.error(f"❌ Failed to notify Top-Tier Campaign Reward winner/admin: {e}")
-
-        # If CURRENT spinner is the Top-Tier Campaign Reward winner
-        if str(top_tier_campaign_reward_user_id) == str(user.id):
-            logger.info(f"🎉 Top-Tier Campaign Reward WON by current spinner user_id={user.id}")
+        # Return symbolic outcome
+        if str(winner_user_id) == str(user.id):
             return "Top-Tier Campaign Reward"
+        else:
+            return "lose"
 
-        # Someone else won the Top-Tier Campaign Reward. Current user may still earn
-        # a milestone reward below (if premium & at a threshold).
-
-    # 4) SMALL, DETERMINISTIC REWARDS (MILESTONES, NOT RANDOM)
-    if is_premium_reward and total_premium_rewards is not None:
-        reward_code = await apply_milestone_reward(session, user, total_premium_rewards)
-        if reward_code != "none":
-            return reward_code
-
-    # No milestone hit, no Top-Tier Campaign Reward for this user → no reward this spin
+    # 3️⃣ No special reward this spin
     return "lose"
