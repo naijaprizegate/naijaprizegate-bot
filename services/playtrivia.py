@@ -25,6 +25,28 @@ NON_AIRTIME_MILESTONES = {
     800: "speaker",
 }
 
+# ----------------------------------
+# Reward Logic
+# ----------------------------------
+async def reward_logic(session, user, is_premium: bool) -> str:
+    """
+    Main reward entrypoint used by handlers.
+    DO NOT put UI logic here.
+    """
+
+    # 1️⃣ Deduct trivia attempt (paid → bonus fallback)
+    outcome = await deduct_user_try(session, user)
+    if outcome == "no_tries":
+        return "no_tries"
+
+    # 2️⃣ Handle premium reward tracking
+    if is_premium:
+        # premium insert + milestone handled elsewhere
+        return "premium"
+
+    # 3️⃣ Standard (non-premium) reward path
+    return "standard"
+
 # ---------------------------------------
 # REWARD AUDIT / IDEMPOTENCY HELPERS
 # ---------------------------------------
