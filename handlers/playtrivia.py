@@ -27,6 +27,7 @@ from handlers.payments import handle_buy_callback
 from handlers.free import free_menu
 from utils.signer import generate_signed_token
 from services.airtime_service import create_pending_airtime_payout
+from services.playtrivia import notify_admin_gadget_win
 
 logger = logging.getLogger(__name__)
 
@@ -484,14 +485,17 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
             parse_mode="Markdown",
         )
 
-        # Admin notification
+        # Admin notification + audit handled in service
         try:
-            await context.bot.send_message(
-                ADMIN_USER_ID,
-                f"{emoji} {prize_label} — User {tg_id} (@{username})",
+            await notify_admin_gadget_win(
+                bot=context.bot,
+                user_id=tg_id,
+                username=username,
+                prize=prize_label,
+                milestone=total_premium_rewards,
             )
         except Exception:
-            pass
+            logger.exception("Admin gadget win notification failed")
 
         # Save user choice
         async with get_async_session() as session:
