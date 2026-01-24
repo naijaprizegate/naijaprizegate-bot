@@ -35,8 +35,8 @@ async def reward_logic(session, user, is_premium: bool) -> str:
     """
 
     # 1️⃣ Deduct trivia attempt (paid → bonus fallback)
-    outcome = await deduct_user_try(session, user)
-    if outcome == "no_tries":
+    try_type = await consume_try(session, user)
+    if try_type is None:
         return "no_tries"
 
     # 2️⃣ Handle premium reward tracking
