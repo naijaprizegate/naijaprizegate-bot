@@ -378,34 +378,6 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
                     )
                     return
 
-                # ⭐ PREMIUM PERFORMANCE TRACKING (CANONICAL FLOW)
-                if is_premium:
-                    
-                    # 🛑 Guard against double execution for the same trivia answer
-                    if context.user_data.get("premium_recorded"):
-                        logger.warning(
-                            f"⚠️ Duplicate premium insert prevented for tg_id={tg_id}"
-                        )
-                    else:
-                        context.user_data["premium_recorded"] = True
-
-                        from services.playtrivia import (
-                            record_premium_reward_entry,
-                            apply_milestone_reward,
-                        )
-
-                        # INSERT FIRST → COUNT AFTER
-                        total_premium_rewards = await record_premium_reward_entry(
-                            session=session,
-                            user=user,
-                        )
-
-                        milestone_outcome = await apply_milestone_reward(
-                            session=session,
-                            user=user,
-                            total_premium_rewards=total_premium_rewards,
-                        )
-
 
                 # ♻️ Defensive cycle reset (unchanged)
                 if outcome == TOP_TIER:
