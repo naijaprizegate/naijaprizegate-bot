@@ -1,363 +1,657 @@
-# ===============================================================
-# services/playtrivia.py (OVERHAULED, ATOMIC, LOGGED VERSION)
-# ===============================================================
+# ===================================================================
+# handlers/playtrivia.py  (🧠 Trivia-Based Rewards Flow – Compliance-Oriented)
+# ===================================================================
 import os
+import asyncio
+import random
 import logging
-from sqlalchemy.ext.asyncio import AsyncSession
+import re
+import telegram
+import time
 from sqlalchemy import text
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram.ext import (
+    CommandHandler,
+    CallbackQueryHandler,
+    ContextTypes,
+    MessageHandler,
+    filters,
+)
 
-from models import Play, User, GameState
-from helpers import consume_try
+from helpers import get_or_create_user
 from utils.questions_loader import get_random_question
+from services.playtrivia import reward_logic  
+from db import get_async_session, AsyncSessionLocal
+from models import GameState
+from handlers.payments import handle_buy_callback
+from handlers.free import free_menu
+from utils.signer import generate_signed_token
+from services.airtime_service import create_pending_airtime_payout
+from services.playtrivia import notify_admin_gadget_win
 
 logger = logging.getLogger(__name__)
 
-WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "50000"))
-
-AIRTIME_MILESTONES = {
-    1: 100,
-    25: 1000,
-    50: 2000,
-}
-
-NON_AIRTIME_MILESTONES = {
-    400: "earpod",
-    800: "speaker",
-}
-
-# ----------------------------------
-# Reward Logic
-# ----------------------------------
-async def reward_logic(session, user, is_premium: bool) -> str:
-    """
-    Main reward entrypoint used by handlers.
-    DO NOT put UI logic here.
-    """
-
-    # 1️⃣ Deduct trivia attempt (paid → bonus fallback)
-    try_type = await consume_try(session, user)
-    if try_type is None:
-        return "no_tries"
-
-    # 2️⃣ Handle premium reward tracking
-    if is_premium:
-        # premium insert + milestone handled elsewhere
-        return "premium"
-
-    # 3️⃣ Standard (non-premium) reward path
-    return "standard"
-
-# ---------------------------------------
-# REWARD AUDIT / IDEMPOTENCY HELPERS
-# ---------------------------------------
-async def record_reward_audit(
-    session: AsyncSession,
-    user: User,
-    reward_type: str,
-    premium_total: int,
-    source: str,
-) -> bool:
-    """
-    Idempotent reward recorder.
-    Returns True if recorded, False if already exists.
-    """
-    res = await session.execute(
-        text("""
-            INSERT INTO reward_audit_log
-                (user_id, tg_id, reward_type, premium_total, source)
-            VALUES
-                (:u, :tg, :r, :t, :s)
-            ON CONFLICT (user_id, reward_type)
-            DO NOTHING
-            RETURNING id
-        """),
-        {
-            "u": str(user.id),
-            "tg": user.tg_id,
-            "r": reward_type,
-            "t": premium_total,
-            "s": source,
-        },
-    )
-
-    return res.scalar() is not None
-
-#----------------------------------------------
-# NOTIFY ADMIN GADGET WIN
-# ---------------------------------------------
-async def notify_admin_gadget_win(user: User, reward: str, total: int):
-    logger.critical(
-        "🚨 GADGET WIN 🚨 | tg_id=%s | reward=%s | premium_total=%s",
-        user.tg_id,
-        reward,
-        total,
-    )
-
-    # OPTIONAL:
-    # await bot.send_message(
-    #     ADMIN_CHAT_ID,
-    #     f"🎁 Gadget Won!\n"
-    #     f"User: {user.tg_id}\n"
-    #     f"Reward: {reward}\n"
-    #     f"Premium Total: {total}"
-    # )
-
-# ===============================================================
-# PREMIUM ENTRY (SINGLE SOURCE OF TRUTH)
-# ===============================================================
-async def record_premium_entry_and_count(
-    session: AsyncSession,
-    user: User
-) -> int:
-    """
-    Atomically:
-      - Insert premium entry
-      - Count total entries for user
-    """
-
-    await session.execute(
-        text("""
-            INSERT INTO premium_reward_entries (user_id, tg_id, created_at)
-            VALUES (:u, :tg, NOW())
-        """),
-        {"u": str(user.id), "tg": user.tg_id},
-    )
-
-    res = await session.execute(
-        text("""
-            SELECT COUNT(*)
-            FROM premium_reward_entries
-            WHERE tg_id = :tg
-        """),
-        {"tg": user.tg_id},
-    )
-
-    total = int(res.scalar() or 0)
-    logger.info(
-        "[PREMIUM] Entry recorded | tg_id=%s | total=%s",
-        user.tg_id,
-        total,
-    )
-    return total
+ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
+RENDER_EXTERNAL_URL = os.getenv("RENDER_EXTERNAL_URL")
 
 
-# ===============================================================
-# QUESTION FLOW (UNCHANGED)
-# ===============================================================
-async def save_pending_question(session: AsyncSession, user_id: int, question_id: int):
-    await session.execute(
-        text("""
-            INSERT INTO game_state_question (user_id, question_id, answered)
-            VALUES (:u, :q, FALSE)
-            ON CONFLICT (user_id)
-            DO UPDATE SET question_id = :q, answered = FALSE
-        """),
-        {"u": user_id, "q": question_id},
+# =============================
+# Markdown escape helper
+# =============================
+def md_escape(text: str) -> str:
+    escape_chars = r'_*[]()~`>#+-=|{}.!'
+    return re.sub(f'([{re.escape(escape_chars)}])', r'\\\1', text)
+
+
+# =============================
+# Play Again / Tries keyboard
+# =============================
+def make_play_keyboard():
+    return InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("🧠 Play Again", callback_data="playtrivia"),
+                InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries"),
+            ],
+            [InlineKeyboardButton("💳 Get More Trivia Attempts", callback_data="buy")],
+            [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
+        ]
     )
 
 
-async def start_playtrivia_question(
-    user: User,
-    session: AsyncSession,
-    context,
-    category: str | None = None,
-) -> dict:
-    context.user_data.pop("premium_recorded", None)
+# ================================================================
+# STEP 0 — Handle Trivia Category Selection
+# ================================================================
+async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    tg_user = query.from_user
+    logger.info(f"🧠 Trivia category selected by {tg_user.id}: {query.data}")
+
+    # Extract the chosen category from callback: "cat_History"
+    _, category = query.data.split("_")
+    context.user_data["chosen_trivia_category"] = category
+
+    # --------------------------
+    # Load trivia question (filtered by category)
+    # --------------------------
     q = get_random_question(category)
-    await save_pending_question(session, user.id, q["id"])
 
-    return {
-        "question_text": q["question"],
-        "options": q["options"],
-        "question_id": q["id"],
-    }
+    # ✅ SAVE THE FULL QUESTION IN USER STATE
+    context.user_data["pending_trivia_question"] = q
+    context.user_data["pending_trivia_answer"] = q["answer"]
+    context.user_data["pending_trivia_qid"] = q["id"]
+    context.user_data["trivia_answered"] = False  # user hasn’t answered yet
 
+    # Deadline = now + 20 seconds
+    context.user_data["trivia_deadline"] = time.time() + 20
 
-# ===============================================================
-# SPIN CONSUMPTION + GLOBAL CAMPAIGN COUNTER
-# ===============================================================
-async def consume_and_spin(user: User, session: AsyncSession) -> dict:
-    spin_type = await consume_try(session, user)
-    if spin_type is None:
-        return {"status": "no_tries"}
+    question_text = (
+        f"🧠 *{category} Trivia!*\n\n"
+        f"{q['question']}\n\n"
+        f"A. {q['options']['A']}\n"
+        f"B. {q['options']['B']}\n"
+        f"C. {q['options']['C']}\n"
+        f"D. {q['options']['D']}"
+    )
 
-    paid_spin = spin_type == "paid"
-    top_tier_triggered = False
+    # Active answer buttons
+    keyboard = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("A", callback_data=f"ans_{q['id']}_A"),
+                InlineKeyboardButton("B", callback_data=f"ans_{q['id']}_B"),
+            ],
+            [
+                InlineKeyboardButton("C", callback_data=f"ans_{q['id']}_C"),
+                InlineKeyboardButton("D", callback_data=f"ans_{q['id']}_D"),
+            ],
+        ]
+    )
 
-    if paid_spin:
-        await session.execute(text("""
-            INSERT INTO global_counter (id, paid_tries_total)
-            VALUES (1, 0)
-            ON CONFLICT (id) DO NOTHING
-        """))
+    # Send trivia message
+    sent_msg = await query.message.reply_text(
+        question_text,
+        parse_mode="Markdown",
+        reply_markup=keyboard,
+    )
 
-        res = await session.execute(text("""
-            UPDATE global_counter
-            SET paid_tries_total = paid_tries_total + 1
-            WHERE id = 1
-            RETURNING paid_tries_total
-        """))
-        new_total = res.scalar()
+    # ============================================================
+    # ⏳ COUNTDOWN DISPLAY (20 → 1)
+    # ============================================================
+    async def countdown(message, q_text, kb_markup, secs=20):
+        for remaining in range(secs, 0, -1):
 
-        gs = await session.get(GameState, 1)
-        if not gs:
-            gs = GameState(id=1)
-            session.add(gs)
-            await session.flush()
+            # Stop countdown if user already answered
+            if context.user_data.get("trivia_answered", False):
+                break
 
-        gs.paid_tries_this_cycle += 1
-        gs.lifetime_paid_tries += 1
-
-        if new_total and new_total >= WIN_THRESHOLD:
-            logger.warning("[CAMPAIGN] Top-tier threshold reached")
-
-            await session.execute(text("""
-                UPDATE global_counter
-                SET paid_tries_total = 0
-                WHERE id = 1
-            """))
-
-            gs.current_cycle += 1
-            gs.paid_tries_this_cycle = 0
-            top_tier_triggered = True
-
-    session.add(Play(user_id=user.id, result="spin"))
-    return {
-        "status": "ok",
-        "paid_spin": paid_spin,
-        "top_tier_triggered": top_tier_triggered,
-    }
-
-
-# ===============================================================
-# MILESTONE ENGINE (FIXED + AUDITED)
-# ===============================================================
-async def apply_milestone_reward(
-    session: AsyncSession,
-    user: User,
-    total: int,
-) -> str:
-    # ----------------------------------------------------------
-    # 1️⃣ NON-AIRTIME (GADGETS) — THRESHOLD + IDEMPOTENT
-    # ----------------------------------------------------------
-    for milestone, reward in sorted(NON_AIRTIME_MILESTONES.items()):
-        if total >= milestone:
-
-            # Guard: already awarded?
-            res = await session.execute(
-                text("""
-                    SELECT 1
-                    FROM non_airtime_winners
-                    WHERE user_id = :u
-                      AND reward_type = :r
-                    LIMIT 1
-                """),
-                {"u": str(user.id), "r": reward},
-            )
-
-            if res.scalar():
-                logger.debug(
-                    "[MILESTONE] Gadget already awarded | user=%s reward=%s",
-                    user.tg_id,
-                    reward,
-                )
-                continue  # keep checking higher milestones safely
-
-            # ✅ 1️⃣ AUDIT FIRST (single source of truth)
-            audit_created = await record_reward_audit(
-                session=session,
-                user=user,
-                reward_type=reward,
-                premium_total=total,
-                source="premium_milestone",
-            )
-
-            if not audit_created:
-                logger.warning(
-                    "[MILESTONE] Audit already exists, skipping award | user=%s reward=%s",
-                    user.tg_id,
-                    reward,
-                )
-                continue
-
-            # ✅ 2️⃣ RECORD WINNER
-            await session.execute(
-                text("""
-                    INSERT INTO non_airtime_winners
-                    (user_id, tg_id, reward_type)
-                    VALUES (:u, :tg, :r)
-                """),
-                {"u": str(user.id), "tg": user.tg_id, "r": reward},
-            )
-
-            logger.info(
-                "[MILESTONE] Non-airtime milestone HIT | user=%s reward=%s total=%s",
-                user.tg_id,
-                reward,
-                total,
-            )
-
-            # ✅ 3️⃣ ADMIN ALERT (SIDE EFFECT LAST)
             try:
-                await notify_admin_gadget_win(user, reward, total)
+                await message.edit_text(
+                    f"{q_text}\n\n⏳ *Time left:* {remaining}s",
+                    parse_mode="Markdown",
+                    reply_markup=kb_markup,
+                )
+            except telegram.error.BadRequest:
+                break
             except Exception:
-                logger.exception(
-                    "[ADMIN ALERT FAILED] Gadget win | user=%s reward=%s",
-                    user.tg_id,
-                    reward,
+                break
+
+            await asyncio.sleep(1)
+
+    asyncio.create_task(countdown(sent_msg, question_text, keyboard))
+
+    # ============================================================
+    # 🕒 TIMEOUT TASK (locks buttons after 20 seconds)
+    # ============================================================
+    old_timer = context.user_data.get("trivia_timer")
+    if isinstance(old_timer, asyncio.Task) and not old_timer.done():
+        old_timer.cancel()
+
+    context.user_data["trivia_timer"] = asyncio.create_task(
+        trivia_timeout_task(
+            update,
+            context,
+            sent_msg.message_id,
+            timeout_seconds=20,
+        )
+    )
+
+
+# ================================================================
+# STEP 1 — Entry point: “Play Trivia” (was /playtrivia)
+# ================================================================
+async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """
+    This handler is the main entry for playing a trivia round.
+    User-facing language is skill-based: “Play Trivia” instead of “Try Luck”.
+    """
+    tg_user = update.effective_user
+    logger.info(f"🔔 Trivia/rewards flow triggered by {tg_user.id}")
+
+    # --------------------------
+    # Check available tries (credits to play trivia)
+    # --------------------------
+    async with get_async_session() as session:
+        async with session.begin():
+            user = await get_or_create_user(
+                session,
+                tg_id=tg_user.id,
+                username=tg_user.username,
+            )
+
+            if (user.tries_paid + user.tries_bonus) <= 0:
+                return await update.effective_message.reply_text(
+                    "😅 You have no trivia attempts left.\n\n"
+                    "Use *Get More Trivia Attempts* or *Earn Free Trivia Attempts* to continue playing.\n\n"
+                    "You could become a proud owner of\n"
+                    "*AirPods*, *Bluetooth Speakers* and *Smart Phones*",
+                    parse_mode="Markdown",
                 )
 
-            return reward
+            # NOTE: Tries deduction is handled inside reward logic (reward_logic).
+            await session.commit()
 
-    # ----------------------------------------------------------
-    # 2️⃣ AIRTIME — EXACT MATCH (NO AUDIT HERE BY DESIGN)
-    # ----------------------------------------------------------
-    if total in AIRTIME_MILESTONES:
-        amount = AIRTIME_MILESTONES[total]
+    # --------------------------
+    # STEP A — Ask for Trivia Category
+    # --------------------------
+    category_keyboard = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("📘 History", callback_data="cat_History"),
+                InlineKeyboardButton("🎬 Entertainment", callback_data="cat_Entertainment"),
+            ],
+            [
+                InlineKeyboardButton("⚽ Football", callback_data="cat_Football"),
+                InlineKeyboardButton("🌍 Geography", callback_data="cat_Geography"),
+            ],
+        ]
+    )
 
-        logger.info(
-            "[MILESTONE] Airtime milestone HIT | user=%s amount=%s total=%s",
-            user.tg_id,
-            amount,
-            total,
+    return await update.effective_message.reply_text(
+        "🧠 *Choose your trivia category:*\n\n"
+        "Your correct answers add to your Premium Points\n\n"
+        "You could become a proud owner of\n"
+        "*AirPods*, *Bluetooth Speakers* and *Smart Phones*",
+        parse_mode="Markdown",
+        reply_markup=category_keyboard,
+    )
+
+
+# ================================================================
+# ⏱️ TRIVIA TIMEOUT TASK
+# ================================================================
+async def trivia_timeout_task(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    message_id: int,
+    timeout_seconds: int = 20,
+):
+    """
+    When user does not answer within the time limit:
+    - Mark trivia as answered
+    - Assign a *standard* reward tier (non-premium)
+    - Continue to reward calculation
+    """
+    await asyncio.sleep(timeout_seconds)
+
+    # If already answered — do nothing
+    if context.user_data.get("trivia_answered"):
+        return
+
+    context.user_data["trivia_answered"] = True
+    context.user_data["is_premium_reward"] = False  # standard reward tier
+
+    chat_id = update.effective_chat.id
+
+    try:
+        # Inform user time is up
+        await context.bot.edit_message_text(
+            chat_id=chat_id,
+            message_id=message_id,
+            text=(
+                "⏳ *Time’s up!* You didn’t answer in time.\n\n"
+                "This attempt will be processed in the *standard reward tier*."
+            ),
+            parse_mode="Markdown",
+        )
+    except Exception:
+        pass
+
+    # Proceed to reward calculation (same flow)
+    await run_spin_after_trivia(update, context)
+
+
+# ================================================================
+# STEP 2 — Handle Trivia Answer (with lock + expired protection)
+# ================================================================
+async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    # ---------------------------------------------------------
+    # If user tries answering AFTER time expired or answered
+    # ---------------------------------------------------------
+    if context.user_data.get("trivia_answered", False):
+        return await query.edit_message_text(
+            "⏳ This trivia round is already closed.\n\n"
+            "Your reward for this attempt will follow the *standard tier* rules.\n\n"
+            "Keep on answering trivia questions and building up your points\n"
+            "You could become a proud owner of\n"
+            "*AirPods*, *Bluetooth Speakers* and *Smart Phones*",
+            parse_mode="Markdown",
         )
 
-        return f"airtime_{amount}"
+    # 🔒 LOCK — prevents double clicking
+    context.user_data["trivia_answered"] = True
 
-    # ----------------------------------------------------------
-    # 3️⃣ NO MILESTONE
-    # ----------------------------------------------------------
-    return "none"
+    # ⛔ Cancel countdown timer task if active
+    timer = context.user_data.pop("trivia_timer", None)
+    if isinstance(timer, asyncio.Task) and not timer.done():
+        try:
+            timer.cancel()
+        except Exception:
+            pass
 
+    # 🎯 Evaluate Answer (extract data)
+    _, qid, selected = query.data.split("_")
 
-# ===============================================================
-# FINAL ORCHESTRATOR (THIS FIXES EVERYTHING)
-# ===============================================================
-async def resolve_trivia_reward(
-    session: AsyncSession,
-    user: User,
-    correct_answer: bool,
-) -> str:
-    """
-    This is the ONLY function that decides rewards.
-    """
+    question = context.user_data.get("pending_trivia_question")
+    if not question:
+        return await query.edit_message_text(
+            "⚠️ Error: Trivia round expired or missing data.\n\nPlease start a new round.",
+            parse_mode="Markdown",
+        )
 
-    spin = await consume_and_spin(user, session)
-    if spin.get("status") == "no_tries":
-        return "no_tries"
+    correct_letter = question["answer"]
+    correct_text = question["options"][correct_letter]
 
-    if not correct_answer:
-        logger.info("[FLOW] Wrong answer | no premium entry")
-        return "lose"
+    is_correct = selected == correct_letter
 
-    # ---- Correct answer = premium entry
-    total = await record_premium_entry_and_count(session, user)
+    # Save premium tier flag for next step
+    context.user_data["is_premium_reward"] = is_correct
 
-    reward = await apply_milestone_reward(session, user, total)
+    # 📝 Respond to user
+    if is_correct:
+        await query.edit_message_text(
+            "🎯 *Correct!*\n\n"
+            "You’ve unlocked the *premium reward tier* for this attempt.\n\n"
+            "_Calculating your reward..._",
+            parse_mode="Markdown",
+        )
+        return await run_spin_after_trivia(update, context)
 
-    logger.info(
-        "[FLOW] Final reward outcome resolved | outcome=%s",
-        reward,
+    # INCORRECT
+    await query.edit_message_text(
+        "🙈 *Not correct!*\n"
+        f"👉 Correct answer: `{correct_letter}` — *{correct_text}*\n\n"
+        "This attempt will use the *standard reward tier*.\n\n"
+        "_Calculating your reward..._",
+        parse_mode="Markdown",
     )
 
-    return reward
+    await asyncio.sleep(1.5)
+
+    return await run_spin_after_trivia(update, context)
+
+# ================================================================
+# STEP 3 — Reward Calculation After Trivia
+# (Spin animation FIRST, then deterministic reward)
+# ================================================================
+async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    tg_user = update.effective_user
+    tg_id = tg_user.id
+    username = tg_user.username
+    player_name = tg_user.first_name or "Player"
+
+    is_premium = context.user_data.pop("is_premium_reward", False)
+
+    TOP_TIER = "Top-Tier Campaign Reward"
+    NO_TRIES = "no_tries"
+
+    outcome: str | None = None
+    milestone_outcome: str = "none"
+    total_premium_rewards: int | None = None
+
+    # --------------------------------------------------------------
+    # 1️⃣ CORE REWARD LOGIC (NO UI, NO SLEEP)
+    # --------------------------------------------------------------
+    try:
+        async with get_async_session() as session:
+            async with session.begin():
+
+                user = await get_or_create_user(
+                    session, tg_id=tg_id, username=username
+                )
+
+                outcome = await reward_logic(session, user, is_premium)
+
+                if outcome == NO_TRIES:
+                    await update.effective_message.reply_text(
+                        "🚫 You have no spins left.\n\n"
+                        "Get more attempts to keep playing!\n\n"
+                        "You could become a proud owner of\n"
+                        "*AirPods*, *Bluetooth Speakers* and *Smart Phones*",
+                        parse_mode="Markdown",
+                    )
+                    return
+
+
+                # ♻️ Defensive cycle reset (unchanged)
+                if outcome == TOP_TIER:
+                    gs = await session.get(GameState, 1)
+                    if gs:
+                        gs.current_cycle += 1
+                        gs.paid_tries_this_cycle = 0
+
+    except Exception:
+        logger.exception("❌ Reward processing failure")
+        return await update.effective_message.reply_text(
+            "⚠️ Reward processing error. Please try again.",
+            parse_mode="Markdown",
+        )
+
+    # --------------------------------------------------------------
+    # 2️⃣ SPIN ANIMATION (ALWAYS RUNS)
+    # --------------------------------------------------------------
+    msg = await update.effective_message.reply_text(
+        "🎡 *Spinning...*",
+        parse_mode="Markdown",
+    )
+
+    symbols = ["⭐", "🎯", "💫", "🎉", "📚", "🎁", "🏅", "🔔"]
+    last_frame = None
+
+    for _ in range(random.randint(7, 12)):
+        frame = " ".join(random.choice(symbols) for _ in range(3))
+        if frame != last_frame:
+            try:
+                await msg.edit_text(f"🎡 {frame}")
+            except Exception:
+                pass
+            last_frame = frame
+        await asyncio.sleep(0.35)
+
+    # --------------------------------------------------------------
+    # 3️⃣ FINAL OUTCOME (STRICT PRIORITY ORDER)
+    # --------------------------------------------------------------
+
+    # 🏆 AIRTIME MILESTONE
+    if milestone_outcome.startswith("airtime_"):
+        amount = milestone_outcome.replace("airtime_", "")
+
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton(
+                "⚡ Claim Airtime Reward",
+                callback_data=f"claim_airtime:{tg_id}"
+            )]
+        ])
+
+        return await msg.edit_text(
+            f"🏆 *Milestone Unlocked!* 🎉\n\n"
+            f"🎯 You've reached *{total_premium_rewards}* premium attempts.\n"
+            f"💸 *₦{amount} Airtime Reward* unlocked!\n\n"
+            "Keep getting the answers correct. More rewards await you!\n"
+            "*AirPods*, *Bluetooth Speakers*, *iPhones* and *Samsung Smart Phones*\n\n"
+            "Tap the button below to claim your airtime 👇",
+            parse_mode="Markdown",
+            reply_markup=keyboard,
+        )
+
+    # 🎧 / 🔊 NON-AIRTIME MILESTONE (Earpod / Speaker)
+    if milestone_outcome in {"earpod", "speaker"}:
+        prize_label = (
+            "Wireless Earpods"
+            if milestone_outcome == "earpod"
+            else "Bluetooth Speaker"
+        )
+        emoji = "🎧" if milestone_outcome == "earpod" else "🔊"
+
+        await msg.edit_text(
+            f"🏆 *BIG MILESTONE UNLOCKED!* 🎉🔥\n\n"
+            f"🎯 *{total_premium_rewards} Premium Attempts Achieved*\n"
+            f"🎁 Reward Unlocked: *{prize_label}* {emoji}\n\n"
+            "Please complete your delivery details below 👇",
+            parse_mode="Markdown",
+        )
+
+        # Admin notification + audit handled in service
+        try:
+            await notify_admin_gadget_win(
+                bot=context.bot,
+                user_id=tg_id,
+                username=username,
+                prize=prize_label,
+                milestone=total_premium_rewards,
+            )
+        except Exception:
+            logger.exception("Admin gadget win notification failed")
+
+        # Save user choice
+        async with get_async_session() as session:
+            async with session.begin():
+                db_user = await get_or_create_user(
+                    session, tg_id=tg_id, username=username
+                )
+                db_user.choice = prize_label
+
+        token = generate_signed_token(
+            tgid=tg_id,
+            choice=prize_label,
+            expires_seconds=3600,
+        )
+
+        link = f"{RENDER_EXTERNAL_URL}/winner-form?token={token}"
+
+        return await msg.reply_text(
+            f"<a href='{link}'>📝 Fill Delivery Form</a>",
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+        )
+
+    # 🏆 TOP-TIER CAMPAIGN REWARD (PHONES) — CONGRATULATIONS RESTORED ✅
+    if outcome == TOP_TIER:
+        await msg.edit_text(
+            f"🎉 *Congratulations, {player_name}!* 🎉\n\n"
+            "You finished this campaign cycle at the *top of the leaderboard* 🏆🔥\n\n"
+            "You are our current *Top-Tier Campaign Reward Winner*.\n"
+            "Please choose your preferred reward below 👇",
+            parse_mode="Markdown",
+        )
+
+        # Admin notification
+        try:
+            await context.bot.send_message(
+                ADMIN_USER_ID,
+                f"🏆 TOP-TIER CAMPAIGN REWARD WINNER\n\n"
+                f"👤 User: {player_name}\n"
+                f"📱 TG ID: {tg_id}\n"
+                f"🔗 Username: @{username}",
+            )
+        except Exception:
+            pass
+
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("📱 iPhone 16 Pro Max", callback_data="choose_iphone16")],
+            [InlineKeyboardButton("📱 iPhone 17 Pro Max", callback_data="choose_iphone17")],
+            [InlineKeyboardButton("📱 Samsung Flip 7", callback_data="choose_flip7")],
+            [InlineKeyboardButton("📱 Samsung S25 Ultra", callback_data="choose_s25ultra")],
+        ])
+
+        return await msg.reply_text(
+            "🎁 Select your reward option 👇",
+            reply_markup=keyboard,
+            parse_mode="Markdown",
+        )
+
+    # 🎡 NO REWARD (FINAL FALLBACK)
+    final = " ".join(random.choice(["⭐", "📚", "🎯", "💫"]) for _ in range(3))
+
+    return await msg.edit_text(
+        f"{final}\n\n"
+        "🎡 *Spin Complete!*\n\n"
+        "You didn’t unlock any reward this time.\n"
+        "But keep answering! Big rewards are coming 🔥\n\n"
+        "*AirPods* • *Bluetooth Speakers* • *iPhones and Samsung Smart Phones*",
+        parse_mode="Markdown",
+        reply_markup=make_play_keyboard(),
+    )
+
+
+# ================================================================
+# 📱 PHONE CHOICE (TOP-TIER REWARD FORM FLOW)
+# ================================================================
+async def handle_phone_choice(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    tg_user = query.from_user
+    choice = query.data
+    await query.answer()
+
+    mapping = {
+        "choose_iphone17": "Smartphone Option 2",
+        "choose_iphone16": "Smartphone Option 1",
+        "choose_flip7": "Smartphone Option 3",
+        "choose_s25ultra": "Smartphone Option 4",
+    }
+
+    user_choice = mapping.get(choice)
+    if not user_choice:
+        return await query.edit_message_text("⚠️ Invalid choice")
+
+    async with get_async_session() as session:
+        user = await get_or_create_user(session, tg_id=tg_user.id)
+        user.choice = user_choice
+        await session.commit()
+
+    if not RENDER_EXTERNAL_URL:
+        return await query.edit_message_text("⚠️ Server URL missing")
+
+    token = generate_signed_token(
+        tgid=tg_user.id,
+        choice=user_choice,
+        expires_seconds=3600,
+    )
+
+    link = f"{RENDER_EXTERNAL_URL}/winner-form?token={token}"
+
+    await query.edit_message_text(
+        f"🎉 You selected <b>{user_choice}</b>!\n\n"
+        f"<a href='{link}'>📝 Fill Delivery Form</a>\n\n"
+        "📌 Rewards are promotional, subject to availability and verification.",
+        parse_mode="HTML",
+        disable_web_page_preview=True,
+    )
+
+
+# ================================================================
+# 📊 SHOW TRIES (renamed buttons, same logic)
+# ================================================================
+async def show_tries_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    tg_user = update.effective_user
+
+    async with get_async_session() as session:
+        user = await get_or_create_user(session, tg_id=tg_user.id)
+        paid = user.tries_paid or 0
+        bonus = user.tries_bonus or 0
+
+    keyboard = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia"),
+                InlineKeyboardButton("💳 Get More Trivia Attempts", callback_data="buy"),
+            ],
+            [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
+        ]
+    )
+
+    await update.callback_query.answer()
+    await update.callback_query.message.reply_text(
+        md_escape(
+            f"📊 *Available Trivia Attempts*\n\n"
+            f"🎟️ Paid: {paid}\n"
+            f"🎁 Bonus: {bonus}\n"
+            f"💫 Total: {paid + bonus}"
+        ),
+        parse_mode="MarkdownV2",
+        reply_markup=keyboard,
+    )
+
+
+# ================================================================
+# 🧩 REGISTER ALL HANDLERS
+# ================================================================
+def register_handlers(application):
+
+    # Trivia category selection
+    application.add_handler(
+        CallbackQueryHandler(trivia_category_handler, pattern=r"^cat_")
+    )
+
+    # Trivia answers
+    application.add_handler(
+        CallbackQueryHandler(trivia_answer_handler, pattern=r"^ans_\d+_[A-D]$")
+    )
+
+    # Main trivia + rewards flow
+    application.add_handler(CommandHandler("playtrivia", playtrivia_handler))
+    application.add_handler(
+        CallbackQueryHandler(playtrivia_handler, pattern="^playtrivia$")
+    )
+
+    # Top-tier reward phone-choice → delivery form
+    application.add_handler(
+        CallbackQueryHandler(handle_phone_choice, pattern=r"^choose_")
+    )
+
+    # Show tries / Buy / Free
+    application.add_handler(
+        CallbackQueryHandler(show_tries_callback, pattern="^show_tries$")
+    )
+    application.add_handler(
+        CallbackQueryHandler(handle_buy_callback, pattern="^buy$")
+    )
+    application.add_handler(
+        CallbackQueryHandler(free_menu, pattern="^free$")
+    )
