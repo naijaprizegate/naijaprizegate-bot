@@ -1,5 +1,5 @@
 # ===============================================================
-# services/playtrivia.py (SKILL-BASED, LEADERBOARD Top-Tier Campaign Reward VERSION)
+# services/playtrivia.py (OVERHAULED, ATOMIC, LOGGED VERSION)
 # ===============================================================
 import os
 import logging
@@ -12,65 +12,115 @@ from utils.questions_loader import get_random_question
 
 logger = logging.getLogger(__name__)
 
-# Global threshold: after this many PAID tries in total,
-# we trigger a Top-Tier Campaign Reward selection based on leaderboard.
 WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "50000"))
 
-# Milestone rewards for consistent high performers (deterministic, not random)
-# Each key = number of premium (correct) spins a user has reached in total.
-# When user hits exactly that count, they get the configured reward.
 AIRTIME_MILESTONES = {
-    1: 100,    # at 1 correct premium reward tiers → ₦100 airtime
-    25: 1000,   # at 25 correct premium reward tiers → ₦1000 airtime
-    50: 2000,   # at 50 correct premium reward tiers → ₦2000 airtime
+    1: 100,
+    25: 1000,
+    50: 2000,
 }
 
 NON_AIRTIME_MILESTONES = {
-    400: "earpod",   # at 400 premium reward tiers → earpod reward
-    800: "speaker", # at 800 premium reward tiers → speaker reward
+    400: "earpod",
+    800: "speaker",
 }
 
+# ---------------------------------------
+# REWARD AUDIT / IDEMPOTENCY HELPERS
+# ---------------------------------------
+async def record_reward_audit(
+    session: AsyncSession,
+    user: User,
+    reward_type: str,
+    premium_total: int,
+    source: str,
+) -> bool:
+    """
+    Idempotent reward recorder.
+    Returns True if recorded, False if already exists.
+    """
+    res = await session.execute(
+        text("""
+            INSERT INTO reward_audit_log
+                (user_id, tg_id, reward_type, premium_total, source)
+            VALUES
+                (:u, :tg, :r, :t, :s)
+            ON CONFLICT (user_id, reward_type)
+            DO NOTHING
+            RETURNING id
+        """),
+        {
+            "u": str(user.id),
+            "tg": user.tg_id,
+            "r": reward_type,
+            "t": premium_total,
+            "s": source,
+        },
+    )
+
+    return res.scalar() is not None
+
+#----------------------------------------------
+# NOTIFY ADMIN GADGET WIN
+# ---------------------------------------------
+async def notify_admin_gadget_win(user: User, reward: str, total: int):
+    logger.critical(
+        "🚨 GADGET WIN 🚨 | tg_id=%s | reward=%s | premium_total=%s",
+        user.tg_id,
+        reward,
+        total,
+    )
+
+    # OPTIONAL:
+    # await bot.send_message(
+    #     ADMIN_CHAT_ID,
+    #     f"🎁 Gadget Won!\n"
+    #     f"User: {user.tg_id}\n"
+    #     f"Reward: {reward}\n"
+    #     f"Premium Total: {total}"
+    # )
 
 # ===============================================================
-# PREMIUM ENTRIES = SKILL / PERFORMANCE POINTS FOR LEADERBOARD
+# PREMIUM ENTRY (SINGLE SOURCE OF TRUTH)
 # ===============================================================
-async def record_premium_reward_entry(session: AsyncSession, user: User) -> int:
+async def record_premium_entry_and_count(
+    session: AsyncSession,
+    user: User
+) -> int:
     """
-    Store one entry per *premium* spin (i.e. correct answer).
-
-    Each row represents:
-      - 1 premium performance point.
-
-    Returns:
-        total_premium_rewards_for_user (int)
+    Atomically:
+      - Insert premium entry
+      - Count total entries for user
     """
 
-    # 1️⃣ Insert the premium entry
     await session.execute(
         text("""
             INSERT INTO premium_reward_entries (user_id, tg_id, created_at)
             VALUES (:u, :tg, NOW())
         """),
-        {
-            "u": str(user.id),
-            "tg": user.tg_id,
-        }
+        {"u": str(user.id), "tg": user.tg_id},
     )
 
-    # 2️⃣ Count using tg_id (authoritative identifier)
     res = await session.execute(
         text("""
             SELECT COUNT(*)
             FROM premium_reward_entries
             WHERE tg_id = :tg
         """),
-        {"tg": user.tg_id}
+        {"tg": user.tg_id},
     )
 
-    return int(res.scalar() or 0)
+    total = int(res.scalar() or 0)
+    logger.info(
+        "[PREMIUM] Entry recorded | tg_id=%s | total=%s",
+        user.tg_id,
+        total,
+    )
+    return total
+
 
 # ===============================================================
-# STEP 1 — Save Trivia Question (unchanged, still pure skill)
+# QUESTION FLOW (UNCHANGED)
 # ===============================================================
 async def save_pending_question(session: AsyncSession, user_id: int, question_id: int):
     await session.execute(
@@ -80,7 +130,7 @@ async def save_pending_question(session: AsyncSession, user_id: int, question_id
             ON CONFLICT (user_id)
             DO UPDATE SET question_id = :q, answered = FALSE
         """),
-        {"u": user_id, "q": question_id}
+        {"u": user_id, "q": question_id},
     )
 
 
@@ -88,16 +138,9 @@ async def start_playtrivia_question(
     user: User,
     session: AsyncSession,
     context,
-    category: str | None = None
+    category: str | None = None,
 ) -> dict:
-    """
-    Start a trivia round by picking a random question from the pool.
-    This is *skill-based*: outcome depends on the user's answer.
-    """
-
-    # 🔓 RESET premium guard for new question
     context.user_data.pop("premium_recorded", None)
-
     q = get_random_question(category)
     await save_pending_question(session, user.id, q["id"])
 
@@ -107,69 +150,45 @@ async def start_playtrivia_question(
         "question_id": q["id"],
     }
 
+
 # ===============================================================
-# STEP 2 — CONSUME TRY + Top-Tier Campaign Reward COUNTER (threshold trigger only)
+# SPIN CONSUMPTION + GLOBAL CAMPAIGN COUNTER
 # ===============================================================
 async def consume_and_spin(user: User, session: AsyncSession) -> dict:
-    """
-    Handles:
-    - Try consumption (bonus vs paid)
-    - Global PAID try counter
-    - Top-Tier Campaign Reward threshold detection
-
-    This function **does not** pick winners. It only:
-      - Tracks when we've reached WIN_THRESHOLD for this cycle.
-      - Records a Play row for analytics.
-    """
-    # Consume one try (bonus or paid)
     spin_type = await consume_try(session, user)
     if spin_type is None:
-        # No tries left at all
-        return {"result": "no_tries", "paid_spin": False, "top_tier_campaign_reward_triggered": False}
+        return {"status": "no_tries"}
 
-    paid_spin = (spin_type == "paid")
-    result = "lose"
-    top_tier_campaign_reward_triggered = False
+    paid_spin = spin_type == "paid"
+    top_tier_triggered = False
 
-    # -----------------------------------------------------------
-    # PAID SPIN → Increment global Top-Tier Campaign Reward counter
-    # (Only PAID tries count toward WIN_THRESHOLD, so you can
-    #  fund rewards from real revenue.)
-    # -----------------------------------------------------------
     if paid_spin:
-        # Ensure the global counter row exists
         await session.execute(text("""
             INSERT INTO global_counter (id, paid_tries_total)
             VALUES (1, 0)
             ON CONFLICT (id) DO NOTHING
         """))
 
-        # Increment global paid tries counter
-        counter_row = await session.execute(text("""
+        res = await session.execute(text("""
             UPDATE global_counter
             SET paid_tries_total = paid_tries_total + 1
             WHERE id = 1
             RETURNING paid_tries_total
         """))
-        new_total = counter_row.scalar()
+        new_total = res.scalar()
 
-        # Load or create GameState row
         gs = await session.get(GameState, 1)
         if not gs:
             gs = GameState(id=1)
             session.add(gs)
             await session.flush()
 
-        # Update bookkeeping
         gs.paid_tries_this_cycle += 1
         gs.lifetime_paid_tries += 1
 
-        # -------------------------------------------------------
-        # Top-Tier Campaign Reward THRESHOLD REACHED? (leaderboard winner later)
-        # -------------------------------------------------------
-        if new_total is not None and new_total >= WIN_THRESHOLD:
+        if new_total and new_total >= WIN_THRESHOLD:
+            logger.warning("[CAMPAIGN] Top-tier threshold reached")
 
-            # Reset global counter for next Top-Tier Campaign Reward cycle
             await session.execute(text("""
                 UPDATE global_counter
                 SET paid_tries_total = 0
@@ -178,166 +197,145 @@ async def consume_and_spin(user: User, session: AsyncSession) -> dict:
 
             gs.current_cycle += 1
             gs.paid_tries_this_cycle = 0
+            top_tier_triggered = True
 
-            top_tier_campaign_reward_triggered = True
-            result = "win"   # “win event” at the cycle level
-
-    # Record the spin itself (analytics only, not reward)
-    session.add(Play(
-        user_id=user.id,
-        result=result
-    ))
-
+    session.add(Play(user_id=user.id, result="spin"))
     return {
-        "result": result,
+        "status": "ok",
         "paid_spin": paid_spin,
-        "top_tier_campaign_reward_triggered": top_tier_campaign_reward_triggered,
-        "remaining_bonus": user.tries_bonus,
-        "remaining_paid": user.tries_paid,
+        "top_tier_triggered": top_tier_triggered,
     }
 
 
 # ===============================================================
-# STEP 3 — MILESTONE REWARDS (DETERMINISTIC, NOT RANDOM)
+# MILESTONE ENGINE (FIXED + AUDITED)
 # ===============================================================
 async def apply_milestone_reward(
     session: AsyncSession,
     user: User,
-    total_premium_rewards: int
+    total: int,
 ) -> str:
-    """
-    Deterministically award milestone rewards.
+    # ----------------------------------------------------------
+    # 1️⃣ NON-AIRTIME (GADGETS) — THRESHOLD + IDEMPOTENT
+    # ----------------------------------------------------------
+    for milestone, reward in sorted(NON_AIRTIME_MILESTONES.items()):
+        if total >= milestone:
 
-    - Airtime: exact milestones
-    - Gadgets: threshold-based (>=) with safety guard
-    """
-
-    # --------------------------------------------------
-    # 1️⃣ NON-AIRTIME MILESTONES (THRESHOLD + GUARD)
-    # --------------------------------------------------
-    for milestone, reward_type in sorted(
-        NON_AIRTIME_MILESTONES.items()
-    ):
-        if total_premium_rewards >= milestone:
-
-            # Has this reward already been given?
+            # Guard: already awarded?
             res = await session.execute(
                 text("""
                     SELECT 1
                     FROM non_airtime_winners
                     WHERE user_id = :u
-                      AND reward_type = :rtype
+                      AND reward_type = :r
                     LIMIT 1
                 """),
-                {
-                    "u": str(user.id),
-                    "rtype": reward_type,
-                },
+                {"u": str(user.id), "r": reward},
             )
 
-            already_awarded = res.scalar() is not None
-
-            if not already_awarded:
-                await session.execute(
-                    text("""
-                        INSERT INTO non_airtime_winners (user_id, tg_id, reward_type)
-                        VALUES (:u, :tg, :rtype)
-                    """),
-                    {
-                        "u": str(user.id),
-                        "tg": user.tg_id,
-                        "rtype": reward_type,
-                    },
+            if res.scalar():
+                logger.debug(
+                    "[MILESTONE] Gadget already awarded | user=%s reward=%s",
+                    user.tg_id,
+                    reward,
                 )
-                return reward_type
+                continue  # keep checking higher milestones safely
 
-    # --------------------------------------------------
-    # 2️⃣ AIRTIME MILESTONES (EXACT)
-    # --------------------------------------------------
-    if total_premium_rewards in AIRTIME_MILESTONES:
-        amount = AIRTIME_MILESTONES[total_premium_rewards]
+            # ✅ 1️⃣ AUDIT FIRST (single source of truth)
+            audit_created = await record_reward_audit(
+                session=session,
+                user=user,
+                reward_type=reward,
+                premium_total=total,
+                source="premium_milestone",
+            )
+
+            if not audit_created:
+                logger.warning(
+                    "[MILESTONE] Audit already exists, skipping award | user=%s reward=%s",
+                    user.tg_id,
+                    reward,
+                )
+                continue
+
+            # ✅ 2️⃣ RECORD WINNER
+            await session.execute(
+                text("""
+                    INSERT INTO non_airtime_winners
+                    (user_id, tg_id, reward_type)
+                    VALUES (:u, :tg, :r)
+                """),
+                {"u": str(user.id), "tg": user.tg_id, "r": reward},
+            )
+
+            logger.info(
+                "[MILESTONE] Non-airtime milestone HIT | user=%s reward=%s total=%s",
+                user.tg_id,
+                reward,
+                total,
+            )
+
+            # ✅ 3️⃣ ADMIN ALERT (SIDE EFFECT LAST)
+            try:
+                await notify_admin_gadget_win(user, reward, total)
+            except Exception:
+                logger.exception(
+                    "[ADMIN ALERT FAILED] Gadget win | user=%s reward=%s",
+                    user.tg_id,
+                    reward,
+                )
+
+            return reward
+
+    # ----------------------------------------------------------
+    # 2️⃣ AIRTIME — EXACT MATCH (NO AUDIT HERE BY DESIGN)
+    # ----------------------------------------------------------
+    if total in AIRTIME_MILESTONES:
+        amount = AIRTIME_MILESTONES[total]
+
+        logger.info(
+            "[MILESTONE] Airtime milestone HIT | user=%s amount=%s total=%s",
+            user.tg_id,
+            amount,
+            total,
+        )
+
         return f"airtime_{amount}"
 
-    # --------------------------------------------------
+    # ----------------------------------------------------------
     # 3️⃣ NO MILESTONE
-    # --------------------------------------------------
+    # ----------------------------------------------------------
     return "none"
 
+
 # ===============================================================
-# STEP 4 - REWARD LOGIC — DECISION ONLY (NO DB INSERTS, NO UI)
+# FINAL ORCHESTRATOR (THIS FIXES EVERYTHING)
 # ===============================================================
-async def reward_logic(
+async def resolve_trivia_reward(
     session: AsyncSession,
     user: User,
-    is_premium_reward: bool = False,
+    correct_answer: bool,
 ) -> str:
     """
-    Pure reward decision engine.
-
-    Responsibilities:
-      - Consume a spin/try
-      - Detect Top-Tier Campaign Reward threshold
-      - Decide outcome symbolically
-
-    NOT allowed:
-      ❌ premium progress insertion
-      ❌ milestone rewards
-      ❌ UI or messaging
+    This is the ONLY function that decides rewards.
     """
 
-    # 1️⃣ Consume a try
-    outcome = await consume_and_spin(user, session)
-
-    if outcome.get("result") == "no_tries":
+    spin = await consume_and_spin(user, session)
+    if spin.get("status") == "no_tries":
         return "no_tries"
 
-    # 2️⃣ Check Top-Tier Campaign Reward trigger
-    if outcome.get("Top-Tier Campaign Reward_triggered"):
-        logger.info("🏆 Top-Tier Campaign Reward threshold reached")
+    if not correct_answer:
+        logger.info("[FLOW] Wrong answer | no premium entry")
+        return "lose"
 
-        # Select leaderboard winner
-        result = await session.execute(
-            text("""
-                SELECT 
-                    user_id,
-                    tg_id,
-                    COUNT(*) AS points,
-                    MIN(created_at) AS first_at
-                FROM premium_reward_entries
-                GROUP BY user_id, tg_id
-                ORDER BY points DESC, first_at ASC
-                LIMIT 1
-            """)
-        )
+    # ---- Correct answer = premium entry
+    total = await record_premium_entry_and_count(session, user)
 
-        row = result.first()
+    reward = await apply_milestone_reward(session, user, total)
 
-        # Fallback safety
-        if row:
-            winner_user_id = row.user_id
-            winner_tg_id = row.tg_id
-        else:
-            winner_user_id = user.id
-            winner_tg_id = user.tg_id
+    logger.info(
+        "[FLOW] Final reward outcome resolved | outcome=%s",
+        reward,
+    )
 
-        # Record campaign win event
-        session.add(
-            Play(
-                user_id=winner_user_id,
-                result="Top-Tier Campaign Reward"
-            )
-        )
-
-        # Reset leaderboard for next cycle
-        await session.execute(
-            text("DELETE FROM premium_reward_entries")
-        )
-
-        # Return symbolic outcome
-        if str(winner_user_id) == str(user.id):
-            return "Top-Tier Campaign Reward"
-        else:
-            return "lose"
-
-    # 3️⃣ No special reward this spin
-    return "lose"
+    return reward
