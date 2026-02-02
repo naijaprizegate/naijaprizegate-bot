@@ -20,7 +20,7 @@ from telegram.ext import (
 
 from helpers import get_or_create_user
 from utils.questions_loader import get_random_question
-from services.playtrivia import reward_logic  
+from services.playtrivia import resolve_trivia_reward  
 from db import get_async_session, AsyncSessionLocal
 from models import GameState
 from handlers.payments import handle_buy_callback
@@ -352,9 +352,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
     NO_TRIES = "no_tries"
 
     outcome: str | None = None
-    milestone_outcome: str = "none"
-    total_premium_rewards: int | None = None
-
+    
     # --------------------------------------------------------------
     # 1️⃣ CORE REWARD LOGIC (NO UI, NO SLEEP)
     # --------------------------------------------------------------
@@ -366,7 +364,14 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
                     session, tg_id=tg_id, username=username
                 )
 
-                outcome = await reward_logic(session, user, is_premium)
+                outcome = await resolve_trivia_reward(
+                    session=session,
+                    user=user,
+                    correct_answer=is_premium,
+                )
+
+                milestone_outcome = outcome
+                current_points = user.premium_points
 
                 if outcome == NO_TRIES:
                     await update.effective_message.reply_text(
@@ -419,7 +424,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
     # --------------------------------------------------------------
 
     # 🏆 AIRTIME MILESTONE
-    if milestone_outcome.startswith("airtime_"):
+    if milestone_outcome and milestone_outcome.startswith("airtime_"):
         amount = milestone_outcome.replace("airtime_", "")
 
         keyboard = InlineKeyboardMarkup([
@@ -431,7 +436,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
 
         return await msg.edit_text(
             f"🏆 *Milestone Unlocked!* 🎉\n\n"
-            f"🎯 You've reached *{total_premium_rewards}* premium attempts.\n"
+            f"🎯 You've reached *{current_points}* premium attempts.\n"
             f"💸 *₦{amount} Airtime Reward* unlocked!\n\n"
             "Keep getting the answers correct. More rewards await you!\n"
             "*AirPods*, *Bluetooth Speakers*, *iPhones* and *Samsung Smart Phones*\n\n"
@@ -451,23 +456,13 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
 
         await msg.edit_text(
             f"🏆 *BIG MILESTONE UNLOCKED!* 🎉🔥\n\n"
-            f"🎯 *{total_premium_rewards} Premium Attempts Achieved*\n"
+            f"🎯 *{current_points} Premium Attempts Achieved*\n"
             f"🎁 Reward Unlocked: *{prize_label}* {emoji}\n\n"
             "Please complete your delivery details below 👇",
             parse_mode="Markdown",
         )
 
-        # Admin notification + audit handled in service
-        try:
-            await notify_admin_gadget_win(
-                bot=context.bot,
-                user_id=tg_id,
-                username=username,
-                prize=prize_label,
-                milestone=total_premium_rewards,
-            )
-        except Exception:
-            logger.exception("Admin gadget win notification failed")
+        
 
         # Save user choice
         async with get_async_session() as session:
