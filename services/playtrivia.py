@@ -105,14 +105,15 @@ async def notify_admin_gadget_win(user: User, reward: str, total: int):
 # ===============================================================
 # PREMIUM ENTRY (SINGLE SOURCE OF TRUTH)
 # ===============================================================
-async def record_premium_entry_and_count(
+async def record_premium_audit_entry(
     session: AsyncSession,
-    user: User
-) -> int:
+    user: User,
+) -> None:
     """
-    Atomically:
-      - Insert premium entry
-      - Count total entries for user
+    Records a premium trivia success for audit / history purposes ONLY.
+
+    ⚠️ This function does NOT calculate points.
+    ⚠️ This function does NOT control progression.
     """
 
     await session.execute(
@@ -123,22 +124,10 @@ async def record_premium_entry_and_count(
         {"u": str(user.id), "tg": user.tg_id},
     )
 
-    res = await session.execute(
-        text("""
-            SELECT COUNT(*)
-            FROM premium_reward_entries
-            WHERE tg_id = :tg
-        """),
-        {"tg": user.tg_id},
-    )
-
-    total = int(res.scalar() or 0)
     logger.info(
-        "[PREMIUM] Entry recorded | tg_id=%s | total=%s",
+        "[PREMIUM AUDIT] Entry recorded | tg_id=%s",
         user.tg_id,
-        total,
     )
-    return total
 
 
 # ===============================================================
@@ -342,22 +331,40 @@ async def resolve_trivia_reward(
     This is the ONLY function that decides rewards.
     """
 
+    # 1️⃣ Consume a premium spin (gatekeeper)
     spin = await consume_and_spin(user, session)
     if spin.get("status") == "no_tries":
         return "no_tries"
 
+    # 2️⃣ Wrong answer → nothing else happens
     if not correct_answer:
-        logger.info("[FLOW] Wrong answer | no premium entry")
+        logger.info("[FLOW] Wrong answer | no premium progression")
         return "lose"
 
-    # ---- Correct answer = premium entry
-    total = await record_premium_entry_and_count(session, user)
-
-    reward = await apply_milestone_reward(session, user, total)
+    # 3️⃣ ✅ CORRECT ANSWER → INCREMENT AUTHORITATIVE POINTS
+    user.premium_points += 1
+    await session.flush()  # make sure DB state is real before using it
 
     logger.info(
-        "[FLOW] Final reward outcome resolved | outcome=%s",
+        "[FLOW] Premium point incremented | user=%s total=%s",
+        user.tg_id,
+        user.premium_points,
+    )
+
+    # 4️⃣ (Optional but recommended) AUDIT ENTRY
+    await record_premium_audit_entry(session, user)
+
+    # 5️⃣ Milestone check uses SOURCE OF TRUTH
+    reward = await apply_milestone_reward(
+        session,
+        user,
+        user.premium_points,
+    )
+
+    logger.info(
+        "[FLOW] Final reward outcome resolved | outcome=%s points=%s",
         reward,
+        user.premium_points,
     )
 
     return reward
