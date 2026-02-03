@@ -371,7 +371,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
                 )
 
                 milestone_outcome = outcome
-                current_points = user.premium_points
+                current_points = user.premium_spins
 
                 if outcome == NO_TRIES:
                     await update.effective_message.reply_text(
@@ -650,4 +650,3 @@ def register_handlers(application):
     application.add_handler(
         CallbackQueryHandler(free_menu, pattern="^free$")
     )
-
