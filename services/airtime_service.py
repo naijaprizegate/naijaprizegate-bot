@@ -335,7 +335,22 @@ async def handle_claim_airtime_button(update: Update, context: ContextTypes.DEFA
             parse_mode="Markdown",
         )
         return ConversationHandler.END
-
+    
+    # ✅ ADD THIS LOG LINE (for Render logs)
+    logger.info(
+        f"🧾 claim_airtime callback received | payout_id={payout_id} | tg_id={update.effective_user.id}"
+    )
+    
+    # ✅ ADD UUID VALIDATION GUARD RIGHT HERE
+    try:
+        uuid.UUID(payout_id)
+    except Exception:
+        await query.message.reply_text(
+            "⚠️ Invalid reward reference. Please tap *Claim Airtime Reward* again.",
+            parse_mode="Markdown",
+        )
+        return ConversationHandler.END
+    
     # -------------------------------------------------------
     # Save claim session state (do NOT clear user_data)
     # -------------------------------------------------------
