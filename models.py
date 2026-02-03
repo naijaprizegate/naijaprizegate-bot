@@ -7,6 +7,7 @@ from sqlalchemy import (
     String,
     Integer,
     ForeignKey,
+    func,
     Text,
     Boolean,
     BigInteger,
@@ -15,6 +16,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
 from base import Base
 
 
