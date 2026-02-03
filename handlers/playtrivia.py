@@ -425,12 +425,34 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
 
     # 🏆 AIRTIME MILESTONE
     if milestone_outcome and milestone_outcome.startswith("airtime_"):
-        amount = milestone_outcome.replace("airtime_", "")
+        amount = int(milestone_outcome.replace("airtime_", ""))
 
+        # 1) Create payout in DB and get payout_id (UUID)
+        async with get_async_session() as session:
+            async with session.begin():
+                db_user = await get_or_create_user(session, tg_id=tg_id, username=username)
+
+                payout = await create_pending_airtime_payout(
+                    session=session,
+                    user_id=str(db_user.id),          # IMPORTANT: this must be your DB user UUID/string
+                    tg_id=tg_id,
+                    total_premium_spins=current_points
+                )
+
+        # 2) If payout wasn't created (e.g., milestone not mapped), fail gracefully
+        if not payout:
+            return await msg.edit_text(
+                "⚠️ Could not create airtime reward right now. Please try again.",
+                parse_mode="Markdown",
+            )
+
+        payout_id = payout["payout_id"]  # ✅ UUID string
+
+        # 3) Build button using payout_id (NOT tg_id)
         keyboard = InlineKeyboardMarkup([
             [InlineKeyboardButton(
                 "⚡ Claim Airtime Reward",
-                callback_data=f"claim_airtime:{tg_id}"
+                callback_data=f"claim_airtime:{payout_id}"
             )]
         ])
 
@@ -444,6 +466,7 @@ async def run_spin_after_trivia(update: Update, context: ContextTypes.DEFAULT_TY
             parse_mode="Markdown",
             reply_markup=keyboard,
         )
+
 
     # 🎧 / 🔊 NON-AIRTIME MILESTONE (Earpod / Speaker)
     if milestone_outcome in {"earpod", "speaker"}:
