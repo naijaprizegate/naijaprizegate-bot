@@ -342,13 +342,13 @@ async def resolve_trivia_reward(
         return "lose"
 
     # 3️⃣ ✅ CORRECT ANSWER → INCREMENT AUTHORITATIVE POINTS
-    user.premium_points += 1
+    user.premium_spins += 1
     await session.flush()  # make sure DB state is real before using it
 
     logger.info(
         "[FLOW] Premium point incremented | user=%s total=%s",
         user.tg_id,
-        user.premium_points,
+        user.premium_spins,
     )
 
     # 4️⃣ (Optional but recommended) AUDIT ENTRY
@@ -358,13 +358,13 @@ async def resolve_trivia_reward(
     reward = await apply_milestone_reward(
         session,
         user,
-        user.premium_points,
+        user.premium_spins,
     )
 
     logger.info(
         "[FLOW] Final reward outcome resolved | outcome=%s points=%s",
         reward,
-        user.premium_points,
+        user.premium_spins,
     )
 
     return reward
