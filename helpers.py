@@ -1,12 +1,15 @@
 # ===============================================================
-# helpers.py
+# helpers.py (SAFE ASYNC HELPERS — NO COMMITS INSIDE)
 # ===============================================================
-import html
 import logging
-from sqlalchemy import select, update
-from sqlalchemy.ext.asyncio import AsyncSession
-from models import User, GameState, GlobalCounter, Play  # ✅ Ensure these exist and are imported
+import time
 from datetime import datetime
+from typing import Optional, Union
+
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from models import User, GameState, GlobalCounter, Play
 
 logger = logging.getLogger(__name__)
 
@@ -14,183 +17,242 @@ logger = logging.getLogger(__name__)
 # Escape MarkdownV2 for Telegram messages
 # -------------------------------------------------
 def md_escape(text: str) -> str:
-    escape_chars = r"_*[]()~`>#+-=|{}.!"
-    return "".join(f"\\{c}" if c in escape_chars else c for c in text)
+    escape_chars = r"_*[]()~`>#+-=|{}.!`"
+    return "".join(f"\\{c}" if c in escape_chars else c for c in str(text))
 
 
 # -------------------------------------------------
-# Create or get an existing user
+# Create or get an existing user (NO COMMIT HERE)
 # -------------------------------------------------
 async def get_or_create_user(
     session: AsyncSession,
     tg_id: int,
-    username: str | None = None
+    username: str | None = None,
+    full_name: str | None = None,
 ) -> User:
     """
     Fetch a User by Telegram ID, or create one if not exists.
-    Uses the provided AsyncSession (don't close it here).
+
+    IMPORTANT:
+    - No commit here. Caller controls transactions (session.begin()).
+    - Uses session.flush() only.
     """
-    result = await session.execute(select(User).where(User.tg_id == tg_id))
-    user = result.scalar_one_or_none()
+
+    res = await session.execute(select(User).where(User.tg_id == tg_id))
+    user = res.scalar_one_or_none()
 
     if user:
-        if username and user.username != username:
+        changed = False
+        if username is not None and user.username != username:
             user.username = username
-            await session.commit()
+            changed = True
+        if full_name is not None and getattr(user, "full_name", None) != full_name:
+            user.full_name = full_name
+            changed = True
+        if changed:
+            await session.flush()
         return user
 
-    # New user
-    user = User(tg_id=tg_id, username=username)
+    # New user: always initialize numeric fields to avoid None issues
+    user = User(
+        tg_id=tg_id,
+        username=username,
+        full_name=full_name,
+        tries_paid=0,
+        tries_bonus=0,
+        premium_spins=0,
+        total_premium_spins=0,
+        created_at=datetime.utcnow(),
+    )
     session.add(user)
-    await session.commit()
-    await session.refresh(user)
+    await session.flush()
     return user
 
 
 # -------------------------------------------------
-# Add tries (paid or bonus)
+# Ensure GameState exists (cycle system)
 # -------------------------------------------------
-async def add_tries(session: AsyncSession, user_or_id, count: int, paid: bool = True) -> User:
+async def ensure_game_state(session: AsyncSession) -> GameState:
+    gs = await session.get(GameState, 1)
+    if not gs:
+        gs = GameState(
+            id=1,
+            current_cycle=1,
+            paid_tries_this_cycle=0,
+            lifetime_paid_tries=0,
+            created_at=datetime.utcnow(),
+            updated_at=datetime.utcnow(),
+        )
+        session.add(gs)
+        await session.flush()
+
+    # Normalize nulls (defensive)
+    if gs.current_cycle is None:
+        gs.current_cycle = 1
+    if gs.paid_tries_this_cycle is None:
+        gs.paid_tries_this_cycle = 0
+    if gs.lifetime_paid_tries is None:
+        gs.lifetime_paid_tries = 0
+
+    return gs
+
+
+# -------------------------------------------------
+# (Optional) Ensure GlobalCounter exists
+# Keep this only if other parts still reference global_counter.
+# -------------------------------------------------
+async def ensure_global_counter(session: AsyncSession) -> GlobalCounter:
+    gc = await session.get(GlobalCounter, 1)
+    if not gc:
+        gc = GlobalCounter(id=1, paid_tries_total=0)
+        session.add(gc)
+        await session.flush()
+
+    if gc.paid_tries_total is None:
+        gc.paid_tries_total = 0
+        await session.flush()
+
+    return gc
+
+
+# -------------------------------------------------
+# Add tries (paid or bonus) — NO COMMIT
+# -------------------------------------------------
+async def add_tries(
+    session: AsyncSession,
+    user_or_id: Union[User, str],
+    count: int,
+    paid: bool = True,
+) -> Optional[User]:
     """
     Increment user's tries (paid or bonus) inside an active session.
-    Also updates GameState and GlobalCounter for paid tries.
 
-    Supports both a full User object or a user_id (int).
-    NOTE: This function does not commit — caller must handle commit.
+    - No commit here.
+    - If paid, updates GameState counters (cycle + lifetime).
+    - Optionally updates GlobalCounter if you still use it elsewhere.
+
+    Returns updated User or None if user not found.
     """
-
-    # ✅ Accept either User object or user_id
-    user_id = user_or_id.id if hasattr(user_or_id, "id") else user_or_id
-
-    # ✅ Fetch user
-    result = await session.execute(select(User).where(User.id == user_id))
-    user = result.scalar_one_or_none()
-    if not user:
-        logger.warning(f"⚠️ Tried to add tries to non-existent user_id={user_id}")
+    if count <= 0:
         return None
 
-    logger.info(f"🌀 Adding {count} {'paid' if paid else 'bonus'} tries → user_id={user.id}")
+    user_id = user_or_id.id if hasattr(user_or_id, "id") else user_or_id
+
+    res = await session.execute(select(User).where(User.id == user_id))
+    user = res.scalar_one_or_none()
+    if not user:
+        logger.warning("⚠️ add_tries: user not found | user_id=%s", user_id)
+        return None
 
     if paid:
-        # 🪙 Paid tries increment
-        user.tries_paid = (user.tries_paid or 0) + count
+        user.tries_paid = int(user.tries_paid or 0) + int(count)
 
-        # ✅ Ensure GlobalCounter exists
-        gc = await session.get(GlobalCounter, 1)
-        if not gc:
-            gc = GlobalCounter(id=1, paid_tries_total=0)
-            session.add(gc)
-            await session.flush()
+        # cycle system counters
+        gs = await ensure_game_state(session)
+        gs.paid_tries_this_cycle = int(gs.paid_tries_this_cycle or 0) + int(count)
+        gs.lifetime_paid_tries = int(gs.lifetime_paid_tries or 0) + int(count)
+        gs.updated_at = datetime.utcnow()
 
-        # ✅ Ensure GameState exists
-        gs = await session.get(GameState, 1)
-        if not gs:
-            gs = GameState(
-                id=1,
-                current_cycle=1,
-                paid_tries_this_cycle=0,
-                lifetime_paid_tries=0,
-                created_at=datetime.utcnow(),
-            )
-            session.add(gs)
-            await session.flush()
+        # optional global counter (safe)
+        try:
+            gc = await ensure_global_counter(session)
+            gc.paid_tries_total = int(gc.paid_tries_total or 0) + int(count)
+        except Exception:
+            pass
 
-        # ✅ Update counters
-        gc.paid_tries_total = (gc.paid_tries_total or 0) + count
-        gs.paid_tries_this_cycle = (gs.paid_tries_this_cycle or 0) + count
-        gs.lifetime_paid_tries = (gs.lifetime_paid_tries or 0) + count
-
-        session.add_all([gc, gs])
         logger.info(
-            f"📊 Updated GameState → lifetime={gs.lifetime_paid_tries}, cycle={gs.paid_tries_this_cycle}"
+            "✅ add_tries paid | tg_id=%s | +%s | paid=%s | cycle_paid=%s | lifetime=%s",
+            user.tg_id,
+            count,
+            user.tries_paid,
+            gs.paid_tries_this_cycle,
+            gs.lifetime_paid_tries,
         )
 
     else:
-        # 🎁 Bonus tries increment (for admin-approved proofs, etc.)
-        user.tries_bonus = (user.tries_bonus or 0) + count
-        logger.info(f"🎁 Added {count} bonus tries → user_id={user.id}")
+        user.tries_bonus = int(user.tries_bonus or 0) + int(count)
+        logger.info(
+            "✅ add_tries bonus | tg_id=%s | +%s | bonus=%s",
+            user.tg_id,
+            count,
+            user.tries_bonus,
+        )
 
-    # ✅ Update user record
     session.add(user)
     await session.flush()
-    await session.refresh(user)
-
-    logger.info(
-        f"✅ User {user.id} now has paid={user.tries_paid}, bonus={user.tries_bonus}"
-    )
-
     return user
 
+
 # -------------------------------------------------
-# Consume one try (bonus first, then paid)
+# Consume one try (bonus first, then paid) — NO COMMIT
 # -------------------------------------------------
 async def consume_try(session: AsyncSession, user: User):
     """
     Deduct one try. Uses bonus first, then paid.
-    Returns:
-      - "bonus" if a bonus try was used
-      - "paid" if a paid try was used
-      - None if no tries left
-    NOTE: This function does not commit — caller must handle commit.
+    Returns: "bonus" | "paid" | None
     """
+    paid = int(user.tries_paid or 0)
+    bonus = int(user.tries_bonus or 0)
+
     logger.info(
-        f"🎲 Attempting to consume try for user_id={user.id} "
-        f"(paid={user.tries_paid}, bonus={user.tries_bonus})"
+        "🎲 consume_try | tg_id=%s | paid=%s bonus=%s",
+        user.tg_id, paid, bonus
     )
 
-    if user.tries_bonus and user.tries_bonus > 0:
-        user.tries_bonus -= 1
+    if bonus > 0:
+        user.tries_bonus = bonus - 1
         await session.flush()
-        logger.info(f"➖ Consumed 1 bonus try → user_id={user.id}, remaining bonus={user.tries_bonus}")
+        logger.info("➖ used bonus try | tg_id=%s | bonus_left=%s", user.tg_id, user.tries_bonus)
         return "bonus"
 
-    if user.tries_paid and user.tries_paid > 0:
-        user.tries_paid -= 1
+    if paid > 0:
+        user.tries_paid = paid - 1
         await session.flush()
-        logger.info(f"➖ Consumed 1 paid try → user_id={user.id}, remaining paid={user.tries_paid}")
+        logger.info("➖ used paid try | tg_id=%s | paid_left=%s", user.tg_id, user.tries_paid)
         return "paid"
 
-    logger.warning(f"⚠️ No tries left to consume for user_id={user.id}")
+    logger.warning("⚠️ no tries left | tg_id=%s", user.tg_id)
     return None
 
 
 # -------------------------------------------------
-# Get user by DB ID
+# Get user by DB ID — NO COMMIT
 # -------------------------------------------------
-async def get_user_by_id(session: AsyncSession, user_id) -> User | None:
-    result = await session.execute(select(User).where(User.id == user_id))
-    return result.scalar_one_or_none()
+async def get_user_by_id(session: AsyncSession, user_id) -> Optional[User]:
+    res = await session.execute(select(User).where(User.id == user_id))
+    return res.scalar_one_or_none()
 
 
 # -------------------------------------------------
-# Record a play
+# Record a play — NO COMMIT
 # -------------------------------------------------
-async def record_play(session: AsyncSession, user: User, result: str):
-    play = Play(user_id=user.id, result=result)
-    session.add(play)
-    await session.commit()
-    await session.refresh(play)
-
-    logger.info(
-        f"📝 Recorded play → play_id={play.id}, user_id={user.id}, result='{result}'"
-    )
-
-    return play
+async def record_play(session: AsyncSession, user: User, result: str) -> Optional[Play]:
+    """
+    Adds a row into plays table. No commit here.
+    Caller controls transaction.
+    """
+    try:
+        play = Play(user_id=user.id, result=result)
+        session.add(play)
+        await session.flush()
+        logger.info("📝 record_play | play_id=%s tg_id=%s result=%s", getattr(play, "id", None), user.tg_id, result)
+        return play
+    except Exception:
+        logger.exception("❌ record_play failed | tg_id=%s", user.tg_id)
+        return None
 
 
 # -------------------------------------------------
 # Check if a user is admin
 # -------------------------------------------------
 def is_admin(user: User) -> bool:
-    """Return True if the user is marked as admin."""
-    return getattr(user, "is_admin", False)
+    return bool(getattr(user, "is_admin", False))
 
 
 # ----------------------------
 # 🧩 Mask Sensitive Helper
 # ----------------------------
 def mask_sensitive(data: str, visible: int = 4) -> str:
-    """Mask all but last few visible characters of sensitive data."""
     if not data:
         return ""
     data = str(data)
@@ -198,16 +260,14 @@ def mask_sensitive(data: str, visible: int = 4) -> str:
         return data
     return f"{'*' * (len(data) - visible)}{data[-visible:]}"
 
+
 # -------------------------------
 # 🚦 Rate Limiting Helper
 # --------------------------------
-import time
-
 _LAST_WEBHOOK_CALL = {}
 _RATE_LIMIT_SECONDS = 10
 
 def is_rate_limited(tx_ref: str) -> bool:
-    """Prevents flooding by blocking the same tx_ref within RATE_LIMIT_SECONDS."""
     now = time.time()
     last_call = _LAST_WEBHOOK_CALL.get(tx_ref, 0)
     if now - last_call < _RATE_LIMIT_SECONDS:
