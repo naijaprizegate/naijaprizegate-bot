@@ -1,14 +1,15 @@
 # ===============================================================
-# services/playtrivia.py (OVERHAULED, ATOMIC, LOGGED VERSION)
+# services/playtrivia.py (CYCLE-BASED + LOGGED + IDEMPOTENT)
 # ===============================================================
 import os
 import logging
+from dataclasses import dataclass
+from typing import Optional, Dict, Any, Literal, Callable
+
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 
-from models import Play, User, GameState
-from helpers import consume_try
-from utils.questions_loader import get_random_question
+from models import User, GameState
 
 logger = logging.getLogger(__name__)
 
@@ -16,8 +17,11 @@ WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "50000"))
 
 AIRTIME_MILESTONES = {
     1: 100,
+    10: 500,
     25: 1000,
     50: 2000,
+    75: 3000,
+    100: 4000,
 }
 
 NON_AIRTIME_MILESTONES = {
@@ -25,346 +29,458 @@ NON_AIRTIME_MILESTONES = {
     800: "speaker",
 }
 
-#----------------------------
-# Reward Logic
-# ---------------------------
-async def reward_logic(session, user, is_premium: bool) -> str:
-    """
-    Main reward entrypoint used by handlers.
-    DO NOT put UI logic here.
-    """
+OutcomeType = Literal[
+    "no_tries",
+    "lose",
+    "none",
+    "airtime",
+    "gadget",
+    "cycle_end",
+]
 
-    # 1️⃣ Deduct trivia attempt (bonus → paid)
-    try_type = await consume_try(session, user)
-    if try_type is None:
-        return "no_tries"
 
-    # 2️⃣ Handle premium reward tracking
-    if is_premium:
-        # premium insert + milestone handled elsewhere
-        return "premium"
+@dataclass
+class TriviaOutcome:
+    type: OutcomeType
+    paid_spin: bool = False
+    cycle_id: int = 1
+    points: int = 0
 
-    # 3️⃣ Standard (non-premium) reward path
-    return "standard"
+    airtime_amount: Optional[int] = None
+    gadget: Optional[str] = None
 
-# ---------------------------------------
-# REWARD AUDIT / IDEMPOTENCY HELPERS
-# ---------------------------------------
-async def record_reward_audit(
+    cycle_ended: bool = False
+    winner_tg_id: Optional[int] = None
+    winner_user_id: Optional[str] = None
+    winner_points: Optional[int] = None
+
+
+# ---------------------------------------------------------------
+# Optional reward audit (safe)
+# If you don't have reward_audit_log table, it won't crash.
+# ---------------------------------------------------------------
+async def _record_reward_audit_safe(
     session: AsyncSession,
     user: User,
     reward_type: str,
-    premium_total: int,
+    cycle_id: int,
+    points: int,
     source: str,
 ) -> bool:
     """
-    Idempotent reward recorder.
-    Returns True if recorded, False if already exists.
+    Returns True if inserted, False if already existed or table doesn't exist.
+    Safe: will not crash if reward_audit_log table is absent.
     """
+    try:
+        res = await session.execute(
+            text("""
+                INSERT INTO reward_audit_log
+                    (user_id, tg_id, reward_type, cycle_id, premium_total, source)
+                VALUES
+                    (:u, :tg, :r, :c, :t, :s)
+                ON CONFLICT (cycle_id, user_id, reward_type)
+                DO NOTHING
+                RETURNING id
+            """),
+            {
+                "u": str(user.id),
+                "tg": int(user.tg_id),
+                "r": reward_type,
+                "c": int(cycle_id),
+                "t": int(points),
+                "s": source,
+            },
+        )
+        return res.scalar_one_or_none() is not None
+    except Exception:
+        # table missing or constraint differs -> ignore
+        return False
+
+
+# ---------------------------------------------------------------
+# GameState / Cycle helpers
+# ---------------------------------------------------------------
+async def _ensure_game_state(session: AsyncSession) -> GameState:
+    gs = await session.get(GameState, 1)
+    if not gs:
+        gs = GameState(id=1)
+        session.add(gs)
+        await session.flush()
+
+    if gs.current_cycle is None:
+        gs.current_cycle = 1
+    if gs.paid_tries_this_cycle is None:
+        gs.paid_tries_this_cycle = 0
+    if gs.lifetime_paid_tries is None:
+        gs.lifetime_paid_tries = 0
+
+    return gs
+
+
+async def _ensure_cycle_row(session: AsyncSession, cycle_id: int):
+    await session.execute(
+        text("""
+            INSERT INTO cycles (id, started_at)
+            VALUES (:c, COALESCE(NOW(), CURRENT_TIMESTAMP))
+            ON CONFLICT (id) DO NOTHING
+        """),
+        {"c": cycle_id},
+    )
+
+
+# ---------------------------------------------------------------
+# Points (cycle-based)
+# ---------------------------------------------------------------
+async def _get_or_create_cycle_points(session: AsyncSession, cycle_id: int, user: User) -> int:
     res = await session.execute(
         text("""
-            INSERT INTO reward_audit_log
-                (user_id, tg_id, reward_type, premium_total, source)
-            VALUES
-                (:u, :tg, :r, :t, :s)
-            ON CONFLICT (user_id, reward_type)
+            INSERT INTO user_cycle_stats (cycle_id, user_id, tg_id, points, updated_at)
+            VALUES (:c, :u, :tg, 0, NOW())
+            ON CONFLICT (cycle_id, user_id) DO NOTHING
+            RETURNING points
+        """),
+        {"c": cycle_id, "u": str(user.id), "tg": int(user.tg_id)},
+    )
+    inserted = res.scalar_one_or_none()
+    if inserted is not None:
+        return int(inserted)
+
+    res2 = await session.execute(
+        text("""
+            SELECT points
+            FROM user_cycle_stats
+            WHERE cycle_id = :c AND user_id = :u
+            LIMIT 1
+        """),
+        {"c": cycle_id, "u": str(user.id)},
+    )
+    return int(res2.scalar_one_or_none() or 0)
+
+
+async def _increment_cycle_points(session: AsyncSession, cycle_id: int, user: User) -> int:
+    res = await session.execute(
+        text("""
+            INSERT INTO user_cycle_stats (cycle_id, user_id, tg_id, points, updated_at)
+            VALUES (:c, :u, :tg, 1, NOW())
+            ON CONFLICT (cycle_id, user_id)
+            DO UPDATE SET
+                points = user_cycle_stats.points + 1,
+                tg_id = EXCLUDED.tg_id,
+                updated_at = NOW()
+            RETURNING points
+        """),
+        {"c": cycle_id, "u": str(user.id), "tg": int(user.tg_id)},
+    )
+    return int(res.scalar_one())
+
+
+# ---------------------------------------------------------------
+# Tie-break logging entry (premium_reward_entries)
+# ---------------------------------------------------------------
+async def _record_premium_entry(session: AsyncSession, cycle_id: int, user: User) -> None:
+    await session.execute(
+        text("""
+            INSERT INTO premium_reward_entries (user_id, tg_id, cycle_id, created_at)
+            VALUES (:u, :tg, :c, NOW())
+        """),
+        {"u": str(user.id), "tg": int(user.tg_id), "c": int(cycle_id)},
+    )
+
+
+# ---------------------------------------------------------------
+# Gadget award (idempotent per-cycle)
+# ---------------------------------------------------------------
+async def _try_award_gadget(session: AsyncSession, cycle_id: int, user: User, reward_type: str) -> bool:
+    res = await session.execute(
+        text("""
+            INSERT INTO non_airtime_winners (user_id, tg_id, reward_type, cycle_id, created_at)
+            VALUES (:u, :tg, :r, :c, NOW())
+            ON CONFLICT (cycle_id, user_id, reward_type)
             DO NOTHING
             RETURNING id
         """),
+        {"u": str(user.id), "tg": int(user.tg_id), "r": reward_type, "c": int(cycle_id)},
+    )
+    return res.scalar_one_or_none() is not None
+
+
+# ---------------------------------------------------------------
+# Winner selection (max points, tie -> earliest reached max)
+# ---------------------------------------------------------------
+async def _select_cycle_winner(session: AsyncSession, cycle_id: int) -> Optional[Dict[str, Any]]:
+    # max points
+    res = await session.execute(
+        text("SELECT MAX(points) FROM user_cycle_stats WHERE cycle_id = :c"),
+        {"c": cycle_id},
+    )
+    max_points = res.scalar_one_or_none()
+    if not max_points or int(max_points) <= 0:
+        return None
+    max_points = int(max_points)
+
+    # tied list
+    res = await session.execute(
+        text("""
+            SELECT user_id::text, tg_id, points
+            FROM user_cycle_stats
+            WHERE cycle_id = :c AND points = :p
+        """),
+        {"c": cycle_id, "p": max_points},
+    )
+    tied = res.fetchall()
+    if not tied:
+        return None
+
+    if len(tied) == 1:
+        u, tg, pts = tied[0]
+        return {"user_id": u, "tg_id": int(tg), "points": int(pts)}
+
+    # tie-break: time of Nth correct (OFFSET N-1)
+    best = None
+    best_time = None
+
+    for (user_id, tg_id, pts) in tied:
+        res2 = await session.execute(
+            text("""
+                SELECT created_at
+                FROM premium_reward_entries
+                WHERE cycle_id = :c AND user_id = :u
+                ORDER BY created_at ASC
+                OFFSET :off
+                LIMIT 1
+            """),
+            {"c": cycle_id, "u": user_id, "off": max_points - 1},
+        )
+        reached_time = res2.scalar_one_or_none()
+        if reached_time is None:
+            continue
+
+        if best_time is None or reached_time < best_time:
+            best_time = reached_time
+            best = {"user_id": str(user_id), "tg_id": int(tg_id), "points": int(pts)}
+
+    return best or {"user_id": str(tied[0][0]), "tg_id": int(tied[0][1]), "points": int(tied[0][2])}
+
+
+async def _end_cycle_and_start_new(session: AsyncSession, gs: GameState, winner: Optional[Dict[str, Any]]) -> Dict[str, Any]:
+    current_cycle = int(gs.current_cycle or 1)
+
+    logger.warning(
+        "[CAMPAIGN] Cycle threshold reached | cycle=%s | paid_tries=%s",
+        current_cycle,
+        int(gs.paid_tries_this_cycle or 0),
+    )
+
+    # close cycle
+    await session.execute(
+        text("""
+            UPDATE cycles
+            SET ended_at = NOW(),
+                paid_tries_final = :final,
+                winner_user_id = :wuid::uuid,
+                winner_tg_id = :wtg,
+                winner_points = :wpts,
+                winner_decided_at = CASE WHEN :wtg IS NULL THEN NULL ELSE NOW() END
+            WHERE id = :c
+        """),
         {
-            "u": str(user.id),
-            "tg": user.tg_id,
-            "r": reward_type,
-            "t": premium_total,
-            "s": source,
+            "final": int(gs.paid_tries_this_cycle or 0),
+            "wuid": winner["user_id"] if winner else None,
+            "wtg": winner["tg_id"] if winner else None,
+            "wpts": winner["points"] if winner else None,
+            "c": current_cycle,
         },
     )
 
-    return res.scalar() is not None
+    # new cycle
+    new_cycle = current_cycle + 1
+    gs.current_cycle = new_cycle
+    gs.paid_tries_this_cycle = 0
+    await _ensure_cycle_row(session, new_cycle)
 
-#----------------------------------------------
-# NOTIFY ADMIN GADGET WIN
-# ---------------------------------------------
-async def notify_admin_gadget_win(user: User, reward: str, total: int):
-    logger.critical(
-        "🚨 GADGET WIN 🚨 | tg_id=%s | reward=%s | premium_total=%s",
-        user.tg_id,
-        reward,
-        total,
-    )
+    logger.warning("[CAMPAIGN] New cycle started | new_cycle=%s", new_cycle)
 
-    # OPTIONAL:
-    # await bot.send_message(
-    #     ADMIN_CHAT_ID,
-    #     f"🎁 Gadget Won!\n"
-    #     f"User: {user.tg_id}\n"
-    #     f"Reward: {reward}\n"
-    #     f"Premium Total: {total}"
-    # )
-
-# ===============================================================
-# PREMIUM ENTRY (SINGLE SOURCE OF TRUTH)
-# ===============================================================
-async def record_premium_audit_entry(
-    session: AsyncSession,
-    user: User,
-) -> None:
-    """
-    Records a premium trivia success for audit / history purposes ONLY.
-
-    ⚠️ This function does NOT calculate points.
-    ⚠️ This function does NOT control progression.
-    """
-
-    await session.execute(
-        text("""
-            INSERT INTO premium_reward_entries (user_id, tg_id, created_at)
-            VALUES (:u, :tg, NOW())
-        """),
-        {"u": str(user.id), "tg": user.tg_id},
-    )
-
-    logger.info(
-        "[PREMIUM AUDIT] Entry recorded | tg_id=%s",
-        user.tg_id,
-    )
+    return {"ended_cycle": current_cycle, "new_cycle": new_cycle, "winner": winner}
 
 
-# ===============================================================
-# QUESTION FLOW (UNCHANGED)
-# ===============================================================
-async def save_pending_question(session: AsyncSession, user_id: int, question_id: int):
-    await session.execute(
-        text("""
-            INSERT INTO game_state_question (user_id, question_id, answered)
-            VALUES (:u, :q, FALSE)
-            ON CONFLICT (user_id)
-            DO UPDATE SET question_id = :q, answered = FALSE
-        """),
-        {"u": user_id, "q": question_id},
-    )
-
-
-async def start_playtrivia_question(
-    user: User,
-    session: AsyncSession,
-    context,
-    category: str | None = None,
-) -> dict:
-    context.user_data.pop("premium_recorded", None)
-    q = get_random_question(category)
-    await save_pending_question(session, user.id, q["id"])
-
-    return {
-        "question_text": q["question"],
-        "options": q["options"],
-        "question_id": q["id"],
-    }
-
-
-# ===============================================================
-# SPIN CONSUMPTION + GLOBAL CAMPAIGN COUNTER
-# ===============================================================
-async def consume_and_spin(user: User, session: AsyncSession) -> dict:
-    spin_type = await consume_try(session, user)
-    if spin_type is None:
-        return {"status": "no_tries"}
-
-    paid_spin = spin_type == "paid"
-    top_tier_triggered = False
-
-    if paid_spin:
-        await session.execute(text("""
-            INSERT INTO global_counter (id, paid_tries_total)
-            VALUES (1, 0)
-            ON CONFLICT (id) DO NOTHING
-        """))
-
-        res = await session.execute(text("""
-            UPDATE global_counter
-            SET paid_tries_total = paid_tries_total + 1
-            WHERE id = 1
-            RETURNING paid_tries_total
-        """))
-        new_total = res.scalar()
-
-        gs = await session.get(GameState, 1)
-        if not gs:
-            gs = GameState(id=1)
-            session.add(gs)
-            await session.flush()
-
-        gs.paid_tries_this_cycle += 1
-        gs.lifetime_paid_tries += 1
-
-        if new_total and new_total >= WIN_THRESHOLD:
-            logger.warning("[CAMPAIGN] Top-tier threshold reached")
-
-            await session.execute(text("""
-                UPDATE global_counter
-                SET paid_tries_total = 0
-                WHERE id = 1
-            """))
-
-            gs.current_cycle += 1
-            gs.paid_tries_this_cycle = 0
-            top_tier_triggered = True
-
-    session.add(Play(user_id=user.id, result="spin"))
-    return {
-        "status": "ok",
-        "paid_spin": paid_spin,
-        "top_tier_triggered": top_tier_triggered,
-    }
-
-
-# ===============================================================
-# MILESTONE ENGINE (FIXED + AUDITED)
-# ===============================================================
-async def apply_milestone_reward(
-    session: AsyncSession,
-    user: User,
-    total: int,
-) -> str:
-    # ----------------------------------------------------------
-    # 1️⃣ NON-AIRTIME (GADGETS) — THRESHOLD + IDEMPOTENT
-    # ----------------------------------------------------------
-    for milestone, reward in sorted(NON_AIRTIME_MILESTONES.items()):
-        if total >= milestone:
-
-            # Guard: already awarded?
-            res = await session.execute(
-                text("""
-                    SELECT 1
-                    FROM non_airtime_winners
-                    WHERE user_id = :u
-                      AND reward_type = :r
-                    LIMIT 1
-                """),
-                {"u": str(user.id), "r": reward},
-            )
-
-            if res.scalar():
-                logger.debug(
-                    "[MILESTONE] Gadget already awarded | user=%s reward=%s",
-                    user.tg_id,
-                    reward,
-                )
-                continue  # keep checking higher milestones safely
-
-            # ✅ 1️⃣ AUDIT FIRST (single source of truth)
-            audit_created = await record_reward_audit(
-                session=session,
-                user=user,
-                reward_type=reward,
-                premium_total=total,
-                source="premium_milestone",
-            )
-
-            if not audit_created:
-                logger.warning(
-                    "[MILESTONE] Audit already exists, skipping award | user=%s reward=%s",
-                    user.tg_id,
-                    reward,
-                )
-                continue
-
-            # ✅ 2️⃣ RECORD WINNER
-            await session.execute(
-                text("""
-                    INSERT INTO non_airtime_winners
-                    (user_id, tg_id, reward_type)
-                    VALUES (:u, :tg, :r)
-                """),
-                {"u": str(user.id), "tg": user.tg_id, "r": reward},
-            )
-
-            logger.info(
-                "[MILESTONE] Non-airtime milestone HIT | user=%s reward=%s total=%s",
-                user.tg_id,
-                reward,
-                total,
-            )
-
-            # ✅ 3️⃣ ADMIN ALERT (SIDE EFFECT LAST)
-            try:
-                await notify_admin_gadget_win(user, reward, total)
-            except Exception:
-                logger.exception(
-                    "[ADMIN ALERT FAILED] Gadget win | user=%s reward=%s",
-                    user.tg_id,
-                    reward,
-                )
-
-            return reward
-
-    # ----------------------------------------------------------
-    # 2️⃣ AIRTIME — EXACT MATCH (NO AUDIT HERE BY DESIGN)
-    # ----------------------------------------------------------
-    if total in AIRTIME_MILESTONES:
-        amount = AIRTIME_MILESTONES[total]
-
-        logger.info(
-            "[MILESTONE] Airtime milestone HIT | user=%s amount=%s total=%s",
-            user.tg_id,
-            amount,
-            total,
+# ---------------------------------------------------------------
+# (Optional) record play row for audit trail
+# Safe: if schema differs, it won't crash the reward flow.
+# ---------------------------------------------------------------
+async def _record_play_safe(session: AsyncSession, user: User, result: str):
+    try:
+        await session.execute(
+            text("""
+                INSERT INTO plays (user_id, result, created_at)
+                VALUES (:u, :r, NOW())
+            """),
+            {"u": str(user.id), "r": result},
         )
-
-        return f"airtime_{amount}"
-
-    # ----------------------------------------------------------
-    # 3️⃣ NO MILESTONE
-    # ----------------------------------------------------------
-    return "none"
+    except Exception:
+        pass
 
 
-# ===============================================================
-# FINAL ORCHESTRATOR (THIS FIXES EVERYTHING)
-# ===============================================================
-async def resolve_trivia_reward(
+# ---------------------------------------------------------------
+# Public API: Resolve one trivia attempt
+# ---------------------------------------------------------------
+async def resolve_trivia_attempt(
     session: AsyncSession,
     user: User,
     correct_answer: bool,
-) -> str:
+    consume_try_fn,
+    notify_gadget_win: Optional[Callable[[User, str, int], Any]] = None,
+) -> TriviaOutcome:
     """
-    This is the ONLY function that decides rewards.
+    ONE attempt = consume one try (bonus first, then paid).
+
+    Paid tries contribute to cycle threshold.
+    Correct answers increase cycle points.
+    Rewards are based on cycle points milestones.
+    Winner is selected when threshold is reached.
+    Tie-break: first to reach max points.
     """
 
-    # 1️⃣ Consume a premium spin (gatekeeper)
-    spin = await consume_and_spin(user, session)
-    if spin.get("status") == "no_tries":
-        return "no_tries"
+    gs = await _ensure_game_state(session)
+    cycle_id = int(gs.current_cycle or 1)
+    await _ensure_cycle_row(session, cycle_id)
 
-    # 2️⃣ Wrong answer → nothing else happens
+    # 1) consume try
+    spin_type = await consume_try_fn(session, user)
+    if spin_type is None:
+        logger.info("[FLOW] No tries left | tg_id=%s", user.tg_id)
+        return TriviaOutcome(type="no_tries", paid_spin=False, cycle_id=cycle_id, points=0)
+
+    paid_spin = (spin_type == "paid")
+    logger.info(
+        "[FLOW] Try consumed | tg_id=%s | spin_type=%s | cycle=%s",
+        user.tg_id, spin_type, cycle_id
+    )
+
+    # record play (optional)
+    await _record_play_safe(session, user, "spin")
+
+    # 2) update paid try counters if paid
+    cycle_ended_now = False
+    if paid_spin:
+        gs.paid_tries_this_cycle = int(gs.paid_tries_this_cycle or 0) + 1
+        gs.lifetime_paid_tries = int(gs.lifetime_paid_tries or 0) + 1
+
+        if gs.paid_tries_this_cycle >= WIN_THRESHOLD:
+            cycle_ended_now = True
+
+    # 3) wrong answer -> no points
     if not correct_answer:
-        logger.info("[FLOW] Wrong answer | no premium progression")
-        return "lose"
+        logger.info("[FLOW] Wrong answer | tg_id=%s | cycle=%s", user.tg_id, cycle_id)
 
-    # 3️⃣ ✅ CORRECT ANSWER → INCREMENT AUTHORITATIVE POINTS
-    user.premium_spins += 1
-    await session.flush()  # make sure DB state is real before using it
+        if cycle_ended_now:
+            winner = await _select_cycle_winner(session, cycle_id)
+            info = await _end_cycle_and_start_new(session, gs, winner)
+
+            return TriviaOutcome(
+                type="cycle_end",
+                paid_spin=paid_spin,
+                cycle_id=cycle_id,
+                points=0,
+                cycle_ended=True,
+                winner_tg_id=info["winner"]["tg_id"] if info["winner"] else None,
+                winner_user_id=info["winner"]["user_id"] if info["winner"] else None,
+                winner_points=info["winner"]["points"] if info["winner"] else None,
+            )
+
+        return TriviaOutcome(type="lose", paid_spin=paid_spin, cycle_id=cycle_id, points=0)
+
+    # 4) correct answer -> increment points + premium entry
+    await _get_or_create_cycle_points(session, cycle_id, user)
+    new_points = await _increment_cycle_points(session, cycle_id, user)
+    await _record_premium_entry(session, cycle_id, user)
 
     logger.info(
-        "[FLOW] Premium point incremented | user=%s total=%s",
-        user.tg_id,
-        user.premium_spins,
+        "[FLOW] Point incremented | tg_id=%s | cycle=%s | points=%s",
+        user.tg_id, cycle_id, new_points
     )
 
-    # 4️⃣ (Optional but recommended) AUDIT ENTRY
-    await record_premium_audit_entry(session, user)
+    # 5) milestone decision
+    if new_points in AIRTIME_MILESTONES:
+        amount = AIRTIME_MILESTONES[new_points]
+        logger.info(
+            "[MILESTONE] Airtime HIT | tg_id=%s | cycle=%s | points=%s | amount=%s",
+            user.tg_id, cycle_id, new_points, amount
+        )
 
-    # 5️⃣ Milestone check uses SOURCE OF TRUTH
-    reward = await apply_milestone_reward(
-        session,
-        user,
-        user.premium_spins,
-    )
+        # optional audit
+        await _record_reward_audit_safe(
+            session=session,
+            user=user,
+            reward_type=f"airtime_{amount}",
+            cycle_id=cycle_id,
+            points=new_points,
+            source="cycle_milestone",
+        )
 
-    logger.info(
-        "[FLOW] Final reward outcome resolved | outcome=%s points=%s",
-        reward,
-        user.premium_spins,
-    )
+        outcome = TriviaOutcome(
+            type="airtime",
+            paid_spin=paid_spin,
+            cycle_id=cycle_id,
+            points=new_points,
+            airtime_amount=amount,
+        )
 
-    return reward
+    elif new_points in NON_AIRTIME_MILESTONES:
+        reward = NON_AIRTIME_MILESTONES[new_points]
+        awarded = await _try_award_gadget(session, cycle_id, user, reward)
+
+        if awarded:
+            logger.critical(
+                "🚨 GADGET WIN 🚨 | tg_id=%s | cycle=%s | reward=%s | points=%s",
+                user.tg_id, cycle_id, reward, new_points
+            )
+
+            # optional audit
+            await _record_reward_audit_safe(
+                session=session,
+                user=user,
+                reward_type=reward,
+                cycle_id=cycle_id,
+                points=new_points,
+                source="cycle_milestone",
+            )
+
+            # optional admin notifier hook
+            if notify_gadget_win:
+                try:
+                    await notify_gadget_win(user, reward, new_points)
+                except Exception:
+                    logger.exception("[ADMIN ALERT FAILED] Gadget win | tg_id=%s reward=%s", user.tg_id, reward)
+
+            outcome = TriviaOutcome(
+                type="gadget",
+                paid_spin=paid_spin,
+                cycle_id=cycle_id,
+                points=new_points,
+                gadget=reward,
+            )
+        else:
+            logger.info(
+                "[MILESTONE] Gadget already awarded | tg_id=%s | cycle=%s | reward=%s",
+                user.tg_id, cycle_id, reward
+            )
+            outcome = TriviaOutcome(type="none", paid_spin=paid_spin, cycle_id=cycle_id, points=new_points)
+
+    else:
+        outcome = TriviaOutcome(type="none", paid_spin=paid_spin, cycle_id=cycle_id, points=new_points)
+
+    # 6) if threshold hit, end cycle (but we keep milestone outcome)
+    if cycle_ended_now:
+        winner = await _select_cycle_winner(session, cycle_id)
+        info = await _end_cycle_and_start_new(session, gs, winner)
+
+        outcome.cycle_ended = True
+        outcome.winner_tg_id = info["winner"]["tg_id"] if info["winner"] else None
+        outcome.winner_user_id = info["winner"]["user_id"] if info["winner"] else None
+        outcome.winner_points = info["winner"]["points"] if info["winner"] else None
+
+        # only override type if there was no milestone
+        if outcome.type in ("none", "lose"):
+            outcome.type = "cycle_end"
+
+    return outcome
