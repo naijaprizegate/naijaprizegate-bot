@@ -1,5 +1,6 @@
 # =================================================================
 # models.py — CANONICAL MIRROR OF NEON SCHEMA (SQLAlchemy 2.x SAFE)
+# Updated: cycle support (cycles + user_cycle_stats + cycle_id cols)
 # =================================================================
 
 from sqlalchemy import (
@@ -7,16 +8,15 @@ from sqlalchemy import (
     String,
     Integer,
     ForeignKey,
-    func,
     Text,
     Boolean,
     BigInteger,
     DateTime,
     text,
+    func,
 )
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 from sqlalchemy.orm import relationship
-from sqlalchemy.sql import func
 from base import Base
 
 
@@ -36,13 +36,17 @@ class User(Base):
     username = Column(Text, nullable=True)
     full_name = Column(Text, nullable=True)
 
-    tries_paid = Column(Integer, nullable=True)
-    tries_bonus = Column(Integer, nullable=True)
+    tries_paid = Column(Integer, nullable=False, server_default=text("0"))
+    tries_bonus = Column(Integer, nullable=False, server_default=text("0"))
 
-    premium_spins = Column(Integer, nullable=False)
-    total_premium_spins = Column(Integer, nullable=False)
+    # NOTE:
+    # premium_spins was previously used as points.
+    # After cycle migration, points should move to user_cycle_stats.points.
+    # Keep these columns only if they already exist in DB.
+    premium_spins = Column(Integer, nullable=False, server_default=text("0"))
+    total_premium_spins = Column(Integer, nullable=False, server_default=text("0"))
 
-    created_at = Column(DateTime(timezone=True))
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     # Relationships
     plays = relationship("Play", back_populates="user")
@@ -50,15 +54,55 @@ class User(Base):
     proofs = relationship("Proof", back_populates="user")
     prize_wins = relationship("PrizeWinner", back_populates="user")
 
+    # New relationship: cycle stats
+    cycle_stats = relationship("UserCycleStat", back_populates="user")
+
 
 # ================================================================
-# GLOBAL COUNTER
+# CYCLES (NEW)
+# ================================================================
+class Cycle(Base):
+    __tablename__ = "cycles"
+
+    id = Column(Integer, primary_key=True)  # cycle number: 1,2,3,...
+
+    started_at = Column(DateTime(timezone=True), nullable=False, server_default=func.now())
+    ended_at = Column(DateTime(timezone=True), nullable=True)
+
+    paid_tries_target = Column(Integer, nullable=False, server_default=text("50000"))
+    paid_tries_final = Column(Integer, nullable=False, server_default=text("0"))
+
+    winner_user_id = Column(UUID(as_uuid=True), nullable=True)
+    winner_tg_id = Column(BigInteger, nullable=True)
+    winner_points = Column(Integer, nullable=True)
+    winner_decided_at = Column(DateTime(timezone=True), nullable=True)
+
+
+# ================================================================
+# USER CYCLE STATS (NEW) — Points per cycle per user
+# ================================================================
+class UserCycleStat(Base):
+    __tablename__ = "user_cycle_stats"
+
+    cycle_id = Column(Integer, ForeignKey("cycles.id"), primary_key=True)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), primary_key=True)
+
+    tg_id = Column(BigInteger, nullable=False)
+    points = Column(Integer, nullable=False, server_default=text("0"))
+    updated_at = Column(DateTime(timezone=True), nullable=False, server_default=func.now())
+
+    user = relationship("User", back_populates="cycle_stats")
+    cycle = relationship("Cycle")
+
+
+# ================================================================
+# GLOBAL COUNTER (legacy; prefer game_state.paid_tries_this_cycle)
 # ================================================================
 class GlobalCounter(Base):
     __tablename__ = "global_counter"
 
     id = Column(Integer, primary_key=True)
-    paid_tries_total = Column(Integer, nullable=True)
+    paid_tries_total = Column(Integer, nullable=False, server_default=text("0"))
 
 
 # ================================================================
@@ -68,12 +112,13 @@ class GameState(Base):
     __tablename__ = "game_state"
 
     id = Column(Integer, primary_key=True)
-    current_cycle = Column(Integer, nullable=True)
-    paid_tries_this_cycle = Column(Integer, nullable=True)
-    lifetime_paid_tries = Column(Integer, nullable=True)
 
-    created_at = Column(DateTime(timezone=True))
-    updated_at = Column(DateTime(timezone=True))
+    current_cycle = Column(Integer, nullable=False, server_default=text("1"))
+    paid_tries_this_cycle = Column(Integer, nullable=False, server_default=text("0"))
+    lifetime_paid_tries = Column(Integer, nullable=False, server_default=text("0"))
+
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now())
 
 
 # ================================================================
@@ -90,11 +135,7 @@ class Play(Base):
 
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
     result = Column(Text, nullable=False)
-    created_at = Column(
-        DateTime(timezone=True),
-        server_default=func.now(),
-        nullable=False,
-    )
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
     user = relationship("User", back_populates="plays")
 
@@ -123,8 +164,8 @@ class Payment(Base):
     tg_id = Column(BigInteger, nullable=True)
     username = Column(Text, nullable=True)
 
-    created_at = Column(DateTime(timezone=True))
-    updated_at = Column(DateTime(timezone=True))
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now())
 
     user = relationship("User", back_populates="payments")
 
@@ -144,7 +185,7 @@ class Proof(Base):
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
     file_id = Column(Text, nullable=False)
     status = Column(Text, nullable=True)
-    created_at = Column(DateTime(timezone=True))
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     user = relationship("User", back_populates="proofs")
 
@@ -163,7 +204,7 @@ class TransactionLog(Base):
 
     provider = Column(Text, nullable=False)
     payload = Column(Text, nullable=False)
-    created_at = Column(DateTime(timezone=True))
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
 
 
 # ================================================================
@@ -180,11 +221,11 @@ class PrizeWinner(Base):
 
     delivery_status = Column(Text, nullable=True)
 
-    submitted_at = Column(DateTime(timezone=True))
-    pending_at = Column(DateTime(timezone=True))
-    in_transit_at = Column(DateTime(timezone=True))
-    delivered_at = Column(DateTime(timezone=True))
-    updated_at = Column(DateTime(timezone=True))
+    submitted_at = Column(DateTime(timezone=True), server_default=func.now())
+    pending_at = Column(DateTime(timezone=True), nullable=True)
+    in_transit_at = Column(DateTime(timezone=True), nullable=True)
+    delivered_at = Column(DateTime(timezone=True), nullable=True)
+    updated_at = Column(DateTime(timezone=True), server_default=func.now())
 
     delivery_data = Column(JSONB, nullable=True)
 
@@ -202,7 +243,7 @@ class TriviaQuestion(Base):
     question = Column(Text, nullable=False)
     options = Column(JSONB, nullable=False)
     answer = Column(Text, nullable=False)
-    created_at = Column(DateTime(timezone=True))
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
 
 
 # ================================================================
@@ -218,12 +259,12 @@ class UserAnswer(Base):
     )
 
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
-
     question_id = Column(Integer, ForeignKey("trivia_questions.id"), nullable=True)
+
     selected = Column(Text, nullable=False)
     correct = Column(Boolean, nullable=True)
 
-    created_at = Column(DateTime(timezone=True))
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
 
 
 # ================================================================
@@ -245,11 +286,11 @@ class SpinResult(Base):
     outcome = Column(Text, nullable=False)
 
     extra_data = Column(JSONB, nullable=True)
-    created_at = Column(DateTime(timezone=True))
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
 
 
 # ================================================================
-# AIRTIME PAYOUTS
+# AIRTIME PAYOUTS (add cycle_id)
 # ================================================================
 class AirtimePayout(Base):
     __tablename__ = "airtime_payouts"
@@ -262,6 +303,9 @@ class AirtimePayout(Base):
 
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=True)
     tg_id = Column(BigInteger, nullable=False)
+
+    # ✅ NEW
+    cycle_id = Column(Integer, ForeignKey("cycles.id"), nullable=True)
 
     phone_number = Column(Text, nullable=True)
     amount = Column(Integer, nullable=False)
@@ -277,16 +321,16 @@ class AirtimePayout(Base):
 
     provider_response = Column(JSONB, nullable=True)
 
-    retry_count = Column(Integer, nullable=False)
+    retry_count = Column(Integer, nullable=False, server_default=text("0"))
     last_retry_at = Column(DateTime(timezone=True), nullable=True)
 
-    created_at = Column(DateTime(timezone=True))
-    sent_at = Column(DateTime(timezone=True))
-    completed_at = Column(DateTime(timezone=True))
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    sent_at = Column(DateTime(timezone=True), nullable=True)
+    completed_at = Column(DateTime(timezone=True), nullable=True)
 
 
 # ================================================================
-# NON-AIRTIME WINNERS
+# NON-AIRTIME WINNERS (add cycle_id)
 # ================================================================
 class NonAirtimeWinner(Base):
     __tablename__ = "non_airtime_winners"
@@ -300,14 +344,17 @@ class NonAirtimeWinner(Base):
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=True)
     tg_id = Column(BigInteger, nullable=False)
 
+    # ✅ NEW
+    cycle_id = Column(Integer, ForeignKey("cycles.id"), nullable=True)
+
     reward_type = Column(Text, nullable=False)
     notified_admin = Column(Boolean, nullable=True)
 
-    created_at = Column(DateTime(timezone=True))
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
 
 
 # ================================================================
-# PREMIUM REWARD ENTRIES
+# PREMIUM REWARD ENTRIES (add cycle_id)
 # ================================================================
 class PremiumRewardEntry(Base):
     __tablename__ = "premium_reward_entries"
@@ -321,4 +368,8 @@ class PremiumRewardEntry(Base):
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
     tg_id = Column(BigInteger, nullable=False)
 
-    created_at = Column(DateTime(timezone=True))
+    # ✅ NEW
+    cycle_id = Column(Integer, ForeignKey("cycles.id"), nullable=True)
+
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+
