@@ -1,7 +1,6 @@
 # ===============================================================
 # migrations/init_tables.py  (SAFE MIGRATION: adds cycle system)
-# - DOES NOT DROP TABLES
-# - Can be re-run safely (idempotent)
+# Fixes duplicate non_airtime_winners before creating unique index
 # ===============================================================
 import os
 import json
@@ -65,18 +64,15 @@ def main():
             winner_decided_at   TIMESTAMPTZ
         );
         """)
-        print("✅ cycles table ensured")
-
-        # Create cycle 1 if missing
         cur.execute("""
         INSERT INTO cycles (id)
         VALUES (1)
         ON CONFLICT (id) DO NOTHING;
         """)
-        print("✅ cycles row (id=1) ensured")
+        print("✅ cycles ensured")
 
         # -------------------------------------------------------
-        # 3) user_cycle_stats table (points per cycle)
+        # 3) user_cycle_stats table
         # -------------------------------------------------------
         cur.execute("""
         CREATE TABLE IF NOT EXISTS user_cycle_stats (
@@ -88,9 +84,6 @@ def main():
             PRIMARY KEY (cycle_id, user_id)
         );
         """)
-        print("✅ user_cycle_stats table ensured")
-
-        # Helpful indexes
         cur.execute("""
         CREATE INDEX IF NOT EXISTS idx_user_cycle_stats_cycle_points
         ON user_cycle_stats (cycle_id, points DESC);
@@ -99,24 +92,60 @@ def main():
         CREATE INDEX IF NOT EXISTS idx_user_cycle_stats_cycle_tg
         ON user_cycle_stats (cycle_id, tg_id);
         """)
-        print("✅ user_cycle_stats indexes ensured")
+        print("✅ user_cycle_stats ensured")
 
         # -------------------------------------------------------
-        # 4) Add cycle_id columns to existing reward tables
+        # 4) Add cycle_id columns (idempotent)
         # -------------------------------------------------------
         cur.execute("ALTER TABLE premium_reward_entries ADD COLUMN IF NOT EXISTS cycle_id INTEGER;")
         cur.execute("ALTER TABLE airtime_payouts ADD COLUMN IF NOT EXISTS cycle_id INTEGER;")
         cur.execute("ALTER TABLE non_airtime_winners ADD COLUMN IF NOT EXISTS cycle_id INTEGER;")
-        print("✅ cycle_id columns ensured on premium_reward_entries / airtime_payouts / non_airtime_winners")
+        print("✅ cycle_id columns ensured")
 
-        # Index for tie-break (first to reach top score)
+        # Helpful index for tie-break
         cur.execute("""
         CREATE INDEX IF NOT EXISTS idx_premium_entries_cycle_user_time
         ON premium_reward_entries (cycle_id, user_id, created_at);
         """)
-        print("✅ premium_reward_entries tie-break index ensured")
+        print("✅ premium_reward_entries index ensured")
 
-        # Per-cycle uniqueness: same user can win earpod/speaker again in a NEW cycle
+        # -------------------------------------------------------
+        # 5) Determine current cycle
+        # -------------------------------------------------------
+        cur.execute("SELECT current_cycle FROM game_state WHERE id = 1;")
+        row = cur.fetchone()
+        current_cycle = int(row[0]) if row and row[0] else 1
+        print(f"ℹ️ Using current_cycle={current_cycle} for backfill")
+
+        # -------------------------------------------------------
+        # 6) CLEANUP duplicates in non_airtime_winners BEFORE backfill
+        # Keep the oldest row per (user_id, reward_type).
+        # This prevents unique conflicts later.
+        # -------------------------------------------------------
+        print("🧹 Cleaning duplicates in non_airtime_winners (same user_id + reward_type)...")
+        cur.execute("""
+        DELETE FROM non_airtime_winners a
+        USING non_airtime_winners b
+        WHERE a.user_id = b.user_id
+          AND a.reward_type = b.reward_type
+          AND a.id <> b.id
+          AND COALESCE(a.created_at, NOW()) > COALESCE(b.created_at, NOW());
+        """)
+        # Note: If created_at is NULL, we treat it as NOW() (so older rows win).
+        print("✅ Duplicate cleanup done")
+
+        # -------------------------------------------------------
+        # 7) Backfill cycle_id safely
+        # -------------------------------------------------------
+        cur.execute("UPDATE premium_reward_entries SET cycle_id = %s WHERE cycle_id IS NULL;", (current_cycle,))
+        cur.execute("UPDATE airtime_payouts SET cycle_id = %s WHERE cycle_id IS NULL;", (current_cycle,))
+        cur.execute("UPDATE non_airtime_winners SET cycle_id = %s WHERE cycle_id IS NULL;", (current_cycle,))
+        print("✅ Backfilled NULL cycle_id values")
+
+        # -------------------------------------------------------
+        # 8) Create per-cycle uniqueness AFTER data is clean
+        # (Now it won't crash.)
+        # -------------------------------------------------------
         cur.execute("""
         CREATE UNIQUE INDEX IF NOT EXISTS uq_non_airtime_winner_cycle
         ON non_airtime_winners (cycle_id, user_id, reward_type);
@@ -124,28 +153,14 @@ def main():
         print("✅ non_airtime_winners per-cycle uniqueness ensured")
 
         # -------------------------------------------------------
-        # 5) Backfill cycle_id for existing rows (optional but helpful)
-        # -------------------------------------------------------
-        # If you already have data, set cycle_id to current_cycle for old rows that are NULL.
-        # We use game_state.id=1 if it exists; otherwise default to cycle 1.
-        cur.execute("SELECT current_cycle FROM game_state WHERE id = 1;")
-        row = cur.fetchone()
-        current_cycle = int(row[0]) if row and row[0] else 1
-
-        cur.execute("UPDATE premium_reward_entries SET cycle_id = %s WHERE cycle_id IS NULL;", (current_cycle,))
-        cur.execute("UPDATE airtime_payouts SET cycle_id = %s WHERE cycle_id IS NULL;", (current_cycle,))
-        cur.execute("UPDATE non_airtime_winners SET cycle_id = %s WHERE cycle_id IS NULL;", (current_cycle,))
-        print(f"✅ Backfilled NULL cycle_id values to cycle {current_cycle}")
-
-        # -------------------------------------------------------
-        # 6) Record migration
+        # 9) Record migration
         # -------------------------------------------------------
         cur.execute(
             "INSERT INTO schema_migrations (name, meta) VALUES (%s, %s::jsonb)",
             (MIGRATION_NAME, json.dumps({
                 "applied_by": "render_migration_script",
                 "applied_at": datetime.now(timezone.utc).isoformat(),
-                "notes": "Added cycles + user_cycle_stats + cycle_id columns for cycle-based rewards"
+                "notes": "Added cycles + user_cycle_stats + cycle_id columns; deduped non_airtime_winners before unique index"
             }))
         )
 
