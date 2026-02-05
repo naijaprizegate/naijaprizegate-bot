@@ -175,6 +175,34 @@ async def _increment_cycle_points(session: AsyncSession, cycle_id: int, user: Us
     )
     return int(res.scalar_one())
 
+# -----------------------------------------------------
+# Admin Add Cycle Points... (this is for testing only)
+# -----------------------------------------------------
+async def admin_add_cycle_points(
+    session: AsyncSession,
+    user: User,
+    cycle_id: int,
+    delta: int,
+) -> int:
+    """
+    ADMIN TEST ONLY:
+    Adds delta points to user_cycle_stats for the given cycle.
+    Returns new points.
+    """
+    await _get_or_create_cycle_points(session, cycle_id, user)
+
+    res = await session.execute(
+        text("""
+            UPDATE user_cycle_stats
+            SET points = points + :d,
+                updated_at = NOW()
+            WHERE cycle_id = :c AND user_id = :u
+            RETURNING points
+        """),
+        {"d": int(delta), "c": int(cycle_id), "u": str(user.id)},
+    )
+    return int(res.scalar_one())
+
 
 # ---------------------------------------------------------------
 # Tie-break logging entry (premium_reward_entries)
@@ -487,3 +515,4 @@ async def resolve_trivia_attempt(
             outcome.type = "cycle_end"
 
     return outcome
+
