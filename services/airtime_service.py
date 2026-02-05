@@ -31,11 +31,11 @@ logger = logging.getLogger(__name__)
 # Map milestone -> amount (same mapping you use in playtrivia)
 AIRTIME_BY_POINTS = {
     1: 100,
-    10: 500,
-    25: 1000,
-    50: 2000,
-    75: 3000,
-    100: 4000,
+    10: 300,
+    25: 700,
+    50: 1500,
+    75: 2500,
+    100: 3000,
 }
 
 # -------------------------------------------------------------------
