@@ -343,7 +343,8 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                         session=session,
                         user_id=str(user.id),
                         tg_id=tg_id,
-                        total_premium_spins=points,  # points THIS CYCLE
+                        total_premium_spins=points,
+                        cycle_id=outcome.cycle_id,
                     )
 
                     if not payout:
@@ -584,4 +585,5 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
         application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern=r"^buy$"))
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
+
 
