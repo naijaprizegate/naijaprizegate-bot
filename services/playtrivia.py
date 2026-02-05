@@ -70,28 +70,30 @@ async def _record_reward_audit_safe(
     """
     Returns True if inserted, False if already existed or table doesn't exist.
     Safe: will not crash if reward_audit_log table is absent.
+    IMPORTANT: Uses a SAVEPOINT so failures do NOT abort the outer transaction.
     """
     try:
-        res = await session.execute(
-            text("""
-                INSERT INTO reward_audit_log
-                    (user_id, tg_id, reward_type, cycle_id, premium_total, source)
-                VALUES
-                    (:u, :tg, :r, :c, :t, :s)
-                ON CONFLICT (cycle_id, user_id, reward_type)
-                DO NOTHING
-                RETURNING id
-            """),
-            {
-                "u": str(user.id),
-                "tg": int(user.tg_id),
-                "r": reward_type,
-                "c": int(cycle_id),
-                "t": int(points),
-                "s": source,
-            },
-        )
-        return res.scalar_one_or_none() is not None
+        async with session.begin_nested():  # ✅ SAVEPOINT
+            res = await session.execute(
+                text("""
+                    INSERT INTO reward_audit_log
+                        (user_id, tg_id, reward_type, cycle_id, premium_total, source)
+                    VALUES
+                        (:u, :tg, :r, :c, :t, :s)
+                    ON CONFLICT (cycle_id, user_id, reward_type)
+                    DO NOTHING
+                    RETURNING id
+                """),
+                {
+                    "u": str(user.id),
+                    "tg": int(user.tg_id),
+                    "r": reward_type,
+                    "c": int(cycle_id),
+                    "t": int(points),
+                    "s": source,
+                },
+            )
+            return res.scalar_one_or_none() is not None
     except Exception:
         # table missing or constraint differs -> ignore
         return False
@@ -309,13 +311,14 @@ async def _end_cycle_and_start_new(session: AsyncSession, gs: GameState, winner:
 # ---------------------------------------------------------------
 async def _record_play_safe(session: AsyncSession, user: User, result: str):
     try:
-        await session.execute(
-            text("""
-                INSERT INTO plays (user_id, result, created_at)
-                VALUES (:u, :r, NOW())
-            """),
-            {"u": str(user.id), "r": result},
-        )
+        async with session.begin_nested():  # ✅ SAVEPOINT
+            await session.execute(
+                text("""
+                    INSERT INTO plays (user_id, result, created_at)
+                    VALUES (:u, :r, NOW())
+                """),
+                {"u": str(user.id), "r": result},
+            )
     except Exception:
         pass
 
