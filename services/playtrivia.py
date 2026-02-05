@@ -17,16 +17,16 @@ WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "50000"))
 
 AIRTIME_MILESTONES = {
     1: 100,
-    10: 500,
-    25: 1000,
-    50: 2000,
-    75: 3000,
-    100: 4000,
+    10: 300,
+    25: 700,
+    50: 1500,
+    75: 2500,
+    100: 3000,
 }
 
 NON_AIRTIME_MILESTONES = {
-    400: "earpod",
-    800: "speaker",
+    500: "earpod",
+    1000: "speaker",
 }
 
 OutcomeType = Literal[
