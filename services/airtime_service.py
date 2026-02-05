@@ -14,6 +14,7 @@ from datetime import datetime, timezone, timedelta
 from typing import Optional, Dict, Any
 
 from sqlalchemy import text
+from sqlalchemy.ext.asyncio import AsyncSession
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes
 from telegram.ext import ConversationHandler
@@ -26,6 +27,16 @@ from services.playtrivia import AIRTIME_MILESTONES
 from services.airtime_providers.service import send_airtime
 
 logger = logging.getLogger(__name__)
+
+# Map milestone -> amount (same mapping you use in playtrivia)
+AIRTIME_BY_POINTS = {
+    1: 100,
+    10: 500,
+    25: 1000,
+    50: 2000,
+    75: 3000,
+    100: 4000,
+}
 
 # -------------------------------------------------------------------
 # Environment & Constants (Flutterwave still used for buying tries)
@@ -225,14 +236,15 @@ def clubkonnect_is_success(data: Dict[str, Any]) -> bool:
 
     return False
 
-# -------------------------------------------------------------------
+# -----------------------------------------------------
 # Create Airtime Payout Record + Prompt Claim Button
-# -------------------------------------------------------------------
+# ------------------------------------------------------
 async def create_pending_airtime_payout(
-    session,
+    session: AsyncSession,
     user_id: str,
     tg_id: int,
     total_premium_spins: int,
+    cycle_id: int,  # ✅ NEW
 ) -> Optional[Dict[str, int | str]]:
     """
     Creates a pending airtime payout if a milestone is reached.
@@ -241,17 +253,49 @@ async def create_pending_airtime_payout(
         {
             "payout_id": str,
             "amount": int,
-            "spins": int
+            "spins": int,
+            "cycle_id": int,
         }
         or None if no milestone was hit.
     """
 
-    amount = AIRTIME_MILESTONES.get(total_premium_spins)
+    amount = AIRTIME_MILESTONES.get(int(total_premium_spins))
     if not amount:
         logger.info(
-            f"ℹ️ No airtime milestone | tg_id={tg_id} | spins={total_premium_spins}"
+            "ℹ️ No airtime milestone | tg_id=%s | cycle_id=%s | spins=%s",
+            tg_id, cycle_id, total_premium_spins
         )
         return None
+
+    # ------------------------------------------------------------
+    # ✅ OPTIONAL: idempotency guard (prevents duplicates)
+    # If you want to allow multiple payouts for same milestone, remove this block.
+    # ------------------------------------------------------------
+    existing = await session.execute(
+        text("""
+            SELECT id::text
+            FROM airtime_payouts
+            WHERE user_id = :uid::uuid
+              AND cycle_id = :c
+              AND amount = :amt
+              AND status IN ('pending_claim', 'claim_phone_set')
+            ORDER BY created_at DESC
+            LIMIT 1
+        """),
+        {"uid": user_id, "c": int(cycle_id), "amt": int(amount)},
+    )
+    existing_id = existing.scalar_one_or_none()
+    if existing_id:
+        logger.info(
+            "✅ Airtime payout already exists | tg_id=%s | cycle_id=%s | payout_id=%s | amount=%s",
+            tg_id, cycle_id, existing_id, amount
+        )
+        return {
+            "payout_id": existing_id,
+            "amount": int(amount),
+            "spins": int(total_premium_spins),
+            "cycle_id": int(cycle_id),
+        }
 
     payout_id = str(uuid.uuid4())
     now = datetime.now(timezone.utc)
@@ -265,35 +309,40 @@ async def create_pending_airtime_payout(
                 phone_number,
                 amount,
                 status,
+                cycle_id,
                 created_at
             )
             VALUES (
                 :id,
-                :uid,
+                :uid::uuid,
                 :tg,
                 NULL,
                 :amt,
                 'pending_claim',
+                :c,
                 :ts
             )
         """),
         {
             "id": payout_id,
             "uid": user_id,
-            "tg": tg_id,
-            "amt": amount,
+            "tg": int(tg_id),
+            "amt": int(amount),
+            "c": int(cycle_id),
             "ts": now,
         },
     )
 
     logger.info(
-        f"🎯 Airtime payout created | tg_id={tg_id} | payout_id={payout_id} | amount={amount}"
+        "🎯 Airtime payout created | tg_id=%s | cycle_id=%s | payout_id=%s | amount=%s",
+        tg_id, cycle_id, payout_id, amount
     )
 
     return {
         "payout_id": payout_id,
-        "amount": amount,
-        "spins": total_premium_spins,
+        "amount": int(amount),
+        "spins": int(total_premium_spins),
+        "cycle_id": int(cycle_id),
     }
 
 
