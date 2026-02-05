@@ -21,8 +21,10 @@ from helpers import get_or_create_user, consume_try, md_escape
 from utils.questions_loader import get_random_question
 from utils.signer import generate_signed_token
 
-from services.playtrivia import resolve_trivia_attempt
+from services.playtrivia import resolve_trivia_attempt, admin_add_cycle_points
 from services.airtime_service import create_pending_airtime_payout
+
+from models import GameState
 
 logger = logging.getLogger(__name__)
 
@@ -559,6 +561,45 @@ async def show_tries_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         reply_markup=keyboard,
     )
 
+# ================================================================
+# 🧪 ADMIN TEST: add points to current cycle
+# Usage: /testpoints 9
+# ================================================================
+async def testpoints_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    tg_id = update.effective_user.id
+
+    if tg_id != ADMIN_USER_ID:
+        return await update.effective_message.reply_text("Not allowed.")
+
+    if not context.args:
+        return await update.effective_message.reply_text("Usage: /testpoints <number>")
+
+    try:
+        delta = int(context.args[0])
+    except Exception:
+        return await update.effective_message.reply_text("Delta must be a number.")
+
+    if delta == 0:
+        return await update.effective_message.reply_text("Delta must not be 0.")
+
+    async with get_async_session() as session:
+        async with session.begin():
+            user = await get_or_create_user(
+                session,
+                tg_id=tg_id,
+                username=update.effective_user.username,
+                full_name=getattr(update.effective_user, "full_name", None),
+            )
+
+            gs = await session.get(GameState, 1)
+            cycle_id = int(gs.current_cycle or 1) if gs else 1
+
+            new_points = await admin_add_cycle_points(session, user, cycle_id, delta)
+
+    return await update.effective_message.reply_text(
+        f"✅ Added {delta} points.\nCycle {cycle_id} points now: {new_points}"
+    )
+
 
 # ================================================================
 # REGISTER HANDLERS
@@ -572,6 +613,10 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
 
     # entry
     application.add_handler(CommandHandler("playtrivia", playtrivia_handler))
+    
+    # admin test points (temporary)
+    application.add_handler(CommandHandler("testpoints", testpoints_handler))
+    
     application.add_handler(CallbackQueryHandler(playtrivia_handler, pattern=r"^playtrivia$"))
 
     # phone choice (winner)
@@ -585,5 +630,3 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
         application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern=r"^buy$"))
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
-
-
