@@ -275,7 +275,7 @@ async def create_pending_airtime_payout(
         text("""
             SELECT id::text
             FROM airtime_payouts
-            WHERE user_id = :uid::uuid
+            WHERE user_id = CAST(:uid::uuid)
               AND cycle_id = :c
               AND amount = :amt
               AND status IN ('pending_claim', 'claim_phone_set')
@@ -314,7 +314,7 @@ async def create_pending_airtime_payout(
             )
             VALUES (
                 :id,
-                :uid::uuid,
+                CAST(:uid::uuid),
                 :tg,
                 NULL,
                 :amt,
