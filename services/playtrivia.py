@@ -203,6 +203,31 @@ async def admin_add_cycle_points(
     )
     return int(res.scalar_one())
 
+# -----------------------------------------------------
+# Admin Reset Cycle (TEST / EMERGENCY ONLY)
+# -----------------------------------------------------
+async def admin_reset_cycle(session: AsyncSession) -> dict:
+    """
+    ADMIN ONLY.
+    Force-ends the current cycle and starts a new one.
+    Returns info about ended cycle and new cycle.
+    """
+
+    gs = await _ensure_game_state(session)
+    current_cycle = int(gs.current_cycle or 1)
+
+    # Select winner (if any points exist)
+    winner = await _select_cycle_winner(session, current_cycle)
+
+    info = await _end_cycle_and_start_new(session, gs, winner)
+
+    logger.warning(
+        "🛑 ADMIN RESET CYCLE | ended_cycle=%s | new_cycle=%s",
+        info["ended_cycle"],
+        info["new_cycle"],
+    )
+
+    return info
 
 # ---------------------------------------------------------------
 # Tie-break logging entry (premium_reward_entries)
