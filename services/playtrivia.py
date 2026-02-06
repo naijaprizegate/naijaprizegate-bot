@@ -456,49 +456,58 @@ async def resolve_trivia_attempt(
             airtime_amount=amount,
         )
 
-    elif new_points in NON_AIRTIME_MILESTONES:
-        reward = NON_AIRTIME_MILESTONES[new_points]
-        awarded = await _try_award_gadget(session, cycle_id, user, reward)
-
-        if awarded:
-            logger.critical(
-                "🚨 GADGET WIN 🚨 | tg_id=%s | cycle=%s | reward=%s | points=%s",
-                user.tg_id, cycle_id, reward, new_points
-            )
-
-            # optional audit
-            await _record_reward_audit_safe(
-                session=session,
-                user=user,
-                reward_type=reward,
-                cycle_id=cycle_id,
-                points=new_points,
-                source="cycle_milestone",
-            )
-
-            # optional admin notifier hook
-            if notify_gadget_win:
-                try:
-                    await notify_gadget_win(user, reward, new_points)
-                except Exception:
-                    logger.exception("[ADMIN ALERT FAILED] Gadget win | tg_id=%s reward=%s", user.tg_id, reward)
-
-            outcome = TriviaOutcome(
-                type="gadget",
-                paid_spin=paid_spin,
-                cycle_id=cycle_id,
-                points=new_points,
-                gadget=reward,
-            )
-        else:
-            logger.info(
-                "[MILESTONE] Gadget already awarded | tg_id=%s | cycle=%s | reward=%s",
-                user.tg_id, cycle_id, reward
-            )
-            outcome = TriviaOutcome(type="none", paid_spin=paid_spin, cycle_id=cycle_id, points=new_points)
-
     else:
-        outcome = TriviaOutcome(type="none", paid_spin=paid_spin, cycle_id=cycle_id, points=new_points)
+        # ✅ Threshold-based gadget milestone check (handles admin jumps too)
+        awarded_outcome = None
+
+        # Sort milestones ascending (e.g., 500 then 1000)
+        for milestone, reward in sorted(NON_AIRTIME_MILESTONES.items(), key=lambda x: int(x[0])):
+            if new_points >= int(milestone):
+                awarded = await _try_award_gadget(session, cycle_id, user, reward)
+
+                if awarded:
+                    logger.critical(
+                        "🚨 GADGET WIN 🚨 | tg_id=%s | cycle=%s | reward=%s | points=%s",
+                        user.tg_id, cycle_id, reward, new_points
+                    )
+
+                    # optional audit
+                    await _record_reward_audit_safe(
+                        session=session,
+                        user=user,
+                        reward_type=reward,
+                        cycle_id=cycle_id,
+                        points=new_points,
+                        source="cycle_milestone",
+                    )
+
+                    # optional admin notifier hook
+                    if notify_gadget_win:
+                        try:
+                            await notify_gadget_win(user, reward, new_points)
+                        except Exception:
+                            logger.exception(
+                                "[ADMIN ALERT FAILED] Gadget win | tg_id=%s reward=%s",
+                                user.tg_id, reward
+                            )
+
+                    outcome = TriviaOutcome(
+                        type="gadget",
+                        paid_spin=paid_spin,
+                        cycle_id=cycle_id,
+                        points=new_points,
+                        gadget=reward,
+                    )
+                    break #  stop after the best eligible milestone (awarded or already taken)
+
+        # If no new gadget was awarded, default to none
+        outcome = awarded_outcome or TriviaOutcome(
+            type="none",
+            paid_spin=paid_spin,
+            cycle_id=cycle_id,
+            points=new_points,
+        )
+
 
     # 6) if threshold hit, end cycle (but we keep milestone outcome)
     if cycle_ended_now:
