@@ -457,11 +457,16 @@ async def resolve_trivia_attempt(
         )
 
     else:
-        # ✅ Threshold-based gadget milestone check (handles admin jumps too)
-        awarded_outcome = None
+        # ✅ Threshold-based gadget milestone check (supports admin jumps)
+        outcome = TriviaOutcome(
+            type="none",
+            paid_spin=paid_spin,
+            cycle_id=cycle_id,
+            points=new_points,
+        )
 
-        # Sort milestones ascending (e.g., 500 then 1000)
-        for milestone, reward in sorted(NON_AIRTIME_MILESTONES.items(), key=lambda x: int(x[0])):
+        # IMPORTANT: iterate from highest milestone to lowest
+        for milestone, reward in sorted(NON_AIRTIME_MILESTONES.items(), key=lambda x: int(x[0]), reverse=True):
             if new_points >= int(milestone):
                 awarded = await _try_award_gadget(session, cycle_id, user, reward)
 
@@ -498,15 +503,15 @@ async def resolve_trivia_attempt(
                         points=new_points,
                         gadget=reward,
                     )
-                    break #  stop after the best eligible milestone (awarded or already taken)
-
-        # If no new gadget was awarded, default to none
-        outcome = awarded_outcome or TriviaOutcome(
-            type="none",
-            paid_spin=paid_spin,
-            cycle_id=cycle_id,
-            points=new_points,
-        )
+                    break
+                else:
+                    logger.info(
+                        "[MILESTONE] Gadget already awarded earlier | tg_id=%s | cycle=%s | reward=%s",
+                        user.tg_id, cycle_id, reward
+                    )
+                    # don't break; keep checking lower milestones if you want
+                    # but usually once you hit a milestone, lower ones are irrelevant
+                    break
 
 
     # 6) if threshold hit, end cycle (but we keep milestone outcome)
@@ -524,4 +529,3 @@ async def resolve_trivia_attempt(
             outcome.type = "cycle_end"
 
     return outcome
-
