@@ -22,7 +22,7 @@ from helpers import get_or_create_user, consume_try, md_escape
 from utils.questions_loader import get_random_question
 from utils.signer import generate_signed_token
 
-from services.playtrivia import resolve_trivia_attempt, admin_add_cycle_points
+from services.playtrivia import resolve_trivia_attempt, admin_add_cycle_points, admin_reset_cycle
 from services.airtime_service import create_pending_airtime_payout
 
 from models import GameState, GlobalCounter
@@ -716,6 +716,40 @@ async def addtries_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         parse_mode="Markdown",
     )
 
+# ================================================================
+# 🔄 ADMIN — RESET CYCLE (TESTING / EMERGENCY)
+# ================================================================
+async def resetcycle_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    tg_id = update.effective_user.id
+
+    if tg_id != ADMIN_USER_ID:
+        return await update.effective_message.reply_text("❌ Not allowed.")
+
+    async with get_async_session() as session:
+        async with session.begin():
+            info = await admin_reset_cycle(session)
+
+    ended = info["ended_cycle"]
+    new_cycle = info["new_cycle"]
+    winner = info.get("winner")
+
+    text = (
+        f"🛑 *Cycle Reset Successful*\n\n"
+        f"📦 Ended cycle: *{ended}*\n"
+        f"🚀 New cycle started: *{new_cycle}*\n"
+    )
+
+    if winner:
+        text += (
+            "\n🏆 *Winner at reset*\n"
+            f"TG ID: `{winner['tg_id']}`\n"
+            f"Points: *{winner['points']}*"
+        )
+    else:
+        text += "\nℹ️ No winner in ended cycle."
+
+    await update.effective_message.reply_text(text, parse_mode="Markdown")
+
 
 # ================================================================
 # REGISTER HANDLERS
@@ -734,6 +768,7 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
     application.add_handler(CommandHandler("testpoints", testpoints_handler))
     application.add_handler(CommandHandler("resetpoints", resetpoints_handler))
     application.add_handler(CommandHandler("addtries", addtries_handler))
+    application.add_handler(CommandHandler("resetcycle", resetcycle_handler))
 
     application.add_handler(CallbackQueryHandler(playtrivia_handler, pattern=r"^playtrivia$"))
 
@@ -748,5 +783,4 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
         application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern=r"^buy$"))
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
-
 
