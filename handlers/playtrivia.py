@@ -25,7 +25,7 @@ from utils.signer import generate_signed_token
 from services.playtrivia import resolve_trivia_attempt, admin_add_cycle_points
 from services.airtime_service import create_pending_airtime_payout
 
-from models import GameState
+from models import GameState, GlobalCounter
 
 logger = logging.getLogger(__name__)
 
@@ -606,10 +606,6 @@ async def testpoints_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 # 🧪 ADMIN TEST: reduce points to zero in current cycle
 # Usage: /resetpoints
 # ================================================================
-from models import GameState
-from sqlalchemy import text
-
-
 async def resetpoints_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg = update.effective_user
 
@@ -654,6 +650,72 @@ async def resetpoints_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         "You can now test milestones again."
     )
 
+# ================================================================
+# 🧪 ADMIN — ADD PAID TRIES (TESTING ONLY)
+# Command: /addtries <number>
+# ================================================================
+async def addtries_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    tg = update.effective_user
+    tg_id = tg.id
+
+    # Admin check
+    if tg_id != ADMIN_USER_ID:
+        return await update.effective_message.reply_text("⛔ Not allowed.")
+
+    if not context.args:
+        return await update.effective_message.reply_text(
+            "Usage: /addtries <number>\nExample: /addtries 20"
+        )
+
+    try:
+        count = int(context.args[0])
+        if count <= 0:
+            raise ValueError
+    except Exception:
+        return await update.effective_message.reply_text(
+            "❌ Number of tries must be a positive integer."
+        )
+
+    async with get_async_session() as session:
+        async with session.begin():
+            # Get or create admin user
+            user = await get_or_create_user(
+                session,
+                tg_id=tg_id,
+                username=tg.username,
+                full_name=getattr(tg, "full_name", None),
+            )
+
+            # Add paid tries
+            user.tries_paid = int(user.tries_paid or 0) + count
+
+            # Ensure counters exist
+            gc = await session.get(GlobalCounter, 1)
+            if not gc:
+                gc = GlobalCounter(id=1, paid_tries_total=0)
+                session.add(gc)
+
+            gs = await session.get(GameState, 1)
+            if not gs:
+                gs = GameState(
+                    id=1,
+                    current_cycle=1,
+                    paid_tries_this_cycle=0,
+                    lifetime_paid_tries=0,
+                )
+                session.add(gs)
+
+            # Update counters
+            gc.paid_tries_total += count
+            gs.paid_tries_this_cycle += count
+            gs.lifetime_paid_tries += count
+
+    return await update.effective_message.reply_text(
+        f"✅ Added *{count} paid tries*\n\n"
+        f"🎟️ Paid tries now: *{user.tries_paid}*",
+        parse_mode="Markdown",
+    )
+
 
 # ================================================================
 # REGISTER HANDLERS
@@ -671,6 +733,7 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
     # admin test points (temporary)
     application.add_handler(CommandHandler("testpoints", testpoints_handler))
     application.add_handler(CommandHandler("resetpoints", resetpoints_handler))
+    application.add_handler(CommandHandler("addtries", addtries_handler))
 
     application.add_handler(CallbackQueryHandler(playtrivia_handler, pattern=r"^playtrivia$"))
 
@@ -685,3 +748,5 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
         application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern=r"^buy$"))
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
+
+
