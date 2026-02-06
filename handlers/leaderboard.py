@@ -240,7 +240,6 @@ async def leaderboard_render(
     if not rows:
         text_lines.append("No quiz activity recorded yet in this period.\n")
     else:
-        text_lines.append("Top players (based on earned performance points):\n")
         rank_start = offset + 1
         for i, (uid, points) in enumerate(rows, start=rank_start):
             u = users_by_id.get(uid)
