@@ -237,28 +237,6 @@ async def leaderboard_render(
     text_lines.append("🏆 <b>NaijaPrizeGate Quiz Leaderboard</b>")
     text_lines.append(f"{scope_label}\n")
 
-    if not rows:
-        text_lines.append("No quiz activity recorded yet in this period.\n")
-    else:
-        rank_start = offset + 1
-        for i, (uid, points) in enumerate(rows, start=rank_start):
-            u = users_by_id.get(uid)
-
-            # Prefer first_name → username → masked ID
-            if u and getattr(u, "first_name", None):
-                display_name = u.first_name
-            elif u and u.username:
-                display_name = f"@{u.username}"
-            elif u and u.tg_id:
-                display_name = f"Player {str(u.tg_id)[-4:]}"
-            else:
-                display_name = f"Player {str(uid)[-4:]}"
-
-            badge = _badge_for_points(points)
-            text_lines.append(
-                f"<b>{i}.</b> {display_name} — {points} quiz point(s) {badge}"
-            )
-
     text_lines.append("")
     text_lines.append(f"📊 <b>Total Quiz Points (this period):</b> {total_points}")
     text_lines.append(f"👥 <b>Active Players:</b> {distinct_users}")
