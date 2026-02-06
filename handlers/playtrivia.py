@@ -15,6 +15,7 @@ from telegram.ext import (
     CallbackQueryHandler,
     ContextTypes,
 )
+from sqlalchemy import text
 
 from db import get_async_session
 from helpers import get_or_create_user, consume_try, md_escape
@@ -602,6 +603,59 @@ async def testpoints_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
 
 # ================================================================
+# 🧪 ADMIN TEST: reduce points to zero in current cycle
+# Usage: /resetpoints
+# ================================================================
+from models import GameState
+from sqlalchemy import text
+
+
+async def resetpoints_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    tg = update.effective_user
+
+    # 🔐 Admin-only
+    if tg.id != ADMIN_USER_ID:
+        return await update.effective_message.reply_text("❌ Not authorized.")
+
+    async with get_async_session() as session:
+        async with session.begin():
+
+            # Get admin user row
+            user = await get_or_create_user(
+                session,
+                tg_id=tg.id,
+                username=tg.username,
+                full_name=getattr(tg, "full_name", None),
+            )
+
+            # Get current cycle
+            gs = await session.get(GameState, 1)
+            cycle_id = int(gs.current_cycle or 1) if gs else 1
+
+            # 🔥 RESET POINTS FOR THIS CYCLE ONLY
+            await session.execute(
+                text("""
+                    UPDATE user_cycle_stats
+                    SET points = 0,
+                        updated_at = NOW()
+                    WHERE user_id = :uid
+                      AND cycle_id = :cycle
+                """),
+                {
+                    "uid": str(user.id),
+                    "cycle": cycle_id,
+                },
+            )
+
+    return await update.effective_message.reply_text(
+        f"♻️ Points reset successful.\n\n"
+        f"Cycle: {cycle_id}\n"
+        f"Points: 0\n\n"
+        "You can now test milestones again."
+    )
+
+
+# ================================================================
 # REGISTER HANDLERS
 # ================================================================
 def register_handlers(application, handle_buy_callback=None, free_menu=None):
@@ -616,7 +670,8 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
     
     # admin test points (temporary)
     application.add_handler(CommandHandler("testpoints", testpoints_handler))
-    
+    application.add_handler(CommandHandler("resetpoints", resetpoints_handler))
+
     application.add_handler(CallbackQueryHandler(playtrivia_handler, pattern=r"^playtrivia$"))
 
     # phone choice (winner)
