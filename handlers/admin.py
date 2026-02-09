@@ -505,6 +505,28 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     )
                 ).scalar() or 0
 
+                # --- Cycle start (for "This Cycle" revenue + top buyers) ---
+                cycle_started_at = None
+                if gs and gs.created_at:
+                    cycle_created = gs.created_at
+                    # ensure aware UTC
+                    if cycle_created.tzinfo is None:
+                        cycle_created = cycle_created.replace(tzinfo=timezone.utc)
+                    # convert to naive UTC to match DB timestamps
+                    cycle_started_at = naive_utc(cycle_created)
+
+                # --- Revenue THIS CYCLE ---
+                revenue_cycle = 0
+                if cycle_started_at:
+                    revenue_cycle = (
+                        await session.execute(
+                            select(func.sum(Payment.amount)).where(
+                                Payment.created_at >= cycle_started_at
+                            )
+                        )
+                    ).scalar() or 0
+
+
                 # --- Users ---
                 total_users = (
                     await session.execute(select(func.count(User.id)))
@@ -520,6 +542,20 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     .limit(3)
                 )
                 top_spenders = top_spenders_q.all()
+
+                # --- Top 3 buyers THIS CYCLE ---
+                top_spenders_cycle = []
+                if cycle_started_at:
+                    top_spenders_cycle_q = await session.execute(
+                        select(User.username, func.sum(Payment.amount).label("spent"))
+                        .join(User, User.id == Payment.user_id)
+                        .where(Payment.created_at >= cycle_started_at)
+                        .group_by(User.username)
+                        .order_by(func.sum(Payment.amount).desc())
+                        .limit(3)
+                    )
+                    top_spenders_cycle = top_spenders_cycle_q.all()
+
 
                 # --- Winners ---
                 total_winners = (
@@ -554,6 +590,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"• This Week: ${revenue_week:,.2f}\n"
                 f"• Yesterday: ${revenue_yesterday:,.2f}\n"
                 f"• Today: ${revenue_today:,.2f}\n\n"
+                f"• This Cycle: ${revenue_cycle:,.2f}\n"
                 f"👥 <b>Users</b>\n"
                 f"• Total Registered: {total_users}\n"
             )
@@ -567,6 +604,16 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             else:
                 text += "🏅 <b>Top Quiz Access Buyers (This Month)</b>\n  None yet\n"
 
+            # --- Top Spenders (this cycle) ---
+            if top_spenders_cycle:
+                text += "🏅 <b>Top Quiz Access Buyers (This Cycle)</b>\n"
+                for i, (username, spent) in enumerate(top_spenders_cycle, start=1):
+                    uname = username or f"User{i}"
+                    text += f"  {i}️⃣ @{uname} — ${spent:,.2f}\n"
+            else:
+                text += "🏅 <b>Top Quiz Access Buyers (This Cycle)</b>\n  None yet\n"
+    
+
             # --- Giveaway & Cycle info (merit-based) ---
             text += (
                 f"\n🎁 <b>Prizes Awarded</b>\n"
@@ -578,20 +625,27 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
 
             if WIN_THRESHOLD > 0:
-                status = (
-                    "✅ Threshold reached — winner should now be the top scorer "
-                    "on the leaderboard for this cycle."
-                    if paid_this_cycle >= WIN_THRESHOLD
-                    else "⏳ Threshold not yet reached — cycle still in progress."
-                )
+                progress_pct = int((paid_this_cycle / WIN_THRESHOLD) * 100) if paid_this_cycle > 0 else 0
+                remaining = max(WIN_THRESHOLD - paid_this_cycle, 0)
+
+                if paid_this_cycle >= WIN_THRESHOLD:
+                    status = (
+                        f"✅ {progress_pct}% reached — {paid_this_cycle}/{WIN_THRESHOLD}. "
+                        f"Remaining: {remaining}."
+                    )
+                else:
+                    status = (
+                        f"⏳ {progress_pct}% reached — {paid_this_cycle}/{WIN_THRESHOLD}. "
+                        f"Remaining: {remaining}."
+                    )
+
                 text += (
                     f"• Cycle Threshold (paid questions): {WIN_THRESHOLD}\n"
                     f"• Status: {status}"
                 )
             else:
-                text += (
-                    "• Cycle Threshold: <i>Not configured (WIN_THRESHOLD env missing).</i>"
-                )
+                text += "• Cycle Threshold: <i>Not configured (WIN_THRESHOLD env missing).</i>"
+
 
             # --- Inline keyboard (includes Refresh) ---
             keyboard = InlineKeyboardMarkup(
@@ -1942,4 +1996,3 @@ def register_handlers(application):
     # Failed Airtime pagination
     application.add_handler(CallbackQueryHandler(show_failed_airtime, pattern=r"^admin_airtime_failed"), group=ADMIN_GROUP)
 
-    
