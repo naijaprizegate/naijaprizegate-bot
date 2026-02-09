@@ -76,7 +76,7 @@ async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "• <b>Is this gambling?</b>\n"
         "  → No. All rewards are based on skill and knowledge.\n\n"
         "• <b>Are there free questions?</b>\n"
-        "  → Yes! Earn free questions from the menu.\n\n"
+        "  → Yes! Earn free questions from the menu. Invite Friends. Follow us on Social Media platforms\n\n"
         "• <b>What do I gain from answering questions?</b>\n"
         "  → Quiz points boost your rank and unlock rewards.\n\n"
         "• <b>What if I run out of questions?</b>\n"
