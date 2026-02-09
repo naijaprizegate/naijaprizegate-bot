@@ -326,29 +326,30 @@ async def _end_cycle_and_start_new(session: AsyncSession, gs: GameState, winner:
         int(gs.paid_tries_this_cycle or 0),
     )
 
-    # close cycle (✅ asyncpg-safe casts)
+    # close cycle (✅ asyncpg-safe casts — FINAL)
     await session.execute(
         text("""
             UPDATE cycles
             SET ended_at = NOW(),
                 paid_tries_final = :final,
                 winner_user_id = CAST(:wuid AS uuid),
-                winner_tg_id = :wtg,
+                winner_tg_id = CAST(:wtg AS bigint),
                 winner_points = :wpts,
                 winner_decided_at = CASE
-                    WHEN :wtg IS NULL THEN NULL
+                    WHEN CAST(:wtg AS bigint) IS NULL THEN NULL
                     ELSE NOW()
                 END
             WHERE id = :c
         """),
         {
             "final": int(gs.paid_tries_this_cycle or 0),
-            "wuid": winner["user_id"] if winner else None,   # uuid string OR None
-            "wtg": winner["tg_id"] if winner else None,
-            "wpts": winner["points"] if winner else None,
-            "c": current_cycle,
+            "wuid": winner["user_id"] if winner else None,
+            "wtg": int(winner["tg_id"]) if winner and winner.get("tg_id") is not None else None,
+            "wpts": int(winner["points"]) if winner and winner.get("points") is not None else None,
+            "c": int(current_cycle),
         },
     )
+
 
 
     # new cycle
