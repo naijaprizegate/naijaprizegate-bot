@@ -589,8 +589,8 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"• This Month: ${revenue_month:,.2f}\n"
                 f"• This Week: ${revenue_week:,.2f}\n"
                 f"• Yesterday: ${revenue_yesterday:,.2f}\n"
-                f"• Today: ${revenue_today:,.2f}\n\n"
-                f"• This Cycle: ${revenue_cycle:,.2f}\n"
+                f"• Today: ${revenue_today:,.2f}\n"
+                f"• This Cycle: ${revenue_cycle:,.2f}\n\n"
                 f"👥 <b>Users</b>\n"
                 f"• Total Registered: {total_users}\n"
             )
