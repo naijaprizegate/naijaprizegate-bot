@@ -3,1122 +3,4800 @@
     "id": 1,
     "category": "nigeria_history",
     "question": "Who was the first President of Nigeria?",
-    "options": {"A": "Tafawa Balewa", "B": "Nnamdi Azikiwe", "C": "Olusegun Obasanjo", "D": "Ahmadu Bello"},
-    "answer": "B"
+    "options": {
+      "A": "Nnamdi Azikiwe",
+      "B": "Tafawa Balewa",
+      "C": "Ahmadu Bello",
+      "D": "Olusegun Obasanjo"
+    },
+    "answer": "A"
   },
   {
     "id": 2,
     "category": "nigeria_history",
-    "question": "When did Nigeria gain independence?",
-    "options": {"A": "1960", "B": "1970", "C": "1950", "D": "1980"},
-    "answer": "A"
+    "question": "In which year did Nigeria gain independence?",
+    "options": {
+      "A": "1957",
+      "B": "1963",
+      "C": "1970",
+      "D": "1960"
+    },
+    "answer": "D"
   },
   {
     "id": 3,
     "category": "nigeria_history",
-    "question": "Which city was Nigeria’s first capital?",
-    "options": {"A": "Lagos", "B": "Abuja", "C": "Kaduna", "D": "Benin"},
-    "answer": "A"
+    "question": "Nigeria became a republic in which year?",
+    "options": {
+      "A": "1999",
+      "B": "1960",
+      "C": "1979",
+      "D": "1963"
+    },
+    "answer": "D"
   },
   {
     "id": 4,
     "category": "nigeria_history",
-    "question": "What is Nigeria’s national currency?",
-    "options": {"A": "Cedi", "B": "Dollar", "C": "Naira", "D": "Pound"},
-    "answer": "C"
+    "question": "The amalgamation of Northern and Southern Nigeria happened in?",
+    "options": {
+      "A": "1922",
+      "B": "1900",
+      "C": "1946",
+      "D": "1914"
+    },
+    "answer": "D"
   },
   {
     "id": 5,
     "category": "nigeria_history",
-    "question": "Who was Nigeria’s first Prime Minister?",
-    "options": {"A": "Obafemi Awolowo", "B": "Tafawa Balewa", "C": "Yakubu Gowon", "D": "Nnamdi Azikiwe"},
+    "question": "Who is popularly credited with amalgamating Nigeria?",
+    "options": {
+      "A": "Hugh Clifford",
+      "B": "Lord Lugard",
+      "C": "James Robertson",
+      "D": "Bernard Bourdillon"
+    },
     "answer": "B"
   },
   {
     "id": 6,
     "category": "nigeria_history",
-    "question": "Which region was led by Obafemi Awolowo?",
-    "options": {"A": "Northern Region", "B": "Eastern Region", "C": "Western Region", "D": "Mid-West Region"},
-    "answer": "C"
+    "question": "Who was Nigeria’s first Prime Minister?",
+    "options": {
+      "A": "Tafawa Balewa",
+      "B": "Obafemi Awolowo",
+      "C": "Yakubu Gowon",
+      "D": "Nnamdi Azikiwe"
+    },
+    "answer": "A"
   },
   {
     "id": 7,
     "category": "nigeria_history",
-    "question": "What year did Nigeria become a republic?",
-    "options": {"A": "1963", "B": "1960", "C": "1999", "D": "1983"},
-    "answer": "A"
+    "question": "Who was Nigeria’s first military Head of State?",
+    "options": {
+      "A": "Sani Abacha",
+      "B": "Murtala Mohammed",
+      "C": "Yakubu Gowon",
+      "D": "Aguiyi-Ironsi"
+    },
+    "answer": "D"
   },
   {
     "id": 8,
     "category": "nigeria_history",
-    "question": "Who officially relocated Nigeria’s capital to Abuja?",
-    "options": {"A": "Obasanjo", "B": "Babangida", "C": "Gowon", "D": "Shagari"},
-    "answer": "B"
+    "question": "The Nigerian Civil War ended in which year?",
+    "options": {
+      "A": "1970",
+      "B": "1969",
+      "C": "1967",
+      "D": "1975"
+    },
+    "answer": "A"
   },
   {
     "id": 9,
     "category": "nigeria_history",
-    "question": "Who was the military Head of State during the Nigerian Civil War?",
-    "options": {"A": "Abacha", "B": "Gowon", "C": "Obasanjo", "D": "Ironsi"},
-    "answer": "B"
+    "question": "Who led Biafra during the Civil War?",
+    "options": {
+      "A": "Nnamdi Azikiwe",
+      "B": "Philip Effiong",
+      "C": "Ahmadu Bello",
+      "D": "Chukwuemeka Odumegwu Ojukwu"
+    },
+    "answer": "D"
   },
   {
     "id": 10,
     "category": "nigeria_history",
-    "question": "Which year did the Nigerian Civil War end?",
-    "options": {"A": "1967", "B": "1970", "C": "1965", "D": "1975"},
-    "answer": "B"
+    "question": "Who was Nigeria’s Head of State at the start of the Civil War (1967)?",
+    "options": {
+      "A": "Yakubu Gowon",
+      "B": "Aguiyi-Ironsi",
+      "C": "Murtala Mohammed",
+      "D": "Sani Abacha"
+    },
+    "answer": "A"
   },
   {
     "id": 11,
     "category": "nigeria_history",
-    "question": "Which empire was prominent in the Kano region?",
-    "options": {"A": "Benin Empire", "B": "Oyo Empire", "C": "Kanem-Bornu Empire", "D": "Mali Empire"},
-    "answer": "C"
+    "question": "Which secessionist state was declared in 1967?",
+    "options": {
+      "A": "Biafra",
+      "B": "Arewa",
+      "C": "Niger Delta Republic",
+      "D": "Oduduwa Republic"
+    },
+    "answer": "A"
   },
   {
     "id": 12,
     "category": "nigeria_history",
-    "question": "Who was known as the ‘Sardauna of Sokoto’?",
-    "options": {"A": "Yakubu Gowon", "B": "Ahmadu Bello", "C": "Tafawa Balewa", "D": "Shehu Shagari"},
-    "answer": "B"
+    "question": "Nigeria’s capital moved to Abuja in which year?",
+    "options": {
+      "A": "1989",
+      "B": "1999",
+      "C": "1985",
+      "D": "1991"
+    },
+    "answer": "D"
   },
   {
     "id": 13,
     "category": "nigeria_history",
-    "question": "Nigeria is made up of how many states?",
-    "options": {"A": "30", "B": "36", "C": "40", "D": "28"},
-    "answer": "B"
+    "question": "Which city served as Nigeria’s capital before Abuja?",
+    "options": {
+      "A": "Lagos",
+      "B": "Enugu",
+      "C": "Kano",
+      "D": "Kaduna"
+    },
+    "answer": "A"
   },
   {
     "id": 14,
     "category": "nigeria_history",
-    "question": "What is the nickname of Nigeria?",
-    "options": {"A": "Heart of Africa", "B": "Lion of Africa", "C": "Giant of Africa", "D": "Pride of Africa"},
-    "answer": "C"
+    "question": "What is Nigeria’s national currency?",
+    "options": {
+      "A": "Dollar",
+      "B": "Pound Sterling",
+      "C": "Cedi",
+      "D": "Naira"
+    },
+    "answer": "D"
   },
   {
     "id": 15,
     "category": "nigeria_history",
-    "question": "The Nigerian flag was designed by?",
-    "options": {"A": "Michael Jackson", "B": "Taiwo Akinkunmi", "C": "Nnamdi Azikiwe", "D": "Ken Saro-Wiwa"},
+    "question": "Nigeria has how many states?",
+    "options": {
+      "A": "32",
+      "B": "36",
+      "C": "30",
+      "D": "40"
+    },
     "answer": "B"
   },
   {
     "id": 16,
     "category": "nigeria_history",
-    "question": "The green color on the Nigerian flag stands for?",
-    "options": {"A": "Peace", "B": "Agriculture", "C": "Unity", "D": "Strength"},
-    "answer": "B"
+    "question": "Nigeria is divided into how many geopolitical zones?",
+    "options": {
+      "A": "6",
+      "B": "8",
+      "C": "7",
+      "D": "5"
+    },
+    "answer": "A"
   },
   {
     "id": 17,
     "category": "nigeria_history",
-    "question": "Which year did Abuja become the capital?",
-    "options": {"A": "1991", "B": "1980", "C": "2000", "D": "1999"},
+    "question": "Nigeria’s Independence Day is celebrated on?",
+    "options": {
+      "A": "October 1",
+      "B": "May 29",
+      "C": "June 12",
+      "D": "January 15"
+    },
     "answer": "A"
   },
   {
     "id": 18,
     "category": "nigeria_history",
-    "question": "Which European explorer is credited with exploring the River Niger in the 1790s?",
-    "options": {"A": "Clapperton", "B": "Mungo Park", "C": "Lord Lugard", "D": "John Hawkins"},
-    "answer": "B"
+    "question": "June 12 is celebrated in Nigeria as?",
+    "options": {
+      "A": "Children’s Day",
+      "B": "Workers' Day",
+      "C": "Armed Forces Day",
+      "D": "Democracy Day"
+    },
+    "answer": "D"
   },
   {
     "id": 19,
     "category": "nigeria_history",
-    "question": "Who amalgamated Nigeria?",
-    "options": {"A": "Harold Wilson", "B": "Lord Lugard", "C": "Queen Elizabeth", "D": "Obasanjo"},
-    "answer": "B"
+    "question": "Which national body conducts elections in Nigeria?",
+    "options": {
+      "A": "INEC",
+      "B": "ICPC",
+      "C": "NCC",
+      "D": "EFCC"
+    },
+    "answer": "A"
   },
   {
     "id": 20,
     "category": "nigeria_history",
-    "question": "Who was Nigeria’s first military Head of State?",
-    "options": {"A": "Aguiyi-Ironsi", "B": "Gowon", "C": "Murtala Mohammed", "D": "Abacha"},
-    "answer": "A"
+    "question": "Nigeria’s top court is the?",
+    "options": {
+      "A": "Court of Appeal",
+      "B": "Federal High Court",
+      "C": "Supreme Court",
+      "D": "Magistrate Court"
+    },
+    "answer": "C"
   },
   {
     "id": 21,
     "category": "nigeria_history",
-    "question": "Which region was led by Nnamdi Azikiwe?",
-    "options": {"A": "Northern", "B": "Eastern", "C": "Western", "D": "Southern"},
+    "question": "What is the official language of Nigeria?",
+    "options": {
+      "A": "Arabic",
+      "B": "English",
+      "C": "Hausa",
+      "D": "French"
+    },
     "answer": "B"
   },
   {
     "id": 22,
     "category": "nigeria_history",
-    "question": "Who led the Sokoto Caliphate?",
-    "options": {"A": "Usman dan Fodio", "B": "Ahmadu Bello", "C": "Shehu Shagari", "D": "Yakubu Gowon"},
-    "answer": "A"
+    "question": "What is the name of Nigeria’s national legislative body?",
+    "options": {
+      "A": "Supreme Court",
+      "B": "National Assembly",
+      "C": "Council of State",
+      "D": "Federal Executive Council"
+    },
+    "answer": "B"
   },
   {
     "id": 23,
     "category": "nigeria_history",
-    "question": "Which empire is associated with Queen Idia?",
-    "options": {"A": "Oyo Empire", "B": "Benin Empire", "C": "Kanem-Bornu", "D": "Songhai Empire"},
-    "answer": "B"
+    "question": "Nigeria’s national motto is?",
+    "options": {
+      "A": "One Nation, One Destiny",
+      "B": "Strength in Diversity",
+      "C": "Unity and Faith, Peace and Progress",
+      "D": "Forward Ever, Backward Never"
+    },
+    "answer": "C"
   },
   {
     "id": 24,
     "category": "nigeria_history",
-    "question": "What is the largest ethnic group in Nigeria?",
-    "options": {"A": "Yoruba", "B": "Igbo", "C": "Hausa-Fulani", "D": "Tiv"},
-    "answer": "C"
+    "question": "Which constitution introduced federalism more firmly in Nigeria (1954)?",
+    "options": {
+      "A": "Macpherson Constitution",
+      "B": "Independence Constitution",
+      "C": "Clifford Constitution",
+      "D": "Lyttleton Constitution"
+    },
+    "answer": "D"
   },
   {
     "id": 25,
     "category": "nigeria_history",
-    "question": "Which pre-colonial kingdom was famous for bronze works?",
-    "options": {"A": "Benin Kingdom", "B": "Nupe Kingdom", "C": "Kanuri Kingdom", "D": "Ijebu Kingdom"},
+    "question": "The Aba Women’s Protest (Women’s War) occurred in?",
+    "options": {
+      "A": "1929",
+      "B": "1939",
+      "C": "1948",
+      "D": "1914"
+    },
     "answer": "A"
   },
   {
     "id": 26,
     "category": "nigeria_history",
-    "question": "When was the amalgamation of Nigeria carried out?",
-    "options": {"A": "1945", "B": "1914", "C": "1930", "D": "1922"},
-    "answer": "B"
+    "question": "Which region first introduced free primary education in the 1950s?",
+    "options": {
+      "A": "Western Region",
+      "B": "Mid-West Region",
+      "C": "Northern Region",
+      "D": "Eastern Region"
+    },
+    "answer": "A"
   },
   {
     "id": 27,
     "category": "nigeria_history",
-    "question": "Who was the first Executive President of Nigeria?",
-    "options": {"A": "Obasanjo", "B": "Shehu Shagari", "C": "Jonathan", "D": "Buhari"},
-    "answer": "B"
+    "question": "Who was known as the ‘Sardauna of Sokoto’?",
+    "options": {
+      "A": "Shehu Shagari",
+      "B": "Yakubu Gowon",
+      "C": "Ahmadu Bello",
+      "D": "Nnamdi Azikiwe"
+    },
+    "answer": "C"
   },
   {
     "id": 28,
     "category": "nigeria_history",
-    "question": "Which state is known as the 'Coal City'?",
-    "options": {"A": "Enugu", "B": "Lagos", "C": "Kano", "D": "Jos"},
-    "answer": "A"
+    "question": "The Sokoto Caliphate was founded by?",
+    "options": {
+      "A": "Muhammad al-Kanemi",
+      "B": "Usman dan Fodio",
+      "C": "Nana Asma’u",
+      "D": "Ahmadu Bello"
+    },
+    "answer": "B"
   },
   {
     "id": 29,
     "category": "nigeria_history",
-    "question": "Which group is known for the Nok culture?",
-    "options": {"A": "Niger Delta", "B": "Northern Nigeria", "C": "South West Nigeria", "D": "Eastern Nigeria"},
-    "answer": "B"
+    "question": "Which pre-colonial kingdom is famous for the Benin Bronzes?",
+    "options": {
+      "A": "Igala Kingdom",
+      "B": "Jukun Kingdom",
+      "C": "Benin Kingdom",
+      "D": "Oyo Empire"
+    },
+    "answer": "C"
   },
   {
     "id": 30,
     "category": "nigeria_history",
-    "question": "Who was known as 'Zik of Africa'?",
-    "options": {"A": "Awolowo", "B": "Azikiwe", "C": "Balewa", "D": "Ojukwu"},
-    "answer": "B"
+    "question": "The Nigerian flag has which colors?",
+    "options": {
+      "A": "Green and White",
+      "B": "Red and White",
+      "C": "Blue and White",
+      "D": "Green and Yellow"
+    },
+    "answer": "A"
   },
   {
     "id": 31,
     "category": "nigeria_history",
-    "question": "Which city is the commercial capital of Nigeria?",
-    "options": {"A": "Ibadan", "B": "Lagos", "C": "Enugu", "D": "Kano"},
-    "answer": "B"
+    "question": "The green color on the Nigerian flag stands for?",
+    "options": {
+      "A": "Strength",
+      "B": "Unity",
+      "C": "Peace",
+      "D": "Agriculture"
+    },
+    "answer": "D"
   },
   {
     "id": 32,
     "category": "nigeria_history",
-    "question": "Who founded the Oyo Empire?",
-    "options": {"A": "Oranyan", "B": "Oduduwa", "C": "Shango", "D": "Afonja"},
-    "answer": "A"
+    "question": "The white color on the Nigerian flag stands for?",
+    "options": {
+      "A": "Mineral wealth",
+      "B": "Agriculture",
+      "C": "Peace",
+      "D": "Strength"
+    },
+    "answer": "C"
   },
   {
     "id": 33,
     "category": "nigeria_history",
-    "question": "Which Nigerian hero led the Biafran side during the Civil War?",
-    "options": {"A": "Awolowo", "B": "Ojukwu", "C": "Ironsi", "D": "Balewa"},
-    "answer": "B"
+    "question": "Which Nigerian musician is widely called the pioneer of Afrobeat?",
+    "options": {
+      "A": "Fela Kuti",
+      "B": "2Baba",
+      "C": "King Sunny Ade",
+      "D": "D'banj"
+    },
+    "answer": "A"
   },
   {
     "id": 34,
     "category": "nigeria_history",
-    "question": "Which state is known as the 'Gateway State'?",
-    "options": {"A": "Ogun", "B": "Osun", "C": "Ekiti", "D": "Ondo"},
+    "question": "Which Nigerian writer won the Nobel Prize in Literature?",
+    "options": {
+      "A": "Wole Soyinka",
+      "B": "Ben Okri",
+      "C": "Chinua Achebe",
+      "D": "Ngũgĩ wa Thiong’o"
+    },
     "answer": "A"
   },
   {
     "id": 35,
     "category": "nigeria_history",
-    "question": "Which constitution introduced Federalism to Nigeria?",
-    "options": {"A": "Clifford", "B": "Macpherson", "C": "Lyttleton", "D": "Independence Constitution"},
-    "answer": "C"
+    "question": "Who wrote the novel 'Things Fall Apart'?",
+    "options": {
+      "A": "Ken Saro-Wiwa",
+      "B": "Chinua Achebe",
+      "C": "Chimamanda Ngozi Adichie",
+      "D": "Wole Soyinka"
+    },
+    "answer": "B"
   },
   {
     "id": 36,
     "category": "nigeria_history",
-    "question": "Which Nigerian leader launched the War Against Indiscipline?",
-    "options": {"A": "Gowon", "B": "Buhari", "C": "Abacha", "D": "Obasanjo"},
-    "answer": "B"
+    "question": "Which city hosted FESTAC '77?",
+    "options": {
+      "A": "Port Harcourt",
+      "B": "Abuja",
+      "C": "Lagos",
+      "D": "Ibadan"
+    },
+    "answer": "C"
   },
   {
     "id": 37,
     "category": "nigeria_history",
-    "question": "The Aba Women's Riot took place in what year?",
-    "options": {"A": "1929", "B": "1931", "C": "1914", "D": "1945"},
-    "answer": "A"
+    "question": "Nigeria returned to civilian rule in which year?",
+    "options": {
+      "A": "2003",
+      "B": "1989",
+      "C": "1993",
+      "D": "1999"
+    },
+    "answer": "D"
   },
   {
     "id": 38,
     "category": "nigeria_history",
-    "question": "Which region first introduced free primary education?",
-    "options": {"A": "Eastern Region", "B": "Northern Region", "C": "Western Region", "D": "Mid-West Region"},
-    "answer": "C"
+    "question": "The first Executive President of Nigeria (Second Republic) was?",
+    "options": {
+      "A": "Umaru Yar’Adua",
+      "B": "Shehu Shagari",
+      "C": "Olusegun Obasanjo",
+      "D": "Goodluck Jonathan"
+    },
+    "answer": "B"
   },
   {
     "id": 39,
     "category": "nigeria_history",
-    "question": "Which governor-general handed over power during independence?",
-    "options": {"A": "Hugh Clifford", "B": "Lord Lugard", "C": "James Robertson", "D": "Bernard Bourdillon"},
+    "question": "Which city is associated with the Eyo Festival?",
+    "options": {
+      "A": "Ibadan",
+      "B": "Kano",
+      "C": "Lagos",
+      "D": "Enugu"
+    },
     "answer": "C"
   },
   {
     "id": 40,
     "category": "nigeria_history",
-    "question": "Where was the first television station in Africa founded?",
-    "options": {"A": "Lagos", "B": "Kaduna", "C": "Ibadan", "D": "Enugu"},
+    "question": "Which Nigerian state is famous for the annual Calabar Carnival?",
+    "options": {
+      "A": "Delta",
+      "B": "Akwa Ibom",
+      "C": "Cross River",
+      "D": "Rivers"
+    },
     "answer": "C"
   },
   {
     "id": 41,
-    "category": "nigeria_entertainment",
-    "question": "Who is known as the 'Queen of Afrobeats'?",
-    "options": {"A": "Tiwa Savage", "B": "Yemi Alade", "C": "Simi", "D": "Tems"},
-    "answer": "A"
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian anti-corruption agency?",
+    "options": {
+      "A": "NEMA",
+      "B": "INEC",
+      "C": "NCC",
+      "D": "EFCC"
+    },
+    "answer": "D"
   },
   {
     "id": 42,
-    "category": "nigeria_entertainment",
-    "question": "Which Nigerian artist sang 'Fall'?",
-    "options": {"A": "Wizkid", "B": "Davido", "C": "Olamide", "D": "Rema"},
-    "answer": "B"
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian public TV network?",
+    "options": {
+      "A": "BBC",
+      "B": "Al Jazeera",
+      "C": "CNN",
+      "D": "NTA"
+    },
+    "answer": "D"
   },
   {
     "id": 43,
-    "category": "nigeria_entertainment",
-    "question": "Who starred as 'Jenifa' in the comedy series?",
-    "options": {"A": "Funke Akindele", "B": "Mercy Johnson", "C": "Ini Edo", "D": "Tonto Dikeh"},
-    "answer": "A"
-  },
-  {
-    "id": 44,
-    "category": "nigeria_entertainment",
-    "question": "Which musician is known as 'Starboy'?",
-    "options": {"A": "Kizz Daniel", "B": "Wizkid", "C": "Burna Boy", "D": "Adekunle Gold"},
+    "category": "nigeria_history",
+    "question": "Which Nigerian city is the seat of government (capital)?",
+    "options": {
+      "A": "Lagos",
+      "B": "Abuja",
+      "C": "Kano",
+      "D": "Ibadan"
+    },
     "answer": "B"
   },
   {
+    "id": 44,
+    "category": "nigeria_history",
+    "question": "Nigeria is located in which continent?",
+    "options": {
+      "A": "South America",
+      "B": "Europe",
+      "C": "Asia",
+      "D": "Africa"
+    },
+    "answer": "D"
+  },
+  {
     "id": 45,
-    "category": "nigeria_entertainment",
-    "question": "Who released the global hit 'Last Last'?",
-    "options": {"A": "Burna Boy", "B": "Rema", "C": "Fireboy DML", "D": "Pheelz"},
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative upper chamber?",
+    "options": {
+      "A": "Senate",
+      "B": "House of Lords",
+      "C": "Privy Council",
+      "D": "Cabinet"
+    },
     "answer": "A"
   },
   {
     "id": 46,
-    "category": "nigeria_entertainment",
-    "question": "Which movie is considered Nollywood’s breakout classic?",
-    "options": {"A": "King of Boys", "B": "Living in Bondage", "C": "The Wedding Party", "D": "Osuofia in London"},
-    "answer": "B"
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative lower chamber?",
+    "options": {
+      "A": "Council of State",
+      "B": "Supreme Court",
+      "C": "Senate",
+      "D": "House of Representatives"
+    },
+    "answer": "D"
   },
   {
     "id": 47,
-    "category": "nigeria_entertainment",
-    "question": "Who sang the hit track 'Dumebi'?",
-    "options": {"A": "Ruger", "B": "Rema", "C": "Joeboy", "D": "Korede Bello"},
-    "answer": "B"
-  },
-  {
-    "id": 48,
-    "category": "nigeria_entertainment",
-    "question": "Which Nigerian comedian is known as 'Basketmouth'?",
-    "options": {"A": "Bright Okpocha", "B": "AY Makun", "C": "Seyi Law", "D": "Bovi"},
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian anti-corruption agency?",
+    "options": {
+      "A": "EFCC",
+      "B": "INEC",
+      "C": "NEMA",
+      "D": "NCC"
+    },
     "answer": "A"
   },
   {
+    "id": 48,
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian public TV network?",
+    "options": {
+      "A": "BBC",
+      "B": "Al Jazeera",
+      "C": "CNN",
+      "D": "NTA"
+    },
+    "answer": "D"
+  },
+  {
     "id": 49,
-    "category": "nigeria_entertainment",
-    "question": "Which artist is famous for the song 'Ojuelegba'?",
-    "options": {"A": "Davido", "B": "Wizkid", "C": "Kizz Daniel", "D": "Tekno"},
-    "answer": "B"
+    "category": "nigeria_history",
+    "question": "Which Nigerian city is the seat of government (capital)?",
+    "options": {
+      "A": "Abuja",
+      "B": "Ibadan",
+      "C": "Kano",
+      "D": "Lagos"
+    },
+    "answer": "A"
   },
   {
     "id": 50,
-    "category": "nigeria_entertainment",
-    "question": "Who played the lead role in 'King of Boys'?",
-    "options": {"A": "Genevieve Nnaji", "B": "Sola Sobowale", "C": "Tonto Dikeh", "D": "Rita Dominic"},
+    "category": "nigeria_history",
+    "question": "Nigeria is located in which continent?",
+    "options": {
+      "A": "South America",
+      "B": "Africa",
+      "C": "Europe",
+      "D": "Asia"
+    },
     "answer": "B"
   },
   {
     "id": 51,
-    "category": "nigeria_entertainment",
-    "question": "Which female artist released 'Johnny'?",
-    "options": {"A": "Tiwa Savage", "B": "Yemi Alade", "C": "Simi", "D": "Tems"},
-    "answer": "B"
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative upper chamber?",
+    "options": {
+      "A": "House of Lords",
+      "B": "Cabinet",
+      "C": "Senate",
+      "D": "Privy Council"
+    },
+    "answer": "C"
   },
   {
     "id": 52,
-    "category": "nigeria_entertainment",
-    "question": "Who sang 'Essence' with Wizkid?",
-    "options": {"A": "Tems", "B": "Tiwa Savage", "C": "Fave", "D": "Ayra Starr"},
-    "answer": "A"
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative lower chamber?",
+    "options": {
+      "A": "Supreme Court",
+      "B": "Senate",
+      "C": "House of Representatives",
+      "D": "Council of State"
+    },
+    "answer": "C"
   },
   {
     "id": 53,
-    "category": "nigeria_entertainment",
-    "question": "Which of these is a Nigerian reality TV show?",
-    "options": {"A": "Love Island", "B": "Big Brother Naija", "C": "Survivor Kenya", "D": "The Voice Canada"},
-    "answer": "B"
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian anti-corruption agency?",
+    "options": {
+      "A": "NCC",
+      "B": "INEC",
+      "C": "NEMA",
+      "D": "EFCC"
+    },
+    "answer": "D"
   },
   {
     "id": 54,
-    "category": "nigeria_entertainment",
-    "question": "Which comedian created the character 'Mama Chinedu'?",
-    "options": {"A": "Sabinus", "B": "Broda Shaggi", "C": "Mr Macaroni", "D": "Taaooma"},
-    "answer": "B"
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian public TV network?",
+    "options": {
+      "A": "Al Jazeera",
+      "B": "CNN",
+      "C": "BBC",
+      "D": "NTA"
+    },
+    "answer": "D"
   },
   {
     "id": 55,
-    "category": "nigeria_entertainment",
-    "question": "Which Nigerian singer is nicknamed 'African Giant'?",
-    "options": {"A": "Olamide", "B": "Burna Boy", "C": "D'banj", "D": "2Baba"},
+    "category": "nigeria_history",
+    "question": "Which Nigerian city is the seat of government (capital)?",
+    "options": {
+      "A": "Ibadan",
+      "B": "Abuja",
+      "C": "Lagos",
+      "D": "Kano"
+    },
     "answer": "B"
   },
   {
     "id": 56,
-    "category": "nigeria_entertainment",
-    "question": "Who is the vocalist behind 'Duduke'?",
-    "options": {"A": "Simi", "B": "Tems", "C": "Waje", "D": "Teni"},
+    "category": "nigeria_history",
+    "question": "Nigeria is located in which continent?",
+    "options": {
+      "A": "Africa",
+      "B": "South America",
+      "C": "Europe",
+      "D": "Asia"
+    },
     "answer": "A"
   },
   {
     "id": 57,
-    "category": "nigeria_entertainment",
-    "question": "Which Nollywood actress starred in ‘Lionheart’?",
-    "options": {"A": "Ini Edo", "B": "Genevieve Nnaji", "C": "Funke Akindele", "D": "Rita Dominic"},
-    "answer": "B"
-  },
-  {
-    "id": 58,
-    "category": "nigeria_entertainment",
-    "question": "Which artist sang 'Calm Down'?",
-    "options": {"A": "Fireboy", "B": "Wizkid", "C": "Rema", "D": "CKay"},
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative upper chamber?",
+    "options": {
+      "A": "Privy Council",
+      "B": "Cabinet",
+      "C": "Senate",
+      "D": "House of Lords"
+    },
     "answer": "C"
   },
   {
+    "id": 58,
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative lower chamber?",
+    "options": {
+      "A": "Council of State",
+      "B": "Senate",
+      "C": "Supreme Court",
+      "D": "House of Representatives"
+    },
+    "answer": "D"
+  },
+  {
     "id": 59,
-    "category": "nigeria_entertainment",
-    "question": "Who created the line 'You are doing well!'?",
-    "options": {"A": "Mr Macaroni", "B": "Bovi", "C": "AY", "D": "Seyi Law"},
-    "answer": "A"
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian anti-corruption agency?",
+    "options": {
+      "A": "NCC",
+      "B": "EFCC",
+      "C": "NEMA",
+      "D": "INEC"
+    },
+    "answer": "B"
   },
   {
     "id": 60,
-    "category": "nigeria_entertainment",
-    "question": "Which movie series features the characters 'Aki and Pawpaw'?",
-    "options": {"A": "The Johnsons", "B": "Aki Na Ukwa", "C": "Jenifa's Diary", "D": "Chief Daddy"},
-    "answer": "B"
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian public TV network?",
+    "options": {
+      "A": "NTA",
+      "B": "CNN",
+      "C": "Al Jazeera",
+      "D": "BBC"
+    },
+    "answer": "A"
   },
   {
     "id": 61,
-    "category": "nigeria_entertainment",
-    "question": "Who sang 'Love Nwantiti'?",
-    "options": {"A": "CKay", "B": "Rema", "C": "Joeboy", "D": "Omah Lay"},
-    "answer": "A"
-  },
-  {
-    "id": 62,
-    "category": "nigeria_entertainment",
-    "question": "Which artist released 'For My Hand' featuring Ed Sheeran?",
-    "options": {"A": "Burna Boy", "B": "Wizkid", "C": "Fireboy", "D": "Rema"},
-    "answer": "A"
-  },
-  {
-    "id": 63,
-    "category": "nigeria_entertainment",
-    "question": "What is the name of the Nigerian annual music awards show?",
-    "options": {"A": "Headies", "B": "Grammys", "C": "AMVCAs", "D": "Oscars"},
-    "answer": "A"
-  },
-  {
-    "id": 64,
-    "category": "nigeria_entertainment",
-    "question": "Which comedian created the character 'Daddy Wa'?",
-    "options": {"A": "Taaooma", "B": "Mr Macaroni", "C": "Sabinus", "D": "Bovi"},
+    "category": "nigeria_history",
+    "question": "Which Nigerian city is the seat of government (capital)?",
+    "options": {
+      "A": "Kano",
+      "B": "Abuja",
+      "C": "Lagos",
+      "D": "Ibadan"
+    },
     "answer": "B"
   },
   {
+    "id": 62,
+    "category": "nigeria_history",
+    "question": "Nigeria is located in which continent?",
+    "options": {
+      "A": "Europe",
+      "B": "Africa",
+      "C": "Asia",
+      "D": "South America"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 63,
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative upper chamber?",
+    "options": {
+      "A": "Privy Council",
+      "B": "Cabinet",
+      "C": "House of Lords",
+      "D": "Senate"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 64,
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative lower chamber?",
+    "options": {
+      "A": "House of Representatives",
+      "B": "Senate",
+      "C": "Council of State",
+      "D": "Supreme Court"
+    },
+    "answer": "A"
+  },
+  {
     "id": 65,
-    "category": "nigeria_entertainment",
-    "question": "Which Nigerian actress is popularly known as ‘Omotola’?",
-    "options": {"A": "Omotola Jalade-Ekeinde", "B": "Omoni Oboli", "C": "Omowunmi Dada", "D": "Mercy Aigbe"},
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian anti-corruption agency?",
+    "options": {
+      "A": "EFCC",
+      "B": "NEMA",
+      "C": "INEC",
+      "D": "NCC"
+    },
     "answer": "A"
   },
   {
     "id": 66,
-    "category": "nigeria_entertainment",
-    "question": "Which singer released 'Peru'?",
-    "options": {"A": "Fireboy DML", "B": "Olamide", "C": "Adekunle Gold", "D": "Kizz Daniel"},
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian public TV network?",
+    "options": {
+      "A": "NTA",
+      "B": "CNN",
+      "C": "Al Jazeera",
+      "D": "BBC"
+    },
     "answer": "A"
   },
   {
     "id": 67,
-    "category": "nigeria_entertainment",
-    "question": "Who acted as 'Osuofia'?",
-    "options": {"A": "Nkem Owoh", "B": "John Okafor", "C": "Chiwetalu Agu", "D": "Kanayo O. Kanayo"},
-    "answer": "A"
+    "category": "nigeria_history",
+    "question": "Which Nigerian city is the seat of government (capital)?",
+    "options": {
+      "A": "Kano",
+      "B": "Lagos",
+      "C": "Ibadan",
+      "D": "Abuja"
+    },
+    "answer": "D"
   },
   {
     "id": 68,
-    "category": "nigeria_entertainment",
-    "question": "Which artist released the album 'Made in Lagos'?",
-    "options": {"A": "Wizkid", "B": "Burna Boy", "C": "Davido", "D": "Phyno"},
+    "category": "nigeria_history",
+    "question": "Nigeria is located in which continent?",
+    "options": {
+      "A": "Africa",
+      "B": "Asia",
+      "C": "South America",
+      "D": "Europe"
+    },
     "answer": "A"
   },
   {
     "id": 69,
-    "category": "nigeria_entertainment",
-    "question": "Which female artist released 'Rush'?",
-    "options": {"A": "Ayra Starr", "B": "Tems", "C": "Teni", "D": "Simi"},
-    "answer": "A"
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative upper chamber?",
+    "options": {
+      "A": "Privy Council",
+      "B": "House of Lords",
+      "C": "Senate",
+      "D": "Cabinet"
+    },
+    "answer": "C"
   },
   {
     "id": 70,
-    "category": "nigeria_entertainment",
-    "question": "Which comedian is popularly called 'Sabinus'?",
-    "options": {"A": "Chukwuemeka Emmanuel", "B": "Bright Okpocha", "C": "Debo Adebayo", "D": "Samuel Perry"},
-    "answer": "A"
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative lower chamber?",
+    "options": {
+      "A": "Senate",
+      "B": "Council of State",
+      "C": "House of Representatives",
+      "D": "Supreme Court"
+    },
+    "answer": "C"
   },
   {
     "id": 71,
-    "category": "nigeria_entertainment",
-    "question": "Which music group sang 'Do Me'?",
-    "options": {"A": "Bracket", "B": "P-Square", "C": "Styl-Plus", "D": "Zule Zoo"},
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian anti-corruption agency?",
+    "options": {
+      "A": "NCC",
+      "B": "EFCC",
+      "C": "INEC",
+      "D": "NEMA"
+    },
     "answer": "B"
   },
   {
     "id": 72,
-    "category": "nigeria_entertainment",
-    "question": "Who is popularly known as 'Mama G'?",
-    "options": {"A": "Patience Ozokwor", "B": "Ngozi Ezeonu", "C": "Eucharia Anunobi", "D": "Rita Edochie"},
-    "answer": "A"
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian public TV network?",
+    "options": {
+      "A": "BBC",
+      "B": "Al Jazeera",
+      "C": "NTA",
+      "D": "CNN"
+    },
+    "answer": "C"
   },
   {
     "id": 73,
-    "category": "nigeria_entertainment",
-    "question": "Who sang 'Away'?",
-    "options": {"A": "Omah Lay", "B": "Rema", "C": "Ayra Starr", "D": "Davido"},
-    "answer": "A"
-  },
-  {
-    "id": 74,
-    "category": "nigeria_entertainment",
-    "question": "Who acted as 'Mr Ibu'?",
-    "options": {"A": "John Okafor", "B": "Nkem Owoh", "C": "Chiwetalu Agu", "D": "Kanayo O. Kanayo"},
-    "answer": "A"
-  },
-  {
-    "id": 75,
-    "category": "nigeria_entertainment",
-    "question": "Which award show celebrates African film and TV yearly?",
-    "options": {"A": "AMVCA", "B": "Headies", "C": "Soundcity Awards", "D": "NEA"},
-    "answer": "A"
-  },
-  {
-    "id": 76,
-    "category": "nigeria_entertainment",
-    "question": "Who released the hit song 'Buga'?",
-    "options": {"A": "Kizz Daniel", "B": "Patoranking", "C": "Joeboy", "D": "Fireboy"},
-    "answer": "A"
-  },
-  {
-    "id": 77,
-    "category": "nigeria_entertainment",
-    "question": "Which actress starred in 'Wedding Party'?",
-    "options": {"A": "Adesua Etomi", "B": "Mercy Johnson", "C": "Omoni Oboli", "D": "Chioma Chukwuka"},
-    "answer": "A"
-  },
-  {
-    "id": 78,
-    "category": "nigeria_entertainment",
-    "question": "Who sang 'High' with Davido?",
-    "options": {"A": "Olamide", "B": "Adekunle Gold", "C": "Tekno", "D": "Runtown"},
+    "category": "nigeria_history",
+    "question": "Which Nigerian city is the seat of government (capital)?",
+    "options": {
+      "A": "Lagos",
+      "B": "Abuja",
+      "C": "Ibadan",
+      "D": "Kano"
+    },
     "answer": "B"
   },
   {
+    "id": 74,
+    "category": "nigeria_history",
+    "question": "Nigeria is located in which continent?",
+    "options": {
+      "A": "Asia",
+      "B": "South America",
+      "C": "Europe",
+      "D": "Africa"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 75,
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative upper chamber?",
+    "options": {
+      "A": "Privy Council",
+      "B": "Senate",
+      "C": "House of Lords",
+      "D": "Cabinet"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 76,
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative lower chamber?",
+    "options": {
+      "A": "Senate",
+      "B": "House of Representatives",
+      "C": "Council of State",
+      "D": "Supreme Court"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 77,
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian anti-corruption agency?",
+    "options": {
+      "A": "NEMA",
+      "B": "NCC",
+      "C": "INEC",
+      "D": "EFCC"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 78,
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian public TV network?",
+    "options": {
+      "A": "BBC",
+      "B": "CNN",
+      "C": "NTA",
+      "D": "Al Jazeera"
+    },
+    "answer": "C"
+  },
+  {
     "id": 79,
-    "category": "nigeria_entertainment",
-    "question": "Which artist is known for the hit 'You Go Kill Me'?",
-    "options": {"A": "Sarkodie", "B": "Phyno", "C": "Olamide", "D": "Davido"},
+    "category": "nigeria_history",
+    "question": "Which Nigerian city is the seat of government (capital)?",
+    "options": {
+      "A": "Abuja",
+      "B": "Ibadan",
+      "C": "Kano",
+      "D": "Lagos"
+    },
     "answer": "A"
   },
   {
     "id": 80,
-    "category": "nigeria_entertainment",
-    "question": "Which actress plays 'Nwunye Odogwu' in skits?",
-    "options": {"A": "Taaooma", "B": "Ashmusy", "C": "KieKie", "D": "Layi Wasabi"},
+    "category": "nigeria_history",
+    "question": "Nigeria is located in which continent?",
+    "options": {
+      "A": "South America",
+      "B": "Asia",
+      "C": "Africa",
+      "D": "Europe"
+    },
     "answer": "C"
   },
   {
     "id": 81,
-    "category": "football",
-    "question": "Who is Nigeria’s all-time top scorer?",
-    "options": {"A": "Obafemi Martins", "B": "Rashidi Yekini", "C": "Kanu Nwankwo", "D": "Victor Osimhen"},
-    "answer": "B"
-  },
-  {
-    "id": 82,
-    "category": "football",
-    "question": "Which country won the 2022 FIFA World Cup?",
-    "options": {"A": "Brazil", "B": "France", "C": "Argentina", "D": "Germany"},
-    "answer": "C"
-  },
-  {
-    "id": 83,
-    "category": "football",
-    "question": "Who is the captain of the Nigerian Super Eagles (2023)?",
-    "options": {"A": "Ahmed Musa", "B": "Wilfred Ndidi", "C": "William Troost-Ekong", "D": "Victor Osimhen"},
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative upper chamber?",
+    "options": {
+      "A": "Senate",
+      "B": "Cabinet",
+      "C": "House of Lords",
+      "D": "Privy Council"
+    },
     "answer": "A"
   },
   {
+    "id": 82,
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative lower chamber?",
+    "options": {
+      "A": "Supreme Court",
+      "B": "Council of State",
+      "C": "Senate",
+      "D": "House of Representatives"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 83,
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian anti-corruption agency?",
+    "options": {
+      "A": "NCC",
+      "B": "NEMA",
+      "C": "EFCC",
+      "D": "INEC"
+    },
+    "answer": "C"
+  },
+  {
     "id": 84,
-    "category": "football",
-    "question": "Which Nigerian player won the 1995 African Player of the Year?",
-    "options": {"A": "Daniel Amokachi", "B": "Jay-Jay Okocha", "C": "Kanu Nwankwo", "D": "Rashidi Yekini"},
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian public TV network?",
+    "options": {
+      "A": "Al Jazeera",
+      "B": "BBC",
+      "C": "NTA",
+      "D": "CNN"
+    },
     "answer": "C"
   },
   {
     "id": 85,
-    "category": "football",
-    "question": "Which club does Victor Osimhen play for (2023)?",
-    "options": {"A": "Chelsea", "B": "Napoli", "C": "PSG", "D": "Manchester United"},
-    "answer": "B"
-  },
-  {
-    "id": 86,
-    "category": "football",
-    "question": "Which country hosts the Premier League?",
-    "options": {"A": "Spain", "B": "Germany", "C": "Italy", "D": "England"},
+    "category": "nigeria_history",
+    "question": "Which Nigerian city is the seat of government (capital)?",
+    "options": {
+      "A": "Kano",
+      "B": "Ibadan",
+      "C": "Lagos",
+      "D": "Abuja"
+    },
     "answer": "D"
   },
   {
+    "id": 86,
+    "category": "nigeria_history",
+    "question": "Nigeria is located in which continent?",
+    "options": {
+      "A": "Africa",
+      "B": "Europe",
+      "C": "Asia",
+      "D": "South America"
+    },
+    "answer": "A"
+  },
+  {
     "id": 87,
-    "category": "football",
-    "question": "Who is widely called ‘The GOAT’ in football debates?",
-    "options": {"A": "Lewandowski", "B": "Messi", "C": "Modrić", "D": "Hazard"},
-    "answer": "B"
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative upper chamber?",
+    "options": {
+      "A": "Senate",
+      "B": "House of Lords",
+      "C": "Cabinet",
+      "D": "Privy Council"
+    },
+    "answer": "A"
   },
   {
     "id": 88,
-    "category": "football",
-    "question": "Which team won AFCON 2013?",
-    "options": {"A": "Ivory Coast", "B": "Nigeria", "C": "Ghana", "D": "Senegal"},
-    "answer": "B"
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative lower chamber?",
+    "options": {
+      "A": "Senate",
+      "B": "Council of State",
+      "C": "Supreme Court",
+      "D": "House of Representatives"
+    },
+    "answer": "D"
   },
   {
     "id": 89,
-    "category": "football",
-    "question": "Who is the coach that won AFCON 2013 with Nigeria?",
-    "options": {"A": "Gernot Rohr", "B": "Stephen Keshi", "C": "Sunday Oliseh", "D": "Samson Siasia"},
-    "answer": "B"
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian anti-corruption agency?",
+    "options": {
+      "A": "NCC",
+      "B": "INEC",
+      "C": "EFCC",
+      "D": "NEMA"
+    },
+    "answer": "C"
   },
   {
     "id": 90,
-    "category": "football",
-    "question": "Which footballer is nicknamed 'El Hadji'?",
-    "options": {"A": "Drogba", "B": "El Hadji Diouf", "C": "Benzema", "D": "Mahrez"},
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian public TV network?",
+    "options": {
+      "A": "Al Jazeera",
+      "B": "NTA",
+      "C": "CNN",
+      "D": "BBC"
+    },
     "answer": "B"
   },
   {
     "id": 91,
-    "category": "football",
-    "question": "Which club is known as 'The Red Devils'?",
-    "options": {"A": "Liverpool", "B": "Arsenal", "C": "Manchester United", "D": "Chelsea"},
-    "answer": "C"
-  },
-  {
-    "id": 92,
-    "category": "football",
-    "question": "Who won the 2021 Ballon d'Or?",
-    "options": {"A": "Lewandowski", "B": "Messi", "C": "Mbappé", "D": "Salah"},
-    "answer": "B"
-  },
-  {
-    "id": 93,
-    "category": "football",
-    "question": "Which Nigerian player is famous for dribbling skills?",
-    "options": {"A": "Okocha", "B": "Yobo", "C": "Musa", "D": "Amokachi"},
+    "category": "nigeria_history",
+    "question": "Which Nigerian city is the seat of government (capital)?",
+    "options": {
+      "A": "Abuja",
+      "B": "Lagos",
+      "C": "Kano",
+      "D": "Ibadan"
+    },
     "answer": "A"
   },
   {
+    "id": 92,
+    "category": "nigeria_history",
+    "question": "Nigeria is located in which continent?",
+    "options": {
+      "A": "Asia",
+      "B": "Europe",
+      "C": "Africa",
+      "D": "South America"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 93,
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative upper chamber?",
+    "options": {
+      "A": "Cabinet",
+      "B": "House of Lords",
+      "C": "Privy Council",
+      "D": "Senate"
+    },
+    "answer": "D"
+  },
+  {
     "id": 94,
-    "category": "football",
-    "question": "Which country has won the most World Cups?",
-    "options": {"A": "Germany", "B": "Italy", "C": "Brazil", "D": "Argentina"},
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative lower chamber?",
+    "options": {
+      "A": "Senate",
+      "B": "Supreme Court",
+      "C": "House of Representatives",
+      "D": "Council of State"
+    },
     "answer": "C"
   },
   {
     "id": 95,
-    "category": "football",
-    "question": "Which footballer is known as 'CR7'?",
-    "options": {"A": "Cristiano Ronaldo", "B": "Ronaldinho", "C": "Ronaldo Nazário", "D": "Ramos"},
-    "answer": "A"
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian anti-corruption agency?",
+    "options": {
+      "A": "NEMA",
+      "B": "EFCC",
+      "C": "NCC",
+      "D": "INEC"
+    },
+    "answer": "B"
   },
   {
     "id": 96,
-    "category": "football",
-    "question": "Who won the UEFA Champions League in 2023?",
-    "options": {"A": "Liverpool", "B": "Real Madrid", "C": "Man City", "D": "Bayern Munich"},
-    "answer": "C"
+    "category": "nigeria_history",
+    "question": "Which of these is a Nigerian public TV network?",
+    "options": {
+      "A": "NTA",
+      "B": "CNN",
+      "C": "BBC",
+      "D": "Al Jazeera"
+    },
+    "answer": "A"
   },
   {
     "id": 97,
-    "category": "football",
-    "question": "Which Super Eagles star played for Arsenal?",
-    "options": {"A": "Victor Moses", "B": "Iwobi", "C": "Ndidi", "D": "Ighalo"},
+    "category": "nigeria_history",
+    "question": "Which Nigerian city is the seat of government (capital)?",
+    "options": {
+      "A": "Lagos",
+      "B": "Abuja",
+      "C": "Kano",
+      "D": "Ibadan"
+    },
     "answer": "B"
   },
   {
     "id": 98,
-    "category": "football",
-    "question": "Which Nigerian player scored two goals vs Argentina in 2018 World Cup qualifiers?",
-    "options": {"A": "Ighalo", "B": "Musa", "C": "Osimhen", "D": "Chukwueze"},
+    "category": "nigeria_history",
+    "question": "Nigeria is located in which continent?",
+    "options": {
+      "A": "Asia",
+      "B": "Africa",
+      "C": "Europe",
+      "D": "South America"
+    },
     "answer": "B"
   },
   {
     "id": 99,
-    "category": "football",
-    "question": "Where was the first World Cup hosted?",
-    "options": {"A": "Brazil", "B": "Uruguay", "C": "Italy", "D": "France"},
-    "answer": "B"
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative upper chamber?",
+    "options": {
+      "A": "Senate",
+      "B": "House of Lords",
+      "C": "Cabinet",
+      "D": "Privy Council"
+    },
+    "answer": "A"
   },
   {
     "id": 100,
-    "category": "football",
-    "question": "Which club does Erling Haaland play for (2023)?",
-    "options": {"A": "Real Madrid", "B": "Liverpool", "C": "Manchester City", "D": "Bayern"},
+    "category": "nigeria_history",
+    "question": "Which is Nigeria’s legislative lower chamber?",
+    "options": {
+      "A": "Council of State",
+      "B": "Senate",
+      "C": "House of Representatives",
+      "D": "Supreme Court"
+    },
     "answer": "C"
   },
   {
     "id": 101,
-    "category": "football",
-    "question": "Which Nigerian goalkeeper is known as 'The Cat'?",
-    "options": {"A": "Enyeama", "B": "Shorunmu", "C": "Okoye", "D": "Akpeyi"},
+    "category": "nigeria_entertainment",
+    "question": "Nollywood refers to the film industry of which country?",
+    "options": {
+      "A": "Nigeria",
+      "B": "South Africa",
+      "C": "Kenya",
+      "D": "Ghana"
+    },
     "answer": "A"
   },
   {
     "id": 102,
-    "category": "football",
-    "question": "Which club is nicknamed 'The Blues'?",
-    "options": {"A": "Chelsea", "B": "Barcelona", "C": "Everton", "D": "Napoli"},
-    "answer": "A"
+    "category": "nigeria_entertainment",
+    "question": "Which Nigerian artist is known as 'Starboy'?",
+    "options": {
+      "A": "Burna Boy",
+      "B": "Wizkid",
+      "C": "Kizz Daniel",
+      "D": "Davido"
+    },
+    "answer": "B"
   },
   {
     "id": 103,
-    "category": "football",
-    "question": "Which nation hosted AFCON 2023?",
-    "options": {"A": "Egypt", "B": "Ivory Coast", "C": "Nigeria", "D": "Cameroon"},
-    "answer": "B"
+    "category": "nigeria_entertainment",
+    "question": "Which awards celebrate African film and TV (popularly)?",
+    "options": {
+      "A": "AMVCA",
+      "B": "Grammys",
+      "C": "BET Awards",
+      "D": "Oscars"
+    },
+    "answer": "A"
   },
   {
     "id": 104,
-    "category": "football",
-    "question": "Who is Nigeria’s youngest-ever goalscorer?",
-    "options": {"A": "Osimhen", "B": "Musa", "C": "Okocha", "D": "Kanu"},
-    "answer": "B"
+    "category": "nigeria_entertainment",
+    "question": "Which Nigerian movie is often cited as a major early classic?",
+    "options": {
+      "A": "Lionheart",
+      "B": "Chief Daddy",
+      "C": "The Wedding Party",
+      "D": "Living in Bondage"
+    },
+    "answer": "D"
   },
   {
     "id": 105,
-    "category": "football",
-    "question": "What position does Wilfred Ndidi play?",
-    "options": {"A": "Goalkeeper", "B": "Defender", "C": "Midfielder", "D": "Striker"},
+    "category": "nigeria_entertainment",
+    "question": "Which Nigerian reality show features housemates and evictions?",
+    "options": {
+      "A": "Survivor",
+      "B": "X Factor",
+      "C": "Big Brother Naija",
+      "D": "The Voice"
+    },
     "answer": "C"
   },
   {
     "id": 106,
-    "category": "football",
-    "question": "Which club is called 'The Catalans'?",
-    "options": {"A": "Barcelona", "B": "Real Madrid", "C": "Atletico", "D": "Sevilla"},
-    "answer": "A"
-  },
-  {
-    "id": 107,
-    "category": "football",
-    "question": "Who is Africa’s top scorer in Premier League history?",
-    "options": {"A": "Didier Drogba", "B": "Salah", "C": "Mané", "D": "Yaya Touré"},
-    "answer": "B"
-  },
-  {
-    "id": 108,
-    "category": "football",
-    "question": "Which Nigerian scored the winning goal at Atlanta 1996 Olympics?",
-    "options": {"A": "Kanu", "B": "Okocha", "C": "Amokachi", "D": "Amuneke"},
+    "category": "nigeria_entertainment",
+    "question": "Which Nigerian singer is nicknamed 'African Giant'?",
+    "options": {
+      "A": "Olamide",
+      "B": "D'banj",
+      "C": "2Baba",
+      "D": "Burna Boy"
+    },
     "answer": "D"
   },
   {
+    "id": 107,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Avengers",
+      "B": "Titanic",
+      "C": "The Godfather",
+      "D": "King of Boys"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 108,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Techno",
+      "B": "K-Pop",
+      "C": "Hip hop",
+      "D": "Salsa"
+    },
+    "answer": "C"
+  },
+  {
     "id": 109,
-    "category": "football",
-    "question": "How many players start a football match per team?",
-    "options": {"A": "10", "B": "11", "C": "12", "D": "15"},
-    "answer": "B"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Kevin Hart",
+      "B": "Ali Wong",
+      "C": "Dave Chappelle",
+      "D": "Lasisi Elenu"
+    },
+    "answer": "D"
   },
   {
     "id": 110,
-    "category": "football",
-    "question": "Which country won the 2018 World Cup?",
-    "options": {"A": "Brazil", "B": "France", "C": "Germany", "D": "Croatia"},
-    "answer": "B"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Adele",
+      "B": "Drake",
+      "C": "Tems",
+      "D": "Taylor Swift"
+    },
+    "answer": "C"
   },
   {
     "id": 111,
-    "category": "football",
-    "question": "Which footballer is known as 'The Egyptian King'?",
-    "options": {"A": "Mahrez", "B": "Salah", "C": "Elneny", "D": "Ziyech"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Gladiator",
+      "B": "Citation",
+      "C": "Jumanji",
+      "D": "The Godfather"
+    },
     "answer": "B"
   },
   {
     "id": 112,
-    "category": "football",
-    "question": "Which Nigerian star plays for Villarreal?",
-    "options": {"A": "Osimhen", "B": "Chukwueze", "C": "Aribo", "D": "Iwobi"},
-    "answer": "B"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Opera",
+      "B": "Country",
+      "C": "Hip hop",
+      "D": "Techno"
+    },
+    "answer": "C"
   },
   {
     "id": 113,
-    "category": "football",
-    "question": "Which of these is a football position?",
-    "options": {"A": "Striker", "B": "Runner", "C": "Shooter", "D": "Keeper"},
-    "answer": "A"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Chris Rock",
+      "B": "Rowan Atkinson",
+      "C": "Mr Macaroni",
+      "D": "Ellen DeGeneres"
+    },
+    "answer": "C"
   },
   {
     "id": 114,
-    "category": "football",
-    "question": "Which club signed Lionel Messi in 2021?",
-    "options": {"A": "Real Madrid", "B": "PSG", "C": "Man City", "D": "Inter Milan"},
-    "answer": "B"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Taylor Swift",
+      "B": "Ed Sheeran",
+      "C": "Beyoncé",
+      "D": "Olamide"
+    },
+    "answer": "D"
   },
   {
     "id": 115,
-    "category": "football",
-    "question": "Which African nation has won AFCON the most times?",
-    "options": {"A": "Nigeria", "B": "Egypt", "C": "Cameroon", "D": "Ghana"},
-    "answer": "B"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Frozen",
+      "B": "Titanic",
+      "C": "King of Boys",
+      "D": "Gladiator"
+    },
+    "answer": "C"
   },
   {
     "id": 116,
-    "category": "football",
-    "question": "Which ex-Super Eagles striker played for Watford?",
-    "options": {"A": "Ighalo", "B": "Okocha", "C": "Musa", "D": "Osaze"},
-    "answer": "A"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Techno",
+      "B": "Country",
+      "C": "EDM",
+      "D": "Highlife"
+    },
+    "answer": "D"
   },
   {
     "id": 117,
-    "category": "football",
-    "question": "Who is known as ‘The Special One’?",
-    "options": {"A": "Guardiola", "B": "Ancelotti", "C": "Mourinho", "D": "Zidane"},
-    "answer": "C"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Ellen DeGeneres",
+      "B": "Dave Chappelle",
+      "C": "Kevin Hart",
+      "D": "Mr Macaroni"
+    },
+    "answer": "D"
   },
   {
     "id": 118,
-    "category": "football",
-    "question": "Which Super Eagles player is famous for rainbow flicks?",
-    "options": {"A": "Okocha", "B": "Iwobi", "C": "Amuneke", "D": "Mikel"},
-    "answer": "A"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Drake",
+      "B": "Beyoncé",
+      "C": "Adele",
+      "D": "Ice Prince"
+    },
+    "answer": "D"
   },
   {
     "id": 119,
-    "category": "football",
-    "question": "Which club does Mohamed Salah play for (2023)?",
-    "options": {"A": "Chelsea", "B": "Liverpool", "C": "AC Milan", "D": "Barcelona"},
-    "answer": "B"
-  },
-  {
-    "id": 120,
-    "category": "football",
-    "question": "Which country defeated Nigeria in AFCON 2024 final?",
-    "options": {"A": "Ivory Coast", "B": "South Africa", "C": "Ghana", "D": "Morocco"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Sugar Rush",
+      "B": "Jumanji",
+      "C": "Avengers",
+      "D": "The Godfather"
+    },
     "answer": "A"
   },
   {
+    "id": 120,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Salsa",
+      "B": "Country",
+      "C": "K-Pop",
+      "D": "Afrobeats"
+    },
+    "answer": "D"
+  },
+  {
     "id": 121,
-    "category": "geography",
-    "question": "What is the capital of Nigeria?",
-    "options": {"A": "Lagos", "B": "Kano", "C": "Abuja", "D": "Enugu"},
-    "answer": "C"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Ellen DeGeneres",
+      "B": "Chris Rock",
+      "C": "Kevin Hart",
+      "D": "Broda Shaggi"
+    },
+    "answer": "D"
   },
   {
     "id": 122,
-    "category": "geography",
-    "question": "Which is the largest continent?",
-    "options": {"A": "Africa", "B": "Asia", "C": "Europe", "D": "Australia"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Bad Bunny",
+      "B": "Olamide",
+      "C": "Beyoncé",
+      "D": "Taylor Swift"
+    },
     "answer": "B"
   },
   {
     "id": 123,
-    "category": "geography",
-    "question": "Which river is the longest in Africa?",
-    "options": {"A": "River Niger", "B": "River Nile", "C": "Congo River", "D": "Zambezi"},
-    "answer": "B"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Frozen",
+      "B": "The Godfather",
+      "C": "Avengers",
+      "D": "Chief Daddy"
+    },
+    "answer": "D"
   },
   {
     "id": 124,
-    "category": "geography",
-    "question": "Which state is known as the 'Centre of Excellence'?",
-    "options": {"A": "Kaduna", "B": "Lagos", "C": "Abuja", "D": "Rivers"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Techno",
+      "B": "Afrobeats",
+      "C": "Salsa",
+      "D": "EDM"
+    },
     "answer": "B"
   },
   {
     "id": 125,
-    "category": "geography",
-    "question": "What is the largest ocean in the world?",
-    "options": {"A": "Atlantic", "B": "Indian", "C": "Pacific", "D": "Arctic"},
-    "answer": "C"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Taaooma",
+      "B": "Ellen DeGeneres",
+      "C": "Dave Chappelle",
+      "D": "Rowan Atkinson"
+    },
+    "answer": "A"
   },
   {
     "id": 126,
-    "category": "geography",
-    "question": "Which country is known as the 'Giant of Africa'?",
-    "options": {"A": "Egypt", "B": "South Africa", "C": "Kenya", "D": "Nigeria"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Beyoncé",
+      "B": "Ed Sheeran",
+      "C": "Drake",
+      "D": "Ayra Starr"
+    },
     "answer": "D"
   },
   {
     "id": 127,
-    "category": "geography",
-    "question": "Which Nigerian state has the largest land area?",
-    "options": {"A": "Borno", "B": "Niger", "C": "Taraba", "D": "Kaduna"},
-    "answer": "B"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Gladiator",
+      "B": "Avengers",
+      "C": "Osuofia in London",
+      "D": "Titanic"
+    },
+    "answer": "C"
   },
   {
     "id": 128,
-    "category": "geography",
-    "question": "What is the capital of Kenya?",
-    "options": {"A": "Nairobi", "B": "Kigali", "C": "Accra", "D": "Dar es Salaam"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Highlife",
+      "B": "K-Pop",
+      "C": "Country",
+      "D": "Salsa"
+    },
     "answer": "A"
   },
   {
     "id": 129,
-    "category": "geography",
-    "question": "Which desert is the largest in the world?",
-    "options": {"A": "Sahara", "B": "Kalahari", "C": "Arabian", "D": "Gobi"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Bovi",
+      "B": "Dave Chappelle",
+      "C": "Ellen DeGeneres",
+      "D": "Ali Wong"
+    },
     "answer": "A"
   },
   {
     "id": 130,
-    "category": "geography",
-    "question": "Which Nigerian state is known as the 'Food Basket of the Nation'?",
-    "options": {"A": "Kano", "B": "Benue", "C": "Kaduna", "D": "Ogun"},
-    "answer": "B"
-  },
-  {
-    "id": 131,
-    "category": "geography",
-    "question": "Which country is the largest in the world by land area?",
-    "options": {"A": "Russia", "B": "Canada", "C": "China", "D": "USA"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Zlatan",
+      "B": "Taylor Swift",
+      "C": "Beyoncé",
+      "D": "Ed Sheeran"
+    },
     "answer": "A"
   },
   {
+    "id": 131,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Frozen",
+      "B": "Avengers",
+      "C": "Jumanji",
+      "D": "Osuofia in London"
+    },
+    "answer": "D"
+  },
+  {
     "id": 132,
-    "category": "geography",
-    "question": "Which is the smallest continent?",
-    "options": {"A": "Europe", "B": "Australia", "C": "Antarctica", "D": "South America"},
-    "answer": "B"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Fuji",
+      "B": "Opera",
+      "C": "Country",
+      "D": "Techno"
+    },
+    "answer": "A"
   },
   {
     "id": 133,
-    "category": "geography",
-    "question": "What is the capital of Ghana?",
-    "options": {"A": "Accra", "B": "Nairobi", "C": "Dakar", "D": "Abidjan"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Bovi",
+      "B": "Ali Wong",
+      "C": "Ellen DeGeneres",
+      "D": "Chris Rock"
+    },
     "answer": "A"
   },
   {
     "id": 134,
-    "category": "geography",
-    "question": "Which river flows through Lokoja?",
-    "options": {"A": "River Benue", "B": "River Osun", "C": "River Niger", "D": "River Kaduna"},
-    "answer": "C"
-  },
-  {
-    "id": 135,
-    "category": "geography",
-    "question": "Mount Kilimanjaro is located in which country?",
-    "options": {"A": "Tanzania", "B": "Uganda", "C": "Ethiopia", "D": "Rwanda"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Burna Boy",
+      "B": "Ed Sheeran",
+      "C": "Drake",
+      "D": "Taylor Swift"
+    },
     "answer": "A"
   },
   {
+    "id": 135,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Titanic",
+      "B": "Gladiator",
+      "C": "Frozen",
+      "D": "Lionheart"
+    },
+    "answer": "D"
+  },
+  {
     "id": 136,
-    "category": "geography",
-    "question": "Which Nigerian state has the longest coastline?",
-    "options": {"A": "Ondo", "B": "Bayelsa", "C": "Lagos", "D": "Rivers"},
-    "answer": "C"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Fuji",
+      "B": "Opera",
+      "C": "EDM",
+      "D": "Techno"
+    },
+    "answer": "A"
   },
   {
     "id": 137,
-    "category": "geography",
-    "question": "What is the capital of South Africa? (Official)",
-    "options": {"A": "Johannesburg", "B": "Cape Town", "C": "Pretoria", "D": "Durban"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Dave Chappelle",
+      "B": "Ali Wong",
+      "C": "AY Makun",
+      "D": "Kevin Hart"
+    },
     "answer": "C"
   },
   {
     "id": 138,
-    "category": "geography",
-    "question": "Which continent is Nigeria part of?",
-    "options": {"A": "Africa", "B": "Asia", "C": "Europe", "D": "South America"},
-    "answer": "A"
-  },
-  {
-    "id": 139,
-    "category": "geography",
-    "question": "Which state is the 'Coal City'?",
-    "options": {"A": "Lagos", "B": "Enugu", "C": "Edo", "D": "Imo"},
-    "answer": "B"
-  },
-  {
-    "id": 140,
-    "category": "geography",
-    "question": "What is the capital of Egypt?",
-    "options": {"A": "Cairo", "B": "Alexandria", "C": "Lagos", "D": "Casablanca"},
-    "answer": "A"
-  },
-  {
-    "id": 141,
-    "category": "geography",
-    "question": "Which ocean borders Nigeria?",
-    "options": {"A": "Atlantic Ocean", "B": "Indian Ocean", "C": "Pacific Ocean", "D": "Arctic Ocean"},
-    "answer": "A"
-  },
-  {
-    "id": 142,
-    "category": "geography",
-    "question": "Which country is Nigeria’s western neighbor?",
-    "options": {"A": "Chad", "B": "Cameroon", "C": "Benin Republic", "D": "Niger"},
-    "answer": "C"
-  },
-  {
-    "id": 143,
-    "category": "geography",
-    "question": "What is the capital of France?",
-    "options": {"A": "Paris", "B": "Rome", "C": "Berlin", "D": "Madrid"},
-    "answer": "A"
-  },
-  {
-    "id": 144,
-    "category": "geography",
-    "question": "Which Nigerian state is known as the 'Land of Promise'?",
-    "options": {"A": "Akwa Ibom", "B": "Cross River", "C": "Ogun", "D": "Ekiti"},
-    "answer": "A"
-  },
-  {
-    "id": 145,
-    "category": "geography",
-    "question": "Which is the longest river in Nigeria?",
-    "options": {"A": "River Benue", "B": "River Kaduna", "C": "River Cross", "D": "River Niger"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Ed Sheeran",
+      "B": "Beyoncé",
+      "C": "Drake",
+      "D": "Olamide"
+    },
     "answer": "D"
   },
   {
-    "id": 146,
-    "category": "geography",
-    "question": "What is the capital of Japan?",
-    "options": {"A": "Kyoto", "B": "Tokyo", "C": "Osaka", "D": "Nagasaki"},
-    "answer": "B"
+    "id": 139,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "The Godfather",
+      "B": "Frozen",
+      "C": "Gladiator",
+      "D": "Aki Na Ukwa"
+    },
+    "answer": "D"
   },
   {
-    "id": 147,
-    "category": "geography",
-    "question": "Which state is known as the 'Sunshine State'?",
-    "options": {"A": "Ondo", "B": "Kogi", "C": "Kwara", "D": "Abia"},
-    "answer": "A"
-  },
-  {
-    "id": 148,
-    "category": "geography",
-    "question": "How many continents are in the world?",
-    "options": {"A": "5", "B": "6", "C": "7", "D": "8"},
+    "id": 140,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "EDM",
+      "B": "Salsa",
+      "C": "Afrobeats",
+      "D": "Country"
+    },
     "answer": "C"
   },
   {
-    "id": 149,
-    "category": "geography",
-    "question": "Which African country has the highest population?",
-    "options": {"A": "South Africa", "B": "Nigeria", "C": "Egypt", "D": "Kenya"},
+    "id": 141,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Dave Chappelle",
+      "B": "Broda Shaggi",
+      "C": "Chris Rock",
+      "D": "Rowan Atkinson"
+    },
     "answer": "B"
   },
   {
+    "id": 142,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Yemi Alade",
+      "B": "Taylor Swift",
+      "C": "Beyoncé",
+      "D": "Drake"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 143,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Titanic",
+      "B": "Gladiator",
+      "C": "Avengers",
+      "D": "Sugar Rush"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 144,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Country",
+      "B": "Salsa",
+      "C": "Afrobeats",
+      "D": "EDM"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 145,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Mr Macaroni",
+      "B": "Kevin Hart",
+      "C": "Ali Wong",
+      "D": "Chris Rock"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 146,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Bad Bunny",
+      "B": "Drake",
+      "C": "Burna Boy",
+      "D": "Ed Sheeran"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 147,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Gladiator",
+      "B": "The Godfather",
+      "C": "Citation",
+      "D": "Frozen"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 148,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Techno",
+      "B": "Hip hop",
+      "C": "Opera",
+      "D": "Country"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 149,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Ali Wong",
+      "B": "Rowan Atkinson",
+      "C": "Bovi",
+      "D": "Chris Rock"
+    },
+    "answer": "C"
+  },
+  {
     "id": 150,
-    "category": "geography",
-    "question": "What is the capital of Italy?",
-    "options": {"A": "Rome", "B": "Milan", "C": "Venice", "D": "Florence"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Ice Prince",
+      "B": "Ed Sheeran",
+      "C": "Bad Bunny",
+      "D": "Beyoncé"
+    },
     "answer": "A"
   },
   {
     "id": 151,
-    "category": "geography",
-    "question": "Which Nigerian state is the most populated?",
-    "options": {"A": "Lagos", "B": "Kano", "C": "Rivers", "D": "Oyo"},
-    "answer": "A"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "The Godfather",
+      "B": "Citation",
+      "C": "Gladiator",
+      "D": "Titanic"
+    },
+    "answer": "B"
   },
   {
     "id": 152,
-    "category": "geography",
-    "question": "Which country is called the 'Pearl of Africa'?",
-    "options": {"A": "Kenya", "B": "Uganda", "C": "Tanzania", "D": "Zambia"},
-    "answer": "B"
-  },
-  {
-    "id": 153,
-    "category": "geography",
-    "question": "What is the capital of the USA?",
-    "options": {"A": "New York", "B": "Washington D.C.", "C": "Los Angeles", "D": "Chicago"},
-    "answer": "B"
-  },
-  {
-    "id": 154,
-    "category": "geography",
-    "question": "Which state is known as the 'Home of Peace'?",
-    "options": {"A": "Plateau", "B": "Taraba", "C": "Borno", "D": "Adamawa"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Country",
+      "B": "EDM",
+      "C": "Hip hop",
+      "D": "K-Pop"
+    },
     "answer": "C"
   },
   {
+    "id": 153,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Ali Wong",
+      "B": "Chris Rock",
+      "C": "Kevin Hart",
+      "D": "Bovi"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 154,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Ed Sheeran",
+      "B": "Taylor Swift",
+      "C": "Drake",
+      "D": "Burna Boy"
+    },
+    "answer": "D"
+  },
+  {
     "id": 155,
-    "category": "geography",
-    "question": "Which of these is NOT a country?",
-    "options": {"A": "Canada", "B": "Sydney", "C": "India", "D": "Mexico"},
-    "answer": "B"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "King of Boys",
+      "B": "Avengers",
+      "C": "Titanic",
+      "D": "Frozen"
+    },
+    "answer": "A"
   },
   {
     "id": 156,
-    "category": "geography",
-    "question": "Which African country is famous for the pyramids?",
-    "options": {"A": "Ethiopia", "B": "Morocco", "C": "Egypt", "D": "Libya"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Salsa",
+      "B": "Country",
+      "C": "Hip hop",
+      "D": "Opera"
+    },
     "answer": "C"
   },
   {
     "id": 157,
-    "category": "geography",
-    "question": "What is the capital of China?",
-    "options": {"A": "Beijing", "B": "Shanghai", "C": "Hong Kong", "D": "Shenzhen"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Taaooma",
+      "B": "Dave Chappelle",
+      "C": "Ellen DeGeneres",
+      "D": "Ali Wong"
+    },
     "answer": "A"
   },
   {
     "id": 158,
-    "category": "geography",
-    "question": "Which is the hottest continent on Earth?",
-    "options": {"A": "Asia", "B": "Africa", "C": "Australia", "D": "South America"},
-    "answer": "B"
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Bad Bunny",
+      "B": "Ed Sheeran",
+      "C": "Taylor Swift",
+      "D": "Ayra Starr"
+    },
+    "answer": "D"
   },
   {
     "id": 159,
-    "category": "geography",
-    "question": "Which state is called the 'Land of Equity'?",
-    "options": {"A": "Kebbi", "B": "Ekiti", "C": "Kwara", "D": "Edo"},
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Avengers",
+      "B": "King of Boys",
+      "C": "Gladiator",
+      "D": "Titanic"
+    },
     "answer": "B"
   },
   {
     "id": 160,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "K-Pop",
+      "B": "EDM",
+      "C": "Opera",
+      "D": "Fuji"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 161,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Broda Shaggi",
+      "B": "Ellen DeGeneres",
+      "C": "Kevin Hart",
+      "D": "Rowan Atkinson"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 162,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Ed Sheeran",
+      "B": "Tiwa Savage",
+      "C": "Taylor Swift",
+      "D": "Adele"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 163,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Frozen",
+      "B": "The Godfather",
+      "C": "Gladiator",
+      "D": "Citation"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 164,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Salsa",
+      "B": "Opera",
+      "C": "Country",
+      "D": "Hip hop"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 165,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Ellen DeGeneres",
+      "B": "Kevin Hart",
+      "C": "Broda Shaggi",
+      "D": "Ali Wong"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 166,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Ed Sheeran",
+      "B": "Davido",
+      "C": "Adele",
+      "D": "Drake"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 167,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Frozen",
+      "B": "The Godfather",
+      "C": "Gladiator",
+      "D": "King of Boys"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 168,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Salsa",
+      "B": "EDM",
+      "C": "Fuji",
+      "D": "Opera"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 169,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Kevin Hart",
+      "B": "Mr Macaroni",
+      "C": "Chris Rock",
+      "D": "Ellen DeGeneres"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 170,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Ed Sheeran",
+      "B": "Bad Bunny",
+      "C": "Beyoncé",
+      "D": "Ice Prince"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 171,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Jumanji",
+      "B": "Gladiator",
+      "C": "The Figurine",
+      "D": "Frozen"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 172,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Hip hop",
+      "B": "EDM",
+      "C": "Country",
+      "D": "Salsa"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 173,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Dave Chappelle",
+      "B": "Kevin Hart",
+      "C": "Ali Wong",
+      "D": "Mr Macaroni"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 174,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Ed Sheeran",
+      "B": "Drake",
+      "C": "2Baba",
+      "D": "Bad Bunny"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 175,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Titanic",
+      "B": "The Godfather",
+      "C": "Jumanji",
+      "D": "Citation"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 176,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Afrobeats",
+      "B": "Salsa",
+      "C": "K-Pop",
+      "D": "Techno"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 177,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Chris Rock",
+      "B": "Ellen DeGeneres",
+      "C": "Bovi",
+      "D": "Kevin Hart"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 178,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Drake",
+      "B": "Bad Bunny",
+      "C": "Adele",
+      "D": "Davido"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 179,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Sugar Rush",
+      "B": "Jumanji",
+      "C": "Frozen",
+      "D": "Avengers"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 180,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Country",
+      "B": "EDM",
+      "C": "Salsa",
+      "D": "Highlife"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 181,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "AY Makun",
+      "B": "Chris Rock",
+      "C": "Rowan Atkinson",
+      "D": "Ellen DeGeneres"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 182,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Adele",
+      "B": "Drake",
+      "C": "Beyoncé",
+      "D": "Zlatan"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 183,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Titanic",
+      "B": "Jumanji",
+      "C": "October 1",
+      "D": "Frozen"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 184,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Country",
+      "B": "Salsa",
+      "C": "Afrobeats",
+      "D": "Techno"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 185,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Taaooma",
+      "B": "Kevin Hart",
+      "C": "Chris Rock",
+      "D": "Rowan Atkinson"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 186,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Bad Bunny",
+      "B": "Taylor Swift",
+      "C": "D'banj",
+      "D": "Beyoncé"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 187,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Avengers",
+      "B": "Citation",
+      "C": "Titanic",
+      "D": "Frozen"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 188,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Salsa",
+      "B": "Highlife",
+      "C": "K-Pop",
+      "D": "EDM"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 189,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Dave Chappelle",
+      "B": "Kevin Hart",
+      "C": "Chris Rock",
+      "D": "AY Makun"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 190,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Olamide",
+      "B": "Beyoncé",
+      "C": "Adele",
+      "D": "Taylor Swift"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 191,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Chief Daddy",
+      "B": "The Godfather",
+      "C": "Gladiator",
+      "D": "Avengers"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 192,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "EDM",
+      "B": "Highlife",
+      "C": "Opera",
+      "D": "K-Pop"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 193,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "AY Makun",
+      "B": "Dave Chappelle",
+      "C": "Kevin Hart",
+      "D": "Rowan Atkinson"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 194,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Ed Sheeran",
+      "B": "Yemi Alade",
+      "C": "Taylor Swift",
+      "D": "Beyoncé"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 195,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Jumanji",
+      "B": "October 1",
+      "C": "Titanic",
+      "D": "Gladiator"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 196,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "Afrobeats",
+      "B": "EDM",
+      "C": "K-Pop",
+      "D": "Salsa"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 197,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian comedian?",
+    "options": {
+      "A": "Dave Chappelle",
+      "B": "Ali Wong",
+      "C": "Chris Rock",
+      "D": "Sabinus"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 198,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian artist?",
+    "options": {
+      "A": "Taylor Swift",
+      "B": "Beyoncé",
+      "C": "M.I Abaga",
+      "D": "Drake"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 199,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian movie title?",
+    "options": {
+      "A": "Avengers",
+      "B": "Chief Daddy",
+      "C": "Titanic",
+      "D": "The Godfather"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 200,
+    "category": "nigeria_entertainment",
+    "question": "Which of these is a Nigerian music genre?",
+    "options": {
+      "A": "EDM",
+      "B": "Hip hop",
+      "C": "K-Pop",
+      "D": "Country"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 201,
+    "category": "football",
+    "question": "How many players start a football match per team?",
+    "options": {
+      "A": "11",
+      "B": "10",
+      "C": "9",
+      "D": "12"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 202,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "80 minutes",
+      "B": "100 minutes",
+      "C": "90 minutes",
+      "D": "60 minutes"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 203,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Brazil",
+      "B": "Germany",
+      "C": "France",
+      "D": "Argentina"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 204,
+    "category": "football",
+    "question": "Which card means a player is sent off?",
+    "options": {
+      "A": "Blue card",
+      "B": "Green card",
+      "C": "Red card",
+      "D": "Yellow card"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 205,
+    "category": "football",
+    "question": "What is awarded for a foul inside the penalty box?",
+    "options": {
+      "A": "Corner kick",
+      "B": "Penalty kick",
+      "C": "Throw-in",
+      "D": "Free kick only"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 206,
+    "category": "football",
+    "question": "How many goals make a hat-trick?",
+    "options": {
+      "A": "3",
+      "B": "5",
+      "C": "2",
+      "D": "4"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 207,
+    "category": "football",
+    "question": "Which restart happens after the ball crosses the sideline?",
+    "options": {
+      "A": "Throw-in",
+      "B": "Corner kick",
+      "C": "Goal kick",
+      "D": "Kick-off"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 208,
+    "category": "football",
+    "question": "Which player can use hands inside the penalty area?",
+    "options": {
+      "A": "Winger",
+      "B": "Striker",
+      "C": "Defender",
+      "D": "Goalkeeper"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 209,
+    "category": "football",
+    "question": "What is a 'clean sheet'?",
+    "options": {
+      "A": "Winning away",
+      "B": "Getting a red card",
+      "C": "Scoring three goals",
+      "D": "Not conceding a goal"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 210,
+    "category": "football",
+    "question": "AFCON stands for?",
+    "options": {
+      "A": "Africa Cup of Nations",
+      "B": "Association Football Club of Nations",
+      "C": "African Football Confederation",
+      "D": "African Championship of Nations"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 211,
+    "category": "football",
+    "question": "How many goals make a hat-trick?",
+    "options": {
+      "A": "4",
+      "B": "3",
+      "C": "5",
+      "D": "2"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 212,
+    "category": "football",
+    "question": "What is a 'clean sheet'?",
+    "options": {
+      "A": "Not conceding a goal",
+      "B": "Winning away",
+      "C": "Getting a red card",
+      "D": "Scoring three goals"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 213,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "60 minutes",
+      "B": "80 minutes",
+      "C": "90 minutes",
+      "D": "100 minutes"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 214,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Argentina",
+      "B": "France",
+      "C": "Germany",
+      "D": "Brazil"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 215,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "France",
+      "B": "Germany",
+      "C": "Argentina",
+      "D": "Brazil"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 216,
+    "category": "football",
+    "question": "Which card means a player is sent off?",
+    "options": {
+      "A": "Red card",
+      "B": "Yellow card",
+      "C": "Green card",
+      "D": "Blue card"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 217,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "100 minutes",
+      "B": "80 minutes",
+      "C": "60 minutes",
+      "D": "90 minutes"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 218,
+    "category": "football",
+    "question": "What is awarded for a foul inside the penalty box?",
+    "options": {
+      "A": "Corner kick",
+      "B": "Free kick only",
+      "C": "Penalty kick",
+      "D": "Throw-in"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 219,
+    "category": "football",
+    "question": "Which restart happens after the ball crosses the sideline?",
+    "options": {
+      "A": "Goal kick",
+      "B": "Corner kick",
+      "C": "Throw-in",
+      "D": "Kick-off"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 220,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Germany",
+      "B": "Brazil",
+      "C": "Argentina",
+      "D": "France"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 221,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "France",
+      "B": "Germany",
+      "C": "Argentina",
+      "D": "Brazil"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 222,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "France",
+      "B": "Argentina",
+      "C": "Germany",
+      "D": "Brazil"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 223,
+    "category": "football",
+    "question": "How many goals make a hat-trick?",
+    "options": {
+      "A": "2",
+      "B": "4",
+      "C": "3",
+      "D": "5"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 224,
+    "category": "football",
+    "question": "What is awarded for a foul inside the penalty box?",
+    "options": {
+      "A": "Free kick only",
+      "B": "Penalty kick",
+      "C": "Corner kick",
+      "D": "Throw-in"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 225,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Brazil",
+      "B": "France",
+      "C": "Argentina",
+      "D": "Germany"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 226,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "France",
+      "B": "Argentina",
+      "C": "Germany",
+      "D": "Brazil"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 227,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "90 minutes",
+      "B": "60 minutes",
+      "C": "80 minutes",
+      "D": "100 minutes"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 228,
+    "category": "football",
+    "question": "Which restart happens after the ball crosses the sideline?",
+    "options": {
+      "A": "Goal kick",
+      "B": "Corner kick",
+      "C": "Throw-in",
+      "D": "Kick-off"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 229,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "100 minutes",
+      "B": "90 minutes",
+      "C": "60 minutes",
+      "D": "80 minutes"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 230,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Argentina",
+      "B": "France",
+      "C": "Germany",
+      "D": "Brazil"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 231,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "90 minutes",
+      "B": "80 minutes",
+      "C": "60 minutes",
+      "D": "100 minutes"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 232,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "60 minutes",
+      "B": "80 minutes",
+      "C": "90 minutes",
+      "D": "100 minutes"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 233,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "80 minutes",
+      "B": "90 minutes",
+      "C": "100 minutes",
+      "D": "60 minutes"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 234,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Brazil",
+      "B": "Argentina",
+      "C": "France",
+      "D": "Germany"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 235,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "80 minutes",
+      "B": "100 minutes",
+      "C": "60 minutes",
+      "D": "90 minutes"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 236,
+    "category": "football",
+    "question": "How many players start a football match per team?",
+    "options": {
+      "A": "11",
+      "B": "12",
+      "C": "9",
+      "D": "10"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 237,
+    "category": "football",
+    "question": "How many goals make a hat-trick?",
+    "options": {
+      "A": "4",
+      "B": "3",
+      "C": "5",
+      "D": "2"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 238,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Argentina",
+      "B": "Brazil",
+      "C": "Germany",
+      "D": "France"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 239,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Brazil",
+      "B": "Germany",
+      "C": "France",
+      "D": "Argentina"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 240,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "90 minutes",
+      "B": "60 minutes",
+      "C": "80 minutes",
+      "D": "100 minutes"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 241,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "80 minutes",
+      "B": "90 minutes",
+      "C": "100 minutes",
+      "D": "60 minutes"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 242,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "60 minutes",
+      "B": "100 minutes",
+      "C": "90 minutes",
+      "D": "80 minutes"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 243,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Germany",
+      "B": "France",
+      "C": "Argentina",
+      "D": "Brazil"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 244,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Germany",
+      "B": "Brazil",
+      "C": "Argentina",
+      "D": "France"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 245,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "100 minutes",
+      "B": "90 minutes",
+      "C": "60 minutes",
+      "D": "80 minutes"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 246,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Brazil",
+      "B": "Argentina",
+      "C": "France",
+      "D": "Germany"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 247,
+    "category": "football",
+    "question": "What is awarded for a foul inside the penalty box?",
+    "options": {
+      "A": "Corner kick",
+      "B": "Throw-in",
+      "C": "Free kick only",
+      "D": "Penalty kick"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 248,
+    "category": "football",
+    "question": "Which restart happens after the ball crosses the sideline?",
+    "options": {
+      "A": "Corner kick",
+      "B": "Kick-off",
+      "C": "Throw-in",
+      "D": "Goal kick"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 249,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "80 minutes",
+      "B": "100 minutes",
+      "C": "60 minutes",
+      "D": "90 minutes"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 250,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "60 minutes",
+      "B": "100 minutes",
+      "C": "90 minutes",
+      "D": "80 minutes"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 251,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Argentina",
+      "B": "Brazil",
+      "C": "Germany",
+      "D": "France"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 252,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Brazil",
+      "B": "France",
+      "C": "Germany",
+      "D": "Argentina"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 253,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "France",
+      "B": "Germany",
+      "C": "Brazil",
+      "D": "Argentina"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 254,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Argentina",
+      "B": "Brazil",
+      "C": "Germany",
+      "D": "France"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 255,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Germany",
+      "B": "France",
+      "C": "Brazil",
+      "D": "Argentina"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 256,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Argentina",
+      "B": "Germany",
+      "C": "Brazil",
+      "D": "France"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 257,
+    "category": "football",
+    "question": "What is awarded for a foul inside the penalty box?",
+    "options": {
+      "A": "Free kick only",
+      "B": "Penalty kick",
+      "C": "Corner kick",
+      "D": "Throw-in"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 258,
+    "category": "football",
+    "question": "How many goals make a hat-trick?",
+    "options": {
+      "A": "2",
+      "B": "5",
+      "C": "3",
+      "D": "4"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 259,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Brazil",
+      "B": "Argentina",
+      "C": "France",
+      "D": "Germany"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 260,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Argentina",
+      "B": "Brazil",
+      "C": "France",
+      "D": "Germany"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 261,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Brazil",
+      "B": "Germany",
+      "C": "France",
+      "D": "Argentina"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 262,
+    "category": "football",
+    "question": "What is a 'clean sheet'?",
+    "options": {
+      "A": "Scoring three goals",
+      "B": "Getting a red card",
+      "C": "Not conceding a goal",
+      "D": "Winning away"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 263,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "60 minutes",
+      "B": "100 minutes",
+      "C": "90 minutes",
+      "D": "80 minutes"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 264,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "90 minutes",
+      "B": "60 minutes",
+      "C": "100 minutes",
+      "D": "80 minutes"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 265,
+    "category": "football",
+    "question": "Which card means a player is sent off?",
+    "options": {
+      "A": "Red card",
+      "B": "Blue card",
+      "C": "Green card",
+      "D": "Yellow card"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 266,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "France",
+      "B": "Argentina",
+      "C": "Brazil",
+      "D": "Germany"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 267,
+    "category": "football",
+    "question": "Which card means a player is sent off?",
+    "options": {
+      "A": "Green card",
+      "B": "Blue card",
+      "C": "Red card",
+      "D": "Yellow card"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 268,
+    "category": "football",
+    "question": "How many goals make a hat-trick?",
+    "options": {
+      "A": "4",
+      "B": "5",
+      "C": "2",
+      "D": "3"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 269,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "France",
+      "B": "Brazil",
+      "C": "Germany",
+      "D": "Argentina"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 270,
+    "category": "football",
+    "question": "What is awarded for a foul inside the penalty box?",
+    "options": {
+      "A": "Penalty kick",
+      "B": "Free kick only",
+      "C": "Throw-in",
+      "D": "Corner kick"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 271,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Brazil",
+      "B": "Argentina",
+      "C": "France",
+      "D": "Germany"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 272,
+    "category": "football",
+    "question": "What is awarded for a foul inside the penalty box?",
+    "options": {
+      "A": "Penalty kick",
+      "B": "Corner kick",
+      "C": "Free kick only",
+      "D": "Throw-in"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 273,
+    "category": "football",
+    "question": "Which restart happens after the ball crosses the sideline?",
+    "options": {
+      "A": "Kick-off",
+      "B": "Goal kick",
+      "C": "Corner kick",
+      "D": "Throw-in"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 274,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Germany",
+      "B": "France",
+      "C": "Argentina",
+      "D": "Brazil"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 275,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "90 minutes",
+      "B": "80 minutes",
+      "C": "60 minutes",
+      "D": "100 minutes"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 276,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "80 minutes",
+      "B": "90 minutes",
+      "C": "60 minutes",
+      "D": "100 minutes"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 277,
+    "category": "football",
+    "question": "Which restart happens after the ball crosses the sideline?",
+    "options": {
+      "A": "Throw-in",
+      "B": "Goal kick",
+      "C": "Corner kick",
+      "D": "Kick-off"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 278,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Argentina",
+      "B": "France",
+      "C": "Germany",
+      "D": "Brazil"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 279,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "100 minutes",
+      "B": "60 minutes",
+      "C": "80 minutes",
+      "D": "90 minutes"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 280,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Brazil",
+      "B": "Germany",
+      "C": "France",
+      "D": "Argentina"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 281,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "100 minutes",
+      "B": "90 minutes",
+      "C": "60 minutes",
+      "D": "80 minutes"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 282,
+    "category": "football",
+    "question": "How many players start a football match per team?",
+    "options": {
+      "A": "9",
+      "B": "12",
+      "C": "10",
+      "D": "11"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 283,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Argentina",
+      "B": "Germany",
+      "C": "France",
+      "D": "Brazil"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 284,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "90 minutes",
+      "B": "100 minutes",
+      "C": "80 minutes",
+      "D": "60 minutes"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 285,
+    "category": "football",
+    "question": "How many goals make a hat-trick?",
+    "options": {
+      "A": "5",
+      "B": "3",
+      "C": "2",
+      "D": "4"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 286,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Argentina",
+      "B": "France",
+      "C": "Germany",
+      "D": "Brazil"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 287,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "France",
+      "B": "Argentina",
+      "C": "Germany",
+      "D": "Brazil"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 288,
+    "category": "football",
+    "question": "What is awarded for a foul inside the penalty box?",
+    "options": {
+      "A": "Free kick only",
+      "B": "Throw-in",
+      "C": "Corner kick",
+      "D": "Penalty kick"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 289,
+    "category": "football",
+    "question": "Which restart happens after the ball crosses the sideline?",
+    "options": {
+      "A": "Goal kick",
+      "B": "Throw-in",
+      "C": "Kick-off",
+      "D": "Corner kick"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 290,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "80 minutes",
+      "B": "60 minutes",
+      "C": "100 minutes",
+      "D": "90 minutes"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 291,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "60 minutes",
+      "B": "80 minutes",
+      "C": "100 minutes",
+      "D": "90 minutes"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 292,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "90 minutes",
+      "B": "100 minutes",
+      "C": "80 minutes",
+      "D": "60 minutes"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 293,
+    "category": "football",
+    "question": "What is a 'clean sheet'?",
+    "options": {
+      "A": "Getting a red card",
+      "B": "Not conceding a goal",
+      "C": "Scoring three goals",
+      "D": "Winning away"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 294,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "90 minutes",
+      "B": "100 minutes",
+      "C": "80 minutes",
+      "D": "60 minutes"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 295,
+    "category": "football",
+    "question": "How many goals make a hat-trick?",
+    "options": {
+      "A": "3",
+      "B": "5",
+      "C": "2",
+      "D": "4"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 296,
+    "category": "football",
+    "question": "Which card means a player is sent off?",
+    "options": {
+      "A": "Yellow card",
+      "B": "Blue card",
+      "C": "Green card",
+      "D": "Red card"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 297,
+    "category": "football",
+    "question": "What is the maximum duration of a standard football match (excluding added time)?",
+    "options": {
+      "A": "90 minutes",
+      "B": "100 minutes",
+      "C": "60 minutes",
+      "D": "80 minutes"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 298,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "France",
+      "B": "Germany",
+      "C": "Argentina",
+      "D": "Brazil"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 299,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "France",
+      "B": "Germany",
+      "C": "Brazil",
+      "D": "Argentina"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 300,
+    "category": "football",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "options": {
+      "A": "Argentina",
+      "B": "France",
+      "C": "Brazil",
+      "D": "Germany"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 301,
+    "category": "geography",
+    "question": "What is the capital of Nigeria?",
+    "options": {
+      "A": "Enugu",
+      "B": "Kano",
+      "C": "Lagos",
+      "D": "Abuja"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 302,
+    "category": "geography",
+    "question": "Which is the largest continent?",
+    "options": {
+      "A": "Europe",
+      "B": "Africa",
+      "C": "Asia",
+      "D": "Australia"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 303,
+    "category": "geography",
+    "question": "Which river is the longest in Africa?",
+    "options": {
+      "A": "River Niger",
+      "B": "Congo River",
+      "C": "River Nile",
+      "D": "Zambezi River"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 304,
+    "category": "geography",
+    "question": "What is the largest ocean in the world?",
+    "options": {
+      "A": "Indian Ocean",
+      "B": "Arctic Ocean",
+      "C": "Pacific Ocean",
+      "D": "Atlantic Ocean"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 305,
+    "category": "geography",
+    "question": "Which desert is the largest hot desert in the world?",
+    "options": {
+      "A": "Sahara",
+      "B": "Arabian Desert",
+      "C": "Gobi",
+      "D": "Kalahari"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 306,
+    "category": "geography",
+    "question": "Mount Kilimanjaro is located in which country?",
+    "options": {
+      "A": "Ethiopia",
+      "B": "Kenya",
+      "C": "Uganda",
+      "D": "Tanzania"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 307,
     "category": "geography",
     "question": "The River Niger empties into which ocean?",
-    "options": {"A": "Indian Ocean", "B": "Pacific Ocean", "C": "Atlantic Ocean", "D": "Arctic Ocean"},
+    "options": {
+      "A": "Indian Ocean",
+      "B": "Atlantic Ocean",
+      "C": "Arctic Ocean",
+      "D": "Pacific Ocean"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 308,
+    "category": "geography",
+    "question": "The confluence at Lokoja is between the Niger and the?",
+    "options": {
+      "A": "Kaduna",
+      "B": "Benue",
+      "C": "Osun",
+      "D": "Cross"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 309,
+    "category": "geography",
+    "question": "What is the capital of Abia?",
+    "options": {
+      "A": "Yenagoa",
+      "B": "Umuahia",
+      "C": "Jalingo",
+      "D": "Lafia"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 310,
+    "category": "geography",
+    "question": "What is the capital of Adamawa?",
+    "options": {
+      "A": "Ilorin",
+      "B": "Umuahia",
+      "C": "Akure",
+      "D": "Yola"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 311,
+    "category": "geography",
+    "question": "What is the capital of Akwa Ibom?",
+    "options": {
+      "A": "Maiduguri",
+      "B": "Uyo",
+      "C": "Osogbo",
+      "D": "Sokoto"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 312,
+    "category": "geography",
+    "question": "What is the capital of Anambra?",
+    "options": {
+      "A": "Awka",
+      "B": "Lafia",
+      "C": "Abakaliki",
+      "D": "Jos"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 313,
+    "category": "geography",
+    "question": "What is the capital of Bauchi?",
+    "options": {
+      "A": "Osogbo",
+      "B": "Bauchi",
+      "C": "Ado-Ekiti",
+      "D": "Damaturu"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 314,
+    "category": "geography",
+    "question": "What is the capital of Bayelsa?",
+    "options": {
+      "A": "Gusau",
+      "B": "Kano",
+      "C": "Port Harcourt",
+      "D": "Yenagoa"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 315,
+    "category": "geography",
+    "question": "What is the capital of Benue?",
+    "options": {
+      "A": "Makurdi",
+      "B": "Jos",
+      "C": "Osogbo",
+      "D": "Kano"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 316,
+    "category": "geography",
+    "question": "What is the capital of Borno?",
+    "options": {
+      "A": "Dutse",
+      "B": "Maiduguri",
+      "C": "Lokoja",
+      "D": "Yenagoa"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 317,
+    "category": "geography",
+    "question": "What is the capital of Cross River?",
+    "options": {
+      "A": "Ibadan",
+      "B": "Calabar",
+      "C": "Dutse",
+      "D": "Kano"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 318,
+    "category": "geography",
+    "question": "What is the capital of Delta?",
+    "options": {
+      "A": "Asaba",
+      "B": "Minna",
+      "C": "Jos",
+      "D": "Ilorin"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 319,
+    "category": "geography",
+    "question": "What is the capital of Ebonyi?",
+    "options": {
+      "A": "Lokoja",
+      "B": "Abakaliki",
+      "C": "Sokoto",
+      "D": "Yola"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 320,
+    "category": "geography",
+    "question": "What is the capital of Edo?",
+    "options": {
+      "A": "Sokoto",
+      "B": "Benin City",
+      "C": "Gombe",
+      "D": "Ado-Ekiti"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 321,
+    "category": "geography",
+    "question": "What is the capital of Ekiti?",
+    "options": {
+      "A": "Ikeja",
+      "B": "Ilorin",
+      "C": "Kaduna",
+      "D": "Ado-Ekiti"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 322,
+    "category": "geography",
+    "question": "What is the capital of Enugu?",
+    "options": {
+      "A": "Kano",
+      "B": "Umuahia",
+      "C": "Enugu",
+      "D": "Abuja"
+    },
     "answer": "C"
+  },
+  {
+    "id": 323,
+    "category": "geography",
+    "question": "What is the capital of Gombe?",
+    "options": {
+      "A": "Damaturu",
+      "B": "Gombe",
+      "C": "Yenagoa",
+      "D": "Ado-Ekiti"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 324,
+    "category": "geography",
+    "question": "What is the capital of Imo?",
+    "options": {
+      "A": "Owerri",
+      "B": "Dutse",
+      "C": "Sokoto",
+      "D": "Akure"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 325,
+    "category": "geography",
+    "question": "What is the capital of Jigawa?",
+    "options": {
+      "A": "Owerri",
+      "B": "Port Harcourt",
+      "C": "Abuja",
+      "D": "Dutse"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 326,
+    "category": "geography",
+    "question": "What is the capital of Kaduna?",
+    "options": {
+      "A": "Yola",
+      "B": "Sokoto",
+      "C": "Kaduna",
+      "D": "Ibadan"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 327,
+    "category": "geography",
+    "question": "What is the capital of Kano?",
+    "options": {
+      "A": "Yenagoa",
+      "B": "Gombe",
+      "C": "Katsina",
+      "D": "Kano"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 328,
+    "category": "geography",
+    "question": "What is the capital of Katsina?",
+    "options": {
+      "A": "Owerri",
+      "B": "Birnin Kebbi",
+      "C": "Katsina",
+      "D": "Abeokuta"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 329,
+    "category": "geography",
+    "question": "What is the capital of Kebbi?",
+    "options": {
+      "A": "Lafia",
+      "B": "Port Harcourt",
+      "C": "Abuja",
+      "D": "Birnin Kebbi"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 330,
+    "category": "geography",
+    "question": "What is the capital of Kogi?",
+    "options": {
+      "A": "Osogbo",
+      "B": "Damaturu",
+      "C": "Ikeja",
+      "D": "Lokoja"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 331,
+    "category": "geography",
+    "question": "What is the capital of Kwara?",
+    "options": {
+      "A": "Ilorin",
+      "B": "Ikeja",
+      "C": "Lokoja",
+      "D": "Abuja"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 332,
+    "category": "geography",
+    "question": "What is the capital of Lagos?",
+    "options": {
+      "A": "Katsina",
+      "B": "Kaduna",
+      "C": "Jos",
+      "D": "Ikeja"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 333,
+    "category": "geography",
+    "question": "What is the capital of Nasarawa?",
+    "options": {
+      "A": "Maiduguri",
+      "B": "Lafia",
+      "C": "Dutse",
+      "D": "Gombe"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 334,
+    "category": "geography",
+    "question": "What is the capital of Niger?",
+    "options": {
+      "A": "Minna",
+      "B": "Birnin Kebbi",
+      "C": "Ado-Ekiti",
+      "D": "Maiduguri"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 335,
+    "category": "geography",
+    "question": "What is the capital of Ogun?",
+    "options": {
+      "A": "Gusau",
+      "B": "Ado-Ekiti",
+      "C": "Benin City",
+      "D": "Abeokuta"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 336,
+    "category": "geography",
+    "question": "What is the capital of Ondo?",
+    "options": {
+      "A": "Akure",
+      "B": "Port Harcourt",
+      "C": "Kaduna",
+      "D": "Enugu"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 337,
+    "category": "geography",
+    "question": "What is the capital of Osun?",
+    "options": {
+      "A": "Kano",
+      "B": "Osogbo",
+      "C": "Damaturu",
+      "D": "Makurdi"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 338,
+    "category": "geography",
+    "question": "What is the capital of Oyo?",
+    "options": {
+      "A": "Ado-Ekiti",
+      "B": "Ibadan",
+      "C": "Gombe",
+      "D": "Kano"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 339,
+    "category": "geography",
+    "question": "What is the capital of Plateau?",
+    "options": {
+      "A": "Jos",
+      "B": "Ikeja",
+      "C": "Katsina",
+      "D": "Benin City"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 340,
+    "category": "geography",
+    "question": "What is the capital of Rivers?",
+    "options": {
+      "A": "Calabar",
+      "B": "Port Harcourt",
+      "C": "Umuahia",
+      "D": "Gusau"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 341,
+    "category": "geography",
+    "question": "What is the capital of Sokoto?",
+    "options": {
+      "A": "Kaduna",
+      "B": "Sokoto",
+      "C": "Awka",
+      "D": "Uyo"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 342,
+    "category": "geography",
+    "question": "What is the capital of Taraba?",
+    "options": {
+      "A": "Calabar",
+      "B": "Abuja",
+      "C": "Jalingo",
+      "D": "Kano"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 343,
+    "category": "geography",
+    "question": "What is the capital of Yobe?",
+    "options": {
+      "A": "Umuahia",
+      "B": "Makurdi",
+      "C": "Port Harcourt",
+      "D": "Damaturu"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 344,
+    "category": "geography",
+    "question": "What is the capital of Zamfara?",
+    "options": {
+      "A": "Osogbo",
+      "B": "Jos",
+      "C": "Gusau",
+      "D": "Kano"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 345,
+    "category": "geography",
+    "question": "What is the capital of FCT?",
+    "options": {
+      "A": "Awka",
+      "B": "Benin City",
+      "C": "Lokoja",
+      "D": "Abuja"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 346,
+    "category": "geography",
+    "question": "What is the capital of Cross River?",
+    "options": {
+      "A": "Kano",
+      "B": "Ibadan",
+      "C": "Calabar",
+      "D": "Dutse"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 347,
+    "category": "geography",
+    "question": "What is the capital of Kwara?",
+    "options": {
+      "A": "Ilorin",
+      "B": "Abuja",
+      "C": "Ikeja",
+      "D": "Lokoja"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 348,
+    "category": "geography",
+    "question": "The confluence at Lokoja is between the Niger and the?",
+    "options": {
+      "A": "Cross",
+      "B": "Kaduna",
+      "C": "Benue",
+      "D": "Osun"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 349,
+    "category": "geography",
+    "question": "Which desert is the largest hot desert in the world?",
+    "options": {
+      "A": "Sahara",
+      "B": "Gobi",
+      "C": "Kalahari",
+      "D": "Arabian Desert"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 350,
+    "category": "geography",
+    "question": "What is the capital of Kaduna?",
+    "options": {
+      "A": "Sokoto",
+      "B": "Ibadan",
+      "C": "Kaduna",
+      "D": "Yola"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 351,
+    "category": "geography",
+    "question": "What is the capital of Lagos?",
+    "options": {
+      "A": "Ikeja",
+      "B": "Jos",
+      "C": "Kaduna",
+      "D": "Katsina"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 352,
+    "category": "geography",
+    "question": "Which desert is the largest hot desert in the world?",
+    "options": {
+      "A": "Gobi",
+      "B": "Arabian Desert",
+      "C": "Sahara",
+      "D": "Kalahari"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 353,
+    "category": "geography",
+    "question": "What is the capital of Osun?",
+    "options": {
+      "A": "Kano",
+      "B": "Damaturu",
+      "C": "Makurdi",
+      "D": "Osogbo"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 354,
+    "category": "geography",
+    "question": "What is the capital of Sokoto?",
+    "options": {
+      "A": "Sokoto",
+      "B": "Kaduna",
+      "C": "Uyo",
+      "D": "Awka"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 355,
+    "category": "geography",
+    "question": "What is the capital of Zamfara?",
+    "options": {
+      "A": "Kano",
+      "B": "Gusau",
+      "C": "Osogbo",
+      "D": "Jos"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 356,
+    "category": "geography",
+    "question": "What is the largest ocean in the world?",
+    "options": {
+      "A": "Indian Ocean",
+      "B": "Arctic Ocean",
+      "C": "Atlantic Ocean",
+      "D": "Pacific Ocean"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 357,
+    "category": "geography",
+    "question": "What is the capital of Adamawa?",
+    "options": {
+      "A": "Yola",
+      "B": "Ilorin",
+      "C": "Akure",
+      "D": "Umuahia"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 358,
+    "category": "geography",
+    "question": "What is the capital of Adamawa?",
+    "options": {
+      "A": "Umuahia",
+      "B": "Yola",
+      "C": "Ilorin",
+      "D": "Akure"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 359,
+    "category": "geography",
+    "question": "Which desert is the largest hot desert in the world?",
+    "options": {
+      "A": "Kalahari",
+      "B": "Gobi",
+      "C": "Sahara",
+      "D": "Arabian Desert"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 360,
+    "category": "geography",
+    "question": "What is the capital of Osun?",
+    "options": {
+      "A": "Osogbo",
+      "B": "Damaturu",
+      "C": "Makurdi",
+      "D": "Kano"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 361,
+    "category": "geography",
+    "question": "What is the capital of Edo?",
+    "options": {
+      "A": "Gombe",
+      "B": "Sokoto",
+      "C": "Ado-Ekiti",
+      "D": "Benin City"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 362,
+    "category": "geography",
+    "question": "Mount Kilimanjaro is located in which country?",
+    "options": {
+      "A": "Kenya",
+      "B": "Tanzania",
+      "C": "Ethiopia",
+      "D": "Uganda"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 363,
+    "category": "geography",
+    "question": "What is the capital of Borno?",
+    "options": {
+      "A": "Dutse",
+      "B": "Yenagoa",
+      "C": "Maiduguri",
+      "D": "Lokoja"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 364,
+    "category": "geography",
+    "question": "The confluence at Lokoja is between the Niger and the?",
+    "options": {
+      "A": "Benue",
+      "B": "Kaduna",
+      "C": "Osun",
+      "D": "Cross"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 365,
+    "category": "geography",
+    "question": "What is the capital of Sokoto?",
+    "options": {
+      "A": "Uyo",
+      "B": "Awka",
+      "C": "Sokoto",
+      "D": "Kaduna"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 366,
+    "category": "geography",
+    "question": "What is the capital of Kebbi?",
+    "options": {
+      "A": "Lafia",
+      "B": "Port Harcourt",
+      "C": "Abuja",
+      "D": "Birnin Kebbi"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 367,
+    "category": "geography",
+    "question": "Which desert is the largest hot desert in the world?",
+    "options": {
+      "A": "Sahara",
+      "B": "Arabian Desert",
+      "C": "Gobi",
+      "D": "Kalahari"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 368,
+    "category": "geography",
+    "question": "What is the capital of Adamawa?",
+    "options": {
+      "A": "Yola",
+      "B": "Ilorin",
+      "C": "Umuahia",
+      "D": "Akure"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 369,
+    "category": "geography",
+    "question": "What is the capital of Adamawa?",
+    "options": {
+      "A": "Akure",
+      "B": "Yola",
+      "C": "Umuahia",
+      "D": "Ilorin"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 370,
+    "category": "geography",
+    "question": "What is the capital of Plateau?",
+    "options": {
+      "A": "Jos",
+      "B": "Ikeja",
+      "C": "Katsina",
+      "D": "Benin City"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 371,
+    "category": "geography",
+    "question": "What is the capital of Zamfara?",
+    "options": {
+      "A": "Gusau",
+      "B": "Jos",
+      "C": "Osogbo",
+      "D": "Kano"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 372,
+    "category": "geography",
+    "question": "What is the capital of Rivers?",
+    "options": {
+      "A": "Port Harcourt",
+      "B": "Umuahia",
+      "C": "Calabar",
+      "D": "Gusau"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 373,
+    "category": "geography",
+    "question": "The confluence at Lokoja is between the Niger and the?",
+    "options": {
+      "A": "Kaduna",
+      "B": "Benue",
+      "C": "Osun",
+      "D": "Cross"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 374,
+    "category": "geography",
+    "question": "What is the capital of Bauchi?",
+    "options": {
+      "A": "Damaturu",
+      "B": "Bauchi",
+      "C": "Osogbo",
+      "D": "Ado-Ekiti"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 375,
+    "category": "geography",
+    "question": "What is the capital of Kano?",
+    "options": {
+      "A": "Kano",
+      "B": "Yenagoa",
+      "C": "Katsina",
+      "D": "Gombe"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 376,
+    "category": "geography",
+    "question": "What is the capital of Katsina?",
+    "options": {
+      "A": "Birnin Kebbi",
+      "B": "Abeokuta",
+      "C": "Owerri",
+      "D": "Katsina"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 377,
+    "category": "geography",
+    "question": "What is the capital of Niger?",
+    "options": {
+      "A": "Ado-Ekiti",
+      "B": "Minna",
+      "C": "Maiduguri",
+      "D": "Birnin Kebbi"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 378,
+    "category": "geography",
+    "question": "What is the capital of Akwa Ibom?",
+    "options": {
+      "A": "Osogbo",
+      "B": "Sokoto",
+      "C": "Maiduguri",
+      "D": "Uyo"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 379,
+    "category": "geography",
+    "question": "What is the capital of Ekiti?",
+    "options": {
+      "A": "Ado-Ekiti",
+      "B": "Ilorin",
+      "C": "Kaduna",
+      "D": "Ikeja"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 380,
+    "category": "geography",
+    "question": "What is the capital of Kwara?",
+    "options": {
+      "A": "Ikeja",
+      "B": "Ilorin",
+      "C": "Lokoja",
+      "D": "Abuja"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 381,
+    "category": "geography",
+    "question": "What is the capital of Gombe?",
+    "options": {
+      "A": "Damaturu",
+      "B": "Yenagoa",
+      "C": "Ado-Ekiti",
+      "D": "Gombe"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 382,
+    "category": "geography",
+    "question": "What is the capital of Zamfara?",
+    "options": {
+      "A": "Jos",
+      "B": "Osogbo",
+      "C": "Gusau",
+      "D": "Kano"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 383,
+    "category": "geography",
+    "question": "What is the capital of Adamawa?",
+    "options": {
+      "A": "Akure",
+      "B": "Yola",
+      "C": "Ilorin",
+      "D": "Umuahia"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 384,
+    "category": "geography",
+    "question": "What is the capital of Ekiti?",
+    "options": {
+      "A": "Ikeja",
+      "B": "Ado-Ekiti",
+      "C": "Kaduna",
+      "D": "Ilorin"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 385,
+    "category": "geography",
+    "question": "What is the capital of Nigeria?",
+    "options": {
+      "A": "Abuja",
+      "B": "Lagos",
+      "C": "Kano",
+      "D": "Enugu"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 386,
+    "category": "geography",
+    "question": "What is the capital of Osun?",
+    "options": {
+      "A": "Damaturu",
+      "B": "Makurdi",
+      "C": "Kano",
+      "D": "Osogbo"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 387,
+    "category": "geography",
+    "question": "What is the capital of Adamawa?",
+    "options": {
+      "A": "Yola",
+      "B": "Akure",
+      "C": "Umuahia",
+      "D": "Ilorin"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 388,
+    "category": "geography",
+    "question": "What is the capital of Niger?",
+    "options": {
+      "A": "Minna",
+      "B": "Ado-Ekiti",
+      "C": "Birnin Kebbi",
+      "D": "Maiduguri"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 389,
+    "category": "geography",
+    "question": "What is the capital of Edo?",
+    "options": {
+      "A": "Gombe",
+      "B": "Ado-Ekiti",
+      "C": "Benin City",
+      "D": "Sokoto"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 390,
+    "category": "geography",
+    "question": "What is the capital of Oyo?",
+    "options": {
+      "A": "Ibadan",
+      "B": "Ado-Ekiti",
+      "C": "Gombe",
+      "D": "Kano"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 391,
+    "category": "geography",
+    "question": "Which desert is the largest hot desert in the world?",
+    "options": {
+      "A": "Sahara",
+      "B": "Kalahari",
+      "C": "Arabian Desert",
+      "D": "Gobi"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 392,
+    "category": "geography",
+    "question": "What is the capital of Kogi?",
+    "options": {
+      "A": "Ikeja",
+      "B": "Osogbo",
+      "C": "Lokoja",
+      "D": "Damaturu"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 393,
+    "category": "geography",
+    "question": "What is the capital of Osun?",
+    "options": {
+      "A": "Makurdi",
+      "B": "Damaturu",
+      "C": "Osogbo",
+      "D": "Kano"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 394,
+    "category": "geography",
+    "question": "Which desert is the largest hot desert in the world?",
+    "options": {
+      "A": "Kalahari",
+      "B": "Sahara",
+      "C": "Arabian Desert",
+      "D": "Gobi"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 395,
+    "category": "geography",
+    "question": "What is the capital of Osun?",
+    "options": {
+      "A": "Osogbo",
+      "B": "Kano",
+      "C": "Damaturu",
+      "D": "Makurdi"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 396,
+    "category": "geography",
+    "question": "What is the capital of Oyo?",
+    "options": {
+      "A": "Ibadan",
+      "B": "Ado-Ekiti",
+      "C": "Gombe",
+      "D": "Kano"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 397,
+    "category": "geography",
+    "question": "Which desert is the largest hot desert in the world?",
+    "options": {
+      "A": "Arabian Desert",
+      "B": "Kalahari",
+      "C": "Sahara",
+      "D": "Gobi"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 398,
+    "category": "geography",
+    "question": "What is the capital of Adamawa?",
+    "options": {
+      "A": "Umuahia",
+      "B": "Yola",
+      "C": "Ilorin",
+      "D": "Akure"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 399,
+    "category": "geography",
+    "question": "What is the capital of Niger?",
+    "options": {
+      "A": "Maiduguri",
+      "B": "Ado-Ekiti",
+      "C": "Minna",
+      "D": "Birnin Kebbi"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 400,
+    "category": "geography",
+    "question": "What is the capital of Kogi?",
+    "options": {
+      "A": "Osogbo",
+      "B": "Ikeja",
+      "C": "Damaturu",
+      "D": "Lokoja"
+    },
+    "answer": "D"
   }
-
 ]
-
