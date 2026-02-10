@@ -51,7 +51,7 @@
   {
     "id": 8,
     "category": "nigeria_history",
-    "question": "Who created Nigeria’s current capital, Abuja?",
+    "question": "Who officially relocated Nigeria’s capital to Abuja?",
     "options": {"A": "Obasanjo", "B": "Babangida", "C": "Gowon", "D": "Shagari"},
     "answer": "B"
   },
@@ -121,7 +121,7 @@
   {
     "id": 18,
     "category": "nigeria_history",
-    "question": "Who discovered the River Niger?",
+    "question": "Which European explorer is credited with exploring the River Niger in the 1790s?",
     "options": {"A": "Clapperton", "B": "Mungo Park", "C": "Lord Lugard", "D": "John Hawkins"},
     "answer": "B"
   },
@@ -1121,3 +1121,4 @@
   }
 
 ]
+
