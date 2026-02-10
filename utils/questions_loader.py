@@ -1,15 +1,13 @@
 # ===========================================================
-# utils/questions_loader.py  (Final Working Category Loader)
+# utils/questions_loader.py  (Render-safe Lazy Loader)
 # ===========================================================
 import json
 import os
 import random
+from typing import Any, Dict, List, Optional
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # root of project
 QUESTIONS_PATH = os.path.join(BASE_DIR, "questions.json")
-
-with open(QUESTIONS_PATH, "r", encoding="utf-8") as f:
-    ALL_QUESTIONS = json.load(f)
 
 # ------------------------------
 # CATEGORY TRANSLATION MAP
@@ -18,50 +16,57 @@ CATEGORY_MAP = {
     "History": "nigeria_history",
     "Entertainment": "nigeria_entertainment",
     "Football": "football",
-    "Geography": "geography"
+    "Geography": "geography",
 }
 
-# ===========================================================
-# STEP 1 — SHUFFLE-BAG PER CATEGORY (Prevents repeats)
-# ===========================================================
-QUESTION_BAGS = {
+# In-memory cache (lazy-loaded)
+_ALL_QUESTIONS: Optional[List[Dict[str, Any]]] = None
+
+# Shuffle bags (lazy-refilled)
+QUESTION_BAGS: Dict[str, List[Dict[str, Any]]] = {
     "nigeria_history": [],
     "nigeria_entertainment": [],
     "football": [],
-    "geography": []
+    "geography": [],
 }
 
 
-def _refill_bag(category_key: str):
+def _load_questions() -> List[Dict[str, Any]]:
+    """
+    Load questions.json once (lazy).
+    This prevents slow imports during Render startup.
+    """
+    global _ALL_QUESTIONS
+    if _ALL_QUESTIONS is None:
+        with open(QUESTIONS_PATH, "r", encoding="utf-8") as f:
+            _ALL_QUESTIONS = json.load(f)
+    return _ALL_QUESTIONS
+
+
+def _refill_bag(category_key: str) -> None:
     """Refill a category shuffle bag when empty."""
-    QUESTION_BAGS[category_key] = [
-        q for q in ALL_QUESTIONS if q["category"] == category_key
-    ]
+    all_q = _load_questions()
+    QUESTION_BAGS[category_key] = [q for q in all_q if q.get("category") == category_key]
     random.shuffle(QUESTION_BAGS[category_key])
 
 
-# ===========================================================
-# STEP 2 — Modified random question system (uses shuffle bags)
-# ===========================================================
-def get_random_question(category: str = None):
+def get_random_question(category: str = None) -> Dict[str, Any]:
     """
     Returns a single random question.
-    Uses shuffle-bags to prevent repeated questions.
+    Uses shuffle-bags to prevent repeated questions per category.
     """
+    all_q = _load_questions()
 
     # Category chosen by user
     if category:
         real_key = CATEGORY_MAP.get(category)
-
         if not real_key:
             raise ValueError(f"Invalid category given: {category}")
 
-        # Refill shuffle bag if empty
         if not QUESTION_BAGS[real_key]:
             _refill_bag(real_key)
 
-        # Pop one question (guarantees no repeat until bag empties)
         return QUESTION_BAGS[real_key].pop()
 
-    # No category → full random (no shuffle bag)
-    return random.choice(ALL_QUESTIONS)
+    # No category → full random
+    return random.choice(all_q)
