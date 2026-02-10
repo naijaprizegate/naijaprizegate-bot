@@ -317,4 +317,3 @@ def register_handlers(application):
             fallback
         )
     )
-
