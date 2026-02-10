@@ -116,6 +116,12 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     "🏆 Winners", callback_data="admin_menu:winners"
                 )
             ],
+            [
+                InlineKeyboardButton(
+                    "📬 Support Inbox", callback_data="admin_menu:support_inbox"
+                )
+            ],
+
             # Renamed label to avoid “Top-Tier Campaign Reward” / random connotation
             [
                 InlineKeyboardButton(
@@ -130,6 +136,143 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
         parse_mode="HTML",
         reply_markup=keyboard,
     )
+
+# ----------------------------------------------------
+# Admin Support Inbox
+# ----------------------------------------------------
+async def admin_support_inbox(query, session):
+    res = await session.execute(text("""
+        SELECT id, tg_id, first_name, username, message, created_at
+        FROM support_tickets
+        WHERE status = 'pending'
+        ORDER BY created_at ASC
+        LIMIT 20
+    """))
+    return res.fetchall()
+
+
+async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    # 🔐 Restrict admin access
+    if not is_admin(query.from_user.id):
+        return await query.answer("⛔ Unauthorized.", show_alert=True)
+
+    # Fetch pending tickets using your existing helper
+    async with AsyncSessionLocal() as session:
+        rows = await admin_support_inbox(query, session)  # should return list of tuples
+
+    # Build text (HTML to match your admin UI)
+    text_lines = ["<b>📬 Support Inbox (Pending)</b>\n"]
+
+    # Build keyboard buttons
+    buttons = []
+
+    if not rows:
+        text_lines.append("✅ No pending support messages.\n")
+    else:
+        text_lines.append("Tap a ticket button below to reply.\n")
+
+        for (tid, tg_id, first_name, username, message, created_at) in rows:
+            short = (message[:120] + "…") if len(message) > 120 else message
+            who = first_name or "User"
+            if username:
+                who += f" (@{username})"
+
+            text_lines.append(
+                f"🆔 <b>Ticket:</b> <code>{tid}</code>\n"
+                f"👤 <b>From:</b> {who}\n"
+                f"📌 <b>TG_ID:</b> <code>{tg_id}</code>\n"
+                f"💬 <b>Msg:</b> {short}\n"
+                f"🕒 <b>Time:</b> {created_at}\n"
+                f"—"
+            )
+
+            # ✅ One reply button per ticket
+            buttons.append(
+                [InlineKeyboardButton(f"✍️ Reply to #{tid}", callback_data=f"admin_support_reply:{tid}")]
+            )
+
+        # Optional hint (you can remove this if you're fully switching to button reply)
+        text_lines.append(
+            "\n<i>Tip:</i> Use the reply buttons to respond without revealing admin identity."
+        )
+
+    # Footer buttons
+    buttons.append([InlineKeyboardButton("🔁 Refresh", callback_data="admin_menu:support_inbox")])
+    buttons.append([InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")])
+
+    text = "\n".join(text_lines)
+
+    return await safe_edit(
+        query,
+        text,
+        parse_mode="HTML",
+        reply_markup=InlineKeyboardMarkup(buttons),
+    )
+
+# ---------------------------------------------------------
+# Admin Support Reply Text 
+# ----------------------------------------------------------
+async def admin_support_reply_text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if update.effective_user.id != ADMIN_USER_ID:
+        return
+
+    if not context.user_data.get("awaiting_support_reply"):
+        return
+
+    ticket_id = context.user_data.get("support_reply_ticket_id")
+    if not ticket_id:
+        context.user_data["awaiting_support_reply"] = False
+        return await update.message.reply_text("⚠️ No ticket selected. Go back to Support Inbox.")
+
+    reply_text = (update.message.text or "").strip()
+    if not reply_text:
+        return await update.message.reply_text("⚠️ Reply cannot be empty. Type your reply:")
+
+    async with context.bot_data["sessionmaker"]() as session:
+        res = await session.execute(text("""
+            SELECT tg_id, status
+            FROM support_tickets
+            WHERE id = :id
+            LIMIT 1
+        """), {"id": int(ticket_id)})
+        row = res.fetchone()
+
+        if not row:
+            context.user_data["awaiting_support_reply"] = False
+            context.user_data.pop("support_reply_ticket_id", None)
+            return await update.message.reply_text("❌ Ticket not found. Please reopen Support Inbox.")
+
+        tg_id, status = row
+        if status != "pending":
+            context.user_data["awaiting_support_reply"] = False
+            context.user_data.pop("support_reply_ticket_id", None)
+            return await update.message.reply_text(f"⚠️ Ticket is not pending (status: {status}).")
+
+        # send reply to user (admin identity hidden)
+        try:
+            await context.bot.send_message(
+                chat_id=int(tg_id),
+                text=f"✅ <b>Support Reply</b>\n\n{reply_text}",
+                parse_mode="HTML"
+            )
+        except Exception:
+            return await update.message.reply_text("❌ Could not send message (user may have blocked the bot).")
+
+        await session.execute(text("""
+            UPDATE support_tickets
+            SET status='replied', admin_reply=:r, replied_at=NOW()
+            WHERE id=:id
+        """), {"id": int(ticket_id), "r": reply_text})
+        await session.commit()
+
+    # clear state
+    context.user_data["awaiting_support_reply"] = False
+    context.user_data.pop("support_reply_ticket_id", None)
+
+    return await update.message.reply_text(f"✅ Replied to ticket #{ticket_id}.")
 
 
 # -----------------------------------------
@@ -412,7 +555,24 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return await query.answer(
                 "⚠️ Invalid navigation index.", show_alert=True
             )
-        return await show_single_proof(update, context, index=new_index)
+        return await show_single_proof(update, context, index=new_index)    
+
+    # ----------------------------
+    # ✅ Support Reply Button Click (Ticket → ask admin to type reply)
+    # ----------------------------
+    if query.data.startswith("admin_support_reply:"):
+        ticket_id = int(query.data.split(":")[1])
+        context.user_data["support_reply_ticket_id"] = ticket_id
+        context.user_data["awaiting_support_reply"] = True
+        return await safe_edit(
+            query,
+            f"✍️ <b>Reply to Ticket #{ticket_id}</b>\n\nType your reply message now:",
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton("❌ Cancel", callback_data="admin_menu:support_inbox")]]
+            ),
+        )
+
 
     # ----------------------------
     # Admin Menu Routing
@@ -687,6 +847,10 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         elif action == "winners":
             return await show_winners_section(update, context)
 
+        # ✅ NEW: Support Inbox
+        elif action == "support_inbox":
+            return await admin_support_inbox_page(update, context)
+
         # ---- Main Menu ----
         elif action == "main":
             keyboard = InlineKeyboardMarkup(
@@ -712,6 +876,11 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                         InlineKeyboardButton(
                             "🏆 Winners", callback_data="admin_menu:winners"
                         )
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            "📬 Support Inbox", callback_data="admin_menu:support_inbox"
+                            )
                     ],
                     [
                         InlineKeyboardButton(
@@ -1984,6 +2153,12 @@ def register_handlers(application):
     )
     application.add_handler(
         CallbackQueryHandler(update_delivery_status_delivered, pattern=r"^pw_status_delivered_\d+$"),
+        group=ADMIN_GROUP
+    )
+
+    # ✅ Support reply flow (only when awaiting_support_reply=True)
+    application.add_handler(
+        MessageHandler(filters.TEXT & ~filters.COMMAND, admin_support_reply_text_handler),
         group=ADMIN_GROUP
     )
 
