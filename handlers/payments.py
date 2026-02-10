@@ -136,8 +136,10 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
             f"📚 <b>Package Selected</b>: {questions} Trivia Question{'' if questions==1 else 's'} "
             f"for ₦{price:,}\n\n"
             "✔ One trivia question per attempt\n"
-            "✔ Correct answers earn <b>Premium Spins</b> and <b>Premium Points</b>\n"
+            "✔ Correct answers earn <b>Premium Points</b>\n"
             "✔ Premium Points affect leaderboard ranking and jackpot winners\n\n"
+            "✔ You could become the winner of the grand Prize <b>latest iPhone series</b> and <b>latest Samsung smart phones</b>\n\n"
+            "✔ There are other rewards as you play. <b>Airtime</b> <b>Airpods</b> <b>Bluetooth Speakers</b>\n\n"
 
             "📜 By proceeding, you agree to our <b>Terms & Fair Play Rules</b>.\n\n"
             "👉 Tap to complete payment via Flutterwave Checkout.\n\n"
