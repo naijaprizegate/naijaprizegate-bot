@@ -257,7 +257,7 @@ async def admin_support_action(update: Update, context: ContextTypes.DEFAULT_TYP
 
     new_status = "closed" if action == "close" else "spam"
 
-    async with context.bot_data["sessionmaker"]() as session:
+    async with AsyncSessionLocal() as session:
         # only update if still pending (prevents double-click confusion)
         await session.execute(text("""
             UPDATE support_tickets
@@ -309,7 +309,7 @@ async def admin_support_reply_text_handler(update: Update, context: ContextTypes
     if not reply_text:
         return await update.message.reply_text("⚠️ Reply cannot be empty. Type your reply:")
 
-    async with context.bot_data["sessionmaker"]() as session:
+    async with AsyncSessionLocal() as session:
         res = await session.execute(text("""
             SELECT tg_id, status
             FROM support_tickets
