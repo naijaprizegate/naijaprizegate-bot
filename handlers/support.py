@@ -33,7 +33,7 @@ ADMIN_IDS = _get_admin_ids()
 async def support_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.effective_message.reply_text(
         "📩 <b>Contact Support</b>\n\n"
-        "Type your message here and send it.\n"
+        "Type your message here and send it.\n\n"
         "To cancel, type or click on /start to go back to the main menu",
         parse_mode="HTML",
     )
@@ -45,7 +45,7 @@ async def support_start_from_callback(update: Update, context: ContextTypes.DEFA
     await query.answer()
     await query.message.reply_text(
         "📩 <b>Contact Support</b>\n\n"
-        "Type your message here and send it.\n"
+        "Type your message here and send it.\n\n"
         "To cancel, type or click on /start to go back to the main menu",
         parse_mode="HTML",
     )
