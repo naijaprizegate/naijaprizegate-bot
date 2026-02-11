@@ -43,6 +43,8 @@ logger = logging.getLogger(__name__)
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
 WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", 0))  # paid tries needed for a cycle prize
 
+SUPPORT_PAGE_SIZE = 10
+
 # ----------------------------
 # 🔐 ADMIN SECURITY HELPER
 # ----------------------------
@@ -137,21 +139,36 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=keyboard,
     )
 
+
 # ----------------------------------------------------
-# Admin Support Inbox
+# Admin Support Inbox (DB helper) — pagination + count
 # ----------------------------------------------------
-async def admin_support_inbox(query, session):
+async def admin_support_inbox(session, page: int = 1, page_size: int = SUPPORT_PAGE_SIZE):
+    page = max(int(page or 1), 1)
+    offset = (page - 1) * int(page_size)
+
+    total_pending = (await session.execute(text("""
+        SELECT COUNT(*)
+        FROM support_tickets
+        WHERE status = 'pending'
+    """))).scalar() or 0
+
     res = await session.execute(text("""
         SELECT id, tg_id, first_name, username, message, created_at
         FROM support_tickets
         WHERE status = 'pending'
         ORDER BY created_at ASC
-        LIMIT 20
-    """))
-    return res.fetchall()
+        LIMIT :lim OFFSET :off
+    """), {"lim": int(page_size), "off": int(offset)})
+
+    rows = res.fetchall()
+    return total_pending, rows
 
 
-async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
+# ----------------------------------------------------
+# Admin Support Inbox Page (UI) — pagination + actions
+# ----------------------------------------------------
+async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT_TYPE, page: int = 1):
     query = update.callback_query
     await query.answer()
 
@@ -159,58 +176,119 @@ async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT
     if not is_admin(query.from_user.id):
         return await query.answer("⛔ Unauthorized.", show_alert=True)
 
-    # Fetch pending tickets using your existing helper
-    async with AsyncSessionLocal() as session:
-        rows = await admin_support_inbox(query, session)  # should return list of tuples
+    page = max(int(page or 1), 1)
 
-    # Build text (HTML to match your admin UI)
-    text_lines = ["<b>📬 Support Inbox (Pending)</b>\n"]
+    async with context.bot_data["sessionmaker"]() as session:
+        total_pending, rows = await admin_support_inbox(session, page=page)
 
-    # Build keyboard buttons
+    total_pages = max((total_pending + SUPPORT_PAGE_SIZE - 1) // SUPPORT_PAGE_SIZE, 1)
+    if page > total_pages:
+        page = total_pages
+
+    # --------------------
+    # Build text (HTML)
+    # --------------------
+    text_lines = [
+        "📬 <b>Support Inbox</b> (Pending)",
+        f"Page <b>{page}</b> / <b>{total_pages}</b>  |  Pending: <b>{total_pending}</b>\n",
+    ]
+
+    # --------------------
+    # Build keyboard
+    # --------------------
     buttons = []
 
     if not rows:
-        text_lines.append("✅ No pending support messages.\n")
+        text_lines.append("✅ No pending support messages.")
     else:
-        text_lines.append("Tap a ticket button below to reply.\n")
-
         for (tid, tg_id, first_name, username, message, created_at) in rows:
-            short = (message[:120] + "…") if len(message) > 120 else message
-            who = first_name or "User"
+            msg = message or ""
+            short = (msg[:140] + "…") if len(msg) > 140 else msg
+
+            who = (first_name or "User").strip()
             if username:
                 who += f" (@{username})"
 
             text_lines.append(
-                f"🆔 <b>Ticket:</b> <code>{tid}</code>\n"
-                f"👤 <b>From:</b> {who}\n"
-                f"📌 <b>TG_ID:</b> <code>{tg_id}</code>\n"
-                f"💬 <b>Msg:</b> {short}\n"
-                f"🕒 <b>Time:</b> {created_at}\n"
+                f"🆔 <b>Ticket #{tid}</b>\n"
+                f"👤 {who} | TG: <code>{tg_id}</code>\n"
+                f"📝 {short}\n"
+                f"🕒 {created_at}\n"
                 f"—"
             )
 
-            # ✅ One reply button per ticket
-            buttons.append(
-                [InlineKeyboardButton(f"✍️ Reply to #{tid}", callback_data=f"admin_support_reply:{tid}")]
-            )
+            # Per-ticket action buttons (Reply / Close / Spam)
+            buttons.append([
+                InlineKeyboardButton("✉️ Reply", callback_data=f"admin_support_reply:{tid}:{page}"),
+                InlineKeyboardButton("✅ Close", callback_data=f"admin_support_action:close:{tid}:{page}"),
+                InlineKeyboardButton("🚫 Spam", callback_data=f"admin_support_action:spam:{tid}:{page}"),
+            ])
 
-        # Optional hint (you can remove this if you're fully switching to button reply)
-        text_lines.append(
-            "\n<i>Tip:</i> Use the reply buttons to respond without revealing admin identity."
-        )
+    # Pagination row
+    nav_row = []
+    if page > 1:
+        nav_row.append(InlineKeyboardButton("⬅️ Prev", callback_data=f"admin_support_inbox:{page-1}"))
+    nav_row.append(InlineKeyboardButton("🔁 Refresh", callback_data=f"admin_support_inbox:{page}"))
+    if page < total_pages:
+        nav_row.append(InlineKeyboardButton("Next ➡️", callback_data=f"admin_support_inbox:{page+1}"))
+    buttons.append(nav_row)
 
-    # Footer buttons
-    buttons.append([InlineKeyboardButton("🔁 Refresh", callback_data="admin_menu:support_inbox")])
+    # Footer
     buttons.append([InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")])
-
-    text = "\n".join(text_lines)
 
     return await safe_edit(
         query,
-        text,
+        "\n".join(text_lines),
         parse_mode="HTML",
         reply_markup=InlineKeyboardMarkup(buttons),
     )
+
+# ----------------------------------------------------
+# Admin Support Action
+# ----------------------------------------------------
+async def admin_support_action(update: Update, context: ContextTypes.DEFAULT_TYPE, action: str, ticket_id: int, page: int):
+    query = update.callback_query
+    if not is_admin(update.effective_user.id):
+        return await query.answer("⛔ Unauthorized.", show_alert=True)
+
+    action = (action or "").lower().strip()
+    if action not in ("close", "spam"):
+        return await query.answer("⚠️ Invalid action.", show_alert=True)
+
+    new_status = "closed" if action == "close" else "spam"
+
+    async with context.bot_data["sessionmaker"]() as session:
+        # only update if still pending (prevents double-click confusion)
+        await session.execute(text("""
+            UPDATE support_tickets
+            SET status = :st
+            WHERE id = :id AND status = 'pending'
+        """), {"st": new_status, "id": int(ticket_id)})
+        await session.commit()
+
+    # refresh same page
+    return await admin_support_inbox_page(update, context, page=int(page or 1))
+
+# ----------------------------------------------------
+# Admin Support Reply Start
+# ----------------------------------------------------
+async def admin_support_reply_start(update: Update, context: ContextTypes.DEFAULT_TYPE, ticket_id: int, page: int):
+    query = update.callback_query
+    if not is_admin(update.effective_user.id):
+        return await query.answer("⛔ Unauthorized.", show_alert=True)
+
+    context.user_data["awaiting_support_reply"] = True
+    context.user_data["support_reply_ticket_id"] = int(ticket_id)
+    context.user_data["support_reply_return_page"] = int(page or 1)
+
+    return await safe_edit(
+        query,
+        f"✉️ <b>Reply Mode</b>\n\nTicket <b>#{ticket_id}</b>\n\n"
+        "Type your reply message now.\n"
+        "Send /cancel to exit.",
+        parse_mode="HTML",
+    )
+
 
 # ---------------------------------------------------------
 # Admin Support Reply Text 
@@ -274,6 +352,16 @@ async def admin_support_reply_text_handler(update: Update, context: ContextTypes
 
     return await update.message.reply_text(f"✅ Replied to ticket #{ticket_id}.")
 
+# ------------------------------------------
+# Cancel Admin Support Reply
+# -------------------------------------------
+async def cancel_admin_support_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if not is_admin(update.effective_user.id):
+        return
+    context.user_data["awaiting_support_reply"] = False
+    context.user_data.pop("support_reply_ticket_id", None)
+    context.user_data.pop("support_reply_return_page", None)
+    return await update.message.reply_text("✅ Reply cancelled.")
 
 # -----------------------------------------
 # ADMIN: View Cycle Entries / Score Source
@@ -558,18 +646,48 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return await show_single_proof(update, context, index=new_index)    
 
     # ----------------------------
+    # ✅ Support Inbox Pagination (admin_support_inbox:<page>)
+    # ----------------------------
+    if query.data.startswith("admin_support_inbox:"):
+        try:
+            page = int(query.data.split(":")[1])
+        except Exception:
+            page = 1
+        return await admin_support_inbox_page(update, context, page=page)
+
+
+    # ----------------------------
+    # ✅ Support Ticket Actions (close/spam)
+    # Format: admin_support_action:<close|spam>:<ticket_id>:<page>
+    # ----------------------------
+    if query.data.startswith("admin_support_action:"):
+        parts = query.data.split(":")
+        action = parts[1]              # close OR spam
+        ticket_id = int(parts[2])
+        page = int(parts[3]) if len(parts) >= 4 else 1
+
+        return await admin_support_action(update, context, action, ticket_id, page)
+
+
+    # ----------------------------
     # ✅ Support Reply Button Click (Ticket → ask admin to type reply)
+    # Format: admin_support_reply:<ticket_id>:<page>
     # ----------------------------
     if query.data.startswith("admin_support_reply:"):
-        ticket_id = int(query.data.split(":")[1])
+        parts = query.data.split(":")
+        ticket_id = int(parts[1])
+        page = int(parts[2]) if len(parts) >= 3 else 1  # fallback
+
         context.user_data["support_reply_ticket_id"] = ticket_id
+        context.user_data["support_reply_return_page"] = page
         context.user_data["awaiting_support_reply"] = True
+
         return await safe_edit(
             query,
             f"✍️ <b>Reply to Ticket #{ticket_id}</b>\n\nType your reply message now:",
             parse_mode="HTML",
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("❌ Cancel", callback_data="admin_menu:support_inbox")]]
+                [[InlineKeyboardButton("❌ Cancel", callback_data=f"admin_support_inbox:{page}")]]
             ),
         )
 
@@ -849,7 +967,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         # ✅ NEW: Support Inbox
         elif action == "support_inbox":
-            return await admin_support_inbox_page(update, context)
+            return await admin_support_inbox_page(update, context, page=1)
 
         # ---- Main Menu ----
         elif action == "main":
@@ -2123,6 +2241,9 @@ def register_handlers(application):
     application.add_handler(CommandHandler("pending_proofs", pending_proofs), group=ADMIN_GROUP)
     application.add_handler(CommandHandler("winners", show_winners_section), group=ADMIN_GROUP)
 
+    # ✅ Cancel support reply mode
+    application.add_handler(CommandHandler("cancel", cancel_admin_support_reply), group=ADMIN_GROUP)
+
     # ✅ ADMIN SUB-SECTIONS
     application.add_handler(CallbackQueryHandler(pending_proofs, pattern=r"^admin_pending"), group=ADMIN_GROUP)
     application.add_handler(CallbackQueryHandler(user_search_handler, pattern=r"^admin_usersearch"), group=ADMIN_GROUP)
@@ -2170,4 +2291,5 @@ def register_handlers(application):
 
     # Failed Airtime pagination
     application.add_handler(CallbackQueryHandler(show_failed_airtime, pattern=r"^admin_airtime_failed"), group=ADMIN_GROUP)
+
 
