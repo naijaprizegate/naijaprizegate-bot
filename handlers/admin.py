@@ -1232,12 +1232,18 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # User Search Handler
 # ----------------------------
 async def user_search_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    # ✅ If admin is currently replying to a support ticket, do NOT intercept text
+    if context.user_data.get("awaiting_support_reply"):
+        return
+
     if (
         update.effective_user.id != ADMIN_USER_ID
         or not context.user_data.get("awaiting_user_search")
     ):
         return
+
     query_text = update.message.text.strip()
+
     async with AsyncSessionLocal() as session:
         if query_text.isdigit():
             user = await session.get(User, query_text)
@@ -1246,10 +1252,9 @@ async def user_search_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
                 select(User).where(User.username == query_text)
             )
             user = result.scalars().first()
+
     if not user:
-        await update.message.reply_text(
-            "⚠️ No user found.", parse_mode="HTML"
-        )
+        await update.message.reply_text("⚠️ No user found.", parse_mode="HTML")
     else:
         reply = (
             f"<b>👤 User Info</b>\n"
@@ -1259,8 +1264,8 @@ async def user_search_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
             f"🎁 Last Prize Choice: {user.choice or '-'}"
         )
         await update.message.reply_text(reply, parse_mode="HTML")
-    context.user_data["awaiting_user_search"] = False
 
+    context.user_data["awaiting_user_search"] = False
 
 # ----------------------------
 # 🏆 Winners Section (PrizeWinner-based Paging)
@@ -1688,6 +1693,11 @@ async def date_range_message_router(update: Update, context: ContextTypes.DEFAUL
 
     ✅ Will ONLY run when context.user_data["awaiting_date_range"] is True.
     """
+
+    # ✅ IMPORTANT GUARD (PREVENTS SUPPORT REPLY HIJACK)
+    if context.user_data.get("awaiting_support_reply"):
+        return
+
     user_id = getattr(getattr(update, "effective_user", None), "id", None)
 
     # --- Admin check (async/sync safe)
@@ -1713,11 +1723,8 @@ async def date_range_message_router(update: Update, context: ContextTypes.DEFAUL
         return
 
     # --- Parse both dates from input
-    # IMPORTANT: do NOT include "-" because YYYY-MM-DD contains "-"
     separators = [" to ", "to", ",", "–", "—"]
     parts = None
-
-    # Keep original hyphens (inside dates) intact
     normalized = text.strip()
 
     for sep in separators:
@@ -2258,6 +2265,12 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(admin_export_csv_menu, pattern=r"^admin_export_csv$"), group=ADMIN_GROUP)
     application.add_handler(CallbackQueryHandler(export_csv_handler, pattern=r"^export_csv:"), group=ADMIN_GROUP)
 
+    # ✅ Support reply flow (MUST come first)
+    application.add_handler(
+        MessageHandler(filters.TEXT & ~filters.COMMAND, admin_support_reply_text_handler),
+        group=ADMIN_GROUP
+    )
+
     # ✅ Admin custom date input (only acts when awaiting_date_range=True)
     application.add_handler(
         MessageHandler(filters.TEXT & ~filters.COMMAND, date_range_message_router),
@@ -2277,12 +2290,6 @@ def register_handlers(application):
         group=ADMIN_GROUP
     )
 
-    # ✅ Support reply flow (only when awaiting_support_reply=True)
-    application.add_handler(
-        MessageHandler(filters.TEXT & ~filters.COMMAND, admin_support_reply_text_handler),
-        group=ADMIN_GROUP
-    )
-
     # ✅ User search text handler (also must be guarded or scoped)
     application.add_handler(
         MessageHandler(filters.TEXT & ~filters.COMMAND, user_search_handler),
@@ -2291,5 +2298,3 @@ def register_handlers(application):
 
     # Failed Airtime pagination
     application.add_handler(CallbackQueryHandler(show_failed_airtime, pattern=r"^admin_airtime_failed"), group=ADMIN_GROUP)
-
-
