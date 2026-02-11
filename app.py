@@ -191,6 +191,11 @@ async def on_startup():
         # Telegram Bot Application
         application = Application.builder().token(BOT_TOKEN).build()
 
+        USER_GROUP = 0
+        
+        # ✅ ADD THIS LINE (support conversation handler)
+        application.add_handler(support_conv, group=USER_GROUP)
+
         # ✅ Register handlers
         core.register_handlers(application)
         free.register_handlers(application)
