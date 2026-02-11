@@ -1,4 +1,6 @@
+# ==============================================================
 # handlers/support.py
+# ==============================================================
 import os
 from telegram import Update
 from telegram.ext import (
@@ -15,7 +17,7 @@ from db import AsyncSessionLocal  # ✅ adjust import if your session lives else
 
 SUPPORT_WAITING_MESSAGE = 1
 
-# ✅ Put admin IDs in env like: ADMIN_IDS="6683718665,123456789"
+# ✅ Put admin IDs in env
 def _get_admin_ids() -> set[int]:
     raw = os.getenv("ADMIN_IDS", "")
     ids = set()
@@ -121,3 +123,4 @@ support_conv = ConversationHandler(
     },
     fallbacks=[CommandHandler("cancel", support_cancel)],
 )
+
