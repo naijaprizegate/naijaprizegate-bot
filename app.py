@@ -75,6 +75,8 @@ from webhook import router as webhook_router
 from bot_instance import bot
 from services.airtime_service import handle_claim_airtime_button, handle_airtime_claim_phone, handle_airtime_network_choice
 from utils.conversation_states import AIRTIME_PHONE
+from handlers.support import support_conv
+
 
 # ✅ Import Flutterwave-related functions/constants
 from services.payments import (
@@ -196,6 +198,9 @@ async def on_startup():
         admin.register_handlers(application)
         playtrivia.register_handlers(application)
 
+        # ✅ ADD THIS LINE (support conversation handler)
+        application.add_handler(support_conv)
+
         # ✅ Airtime claim handlers (phone entry)
         airtime_conversation = ConversationHandler(
             entry_points=[
@@ -223,6 +228,7 @@ async def on_startup():
             group=-1
         )
 
+        
         # Initialize & start bot
         await application.initialize()
 
@@ -762,3 +768,4 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
+
