@@ -178,7 +178,7 @@ async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT
 
     page = max(int(page or 1), 1)
 
-    async with context.bot_data["sessionmaker"]() as session:
+    async with AsyncSessionLocal() as session:
         total_pending, rows = await admin_support_inbox(session, page=page)
 
     total_pages = max((total_pending + SUPPORT_PAGE_SIZE - 1) // SUPPORT_PAGE_SIZE, 1)
