@@ -178,7 +178,8 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
         [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],  # NEW
-        [InlineKeyboardButton("❓ FAQs", callback_data="faq")]                # NEW
+        [InlineKeyboardButton("❓ FAQs", callback_data="faq")],                # NEW
+        [InlineKeyboardButton("📩 Contact Support / Admin", callback_data="support:start")] # NEW
     ]
 
     await update.message.reply_text(
@@ -231,6 +232,7 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
         [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],
         [InlineKeyboardButton("❓ FAQs", callback_data="faq")],
+        [InlineKeyboardButton("📩 Contact Support / Admin", callback_data="support:start")],
     ])
 
     # ✅ Reply safely based on update type
