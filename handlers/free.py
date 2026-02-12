@@ -1,84 +1,76 @@
 # ===============================================================
-# handlers/free.py
+# handlers/free.py  (HTML VERSION)
 # ===============================================================
 
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, filters
-from helpers import md_escape, get_or_create_user
+from helpers import get_or_create_user
 from models import Proof
 from db import get_async_session
 from sqlalchemy import insert
 import os
 import random
+import html
 
 BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
+
 
 # --- FREE MENU HANDLER ---
 async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     async with get_async_session() as session:
-        db_user = await get_or_create_user(session, update.effective_user.id, update.effective_user.username)
+        db_user = await get_or_create_user(
+            session,
+            update.effective_user.id,
+            update.effective_user.username
+        )
 
     tg_user = update.effective_user
-    display_name = md_escape(tg_user.first_name or tg_user.username or "Friend")
+    display_name = html.escape(tg_user.first_name or tg_user.username or "Friend")
 
     text = (
-        f"🎁 *Hey {display_name}*\\! \n\n"
-        "Ready to boost your performance and get ahead on the leaderboard\\? 😎\n\n"
-        "💡 Every correct answer earns you points\\.\n"
-        "🏆 Once the performance target is reached, the top scorer wins the prize\\.\n\n"
-        "*How to earn FREE Trivia Questions* 👇\n\n"
-        "1️⃣ *Invite friends* — Each friend who joins through your link \\= *\\+1 Free Question*\n\n"
-        "2️⃣ *Follow us on social media* — Upload a screenshot proof \\= *\\+1 Free Question* after approval\n\n"
-        "⚡ The more questions you answer, the higher you climb\\.\n\n"
-        "Be the player others try to catch — not the one trying to catch up\\! 🚀\n\n"
-        "👉 Choose an option below to increase your quiz access\\:\n\n"
+        f"🎁 <b>Hey {display_name}!</b>\n\n"
+        "Ready to boost your performance and get ahead on the leaderboard? 😎\n\n"
+        "💡 Every correct answer earns you points.\n"
+        "🏆 Once the performance target is reached, the top scorer wins the prize.\n\n"
+        "<b>How to earn FREE Trivia Questions</b> 👇\n\n"
+        "1️⃣ <b>Invite friends</b> — Each friend who joins through your link = <b>+1 Free Question</b>\n\n"
+        "2️⃣ <b>Follow us on social media</b> — Upload a screenshot proof = "
+        "<b>+1 Free Question</b> after approval\n\n"
+        "⚡ The more questions you answer, the higher you climb.\n\n"
+        "Be the player others try to catch — not the one trying to catch up! 🚀\n\n"
+        "👉 Choose an option below to increase your quiz access:\n\n"
         "To go back to the main menu, click /start"
     )
 
-
     ref_link = f"https://t.me/{BOT_USERNAME}?start={db_user.id}"
-    ref_link_md = md_escape(ref_link)  # ✅ escape before using in Markdown
 
     share_variants = [
         (
-            f"🎰 Yo, it’s *{display_name}* here\\!\n\n"
-            f"NaijaPrizeGate is lit right now 🔥\n\n"
-            f"🧠 *I'm upgrading my knowledge and climbing the leaderboard on NaijaPrizeGate!* 🚀\n\n"
-            f"Top scorer wins the prize 🎯\n\n"
-            f"Up for grabs this cycle:\n\n"
-            f"📱 iPhone 16 Pro Max\n\n"
-            f"📱 iPhone 17 Pro Max\n\n"
-            f"📱 Samsung Galaxy Z Flip 7\n\n"
-            f"📱 Samsung Galaxy S25 Ultra\n\n"
-            f"Join me by answering fun questions and show what you know 👇\n"
-            f"Don’t snooze — tap my link before it’s too late ⏳👇\n"
-            f"👉 {ref_link}"
+            f"🎰 <b>Hey, it’s {display_name} here!</b>\n\n"
+            f"NaijaPrizeGate is the game to play right now 🔥\n\n"
+            f"Answer questions on <b>fotball</b>, <b>Entertainment</b>, <b>History</b> and gain lots of rewards 🚀\n\n"
+            f"Top scorer wins amazing prizes 🎯\n\n"
+            f"📱 <b>iPhone 16 Pro Max</b>\n"
+            f"📱 <b>iPhone 17 Pro Max</b>\n"
+            f"📱 <b>Samsung Galaxy Z Flip 7</b>\n"
+            f"📱 <b>Samsung Galaxy S25 Ultra</b>\n\n"
+            f"Join me 👇\n{ref_link}"
         ),
+        
         (
-            f"🚀 *{display_name}* just unlocked *free Trivia Questions* on *NaijaPrizeGate* 🎉\n\n"
-            f"I used to scroll endlessly on my phone\\.\n"
-            f"Now I’m using it to actually challenge my brain 🧠🔥\n\n"
-            f"NaijaPrizeGate is rewarding top scorers with amazing prizes:\n"
-            f"📱 iPhone 16 Pro Max\n\n"
-            f"📱 iPhone 17 Pro Max\n\n"
-            f"📱 Samsung Galaxy Z Flip 7\n\n"
-            f"📱 Samsung Galaxy S25 Ultra\n\n"
-            f"Join me — let’s level up and win smart 👇\n"
-            f"👉 {ref_link}"
-        ),
-        (
-            f"🔥 *{display_name}* is already playing\\! \n\n"
-            f"NaijaPrizeGate’s dropping Top-Tier Campaign Rewards like crazy 🎰💸\n\n"
-            f"Up for grabs:\n\n"
-            f"🏆 *iPhone 16 Pro Max*\n\n"
-            f"🏆 *iPhone 17 Pro Max*\n\n"
-            f"🏆 *Samsung Galaxy Z Flip 7*\n\n"
-            f"🏆 *Samsung Galaxy S25 Ultra*\n\n"
-            f"Click my link — don’t miss the wave 👇\n"
-            f"👉 {ref_link}"
+            f"🎰 <b>Hey, it’s {display_name} here!</b>\n\n"
+            f"NaijaPrizeGate is the game to play right now 🔥\n\n"
+            f"Answer questions on <b>fotball</b>, <b>Entertainment</b>, <b>History</b> and gain lots of rewards 🚀\n\n"
+            f"Top scorer wins amazing prizes 🎯\n\n"
+            f"🔥 I'm already playing on NaijaPrizeGate!\n\n"
+            f"Prizes up for grabs:\n"
+            f"🏆 iPhone 16 Pro Max\n"
+            f"🏆 iPhone 17 Pro Max\n"
+            f"🏆 Samsung Galaxy Z Flip 7\n"
+            f"🏆 Samsung Galaxy S25 Ultra\n\n"
+            f"Join here 👇\n{ref_link}"
         ),
     ]
-
 
     share_message = random.choice(share_variants)
 
@@ -88,73 +80,68 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             InlineKeyboardButton("👥 Share Referral", switch_inline_query=share_message),
         ],
         [
-            InlineKeyboardButton("📘 Follow on Facebook", url="https://web.facebook.com/Naijaprizegate"),
-            InlineKeyboardButton("📸 Follow on Instagram", url="https://www.instagram.com/naijaprizegate/"),
+            InlineKeyboardButton("📘 Facebook", url="https://web.facebook.com/Naijaprizegate"),
+            InlineKeyboardButton("📸 Instagram", url="https://www.instagram.com/naijaprizegate/"),
         ],
         [
-            InlineKeyboardButton("🎶 Follow on TikTok", url="https://www.tiktok.com/@naijaprizegate"),
-            InlineKeyboardButton("🎥 Subscribe on YouTube", url="https://www.youtube.com/@Naijaprizegate"),
+            InlineKeyboardButton("🎶 TikTok", url="https://www.tiktok.com/@naijaprizegate"),
+            InlineKeyboardButton("🎥 YouTube", url="https://www.youtube.com/@Naijaprizegate"),
         ],
         [InlineKeyboardButton("📸 Upload Proof & Claim", callback_data="upload_proof")],
     ]
 
-    if update.callback_query:  # triggered by button
+    if update.callback_query:
         await update.callback_query.answer()
         await update.callback_query.edit_message_text(
             text,
             reply_markup=InlineKeyboardMarkup(keyboard),
-            parse_mode="MarkdownV2"
+            parse_mode="HTML"
         )
-    else:  # triggered by /free command
+    else:
         await update.message.reply_text(
             text,
             reply_markup=InlineKeyboardMarkup(keyboard),
-            parse_mode="MarkdownV2"
+            parse_mode="HTML"
         )
+
 
 # --- REFERRAL LINK HANDLER ---
 async def send_referral_link(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Send the user their personal referral link."""
     tg_user = update.effective_user
 
-    # ✅ Use DB user.id for referral links
     async with get_async_session() as session:
         db_user = await get_or_create_user(session, tg_user.id, tg_user.username)
 
     ref_link = f"https://t.me/{BOT_USERNAME}?start={db_user.id}"
-    ref_link_md = md_escape(ref_link)  # ✅ escape before sending
-
-    display_name = md_escape(tg_user.first_name or tg_user.username or "Friend")
+    display_name = html.escape(tg_user.first_name or tg_user.username or "Friend")
 
     text = (
-        f"🚀 *Boom, {display_name}*\\! Your personal referral link is ready:\n\n"
-        f"🔗 {ref_link_md}\n\n"
-        "👥 For *every friend* who joins through *your* link you get *\\+1 FREE Trivia Questions\\!* 🎉\n\n"
-        "🧠 More questions means More chances to score higher\n\n" 
-        "💪 Higher score means Better chance to finish \\#1\n\n"
-        "Share your link everywhere — let’s see how far your knowledge can take you\\! 🏆"
-        "*Be the first to get to the top\\!* 💰💎"
+        f"🚀 <b>Boom, {display_name}!</b>\n\n"
+        f"🔗 <b>Your personal referral link:</b>\n{ref_link}\n\n"
+        "👥 For <b>every friend</b> who joins through your link you get "
+        "<b>+1 FREE Trivia Question!</b> 🎉\n\n"
+        "🧠 More questions = More chances to score higher\n"
+        "💪 Higher score = Better chance to finish #1\n\n"
+        "Share your link everywhere — let’s see how far your knowledge can take you! 🏆"
     )
 
     await update.callback_query.answer()
-    await update.callback_query.edit_message_text(text, parse_mode="MarkdownV2")
+    await update.callback_query.edit_message_text(text, parse_mode="HTML")
+
 
 # --- PROOF UPLOAD HANDLER ---
 async def ask_proof_upload(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Prompt user to upload their proof (photo)."""
     await update.callback_query.answer()
     await update.callback_query.edit_message_text(
-        "📤 Please send a *photo screenshot* showing that you followed us "
-        "on social media\\.\n\n"
-        "Once approved by our team, you’ll receive *\\+1 free Trivia Question*🎉\n\n" \
-        "📌 Remember: Rewards are skill\\-based\\. Higher performance wins\\!",
-        parse_mode="MarkdownV2"
+        "📤 Please send a <b>photo screenshot</b> showing that you followed us.\n\n"
+        "Once approved, you’ll receive <b>+1 FREE Trivia Question</b> 🎉\n\n"
+        "📌 Remember: Rewards are skill-based. Higher performance wins!",
+        parse_mode="HTML"
     )
     context.user_data["awaiting_proof"] = True
 
 
 async def handle_proof_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handle user photo submission and save proof row in DB."""
     if not context.user_data.get("awaiting_proof"):
         return
 
@@ -167,17 +154,21 @@ async def handle_proof_photo(update: Update, context: ContextTypes.DEFAULT_TYPE)
             update.effective_user.id,
             update.effective_user.username
         )
-        stmt = insert(Proof).values(user_id=db_user.id, file_id=file_id, status="pending")
+        stmt = insert(Proof).values(
+            user_id=db_user.id,
+            file_id=file_id,
+            status="pending"
+        )
         await session.execute(stmt)
         await session.commit()
 
     await update.message.reply_text(
-        "✅ Proof received\\! \n\n"
-        "Our team will review it shortly\\.\n\n "
-        "You’ll be notified once approved 🎉 and your free question is credited 💡\n\n"
-        "📍 Tip: The more questions you answer correctly, the higher you rank\\.\n\n"
-        "Type or click /Start to go back to the main menu\\.",
-        parse_mode="MarkdownV2"
+        "✅ <b>Proof received!</b>\n\n"
+        "Our team will review it shortly.\n\n"
+        "You’ll be notified once approved 🎉 and your free question is credited.\n\n"
+        "📍 Tip: The more questions you answer correctly, the higher you rank.\n\n"
+        "Click /start to return to the main menu.",
+        parse_mode="HTML"
     )
 
     context.user_data["awaiting_proof"] = False
@@ -185,24 +176,20 @@ async def handle_proof_photo(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
 # --- NOTIFICATION FOR APPROVAL ---
 def proof_approved_text(db_user, bonus_tries: int):
-    """Text sent when admin approves proof and user is credited."""
-    display_name = md_escape(db_user.username or "Friend")
+    display_name = html.escape(db_user.username or "Friend")
 
     return (
-        f"🎉 *Congrats {display_name}*\\! \n\n"
-        f"✅ Your proof has been approved by our team\\. \n"
-        f"💎 You just earned *{bonus_tries} FREE Trivia Question(s)*\\!\n\n"
-        "🧠 Ready to boost your score even more?\n\n"
-        "📢 Don’t stop here — keep getting free Trivia Questions by inviting friends\\. "
-        "*Leaderboard ranking is based entirely on correct answers\\.\n\n"
-        "👉 Head back to *Play trivia Questions*\\. Every point gets you closer to the top spot 🏆"
+        f"🎉 <b>Congrats {display_name}!</b>\n\n"
+        "✅ Your proof has been approved.\n"
+        f"💎 You earned <b>{bonus_tries} FREE Trivia Question(s)!</b>\n\n"
+        "🧠 Keep climbing the leaderboard!\n\n"
+        "👉 Head back to <b>Play Trivia Questions</b> and aim for the top 🏆"
     )
 
 
 # --- REGISTRATION ---
 def register_handlers(application):
     application.add_handler(CommandHandler("free", free_menu))
-    # ✅ Make "🎁 Free Tries" button from /start work
     application.add_handler(CallbackQueryHandler(free_menu, pattern="^free$"))
     application.add_handler(CallbackQueryHandler(send_referral_link, pattern="^get_referral_link$"))
     application.add_handler(CallbackQueryHandler(ask_proof_upload, pattern="^upload_proof$"))
