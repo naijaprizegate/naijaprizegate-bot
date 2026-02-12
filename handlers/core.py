@@ -212,11 +212,14 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # Fallback — unchanged (still skips numeric-only messages)
 # ===============================================================
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    # ✅ Don't interrupt airtime claim flow
     user_data = context.user_data or {}
 
-    if user_data.get("awaiting_airtime_phone"):
+    # ✅ NEW: Don't interrupt admin support reply flow
+    if is_admin(update.effective_user.id) and user_data.get("awaiting_support_reply"):
+        return
 
+    # ✅ Don't interrupt airtime claim flow
+    if user_data.get("awaiting_airtime_phone"):
         return
 
     safe_text = md_escape(
