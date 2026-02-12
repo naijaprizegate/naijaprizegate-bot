@@ -275,7 +275,7 @@ async def admin_support_action(update: Update, context: ContextTypes.DEFAULT_TYP
 async def admin_support_reply_start(update: Update, context: ContextTypes.DEFAULT_TYPE, ticket_id: int, page: int):
     query = update.callback_query
 
-    if not is_admin(update.effective_user.id):
+    if update.effective_user.id != ADMIN_USER_ID:
         return await query.answer("⛔ Unauthorized.", show_alert=True)
 
     async with AsyncSessionLocal() as session:
@@ -316,7 +316,7 @@ async def admin_support_reply_start(update: Update, context: ContextTypes.DEFAUL
     if username:
         who += f" (@{username})"
 
-    text = (
+    output_text = (
         f"✍️ <b>Reply to Ticket #{ticket_id}</b>\n\n"
         f"👤 <b>From:</b> {who}\n"
         f"🕒 <b>Time:</b> {created_at}\n\n"
@@ -328,7 +328,7 @@ async def admin_support_reply_start(update: Update, context: ContextTypes.DEFAUL
 
     return await safe_edit(
         query,
-        text_out,
+        output_text,
         parse_mode="HTML",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("❌ Cancel", callback_data=f"admin_support_inbox:{int(page or 1)}")]]
@@ -2342,3 +2342,5 @@ def register_handlers(application):
 
     # Failed Airtime pagination
     application.add_handler(CallbackQueryHandler(show_failed_airtime, pattern=r"^admin_airtime_failed"), group=ADMIN_GROUP)
+
+
