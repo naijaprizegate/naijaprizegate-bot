@@ -10,7 +10,7 @@ from sqlalchemy import text
 
 from helpers import md_escape, get_or_create_user
 from db import get_async_session
-from utils.security import validate_phone, detect_provider
+from utils.security import validate_phone, is_admin, detect_provider
 
 logger = logging.getLogger(__name__)
 
