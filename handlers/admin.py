@@ -323,7 +323,7 @@ async def admin_support_reply_start(update: Update, context: ContextTypes.DEFAUL
         f"📝 <b>Message:</b>\n"
         f"<blockquote>{short_message}</blockquote>\n\n"
         f"Type your reply message now.\n"
-        f"Click the *Cancel* button to exit."
+        f"Click the <b>Cancel</b> button to exit."
     )
 
     return await safe_edit(
