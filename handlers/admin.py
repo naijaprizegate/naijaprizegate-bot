@@ -297,7 +297,10 @@ async def admin_support_reply_start(update: Update, context: ContextTypes.DEFAUL
         return await safe_edit(
             query,
             f"⚠️ Ticket #{ticket_id} is not pending (status: {status}).",
-            parse_mode="HTML"
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton("⬅️ Back to Inbox", callback_data=f"admin_support_inbox:{int(page or 1)}")]]
+            ),
         )
 
     # Save reply state
@@ -320,10 +323,17 @@ async def admin_support_reply_start(update: Update, context: ContextTypes.DEFAUL
         f"📝 <b>Message:</b>\n"
         f"<blockquote>{short_message}</blockquote>\n\n"
         f"Type your reply message now.\n"
-        f"Send /cancel to exit."
+        f"Click the *Cancel* button to exit."
     )
 
-    return await safe_edit(query, text, parse_mode="HTML")
+    return await safe_edit(
+        query,
+        text_out,
+        parse_mode="HTML",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("❌ Cancel", callback_data=f"admin_support_inbox:{int(page or 1)}")]]
+        ),
+    )
 
 
 # ---------------------------------------------------------
@@ -715,26 +725,15 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
     # ----------------------------
-    # ✅ Support Reply Button Click (Ticket → ask admin to type reply)
+    # ✅ Support Reply Button Click (Ticket → show ticket + ask admin to type reply)
     # Format: admin_support_reply:<ticket_id>:<page>
     # ----------------------------
     if query.data.startswith("admin_support_reply:"):
         parts = query.data.split(":")
         ticket_id = int(parts[1])
-        page = int(parts[2]) if len(parts) >= 3 else 1  # fallback
+        page = int(parts[2]) if len(parts) >= 3 else 1
 
-        context.user_data["support_reply_ticket_id"] = ticket_id
-        context.user_data["support_reply_return_page"] = page
-        context.user_data["awaiting_support_reply"] = True
-
-        return await safe_edit(
-            query,
-            f"✍️ <b>Reply to Ticket #{ticket_id}</b>\n\nType your reply message now:",
-            parse_mode="HTML",
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("❌ Cancel", callback_data=f"admin_support_inbox:{page}")]]
-            ),
-        )
+        return await admin_support_reply_start(update, context, ticket_id=ticket_id, page=page)
 
 
     # ----------------------------
@@ -2343,5 +2342,3 @@ def register_handlers(application):
 
     # Failed Airtime pagination
     application.add_handler(CallbackQueryHandler(show_failed_airtime, pattern=r"^admin_airtime_failed"), group=ADMIN_GROUP)
-
-
