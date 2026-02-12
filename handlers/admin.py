@@ -270,28 +270,64 @@ async def admin_support_action(update: Update, context: ContextTypes.DEFAULT_TYP
     return await admin_support_inbox_page(update, context, page=int(page or 1))
 
 # ----------------------------------------------------
-# Admin Support Reply Start
+# Admin Support Reply Start (Enhanced with Ticket Preview)
 # ----------------------------------------------------
 async def admin_support_reply_start(update: Update, context: ContextTypes.DEFAULT_TYPE, ticket_id: int, page: int):
     query = update.callback_query
+
     if not is_admin(update.effective_user.id):
         return await query.answer("⛔ Unauthorized.", show_alert=True)
 
+    async with AsyncSessionLocal() as session:
+        res = await session.execute(text("""
+            SELECT message, first_name, username, created_at, status
+            FROM support_tickets
+            WHERE id = :id
+            LIMIT 1
+        """), {"id": int(ticket_id)})
+
+        row = res.fetchone()
+
+    if not row:
+        return await safe_edit(query, "❌ Ticket not found.", parse_mode="HTML")
+
+    message, first_name, username, created_at, status = row
+
+    if status != "pending":
+        return await safe_edit(
+            query,
+            f"⚠️ Ticket #{ticket_id} is not pending (status: {status}).",
+            parse_mode="HTML"
+        )
+
+    # Save reply state
     context.user_data["awaiting_support_reply"] = True
     context.user_data["support_reply_ticket_id"] = int(ticket_id)
     context.user_data["support_reply_return_page"] = int(page or 1)
 
-    return await safe_edit(
-        query,
-        f"✉️ <b>Reply Mode</b>\n\nTicket <b>#{ticket_id}</b>\n\n"
-        "Type your reply message now.\n"
-        "Send /cancel to exit.",
-        parse_mode="HTML",
+    # Trim long message (prevent Telegram 4096 char limit issues)
+    short_message = message if len(message) <= 700 else message[:700] + "…"
+
+    # Build sender display
+    who = first_name or "User"
+    if username:
+        who += f" (@{username})"
+
+    text = (
+        f"✍️ <b>Reply to Ticket #{ticket_id}</b>\n\n"
+        f"👤 <b>From:</b> {who}\n"
+        f"🕒 <b>Time:</b> {created_at}\n\n"
+        f"📝 <b>Message:</b>\n"
+        f"<blockquote>{short_message}</blockquote>\n\n"
+        f"Type your reply message now.\n"
+        f"Send /cancel to exit."
     )
+
+    return await safe_edit(query, text, parse_mode="HTML")
 
 
 # ---------------------------------------------------------
-# Admin Support Reply Text 
+# Admin Support Reply Text Handler
 # ----------------------------------------------------------
 async def admin_support_reply_text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.effective_user.id != ADMIN_USER_ID:
@@ -303,7 +339,7 @@ async def admin_support_reply_text_handler(update: Update, context: ContextTypes
     ticket_id = context.user_data.get("support_reply_ticket_id")
     if not ticket_id:
         context.user_data["awaiting_support_reply"] = False
-        return await update.message.reply_text("⚠️ No ticket selected. Go back to Support Inbox.")
+        return await update.message.reply_text("⚠️ No ticket selected. Please reopen Support Inbox.")
 
     reply_text = (update.message.text or "").strip()
     if not reply_text:
@@ -316,20 +352,20 @@ async def admin_support_reply_text_handler(update: Update, context: ContextTypes
             WHERE id = :id
             LIMIT 1
         """), {"id": int(ticket_id)})
+
         row = res.fetchone()
 
         if not row:
-            context.user_data["awaiting_support_reply"] = False
-            context.user_data.pop("support_reply_ticket_id", None)
+            context.user_data.clear()
             return await update.message.reply_text("❌ Ticket not found. Please reopen Support Inbox.")
 
         tg_id, status = row
+
         if status != "pending":
-            context.user_data["awaiting_support_reply"] = False
-            context.user_data.pop("support_reply_ticket_id", None)
+            context.user_data.clear()
             return await update.message.reply_text(f"⚠️ Ticket is not pending (status: {status}).")
 
-        # send reply to user (admin identity hidden)
+        # Send reply (admin identity hidden)
         try:
             await context.bot.send_message(
                 chat_id=int(tg_id),
@@ -339,18 +375,27 @@ async def admin_support_reply_text_handler(update: Update, context: ContextTypes
         except Exception:
             return await update.message.reply_text("❌ Could not send message (user may have blocked the bot).")
 
+        # Update DB
         await session.execute(text("""
             UPDATE support_tickets
-            SET status='replied', admin_reply=:r, replied_at=NOW()
+            SET status='replied',
+                admin_reply=:r,
+                replied_at=NOW()
             WHERE id=:id
-        """), {"id": int(ticket_id), "r": reply_text})
+        """), {
+            "id": int(ticket_id),
+            "r": reply_text
+        })
+
         await session.commit()
 
-    # clear state
-    context.user_data["awaiting_support_reply"] = False
+    # Clear state safely
+    context.user_data.pop("awaiting_support_reply", None)
     context.user_data.pop("support_reply_ticket_id", None)
+    context.user_data.pop("support_reply_return_page", None)
 
     return await update.message.reply_text(f"✅ Replied to ticket #{ticket_id}.")
+
 
 # ------------------------------------------
 # Cancel Admin Support Reply
