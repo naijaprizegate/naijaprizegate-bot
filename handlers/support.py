@@ -87,7 +87,7 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
                     f"{' (@' + user.username + ')' if user.username else ''}\n"
                     f"TG_ID: <code>{user.id}</code>\n\n"
                     f"<b>Message:</b>\n{msg}\n\n"
-                    "Use /admin to view tickets."
+                    "Use /admin to to view tickets."
                 ),
                 parse_mode="HTML",
             )
@@ -96,7 +96,8 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
 
     await update.message.reply_text(
         "✅ Your message has been sent to support.\n"
-        "We’ll reply here as soon as possible."
+        "You’ll get a reply here as soon as possible.\n\n"
+        "Type or click on /start to go back to the main menu."
     )
     return ConversationHandler.END
 
@@ -123,4 +124,3 @@ support_conv = ConversationHandler(
     },
     fallbacks=[CommandHandler("cancel", support_cancel)],
 )
-
