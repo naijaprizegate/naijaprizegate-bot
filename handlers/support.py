@@ -87,7 +87,7 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
                     f"{' (@' + user.username + ')' if user.username else ''}\n"
                     f"TG_ID: <code>{user.id}</code>\n\n"
                     f"<b>Message:</b>\n{msg}\n\n"
-                    "Use /pending to view tickets."
+                    "Use /admin to view tickets."
                 ),
                 parse_mode="HTML",
             )
