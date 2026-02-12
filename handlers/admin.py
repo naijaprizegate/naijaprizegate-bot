@@ -8,6 +8,8 @@ import csv
 import tempfile
 import asyncio
 import logging
+import html
+
 from datetime import datetime, timezone, timedelta
 
 from telegram import (
@@ -30,6 +32,7 @@ from telegram.ext import filters as tg_filters  # to avoid name clash
 from telegram.error import BadRequest
 from telegram.constants import ParseMode
 from sqlalchemy import select, text, update as sql_update, func, and_
+from sqlalchemy import text as sql_text
 
 from handlers.core import fallback
 from db import AsyncSessionLocal, get_async_session
@@ -337,18 +340,20 @@ async def admin_support_reply_start(update: Update, context: ContextTypes.DEFAUL
 
 
 # ---------------------------------------------------------
-# Admin Support Reply Text Handler
+# Admin Support Reply Text Handler (✅ includes user's message)
 # ----------------------------------------------------------
 async def admin_support_reply_text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    # Admin only
     if update.effective_user.id != ADMIN_USER_ID:
         return
 
+    # Only act when we are in reply mode
     if not context.user_data.get("awaiting_support_reply"):
         return
 
     ticket_id = context.user_data.get("support_reply_ticket_id")
     if not ticket_id:
-        context.user_data["awaiting_support_reply"] = False
+        context.user_data.pop("awaiting_support_reply", None)
         return await update.message.reply_text("⚠️ No ticket selected. Please reopen Support Inbox.")
 
     reply_text = (update.message.text or "").strip()
@@ -356,8 +361,9 @@ async def admin_support_reply_text_handler(update: Update, context: ContextTypes
         return await update.message.reply_text("⚠️ Reply cannot be empty. Type your reply:")
 
     async with AsyncSessionLocal() as session:
-        res = await session.execute(text("""
-            SELECT tg_id, status
+        # Fetch everything we need in ONE query
+        res = await session.execute(sql_text("""
+            SELECT tg_id, status, message
             FROM support_tickets
             WHERE id = :id
             LIMIT 1
@@ -366,40 +372,56 @@ async def admin_support_reply_text_handler(update: Update, context: ContextTypes
         row = res.fetchone()
 
         if not row:
-            context.user_data.clear()
+            # Clear only support reply state (don't wipe all user_data)
+            context.user_data.pop("awaiting_support_reply", None)
+            context.user_data.pop("support_reply_ticket_id", None)
+            context.user_data.pop("support_reply_return_page", None)
             return await update.message.reply_text("❌ Ticket not found. Please reopen Support Inbox.")
 
-        tg_id, status = row
+        tg_id, status, original_message = row
 
         if status != "pending":
-            context.user_data.clear()
+            context.user_data.pop("awaiting_support_reply", None)
+            context.user_data.pop("support_reply_ticket_id", None)
+            context.user_data.pop("support_reply_return_page", None)
             return await update.message.reply_text(f"⚠️ Ticket is not pending (status: {status}).")
 
-        # Send reply (admin identity hidden)
+        # Escape HTML to prevent formatting break or injection
+        original_message = original_message or ""
+        safe_original = html.escape(original_message)
+        safe_reply = html.escape(reply_text)
+
+        # Trim long original message for readability
+        if len(safe_original) > 500:
+            safe_original = safe_original[:500] + "…"
+
+        # Send reply to user (admin identity stays hidden)
         try:
             await context.bot.send_message(
                 chat_id=int(tg_id),
-                text=f"✅ <b>Support Reply</b>\n\n{reply_text}",
-                parse_mode="HTML"
+                text=(
+                    f"📩 <b>Your Message:</b>\n"
+                    f"<blockquote>{safe_original}</blockquote>\n\n"
+                    f"✅ <b>Support Reply:</b>\n"
+                    f"{safe_reply}"
+                ),
+                parse_mode="HTML",
             )
         except Exception:
             return await update.message.reply_text("❌ Could not send message (user may have blocked the bot).")
 
         # Update DB
-        await session.execute(text("""
+        await session.execute(sql_text("""
             UPDATE support_tickets
             SET status='replied',
                 admin_reply=:r,
                 replied_at=NOW()
             WHERE id=:id
-        """), {
-            "id": int(ticket_id),
-            "r": reply_text
-        })
+        """), {"id": int(ticket_id), "r": reply_text})
 
         await session.commit()
 
-    # Clear state safely
+    # Clear only support reply state safely
     context.user_data.pop("awaiting_support_reply", None)
     context.user_data.pop("support_reply_ticket_id", None)
     context.user_data.pop("support_reply_return_page", None)
@@ -2342,5 +2364,4 @@ def register_handlers(application):
 
     # Failed Airtime pagination
     application.add_handler(CallbackQueryHandler(show_failed_airtime, pattern=r"^admin_airtime_failed"), group=ADMIN_GROUP)
-
 
