@@ -88,8 +88,8 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             InlineKeyboardButton("👥 Share Referral", switch_inline_query=share_message),
         ],
         [
-            InlineKeyboardButton("🔥 Follow on Facebook", url="https://web.facebook.com/Naijaprizegate"),
-            InlineKeyboardButton("✨ Follow on Instagram", url="https://www.instagram.com/naijaprizegate/"),
+            InlineKeyboardButton("📘 Follow on Facebook", url="https://web.facebook.com/Naijaprizegate"),
+            InlineKeyboardButton("📸 Follow on Instagram", url="https://www.instagram.com/naijaprizegate/"),
         ],
         [
             InlineKeyboardButton("🎶 Follow on TikTok", url="https://www.tiktok.com/@naijaprizegate"),
