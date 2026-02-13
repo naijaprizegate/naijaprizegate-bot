@@ -46,29 +46,31 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     share_variants = [
         (
-            f"🎰 <b>Hey, it’s {display_name} here!</b>\n\n"
+            f"🎰 Hey, it’s <b>{display_name}</b> here!\n\n"
             f"NaijaPrizeGate is the game to play right now 🔥\n\n"
-            f"Answer questions on <b>fotball</b>, <b>Entertainment</b>, <b>History</b> and gain lots of rewards 🚀\n\n"
-            f"Top scorer wins amazing prizes 🎯\n\n"
+            f"Answer questions on <b>Football</b>, <b>Entertainment</b>, and <b>History</b> "
+            f"and win amazing rewards 🚀\n\n"
+            f"<b>Top scorer wins:</b> 🎯\n\n"
             f"📱 <b>iPhone 16 Pro Max</b>\n"
             f"📱 <b>iPhone 17 Pro Max</b>\n"
             f"📱 <b>Samsung Galaxy Z Flip 7</b>\n"
             f"📱 <b>Samsung Galaxy S25 Ultra</b>\n\n"
-            f"Join me 👇\n{ref_link}"
+            f"Join me now 👇\n"
+            f"{ref_link}"
         ),
-        
+
         (
-            f"🎰 <b>Hey, it’s {display_name} here!</b>\n\n"
-            f"NaijaPrizeGate is the game to play right now 🔥\n\n"
-            f"Answer questions on <b>fotball</b>, <b>Entertainment</b>, <b>History</b> and gain lots of rewards 🚀\n\n"
-            f"Top scorer wins amazing prizes 🎯\n\n"
-            f"🔥 I'm already playing on NaijaPrizeGate!\n\n"
-            f"Prizes up for grabs:\n"
-            f"🏆 iPhone 16 Pro Max\n"
-            f"🏆 iPhone 17 Pro Max\n"
-            f"🏆 Samsung Galaxy Z Flip 7\n"
-            f"🏆 Samsung Galaxy S25 Ultra\n\n"
-            f"Join here 👇\n{ref_link}"
+            f"🔥 Hey, it’s <b>{display_name}</b>!\n\n"
+            f"I'm already playing on <b>NaijaPrizeGate</b> 🎯\n\n"
+            f"Test your knowledge in <b>Football</b>, <b>Entertainment</b>, and <b>History</b> "
+            f"and climb the leaderboard fast 🚀\n\n"
+            f"<b>Prizes up for grabs:</b>\n\n"
+            f"🏆 <b>iPhone 16 Pro Max</b>\n"
+            f"🏆 <b>iPhone 17 Pro Max</b>\n"
+            f"🏆 <b>Samsung Galaxy Z Flip 7</b>\n"
+            f"🏆 <b>Samsung Galaxy S25 Ultra</b>\n\n"
+            f"Don’t miss out 👇\n"
+            f"{ref_link}"
         ),
     ]
 
