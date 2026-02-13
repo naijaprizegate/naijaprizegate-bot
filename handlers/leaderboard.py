@@ -259,13 +259,13 @@ async def leaderboard_render(
 
             achievements = []
             if my_points >= 1:
-                achievements.append("🎉 First Challenge — You joined your first performance  round.")
+                achievements.append("🎉 <b>First Challenge</b> — You joined your first performance  round.")
             if my_points >= 10:
-                achievements.append("🎯 Consistent Player — 10+ performance  points earned.")
+                achievements.append("🎯 <b>Consistent Player</b> — 10+ performance  points earned.")
             if my_points >= 25:
-                achievements.append("🔥 Dedicated Challenger — 25+ performance  points.")
+                achievements.append("🔥 <b>Dedicated Challenger</b> — 25+ performance  points.")
             if best_streak >= 3:
-                achievements.append(f"⚡ Streak Builder — {best_streak}+ days of quiz activity in a row.")
+                achievements.append(f"⚡ <b>Streak Builder</b> — {best_streak}+ days of quiz activity in a row.")
 
             if achievements:
                 text_lines.append("\n<b>Quick Achievements</b>")
