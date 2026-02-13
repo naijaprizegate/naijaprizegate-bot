@@ -119,7 +119,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "📘 Tap *Terms & Fair Play* below for policy & transparency\n\n"
         "📜 By using NaijaPrizeGate, you agree to our Terms & Conditions and Fair Play Rules\n\n"
         "Ready to begin?\n"
-        "Tap *Play Trivia* below 👇"
+        "Tap *Play Trivia Questions* below 👇"
     )
 
     keyboard = [
