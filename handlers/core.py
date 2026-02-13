@@ -24,15 +24,14 @@ async def terms_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "NaijaPrizeGate is a <b>skill-influenced trivia competition</b>.\n\n"
 
         "✔ Rewards are determined by <b>trivia performance and Premium Points</b>\n"
-        "✔ Correct answers earn <b>Premium Spins</b> and Premium Points\n"
-        "✔ Incorrect answers earn <b>Standard Spins</b>\n"
+        "✔ Correct answers earn <b>Premium Points\n"
         "✔ Premium Points accumulate across plays and determine leaderboard ranking\n"
         "✔ The <b>highest Premium Points holder</b> at the end of a game cycle wins the jackpot prize\n\n"
 
         "⚖️ <b>Fair Play Rules</b>\n"
         "✔ Trivia questions are randomly selected from predefined categories\n"
         "✔ Answers are validated server-side\n"
-        "✔ Users cannot influence question selection, spins, or point calculations\n"
+        "✔ Users cannot influence question selection or point calculations\n"
         "✔ Any form of cheating, automation, or abuse leads to disqualification\n\n"
 
         "💳 <b>Payments & Participation</b>\n"
@@ -41,7 +40,7 @@ async def terms_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "✔ Chances are non-refundable once a question is served\n\n"
 
         "🎁 <b>Rewards & Fulfillment</b>\n"
-        "✔ Rewards are <b>not guaranteed</b> on every spin\n"
+        "✔ Rewards are <b>not guaranteed</b> on every Trivia attempt\n"
         "✔ Airtime and data rewards are processed after validation\n"
         "✔ Physical prizes require accurate contact and delivery details\n\n"
 
