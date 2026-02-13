@@ -251,7 +251,6 @@ async def leaderboard_render(
         else:
             rank_text = f"#{my_rank}" if my_rank is not None else "N/A"
             text_lines.append(
-                f"• Rank: {rank_text}\n"
                 f"• performance  points: {my_points} ({badge_me})\n"
                 f"• Current activity streak: {current_streak} day(s)\n"
                 f"• Best activity streak: {best_streak} day(s)"
