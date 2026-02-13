@@ -443,19 +443,19 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
     # Milestone-style achievements (quiz-based)
     achievements = []
     if total_points_all >= 1:
-        achievements.append("🎉 First Challenge — You completed your first performance  round!")
+        achievements.append("🎉 <b>First Challenge</b> — You completed your first performance  round!")
     if total_points_all >= 10:
-        achievements.append("🎯 Consistent Player — 10+ performance  points collected.")
+        achievements.append("🎯 <b>Consistent Player</b> — 10+ performance  points collected.")
     if total_points_all >= 25:
-        achievements.append("🔥 Dedicated Challenger — 25+ performance  points.")
+        achievements.append("🔥 <b>Dedicated Challenger</b> — 25+ performance  points.")
     if total_points_all >= 50:
-        achievements.append("💎 Elite Learner — 50+ performance  points.")
+        achievements.append("💎 <b>Elite Learner</b> — 50+ performance  points.")
     if total_points_all >= 100:
-        achievements.append("👑 Quiz Master — 100+ performance  points.")
+        achievements.append("👑 <b>Quiz Master</b> — 100+ performance  points.")
     if best_streak >= 3:
-        achievements.append(f"⚡ Streak Builder — {best_streak}+ days of quiz activity in a row.")
+        achievements.append(f"⚡ <b>Streak Builder</b> — {best_streak}+ days of quiz activity in a row.")
     if best_streak >= 7:
-        achievements.append("🔥 Weekly Warrior — 7 days of non-stop quiz activity.")
+        achievements.append("🔥 <b>Weekly Warrior</b> — 7 days of non-stop quiz activity.")
 
     if achievements:
         lines.append("<b>Unlocked Milestones</b>")
@@ -469,9 +469,9 @@ async def my_achievements_handler(update: Update, context: ContextTypes.DEFAULT_
 
     # Optional: hint upcoming milestones (static text)
     lines.append("\n<b>Next Milestones</b>")
-    lines.append("• 10 quiz points → Consistent Player")
-    lines.append("• 25 quiz points → Dedicated Challenger")
-    lines.append("• 3-day activity streak → Streak Builder")
+    lines.append("• 10 quiz points → <b>Consistent Player</b>")
+    lines.append("• 25 quiz points → <b>Dedicated Challenger</b>")
+    lines.append("• 3-day activity streak → <b>Streak Builder</b>")
 
     lines.append(
         "\n📌 All progress here reflects your quiz activity and knowledge performance."
@@ -508,3 +508,4 @@ def register_leaderboard_handlers(application):
     application.add_handler(
         CallbackQueryHandler(my_achievements_handler, pattern=r"^my_achievements$")
     )
+
