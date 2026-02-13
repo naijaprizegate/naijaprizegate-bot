@@ -236,10 +236,9 @@ async def leaderboard_render(
     text_lines = []
     text_lines.append("🏆 <b>NaijaPrizeGate Quiz Leaderboard</b>")
     text_lines.append(f"{scope_label}\n")
-
+    
     text_lines.append("")
     text_lines.append(f"📊 <b>Total Quiz Points (this period):</b> {total_points}")
-    text_lines.append(f"👥 <b>Active Players:</b> {distinct_users}")
 
     if viewer_user_id:
         badge_me = _badge_for_points(my_points)
@@ -273,20 +272,7 @@ async def leaderboard_render(
                 for a in achievements:
                     text_lines.append(f"• {a}")
 
-    # ---- Cycle progress + trust signal (merit-based winner) ----
-    text_lines.append("")
-    if WIN_THRESHOLD > 0:
-        # Percent progress (rounded)
-        if WIN_THRESHOLD > 0:
-            progress_pct = int((paid_this_cycle / WIN_THRESHOLD) * 100) if paid_this_cycle > 0 else 0
-
-        # Create simple progress bar (10 blocks)
-        total_blocks = 10
-        filled_blocks = int(progress_pct / (100 / total_blocks))
-        progress_bar = "█" * filled_blocks + "░" * (total_blocks - filled_blocks)
-
-        text_lines.append(f"🎯 <b>Cycle Progress:</b> {progress_bar} ({progress_pct}%)")
-
+    
         if paid_this_cycle >= WIN_THRESHOLD:
             # 🍾 Winner lock state (automatic backend logic)
             text_lines.append(
