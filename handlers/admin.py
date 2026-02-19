@@ -61,29 +61,77 @@ DATE_SELECTION_KEY = "csv_export_date_range"
 
 
 # ----------------------------
-# SAFE EDIT FUNCTION
+# SAFE EDIT FUNCTION (robust)
 # ----------------------------
-async def safe_edit(query, text: str, **kwargs):
+async def safe_edit(query, text: str, reply_markup=None, parse_mode="HTML", **kwargs):
     """
-    Safely edit a message or caption, ignoring harmless 'Message is not modified' errors.
-    Works for both photo and text messages.
-    """
-    try:
-        if query.message.photo:
-            await query.edit_message_caption(caption=text, **kwargs)
-        else:
-            await query.edit_message_text(text, **kwargs)
-    except BadRequest as e:
-        # ✅ Ignore harmless Telegram error
-        if "message is not modified" in str(e).lower():
-            logger.info("ℹ️ Skipped redundant edit — message not modified.")
-            return
-        else:
-            logger.warning(f"⚠️ Telegram BadRequest: {e}")
-            raise
-    except Exception as e:
-        logger.warning(f"[WARN] safe_edit fail: {e}")
+    Safely edits a message (text or caption).
+    If Telegram refuses to edit (no text to edit, can't be edited, deleted, etc),
+    it sends a NEW message instead.
 
+    - Works for both photo and text messages
+    - Ignores harmless 'message is not modified'
+    - Handles 'There is no text in the message to edit'
+    """
+
+    # Allow old calls that pass parse_mode / reply_markup via kwargs too
+    if "parse_mode" not in kwargs and parse_mode is not None:
+        kwargs["parse_mode"] = parse_mode
+    if "reply_markup" not in kwargs and reply_markup is not None:
+        kwargs["reply_markup"] = reply_markup
+
+    try:
+        msg = getattr(query, "message", None)
+
+        # If the current message has a photo, it usually needs caption edit
+        if msg and getattr(msg, "photo", None):
+            return await query.edit_message_caption(caption=text, **kwargs)
+
+        # Otherwise, edit text
+        return await query.edit_message_text(text=text, **kwargs)
+
+    except BadRequest as e:
+        err = str(e).lower()
+
+        # ✅ Ignore harmless “not modified”
+        if "message is not modified" in err:
+            logger.info("ℹ️ safe_edit: skipped redundant edit (message not modified).")
+            return None
+
+        # ✅ These mean edit is impossible → send a new message
+        if (
+            "there is no text in the message to edit" in err
+            or "message to edit not found" in err
+            or "message can't be edited" in err
+            or "message cannot be edited" in err
+            or "chat not found" in err
+        ):
+            logger.warning(f"⚠️ safe_edit: cannot edit ({e}) → sending new message.")
+            try:
+                # Prefer replying in same chat thread
+                if getattr(query, "message", None):
+                    return await query.message.reply_text(text=text, **kwargs)
+            except Exception as send_err:
+                logger.warning(f"⚠️ safe_edit: reply_text failed: {send_err}")
+
+            # Final fallback: send to the chat id directly if available
+            try:
+                chat_id = getattr(getattr(query, "message", None), "chat_id", None)
+                if chat_id is not None:
+                    return await query.get_bot().send_message(chat_id=chat_id, text=text, **kwargs)
+            except Exception as send_err:
+                logger.warning(f"⚠️ safe_edit: send_message fallback failed: {send_err}")
+
+            return None
+
+        # Anything else: raise (real error you should fix)
+        logger.warning(f"⚠️ Telegram BadRequest in safe_edit: {e}")
+        raise
+
+    except Exception as e:
+        # Don't crash the whole update if edit fails unexpectedly
+        logger.warning(f"[WARN] safe_edit unexpected failure: {e}")
+        return None
 
 # ----------------------------
 # Command: /admin (Main Panel)
