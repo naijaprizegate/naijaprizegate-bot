@@ -172,7 +172,8 @@ async def process_pending_airtime():
                             chat_id=tg_id,
                             text=(
                                 "⚠️ Airtime delivery failed.\n"
-                                "We’ll retry automatically if possible. If it persists, contact support."
+                                "We’ll retry automatically if possible. If it persists, contact support.\n\n"
+                                "Type or click on /start and then click on <b>CONTACT SUPPORT</b> button."
                             ),
                         )
                     except Exception:
