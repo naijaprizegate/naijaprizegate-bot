@@ -1,7 +1,6 @@
 # ===============================================================
 # migrations/add_trivia_progress_v1.py
-# SAFE MIGRATION: adds trivia_progress + per-category user indexes
-# (Idempotent: creates missing only, does not break existing)
+# Adds trivia_progress table (idempotent)
 # ===============================================================
 import os
 import json
@@ -24,9 +23,7 @@ def main():
     cur = conn.cursor()
 
     try:
-        # -------------------------------------------------------
-        # 0) schema_migrations table (ensure exists)
-        # -------------------------------------------------------
+        # 0) schema_migrations table
         cur.execute("""
         CREATE TABLE IF NOT EXISTS schema_migrations (
             name TEXT PRIMARY KEY,
@@ -35,17 +32,15 @@ def main():
         );
         """)
 
-        # If migration already applied, stop
-        cur.execute("SELECT 1 FROM schema_migrations WHERE name = %s LIMIT 1;", (MIGRATION_NAME,))
+        # Stop if already applied
+        cur.execute("SELECT 1 FROM schema_migrations WHERE name=%s LIMIT 1;", (MIGRATION_NAME,))
         if cur.fetchone():
             print(f"✅ Migration already applied: {MIGRATION_NAME}")
             return
 
         print(f"🔧 Starting migration: {MIGRATION_NAME}")
 
-        # -------------------------------------------------------
-        # 1) Create trivia_progress table (if not exists)
-        # -------------------------------------------------------
+        # 1) Create trivia_progress table (idempotent)
         cur.execute("""
         CREATE TABLE IF NOT EXISTS trivia_progress (
           tg_id BIGINT NOT NULL,
@@ -55,33 +50,20 @@ def main():
           PRIMARY KEY (tg_id, category_key)
         );
         """)
-        print("✅ trivia_progress ensured")
 
-        # -------------------------------------------------------
-        # 2) Add per-category progress columns to users (if missing)
-        # NOTE: These are safe no-ops if column already exists.
-        # -------------------------------------------------------
-        cur.execute("ALTER TABLE users ADD COLUMN IF NOT EXISTS entertainment_q_index INTEGER DEFAULT 0;")
-        cur.execute("ALTER TABLE users ADD COLUMN IF NOT EXISTS history_q_index INTEGER DEFAULT 0;")
-        cur.execute("ALTER TABLE users ADD COLUMN IF NOT EXISTS football_q_index INTEGER DEFAULT 0;")
-        cur.execute("ALTER TABLE users ADD COLUMN IF NOT EXISTS geography_q_index INTEGER DEFAULT 0;")
-        cur.execute("ALTER TABLE users ADD COLUMN IF NOT EXISTS english_q_index INTEGER DEFAULT 0;")
+        # Optional helpful index (not required, but fine)
+        cur.execute("""
+        CREATE INDEX IF NOT EXISTS idx_trivia_progress_category
+        ON trivia_progress (category_key);
+        """)
 
-        # ✅ IMPORTANT: use correct spelling: sciences_q_index (not sciencs_q_index)
-        cur.execute("ALTER TABLE users ADD COLUMN IF NOT EXISTS sciences_q_index INTEGER DEFAULT 0;")
-
-        cur.execute("ALTER TABLE users ADD COLUMN IF NOT EXISTS mathematics_q_index INTEGER DEFAULT 0;")
-        print("✅ users.*_q_index columns ensured")
-
-        # -------------------------------------------------------
-        # 3) Record migration
-        # -------------------------------------------------------
+        # 2) Record migration
         cur.execute(
             "INSERT INTO schema_migrations (name, meta) VALUES (%s, %s::jsonb)",
             (MIGRATION_NAME, json.dumps({
                 "applied_by": "render_migration_script",
                 "applied_at": datetime.now(timezone.utc).isoformat(),
-                "notes": "Created trivia_progress table + ensured users category index columns exist"
+                "notes": "Added trivia_progress table for sequential per-user per-category question order"
             }))
         )
 
@@ -93,7 +75,6 @@ def main():
         print("❌ Migration failed — rolled back")
         print("Error:", e)
         raise
-
     finally:
         cur.close()
         conn.close()
