@@ -15,6 +15,7 @@ from sqlalchemy import (
     text,
     func,
 )
+from sqlalchemy import PrimaryKeyConstraint
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 from sqlalchemy.orm import relationship
 from base import Base
