@@ -19,7 +19,7 @@ from sqlalchemy import text
 
 from db import get_async_session
 from helpers import get_or_create_user, consume_try, md_escape
-from utils.questions_loader import get_random_question
+from utils.questions_loader import get_next_question_for_user
 from utils.signer import generate_signed_token
 
 from services.playtrivia import resolve_trivia_attempt, admin_add_cycle_points, admin_reset_cycle
@@ -65,9 +65,15 @@ def make_category_keyboard():
                 InlineKeyboardButton("⚽ Football", callback_data="cat_Football"),
                 InlineKeyboardButton("🌍 Geography", callback_data="cat_Geography"),
             ],
+            [
+                InlineKeyboardButton("📖 English", callback_data="cat_English"),
+                InlineKeyboardButton("🔬 Sciences", callback_data="cat_Sciences"),
+            ],
+            [
+                InlineKeyboardButton("➗ Mathematics", callback_data="cat_Mathematics"),
+            ],
         ]
     )
-
 
 # ================================================================
 # STEP 1 — Entry point
@@ -119,8 +125,15 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
 
     _, category = query.data.split("_", 1)
 
-    # Load question
-    q = get_random_question(category)
+    # ✅ TRUE sequential (per user, per category) using DB
+    q = await get_next_question_for_user(tg_user.id, category)
+
+    # Safety fallback
+    if not q:
+        return await query.message.reply_text(
+            "⚠️ No questions found for this category yet.",
+            reply_markup=make_category_keyboard(),
+        )
 
     # Save pending data
     context.user_data["pending_trivia_question"] = q
@@ -783,4 +796,3 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
         application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern=r"^buy$"))
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
-
