@@ -93,3 +93,39 @@ def load_questions(force_reload: bool = False) -> List[Dict]:
         logger.error(f"❌ Error loading trivia: {e}")
         TRIVIA_CACHE = FALLBACK_QUESTIONS
         return TRIVIA_CACHE
+    
+# -----------------------------------------------------------
+# Category helpers (SEQUENTIAL, not random)
+# -----------------------------------------------------------
+
+def get_questions_for_category(category: str, force_reload: bool = False) -> List[Dict]:
+    """
+    Returns questions filtered by category, sorted in order (by id).
+    """
+    all_qs = load_questions(force_reload=force_reload)
+    cat = (category or "").strip()
+
+    qs = [q for q in all_qs if str(q.get("category", "")).strip() == cat]
+    qs.sort(key=lambda x: int(x.get("id", 0)))
+    return qs
+
+
+def get_next_question_in_category(category: str, next_index: int = 0, force_reload: bool = False):
+    """
+    Sequential question picker.
+    - category: category string
+    - next_index: the index to serve now (0-based)
+    Returns: (question_dict_or_None, new_next_index_int, total_in_category_int)
+    """
+    qs = get_questions_for_category(category, force_reload=force_reload)
+
+    if not qs:
+        return None, 0, 0
+
+    # safety clamp + wrap
+    idx = int(next_index or 0) % len(qs)
+
+    question = qs[idx]
+    new_next_index = (idx + 1) % len(qs)
+
+    return question, new_next_index, len(qs)
