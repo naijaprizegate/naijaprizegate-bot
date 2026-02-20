@@ -48,6 +48,15 @@ class User(Base):
 
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
+    # Trivia progress per category (sequential question system)
+    entertainment_q_index = Column(Integer, default=0)
+    history_q_index = Column(Integer, default=0)
+    football_q_index = Column(Integer, default=0)
+    geography_q_index = Column(Integer, default=0)
+    english_q_index = Column(Integer, default=0)
+    sciences_q_index = Column(Integer, default=0)
+    mathematics_q_index = Column(Integer, default=0)
+    
     # Relationships
     plays = relationship("Play", back_populates="user")
     payments = relationship("Payment", back_populates="user")
@@ -56,6 +65,23 @@ class User(Base):
 
     # New relationship: cycle stats
     cycle_stats = relationship("UserCycleStat", back_populates="user")
+
+
+# ================================================================
+# TRIVIA PROGRESS (per-user, per-category)
+# ================================================================
+class TriviaProgress(Base):
+    __tablename__ = "trivia_progress"
+
+    tg_id = Column(BigInteger, nullable=False)
+    category_key = Column(Text, nullable=False)
+
+    next_index = Column(Integer, nullable=False, server_default=text("0"))
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+
+    __table_args__ = (
+        PrimaryKeyConstraint("tg_id", "category_key", name="trivia_progress_pkey"),
+    )
 
 
 # ================================================================
