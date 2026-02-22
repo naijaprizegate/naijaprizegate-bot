@@ -238,16 +238,22 @@ def clubkonnect_is_success(data: Dict[str, Any]) -> bool:
 
 # -----------------------------------------------------
 # Create Airtime Payout Record + Prompt Claim Button
+# (Improved: stronger idempotency + concurrency safe)
 # ------------------------------------------------------
 async def create_pending_airtime_payout(
     session: AsyncSession,
     user_id: str,
     tg_id: int,
     total_premium_spins: int,
-    cycle_id: int,  # ✅ NEW
+    cycle_id: int,
 ) -> Optional[Dict[str, int | str]]:
     """
-    Creates a pending airtime payout if a milestone is reached.
+    Creates (or reuses) a pending airtime payout if a milestone is reached.
+
+    Key goals:
+    - Idempotent per (user_id, cycle_id, amount): prevents duplicate payouts
+    - Concurrency-safe: locks existing payout row before deciding
+    - Compatible with existing airtime_payouts schema (no new columns assumed)
 
     Returns:
         {
@@ -259,18 +265,44 @@ async def create_pending_airtime_payout(
         or None if no milestone was hit.
     """
 
-    amount = AIRTIME_MILESTONES.get(int(total_premium_spins))
+    spins = int(total_premium_spins or 0)
+    amount = AIRTIME_MILESTONES.get(spins)
+
     if not amount:
         logger.info(
             "ℹ️ No airtime milestone | tg_id=%s | cycle_id=%s | spins=%s",
-            tg_id, cycle_id, total_premium_spins
+            tg_id, cycle_id, spins
         )
         return None
 
-    # ------------------------------------------------------------
-    # ✅ OPTIONAL: idempotency guard (prevents duplicates)
-    # If you want to allow multiple payouts for same milestone, remove this block.
-    # ------------------------------------------------------------
+    amt = int(amount)
+    uid = str(user_id)
+    tg = int(tg_id)
+    c = int(cycle_id)
+
+    # ----------------------------------------------------------------
+    # Stronger idempotency guard:
+    # Reuse the most recent payout for same (user, cycle, amount)
+    # across any "not-success" statuses.
+    #
+    # Why include more statuses?
+    # - If provider fails with 503, you might mark payout as retryable.
+    # - If provider fails with INSUFFICIENT_BALANCE, you might mark as needs_funding.
+    # In both cases, you MUST NOT create a new payout record.
+    #
+    # NOTE: We do not assume these statuses exist elsewhere—status is just text.
+    # This query simply reuses any existing row to prevent duplicates.
+    # ----------------------------------------------------------------
+    REUSABLE_STATUSES = (
+        "pending_claim",
+        "claim_phone_set",
+        "queued",
+        "retrying",
+        "failed_retryable",
+        "failed_needs_funding",
+        "failed",
+    )
+
     existing = await session.execute(
         text("""
             SELECT id::text
@@ -278,25 +310,32 @@ async def create_pending_airtime_payout(
             WHERE user_id = CAST(:uid AS uuid)
               AND cycle_id = :c
               AND amount = :amt
-              AND status IN ('pending_claim', 'claim_phone_set')
+              AND status = ANY(:statuses)
             ORDER BY created_at DESC
             LIMIT 1
+            FOR UPDATE
         """),
-        {"uid": user_id, "c": int(cycle_id), "amt": int(amount)},
+        {"uid": uid, "c": c, "amt": amt, "statuses": list(REUSABLE_STATUSES)},
     )
     existing_id = existing.scalar_one_or_none()
+
     if existing_id:
         logger.info(
-            "✅ Airtime payout already exists | tg_id=%s | cycle_id=%s | payout_id=%s | amount=%s",
-            tg_id, cycle_id, existing_id, amount
+            "✅ Reusing existing airtime payout | tg_id=%s | cycle_id=%s | payout_id=%s | amount=%s | spins=%s",
+            tg, c, existing_id, amt, spins
         )
         return {
             "payout_id": existing_id,
-            "amount": int(amount),
-            "spins": int(total_premium_spins),
-            "cycle_id": int(cycle_id),
+            "amount": amt,
+            "spins": spins,
+            "cycle_id": c,
         }
 
+    # ----------------------------------------------------------------
+    # Create new payout
+    # - status starts at 'pending_claim'
+    # - phone_number remains NULL until user supplies it
+    # ----------------------------------------------------------------
     payout_id = str(uuid.uuid4())
     now = datetime.now(timezone.utc)
 
@@ -325,26 +364,25 @@ async def create_pending_airtime_payout(
         """),
         {
             "id": payout_id,
-            "uid": user_id,
-            "tg": int(tg_id),
-            "amt": int(amount),
-            "c": int(cycle_id),
+            "uid": uid,
+            "tg": tg,
+            "amt": amt,
+            "c": c,
             "ts": now,
         },
     )
 
     logger.info(
-        "🎯 Airtime payout created | tg_id=%s | cycle_id=%s | payout_id=%s | amount=%s",
-        tg_id, cycle_id, payout_id, amount
+        "🎯 Airtime payout created | tg_id=%s | cycle_id=%s | payout_id=%s | amount=%s | spins=%s",
+        tg, c, payout_id, amt, spins
     )
 
     return {
         "payout_id": payout_id,
-        "amount": int(amount),
-        "spins": int(total_premium_spins),
-        "cycle_id": int(cycle_id),
+        "amount": amt,
+        "spins": spins,
+        "cycle_id": c,
     }
-
 
 # -------------------------------------------------------------------
 # Claim Button → Ask for Phone Number
