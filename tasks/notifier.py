@@ -192,6 +192,7 @@ async def process_pending_airtime():
                                 sent_at=CASE WHEN :status='sent' THEN COALESCE(sent_at, NOW()) ELSE sent_at END,
                                 provider=:provider,
                                 provider_ref=:ref,
+                                provider_reference=:ref,
                                 provider_response=CAST(:response AS jsonb),
                                 provider_payload=:payload
                             WHERE id=:pid
