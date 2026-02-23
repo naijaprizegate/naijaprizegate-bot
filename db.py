@@ -1,13 +1,13 @@
 # ===============================================================
-# db.py — Central async SQLAlchemy setup
+# db.py — Central async SQLAlchemy setup (Supabase-safe + asyncpg SSL)
 # ===============================================================
 import os
 import logging
+import ssl
 from contextlib import asynccontextmanager
-from sqlalchemy.ext.asyncio import (
-    create_async_engine,
-    AsyncSession,
-)
+from urllib.parse import urlparse, parse_qsl, urlencode, urlunparse
+
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import select
 
@@ -30,18 +30,42 @@ if DATABASE_URL.startswith("postgres://"):
 elif DATABASE_URL.startswith("postgresql://") and "+asyncpg" not in DATABASE_URL:
     DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
 
+def _sanitize_asyncpg_url(url: str) -> str:
+    """
+    asyncpg does NOT accept libpq-style params like sslmode=require.
+    Supabase pooler URLs sometimes include params like:
+      - sslmode=require
+      - pgbouncer=true
+    We remove them from the URL and handle SSL via connect_args instead.
+    """
+    parsed = urlparse(url)
+    q = dict(parse_qsl(parsed.query, keep_blank_values=True))
+
+    # Remove params that asyncpg/sqlalchemy may pass through as unsupported kwargs
+    for bad_key in ("sslmode", "pgbouncer", "pool_mode", "ssl"):
+        q.pop(bad_key, None)
+
+    new_query = urlencode(q) if q else ""
+    return urlunparse(parsed._replace(query=new_query))
+
+DATABASE_URL = _sanitize_asyncpg_url(DATABASE_URL)
+
 # -------------------------------------------------
-# Engine & Async Session Factory
+# Engine & Async Session Factory (with SSL)
 # -------------------------------------------------
+# Supabase requires SSL. asyncpg expects an SSL context object.
+ssl_context = ssl.create_default_context()
+
 engine = create_async_engine(
     DATABASE_URL,
-    echo=os.getenv("SQL_ECHO", "false").lower() == "true",  # enable SQL logging if needed
-    pool_pre_ping=True,     # checks if connection is alive
-    pool_recycle=1800,      # recycle connections every 30 mins
+    echo=os.getenv("SQL_ECHO", "false").lower() == "true",
+    pool_pre_ping=True,
+    pool_recycle=1800,
     future=True,
+    connect_args={"ssl": ssl_context},
 )
 
-# This is the async session factory the whole app should import
+# Async session factory
 async_sessionmaker = sessionmaker(
     bind=engine,
     expire_on_commit=False,
@@ -58,7 +82,6 @@ async def get_session() -> AsyncSession:
     """FastAPI database session dependency."""
     async with async_sessionmaker() as session:
         yield session
-
 
 @asynccontextmanager
 async def get_async_session():
