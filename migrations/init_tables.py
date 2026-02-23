@@ -6,6 +6,7 @@ import os
 import json
 from datetime import datetime, timezone
 import psycopg2
+from urllib.parse import urlparse   # ⭐ NEW
 
 MIGRATION_NAME = "add_cycle_system_v1"
 
@@ -18,6 +19,17 @@ def main():
     # psycopg2 needs sync URL
     if database_url.startswith("postgresql+asyncpg://"):
         database_url = database_url.replace("postgresql+asyncpg://", "postgresql://", 1)
+
+    # =============================================================
+    # 🔎 DEBUG — SHOW WHAT RENDER IS ACTUALLY USING
+    # =============================================================
+    parsed = urlparse(database_url)
+    print("========================================")
+    print("🔎 DATABASE DEBUG INFO")
+    print("DB USER:", parsed.username)
+    print("DB HOST:", parsed.hostname)
+    print("DB PORT:", parsed.port)
+    print("========================================")
 
     conn = psycopg2.connect(database_url)
     cur = conn.cursor()
@@ -118,11 +130,9 @@ def main():
         print(f"ℹ️ Using current_cycle={current_cycle} for backfill")
 
         # -------------------------------------------------------
-        # 6) CLEANUP duplicates in non_airtime_winners BEFORE backfill
-        # Keep the oldest row per (user_id, reward_type).
-        # This prevents unique conflicts later.
+        # 6) CLEANUP duplicates
         # -------------------------------------------------------
-        print("🧹 Cleaning duplicates in non_airtime_winners (same user_id + reward_type)...")
+        print("🧹 Cleaning duplicates in non_airtime_winners...")
         cur.execute("""
         DELETE FROM non_airtime_winners a
         USING non_airtime_winners b
@@ -131,7 +141,6 @@ def main():
           AND a.id <> b.id
           AND COALESCE(a.created_at, NOW()) > COALESCE(b.created_at, NOW());
         """)
-        # Note: If created_at is NULL, we treat it as NOW() (so older rows win).
         print("✅ Duplicate cleanup done")
 
         # -------------------------------------------------------
@@ -143,8 +152,7 @@ def main():
         print("✅ Backfilled NULL cycle_id values")
 
         # -------------------------------------------------------
-        # 8) Create per-cycle uniqueness AFTER data is clean
-        # (Now it won't crash.)
+        # 8) Create per-cycle uniqueness
         # -------------------------------------------------------
         cur.execute("""
         CREATE UNIQUE INDEX IF NOT EXISTS uq_non_airtime_winner_cycle
@@ -159,8 +167,7 @@ def main():
             "INSERT INTO schema_migrations (name, meta) VALUES (%s, %s::jsonb)",
             (MIGRATION_NAME, json.dumps({
                 "applied_by": "render_migration_script",
-                "applied_at": datetime.now(timezone.utc).isoformat(),
-                "notes": "Added cycles + user_cycle_stats + cycle_id columns; deduped non_airtime_winners before unique index"
+                "applied_at": datetime.now(timezone.utc).isoformat()
             }))
         )
 
@@ -176,7 +183,6 @@ def main():
     finally:
         cur.close()
         conn.close()
-
 
 if __name__ == "__main__":
     main()
