@@ -1,7 +1,7 @@
-# ===============================================================
+# =================================================================
 # migrations/init_tables.py  (SAFE MIGRATION: adds cycle system)
 # Fixes duplicate non_airtime_winners before creating unique index
-# ===============================================================
+# =================================================================
 import os
 import json
 from datetime import datetime, timezone
