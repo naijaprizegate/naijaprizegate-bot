@@ -4,6 +4,7 @@
 import os
 import logging
 import ssl
+import certifi
 from contextlib import asynccontextmanager
 from urllib.parse import urlparse, parse_qsl, urlencode, urlunparse
 
@@ -36,16 +37,17 @@ def _sanitize_asyncpg_url(url: str) -> str:
     Supabase pooler URLs sometimes include params like:
       - sslmode=require
       - pgbouncer=true
+      - pool_mode=...
     We remove them from the URL and handle SSL via connect_args instead.
     """
     parsed = urlparse(url)
-    q = dict(parse_qsl(parsed.query, keep_blank_values=True))
+    pairs = parse_qsl(parsed.query, keep_blank_values=True)
 
     # Remove params that asyncpg/sqlalchemy may pass through as unsupported kwargs
-    for bad_key in ("sslmode", "pgbouncer", "pool_mode", "ssl"):
-        q.pop(bad_key, None)
+    remove_keys = {"sslmode", "pgbouncer", "pool_mode", "ssl"}
+    kept = [(k, v) for (k, v) in pairs if k.lower() not in remove_keys]
 
-    new_query = urlencode(q) if q else ""
+    new_query = urlencode(kept) if kept else ""
     return urlunparse(parsed._replace(query=new_query))
 
 DATABASE_URL = _sanitize_asyncpg_url(DATABASE_URL)
@@ -53,8 +55,11 @@ DATABASE_URL = _sanitize_asyncpg_url(DATABASE_URL)
 # -------------------------------------------------
 # Engine & Async Session Factory (with SSL)
 # -------------------------------------------------
-# Supabase requires SSL. asyncpg expects an SSL context object.
-ssl_context = ssl.create_default_context()
+# Supabase requires SSL. Render sometimes lacks system CA roots,
+# so we explicitly use certifi's CA bundle to verify cert chain.
+ssl_context = ssl.create_default_context(cafile=certifi.where())
+ssl_context.check_hostname = True
+ssl_context.verify_mode = ssl.CERT_REQUIRED
 
 engine = create_async_engine(
     DATABASE_URL,
