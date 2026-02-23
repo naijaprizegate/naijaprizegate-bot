@@ -45,4 +45,7 @@ aiohttp==3.10.8
 # Logging library
 loguru==0.7.2
 
+# SSL certificates bundle (needed for Supabase SSL connection)
+certifi
+
 
