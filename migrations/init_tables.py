@@ -6,7 +6,7 @@ import os
 import json
 from datetime import datetime, timezone
 import psycopg2
-from urllib.parse import urlparse   # ⭐ NEW
+from urllib.parse import urlparse
 
 MIGRATION_NAME = "add_cycle_system_v1"
 
@@ -29,9 +29,14 @@ def main():
     print("DB USER:", parsed.username)
     print("DB HOST:", parsed.hostname)
     print("DB PORT:", parsed.port)
+    print("DB NAME:", (parsed.path or "").lstrip("/"))
     print("========================================")
 
-    conn = psycopg2.connect(database_url)
+    # =============================================================
+    # ✅ IMPORTANT: psycopg2 does NOT accept "pgbouncer=true" param.
+    # Force SSL via connect kwargs (works reliably with Supabase).
+    # =============================================================
+    conn = psycopg2.connect(database_url, sslmode="require")
     cur = conn.cursor()
 
     try:
@@ -130,9 +135,9 @@ def main():
         print(f"ℹ️ Using current_cycle={current_cycle} for backfill")
 
         # -------------------------------------------------------
-        # 6) CLEANUP duplicates
+        # 6) CLEANUP duplicates in non_airtime_winners BEFORE backfill
         # -------------------------------------------------------
-        print("🧹 Cleaning duplicates in non_airtime_winners...")
+        print("🧹 Cleaning duplicates in non_airtime_winners (same user_id + reward_type)...")
         cur.execute("""
         DELETE FROM non_airtime_winners a
         USING non_airtime_winners b
@@ -152,7 +157,7 @@ def main():
         print("✅ Backfilled NULL cycle_id values")
 
         # -------------------------------------------------------
-        # 8) Create per-cycle uniqueness
+        # 8) Create per-cycle uniqueness AFTER data is clean
         # -------------------------------------------------------
         cur.execute("""
         CREATE UNIQUE INDEX IF NOT EXISTS uq_non_airtime_winner_cycle
@@ -167,7 +172,8 @@ def main():
             "INSERT INTO schema_migrations (name, meta) VALUES (%s, %s::jsonb)",
             (MIGRATION_NAME, json.dumps({
                 "applied_by": "render_migration_script",
-                "applied_at": datetime.now(timezone.utc).isoformat()
+                "applied_at": datetime.now(timezone.utc).isoformat(),
+                "notes": "Added cycles + user_cycle_stats + cycle_id columns; deduped non_airtime_winners before unique index"
             }))
         )
 
