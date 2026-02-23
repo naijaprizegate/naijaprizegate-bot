@@ -191,8 +191,8 @@ async def process_pending_airtime():
                             SET status=:status,
                                 sent_at=CASE WHEN :status='sent' THEN COALESCE(sent_at, NOW()) ELSE sent_at END,
                                 provider=:provider,
-                                provider_ref=:ref,
-                                provider_reference=:ref,
+                                provider_ref=CAST(:provider_ref AS text),
+                                provider_reference=CAST(:provider_reference AS varchar),
                                 provider_response=CAST(:response AS jsonb),
                                 provider_payload=:payload
                             WHERE id=:pid
@@ -201,7 +201,8 @@ async def process_pending_airtime():
                             "pid": payout_id,
                             "status": new_status,
                             "provider": provider,
-                            "ref": ref,
+                            "provider_ref": ref or None,          # can be None
+                            "provider_reference": ref or None,    # can be None
                             "response": raw_json,
                             "payload": payload_text,
                         },
