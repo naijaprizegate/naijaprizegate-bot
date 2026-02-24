@@ -237,9 +237,7 @@ async def leaderboard_render(
     text_lines.append("🏆 <b>NaijaPrizeGate Quiz Leaderboard</b>")
     text_lines.append(f"{scope_label}\n")
     
-    text_lines.append("")
-    text_lines.append(f"📊 <b>Total Quiz Points (this period):</b> {total_points}")
-
+    
     if viewer_user_id:
         badge_me = _badge_for_points(my_points)
         text_lines.append("\n<b>Your Stats</b>")
