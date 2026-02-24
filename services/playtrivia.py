@@ -13,7 +13,7 @@ from models import User, GameState
 
 logger = logging.getLogger(__name__)
 
-WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "50000"))
+WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "100000"))
 
 AIRTIME_MILESTONES = {
     1: 100,
