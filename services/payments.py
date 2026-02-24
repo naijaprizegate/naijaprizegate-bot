@@ -1,6 +1,6 @@
-# =============================================================
+# ================================================================
 # services/payments.py
-# ==============================================================
+# ================================================================
 import os
 import httpx
 import hmac
@@ -25,7 +25,7 @@ WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "50000"))
 WEBHOOK_REDIRECT_URL = os.getenv("WEBHOOK_REDIRECT_URL", "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect")
 
 # ✅ Define your approved packages (anti-tampering)
-ALLOWED_PACKAGES = {200, 500, 1000}
+ALLOWED_PACKAGES = {100, 500, 1000}
 
 # ==== Logger Setup ====
 logger = logging.getLogger("payments")
@@ -34,9 +34,9 @@ logger.setLevel(logging.INFO)
 
 
 PRICE_TO_TRIES = {
-    200: 1,
-    500: 3,
-    1000: 7,
+    100: 1,
+    500: 7,
+    1000: 15,
 }
 
 def calculate_tries(amount: int) -> int:
@@ -49,8 +49,8 @@ def calculate_tries(amount: int) -> int:
     if amount in PRICE_TO_TRIES:
         return PRICE_TO_TRIES[amount]
 
-    # fallback rule: 1 try per ₦200
-    return max(1, amount // 200)
+    # fallback rule: 1 try per ₦100
+    return max(1, amount // 100)
 
 
 def validate_flutterwave_webhook(headers: dict, raw_body: str) -> bool:
@@ -350,3 +350,4 @@ async def verify_transaction(transaction_id: str, amount: int) -> bool:
     except Exception as e:
         logger.error(f"❌ verify_transaction() failed for tx_id={transaction_id}: {e}", exc_info=True)
         return False
+
