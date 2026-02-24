@@ -219,23 +219,52 @@ async def admin_support_inbox(session, page: int = 1, page_size: int = SUPPORT_P
 
 # ----------------------------------------------------
 # Admin Support Inbox Page (UI) — pagination + actions
+# Callback data formats used here:
+#   si:<page>                -> inbox page nav (Prev/Refresh/Next)
+#   sr:<ticketid>:<page>     -> reply entry (handled elsewhere)
+#   sa:c:<ticketid>:<page>   -> close ticket (handled elsewhere)
+#   sa:s:<ticketid>:<page>   -> spam ticket (handled elsewhere)
+#   am:main                  -> back (handled elsewhere)
 # ----------------------------------------------------
-async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT_TYPE, page: int = 1):
+async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    await query.answer()
+    if not query:
+        return  # safety (shouldn't happen for CallbackQueryHandler)
 
-    # 🔐 Restrict admin access
+    # 🔐 Restrict admin access (answer only once)
     if not is_admin(query.from_user.id):
         return await query.answer("⛔ Unauthorized.", show_alert=True)
 
-    page = max(int(page or 1), 1)
+    # ✅ Determine page reliably:
+    # - If called from callback: parse from query.data "si:<page>"
+    # - If called from /admin command or other entry point: allow context.user_data fallback
+    page = 1
+    data = (query.data or "").strip()
 
+    # Parse si:<page>
+    m = re.match(r"^si:(\d+)$", data)
+    if m:
+        page = int(m.group(1))
+    else:
+        # Optional fallback: if you stored last page elsewhere
+        page = int(context.user_data.get("support_inbox_page", 1))
+
+    page = max(page, 1)
+    context.user_data["support_inbox_page"] = page
+
+    # Answer callback quickly (prevents "loading..." feeling)
+    await query.answer()
+
+    # --------------------
+    # Fetch data
+    # --------------------
     async with AsyncSessionLocal() as session:
         total_pending, rows = await admin_support_inbox(session, page=page)
 
     total_pages = max((total_pending + SUPPORT_PAGE_SIZE - 1) // SUPPORT_PAGE_SIZE, 1)
     if page > total_pages:
         page = total_pages
+        context.user_data["support_inbox_page"] = page
 
     # --------------------
     # Build text (HTML)
@@ -248,7 +277,7 @@ async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT
     # --------------------
     # Build keyboard
     # --------------------
-    buttons = []
+    buttons: list[list[InlineKeyboardButton]] = []
 
     if not rows:
         text_lines.append("✅ No pending support messages.")
@@ -269,7 +298,7 @@ async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT
                 f"—"
             )
 
-            # ✅ Make callback_data SHORT (<=64 bytes always)
+            # ✅ Make callback_data SHORT (<=64 bytes)
             # - Strip dashes from UUID to reduce length (36 -> 32)
             tid_str = str(tid).replace("-", "")
 
@@ -280,8 +309,8 @@ async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT
                 InlineKeyboardButton("🚫 Spam", callback_data=f"sa:s:{tid_str}:{page}"),
             ])
 
-    # Pagination row (short codes)
-    nav_row = []
+    # Pagination row
+    nav_row: list[InlineKeyboardButton] = []
     if page > 1:
         nav_row.append(InlineKeyboardButton("⬅️ Prev", callback_data=f"si:{page-1}"))
     nav_row.append(InlineKeyboardButton("🔁 Refresh", callback_data=f"si:{page}"))
@@ -292,12 +321,14 @@ async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT
     # Footer
     buttons.append([InlineKeyboardButton("⬅️ Back", callback_data="am:main")])
 
+    # Render
     return await safe_edit(
         query,
         "\n".join(text_lines),
         parse_mode="HTML",
         reply_markup=InlineKeyboardMarkup(buttons),
     )
+
 
 
 # ----------------------------------------------------
@@ -2394,6 +2425,27 @@ def register_handlers(application):
     # ✅ Admin custom date input (only acts when awaiting_date_range=True)
     application.add_handler(
         MessageHandler(filters.TEXT & ~filters.COMMAND, date_range_message_router),
+        group=ADMIN_GROUP
+    )
+
+    # ✅ Support Inbox pagination + actions
+    application.add_handler(
+        CallbackQueryHandler(admin_support_inbox_page, pattern=r"^si:\d+$"),
+        group=ADMIN_GROUP
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(admin_support_reply_entry, pattern=r"^sr:[0-9a-fA-F]+:\d+$"),
+        group=ADMIN_GROUP
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(admin_support_action, pattern=r"^sa:(c|s):[0-9a-fA-F]+:\d+$"),
+        group=ADMIN_GROUP
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(admin_main_menu, pattern=r"^am:main$"),
         group=ADMIN_GROUP
     )
 
