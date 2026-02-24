@@ -31,6 +31,7 @@ if DATABASE_URL.startswith("postgres://"):
 elif DATABASE_URL.startswith("postgresql://") and "+asyncpg" not in DATABASE_URL:
     DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
 
+
 def _sanitize_asyncpg_url(url: str) -> str:
     """
     asyncpg does NOT accept libpq-style params like sslmode=require.
@@ -43,21 +44,26 @@ def _sanitize_asyncpg_url(url: str) -> str:
     parsed = urlparse(url)
     pairs = parse_qsl(parsed.query, keep_blank_values=True)
 
-    # Remove params that asyncpg/sqlalchemy may pass through as unsupported kwargs
     remove_keys = {"sslmode", "pgbouncer", "pool_mode", "ssl"}
     kept = [(k, v) for (k, v) in pairs if k.lower() not in remove_keys]
 
     new_query = urlencode(kept) if kept else ""
     return urlunparse(parsed._replace(query=new_query))
 
+
 DATABASE_URL = _sanitize_asyncpg_url(DATABASE_URL)
 
 # -------------------------------------------------
 # Engine & Async Session Factory (with SSL)
 # -------------------------------------------------
-# Supabase requires SSL. Render sometimes lacks system CA roots,
-# so we explicitly use certifi's CA bundle to verify cert chain.
-ssl_context = ssl.create_default_context(cafile=certifi.where())
+# Supabase requires SSL. Some environments have incomplete OS CA roots,
+# so we load BOTH system roots + certifi bundle (more compatible).
+ssl_context = ssl.create_default_context(purpose=ssl.Purpose.SERVER_AUTH)
+
+# Add certifi CA bundle on top (helps when system bundle is incomplete)
+ssl_context.load_verify_locations(cafile=certifi.where())
+
+# Keep verification ON
 ssl_context.check_hostname = True
 ssl_context.verify_mode = ssl.CERT_REQUIRED
 
@@ -88,11 +94,13 @@ async def get_session() -> AsyncSession:
     async with async_sessionmaker() as session:
         yield session
 
+
 @asynccontextmanager
 async def get_async_session():
     """Use in background tasks or outside FastAPI context."""
     async with async_sessionmaker() as session:
         yield session
+
 
 # -------------------------------------------------
 # Database Initialization (development only)
@@ -102,6 +110,7 @@ async def init_db():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     logger.info("✅ Database initialized (development use only)")
+
 
 # -------------------------------------------------
 # Game State Initialization Helpers
@@ -121,6 +130,7 @@ async def init_game_state():
 
         await session.commit()
         logger.info("🎯 init_game_state: ensured baseline game data")
+
 
 # -------------------------------------------------
 # Health Check Utility
