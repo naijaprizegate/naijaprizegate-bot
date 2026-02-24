@@ -251,26 +251,24 @@ async def process_pending_airtime():
                     notify_user = (attempt_no % NOTIFY_USER_ON_FAILURE_EVERY_N_ATTEMPTS == 1)
 
                     if notify_user:
-                        # Use HTML because your message contains <b>...</b>
+                        # Use HTML (only for <b>...</b>), but use \n for line breaks.
                         user_msg = (
-                            "⚠️ Airtime delivery failed.<br/>"
-                            "We’ll retry automatically if possible. If it persists, contact support.<br/><br/>"
+                            "⚠️ Airtime delivery failed.\n"
+                            "We’ll retry automatically if possible. If it persists, contact support.\n\n"
                             "Type or click on /start and then click on <b>CONTACT SUPPORT</b> button."
                         )
 
-                        # If funding issue, be honest + reassuring
                         if new_status == "failed_needs_funding":
                             user_msg = (
-                                "⚠️ Airtime is delayed due to a temporary service funding issue.<br/>"
-                                "Your reward is safe and will be processed shortly.<br/><br/>"
+                                "⚠️ Airtime is delayed due to a temporary service issue.\n"
+                                "Your reward is safe and will be processed shortly.\n\n"
                                 "Type or click on /start and then click on <b>CONTACT SUPPORT</b> button."
                             )
 
-                        # If permanent failure, tell them to contact support
                         if new_status == "failed_permanent":
                             user_msg = (
-                                "⚠️ Airtime delivery could not be completed at the moment.<br/>"
-                                "Please contact support so we can resolve it quickly.<br/><br/>"
+                                "⚠️ Airtime delivery could not be completed at the moment.\n"
+                                "Please contact support so we can resolve it quickly.\n\n"
                                 "Type or click on /start and then click on <b>CONTACT SUPPORT</b> button."
                             )
 
@@ -282,7 +280,8 @@ async def process_pending_airtime():
                             )
                         except Exception:
                             logger.exception(f"⚠️ Failed to notify user tg_id={tg_id} payout_id={payout_id}")
-
+                    
+                    
                     # Notify admin: ALWAYS for funding issues; otherwise configurable
                     notify_admin = (
                         new_status == "failed_needs_funding"
@@ -351,3 +350,4 @@ async def notifier_loop():
 
 if __name__ == "__main__":
     asyncio.run(notifier_loop())
+
