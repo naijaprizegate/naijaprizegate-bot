@@ -1,10 +1,9 @@
 # ===============================================================
-# db.py — Central async SQLAlchemy setup (Supabase-safe + asyncpg SSL)
+# db.py — Central async SQLAlchemy setup (Supabase pooler + asyncpg SSL)
 # ===============================================================
 import os
 import logging
 import ssl
-import certifi
 from contextlib import asynccontextmanager
 from urllib.parse import urlparse, parse_qsl, urlencode, urlunparse
 
@@ -56,16 +55,13 @@ DATABASE_URL = _sanitize_asyncpg_url(DATABASE_URL)
 # -------------------------------------------------
 # Engine & Async Session Factory (with SSL)
 # -------------------------------------------------
-# Supabase requires SSL. Some environments have incomplete OS CA roots,
-# so we load BOTH system roots + certifi bundle (more compatible).
+# Supabase Transaction Pooler expects SSL encryption.
+# In some Render environments, certificate verification fails with:
+# "self-signed certificate in certificate chain"
+# So we keep SSL ON but disable verification (equivalent to sslmode=require).
 ssl_context = ssl.create_default_context(purpose=ssl.Purpose.SERVER_AUTH)
-
-# Add certifi CA bundle on top (helps when system bundle is incomplete)
-ssl_context.load_verify_locations(cafile=certifi.where())
-
-# Keep verification ON
-ssl_context.check_hostname = True
-ssl_context.verify_mode = ssl.CERT_REQUIRED
+ssl_context.check_hostname = False
+ssl_context.verify_mode = ssl.CERT_NONE
 
 engine = create_async_engine(
     DATABASE_URL,
