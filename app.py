@@ -157,8 +157,9 @@ BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
 # -------------------------------------------------
 app = FastAPI()
 app.include_router(webhook_router)
-application: Application = None  # Telegram Application (global)
 
+application: Application = None  # Telegram Application (global)
+BOT_READY: bool = False          # ✅ NEW: prevent early webhook processing
 
 # -------------------------------------------------
 # Root route
@@ -203,9 +204,6 @@ async def on_startup():
         admin.register_handlers(application)
         playtrivia.register_handlers(application)
 
-        # ✅ ADD THIS LINE (support conversation handler)
-        application.add_handler(support_conv)
-
         # ✅ Airtime claim handlers (phone entry)
         airtime_conversation = ConversationHandler(
             entry_points=[
@@ -243,7 +241,12 @@ async def on_startup():
         logger.info(f"Webhook set to {webhook_url} ✅")
 
         await application.start()
-        logger.info("Telegram bot polling via Webhook is LIVE 🚀")
+        logger.info("Telegram bot via Webhook is LIVE 🚀")
+
+        # ✅ NEW: mark ready only AFTER initialize + start succeed
+        global BOT_READY
+        BOT_READY = True
+        logger.info("✅ BOT_READY=True (safe to process updates)")
 
         # ✅ Start background tasks
         await start_background_tasks()
@@ -253,7 +256,15 @@ async def on_startup():
         application.add_error_handler(tg_error_handler)
 
     except Exception as e:
-        clean_trace = re.sub(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", traceback.format_exc())
+        # ✅ VERY IMPORTANT: if startup fails, mark bot as NOT ready
+        global BOT_READY
+        BOT_READY = False
+
+        clean_trace = re.sub(
+            r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b",
+            "[SECRET]",
+            traceback.format_exc()
+        )
         logger.error(f"Unhandled exception during startup:\n{clean_trace}")
 
 # -------------------------------------------------
@@ -263,6 +274,10 @@ async def on_startup():
 async def on_shutdown():
     global application
     try:
+        # ✅ mark bot as not ready immediately
+        BOT_READY = False
+        logger.info("🔻 BOT_READY=False (shutting down)")
+
         # Stop background tasks first
         await stop_background_tasks()
 
@@ -283,12 +298,23 @@ async def on_shutdown():
 async def telegram_webhook(secret: str, request: Request):
     if secret != WEBHOOK_SECRET:
         raise HTTPException(status_code=403, detail="Invalid secret")
-    if application is None:
-        raise HTTPException(status_code=500, detail="Bot not initialized")
+
+    # ✅ NEW: Prevent race condition (Telegram hitting webhook before startup finishes)
+    if application is None or not BOT_READY:
+        # Return 200 so Telegram doesn't keep retrying aggressively during startup
+        return {"ok": True, "status": "starting"}
 
     payload = await request.json()
-    update = Update.de_json(payload, application.bot)
-    await application.process_update(update)
+
+    try:
+        update = Update.de_json(payload, application.bot)
+        await application.process_update(update)
+    except Exception:
+        clean_trace = re.sub(
+            r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", traceback.format_exc()
+        )
+        logger.error(f"❌ Error while processing update:\n{clean_trace}")
+
     return {"ok": True}
     
 
