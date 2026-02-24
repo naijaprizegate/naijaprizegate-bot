@@ -17,9 +17,9 @@ logger = logging.getLogger(__name__)
 
 # Users purchase *trivia question credits* (skill, not chance)
 PACKAGES = [
-    (200, 1),
-    (500, 3),
-    (1000, 7),
+    (100, 1),
+    (500, 7),
+    (1000, 15),
 ]
 
 BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
@@ -80,7 +80,7 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     if not data.startswith("buy_"):
         return
 
-    valid_packages = {200: 1, 500: 3, 1000: 7}
+    valid_packages = {100: 1, 500: 7, 1000: 15}
 
     try:
         price = int(data.split("_")[1])
@@ -235,3 +235,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(buy_menu, pattern="^buy$"))
     application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy_"))
     application.add_handler(CallbackQueryHandler(handle_cancel_payment, pattern="^cancel_payment$"))
+
