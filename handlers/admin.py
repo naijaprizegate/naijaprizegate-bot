@@ -133,6 +133,7 @@ async def safe_edit(query, text: str, reply_markup=None, parse_mode="HTML", **kw
         logger.warning(f"[WARN] safe_edit unexpected failure: {e}")
         return None
 
+
 # ----------------------------
 # Command: /admin (Main Panel)
 # ----------------------------
@@ -268,24 +269,28 @@ async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT
                 f"—"
             )
 
-            # Per-ticket action buttons (Reply / Close / Spam)
+            # ✅ Make callback_data SHORT (<=64 bytes always)
+            # - Strip dashes from UUID to reduce length (36 -> 32)
+            tid_str = str(tid).replace("-", "")
+
+            # sr = support reply, sa = support action, c = close, s = spam
             buttons.append([
-                InlineKeyboardButton("✉️ Reply", callback_data=f"admin_support_reply:{tid}:{page}"),
-                InlineKeyboardButton("✅ Close", callback_data=f"admin_support_action:close:{tid}:{page}"),
-                InlineKeyboardButton("🚫 Spam", callback_data=f"admin_support_action:spam:{tid}:{page}"),
+                InlineKeyboardButton("✉️ Reply", callback_data=f"sr:{tid_str}:{page}"),
+                InlineKeyboardButton("✅ Close", callback_data=f"sa:c:{tid_str}:{page}"),
+                InlineKeyboardButton("🚫 Spam", callback_data=f"sa:s:{tid_str}:{page}"),
             ])
 
-    # Pagination row
+    # Pagination row (short codes)
     nav_row = []
     if page > 1:
-        nav_row.append(InlineKeyboardButton("⬅️ Prev", callback_data=f"admin_support_inbox:{page-1}"))
-    nav_row.append(InlineKeyboardButton("🔁 Refresh", callback_data=f"admin_support_inbox:{page}"))
+        nav_row.append(InlineKeyboardButton("⬅️ Prev", callback_data=f"si:{page-1}"))
+    nav_row.append(InlineKeyboardButton("🔁 Refresh", callback_data=f"si:{page}"))
     if page < total_pages:
-        nav_row.append(InlineKeyboardButton("Next ➡️", callback_data=f"admin_support_inbox:{page+1}"))
+        nav_row.append(InlineKeyboardButton("Next ➡️", callback_data=f"si:{page+1}"))
     buttons.append(nav_row)
 
     # Footer
-    buttons.append([InlineKeyboardButton("⬅️ Back", callback_data="admin_menu:main")])
+    buttons.append([InlineKeyboardButton("⬅️ Back", callback_data="am:main")])
 
     return await safe_edit(
         query,
@@ -293,6 +298,7 @@ async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT
         parse_mode="HTML",
         reply_markup=InlineKeyboardMarkup(buttons),
     )
+
 
 # ----------------------------------------------------
 # Admin Support Action
