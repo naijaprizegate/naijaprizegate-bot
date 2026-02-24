@@ -1,11 +1,15 @@
 # ===============================================================
 # db.py — Central async SQLAlchemy setup (Supabase Transaction Pooler-safe)
-# Fixes: SSL + PgBouncer transaction pooler prepared-statement errors
+# Fixes:
+#   1) SSL required by Supabase pooler (encrypt traffic)
+#   2) PgBouncer transaction pooler prepared-statement errors (disable stmt cache)
+# Notes:
+#   - We REMOVE sslmode/pgbouncer params from URL because asyncpg doesn't accept them
+#   - We REQUIRE TLS but SKIP cert-chain verification (sslmode=require behavior)
 # ===============================================================
 import os
 import logging
 import ssl
-import certifi
 from contextlib import asynccontextmanager
 from urllib.parse import urlparse, parse_qsl, urlencode, urlunparse
 
@@ -33,7 +37,7 @@ elif DATABASE_URL.startswith("postgresql://") and "+asyncpg" not in DATABASE_URL
 
 def _sanitize_asyncpg_url(url: str) -> str:
     """
-    asyncpg does NOT accept libpq-style params like sslmode=require.
+    asyncpg does NOT accept libpq-style query params like sslmode=require.
     Supabase pooler URLs sometimes include params like:
       - sslmode=require
       - pgbouncer=true
@@ -52,17 +56,18 @@ def _sanitize_asyncpg_url(url: str) -> str:
 DATABASE_URL = _sanitize_asyncpg_url(DATABASE_URL)
 
 # -------------------------------------------------
-# SSL context (verify cert chain using system + certifi)
+# SSL context (Transaction Pooler-safe)
 # -------------------------------------------------
-ssl_context = ssl.create_default_context(purpose=ssl.Purpose.SERVER_AUTH)
-ssl_context.load_verify_locations(cafile=certifi.where())
-ssl_context.check_hostname = True
-ssl_context.verify_mode = ssl.CERT_REQUIRED
+# Require TLS encryption but do NOT verify certificate chain
+# (equivalent to libpq sslmode=require)
+ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+ssl_context.check_hostname = False
+ssl_context.verify_mode = ssl.CERT_NONE
 
 # -------------------------------------------------
 # Engine & Async Session Factory
-# IMPORTANT: PgBouncer Transaction Pooler requires disabling prepared statements.
 # -------------------------------------------------
+# IMPORTANT: PgBouncer Transaction Pooler requires disabling prepared statements.
 engine = create_async_engine(
     DATABASE_URL,
     echo=os.getenv("SQL_ECHO", "false").lower() == "true",
@@ -71,7 +76,7 @@ engine = create_async_engine(
     future=True,
     connect_args={
         "ssl": ssl_context,
-        "statement_cache_size": 0,  # ✅ FIX: required for PgBouncer transaction pooler
+        "statement_cache_size": 0,  # ✅ required for PgBouncer transaction pooler
     },
 )
 
