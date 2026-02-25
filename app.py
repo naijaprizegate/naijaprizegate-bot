@@ -179,39 +179,37 @@ async def root():
 # -------------------------------------------------
 @app.on_event("startup")
 async def on_startup():
-    global application
+    global application, BOT_READY   # ✅ MUST be first line
+
+    BOT_READY = False               # safe default while starting
+
     try:
         logger.info("🚀 Starting up NaijaPrizeGate...")
 
         # Ensure GameState & GlobalCounter rows exist
         await init_game_state()
-
-        # Ensure GameState(id=1) exists explicitly
         await ensure_game_state_exists()
 
         # Telegram Bot Application
         application = Application.builder().token(BOT_TOKEN).build()
 
         USER_GROUP = 0
-        
-        # ✅ ADD THIS LINE (support conversation handler)
-        application.add_handler(support_conv, group=USER_GROUP)
 
-        # ✅ Register handlers
+	    # Support Conversation Handler
+        application.add_handler(support_conv, group=USER_GROUP)
+	
+	    # Register Handlers
         core.register_handlers(application)
         free.register_handlers(application)
         payments.register_handlers(application)
         admin.register_handlers(application)
         playtrivia.register_handlers(application)
-
-        # ✅ Airtime claim handlers (phone entry)
+	
+	    # Airtime Claim Handlers (Phone Entry)
         airtime_conversation = ConversationHandler(
-            entry_points=[
-                CallbackQueryHandler(handle_claim_airtime_button, pattern=r"^claim_airtime:")
-            ],
+            entry_points=[CallbackQueryHandler(handle_claim_airtime_button, pattern=r"^claim_airtime:")],
             states={
                 AIRTIME_PHONE: [
-                    # ✅ Accept ALL text; validate inside handler
                     MessageHandler(filters.TEXT & ~filters.COMMAND, handle_airtime_claim_phone)
                 ],
             },
@@ -221,21 +219,17 @@ async def on_startup():
             block=True,
         )
 
-        # ✅ Highest priority for phone conversation
+	    # Highest Priority for Phone Conversation
         application.add_handler(airtime_conversation, group=-1)
-
-        # ✅ ADD THIS: Network selection callback buttons (after phone if guess fails)
-        # Must be a CallbackQueryHandler (NOT inside the ConversationHandler)
         application.add_handler(
             CallbackQueryHandler(handle_airtime_network_choice, pattern=r"^airtime_net:"),
             group=-1
         )
 
-        
         # Initialize & start bot
         await application.initialize()
 
-        # Webhook setup
+	    # Webhook Setup
         webhook_url = f"{RENDER_EXTERNAL_URL}/telegram/webhook/{WEBHOOK_SECRET}"
         await application.bot.set_webhook(webhook_url)
         logger.info(f"Webhook set to {webhook_url} ✅")
@@ -243,23 +237,19 @@ async def on_startup():
         await application.start()
         logger.info("Telegram bot via Webhook is LIVE 🚀")
 
-        # ✅ NEW: mark ready only AFTER initialize + start succeed
-        global BOT_READY
-        BOT_READY = True
+	    # Mark ready only AFTER initialize + start succeed
+        BOT_READY = True   # ✅ safe now
         logger.info("✅ BOT_READY=True (safe to process updates)")
 
-        # ✅ Start background tasks
+	    # Start background tasks
         await start_background_tasks()
         logger.info("✅ Background tasks started.")
 
-        # Add error handler
+	    # Add error handler
         application.add_error_handler(tg_error_handler)
 
-    except Exception as e:
-        # ✅ VERY IMPORTANT: if startup fails, mark bot as NOT ready
-        global BOT_READY
+    except Exception:
         BOT_READY = False
-
         clean_trace = re.sub(
             r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b",
             "[SECRET]",
@@ -267,29 +257,35 @@ async def on_startup():
         )
         logger.error(f"Unhandled exception during startup:\n{clean_trace}")
 
+
 # -------------------------------------------------
 # Shutdown event
 # -------------------------------------------------
 @app.on_event("shutdown")
 async def on_shutdown():
-    global application
+    global application, BOT_READY   # ✅ MUST be first
+
     try:
-        # ✅ mark bot as not ready immediately
+	    # Mark Bot as not ready immediately
         BOT_READY = False
         logger.info("🔻 BOT_READY=False (shutting down)")
 
-        # Stop background tasks first
+	    # Stop background tasks first
         await stop_background_tasks()
 
-        # Then stop Telegram app
+	    #Then stop Telegram app
         if application:
             await application.stop()
             await application.shutdown()
             logger.info("🛑 Telegram bot stopped cleanly.")
-    except Exception as e:
-        clean_trace = re.sub(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", traceback.format_exc())
-        logger.warning(f"⚠️ Error while shutting down:\n{clean_trace}")
 
+    except Exception:
+        clean_trace = re.sub(
+            r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b",
+            "[SECRET]",
+            traceback.format_exc()
+        )
+        logger.warning(f"⚠️ Error while shutting down:\n{clean_trace}")
 
 # -------------------------------------------------
 # Telegram webhook endpoint
@@ -799,4 +795,3 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
-
