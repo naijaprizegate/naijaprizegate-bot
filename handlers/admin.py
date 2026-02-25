@@ -1150,7 +1150,7 @@ async def admin_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         # ✅ NEW: Support Inbox
         elif action == "support_inbox":
-            return await admin_support_inbox_page(update, context, page=1)
+            return await admin_support_inbox_page(update, context)
 
         # ---- Main Menu ----
         elif action == "main":
