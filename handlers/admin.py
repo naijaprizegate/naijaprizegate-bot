@@ -329,33 +329,65 @@ async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT
         reply_markup=InlineKeyboardMarkup(buttons),
     )
 
-
-
 # ----------------------------------------------------
-# Admin Support Action
+# Admin Main Menu (Back button from support inbox)
 # ----------------------------------------------------
-async def admin_support_action(update: Update, context: ContextTypes.DEFAULT_TYPE, action: str, ticket_id: int, page: int):
+async def admin_main_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
+    await query.answer()
+
+    # Reuse your existing /admin command handler
+    # This sends the admin panel again
+    await admin_panel(update, context)
+
+# ----------------------------------------------------
+# Admin Support Actions (Close / Spam)
+# callback: sa:c:<ticketid_no_dashes>:<page>
+#           sa:s:<ticketid_no_dashes>:<page>
+# ----------------------------------------------------
+async def admin_support_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
     if not is_admin(update.effective_user.id):
         return await query.answer("⛔ Unauthorized.", show_alert=True)
 
-    action = (action or "").lower().strip()
-    if action not in ("close", "spam"):
+    data = (query.data or "").split(":")
+    if len(data) != 4 or data[0] != "sa":
+        return await query.answer("⚠️ Invalid action data.", show_alert=True)
+
+    short_action = data[1]  # "c" or "s"
+    tid_str = data[2]
+    page = int(data[3] or 1)
+
+    if short_action not in ("c", "s"):
         return await query.answer("⚠️ Invalid action.", show_alert=True)
 
-    new_status = "closed" if action == "close" else "spam"
+    # Convert back UUID format (add dashes back)
+    if len(tid_str) != 32:
+        return await query.answer("⚠️ Invalid ticket ID.", show_alert=True)
+
+    ticket_id = (
+        f"{tid_str[0:8]}-{tid_str[8:12]}-{tid_str[12:16]}-"
+        f"{tid_str[16:20]}-{tid_str[20:]}"
+    )
+
+    new_status = "closed" if short_action == "c" else "spam"
 
     async with AsyncSessionLocal() as session:
-        # only update if still pending (prevents double-click confusion)
         await session.execute(text("""
             UPDATE support_tickets
             SET status = :st
             WHERE id = :id AND status = 'pending'
-        """), {"st": new_status, "id": int(ticket_id)})
+        """), {"st": new_status, "id": ticket_id})
         await session.commit()
 
-    # refresh same page
-    return await admin_support_inbox_page(update, context, page=int(page or 1))
+    # refresh same page (IMPORTANT: your inbox page should parse si:<page> OR accept page param)
+    # If your inbox page parses query.data, we can call it by faking a "si:<page>" route elsewhere.
+    # For now, easiest: re-render current view directly:
+    return await admin_support_inbox_page(update, context)
+
 
 # ----------------------------------------------------
 # Admin Support Reply Start (Enhanced with Ticket Preview)
