@@ -263,30 +263,39 @@ async def on_startup():
 # -------------------------------------------------
 @app.on_event("shutdown")
 async def on_shutdown():
-    global application, BOT_READY   # ✅ MUST be first
+    global application, BOT_READY
 
+    BOT_READY = False
+    logger.info("🔻 BOT_READY=False (shutting down)")
+
+    # Stop background tasks first
     try:
-	    # Mark Bot as not ready immediately
-        BOT_READY = False
-        logger.info("🔻 BOT_READY=False (shutting down)")
-
-	    # Stop background tasks first
         await stop_background_tasks()
-
-	    #Then stop Telegram app
-        if application:
-            await application.stop()
-            await application.shutdown()
-            logger.info("🛑 Telegram bot stopped cleanly.")
-
     except Exception:
-        clean_trace = re.sub(
-            r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b",
-            "[SECRET]",
-            traceback.format_exc()
-        )
-        logger.warning(f"⚠️ Error while shutting down:\n{clean_trace}")
+        clean_trace = re.sub(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", traceback.format_exc())
+        logger.warning(f"⚠️ Error stopping background tasks:\n{clean_trace}")
 
+    # Then stop Telegram app
+    if not application:
+        return
+
+    # ✅ stop() may raise if PTB doesn't consider itself "running"
+    try:
+        await application.stop()
+    except RuntimeError as e:
+        logger.info(f"ℹ️ application.stop() skipped: {e}")
+    except Exception:
+        clean_trace = re.sub(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", traceback.format_exc())
+        logger.warning(f"⚠️ Unexpected error in application.stop():\n{clean_trace}")
+
+    # ✅ always attempt shutdown (this is what really matters)
+    try:
+        await application.shutdown()
+        logger.info("🛑 Telegram bot shutdown complete.")
+    except Exception:
+        clean_trace = re.sub(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", traceback.format_exc())
+        logger.warning(f"⚠️ Error in application.shutdown():\n{clean_trace}")
+		
 # -------------------------------------------------
 # Telegram webhook endpoint
 # -------------------------------------------------
