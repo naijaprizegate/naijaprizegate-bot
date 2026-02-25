@@ -2435,7 +2435,7 @@ def register_handlers(application):
     )
 
     application.add_handler(
-        CallbackQueryHandler(admin_support_reply_entry, pattern=r"^sr:[0-9a-fA-F]+:\d+$"),
+        CallbackQueryHandler(admin_support_reply_start, pattern=r"^sr:[0-9a-fA-F]+:\d+$"),
         group=ADMIN_GROUP
     )
 
