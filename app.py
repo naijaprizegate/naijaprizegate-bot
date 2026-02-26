@@ -142,7 +142,7 @@ async def ensure_game_state_exists():
 # -------------------------------------------------
 # Environment setup
 # -------------------------------------------------
-RENDER_EXTERNAL_URL = os.getenv("RENDER_EXTERNAL_URL")
+BASE_URL = os.getenv("BASE_URL")
 WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET")
 FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")
 
