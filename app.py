@@ -230,7 +230,11 @@ async def on_startup():
         await application.initialize()
 
 	    # Webhook Setup
-        webhook_url = f"{RENDER_EXTERNAL_URL}/telegram/webhook/{WEBHOOK_SECRET}"
+        PUBLIC_BASE_URL = os.getenv("PUBLIC_BASE_URL")  # e.g. https://naijaprizegate-bot.fly.dev
+        if not PUBLIC_BASE_URL:
+            raise ValueError("PUBLIC_BASE_URL is not set")
+
+        webhook_url = f"{PUBLIC_BASE_URL}/telegram/webhook/{WEBHOOK_SECRET}"
         await application.bot.set_webhook(webhook_url)
         logger.info(f"Webhook set to {webhook_url} ✅")
 
@@ -256,7 +260,6 @@ async def on_startup():
             traceback.format_exc()
         )
         logger.error(f"Unhandled exception during startup:\n{clean_trace}")
-
 
 # -------------------------------------------------
 # Shutdown event
@@ -295,7 +298,8 @@ async def on_shutdown():
     except Exception:
         clean_trace = re.sub(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", traceback.format_exc())
         logger.warning(f"⚠️ Error in application.shutdown():\n{clean_trace}")
-		
+
+
 # -------------------------------------------------
 # Telegram webhook endpoint
 # -------------------------------------------------
@@ -804,3 +808,4 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
+
