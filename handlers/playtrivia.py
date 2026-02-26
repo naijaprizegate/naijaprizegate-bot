@@ -30,7 +30,7 @@ from models import GameState, GlobalCounter
 logger = logging.getLogger(__name__)
 
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
-RENDER_EXTERNAL_URL = os.getenv("RENDER_EXTERNAL_URL", "")
+BASE_URL = os.getenv("BASE_URL", "")
 
 TRIVIA_TIMEOUT_SECONDS = int(os.getenv("TRIVIA_TIMEOUT_SECONDS", "20"))
 
@@ -398,7 +398,7 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                         parse_mode="Markdown",
                     )
 
-                    if not RENDER_EXTERNAL_URL:
+                    if not BASE_URL:
                         await update.effective_chat.send_message(
                             "⚠️ Server URL missing. Please contact support.",
                             parse_mode="Markdown",
@@ -409,7 +409,7 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                             choice=prize_label,
                             expires_seconds=3600,
                         )
-                        link = f"{RENDER_EXTERNAL_URL}/winner-form?token={token}"
+                        link = f"{BASE_URL}/winner-form?token={token}"
                         await update.effective_chat.send_message(
                             f"<a href='{link}'>📝 Fill Delivery Form</a>",
                             parse_mode="HTML",
@@ -517,7 +517,7 @@ async def handle_phone_choice(update: Update, context: ContextTypes.DEFAULT_TYPE
     if not user_choice:
         return await query.edit_message_text("⚠️ Invalid choice")
 
-    if not RENDER_EXTERNAL_URL:
+    if not BASE_URL:
         return await query.edit_message_text("⚠️ Server URL missing")
 
     token = generate_signed_token(
@@ -525,7 +525,7 @@ async def handle_phone_choice(update: Update, context: ContextTypes.DEFAULT_TYPE
         choice=user_choice,
         expires_seconds=3600,
     )
-    link = f"{RENDER_EXTERNAL_URL}/winner-form?token={token}"
+    link = f"{BASE_URL}/winner-form?token={token}"
 
     await query.edit_message_text(
         f"🎉 You selected <b>{user_choice}</b>!\n\n"
@@ -796,3 +796,4 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
         application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern=r"^buy$"))
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
+
