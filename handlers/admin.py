@@ -1,6 +1,6 @@
-# ============================================================
+# ==============================================================
 # handlers/admin.py — Clean Unified Admin System (Skill-Based)
-# ============================================================
+# ==============================================================
 import os
 import re
 import io
@@ -43,6 +43,7 @@ from logging_config import setup_logger
 
 logger = logging.getLogger(__name__)
 
+ADMIN_SUPPORT_REPLY = 901
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", 0))
 WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", 0))  # paid tries needed for a cycle prize
 
@@ -396,19 +397,24 @@ async def admin_support_action(update: Update, context: ContextTypes.DEFAULT_TYP
 # Example:
 #   sr:0f1e2d3c4b5a69788796a5b4c3d2e1f0:2
 # ----------------------------------------------------
+# Make sure this constant exists somewhere globally in your admin handler file:
+# ADMIN_SUPPORT_REPLY = 901
+
 async def admin_support_reply_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
-        return
+        return ConversationHandler.END  # safety
 
-    # ✅ Restrict admin access (use your existing helper)
+    # ✅ Restrict admin access
     if not is_admin(update.effective_user.id):
-        return await query.answer("⛔ Unauthorized.", show_alert=True)
+        await query.answer("⛔ Unauthorized.", show_alert=True)
+        return ConversationHandler.END
 
-    # ✅ Parse callback data
+    # ✅ Parse callback data: sr:<32hex>:<page>
     data = (query.data or "").strip().split(":")
     if len(data) != 3 or data[0] != "sr":
-        return await query.answer("⚠️ Invalid ticket data.", show_alert=True)
+        await query.answer("⚠️ Invalid ticket data.", show_alert=True)
+        return ConversationHandler.END
 
     tid_str = data[1]
     try:
@@ -417,16 +423,18 @@ async def admin_support_reply_start(update: Update, context: ContextTypes.DEFAUL
         page = 1
     page = max(page, 1)
 
-    # ✅ Convert UUID back (add dashes) if it looks like a 32-char hex
+    # ✅ Ensure tid_str is 32 hex chars (UUID without dashes)
     if not re.fullmatch(r"[0-9a-fA-F]{32}", tid_str or ""):
-        return await query.answer("⚠️ Invalid ticket ID.", show_alert=True)
+        await query.answer("⚠️ Invalid ticket ID.", show_alert=True)
+        return ConversationHandler.END
 
+    # ✅ Convert back to UUID format
     ticket_id = (
         f"{tid_str[0:8]}-{tid_str[8:12]}-{tid_str[12:16]}-"
         f"{tid_str[16:20]}-{tid_str[20:]}"
     )
 
-    # ✅ Always answer the callback once (prevents spinner)
+    # ✅ Always answer callback once (stops spinner)
     await query.answer()
 
     # -----------------------------
@@ -442,7 +450,7 @@ async def admin_support_reply_start(update: Update, context: ContextTypes.DEFAUL
         row = res.fetchone()
 
     if not row:
-        return await safe_edit(
+        await safe_edit(
             query,
             "❌ Ticket not found.",
             parse_mode="HTML",
@@ -450,46 +458,52 @@ async def admin_support_reply_start(update: Update, context: ContextTypes.DEFAUL
                 [[InlineKeyboardButton("⬅️ Back to Inbox", callback_data=f"si:{page}")]]
             ),
         )
+        return ConversationHandler.END
 
     message, first_name, username, created_at, status = row
 
     if (status or "").lower() != "pending":
-        return await safe_edit(
+        await safe_edit(
             query,
-            f"⚠️ Ticket is not pending (status: <b>{status}</b>).",
+            f"⚠️ Ticket is not pending (status: <b>{html.escape(str(status))}</b>).",
             parse_mode="HTML",
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton("⬅️ Back to Inbox", callback_data=f"si:{page}")]]
             ),
         )
+        return ConversationHandler.END
 
     # -----------------------------
-    # Save reply state for next text
+    # ✅ Save reply state for next admin text
     # -----------------------------
     context.user_data["awaiting_support_reply"] = True
-    context.user_data["support_reply_ticket_id"] = ticket_id   # ✅ store UUID string
-    context.user_data["support_reply_page"] = page             # ✅ for return/refresh
+    context.user_data["support_reply_ticket_id"] = ticket_id
+    context.user_data["support_reply_return_page"] = page  # ✅ standardized key
 
-    # Trim long message (avoid Telegram limit issues)
+    # -----------------------------
+    # Build preview message
+    # -----------------------------
     msg = message or ""
-    short_message = msg if len(msg) <= 700 else msg[:700] + "…"
+    safe_msg = html.escape(msg)
+    if len(safe_msg) > 700:
+        safe_msg = safe_msg[:700] + "…"
 
-    # Build sender display
     who = (first_name or "User").strip()
     if username:
         who += f" (@{username})"
 
     output_text = (
         f"✍️ <b>Reply to Ticket</b>\n\n"
-        f"👤 <b>From:</b> {who}\n"
-        f"🕒 <b>Time:</b> {created_at}\n\n"
+        f"👤 <b>From:</b> {html.escape(who)}\n"
+        f"🕒 <b>Time:</b> {html.escape(str(created_at))}\n\n"
         f"📝 <b>Message:</b>\n"
-        f"<blockquote>{short_message}</blockquote>\n\n"
+        f"<blockquote>{safe_msg}</blockquote>\n\n"
         f"Type your reply message now.\n"
         f"Send /cancel to abort."
     )
 
-    return await safe_edit(
+    # ✅ Show preview + Cancel button
+    await safe_edit(
         query,
         output_text,
         parse_mode="HTML",
@@ -498,6 +512,10 @@ async def admin_support_reply_start(update: Update, context: ContextTypes.DEFAUL
         ),
     )
 
+    # ✅ THIS is what makes the next text go to your reply_text_handler
+    return ADMIN_SUPPORT_REPLY
+
+
 # ---------------------------------------------------------
 # Admin Support Reply Text Handler (✅ includes user's message)
 # Works with callback: sr:<ticketid_no_dashes>:<page>
@@ -505,49 +523,76 @@ async def admin_support_reply_start(update: Update, context: ContextTypes.DEFAUL
 #   awaiting_support_reply: True
 #   support_reply_ticket_id: UUID string with dashes
 #   support_reply_page: int
-# ----------------------------------------------------------
+# flag-based "reply mode"
+# ---------------------------------------------------------
 async def admin_support_reply_text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    # Must be a normal text message
+    # Must be a normal message with text
     if not update.message or not update.message.text:
         return
 
-    # 🔐 Admin only (prefer is_admin if you have it)
+    user_id = (update.effective_user.id if update.effective_user else None)
+    if not user_id:
+        return
+
+    # Admin only
     try:
-        if not is_admin(update.effective_user.id):
+        if not is_admin(user_id):
             return
     except Exception:
-        # fallback to single admin env var style if is_admin isn't available here
-        if update.effective_user.id != ADMIN_USER_ID:
+        if user_id != ADMIN_USER_ID:
             return
+
+    text_in = (update.message.text or "").strip()
 
     # Only act when we are in reply mode
     if not context.user_data.get("awaiting_support_reply"):
         return
 
-    ticket_id = context.user_data.get("support_reply_ticket_id")  # ✅ UUID string expected
-    return_page = int(context.user_data.get("support_reply_page", 1) or 1)
+    # ✅ IMPORTANT: must match admin_support_reply_start() keys
+    ticket_id = context.user_data.get("support_reply_ticket_id")  # UUID string expected
+    return_page = context.user_data.get("support_reply_return_page", 1)
 
-    if not ticket_id or not isinstance(ticket_id, str):
-        # Clear only support reply state
+    try:
+        return_page = int(return_page or 1)
+    except Exception:
+        return_page = 1
+    return_page = max(return_page, 1)
+
+    # Allow /cancel to abort reply mode (since your handler group filters may block commands)
+    if text_in.lower() == "/cancel":
         context.user_data.pop("awaiting_support_reply", None)
         context.user_data.pop("support_reply_ticket_id", None)
-        context.user_data.pop("support_reply_page", None)
+        context.user_data.pop("support_reply_return_page", None)
+
+        await update.message.reply_text("❌ Cancelled. Reply mode exited.")
+        # Optionally re-show inbox (best-effort)
+        try:
+            await admin_support_inbox_page(update, context, return_page)
+        except Exception:
+            pass
+        return
+
+    # Validate ticket id
+    if not ticket_id or not isinstance(ticket_id, str):
+        context.user_data.pop("awaiting_support_reply", None)
+        context.user_data.pop("support_reply_ticket_id", None)
+        context.user_data.pop("support_reply_return_page", None)
         return await update.message.reply_text("⚠️ No ticket selected. Please reopen Support Inbox.")
 
-    # Basic UUID sanity check
-    # (If your IDs are not UUIDs, remove this check.)
-    if len(ticket_id) < 32:
+    # Strict UUID sanity check (36 chars with dashes)
+    # If your DB uses UUID, keep this; otherwise relax it.
+    if not re.fullmatch(r"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}", ticket_id):
         context.user_data.pop("awaiting_support_reply", None)
         context.user_data.pop("support_reply_ticket_id", None)
-        context.user_data.pop("support_reply_page", None)
+        context.user_data.pop("support_reply_return_page", None)
         return await update.message.reply_text("⚠️ Invalid ticket ID. Please reopen Support Inbox.")
 
-    reply_text = (update.message.text or "").strip()
+    reply_text = text_in
     if not reply_text:
         return await update.message.reply_text("⚠️ Reply cannot be empty. Type your reply:")
 
     async with AsyncSessionLocal() as session:
-        # Fetch everything we need in ONE query
+        # Fetch everything we need
         res = await session.execute(sql_text("""
             SELECT tg_id, status, message
             FROM support_tickets
@@ -558,30 +603,29 @@ async def admin_support_reply_text_handler(update: Update, context: ContextTypes
         row = res.fetchone()
 
         if not row:
-            # Clear only support reply state (don't wipe all user_data)
             context.user_data.pop("awaiting_support_reply", None)
             context.user_data.pop("support_reply_ticket_id", None)
-            context.user_data.pop("support_reply_page", None)
+            context.user_data.pop("support_reply_return_page", None)
             return await update.message.reply_text("❌ Ticket not found. Please reopen Support Inbox.")
 
         tg_id, status, original_message = row
+        status = (status or "").lower().strip()
 
-        if (status or "").lower() != "pending":
+        if status != "pending":
             context.user_data.pop("awaiting_support_reply", None)
             context.user_data.pop("support_reply_ticket_id", None)
-            context.user_data.pop("support_reply_page", None)
+            context.user_data.pop("support_reply_return_page", None)
             return await update.message.reply_text(f"⚠️ Ticket is not pending (status: {status}).")
 
-        # Escape HTML to prevent formatting break or injection
+        # Escape HTML to prevent formatting issues
         original_message = original_message or ""
         safe_original = html.escape(original_message)
         safe_reply = html.escape(reply_text)
 
-        # Trim long original message for readability
         if len(safe_original) > 500:
             safe_original = safe_original[:500] + "…"
 
-        # Send reply to user (admin identity stays hidden)
+        # Send reply to user
         try:
             await context.bot.send_message(
                 chat_id=int(tg_id),
@@ -594,6 +638,7 @@ async def admin_support_reply_text_handler(update: Update, context: ContextTypes
                 parse_mode="HTML",
             )
         except Exception:
+            # Don't clear state; admin may try again after fixing the issue
             return await update.message.reply_text("❌ Could not send message (user may have blocked the bot).")
 
         # Update DB (mark replied)
@@ -607,21 +652,25 @@ async def admin_support_reply_text_handler(update: Update, context: ContextTypes
 
         await session.commit()
 
-    # Clear only support reply state safely
+    # Clear reply state
     context.user_data.pop("awaiting_support_reply", None)
     context.user_data.pop("support_reply_ticket_id", None)
-    context.user_data.pop("support_reply_page", None)
+    context.user_data.pop("support_reply_return_page", None)
 
     await update.message.reply_text("✅ Reply sent. Returning to Support Inbox...")
 
-    # Optional: show inbox again (same page you came from)
+    # Best-effort: render inbox page again.
+    # Works if admin_support_inbox_page supports (update, context, page)
     try:
-        # If your inbox page parses callback_data, you can temporarily store page and it will use it.
-        # Easiest: just render it again (it will use stored support_inbox_page or default 1)
-        context.user_data["support_inbox_page"] = return_page
-        await admin_support_inbox_page(update, context)
+        await admin_support_inbox_page(update, context, return_page)
+    except TypeError:
+        # If your inbox function signature is (update, context) only
+        try:
+            context.user_data["support_inbox_page"] = return_page
+            await admin_support_inbox_page(update, context)
+        except Exception:
+            pass
     except Exception:
-        # If safe_edit requires a callback query, just ignore and let the admin manually reopen inbox
         pass
 
 
