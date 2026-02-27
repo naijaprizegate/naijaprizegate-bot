@@ -32,15 +32,18 @@ def _get_admin_ids() -> set[int]:
 ADMIN_IDS = _get_admin_ids()
 
 
+# =====================================================
+# SAFE support flow flag helpers  (FIXED)
+# =====================================================
 def _set_support_flag(context: ContextTypes.DEFAULT_TYPE, value: bool):
-    if not context.user_data:
-        context.user_data = {}
     if value:
         context.user_data["in_support_flow"] = True
     else:
         context.user_data.pop("in_support_flow", None)
-
-
+        
+# =================================================
+# Support Start
+# ==================================================
 async def support_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # ✅ mark flow active (so fallback won't interrupt)
     _set_support_flag(context, True)
