@@ -14,6 +14,15 @@ from utils.security import validate_phone, is_admin, detect_provider
 
 logger = logging.getLogger(__name__)
 
+# ------------------------------------------
+# Greetings Router
+# ------------------------------------------
+async def greetings_router(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    # ✅ Don't interrupt support conversation flow
+    if (context.user_data or {}).get("in_support_flow"):
+        return
+    return await start(update, context)
+
 # ===============================================================
 # 📘 /terms COMMAND HANDLER — ADDED
 # ===============================================================
@@ -279,7 +288,7 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
 
 # ===============================================================
-# Register Handlers 
+# Register Handlers
 # ===============================================================
 def register_handlers(application):
 
@@ -295,12 +304,8 @@ def register_handlers(application):
     # ---------------------------------------------------
     # Callback buttons
     # ---------------------------------------------------
-    application.add_handler(
-        CallbackQueryHandler(terms_handler, pattern="^terms$")
-    )
-    application.add_handler(
-        CallbackQueryHandler(faq_handler, pattern="^faq$")
-    )
+    application.add_handler(CallbackQueryHandler(terms_handler, pattern=r"^terms$"))
+    application.add_handler(CallbackQueryHandler(faq_handler, pattern=r"^faq$"))
 
     # ---------------------------------------------------
     # Friendly greetings → start (non-command only)
@@ -310,11 +315,9 @@ def register_handlers(application):
         re.IGNORECASE
     ))
 
+    # ✅ IMPORTANT: use greetings_router, not start directly
     application.add_handler(
-        MessageHandler(
-            greetings & ~filters.COMMAND,
-            start
-        )
+        MessageHandler(greetings & ~filters.COMMAND, greetings_router)
     )
 
     # ---------------------------------------------------
@@ -334,3 +337,4 @@ def register_handlers(application):
         ),
         group=99,
     )
+
