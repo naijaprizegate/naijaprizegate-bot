@@ -324,11 +324,13 @@ def register_handlers(application):
     register_leaderboard_handlers(application)
 
     # ---------------------------------------------------
-    # Fallback (LAST)
+    # Fallback (ABSOLUTELY LAST)
     # ---------------------------------------------------
     application.add_handler(
         MessageHandler(
             filters.TEXT & ~filters.COMMAND & ~filters.Regex(r"^[0-9+ ]+$"),
-            fallback
-        )
+            fallback,
+            block=True,
+        ),
+        group=99,
     )
