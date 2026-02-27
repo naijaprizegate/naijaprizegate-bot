@@ -35,17 +35,25 @@ ADMIN_IDS = _get_admin_ids()
 # =====================================================
 # SAFE support flow flag helpers  (FIXED)
 # =====================================================
-def _set_support_flag(context: ContextTypes.DEFAULT_TYPE, value: bool):
+def _set_support_flag(context: ContextTypes.DEFAULT_TYPE, value: bool) -> None:
+    """
+    Safely set/clear the support flow flag.
+
+    IMPORTANT:
+    - Never assign context.user_data = {} (PTB forbids it).
+    - Only mutate keys on context.user_data.
+    """
     if value:
         context.user_data["in_support_flow"] = True
     else:
         context.user_data.pop("in_support_flow", None)
         
-# =================================================
+
+# =========================================
 # Support Start
-# ==================================================
+# =========================================
 async def support_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    # ✅ mark flow active (so fallback won't interrupt)
+    # ✅ mark flow active (so fallback/greetings won't interrupt)
     _set_support_flag(context, True)
 
     await update.effective_message.reply_text(
@@ -57,6 +65,9 @@ async def support_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     return SUPPORT_WAITING_MESSAGE
 
 
+# =========================================
+# Support Start From Callback
+# =========================================
 async def support_start_from_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -67,9 +78,10 @@ async def support_start_from_callback(update: Update, context: ContextTypes.DEFA
     except Exception:
         pass
 
-    # ✅ mark flow active (so fallback won't interrupt)
+    # ✅ mark flow active (so fallback/greetings won't interrupt)
     _set_support_flag(context, True)
 
+    # Use reply_text to avoid edit conflicts
     await query.message.reply_text(
         "📩 <b>Contact Support</b>\n\n"
         "✍️ Type your message here and send it.\n\n"
@@ -79,6 +91,9 @@ async def support_start_from_callback(update: Update, context: ContextTypes.DEFA
     return SUPPORT_WAITING_MESSAGE
 
 
+# ----------------------------------------
+# Support Receive Message
+# ----------------------------------------
 async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Must be a normal text message
     if not update.message or not update.message.text:
@@ -97,20 +112,28 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
     user = update.effective_user
 
     # ✅ Save to DB
-    async with AsyncSessionLocal() as session:
-        await session.execute(
-            text("""
-                INSERT INTO support_tickets (tg_id, username, first_name, message, status, created_at)
-                VALUES (:tg_id, :username, :first_name, :message, 'pending', NOW())
-            """),
-            {
-                "tg_id": int(user.id),
-                "username": (user.username or None),
-                "first_name": (user.first_name or None),
-                "message": msg,
-            },
+    try:
+        async with AsyncSessionLocal() as session:
+            await session.execute(
+                text("""
+                    INSERT INTO support_tickets (tg_id, username, first_name, message, status, created_at)
+                    VALUES (:tg_id, :username, :first_name, :message, 'pending', NOW())
+                """),
+                {
+                    "tg_id": int(user.id),
+                    "username": (user.username or None),
+                    "first_name": (user.first_name or None),
+                    "message": msg,
+                },
+            )
+            await session.commit()
+    except Exception:
+        # If DB fails, keep the user in the flow so they can retry
+        await update.message.reply_text(
+            "❌ Sorry—support could not receive your message right now.\n"
+            "Please try again in a minute, or send /cancel."
         )
-        await session.commit()
+        return SUPPORT_WAITING_MESSAGE
 
     # ✅ Notify admins (best effort)
     who = (user.first_name or "User")
@@ -144,12 +167,15 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
     return ConversationHandler.END
 
 
+# ----------------------------------------
+# Support Cancel
+# ----------------------------------------
 async def support_cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.effective_message.reply_text("✅ Cancelled. Send /start to return to menu.")
     _set_support_flag(context, False)
     return ConversationHandler.END
 
-
+    
 # ✅ Real ConversationHandler
 support_conv = ConversationHandler(
     entry_points=[
@@ -175,4 +201,5 @@ support_conv = ConversationHandler(
     per_message=False,
     per_chat=True,
     per_user=True,
+    block=True
 )
