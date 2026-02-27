@@ -2578,7 +2578,7 @@ def register_handlers(application):
 
     # ✅ Support reply flow (MUST come first)
     application.add_handler(
-        MessageHandler(filters.TEXT & ~filters.COMMAND, admin_support_reply_text_handler),
+        MessageHandler(filters.TEXT, admin_support_reply_text_handler),
         group=ADMIN_GROUP
     )
 
