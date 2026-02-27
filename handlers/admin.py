@@ -675,15 +675,31 @@ async def admin_support_reply_text_handler(update: Update, context: ContextTypes
 
 
 # ------------------------------------------
-# Cancel Admin Support Reply
-# -------------------------------------------
+# Cancel Admin Support Reply (Conversation-safe)
+# ------------------------------------------
 async def cancel_admin_support_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    # Admin only
     if not is_admin(update.effective_user.id):
-        return
-    context.user_data["awaiting_support_reply"] = False
+        return ConversationHandler.END
+
+    # Clear reply mode state cleanly
+    context.user_data.pop("awaiting_support_reply", None)
     context.user_data.pop("support_reply_ticket_id", None)
     context.user_data.pop("support_reply_return_page", None)
-    return await update.message.reply_text("✅ Reply cancelled.")
+    context.user_data.pop("support_reply_page", None)  # in case you used this key
+
+    # Reply to admin
+    if update.message:
+        await update.message.reply_text("✅ Reply cancelled.")
+
+    # IMPORTANT: end ConversationHandler state machine
+    return ConversationHandler.END
+
+
+# ✅ If your ConversationHandler fallback expects admin_support_reply_cancel,
+# just alias it to the same function:
+admin_support_reply_cancel = cancel_admin_support_reply
+
 
 # -----------------------------------------
 # ADMIN: View Cycle Entries / Score Source
@@ -2554,15 +2570,46 @@ async def show_failed_airtime(update: Update, context: ContextTypes.DEFAULT_TYPE
 def register_handlers(application):
     ADMIN_GROUP = 10  # ✅ Admin runs later than user flows
 
+    # ============================================================
+    # ✅ ADMIN SUPPORT REPLY CONVERSATION (uses ADMIN_SUPPORT_REPLY=901)
+    # ============================================================
+    admin_support_reply_conv = ConversationHandler(
+        entry_points=[
+            CallbackQueryHandler(
+                admin_support_reply_start,
+                pattern=r"^sr:[0-9a-fA-F]+:\d+$"
+            ),
+        ],
+        states={
+            ADMIN_SUPPORT_REPLY: [
+                MessageHandler(filters.TEXT & ~filters.COMMAND, admin_support_reply_text_handler)
+            ],
+        },
+        fallbacks=[
+            CommandHandler("cancel", cancel_admin_support_reply),
+        ],
+        per_message=False,
+        per_chat=True,
+        per_user=True,
+        allow_reentry=True,
+    )
+
+    # ✅ Register this FIRST so it catches the reply flow reliably
+    application.add_handler(admin_support_reply_conv, group=ADMIN_GROUP)
+
+    # ============================================================
     # ✅ ADMIN COMMANDS
+    # ============================================================
     application.add_handler(CommandHandler("admin", admin_panel), group=ADMIN_GROUP)
     application.add_handler(CommandHandler("pending_proofs", pending_proofs), group=ADMIN_GROUP)
     application.add_handler(CommandHandler("winners", show_winners_section), group=ADMIN_GROUP)
 
-    # ✅ Cancel support reply mode
+    # ✅ You may keep this, but it's optional since ConversationHandler handles /cancel too
     application.add_handler(CommandHandler("cancel", cancel_admin_support_reply), group=ADMIN_GROUP)
 
+    # ============================================================
     # ✅ ADMIN SUB-SECTIONS
+    # ============================================================
     application.add_handler(CallbackQueryHandler(pending_proofs, pattern=r"^admin_pending"), group=ADMIN_GROUP)
     application.add_handler(CallbackQueryHandler(user_search_handler, pattern=r"^admin_usersearch"), group=ADMIN_GROUP)
     application.add_handler(CallbackQueryHandler(show_winners_section, pattern=r"^admin_winners"), group=ADMIN_GROUP)
@@ -2572,15 +2619,17 @@ def register_handlers(application):
         group=ADMIN_GROUP
     )
 
+    # ============================================================
     # ✅ CSV EXPORT FLOW
+    # ============================================================
     application.add_handler(CallbackQueryHandler(admin_export_csv_menu, pattern=r"^admin_export_csv$"), group=ADMIN_GROUP)
     application.add_handler(CallbackQueryHandler(export_csv_handler, pattern=r"^export_csv:"), group=ADMIN_GROUP)
 
-    # ✅ Support reply flow (MUST come first)
-    application.add_handler(
-        MessageHandler(filters.TEXT, admin_support_reply_text_handler),
-        group=ADMIN_GROUP
-    )
+    # ❌ REMOVE OLD STANDALONE SUPPORT REPLY TEXT HANDLER
+    # application.add_handler(
+    #     MessageHandler(filters.TEXT, admin_support_reply_text_handler),
+    #     group=ADMIN_GROUP
+    # )
 
     # ✅ Admin custom date input (only acts when awaiting_date_range=True)
     application.add_handler(
@@ -2588,16 +2637,19 @@ def register_handlers(application):
         group=ADMIN_GROUP
     )
 
+    # ============================================================
     # ✅ Support Inbox pagination + actions
+    # ============================================================
     application.add_handler(
         CallbackQueryHandler(admin_support_inbox_page, pattern=r"^si:\d+$"),
         group=ADMIN_GROUP
     )
 
-    application.add_handler(
-        CallbackQueryHandler(admin_support_reply_start, pattern=r"^sr:[0-9a-fA-F]+:\d+$"),
-        group=ADMIN_GROUP
-    )
+    # ❌ REMOVE this too (sr:... is now handled by ConversationHandler entry_points)
+    # application.add_handler(
+    #     CallbackQueryHandler(admin_support_reply_start, pattern=r"^sr:[0-9a-fA-F]+:\d+$"),
+    #     group=ADMIN_GROUP
+    # )
 
     application.add_handler(
         CallbackQueryHandler(admin_support_action, pattern=r"^sa:(c|s):[0-9a-fA-F]+:\d+$"),
@@ -2609,10 +2661,14 @@ def register_handlers(application):
         group=ADMIN_GROUP
     )
 
+    # ============================================================
     # ✅ Admin Menu routing
+    # ============================================================
     application.add_handler(CallbackQueryHandler(admin_callback, pattern=r"^admin_"), group=ADMIN_GROUP)
 
-    # ✅ Delivery status updates (NOTE: you have duplicates — keep only ONE per pattern)
+    # ============================================================
+    # ✅ Delivery status updates
+    # ============================================================
     application.add_handler(
         CallbackQueryHandler(update_delivery_status_transit, pattern=r"^pw_status_transit_\d+$"),
         group=ADMIN_GROUP
@@ -2629,5 +2685,7 @@ def register_handlers(application):
     )
 
     # Failed Airtime pagination
-    application.add_handler(CallbackQueryHandler(show_failed_airtime, pattern=r"^admin_airtime_failed"), group=ADMIN_GROUP)
-
+    application.add_handler(
+        CallbackQueryHandler(show_failed_airtime, pattern=r"^admin_airtime_failed"),
+        group=ADMIN_GROUP
+    )
