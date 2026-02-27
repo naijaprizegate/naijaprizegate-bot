@@ -14,18 +14,12 @@ from telegram.ext import (
 )
 from sqlalchemy import text
 
-from db import AsyncSessionLocal  # adjust if needed
+from db import AsyncSessionLocal  # ✅ adjust import if needed
 
-
-# -----------------------------
-# Conversation State
-# -----------------------------
 SUPPORT_WAITING_MESSAGE = 1
 
 
-# -----------------------------
-# Admin IDs from env
-# -----------------------------
+# ✅ Put admin IDs in env: ADMIN_IDS="123,456"
 def _get_admin_ids() -> set[int]:
     raw = os.getenv("ADMIN_IDS", "")
     ids: set[int] = set()
@@ -39,47 +33,46 @@ def _get_admin_ids() -> set[int]:
 ADMIN_IDS = _get_admin_ids()
 
 
-# -----------------------------
-# Helpers
-# -----------------------------
-async def _send_support_prompt(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """
-    Sends the "Type your message" prompt and activates support state.
-    Works for both command/message entry and callback entry.
-    """
-    # Flag used to prevent your global "unknown" handler from replying during support flow
+# ----------------------------
+# Internal helper (single UI)
+# ----------------------------
+async def _enter_support_prompt(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    # ✅ mark that user is in support flow so fallback must not interrupt
     context.user_data["in_support_flow"] = True
 
-    text_prompt = (
+    msg = (
         "📩 <b>Contact Support</b>\n\n"
         "Type your message here and send it.\n\n"
-        "To cancel, send /cancel (or /start to return to the menu)."
+        "To cancel and return to menu, send /cancel (or /start)."
     )
 
     if update.callback_query:
-        q = update.callback_query
-        await q.answer()
-        await q.message.reply_text(text_prompt, parse_mode="HTML")
+        query = update.callback_query
+        try:
+            await query.answer()
+        except Exception:
+            pass
+        await query.message.reply_text(msg, parse_mode="HTML")
     else:
-        await update.effective_message.reply_text(text_prompt, parse_mode="HTML")
+        await update.effective_message.reply_text(msg, parse_mode="HTML")
 
     return SUPPORT_WAITING_MESSAGE
 
 
-# -----------------------------
+# ----------------------------
 # Entry points
-# -----------------------------
+# ----------------------------
 async def support_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    return await _send_support_prompt(update, context)
+    return await _enter_support_prompt(update, context)
 
 
 async def support_start_from_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    return await _send_support_prompt(update, context)
+    return await _enter_support_prompt(update, context)
 
 
-# -----------------------------
-# State handler
-# -----------------------------
+# ----------------------------
+# Receive the support message
+# ----------------------------
 async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Must be a normal text message
     if not update.message or not update.message.text:
@@ -87,12 +80,12 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
 
     msg = (update.message.text or "").strip()
     if not msg:
-        await update.message.reply_text("⚠️ Please type a message.")
+        await update.message.reply_text("⚠️ Please type your message (it cannot be empty).")
         return SUPPORT_WAITING_MESSAGE
 
     user = update.effective_user
 
-    # ✅ Save ticket to DB
+    # ✅ Save to DB
     async with AsyncSessionLocal() as session:
         await session.execute(
             text("""
@@ -108,18 +101,15 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
         )
         await session.commit()
 
-    # ✅ Notify admins (optional)
+    # ✅ Optional: notify admins
     for admin_id in ADMIN_IDS:
         try:
-            who = (user.first_name or "User").strip()
-            if user.username:
-                who += f" (@{user.username})"
-
             await context.bot.send_message(
                 chat_id=admin_id,
                 text=(
                     "📩 <b>New Support Message</b>\n"
-                    f"From: {who}\n"
+                    f"From: {user.first_name or 'User'}"
+                    f"{' (@' + user.username + ')' if user.username else ''}\n"
                     f"TG_ID: <code>{user.id}</code>\n\n"
                     f"<b>Message:</b>\n{msg}\n\n"
                     "Use /admin to view tickets."
@@ -129,40 +119,38 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
         except Exception:
             pass
 
-    # Clear support-flow flag
+    # ✅ clear support-flow flag so fallback can work normally again
     context.user_data.pop("in_support_flow", None)
 
     await update.message.reply_text(
         "✅ Your message has been sent to support.\n"
         "You’ll get a reply here as soon as possible.\n\n"
-        "Send /start to go back to the main menu."
+        "Send /start to return to the main menu."
     )
-
     return ConversationHandler.END
 
 
-# -----------------------------
-# Fallbacks / Cancel
-# -----------------------------
+# ----------------------------
+# Cancel support
+# ----------------------------
 async def support_cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data.pop("in_support_flow", None)
     await update.effective_message.reply_text("✅ Cancelled. Send /start to return to the menu.")
     return ConversationHandler.END
 
 
-# -----------------------------
-# ConversationHandler
-# -----------------------------
+# ----------------------------
+# Support ConversationHandler
+# ----------------------------
 support_conv = ConversationHandler(
     entry_points=[
-        # /support command
         CommandHandler("support", support_start),
 
-        # ✅ ReplyKeyboard button text (make this flexible)
-        MessageHandler(filters.Regex(r"^📩\s*Contact Support\b"), support_start),
+        # ✅ If you have a ReplyKeyboard button that sends this exact text
+        MessageHandler(filters.Regex(r"^📩 Contact Support / Admin$"), support_start),
 
-        # ✅ InlineKeyboard callback (accept multiple possible patterns)
-        CallbackQueryHandler(support_start_from_callback, pattern=r"^(support:start|support|contact_support)$"),
+        # ✅ InlineKeyboard callback button
+        CallbackQueryHandler(support_start_from_callback, pattern=r"^support:start$"),
     ],
     states={
         SUPPORT_WAITING_MESSAGE: [
@@ -171,7 +159,7 @@ support_conv = ConversationHandler(
     },
     fallbacks=[
         CommandHandler("cancel", support_cancel),
-        CommandHandler("start", support_cancel),  # since you told users "/start" cancels
+        CommandHandler("start", support_cancel),  # ✅ IMPORTANT because you told them “use /start to go back”
     ],
     allow_reentry=True,
     per_message=False,
