@@ -230,11 +230,11 @@ async def on_startup():
         await application.initialize()
 
 	    # Webhook Setup
-        PUBLIC_BASE_URL = os.getenv("PUBLIC_BASE_URL")  # e.g. https://naijaprizegate-bot.fly.dev
-        if not PUBLIC_BASE_URL:
-            raise ValueError("PUBLIC_BASE_URL is not set")
+        BASE_URL = os.getenv("BASE_URL")  # e.g. https://naijaprizegate-bot.fly.dev
+        if not BASE_URL:
+            raise ValueError("BASE_URL is not set")
 
-        webhook_url = f"{PUBLIC_BASE_URL}/telegram/webhook/{WEBHOOK_SECRET}"
+        webhook_url = f"{BASE_URL}/telegram/webhook/{WEBHOOK_SECRET}"
         await application.bot.set_webhook(webhook_url)
         logger.info(f"Webhook set to {webhook_url} ✅")
 
