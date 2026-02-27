@@ -208,14 +208,24 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # ===============================================================
-# Fallback — unchanged (still skips numeric-only messages)
+# Fallback (still skips numeric-only messages via handler filter)
 # ===============================================================
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_data = context.user_data or {}
 
-    # ✅ NEW: Don't interrupt admin support reply flow
-    if is_admin(update.effective_user.id) and user_data.get("awaiting_support_reply"):
+    # ✅ NEW: Don't interrupt USER support flow (Contact Support)
+    # If user is currently inside support conversation, ignore fallback
+    if user_data.get("in_support_flow"):
         return
+
+    # ✅ Don't interrupt admin support reply flow
+    # (Admin typed message should be handled by admin reply flow, not fallback)
+    try:
+        if is_admin(update.effective_user.id) and user_data.get("awaiting_support_reply"):
+            return
+    except Exception:
+        # If is_admin is not available here, don't crash fallback
+        pass
 
     # ✅ Don't interrupt airtime claim flow
     if user_data.get("awaiting_airtime_phone"):
@@ -259,14 +269,14 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 parse_mode="MarkdownV2",
             )
         except Exception:
-            # If edit fails (e.g., message not editable), fall back to sending a new message
+            # If edit fails (not editable), send a new message
             await update.callback_query.message.reply_text(
                 safe_text,
                 reply_markup=keyboard,
                 parse_mode="MarkdownV2",
             )
         return
-
+    
 
 # ===============================================================
 # Register Handlers 
