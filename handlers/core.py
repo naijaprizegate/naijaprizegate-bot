@@ -14,15 +14,6 @@ from utils.security import validate_phone, is_admin, detect_provider
 
 logger = logging.getLogger(__name__)
 
-# ------------------------------------------
-# Greetings Router
-# ------------------------------------------
-async def greetings_router(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    # ✅ Don't interrupt support conversation flow
-    if (context.user_data or {}).get("in_support_flow"):
-        return
-    return await start(update, context)
-
 # ===============================================================
 # 📘 /terms COMMAND HANDLER — ADDED
 # ===============================================================
@@ -98,12 +89,26 @@ async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         await update.message.reply_text(text, parse_mode="HTML")
 
-
-
 # ===============================================================
 # /start (with optional referral)
 # ===============================================================
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    # ✅ SAFETY GUARD:
+    # If user is currently inside support flow, ignore accidental start calls
+    # triggered by greetings handlers ("hello", "hi", etc).
+    # BUT allow real /start command to override support flow.
+    if (context.user_data or {}).get("in_support_flow"):
+        msg_text = ""
+        if update.message and update.message.text:
+            msg_text = update.message.text.strip()
+
+        # If it's NOT the actual /start command, do nothing.
+        if not msg_text.startswith("/start"):
+            return
+
+        # If user intentionally used /start, exit support flow cleanly.
+        context.user_data.pop("in_support_flow", None)
+
     user = update.effective_user
 
     async with get_async_session() as session:
@@ -136,25 +141,42 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
         [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
-        [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],  # NEW
-        [InlineKeyboardButton("❓ FAQs", callback_data="faq")],                # NEW
-        [InlineKeyboardButton("📩 Contact Support / Admin", callback_data="support:start")],   # NEW
+        [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],
+        [InlineKeyboardButton("❓ FAQs", callback_data="faq")],
+        [InlineKeyboardButton("📩 Contact Support / Admin", callback_data="support:start")],
     ]
+
+    markup = InlineKeyboardMarkup(keyboard)
 
     if update.message:
         await update.message.reply_text(
             text,
-            reply_markup=InlineKeyboardMarkup(keyboard),
+            reply_markup=markup,
             parse_mode="MarkdownV2"
         )
-    elif update.callback_query:
-        await update.callback_query.answer()
-        await update.callback_query.edit_message_text(
-            text,
-            reply_markup=InlineKeyboardMarkup(keyboard),
-            parse_mode="MarkdownV2"
-        )
+        return
 
+    if update.callback_query:
+        try:
+            await update.callback_query.answer()
+        except Exception:
+            pass
+
+        try:
+            await update.callback_query.edit_message_text(
+                text,
+                reply_markup=markup,
+                parse_mode="MarkdownV2"
+            )
+        except Exception:
+            # If edit fails (message too old/not editable), send a fresh one
+            await update.callback_query.message.reply_text(
+                text,
+                reply_markup=markup,
+                parse_mode="MarkdownV2"
+            )
+        return
+    
 
 # ===============================================================
 # GO BACK (from cancel or menu)
@@ -217,27 +239,32 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # ===============================================================
-# Fallback (still skips numeric-only messages via handler filter)
+# Fallback (ABSOLUTELY LAST)
 # ===============================================================
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_data = context.user_data or {}
 
-    # ✅ NEW: Don't interrupt USER support flow (Contact Support)
-    # If user is currently inside support conversation, ignore fallback
+    # ✅ 1) NEVER interrupt USER support flow
     if user_data.get("in_support_flow"):
         return
 
-    # ✅ Don't interrupt admin support reply flow
-    # (Admin typed message should be handled by admin reply flow, not fallback)
-    try:
-        if is_admin(update.effective_user.id) and user_data.get("awaiting_support_reply"):
-            return
-    except Exception:
-        # If is_admin is not available here, don't crash fallback
-        pass
+    # ✅ 2) NEVER interrupt ADMIN support reply flow
+    # (admin typing a reply should not trigger fallback)
+    if user_data.get("awaiting_support_reply"):
+        return
 
-    # ✅ Don't interrupt airtime claim flow
+    # ✅ 3) NEVER interrupt airtime claim flow (or any other "awaiting input" flow)
     if user_data.get("awaiting_airtime_phone"):
+        return
+
+    # ✅ 4) Ignore empty/non-text updates
+    text_msg = ""
+    if update.message and update.message.text:
+        text_msg = update.message.text.strip()
+
+    # ✅ 5) Ignore numeric-only messages (your old behavior)
+    # (Also ignore +234 type phone inputs)
+    if text_msg and __import__("re").fullmatch(r"^[0-9+ ]+$", text_msg):
         return
 
     safe_text = md_escape(
@@ -278,14 +305,12 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 parse_mode="MarkdownV2",
             )
         except Exception:
-            # If edit fails (not editable), send a new message
             await update.callback_query.message.reply_text(
                 safe_text,
                 reply_markup=keyboard,
                 parse_mode="MarkdownV2",
             )
-        return
-    
+        return    
 
 # ===============================================================
 # Register Handlers
@@ -316,8 +341,17 @@ def register_handlers(application):
     ))
 
     # ✅ IMPORTANT: use greetings_router, not start directly
+    async def greetings_router(update: Update, context: ContextTypes.DEFAULT_TYPE):
+        # ✅ If user is in support flow, DO NOTHING
+        if context.user_data.get("in_support_flow"):
+            return
+        return await start(update, context)
+
     application.add_handler(
-        MessageHandler(greetings & ~filters.COMMAND, greetings_router)
+        MessageHandler(
+            greetings & ~filters.COMMAND,
+            greetings_router,
+        )
     )
 
     # ---------------------------------------------------
@@ -337,4 +371,3 @@ def register_handlers(application):
         ),
         group=99,
     )
-
