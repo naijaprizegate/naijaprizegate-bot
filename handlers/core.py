@@ -308,7 +308,7 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=keyboard,
         parse_mode="MarkdownV2",
     )
-    
+
 # ===============================================================
 # Register Handlers
 # ===============================================================
@@ -339,17 +339,33 @@ def register_handlers(application):
 
     # ✅ IMPORTANT: use greetings_router, not start directly
     async def greetings_router(update: Update, context: ContextTypes.DEFAULT_TYPE):
-        # ✅ If user is in support flow, DO NOTHING
-        if context.user_data.get("in_support_flow"):
+        user_data = context.user_data or {}
+
+        # ---------------------------------------------------
+        # 🚫 NEVER greet during active support flow
+        # ---------------------------------------------------
+        if user_data.get("in_support_flow"):
             return
+
+        # ---------------------------------------------------
+        # 🚫 NEVER greet if support just handled this message
+        # (prevents "Hello I need help" from triggering start)
+        # ---------------------------------------------------
+        if user_data.get("_handled_by_support"):
+            return
+            
+        # Otherwise behave like /start
         return await start(update, context)
+
 
     application.add_handler(
         MessageHandler(
-            greetings & ~filters.COMMAND,
+            greetings
+            & ~filters.COMMAND
+            & ~filters.ChatType.CHANNEL,
             greetings_router,
         ),
-        group=10,   # move it AFTER conversation groups
+        group=10,  # ensure it runs after conversations
     )
 
     # ---------------------------------------------------
