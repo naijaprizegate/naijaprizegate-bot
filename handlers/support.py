@@ -200,4 +200,5 @@ support_conv = ConversationHandler(
     per_message=False,
     per_chat=True,
     per_user=True,
+    block=True,
 )
