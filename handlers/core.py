@@ -244,6 +244,10 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_data = context.user_data or {}
 
+    # If greeting just handled this message, ignore and auto-clear
+    if user_data.pop("_just_started", False):
+        return
+    
     # -----------------------------------------------------------
     # 0️⃣ VERY IMPORTANT:
     # If this message was already handled by support,
@@ -353,6 +357,9 @@ def register_handlers(application):
         # ---------------------------------------------------
         if user_data.get("_handled_by_support"):
             return
+        
+        # mark that greeting handled this message
+        user_data["_just_started"] = True
             
         # Otherwise behave like /start
         return await start(update, context)
