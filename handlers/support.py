@@ -95,21 +95,29 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
 
     # ✅ If they typed /start inside support, treat as exit
     if msg.startswith("/start"):
+        context.user_data["_handled_by_support"] = True
         _support_off(context)
         return ConversationHandler.END
 
     if not msg:
-        await update.message.reply_text("⚠️ Message cannot be empty. Please type your message:")
+        await update.message.reply_text(
+            "⚠️ Message cannot be empty. Please type your message:"
+        )
         return SUPPORT_WAITING_MESSAGE
 
     if len(msg) < 2:
-        await update.message.reply_text("⚠️ Please type a clearer message:")
+        await update.message.reply_text(
+            "⚠️ Please type a clearer message:"
+        )
         return SUPPORT_WAITING_MESSAGE
 
     user = update.effective_user
 
-    # ✅ IMPORTANT: clear the flag immediately after we accept the message
-    # so fallback/greetings can NEVER hijack after this point.
+    # ✅ Mark this update as handled by support
+    # This prevents fallback from replying after conversation ends
+    context.user_data["_handled_by_support"] = True
+
+    # ✅ Turn off support mode BEFORE ending conversation
     _support_off(context)
 
     # ✅ Save to DB
@@ -128,9 +136,14 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
                 },
             )
             await session.commit()
+
     except Exception:
-        # If DB fails, put them back into support mode so they can retry
+        # If DB fails, restore support mode so user can retry
         _support_on(context)
+
+        # Remove handled flag so fallback can work again
+        context.user_data.pop("_handled_by_support", None)
+
         await update.message.reply_text(
             "❌ Sorry—support could not receive your message right now.\n"
             "Please try again in a minute, or send /cancel."
@@ -165,7 +178,6 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
     )
 
     return ConversationHandler.END
-
 
 # ----------------------------------------
 # Support Cancel
