@@ -244,29 +244,49 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_data = context.user_data or {}
 
-    # ✅ 1) NEVER interrupt USER support flow
+    # -----------------------------------------------------------
+    # 0️⃣ VERY IMPORTANT:
+    # If this message was already handled by support,
+    # exit immediately and auto-clear the flag.
+    # -----------------------------------------------------------
+    if user_data.pop("_handled_by_support", False):
+        return
+
+    # -----------------------------------------------------------
+    # 1️⃣ NEVER interrupt active support flow
+    # -----------------------------------------------------------
     if user_data.get("in_support_flow"):
         return
 
-    # ✅ 2) NEVER interrupt ADMIN support reply flow
-    # (admin typing a reply should not trigger fallback)
+    # -----------------------------------------------------------
+    # 2️⃣ NEVER interrupt admin reply flow
+    # -----------------------------------------------------------
     if user_data.get("awaiting_support_reply"):
         return
 
-    # ✅ 3) NEVER interrupt airtime claim flow (or any other "awaiting input" flow)
+    # -----------------------------------------------------------
+    # 3️⃣ NEVER interrupt airtime phone entry flow
+    # -----------------------------------------------------------
     if user_data.get("awaiting_airtime_phone"):
         return
 
-    # ✅ 4) Ignore empty/non-text updates
-    text_msg = ""
-    if update.message and update.message.text:
-        text_msg = update.message.text.strip()
-
-    # ✅ 5) Ignore numeric-only messages (your old behavior)
-    # (Also ignore +234 type phone inputs)
-    if text_msg and __import__("re").fullmatch(r"^[0-9+ ]+$", text_msg):
+    # -----------------------------------------------------------
+    # 4️⃣ Ignore non-text updates completely
+    # -----------------------------------------------------------
+    if not update.message or not update.message.text:
         return
 
+    text_msg = update.message.text.strip()
+
+    # -----------------------------------------------------------
+    # 5️⃣ Ignore numeric-only messages (phone numbers, etc.)
+    # -----------------------------------------------------------
+    if __import__("re").fullmatch(r"^[0-9+ ]+$", text_msg):
+        return
+
+    # -----------------------------------------------------------
+    # 6️⃣ Send fallback response
+    # -----------------------------------------------------------
     safe_text = md_escape(
         "🤔 Sorry, I didn’t understand that.\n\n"
         "Use /start or tap a menu button ↓"
@@ -283,35 +303,12 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("📩 Contact Support / Admin", callback_data="support:start")],
     ])
 
-    # ✅ Reply safely based on update type
-    if update.message:
-        await update.message.reply_text(
-            safe_text,
-            reply_markup=keyboard,
-            parse_mode="MarkdownV2",
-        )
-        return
-
-    if update.callback_query:
-        try:
-            await update.callback_query.answer()
-        except Exception:
-            pass
-
-        try:
-            await update.callback_query.edit_message_text(
-                safe_text,
-                reply_markup=keyboard,
-                parse_mode="MarkdownV2",
-            )
-        except Exception:
-            await update.callback_query.message.reply_text(
-                safe_text,
-                reply_markup=keyboard,
-                parse_mode="MarkdownV2",
-            )
-        return    
-
+    await update.message.reply_text(
+        safe_text,
+        reply_markup=keyboard,
+        parse_mode="MarkdownV2",
+    )
+    
 # ===============================================================
 # Register Handlers
 # ===============================================================
