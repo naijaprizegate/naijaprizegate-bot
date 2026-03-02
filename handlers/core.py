@@ -361,9 +361,11 @@ def register_handlers(application):
         # mark that greeting handled this message
         user_data["_just_started"] = True
             
-        # Otherwise behave like /start
-        return await start(update, context)
+        # Run /start
+        await start(update, context)
 
+        # ⬅ important: stop propagation so fallback does NOT fire
+        return True
 
     application.add_handler(
         MessageHandler(
@@ -371,6 +373,7 @@ def register_handlers(application):
             & ~filters.COMMAND
             & ~filters.ChatType.CHANNEL,
             greetings_router,
+            block=True,  # ✅ BLOCK lower handlers (like fallback)
         ),
         group=10,  # ensure it runs after conversations
     )
