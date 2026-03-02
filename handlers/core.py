@@ -334,48 +334,31 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(faq_handler, pattern=r"^faq$"))
 
     # ---------------------------------------------------
-    # Friendly greetings → start (non-command only)
+    # Friendly greetings → start (STRICT MATCH)
     # ---------------------------------------------------
-    greetings = filters.Regex(re.compile(
-        r"^(hi|hello|hey|howdy|sup|good\s?(morning|afternoon|evening))",
+    greetings_pattern = re.compile(
+        r"^(hi|hello|hey|howdy|sup|good\s?(morning|afternoon|evening))$",
         re.IGNORECASE
-    ))
+    )
 
-    # ✅ IMPORTANT: use greetings_router, not start directly
+    greetings_filter = filters.Regex(greetings_pattern)
+
     async def greetings_router(update: Update, context: ContextTypes.DEFAULT_TYPE):
         user_data = context.user_data or {}
 
-        # ---------------------------------------------------
-        # 🚫 NEVER greet during active support flow
-        # ---------------------------------------------------
+        # Never interrupt support flow
         if user_data.get("in_support_flow"):
             return
 
-        # ---------------------------------------------------
-        # 🚫 NEVER greet if support just handled this message
-        # (prevents "Hello I need help" from triggering start)
-        # ---------------------------------------------------
-        if user_data.get("_handled_by_support"):
-            return
-        
-        # mark that greeting handled this message
-        user_data["_just_started"] = True
-            
-        # Run /start
         await start(update, context)
-
-        # ⬅ important: stop propagation so fallback does NOT fire
-        return True
 
     application.add_handler(
         MessageHandler(
-            greetings
-            & ~filters.COMMAND
-            & ~filters.ChatType.CHANNEL,
+            greetings_filter & ~filters.COMMAND & ~filters.ChatType.CHANNEL,
             greetings_router,
-            block=True,  # ✅ BLOCK lower handlers (like fallback)
+            block=True,
         ),
-        group=10,  # ensure it runs after conversations
+        group=1,
     )
 
     # ---------------------------------------------------
@@ -385,13 +368,16 @@ def register_handlers(application):
     register_leaderboard_handlers(application)
 
     # ---------------------------------------------------
-    # Fallback (ABSOLUTELY LAST)
+    # Fallback (EXCLUDE greetings)
     # ---------------------------------------------------
     application.add_handler(
         MessageHandler(
-            filters.TEXT & ~filters.COMMAND & ~filters.Regex(r"^[0-9+ ]+$"),
+            filters.TEXT
+            & ~filters.COMMAND
+            & ~greetings_filter
+            & ~filters.Regex(r"^[0-9+ ]+$"),
             fallback,
             block=True,
         ),
-        group=99,
+        group=100,
     )
