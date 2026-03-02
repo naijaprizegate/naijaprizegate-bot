@@ -179,38 +179,45 @@ async def root():
 # -------------------------------------------------
 @app.on_event("startup")
 async def on_startup():
-    global application, BOT_READY   # ✅ MUST be first line
+    global application, BOT_READY  # MUST be first line
 
-    BOT_READY = False               # safe default while starting
+    BOT_READY = False  # Safe default while starting
 
     try:
         logger.info("🚀 Starting up NaijaPrizeGate...")
 
-        # Ensure GameState & GlobalCounter rows exist
+        # -------------------------------------------------
+        # Ensure required DB rows exist
+        # -------------------------------------------------
         await init_game_state()
         await ensure_game_state_exists()
 
-        # Telegram Bot Application
+        # -------------------------------------------------
+        # Build Telegram Application
+        # -------------------------------------------------
         application = Application.builder().token(BOT_TOKEN).build()
 
-        USER_GROUP = 0
-
-	    # Support Conversation Handler
+        # -------------------------------------------------
+        # Support Conversation (Highest priority)
+        # -------------------------------------------------
         application.add_handler(support_conv, group=-2)
-	
-	    # Register Handlers
-        core.register_handlers(application)
-        free.register_handlers(application)
-        payments.register_handlers(application)
-        admin.register_handlers(application)
-        playtrivia.register_handlers(application)
-	
-	    # Airtime Claim Handlers (Phone Entry)
+
+        # -------------------------------------------------
+        # Airtime Claim Conversation (Phone Entry)
+        # -------------------------------------------------
         airtime_conversation = ConversationHandler(
-            entry_points=[CallbackQueryHandler(handle_claim_airtime_button, pattern=r"^claim_airtime:")],
+            entry_points=[
+                CallbackQueryHandler(
+                    handle_claim_airtime_button,
+                    pattern=r"^claim_airtime:"
+                )
+            ],
             states={
                 AIRTIME_PHONE: [
-                    MessageHandler(filters.TEXT & ~filters.COMMAND, handle_airtime_claim_phone)
+                    MessageHandler(
+                        filters.TEXT & ~filters.COMMAND,
+                        handle_airtime_claim_phone
+                    )
                 ],
             },
             fallbacks=[],
@@ -219,47 +226,75 @@ async def on_startup():
             block=True,
         )
 
-	    # Highest Priority for Phone Conversation
         application.add_handler(airtime_conversation, group=-1)
         application.add_handler(
-            CallbackQueryHandler(handle_airtime_network_choice, pattern=r"^airtime_net:"),
+            CallbackQueryHandler(
+                handle_airtime_network_choice,
+                pattern=r"^airtime_net:"
+            ),
             group=-1
         )
 
-        # Initialize & start bot
+        # -------------------------------------------------
+        # Register All Other Handlers
+        # -------------------------------------------------
+        core.register_handlers(application)
+        free.register_handlers(application)
+        payments.register_handlers(application)
+        admin.register_handlers(application)
+        playtrivia.register_handlers(application)
+
+        # -------------------------------------------------
+        # Add Global Error Handler (before start)
+        # -------------------------------------------------
+        application.add_error_handler(tg_error_handler)
+
+        # -------------------------------------------------
+        # Initialize Application
+        # -------------------------------------------------
         await application.initialize()
 
-	    # Webhook Setup
-        BASE_URL = os.getenv("BASE_URL")  # e.g. https://naijaprizegate-bot.fly.dev
+        # -------------------------------------------------
+        # Webhook Setup
+        # -------------------------------------------------
+        BASE_URL = os.getenv("BASE_URL")
         if not BASE_URL:
             raise ValueError("BASE_URL is not set")
 
         webhook_url = f"{BASE_URL}/telegram/webhook/{WEBHOOK_SECRET}"
+
         await application.bot.set_webhook(webhook_url)
-        logger.info(f"Webhook set to {webhook_url} ✅")
+        logger.info(f"✅ Webhook set to {webhook_url}")
 
+        # -------------------------------------------------
+        # Start Application
+        # -------------------------------------------------
         await application.start()
-        logger.info("Telegram bot via Webhook is LIVE 🚀")
+        logger.info("🚀 Telegram bot via Webhook is LIVE")
 
-	    # Mark ready only AFTER initialize + start succeed
-        BOT_READY = True   # ✅ safe now
+        # -------------------------------------------------
+        # Mark bot ready ONLY after successful start
+        # -------------------------------------------------
+        BOT_READY = True
         logger.info("✅ BOT_READY=True (safe to process updates)")
 
-	    # Start background tasks
+        # -------------------------------------------------
+        # Start Background Tasks
+        # -------------------------------------------------
         await start_background_tasks()
-        logger.info("✅ Background tasks started.")
-
-	    # Add error handler
-        application.add_error_handler(tg_error_handler)
+        logger.info("✅ Background tasks started")
 
     except Exception:
         BOT_READY = False
+
         clean_trace = re.sub(
             r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b",
             "[SECRET]",
             traceback.format_exc()
         )
-        logger.error(f"Unhandled exception during startup:\n{clean_trace}")
+
+        logger.error(f"❌ Unhandled exception during startup:\n{clean_trace}")
+
 
 # -------------------------------------------------
 # Shutdown event
@@ -808,4 +843,3 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
-
