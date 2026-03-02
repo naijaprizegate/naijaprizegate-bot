@@ -196,7 +196,7 @@ async def on_startup():
         USER_GROUP = 0
 
 	    # Support Conversation Handler
-        application.add_handler(support_conv, group=-2)
+        application.add_handler(support_conv, group=-2, block=True)
 	
 	    # Register Handlers
         core.register_handlers(application)
