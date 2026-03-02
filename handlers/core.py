@@ -351,7 +351,8 @@ def register_handlers(application):
         MessageHandler(
             greetings & ~filters.COMMAND,
             greetings_router,
-        )
+        ),
+        group=10,   # move it AFTER conversation groups
     )
 
     # ---------------------------------------------------
