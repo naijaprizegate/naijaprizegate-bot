@@ -187,7 +187,6 @@ async def support_cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.effective_message.reply_text("✅ Cancelled. Send /start to return to menu.")
     return ConversationHandler.END
 
-
 # ✅ Real ConversationHandler
 support_conv = ConversationHandler(
     entry_points=[
@@ -197,7 +196,11 @@ support_conv = ConversationHandler(
         MessageHandler(filters.Regex(r"^📩 Contact Support / Admin$"), support_start),
 
         # InlineKeyboard callback button
-        CallbackQueryHandler(support_start_from_callback, pattern=r"^support:start$"),
+        CallbackQueryHandler(
+            support_start_from_callback,
+            pattern=r"^support:start$",
+            block=True,
+        ),
     ],
     states={
         SUPPORT_WAITING_MESSAGE: [
@@ -214,3 +217,4 @@ support_conv = ConversationHandler(
     per_user=True,
     block=True,
 )
+
