@@ -177,7 +177,8 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
         "Send /start to return to menu."
     )
 
-    return ConversationHandler.END
+    # Stay inside conversation but idle
+    return SUPPORT_WAITING_MESSAGE
 
 
 # ==============================================================
