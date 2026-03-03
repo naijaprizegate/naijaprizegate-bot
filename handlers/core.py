@@ -346,7 +346,6 @@ def register_handlers(application):
         MessageHandler(
             filters.TEXT
             & ~filters.COMMAND
-            & ~greetings_filter
             & ~filters.Regex(r"^[0-9+ ]+$"),
             fallback,
             block=True,
