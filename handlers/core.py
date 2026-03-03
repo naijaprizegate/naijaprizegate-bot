@@ -127,7 +127,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "🎁 You could become a proud owner of\n"
         "*AirPods*, *Bluetooth Speakers* and *Smart Phones*\n\n"
         "✨ It’s all about *knowledge and performance* — not luck 🔥\n\n"
-        "🔒 100% Free to start\n"
         "📊 Rewards are based on leaderboard ranking\n"
         "📘 Tap *Terms & Fair Play* below for policy & transparency\n\n"
         "📜 By using NaijaPrizeGate, you agree to our Terms & Conditions and Fair Play Rules\n\n"
@@ -292,8 +291,9 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # 6️⃣ Send fallback response
     # -----------------------------------------------------------
     safe_text = md_escape(
-        "🤔 Sorry, I didn’t understand that.\n\n"
-        "Use /start or tap a menu button ↓"
+        "🤔 I didn’t understand that.\n\n"
+        "Use /start to open the main menu.\n"
+        "or tap a menu button ↓"
     )
 
     keyboard = InlineKeyboardMarkup([
@@ -332,34 +332,6 @@ def register_handlers(application):
     # ---------------------------------------------------
     application.add_handler(CallbackQueryHandler(terms_handler, pattern=r"^terms$"))
     application.add_handler(CallbackQueryHandler(faq_handler, pattern=r"^faq$"))
-
-    # ---------------------------------------------------
-    # Friendly greetings → start (STRICT MATCH)
-    # ---------------------------------------------------
-    greetings_pattern = re.compile(
-        r"^(hi|hello|hey|howdy|sup|good\s?(morning|afternoon|evening))$",
-        re.IGNORECASE
-    )
-
-    greetings_filter = filters.Regex(greetings_pattern)
-
-    async def greetings_router(update: Update, context: ContextTypes.DEFAULT_TYPE):
-        user_data = context.user_data or {}
-
-        # Never interrupt support flow
-        if user_data.get("in_support_flow"):
-            return
-
-        await start(update, context)
-
-    application.add_handler(
-        MessageHandler(
-            greetings_filter & ~filters.COMMAND & ~filters.ChatType.CHANNEL,
-            greetings_router,
-            block=True,
-        ),
-        group=1,
-    )
 
     # ---------------------------------------------------
     # Leaderboard
