@@ -234,62 +234,23 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "_Questions = Chances to earn more reward points_ 🎯"
         )
 
-    await update.message.reply_text(md_escape(text), parse_mode="MarkdownV2")
+    await update.message.reply_text(text, parse_mode="MarkdownV2")
 
 
 # ===============================================================
 # Fallback (ABSOLUTELY LAST)
 # ===============================================================
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user_data = context.user_data or {}
 
-    # If greeting just handled this message, ignore and auto-clear
-    if user_data.pop("_just_started", False):
-        return
-    
-    # -----------------------------------------------------------
-    # 0️⃣ VERY IMPORTANT:
-    # If this message was already handled by support,
-    # exit immediately and auto-clear the flag.
-    # -----------------------------------------------------------
-    if user_data.pop("_handled_by_support", False):
-        return
-
-    # -----------------------------------------------------------
-    # 1️⃣ NEVER interrupt active support flow
-    # -----------------------------------------------------------
-    if user_data.get("in_support_flow"):
-        return
-
-    # -----------------------------------------------------------
-    # 2️⃣ NEVER interrupt admin reply flow
-    # -----------------------------------------------------------
-    if user_data.get("awaiting_support_reply"):
-        return
-
-    # -----------------------------------------------------------
-    # 3️⃣ NEVER interrupt airtime phone entry flow
-    # -----------------------------------------------------------
-    if user_data.get("awaiting_airtime_phone"):
-        return
-
-    # -----------------------------------------------------------
-    # 4️⃣ Ignore non-text updates completely
-    # -----------------------------------------------------------
     if not update.message or not update.message.text:
         return
 
     text_msg = update.message.text.strip()
 
-    # -----------------------------------------------------------
-    # 5️⃣ Ignore numeric-only messages (phone numbers, etc.)
-    # -----------------------------------------------------------
-    if __import__("re").fullmatch(r"^[0-9+ ]+$", text_msg):
+    # Ignore numeric-only messages (phone numbers etc.)
+    if re.fullmatch(r"^[0-9+ ]+$", text_msg):
         return
 
-    # -----------------------------------------------------------
-    # 6️⃣ Send fallback response
-    # -----------------------------------------------------------
     safe_text = md_escape(
         "🤔 I didn’t understand that.\n\n"
         "Use /start to open the main menu.\n"
