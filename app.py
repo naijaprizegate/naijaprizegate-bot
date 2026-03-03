@@ -200,7 +200,7 @@ async def on_startup():
         # -------------------------------------------------
         # Support Conversation (Highest priority)
         # -------------------------------------------------
-        application.add_handler(support_conv, group=-2)
+        application.add_handler(support_conv, group=-10)
 
         # -------------------------------------------------
         # Airtime Claim Conversation (Phone Entry)
