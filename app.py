@@ -251,7 +251,7 @@ async def on_startup():
         # Initialize Application
         # -------------------------------------------------
         await application.initialize()
-        await application.post_init()   # <-- IMPORTANT ADDITION
+        await application.start()
 
         # -------------------------------------------------
         # Webhook Setup
