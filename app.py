@@ -179,9 +179,9 @@ async def root():
 # -------------------------------------------------
 @app.on_event("startup")
 async def on_startup():
-    global application, BOT_READY  # MUST be first line
+    global application, BOT_READY
 
-    BOT_READY = False  # Safe default while starting
+    BOT_READY = False
 
     try:
         logger.info("🚀 Starting up NaijaPrizeGate...")
@@ -198,13 +198,10 @@ async def on_startup():
         application = Application.builder().token(BOT_TOKEN).build()
 
         # -------------------------------------------------
-        # Support Conversation (Highest priority)
+        # High Priority Conversations FIRST
         # -------------------------------------------------
         application.add_handler(support_conv, group=-10)
 
-        # -------------------------------------------------
-        # Airtime Claim Conversation (Phone Entry)
-        # -------------------------------------------------
         airtime_conversation = ConversationHandler(
             entry_points=[
                 CallbackQueryHandler(
@@ -226,17 +223,18 @@ async def on_startup():
             block=True,
         )
 
-        application.add_handler(airtime_conversation, group=-1)
+        application.add_handler(airtime_conversation, group=-5)
+
         application.add_handler(
             CallbackQueryHandler(
                 handle_airtime_network_choice,
                 pattern=r"^airtime_net:"
             ),
-            group=-1
+            group=-4
         )
 
         # -------------------------------------------------
-        # Register All Other Handlers
+        # Register All Other Handlers (Normal Priority)
         # -------------------------------------------------
         core.register_handlers(application)
         free.register_handlers(application)
@@ -245,7 +243,7 @@ async def on_startup():
         playtrivia.register_handlers(application)
 
         # -------------------------------------------------
-        # Add Global Error Handler (before start)
+        # Global Error Handler
         # -------------------------------------------------
         application.add_error_handler(tg_error_handler)
 
@@ -253,6 +251,7 @@ async def on_startup():
         # Initialize Application
         # -------------------------------------------------
         await application.initialize()
+        await application.post_init()   # <-- IMPORTANT ADDITION
 
         # -------------------------------------------------
         # Webhook Setup
@@ -272,14 +271,11 @@ async def on_startup():
         await application.start()
         logger.info("🚀 Telegram bot via Webhook is LIVE")
 
-        # -------------------------------------------------
-        # Mark bot ready ONLY after successful start
-        # -------------------------------------------------
         BOT_READY = True
         logger.info("✅ BOT_READY=True (safe to process updates)")
 
         # -------------------------------------------------
-        # Start Background Tasks
+        # Background Tasks
         # -------------------------------------------------
         await start_background_tasks()
         logger.info("✅ Background tasks started")
@@ -843,3 +839,4 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
+
