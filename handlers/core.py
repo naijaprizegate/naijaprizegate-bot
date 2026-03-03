@@ -340,12 +340,6 @@ def register_handlers(application):
     register_leaderboard_handlers(application)
 
     # ---------------------------------------------------
-    # Support Conversation
-    # ---------------------------------------------------
-    from handlers.support import support_conv
-    application.add_handler(support_conv)
-
-    # ---------------------------------------------------
     # Fallback (EXCLUDE greetings)
     # ---------------------------------------------------
     application.add_handler(
