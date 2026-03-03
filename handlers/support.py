@@ -212,7 +212,7 @@ support_conv = ConversationHandler(
         CommandHandler("start", support_cancel),  # ⭐ makes /start cleanly exit support mode
     ],
     allow_reentry=True,
-    per_message=False,
+    per_message=True,
     per_chat=True,
     per_user=True,
     block=True,
