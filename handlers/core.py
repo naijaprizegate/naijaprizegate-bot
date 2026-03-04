@@ -338,7 +338,6 @@ def register_handlers(application):
             & ~filters.Regex(r"^[0-9+ ]+$")
             & ~filters.UpdateType.EDITED_MESSAGE,
             fallback,
-            block=False,
         ),
-        group=100,
+        group=20,
     )
