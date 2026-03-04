@@ -242,6 +242,10 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ===============================================================
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
+    # 🔒 Do not run fallback if user is currently inside a conversation
+    if context.user_data.get("_in_conversation"):
+        return
+
     if not update.message or not update.message.text:
         return
 
