@@ -47,6 +47,9 @@ ADMIN_IDS = _get_admin_ids()
 # ==============================================================
 
 async def support_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    # 🔒 Mark user as inside a conversation
+    context.user_data["_in_conversation"] = True
+
     await update.effective_message.reply_text(
         "📩 <b>Contact Support</b>\n\n"
         "✍️ Type your message and send it.\n\n"
@@ -55,7 +58,6 @@ async def support_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
     return SUPPORT_WAITING_MESSAGE
-
 
 # ==============================================================
 # ENTRY: Inline button callback
@@ -162,8 +164,10 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
         "Send /start to return to menu."
     )
 
-    return ConversationHandler.END
+    # Mark user as OUTSIDE conversation
+    context.user_data["_in_conversation"] = False
 
+    return ConversationHandler.END
 
 # ==============================================================
 # CANCEL
