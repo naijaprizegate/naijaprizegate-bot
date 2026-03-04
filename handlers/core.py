@@ -242,19 +242,43 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ===============================================================
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
-    # 🔒 Do not run fallback if user is currently inside a conversation
+    # ----------------------------------------------------------
+    # 1️⃣ Ignore if user is inside a conversation
+    # ----------------------------------------------------------
     if context.user_data.get("_in_conversation"):
         return
 
+    # ----------------------------------------------------------
+    # 2️⃣ Ignore non-text messages
+    # ----------------------------------------------------------
     if not update.message or not update.message.text:
         return
 
     text_msg = update.message.text.strip()
 
-    # Ignore numeric-only messages (phone numbers etc.)
+    # ----------------------------------------------------------
+    # 3️⃣ Ignore commands (like /start, /cancel etc.)
+    # ----------------------------------------------------------
+    if text_msg.startswith("/"):
+        return
+
+    # ----------------------------------------------------------
+    # 4️⃣ Ignore numeric-only messages (phone numbers etc.)
+    # ----------------------------------------------------------
     if re.fullmatch(r"^[0-9+ ]+$", text_msg):
         return
 
+    # ----------------------------------------------------------
+    # 5️⃣ Extra safety:
+    # If this update was part of a ConversationHandler state,
+    # do NOT trigger fallback.
+    # ----------------------------------------------------------
+    if context.user_data.get("_conversation_active"):
+        return
+
+    # ----------------------------------------------------------
+    # 6️⃣ Build message
+    # ----------------------------------------------------------
     safe_text = md_escape(
         "🤔 I didn’t understand that.\n\n"
         "Use /start to open the main menu.\n"
@@ -277,7 +301,7 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=keyboard,
         parse_mode="MarkdownV2",
     )
-
+    
 # ===============================================================
 # Register Handlers
 # ===============================================================
