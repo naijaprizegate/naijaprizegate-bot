@@ -319,8 +319,3 @@ def register_handlers(application):
         ),
         group=100,
     )
-            fallback,
-            block=True,
-        ),
-        group=100,
-    )
