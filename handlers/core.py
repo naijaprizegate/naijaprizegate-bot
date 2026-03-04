@@ -307,7 +307,18 @@ def register_handlers(application):
         MessageHandler(
             filters.TEXT
             & ~filters.COMMAND
-            & ~filters.Regex(r"^[0-9+ ]+$"),
+            & ~filters.Regex(r"^[0-9+ ]+$")
+            application.add_handler(
+        MessageHandler(
+            filters.TEXT
+            & ~filters.COMMAND
+            & ~filters.Regex(r"^[0-9+ ]+$")
+            & ~filters.UpdateType.EDITED_MESSAGE,
+            fallback,
+            block=False,
+        ),
+        group=100,
+    )
             fallback,
             block=True,
         ),
