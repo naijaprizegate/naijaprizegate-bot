@@ -200,7 +200,7 @@ async def on_startup():
         # -------------------------------------------------
         # High Priority Conversations FIRST
         # -------------------------------------------------
-        application.add_handler(support_conv, group=-10, block=True)
+        application.add_handler(support_conv, group=-10)
 
         airtime_conversation = ConversationHandler(
             entry_points=[
