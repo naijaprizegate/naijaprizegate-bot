@@ -50,13 +50,25 @@ async def support_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # 🔒 Mark user as inside a conversation
     context.user_data["_in_conversation"] = True
 
-    await update.effective_message.reply_text(
+    message_text = (
         "📩 <b>Contact Support</b>\n\n"
         "✍️ Type your message and send it.\n\n"
-        "To cancel, send /cancel.",
-        parse_mode="HTML",
+        "To stop, send /cancel."
     )
 
+    if update.callback_query:
+        await update.callback_query.answer()
+        await update.callback_query.message.reply_text(
+            message_text,
+            parse_mode="HTML",
+        )
+    elif update.message:
+        await update.message.reply_text(
+            message_text,
+            parse_mode="HTML",
+        )
+
+    # ✅ ALWAYS return state
     return SUPPORT_WAITING_MESSAGE
 
 # ==============================================================
