@@ -290,33 +290,6 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         return
 
-    # ----------------------------------------------------------
-    # 6️⃣ If no intent matched → show main menu
-    # ----------------------------------------------------------
-    safe_text = md_escape(
-        "🤔 I didn’t understand that.\n\n"
-        "Use /start to open the main menu\n"
-        "or tap a menu button below."
-    )
-
-    keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
-        [InlineKeyboardButton("💳 Get More Trivia Attempts", callback_data="buy")],
-        [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
-        [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
-        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
-        [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],
-        [InlineKeyboardButton("❓ FAQs", callback_data="faq")],
-        [InlineKeyboardButton("📩 Contact Support / Admin", callback_data="support:start")],
-    ])
-
-    await update.message.reply_text(
-        safe_text,
-        reply_markup=keyboard,
-        parse_mode="MarkdownV2",
-    )
-
-
 # ===============================================================
 # Intent Detector
 # ===============================================================
