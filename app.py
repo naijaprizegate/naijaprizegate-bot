@@ -57,6 +57,7 @@ from telegram import Update, Bot, InlineKeyboardButton, InlineKeyboardMarkup
 from datetime import datetime, timezone
 from telegram.ext import (
     Application,
+    CommandHandler,
     CallbackQueryHandler,
     MessageHandler,
     ConversationHandler,
