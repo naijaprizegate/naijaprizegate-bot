@@ -220,6 +220,10 @@ async def admin_support_inbox(session, page: int = 1, page_size: int = SUPPORT_P
 
 # ----------------------------------------------------
 # Admin Support Inbox Page (UI) — pagination + actions
+# Works for BOTH:
+#   1) Callback queries (button clicks)
+#   2) Normal messages (after admin sends reply)
+#
 # Callback data formats used here:
 #   si:<page>                -> inbox page nav (Prev/Refresh/Next)
 #   sr:<ticketid>:<page>     -> reply entry (handled elsewhere)
@@ -228,62 +232,74 @@ async def admin_support_inbox(session, page: int = 1, page_size: int = SUPPORT_P
 #   am:main                  -> back (handled elsewhere)
 # ----------------------------------------------------
 async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
     query = update.callback_query
+    message_mode = False
+
+    # ------------------------------------------------
+    # Detect if called from callback OR message
+    # ------------------------------------------------
     if not query:
-        return  # safety (shouldn't happen for CallbackQueryHandler)
+        message_mode = True
 
-    # 🔐 Restrict admin access (answer only once)
-    if not is_admin(query.from_user.id):
-        return await query.answer("⛔ Unauthorized.", show_alert=True)
-
-    # ✅ Determine page reliably:
-    # - If called from callback: parse from query.data "si:<page>"
-    # - If called from /admin command or other entry point: allow context.user_data fallback
-    page = 1
-    data = (query.data or "").strip()
-
-    # Parse si:<page>
-    m = re.match(r"^si:(\d+)$", data)
-    if m:
-        page = int(m.group(1))
+        user = update.effective_user
+        if not user or not is_admin(user.id):
+            return
     else:
-        # Optional fallback: if you stored last page elsewhere
+        if not is_admin(query.from_user.id):
+            return await query.answer("⛔ Unauthorized.", show_alert=True)
+
+    # ------------------------------------------------
+    # Determine page
+    # ------------------------------------------------
+    page = 1
+
+    if query:
+        data = (query.data or "").strip()
+
+        m = re.match(r"^si:(\d+)$", data)
+        if m:
+            page = int(m.group(1))
+        else:
+            page = int(context.user_data.get("support_inbox_page", 1))
+
+        # Stop Telegram "loading..."
+        await query.answer()
+
+    else:
         page = int(context.user_data.get("support_inbox_page", 1))
 
     page = max(page, 1)
     context.user_data["support_inbox_page"] = page
 
-    # Answer callback quickly (prevents "loading..." feeling)
-    await query.answer()
-
-    # --------------------
-    # Fetch data
-    # --------------------
+    # ------------------------------------------------
+    # Fetch tickets
+    # ------------------------------------------------
     async with AsyncSessionLocal() as session:
         total_pending, rows = await admin_support_inbox(session, page=page)
 
     total_pages = max((total_pending + SUPPORT_PAGE_SIZE - 1) // SUPPORT_PAGE_SIZE, 1)
+
     if page > total_pages:
         page = total_pages
         context.user_data["support_inbox_page"] = page
 
-    # --------------------
-    # Build text (HTML)
-    # --------------------
+    # ------------------------------------------------
+    # Build message text
+    # ------------------------------------------------
     text_lines = [
         "📬 <b>Support Inbox</b> (Pending)",
         f"Page <b>{page}</b> / <b>{total_pages}</b>  |  Pending: <b>{total_pending}</b>\n",
     ]
 
-    # --------------------
-    # Build keyboard
-    # --------------------
     buttons: list[list[InlineKeyboardButton]] = []
 
     if not rows:
         text_lines.append("✅ No pending support messages.")
+
     else:
         for (tid, tg_id, first_name, username, message, created_at) in rows:
+
             msg = message or ""
             short = (msg[:140] + "…") if len(msg) > 140 else msg
 
@@ -299,37 +315,53 @@ async def admin_support_inbox_page(update: Update, context: ContextTypes.DEFAULT
                 f"—"
             )
 
-            # ✅ Make callback_data SHORT (<=64 bytes)
-            # - Strip dashes from UUID to reduce length (36 -> 32)
+            # shorten UUID for callback_data safety
             tid_str = str(tid).replace("-", "")
 
-            # sr = support reply, sa = support action, c = close, s = spam
             buttons.append([
                 InlineKeyboardButton("✉️ Reply", callback_data=f"sr:{tid_str}:{page}"),
                 InlineKeyboardButton("✅ Close", callback_data=f"sa:c:{tid_str}:{page}"),
                 InlineKeyboardButton("🚫 Spam", callback_data=f"sa:s:{tid_str}:{page}"),
             ])
 
-    # Pagination row
+    # ------------------------------------------------
+    # Pagination buttons
+    # ------------------------------------------------
     nav_row: list[InlineKeyboardButton] = []
+
     if page > 1:
         nav_row.append(InlineKeyboardButton("⬅️ Prev", callback_data=f"si:{page-1}"))
+
     nav_row.append(InlineKeyboardButton("🔁 Refresh", callback_data=f"si:{page}"))
+
     if page < total_pages:
         nav_row.append(InlineKeyboardButton("Next ➡️", callback_data=f"si:{page+1}"))
+
     buttons.append(nav_row)
 
     # Footer
     buttons.append([InlineKeyboardButton("⬅️ Back", callback_data="am:main")])
 
-    # Render
-    return await safe_edit(
-        query,
-        "\n".join(text_lines),
-        parse_mode="HTML",
-        reply_markup=InlineKeyboardMarkup(buttons),
-    )
+    text = "\n".join(text_lines)
 
+    # ------------------------------------------------
+    # Render message
+    # ------------------------------------------------
+    if query:
+        return await safe_edit(
+            query,
+            text,
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup(buttons),
+        )
+
+    else:
+        return await update.message.reply_text(
+            text,
+            parse_mode="HTML",
+            reply_markup=InlineKeyboardMarkup(buttons),
+        )
+    
 # ----------------------------------------------------
 # Admin Main Menu (Back button from support inbox)
 # ----------------------------------------------------
