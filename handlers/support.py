@@ -52,7 +52,7 @@ async def support_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["_in_conversation"] = True
 
     text_msg = (
-        "📩 <b>Contact Support</b>\n\n"
+        "📩 <b>Contact Report Desk</b>\n\n"
         "✍️ Type your message and send it.\n\n"
         "Send /cancel to stop."
     )
@@ -85,14 +85,14 @@ async def support_start_from_callback(update: Update, context: ContextTypes.DEFA
 
     try:
         await query.edit_message_text(
-            "📩 <b>Contact Support</b>\n\n"
+            "📩 <b>Contact Report Desk</b>\n\n"
             "✍️ Type your message and send it.\n\n"
             "Send /cancel to stop.",
             parse_mode="HTML",
         )
     except Exception:
         await query.message.reply_text(
-            "📩 <b>Contact Support</b>\n\n"
+            "📩 <b>Contact Report Desk</b>\n\n"
             "✍️ Type your message and send it.\n\n"
             "Send /cancel to stop.",
             parse_mode="HTML",
