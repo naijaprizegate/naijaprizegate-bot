@@ -139,45 +139,66 @@ async def safe_edit(query, text: str, reply_markup=None, parse_mode="HTML", **kw
 # Command: /admin (Main Panel)
 # ----------------------------
 async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if update.effective_user.id != ADMIN_USER_ID:
-        return await update.message.reply_text("❌ Access denied.", parse_mode="HTML")
 
+    user = update.effective_user
+    query = update.callback_query
+
+    # -------------------------------------------------
+    # Security Check
+    # -------------------------------------------------
+    if not user or user.id != ADMIN_USER_ID:
+
+        if query:
+            await query.answer("❌ Access denied.", show_alert=True)
+        elif update.message:
+            await update.message.reply_text(
+                "❌ Access denied.",
+                parse_mode="HTML"
+            )
+
+        return
+
+    # -------------------------------------------------
+    # Admin Menu Keyboard
+    # -------------------------------------------------
     keyboard = InlineKeyboardMarkup(
         [
             [
                 InlineKeyboardButton(
-                    "📂 Pending Proofs", callback_data="admin_menu:pending_proofs"
+                    "📂 Pending Proofs",
+                    callback_data="admin_menu:pending_proofs",
                 )
             ],
             [
                 InlineKeyboardButton(
-                    "📊 Stats", callback_data="admin_menu:stats"
+                    "📊 Stats",
+                    callback_data="admin_menu:stats",
                 )
             ],
             [
                 InlineKeyboardButton(
                     "📵 Failed Airtime Payouts",
-                    callback_data="admin_airtime_failed:1"
-                )
-            ],
-
-            [
-                InlineKeyboardButton(
-                    "👤 User Search", callback_data="admin_menu:user_search"
+                    callback_data="admin_airtime_failed:1",
                 )
             ],
             [
                 InlineKeyboardButton(
-                    "🏆 Winners", callback_data="admin_menu:winners"
+                    "👤 User Search",
+                    callback_data="admin_menu:user_search",
                 )
             ],
             [
                 InlineKeyboardButton(
-                    "📬 Support Inbox", callback_data="admin_menu:support_inbox"
+                    "🏆 Winners",
+                    callback_data="admin_menu:winners",
                 )
             ],
-
-            # Renamed label to avoid “Top-Tier Campaign Reward” / random connotation
+            [
+                InlineKeyboardButton(
+                    "📬 Support Inbox",
+                    callback_data="admin_menu:support_inbox",
+                )
+            ],
             [
                 InlineKeyboardButton(
                     "📈 Cycle Entries Overview",
@@ -186,13 +207,36 @@ async def admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
             ],
         ]
     )
-    await update.message.reply_text(
-        "⚙️ <b>Admin Panel</b>\nChoose an action:",
-        parse_mode="HTML",
-        reply_markup=keyboard,
-    )
 
+    text = "⚙️ <b>Admin Panel</b>\nChoose an action:"
 
+    # -------------------------------------------------
+    # Render Menu Safely
+    # -------------------------------------------------
+    if query:
+        await query.answer()
+
+        try:
+            await query.message.edit_text(
+                text,
+                parse_mode="HTML",
+                reply_markup=keyboard,
+            )
+        except Exception:
+            # Fallback if editing fails
+            await query.message.reply_text(
+                text,
+                parse_mode="HTML",
+                reply_markup=keyboard,
+            )
+
+    elif update.message:
+        await update.message.reply_text(
+            text,
+            parse_mode="HTML",
+            reply_markup=keyboard,
+        )
+        
 # ----------------------------------------------------
 # Admin Support Inbox (DB helper) — pagination + count
 # ----------------------------------------------------
@@ -2721,3 +2765,4 @@ def register_handlers(application):
         CallbackQueryHandler(show_failed_airtime, pattern=r"^admin_airtime_failed"),
         group=ADMIN_GROUP
     )
+
