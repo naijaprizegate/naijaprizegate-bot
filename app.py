@@ -75,7 +75,7 @@ from webhook import router as webhook_router
 from bot_instance import bot
 from services.airtime_service import handle_claim_airtime_button, handle_airtime_claim_phone, handle_airtime_network_choice
 from utils.conversation_states import AIRTIME_PHONE
-from handlers.support import support_conv
+from handlers.support import support_conv, admin_reply
 
 
 # ✅ Import Flutterwave-related functions/constants
@@ -202,6 +202,9 @@ async def on_startup():
         # -------------------------------------------------
         application.add_handler(support_conv, group=-10)
 
+        # ✅ Admin reply command
+        application.add_handler(CommandHandler("reply", admin_reply), group=-9)
+
         airtime_conversation = ConversationHandler(
             entry_points=[
                 CallbackQueryHandler(
@@ -251,7 +254,7 @@ async def on_startup():
         # Initialize Application
         # -------------------------------------------------
         await application.initialize()
-
+        
         # -------------------------------------------------
         # Webhook Setup
         # -------------------------------------------------
