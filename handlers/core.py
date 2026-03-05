@@ -238,7 +238,7 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # ===============================================================
-# Fallback (ABSOLUTELY LAST)
+# Smart Fallback (LAST handler)
 # ===============================================================
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
@@ -257,32 +257,46 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text_msg = update.message.text.strip()
 
     # ----------------------------------------------------------
-    # 3️⃣ Ignore commands (like /start, /cancel etc.)
+    # 3️⃣ Ignore commands (/start etc.)
     # ----------------------------------------------------------
     if text_msg.startswith("/"):
         return
 
     # ----------------------------------------------------------
-    # 4️⃣ Ignore numeric-only messages (phone numbers etc.)
+    # 4️⃣ Ignore numeric messages (phones etc.)
     # ----------------------------------------------------------
     if re.fullmatch(r"^[0-9+ ]+$", text_msg):
         return
 
     # ----------------------------------------------------------
-    # 5️⃣ Extra safety:
-    # If this update was part of a ConversationHandler state,
-    # do NOT trigger fallback.
+    # 5️⃣ Detect user intent
     # ----------------------------------------------------------
-    if context.user_data.get("_conversation_active"):
+    intent = detect_user_intent(text_msg)
+
+    if intent:
+
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("➡️ Continue", callback_data=intent)]
+        ])
+
+        await update.message.reply_text(
+            md_escape(
+                "🤖 I think I understand what you mean.\n\n"
+                "Tap below to continue."
+            ),
+            reply_markup=keyboard,
+            parse_mode="MarkdownV2",
+        )
+
         return
 
     # ----------------------------------------------------------
-    # 6️⃣ Build message
+    # 6️⃣ If no intent matched → show main menu
     # ----------------------------------------------------------
     safe_text = md_escape(
         "🤔 I didn’t understand that.\n\n"
-        "Use /start to open the main menu.\n"
-        "or tap a menu button ↓"
+        "Use /start to open the main menu\n"
+        "or tap a menu button below."
     )
 
     keyboard = InlineKeyboardMarkup([
@@ -301,7 +315,65 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=keyboard,
         parse_mode="MarkdownV2",
     )
-    
+
+
+# ===============================================================
+# Intent Detector
+# ===============================================================
+def detect_user_intent(text: str):
+
+    text = text.lower()
+
+    trivia_words = [
+        "play", "trivia", "question", "questions",
+        "quiz", "game", "answer", "challenge"
+    ]
+
+    payment_words = [
+        "buy", "pay", "payment", "purchase",
+        "card", "subscribe", "attempt", "attempts"
+    ]
+
+    support_words = [
+        "help", "support", "admin", "problem",
+        "issue", "complaint", "assist"
+    ]
+
+    faq_words = [
+        "faq", "rule", "rules", "terms",
+        "guide", "how", "instruction"
+    ]
+
+    leaderboard_words = [
+        "leaderboard", "rank", "ranking",
+        "score", "top", "winner"
+    ]
+
+    free_words = [
+        "free", "bonus", "earn", "reward"
+    ]
+
+    if any(word in text for word in trivia_words):
+        return "playtrivia"
+
+    if any(word in text for word in payment_words):
+        return "buy"
+
+    if any(word in text for word in support_words):
+        return "support:start"
+
+    if any(word in text for word in faq_words):
+        return "faq"
+
+    if any(word in text for word in leaderboard_words):
+        return "leaderboard:show"
+
+    if any(word in text for word in free_words):
+        return "free"
+
+    return None
+
+
 # ===============================================================
 # Register Handlers
 # ===============================================================
