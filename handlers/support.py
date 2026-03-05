@@ -120,7 +120,6 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
 
     user = update.effective_user
 
-
     # ==========================================================
     # Save to Database
     # ==========================================================
@@ -151,6 +150,7 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
             "Please try again shortly or send /cancel."
         )
 
+        # stay inside conversation
         return SUPPORT_WAITING_MESSAGE
 
 
@@ -194,12 +194,13 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
         "Send /start to return to menu."
     )
 
+    # ==========================================================
+    # Exit Conversation Properly
+    # ==========================================================
 
-    # end conversation
-    context.user_data["_in_conversation"] = False
+    context.user_data.pop("_in_conversation", None)
 
     return ConversationHandler.END
-
 
 # ==============================================================
 # ADMIN REPLY COMMAND
