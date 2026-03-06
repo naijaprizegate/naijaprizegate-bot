@@ -242,12 +242,22 @@ async def on_startup():
         # Register All Other Handlers (Normal Priority)
         # -------------------------------------------------
         core.register_handlers(application)
-        free.register_handlers(application)
-        payments.register_handlers(application)
-        admin.register_handlers(application)
+
+        # game / trivia system
         playtrivia.register_handlers(application)
+
+        # challenge system
         register_challenge_handlers(application)
 
+        # growth / engagement features
+        free.register_handlers(application)
+
+        # payments
+        payments.register_handlers(application)
+
+        # admin tools last
+        admin.register_handlers(application)
+        
         # -------------------------------------------------
         # Global Error Handler
         # -------------------------------------------------
