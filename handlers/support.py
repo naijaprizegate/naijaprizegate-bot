@@ -43,7 +43,7 @@ ADMIN_IDS = _get_admin_ids()
 
 
 # ==============================================================
-# ENTRY: Start Support
+# ENTRY: Start Support (Command / Button)
 # ==============================================================
 
 async def support_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -57,17 +57,15 @@ async def support_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "Send /cancel to stop."
     )
 
+    message_target = update.effective_message
+
     if update.callback_query:
         await update.callback_query.answer()
-        await update.callback_query.message.reply_text(
-            text_msg,
-            parse_mode="HTML",
-        )
-    else:
-        await update.message.reply_text(
-            text_msg,
-            parse_mode="HTML",
-        )
+
+    await message_target.reply_text(
+        text_msg,
+        parse_mode="HTML",
+    )
 
     return SUPPORT_WAITING_MESSAGE
 
@@ -83,18 +81,20 @@ async def support_start_from_callback(update: Update, context: ContextTypes.DEFA
 
     context.user_data["_in_conversation"] = True
 
+    text_msg = (
+        "📩 <b>Contact Report Desk</b>\n\n"
+        "✍️ Type your message and send it.\n\n"
+        "Send /cancel to stop."
+    )
+
     try:
         await query.edit_message_text(
-            "📩 <b>Contact Report Desk</b>\n\n"
-            "✍️ Type your message and send it.\n\n"
-            "Send /cancel to stop.",
+            text_msg,
             parse_mode="HTML",
         )
     except Exception:
         await query.message.reply_text(
-            "📩 <b>Contact Report Desk</b>\n\n"
-            "✍️ Type your message and send it.\n\n"
-            "Send /cancel to stop.",
+            text_msg,
             parse_mode="HTML",
         )
 
@@ -119,6 +119,7 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
         return SUPPORT_WAITING_MESSAGE
 
     user = update.effective_user
+
 
     # ==========================================================
     # Save to Database
@@ -150,7 +151,6 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
             "Please try again shortly or send /cancel."
         )
 
-        # stay inside conversation
         return SUPPORT_WAITING_MESSAGE
 
 
@@ -194,13 +194,12 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
         "Send /start to return to menu."
     )
 
-    # ==========================================================
-    # Exit Conversation Properly
-    # ==========================================================
 
+    # exit conversation
     context.user_data.pop("_in_conversation", None)
 
     return ConversationHandler.END
+
 
 # ==============================================================
 # ADMIN REPLY COMMAND
@@ -261,13 +260,17 @@ async def support_cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 support_conv = ConversationHandler(
     entry_points=[
 
+        # COMMANDS
         CommandHandler("support", support_start),
+        CommandHandler("contact", support_start),   # ✅ NEW COMMAND
 
+        # BUTTON TEXT
         MessageHandler(
             filters.Regex(r"^📩 Contact Support / Admin$"),
             support_start,
         ),
 
+        # INLINE BUTTON
         CallbackQueryHandler(
             support_start_from_callback,
             pattern=r"^support:start$",
