@@ -4,7 +4,7 @@
 
 import random
 from telegram import Update
-from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters
+from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters, CallbackQueryHandler
 from sqlalchemy import text
 
 from db import AsyncSessionLocal
@@ -24,6 +24,9 @@ TOTAL_QUESTIONS = 700   # change to your real number
 async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     user = update.effective_user
+
+    # handle button or message safely
+    message = update.message or update.callback_query.message
 
     # pick random question slice
     start_q = random.randint(1, TOTAL_QUESTIONS - 5)
@@ -51,9 +54,9 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             await session.commit()
 
-    except Exception as e:
+    except Exception:
 
-        await update.message.reply_text(
+        await message.reply_text(
             "❌ Could not create challenge. Please try again."
         )
 
@@ -62,16 +65,16 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # generate invite link
     bot_username = context.bot.username
-
     invite_link = f"https://t.me/{bot_username}?start=challenge_{challenge_id}"
 
 
-    await update.message.reply_text(
+    await message.reply_text(
 
-        f"🎯 <b>Friend Challenge Created!</b>\n\n"
+        f"⚔️ <b>Friend Challenge Created!</b>\n\n"
         f"Invite your friends to compete with you.\n\n"
         f"<b>Challenge Questions:</b> 5\n\n"
-        f"Share this link:\n{invite_link}",
+        f"Share this link with friends:\n\n"
+        f"{invite_link}",
 
         parse_mode="HTML",
     )
@@ -80,10 +83,23 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ==========================================================
 # Register Handlers
 # ==========================================================
-def register_challenge_handlers(application):
 
-    application.add_handler(CommandHandler("challenge", create_challenge))
+def register_handlers(application):
 
+    # /challenge command
+    application.add_handler(
+        CommandHandler("challenge", create_challenge)
+    )
+
+    # menu button press
+    application.add_handler(
+        CallbackQueryHandler(
+            create_challenge,
+            pattern="^challenge:start$"
+        )
+    )
+
+    # text button fallback
     application.add_handler(
         MessageHandler(
             filters.TEXT & filters.Regex("^⚔️ Challenge Friends$"),
