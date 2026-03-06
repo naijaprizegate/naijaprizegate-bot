@@ -307,11 +307,6 @@ def detect_user_intent(text: str):
         "card", "subscribe", "attempt", "attempts"
     ]
 
-    support_words = [
-        "help", "support", "admin", "problem",
-        "issue", "complaint", "assist"
-    ]
-
     faq_words = [
         "faq", "rule", "rules", "terms",
         "guide", "how", "instruction"
@@ -331,9 +326,6 @@ def detect_user_intent(text: str):
 
     if any(word in text for word in payment_words):
         return "buy"
-
-    if any(word in text for word in support_words):
-        return "support:start"
 
     if any(word in text for word in faq_words):
         return "faq"
