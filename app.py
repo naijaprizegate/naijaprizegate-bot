@@ -77,7 +77,7 @@ from bot_instance import bot
 from services.airtime_service import handle_claim_airtime_button, handle_airtime_claim_phone, handle_airtime_network_choice
 from utils.conversation_states import AIRTIME_PHONE
 from handlers.support import support_conv, admin_reply
-from handlers.challenge import register_challenge_handlers
+from handlers.challenge import register_handlers as register_challenge_handlers
 
 
 # ✅ Import Flutterwave-related functions/constants
