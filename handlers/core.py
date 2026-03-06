@@ -196,7 +196,7 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "3️⃣ Score higher to rise on the leaderboard\n"
         "4️⃣ Top performers unlock special rewards 🎁\n\n"
         "🎯 Knowledge decides your success \\— not luck\n"
-        "🔒 Completely safe and skill-based\n\n"
+        "🔒 Completely safe and skill\\-based\n\n"
         "Use the buttons below to continue 👇"
     )
 
