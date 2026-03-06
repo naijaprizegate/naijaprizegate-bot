@@ -140,6 +140,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
         [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
+        [InlineKeyboardButton("⚔️ Challenge Friends", callback_data="challenge:start")],
         [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],
         [InlineKeyboardButton("❓ FAQs", callback_data="faq")],
         [InlineKeyboardButton("📩 Contact Support / Admin", callback_data="support:start")],
@@ -206,6 +207,7 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
         [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
+        [InlineKeyboardButton("⚔️ Challenge Friends", callback_data="challenge:start")],
         [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],  # NEW
         [InlineKeyboardButton("❓ FAQs", callback_data="faq")],                # NEW
         [InlineKeyboardButton("📩 Contact Support / Admin", callback_data="support:start")] # NEW
@@ -290,6 +292,7 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         return
 
+
 # ===============================================================
 # Intent Detector
 # ===============================================================
@@ -303,8 +306,7 @@ def detect_user_intent(text: str):
     ]
 
     payment_words = [
-        "buy", "pay", "payment", "purchase",
-        "card", "subscribe", "attempt", "attempts"
+        "subscribe", "attempt", "attempts"
     ]
 
     faq_words = [
@@ -318,7 +320,7 @@ def detect_user_intent(text: str):
     ]
 
     free_words = [
-        "free", "bonus", "earn", "reward"
+        "free", "bonus", "earn"
     ]
 
     if any(word in text for word in trivia_words):
