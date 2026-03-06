@@ -4,7 +4,7 @@
 
 import random
 from telegram import Update
-from telegram.ext import ContextTypes, CommandHandler
+from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters
 from sqlalchemy import text
 
 from db import AsyncSessionLocal
@@ -80,9 +80,13 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ==========================================================
 # Register Handlers
 # ==========================================================
-
 def register_challenge_handlers(application):
 
+    application.add_handler(CommandHandler("challenge", create_challenge))
+
     application.add_handler(
-        CommandHandler("challenge", create_challenge)
+        MessageHandler(
+            filters.TEXT & filters.Regex("^⚔️ Challenge Friends$"),
+            create_challenge
+        )
     )
