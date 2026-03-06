@@ -14,7 +14,7 @@ from db import AsyncSessionLocal
 # CONFIG
 # ==========================================================
 
-TOTAL_QUESTIONS = 500   # change to your real number
+TOTAL_QUESTIONS = 700   # change to your real number
 
 
 # ==========================================================
