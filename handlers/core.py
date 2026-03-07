@@ -150,7 +150,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "📱 *Samsung Z Flip*\n"
         "🎧 *AirPods*\n"
         "🔊 *Bluetooth Speakers*\n"
-        "Plus instant rewards like: 📞 *Airtime* for every premium points milestone!\n\n"
+        "Plus instant rewards like: 📞 *Airtime* for every premium points milestone\\!\n\n"
         "📘 Tap *Terms & Fair Play* below for policy & transparency\n\n"
         "📜 By using NaijaPrizeGate, you agree to our Terms & Conditions and Fair Play Rules\n\n"
         "Ready to begin?\n"
