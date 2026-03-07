@@ -96,7 +96,7 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
             if total <= 0:
                 return await update.effective_message.reply_text(
                     "😅 You have no trivia attempts left.\n\n"
-                    "Don't stop now\!\n\n"
+                    "Don't stop now!\n\n"
                     "You are competing for:\n\n" 
                     "📱 *iPhone 17 Pro Max*\n"
                     "📱 *Samsung Z Flip*\n"
