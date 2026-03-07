@@ -96,9 +96,14 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
             if total <= 0:
                 return await update.effective_message.reply_text(
                     "😅 You have no trivia attempts left.\n\n"
-                    "Use *Get More Trivia Attempts* or *Earn Free Trivia Attempts* to continue playing.\n\n"
-                    "You could become a proud owner of\n"
-                    "*AirPods*, *Bluetooth Speakers* and *Smart Phones*",
+                    "Don't stop now\\!\n\n"
+                    "You are competing for:\n\n" 
+                    "📱 *iPhone 17 Pro Max*\n"
+                    "📱 *Samsung Z Flip*\n"
+                    "🎧 *AirPods*\n"
+                    "🔊 *Bluetooth Speakers*\n"
+                    "And instant *airtime* rewards.\n\n"
+                    "👇 Get more attempts to continue climbing the leaderboard.",
                     parse_mode="Markdown",
                     reply_markup=make_play_keyboard(),
                 )
@@ -796,4 +801,3 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
         application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern=r"^buy$"))
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
-
