@@ -277,7 +277,7 @@ async def leaderboard_render(
             )
         else:
             text_lines.append(
-                "🏆 Top scorer this cycle wins:\n\n"
+                "\n🏆 Top scorer this cycle wins:\n\n"
                 "📱 <b>iPhone 17 Pro Max</b>\n"
                 "📱 <b>Samsung Z Flip</b>\n"
                 "🎧 <b>AirPods</b>\n"
@@ -285,14 +285,14 @@ async def leaderboard_render(
                 "🔥 Keep scoring to reach the top!"
             )
 
-    text_lines.append("✔ 100% Skill-Based — no gambling or chance involved.")
+    text_lines.append("\n✔ 100% Skill-Based — no gambling or chance involved.")
 
     text_lines.append(
         "\nℹ️ Weekly view shows the last 7 days only. "
-        "Cycle view covers the current competition cycle."
+        "\nℹ️ Cycle view covers the current competition cycle."
     )
     text_lines.append(
-        "📌 Rankings are based on your quiz activity and knowledge performance."
+        "\n📌 Rankings are based on your quiz activity and knowledge performance."
     )
 
     # Navigation hint back to main menu
