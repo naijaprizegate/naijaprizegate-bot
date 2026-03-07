@@ -14,7 +14,6 @@ from telegram.ext import (
 )
 
 from sqlalchemy import text
-from urllib.parse import quote
 from db import AsyncSessionLocal
 
 
@@ -89,36 +88,21 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # ----------------------------------------------
 
     share_text = (
-        "🔥 <b>Can you beat my score on NaijaPrizeGate?</b>\n\n"
-        "🧠 Join my trivia challenge and let's see who is smarter!\n\n"
-        "👇 Tap the link now and prove you’re a champion!"
+        "🔥 Can you beat my score on NaijaPrizeGate?\n\n"
+        "Join my trivia challenge and let's see who is smarter 🧠\n\n"
     )
 
-    # Encode for Telegram share URL
-    encoded_text = quote(share_text)
-    encoded_link = quote(invite_link)
-
-    share_url = f"https://t.me/share/url?url={encoded_link}&text={encoded_text}"
-
-    # Share button
     keyboard = [
         [
             InlineKeyboardButton(
                 "📨 Share Challenge",
-                url=share_url
+                url=f"https://t.me/share/url?url={invite_link}&text={share_text}",
             )
         ]
     ]
 
     markup = InlineKeyboardMarkup(keyboard)
 
-    # Send message with HTML formatting enabled
-    await update.callback_query.message.reply_text(
-        share_text,
-        reply_markup=markup,
-        parse_mode="HTML"
-    )
-    
     # ----------------------------------------------
     # Send invite message
     # ----------------------------------------------
@@ -219,11 +203,11 @@ async def show_challenge_result(update: Update, context: ContextTypes.DEFAULT_TY
         + f"\n\n🏆 Winner: <b>{winner}</b>\n\n"
         "🔥 Want to climb the global leaderboard?\n\n"
         "Play Trivia to compete for:\n\n"
-        "📱 <b>iPhone 17 Pro Max</b>\n"
+        "📱 <b>iPhone 17 Pro</b> Max\n"
         "📱 <b>Samsung Z Flip</b>\n"
-        "🎧 <b>AirPods</b>\n"
+        "🎧 <b>AirPods\n</b>"
         "🔊 <b>Bluetooth Speakers</b>\n"
-        "📞 Instant <b>Airtime</b> Rewards for Premium Points Milestones"
+        "📞 Instant <b>Airtime Rewards</b> for Premium Points Milestones"
     )
 
     keyboard = [
