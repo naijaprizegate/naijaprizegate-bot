@@ -88,7 +88,8 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # ----------------------------------------------
 
     share_text = (
-        "🔥 Can you beat my score on NaijaPrizeGate?\n\n"
+        "🔥 <b>Can you beat my score</b>\n" 
+        "<b>on NaijaPrizeGate?</b>\n\n"
         "Join my trivia challenge and let's see who is smarter 🧠\n\n"
         f"{invite_link}"
     )
