@@ -142,7 +142,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = (
         f"👋 Hello *{md_escape(user.first_name)}*\\!\n\n"
         "🎉 Welcome to *NaijaPrizeGate* — The Nigerian Trivia Challenge 🇳🇬\n\n"
-        "🧠 Answer fun questions - Test your knowledge\n"
+        "🧠 Answer fun questions \\- Test your knowledge\n"
         "🎯 Earn reward points\n"
         "🏆 Climb the leaderboard\n\n"
         "🎁 Top player this cycle can win\n\n"
