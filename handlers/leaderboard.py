@@ -278,10 +278,10 @@ async def leaderboard_render(
         else:
             text_lines.append(
                 "🏆 Top scorer this cycle wins:\n\n"
-                "📱 *iPhone 17 Pro Max*\n"
-                "📱 *Samsung Z Flip*\n"
-                "🎧 *AirPods*\n"
-                "🔊 *Bluetooth Speakers*\n\n"
+                "📱 <b>iPhone 17 Pro Max</b>\n"
+                "📱 <b>Samsung Z Flip</b>\n"
+                "🎧 <b>AirPods</b>\n"
+                "🔊 <b>Bluetooth Speakers</b>\n\n"
                 "🔥 Keep scoring to reach the top!"
             )
 
