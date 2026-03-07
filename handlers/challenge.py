@@ -14,6 +14,7 @@ from telegram.ext import (
 )
 
 from sqlalchemy import text
+from urllib.parse import quote
 from db import AsyncSessionLocal
 
 
