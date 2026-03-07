@@ -223,7 +223,7 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "📱 *Samsung Z Flip*\n"
         "🎧 *AirPods*\n"
         "🔊 *Bluetooth Speakers*\n"
-        "Plus instant rewards like: 📞 *Airtime* for every premium points milestone!\n\n"
+        "Plus instant rewards like: 📞 *Airtime* for every premium points milestone\\!\n\n"
         "🎯 Knowledge decides your success — not luck\n"
         "🔒 Completely safe and skill\\-based\n\n"
         "Use the buttons below to continue 👇"
