@@ -93,6 +93,27 @@ async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # /start (with optional referral)
 # ===============================================================
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    
+    # ===========================================================
+    # CHALLENGE LINK HANDLER
+    # ===========================================================
+    if context.args:
+        arg = context.args[0]
+
+        if arg.startswith("challenge_"):
+            challenge_id = arg.split("_")[1]
+
+            await update.message.reply_text(
+                "⚔️ *Friend Challenge Invitation*\n\n"
+                "You were invited to compete in a trivia challenge!\n\n"
+                f"Challenge ID: `{challenge_id}`\n\n"
+                "Press *Play Trivia Questions* to begin the challenge.",
+                parse_mode="Markdown"
+            )
+
+            # (Later we will connect this to the real challenge engine)
+            # For now we just show the message
+
     # ✅ SAFETY GUARD:
     # If user is currently inside support flow, ignore accidental start calls
     # triggered by greetings handlers ("hello", "hi", etc).
@@ -121,13 +142,15 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = (
         f"👋 Hello *{md_escape(user.first_name)}*\\!\n\n"
         "🎉 Welcome to *NaijaPrizeGate* — The Nigerian Trivia Challenge 🇳🇬\n\n"
-        "🧠 Answer fun questions\n"
+        "🧠 Answer fun questions - Test your knowledge\n"
         "🎯 Earn reward points\n"
         "🏆 Climb the leaderboard\n\n"
-        "🎁 You could become a proud owner of\n"
-        "*AirPods*, *Bluetooth Speakers* and *Smart Phones*\n\n"
-        "✨ It’s all about *knowledge and performance* — not luck 🔥\n\n"
-        "📊 Rewards are based on leaderboard ranking\n"
+        "🎁 Top player this cycle can win\n\n"
+        "📱 *iPhone 17 Pro Max*\n"
+        "📱 *Samsung Z Flip*\n"
+        "🎧 *AirPods*\n"
+        "🔊 *Bluetooth Speakers*\n"
+        "Plus instant rewards like: 📞 *Airtime* for every premium points milestone!\n\n"
         "📘 Tap *Terms & Fair Play* below for policy & transparency\n\n"
         "📜 By using NaijaPrizeGate, you agree to our Terms & Conditions and Fair Play Rules\n\n"
         "Ready to begin?\n"
@@ -195,7 +218,12 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "1️⃣ Select a trivia category\n"
         "2️⃣ Answer questions correctly to earn reward points\n"
         "3️⃣ Score higher to rise on the leaderboard\n"
-        "4️⃣ Top performers unlock special rewards 🎁\n\n"
+        "🎁 Top player this cycle can win\n\n"
+        "📱 *iPhone 17 Pro Max*\n"
+        "📱 *Samsung Z Flip*\n"
+        "🎧 *AirPods*\n"
+        "🔊 *Bluetooth Speakers*\n"
+        "Plus instant rewards like: 📞 *Airtime* for every premium points milestone!\n\n"
         "🎯 Knowledge decides your success — not luck\n"
         "🔒 Completely safe and skill\\-based\n\n"
         "Use the buttons below to continue 👇"
