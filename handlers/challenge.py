@@ -79,6 +79,51 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
         parse_mode="HTML",
     )
 
+# ==========================================================
+# Join Challenge
+# ==========================================================
+
+async def join_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    if not context.args:
+        return False
+
+    arg = context.args[0]
+
+    if not arg.startswith("challenge_"):
+        return False
+
+    challenge_id = int(arg.split("_")[1])
+    user = update.effective_user
+
+    async with AsyncSessionLocal() as session:
+
+        # add player to challenge_players
+        await session.execute(
+            text("""
+                INSERT INTO challenge_players (challenge_id, user_id)
+                VALUES (:challenge_id, :user_id)
+                ON CONFLICT DO NOTHING
+            """),
+            {
+                "challenge_id": challenge_id,
+                "user_id": user.id
+            }
+        )
+
+        await session.commit()
+
+    await update.message.reply_text(
+
+        "⚔️ *Friend Challenge Joined!*\n\n"
+        "You have joined a trivia challenge.\n\n"
+        "Both players will answer the same 5 questions.\n\n"
+        "Press *Play Trivia Questions* to begin!",
+
+        parse_mode="Markdown"
+    )
+
+    return True
 
 # ==========================================================
 # Register Handlers
