@@ -113,18 +113,11 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
     markup = InlineKeyboardMarkup(keyboard)
 
     # Send message with HTML formatting enabled
-    if update.message:
-        await update.message.reply_text(
-            share_text,
-            reply_markup=markup,
-            parse_mode="HTML"
-        )
-    elif update.callback_query:
-        await update.callback_query.message.reply_text(
-            share_text,
-            reply_markup=markup,
-            parse_mode="HTML"
-        )
+    await update.callback_query.message.reply_text(
+        share_text,
+        reply_markup=markup,
+        parse_mode="HTML"
+    )
     
     # ----------------------------------------------
     # Send invite message
