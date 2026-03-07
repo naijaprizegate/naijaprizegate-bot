@@ -89,16 +89,18 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # ----------------------------------------------
 
     share_text = (
-        "🔥 <b>Can you beat my score</b>\n" 
-        "<b>on NaijaPrizeGate?</b>\n\n"
-        "Join my trivia challenge and let's see who is smarter 🧠\n\n"
+        "🔥 <b>Can you beat my score on NaijaPrizeGate?</b>\n\n"
+        "🧠 Join my trivia challenge and let's see who is smarter!\n\n"
+        "👇 Tap the link now and prove you’re a champion!"
     )
 
+    # Encode for Telegram share URL
     encoded_text = quote(share_text)
     encoded_link = quote(invite_link)
 
     share_url = f"https://t.me/share/url?url={encoded_link}&text={encoded_text}"
 
+    # Share button
     keyboard = [
         [
             InlineKeyboardButton(
@@ -107,8 +109,16 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
         ]
     ]
+
     markup = InlineKeyboardMarkup(keyboard)
 
+    # Send message with HTML formatting enabled
+    await update.message.reply_text(
+        share_text,
+        reply_markup=markup,
+        parse_mode="HTML"
+    )
+    
     # ----------------------------------------------
     # Send invite message
     # ----------------------------------------------
