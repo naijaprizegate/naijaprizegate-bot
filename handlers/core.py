@@ -11,6 +11,7 @@ from sqlalchemy import text
 from helpers import md_escape, get_or_create_user
 from db import get_async_session
 from utils.security import validate_phone, is_admin, detect_provider
+from handlers.challenge import join_challenge
 
 logger = logging.getLogger(__name__)
 
@@ -93,6 +94,11 @@ async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # /start (with optional referral)
 # ===============================================================
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    
+    joined = await join_challenge(update, context)
+
+    if joined:
+        return
     
     # ===========================================================
     # CHALLENGE LINK HANDLER
