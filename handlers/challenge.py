@@ -91,18 +91,21 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "🔥 <b>Can you beat my score</b>\n" 
         "<b>on NaijaPrizeGate?</b>\n\n"
         "Join my trivia challenge and let's see who is smarter 🧠\n\n"
-        f"{invite_link}"
     )
+
+    encoded_text = quote(share_text)
+    encoded_link = quote(invite_link)
+
+    share_url = f"https://t.me/share/url?url={encoded_link}&text={encoded_text}"
 
     keyboard = [
         [
             InlineKeyboardButton(
                 "📨 Share Challenge",
-                url=f"https://t.me/share/url?url={invite_link}&text={share_text}",
+                url=share_url
             )
         ]
     ]
-
     markup = InlineKeyboardMarkup(keyboard)
 
     # ----------------------------------------------
