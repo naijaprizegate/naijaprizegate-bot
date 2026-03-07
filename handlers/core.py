@@ -217,7 +217,7 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "🆘 *How to Play*\n\n"
         "1️⃣ Select a trivia category\n"
         "2️⃣ Answer questions correctly to earn reward points\n"
-        "3️⃣ Score higher to rise on the leaderboard\n"
+        "3️⃣ Score higher to rise on the leaderboard\n\n"
         "🎁 Top player this cycle can win\n\n"
         "📱 *iPhone 17 Pro Max*\n"
         "📱 *Samsung Z Flip*\n"
