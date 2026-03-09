@@ -24,15 +24,24 @@ from db import AsyncSessionLocal
 CHALLENGE_QUESTION_COUNT = 5
 
 CHALLENGE_CATEGORIES = [
-    "Nigeria History",
-    "Geography",
-    "Entertainment",
-    "Sciences",
-    "Mathematics",
-    "English",
-    "Football",
+    "nigeria_history",
+    "geography",
+    "nigeria_entertainment",
+    "sciences",
+    "mathematics",
+    "english",
+    "football",
 ]
 
+CHALLENGE_CATEGORY_LABELS = {
+    "nigeria_history": "Nigeria History",
+    "geography": "Geography",
+    "nigeria_entertainment": "Entertainment",
+    "sciences": "Sciences",
+    "mathematics": "Mathematics",
+    "english": "English",
+    "football": "Football",
+}
 
 # ====================================================
 # Create Challenge
@@ -628,7 +637,7 @@ async def start_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
     for category in CHALLENGE_CATEGORIES:
         keyboard.append([
             InlineKeyboardButton(
-                category,
+                CHALLENGE_CATEGORY_LABELS.get(category, category),
                 callback_data=f"challenge_category_{challenge_id}|{category}",
             )
         ])
@@ -713,7 +722,7 @@ async def choose_challenge_category(update: Update, context: ContextTypes.DEFAUL
 
     await query.message.edit_text(
         f"🚀 <b>Challenge Started!</b>\n\n"
-        f"<b>Category:</b> {category}\n"
+        f"<b>Category:</b> {CHALLENGE_CATEGORY_LABELS.get(category, category)}\n"
         f"<b>Questions:</b> {CHALLENGE_QUESTION_COUNT}\n\n"
         f"All players will now receive Question 1.",
         parse_mode="HTML",
