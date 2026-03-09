@@ -2,6 +2,7 @@
 # handlers/challenge.py
 # ==========================================================
 
+import asyncio
 from urllib.parse import quote
 
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
@@ -22,6 +23,7 @@ from db import AsyncSessionLocal
 # ==========================================================
 
 CHALLENGE_QUESTION_COUNT = 5
+CHALLENGE_QUESTION_TIME_LIMIT = 15
 
 CHALLENGE_CATEGORIES = [
     "nigeria_history",
@@ -43,6 +45,135 @@ CHALLENGE_CATEGORY_LABELS = {
     "football": "Football",
 }
 
+
+# ===================================================
+# Upsert Telegram User
+# ====================================================
+async def upsert_telegram_user(user):
+    if not user:
+        return
+
+    username = user.username
+    full_name = user.full_name
+
+    async with AsyncSessionLocal() as session:
+        await session.execute(
+            text("""
+                INSERT INTO users (tg_id, username, full_name)
+                VALUES (:tg_id, :username, :full_name)
+                ON CONFLICT (tg_id)
+                DO UPDATE SET
+                    username = EXCLUDED.username,
+                    full_name = EXCLUDED.full_name
+            """),
+            {
+                "tg_id": int(user.id),
+                "username": username,
+                "full_name": full_name,
+            },
+        )
+        await session.commit()
+
+# ====================================================
+# Handle Challenge Question Timeout
+# ====================================================
+async def handle_challenge_question_timeout(
+    context: ContextTypes.DEFAULT_TYPE,
+    challenge_id: int,
+    user_id: int,
+    question_id: int,
+    question_order: int,
+):
+    await asyncio.sleep(CHALLENGE_QUESTION_TIME_LIMIT)
+
+    async with AsyncSessionLocal() as session:
+        result = await session.execute(
+            text("""
+                SELECT answered, timed_out
+                FROM challenge_question_delivery
+                WHERE challenge_id = :cid
+                  AND user_id = :uid
+                  AND question_id = :qid
+                LIMIT 1
+            """),
+            {
+                "cid": challenge_id,
+                "uid": user_id,
+                "qid": question_id,
+            },
+        )
+
+        row = result.fetchone()
+
+        if not row:
+            return
+
+        if row.answered or row.timed_out:
+            return
+
+        await session.execute(
+            text("""
+                UPDATE challenge_question_delivery
+                SET timed_out = true
+                WHERE challenge_id = :cid
+                  AND user_id = :uid
+                  AND question_id = :qid
+            """),
+            {
+                "cid": challenge_id,
+                "uid": user_id,
+                "qid": question_id,
+            },
+        )
+
+        await session.commit()
+
+    try:
+        await context.bot.send_message(
+            chat_id=user_id,
+            text="⏰ Time up! Moving to the next question.",
+        )
+    except Exception:
+        pass
+
+    next_question_order = question_order + 1
+
+    if next_question_order <= CHALLENGE_QUESTION_COUNT:
+        await send_challenge_question_to_one_player(
+            context=context,
+            challenge_id=challenge_id,
+            question_order=next_question_order,
+            user_id=user_id,
+        )
+    else:
+        async with AsyncSessionLocal() as session:
+            await session.execute(
+                text("""
+                    UPDATE challenge_players
+                    SET completed = true
+                    WHERE challenge_id = :cid
+                      AND user_id = :uid
+                """),
+                {
+                    "cid": challenge_id,
+                    "uid": user_id,
+                },
+            )
+            await session.commit()
+
+        try:
+            await context.bot.send_message(
+                chat_id=user_id,
+                text="🏁 You have completed the challenge!",
+            )
+        except Exception:
+            pass
+
+        dummy_update = type("DummyUpdate", (), {})()
+        dummy_update.effective_chat = None
+        await maybe_finish_challenge(dummy_update, context, challenge_id)
+
+
 # ====================================================
 # Create Challenge
 # =====================================================
@@ -58,6 +189,8 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if not message or not user:
         return
+    
+    await upsert_telegram_user(user)
 
     try:
         async with AsyncSessionLocal() as session:
@@ -280,6 +413,8 @@ async def join_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
     if not user:
         return False
+    
+    await upsert_telegram_user(user)
 
     async with AsyncSessionLocal() as session:
         await session.execute(
@@ -370,12 +505,13 @@ async def send_challenge_question(
 
     text_message = (
         f"🧠 <b>Challenge Question {question_order}/{CHALLENGE_QUESTION_COUNT}</b>\n\n"
-        f"<b>Category:</b> {question.category}\n\n"
+        f"<b>Category:</b> {CHALLENGE_CATEGORY_LABELS.get(question.category, question.category)}\n\n"
         f"{question.question}\n\n"
         f"A. {question.option_a}\n"
         f"B. {question.option_b}\n"
         f"C. {question.option_c}\n"
-        f"D. {question.option_d}"
+        f"D. {question.option_d}\n\n"
+        f"⏳ <b>Time left:</b> {CHALLENGE_QUESTION_TIME_LIMIT}s"
     )
 
     for player in players:
@@ -427,6 +563,28 @@ async def send_challenge_question_to_one_player(
         if not question:
             return
 
+        await session.execute(
+            text("""
+                INSERT INTO challenge_question_delivery
+                (challenge_id, user_id, question_id, question_order, answered, timed_out)
+                VALUES (:cid, :uid, :qid, :qorder, false, false)
+                ON CONFLICT (challenge_id, user_id, question_id)
+                DO UPDATE SET
+                    question_order = EXCLUDED.question_order,
+                    sent_at = now(),
+                    answered = false,
+                    timed_out = false
+            """),
+            {
+                "cid": challenge_id,
+                "uid": user_id,
+                "qid": question.question_id,
+                "qorder": question_order,
+            },
+        )
+
+        await session.commit()
+
     keyboard = InlineKeyboardMarkup([
         [
             InlineKeyboardButton(
@@ -452,12 +610,13 @@ async def send_challenge_question_to_one_player(
 
     text_message = (
         f"🧠 <b>Challenge Question {question_order}/{CHALLENGE_QUESTION_COUNT}</b>\n\n"
-        f"<b>Category:</b> {question.category}\n\n"
+        f"<b>Category:</b> {CHALLENGE_CATEGORY_LABELS.get(question.category, question.category)}\n\n"
         f"{question.question}\n\n"
         f"A. {question.option_a}\n"
         f"B. {question.option_b}\n"
         f"C. {question.option_c}\n"
-        f"D. {question.option_d}"
+        f"D. {question.option_d}\n\n"
+        f"⏳ <b>Time left:</b> {CHALLENGE_QUESTION_TIME_LIMIT}s"
     )
 
     try:
@@ -467,6 +626,17 @@ async def send_challenge_question_to_one_player(
             parse_mode="HTML",
             reply_markup=keyboard,
         )
+
+        asyncio.create_task(
+            handle_challenge_question_timeout(
+                context=context,
+                challenge_id=challenge_id,
+                user_id=user_id,
+                question_id=question.question_id,
+                question_order=question_order,
+            )
+        )
+
     except Exception:
         pass
 
@@ -754,6 +924,36 @@ async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_
     async with AsyncSessionLocal() as session:
         result = await session.execute(
             text("""
+                SELECT answered, timed_out
+                FROM challenge_question_delivery
+                WHERE challenge_id = :cid
+                  AND user_id = :uid
+                  AND question_id = :qid
+                LIMIT 1
+            """),
+            {
+                "cid": challenge_id,
+                "uid": user_id,
+                "qid": question_id,
+            },
+        )
+
+        delivery_row = result.fetchone()
+
+        if not delivery_row:
+            await query.answer("This question is no longer active.", show_alert=True)
+            return
+
+        if delivery_row.timed_out:
+            await query.answer("Time is up for this question.", show_alert=True)
+            return
+
+        if delivery_row.answered:
+            await query.answer("You already answered this question.", show_alert=True)
+            return
+
+        result = await session.execute(
+            text("""
                 SELECT 1
                 FROM challenge_answers
                 WHERE challenge_id = :cid
@@ -804,6 +1004,21 @@ async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_
                 "qid": question_id,
                 "selected_option": selected_option,
                 "is_correct": is_correct,
+            },
+        )
+
+        await session.execute(
+            text("""
+                UPDATE challenge_question_delivery
+                SET answered = true
+                WHERE challenge_id = :cid
+                  AND user_id = :uid
+                  AND question_id = :qid
+            """),
+            {
+                "cid": challenge_id,
+                "uid": user_id,
+                "qid": question_id,
             },
         )
 
@@ -860,8 +1075,8 @@ async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_
 
         await query.message.reply_text("🏁 You have completed the challenge!")
         await maybe_finish_challenge(update, context, challenge_id)
-
-
+        
+                
 # ==========================================================
 # Maybe Finish Challenge
 # ==========================================================
@@ -911,12 +1126,12 @@ async def show_challenge_result(
     async with AsyncSessionLocal() as session:
         result = await session.execute(
             text("""
-                SELECT u.username, u.full_name, cp.score
+                SELECT cp.user_id, u.username, u.full_name, cp.score
                 FROM challenge_players cp
                 JOIN users u
                   ON u.tg_id = cp.user_id
                 WHERE cp.challenge_id = :challenge_id
-                ORDER BY cp.score DESC
+                ORDER BY cp.score DESC, cp.joined_at ASC
             """),
             {"challenge_id": challenge_id},
         )
@@ -928,10 +1143,10 @@ async def show_challenge_result(
     result_lines = []
 
     for row in rows:
-        name = row.username if row.username else row.full_name
+        name = row.full_name or row.username or f"user_{row.user_id}"
         result_lines.append(f"{name} — {row.score}/{CHALLENGE_QUESTION_COUNT}")
 
-    winner = rows[0].username if rows[0].username else rows[0].full_name
+    winner = rows[0].full_name or rows[0].username or f"user_{rows[0].user_id}"
 
     message = (
         "⚔️ <b>CHALLENGE RESULT</b>\n\n"
@@ -946,20 +1161,26 @@ async def show_challenge_result(
         "📞 Instant <b>Airtime Rewards</b> for Premium Points Milestones"
     )
 
-    keyboard = [
+    keyboard = InlineKeyboardMarkup([
         [
             InlineKeyboardButton(
                 "🧠 Play Trivia Questions",
                 callback_data="playtrivia",
             )
         ]
-    ]
+    ])
 
-    await update.effective_chat.send_message(
-        message,
-        parse_mode="HTML",
-        reply_markup=InlineKeyboardMarkup(keyboard),
-    )
+    # Send result to every player in the challenge
+    for row in rows:
+        try:
+            await context.bot.send_message(
+                chat_id=row.user_id,
+                text=message,
+                parse_mode="HTML",
+                reply_markup=keyboard,
+            )
+        except Exception:
+            pass
 
 
 # ==========================================================
