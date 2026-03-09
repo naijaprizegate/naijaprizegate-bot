@@ -45,7 +45,75 @@ CHALLENGE_CATEGORY_LABELS = {
     "football": "Football",
 }
 
+# ---------build challenge question text-------
 
+def build_challenge_question_text(
+    question_order: int,
+    category: str,
+    question_text: str,
+    option_a: str,
+    option_b: str,
+    option_c: str,
+    option_d: str,
+    seconds_left: int,
+) -> str:
+    return (
+        f"🧠 <b>Challenge Question {question_order}/{CHALLENGE_QUESTION_COUNT}</b>\n\n"
+        f"<b>Category:</b> {CHALLENGE_CATEGORY_LABELS.get(category, category)}\n\n"
+        f"{question_text}\n\n"
+        f"A. {option_a}\n"
+        f"B. {option_b}\n"
+        f"C. {option_c}\n"
+        f"D. {option_d}\n\n"
+        f"⏳ <b>Time left:</b> {seconds_left}s"
+    )
+
+# ---------build challenge timeout text------
+def build_challenge_timeout_text(
+    question_order: int,
+    category: str,
+    question_text: str,
+    option_a: str,
+    option_b: str,
+    option_c: str,
+    option_d: str,
+) -> str:
+    return (
+        f"🧠 <b>Challenge Question {question_order}/{CHALLENGE_QUESTION_COUNT}</b>\n\n"
+        f"<b>Category:</b> {CHALLENGE_CATEGORY_LABELS.get(category, category)}\n\n"
+        f"{question_text}\n\n"
+        f"A. {option_a}\n"
+        f"B. {option_b}\n"
+        f"C. {option_c}\n"
+        f"D. {option_d}\n\n"
+        f"⏰ <b>TIME UP</b>"
+    )
+
+# -------build challenge answer result text--------
+def build_challenge_answer_result_text(
+    question_order: int,
+    category: str,
+    question_text: str,
+    option_a: str,
+    option_b: str,
+    option_c: str,
+    option_d: str,
+    is_correct: bool,
+    correct_option: str,
+) -> str:
+    status_line = "✅ <b>CORRECT</b>" if is_correct else f"❌ <b>WRONG</b>\n<b>Correct Answer:</b> {correct_option}"
+
+    return (
+        f"🧠 <b>Challenge Question {question_order}/{CHALLENGE_QUESTION_COUNT}</b>\n\n"
+        f"<b>Category:</b> {CHALLENGE_CATEGORY_LABELS.get(category, category)}\n\n"
+        f"{question_text}\n\n"
+        f"A. {option_a}\n"
+        f"B. {option_b}\n"
+        f"C. {option_c}\n"
+        f"D. {option_d}\n\n"
+        f"{status_line}"
+    )
+    
 # ===================================================
 # Upsert Telegram User
 # ====================================================
@@ -83,8 +151,85 @@ async def handle_challenge_question_timeout(
     user_id: int,
     question_id: int,
     question_order: int,
+    message_id: int,
+    category: str,
+    question_text: str,
+    option_a: str,
+    option_b: str,
+    option_c: str,
+    option_d: str,
 ):
-    await asyncio.sleep(CHALLENGE_QUESTION_TIME_LIMIT)
+    seconds_left = CHALLENGE_QUESTION_TIME_LIMIT
+
+    while seconds_left > 0:
+        await asyncio.sleep(1)
+        seconds_left -= 1
+
+        async with AsyncSessionLocal() as session:
+            result = await session.execute(
+                text("""
+                    SELECT answered, timed_out
+                    FROM challenge_question_delivery
+                    WHERE challenge_id = :cid
+                      AND user_id = :uid
+                      AND question_id = :qid
+                    LIMIT 1
+                """),
+                {
+                    "cid": challenge_id,
+                    "uid": user_id,
+                    "qid": question_id,
+                },
+            )
+            row = result.fetchone()
+
+        if not row:
+            return
+
+        if row.answered or row.timed_out:
+            return
+
+        if seconds_left > 0:
+            try:
+                await context.bot.edit_message_text(
+                    chat_id=user_id,
+                    message_id=message_id,
+                    text=build_challenge_question_text(
+                        question_order=question_order,
+                        category=category,
+                        question_text=question_text,
+                        option_a=option_a,
+                        option_b=option_b,
+                        option_c=option_c,
+                        option_d=option_d,
+                        seconds_left=seconds_left,
+                    ),
+                    parse_mode="HTML",
+                    reply_markup=InlineKeyboardMarkup([
+                        [
+                            InlineKeyboardButton(
+                                "A",
+                                callback_data=f"challenge_answer_{challenge_id}|{question_order}|A|{question_id}",
+                            ),
+                            InlineKeyboardButton(
+                                "B",
+                                callback_data=f"challenge_answer_{challenge_id}|{question_order}|B|{question_id}",
+                            ),
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                "C",
+                                callback_data=f"challenge_answer_{challenge_id}|{question_order}|C|{question_id}",
+                            ),
+                            InlineKeyboardButton(
+                                "D",
+                                callback_data=f"challenge_answer_{challenge_id}|{question_order}|D|{question_id}",
+                            ),
+                        ],
+                    ]),
+                )
+            except Exception:
+                pass
 
     async with AsyncSessionLocal() as session:
         result = await session.execute(
@@ -102,13 +247,9 @@ async def handle_challenge_question_timeout(
                 "qid": question_id,
             },
         )
-
         row = result.fetchone()
 
-        if not row:
-            return
-
-        if row.answered or row.timed_out:
+        if not row or row.answered or row.timed_out:
             return
 
         await session.execute(
@@ -125,13 +266,31 @@ async def handle_challenge_question_timeout(
                 "qid": question_id,
             },
         )
-
         await session.commit()
+
+    try:
+        await context.bot.edit_message_text(
+            chat_id=user_id,
+            message_id=message_id,
+            text=build_challenge_timeout_text(
+                question_order=question_order,
+                category=category,
+                question_text=question_text,
+                option_a=option_a,
+                option_b=option_b,
+                option_c=option_c,
+                option_d=option_d,
+            ),
+            parse_mode="HTML",
+            reply_markup=None,
+        )
+    except Exception:
+        pass
 
     try:
         await context.bot.send_message(
             chat_id=user_id,
-            text="⏰ Time up! Moving to the next question.",
+            text="⏭️ Moving to the next question...",
         )
     except Exception:
         pass
@@ -447,31 +606,6 @@ async def send_challenge_question(
     async with AsyncSessionLocal() as session:
         result = await session.execute(
             text("""
-                SELECT crq.question_id,
-                       q.category,
-                       q.question,
-                       q.option_a,
-                       q.option_b,
-                       q.option_c,
-                       q.option_d
-                FROM challenge_round_questions crq
-                JOIN questions q
-                  ON q.id = crq.question_id
-                WHERE crq.challenge_id = :cid
-                  AND crq.question_order = :qorder
-            """),
-            {
-                "cid": challenge_id,
-                "qorder": question_order,
-            },
-        )
-        question = result.fetchone()
-
-        if not question:
-            return
-
-        result = await session.execute(
-            text("""
                 SELECT user_id
                 FROM challenge_players
                 WHERE challenge_id = :cid
@@ -480,50 +614,13 @@ async def send_challenge_question(
         )
         players = result.fetchall()
 
-    keyboard = InlineKeyboardMarkup([
-        [
-            InlineKeyboardButton(
-                "A",
-                callback_data=f"challenge_answer_{challenge_id}|{question_order}|A|{question.question_id}",
-            ),
-            InlineKeyboardButton(
-                "B",
-                callback_data=f"challenge_answer_{challenge_id}|{question_order}|B|{question.question_id}",
-            ),
-        ],
-        [
-            InlineKeyboardButton(
-                "C",
-                callback_data=f"challenge_answer_{challenge_id}|{question_order}|C|{question.question_id}",
-            ),
-            InlineKeyboardButton(
-                "D",
-                callback_data=f"challenge_answer_{challenge_id}|{question_order}|D|{question.question_id}",
-            ),
-        ],
-    ])
-
-    text_message = (
-        f"🧠 <b>Challenge Question {question_order}/{CHALLENGE_QUESTION_COUNT}</b>\n\n"
-        f"<b>Category:</b> {CHALLENGE_CATEGORY_LABELS.get(question.category, question.category)}\n\n"
-        f"{question.question}\n\n"
-        f"A. {question.option_a}\n"
-        f"B. {question.option_b}\n"
-        f"C. {question.option_c}\n"
-        f"D. {question.option_d}\n\n"
-        f"⏳ <b>Time left:</b> {CHALLENGE_QUESTION_TIME_LIMIT}s"
-    )
-
     for player in players:
-        try:
-            await context.bot.send_message(
-                chat_id=player.user_id,
-                text=text_message,
-                parse_mode="HTML",
-                reply_markup=keyboard,
-            )
-        except Exception:
-            pass
+        await send_challenge_question_to_one_player(
+            context=context,
+            challenge_id=challenge_id,
+            question_order=question_order,
+            user_id=player.user_id,
+        )
 
 
 # ==========================================================
@@ -608,19 +705,19 @@ async def send_challenge_question_to_one_player(
         ],
     ])
 
-    text_message = (
-        f"🧠 <b>Challenge Question {question_order}/{CHALLENGE_QUESTION_COUNT}</b>\n\n"
-        f"<b>Category:</b> {CHALLENGE_CATEGORY_LABELS.get(question.category, question.category)}\n\n"
-        f"{question.question}\n\n"
-        f"A. {question.option_a}\n"
-        f"B. {question.option_b}\n"
-        f"C. {question.option_c}\n"
-        f"D. {question.option_d}\n\n"
-        f"⏳ <b>Time left:</b> {CHALLENGE_QUESTION_TIME_LIMIT}s"
+    text_message = build_challenge_question_text(
+        question_order=question_order,
+        category=question.category,
+        question_text=question.question,
+        option_a=question.option_a,
+        option_b=question.option_b,
+        option_c=question.option_c,
+        option_d=question.option_d,
+        seconds_left=CHALLENGE_QUESTION_TIME_LIMIT,
     )
 
     try:
-        await context.bot.send_message(
+        sent_message = await context.bot.send_message(
             chat_id=user_id,
             text=text_message,
             parse_mode="HTML",
@@ -634,12 +731,18 @@ async def send_challenge_question_to_one_player(
                 user_id=user_id,
                 question_id=question.question_id,
                 question_order=question_order,
+                message_id=sent_message.message_id,
+                category=question.category,
+                question_text=question.question,
+                option_a=question.option_a,
+                option_b=question.option_b,
+                option_c=question.option_c,
+                option_d=question.option_d,
             )
         )
 
     except Exception:
         pass
-
 
 # ==========================================================
 # Show Challenge Lobby
@@ -911,7 +1014,6 @@ async def choose_challenge_category(update: Update, context: ContextTypes.DEFAUL
 
 async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    await query.answer()
 
     payload = query.data.replace("challenge_answer_", "", 1)
     challenge_id_str, question_order_str, selected_option, question_id_str = payload.split("|")
@@ -922,6 +1024,7 @@ async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_
     user_id = query.from_user.id
 
     async with AsyncSessionLocal() as session:
+        # Check delivery state first
         result = await session.execute(
             text("""
                 SELECT answered, timed_out
@@ -937,7 +1040,6 @@ async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_
                 "qid": question_id,
             },
         )
-
         delivery_row = result.fetchone()
 
         if not delivery_row:
@@ -952,6 +1054,7 @@ async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_
             await query.answer("You already answered this question.", show_alert=True)
             return
 
+        # Extra protection against duplicate answer insert
         result = await session.execute(
             text("""
                 SELECT 1
@@ -967,31 +1070,41 @@ async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_
                 "qid": question_id,
             },
         )
-
         already_answered = result.fetchone()
 
         if already_answered:
             await query.answer("You already answered this question.", show_alert=True)
             return
 
+        # Fetch full question details for result-card update
         result = await session.execute(
             text("""
-                SELECT correct_option
+                SELECT category, question, option_a, option_b, option_c, option_d, correct_option
                 FROM questions
                 WHERE id = :qid
             """),
             {"qid": question_id},
         )
-
         row = result.fetchone()
 
         if not row:
             await query.answer("Question not found.", show_alert=True)
             return
 
+        category = row.category
+        question_text = row.question
+        option_a = row.option_a
+        option_b = row.option_b
+        option_c = row.option_c
+        option_d = row.option_d
         correct_option = row.correct_option
+
         is_correct = (selected_option == correct_option)
 
+        # Acknowledge callback only once here, after validation succeeded
+        await query.answer()
+
+        # Save answer
         await session.execute(
             text("""
                 INSERT INTO challenge_answers
@@ -1007,6 +1120,7 @@ async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_
             },
         )
 
+        # Mark delivery as answered so timeout task stops
         await session.execute(
             text("""
                 UPDATE challenge_question_delivery
@@ -1022,6 +1136,7 @@ async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_
             },
         )
 
+        # Update score if correct
         if is_correct:
             await session.execute(
                 text("""
@@ -1038,15 +1153,28 @@ async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_
 
         await session.commit()
 
+    # Edit the same question card to show result
     try:
-        await query.edit_message_reply_markup(reply_markup=None)
+        await query.edit_message_text(
+            text=build_challenge_answer_result_text(
+                question_order=question_order,
+                category=category,
+                question_text=question_text,
+                option_a=option_a,
+                option_b=option_b,
+                option_c=option_c,
+                option_d=option_d,
+                is_correct=is_correct,
+                correct_option=correct_option,
+            ),
+            parse_mode="HTML",
+            reply_markup=None,
+        )
     except Exception:
         pass
 
-    if is_correct:
-        await query.message.reply_text("✅ Correct!")
-    else:
-        await query.message.reply_text(f"❌ Wrong! Correct answer: {correct_option}")
+    # Small pause so player can see correct/wrong state
+    await asyncio.sleep(1.5)
 
     next_question_order = question_order + 1
 
@@ -1075,7 +1203,7 @@ async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_
 
         await query.message.reply_text("🏁 You have completed the challenge!")
         await maybe_finish_challenge(update, context, challenge_id)
-        
+                        
                 
 # ==========================================================
 # Maybe Finish Challenge
