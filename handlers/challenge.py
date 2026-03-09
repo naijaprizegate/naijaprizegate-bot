@@ -2,7 +2,7 @@
 # handlers/challenge.py
 # ==========================================================
 
-import random
+from urllib.parse import quote
 
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
@@ -14,7 +14,6 @@ from telegram.ext import (
 )
 
 from sqlalchemy import text
-from urllib.parse import quote
 from db import AsyncSessionLocal
 
 
@@ -22,15 +21,24 @@ from db import AsyncSessionLocal
 # CONFIG
 # ==========================================================
 
-TOTAL_QUESTIONS = 700
+CHALLENGE_QUESTION_COUNT = 5
+
+CHALLENGE_CATEGORIES = [
+    "Nigeria History",
+    "Geography",
+    "Entertainment",
+    "Sciences",
+    "Mathematics",
+    "English",
+    "Football",
+]
 
 
-# ==========================================================
+# ====================================================
 # Create Challenge
-# ==========================================================
+# =====================================================
 
 async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
     user = update.effective_user
 
     query = update.callback_query
@@ -39,56 +47,43 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if query:
         await query.answer()
 
-    if not message:
+    if not message or not user:
         return
 
-    # ----------------------------------------------
-    # Pick random question slice
-    # ----------------------------------------------
-
-    start_q = random.randint(1, TOTAL_QUESTIONS - 5)
-    end_q = start_q + 4
-
     try:
-
         async with AsyncSessionLocal() as session:
-
             result = await session.execute(
                 text("""
-                    INSERT INTO challenges
-                    (creator_id, question_start, question_end, status)
-                    VALUES (:creator_id, :start_q, :end_q, 'active')
+                    INSERT INTO challenges (creator_id, question_start, question_end, status)
+                    VALUES (:creator_id, 0, 0, 'waiting')
                     RETURNING id
                 """),
                 {
                     "creator_id": int(user.id),
-                    "start_q": start_q,
-                    "end_q": end_q,
                 },
             )
-
             challenge_id = result.scalar()
+
+            await session.execute(
+                text("""
+                    INSERT INTO challenge_players (challenge_id, user_id, score, completed)
+                    VALUES (:challenge_id, :user_id, 0, false)
+                    ON CONFLICT DO NOTHING
+                """),
+                {
+                    "challenge_id": challenge_id,
+                    "user_id": int(user.id),
+                },
+            )
 
             await session.commit()
 
     except Exception:
-
-        await message.reply_text(
-            "❌ Could not create challenge. Please try again."
-        )
+        await message.reply_text("❌ Could not create challenge. Please try again.")
         return
 
-    # ----------------------------------------------
-    # Generate invite link
-    # ----------------------------------------------
-
     bot_username = context.bot.username
-
     invite_link = f"https://t.me/{bot_username}?start=challenge_{challenge_id}"
-
-    # ----------------------------------------------
-    # Viral share text
-    # ----------------------------------------------
 
     share_text = (
         "🔥 Can you beat my score on NaijaPrizeGate?\n\n"
@@ -107,23 +102,152 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ]
     ]
 
-    markup = InlineKeyboardMarkup(keyboard)
-
-    # ----------------------------------------------
-    # Send invite message
-    # ----------------------------------------------
-
     await message.reply_text(
-
         f"⚔️ <b>Friend Challenge Created!</b>\n\n"
         f"Invite your friends to compete with you.\n\n"
-        f"<b>Challenge Questions:</b> 5\n\n"
+        f"<b>Challenge Questions:</b> {CHALLENGE_QUESTION_COUNT}\n\n"
         f"Share this link with friends:\n\n"
         f"{invite_link}",
-
         parse_mode="HTML",
-        reply_markup=markup,
+        reply_markup=InlineKeyboardMarkup(keyboard),
     )
+
+    await show_challenge_lobby(update, context, challenge_id)
+
+
+# ==========================================================
+# Generate Challenge Questions
+# ==========================================================
+
+async def generate_challenge_questions(
+    challenge_id: int,
+    category: str,
+    question_count: int = CHALLENGE_QUESTION_COUNT,
+):
+    """
+    Select challenge questions in sequence from questions,
+    avoiding repeats for players who have not yet exhausted the
+    category question cycle.
+
+    Selected questions are stored in challenge_round_questions.
+    """
+    async with AsyncSessionLocal() as session:
+        # 1) Get all players in the challenge
+        result = await session.execute(
+            text("""
+                SELECT user_id
+                FROM challenge_players
+                WHERE challenge_id = :cid
+            """),
+            {"cid": challenge_id},
+        )
+        player_rows = result.fetchall()
+
+        if not player_rows:
+            return []
+
+        player_ids = [row.user_id for row in player_rows]
+
+        # 2) Find players who have NOT exhausted this category
+        active_players = []
+
+        for player_id in player_ids:
+            result = await session.execute(
+                text("""
+                    SELECT COUNT(DISTINCT ca.question_id) AS answered_count
+                    FROM challenge_answers ca
+                    JOIN questions q
+                      ON q.id = ca.question_id
+                    WHERE ca.user_id = :uid
+                      AND q.category = :category
+                """),
+                {
+                    "uid": player_id,
+                    "category": category,
+                },
+            )
+
+            row = result.fetchone()
+            answered_count = row.answered_count if row else 0
+
+            if answered_count < 100:
+                active_players.append(player_id)
+
+        # 3) Build exclusion set from active players only
+        excluded_question_ids = set()
+
+        for player_id in active_players:
+            result = await session.execute(
+                text("""
+                    SELECT DISTINCT ca.question_id
+                    FROM challenge_answers ca
+                    JOIN questions q
+                      ON q.id = ca.question_id
+                    WHERE ca.user_id = :uid
+                      AND q.category = :category
+                """),
+                {
+                    "uid": player_id,
+                    "category": category,
+                },
+            )
+
+            for row in result.fetchall():
+                excluded_question_ids.add(row.question_id)
+
+        # 4) Load all category questions in sequence
+        result = await session.execute(
+            text("""
+                SELECT id, question_order
+                FROM questions
+                WHERE category = :category
+                ORDER BY question_order ASC
+            """),
+            {"category": category},
+        )
+        all_questions = result.fetchall()
+
+        if not all_questions:
+            return []
+
+        # 5) Pick fresh questions first
+        fresh_questions = [q for q in all_questions if q.id not in excluded_question_ids]
+        selected_questions = fresh_questions[:question_count]
+
+        # 6) If not enough fresh questions remain, reset cycle from beginning
+        if len(selected_questions) < question_count:
+            selected_questions = all_questions[:question_count]
+
+        if not selected_questions:
+            return []
+
+        # 7) Clear any previously stored round questions for this challenge
+        await session.execute(
+            text("""
+                DELETE FROM challenge_round_questions
+                WHERE challenge_id = :cid
+            """),
+            {"cid": challenge_id},
+        )
+
+        # 8) Save selected questions
+        for i, q in enumerate(selected_questions, start=1):
+            await session.execute(
+                text("""
+                    INSERT INTO challenge_round_questions
+                    (challenge_id, question_id, question_order)
+                    VALUES (:cid, :qid, :qorder)
+                """),
+                {
+                    "cid": challenge_id,
+                    "qid": q.id,
+                    "qorder": i,
+                },
+            )
+
+        await session.commit()
+
+        return selected_questions
 
 
 # ==========================================================
@@ -131,7 +255,6 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ==========================================================
 
 async def join_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
     if not context.args:
         return False
 
@@ -140,11 +263,16 @@ async def join_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not arg.startswith("challenge_"):
         return False
 
-    challenge_id = int(arg.split("_")[1])
+    try:
+        challenge_id = int(arg.split("_", 1)[1])
+    except (IndexError, ValueError):
+        return False
+
     user = update.effective_user
+    if not user:
+        return False
 
     async with AsyncSessionLocal() as session:
-
         await session.execute(
             text("""
                 INSERT INTO challenge_players (challenge_id, user_id, score, completed)
@@ -153,73 +281,299 @@ async def join_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
             """),
             {
                 "challenge_id": challenge_id,
-                "user_id": user.id,
+                "user_id": int(user.id),
+            },
+        )
+        await session.commit()
+
+    await update.effective_chat.send_message("✅ You joined the challenge lobby.")
+    await show_challenge_lobby(update, context, challenge_id)
+    return True
+
+
+# ==========================================================
+# Send Challenge Question To All Players
+# ==========================================================
+
+async def send_challenge_question(
+    context: ContextTypes.DEFAULT_TYPE,
+    challenge_id: int,
+    question_order: int,
+):
+    async with AsyncSessionLocal() as session:
+        result = await session.execute(
+            text("""
+                SELECT crq.question_id,
+                       q.category,
+                       q.question,
+                       q.option_a,
+                       q.option_b,
+                       q.option_c,
+                       q.option_d
+                FROM challenge_round_questions crq
+                JOIN questions q
+                  ON q.id = crq.question_id
+                WHERE crq.challenge_id = :cid
+                  AND crq.question_order = :qorder
+            """),
+            {
+                "cid": challenge_id,
+                "qorder": question_order,
+            },
+        )
+        question = result.fetchone()
+
+        if not question:
+            return
+
+        result = await session.execute(
+            text("""
+                SELECT user_id
+                FROM challenge_players
+                WHERE challenge_id = :cid
+            """),
+            {"cid": challenge_id},
+        )
+        players = result.fetchall()
+
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "A",
+                callback_data=f"challenge_answer_{challenge_id}|{question_order}|A|{question.question_id}",
+            ),
+            InlineKeyboardButton(
+                "B",
+                callback_data=f"challenge_answer_{challenge_id}|{question_order}|B|{question.question_id}",
+            ),
+        ],
+        [
+            InlineKeyboardButton(
+                "C",
+                callback_data=f"challenge_answer_{challenge_id}|{question_order}|C|{question.question_id}",
+            ),
+            InlineKeyboardButton(
+                "D",
+                callback_data=f"challenge_answer_{challenge_id}|{question_order}|D|{question.question_id}",
+            ),
+        ],
+    ])
+
+    text_message = (
+        f"🧠 <b>Challenge Question {question_order}/{CHALLENGE_QUESTION_COUNT}</b>\n\n"
+        f"<b>Category:</b> {question.category}\n\n"
+        f"{question.question}\n\n"
+        f"A. {question.option_a}\n"
+        f"B. {question.option_b}\n"
+        f"C. {question.option_c}\n"
+        f"D. {question.option_d}"
+    )
+
+    for player in players:
+        try:
+            await context.bot.send_message(
+                chat_id=player.user_id,
+                text=text_message,
+                parse_mode="HTML",
+                reply_markup=keyboard,
+            )
+        except Exception:
+            pass
+
+
+# ==========================================================
+# Send Challenge Question To One Player
+# ==========================================================
+
+async def send_challenge_question_to_one_player(
+    context: ContextTypes.DEFAULT_TYPE,
+    challenge_id: int,
+    question_order: int,
+    user_id: int,
+):
+    async with AsyncSessionLocal() as session:
+        result = await session.execute(
+            text("""
+                SELECT crq.question_id,
+                       q.category,
+                       q.question,
+                       q.option_a,
+                       q.option_b,
+                       q.option_c,
+                       q.option_d
+                FROM challenge_round_questions crq
+                JOIN questions q
+                  ON q.id = crq.question_id
+                WHERE crq.challenge_id = :cid
+                  AND crq.question_order = :qorder
+            """),
+            {
+                "cid": challenge_id,
+                "qorder": question_order,
             },
         )
 
-        await session.commit()
+        question = result.fetchone()
 
-    await show_challenge_lobby(update, context, challenge_id)
+        if not question:
+            return
 
-    return True
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "A",
+                callback_data=f"challenge_answer_{challenge_id}|{question_order}|A|{question.question_id}",
+            ),
+            InlineKeyboardButton(
+                "B",
+                callback_data=f"challenge_answer_{challenge_id}|{question_order}|B|{question.question_id}",
+            ),
+        ],
+        [
+            InlineKeyboardButton(
+                "C",
+                callback_data=f"challenge_answer_{challenge_id}|{question_order}|C|{question.question_id}",
+            ),
+            InlineKeyboardButton(
+                "D",
+                callback_data=f"challenge_answer_{challenge_id}|{question_order}|D|{question.question_id}",
+            ),
+        ],
+    ])
+
+    text_message = (
+        f"🧠 <b>Challenge Question {question_order}/{CHALLENGE_QUESTION_COUNT}</b>\n\n"
+        f"<b>Category:</b> {question.category}\n\n"
+        f"{question.question}\n\n"
+        f"A. {question.option_a}\n"
+        f"B. {question.option_b}\n"
+        f"C. {question.option_c}\n"
+        f"D. {question.option_d}"
+    )
+
+    try:
+        await context.bot.send_message(
+            chat_id=user_id,
+            text=text_message,
+            parse_mode="HTML",
+            reply_markup=keyboard,
+        )
+    except Exception:
+        pass
 
 
 # ==========================================================
 # Show Challenge Lobby
 # ==========================================================
 
-async def show_challenge_lobby(update, context, challenge_id):
-
+async def show_challenge_lobby(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    challenge_id: int,
+):
     async with AsyncSessionLocal() as session:
-
+        # Get players
         result = await session.execute(
             text("""
-                SELECT u.username, u.full_name
+                SELECT u.tg_id, u.username, u.full_name
                 FROM challenge_players cp
-                JOIN users u ON u.tg_id = cp.user_id
+                JOIN users u
+                  ON u.tg_id = cp.user_id
                 WHERE cp.challenge_id = :cid
+                ORDER BY cp.joined_at ASC, cp.id ASC
             """),
             {"cid": challenge_id},
         )
-
         players = result.fetchall()
 
+        # Get challenge info
+        result = await session.execute(
+            text("""
+                SELECT creator_id, lobby_message_id, status
+                FROM challenges
+                WHERE id = :cid
+            """),
+            {"cid": challenge_id},
+        )
+        challenge_row = result.fetchone()
+
+    if not challenge_row:
+        return
+
     player_lines = []
+    for idx, player in enumerate(players, start=1):
+        name = player.username if player.username else player.full_name
+        player_lines.append(f"{idx}. {name}")
 
-    for p in players:
+    player_text = "\n".join(player_lines) if player_lines else "No players yet."
+    player_count = len(players)
 
-        name = p.username if p.username else p.full_name
-        player_lines.append(f"• {name}")
+    current_user_id = update.effective_user.id if update.effective_user else None
+    creator_id = challenge_row.creator_id
+    lobby_message_id = challenge_row.lobby_message_id
+    status = challenge_row.status
 
-    player_text = "\n".join(player_lines)
+    keyboard = []
 
-    keyboard = [
-        [
+    if status == "waiting" and current_user_id == creator_id:
+        keyboard.append([
             InlineKeyboardButton(
                 "▶ Start Challenge",
                 callback_data=f"challenge_start_{challenge_id}",
             )
-        ]
-    ]
+        ])
 
-    await update.effective_chat.send_message(
-
-        f"⚔️ <b>FRIEND CHALLENGE</b>\n\n"
-        f"<b>Players Joined:</b>\n"
+    lobby_text = (
+        "⚔️ <b>FRIEND CHALLENGE LOBBY</b>\n\n"
+        f"<b>Players Joined ({player_count}):</b>\n"
         f"{player_text}\n\n"
-        f"<b>Questions:</b> 5",
-
-        parse_mode="HTML",
-        reply_markup=InlineKeyboardMarkup(keyboard),
+        f"<b>Questions:</b> {CHALLENGE_QUESTION_COUNT}\n"
+        f"<b>Minimum players:</b> 2\n\n"
+        "Invite more friends, then start when ready."
     )
+
+    # Try to edit existing lobby message
+    if lobby_message_id:
+        try:
+            await context.bot.edit_message_text(
+                chat_id=update.effective_chat.id,
+                message_id=lobby_message_id,
+                text=lobby_text,
+                parse_mode="HTML",
+                reply_markup=InlineKeyboardMarkup(keyboard) if keyboard else None,
+            )
+            return
+        except Exception:
+            pass
+
+    # If no editable lobby exists, create a new one
+    sent_message = await update.effective_chat.send_message(
+        lobby_text,
+        parse_mode="HTML",
+        reply_markup=InlineKeyboardMarkup(keyboard) if keyboard else None,
+    )
+
+    # Save the new lobby message ID
+    async with AsyncSessionLocal() as session:
+        await session.execute(
+            text("""
+                UPDATE challenges
+                SET lobby_message_id = :message_id
+                WHERE id = :cid
+            """),
+            {
+                "message_id": sent_message.message_id,
+                "cid": challenge_id,
+            },
+        )
+        await session.commit()
 
 
 # ==========================================================
-# Start Challenge
+# Start Challenge - Show Category Picker
 # ==========================================================
 
 async def start_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
     query = update.callback_query
     await query.answer()
 
@@ -227,7 +581,91 @@ async def start_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = query.from_user
 
     async with AsyncSessionLocal() as session:
+        result = await session.execute(
+            text("""
+                SELECT creator_id, status
+                FROM challenges
+                WHERE id = :cid
+            """),
+            {"cid": challenge_id},
+        )
+        row = result.fetchone()
 
+        result = await session.execute(
+            text("""
+                SELECT COUNT(*) AS total_players
+                FROM challenge_players
+                WHERE challenge_id = :cid
+            """),
+            {"cid": challenge_id},
+        )
+        count_row = result.fetchone()
+
+    if not row or row.creator_id != user.id:
+        await query.answer(
+            "Only the challenge creator can start the game.",
+            show_alert=True,
+        )
+        return
+
+    if row.status not in ("waiting", "active", None):
+        await query.answer(
+            "This challenge has already started or finished.",
+            show_alert=True,
+        )
+        return
+
+    total_players = count_row.total_players if count_row else 0
+
+    if total_players < 2:
+        await query.answer(
+            "At least 2 players are needed to start this challenge.",
+            show_alert=True,
+        )
+        return
+
+    keyboard = []
+    for category in CHALLENGE_CATEGORIES:
+        keyboard.append([
+            InlineKeyboardButton(
+                category,
+                callback_data=f"challenge_category_{challenge_id}|{category}",
+            )
+        ])
+
+    await query.message.edit_text(
+        "🧠 <b>Select a category for this challenge</b>\n\n"
+        f"<b>Players ready:</b> {total_players}\n\n"
+        "Choose one category below to begin.",
+        parse_mode="HTML",
+        reply_markup=InlineKeyboardMarkup(keyboard),
+    )
+
+
+# ==========================================================
+# Choose Challenge Category And Start Questions
+# ==========================================================
+
+async def choose_challenge_category(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    payload = query.data.replace("challenge_category_", "", 1)
+
+    try:
+        challenge_id_str, category = payload.split("|", 1)
+        challenge_id = int(challenge_id_str)
+    except (ValueError, IndexError):
+        await query.answer("Invalid category selection.", show_alert=True)
+        return
+
+    if category not in CHALLENGE_CATEGORIES:
+        await query.answer("Invalid category.", show_alert=True)
+        return
+
+    user = query.from_user
+
+    async with AsyncSessionLocal() as session:
         result = await session.execute(
             text("""
                 SELECT creator_id
@@ -236,50 +674,243 @@ async def start_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
             """),
             {"cid": challenge_id},
         )
-
         row = result.fetchone()
 
-    if not row or row.creator_id != user.id:
+        if not row or row.creator_id != user.id:
+            await query.answer(
+                "Only the challenge creator can choose the category.",
+                show_alert=True,
+            )
+            return
 
-        await query.answer(
-            "Only the challenge creator can start the game.",
-            show_alert=True
+        await session.execute(
+            text("""
+                UPDATE challenges
+                SET category = :category,
+                    status = 'in_progress'
+                WHERE id = :cid
+            """),
+            {
+                "category": category,
+                "cid": challenge_id,
+            },
         )
 
+        await session.commit()
+
+    selected_questions = await generate_challenge_questions(
+        challenge_id=challenge_id,
+        category=category,
+        question_count=CHALLENGE_QUESTION_COUNT,
+    )
+
+    if not selected_questions:
+        await query.message.edit_text(
+            "❌ Could not generate challenge questions for this category.",
+            parse_mode="HTML",
+        )
         return
 
     await query.message.edit_text(
-
-        "🧠 <b>Challenge Started!</b>\n\n"
-        "You will now receive 5 trivia questions.\n"
-        "Answer them as fast as possible!",
-
+        f"🚀 <b>Challenge Started!</b>\n\n"
+        f"<b>Category:</b> {category}\n"
+        f"<b>Questions:</b> {CHALLENGE_QUESTION_COUNT}\n\n"
+        f"All players will now receive Question 1.",
         parse_mode="HTML",
     )
 
-    # Placeholder trigger for trivia engine
-    await query.message.reply_text("▶ Starting questions...")
+    await send_challenge_question(
+        context=context,
+        challenge_id=challenge_id,
+        question_order=1,
+    )
+
+
+# ==========================================================
+# Handle Challenge Answer
+# ==========================================================
+
+async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    payload = query.data.replace("challenge_answer_", "", 1)
+    challenge_id_str, question_order_str, selected_option, question_id_str = payload.split("|")
+
+    challenge_id = int(challenge_id_str)
+    question_order = int(question_order_str)
+    question_id = int(question_id_str)
+    user_id = query.from_user.id
+
+    async with AsyncSessionLocal() as session:
+        result = await session.execute(
+            text("""
+                SELECT 1
+                FROM challenge_answers
+                WHERE challenge_id = :cid
+                  AND user_id = :uid
+                  AND question_id = :qid
+                LIMIT 1
+            """),
+            {
+                "cid": challenge_id,
+                "uid": user_id,
+                "qid": question_id,
+            },
+        )
+
+        already_answered = result.fetchone()
+
+        if already_answered:
+            await query.answer("You already answered this question.", show_alert=True)
+            return
+
+        result = await session.execute(
+            text("""
+                SELECT correct_option
+                FROM questions
+                WHERE id = :qid
+            """),
+            {"qid": question_id},
+        )
+
+        row = result.fetchone()
+
+        if not row:
+            await query.answer("Question not found.", show_alert=True)
+            return
+
+        correct_option = row.correct_option
+        is_correct = (selected_option == correct_option)
+
+        await session.execute(
+            text("""
+                INSERT INTO challenge_answers
+                (challenge_id, user_id, question_id, selected_option, is_correct)
+                VALUES (:cid, :uid, :qid, :selected_option, :is_correct)
+            """),
+            {
+                "cid": challenge_id,
+                "uid": user_id,
+                "qid": question_id,
+                "selected_option": selected_option,
+                "is_correct": is_correct,
+            },
+        )
+
+        if is_correct:
+            await session.execute(
+                text("""
+                    UPDATE challenge_players
+                    SET score = score + 1
+                    WHERE challenge_id = :cid
+                      AND user_id = :uid
+                """),
+                {
+                    "cid": challenge_id,
+                    "uid": user_id,
+                },
+            )
+
+        await session.commit()
+
+    try:
+        await query.edit_message_reply_markup(reply_markup=None)
+    except Exception:
+        pass
+
+    if is_correct:
+        await query.message.reply_text("✅ Correct!")
+    else:
+        await query.message.reply_text(f"❌ Wrong! Correct answer: {correct_option}")
+
+    next_question_order = question_order + 1
+
+    if next_question_order <= CHALLENGE_QUESTION_COUNT:
+        await send_challenge_question_to_one_player(
+            context=context,
+            challenge_id=challenge_id,
+            question_order=next_question_order,
+            user_id=user_id,
+        )
+    else:
+        async with AsyncSessionLocal() as session:
+            await session.execute(
+                text("""
+                    UPDATE challenge_players
+                    SET completed = true
+                    WHERE challenge_id = :cid
+                      AND user_id = :uid
+                """),
+                {
+                    "cid": challenge_id,
+                    "uid": user_id,
+                },
+            )
+            await session.commit()
+
+        await query.message.reply_text("🏁 You have completed the challenge!")
+        await maybe_finish_challenge(update, context, challenge_id)
+
+
+# ==========================================================
+# Maybe Finish Challenge
+# ==========================================================
+
+async def maybe_finish_challenge(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    challenge_id: int,
+):
+    async with AsyncSessionLocal() as session:
+        result = await session.execute(
+            text("""
+                SELECT COUNT(*) AS remaining
+                FROM challenge_players
+                WHERE challenge_id = :cid
+                  AND completed = false
+            """),
+            {"cid": challenge_id},
+        )
+
+        row = result.fetchone()
+        remaining = row.remaining if row else 0
+
+        if remaining == 0:
+            await session.execute(
+                text("""
+                    UPDATE challenges
+                    SET status = 'completed'
+                    WHERE id = :cid
+                """),
+                {"cid": challenge_id},
+            )
+            await session.commit()
+
+            await show_challenge_result(update, context, challenge_id)
 
 
 # ==========================================================
 # Show Challenge Result
 # ==========================================================
 
-async def show_challenge_result(update: Update, context: ContextTypes.DEFAULT_TYPE, challenge_id):
-
+async def show_challenge_result(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    challenge_id: int,
+):
     async with AsyncSessionLocal() as session:
-
         result = await session.execute(
             text("""
                 SELECT u.username, u.full_name, cp.score
                 FROM challenge_players cp
-                JOIN users u ON u.tg_id = cp.user_id
+                JOIN users u
+                  ON u.tg_id = cp.user_id
                 WHERE cp.challenge_id = :challenge_id
                 ORDER BY cp.score DESC
             """),
             {"challenge_id": challenge_id},
         )
-
         rows = result.fetchall()
 
     if not rows:
@@ -287,10 +918,9 @@ async def show_challenge_result(update: Update, context: ContextTypes.DEFAULT_TY
 
     result_lines = []
 
-    for r in rows:
-
-        name = r.username if r.username else r.full_name
-        result_lines.append(f"{name} — {r.score}/5")
+    for row in rows:
+        name = row.username if row.username else row.full_name
+        result_lines.append(f"{name} — {row.score}/{CHALLENGE_QUESTION_COUNT}")
 
     winner = rows[0].username if rows[0].username else rows[0].full_name
 
@@ -328,7 +958,6 @@ async def show_challenge_result(update: Update, context: ContextTypes.DEFAULT_TY
 # ==========================================================
 
 def register_handlers(application):
-
     application.add_handler(
         CommandHandler("challenge", create_challenge)
     )
@@ -351,5 +980,19 @@ def register_handlers(application):
         CallbackQueryHandler(
             start_challenge,
             pattern="^challenge_start_",
+        )
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(
+            choose_challenge_category,
+            pattern="^challenge_category_",
+        )
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(
+            handle_challenge_answer,
+            pattern="^challenge_answer_",
         )
     )
