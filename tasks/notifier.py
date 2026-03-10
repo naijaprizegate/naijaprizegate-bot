@@ -67,11 +67,32 @@ def _classify_failure(res) -> tuple[str, bool]:
     return ("failed_permanent", False)
 
 
+def _resolve_success_status(res) -> str:
+    """
+    Distinguish between sent vs completed when provider reports success.
+    """
+    raw = (res.raw or {}) if hasattr(res, "raw") else {}
+
+    status_code = str(raw.get("statuscode") or raw.get("statusCode") or "").strip()
+    status_text = str(raw.get("status") or "").upper().strip()
+
+    if status_code == "200" or status_text in ("ORDER_COMPLETED", "COMPLETED", "SUCCESS"):
+        return "completed"
+
+    if status_code in ("100", "300") or status_text in ("ORDER_RECEIVED", "ORDER_PROCESSED"):
+        return "sent"
+
+    if getattr(res, "success", False):
+        return "sent"
+
+    return "failed"
+
+
 async def process_pending_airtime():
     async with get_async_session() as session:
         # --------------------------------------------------------
         # Pick only payouts that are actually ready to send:
-        #   - status = processing AND phone exists
+        #   - status = processing / queued AND phone exists
         #   - or retryable failures eligible for retry
         # IMPORTANT:
         #   DO NOT pick pending_claim rows here.
@@ -82,30 +103,27 @@ async def process_pending_airtime():
                 FROM airtime_payouts
                 WHERE
                     (
-                        status = 'processing'
-                        AND phone_number IS NOT NULL
-                        AND btrim(phone_number) <> ''
-                    )
-                    OR (
-                        status = 'failed_retryable'
-                        AND retry_count < :max_retries
-                        AND phone_number IS NOT NULL
-                        AND btrim(phone_number) <> ''
-                        AND (
-                            last_retry_at IS NULL
-                            OR last_retry_at < NOW() - INTERVAL '{AIRTIME_RETRY_COOLDOWN_MINUTES} minutes'
+                        status IN ('processing', 'queued')
+                        OR (
+                            status IN ('failed_retryable')
+                            AND COALESCE(retry_count, 0) < :max_retries
+                            AND (
+                                last_retry_at IS NULL
+                                OR last_retry_at < NOW() - INTERVAL '{AIRTIME_RETRY_COOLDOWN_MINUTES} minutes'
+                            )
                         )
                     )
+                    AND phone_number IS NOT NULL
                 ORDER BY created_at ASC
                 LIMIT :limit
                 FOR UPDATE SKIP LOCKED
             )
             SELECT
                 a.id,
+                a.status,
                 a.tg_id,
                 a.phone_number,
                 a.amount,
-                a.status,
                 COALESCE(a.retry_count, 0) AS retry_count
             FROM airtime_payouts a
             JOIN picked p ON p.id = a.id
@@ -130,10 +148,10 @@ async def process_pending_airtime():
 
         for row in rows:
             payout_id = row.id
+            current_status = row.status
             tg_id = row.tg_id
             phone = (row.phone_number or "").strip()
             amount = int(row.amount or 0)
-            current_status = row.status
             prev_retry_count = int(row.retry_count or 0)
             attempt_no = prev_retry_count + 1
 
@@ -172,7 +190,10 @@ async def process_pending_airtime():
                     )
                     await session.commit()
                 except Exception:
-                    logger.exception("❌ Failed to mark invalid-amount payout as failed | payout_id=%s", payout_id)
+                    logger.exception(
+                        "❌ Failed to mark invalid-amount payout as failed | payout_id=%s",
+                        payout_id
+                    )
                     await session.rollback()
                 continue
 
@@ -208,13 +229,13 @@ async def process_pending_airtime():
                 res = await send_airtime(phone=phone, amount=amount)
 
                 provider = getattr(res, "provider", None) or "clubkonnect"
-                ref = getattr(res, "reference", None) or ""
+                ref = str(getattr(res, "reference", None) or "").strip()
                 raw = getattr(res, "raw", None) or {}
                 raw_json = json.dumps(raw, ensure_ascii=False)
                 payload_text = raw_json[:5000]
 
                 if getattr(res, "success", False):
-                    new_status = "sent"
+                    new_status = _resolve_success_status(res)
                     should_retry = False
                 else:
                     new_status, should_retry = _classify_failure(res)
@@ -229,11 +250,13 @@ async def process_pending_airtime():
                             UPDATE airtime_payouts
                             SET status = :status,
                                 sent_at = CASE
-                                    WHEN :status = 'sent' THEN COALESCE(sent_at, NOW())
+                                    WHEN :status IN ('sent', 'completed')
+                                    THEN COALESCE(sent_at, NOW())
                                     ELSE sent_at
                                 END,
                                 completed_at = CASE
-                                    WHEN :status = 'completed' THEN COALESCE(completed_at, NOW())
+                                    WHEN :status = 'completed'
+                                    THEN COALESCE(completed_at, NOW())
                                     ELSE completed_at
                                 END,
                                 provider = :provider,
@@ -267,23 +290,36 @@ async def process_pending_airtime():
                 # ------------------------------------------------
                 if getattr(res, "success", False):
                     try:
-                        await bot.send_message(
-                            chat_id=tg_id,
-                            text=(
-                                f"🎉 Your airtime of ₦{amount} has been processed!\n"
+                        if new_status == "completed":
+                            user_text = (
+                                f"🎉 Your airtime of ₦{amount} has been delivered!\n"
                                 f"Phone: {phone}\n"
                                 f"Ref: {ref or 'N/A'}"
-                            ),
+                            )
+                        else:
+                            user_text = (
+                                f"✅ Your airtime request for ₦{amount} has been accepted.\n"
+                                f"Phone: {phone}\n"
+                                f"Ref: {ref or 'N/A'}\n\n"
+                                "It is being delivered now."
+                            )
+
+                        await bot.send_message(
+                            chat_id=tg_id,
+                            text=user_text,
                         )
                     except Exception:
-                        logger.exception("⚠️ Failed to notify user success | tg_id=%s | payout_id=%s", tg_id, payout_id)
+                        logger.exception(
+                            "⚠️ Failed to notify user success | tg_id=%s | payout_id=%s",
+                            tg_id, payout_id
+                        )
 
                     if ADMIN_USER_ID:
                         try:
                             await bot.send_message(
                                 chat_id=ADMIN_USER_ID,
                                 text=(
-                                    f"✅ Airtime processed: ₦{amount} → {phone}\n"
+                                    f"✅ Airtime processed ({new_status}): ₦{amount} → {phone}\n"
                                     f"user: {tg_id}\n"
                                     f"payout_id: {payout_id}\n"
                                     f"provider: {provider}\n"
@@ -292,10 +328,15 @@ async def process_pending_airtime():
                                 ),
                             )
                         except Exception:
-                            logger.exception("⚠️ Failed to notify admin success | payout_id=%s", payout_id)
+                            logger.exception(
+                                "⚠️ Failed to notify admin success | payout_id=%s",
+                                payout_id
+                            )
 
                 else:
-                    notify_user = (attempt_no % NOTIFY_USER_ON_FAILURE_EVERY_N_ATTEMPTS == 1)
+                    notify_user = (
+                        attempt_no % NOTIFY_USER_ON_FAILURE_EVERY_N_ATTEMPTS == 1
+                    )
 
                     if notify_user:
                         user_msg = (
@@ -325,7 +366,10 @@ async def process_pending_airtime():
                                 parse_mode=ParseMode.HTML,
                             )
                         except Exception:
-                            logger.exception("⚠️ Failed to notify user failure | tg_id=%s | payout_id=%s", tg_id, payout_id)
+                            logger.exception(
+                                "⚠️ Failed to notify user failure | tg_id=%s | payout_id=%s",
+                                tg_id, payout_id
+                            )
 
                     notify_admin = (
                         new_status == "failed_needs_funding"
@@ -346,10 +390,16 @@ async def process_pending_airtime():
                                 ),
                             )
                         except Exception:
-                            logger.exception("⚠️ Failed to notify admin failure | payout_id=%s", payout_id)
+                            logger.exception(
+                                "⚠️ Failed to notify admin failure | payout_id=%s",
+                                payout_id
+                            )
 
             except Exception as e:
-                logger.exception("❌ Exception during airtime sending | payout_id=%s | error=%s", payout_id, e)
+                logger.exception(
+                    "❌ Exception during airtime sending | payout_id=%s | error=%s",
+                    payout_id, e
+                )
                 await session.rollback()
 
                 fallback_status = "failed_retryable"
@@ -370,7 +420,10 @@ async def process_pending_airtime():
                     )
                     await session.commit()
                 except Exception:
-                    logger.exception("❌ Failed to mark payout fallback status | payout_id=%s", payout_id)
+                    logger.exception(
+                        "❌ Failed to mark payout fallback status | payout_id=%s",
+                        payout_id
+                    )
                     await session.rollback()
 
 
@@ -400,4 +453,3 @@ async def notifier_loop():
 
 if __name__ == "__main__":
     asyncio.run(notifier_loop())
-    
