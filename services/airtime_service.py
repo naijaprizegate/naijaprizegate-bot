@@ -482,7 +482,9 @@ def _network_keyboard() -> InlineKeyboardMarkup:
         [InlineKeyboardButton("❌ Cancel", callback_data="airtime_cancel")],
     ])
 
-
+# ===============================================================
+# Handle Airtime Claim Phone
+# ===============================================================
 async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg = update.message
     raw_phone = (msg.text or "").strip()
@@ -524,7 +526,7 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
             "❌ Invalid number — must be like `08123456789`",
             parse_mode="Markdown",
         )
-        return ConversationHandler.END
+        return AIRTIME_PHONE
 
     # -----------------------------
     # Lock payout + ensure ownership + move to processing
@@ -575,6 +577,7 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
                 )
 
         logger.info(f"☎️ Phone stored | payout_id={payout_id} | phone={phone}")
+        await msg.reply_text("✅ Phone number received. Processing your airtime now...")
 
     except Exception:
         logger.exception("❌ DB error updating payout phone")
@@ -594,20 +597,18 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
         raw_status = str(res.raw.get("status") or "").lower()
 
     if raw_status == "need_network":
-        # Save details for the network selection step
         context.user_data["awaiting_airtime_network"] = True
         context.user_data["airtime_phone"] = phone
         context.user_data["airtime_amount"] = int(amount)
-        # payout_id already in user_data
 
         await msg.reply_text(
             "📶 I couldn’t detect your network from the phone number.\n\n"
             "Please select your network to complete the airtime payout:",
             reply_markup=_network_keyboard(),
         )
-        return ConversationHandler.END  # end phone conversation step; next is callback query
+        return ConversationHandler.END
 
-    # Otherwise, finalize immediately (success/failure)
+    # Otherwise, finalize immediately
     await _finalize_airtime_payout(
         update=update,
         context=context,
@@ -619,6 +620,9 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
     return ConversationHandler.END
 
 
+# ===================================================
+# Finalize Airtime Payout
+# ====================================================
 
 async def _finalize_airtime_payout(
     update: Update,
