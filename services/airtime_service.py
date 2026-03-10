@@ -1,8 +1,8 @@
-# =====================================================================
+# ======================================================================
 # services/airtime_service.py
 # Airtime Rewards via Clubkonnect (Nellobytes) Airtime API
 # Flutterwave Checkout remains for buying trivia attempts
-# =====================================================================
+# ======================================================================
 from __future__ import annotations
 
 import os
@@ -509,18 +509,15 @@ async def handle_airtime_claim_phone(
     tg_id = user.id
     raw_phone = (msg.text or "").strip()
 
-    logger.info("✅ AIRTIME PHONE HANDLER HIT | tg_id=%s | raw=%s", tg_id, raw_phone)
-
     payout_id = context.user_data.get("pending_payout_id")
     awaiting = context.user_data.get("awaiting_airtime_phone")
     expiry_ts = context.user_data.get("airtime_expiry")
 
+    # Quietly ignore unrelated text messages if no airtime session is active
     if not awaiting or not payout_id:
-        await msg.reply_text(
-            "⛔ Claim session not active. Please tap *Claim Airtime Reward* again.",
-            parse_mode="Markdown",
-        )
         return ConversationHandler.END
+
+    logger.info("✅ AIRTIME PHONE HANDLER HIT | tg_id=%s | raw=%s", tg_id, raw_phone)
 
     if expiry_ts and datetime.utcnow().timestamp() > expiry_ts:
         context.user_data.pop("awaiting_airtime_phone", None)
@@ -637,7 +634,6 @@ async def handle_airtime_claim_phone(
 
     return ConversationHandler.END
 
-
 # ===================================================
 # Finalize Airtime Payout
 # ===================================================
@@ -682,7 +678,7 @@ async def _finalize_airtime_payout(
     elif getattr(airtime_result, "success", False):
         new_status = "sent"
     else:
-        new_status = "failed"
+        new_status = "failed_permanent"
 
     provider_response_json = json.dumps(raw_payload or {}, ensure_ascii=False)
     provider_payload_json = provider_response_json[:5000]
@@ -711,7 +707,11 @@ async def _finalize_airtime_payout(
                             END
                         WHERE id = :id
                           AND tg_id = :tg_id
-                          AND status NOT IN ('completed', 'failed')
+                          AND status NOT IN (
+                              'completed',
+                              'failed_permanent',
+                              'failed_needs_funding'
+                          )
                         RETURNING status
                     """),
                     {
@@ -732,14 +732,6 @@ async def _finalize_airtime_payout(
         logger.exception("❌ Failed to update payout status in DB | payout_id=%s", payout_id)
 
     if not updated:
-        try:
-            await bot.send_message(
-                chat_id=chat_id,
-                text="ℹ️ This airtime payout has already been processed (or is no longer editable).",
-            )
-        except Exception:
-            pass
-
         logger.info(
             "ℹ️ Finalize skipped (idempotent) | payout_id=%s | attempted_status=%s",
             payout_id,
@@ -777,7 +769,7 @@ async def _finalize_airtime_payout(
                 text=(
                     "⚠️ *Airtime Not Sent Yet*\n\n"
                     "We couldn’t complete your airtime reward right now.\n"
-                    "We’ll retry automatically if possible. If it persists, contact support."
+                    "Please contact support if it persists."
                 ),
                 parse_mode="Markdown",
             )
