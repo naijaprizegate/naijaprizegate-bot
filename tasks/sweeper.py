@@ -15,13 +15,14 @@ from logger import logger
 
 CHECK_INTERVAL_SECONDS = 60 * 60 * 24  # 24h
 
+
 async def expire_pending_payments_loop():
     """Loop that periodically expires pending payments older than 24h."""
     while True:
         try:
             await expire_pending_payments()
         except Exception as e:
-            logger.exception(f"Sweeper task error: {e}")
+            logger.exception("Sweeper task error: %s", e)
         await asyncio.sleep(CHECK_INTERVAL_SECONDS)
 
 
@@ -30,6 +31,7 @@ async def expire_pending_payments():
     async with get_async_session() as session:
         now = datetime.utcnow()
         expiry_time = now - timedelta(hours=24)
+
         result = await session.execute(
             Payment.__table__.update()
             .where(Payment.status == "pending")
@@ -37,8 +39,8 @@ async def expire_pending_payments():
             .values(status="expired")
         )
         await session.commit()
+
         if result.rowcount:
-            logger.info(f"Expired {result.rowcount} pending payments.")
+            logger.info("Expired %s pending payments.", result.rowcount)
         else:
             logger.debug("No pending payments to expire.")
-
