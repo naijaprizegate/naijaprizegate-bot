@@ -91,11 +91,17 @@ def _resolve_success_status(res) -> str:
 async def process_pending_airtime():
     async with get_async_session() as session:
         # --------------------------------------------------------
-        # Pick only payouts that are actually ready to send:
-        #   - status = processing / queued AND phone exists
-        #   - or retryable failures eligible for retry
+        # Pick only payouts ready to send:
+        #
+        # 1. Fresh claims:
+        #    status = 'pending_claim' AND phone_number IS NOT NULL
+        #
+        # 2. Retryable failures:
+        #    status = 'failed_retryable' and cooldown elapsed
+        #
         # IMPORTANT:
-        #   DO NOT pick pending_claim rows here.
+        # We now pick pending_claim rows because the phone handler
+        # saves the phone number but leaves status unchanged.
         # --------------------------------------------------------
         pick_sql = text(f"""
             WITH picked AS (
@@ -103,9 +109,13 @@ async def process_pending_airtime():
                 FROM airtime_payouts
                 WHERE
                     (
-                        status IN ('processing', 'queued')
+                        (
+                            status = 'pending_claim'
+                            AND phone_number IS NOT NULL
+                        )
                         OR (
-                            status IN ('failed_retryable')
+                            status = 'failed_retryable'
+                            AND phone_number IS NOT NULL
                             AND COALESCE(retry_count, 0) < :max_retries
                             AND (
                                 last_retry_at IS NULL
@@ -113,7 +123,6 @@ async def process_pending_airtime():
                             )
                         )
                     )
-                    AND phone_number IS NOT NULL
                 ORDER BY created_at ASC
                 LIMIT :limit
                 FOR UPDATE SKIP LOCKED
@@ -144,7 +153,10 @@ async def process_pending_airtime():
             return
 
         if not rows:
+            logger.debug("ℹ️ No airtime payouts ready for processing")
             return
+
+        logger.info("📦 Picked %s airtime payout(s) for processing", len(rows))
 
         for row in rows:
             payout_id = row.id
@@ -161,14 +173,18 @@ async def process_pending_airtime():
             if not phone:
                 logger.warning(
                     "⚠️ Skipping payout with empty phone_number | payout_id=%s | tg_id=%s | status=%s",
-                    payout_id, tg_id, current_status
+                    payout_id,
+                    tg_id,
+                    current_status,
                 )
                 continue
 
             if amount <= 0:
                 logger.error(
                     "❌ Invalid payout amount | payout_id=%s | tg_id=%s | amount=%s",
-                    payout_id, tg_id, amount
+                    payout_id,
+                    tg_id,
+                    amount,
                 )
                 try:
                     await session.execute(
@@ -192,13 +208,14 @@ async def process_pending_airtime():
                 except Exception:
                     logger.exception(
                         "❌ Failed to mark invalid-amount payout as failed | payout_id=%s",
-                        payout_id
+                        payout_id,
                     )
                     await session.rollback()
                 continue
 
             # ----------------------------------------------------
-            # Mark retry metadata before external provider call
+            # Mark as processing before external provider call
+            # Also increment retry metadata
             # ----------------------------------------------------
             try:
                 await session.execute(
@@ -206,7 +223,7 @@ async def process_pending_airtime():
                         UPDATE airtime_payouts
                         SET retry_count = COALESCE(retry_count, 0) + 1,
                             last_retry_at = NOW(),
-                            status = 'queued'
+                            status = 'processing'
                         WHERE id = :pid
                     """),
                     {"pid": payout_id},
@@ -218,8 +235,13 @@ async def process_pending_airtime():
                 continue
 
             logger.info(
-                "📡 Airtime attempt #%s | payout_id=%s | tg_id=%s | phone=%s | amount=₦%s",
-                attempt_no, payout_id, tg_id, phone, amount
+                "📡 Airtime attempt #%s | payout_id=%s | from_status=%s | tg_id=%s | phone=%s | amount=₦%s",
+                attempt_no,
+                payout_id,
+                current_status,
+                tg_id,
+                phone,
+                amount,
             )
 
             # ----------------------------------------------------
@@ -280,7 +302,8 @@ async def process_pending_airtime():
                 except Exception:
                     logger.exception(
                         "❌ DB update failed after airtime send | payout_id=%s | status=%s",
-                        payout_id, new_status
+                        payout_id,
+                        new_status,
                     )
                     await session.rollback()
                     continue
@@ -311,7 +334,8 @@ async def process_pending_airtime():
                     except Exception:
                         logger.exception(
                             "⚠️ Failed to notify user success | tg_id=%s | payout_id=%s",
-                            tg_id, payout_id
+                            tg_id,
+                            payout_id,
                         )
 
                     if ADMIN_USER_ID:
@@ -330,7 +354,7 @@ async def process_pending_airtime():
                         except Exception:
                             logger.exception(
                                 "⚠️ Failed to notify admin success | payout_id=%s",
-                                payout_id
+                                payout_id,
                             )
 
                 else:
@@ -368,7 +392,8 @@ async def process_pending_airtime():
                         except Exception:
                             logger.exception(
                                 "⚠️ Failed to notify user failure | tg_id=%s | payout_id=%s",
-                                tg_id, payout_id
+                                tg_id,
+                                payout_id,
                             )
 
                     notify_admin = (
@@ -392,13 +417,14 @@ async def process_pending_airtime():
                         except Exception:
                             logger.exception(
                                 "⚠️ Failed to notify admin failure | payout_id=%s",
-                                payout_id
+                                payout_id,
                             )
 
             except Exception as e:
                 logger.exception(
                     "❌ Exception during airtime sending | payout_id=%s | error=%s",
-                    payout_id, e
+                    payout_id,
+                    e,
                 )
                 await session.rollback()
 
@@ -422,7 +448,7 @@ async def process_pending_airtime():
                 except Exception:
                     logger.exception(
                         "❌ Failed to mark payout fallback status | payout_id=%s",
-                        payout_id
+                        payout_id,
                     )
                     await session.rollback()
 
@@ -437,7 +463,7 @@ async def retry_failed_notifications_loop():
         try:
             await retry_failed_notifications()
         except Exception as e:
-            logger.exception(f"Notifier retry_failed_notifications error: {e}")
+            logger.exception("Notifier retry_failed_notifications error: %s", e)
         await asyncio.sleep(RETRY_NOTIFICATIONS_SECONDS)
 
 
@@ -447,7 +473,7 @@ async def notifier_loop():
         try:
             await process_pending_airtime()
         except Exception as e:
-            logger.exception(f"Notifier loop error: {e}")
+            logger.exception("Notifier loop error: %s", e)
         await asyncio.sleep(AIRTIME_LOOP_SECONDS)
 
 
