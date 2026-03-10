@@ -184,12 +184,12 @@ async def add_tries(
 
 
 # -------------------------------------------------
-# Consume one try (bonus first, then paid) — NO COMMIT
+# Consume one try (paid first, then bonus) — NO COMMIT
 # -------------------------------------------------
 async def consume_try(session: AsyncSession, user: User):
     """
-    Deduct one try. Uses bonus first, then paid.
-    Returns: "bonus" | "paid" | None
+    Deduct one try. Uses paid first, then bonus.
+    Returns: "paid" | "bonus" | None
     """
     paid = int(user.tries_paid or 0)
     bonus = int(user.tries_bonus or 0)
@@ -199,21 +199,20 @@ async def consume_try(session: AsyncSession, user: User):
         user.tg_id, paid, bonus
     )
 
-    if bonus > 0:
-        user.tries_bonus = bonus - 1
-        await session.flush()
-        logger.info("➖ used bonus try | tg_id=%s | bonus_left=%s", user.tg_id, user.tries_bonus)
-        return "bonus"
-
     if paid > 0:
         user.tries_paid = paid - 1
         await session.flush()
         logger.info("➖ used paid try | tg_id=%s | paid_left=%s", user.tg_id, user.tries_paid)
         return "paid"
 
+    if bonus > 0:
+        user.tries_bonus = bonus - 1
+        await session.flush()
+        logger.info("➖ used bonus try | tg_id=%s | bonus_left=%s", user.tg_id, user.tries_bonus)
+        return "bonus"
+
     logger.warning("⚠️ no tries left | tg_id=%s", user.tg_id)
     return None
-
 
 # -------------------------------------------------
 # Get user by DB ID — NO COMMIT
