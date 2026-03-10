@@ -8,13 +8,8 @@ from logging_setup import logger, tg_error_handler  # must be first to protect s
 import os
 import re
 import logging
-import httpx
-import sys
-import hmac
-import hashlib
-import json
-import traceback
 import builtins
+import traceback
 
 # Force unbuffered output (Render needs this for real-time logs)
 os.environ["PYTHONUNBUFFERED"] = "1"
@@ -22,7 +17,6 @@ os.environ["PYTHONUNBUFFERED"] = "1"
 # ------------------------------------------------
 # 🧩 Step 1 — Secure Logging & Print Mask (Double-Lock)
 # ------------------------------------------------
-# Mask any Telegram bot tokens or similar secrets if they ever appear in logs or prints
 class SecretFilter(logging.Filter):
     TOKEN_PATTERN = re.compile(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b")
 
@@ -32,15 +26,18 @@ class SecretFilter(logging.Filter):
             record.args = tuple(self.TOKEN_PATTERN.sub("[SECRET]", str(a)) for a in record.args)
         return True
 
-# Apply this filter globally across all loggers
+
 for name in logging.root.manager.loggerDict:
     logging.getLogger(name).addFilter(SecretFilter())
 
-# Also secure print() to prevent secrets from leaking
+
 _real_print = print
+
 def safe_print(*args, **kwargs):
     safe_args = [re.sub(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", str(a)) for a in args]
     _real_print(*safe_args, **kwargs)
+
+
 builtins.print = safe_print
 
 # ------------------------------------------------
@@ -49,11 +46,8 @@ from fastapi import FastAPI, Query, Request, HTTPException, Depends, APIRouter, 
 from fastapi.responses import HTMLResponse, JSONResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from sqlalchemy import update, text
-from typing import Dict, Any, Optional
-from sqlalchemy.dialects.postgresql import insert
 
-from telegram import Update, Bot, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import Update, Bot
 from datetime import datetime, timezone
 from telegram.ext import (
     Application,
@@ -65,20 +59,17 @@ from telegram.ext import (
 )
 
 # Local imports
-from logger import tg_error_handler, logger
 from handlers import core, payments, free, admin, playtrivia
-from tasks import start_background_tasks, stop_background_tasks
 from db import init_game_state, get_async_session, get_session
-from models import Payment, User, GameState, PrizeWinner
+from models import Payment, GameState, PrizeWinner
 from helpers import get_or_create_user, add_tries
 from utils.signer import generate_signed_token, verify_signed_token
 from webhook import router as webhook_router
-from bot_instance import bot
-from services.airtime_service import handle_claim_airtime_button, handle_airtime_claim_phone, handle_airtime_network_choice
+from services.airtime_service import handle_claim_airtime_button, handle_airtime_claim_phone
 from utils.conversation_states import AIRTIME_PHONE
 from handlers.support import support_conv, admin_reply
 from handlers.challenge import register_handlers as register_challenge_handlers
-
+from tasks import start_background_tasks, stop_background_tasks
 
 # ✅ Import Flutterwave-related functions/constants
 from services.payments import (
@@ -89,11 +80,15 @@ from services.payments import (
     resolve_payment_status,
     validate_flutterwave_webhook,
 )
+
+logging.getLogger("httpx").setLevel(logging.WARNING)
+
+router = APIRouter()
+
 # ------------------------------------
 # Simple anti-spam for webhook calls
-# -------------------------------------
+# ------------------------------------
 _rate_limit_cache = {}
-
 RATE_LIMIT_SECONDS = 10
 
 def is_rate_limited(key: str, seconds: int = 30) -> bool:
@@ -105,6 +100,7 @@ def is_rate_limited(key: str, seconds: int = 30) -> bool:
     _rate_limit_cache[key] = now
     return False
 
+
 # ------------------------------------------------
 # 🔒 Secure Logging Filter (hide Telegram bot token)
 # -------------------------------------------------
@@ -112,20 +108,14 @@ class TelegramTokenFilter(logging.Filter):
     TOKEN_PATTERN = re.compile(r"(bot[0-9]+:[A-Za-z0-9_-]+)")
 
     def filter(self, record):
-        # Mask bot tokens in log messages
         record.msg = self.TOKEN_PATTERN.sub("bot<REDACTED>", str(record.msg))
         if record.args:
             record.args = tuple(self.TOKEN_PATTERN.sub("bot<REDACTED>", str(a)) for a in record.args)
         return True
 
-# Apply this filter globally
+
 for name in logging.root.manager.loggerDict:
     logging.getLogger(name).addFilter(TelegramTokenFilter())
-
-logger = logging.getLogger(__name__)
-logging.getLogger("httpx").setLevel(logging.WARNING)
-
-router = APIRouter()
 
 
 # -------------------------------------------------
@@ -152,16 +142,20 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 if not BOT_TOKEN:
     raise ValueError("❌ BOT_TOKEN is not set. Please define it in your environment variables.")
 
+if not WEBHOOK_SECRET:
+    raise ValueError("❌ WEBHOOK_SECRET is not set. Please define it in your environment variables.")
+
 BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
 
 # -------------------------------------------------
-# Initialize FastAPI 
+# Initialize FastAPI
 # -------------------------------------------------
 app = FastAPI()
 app.include_router(webhook_router)
 
 application: Application = None  # Telegram Application (global)
-BOT_READY: bool = False          # ✅ NEW: prevent early webhook processing
+BOT_READY: bool = False          # prevent early webhook processing
+
 
 # -------------------------------------------------
 # Root route
@@ -204,7 +198,7 @@ async def on_startup():
         # -------------------------------------------------
         application.add_handler(support_conv, group=-9)
 
-        # ✅ Admin reply command
+        # Admin reply command
         application.add_handler(CommandHandler("reply", admin_reply), group=-8)
 
         airtime_conversation = ConversationHandler(
@@ -230,35 +224,16 @@ async def on_startup():
 
         application.add_handler(airtime_conversation, group=-10)
 
-        application.add_handler(
-            CallbackQueryHandler(
-                handle_airtime_network_choice,
-                pattern=r"^airtime_net:"
-            ),
-            group=-7
-        )
-
         # -------------------------------------------------
-        # Register All Other Handlers (Normal Priority)
+        # Register All Other Handlers
         # -------------------------------------------------
         core.register_handlers(application)
-
-        # game / trivia system
         playtrivia.register_handlers(application)
-
-        # challenge system
         register_challenge_handlers(application)
-
-        # growth / engagement features
         free.register_handlers(application)
-
-        # payments
         payments.register_handlers(application)
-
-        # admin tools last
         admin.register_handlers(application)
-        
-        
+
         # -------------------------------------------------
         # Global Error Handler
         # -------------------------------------------------
@@ -268,18 +243,18 @@ async def on_startup():
         # Initialize Application
         # -------------------------------------------------
         await application.initialize()
-        
+
         # -------------------------------------------------
         # Webhook Setup
         # -------------------------------------------------
-        BASE_URL = os.getenv("BASE_URL")
-        if not BASE_URL:
+        base_url = os.getenv("BASE_URL")
+        if not base_url:
             raise ValueError("BASE_URL is not set")
 
-        webhook_url = f"{BASE_URL}/telegram/webhook/{WEBHOOK_SECRET}"
+        webhook_url = f"{base_url}/telegram/webhook/{WEBHOOK_SECRET}"
 
         await application.bot.set_webhook(webhook_url)
-        logger.info(f"✅ Webhook set to {webhook_url}")
+        logger.info("✅ Webhook set to %s", webhook_url)
 
         # -------------------------------------------------
         # Start Application
@@ -305,7 +280,7 @@ async def on_startup():
             traceback.format_exc()
         )
 
-        logger.error(f"❌ Unhandled exception during startup:\n{clean_trace}")
+        logger.error("❌ Unhandled exception during startup:\n%s", clean_trace)
 
 
 # -------------------------------------------------
@@ -322,30 +297,39 @@ async def on_shutdown():
     try:
         await stop_background_tasks()
     except Exception:
-        clean_trace = re.sub(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", traceback.format_exc())
-        logger.warning(f"⚠️ Error stopping background tasks:\n{clean_trace}")
+        clean_trace = re.sub(
+            r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b",
+            "[SECRET]",
+            traceback.format_exc()
+        )
+        logger.warning("⚠️ Error stopping background tasks:\n%s", clean_trace)
 
     # Then stop Telegram app
     if not application:
         return
 
-    # ✅ stop() may raise if PTB doesn't consider itself "running"
     try:
         await application.stop()
     except RuntimeError as e:
-        logger.info(f"ℹ️ application.stop() skipped: {e}")
+        logger.info("ℹ️ application.stop() skipped: %s", e)
     except Exception:
-        clean_trace = re.sub(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", traceback.format_exc())
-        logger.warning(f"⚠️ Unexpected error in application.stop():\n{clean_trace}")
+        clean_trace = re.sub(
+            r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b",
+            "[SECRET]",
+            traceback.format_exc()
+        )
+        logger.warning("⚠️ Unexpected error in application.stop():\n%s", clean_trace)
 
-    # ✅ always attempt shutdown (this is what really matters)
     try:
         await application.shutdown()
         logger.info("🛑 Telegram bot shutdown complete.")
     except Exception:
-        clean_trace = re.sub(r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b", "[SECRET]", traceback.format_exc())
-        logger.warning(f"⚠️ Error in application.shutdown():\n{clean_trace}")
-
+        clean_trace = re.sub(
+            r"\b\d{9,10}:[A-Za-z0-9_-]{35,}\b",
+            "[SECRET]",
+            traceback.format_exc()
+        )
+        logger.warning("⚠️ Error in application.shutdown():\n%s", clean_trace)
 
 # -------------------------------------------------
 # Telegram webhook endpoint
@@ -510,7 +494,7 @@ async def flutterwave_redirect(
 
                 if raw_status == "successful":
 
-                    credited = _calculate_tries_from_amount(int(fw_data.get("amount", 0)))
+                    credited = calculate_tries(int(fw_data.get("amount", 0)))
                     meta = fw_data.get("meta") or {}
                     raw_tg = meta.get("tg_id")
                     tg = None
