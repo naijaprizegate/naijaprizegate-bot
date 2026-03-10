@@ -1280,7 +1280,7 @@ async def show_challenge_result(
         "⚔️ <b>CHALLENGE RESULT</b>\n\n"
         + "\n".join(result_lines)
         + f"\n\n🏆 Winner: <b>{winner}</b>\n\n"
-        "🔥 Want to climb the global leaderboard?\n\n"
+        "🔥 Want to climb the leaderboard and become the <b>Winner</b>?\n\n"
         "Play Trivia to compete for:\n\n"
         "📱 <b>iPhone 17 Pro Max</b>\n"
         "📱 <b>Samsung Z Flip</b>\n"
