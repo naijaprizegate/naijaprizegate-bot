@@ -196,11 +196,6 @@ async def on_startup():
         # -------------------------------------------------
         # High Priority Conversations FIRST
         # -------------------------------------------------
-        application.add_handler(support_conv, group=-9)
-
-        # Admin reply command
-        application.add_handler(CommandHandler("reply", admin_reply), group=-8)
-
         airtime_conversation = ConversationHandler(
             entry_points=[
                 CallbackQueryHandler(
@@ -223,6 +218,21 @@ async def on_startup():
         )
 
         application.add_handler(airtime_conversation, group=-10)
+
+        # Extra safeguard: catch phone text even if ConversationHandler state
+        # is missed by another handler path
+        application.add_handler(
+            MessageHandler(
+                filters.TEXT & ~filters.COMMAND,
+                handle_airtime_claim_phone,
+            ),
+            group=-9,
+        )
+
+        application.add_handler(support_conv, group=-8)
+
+        # Admin reply command
+        application.add_handler(CommandHandler("reply", admin_reply), group=-7)
 
         # -------------------------------------------------
         # Register All Other Handlers
