@@ -3,7 +3,7 @@
 # ========================================================
 """
 Periodic background task manager for:
-- Airtime auto payouts (ClubKonnect via airtime_providers)
+- Airtime auto payouts
 - Sweeper for pending payments
 - Notification retries
 - DB cleanup
@@ -23,13 +23,8 @@ async def start_all_tasks(loop: asyncio.AbstractEventLoop = None) -> list[asynci
 
     tasks = [
         loop.create_task(sweeper.expire_pending_payments_loop(), name="SweeperLoop"),
-
-        # ✅ Airtime payouts loop (every minute)
         loop.create_task(notifier.notifier_loop(), name="AirtimeNotifierLoop"),
-
-        # ✅ Retry notifications loop (every hour)
         loop.create_task(notifier.retry_failed_notifications_loop(), name="RetryFailedNotificationsLoop"),
-
         loop.create_task(cleanup.cleanup_loop(), name="CleanupLoop"),
     ]
 
