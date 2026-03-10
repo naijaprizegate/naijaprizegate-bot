@@ -8,6 +8,7 @@ from __future__ import annotations
 import os
 import json
 import asyncio
+
 from sqlalchemy import text
 from telegram import Bot
 from telegram.constants import ParseMode
@@ -15,6 +16,7 @@ from telegram.constants import ParseMode
 from db import get_async_session
 from logger import logger
 from services.airtime_providers.service import send_airtime
+
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
@@ -32,37 +34,33 @@ AIRTIME_RETRY_COOLDOWN_MINUTES = 10
 BATCH_SIZE = 10
 
 # Avoid spamming user/admin on every retry
-NOTIFY_USER_ON_FAILURE_EVERY_N_ATTEMPTS = 2   # notify user on 1st, 3rd, 5th...
-NOTIFY_ADMIN_ON_FAILURE_EVERY_N_ATTEMPTS = 1  # admin gets every failure (change to 2 if noisy)
+NOTIFY_USER_ON_FAILURE_EVERY_N_ATTEMPTS = 2   # user on 1st, 3rd, 5th...
+NOTIFY_ADMIN_ON_FAILURE_EVERY_N_ATTEMPTS = 1  # admin every failure
 
 
 def _classify_failure(res) -> tuple[str, bool]:
     """
     Returns: (new_status, should_retry)
-    Relies on improved send_airtime() returning res.raw with retryable hints,
-    but still works even if those fields don't exist.
     """
     raw = (res.raw or {}) if hasattr(res, "raw") else {}
     status = str(raw.get("status") or "").upper().strip()
     msg = str(getattr(res, "message", "") or "").upper().strip()
 
-    # Provider explicitly says insufficient balance
     if status == "INSUFFICIENT_BALANCE" or msg == "INSUFFICIENT_BALANCE":
         return ("failed_needs_funding", False)
 
-    # Retryable hint from provider adapter
     retryable = raw.get("retryable")
     if isinstance(retryable, bool):
         return ("failed_retryable", retryable)
 
-    # Fallback heuristic if retryable flag isn't present
     http_status = raw.get("http_status")
     try:
         http_status = int(http_status) if http_status is not None else 0
     except Exception:
         http_status = 0
 
-    msg_lower = (str(raw.get("message") or "")).lower()
+    msg_lower = str(raw.get("message") or "").lower()
+
     if http_status >= 500 or "non-json response" in msg_lower or "timeout" in msg_lower:
         return ("failed_retryable", True)
 
@@ -71,36 +69,55 @@ def _classify_failure(res) -> tuple[str, bool]:
 
 async def process_pending_airtime():
     async with get_async_session() as session:
-        # Pick payouts that are eligible for sending/retrying
+        # --------------------------------------------------------
+        # Pick only payouts that are actually ready to send:
+        #   - status = processing AND phone exists
+        #   - or retryable failures eligible for retry
+        # IMPORTANT:
+        #   DO NOT pick pending_claim rows here.
+        # --------------------------------------------------------
         pick_sql = text(f"""
             WITH picked AS (
                 SELECT id
                 FROM airtime_payouts
                 WHERE
                     (
-                        status IN ('pending', 'pending_claim', 'claim_phone_set', 'queued')
-                        OR (
-                            status IN ('failed', 'failed_retryable')
-                            AND retry_count < :max_retries
-                            AND (
-                                last_retry_at IS NULL
-                                OR last_retry_at < NOW() - INTERVAL '{AIRTIME_RETRY_COOLDOWN_MINUTES} minutes'
-                            )
+                        status = 'processing'
+                        AND phone_number IS NOT NULL
+                        AND btrim(phone_number) <> ''
+                    )
+                    OR (
+                        status = 'failed_retryable'
+                        AND retry_count < :max_retries
+                        AND phone_number IS NOT NULL
+                        AND btrim(phone_number) <> ''
+                        AND (
+                            last_retry_at IS NULL
+                            OR last_retry_at < NOW() - INTERVAL '{AIRTIME_RETRY_COOLDOWN_MINUTES} minutes'
                         )
                     )
                 ORDER BY created_at ASC
                 LIMIT :limit
                 FOR UPDATE SKIP LOCKED
             )
-            SELECT a.id, a.tg_id, a.phone_number, a.amount, COALESCE(a.retry_count, 0) AS retry_count
+            SELECT
+                a.id,
+                a.tg_id,
+                a.phone_number,
+                a.amount,
+                a.status,
+                COALESCE(a.retry_count, 0) AS retry_count
             FROM airtime_payouts a
-            JOIN picked p ON p.id = a.id;
+            JOIN picked p ON p.id = a.id
         """)
 
         try:
             result = await session.execute(
                 pick_sql,
-                {"limit": BATCH_SIZE, "max_retries": MAX_AIRTIME_RETRIES},
+                {
+                    "limit": BATCH_SIZE,
+                    "max_retries": MAX_AIRTIME_RETRIES,
+                },
             )
             rows = result.fetchall()
         except Exception:
@@ -114,36 +131,54 @@ async def process_pending_airtime():
         for row in rows:
             payout_id = row.id
             tg_id = row.tg_id
-            phone = row.phone_number
-            amount = int(row.amount)
+            phone = (row.phone_number or "").strip()
+            amount = int(row.amount or 0)
+            current_status = row.status
             prev_retry_count = int(row.retry_count or 0)
             attempt_no = prev_retry_count + 1
 
-            # Basic sanity guard: don't call provider without a phone number
+            # ----------------------------------------------------
+            # Final sanity guard
+            # ----------------------------------------------------
             if not phone:
-                logger.error(f"❌ Airtime payout missing phone_number payout_id={payout_id} tg_id={tg_id}")
+                logger.warning(
+                    "⚠️ Skipping payout with empty phone_number | payout_id=%s | tg_id=%s | status=%s",
+                    payout_id, tg_id, current_status
+                )
+                continue
+
+            if amount <= 0:
+                logger.error(
+                    "❌ Invalid payout amount | payout_id=%s | tg_id=%s | amount=%s",
+                    payout_id, tg_id, amount
+                )
                 try:
                     await session.execute(
                         text("""
                             UPDATE airtime_payouts
-                            SET status='failed_permanent',
-                                provider_response=CAST(:response AS jsonb),
-                                provider_payload=:payload
-                            WHERE id=:pid
+                            SET status = 'failed_permanent',
+                                provider_response = CAST(:response AS jsonb),
+                                provider_payload = :payload
+                            WHERE id = :pid
                         """),
                         {
                             "pid": payout_id,
-                            "response": json.dumps({"status": "error", "message": "Missing phone_number"}, ensure_ascii=False),
-                            "payload": "Missing phone_number",
+                            "response": json.dumps(
+                                {"status": "error", "message": "Invalid payout amount"},
+                                ensure_ascii=False,
+                            ),
+                            "payload": "Invalid payout amount",
                         },
                     )
                     await session.commit()
                 except Exception:
-                    logger.exception(f"❌ Failed to mark missing-phone payout as failed payout_id={payout_id}")
+                    logger.exception("❌ Failed to mark invalid-amount payout as failed | payout_id=%s", payout_id)
                     await session.rollback()
                 continue
 
-            # Mark attempt BEFORE external call (good practice)
+            # ----------------------------------------------------
+            # Mark retry metadata before external provider call
+            # ----------------------------------------------------
             try:
                 await session.execute(
                     text("""
@@ -157,12 +192,18 @@ async def process_pending_airtime():
                 )
                 await session.commit()
             except Exception:
-                logger.exception(f"❌ Failed to update retry_count/status for payout_id={payout_id}")
+                logger.exception("❌ Failed to update retry metadata | payout_id=%s", payout_id)
                 await session.rollback()
                 continue
 
-            logger.info(f"📡 Airtime attempt #{attempt_no} → {phone} (₦{amount}) payout_id={payout_id}")
+            logger.info(
+                "📡 Airtime attempt #%s | payout_id=%s | tg_id=%s | phone=%s | amount=₦%s",
+                attempt_no, payout_id, tg_id, phone, amount
+            )
 
+            # ----------------------------------------------------
+            # Send airtime
+            # ----------------------------------------------------
             try:
                 res = await send_airtime(phone=phone, amount=amount)
 
@@ -178,46 +219,53 @@ async def process_pending_airtime():
                 else:
                     new_status, should_retry = _classify_failure(res)
 
-                    # If it's retryable but we've hit max retries -> make it permanent
                     if should_retry and attempt_no >= MAX_AIRTIME_RETRIES:
                         new_status = "failed_permanent"
                         should_retry = False
 
-                # ✅ One unified update with safe CAST
                 try:
                     await session.execute(
                         text("""
                             UPDATE airtime_payouts
-                            SET status=:status,
-                                sent_at=CASE WHEN :status='sent' THEN COALESCE(sent_at, NOW()) ELSE sent_at END,
-                                provider=:provider,
-                                provider_ref=CAST(:provider_ref AS text),
-                                provider_reference=CAST(:provider_reference AS varchar),
-                                provider_response=CAST(:response AS jsonb),
-                                provider_payload=:payload
-                            WHERE id=:pid
+                            SET status = :status,
+                                sent_at = CASE
+                                    WHEN :status = 'sent' THEN COALESCE(sent_at, NOW())
+                                    ELSE sent_at
+                                END,
+                                completed_at = CASE
+                                    WHEN :status = 'completed' THEN COALESCE(completed_at, NOW())
+                                    ELSE completed_at
+                                END,
+                                provider = :provider,
+                                provider_ref = CAST(:provider_ref AS text),
+                                provider_reference = CAST(:provider_reference AS varchar),
+                                provider_response = CAST(:response AS jsonb),
+                                provider_payload = :payload
+                            WHERE id = :pid
                         """),
                         {
                             "pid": payout_id,
                             "status": new_status,
                             "provider": provider,
-                            "provider_ref": ref or None,          # can be None
-                            "provider_reference": ref or None,    # can be None
+                            "provider_ref": ref or None,
+                            "provider_reference": ref or None,
                             "response": raw_json,
                             "payload": payload_text,
                         },
                     )
                     await session.commit()
                 except Exception:
-                    logger.exception(f"❌ DB update failed payout_id={payout_id} status={new_status}")
+                    logger.exception(
+                        "❌ DB update failed after airtime send | payout_id=%s | status=%s",
+                        payout_id, new_status
+                    )
                     await session.rollback()
                     continue
 
-                # ------------------------
-                # Notifications (safe)
-                # ------------------------
+                # ------------------------------------------------
+                # Notifications
+                # ------------------------------------------------
                 if getattr(res, "success", False):
-                    # User success
                     try:
                         await bot.send_message(
                             chat_id=tg_id,
@@ -228,9 +276,8 @@ async def process_pending_airtime():
                             ),
                         )
                     except Exception:
-                        logger.exception(f"⚠️ Failed to notify user tg_id={tg_id} payout_id={payout_id}")
+                        logger.exception("⚠️ Failed to notify user success | tg_id=%s | payout_id=%s", tg_id, payout_id)
 
-                    # Admin success
                     if ADMIN_USER_ID:
                         try:
                             await bot.send_message(
@@ -245,13 +292,12 @@ async def process_pending_airtime():
                                 ),
                             )
                         except Exception:
-                            logger.exception("⚠️ Failed to notify admin")
+                            logger.exception("⚠️ Failed to notify admin success | payout_id=%s", payout_id)
+
                 else:
-                    # Notify user less frequently to reduce spam
                     notify_user = (attempt_no % NOTIFY_USER_ON_FAILURE_EVERY_N_ATTEMPTS == 1)
 
                     if notify_user:
-                        # Use HTML (only for <b>...</b>), but use \n for line breaks.
                         user_msg = (
                             "⚠️ Airtime delivery failed.\n"
                             "We’ll retry automatically if possible. If it persists, contact support.\n\n"
@@ -279,10 +325,8 @@ async def process_pending_airtime():
                                 parse_mode=ParseMode.HTML,
                             )
                         except Exception:
-                            logger.exception(f"⚠️ Failed to notify user tg_id={tg_id} payout_id={payout_id}")
-                    
-                    
-                    # Notify admin: ALWAYS for funding issues; otherwise configurable
+                            logger.exception("⚠️ Failed to notify user failure | tg_id=%s | payout_id=%s", tg_id, payout_id)
+
                     notify_admin = (
                         new_status == "failed_needs_funding"
                         or (attempt_no % NOTIFY_ADMIN_ON_FAILURE_EVERY_N_ATTEMPTS == 0)
@@ -302,25 +346,31 @@ async def process_pending_airtime():
                                 ),
                             )
                         except Exception:
-                            logger.exception("⚠️ Failed to notify admin")
+                            logger.exception("⚠️ Failed to notify admin failure | payout_id=%s", payout_id)
 
             except Exception as e:
-                logger.exception(f"❌ Exception during airtime sending payout_id={payout_id}: {e}")
+                logger.exception("❌ Exception during airtime sending | payout_id=%s | error=%s", payout_id, e)
                 await session.rollback()
 
-                # Mark as retryable failed (do NOT overwrite to permanent immediately)
+                fallback_status = "failed_retryable"
+                if attempt_no >= MAX_AIRTIME_RETRIES:
+                    fallback_status = "failed_permanent"
+
                 try:
                     await session.execute(
                         text("""
                             UPDATE airtime_payouts
-                            SET status='failed_retryable'
-                            WHERE id=:pid
+                            SET status = :status
+                            WHERE id = :pid
                         """),
-                        {"pid": payout_id},
+                        {
+                            "pid": payout_id,
+                            "status": fallback_status,
+                        },
                     )
                     await session.commit()
                 except Exception:
-                    logger.exception(f"❌ Failed to mark payout as failed_retryable payout_id={payout_id}")
+                    logger.exception("❌ Failed to mark payout fallback status | payout_id=%s", payout_id)
                     await session.rollback()
 
 
@@ -350,4 +400,4 @@ async def notifier_loop():
 
 if __name__ == "__main__":
     asyncio.run(notifier_loop())
-
+    
