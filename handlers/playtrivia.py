@@ -110,9 +110,9 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     return await update.effective_message.reply_text(
         "🧠 *Choose your trivia category:*\n\n"
-        "✅ Correct answers increase your points.\n"
+        "✅ Correct answers on paid attempts increase your points.\n"
         "🏁 When the campaign threshold is reached, the top scorer wins the grand prize.\n\n"
-        "*AirPods* • *Bluetooth Speakers* • *Smart Phones*",
+        "*AirPods* • *Bluetooth Speakers* • *iPhone 17 pro max* • *Samsung Z flip*",
         parse_mode="Markdown",
         reply_markup=make_category_keyboard(),
     )
@@ -422,18 +422,28 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                         )
 
                 # NONE / LOSE / cycle_end (without milestone)
+                
                 else:
                     if correct:
-                        await msg.edit_text(
-                            f"✅ *Correct!* Your points are now *{points}* (Cycle {cycle_id}).\n\n"
-                            "Keep going 💪",
-                            parse_mode="Markdown",
-                            reply_markup=make_play_keyboard(),
-                        )
+                        if outcome.paid_spin:
+                            await msg.edit_text(
+                                f"✅ *Correct!* Your points are now *{points}* (Cycle {cycle_id}).\n\n"
+                                "Keep going 💪",
+                                parse_mode="Markdown",
+                                reply_markup=make_play_keyboard(),
+                            )
+                        else:
+                            await msg.edit_text(
+                                "✅ *Correct!*\n\n"
+                                "🎁 This was a free/bonus attempt so no leaderboard points were added\n\n"
+                                "Use paid attempts to increase your points. And you could win *iPhone 17 pro max* or *Samsung Z flip*",
+                                parse_mode="Markdown",
+                                reply_markup=make_play_keyboard(),
+                            )
                     else:
                         await msg.edit_text(
                             "❌ Not correct.\n\n"
-                            "Try again — your next correct answer adds points.",
+                            "Try again — your next correct paid answer adds points.",
                             parse_mode="Markdown",
                             reply_markup=make_play_keyboard(),
                         )
