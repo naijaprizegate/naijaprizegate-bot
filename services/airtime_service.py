@@ -487,9 +487,13 @@ def _network_keyboard() -> InlineKeyboardMarkup:
 # ===============================================================
 async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg = update.message
-    raw_phone = (msg.text or "").strip()
+    if not msg or not update.effective_user:
+        return ConversationHandler.END
 
-    logger.info(f"✅ AIRTIME PHONE HANDLER HIT | tg_id={update.effective_user.id} | raw={raw_phone}")
+    raw_phone = (msg.text or "").strip()
+    tg_id = update.effective_user.id
+
+    logger.info("✅ AIRTIME PHONE HANDLER HIT | tg_id=%s | raw=%s", tg_id, raw_phone)
 
     phone = normalize_ng_phone(raw_phone)
 
@@ -497,9 +501,9 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
     awaiting = context.user_data.get("awaiting_airtime_phone")
     expiry_ts = context.user_data.get("airtime_expiry")
 
-    # -----------------------------
+    # -------------------------------------------------------
     # Validate claim session
-    # -----------------------------
+    # -------------------------------------------------------
     if not awaiting or not payout_id:
         await msg.reply_text(
             "⛔ Claim session not active. Please tap *Claim Airtime Reward* again.",
@@ -518,9 +522,9 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
         )
         return ConversationHandler.END
 
-    # -----------------------------
+    # -------------------------------------------------------
     # Validate phone number
-    # -----------------------------
+    # -------------------------------------------------------
     if not phone.isdigit() or len(phone) != 11 or not validate_phone(phone):
         await msg.reply_text(
             "❌ Invalid number — must be like `08123456789`",
@@ -528,9 +532,12 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
         )
         return AIRTIME_PHONE
 
-    # -----------------------------
-    # Lock payout + ensure ownership + move to processing
-    # -----------------------------
+    # -------------------------------------------------------
+    # Save phone number and move payout to processing
+    # IMPORTANT:
+    # We do NOT send airtime here anymore.
+    # The notifier will pick this up and process it.
+    # -------------------------------------------------------
     try:
         async with AsyncSessionLocal() as session:
             async with session.begin():
@@ -551,8 +558,8 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
 
                 status, payout_tg_id, amount = row
 
-                if payout_tg_id != update.effective_user.id:
-                    logger.warning("🚨 Payout ownership mismatch")
+                if payout_tg_id != tg_id:
+                    logger.warning("🚨 Payout ownership mismatch | payout_id=%s | tg_id=%s", payout_id, tg_id)
                     await msg.reply_text("⛔ Unauthorized claim attempt.")
                     return ConversationHandler.END
 
@@ -573,52 +580,35 @@ async def handle_airtime_claim_phone(update: Update, context: ContextTypes.DEFAU
                             last_retry_at = NULL
                         WHERE id = :id
                     """),
-                    {"p": phone, "id": payout_id},
+                    {
+                        "p": phone,
+                        "id": payout_id,
+                    },
                 )
 
-        logger.info(f"☎️ Phone stored | payout_id={payout_id} | phone={phone}")
-        await msg.reply_text("✅ Phone number received. Processing your airtime now...")
+        logger.info("☎️ Phone stored | payout_id=%s | phone=%s", payout_id, phone)
 
     except Exception:
-        logger.exception("❌ DB error updating payout phone")
+        logger.exception("❌ DB error updating payout phone | payout_id=%s", payout_id)
         await msg.reply_text("⚠️ Could not save your phone. Please try again shortly.")
         return ConversationHandler.END
 
-    # -----------------------------
-    # Try sending airtime (first attempt: auto-detect network)
-    # -----------------------------
-    await msg.reply_text("⏳ Processing your airtime reward...")
+    # -------------------------------------------------------
+    # Clear only the phone-entry session keys
+    # Keep payout state in DB; notifier handles the rest
+    # -------------------------------------------------------
+    context.user_data.pop("awaiting_airtime_phone", None)
+    context.user_data.pop("airtime_expiry", None)
+    context.user_data.pop("pending_payout_id", None)
 
-    res = await send_airtime(phone=phone, amount=int(amount))
-
-    # If provider needs network, store state + ask user
-    raw_status = ""
-    if isinstance(res.raw, dict):
-        raw_status = str(res.raw.get("status") or "").lower()
-
-    if raw_status == "need_network":
-        context.user_data["awaiting_airtime_network"] = True
-        context.user_data["airtime_phone"] = phone
-        context.user_data["airtime_amount"] = int(amount)
-
-        await msg.reply_text(
-            "📶 I couldn’t detect your network from the phone number.\n\n"
-            "Please select your network to complete the airtime payout:",
-            reply_markup=_network_keyboard(),
-        )
-        return ConversationHandler.END
-
-    # Otherwise, finalize immediately
-    await _finalize_airtime_payout(
-        update=update,
-        context=context,
-        payout_id=payout_id,
-        phone=phone,
-        amount=int(amount),
-        airtime_result=res,
+    await msg.reply_text(
+        "✅ Phone number received.\n\n"
+        "⏳ Your airtime reward is now being processed. "
+        "You will get a confirmation shortly.",
+        parse_mode="Markdown",
     )
-    return ConversationHandler.END
 
+    return ConversationHandler.END
 
 # ===================================================
 # Finalize Airtime Payout
