@@ -46,7 +46,7 @@ from fastapi import FastAPI, Query, Request, HTTPException, Depends, APIRouter, 
 from fastapi.responses import HTMLResponse, JSONResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-
+from typing import Dict, Any, Optional
 from telegram import Update, Bot
 from datetime import datetime, timezone
 from telegram.ext import (
