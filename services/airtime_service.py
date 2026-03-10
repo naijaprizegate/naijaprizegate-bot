@@ -1,8 +1,8 @@
-# ======================================================================
+# =====================================================================
 # services/airtime_service.py
 # Airtime Rewards via Clubkonnect (Nellobytes) Airtime API
 # Flutterwave Checkout remains for buying trivia attempts
-# ======================================================================
+# =====================================================================
 from __future__ import annotations
 
 import os
