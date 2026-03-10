@@ -1,6 +1,6 @@
-# ==================================================
+# ====================================================
 # app.py
-# ===================================================
+# =====================================================
 # 1️⃣ Import & initialize secure logging first
 # -------------------------------------------------
 from logging_setup import logger, tg_error_handler  # must be first to protect secrets
@@ -202,10 +202,10 @@ async def on_startup():
         # -------------------------------------------------
         # High Priority Conversations FIRST
         # -------------------------------------------------
-        application.add_handler(support_conv, group=-10)
+        application.add_handler(support_conv, group=-9)
 
         # ✅ Admin reply command
-        application.add_handler(CommandHandler("reply", admin_reply), group=-9)
+        application.add_handler(CommandHandler("reply", admin_reply), group=-8)
 
         airtime_conversation = ConversationHandler(
             entry_points=[
@@ -228,14 +228,14 @@ async def on_startup():
             block=True,
         )
 
-        application.add_handler(airtime_conversation, group=-5)
+        application.add_handler(airtime_conversation, group=-10)
 
         application.add_handler(
             CallbackQueryHandler(
                 handle_airtime_network_choice,
                 pattern=r"^airtime_net:"
             ),
-            group=-4
+            group=-7
         )
 
         # -------------------------------------------------
@@ -257,6 +257,7 @@ async def on_startup():
 
         # admin tools last
         admin.register_handlers(application)
+        
         
         # -------------------------------------------------
         # Global Error Handler
@@ -854,4 +855,3 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
-
