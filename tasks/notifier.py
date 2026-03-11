@@ -10,7 +10,7 @@ import json
 import asyncio
 
 from sqlalchemy import text
-from telegram import Bot
+from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.constants import ParseMode
 
 from db import get_async_session
@@ -36,6 +36,13 @@ BATCH_SIZE = 10
 # Avoid spamming user/admin on every retry
 NOTIFY_USER_ON_FAILURE_EVERY_N_ATTEMPTS = 2   # user on 1st, 3rd, 5th...
 NOTIFY_ADMIN_ON_FAILURE_EVERY_N_ATTEMPTS = 1  # admin every failure
+
+
+def _post_airtime_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton("🧠 Continue Playing", callback_data="playtrivia")],
+        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard")],
+    ])
 
 
 def _classify_failure(res) -> tuple[str, bool]:
@@ -98,10 +105,6 @@ async def process_pending_airtime():
         #
         # 2. Retryable failures:
         #    status = 'failed_retryable' and cooldown elapsed
-        #
-        # IMPORTANT:
-        # We now pick pending_claim rows because the phone handler
-        # saves the phone number but leaves status unchanged.
         # --------------------------------------------------------
         pick_sql = text(f"""
             WITH picked AS (
@@ -330,6 +333,7 @@ async def process_pending_airtime():
                         await bot.send_message(
                             chat_id=tg_id,
                             text=user_text,
+                            reply_markup=_post_airtime_keyboard(),
                         )
                     except Exception:
                         logger.exception(
@@ -388,6 +392,7 @@ async def process_pending_airtime():
                                 chat_id=tg_id,
                                 text=user_msg,
                                 parse_mode=ParseMode.HTML,
+                                reply_markup=_post_airtime_keyboard(),
                             )
                         except Exception:
                             logger.exception(
@@ -479,4 +484,3 @@ async def notifier_loop():
 
 if __name__ == "__main__":
     asyncio.run(notifier_loop())
-
