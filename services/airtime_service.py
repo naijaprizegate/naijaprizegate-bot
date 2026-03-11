@@ -678,11 +678,17 @@ async def handle_airtime_claim_phone(
     context.user_data.pop("airtime_expiry", None)
     context.user_data.pop("pending_payout_id", None)
 
+    keyboard = InlineKeyboardMarkup([
+        [InlineKeyboardButton("🧠 Continue Playing", callback_data="playtrivia")],
+        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard")],
+    ])
+
     await msg.reply_text(
         "✅ Phone number received.\n\n"
         "⏳ Your airtime reward is now queued for processing. "
         "You will get a confirmation shortly.",
         parse_mode="Markdown",
+        reply_markup=keyboard,
     )
 
     return ConversationHandler.END
@@ -852,4 +858,3 @@ async def _finalize_airtime_payout(
         new_status,
         provider_ref,
     )
-
