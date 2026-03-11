@@ -194,33 +194,16 @@ async def on_startup():
         application = Application.builder().token(BOT_TOKEN).build()
 
         # -------------------------------------------------
-        # High Priority Conversations FIRST
+        # High Priority Handlers FIRST
         # -------------------------------------------------
-        airtime_conversation = ConversationHandler(
-            entry_points=[
-                CallbackQueryHandler(
-                    handle_claim_airtime_button,
-                    pattern=r"^claim_airtime:"
-                )
-            ],
-            states={
-                AIRTIME_PHONE: [
-                    MessageHandler(
-                        filters.TEXT & ~filters.COMMAND,
-                        handle_airtime_claim_phone
-                    )
-                ],
-            },
-            fallbacks=[],
-            allow_reentry=True,
-            per_message=False,
-            block=True,
+        application.add_handler(
+            CallbackQueryHandler(
+                handle_claim_airtime_button,
+                pattern=r"^claim_airtime:"
+            ),
+            group=-10,
         )
 
-        application.add_handler(airtime_conversation, group=-10)
-
-        # Extra safeguard: catch phone text even if ConversationHandler state
-        # is missed by another handler path
         application.add_handler(
             MessageHandler(
                 filters.TEXT & ~filters.COMMAND,
@@ -849,3 +832,4 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
+
