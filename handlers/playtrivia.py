@@ -123,12 +123,22 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 # ================================================================
 async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
+    if not query:
+        return
+
     await query.answer()
 
     tg_user = query.from_user
     logger.info("🧠 category selected | tg_id=%s | data=%s", tg_user.id, query.data)
 
-    _, category = query.data.split("_", 1)
+    try:
+        _, category = query.data.split("_", 1)
+    except Exception:
+        await query.message.reply_text(
+            "⚠️ Invalid category selection.",
+            reply_markup=make_category_keyboard(),
+        )
+        return
 
     # ✅ TRUE sequential (per user, per category) using DB
     q = await get_next_question_for_user(tg_user.id, category)
@@ -140,9 +150,12 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
             reply_markup=make_category_keyboard(),
         )
 
-    # Save pending data
+    # ------------------------------------------------------------
+    # Reset round state for new question
+    # ------------------------------------------------------------
     context.user_data["pending_trivia_question"] = q
     context.user_data["trivia_answered"] = False
+    context.user_data["trivia_processing_lock"] = False
     context.user_data["trivia_deadline"] = time.time() + TRIVIA_TIMEOUT_SECONDS
 
     question_text = (
@@ -168,18 +181,29 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
         ]
     )
 
-    # Send message
+    # Send question message
     sent_msg = await query.message.reply_text(
         question_text,
         parse_mode="Markdown",
         reply_markup=keyboard,
     )
 
+    current_qid = str(q["id"])
+
+    # ------------------------------------------------------------
     # Countdown display
-    async def countdown(message, base_text, kb_markup, secs: int):
+    # ------------------------------------------------------------
+    async def countdown(message, base_text, kb_markup, secs: int, qid: str):
         for remaining in range(secs, 0, -1):
+            current_question = context.user_data.get("pending_trivia_question")
+
+            # Stop countdown if question changed or round already closed
             if context.user_data.get("trivia_answered", False):
                 break
+
+            if not current_question or str(current_question.get("id")) != qid:
+                break
+
             try:
                 await message.edit_text(
                     f"{base_text}\n\n⏳ *Time left:* {remaining}s",
@@ -190,11 +214,16 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
                 break
             except Exception:
                 break
+
             await asyncio.sleep(1)
 
-    asyncio.create_task(countdown(sent_msg, question_text, keyboard, TRIVIA_TIMEOUT_SECONDS))
+    asyncio.create_task(
+        countdown(sent_msg, question_text, keyboard, TRIVIA_TIMEOUT_SECONDS, current_qid)
+    )
 
+    # ------------------------------------------------------------
     # Timeout task (cancel old one)
+    # ------------------------------------------------------------
     old_timer = context.user_data.get("trivia_timer")
     if isinstance(old_timer, asyncio.Task) and not old_timer.done():
         old_timer.cancel()
@@ -202,7 +231,6 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["trivia_timer"] = asyncio.create_task(
         trivia_timeout_task(update, context, sent_msg.message_id, TRIVIA_TIMEOUT_SECONDS)
     )
-
 
 # ================================================================
 # ⏱️ TRIVIA TIMEOUT TASK
@@ -215,9 +243,17 @@ async def trivia_timeout_task(
 ):
     await asyncio.sleep(timeout_seconds)
 
+    # ------------------------------------------------------------
+    # If already answered or already being processed, do nothing
+    # ------------------------------------------------------------
     if context.user_data.get("trivia_answered", False):
         return
 
+    if context.user_data.get("trivia_processing_lock", False):
+        return
+
+    # Acquire processing lock
+    context.user_data["trivia_processing_lock"] = True
     context.user_data["trivia_answered"] = True
     context.user_data["is_correct_answer"] = False
 
@@ -236,27 +272,50 @@ async def trivia_timeout_task(
 
     await run_spin_and_apply_reward(update, context)
 
-
 # ================================================================
 # STEP 3 — Answer handler (lock + evaluate)
 # ================================================================
 async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
+    if not query:
+        return
+
     await query.answer()
 
-    # Already answered / expired
+    # ------------------------------------------------------------
+    # Duplicate tap / already closed:
+    # do NOT edit the message here, or it will flash and get replaced
+    # by the first handler that is still processing.
+    # ------------------------------------------------------------
     if context.user_data.get("trivia_answered", False):
-        return await query.edit_message_text(
-            "⏳ This trivia round is already closed.\n\n"
-            "Tap *Play Again* to start a new round.",
-            parse_mode="Markdown",
-            reply_markup=make_play_keyboard(),
-        )
+        try:
+            await query.answer("This trivia round is already being processed.", show_alert=False)
+        except Exception:
+            pass
+        return
 
-    # Lock
+    if context.user_data.get("trivia_processing_lock", False):
+        try:
+            await query.answer("This trivia round is already being processed.", show_alert=False)
+        except Exception:
+            pass
+        return
+
+    # ------------------------------------------------------------
+    # Lock immediately
+    # ------------------------------------------------------------
+    context.user_data["trivia_processing_lock"] = True
     context.user_data["trivia_answered"] = True
 
+    # Remove buttons immediately so user cannot tap again
+    try:
+        await query.edit_message_reply_markup(reply_markup=None)
+    except Exception:
+        pass
+
+    # ------------------------------------------------------------
     # Cancel timer
+    # ------------------------------------------------------------
     timer = context.user_data.pop("trivia_timer", None)
     if isinstance(timer, asyncio.Task) and not timer.done():
         try:
@@ -264,16 +323,28 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
         except Exception:
             pass
 
+    # ------------------------------------------------------------
     # Extract answer
-    _, qid, selected = query.data.split("_", 2)
+    # ------------------------------------------------------------
+    try:
+        _, qid, selected = query.data.split("_", 2)
+    except Exception:
+        await query.edit_message_text(
+            "⚠️ Invalid answer data.\n\nPlease start a new round.",
+            parse_mode="Markdown",
+            reply_markup=make_play_keyboard(),
+        )
+        return
+
     question = context.user_data.get("pending_trivia_question")
 
     if not question or str(question.get("id")) != str(qid):
-        return await query.edit_message_text(
+        await query.edit_message_text(
             "⚠️ Trivia round expired or missing data.\n\nPlease start a new round.",
             parse_mode="Markdown",
             reply_markup=make_play_keyboard(),
         )
+        return
 
     correct_letter = question["answer"]
     correct_text = question["options"][correct_letter]
@@ -281,6 +352,9 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
 
     context.user_data["is_correct_answer"] = is_correct
 
+    # ------------------------------------------------------------
+    # Show result
+    # ------------------------------------------------------------
     if is_correct:
         await query.edit_message_text(
             "🎯 *Correct!*\n\n_Calculating your reward..._",
@@ -296,7 +370,6 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
 
     await asyncio.sleep(0.8)
     await run_spin_and_apply_reward(update, context)
-
 
 # ================================================================
 # STEP 4 — Spin animation + DB resolve + UI apply
@@ -811,3 +884,4 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
         application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern=r"^buy$"))
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
+
