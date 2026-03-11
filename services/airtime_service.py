@@ -828,7 +828,7 @@ async def _finalize_airtime_payout(
                 text=(
                     "⚠️ *Airtime Not Sent Yet*\n\n"
                     "We couldn’t complete your airtime reward right now.\n"
-                    "Please contact support if it persists."
+                    "Please contact support via /support if it persists."
                 ),
                 parse_mode="Markdown",
             )
