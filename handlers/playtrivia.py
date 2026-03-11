@@ -885,3 +885,4 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
 
+
