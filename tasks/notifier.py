@@ -366,21 +366,21 @@ async def process_pending_airtime():
                         user_msg = (
                             "⚠️ Airtime delivery failed.\n"
                             "We’ll retry automatically if possible. If it persists, contact support.\n\n"
-                            "Type or click on /start and then click on <b>CONTACT SUPPORT</b> button."
+                            "Send or click on /contact to report."
                         )
 
                         if new_status == "failed_needs_funding":
                             user_msg = (
                                 "⚠️ Airtime is delayed due to a temporary service issue.\n"
                                 "Your reward is safe and will be processed shortly.\n\n"
-                                "If after ten minutes you do not contact support via /contact."
+                                "If after ten minutes you do not get it, contact support via /contact."
                             )
 
                         if new_status == "failed_permanent":
                             user_msg = (
                                 "⚠️ Airtime delivery could not be completed at the moment.\n"
                                 "Please contact support so we can resolve it quickly.\n\n"
-                                "Send or click on /contact to complain."
+                                "Send or click on /contact to report."
                             )
 
                         try:
