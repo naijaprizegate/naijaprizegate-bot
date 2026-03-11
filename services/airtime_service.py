@@ -479,7 +479,7 @@ async def handle_claim_airtime_button(
         parse_mode="Markdown",
     )
 
-    return AIRTIME_PHONE
+    return ConversationHandler.END
 
 
 # ===============================================================
