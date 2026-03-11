@@ -493,8 +493,9 @@ async def handle_airtime_claim_phone(
     Receives the user's phone number for an airtime claim.
 
     IMPORTANT:
-    - Validates the active claim session
     - Validates and normalizes the phone number
+    - Tries to resolve the pending payout from user_data first
+    - Falls back to DB lookup if user_data session is missing
     - Saves only the phone number to DB
     - DOES NOT send airtime here
     - DOES NOT mark payout as 'processing' here
@@ -509,17 +510,36 @@ async def handle_airtime_claim_phone(
     tg_id = user.id
     raw_phone = (msg.text or "").strip()
 
+    logger.info("📩 AIRTIME PHONE HANDLER ENTRY | tg_id=%s | raw=%s", tg_id, raw_phone)
+
     payout_id = context.user_data.get("pending_payout_id")
     awaiting = context.user_data.get("awaiting_airtime_phone")
     expiry_ts = context.user_data.get("airtime_expiry")
 
-    # Quietly ignore unrelated text messages if no airtime session is active
-    if not awaiting or not payout_id:
-        return ConversationHandler.END
+    # -------------------------------------------------------
+    # Normalize + validate phone first
+    # -------------------------------------------------------
+    try:
+        phone = normalize_ng_phone(raw_phone)
+    except Exception:
+        phone = raw_phone
 
-    logger.info("✅ AIRTIME PHONE HANDLER HIT | tg_id=%s | raw=%s", tg_id, raw_phone)
+    if not phone or not phone.isdigit() or len(phone) != 11 or not validate_phone(phone):
+        # Quietly ignore unrelated text if we are not in a claim session
+        if not awaiting and not payout_id:
+            logger.info("ℹ️ Ignoring non-claim text in airtime phone handler | tg_id=%s", tg_id)
+            return ConversationHandler.END
 
-    if expiry_ts and datetime.utcnow().timestamp() > expiry_ts:
+        await msg.reply_text(
+            "❌ Invalid number — must be like `08123456789`",
+            parse_mode="Markdown",
+        )
+        return AIRTIME_PHONE
+
+    # -------------------------------------------------------
+    # Check session expiry if session exists
+    # -------------------------------------------------------
+    if awaiting and expiry_ts and datetime.utcnow().timestamp() > expiry_ts:
         context.user_data.pop("awaiting_airtime_phone", None)
         context.user_data.pop("pending_payout_id", None)
         context.user_data.pop("airtime_expiry", None)
@@ -530,21 +550,51 @@ async def handle_airtime_claim_phone(
         )
         return ConversationHandler.END
 
-    try:
-        phone = normalize_ng_phone(raw_phone)
-    except Exception:
-        phone = raw_phone
-
-    if not phone or not phone.isdigit() or len(phone) != 11 or not validate_phone(phone):
-        await msg.reply_text(
-            "❌ Invalid number — must be like `08123456789`",
-            parse_mode="Markdown",
-        )
-        return AIRTIME_PHONE
-
+    # -------------------------------------------------------
+    # Resolve payout_id
+    # First try user_data
+    # If missing, fall back to latest pending_claim in DB
+    # -------------------------------------------------------
     try:
         async with AsyncSessionLocal() as session:
             async with session.begin():
+                # Fallback lookup if user_data session is missing
+                if not payout_id:
+                    logger.info(
+                        "🔎 No pending_payout_id in user_data, falling back to DB lookup | tg_id=%s",
+                        tg_id,
+                    )
+
+                    fallback_res = await session.execute(
+                        text("""
+                            SELECT id
+                            FROM airtime_payouts
+                            WHERE tg_id = :tg_id
+                              AND status = 'pending_claim'
+                              AND phone_number IS NULL
+                            ORDER BY created_at DESC
+                            LIMIT 1
+                            FOR UPDATE
+                        """),
+                        {"tg_id": tg_id},
+                    )
+                    payout_id = fallback_res.scalar_one_or_none()
+
+                    if payout_id:
+                        payout_id = str(payout_id)
+                        logger.info(
+                            "✅ Fallback payout found | tg_id=%s | payout_id=%s",
+                            tg_id,
+                            payout_id,
+                        )
+                    else:
+                        logger.info(
+                            "ℹ️ No pending airtime claim found for fallback lookup | tg_id=%s",
+                            tg_id,
+                        )
+                        return ConversationHandler.END
+
+                # Lock the payout row
                 res = await session.execute(
                     text("""
                         SELECT status, tg_id, amount, phone_number
@@ -621,6 +671,9 @@ async def handle_airtime_claim_phone(
         )
         return ConversationHandler.END
 
+    # -------------------------------------------------------
+    # Clear phone-entry session keys
+    # -------------------------------------------------------
     context.user_data.pop("awaiting_airtime_phone", None)
     context.user_data.pop("airtime_expiry", None)
     context.user_data.pop("pending_payout_id", None)
