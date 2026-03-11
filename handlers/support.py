@@ -47,9 +47,9 @@ ADMIN_IDS = _get_admin_ids()
 # ==============================================================
 
 async def support_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
-    # mark user as inside conversation
+    # mark user as inside support conversation
     context.user_data["_in_conversation"] = True
+    context.user_data["support_active"] = True
 
     text_msg = (
         "📩 <b>Contact Report Desk</b>\n\n"
@@ -75,11 +75,11 @@ async def support_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ==============================================================
 
 async def support_start_from_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
     query = update.callback_query
     await query.answer()
 
     context.user_data["_in_conversation"] = True
+    context.user_data["support_active"] = True
 
     text_msg = (
         "📩 <b>Contact Report Desk</b>\n\n"
@@ -106,7 +106,6 @@ async def support_start_from_callback(update: Update, context: ContextTypes.DEFA
 # ==============================================================
 
 async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
     if not update.message or not update.message.text:
         return SUPPORT_WAITING_MESSAGE
 
@@ -120,14 +119,11 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
 
     user = update.effective_user
 
-
     # ==========================================================
     # Save to Database
     # ==========================================================
-
     try:
         async with AsyncSessionLocal() as session:
-
             await session.execute(
                 text("""
                     INSERT INTO support_tickets
@@ -145,28 +141,22 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
             await session.commit()
 
     except Exception:
-
         await update.message.reply_text(
             "❌ Support is temporarily unavailable.\n"
             "Please try again shortly or send /cancel."
         )
-
         return SUPPORT_WAITING_MESSAGE
-
 
     # ==========================================================
     # Notify Admins
     # ==========================================================
-
     who = user.first_name or "User"
 
     if user.username:
         who += f" (@{user.username})"
 
     for admin_id in ADMIN_IDS:
-
         try:
-
             await context.bot.send_message(
                 chat_id=admin_id,
                 text=(
@@ -179,24 +169,21 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
                 ),
                 parse_mode="HTML",
             )
-
         except Exception:
             pass
-
 
     # ==========================================================
     # Confirmation to User
     # ==========================================================
-
     await update.message.reply_text(
         "✅ Your message has been sent.\n"
         "Support will reply here shortly.\n\n"
         "Send /start to return to menu."
     )
 
-
     # exit conversation
     context.user_data.pop("_in_conversation", None)
+    context.user_data.pop("support_active", None)
 
     return ConversationHandler.END
 
@@ -206,7 +193,6 @@ async def support_receive_message(update: Update, context: ContextTypes.DEFAULT_
 # ==============================================================
 
 async def admin_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
     user = update.effective_user
 
     if user.id not in ADMIN_IDS:
@@ -219,7 +205,6 @@ async def admin_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     try:
-
         target_user = int(context.args[0])
         message = " ".join(context.args[1:])
 
@@ -232,7 +217,6 @@ async def admin_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("✅ Reply sent.")
 
     except Exception:
-
         await update.message.reply_text(
             "❌ Failed to send reply."
         )
@@ -243,8 +227,8 @@ async def admin_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ==============================================================
 
 async def support_cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
     context.user_data["_in_conversation"] = False
+    context.user_data.pop("support_active", None)
 
     await update.effective_message.reply_text(
         "❌ Support request cancelled.\nSend /start to return to menu."
@@ -262,7 +246,7 @@ support_conv = ConversationHandler(
 
         # COMMANDS
         CommandHandler("support", support_start),
-        CommandHandler("contact", support_start),   # ✅ NEW COMMAND
+        CommandHandler("contact", support_start),
 
         # BUTTON TEXT
         MessageHandler(
@@ -275,28 +259,23 @@ support_conv = ConversationHandler(
             support_start_from_callback,
             pattern=r"^support:start$",
         ),
-
     ],
 
     states={
-
         SUPPORT_WAITING_MESSAGE: [
-
             MessageHandler(
                 filters.TEXT & ~filters.COMMAND,
                 support_receive_message,
             ),
-
         ],
     },
 
     fallbacks=[
-
         CommandHandler("cancel", support_cancel),
-
     ],
 
     allow_reentry=True,
     per_user=True,
     per_chat=True,
 )
+
