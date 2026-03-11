@@ -373,14 +373,14 @@ async def process_pending_airtime():
                             user_msg = (
                                 "⚠️ Airtime is delayed due to a temporary service issue.\n"
                                 "Your reward is safe and will be processed shortly.\n\n"
-                                "Type or click on /start and then click on <b>CONTACT SUPPORT</b> button."
+                                "If after ten minutes you do not contact support via /contact."
                             )
 
                         if new_status == "failed_permanent":
                             user_msg = (
                                 "⚠️ Airtime delivery could not be completed at the moment.\n"
                                 "Please contact support so we can resolve it quickly.\n\n"
-                                "Type or click on /start and then click on <b>CONTACT SUPPORT</b> button."
+                                "Send or click on /contact to complain."
                             )
 
                         try:
@@ -479,3 +479,4 @@ async def notifier_loop():
 
 if __name__ == "__main__":
     asyncio.run(notifier_loop())
+
