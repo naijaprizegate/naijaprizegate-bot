@@ -507,6 +507,10 @@ async def handle_airtime_claim_phone(
     if not msg or not user:
         return ConversationHandler.END
 
+    # Do not interfere with support flow
+    if context.user_data.get("support_active"):
+        return ConversationHandler.END
+
     tg_id = user.id
     raw_phone = (msg.text or "").strip()
 
