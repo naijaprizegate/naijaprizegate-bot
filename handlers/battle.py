@@ -19,6 +19,8 @@ from db import AsyncSessionLocal
 from logger import logger
 from services.battle_service import (
     create_battle_room,
+    save_host_lobby_message,
+    join_battle_room,
     get_battle_room,
     get_battle_players,
     build_battle_lobby_text,
@@ -31,6 +33,7 @@ BATTLE_CATEGORY = 3001
 BATTLE_QUESTION_COUNT = 3002
 BATTLE_DURATION = 3003
 BATTLE_MAX_PLAYERS = 3004
+BATTLE_JOIN_CODE = 3005
 
 
 # ============================================================
@@ -40,7 +43,7 @@ def battle_mode_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("🔥 Create Battle Room", callback_data="battle:create")],
         [InlineKeyboardButton("🔑 Join with Room Code", callback_data="battle:join_code")],
-        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard")],
+        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
     ])
 
 
@@ -85,15 +88,52 @@ def battle_max_players_keyboard() -> InlineKeyboardMarkup:
 
 
 def battle_lobby_keyboard(room_code: str, is_host: bool = True) -> InlineKeyboardMarkup:
-    buttons = [
-        [InlineKeyboardButton("🔄 Refresh Lobby", callback_data=f"battle:refresh:{room_code}")],
-    ]
+    buttons = []
 
     if is_host:
         buttons.append([InlineKeyboardButton("🚀 Start Battle", callback_data=f"battle:start:{room_code}")])
         buttons.append([InlineKeyboardButton("❌ Cancel Battle", callback_data=f"battle:cancel_room:{room_code}")])
 
     return InlineKeyboardMarkup(buttons)
+
+
+def battle_waiting_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
+    ])
+
+
+# ============================================================
+# Silent host lobby refresh
+# ============================================================
+async def refresh_host_lobby(bot, room_code: str):
+    bot_username = os.getenv("BOT_USERNAME", "YourBotUsername")
+
+    async with AsyncSessionLocal() as session:
+        room = await get_battle_room(session, room_code)
+        if not room:
+            return
+
+        players = await get_battle_players(session, str(room["id"]))
+        text = build_battle_lobby_text(room, players, bot_username)
+
+        host_chat_id = room.get("host_chat_id")
+        host_lobby_message_id = room.get("host_lobby_message_id")
+
+        if not host_chat_id or not host_lobby_message_id:
+            return
+
+        try:
+            await bot.edit_message_text(
+                chat_id=host_chat_id,
+                message_id=host_lobby_message_id,
+                text=text,
+                parse_mode="Markdown",
+                reply_markup=battle_lobby_keyboard(room_code, is_host=True),
+                disable_web_page_preview=True,
+            )
+        except Exception:
+            logger.exception("❌ Failed to silently refresh host lobby | room_code=%s", room_code)
 
 
 # ============================================================
@@ -128,7 +168,6 @@ async def battle_create_start_handler(update: Update, context: ContextTypes.DEFA
 
     await query.answer()
 
-    # clear any old draft setup
     context.user_data.pop("battle_create_category", None)
     context.user_data.pop("battle_create_question_count", None)
     context.user_data.pop("battle_create_duration", None)
@@ -266,8 +305,6 @@ async def battle_max_players_handler(update: Update, context: ContextTypes.DEFAU
         )
         return ConversationHandler.END
 
-    context.user_data["battle_create_max_players"] = max_players
-
     display_name = user.full_name or user.username or str(user.id)
     bot_username = os.getenv("BOT_USERNAME", "YourBotUsername")
 
@@ -288,12 +325,21 @@ async def battle_max_players_handler(update: Update, context: ContextTypes.DEFAU
 
         lobby_text = build_battle_lobby_text(room, players, bot_username)
 
-        await query.edit_message_text(
+        sent = await query.edit_message_text(
             lobby_text,
             parse_mode="Markdown",
             reply_markup=battle_lobby_keyboard(room["room_code"], is_host=True),
             disable_web_page_preview=True,
         )
+
+        async with AsyncSessionLocal() as session:
+            async with session.begin():
+                await save_host_lobby_message(
+                    session,
+                    room_code=room["room_code"],
+                    host_chat_id=query.message.chat_id,
+                    host_lobby_message_id=query.message.message_id,
+                )
 
         logger.info(
             "🔥 Battle room lobby shown | room_code=%s | host_tg_id=%s",
@@ -310,7 +356,6 @@ async def battle_max_players_handler(update: Update, context: ContextTypes.DEFAU
         )
         return ConversationHandler.END
 
-    # clear draft setup keys
     context.user_data.pop("battle_create_category", None)
     context.user_data.pop("battle_create_question_count", None)
     context.user_data.pop("battle_create_duration", None)
@@ -320,57 +365,152 @@ async def battle_max_players_handler(update: Update, context: ContextTypes.DEFAU
 
 
 # ============================================================
-# Refresh lobby
+# Join by room code prompt
 # ============================================================
-async def battle_refresh_lobby_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def battle_join_code_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    user = update.effective_user
-
-    if not query or not user:
-        return
+    if not query:
+        return ConversationHandler.END
 
     await query.answer()
 
-    data = query.data or ""
-    parts = data.split(":", 2)
-    if len(parts) != 3:
-        return
+    await query.edit_message_text(
+        "🔑 *Join Battle Room*\n\n"
+        "Send the room code now.\n\n"
+        "Example: `A7K92Q`\n\n"
+        "Send /cancel to stop.",
+        parse_mode="Markdown",
+    )
+    return BATTLE_JOIN_CODE
 
-    room_code = parts[2]
+
+# ============================================================
+# Receive room code and join
+# ============================================================
+async def battle_receive_room_code_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    msg = update.message
+    user = update.effective_user
+
+    if not msg or not user or not msg.text:
+        return BATTLE_JOIN_CODE
+
+    room_code = msg.text.strip().upper()
+    display_name = user.full_name or user.username or str(user.id)
     bot_username = os.getenv("BOT_USERNAME", "YourBotUsername")
 
     try:
         async with AsyncSessionLocal() as session:
-            room = await get_battle_room(session, room_code)
-            if not room:
-                await query.edit_message_text("⚠️ Battle room not found.")
-                return
+            async with session.begin():
+                result = await join_battle_room(
+                    session,
+                    room_code=room_code,
+                    tg_id=user.id,
+                    display_name=display_name,
+                )
 
+            if not result["ok"]:
+                await msg.reply_text(
+                    f"⚠️ {result['error']}",
+                    parse_mode="Markdown",
+                    reply_markup=battle_mode_keyboard(),
+                )
+                return ConversationHandler.END
+
+            room = await get_battle_room(session, room_code)
             players = await get_battle_players(session, str(room["id"]))
 
-        is_host = int(room["host_tg_id"]) == int(user.id)
-        lobby_text = build_battle_lobby_text(room, players, bot_username)
-
-        await query.edit_message_text(
-            lobby_text,
+        await msg.reply_text(
+            "✅ You joined the battle room.\n\n"
+            f"*Room Code:* `{room['room_code']}`\n"
+            f"*Category:* {room['category']}\n"
+            f"*Questions:* {room['question_count']}\n"
+            f"*Time:* {room['duration_seconds']} seconds\n\n"
+            "Waiting for the host to start the battle.",
             parse_mode="Markdown",
-            reply_markup=battle_lobby_keyboard(room_code, is_host=is_host),
-            disable_web_page_preview=True,
+            reply_markup=battle_waiting_keyboard(),
         )
 
+        await refresh_host_lobby(context.bot, room_code)
+
     except Exception:
-        logger.exception("❌ Failed to refresh battle lobby | room_code=%s", room_code)
-        await query.answer("Could not refresh lobby.", show_alert=False)
+        logger.exception("❌ Failed to join battle room | tg_id=%s | room_code=%s", user.id, room_code)
+        await msg.reply_text(
+            "❌ Could not join battle room right now.\n\nPlease try again.",
+            parse_mode="Markdown",
+            reply_markup=battle_mode_keyboard(),
+        )
+
+    return ConversationHandler.END
 
 
 # ============================================================
-# Cancel create flow / room flow placeholder
+# Join from deep link payload
+# ============================================================
+async def battle_join_from_payload(update: Update, context: ContextTypes.DEFAULT_TYPE, room_code: str):
+    msg = update.effective_message
+    user = update.effective_user
+
+    if not msg or not user:
+        return
+
+    room_code = room_code.strip().upper()
+    display_name = user.full_name or user.username or str(user.id)
+
+    try:
+        async with AsyncSessionLocal() as session:
+            async with session.begin():
+                result = await join_battle_room(
+                    session,
+                    room_code=room_code,
+                    tg_id=user.id,
+                    display_name=display_name,
+                )
+
+            if not result["ok"]:
+                await msg.reply_text(
+                    f"⚠️ {result['error']}",
+                    parse_mode="Markdown",
+                    reply_markup=battle_mode_keyboard(),
+                )
+                return
+
+            room = await get_battle_room(session, room_code)
+
+        await msg.reply_text(
+            "✅ You joined the battle room.\n\n"
+            f"*Room Code:* `{room['room_code']}`\n"
+            f"*Category:* {room['category']}\n"
+            f"*Questions:* {room['question_count']}\n"
+            f"*Time:* {room['duration_seconds']} seconds\n\n"
+            "Waiting for the host to start the battle.",
+            parse_mode="Markdown",
+            reply_markup=battle_waiting_keyboard(),
+        )
+
+        await refresh_host_lobby(context.bot, room_code)
+
+    except Exception:
+        logger.exception("❌ Failed payload join | tg_id=%s | room_code=%s", user.id, room_code)
+        await msg.reply_text(
+            "❌ Could not join battle room right now.",
+            parse_mode="Markdown",
+            reply_markup=battle_mode_keyboard(),
+        )
+
+
+# ============================================================
+# Cancel create flow
 # ============================================================
 async def battle_cancel_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    if query:
+    if update.callback_query:
+        query = update.callback_query
         await query.answer()
         await query.edit_message_text(
+            "❌ Battle setup cancelled.",
+            reply_markup=battle_mode_keyboard(),
+        )
+    elif update.message:
+        await update.message.reply_text(
             "❌ Battle setup cancelled.",
             reply_markup=battle_mode_keyboard(),
         )
@@ -384,34 +524,12 @@ async def battle_cancel_handler(update: Update, context: ContextTypes.DEFAULT_TY
 
 
 # ============================================================
-# Join-by-code placeholder
-# ============================================================
-async def battle_join_code_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    if not query:
-        return ConversationHandler.END
-
-    await query.answer()
-
-    await query.edit_message_text(
-        "🔑 *Join Battle Room*\n\n"
-        "This part is the next step.\n"
-        "Soon, players will be able to join using a room code or invite link.",
-        parse_mode="Markdown",
-        reply_markup=battle_mode_keyboard(),
-    )
-    return ConversationHandler.END
-
-
-# ============================================================
 # Start-battle placeholder
 # ============================================================
 async def battle_start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
-
-    await query.answer()
 
     await query.answer("Battle start is the next step we will build.", show_alert=False)
 
@@ -424,7 +542,6 @@ async def battle_cancel_room_handler(update: Update, context: ContextTypes.DEFAU
     if not query:
         return
 
-    await query.answer()
     await query.answer("Battle room cancellation will be wired next.", show_alert=False)
 
 
@@ -437,6 +554,7 @@ def register_handlers(application):
             CommandHandler("battle", battle_mode_entry_handler),
             CallbackQueryHandler(battle_mode_entry_handler, pattern=r"^battle:menu$"),
             CallbackQueryHandler(battle_create_start_handler, pattern=r"^battle:create$"),
+            CallbackQueryHandler(battle_join_code_handler, pattern=r"^battle:join_code$"),
         ],
         states={
             BATTLE_CATEGORY: [
@@ -451,9 +569,13 @@ def register_handlers(application):
             BATTLE_MAX_PLAYERS: [
                 CallbackQueryHandler(battle_max_players_handler, pattern=r"^battlep:")
             ],
+            BATTLE_JOIN_CODE: [
+                MessageHandler(filters.TEXT & ~filters.COMMAND, battle_receive_room_code_handler)
+            ],
         },
         fallbacks=[
-            CallbackQueryHandler(battle_cancel_handler, pattern=r"^battle:cancel$")
+            CallbackQueryHandler(battle_cancel_handler, pattern=r"^battle:cancel$"),
+            CommandHandler("cancel", battle_cancel_handler),
         ],
         allow_reentry=True,
         per_user=True,
@@ -462,12 +584,6 @@ def register_handlers(application):
 
     application.add_handler(battle_conv, group=1)
 
-    application.add_handler(
-        CallbackQueryHandler(battle_refresh_lobby_handler, pattern=r"^battle:refresh:")
-    )
-    application.add_handler(
-        CallbackQueryHandler(battle_join_code_handler, pattern=r"^battle:join_code$")
-    )
     application.add_handler(
         CallbackQueryHandler(battle_start_handler, pattern=r"^battle:start:")
     )
