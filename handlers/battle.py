@@ -24,6 +24,13 @@ from services.battle_service import (
     get_battle_room,
     get_battle_players,
     build_battle_lobby_text,
+    start_battle_room,
+    get_trivia_question_by_id,
+    get_player_battle_state,
+    get_current_battle_question_for_player,
+    has_player_answered_question,
+    record_battle_answer,
+    mark_player_finished_if_done,
 )
 
 # ============================================================
@@ -65,6 +72,25 @@ def battle_question_count_keyboard() -> InlineKeyboardMarkup:
         [InlineKeyboardButton("❌ Cancel", callback_data="battle:cancel")],
     ])
 
+def battle_question_keyboard(room_code: str, question_id: int) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton("A", callback_data=f"battleans:{room_code}:{question_id}:A"),
+            InlineKeyboardButton("B", callback_data=f"battleans:{room_code}:{question_id}:B"),
+        ],
+        [
+            InlineKeyboardButton("C", callback_data=f"battleans:{room_code}:{question_id}:C"),
+            InlineKeyboardButton("D", callback_data=f"battleans:{room_code}:{question_id}:D"),
+        ],
+        [
+            InlineKeyboardButton("⏭ Skip", callback_data=f"battleskip:{room_code}:{question_id}")
+        ],
+    ])
+
+def battle_next_keyboard(room_code: str) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton("➡️ Next Question", callback_data=f"battlenext:{room_code}")],
+    ])
 
 def battle_duration_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
@@ -140,6 +166,12 @@ async def refresh_host_lobby(bot, room_code: str):
 # Entry point
 # ============================================================
 async def battle_mode_entry_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if update.callback_query:
+        try:
+            await update.callback_query.answer()
+        except Exception:
+            pass
+
     msg = update.effective_message
     if not msg:
         return ConversationHandler.END
@@ -156,7 +188,6 @@ async def battle_mode_entry_handler(update: Update, context: ContextTypes.DEFAUL
         reply_markup=battle_mode_keyboard(),
     )
     return ConversationHandler.END
-
 
 # ============================================================
 # Start create flow
@@ -523,16 +554,460 @@ async def battle_cancel_handler(update: Update, context: ContextTypes.DEFAULT_TY
     return ConversationHandler.END
 
 
+# ===========================================================
+# Send Battle Question To Player
+# ===========================================================
+async def send_battle_question_to_player(bot, room_code: str, tg_id: int):
+    async with AsyncSessionLocal() as session:
+        current = await get_current_battle_question_for_player(
+            session,
+            room_code=room_code,
+            tg_id=tg_id,
+        )
+        if not current:
+            return
+
+        state = current["state"]
+
+        # Stop if room is no longer active
+        if state.get("status") != "active":
+            try:
+                await bot.send_message(
+                    chat_id=tg_id,
+                    text="⏳ This battle has ended. Please wait for the final result.",
+                    parse_mode="Markdown",
+                )
+            except Exception:
+                logger.exception(
+                    "❌ Failed to send inactive-battle notice | room_code=%s | tg_id=%s",
+                    room_code,
+                    tg_id,
+                )
+            return
+
+        # Stop if battle time has expired
+        if state.get("ends_at") is not None:
+            from datetime import datetime, timezone
+            now = datetime.now(timezone.utc)
+            ends_at = state["ends_at"]
+            if ends_at.tzinfo is None:
+                ends_at = ends_at.replace(tzinfo=timezone.utc)
+
+            if now >= ends_at:
+                try:
+                    await bot.send_message(
+                        chat_id=tg_id,
+                        text="⏳ Time is up for this battle. Please wait for the final result.",
+                        parse_mode="Markdown",
+                    )
+                except Exception:
+                    logger.exception(
+                        "❌ Failed to send battle-time-up notice | room_code=%s | tg_id=%s",
+                        room_code,
+                        tg_id,
+                    )
+                return
+
+        if current["done"]:
+            try:
+                await bot.send_message(
+                    chat_id=tg_id,
+                    text=(
+                        "✅ *You have finished all questions.*\n\n"
+                        "Please wait for the final battle result."
+                    ),
+                    parse_mode="Markdown",
+                )
+            except Exception:
+                logger.exception(
+                    "❌ Failed to send finished message | room_code=%s | tg_id=%s",
+                    room_code,
+                    tg_id,
+                )
+            return
+
+        q = current["question"]
+        question_index = int(current["question_index"])
+        question_id = int(current["question_id"])
+
+        options = q.get("options") or {}
+
+        if isinstance(options, str):
+            import json
+            options = json.loads(options)
+
+        option_a = options.get("A", "N/A")
+        option_b = options.get("B", "N/A")
+        option_c = options.get("C", "N/A")
+        option_d = options.get("D", "N/A")
+
+        try:
+            await bot.send_message(
+                chat_id=tg_id,
+                text=(
+                    "🔥 *Battle Mode*\n\n"
+                    f"*Question {question_index + 1}/{state['question_count']}*\n"
+                    f"⏳ *Time Limit:* {state['duration_seconds']} seconds\n\n"
+                    f"{q['question']}\n\n"
+                    f"A. {option_a}\n"
+                    f"B. {option_b}\n"
+                    f"C. {option_c}\n"
+                    f"D. {option_d}"
+                ),
+                parse_mode="Markdown",
+                reply_markup=battle_question_keyboard(room_code, question_id),
+            )
+        except Exception:
+            logger.exception(
+                "❌ Failed to send battle question | room_code=%s | tg_id=%s",
+                room_code,
+                tg_id,
+            )
+
+
 # ============================================================
 # Start-battle placeholder
 # ============================================================
 async def battle_start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    if not query:
+    user = update.effective_user
+
+    if not query or not user:
         return
 
-    await query.answer("Battle start is the next step we will build.", show_alert=False)
+    await query.answer()
 
+    data = query.data or ""
+    parts = data.split(":", 2)
+    if len(parts) != 3:
+        await query.answer("Invalid start request.", show_alert=False)
+        return
+
+    room_code = parts[2].strip().upper()
+
+    try:
+        async with AsyncSessionLocal() as session:
+            async with session.begin():
+                result = await start_battle_room(
+                    session,
+                    room_code=room_code,
+                    requester_tg_id=user.id,
+                )
+
+            if not result["ok"]:
+                await query.answer(result["error"], show_alert=True)
+                return
+
+        await query.edit_message_text(
+            "🚀 *Battle Started!*\n\n"
+            "All players are now receiving Question 1.",
+            parse_mode="Markdown",
+        )
+
+        for player in result["players"]:
+            tg_id = int(player["tg_id"])
+            await send_battle_question_to_player(context.bot, room_code, tg_id)
+
+    except Exception:
+        logger.exception("❌ Failed to start battle | room_code=%s | host_tg_id=%s", room_code, user.id)
+        await query.answer("Could not start battle right now.", show_alert=True)
+
+
+# ===========================================================
+# Battle Answer Handler
+# ===========================================================
+async def battle_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    user = update.effective_user
+
+    if not query or not user:
+        return
+
+    await query.answer()
+
+    data = query.data or ""
+    parts = data.split(":")
+
+    if len(parts) != 4:
+        await query.answer("Invalid answer data.", show_alert=False)
+        return
+
+    _, room_code, question_id_raw, selected_option = parts
+
+    try:
+        question_id = int(question_id_raw)
+    except Exception:
+        await query.answer("Invalid question id.", show_alert=False)
+        return
+
+    selected_option = selected_option.strip().upper()
+
+    try:
+        async with AsyncSessionLocal() as session:
+            async with session.begin():
+                state = await get_player_battle_state(
+                    session,
+                    room_code=room_code,
+                    tg_id=user.id,
+                )
+                if not state:
+                    await query.answer("Battle state not found.", show_alert=True)
+                    return
+
+                if state["status"] != "active":
+                    await query.answer("This battle is no longer active.", show_alert=True)
+                    return
+
+                if state.get("ends_at") is not None:
+                    from datetime import datetime, timezone
+                    now = datetime.now(timezone.utc)
+                    ends_at = state["ends_at"]
+                    if ends_at.tzinfo is None:
+                        ends_at = ends_at.replace(tzinfo=timezone.utc)
+
+                    if now >= ends_at:
+                        await query.answer("⏳ Time is up for this battle.", show_alert=True)
+                        return
+
+                already_answered = await has_player_answered_question(
+                    session,
+                    battle_id=str(state["battle_id"]),
+                    tg_id=user.id,
+                    question_id=question_id,
+                )
+                if already_answered:
+                    await query.answer("You already answered this question.", show_alert=False)
+                    return
+
+                current = await get_current_battle_question_for_player(
+                    session,
+                    room_code=room_code,
+                    tg_id=user.id,
+                )
+                if not current or current["done"]:
+                    await query.answer("No active question found.", show_alert=False)
+                    return
+
+                expected_question_id = int(current["question_id"])
+                if expected_question_id != question_id:
+                    await query.answer("This is not your current question.", show_alert=False)
+                    return
+
+                q = current["question"]
+                correct_answer = str(q["answer"]).strip().upper()
+                is_correct = selected_option == correct_answer
+
+                await record_battle_answer(
+                    session,
+                    battle_id=str(state["battle_id"]),
+                    tg_id=user.id,
+                    question_id=question_id,
+                    question_index=int(current["question_index"]),
+                    selected_option=selected_option,
+                    is_correct=is_correct,
+                    was_skipped=False,
+                )
+
+                player_finished = await mark_player_finished_if_done(
+                    session,
+                    battle_id=str(state["battle_id"]),
+                    tg_id=user.id,
+                    question_count=int(state["question_count"]),
+                )
+
+        if player_finished:
+            if is_correct:
+                await query.edit_message_text(
+                    "✅ *Correct!*\n\n"
+                    "🎉 You have finished all your questions.\n"
+                    "Please wait for the final battle result.",
+                    parse_mode="Markdown",
+                )
+            else:
+                await query.edit_message_text(
+                    "❌ *Incorrect.*\n\n"
+                    "✅ You have finished all your questions.\n"
+                    "Please wait for the final battle result.",
+                    parse_mode="Markdown",
+                )
+            return
+
+        if is_correct:
+            await query.edit_message_text(
+                "✅ *Correct!*\n\n"
+                "Tap below to continue.",
+                parse_mode="Markdown",
+                reply_markup=battle_next_keyboard(room_code),
+            )
+        else:
+            await query.edit_message_text(
+                "❌ *Incorrect.*\n\n"
+                "Tap below to continue.",
+                parse_mode="Markdown",
+                reply_markup=battle_next_keyboard(room_code),
+            )
+
+    except Exception:
+        logger.exception(
+            "❌ Failed to process battle answer | room_code=%s | tg_id=%s | question_id=%s",
+            room_code,
+            user.id,
+            question_id,
+        )
+        await query.answer("Could not process answer right now.", show_alert=True)
+
+# ===========================================================
+# Battle Skip Handler
+# ===========================================================
+async def battle_skip_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    user = update.effective_user
+
+    if not query or not user:
+        return
+
+    await query.answer()
+
+    data = query.data or ""
+    parts = data.split(":")
+
+    if len(parts) != 3:
+        await query.answer("Invalid skip data.", show_alert=False)
+        return
+
+    _, room_code, question_id_raw = parts
+
+    try:
+        question_id = int(question_id_raw)
+    except Exception:
+        await query.answer("Invalid question id.", show_alert=False)
+        return
+
+    try:
+        async with AsyncSessionLocal() as session:
+            async with session.begin():
+                state = await get_player_battle_state(
+                    session,
+                    room_code=room_code,
+                    tg_id=user.id,
+                )
+                if not state:
+                    await query.answer("Battle state not found.", show_alert=True)
+                    return
+
+                if state["status"] != "active":
+                    await query.answer("This battle is no longer active.", show_alert=True)
+                    return
+
+                if state.get("ends_at") is not None:
+                    from datetime import datetime, timezone
+                    now = datetime.now(timezone.utc)
+                    ends_at = state["ends_at"]
+                    if ends_at.tzinfo is None:
+                        ends_at = ends_at.replace(tzinfo=timezone.utc)
+
+                    if now >= ends_at:
+                        await query.answer("⏳ Time is up for this battle.", show_alert=True)
+                        return
+
+                already_answered = await has_player_answered_question(
+                    session,
+                    battle_id=str(state["battle_id"]),
+                    tg_id=user.id,
+                    question_id=question_id,
+                )
+                if already_answered:
+                    await query.answer("You already handled this question.", show_alert=False)
+                    return
+
+                current = await get_current_battle_question_for_player(
+                    session,
+                    room_code=room_code,
+                    tg_id=user.id,
+                )
+                if not current or current["done"]:
+                    await query.answer("No active question found.", show_alert=False)
+                    return
+
+                expected_question_id = int(current["question_id"])
+                if expected_question_id != question_id:
+                    await query.answer("This is not your current question.", show_alert=False)
+                    return
+
+                await record_battle_answer(
+                    session,
+                    battle_id=str(state["battle_id"]),
+                    tg_id=user.id,
+                    question_id=question_id,
+                    question_index=int(current["question_index"]),
+                    selected_option=None,
+                    is_correct=False,
+                    was_skipped=True,
+                )
+
+                player_finished = await mark_player_finished_if_done(
+                    session,
+                    battle_id=str(state["battle_id"]),
+                    tg_id=user.id,
+                    question_count=int(state["question_count"]),
+                )
+
+        if player_finished:
+            await query.edit_message_text(
+                "⏭ *Question skipped.*\n\n"
+                "✅ You have finished all your questions.\n"
+                "Please wait for the final battle result.",
+                parse_mode="Markdown",
+            )
+            return
+
+        await query.edit_message_text(
+            "⏭ *Question skipped.*\n\n"
+            "Tap below to continue.",
+            parse_mode="Markdown",
+            reply_markup=battle_next_keyboard(room_code),
+        )
+
+    except Exception:
+        logger.exception(
+            "❌ Failed to process battle skip | room_code=%s | tg_id=%s | question_id=%s",
+            room_code,
+            user.id,
+            question_id,
+        )
+        await query.answer("Could not skip question right now.", show_alert=True)
+
+
+# ===========================================================
+# Battle Next Question Handler
+# ===========================================================
+async def battle_next_question_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    user = update.effective_user
+
+    if not query or not user:
+        return
+
+    await query.answer()
+
+    data = query.data or ""
+    parts = data.split(":")
+
+    if len(parts) != 2:
+        await query.answer("Invalid next request.", show_alert=False)
+        return
+
+    _, room_code = parts
+
+    try:
+        await query.edit_message_text(
+            "⏳ Loading next question...",
+            parse_mode="Markdown",
+        )
+    except Exception:
+        pass
+
+    await send_battle_question_to_player(context.bot, room_code, user.id)
 
 # ============================================================
 # Cancel-room placeholder
@@ -590,3 +1065,14 @@ def register_handlers(application):
     application.add_handler(
         CallbackQueryHandler(battle_cancel_room_handler, pattern=r"^battle:cancel_room:")
     )
+
+    application.add_handler(
+        CallbackQueryHandler(battle_answer_handler, pattern=r"^battleans:")
+    )
+    application.add_handler(
+        CallbackQueryHandler(battle_skip_handler, pattern=r"^battleskip:")
+    )
+    application.add_handler(
+        CallbackQueryHandler(battle_next_question_handler, pattern=r"^battlenext:")
+    )    
+
