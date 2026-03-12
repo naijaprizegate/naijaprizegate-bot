@@ -169,7 +169,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
         [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
-        [InlineKeyboardButton("⚔️ Challenge Friends", callback_data="challenge:start")],
+        [InlineKeyboardButton("⚔️ Challenge Friends (Free)", callback_data="challenge:start")],
+        [InlineKeyboardButton("🔥 Battle Mode (Free)", callback_data="battle:menu")],
         [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],
         [InlineKeyboardButton("❓ FAQs", callback_data="faq")],
         [InlineKeyboardButton("📩 Contact Support / Admin", callback_data="support:start")],
@@ -241,7 +242,8 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
         [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
-        [InlineKeyboardButton("⚔️ Challenge Friends", callback_data="challenge:start")],
+        [InlineKeyboardButton("⚔️ Challenge Friends (Free)", callback_data="challenge:start")],
+        [InlineKeyboardButton("🔥 Battle Mode (Free)", callback_data="battle:menu")],
         [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],  # NEW
         [InlineKeyboardButton("❓ FAQs", callback_data="faq")],                # NEW
         [InlineKeyboardButton("📩 Contact Support / Admin", callback_data="support:start")] # NEW
