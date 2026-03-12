@@ -3,9 +3,9 @@
 # ====================================================================
 from __future__ import annotations
 
-import os
 import random
 import string
+import json
 from typing import Optional
 
 from sqlalchemy import text
@@ -124,6 +124,159 @@ async def create_battle_room(
     )
 
     return dict(room)
+
+
+# ------------------------------------------------------------
+# Get room by code FOR UPDATE
+# ------------------------------------------------------------
+async def get_battle_room_for_update(session: AsyncSession, room_code: str) -> Optional[dict]:
+    res = await session.execute(
+        text("""
+            SELECT id, room_code, host_tg_id, category, max_players,
+                   question_count, duration_seconds, status,
+                   question_ids, created_at, started_at, ends_at,
+                   finished_at, winner_tg_id,
+                   host_chat_id, host_lobby_message_id
+            FROM battle_rooms
+            WHERE room_code = :room_code
+            LIMIT 1
+            FOR UPDATE
+        """),
+        {"room_code": room_code},
+    )
+    row = res.mappings().first()
+    return dict(row) if row else None
+
+
+# ------------------------------------------------------------
+# Get room players full list
+# ------------------------------------------------------------
+async def get_battle_players_full(session: AsyncSession, battle_id: str) -> list[dict]:
+    res = await session.execute(
+        text("""
+            SELECT tg_id, display_name, joined_at,
+                   current_question_index, correct_count,
+                   wrong_count, skipped_count, answered_count, is_finished
+            FROM battle_players
+            WHERE battle_id = :battle_id
+            ORDER BY joined_at ASC
+        """),
+        {"battle_id": battle_id},
+    )
+    return [dict(row) for row in res.mappings().all()]
+
+
+# ------------------------------------------------------------
+# Pick battle questions from trivia_questions
+# IMPORTANT:
+# This assumes your trivia_questions table has these columns:
+#   id, category, question, option_a, option_b, option_c, option_d, answer
+# ------------------------------------------------------------
+async def pick_battle_questions(
+    session: AsyncSession,
+    *,
+    category: str,
+    question_count: int,
+) -> list[int]:
+    res = await session.execute(
+        text("""
+            SELECT id
+            FROM trivia_questions
+            WHERE category = :category
+            ORDER BY random()
+            LIMIT :question_count
+        """),
+        {
+            "category": category,
+            "question_count": question_count,
+        },
+    )
+    ids = [row[0] for row in res.fetchall()]
+    return ids
+
+
+# ------------------------------------------------------------
+# Get one trivia question by id
+# ------------------------------------------------------------
+async def get_trivia_question_by_id(session: AsyncSession, question_id: int) -> Optional[dict]:
+    res = await session.execute(
+        text("""
+            SELECT id, category, question, options, answer
+            FROM trivia_questions
+            WHERE id = :question_id
+            LIMIT 1
+        """),
+        {"question_id": question_id},
+    )
+    row = res.mappings().first()
+    return dict(row) if row else None
+
+# ------------------------------------------------------------
+# Start battle room
+# ------------------------------------------------------------
+async def start_battle_room(
+    session: AsyncSession,
+    *,
+    room_code: str,
+    requester_tg_id: int,
+) -> dict:
+    room = await get_battle_room_for_update(session, room_code)
+    if not room:
+        return {"ok": False, "error": "Battle room not found."}
+
+    if int(room["host_tg_id"]) != int(requester_tg_id):
+        return {"ok": False, "error": "Only the host can start this battle."}
+
+    if room["status"] != "waiting":
+        return {"ok": False, "error": "This battle has already started or ended."}
+
+    players = await get_battle_players_full(session, str(room["id"]))
+    if len(players) < 2:
+        return {"ok": False, "error": "At least 2 players are needed to start the battle."}
+
+    question_ids = await pick_battle_questions(
+        session,
+        category=room["category"],
+        question_count=int(room["question_count"]),
+    )
+
+    if len(question_ids) < int(room["question_count"]):
+        return {
+            "ok": False,
+            "error": f"Not enough questions found in category '{room['category']}'.",
+        }
+
+    await session.execute(
+        text("""
+            UPDATE battle_rooms
+            SET status = 'active',
+                question_ids = CAST(:question_ids AS jsonb),
+                started_at = NOW(),
+                ends_at = NOW() + (:duration_seconds || ' seconds')::interval
+            WHERE id = :battle_id
+        """),
+        {
+            "battle_id": room["id"],
+            "question_ids": json.dumps(question_ids),
+            "duration_seconds": int(room["duration_seconds"]),
+        },
+    )
+
+    logger.info(
+        "🚀 Battle started | room_code=%s | battle_id=%s | host_tg_id=%s | players=%s",
+        room_code,
+        room["id"],
+        requester_tg_id,
+        len(players),
+    )
+
+    return {
+        "ok": True,
+        "room_id": str(room["id"]),
+        "room_code": room_code,
+        "question_ids": question_ids,
+        "players": players,
+    }
 
 
 # ------------------------------------------------------------
@@ -325,4 +478,447 @@ def build_battle_lobby_text(room: dict, players: list[dict], bot_username: str) 
         f"{joined_text}\n\n"
         "*Invite friends with this link:*\n"
         f"{invite_link}"
+    )
+
+
+# ------------------------------------------------------------
+# Get active battle state for a player
+# ------------------------------------------------------------
+async def get_player_battle_state(
+    session: AsyncSession,
+    *,
+    room_code: str,
+    tg_id: int,
+) -> Optional[dict]:
+    res = await session.execute(
+        text("""
+            SELECT
+                br.id AS battle_id,
+                br.room_code,
+                br.category,
+                br.question_count,
+                br.duration_seconds,
+                br.status,
+                br.question_ids,
+                br.started_at,
+                br.ends_at,
+                bp.tg_id,
+                bp.current_question_index,
+                bp.correct_count,
+                bp.wrong_count,
+                bp.skipped_count,
+                bp.answered_count,
+                bp.is_finished
+            FROM battle_rooms br
+            JOIN battle_players bp
+              ON bp.battle_id = br.id
+            WHERE br.room_code = :room_code
+              AND bp.tg_id = :tg_id
+            LIMIT 1
+        """),
+        {
+            "room_code": room_code,
+            "tg_id": tg_id,
+        },
+    )
+    row = res.mappings().first()
+    return dict(row) if row else None
+
+
+# ------------------------------------------------------------
+# Get question ids list from room row
+# ------------------------------------------------------------
+def parse_question_ids(raw_question_ids) -> list[int]:
+    if not raw_question_ids:
+        return []
+
+    if isinstance(raw_question_ids, list):
+        return [int(x) for x in raw_question_ids]
+
+    if isinstance(raw_question_ids, str):
+        data = json.loads(raw_question_ids)
+        return [int(x) for x in data]
+
+    return []
+
+
+# ------------------------------------------------------------
+# Has player already answered this question?
+# ------------------------------------------------------------
+async def has_player_answered_question(
+    session: AsyncSession,
+    *,
+    battle_id: str,
+    tg_id: int,
+    question_id: int,
+) -> bool:
+    res = await session.execute(
+        text("""
+            SELECT 1
+            FROM battle_answers
+            WHERE battle_id = :battle_id
+              AND tg_id = :tg_id
+              AND question_id = :question_id
+            LIMIT 1
+        """),
+        {
+            "battle_id": battle_id,
+            "tg_id": tg_id,
+            "question_id": question_id,
+        },
+    )
+    return res.first() is not None
+
+
+# ------------------------------------------------------------
+# Record answer and update player summary
+# ------------------------------------------------------------
+async def record_battle_answer(
+    session: AsyncSession,
+    *,
+    battle_id: str,
+    tg_id: int,
+    question_id: int,
+    question_index: int,
+    selected_option: str | None,
+    is_correct: bool,
+    was_skipped: bool,
+) -> None:
+    await session.execute(
+        text("""
+            INSERT INTO battle_answers (
+                battle_id,
+                tg_id,
+                question_id,
+                question_index,
+                selected_option,
+                is_correct,
+                was_skipped
+            )
+            VALUES (
+                :battle_id,
+                :tg_id,
+                :question_id,
+                :question_index,
+                :selected_option,
+                :is_correct,
+                :was_skipped
+            )
+        """),
+        {
+            "battle_id": battle_id,
+            "tg_id": tg_id,
+            "question_id": question_id,
+            "question_index": question_index,
+            "selected_option": selected_option,
+            "is_correct": is_correct,
+            "was_skipped": was_skipped,
+        },
+    )
+
+    await session.execute(
+        text("""
+            UPDATE battle_players
+            SET
+                current_question_index = current_question_index + 1,
+                answered_count = answered_count + 1,
+                correct_count = correct_count + CASE WHEN :is_correct THEN 1 ELSE 0 END,
+                wrong_count = wrong_count + CASE
+                    WHEN :was_skipped THEN 0
+                    WHEN :is_correct THEN 0
+                    ELSE 1
+                END,
+                skipped_count = skipped_count + CASE WHEN :was_skipped THEN 1 ELSE 0 END
+            WHERE battle_id = :battle_id
+              AND tg_id = :tg_id
+        """),
+        {
+            "battle_id": battle_id,
+            "tg_id": tg_id,
+            "is_correct": is_correct,
+            "was_skipped": was_skipped,
+        },
+    )
+
+
+# ------------------------------------------------------------
+# Mark player finished if done
+# ------------------------------------------------------------
+async def mark_player_finished_if_done(
+    session: AsyncSession,
+    *,
+    battle_id: str,
+    tg_id: int,
+    question_count: int,
+) -> bool:
+    res = await session.execute(
+        text("""
+            SELECT current_question_index, is_finished
+            FROM battle_players
+            WHERE battle_id = :battle_id
+              AND tg_id = :tg_id
+            LIMIT 1
+        """),
+        {
+            "battle_id": battle_id,
+            "tg_id": tg_id,
+        },
+    )
+    row = res.first()
+    if not row:
+        return False
+
+    current_index, is_finished = row
+    if is_finished:
+        return True
+
+    if int(current_index) >= int(question_count):
+        await session.execute(
+            text("""
+                UPDATE battle_players
+                SET is_finished = TRUE,
+                    finished_at = NOW()
+                WHERE battle_id = :battle_id
+                  AND tg_id = :tg_id
+            """),
+            {
+                "battle_id": battle_id,
+                "tg_id": tg_id,
+            },
+        )
+        return True
+
+    return False
+
+
+# ------------------------------------------------------------
+# Get current question for player
+# ------------------------------------------------------------
+async def get_current_battle_question_for_player(
+    session: AsyncSession,
+    *,
+    room_code: str,
+    tg_id: int,
+) -> Optional[dict]:
+    state = await get_player_battle_state(
+        session,
+        room_code=room_code,
+        tg_id=tg_id,
+    )
+    if not state:
+        return None
+
+    question_ids = parse_question_ids(state.get("question_ids"))
+    current_index = int(state.get("current_question_index") or 0)
+
+    if current_index >= len(question_ids):
+        return {
+            "done": True,
+            "state": state,
+        }
+
+    question_id = int(question_ids[current_index])
+    q = await get_trivia_question_by_id(session, question_id)
+    if not q:
+        return None
+
+    return {
+        "done": False,
+        "state": state,
+        "question_index": current_index,
+        "question_id": question_id,
+        "question": q,
+    }
+
+
+# ------------------------------------------------------------
+# Find active rooms that have expired
+# ------------------------------------------------------------
+async def get_expired_active_battles(session: AsyncSession) -> list[dict]:
+    res = await session.execute(
+        text("""
+            SELECT id, room_code, host_tg_id, category, max_players,
+                   question_count, duration_seconds, status,
+                   question_ids, created_at, started_at, ends_at,
+                   finished_at, winner_tg_id,
+                   host_chat_id, host_lobby_message_id
+            FROM battle_rooms
+            WHERE status = 'active'
+              AND ends_at IS NOT NULL
+              AND ends_at <= NOW()
+            ORDER BY ends_at ASC
+        """)
+    )
+    return [dict(row) for row in res.mappings().all()]
+
+
+# ------------------------------------------------------------
+# Get final ranking for a battle
+# ------------------------------------------------------------
+async def get_battle_rankings(session: AsyncSession, battle_id: str) -> list[dict]:
+    res = await session.execute(
+        text("""
+            SELECT
+                tg_id,
+                display_name,
+                correct_count,
+                wrong_count,
+                skipped_count,
+                answered_count,
+                is_finished,
+                finished_at
+            FROM battle_players
+            WHERE battle_id = :battle_id
+            ORDER BY correct_count DESC,
+                     wrong_count ASC,
+                     joined_at ASC
+        """),
+        {"battle_id": battle_id},
+    )
+    return [dict(row) for row in res.mappings().all()]
+
+
+# ------------------------------------------------------------
+# Mark unfinished players as finished when battle ends
+# ------------------------------------------------------------
+async def close_unfinished_players(session: AsyncSession, battle_id: str) -> None:
+    await session.execute(
+        text("""
+            UPDATE battle_players
+            SET is_finished = TRUE,
+                finished_at = COALESCE(finished_at, NOW())
+            WHERE battle_id = :battle_id
+              AND is_finished = FALSE
+        """),
+        {"battle_id": battle_id},
+    )
+
+
+# ------------------------------------------------------------
+# Finalize battle result
+# winner = highest correct_count
+# tie = no winner_tg_id
+# ------------------------------------------------------------
+async def finalize_battle_result(session: AsyncSession, battle_id: str) -> dict:
+    room = await get_battle_room_by_id(session, battle_id)
+    if not room:
+        return {"ok": False, "error": "Battle room not found."}
+
+    rankings = await get_battle_rankings(session, battle_id)
+
+    if not rankings:
+        await session.execute(
+            text("""
+                UPDATE battle_rooms
+                SET status = 'completed',
+                    finished_at = NOW(),
+                    winner_tg_id = NULL
+                WHERE id = :battle_id
+            """),
+            {"battle_id": battle_id},
+        )
+        return {
+            "ok": True,
+            "room": room,
+            "rankings": [],
+            "winner_tg_id": None,
+            "is_draw": True,
+        }
+
+    winner_tg_id = None
+    is_draw = False
+
+    if len(rankings) == 1:
+        winner_tg_id = rankings[0]["tg_id"]
+    else:
+        top_score = int(rankings[0]["correct_count"] or 0)
+        second_score = int(rankings[1]["correct_count"] or 0)
+
+        if top_score == second_score:
+            is_draw = True
+            winner_tg_id = None
+        else:
+            winner_tg_id = rankings[0]["tg_id"]
+
+    await session.execute(
+        text("""
+            UPDATE battle_rooms
+            SET status = 'completed',
+                finished_at = NOW(),
+                winner_tg_id = :winner_tg_id
+            WHERE id = :battle_id
+        """),
+        {
+            "battle_id": battle_id,
+            "winner_tg_id": winner_tg_id,
+        },
+    )
+
+    return {
+        "ok": True,
+        "room": room,
+        "rankings": rankings,
+        "winner_tg_id": winner_tg_id,
+        "is_draw": is_draw,
+    }
+
+
+# ------------------------------------------------------------
+# Get all tg_ids in battle
+# ------------------------------------------------------------
+async def get_battle_player_ids(session: AsyncSession, battle_id: str) -> list[int]:
+    res = await session.execute(
+        text("""
+            SELECT tg_id
+            FROM battle_players
+            WHERE battle_id = :battle_id
+            ORDER BY joined_at ASC
+        """),
+        {"battle_id": battle_id},
+    )
+    return [int(row[0]) for row in res.fetchall()]
+
+
+# ------------------------------------------------------------
+# Build final result text
+# ------------------------------------------------------------
+def build_battle_result_text(result: dict) -> str:
+    rankings = result["rankings"]
+    is_draw = result["is_draw"]
+
+    if not rankings:
+        return (
+            "🏁 *Battle Over!*\n\n"
+            "No valid player results were found."
+        )
+
+    lines = []
+    medals = ["🥇", "🥈", "🥉"]
+
+    for i, row in enumerate(rankings, start=1):
+        icon = medals[i - 1] if i <= 3 else f"{i}."
+        name = row.get("display_name") or str(row.get("tg_id"))
+        correct = int(row.get("correct_count") or 0)
+        wrong = int(row.get("wrong_count") or 0)
+        skipped = int(row.get("skipped_count") or 0)
+
+        lines.append(
+            f"{icon} {name} — ✅ {correct} | ❌ {wrong} | ⏭ {skipped}"
+        )
+
+    board = "\n".join(lines)
+
+    if is_draw:
+        winner_line = "🤝 *Result:* It's a draw!"
+    else:
+        winner_name = rankings[0].get("display_name") or str(rankings[0].get("tg_id"))
+        winner_line = f"🏆 *Winner:* {winner_name}"
+
+    return (
+        "🏁 *Battle Over!*\n\n"
+        f"{winner_line}\n\n"
+        "*Final Ranking:*\n"
+        f"{board}\n\n"
+        "🎁 Want bigger rewards?\n"
+        "Play *Paid Trivia Questions* to compete for iPhone, Samsung, AirPods, Bluetooth speaker and airtime milestones."
     )
