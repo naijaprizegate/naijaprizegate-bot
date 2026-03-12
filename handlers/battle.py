@@ -435,6 +435,7 @@ def register_handlers(application):
     battle_conv = ConversationHandler(
         entry_points=[
             CommandHandler("battle", battle_mode_entry_handler),
+            CallbackQueryHandler(battle_mode_entry_handler, pattern=r"^battle:menu$"),
             CallbackQueryHandler(battle_create_start_handler, pattern=r"^battle:create$"),
         ],
         states={
