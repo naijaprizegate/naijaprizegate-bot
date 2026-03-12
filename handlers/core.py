@@ -90,6 +90,7 @@ async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         await update.message.reply_text(text, parse_mode="HTML")
 
+
 # ===============================================================
 # /start (with optional referral)
 # ===============================================================
@@ -101,13 +102,27 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     
     # ===========================================================
-    # CHALLENGE LINK HANDLER
+    # DEEP LINK HANDLERS
     # ===========================================================
     if context.args:
-        arg = context.args[0]
+        arg = context.args[0].strip()
 
+        # -------------------------------------------------------
+        # BATTLE LINK HANDLER
+        # Example: /start battle_A7K92Q
+        # -------------------------------------------------------
+        if arg.startswith("battle_"):
+            room_code = arg.replace("battle_", "", 1).strip()
+
+            from handlers.battle import battle_join_from_payload
+            await battle_join_from_payload(update, context, room_code)
+            return
+
+        # -------------------------------------------------------
+        # CHALLENGE LINK HANDLER
+        # -------------------------------------------------------
         if arg.startswith("challenge_"):
-            challenge_id = arg.split("_")[1]
+            challenge_id = arg.split("_", 1)[1]
 
             await update.message.reply_text(
                 "⚔️ *Friend Challenge Invitation*\n\n"
@@ -119,6 +134,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             # (Later we will connect this to the real challenge engine)
             # For now we just show the message
+            return
 
     # ✅ SAFETY GUARD:
     # If user is currently inside support flow, ignore accidental start calls
@@ -206,7 +222,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 parse_mode="MarkdownV2"
             )
         return
-    
 
 # ===============================================================
 # GO BACK (from cancel or menu)
