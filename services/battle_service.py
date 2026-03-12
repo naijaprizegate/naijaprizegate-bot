@@ -1,9 +1,9 @@
 # ====================================================================
 # services/battle_service.py
-# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# ====================================================================
 from __future__ import annotations
 
-import json
+import os
 import random
 import string
 from typing import Optional
@@ -56,10 +56,6 @@ async def create_battle_room(
     question_count: int,
     duration_seconds: int,
 ) -> dict:
-    """
-    Creates a new battle room and automatically adds the host
-    as the first player.
-    """
     room_code = await generate_unique_room_code(session)
 
     room_res = await session.execute(
@@ -83,7 +79,8 @@ async def create_battle_room(
                 'waiting'
             )
             RETURNING id, room_code, host_tg_id, category, max_players,
-                      question_count, duration_seconds, status, created_at
+                      question_count, duration_seconds, status,
+                      created_at, host_chat_id, host_lobby_message_id
         """),
         {
             "room_code": room_code,
@@ -130,6 +127,31 @@ async def create_battle_room(
 
 
 # ------------------------------------------------------------
+# Save host lobby message metadata
+# ------------------------------------------------------------
+async def save_host_lobby_message(
+    session: AsyncSession,
+    *,
+    room_code: str,
+    host_chat_id: int,
+    host_lobby_message_id: int,
+) -> None:
+    await session.execute(
+        text("""
+            UPDATE battle_rooms
+            SET host_chat_id = :host_chat_id,
+                host_lobby_message_id = :host_lobby_message_id
+            WHERE room_code = :room_code
+        """),
+        {
+            "room_code": room_code,
+            "host_chat_id": host_chat_id,
+            "host_lobby_message_id": host_lobby_message_id,
+        },
+    )
+
+
+# ------------------------------------------------------------
 # Join battle room
 # ------------------------------------------------------------
 async def join_battle_room(
@@ -139,13 +161,11 @@ async def join_battle_room(
     tg_id: int,
     display_name: str,
 ) -> dict:
-    """
-    Lets a player join an existing waiting room.
-    """
     room_res = await session.execute(
         text("""
             SELECT id, room_code, host_tg_id, category, max_players,
-                   question_count, duration_seconds, status
+                   question_count, duration_seconds, status,
+                   host_chat_id, host_lobby_message_id
             FROM battle_rooms
             WHERE room_code = :room_code
             LIMIT 1
@@ -230,12 +250,33 @@ async def get_battle_room(session: AsyncSession, room_code: str) -> Optional[dic
         text("""
             SELECT id, room_code, host_tg_id, category, max_players,
                    question_count, duration_seconds, status,
-                   created_at, started_at, ends_at, finished_at, winner_tg_id
+                   created_at, started_at, ends_at, finished_at, winner_tg_id,
+                   host_chat_id, host_lobby_message_id
             FROM battle_rooms
             WHERE room_code = :room_code
             LIMIT 1
         """),
         {"room_code": room_code},
+    )
+    row = res.mappings().first()
+    return dict(row) if row else None
+
+
+# ------------------------------------------------------------
+# Get battle room by id
+# ------------------------------------------------------------
+async def get_battle_room_by_id(session: AsyncSession, battle_id: str) -> Optional[dict]:
+    res = await session.execute(
+        text("""
+            SELECT id, room_code, host_tg_id, category, max_players,
+                   question_count, duration_seconds, status,
+                   created_at, started_at, ends_at, finished_at, winner_tg_id,
+                   host_chat_id, host_lobby_message_id
+            FROM battle_rooms
+            WHERE id = :battle_id
+            LIMIT 1
+        """),
+        {"battle_id": battle_id},
     )
     row = res.mappings().first()
     return dict(row) if row else None
@@ -271,7 +312,6 @@ def build_battle_lobby_text(room: dict, players: list[dict], bot_username: str) 
         lines.append(f"{i}. {name}")
 
     joined_text = "\n".join(lines) if lines else "No players yet."
-
     invite_link = f"https://t.me/{bot_username}?start=battle_{room['room_code']}"
 
     return (
