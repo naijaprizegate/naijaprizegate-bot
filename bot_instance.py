@@ -11,3 +11,4 @@ if not BOT_TOKEN:
 BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
 
 bot = Bot(token=BOT_TOKEN)
+
