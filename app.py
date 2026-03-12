@@ -59,7 +59,7 @@ from telegram.ext import (
 )
 
 # Local imports
-from handlers import core, payments, free, admin, playtrivia
+from handlers import core, payments, free, admin, playtrivia, battle
 from db import init_game_state, get_async_session, get_session
 from models import Payment, GameState, PrizeWinner
 from helpers import get_or_create_user, add_tries
@@ -222,6 +222,7 @@ async def on_startup():
         # -------------------------------------------------
         core.register_handlers(application)
         playtrivia.register_handlers(application)
+        battle.register_handlers(application)
         register_challenge_handlers(application)
         free.register_handlers(application)
         payments.register_handlers(application)
