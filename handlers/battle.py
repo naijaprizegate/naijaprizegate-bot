@@ -56,10 +56,13 @@ def battle_mode_keyboard() -> InlineKeyboardMarkup:
 
 def battle_category_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton("⚽ Sports", callback_data="battlecat:Sports")],
-        [InlineKeyboardButton("🎬 Entertainment", callback_data="battlecat:Entertainment")],
-        [InlineKeyboardButton("🌍 Current Affairs", callback_data="battlecat:Current Affairs")],
-        [InlineKeyboardButton("🔬 Science", callback_data="battlecat:Science")],
+        [InlineKeyboardButton("🇳🇬 Nigeria History", callback_data="battlecat:nigeria_history")],
+        [InlineKeyboardButton("🌍 Geography", callback_data="battlecat:geography")],
+        [InlineKeyboardButton("🎬 Nigeria Entertainment", callback_data="battlecat:nigeria_entertainment")],
+        [InlineKeyboardButton("🔬 Sciences", callback_data="battlecat:sciences")],
+        [InlineKeyboardButton("➗ Mathematics", callback_data="battlecat:mathematics")],
+        [InlineKeyboardButton("📘 English", callback_data="battlecat:english")],
+        [InlineKeyboardButton("⚽ Football", callback_data="battlecat:football")],
         [InlineKeyboardButton("❌ Cancel", callback_data="battle:cancel")],
     ])
 
@@ -230,8 +233,10 @@ async def battle_category_handler(update: Update, context: ContextTypes.DEFAULT_
     category = data.split(":", 1)[1].strip()
     context.user_data["battle_create_category"] = category
 
+    pretty_category = category.replace("_", " ").title()
+
     await query.edit_message_text(
-        f"✅ Category selected: *{category}*\n\n"
+        f"✅ Category selected: *{pretty_category}*\n\n"
         "Now choose how many questions the battle should have:",
         parse_mode="Markdown",
         reply_markup=battle_question_count_keyboard(),
@@ -1075,4 +1080,3 @@ def register_handlers(application):
     application.add_handler(
         CallbackQueryHandler(battle_next_question_handler, pattern=r"^battlenext:")
     )    
-
