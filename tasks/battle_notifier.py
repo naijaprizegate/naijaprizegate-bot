@@ -98,3 +98,5 @@ async def battle_notifier_loop(bot: Bot):
             logger.exception("Battle notifier loop error: %s", e)
 
         await asyncio.sleep(BATTLE_LOOP_SECONDS)
+
+
