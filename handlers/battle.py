@@ -5,8 +5,8 @@ from __future__ import annotations
 
 import os
 
-from telegram.error import BadRequest
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.error import BadRequest
 from telegram.ext import (
     ContextTypes,
     ConversationHandler,
@@ -33,15 +33,18 @@ from services.battle_service import (
     record_battle_answer,
     mark_player_finished_if_done,
     cancel_battle_room,
+    create_or_reset_battle_draft,
+    set_battle_draft_category,
+    set_battle_draft_question_count,
+    set_battle_draft_duration,
+    set_battle_draft_max_players,
+    get_battle_draft,
+    delete_battle_draft,
 )
 
 # ============================================================
 # Conversation states
 # ============================================================
-BATTLE_CATEGORY = 3001
-BATTLE_QUESTION_COUNT = 3002
-BATTLE_DURATION = 3003
-BATTLE_MAX_PLAYERS = 3004
 BATTLE_JOIN_CODE = 3005
 
 
@@ -77,6 +80,7 @@ def battle_question_count_keyboard() -> InlineKeyboardMarkup:
         [InlineKeyboardButton("❌ Cancel", callback_data="battle:cancel")],
     ])
 
+
 def battle_question_keyboard(room_code: str, question_id: int) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
         [
@@ -92,10 +96,12 @@ def battle_question_keyboard(room_code: str, question_id: int) -> InlineKeyboard
         ],
     ])
 
+
 def battle_next_keyboard(room_code: str) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("➡️ Next Question", callback_data=f"battlenext:{room_code}")],
     ])
+
 
 def battle_duration_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
@@ -143,7 +149,7 @@ def battle_waiting_keyboard() -> InlineKeyboardMarkup:
 # Silent host lobby refresh
 # ============================================================
 async def refresh_host_lobby(bot, room_code: str):
-    bot_username = os.getenv("BOT_USERNAME", "YourBotUsername")
+    bot_username = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
 
     async with AsyncSessionLocal() as session:
         room = await get_battle_room(session, room_code)
@@ -209,28 +215,35 @@ async def battle_mode_entry_handler(update: Update, context: ContextTypes.DEFAUL
     )
     return ConversationHandler.END
 
+
 # ============================================================
 # Start create flow
 # ============================================================
 async def battle_create_start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    if not query:
-        return ConversationHandler.END
+    user = update.effective_user
+
+    if not query or not user:
+        return
 
     await query.answer("Processing...", show_alert=False)
 
-    context.user_data.pop("battle_create_category", None)
-    context.user_data.pop("battle_create_question_count", None)
-    context.user_data.pop("battle_create_duration", None)
-    context.user_data.pop("battle_create_max_players", None)
+    try:
+        async with AsyncSessionLocal() as session:
+            async with session.begin():
+                await create_or_reset_battle_draft(session, user.id)
 
-    await query.edit_message_text(
-        "🔥 *Create Battle Room*\n\n"
-        "First, choose a category:",
-        parse_mode="Markdown",
-        reply_markup=battle_category_keyboard(),
-    )
-    return BATTLE_CATEGORY
+        await query.edit_message_text(
+            "🔥 *Create Battle Room*\n\n"
+            "First, choose a category:",
+            parse_mode="Markdown",
+            reply_markup=battle_category_keyboard(),
+        )
+        return
+    except Exception:
+        logger.exception("❌ Failed to start battle draft | tg_id=%s", user.id)
+        await query.answer("Could not open battle setup right now.", show_alert=True)
+        return
 
 
 # ============================================================
@@ -238,88 +251,130 @@ async def battle_create_start_handler(update: Update, context: ContextTypes.DEFA
 # ============================================================
 async def battle_category_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    if not query:
-        return ConversationHandler.END
+    user = update.effective_user
+
+    if not query or not user:
+        return
 
     await query.answer("Processing...", show_alert=False)
 
     data = query.data or ""
     if not data.startswith("battlecat:"):
-        return BATTLE_CATEGORY
+        return
 
     category = data.split(":", 1)[1].strip()
-    context.user_data["battle_create_category"] = category
-
     pretty_category = category.replace("_", " ").title()
 
-    await query.edit_message_text(
-        f"✅ Category selected: *{pretty_category}*\n\n"
-        "Now choose how many questions the battle should have:",
-        parse_mode="Markdown",
-        reply_markup=battle_question_count_keyboard(),
-    )
-    return BATTLE_QUESTION_COUNT
+    try:
+        async with AsyncSessionLocal() as session:
+            async with session.begin():
+                await set_battle_draft_category(
+                    session,
+                    host_tg_id=user.id,
+                    category=category,
+                )
+
+        await query.edit_message_text(
+            f"✅ Category selected: *{pretty_category}*\n\n"
+            "Now choose how many questions the battle should have:",
+            parse_mode="Markdown",
+            reply_markup=battle_question_count_keyboard(),
+        )
+        return
+    except Exception:
+        logger.exception("❌ Failed to save battle draft category | tg_id=%s", user.id)
+        await query.answer("Could not save category right now.", show_alert=True)
+        return
+
 
 # ============================================================
 # Question count selected
 # ============================================================
 async def battle_question_count_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    if not query:
-        return ConversationHandler.END
+    user = update.effective_user
+
+    if not query or not user:
+        return
 
     await query.answer("Processing...", show_alert=False)
 
     data = query.data or ""
     if not data.startswith("battleq:"):
-        return BATTLE_QUESTION_COUNT
+        return
 
     try:
         question_count = int(data.split(":", 1)[1].strip())
     except Exception:
         await query.answer("Invalid question count.", show_alert=False)
-        return BATTLE_QUESTION_COUNT
+        return
 
-    context.user_data["battle_create_question_count"] = question_count
+    try:
+        async with AsyncSessionLocal() as session:
+            async with session.begin():
+                await set_battle_draft_question_count(
+                    session,
+                    host_tg_id=user.id,
+                    question_count=question_count,
+                )
 
-    await query.edit_message_text(
-        f"✅ Questions selected: *{question_count}*\n\n"
-        "Now choose the battle timer:",
-        parse_mode="Markdown",
-        reply_markup=battle_duration_keyboard(),
-    )
-    return BATTLE_DURATION
+        await query.edit_message_text(
+            f"✅ Questions selected: *{question_count}*\n\n"
+            "Now choose the battle timer:",
+            parse_mode="Markdown",
+            reply_markup=battle_duration_keyboard(),
+        )
+        return
+    except Exception:
+        logger.exception("❌ Failed to save battle draft question count | tg_id=%s", user.id)
+        await query.answer("Could not save question count right now.", show_alert=True)
+        return
+
 
 # ============================================================
 # Duration selected
 # ============================================================
 async def battle_duration_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    if not query:
-        return ConversationHandler.END
+    user = update.effective_user
+
+    if not query or not user:
+        return
 
     await query.answer("Processing...", show_alert=False)
 
     data = query.data or ""
     if not data.startswith("battlet:"):
-        return BATTLE_DURATION
+        return
 
     try:
         duration_seconds = int(data.split(":", 1)[1].strip())
     except Exception:
         await query.answer("Invalid duration.", show_alert=False)
-        return BATTLE_DURATION
+        return
 
-    context.user_data["battle_create_duration"] = duration_seconds
+    try:
+        async with AsyncSessionLocal() as session:
+            async with session.begin():
+                await set_battle_draft_duration(
+                    session,
+                    host_tg_id=user.id,
+                    duration_seconds=duration_seconds,
+                )
 
-    await query.edit_message_text(
-        f"✅ Timer selected: *{duration_seconds} seconds*\n\n"
-        "Now choose the maximum number of players\n"
-        "*(including you, the host)*:",
-        parse_mode="Markdown",
-        reply_markup=battle_max_players_keyboard(),
-    )
-    return BATTLE_MAX_PLAYERS
+        await query.edit_message_text(
+            f"✅ Timer selected: *{duration_seconds} seconds*\n\n"
+            "Now choose the maximum number of players\n"
+            "*(including you, the host)*:",
+            parse_mode="Markdown",
+            reply_markup=battle_max_players_keyboard(),
+        )
+        return
+    except Exception:
+        logger.exception("❌ Failed to save battle draft duration | tg_id=%s", user.id)
+        await query.answer("Could not save timer right now.", show_alert=True)
+        return
+
 
 # ============================================================
 # Max players selected -> Create room
@@ -329,47 +384,57 @@ async def battle_max_players_handler(update: Update, context: ContextTypes.DEFAU
     user = update.effective_user
 
     if not query or not user:
-        return ConversationHandler.END
+        return
 
     await query.answer("Processing...", show_alert=False)
 
     data = query.data or ""
     if not data.startswith("battlep:"):
-        return BATTLE_MAX_PLAYERS
+        return
 
     try:
         max_players = int(data.split(":", 1)[1].strip())
     except Exception:
         await query.answer("Invalid player count.", show_alert=False)
-        return BATTLE_MAX_PLAYERS
-
-    category = context.user_data.get("battle_create_category")
-    question_count = context.user_data.get("battle_create_question_count")
-    duration_seconds = context.user_data.get("battle_create_duration")
-
-    if not category or not question_count or not duration_seconds:
-        await query.edit_message_text(
-            "⚠️ Battle setup expired.\n\nPlease start again.",
-            parse_mode="Markdown",
-            reply_markup=battle_mode_keyboard(),
-        )
-        return ConversationHandler.END
+        return
 
     display_name = user.full_name or user.username or str(user.id)
-    bot_username = os.getenv("BOT_USERNAME", "YourBotUsername")
+    bot_username = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
 
     try:
         async with AsyncSessionLocal() as session:
             async with session.begin():
+                await set_battle_draft_max_players(
+                    session,
+                    host_tg_id=user.id,
+                    max_players=max_players,
+                )
+
+                draft = await get_battle_draft(session, user.id)
+                if not draft:
+                    await query.answer("Battle setup expired. Please start again.", show_alert=True)
+                    return
+
+                category = draft.get("category")
+                question_count = draft.get("question_count")
+                duration_seconds = draft.get("duration_seconds")
+                max_players = draft.get("max_players")
+
+                if not category or not question_count or not duration_seconds or not max_players:
+                    await query.answer("Battle setup is incomplete. Please start again.", show_alert=True)
+                    return
+
                 room = await create_battle_room(
                     session,
                     host_tg_id=user.id,
                     host_display_name=display_name,
                     category=category,
-                    max_players=max_players,
-                    question_count=question_count,
-                    duration_seconds=duration_seconds,
+                    max_players=int(max_players),
+                    question_count=int(question_count),
+                    duration_seconds=int(duration_seconds),
                 )
+
+                await delete_battle_draft(session, user.id)
 
             players = await get_battle_players(session, str(room["id"]))
 
@@ -396,22 +461,19 @@ async def battle_max_players_handler(update: Update, context: ContextTypes.DEFAU
             room["room_code"],
             user.id,
         )
+        return
 
     except Exception:
-        logger.exception("❌ Failed to create battle room | host_tg_id=%s", user.id)
-        await query.edit_message_text(
-            "❌ Could not create battle room right now.\n\nPlease try again.",
-            parse_mode="Markdown",
-            reply_markup=battle_mode_keyboard(),
-        )
-        return ConversationHandler.END
-
-    context.user_data.pop("battle_create_category", None)
-    context.user_data.pop("battle_create_question_count", None)
-    context.user_data.pop("battle_create_duration", None)
-    context.user_data.pop("battle_create_max_players", None)
-
-    return ConversationHandler.END
+        logger.exception("❌ Failed to create battle room from draft | host_tg_id=%s", user.id)
+        try:
+            await query.edit_message_text(
+                "❌ Could not create battle room right now.\n\nPlease try again.",
+                parse_mode="Markdown",
+                reply_markup=battle_mode_keyboard(),
+            )
+        except Exception:
+            await query.answer("Could not create battle room right now.", show_alert=True)
+        return
 
 
 # ============================================================
@@ -446,7 +508,6 @@ async def battle_receive_room_code_handler(update: Update, context: ContextTypes
 
     room_code = msg.text.strip().upper()
     display_name = user.full_name or user.username or str(user.id)
-    bot_username = os.getenv("BOT_USERNAME", "YourBotUsername")
 
     try:
         async with AsyncSessionLocal() as session:
@@ -467,7 +528,6 @@ async def battle_receive_room_code_handler(update: Update, context: ContextTypes
                 return ConversationHandler.END
 
             room = await get_battle_room(session, room_code)
-            players = await get_battle_players(session, str(room["id"]))
 
         pretty_category = str(room["category"]).replace("_", " ").title()
 
@@ -556,6 +616,16 @@ async def battle_join_from_payload(update: Update, context: ContextTypes.DEFAULT
 # Cancel create flow
 # ============================================================
 async def battle_cancel_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user = update.effective_user
+
+    try:
+        if user:
+            async with AsyncSessionLocal() as session:
+                async with session.begin():
+                    await delete_battle_draft(session, user.id)
+    except Exception:
+        logger.exception("❌ Failed to delete battle draft on cancel | tg_id=%s", getattr(user, "id", None))
+
     if update.callback_query:
         query = update.callback_query
         await query.answer()
@@ -568,11 +638,6 @@ async def battle_cancel_handler(update: Update, context: ContextTypes.DEFAULT_TY
             "❌ Battle setup cancelled.",
             reply_markup=battle_mode_keyboard(),
         )
-
-    context.user_data.pop("battle_create_category", None)
-    context.user_data.pop("battle_create_question_count", None)
-    context.user_data.pop("battle_create_duration", None)
-    context.user_data.pop("battle_create_max_players", None)
 
     return ConversationHandler.END
 
@@ -592,7 +657,6 @@ async def send_battle_question_to_player(bot, room_code: str, tg_id: int):
 
         state = current["state"]
 
-        # Stop if room is no longer active
         if state.get("status") != "active":
             try:
                 await bot.send_message(
@@ -608,7 +672,6 @@ async def send_battle_question_to_player(bot, room_code: str, tg_id: int):
                 )
             return
 
-        # Stop if battle time has expired
         if state.get("ends_at") is not None:
             from datetime import datetime, timezone
             now = datetime.now(timezone.utc)
@@ -785,7 +848,7 @@ async def battle_start_handler(update: Update, context: ContextTypes.DEFAULT_TYP
             )
         except Exception:
             pass
-        
+
 
 # ===========================================================
 # Battle Answer Handler
@@ -929,6 +992,7 @@ async def battle_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
             question_id,
         )
         await query.answer("Could not process answer right now.", show_alert=True)
+
 
 # ===========================================================
 # Battle Skip Handler
@@ -1083,8 +1147,9 @@ async def battle_next_question_handler(update: Update, context: ContextTypes.DEF
 
     await send_battle_question_to_player(context.bot, room_code, user.id)
 
+
 # ============================================================
-# Cancel-room placeholder
+# Cancel Battle Room Handler
 # ============================================================
 async def battle_cancel_room_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -1134,54 +1199,74 @@ async def battle_cancel_room_handler(update: Update, context: ContextTypes.DEFAU
 # Register handlers
 # ============================================================
 def register_handlers(application):
-    battle_conv = ConversationHandler(
+    application.add_handler(
+        CommandHandler("battle", battle_mode_entry_handler),
+        group=-3,
+    )
+    application.add_handler(
+        CallbackQueryHandler(battle_mode_entry_handler, pattern=r"^battle:menu$"),
+        group=-3,
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(battle_create_start_handler, pattern=r"^battle:create$"),
+        group=-3,
+    )
+    application.add_handler(
+        CallbackQueryHandler(battle_category_handler, pattern=r"^battlecat:"),
+        group=-3,
+    )
+    application.add_handler(
+        CallbackQueryHandler(battle_question_count_handler, pattern=r"^battleq:"),
+        group=-3,
+    )
+    application.add_handler(
+        CallbackQueryHandler(battle_duration_handler, pattern=r"^battlet:"),
+        group=-3,
+    )
+    application.add_handler(
+        CallbackQueryHandler(battle_max_players_handler, pattern=r"^battlep:"),
+        group=-3,
+    )
+
+    battle_join_conv = ConversationHandler(
         entry_points=[
-            CommandHandler("battle", battle_mode_entry_handler),
-            CallbackQueryHandler(battle_mode_entry_handler, pattern=r"^battle:menu$"),
-            CallbackQueryHandler(battle_create_start_handler, pattern=r"^battle:create$"),
-            CallbackQueryHandler(battle_join_code_handler, pattern=r"^battle:join_code$"),
+            CallbackQueryHandler(battle_join_code_handler, pattern=r"^battle:join_code$")
         ],
         states={
-            BATTLE_CATEGORY: [
-                CallbackQueryHandler(battle_category_handler, pattern=r"^battlecat:")
-            ],
-            BATTLE_QUESTION_COUNT: [
-                CallbackQueryHandler(battle_question_count_handler, pattern=r"^battleq:")
-            ],
-            BATTLE_DURATION: [
-                CallbackQueryHandler(battle_duration_handler, pattern=r"^battlet:")
-            ],
-            BATTLE_MAX_PLAYERS: [
-                CallbackQueryHandler(battle_max_players_handler, pattern=r"^battlep:")
-            ],
             BATTLE_JOIN_CODE: [
                 MessageHandler(filters.TEXT & ~filters.COMMAND, battle_receive_room_code_handler)
             ],
         },
         fallbacks=[
-            CallbackQueryHandler(battle_cancel_handler, pattern=r"^battle:cancel$"),
             CommandHandler("cancel", battle_cancel_handler),
+            CallbackQueryHandler(battle_cancel_handler, pattern=r"^battle:cancel$"),
         ],
         allow_reentry=True,
         per_user=True,
         per_chat=True,
     )
 
-    application.add_handler(battle_conv, group=-3)
+    application.add_handler(battle_join_conv, group=-3)
 
     application.add_handler(
-        CallbackQueryHandler(battle_start_handler, pattern=r"^battle:start:"), group=-3
+        CallbackQueryHandler(battle_start_handler, pattern=r"^battle:start:"),
+        group=-3,
     )
     application.add_handler(
-        CallbackQueryHandler(battle_cancel_room_handler, pattern=r"^battle:cancel_room:"), group=-3
+        CallbackQueryHandler(battle_cancel_room_handler, pattern=r"^battle:cancel_room:"),
+        group=-3,
+    )
+    application.add_handler(
+        CallbackQueryHandler(battle_answer_handler, pattern=r"^battleans:"),
+        group=-3,
+    )
+    application.add_handler(
+        CallbackQueryHandler(battle_skip_handler, pattern=r"^battleskip:"),
+        group=-3,
+    )
+    application.add_handler(
+        CallbackQueryHandler(battle_next_question_handler, pattern=r"^battlenext:"),
+        group=-3,
     )
 
-    application.add_handler(
-        CallbackQueryHandler(battle_answer_handler, pattern=r"^battleans:"), group=-3
-    )
-    application.add_handler(
-        CallbackQueryHandler(battle_skip_handler, pattern=r"^battleskip:"), group=-3
-    )
-    application.add_handler(
-        CallbackQueryHandler(battle_next_question_handler, pattern=r"^battlenext:"), group=-3
-    )    
