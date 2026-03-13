@@ -927,3 +927,41 @@ def build_battle_result_text(result: dict) -> str:
         "🎁 Want bigger rewards?\n"
         "Play *Paid Trivia Questions* to compete for iPhone, Samsung, AirPods, Bluetooth speaker and airtime milestones."
     )
+
+
+# ------------------------------------------------------------
+# Cancel battle room
+# ------------------------------------------------------------
+async def cancel_battle_room(
+    session: AsyncSession,
+    *,
+    room_code: str,
+    requester_tg_id: int,
+) -> dict:
+    room = await get_battle_room_for_update(session, room_code)
+    if not room:
+        return {"ok": False, "error": "Battle room not found."}
+
+    if int(room["host_tg_id"]) != int(requester_tg_id):
+        return {"ok": False, "error": "Only the host can cancel this battle."}
+
+    if room["status"] != "waiting":
+        return {"ok": False, "error": "Only waiting rooms can be cancelled."}
+
+    await session.execute(
+        text("""
+            UPDATE battle_rooms
+            SET status = 'cancelled',
+                finished_at = NOW()
+            WHERE id = :battle_id
+        """),
+        {"battle_id": room["id"]},
+    )
+
+    logger.info(
+        "❌ Battle room cancelled | room_code=%s | host_tg_id=%s",
+        room_code,
+        requester_tg_id,
+    )
+
+    return {"ok": True, "room": room}
