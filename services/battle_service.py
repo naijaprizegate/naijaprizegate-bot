@@ -1,11 +1,12 @@
-# ==================================================================
+# ====================================================================
 # services/battle_service.py
-# ==================================================================
+# ====================================================================
 from __future__ import annotations
 
 import random
 import string
 import json
+import html
 from typing import Optional
 
 from sqlalchemy import text
@@ -462,24 +463,28 @@ def build_battle_lobby_text(room: dict, players: list[dict], bot_username: str) 
 
     for i, p in enumerate(players, start=1):
         name = p.get("display_name") or str(p.get("tg_id"))
-        lines.append(f"{i}. {name}")
+        lines.append(f"{i}. {html.escape(str(name))}")
 
     joined_text = "\n".join(lines) if lines else "No players yet."
+
+    category = str(room.get("category") or "").replace("_", " ").title()
+    category = html.escape(category)
+
+    room_code = html.escape(str(room["room_code"]))
     invite_link = f"https://t.me/{bot_username}?start=battle_{room['room_code']}"
 
     return (
-        "🔥 *Battle Room Created*\n\n"
-        f"*Room Code:* `{room['room_code']}`\n"
-        f"*Category:* {room['category']}\n"
-        f"*Questions:* {room['question_count']}\n"
-        f"*Time:* {room['duration_seconds']} seconds\n"
-        f"*Players:* {joined_count}/{room['max_players']}\n\n"
-        "*Joined Players:*\n"
+        "🔥 <b>Battle Room Created</b>\n\n"
+        f"<b>Room Code:</b> <code>{room_code}</code>\n"
+        f"<b>Category:</b> {category}\n"
+        f"<b>Questions:</b> {room['question_count']}\n"
+        f"<b>Time:</b> {room['duration_seconds']} seconds\n"
+        f"<b>Players:</b> {joined_count}/{room['max_players']}\n\n"
+        "<b>Joined Players:</b>\n"
         f"{joined_text}\n\n"
-        "*Invite friends with this link:*\n"
+        "<b>Invite friends with this link:</b>\n"
         f"{invite_link}"
     )
-
 
 # ------------------------------------------------------------
 # Get active battle state for a player
