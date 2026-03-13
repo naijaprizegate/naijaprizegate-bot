@@ -217,7 +217,7 @@ async def battle_create_start_handler(update: Update, context: ContextTypes.DEFA
     if not query:
         return ConversationHandler.END
 
-    await query.answer()
+    await query.answer("Processing...", show_alert=False)
 
     context.user_data.pop("battle_create_category", None)
     context.user_data.pop("battle_create_question_count", None)
@@ -241,7 +241,7 @@ async def battle_category_handler(update: Update, context: ContextTypes.DEFAULT_
     if not query:
         return ConversationHandler.END
 
-    await query.answer()
+    await query.answer("Processing...", show_alert=False)
 
     data = query.data or ""
     if not data.startswith("battlecat:"):
@@ -260,7 +260,6 @@ async def battle_category_handler(update: Update, context: ContextTypes.DEFAULT_
     )
     return BATTLE_QUESTION_COUNT
 
-
 # ============================================================
 # Question count selected
 # ============================================================
@@ -269,7 +268,7 @@ async def battle_question_count_handler(update: Update, context: ContextTypes.DE
     if not query:
         return ConversationHandler.END
 
-    await query.answer()
+    await query.answer("Processing...", show_alert=False)
 
     data = query.data or ""
     if not data.startswith("battleq:"):
@@ -291,7 +290,6 @@ async def battle_question_count_handler(update: Update, context: ContextTypes.DE
     )
     return BATTLE_DURATION
 
-
 # ============================================================
 # Duration selected
 # ============================================================
@@ -300,7 +298,7 @@ async def battle_duration_handler(update: Update, context: ContextTypes.DEFAULT_
     if not query:
         return ConversationHandler.END
 
-    await query.answer()
+    await query.answer("Processing...", show_alert=False)
 
     data = query.data or ""
     if not data.startswith("battlet:"):
@@ -323,7 +321,6 @@ async def battle_duration_handler(update: Update, context: ContextTypes.DEFAULT_
     )
     return BATTLE_MAX_PLAYERS
 
-
 # ============================================================
 # Max players selected -> Create room
 # ============================================================
@@ -334,7 +331,7 @@ async def battle_max_players_handler(update: Update, context: ContextTypes.DEFAU
     if not query or not user:
         return ConversationHandler.END
 
-    await query.answer()
+    await query.answer("Processing...", show_alert=False)
 
     data = query.data or ""
     if not data.startswith("battlep:"):
