@@ -31,6 +31,7 @@ from services.battle_service import (
     has_player_answered_question,
     record_battle_answer,
     mark_player_finished_if_done,
+    cancel_battle_room,
 )
 
 # ============================================================
@@ -117,7 +118,12 @@ def battle_max_players_keyboard() -> InlineKeyboardMarkup:
 
 
 def battle_lobby_keyboard(room_code: str, is_host: bool = True) -> InlineKeyboardMarkup:
-    buttons = []
+    bot_username = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
+    invite_link = f"https://t.me/{bot_username}?start=battle_{room_code}"
+
+    buttons = [
+        [InlineKeyboardButton("📨 Invite Friends", url=invite_link)],
+    ]
 
     if is_host:
         buttons.append([InlineKeyboardButton("🚀 Start Battle", callback_data=f"battle:start:{room_code}")])
@@ -694,6 +700,8 @@ async def battle_start_handler(update: Update, context: ContextTypes.DEFAULT_TYP
 
     room_code = parts[2].strip().upper()
 
+    logger.info("🚀 battle_start_handler hit | room_code=%s | tg_id=%s", room_code, user.id)
+
     try:
         async with AsyncSessionLocal() as session:
             async with session.begin():
@@ -1023,10 +1031,46 @@ async def battle_next_question_handler(update: Update, context: ContextTypes.DEF
 # ============================================================
 async def battle_cancel_room_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    if not query:
+    user = update.effective_user
+
+    if not query or not user:
         return
 
-    await query.answer("Battle room cancellation will be wired next.", show_alert=False)
+    await query.answer()
+
+    data = query.data or ""
+    parts = data.split(":", 2)
+    if len(parts) != 3:
+        await query.answer("Invalid cancel request.", show_alert=False)
+        return
+
+    room_code = parts[2].strip().upper()
+
+    logger.info("❌ battle_cancel_room_handler hit | room_code=%s | tg_id=%s", room_code, user.id)
+
+    try:
+        async with AsyncSessionLocal() as session:
+            async with session.begin():
+                result = await cancel_battle_room(
+                    session,
+                    room_code=room_code,
+                    requester_tg_id=user.id,
+                )
+
+            if not result["ok"]:
+                await query.answer(result["error"], show_alert=True)
+                return
+
+        await query.edit_message_text(
+            "❌ *Battle cancelled.*\n\n"
+            "This room has been closed by the host.",
+            parse_mode="Markdown",
+            reply_markup=battle_mode_keyboard(),
+        )
+
+    except Exception:
+        logger.exception("❌ Failed to cancel battle | room_code=%s | host_tg_id=%s", room_code, user.id)
+        await query.answer("Could not cancel battle right now.", show_alert=True)
 
 
 # ============================================================
@@ -1066,21 +1110,21 @@ def register_handlers(application):
         per_chat=True,
     )
 
-    application.add_handler(battle_conv, group=1)
+    application.add_handler(battle_conv, group=-3)
 
     application.add_handler(
-        CallbackQueryHandler(battle_start_handler, pattern=r"^battle:start:")
+        CallbackQueryHandler(battle_start_handler, pattern=r"^battle:start:"), group=-3
     )
     application.add_handler(
-        CallbackQueryHandler(battle_cancel_room_handler, pattern=r"^battle:cancel_room:")
+        CallbackQueryHandler(battle_cancel_room_handler, pattern=r"^battle:cancel_room:"), group=-3
     )
 
     application.add_handler(
-        CallbackQueryHandler(battle_answer_handler, pattern=r"^battleans:")
+        CallbackQueryHandler(battle_answer_handler, pattern=r"^battleans:"), group=-3
     )
     application.add_handler(
-        CallbackQueryHandler(battle_skip_handler, pattern=r"^battleskip:")
+        CallbackQueryHandler(battle_skip_handler, pattern=r"^battleskip:"), group=-3
     )
     application.add_handler(
-        CallbackQueryHandler(battle_next_question_handler, pattern=r"^battlenext:")
+        CallbackQueryHandler(battle_next_question_handler, pattern=r"^battlenext:"), group=-3
     )    
