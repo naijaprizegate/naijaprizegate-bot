@@ -125,11 +125,25 @@ def battle_max_players_keyboard() -> InlineKeyboardMarkup:
 
 
 def battle_lobby_keyboard(room_code: str, is_host: bool = True) -> InlineKeyboardMarkup:
+    import urllib.parse
+
     bot_username = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
     invite_link = f"https://t.me/{bot_username}?start=battle_{room_code}"
 
+    share_text = (
+        "🔥 Join my NaijaPrizeGate Battle Room!\n\n"
+        f"Room Code: {room_code}\n"
+        "Tap the link below to join:"
+    )
+
+    share_url = (
+        "https://t.me/share/url?"
+        f"url={urllib.parse.quote(invite_link)}"
+        f"&text={urllib.parse.quote(share_text)}"
+    )
+
     buttons = [
-        [InlineKeyboardButton("📨 Invite Friends", url=invite_link)],
+        [InlineKeyboardButton("📨 Invite Friends", url=share_url)],
     ]
 
     if is_host:
@@ -137,7 +151,7 @@ def battle_lobby_keyboard(room_code: str, is_host: bool = True) -> InlineKeyboar
         buttons.append([InlineKeyboardButton("❌ Cancel Battle", callback_data=f"battle:cancel_room:{room_code}")])
 
     return InlineKeyboardMarkup(buttons)
-
+    
 
 def battle_waiting_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
