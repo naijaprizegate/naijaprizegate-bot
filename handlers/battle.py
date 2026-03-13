@@ -157,7 +157,7 @@ async def refresh_host_lobby(bot, room_code: str):
                 chat_id=host_chat_id,
                 message_id=host_lobby_message_id,
                 text=text,
-                parse_mode="Markdown",
+                parse_mode="HTML",
                 reply_markup=battle_lobby_keyboard(room_code, is_host=True),
                 disable_web_page_preview=True,
             )
@@ -361,9 +361,9 @@ async def battle_max_players_handler(update: Update, context: ContextTypes.DEFAU
 
         lobby_text = build_battle_lobby_text(room, players, bot_username)
 
-        sent = await query.edit_message_text(
+        await query.edit_message_text(
             lobby_text,
-            parse_mode="Markdown",
+            parse_mode="HTML",
             reply_markup=battle_lobby_keyboard(room["room_code"], is_host=True),
             disable_web_page_preview=True,
         )
@@ -455,10 +455,12 @@ async def battle_receive_room_code_handler(update: Update, context: ContextTypes
             room = await get_battle_room(session, room_code)
             players = await get_battle_players(session, str(room["id"]))
 
+        pretty_category = str(room["category"]).replace("_", " ").title()
+
         await msg.reply_text(
             "✅ You joined the battle room.\n\n"
             f"*Room Code:* `{room['room_code']}`\n"
-            f"*Category:* {room['category']}\n"
+            f"*Category:* {pretty_category}\n"
             f"*Questions:* {room['question_count']}\n"
             f"*Time:* {room['duration_seconds']} seconds\n\n"
             "Waiting for the host to start the battle.",
@@ -512,10 +514,12 @@ async def battle_join_from_payload(update: Update, context: ContextTypes.DEFAULT
 
             room = await get_battle_room(session, room_code)
 
+        pretty_category = str(room["category"]).replace("_", " ").title()
+
         await msg.reply_text(
             "✅ You joined the battle room.\n\n"
             f"*Room Code:* `{room['room_code']}`\n"
-            f"*Category:* {room['category']}\n"
+            f"*Category:* {pretty_category}\n"
             f"*Questions:* {room['question_count']}\n"
             f"*Time:* {room['duration_seconds']} seconds\n\n"
             "Waiting for the host to start the battle.",
