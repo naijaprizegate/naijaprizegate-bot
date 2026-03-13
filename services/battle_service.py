@@ -1164,3 +1164,4 @@ async def delete_battle_draft(session: AsyncSession, host_tg_id: int) -> None:
         """),
         {"host_tg_id": host_tg_id},
     )
+
