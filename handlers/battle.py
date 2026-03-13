@@ -1,6 +1,6 @@
-# =================================================================
+# =====================================================================
 # handlers/battle.py
-# ==================================================================
+# =====================================================================
 from __future__ import annotations
 
 import os
@@ -192,6 +192,7 @@ def build_battle_question_text(
     option_b: str,
     option_c: str,
     option_d: str,
+    seconds_left: int,
 ) -> str:
     return (
         f"🔥 <b>Battle Question {question_order}/{question_count}</b>\n\n"
@@ -200,7 +201,29 @@ def build_battle_question_text(
         f"A. {option_a}\n"
         f"B. {option_b}\n"
         f"C. {option_c}\n"
-        f"D. {option_d}"
+        f"D. {option_d}\n\n"
+        f"⏳ <b>Battle ends in:</b> {seconds_left}s"
+    )
+
+def build_battle_timeout_text(
+    question_order: int,
+    question_count: int,
+    category: str,
+    question_text: str,
+    option_a: str,
+    option_b: str,
+    option_c: str,
+    option_d: str,
+) -> str:
+    return (
+        f"🔥 <b>Battle Question {question_order}/{question_count}</b>\n\n"
+        f"<b>Category:</b> {BATTLE_CATEGORY_LABELS.get(category, category)}\n\n"
+        f"{question_text}\n\n"
+        f"A. {option_a}\n"
+        f"B. {option_b}\n"
+        f"C. {option_c}\n"
+        f"D. {option_d}\n\n"
+        f"⏰ <b>TIME UP</b>"
     )
 
 
@@ -232,6 +255,144 @@ def build_battle_answer_result_text(
         f"D. {option_d}\n\n"
         f"{status_line}"
     )
+
+# ============================================================
+# Battle question timeout/countdown
+# ============================================================
+async def handle_battle_question_timeout(
+    context: ContextTypes.DEFAULT_TYPE,
+    room_code: str,
+    user_id: int,
+    question_id: int,
+    question_order: int,
+    question_count: int,
+    message_id: int,
+    category: str,
+    question_text: str,
+    option_a: str,
+    option_b: str,
+    option_c: str,
+    option_d: str,
+):
+    from datetime import datetime, timezone
+
+    while True:
+        await asyncio.sleep(1)
+
+        async with AsyncSessionLocal() as session:
+            state = await get_player_battle_state(
+                session,
+                room_code=room_code,
+                tg_id=user_id,
+            )
+            if not state or state.get("status") != "active":
+                return
+
+            already_answered = await has_player_answered_question(
+                session,
+                battle_id=str(state["battle_id"]),
+                tg_id=user_id,
+                question_id=question_id,
+            )
+            if already_answered:
+                return
+
+            ends_at = state.get("ends_at")
+            if not ends_at:
+                return
+
+            now = datetime.now(timezone.utc)
+            if ends_at.tzinfo is None:
+                ends_at = ends_at.replace(tzinfo=timezone.utc)
+
+            seconds_left = int((ends_at - now).total_seconds())
+
+            current = await get_current_battle_question_for_player(
+                session,
+                room_code=room_code,
+                tg_id=user_id,
+            )
+            if not current or current["done"]:
+                return
+
+            expected_question_id = int(current["question_id"])
+            if expected_question_id != question_id:
+                return
+
+            if seconds_left <= 0:
+                async with session.begin():
+                    await record_battle_answer(
+                        session,
+                        battle_id=str(state["battle_id"]),
+                        tg_id=user_id,
+                        question_id=question_id,
+                        question_index=int(current["question_index"]),
+                        selected_option=None,
+                        is_correct=False,
+                        was_skipped=True,
+                    )
+
+                    player_finished = await mark_player_finished_if_done(
+                        session,
+                        battle_id=str(state["battle_id"]),
+                        tg_id=user_id,
+                        question_count=int(state["question_count"]),
+                    )
+
+                try:
+                    await context.bot.edit_message_text(
+                        chat_id=user_id,
+                        message_id=message_id,
+                        text=build_battle_timeout_text(
+                            question_order=question_order,
+                            question_count=question_count,
+                            category=category,
+                            question_text=question_text,
+                            option_a=option_a,
+                            option_b=option_b,
+                            option_c=option_c,
+                            option_d=option_d,
+                        ),
+                        parse_mode="HTML",
+                        reply_markup=None,
+                    )
+                except Exception:
+                    pass
+
+                await asyncio.sleep(1.0)
+
+                if player_finished:
+                    try:
+                        await context.bot.send_message(
+                            chat_id=user_id,
+                            text="🏁 You have completed your battle questions.\n\nPlease wait for the final result.",
+                            parse_mode="HTML",
+                        )
+                    except Exception:
+                        pass
+
+                return
+
+        try:
+            await context.bot.edit_message_text(
+                chat_id=user_id,
+                message_id=message_id,
+                text=build_battle_question_text(
+                    question_order=question_order,
+                    question_count=question_count,
+                    category=category,
+                    question_text=question_text,
+                    option_a=option_a,
+                    option_b=option_b,
+                    option_c=option_c,
+                    option_d=option_d,
+                    seconds_left=seconds_left,
+                ),
+                parse_mode="HTML",
+                reply_markup=battle_question_keyboard(room_code, question_id),
+            )
+        except Exception:
+            pass
 
 # ============================================================
 # Silent host lobby refresh
@@ -733,7 +894,14 @@ async def battle_cancel_handler(update: Update, context: ContextTypes.DEFAULT_TY
 # ===========================================================
 # Send Battle Question To Player
 # ===========================================================
-async def send_battle_question_to_player(bot, room_code: str, tg_id: int):
+async def send_battle_question_to_player(
+    bot,
+    room_code: str,
+    tg_id: int,
+    context: ContextTypes.DEFAULT_TYPE | None = None,
+):
+    from datetime import datetime, timezone
+
     async with AsyncSessionLocal() as session:
         current = await get_current_battle_question_for_player(
             session,
@@ -760,27 +928,30 @@ async def send_battle_question_to_player(bot, room_code: str, tg_id: int):
                 )
             return
 
-        if state.get("ends_at") is not None:
-            from datetime import datetime, timezone
-            now = datetime.now(timezone.utc)
-            ends_at = state["ends_at"]
-            if ends_at.tzinfo is None:
-                ends_at = ends_at.replace(tzinfo=timezone.utc)
+        ends_at = state.get("ends_at")
+        if not ends_at:
+            return
 
-            if now >= ends_at:
-                try:
-                    await bot.send_message(
-                        chat_id=tg_id,
-                        text="⏳ Time is up for this battle. Please wait for the final result.",
-                        parse_mode="HTML",
-                    )
-                except Exception:
-                    logger.exception(
-                        "❌ Failed to send battle-time-up notice | room_code=%s | tg_id=%s",
-                        room_code,
-                        tg_id,
-                    )
-                return
+        now = datetime.now(timezone.utc)
+        if ends_at.tzinfo is None:
+            ends_at = ends_at.replace(tzinfo=timezone.utc)
+
+        seconds_left = int((ends_at - now).total_seconds())
+
+        if seconds_left <= 0:
+            try:
+                await bot.send_message(
+                    chat_id=tg_id,
+                    text="⏳ Time is up for this battle. Please wait for the final result.",
+                    parse_mode="HTML",
+                )
+            except Exception:
+                logger.exception(
+                    "❌ Failed to send battle-time-up notice | room_code=%s | tg_id=%s",
+                    room_code,
+                    tg_id,
+                )
+            return
 
         if current["done"]:
             try:
@@ -811,7 +982,7 @@ async def send_battle_question_to_player(bot, room_code: str, tg_id: int):
         option_d = options.get("D", "N/A")
 
         try:
-            await bot.send_message(
+            sent_message = await bot.send_message(
                 chat_id=tg_id,
                 text=build_battle_question_text(
                     question_order=question_index + 1,
@@ -822,6 +993,7 @@ async def send_battle_question_to_player(bot, room_code: str, tg_id: int):
                     option_b=option_b,
                     option_c=option_c,
                     option_d=option_d,
+                    seconds_left=seconds_left,
                 ),
                 parse_mode="HTML",
                 reply_markup=battle_question_keyboard(room_code, question_id),
@@ -832,7 +1004,26 @@ async def send_battle_question_to_player(bot, room_code: str, tg_id: int):
                 room_code,
                 tg_id,
             )
+            return
 
+    if context is not None:
+        asyncio.create_task(
+            handle_battle_question_timeout(
+                context=context,
+                room_code=room_code,
+                user_id=tg_id,
+                question_id=question_id,
+                question_order=question_index + 1,
+                question_count=int(state["question_count"]),
+                message_id=sent_message.message_id,
+                category=q["category"],
+                question_text=q["question"],
+                option_a=option_a,
+                option_b=option_b,
+                option_c=option_c,
+                option_d=option_d,
+            )
+        )
 
 # ============================================================
 # Start Battle Handler
@@ -1062,7 +1253,12 @@ async def battle_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
             )
             return
 
-        await send_battle_question_to_player(context.bot, room_code, user.id)
+        await send_battle_question_to_player(
+            context.bot,
+            room_code,
+            user.id,
+            context=context,
+        )
 
     except Exception:
         logger.exception(
@@ -1185,7 +1381,12 @@ async def battle_skip_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
             )
             return
 
-        await send_battle_question_to_player(context.bot, room_code, user.id)
+        await send_battle_question_to_player(
+            context.bot,
+            room_code,
+            user.id,
+            context=context,
+        )
 
     except Exception:
         logger.exception(
@@ -1195,7 +1396,6 @@ async def battle_skip_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
             question_id,
         )
         await query.answer("Could not skip question right now.", show_alert=True)
-        
 
 # ===========================================================
 # Battle Next Question Handler
@@ -1350,4 +1550,5 @@ def register_handlers(application):
         CallbackQueryHandler(battle_next_question_handler, pattern=r"^battlenext:"),
         group=-3,
     )
+
 
