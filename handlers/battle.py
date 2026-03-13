@@ -47,6 +47,28 @@ from services.battle_service import (
 # ============================================================
 BATTLE_JOIN_CODE = 3005
 
+# ============================================================
+# Battle categories
+# ============================================================
+BATTLE_CATEGORIES = [
+    "nigeria_history",
+    "geography",
+    "nigeria_entertainment",
+    "sciences",
+    "mathematics",
+    "english",
+    "football",
+]
+
+BATTLE_CATEGORY_LABELS = {
+    "nigeria_history": "Nigeria History",
+    "geography": "Geography",
+    "nigeria_entertainment": "Entertainment",
+    "sciences": "Sciences",
+    "mathematics": "Mathematics",
+    "english": "English",
+    "football": "Football",
+}
 
 # ============================================================
 # Keyboards
@@ -63,7 +85,7 @@ def battle_category_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("🇳🇬 Nigeria History", callback_data="battlecat:nigeria_history")],
         [InlineKeyboardButton("🌍 Geography", callback_data="battlecat:geography")],
-        [InlineKeyboardButton("🎬 Nigeria Entertainment", callback_data="battlecat:nigeria_entertainment")],
+        [InlineKeyboardButton("🎬 Entertainment", callback_data="battlecat:nigeria_entertainment")],
         [InlineKeyboardButton("🔬 Sciences", callback_data="battlecat:sciences")],
         [InlineKeyboardButton("➗ Mathematics", callback_data="battlecat:mathematics")],
         [InlineKeyboardButton("📘 English", callback_data="battlecat:english")],
@@ -151,13 +173,65 @@ def battle_lobby_keyboard(room_code: str, is_host: bool = True) -> InlineKeyboar
         buttons.append([InlineKeyboardButton("❌ Cancel Battle", callback_data=f"battle:cancel_room:{room_code}")])
 
     return InlineKeyboardMarkup(buttons)
-    
+
 
 def battle_waiting_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
     ])
 
+# ============================================================
+# Battle question/result text builders
+# ============================================================
+def build_battle_question_text(
+    question_order: int,
+    question_count: int,
+    category: str,
+    question_text: str,
+    option_a: str,
+    option_b: str,
+    option_c: str,
+    option_d: str,
+) -> str:
+    return (
+        f"🔥 <b>Battle Question {question_order}/{question_count}</b>\n\n"
+        f"<b>Category:</b> {BATTLE_CATEGORY_LABELS.get(category, category)}\n\n"
+        f"{question_text}\n\n"
+        f"A. {option_a}\n"
+        f"B. {option_b}\n"
+        f"C. {option_c}\n"
+        f"D. {option_d}"
+    )
+
+
+def build_battle_answer_result_text(
+    question_order: int,
+    question_count: int,
+    category: str,
+    question_text: str,
+    option_a: str,
+    option_b: str,
+    option_c: str,
+    option_d: str,
+    is_correct: bool,
+    correct_option: str,
+) -> str:
+    status_line = (
+        "✅ <b>CORRECT</b>"
+        if is_correct
+        else f"❌ <b>WRONG</b>\n<b>Correct Answer:</b> {correct_option}"
+    )
+
+    return (
+        f"🔥 <b>Battle Question {question_order}/{question_count}</b>\n\n"
+        f"<b>Category:</b> {BATTLE_CATEGORY_LABELS.get(category, category)}\n\n"
+        f"{question_text}\n\n"
+        f"A. {option_a}\n"
+        f"B. {option_b}\n"
+        f"C. {option_c}\n"
+        f"D. {option_d}\n\n"
+        f"{status_line}"
+    )
 
 # ============================================================
 # Silent host lobby refresh
@@ -676,7 +750,7 @@ async def send_battle_question_to_player(bot, room_code: str, tg_id: int):
                 await bot.send_message(
                     chat_id=tg_id,
                     text="⏳ This battle has ended. Please wait for the final result.",
-                    parse_mode="Markdown",
+                    parse_mode="HTML",
                 )
             except Exception:
                 logger.exception(
@@ -698,7 +772,7 @@ async def send_battle_question_to_player(bot, room_code: str, tg_id: int):
                     await bot.send_message(
                         chat_id=tg_id,
                         text="⏳ Time is up for this battle. Please wait for the final result.",
-                        parse_mode="Markdown",
+                        parse_mode="HTML",
                     )
                 except Exception:
                     logger.exception(
@@ -713,10 +787,10 @@ async def send_battle_question_to_player(bot, room_code: str, tg_id: int):
                 await bot.send_message(
                     chat_id=tg_id,
                     text=(
-                        "✅ *You have finished all questions.*\n\n"
+                        "✅ <b>You have finished all questions.</b>\n\n"
                         "Please wait for the final battle result."
                     ),
-                    parse_mode="Markdown",
+                    parse_mode="HTML",
                 )
             except Exception:
                 logger.exception(
@@ -731,11 +805,6 @@ async def send_battle_question_to_player(bot, room_code: str, tg_id: int):
         question_id = int(current["question_id"])
 
         options = q.get("options") or {}
-
-        if isinstance(options, str):
-            import json
-            options = json.loads(options)
-
         option_a = options.get("A", "N/A")
         option_b = options.get("B", "N/A")
         option_c = options.get("C", "N/A")
@@ -744,17 +813,17 @@ async def send_battle_question_to_player(bot, room_code: str, tg_id: int):
         try:
             await bot.send_message(
                 chat_id=tg_id,
-                text=(
-                    "🔥 *Battle Mode*\n\n"
-                    f"*Question {question_index + 1}/{state['question_count']}*\n"
-                    f"⏳ *Time Limit:* {state['duration_seconds']} seconds\n\n"
-                    f"{q['question']}\n\n"
-                    f"A. {option_a}\n"
-                    f"B. {option_b}\n"
-                    f"C. {option_c}\n"
-                    f"D. {option_d}"
+                text=build_battle_question_text(
+                    question_order=question_index + 1,
+                    question_count=int(state["question_count"]),
+                    category=q["category"],
+                    question_text=q["question"],
+                    option_a=option_a,
+                    option_b=option_b,
+                    option_c=option_c,
+                    option_d=option_d,
                 ),
-                parse_mode="Markdown",
+                parse_mode="HTML",
                 reply_markup=battle_question_keyboard(room_code, question_id),
             )
         except Exception:
@@ -945,6 +1014,7 @@ async def battle_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
                     return
 
                 q = current["question"]
+                options = q.get("options") or {}
                 correct_answer = str(q["answer"]).strip().upper()
                 is_correct = selected_option == correct_answer
 
@@ -966,37 +1036,33 @@ async def battle_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
                     question_count=int(state["question_count"]),
                 )
 
+        await query.edit_message_text(
+            text=build_battle_answer_result_text(
+                question_order=int(current["question_index"]) + 1,
+                question_count=int(state["question_count"]),
+                category=q["category"],
+                question_text=q["question"],
+                option_a=options.get("A", "N/A"),
+                option_b=options.get("B", "N/A"),
+                option_c=options.get("C", "N/A"),
+                option_d=options.get("D", "N/A"),
+                is_correct=is_correct,
+                correct_option=correct_answer,
+            ),
+            parse_mode="HTML",
+            reply_markup=None,
+        )
+
+        await asyncio.sleep(1.5)
+
         if player_finished:
-            if is_correct:
-                await query.edit_message_text(
-                    "✅ *Correct!*\n\n"
-                    "🎉 You have finished all your questions.\n"
-                    "Please wait for the final battle result.",
-                    parse_mode="Markdown",
-                )
-            else:
-                await query.edit_message_text(
-                    "❌ *Incorrect.*\n\n"
-                    "✅ You have finished all your questions.\n"
-                    "Please wait for the final battle result.",
-                    parse_mode="Markdown",
-                )
+            await query.message.reply_text(
+                "🏁 You have completed your battle questions.\n\nPlease wait for the final result.",
+                parse_mode="HTML",
+            )
             return
 
-        if is_correct:
-            await query.edit_message_text(
-                "✅ *Correct!*\n\n"
-                "Tap below to continue.",
-                parse_mode="Markdown",
-                reply_markup=battle_next_keyboard(room_code),
-            )
-        else:
-            await query.edit_message_text(
-                "❌ *Incorrect.*\n\n"
-                "Tap below to continue.",
-                parse_mode="Markdown",
-                reply_markup=battle_next_keyboard(room_code),
-            )
+        await send_battle_question_to_player(context.bot, room_code, user.id)
 
     except Exception:
         logger.exception(
@@ -1104,21 +1170,22 @@ async def battle_skip_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
                     question_count=int(state["question_count"]),
                 )
 
+        await query.edit_message_text(
+            "⏭️ <b>Question skipped.</b>",
+            parse_mode="HTML",
+            reply_markup=None,
+        )
+
+        await asyncio.sleep(1.0)
+
         if player_finished:
-            await query.edit_message_text(
-                "⏭ *Question skipped.*\n\n"
-                "✅ You have finished all your questions.\n"
-                "Please wait for the final battle result.",
-                parse_mode="Markdown",
+            await query.message.reply_text(
+                "🏁 You have completed your battle questions.\n\nPlease wait for the final result.",
+                parse_mode="HTML",
             )
             return
 
-        await query.edit_message_text(
-            "⏭ *Question skipped.*\n\n"
-            "Tap below to continue.",
-            parse_mode="Markdown",
-            reply_markup=battle_next_keyboard(room_code),
-        )
+        await send_battle_question_to_player(context.bot, room_code, user.id)
 
     except Exception:
         logger.exception(
@@ -1128,7 +1195,7 @@ async def battle_skip_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
             question_id,
         )
         await query.answer("Could not skip question right now.", show_alert=True)
-
+        
 
 # ===========================================================
 # Battle Next Question Handler
