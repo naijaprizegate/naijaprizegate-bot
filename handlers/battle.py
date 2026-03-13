@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import os
 
+from telegram.error import BadRequest
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     ContextTypes,
@@ -167,8 +168,18 @@ async def refresh_host_lobby(bot, room_code: str):
                 reply_markup=battle_lobby_keyboard(room_code, is_host=True),
                 disable_web_page_preview=True,
             )
+        except BadRequest as e:
+            if "Message is not modified" in str(e):
+                return
+            logger.exception(
+                "❌ Failed to silently refresh host lobby | room_code=%s",
+                room_code,
+            )
         except Exception:
-            logger.exception("❌ Failed to silently refresh host lobby | room_code=%s", room_code)
+            logger.exception(
+                "❌ Failed to silently refresh host lobby | room_code=%s",
+                room_code,
+            )
 
 
 # ============================================================
@@ -681,7 +692,7 @@ async def send_battle_question_to_player(bot, room_code: str, tg_id: int):
 
 
 # ============================================================
-# Start-battle placeholder
+# Start Battle Handler
 # ============================================================
 async def battle_start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -700,7 +711,11 @@ async def battle_start_handler(update: Update, context: ContextTypes.DEFAULT_TYP
 
     room_code = parts[2].strip().upper()
 
-    logger.info("🚀 battle_start_handler hit | room_code=%s | tg_id=%s", room_code, user.id)
+    logger.info(
+        "🚀 battle_start_handler hit | room_code=%s | tg_id=%s",
+        room_code,
+        user.id,
+    )
 
     try:
         async with AsyncSessionLocal() as session:
@@ -711,9 +726,38 @@ async def battle_start_handler(update: Update, context: ContextTypes.DEFAULT_TYP
                     requester_tg_id=user.id,
                 )
 
-            if not result["ok"]:
+        if not result["ok"]:
+            logger.info(
+                "⚠️ battle_start_handler blocked | room_code=%s | tg_id=%s | reason=%s",
+                room_code,
+                user.id,
+                result["error"],
+            )
+
+            try:
                 await query.answer(result["error"], show_alert=True)
-                return
+            except Exception:
+                pass
+
+            try:
+                await query.message.reply_text(
+                    f"⚠️ {result['error']}",
+                    parse_mode="Markdown",
+                )
+            except Exception:
+                logger.exception(
+                    "❌ Failed to send visible start-blocked message | room_code=%s | tg_id=%s",
+                    room_code,
+                    user.id,
+                )
+            return
+
+        logger.info(
+            "✅ battle_start_handler passed | room_code=%s | tg_id=%s | players=%s",
+            room_code,
+            user.id,
+            len(result["players"]),
+        )
 
         await query.edit_message_text(
             "🚀 *Battle Started!*\n\n"
@@ -726,9 +770,25 @@ async def battle_start_handler(update: Update, context: ContextTypes.DEFAULT_TYP
             await send_battle_question_to_player(context.bot, room_code, tg_id)
 
     except Exception:
-        logger.exception("❌ Failed to start battle | room_code=%s | host_tg_id=%s", room_code, user.id)
-        await query.answer("Could not start battle right now.", show_alert=True)
+        logger.exception(
+            "❌ Failed to start battle | room_code=%s | host_tg_id=%s",
+            room_code,
+            user.id,
+        )
 
+        try:
+            await query.answer("Could not start battle right now.", show_alert=True)
+        except Exception:
+            pass
+
+        try:
+            await query.message.reply_text(
+                "⚠️ Could not start battle right now. Please try again.",
+                parse_mode="Markdown",
+            )
+        except Exception:
+            pass
+        
 
 # ===========================================================
 # Battle Answer Handler
