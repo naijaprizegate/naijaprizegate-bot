@@ -965,3 +965,165 @@ async def cancel_battle_room(
     )
 
     return {"ok": True, "room": room}
+
+
+
+# ------------------------------------------------------------
+# Create or reset battle draft for host
+# ------------------------------------------------------------
+async def create_or_reset_battle_draft(session: AsyncSession, host_tg_id: int) -> None:
+    await session.execute(
+        text("""
+            INSERT INTO battle_room_drafts (
+                host_tg_id,
+                category,
+                question_count,
+                duration_seconds,
+                max_players,
+                created_at,
+                updated_at
+            )
+            VALUES (
+                :host_tg_id,
+                NULL,
+                NULL,
+                NULL,
+                NULL,
+                NOW(),
+                NOW()
+            )
+            ON CONFLICT (host_tg_id)
+            DO UPDATE SET
+                category = NULL,
+                question_count = NULL,
+                duration_seconds = NULL,
+                max_players = NULL,
+                updated_at = NOW()
+        """),
+        {"host_tg_id": host_tg_id},
+    )
+
+
+# ------------------------------------------------------------
+# Update draft category
+# ------------------------------------------------------------
+async def set_battle_draft_category(
+    session: AsyncSession,
+    *,
+    host_tg_id: int,
+    category: str,
+) -> None:
+    await session.execute(
+        text("""
+            UPDATE battle_room_drafts
+            SET category = :category,
+                updated_at = NOW()
+            WHERE host_tg_id = :host_tg_id
+        """),
+        {
+            "host_tg_id": host_tg_id,
+            "category": category,
+        },
+    )
+
+
+# ------------------------------------------------------------
+# Update draft question count
+# ------------------------------------------------------------
+async def set_battle_draft_question_count(
+    session: AsyncSession,
+    *,
+    host_tg_id: int,
+    question_count: int,
+) -> None:
+    await session.execute(
+        text("""
+            UPDATE battle_room_drafts
+            SET question_count = :question_count,
+                updated_at = NOW()
+            WHERE host_tg_id = :host_tg_id
+        """),
+        {
+            "host_tg_id": host_tg_id,
+            "question_count": question_count,
+        },
+    )
+
+
+# ------------------------------------------------------------
+# Update draft duration
+# ------------------------------------------------------------
+async def set_battle_draft_duration(
+    session: AsyncSession,
+    *,
+    host_tg_id: int,
+    duration_seconds: int,
+) -> None:
+    await session.execute(
+        text("""
+            UPDATE battle_room_drafts
+            SET duration_seconds = :duration_seconds,
+                updated_at = NOW()
+            WHERE host_tg_id = :host_tg_id
+        """),
+        {
+            "host_tg_id": host_tg_id,
+            "duration_seconds": duration_seconds,
+        },
+    )
+
+
+# ------------------------------------------------------------
+# Update draft max players
+# ------------------------------------------------------------
+async def set_battle_draft_max_players(
+    session: AsyncSession,
+    *,
+    host_tg_id: int,
+    max_players: int,
+) -> None:
+    await session.execute(
+        text("""
+            UPDATE battle_room_drafts
+            SET max_players = :max_players,
+                updated_at = NOW()
+            WHERE host_tg_id = :host_tg_id
+        """),
+        {
+            "host_tg_id": host_tg_id,
+            "max_players": max_players,
+        },
+    )
+
+
+# ------------------------------------------------------------
+# Get draft
+# ------------------------------------------------------------
+async def get_battle_draft(session: AsyncSession, host_tg_id: int) -> Optional[dict]:
+    res = await session.execute(
+        text("""
+            SELECT id, host_tg_id, category, question_count,
+                   duration_seconds, max_players, created_at, updated_at
+            FROM battle_room_drafts
+            WHERE host_tg_id = :host_tg_id
+            LIMIT 1
+        """),
+        {"host_tg_id": host_tg_id},
+    )
+    row = res.mappings().first()
+    return dict(row) if row else None
+
+
+# ------------------------------------------------------------
+# Delete draft
+# ------------------------------------------------------------
+async def delete_battle_draft(session: AsyncSession, host_tg_id: int) -> None:
+    await session.execute(
+        text("""
+            DELETE FROM battle_room_drafts
+            WHERE host_tg_id = :host_tg_id
+        """),
+        {"host_tg_id": host_tg_id},
+    )
+
+
