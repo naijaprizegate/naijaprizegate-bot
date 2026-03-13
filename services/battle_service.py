@@ -272,7 +272,7 @@ async def start_battle_room(
             SET status = 'active',
                 question_ids = CAST(:question_ids AS jsonb),
                 started_at = NOW(),
-                ends_at = NOW() + (:duration_seconds || ' seconds')::interval
+                ends_at = NOW() + (:duration_seconds * INTERVAL '1 second')
             WHERE id = :battle_id
         """),
         {
