@@ -168,10 +168,8 @@ async def get_battle_players_full(session: AsyncSession, battle_id: str) -> list
 
 
 # ------------------------------------------------------------
-# Pick battle questions from trivia_questions
-# IMPORTANT:
-# This assumes your trivia_questions table has these columns:
-#   id, category, question, option_a, option_b, option_c, option_d, answer
+# Pick battle questions from questions table
+# Same source used by Challenge Mode
 # ------------------------------------------------------------
 async def pick_battle_questions(
     session: AsyncSession,
@@ -182,9 +180,9 @@ async def pick_battle_questions(
     res = await session.execute(
         text("""
             SELECT id
-            FROM trivia_questions
+            FROM questions
             WHERE category = :category
-            ORDER BY random()
+            ORDER BY question_order ASC
             LIMIT :question_count
         """),
         {
@@ -192,25 +190,46 @@ async def pick_battle_questions(
             "question_count": question_count,
         },
     )
-    ids = [row[0] for row in res.fetchall()]
-    return ids
+    return [int(row[0]) for row in res.fetchall()]
 
 
 # ------------------------------------------------------------
-# Get one trivia question by id
+# Get one battle question by id from questions table
 # ------------------------------------------------------------
 async def get_trivia_question_by_id(session: AsyncSession, question_id: int) -> Optional[dict]:
     res = await session.execute(
         text("""
-            SELECT id, category, question, options, answer
-            FROM trivia_questions
+            SELECT
+                id,
+                category,
+                question,
+                option_a,
+                option_b,
+                option_c,
+                option_d,
+                correct_option
+            FROM questions
             WHERE id = :question_id
             LIMIT 1
         """),
         {"question_id": question_id},
     )
     row = res.mappings().first()
-    return dict(row) if row else None
+    if not row:
+        return None
+
+    return {
+        "id": int(row["id"]),
+        "category": row["category"],
+        "question": row["question"],
+        "options": {
+            "A": row["option_a"],
+            "B": row["option_b"],
+            "C": row["option_c"],
+            "D": row["option_d"],
+        },
+        "answer": row["correct_option"],
+    }
 
 # ------------------------------------------------------------
 # Start battle room
@@ -438,16 +457,26 @@ async def get_battle_room_by_id(session: AsyncSession, battle_id: str) -> Option
 
 # ------------------------------------------------------------
 # Get battle players
+# Prefer real names from users table
 # ------------------------------------------------------------
 async def get_battle_players(session: AsyncSession, battle_id: str) -> list[dict]:
     res = await session.execute(
         text("""
-            SELECT tg_id, display_name, joined_at,
-                   current_question_index, correct_count,
-                   wrong_count, skipped_count, answered_count, is_finished
-            FROM battle_players
-            WHERE battle_id = :battle_id
-            ORDER BY joined_at ASC
+            SELECT
+                bp.tg_id,
+                COALESCE(NULLIF(u.full_name, ''), NULLIF(u.username, ''), NULLIF(bp.display_name, ''), CAST(bp.tg_id AS text)) AS display_name,
+                bp.joined_at,
+                bp.current_question_index,
+                bp.correct_count,
+                bp.wrong_count,
+                bp.skipped_count,
+                bp.answered_count,
+                bp.is_finished
+            FROM battle_players bp
+            LEFT JOIN users u
+              ON u.tg_id = bp.tg_id
+            WHERE bp.battle_id = :battle_id
+            ORDER BY bp.joined_at ASC
         """),
         {"battle_id": battle_id},
     )
@@ -458,6 +487,18 @@ async def get_battle_players(session: AsyncSession, battle_id: str) -> list[dict
 # Format lobby text
 # ------------------------------------------------------------
 def build_battle_lobby_text(room: dict, players: list[dict], bot_username: str) -> str:
+    import html
+
+    category_labels = {
+        "nigeria_history": "Nigeria History",
+        "geography": "Geography",
+        "nigeria_entertainment": "Entertainment",
+        "sciences": "Sciences",
+        "mathematics": "Mathematics",
+        "english": "English",
+        "football": "Football",
+    }
+
     joined_count = len(players)
     lines = []
 
@@ -466,21 +507,19 @@ def build_battle_lobby_text(room: dict, players: list[dict], bot_username: str) 
         lines.append(f"{i}. {html.escape(str(name))}")
 
     joined_text = "\n".join(lines) if lines else "No players yet."
-
-    category = str(room.get("category") or "").replace("_", " ").title()
+    category = category_labels.get(room.get("category"), str(room.get("category") or ""))
     category = html.escape(category)
 
     room_code = html.escape(str(room["room_code"]))
     invite_link = f"https://t.me/{bot_username}?start=battle_{room['room_code']}"
 
     return (
-        "🔥 <b>Battle Room Created</b>\n\n"
+        "🔥 <b>BATTLE ROOM CREATED</b>\n\n"
         f"<b>Room Code:</b> <code>{room_code}</code>\n"
         f"<b>Category:</b> {category}\n"
         f"<b>Questions:</b> {room['question_count']}\n"
         f"<b>Time:</b> {room['duration_seconds']} seconds\n"
-        f"<b>Players:</b> {joined_count}/{room['max_players']}\n\n"
-        "<b>Joined Players:</b>\n"
+        f"<b>Players Joined ({joined_count}/{room['max_players']}):</b>\n"
         f"{joined_text}\n\n"
         "<b>Invite friends with this link:</b>\n"
         f"{invite_link}"
@@ -1125,5 +1164,3 @@ async def delete_battle_draft(session: AsyncSession, host_tg_id: int) -> None:
         """),
         {"host_tg_id": host_tg_id},
     )
-
-
