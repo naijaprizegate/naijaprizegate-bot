@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import os
+import asyncio
 
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.error import BadRequest
