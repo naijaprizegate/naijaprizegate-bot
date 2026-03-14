@@ -344,6 +344,7 @@ async def start_battle_room(
 
     question_ids = await pick_battle_questions(
         session,
+        battle_id=str(room["id"]),
         category=room["category"],
         question_count=int(room["question_count"]),
     )
