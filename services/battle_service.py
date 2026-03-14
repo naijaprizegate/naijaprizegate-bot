@@ -169,29 +169,117 @@ async def get_battle_players_full(session: AsyncSession, battle_id: str) -> list
 
 # ------------------------------------------------------------
 # Pick battle questions from questions table
-# Same source used by Challenge Mode
+# Avoid repeats for players until category bank is exhausted
+# Same logic style as Challenge Mode
 # ------------------------------------------------------------
 async def pick_battle_questions(
     session: AsyncSession,
     *,
+    battle_id: str,
     category: str,
     question_count: int,
 ) -> list[int]:
-    res = await session.execute(
+    # 1) Get all players in this battle room
+    result = await session.execute(
         text("""
-            SELECT id
+            SELECT tg_id
+            FROM battle_players
+            WHERE battle_id = :battle_id
+        """),
+        {"battle_id": battle_id},
+    )
+    player_rows = result.fetchall()
+
+    if not player_rows:
+        return []
+
+    player_ids = [int(row.tg_id) for row in player_rows]
+
+    # 2) Get total number of questions available in this category
+    result = await session.execute(
+        text("""
+            SELECT COUNT(*) AS total_questions
+            FROM questions
+            WHERE category = :category
+        """),
+        {"category": category},
+    )
+    total_row = result.fetchone()
+    total_questions = int(total_row.total_questions or 0) if total_row else 0
+
+    if total_questions <= 0:
+        return []
+
+    # 3) Find players who have NOT yet exhausted this category
+    active_players: list[int] = []
+
+    for player_id in player_ids:
+        result = await session.execute(
+            text("""
+                SELECT COUNT(DISTINCT ba.question_id) AS answered_count
+                FROM battle_answers ba
+                JOIN questions q
+                  ON q.id = ba.question_id
+                WHERE ba.tg_id = :tg_id
+                  AND q.category = :category
+            """),
+            {
+                "tg_id": player_id,
+                "category": category,
+            },
+        )
+        row = result.fetchone()
+        answered_count = int(row.answered_count or 0) if row else 0
+
+        if answered_count < total_questions:
+            active_players.append(player_id)
+
+    # 4) Build exclusion set from active players only
+    excluded_question_ids: set[int] = set()
+
+    for player_id in active_players:
+        result = await session.execute(
+            text("""
+                SELECT DISTINCT ba.question_id
+                FROM battle_answers ba
+                JOIN questions q
+                  ON q.id = ba.question_id
+                WHERE ba.tg_id = :tg_id
+                  AND q.category = :category
+            """),
+            {
+                "tg_id": player_id,
+                "category": category,
+            },
+        )
+
+        for row in result.fetchall():
+            excluded_question_ids.add(int(row.question_id))
+
+    # 5) Load all category questions in sequence
+    result = await session.execute(
+        text("""
+            SELECT id, question_order
             FROM questions
             WHERE category = :category
             ORDER BY question_order ASC
-            LIMIT :question_count
         """),
-        {
-            "category": category,
-            "question_count": question_count,
-        },
+        {"category": category},
     )
-    return [int(row[0]) for row in res.fetchall()]
+    all_questions = result.fetchall()
 
+    if not all_questions:
+        return []
+
+    # 6) Pick fresh questions first
+    fresh_questions = [q for q in all_questions if int(q.id) not in excluded_question_ids]
+    selected_questions = fresh_questions[:question_count]
+
+    # 7) If not enough fresh questions remain, reset cycle from beginning
+    if len(selected_questions) < question_count:
+        selected_questions = all_questions[:question_count]
+
+    return [int(q.id) for q in selected_questions]
 
 # ------------------------------------------------------------
 # Get one battle question by id from questions table
@@ -1164,3 +1252,4 @@ async def delete_battle_draft(session: AsyncSession, host_tg_id: int) -> None:
         """),
         {"host_tg_id": host_tg_id},
     )
+
