@@ -16,7 +16,7 @@ from telegram.ext import (
 
 from sqlalchemy import text
 from db import AsyncSessionLocal
-
+from services.question_history_service import record_question_history
 
 # ==========================================================
 # CONFIG
@@ -431,6 +431,7 @@ async def generate_challenge_questions(
     category question cycle.
 
     Selected questions are stored in challenge_round_questions.
+    Uses shared question history table.
     """
     async with AsyncSessionLocal() as session:
         # 1) Get all players in the challenge
@@ -447,56 +448,9 @@ async def generate_challenge_questions(
         if not player_rows:
             return []
 
-        player_ids = [row.user_id for row in player_rows]
+        player_ids = [int(row.user_id) for row in player_rows]
 
-        # 2) Find players who have NOT exhausted this category
-        active_players = []
-
-        for player_id in player_ids:
-            result = await session.execute(
-                text("""
-                    SELECT COUNT(DISTINCT ca.question_id) AS answered_count
-                    FROM challenge_answers ca
-                    JOIN questions q
-                      ON q.id = ca.question_id
-                    WHERE ca.user_id = :uid
-                      AND q.category = :category
-                """),
-                {
-                    "uid": player_id,
-                    "category": category,
-                },
-            )
-
-            row = result.fetchone()
-            answered_count = row.answered_count if row else 0
-
-            if answered_count < 100:
-                active_players.append(player_id)
-
-        # 3) Build exclusion set from active players only
-        excluded_question_ids = set()
-
-        for player_id in active_players:
-            result = await session.execute(
-                text("""
-                    SELECT DISTINCT ca.question_id
-                    FROM challenge_answers ca
-                    JOIN questions q
-                      ON q.id = ca.question_id
-                    WHERE ca.user_id = :uid
-                      AND q.category = :category
-                """),
-                {
-                    "uid": player_id,
-                    "category": category,
-                },
-            )
-
-            for row in result.fetchall():
-                excluded_question_ids.add(row.question_id)
-
-        # 4) Load all category questions in sequence
+        # 2) Load all category questions in sequence
         result = await session.execute(
             text("""
                 SELECT id, question_order
@@ -511,8 +465,57 @@ async def generate_challenge_questions(
         if not all_questions:
             return []
 
+        total_questions = len(all_questions)
+
+        # 3) Find players who have NOT exhausted this category
+        active_players = []
+
+        for player_id in player_ids:
+            result = await session.execute(
+                text("""
+                    SELECT COUNT(DISTINCT question_key) AS answered_count
+                    FROM user_question_history
+                    WHERE tg_id = :tg_id
+                      AND source_type = 'db_questions'
+                      AND category = :category
+                """),
+                {
+                    "tg_id": player_id,
+                    "category": category,
+                },
+            )
+            row = result.fetchone()
+            answered_count = int(row.answered_count or 0) if row else 0
+
+            if answered_count < total_questions:
+                active_players.append(player_id)
+
+        # 4) Build exclusion set from active players only
+        excluded_question_ids = set()
+
+        for player_id in active_players:
+            result = await session.execute(
+                text("""
+                    SELECT DISTINCT question_key
+                    FROM user_question_history
+                    WHERE tg_id = :tg_id
+                      AND source_type = 'db_questions'
+                      AND category = :category
+                """),
+                {
+                    "tg_id": player_id,
+                    "category": category,
+                },
+            )
+
+            for row in result.fetchall():
+                try:
+                    excluded_question_ids.add(int(row.question_key))
+                except Exception:
+                    pass
+
         # 5) Pick fresh questions first
-        fresh_questions = [q for q in all_questions if q.id not in excluded_question_ids]
+        fresh_questions = [q for q in all_questions if int(q.id) not in excluded_question_ids]
         selected_questions = fresh_questions[:question_count]
 
         # 6) If not enough fresh questions remain, reset cycle from beginning
@@ -549,7 +552,6 @@ async def generate_challenge_questions(
         await session.commit()
 
         return selected_questions
-
 
 # ==========================================================
 # Join Challenge
@@ -1014,6 +1016,8 @@ async def choose_challenge_category(update: Update, context: ContextTypes.DEFAUL
 
 async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
+    if not query:
+        return
 
     payload = query.data.replace("challenge_answer_", "", 1)
     challenge_id_str, question_order_str, selected_option, question_id_str = payload.split("|")
@@ -1120,6 +1124,15 @@ async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_
             },
         )
 
+        # Record shared question history for universal no-repeat logic
+        await record_question_history(
+            session,
+            tg_id=user_id,
+            source_type="db_questions",
+            category=category,
+            question_key=str(question_id),
+        )
+
         # Mark delivery as answered so timeout task stops
         await session.execute(
             text("""
@@ -1203,8 +1216,8 @@ async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_
 
         await query.message.reply_text("🏁 You have completed the challenge!")
         await maybe_finish_challenge(update, context, challenge_id)
-                        
-                
+
+
 # ==========================================================
 # Maybe Finish Challenge
 # ==========================================================
@@ -1354,3 +1367,4 @@ def register_handlers(application):
             pattern="^challenge_answer_",
         )
     )
+
