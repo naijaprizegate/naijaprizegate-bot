@@ -47,12 +47,11 @@ async def process_finished_battles(bot: Bot):
         battle_id = str(battle["id"])
 
         try:
-            # Finalize battle state inside one DB transaction
             async with get_async_session() as session:
-                async with session.begin():
-                    await close_unfinished_players(session, battle_id)
-                    result = await finalize_battle_result(session, battle_id)
-                    player_ids = await get_battle_player_ids(session, battle_id)
+                await close_unfinished_players(session, battle_id)
+                result = await finalize_battle_result(session, battle_id)
+                player_ids = await get_battle_player_ids(session, battle_id)
+                await session.commit()
 
             if not result.get("ok"):
                 logger.warning(
@@ -66,7 +65,6 @@ async def process_finished_battles(bot: Bot):
             result_text = build_battle_result_text(result)
             keyboard = _battle_result_keyboard()
 
-            # Send result after DB transaction is complete
             for tg_id in player_ids:
                 try:
                     await bot.send_message(
