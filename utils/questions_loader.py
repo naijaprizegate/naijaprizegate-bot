@@ -1,13 +1,17 @@
 # ===========================================================
-# utils/questions_loader.py  (FINAL PRODUCTION VERSION)
-# Sequential per-user per-category using trivia_progress table
+# utils/questions_loader.py
+# Shared-history version for Paid Trivia (questions.json)
+# No repeat per user per category until JSON bank is exhausted
 # ===========================================================
 import json
 import os
 from typing import Any, Dict, List, Optional
 
-from sqlalchemy import text
 from db import get_async_session
+from services.question_history_service import (
+    get_seen_question_keys,
+    make_json_question_key,
+)
 
 # -----------------------------------------------------------
 # FILE PATHS
@@ -34,6 +38,7 @@ CATEGORY_MAP = {
 _ALL_QUESTIONS: Optional[List[Dict[str, Any]]] = None
 _CATEGORY_CACHE: Dict[str, List[Dict[str, Any]]] = {}
 
+
 # ===========================================================
 # LOAD QUESTIONS (cached)
 # ===========================================================
@@ -51,22 +56,71 @@ def _load_questions() -> List[Dict[str, Any]]:
 
 
 # ===========================================================
+# NORMALIZE ONE QUESTION
+# Ensures every question has a stable id and uniform option shape
+# ===========================================================
+def _normalize_question(category_key: str, q: Dict[str, Any]) -> Dict[str, Any]:
+    q2 = dict(q)
+
+    # Stable question key:
+    # Prefer explicit JSON id, otherwise generate hash from category + question text
+    qid = q2.get("id")
+    if qid is None or str(qid).strip() == "":
+        qid = make_json_question_key(category_key, str(q2.get("question", "")))
+    q2["id"] = str(qid)
+
+    # Normalize options to {"A":..., "B":..., "C":..., "D":...}
+    options = q2.get("options")
+    if isinstance(options, dict):
+        q2["options"] = {
+            "A": options.get("A", ""),
+            "B": options.get("B", ""),
+            "C": options.get("C", ""),
+            "D": options.get("D", ""),
+        }
+    else:
+        q2["options"] = {
+            "A": q2.get("option_a", ""),
+            "B": q2.get("option_b", ""),
+            "C": q2.get("option_c", ""),
+            "D": q2.get("option_d", ""),
+        }
+
+    # Normalize answer key
+    if "answer" not in q2 and "correct_option" in q2:
+        q2["answer"] = q2.get("correct_option")
+
+    return q2
+
+
+# ===========================================================
 # GET CATEGORY QUESTIONS (sorted + cached)
 # ===========================================================
 def _get_category_questions_sorted(category_key: str) -> List[Dict[str, Any]]:
     """
-    Returns questions sorted by numeric ID.
-    Cached after first call for performance.
+    Returns normalized questions for a category.
+    Sorted deterministically:
+    - by numeric id if possible
+    - otherwise by question text
+    Cached after first call.
     """
     if category_key in _CATEGORY_CACHE:
         return _CATEGORY_CACHE[category_key]
 
     all_q = _load_questions()
-    cat_q = [q for q in all_q if q.get("category") == category_key]
+    cat_q = [
+        _normalize_question(category_key, q)
+        for q in all_q
+        if q.get("category") == category_key
+    ]
 
-    # Sort by numeric id to guarantee deterministic order
-    cat_q.sort(key=lambda x: int(x.get("id") or 0))
+    def _sort_key(q: Dict[str, Any]):
+        qid = str(q.get("id") or "")
+        if qid.isdigit():
+            return (0, int(qid))
+        return (1, str(q.get("question") or "").lower())
 
+    cat_q.sort(key=_sort_key)
     _CATEGORY_CACHE[category_key] = cat_q
     return cat_q
 
@@ -76,15 +130,14 @@ def _get_category_questions_sorted(category_key: str) -> List[Dict[str, Any]]:
 # ===========================================================
 async def get_next_question_for_user(tg_id: int, category: str) -> Dict[str, Any]:
     """
-    Sequential question engine per-user per-category.
+    Paid Trivia question picker using shared history table.
 
-    Flow:
-    1) Read user's next_index from trivia_progress
-    2) Pick question in sorted order
-    3) Increment index and wrap
-    4) Upsert new progress
+    Rules:
+    1) Load all JSON questions in the category
+    2) Exclude questions this user has already seen in source_type='json_paid'
+    3) Return the first fresh question in deterministic order
+    4) If category is exhausted, restart from beginning
     """
-
     category_key = CATEGORY_MAP.get(category)
     if not category_key:
         raise ValueError(f"Invalid category given: {category}")
@@ -94,102 +147,49 @@ async def get_next_question_for_user(tg_id: int, category: str) -> Dict[str, Any
         raise ValueError(f"No questions found for category {category}")
 
     async with get_async_session() as session:
-
-        # Lock row if exists to prevent double-question race conditions
-        res = await session.execute(
-            text("""
-                SELECT next_index
-                FROM trivia_progress
-                WHERE tg_id = :tg_id AND category_key = :ck
-                FOR UPDATE
-            """),
-            {"tg_id": int(tg_id), "ck": category_key},
+        seen_keys = await get_seen_question_keys(
+            session,
+            tg_id=int(tg_id),
+            source_type="json_paid",
+            category=category_key,
         )
 
-        row = res.fetchone()
-        next_index = int(row[0]) if row else 0
+    fresh_questions = [q for q in questions if str(q["id"]) not in seen_keys]
 
-        # Pick question + compute next pointer
-        idx = next_index % len(questions)
-        question = questions[idx]
-        new_next = (idx + 1) % len(questions)
+    if fresh_questions:
+        return fresh_questions[0]
 
-        # Upsert progress
-        await session.execute(
-            text("""
-                INSERT INTO trivia_progress (tg_id, category_key, next_index, updated_at)
-                VALUES (:tg_id, :ck, :ni, NOW())
-                ON CONFLICT (tg_id, category_key)
-                DO UPDATE SET next_index = EXCLUDED.next_index, updated_at = NOW()
-            """),
-            {"tg_id": int(tg_id), "ck": category_key, "ni": int(new_next)},
-        )
-
-        await session.commit()
-
-    return question
+    # Category exhausted → restart cycle from beginning
+    return questions[0]
 
 
 # ===========================================================
-# RESET USER PROGRESS (single category)
-# ===========================================================
-async def reset_user_category_progress(tg_id: int, category: str) -> None:
-    """Reset a user back to the first question for a category."""
-    category_key = CATEGORY_MAP.get(category)
-    if not category_key:
-        raise ValueError(f"Invalid category given: {category}")
-
-    async with get_async_session() as session:
-        await session.execute(
-            text("""
-                INSERT INTO trivia_progress (tg_id, category_key, next_index, updated_at)
-                VALUES (:tg_id, :ck, 0, NOW())
-                ON CONFLICT (tg_id, category_key)
-                DO UPDATE SET next_index = 0, updated_at = NOW()
-            """),
-            {"tg_id": int(tg_id), "ck": category_key},
-        )
-        await session.commit()
-
-
-# ===========================================================
-# RESET USER PROGRESS (ALL CATEGORIES)
-# ===========================================================
-async def reset_user_all_categories(tg_id: int) -> None:
-    """Reset a user to the first question in ALL categories."""
-    async with get_async_session() as session:
-        await session.execute(
-            text("DELETE FROM trivia_progress WHERE tg_id = :tg_id"),
-            {"tg_id": int(tg_id)},
-        )
-        await session.commit()
-
-
-# ===========================================================
-# OPTIONAL: PEEK NEXT QUESTION (does not advance progress)
+# OPTIONAL: PEEK NEXT QUESTION (does not change history)
 # ===========================================================
 async def peek_next_question_for_user(tg_id: int, category: str) -> Dict[str, Any]:
-    """Returns next question without incrementing progress."""
-    category_key = CATEGORY_MAP.get(category)
-    if not category_key:
-        raise ValueError(f"Invalid category given: {category}")
+    """
+    Returns what get_next_question_for_user would currently return,
+    but does not record anything.
+    """
+    return await get_next_question_for_user(tg_id, category)
 
-    questions = _get_category_questions_sorted(category_key)
-    if not questions:
-        raise ValueError(f"No questions found for category {category}")
 
-    async with get_async_session() as session:
-        res = await session.execute(
-            text("""
-                SELECT next_index
-                FROM trivia_progress
-                WHERE tg_id = :tg_id AND category_key = :ck
-                LIMIT 1
-            """),
-            {"tg_id": int(tg_id), "ck": category_key},
-        )
-        row = res.fetchone()
-        next_index = int(row[0]) if row else 0
+# ===========================================================
+# RESET HELPERS
+# These do not delete shared history anymore.
+# They are retained for compatibility only.
+# ===========================================================
+async def reset_user_category_progress(tg_id: int, category: str) -> None:
+    """
+    Deprecated in shared-history mode.
+    Intentionally does nothing.
+    """
+    return None
 
-    idx = next_index % len(questions)
-    return questions[idx]
+
+async def reset_user_all_categories(tg_id: int) -> None:
+    """
+    Deprecated in shared-history mode.
+    Intentionally does nothing.
+    """
+    return None
