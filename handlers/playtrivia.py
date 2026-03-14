@@ -1,11 +1,10 @@
-# =================================================================
+# ===================================================================
 # handlers/playtrivia.py (CYCLE-AWARE + UX: countdown/timeout/locks)
-# =================================================================
+# ===================================================================
 import os
 import asyncio
 import random
 import logging
-import re
 import time
 import telegram
 
@@ -21,7 +20,7 @@ from db import get_async_session
 from helpers import get_or_create_user, consume_try, md_escape
 from utils.questions_loader import get_next_question_for_user
 from utils.signer import generate_signed_token
-
+from services.question_history_service import record_question_history, make_json_question_key
 from services.playtrivia import resolve_trivia_attempt, admin_add_cycle_points, admin_reset_cycle
 from services.airtime_service import create_pending_airtime_payout
 
@@ -33,6 +32,16 @@ ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
 BASE_URL = os.getenv("BASE_URL", "")
 
 TRIVIA_TIMEOUT_SECONDS = int(os.getenv("TRIVIA_TIMEOUT_SECONDS", "20"))
+
+CATEGORY_KEY_MAP = {
+    "History": "nigeria_history",
+    "Entertainment": "nigeria_entertainment",
+    "Football": "football",
+    "Geography": "geography",
+    "English": "english",
+    "Sciences": "sciences",
+    "Mathematics": "mathematics",
+}
 
 
 # =============================
@@ -75,6 +84,7 @@ def make_category_keyboard():
         ]
     )
 
+
 # ================================================================
 # STEP 1 — Entry point
 # ================================================================
@@ -97,7 +107,7 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
                 return await update.effective_message.reply_text(
                     "😅 You have no trivia attempts left.\n\n"
                     "Don't stop now!\n\n"
-                    "You are competing for:\n\n" 
+                    "You are competing for:\n\n"
                     "📱 *iPhone 17 Pro Max*\n"
                     "📱 *Samsung Z Flip*\n"
                     "🎧 *AirPods*\n"
@@ -140,7 +150,7 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
         )
         return
 
-    # ✅ TRUE sequential (per user, per category) using DB
+    # ✅ Shared-history question picker from JSON bank
     q = await get_next_question_for_user(tg_user.id, category)
 
     # Safety fallback
@@ -149,6 +159,10 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
             "⚠️ No questions found for this category yet.",
             reply_markup=make_category_keyboard(),
         )
+
+    # Store category context for history recording later
+    context.user_data["pending_trivia_category"] = category
+    q["category_label"] = category
 
     # ------------------------------------------------------------
     # Reset round state for new question
@@ -167,7 +181,6 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
         f"D. {q['options']['D']}"
     )
 
-    # Answer buttons
     keyboard = InlineKeyboardMarkup(
         [
             [
@@ -181,7 +194,6 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
         ]
     )
 
-    # Send question message
     sent_msg = await query.message.reply_text(
         question_text,
         parse_mode="Markdown",
@@ -190,14 +202,10 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
 
     current_qid = str(q["id"])
 
-    # ------------------------------------------------------------
-    # Countdown display
-    # ------------------------------------------------------------
     async def countdown(message, base_text, kb_markup, secs: int, qid: str):
         for remaining in range(secs, 0, -1):
             current_question = context.user_data.get("pending_trivia_question")
 
-            # Stop countdown if question changed or round already closed
             if context.user_data.get("trivia_answered", False):
                 break
 
@@ -221,9 +229,6 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
         countdown(sent_msg, question_text, keyboard, TRIVIA_TIMEOUT_SECONDS, current_qid)
     )
 
-    # ------------------------------------------------------------
-    # Timeout task (cancel old one)
-    # ------------------------------------------------------------
     old_timer = context.user_data.get("trivia_timer")
     if isinstance(old_timer, asyncio.Task) and not old_timer.done():
         old_timer.cancel()
@@ -231,6 +236,7 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["trivia_timer"] = asyncio.create_task(
         trivia_timeout_task(update, context, sent_msg.message_id, TRIVIA_TIMEOUT_SECONDS)
     )
+
 
 # ================================================================
 # ⏱️ TRIVIA TIMEOUT TASK
@@ -243,16 +249,12 @@ async def trivia_timeout_task(
 ):
     await asyncio.sleep(timeout_seconds)
 
-    # ------------------------------------------------------------
-    # If already answered or already being processed, do nothing
-    # ------------------------------------------------------------
     if context.user_data.get("trivia_answered", False):
         return
 
     if context.user_data.get("trivia_processing_lock", False):
         return
 
-    # Acquire processing lock
     context.user_data["trivia_processing_lock"] = True
     context.user_data["trivia_answered"] = True
     context.user_data["is_correct_answer"] = False
@@ -272,6 +274,7 @@ async def trivia_timeout_task(
 
     await run_spin_and_apply_reward(update, context)
 
+
 # ================================================================
 # STEP 3 — Answer handler (lock + evaluate)
 # ================================================================
@@ -282,11 +285,6 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
 
     await query.answer()
 
-    # ------------------------------------------------------------
-    # Duplicate tap / already closed:
-    # do NOT edit the message here, or it will flash and get replaced
-    # by the first handler that is still processing.
-    # ------------------------------------------------------------
     if context.user_data.get("trivia_answered", False):
         try:
             await query.answer("This trivia round is already being processed.", show_alert=False)
@@ -301,21 +299,14 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
             pass
         return
 
-    # ------------------------------------------------------------
-    # Lock immediately
-    # ------------------------------------------------------------
     context.user_data["trivia_processing_lock"] = True
     context.user_data["trivia_answered"] = True
 
-    # Remove buttons immediately so user cannot tap again
     try:
         await query.edit_message_reply_markup(reply_markup=None)
     except Exception:
         pass
 
-    # ------------------------------------------------------------
-    # Cancel timer
-    # ------------------------------------------------------------
     timer = context.user_data.pop("trivia_timer", None)
     if isinstance(timer, asyncio.Task) and not timer.done():
         try:
@@ -323,9 +314,6 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
         except Exception:
             pass
 
-    # ------------------------------------------------------------
-    # Extract answer
-    # ------------------------------------------------------------
     try:
         _, qid, selected = query.data.split("_", 2)
     except Exception:
@@ -353,8 +341,30 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
     context.user_data["is_correct_answer"] = is_correct
 
     # ------------------------------------------------------------
-    # Show result
+    # Record shared question history for Paid Trivia JSON bank
     # ------------------------------------------------------------
+    try:
+        category_label = question.get("category_label") or context.user_data.get("pending_trivia_category")
+        category_key = CATEGORY_KEY_MAP.get(category_label or "", "")
+
+        question_key = question.get("id") or make_json_question_key(
+            category_key or "unknown",
+            question["question"],
+        )
+
+        if category_key:
+            async with get_async_session() as session:
+                async with session.begin():
+                    await record_question_history(
+                        session,
+                        tg_id=update.effective_user.id,
+                        source_type="json_paid",
+                        category=category_key,
+                        question_key=str(question_key),
+                    )
+    except Exception:
+        logger.exception("❌ Failed to record paid trivia question history")
+
     if is_correct:
         await query.edit_message_text(
             "🎯 *Correct!*\n\n_Calculating your reward..._",
@@ -371,6 +381,7 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
     await asyncio.sleep(0.8)
     await run_spin_and_apply_reward(update, context)
 
+
 # ================================================================
 # STEP 4 — Spin animation + DB resolve + UI apply
 # ================================================================
@@ -382,7 +393,6 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
 
     correct = bool(context.user_data.pop("is_correct_answer", False))
 
-    # Spin animation FIRST (UX)
     msg = await update.effective_message.reply_text("🎡 *Spinning...*", parse_mode="Markdown")
 
     symbols = ["⭐", "🎯", "💫", "🎉", "📚", "🎁", "🏅", "🔔"]
@@ -397,7 +407,6 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
             last_frame = frame
         await asyncio.sleep(0.30)
 
-    # Resolve in DB (atomic)
     try:
         async with get_async_session() as session:
             async with session.begin():
@@ -418,7 +427,6 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                 cycle_id = int(outcome.cycle_id or 1)
                 points = int(outcome.points or 0)
 
-                # NO TRIES
                 if outcome.type == "no_tries":
                     return await msg.edit_text(
                         "🚫 You have no trivia attempts left.\n\n"
@@ -427,11 +435,6 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                         reply_markup=make_play_keyboard(),
                     )
 
-                # -----------------------------
-                # Primary outcome (milestones)
-                # -----------------------------
-
-                # AIRTIME
                 if outcome.type == "airtime" and outcome.airtime_amount:
                     payout = await create_pending_airtime_payout(
                         session=session,
@@ -448,7 +451,7 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                             reply_markup=make_play_keyboard(),
                         )
                     else:
-                        payout_id = payout["payout_id"]  # UUID string
+                        payout_id = payout["payout_id"]
 
                         keyboard = InlineKeyboardMarkup(
                             [[InlineKeyboardButton("⚡ Claim Airtime Reward", callback_data=f"claim_airtime:{payout_id}")]]
@@ -463,7 +466,6 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                             reply_markup=keyboard,
                         )
 
-                # GADGET
                 elif outcome.type == "gadget" and outcome.gadget in ("earpod", "speaker"):
                     prize_label = "Wireless Earpods" if outcome.gadget == "earpod" else "Bluetooth Speaker"
                     emoji = "🎧" if outcome.gadget == "earpod" else "🔊"
@@ -494,8 +496,6 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                             disable_web_page_preview=True,
                         )
 
-                # NONE / LOSE / cycle_end (without milestone)
-                
                 else:
                     if correct:
                         if outcome.paid_spin:
@@ -521,15 +521,11 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                             reply_markup=make_play_keyboard(),
                         )
 
-                # -----------------------------
-                # Cycle end announcement (after primary message)
-                # -----------------------------
                 if bool(outcome.cycle_ended) and outcome.winner_tg_id:
                     winner_tg = int(outcome.winner_tg_id)
                     winner_points = int(outcome.winner_points or 0)
 
                     if winner_tg == tg_id:
-                        # Winner sees phone choices
                         await update.effective_chat.send_message(
                             f"🎉 *Congratulations, {player_name}!* 🎉\n\n"
                             f"You finished *Cycle {cycle_id}* at the top of the leaderboard 🏆🔥\n"
@@ -552,7 +548,6 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                             parse_mode="Markdown",
                         )
 
-                        # Admin notification
                         try:
                             if ADMIN_USER_ID:
                                 await context.bot.send_message(
@@ -567,7 +562,6 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                         except Exception:
                             pass
                     else:
-                        # Everyone else just sees cycle ended notice
                         await update.effective_chat.send_message(
                             f"🏁 *Cycle {cycle_id} ended!*\n\n"
                             "A new cycle has started. Keep playing to top the leaderboard 🔥",
@@ -663,6 +657,7 @@ async def show_tries_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         reply_markup=keyboard,
     )
 
+
 # ================================================================
 # 🧪 ADMIN TEST: add points to current cycle
 # Usage: /testpoints 9
@@ -710,14 +705,11 @@ async def testpoints_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 async def resetpoints_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg = update.effective_user
 
-    # 🔐 Admin-only
     if tg.id != ADMIN_USER_ID:
         return await update.effective_message.reply_text("❌ Not authorized.")
 
     async with get_async_session() as session:
         async with session.begin():
-
-            # Get admin user row
             user = await get_or_create_user(
                 session,
                 tg_id=tg.id,
@@ -725,11 +717,9 @@ async def resetpoints_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
                 full_name=getattr(tg, "full_name", None),
             )
 
-            # Get current cycle
             gs = await session.get(GameState, 1)
             cycle_id = int(gs.current_cycle or 1) if gs else 1
 
-            # 🔥 RESET POINTS FOR THIS CYCLE ONLY
             await session.execute(
                 text("""
                     UPDATE user_cycle_stats
@@ -751,6 +741,7 @@ async def resetpoints_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         "You can now test milestones again."
     )
 
+
 # ================================================================
 # 🧪 ADMIN — ADD PAID TRIES (TESTING ONLY)
 # Command: /addtries <number>
@@ -759,7 +750,6 @@ async def addtries_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg = update.effective_user
     tg_id = tg.id
 
-    # Admin check
     if tg_id != ADMIN_USER_ID:
         return await update.effective_message.reply_text("⛔ Not allowed.")
 
@@ -779,7 +769,6 @@ async def addtries_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     async with get_async_session() as session:
         async with session.begin():
-            # Get or create admin user
             user = await get_or_create_user(
                 session,
                 tg_id=tg_id,
@@ -787,10 +776,8 @@ async def addtries_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 full_name=getattr(tg, "full_name", None),
             )
 
-            # Add paid tries
             user.tries_paid = int(user.tries_paid or 0) + count
 
-            # Ensure counters exist
             gc = await session.get(GlobalCounter, 1)
             if not gc:
                 gc = GlobalCounter(id=1, paid_tries_total=0)
@@ -806,7 +793,6 @@ async def addtries_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 )
                 session.add(gs)
 
-            # Update counters
             gc.paid_tries_total += count
             gs.paid_tries_this_cycle += count
             gs.lifetime_paid_tries += count
@@ -816,6 +802,7 @@ async def addtries_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"🎟️ Paid tries now: *{user.tries_paid}*",
         parse_mode="Markdown",
     )
+
 
 # ================================================================
 # 🔄 ADMIN — RESET CYCLE (TESTING / EMERGENCY)
@@ -856,33 +843,20 @@ async def resetcycle_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 # REGISTER HANDLERS
 # ================================================================
 def register_handlers(application, handle_buy_callback=None, free_menu=None):
-    # category selection
     application.add_handler(CallbackQueryHandler(trivia_category_handler, pattern=r"^cat_"))
-
-    # answers
-    application.add_handler(CallbackQueryHandler(trivia_answer_handler, pattern=r"^ans_\d+_[A-D]$"))
-
-    # entry
+    application.add_handler(CallbackQueryHandler(trivia_answer_handler, pattern=r"^ans_.+_[A-D]$"))
     application.add_handler(CommandHandler("playtrivia", playtrivia_handler))
-    
-    # admin test points (temporary)
+
     application.add_handler(CommandHandler("testpoints", testpoints_handler))
     application.add_handler(CommandHandler("resetpoints", resetpoints_handler))
     application.add_handler(CommandHandler("addtries", addtries_handler))
     application.add_handler(CommandHandler("resetcycle", resetcycle_handler))
 
     application.add_handler(CallbackQueryHandler(playtrivia_handler, pattern=r"^playtrivia$"))
-
-    # phone choice (winner)
     application.add_handler(CallbackQueryHandler(handle_phone_choice, pattern=r"^choose_"))
-
-    # show tries
     application.add_handler(CallbackQueryHandler(show_tries_callback, pattern=r"^show_tries$"))
 
-    # buy/free hooks (optional injection)
     if handle_buy_callback:
         application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern=r"^buy$"))
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
-
-
