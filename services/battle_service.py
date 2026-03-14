@@ -932,7 +932,7 @@ def build_battle_result_text(result: dict) -> str:
 
     if not rankings:
         return (
-            "🏁 *Battle Over!*\n\n"
+            "🏁 <b>Battle Over!</b>\n\n"
             "No valid player results were found."
         )
 
@@ -941,7 +941,7 @@ def build_battle_result_text(result: dict) -> str:
 
     for i, row in enumerate(rankings, start=1):
         icon = medals[i - 1] if i <= 3 else f"{i}."
-        name = row.get("display_name") or str(row.get("tg_id"))
+        name = html.escape(str(row.get("display_name") or row.get("tg_id")))
         correct = int(row.get("correct_count") or 0)
         wrong = int(row.get("wrong_count") or 0)
         skipped = int(row.get("skipped_count") or 0)
@@ -953,20 +953,20 @@ def build_battle_result_text(result: dict) -> str:
     board = "\n".join(lines)
 
     if is_draw:
-        winner_line = "🤝 *Result:* It's a draw!"
+        winner_line = "🤝 <b>Result:</b> It&#39;s a draw!"
     else:
-        winner_name = rankings[0].get("display_name") or str(rankings[0].get("tg_id"))
-        winner_line = f"🏆 *Winner:* {winner_name}"
+        winner_name = html.escape(str(rankings[0].get("display_name") or rankings[0].get("tg_id")))
+        winner_line = f"🏆 <b>Winner:</b> {winner_name}"
 
     return (
-        "🏁 *Battle Over!*\n\n"
+        "🏁 <b>Battle Over!</b>\n\n"
         f"{winner_line}\n\n"
-        "*Final Ranking:*\n"
+        "<b>Final Ranking:</b>\n"
         f"{board}\n\n"
-        "🎁 Want bigger rewards?\n"
-        "Play *Paid Trivia Questions* to compete for iPhone, Samsung, AirPods, Bluetooth speaker and airtime milestones."
+        "🎁 <b>Want bigger rewards?</b>\n"
+        "Play <b>Paid Trivia Questions</b> to compete for iPhone, Samsung, AirPods, "
+        "Bluetooth speaker and airtime milestones."
     )
-
 
 # ------------------------------------------------------------
 # Cancel battle room
@@ -1164,4 +1164,3 @@ async def delete_battle_draft(session: AsyncSession, host_tg_id: int) -> None:
         """),
         {"host_tg_id": host_tg_id},
     )
-
