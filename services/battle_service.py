@@ -13,7 +13,7 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from logger import logger
-
+from services.question_history_service import get_seen_question_keys_for_users
 
 # ------------------------------------------------------------
 # Helpers
@@ -195,68 +195,7 @@ async def pick_battle_questions(
 
     player_ids = [int(row.tg_id) for row in player_rows]
 
-    # 2) Get total number of questions available in this category
-    result = await session.execute(
-        text("""
-            SELECT COUNT(*) AS total_questions
-            FROM questions
-            WHERE category = :category
-        """),
-        {"category": category},
-    )
-    total_row = result.fetchone()
-    total_questions = int(total_row.total_questions or 0) if total_row else 0
-
-    if total_questions <= 0:
-        return []
-
-    # 3) Find players who have NOT yet exhausted this category
-    active_players: list[int] = []
-
-    for player_id in player_ids:
-        result = await session.execute(
-            text("""
-                SELECT COUNT(DISTINCT ba.question_id) AS answered_count
-                FROM battle_answers ba
-                JOIN questions q
-                  ON q.id = ba.question_id
-                WHERE ba.tg_id = :tg_id
-                  AND q.category = :category
-            """),
-            {
-                "tg_id": player_id,
-                "category": category,
-            },
-        )
-        row = result.fetchone()
-        answered_count = int(row.answered_count or 0) if row else 0
-
-        if answered_count < total_questions:
-            active_players.append(player_id)
-
-    # 4) Build exclusion set from active players only
-    excluded_question_ids: set[int] = set()
-
-    for player_id in active_players:
-        result = await session.execute(
-            text("""
-                SELECT DISTINCT ba.question_id
-                FROM battle_answers ba
-                JOIN questions q
-                  ON q.id = ba.question_id
-                WHERE ba.tg_id = :tg_id
-                  AND q.category = :category
-            """),
-            {
-                "tg_id": player_id,
-                "category": category,
-            },
-        )
-
-        for row in result.fetchall():
-            excluded_question_ids.add(int(row.question_id))
-
-    # 5) Load all category questions in sequence
+    # 2) Load all category questions in sequence
     result = await session.execute(
         text("""
             SELECT id, question_order
@@ -271,15 +210,31 @@ async def pick_battle_questions(
     if not all_questions:
         return []
 
-    # 6) Pick fresh questions first
+    # 3) Shared seen history across battle + challenge
+    seen_keys = await get_seen_question_keys_for_users(
+        session,
+        tg_ids=player_ids,
+        source_type="db_questions",
+        category=category,
+    )
+
+    excluded_question_ids = set()
+    for key in seen_keys:
+        try:
+            excluded_question_ids.add(int(key))
+        except Exception:
+            pass
+
+    # 4) Pick fresh questions first
     fresh_questions = [q for q in all_questions if int(q.id) not in excluded_question_ids]
     selected_questions = fresh_questions[:question_count]
 
-    # 7) If not enough fresh questions remain, reset cycle from beginning
+    # 5) If not enough fresh questions remain, reset cycle
     if len(selected_questions) < question_count:
         selected_questions = all_questions[:question_count]
 
     return [int(q.id) for q in selected_questions]
+
 
 # ------------------------------------------------------------
 # Get one battle question by id from questions table
@@ -1253,4 +1208,3 @@ async def delete_battle_draft(session: AsyncSession, host_tg_id: int) -> None:
         """),
         {"host_tg_id": host_tg_id},
     )
-
