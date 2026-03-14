@@ -18,6 +18,7 @@ from telegram.ext import (
 )
 
 from db import AsyncSessionLocal
+from services.question_history_service import record_question_history
 from logger import logger
 from services.battle_service import (
     create_battle_room,
@@ -1221,6 +1222,14 @@ async def battle_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
                     was_skipped=False,
                 )
 
+                await record_question_history(
+                    session,
+                    tg_id=user.id,
+                    source_type="db_questions",
+                    category=q["category"],
+                    question_key=str(question_id),
+                )
+
                 player_finished = await mark_player_finished_if_done(
                     session,
                     battle_id=str(state["battle_id"]),
@@ -1360,6 +1369,14 @@ async def battle_skip_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
                     was_skipped=True,
                 )
 
+                await record_question_history(
+                    session,
+                    tg_id=user.id,
+                    source_type="db_questions",
+                    category=current["question"]["category"],
+                    question_key=str(question_id),
+                )
+
                 player_finished = await mark_player_finished_if_done(
                     session,
                     battle_id=str(state["battle_id"]),
@@ -1397,6 +1414,8 @@ async def battle_skip_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
             question_id,
         )
         await query.answer("Could not skip question right now.", show_alert=True)
+
+
 
 # ===========================================================
 # Battle Next Question Handler
@@ -1551,5 +1570,3 @@ def register_handlers(application):
         CallbackQueryHandler(battle_next_question_handler, pattern=r"^battlenext:"),
         group=-3,
     )
-
-
