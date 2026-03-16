@@ -79,7 +79,6 @@ def battle_mode_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("🔥 Create Battle Room", callback_data="battle:create")],
         [InlineKeyboardButton("🔑 Join with Room Code", callback_data="battle:join_code")],
-        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
     ])
 
 
@@ -1103,7 +1102,7 @@ async def battle_start_handler(update: Update, context: ContextTypes.DEFAULT_TYP
 
         for player in result["players"]:
             tg_id = int(player["tg_id"])
-            await send_battle_question_to_player(context.bot, room_code, tg_id)
+            await send_battle_question_to_player(context.bot, room_code, tg_id, context=context)
 
     except Exception:
         logger.exception(
@@ -1570,3 +1569,4 @@ def register_handlers(application):
         CallbackQueryHandler(battle_next_question_handler, pattern=r"^battlenext:"),
         group=-3,
     )
+
