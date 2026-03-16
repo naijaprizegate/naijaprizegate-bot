@@ -23,7 +23,8 @@ BATTLE_LOOP_SECONDS = 5
 def _battle_result_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("🧠 Play Paid Trivia", callback_data="buy")],
-        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
+        [InlineKeyboardButton("🔥 Battle Again", callback_data="battle:menu")],
+        [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
     ])
 
 
