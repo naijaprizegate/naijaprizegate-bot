@@ -1,55 +1,51 @@
-# ==============================================================
-# handlers/core.py — Compliance-Safe Version (Updated)
+# ===============================================================
+# handlers/core.py — Compliance-Safe Version (Polished)
 # ===============================================================
 import re
 import logging
 
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import ContextTypes, CommandHandler, MessageHandler, filters, CallbackQueryHandler
-from sqlalchemy import text
+from telegram.ext import (
+    ContextTypes,
+    CommandHandler,
+    MessageHandler,
+    filters,
+    CallbackQueryHandler,
+)
 
 from helpers import md_escape, get_or_create_user
 from db import get_async_session
-from utils.security import validate_phone, is_admin, detect_provider
 from handlers.challenge import join_challenge
 
 logger = logging.getLogger(__name__)
 
+
 # ===============================================================
-# 📘 /terms COMMAND HANDLER — ADDED
+# 📘 /terms COMMAND HANDLER
 # ===============================================================
 async def terms_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = (
         "📘 <b>Fair Play & Terms</b>\n\n"
-
         "NaijaPrizeGate is a <b>skill-influenced trivia competition</b>.\n\n"
-
         "✔ Rewards are determined by <b>trivia performance and Premium Points</b>\n"
         "✔ Correct answers earn <b>Premium Points</b>\n"
         "✔ Premium Points accumulate across plays and determine leaderboard ranking\n"
         "✔ The <b>highest Premium Points holder</b> at the end of a game cycle wins the jackpot prize\n\n"
-
         "⚖️ <b>Fair Play Rules</b>\n"
         "✔ Trivia questions are randomly selected from predefined categories\n"
         "✔ Answers are validated server-side\n"
         "✔ Users cannot influence question selection or point calculations\n"
         "✔ Any form of cheating, automation, or abuse leads to disqualification\n\n"
-
         "💳 <b>Payments & Participation</b>\n"
         "✔ Each trivia attempt requires a paid chance\n"
         "✔ Paid participation supports contest operations\n"
         "✔ Chances are non-refundable once a question is served\n\n"
-
         "🎁 <b>Rewards & Fulfillment</b>\n"
         "✔ Rewards are <b>not guaranteed</b> on every Trivia attempt\n"
         "✔ Airtime and data rewards are processed after validation\n"
         "✔ Physical prizes require accurate contact and delivery details\n\n"
-
         "📜 By continuing to use this bot, you agree to the full "
         "<b>Terms & Conditions</b> governing participation.\n\n"
-
-        "➡️ Use /start to return to the main menu.\n\n"
-
         "🛑 <b>Disclaimer</b>\n"
         "Brand or product names shown as prizes (e.g. iPhone, Samsung Galaxy)\n"
         "are used <b>only to describe rewards available to top performers</b>.\n"
@@ -57,16 +53,28 @@ async def terms_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "with NaijaPrizeGate in any way."
     )
 
+    markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton("⬅️ Back to Other Menu", callback_data="menu:other")],
+        [InlineKeyboardButton("🏠 Main Menu", callback_data="menu:main")],
+    ])
 
     if update.callback_query:
         await update.callback_query.answer()
-        await update.callback_query.edit_message_text(text, parse_mode="HTML")
+        await update.callback_query.edit_message_text(
+            text,
+            parse_mode="HTML",
+            reply_markup=markup,
+        )
     else:
-        await update.message.reply_text(text, parse_mode="HTML")
+        await update.message.reply_text(
+            text,
+            parse_mode="HTML",
+            reply_markup=markup,
+        )
 
 
 # ===============================================================
-# ❓ FAQ HANDLER — ADDED
+# ❓ FAQ HANDLER
 # ===============================================================
 async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = (
@@ -76,19 +84,31 @@ async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "• <b>Is this gambling?</b>\n"
         "  → No. All rewards are based on skill and knowledge.\n\n"
         "• <b>Are there free questions?</b>\n"
-        "  → Yes! Earn free questions from the menu. Invite Friends. Follow us on Social Media platforms\n\n"
+        "  → Yes! Earn free questions from the menu. Invite Friends. Follow us on social media platforms.\n\n"
         "• <b>What do I gain from answering questions?</b>\n"
         "  → Quiz points boost your rank and unlock rewards.\n\n"
         "• <b>What if I run out of questions?</b>\n"
-        "  → You can earn or buy more through the menu.\n\n"
-        "➡️ Use /start to return to the main menu"
+        "  → You can earn or buy more through the menu."
     )
+
+    markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton("⬅️ Back to Other Menu", callback_data="menu:other")],
+        [InlineKeyboardButton("🏠 Main Menu", callback_data="menu:main")],
+    ])
 
     if update.callback_query:
         await update.callback_query.answer()
-        await update.callback_query.edit_message_text(text, parse_mode="HTML")
+        await update.callback_query.edit_message_text(
+            text,
+            parse_mode="HTML",
+            reply_markup=markup,
+        )
     else:
-        await update.message.reply_text(text, parse_mode="HTML")
+        await update.message.reply_text(
+            text,
+            parse_mode="HTML",
+            reply_markup=markup,
+        )
 
 
 # ===============================================================
@@ -151,7 +171,6 @@ def build_other_menu_text() -> str:
 # /start (with optional referral / deep links)
 # ===============================================================
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
     joined = await join_challenge(update, context)
     if joined:
         return
@@ -168,24 +187,25 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # -------------------------------------------------------
         if arg.startswith("battle_"):
             room_code = arg.replace("battle_", "", 1).strip()
-
             from handlers.battle import battle_join_from_payload
             await battle_join_from_payload(update, context, room_code)
             return
 
         # -------------------------------------------------------
-        # CHALLENGE LINK HANDLER
+        # CHALLENGE LINK HANDLER (fallback notice only)
+        # join_challenge() already tries to auto-join first
         # -------------------------------------------------------
         if arg.startswith("challenge_"):
             challenge_id = arg.split("_", 1)[1]
 
-            await update.message.reply_text(
-                "⚔️ *Friend Challenge Invitation*\n\n"
-                "You were invited to compete in a trivia challenge!\n\n"
-                f"Challenge ID: `{challenge_id}`\n\n"
-                "Press *Challenge Friends* or *Play Trivia Questions* to continue.",
-                parse_mode="Markdown",
-            )
+            if update.message:
+                await update.message.reply_text(
+                    "⚔️ *Friend Challenge Invitation*\n\n"
+                    "You were invited to compete in a trivia challenge!\n\n"
+                    f"Challenge ID: `{challenge_id}`\n\n"
+                    "Press *Challenge Friends* or *Play Trivia Questions* to continue.",
+                    parse_mode="Markdown",
+                )
             return
 
     # ===========================================================
@@ -312,7 +332,11 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg_user = update.effective_user
 
     async with get_async_session() as session:
-        db_user = await get_or_create_user(session, tg_id=tg_user.id, username=tg_user.username)
+        db_user = await get_or_create_user(
+            session,
+            tg_id=tg_user.id,
+            username=tg_user.username,
+        )
 
         text = (
             f"📊 *Your Question Credits*\n\n"
@@ -328,7 +352,6 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # Smart Fallback (LAST handler)
 # ===============================================================
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
     if context.user_data.get("_in_conversation"):
         return
 
@@ -358,7 +381,6 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             reply_markup=keyboard,
             parse_mode="MarkdownV2",
         )
-        return
 
 
 # ===============================================================
@@ -367,9 +389,21 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def detect_user_intent(text: str):
     text = text.lower()
 
+    challenge_words = [
+        "challenge", "challenge friend", "challenge friends", "friend challenge"
+    ]
+
+    battle_words = [
+        "battle", "battle mode", "multiplayer"
+    ]
+
+    support_words = [
+        "support", "contact", "admin", "help desk"
+    ]
+
     trivia_words = [
         "play", "trivia", "question", "questions",
-        "quiz", "game", "answer", "challenge"
+        "quiz", "game", "answer"
     ]
 
     payment_words = [
@@ -378,7 +412,7 @@ def detect_user_intent(text: str):
 
     faq_words = [
         "faq", "rule", "rules", "terms",
-        "guide", "how", "instruction"
+        "guide", "instruction"
     ]
 
     leaderboard_words = [
@@ -391,8 +425,17 @@ def detect_user_intent(text: str):
     ]
 
     menu_words = [
-        "menu", "other menu", "support", "contact"
+        "menu", "other menu"
     ]
+
+    if any(word in text for word in challenge_words):
+        return "challenge:start"
+
+    if any(word in text for word in battle_words):
+        return "battle:menu"
+
+    if any(word in text for word in support_words):
+        return "support:start"
 
     if any(word in text for word in trivia_words):
         return "playtrivia"
@@ -419,7 +462,6 @@ def detect_user_intent(text: str):
 # Register Handlers
 # ===============================================================
 def register_handlers(application):
-
     # ---------------------------------------------------
     # Commands (BLOCK propagation)
     # ---------------------------------------------------
