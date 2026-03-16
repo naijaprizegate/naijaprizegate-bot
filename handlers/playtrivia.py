@@ -6,9 +6,9 @@ import asyncio
 import random
 import logging
 import time
-import telegram
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram.error import BadRequest
 from telegram.ext import (
     CommandHandler,
     CallbackQueryHandler,
@@ -17,7 +17,7 @@ from telegram.ext import (
 from sqlalchemy import text
 
 from db import get_async_session
-from helpers import get_or_create_user, consume_try, md_escape
+from helpers import get_or_create_user, consume_try
 from utils.questions_loader import get_next_question_for_user
 from utils.signer import generate_signed_token
 from services.question_history_service import record_question_history, make_json_question_key
@@ -30,7 +30,6 @@ logger = logging.getLogger(__name__)
 
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
 BASE_URL = os.getenv("BASE_URL", "")
-
 TRIVIA_TIMEOUT_SECONDS = int(os.getenv("TRIVIA_TIMEOUT_SECONDS", "20"))
 
 CATEGORY_KEY_MAP = {
@@ -45,8 +44,17 @@ CATEGORY_KEY_MAP = {
 
 
 # =============================
-# Play keyboard
+# Shared navigation keyboards
 # =============================
+def make_back_menu_keyboard():
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("⬅️ Back to Other Menu", callback_data="menu:other")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+
 def make_play_keyboard():
     return InlineKeyboardMarkup(
         [
@@ -56,13 +64,12 @@ def make_play_keyboard():
             ],
             [InlineKeyboardButton("💳 Get More Trivia Attempts", callback_data="buy")],
             [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
+            [InlineKeyboardButton("⬅️ Back to Other Menu", callback_data="menu:other")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
 
 
-# =============================
-# Category keyboard
-# =============================
 def make_category_keyboard():
     return InlineKeyboardMarkup(
         [
@@ -81,6 +88,26 @@ def make_category_keyboard():
             [
                 InlineKeyboardButton("➗ Mathematics", callback_data="cat_Mathematics"),
             ],
+            [
+                InlineKeyboardButton("⬅️ Back to Other Menu", callback_data="menu:other"),
+            ],
+            [
+                InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main"),
+            ],
+        ]
+    )
+
+
+def make_show_tries_keyboard():
+    return InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia"),
+                InlineKeyboardButton("💳 Get More Trivia Attempts", callback_data="buy"),
+            ],
+            [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
+            [InlineKeyboardButton("⬅️ Back to Other Menu", callback_data="menu:other")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
 
@@ -92,7 +119,12 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     tg = update.effective_user
     logger.info("🔔 playtrivia triggered | tg_id=%s", tg.id)
 
-    # Check tries
+    if update.callback_query:
+        try:
+            await update.callback_query.answer()
+        except Exception:
+            pass
+
     async with get_async_session() as session:
         async with session.begin():
             user = await get_or_create_user(
@@ -122,7 +154,7 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
         "🧠 *Choose your trivia category:*\n\n"
         "✅ Correct answers on paid attempts increase your points.\n"
         "🏁 When the campaign threshold is reached, the top scorer wins the grand prize.\n\n"
-        "*AirPods* • *Bluetooth Speakers* • *iPhone 17 pro max* • *Samsung Z flip*",
+        "*AirPods* • *Bluetooth Speakers* • *iPhone 17 Pro Max* • *Samsung Z Flip*",
         parse_mode="Markdown",
         reply_markup=make_category_keyboard(),
     )
@@ -150,23 +182,47 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
         )
         return
 
-    # ✅ Shared-history question picker from JSON bank
     q = await get_next_question_for_user(tg_user.id, category)
 
-    # Safety fallback
     if not q:
         return await query.message.reply_text(
             "⚠️ No questions found for this category yet.",
             reply_markup=make_category_keyboard(),
         )
 
-    # Store category context for history recording later
+    # Make a safe copy so cached question objects are not mutated
+    q = {
+        **q,
+        "options": dict(q.get("options") or {}),
+    }
+
     context.user_data["pending_trivia_category"] = category
     q["category_label"] = category
 
     # ------------------------------------------------------------
-    # Reset round state for new question
+    # Record shared question history WHEN QUESTION IS SERVED
+    # so timed-out questions also count as seen.
     # ------------------------------------------------------------
+    try:
+        category_key = CATEGORY_KEY_MAP.get(category or "", "")
+        question_key = q.get("id") or make_json_question_key(
+            category_key or "unknown",
+            q["question"],
+        )
+
+        if category_key:
+            async with get_async_session() as session:
+                async with session.begin():
+                    await record_question_history(
+                        session,
+                        tg_id=tg_user.id,
+                        source_type="json_paid",
+                        category=category_key,
+                        question_key=str(question_key),
+                    )
+    except Exception:
+        logger.exception("❌ Failed to record paid trivia question history on serve")
+
     context.user_data["pending_trivia_question"] = q
     context.user_data["trivia_answered"] = False
     context.user_data["trivia_processing_lock"] = False
@@ -190,6 +246,12 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
             [
                 InlineKeyboardButton("C", callback_data=f"ans_{q['id']}_C"),
                 InlineKeyboardButton("D", callback_data=f"ans_{q['id']}_D"),
+            ],
+            [
+                InlineKeyboardButton("⬅️ Back to Other Menu", callback_data="menu:other"),
+            ],
+            [
+                InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main"),
             ],
         ]
     )
@@ -218,7 +280,7 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
                     parse_mode="Markdown",
                     reply_markup=kb_markup,
                 )
-            except telegram.error.BadRequest:
+            except BadRequest:
                 break
             except Exception:
                 break
@@ -340,31 +402,6 @@ async def trivia_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
 
     context.user_data["is_correct_answer"] = is_correct
 
-    # ------------------------------------------------------------
-    # Record shared question history for Paid Trivia JSON bank
-    # ------------------------------------------------------------
-    try:
-        category_label = question.get("category_label") or context.user_data.get("pending_trivia_category")
-        category_key = CATEGORY_KEY_MAP.get(category_label or "", "")
-
-        question_key = question.get("id") or make_json_question_key(
-            category_key or "unknown",
-            question["question"],
-        )
-
-        if category_key:
-            async with get_async_session() as session:
-                async with session.begin():
-                    await record_question_history(
-                        session,
-                        tg_id=update.effective_user.id,
-                        source_type="json_paid",
-                        category=category_key,
-                        question_key=str(question_key),
-                    )
-    except Exception:
-        logger.exception("❌ Failed to record paid trivia question history")
-
     if is_correct:
         await query.edit_message_text(
             "🎯 *Correct!*\n\n_Calculating your reward..._",
@@ -454,7 +491,11 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                         payout_id = payout["payout_id"]
 
                         keyboard = InlineKeyboardMarkup(
-                            [[InlineKeyboardButton("⚡ Claim Airtime Reward", callback_data=f"claim_airtime:{payout_id}")]]
+                            [
+                                [InlineKeyboardButton("⚡ Claim Airtime Reward", callback_data=f"claim_airtime:{payout_id}")],
+                                [InlineKeyboardButton("⬅️ Back to Other Menu", callback_data="menu:other")],
+                                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+                            ]
                         )
 
                         await msg.edit_text(
@@ -482,6 +523,7 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                         await update.effective_chat.send_message(
                             "⚠️ Server URL missing. Please contact support.",
                             parse_mode="Markdown",
+                            reply_markup=make_back_menu_keyboard(),
                         )
                     else:
                         token = generate_signed_token(
@@ -494,6 +536,7 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                             f"<a href='{link}'>📝 Fill Delivery Form</a>",
                             parse_mode="HTML",
                             disable_web_page_preview=True,
+                            reply_markup=make_back_menu_keyboard(),
                         )
 
                 else:
@@ -508,8 +551,8 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                         else:
                             await msg.edit_text(
                                 "✅ *Correct!*\n\n"
-                                "🎁 This was a free/bonus attempt so no leaderboard points were added\n\n"
-                                "Use paid attempts to increase your points. And you could win *iPhone 17 pro max* or *Samsung Z flip*",
+                                "🎁 This was a free/bonus attempt so no leaderboard points were added.\n\n"
+                                "Use paid attempts to increase your points and compete for *iPhone 17 Pro Max* or *Samsung Z Flip*.",
                                 parse_mode="Markdown",
                                 reply_markup=make_play_keyboard(),
                             )
@@ -540,6 +583,8 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                                 [InlineKeyboardButton("📱 iPhone 17 Pro Max", callback_data="choose_iphone17")],
                                 [InlineKeyboardButton("📱 Samsung Flip 7", callback_data="choose_flip7")],
                                 [InlineKeyboardButton("📱 Samsung S25 Ultra", callback_data="choose_s25ultra")],
+                                [InlineKeyboardButton("⬅️ Back to Other Menu", callback_data="menu:other")],
+                                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
                             ]
                         )
                         await update.effective_chat.send_message(
@@ -597,10 +642,16 @@ async def handle_phone_choice(update: Update, context: ContextTypes.DEFAULT_TYPE
     }
     user_choice = mapping.get(choice)
     if not user_choice:
-        return await query.edit_message_text("⚠️ Invalid choice")
+        return await query.edit_message_text(
+            "⚠️ Invalid choice",
+            reply_markup=make_back_menu_keyboard(),
+        )
 
     if not BASE_URL:
-        return await query.edit_message_text("⚠️ Server URL missing")
+        return await query.edit_message_text(
+            "⚠️ Server URL missing",
+            reply_markup=make_back_menu_keyboard(),
+        )
 
     token = generate_signed_token(
         tgid=tg_id,
@@ -615,6 +666,7 @@ async def handle_phone_choice(update: Update, context: ContextTypes.DEFAULT_TYPE
         "📌 Rewards are promotional, subject to verification.",
         parse_mode="HTML",
         disable_web_page_preview=True,
+        reply_markup=make_back_menu_keyboard(),
     )
 
 
@@ -635,26 +687,16 @@ async def show_tries_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
             paid = int(user.tries_paid or 0)
             bonus = int(user.tries_bonus or 0)
 
-    keyboard = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia"),
-                InlineKeyboardButton("💳 Get More Trivia Attempts", callback_data="buy"),
-            ],
-            [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
-        ]
-    )
-
     await update.callback_query.answer()
     await update.callback_query.message.reply_text(
-        md_escape(
+        (
             f"📊 *Available Trivia Attempts*\n\n"
             f"🎟️ Paid: {paid}\n"
             f"🎁 Bonus: {bonus}\n"
             f"💫 Total: {paid + bonus}"
         ),
-        parse_mode="MarkdownV2",
-        reply_markup=keyboard,
+        parse_mode="Markdown",
+        reply_markup=make_show_tries_keyboard(),
     )
 
 
