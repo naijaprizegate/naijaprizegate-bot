@@ -1303,12 +1303,9 @@ async def show_challenge_result(
     )
 
     keyboard = InlineKeyboardMarkup([
-        [
-            InlineKeyboardButton(
-                "🧠 Play Trivia Questions",
-                callback_data="playtrivia",
-            )
-        ]
+        [InlineKeyboardButton("🧠 Play Trivia Questions",callback_data="playtrivia")],
+        [InlineKeyboardButton("⚔️ Challenge Again", callback_data="challenge:start")],
+        [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
     ])
 
     # Send result to every player in the challenge
