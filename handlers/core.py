@@ -1,6 +1,6 @@
-# ============================================================
+# ==============================================================
 # handlers/core.py — Compliance-Safe Version (Updated)
-# =============================================================
+# ===============================================================
 import re
 import logging
 
@@ -92,15 +92,70 @@ async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # ===============================================================
-# /start (with optional referral)
+# MAIN MENU / OTHER MENU
+# ===============================================================
+def build_main_menu_keyboard():
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
+            [InlineKeyboardButton("⚔️ Challenge Friends (Free)", callback_data="challenge:start")],
+            [InlineKeyboardButton("🔥 Battle Mode (Free)", callback_data="battle:menu")],
+            [InlineKeyboardButton("📂 Other Menu", callback_data="menu:other")],
+        ]
+    )
+
+
+def build_other_menu_keyboard():
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("💳 Get More Trivia Attempts", callback_data="buy")],
+            [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
+            [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
+            [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
+            [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],
+            [InlineKeyboardButton("❓ FAQs", callback_data="faq")],
+            [InlineKeyboardButton("📩 Contact Support / Admin", callback_data="support:start")],
+            [InlineKeyboardButton("⬅️ Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+
+def build_start_text(user_first_name: str) -> str:
+    return (
+        f"👋 Hello *{md_escape(user_first_name)}*\\!\n\n"
+        "🎉 Welcome to *NaijaPrizeGate* — The Nigerian Trivia Challenge 🇳🇬\n\n"
+        "🧠 Answer fun questions \\- Test your knowledge\n"
+        "🎯 Earn reward points\n"
+        "🏆 Climb the leaderboard\n\n"
+        "🎁 Top player this cycle can win:\n\n"
+        "📱 *iPhone 17 Pro Max*\n"
+        "📱 *Samsung Z Flip*\n"
+        "🎧 *AirPods*\n"
+        "🔊 *Bluetooth Speakers*\n\n"
+        "Plus instant rewards like 📞 *Airtime* for premium points milestones\\!\n\n"
+        "📘 Tap *Terms & Fair Play* below for policy & transparency\n\n"
+        "📜 By using NaijaPrizeGate, you agree to our Terms & Conditions and Fair Play Rules\n\n"
+        "Ready to begin?\n"
+        "Tap *Play Trivia Questions* below 👇"
+    )
+
+
+def build_other_menu_text() -> str:
+    return (
+        "📂 *Other Menu*\n\n"
+        "Choose any of the options below:"
+    )
+
+
+# ===============================================================
+# /start (with optional referral / deep links)
 # ===============================================================
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    
-    joined = await join_challenge(update, context)
 
+    joined = await join_challenge(update, context)
     if joined:
         return
-    
+
     # ===========================================================
     # DEEP LINK HANDLERS
     # ===========================================================
@@ -128,28 +183,22 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 "⚔️ *Friend Challenge Invitation*\n\n"
                 "You were invited to compete in a trivia challenge!\n\n"
                 f"Challenge ID: `{challenge_id}`\n\n"
-                "Press *Play Trivia Questions* to begin the challenge.",
-                parse_mode="Markdown"
+                "Press *Challenge Friends* or *Play Trivia Questions* to continue.",
+                parse_mode="Markdown",
             )
-
-            # (Later we will connect this to the real challenge engine)
-            # For now we just show the message
             return
 
-    # ✅ SAFETY GUARD:
-    # If user is currently inside support flow, ignore accidental start calls
-    # triggered by greetings handlers ("hello", "hi", etc).
-    # BUT allow real /start command to override support flow.
+    # ===========================================================
+    # SUPPORT FLOW SAFETY GUARD
+    # ===========================================================
     if (context.user_data or {}).get("in_support_flow"):
         msg_text = ""
         if update.message and update.message.text:
             msg_text = update.message.text.strip()
 
-        # If it's NOT the actual /start command, do nothing.
         if not msg_text.startswith("/start"):
             return
 
-        # If user intentionally used /start, exit support flow cleanly.
         context.user_data.pop("in_support_flow", None)
 
     user = update.effective_user
@@ -161,44 +210,14 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             username=user.username,
         )
 
-    text = (
-        f"👋 Hello *{md_escape(user.first_name)}*\\!\n\n"
-        "🎉 Welcome to *NaijaPrizeGate* — The Nigerian Trivia Challenge 🇳🇬\n\n"
-        "🧠 Answer fun questions \\- Test your knowledge\n"
-        "🎯 Earn reward points\n"
-        "🏆 Climb the leaderboard\n\n"
-        "🎁 Top player this cycle can win\n\n"
-        "📱 *iPhone 17 Pro Max*\n"
-        "📱 *Samsung Z Flip*\n"
-        "🎧 *AirPods*\n"
-        "🔊 *Bluetooth Speakers*\n"
-        "Plus instant rewards like: 📞 *Airtime* for every premium points milestone\\!\n\n"
-        "📘 Tap *Terms & Fair Play* below for policy & transparency\n\n"
-        "📜 By using NaijaPrizeGate, you agree to our Terms & Conditions and Fair Play Rules\n\n"
-        "Ready to begin?\n"
-        "Tap *Play Trivia Questions* below 👇"
-    )
-
-    keyboard = [
-        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
-        [InlineKeyboardButton("💳 Get More Trivia Attempts", callback_data="buy")],
-        [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
-        [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
-        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
-        [InlineKeyboardButton("⚔️ Challenge Friends (Free)", callback_data="challenge:start")],
-        [InlineKeyboardButton("🔥 Battle Mode (Free)", callback_data="battle:menu")],
-        [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],
-        [InlineKeyboardButton("❓ FAQs", callback_data="faq")],
-        [InlineKeyboardButton("📩 Contact Support / Admin", callback_data="support:start")],
-    ]
-
-    markup = InlineKeyboardMarkup(keyboard)
+    text = build_start_text(user.first_name or "there")
+    markup = build_main_menu_keyboard()
 
     if update.message:
         await update.message.reply_text(
             text,
             reply_markup=markup,
-            parse_mode="MarkdownV2"
+            parse_mode="MarkdownV2",
         )
         return
 
@@ -212,67 +231,82 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.callback_query.edit_message_text(
                 text,
                 reply_markup=markup,
-                parse_mode="MarkdownV2"
+                parse_mode="MarkdownV2",
             )
         except Exception:
-            # If edit fails (message too old/not editable), send a fresh one
             await update.callback_query.message.reply_text(
                 text,
                 reply_markup=markup,
-                parse_mode="MarkdownV2"
+                parse_mode="MarkdownV2",
             )
         return
 
+
 # ===============================================================
-# GO BACK (from cancel or menu)
+# OTHER MENU CALLBACK
+# ===============================================================
+async def other_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    text = build_other_menu_text()
+    markup = build_other_menu_keyboard()
+
+    try:
+        await query.edit_message_text(
+            text,
+            reply_markup=markup,
+            parse_mode="Markdown",
+        )
+    except Exception:
+        await query.message.reply_text(
+            text,
+            reply_markup=markup,
+            parse_mode="Markdown",
+        )
+
+
+# ===============================================================
+# GO BACK TO MAIN MENU
 # ===============================================================
 async def go_start_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.callback_query.answer()
+    query = update.callback_query
+    if query:
+        await query.answer()
     await start(update, context)
 
 
 # ===============================================================
-# /help — Skill-based focus (unchanged)
+# /help
 # ===============================================================
 async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = (
         "🆘 *How to Play*\n\n"
-        "1️⃣ Select a trivia category\n"
-        "2️⃣ Answer questions correctly to earn reward points\n"
-        "3️⃣ Score higher to rise on the leaderboard\n\n"
-        "🎁 Top player this cycle can win\n\n"
+        "1️⃣ Select *Play Trivia Questions*\n"
+        "2️⃣ Choose a category\n"
+        "3️⃣ Answer correctly to earn reward points\n"
+        "4️⃣ Climb the leaderboard and compete for prizes\n\n"
+        "🎁 Top player this cycle can win:\n\n"
         "📱 *iPhone 17 Pro Max*\n"
         "📱 *Samsung Z Flip*\n"
         "🎧 *AirPods*\n"
-        "🔊 *Bluetooth Speakers*\n"
-        "Plus instant rewards like: 📞 *Airtime* for every premium points milestone\\!\n\n"
-        "🎯 Knowledge decides your success — not luck\n"
-        "🔒 Completely safe and skill\\-based\n\n"
+        "🔊 *Bluetooth Speakers*\n\n"
+        "Plus instant rewards like 📞 *Airtime* for premium points milestones\\!\n\n"
         "Use the buttons below to continue 👇"
     )
 
-    keyboard = [
-        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
-        [InlineKeyboardButton("💳 Get More Trivia Attempts", callback_data="buy")],
-        [InlineKeyboardButton("🎁 Earn Free Trivia Attempts", callback_data="free")],
-        [InlineKeyboardButton("📊 My Available Trivia Attempts", callback_data="show_tries")],
-        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
-        [InlineKeyboardButton("⚔️ Challenge Friends (Free)", callback_data="challenge:start")],
-        [InlineKeyboardButton("🔥 Battle Mode (Free)", callback_data="battle:menu")],
-        [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],  # NEW
-        [InlineKeyboardButton("❓ FAQs", callback_data="faq")],                # NEW
-        [InlineKeyboardButton("📩 Contact Support / Admin", callback_data="support:start")] # NEW
-    ]
-
     await update.message.reply_text(
         text,
-        reply_markup=InlineKeyboardMarkup(keyboard),
-        parse_mode="MarkdownV2"
+        reply_markup=build_main_menu_keyboard(),
+        parse_mode="MarkdownV2",
     )
 
 
 # ===============================================================
-# /mytries — unchanged
+# /mytries
 # ===============================================================
 async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg_user = update.effective_user
@@ -295,39 +329,23 @@ async def mytries(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ===============================================================
 async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
-    # ----------------------------------------------------------
-    # 1️⃣ Ignore if user is inside a conversation
-    # ----------------------------------------------------------
     if context.user_data.get("_in_conversation"):
         return
 
-    # ----------------------------------------------------------
-    # 2️⃣ Ignore non-text messages
-    # ----------------------------------------------------------
     if not update.message or not update.message.text:
         return
 
     text_msg = update.message.text.strip()
 
-    # ----------------------------------------------------------
-    # 3️⃣ Ignore commands (/start etc.)
-    # ----------------------------------------------------------
     if text_msg.startswith("/"):
         return
 
-    # ----------------------------------------------------------
-    # 4️⃣ Ignore numeric messages (phones etc.)
-    # ----------------------------------------------------------
     if re.fullmatch(r"^[0-9+ ]+$", text_msg):
         return
 
-    # ----------------------------------------------------------
-    # 5️⃣ Detect user intent
-    # ----------------------------------------------------------
     intent = detect_user_intent(text_msg)
 
     if intent:
-
         keyboard = InlineKeyboardMarkup([
             [InlineKeyboardButton("➡️ Continue", callback_data=intent)]
         ])
@@ -340,7 +358,6 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             reply_markup=keyboard,
             parse_mode="MarkdownV2",
         )
-
         return
 
 
@@ -348,7 +365,6 @@ async def fallback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # Intent Detector
 # ===============================================================
 def detect_user_intent(text: str):
-
     text = text.lower()
 
     trivia_words = [
@@ -357,7 +373,7 @@ def detect_user_intent(text: str):
     ]
 
     payment_words = [
-        "subscribe", "attempt", "attempts"
+        "subscribe", "attempt", "attempts", "buy"
     ]
 
     faq_words = [
@@ -374,6 +390,10 @@ def detect_user_intent(text: str):
         "free", "bonus", "earn"
     ]
 
+    menu_words = [
+        "menu", "other menu", "support", "contact"
+    ]
+
     if any(word in text for word in trivia_words):
         return "playtrivia"
 
@@ -388,6 +408,9 @@ def detect_user_intent(text: str):
 
     if any(word in text for word in free_words):
         return "free"
+
+    if any(word in text for word in menu_words):
+        return "menu:other"
 
     return None
 
@@ -409,6 +432,9 @@ def register_handlers(application):
     # ---------------------------------------------------
     # Callback buttons
     # ---------------------------------------------------
+    application.add_handler(CallbackQueryHandler(other_menu_handler, pattern=r"^menu:other$"))
+    application.add_handler(CallbackQueryHandler(go_start_callback, pattern=r"^menu:main$"))
+    application.add_handler(CallbackQueryHandler(go_start_callback, pattern=r"^go_start$"))
     application.add_handler(CallbackQueryHandler(terms_handler, pattern=r"^terms$"))
     application.add_handler(CallbackQueryHandler(faq_handler, pattern=r"^faq$"))
 
@@ -419,7 +445,7 @@ def register_handlers(application):
     register_leaderboard_handlers(application)
 
     # ---------------------------------------------------
-    # Fallback (EXCLUDE greetings)
+    # Fallback
     # ---------------------------------------------------
     application.add_handler(
         MessageHandler(
