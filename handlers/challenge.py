@@ -1281,11 +1281,9 @@ async def show_challenge_result(
         return
 
     result_lines = []
-    player_names = []
 
     for row in rows:
         name = row.full_name or row.username or f"user_{row.user_id}"
-        player_names.append(name)
         result_lines.append(f"{name} — {row.score}/{CHALLENGE_QUESTION_COUNT}")
 
     # ----------------------------------------------------------
@@ -1316,7 +1314,7 @@ async def show_challenge_result(
     message = (
         "⚔️ <b>CHALLENGE RESULT</b>\n\n"
         + "\n".join(result_lines)
-        + f"\n\n🏆 Winner: <b>{winner}</b>\n\n"
+        + f"\n\n{winner_line}\n\n"
         "🔥 Want to climb the leaderboard and become the <b>Winner</b>?\n\n"
         "<b>Play Trivia</b> to compete for:\n\n"
         "📱 <b>iPhone 17 Pro Max</b>\n"
@@ -1328,7 +1326,7 @@ async def show_challenge_result(
     )
 
     keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("🧠 Play Trivia Questions",callback_data="playtrivia")],
+        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
         [InlineKeyboardButton("⚔️ Challenge Again", callback_data="challenge:start")],
         [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
     ])
@@ -1345,7 +1343,7 @@ async def show_challenge_result(
         except Exception:
             pass
 
-
+        
 # ==========================================================
 # Register Handlers
 # ==========================================================
