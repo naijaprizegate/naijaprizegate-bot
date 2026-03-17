@@ -66,8 +66,8 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "Top scorer wins 🎯\n\n"
             "📱 iPhone 16 Pro Max\n"
             "📱 iPhone 17 Pro Max\n"
-            "📱 Samsung Galaxy Z Flip 7\n"
-            "📱 Samsung Galaxy S25 Ultra\n\n"
+            "📱 Samsung Galaxy Z Flip 6\n"
+            "📱 Samsung Galaxy S26 Ultra\n\n"
             f"Join me now 👇\n{ref_link}"
         ),
         (
@@ -77,8 +77,8 @@ async def free_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "Prizes up for grabs:\n"
             "🏆 iPhone 16 Pro Max\n"
             "🏆 iPhone 17 Pro Max\n"
-            "🏆 Samsung Galaxy Z Flip 7\n"
-            "🏆 Samsung Galaxy S25 Ultra\n\n"
+            "🏆 Samsung Galaxy Z Flip 6\n"
+            "🏆 Samsung Galaxy S26 Ultra\n\n"
             f"Don’t miss out 👇\n{ref_link}"
         ),
     ]
@@ -221,4 +221,3 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(send_referral_link, pattern=r"^get_referral_link$"))
     application.add_handler(CallbackQueryHandler(ask_proof_upload, pattern=r"^upload_proof$"))
     application.add_handler(MessageHandler(filters.PHOTO, handle_proof_photo))
-
