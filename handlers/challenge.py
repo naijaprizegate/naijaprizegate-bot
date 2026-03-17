@@ -1258,7 +1258,6 @@ async def maybe_finish_challenge(
 # ==========================================================
 # Show Challenge Result
 # ==========================================================
-
 async def show_challenge_result(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
@@ -1282,19 +1281,44 @@ async def show_challenge_result(
         return
 
     result_lines = []
+    player_names = []
 
     for row in rows:
         name = row.full_name or row.username or f"user_{row.user_id}"
+        player_names.append(name)
         result_lines.append(f"{name} — {row.score}/{CHALLENGE_QUESTION_COUNT}")
 
-    winner = rows[0].full_name or rows[0].username or f"user_{rows[0].user_id}"
+    # ----------------------------------------------------------
+    # Tie-aware winner logic
+    # ----------------------------------------------------------
+    top_score = int(rows[0].score or 0)
+
+    tied_top_rows = [row for row in rows if int(row.score or 0) == top_score]
+    tied_top_names = [
+        (row.full_name or row.username or f"user_{row.user_id}")
+        for row in tied_top_rows
+    ]
+
+    if len(tied_top_names) == 1:
+        winner_line = f"🏆 Winner: <b>{tied_top_names[0]}</b>"
+    elif len(tied_top_names) == 2:
+        winner_line = (
+            "🤝 Result: <b>It's a draw!</b>\n"
+            f"<b>Joint Winners:</b> {tied_top_names[0]} and {tied_top_names[1]}"
+        )
+    else:
+        joint_names = ", ".join(tied_top_names[:-1]) + f" and {tied_top_names[-1]}"
+        winner_line = (
+            "🤝 Result: <b>It's a draw!</b>\n"
+            f"<b>Joint Winners:</b> {joint_names}"
+        )
 
     message = (
         "⚔️ <b>CHALLENGE RESULT</b>\n\n"
         + "\n".join(result_lines)
         + f"\n\n🏆 Winner: <b>{winner}</b>\n\n"
         "🔥 Want to climb the leaderboard and become the <b>Winner</b>?\n\n"
-        "Play Trivia to compete for:\n\n"
+        "<b>Play Trivia</b> to compete for:\n\n"
         "📱 <b>iPhone 17 Pro Max</b>\n"
         "📱 <b>Samsung Galaxy S26 Ultra</b>\n"
         "📱 <b>Samsung Z Flip 6</b>\n"
@@ -1365,5 +1389,3 @@ def register_handlers(application):
             pattern="^challenge_answer_",
         )
     )
-
-
