@@ -1296,7 +1296,8 @@ async def show_challenge_result(
         "🔥 Want to climb the leaderboard and become the <b>Winner</b>?\n\n"
         "Play Trivia to compete for:\n\n"
         "📱 <b>iPhone 17 Pro Max</b>\n"
-        "📱 <b>Samsung Z Flip</b>\n"
+        "📱 <b>Samsung Galaxy S26 Ultra</b>\n"
+        "📱 <b>Samsung Z Flip 6</b>\n"
         "🎧 <b>AirPods</b>\n"
         "🔊 <b>Bluetooth Speakers</b>\n"
         "📞 Instant <b>Airtime Rewards</b> for Premium Points Milestones"
@@ -1364,4 +1365,3 @@ def register_handlers(application):
             pattern="^challenge_answer_",
         )
     )
-
