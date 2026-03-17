@@ -813,7 +813,7 @@ async def show_challenge_lobby(
         f"{player_text}\n\n"
         f"<b>Questions:</b> {CHALLENGE_QUESTION_COUNT}\n"
         f"<b>Minimum players:</b> 2\n\n"
-        "Invite more friends, then start when ready."
+        "Waiting for the host to start the Challenge."
     )
 
     # Try to edit existing lobby message
@@ -1365,3 +1365,5 @@ def register_handlers(application):
             pattern="^challenge_answer_",
         )
     )
+
+
