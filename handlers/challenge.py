@@ -1326,7 +1326,7 @@ async def show_challenge_result(
     )
 
     keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("🧠 Play Trivia Questions", callback_data="playtrivia")],
+        [InlineKeyboardButton("🧠 Play Trivia Questions (Win iPhone 17 Pro Max & Galaxy S25 Ultra)", callback_data="playtrivia")],
         [InlineKeyboardButton("⚔️ Challenge Again", callback_data="challenge:start")],
         [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
     ])
@@ -1343,7 +1343,7 @@ async def show_challenge_result(
         except Exception:
             pass
 
-        
+
 # ==========================================================
 # Register Handlers
 # ==========================================================
