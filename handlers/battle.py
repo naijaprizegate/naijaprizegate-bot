@@ -789,7 +789,6 @@ async def battle_receive_room_code_handler(update: Update, context: ContextTypes
             f"*Time:* {room['duration_seconds']} seconds\n\n"
             "Waiting for the host to start the battle.",
             parse_mode="Markdown",
-            reply_markup=battle_waiting_keyboard(),
         )
 
         await refresh_host_lobby(context.bot, room_code)
@@ -848,7 +847,6 @@ async def battle_join_from_payload(update: Update, context: ContextTypes.DEFAULT
             f"*Time:* {room['duration_seconds']} seconds\n\n"
             "Waiting for the host to start the battle.",
             parse_mode="Markdown",
-            reply_markup=battle_waiting_keyboard(),
         )
 
         await refresh_host_lobby(context.bot, room_code)
@@ -1569,4 +1567,3 @@ def register_handlers(application):
         CallbackQueryHandler(battle_next_question_handler, pattern=r"^battlenext:"),
         group=-3,
     )
-
