@@ -141,7 +141,8 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
                     "Don't stop now!\n\n"
                     "You are competing for:\n\n"
                     "📱 *iPhone 17 Pro Max*\n"
-                    "📱 *Samsung Z Flip*\n"
+                    "📱 *Samsung Galaxy S26 Ultra*\n"
+                    "📱 *Samsung Z Flip 6*\n"
                     "🎧 *AirPods*\n"
                     "🔊 *Bluetooth Speakers*\n"
                     "And instant *airtime* rewards.\n\n"
@@ -154,7 +155,8 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
         "🧠 *Choose your trivia category:*\n\n"
         "✅ Correct answers on paid attempts increase your points.\n"
         "🏁 When the campaign threshold is reached, the top scorer wins the grand prize.\n\n"
-        "*AirPods* • *Bluetooth Speakers* • *iPhone 17 Pro Max* • *Samsung Z Flip*",
+        "• *AirPods* • *Bluetooth Speakers* • *iPhone 17 Pro Max*\n" 
+        "• *Samsung Z Flip 6* • *Samsung Galaxy S26 Ultra*",
         parse_mode="Markdown",
         reply_markup=make_category_keyboard(),
     )
@@ -552,7 +554,7 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                             await msg.edit_text(
                                 "✅ *Correct!*\n\n"
                                 "🎁 This was a free/bonus attempt so no leaderboard points were added.\n\n"
-                                "Use paid attempts to increase your points and compete for *iPhone 17 Pro Max* or *Samsung Z Flip*.",
+                                "Use paid attempts to increase your points and compete for *iPhone 17 Pro Max* or *Samsung Galaxy S26 Ultra*.",
                                 parse_mode="Markdown",
                                 reply_markup=make_play_keyboard(),
                             )
@@ -581,8 +583,8 @@ async def run_spin_and_apply_reward(update: Update, context: ContextTypes.DEFAUL
                             [
                                 [InlineKeyboardButton("📱 iPhone 16 Pro Max", callback_data="choose_iphone16")],
                                 [InlineKeyboardButton("📱 iPhone 17 Pro Max", callback_data="choose_iphone17")],
-                                [InlineKeyboardButton("📱 Samsung Flip 7", callback_data="choose_flip7")],
-                                [InlineKeyboardButton("📱 Samsung S25 Ultra", callback_data="choose_s25ultra")],
+                                [InlineKeyboardButton("📱 Samsung Z Flip 6", callback_data="choose_flip7")],
+                                [InlineKeyboardButton("📱 Samsung Galaxy S26 Ultra", callback_data="choose_s25ultra")],
                                 [InlineKeyboardButton("⬅️ Back to Other Menu", callback_data="menu:other")],
                                 [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
                             ]
