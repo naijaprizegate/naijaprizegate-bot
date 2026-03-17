@@ -237,7 +237,6 @@ async def leaderboard_render(
     text_lines.append("🏆 <b>NaijaPrizeGate Quiz Leaderboard</b>")
     text_lines.append(f"{scope_label}\n")
     
-    
     if viewer_user_id:
         badge_me = _badge_for_points(my_points)
         text_lines.append("\n<b>Your Stats</b>")
@@ -279,7 +278,8 @@ async def leaderboard_render(
             text_lines.append(
                 "\n🏆 Top scorer this cycle wins:\n\n"
                 "📱 <b>iPhone 17 Pro Max</b>\n"
-                "📱 <b>Samsung Z Flip</b>\n"
+                "📱 <b>Samsung Galaxy S26 Ultra</b>\n"
+                "📱 <b>Samsung Z Flip 6</b>\n"
                 "🎧 <b>AirPods</b>\n"
                 "🔊 <b>Bluetooth Speakers</b>\n\n"
                 "🔥 Keep scoring to reach the top!"
@@ -289,7 +289,7 @@ async def leaderboard_render(
 
     text_lines.append(
         "\nℹ️ Weekly view shows the last 7 days only. "
-        "\nℹ️ Cycle view covers the current competition cycle."
+        "\nℹ️Cycle view covers the current competition cycle."
     )
     text_lines.append(
         "\n📌 Rankings are based on your quiz activity and knowledge performance."
@@ -510,4 +510,3 @@ def register_leaderboard_handlers(application):
     application.add_handler(
         CallbackQueryHandler(my_achievements_handler, pattern=r"^my_achievements$")
     )
-
