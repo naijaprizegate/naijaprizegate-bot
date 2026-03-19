@@ -117,7 +117,7 @@ async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def build_main_menu_keyboard():
     return InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("🧠 Play Trivia Questions (Win iPhone 17 Pro Max & Galaxy S25 Ultra)", callback_data="playtrivia")],
+            [InlineKeyboardButton("🧠 Play Trivia Questions (Win iPhone 17 Pro Max)", callback_data="playtrivia")],
             [InlineKeyboardButton("⚔️ Challenge Friends (Free)", callback_data="challenge:start")],
             [InlineKeyboardButton("🔥 Battle Mode (Free)", callback_data="battle:menu")],
             [InlineKeyboardButton("📂 Other Menu", callback_data="menu:other")],
