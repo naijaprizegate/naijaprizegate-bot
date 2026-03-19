@@ -28,7 +28,6 @@ from services.battle_service import (
     get_battle_players,
     build_battle_lobby_text,
     start_battle_room,
-    get_trivia_question_by_id,
     get_player_battle_state,
     get_current_battle_question_for_player,
     has_player_answered_question,
@@ -72,6 +71,8 @@ BATTLE_CATEGORY_LABELS = {
     "football": "Football",
 }
 
+BATTLE_HISTORY_SOURCE = "shared_json_questions"
+
 # ============================================================
 # Keyboards
 # ============================================================
@@ -79,6 +80,7 @@ def battle_mode_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("🔥 Create Battle Room", callback_data="battle:create")],
         [InlineKeyboardButton("🔑 Join with Room Code", callback_data="battle:join_code")],
+        [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
     ])
 
 
@@ -173,13 +175,16 @@ def battle_lobby_keyboard(room_code: str, is_host: bool = True) -> InlineKeyboar
         buttons.append([InlineKeyboardButton("🚀 Start Battle", callback_data=f"battle:start:{room_code}")])
         buttons.append([InlineKeyboardButton("❌ Cancel Battle", callback_data=f"battle:cancel_room:{room_code}")])
 
+    buttons.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
+
     return InlineKeyboardMarkup(buttons)
 
 
 def battle_waiting_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton("🏆 Leaderboard", callback_data="leaderboard:show")],
+        [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
     ])
+
 
 # ============================================================
 # Battle question/result text builders
@@ -205,6 +210,7 @@ def build_battle_question_text(
         f"D. {option_d}\n\n"
         f"⏳ <b>Battle ends in:</b> {seconds_left}s"
     )
+
 
 def build_battle_timeout_text(
     question_order: int,
@@ -256,6 +262,7 @@ def build_battle_answer_result_text(
         f"D. {option_d}\n\n"
         f"{status_line}"
     )
+
 
 # ============================================================
 # Battle question timeout/countdown
@@ -321,24 +328,33 @@ async def handle_battle_question_timeout(
                 return
 
             if seconds_left <= 0:
-                async with session.begin():
-                    await record_battle_answer(
-                        session,
-                        battle_id=str(state["battle_id"]),
-                        tg_id=user_id,
-                        question_id=question_id,
-                        question_index=int(current["question_index"]),
-                        selected_option=None,
-                        is_correct=False,
-                        was_skipped=True,
-                    )
+                await record_battle_answer(
+                    session,
+                    battle_id=str(state["battle_id"]),
+                    tg_id=user_id,
+                    question_id=question_id,
+                    question_index=int(current["question_index"]),
+                    selected_option=None,
+                    is_correct=False,
+                    was_skipped=True,
+                )
 
-                    player_finished = await mark_player_finished_if_done(
-                        session,
-                        battle_id=str(state["battle_id"]),
-                        tg_id=user_id,
-                        question_count=int(state["question_count"]),
-                    )
+                await record_question_history(
+                    session,
+                    tg_id=user_id,
+                    source_type=BATTLE_HISTORY_SOURCE,
+                    category=category,
+                    question_key=str(question_id),
+                )
+
+                player_finished = await mark_player_finished_if_done(
+                    session,
+                    battle_id=str(state["battle_id"]),
+                    tg_id=user_id,
+                    question_count=int(state["question_count"]),
+                )
+
+                await session.commit()
 
                 try:
                     await context.bot.edit_message_text(
@@ -371,7 +387,14 @@ async def handle_battle_question_timeout(
                         )
                     except Exception:
                         pass
+                    return
 
+                await send_battle_question_to_player(
+                    context.bot,
+                    room_code,
+                    user_id,
+                    context=context,
+                )
                 return
 
         try:
@@ -394,6 +417,7 @@ async def handle_battle_question_timeout(
             )
         except Exception:
             pass
+
 
 # ============================================================
 # Silent host lobby refresh
@@ -789,6 +813,7 @@ async def battle_receive_room_code_handler(update: Update, context: ContextTypes
             f"*Time:* {room['duration_seconds']} seconds\n\n"
             "Waiting for the host to start the battle.",
             parse_mode="Markdown",
+            reply_markup=battle_waiting_keyboard(),
         )
 
         await refresh_host_lobby(context.bot, room_code)
@@ -847,6 +872,7 @@ async def battle_join_from_payload(update: Update, context: ContextTypes.DEFAULT
             f"*Time:* {room['duration_seconds']} seconds\n\n"
             "Waiting for the host to start the battle.",
             parse_mode="Markdown",
+            reply_markup=battle_waiting_keyboard(),
         )
 
         await refresh_host_lobby(context.bot, room_code)
@@ -1024,6 +1050,7 @@ async def send_battle_question_to_player(
             )
         )
 
+
 # ============================================================
 # Start Battle Handler
 # ============================================================
@@ -1100,7 +1127,12 @@ async def battle_start_handler(update: Update, context: ContextTypes.DEFAULT_TYP
 
         for player in result["players"]:
             tg_id = int(player["tg_id"])
-            await send_battle_question_to_player(context.bot, room_code, tg_id, context=context)
+            await send_battle_question_to_player(
+                context.bot,
+                room_code,
+                tg_id,
+                context=context,
+            )
 
     except Exception:
         logger.exception(
@@ -1222,7 +1254,7 @@ async def battle_answer_handler(update: Update, context: ContextTypes.DEFAULT_TY
                 await record_question_history(
                     session,
                     tg_id=user.id,
-                    source_type="db_questions",
+                    source_type=BATTLE_HISTORY_SOURCE,
                     category=q["category"],
                     question_key=str(question_id),
                 )
@@ -1369,7 +1401,7 @@ async def battle_skip_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
                 await record_question_history(
                     session,
                     tg_id=user.id,
-                    source_type="db_questions",
+                    source_type=BATTLE_HISTORY_SOURCE,
                     category=current["question"]["category"],
                     question_key=str(question_id),
                 )
@@ -1413,7 +1445,6 @@ async def battle_skip_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         await query.answer("Could not skip question right now.", show_alert=True)
 
 
-
 # ===========================================================
 # Battle Next Question Handler
 # ===========================================================
@@ -1443,7 +1474,7 @@ async def battle_next_question_handler(update: Update, context: ContextTypes.DEF
     except Exception:
         pass
 
-    await send_battle_question_to_player(context.bot, room_code, user.id)
+    await send_battle_question_to_player(context.bot, room_code, user.id, context=context)
 
 
 # ============================================================
@@ -1567,3 +1598,4 @@ def register_handlers(application):
         CallbackQueryHandler(battle_next_question_handler, pattern=r"^battlenext:"),
         group=-3,
     )
+
