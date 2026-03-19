@@ -169,7 +169,7 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
             await session.commit()
 
     keyboard = [
-        [InlineKeyboardButton("🧠 Play Trivia Questions (Win iPhone 17 Pro Max & Galaxy S25 Ultra)", callback_data="playtrivia")],
+        [InlineKeyboardButton("🧠 Play Trivia Questions (Win iPhone 17 Pro Max)", callback_data="playtrivia")],
         [InlineKeyboardButton("📚 Get More Questions", callback_data="buy")],
         [InlineKeyboardButton("🎁 Earn Free Questions", callback_data="free")],
     ]
@@ -235,4 +235,3 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(buy_menu, pattern="^buy$"))
     application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern="^buy_"))
     application.add_handler(CallbackQueryHandler(handle_cancel_payment, pattern="^cancel_payment$"))
-
