@@ -126,6 +126,31 @@ def _get_category_questions_sorted(category_key: str) -> List[Dict[str, Any]]:
 
 
 # ===========================================================
+# GET CATEGORY QUESTIONS FOR ANY MODE
+# Used by Challenge / Battle / other flows
+# ===========================================================
+def get_questions_for_category(category_key: str) -> List[Dict[str, Any]]:
+    return list(_get_category_questions_sorted(category_key))
+
+
+# ===========================================================
+# GET ONE QUESTION BY ID FROM JSON
+# Used by Challenge / Battle when question ids are stored in DB
+# ===========================================================
+def get_question_by_id(question_id: int | str) -> Optional[Dict[str, Any]]:
+    qid = str(question_id)
+
+    all_q = _load_questions()
+    for raw in all_q:
+        category_key = str(raw.get("category") or "")
+        normalized = _normalize_question(category_key, raw)
+        if str(normalized.get("id")) == qid:
+            return normalized
+
+    return None
+
+
+# ===========================================================
 # CORE: GET NEXT QUESTION FOR USER
 # ===========================================================
 async def get_next_question_for_user(tg_id: int, category: str) -> Dict[str, Any]:
@@ -193,3 +218,4 @@ async def reset_user_all_categories(tg_id: int) -> None:
     Intentionally does nothing.
     """
     return None
+
