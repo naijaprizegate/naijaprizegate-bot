@@ -419,20 +419,21 @@ async def create_challenge(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ==========================================================
 # Generate Challenge Questions
 # ==========================================================
-
 async def generate_challenge_questions(
     challenge_id: int,
     category: str,
     question_count: int = CHALLENGE_QUESTION_COUNT,
 ):
     """
-    Select challenge questions in sequence from questions,
+    Select challenge questions from questions.json,
     avoiding repeats for players who have not yet exhausted the
     category question cycle.
 
-    Selected questions are stored in challenge_round_questions.
-    Uses shared question history table.
+    Selected JSON question ids are stored in challenge_round_questions.
+    Game progress remains in DB.
     """
+    from utils.questions_loader import get_questions_for_category
+
     async with AsyncSessionLocal() as session:
         # 1) Get all players in the challenge
         result = await session.execute(
@@ -450,17 +451,8 @@ async def generate_challenge_questions(
 
         player_ids = [int(row.user_id) for row in player_rows]
 
-        # 2) Load all category questions in sequence
-        result = await session.execute(
-            text("""
-                SELECT id, question_order
-                FROM questions
-                WHERE category = :category
-                ORDER BY question_order ASC
-            """),
-            {"category": category},
-        )
-        all_questions = result.fetchall()
+        # 2) Load all category questions from JSON
+        all_questions = get_questions_for_category(category)
 
         if not all_questions:
             return []
@@ -476,7 +468,7 @@ async def generate_challenge_questions(
                     SELECT COUNT(DISTINCT question_key) AS answered_count
                     FROM user_question_history
                     WHERE tg_id = :tg_id
-                      AND source_type = 'db_questions'
+                      AND source_type = 'shared_json_questions'
                       AND category = :category
                 """),
                 {
@@ -499,7 +491,7 @@ async def generate_challenge_questions(
                     SELECT DISTINCT question_key
                     FROM user_question_history
                     WHERE tg_id = :tg_id
-                      AND source_type = 'db_questions'
+                      AND source_type = 'shared_json_questions'
                       AND category = :category
                 """),
                 {
@@ -509,13 +501,10 @@ async def generate_challenge_questions(
             )
 
             for row in result.fetchall():
-                try:
-                    excluded_question_ids.add(int(row.question_key))
-                except Exception:
-                    pass
+                excluded_question_ids.add(str(row.question_key))
 
         # 5) Pick fresh questions first
-        fresh_questions = [q for q in all_questions if int(q.id) not in excluded_question_ids]
+        fresh_questions = [q for q in all_questions if str(q["id"]) not in excluded_question_ids]
         selected_questions = fresh_questions[:question_count]
 
         # 6) If not enough fresh questions remain, reset cycle from beginning
@@ -525,7 +514,7 @@ async def generate_challenge_questions(
         if not selected_questions:
             return []
 
-        # 7) Clear any previously stored round questions for this challenge
+        # 7) Clear previously stored round questions
         await session.execute(
             text("""
                 DELETE FROM challenge_round_questions
@@ -534,7 +523,7 @@ async def generate_challenge_questions(
             {"cid": challenge_id},
         )
 
-        # 8) Save selected questions
+        # 8) Save selected JSON question ids into DB
         for i, q in enumerate(selected_questions, start=1):
             await session.execute(
                 text("""
@@ -544,7 +533,7 @@ async def generate_challenge_questions(
                 """),
                 {
                     "cid": challenge_id,
-                    "qid": q.id,
+                    "qid": int(q["id"]),
                     "qorder": i,
                 },
             )
@@ -552,6 +541,7 @@ async def generate_challenge_questions(
         await session.commit()
 
         return selected_questions
+
 
 # ==========================================================
 # Join Challenge
@@ -628,28 +618,22 @@ async def send_challenge_question(
 # ==========================================================
 # Send Challenge Question To One Player
 # ==========================================================
-
 async def send_challenge_question_to_one_player(
     context: ContextTypes.DEFAULT_TYPE,
     challenge_id: int,
     question_order: int,
     user_id: int,
 ):
+    from utils.questions_loader import get_question_by_id
+
     async with AsyncSessionLocal() as session:
         result = await session.execute(
             text("""
-                SELECT crq.question_id,
-                       q.category,
-                       q.question,
-                       q.option_a,
-                       q.option_b,
-                       q.option_c,
-                       q.option_d
-                FROM challenge_round_questions crq
-                JOIN questions q
-                  ON q.id = crq.question_id
-                WHERE crq.challenge_id = :cid
-                  AND crq.question_order = :qorder
+                SELECT question_id
+                FROM challenge_round_questions
+                WHERE challenge_id = :cid
+                  AND question_order = :qorder
+                LIMIT 1
             """),
             {
                 "cid": challenge_id,
@@ -657,7 +641,12 @@ async def send_challenge_question_to_one_player(
             },
         )
 
-        question = result.fetchone()
+        row = result.fetchone()
+        if not row:
+            return
+
+        question_id = int(row.question_id)
+        question = get_question_by_id(question_id)
 
         if not question:
             return
@@ -677,7 +666,7 @@ async def send_challenge_question_to_one_player(
             {
                 "cid": challenge_id,
                 "uid": user_id,
-                "qid": question.question_id,
+                "qid": question_id,
                 "qorder": question_order,
             },
         )
@@ -688,33 +677,35 @@ async def send_challenge_question_to_one_player(
         [
             InlineKeyboardButton(
                 "A",
-                callback_data=f"challenge_answer_{challenge_id}|{question_order}|A|{question.question_id}",
+                callback_data=f"challenge_answer_{challenge_id}|{question_order}|A|{question_id}",
             ),
             InlineKeyboardButton(
                 "B",
-                callback_data=f"challenge_answer_{challenge_id}|{question_order}|B|{question.question_id}",
+                callback_data=f"challenge_answer_{challenge_id}|{question_order}|B|{question_id}",
             ),
         ],
         [
             InlineKeyboardButton(
                 "C",
-                callback_data=f"challenge_answer_{challenge_id}|{question_order}|C|{question.question_id}",
+                callback_data=f"challenge_answer_{challenge_id}|{question_order}|C|{question_id}",
             ),
             InlineKeyboardButton(
                 "D",
-                callback_data=f"challenge_answer_{challenge_id}|{question_order}|D|{question.question_id}",
+                callback_data=f"challenge_answer_{challenge_id}|{question_order}|D|{question_id}",
             ),
         ],
     ])
 
+    options = question.get("options") or {}
+
     text_message = build_challenge_question_text(
         question_order=question_order,
-        category=question.category,
-        question_text=question.question,
-        option_a=question.option_a,
-        option_b=question.option_b,
-        option_c=question.option_c,
-        option_d=question.option_d,
+        category=question["category"],
+        question_text=question["question"],
+        option_a=options.get("A", ""),
+        option_b=options.get("B", ""),
+        option_c=options.get("C", ""),
+        option_d=options.get("D", ""),
         seconds_left=CHALLENGE_QUESTION_TIME_LIMIT,
     )
 
@@ -731,20 +722,21 @@ async def send_challenge_question_to_one_player(
                 context=context,
                 challenge_id=challenge_id,
                 user_id=user_id,
-                question_id=question.question_id,
+                question_id=question_id,
                 question_order=question_order,
                 message_id=sent_message.message_id,
-                category=question.category,
-                question_text=question.question,
-                option_a=question.option_a,
-                option_b=question.option_b,
-                option_c=question.option_c,
-                option_d=question.option_d,
+                category=question["category"],
+                question_text=question["question"],
+                option_a=options.get("A", ""),
+                option_b=options.get("B", ""),
+                option_c=options.get("C", ""),
+                option_d=options.get("D", ""),
             )
         )
 
     except Exception:
         pass
+
 
 # ==========================================================
 # Show Challenge Lobby
@@ -1081,27 +1073,21 @@ async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_
             return
 
         # Fetch full question details for result-card update
-        result = await session.execute(
-            text("""
-                SELECT category, question, option_a, option_b, option_c, option_d, correct_option
-                FROM questions
-                WHERE id = :qid
-            """),
-            {"qid": question_id},
-        )
-        row = result.fetchone()
+        from utils.questions_loader import get_question_by_id
 
-        if not row:
+        question = get_question_by_id(question_id)
+
+        if not question:
             await query.answer("Question not found.", show_alert=True)
             return
 
-        category = row.category
-        question_text = row.question
-        option_a = row.option_a
-        option_b = row.option_b
-        option_c = row.option_c
-        option_d = row.option_d
-        correct_option = row.correct_option
+        category = question["category"]
+        question_text = question["question"]
+        option_a = question["options"].get("A", "")
+        option_b = question["options"].get("B", "")
+        option_c = question["options"].get("C", "")
+        option_d = question["options"].get("D", "")
+        correct_option = question["answer"]
 
         is_correct = (selected_option == correct_option)
 
@@ -1128,7 +1114,7 @@ async def handle_challenge_answer(update: Update, context: ContextTypes.DEFAULT_
         await record_question_history(
             session,
             tg_id=user_id,
-            source_type="db_questions",
+            source_type="shared_json_questions",
             category=category,
             question_key=str(question_id),
         )
