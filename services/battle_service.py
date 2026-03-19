@@ -13,7 +13,8 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from logger import logger
-from services.question_history_service import get_seen_question_keys_for_users
+from utils.questions_loader import get_questions_for_category, get_question_by_id
+
 
 # ------------------------------------------------------------
 # Helpers
@@ -168,9 +169,8 @@ async def get_battle_players_full(session: AsyncSession, battle_id: str) -> list
 
 
 # ------------------------------------------------------------
-# Pick battle questions from questions table
+# Pick battle questions from questions.json
 # Avoid repeats for players until category bank is exhausted
-# Same logic style as Challenge Mode
 # ------------------------------------------------------------
 async def pick_battle_questions(
     session: AsyncSession,
@@ -179,7 +179,7 @@ async def pick_battle_questions(
     category: str,
     question_count: int,
 ) -> list[int]:
-    # 1) Get all players in this battle room
+    # 1) Get all players in this battle
     result = await session.execute(
         text("""
             SELECT tg_id
@@ -195,84 +195,90 @@ async def pick_battle_questions(
 
     player_ids = [int(row.tg_id) for row in player_rows]
 
-    # 2) Load all category questions in sequence
-    result = await session.execute(
-        text("""
-            SELECT id, question_order
-            FROM questions
-            WHERE category = :category
-            ORDER BY question_order ASC
-        """),
-        {"category": category},
-    )
-    all_questions = result.fetchall()
-
+    # 2) Load all category questions from JSON
+    all_questions = get_questions_for_category(category)
     if not all_questions:
         return []
 
-    # 3) Shared seen history across battle + challenge
-    seen_keys = await get_seen_question_keys_for_users(
-        session,
-        tg_ids=player_ids,
-        source_type="db_questions",
-        category=category,
-    )
+    total_questions = len(all_questions)
 
-    excluded_question_ids = set()
-    for key in seen_keys:
-        try:
-            excluded_question_ids.add(int(key))
-        except Exception:
-            pass
+    # 3) Find players who have NOT exhausted this category
+    active_players: list[int] = []
 
-    # 4) Pick fresh questions first
-    fresh_questions = [q for q in all_questions if int(q.id) not in excluded_question_ids]
+    for player_id in player_ids:
+        result = await session.execute(
+            text("""
+                SELECT COUNT(DISTINCT question_key) AS answered_count
+                FROM user_question_history
+                WHERE tg_id = :tg_id
+                  AND source_type = 'shared_json_questions'
+                  AND category = :category
+            """),
+            {
+                "tg_id": player_id,
+                "category": category,
+            },
+        )
+        row = result.fetchone()
+        answered_count = int(row.answered_count or 0) if row else 0
+
+        if answered_count < total_questions:
+            active_players.append(player_id)
+
+    # 4) Build exclusion set only from active players
+    excluded_question_ids: set[str] = set()
+
+    for player_id in active_players:
+        result = await session.execute(
+            text("""
+                SELECT DISTINCT question_key
+                FROM user_question_history
+                WHERE tg_id = :tg_id
+                  AND source_type = 'shared_json_questions'
+                  AND category = :category
+            """),
+            {
+                "tg_id": player_id,
+                "category": category,
+            },
+        )
+
+        for row in result.fetchall():
+            excluded_question_ids.add(str(row.question_key))
+
+    # 5) Pick fresh questions first
+    fresh_questions = [q for q in all_questions if str(q["id"]) not in excluded_question_ids]
     selected_questions = fresh_questions[:question_count]
 
-    # 5) If not enough fresh questions remain, reset cycle
+    # 6) If not enough fresh questions remain, reset cycle from beginning
     if len(selected_questions) < question_count:
         selected_questions = all_questions[:question_count]
 
-    return [int(q.id) for q in selected_questions]
+    return [int(q["id"]) for q in selected_questions]
 
 
 # ------------------------------------------------------------
-# Get one battle question by id from questions table
+# Get one battle question by id from questions.json
 # ------------------------------------------------------------
 async def get_trivia_question_by_id(session: AsyncSession, question_id: int) -> Optional[dict]:
-    res = await session.execute(
-        text("""
-            SELECT
-                id,
-                category,
-                question,
-                option_a,
-                option_b,
-                option_c,
-                option_d,
-                correct_option
-            FROM questions
-            WHERE id = :question_id
-            LIMIT 1
-        """),
-        {"question_id": question_id},
-    )
-    row = res.mappings().first()
-    if not row:
+    # session kept in signature for compatibility with existing callers
+    question = get_question_by_id(question_id)
+    if not question:
         return None
 
     return {
-        "id": int(row["id"]),
-        "category": row["category"],
-        "question": row["question"],
+        "id": int(question["id"]),
+        "category": question["category"],
+        "question": question["question"],
         "options": {
-            "A": row["option_a"],
-            "B": row["option_b"],
-            "C": row["option_c"],
-            "D": row["option_d"],
+            "A": question.get("options", {}).get("A", ""),
+            "B": question.get("options", {}).get("B", ""),
+            "C": question.get("options", {}).get("C", ""),
+            "D": question.get("options", {}).get("D", ""),
         },
-        "answer": row["correct_option"],
+        "answer": question["answer"],
     }
+
 
 # ------------------------------------------------------------
 # Start battle room
@@ -531,8 +537,6 @@ async def get_battle_players(session: AsyncSession, battle_id: str) -> list[dict
 # Format lobby text
 # ------------------------------------------------------------
 def build_battle_lobby_text(room: dict, players: list[dict], bot_username: str) -> str:
-    import html
-
     category_labels = {
         "nigeria_history": "Nigeria History",
         "geography": "Geography",
@@ -568,6 +572,7 @@ def build_battle_lobby_text(room: dict, players: list[dict], bot_username: str) 
         "<b>Invite friends with this link:</b>\n"
         f"{invite_link}"
     )
+
 
 # ------------------------------------------------------------
 # Get active battle state for a player
@@ -913,20 +918,15 @@ async def finalize_battle_result(session: AsyncSession, battle_id: str) -> dict:
             "is_draw": True,
         }
 
-    winner_tg_id = None
-    is_draw = False
+    top_score = int(rankings[0]["correct_count"] or 0)
+    tied_top_rows = [row for row in rankings if int(row.get("correct_count") or 0) == top_score]
 
-    if len(rankings) == 1:
-        winner_tg_id = rankings[0]["tg_id"]
+    if len(tied_top_rows) > 1:
+        is_draw = True
+        winner_tg_id = None
     else:
-        top_score = int(rankings[0]["correct_count"] or 0)
-        second_score = int(rankings[1]["correct_count"] or 0)
-
-        if top_score == second_score:
-            is_draw = True
-            winner_tg_id = None
-        else:
-            winner_tg_id = rankings[0]["tg_id"]
+        is_draw = False
+        winner_tg_id = rankings[0]["tg_id"]
 
     await session.execute(
         text("""
@@ -990,17 +990,28 @@ def build_battle_result_text(result: dict) -> str:
         wrong = int(row.get("wrong_count") or 0)
         skipped = int(row.get("skipped_count") or 0)
 
-        lines.append(
-            f"{icon} {name} — ✅ {correct} | ❌ {wrong} | ⏭ {skipped}"
-        )
+        lines.append(f"{icon} {name} — ✅ {correct} | ❌ {wrong} | ⏭ {skipped}")
 
     board = "\n".join(lines)
 
+    top_score = int(rankings[0].get("correct_count") or 0)
+    tied_top_rows = [row for row in rankings if int(row.get("correct_count") or 0) == top_score]
+    tied_top_names = [html.escape(str(row.get("display_name") or row.get("tg_id"))) for row in tied_top_rows]
+
     if is_draw:
-        winner_line = "🤝 <b>Result:</b> It&#39;s a draw!"
+        if len(tied_top_names) == 2:
+            winner_line = (
+                "🤝 <b>Result:</b> It&#39;s a draw!\n"
+                f"<b>Joint Winners:</b> {tied_top_names[0]} and {tied_top_names[1]}"
+            )
+        else:
+            joint_names = ", ".join(tied_top_names[:-1]) + f" and {tied_top_names[-1]}"
+            winner_line = (
+                "🤝 <b>Result:</b> It&#39;s a draw!\n"
+                f"<b>Joint Winners:</b> {joint_names}"
+            )
     else:
-        winner_name = html.escape(str(rankings[0].get("display_name") or rankings[0].get("tg_id")))
-        winner_line = f"🏆 <b>Winner:</b> {winner_name}"
+        winner_line = f"🏆 <b>Winner:</b> {tied_top_names[0]}"
 
     return (
         "🏁 <b>Battle Over!</b>\n\n"
@@ -1008,9 +1019,11 @@ def build_battle_result_text(result: dict) -> str:
         "<b>Final Ranking:</b>\n"
         f"{board}\n\n"
         "🎁 <b>Want bigger rewards?</b>\n"
-        "Play <b>Paid Trivia Questions</b> to compete for <b>iPhone 17 Pro Max</b>, <b>Samsung Galaxy S26 Ultra</b>, <b>AirPods</b>, "
-        "<b>Bluetooth speaker</b> and <b>airtime</b> milestones."
+        "Play <b>Paid Trivia Questions</b> to compete for <b>iPhone 17 Pro Max</b>, "
+        "<b>Samsung Galaxy S26 Ultra</b>, <b>AirPods</b>, <b>Bluetooth speaker</b> "
+        "and <b>airtime</b> milestones."
     )
+
 
 # ------------------------------------------------------------
 # Cancel battle room
@@ -1048,7 +1061,6 @@ async def cancel_battle_room(
     )
 
     return {"ok": True, "room": room}
-
 
 
 # ------------------------------------------------------------
