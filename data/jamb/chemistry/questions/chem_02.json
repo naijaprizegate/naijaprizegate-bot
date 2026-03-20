@@ -1,0 +1,67 @@
+[
+  {
+    "id": "chem_02_q001",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Stoichiometry",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "How many moles of HCl are required to react with potassium dichromate(VI) to produce 3 moles of chlorine?",
+    "options": {
+      "A": "7 moles",
+      "B": "10 moles",
+      "C": "14 moles",
+      "D": "21 moles"
+    },
+    "answer": "C",
+    "answer_text": "14 moles",
+    "explanation": {
+      "question_restate": "We are to find the number of moles of HCl needed to produce 3 moles of chlorine gas.",
+      "principle": "Use the balanced chemical equation and mole ratio.",
+      "steps": [
+        "Write the balanced chemical equation: K2Cr2O7 + 14HCl -> 2KCl + 2CrCl3 + 7H2O + 3Cl2",
+        "From the balanced equation, 14 moles of HCl produce 3 moles of chlorine gas.",
+        "Since the question asks for the amount of HCl needed to produce exactly 3 moles of chlorine, the required amount is 14 moles."
+      ],
+      "final_answer": "C. 14 moles",
+      "simple_explanation": "The balanced equation shows that 14 moles of hydrochloric acid give 3 moles of chlorine gas, so 14 moles are required."
+    },
+    "tags": ["stoichiometry", "mole_ratio", "chemical_equation"],
+    "active": true
+  },
+  {
+    "id": "chem_02_q002",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Mole Concept",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "What is the mass of 2 moles of sodium hydroxide, NaOH?",
+    "options": {
+      "A": "20 g",
+      "B": "40 g",
+      "C": "60 g",
+      "D": "80 g"
+    },
+    "answer": "D",
+    "answer_text": "80 g",
+    "explanation": {
+      "question_restate": "We are to calculate the mass of 2 moles of sodium hydroxide.",
+      "principle": "Mass = number of moles × molar mass.",
+      "steps": [
+        "First calculate the molar mass of NaOH.",
+        "Na = 23, O = 16, H = 1.",
+        "Molar mass of NaOH = 23 + 16 + 1 = 40 g/mol.",
+        "Mass of 2 moles = 2 × 40 = 80 g."
+      ],
+      "final_answer": "D. 80 g",
+      "simple_explanation": "One mole of NaOH has a mass of 40 g, so 2 moles will have a mass of 80 g."
+    },
+    "tags": ["mole_concept", "molar_mass"],
+    "active": true
+  }
+]
