@@ -246,6 +246,26 @@ def make_topic_access_keyboard_for_subject(subject_code: str, has_free_trial: bo
 
     return InlineKeyboardMarkup(rows)
 
+
+def make_after_answer_keyboard():
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("➡️ Next", callback_data="jp_next")],
+            [InlineKeyboardButton("📖 Answer Details", callback_data="jp_details")],
+            [InlineKeyboardButton("🏠 End Practice", callback_data="menu:main")],
+        ]
+    )
+
+
+def make_after_details_keyboard():
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("➡️ Next", callback_data="jp_next")],
+            [InlineKeyboardButton("🏠 End Practice", callback_data="menu:main")],
+        ]
+    )
+
+
 # =============================
 # Message builders
 # =============================
@@ -518,6 +538,10 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["jp_question_ids"] = selected_question_ids
     context.user_data["jp_current_index"] = 0
     context.user_data["jp_session_target"] = len(selected_questions)
+    context.user_data["jp_correct_count"] = 0
+    context.user_data["jp_wrong_count"] = 0
+    context.user_data["jp_current_question"] = None
+    context.user_data["jp_answered_current"] = False
 
     topic = next((t for t in get_subject_topics(subject_code) if t["id"] == topic_id), None)
     topic_title = topic["title"] if topic else topic_id
@@ -574,27 +598,43 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
     )
 
 
-async def jamb_serve_first_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    if not query:
-        return
-
-    await query.answer()
-
+async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAULT_TYPE):
     batch = context.user_data.get("jp_question_batch") or []
     current_index = int(context.user_data.get("jp_current_index", 0))
 
     if not batch:
-        return await query.message.reply_text(
+        return await update.effective_message.reply_text(
             "⚠️ No active JAMB question session found."
         )
 
     if current_index >= len(batch):
-        return await query.message.reply_text(
-            "✅ This session has no more questions."
+        session_id = context.user_data.get("jp_session_id")
+        if session_id:
+            await complete_jamb_session(int(session_id))
+
+        correct_count = int(context.user_data.get("jp_correct_count", 0))
+        wrong_count = int(context.user_data.get("jp_wrong_count", 0))
+        total = len(batch)
+
+        return await update.effective_message.reply_text(
+            f"✅ *Practice Completed*\n\n"
+            f"📚 Total Questions: *{total}*\n"
+            f"✅ Correct: *{correct_count}*\n"
+            f"❌ Wrong: *{wrong_count}*\n\n"
+            "Great job. You can return to JAMB Practice for another topic.",
+            parse_mode="Markdown",
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [InlineKeyboardButton("🎓 JAMB Practice", callback_data="jambpractice")],
+                    [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+                ]
+            ),
         )
 
     question = batch[current_index]
+    context.user_data["jp_current_question"] = question
+    context.user_data["jp_answered_current"] = False
+
     options = question.get("options", {})
 
     option_lines = []
@@ -625,11 +665,297 @@ async def jamb_serve_first_handler(update: Update, context: ContextTypes.DEFAULT
 
     rows.append([InlineKeyboardButton("🏠 End Practice", callback_data="menu:main")])
 
-    await query.message.reply_text(
+    await update.effective_message.reply_text(
         text_msg,
         parse_mode="Markdown",
         reply_markup=InlineKeyboardMarkup(rows),
     )
+
+
+async def jamb_serve_first_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if query:
+        await query.answer()
+    await send_current_jamb_question(update, context)
+
+
+async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    if context.user_data.get("jp_answered_current", False):
+        return await query.answer("You already answered this question.", show_alert=False)
+
+    try:
+        _, selected_option = query.data.split("::", 1)
+    except Exception:
+        return await query.message.reply_text("⚠️ Invalid answer selection.")
+
+    question = context.user_data.get("jp_current_question")
+    if not question:
+        return await query.message.reply_text("⚠️ No active question found.")
+
+    user_id = update.effective_user.id
+    session_id = int(context.user_data.get("jp_session_id"))
+    subject_code = context.user_data.get("jp_subject_code")
+    topic_id = context.user_data.get("jp_topic_id")
+    question_id = str(question["id"])
+    correct_option = str(question["answer"])
+    is_correct = selected_option == correct_option
+
+    deducted = await deduct_one_free_question(user_id)
+    if not deducted:
+        return await query.message.reply_text(
+            "⚠️ You have no free question balance left.\n\nPlease buy a question pack to continue."
+        )
+
+    await add_question_to_topic_history(
+        user_id=user_id,
+        subject_code=subject_code,
+        topic_id=topic_id,
+        question_id=question_id,
+    )
+
+    await record_jamb_attempt(
+        session_id=session_id,
+        user_id=user_id,
+        subject_code=subject_code,
+        topic_id=topic_id,
+        question_id=question_id,
+        selected_option=selected_option,
+        correct_option=correct_option,
+        is_correct=is_correct,
+    )
+
+    await increment_jamb_session_progress(session_id, is_correct)
+
+    context.user_data["jp_answered_current"] = True
+    context.user_data["jp_last_selected_option"] = selected_option
+    context.user_data["jp_last_correct_option"] = correct_option
+
+    if is_correct:
+        context.user_data["jp_correct_count"] = int(context.user_data.get("jp_correct_count", 0)) + 1
+        result_text = "✅ *Correct!*"
+    else:
+        context.user_data["jp_wrong_count"] = int(context.user_data.get("jp_wrong_count", 0)) + 1
+        result_text = (
+            f"❌ *Wrong!*\n\n"
+            f"Correct answer: *{correct_option}* — {question['options'][correct_option]}"
+        )
+
+    await query.message.reply_text(
+        result_text,
+        parse_mode="Markdown",
+        reply_markup=make_after_answer_keyboard(),
+    )
+
+
+async def jamb_answer_details_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    question = context.user_data.get("jp_current_question")
+    if not question:
+        return await query.message.reply_text("⚠️ No answered question found.")
+
+    explanation = question.get("explanation", {})
+
+    question_restate = explanation.get("question_restate", "")
+    principle = explanation.get("principle", "")
+    steps = explanation.get("steps", [])
+    final_answer = explanation.get("final_answer", "")
+    simple_explanation = explanation.get("simple_explanation", "")
+
+    lines = ["📖 *Answer Details*\n"]
+
+    if question_restate:
+        lines.append(f"*Question Restated*\n{question_restate}\n")
+
+    if principle:
+        lines.append(f"*Principle*\n{principle}\n")
+
+    if steps:
+        lines.append("*Step-by-step Solution*")
+        for i, step in enumerate(steps, start=1):
+            lines.append(f"{i}. {step}")
+        lines.append("")
+
+    if final_answer:
+        lines.append(f"*Final Answer*\n{final_answer}\n")
+
+    if simple_explanation:
+        lines.append(f"*Simple Explanation*\n{simple_explanation}")
+
+    await query.message.reply_text(
+        "\n".join(lines),
+        parse_mode="Markdown",
+        reply_markup=make_after_details_keyboard(),
+    )
+
+
+async def jamb_next_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if query:
+        await query.answer()
+
+    current_index = int(context.user_data.get("jp_current_index", 0))
+    context.user_data["jp_current_index"] = current_index + 1
+
+    await send_current_jamb_question(update, context)
+
+
+async def deduct_one_free_question(user_id: int) -> bool:
+    """
+    Deduct 1 free question if available.
+    Returns True if deducted, False otherwise.
+    """
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    update jamb_user_access
+                    set
+                        free_questions_remaining = free_questions_remaining - 1,
+                        total_questions_used = total_questions_used + 1,
+                        updated_at = now()
+                    where user_id = :user_id
+                      and free_questions_remaining > 0
+                    returning free_questions_remaining
+                """),
+                {"user_id": user_id},
+            )
+            row = result.first()
+            return row is not None
+
+
+async def add_question_to_topic_history(
+    user_id: int,
+    subject_code: str,
+    topic_id: str,
+    question_id: str,
+):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    insert into jamb_user_topic_history (
+                        user_id,
+                        subject_code,
+                        topic_id,
+                        question_id
+                    )
+                    values (
+                        :user_id,
+                        :subject_code,
+                        :topic_id,
+                        :question_id
+                    )
+                    on conflict (user_id, subject_code, topic_id, question_id) do nothing
+                """),
+                {
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                    "topic_id": topic_id,
+                    "question_id": question_id,
+                },
+            )
+
+
+async def record_jamb_attempt(
+    session_id: int,
+    user_id: int,
+    subject_code: str,
+    topic_id: str,
+    question_id: str,
+    selected_option: str,
+    correct_option: str,
+    is_correct: bool,
+):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    insert into jamb_attempts (
+                        session_id,
+                        user_id,
+                        subject_code,
+                        topic_id,
+                        question_id,
+                        selected_option,
+                        correct_option,
+                        is_correct
+                    )
+                    values (
+                        :session_id,
+                        :user_id,
+                        :subject_code,
+                        :topic_id,
+                        :question_id,
+                        :selected_option,
+                        :correct_option,
+                        :is_correct
+                    )
+                """),
+                {
+                    "session_id": session_id,
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                    "topic_id": topic_id,
+                    "question_id": question_id,
+                    "selected_option": selected_option,
+                    "correct_option": correct_option,
+                    "is_correct": is_correct,
+                },
+            )
+
+
+async def increment_jamb_session_progress(session_id: int, is_correct: bool):
+    async with get_async_session() as session:
+        async with session.begin():
+            if is_correct:
+                await session.execute(
+                    text("""
+                        update jamb_sessions
+                        set
+                            questions_served = questions_served + 1,
+                            correct_count = correct_count + 1
+                        where id = :session_id
+                    """),
+                    {"session_id": session_id},
+                )
+            else:
+                await session.execute(
+                    text("""
+                        update jamb_sessions
+                        set
+                            questions_served = questions_served + 1,
+                            wrong_count = wrong_count + 1
+                        where id = :session_id
+                    """),
+                    {"session_id": session_id},
+                )
+
+
+async def complete_jamb_session(session_id: int):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    update jamb_sessions
+                    set
+                        status = 'completed',
+                        ended_at = now()
+                    where id = :session_id
+                """),
+                {"session_id": session_id},
+            )
+
 
 # =============================
 # Back to mode
@@ -670,4 +996,6 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_start_free_handler, pattern=r"^jp_start_free$"))
     application.add_handler(CallbackQueryHandler(jamb_buy_pack_handler, pattern=r"^jp_buy_"))
     application.add_handler(CallbackQueryHandler(jamb_serve_first_handler, pattern=r"^jp_serve_first$"))
-
+    application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
+    application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
+    application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next$"))
