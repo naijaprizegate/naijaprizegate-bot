@@ -1,6 +1,6 @@
-# ===================================================
-# app.py
 # ====================================================
+# app.py 
+# =====================================================
 # 1️⃣ Import & initialize secure logging first
 # -------------------------------------------------
 from logging_setup import logger, tg_error_handler  # must be first to protect secrets
@@ -59,7 +59,7 @@ from telegram.ext import (
 )
 
 # Local imports
-from handlers import core, payments, free, admin, playtrivia, battle
+from handlers import core, payments, free, admin, playtrivia, battle, jambpractice
 from db import init_game_state, get_async_session, get_session
 from models import Payment, GameState, PrizeWinner
 from helpers import get_or_create_user, add_tries
@@ -222,6 +222,7 @@ async def on_startup():
         # -------------------------------------------------
         core.register_handlers(application)
         playtrivia.register_handlers(application)
+        jambpractice.register_handlers(application)
         battle.register_handlers(application)
         register_challenge_handlers(application)
         free.register_handlers(application)
@@ -833,4 +834,3 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
-
