@@ -3,6 +3,7 @@
 # ===================================================================
 
 import math
+import uuid
 import logging
 from typing import Optional
 
@@ -10,6 +11,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import CommandHandler, CallbackQueryHandler, ContextTypes
 from sqlalchemy import text
 
+from services.payments import create_checkout
 from db import get_async_session
 from jamb_loader import (
     get_jamb_subjects, 
@@ -130,6 +132,42 @@ async def reset_topic_history(user_id: int, subject_code: str, topic_id: str):
                     "user_id": user_id,
                     "subject_code": subject_code,
                     "topic_id": topic_id,
+                },
+            )
+
+
+async def create_pending_jamb_payment(
+    user_id: int,
+    amount_paid: int,
+    question_credits_added: int,
+    payment_reference: str,
+):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    insert into jamb_payments (
+                        user_id,
+                        amount_paid,
+                        question_credits_added,
+                        payment_reference,
+                        payment_status,
+                        provider
+                    )
+                    values (
+                        :user_id,
+                        :amount_paid,
+                        :question_credits_added,
+                        :payment_reference,
+                        'pending',
+                        'flutterwave'
+                    )
+                """),
+                {
+                    "user_id": user_id,
+                    "amount_paid": amount_paid,
+                    "question_credits_added": question_credits_added,
+                    "payment_reference": payment_reference,
                 },
             )
 
@@ -575,26 +613,74 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
     pack_size = data.replace("jp_buy_", "", 1)
 
     pricing_map = {
-        "50": "₦100",
-        "100": "₦200",
-        "150": "₦300",
-        "200": "₦400",
+        "50": 100,
+        "100": 200,
+        "150": 300,
+        "200": 400,
     }
 
-    amount = pricing_map.get(pack_size, "Unknown")
+    credits_map = {
+        "50": 50,
+        "100": 100,
+        "150": 150,
+        "200": 200,
+    }
+
+    if pack_size not in pricing_map:
+        return await query.message.reply_text("⚠️ Invalid JAMB package selected.")
+
+    amount = pricing_map[pack_size]
+    credits = credits_map[pack_size]
+
+    user = query.from_user
+    tg_id = user.id
+    username = user.username or f"user_{tg_id}"
+    email = f"{username}@naijaprizegate.ng"
+
+    tx_ref = f"JAMB-{uuid.uuid4().hex[:12].upper()}"
+
+    await create_pending_jamb_payment(
+        user_id=tg_id,
+        amount_paid=amount,
+        question_credits_added=credits,
+        payment_reference=tx_ref,
+    )
+
+    checkout_url = await create_checkout(
+        session=None,  # not used by the wrapper in your current structure
+        user_id=tg_id,
+        amount=amount,
+        username=username,
+        email=email,
+        tx_ref=tx_ref,
+        meta={
+            "tg_id": tg_id,
+            "username": username,
+            "product": "jamb_practice",
+            "question_credits": credits,
+        },
+    )
+
+    if not checkout_url:
+        return await query.message.reply_text(
+            "⚠️ Payment service unavailable. Please try again shortly."
+        )
+
+    keyboard = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
+            [InlineKeyboardButton("❌ Cancel", callback_data="jambpractice")],
+        ]
+    )
 
     await query.message.reply_text(
-        f"💳 *JAMB Question Pack Purchase*\n\n"
-        f"You selected *{pack_size} questions* for *{amount}*.\n\n"
-        "Payment integration is the next step.\n"
-        "For now, free trial is already working.",
+        f"💳 *JAMB Question Pack Selected*\n\n"
+        f"📚 Questions: *{credits}*\n"
+        f"💰 Amount: *₦{amount}*\n\n"
+        "After successful payment, your JAMB question credits will be added automatically.\n\n"
+        "Tap below to complete payment.",
         parse_mode="Markdown",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [InlineKeyboardButton("⬅️ Back", callback_data="jambpractice")],
-                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
-            ]
-        ),
+        reply_markup=keyboard,
     )
 
 
