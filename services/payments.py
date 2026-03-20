@@ -25,7 +25,8 @@ WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "100000"))
 WEBHOOK_REDIRECT_URL = os.getenv("WEBHOOK_REDIRECT_URL", "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect")
 
 # ✅ Define your approved packages (anti-tampering)
-ALLOWED_PACKAGES = {100, 500, 1000}
+TRIVIA_ALLOWED_PACKAGES = {100, 500, 1000}
+JAMB_ALLOWED_PACKAGES = {100, 200, 300, 400}
 
 # ==== Logger Setup ====
 logger = logging.getLogger("payments")
@@ -70,19 +71,20 @@ def validate_flutterwave_webhook(headers: dict, raw_body: str) -> bool:
 
 async def create_checkout(
     *,
-    session: AsyncSession,
+    session: AsyncSession | None = None,
     user_id: int,
     amount: int,
     username: str | None = None,
     email: str | None = None,
+    tx_ref: str | None = None,
+    meta: dict | None = None,
+    product_type: str = "TRIVIA",
 ) -> str | None:
     """
-    Wrapper for trivia purchases.
-    Performs validation ONLY.
-    Delegates Flutterwave logic to the payment service.
+    Generic Flutterwave checkout wrapper.
+    Supports both Trivia and JAMB purchases.
     """
 
-    # ✅ 1. Environment validation
     if not FLW_SECRET_KEY:
         logger.error("❌ Missing FLW_SECRET_KEY in environment!")
         return None
@@ -91,18 +93,28 @@ async def create_checkout(
         logger.error(f"❌ Insecure redirect URL detected: {WEBHOOK_REDIRECT_URL}")
         return None
 
-    # ✅ 2. Validate payment amount
     if not isinstance(amount, int) or amount <= 0:
         logger.warning(f"⚠️ Invalid payment amount by user {user_id}: {amount}")
         return None
 
-    if amount not in ALLOWED_PACKAGES:
-        logger.warning(f"🚫 Unauthorized payment amount {amount} by user {user_id}")
+    TRIVIA_ALLOWED_PACKAGES = {100, 500, 1000}
+    JAMB_ALLOWED_PACKAGES = {100, 200, 300, 400}
+
+    product_type = product_type.upper()
+
+    if product_type == "TRIVIA":
+        if amount not in TRIVIA_ALLOWED_PACKAGES:
+            logger.warning(f"🚫 Unauthorized TRIVIA payment amount {amount} by user {user_id}")
+            return None
+    elif product_type == "JAMB":
+        if amount not in JAMB_ALLOWED_PACKAGES:
+            logger.warning(f"🚫 Unauthorized JAMB payment amount {amount} by user {user_id}")
+            return None
+    else:
+        logger.warning(f"🚫 Unknown product_type {product_type} for user {user_id}")
         return None
 
-    # ✅ 3. Delegate to SAFE Flutterwave checkout creator
     from services.flutterwave import create_flutterwave_checkout_link
-    # (adjust import path if yours differs)
 
     return await create_flutterwave_checkout_link(
         session=session,
@@ -110,6 +122,9 @@ async def create_checkout(
         amount=amount,
         username=username,
         email=email,
+        tx_ref=tx_ref,
+        meta=meta or {},
+        product_type=product_type,
     )
 
 # ------------------------------------------------------
