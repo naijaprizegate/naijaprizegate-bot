@@ -11,7 +11,12 @@ from telegram.ext import CommandHandler, CallbackQueryHandler, ContextTypes
 from sqlalchemy import text
 
 from db import get_async_session
-from jamb_loader import get_jamb_subjects, get_subject_topics, get_subject_by_code
+from jamb_loader import (
+    get_jamb_subjects, 
+    get_subject_topics, 
+    get_subject_by_code, 
+    prepare_topic_question_batch,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -50,6 +55,83 @@ async def get_jamb_user_access(user_id: int) -> Optional[dict]:
         row = result.mappings().first()
         return dict(row) if row else None
 
+async def create_jamb_session(
+    user_id: int,
+    subject_code: str,
+    topic_id: str,
+    question_target: int,
+    mode: str = "topic_practice",
+) -> int:
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    insert into jamb_sessions (
+                        user_id,
+                        subject_code,
+                        topic_id,
+                        mode,
+                        question_target,
+                        status
+                    )
+                    values (
+                        :user_id,
+                        :subject_code,
+                        :topic_id,
+                        :mode,
+                        :question_target,
+                        'active'
+                    )
+                    returning id
+                """),
+                {
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                    "topic_id": topic_id,
+                    "mode": mode,
+                    "question_target": question_target,
+                },
+            )
+            session_id = result.scalar_one()
+            return int(session_id)
+
+
+async def get_seen_question_ids_for_topic(user_id: int, subject_code: str, topic_id: str) -> list[str]:
+    async with get_async_session() as session:
+        result = await session.execute(
+            text("""
+                select question_id
+                from jamb_user_topic_history
+                where user_id = :user_id
+                  and subject_code = :subject_code
+                  and topic_id = :topic_id
+            """),
+            {
+                "user_id": user_id,
+                "subject_code": subject_code,
+                "topic_id": topic_id,
+            },
+        )
+        rows = result.fetchall()
+        return [str(row[0]) for row in rows]
+
+
+async def reset_topic_history(user_id: int, subject_code: str, topic_id: str):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    delete from jamb_user_topic_history
+                    where user_id = :user_id
+                      and subject_code = :subject_code
+                      and topic_id = :topic_id
+                """),
+                {
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                    "topic_id": topic_id,
+                },
+            )
 
 # =============================
 # Keyboards
@@ -126,6 +208,43 @@ def make_topics_keyboard(subject_code: str, page: int = 1):
 
     return InlineKeyboardMarkup(rows), page, total_pages
 
+
+def make_topic_access_keyboard(has_free_trial: bool):
+    rows = []
+
+    if has_free_trial:
+        rows.append([InlineKeyboardButton("🎁 Use Free Trial (5 Questions)", callback_data="jp_start_free")])
+
+    rows.extend([
+        [InlineKeyboardButton("💳 Get 50 Questions — ₦100", callback_data="jp_buy_50")],
+        [InlineKeyboardButton("💳 Get 100 Questions — ₦200", callback_data="jp_buy_100")],
+        [InlineKeyboardButton("💳 Get 150 Questions — ₦300", callback_data="jp_buy_150")],
+        [InlineKeyboardButton("💳 Get 200 Questions — ₦400", callback_data="jp_buy_200")],
+    ])
+
+    subject_code = "chem"  # temporary fallback
+    rows.append([InlineKeyboardButton("⬅️ Back to Topics", callback_data=f"jp_topicpage_{subject_code}_1")])
+    rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
+
+    return InlineKeyboardMarkup(rows)
+
+
+def make_topic_access_keyboard_for_subject(subject_code: str, has_free_trial: bool):
+    rows = []
+
+    if has_free_trial:
+        rows.append([InlineKeyboardButton("🎁 Use Free Trial (5 Questions)", callback_data="jp_start_free")])
+
+    rows.extend([
+        [InlineKeyboardButton("💳 Get 50 Questions — ₦100", callback_data="jp_buy_50")],
+        [InlineKeyboardButton("💳 Get 100 Questions — ₦200", callback_data="jp_buy_100")],
+        [InlineKeyboardButton("💳 Get 150 Questions — ₦300", callback_data="jp_buy_150")],
+        [InlineKeyboardButton("💳 Get 200 Questions — ₦400", callback_data="jp_buy_200")],
+        [InlineKeyboardButton("⬅️ Back to Topics", callback_data=f"jp_topicpage_{subject_code}_1")],
+        [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+    ])
+
+    return InlineKeyboardMarkup(rows)
 
 # =============================
 # Message builders
@@ -314,19 +433,203 @@ async def jamb_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     context.user_data["jp_subject_code"] = subject_code
     context.user_data["jp_topic_id"] = topic_id
 
+    tg = update.effective_user
+    await ensure_jamb_user_access(tg.id)
+    access = await get_jamb_user_access(tg.id)
+
+    free_remaining = int((access or {}).get("free_questions_remaining", 0))
+    paid_credits = int((access or {}).get("paid_question_credits", 0))
+    has_free_trial = free_remaining > 0
+
     await query.message.reply_text(
         f"✅ *Topic selected:* {selected_topic['title']}\n\n"
-        "Next step: we will now ask the user how many questions they want.\n"
-        "That is the next task.",
+        f"🎁 Free questions left: *{free_remaining}*\n"
+        f"💳 Paid question credits: *{paid_credits}*\n\n"
+        "Choose how you want to continue:",
+        parse_mode="Markdown",
+        reply_markup=make_topic_access_keyboard_for_subject(subject_code, has_free_trial),
+    )
+
+
+async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    tg = update.effective_user
+    user_id = tg.id
+
+    subject_code = context.user_data.get("jp_subject_code")
+    topic_id = context.user_data.get("jp_topic_id")
+
+    if not subject_code or not topic_id:
+        return await query.message.reply_text(
+            "⚠️ Topic session data missing. Please choose your subject and topic again.",
+            reply_markup=make_subject_keyboard(),
+        )
+
+    access = await get_jamb_user_access(user_id)
+    free_remaining = int((access or {}).get("free_questions_remaining", 0))
+
+    if free_remaining <= 0:
+        return await query.message.reply_text(
+            "⚠️ You have no free JAMB questions left.\n\nPlease buy a question pack to continue."
+        )
+
+    requested_count = min(5, free_remaining)
+
+    seen_question_ids = await get_seen_question_ids_for_topic(
+        user_id=user_id,
+        subject_code=subject_code,
+        topic_id=topic_id,
+    )
+
+    batch = prepare_topic_question_batch(
+        subject_code=subject_code,
+        topic_id=topic_id,
+        requested_count=requested_count,
+        seen_question_ids=seen_question_ids,
+    )
+
+    if batch["cycle_reset"]:
+        await reset_topic_history(user_id, subject_code, topic_id)
+
+    selected_questions = batch["selected_questions"]
+    selected_question_ids = batch["selected_question_ids"]
+
+    if not selected_questions:
+        return await query.message.reply_text(
+            "⚠️ No active questions found for this topic yet."
+        )
+
+    session_id = await create_jamb_session(
+        user_id=user_id,
+        subject_code=subject_code,
+        topic_id=topic_id,
+        question_target=len(selected_questions),
+        mode="topic_practice",
+    )
+
+    context.user_data["jp_session_id"] = session_id
+    context.user_data["jp_session_mode"] = "free_trial"
+    context.user_data["jp_question_batch"] = selected_questions
+    context.user_data["jp_question_ids"] = selected_question_ids
+    context.user_data["jp_current_index"] = 0
+    context.user_data["jp_session_target"] = len(selected_questions)
+
+    topic = next((t for t in get_subject_topics(subject_code) if t["id"] == topic_id), None)
+    topic_title = topic["title"] if topic else topic_id
+
+    reset_note = "\n♻️ Topic cycle reset because you already exhausted this topic before." if batch["cycle_reset"] else ""
+
+    await query.message.reply_text(
+        f"🎉 *Free Trial Started*\n\n"
+        f"📘 Subject: *{get_subject_by_code(subject_code)['name']}*\n"
+        f"🧪 Topic: *{topic_title}*\n"
+        f"📚 Questions in this session: *{len(selected_questions)}*"
+        f"{reset_note}\n\n"
+        "Next step: we will now start serving Question 1.",
         parse_mode="Markdown",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("⬅️ Back to Topics", callback_data=f"jp_topicpage_{subject_code}_1")],
+                [InlineKeyboardButton("▶ Start Questions", callback_data="jp_serve_first")],
                 [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
             ]
         ),
     )
 
+async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    data = query.data  # jp_buy_50
+    pack_size = data.replace("jp_buy_", "", 1)
+
+    pricing_map = {
+        "50": "₦100",
+        "100": "₦200",
+        "150": "₦300",
+        "200": "₦400",
+    }
+
+    amount = pricing_map.get(pack_size, "Unknown")
+
+    await query.message.reply_text(
+        f"💳 *JAMB Question Pack Purchase*\n\n"
+        f"You selected *{pack_size} questions* for *{amount}*.\n\n"
+        "Payment integration is the next step.\n"
+        "For now, free trial is already working.",
+        parse_mode="Markdown",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("⬅️ Back", callback_data="jambpractice")],
+                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+            ]
+        ),
+    )
+
+
+async def jamb_serve_first_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    batch = context.user_data.get("jp_question_batch") or []
+    current_index = int(context.user_data.get("jp_current_index", 0))
+
+    if not batch:
+        return await query.message.reply_text(
+            "⚠️ No active JAMB question session found."
+        )
+
+    if current_index >= len(batch):
+        return await query.message.reply_text(
+            "✅ This session has no more questions."
+        )
+
+    question = batch[current_index]
+    options = question.get("options", {})
+
+    option_lines = []
+    for key in ["A", "B", "C", "D", "E"]:
+        if key in options:
+            option_lines.append(f"{key}. {options[key]}")
+
+    text_msg = (
+        f"📘 *JAMB Practice*\n"
+        f"Question {current_index + 1} of {len(batch)}\n\n"
+        f"{question['question']}\n\n"
+        + "\n".join(option_lines)
+    )
+
+    rows = []
+    answer_row = []
+    for key in ["A", "B", "C", "D", "E"]:
+        if key in options:
+            answer_row.append(
+                InlineKeyboardButton(key, callback_data=f"jp_ans::{key}")
+            )
+            if len(answer_row) == 2:
+                rows.append(answer_row)
+                answer_row = []
+
+    if answer_row:
+        rows.append(answer_row)
+
+    rows.append([InlineKeyboardButton("🏠 End Practice", callback_data="menu:main")])
+
+    await query.message.reply_text(
+        text_msg,
+        parse_mode="Markdown",
+        reply_markup=InlineKeyboardMarkup(rows),
+    )
 
 # =============================
 # Back to mode
@@ -364,4 +667,7 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_topic_page_handler, pattern=r"^jp_topicpage_"))
     application.add_handler(CallbackQueryHandler(jamb_topic_handler, pattern=r"^jp_topic::"))
     application.add_handler(CallbackQueryHandler(jamb_back_mode_handler, pattern=r"^jp_back_mode_"))
+    application.add_handler(CallbackQueryHandler(jamb_start_free_handler, pattern=r"^jp_start_free$"))
+    application.add_handler(CallbackQueryHandler(jamb_buy_pack_handler, pattern=r"^jp_buy_"))
+    application.add_handler(CallbackQueryHandler(jamb_serve_first_handler, pattern=r"^jp_serve_first$"))
 
