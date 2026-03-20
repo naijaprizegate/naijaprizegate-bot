@@ -1,44 +1,44 @@
+# ================================================================
+# services/flutterwave.py
+# ===============================================================
 import uuid
 import httpx
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from models import Payment
 from config import (
     FLUTTERWAVE_SECRET_KEY,
     FLUTTERWAVE_REDIRECT_URL,
     APP_LOGO_URL,
 )
 
+
 async def create_flutterwave_checkout_link(
     *,
-    session: AsyncSession,
+    session: AsyncSession | None = None,
     tg_id: int,
     amount: int,
     username: str | None = None,
     email: str | None = None,
+    tx_ref: str | None = None,
+    meta: dict | None = None,
+    product_type: str = "TRIVIA",
 ) -> str:
     """
-    Creates a Flutterwave hosted checkout link for TRIVIA purchases.
-    This is the SINGLE source of tx_ref.
+    Creates a Flutterwave hosted checkout link.
+
+    IMPORTANT:
+    - This function does NOT create DB payment rows.
+    - The caller is responsible for creating pending payment records.
     """
 
-    tx_ref = f"TRIVIA-{uuid.uuid4()}"
+    if not tx_ref:
+        prefix = "TRIVIA" if product_type.upper() == "TRIVIA" else "GEN"
+        tx_ref = f"{prefix}-{uuid.uuid4().hex[:12].upper()}"
 
     customer_email = (
         email if email and "@" in email else f"user_{tg_id}@naijaprizegate.ng"
     )
     safe_username = (username or f"User {tg_id}")[:64]
-
-    payment = Payment(
-        tx_ref=tx_ref,
-        tg_id=tg_id,
-        username=safe_username,
-        amount=amount,
-        status="pending",
-        credited_tries=0,
-    )
-    session.add(payment)
-    await session.commit()
 
     payload = {
         "tx_ref": tx_ref,
@@ -50,14 +50,18 @@ async def create_flutterwave_checkout_link(
             "name": safe_username,
         },
         "customizations": {
-            "title": "NaijaPrizeGate Trivia",
-            "description": "Trivia attempts purchase",
+            "title": "NaijaPrizeGate",
+            "description": (
+                "Trivia attempts purchase"
+                if product_type.upper() == "TRIVIA"
+                else "Payment"
+            ),
             "logo": APP_LOGO_URL,
         },
-        "meta": {
+        "meta": meta or {
             "tg_id": tg_id,
             "username": safe_username,
-            "purpose": "TRIVIA",
+            "purpose": product_type.upper(),
         },
     }
 
