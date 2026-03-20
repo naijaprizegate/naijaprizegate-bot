@@ -91,13 +91,19 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         return await query.answer("❌ Invalid package.", show_alert=True)
 
     questions = valid_packages[price]
-    tx_ref = str(uuid.uuid4())
+    tx_ref = f"TRIVIA-{uuid.uuid4().hex[:12].upper()}"
+
+    username = query.from_user.username or f"user_{query.from_user.id}"
+    email = f"{username}@naijaprizegate.ng"
 
     async with AsyncSessionLocal() as session:
         db_user = await get_or_create_user(session, query.from_user.id, query.from_user.username)
 
         await session.execute(
-            Payment.__table__.delete().where(Payment.user_id == db_user.id, Payment.status == "pending")
+            Payment.__table__.delete().where(
+                Payment.user_id == db_user.id,
+                Payment.status == "pending"
+            )
         )
 
         stmt = insert(Payment).values(
@@ -106,25 +112,33 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
             credited_tries=questions,
             tx_ref=tx_ref,
             status="pending",
-            created_at=datetime.utcnow()
+            created_at=datetime.utcnow(),
+            tg_id=query.from_user.id,
+            username=username,
         )
         await session.execute(stmt)
         await session.commit()
 
-    username = query.from_user.username or f"user_{query.from_user.id}"
-    email = f"{username}@naijaprizegate.ng"
-
     checkout_url = await create_checkout(
-        session=session,
-        amount=price,
         user_id=query.from_user.id,
+        amount=price,
         username=username,
         email=email,
+        tx_ref=tx_ref,
+        meta={
+            "tg_id": query.from_user.id,
+            "username": username,
+            "purpose": "TRIVIA",
+            "credited_tries": questions,
+        },
+        product_type="TRIVIA",
     )
 
-
     if not checkout_url:
-        return await query.edit_message_text("⚠️ Payment service unavailable. Please try again shortly.", parse_mode="HTML")
+        return await query.edit_message_text(
+            "⚠️ Payment service unavailable. Please try again shortly.",
+            parse_mode="HTML",
+        )
 
     keyboard = [
         [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
@@ -133,14 +147,13 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
 
     await query.edit_message_text(
         text=(
-            f"📚 <b>Package Selected</b>: {questions} Trivia Question{'' if questions==1 else 's'} "
+            f"📚 <b>Package Selected</b>: {questions} Trivia Question{'' if questions == 1 else 's'} "
             f"for ₦{price:,}\n\n"
             "✔ One trivia question per attempt\n"
             "✔ Correct answers earn <b>Premium Points</b>\n"
             "✔ Premium Points affect leaderboard ranking and jackpot winners\n\n"
             "✔ You could become the winner of the grand Prize <b>latest iPhone series</b> and <b>latest Samsung smart phones</b>\n\n"
             "✔ There are other rewards as you play. <b>Airtime</b> <b>Airpods</b> <b>Bluetooth Speakers</b>\n\n"
-
             "📜 By proceeding, you agree to our <b>Terms & Fair Play Rules</b>.\n\n"
             "👉 Tap to complete payment via Flutterwave Checkout.\n\n"
             "If the button doesn't work, copy the link and open it manually:\n"
@@ -151,6 +164,7 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         disable_web_page_preview=True,
     )
 
+    
 # ---------------------------------------------------------------
 # Cancel Payment
 # ---------------------------------------------------------------
