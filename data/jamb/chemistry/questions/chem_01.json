@@ -1,0 +1,66 @@
+[
+  {
+    "id": "chem_01_q001",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Filtration",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Which of the following methods is most suitable for separating sand from water?",
+    "options": {
+      "A": "Distillation",
+      "B": "Filtration",
+      "C": "Sublimation",
+      "D": "Chromatography"
+    },
+    "answer": "B",
+    "answer_text": "Filtration",
+    "explanation": {
+      "question_restate": "We are to identify the best method for separating an insoluble solid from a liquid.",
+      "principle": "Filtration is used to separate an insoluble solid from a liquid.",
+      "steps": [
+        "Sand is an insoluble solid, which means it does not dissolve in water.",
+        "When an insoluble solid is mixed with a liquid, filtration is the most suitable separation method.",
+        "The sand remains on the filter paper as residue, while the water passes through as filtrate."
+      ],
+      "final_answer": "B. Filtration",
+      "simple_explanation": "Since sand does not dissolve in water, filtration is used to separate it."
+    },
+    "tags": ["separation", "filtration", "mixtures"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q002",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Fractional Distillation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which method is used to separate a mixture of ethanol and water?",
+    "options": {
+      "A": "Filtration",
+      "B": "Sublimation",
+      "C": "Fractional distillation",
+      "D": "Decantation"
+    },
+    "answer": "C",
+    "answer_text": "Fractional distillation",
+    "explanation": {
+      "question_restate": "We are to determine the correct method for separating two miscible liquids with different boiling points.",
+      "principle": "Fractional distillation is used to separate miscible liquids with close boiling points.",
+      "steps": [
+        "Ethanol and water are both liquids and they mix completely, so they are miscible.",
+        "Because they are miscible, filtration or decantation cannot separate them.",
+        "Their boiling points are different, so fractional distillation is used to separate them based on those boiling points."
+      ],
+      "final_answer": "C. Fractional distillation",
+      "simple_explanation": "Ethanol and water are miscible liquids, so they are separated using fractional distillation."
+    },
+    "tags": ["separation", "fractional_distillation", "miscible_liquids"],
+    "active": true
+  }
+]
