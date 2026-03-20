@@ -105,7 +105,7 @@ def make_topics_keyboard(subject_code: str, page: int = 1):
         rows.append([
             InlineKeyboardButton(
                 f"{topic['number']}. {topic['title']}",
-                callback_data=f"jp_topic_{subject_code}_{topic['id']}"
+                callback_data=f"jp_topic::{subject_code}::{topic['id']}"
             )
         ])
 
@@ -300,17 +300,10 @@ async def jamb_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     await query.answer()
 
-    data = query.data  # jp_topic_chem_chem_01
-
     try:
-        rest = data.replace("jp_topic_", "", 1)
-        subject_code, topic_id = rest.split("_", 1)
+        _, subject_code, topic_id = query.data.split("::")
     except Exception:
         return await query.message.reply_text("⚠️ Invalid topic selection.")
-
-    # Because topic_id itself contains underscore, rebuild properly
-    if subject_code == "chem" and not topic_id.startswith("chem_"):
-        topic_id = f"chem_{topic_id}"
 
     topics = get_subject_topics(subject_code)
     selected_topic = next((t for t in topics if t["id"] == topic_id), None)
@@ -369,5 +362,6 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_subject_handler, pattern=r"^jp_subj_"))
     application.add_handler(CallbackQueryHandler(jamb_mode_handler, pattern=r"^jp_mode_"))
     application.add_handler(CallbackQueryHandler(jamb_topic_page_handler, pattern=r"^jp_topicpage_"))
-    application.add_handler(CallbackQueryHandler(jamb_topic_handler, pattern=r"^jp_topic_"))
+    application.add_handler(CallbackQueryHandler(jamb_topic_handler, pattern=r"^jp_topic::"))
     application.add_handler(CallbackQueryHandler(jamb_back_mode_handler, pattern=r"^jp_back_mode_"))
+
