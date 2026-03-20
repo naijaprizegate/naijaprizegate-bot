@@ -120,6 +120,7 @@ def build_main_menu_keyboard():
             [InlineKeyboardButton("🧠 Play Trivia Questions (Win iPhone 17 Pro Max)", callback_data="playtrivia")],
             [InlineKeyboardButton("⚔️ Challenge Friends (Free)", callback_data="challenge:start")],
             [InlineKeyboardButton("🔥 Battle Mode (Free)", callback_data="battle:menu")],
+            [InlineKeyboardButton("🎓 JAMB Practice", callback_data="jambpractice")],
             [InlineKeyboardButton("📂 Other Menu", callback_data="menu:other")],
         ]
     )
