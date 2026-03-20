@@ -361,6 +361,68 @@ async def payment_already_processed(session: AsyncSession, tx_ref: str) -> bool:
     p = result.scalar_one_or_none()
     return bool(p and p.status == "successful")
 
+
+# -------------------------------
+# JAMB Payment Already Processed
+# -------------------------------
+async def jamb_payment_already_processed(session: AsyncSession, payment_reference: str) -> bool:
+    result = await session.execute(
+        text("""
+            select 1
+            from jamb_payments
+            where payment_reference = :payment_reference
+              and payment_status = 'successful'
+            limit 1
+        """),
+        {"payment_reference": payment_reference},
+    )
+    return result.first() is not None
+
+
+# --------------------------------------
+# Credit Jamb Questions Credits
+# ------------------------------------
+async def credit_jamb_question_credits(
+    session: AsyncSession,
+    user_id: int,
+    payment_reference: str,
+    amount_paid: int,
+    question_credits_added: int,
+):
+    await session.execute(
+        text("""
+            insert into jamb_user_access (user_id)
+            values (:user_id)
+            on conflict (user_id) do nothing
+        """),
+        {"user_id": user_id},
+    )
+
+    await session.execute(
+        text("""
+            update jamb_user_access
+            set
+                paid_question_credits = paid_question_credits + :question_credits_added,
+                updated_at = now()
+            where user_id = :user_id
+        """),
+        {
+            "user_id": user_id,
+            "question_credits_added": question_credits_added,
+        },
+    )
+
+    await session.execute(
+        text("""
+            update jamb_payments
+            set
+                payment_status = 'successful',
+                updated_at = now()
+            where payment_reference = :payment_reference
+        """),
+        {"payment_reference": payment_reference},
+    )
+    
 # ------------------------------------------------------
 # Webhook: called by Flutterwave after payment
 # ------------------------------------------------------
@@ -385,11 +447,60 @@ async def flutterwave_webhook(
     status = (data.get("status") or "").lower()
     tx_ref = data.get("tx_ref")
 
-    # Only process successful trivia payments
+    # Only process successful charges
     if event != "charge.completed" or status != "successful":
         return JSONResponse({"status": "ignored"})
 
-    if not tx_ref or not tx_ref.startswith("TRIVIA-"):
+    if not tx_ref:
+        return JSONResponse({"status": "ignored"})
+
+    # ------------------------------------------------------
+    # JAMB PAYMENT BRANCH
+    # ------------------------------------------------------
+    if tx_ref.startswith("JAMB-"):
+        meta = data.get("meta") or {}
+        tg_id_raw = meta.get("tg_id")
+
+        if not tg_id_raw:
+            logger.error(f"❌ Missing tg_id for JAMB payment tx_ref={tx_ref}")
+            return JSONResponse({"status": "ignored"})
+
+        tg_id = int(tg_id_raw)
+        username = (meta.get("username") or "Unknown")[:64]
+        amount = int(data.get("amount"))
+        question_credits = int(meta.get("question_credits") or max(1, amount // 2))
+
+        if await jamb_payment_already_processed(session, tx_ref):
+            return JSONResponse({"status": "duplicate"})
+
+        await credit_jamb_question_credits(
+            session=session,
+            user_id=tg_id,
+            payment_reference=tx_ref,
+            amount_paid=amount,
+            question_credits_added=question_credits,
+        )
+
+        await session.commit()
+
+        try:
+            bot = Bot(token=BOT_TOKEN)
+            await bot.send_message(
+                tg_id,
+                f"🎉 *JAMB Payment Successful!*\n\n"
+                f"You received *{question_credits} JAMB question credits* 📚\n\n"
+                f"You can now continue your JAMB Practice.",
+                parse_mode="Markdown",
+            )
+        except Exception as e:
+            logger.warning(f"Telegram JAMB notify failed: {e}")
+
+        return JSONResponse({"status": "success"})
+
+    # ------------------------------------------------------
+    # TRIVIA PAYMENT BRANCH
+    # ------------------------------------------------------
+    if not tx_ref.startswith("TRIVIA-"):
         return JSONResponse({"status": "ignored"})
 
     # Fetch existing payment (if any)
@@ -834,3 +945,4 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
+
