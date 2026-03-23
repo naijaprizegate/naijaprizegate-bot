@@ -44,6 +44,7 @@ builtins.print = safe_print
 
 from fastapi import FastAPI, Query, Request, HTTPException, Depends, APIRouter, Form
 from fastapi.responses import HTMLResponse, JSONResponse
+from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from typing import Dict, Any, Optional
@@ -378,15 +379,13 @@ async def jamb_payment_already_processed(session: AsyncSession, payment_referenc
     )
     return result.first() is not None
 
-
-# --------------------------------------
-# Credit Jamb Questions Credits
+# ------------------------------------
+# Credit JAMB Question Credits
 # ------------------------------------
 async def credit_jamb_question_credits(
     session: AsyncSession,
     user_id: int,
     payment_reference: str,
-    amount_paid: int,
     question_credits_added: int,
 ):
     await session.execute(
@@ -422,7 +421,7 @@ async def credit_jamb_question_credits(
         """),
         {"payment_reference": payment_reference},
     )
-    
+
 # ------------------------------------------------------
 # Webhook: called by Flutterwave after payment
 # ------------------------------------------------------
@@ -466,9 +465,11 @@ async def flutterwave_webhook(
             return JSONResponse({"status": "ignored"})
 
         tg_id = int(tg_id_raw)
-        username = (meta.get("username") or "Unknown")[:64]
-        amount = int(data.get("amount"))
-        question_credits = int(meta.get("question_credits") or max(1, amount // 2))
+        question_credits = int(meta.get("question_credits") or 0)
+
+        if question_credits <= 0:
+            logger.error(f"❌ Invalid JAMB question credits for tx_ref={tx_ref}")
+            return JSONResponse({"status": "ignored"})
 
         if await jamb_payment_already_processed(session, tx_ref):
             return JSONResponse({"status": "duplicate"})
@@ -477,7 +478,6 @@ async def flutterwave_webhook(
             session=session,
             user_id=tg_id,
             payment_reference=tx_ref,
-            amount_paid=amount,
             question_credits_added=question_credits,
         )
 
@@ -489,7 +489,7 @@ async def flutterwave_webhook(
                 tg_id,
                 f"🎉 *JAMB Payment Successful!*\n\n"
                 f"You received *{question_credits} JAMB question credits* 📚\n\n"
-                f"You can now continue your JAMB Practice.",
+                "You can now continue your JAMB Practice.",
                 parse_mode="Markdown",
             )
         except Exception as e:
