@@ -839,23 +839,24 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
         payment_reference=tx_ref,
     )
 
-    checkout_url = await create_checkout(
-        user_id=tg_id,
-        amount=amount,
-        username=username,
-        email=email,
-        tx_ref=tx_ref,
-        meta={
-            "tg_id": tg_id,
-            "username": username,
-            "purpose": "JAMB",
-            "product": "jamb_practice",
-            "question_credits": credits,
-        },
-        product_type="JAMB",
-    )
-
-    if not checkout_url:
+    try:
+        checkout_url = await create_checkout(
+            user_id=tg_id,
+            amount=amount,
+            username=username,
+            email=email,
+            tx_ref=tx_ref,
+            meta={
+                "tg_id": tg_id,
+                "username": username,
+                "purpose": "JAMB",
+                "product": "jamb_practice",
+                "question_credits": credits,
+            },
+            product_type="JAMB",
+        )
+    except Exception:
+        logger.exception("❌ Failed to create JAMB checkout | tx_ref=%s", tx_ref)
         await mark_jamb_payment_failed(tx_ref)
         return await query.message.reply_text(
             "⚠️ Payment service unavailable. Please try again shortly."
@@ -876,7 +877,6 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
             ]
         ),
     )
-
 
 # =============================
 # Question serving
