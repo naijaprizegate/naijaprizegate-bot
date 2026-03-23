@@ -170,6 +170,10 @@ async def create_pending_jamb_payment(
                     "payment_reference": payment_reference,
                 },
             )
+async def get_paid_question_credits(user_id: int) -> int:
+    access = await get_jamb_user_access(user_id)
+    return int((access or {}).get("paid_question_credits", 0))
+
 
 # =============================
 # Keyboards
@@ -647,7 +651,6 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
     )
 
     checkout_url = await create_checkout(
-        session=None,  # not used by the wrapper in your current structure
         user_id=tg_id,
         amount=amount,
         username=username,
@@ -656,22 +659,17 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
         meta={
             "tg_id": tg_id,
             "username": username,
+            "purpose": "JAMB",
             "product": "jamb_practice",
             "question_credits": credits,
         },
+        product_type="JAMB",
     )
 
     if not checkout_url:
         return await query.message.reply_text(
             "⚠️ Payment service unavailable. Please try again shortly."
         )
-
-    keyboard = InlineKeyboardMarkup(
-        [
-            [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
-            [InlineKeyboardButton("❌ Cancel", callback_data="jambpractice")],
-        ]
-    )
 
     await query.message.reply_text(
         f"💳 *JAMB Question Pack Selected*\n\n"
@@ -680,9 +678,14 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
         "After successful payment, your JAMB question credits will be added automatically.\n\n"
         "Tap below to complete payment.",
         parse_mode="Markdown",
-        reply_markup=keyboard,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
+                [InlineKeyboardButton("⬅️ Back to JAMB Practice", callback_data="jambpractice")],
+                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+            ]
+        ),
     )
-
 
 async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAULT_TYPE):
     batch = context.user_data.get("jp_question_batch") or []
@@ -1085,3 +1088,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next$"))
+
