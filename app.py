@@ -362,32 +362,51 @@ async def payment_already_processed(session: AsyncSession, tx_ref: str) -> bool:
     p = result.scalar_one_or_none()
     return bool(p and p.status == "successful")
 
+# -----------------------
+# Helpers – Payment Idempotency / JAMB Credits
+# -----------------------
+async def get_jamb_payment_record(session: AsyncSession, payment_reference: str) -> dict | None:
+    result = await session.execute(
+        text("""
+            select
+                user_id,
+                amount_paid,
+                question_credits_added,
+                payment_status
+            from jamb_payments
+            where payment_reference = :payment_reference
+            limit 1
+        """),
+        {"payment_reference": payment_reference},
+    )
+    row = result.mappings().first()
+    return dict(row) if row else None
 
-# -------------------------------
-# JAMB Payment Already Processed
-# -------------------------------
+
 async def jamb_payment_already_processed(session: AsyncSession, payment_reference: str) -> bool:
     result = await session.execute(
         text("""
             select 1
             from jamb_payments
             where payment_reference = :payment_reference
-              and payment_status = 'successful'
+              and lower(payment_status) = 'successful'
             limit 1
         """),
         {"payment_reference": payment_reference},
     )
     return result.first() is not None
 
-# ------------------------------------
-# Credit JAMB Question Credits
-# ------------------------------------
+
 async def credit_jamb_question_credits(
     session: AsyncSession,
     user_id: int,
     payment_reference: str,
     question_credits_added: int,
-):
+) -> bool:
+    """
+    Credits JAMB question credits and marks jamb_payments row successful.
+    Returns True if the jamb_payments row was found and updated.
+    """
     await session.execute(
         text("""
             insert into jamb_user_access (user_id)
@@ -411,16 +430,20 @@ async def credit_jamb_question_credits(
         },
     )
 
-    await session.execute(
+    result = await session.execute(
         text("""
             update jamb_payments
             set
                 payment_status = 'successful',
                 updated_at = now()
             where payment_reference = :payment_reference
+              and lower(payment_status) <> 'successful'
+            returning payment_reference
         """),
         {"payment_reference": payment_reference},
     )
+
+    return result.first() is not None
 
 # ------------------------------------------------------
 # Webhook: called by Flutterwave after payment
@@ -442,44 +465,50 @@ async def flutterwave_webhook(
     payload = await request.json()
     data = payload.get("data") or {}
 
-    event = (payload.get("event") or "").lower()
-    status = (data.get("status") or "").lower()
-    tx_ref = data.get("tx_ref")
+    event = (payload.get("event") or "").lower().strip()
+    status = (data.get("status") or "").lower().strip()
+    tx_ref = str(data.get("tx_ref") or "").strip()
 
-    # Only process successful charges
-    if event != "charge.completed" or status != "successful":
-        return JSONResponse({"status": "ignored"})
-
-    if not tx_ref:
+    # Only process successful completed charges
+    if event != "charge.completed" or status != "successful" or not tx_ref:
         return JSONResponse({"status": "ignored"})
 
     # ------------------------------------------------------
-    # JAMB PAYMENT BRANCH
+    # JAMB PAYMENT BRANCH (STRICT)
     # ------------------------------------------------------
     if tx_ref.startswith("JAMB-"):
-        meta = data.get("meta") or {}
-        tg_id_raw = meta.get("tg_id")
+        jamb_payment = await get_jamb_payment_record(session, tx_ref)
 
-        if not tg_id_raw:
-            logger.error(f"❌ Missing tg_id for JAMB payment tx_ref={tx_ref}")
+        # STRICT MODE: DB row must already exist
+        if not jamb_payment:
+            logger.error("❌ No jamb_payments row found for tx_ref=%s", tx_ref)
             return JSONResponse({"status": "ignored"})
 
-        tg_id = int(tg_id_raw)
-        question_credits = int(meta.get("question_credits") or 0)
+        payment_status = str(jamb_payment.get("payment_status") or "").lower().strip()
+        if payment_status == "successful":
+            return JSONResponse({"status": "duplicate"})
+
+        tg_id = int(jamb_payment["user_id"])
+        question_credits = int(jamb_payment["question_credits_added"] or 0)
 
         if question_credits <= 0:
-            logger.error(f"❌ Invalid JAMB question credits for tx_ref={tx_ref}")
+            logger.error("❌ Invalid JAMB credit amount in DB for tx_ref=%s", tx_ref)
             return JSONResponse({"status": "ignored"})
 
         if await jamb_payment_already_processed(session, tx_ref):
             return JSONResponse({"status": "duplicate"})
 
-        await credit_jamb_question_credits(
+        credited = await credit_jamb_question_credits(
             session=session,
             user_id=tg_id,
             payment_reference=tx_ref,
             question_credits_added=question_credits,
         )
+
+        if not credited:
+            logger.error("❌ Failed to update jamb_payments row for tx_ref=%s", tx_ref)
+            await session.rollback()
+            return JSONResponse({"status": "error", "message": "jamb payment update failed"})
 
         await session.commit()
 
@@ -493,7 +522,7 @@ async def flutterwave_webhook(
                 parse_mode="Markdown",
             )
         except Exception as e:
-            logger.warning(f"Telegram JAMB notify failed: {e}")
+            logger.warning("Telegram JAMB notify failed: %s", e)
 
         return JSONResponse({"status": "success"})
 
@@ -503,7 +532,6 @@ async def flutterwave_webhook(
     if not tx_ref.startswith("TRIVIA-"):
         return JSONResponse({"status": "ignored"})
 
-    # Fetch existing payment (if any)
     payment = await session.scalar(
         select(Payment).where(Payment.tx_ref == tx_ref)
     )
@@ -512,7 +540,6 @@ async def flutterwave_webhook(
     if payment and payment.status == "successful" and payment.credited_tries > 0:
         return JSONResponse({"status": "duplicate"})
 
-    # Try to get tg_id from meta first, then DB
     meta = data.get("meta") or {}
     tg_id_raw = meta.get("tg_id")
 
@@ -520,15 +547,18 @@ async def flutterwave_webhook(
         tg_id_raw = payment.tg_id
 
     if not tg_id_raw:
-        logger.error(f"❌ Missing tg_id for tx_ref={tx_ref}")
+        logger.error("❌ Missing tg_id for tx_ref=%s", tx_ref)
         return JSONResponse({"status": "ignored"})
 
     tg_id = int(tg_id_raw)
-    username = (meta.get("username") or payment.username or "Unknown")[:64]
-    amount = int(data.get("amount"))
-    flw_tx_id = str(data.get("id"))
+    username = (
+        (meta.get("username"))
+        or (payment.username if payment else None)
+        or "Unknown"
+    )[:64]
+    amount = int(data.get("amount") or 0)
+    flw_tx_id = str(data.get("id") or "")
 
-    # Create or update payment record
     payment = payment or Payment(tx_ref=tx_ref)
     payment.status = "successful"
     payment.amount = amount
@@ -540,7 +570,6 @@ async def flutterwave_webhook(
     session.add(payment)
     await session.flush()
 
-    # Credit tries
     tries = calculate_tries(amount)
     user = await get_or_create_user(session, tg_id, username)
     await add_tries(session, user, tries, paid=True)
@@ -548,7 +577,6 @@ async def flutterwave_webhook(
     payment.credited_tries = tries
     await session.commit()
 
-    # Notify user (non-fatal)
     try:
         bot = Bot(token=BOT_TOKEN)
         await bot.send_message(
@@ -557,10 +585,9 @@ async def flutterwave_webhook(
             parse_mode="Markdown",
         )
     except Exception as e:
-        logger.warning(f"Telegram notify failed: {e}")
+        logger.warning("Telegram notify failed: %s", e)
 
     return JSONResponse({"status": "success"})
-
 
 # -----------------------
 # Redirect endpoint for user-friendly browser redirect after checkout
