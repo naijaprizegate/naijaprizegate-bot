@@ -1,6 +1,6 @@
 # ====================================================================
 # handlers/jambpractice.py
-# ===================================================================
+# ====================================================================
 
 import math
 import uuid
@@ -14,9 +14,9 @@ from sqlalchemy import text
 from services.payments import create_checkout
 from db import get_async_session
 from jamb_loader import (
-    get_jamb_subjects, 
-    get_subject_topics, 
-    get_subject_by_code, 
+    get_jamb_subjects,
+    get_subject_topics,
+    get_subject_by_code,
     prepare_topic_question_batch,
 )
 
@@ -56,6 +56,7 @@ async def get_jamb_user_access(user_id: int) -> Optional[dict]:
         )
         row = result.mappings().first()
         return dict(row) if row else None
+
 
 async def create_jamb_session(
     user_id: int,
@@ -170,9 +171,209 @@ async def create_pending_jamb_payment(
                     "payment_reference": payment_reference,
                 },
             )
+
+
+async def mark_jamb_payment_failed(payment_reference: str):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    update jamb_payments
+                    set
+                        payment_status = 'failed',
+                        updated_at = now()
+                    where payment_reference = :payment_reference
+                """),
+                {"payment_reference": payment_reference},
+            )
+
+
 async def get_paid_question_credits(user_id: int) -> int:
     access = await get_jamb_user_access(user_id)
     return int((access or {}).get("paid_question_credits", 0))
+
+
+async def deduct_one_free_question(user_id: int) -> bool:
+    """
+    Deduct 1 free question if available.
+    Returns True if deducted, False otherwise.
+    """
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    update jamb_user_access
+                    set
+                        free_questions_remaining = free_questions_remaining - 1,
+                        total_questions_used = total_questions_used + 1,
+                        updated_at = now()
+                    where user_id = :user_id
+                      and free_questions_remaining > 0
+                    returning free_questions_remaining
+                """),
+                {"user_id": user_id},
+            )
+            row = result.first()
+            return row is not None
+
+
+async def deduct_one_paid_question(user_id: int) -> bool:
+    """
+    Deduct 1 paid question credit if available.
+    Returns True if deducted, False otherwise.
+    """
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    update jamb_user_access
+                    set
+                        paid_question_credits = paid_question_credits - 1,
+                        total_questions_used = total_questions_used + 1,
+                        updated_at = now()
+                    where user_id = :user_id
+                      and paid_question_credits > 0
+                    returning paid_question_credits
+                """),
+                {"user_id": user_id},
+            )
+            row = result.first()
+            return row is not None
+
+
+async def add_question_to_topic_history(
+    user_id: int,
+    subject_code: str,
+    topic_id: str,
+    question_id: str,
+):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    insert into jamb_user_topic_history (
+                        user_id,
+                        subject_code,
+                        topic_id,
+                        question_id
+                    )
+                    values (
+                        :user_id,
+                        :subject_code,
+                        :topic_id,
+                        :question_id
+                    )
+                    on conflict (user_id, subject_code, topic_id, question_id) do nothing
+                """),
+                {
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                    "topic_id": topic_id,
+                    "question_id": question_id,
+                },
+            )
+
+
+async def record_jamb_attempt(
+    session_id: int,
+    user_id: int,
+    subject_code: str,
+    topic_id: str,
+    question_id: str,
+    selected_option: str,
+    correct_option: str,
+    is_correct: bool,
+):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    insert into jamb_attempts (
+                        session_id,
+                        user_id,
+                        subject_code,
+                        topic_id,
+                        question_id,
+                        selected_option,
+                        correct_option,
+                        is_correct
+                    )
+                    values (
+                        :session_id,
+                        :user_id,
+                        :subject_code,
+                        :topic_id,
+                        :question_id,
+                        :selected_option,
+                        :correct_option,
+                        :is_correct
+                    )
+                """),
+                {
+                    "session_id": session_id,
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                    "topic_id": topic_id,
+                    "question_id": question_id,
+                    "selected_option": selected_option,
+                    "correct_option": correct_option,
+                    "is_correct": is_correct,
+                },
+            )
+
+
+async def increment_jamb_session_served(session_id: int):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    update jamb_sessions
+                    set
+                        questions_served = questions_served + 1
+                    where id = :session_id
+                """),
+                {"session_id": session_id},
+            )
+
+
+async def increment_jamb_session_result(session_id: int, is_correct: bool):
+    async with get_async_session() as session:
+        async with session.begin():
+            if is_correct:
+                await session.execute(
+                    text("""
+                        update jamb_sessions
+                        set
+                            correct_count = correct_count + 1
+                        where id = :session_id
+                    """),
+                    {"session_id": session_id},
+                )
+            else:
+                await session.execute(
+                    text("""
+                        update jamb_sessions
+                        set
+                            wrong_count = wrong_count + 1
+                        where id = :session_id
+                    """),
+                    {"session_id": session_id},
+                )
+
+
+async def complete_jamb_session(session_id: int):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    update jamb_sessions
+                    set
+                        status = 'completed',
+                        ended_at = now()
+                    where id = :session_id
+                """),
+                {"session_id": session_id},
+            )
 
 
 # =============================
@@ -249,26 +450,6 @@ def make_topics_keyboard(subject_code: str, page: int = 1):
     rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
 
     return InlineKeyboardMarkup(rows), page, total_pages
-
-
-def make_topic_access_keyboard(has_free_trial: bool):
-    rows = []
-
-    if has_free_trial:
-        rows.append([InlineKeyboardButton("🎁 Use Free Trial (5 Questions)", callback_data="jp_start_free")])
-
-    rows.extend([
-        [InlineKeyboardButton("💳 Get 50 Questions — ₦100", callback_data="jp_buy_50")],
-        [InlineKeyboardButton("💳 Get 100 Questions — ₦200", callback_data="jp_buy_100")],
-        [InlineKeyboardButton("💳 Get 150 Questions — ₦300", callback_data="jp_buy_150")],
-        [InlineKeyboardButton("💳 Get 200 Questions — ₦400", callback_data="jp_buy_200")],
-    ])
-
-    subject_code = "chem"  # temporary fallback
-    rows.append([InlineKeyboardButton("⬅️ Back to Topics", callback_data=f"jp_topicpage_{subject_code}_1")])
-    rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
-
-    return InlineKeyboardMarkup(rows)
 
 
 def make_topic_access_keyboard_for_subject(subject_code: str, has_free_trial: bool):
@@ -513,6 +694,9 @@ async def jamb_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     )
 
 
+# =============================
+# Free trial start
+# =============================
 async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -584,6 +768,7 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["jp_wrong_count"] = 0
     context.user_data["jp_current_question"] = None
     context.user_data["jp_answered_current"] = False
+    context.user_data["jp_served_question_ids"] = []
 
     topic = next((t for t in get_subject_topics(subject_code) if t["id"] == topic_id), None)
     topic_title = topic["title"] if topic else topic_id
@@ -606,6 +791,10 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
         ),
     )
 
+
+# =============================
+# Buy question pack
+# =============================
 async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -613,7 +802,7 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
 
     await query.answer()
 
-    data = query.data  # jp_buy_50
+    data = query.data
     pack_size = data.replace("jp_buy_", "", 1)
 
     pricing_map = {
@@ -667,6 +856,7 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
     )
 
     if not checkout_url:
+        await mark_jamb_payment_failed(tx_ref)
         return await query.message.reply_text(
             "⚠️ Payment service unavailable. Please try again shortly."
         )
@@ -687,6 +877,10 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
         ),
     )
 
+
+# =============================
+# Question serving
+# =============================
 async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAULT_TYPE):
     batch = context.user_data.get("jp_question_batch") or []
     current_index = int(context.user_data.get("jp_current_index", 0))
@@ -721,6 +915,42 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
         )
 
     question = batch[current_index]
+    question_id = str(question["id"])
+    user_id = update.effective_user.id
+    subject_code = context.user_data.get("jp_subject_code")
+    topic_id = context.user_data.get("jp_topic_id")
+    session_id = context.user_data.get("jp_session_id")
+    session_mode = context.user_data.get("jp_session_mode")
+    served_question_ids = context.user_data.get("jp_served_question_ids", [])
+
+    # Charge and record history when question is SERVED, not when answered
+    if question_id not in served_question_ids:
+        if session_mode == "free_trial":
+            deducted = await deduct_one_free_question(user_id)
+            if not deducted:
+                return await update.effective_message.reply_text(
+                    "⚠️ You have no free question balance left.\n\nPlease buy a question pack to continue."
+                )
+        elif session_mode == "paid_session":
+            deducted = await deduct_one_paid_question(user_id)
+            if not deducted:
+                return await update.effective_message.reply_text(
+                    "⚠️ You have no paid JAMB question credits left.\n\nPlease buy another question pack to continue."
+                )
+
+        await add_question_to_topic_history(
+            user_id=user_id,
+            subject_code=subject_code,
+            topic_id=topic_id,
+            question_id=question_id,
+        )
+
+        if session_id:
+            await increment_jamb_session_served(int(session_id))
+
+        served_question_ids.append(question_id)
+        context.user_data["jp_served_question_ids"] = served_question_ids
+
     context.user_data["jp_current_question"] = question
     context.user_data["jp_answered_current"] = False
 
@@ -768,6 +998,9 @@ async def jamb_serve_first_handler(update: Update, context: ContextTypes.DEFAULT
     await send_current_jamb_question(update, context)
 
 
+# =============================
+# Answer handling
+# =============================
 async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -795,19 +1028,6 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
     correct_option = str(question["answer"])
     is_correct = selected_option == correct_option
 
-    deducted = await deduct_one_free_question(user_id)
-    if not deducted:
-        return await query.message.reply_text(
-            "⚠️ You have no free question balance left.\n\nPlease buy a question pack to continue."
-        )
-
-    await add_question_to_topic_history(
-        user_id=user_id,
-        subject_code=subject_code,
-        topic_id=topic_id,
-        question_id=question_id,
-    )
-
     await record_jamb_attempt(
         session_id=session_id,
         user_id=user_id,
@@ -819,7 +1039,7 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         is_correct=is_correct,
     )
 
-    await increment_jamb_session_progress(session_id, is_correct)
+    await increment_jamb_session_result(session_id, is_correct)
 
     context.user_data["jp_answered_current"] = True
     context.user_data["jp_last_selected_option"] = selected_option
@@ -897,153 +1117,6 @@ async def jamb_next_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["jp_current_index"] = current_index + 1
 
     await send_current_jamb_question(update, context)
-
-
-async def deduct_one_free_question(user_id: int) -> bool:
-    """
-    Deduct 1 free question if available.
-    Returns True if deducted, False otherwise.
-    """
-    async with get_async_session() as session:
-        async with session.begin():
-            result = await session.execute(
-                text("""
-                    update jamb_user_access
-                    set
-                        free_questions_remaining = free_questions_remaining - 1,
-                        total_questions_used = total_questions_used + 1,
-                        updated_at = now()
-                    where user_id = :user_id
-                      and free_questions_remaining > 0
-                    returning free_questions_remaining
-                """),
-                {"user_id": user_id},
-            )
-            row = result.first()
-            return row is not None
-
-
-async def add_question_to_topic_history(
-    user_id: int,
-    subject_code: str,
-    topic_id: str,
-    question_id: str,
-):
-    async with get_async_session() as session:
-        async with session.begin():
-            await session.execute(
-                text("""
-                    insert into jamb_user_topic_history (
-                        user_id,
-                        subject_code,
-                        topic_id,
-                        question_id
-                    )
-                    values (
-                        :user_id,
-                        :subject_code,
-                        :topic_id,
-                        :question_id
-                    )
-                    on conflict (user_id, subject_code, topic_id, question_id) do nothing
-                """),
-                {
-                    "user_id": user_id,
-                    "subject_code": subject_code,
-                    "topic_id": topic_id,
-                    "question_id": question_id,
-                },
-            )
-
-
-async def record_jamb_attempt(
-    session_id: int,
-    user_id: int,
-    subject_code: str,
-    topic_id: str,
-    question_id: str,
-    selected_option: str,
-    correct_option: str,
-    is_correct: bool,
-):
-    async with get_async_session() as session:
-        async with session.begin():
-            await session.execute(
-                text("""
-                    insert into jamb_attempts (
-                        session_id,
-                        user_id,
-                        subject_code,
-                        topic_id,
-                        question_id,
-                        selected_option,
-                        correct_option,
-                        is_correct
-                    )
-                    values (
-                        :session_id,
-                        :user_id,
-                        :subject_code,
-                        :topic_id,
-                        :question_id,
-                        :selected_option,
-                        :correct_option,
-                        :is_correct
-                    )
-                """),
-                {
-                    "session_id": session_id,
-                    "user_id": user_id,
-                    "subject_code": subject_code,
-                    "topic_id": topic_id,
-                    "question_id": question_id,
-                    "selected_option": selected_option,
-                    "correct_option": correct_option,
-                    "is_correct": is_correct,
-                },
-            )
-
-
-async def increment_jamb_session_progress(session_id: int, is_correct: bool):
-    async with get_async_session() as session:
-        async with session.begin():
-            if is_correct:
-                await session.execute(
-                    text("""
-                        update jamb_sessions
-                        set
-                            questions_served = questions_served + 1,
-                            correct_count = correct_count + 1
-                        where id = :session_id
-                    """),
-                    {"session_id": session_id},
-                )
-            else:
-                await session.execute(
-                    text("""
-                        update jamb_sessions
-                        set
-                            questions_served = questions_served + 1,
-                            wrong_count = wrong_count + 1
-                        where id = :session_id
-                    """),
-                    {"session_id": session_id},
-                )
-
-
-async def complete_jamb_session(session_id: int):
-    async with get_async_session() as session:
-        async with session.begin():
-            await session.execute(
-                text("""
-                    update jamb_sessions
-                    set
-                        status = 'completed',
-                        ended_at = now()
-                    where id = :session_id
-                """),
-                {"session_id": session_id},
-            )
 
 
 # =============================
