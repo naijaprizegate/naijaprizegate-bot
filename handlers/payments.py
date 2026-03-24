@@ -7,7 +7,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CallbackQueryHandler, CommandHandler
 from helpers import md_escape, get_or_create_user
 from models import Payment
-from db import AsyncSessionLocal
+from db import AsyncSessionLocal, get_async_session
 from services.flutterwave_client import create_checkout, build_tx_ref
 from services.trivia_payments import create_pending_trivia_payment
 from sqlalchemy import update, select
