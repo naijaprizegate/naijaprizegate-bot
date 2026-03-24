@@ -3,7 +3,6 @@
 # ====================================================================
 
 import math
-import uuid
 import logging
 from typing import Optional
 
@@ -11,7 +10,8 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import CommandHandler, CallbackQueryHandler, ContextTypes
 from sqlalchemy import text
 
-from services.payments import create_checkout
+from services.flutterwave_client import create_checkout, build_tx_ref, calculate_jamb_credits
+from services.jamb_payments import create_pending_jamb_payment
 from db import get_async_session
 from jamb_loader import (
     get_jamb_subjects,
@@ -134,57 +134,6 @@ async def reset_topic_history(user_id: int, subject_code: str, topic_id: str):
                     "subject_code": subject_code,
                     "topic_id": topic_id,
                 },
-            )
-
-
-async def create_pending_jamb_payment(
-    user_id: int,
-    amount_paid: int,
-    question_credits_added: int,
-    payment_reference: str,
-):
-    async with get_async_session() as session:
-        async with session.begin():
-            await session.execute(
-                text("""
-                    insert into jamb_payments (
-                        user_id,
-                        amount_paid,
-                        question_credits_added,
-                        payment_reference,
-                        payment_status,
-                        provider
-                    )
-                    values (
-                        :user_id,
-                        :amount_paid,
-                        :question_credits_added,
-                        :payment_reference,
-                        'pending',
-                        'flutterwave'
-                    )
-                """),
-                {
-                    "user_id": user_id,
-                    "amount_paid": amount_paid,
-                    "question_credits_added": question_credits_added,
-                    "payment_reference": payment_reference,
-                },
-            )
-
-
-async def mark_jamb_payment_failed(payment_reference: str):
-    async with get_async_session() as session:
-        async with session.begin():
-            await session.execute(
-                text("""
-                    update jamb_payments
-                    set
-                        payment_status = 'failed',
-                        updated_at = now()
-                    where payment_reference = :payment_reference
-                """),
-                {"payment_reference": payment_reference},
             )
 
 
@@ -812,52 +761,58 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
         "200": 400,
     }
 
-    credits_map = {
-        "50": 50,
-        "100": 100,
-        "150": 150,
-        "200": 200,
-    }
-
     if pack_size not in pricing_map:
         return await query.message.reply_text("⚠️ Invalid JAMB package selected.")
 
     amount = pricing_map[pack_size]
-    credits = credits_map[pack_size]
+    credits = calculate_jamb_credits(amount)
 
     user = query.from_user
     tg_id = user.id
     username = user.username or f"user_{tg_id}"
     email = f"{username}@naijaprizegate.ng"
 
-    tx_ref = f"JAMB-{uuid.uuid4().hex[:12].upper()}"
+    tx_ref = build_tx_ref("JAMB")
 
-    await create_pending_jamb_payment(
+    async with get_async_session() as session:
+        await create_pending_jamb_payment(
+            session,
+            payment_reference=tx_ref,
+            user_id=tg_id,
+            amount_paid=amount,
+            question_credits_added=calculate_jamb_credits(amount),
+        )
+        await session.commit()
+
+    checkout_url = await create_checkout(
         user_id=tg_id,
-        amount_paid=amount,
-        question_credits_added=credits,
-        payment_reference=tx_ref,
+        amount=amount,
+        username=username,
+        email=email,
+        tx_ref=tx_ref,
+        meta={
+            "tg_id": str(tg_id),
+            "username": username,
+            "product_type": "JAMB",
+        },
+        product_type="JAMB",
     )
 
-    try:
-        checkout_url = await create_checkout(
-            user_id=tg_id,
-            amount=amount,
-            username=username,
-            email=email,
-            tx_ref=tx_ref,
-            meta={
-                "tg_id": tg_id,
-                "username": username,
-                "purpose": "JAMB",
-                "product": "jamb_practice",
-                "question_credits": credits,
-            },
-            product_type="JAMB",
-        )
-    except Exception:
-        logger.exception("❌ Failed to create JAMB checkout | tx_ref=%s", tx_ref)
-        await mark_jamb_payment_failed(tx_ref)
+    if not checkout_url:
+        async with get_async_session() as session:
+            await session.execute(
+                text("""
+                    update jamb_payments
+                    set
+                        payment_status = 'expired',
+                        updated_at = now()
+                    where payment_reference = :payment_reference
+                        and lower(coalesce(payment_status, '')) = 'pending'
+                """),
+                {"payment_reference": tx_ref},
+            )
+            await session.commit()
+
         return await query.message.reply_text(
             "⚠️ Payment service unavailable. Please try again shortly."
         )
@@ -1021,7 +976,13 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         return await query.message.reply_text("⚠️ No active question found.")
 
     user_id = update.effective_user.id
-    session_id = int(context.user_data.get("jp_session_id"))
+    session_id_raw = context.user_data.get("jp_session_id")
+    if not session_id_raw:
+        return await query.message.reply_text(
+            "⚠️ Session expired. Please start again from JAMB Practice."
+        )
+
+    session_id = int(session_id_raw)
     subject_code = context.user_data.get("jp_subject_code")
     topic_id = context.user_data.get("jp_topic_id")
     question_id = str(question["id"])
