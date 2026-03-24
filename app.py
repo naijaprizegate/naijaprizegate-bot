@@ -355,83 +355,17 @@ async def telegram_webhook(secret: str, request: Request):
     
 
 # -----------------------
-# 🔁 Helper – Prevent double crediting
+# 🔁 Helper – Prevent double crediting (TRIVIA)
 # -----------------------
 async def payment_already_processed(session: AsyncSession, tx_ref: str) -> bool:
     result = await session.execute(select(Payment).where(Payment.tx_ref == tx_ref))
     p = result.scalar_one_or_none()
     return bool(p and p.status == "successful")
 
+
 # -----------------------
-# Helpers – Payment Idempotency / JAMB Credits
+# Helpers – JAMB Payments / Idempotency
 # -----------------------
-async def get_jamb_payment_status(session: AsyncSession, tx_ref: str) -> dict | None:
-    result = await session.execute(
-        text("""
-            select
-                user_id,
-                amount_paid,
-                question_credits_added,
-                payment_status
-            from jamb_payments
-            where payment_reference = :tx_ref
-            limit 1
-        """),
-        {"tx_ref": tx_ref},
-    )
-    row = result.mappings().first()
-    return dict(row) if row else None
-
-
-async def resolve_jamb_payment_status(tx_ref: str, session: AsyncSession) -> dict | None:
-    """
-    Resolve JAMB payment status using our DB first, then Flutterwave verify as fallback.
-    Credits user if Flutterwave confirms success and DB row is still pending.
-    """
-    jamb_payment = await get_jamb_payment_status(session, tx_ref)
-    if not jamb_payment:
-        return None
-
-    payment_status = str(jamb_payment.get("payment_status") or "").lower().strip()
-    if payment_status in {"successful", "failed", "expired", "cancelled"}:
-        return jamb_payment
-
-    fw_resp = await verify_payment(tx_ref, session)
-    fw_status = str(fw_resp.get("status") or "").lower().strip()
-
-    if fw_status == "success":
-        fw_status = "successful"
-    if fw_status == "completed":
-        fw_status = "successful"
-    if fw_status == "canceled":
-        fw_status = "expired"
-
-    if fw_status == "successful":
-        credited = await credit_jamb_question_credits(
-            session=session,
-            user_id=int(jamb_payment["user_id"]),
-            payment_reference=tx_ref,
-            question_credits_added=int(jamb_payment["question_credits_added"] or 0),
-        )
-        if credited:
-            await session.commit()
-        else:
-            await session.rollback()
-    elif fw_status in {"failed", "expired"}:
-        await session.execute(
-            text("""
-                update jamb_payments
-                set
-                    payment_status = :status,
-                    updated_at = now()
-                where payment_reference = :tx_ref
-            """),
-            {"status": fw_status, "tx_ref": tx_ref},
-        )
-        await session.commit()
-
-    return await get_jamb_payment_status(session, tx_ref)
-
 async def get_jamb_payment_record(session: AsyncSession, payment_reference: str) -> dict | None:
     result = await session.execute(
         text("""
@@ -456,7 +390,7 @@ async def jamb_payment_already_processed(session: AsyncSession, payment_referenc
             select 1
             from jamb_payments
             where payment_reference = :payment_reference
-              and lower(payment_status) = 'successful'
+              and lower(coalesce(payment_status, '')) = 'successful'
             limit 1
         """),
         {"payment_reference": payment_reference},
@@ -471,9 +405,30 @@ async def credit_jamb_question_credits(
     question_credits_added: int,
 ) -> bool:
     """
-    Credits JAMB question credits and marks jamb_payments row successful.
-    Returns True if the jamb_payments row was found and updated.
+    Safe JAMB crediting:
+    1) Claim the payment row first
+    2) Only if claim succeeds, add credits
+    Returns True only when this call actually credited the user.
     """
+    # Step 1: claim the payment row first
+    claimed = await session.execute(
+        text("""
+            update jamb_payments
+            set
+                payment_status = 'successful',
+                updated_at = now()
+            where payment_reference = :payment_reference
+              and lower(coalesce(payment_status, '')) <> 'successful'
+            returning payment_reference
+        """),
+        {"payment_reference": payment_reference},
+    )
+
+    claimed_row = claimed.first()
+    if not claimed_row:
+        return False
+
+    # Step 2: ensure jamb_user_access row exists
     await session.execute(
         text("""
             insert into jamb_user_access (user_id)
@@ -483,6 +438,7 @@ async def credit_jamb_question_credits(
         {"user_id": user_id},
     )
 
+    # Step 3: add paid credits
     await session.execute(
         text("""
             update jamb_user_access
@@ -497,20 +453,26 @@ async def credit_jamb_question_credits(
         },
     )
 
-    result = await session.execute(
-        text("""
-            update jamb_payments
-            set
-                payment_status = 'successful',
-                updated_at = now()
-            where payment_reference = :payment_reference
-              and lower(payment_status) <> 'successful'
-            returning payment_reference
-        """),
-        {"payment_reference": payment_reference},
-    )
+    return True
 
-    return result.first() is not None
+
+def normalize_flw_status(raw_status: str | None) -> str:
+    status = (raw_status or "").lower().strip()
+
+    if status in ("success", "completed", "successful"):
+        return "successful"
+
+    if status in ("failed",):
+        return "failed"
+
+    if status in ("cancelled", "canceled", "expired"):
+        return "expired"
+
+    if not status:
+        return "pending"
+
+    return status
+
 
 # ------------------------------------------------------
 # Webhook: called by Flutterwave after payment
@@ -541,12 +503,12 @@ async def flutterwave_webhook(
         return JSONResponse({"status": "ignored"})
 
     # ------------------------------------------------------
-    # JAMB PAYMENT BRANCH (STRICT)
+    # JAMB PAYMENT BRANCH
     # ------------------------------------------------------
     if tx_ref.startswith("JAMB-"):
         jamb_payment = await get_jamb_payment_record(session, tx_ref)
 
-        # STRICT MODE: DB row must already exist
+        # DB row must already exist
         if not jamb_payment:
             logger.error("❌ No jamb_payments row found for tx_ref=%s", tx_ref)
             return JSONResponse({"status": "ignored"})
@@ -555,29 +517,34 @@ async def flutterwave_webhook(
         if payment_status == "successful":
             return JSONResponse({"status": "duplicate"})
 
-        tg_id = int(jamb_payment["user_id"])
-        question_credits = int(jamb_payment["question_credits_added"] or 0)
-
+        question_credits = int(jamb_payment.get("question_credits_added") or 0)
         if question_credits <= 0:
             logger.error("❌ Invalid JAMB credit amount in DB for tx_ref=%s", tx_ref)
             return JSONResponse({"status": "ignored"})
 
-        if await jamb_payment_already_processed(session, tx_ref):
-            return JSONResponse({"status": "duplicate"})
+        # IMPORTANT:
+        # This keeps your current behavior unchanged:
+        # jamb_payments.user_id is being used as the Telegram user id in your current flow.
+        tg_id = int(jamb_payment["user_id"])
 
-        credited = await credit_jamb_question_credits(
-            session=session,
-            user_id=tg_id,
-            payment_reference=tx_ref,
-            question_credits_added=question_credits,
-        )
+        try:
+            credited = await credit_jamb_question_credits(
+                session=session,
+                user_id=tg_id,
+                payment_reference=tx_ref,
+                question_credits_added=question_credits,
+            )
 
-        if not credited:
-            logger.error("❌ Failed to update jamb_payments row for tx_ref=%s", tx_ref)
+            if not credited:
+                await session.rollback()
+                return JSONResponse({"status": "duplicate"})
+
+            await session.commit()
+
+        except Exception as e:
             await session.rollback()
-            return JSONResponse({"status": "error", "message": "jamb payment update failed"})
-
-        await session.commit()
+            logger.exception("❌ JAMB webhook credit failed for tx_ref=%s: %s", tx_ref, e)
+            return JSONResponse({"status": "error", "message": "jamb credit exception"})
 
         try:
             bot = Bot(token=BOT_TOKEN)
@@ -656,6 +623,7 @@ async def flutterwave_webhook(
 
     return JSONResponse({"status": "success"})
 
+
 # -----------------------
 # Redirect endpoint for user-friendly browser redirect after checkout
 # -----------------------
@@ -666,29 +634,74 @@ async def flutterwave_redirect(
     transaction_id: Optional[str] = None,
     session: AsyncSession = Depends(get_session),
 ):
+    """
+    User-friendly redirect page.
+    Resolves JAMB from jamb_payments and TRIVIA from Payment,
+    then shows a success/fail HTML page and auto-redirects the user to Telegram.
+    """
     success_url = f"https://t.me/{BOT_USERNAME}?start=payment_success_{tx_ref}"
     failed_url = f"https://t.me/{BOT_USERNAME}?start=payment_failed_{tx_ref}"
 
-    try:
-        # ------------------------------------------------------
-        # JAMB REDIRECT BRANCH
-        # ------------------------------------------------------
-        if tx_ref.startswith("JAMB-"):
-            jamb_payment = await resolve_jamb_payment_status(tx_ref, session)
+    async def _resolve_trivia_payment(txref: str):
+        try:
+            q = await session.execute(select(Payment).where(Payment.tx_ref == txref))
+            return q.scalar_one_or_none()
+        except Exception as e:
+            logger.exception("❌ DB error resolving trivia payment %s: %s", txref, e)
+            return None
 
-            if jamb_payment and str(jamb_payment.get("payment_status") or "").lower() == "successful":
-                credits = int(jamb_payment.get("question_credits_added") or 0)
+    try:
+        # ======================================================
+        # JAMB FLOW
+        # ======================================================
+        if tx_ref.startswith("JAMB-"):
+            jamb_payment = await get_jamb_payment_record(session, tx_ref)
+
+            if jamb_payment:
+                jamb_status = normalize_flw_status(jamb_payment.get("payment_status"))
+
+                if jamb_status == "successful":
+                    credits = int(jamb_payment.get("question_credits_added") or 0)
+                    return HTMLResponse(f"""
+                        <html><body style="font-family: Arial, sans-serif; text-align:center; padding:40px;">
+                        <h2 style="color:green;">✅ JAMB Payment Successful</h2>
+                        <p>Transaction Reference: <b>{tx_ref}</b></p>
+                        <p>📚 You’ve been credited with <b>{credits} JAMB question credits</b>.</p>
+                        <p>This tab will redirect to Telegram in 5 seconds...</p>
+                        <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
+                        </body></html>
+                    """, status_code=200)
+
+                if jamb_status in ("failed", "expired"):
+                    return HTMLResponse(f"""
+                        <html><body style="font-family: Arial, sans-serif; text-align:center; padding:40px;">
+                        <h2 style="color:red;">❌ JAMB Payment Failed</h2>
+                        <p>Transaction Reference: <b>{tx_ref}</b></p>
+                        <p>This tab will redirect to Telegram in 5 seconds...</p>
+                        <script>setTimeout(() => window.location.href="{failed_url}", 5000);</script>
+                        </body></html>
+                    """, status_code=200)
+
+            # Fallback: ask Flutterwave for status only
+            try:
+                fw_data = await verify_payment(tx_ref, session)
+                raw_status = normalize_flw_status(fw_data.get("status"))
+            except Exception as e:
+                logger.exception("❌ Redirect JAMB verify failed for %s: %s", tx_ref, e)
+                raw_status = "pending"
+
+            if raw_status == "successful":
                 return HTMLResponse(f"""
                     <html><body style="font-family: Arial, sans-serif; text-align:center; padding:40px;">
-                    <h2 style="color:green;">✅ JAMB Payment Successful</h2>
+                    <h2 style="color:orange;">⏳ Payment received</h2>
                     <p>Transaction Reference: <b>{tx_ref}</b></p>
-                    <p>📚 You’ve been credited with <b>{credits} JAMB question credits</b>!</p>
-                    <p>This tab will redirect to Telegram in 5 seconds...</p>
-                    <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
+                    <p>Your JAMB payment was successful and is being finalized.</p>
+                    <p>This page will recheck automatically.</p>
+                    <script>setTimeout(() => location.reload(), 4000);</script>
                     </body></html>
                 """, status_code=200)
 
-            if jamb_payment and str(jamb_payment.get("payment_status") or "").lower() in ("failed", "expired", "cancelled"):
+            if raw_status in ("failed", "expired"):
                 return HTMLResponse(f"""
                     <html><body style="font-family: Arial, sans-serif; text-align:center; padding:40px;">
                     <h2 style="color:red;">❌ JAMB Payment Failed</h2>
@@ -699,7 +712,7 @@ async def flutterwave_redirect(
                 """, status_code=200)
 
             return HTMLResponse(f"""
-                <html><head><meta charset="utf-8"><title>Verifying Payment</title></head>
+                <html><head><meta charset="utf-8"><title>Verifying JAMB Payment</title></head>
                 <body style="font-family: Arial, sans-serif; text-align:center; padding:40px;">
                   <h2>⏳ Verifying your JAMB payment...</h2>
                   <div style="margin:20px auto;height:40px;width:40px;border:5px solid #ccc;border-top-color:#4CAF50;border-radius:50%;animation:spin 1s linear infinite;"></div>
@@ -713,52 +726,39 @@ async def flutterwave_redirect(
                 </body></html>
             """, status_code=200)
 
-        # ------------------------------------------------------
-        # TRIVIA REDIRECT BRANCH
-        # ------------------------------------------------------
-        async def _resolve_payment(txref: str):
-            try:
-                q = await session.execute(select(Payment).where(Payment.tx_ref == txref))
-                return q.scalar_one_or_none()
-            except Exception as e:
-                logger.exception(f"❌ DB error resolving payment {txref}: {e}")
-                return None
+        # ======================================================
+        # TRIVIA FLOW
+        # ======================================================
+        payment = await _resolve_trivia_payment(tx_ref)
 
-        payment = await _resolve_payment(tx_ref)
-
+        # Attempt verification if payment not found or still pending
         if (not payment or payment.status in (None, "pending")) and transaction_id:
             try:
-                fw_resp = await verify_payment(tx_ref, session)
-                raw_status = (fw_resp.get("status") or "").lower().strip()
-
-                if raw_status == "success":
-                    raw_status = "successful"
-                elif raw_status == "completed":
-                    raw_status = "successful"
-                elif raw_status == "canceled":
-                    raw_status = "expired"
+                fw_data = await verify_payment(tx_ref, session)
+                raw_status = normalize_flw_status(fw_data.get("status"))
 
                 if raw_status == "successful":
-                    credited = calculate_tries(int(fw_resp.get("amount") or 0))
-                    meta = fw_resp.get("meta") or {}
+                    credited = calculate_tries(int(fw_data.get("amount") or 0))
+                    meta = fw_data.get("meta") or {}
+
                     raw_tg = meta.get("tg_id")
                     tg = None
                     try:
                         tg = int(raw_tg) if raw_tg else None
                     except Exception:
                         tg = None
-                    username = meta.get("username") or "Unknown"
 
-                    existing = await _resolve_payment(tx_ref)
+                    username = (meta.get("username") or "Unknown")[:64]
+                    existing = await _resolve_trivia_payment(tx_ref)
 
                     if not existing:
                         newp = Payment(
                             tx_ref=tx_ref,
-                            status=raw_status,
+                            status="successful",
                             credited_tries=credited,
-                            flw_tx_id=str(fw_resp.get("flw_tx_id")) if fw_resp.get("flw_tx_id") else None,
+                            flw_tx_id=str(fw_data.get("flw_tx_id")) if fw_data.get("flw_tx_id") else None,
                             user_id=None,
-                            amount=int(fw_resp.get("amount") or 0),
+                            amount=int(fw_data.get("amount") or 0),
                             tg_id=tg,
                             username=username,
                         )
@@ -768,11 +768,13 @@ async def flutterwave_redirect(
                         if tg:
                             user = await get_or_create_user(session, tg_id=tg, username=username)
                             await add_tries(session, user, credited, paid=True)
+
                         await session.commit()
 
-                    payment = await _resolve_payment(tx_ref)
+                    payment = await _resolve_trivia_payment(tx_ref)
+
             except Exception as e:
-                logger.exception(f"❌ Redirect: failed to verify tx_ref={tx_ref}: {e}")
+                logger.exception("❌ Redirect trivia verify failed for tx_ref=%s: %s", tx_ref, e)
 
         if payment and payment.status == "successful":
             credited_text = f"{payment.credited_tries} spin{'s' if payment.credited_tries > 1 else ''}"
@@ -812,7 +814,7 @@ async def flutterwave_redirect(
         """, status_code=200)
 
     except Exception as e:
-        logger.exception(f"❌ Unexpected error in /flw/redirect for {tx_ref}: {e}")
+        logger.exception("❌ Unexpected error in /flw/redirect for %s: %s", tx_ref, e)
         return HTMLResponse(f"""
             <html><body style="font-family: Arial,sans-serif; text-align:center;">
             <h2 style="color:red;">❌ Payment processing error</h2>
@@ -821,9 +823,10 @@ async def flutterwave_redirect(
             <p><a href="https://t.me/{BOT_USERNAME}">Return to Telegram</a></p>
             </body></html>
         """, status_code=200)
-    
+
+
 # ------------------------------------------------------
-# Redirect status polling with countdown + verify fallback
+# Redirect status polling with verify fallback
 # ------------------------------------------------------
 @router.get("/flw/redirect/status")
 async def flutterwave_redirect_status(
@@ -834,35 +837,60 @@ async def flutterwave_redirect_status(
     failed_url = f"https://t.me/{BOT_USERNAME}?start=payment_failed_{tx_ref}"
 
     try:
-        # ------------------------------------------------------
-        # JAMB STATUS BRANCH
-        # ------------------------------------------------------
+        # ======================================================
+        # JAMB FLOW
+        # ======================================================
         if tx_ref.startswith("JAMB-"):
-            jamb_payment = await resolve_jamb_payment_status(tx_ref, session)
+            jamb_payment = await get_jamb_payment_record(session, tx_ref)
 
-            if not jamb_payment:
+            if jamb_payment:
+                jamb_status = normalize_flw_status(jamb_payment.get("payment_status"))
+
+                if jamb_status == "successful":
+                    credits = int(jamb_payment.get("question_credits_added") or 0)
+                    return JSONResponse({
+                        "done": True,
+                        "html": f"""
+                        <h2 style="color:green;">✅ JAMB Payment Successful</h2>
+                        <p>Transaction Reference: <b>{tx_ref}</b></p>
+                        <p>📚 You’ve been credited with <b>{credits} JAMB question credits</b>.</p>
+                        <p>This tab will redirect to Telegram in 5 seconds...</p>
+                        <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
+                        """
+                    })
+
+                if jamb_status in ("failed", "expired"):
+                    return JSONResponse({
+                        "done": True,
+                        "html": f"""
+                        <h2 style="color:red;">❌ JAMB Payment Failed</h2>
+                        <p>Transaction Reference: <b>{tx_ref}</b></p>
+                        <script>setTimeout(() => window.location.href="{failed_url}", 5000);</script>
+                        """
+                    })
+
+            # Verify fallback for display only
+            try:
+                fw_data = await verify_payment(tx_ref, session)
+                raw_status = normalize_flw_status(fw_data.get("status"))
+            except Exception as e:
+                logger.exception("❌ Error during JAMB polling verify for %s: %s", tx_ref, e)
+                raw_status = "pending"
+
+            if raw_status == "successful":
                 return JSONResponse({
-                    "done": True,
-                    "html": f"<h2 style='color:red;'>❌ JAMB payment not found</h2>"
-                            f"<p><a href='{failed_url}'>Return to Telegram</a></p>"
-                })
-
-            payment_status = str(jamb_payment.get("payment_status") or "").lower().strip()
-
-            if payment_status == "successful":
-                credits = int(jamb_payment.get("question_credits_added") or 0)
-                return JSONResponse({
-                    "done": True,
+                    "done": False,
                     "html": f"""
-                    <h2 style="color:green;">✅ JAMB Payment Successful</h2>
+                    <h2 style="color:orange;">⏳ Payment received</h2>
                     <p>Transaction Reference: <b>{tx_ref}</b></p>
-                    <p>📚 You’ve been credited with <b>{credits} JAMB question credits</b>!</p>
-                    <p>This tab will redirect to Telegram in 5 seconds...</p>
-                    <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
+                    <p>✅ Flutterwave confirms payment success.</p>
+                    <p>We are waiting for your local JAMB credit to complete.</p>
+                    <div class="spinner" style="margin:20px auto;height:40px;width:40px;border:5px solid #ccc;border-top-color:#f39c12;border-radius:50%;animation:spin 1s linear infinite;"></div>
+                    <style>@keyframes spin {{ to {{ transform: rotate(360deg); }} }}</style>
                     """
                 })
 
-            if payment_status in ["failed", "expired", "cancelled"]:
+            if raw_status in ("failed", "expired"):
                 return JSONResponse({
                     "done": True,
                     "html": f"""
@@ -883,16 +911,17 @@ async def flutterwave_redirect_status(
                 """
             })
 
-        # ------------------------------------------------------
-        # TRIVIA STATUS BRANCH
-        # ------------------------------------------------------
+        # ======================================================
+        # TRIVIA FLOW
+        # ======================================================
         payment = await resolve_payment_status(tx_ref, session)
 
         if payment and payment.status not in ["successful", "failed", "expired"]:
             try:
+                await verify_payment(tx_ref, session)
                 payment = await resolve_payment_status(tx_ref, session)
             except Exception as e:
-                logger.exception(f"❌ Error during polling verify for {tx_ref}: {e}")
+                logger.exception("❌ Error during polling verify for %s: %s", tx_ref, e)
 
         if not payment:
             return JSONResponse({
@@ -936,7 +965,7 @@ async def flutterwave_redirect_status(
         })
 
     except Exception as e:
-        logger.exception(f"❌ Unexpected error in /flw/redirect/status for {tx_ref}: {e}")
+        logger.exception("❌ Unexpected error in /flw/redirect/status for %s: %s", tx_ref, e)
         return JSONResponse({
             "done": True,
             "html": f"""
@@ -946,7 +975,8 @@ async def flutterwave_redirect_status(
             <p><a href="https://t.me/{BOT_USERNAME}">Return to Telegram</a></p>
             """
         })
-    
+        
+                
 # -------------------------------------------------
 # Health check endpoint
 # -------------------------------------------------
@@ -1108,3 +1138,4 @@ async def save_winner(
 
 # ✅ Register all Flutterwave routes
 app.include_router(router)
+
