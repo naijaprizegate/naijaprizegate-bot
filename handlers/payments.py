@@ -1,17 +1,17 @@
 # =============================================================== 
 # handlers/payments.py — Skill-Based Rewrite 🚫🎰 → ✔️🧠
 # ===============================================================
+import os
+import logging
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CallbackQueryHandler, CommandHandler
 from helpers import md_escape, get_or_create_user
-from models import Payment, User
-from db import AsyncSessionLocal, get_async_session
-from services.payments import create_checkout
-from sqlalchemy import insert, update, select
+from models import Payment
+from db import AsyncSessionLocal
+from services.flutterwave_client import create_checkout, build_tx_ref
+from services.trivia_payments import create_pending_trivia_payment
+from sqlalchemy import update, select
 from datetime import datetime, timedelta
-import uuid, os, logging
-from logging_config import setup_logger
-from helpers import mask_sensitive
 
 logger = logging.getLogger(__name__)
 
@@ -91,32 +91,19 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         return await query.answer("❌ Invalid package.", show_alert=True)
 
     questions = valid_packages[price]
-    tx_ref = f"TRIVIA-{uuid.uuid4().hex[:12].upper()}"
+    tx_ref = build_tx_ref("TRIVIA")
 
     username = query.from_user.username or f"user_{query.from_user.id}"
     email = f"{username}@naijaprizegate.ng"
 
     async with AsyncSessionLocal() as session:
-        db_user = await get_or_create_user(session, query.from_user.id, query.from_user.username)
-
-        await session.execute(
-            Payment.__table__.delete().where(
-                Payment.user_id == db_user.id,
-                Payment.status == "pending"
-            )
-        )
-
-        stmt = insert(Payment).values(
-            user_id=db_user.id,
-            amount=price,
-            credited_tries=questions,
+        await create_pending_trivia_payment(
+            session,
             tx_ref=tx_ref,
-            status="pending",
-            created_at=datetime.utcnow(),
             tg_id=query.from_user.id,
             username=username,
+            amount=price,
         )
-        await session.execute(stmt)
         await session.commit()
 
     checkout_url = await create_checkout(
@@ -126,15 +113,23 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         email=email,
         tx_ref=tx_ref,
         meta={
-            "tg_id": query.from_user.id,
+            "tg_id": str(query.from_user.id),
             "username": username,
-            "purpose": "TRIVIA",
-            "credited_tries": questions,
+            "product_type": "TRIVIA",
         },
         product_type="TRIVIA",
     )
 
     if not checkout_url:
+        async with AsyncSessionLocal() as session:
+            result = await session.execute(
+                select(Payment).where(Payment.tx_ref == tx_ref)
+            )
+            pending = result.scalar_one_or_none()
+            if pending and pending.status == "pending":
+                pending.status = "expired"
+                await session.commit()
+
         return await query.edit_message_text(
             "⚠️ Payment service unavailable. Please try again shortly.",
             parse_mode="HTML",
@@ -163,7 +158,6 @@ async def handle_buy_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         parse_mode="HTML",
         disable_web_page_preview=True,
     )
-
     
 # ---------------------------------------------------------------
 # Cancel Payment
@@ -173,11 +167,16 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
     await query.answer()
 
     async with AsyncSessionLocal() as session:
-        db_user = await get_or_create_user(session, query.from_user.id, query.from_user.username)
         result = await session.execute(
-            select(Payment).where(Payment.user_id == db_user.id, Payment.status == "pending").order_by(Payment.created_at.desc())
+            select(Payment)
+            .where(
+                Payment.tg_id == query.from_user.id,
+                Payment.status == "pending"
+            )
+            .order_by(Payment.created_at.desc())
         )
         pending = result.scalars().first()
+        
         if pending:
             await session.delete(pending)
             await session.commit()
@@ -191,45 +190,6 @@ async def handle_cancel_payment(update: Update, context: ContextTypes.DEFAULT_TY
     await query.edit_message_text(
         "❌ Payment cancelled\\.\nYou’re back at the menu 👍",
         reply_markup=InlineKeyboardMarkup(keyboard),
-        parse_mode="MarkdownV2"
-    )
-
-# ---------------------------------------------------------------
-# Payment Success → Credit Trivia Questions
-# ---------------------------------------------------------------
-async def handle_payment_success(tx_ref: str, amount: int, user_id: int, questions: int, bot):
-    try:
-        from services.payments import verify_transaction
-
-        is_valid = await verify_transaction(tx_ref, amount)
-        if not is_valid:
-            return
-
-        async with get_async_session() as session:
-            result = await session.execute(select(Payment).where(Payment.tx_ref == tx_ref))
-            payment_row = result.scalar_one_or_none()
-            if not payment_row:
-                return
-
-            if payment_row.status == "successful":
-                return
-
-            db_user = await get_or_create_user(session, user_id)
-            db_user.tries_paid += questions
-
-            payment_row.status = "successful"
-            payment_row.credited_tries = questions
-            payment_row.completed_at = datetime.utcnow()
-            await session.commit()
-            await session.refresh(db_user)
-
-    except Exception:
-        logger.error("Webhook credit failed", exc_info=True)
-        return
-
-    await bot.send_message(
-        chat_id=user_id,
-        text=payment_success_text(db_user, amount, questions),
         parse_mode="MarkdownV2"
     )
 
