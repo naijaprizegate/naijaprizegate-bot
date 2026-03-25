@@ -135,7 +135,7 @@ async def finalize_jamb_payment(
     claimed_row = claimed.first()
     if not claimed_row:
         latest = await get_jamb_payment(session, payment_reference)
-        return False, latest, int(latest.get("question_credits_added") or credits)
+        return False, latest, int((latest or {}).get("question_credits_added") or credits)
 
     await session.execute(
         text("""
