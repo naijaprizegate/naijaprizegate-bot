@@ -32,6 +32,8 @@ CATEGORY_MAP = {
     "Mathematics": "mathematics",
 }
 
+VALID_CATEGORY_KEYS = set(CATEGORY_MAP.values())
+
 # -----------------------------------------------------------
 # GLOBAL CACHE
 # -----------------------------------------------------------
@@ -53,6 +55,30 @@ def _load_questions() -> List[Dict[str, Any]]:
             _ALL_QUESTIONS = json.load(f)
 
     return _ALL_QUESTIONS
+
+
+# ===========================================================
+# NORMALIZE CATEGORY INPUT
+# Accepts either:
+# - UI label (e.g. "Entertainment")
+# - internal category key (e.g. "nigeria_entertainment")
+# ===========================================================
+def _normalize_category_key(category: str) -> str:
+    raw = str(category or "").strip()
+
+    if not raw:
+        raise ValueError("Category is empty")
+
+    # Already an internal key
+    if raw in VALID_CATEGORY_KEYS:
+        return raw
+
+    # UI label
+    mapped = CATEGORY_MAP.get(raw)
+    if mapped:
+        return mapped
+
+    raise ValueError(f"Invalid category given: {category}")
 
 
 # ===========================================================
@@ -111,7 +137,7 @@ def _get_category_questions_sorted(category_key: str) -> List[Dict[str, Any]]:
     cat_q = [
         _normalize_question(category_key, q)
         for q in all_q
-        if q.get("category") == category_key
+        if str(q.get("category") or "").strip() == category_key
     ]
 
     def _sort_key(q: Dict[str, Any]):
@@ -129,7 +155,8 @@ def _get_category_questions_sorted(category_key: str) -> List[Dict[str, Any]]:
 # GET CATEGORY QUESTIONS FOR ANY MODE
 # Used by Challenge / Battle / other flows
 # ===========================================================
-def get_questions_for_category(category_key: str) -> List[Dict[str, Any]]:
+def get_questions_for_category(category: str) -> List[Dict[str, Any]]:
+    category_key = _normalize_category_key(category)
     return list(_get_category_questions_sorted(category_key))
 
 
@@ -142,7 +169,7 @@ def get_question_by_id(question_id: int | str) -> Optional[Dict[str, Any]]:
 
     all_q = _load_questions()
     for raw in all_q:
-        category_key = str(raw.get("category") or "")
+        category_key = str(raw.get("category") or "").strip()
         normalized = _normalize_question(category_key, raw)
         if str(normalized.get("id")) == qid:
             return normalized
@@ -163,13 +190,11 @@ async def get_next_question_for_user(tg_id: int, category: str) -> Dict[str, Any
     3) Return the first fresh question in deterministic order
     4) If category is exhausted, restart from beginning
     """
-    category_key = CATEGORY_MAP.get(category)
-    if not category_key:
-        raise ValueError(f"Invalid category given: {category}")
+    category_key = _normalize_category_key(category)
 
     questions = _get_category_questions_sorted(category_key)
     if not questions:
-        raise ValueError(f"No questions found for category {category}")
+        raise ValueError(f"No questions found for category {category_key}")
 
     async with get_async_session() as session:
         seen_keys = await get_seen_question_keys(
@@ -218,4 +243,5 @@ async def reset_user_all_categories(tg_id: int) -> None:
     Intentionally does nothing.
     """
     return None
+
 
