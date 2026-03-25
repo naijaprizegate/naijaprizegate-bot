@@ -72,10 +72,13 @@ def normalize_flw_status(raw_status: Optional[str]) -> str:
 
 def validate_flutterwave_webhook(headers: dict, raw_body: str) -> bool:
     signature = headers.get("verif-hash")
-    if not signature or not FLW_SECRET_HASH:
+    if not signature:
+        logger.warning("⚠️ Flutterwave webhook missing verif-hash header")
+        return False
+    if not FLW_SECRET_HASH:
+        logger.warning("⚠️ FLW_SECRET_HASH is not set in environment")
         return False
     return hmac.compare_digest(signature, FLW_SECRET_HASH)
-
 
 def build_tx_ref(product_type: str) -> str:
     prefix = product_type.upper().strip()
@@ -218,9 +221,10 @@ async def create_flutterwave_checkout_link(
         return None
 
     logger.info(
-        "🟢 Flutterwave checkout created | product_type=%s | tx_ref=%s",
+        "🟢 Flutterwave checkout created | product_type=%s | tx_ref=%s | redirect_url=%s",
         product_type,
         tx_ref,
+        redirect_url,
     )
     return payment_link
 
