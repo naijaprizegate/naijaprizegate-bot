@@ -28,23 +28,56 @@ BOT_USERNAME = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 
-def _success_url(tx_ref: str) -> str:
-    return f"https://t.me/{BOT_USERNAME}?start=payment_success_{tx_ref}"
+def _success_url(tx_ref: str, product_type: str) -> str:
+    product_type = (product_type or "").upper().strip()
+    if product_type == "JAMB":
+        return f"https://t.me/{BOT_USERNAME}?start=payok_jamb_{tx_ref}"
+    return f"https://t.me/{BOT_USERNAME}?start=payok_trivia_{tx_ref}"
 
 
-def _failed_url(tx_ref: str) -> str:
-    return f"https://t.me/{BOT_USERNAME}?start=payment_failed_{tx_ref}"
+def _failed_url(tx_ref: str, product_type: str) -> str:
+    product_type = (product_type or "").upper().strip()
+    if product_type == "JAMB":
+        return f"https://t.me/{BOT_USERNAME}?start=payfail_jamb_{tx_ref}"
+    return f"https://t.me/{BOT_USERNAME}?start=payfail_trivia_{tx_ref}"
 
 
-async def _notify_user(tg_id: int, text: str) -> None:
+async def _send_payment_success_message(
+    tg_id: int,
+    product_type: str,
+    amount_or_units: int,
+) -> None:
     if not BOT_TOKEN:
         logger.warning("BOT_TOKEN missing; cannot send Telegram message")
         return
+
     try:
         bot = Bot(token=BOT_TOKEN)
-        await bot.send_message(tg_id, text, parse_mode="Markdown")
+
+        if product_type == "TRIVIA":
+            text = (
+                "🎉 *Payment Successful!*\n\n"
+                f"You received *{amount_or_units}* attempt{'s' if amount_or_units != 1 else ''} 🎁\n\n"
+                "You can now proceed to Play Trivia Questions."
+            )
+        elif product_type == "JAMB":
+            text = (
+                "🎉 *Payment Successful!*\n\n"
+                f"You received *{amount_or_units}* JAMB question credit"
+                f"{'s' if amount_or_units != 1 else ''} 📚\n\n"
+                "You can now continue your JAMB Practice."
+            )
+        else:
+            return
+
+        await bot.send_message(
+            chat_id=tg_id,
+            text=text,
+            parse_mode="Markdown",
+        )
+
     except Exception as e:
-        logger.warning("Telegram notify failed for user %s: %s", tg_id, e)
+        logger.warning("Telegram success message failed for user %s: %s", tg_id, e)
 
 
 async def _finalize_from_verified_data(
@@ -183,17 +216,16 @@ async def flutterwave_webhook(
 
     if info.get("credited_now"):
         if product_type == "JAMB":
-            await _notify_user(
-                int(info["tg_id"]),
-                f"🎉 *JAMB Payment Successful!*\n\n"
-                f"You received *{info['credits']} JAMB question credits* 📚\n\n"
-                f"You can now continue your JAMB Practice.",
+            await _send_payment_success_message(
+                tg_id=int(info["tg_id"]),
+                product_type="JAMB",
+                amount_or_units=int(info["credits"]),
             )
         elif product_type == "TRIVIA":
-            await _notify_user(
-                int(info["tg_id"]),
-                f"🎉 *Payment Successful!*\n\n"
-                f"You received *{info['tries']}* attempts 🎁",
+            await _send_payment_success_message(
+                tg_id=int(info["tg_id"]),
+                product_type="TRIVIA",
+                amount_or_units=int(info["tries"]),
             )
 
     return JSONResponse({"status": "success"})
@@ -208,8 +240,9 @@ async def flutterwave_redirect(
 ):
     del status, transaction_id  # not relied on directly
 
-    success_url = _success_url(tx_ref)
-    failed_url = _failed_url(tx_ref)
+    product_type_hint = "JAMB" if tx_ref.startswith("JAMB-") else "TRIVIA"
+    success_url = _success_url(tx_ref, product_type_hint)
+    failed_url = _failed_url(tx_ref, product_type_hint)
 
     try:
         verified = await verify_payment(tx_ref)
@@ -229,7 +262,31 @@ async def flutterwave_redirect(
             )
             await session.commit()
 
+            success_url = _success_url(tx_ref, product_type)
+            failed_url = _failed_url(tx_ref, product_type)
+
+            logger.info(
+                "↩️ Redirect target chosen | tx_ref=%s | product_type=%s | success_url=%s",
+                tx_ref,
+                product_type,
+                success_url,
+            )
+
             if info.get("status") == "successful":
+                if info.get("credited_now"):
+                    if product_type == "JAMB":
+                        await _send_payment_success_message(
+                            tg_id=int(info["tg_id"]),
+                            product_type="JAMB",
+                            amount_or_units=int(info["credits"]),
+                        )
+                    elif product_type == "TRIVIA":
+                        await _send_payment_success_message(
+                            tg_id=int(info["tg_id"]),
+                            product_type="TRIVIA",
+                            amount_or_units=int(info["tries"]),
+                        )
+
                 if product_type == "JAMB":
                     credits = int(info.get("credits") or 0)
                     return HTMLResponse(f"""
@@ -265,6 +322,13 @@ async def flutterwave_redirect(
             """, status_code=200)
 
         if verify_status in ("failed", "expired"):
+            logger.info(
+                "↩️ Redirect failed target chosen | tx_ref=%s | product_type=%s | failed_url=%s",
+                tx_ref,
+                product_type_hint,
+                failed_url,
+            )
+
             return HTMLResponse(f"""
                 <html><body style="font-family: Arial, sans-serif; text-align:center; padding:40px;">
                 <h2 style="color:red;">❌ Payment Failed</h2>
@@ -303,8 +367,9 @@ async def flutterwave_redirect_status(
     tx_ref: str,
     session: AsyncSession = Depends(get_session),
 ):
-    success_url = _success_url(tx_ref)
-    failed_url = _failed_url(tx_ref)
+    product_type_hint = "JAMB" if tx_ref.startswith("JAMB-") else "TRIVIA"
+    success_url = _success_url(tx_ref, product_type_hint)
+    failed_url = _failed_url(tx_ref, product_type_hint)
 
     try:
         verified = await verify_payment(tx_ref)
@@ -317,6 +382,16 @@ async def flutterwave_redirect_status(
                 verified=verified,
             )
             await session.commit()
+
+            success_url = _success_url(tx_ref, product_type)
+            failed_url = _failed_url(tx_ref, product_type)
+
+            logger.info(
+                "↩️ Redirect status target chosen | tx_ref=%s | product_type=%s | success_url=%s",
+                tx_ref,
+                product_type,
+                success_url,
+            )
 
             if info.get("status") == "successful":
                 if product_type == "JAMB":
@@ -354,6 +429,13 @@ async def flutterwave_redirect_status(
             })
 
         if verify_status in ("failed", "expired"):
+            logger.info(
+                "↩️ Redirect status failed target chosen | tx_ref=%s | product_type=%s | failed_url=%s",
+                tx_ref,
+                product_type_hint,
+                failed_url,
+            )
+
             return JSONResponse({
                 "done": True,
                 "html": f"""
