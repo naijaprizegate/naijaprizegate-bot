@@ -41,7 +41,7 @@ def payment_success_text(user, amount, questions_added):
 # /buy → Select Trivia Package
 # ---------------------------------------------------------------
 async def buy_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    async with get_async_session() as session:
+    async with AsyncSessionLocal() as session:
         user = await get_or_create_user(
             session, update.effective_user.id, update.effective_user.username
         )
