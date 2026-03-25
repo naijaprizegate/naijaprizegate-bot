@@ -41,7 +41,7 @@ async def record_question_history(
                 :category,
                 :question_key
             )
-            ON CONFLICT (tg_id, source_type, question_key)
+            ON CONFLICT (tg_id, source_type, category, question_key)
             DO NOTHING
         """),
         {
@@ -103,3 +103,5 @@ async def get_seen_question_keys_for_users(
         },
     )
     return {str(row[0]) for row in res.fetchall()}
+
+
