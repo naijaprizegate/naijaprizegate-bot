@@ -780,7 +780,7 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
             payment_reference=tx_ref,
             user_id=tg_id,
             amount_paid=amount,
-            question_credits_added=calculate_jamb_credits(amount),
+            question_credits_added=credits,
         )
         await session.commit()
 
@@ -1122,4 +1122,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next$"))
+
 
