@@ -57,18 +57,10 @@ async def finalize_trivia_payment(
     flw_tx_id: str | None = None,
 ) -> tuple[bool, Optional[Payment], int]:
     """
-    Idempotent finalizer.
+    Safe/idempotent Trivia finalizer.
     Returns (did_credit_now, payment_row, tries)
     """
     payment = await get_trivia_payment(session, tx_ref)
-
-    if payment and payment.status == "successful" and int(payment.credited_tries or 0) > 0:
-        return False, payment, int(payment.credited_tries or 0)
-
-    tries = calculate_tries(int(amount))
-    if tries <= 0:
-        logger.error("❌ Invalid trivia tries for tx_ref=%s amount=%s", tx_ref, amount)
-        return False, payment, 0
 
     if not payment:
         payment = Payment(
@@ -84,15 +76,40 @@ async def finalize_trivia_payment(
         session.add(payment)
         await session.flush()
 
-    payment.status = "successful"
-    payment.amount = int(amount)
-    payment.flw_tx_id = str(flw_tx_id) if flw_tx_id else payment.flw_tx_id
-    payment.tg_id = int(tg_id)
-    payment.username = (username or payment.username or "Unknown")[:64]
+    tries = calculate_tries(int(amount))
+    if tries <= 0:
+        logger.error("❌ Invalid trivia tries for tx_ref=%s amount=%s", tx_ref, amount)
+        return False, payment, 0
 
-    user = await get_or_create_user(session, tg_id=int(tg_id), username=payment.username)
+    # Lock the row so only one finalizer proceeds at a time
+    result = await session.execute(
+        select(Payment)
+        .where(Payment.tx_ref == tx_ref)
+        .with_for_update()
+    )
+    locked_payment = result.scalar_one_or_none()
+
+    if not locked_payment:
+        return False, None, 0
+
+    if locked_payment.status == "successful" and int(locked_payment.credited_tries or 0) > 0:
+        return False, locked_payment, int(locked_payment.credited_tries or 0)
+
+    locked_payment.status = "successful"
+    locked_payment.amount = int(amount)
+    locked_payment.flw_tx_id = str(flw_tx_id) if flw_tx_id else locked_payment.flw_tx_id
+    locked_payment.tg_id = int(tg_id)
+    locked_payment.username = (username or locked_payment.username or "Unknown")[:64]
+    locked_payment.credited_tries = tries
+    await session.flush()
+
+    user = await get_or_create_user(
+        session,
+        tg_id=int(tg_id),
+        username=locked_payment.username,
+    )
     await add_tries(session, user, tries, paid=True)
 
-    payment.credited_tries = tries
     await session.flush()
-    return True, payment, tries
+    return True, locked_payment, tries
+
