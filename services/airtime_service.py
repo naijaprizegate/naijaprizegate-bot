@@ -1,8 +1,8 @@
-# =====================================================================
+# ======================================================================
 # services/airtime_service.py
 # Airtime Rewards via Clubkonnect (Nellobytes) Airtime API
 # Flutterwave Checkout remains for buying trivia attempts
-# =====================================================================
+# ======================================================================
 from __future__ import annotations
 
 import os
@@ -30,7 +30,7 @@ FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")
 FLW_BASE_URL = os.getenv("FLW_BASE_URL", "https://api.flutterwave.com")
 WEBHOOK_REDIRECT_URL = os.getenv(
     "WEBHOOK_REDIRECT_URL",
-    "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect",
+    "https://naijaprizegate-bot.fly.dev/flw/redirect",
 )
 
 if not FLW_SECRET_KEY:
