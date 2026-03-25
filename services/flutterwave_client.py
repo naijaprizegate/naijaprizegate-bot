@@ -18,7 +18,7 @@ FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")
 FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")
 WEBHOOK_REDIRECT_URL = os.getenv(
     "WEBHOOK_REDIRECT_URL",
-    "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect",
+    "https://naijaprizegate-bot.fly.dev/flw/redirect",
 )
 
 TRIVIA_ALLOWED_PACKAGES = {100, 500, 1000}
