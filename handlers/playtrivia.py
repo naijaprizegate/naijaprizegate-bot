@@ -155,7 +155,7 @@ async def playtrivia_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
         "🧠 *Choose your trivia category:*\n\n"
         "✅ Correct answers on paid attempts increase your points.\n"
         "🏁 When the campaign threshold is reached, the top scorer wins the grand prize.\n\n"
-        "• *AirPods* • *Bluetooth Speakers* • *iPhone 17 Pro Max*\n" 
+        "• *AirPods* • *Bluetooth Speakers* • *iPhone 17 Pro Max*\n"
         "• *Samsung Z Flip 6* • *Samsung Galaxy S26 Ultra*",
         parse_mode="Markdown",
         reply_markup=make_category_keyboard(),
@@ -176,7 +176,7 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
     logger.info("🧠 category selected | tg_id=%s | data=%s", tg_user.id, query.data)
 
     try:
-        _, category = query.data.split("_", 1)
+        _, category_label = query.data.split("_", 1)
     except Exception:
         await query.message.reply_text(
             "⚠️ Invalid category selection.",
@@ -184,7 +184,11 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
         )
         return
 
-    q = await get_next_question_for_user(tg_user.id, category)
+    # Normalize the UI label to the internal category key BEFORE selection.
+    # Example: "Entertainment" -> "nigeria_entertainment"
+    category_key = CATEGORY_KEY_MAP.get(category_label or "", category_label)
+
+    q = await get_next_question_for_user(tg_user.id, category_key)
 
     if not q:
         return await query.message.reply_text(
@@ -198,15 +202,17 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
         "options": dict(q.get("options") or {}),
     }
 
-    context.user_data["pending_trivia_category"] = category
-    q["category_label"] = category
+    # Keep friendly label for display, keep normalized key for internal tracking
+    context.user_data["pending_trivia_category"] = category_label
+    context.user_data["pending_trivia_category_key"] = category_key
+    q["category_label"] = category_label
+    q["category_key"] = category_key
 
     # ------------------------------------------------------------
     # Record shared question history WHEN QUESTION IS SERVED
     # so timed-out questions also count as seen.
     # ------------------------------------------------------------
     try:
-        category_key = CATEGORY_KEY_MAP.get(category or "", "")
         question_key = q.get("id") or make_json_question_key(
             category_key or "unknown",
             q["question"],
@@ -231,7 +237,7 @@ async def trivia_category_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["trivia_deadline"] = time.time() + TRIVIA_TIMEOUT_SECONDS
 
     question_text = (
-        f"🧠 *{category} Trivia!*\n\n"
+        f"🧠 *{category_label} Trivia!*\n\n"
         f"{q['question']}\n\n"
         f"A. {q['options']['A']}\n"
         f"B. {q['options']['B']}\n"
@@ -904,3 +910,4 @@ def register_handlers(application, handle_buy_callback=None, free_menu=None):
         application.add_handler(CallbackQueryHandler(handle_buy_callback, pattern=r"^buy$"))
     if free_menu:
         application.add_handler(CallbackQueryHandler(free_menu, pattern=r"^free$"))
+
