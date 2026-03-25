@@ -22,7 +22,7 @@ FLW_BASE_URL = "https://api.flutterwave.com/v3"
 FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")
 FLW_SECRET_HASH = os.getenv("FLW_SECRET_HASH")  # used to validate webhook requests
 WIN_THRESHOLD = int(os.getenv("WIN_THRESHOLD", "100000"))
-WEBHOOK_REDIRECT_URL = os.getenv("WEBHOOK_REDIRECT_URL", "https://naijaprizegate-bot-oo2x.onrender.com/flw/redirect")
+WEBHOOK_REDIRECT_URL = os.getenv("WEBHOOK_REDIRECT_URL", "https://naijaprizegate-bot.fly.dev/flw/redirect")
 
 # ✅ Define your approved packages (anti-tampering)
 TRIVIA_ALLOWED_PACKAGES = {100, 500, 1000}
@@ -365,4 +365,3 @@ async def verify_transaction(transaction_id: str, amount: int) -> bool:
     except Exception as e:
         logger.error(f"❌ verify_transaction() failed for tx_id={transaction_id}: {e}", exc_info=True)
         return False
-
