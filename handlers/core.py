@@ -170,6 +170,33 @@ def build_other_menu_text() -> str:
 
 
 # ===============================================================
+# OTHER MENU CALLBACK
+# ===============================================================
+async def other_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    text = build_other_menu_text()
+    markup = build_other_menu_keyboard()
+
+    try:
+        await query.edit_message_text(
+            text,
+            reply_markup=markup,
+            parse_mode="Markdown",
+        )
+    except Exception:
+        await query.message.reply_text(
+            text,
+            reply_markup=markup,
+            parse_mode="Markdown",
+        )
+
+
+# ===============================================================
 # /start (with optional referral / deep links)
 # ===============================================================
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -204,9 +231,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         # -------------------------------------------------------
         # PAYMENT SUCCESS DEEP LINKS
-        # Examples:
-        # /start payok_trivia_TRIVIA-ABC123
-        # /start payok_jamb_JAMB-ABC123
         # -------------------------------------------------------
         if arg.startswith("payok_trivia_"):
             if update.message:
@@ -232,9 +256,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         # -------------------------------------------------------
         # PAYMENT FAILED DEEP LINKS
-        # Examples:
-        # /start payfail_trivia_TRIVIA-ABC123
-        # /start payfail_jamb_JAMB-ABC123
         # -------------------------------------------------------
         if arg.startswith("payfail_trivia_"):
             if update.message:
@@ -259,8 +280,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return
 
         # -------------------------------------------------------
-        # CHALLENGE LINK HANDLER (fallback notice only)
-        # join_challenge() already tries to auto-join first
+        # CHALLENGE LINK HANDLER
         # -------------------------------------------------------
         if arg.startswith("challenge_"):
             challenge_id = arg.split("_", 1)[1]
@@ -531,5 +551,3 @@ def register_handlers(application):
         ),
         group=20,
     )
-
-
