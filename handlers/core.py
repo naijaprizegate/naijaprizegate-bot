@@ -177,6 +177,15 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if joined:
         return
 
+    user = update.effective_user
+
+    async with get_async_session() as session:
+        await get_or_create_user(
+            session,
+            tg_id=user.id,
+            username=user.username,
+        )
+
     # ===========================================================
     # DEEP LINK HANDLERS
     # ===========================================================
@@ -191,6 +200,62 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             room_code = arg.replace("battle_", "", 1).strip()
             from handlers.battle import battle_join_from_payload
             await battle_join_from_payload(update, context, room_code)
+            return
+
+        # -------------------------------------------------------
+        # PAYMENT SUCCESS DEEP LINKS
+        # Examples:
+        # /start payok_trivia_TRIVIA-ABC123
+        # /start payok_jamb_JAMB-ABC123
+        # -------------------------------------------------------
+        if arg.startswith("payok_trivia_"):
+            if update.message:
+                await update.message.reply_text(
+                    "✅ *Payment confirmed!*\n\nOpening *Play Trivia* now...",
+                    parse_mode="Markdown",
+                )
+
+            from handlers.playtrivia import playtrivia_handler
+            await playtrivia_handler(update, context)
+            return
+
+        if arg.startswith("payok_jamb_"):
+            if update.message:
+                await update.message.reply_text(
+                    "✅ *Payment confirmed!*\n\nOpening *JAMB Practice* now...",
+                    parse_mode="Markdown",
+                )
+
+            from handlers.jambpractice import jambpractice_handler
+            await jambpractice_handler(update, context)
+            return
+
+        # -------------------------------------------------------
+        # PAYMENT FAILED DEEP LINKS
+        # Examples:
+        # /start payfail_trivia_TRIVIA-ABC123
+        # /start payfail_jamb_JAMB-ABC123
+        # -------------------------------------------------------
+        if arg.startswith("payfail_trivia_"):
+            if update.message:
+                await update.message.reply_text(
+                    "❌ *Trivia payment was not completed.*\n\nPlease try again.",
+                    parse_mode="Markdown",
+                )
+
+            from handlers.payments import buy_menu
+            await buy_menu(update, context)
+            return
+
+        if arg.startswith("payfail_jamb_"):
+            if update.message:
+                await update.message.reply_text(
+                    "❌ *JAMB payment was not completed.*\n\nPlease try again.",
+                    parse_mode="Markdown",
+                )
+
+            from handlers.jambpractice import jambpractice_handler
+            await jambpractice_handler(update, context)
             return
 
         # -------------------------------------------------------
@@ -223,15 +288,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         context.user_data.pop("in_support_flow", None)
 
-    user = update.effective_user
-
-    async with get_async_session() as session:
-        await get_or_create_user(
-            session,
-            tg_id=user.id,
-            username=user.username,
-        )
-
     text = build_start_text(user.first_name or "there")
     markup = build_main_menu_keyboard()
 
@@ -262,33 +318,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 parse_mode="MarkdownV2",
             )
         return
-
-
-# ===============================================================
-# OTHER MENU CALLBACK
-# ===============================================================
-async def other_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    if not query:
-        return
-
-    await query.answer()
-
-    text = build_other_menu_text()
-    markup = build_other_menu_keyboard()
-
-    try:
-        await query.edit_message_text(
-            text,
-            reply_markup=markup,
-            parse_mode="Markdown",
-        )
-    except Exception:
-        await query.message.reply_text(
-            text,
-            reply_markup=markup,
-            parse_mode="Markdown",
-        )
 
 
 # ===============================================================
@@ -502,3 +531,5 @@ def register_handlers(application):
         ),
         group=20,
     )
+
+
