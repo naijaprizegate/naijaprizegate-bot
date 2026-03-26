@@ -458,6 +458,600 @@
     },
     "tags": ["decantation", "immiscible_liquids", "kerosene_water"],
     "active": true
+  },
+  {
+    "id": "chem_01_q015",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Pure and Impure Substances",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "An impure sample of benzoic acid will usually",
+    "options": {
+      "A": "melt sharply at a fixed temperature",
+      "B": "melt over a range of temperatures below the pure melting point",
+      "C": "have a higher melting point than the pure sample",
+      "D": "boil without vaporizing"
+    },
+    "answer": "B",
+    "answer_text": "melt over a range of temperatures below the pure melting point",
+    "explanation": {
+      "question_restate": "We are to identify the effect of impurity on the melting behaviour of a solid.",
+      "principle": "Impurities generally lower the melting point of a solid and make melting occur over a range rather than sharply.",
+      "steps": [
+        "A pure crystalline substance has a well-organized structure and melts at a definite temperature.",
+        "When impurities are present, they disturb the arrangement of particles in the crystal lattice.",
+        "This disturbance reduces the energy needed to begin melting, so the melting point becomes lower.",
+        "Because the sample is not uniform throughout, different portions melt at slightly different temperatures, giving a melting range."
+      ],
+      "final_answer": "B. melt over a range of temperatures below the pure melting point",
+      "simple_explanation": "Impurities make solids melt less sharply and usually at a lower temperature."
+    },
+    "tags": ["impure_substance", "melting_point", "purity_test"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q016",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Boiling and Melting Points",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The boiling point of a pure liquid remains constant during boiling because the liquid",
+    "options": {
+      "A": "contains dissolved gases",
+      "B": "has molecules of the same kind",
+      "C": "expands uniformly",
+      "D": "does not absorb heat"
+    },
+    "answer": "B",
+    "answer_text": "has molecules of the same kind",
+    "explanation": {
+      "question_restate": "We are to explain why a pure liquid boils at a constant temperature.",
+      "principle": "A pure liquid consists of one kind of molecule, so the energy required for molecules to escape into vapour is uniform.",
+      "steps": [
+        "Boiling occurs when the vapour pressure of the liquid equals the external pressure.",
+        "In a pure liquid, all molecules are chemically identical and experience similar intermolecular forces.",
+        "Therefore, the liquid changes to vapour at one definite temperature under a given pressure.",
+        "An impure liquid, by contrast, contains different components and may boil over a range."
+      ],
+      "final_answer": "B. has molecules of the same kind",
+      "simple_explanation": "A pure liquid contains identical molecules, so they boil off at one fixed temperature."
+    },
+    "tags": ["boiling_point", "pure_liquid", "physical_properties"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q017",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Elements, Compounds and Mixtures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following statements correctly distinguishes a compound from a mixture?",
+    "options": {
+      "A": "A compound can be separated by physical means only",
+      "B": "The constituents of a mixture are present in fixed proportions",
+      "C": "A compound has properties different from those of its constituent elements",
+      "D": "A mixture always contains only two components"
+    },
+    "answer": "C",
+    "answer_text": "A compound has properties different from those of its constituent elements",
+    "explanation": {
+      "question_restate": "We are to choose the statement that correctly describes a compound as opposed to a mixture.",
+      "principle": "In a compound, elements are chemically combined in fixed proportions and the compound has its own distinct properties.",
+      "steps": [
+        "A mixture is formed by physical combination, so its components retain their individual properties.",
+        "A compound is formed by chemical combination, and the resulting substance behaves differently from the original elements.",
+        "For example, sodium and chlorine are dangerous elements, but sodium chloride is common salt with different properties.",
+        "Mixtures do not necessarily have fixed composition, and they may contain two or more components."
+      ],
+      "final_answer": "C. A compound has properties different from those of its constituent elements",
+      "simple_explanation": "Compounds are new substances with their own properties, unlike mixtures where components keep their original properties."
+    },
+    "tags": ["compound", "mixture", "chemical_combination"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q018",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Chemical and Physical Changes",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Which of the following processes is reversible by simple physical means?",
+    "options": {
+      "A": "Rusting of iron",
+      "B": "Burning of paper",
+      "C": "Freezing of water",
+      "D": "Cooking of egg"
+    },
+    "answer": "C",
+    "answer_text": "Freezing of water",
+    "explanation": {
+      "question_restate": "We are to identify the process that is a physical change and can be reversed without forming a new substance.",
+      "principle": "A physical change usually affects only state or form, and it can often be reversed by simple physical means.",
+      "steps": [
+        "Freezing changes water from liquid to solid without changing its chemical composition.",
+        "The ice formed can be changed back to water by melting.",
+        "Rusting, burning, and cooking all involve chemical changes because new substances are formed.",
+        "Therefore, among the options, freezing is the reversible physical change."
+      ],
+      "final_answer": "C. Freezing of water",
+      "simple_explanation": "When water freezes, it remains H2O, so the change is physical and easily reversed by melting."
+    },
+    "tags": ["physical_change", "reversible_change", "freezing"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q019",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Evaporation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "During the recovery of salt from brine by evaporation, the substance that escapes is the",
+    "options": {
+      "A": "solute",
+      "B": "residue",
+      "C": "solvent",
+      "D": "crystal water"
+    },
+    "answer": "C",
+    "answer_text": "solvent",
+    "explanation": {
+      "question_restate": "We are to identify which part of the solution leaves during evaporation.",
+      "principle": "In evaporation, the liquid solvent is removed as vapour while the dissolved solid remains behind.",
+      "steps": [
+        "Brine is a solution of salt in water.",
+        "In a solution, the liquid medium is called the solvent and the dissolved substance is the solute.",
+        "When the solution is heated or exposed for evaporation, water leaves as vapour.",
+        "The dissolved salt remains because it is non-volatile under the conditions used."
+      ],
+      "final_answer": "C. solvent",
+      "simple_explanation": "Evaporation removes the liquid part of the solution, which is the solvent."
+    },
+    "tags": ["evaporation", "solvent", "brine"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q020",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Simple Distillation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The function of the condenser in a simple distillation apparatus is to",
+    "options": {
+      "A": "increase the boiling point of the liquid",
+      "B": "cool the vapour and convert it back to liquid",
+      "C": "filter off solid impurities",
+      "D": "measure the exact volume of distillate"
+    },
+    "answer": "B",
+    "answer_text": "cool the vapour and convert it back to liquid",
+    "explanation": {
+      "question_restate": "We are to state the function of the condenser in distillation.",
+      "principle": "A condenser removes heat from vapour so that it changes back into liquid form.",
+      "steps": [
+        "In distillation, a liquid is heated until it vaporizes.",
+        "The vapour then passes into the condenser.",
+        "Cold water flowing around the condenser removes heat from the vapour.",
+        "As the vapour loses heat, it condenses into liquid, which is collected as the distillate."
+      ],
+      "final_answer": "B. cool the vapour and convert it back to liquid",
+      "simple_explanation": "The condenser turns the vapour produced during boiling back into a liquid."
+    },
+    "tags": ["simple_distillation", "condenser", "apparatus"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q021",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Fractional Distillation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Fractional distillation separates components of petroleum mainly because the components differ in their",
+    "options": {
+      "A": "colours",
+      "B": "densities",
+      "C": "boiling points",
+      "D": "masses"
+    },
+    "answer": "C",
+    "answer_text": "boiling points",
+    "explanation": {
+      "question_restate": "We are to identify the property on which fractional distillation of petroleum is based.",
+      "principle": "Fractional distillation separates a mixture of liquids by differences in boiling point.",
+      "steps": [
+        "Petroleum is a mixture of many hydrocarbons.",
+        "Each fraction contains compounds with boiling points within a certain range.",
+        "When heated, the components vaporize at different temperatures and condense at different levels in the fractionating column.",
+        "Thus, the separation depends mainly on the boiling point differences."
+      ],
+      "final_answer": "C. boiling points",
+      "simple_explanation": "The petroleum fractions boil at different temperatures, so they can be separated by fractional distillation."
+    },
+    "tags": ["fractional_distillation", "petroleum", "boiling_points"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q022",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Sublimation",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Which of the following substances can be purified by sublimation?",
+    "options": {
+      "A": "Sodium chloride",
+      "B": "Iodine",
+      "C": "Sand",
+      "D": "Calcium trioxocarbonate(IV)"
+    },
+    "answer": "B",
+    "answer_text": "Iodine",
+    "explanation": {
+      "question_restate": "We are to identify a substance that changes directly from solid to vapour on heating.",
+      "principle": "A substance that sublimes can be purified by heating it to form vapour and then cooling the vapour to reform the solid.",
+      "steps": [
+        "Iodine is a common example of a sublimable solid.",
+        "When heated, iodine produces violet vapour without first becoming liquid under ordinary laboratory conditions.",
+        "That vapour can be cooled to form iodine crystals again.",
+        "The other listed substances do not normally sublime in this way."
+      ],
+      "final_answer": "B. Iodine",
+      "simple_explanation": "Iodine sublimes, so it can be purified by sublimation."
+    },
+    "tags": ["sublimation", "iodine", "purification"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q023",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Filtration",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following mixtures cannot be separated by filtration?",
+    "options": {
+      "A": "Sand and water",
+      "B": "Chalk and water",
+      "C": "Salt solution",
+      "D": "Mud and water"
+    },
+    "answer": "C",
+    "answer_text": "Salt solution",
+    "explanation": {
+      "question_restate": "We are to identify the mixture for which filtration will not work.",
+      "principle": "Filtration separates an insoluble solid from a liquid, but it cannot remove a substance that is dissolved in the liquid.",
+      "steps": [
+        "Sand, chalk, and mud are insoluble in water, so they can be retained on the filter paper.",
+        "A salt solution contains salt dissolved completely in water.",
+        "Since the salt particles are not present as visible insoluble solids, they pass through with the water.",
+        "Therefore, filtration cannot separate salt from salt solution."
+      ],
+      "final_answer": "C. Salt solution",
+      "simple_explanation": "Filtration works for insoluble solids, but dissolved salt passes through the filter with the water."
+    },
+    "tags": ["filtration", "salt_solution", "insoluble_solids"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q024",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Crystallization",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In crystallization, the hot saturated solution is usually allowed to cool because cooling",
+    "options": {
+      "A": "increases the solubility of the solute",
+      "B": "causes the solute to decompose",
+      "C": "reduces the solubility of the solute and promotes crystal formation",
+      "D": "converts the solvent into a gas instantly"
+    },
+    "answer": "C",
+    "answer_text": "reduces the solubility of the solute and promotes crystal formation",
+    "explanation": {
+      "question_restate": "We are to explain why a concentrated hot solution is cooled during crystallization.",
+      "principle": "Most solids are less soluble in cold water than in hot water, so cooling a hot saturated solution causes crystals to separate out.",
+      "steps": [
+        "A saturated hot solution contains as much dissolved solute as it can hold at high temperature.",
+        "When the solution cools, the solubility of many solids decreases.",
+        "The excess solute can no longer remain dissolved and begins to come out as crystals.",
+        "That is why cooling is an important step in crystallization."
+      ],
+      "final_answer": "C. reduces the solubility of the solute and promotes crystal formation",
+      "simple_explanation": "Cooling makes less of the solute stay dissolved, so the extra solute comes out as crystals."
+    },
+    "tags": ["crystallization", "solubility", "cooling"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q025",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Paper Chromatography",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "When a spot of black ink is placed on chromatography paper and developed with a solvent, the different dyes move at different rates because they",
+    "options": {
+      "A": "have different magnetic properties",
+      "B": "have different solubilities in the solvent and attractions to the paper",
+      "C": "all evaporate at the same time",
+      "D": "react chemically with the paper"
+    },
+    "answer": "B",
+    "answer_text": "have different solubilities in the solvent and attractions to the paper",
+    "explanation": {
+      "question_restate": "We are to explain why the components of an ink move different distances during paper chromatography.",
+      "principle": "Chromatographic separation depends on differences in solubility in the mobile phase and attraction to the stationary phase.",
+      "steps": [
+        "In paper chromatography, the solvent is the mobile phase and the paper acts as the stationary phase.",
+        "Each dye dissolves in the solvent to a different extent.",
+        "Each dye is also attracted to the paper to a different extent.",
+        "A dye that is more soluble in the solvent and less strongly held by the paper moves further than one that is less soluble or more strongly retained."
+      ],
+      "final_answer": "B. have different solubilities in the solvent and attractions to the paper",
+      "simple_explanation": "Different dyes interact differently with the solvent and the paper, so they travel at different speeds."
+    },
+    "tags": ["paper_chromatography", "ink", "separation_principle"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q026",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Column Chromatography",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Column chromatography differs from paper chromatography mainly because in column chromatography",
+    "options": {
+      "A": "the stationary phase is packed in a tube",
+      "B": "the solvent is replaced with steam",
+      "C": "all components move with equal speed",
+      "D": "only colourless substances can be separated"
+    },
+    "answer": "A",
+    "answer_text": "the stationary phase is packed in a tube",
+    "explanation": {
+      "question_restate": "We are to identify a major distinguishing feature of column chromatography.",
+      "principle": "In column chromatography, a solid adsorbent packed in a vertical column acts as the stationary phase.",
+      "steps": [
+        "Paper chromatography uses paper as the stationary phase.",
+        "Column chromatography uses a material such as alumina or silica packed into a column.",
+        "A solvent passes through the column and carries the components at different rates.",
+        "Thus, the key structural difference is the use of a packed column."
+      ],
+      "final_answer": "A. the stationary phase is packed in a tube",
+      "simple_explanation": "Column chromatography uses an adsorbent packed into a tube or column instead of paper."
+    },
+    "tags": ["column_chromatography", "stationary_phase", "adsorption"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q027",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Simple and Fractional Crystallization",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Fractional crystallization can be used to separate two dissolved solids when the solids have different",
+    "options": {
+      "A": "magnetic properties",
+      "B": "particle sizes",
+      "C": "solubilities at different temperatures",
+      "D": "boiling points"
+    },
+    "answer": "C",
+    "answer_text": "solubilities at different temperatures",
+    "explanation": {
+      "question_restate": "We are to identify the property that makes fractional crystallization possible.",
+      "principle": "Fractional crystallization depends on differences in the solubilities of substances, especially how those solubilities change with temperature.",
+      "steps": [
+        "Suppose two solids are both dissolved in a hot solvent.",
+        "On cooling, the less soluble substance reaches saturation first and crystallizes out earlier.",
+        "The more soluble substance remains in solution for longer.",
+        "This difference in solubility behaviour allows the substances to be separated step by step."
+      ],
+      "final_answer": "C. solubilities at different temperatures",
+      "simple_explanation": "Fractional crystallization works because one dissolved solid comes out of solution before the other as the temperature changes."
+    },
+    "tags": ["fractional_crystallization", "solubility", "dissolved_solids"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q028",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Magnetization",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following substances can be separated from a mixture by using a magnet?",
+    "options": {
+      "A": "Copper turnings",
+      "B": "Sulphur powder",
+      "C": "Iron filings",
+      "D": "Sodium chloride crystals"
+    },
+    "answer": "C",
+    "answer_text": "Iron filings",
+    "explanation": {
+      "question_restate": "We are to identify which listed substance can be removed from a mixture by magnetization.",
+      "principle": "Magnetization separates substances that are attracted to a magnet from those that are not.",
+      "steps": [
+        "Among the options, iron filings are ferromagnetic and strongly attracted by a magnet.",
+        "Copper, sulphur, and sodium chloride are not attracted in the same way.",
+        "Therefore, if a mixture contains iron filings, a magnet can pick them out.",
+        "This makes magnetization an effective physical separation method for such mixtures."
+      ],
+      "final_answer": "C. Iron filings",
+      "simple_explanation": "Iron is magnetic, so it can be separated from a mixture with a magnet."
+    },
+    "tags": ["magnetization", "iron_filings", "physical_separation"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q029",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Decantation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Before decanting a muddy water sample, the mixture is usually left undisturbed for some time so that the solid particles can",
+    "options": {
+      "A": "sublime",
+      "B": "condense",
+      "C": "settle to the bottom",
+      "D": "evaporate"
+    },
+    "answer": "C",
+    "answer_text": "settle to the bottom",
+    "explanation": {
+      "question_restate": "We are to identify why a suspension is left to stand before decantation.",
+      "principle": "Decantation works better when the insoluble solid settles at the bottom, leaving a clearer liquid above.",
+      "steps": [
+        "Muddy water is a suspension of insoluble particles in water.",
+        "If the mixture is left standing, gravity causes the heavier solid particles to sink to the bottom.",
+        "The clearer liquid above can then be gently poured off.",
+        "This process of settling is called sedimentation and it makes decantation possible."
+      ],
+      "final_answer": "C. settle to the bottom",
+      "simple_explanation": "The solid must first settle so that the clearer liquid can be poured off."
+    },
+    "tags": ["decantation", "sedimentation", "muddy_water"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q030",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Elements, Compounds and Mixtures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The components of a mixture can usually be separated because they",
+    "options": {
+      "A": "are chemically combined",
+      "B": "exist in fixed mass ratios",
+      "C": "retain their individual physical properties",
+      "D": "have the same boiling point"
+    },
+    "answer": "C",
+    "answer_text": "retain their individual physical properties",
+    "explanation": {
+      "question_restate": "We are to explain why the constituents of a mixture can be separated.",
+      "principle": "The components of a mixture are not chemically bonded, so they retain their own physical properties such as solubility, boiling point, magnetism, and density.",
+      "steps": [
+        "In a mixture, substances are combined physically, not chemically.",
+        "Because of this, each component still behaves like itself.",
+        "Separation methods rely on these differences in physical properties.",
+        "If the components were chemically combined, physical methods would generally not separate them."
+      ],
+      "final_answer": "C. retain their individual physical properties",
+      "simple_explanation": "Mixture components still keep their own properties, so we can separate them by physical methods."
+    },
+    "tags": ["mixture", "physical_properties", "separation_principle"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q031",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Boiling and Melting Points",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement about the boiling of an impure liquid is correct?",
+    "options": {
+      "A": "It always boils below the boiling point of the pure liquid",
+      "B": "It boils at one sharp temperature",
+      "C": "It may boil over a range of temperatures",
+      "D": "It does not vaporize when heated"
+    },
+    "answer": "C",
+    "answer_text": "It may boil over a range of temperatures",
+    "explanation": {
+      "question_restate": "We are to identify the correct behaviour of an impure liquid during boiling.",
+      "principle": "Impurities often alter the boiling behaviour of a liquid and can make boiling occur over a range rather than at one exact temperature.",
+      "steps": [
+        "A pure liquid has one characteristic boiling point at a given pressure.",
+        "An impure liquid contains more than one substance, so different parts of the mixture may vaporize under slightly different conditions.",
+        "This causes the temperature to vary during boiling instead of remaining perfectly constant.",
+        "Therefore, a boiling range is typical of an impure liquid."
+      ],
+      "final_answer": "C. It may boil over a range of temperatures",
+      "simple_explanation": "Because an impure liquid contains more than one substance, it may not boil at one exact temperature."
+    },
+    "tags": ["boiling_point", "impure_liquid", "purity_test"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q032",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Fractional Distillation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A fractionating column improves the separation of two miscible liquids because it",
+    "options": {
+      "A": "filters off dissolved particles",
+      "B": "provides repeated condensation and vaporization",
+      "C": "raises the pressure inside the flask",
+      "D": "reduces the boiling point of both liquids to zero"
+    },
+    "answer": "B",
+    "answer_text": "provides repeated condensation and vaporization",
+    "explanation": {
+      "question_restate": "We are to explain how a fractionating column makes separation more effective.",
+      "principle": "A fractionating column allows repeated cycles of condensation and re-vaporization, leading to better separation of liquids with close boiling points.",
+      "steps": [
+        "When vapours rise in the column, some condense on cooler surfaces inside it.",
+        "The more volatile component tends to vaporize again more readily and continue upward.",
+        "The less volatile component condenses more easily and returns downward.",
+        "This repeated process increases purity and improves separation."
+      ],
+      "final_answer": "B. provides repeated condensation and vaporization",
+      "simple_explanation": "The fractionating column acts like many small distillations happening one after another, making the separation better."
+    },
+    "tags": ["fractional_distillation", "fractionating_column", "miscible_liquids"],
+    "active": true
   }
 ]
   
