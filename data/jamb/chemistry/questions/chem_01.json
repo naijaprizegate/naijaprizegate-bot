@@ -62,5 +62,402 @@
     },
     "tags": ["separation", "fractional_distillation", "miscible_liquids"],
     "active": true
+  },
+  {
+    "id": "chem_01_q003",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Pure and Impure Substances",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "A pure substance is best described as a material that",
+    "options": {
+      "A": "contains two or more phases",
+      "B": "has a fixed composition and definite properties",
+      "C": "can be separated by physical means",
+      "D": "always exists in solid form"
+    },
+    "answer": "B",
+    "answer_text": "has a fixed composition and definite properties",
+    "explanation": {
+      "question_restate": "We are to identify the correct description of a pure substance.",
+      "principle": "A pure substance contains only one kind of particle and has fixed composition and characteristic physical properties.",
+      "steps": [
+        "A pure substance may be an element or a compound, but in each case its composition is fixed.",
+        "Because it is pure, its melting point and boiling point are usually sharp and constant under the same conditions.",
+        "A material that can be separated into parts by ordinary physical methods is a mixture, not a pure substance.",
+        "A pure substance does not have to be solid only; it may also be liquid or gas."
+      ],
+      "final_answer": "B. has a fixed composition and definite properties",
+      "simple_explanation": "Purity means the material has only one type of substance present, so its composition and properties remain definite."
+    },
+    "tags": ["pure_substance", "purity", "composition"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q004",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Boiling and Melting Points",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following observations is the strongest evidence that a sample of naphthalene is pure?",
+    "options": {
+      "A": "It melts over a wide range of temperature",
+      "B": "It boils with foaming",
+      "C": "It melts sharply at a constant temperature",
+      "D": "It dissolves in kerosene"
+    },
+    "answer": "C",
+    "answer_text": "It melts sharply at a constant temperature",
+    "explanation": {
+      "question_restate": "We are to identify the observation that best shows that a substance is pure.",
+      "principle": "Pure substances have sharp, fixed melting and boiling points, while impure substances melt or boil over a range.",
+      "steps": [
+        "When a solid is pure, all its particles have the same arrangement and bonding conditions.",
+        "As a result, the solid changes state at a definite temperature rather than over a range.",
+        "A wide melting range usually indicates impurities because the impurities disturb the structure of the pure substance.",
+        "Solubility in kerosene does not by itself prove purity."
+      ],
+      "final_answer": "C. It melts sharply at a constant temperature",
+      "simple_explanation": "A pure sample changes from solid to liquid at one definite temperature, not over many temperatures."
+    },
+    "tags": ["melting_point", "purity_test", "naphthalene"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q005",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Elements, Compounds and Mixtures",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Which of the following is a mixture?",
+    "options": {
+      "A": "Sodium chloride",
+      "B": "Air",
+      "C": "Copper",
+      "D": "Ammonia"
+    },
+    "answer": "B",
+    "answer_text": "Air",
+    "explanation": {
+      "question_restate": "We are to identify which option is a mixture rather than an element or a compound.",
+      "principle": "A mixture contains two or more substances physically combined and not chemically bonded in fixed proportions.",
+      "steps": [
+        "Sodium chloride is a compound because sodium and chlorine are chemically combined in fixed proportion.",
+        "Copper is an element because it contains only one kind of atom.",
+        "Ammonia is a compound because nitrogen and hydrogen are chemically combined.",
+        "Air contains several gases such as nitrogen, oxygen, carbon dioxide and noble gases mixed together physically."
+      ],
+      "final_answer": "B. Air",
+      "simple_explanation": "Air is made up of different gases mixed together, so it is a mixture."
+    },
+    "tags": ["mixture", "air", "elements_compounds"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q006",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Chemical and Physical Changes",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a chemical change?",
+    "options": {
+      "A": "Melting candle wax",
+      "B": "Dissolving sugar in water",
+      "C": "Burning magnesium ribbon in air",
+      "D": "Boiling ethanol"
+    },
+    "answer": "C",
+    "answer_text": "Burning magnesium ribbon in air",
+    "explanation": {
+      "question_restate": "We are to identify the change that produces a new substance.",
+      "principle": "A chemical change leads to the formation of one or more new substances with different properties, while a physical change does not.",
+      "steps": [
+        "Melting candle wax changes only the physical state of the wax from solid to liquid.",
+        "Dissolving sugar in water does not form a new substance because the sugar can be recovered.",
+        "Boiling ethanol changes its state from liquid to gas without changing its chemical identity.",
+        "Burning magnesium in air produces magnesium oxide, which is a new substance."
+      ],
+      "final_answer": "C. Burning magnesium ribbon in air",
+      "simple_explanation": "When magnesium burns, it reacts with oxygen and forms a new substance, magnesium oxide."
+    },
+    "tags": ["chemical_change", "physical_change", "magnesium"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q007",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Evaporation",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Which method is most suitable for obtaining common salt from sea water?",
+    "options": {
+      "A": "Sublimation",
+      "B": "Evaporation",
+      "C": "Magnetization",
+      "D": "Decantation"
+    },
+    "answer": "B",
+    "answer_text": "Evaporation",
+    "explanation": {
+      "question_restate": "We are to identify the best method for obtaining a dissolved solid from a solution.",
+      "principle": "Evaporation is used to remove the solvent and leave the dissolved solid behind.",
+      "steps": [
+        "Sea water contains salt dissolved in water.",
+        "If the water is allowed to evaporate, the liquid is removed and the solid salt remains.",
+        "Sublimation is for solids that change directly into vapour.",
+        "Magnetization is for magnetic substances and decantation is for separating a liquid from settled solids."
+      ],
+      "final_answer": "B. Evaporation",
+      "simple_explanation": "Salt is obtained from sea water by removing the water through evaporation."
+    },
+    "tags": ["evaporation", "sea_water", "salt"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q008",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Simple Distillation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Simple distillation is best used to separate",
+    "options": {
+      "A": "iodine from sand",
+      "B": "ethanol from water",
+      "C": "water from salt solution",
+      "D": "iron filings from sulphur"
+    },
+    "answer": "C",
+    "answer_text": "water from salt solution",
+    "explanation": {
+      "question_restate": "We are to choose the mixture most suitable for separation by simple distillation.",
+      "principle": "Simple distillation is used to obtain a solvent from a solution or to separate liquids with a large difference in boiling point.",
+      "steps": [
+        "A salt solution contains a volatile solvent, water, and a non-volatile solute, salt.",
+        "During simple distillation, water boils off, passes into the condenser and is collected as distillate.",
+        "The salt remains in the flask because it does not vaporize with the water.",
+        "Ethanol and water are better separated by fractional distillation because they are both volatile and their boiling points are relatively close."
+      ],
+      "final_answer": "C. water from salt solution",
+      "simple_explanation": "Simple distillation allows water to boil off and be collected, while the salt remains behind."
+    },
+    "tags": ["simple_distillation", "salt_solution", "solvent_recovery"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q009",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Sublimation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair of substances can be separated by sublimation?",
+    "options": {
+      "A": "Ammonium chloride and sand",
+      "B": "Salt and sugar",
+      "C": "Kerosene and water",
+      "D": "Ethanol and water"
+    },
+    "answer": "A",
+    "answer_text": "Ammonium chloride and sand",
+    "explanation": {
+      "question_restate": "We are to identify a mixture in which one component sublimes and the other does not.",
+      "principle": "Sublimation separates a solid that changes directly into vapour on heating from a non-subliming solid.",
+      "steps": [
+        "Ammonium chloride sublimes when heated, meaning it changes directly from solid to vapour.",
+        "Sand does not sublime under ordinary laboratory heating conditions.",
+        "Therefore, heating the mixture will cause ammonium chloride to vaporize and later deposit on a cool surface, leaving sand behind.",
+        "Salt and sugar do not separate by sublimation, while kerosene-water and ethanol-water are liquid mixtures."
+      ],
+      "final_answer": "A. Ammonium chloride and sand",
+      "simple_explanation": "Ammonium chloride sublimes but sand does not, so they can be separated by sublimation."
+    },
+    "tags": ["sublimation", "ammonium_chloride", "sand"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q010",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Filtration",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the filtration of a chalk-water mixture, the liquid that passes through the filter paper is called the",
+    "options": {
+      "A": "distillate",
+      "B": "residue",
+      "C": "filtrate",
+      "D": "sublimate"
+    },
+    "answer": "C",
+    "answer_text": "filtrate",
+    "explanation": {
+      "question_restate": "We are to name the liquid that passes through filter paper during filtration.",
+      "principle": "In filtration, the insoluble solid remains as residue while the liquid that passes through is the filtrate.",
+      "steps": [
+        "Chalk is insoluble in water, so it remains on the filter paper during filtration.",
+        "The portion retained on the filter paper is called the residue.",
+        "The liquid that passes through the pores of the filter paper into the receiver is called the filtrate.",
+        "Distillate is used in distillation, not filtration."
+      ],
+      "final_answer": "C. filtrate",
+      "simple_explanation": "During filtration, the liquid collected below the filter paper is called the filtrate."
+    },
+    "tags": ["filtration", "filtrate", "residue"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q011",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Crystallization",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Crystallization is preferred to complete evaporation when preparing crystals of a dissolved solid because crystallization",
+    "options": {
+      "A": "is faster in all cases",
+      "B": "gives purer solid and prevents decomposition by strong heating",
+      "C": "can separate all liquid mixtures",
+      "D": "does not require any heating"
+    },
+    "answer": "B",
+    "answer_text": "gives purer solid and prevents decomposition by strong heating",
+    "explanation": {
+      "question_restate": "We are to identify why crystallization is often better than complete evaporation for obtaining a dissolved solid.",
+      "principle": "Crystallization produces purer crystals and avoids prolonged strong heating which may decompose some substances.",
+      "steps": [
+        "In crystallization, the solution is first concentrated and then allowed to cool so that pure crystals form gradually.",
+        "Impurities often remain in the mother liquor instead of entering the crystal structure.",
+        "Complete evaporation may expose the solute to strong heating for too long.",
+        "Some substances may decompose or lose water of crystallization when overheated."
+      ],
+      "final_answer": "B. gives purer solid and prevents decomposition by strong heating",
+      "simple_explanation": "Crystallization helps obtain cleaner crystals and is gentler than boiling a solution to complete dryness."
+    },
+    "tags": ["crystallization", "purification", "crystals"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q012",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Paper Chromatography",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Paper chromatography is especially useful for separating substances that are",
+    "options": {
+      "A": "coloured and present in small amounts",
+      "B": "magnetic and insoluble",
+      "C": "volatile and miscible",
+      "D": "large crystals of different sizes"
+    },
+    "answer": "A",
+    "answer_text": "coloured and present in small amounts",
+    "explanation": {
+      "question_restate": "We are to identify the kind of substances best separated by paper chromatography.",
+      "principle": "Paper chromatography is useful for separating small amounts of soluble substances, especially coloured substances like dyes and pigments.",
+      "steps": [
+        "In paper chromatography, the solvent carries the dissolved substances along the paper at different rates.",
+        "Different components move different distances depending on their solubility in the solvent and attraction to the paper.",
+        "This makes chromatography especially useful for inks, dyes and plant pigments.",
+        "It is not meant for magnetic solids or for volatile liquid mixtures like ethanol and water."
+      ],
+      "final_answer": "A. coloured and present in small amounts",
+      "simple_explanation": "Chromatography is very useful when separating tiny amounts of coloured substances such as dyes in ink."
+    },
+    "tags": ["paper_chromatography", "dyes", "pigments"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q013",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Magnetization",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Which method can be used to separate iron filings from sulphur powder?",
+    "options": {
+      "A": "Magnetization",
+      "B": "Fractional distillation",
+      "C": "Crystallization",
+      "D": "Sublimation"
+    },
+    "answer": "A",
+    "answer_text": "Magnetization",
+    "explanation": {
+      "question_restate": "We are to identify the best method for separating a magnetic solid from a non-magnetic solid.",
+      "principle": "Magnetization is used to separate magnetic substances from non-magnetic materials.",
+      "steps": [
+        "Iron filings are attracted by a magnet because iron is magnetic.",
+        "Sulphur powder is not attracted by a magnet.",
+        "If a magnet is passed over the mixture, the iron filings are removed while the sulphur remains.",
+        "This method works because the components have different magnetic properties."
+      ],
+      "final_answer": "A. Magnetization",
+      "simple_explanation": "Iron is magnetic but sulphur is not, so a magnet can separate them."
+    },
+    "tags": ["magnetization", "iron", "sulphur"],
+    "active": true
+  },
+  {
+    "id": "chem_01_q014",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Separation of Mixtures and Purification of Chemical Substances",
+    "subtopic": "Decantation",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Decantation can be used to separate",
+    "options": {
+      "A": "iodine from sand",
+      "B": "kerosene from water",
+      "C": "salt from sea water",
+      "D": "ethanol from water"
+    },
+    "answer": "B",
+    "answer_text": "kerosene from water",
+    "explanation": {
+      "question_restate": "We are to identify a mixture that can be separated by carefully pouring off one layer from another.",
+      "principle": "Decantation is used to separate immiscible liquids or a liquid from settled insoluble solids.",
+      "steps": [
+        "Kerosene and water do not mix, so they form two separate layers.",
+        "Because they are immiscible, the upper layer can be carefully poured off from the lower one.",
+        "Salt dissolved in sea water cannot be separated by decantation because the salt is not present as a separate layer.",
+        "Ethanol and water are miscible and require distillation."
+      ],
+      "final_answer": "B. kerosene from water",
+      "simple_explanation": "Since kerosene and water form separate layers, one layer can be poured off by decantation."
+    },
+    "tags": ["decantation", "immiscible_liquids", "kerosene_water"],
+    "active": true
   }
 ]
+  
