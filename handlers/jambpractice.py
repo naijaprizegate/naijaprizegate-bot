@@ -401,11 +401,18 @@ def make_topics_keyboard(subject_code: str, page: int = 1):
     return InlineKeyboardMarkup(rows), page, total_pages
 
 
-def make_topic_access_keyboard_for_subject(subject_code: str, has_free_trial: bool):
+def make_topic_access_keyboard_for_subject(
+    subject_code: str,
+    has_free_trial: bool,
+    has_paid_credits: bool,
+):
     rows = []
 
     if has_free_trial:
         rows.append([InlineKeyboardButton("🎁 Use Free Trial (5 Questions)", callback_data="jp_start_free")])
+
+    if has_paid_credits:
+        rows.append([InlineKeyboardButton("✅ Use Paid Credits", callback_data="jp_use_paid")])
 
     rows.extend([
         [InlineKeyboardButton("💳 Get 50 Questions — ₦100", callback_data="jp_buy_50")],
@@ -434,6 +441,23 @@ def make_after_details_keyboard():
         [
             [InlineKeyboardButton("➡️ Next", callback_data="jp_next")],
             [InlineKeyboardButton("🏠 End Practice", callback_data="menu:main")],
+        ]
+    )
+
+
+def make_paid_session_count_keyboard():
+    return InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("10", callback_data="jp_paidcount_10"),
+                InlineKeyboardButton("20", callback_data="jp_paidcount_20"),
+            ],
+            [
+                InlineKeyboardButton("30", callback_data="jp_paidcount_30"),
+                InlineKeyboardButton("50", callback_data="jp_paidcount_50"),
+            ],
+            [InlineKeyboardButton("⬅️ Back to JAMB Practice", callback_data="jambpractice")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
 
@@ -632,6 +656,7 @@ async def jamb_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     free_remaining = int((access or {}).get("free_questions_remaining", 0))
     paid_credits = int((access or {}).get("paid_question_credits", 0))
     has_free_trial = free_remaining > 0
+    has_paid_credits = paid_credits > 0
 
     await query.message.reply_text(
         f"✅ *Topic selected:* {selected_topic['title']}\n\n"
@@ -639,7 +664,11 @@ async def jamb_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
         f"💳 Paid question credits: *{paid_credits}*\n\n"
         "Choose how you want to continue:",
         parse_mode="Markdown",
-        reply_markup=make_topic_access_keyboard_for_subject(subject_code, has_free_trial),
+        reply_markup=make_topic_access_keyboard_for_subject(
+            subject_code,
+            has_free_trial,
+            has_paid_credits,
+        ),
     )
 
 
@@ -1022,7 +1051,9 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         reply_markup=make_after_answer_keyboard(),
     )
 
-
+# --------------------------------------------
+# JAMB Answer Details Handler
+# --------------------------------------------
 async def jamb_answer_details_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -1068,7 +1099,9 @@ async def jamb_answer_details_handler(update: Update, context: ContextTypes.DEFA
         reply_markup=make_after_details_keyboard(),
     )
 
-
+# ------------------------------
+# JAMB Next Handler
+# -----------------------------
 async def jamb_next_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if query:
@@ -1104,6 +1137,133 @@ async def jamb_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_T
         reply_markup=make_mode_keyboard(subject_code),
     )
 
+# --------------------------------------
+# Jamb Use Paid Handler
+# -------------------------------------
+async def jamb_use_paid_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    user_id = update.effective_user.id
+    paid_credits = await get_paid_question_credits(user_id)
+
+    if paid_credits <= 0:
+        return await query.message.reply_text(
+            "⚠️ You do not have any paid JAMB question credits yet.\n\nPlease buy a question pack first."
+        )
+
+    await query.message.reply_text(
+        f"💳 *Use Paid Credits*\n\n"
+        f"You currently have *{paid_credits} paid question credits*.\n\n"
+        "How many questions do you want to answer in this session?",
+        parse_mode="Markdown",
+        reply_markup=make_paid_session_count_keyboard(),
+    )
+
+
+# ----------------------------------
+# JAMB Paid Count Handler
+# ----------------------------------
+async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    try:
+        requested_count = int(query.data.replace("jp_paidcount_", "", 1))
+    except Exception:
+        return await query.message.reply_text("⚠️ Invalid paid session size.")
+
+    user_id = update.effective_user.id
+    subject_code = context.user_data.get("jp_subject_code")
+    topic_id = context.user_data.get("jp_topic_id")
+
+    if not subject_code or not topic_id:
+        return await query.message.reply_text(
+            "⚠️ Topic session data missing. Please choose your subject and topic again."
+        )
+
+    paid_credits = await get_paid_question_credits(user_id)
+    if paid_credits <= 0:
+        return await query.message.reply_text(
+            "⚠️ You do not have enough paid JAMB credits.\n\nPlease buy a question pack first."
+        )
+
+    actual_count = min(requested_count, paid_credits)
+
+    seen_question_ids = await get_seen_question_ids_for_topic(
+        user_id=user_id,
+        subject_code=subject_code,
+        topic_id=topic_id,
+    )
+
+    batch = prepare_topic_question_batch(
+        subject_code=subject_code,
+        topic_id=topic_id,
+        requested_count=actual_count,
+        seen_question_ids=seen_question_ids,
+    )
+
+    if batch["cycle_reset"]:
+        await reset_topic_history(user_id, subject_code, topic_id)
+
+    selected_questions = batch["selected_questions"]
+    selected_question_ids = batch["selected_question_ids"]
+
+    if not selected_questions:
+        return await query.message.reply_text(
+            "⚠️ No active questions found for this topic yet."
+        )
+
+    session_id = await create_jamb_session(
+        user_id=user_id,
+        subject_code=subject_code,
+        topic_id=topic_id,
+        question_target=len(selected_questions),
+        mode="topic_practice",
+    )
+
+    context.user_data["jp_session_id"] = session_id
+    context.user_data["jp_session_mode"] = "paid_session"
+    context.user_data["jp_question_batch"] = selected_questions
+    context.user_data["jp_question_ids"] = selected_question_ids
+    context.user_data["jp_current_index"] = 0
+    context.user_data["jp_session_target"] = len(selected_questions)
+    context.user_data["jp_correct_count"] = 0
+    context.user_data["jp_wrong_count"] = 0
+    context.user_data["jp_current_question"] = None
+    context.user_data["jp_answered_current"] = False
+    context.user_data["jp_served_question_ids"] = []
+
+    topic = next((t for t in get_subject_topics(subject_code) if t["id"] == topic_id), None)
+    topic_title = topic["title"] if topic else topic_id
+
+    reset_note = "\n♻️ Topic cycle reset because you already exhausted this topic before." if batch["cycle_reset"] else ""
+    adjusted_note = ""
+    if actual_count < requested_count:
+        adjusted_note = f"\nℹ️ You requested *{requested_count}*, but you currently have *{paid_credits}* paid credits available."
+
+    await query.message.reply_text(
+        f"✅ *Paid Session Started*\n\n"
+        f"📘 Subject: *{get_subject_by_code(subject_code)['name']}*\n"
+        f"🧪 Topic: *{topic_title}*\n"
+        f"📚 Questions in this session: *{len(selected_questions)}*"
+        f"{adjusted_note}"
+        f"{reset_note}\n\n"
+        "Tap below to start Question 1.",
+        parse_mode="Markdown",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("▶ Start Questions", callback_data="jp_serve_first")],
+                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+            ]
+        ),
+    )
 
 # =============================
 # Register handlers
@@ -1117,10 +1277,11 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_topic_handler, pattern=r"^jp_topic::"))
     application.add_handler(CallbackQueryHandler(jamb_back_mode_handler, pattern=r"^jp_back_mode_"))
     application.add_handler(CallbackQueryHandler(jamb_start_free_handler, pattern=r"^jp_start_free$"))
+    application.add_handler(CallbackQueryHandler(jamb_use_paid_handler, pattern=r"^jp_use_paid$"))
+    application.add_handler(CallbackQueryHandler(jamb_paid_count_handler, pattern=r"^jp_paidcount_"))
     application.add_handler(CallbackQueryHandler(jamb_buy_pack_handler, pattern=r"^jp_buy_"))
     application.add_handler(CallbackQueryHandler(jamb_serve_first_handler, pattern=r"^jp_serve_first$"))
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next$"))
-
 
