@@ -15,6 +15,118 @@
       "title": "Chemical Combination",
       "file": "questions/chem_02.json",
       "active": true
+    },
+    {
+      "id": "chem_03",
+      "number": 3,
+      "title": "Kinetic Theory of Matter and Gas Laws",
+      "file": "questions/chem_03.json",
+      "active": true
+    },
+    {
+      "id": "chem_04",
+      "number": 4,
+      "title": "Atomic Structure and Bonding",
+      "file": "questions/chem_04.json",
+      "active": true
+    },
+    {
+      "id": "chem_05",
+      "number": 5,
+      "title": "Air",
+      "file": "questions/chem_05.json",
+      "active": true
+    },
+    {
+      "id": "chem_06",
+      "number": 6,
+      "title": "Water",
+      "file": "questions/chem_06.json",
+      "active": true
+    },
+    {
+      "id": "chem_07",
+      "number": 7,
+      "title": "Solubility",
+      "file": "questions/chem_07.json",
+      "active": true
+    },
+    {
+      "id": "chem_08",
+      "number": 8,
+      "title": "Environmental Pollution",
+      "file": "questions/chem_08.json",
+      "active": true
+    },
+    {
+      "id": "chem_09",
+      "number": 9,
+      "title": "Acids, Bases and Salts",
+      "file": "questions/chem_09.json",
+      "active": true
+    },
+    {
+      "id": "chem_10",
+      "number": 10,
+      "title": "Oxidation and Reduction",
+      "file": "questions/chem_10.json",
+      "active": true
+    },
+    {
+      "id": "chem_11",
+      "number": 11,
+      "title": "Electrolysis",
+      "file": "questions/chem_11.json",
+      "active": true
+    },
+    {
+      "id": "chem_12",
+      "number": 12,
+      "title": "Energy Changes",
+      "file": "questions/chem_12.json",
+      "active": true
+    },
+    {
+      "id": "chem_13",
+      "number": 13,
+      "title": "Rates of Chemical Reaction",
+      "file": "questions/chem_13.json",
+      "active": true
+    },
+    {
+      "id": "chem_14",
+      "number": 14,
+      "title": "Chemical Equilibrium",
+      "file": "questions/chem_14.json",
+      "active": true
+    },
+    {
+      "id": "chem_15",
+      "number": 15,
+      "title": "Non-metals and Their Compounds",
+      "file": "questions/chem_15.json",
+      "active": true
+    },
+    {
+      "id": "chem_16",
+      "number": 16,
+      "title": "Metals and Their Compounds",
+      "file": "questions/chem_16.json",
+      "active": true
+    },
+    {
+      "id": "chem_17",
+      "number": 17,
+      "title": "Organic Compounds",
+      "file": "questions/chem_17.json",
+      "active": true
+    },
+    {
+      "id": "chem_18",
+      "number": 18,
+      "title": "Chemistry and Industry",
+      "file": "questions/chem_18.json",
+      "active": true
     }
   ]
 }
