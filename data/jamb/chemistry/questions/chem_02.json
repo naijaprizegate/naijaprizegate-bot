@@ -8,27 +8,33 @@
     "subtopic": "Stoichiometry",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "How many moles of HCl are required to react with potassium dichromate(VI) to produce 3 moles of chlorine?",
+    "question": "What mass of calcium carbonate is required to produce 4.4 g of carbon(IV) oxide when heated? [Ca = 40, C = 12, O = 16]",
     "options": {
-      "A": "7 moles",
-      "B": "10 moles",
-      "C": "14 moles",
-      "D": "21 moles"
+      "A": "10 g",
+      "B": "20 g",
+      "C": "40 g",
+      "D": "44 g"
     },
-    "answer": "C",
-    "answer_text": "14 moles",
+    "answer": "A",
+    "answer_text": "10 g",
     "explanation": {
-      "question_restate": "We are to find the number of moles of HCl needed to produce 3 moles of chlorine gas.",
-      "principle": "Use the balanced chemical equation and mole ratio.",
+      "question_restate": "We are to identify or calculate the correct answer to this question on stoichiometry.",
+      "principle": "Use the balanced equation and molar masses to connect the mass of reactant with the mass of product.",
       "steps": [
-        "Write the balanced chemical equation: K2Cr2O7 + 14HCl -> 2KCl + 2CrCl3 + 7H2O + 3Cl2",
-        "From the balanced equation, 14 moles of HCl produce 3 moles of chlorine gas.",
-        "Since the question asks for the amount of HCl needed to produce exactly 3 moles of chlorine, the required amount is 14 moles."
+        "Write the equation: CaCO3 -> CaO + CO2.",
+        "Calculate molar masses: CaCO3 = 40 + 12 + 48 = 100 g/mol; CO2 = 12 + 32 = 44 g/mol.",
+        "From the equation, 100 g of CaCO3 produces 44 g of CO2.",
+        "If 44 g of CO2 comes from 100 g of CaCO3, then 4.4 g of CO2 will come from (100/44) x 4.4 = 10 g.",
+        "Therefore, 10 g of calcium carbonate is required."
       ],
-      "final_answer": "C. 14 moles",
-      "simple_explanation": "The balanced equation shows that 14 moles of hydrochloric acid give 3 moles of chlorine gas, so 14 moles are required."
+      "final_answer": "A. 10 g",
+      "simple_explanation": "Since 100 g of CaCO3 gives 44 g of CO2, 4.4 g of CO2 will require 10 g of CaCO3."
     },
-    "tags": ["stoichiometry", "mole_ratio", "chemical_equation"],
+    "tags": [
+      "stoichiometry",
+      "thermal_decomposition",
+      "mass_relationship"
+    ],
     "active": true
   },
   {
@@ -37,31 +43,1816 @@
     "subject_name": "Chemistry",
     "topic_id": "chem_02",
     "topic_title": "Chemical Combination",
+    "subtopic": "Stoichiometry",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "How many moles of oxygen are needed to completely burn 2 moles of methane according to the equation CH4 + 2O2 -> CO2 + 2H2O?",
+    "options": {
+      "A": "1 mole",
+      "B": "2 moles",
+      "C": "4 moles",
+      "D": "8 moles"
+    },
+    "answer": "C",
+    "answer_text": "4 moles",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on stoichiometry.",
+      "principle": "Use the mole ratio from the balanced chemical equation.",
+      "steps": [
+        "The balanced equation is CH4 + 2O2 -> CO2 + 2H2O.",
+        "This shows that 1 mole of methane reacts with 2 moles of oxygen.",
+        "Therefore 2 moles of methane will react with 2 x 2 = 4 moles of oxygen.",
+        "The required amount is 4 moles."
+      ],
+      "final_answer": "C. 4 moles",
+      "simple_explanation": "Each mole of methane needs 2 moles of oxygen, so 2 moles need 4 moles of oxygen."
+    },
+    "tags": [
+      "stoichiometry",
+      "mole_ratio",
+      "combustion"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q003",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Stoichiometry",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "What mass of magnesium oxide is produced when 4.8 g of magnesium burns completely in oxygen? [Mg = 24, O = 16]",
+    "options": {
+      "A": "6.4 g",
+      "B": "8.0 g",
+      "C": "10.4 g",
+      "D": "12.8 g"
+    },
+    "answer": "B",
+    "answer_text": "8.0 g",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on stoichiometry.",
+      "principle": "Convert the mass of magnesium to moles, use the equation ratio, then convert back to mass of magnesium oxide.",
+      "steps": [
+        "Write the equation: 2Mg + O2 -> 2MgO.",
+        "Calculate moles of Mg used: moles = mass / molar mass = 4.8 / 24 = 0.2 mol.",
+        "From the equation, Mg and MgO are in a 1:1 mole ratio, so 0.2 mol of Mg produces 0.2 mol of MgO.",
+        "Calculate molar mass of MgO = 24 + 16 = 40 g/mol.",
+        "Mass of MgO = 0.2 x 40 = 8.0 g."
+      ],
+      "final_answer": "B. 8.0 g",
+      "simple_explanation": "4.8 g of Mg is 0.2 mol, and that gives 0.2 mol of MgO, which has a mass of 8.0 g."
+    },
+    "tags": [
+      "stoichiometry",
+      "mass_to_mole",
+      "magnesium_oxide"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q004",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Stoichiometry",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "How many moles of hydrogen are needed to react completely with 1 mole of nitrogen in the reaction N2 + 3H2 -> 2NH3?",
+    "options": {
+      "A": "1 mole",
+      "B": "2 moles",
+      "C": "3 moles",
+      "D": "6 moles"
+    },
+    "answer": "C",
+    "answer_text": "3 moles",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on stoichiometry.",
+      "principle": "Read the mole ratio directly from the balanced equation.",
+      "steps": [
+        "The balanced equation is N2 + 3H2 -> 2NH3.",
+        "The coefficient of nitrogen is 1 and that of hydrogen is 3.",
+        "So 1 mole of nitrogen requires 3 moles of hydrogen.",
+        "Hence the answer is 3 moles."
+      ],
+      "final_answer": "C. 3 moles",
+      "simple_explanation": "The equation shows that 1 mole of N2 reacts with 3 moles of H2."
+    },
+    "tags": [
+      "stoichiometry",
+      "balanced_equation",
+      "mole_ratio"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q005",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Stoichiometry",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "What volume of oxygen at s.t.p. is required to completely react with 5.6 dm³ of hydrogen according to 2H2 + O2 -> 2H2O?",
+    "options": {
+      "A": "2.8 dm³",
+      "B": "5.6 dm³",
+      "C": "8.4 dm³",
+      "D": "11.2 dm³"
+    },
+    "answer": "A",
+    "answer_text": "2.8 dm³",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on stoichiometry.",
+      "principle": "For gases at the same conditions of temperature and pressure, volume ratios follow the coefficients in the balanced equation.",
+      "steps": [
+        "The balanced equation is 2H2 + O2 -> 2H2O.",
+        "This means 2 volumes of hydrogen react with 1 volume of oxygen.",
+        "So oxygen needed = 5.6 / 2 = 2.8 dm³.",
+        "Therefore the required oxygen volume is 2.8 dm³."
+      ],
+      "final_answer": "A. 2.8 dm³",
+      "simple_explanation": "At the same conditions, 2 volumes of hydrogen need 1 volume of oxygen, so 5.6 dm³ of H2 needs 2.8 dm³ of O2."
+    },
+    "tags": [
+      "stoichiometry",
+      "gas_volume",
+      "s_t_p"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q006",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Stoichiometry",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "How many moles of aluminium chloride can be formed from 2 moles of aluminium in the reaction 2Al + 3Cl2 -> 2AlCl3?",
+    "options": {
+      "A": "1 mole",
+      "B": "2 moles",
+      "C": "3 moles",
+      "D": "6 moles"
+    },
+    "answer": "B",
+    "answer_text": "2 moles",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on stoichiometry.",
+      "principle": "Use the mole ratio from the balanced equation.",
+      "steps": [
+        "The balanced equation is 2Al + 3Cl2 -> 2AlCl3.",
+        "The equation shows that 2 moles of Al produce 2 moles of AlCl3.",
+        "So 2 moles of aluminium will form 2 moles of aluminium chloride.",
+        "Hence the answer is 2 moles."
+      ],
+      "final_answer": "B. 2 moles",
+      "simple_explanation": "The coefficients show a 1:1 relationship between Al and AlCl3 in this equation."
+    },
+    "tags": [
+      "stoichiometry",
+      "mole_ratio",
+      "aluminium_chloride"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q007",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Stoichiometry",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "What mass of water is produced when 3.2 g of hydrogen burns completely in oxygen? [H = 1, O = 16]",
+    "options": {
+      "A": "18.0 g",
+      "B": "28.8 g",
+      "C": "32.0 g",
+      "D": "36.0 g"
+    },
+    "answer": "B",
+    "answer_text": "28.8 g",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on stoichiometry.",
+      "principle": "Convert the mass of hydrogen to moles, use the mole ratio from the equation, then convert the moles of water to mass.",
+      "steps": [
+        "Use the equation: 2H2 + O2 -> 2H2O.",
+        "Molar mass of H2 = 2 g/mol, so moles of H2 = 3.2 / 2 = 1.6 mol.",
+        "From the equation, H2 and H2O are in the ratio 2:2, that is 1:1.",
+        "So 1.6 mol of H2 will produce 1.6 mol of H2O.",
+        "Molar mass of H2O = 18 g/mol.",
+        "Mass of water = 1.6 x 18 = 28.8 g."
+      ],
+      "final_answer": "B. 28.8 g",
+      "simple_explanation": "3.2 g of hydrogen is 1.6 moles, and that gives 1.6 moles of water, which has a mass of 28.8 g."
+    },
+    "tags": [
+      "stoichiometry",
+      "water",
+      "mass_calculation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q008",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Stoichiometry",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Calculate the number of moles of zinc required to produce 11.2 dm³ of hydrogen at s.t.p. from excess dilute hydrochloric acid. [Zn = 65]",
+    "options": {
+      "A": "0.25 mol",
+      "B": "0.50 mol",
+      "C": "1.00 mol",
+      "D": "2.00 mol"
+    },
+    "answer": "B",
+    "answer_text": "0.50 mol",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on stoichiometry.",
+      "principle": "Use the molar gas volume at s.t.p. and the equation mole ratio.",
+      "steps": [
+        "The reaction is Zn + 2HCl -> ZnCl2 + H2.",
+        "At s.t.p., 1 mole of gas occupies 22.4 dm³.",
+        "Moles of H2 produced = 11.2 / 22.4 = 0.5 mol.",
+        "From the equation, Zn and H2 are in a 1:1 ratio.",
+        "Therefore moles of Zn required = 0.5 mol."
+      ],
+      "final_answer": "B. 0.50 mol",
+      "simple_explanation": "11.2 dm³ of hydrogen is 0.5 mole at s.t.p., so 0.5 mole of zinc is needed."
+    },
+    "tags": [
+      "stoichiometry",
+      "zinc",
+      "molar_volume"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q009",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Laws of Definite and Multiple Proportions",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "The law of definite proportions states that",
+    "options": {
+      "A": "elements combine in all possible ratios",
+      "B": "a given compound always contains the same elements in the same fixed proportion by mass",
+      "C": "mass is always lost during reaction",
+      "D": "gases combine only in equal volumes"
+    },
+    "answer": "B",
+    "answer_text": "a given compound always contains the same elements in the same fixed proportion by mass",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on laws of definite and multiple proportions.",
+      "principle": "A pure compound has a constant composition regardless of its source or method of preparation.",
+      "steps": [
+        "The law of definite proportions is also called the law of constant composition.",
+        "It says that a compound always contains the same elements combined in a fixed ratio by mass.",
+        "For example, pure water always contains hydrogen and oxygen in the same mass ratio.",
+        "Therefore option B is the correct statement."
+      ],
+      "final_answer": "B. a given compound always contains the same elements in the same fixed proportion by mass",
+      "simple_explanation": "A pure compound always has the same composition by mass."
+    },
+    "tags": [
+      "definite_proportions",
+      "constant_composition",
+      "chemical_combination"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q010",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Laws of Definite and Multiple Proportions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Two samples of carbon(IV) oxide prepared in different laboratories will contain carbon and oxygen in",
+    "options": {
+      "A": "different mass ratios",
+      "B": "the same fixed mass ratio",
+      "C": "equal volumes only",
+      "D": "different atomic numbers"
+    },
+    "answer": "B",
+    "answer_text": "the same fixed mass ratio",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on laws of definite and multiple proportions.",
+      "principle": "This follows directly from the law of definite proportions.",
+      "steps": [
+        "Carbon(IV) oxide is a pure compound with a fixed formula, CO2.",
+        "Its composition does not depend on where it is prepared.",
+        "Every sample of pure CO2 contains carbon and oxygen in the same ratio by mass.",
+        "Therefore the correct answer is the same fixed mass ratio."
+      ],
+      "final_answer": "B. the same fixed mass ratio",
+      "simple_explanation": "All pure samples of the same compound have the same mass ratio of elements."
+    },
+    "tags": [
+      "definite_proportions",
+      "carbon_dioxide",
+      "mass_ratio"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q011",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Laws of Definite and Multiple Proportions",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Carbon forms two oxides, one containing 12 g of carbon combined with 16 g of oxygen and the other containing 12 g of carbon combined with 32 g of oxygen. This illustrates the law of",
+    "options": {
+      "A": "conservation of matter",
+      "B": "definite proportions",
+      "C": "multiple proportions",
+      "D": "reciprocal proportions"
+    },
+    "answer": "C",
+    "answer_text": "multiple proportions",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on laws of definite and multiple proportions.",
+      "principle": "When two elements form more than one compound, the masses of one element that combine with a fixed mass of the other are in a simple whole-number ratio.",
+      "steps": [
+        "The mass of carbon is fixed at 12 g in both compounds.",
+        "The masses of oxygen that combine with it are 16 g and 32 g.",
+        "The ratio 16 : 32 simplifies to 1 : 2, which is a simple whole-number ratio.",
+        "That is exactly what the law of multiple proportions states."
+      ],
+      "final_answer": "C. multiple proportions",
+      "simple_explanation": "Since 16 g and 32 g are in the simple ratio 1:2 for the same mass of carbon, the law illustrated is the law of multiple proportions."
+    },
+    "tags": [
+      "multiple_proportions",
+      "carbon_oxides",
+      "whole_number_ratio"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q012",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Laws of Definite and Multiple Proportions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which statement best illustrates the law of multiple proportions?",
+    "options": {
+      "A": "Water always contains hydrogen and oxygen in the same ratio by mass",
+      "B": "Two elements may combine in different simple whole-number ratios to form more than one compound",
+      "C": "Total mass remains constant during reaction",
+      "D": "Equal volumes of gases contain equal numbers of molecules"
+    },
+    "answer": "B",
+    "answer_text": "Two elements may combine in different simple whole-number ratios to form more than one compound",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on laws of definite and multiple proportions.",
+      "principle": "The law of multiple proportions deals with more than one compound formed by the same two elements.",
+      "steps": [
+        "The key idea is that the same two elements can form different compounds.",
+        "When they do, the masses of one element that combine with a fixed mass of the other are in simple whole-number ratios.",
+        "That wording matches option B exactly.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Two elements may combine in different simple whole-number ratios to form more than one compound",
+      "simple_explanation": "The law of multiple proportions says the same two elements can form different compounds in simple whole-number mass ratios."
+    },
+    "tags": [
+      "multiple_proportions",
+      "definition",
+      "compounds"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q013",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Laws of Definite and Multiple Proportions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The fact that water from rain, a river and a laboratory preparation has the same composition by mass is an illustration of the law of",
+    "options": {
+      "A": "conservation of matter",
+      "B": "multiple proportions",
+      "C": "definite proportions",
+      "D": "combining volumes"
+    },
+    "answer": "C",
+    "answer_text": "definite proportions",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on laws of definite and multiple proportions.",
+      "principle": "The law of definite proportions says a given compound always has the same composition by mass.",
+      "steps": [
+        "All the samples mentioned are samples of water.",
+        "If they are pure, they all contain hydrogen and oxygen in the same ratio by mass.",
+        "This is exactly the meaning of the law of definite proportions.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. definite proportions",
+      "simple_explanation": "All pure samples of water have the same composition by mass, so the law is the law of definite proportions."
+    },
+    "tags": [
+      "definite_proportions",
+      "water",
+      "composition"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q014",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Law of Conservation of Matter",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "The law of conservation of matter states that matter",
+    "options": {
+      "A": "can be destroyed in ordinary chemical reactions",
+      "B": "can be created in all reactions",
+      "C": "is neither created nor destroyed in a chemical reaction",
+      "D": "changes into energy only"
+    },
+    "answer": "C",
+    "answer_text": "is neither created nor destroyed in a chemical reaction",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on law of conservation of matter.",
+      "principle": "In ordinary chemical reactions, atoms are rearranged but not created or destroyed.",
+      "steps": [
+        "Reactants change into products by rearrangement of atoms.",
+        "The total amount of matter remains the same before and after the reaction.",
+        "This is the statement of the law of conservation of matter.",
+        "Hence option C is correct."
+      ],
+      "final_answer": "C. is neither created nor destroyed in a chemical reaction",
+      "simple_explanation": "Matter is not created or destroyed during ordinary chemical reactions."
+    },
+    "tags": [
+      "conservation_of_matter",
+      "law",
+      "chemical_reaction"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q015",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Law of Conservation of Matter",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In a closed system, 10 g of hydrogen reacts completely with 80 g of oxygen to form water. The total mass of water formed is",
+    "options": {
+      "A": "70 g",
+      "B": "80 g",
+      "C": "90 g",
+      "D": "100 g"
+    },
+    "answer": "C",
+    "answer_text": "90 g",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on law of conservation of matter.",
+      "principle": "According to the law of conservation of matter, total mass of reactants equals total mass of products in a closed system.",
+      "steps": [
+        "Mass of hydrogen = 10 g.",
+        "Mass of oxygen = 80 g.",
+        "Total mass of reactants = 10 + 80 = 90 g.",
+        "Since the reaction occurs in a closed system, the total mass of products must also be 90 g.",
+        "Therefore 90 g of water is formed."
+      ],
+      "final_answer": "C. 90 g",
+      "simple_explanation": "The total mass stays the same, so 10 g + 80 g = 90 g of water."
+    },
+    "tags": [
+      "conservation_of_matter",
+      "closed_system",
+      "mass"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q016",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Law of Conservation of Matter",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Why is it necessary to carry out experiments on the law of conservation of matter in a closed flask?",
+    "options": {
+      "A": "To increase the rate of reaction",
+      "B": "To prevent any gas from escaping or entering",
+      "C": "To make the reaction hotter",
+      "D": "To change the colour of the products"
+    },
+    "answer": "B",
+    "answer_text": "To prevent any gas from escaping or entering",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on law of conservation of matter.",
+      "principle": "A closed system ensures that all reactants and products remain within the system.",
+      "steps": [
+        "Some reactions produce gases.",
+        "If gas escapes, the measured mass after reaction will appear smaller.",
+        "If outside matter enters, the mass may appear larger.",
+        "So a closed flask is used to make sure no matter enters or leaves the system."
+      ],
+      "final_answer": "B. To prevent any gas from escaping or entering",
+      "simple_explanation": "A closed flask prevents loss or gain of matter, especially gases."
+    },
+    "tags": [
+      "conservation_of_matter",
+      "closed_flask",
+      "experiment"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q017",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Law of Conservation of Matter",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A 150 g flask and contents were weighed before a reaction. After the reaction in the same sealed flask, the mass was 150 g. This shows that",
+    "options": {
+      "A": "no reaction took place",
+      "B": "mass was conserved during the reaction",
+      "C": "all the reactants were gases",
+      "D": "the products have no mass"
+    },
+    "answer": "B",
+    "answer_text": "mass was conserved during the reaction",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on law of conservation of matter.",
+      "principle": "If the mass of a sealed system remains unchanged before and after reaction, it supports the law of conservation of matter.",
+      "steps": [
+        "The flask was sealed, so no matter could enter or leave.",
+        "The mass before reaction was 150 g and after reaction was still 150 g.",
+        "That means the total mass of products equals the total mass of reactants.",
+        "Therefore the result supports conservation of matter."
+      ],
+      "final_answer": "B. mass was conserved during the reaction",
+      "simple_explanation": "Equal mass before and after the reaction in a sealed flask shows that mass was conserved."
+    },
+    "tags": [
+      "conservation_of_matter",
+      "sealed_flask",
+      "evidence"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q018",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Law of Conservation of Matter",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "When magnesium is burned in air, the ash formed may weigh more than the magnesium used because",
+    "options": {
+      "A": "matter was created",
+      "B": "oxygen from the air combined with the magnesium",
+      "C": "magnesium turned into energy",
+      "D": "the balance is always wrong"
+    },
+    "answer": "B",
+    "answer_text": "oxygen from the air combined with the magnesium",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on law of conservation of matter.",
+      "principle": "The product includes not only magnesium but also oxygen that has combined with it.",
+      "steps": [
+        "Burning magnesium forms magnesium oxide.",
+        "Oxygen atoms from the air join with the magnesium atoms.",
+        "So the product contains the mass of magnesium plus the mass of added oxygen.",
+        "This explains why the ash may weigh more than the original magnesium."
+      ],
+      "final_answer": "B. oxygen from the air combined with the magnesium",
+      "simple_explanation": "The magnesium gains oxygen from the air, so the oxide formed has a greater mass."
+    },
+    "tags": [
+      "conservation_of_matter",
+      "magnesium",
+      "oxidation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q019",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Gay Lussac’s Law of Combining Volumes",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Gay Lussac’s law of combining volumes states that gases react in volumes which bear",
+    "options": {
+      "A": "no relation to each other",
+      "B": "simple whole-number ratios, provided temperature and pressure are the same",
+      "C": "ratios equal to their densities only",
+      "D": "ratios equal to their masses only"
+    },
+    "answer": "B",
+    "answer_text": "simple whole-number ratios, provided temperature and pressure are the same",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gay lussac’s law of combining volumes.",
+      "principle": "For reacting gases and gaseous products, volumes combine in simple whole-number ratios at the same temperature and pressure.",
+      "steps": [
+        "The law applies only to gases measured under the same conditions of temperature and pressure.",
+        "It states that their combining volumes are simple whole numbers.",
+        "This is why volume ratios can be read from balanced gaseous equations.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. simple whole-number ratios, provided temperature and pressure are the same",
+      "simple_explanation": "Gases combine in simple whole-number volume ratios when measured under the same conditions."
+    },
+    "tags": [
+      "gay_lussac",
+      "combining_volumes",
+      "gas_law"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q020",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Gay Lussac’s Law of Combining Volumes",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "What volume of oxygen reacts with 20 cm³ of hydrogen to form water vapour according to 2H2 + O2 -> 2H2O?",
+    "options": {
+      "A": "5 cm³",
+      "B": "10 cm³",
+      "C": "20 cm³",
+      "D": "40 cm³"
+    },
+    "answer": "B",
+    "answer_text": "10 cm³",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gay lussac’s law of combining volumes.",
+      "principle": "At the same temperature and pressure, gas volumes react in the ratio of their coefficients.",
+      "steps": [
+        "The equation is 2H2 + O2 -> 2H2O.",
+        "So 2 volumes of hydrogen react with 1 volume of oxygen.",
+        "If hydrogen is 20 cm³, oxygen required = 20 / 2 = 10 cm³.",
+        "Therefore the correct answer is 10 cm³."
+      ],
+      "final_answer": "B. 10 cm³",
+      "simple_explanation": "Since the ratio H2 : O2 is 2 : 1, 20 cm³ of hydrogen needs 10 cm³ of oxygen."
+    },
+    "tags": [
+      "gay_lussac",
+      "hydrogen",
+      "oxygen"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q021",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Gay Lussac’s Law of Combining Volumes",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "If 15 cm³ of nitrogen reacts completely with hydrogen to form ammonia according to N2 + 3H2 -> 2NH3, the volume of hydrogen required is",
+    "options": {
+      "A": "5 cm³",
+      "B": "15 cm³",
+      "C": "30 cm³",
+      "D": "45 cm³"
+    },
+    "answer": "D",
+    "answer_text": "45 cm³",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gay lussac’s law of combining volumes.",
+      "principle": "Use the gas volume ratio from the balanced equation.",
+      "steps": [
+        "The balanced equation is N2 + 3H2 -> 2NH3.",
+        "The ratio of nitrogen to hydrogen is 1 : 3.",
+        "So 15 cm³ of nitrogen requires 15 x 3 = 45 cm³ of hydrogen.",
+        "Therefore the correct answer is 45 cm³."
+      ],
+      "final_answer": "D. 45 cm³",
+      "simple_explanation": "For every 1 volume of nitrogen, 3 volumes of hydrogen are needed, so 15 cm³ needs 45 cm³."
+    },
+    "tags": [
+      "gay_lussac",
+      "ammonia",
+      "volume_ratio"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q022",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Gay Lussac’s Law of Combining Volumes",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "What volume of ammonia is formed when 30 cm³ of nitrogen reacts completely with excess hydrogen according to N2 + 3H2 -> 2NH3?",
+    "options": {
+      "A": "15 cm³",
+      "B": "30 cm³",
+      "C": "45 cm³",
+      "D": "60 cm³"
+    },
+    "answer": "D",
+    "answer_text": "60 cm³",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gay lussac’s law of combining volumes.",
+      "principle": "For gases under the same conditions, use the coefficient ratio as the volume ratio.",
+      "steps": [
+        "The balanced equation is N2 + 3H2 -> 2NH3.",
+        "This shows that 1 volume of nitrogen produces 2 volumes of ammonia.",
+        "So 30 cm³ of nitrogen will produce 30 x 2 = 60 cm³ of ammonia, if hydrogen is in excess.",
+        "Therefore the answer is 60 cm³."
+      ],
+      "final_answer": "D. 60 cm³",
+      "simple_explanation": "1 volume of nitrogen gives 2 volumes of ammonia, so 30 cm³ gives 60 cm³."
+    },
+    "tags": [
+      "gay_lussac",
+      "ammonia",
+      "product_volume"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q023",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Gay Lussac’s Law of Combining Volumes",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The law of combining volumes is applicable only when gases are measured at the same",
+    "options": {
+      "A": "mass and density",
+      "B": "temperature and pressure",
+      "C": "volume and colour",
+      "D": "mass and volume"
+    },
+    "answer": "B",
+    "answer_text": "temperature and pressure",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gay lussac’s law of combining volumes.",
+      "principle": "Gas volume comparisons are meaningful only when temperature and pressure are the same.",
+      "steps": [
+        "Gas volume changes with both temperature and pressure.",
+        "So the law compares gas volumes only under identical temperature and pressure conditions.",
+        "That is why the statement always includes this condition.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. temperature and pressure",
+      "simple_explanation": "The law works when all gas volumes are measured at the same temperature and pressure."
+    },
+    "tags": [
+      "gay_lussac",
+      "temperature",
+      "pressure"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q024",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Avogadro’s Law",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Avogadro’s law states that equal volumes of all gases at the same temperature and pressure contain",
+    "options": {
+      "A": "equal masses",
+      "B": "equal numbers of molecules",
+      "C": "equal densities",
+      "D": "equal atomic masses"
+    },
+    "answer": "B",
+    "answer_text": "equal numbers of molecules",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on avogadro’s law.",
+      "principle": "Avogadro’s law relates equal volumes of gases to equal numbers of molecules under the same conditions.",
+      "steps": [
+        "The law compares gases at the same temperature and pressure.",
+        "It states that equal volumes then contain equal numbers of molecules.",
+        "This does not mean equal masses or equal densities.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. equal numbers of molecules",
+      "simple_explanation": "Equal gas volumes at the same temperature and pressure contain equal numbers of molecules."
+    },
+    "tags": [
+      "avogadro_law",
+      "gas_volume",
+      "molecules"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q025",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Avogadro’s Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "According to Avogadro’s law, 22.4 dm³ of oxygen and 22.4 dm³ of nitrogen at s.t.p. contain",
+    "options": {
+      "A": "different numbers of molecules because their masses differ",
+      "B": "the same number of molecules",
+      "C": "the same masses",
+      "D": "different numbers of atoms only"
+    },
+    "answer": "B",
+    "answer_text": "the same number of molecules",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on avogadro’s law.",
+      "principle": "Equal volumes of gases at the same temperature and pressure contain equal numbers of molecules.",
+      "steps": [
+        "Both samples have the same volume, 22.4 dm³.",
+        "Both are measured at s.t.p., so the temperature and pressure are the same.",
+        "By Avogadro’s law, they contain equal numbers of molecules.",
+        "Their masses are different, but the number of molecules is the same."
+      ],
+      "final_answer": "B. the same number of molecules",
+      "simple_explanation": "At the same temperature and pressure, equal gas volumes contain equal numbers of molecules."
+    },
+    "tags": [
+      "avogadro_law",
+      "s_t_p",
+      "equal_volumes"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q026",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Avogadro’s Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "If the pressure and temperature remain constant, doubling the number of moles of a gas will",
+    "options": {
+      "A": "halve its volume",
+      "B": "double its volume",
+      "C": "leave its volume unchanged",
+      "D": "triple its density"
+    },
+    "answer": "B",
+    "answer_text": "double its volume",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on avogadro’s law.",
+      "principle": "At constant temperature and pressure, gas volume is directly proportional to the number of moles.",
+      "steps": [
+        "Avogadro’s law can be written as V proportional to n, at constant temperature and pressure.",
+        "This means if the number of moles is doubled, the volume must also double.",
+        "The direct relationship is the key idea.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. double its volume",
+      "simple_explanation": "At constant temperature and pressure, more moles mean proportionally more volume."
+    },
+    "tags": [
+      "avogadro_law",
+      "volume",
+      "moles"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q027",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Avogadro’s Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following samples contains the greatest number of molecules at s.t.p.?",
+    "options": {
+      "A": "11.2 dm³ of oxygen",
+      "B": "22.4 dm³ of nitrogen",
+      "C": "11.2 dm³ of hydrogen",
+      "D": "11.2 dm³ of carbon(IV) oxide"
+    },
+    "answer": "B",
+    "answer_text": "22.4 dm³ of nitrogen",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on avogadro’s law.",
+      "principle": "At the same conditions, the sample with the greatest volume contains the greatest number of molecules.",
+      "steps": [
+        "By Avogadro’s law, equal volumes at the same temperature and pressure contain equal numbers of molecules.",
+        "All the 11.2 dm³ samples contain the same number of molecules as one another.",
+        "22.4 dm³ is twice 11.2 dm³, so it contains twice as many molecules.",
+        "Therefore 22.4 dm³ of nitrogen contains the greatest number of molecules."
+      ],
+      "final_answer": "B. 22.4 dm³ of nitrogen",
+      "simple_explanation": "At the same conditions, the largest volume contains the most molecules."
+    },
+    "tags": [
+      "avogadro_law",
+      "molecules",
+      "comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q028",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Avogadro’s Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The direct relationship between gas volume and number of moles at constant temperature and pressure is a statement of",
+    "options": {
+      "A": "Boyle’s law",
+      "B": "Charles’ law",
+      "C": "Gay Lussac’s law of combining volumes",
+      "D": "Avogadro’s law"
+    },
+    "answer": "D",
+    "answer_text": "Avogadro’s law",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on avogadro’s law.",
+      "principle": "Avogadro’s law states that gas volume is directly proportional to the number of moles, provided temperature and pressure remain constant.",
+      "steps": [
+        "Boyle’s law relates pressure and volume.",
+        "Charles’ law relates temperature and volume.",
+        "Gay Lussac’s law of combining volumes deals with reacting gas volumes.",
+        "The direct V-n relationship is Avogadro’s law."
+      ],
+      "final_answer": "D. Avogadro’s law",
+      "simple_explanation": "Volume proportional to number of moles at constant temperature and pressure is Avogadro’s law."
+    },
+    "tags": [
+      "avogadro_law",
+      "volume",
+      "moles"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q029",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Chemical Symbols, Formulae, Equations and Their Uses",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "The symbol for sodium is",
+    "options": {
+      "A": "So",
+      "B": "S",
+      "C": "Na",
+      "D": "N"
+    },
+    "answer": "C",
+    "answer_text": "Na",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on chemical symbols, formulae, equations and their uses.",
+      "principle": "Chemical symbols are standard abbreviations derived from English or Latin names of elements.",
+      "steps": [
+        "The symbol for sodium comes from its Latin name, natrium.",
+        "That is why its symbol is Na, not S or N.",
+        "Careful knowledge of symbols is essential in writing formulae and equations.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. Na",
+      "simple_explanation": "Sodium is represented by the symbol Na."
+    },
+    "tags": [
+      "chemical_symbols",
+      "sodium",
+      "elements"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q030",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Chemical Symbols, Formulae, Equations and Their Uses",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The correct formula for aluminium oxide is",
+    "options": {
+      "A": "AlO",
+      "B": "Al2O",
+      "C": "AlO2",
+      "D": "Al2O3"
+    },
+    "answer": "D",
+    "answer_text": "Al2O3",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on chemical symbols, formulae, equations and their uses.",
+      "principle": "Write the formula by balancing the valencies or charges of aluminium and oxygen.",
+      "steps": [
+        "Aluminium has valency 3, while oxygen has valency 2.",
+        "To balance charges, use 2 aluminium atoms and 3 oxygen atoms.",
+        "This gives Al2O3.",
+        "Therefore option D is correct."
+      ],
+      "final_answer": "D. Al2O3",
+      "simple_explanation": "Because aluminium is 3+ and oxygen is 2-, the correct formula is Al2O3."
+    },
+    "tags": [
+      "formulae",
+      "aluminium_oxide",
+      "valency"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q031",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Chemical Symbols, Formulae, Equations and Their Uses",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following equations is balanced?",
+    "options": {
+      "A": "H2 + O2 -> H2O",
+      "B": "2H2 + O2 -> 2H2O",
+      "C": "H2 + O2 -> H2O2",
+      "D": "2H2 + 2O2 -> 2H2O"
+    },
+    "answer": "B",
+    "answer_text": "2H2 + O2 -> 2H2O",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on chemical symbols, formulae, equations and their uses.",
+      "principle": "A balanced equation has equal numbers of each kind of atom on both sides.",
+      "steps": [
+        "Check option B: left side has 4 H atoms and 2 O atoms.",
+        "Right side in 2H2O also has 4 H atoms and 2 O atoms.",
+        "So option B is balanced.",
+        "The other options do not preserve the same numbers of atoms for the intended water-forming reaction."
+      ],
+      "final_answer": "B. 2H2 + O2 -> 2H2O",
+      "simple_explanation": "2H2 + O2 -> 2H2O is balanced because the number of each atom is the same on both sides."
+    },
+    "tags": [
+      "balanced_equation",
+      "water",
+      "chemical_equation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q032",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Chemical Symbols, Formulae, Equations and Their Uses",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The coefficient in a chemical equation shows the",
+    "options": {
+      "A": "state of matter only",
+      "B": "relative number of moles or molecules taking part in the reaction",
+      "C": "charge on the ion",
+      "D": "atomic number"
+    },
+    "answer": "B",
+    "answer_text": "relative number of moles or molecules taking part in the reaction",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on chemical symbols, formulae, equations and their uses.",
+      "principle": "Coefficients indicate the relative amounts of substances in a balanced reaction.",
+      "steps": [
+        "In a balanced equation, the coefficient applies to the whole formula.",
+        "It tells how many molecules or moles of a substance take part.",
+        "This is why coefficients are essential in stoichiometric calculations.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. relative number of moles or molecules taking part in the reaction",
+      "simple_explanation": "A coefficient tells the relative number of moles or molecules in the reaction."
+    },
+    "tags": [
+      "coefficients",
+      "equations",
+      "stoichiometry"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q033",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Chemical Symbols, Formulae, Equations and Their Uses",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following formulae represents calcium trioxocarbonate(IV)?",
+    "options": {
+      "A": "CaCO2",
+      "B": "Ca2CO3",
+      "C": "CaCO3",
+      "D": "Ca(CO3)2"
+    },
+    "answer": "C",
+    "answer_text": "CaCO3",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on chemical symbols, formulae, equations and their uses.",
+      "principle": "Use the charges of calcium ion and carbonate ion to write the correct neutral formula.",
+      "steps": [
+        "Calcium ion is Ca2+.",
+        "Carbonate ion is CO3^2-.",
+        "One Ca2+ combines with one CO3^2- to give a neutral compound.",
+        "So the correct formula is CaCO3."
+      ],
+      "final_answer": "C. CaCO3",
+      "simple_explanation": "Calcium ion and carbonate ion combine in a 1:1 ratio, so the formula is CaCO3."
+    },
+    "tags": [
+      "formulae",
+      "calcium_carbonate",
+      "ions"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q034",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Chemical Symbols, Formulae, Equations and Their Uses",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "One use of a chemical equation is that it shows the",
+    "options": {
+      "A": "colour of all substances involved",
+      "B": "relative amounts in which substances react and are formed",
+      "C": "price of reagents",
+      "D": "shape of molecules only"
+    },
+    "answer": "B",
+    "answer_text": "relative amounts in which substances react and are formed",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on chemical symbols, formulae, equations and their uses.",
+      "principle": "A balanced chemical equation gives quantitative information about a reaction.",
+      "steps": [
+        "It identifies reactants and products.",
+        "Its coefficients show the relative numbers of moles that react and are formed.",
+        "This makes it useful for stoichiometric calculations.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. relative amounts in which substances react and are formed",
+      "simple_explanation": "A chemical equation shows the relative amounts of reactants and products."
+    },
+    "tags": [
+      "chemical_equation",
+      "uses",
+      "relative_amounts"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q035",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Relative Atomic Mass Based on Carbon-12",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Relative atomic mass is measured on a scale in which the carbon-12 atom is assigned a value of",
+    "options": {
+      "A": "1",
+      "B": "6",
+      "C": "12",
+      "D": "16"
+    },
+    "answer": "C",
+    "answer_text": "12",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on relative atomic mass based on carbon-12.",
+      "principle": "The relative atomic mass scale is based on one-twelfth of the mass of a carbon-12 atom.",
+      "steps": [
+        "Carbon-12 is the reference isotope for the modern atomic mass scale.",
+        "Its mass is assigned exactly 12 units.",
+        "Other atomic masses are compared with one-twelfth of its mass.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. 12",
+      "simple_explanation": "Carbon-12 is assigned a value of 12 on the relative atomic mass scale."
+    },
+    "tags": [
+      "relative_atomic_mass",
+      "carbon_12",
+      "definition"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q036",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Relative Atomic Mass Based on Carbon-12",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The relative atomic mass of an element is the",
+    "options": {
+      "A": "number of protons in the nucleus",
+      "B": "weighted average mass of its atoms relative to one-twelfth of the mass of carbon-12",
+      "C": "mass of one mole in grams",
+      "D": "sum of neutrons only"
+    },
+    "answer": "B",
+    "answer_text": "weighted average mass of its atoms relative to one-twelfth of the mass of carbon-12",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on relative atomic mass based on carbon-12.",
+      "principle": "Relative atomic mass takes isotopes into account and is based on the carbon-12 scale.",
+      "steps": [
+        "Most elements exist as mixtures of isotopes.",
+        "So relative atomic mass is not just the mass of one atom.",
+        "It is the weighted average of the isotopic masses compared with one-twelfth of the mass of carbon-12.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. weighted average mass of its atoms relative to one-twelfth of the mass of carbon-12",
+      "simple_explanation": "Relative atomic mass is a weighted average based on the carbon-12 scale."
+    },
+    "tags": [
+      "relative_atomic_mass",
+      "weighted_average",
+      "isotopes"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q037",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Relative Atomic Mass Based on Carbon-12",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The relative atomic mass of chlorine is 35.5 because chlorine exists naturally as",
+    "options": {
+      "A": "one isotope only",
+      "B": "a mixture of isotopes",
+      "C": "a gas only",
+      "D": "a metal"
+    },
+    "answer": "B",
+    "answer_text": "a mixture of isotopes",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on relative atomic mass based on carbon-12.",
+      "principle": "A non-whole-number relative atomic mass usually indicates a natural mixture of isotopes.",
+      "steps": [
+        "If chlorine had only one isotope with a whole-number mass, its relative atomic mass would be closer to that whole number.",
+        "The value 35.5 shows an average of isotopic masses.",
+        "This happens because natural chlorine contains more than one isotope.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. a mixture of isotopes",
+      "simple_explanation": "Chlorine has a relative atomic mass of 35.5 because it is a mixture of isotopes."
+    },
+    "tags": [
+      "relative_atomic_mass",
+      "chlorine",
+      "isotopes"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q038",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Relative Atomic Mass Based on Carbon-12",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following best describes why carbon-12 is used as the reference for relative atomic mass?",
+    "options": {
+      "A": "Because it is the heaviest atom",
+      "B": "Because a standard reference is needed for comparing atomic masses",
+      "C": "Because it reacts with all elements",
+      "D": "Because all atoms contain carbon"
+    },
+    "answer": "B",
+    "answer_text": "Because a standard reference is needed for comparing atomic masses",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on relative atomic mass based on carbon-12.",
+      "principle": "A standard reference isotope makes it possible to compare atomic masses consistently.",
+      "steps": [
+        "Relative atomic masses are not measured in isolation; they are measured relative to a chosen standard.",
+        "Carbon-12 is the modern standard reference isotope.",
+        "Using one common reference ensures consistency in atomic mass values.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Because a standard reference is needed for comparing atomic masses",
+      "simple_explanation": "Carbon-12 is used because a fixed reference standard is needed for comparing atomic masses."
+    },
+    "tags": [
+      "relative_atomic_mass",
+      "carbon_12",
+      "reference_standard"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q039",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Relative Atomic Mass Based on Carbon-12",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "If an element has isotopes of mass numbers 20 and 22 occurring in equal proportions, its relative atomic mass will be",
+    "options": {
+      "A": "20",
+      "B": "21",
+      "C": "22",
+      "D": "42"
+    },
+    "answer": "B",
+    "answer_text": "21",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on relative atomic mass based on carbon-12.",
+      "principle": "The relative atomic mass is the weighted average of the isotopic masses.",
+      "steps": [
+        "Since the isotopes occur in equal proportions, take the simple average.",
+        "Average = (20 + 22) / 2 = 21.",
+        "Therefore the relative atomic mass is 21.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. 21",
+      "simple_explanation": "Equal amounts of 20 and 22 give an average mass of 21."
+    },
+    "tags": [
+      "relative_atomic_mass",
+      "weighted_average",
+      "isotopes"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q040",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
     "subtopic": "Mole Concept",
     "difficulty": "easy",
     "question_type": "mcq",
-    "question": "What is the mass of 2 moles of sodium hydroxide, NaOH?",
+    "question": "The mass of 1 mole of carbon atoms is",
     "options": {
-      "A": "20 g",
-      "B": "40 g",
-      "C": "60 g",
-      "D": "80 g"
+      "A": "6 g",
+      "B": "12 g",
+      "C": "14 g",
+      "D": "24 g"
     },
-    "answer": "D",
-    "answer_text": "80 g",
+    "answer": "B",
+    "answer_text": "12 g",
     "explanation": {
-      "question_restate": "We are to calculate the mass of 2 moles of sodium hydroxide.",
-      "principle": "Mass = number of moles × molar mass.",
+      "question_restate": "We are to identify or calculate the correct answer to this question on mole concept.",
+      "principle": "The molar mass in grams is numerically equal to the relative atomic mass.",
       "steps": [
-        "First calculate the molar mass of NaOH.",
-        "Na = 23, O = 16, H = 1.",
-        "Molar mass of NaOH = 23 + 16 + 1 = 40 g/mol.",
-        "Mass of 2 moles = 2 × 40 = 80 g."
+        "The relative atomic mass of carbon is 12.",
+        "Therefore 1 mole of carbon atoms has a mass of 12 g.",
+        "This is one of the basic applications of the mole concept.",
+        "Hence option B is correct."
       ],
-      "final_answer": "D. 80 g",
-      "simple_explanation": "One mole of NaOH has a mass of 40 g, so 2 moles will have a mass of 80 g."
+      "final_answer": "B. 12 g",
+      "simple_explanation": "One mole of carbon atoms has a mass of 12 g."
     },
-    "tags": ["mole_concept", "molar_mass"],
+    "tags": [
+      "mole_concept",
+      "carbon",
+      "molar_mass"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q041",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Mole Concept",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "What is the molar mass of H2SO4? [H = 1, S = 32, O = 16]",
+    "options": {
+      "A": "49 g/mol",
+      "B": "82 g/mol",
+      "C": "98 g/mol",
+      "D": "196 g/mol"
+    },
+    "answer": "C",
+    "answer_text": "98 g/mol",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on mole concept.",
+      "principle": "Add the relative atomic masses of all atoms in the formula to obtain the molar mass.",
+      "steps": [
+        "H2SO4 contains 2 hydrogen atoms, 1 sulphur atom and 4 oxygen atoms.",
+        "Molar mass = (2 x 1) + 32 + (4 x 16).",
+        "This gives 2 + 32 + 64 = 98 g/mol.",
+        "Therefore the correct answer is 98 g/mol."
+      ],
+      "final_answer": "C. 98 g/mol",
+      "simple_explanation": "Adding the atomic masses gives 98 g/mol for H2SO4."
+    },
+    "tags": [
+      "mole_concept",
+      "molar_mass",
+      "sulphuric_acid"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q042",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Mole Concept",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "How many moles are present in 9 g of water? [H = 1, O = 16]",
+    "options": {
+      "A": "0.25 mol",
+      "B": "0.50 mol",
+      "C": "1.00 mol",
+      "D": "2.00 mol"
+    },
+    "answer": "B",
+    "answer_text": "0.50 mol",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on mole concept.",
+      "principle": "Use the formula moles = mass / molar mass.",
+      "steps": [
+        "First find the molar mass of water: H2O = 2(1) + 16 = 18 g/mol.",
+        "Then calculate moles = 9 / 18 = 0.5 mol.",
+        "So 9 g of water contains half a mole.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. 0.50 mol",
+      "simple_explanation": "Since water has a molar mass of 18 g/mol, 9 g is 0.5 mole."
+    },
+    "tags": [
+      "mole_concept",
+      "water",
+      "mass_to_mole"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q043",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Mole Concept",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "What mass of calcium oxide is present in 0.5 mole of CaO? [Ca = 40, O = 16]",
+    "options": {
+      "A": "14 g",
+      "B": "28 g",
+      "C": "40 g",
+      "D": "56 g"
+    },
+    "answer": "B",
+    "answer_text": "28 g",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on mole concept.",
+      "principle": "First determine the molar mass, then use mass = moles x molar mass.",
+      "steps": [
+        "Molar mass of CaO = 40 + 16 = 56 g/mol.",
+        "Mass of 0.5 mole = 0.5 x 56 = 28 g.",
+        "So 0.5 mole of calcium oxide has a mass of 28 g.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. 28 g",
+      "simple_explanation": "0.5 mole of CaO is half of 56 g, which is 28 g."
+    },
+    "tags": [
+      "mole_concept",
+      "calcium_oxide",
+      "mass_calculation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q044",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Mole Concept",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "How many moles of oxygen atoms are contained in 1 mole of O2 molecules?",
+    "options": {
+      "A": "0.5 mol",
+      "B": "1 mol",
+      "C": "2 mol",
+      "D": "6.02 x 10^23 mol"
+    },
+    "answer": "C",
+    "answer_text": "2 mol",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on mole concept.",
+      "principle": "One molecule of O2 contains two oxygen atoms, so one mole of molecules contains two moles of atoms.",
+      "steps": [
+        "A mole counts particles just as a dozen counts items.",
+        "Each O2 molecule has 2 oxygen atoms.",
+        "Therefore 1 mole of O2 molecules contains 2 moles of oxygen atoms.",
+        "Hence option C is correct."
+      ],
+      "final_answer": "C. 2 mol",
+      "simple_explanation": "Because each O2 molecule contains 2 atoms, 1 mole of O2 contains 2 moles of oxygen atoms."
+    },
+    "tags": [
+      "mole_concept",
+      "atoms_vs_molecules",
+      "oxygen"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q045",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Mole Concept",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which expression is correct for calculating number of moles from mass?",
+    "options": {
+      "A": "moles = molar mass / mass",
+      "B": "moles = mass x molar mass",
+      "C": "moles = mass / molar mass",
+      "D": "moles = mass + molar mass"
+    },
+    "answer": "C",
+    "answer_text": "moles = mass / molar mass",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on mole concept.",
+      "principle": "The basic mole formula relates mass, moles and molar mass.",
+      "steps": [
+        "The standard relationship is mass = moles x molar mass.",
+        "Rearranging gives moles = mass / molar mass.",
+        "This formula is widely used in quantitative chemistry.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. moles = mass / molar mass",
+      "simple_explanation": "To get moles from mass, divide the mass by the molar mass."
+    },
+    "tags": [
+      "mole_concept",
+      "formula",
+      "calculation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q046",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Avogadro’s Number",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Avogadro’s number is",
+    "options": {
+      "A": "3.01 x 10^23",
+      "B": "6.02 x 10^23",
+      "C": "1.12 x 10^23",
+      "D": "2.24 x 10^23"
+    },
+    "answer": "B",
+    "answer_text": "6.02 x 10^23",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on avogadro’s number.",
+      "principle": "Avogadro’s number is the number of particles in one mole of a substance.",
+      "steps": [
+        "One mole contains a fixed number of entities such as atoms, molecules or ions.",
+        "This number is called Avogadro’s number or Avogadro’s constant.",
+        "Its value is approximately 6.02 x 10^23.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. 6.02 x 10^23",
+      "simple_explanation": "One mole contains 6.02 x 10^23 particles."
+    },
+    "tags": [
+      "avogadros_number",
+      "particles",
+      "mole"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q047",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Avogadro’s Number",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "How many molecules are present in 2 moles of carbon(IV) oxide?",
+    "options": {
+      "A": "3.01 x 10^23",
+      "B": "6.02 x 10^23",
+      "C": "1.20 x 10^24",
+      "D": "2.40 x 10^24"
+    },
+    "answer": "C",
+    "answer_text": "1.20 x 10^24",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on avogadro’s number.",
+      "principle": "Number of particles = number of moles x Avogadro’s number.",
+      "steps": [
+        "Avogadro’s number = 6.02 x 10^23 particles per mole.",
+        "For 2 moles, number of molecules = 2 x 6.02 x 10^23.",
+        "This equals 1.204 x 10^24, which is approximately 1.20 x 10^24.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. 1.20 x 10^24",
+      "simple_explanation": "2 moles contain twice Avogadro’s number, which is about 1.20 x 10^24 molecules."
+    },
+    "tags": [
+      "avogadros_number",
+      "carbon_dioxide",
+      "molecules"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q048",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Avogadro’s Number",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The number of atoms in 1 mole of helium is",
+    "options": {
+      "A": "6.02 x 10^23",
+      "B": "3.01 x 10^23",
+      "C": "1.20 x 10^24",
+      "D": "22.4 x 10^23"
+    },
+    "answer": "A",
+    "answer_text": "6.02 x 10^23",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on avogadro’s number.",
+      "principle": "One mole of any elementary particles contains Avogadro’s number of those particles.",
+      "steps": [
+        "Helium is monatomic, so its particles are atoms.",
+        "One mole of helium therefore contains Avogadro’s number of atoms.",
+        "That number is 6.02 x 10^23.",
+        "Hence option A is correct."
+      ],
+      "final_answer": "A. 6.02 x 10^23",
+      "simple_explanation": "Since helium exists as single atoms, 1 mole contains 6.02 x 10^23 atoms."
+    },
+    "tags": [
+      "avogadros_number",
+      "helium",
+      "atoms"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q049",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Avogadro’s Number",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "How many oxygen atoms are present in 0.5 mole of O2?",
+    "options": {
+      "A": "3.01 x 10^23",
+      "B": "6.02 x 10^23",
+      "C": "1.20 x 10^24",
+      "D": "2.40 x 10^23"
+    },
+    "answer": "B",
+    "answer_text": "6.02 x 10^23",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on avogadro’s number.",
+      "principle": "First find the number of molecules in 0.5 mole of O2, then multiply by 2 because each molecule contains 2 oxygen atoms.",
+      "steps": [
+        "0.5 mole of O2 contains 0.5 x 6.02 x 10^23 = 3.01 x 10^23 molecules.",
+        "Each O2 molecule contains 2 oxygen atoms.",
+        "So number of oxygen atoms = 2 x 3.01 x 10^23 = 6.02 x 10^23 atoms.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. 6.02 x 10^23",
+      "simple_explanation": "Half a mole of O2 has 3.01 x 10^23 molecules, and each molecule has 2 atoms, giving 6.02 x 10^23 atoms."
+    },
+    "tags": [
+      "avogadros_number",
+      "oxygen_atoms",
+      "molecules"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q050",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Chemical Combination",
+    "subtopic": "Avogadro’s Number",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "What amount of magnesium contains 1.204 x 10^24 atoms?",
+    "options": {
+      "A": "0.5 mol",
+      "B": "1.0 mol",
+      "C": "2.0 mol",
+      "D": "24.0 mol"
+    },
+    "answer": "C",
+    "answer_text": "2.0 mol",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on avogadro’s number.",
+      "principle": "Convert number of particles to moles by dividing by Avogadro’s number.",
+      "steps": [
+        "Avogadro’s number = 6.02 x 10^23 atoms per mole.",
+        "Moles of Mg = 1.204 x 10^24 / 6.02 x 10^23.",
+        "This equals 2.0 mol.",
+        "Therefore the correct answer is 2.0 mol."
+      ],
+      "final_answer": "C. 2.0 mol",
+      "simple_explanation": "1.204 x 10^24 atoms is twice Avogadro’s number, so it represents 2 moles."
+    },
+    "tags": [
+      "avogadros_number",
+      "magnesium",
+      "moles"
+    ],
     "active": true
   }
 ]
