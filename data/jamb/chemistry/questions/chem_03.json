@@ -3701,5 +3701,3715 @@
       "final"
     ],
     "active": true
+  },
+  {
+    "id": "chem_03_q101",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Outline of the Kinetic Theory of Matter",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following best explains why a gas has no definite shape?",
+    "options": {
+      "A": "Its particles are fixed in a rigid lattice",
+      "B": "Its particles move randomly and occupy available space",
+      "C": "Its particles are larger than those of solids",
+      "D": "Its particles have no kinetic energy"
+    },
+    "answer": "B",
+    "answer_text": "Its particles move randomly and occupy available space",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on outline of the kinetic theory of matter.",
+      "principle": "Gases have no fixed shape because their particles move freely in random directions and spread out to fill the container.",
+      "steps": [
+        "In a gas, the particles are far apart and move rapidly in random directions.",
+        "They are not held in fixed positions like particles in a solid.",
+        "Because of this free motion, the gas takes the shape of any container that holds it.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Its particles move randomly and occupy available space",
+      "simple_explanation": "A gas has no definite shape because its particles move randomly and spread to fill the container."
+    },
+    "tags": [
+      "kinetic_theory",
+      "gas_shape",
+      "random_motion"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q102",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Outline of the Kinetic Theory of Matter",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement correctly compares particles in solids and liquids?",
+    "options": {
+      "A": "Particles in both are equally free to move from place to place",
+      "B": "Particles in solids vibrate about fixed positions, while those in liquids can slide past one another",
+      "C": "Particles in liquids are farther apart than particles in gases",
+      "D": "Particles in solids have no kinetic energy"
+    },
+    "answer": "B",
+    "answer_text": "Particles in solids vibrate about fixed positions, while those in liquids can slide past one another",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on outline of the kinetic theory of matter.",
+      "principle": "The kinetic theory describes solids as having particles that vibrate in fixed positions, while liquid particles can move relative to one another.",
+      "steps": [
+        "Particles in solids are closely packed and held strongly, so they vibrate about fixed positions.",
+        "Particles in liquids are also close together, but the forces are weaker, so they can move past one another.",
+        "This explains why liquids can flow while solids keep a fixed shape.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Particles in solids vibrate about fixed positions, while those in liquids can slide past one another",
+      "simple_explanation": "Solid particles mainly vibrate in fixed positions, while liquid particles can slide past one another."
+    },
+    "tags": [
+      "kinetic_theory",
+      "solids",
+      "liquids"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q103",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Changes of State in Terms of Molecular Motion",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "During melting, the temperature of a pure solid remains constant until all the solid has melted because the heat supplied is used to",
+    "options": {
+      "A": "increase the mass of the particles",
+      "B": "overcome the forces between the particles",
+      "C": "stop all particle movement",
+      "D": "break atoms into electrons"
+    },
+    "answer": "B",
+    "answer_text": "overcome the forces between the particles",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on changes of state in terms of molecular motion.",
+      "principle": "At the melting point, heat is used mainly to overcome the attractive forces holding the solid particles in fixed positions.",
+      "steps": [
+        "At the melting point, the solid changes to a liquid without a rise in temperature.",
+        "The energy supplied is used to weaken or overcome the attractive forces between particles.",
+        "This allows the particles to move more freely as a liquid.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. overcome the forces between the particles",
+      "simple_explanation": "At the melting point, heat is used to overcome the forces between particles rather than to raise temperature."
+    },
+    "tags": [
+      "changes_of_state",
+      "melting_point",
+      "intermolecular_forces"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q104",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Changes of State in Terms of Molecular Motion",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which process involves the most direct change from the gaseous state to the liquid state?",
+    "options": {
+      "A": "Vapourization",
+      "B": "Condensation",
+      "C": "Melting",
+      "D": "Freezing"
+    },
+    "answer": "B",
+    "answer_text": "Condensation",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on changes of state in terms of molecular motion.",
+      "principle": "Condensation is the direct gas-to-liquid change.",
+      "steps": [
+        "Vapourization is liquid to gas.",
+        "Melting is solid to liquid.",
+        "Freezing is liquid to solid.",
+        "Condensation is the process in which gas particles lose energy and become a liquid.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Condensation",
+      "simple_explanation": "Condensation is the direct change from gas to liquid."
+    },
+    "tags": [
+      "changes_of_state",
+      "condensation",
+      "gas_to_liquid"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q105",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Changes of State in Terms of Molecular Motion",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following occurs during evaporation?",
+    "options": {
+      "A": "All particles in the liquid leave at once",
+      "B": "Only particles at the surface with sufficient energy escape",
+      "C": "The liquid must always be at its boiling point",
+      "D": "The liquid becomes chemically different"
+    },
+    "answer": "B",
+    "answer_text": "Only particles at the surface with sufficient energy escape",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on changes of state in terms of molecular motion.",
+      "principle": "Evaporation is a surface phenomenon involving only those liquid particles with enough energy to escape.",
+      "steps": [
+        "Evaporation takes place at the surface of a liquid.",
+        "Only the more energetic particles can break away from the surface and enter the gas phase.",
+        "It can happen below the boiling point.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Only particles at the surface with sufficient energy escape",
+      "simple_explanation": "During evaporation, only surface particles with enough energy escape from the liquid."
+    },
+    "tags": [
+      "changes_of_state",
+      "evaporation",
+      "surface_particles"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q106",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Changes of State in Terms of Molecular Motion",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The cooling effect produced during evaporation is mainly because",
+    "options": {
+      "A": "the least energetic molecules leave the liquid",
+      "B": "the more energetic molecules leave the liquid",
+      "C": "the liquid gains heat from the surroundings instantly",
+      "D": "the particles stop moving completely"
+    },
+    "answer": "B",
+    "answer_text": "the more energetic molecules leave the liquid",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on changes of state in terms of molecular motion.",
+      "principle": "Evaporation removes the more energetic particles, so the remaining liquid has a lower average kinetic energy.",
+      "steps": [
+        "In evaporation, the molecules that escape from the surface are usually those with the highest kinetic energy.",
+        "Their removal lowers the average kinetic energy of the particles left behind.",
+        "Since temperature is related to average kinetic energy, the liquid cools.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. the more energetic molecules leave the liquid",
+      "simple_explanation": "Evaporation causes cooling because the more energetic molecules escape first."
+    },
+    "tags": [
+      "changes_of_state",
+      "evaporation",
+      "cooling_effect"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q107",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Changes of State in Terms of Molecular Motion",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Boiling occurs when the vapour pressure of a liquid becomes equal to the",
+    "options": {
+      "A": "atmospheric pressure",
+      "B": "kinetic energy",
+      "C": "melting point",
+      "D": "density of the liquid"
+    },
+    "answer": "A",
+    "answer_text": "atmospheric pressure",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on changes of state in terms of molecular motion.",
+      "principle": "A liquid boils when its vapour pressure matches the external atmospheric pressure.",
+      "steps": [
+        "As a liquid is heated, its vapour pressure increases.",
+        "Boiling starts when the vapour pressure becomes equal to the atmospheric pressure on the liquid.",
+        "At that point, bubbles can form throughout the liquid.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. atmospheric pressure",
+      "simple_explanation": "Boiling begins when the vapour pressure equals the atmospheric pressure."
+    },
+    "tags": [
+      "changes_of_state",
+      "boiling",
+      "vapour_pressure"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q108",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Brownian Movement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Brownian movement is more noticeable for very small suspended particles because they",
+    "options": {
+      "A": "have less mass and are more easily displaced by molecular impacts",
+      "B": "create their own energy",
+      "C": "are always hotter than the medium",
+      "D": "are not affected by collisions"
+    },
+    "answer": "A",
+    "answer_text": "have less mass and are more easily displaced by molecular impacts",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on brownian movement.",
+      "principle": "Smaller particles are more easily moved by random bombardment from molecules of the medium.",
+      "steps": [
+        "Brownian motion results from collisions between the medium's molecules and suspended particles.",
+        "Very small particles have less mass and inertia.",
+        "So unequal collisions can shift them more easily and visibly.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. have less mass and are more easily displaced by molecular impacts",
+      "simple_explanation": "Brownian movement is easier to observe in tiny particles because they are more easily moved by molecular collisions."
+    },
+    "tags": [
+      "brownian_motion",
+      "particle_size",
+      "molecular_impacts"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q109",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Brownian Movement",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Brownian movement would be expected to decrease if",
+    "options": {
+      "A": "the temperature is raised",
+      "B": "the molecules of the medium move faster",
+      "C": "the temperature is lowered",
+      "D": "the suspended particles are made smaller"
+    },
+    "answer": "C",
+    "answer_text": "the temperature is lowered",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on brownian movement.",
+      "principle": "Lower temperature reduces the kinetic energy of the medium's molecules, making collisions less vigorous.",
+      "steps": [
+        "Brownian motion depends on the kinetic energy and speed of the molecules of the surrounding medium.",
+        "Lowering the temperature reduces their average kinetic energy.",
+        "As a result, the impacts on the suspended particles become less energetic and the motion becomes less vigorous.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. the temperature is lowered",
+      "simple_explanation": "Brownian movement decreases when temperature is lowered because molecular impacts become less vigorous."
+    },
+    "tags": [
+      "brownian_motion",
+      "temperature",
+      "kinetic_energy"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q110",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Outline of the Kinetic Theory of Matter",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which property of solids is best explained by the close packing of their particles?",
+    "options": {
+      "A": "High compressibility",
+      "B": "Lack of definite volume",
+      "C": "Rigidity",
+      "D": "Ability to fill a container"
+    },
+    "answer": "C",
+    "answer_text": "Rigidity",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on outline of the kinetic theory of matter.",
+      "principle": "The close packing and strong attractions in solids explain their rigidity.",
+      "steps": [
+        "Particles in solids are closely packed and strongly attracted to one another.",
+        "They cannot move from place to place freely.",
+        "This makes solids resist changes in shape, giving them rigidity.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. Rigidity",
+      "simple_explanation": "Solids are rigid because their particles are closely packed and strongly held."
+    },
+    "tags": [
+      "kinetic_theory",
+      "solids",
+      "rigidity"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q111",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Boyle’s Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A gas occupies 100 cm³ at 2 atm. What volume will it occupy at 4 atm if temperature is constant?",
+    "options": {
+      "A": "25 cm³",
+      "B": "50 cm³",
+      "C": "100 cm³",
+      "D": "200 cm³"
+    },
+    "answer": "B",
+    "answer_text": "50 cm³",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: boyle’s law.",
+      "principle": "Use Boyle’s law P₁V₁ = P₂V₂.",
+      "steps": [
+        "P₁ = 2 atm, V₁ = 100 cm³ and P₂ = 4 atm.",
+        "V₂ = (P₁V₁)/P₂ = (2 × 100)/4.",
+        "This gives 50 cm³.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. 50 cm³",
+      "simple_explanation": "At 4 atm, the gas volume becomes 50 cm³."
+    },
+    "tags": [
+      "boyles_law",
+      "calculation",
+      "atm"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q112",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Boyle’s Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "If the volume of a fixed mass of gas is reduced to one-quarter of its original value at constant temperature, the pressure becomes",
+    "options": {
+      "A": "one-quarter of the original pressure",
+      "B": "one-half of the original pressure",
+      "C": "four times the original pressure",
+      "D": "eight times the original pressure"
+    },
+    "answer": "C",
+    "answer_text": "four times the original pressure",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: boyle’s law.",
+      "principle": "Pressure and volume are inversely proportional in Boyle’s law.",
+      "steps": [
+        "If V₂ = V₁/4, then using P₁V₁ = P₂V₂ gives P₂ = P₁V₁/(V₁/4).",
+        "This simplifies to P₂ = 4P₁.",
+        "So the pressure becomes four times the original value.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. four times the original pressure",
+      "simple_explanation": "Reducing the volume to one-quarter makes the pressure four times the original value."
+    },
+    "tags": [
+      "boyles_law",
+      "inverse_relationship",
+      "pressure_change"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q113",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Boyle’s Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following quantities is plotted against 1/V to obtain a straight line for Boyle’s law?",
+    "options": {
+      "A": "Pressure",
+      "B": "Temperature",
+      "C": "Mass",
+      "D": "Density"
+    },
+    "answer": "A",
+    "answer_text": "Pressure",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: boyle’s law.",
+      "principle": "Since P is directly proportional to 1/V, a graph of P against 1/V is a straight line.",
+      "steps": [
+        "Boyle’s law states P ∝ 1/V at constant temperature.",
+        "Whenever one variable is directly proportional to another, plotting them gives a straight line.",
+        "So a plot of pressure against reciprocal volume gives a straight line.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. Pressure",
+      "simple_explanation": "Pressure plotted against 1/V gives a straight line for Boyle’s law."
+    },
+    "tags": [
+      "boyles_law",
+      "graph",
+      "reciprocal_volume"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q114",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Boyle’s Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas at 900 mmHg occupies 80 cm³. What will be its pressure if the volume is increased to 120 cm³ at constant temperature?",
+    "options": {
+      "A": "300 mmHg",
+      "B": "450 mmHg",
+      "C": "600 mmHg",
+      "D": "1350 mmHg"
+    },
+    "answer": "C",
+    "answer_text": "600 mmHg",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: boyle’s law.",
+      "principle": "Use P₁V₁ = P₂V₂.",
+      "steps": [
+        "Given P₁ = 900 mmHg, V₁ = 80 cm³ and V₂ = 120 cm³.",
+        "P₂ = (P₁V₁)/V₂ = (900 × 80)/120.",
+        "This gives 600 mmHg.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. 600 mmHg",
+      "simple_explanation": "The new pressure is 600 mmHg."
+    },
+    "tags": [
+      "boyles_law",
+      "mmhg",
+      "pressure_calculation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q115",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Boyle’s Law",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Boyle’s law is an example of an",
+    "options": {
+      "A": "isothermal law",
+      "B": "isobaric law",
+      "C": "isotopic law",
+      "D": "electrolytic law"
+    },
+    "answer": "A",
+    "answer_text": "isothermal law",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: boyle’s law.",
+      "principle": "Boyle’s law is studied at constant temperature, hence it is isothermal.",
+      "steps": [
+        "The word isothermal means constant temperature.",
+        "Boyle’s law examines pressure-volume changes while temperature is held constant.",
+        "Therefore it is an isothermal law.",
+        "Hence option A is correct."
+      ],
+      "final_answer": "A. isothermal law",
+      "simple_explanation": "Boyle’s law is an isothermal law."
+    },
+    "tags": [
+      "boyles_law",
+      "isothermal",
+      "terminology"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q116",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Boyle’s Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A gas occupies 600 cm³ at pressure P. If the pressure is halved at constant temperature, the volume becomes",
+    "options": {
+      "A": "150 cm³",
+      "B": "300 cm³",
+      "C": "600 cm³",
+      "D": "1200 cm³"
+    },
+    "answer": "D",
+    "answer_text": "1200 cm³",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: boyle’s law.",
+      "principle": "Halving the pressure doubles the volume according to Boyle’s law.",
+      "steps": [
+        "Pressure and volume are inversely proportional at constant temperature.",
+        "If the pressure is halved, the volume must double.",
+        "Double of 600 cm³ is 1200 cm³.",
+        "Therefore option D is correct."
+      ],
+      "final_answer": "D. 1200 cm³",
+      "simple_explanation": "Halving the pressure doubles the volume to 1200 cm³."
+    },
+    "tags": [
+      "boyles_law",
+      "halving_pressure",
+      "doubling_volume"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q117",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Boyle’s Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas exerts 3 atm in a 250 cm³ vessel. It is transferred to a 500 cm³ vessel at the same temperature. The new pressure is",
+    "options": {
+      "A": "0.75 atm",
+      "B": "1.5 atm",
+      "C": "3.0 atm",
+      "D": "6.0 atm"
+    },
+    "answer": "B",
+    "answer_text": "1.5 atm",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: boyle’s law.",
+      "principle": "Use Boyle’s law because the temperature is unchanged.",
+      "steps": [
+        "P₁ = 3 atm, V₁ = 250 cm³, and V₂ = 500 cm³.",
+        "P₂ = (P₁V₁)/V₂ = (3 × 250)/500.",
+        "This gives 1.5 atm.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. 1.5 atm",
+      "simple_explanation": "The new pressure is 1.5 atm."
+    },
+    "tags": [
+      "boyles_law",
+      "transfer",
+      "atm"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q118",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Boyle’s Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "At constant temperature, which pair of values obeys Boyle’s law?",
+    "options": {
+      "A": "P doubles and V doubles",
+      "B": "P halves and V halves",
+      "C": "P doubles and V halves",
+      "D": "P remains constant and V doubles"
+    },
+    "answer": "C",
+    "answer_text": "P doubles and V halves",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: boyle’s law.",
+      "principle": "Pressure and volume change inversely in Boyle’s law.",
+      "steps": [
+        "When one variable increases, the other decreases in the same proportion.",
+        "If the pressure doubles, the volume must halve to keep PV constant.",
+        "This is the inverse relation described by Boyle’s law.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. P doubles and V halves",
+      "simple_explanation": "Boyle’s law is obeyed when pressure doubles and volume halves."
+    },
+    "tags": [
+      "boyles_law",
+      "inverse_proportion",
+      "pair_values"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q119",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Boyle’s Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A sample of gas has P₁V₁ = 480. If its new pressure is 12 units, its new volume is",
+    "options": {
+      "A": "20 units",
+      "B": "30 units",
+      "C": "40 units",
+      "D": "60 units"
+    },
+    "answer": "C",
+    "answer_text": "40 units",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: boyle’s law.",
+      "principle": "Since PV remains constant, divide the constant product by the new pressure.",
+      "steps": [
+        "Boyle’s law gives PV = constant = 480.",
+        "If the new pressure is 12, then V = 480/12.",
+        "This gives 40 units.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. 40 units",
+      "simple_explanation": "The new volume is 40 units."
+    },
+    "tags": [
+      "boyles_law",
+      "constant_product",
+      "simple_calculation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q120",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Boyle’s Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following will increase the pressure of a gas sample if temperature is constant?",
+    "options": {
+      "A": "Increasing its volume",
+      "B": "Decreasing its volume",
+      "C": "Removing all the walls of the container",
+      "D": "Making the gas lighter"
+    },
+    "answer": "B",
+    "answer_text": "Decreasing its volume",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: boyle’s law.",
+      "principle": "At constant temperature, decreasing volume increases pressure.",
+      "steps": [
+        "Boyle’s law gives an inverse relationship between pressure and volume.",
+        "If the gas is compressed into a smaller volume, collisions with the walls become more frequent.",
+        "This raises the pressure.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Decreasing its volume",
+      "simple_explanation": "Decreasing the volume increases the pressure when temperature is constant."
+    },
+    "tags": [
+      "boyles_law",
+      "compression",
+      "pressure"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q121",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Charles’ Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A gas occupies 80 cm³ at 200 K. What volume will it occupy at 500 K if pressure is constant?",
+    "options": {
+      "A": "120 cm³",
+      "B": "160 cm³",
+      "C": "200 cm³",
+      "D": "240 cm³"
+    },
+    "answer": "C",
+    "answer_text": "200 cm³",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: charles’ law.",
+      "principle": "Use Charles’ law V₁/T₁ = V₂/T₂.",
+      "steps": [
+        "V₂ = V₁ × T₂/T₁ = 80 × 500/200.",
+        "This equals 200 cm³.",
+        "Therefore option C is correct.",
+        "The volume increases because the temperature increases."
+      ],
+      "final_answer": "C. 200 cm³",
+      "simple_explanation": "At 500 K, the gas occupies 200 cm³."
+    },
+    "tags": [
+      "charles_law",
+      "calculation",
+      "kelvin"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q122",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Charles’ Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas occupies 300 cm³ at 17°C. What will be its volume at 117°C at constant pressure?",
+    "options": {
+      "A": "200 cm³",
+      "B": "300 cm³",
+      "C": "403 cm³",
+      "D": "507 cm³"
+    },
+    "answer": "C",
+    "answer_text": "403 cm³",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: charles’ law.",
+      "principle": "Convert Celsius temperatures to kelvin and use Charles’ law.",
+      "steps": [
+        "17°C = 290 K and 117°C = 390 K.",
+        "V₂ = 300 × 390/290.",
+        "This gives about 403.4 cm³.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. 403 cm³",
+      "simple_explanation": "Using Charles’ law, the final volume is about 403 cm³."
+    },
+    "tags": [
+      "charles_law",
+      "celsius_to_kelvin",
+      "volume"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q123",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Charles’ Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Charles’ law is sometimes called an",
+    "options": {
+      "A": "isothermal law",
+      "B": "isobaric law",
+      "C": "adiabatic law",
+      "D": "ionic law"
+    },
+    "answer": "B",
+    "answer_text": "isobaric law",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: charles’ law.",
+      "principle": "Charles’ law is studied at constant pressure, so it is isobaric.",
+      "steps": [
+        "The term isobaric means constant pressure.",
+        "Charles’ law examines the change in volume with temperature while pressure is constant.",
+        "Therefore Charles’ law is an isobaric law.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. isobaric law",
+      "simple_explanation": "Charles’ law is an isobaric law."
+    },
+    "tags": [
+      "charles_law",
+      "isobaric",
+      "terminology"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q124",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Charles’ Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "If the kelvin temperature of a gas is reduced to one-half at constant pressure, its volume becomes",
+    "options": {
+      "A": "twice the original volume",
+      "B": "unchanged",
+      "C": "half the original volume",
+      "D": "one-quarter the original volume"
+    },
+    "answer": "C",
+    "answer_text": "half the original volume",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: charles’ law.",
+      "principle": "Volume is directly proportional to absolute temperature in Charles’ law.",
+      "steps": [
+        "Charles’ law states V ∝ T in kelvin.",
+        "If temperature is reduced to one-half, the volume is also reduced to one-half.",
+        "This direct relationship is fundamental to Charles’ law.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. half the original volume",
+      "simple_explanation": "Halving the kelvin temperature halves the volume."
+    },
+    "tags": [
+      "charles_law",
+      "direct_proportion",
+      "half_temperature"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q125",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Combined Gas Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The combined gas law is useful when",
+    "options": {
+      "A": "only pressure changes",
+      "B": "only volume changes",
+      "C": "pressure, volume and temperature all change for a fixed amount of gas",
+      "D": "the gas reacts chemically"
+    },
+    "answer": "C",
+    "answer_text": "pressure, volume and temperature all change for a fixed amount of gas",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: combined gas law.",
+      "principle": "The combined gas law is used when more than one gas variable changes for a fixed amount of gas.",
+      "steps": [
+        "Boyle’s law handles pressure-volume changes at constant temperature.",
+        "Charles’ law handles volume-temperature changes at constant pressure.",
+        "When pressure, volume and temperature change together, the combined gas law is used.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. pressure, volume and temperature all change for a fixed amount of gas",
+      "simple_explanation": "The combined gas law is used when pressure, volume and temperature all change for a fixed amount of gas."
+    },
+    "tags": [
+      "combined_gas_law",
+      "application",
+      "fixed_amount"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q126",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Combined Gas Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas has pressure 2 atm, volume 3 dm³ and temperature 300 K. If its new pressure is 1 atm and its new temperature is 450 K, its new volume is",
+    "options": {
+      "A": "2.25 dm³",
+      "B": "4.50 dm³",
+      "C": "6.75 dm³",
+      "D": "9.00 dm³"
+    },
+    "answer": "D",
+    "answer_text": "9.00 dm³",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: combined gas law.",
+      "principle": "Use P₁V₁/T₁ = P₂V₂/T₂.",
+      "steps": [
+        "V₂ = (P₁V₁T₂)/(P₂T₁) = (2 × 3 × 450)/(1 × 300).",
+        "This gives 9.0 dm³.",
+        "Because the pressure decreases and the temperature increases, the volume rises substantially.",
+        "Therefore option D is correct."
+      ],
+      "final_answer": "D. 9.00 dm³",
+      "simple_explanation": "Applying the combined gas law gives 9.00 dm³."
+    },
+    "tags": [
+      "combined_gas_law",
+      "pressure_temperature",
+      "volume"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q127",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Combined Gas Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A gas occupies 400 cm³ at 400 K and 800 mmHg. What will be its volume at 400 K and 400 mmHg?",
+    "options": {
+      "A": "100 cm³",
+      "B": "200 cm³",
+      "C": "400 cm³",
+      "D": "800 cm³"
+    },
+    "answer": "D",
+    "answer_text": "800 cm³",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: combined gas law.",
+      "principle": "At constant temperature, the combined gas law reduces to Boyle’s law.",
+      "steps": [
+        "Since temperature is unchanged, pressure and volume vary inversely.",
+        "P₁V₁ = P₂V₂ gives V₂ = (800 × 400)/400.",
+        "This equals 800 cm³.",
+        "Therefore option D is correct."
+      ],
+      "final_answer": "D. 800 cm³",
+      "simple_explanation": "Halving the pressure doubles the volume to 800 cm³."
+    },
+    "tags": [
+      "combined_gas_law",
+      "reduces_to_boyle",
+      "constant_temperature"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q128",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Combined Gas Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas has volume 1.5 dm³ at 300 K and 2 atm. At what temperature will its volume become 3.0 dm³ if the pressure is reduced to 1 atm?",
+    "options": {
+      "A": "150 K",
+      "B": "300 K",
+      "C": "450 K",
+      "D": "600 K"
+    },
+    "answer": "B",
+    "answer_text": "300 K",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: combined gas law.",
+      "principle": "Use the combined gas law and solve for T₂.",
+      "steps": [
+        "Use P₁V₁/T₁ = P₂V₂/T₂.",
+        "So T₂ = (P₂V₂T₁)/(P₁V₁) = (1 × 3.0 × 300)/(2 × 1.5).",
+        "This gives 300 K.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. 300 K",
+      "simple_explanation": "The required temperature is 300 K."
+    },
+    "tags": [
+      "combined_gas_law",
+      "temperature_calculation",
+      "atm"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q129",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Charles’ Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A graph of volume against temperature in °C for a gas, extrapolated backward, cuts the temperature axis near",
+    "options": {
+      "A": "0°C",
+      "B": "-100°C",
+      "C": "-273°C",
+      "D": "273°C"
+    },
+    "answer": "C",
+    "answer_text": "-273°C",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: charles’ law.",
+      "principle": "Charles’ law leads to the concept of absolute zero near -273°C.",
+      "steps": [
+        "As temperature decreases, the gas volume decreases linearly.",
+        "Extrapolating the V-versus-°C line backward gives a zero-volume intercept near -273°C.",
+        "This temperature corresponds to absolute zero on the kelvin scale.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. -273°C",
+      "simple_explanation": "The graph cuts the temperature axis near -273°C, which is absolute zero."
+    },
+    "tags": [
+      "charles_law",
+      "absolute_zero",
+      "graph"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q130",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Charles’ Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas occupies 2.5 dm³ at 250 K. What will be its volume at 350 K if pressure remains constant?",
+    "options": {
+      "A": "1.79 dm³",
+      "B": "2.50 dm³",
+      "C": "3.50 dm³",
+      "D": "4.20 dm³"
+    },
+    "answer": "C",
+    "answer_text": "3.50 dm³",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: charles’ law.",
+      "principle": "Use Charles’ law: V₂ = V₁T₂/T₁.",
+      "steps": [
+        "V₂ = 2.5 × 350/250.",
+        "This equals 3.5 dm³.",
+        "Because the temperature rises by a factor of 1.4, the volume also rises by a factor of 1.4.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. 3.50 dm³",
+      "simple_explanation": "At 350 K, the volume is 3.50 dm³."
+    },
+    "tags": [
+      "charles_law",
+      "kelvin",
+      "dm3"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q131",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Combined Gas Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following remains constant in the combined gas law for a fixed mass of gas?",
+    "options": {
+      "A": "PV/T",
+      "B": "P/T",
+      "C": "V/T only",
+      "D": "PV only"
+    },
+    "answer": "A",
+    "answer_text": "PV/T",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: combined gas law.",
+      "principle": "For a fixed amount of gas, the quantity PV/T remains constant.",
+      "steps": [
+        "The combined gas law is P₁V₁/T₁ = P₂V₂/T₂.",
+        "This means that for a fixed amount of gas, PV/T is constant.",
+        "That is the invariant form of the law.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. PV/T",
+      "simple_explanation": "For a fixed mass of gas, PV/T remains constant."
+    },
+    "tags": [
+      "combined_gas_law",
+      "constant",
+      "pv_over_t"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q132",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Combined Gas Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas at 1 atm and 273 K occupies 2.24 dm³. What volume will it occupy at 2 atm and 546 K?",
+    "options": {
+      "A": "1.12 dm³",
+      "B": "2.24 dm³",
+      "C": "4.48 dm³",
+      "D": "8.96 dm³"
+    },
+    "answer": "B",
+    "answer_text": "2.24 dm³",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: combined gas law.",
+      "principle": "Use the combined gas law and observe that temperature and pressure change by the same factor.",
+      "steps": [
+        "The temperature doubles from 273 K to 546 K.",
+        "The pressure also doubles from 1 atm to 2 atm.",
+        "These effects cancel in the expression V₂ = V₁ × (T₂/T₁) × (P₁/P₂).",
+        "So V₂ = 2.24 × 2 × 1/2 = 2.24 dm³.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. 2.24 dm³",
+      "simple_explanation": "Because both temperature and pressure double, the volume remains 2.24 dm³."
+    },
+    "tags": [
+      "combined_gas_law",
+      "cancelling_changes",
+      "volume"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q133",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Charles’ Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The direct proportionality between gas volume and temperature in Charles’ law is valid when temperature is measured on the",
+    "options": {
+      "A": "Celsius scale",
+      "B": "kelvin scale",
+      "C": "Fahrenheit scale",
+      "D": "Rankine scale only"
+    },
+    "answer": "B",
+    "answer_text": "kelvin scale",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: charles’ law.",
+      "principle": "Charles’ law requires absolute temperature, which is measured in kelvin.",
+      "steps": [
+        "A direct proportionality must pass through the origin.",
+        "This occurs when temperature is measured from absolute zero, that is, in kelvin.",
+        "Using Celsius does not give the correct simple direct proportion.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. kelvin scale",
+      "simple_explanation": "Charles’ law uses the kelvin scale for a true direct proportionality."
+    },
+    "tags": [
+      "charles_law",
+      "kelvin_scale",
+      "direct_proportion"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q134",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Combined Gas Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas is compressed from 500 cm³ to 250 cm³ while its temperature falls from 400 K to 200 K. The pressure will",
+    "options": {
+      "A": "remain unchanged",
+      "B": "double",
+      "C": "halve",
+      "D": "become four times"
+    },
+    "answer": "A",
+    "answer_text": "remain unchanged",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: combined gas law.",
+      "principle": "Use the combined gas law to compare the ratios.",
+      "steps": [
+        "For a fixed gas, P is proportional to T/V.",
+        "Initially T/V = 400/500 = 0.8.",
+        "Finally T/V = 200/250 = 0.8.",
+        "Since the ratio is unchanged, the pressure remains unchanged.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. remain unchanged",
+      "simple_explanation": "Because temperature and volume both halve, the pressure remains unchanged."
+    },
+    "tags": [
+      "combined_gas_law",
+      "proportional_reasoning",
+      "pressure"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q135",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Charles’ Law",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Absolute zero is approximately",
+    "options": {
+      "A": "0°C",
+      "B": "-100°C",
+      "C": "-273°C",
+      "D": "273°C"
+    },
+    "answer": "C",
+    "answer_text": "-273°C",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: charles’ law.",
+      "principle": "Absolute zero corresponds to 0 K, which is about -273°C.",
+      "steps": [
+        "The kelvin and Celsius scales differ by 273 units approximately.",
+        "0 K corresponds to -273°C.",
+        "This temperature is known as absolute zero.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. -273°C",
+      "simple_explanation": "Absolute zero is approximately -273°C."
+    },
+    "tags": [
+      "charles_law",
+      "absolute_zero",
+      "temperature"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q136",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Combined Gas Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which gas law is obtained from the combined gas law when pressure is kept constant?",
+    "options": {
+      "A": "Boyle’s law",
+      "B": "Charles’ law",
+      "C": "Dalton’s law",
+      "D": "Graham’s law"
+    },
+    "answer": "B",
+    "answer_text": "Charles’ law",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: combined gas law.",
+      "principle": "If pressure is constant, the combined gas law reduces to V/T = constant, which is Charles’ law.",
+      "steps": [
+        "The combined gas law is P₁V₁/T₁ = P₂V₂/T₂.",
+        "If pressure remains the same, P₁ = P₂ and they cancel.",
+        "This gives V₁/T₁ = V₂/T₂.",
+        "That is Charles’ law.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Charles’ law",
+      "simple_explanation": "At constant pressure, the combined gas law reduces to Charles’ law."
+    },
+    "tags": [
+      "combined_gas_law",
+      "charles_law",
+      "reduction"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q137",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Combined Gas Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas occupies 600 cm³ at 1.2 atm and 300 K. What is its pressure when the volume becomes 400 cm³ and the temperature becomes 200 K?",
+    "options": {
+      "A": "0.4 atm",
+      "B": "0.8 atm",
+      "C": "1.2 atm",
+      "D": "1.8 atm"
+    },
+    "answer": "C",
+    "answer_text": "1.2 atm",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: combined gas law.",
+      "principle": "Use the combined gas law and solve for the final pressure.",
+      "steps": [
+        "P₂ = P₁V₁T₂/(T₁V₂).",
+        "Substitute: P₂ = 1.2 × 600 × 200 / (300 × 400).",
+        "This equals 1.2 atm.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. 1.2 atm",
+      "simple_explanation": "The final pressure is 1.2 atm."
+    },
+    "tags": [
+      "combined_gas_law",
+      "pressure_calculation",
+      "atm"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q138",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Charles’ Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A gas occupies 150 cm³ at 250 K. When heated at constant pressure, its volume becomes 210 cm³. The final temperature is",
+    "options": {
+      "A": "300 K",
+      "B": "325 K",
+      "C": "350 K",
+      "D": "400 K"
+    },
+    "answer": "C",
+    "answer_text": "350 K",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: charles’ law.",
+      "principle": "Use Charles’ law and solve for T₂.",
+      "steps": [
+        "T₂ = T₁ × V₂/V₁ = 250 × 210/150.",
+        "This equals 350 K.",
+        "The temperature must increase because the volume increased at constant pressure.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. 350 K",
+      "simple_explanation": "The final temperature is 350 K."
+    },
+    "tags": [
+      "charles_law",
+      "temperature",
+      "volume_ratio"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q139",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Graham’s Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The gas that will effuse most slowly under the same conditions is",
+    "options": {
+      "A": "H₂",
+      "B": "He",
+      "C": "N₂",
+      "D": "CO₂"
+    },
+    "answer": "D",
+    "answer_text": "CO₂",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: graham’s law.",
+      "principle": "By Graham’s law, the gas with the largest relative molecular mass moves most slowly.",
+      "steps": [
+        "Relative molecular masses are H₂ = 2, He = 4, N₂ = 28 and CO₂ = 44.",
+        "The greatest value is for CO₂.",
+        "Therefore CO₂ effuses most slowly.",
+        "Hence option D is correct."
+      ],
+      "final_answer": "D. CO₂",
+      "simple_explanation": "CO₂ effuses most slowly because it has the highest relative molecular mass among the options."
+    },
+    "tags": [
+      "grahams_law",
+      "effusion",
+      "slowest"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q140",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Graham’s Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "If hydrogen diffuses 6 times as fast as gas X, the relative molecular mass of gas X is",
+    "options": {
+      "A": "12",
+      "B": "24",
+      "C": "36",
+      "D": "72"
+    },
+    "answer": "D",
+    "answer_text": "72",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: graham’s law.",
+      "principle": "Use Graham’s law with hydrogen's relative molecular mass 2.",
+      "steps": [
+        "Graham’s law gives r_H₂/r_X = √(M_X/M_H₂).",
+        "Given r_H₂/r_X = 6 and M_H₂ = 2.",
+        "So 6 = √(M_X/2). Squaring gives 36 = M_X/2.",
+        "Therefore M_X = 72.",
+        "Hence option D is correct."
+      ],
+      "final_answer": "D. 72",
+      "simple_explanation": "If hydrogen diffuses 6 times faster, gas X has relative molecular mass 72."
+    },
+    "tags": [
+      "grahams_law",
+      "hydrogen",
+      "molar_mass"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q141",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Graham’s Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The ratio of the rates of diffusion of gases X and Y is 2:1. If the relative molecular mass of X is 16, that of Y is",
+    "options": {
+      "A": "4",
+      "B": "8",
+      "C": "32",
+      "D": "64"
+    },
+    "answer": "D",
+    "answer_text": "64",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: graham’s law.",
+      "principle": "Use Graham’s law: r_X/r_Y = √(M_Y/M_X).",
+      "steps": [
+        "Given r_X/r_Y = 2 and M_X = 16.",
+        "So 2 = √(M_Y/16).",
+        "Squaring gives 4 = M_Y/16.",
+        "Therefore M_Y = 64.",
+        "Hence option D is correct."
+      ],
+      "final_answer": "D. 64",
+      "simple_explanation": "If X diffuses twice as fast and has relative molecular mass 16, Y has relative molecular mass 64."
+    },
+    "tags": [
+      "grahams_law",
+      "rate_ratio",
+      "calculation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q142",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Graham’s Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Why does a lighter gas diffuse faster than a heavier one under the same conditions?",
+    "options": {
+      "A": "It has lower density and higher average speed",
+      "B": "It has stronger intermolecular force",
+      "C": "It has higher vapour density",
+      "D": "It has a higher boiling point"
+    },
+    "answer": "A",
+    "answer_text": "It has lower density and higher average speed",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: graham’s law.",
+      "principle": "Lighter gas molecules move faster on average, so they diffuse more quickly.",
+      "steps": [
+        "Graham’s law relates diffusion rate to the inverse square root of molar mass.",
+        "A gas with lower molecular mass therefore has a higher average molecular speed under the same conditions.",
+        "This makes it spread or effuse faster.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. It has lower density and higher average speed",
+      "simple_explanation": "A lighter gas diffuses faster because its molecules have higher average speed under the same conditions."
+    },
+    "tags": [
+      "grahams_law",
+      "molecular_speed",
+      "lighter_gas"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q143",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Dalton’s Law of Partial Pressure",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "If a mixture of non-reacting gases exerts a total pressure of 900 mmHg and two of the gases exert 250 mmHg and 150 mmHg, the third gas exerts",
+    "options": {
+      "A": "300 mmHg",
+      "B": "400 mmHg",
+      "C": "500 mmHg",
+      "D": "650 mmHg"
+    },
+    "answer": "C",
+    "answer_text": "500 mmHg",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: dalton’s law of partial pressure.",
+      "principle": "Subtract the sum of the known partial pressures from the total pressure.",
+      "steps": [
+        "Known partial pressures: 250 mmHg and 150 mmHg.",
+        "Their sum is 400 mmHg.",
+        "Third gas pressure = 900 - 400 = 500 mmHg.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. 500 mmHg",
+      "simple_explanation": "The third gas exerts a partial pressure of 500 mmHg."
+    },
+    "tags": [
+      "daltons_law",
+      "partial_pressure",
+      "subtraction"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q144",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Dalton’s Law of Partial Pressure",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The total pressure of a dry gas mixture is 600 mmHg. If oxygen contributes one-third of the total pressure and nitrogen contributes one-half of the total pressure, the partial pressure of the remaining gas is",
+    "options": {
+      "A": "50 mmHg",
+      "B": "100 mmHg",
+      "C": "150 mmHg",
+      "D": "200 mmHg"
+    },
+    "answer": "B",
+    "answer_text": "100 mmHg",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: dalton’s law of partial pressure.",
+      "principle": "Find the pressures due to oxygen and nitrogen, then subtract from the total.",
+      "steps": [
+        "Oxygen pressure = (1/3) × 600 = 200 mmHg.",
+        "Nitrogen pressure = (1/2) × 600 = 300 mmHg.",
+        "Their sum is 500 mmHg.",
+        "Remaining gas pressure = 600 - 500 = 100 mmHg.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. 100 mmHg",
+      "simple_explanation": "The remaining gas exerts 100 mmHg."
+    },
+    "tags": [
+      "daltons_law",
+      "fractions",
+      "mixture"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q145",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Dalton’s Law of Partial Pressure",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "When gases in a mixture do not react chemically, the pressure each gas would exert if it alone occupied the container is called its",
+    "options": {
+      "A": "osmotic pressure",
+      "B": "critical pressure",
+      "C": "partial pressure",
+      "D": "vapour density"
+    },
+    "answer": "C",
+    "answer_text": "partial pressure",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: dalton’s law of partial pressure.",
+      "principle": "That individual contribution is defined as partial pressure.",
+      "steps": [
+        "Dalton’s law treats each gas in a non-reacting mixture as acting independently.",
+        "The pressure due to one component alone is called its partial pressure.",
+        "These partial pressures add to give the total pressure.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. partial pressure",
+      "simple_explanation": "The pressure a gas would exert alone in the mixture’s container is its partial pressure."
+    },
+    "tags": [
+      "daltons_law",
+      "definition",
+      "component_gas"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q146",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Dalton’s Law of Partial Pressure",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A container holds hydrogen, oxygen and nitrogen with partial pressures 100 kPa, 150 kPa and 250 kPa respectively. The total pressure is",
+    "options": {
+      "A": "250 kPa",
+      "B": "350 kPa",
+      "C": "500 kPa",
+      "D": "600 kPa"
+    },
+    "answer": "C",
+    "answer_text": "500 kPa",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: dalton’s law of partial pressure.",
+      "principle": "Dalton’s law says total pressure is the sum of the partial pressures.",
+      "steps": [
+        "Add the partial pressures: 100 + 150 + 250.",
+        "This gives 500 kPa.",
+        "That is the total pressure of the mixture.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. 500 kPa",
+      "simple_explanation": "The total pressure is 500 kPa."
+    },
+    "tags": [
+      "daltons_law",
+      "kpa",
+      "total_pressure"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q147",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Graham’s Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "According to Graham’s law, the ratio of rates of diffusion of gases A and B is",
+    "options": {
+      "A": "M_A/M_B",
+      "B": "√(M_A/M_B)",
+      "C": "√(M_B/M_A)",
+      "D": "M_B/M_A only"
+    },
+    "answer": "C",
+    "answer_text": "√(M_B/M_A)",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: graham’s law.",
+      "principle": "The diffusion rate is inversely proportional to the square root of molar mass.",
+      "steps": [
+        "If r ∝ 1/√M, then r_A/r_B = √(M_B/M_A).",
+        "This form compares the rates of two gases directly.",
+        "It shows that the lighter gas diffuses faster.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. √(M_B/M_A)",
+      "simple_explanation": "The ratio of diffusion rates is r_A/r_B = √(M_B/M_A)."
+    },
+    "tags": [
+      "grahams_law",
+      "ratio_formula",
+      "molar_mass"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q148",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Dalton’s Law of Partial Pressure",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement is true about Dalton’s law?",
+    "options": {
+      "A": "The total pressure is always equal to the largest partial pressure",
+      "B": "The total pressure is less than each partial pressure",
+      "C": "The total pressure is the sum of the partial pressures of the component gases",
+      "D": "All component gases have equal partial pressures"
+    },
+    "answer": "C",
+    "answer_text": "The total pressure is the sum of the partial pressures of the component gases",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: dalton’s law of partial pressure.",
+      "principle": "Dalton’s law states that total pressure is the sum of the individual partial pressures.",
+      "steps": [
+        "Each gas in a non-reacting mixture contributes a certain pressure.",
+        "Adding these individual pressures gives the total pressure.",
+        "This is the core statement of Dalton’s law.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. The total pressure is the sum of the partial pressures of the component gases",
+      "simple_explanation": "Dalton’s law states that total pressure equals the sum of the partial pressures."
+    },
+    "tags": [
+      "daltons_law",
+      "statement",
+      "sum"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q149",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Graham’s Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Gas X has relative molecular mass 9 and gas Y has relative molecular mass 36. Gas X diffuses",
+    "options": {
+      "A": "half as fast as Y",
+      "B": "twice as fast as Y",
+      "C": "four times as fast as Y",
+      "D": "the same as Y"
+    },
+    "answer": "B",
+    "answer_text": "twice as fast as Y",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: graham’s law.",
+      "principle": "Use Graham’s law: r_X/r_Y = √(M_Y/M_X).",
+      "steps": [
+        "Substitute M_X = 9 and M_Y = 36.",
+        "r_X/r_Y = √(36/9) = √4 = 2.",
+        "So gas X diffuses twice as fast as gas Y.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. twice as fast as Y",
+      "simple_explanation": "Gas X diffuses twice as fast as gas Y."
+    },
+    "tags": [
+      "grahams_law",
+      "comparison",
+      "square_root"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q150",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Dalton’s Law of Partial Pressure",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In a mixture of non-reacting gases, the total pressure depends on",
+    "options": {
+      "A": "the sum of the pressures due to each gas",
+      "B": "the colour of the gases",
+      "C": "the density of one gas only",
+      "D": "the heaviest gas only"
+    },
+    "answer": "A",
+    "answer_text": "the sum of the pressures due to each gas",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: dalton’s law of partial pressure.",
+      "principle": "Dalton’s law bases total pressure on the sum of the component pressures.",
+      "steps": [
+        "Every gas in the mixture contributes its own partial pressure.",
+        "The total pressure is found by adding all such contributions together.",
+        "It does not depend on colour or only one gas.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. the sum of the pressures due to each gas",
+      "simple_explanation": "The total pressure depends on the sum of the pressures due to each gas."
+    },
+    "tags": [
+      "daltons_law",
+      "gas_mixture",
+      "total"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q151",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Graham’s Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "One practical application of Graham’s law is in explaining why",
+    "options": {
+      "A": "ammonia and hydrogen chloride meet to form a white ring closer to the hydrogen chloride end",
+      "B": "all gases have the same density",
+      "C": "pressure and volume are inversely related",
+      "D": "gases always behave ideally"
+    },
+    "answer": "A",
+    "answer_text": "ammonia and hydrogen chloride meet to form a white ring closer to the hydrogen chloride end",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: graham’s law.",
+      "principle": "The lighter ammonia diffuses faster than hydrogen chloride, so the white ring forms nearer the HCl source.",
+      "steps": [
+        "Ammonia has a lower relative molecular mass than hydrogen chloride.",
+        "Therefore NH₃ diffuses faster.",
+        "The point where the gases meet lies closer to the slower gas, hydrogen chloride.",
+        "Thus the white ammonium chloride ring forms nearer the HCl end.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. ammonia and hydrogen chloride meet to form a white ring closer to the hydrogen chloride end",
+      "simple_explanation": "The white ring forms nearer the hydrogen chloride end because ammonia diffuses faster."
+    },
+    "tags": [
+      "grahams_law",
+      "ammonia_hcl",
+      "white_ring"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q152",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Dalton’s Law of Partial Pressure",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas mixture contains equal moles of two non-reacting gases in the same container at the same temperature. Their partial pressures will be",
+    "options": {
+      "A": "necessarily unequal",
+      "B": "equal",
+      "C": "zero",
+      "D": "dependent only on colour"
+    },
+    "answer": "B",
+    "answer_text": "equal",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: dalton’s law of partial pressure.",
+      "principle": "At the same temperature and in the same volume, equal numbers of moles contribute equal partial pressures.",
+      "steps": [
+        "For ideal gases, pressure is proportional to number of moles when temperature and volume are fixed.",
+        "If the two gases are present in equal moles in the same container at the same temperature, each exerts the same partial pressure.",
+        "Therefore their partial pressures are equal.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. equal",
+      "simple_explanation": "Equal moles of non-reacting gases in the same container at the same temperature exert equal partial pressures."
+    },
+    "tags": [
+      "daltons_law",
+      "equal_moles",
+      "partial_pressures"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q153",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Molar Volume and Atomicity of Gases",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "How many moles of gas molecules are present in 33.6 dm³ of a gas at s.t.p.?",
+    "options": {
+      "A": "0.50 mole",
+      "B": "1.00 mole",
+      "C": "1.50 moles",
+      "D": "2.00 moles"
+    },
+    "answer": "C",
+    "answer_text": "1.50 moles",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on molar volume and atomicity of gases.",
+      "principle": "Use the molar volume at s.t.p., 22.4 dm³ per mole.",
+      "steps": [
+        "Moles = 33.6/22.4.",
+        "This equals 1.5 moles.",
+        "Therefore 33.6 dm³ of gas at s.t.p. corresponds to 1.50 moles.",
+        "Hence option C is correct."
+      ],
+      "final_answer": "C. 1.50 moles",
+      "simple_explanation": "33.6 dm³ of gas at s.t.p. is 1.50 moles."
+    },
+    "tags": [
+      "molar_volume",
+      "stp",
+      "moles"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q154",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Molar Volume and Atomicity of Gases",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "How many moles of oxygen atoms are present in 22.4 dm³ of O₂ at s.t.p.?",
+    "options": {
+      "A": "0.50 mole",
+      "B": "1.00 mole",
+      "C": "2.00 moles",
+      "D": "4.00 moles"
+    },
+    "answer": "C",
+    "answer_text": "2.00 moles",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on molar volume and atomicity of gases.",
+      "principle": "22.4 dm³ of O₂ at s.t.p. is 1 mole of O₂ molecules, which contains 2 moles of oxygen atoms.",
+      "steps": [
+        "At s.t.p., 22.4 dm³ corresponds to 1 mole of O₂ molecules.",
+        "Each O₂ molecule contains 2 oxygen atoms.",
+        "So 1 mole of O₂ molecules contains 2 moles of oxygen atoms.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. 2.00 moles",
+      "simple_explanation": "22.4 dm³ of O₂ at s.t.p. contains 2.00 moles of oxygen atoms."
+    },
+    "tags": [
+      "molar_volume",
+      "oxygen_atoms",
+      "stp"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q155",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Ideal Gas Equation, PV = nRT",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the equation PV = nRT, R is the",
+    "options": {
+      "A": "rate of diffusion",
+      "B": "gas constant",
+      "C": "relative density",
+      "D": "room temperature"
+    },
+    "answer": "B",
+    "answer_text": "gas constant",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on ideal gas equation, pv = nrt.",
+      "principle": "R represents the universal gas constant.",
+      "steps": [
+        "The symbols in the ideal gas equation have fixed meanings.",
+        "P is pressure, V is volume, n is moles, T is temperature and R is the gas constant.",
+        "This constant links the units in the equation.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. gas constant",
+      "simple_explanation": "R in the ideal gas equation is the gas constant."
+    },
+    "tags": [
+      "ideal_gas_equation",
+      "gas_constant",
+      "symbols"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q156",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Ideal Gas Equation, PV = nRT",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "What volume will 0.5 mole of an ideal gas occupy at 273 K and 1 atm? [R = 0.082 L atm mol⁻¹ K⁻¹]",
+    "options": {
+      "A": "5.6 L",
+      "B": "11.2 L",
+      "C": "22.4 L",
+      "D": "44.8 L"
+    },
+    "answer": "B",
+    "answer_text": "11.2 L",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on ideal gas equation, pv = nrt.",
+      "principle": "Use V = nRT/P.",
+      "steps": [
+        "V = (0.5 × 0.082 × 273)/1.",
+        "This equals 11.193 L, approximately 11.2 L.",
+        "So half a mole occupies half the molar volume at these conditions.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. 11.2 L",
+      "simple_explanation": "0.5 mole of an ideal gas occupies about 11.2 L at 273 K and 1 atm."
+    },
+    "tags": [
+      "ideal_gas_equation",
+      "volume",
+      "half_mole"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q157",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Molar Volume and Atomicity of Gases",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following gases is diatomic?",
+    "options": {
+      "A": "Ne",
+      "B": "Ar",
+      "C": "N₂",
+      "D": "O₃"
+    },
+    "answer": "C",
+    "answer_text": "N₂",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on molar volume and atomicity of gases.",
+      "principle": "Diatomic gases contain two atoms per molecule.",
+      "steps": [
+        "Ne and Ar are monatomic noble gases.",
+        "O₃ is triatomic.",
+        "N₂ contains two nitrogen atoms per molecule, so it is diatomic.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. N₂",
+      "simple_explanation": "N₂ is diatomic."
+    },
+    "tags": [
+      "atomicity",
+      "diatomic",
+      "nitrogen"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q158",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Molar Volume and Atomicity of Gases",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "At s.t.p., 5.6 dm³ of methane corresponds to",
+    "options": {
+      "A": "0.25 mole of CH₄ molecules",
+      "B": "0.50 mole of CH₄ molecules",
+      "C": "1.00 mole of CH₄ molecules",
+      "D": "2.00 moles of CH₄ molecules"
+    },
+    "answer": "A",
+    "answer_text": "0.25 mole of CH₄ molecules",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on molar volume and atomicity of gases.",
+      "principle": "Use the molar volume 22.4 dm³ per mole at s.t.p.",
+      "steps": [
+        "Moles of CH₄ = 5.6/22.4.",
+        "This equals 0.25 mole.",
+        "Therefore 5.6 dm³ of methane corresponds to a quarter mole of molecules.",
+        "Hence option A is correct."
+      ],
+      "final_answer": "A. 0.25 mole of CH₄ molecules",
+      "simple_explanation": "5.6 dm³ of methane at s.t.p. is 0.25 mole of CH₄ molecules."
+    },
+    "tags": [
+      "molar_volume",
+      "methane",
+      "stp"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q159",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Ideal Gas Equation, PV = nRT",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "If pressure and temperature are known, the ideal gas equation can be used to calculate the",
+    "options": {
+      "A": "colour of the gas",
+      "B": "number of moles or volume",
+      "C": "boiling point of any solid",
+      "D": "atomic number"
+    },
+    "answer": "B",
+    "answer_text": "number of moles or volume",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on ideal gas equation, pv = nrt.",
+      "principle": "PV = nRT can be rearranged to find any one gas variable when the others are known.",
+      "steps": [
+        "The ideal gas equation relates pressure, volume, moles and temperature.",
+        "So if some variables are known, the others can be calculated.",
+        "For example, it can be rearranged to find n or V.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. number of moles or volume",
+      "simple_explanation": "The ideal gas equation can be used to calculate quantities such as number of moles or volume."
+    },
+    "tags": [
+      "ideal_gas_equation",
+      "applications",
+      "variables"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q160",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Ideal Gas Equation, PV = nRT",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas occupies 12.3 L at 300 K and 2 atm. The number of moles present is approximately [R = 0.082 L atm mol⁻¹ K⁻¹]",
+    "options": {
+      "A": "0.25 mole",
+      "B": "0.50 mole",
+      "C": "1.00 mole",
+      "D": "2.00 moles"
+    },
+    "answer": "C",
+    "answer_text": "1.00 mole",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on ideal gas equation, pv = nrt.",
+      "principle": "Use n = PV/RT.",
+      "steps": [
+        "n = (2 × 12.3)/(0.082 × 300).",
+        "This gives 24.6/24.6 = 1.00 mole.",
+        "Therefore the amount of gas is 1 mole.",
+        "Hence option C is correct."
+      ],
+      "final_answer": "C. 1.00 mole",
+      "simple_explanation": "The gas amount is approximately 1.00 mole."
+    },
+    "tags": [
+      "ideal_gas_equation",
+      "moles",
+      "litres"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q161",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Molar Volume and Atomicity of Gases",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The atomicity of oxygen gas, O₂, is",
+    "options": {
+      "A": "1",
+      "B": "2",
+      "C": "3",
+      "D": "4"
+    },
+    "answer": "B",
+    "answer_text": "2",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on molar volume and atomicity of gases.",
+      "principle": "Atomicity is the number of atoms in a molecule.",
+      "steps": [
+        "An oxygen molecule is written as O₂.",
+        "This means each molecule contains two oxygen atoms.",
+        "Therefore the atomicity is 2.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. 2",
+      "simple_explanation": "O₂ has atomicity 2."
+    },
+    "tags": [
+      "atomicity",
+      "oxygen",
+      "definition"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q162",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Molar Volume and Atomicity of Gases",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "How many moles of molecules are present in 44.8 dm³ of hydrogen at s.t.p.?",
+    "options": {
+      "A": "0.50 mole",
+      "B": "1.00 mole",
+      "C": "2.00 moles",
+      "D": "4.00 moles"
+    },
+    "answer": "C",
+    "answer_text": "2.00 moles",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on molar volume and atomicity of gases.",
+      "principle": "At s.t.p., 22.4 dm³ corresponds to 1 mole of gas molecules.",
+      "steps": [
+        "Moles of H₂ = 44.8/22.4.",
+        "This equals 2.0 moles.",
+        "Therefore 44.8 dm³ of hydrogen contains 2.00 moles of molecules.",
+        "Hence option C is correct."
+      ],
+      "final_answer": "C. 2.00 moles",
+      "simple_explanation": "44.8 dm³ of hydrogen at s.t.p. is 2.00 moles of H₂ molecules."
+    },
+    "tags": [
+      "molar_volume",
+      "hydrogen",
+      "molecules"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q163",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Ideal Gas Equation, PV = nRT",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A gas sample contains 0.25 mole at 300 K and 1 atm. Its volume is approximately [R = 0.082 L atm mol⁻¹ K⁻¹]",
+    "options": {
+      "A": "3.15 L",
+      "B": "6.15 L",
+      "C": "12.30 L",
+      "D": "24.60 L"
+    },
+    "answer": "B",
+    "answer_text": "6.15 L",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on ideal gas equation, pv = nrt.",
+      "principle": "Use V = nRT/P.",
+      "steps": [
+        "V = (0.25 × 0.082 × 300)/1.",
+        "This equals 6.15 L.",
+        "So the gas occupies about 6.15 L.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. 6.15 L",
+      "simple_explanation": "The gas volume is approximately 6.15 L."
+    },
+    "tags": [
+      "ideal_gas_equation",
+      "volume",
+      "quarter_mole"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q164",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Ideal Gas Equation, PV = nRT",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "At constant volume and temperature, the pressure of an ideal gas is directly proportional to the",
+    "options": {
+      "A": "number of moles of the gas",
+      "B": "square root of its molar mass",
+      "C": "density of water",
+      "D": "vapour density only"
+    },
+    "answer": "A",
+    "answer_text": "number of moles of the gas",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on ideal gas equation, pv = nrt.",
+      "principle": "From PV = nRT, when V and T are constant, pressure varies directly with n.",
+      "steps": [
+        "In the ideal gas equation, P = nRT/V.",
+        "If V and T are constant, then R and V are constant too.",
+        "So P is directly proportional to n, the number of moles of gas.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. number of moles of the gas",
+      "simple_explanation": "At constant volume and temperature, pressure is directly proportional to the number of moles of gas."
+    },
+    "tags": [
+      "ideal_gas_equation",
+      "pressure",
+      "moles"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q165",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Molar Volume and Atomicity of Gases",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which statement about molar volume at s.t.p. is correct?",
+    "options": {
+      "A": "It depends on the colour of the gas",
+      "B": "It is 22.4 dm³ for 1 mole of any ideal gas",
+      "C": "It is 44.8 dm³ for 1 mole of any gas",
+      "D": "It applies only to monatomic gases"
+    },
+    "answer": "B",
+    "answer_text": "It is 22.4 dm³ for 1 mole of any ideal gas",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on molar volume and atomicity of gases.",
+      "principle": "At s.t.p., 1 mole of any ideal gas occupies 22.4 dm³.",
+      "steps": [
+        "Molar volume is the volume occupied by one mole of gas under stated conditions.",
+        "At s.t.p., this value is 22.4 dm³ for an ideal gas.",
+        "It does not depend on whether the gas is monatomic or diatomic.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. It is 22.4 dm³ for 1 mole of any ideal gas",
+      "simple_explanation": "At s.t.p., 1 mole of any ideal gas occupies 22.4 dm³."
+    },
+    "tags": [
+      "molar_volume",
+      "stp",
+      "definition"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q166",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Molar Volume and Atomicity of Gases",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A sample of ozone, O₃, has atomicity",
+    "options": {
+      "A": "1 and is monatomic",
+      "B": "2 and is diatomic",
+      "C": "3 and is triatomic",
+      "D": "4 and is tetratomic"
+    },
+    "answer": "C",
+    "answer_text": "3 and is triatomic",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on molar volume and atomicity of gases.",
+      "principle": "Atomicity is the number of atoms per molecule, and O₃ contains three oxygen atoms.",
+      "steps": [
+        "The formula O₃ shows three oxygen atoms per molecule.",
+        "A molecule with three atoms is called triatomic.",
+        "So ozone has atomicity 3.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. 3 and is triatomic",
+      "simple_explanation": "Ozone is triatomic and has atomicity 3."
+    },
+    "tags": [
+      "atomicity",
+      "ozone",
+      "triatomic"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q167",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Relationship between Vapour Density and Relative Molecular Mass",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A gas has relative molecular mass 60. Its vapour density is",
+    "options": {
+      "A": "15",
+      "B": "20",
+      "C": "30",
+      "D": "60"
+    },
+    "answer": "C",
+    "answer_text": "30",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on relationship between vapour density and relative molecular mass.",
+      "principle": "Use VD = RMM/2.",
+      "steps": [
+        "Relative molecular mass = 60.",
+        "Vapour density = 60/2 = 30.",
+        "Therefore the vapour density is 30.",
+        "Hence option C is correct."
+      ],
+      "final_answer": "C. 30",
+      "simple_explanation": "A gas with relative molecular mass 60 has vapour density 30."
+    },
+    "tags": [
+      "vapour_density",
+      "rmm",
+      "calculation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q168",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Relationship between Vapour Density and Relative Molecular Mass",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following gases has vapour density 14?",
+    "options": {
+      "A": "H₂",
+      "B": "N₂",
+      "C": "O₂",
+      "D": "CO₂"
+    },
+    "answer": "B",
+    "answer_text": "N₂",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on relationship between vapour density and relative molecular mass.",
+      "principle": "Vapour density 14 corresponds to relative molecular mass 28.",
+      "steps": [
+        "Use RMM = 2VD = 2 × 14 = 28.",
+        "Among the options, N₂ has relative molecular mass 28.",
+        "Therefore N₂ is the correct gas.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. N₂",
+      "simple_explanation": "A vapour density of 14 corresponds to N₂."
+    },
+    "tags": [
+      "vapour_density",
+      "gas_identification",
+      "nitrogen"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q169",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Relationship between Vapour Density and Relative Molecular Mass",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "If vapour density is 18.5, the relative molecular mass is",
+    "options": {
+      "A": "18.5",
+      "B": "27.0",
+      "C": "37.0",
+      "D": "74.0"
+    },
+    "answer": "C",
+    "answer_text": "37.0",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on relationship between vapour density and relative molecular mass.",
+      "principle": "Apply RMM = 2VD.",
+      "steps": [
+        "Relative molecular mass = 2 × 18.5.",
+        "This gives 37.0.",
+        "Therefore the correct answer is 37.0.",
+        "Hence option C is correct."
+      ],
+      "final_answer": "C. 37.0",
+      "simple_explanation": "A vapour density of 18.5 corresponds to a relative molecular mass of 37.0."
+    },
+    "tags": [
+      "vapour_density",
+      "relative_molecular_mass",
+      "doubling"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q170",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Relationship between Vapour Density and Relative Molecular Mass",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas has relative molecular mass 46. Its vapour density is",
+    "options": {
+      "A": "11.5",
+      "B": "23",
+      "C": "46",
+      "D": "92"
+    },
+    "answer": "B",
+    "answer_text": "23",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on relationship between vapour density and relative molecular mass.",
+      "principle": "Use VD = RMM/2.",
+      "steps": [
+        "Vapour density = 46/2.",
+        "This equals 23.",
+        "Therefore the vapour density is 23.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. 23",
+      "simple_explanation": "A gas of relative molecular mass 46 has vapour density 23."
+    },
+    "tags": [
+      "vapour_density",
+      "rmm",
+      "halving"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q171",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Ideal Gas Equation, PV = nRT",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "When n and T are constant, the ideal gas equation reduces to",
+    "options": {
+      "A": "Boyle’s law",
+      "B": "Charles’ law",
+      "C": "Dalton’s law",
+      "D": "Graham’s law"
+    },
+    "answer": "A",
+    "answer_text": "Boyle’s law",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on ideal gas equation, pv = nrt.",
+      "principle": "If n and T are constant in PV = nRT, then PV is constant, which is Boyle’s law.",
+      "steps": [
+        "From PV = nRT, if n and T do not change, then nRT is constant.",
+        "So PV = constant.",
+        "This is exactly Boyle’s law.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. Boyle’s law",
+      "simple_explanation": "With n and T constant, the ideal gas equation reduces to Boyle’s law."
+    },
+    "tags": [
+      "ideal_gas_equation",
+      "reduction",
+      "boyles_law"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q172",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Ideal Gas Equation, PV = nRT",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "When pressure is constant, PV = nRT shows that volume is directly proportional to",
+    "options": {
+      "A": "temperature in kelvin for a fixed amount of gas",
+      "B": "pressure in atm",
+      "C": "vapour density",
+      "D": "partial pressure only"
+    },
+    "answer": "A",
+    "answer_text": "temperature in kelvin for a fixed amount of gas",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on ideal gas equation, pv = nrt.",
+      "principle": "At constant pressure and fixed n, volume varies directly with temperature in kelvin.",
+      "steps": [
+        "From PV = nRT, rearrange to V = nRT/P.",
+        "If n and P are constant, then V ∝ T.",
+        "Temperature must be measured in kelvin.",
+        "This is Charles’ law in another form.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. temperature in kelvin for a fixed amount of gas",
+      "simple_explanation": "At constant pressure and fixed amount of gas, volume is directly proportional to kelvin temperature."
+    },
+    "tags": [
+      "ideal_gas_equation",
+      "charles_law",
+      "direct_proportion"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q173",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Relationship between Vapour Density and Relative Molecular Mass",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The vapour density of carbon dioxide, CO₂, is",
+    "options": {
+      "A": "11",
+      "B": "22",
+      "C": "32",
+      "D": "44"
+    },
+    "answer": "B",
+    "answer_text": "22",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on relationship between vapour density and relative molecular mass.",
+      "principle": "CO₂ has relative molecular mass 44, and vapour density is half the relative molecular mass.",
+      "steps": [
+        "Relative molecular mass of CO₂ = 12 + 2(16) = 44.",
+        "Vapour density = 44/2 = 22.",
+        "Therefore option B is correct.",
+        "This follows the standard school relation."
+      ],
+      "final_answer": "B. 22",
+      "simple_explanation": "Carbon dioxide has vapour density 22."
+    },
+    "tags": [
+      "vapour_density",
+      "carbon_dioxide",
+      "rmm"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q174",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Relationship between Vapour Density and Relative Molecular Mass",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas with vapour density 8.5 has relative molecular mass",
+    "options": {
+      "A": "8.5",
+      "B": "17.0",
+      "C": "34.0",
+      "D": "68.0"
+    },
+    "answer": "B",
+    "answer_text": "17.0",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on relationship between vapour density and relative molecular mass.",
+      "principle": "Use RMM = 2VD.",
+      "steps": [
+        "Relative molecular mass = 2 × 8.5.",
+        "This gives 17.0.",
+        "Therefore the gas has relative molecular mass 17.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. 17.0",
+      "simple_explanation": "A vapour density of 8.5 corresponds to relative molecular mass 17.0."
+    },
+    "tags": [
+      "vapour_density",
+      "calculation",
+      "relative_molecular_mass"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q175",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Ideal Gas Equation, PV = nRT",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The ideal gas equation is most useful because it combines",
+    "options": {
+      "A": "all simple gas laws into one equation",
+      "B": "all laws of electrolysis",
+      "C": "only Dalton’s law and Graham’s law",
+      "D": "vapour density with molar mass directly"
+    },
+    "answer": "A",
+    "answer_text": "all simple gas laws into one equation",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on ideal gas equation, pv = nrt.",
+      "principle": "The ideal gas equation links pressure, volume, temperature and moles in one general relationship.",
+      "steps": [
+        "PV = nRT connects several gas variables at the same time.",
+        "It can be used to derive Boyle’s law and Charles’ law under special conditions.",
+        "This gives it broad usefulness in gas calculations.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. all simple gas laws into one equation",
+      "simple_explanation": "The ideal gas equation is useful because it combines the main gas relationships into one equation."
+    },
+    "tags": [
+      "ideal_gas_equation",
+      "importance",
+      "general_law"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q176",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Ideal Gas Equation, PV = nRT",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "What pressure is exerted by 0.25 mole of an ideal gas in a 5.0 L container at 300 K? [R = 0.082 L atm mol⁻¹ K⁻¹]",
+    "options": {
+      "A": "0.82 atm",
+      "B": "1.23 atm",
+      "C": "2.46 atm",
+      "D": "4.92 atm"
+    },
+    "answer": "B",
+    "answer_text": "1.23 atm",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on ideal gas equation, pv = nrt.",
+      "principle": "Use P = nRT/V.",
+      "steps": [
+        "P = (0.25 × 0.082 × 300)/5.0.",
+        "This equals 6.15/5.0 = 1.23 atm.",
+        "Therefore the pressure is 1.23 atm.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. 1.23 atm",
+      "simple_explanation": "The gas pressure is 1.23 atm."
+    },
+    "tags": [
+      "ideal_gas_equation",
+      "pressure",
+      "container"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q177",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Relationship between Vapour Density and Relative Molecular Mass",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "For a gas whose vapour density is VD, its relative molecular mass is",
+    "options": {
+      "A": "VD/2",
+      "B": "VD",
+      "C": "2VD",
+      "D": "VD²"
+    },
+    "answer": "C",
+    "answer_text": "2VD",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on relationship between vapour density and relative molecular mass.",
+      "principle": "By the school relation, relative molecular mass is twice the vapour density.",
+      "steps": [
+        "Vapour density is usually defined relative to hydrogen in this context.",
+        "So relative molecular mass = 2 × vapour density.",
+        "This gives the direct relation needed.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. 2VD",
+      "simple_explanation": "Relative molecular mass is 2VD."
+    },
+    "tags": [
+      "vapour_density",
+      "formula",
+      "rmm"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q178",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Relationship between Vapour Density and Relative Molecular Mass",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas has relative molecular mass 18. The gas is most likely",
+    "options": {
+      "A": "H₂",
+      "B": "NH₃",
+      "C": "H₂O vapour",
+      "D": "CO"
+    },
+    "answer": "C",
+    "answer_text": "H₂O vapour",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on relationship between vapour density and relative molecular mass.",
+      "principle": "Compare the relative molecular masses of the listed gases.",
+      "steps": [
+        "H₂ has relative molecular mass 2.",
+        "NH₃ has 17, H₂O has 18 and CO has 28.",
+        "The gas with relative molecular mass 18 is water vapour.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. H₂O vapour",
+      "simple_explanation": "A gas of relative molecular mass 18 is H₂O vapour."
+    },
+    "tags": [
+      "vapour_density",
+      "relative_molecular_mass",
+      "identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q179",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Ideal Gas Equation, PV = nRT",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "If volume and temperature are constant, the pressure of a gas depends directly on the",
+    "options": {
+      "A": "colour",
+      "B": "number of moles present",
+      "C": "shape of the container only",
+      "D": "vapour density only"
+    },
+    "answer": "B",
+    "answer_text": "number of moles present",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on ideal gas equation, pv = nrt.",
+      "principle": "From PV = nRT, if V and T are constant, then pressure is directly proportional to moles.",
+      "steps": [
+        "Rearrange the ideal gas equation to P = nRT/V.",
+        "If T and V are fixed, then P ∝ n.",
+        "So pressure depends directly on the amount of gas present.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. number of moles present",
+      "simple_explanation": "At constant volume and temperature, pressure depends directly on the number of moles present."
+    },
+    "tags": [
+      "ideal_gas_equation",
+      "pressure",
+      "moles"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q180",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Ideal Gas Equation, PV = nRT",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas sample occupies 8.2 L at 1 atm and 500 K. The amount of gas present is [R = 0.082 L atm mol⁻¹ K⁻¹]",
+    "options": {
+      "A": "0.10 mole",
+      "B": "0.20 mole",
+      "C": "0.41 mole",
+      "D": "1.00 mole"
+    },
+    "answer": "B",
+    "answer_text": "0.20 mole",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on ideal gas equation, pv = nrt.",
+      "principle": "Use n = PV/RT.",
+      "steps": [
+        "n = (1 × 8.2)/(0.082 × 500).",
+        "The denominator is 41.",
+        "So n = 8.2/41 = 0.20 mole.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. 0.20 mole",
+      "simple_explanation": "The amount of gas present is 0.20 mole."
+    },
+    "tags": [
+      "ideal_gas_equation",
+      "moles",
+      "litres"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q181",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Outline of the Kinetic Theory of Matter",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following explains diffusion in liquids?",
+    "options": {
+      "A": "Liquid particles are completely fixed in position",
+      "B": "Liquid particles can move randomly and mix with one another",
+      "C": "Liquid particles have no mass",
+      "D": "There are no attractive forces in liquids"
+    },
+    "answer": "B",
+    "answer_text": "Liquid particles can move randomly and mix with one another",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on outline of the kinetic theory of matter.",
+      "principle": "Diffusion in liquids occurs because particles are able to move and mix, though more slowly than in gases.",
+      "steps": [
+        "Liquid particles are close together but not fixed rigidly.",
+        "They can move from place to place and mix with particles of another substance.",
+        "This random motion allows diffusion in liquids, though it is slower than in gases.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Liquid particles can move randomly and mix with one another",
+      "simple_explanation": "Liquids diffuse because their particles move randomly and can mix with one another."
+    },
+    "tags": [
+      "kinetic_theory",
+      "diffusion_in_liquids",
+      "random_motion"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q182",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Changes of State in Terms of Molecular Motion",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The direct change of a solid to vapour without first becoming liquid is called",
+    "options": {
+      "A": "condensation",
+      "B": "sublimation",
+      "C": "freezing",
+      "D": "boiling"
+    },
+    "answer": "B",
+    "answer_text": "sublimation",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on changes of state in terms of molecular motion.",
+      "principle": "Sublimation is the direct change from solid to vapour.",
+      "steps": [
+        "Most solids melt before they boil, but some substances can pass directly from solid to gaseous state.",
+        "This change is called sublimation.",
+        "It is the reverse of deposition.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. sublimation",
+      "simple_explanation": "The direct change from solid to vapour is sublimation."
+    },
+    "tags": [
+      "changes_of_state",
+      "sublimation",
+      "solid_to_gas"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q183",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Brownian Movement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Brownian movement is strongest in a medium whose molecules are",
+    "options": {
+      "A": "moving rapidly",
+      "B": "completely stationary",
+      "C": "bonded into a rigid lattice",
+      "D": "very cold and immobile"
+    },
+    "answer": "A",
+    "answer_text": "moving rapidly",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on brownian movement.",
+      "principle": "More rapid molecular motion means more frequent and forceful impacts on suspended particles.",
+      "steps": [
+        "Brownian motion depends on bombardment by molecules of the medium.",
+        "If these molecules move rapidly, the impacts are more vigorous.",
+        "That makes the irregular motion more noticeable.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. moving rapidly",
+      "simple_explanation": "Brownian movement is strongest when the medium’s molecules are moving rapidly."
+    },
+    "tags": [
+      "brownian_motion",
+      "medium",
+      "rapid_motion"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q184",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Boyle’s Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas has pressure 4 atm and volume 150 cm³. If the pressure changes to 1.5 atm at constant temperature, the new volume is",
+    "options": {
+      "A": "225 cm³",
+      "B": "300 cm³",
+      "C": "400 cm³",
+      "D": "600 cm³"
+    },
+    "answer": "C",
+    "answer_text": "400 cm³",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: boyle’s law.",
+      "principle": "Use Boyle’s law P₁V₁ = P₂V₂.",
+      "steps": [
+        "V₂ = (P₁V₁)/P₂ = (4 × 150)/1.5.",
+        "This gives 600/1.5 = 400 cm³.",
+        "Therefore option C is correct.",
+        "The lower pressure leads to a larger volume."
+      ],
+      "final_answer": "C. 400 cm³",
+      "simple_explanation": "The new volume is 400 cm³."
+    },
+    "tags": [
+      "boyles_law",
+      "atm",
+      "calculation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q185",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Charles’ Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is true for a gas obeying Charles’ law?",
+    "options": {
+      "A": "Volume is inversely proportional to temperature in kelvin",
+      "B": "Volume is directly proportional to temperature in kelvin",
+      "C": "Pressure is directly proportional to volume at constant temperature",
+      "D": "Diffusion rate is proportional to molar mass"
+    },
+    "answer": "B",
+    "answer_text": "Volume is directly proportional to temperature in kelvin",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: charles’ law.",
+      "principle": "Charles’ law states V ∝ T in kelvin at constant pressure.",
+      "steps": [
+        "The law specifically links volume and absolute temperature.",
+        "At constant pressure, an increase in kelvin temperature causes a proportional increase in volume.",
+        "Therefore the correct statement is option B.",
+        "This is the defining idea of Charles’ law."
+      ],
+      "final_answer": "B. Volume is directly proportional to temperature in kelvin",
+      "simple_explanation": "For Charles’ law, volume is directly proportional to temperature in kelvin."
+    },
+    "tags": [
+      "charles_law",
+      "direct_proportion",
+      "kelvin"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q186",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Graham’s Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following gases will diffuse more slowly than oxygen under the same conditions?",
+    "options": {
+      "A": "Hydrogen",
+      "B": "Helium",
+      "C": "Nitrogen",
+      "D": "Carbon dioxide"
+    },
+    "answer": "D",
+    "answer_text": "Carbon dioxide",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: graham’s law.",
+      "principle": "A gas with greater relative molecular mass than oxygen diffuses more slowly.",
+      "steps": [
+        "Oxygen has relative molecular mass 32.",
+        "Hydrogen has 2, helium 4, nitrogen 28 and carbon dioxide 44.",
+        "Only CO₂ is heavier than O₂ among the options.",
+        "Therefore CO₂ diffuses more slowly than oxygen."
+      ],
+      "final_answer": "D. Carbon dioxide",
+      "simple_explanation": "Carbon dioxide diffuses more slowly than oxygen because it is heavier."
+    },
+    "tags": [
+      "grahams_law",
+      "oxygen",
+      "slower_diffusion"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q187",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Dalton’s Law of Partial Pressure",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "If three non-reacting gases in a container exert partial pressures of 2 atm, 1 atm and 0.5 atm, the total pressure is",
+    "options": {
+      "A": "1.5 atm",
+      "B": "2.0 atm",
+      "C": "3.0 atm",
+      "D": "3.5 atm"
+    },
+    "answer": "D",
+    "answer_text": "3.5 atm",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: dalton’s law of partial pressure.",
+      "principle": "Add the partial pressures to get the total pressure.",
+      "steps": [
+        "Dalton’s law states that total pressure is the sum of the partial pressures.",
+        "So total pressure = 2 + 1 + 0.5 = 3.5 atm.",
+        "Therefore option D is correct.",
+        "The gases are non-reacting, so the law applies directly."
+      ],
+      "final_answer": "D. 3.5 atm",
+      "simple_explanation": "The total pressure is 3.5 atm."
+    },
+    "tags": [
+      "daltons_law",
+      "atm",
+      "sum"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q188",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Combined Gas Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas occupies 900 cm³ at 300 K and 3 atm. What will be its volume at 450 K and 1.5 atm?",
+    "options": {
+      "A": "900 cm³",
+      "B": "1350 cm³",
+      "C": "1800 cm³",
+      "D": "2700 cm³"
+    },
+    "answer": "D",
+    "answer_text": "2700 cm³",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: combined gas law.",
+      "principle": "Use the combined gas law.",
+      "steps": [
+        "V₂ = V₁ × (T₂/T₁) × (P₁/P₂).",
+        "Substitute: V₂ = 900 × (450/300) × (3/1.5).",
+        "This equals 900 × 1.5 × 2 = 2700 cm³.",
+        "Therefore option D is correct."
+      ],
+      "final_answer": "D. 2700 cm³",
+      "simple_explanation": "Using the combined gas law gives 2700 cm³."
+    },
+    "tags": [
+      "combined_gas_law",
+      "volume",
+      "atm"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q189",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Molar Volume and Atomicity of Gases",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "At s.t.p., 2.24 dm³ of a gas corresponds to",
+    "options": {
+      "A": "0.01 mole",
+      "B": "0.10 mole",
+      "C": "0.20 mole",
+      "D": "1.00 mole"
+    },
+    "answer": "B",
+    "answer_text": "0.10 mole",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on molar volume and atomicity of gases.",
+      "principle": "Use 22.4 dm³ per mole at s.t.p.",
+      "steps": [
+        "Moles = 2.24/22.4.",
+        "This equals 0.10 mole.",
+        "Therefore the gas amount is 0.10 mole.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. 0.10 mole",
+      "simple_explanation": "2.24 dm³ at s.t.p. corresponds to 0.10 mole of gas."
+    },
+    "tags": [
+      "molar_volume",
+      "stp",
+      "small_volume"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q190",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Ideal Gas Equation, PV = nRT",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "How many moles of gas are present in a 4.92 L container at 2 atm and 300 K? [R = 0.082 L atm mol⁻¹ K⁻¹]",
+    "options": {
+      "A": "0.10 mole",
+      "B": "0.20 mole",
+      "C": "0.40 mole",
+      "D": "0.80 mole"
+    },
+    "answer": "C",
+    "answer_text": "0.40 mole",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on ideal gas equation, pv = nrt.",
+      "principle": "Use n = PV/RT.",
+      "steps": [
+        "n = (2 × 4.92)/(0.082 × 300).",
+        "The numerator is 9.84 and the denominator is 24.6.",
+        "So n = 9.84/24.6 = 0.40 mole.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. 0.40 mole",
+      "simple_explanation": "The gas amount is 0.40 mole."
+    },
+    "tags": [
+      "ideal_gas_equation",
+      "moles",
+      "container"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q191",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Relationship between Vapour Density and Relative Molecular Mass",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A gas has relative molecular mass 64. Its vapour density is",
+    "options": {
+      "A": "16",
+      "B": "32",
+      "C": "48",
+      "D": "64"
+    },
+    "answer": "B",
+    "answer_text": "32",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on relationship between vapour density and relative molecular mass.",
+      "principle": "Use VD = RMM/2.",
+      "steps": [
+        "VD = 64/2.",
+        "This gives 32.",
+        "Therefore the vapour density is 32.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. 32",
+      "simple_explanation": "A gas of relative molecular mass 64 has vapour density 32."
+    },
+    "tags": [
+      "vapour_density",
+      "relative_molecular_mass",
+      "halving"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q192",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Outline of the Kinetic Theory of Matter",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement best explains why heating a gas in a fixed container raises its pressure?",
+    "options": {
+      "A": "The gas particles become heavier",
+      "B": "The particles strike the container walls more frequently and more forcefully",
+      "C": "The container attracts the particles less strongly",
+      "D": "The gas loses kinetic energy"
+    },
+    "answer": "B",
+    "answer_text": "The particles strike the container walls more frequently and more forcefully",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on outline of the kinetic theory of matter.",
+      "principle": "Heating increases particle kinetic energy, so collisions with the container walls become more frequent and forceful.",
+      "steps": [
+        "A fixed container keeps the gas volume constant.",
+        "When the gas is heated, the particles move faster because their kinetic energy increases.",
+        "They hit the walls more often and with greater force.",
+        "That causes the pressure to rise.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. The particles strike the container walls more frequently and more forcefully",
+      "simple_explanation": "Heating a gas in a fixed container raises pressure because particles hit the walls more frequently and more forcefully."
+    },
+    "tags": [
+      "kinetic_theory",
+      "gas_pressure",
+      "heating"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q193",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Changes of State in Terms of Molecular Motion",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The reverse process of condensation is",
+    "options": {
+      "A": "freezing",
+      "B": "melting",
+      "C": "vapourization",
+      "D": "sublimation"
+    },
+    "answer": "C",
+    "answer_text": "vapourization",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on changes of state in terms of molecular motion.",
+      "principle": "Condensation is gas to liquid, and its reverse is liquid to gas, which is vapourization.",
+      "steps": [
+        "Condensation changes gas to liquid.",
+        "The reverse direction is liquid changing back to gas.",
+        "That process is called vapourization.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. vapourization",
+      "simple_explanation": "The reverse of condensation is vapourization."
+    },
+    "tags": [
+      "changes_of_state",
+      "reverse_process",
+      "vapourization"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q194",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Brownian Movement",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Brownian movement gives indirect evidence for the existence of",
+    "options": {
+      "A": "molecular motion in fluids",
+      "B": "electrical conduction in metals",
+      "C": "radioactivity in solids",
+      "D": "chemical equilibrium only"
+    },
+    "answer": "A",
+    "answer_text": "molecular motion in fluids",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on brownian movement.",
+      "principle": "Brownian motion shows that the molecules of the surrounding fluid are moving and colliding with suspended particles.",
+      "steps": [
+        "Suspended visible particles move randomly because of impacts from invisible fluid molecules.",
+        "This implies that the molecules of the fluid are in constant motion.",
+        "Thus Brownian movement supports the kinetic theory.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. molecular motion in fluids",
+      "simple_explanation": "Brownian movement gives indirect evidence for molecular motion in fluids."
+    },
+    "tags": [
+      "brownian_motion",
+      "evidence",
+      "fluids"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q195",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Boyle’s Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "If pressure is plotted against reciprocal volume for a gas obeying Boyle’s law, the graph is",
+    "options": {
+      "A": "a straight line",
+      "B": "a circle",
+      "C": "a rectangular hyperbola",
+      "D": "a vertical line"
+    },
+    "answer": "A",
+    "answer_text": "a straight line",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: boyle’s law.",
+      "principle": "Because pressure is directly proportional to 1/V, the graph is linear.",
+      "steps": [
+        "Boyle’s law states P ∝ 1/V.",
+        "When one quantity is directly proportional to another, a straight line is obtained.",
+        "So plotting P against 1/V yields a straight line.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. a straight line",
+      "simple_explanation": "Plotting pressure against reciprocal volume gives a straight line."
+    },
+    "tags": [
+      "boyles_law",
+      "graph",
+      "reciprocal"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q196",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Charles’ Law",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "At constant pressure, a gas occupies 250 cm³ at 250 K. The volume at 500 K is",
+    "options": {
+      "A": "125 cm³",
+      "B": "250 cm³",
+      "C": "500 cm³",
+      "D": "1000 cm³"
+    },
+    "answer": "C",
+    "answer_text": "500 cm³",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: charles’ law.",
+      "principle": "Doubling the kelvin temperature doubles the volume under Charles’ law.",
+      "steps": [
+        "Temperature increases from 250 K to 500 K, which is a doubling.",
+        "By Charles’ law, V ∝ T.",
+        "So the volume also doubles from 250 cm³ to 500 cm³.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. 500 cm³",
+      "simple_explanation": "At 500 K, the volume is 500 cm³."
+    },
+    "tags": [
+      "charles_law",
+      "doubling",
+      "volume"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q197",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Graham’s Law",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which factor primarily determines the relative speed of diffusion of two gases at the same temperature?",
+    "options": {
+      "A": "Their colours",
+      "B": "Their relative molecular masses",
+      "C": "Their melting points",
+      "D": "Their vapour pressures"
+    },
+    "answer": "B",
+    "answer_text": "Their relative molecular masses",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: graham’s law.",
+      "principle": "Graham’s law links diffusion rate to molar mass.",
+      "steps": [
+        "At the same temperature, lighter gas molecules move faster on average than heavier ones.",
+        "Graham’s law quantifies this through the relative molecular masses.",
+        "So relative molecular mass is the main determining factor among the options given.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Their relative molecular masses",
+      "simple_explanation": "The relative molecular masses primarily determine their relative diffusion speeds."
+    },
+    "tags": [
+      "grahams_law",
+      "diffusion_rate",
+      "molar_mass"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q198",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Gas Laws: Dalton’s Law of Partial Pressure",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Two non-reacting gases, X and Y, are mixed in a vessel. If their partial pressures are 0.8 atm and 1.2 atm respectively, the total pressure is",
+    "options": {
+      "A": "0.4 atm",
+      "B": "1.0 atm",
+      "C": "1.6 atm",
+      "D": "2.0 atm"
+    },
+    "answer": "D",
+    "answer_text": "2.0 atm",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on gas laws: dalton’s law of partial pressure.",
+      "principle": "Add the partial pressures to obtain the total pressure.",
+      "steps": [
+        "Total pressure = 0.8 atm + 1.2 atm.",
+        "This equals 2.0 atm.",
+        "This follows directly from Dalton’s law of partial pressure.",
+        "Therefore option D is correct."
+      ],
+      "final_answer": "D. 2.0 atm",
+      "simple_explanation": "The total pressure is 2.0 atm."
+    },
+    "tags": [
+      "daltons_law",
+      "atm",
+      "mixture"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q199",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Relationship between Vapour Density and Relative Molecular Mass",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The vapour density of NH₃ is",
+    "options": {
+      "A": "8.5",
+      "B": "17",
+      "C": "34",
+      "D": "68"
+    },
+    "answer": "A",
+    "answer_text": "8.5",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on relationship between vapour density and relative molecular mass.",
+      "principle": "NH₃ has relative molecular mass 17, and vapour density is half of this.",
+      "steps": [
+        "Relative molecular mass of NH₃ = 14 + 3(1) = 17.",
+        "Vapour density = 17/2 = 8.5.",
+        "Therefore option A is correct.",
+        "This uses the standard school relation."
+      ],
+      "final_answer": "A. 8.5",
+      "simple_explanation": "Ammonia has vapour density 8.5."
+    },
+    "tags": [
+      "vapour_density",
+      "ammonia",
+      "calculation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_03_q200",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_03",
+    "topic_title": "Kinetic Theory of Matter and Gas Laws",
+    "subtopic": "Ideal Gas Equation, PV = nRT",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A gas occupies 24.6 L at 300 K and 1 atm. Its amount is [R = 0.082 L atm mol⁻¹ K⁻¹]",
+    "options": {
+      "A": "0.50 mole",
+      "B": "1.00 mole",
+      "C": "1.50 moles",
+      "D": "2.00 moles"
+    },
+    "answer": "B",
+    "answer_text": "1.00 mole",
+    "explanation": {
+      "question_restate": "We are to identify or calculate the correct answer to this question on ideal gas equation, pv = nrt.",
+      "principle": "Use n = PV/RT.",
+      "steps": [
+        "n = (1 × 24.6)/(0.082 × 300).",
+        "The denominator is 24.6.",
+        "So n = 24.6/24.6 = 1.00 mole.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. 1.00 mole",
+      "simple_explanation": "The gas amount is 1.00 mole."
+    },
+    "tags": [
+      "ideal_gas_equation",
+      "moles",
+      "final"
+    ],
+    "active": true
   }
 ]
