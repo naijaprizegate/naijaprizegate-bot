@@ -276,5 +276,272 @@
     },
     "tags": ["chromatography"],
     "active": true
+  },
+  {
+    "id": "chem_02_q011",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following mixtures can be separated by sublimation?",
+    "options": {
+      "A": "NaCl and sand",
+      "B": "NH₄Cl and sand",
+      "C": "Sugar and salt",
+      "D": "KNO₃ and NaCl"
+    },
+    "answer": "B",
+    "answer_text": "NH₄Cl and sand",
+    "explanation": {
+      "question_restate": "Identify a mixture where one component sublimes.",
+      "principle": "Sublimation separates substances that vaporize directly from solid to gas.",
+      "steps": [
+        "NH₄Cl sublimes when heated.",
+        "Sand does not sublime.",
+        "Thus NH₄Cl can be separated leaving sand behind."
+      ],
+      "final_answer": "B",
+      "simple_explanation": "Ammonium chloride turns to gas, leaving sand."
+    },
+    "tags": ["sublimation"],
+    "active": true
+  },
+  {
+    "id": "chem_02_q012",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student obtained impure copper(II) sulfate crystals. Which method will best purify the sample?",
+    "options": {
+      "A": "Filtration",
+      "B": "Decantation",
+      "C": "Recrystallization",
+      "D": "Evaporation to dryness"
+    },
+    "answer": "C",
+    "answer_text": "Recrystallization",
+    "explanation": {
+      "question_restate": "Choose the best purification method for crystals.",
+      "principle": "Recrystallization removes soluble and insoluble impurities.",
+      "steps": [
+        "Dissolve impure CuSO₄ in hot water.",
+        "Filter to remove insoluble impurities.",
+        "Cool to form pure crystals."
+      ],
+      "final_answer": "C",
+      "simple_explanation": "Recrystallization gives pure crystals after cooling."
+    },
+    "tags": ["recrystallization"],
+    "active": true
+  },
+  {
+    "id": "chem_02_q013",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which apparatus is used in filtration?",
+    "options": {
+      "A": "Burette",
+      "B": "Filter funnel",
+      "C": "Condenser",
+      "D": "Separating funnel"
+    },
+    "answer": "B",
+    "answer_text": "Filter funnel",
+    "explanation": {
+      "question_restate": "Identify apparatus used in filtration.",
+      "principle": "Filtration uses filter paper placed in a funnel.",
+      "steps": [
+        "Filter paper is placed inside funnel.",
+        "Liquid passes through into container.",
+        "Solid remains on paper."
+      ],
+      "final_answer": "B",
+      "simple_explanation": "Filtration requires a funnel and filter paper."
+    },
+    "tags": ["filtration"],
+    "active": true
+  },
+  {
+    "id": "chem_02_q014",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In fractional distillation of crude oil, the fraction collected at the top of the column has",
+    "options": {
+      "A": "Highest boiling point",
+      "B": "Lowest boiling point",
+      "C": "Highest density",
+      "D": "Largest molecules"
+    },
+    "answer": "B",
+    "answer_text": "Lowest boiling point",
+    "explanation": {
+      "question_restate": "Understand fractionation column behavior.",
+      "principle": "Lower boiling fractions rise higher in the column.",
+      "steps": [
+        "High boiling fractions condense lower down.",
+        "Low boiling fractions rise to the top.",
+        "Thus top contains most volatile components."
+      ],
+      "final_answer": "B",
+      "simple_explanation": "Top fractions boil easily, so they reach the top."
+    },
+    "tags": ["fractional_distillation"],
+    "active": true
+  },
+  {
+    "id": "chem_02_q015",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following mixtures can be separated using a magnet?",
+    "options": {
+      "A": "Sulfur and iron filings",
+      "B": "Salt and sugar",
+      "C": "Oil and water",
+      "D": "Sand and water"
+    },
+    "answer": "A",
+    "answer_text": "Sulfur and iron filings",
+    "explanation": {
+      "question_restate": "Identify mixture with magnetic component.",
+      "principle": "Magnet separates magnetic materials.",
+      "steps": [
+        "Iron is magnetic.",
+        "Sulfur is not magnetic.",
+        "Thus magnet pulls out iron."
+      ],
+      "final_answer": "A",
+      "simple_explanation": "Iron is attracted by magnet."
+    },
+    "tags": ["magnetization"],
+    "active": true
+  },
+  {
+    "id": "chem_02_q016",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Why is fractional distillation more efficient than simple distillation?",
+    "options": {
+      "A": "It uses higher temperature",
+      "B": "It has a fractionating column",
+      "C": "It uses less energy",
+      "D": "It separates solids"
+    },
+    "answer": "B",
+    "answer_text": "It has a fractionating column",
+    "explanation": {
+      "question_restate": "Identify reason for improved separation.",
+      "principle": "Fractionating column provides repeated condensation.",
+      "steps": [
+        "Column allows multiple vaporization-condensation cycles.",
+        "This improves separation of close boiling liquids."
+      ],
+      "final_answer": "B",
+      "simple_explanation": "The column increases separation efficiency."
+    },
+    "tags": ["distillation"],
+    "active": true
+  },
+  {
+    "id": "chem_02_q017",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is NOT a method of separating mixtures?",
+    "options": {
+      "A": "Electrolysis",
+      "B": "Filtration",
+      "C": "Distillation",
+      "D": "Chromatography"
+    },
+    "answer": "A",
+    "answer_text": "Electrolysis",
+    "explanation": {
+      "question_restate": "Identify process that is not physical separation.",
+      "principle": "Separation of mixtures involves physical processes.",
+      "steps": [
+        "Electrolysis is chemical decomposition.",
+        "Others are physical separation methods."
+      ],
+      "final_answer": "A",
+      "simple_explanation": "Electrolysis changes substances chemically."
+    },
+    "tags": ["concept"],
+    "active": true
+  },
+  {
+    "id": "chem_02_q018",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which factor is most important in recrystallization?",
+    "options": {
+      "A": "Color",
+      "B": "Solubility difference with temperature",
+      "C": "Density",
+      "D": "Magnetism"
+    },
+    "answer": "B",
+    "answer_text": "Solubility difference with temperature",
+    "explanation": {
+      "question_restate": "Identify key factor in recrystallization.",
+      "principle": "Solubility changes with temperature.",
+      "steps": [
+        "Substance dissolves in hot solvent.",
+        "Becomes less soluble when cooled.",
+        "Crystals form."
+      ],
+      "final_answer": "B",
+      "simple_explanation": "Cooling reduces solubility and forms crystals."
+    },
+    "tags": ["recrystallization"],
+    "active": true
+  },
+  {
+    "id": "chem_02_q019",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which method is used to separate dyes in ink?",
+    "options": {
+      "A": "Distillation",
+      "B": "Chromatography",
+      "C": "Filtration",
+      "D": "Evaporation"
+    },
+    "answer": "B",
+    "answer_text": "Chromatography",
+    "explanation": {
+      "question_restate": "Identify method for separating colored components.",
+      "principle": "Chromatography separates based on movement in solvent.",
+      "steps": [
+        "Different dyes travel at different speeds.",
+        "They form separate spots."
+      ],
+      "final_answer": "B",
+      "simple_explanation": "Chromatography separates ink into its dyes."
+    },
+    "tags": ["chromatography"],
+    "active": true
+  },
+  {
+    "id": "chem_02_q020",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which process can be used to obtain distilled water from seawater?",
+    "options": {
+      "A": "Evaporation",
+      "B": "Simple distillation",
+      "C": "Filtration",
+      "D": "Crystallization"
+    },
+    "answer": "B",
+    "answer_text": "Simple distillation",
+    "explanation": {
+      "question_restate": "Identify method to obtain pure water.",
+      "principle": "Distillation separates based on boiling point.",
+      "steps": [
+        "Water evaporates first.",
+        "Salt remains behind.",
+        "Condensed vapor gives pure water."
+      ],
+      "final_answer": "B",
+      "simple_explanation": "Distillation collects pure water vapor."
+    },
+    "tags": ["distillation"],
+    "active": true
   }
 ]
