@@ -14056,5 +14056,3479 @@
       "mixture"
     ],
     "active": true
+  },
+  {
+    "id": "chem_01_q401",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Measurement of mass, length, time, temperature, and volume",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which apparatus is most suitable for preparing exactly 250 cm³ of a standard solution?",
+    "options": {
+      "A": "Beaker",
+      "B": "Measuring cylinder",
+      "C": "Volumetric flask",
+      "D": "Evaporating dish"
+    },
+    "answer": "C",
+    "answer_text": "Volumetric flask",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A volumetric flask is designed to contain one exact volume of solution.",
+      "steps": [
+        "A beaker and measuring cylinder are less accurate.",
+        "A volumetric flask is calibrated to a fixed mark for accurate preparation of standard solutions.",
+        "Therefore it is the best apparatus."
+      ],
+      "final_answer": "C. Volumetric flask",
+      "simple_explanation": "Use a volumetric flask when an exact solution volume is required."
+    },
+    "tags": [
+      "measurement",
+      "volume",
+      "volumetric_flask"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q402",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Measurement of mass, length, time, temperature, and volume",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A bottle has a mass of 30.5 g when empty and 78.5 g when filled with a liquid. If the bottle volume is 60.0 cm³, the density of the liquid is",
+    "options": {
+      "A": "0.48 g cm⁻³",
+      "B": "0.80 g cm⁻³",
+      "C": "1.31 g cm⁻³",
+      "D": "2.58 g cm⁻³"
+    },
+    "answer": "B",
+    "answer_text": "0.80 g cm⁻³",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Density = mass of liquid divided by its volume.",
+      "steps": [
+        "Mass of liquid = 78.5 − 30.5 = 48.0 g.",
+        "Density = 48.0 ÷ 60.0 = 0.80 g cm⁻³.",
+        "So the density is 0.80 g cm⁻³."
+      ],
+      "final_answer": "B. 0.80 g cm⁻³",
+      "simple_explanation": "First find the liquid mass, then divide by the volume."
+    },
+    "tags": [
+      "measurement",
+      "density",
+      "calculation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q403",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "SI units",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is the SI base unit of amount of substance?",
+    "options": {
+      "A": "gram",
+      "B": "mole",
+      "C": "litre",
+      "D": "molar"
+    },
+    "answer": "B",
+    "answer_text": "mole",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "The SI base unit for amount of substance is the mole.",
+      "steps": [
+        "Gram is a mass unit, litre is a volume unit, and molar is a concentration term.",
+        "The correct SI base unit here is mole."
+      ],
+      "final_answer": "B. mole",
+      "simple_explanation": "Amount of substance is measured in moles."
+    },
+    "tags": [
+      "SI_units",
+      "mole"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q404",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Measurement of mass, length, time, temperature, and volume",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A student measures the time for a color change to occur in a reaction. Which instrument should be used?",
+    "options": {
+      "A": "Hydrometer",
+      "B": "Thermometer",
+      "C": "Stopwatch",
+      "D": "Pipette"
+    },
+    "answer": "C",
+    "answer_text": "Stopwatch",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Time intervals in experiments are measured using a stopwatch.",
+      "steps": [
+        "A hydrometer measures relative density.",
+        "A thermometer measures temperature.",
+        "A pipette measures liquid volume.",
+        "A stopwatch measures time intervals."
+      ],
+      "final_answer": "C. Stopwatch",
+      "simple_explanation": "Use a stopwatch to measure the reaction time."
+    },
+    "tags": [
+      "measurement",
+      "time"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q405",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "SI units",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "2.4 mL is equal to",
+    "options": {
+      "A": "0.0024 dm³",
+      "B": "0.024 dm³",
+      "C": "0.24 dm³",
+      "D": "2.4 dm³"
+    },
+    "answer": "A",
+    "answer_text": "0.0024 dm³",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "1000 mL = 1 dm³.",
+      "steps": [
+        "2.4 mL ÷ 1000 = 0.0024 dm³.",
+        "Therefore the correct answer is 0.0024 dm³."
+      ],
+      "final_answer": "A. 0.0024 dm³",
+      "simple_explanation": "Divide millilitres by 1000 to get dm³."
+    },
+    "tags": [
+      "SI_units",
+      "unit_conversion",
+      "volume"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q406",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Measurement of mass, length, time, temperature, and volume",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student obtains 15.3 cm³ as the initial reading and 34.8 cm³ as the final reading in a displacement experiment. The volume of the solid is",
+    "options": {
+      "A": "19.5 cm³",
+      "B": "20.5 cm³",
+      "C": "49.1 cm³",
+      "D": "15.3 cm³"
+    },
+    "answer": "A",
+    "answer_text": "19.5 cm³",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "The volume of the solid equals the rise in liquid level.",
+      "steps": [
+        "Final reading = 34.8 cm³.",
+        "Initial reading = 15.3 cm³.",
+        "Volume displaced = 34.8 − 15.3 = 19.5 cm³."
+      ],
+      "final_answer": "A. 19.5 cm³",
+      "simple_explanation": "Subtract the initial volume from the final volume."
+    },
+    "tags": [
+      "measurement",
+      "volume",
+      "displacement"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q407",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "SI units",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which prefix represents 10⁻¹?",
+    "options": {
+      "A": "deci",
+      "B": "centi",
+      "C": "milli",
+      "D": "micro"
+    },
+    "answer": "A",
+    "answer_text": "deci",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "The SI prefix deci means one-tenth.",
+      "steps": [
+        "deci = 10⁻¹.",
+        "centi = 10⁻².",
+        "milli = 10⁻³.",
+        "micro = 10⁻⁶."
+      ],
+      "final_answer": "A. deci",
+      "simple_explanation": "Deci means one-tenth."
+    },
+    "tags": [
+      "SI_units",
+      "prefixes"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q408",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Measurement of mass, length, time, temperature, and volume",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Why is a pipette usually rinsed with the solution to be used before filling it?",
+    "options": {
+      "A": "To cool the solution",
+      "B": "To prevent dilution by water left inside",
+      "C": "To reduce the volume of the pipette",
+      "D": "To change the color of the solution"
+    },
+    "answer": "B",
+    "answer_text": "To prevent dilution by water left inside",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Residual water in a pipette can alter the concentration of the solution measured.",
+      "steps": [
+        "If water remains in the pipette, it mixes with the solution.",
+        "This causes dilution and leads to inaccurate results.",
+        "Rinsing with the solution prevents this."
+      ],
+      "final_answer": "B. To prevent dilution by water left inside",
+      "simple_explanation": "Rinsing prevents residual water from diluting the solution."
+    },
+    "tags": [
+      "measurement",
+      "pipette",
+      "accuracy"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q409",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "SI units",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The SI symbol for kelvin is",
+    "options": {
+      "A": "k",
+      "B": "K",
+      "C": "Kel",
+      "D": "KV"
+    },
+    "answer": "B",
+    "answer_text": "K",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "SI symbols must be written in their correct standard form.",
+      "steps": [
+        "The correct symbol for kelvin is the capital letter K.",
+        "The other forms are incorrect."
+      ],
+      "final_answer": "B. K",
+      "simple_explanation": "Kelvin is written as K."
+    },
+    "tags": [
+      "SI_units",
+      "symbols"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q410",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Measurement of mass, length, time, temperature, and volume",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A liquid occupies 0.125 dm³. Express this volume in cm³.",
+    "options": {
+      "A": "12.5 cm³",
+      "B": "125 cm³",
+      "C": "1250 cm³",
+      "D": "0.125 cm³"
+    },
+    "answer": "B",
+    "answer_text": "125 cm³",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "1 dm³ = 1000 cm³.",
+      "steps": [
+        "0.125 × 1000 = 125.",
+        "So 0.125 dm³ = 125 cm³."
+      ],
+      "final_answer": "B. 125 cm³",
+      "simple_explanation": "Multiply dm³ by 1000 to get cm³."
+    },
+    "tags": [
+      "SI_units",
+      "unit_conversion",
+      "volume"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q411",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Measurement of mass, length, time, temperature, and volume",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is used mainly for measuring atmospheric pressure?",
+    "options": {
+      "A": "Barometer",
+      "B": "Thermometer",
+      "C": "Hydrometer",
+      "D": "Burette"
+    },
+    "answer": "A",
+    "answer_text": "Barometer",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A barometer measures atmospheric pressure.",
+      "steps": [
+        "A thermometer measures temperature.",
+        "A hydrometer measures relative density.",
+        "A burette measures volume delivered.",
+        "A barometer measures pressure."
+      ],
+      "final_answer": "A. Barometer",
+      "simple_explanation": "Use a barometer for atmospheric pressure."
+    },
+    "tags": [
+      "measurement",
+      "pressure"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q412",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "SI units",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The temperature 18 °C is equal to",
+    "options": {
+      "A": "255 K",
+      "B": "273 K",
+      "C": "291 K",
+      "D": "300 K"
+    },
+    "answer": "C",
+    "answer_text": "291 K",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Temperature in kelvin = temperature in °C + 273.",
+      "steps": [
+        "18 + 273 = 291.",
+        "Therefore 18 °C = 291 K."
+      ],
+      "final_answer": "C. 291 K",
+      "simple_explanation": "Add 273 to degree Celsius to get kelvin."
+    },
+    "tags": [
+      "SI_units",
+      "temperature",
+      "unit_conversion"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q413",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Measurement of mass, length, time, temperature, and volume",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The best instrument for measuring the internal diameter of a test tube more accurately than a ruler is a",
+    "options": {
+      "A": "Micrometer screw gauge",
+      "B": "Vernier calipers",
+      "C": "Burette",
+      "D": "Stopwatch"
+    },
+    "answer": "B",
+    "answer_text": "Vernier calipers",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Vernier calipers are suitable for external and internal diameter measurements.",
+      "steps": [
+        "A micrometer screw gauge is better for small external thicknesses.",
+        "Vernier calipers can measure internal diameters accurately.",
+        "Therefore vernier calipers are best here."
+      ],
+      "final_answer": "B. Vernier calipers",
+      "simple_explanation": "Use vernier calipers for internal diameter measurement."
+    },
+    "tags": [
+      "measurement",
+      "length",
+      "vernier_calipers"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q414",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "SI units",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is an SI-derived unit?",
+    "options": {
+      "A": "m³",
+      "B": "kg",
+      "C": "s",
+      "D": "K"
+    },
+    "answer": "A",
+    "answer_text": "m³",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Volume is derived from the cube of length.",
+      "steps": [
+        "kg, s and K are SI base units.",
+        "m³ is a derived unit obtained from meter cubed."
+      ],
+      "final_answer": "A. m³",
+      "simple_explanation": "m³ is a derived unit for volume."
+    },
+    "tags": [
+      "SI_units",
+      "derived_units"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q415",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Measurement of mass, length, time, temperature, and volume",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student starts a stopwatch 0.5 s late and stops it 0.5 s early. The measured time is likely to be",
+    "options": {
+      "A": "too high by 1.0 s",
+      "B": "too low by 1.0 s",
+      "C": "exactly correct",
+      "D": "independent of the actual time"
+    },
+    "answer": "B",
+    "answer_text": "too low by 1.0 s",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A late start and early stop both reduce the measured interval.",
+      "steps": [
+        "Starting late means part of the event is missed at the beginning.",
+        "Stopping early removes part of the event at the end.",
+        "So the result is 1.0 s lower than the true time."
+      ],
+      "final_answer": "B. too low by 1.0 s",
+      "simple_explanation": "Both timing mistakes shorten the measured interval."
+    },
+    "tags": [
+      "measurement",
+      "time",
+      "error"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q416",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "SI units",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "5.0 × 10⁻³ m is equal to",
+    "options": {
+      "A": "5.0 cm",
+      "B": "0.50 cm",
+      "C": "0.050 cm",
+      "D": "50 cm"
+    },
+    "answer": "B",
+    "answer_text": "0.50 cm",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "1 m = 100 cm.",
+      "steps": [
+        "5.0 × 10⁻³ m = 0.005 m.",
+        "0.005 × 100 = 0.50 cm.",
+        "Therefore the answer is 0.50 cm."
+      ],
+      "final_answer": "B. 0.50 cm",
+      "simple_explanation": "Convert meters to centimeters by multiplying by 100."
+    },
+    "tags": [
+      "SI_units",
+      "unit_conversion",
+      "length"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q417",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Measurement of mass, length, time, temperature, and volume",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which quantity is commonly measured in cm³ in the school chemistry laboratory?",
+    "options": {
+      "A": "Mass",
+      "B": "Temperature",
+      "C": "Volume",
+      "D": "Time"
+    },
+    "answer": "C",
+    "answer_text": "Volume",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "cm³ is a unit of volume.",
+      "steps": [
+        "Mass is measured in grams or kilograms.",
+        "Temperature is measured in degree Celsius or kelvin.",
+        "Time is measured in seconds.",
+        "Volume is measured in cm³."
+      ],
+      "final_answer": "C. Volume",
+      "simple_explanation": "cm³ is commonly used for volume."
+    },
+    "tags": [
+      "measurement",
+      "volume"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q418",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "SI units",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "0.075 kg is equal to",
+    "options": {
+      "A": "7.5 g",
+      "B": "75 g",
+      "C": "750 g",
+      "D": "7500 g"
+    },
+    "answer": "B",
+    "answer_text": "75 g",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "1 kg = 1000 g.",
+      "steps": [
+        "0.075 × 1000 = 75.",
+        "Therefore 0.075 kg = 75 g."
+      ],
+      "final_answer": "B. 75 g",
+      "simple_explanation": "Multiply kilograms by 1000 to convert to grams."
+    },
+    "tags": [
+      "SI_units",
+      "mass",
+      "unit_conversion"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q419",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Measurement of mass, length, time, temperature, and volume",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Why should the eye be level with the lower meniscus when reading water in a burette?",
+    "options": {
+      "A": "To increase the volume delivered",
+      "B": "To avoid parallax error",
+      "C": "To reduce the acidity of the solution",
+      "D": "To cool the burette"
+    },
+    "answer": "B",
+    "answer_text": "To avoid parallax error",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "The eye must be level with the meniscus to avoid apparent displacement of the liquid level.",
+      "steps": [
+        "A wrong eye position changes the apparent reading.",
+        "Reading at eye level prevents parallax error."
+      ],
+      "final_answer": "B. To avoid parallax error",
+      "simple_explanation": "Eye-level reading gives the correct burette value."
+    },
+    "tags": [
+      "measurement",
+      "parallax_error",
+      "burette"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q420",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "SI units",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The SI symbol for mole is",
+    "options": {
+      "A": "M",
+      "B": "Mol",
+      "C": "mol",
+      "D": "ml"
+    },
+    "answer": "C",
+    "answer_text": "mol",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "SI symbols have standard letter forms and case.",
+      "steps": [
+        "The correct symbol for mole is mol.",
+        "M is commonly used for molar concentration, not the SI symbol for mole.",
+        "ml is millilitre."
+      ],
+      "final_answer": "C. mol",
+      "simple_explanation": "The SI symbol for mole is mol."
+    },
+    "tags": [
+      "SI_units",
+      "symbols",
+      "mole"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q421",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "How many significant figures are there in 0.0205?",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "answer": "B",
+    "answer_text": "3",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Leading zeros are not significant, but the zero between non-zero digits is significant.",
+      "steps": [
+        "The zeros before 2 are not significant.",
+        "The digits 2, 0 and 5 are significant.",
+        "So the number has 3 significant figures."
+      ],
+      "final_answer": "B. 3",
+      "simple_explanation": "0.0205 has three significant figures."
+    },
+    "tags": [
+      "significant_figures"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q422",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Round 3.846 to three significant figures.",
+    "options": {
+      "A": "3.84",
+      "B": "3.85",
+      "C": "3.90",
+      "D": "3.80"
+    },
+    "answer": "B",
+    "answer_text": "3.85",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "The fourth significant digit is used to round the third.",
+      "steps": [
+        "The first three significant figures are 3, 8 and 4.",
+        "The next digit is 6, so 4 rounds up to 5.",
+        "Therefore 3.846 becomes 3.85."
+      ],
+      "final_answer": "B. 3.85",
+      "simple_explanation": "Use the next digit to round the last retained digit."
+    },
+    "tags": [
+      "significant_figures",
+      "rounding"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q423",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The number of significant figures in 9009 is",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "answer": "C",
+    "answer_text": "4",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Zeros between non-zero digits are significant.",
+      "steps": [
+        "In 9009, the two zeros lie between 9 and 9.",
+        "Therefore all four digits are significant."
+      ],
+      "final_answer": "C. 4",
+      "simple_explanation": "9009 has four significant figures."
+    },
+    "tags": [
+      "significant_figures"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q424",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The value 0.3000 mol dm⁻³ contains",
+    "options": {
+      "A": "1 significant figure",
+      "B": "2 significant figures",
+      "C": "3 significant figures",
+      "D": "4 significant figures"
+    },
+    "answer": "D",
+    "answer_text": "4 significant figures",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Trailing zeros after a decimal point are significant.",
+      "steps": [
+        "The leading zero before 3 is not significant.",
+        "The digits 3, 0, 0 and 0 are significant.",
+        "So there are 4 significant figures."
+      ],
+      "final_answer": "D. 4 significant figures",
+      "simple_explanation": "0.3000 has four significant figures."
+    },
+    "tags": [
+      "significant_figures"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q425",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The result of 25.6 + 4.23, expressed to the correct number of decimal places, is",
+    "options": {
+      "A": "29.8",
+      "B": "29.83",
+      "C": "29.830",
+      "D": "30"
+    },
+    "answer": "A",
+    "answer_text": "29.8",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "For addition, the result is given to the least number of decimal places in the data.",
+      "steps": [
+        "25.6 + 4.23 = 29.83.",
+        "Since 25.6 has one decimal place, the final answer must be 29.8."
+      ],
+      "final_answer": "A. 29.8",
+      "simple_explanation": "Use the least number of decimal places for addition."
+    },
+    "tags": [
+      "significant_figures",
+      "decimal_places"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q426",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The result of 4.56 × 1.2, expressed to the correct number of significant figures, is",
+    "options": {
+      "A": "5.472",
+      "B": "5.47",
+      "C": "5.5",
+      "D": "5.0"
+    },
+    "answer": "C",
+    "answer_text": "5.5",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "For multiplication, the final answer must have as many significant figures as the factor with the fewest significant figures.",
+      "steps": [
+        "4.56 × 1.2 = 5.472.",
+        "4.56 has 3 significant figures while 1.2 has 2.",
+        "So the answer should have 2 significant figures.",
+        "5.472 becomes 5.5."
+      ],
+      "final_answer": "C. 5.5",
+      "simple_explanation": "Use the smaller number of significant figures."
+    },
+    "tags": [
+      "significant_figures",
+      "multiplication"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q427",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Express 0.000305 in scientific notation.",
+    "options": {
+      "A": "3.05 × 10⁻⁴",
+      "B": "3.05 × 10⁻³",
+      "C": "30.5 × 10⁻⁵",
+      "D": "0.305 × 10⁻²"
+    },
+    "answer": "A",
+    "answer_text": "3.05 × 10⁻⁴",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Scientific notation uses a coefficient between 1 and 10.",
+      "steps": [
+        "Move the decimal point four places to the right to get 3.05.",
+        "So the number is 3.05 × 10⁻⁴."
+      ],
+      "final_answer": "A. 3.05 × 10⁻⁴",
+      "simple_explanation": "Shift the decimal to get one non-zero digit before it."
+    },
+    "tags": [
+      "significant_figures",
+      "scientific_notation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q428",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following has exactly four significant figures?",
+    "options": {
+      "A": "0.0305",
+      "B": "3.050",
+      "C": "3050",
+      "D": "0.305"
+    },
+    "answer": "B",
+    "answer_text": "3.050",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Trailing zeros after a decimal point and zeros between significant digits are significant.",
+      "steps": [
+        "3.050 has the digits 3, 0, 5 and 0 as significant.",
+        "Therefore it has 4 significant figures.",
+        "The other options do not clearly match four significant figures here."
+      ],
+      "final_answer": "B. 3.050",
+      "simple_explanation": "3.050 has four significant figures."
+    },
+    "tags": [
+      "significant_figures"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q429",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A balance reading is written as 8.40 g. The main meaning of the final zero is that",
+    "options": {
+      "A": "the sample is pure",
+      "B": "the mass is recorded to the nearest 0.01 g",
+      "C": "the mass is exact to infinity",
+      "D": "the unit is wrong"
+    },
+    "answer": "B",
+    "answer_text": "the mass is recorded to the nearest 0.01 g",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Trailing zeros after a decimal point indicate the precision of the measurement.",
+      "steps": [
+        "8.40 g has three significant figures.",
+        "The final zero shows that the measurement extends to the hundredth of a gram."
+      ],
+      "final_answer": "B. the mass is recorded to the nearest 0.01 g",
+      "simple_explanation": "The last zero shows the precision of the balance reading."
+    },
+    "tags": [
+      "significant_figures",
+      "precision",
+      "balance"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q430",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "How many significant figures are there in 0.0708?",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "answer": "B",
+    "answer_text": "3",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Leading zeros are not significant, but zeros between non-zero digits are.",
+      "steps": [
+        "The zeros before 7 are not significant.",
+        "The digits 7, 0 and 8 are significant.",
+        "So there are 3 significant figures."
+      ],
+      "final_answer": "B. 3",
+      "simple_explanation": "0.0708 has three significant figures."
+    },
+    "tags": [
+      "significant_figures"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q431",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Round 0.5674 to three significant figures.",
+    "options": {
+      "A": "0.567",
+      "B": "0.568",
+      "C": "0.570",
+      "D": "0.560"
+    },
+    "answer": "A",
+    "answer_text": "0.567",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "The fourth significant digit is used to round the third.",
+      "steps": [
+        "The first three significant figures are 5, 6 and 7.",
+        "The next digit is 4, so the 7 remains unchanged.",
+        "Therefore the answer is 0.567."
+      ],
+      "final_answer": "A. 0.567",
+      "simple_explanation": "Since the next digit is 4, the retained digits stay the same."
+    },
+    "tags": [
+      "significant_figures",
+      "rounding"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q432",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The number of significant figures in 1.020 × 10⁴ is",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "answer": "C",
+    "answer_text": "4",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "In scientific notation, only the coefficient is used to count significant figures.",
+      "steps": [
+        "The coefficient is 1.020.",
+        "The digits 1, 0, 2 and 0 are all significant here.",
+        "So the number has 4 significant figures."
+      ],
+      "final_answer": "C. 4",
+      "simple_explanation": "Count the significant figures in the coefficient only."
+    },
+    "tags": [
+      "significant_figures",
+      "scientific_notation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q433",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which reading is most appropriate for a measuring cylinder graduated every 0.5 cm³?",
+    "options": {
+      "A": "12 cm³",
+      "B": "12.0 cm³",
+      "C": "12.00 cm³",
+      "D": "12.000 cm³"
+    },
+    "answer": "B",
+    "answer_text": "12.0 cm³",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A reading should reflect the instrument precision and include only a reasonable estimated digit.",
+      "steps": [
+        "A cylinder marked every 0.5 cm³ can reasonably support one decimal place.",
+        "12.0 cm³ is therefore appropriate.",
+        "More decimal places would overstate the precision."
+      ],
+      "final_answer": "B. 12.0 cm³",
+      "simple_explanation": "Do not report more precision than the cylinder can justify."
+    },
+    "tags": [
+      "significant_figures",
+      "measurement",
+      "precision"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q434",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The result of 6.00 ÷ 4.0, expressed to the correct number of significant figures, is",
+    "options": {
+      "A": "1.5",
+      "B": "1.50",
+      "C": "1.500",
+      "D": "2"
+    },
+    "answer": "A",
+    "answer_text": "1.5",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "For division, the answer should have as many significant figures as the least precise value.",
+      "steps": [
+        "6.00 ÷ 4.0 = 1.5.",
+        "6.00 has 3 significant figures, while 4.0 has 2.",
+        "So the answer must have 2 significant figures.",
+        "1.5 already has 2 significant figures."
+      ],
+      "final_answer": "A. 1.5",
+      "simple_explanation": "Use the smaller number of significant figures for division."
+    },
+    "tags": [
+      "significant_figures",
+      "division"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q435",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "How many significant figures are there in 1002?",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "answer": "C",
+    "answer_text": "4",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Zeros between non-zero digits are significant.",
+      "steps": [
+        "In 1002, the two zeros lie between 1 and 2.",
+        "So all four digits are significant."
+      ],
+      "final_answer": "C. 4",
+      "simple_explanation": "1002 has four significant figures."
+    },
+    "tags": [
+      "significant_figures"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q436",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Express 7.50 × 10⁻² as an ordinary decimal.",
+    "options": {
+      "A": "0.0750",
+      "B": "0.750",
+      "C": "7.50",
+      "D": "0.00750"
+    },
+    "answer": "A",
+    "answer_text": "0.0750",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Multiplying by 10⁻² moves the decimal point two places to the left.",
+      "steps": [
+        "7.50 × 10⁻² = 0.0750.",
+        "The final zero is kept to preserve the significant figures."
+      ],
+      "final_answer": "A. 0.0750",
+      "simple_explanation": "Move the decimal two places left."
+    },
+    "tags": [
+      "significant_figures",
+      "scientific_notation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q437",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which value is over-reported for a thermometer that can reasonably be read only to 0.1 °C?",
+    "options": {
+      "A": "27.1 °C",
+      "B": "27.0 °C",
+      "C": "27.00 °C",
+      "D": "27 °C"
+    },
+    "answer": "C",
+    "answer_text": "27.00 °C",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A result should not contain more decimal places than the instrument supports.",
+      "steps": [
+        "If the thermometer supports 0.1 °C, one decimal place is reasonable.",
+        "27.00 °C implies 0.01 °C precision, which is too much.",
+        "So option C is over-reported."
+      ],
+      "final_answer": "C. 27.00 °C",
+      "simple_explanation": "Do not write more decimal places than the thermometer justifies."
+    },
+    "tags": [
+      "significant_figures",
+      "measurement",
+      "precision"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q438",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The number of significant figures in 0.5050 is",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "answer": "C",
+    "answer_text": "4",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Zeros between non-zero digits and trailing zeros after a decimal are significant.",
+      "steps": [
+        "The first zero before the decimal point is not significant.",
+        "The digits 5, 0, 5 and 0 are significant.",
+        "So the number has 4 significant figures."
+      ],
+      "final_answer": "C. 4",
+      "simple_explanation": "0.5050 has four significant figures."
+    },
+    "tags": [
+      "significant_figures"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q439",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Round 99.95 to three significant figures.",
+    "options": {
+      "A": "99.9",
+      "B": "100",
+      "C": "100.0",
+      "D": "99.0"
+    },
+    "answer": "B",
+    "answer_text": "100",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Rounding to three significant figures may change the place value structure.",
+      "steps": [
+        "The first three significant figures are 9, 9 and 9.",
+        "The next digit is 5, so the number rounds up.",
+        "99.95 therefore becomes 100 to three significant figures."
+      ],
+      "final_answer": "B. 100",
+      "simple_explanation": "Rounding up carries the value to 100."
+    },
+    "tags": [
+      "significant_figures",
+      "rounding"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q440",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Significant figures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A concentration written as 0.0400 mol dm⁻³ shows that",
+    "options": {
+      "A": "the zeros are not important",
+      "B": "the value is given to three significant figures",
+      "C": "the concentration is exactly 0.04 with no uncertainty",
+      "D": "the unit is incorrect"
+    },
+    "answer": "B",
+    "answer_text": "the value is given to three significant figures",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Trailing zeros after the decimal point show significance and measurement precision.",
+      "steps": [
+        "0.0400 has the significant digits 4, 0 and 0.",
+        "Therefore it is written to three significant figures."
+      ],
+      "final_answer": "B. the value is given to three significant figures",
+      "simple_explanation": "The trailing zeros show the precision of the stated value."
+    },
+    "tags": [
+      "significant_figures",
+      "precision"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q441",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following best defines accuracy?",
+    "options": {
+      "A": "Closeness of repeated results to one another",
+      "B": "Closeness of a result to the accepted value",
+      "C": "Use of decimal numbers only",
+      "D": "Use of standard units only"
+    },
+    "answer": "B",
+    "answer_text": "Closeness of a result to the accepted value",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Accuracy refers to correctness relative to the true or accepted value.",
+      "steps": [
+        "Precision is about agreement among repeated readings.",
+        "Accuracy is about closeness to the accepted value."
+      ],
+      "final_answer": "B. Closeness of a result to the accepted value",
+      "simple_explanation": "Accuracy means closeness to the correct value."
+    },
+    "tags": [
+      "accuracy",
+      "precision"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q442",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A set of results 8.2, 8.2 and 8.3 cm³ is best described as",
+    "options": {
+      "A": "precise",
+      "B": "inaccurate because they are repeated",
+      "C": "meaningless",
+      "D": "impossible to compare"
+    },
+    "answer": "A",
+    "answer_text": "precise",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Results close together show good precision.",
+      "steps": [
+        "The values differ only slightly.",
+        "This closeness means they are precise."
+      ],
+      "final_answer": "A. precise",
+      "simple_explanation": "Close agreement among readings means good precision."
+    },
+    "tags": [
+      "precision"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q443",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A burette consistently delivers 0.20 cm³ less than the scale indicates because of a calibration defect. This causes mainly",
+    "options": {
+      "A": "random error",
+      "B": "systematic error",
+      "C": "no error",
+      "D": "change in concentration only"
+    },
+    "answer": "B",
+    "answer_text": "systematic error",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A consistent calibration defect creates the same bias in every reading.",
+      "steps": [
+        "The error is always in one direction and of similar size.",
+        "That is characteristic of systematic error."
+      ],
+      "final_answer": "B. systematic error",
+      "simple_explanation": "A repeated bias is systematic error."
+    },
+    "tags": [
+      "systematic_error",
+      "accuracy",
+      "burette"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q444",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which action is most likely to reduce random error in a practical measurement?",
+    "options": {
+      "A": "Taking many readings and calculating the mean",
+      "B": "Changing the unit from cm³ to dm³",
+      "C": "Ignoring all low results",
+      "D": "Using colored ink"
+    },
+    "answer": "A",
+    "answer_text": "Taking many readings and calculating the mean",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Averaging repeated results reduces the effect of random fluctuations.",
+      "steps": [
+        "Random error causes scatter around the true value.",
+        "Repeating the measurement and finding the mean reduces this effect."
+      ],
+      "final_answer": "A. Taking many readings and calculating the mean",
+      "simple_explanation": "The mean of repeated readings is usually more reliable."
+    },
+    "tags": [
+      "random_error",
+      "precision"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q445",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student obtains 10.1 g, 10.1 g and 10.1 g for a substance whose accepted value is 12.0 g. The readings are",
+    "options": {
+      "A": "accurate and precise",
+      "B": "accurate but not precise",
+      "C": "precise but inaccurate",
+      "D": "neither accurate nor precise"
+    },
+    "answer": "C",
+    "answer_text": "precise but inaccurate",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "The readings agree with each other but not with the accepted value.",
+      "steps": [
+        "The values are identical, so they are precise.",
+        "They are far from 12.0 g, so they are not accurate.",
+        "Thus they are precise but inaccurate."
+      ],
+      "final_answer": "C. precise but inaccurate",
+      "simple_explanation": "The readings are consistent but wrong."
+    },
+    "tags": [
+      "precision",
+      "accuracy"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q446",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which statement is correct?",
+    "options": {
+      "A": "A highly precise instrument always gives accurate readings",
+      "B": "An accurate result must come from only one trial",
+      "C": "A measurement can be accurate on average but not highly precise",
+      "D": "Precision removes zero error"
+    },
+    "answer": "C",
+    "answer_text": "A measurement can be accurate on average but not highly precise",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Accuracy and precision are different qualities of measurements.",
+      "steps": [
+        "A group of readings may be spread out but centered on the true value.",
+        "That makes them accurate on average without being highly precise."
+      ],
+      "final_answer": "C. A measurement can be accurate on average but not highly precise",
+      "simple_explanation": "Accuracy and precision are related but distinct."
+    },
+    "tags": [
+      "accuracy",
+      "precision"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q447",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student always reads the scale of a thermometer from below eye level. This is an example of",
+    "options": {
+      "A": "random error",
+      "B": "systematic error due to parallax",
+      "C": "fair testing",
+      "D": "chemical contamination"
+    },
+    "answer": "B",
+    "answer_text": "systematic error due to parallax",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Using the same wrong eye position each time introduces a repeated bias.",
+      "steps": [
+        "The wrong viewing angle causes parallax error.",
+        "Because it is repeated in the same way every time, the error becomes systematic."
+      ],
+      "final_answer": "B. systematic error due to parallax",
+      "simple_explanation": "Repeated parallax error is systematic."
+    },
+    "tags": [
+      "parallax_error",
+      "systematic_error",
+      "accuracy"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q448",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The main effect of a worn zero mark on a meter rule is to reduce the",
+    "options": {
+      "A": "accuracy of length measurements",
+      "B": "temperature of the object",
+      "C": "color of the ruler",
+      "D": "state of the matter"
+    },
+    "answer": "A",
+    "answer_text": "accuracy of length measurements",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A faulty zero point introduces a consistent bias.",
+      "steps": [
+        "All measurements taken from a damaged zero point are shifted.",
+        "This affects accuracy."
+      ],
+      "final_answer": "A. accuracy of length measurements",
+      "simple_explanation": "A worn zero mark gives systematically wrong lengths."
+    },
+    "tags": [
+      "accuracy",
+      "systematic_error",
+      "length"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q449",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student takes one reading from a burette as 25.65 cm³ and another as 25.15 cm³. If the two values came from the same stage of the experiment, the large difference suggests poor",
+    "options": {
+      "A": "precision",
+      "B": "purity",
+      "C": "molar mass",
+      "D": "density"
+    },
+    "answer": "A",
+    "answer_text": "precision",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Large spread among repeated readings indicates poor precision.",
+      "steps": [
+        "Good precision would mean values close to one another.",
+        "A difference of 0.50 cm³ is large for the same stage, showing poor precision."
+      ],
+      "final_answer": "A. precision",
+      "simple_explanation": "Widely different repeated values show poor precision."
+    },
+    "tags": [
+      "precision",
+      "burette"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q450",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "To improve the accuracy of a titration, the observer should mainly",
+    "options": {
+      "A": "read the burette at eye level and ensure the apparatus is properly calibrated",
+      "B": "change the acid color",
+      "C": "shake the table",
+      "D": "ignore rough readings completely"
+    },
+    "answer": "A",
+    "answer_text": "read the burette at eye level and ensure the apparatus is properly calibrated",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Accuracy improves when systematic error is reduced.",
+      "steps": [
+        "Eye-level reading reduces parallax error.",
+        "Proper calibration reduces systematic error in the apparatus.",
+        "These together improve accuracy."
+      ],
+      "final_answer": "A. read the burette at eye level and ensure the apparatus is properly calibrated",
+      "simple_explanation": "Accurate titration requires correct reading and properly adjusted apparatus."
+    },
+    "tags": [
+      "accuracy",
+      "titration",
+      "parallax_error"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q451",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A stopwatch consistently starts 0.2 s late because of a mechanical fault. This mainly affects the",
+    "options": {
+      "A": "precision only",
+      "B": "accuracy only",
+      "C": "unit only",
+      "D": "color only"
+    },
+    "answer": "B",
+    "answer_text": "accuracy only",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A constant timing delay introduces a systematic bias.",
+      "steps": [
+        "Every measured time is shifted by approximately the same amount.",
+        "This affects accuracy more directly than precision."
+      ],
+      "final_answer": "B. accuracy only",
+      "simple_explanation": "A constant delay makes the time wrong by a fixed amount."
+    },
+    "tags": [
+      "accuracy",
+      "systematic_error",
+      "time"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q452",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A student repeats an experiment five times and obtains a mean value. The mean value is often used because it",
+    "options": {
+      "A": "changes the chemical reaction",
+      "B": "reduces the effect of random error",
+      "C": "guarantees zero systematic error",
+      "D": "changes the units used"
+    },
+    "answer": "B",
+    "answer_text": "reduces the effect of random error",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A mean helps cancel out small random deviations.",
+      "steps": [
+        "Some readings may be high and some low.",
+        "A mean value reduces the effect of these random differences."
+      ],
+      "final_answer": "B. reduces the effect of random error",
+      "simple_explanation": "The mean is usually more dependable than a single reading."
+    },
+    "tags": [
+      "random_error",
+      "mean",
+      "precision"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q453",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following would most likely improve both precision and accuracy in a volume measurement?",
+    "options": {
+      "A": "Using a clean, calibrated pipette correctly",
+      "B": "Using any available beaker quickly",
+      "C": "Estimating without a scale",
+      "D": "Reading the meniscus from different angles"
+    },
+    "answer": "A",
+    "answer_text": "Using a clean, calibrated pipette correctly",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A good instrument used correctly reduces both random and systematic errors.",
+      "steps": [
+        "A calibrated pipette improves accuracy.",
+        "Careful correct use improves consistency and therefore precision.",
+        "So option A improves both."
+      ],
+      "final_answer": "A. Using a clean, calibrated pipette correctly",
+      "simple_explanation": "A proper instrument used properly improves both qualities."
+    },
+    "tags": [
+      "precision",
+      "accuracy",
+      "pipette"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q454",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following mainly shows poor accuracy?",
+    "options": {
+      "A": "Readings far from the accepted value",
+      "B": "Readings close together",
+      "C": "Use of repeated trials",
+      "D": "Use of SI units"
+    },
+    "answer": "A",
+    "answer_text": "Readings far from the accepted value",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Poor accuracy means being far from the true value.",
+      "steps": [
+        "Accuracy is judged by closeness to the accepted value.",
+        "If readings are far away, accuracy is poor."
+      ],
+      "final_answer": "A. Readings far from the accepted value",
+      "simple_explanation": "Poor accuracy means the result is not close to the correct value."
+    },
+    "tags": [
+      "accuracy"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q455",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student carefully reads the lower meniscus in every trial, but the burette scale itself is misprinted. The results may still be",
+    "options": {
+      "A": "precise but inaccurate",
+      "B": "accurate and imprecise",
+      "C": "both inaccurate and imprecise automatically",
+      "D": "exact and perfect"
+    },
+    "answer": "A",
+    "answer_text": "precise but inaccurate",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A faulty instrument can give consistently wrong values even when used carefully.",
+      "steps": [
+        "If the student uses the same faulty scale carefully each time, the readings may agree closely.",
+        "However, the readings can still be wrong because of the scale defect.",
+        "Thus they may be precise but inaccurate."
+      ],
+      "final_answer": "A. precise but inaccurate",
+      "simple_explanation": "A defective instrument can produce consistent but wrong results."
+    },
+    "tags": [
+      "precision",
+      "accuracy",
+      "systematic_error"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q456",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Results that show little scatter around their mean are described as having high",
+    "options": {
+      "A": "precision",
+      "B": "impurity",
+      "C": "density",
+      "D": "temperature"
+    },
+    "answer": "A",
+    "answer_text": "precision",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Little scatter means the readings are closely grouped.",
+      "steps": [
+        "Closeness among repeated measurements is precision.",
+        "So little scatter indicates high precision."
+      ],
+      "final_answer": "A. precision",
+      "simple_explanation": "Small spread in readings means high precision."
+    },
+    "tags": [
+      "precision"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q457",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "If a pipette is rinsed with distilled water instead of the solution to be used, the main consequence is that the solution delivered may be",
+    "options": {
+      "A": "more concentrated",
+      "B": "diluted and less accurate in concentration",
+      "C": "unchanged in every respect",
+      "D": "converted into a gas"
+    },
+    "answer": "B",
+    "answer_text": "diluted and less accurate in concentration",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Water remaining in the pipette changes the concentration of the transferred solution.",
+      "steps": [
+        "The water mixes with the solution inside the pipette.",
+        "This lowers the concentration slightly and affects accuracy."
+      ],
+      "final_answer": "B. diluted and less accurate in concentration",
+      "simple_explanation": "Residual water dilutes the solution and introduces error."
+    },
+    "tags": [
+      "accuracy",
+      "pipette",
+      "experimental_error"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q458",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The phrase 'close agreement among repeated experimental values' refers to",
+    "options": {
+      "A": "accuracy",
+      "B": "precision",
+      "C": "purity",
+      "D": "solubility"
+    },
+    "answer": "B",
+    "answer_text": "precision",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Precision means consistency among repeated measurements.",
+      "steps": [
+        "It is not the same as closeness to the true value.",
+        "It refers specifically to agreement among the readings."
+      ],
+      "final_answer": "B. precision",
+      "simple_explanation": "Close repeated agreement means precision."
+    },
+    "tags": [
+      "precision"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q459",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student uses a stopwatch with sticky buttons that respond irregularly. The error introduced is most likely",
+    "options": {
+      "A": "systematic only",
+      "B": "random",
+      "C": "a unit error",
+      "D": "a purity error"
+    },
+    "answer": "B",
+    "answer_text": "random",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Irregular instrument response causes unpredictable fluctuations in readings.",
+      "steps": [
+        "Because the delay is not the same each time, the readings scatter unpredictably.",
+        "This is characteristic of random error."
+      ],
+      "final_answer": "B. random",
+      "simple_explanation": "Unpredictable delays cause random error."
+    },
+    "tags": [
+      "random_error",
+      "measurement",
+      "time"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q460",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Precision and accuracy",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following would most directly improve the accuracy of mass measurements on a balance?",
+    "options": {
+      "A": "Reading the balance from farther away",
+      "B": "Checking and correcting any zero error before use",
+      "C": "Changing grams to milligrams",
+      "D": "Using a colored container"
+    },
+    "answer": "B",
+    "answer_text": "Checking and correcting any zero error before use",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Zero error creates a constant bias in balance readings.",
+      "steps": [
+        "An uncorrected zero error makes every mass reading wrong by about the same amount.",
+        "Correcting it improves accuracy directly."
+      ],
+      "final_answer": "B. Checking and correcting any zero error before use",
+      "simple_explanation": "Correct the balance zero before taking measurements."
+    },
+    "tags": [
+      "accuracy",
+      "zero_error",
+      "balance"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q461",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A student notices that wet clothes dry faster on a sunny day than on a cloudy day. This statement is an example of",
+    "options": {
+      "A": "an observation",
+      "B": "a law",
+      "C": "a unit",
+      "D": "an apparatus"
+    },
+    "answer": "A",
+    "answer_text": "an observation",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "An observation records what is noticed before explanation is offered.",
+      "steps": [
+        "The student has noticed a pattern under different weather conditions.",
+        "No explanation has yet been given.",
+        "Therefore the statement is an observation."
+      ],
+      "final_answer": "A. an observation",
+      "simple_explanation": "Observation comes before explanation."
+    },
+    "tags": [
+      "scientific_method",
+      "observation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q462",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is the most suitable hypothesis based on the observation that seeds germinate faster in warm conditions?",
+    "options": {
+      "A": "Temperature affects the rate of germination",
+      "B": "Seeds are always green",
+      "C": "Warmth is a unit of measurement",
+      "D": "All plants grow equally"
+    },
+    "answer": "A",
+    "answer_text": "Temperature affects the rate of germination",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A hypothesis should explain the observation in a testable way.",
+      "steps": [
+        "The observation compares germination under different temperature conditions.",
+        "A suitable explanation is that temperature affects the germination rate."
+      ],
+      "final_answer": "A. Temperature affects the rate of germination",
+      "simple_explanation": "The hypothesis should offer a testable explanation for the observed effect."
+    },
+    "tags": [
+      "scientific_method",
+      "hypothesis"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q463",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following would be the best fair test of the hypothesis that stirring increases the rate of dissolving a solid in water?",
+    "options": {
+      "A": "Use equal masses of the solid in equal volumes of water and compare stirred with unstirred conditions",
+      "B": "Use different masses of solid and different temperatures",
+      "C": "Stir one sample and heat the other",
+      "D": "Observe one beaker only"
+    },
+    "answer": "A",
+    "answer_text": "Use equal masses of the solid in equal volumes of water and compare stirred with unstirred conditions",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A fair test changes only one variable at a time.",
+      "steps": [
+        "The variable to test is stirring.",
+        "Other factors such as mass of solid and volume of water should be kept constant.",
+        "Therefore option A is the best fair test."
+      ],
+      "final_answer": "A. Use equal masses of the solid in equal volumes of water and compare stirred with unstirred conditions",
+      "simple_explanation": "Change only the stirring condition and keep other factors constant."
+    },
+    "tags": [
+      "scientific_method",
+      "fair_test",
+      "dissolving"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q464",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A scientific law is mainly a statement that",
+    "options": {
+      "A": "describes a repeated pattern in nature",
+      "B": "is always a guess",
+      "C": "cannot be tested",
+      "D": "must be longer than a theory"
+    },
+    "answer": "A",
+    "answer_text": "describes a repeated pattern in nature",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Scientific laws summarize consistent observations.",
+      "steps": [
+        "A law tells what happens under given conditions.",
+        "It does not primarily explain why the event happens."
+      ],
+      "final_answer": "A. describes a repeated pattern in nature",
+      "simple_explanation": "A law describes what repeatedly happens in nature."
+    },
+    "tags": [
+      "scientific_method",
+      "law"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q465",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A theory differs from a hypothesis mainly because a theory",
+    "options": {
+      "A": "is usually supported by a wider body of evidence",
+      "B": "cannot be tested",
+      "C": "is a personal opinion",
+      "D": "comes before observation"
+    },
+    "answer": "A",
+    "answer_text": "is usually supported by a wider body of evidence",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A theory is a more strongly supported explanatory framework than a simple hypothesis.",
+      "steps": [
+        "A hypothesis is tentative.",
+        "A theory is built on broader and stronger evidence.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. is usually supported by a wider body of evidence",
+      "simple_explanation": "A theory has broader evidential support than a hypothesis."
+    },
+    "tags": [
+      "scientific_method",
+      "theory",
+      "hypothesis"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q466",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "What is the main purpose of a conclusion in scientific work?",
+    "options": {
+      "A": "To summarize what the evidence shows",
+      "B": "To change the hypothesis after publication only",
+      "C": "To avoid data analysis",
+      "D": "To increase the size of the report"
+    },
+    "answer": "A",
+    "answer_text": "To summarize what the evidence shows",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A conclusion interprets the result in relation to the question or hypothesis.",
+      "steps": [
+        "After data have been obtained and analyzed, the scientist states what they mean.",
+        "This statement is the conclusion."
+      ],
+      "final_answer": "A. To summarize what the evidence shows",
+      "simple_explanation": "A conclusion states what the results mean."
+    },
+    "tags": [
+      "scientific_method",
+      "conclusion"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q467",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following is not a good scientific hypothesis?",
+    "options": {
+      "A": "Increasing acid concentration increases reaction rate",
+      "B": "The product forms because particles collide more often",
+      "C": "This chemical is lucky",
+      "D": "Surface area affects the speed of reaction"
+    },
+    "answer": "C",
+    "answer_text": "This chemical is lucky",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A hypothesis should be scientific and testable, not based on superstition.",
+      "steps": [
+        "Options A, B and D can be tested experimentally.",
+        "Option C is not a scientific explanation and cannot be tested meaningfully."
+      ],
+      "final_answer": "C. This chemical is lucky",
+      "simple_explanation": "A scientific hypothesis must be testable and evidence-based."
+    },
+    "tags": [
+      "scientific_method",
+      "hypothesis"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q468",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Why is it important to keep all variables except one constant in an experiment?",
+    "options": {
+      "A": "To increase the color of the apparatus",
+      "B": "To ensure a fair test",
+      "C": "To remove all need for measurement",
+      "D": "To convert the hypothesis into a law"
+    },
+    "answer": "B",
+    "answer_text": "To ensure a fair test",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A fair test isolates the effect of the variable being investigated.",
+      "steps": [
+        "If many variables change at once, the cause of the result becomes unclear.",
+        "Keeping all but one constant makes the test fair."
+      ],
+      "final_answer": "B. To ensure a fair test",
+      "simple_explanation": "Control of variables makes the test fair."
+    },
+    "tags": [
+      "scientific_method",
+      "fair_test"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q469",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A scientist repeats an experiment under the same conditions and obtains similar results. This mainly strengthens the",
+    "options": {
+      "A": "reproducibility and reliability of the findings",
+      "B": "color of the apparatus",
+      "C": "mass of the chemicals",
+      "D": "unit symbols used"
+    },
+    "answer": "A",
+    "answer_text": "reproducibility and reliability of the findings",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Repeated similar results increase confidence that the finding is dependable.",
+      "steps": [
+        "Reproducibility is a key feature of good science.",
+        "If the result recurs under similar conditions, it is more reliable."
+      ],
+      "final_answer": "A. reproducibility and reliability of the findings",
+      "simple_explanation": "Repeatable results are more trustworthy."
+    },
+    "tags": [
+      "scientific_method",
+      "reproducibility",
+      "reliability"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q470",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A hypothesis should be rejected or modified if it",
+    "options": {
+      "A": "is supported by repeated evidence",
+      "B": "is contradicted by valid experimental results",
+      "C": "is written neatly",
+      "D": "contains scientific terms"
+    },
+    "answer": "B",
+    "answer_text": "is contradicted by valid experimental results",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Scientific ideas must follow the evidence obtained.",
+      "steps": [
+        "When good experimental evidence disagrees with a hypothesis, the hypothesis should not be kept unchanged.",
+        "It must be revised or rejected."
+      ],
+      "final_answer": "B. is contradicted by valid experimental results",
+      "simple_explanation": "Evidence decides whether a hypothesis stands."
+    },
+    "tags": [
+      "scientific_method",
+      "hypothesis",
+      "evidence"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q471",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student claims that a result is correct because it agrees with his expectation. In science, the result should instead be judged mainly by",
+    "options": {
+      "A": "experimental evidence",
+      "B": "personal confidence",
+      "C": "report length",
+      "D": "ink color"
+    },
+    "answer": "A",
+    "answer_text": "experimental evidence",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Scientific judgment depends on evidence rather than expectation.",
+      "steps": [
+        "Expectations may be wrong.",
+        "Experimental evidence is the proper basis for judging a result."
+      ],
+      "final_answer": "A. experimental evidence",
+      "simple_explanation": "Results are judged by evidence, not expectation."
+    },
+    "tags": [
+      "scientific_method",
+      "evidence"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q472",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is best described as experimentation?",
+    "options": {
+      "A": "Making a guess without testing",
+      "B": "Planning and carrying out a test to collect evidence",
+      "C": "Ignoring observations",
+      "D": "Changing data after obtaining them"
+    },
+    "answer": "B",
+    "answer_text": "Planning and carrying out a test to collect evidence",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Experimentation involves controlled testing and collection of data.",
+      "steps": [
+        "An experiment is deliberately planned.",
+        "It is performed to gather evidence relevant to a question or hypothesis."
+      ],
+      "final_answer": "B. Planning and carrying out a test to collect evidence",
+      "simple_explanation": "Experimentation means testing ideas with evidence."
+    },
+    "tags": [
+      "scientific_method",
+      "experimentation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q473",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement best explains why a control is useful in an experiment?",
+    "options": {
+      "A": "It provides a basis for comparison",
+      "B": "It makes the reaction happen faster",
+      "C": "It changes a theory into a law",
+      "D": "It eliminates all apparatus errors"
+    },
+    "answer": "A",
+    "answer_text": "It provides a basis for comparison",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A control helps show what happens when the tested variable is absent.",
+      "steps": [
+        "Without comparison, it may be difficult to judge the effect of the variable.",
+        "The control provides that standard for comparison."
+      ],
+      "final_answer": "A. It provides a basis for comparison",
+      "simple_explanation": "A control shows what the result would be without the tested factor."
+    },
+    "tags": [
+      "scientific_method",
+      "control"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q474",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A statement such as 'heating increases the rate of diffusion' is best considered a",
+    "options": {
+      "A": "testable scientific hypothesis or general statement",
+      "B": "measuring instrument",
+      "C": "random error",
+      "D": "chemical equation"
+    },
+    "answer": "A",
+    "answer_text": "testable scientific hypothesis or general statement",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "The statement predicts a relationship that can be investigated experimentally.",
+      "steps": [
+        "The effect of temperature on diffusion can be tested.",
+        "Thus the statement is scientifically meaningful and testable."
+      ],
+      "final_answer": "A. testable scientific hypothesis or general statement",
+      "simple_explanation": "It is a scientific statement that can be checked by experiment."
+    },
+    "tags": [
+      "scientific_method",
+      "hypothesis",
+      "diffusion"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q475",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A hypothesis that cannot in principle be tested is scientifically weak because it is not",
+    "options": {
+      "A": "colorful",
+      "B": "falsifiable or testable",
+      "C": "expensive",
+      "D": "grammatical"
+    },
+    "answer": "B",
+    "answer_text": "falsifiable or testable",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Science requires ideas that can be checked against observation or experiment.",
+      "steps": [
+        "A scientific claim must be testable.",
+        "If no observation can count against it, it is weak scientifically."
+      ],
+      "final_answer": "B. falsifiable or testable",
+      "simple_explanation": "A scientific hypothesis must be testable."
+    },
+    "tags": [
+      "scientific_method",
+      "hypothesis",
+      "testability"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q476",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The scientist's observation that 'the blue color faded as the reaction continued' is mainly important because it",
+    "options": {
+      "A": "provides evidence to be interpreted",
+      "B": "proves a law immediately",
+      "C": "makes measurement unnecessary",
+      "D": "changes the unit system"
+    },
+    "answer": "A",
+    "answer_text": "provides evidence to be interpreted",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Observations are pieces of evidence used in scientific reasoning.",
+      "steps": [
+        "Observed changes are recorded as evidence.",
+        "They are later interpreted in relation to the hypothesis."
+      ],
+      "final_answer": "A. provides evidence to be interpreted",
+      "simple_explanation": "Observations are the raw evidence of science."
+    },
+    "tags": [
+      "scientific_method",
+      "observation",
+      "evidence"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q477",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following would most strongly support the hypothesis that smaller particle size increases reaction rate?",
+    "options": {
+      "A": "Powdered solid reacts faster than large lumps of the same solid under similar conditions",
+      "B": "The mass of the solid changes during heating",
+      "C": "The reaction vessel is made of glass",
+      "D": "The room becomes brighter"
+    },
+    "answer": "A",
+    "answer_text": "Powdered solid reacts faster than large lumps of the same solid under similar conditions",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A supporting result must directly compare particle size while controlling other factors.",
+      "steps": [
+        "Powdered solid has a larger total surface area than lumps of equal mass.",
+        "If it reacts faster under similar conditions, the hypothesis is supported."
+      ],
+      "final_answer": "A. Powdered solid reacts faster than large lumps of the same solid under similar conditions",
+      "simple_explanation": "The best support is faster reaction with smaller particle size under controlled conditions."
+    },
+    "tags": [
+      "scientific_method",
+      "hypothesis",
+      "surface_area"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q478",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The main reason for collecting data carefully in a science experiment is to",
+    "options": {
+      "A": "ensure conclusions are based on evidence",
+      "B": "avoid writing a report",
+      "C": "change the SI system",
+      "D": "reduce the number of variables automatically"
+    },
+    "answer": "A",
+    "answer_text": "ensure conclusions are based on evidence",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Careful data collection provides the evidence needed for valid conclusions.",
+      "steps": [
+        "If data are poor, conclusions become weak.",
+        "Accurate and careful data collection strengthens scientific conclusions."
+      ],
+      "final_answer": "A. ensure conclusions are based on evidence",
+      "simple_explanation": "Good conclusions depend on good data."
+    },
+    "tags": [
+      "scientific_method",
+      "data",
+      "evidence"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q479",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "If an explanation continues to agree with many experiments over time, it may be accepted as a",
+    "options": {
+      "A": "theory",
+      "B": "mistake",
+      "C": "burette reading",
+      "D": "prefix"
+    },
+    "answer": "A",
+    "answer_text": "theory",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A theory is a broad explanation supported by extensive evidence.",
+      "steps": [
+        "Repeated support strengthens confidence in the explanation.",
+        "A well-supported explanation may become accepted as a theory."
+      ],
+      "final_answer": "A. theory",
+      "simple_explanation": "A theory is an explanation backed by much evidence."
+    },
+    "tags": [
+      "scientific_method",
+      "theory"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q480",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Scientific method: observation, hypothesis, experimentation, laws, theories",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following correctly completes the sequence: observation → hypothesis → experiment → conclusion → ?",
+    "options": {
+      "A": "reporting or communication of findings",
+      "B": "barometer",
+      "C": "density",
+      "D": "mole"
+    },
+    "answer": "A",
+    "answer_text": "reporting or communication of findings",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Scientific work is often communicated after conclusions are drawn.",
+      "steps": [
+        "After obtaining and interpreting results, scientists usually communicate their findings.",
+        "Therefore reporting comes after conclusion."
+      ],
+      "final_answer": "A. reporting or communication of findings",
+      "simple_explanation": "Scientific results are normally reported after the conclusion is drawn."
+    },
+    "tags": [
+      "scientific_method",
+      "reporting",
+      "sequence"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q481",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Pure and impure substances",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is most likely to be pure?",
+    "options": {
+      "A": "Air in a laboratory",
+      "B": "Rain water collected during a storm",
+      "C": "Distilled water stored in a clean sealed bottle",
+      "D": "Sea water evaporated once"
+    },
+    "answer": "C",
+    "answer_text": "Distilled water stored in a clean sealed bottle",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A pure substance contains one kind of particle only.",
+      "steps": [
+        "Air and sea water are mixtures.",
+        "Rain water may contain dissolved gases and dust.",
+        "Distilled water in a sealed bottle is the best example of a pure substance here."
+      ],
+      "final_answer": "C. Distilled water stored in a clean sealed bottle",
+      "simple_explanation": "Distilled water is the most likely pure sample."
+    },
+    "tags": [
+      "pure_substance",
+      "distilled_water"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q482",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Criteria for purity: melting point and boiling point",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A pure solid sample usually melts",
+    "options": {
+      "A": "over a wide temperature range",
+      "B": "at a sharp fixed temperature",
+      "C": "only above 200 °C",
+      "D": "without any temperature change"
+    },
+    "answer": "B",
+    "answer_text": "at a sharp fixed temperature",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A definite melting point is a standard sign of purity for a solid.",
+      "steps": [
+        "Pure solids melt sharply at characteristic temperatures.",
+        "Impure solids melt over a range."
+      ],
+      "final_answer": "B. at a sharp fixed temperature",
+      "simple_explanation": "A sharp melting point indicates purity."
+    },
+    "tags": [
+      "purity",
+      "melting_point"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q483",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Elements, compounds, and mixtures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a compound?",
+    "options": {
+      "A": "Brass",
+      "B": "Nitrogen",
+      "C": "Hydrogen sulfide, H₂S",
+      "D": "Air"
+    },
+    "answer": "C",
+    "answer_text": "Hydrogen sulfide, H₂S",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A compound contains elements chemically combined in a fixed ratio.",
+      "steps": [
+        "Brass and air are mixtures.",
+        "Nitrogen is an element.",
+        "H₂S contains hydrogen and sulfur chemically combined, so it is a compound."
+      ],
+      "final_answer": "C. Hydrogen sulfide, H₂S",
+      "simple_explanation": "H₂S is a compound."
+    },
+    "tags": [
+      "compound"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q484",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Elements, compounds, and mixtures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is an element?",
+    "options": {
+      "A": "Na₂CO₃",
+      "B": "Cl₂",
+      "C": "Brine",
+      "D": "Steel"
+    },
+    "answer": "B",
+    "answer_text": "Cl₂",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "An element contains only one kind of atom, even if it exists as a molecule.",
+      "steps": [
+        "Na₂CO₃ is a compound.",
+        "Brine and steel are mixtures.",
+        "Cl₂ is chlorine, which is an element."
+      ],
+      "final_answer": "B. Cl₂",
+      "simple_explanation": "Cl₂ is an element."
+    },
+    "tags": [
+      "element"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q485",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Elements, compounds, and mixtures",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A sample made up of two substances physically mixed together is best described as a",
+    "options": {
+      "A": "compound",
+      "B": "mixture",
+      "C": "pure element",
+      "D": "single crystal only"
+    },
+    "answer": "B",
+    "answer_text": "mixture",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Physical combination without chemical bonding gives a mixture.",
+      "steps": [
+        "If substances are only physically mixed, they retain their individual identities.",
+        "Such a sample is a mixture, not a compound."
+      ],
+      "final_answer": "B. mixture",
+      "simple_explanation": "Physical mixing produces a mixture."
+    },
+    "tags": [
+      "mixture"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q486",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Chemical and physical changes",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a chemical change?",
+    "options": {
+      "A": "Sublimation of iodine",
+      "B": "Condensation of steam",
+      "C": "Burning of sulfur",
+      "D": "Melting of wax"
+    },
+    "answer": "C",
+    "answer_text": "Burning of sulfur",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A chemical change forms new substances.",
+      "steps": [
+        "Sublimation, condensation and melting are physical changes.",
+        "Burning sulfur produces sulfur oxides, which are new substances."
+      ],
+      "final_answer": "C. Burning of sulfur",
+      "simple_explanation": "Burning sulfur is chemical because new substances form."
+    },
+    "tags": [
+      "chemical_change",
+      "combustion"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q487",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Chemical and physical changes",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a physical change?",
+    "options": {
+      "A": "Electrolysis of water",
+      "B": "Rusting of iron",
+      "C": "Boiling of ethanol",
+      "D": "Fermentation of glucose"
+    },
+    "answer": "C",
+    "answer_text": "Boiling of ethanol",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A physical change changes state without altering chemical identity.",
+      "steps": [
+        "Electrolysis, rusting and fermentation are chemical changes.",
+        "Boiling changes ethanol from liquid to vapor without creating a new substance."
+      ],
+      "final_answer": "C. Boiling of ethanol",
+      "simple_explanation": "Boiling is a physical change."
+    },
+    "tags": [
+      "physical_change",
+      "state_change"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q488",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Criteria for purity: melting point and boiling point",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "An impure liquid is expected to",
+    "options": {
+      "A": "boil sharply at one exact temperature",
+      "B": "boil over a range of temperatures",
+      "C": "have no boiling behavior",
+      "D": "always boil at 100 °C"
+    },
+    "answer": "B",
+    "answer_text": "boil over a range of temperatures",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Impurities disturb the boiling behavior of a liquid.",
+      "steps": [
+        "Pure liquids boil sharply at a definite temperature under constant pressure.",
+        "Impure liquids typically boil over a range."
+      ],
+      "final_answer": "B. boil over a range of temperatures",
+      "simple_explanation": "A boiling range is a sign of impurity."
+    },
+    "tags": [
+      "purity",
+      "boiling_point"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q489",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Pure and impure substances",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A sample of common salt containing calcium chloride and sand is",
+    "options": {
+      "A": "a pure element",
+      "B": "a pure compound",
+      "C": "an impure substance",
+      "D": "a gas"
+    },
+    "answer": "C",
+    "answer_text": "an impure substance",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "The presence of foreign substances makes a sample impure.",
+      "steps": [
+        "Pure common salt is sodium chloride only.",
+        "The added calcium chloride and sand make the sample impure."
+      ],
+      "final_answer": "C. an impure substance",
+      "simple_explanation": "Extra substances make the salt sample impure."
+    },
+    "tags": [
+      "impure_substance",
+      "mixture"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q490",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Elements, compounds, and mixtures",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement is correct about mixtures?",
+    "options": {
+      "A": "They have fixed composition and can only be separated chemically",
+      "B": "Their components are chemically bonded",
+      "C": "Their composition may vary and they can often be separated physically",
+      "D": "They always contain only liquids"
+    },
+    "answer": "C",
+    "answer_text": "Their composition may vary and they can often be separated physically",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Mixtures are physical combinations of substances.",
+      "steps": [
+        "Mixtures may contain components in different proportions.",
+        "Because the components are not chemically bonded, physical separation is often possible."
+      ],
+      "final_answer": "C. Their composition may vary and they can often be separated physically",
+      "simple_explanation": "Variable composition and physical separability are key features of mixtures."
+    },
+    "tags": [
+      "mixture",
+      "separation",
+      "composition"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q491",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Chemical and physical changes",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The black residue formed when sugar is strongly heated shows that",
+    "options": {
+      "A": "the sugar only changed shape",
+      "B": "a chemical decomposition occurred",
+      "C": "the sugar became purer",
+      "D": "no energy change took place"
+    },
+    "answer": "B",
+    "answer_text": "a chemical decomposition occurred",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Strong heating can decompose a compound into new substances.",
+      "steps": [
+        "The black residue is not the original sugar.",
+        "Its formation means the sugar has decomposed chemically."
+      ],
+      "final_answer": "B. a chemical decomposition occurred",
+      "simple_explanation": "Formation of a new residue shows chemical change."
+    },
+    "tags": [
+      "chemical_change",
+      "decomposition"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q492",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Criteria for purity: melting point and boiling point",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which property is most useful in checking the purity of a pure solid sample in the laboratory?",
+    "options": {
+      "A": "Melting point",
+      "B": "Mass number",
+      "C": "Color only",
+      "D": "Surface texture"
+    },
+    "answer": "A",
+    "answer_text": "Melting point",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Pure solids have characteristic melting points.",
+      "steps": [
+        "Mass number applies to atoms, not bulk samples.",
+        "Color and texture alone are not reliable criteria.",
+        "Melting point is a standard purity test for solids."
+      ],
+      "final_answer": "A. Melting point",
+      "simple_explanation": "Melting point is the best common purity test for solids."
+    },
+    "tags": [
+      "purity",
+      "melting_point"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q493",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Elements, compounds, and mixtures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following contains only one type of atom?",
+    "options": {
+      "A": "HCl",
+      "B": "O₃",
+      "C": "NaOH",
+      "D": "Air"
+    },
+    "answer": "B",
+    "answer_text": "O₃",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A substance made of only one element may exist as molecules containing several atoms of that element.",
+      "steps": [
+        "HCl and NaOH are compounds.",
+        "Air is a mixture.",
+        "O₃ contains only oxygen atoms, so it is an elemental form."
+      ],
+      "final_answer": "B. O₃",
+      "simple_explanation": "O₃ contains only oxygen atoms."
+    },
+    "tags": [
+      "element",
+      "molecule"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q494",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Pure and impure substances",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A sample melts between 70 °C and 74 °C, while the pure substance melts sharply at 76 °C. This shows that the sample is",
+    "options": {
+      "A": "pure",
+      "B": "impure",
+      "C": "an element only",
+      "D": "a gas"
+    },
+    "answer": "B",
+    "answer_text": "impure",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Impurities lower and broaden the melting point of a solid.",
+      "steps": [
+        "The sample melts below the expected temperature.",
+        "It also melts over a range rather than sharply.",
+        "These features indicate impurity."
+      ],
+      "final_answer": "B. impure",
+      "simple_explanation": "A lower, broader melting range indicates impurity."
+    },
+    "tags": [
+      "purity",
+      "melting_point",
+      "impurity"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q495",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Chemical and physical changes",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is NOT evidence of chemical change?",
+    "options": {
+      "A": "Formation of gas",
+      "B": "Change of state only",
+      "C": "Formation of precipitate",
+      "D": "Permanent color change due to reaction"
+    },
+    "answer": "B",
+    "answer_text": "Change of state only",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A state change does not by itself show the formation of a new substance.",
+      "steps": [
+        "Gas formation, precipitate formation and reaction-related color changes can indicate chemical change.",
+        "A state change such as melting or boiling is physical."
+      ],
+      "final_answer": "B. Change of state only",
+      "simple_explanation": "State change alone is a physical process."
+    },
+    "tags": [
+      "physical_change",
+      "chemical_change"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q496",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Elements, compounds, and mixtures",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "An alloy is best classified as a mixture because",
+    "options": {
+      "A": "its components are chemically combined in fixed simple ratios",
+      "B": "its composition can vary and the components are not present as a single compound",
+      "C": "it contains no atoms",
+      "D": "it must always be a liquid"
+    },
+    "answer": "B",
+    "answer_text": "its composition can vary and the components are not present as a single compound",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Alloys are physical mixtures of metals or metals with other elements.",
+      "steps": [
+        "The proportions in an alloy may vary.",
+        "This differs from a compound, which has a fixed composition."
+      ],
+      "final_answer": "B. its composition can vary and the components are not present as a single compound",
+      "simple_explanation": "Variable composition shows that an alloy is a mixture."
+    },
+    "tags": [
+      "mixture",
+      "alloy",
+      "composition"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q497",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Criteria for purity: melting point and boiling point",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A chemist identifies a liquid by comparing its boiling point with standard data. This method works best when",
+    "options": {
+      "A": "the liquid is pure and the pressure is kept constant",
+      "B": "the liquid is mixed with water",
+      "C": "the pressure changes continuously",
+      "D": "the color is very bright"
+    },
+    "answer": "A",
+    "answer_text": "the liquid is pure and the pressure is kept constant",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Boiling point depends on both purity and pressure.",
+      "steps": [
+        "A pure liquid has a characteristic boiling point only at a given pressure.",
+        "Impurities and changing pressure both reduce the reliability of boiling-point identification."
+      ],
+      "final_answer": "A. the liquid is pure and the pressure is kept constant",
+      "simple_explanation": "Use a pure sample and constant pressure for boiling-point identification."
+    },
+    "tags": [
+      "purity",
+      "boiling_point",
+      "identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q498",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Pure and impure substances",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a pure compound?",
+    "options": {
+      "A": "Distilled ethanol",
+      "B": "Brass",
+      "C": "Air",
+      "D": "River water"
+    },
+    "answer": "A",
+    "answer_text": "Distilled ethanol",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "A pure compound contains one chemical substance made of more than one element.",
+      "steps": [
+        "Brass, air and river water are mixtures.",
+        "Distilled ethanol is a single compound."
+      ],
+      "final_answer": "A. Distilled ethanol",
+      "simple_explanation": "Distilled ethanol is a pure compound."
+    },
+    "tags": [
+      "pure_substance",
+      "compound"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q499",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Chemical and physical changes",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "When limestone reacts with dilute hydrochloric acid and bubbles are seen, the bubbles indicate mainly that",
+    "options": {
+      "A": "the acid is freezing",
+      "B": "a gas is being formed in a chemical reaction",
+      "C": "the limestone is melting",
+      "D": "the volume of the flask is decreasing"
+    },
+    "answer": "B",
+    "answer_text": "a gas is being formed in a chemical reaction",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "Gas evolution is a common sign that a chemical reaction is occurring.",
+      "steps": [
+        "Limestone reacts with acid to produce carbon(IV) oxide gas.",
+        "The bubbles are evidence of gas formation.",
+        "Therefore the process is chemical."
+      ],
+      "final_answer": "B. a gas is being formed in a chemical reaction",
+      "simple_explanation": "Bubbling shows gas formation from a chemical reaction."
+    },
+    "tags": [
+      "chemical_change",
+      "gas_evolution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_01_q500",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_01",
+    "topic_title": "Introduction to Chemistry and Basic Concepts",
+    "subtopic": "Elements, compounds, and mixtures",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following statements is correct?",
+    "options": {
+      "A": "Compounds are always easier to separate than mixtures",
+      "B": "Elements can be broken down by simple physical means",
+      "C": "Mixtures can often be separated by physical methods, whereas compounds require chemical methods for decomposition",
+      "D": "All mixtures are pure substances"
+    },
+    "answer": "C",
+    "answer_text": "Mixtures can often be separated by physical methods, whereas compounds require chemical methods for decomposition",
+    "explanation": {
+      "question_restate": "We are to choose the best answer based on the chemistry concept being tested.",
+      "principle": "The method of separation distinguishes mixtures from compounds.",
+      "steps": [
+        "Mixtures are physical combinations, so physical methods may separate them.",
+        "Compounds are chemically bonded and usually require chemical methods for decomposition.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. Mixtures can often be separated by physical methods, whereas compounds require chemical methods for decomposition",
+      "simple_explanation": "Mixtures are usually separated physically, compounds chemically."
+    },
+    "tags": [
+      "mixture",
+      "compound",
+      "separation"
+    ],
+    "active": true
   }
 ]
