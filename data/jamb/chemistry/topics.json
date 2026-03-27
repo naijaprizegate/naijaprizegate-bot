@@ -5,84 +5,84 @@
     {
       "id": "chem_01",
       "number": 1,
-      "title": "Introduction to Chemistry and Basic Concepts",
+      "title": "Separation of Mixtures and Purification of Chemical Substances",
       "file": "questions/chem_01.json",
       "active": true
     },
     {
       "id": "chem_02",
       "number": 2,
-      "title": "Separation of Mixtures and Purification",
+      "title": "Chemical Combination",
       "file": "questions/chem_02.json",
       "active": true
     },
     {
       "id": "chem_03",
       "number": 3,
-      "title": "Atomic Structure",
+      "title": "Kinetic Theory of Matter and Gas Laws",
       "file": "questions/chem_03.json",
       "active": true
     },
     {
       "id": "chem_04",
       "number": 4,
-      "title": "Periodic Table and Periodicity",
+      "title": "Atomic Structure and Bonding",
       "file": "questions/chem_04.json",
       "active": true
     },
     {
       "id": "chem_05",
       "number": 5,
-      "title": "Chemical Bonding and Structure",
+      "title": "Air",
       "file": "questions/chem_05.json",
       "active": true
     },
     {
       "id": "chem_06",
       "number": 6,
-      "title": "Chemical Combination, Formulae, Equations, and Stoichiometry",
+      "title": "Water",
       "file": "questions/chem_06.json",
       "active": true
     },
     {
       "id": "chem_07",
       "number": 7,
-      "title": "States of Matter, Kinetic Theory, and Gas Laws",
+      "title": "Solubility",
       "file": "questions/chem_07.json",
       "active": true
     },
     {
       "id": "chem_08",
       "number": 8,
-      "title": "Air",
+      "title": "Environmental Pollution",
       "file": "questions/chem_08.json",
       "active": true
     },
     {
       "id": "chem_09",
       "number": 9,
-      "title": "Water",
+      "title": "Acids, Bases and Salts",
       "file": "questions/chem_09.json",
       "active": true
     },
     {
       "id": "chem_10",
       "number": 10,
-      "title": "Solubility and Solutions",
+      "title": "Oxidation and Reduction",
       "file": "questions/chem_10.json",
       "active": true
     },
     {
       "id": "chem_11",
       "number": 11,
-      "title": "Acids, Bases, Salts, and Hydrogen Ion Concepts",
+      "title": "Electrolysis",
       "file": "questions/chem_11.json",
       "active": true
     },
     {
       "id": "chem_12",
       "number": 12,
-      "title": "Energy Changes and Thermochemistry",
+      "title": "Energy Changes",
       "file": "questions/chem_12.json",
       "active": true
     },
@@ -103,50 +103,29 @@
     {
       "id": "chem_15",
       "number": 15,
-      "title": "Oxidation, Reduction, Redox, and Electrochemistry",
+      "title": "Non-metals and Their Compounds",
       "file": "questions/chem_15.json",
       "active": true
     },
     {
       "id": "chem_16",
       "number": 16,
-      "title": "Non-metals and Their Compounds",
+      "title": "Metals and Their Compounds",
       "file": "questions/chem_16.json",
       "active": true
     },
     {
       "id": "chem_17",
       "number": 17,
-      "title": "Metals and Their Compounds",
+      "title": "Organic Compounds",
       "file": "questions/chem_17.json",
       "active": true
     },
     {
       "id": "chem_18",
       "number": 18,
-      "title": "Organic Chemistry",
+      "title": "Chemistry and Industry",
       "file": "questions/chem_18.json",
-      "active": true
-    },
-    {
-      "id": "chem_19",
-      "number": 19,
-      "title": "Chemistry, Industry, Biotechnology, and Environment",
-      "file": "questions/chem_19.json",
-      "active": true
-    },
-    {
-      "id": "chem_20",
-      "number": 20,
-      "title": "Nuclear Chemistry",
-      "file": "questions/chem_20.json",
-      "active": true
-    },
-    {
-      "id": "chem_21",
-      "number": 21,
-      "title": "Practical Chemistry",
-      "file": "questions/chem_21.json",
       "active": true
     }
   ]
