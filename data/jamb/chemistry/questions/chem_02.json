@@ -7083,5 +7083,3518 @@
       "summary"
     ],
     "active": true
+  },
+  {
+    "id": "chem_02_q201",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Classes of mixtures: solid–solid, solid–liquid, liquid–liquid, gas–gas",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is correctly described as a solid–liquid mixture?",
+    "options": {
+      "A": "Brass",
+      "B": "Salt solution",
+      "C": "Air",
+      "D": "Petrol and kerosene"
+    },
+    "answer": "B",
+    "answer_text": "Salt solution",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "A solid–liquid mixture contains a solid dissolved or suspended in a liquid.",
+      "steps": [
+        "Common salt is a solid.",
+        "Water is a liquid.",
+        "Therefore salt solution is a solid–liquid mixture."
+      ],
+      "final_answer": "B. Salt solution",
+      "simple_explanation": "Salt solution is a solid–liquid mixture because it contains solid salt in liquid water."
+    },
+    "tags": [
+      "classification_of_mixtures",
+      "solid_liquid"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q202",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A mixture is to be separated by making use of one component's ability to dissolve in water while the other remains undissolved. The relevant property is",
+    "options": {
+      "A": "boiling point",
+      "B": "solubility",
+      "C": "magnetism",
+      "D": "melting point only"
+    },
+    "answer": "B",
+    "answer_text": "solubility",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Selective dissolution depends on differences in solubility.",
+      "steps": [
+        "If one component dissolves in water and the other does not, the two can be separated.",
+        "This depends directly on solubility difference."
+      ],
+      "final_answer": "B. solubility",
+      "simple_explanation": "The method works because the components have different solubilities."
+    },
+    "tags": [
+      "physical_properties",
+      "solubility",
+      "separation_principles"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q203",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Classes of mixtures: solid–solid, solid–liquid, liquid–liquid, gas–gas",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A mixture of petrol and kerosene is best classified as a",
+    "options": {
+      "A": "gas–gas mixture",
+      "B": "solid–liquid mixture",
+      "C": "liquid–liquid mixture",
+      "D": "solid–solid mixture"
+    },
+    "answer": "C",
+    "answer_text": "liquid–liquid mixture",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Both petrol and kerosene are liquids.",
+      "steps": [
+        "Since both components are liquids, the mixture is liquid–liquid.",
+        "Further separation would depend on boiling point difference."
+      ],
+      "final_answer": "C. liquid–liquid mixture",
+      "simple_explanation": "Petrol and kerosene are both liquids, so the mixture is liquid–liquid."
+    },
+    "tags": [
+      "classification_of_mixtures",
+      "liquid_liquid"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q204",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which pair of properties is directly exploited in separating ink by paper chromatography and separating oil from water respectively?",
+    "options": {
+      "A": "Adsorption behavior and immiscibility",
+      "B": "Magnetism and color",
+      "C": "Hardness and volatility",
+      "D": "Melting point and radioactivity"
+    },
+    "answer": "A",
+    "answer_text": "Adsorption behavior and immiscibility",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Chromatography depends on different affinities, while oil-water separation depends on lack of miscibility.",
+      "steps": [
+        "Ink components separate because they move differently on paper due to different affinities.",
+        "Oil and water separate because they are immiscible and form layers."
+      ],
+      "final_answer": "A. Adsorption behavior and immiscibility",
+      "simple_explanation": "Paper chromatography uses different affinities, while oil-water separation uses immiscibility."
+    },
+    "tags": [
+      "physical_properties",
+      "chromatography",
+      "immiscible_liquids"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q205",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Classes of mixtures: solid–solid, solid–liquid, liquid–liquid, gas–gas",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following mixtures is best described as solid–solid?",
+    "options": {
+      "A": "Iodine and sodium chloride",
+      "B": "Brine",
+      "C": "Oil and water",
+      "D": "Oxygen and nitrogen"
+    },
+    "answer": "A",
+    "answer_text": "Iodine and sodium chloride",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "A solid–solid mixture contains two solids physically mixed together.",
+      "steps": [
+        "Iodine is a solid.",
+        "Sodium chloride is a solid.",
+        "Therefore the mixture is solid–solid."
+      ],
+      "final_answer": "A. Iodine and sodium chloride",
+      "simple_explanation": "Both iodine and sodium chloride are solids."
+    },
+    "tags": [
+      "classification_of_mixtures",
+      "solid_solid"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q206",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A separation method is chosen mainly because one component is more volatile than the other. This means the more volatile component",
+    "options": {
+      "A": "has a lower boiling point",
+      "B": "is always denser",
+      "C": "must be magnetic",
+      "D": "has a higher melting point"
+    },
+    "answer": "A",
+    "answer_text": "has a lower boiling point",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "More volatile substances vaporize more readily and generally have lower boiling points.",
+      "steps": [
+        "Volatility is closely related to ease of vaporization.",
+        "The more volatile component usually distils first because of its lower boiling point."
+      ],
+      "final_answer": "A. has a lower boiling point",
+      "simple_explanation": "The more volatile component generally has the lower boiling point."
+    },
+    "tags": [
+      "physical_properties",
+      "boiling_point",
+      "volatility"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q207",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Classes of mixtures: solid–solid, solid–liquid, liquid–liquid, gas–gas",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a gas–gas mixture?",
+    "options": {
+      "A": "Liquefied petroleum gas in a cylinder before liquefaction",
+      "B": "Salt and sand",
+      "C": "Sugar and water",
+      "D": "Oil and water"
+    },
+    "answer": "A",
+    "answer_text": "Liquefied petroleum gas in a cylinder before liquefaction",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "A gas–gas mixture contains two or more gaseous components.",
+      "steps": [
+        "Before liquefaction, the fuel gases are present as a gaseous mixture.",
+        "The other options are not gas–gas mixtures."
+      ],
+      "final_answer": "A. Liquefied petroleum gas in a cylinder before liquefaction",
+      "simple_explanation": "The fuel gases form a gaseous mixture before liquefaction."
+    },
+    "tags": [
+      "classification_of_mixtures",
+      "gas_gas"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q208",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement best explains why no single separation method works for every mixture?",
+    "options": {
+      "A": "Because all mixtures differ in the same way",
+      "B": "Because different mixtures differ in different relevant physical properties",
+      "C": "Because all methods are chemical reactions",
+      "D": "Because only heating is needed in chemistry"
+    },
+    "answer": "B",
+    "answer_text": "Because different mixtures differ in different relevant physical properties",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Different mixtures require methods matched to their own physical differences.",
+      "steps": [
+        "Some mixtures differ in solubility, others in boiling point, magnetism, or adsorption behavior.",
+        "Therefore the choice of method varies from mixture to mixture."
+      ],
+      "final_answer": "B. Because different mixtures differ in different relevant physical properties",
+      "simple_explanation": "The best method depends on the specific physical-property difference present."
+    },
+    "tags": [
+      "physical_properties",
+      "method_selection",
+      "separation_principles"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q209",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Evaporation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Evaporation is most suitable when the required product is the",
+    "options": {
+      "A": "solvent",
+      "B": "dissolved non-volatile solute",
+      "C": "gas above the solution only",
+      "D": "stationary phase"
+    },
+    "answer": "B",
+    "answer_text": "dissolved non-volatile solute",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Evaporation removes the solvent and leaves a non-volatile dissolved solid behind.",
+      "steps": [
+        "The solvent escapes as vapor.",
+        "The non-volatile solute remains in the dish as residue."
+      ],
+      "final_answer": "B. dissolved non-volatile solute",
+      "simple_explanation": "Evaporation is used when the dissolved solid, not the solvent, is needed."
+    },
+    "tags": [
+      "evaporation",
+      "applications"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q210",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Evaporation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student evaporates sea water in an open dish. Which product is obtained directly in the dish?",
+    "options": {
+      "A": "Pure water",
+      "B": "Common salt and other dissolved solids",
+      "C": "Only oxygen gas",
+      "D": "Distilled seawater"
+    },
+    "answer": "B",
+    "answer_text": "Common salt and other dissolved solids",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The solvent escapes and dissolved solids remain.",
+      "steps": [
+        "Sea water contains water plus dissolved salts.",
+        "In open evaporation, the water escapes and the dissolved solids remain as residue."
+      ],
+      "final_answer": "B. Common salt and other dissolved solids",
+      "simple_explanation": "Open evaporation leaves the dissolved solids behind."
+    },
+    "tags": [
+      "evaporation",
+      "sea_water",
+      "applications"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q211",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Evaporation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Why is evaporation often described as a separation method based on volatility?",
+    "options": {
+      "A": "Because the solvent is more easily vaporized than the dissolved solid",
+      "B": "Because both components boil at the same temperature",
+      "C": "Because the residue always sublimes",
+      "D": "Because the method depends on magnetism"
+    },
+    "answer": "A",
+    "answer_text": "Because the solvent is more easily vaporized than the dissolved solid",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Evaporation works when one component is volatile and the other is not.",
+      "steps": [
+        "The solvent escapes as vapor on heating or standing.",
+        "The dissolved solid is much less volatile and remains behind.",
+        "Thus the method depends on volatility difference."
+      ],
+      "final_answer": "A. Because the solvent is more easily vaporized than the dissolved solid",
+      "simple_explanation": "Evaporation works because the solvent vaporizes more readily than the solute."
+    },
+    "tags": [
+      "evaporation",
+      "volatility",
+      "physical_properties"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q212",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Evaporation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following would most likely be obtained by evaporation rather than distillation?",
+    "options": {
+      "A": "Pure water from muddy salt water",
+      "B": "Dry sodium chloride from brine",
+      "C": "Oxygen from liquid air",
+      "D": "Ethanol from fermented liquor"
+    },
+    "answer": "B",
+    "answer_text": "Dry sodium chloride from brine",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Evaporation is used when the dissolved solid is the desired product.",
+      "steps": [
+        "Brine contains dissolved sodium chloride in water.",
+        "If dry salt is wanted and the water need not be recovered, evaporation is suitable."
+      ],
+      "final_answer": "B. Dry sodium chloride from brine",
+      "simple_explanation": "Evaporation is used to obtain the dissolved salt from brine."
+    },
+    "tags": [
+      "evaporation",
+      "brine",
+      "applications"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q213",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Evaporation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A solution is heated until a crust begins to appear on a glass rod dipped into it and removed. This usually shows that the solution is",
+    "options": {
+      "A": "too dilute for crystallization",
+      "B": "sufficiently concentrated for crystallization on cooling",
+      "C": "magnetic",
+      "D": "already fully distilled"
+    },
+    "answer": "B",
+    "answer_text": "sufficiently concentrated for crystallization on cooling",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "A crust on a cool rod shows that the hot solution is near saturation and ready for crystallization.",
+      "steps": [
+        "The test indicates high concentration.",
+        "At this point the solution can be removed from heat and allowed to cool for crystals to form."
+      ],
+      "final_answer": "B. sufficiently concentrated for crystallization on cooling",
+      "simple_explanation": "A crust on the rod suggests the solution is concentrated enough for crystallization."
+    },
+    "tags": [
+      "evaporation",
+      "crystallization",
+      "saturation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q214",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Evaporation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which precaution helps prevent loss of material during evaporation?",
+    "options": {
+      "A": "Heating violently at all times",
+      "B": "Using gentle controlled heating and suitable anti-splashing technique",
+      "C": "Tilting the dish sharply toward the flame",
+      "D": "Adding more solvent repeatedly"
+    },
+    "answer": "B",
+    "answer_text": "Using gentle controlled heating and suitable anti-splashing technique",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Splashing and bumping can waste material during evaporation.",
+      "steps": [
+        "Gentle heating keeps the liquid from spurting out.",
+        "This reduces product loss and improves laboratory safety."
+      ],
+      "final_answer": "B. Using gentle controlled heating and suitable anti-splashing technique",
+      "simple_explanation": "Controlled heating helps prevent splashing and loss of solute."
+    },
+    "tags": [
+      "evaporation",
+      "laboratory_technique",
+      "safety"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q215",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Evaporation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which statement about evaporation is correct?",
+    "options": {
+      "A": "It is suitable for separating a dissolved solid from its solution when the solvent is not required",
+      "B": "It is mainly used for gas–gas mixtures",
+      "C": "It always collects the solvent as distillate",
+      "D": "It requires a fractionating column"
+    },
+    "answer": "A",
+    "answer_text": "It is suitable for separating a dissolved solid from its solution when the solvent is not required",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Evaporation is mainly for recovering the solute, not the solvent.",
+      "steps": [
+        "The solvent is allowed to escape.",
+        "The dissolved non-volatile solid remains behind.",
+        "Thus option A is correct."
+      ],
+      "final_answer": "A. It is suitable for separating a dissolved solid from its solution when the solvent is not required",
+      "simple_explanation": "Evaporation is a good choice when only the dissolved solid is wanted."
+    },
+    "tags": [
+      "evaporation",
+      "comparison",
+      "applications"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q216",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Evaporation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "If an aqueous solution contains a heat-sensitive dissolved solid, direct evaporation to dryness may be unsuitable because the solid may",
+    "options": {
+      "A": "become magnetic",
+      "B": "decompose on prolonged strong heating",
+      "C": "turn into a gas mixture",
+      "D": "separate by filtration"
+    },
+    "answer": "B",
+    "answer_text": "decompose on prolonged strong heating",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Some dissolved solids are damaged by strong heating.",
+      "steps": [
+        "Evaporation to dryness can leave the solid exposed to high heat after the water is gone.",
+        "If the solid is heat-sensitive, it may decompose under those conditions."
+      ],
+      "final_answer": "B. decompose on prolonged strong heating",
+      "simple_explanation": "Some solids decompose if heated too strongly after the solvent is removed."
+    },
+    "tags": [
+      "evaporation",
+      "limitations",
+      "heat_sensitive_solids"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q217",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Filtration",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Filtration is especially suitable for separating",
+    "options": {
+      "A": "two miscible liquids",
+      "B": "an insoluble solid from a liquid",
+      "C": "two gases",
+      "D": "a dissolved solid from its solution"
+    },
+    "answer": "B",
+    "answer_text": "an insoluble solid from a liquid",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Filter paper traps insoluble particles while liquid passes through.",
+      "steps": [
+        "A porous medium such as filter paper holds back insoluble solids.",
+        "The liquid moves through as filtrate."
+      ],
+      "final_answer": "B. an insoluble solid from a liquid",
+      "simple_explanation": "Filtration is used for insoluble solid–liquid mixtures."
+    },
+    "tags": [
+      "filtration",
+      "principle"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q218",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Filtration",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A mixture of sand, salt, and water is stirred thoroughly. Which step should come first if the aim is to obtain clear salt solution?",
+    "options": {
+      "A": "Evaporation",
+      "B": "Filtration",
+      "C": "Sublimation",
+      "D": "Magnetization"
+    },
+    "answer": "B",
+    "answer_text": "Filtration",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Filtration removes the insoluble sand while allowing the salt solution to pass through.",
+      "steps": [
+        "The sand is insoluble and remains suspended or settles.",
+        "The salt is dissolved and passes through the filter with the water.",
+        "Therefore filtration should come first."
+      ],
+      "final_answer": "B. Filtration",
+      "simple_explanation": "Filter first to remove the insoluble sand and obtain the salt solution."
+    },
+    "tags": [
+      "filtration",
+      "sequence",
+      "salt_sand_water"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q219",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Filtration",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Why is a cloudy suspension generally less suited to decantation than filtration when a very clear liquid is required?",
+    "options": {
+      "A": "Because filtration traps fine suspended particles more effectively",
+      "B": "Because decantation raises the boiling point",
+      "C": "Because filtration separates only gases",
+      "D": "Because decantation always dissolves the solid"
+    },
+    "answer": "A",
+    "answer_text": "Because filtration traps fine suspended particles more effectively",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Filter paper removes suspended particles more completely than careful pouring alone.",
+      "steps": [
+        "In decantation, some fine particles may remain in the liquid poured off.",
+        "Filtration is more complete for obtaining a clearer liquid."
+      ],
+      "final_answer": "A. Because filtration traps fine suspended particles more effectively",
+      "simple_explanation": "Filtration is more effective than decantation for removing fine suspended solids."
+    },
+    "tags": [
+      "filtration",
+      "decantation",
+      "comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q220",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Filtration",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The residue in filtration is the",
+    "options": {
+      "A": "liquid that passes through the filter",
+      "B": "solid left on the filter paper",
+      "C": "vapor condensed from the mixture",
+      "D": "dissolved part of the solution"
+    },
+    "answer": "B",
+    "answer_text": "solid left on the filter paper",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Residue refers to the retained solid.",
+      "steps": [
+        "The liquid passing through is the filtrate.",
+        "The solid held back by the paper is the residue."
+      ],
+      "final_answer": "B. solid left on the filter paper",
+      "simple_explanation": "Residue is the solid left behind during filtration."
+    },
+    "tags": [
+      "filtration",
+      "terminology"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q221",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Filtration",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "If a student tears the filter paper while filtering, the most likely consequence is that",
+    "options": {
+      "A": "some solid particles may pass into the filtrate",
+      "B": "the solvent becomes less volatile",
+      "C": "the residue becomes magnetic",
+      "D": "distillation begins automatically"
+    },
+    "answer": "A",
+    "answer_text": "some solid particles may pass into the filtrate",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "A torn filter paper no longer forms an effective barrier.",
+      "steps": [
+        "The tear allows suspended solids to bypass the normal filtering surface.",
+        "This makes the filtrate less clear and the separation less effective."
+      ],
+      "final_answer": "A. some solid particles may pass into the filtrate",
+      "simple_explanation": "A torn filter paper lets solid particles contaminate the filtrate."
+    },
+    "tags": [
+      "filtration",
+      "errors",
+      "apparatus"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q222",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Filtration",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A hot saturated solution is filtered before crystallization mainly to remove",
+    "options": {
+      "A": "the desired dissolved solute",
+      "B": "insoluble impurities",
+      "C": "the solvent only",
+      "D": "the mother liquor after crystals form"
+    },
+    "answer": "B",
+    "answer_text": "insoluble impurities",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Hot filtration allows the desired solute to stay dissolved while removing insoluble matter.",
+      "steps": [
+        "If filtered while hot, the dissolved solute remains in solution.",
+        "Only the insoluble impurities are removed at that stage."
+      ],
+      "final_answer": "B. insoluble impurities",
+      "simple_explanation": "Hot filtration removes insoluble impurities without crystallizing the desired solute too early."
+    },
+    "tags": [
+      "filtration",
+      "hot_filtration",
+      "crystallization"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q223",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Filtration",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which statement about filtrate is correct?",
+    "options": {
+      "A": "It is always a pure liquid with no dissolved substance",
+      "B": "It is the liquid collected after passing through the filter",
+      "C": "It is the solid collected on the paper",
+      "D": "It is the same as distillate"
+    },
+    "answer": "B",
+    "answer_text": "It is the liquid collected after passing through the filter",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Filtrate is defined by where it goes during filtration, not by complete purity.",
+      "steps": [
+        "It may still contain dissolved substances.",
+        "What makes it filtrate is that it has passed through the filter paper."
+      ],
+      "final_answer": "B. It is the liquid collected after passing through the filter",
+      "simple_explanation": "Filtrate is simply the liquid that passes through the filter."
+    },
+    "tags": [
+      "filtration",
+      "terminology",
+      "solution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q224",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Filtration",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following mixtures would NOT be separated by ordinary filtration?",
+    "options": {
+      "A": "Chalk and water",
+      "B": "Barium sulfate precipitate and water",
+      "C": "Copper(II) oxide and water",
+      "D": "Sodium chloride solution"
+    },
+    "answer": "D",
+    "answer_text": "Sodium chloride solution",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Ordinary filtration does not remove dissolved substances from a true solution.",
+      "steps": [
+        "The first three contain insoluble solids in water.",
+        "Sodium chloride solution contains dissolved salt that passes through the filter paper.",
+        "Therefore option D cannot be separated by ordinary filtration."
+      ],
+      "final_answer": "D. Sodium chloride solution",
+      "simple_explanation": "Ordinary filtration cannot separate dissolved salt from salt solution."
+    },
+    "tags": [
+      "filtration",
+      "limitations",
+      "solution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q225",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Decantation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Decantation is best described as",
+    "options": {
+      "A": "cooling vapor to obtain liquid",
+      "B": "carefully pouring off a liquid after sedimentation or layer formation",
+      "C": "passing a mixture through filter paper",
+      "D": "separating dyes on paper"
+    },
+    "answer": "B",
+    "answer_text": "carefully pouring off a liquid after sedimentation or layer formation",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Decantation relies on one part settling below another before careful pouring.",
+      "steps": [
+        "A solid may settle below a liquid, or two immiscible liquids may form layers.",
+        "The upper liquid is then carefully poured away."
+      ],
+      "final_answer": "B. carefully pouring off a liquid after sedimentation or layer formation",
+      "simple_explanation": "Decantation is the careful pouring off of one layer from another."
+    },
+    "tags": [
+      "decantation",
+      "principle"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q226",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Decantation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following is a suitable preliminary method for reducing suspended mud in river water before finer purification steps?",
+    "options": {
+      "A": "Decantation after standing",
+      "B": "Fractional distillation only",
+      "C": "Column chromatography",
+      "D": "Sublimation"
+    },
+    "answer": "A",
+    "answer_text": "Decantation after standing",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Standing allows the heavier suspended particles to settle before the clearer water is poured off.",
+      "steps": [
+        "The method is quick and simple for preliminary treatment.",
+        "It does not give fully pure water, but it reduces suspended solids before later treatment."
+      ],
+      "final_answer": "A. Decantation after standing",
+      "simple_explanation": "Decantation after standing is a good first step for muddy water."
+    },
+    "tags": [
+      "decantation",
+      "applications",
+      "preliminary_separation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q227",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Decantation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student separates a mixture of sand and water by decantation. Which condition would improve the result most?",
+    "options": {
+      "A": "Shaking the mixture continuously while pouring",
+      "B": "Allowing enough time for the sand to settle first",
+      "C": "Adding ink before pouring",
+      "D": "Using a hotter flame under the beaker"
+    },
+    "answer": "B",
+    "answer_text": "Allowing enough time for the sand to settle first",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Good sedimentation before pouring gives a clearer upper liquid.",
+      "steps": [
+        "If the sand is not fully settled, some is carried away with the poured liquid.",
+        "Adequate standing time improves the separation."
+      ],
+      "final_answer": "B. Allowing enough time for the sand to settle first",
+      "simple_explanation": "Better settling gives better decantation."
+    },
+    "tags": [
+      "decantation",
+      "sedimentation",
+      "technique"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q228",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Decantation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Why is decantation unsuitable for separating a true solution of sugar in water?",
+    "options": {
+      "A": "Because the sugar is dissolved and does not settle out as a separate phase",
+      "B": "Because sugar is magnetic",
+      "C": "Because water is a gas",
+      "D": "Because the solution must be chromatographed"
+    },
+    "answer": "A",
+    "answer_text": "Because the sugar is dissolved and does not settle out as a separate phase",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Decantation requires separate layers or settled insoluble solid, not a true single-phase solution.",
+      "steps": [
+        "In a sugar solution, the solute is dissolved throughout the water.",
+        "There is no separate sugar layer or settled sugar solid to pour away from."
+      ],
+      "final_answer": "A. Because the sugar is dissolved and does not settle out as a separate phase",
+      "simple_explanation": "Decantation cannot separate a dissolved solute from a true solution."
+    },
+    "tags": [
+      "decantation",
+      "limitations",
+      "solution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q229",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Decantation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A clear upper liquid above a settled solid is often called the",
+    "options": {
+      "A": "supernatant liquid",
+      "B": "mother crystal",
+      "C": "filtrate solid",
+      "D": "distillate residue"
+    },
+    "answer": "A",
+    "answer_text": "supernatant liquid",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The clear liquid above a settled solid is known as the supernatant liquid.",
+      "steps": [
+        "This is the liquid usually poured off during decantation.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. supernatant liquid",
+      "simple_explanation": "The liquid above a settled solid is the supernatant liquid."
+    },
+    "tags": [
+      "decantation",
+      "terminology",
+      "sedimentation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q230",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Decantation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which comparison between decantation and filtration is correct?",
+    "options": {
+      "A": "Decantation is usually more complete for fine suspended solids",
+      "B": "Filtration is usually more complete, while decantation is often simpler and faster",
+      "C": "Both methods depend mainly on boiling point",
+      "D": "Neither can separate any solid–liquid mixture"
+    },
+    "answer": "B",
+    "answer_text": "Filtration is usually more complete, while decantation is often simpler and faster",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Filtration removes fine suspended solids better, but decantation is quicker for rough preliminary separation.",
+      "steps": [
+        "Filter paper physically traps solid particles.",
+        "Decantation only pours away the upper liquid and may leave some particles behind.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. Filtration is usually more complete, while decantation is often simpler and faster",
+      "simple_explanation": "Filtration is usually cleaner, but decantation is often quicker and simpler."
+    },
+    "tags": [
+      "decantation",
+      "filtration",
+      "comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q231",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Decantation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student pours too quickly during decantation of a sand-water mixture. The main problem is that",
+    "options": {
+      "A": "the solvent becomes more concentrated",
+      "B": "the sediment may be disturbed and carried over",
+      "C": "the sand becomes magnetic",
+      "D": "distillation begins"
+    },
+    "answer": "B",
+    "answer_text": "the sediment may be disturbed and carried over",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Careless pouring can remix the settled solid with the liquid.",
+      "steps": [
+        "If the lower layer is disturbed, sand particles rise and move with the liquid.",
+        "This reduces the efficiency of separation."
+      ],
+      "final_answer": "B. the sediment may be disturbed and carried over",
+      "simple_explanation": "Pouring too quickly can disturb the sediment and spoil the separation."
+    },
+    "tags": [
+      "decantation",
+      "errors",
+      "technique"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q232",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Decantation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is most likely to be separated by decantation after standing?",
+    "options": {
+      "A": "Chalk suspended in water",
+      "B": "Sodium chloride dissolved in water",
+      "C": "Ethanol dissolved in water",
+      "D": "A gas mixture"
+    },
+    "answer": "A",
+    "answer_text": "Chalk suspended in water",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "An insoluble suspended solid can settle and allow decantation.",
+      "steps": [
+        "Chalk is insoluble and can settle out of water.",
+        "The other options are true solutions or gases and cannot be separated by simple standing and pouring."
+      ],
+      "final_answer": "A. Chalk suspended in water",
+      "simple_explanation": "Chalk in water can settle and then be separated by decantation."
+    },
+    "tags": [
+      "decantation",
+      "applications",
+      "suspension"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q233",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Sublimation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sublimation is especially useful when one component of a solid mixture",
+    "options": {
+      "A": "is magnetic",
+      "B": "changes directly from solid to vapor on heating",
+      "C": "is denser than water",
+      "D": "is insoluble in all solvents"
+    },
+    "answer": "B",
+    "answer_text": "changes directly from solid to vapor on heating",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Sublimation separates solids based on difference in volatility from the solid state.",
+      "steps": [
+        "The subliming substance vaporizes directly on heating.",
+        "The non-subliming substance remains behind."
+      ],
+      "final_answer": "B. changes directly from solid to vapor on heating",
+      "simple_explanation": "Sublimation works when one solid goes directly to vapor on heating."
+    },
+    "tags": [
+      "sublimation",
+      "principle"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q234",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Sublimation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which mixture is most suitable for separation by sublimation?",
+    "options": {
+      "A": "Common salt and sand",
+      "B": "Iodine and sand",
+      "C": "Oil and water",
+      "D": "Ethanol and water"
+    },
+    "answer": "B",
+    "answer_text": "Iodine and sand",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Iodine sublimes readily while sand does not.",
+      "steps": [
+        "The method requires one solid to sublime and the other not to sublime.",
+        "That condition is satisfied by iodine and sand."
+      ],
+      "final_answer": "B. Iodine and sand",
+      "simple_explanation": "Iodine and sand can be separated because iodine sublimes."
+    },
+    "tags": [
+      "sublimation",
+      "applications",
+      "iodine"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q235",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Sublimation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement correctly explains why common salt cannot usually be separated from sand by sublimation?",
+    "options": {
+      "A": "Because sand sublimes first",
+      "B": "Because neither component sublimes appreciably under ordinary laboratory conditions",
+      "C": "Because both are liquids",
+      "D": "Because the salt is magnetic"
+    },
+    "answer": "B",
+    "answer_text": "Because neither component sublimes appreciably under ordinary laboratory conditions",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Sublimation requires at least one component to pass from solid to vapor under the conditions used.",
+      "steps": [
+        "Common salt does not usually sublime under ordinary school-laboratory heating conditions.",
+        "Sand also does not sublime appreciably.",
+        "Therefore the method is unsuitable."
+      ],
+      "final_answer": "B. Because neither component sublimes appreciably under ordinary laboratory conditions",
+      "simple_explanation": "Sublimation fails when neither component sublimes usefully."
+    },
+    "tags": [
+      "sublimation",
+      "limitations",
+      "physical_properties"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q236",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Sublimation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The purified solid collected on a cool surface after heating ammonium chloride is called the",
+    "options": {
+      "A": "filtrate",
+      "B": "sublimate",
+      "C": "residue",
+      "D": "distillate"
+    },
+    "answer": "B",
+    "answer_text": "sublimate",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The solid obtained after sublimation and re-solidification is called the sublimate.",
+      "steps": [
+        "Ammonium chloride first sublimes to vapor.",
+        "On cooling, it deposits again as solid.",
+        "That collected solid is the sublimate."
+      ],
+      "final_answer": "B. sublimate",
+      "simple_explanation": "The collected purified solid is the sublimate."
+    },
+    "tags": [
+      "sublimation",
+      "terminology"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q237",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Sublimation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Why is a cool inverted funnel or cold surface often placed above a subliming mixture?",
+    "options": {
+      "A": "To make the residue boil",
+      "B": "To provide a place for the vapor to cool and deposit as solid",
+      "C": "To separate liquids by density",
+      "D": "To dissolve the residue"
+    },
+    "answer": "B",
+    "answer_text": "To provide a place for the vapor to cool and deposit as solid",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The sublimed vapor must be cooled so that it re-forms the solid product.",
+      "steps": [
+        "As the hot vapor rises, it meets the cool surface.",
+        "It then deposits as solid crystals on that surface."
+      ],
+      "final_answer": "B. To provide a place for the vapor to cool and deposit as solid",
+      "simple_explanation": "The cool surface collects the sublimed product by deposition."
+    },
+    "tags": [
+      "sublimation",
+      "apparatus",
+      "deposition"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q238",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Sublimation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which change correctly describes the reverse of sublimation during collection of the purified product?",
+    "options": {
+      "A": "Condensation",
+      "B": "Deposition",
+      "C": "Fusion",
+      "D": "Precipitation"
+    },
+    "answer": "B",
+    "answer_text": "Deposition",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Deposition is the direct change from vapor back to solid.",
+      "steps": [
+        "In sublimation purification, the vapor cools and becomes solid again without passing through the liquid state.",
+        "This reverse process is deposition."
+      ],
+      "final_answer": "B. Deposition",
+      "simple_explanation": "The reverse of sublimation here is deposition."
+    },
+    "tags": [
+      "sublimation",
+      "deposition",
+      "state_change"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q239",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Crystallization",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Crystallization is often used after a solution has been concentrated because",
+    "options": {
+      "A": "the solute becomes magnetic",
+      "B": "cooling the concentrated solution can produce crystals",
+      "C": "the solvent stops evaporating forever",
+      "D": "the residue must always be gaseous"
+    },
+    "answer": "B",
+    "answer_text": "cooling the concentrated solution can produce crystals",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "A concentrated solution near saturation can yield crystals on cooling.",
+      "steps": [
+        "When the hot concentrated solution cools, less solute remains dissolved for many solids.",
+        "The excess appears as crystals."
+      ],
+      "final_answer": "B. cooling the concentrated solution can produce crystals",
+      "simple_explanation": "Concentrated solution is cooled so that crystals can form."
+    },
+    "tags": [
+      "crystallization",
+      "saturation",
+      "cooling"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q240",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Crystallization",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The best reason for allowing a crystallizing solution to cool slowly is that it often produces",
+    "options": {
+      "A": "larger and better-formed crystals",
+      "B": "more magnetic crystals",
+      "C": "a higher boiling point",
+      "D": "automatic distillation"
+    },
+    "answer": "A",
+    "answer_text": "larger and better-formed crystals",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Slow crystal growth often gives larger, better-shaped crystals.",
+      "steps": [
+        "Rapid cooling tends to give many small crystals.",
+        "Slow cooling favors fewer crystals that grow larger."
+      ],
+      "final_answer": "A. larger and better-formed crystals",
+      "simple_explanation": "Slow cooling usually gives larger and better-formed crystals."
+    },
+    "tags": [
+      "crystallization",
+      "crystal_growth",
+      "cooling_rate"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q241",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Recrystallization",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Why is the hot solution in recrystallization often filtered before it is cooled?",
+    "options": {
+      "A": "To remove insoluble impurities before crystal formation",
+      "B": "To remove all dissolved solute",
+      "C": "To condense the solvent",
+      "D": "To separate immiscible liquids"
+    },
+    "answer": "A",
+    "answer_text": "To remove insoluble impurities before crystal formation",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Hot filtration improves purity by removing undissolved dirt while the desired compound stays in solution.",
+      "steps": [
+        "The desired substance remains dissolved in the hot solvent.",
+        "Insoluble impurities are filtered off.",
+        "Then the clear solution is cooled to produce purer crystals."
+      ],
+      "final_answer": "A. To remove insoluble impurities before crystal formation",
+      "simple_explanation": "Hot filtration removes insoluble impurities before the crystals form."
+    },
+    "tags": [
+      "recrystallization",
+      "hot_filtration",
+      "purification"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q242",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Recrystallization",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which choice best describes an ideal solvent for recrystallization?",
+    "options": {
+      "A": "It dissolves the solute very well when hot but only slightly when cold",
+      "B": "It dissolves the solute poorly at all temperatures",
+      "C": "It reacts with the solute to form a new product",
+      "D": "It is always water"
+    },
+    "answer": "A",
+    "answer_text": "It dissolves the solute very well when hot but only slightly when cold",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "This behavior allows dissolution at high temperature and crystallization on cooling.",
+      "steps": [
+        "The impure solid must dissolve when heated.",
+        "The desired solute should then come out again when the solution cools.",
+        "Thus option A is ideal."
+      ],
+      "final_answer": "A. It dissolves the solute very well when hot but only slightly when cold",
+      "simple_explanation": "An ideal recrystallization solvent dissolves hot but not much cold."
+    },
+    "tags": [
+      "recrystallization",
+      "solvent_choice",
+      "solubility"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q243",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Fractional crystallization",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A hot solution contains potassium nitrate and sodium chloride. On cooling, potassium nitrate crystallizes out first under the given conditions. This suggests that potassium nitrate is",
+    "options": {
+      "A": "more soluble than sodium chloride at all temperatures",
+      "B": "less soluble than sodium chloride under the cooling conditions used",
+      "C": "magnetic",
+      "D": "more volatile"
+    },
+    "answer": "B",
+    "answer_text": "less soluble than sodium chloride under the cooling conditions used",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The substance that becomes less soluble first will crystallize first.",
+      "steps": [
+        "As the solution cools, the salt whose solubility becomes insufficient comes out first.",
+        "Thus the first-crystallizing salt is less soluble under those conditions."
+      ],
+      "final_answer": "B. less soluble than sodium chloride under the cooling conditions used",
+      "simple_explanation": "The first salt to crystallize is the one that becomes less soluble first."
+    },
+    "tags": [
+      "fractional_crystallization",
+      "solubility",
+      "interpretation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q244",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Crystallization",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The liquid remaining after crystals are removed from a crystallizing mixture is called the",
+    "options": {
+      "A": "mother liquor",
+      "B": "distillate",
+      "C": "filtrate residue",
+      "D": "supernate vapor"
+    },
+    "answer": "A",
+    "answer_text": "mother liquor",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The residual solution after crystal separation is called the mother liquor.",
+      "steps": [
+        "Not all the dissolved substance is removed as crystals.",
+        "The remaining solution is called the mother liquor."
+      ],
+      "final_answer": "A. mother liquor",
+      "simple_explanation": "The solution left after crystals are removed is the mother liquor."
+    },
+    "tags": [
+      "crystallization",
+      "terminology"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q245",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Recrystallization",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Why are crystals often washed with a small amount of cold solvent after recrystallization?",
+    "options": {
+      "A": "To remove surface impurities without dissolving much product",
+      "B": "To dissolve all the crystals again",
+      "C": "To increase their magnetism",
+      "D": "To start fractional distillation"
+    },
+    "answer": "A",
+    "answer_text": "To remove surface impurities without dissolving much product",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Cold solvent helps remove mother liquor while minimizing product loss.",
+      "steps": [
+        "Solution adhering to the crystals may contain impurities.",
+        "A little cold solvent removes this surface contamination.",
+        "Cold solvent is chosen so that only a small amount of crystal dissolves."
+      ],
+      "final_answer": "A. To remove surface impurities without dissolving much product",
+      "simple_explanation": "Cold washing cleans the crystal surface while keeping product loss low."
+    },
+    "tags": [
+      "recrystallization",
+      "washing",
+      "purification"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q246",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Crystallization",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "If a concentrated hot solution is disturbed excessively during cooling, the most likely effect is that",
+    "options": {
+      "A": "many small crystals may form instead of fewer large ones",
+      "B": "the solvent becomes magnetic",
+      "C": "the boiling point disappears",
+      "D": "all crystals instantly sublime"
+    },
+    "answer": "A",
+    "answer_text": "many small crystals may form instead of fewer large ones",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Excess disturbance promotes many nucleation points and often smaller crystals.",
+      "steps": [
+        "Slow, undisturbed cooling favors large crystal growth.",
+        "Too much disturbance promotes formation of numerous smaller crystals."
+      ],
+      "final_answer": "A. many small crystals may form instead of fewer large ones",
+      "simple_explanation": "Excess disturbance tends to give many small crystals."
+    },
+    "tags": [
+      "crystallization",
+      "crystal_growth",
+      "technique"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q247",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Fractional crystallization",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Fractional crystallization can be regarded as a purification method because it",
+    "options": {
+      "A": "always converts all substances into gases",
+      "B": "allows one dissolved solid to crystallize more selectively than another",
+      "C": "depends only on magnetism",
+      "D": "requires immiscible liquids"
+    },
+    "answer": "B",
+    "answer_text": "allows one dissolved solid to crystallize more selectively than another",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Differences in solubility allow one substance to separate in purer form.",
+      "steps": [
+        "The less soluble component tends to crystallize first.",
+        "This makes it possible to separate it from the more soluble component."
+      ],
+      "final_answer": "B. allows one dissolved solid to crystallize more selectively than another",
+      "simple_explanation": "One dissolved solid can be obtained more selectively because of solubility differences."
+    },
+    "tags": [
+      "fractional_crystallization",
+      "purification",
+      "solubility"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q248",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Recrystallization",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which step would most likely reduce the purity of crystals obtained by recrystallization?",
+    "options": {
+      "A": "Filtering the hot solution before cooling",
+      "B": "Allowing the crystals to remain coated with mother liquor",
+      "C": "Using a suitable solvent",
+      "D": "Drying the crystals after washing"
+    },
+    "answer": "B",
+    "answer_text": "Allowing the crystals to remain coated with mother liquor",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Mother liquor often contains dissolved impurities that can contaminate the crystal surface.",
+      "steps": [
+        "If the crystals are not washed or dried properly, that solution remains on them.",
+        "Its dissolved impurities reduce the product purity."
+      ],
+      "final_answer": "B. Allowing the crystals to remain coated with mother liquor",
+      "simple_explanation": "Leaving mother liquor on the crystals reduces their purity."
+    },
+    "tags": [
+      "recrystallization",
+      "purity",
+      "mother_liquor"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q249",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Simple distillation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Simple distillation is mainly used when",
+    "options": {
+      "A": "one component is volatile and the other is non-volatile or has a much higher boiling point",
+      "B": "both liquids have exactly the same boiling point",
+      "C": "a precipitate must be collected",
+      "D": "a magnetic solid is present"
+    },
+    "answer": "A",
+    "answer_text": "one component is volatile and the other is non-volatile or has a much higher boiling point",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Simple distillation works best when one component vaporizes much more readily than the other.",
+      "steps": [
+        "This is the case for water and dissolved salt.",
+        "The volatile component is boiled, condensed, and collected."
+      ],
+      "final_answer": "A. one component is volatile and the other is non-volatile or has a much higher boiling point",
+      "simple_explanation": "Use simple distillation when one component vaporizes much more easily than the other."
+    },
+    "tags": [
+      "simple_distillation",
+      "principle",
+      "applications"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q250",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Simple distillation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following is the main function of the Liebig condenser in a simple distillation setup?",
+    "options": {
+      "A": "To heat the flask contents strongly",
+      "B": "To cool vapor and convert it into liquid distillate",
+      "C": "To retain insoluble residue on paper",
+      "D": "To fractionate close-boiling liquids"
+    },
+    "answer": "B",
+    "answer_text": "To cool vapor and convert it into liquid distillate",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The condenser removes heat from the vapor so that it liquefies.",
+      "steps": [
+        "The vapor leaves the boiling flask.",
+        "Cold water around the condenser cools the vapor.",
+        "The condensed liquid is then collected."
+      ],
+      "final_answer": "B. To cool vapor and convert it into liquid distillate",
+      "simple_explanation": "The condenser changes the vapor back into liquid."
+    },
+    "tags": [
+      "simple_distillation",
+      "apparatus",
+      "condenser"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q251",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Fractional distillation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following best explains why a fractionating column improves separation?",
+    "options": {
+      "A": "It traps all vapor permanently",
+      "B": "It provides repeated vaporization-condensation stages",
+      "C": "It filters out liquids by pore size",
+      "D": "It converts all liquids to solids"
+    },
+    "answer": "B",
+    "answer_text": "It provides repeated vaporization-condensation stages",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Repeated stages enrich the rising vapor in the more volatile component.",
+      "steps": [
+        "Less volatile vapors condense lower in the column.",
+        "More volatile vapors rise further.",
+        "This repeated process improves the separation."
+      ],
+      "final_answer": "B. It provides repeated vaporization-condensation stages",
+      "simple_explanation": "The fractionating column gives repeated partial separations inside the apparatus."
+    },
+    "tags": [
+      "fractional_distillation",
+      "fractionating_column",
+      "principle"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q252",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Fractional distillation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following mixtures is best separated by fractional distillation?",
+    "options": {
+      "A": "Sand and water",
+      "B": "Iodine and sand",
+      "C": "Petrol and kerosene",
+      "D": "Iron filings and sulfur"
+    },
+    "answer": "C",
+    "answer_text": "Petrol and kerosene",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Fractional distillation is used for miscible liquids with different boiling ranges.",
+      "steps": [
+        "Petrol and kerosene are liquid fractions with different boiling ranges.",
+        "The other options are better handled by other methods."
+      ],
+      "final_answer": "C. Petrol and kerosene",
+      "simple_explanation": "Petrol and kerosene are separated by fractional distillation."
+    },
+    "tags": [
+      "fractional_distillation",
+      "applications",
+      "miscible_liquids"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q253",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Simple distillation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Why is a distillation flask usually not filled completely with the mixture?",
+    "options": {
+      "A": "To leave space for boiling and vapor formation and to reduce risk of splashing into the condenser",
+      "B": "To make the liquid denser",
+      "C": "To prevent all heating",
+      "D": "To ensure the residue becomes magnetic"
+    },
+    "answer": "A",
+    "answer_text": "To leave space for boiling and vapor formation and to reduce risk of splashing into the condenser",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Adequate free space allows safer boiling and vapor generation.",
+      "steps": [
+        "If the flask is overfilled, liquid can bump or splash into the condenser.",
+        "Leaving space promotes safer, smoother distillation."
+      ],
+      "final_answer": "A. To leave space for boiling and vapor formation and to reduce risk of splashing into the condenser",
+      "simple_explanation": "The flask should not be overfilled because the liquid needs room to boil safely."
+    },
+    "tags": [
+      "simple_distillation",
+      "safety",
+      "apparatus"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q254",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Fractional distillation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In separating ethanol from water by fractional distillation, which component tends to be richer in the first fractions collected?",
+    "options": {
+      "A": "Water",
+      "B": "Ethanol",
+      "C": "Sodium chloride",
+      "D": "Sand"
+    },
+    "answer": "B",
+    "answer_text": "Ethanol",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The more volatile component is concentrated more strongly in the first distillate fractions.",
+      "steps": [
+        "Ethanol has a lower boiling point than water.",
+        "Therefore it distils more readily and is richer in the early fractions."
+      ],
+      "final_answer": "B. Ethanol",
+      "simple_explanation": "The early fractions are richer in the more volatile ethanol."
+    },
+    "tags": [
+      "fractional_distillation",
+      "ethanol_water",
+      "boiling_point"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q255",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Simple distillation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement is correct about the residue left in the distillation flask after simple distillation of brine?",
+    "options": {
+      "A": "It is mainly distilled water",
+      "B": "It is mainly the dissolved salt left behind",
+      "C": "It is the solvent front",
+      "D": "It is a precipitate formed by chromatography"
+    },
+    "answer": "B",
+    "answer_text": "It is mainly the dissolved salt left behind",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The non-volatile solute remains in the flask after the volatile solvent has been removed.",
+      "steps": [
+        "Water distils over as vapor and condenses elsewhere.",
+        "Salt remains as the residue in the flask."
+      ],
+      "final_answer": "B. It is mainly the dissolved salt left behind",
+      "simple_explanation": "The residue is mainly the salt that did not distil."
+    },
+    "tags": [
+      "simple_distillation",
+      "brine",
+      "residue"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q256",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Fractional distillation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which one of the following statements is true about fractional distillation of liquid air?",
+    "options": {
+      "A": "It works because oxygen and nitrogen are immiscible liquids",
+      "B": "It works because the components have different boiling points after liquefaction",
+      "C": "It works by magnetization",
+      "D": "It uses paper as stationary phase"
+    },
+    "answer": "B",
+    "answer_text": "It works because the components have different boiling points after liquefaction",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Liquefied air components are separated according to boiling point differences.",
+      "steps": [
+        "Air is first liquefied.",
+        "Its major components then boil at different temperatures and are separated in a fractionating column."
+      ],
+      "final_answer": "B. It works because the components have different boiling points after liquefaction",
+      "simple_explanation": "Fractional distillation of liquefied air depends on boiling-point differences."
+    },
+    "tags": [
+      "fractional_distillation",
+      "liquefied_air",
+      "principle"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q257",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Paper chromatography",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In paper chromatography, the solvent that moves up the paper is the",
+    "options": {
+      "A": "stationary phase",
+      "B": "mobile phase",
+      "C": "residue",
+      "D": "precipitate"
+    },
+    "answer": "B",
+    "answer_text": "mobile phase",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The mobile phase is the phase that moves and carries substances along.",
+      "steps": [
+        "The paper remains fixed and serves as the stationary phase.",
+        "The solvent travels upward and therefore is the mobile phase."
+      ],
+      "final_answer": "B. mobile phase",
+      "simple_explanation": "The solvent is the mobile phase because it moves along the paper."
+    },
+    "tags": [
+      "paper_chromatography",
+      "mobile_phase"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q258",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Paper chromatography",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Why may two substances with different chemical identities still give similar movement on the same chromatogram?",
+    "options": {
+      "A": "Because they may have similar affinities for the stationary and mobile phases under those conditions",
+      "B": "Because chromatography depends only on color",
+      "C": "Because all substances must move the same distance",
+      "D": "Because the paper dissolves them equally into gases"
+    },
+    "answer": "A",
+    "answer_text": "Because they may have similar affinities for the stationary and mobile phases under those conditions",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Chromatographic movement depends on relative affinity, not identity alone.",
+      "steps": [
+        "Different substances can sometimes behave similarly in one solvent system.",
+        "This may give similar travel distances or similar Rf values under those conditions."
+      ],
+      "final_answer": "A. Because they may have similar affinities for the stationary and mobile phases under those conditions",
+      "simple_explanation": "Different substances can move similarly if their affinities are similar in that system."
+    },
+    "tags": [
+      "paper_chromatography",
+      "Rf",
+      "affinity"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q259",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Column chromatography",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A component that spends more time dissolved in the mobile phase than attached to the stationary phase will generally",
+    "options": {
+      "A": "move faster down the column",
+      "B": "remain fixed at the top forever",
+      "C": "become a precipitate",
+      "D": "always have the highest melting point"
+    },
+    "answer": "A",
+    "answer_text": "move faster down the column",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Greater preference for the mobile phase increases migration rate.",
+      "steps": [
+        "If a component is not held strongly by the stationary phase, it travels more readily with the solvent.",
+        "Thus it moves down the column faster."
+      ],
+      "final_answer": "A. move faster down the column",
+      "simple_explanation": "Preference for the mobile phase makes a component move faster."
+    },
+    "tags": [
+      "column_chromatography",
+      "mobile_phase",
+      "stationary_phase"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q260",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Paper chromatography",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "If the solvent front moves 10.0 cm and a dye spot moves 6.0 cm from the origin, the Rf value of the dye is",
+    "options": {
+      "A": "0.4",
+      "B": "0.6",
+      "C": "1.0",
+      "D": "1.7"
+    },
+    "answer": "B",
+    "answer_text": "0.6",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Rf = distance moved by spot ÷ distance moved by solvent front.",
+      "steps": [
+        "Rf = 6.0 ÷ 10.0.",
+        "This equals 0.6."
+      ],
+      "final_answer": "B. 0.6",
+      "simple_explanation": "Divide the spot distance by the solvent-front distance."
+    },
+    "tags": [
+      "paper_chromatography",
+      "Rf",
+      "calculation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q261",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Paper chromatography",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student allows the solvent level to rise above the origin spot before starting chromatography. The main problem is that",
+    "options": {
+      "A": "the sample may dissolve directly into the solvent reservoir instead of separating properly",
+      "B": "the paper becomes magnetic",
+      "C": "the solvent front stops moving forever",
+      "D": "the chromatogram automatically becomes pure"
+    },
+    "answer": "A",
+    "answer_text": "the sample may dissolve directly into the solvent reservoir instead of separating properly",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The sample must begin above the solvent level so it can be carried upward gradually by the rising solvent front.",
+      "steps": [
+        "If the spot is below the solvent level, it washes into the solvent pool.",
+        "That prevents proper chromatographic separation."
+      ],
+      "final_answer": "A. the sample may dissolve directly into the solvent reservoir instead of separating properly",
+      "simple_explanation": "The origin must stay above the solvent level to avoid washing away the sample."
+    },
+    "tags": [
+      "paper_chromatography",
+      "technique",
+      "origin_spot"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q262",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Column chromatography",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following best describes elution in column chromatography?",
+    "options": {
+      "A": "The upward diffusion of gases into air",
+      "B": "The process by which separated components are washed out of the column by the mobile phase",
+      "C": "The conversion of a solid directly to vapor",
+      "D": "The pouring off of clear liquid from sediment"
+    },
+    "answer": "B",
+    "answer_text": "The process by which separated components are washed out of the column by the mobile phase",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Elution refers to the movement and collection of separated substances as they leave the column.",
+      "steps": [
+        "The solvent carries each component through the column at its own rate.",
+        "When a component emerges, it is said to be eluted."
+      ],
+      "final_answer": "B. The process by which separated components are washed out of the column by the mobile phase",
+      "simple_explanation": "Elution is the washing out of separated components by the moving solvent."
+    },
+    "tags": [
+      "column_chromatography",
+      "elution",
+      "terminology"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q263",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Paper chromatography",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A chromatogram produced from an ink sample shows one blue spot near the origin and one yellow spot much higher up. This indicates that",
+    "options": {
+      "A": "the yellow component is more strongly carried by the solvent under those conditions",
+      "B": "the blue component is more volatile",
+      "C": "the yellow component is magnetic",
+      "D": "the paper has dissolved"
+    },
+    "answer": "A",
+    "answer_text": "the yellow component is more strongly carried by the solvent under those conditions",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "A spot that moves farther has relatively greater preference for the mobile phase in that system.",
+      "steps": [
+        "The yellow component has traveled farther from the origin.",
+        "This shows it is less strongly retained by the stationary phase or more soluble in the mobile phase."
+      ],
+      "final_answer": "A. the yellow component is more strongly carried by the solvent under those conditions",
+      "simple_explanation": "The farther-moving spot is carried more strongly by the solvent system."
+    },
+    "tags": [
+      "paper_chromatography",
+      "interpretation",
+      "affinity"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q264",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Column chromatography",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Column chromatography is preferred over paper chromatography when",
+    "options": {
+      "A": "larger quantities of separated material need to be collected",
+      "B": "no solvent is available",
+      "C": "only gases are to be studied",
+      "D": "the mixture is insoluble in every solvent"
+    },
+    "answer": "A",
+    "answer_text": "larger quantities of separated material need to be collected",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Column chromatography is often used for preparative separation of larger amounts.",
+      "steps": [
+        "Paper chromatography is commonly analytical and small-scale.",
+        "Column chromatography is better when separated components are to be collected in useful amounts."
+      ],
+      "final_answer": "A. larger quantities of separated material need to be collected",
+      "simple_explanation": "Column chromatography is more suitable for larger-scale collection of separated components."
+    },
+    "tags": [
+      "column_chromatography",
+      "applications",
+      "comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q265",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Magnetization",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which component would a magnet remove from a mixture of iron filings, sulfur powder, and sand?",
+    "options": {
+      "A": "Sulfur powder only",
+      "B": "Sand only",
+      "C": "Iron filings only",
+      "D": "All three components"
+    },
+    "answer": "C",
+    "answer_text": "Iron filings only",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "A magnet removes the component that is attracted strongly to it.",
+      "steps": [
+        "Iron filings are magnetic.",
+        "Sulfur powder and sand are not strongly attracted by an ordinary magnet."
+      ],
+      "final_answer": "C. Iron filings only",
+      "simple_explanation": "Only the iron filings are removed by the magnet."
+    },
+    "tags": [
+      "magnetization",
+      "applications"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q266",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Magnetization",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Magnetization is often a good first step in a multi-stage separation because it",
+    "options": {
+      "A": "can remove a magnetic component quickly without affecting the others chemically",
+      "B": "always purifies liquids completely",
+      "C": "depends on boiling point",
+      "D": "forms a precipitate automatically"
+    },
+    "answer": "A",
+    "answer_text": "can remove a magnetic component quickly without affecting the others chemically",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "A simple selective first step can make later steps easier.",
+      "steps": [
+        "If one component is magnetic, it can be removed immediately.",
+        "This reduces the complexity of the remaining mixture."
+      ],
+      "final_answer": "A. can remove a magnetic component quickly without affecting the others chemically",
+      "simple_explanation": "Magnetization is useful as an easy first step when a magnetic component is present."
+    },
+    "tags": [
+      "magnetization",
+      "sequence",
+      "method_selection"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q267",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Magnetization",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement best explains why magnetization is a physical method of separation?",
+    "options": {
+      "A": "Because it uses a magnet and does not change the substances chemically",
+      "B": "Because it burns the mixture",
+      "C": "Because it forms new compounds",
+      "D": "Because it needs a catalyst"
+    },
+    "answer": "A",
+    "answer_text": "Because it uses a magnet and does not change the substances chemically",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Physical separation methods do not alter the chemical identities of the substances involved.",
+      "steps": [
+        "The iron remains iron and the sulfur remains sulfur after separation.",
+        "Only their physical arrangement changes."
+      ],
+      "final_answer": "A. Because it uses a magnet and does not change the substances chemically",
+      "simple_explanation": "Magnetization separates without changing the substances chemically."
+    },
+    "tags": [
+      "magnetization",
+      "physical_method",
+      "principle"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q268",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Magnetization",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "If a magnet is moved repeatedly over a mixture and no component is attracted, the safest conclusion is that",
+    "options": {
+      "A": "all the components are definitely liquids",
+      "B": "no strongly magnetic component is present under the conditions used",
+      "C": "the mixture contains only gases",
+      "D": "distillation is impossible"
+    },
+    "answer": "B",
+    "answer_text": "no strongly magnetic component is present under the conditions used",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Lack of attraction suggests absence of a strongly magnetic substance in that setup.",
+      "steps": [
+        "A magnet would attract iron strongly if present in exposed form.",
+        "If nothing is attracted, no strongly magnetic component is available to remove by that method."
+      ],
+      "final_answer": "B. no strongly magnetic component is present under the conditions used",
+      "simple_explanation": "No strongly magnetic component appears to be present."
+    },
+    "tags": [
+      "magnetization",
+      "interpretation",
+      "limitations"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q269",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Magnetization",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which physical property is directly exploited in magnetization?",
+    "options": {
+      "A": "Boiling point",
+      "B": "Magnetic attraction",
+      "C": "Solubility in water",
+      "D": "Color difference"
+    },
+    "answer": "B",
+    "answer_text": "Magnetic attraction",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The method depends on one component being attracted by a magnet.",
+      "steps": [
+        "Magnetic substances can be pulled away from non-magnetic ones.",
+        "Therefore magnetic attraction is the key property."
+      ],
+      "final_answer": "B. Magnetic attraction",
+      "simple_explanation": "Magnetization uses magnetic attraction."
+    },
+    "tags": [
+      "magnetization",
+      "physical_properties"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q270",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Magnetization",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student wraps a magnet in thin paper before separating iron filings from sulfur. The chief advantage is that the iron filings can later be",
+    "options": {
+      "A": "removed more easily from the magnet",
+      "B": "made to sublime",
+      "C": "turned into liquid",
+      "D": "distilled away"
+    },
+    "answer": "A",
+    "answer_text": "removed more easily from the magnet",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The wrapper helps the collected iron be released conveniently.",
+      "steps": [
+        "The iron sticks through the paper to the magnet.",
+        "Removing or shaking off the wrapper makes the filings easier to collect."
+      ],
+      "final_answer": "A. removed more easily from the magnet",
+      "simple_explanation": "Wrapping the magnet makes recovery of the iron filings easier."
+    },
+    "tags": [
+      "magnetization",
+      "technique",
+      "applications"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q271",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Precipitation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A precipitate is best described as",
+    "options": {
+      "A": "a vapor that condenses to liquid",
+      "B": "an insoluble solid formed in a solution",
+      "C": "a dissolved gas in water",
+      "D": "a magnetic crystal only"
+    },
+    "answer": "B",
+    "answer_text": "an insoluble solid formed in a solution",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Precipitation occurs when a reaction in solution produces an insoluble product.",
+      "steps": [
+        "The solid may appear as cloudiness and later settle.",
+        "That insoluble product is the precipitate."
+      ],
+      "final_answer": "B. an insoluble solid formed in a solution",
+      "simple_explanation": "A precipitate is an insoluble solid formed in solution."
+    },
+    "tags": [
+      "precipitation",
+      "terminology"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q272",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Precipitation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Why is precipitation useful in purification of some solutions?",
+    "options": {
+      "A": "Because it can selectively remove certain dissolved ions as insoluble compounds",
+      "B": "Because it raises the boiling point of all solutions",
+      "C": "Because it always recovers the solvent as a pure liquid",
+      "D": "Because it separates gases by color"
+    },
+    "answer": "A",
+    "answer_text": "Because it can selectively remove certain dissolved ions as insoluble compounds",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "A suitable reagent can remove a chosen dissolved species by turning it into a solid.",
+      "steps": [
+        "The chosen impurity forms an insoluble compound with the added reagent.",
+        "The solid is then removed from the liquid.",
+        "This makes purification possible."
+      ],
+      "final_answer": "A. Because it can selectively remove certain dissolved ions as insoluble compounds",
+      "simple_explanation": "Precipitation can selectively remove dissolved impurities from solution."
+    },
+    "tags": [
+      "precipitation",
+      "purification",
+      "selective_separation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q273",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Precipitation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "After precipitation and filtration, why is the collected solid often washed?",
+    "options": {
+      "A": "To remove adhering soluble impurities",
+      "B": "To increase its volatility",
+      "C": "To reduce its mass number",
+      "D": "To make it pass through the filter paper"
+    },
+    "answer": "A",
+    "answer_text": "To remove adhering soluble impurities",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Solution trapped on the solid may still contain dissolved impurities.",
+      "steps": [
+        "Washing removes the liquid clinging to the solid.",
+        "This improves the purity of the precipitate before drying."
+      ],
+      "final_answer": "A. To remove adhering soluble impurities",
+      "simple_explanation": "Washing removes impurities sticking to the precipitate."
+    },
+    "tags": [
+      "precipitation",
+      "washing",
+      "purification"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q274",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Precipitation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following methods normally follows precipitation in laboratory separation?",
+    "options": {
+      "A": "Fractional distillation",
+      "B": "Filtration",
+      "C": "Magnetization",
+      "D": "Sublimation"
+    },
+    "answer": "B",
+    "answer_text": "Filtration",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "After an insoluble solid forms, it is commonly collected by filtration.",
+      "steps": [
+        "The precipitate is separated from the liquid by passing the mixture through filter paper.",
+        "Therefore filtration is the usual next step."
+      ],
+      "final_answer": "B. Filtration",
+      "simple_explanation": "Filtration usually comes after precipitation."
+    },
+    "tags": [
+      "precipitation",
+      "filtration",
+      "sequence"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q275",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Precipitation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A chemist adds a reagent to a solution and observes immediate cloudiness. The safest first interpretation is that",
+    "options": {
+      "A": "the boiling point has fallen",
+      "B": "an insoluble product may be forming",
+      "C": "all dissolved substances have evaporated",
+      "D": "the solution has become magnetic"
+    },
+    "answer": "B",
+    "answer_text": "an insoluble product may be forming",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Cloudiness upon mixing often indicates precipitate formation.",
+      "steps": [
+        "Tiny solid particles initially make the mixture appear cloudy.",
+        "This is common when an insoluble product begins to form."
+      ],
+      "final_answer": "B. an insoluble product may be forming",
+      "simple_explanation": "Cloudiness often means a precipitate is forming."
+    },
+    "tags": [
+      "precipitation",
+      "observation",
+      "interpretation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q276",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Precipitation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement best distinguishes precipitation from crystallization?",
+    "options": {
+      "A": "Precipitation forms an insoluble solid usually by reaction in solution, while crystallization usually separates a dissolved solid by cooling or concentration",
+      "B": "Precipitation always needs a fractionating column",
+      "C": "Crystallization depends only on magnetism",
+      "D": "They are exactly the same process"
+    },
+    "answer": "A",
+    "answer_text": "Precipitation forms an insoluble solid usually by reaction in solution, while crystallization usually separates a dissolved solid by cooling or concentration",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The two methods both yield solids, but the principles behind their formation differ.",
+      "steps": [
+        "In precipitation, an insoluble product forms because of chemical reaction or ionic combination in solution.",
+        "In crystallization, an existing dissolved substance separates because the solution becomes supersaturated.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. Precipitation forms an insoluble solid usually by reaction in solution, while crystallization usually separates a dissolved solid by cooling or concentration",
+      "simple_explanation": "Precipitation forms a new insoluble solid in solution, while crystallization separates a dissolved solid by changing solubility conditions."
+    },
+    "tags": [
+      "precipitation",
+      "crystallization",
+      "comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q277",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which sequence would best separate a mixture of ammonium chloride, iron filings, and sand?",
+    "options": {
+      "A": "Magnetization, then sublimation",
+      "B": "Sublimation, then magnetization",
+      "C": "Filtration, then evaporation",
+      "D": "Fractional distillation only"
+    },
+    "answer": "A",
+    "answer_text": "Magnetization, then sublimation",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Remove the magnetic component first, then separate the sublimable solid from the remaining non-sublimable solid.",
+      "steps": [
+        "Iron filings are first removed with a magnet.",
+        "Ammonium chloride is then separated from sand by sublimation."
+      ],
+      "final_answer": "A. Magnetization, then sublimation",
+      "simple_explanation": "First remove iron by magnetization, then separate ammonium chloride from sand by sublimation."
+    },
+    "tags": [
+      "mixed_methods",
+      "magnetization",
+      "sublimation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q278",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A sample contains salt, sand, and water. To obtain the sand as a solid sample, the most direct method is first to use",
+    "options": {
+      "A": "filtration",
+      "B": "fractional distillation",
+      "C": "column chromatography",
+      "D": "magnetization"
+    },
+    "answer": "A",
+    "answer_text": "filtration",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Filtration removes insoluble sand from the salt solution.",
+      "steps": [
+        "Sand is insoluble in water.",
+        "Salt is dissolved and passes through the filter with the water.",
+        "Thus filtration gives the sand as residue."
+      ],
+      "final_answer": "A. filtration",
+      "simple_explanation": "Filter first to collect the sand residue."
+    },
+    "tags": [
+      "mixed_methods",
+      "filtration",
+      "applications"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q279",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A laboratory worker wants pure crystals of a dissolved solid from a solution containing insoluble dirt. Which sequence is best?",
+    "options": {
+      "A": "Hot filtration, then crystallization",
+      "B": "Magnetization, then distillation",
+      "C": "Decantation only",
+      "D": "Paper chromatography only"
+    },
+    "answer": "A",
+    "answer_text": "Hot filtration, then crystallization",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "First remove insoluble impurities, then allow the dissolved substance to crystallize.",
+      "steps": [
+        "Hot filtration removes the undissolved dirt.",
+        "The clear solution is then cooled to produce crystals."
+      ],
+      "final_answer": "A. Hot filtration, then crystallization",
+      "simple_explanation": "Remove the dirt first, then crystallize the dissolved solid."
+    },
+    "tags": [
+      "mixed_methods",
+      "hot_filtration",
+      "crystallization"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q280",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which method is most suitable for obtaining pure water from a mixture containing muddy water and dissolved salt?",
+    "options": {
+      "A": "Decantation only",
+      "B": "Simple distillation after removing suspended solids",
+      "C": "Sublimation",
+      "D": "Magnetization"
+    },
+    "answer": "B",
+    "answer_text": "Simple distillation after removing suspended solids",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The suspended solids should first be removed, then the water can be distilled from the salt solution.",
+      "steps": [
+        "Muddy particles are not removed by distillation as efficiently if left in large amount.",
+        "After preliminary clarification, simple distillation gives pure water as distillate."
+      ],
+      "final_answer": "B. Simple distillation after removing suspended solids",
+      "simple_explanation": "Remove the suspended dirt first, then distil the water from the salt solution."
+    },
+    "tags": [
+      "mixed_methods",
+      "simple_distillation",
+      "purification"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q281",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The separation of oxygen from liquid air and the separation of petrol from kerosene both rely mainly on differences in",
+    "options": {
+      "A": "boiling point",
+      "B": "magnetic behavior",
+      "C": "crystal color",
+      "D": "solubility in water"
+    },
+    "answer": "A",
+    "answer_text": "boiling point",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Both separations are performed by fractional distillation using boiling-point differences.",
+      "steps": [
+        "Liquid air components boil at different temperatures.",
+        "Petrol and kerosene also differ in boiling range.",
+        "Thus boiling point is the relevant property."
+      ],
+      "final_answer": "A. boiling point",
+      "simple_explanation": "Both separations depend on boiling-point differences."
+    },
+    "tags": [
+      "fractional_distillation",
+      "boiling_point",
+      "physical_properties"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q282",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which method would best separate a mixture of two colored amino-acid-like compounds present in small amount on a laboratory scale?",
+    "options": {
+      "A": "Paper chromatography",
+      "B": "Magnetization",
+      "C": "Separating funnel",
+      "D": "Evaporation only"
+    },
+    "answer": "A",
+    "answer_text": "Paper chromatography",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Paper chromatography is suitable for small-scale analytical separation of dissolved substances.",
+      "steps": [
+        "It can separate small amounts of colored or stain-detectable compounds.",
+        "Thus it is the best choice among the options."
+      ],
+      "final_answer": "A. Paper chromatography",
+      "simple_explanation": "Paper chromatography is suitable for small-scale separation of dissolved components."
+    },
+    "tags": [
+      "paper_chromatography",
+      "applications",
+      "small_scale"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q283",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement is correct about a separating funnel?",
+    "options": {
+      "A": "It is used mainly for separating immiscible liquids",
+      "B": "It is used only for gases",
+      "C": "It depends on filter paper",
+      "D": "It is best for dissolving solids"
+    },
+    "answer": "A",
+    "answer_text": "It is used mainly for separating immiscible liquids",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "A separating funnel works when two liquids form separate layers.",
+      "steps": [
+        "The denser layer settles below the lighter one.",
+        "The lower layer can be run off through the tap."
+      ],
+      "final_answer": "A. It is used mainly for separating immiscible liquids",
+      "simple_explanation": "A separating funnel is used for immiscible liquids."
+    },
+    "tags": [
+      "separating_funnel",
+      "apparatus",
+      "applications"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q284",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student separates a salt-sand mixture by adding water, filtering, and evaporating. The final evaporation step is needed because",
+    "options": {
+      "A": "the salt passed into the filtrate dissolved in water",
+      "B": "the sand became magnetic",
+      "C": "the filter paper dissolved the salt",
+      "D": "water and sand became immiscible"
+    },
+    "answer": "A",
+    "answer_text": "the salt passed into the filtrate dissolved in water",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "After filtration, the sand is removed but the salt is still dissolved in the water.",
+      "steps": [
+        "The filtrate contains salt solution.",
+        "Evaporation removes the water and leaves the dissolved salt behind."
+      ],
+      "final_answer": "A. the salt passed into the filtrate dissolved in water",
+      "simple_explanation": "Evaporation is needed because the salt remains dissolved in the filtrate after filtration."
+    },
+    "tags": [
+      "mixed_methods",
+      "filtration",
+      "evaporation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q285",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following methods is based primarily on adsorption and partition rather than on boiling point or solubility alone?",
+    "options": {
+      "A": "Chromatography",
+      "B": "Simple distillation",
+      "C": "Magnetization",
+      "D": "Decantation"
+    },
+    "answer": "A",
+    "answer_text": "Chromatography",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Chromatography separates components according to their distribution between stationary and mobile phases.",
+      "steps": [
+        "The components move differently because of different attractions to these phases.",
+        "Thus chromatography is the method based mainly on adsorption and partition behavior."
+      ],
+      "final_answer": "A. Chromatography",
+      "simple_explanation": "Chromatography is the separation method based mainly on different affinities for stationary and mobile phases."
+    },
+    "tags": [
+      "chromatography",
+      "principle",
+      "physical_properties"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q286",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which combination of methods could best separate iron filings, sand, and sodium chloride crystals into the three components?",
+    "options": {
+      "A": "Magnetization, dissolve in water, filtration, evaporation/crystallization",
+      "B": "Decantation and simple distillation only",
+      "C": "Sublimation and chromatography only",
+      "D": "Separating funnel and filtration only"
+    },
+    "answer": "A",
+    "answer_text": "Magnetization, dissolve in water, filtration, evaporation/crystallization",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Each step uses a different physical property selectively.",
+      "steps": [
+        "Remove iron by magnetization.",
+        "Dissolve sodium chloride in water, leaving sand undissolved.",
+        "Filter to separate sand.",
+        "Evaporate or crystallize the salt from the filtrate."
+      ],
+      "final_answer": "A. Magnetization, dissolve in water, filtration, evaporation/crystallization",
+      "simple_explanation": "Use magnetic property first, then solubility difference, then filtration, then evaporation or crystallization."
+    },
+    "tags": [
+      "mixed_methods",
+      "method_selection",
+      "physical_properties"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q287",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A chemist wants to remove only suspended impurities from a useful salt solution without recovering the salt yet. The most suitable method is",
+    "options": {
+      "A": "Filtration",
+      "B": "Fractional distillation",
+      "C": "Sublimation",
+      "D": "Magnetization"
+    },
+    "answer": "A",
+    "answer_text": "Filtration",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Filtration removes insoluble suspended impurities while leaving the dissolved salt in solution.",
+      "steps": [
+        "The salt remains dissolved and passes through with the water.",
+        "The suspended insoluble matter is trapped on the filter paper."
+      ],
+      "final_answer": "A. Filtration",
+      "simple_explanation": "Filter the solution to remove suspended impurities while keeping the dissolved salt in solution."
+    },
+    "tags": [
+      "filtration",
+      "purification",
+      "applications"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q288",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which method would be least appropriate for separating a mixture of oxygen and nitrogen?",
+    "options": {
+      "A": "Fractional distillation after liquefaction",
+      "B": "Chromatography under special conditions",
+      "C": "Simple filtration",
+      "D": "Processes based on physical-property differences"
+    },
+    "answer": "C",
+    "answer_text": "Simple filtration",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Filtration removes insoluble solids from fluids, not one gas from another.",
+      "steps": [
+        "Oxygen and nitrogen are gases.",
+        "There is no solid to trap by filter paper.",
+        "So simple filtration is least appropriate."
+      ],
+      "final_answer": "C. Simple filtration",
+      "simple_explanation": "Filtration is not suitable for separating one gas from another gas."
+    },
+    "tags": [
+      "method_selection",
+      "limitations",
+      "gas_gas"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q289",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student wants to identify which of two unknown colorless liquids is more volatile. Which observation would be most directly useful?",
+    "options": {
+      "A": "Which one distils first or boils at the lower temperature",
+      "B": "Which one is darker in color",
+      "C": "Which one sticks to a magnet",
+      "D": "Which one forms larger crystals"
+    },
+    "answer": "A",
+    "answer_text": "Which one distils first or boils at the lower temperature",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Volatility is most directly related to ease of vaporization and boiling point.",
+      "steps": [
+        "The more volatile liquid boils more readily and tends to distil first.",
+        "Therefore that observation is the most relevant."
+      ],
+      "final_answer": "A. Which one distils first or boils at the lower temperature",
+      "simple_explanation": "The more volatile liquid is the one that boils more easily and distils first."
+    },
+    "tags": [
+      "volatility",
+      "boiling_point",
+      "method_selection"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q290",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following best matches a separation method to a common laboratory purpose?",
+    "options": {
+      "A": "Paper chromatography — separating dyes in ink",
+      "B": "Magnetization — separating ethanol from water",
+      "C": "Decantation — separating dissolved salt from water completely",
+      "D": "Filtration — separating two miscible liquids"
+    },
+    "answer": "A",
+    "answer_text": "Paper chromatography — separating dyes in ink",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Paper chromatography is widely used for separating dissolved colored substances.",
+      "steps": [
+        "Magnetization is for magnetic solids, not liquids like ethanol and water.",
+        "Decantation does not separate dissolved salt completely from water.",
+        "Filtration does not separate miscible liquids."
+      ],
+      "final_answer": "A. Paper chromatography — separating dyes in ink",
+      "simple_explanation": "Paper chromatography is the correct method for separating dyes in ink."
+    },
+    "tags": [
+      "paper_chromatography",
+      "applications",
+      "matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q291",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A separating funnel would fail to separate ethanol from kerosene mainly because the two liquids are",
+    "options": {
+      "A": "miscible under the intended conditions",
+      "B": "both solids",
+      "C": "both magnetic",
+      "D": "both gases"
+    },
+    "answer": "A",
+    "answer_text": "miscible under the intended conditions",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "A separating funnel requires the liquids to form distinct layers.",
+      "steps": [
+        "If the liquids mix into one phase, no layer boundary forms.",
+        "Without separate layers, the funnel cannot separate them."
+      ],
+      "final_answer": "A. miscible under the intended conditions",
+      "simple_explanation": "A separating funnel cannot work well when the liquids do not form separate layers."
+    },
+    "tags": [
+      "separating_funnel",
+      "limitations",
+      "miscible_liquids"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q292",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following gives the strongest reason for washing a purified solid after filtration or recrystallization?",
+    "options": {
+      "A": "To remove surface solution containing impurities",
+      "B": "To increase its atomic number",
+      "C": "To convert it into a gas",
+      "D": "To make it more soluble in cold solvent"
+    },
+    "answer": "A",
+    "answer_text": "To remove surface solution containing impurities",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The solid surface often carries liquid that may contain dissolved impurities.",
+      "steps": [
+        "Washing removes the adhering solution.",
+        "This improves the purity of the isolated solid."
+      ],
+      "final_answer": "A. To remove surface solution containing impurities",
+      "simple_explanation": "Washing removes impurity-containing solution stuck to the solid."
+    },
+    "tags": [
+      "washing",
+      "purification",
+      "general_technique"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q293",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student says, 'All separations are done by heating.' Which response is best?",
+    "options": {
+      "A": "Correct, because every method needs boiling",
+      "B": "Incorrect, because many methods such as filtration, magnetization, and chromatography may not require heating",
+      "C": "Correct, because filter paper must be heated first",
+      "D": "Incorrect, because chemistry has no separation methods"
+    },
+    "answer": "B",
+    "answer_text": "Incorrect, because many methods such as filtration, magnetization, and chromatography may not require heating",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Heating is important in some methods but not in all separation techniques.",
+      "steps": [
+        "Filtration and magnetization do not inherently require heating.",
+        "Chromatography may also be performed without heating.",
+        "Therefore the statement is false."
+      ],
+      "final_answer": "B. Incorrect, because many methods such as filtration, magnetization, and chromatography may not require heating",
+      "simple_explanation": "Not all separation methods depend on heating."
+    },
+    "tags": [
+      "separation_principles",
+      "method_selection",
+      "summary"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q294",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A mixture of kerosene, water, and dissolved salt is to be separated to recover the kerosene and a salt solution. The best first step is",
+    "options": {
+      "A": "use a separating funnel to remove the kerosene layer",
+      "B": "evaporate the whole mixture immediately",
+      "C": "magnetize the mixture",
+      "D": "sublime the dissolved salt"
+    },
+    "answer": "A",
+    "answer_text": "use a separating funnel to remove the kerosene layer",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The immiscible liquid should be separated first before dealing with dissolved substances in the aqueous layer.",
+      "steps": [
+        "Kerosene forms a separate layer from the salt solution.",
+        "A separating funnel removes the kerosene cleanly.",
+        "The salt solution can then be treated separately if needed."
+      ],
+      "final_answer": "A. use a separating funnel to remove the kerosene layer",
+      "simple_explanation": "Separate the immiscible kerosene first with a separating funnel."
+    },
+    "tags": [
+      "separating_funnel",
+      "mixed_methods",
+      "sequence"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q295",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The best reason for not using evaporation to separate petroleum fractions is that",
+    "options": {
+      "A": "petroleum contains many volatile liquids with close boiling ranges, making fractional distillation more suitable",
+      "B": "petroleum is magnetic",
+      "C": "petroleum is a gas–gas mixture only",
+      "D": "evaporation requires filter paper"
+    },
+    "answer": "A",
+    "answer_text": "petroleum contains many volatile liquids with close boiling ranges, making fractional distillation more suitable",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Crude oil is a complex mixture of volatile liquids better separated by boiling-range differences.",
+      "steps": [
+        "Evaporation would not separately collect the useful fractions.",
+        "Fractional distillation is needed to obtain the components according to their boiling ranges."
+      ],
+      "final_answer": "A. petroleum contains many volatile liquids with close boiling ranges, making fractional distillation more suitable",
+      "simple_explanation": "Petroleum fractions are separated by fractional distillation, not simple evaporation."
+    },
+    "tags": [
+      "fractional_distillation",
+      "crude_oil",
+      "method_selection"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q296",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which method relies most directly on the difference between a dissolved substance's solubility in hot and cold solvent?",
+    "options": {
+      "A": "Recrystallization",
+      "B": "Magnetization",
+      "C": "Decantation",
+      "D": "Separating funnel"
+    },
+    "answer": "A",
+    "answer_text": "Recrystallization",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Recrystallization depends on dissolving a solid hot and recovering it by cooling.",
+      "steps": [
+        "The desired solid dissolves well in hot solvent.",
+        "On cooling, it becomes less soluble and crystallizes out.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. Recrystallization",
+      "simple_explanation": "Recrystallization uses the difference in solubility between hot and cold conditions."
+    },
+    "tags": [
+      "recrystallization",
+      "solubility",
+      "principle"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q297",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A chemist needs to separate a small amount of colored impurity from a major dissolved product and also wants to inspect the number of components present. The most informative first method is",
+    "options": {
+      "A": "Paper chromatography",
+      "B": "Simple distillation",
+      "C": "Magnetization",
+      "D": "Decantation"
+    },
+    "answer": "A",
+    "answer_text": "Paper chromatography",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Paper chromatography is excellent for small-scale analytical examination of dissolved mixtures.",
+      "steps": [
+        "It can show whether one or several components are present.",
+        "It is especially useful when colored substances are involved."
+      ],
+      "final_answer": "A. Paper chromatography",
+      "simple_explanation": "Paper chromatography is a good first analytical method for checking components in a small dissolved mixture."
+    },
+    "tags": [
+      "paper_chromatography",
+      "analysis",
+      "applications"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q298",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement is correct about purification by recrystallization?",
+    "options": {
+      "A": "The desired solid is made to react chemically into a new product",
+      "B": "The desired solid is dissolved, impurities are removed or left behind, and purer crystals reform on cooling",
+      "C": "The desired liquid is separated by density",
+      "D": "The method depends only on magnetism"
+    },
+    "answer": "B",
+    "answer_text": "The desired solid is dissolved, impurities are removed or left behind, and purer crystals reform on cooling",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Recrystallization is a classic purification method for impure solids.",
+      "steps": [
+        "The solid is dissolved in a suitable hot solvent.",
+        "Impurities are either filtered off if insoluble or remain mostly in solution on cooling.",
+        "Purer crystals then form."
+      ],
+      "final_answer": "B. The desired solid is dissolved, impurities are removed or left behind, and purer crystals reform on cooling",
+      "simple_explanation": "Recrystallization purifies a solid by dissolving it hot and reforming cleaner crystals on cooling."
+    },
+    "tags": [
+      "recrystallization",
+      "purification",
+      "summary"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q299",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student wants to recover a dissolved solid in the purest crystal form possible, rather than as a dry amorphous residue. The student should prefer",
+    "options": {
+      "A": "controlled crystallization or recrystallization",
+      "B": "violent boiling to complete dryness only",
+      "C": "magnetization",
+      "D": "decantation alone"
+    },
+    "answer": "A",
+    "answer_text": "controlled crystallization or recrystallization",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "Crystal purification is best achieved by controlled crystal growth from solution.",
+      "steps": [
+        "Boiling to dryness may give an impure or decomposed residue.",
+        "Careful crystallization or recrystallization gives purer and better-formed crystals."
+      ],
+      "final_answer": "A. controlled crystallization or recrystallization",
+      "simple_explanation": "For pure crystals, controlled crystallization or recrystallization is preferred."
+    },
+    "tags": [
+      "crystallization",
+      "recrystallization",
+      "purification"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_02_q300",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_02",
+    "topic_title": "Separation of Mixtures and Purification",
+    "subtopic": "Separation based on physical properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following best summarizes the guiding question in choosing a separation method?",
+    "options": {
+      "A": "Which method is the most expensive?",
+      "B": "Which physical difference between the components can be exploited most effectively?",
+      "C": "Which substance has the brighter color?",
+      "D": "Which method uses the hottest flame?"
+    },
+    "answer": "B",
+    "answer_text": "Which physical difference between the components can be exploited most effectively?",
+    "explanation": {
+      "question_restate": "We are to choose the most suitable separation or purification method, principle, or outcome for the mixture or procedure described.",
+      "principle": "The right separation method is chosen by matching it to the most useful physical-property difference in the mixture.",
+      "steps": [
+        "If the difference is in boiling point, distillation may be used.",
+        "If it is in solubility, dissolution and crystallization may be used.",
+        "If it is in magnetism, magnetization may be used.",
+        "Thus option B is the key guiding question."
+      ],
+      "final_answer": "B. Which physical difference between the components can be exploited most effectively?",
+      "simple_explanation": "Choose the method by asking which physical difference in the mixture can be used best."
+    },
+    "tags": [
+      "method_selection",
+      "physical_properties",
+      "summary"
+    ],
+    "active": true
   }
 ]
