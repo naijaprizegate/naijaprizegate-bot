@@ -1,1 +1,3839 @@
-
+[
+  {
+    "id": "chem_08_q001",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Sources and effects of pollutants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is the best description of an environmental pollutant?",
+    "options": {
+      "A": "Any substance that is colourful in nature",
+      "B": "Any substance present in the environment in a quantity large enough to cause harm",
+      "C": "Any material that dissolves in water",
+      "D": "Any gas found in the atmosphere"
+    },
+    "answer": "B",
+    "answer_text": "Any substance present in the environment in a quantity large enough to cause harm",
+    "explanation": {
+      "question_restate": "Which of the following is the best description of an environmental pollutant?",
+      "principle": "A pollutant is not defined merely by being present. It becomes a pollutant when its amount or effect becomes harmful to living things, materials, or the environment.",
+      "steps": [
+        "The environment normally contains many natural substances such as water vapour, carbon dioxide and mineral salts.",
+        "Those substances are not automatically pollutants just because they exist.",
+        "A substance is called a pollutant when it is introduced into the environment, or builds up there, at a level that causes damage.",
+        "The damage may be to human health, crops, animals, buildings, water bodies or soil.",
+        "For example, smoke, sewage, oil spills and poisonous gases become pollutants because of their harmful effects.",
+        "So the key idea in examination questions is harm, not simply presence."
+      ],
+      "final_answer": "B. Any substance present in the environment in a quantity large enough to cause harm",
+      "simple_explanation": "A pollutant is a harmful substance, or a normally harmless substance present in harmful quantity. That makes option B correct."
+    },
+    "tags": [
+      "pollution",
+      "definition",
+      "environment"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q002",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Sources and effects of pollutants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A major difference between pollution and contamination is that pollution",
+    "options": {
+      "A": "always involves solids only",
+      "B": "is always natural while contamination is artificial",
+      "C": "produces harmful effects on the environment",
+      "D": "can never occur in water"
+    },
+    "answer": "C",
+    "answer_text": "produces harmful effects on the environment",
+    "explanation": {
+      "question_restate": "A major difference between pollution and contamination is that pollution",
+      "principle": "Many exam questions test the idea that contamination means unwanted presence, while pollution emphasizes harmful impact.",
+      "steps": [
+        "Contamination means a place or substance has been made impure by the presence of an unwanted material.",
+        "However, that material may not yet have caused serious damage.",
+        "Pollution goes further because it means the contamination is harmful.",
+        "The harm may affect breathing, drinking water, crop yield, visibility, aquatic life or soil fertility.",
+        "Therefore, whenever JAMB asks for the best distinguishing feature of pollution, look for damage or harmful effect.",
+        "Option C expresses that idea clearly."
+      ],
+      "final_answer": "C. produces harmful effects on the environment",
+      "simple_explanation": "Pollution is harmful contamination. The important word is harm, so option C is correct."
+    },
+    "tags": [
+      "pollution",
+      "contamination",
+      "effects"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q003",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Sources and effects of pollutants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is mainly a domestic source of environmental pollution?",
+    "options": {
+      "A": "Exhaust from blast furnaces",
+      "B": "Refuse dumping and sewage discharge",
+      "C": "Emission from refinery stacks",
+      "D": "Cement dust from quarrying"
+    },
+    "answer": "B",
+    "answer_text": "Refuse dumping and sewage discharge",
+    "explanation": {
+      "question_restate": "Which of the following is mainly a domestic source of environmental pollution?",
+      "principle": "Domestic pollution comes mainly from homes and human settlements, unlike industrial pollution which comes from factories and heavy industry.",
+      "steps": [
+        "Domestic sources are pollutants produced in daily living around homes, schools, markets and neighborhoods.",
+        "Examples include refuse heaps, sewage, detergents in wastewater, smoke from cooking and poor sanitation.",
+        "Industrial pollution comes from factories, mines, refineries and power stations.",
+        "Blast furnaces, refinery stacks and quarry dust belong mainly to industry.",
+        "Refuse dumping and sewage discharge are typical domestic sources and are common causes of offensive odour, water pollution and disease spread.",
+        "Hence option B is the domestic source."
+      ],
+      "final_answer": "B. Refuse dumping and sewage discharge",
+      "simple_explanation": "Waste from homes, especially refuse and sewage, is a domestic source of pollution. So option B is correct."
+    },
+    "tags": [
+      "domestic pollution",
+      "sewage",
+      "refuse"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q004",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Sources and effects of pollutants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "One serious effect common to air, water and soil pollution is",
+    "options": {
+      "A": "increase in useful microorganisms only",
+      "B": "improvement in crop quality",
+      "C": "harm to living organisms",
+      "D": "increase in pure drinking water"
+    },
+    "answer": "C",
+    "answer_text": "harm to living organisms",
+    "explanation": {
+      "question_restate": "One serious effect common to air, water and soil pollution is",
+      "principle": "Although the form of pollution differs, the broad effect is damage to life and environmental quality.",
+      "steps": [
+        "Air pollution can injure lungs, eyes, leaves and animals.",
+        "Water pollution can kill fish, spread diseases and make water unsafe for domestic use.",
+        "Soil pollution can reduce fertility, poison crops and affect soil organisms.",
+        "Because all three affect organisms directly or indirectly, the broadest correct effect is harm to living things.",
+        "Options A, B and D describe beneficial results, which are not the normal outcomes of pollution.",
+        "Therefore the best answer is option C."
+      ],
+      "final_answer": "C. harm to living organisms",
+      "simple_explanation": "No matter the type, pollution generally damages life. That is why option C is correct."
+    },
+    "tags": [
+      "effects",
+      "air pollution",
+      "water pollution",
+      "soil pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q005",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Sources and effects of pollutants",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The accumulation of non-biodegradable materials in the tissues of organisms along a food chain is known as",
+    "options": {
+      "A": "sedimentation",
+      "B": "bioaccumulation",
+      "C": "neutralization",
+      "D": "distillation"
+    },
+    "answer": "B",
+    "answer_text": "bioaccumulation",
+    "explanation": {
+      "question_restate": "The accumulation of non-biodegradable materials in the tissues of organisms along a food chain is known as",
+      "principle": "Some pollutants do not break down easily. They can remain in living tissues and build up over time, especially through feeding relationships.",
+      "steps": [
+        "Non-biodegradable pollutants are substances that microorganisms cannot easily decompose.",
+        "Examples include many plastics, some pesticides and heavy metals.",
+        "When such materials enter an ecosystem, they may be taken up by small organisms.",
+        "Larger organisms then feed on the smaller ones and receive even more of the pollutant.",
+        "As the pollutant concentration builds up in tissues, we describe the process as bioaccumulation.",
+        "Students sometimes confuse this with simple settling or separation methods such as sedimentation and distillation, but those are not biological build-up processes."
+      ],
+      "final_answer": "B. bioaccumulation",
+      "simple_explanation": "When harmful substances build up in body tissues and become more concentrated in organisms, the process is called bioaccumulation. So option B is correct."
+    },
+    "tags": [
+      "bioaccumulation",
+      "non-biodegradable",
+      "food chain"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q006",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Sources and effects of pollutants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which statement about biodegradable pollutants is correct?",
+    "options": {
+      "A": "They can be broken down by microorganisms",
+      "B": "They remain unchanged for centuries in all cases",
+      "C": "They are always harmless to health",
+      "D": "They are found only in air"
+    },
+    "answer": "A",
+    "answer_text": "They can be broken down by microorganisms",
+    "explanation": {
+      "question_restate": "Which statement about biodegradable pollutants is correct?",
+      "principle": "Biodegradable materials are those that bacteria and other decomposers can act upon.",
+      "steps": [
+        "Biodegradable pollutants include many organic wastes such as sewage, paper, vegetable matter and some food wastes.",
+        "Microorganisms such as bacteria and fungi decompose them into simpler substances.",
+        "That is why the word 'bio' refers to living organisms and 'degradable' refers to being broken down.",
+        "However, biodegradable does not mean harmless. If present in excess, such waste can still pollute water and consume dissolved oxygen.",
+        "So option C is wrong.",
+        "The defining property is that they can be decomposed biologically."
+      ],
+      "final_answer": "A. They can be broken down by microorganisms",
+      "simple_explanation": "Biodegradable pollutants are broken down by living decomposers. Therefore option A is correct."
+    },
+    "tags": [
+      "biodegradable",
+      "microorganisms",
+      "decomposition"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q007",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Sources and effects of pollutants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is most likely to be a non-biodegradable pollutant?",
+    "options": {
+      "A": "Cow dung",
+      "B": "Sewage",
+      "C": "Plastic packaging",
+      "D": "Vegetable peels"
+    },
+    "answer": "C",
+    "answer_text": "Plastic packaging",
+    "explanation": {
+      "question_restate": "Which of the following is most likely to be a non-biodegradable pollutant?",
+      "principle": "Non-biodegradable pollutants resist natural decomposition and therefore persist in the environment for a long time.",
+      "steps": [
+        "Cow dung, sewage and vegetable peels are organic wastes.",
+        "Microorganisms can act on them and eventually break them down, although they may cause pollution before decomposition is complete.",
+        "Plastics are different because many common plastic materials do not rot quickly.",
+        "They can stay in gutters, rivers, fields and dumpsites for many years.",
+        "Because they persist, they are typical examples of non-biodegradable pollutants.",
+        "Therefore option C is the best answer."
+      ],
+      "final_answer": "C. Plastic packaging",
+      "simple_explanation": "Plastics do not decay easily, so they are a common non-biodegradable pollutant. Option C is correct."
+    },
+    "tags": [
+      "non-biodegradable",
+      "plastics",
+      "solid waste"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q008",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Sources and effects of pollutants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The offensive smell noticed near a refuse dump is mainly due to",
+    "options": {
+      "A": "decomposition of waste by microorganisms",
+      "B": "melting of glass materials",
+      "C": "evaporation of pure water",
+      "D": "condensation of oxygen"
+    },
+    "answer": "A",
+    "answer_text": "decomposition of waste by microorganisms",
+    "explanation": {
+      "question_restate": "The offensive smell noticed near a refuse dump is mainly due to",
+      "principle": "Many bad odours around waste sites arise when microorganisms break down organic matter and release gases.",
+      "steps": [
+        "Refuse dumps often contain food remains, leaves, faecal matter and other organic waste.",
+        "Bacteria and fungi act on these substances.",
+        "During decomposition, foul-smelling gases such as H₂S and ammonia may be released.",
+        "The odour is therefore linked mainly to biological decay, not to simple evaporation or condensation.",
+        "Melting of glass and condensation of oxygen are unrelated to the typical smell of decaying waste.",
+        "Hence option A is correct."
+      ],
+      "final_answer": "A. decomposition of waste by microorganisms",
+      "simple_explanation": "Waste smells because microorganisms decompose organic matter and release bad-smelling gases. So option A is correct."
+    },
+    "tags": [
+      "refuse",
+      "decomposition",
+      "odour"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q009",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Sources and effects of pollutants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which activity is most likely to reduce environmental pollution in a community?",
+    "options": {
+      "A": "Open burning of refuse",
+      "B": "Improper disposal of engine oil",
+      "C": "Treatment of waste before discharge",
+      "D": "Dumping sewage into streams"
+    },
+    "answer": "C",
+    "answer_text": "Treatment of waste before discharge",
+    "explanation": {
+      "question_restate": "Which activity is most likely to reduce environmental pollution in a community?",
+      "principle": "Pollution control aims at reducing the harmful effect of wastes before they enter the environment.",
+      "steps": [
+        "Open burning releases smoke, soot and toxic gases into the air.",
+        "Improper disposal of used engine oil contaminates soil and water.",
+        "Dumping sewage into streams pollutes water and spreads disease.",
+        "Treating waste before discharge removes or reduces harmful substances.",
+        "For example, sewage treatment reduces microorganisms and organic load before release.",
+        "Therefore treatment of waste is a pollution-control measure and the best answer."
+      ],
+      "final_answer": "C. Treatment of waste before discharge",
+      "simple_explanation": "The correct preventive action is to treat waste before releasing it. That makes option C correct."
+    },
+    "tags": [
+      "pollution control",
+      "waste treatment",
+      "prevention"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q010",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Sources and effects of pollutants",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following pairs correctly matches a pollutant with a likely effect?",
+    "options": {
+      "A": "CO — improved oxygen transport in blood",
+      "B": "SO₂ — acid rain formation",
+      "C": "dust — increased visibility",
+      "D": "sewage — purification of river water"
+    },
+    "answer": "B",
+    "answer_text": "SO₂ — acid rain formation",
+    "explanation": {
+      "question_restate": "Which of the following pairs correctly matches a pollutant with a likely effect?",
+      "principle": "Good exam technique involves matching each pollutant to its known effect accurately.",
+      "steps": [
+        "CO is dangerous because it reduces oxygen transport in blood; it does not improve it.",
+        "SO₂ dissolves in atmospheric moisture and contributes to acidic precipitation.",
+        "Dust lowers visibility and may irritate the respiratory tract, so option C is false.",
+        "Sewage pollutes water instead of purifying it.",
+        "Thus the only correctly matched pair is SO₂ with acid rain formation.",
+        "This makes option B correct."
+      ],
+      "final_answer": "B. SO₂ — acid rain formation",
+      "simple_explanation": "SO₂ contributes to acid rain, so option B is the only correct pairing."
+    },
+    "tags": [
+      "effects",
+      "SO2",
+      "acid rain"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q011",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which gas is especially dangerous because it combines strongly with haemoglobin in blood?",
+    "options": {
+      "A": "SO₂",
+      "B": "CO",
+      "C": "H₂S",
+      "D": "NO₂"
+    },
+    "answer": "B",
+    "answer_text": "CO",
+    "explanation": {
+      "question_restate": "Which gas is especially dangerous because it combines strongly with haemoglobin in blood?",
+      "principle": "Carbon monoxide is a poisonous gas because it interferes directly with oxygen transport in the body.",
+      "steps": [
+        "Haemoglobin in red blood cells normally carries oxygen from the lungs to body tissues.",
+        "Carbon monoxide, CO, competes with oxygen for the same binding sites on haemoglobin.",
+        "It combines much more strongly with haemoglobin than oxygen does.",
+        "As a result, less oxygen is carried round the body.",
+        "This can cause headache, weakness, unconsciousness and even death.",
+        "That is why incomplete combustion in generators, charcoal fires and vehicle exhausts is very dangerous.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. CO",
+      "simple_explanation": "CO is dangerous because it ties up haemoglobin and prevents enough oxygen from being carried in the blood. So option B is correct."
+    },
+    "tags": [
+      "air pollution",
+      "CO",
+      "haemoglobin"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q012",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Carbon monoxide is mainly produced during",
+    "options": {
+      "A": "complete combustion of carbon compounds",
+      "B": "incomplete combustion of carbon compounds",
+      "C": "electrolysis of water",
+      "D": "neutralization reactions"
+    },
+    "answer": "B",
+    "answer_text": "incomplete combustion of carbon compounds",
+    "explanation": {
+      "question_restate": "Carbon monoxide is mainly produced during",
+      "principle": "CO is formed when there is not enough oxygen for carbon to burn completely to CO₂.",
+      "steps": [
+        "When a fuel containing carbon burns in plenty of oxygen, the main carbon oxide formed is CO₂.",
+        "When the oxygen supply is poor, combustion is incomplete.",
+        "Under incomplete combustion, some carbon is converted to CO instead of CO₂.",
+        "This often occurs in faulty engines, indoor charcoal stoves and poorly ventilated generator areas.",
+        "Because of this, incomplete combustion is the major source of carbon monoxide.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. incomplete combustion of carbon compounds",
+      "simple_explanation": "Too little oxygen during burning produces CO. Hence option B is correct."
+    },
+    "tags": [
+      "CO",
+      "combustion",
+      "air pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q013",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A common symptom of exposure to hydrogen sulphide, H₂S, at low concentration is",
+    "options": {
+      "A": "sweet taste in the mouth",
+      "B": "rotten-egg smell",
+      "C": "blue flame formation",
+      "D": "increase in blood sugar"
+    },
+    "answer": "B",
+    "answer_text": "rotten-egg smell",
+    "explanation": {
+      "question_restate": "A common symptom of exposure to hydrogen sulphide, H₂S, at low concentration is",
+      "principle": "Hydrogen sulphide has a characteristic offensive smell often used to identify it in simple chemistry questions.",
+      "steps": [
+        "H₂S is a poisonous gas produced during decay of sulphur-containing organic matter and in some industrial activities.",
+        "One of its most familiar features is its rotten-egg smell.",
+        "This odour often helps people notice its presence at low concentration.",
+        "However, at high concentration it can still be very dangerous.",
+        "The other options do not describe the common identifying smell of H₂S.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. rotten-egg smell",
+      "simple_explanation": "H₂S is recognized by its rotten-egg odour, so option B is correct."
+    },
+    "tags": [
+      "H2S",
+      "odour",
+      "air pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q014",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The gas mainly responsible for the brownish appearance of photochemical smog is",
+    "options": {
+      "A": "NO₂",
+      "B": "CO",
+      "C": "H₂S",
+      "D": "H₂"
+    },
+    "answer": "A",
+    "answer_text": "NO₂",
+    "explanation": {
+      "question_restate": "The gas mainly responsible for the brownish appearance of photochemical smog is",
+      "principle": "Nitrogen dioxide is a reddish-brown gas and an important component of urban smog.",
+      "steps": [
+        "Oxides of nitrogen are produced mainly at high temperatures in vehicle engines and industrial furnaces.",
+        "Among them, NO₂ is a reddish-brown gas.",
+        "This colour contributes to the brown haze sometimes seen over busy cities.",
+        "CO is colourless, H₂S is colourless though foul-smelling, and H₂ is also colourless.",
+        "Because of both colour and role in smog, NO₂ is the correct answer.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. NO₂",
+      "simple_explanation": "NO₂ is the brown gas associated with smog. So option A is correct."
+    },
+    "tags": [
+      "NO2",
+      "smog",
+      "oxides of nitrogen"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q015",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "One major environmental effect of sulphur(IV) oxide, SO₂, is that it",
+    "options": {
+      "A": "destroys chlorophyll directly in all plants only",
+      "B": "causes acid rain after reacting with atmospheric moisture",
+      "C": "produces hard water",
+      "D": "increases the ozone layer"
+    },
+    "answer": "B",
+    "answer_text": "causes acid rain after reacting with atmospheric moisture",
+    "explanation": {
+      "question_restate": "One major environmental effect of sulphur(IV) oxide, SO₂, is that it",
+      "principle": "SO₂ is an acidic oxide and can lead to acidic precipitation.",
+      "steps": [
+        "SO₂ enters the atmosphere mainly from burning sulphur-containing fuels and some industrial processes.",
+        "In the atmosphere, it can dissolve in water droplets.",
+        "Further reactions may produce acids, which fall as acid rain.",
+        "Acid rain can damage roofs, corrode metals, acidify lakes and harm vegetation.",
+        "SO₂ does not produce hard water, and it does not increase the ozone layer.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. causes acid rain after reacting with atmospheric moisture",
+      "simple_explanation": "SO₂ contributes to acid rain, so option B is correct."
+    },
+    "tags": [
+      "SO2",
+      "acid rain",
+      "air pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q016",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a common source of oxides of nitrogen in the atmosphere?",
+    "options": {
+      "A": "High-temperature combustion in car engines",
+      "B": "Fermentation of cassava",
+      "C": "Dissolving sugar in water",
+      "D": "Evaporation of petrol only at room temperature"
+    },
+    "answer": "A",
+    "answer_text": "High-temperature combustion in car engines",
+    "explanation": {
+      "question_restate": "Which of the following is a common source of oxides of nitrogen in the atmosphere?",
+      "principle": "Oxides of nitrogen form when nitrogen and oxygen in air react at very high temperatures.",
+      "steps": [
+        "Air contains a lot of nitrogen and oxygen.",
+        "Under ordinary conditions they do not combine easily.",
+        "But inside vehicle engines and some industrial furnaces, temperatures become very high.",
+        "At such temperatures, nitrogen and oxygen can react to form oxides of nitrogen such as NO and NO₂.",
+        "This is why heavy traffic contributes strongly to urban air pollution.",
+        "Hence option A is correct."
+      ],
+      "final_answer": "A. High-temperature combustion in car engines",
+      "simple_explanation": "Vehicle engines provide the high temperature needed for oxides of nitrogen to form. Therefore option A is correct."
+    },
+    "tags": [
+      "NOx",
+      "engines",
+      "air pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q017",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pollutant is chiefly associated with depletion of the ozone layer?",
+    "options": {
+      "A": "CO",
+      "B": "dust",
+      "C": "chlorofluorocarbons",
+      "D": "water vapour"
+    },
+    "answer": "C",
+    "answer_text": "chlorofluorocarbons",
+    "explanation": {
+      "question_restate": "Which pollutant is chiefly associated with depletion of the ozone layer?",
+      "principle": "This is a standard environmental chemistry fact often tested in objective questions.",
+      "steps": [
+        "Chlorofluorocarbons, often abbreviated as CFCs, were formerly used in refrigerators, aerosol propellants and some foam products.",
+        "In the upper atmosphere, they can release chlorine-containing species.",
+        "These species take part in reactions that destroy ozone molecules.",
+        "The ozone layer is important because it absorbs harmful ultraviolet radiation from the Sun.",
+        "CO and dust cause other problems, but they are not the main substances linked to ozone depletion.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. chlorofluorocarbons",
+      "simple_explanation": "CFCs are the classic pollutants linked with ozone layer depletion. So option C is correct."
+    },
+    "tags": [
+      "CFCs",
+      "ozone layer",
+      "air pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q018",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Dust particles in air are most likely to cause",
+    "options": {
+      "A": "respiratory irritation and reduced visibility",
+      "B": "immediate production of soft water",
+      "C": "increase in dissolved oxygen in rivers",
+      "D": "neutralization of acidic soil"
+    },
+    "answer": "A",
+    "answer_text": "respiratory irritation and reduced visibility",
+    "explanation": {
+      "question_restate": "Dust particles in air are most likely to cause",
+      "principle": "Dust is a particulate pollutant, so its effects are mainly physical and respiratory.",
+      "steps": [
+        "Dust consists of very fine solid particles suspended in air.",
+        "When breathed in, such particles can irritate the nose, throat and lungs.",
+        "In large quantity, dust also scatters light and reduces visibility.",
+        "This is one reason dusty roads and mining areas can be hazardous.",
+        "The other options describe unrelated processes.",
+        "Thus option A is correct."
+      ],
+      "final_answer": "A. respiratory irritation and reduced visibility",
+      "simple_explanation": "Dust mainly irritates the respiratory system and makes the air hazy. Option A is correct."
+    },
+    "tags": [
+      "dust",
+      "particulate pollution",
+      "visibility"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q019",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A family using a charcoal stove in a poorly ventilated room is especially at risk of poisoning by",
+    "options": {
+      "A": "Cl₂",
+      "B": "CO",
+      "C": "SO₃",
+      "D": "NH₃"
+    },
+    "answer": "B",
+    "answer_text": "CO",
+    "explanation": {
+      "question_restate": "A family using a charcoal stove in a poorly ventilated room is especially at risk of poisoning by",
+      "principle": "Burning charcoal in limited oxygen often produces carbon monoxide, and poor ventilation allows it to accumulate.",
+      "steps": [
+        "Charcoal is mainly carbon.",
+        "If carbon burns with enough oxygen, carbon dioxide is formed.",
+        "But in a closed or poorly ventilated room, oxygen may become limited.",
+        "Then incomplete combustion occurs and carbon monoxide is produced.",
+        "Because CO is colourless and odourless, people may not notice it.",
+        "It then builds up and can cause serious poisoning by reducing oxygen transport in the blood.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. CO",
+      "simple_explanation": "Charcoal in poor ventilation can generate carbon monoxide, a silent poisonous gas. So option B is correct."
+    },
+    "tags": [
+      "CO",
+      "charcoal",
+      "ventilation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q020",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The gas H₂S may be released during",
+    "options": {
+      "A": "decomposition of organic matter containing sulphur",
+      "B": "freezing of water",
+      "C": "electroplating of copper",
+      "D": "mixing sand with water"
+    },
+    "answer": "A",
+    "answer_text": "decomposition of organic matter containing sulphur",
+    "explanation": {
+      "question_restate": "The gas H₂S may be released during",
+      "principle": "Hydrogen sulphide often forms in swamps, sewers and decaying protein-rich waste.",
+      "steps": [
+        "Some biological materials contain sulphur in their proteins.",
+        "When such matter decays in the absence of enough oxygen, microorganisms can produce H₂S.",
+        "This is why H₂S is often linked with drains, sewers, stagnant places and rotting organic matter.",
+        "Freezing water, electroplating copper and mixing sand with water do not normally produce H₂S.",
+        "Thus option A is correct."
+      ],
+      "final_answer": "A. decomposition of organic matter containing sulphur",
+      "simple_explanation": "H₂S commonly comes from the decay of sulphur-containing organic matter. Option A is correct."
+    },
+    "tags": [
+      "H2S",
+      "decomposition",
+      "sewage"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q021",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following pollutants is colourless, odourless and highly poisonous?",
+    "options": {
+      "A": "NO₂",
+      "B": "SO₂",
+      "C": "CO",
+      "D": "H₂S"
+    },
+    "answer": "C",
+    "answer_text": "CO",
+    "explanation": {
+      "question_restate": "Which of the following pollutants is colourless, odourless and highly poisonous?",
+      "principle": "JAMB often tests recognition of carbon monoxide by its silent but deadly properties.",
+      "steps": [
+        "NO₂ is a brown gas.",
+        "SO₂ has a choking smell.",
+        "H₂S has a rotten-egg smell.",
+        "CO is difficult to detect by human senses because it is colourless and odourless.",
+        "Yet it is highly poisonous because it binds strongly with haemoglobin.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. CO",
+      "simple_explanation": "CO is the poisonous gas that cannot easily be detected by smell or colour. Option C is correct."
+    },
+    "tags": [
+      "CO",
+      "properties",
+      "air pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q022",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "One effective way of reducing emission of SO₂ from an industrial chimney is to",
+    "options": {
+      "A": "burn more sulphur",
+      "B": "wash the flue gases with alkaline materials",
+      "C": "spray kerosene into the chimney",
+      "D": "reduce the height of the chimney"
+    },
+    "answer": "B",
+    "answer_text": "wash the flue gases with alkaline materials",
+    "explanation": {
+      "question_restate": "One effective way of reducing emission of SO₂ from an industrial chimney is to",
+      "principle": "Acidic gases can be removed by reacting them with basic substances.",
+      "steps": [
+        "SO₂ is an acidic oxide.",
+        "Acidic oxides react with alkalis or basic materials.",
+        "So one common control method is to scrub chimney gases with lime or another alkaline substance.",
+        "The alkali neutralizes the acidic gas and reduces its release into the atmosphere.",
+        "Burning more sulphur would worsen the problem, while lowering the chimney does not remove the gas.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. wash the flue gases with alkaline materials",
+      "simple_explanation": "Because SO₂ is acidic, it can be reduced by scrubbing with an alkali. So option B is correct."
+    },
+    "tags": [
+      "SO2",
+      "scrubbing",
+      "pollution control"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q023",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Acid rain may damage buildings made of limestone mainly because limestone contains",
+    "options": {
+      "A": "NaCl",
+      "B": "CaCO₃",
+      "C": "SiO₂",
+      "D": "KNO₃"
+    },
+    "answer": "B",
+    "answer_text": "CaCO₃",
+    "explanation": {
+      "question_restate": "Acid rain may damage buildings made of limestone mainly because limestone contains",
+      "principle": "Limestone and marble are attacked by acids because they contain calcium trioxocarbonate(IV), CaCO₃.",
+      "steps": [
+        "Limestone is composed mainly of calcium trioxocarbonate(IV), CaCO₃.",
+        "Acid rain contains acidic substances formed from pollutants such as SO₂ and oxides of nitrogen.",
+        "Acids react with carbonates.",
+        "When acid rain falls on limestone, the carbonate is gradually attacked and the material wears away.",
+        "That is why acid rain can damage statues, buildings and monuments made from limestone or marble.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. CaCO₃",
+      "simple_explanation": "Limestone contains CaCO₃, which reacts with acids. So option B is correct."
+    },
+    "tags": [
+      "acid rain",
+      "limestone",
+      "CaCO3"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q024",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The gradual thinning of the ozone layer would most directly lead to an increase in",
+    "options": {
+      "A": "ultraviolet radiation reaching the Earth",
+      "B": "amount of dissolved salts in rivers",
+      "C": "hardness of water supply",
+      "D": "rate of sedimentation in soil"
+    },
+    "answer": "A",
+    "answer_text": "ultraviolet radiation reaching the Earth",
+    "explanation": {
+      "question_restate": "The gradual thinning of the ozone layer would most directly lead to an increase in",
+      "principle": "The protective role of the ozone layer is to absorb much of the Sun's harmful ultraviolet radiation.",
+      "steps": [
+        "The ozone layer lies in the upper atmosphere.",
+        "Its important function is to absorb a large part of incoming ultraviolet, UV, radiation.",
+        "If the layer is depleted, less UV is absorbed before reaching the Earth's surface.",
+        "As a result, exposure to harmful ultraviolet radiation increases.",
+        "This can raise risks such as skin damage, eye problems and harm to some living organisms.",
+        "The other options are not the direct consequence of ozone depletion.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. ultraviolet radiation reaching the Earth",
+      "simple_explanation": "Less ozone means more harmful ultraviolet rays reach the Earth. So option A is correct."
+    },
+    "tags": [
+      "ozone depletion",
+      "CFCs",
+      "UV"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q025",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "An example of a particulate air pollutant is",
+    "options": {
+      "A": "CO",
+      "B": "dust",
+      "C": "SO₂",
+      "D": "NO₂"
+    },
+    "answer": "B",
+    "answer_text": "dust",
+    "explanation": {
+      "question_restate": "An example of a particulate air pollutant is",
+      "principle": "Particulate pollutants are tiny solid or liquid particles suspended in air.",
+      "steps": [
+        "CO, SO₂ and NO₂ are gaseous pollutants.",
+        "Dust is different because it consists of tiny solid particles dispersed in air.",
+        "Particles can settle on leaves, soil, roofs and lungs.",
+        "The word particulate should make you think of fine matter rather than gases.",
+        "Therefore dust is the correct example.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. dust",
+      "simple_explanation": "Dust is made of tiny particles, not gas molecules, so option B is correct."
+    },
+    "tags": [
+      "particulates",
+      "dust",
+      "air pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q026",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is most likely to increase dust pollution in a town?",
+    "options": {
+      "A": "Tree planting along roads",
+      "B": "Paving roads and controlling quarry emissions",
+      "C": "Frequent sweeping of dry untarred roads and quarry blasting",
+      "D": "Use of wet scrubbers in industries"
+    },
+    "answer": "C",
+    "answer_text": "Frequent sweeping of dry untarred roads and quarry blasting",
+    "explanation": {
+      "question_restate": "Which of the following is most likely to increase dust pollution in a town?",
+      "principle": "Dust pollution rises when fine particles are easily lifted into the air.",
+      "steps": [
+        "Untarred dry roads release dust easily when disturbed.",
+        "Sweeping such roads without moisture can raise more particles into the air.",
+        "Quarry blasting also throws fine rock particles into the atmosphere.",
+        "Tree planting, paving roads and wet scrubbers help reduce particle emission rather than increase it.",
+        "Therefore the activity that most increases dust pollution is option C."
+      ],
+      "final_answer": "C. Frequent sweeping of dry untarred roads and quarry blasting",
+      "simple_explanation": "Dry sweeping and quarry blasting both throw fine particles into the air. So option C is correct."
+    },
+    "tags": [
+      "dust",
+      "quarry",
+      "road pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q027",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pollutant is mainly responsible for reducing the oxygen-carrying capacity of blood?",
+    "options": {
+      "A": "SO₂",
+      "B": "CO",
+      "C": "dust",
+      "D": "CFCs"
+    },
+    "answer": "B",
+    "answer_text": "CO",
+    "explanation": {
+      "question_restate": "Which pollutant is mainly responsible for reducing the oxygen-carrying capacity of blood?",
+      "principle": "This question focuses on the physiological effect of carbon monoxide.",
+      "steps": [
+        "The body depends on haemoglobin to transport oxygen.",
+        "Carbon monoxide binds with haemoglobin strongly and forms a stable complex.",
+        "That leaves less haemoglobin available for oxygen transport.",
+        "SO₂ mainly irritates the respiratory system and contributes to acid rain.",
+        "Dust mainly causes irritation and reduced visibility.",
+        "CFCs are chiefly linked with ozone depletion.",
+        "Hence CO is the pollutant responsible here."
+      ],
+      "final_answer": "B. CO",
+      "simple_explanation": "CO reduces the blood's ability to carry oxygen. Therefore option B is correct."
+    },
+    "tags": [
+      "CO",
+      "blood",
+      "haemoglobin"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q028",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The pollutant largely produced by volcanic areas, sewers and some petroleum refineries is",
+    "options": {
+      "A": "H₂S",
+      "B": "N₂",
+      "C": "H₂",
+      "D": "O₂"
+    },
+    "answer": "A",
+    "answer_text": "H₂S",
+    "explanation": {
+      "question_restate": "The pollutant largely produced by volcanic areas, sewers and some petroleum refineries is",
+      "principle": "Hydrogen sulphide is associated with natural and industrial sources that involve sulphur compounds.",
+      "steps": [
+        "H₂S is released in some volcanic regions and in places where sulphur-containing materials decay.",
+        "It can also be associated with sewers and some petroleum-processing operations.",
+        "Its smell is very characteristic and unpleasant.",
+        "Nitrogen, hydrogen and oxygen are not the gases mainly identified with those offensive sulphur-related emissions.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. H₂S",
+      "simple_explanation": "Hydrogen sulphide is common in sewers, some refinery areas and volcanic emissions. Option A is correct."
+    },
+    "tags": [
+      "H2S",
+      "refinery",
+      "sewer"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q029",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which statement about SO₂ is correct?",
+    "options": {
+      "A": "It is a basic oxide",
+      "B": "It is an acidic oxide and may irritate the lungs",
+      "C": "It is a noble gas",
+      "D": "It improves the quality of rainwater"
+    },
+    "answer": "B",
+    "answer_text": "It is an acidic oxide and may irritate the lungs",
+    "explanation": {
+      "question_restate": "Which statement about SO₂ is correct?",
+      "principle": "SO₂ behaves chemically as an acidic oxide and also has harmful physiological effects.",
+      "steps": [
+        "SO₂ is formed from sulphur combustion or roasting of sulphide ores.",
+        "When dissolved in water it gives an acidic solution, so it is an acidic oxide.",
+        "It can irritate the eyes, nose and respiratory system.",
+        "It is not basic and it is not a noble gas.",
+        "Since it contributes to acid rain, it certainly does not improve rainwater quality.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. It is an acidic oxide and may irritate the lungs",
+      "simple_explanation": "SO₂ is an acidic, irritating pollutant, so option B is correct."
+    },
+    "tags": [
+      "SO2",
+      "acidic oxide",
+      "lungs"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q030",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The use of catalytic converters in motor vehicles helps mainly to reduce",
+    "options": {
+      "A": "pollutants from exhaust gases",
+      "B": "hardness in engine water",
+      "C": "boiling point of petrol",
+      "D": "nitrogen content of tyres"
+    },
+    "answer": "A",
+    "answer_text": "pollutants from exhaust gases",
+    "explanation": {
+      "question_restate": "The use of catalytic converters in motor vehicles helps mainly to reduce",
+      "principle": "Catalytic converters are pollution-control devices fitted to vehicle exhaust systems.",
+      "steps": [
+        "Vehicle exhaust contains harmful substances such as CO, hydrocarbons and oxides of nitrogen.",
+        "A catalytic converter helps transform some of these pollutants into less harmful substances.",
+        "This reduces the pollution released into the atmosphere.",
+        "It does not treat water hardness or change the nitrogen content of tyres.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. pollutants from exhaust gases",
+      "simple_explanation": "Catalytic converters are installed to reduce harmful vehicle exhaust emissions. So option A is correct."
+    },
+    "tags": [
+      "vehicle exhaust",
+      "catalytic converter",
+      "air pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q031",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following combinations is most likely in polluted urban air?",
+    "options": {
+      "A": "CO, NO₂ and dust",
+      "B": "H₂ and He only",
+      "C": "N₂ and O₂ only",
+      "D": "Ar and Ne only"
+    },
+    "answer": "A",
+    "answer_text": "CO, NO₂ and dust",
+    "explanation": {
+      "question_restate": "Which of the following combinations is most likely in polluted urban air?",
+      "principle": "Urban pollution from traffic and industry often involves toxic gases and particulate matter.",
+      "steps": [
+        "Busy cities usually have many vehicles, generators, industrial operations and road dust.",
+        "These produce carbon monoxide from incomplete combustion, nitrogen oxides from high-temperature engines and dust particles from roads and construction.",
+        "The noble gases and ordinary atmospheric gases listed in the other options are not indicators of pollution.",
+        "Therefore the most realistic polluted-air combination is CO, NO₂ and dust.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. CO, NO₂ and dust",
+      "simple_explanation": "Urban polluted air commonly contains CO, oxides of nitrogen and dust. Hence option A is correct."
+    },
+    "tags": [
+      "urban pollution",
+      "CO",
+      "NO2",
+      "dust"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q032",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "An important reason why H₂S is considered dangerous is that it",
+    "options": {
+      "A": "supports combustion strongly",
+      "B": "has no smell at all",
+      "C": "is poisonous even at low concentration",
+      "D": "is heavier than all known gases"
+    },
+    "answer": "C",
+    "answer_text": "is poisonous even at low concentration",
+    "explanation": {
+      "question_restate": "An important reason why H₂S is considered dangerous is that it",
+      "principle": "H₂S is not only offensive in smell; it is also toxic.",
+      "steps": [
+        "Many students remember H₂S only for its rotten-egg smell.",
+        "But in environmental chemistry, its toxic nature is even more important.",
+        "Exposure to H₂S can affect health seriously, especially in confined spaces such as pits or sewers.",
+        "It is therefore classified as a dangerous pollutant.",
+        "The other statements are not the key correct description required here.",
+        "Thus option C is correct."
+      ],
+      "final_answer": "C. is poisonous even at low concentration",
+      "simple_explanation": "H₂S is dangerous because it is poisonous, not just because it smells bad. So option C is correct."
+    },
+    "tags": [
+      "H2S",
+      "toxicity",
+      "air pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q033",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which air pollutant is directly linked with irritation of the respiratory tract and acidification of rainwater?",
+    "options": {
+      "A": "SO₂",
+      "B": "O₂",
+      "C": "N₂",
+      "D": "H₂"
+    },
+    "answer": "A",
+    "answer_text": "SO₂",
+    "explanation": {
+      "question_restate": "Which air pollutant is directly linked with irritation of the respiratory tract and acidification of rainwater?",
+      "principle": "Sulphur(IV) oxide is a classic example of a respiratory irritant and acid-rain-forming gas.",
+      "steps": [
+        "SO₂ is acidic in nature.",
+        "When inhaled, it can irritate the respiratory passages.",
+        "When dissolved in atmospheric water, it contributes to acid rain.",
+        "Oxygen and nitrogen are normal constituents of air, while hydrogen is not the pollutant described.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. SO₂",
+      "simple_explanation": "SO₂ both irritates breathing passages and contributes to acid rain. Option A is correct."
+    },
+    "tags": [
+      "SO2",
+      "respiratory tract",
+      "acid rain"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q034",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following would most likely reduce CFC pollution?",
+    "options": {
+      "A": "greater use of old aerosol propellants containing CFCs",
+      "B": "use of ozone-friendly refrigerants",
+      "C": "open burning of plastics",
+      "D": "increase in sulphur content of fuels"
+    },
+    "answer": "B",
+    "answer_text": "use of ozone-friendly refrigerants",
+    "explanation": {
+      "question_restate": "Which of the following would most likely reduce CFC pollution?",
+      "principle": "To reduce a pollutant, its use must be replaced with safer alternatives.",
+      "steps": [
+        "CFC pollution comes mainly from their use in refrigeration, propellants and foam production.",
+        "One practical solution is to replace them with chemicals that do not damage the ozone layer as seriously.",
+        "This is why ozone-friendly refrigerants are encouraged.",
+        "Using more CFC aerosols would worsen the problem.",
+        "Open burning of plastics and increasing sulphur in fuels create other pollution problems.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. use of ozone-friendly refrigerants",
+      "simple_explanation": "Replacing CFCs with ozone-friendly alternatives is the right control measure. So option B is correct."
+    },
+    "tags": [
+      "CFCs",
+      "control",
+      "refrigerants"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q035",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The gas mainly responsible for suffocation in a closed garage with a running engine is",
+    "options": {
+      "A": "CO",
+      "B": "H₂S",
+      "C": "Cl₂",
+      "D": "SO₃"
+    },
+    "answer": "A",
+    "answer_text": "CO",
+    "explanation": {
+      "question_restate": "The gas mainly responsible for suffocation in a closed garage with a running engine is",
+      "principle": "A running engine in an enclosed space is a classic source of carbon monoxide poisoning.",
+      "steps": [
+        "Petrol and diesel engines can produce carbon monoxide, especially when combustion is incomplete.",
+        "In an open place the gas disperses, but in a closed garage it can accumulate.",
+        "Because CO is colourless and odourless, a person may breathe it in without noticing danger.",
+        "It then prevents adequate oxygen transport in the blood, leading to suffocation-like symptoms.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. CO",
+      "simple_explanation": "A closed garage with an engine running is a classic carbon monoxide danger. So option A is correct."
+    },
+    "tags": [
+      "CO",
+      "garage",
+      "poisoning"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q036",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following best explains why dust-covered leaves may reduce crop yield?",
+    "options": {
+      "A": "Dust increases chlorophyll content",
+      "B": "Dust may block sunlight and stomata, reducing photosynthesis",
+      "C": "Dust always acts as fertilizer",
+      "D": "Dust converts CO₂ to O₂"
+    },
+    "answer": "B",
+    "answer_text": "Dust may block sunlight and stomata, reducing photosynthesis",
+    "explanation": {
+      "question_restate": "Which of the following best explains why dust-covered leaves may reduce crop yield?",
+      "principle": "Particles settling on leaves can interfere with normal plant processes.",
+      "steps": [
+        "Leaves need light for photosynthesis.",
+        "They also exchange gases through tiny pores called stomata.",
+        "When dust settles heavily on leaf surfaces, some light is blocked.",
+        "The pores may also be partly obstructed.",
+        "As a result, photosynthesis and gaseous exchange may reduce, leading to poor plant growth and lower yield.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. Dust may block sunlight and stomata, reducing photosynthesis",
+      "simple_explanation": "Dust can interfere with leaf function and reduce photosynthesis, so option B is correct."
+    },
+    "tags": [
+      "dust",
+      "plants",
+      "photosynthesis"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q037",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A likely immediate effect of very dusty air on road transport is",
+    "options": {
+      "A": "improved tyre quality",
+      "B": "reduced visibility",
+      "C": "increase in rainfall",
+      "D": "reduction of engine temperature"
+    },
+    "answer": "B",
+    "answer_text": "reduced visibility",
+    "explanation": {
+      "question_restate": "A likely immediate effect of very dusty air on road transport is",
+      "principle": "One direct physical effect of suspended particles is poor visibility.",
+      "steps": [
+        "Dust particles scatter and block light.",
+        "When the amount of dust in air becomes high, people cannot see far clearly.",
+        "This creates problems for motorists and can increase accident risk.",
+        "Tyre quality, rainfall increase and engine temperature reduction are not direct immediate effects of dusty air.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. reduced visibility",
+      "simple_explanation": "Dust makes the air hazy and reduces how far drivers can see. Option B is correct."
+    },
+    "tags": [
+      "dust",
+      "visibility",
+      "transport"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q038",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pollutant is most directly associated with rotten sewer odour?",
+    "options": {
+      "A": "CO",
+      "B": "H₂S",
+      "C": "NO₂",
+      "D": "CFCs"
+    },
+    "answer": "B",
+    "answer_text": "H₂S",
+    "explanation": {
+      "question_restate": "Which pollutant is most directly associated with rotten sewer odour?",
+      "principle": "Sewer smell is one of the common everyday clues to hydrogen sulphide.",
+      "steps": [
+        "Sewers often contain decaying organic matter under low-oxygen conditions.",
+        "Such conditions can produce hydrogen sulphide gas.",
+        "H₂S has a characteristic rotten-egg smell.",
+        "CO has no smell, NO₂ has a choking nature but not the classic sewer odour, and CFCs are not the common source of that smell.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. H₂S",
+      "simple_explanation": "The offensive sewer smell is typically due to H₂S. So option B is correct."
+    },
+    "tags": [
+      "H2S",
+      "sewer",
+      "odour"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q039",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement correctly compares CO and SO₂ as pollutants?",
+    "options": {
+      "A": "Both are colourless and odourless",
+      "B": "CO mainly affects blood oxygen transport, while SO₂ mainly irritates the respiratory tract and contributes to acid rain",
+      "C": "SO₂ mainly binds to haemoglobin, while CO forms acid rain",
+      "D": "Both are particulate pollutants"
+    },
+    "answer": "B",
+    "answer_text": "CO mainly affects blood oxygen transport, while SO₂ mainly irritates the respiratory tract and contributes to acid rain",
+    "explanation": {
+      "question_restate": "Which statement correctly compares CO and SO₂ as pollutants?",
+      "principle": "This question tests whether the student can separate the distinct effects of two common gaseous pollutants.",
+      "steps": [
+        "CO is especially dangerous because it binds strongly to haemoglobin and reduces oxygen transport.",
+        "SO₂ is an acidic gas that irritates the respiratory tract and can form acid rain.",
+        "They do not have identical physical properties or environmental roles.",
+        "SO₂ is not the gas that mainly binds haemoglobin; CO is.",
+        "Neither of them is a particulate pollutant because both are gases.",
+        "Therefore option B is the correct comparison."
+      ],
+      "final_answer": "B. CO mainly affects blood oxygen transport, while SO₂ mainly irritates the respiratory tract and contributes to acid rain",
+      "simple_explanation": "CO mainly poisons the blood's oxygen transport, while SO₂ mainly causes respiratory irritation and acid rain. So option B is correct."
+    },
+    "tags": [
+      "CO",
+      "SO2",
+      "comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q040",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Air pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Burning fuel with low sulphur content helps mainly to reduce",
+    "options": {
+      "A": "dust formation only",
+      "B": "SO₂ emission",
+      "C": "oxygen concentration in air",
+      "D": "cloud formation"
+    },
+    "answer": "B",
+    "answer_text": "SO₂ emission",
+    "explanation": {
+      "question_restate": "Burning fuel with low sulphur content helps mainly to reduce",
+      "principle": "If a fuel contains less sulphur, less sulphur oxide can be formed during combustion.",
+      "steps": [
+        "Sulphur present in fuel burns to form sulphur oxides.",
+        "One important product is SO₂.",
+        "Therefore, reducing the sulphur content of the fuel reduces the amount of SO₂ released.",
+        "This helps to lower acid rain risk and respiratory irritation.",
+        "The other listed effects are not the main direct reason.",
+        "Thus option B is correct."
+      ],
+      "final_answer": "B. SO₂ emission",
+      "simple_explanation": "Low-sulphur fuel means less SO₂ is produced on burning. Option B is correct."
+    },
+    "tags": [
+      "sulphur in fuel",
+      "SO2",
+      "control"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q041",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Water pollution by sewage is especially dangerous because sewage may contain",
+    "options": {
+      "A": "harmful microorganisms",
+      "B": "only pure water",
+      "C": "noble gases",
+      "D": "solid sodium chloride only"
+    },
+    "answer": "A",
+    "answer_text": "harmful microorganisms",
+    "explanation": {
+      "question_restate": "Water pollution by sewage is especially dangerous because sewage may contain",
+      "principle": "Sewage is not just dirty water; it often carries disease-causing organisms.",
+      "steps": [
+        "Sewage is wastewater containing human and domestic waste materials.",
+        "It may carry bacteria, viruses, parasites and organic matter.",
+        "Because of this, untreated sewage can spread diseases such as cholera and typhoid.",
+        "This is why it is very dangerous when discharged into rivers, wells or reservoirs.",
+        "The other options do not describe the major danger correctly.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. harmful microorganisms",
+      "simple_explanation": "Sewage pollutes water mainly because it can contain germs that cause disease. So option A is correct."
+    },
+    "tags": [
+      "sewage",
+      "microorganisms",
+      "water pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q042",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Discharge of untreated sewage into a river may first lead to",
+    "options": {
+      "A": "increase in the purity of the water",
+      "B": "decrease in dissolved oxygen due to decomposition",
+      "C": "formation of distilled water",
+      "D": "permanent hardness only"
+    },
+    "answer": "B",
+    "answer_text": "decrease in dissolved oxygen due to decomposition",
+    "explanation": {
+      "question_restate": "Discharge of untreated sewage into a river may first lead to",
+      "principle": "Organic waste in sewage encourages decomposition, and that process consumes oxygen in water.",
+      "steps": [
+        "Sewage contains much biodegradable organic matter.",
+        "Microorganisms in water begin to decompose this material.",
+        "During decomposition, the microorganisms use dissolved oxygen from the water.",
+        "As oxygen level falls, fish and other aquatic organisms may suffer or die.",
+        "This is one of the earliest and most important effects of sewage pollution.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. decrease in dissolved oxygen due to decomposition",
+      "simple_explanation": "Decomposition of sewage uses up dissolved oxygen in water, so option B is correct."
+    },
+    "tags": [
+      "sewage",
+      "dissolved oxygen",
+      "decomposition"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q043",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following best explains why oil spilled on water is harmful to fish?",
+    "options": {
+      "A": "Oil increases the density of water only",
+      "B": "Oil forms a film that reduces oxygen transfer into water",
+      "C": "Oil turns water into an acid",
+      "D": "Oil makes fish breathe faster and grow bigger"
+    },
+    "answer": "B",
+    "answer_text": "Oil forms a film that reduces oxygen transfer into water",
+    "explanation": {
+      "question_restate": "Which of the following best explains why oil spilled on water is harmful to fish?",
+      "principle": "Oil pollution often affects aquatic life by blocking contact between air and water.",
+      "steps": [
+        "Oil usually spreads over the surface of water because it is immiscible with water and less dense.",
+        "The oil layer forms a film.",
+        "This film reduces the movement of oxygen from the atmosphere into the water.",
+        "Fish and other aquatic organisms depend on dissolved oxygen.",
+        "When oxygen supply reduces, they become stressed and may die.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. Oil forms a film that reduces oxygen transfer into water",
+      "simple_explanation": "Oil forms a surface film that limits oxygen entering the water, so option B is correct."
+    },
+    "tags": [
+      "oil spill",
+      "fish",
+      "dissolved oxygen"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q044",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "One visible sign of water pollution by oil is",
+    "options": {
+      "A": "blue crystalline deposits at the bottom",
+      "B": "a shiny film on the water surface",
+      "C": "sudden formation of soft water",
+      "D": "increase in transparency of water"
+    },
+    "answer": "B",
+    "answer_text": "a shiny film on the water surface",
+    "explanation": {
+      "question_restate": "One visible sign of water pollution by oil is",
+      "principle": "Oil spreads on water in a way that often makes the surface look glossy or rainbow-like.",
+      "steps": [
+        "Oil and water do not mix.",
+        "Because oil is usually less dense, it spreads over the water surface.",
+        "This creates a shiny or iridescent film.",
+        "Such a film is a common visible clue of oil contamination in streams, ponds or coastal water.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. a shiny film on the water surface",
+      "simple_explanation": "Oil pollution is often recognized by a shiny film floating on the water surface. Option B is correct."
+    },
+    "tags": [
+      "oil pollution",
+      "surface film",
+      "water pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q045",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The unpleasant smell from stagnant water heavily contaminated with sewage is mainly due to",
+    "options": {
+      "A": "evaporation of oxygen",
+      "B": "anaerobic decomposition of organic matter",
+      "C": "formation of distilled water",
+      "D": "condensation of nitrogen"
+    },
+    "answer": "B",
+    "answer_text": "anaerobic decomposition of organic matter",
+    "explanation": {
+      "question_restate": "The unpleasant smell from stagnant water heavily contaminated with sewage is mainly due to",
+      "principle": "When sewage-rich water loses oxygen, decay may continue under anaerobic conditions and produce offensive gases.",
+      "steps": [
+        "Stagnant water does not mix well with air, so dissolved oxygen may become very low.",
+        "If sewage is present, microorganisms decompose the organic matter rapidly.",
+        "After oxygen is exhausted, anaerobic decomposition can occur.",
+        "This process can produce foul-smelling gases such as H₂S.",
+        "That is why stagnant polluted drains and ponds often smell very bad.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. anaerobic decomposition of organic matter",
+      "simple_explanation": "Bad smell in stagnant sewage-polluted water is mainly from anaerobic decomposition. So option B is correct."
+    },
+    "tags": [
+      "stagnant water",
+      "sewage",
+      "anaerobic"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q046",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Water polluted with sewage is unsuitable for drinking mainly because it may",
+    "options": {
+      "A": "contain disease-causing organisms",
+      "B": "contain dissolved oxygen",
+      "C": "have low density",
+      "D": "be colourless"
+    },
+    "answer": "A",
+    "answer_text": "contain disease-causing organisms",
+    "explanation": {
+      "question_restate": "Water polluted with sewage is unsuitable for drinking mainly because it may",
+      "principle": "Drinking water safety depends strongly on the absence of harmful microorganisms.",
+      "steps": [
+        "Sewage can introduce bacteria, viruses and parasites into water supplies.",
+        "Even when polluted water looks fairly clear, it may still be unsafe.",
+        "Disease-causing organisms can cause outbreaks of water-borne diseases.",
+        "Dissolved oxygen is not the danger here; it is usually beneficial to aquatic life.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. contain disease-causing organisms",
+      "simple_explanation": "Sewage-polluted water can spread disease because it may contain harmful microorganisms. So option A is correct."
+    },
+    "tags": [
+      "drinking water",
+      "sewage",
+      "disease"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q047",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which method would best reduce pollution before wastewater is released into a stream?",
+    "options": {
+      "A": "Adding more refuse to the stream",
+      "B": "Treating the wastewater first",
+      "C": "Covering the stream with plastic",
+      "D": "Heating the stream continuously"
+    },
+    "answer": "B",
+    "answer_text": "Treating the wastewater first",
+    "explanation": {
+      "question_restate": "Which method would best reduce pollution before wastewater is released into a stream?",
+      "principle": "Wastewater treatment removes or lowers pollutants before discharge.",
+      "steps": [
+        "The best way to protect a stream is to stop or reduce harmful substances before they enter it.",
+        "Treatment can remove suspended solids, lower microbial load and reduce organic pollution.",
+        "Adding more waste or covering the stream does not solve the pollution problem.",
+        "Continuous heating is not a practical stream-protection method.",
+        "Thus option B is correct."
+      ],
+      "final_answer": "B. Treating the wastewater first",
+      "simple_explanation": "Wastewater should be treated before discharge. Therefore option B is correct."
+    },
+    "tags": [
+      "wastewater treatment",
+      "stream pollution",
+      "control"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q048",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Oil spillage in rivers is particularly harmful to birds because it",
+    "options": {
+      "A": "hardens their bones immediately",
+      "B": "coats their feathers and affects insulation and buoyancy",
+      "C": "turns water into alcohol",
+      "D": "increases the salt content of all rivers"
+    },
+    "answer": "B",
+    "answer_text": "coats their feathers and affects insulation and buoyancy",
+    "explanation": {
+      "question_restate": "Oil spillage in rivers is particularly harmful to birds because it",
+      "principle": "Oil can physically coat animals, causing severe harm even without being swallowed.",
+      "steps": [
+        "Bird feathers help in waterproofing, insulation and buoyancy.",
+        "When oil coats the feathers, these functions are disturbed.",
+        "The birds may lose body heat easily and may not float or fly properly.",
+        "This makes oil spill especially dangerous to water birds.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. coats their feathers and affects insulation and buoyancy",
+      "simple_explanation": "Oil coats feathers and stops them from working properly, so option B is correct."
+    },
+    "tags": [
+      "oil spill",
+      "birds",
+      "water pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q049",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is most likely to pollute groundwater?",
+    "options": {
+      "A": "Proper lining and treatment of waste pits",
+      "B": "Leakage from sewage pits and soakaways",
+      "C": "Planting grass around wells",
+      "D": "Boiling water in a kettle"
+    },
+    "answer": "B",
+    "answer_text": "Leakage from sewage pits and soakaways",
+    "explanation": {
+      "question_restate": "Which of the following is most likely to pollute groundwater?",
+      "principle": "Groundwater becomes polluted when harmful liquids seep through soil into underground water.",
+      "steps": [
+        "Groundwater is found below the Earth's surface in pores and cracks within soil and rock.",
+        "If sewage pits or soakaways leak, contaminated liquid can percolate downward.",
+        "This liquid may eventually reach wells or underground water reserves.",
+        "Proper lining helps prevent seepage rather than cause it.",
+        "Therefore leakage from sewage pits is the correct answer."
+      ],
+      "final_answer": "B. Leakage from sewage pits and soakaways",
+      "simple_explanation": "Leaking sewage pits can allow contamination to seep into groundwater. Option B is correct."
+    },
+    "tags": [
+      "groundwater",
+      "sewage pits",
+      "contamination"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q050",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Why is large-scale discharge of biodegradable waste into water still dangerous even though the waste can decompose?",
+    "options": {
+      "A": "Because decomposition may use up dissolved oxygen needed by aquatic life",
+      "B": "Because biodegradable waste always forms metal ions",
+      "C": "Because it permanently increases the boiling point of water",
+      "D": "Because it cannot be acted upon by microorganisms"
+    },
+    "answer": "A",
+    "answer_text": "Because decomposition may use up dissolved oxygen needed by aquatic life",
+    "explanation": {
+      "question_restate": "Why is large-scale discharge of biodegradable waste into water still dangerous even though the waste can decompose?",
+      "principle": "This is an important exam point: biodegradable does not mean harmless.",
+      "steps": [
+        "Biodegradable waste can indeed be broken down by microorganisms.",
+        "However, the decomposition process requires oxygen in many cases.",
+        "When too much biodegradable waste enters a river or pond, microorganisms multiply and use up large amounts of dissolved oxygen.",
+        "Fish and other aquatic organisms may then suffocate due to oxygen shortage.",
+        "Therefore, even biodegradable waste can still pollute water seriously.",
+        "Option A is correct."
+      ],
+      "final_answer": "A. Because decomposition may use up dissolved oxygen needed by aquatic life",
+      "simple_explanation": "Even though it can decay, too much biodegradable waste can remove oxygen from water and kill aquatic life. So option A is correct."
+    },
+    "tags": [
+      "biodegradable waste",
+      "water pollution",
+      "dissolved oxygen"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q051",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The discharge of hot water from factories into rivers mainly causes",
+    "options": {
+      "A": "thermal pollution",
+      "B": "radioactive pollution",
+      "C": "soil erosion",
+      "D": "permanent hardness"
+    },
+    "answer": "A",
+    "answer_text": "thermal pollution",
+    "explanation": {
+      "question_restate": "The discharge of hot water from factories into rivers mainly causes",
+      "principle": "Temperature changes can also pollute water by disturbing aquatic conditions.",
+      "steps": [
+        "Some factories use water for cooling and may discharge it while still hot.",
+        "When hot water enters a river or lake, the temperature of the water body rises.",
+        "This is called thermal pollution.",
+        "Higher temperature can reduce dissolved oxygen and stress aquatic organisms.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. thermal pollution",
+      "simple_explanation": "Hot industrial water causes thermal pollution, so option A is correct."
+    },
+    "tags": [
+      "thermal pollution",
+      "factory discharge",
+      "water pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q052",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following would most likely indicate sewage contamination of water?",
+    "options": {
+      "A": "Growth of disease organisms and foul smell",
+      "B": "Complete absence of microorganisms",
+      "C": "Formation of noble gases",
+      "D": "Increase in refractive index only"
+    },
+    "answer": "A",
+    "answer_text": "Growth of disease organisms and foul smell",
+    "explanation": {
+      "question_restate": "Which of the following would most likely indicate sewage contamination of water?",
+      "principle": "Sewage contamination commonly shows biological and odour-related signs.",
+      "steps": [
+        "Sewage introduces microorganisms and organic matter into water.",
+        "Decomposition of the organic matter often gives a bad smell.",
+        "The water may also contain or support disease-causing organisms.",
+        "The other options are not the usual practical indicators of sewage contamination.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. Growth of disease organisms and foul smell",
+      "simple_explanation": "Foul smell and harmful microorganisms are common signs of sewage contamination. Option A is correct."
+    },
+    "tags": [
+      "sewage contamination",
+      "foul smell",
+      "microorganisms"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q053",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "One reason detergents and sewage together can worsen water pollution is that they may",
+    "options": {
+      "A": "increase oxygen content greatly",
+      "B": "form lather and add organic load to the water",
+      "C": "change water into petroleum",
+      "D": "remove all suspended matter instantly"
+    },
+    "answer": "B",
+    "answer_text": "form lather and add organic load to the water",
+    "explanation": {
+      "question_restate": "One reason detergents and sewage together can worsen water pollution is that they may",
+      "principle": "Domestic wastewater often contains both surfactants and biodegradable matter, making pollution more severe.",
+      "steps": [
+        "Detergents can produce foam or lather in water.",
+        "Sewage adds biodegradable organic matter and microorganisms.",
+        "Together, they can reduce water quality, make treatment harder and disturb aquatic life.",
+        "They do not convert water into petroleum or instantly purify it.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. form lather and add organic load to the water",
+      "simple_explanation": "Detergents add foam while sewage adds organic load, so together they worsen water pollution. Option B is correct."
+    },
+    "tags": [
+      "detergents",
+      "sewage",
+      "domestic wastewater"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q054",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is the best way to prevent oil pollution of rivers from mechanic workshops?",
+    "options": {
+      "A": "Wash used oil into the gutter",
+      "B": "Collect and dispose of used oil properly",
+      "C": "Burn oil directly on the river bank",
+      "D": "Dilute used oil with water before discharge"
+    },
+    "answer": "B",
+    "answer_text": "Collect and dispose of used oil properly",
+    "explanation": {
+      "question_restate": "Which of the following is the best way to prevent oil pollution of rivers from mechanic workshops?",
+      "principle": "Prevention depends on proper handling of waste oil rather than releasing it into drainage channels.",
+      "steps": [
+        "Used engine oil is a harmful pollutant.",
+        "If washed into gutters, it may be carried into streams and rivers.",
+        "Because oil floats and spreads, even small amounts can affect a large water surface area.",
+        "The proper method is collection, recycling or approved disposal.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Collect and dispose of used oil properly",
+      "simple_explanation": "Waste oil should be collected and properly disposed of, not washed away. So option B is correct."
+    },
+    "tags": [
+      "used oil",
+      "mechanic workshop",
+      "prevention"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q055",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which statement about oil and water is correct and explains the spread of oil spills?",
+    "options": {
+      "A": "Oil is denser than water and sinks rapidly",
+      "B": "Oil mixes completely with water",
+      "C": "Oil is generally less dense than water and spreads on the surface",
+      "D": "Oil reacts with water to form salt"
+    },
+    "answer": "C",
+    "answer_text": "Oil is generally less dense than water and spreads on the surface",
+    "explanation": {
+      "question_restate": "Which statement about oil and water is correct and explains the spread of oil spills?",
+      "principle": "The physical properties of oil explain the appearance and effect of oil spills.",
+      "steps": [
+        "Most common oils are immiscible with water.",
+        "They also have lower density than water.",
+        "Because of this, spilled oil floats and spreads out as a surface layer.",
+        "This wide spreading increases the area affected by pollution.",
+        "Hence option C is correct."
+      ],
+      "final_answer": "C. Oil is generally less dense than water and spreads on the surface",
+      "simple_explanation": "Oil usually floats and spreads because it is immiscible with water and less dense. Option C is correct."
+    },
+    "tags": [
+      "oil spill",
+      "density",
+      "immiscibility"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q056",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The death of fish after sewage discharge into a pond is most directly due to",
+    "options": {
+      "A": "high concentration of dissolved oxygen",
+      "B": "depletion of dissolved oxygen during decomposition",
+      "C": "formation of noble gases",
+      "D": "increase in pH to 14 in all cases"
+    },
+    "answer": "B",
+    "answer_text": "depletion of dissolved oxygen during decomposition",
+    "explanation": {
+      "question_restate": "The death of fish after sewage discharge into a pond is most directly due to",
+      "principle": "This is one of the most important ecological consequences of sewage pollution.",
+      "steps": [
+        "Sewage adds large amounts of biodegradable matter to the pond.",
+        "Bacteria decompose this matter.",
+        "In doing so, they consume dissolved oxygen from the water.",
+        "Fish need dissolved oxygen for respiration.",
+        "If the oxygen level falls too low, the fish may die.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. depletion of dissolved oxygen during decomposition",
+      "simple_explanation": "Sewage causes fish death mainly because decomposition removes dissolved oxygen. So option B is correct."
+    },
+    "tags": [
+      "fish death",
+      "sewage",
+      "oxygen depletion"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q057",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is least likely to be a source of water pollution?",
+    "options": {
+      "A": "Sewage discharge",
+      "B": "Oil spillage",
+      "C": "Proper water treatment before supply",
+      "D": "Dumping refuse into drainage"
+    },
+    "answer": "C",
+    "answer_text": "Proper water treatment before supply",
+    "explanation": {
+      "question_restate": "Which of the following is least likely to be a source of water pollution?",
+      "principle": "The correct answer is the activity that prevents pollution rather than causes it.",
+      "steps": [
+        "Sewage discharge, oil spillage and refuse dumping all introduce harmful substances into water bodies or drainage systems.",
+        "Proper water treatment is the opposite: it is done to improve water quality.",
+        "Therefore it is least likely to be a source of water pollution.",
+        "Hence option C is correct."
+      ],
+      "final_answer": "C. Proper water treatment before supply",
+      "simple_explanation": "Treating water properly helps protect it instead of polluting it. So option C is correct."
+    },
+    "tags": [
+      "water treatment",
+      "source of pollution",
+      "prevention"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q058",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A likely long-term effect of repeated oil spillage in a river is",
+    "options": {
+      "A": "improved breeding of aquatic organisms",
+      "B": "destruction of aquatic habitats",
+      "C": "permanent softening of the water",
+      "D": "conversion of water to ethanol"
+    },
+    "answer": "B",
+    "answer_text": "destruction of aquatic habitats",
+    "explanation": {
+      "question_restate": "A likely long-term effect of repeated oil spillage in a river is",
+      "principle": "Repeated oil input can damage plants, animals and the physical condition of the aquatic environment.",
+      "steps": [
+        "Oil on water affects oxygen transfer and can coat organisms and river banks.",
+        "Over time, it harms fish, insects, birds and aquatic plants.",
+        "Breeding grounds and feeding areas may be damaged.",
+        "This means the habitat itself becomes unhealthy and less suitable for life.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. destruction of aquatic habitats",
+      "simple_explanation": "Repeated oil pollution gradually destroys the living environment of aquatic organisms. Option B is correct."
+    },
+    "tags": [
+      "oil spill",
+      "habitat destruction",
+      "river pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q059",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following practices would best protect a community well from sewage pollution?",
+    "options": {
+      "A": "Site the soakaway far from the well",
+      "B": "Build the soakaway very close to the well",
+      "C": "Leave refuse around the well",
+      "D": "Pour used oil near the well"
+    },
+    "answer": "A",
+    "answer_text": "Site the soakaway far from the well",
+    "explanation": {
+      "question_restate": "Which of the following practices would best protect a community well from sewage pollution?",
+      "principle": "The closer a source of contamination is to a well, the easier seepage can occur.",
+      "steps": [
+        "Water can move through the ground carrying dissolved and suspended contaminants.",
+        "If a soakaway or sewage pit is too close to a well, contamination can enter the groundwater used by the well.",
+        "Placing the soakaway far away reduces this risk.",
+        "Refuse and used oil around the well also increase contamination risk.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. Site the soakaway far from the well",
+      "simple_explanation": "Keeping sewage disposal systems far from wells helps prevent contamination. So option A is correct."
+    },
+    "tags": [
+      "well contamination",
+      "soakaway",
+      "groundwater"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q060",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "An oil refinery accident releases crude oil into a creek. The first action that best limits spread is to",
+    "options": {
+      "A": "stir the water vigorously",
+      "B": "contain the spill and stop further leakage",
+      "C": "add detergent to every part immediately",
+      "D": "boil the creek water"
+    },
+    "answer": "B",
+    "answer_text": "contain the spill and stop further leakage",
+    "explanation": {
+      "question_restate": "An oil refinery accident releases crude oil into a creek. The first action that best limits spread is to",
+      "principle": "Before treatment or cleanup, the source must be stopped and the spill contained.",
+      "steps": [
+        "When oil is still leaking, pollution continues to worsen.",
+        "So the first control step is to stop the leakage if possible.",
+        "Next, the spill should be contained to prevent wider spread.",
+        "Stirring the water can worsen dispersion.",
+        "Boiling a creek is impractical, and detergents without control may create additional problems.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. contain the spill and stop further leakage",
+      "simple_explanation": "The first priority is to stop the leak and contain the spill. Option B is correct."
+    },
+    "tags": [
+      "oil spill response",
+      "containment",
+      "creek"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q061",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Why may sewage pollution encourage excessive growth of some aquatic plants and algae?",
+    "options": {
+      "A": "Because sewage may add nutrients to water",
+      "B": "Because sewage removes all minerals from water",
+      "C": "Because sewage freezes water quickly",
+      "D": "Because sewage converts water to acid only"
+    },
+    "answer": "A",
+    "answer_text": "Because sewage may add nutrients to water",
+    "explanation": {
+      "question_restate": "Why may sewage pollution encourage excessive growth of some aquatic plants and algae?",
+      "principle": "Besides germs and organic matter, sewage may also supply nutrients that stimulate plant growth.",
+      "steps": [
+        "Sewage often contains compounds of nitrogen and phosphorus.",
+        "These substances can act as nutrients in water.",
+        "If they are present in excess, rapid growth of algae and some aquatic plants may occur.",
+        "Although the question does not require the term eutrophication, the idea is nutrient enrichment.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. Because sewage may add nutrients to water",
+      "simple_explanation": "Sewage can add plant nutrients to water, leading to excessive growth of algae and aquatic plants. So option A is correct."
+    },
+    "tags": [
+      "sewage",
+      "nutrients",
+      "algae"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q062",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which type of pollutant is directly represented by sewage in this topic?",
+    "options": {
+      "A": "Radioactive pollutant",
+      "B": "Biological and organic pollutant",
+      "C": "Nuclear fuel pollutant",
+      "D": "Inert noble gas pollutant"
+    },
+    "answer": "B",
+    "answer_text": "Biological and organic pollutant",
+    "explanation": {
+      "question_restate": "Which type of pollutant is directly represented by sewage in this topic?",
+      "principle": "Sewage carries organic matter and microorganisms, so it belongs mainly to that class in basic environmental chemistry.",
+      "steps": [
+        "Sewage contains human waste, food particles, organic debris and many microorganisms.",
+        "Because of that, it is best grouped as a biological and organic pollutant.",
+        "It is not a noble gas, nuclear fuel or radioactive pollutant in the usual school chemistry sense.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Biological and organic pollutant",
+      "simple_explanation": "Sewage mainly pollutes water through organic waste and germs, so option B is correct."
+    },
+    "tags": [
+      "sewage",
+      "organic pollutant",
+      "biological pollutant"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q063",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The blackening and foul smell of a heavily polluted drain suggest the presence of",
+    "options": {
+      "A": "aerobic oxidation only",
+      "B": "anaerobic conditions and decaying organic matter",
+      "C": "distilled water",
+      "D": "neutral salts only"
+    },
+    "answer": "B",
+    "answer_text": "anaerobic conditions and decaying organic matter",
+    "explanation": {
+      "question_restate": "The blackening and foul smell of a heavily polluted drain suggest the presence of",
+      "principle": "Bad-smelling black drains usually indicate oxygen-poor decay processes.",
+      "steps": [
+        "When drainage water receives much organic waste, microorganisms begin decomposition.",
+        "If oxygen is not enough, anaerobic conditions develop.",
+        "Such conditions often produce foul-smelling gases and dark, dirty-looking water.",
+        "Therefore blackening and foul smell point strongly to decaying organic matter under anaerobic conditions.",
+        "Option B is correct."
+      ],
+      "final_answer": "B. anaerobic conditions and decaying organic matter",
+      "simple_explanation": "A black, foul-smelling drain usually means oxygen-poor decay of organic waste. So option B is correct."
+    },
+    "tags": [
+      "drain pollution",
+      "anaerobic",
+      "organic matter"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q064",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following organisms is most immediately threatened when dissolved oxygen in water falls sharply?",
+    "options": {
+      "A": "Fish",
+      "B": "Camel",
+      "C": "Goat",
+      "D": "Lizard on dry land"
+    },
+    "answer": "A",
+    "answer_text": "Fish",
+    "explanation": {
+      "question_restate": "Which of the following organisms is most immediately threatened when dissolved oxygen in water falls sharply?",
+      "principle": "Fish depend directly on oxygen dissolved in water for respiration.",
+      "steps": [
+        "Fish take oxygen from water through their gills.",
+        "If dissolved oxygen falls sharply, they may not obtain enough oxygen to survive.",
+        "Terrestrial animals such as camel, goat and land lizard breathe air directly and are not immediately affected in the same way.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. Fish",
+      "simple_explanation": "Fish rely on dissolved oxygen in water, so they are the first to suffer when it drops. Option A is correct."
+    },
+    "tags": [
+      "fish",
+      "dissolved oxygen",
+      "water pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q065",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The best reason why sewage should be treated before entering rivers is to",
+    "options": {
+      "A": "increase the river temperature",
+      "B": "reduce harmful organisms and organic load",
+      "C": "make the river oily",
+      "D": "increase suspended dust in water"
+    },
+    "answer": "B",
+    "answer_text": "reduce harmful organisms and organic load",
+    "explanation": {
+      "question_restate": "The best reason why sewage should be treated before entering rivers is to",
+      "principle": "Treatment aims to lower the main harmful components of sewage.",
+      "steps": [
+        "Untreated sewage contains germs and large amounts of organic matter.",
+        "Treatment can remove some solids, reduce microbial content and lower the oxygen-demanding waste.",
+        "This helps protect aquatic life and human health.",
+        "Increasing temperature or oiliness would worsen pollution, not reduce it.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. reduce harmful organisms and organic load",
+      "simple_explanation": "Sewage treatment reduces germs and waste load before discharge, so option B is correct."
+    },
+    "tags": [
+      "sewage treatment",
+      "organic load",
+      "public health"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q066",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which observation would most strongly suggest that a stream has received fresh oil pollution?",
+    "options": {
+      "A": "A rainbow-like surface sheen and dead fish near the bank",
+      "B": "White crystalline deposits of sodium chloride",
+      "C": "Permanent hardness only",
+      "D": "Sudden freezing of the stream"
+    },
+    "answer": "A",
+    "answer_text": "A rainbow-like surface sheen and dead fish near the bank",
+    "explanation": {
+      "question_restate": "Which observation would most strongly suggest that a stream has received fresh oil pollution?",
+      "principle": "Fresh oil pollution has a characteristic appearance and can quickly disturb aquatic life.",
+      "steps": [
+        "A newly spilled oil layer often gives a shiny or rainbow-like appearance on water.",
+        "Because the oil interferes with oxygen exchange and may coat organisms, fish may become distressed or die.",
+        "The other options are unrelated to fresh oil contamination.",
+        "Therefore option A is the strongest indication."
+      ],
+      "final_answer": "A. A rainbow-like surface sheen and dead fish near the bank",
+      "simple_explanation": "A fresh oil spill often shows as a shiny rainbow film and may be followed by fish death. So option A is correct."
+    },
+    "tags": [
+      "oil spill",
+      "sheen",
+      "fish death"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q067",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "One major reason open defecation near streams is dangerous is that it can",
+    "options": {
+      "A": "introduce pathogens into the water",
+      "B": "increase ozone concentration",
+      "C": "remove dissolved salts from the stream",
+      "D": "raise the boiling point of the stream"
+    },
+    "answer": "A",
+    "answer_text": "introduce pathogens into the water",
+    "explanation": {
+      "question_restate": "One major reason open defecation near streams is dangerous is that it can",
+      "principle": "Human waste can carry disease organisms that are washed into nearby water bodies.",
+      "steps": [
+        "Rainwater runoff can wash faecal matter from the ground into streams.",
+        "Human waste commonly contains harmful microorganisms.",
+        "Once these enter the stream, the water may become unsafe for drinking, washing or recreation.",
+        "This is why sanitation and toilet facilities are important public health measures.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. introduce pathogens into the water",
+      "simple_explanation": "Open defecation near streams can put disease germs into the water. Option A is correct."
+    },
+    "tags": [
+      "sanitation",
+      "pathogens",
+      "stream pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q068",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a direct consequence of oil pollution of coastal waters?",
+    "options": {
+      "A": "improved gaseous exchange at the water surface",
+      "B": "damage to mangroves and aquatic organisms",
+      "C": "production of hard water",
+      "D": "instant disappearance of all microorganisms"
+    },
+    "answer": "B",
+    "answer_text": "damage to mangroves and aquatic organisms",
+    "explanation": {
+      "question_restate": "Which of the following is a direct consequence of oil pollution of coastal waters?",
+      "principle": "Coastal oil spills can affect plants and animals over wide areas.",
+      "steps": [
+        "Oil coating on water and shorelines harms coastal plants such as mangroves.",
+        "It also affects fish, shellfish, birds and many other organisms.",
+        "The oil does not improve oxygen exchange; it reduces it.",
+        "It also does not produce hard water.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. damage to mangroves and aquatic organisms",
+      "simple_explanation": "Oil pollution damages coastal habitats and living things such as mangroves and aquatic animals. So option B is correct."
+    },
+    "tags": [
+      "coastal pollution",
+      "oil spill",
+      "mangroves"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q069",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The safest source of domestic water among the following is one that has been",
+    "options": {
+      "A": "polluted with sewage",
+      "B": "contaminated by oil spill",
+      "C": "properly treated and protected from contamination",
+      "D": "left open beside a refuse dump"
+    },
+    "answer": "C",
+    "answer_text": "properly treated and protected from contamination",
+    "explanation": {
+      "question_restate": "The safest source of domestic water among the following is one that has been",
+      "principle": "Water safety depends on treatment and protection from pollutants.",
+      "steps": [
+        "Sewage and oil spill make water unsafe.",
+        "Water left open near refuse is also easily contaminated.",
+        "Proper treatment removes many harmful substances and organisms.",
+        "Protection from later contamination keeps the water safe for use.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. properly treated and protected from contamination",
+      "simple_explanation": "The safest domestic water is properly treated and protected water. Option C is correct."
+    },
+    "tags": [
+      "safe water",
+      "treatment",
+      "contamination"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q070",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Water pollution",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Illustrative diagram:\nAir\n↓\nOil film on water surface\n~~~~~~~~~~~~\nWater below\n\nThe main danger illustrated by the diagram is that the oil film",
+    "options": {
+      "A": "increases evaporation of fish",
+      "B": "prevents direct contact between air and water, reducing oxygen entry",
+      "C": "turns the water alkaline",
+      "D": "causes instant precipitation of salts"
+    },
+    "answer": "B",
+    "answer_text": "prevents direct contact between air and water, reducing oxygen entry",
+    "explanation": {
+      "question_restate": "Illustrative diagram:\nAir\n↓\nOil film on water surface\n~~~~~~~~~~~~\nWater below\n\nThe main danger illustrated by the diagram is that the oil film",
+      "principle": "The diagram shows oil forming a barrier-like layer between the atmosphere and the water surface.",
+      "steps": [
+        "The atmosphere is a major source of oxygen for natural water bodies.",
+        "Normally, oxygen from air can dissolve into the water surface.",
+        "When oil spreads as a film, that contact is reduced.",
+        "So less oxygen enters the water.",
+        "Aquatic organisms that need dissolved oxygen may then be affected.",
+        "This is exactly what the diagram is illustrating.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. prevents direct contact between air and water, reducing oxygen entry",
+      "simple_explanation": "The oil film acts like a barrier that reduces oxygen entering the water. So option B is correct."
+    },
+    "tags": [
+      "diagram",
+      "oil film",
+      "oxygen transfer"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q071",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Soil pollution by oil spillage is harmful mainly because the oil",
+    "options": {
+      "A": "improves soil aeration greatly",
+      "B": "blocks soil pores and affects plant growth",
+      "C": "always changes clay to sand",
+      "D": "increases soil pH to 14"
+    },
+    "answer": "B",
+    "answer_text": "blocks soil pores and affects plant growth",
+    "explanation": {
+      "question_restate": "Soil pollution by oil spillage is harmful mainly because the oil",
+      "principle": "Healthy soil needs air spaces and water movement. Oil interferes with both.",
+      "steps": [
+        "Soil contains pore spaces through which air and water move.",
+        "Plant roots depend on these spaces for oxygen and moisture.",
+        "When oil enters the soil, it can coat soil particles and block pores.",
+        "This reduces aeration and can prevent proper water movement.",
+        "As a result, root growth and seed germination may be affected.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. blocks soil pores and affects plant growth",
+      "simple_explanation": "Oil can clog soil spaces and make root growth difficult, so option B is correct."
+    },
+    "tags": [
+      "soil pollution",
+      "oil spillage",
+      "plant growth"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q072",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is biodegradable?",
+    "options": {
+      "A": "Vegetable waste",
+      "B": "Glass bottle",
+      "C": "Plastic sachet",
+      "D": "Aluminium foil"
+    },
+    "answer": "A",
+    "answer_text": "Vegetable waste",
+    "explanation": {
+      "question_restate": "Which of the following is biodegradable?",
+      "principle": "Biodegradable materials are usually organic substances that decomposers can break down.",
+      "steps": [
+        "Vegetable waste comes from living material and is attacked by microorganisms easily.",
+        "Glass, plastic and metal foil do not decompose biologically in the same simple way.",
+        "That is why vegetable waste is the biodegradable option among the choices.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. Vegetable waste",
+      "simple_explanation": "Vegetable waste rots and decomposes, so it is biodegradable. Option A is correct."
+    },
+    "tags": [
+      "biodegradable",
+      "soil pollution",
+      "waste"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q073",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A common example of a non-biodegradable pollutant in soil is",
+    "options": {
+      "A": "fallen leaves",
+      "B": "food remains",
+      "C": "plastic bottle",
+      "D": "animal dung"
+    },
+    "answer": "C",
+    "answer_text": "plastic bottle",
+    "explanation": {
+      "question_restate": "A common example of a non-biodegradable pollutant in soil is",
+      "principle": "Non-biodegradable materials remain in soil for long periods because they do not rot easily.",
+      "steps": [
+        "Leaves, food remains and dung are organic materials that microorganisms can decompose.",
+        "Plastic bottle is much more resistant to natural decay.",
+        "It can stay buried or scattered on land for a very long time.",
+        "Thus it is a typical non-biodegradable soil pollutant.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. plastic bottle",
+      "simple_explanation": "Plastic bottle does not rot easily, so option C is correct."
+    },
+    "tags": [
+      "non-biodegradable",
+      "plastic",
+      "soil"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q074",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "One major effect of indiscriminate dumping of non-biodegradable waste on land is that it",
+    "options": {
+      "A": "improves soil texture permanently",
+      "B": "accumulates and reduces land quality",
+      "C": "acts as manure immediately",
+      "D": "increases soil organisms in all cases"
+    },
+    "answer": "B",
+    "answer_text": "accumulates and reduces land quality",
+    "explanation": {
+      "question_restate": "One major effect of indiscriminate dumping of non-biodegradable waste on land is that it",
+      "principle": "Because non-biodegradable waste does not break down easily, it builds up in the environment.",
+      "steps": [
+        "Materials such as plastic, nylon and some cans persist for long periods.",
+        "As they accumulate, they make the environment untidy and less useful.",
+        "They may block drainage, occupy farmland and interfere with plant growth.",
+        "Since they do not act as normal manure, they reduce land quality instead of improving it.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. accumulates and reduces land quality",
+      "simple_explanation": "Non-biodegradable waste stays in the soil and builds up, reducing land quality. So option B is correct."
+    },
+    "tags": [
+      "solid waste",
+      "land quality",
+      "non-biodegradable"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q075",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is most likely to enrich soil with biodegradable waste?",
+    "options": {
+      "A": "Food scraps",
+      "B": "Broken ceramic tiles",
+      "C": "Plastic pipes",
+      "D": "Glass fragments"
+    },
+    "answer": "A",
+    "answer_text": "Food scraps",
+    "explanation": {
+      "question_restate": "Which of the following is most likely to enrich soil with biodegradable waste?",
+      "principle": "Biodegradable waste on soil is usually from organic matter.",
+      "steps": [
+        "Food scraps are organic and can decompose under the action of microorganisms.",
+        "Ceramic, plastic and glass do not decompose biologically in the same way.",
+        "Therefore food scraps are the biodegradable material listed.",
+        "Hence option A is correct."
+      ],
+      "final_answer": "A. Food scraps",
+      "simple_explanation": "Food scraps are organic and biodegradable, so option A is correct."
+    },
+    "tags": [
+      "food waste",
+      "biodegradable",
+      "soil"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q076",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Why can oil spillage make farmland less productive?",
+    "options": {
+      "A": "It supplies unlimited nitrate to crops",
+      "B": "It may kill useful soil organisms and reduce aeration",
+      "C": "It converts all clay to humus",
+      "D": "It always raises soil temperature to boiling point"
+    },
+    "answer": "B",
+    "answer_text": "It may kill useful soil organisms and reduce aeration",
+    "explanation": {
+      "question_restate": "Why can oil spillage make farmland less productive?",
+      "principle": "Fertile soil depends on living organisms, air spaces and healthy root conditions. Oil harms these.",
+      "steps": [
+        "Useful soil organisms help decomposition and nutrient cycling.",
+        "Oil contamination can poison or reduce these organisms.",
+        "It can also block pore spaces, thereby reducing aeration of the soil.",
+        "Poor aeration and loss of useful microbes reduce healthy root development and soil fertility.",
+        "Therefore farmland affected by oil spill becomes less productive.",
+        "Option B is correct."
+      ],
+      "final_answer": "B. It may kill useful soil organisms and reduce aeration",
+      "simple_explanation": "Oil spill damages the living and physical condition of soil, so crops grow poorly. Option B is correct."
+    },
+    "tags": [
+      "oil spillage",
+      "farmland",
+      "soil organisms"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q077",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A biodegradable pollutant is preferred to a non-biodegradable one mainly because it",
+    "options": {
+      "A": "never causes pollution",
+      "B": "can be broken down naturally with time",
+      "C": "is always colourless",
+      "D": "always smells pleasant"
+    },
+    "answer": "B",
+    "answer_text": "can be broken down naturally with time",
+    "explanation": {
+      "question_restate": "A biodegradable pollutant is preferred to a non-biodegradable one mainly because it",
+      "principle": "The advantage of biodegradable materials is their ability to be decomposed by natural processes.",
+      "steps": [
+        "Biodegradable materials are attacked by bacteria and fungi.",
+        "This means they can be converted gradually into simpler substances.",
+        "Non-biodegradable materials remain much longer and can accumulate.",
+        "Biodegradable does not mean they are never harmful, but they are generally less persistent.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. can be broken down naturally with time",
+      "simple_explanation": "Biodegradable materials break down naturally, so option B is correct."
+    },
+    "tags": [
+      "biodegradable",
+      "comparison",
+      "soil pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q078",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which waste material is least likely to decompose in soil within a short time?",
+    "options": {
+      "A": "Fruit peel",
+      "B": "Paper",
+      "C": "Plastic bag",
+      "D": "Cow dung"
+    },
+    "answer": "C",
+    "answer_text": "Plastic bag",
+    "explanation": {
+      "question_restate": "Which waste material is least likely to decompose in soil within a short time?",
+      "principle": "Plastic is much more resistant to decomposition than common organic waste.",
+      "steps": [
+        "Fruit peels, paper and cow dung can all eventually be broken down by microorganisms.",
+        "Plastic bags persist much longer and are therefore common sources of long-term land pollution.",
+        "The question asks for the material least likely to decompose quickly.",
+        "That makes option C correct."
+      ],
+      "final_answer": "C. Plastic bag",
+      "simple_explanation": "Plastic bag is the slowest to decay among the options, so option C is correct."
+    },
+    "tags": [
+      "plastic bag",
+      "decomposition",
+      "soil"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q079",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "One effect of dumping refuse on open land is that it may",
+    "options": {
+      "A": "encourage breeding of disease vectors",
+      "B": "convert all soil nutrients to oxygen",
+      "C": "prevent any smell from forming",
+      "D": "increase the purity of the environment"
+    },
+    "answer": "A",
+    "answer_text": "encourage breeding of disease vectors",
+    "explanation": {
+      "question_restate": "One effect of dumping refuse on open land is that it may",
+      "principle": "Open dumps often attract flies, rats and other disease-carrying organisms.",
+      "steps": [
+        "Refuse heaps may contain food remnants and moist waste.",
+        "These conditions attract flies, cockroaches, rats and other vectors.",
+        "Such organisms can spread disease from the dump to homes and food.",
+        "Therefore open-land refuse dumping is a health risk.",
+        "Option A is correct."
+      ],
+      "final_answer": "A. encourage breeding of disease vectors",
+      "simple_explanation": "Refuse dumps can attract flies and rats that spread disease, so option A is correct."
+    },
+    "tags": [
+      "refuse dump",
+      "vectors",
+      "health"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q080",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which statement about non-biodegradable pollutants is correct?",
+    "options": {
+      "A": "They are rapidly decomposed by bacteria",
+      "B": "They persist in the environment for long periods",
+      "C": "They are useful fertilizers in all cases",
+      "D": "They occur only in water"
+    },
+    "answer": "B",
+    "answer_text": "They persist in the environment for long periods",
+    "explanation": {
+      "question_restate": "Which statement about non-biodegradable pollutants is correct?",
+      "principle": "Persistence is the defining danger of many non-biodegradable pollutants.",
+      "steps": [
+        "Because decomposers cannot break them down easily, non-biodegradable pollutants remain for years.",
+        "During that time they may accumulate and continue causing environmental problems.",
+        "They are not rapidly decomposed, and they are not always useful.",
+        "They can pollute both land and water.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. They persist in the environment for long periods",
+      "simple_explanation": "Non-biodegradable pollutants stay in the environment for a long time. So option B is correct."
+    },
+    "tags": [
+      "non-biodegradable",
+      "persistence",
+      "environment"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q081",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is the best method of reducing soil pollution by solid waste?",
+    "options": {
+      "A": "Throw all waste into nearby bushes",
+      "B": "Proper collection, sorting and disposal of waste",
+      "C": "Burn every type of waste in the open",
+      "D": "Bury plastic waste in shallow pits everywhere"
+    },
+    "answer": "B",
+    "answer_text": "Proper collection, sorting and disposal of waste",
+    "explanation": {
+      "question_restate": "Which of the following is the best method of reducing soil pollution by solid waste?",
+      "principle": "Good waste management is the main control measure for land pollution.",
+      "steps": [
+        "When waste is collected properly, it is less likely to litter the environment.",
+        "Sorting allows biodegradable materials, recyclable materials and hazardous materials to be handled appropriately.",
+        "Open dumping, open burning and careless burial create additional environmental problems.",
+        "Therefore the best answer is proper collection, sorting and disposal.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. Proper collection, sorting and disposal of waste",
+      "simple_explanation": "Soil pollution is reduced best by proper waste management. Option B is correct."
+    },
+    "tags": [
+      "waste management",
+      "soil pollution",
+      "control"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q082",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Oil spilled on soil near a farm is likely to reduce crop yield because it can",
+    "options": {
+      "A": "increase root respiration by supplying pure oxygen",
+      "B": "interfere with water uptake and root respiration",
+      "C": "change all soil particles to fertilizer",
+      "D": "remove every microorganism instantly from the entire farm"
+    },
+    "answer": "B",
+    "answer_text": "interfere with water uptake and root respiration",
+    "explanation": {
+      "question_restate": "Oil spilled on soil near a farm is likely to reduce crop yield because it can",
+      "principle": "Roots need both water and oxygen from the soil environment. Oil contamination disturbs both.",
+      "steps": [
+        "Plant roots absorb water from the soil and also require oxygen for respiration.",
+        "Oil coating around soil particles can reduce water movement and reduce air spaces.",
+        "This makes it harder for roots to take up water and respire normally.",
+        "As a result, plant growth slows and yield may fall.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. interfere with water uptake and root respiration",
+      "simple_explanation": "Oil-contaminated soil makes it difficult for roots to get enough water and oxygen. So option B is correct."
+    },
+    "tags": [
+      "oil spill",
+      "roots",
+      "crop yield"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q083",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is most likely to be converted into humus after some time?",
+    "options": {
+      "A": "Vegetable peels",
+      "B": "Nylon sachets",
+      "C": "Broken bottles",
+      "D": "Metal scraps"
+    },
+    "answer": "A",
+    "answer_text": "Vegetable peels",
+    "explanation": {
+      "question_restate": "Which of the following is most likely to be converted into humus after some time?",
+      "principle": "Humus forms from the decomposition of organic plant and animal remains.",
+      "steps": [
+        "Humus is the dark organic matter formed after decay of dead plant and animal material.",
+        "Vegetable peels are organic and can decompose into humus.",
+        "Nylon, glass and metal do not form humus.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. Vegetable peels",
+      "simple_explanation": "Vegetable peels can decompose into humus, so option A is correct."
+    },
+    "tags": [
+      "humus",
+      "organic matter",
+      "soil"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q084",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A major environmental problem caused by non-biodegradable materials in drains and on land is",
+    "options": {
+      "A": "blocking of drainage channels",
+      "B": "instant softening of hard water",
+      "C": "increase in nitrogen fixation",
+      "D": "formation of ozone"
+    },
+    "answer": "A",
+    "answer_text": "blocking of drainage channels",
+    "explanation": {
+      "question_restate": "A major environmental problem caused by non-biodegradable materials in drains and on land is",
+      "principle": "Persistent solid waste often causes physical blockage problems.",
+      "steps": [
+        "Plastics and similar waste are easily washed into gutters and drains.",
+        "Because they do not decompose quickly, they can remain there and build up.",
+        "This blocks water flow and may contribute to flooding.",
+        "The other options are unrelated to the direct physical effect of these materials.",
+        "Thus option A is correct."
+      ],
+      "final_answer": "A. blocking of drainage channels",
+      "simple_explanation": "Non-biodegradable waste can block drains and cause flooding, so option A is correct."
+    },
+    "tags": [
+      "drain blockage",
+      "plastics",
+      "soil pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q085",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following wastes would most likely support microbial decomposition in soil?",
+    "options": {
+      "A": "Animal dung",
+      "B": "Glass cup",
+      "C": "Metal can lid",
+      "D": "Plastic spoon"
+    },
+    "answer": "A",
+    "answer_text": "Animal dung",
+    "explanation": {
+      "question_restate": "Which of the following wastes would most likely support microbial decomposition in soil?",
+      "principle": "Organic waste is the kind that microbes can feed on and decompose.",
+      "steps": [
+        "Animal dung contains organic substances that microorganisms can use.",
+        "Glass, metal and plastic are not readily decomposed biologically.",
+        "Hence animal dung is the waste most likely to support microbial decomposition.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. Animal dung",
+      "simple_explanation": "Animal dung is organic and easily decomposed by microbes, so option A is correct."
+    },
+    "tags": [
+      "animal dung",
+      "decomposition",
+      "soil"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q086",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which pair consists of one biodegradable and one non-biodegradable pollutant respectively?",
+    "options": {
+      "A": "Plastic bottle and cassava peel",
+      "B": "Cassava peel and aluminium can",
+      "C": "Glass fragment and leaf litter",
+      "D": "Nylon bag and paper"
+    },
+    "answer": "B",
+    "answer_text": "Cassava peel and aluminium can",
+    "explanation": {
+      "question_restate": "Which pair consists of one biodegradable and one non-biodegradable pollutant respectively?",
+      "principle": "The order matters: first biodegradable, then non-biodegradable.",
+      "steps": [
+        "Cassava peel is an organic agricultural waste and is biodegradable.",
+        "Aluminium can does not decompose biologically in the ordinary sense, so it is non-biodegradable.",
+        "Option A is reversed.",
+        "Option C is also reversed.",
+        "Option D starts with nylon bag, which is non-biodegradable.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Cassava peel and aluminium can",
+      "simple_explanation": "Cassava peel is biodegradable while aluminium can is non-biodegradable, so option B is correct."
+    },
+    "tags": [
+      "biodegradable",
+      "non-biodegradable",
+      "classification"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q087",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The presence of used batteries carelessly dumped on land is worrying mainly because they may contain",
+    "options": {
+      "A": "useful humus only",
+      "B": "harmful chemicals or heavy metals",
+      "C": "oxygen gas in large quantity",
+      "D": "pure distilled water"
+    },
+    "answer": "B",
+    "answer_text": "harmful chemicals or heavy metals",
+    "explanation": {
+      "question_restate": "The presence of used batteries carelessly dumped on land is worrying mainly because they may contain",
+      "principle": "Some solid wastes are dangerous not only because they persist, but also because of the toxic materials they contain.",
+      "steps": [
+        "Batteries are not ordinary harmless refuse.",
+        "They may contain substances that are harmful to soil and water when leaked.",
+        "If left on land, rainwater can spread some of these chemicals into the environment.",
+        "Therefore careless dumping of batteries is a serious pollution concern.",
+        "Option B is correct."
+      ],
+      "final_answer": "B. harmful chemicals or heavy metals",
+      "simple_explanation": "Discarded batteries may release harmful chemicals, so option B is correct."
+    },
+    "tags": [
+      "batteries",
+      "toxic waste",
+      "soil pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q088",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is most suitable for compost formation?",
+    "options": {
+      "A": "Dry leaves and food waste",
+      "B": "Broken glass and metal nails",
+      "C": "Plastic bottles and nylon bags",
+      "D": "Engine parts and rubber tyres"
+    },
+    "answer": "A",
+    "answer_text": "Dry leaves and food waste",
+    "explanation": {
+      "question_restate": "Which of the following is most suitable for compost formation?",
+      "principle": "Compost is made from biodegradable organic matter.",
+      "steps": [
+        "Compost is produced when organic waste decomposes under controlled conditions.",
+        "Dry leaves and food waste are biodegradable and therefore suitable materials.",
+        "Glass, metals, plastics and tyres do not make good compost materials.",
+        "Hence option A is correct."
+      ],
+      "final_answer": "A. Dry leaves and food waste",
+      "simple_explanation": "Compost is made from rottable organic matter such as leaves and food waste. So option A is correct."
+    },
+    "tags": [
+      "compost",
+      "biodegradable",
+      "soil"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q089",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Oil spillage on land may also pollute nearby water bodies when",
+    "options": {
+      "A": "the oil seeps or is washed into streams",
+      "B": "the oil turns into oxygen",
+      "C": "the oil becomes permanently solid at room temperature",
+      "D": "the oil is exposed to sunlight"
+    },
+    "answer": "A",
+    "answer_text": "the oil seeps or is washed into streams",
+    "explanation": {
+      "question_restate": "Oil spillage on land may also pollute nearby water bodies when",
+      "principle": "Pollution often spreads from one part of the environment to another.",
+      "steps": [
+        "Rainfall can wash spilled oil from the soil surface into gutters, streams or ponds.",
+        "Some contamination may also move through the ground.",
+        "This means a land spill can later become a water-pollution problem.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. the oil seeps or is washed into streams",
+      "simple_explanation": "Oil on land can be washed into streams and then pollute water. Option A is correct."
+    },
+    "tags": [
+      "oil spillage",
+      "runoff",
+      "soil to water pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q090",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following would least contribute to soil pollution?",
+    "options": {
+      "A": "Controlled disposal of waste",
+      "B": "Open dumping of refuse",
+      "C": "Oil spillage on farmland",
+      "D": "Indiscriminate littering of plastics"
+    },
+    "answer": "A",
+    "answer_text": "Controlled disposal of waste",
+    "explanation": {
+      "question_restate": "Which of the following would least contribute to soil pollution?",
+      "principle": "The least contributing factor is the one that actually manages waste properly.",
+      "steps": [
+        "Open dumping, oil spillage and plastic littering all introduce harmful or unsightly materials into the land environment.",
+        "Controlled disposal is a management method used to reduce pollution.",
+        "Therefore it is least likely to contribute to soil pollution.",
+        "Hence option A is correct."
+      ],
+      "final_answer": "A. Controlled disposal of waste",
+      "simple_explanation": "Controlled disposal reduces pollution rather than causing it. So option A is correct."
+    },
+    "tags": [
+      "controlled disposal",
+      "soil pollution",
+      "prevention"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q091",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement best explains why non-biodegradable pollutants are a long-term environmental challenge?",
+    "options": {
+      "A": "They disappear before they can be noticed",
+      "B": "They accumulate because natural decomposition is very slow or absent",
+      "C": "They are all poisonous gases",
+      "D": "They exist only in laboratories"
+    },
+    "answer": "B",
+    "answer_text": "They accumulate because natural decomposition is very slow or absent",
+    "explanation": {
+      "question_restate": "Which statement best explains why non-biodegradable pollutants are a long-term environmental challenge?",
+      "principle": "Persistence leads to build-up, and build-up leads to long-term environmental stress.",
+      "steps": [
+        "If a pollutant does not decompose, it remains in the environment.",
+        "Each new amount added joins the old amount already present.",
+        "This means the total quantity builds up over time.",
+        "That persistence is why plastics, cans and similar wastes are serious long-term problems.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. They accumulate because natural decomposition is very slow or absent",
+      "simple_explanation": "Non-biodegradable pollutants stay and build up in the environment, making them long-term problems. Option B is correct."
+    },
+    "tags": [
+      "persistence",
+      "long-term challenge",
+      "non-biodegradable"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q092",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which practice would best reduce soil pollution in a school compound?",
+    "options": {
+      "A": "Provide waste bins and separate biodegradable from non-biodegradable waste",
+      "B": "Throw all litter behind the classroom",
+      "C": "Bury plastic bottles in shallow holes every day",
+      "D": "Pour used engine oil on ant hills"
+    },
+    "answer": "A",
+    "answer_text": "Provide waste bins and separate biodegradable from non-biodegradable waste",
+    "explanation": {
+      "question_restate": "Which practice would best reduce soil pollution in a school compound?",
+      "principle": "Good waste handling starts with proper collection and separation.",
+      "steps": [
+        "Waste bins reduce indiscriminate littering.",
+        "Separation allows biodegradable waste to be composted and non-biodegradable waste to be recycled or disposed of properly.",
+        "Throwing litter away carelessly or burying plastics randomly still causes pollution.",
+        "Therefore option A is the best school-compound practice."
+      ],
+      "final_answer": "A. Provide waste bins and separate biodegradable from non-biodegradable waste",
+      "simple_explanation": "Providing bins and sorting waste is the best way to reduce soil pollution in the compound. So option A is correct."
+    },
+    "tags": [
+      "school environment",
+      "waste sorting",
+      "soil pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q093",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following materials is most likely to remain in the soil for the longest time?",
+    "options": {
+      "A": "Orange peel",
+      "B": "Paper carton",
+      "C": "Plastic container",
+      "D": "Animal manure"
+    },
+    "answer": "C",
+    "answer_text": "Plastic container",
+    "explanation": {
+      "question_restate": "Which of the following materials is most likely to remain in the soil for the longest time?",
+      "principle": "Among common waste materials, plastics are well known for persistence.",
+      "steps": [
+        "Orange peel, paper carton and animal manure are organic or partly biodegradable.",
+        "Plastic container resists microbial breakdown.",
+        "As a result, it remains in soil much longer than the others.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. Plastic container",
+      "simple_explanation": "Plastic container is the most persistent among the options, so option C is correct."
+    },
+    "tags": [
+      "plastic",
+      "persistence",
+      "soil"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q094",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A refuse heap containing food remains is likely to produce bad smell because of",
+    "options": {
+      "A": "nuclear fission",
+      "B": "microbial decomposition",
+      "C": "electrolysis",
+      "D": "fractional distillation"
+    },
+    "answer": "B",
+    "answer_text": "microbial decomposition",
+    "explanation": {
+      "question_restate": "A refuse heap containing food remains is likely to produce bad smell because of",
+      "principle": "Decay of organic matter is the usual cause of offensive smell from refuse.",
+      "steps": [
+        "Food remains are biodegradable organic matter.",
+        "Microorganisms break them down.",
+        "During decomposition, various gases with unpleasant odour may be released.",
+        "This explains the bad smell from many refuse heaps.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. microbial decomposition",
+      "simple_explanation": "Bad smell from food waste comes from microbial decay, so option B is correct."
+    },
+    "tags": [
+      "refuse heap",
+      "decomposition",
+      "odour"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q095",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Soil pollution",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Illustrative diagram:\nSoil surface\n[Oil spill]\n↓↓ seepage/runoff\nNearby stream\n\nThe diagram best illustrates that soil pollution can",
+    "options": {
+      "A": "never affect water pollution",
+      "B": "spread and contaminate nearby water bodies",
+      "C": "improve irrigation quality automatically",
+      "D": "convert stream water to distilled water"
+    },
+    "answer": "B",
+    "answer_text": "spread and contaminate nearby water bodies",
+    "explanation": {
+      "question_restate": "Illustrative diagram:\nSoil surface\n[Oil spill]\n↓↓ seepage/runoff\nNearby stream\n\nThe diagram best illustrates that soil pollution can",
+      "principle": "The diagram emphasizes movement of pollutant from land to water.",
+      "steps": [
+        "A pollutant released on land does not always remain only on the land.",
+        "Rainfall and runoff can move it across the surface into a nearby stream.",
+        "Some of it may also seep downward and later enter groundwater.",
+        "Therefore land pollution can lead to water pollution as well.",
+        "The diagram is showing this movement clearly.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. spread and contaminate nearby water bodies",
+      "simple_explanation": "Pollution on land can move into streams and groundwater, so option B is correct."
+    },
+    "tags": [
+      "diagram",
+      "soil pollution",
+      "runoff"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q096",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Sources and effects of pollutants",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which set contains only pollutants specifically listed under air pollution in this topic?",
+    "options": {
+      "A": "H₂S, CO, SO₂ and oxides of nitrogen",
+      "B": "sewage, oil spillage and plastic bags",
+      "C": "sewage, H₂S and humus",
+      "D": "oil pollution, dust and biodegradable waste"
+    },
+    "answer": "A",
+    "answer_text": "H₂S, CO, SO₂ and oxides of nitrogen",
+    "explanation": {
+      "question_restate": "Which set contains only pollutants specifically listed under air pollution in this topic?",
+      "principle": "This question checks whether the student can classify the topic items correctly.",
+      "steps": [
+        "The air-pollution list in this topic includes H₂S, CO, SO₂, oxides of nitrogen, chlorofluorocarbons and dust.",
+        "Sewage and oil pollution belong to water pollution.",
+        "Oil spillage, biodegradable pollutants and non-biodegradable pollutants belong under soil pollution in this topic structure.",
+        "Therefore the set containing only air pollutants is option A.",
+        "Be careful with mixed sets because examiners often combine correct and incorrect categories in one option."
+      ],
+      "final_answer": "A. H₂S, CO, SO₂ and oxides of nitrogen",
+      "simple_explanation": "Only option A contains substances listed purely as air pollutants in this topic. So option A is correct."
+    },
+    "tags": [
+      "classification",
+      "air pollutants",
+      "topic coverage"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q097",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Sources and effects of pollutants",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A town notices the following problems: choking smoke near roads, fish death in a river receiving sewage, and blocked drains filled with plastics. The three problems are respectively examples of",
+    "options": {
+      "A": "air, water and soil pollution",
+      "B": "soil, air and water pollution",
+      "C": "water, soil and air pollution",
+      "D": "air, soil and water pollution"
+    },
+    "answer": "A",
+    "answer_text": "air, water and soil pollution",
+    "explanation": {
+      "question_restate": "A town notices the following problems: choking smoke near roads, fish death in a river receiving sewage, and blocked drains filled with plastics. The three problems are respectively examples of",
+      "principle": "The question combines three environments and asks for the correct order.",
+      "steps": [
+        "Choking smoke near roads is an air-pollution problem because it affects the atmosphere and breathing.",
+        "Fish death in a river receiving sewage is a water-pollution problem.",
+        "Blocked drains filled with plastics result mainly from land or soil pollution by non-biodegradable solids.",
+        "So the correct order is air, water and soil pollution.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. air, water and soil pollution",
+      "simple_explanation": "Smoke is air pollution, sewage in rivers is water pollution, and plastics on land are soil pollution. So option A is correct."
+    },
+    "tags": [
+      "air pollution",
+      "water pollution",
+      "soil pollution"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q098",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Sources and effects of pollutants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following control measures is correctly matched with the pollutant?",
+    "options": {
+      "A": "CO — use of proper ventilation and efficient combustion",
+      "B": "sewage — dump directly into wells",
+      "C": "oil spill — stir vigorously to spread it faster",
+      "D": "plastic waste — throw into drainage channels"
+    },
+    "answer": "A",
+    "answer_text": "CO — use of proper ventilation and efficient combustion",
+    "explanation": {
+      "question_restate": "Which of the following control measures is correctly matched with the pollutant?",
+      "principle": "Pollution control questions test whether the student knows a sensible preventive measure for each pollutant.",
+      "steps": [
+        "CO is produced mainly by incomplete combustion, so efficient burning and good ventilation help reduce danger.",
+        "Sewage should not be dumped into wells because that contaminates drinking water.",
+        "Oil spill should be contained, not spread.",
+        "Plastic waste should not be put into drains because it may block them.",
+        "Therefore the only correctly matched pair is option A."
+      ],
+      "final_answer": "A. CO — use of proper ventilation and efficient combustion",
+      "simple_explanation": "Good ventilation and efficient combustion help prevent CO poisoning, so option A is correct."
+    },
+    "tags": [
+      "control measures",
+      "CO",
+      "pollution prevention"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q099",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Sources and effects of pollutants",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement best summarizes the difference between biodegradable and non-biodegradable pollutants?",
+    "options": {
+      "A": "Biodegradable pollutants are always gases, non-biodegradable pollutants are always solids",
+      "B": "Biodegradable pollutants can be broken down by living organisms, while non-biodegradable pollutants persist for much longer",
+      "C": "Biodegradable pollutants are harmless, non-biodegradable pollutants are always poisonous",
+      "D": "Biodegradable pollutants occur only in soil, non-biodegradable pollutants occur only in water"
+    },
+    "answer": "B",
+    "answer_text": "Biodegradable pollutants can be broken down by living organisms, while non-biodegradable pollutants persist for much longer",
+    "explanation": {
+      "question_restate": "Which statement best summarizes the difference between biodegradable and non-biodegradable pollutants?",
+      "principle": "The most important contrast is decomposability and persistence.",
+      "steps": [
+        "Biodegradable pollutants are materials that bacteria and fungi can act on and break down.",
+        "Non-biodegradable pollutants resist this natural decomposition.",
+        "As a result, non-biodegradable substances stay in the environment for a longer time and accumulate.",
+        "It is not true that all biodegradable materials are harmless, nor that all non-biodegradable ones are poisonous.",
+        "The key difference is natural breakdown versus persistence.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Biodegradable pollutants can be broken down by living organisms, while non-biodegradable pollutants persist for much longer",
+      "simple_explanation": "Biodegradable means capable of natural biological breakdown; non-biodegradable means persistent. So option B is correct."
+    },
+    "tags": [
+      "biodegradable",
+      "non-biodegradable",
+      "definition"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_08_q100",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_08",
+    "topic_title": "Environmental pollution",
+    "subtopic": "Sources and effects of pollutants",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student says: 'Dust is not a pollutant because it is just soil in the air.' The best response is that dust becomes a pollutant when it",
+    "options": {
+      "A": "is seen during daytime",
+      "B": "is suspended in air in harmful amount and affects health or visibility",
+      "C": "comes from the ground",
+      "D": "contains oxygen"
+    },
+    "answer": "B",
+    "answer_text": "is suspended in air in harmful amount and affects health or visibility",
+    "explanation": {
+      "question_restate": "A student says: 'Dust is not a pollutant because it is just soil in the air.' The best response is that dust becomes a pollutant when it",
+      "principle": "Many substances become pollutants because of their amount and harmful effect, not simply because of what they are made of.",
+      "steps": [
+        "Dust may consist largely of fine soil or other solid particles.",
+        "That alone does not answer whether it is a pollutant.",
+        "Once it is present in air in enough quantity to reduce visibility, irritate breathing or settle harmfully on plants and property, it is acting as a pollutant.",
+        "This fits the general definition of pollution: harmful presence in the environment.",
+        "Therefore the best correction to the student's statement is option B."
+      ],
+      "final_answer": "B. is suspended in air in harmful amount and affects health or visibility",
+      "simple_explanation": "Dust is a pollutant when enough of it is in the air to cause harm, especially to breathing and visibility. So option B is correct."
+    },
+    "tags": [
+      "dust",
+      "definition",
+      "harmful amount"
+    ],
+    "active": true
+  }
+]
