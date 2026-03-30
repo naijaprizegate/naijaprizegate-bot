@@ -14693,6 +14693,3674 @@
       "comparison"
     ],
     "active": true
+  },
+  {
+    "id": "chem_15_q401",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: commercial production from water gas and petroleum cracking",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The reaction between steam and red-hot carbon is important in hydrogen manufacture because it produces",
+    "options": {
+      "A": "water gas",
+      "B": "oxygen gas",
+      "C": "liquid air",
+      "D": "bleaching powder"
+    },
+    "answer": "A",
+    "answer_text": "water gas",
+    "explanation": {
+      "question_restate": "We are to identify the gas mixture formed when steam reacts with red-hot carbon.",
+      "principle": "The products CO and H₂ together are called water gas.",
+      "steps": [
+        "Steam reacts with red-hot coke or carbon.",
+        "The main gaseous products are CO and H₂.",
+        "This mixture is important as a starting point for hydrogen production.",
+        "Therefore the product is water gas."
+      ],
+      "final_answer": "A. water gas",
+      "simple_explanation": "Steam on red-hot carbon gives water gas. Check our \"Tutorial section\" for industrial gas mixtures."
+    },
+    "tags": [
+      "hydrogen",
+      "water_gas"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q402",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: commercial production from water gas and petroleum cracking",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In the water-gas shift reaction, the role of steam is to react with",
+    "options": {
+      "A": "CO to produce more H₂",
+      "B": "H₂ to remove it",
+      "C": "Cl₂ to form HCl",
+      "D": "N₂ to form NH₃"
+    },
+    "answer": "A",
+    "answer_text": "CO to produce more H₂",
+    "explanation": {
+      "question_restate": "We are to explain why steam is used after water gas has been formed.",
+      "principle": "Steam reacts with carbon(II) oxide to increase hydrogen production.",
+      "steps": [
+        "Water gas contains CO and H₂.",
+        "The equation CO + H₂O ⇌ CO₂ + H₂ shows how steam is used.",
+        "This creates extra hydrogen and carbon(IV) oxide.",
+        "Therefore steam reacts with CO to produce more H₂."
+      ],
+      "final_answer": "A. CO to produce more H₂",
+      "simple_explanation": "The shift reaction increases the hydrogen content of the gas mixture. Check our \"Tutorial section\" for industrial preparation."
+    },
+    "tags": [
+      "hydrogen",
+      "water_gas",
+      "shift_reaction"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q403",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: commercial production from water gas and petroleum cracking",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Hydrogen can be produced from petroleum mainly through",
+    "options": {
+      "A": "cracking and reforming",
+      "B": "simple filtration",
+      "C": "neutralization only",
+      "D": "precipitation with AgNO₃"
+    },
+    "answer": "A",
+    "answer_text": "cracking and reforming",
+    "explanation": {
+      "question_restate": "We are to identify petroleum-based processes linked to hydrogen production.",
+      "principle": "Hydrocarbon feedstocks can be broken down and further processed to yield hydrogen-rich mixtures.",
+      "steps": [
+        "Petroleum fractions are made of hydrocarbons.",
+        "Cracking and reforming change these into smaller molecules.",
+        "These products can undergo reactions such as steam reforming.",
+        "Therefore cracking and reforming are important."
+      ],
+      "final_answer": "A. cracking and reforming",
+      "simple_explanation": "Hydrogen often comes from processed hydrocarbon feedstocks. Check our \"Tutorial section\" for industrial chemistry."
+    },
+    "tags": [
+      "hydrogen",
+      "petroleum_cracking"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q404",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: laboratory preparation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A common metal used in the laboratory preparation of hydrogen is",
+    "options": {
+      "A": "gold",
+      "B": "zinc",
+      "C": "silver",
+      "D": "copper"
+    },
+    "answer": "B",
+    "answer_text": "zinc",
+    "explanation": {
+      "question_restate": "We are to identify a suitable metal for preparing hydrogen from dilute acid.",
+      "principle": "A suitable metal should be above hydrogen in the reactivity series.",
+      "steps": [
+        "Zinc is reactive enough to displace hydrogen from dilute acids.",
+        "It reacts with dilute HCl or dilute H₂SO₄ to release H₂.",
+        "Copper, silver and gold are not suitable in the ordinary method.",
+        "Therefore zinc is commonly used."
+      ],
+      "final_answer": "B. zinc",
+      "simple_explanation": "Zinc is commonly used because it reacts with dilute acids to give H₂. Check our \"Tutorial section\" for reactivity series."
+    },
+    "tags": [
+      "hydrogen",
+      "lab_preparation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q405",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: laboratory preparation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In preparing hydrogen with zinc and dilute acid, the first gas is allowed to escape mainly because it may contain",
+    "options": {
+      "A": "air",
+      "B": "pure H₂ only",
+      "C": "pure O₂ only",
+      "D": "only steam"
+    },
+    "answer": "A",
+    "answer_text": "air",
+    "explanation": {
+      "question_restate": "We are to explain a safety precaution in hydrogen preparation.",
+      "principle": "At the beginning, the apparatus contains air before hydrogen displaces it.",
+      "steps": [
+        "The flask and delivery tube are initially full of air.",
+        "As hydrogen forms, it mixes with the air present.",
+        "This can make an explosive mixture.",
+        "Therefore the first gas is allowed to escape because it may contain air."
+      ],
+      "final_answer": "A. air",
+      "simple_explanation": "Discard the first portion of gas because it may be mixed with air. Check our \"Tutorial section\" for laboratory safety."
+    },
+    "tags": [
+      "hydrogen",
+      "lab_preparation",
+      "safety"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q406",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: laboratory preparation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which acid is often preferred to nitric acid in preparing hydrogen from a metal because nitric acid",
+    "options": {
+      "A": "is basic",
+      "B": "is oxidizing",
+      "C": "is insoluble",
+      "D": "has no hydrogen"
+    },
+    "answer": "B",
+    "answer_text": "is oxidizing",
+    "explanation": {
+      "question_restate": "We are to explain why nitric acid is often not used in the ordinary preparation of hydrogen.",
+      "principle": "Nitric acid frequently behaves as an oxidizing acid and may not liberate hydrogen normally.",
+      "steps": [
+        "Reactive metals usually give hydrogen with dilute non-oxidizing acids.",
+        "Nitric acid often forms oxides of nitrogen instead.",
+        "So it is usually avoided for the normal hydrogen preparation.",
+        "Therefore the reason is that nitric acid is oxidizing."
+      ],
+      "final_answer": "B. is oxidizing",
+      "simple_explanation": "Nitric acid often behaves differently because it is oxidizing. Check our \"Tutorial section\" for acid-choice rules."
+    },
+    "tags": [
+      "hydrogen",
+      "lab_preparation",
+      "acid_choice"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q407",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: properties",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which statement about hydrogen is correct?",
+    "options": {
+      "A": "It is a coloured gas",
+      "B": "It is odourless and colourless",
+      "C": "It is a basic oxide",
+      "D": "It turns moist blue litmus red"
+    },
+    "answer": "B",
+    "answer_text": "It is odourless and colourless",
+    "explanation": {
+      "question_restate": "We are to choose a correct general property of hydrogen.",
+      "principle": "Hydrogen is a simple gas with no colour and no smell.",
+      "steps": [
+        "Hydrogen has no colour.",
+        "It also has no odour.",
+        "It is not an oxide and does not show acidic gas behavior.",
+        "Therefore the correct statement is that it is odourless and colourless."
+      ],
+      "final_answer": "B. It is odourless and colourless",
+      "simple_explanation": "Hydrogen is a colourless, odourless gas. Check our \"Tutorial section\" for quick property tables."
+    },
+    "tags": [
+      "hydrogen",
+      "properties"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q408",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Hydrogen acts as a reducing agent when it is passed over hot copper(II) oxide because it",
+    "options": {
+      "A": "adds oxygen to CuO",
+      "B": "removes oxygen from CuO",
+      "C": "turns copper into chlorine",
+      "D": "forms AgCl"
+    },
+    "answer": "B",
+    "answer_text": "removes oxygen from CuO",
+    "explanation": {
+      "question_restate": "We are to explain what hydrogen does when it reacts with hot CuO.",
+      "principle": "A reducing agent removes oxygen from another substance.",
+      "steps": [
+        "Copper(II) oxide is black.",
+        "Hydrogen takes oxygen away from it and forms water.",
+        "Copper metal is left behind.",
+        "Therefore hydrogen removes oxygen from CuO."
+      ],
+      "final_answer": "B. removes oxygen from CuO",
+      "simple_explanation": "Hydrogen reduces CuO by taking away oxygen. Check our \"Tutorial section\" for redox examples."
+    },
+    "tags": [
+      "hydrogen",
+      "reducing_agent"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q409",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: uses",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A major industrial use of hydrogen is in the manufacture of",
+    "options": {
+      "A": "NH₃",
+      "B": "AgCl",
+      "C": "CaCO₃",
+      "D": "H₂S"
+    },
+    "answer": "A",
+    "answer_text": "NH₃",
+    "explanation": {
+      "question_restate": "We are to identify an important industrial use of hydrogen.",
+      "principle": "Hydrogen is used with nitrogen in the Haber process.",
+      "steps": [
+        "Ammonia has the formula NH₃.",
+        "It is made by combining nitrogen and hydrogen.",
+        "This is one of the largest industrial uses of hydrogen.",
+        "Therefore NH₃ is correct."
+      ],
+      "final_answer": "A. NH₃",
+      "simple_explanation": "Hydrogen is important in ammonia manufacture. Check our \"Tutorial section\" for the Haber process."
+    },
+    "tags": [
+      "hydrogen",
+      "uses",
+      "ammonia"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q410",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: uses",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Hydrogen is used in the hardening of oils because it",
+    "options": {
+      "A": "adds across double bonds",
+      "B": "forms oxides only",
+      "C": "removes nitrogen from oils",
+      "D": "turns oils into gases"
+    },
+    "answer": "A",
+    "answer_text": "adds across double bonds",
+    "explanation": {
+      "question_restate": "We are to explain how hydrogen hardens unsaturated oils.",
+      "principle": "Unsaturated oils contain carbon-carbon double bonds that can react by addition.",
+      "steps": [
+        "The oil molecules contain C=C bonds.",
+        "Hydrogen adds across these bonds in the presence of a catalyst.",
+        "This makes the oil more saturated and harder.",
+        "Therefore hydrogen hardens oils by adding across double bonds."
+      ],
+      "final_answer": "A. adds across double bonds",
+      "simple_explanation": "Hydrogenation is an addition reaction across C=C bonds. Check our \"Tutorial section\" for organic applications."
+    },
+    "tags": [
+      "hydrogen",
+      "uses",
+      "hydrogenation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q411",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: uses",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The low density of hydrogen makes it useful for",
+    "options": {
+      "A": "filling balloons",
+      "B": "testing for sulphate",
+      "C": "making AgCl",
+      "D": "turning limewater milky"
+    },
+    "answer": "A",
+    "answer_text": "filling balloons",
+    "explanation": {
+      "question_restate": "We are to identify a use based on hydrogen’s low density.",
+      "principle": "A gas less dense than air can provide lift.",
+      "steps": [
+        "Hydrogen is very light.",
+        "A balloon filled with hydrogen experiences upthrust in air.",
+        "This makes it rise.",
+        "Therefore hydrogen can be used in balloons."
+      ],
+      "final_answer": "A. filling balloons",
+      "simple_explanation": "Hydrogen is light enough to provide lift in balloons. Check our \"Tutorial section\" for gas uses."
+    },
+    "tags": [
+      "hydrogen",
+      "uses",
+      "density"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q412",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: uses",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Although hydrogen gives good lift in balloons, helium is often preferred because helium is",
+    "options": {
+      "A": "acidic",
+      "B": "non-flammable",
+      "C": "denser than water",
+      "D": "a reducing gas"
+    },
+    "answer": "B",
+    "answer_text": "non-flammable",
+    "explanation": {
+      "question_restate": "We are to explain why helium is often chosen instead of hydrogen in practical balloon use.",
+      "principle": "Safety is a major practical consideration when choosing a gas.",
+      "steps": [
+        "Hydrogen is flammable.",
+        "Helium is chemically inert and does not burn.",
+        "This makes helium safer in balloons.",
+        "Therefore helium is preferred because it is non-flammable."
+      ],
+      "final_answer": "B. non-flammable",
+      "simple_explanation": "Safety often determines which gas is preferred in real life. Check our \"Tutorial section\" for gas comparisons."
+    },
+    "tags": [
+      "hydrogen",
+      "uses",
+      "safety"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q413",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: test for hydrogen",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Hydrogen is identified in the laboratory because it",
+    "options": {
+      "A": "relights a glowing splint",
+      "B": "burns with a squeaky pop",
+      "C": "bleaches damp litmus",
+      "D": "turns moist red litmus blue"
+    },
+    "answer": "B",
+    "answer_text": "burns with a squeaky pop",
+    "explanation": {
+      "question_restate": "We are to identify the standard laboratory test for hydrogen.",
+      "principle": "Hydrogen ignites rapidly and gives a characteristic sound.",
+      "steps": [
+        "A lighted splint is brought near the gas.",
+        "The gas burns quickly with oxygen from the air.",
+        "This produces a pop sound.",
+        "Therefore hydrogen is identified by the squeaky pop."
+      ],
+      "final_answer": "B. burns with a squeaky pop",
+      "simple_explanation": "The pop test is the classic test for hydrogen. Check our \"Tutorial section\" for gas tests."
+    },
+    "tags": [
+      "hydrogen",
+      "test"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q414",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: test for hydrogen",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The squeaky pop heard during the hydrogen test is caused by",
+    "options": {
+      "A": "slow evaporation",
+      "B": "rapid combustion of H₂ with air",
+      "C": "formation of ammonia",
+      "D": "condensation of steam"
+    },
+    "answer": "B",
+    "answer_text": "rapid combustion of H₂ with air",
+    "explanation": {
+      "question_restate": "We are to explain the source of the pop sound in the hydrogen test.",
+      "principle": "The sound is due to fast burning of hydrogen in air.",
+      "steps": [
+        "Hydrogen is combustible.",
+        "When ignited, it reacts rapidly with oxygen from the air.",
+        "This sudden combustion produces the pop sound.",
+        "Therefore the sound is due to rapid combustion of H₂ with air."
+      ],
+      "final_answer": "B. rapid combustion of H₂ with air",
+      "simple_explanation": "The pop comes from fast burning of hydrogen with oxygen. Check our \"Tutorial section\" for gas-test explanations."
+    },
+    "tags": [
+      "hydrogen",
+      "test",
+      "combustion"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q415",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: properties",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Hydrogen is collected over water mainly because it is",
+    "options": {
+      "A": "very soluble in water",
+      "B": "only slightly soluble and does not react with water during collection",
+      "C": "heavier than water",
+      "D": "greenish-yellow"
+    },
+    "answer": "B",
+    "answer_text": "only slightly soluble and does not react with water during collection",
+    "explanation": {
+      "question_restate": "We are to explain why hydrogen can be collected over water.",
+      "principle": "A gas collected over water should not dissolve much or react appreciably with water.",
+      "steps": [
+        "Hydrogen is only slightly soluble in water.",
+        "It does not react significantly with water under collection conditions.",
+        "So it can displace water and be collected in an inverted container.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. only slightly soluble and does not react with water during collection",
+      "simple_explanation": "Hydrogen can be collected over water because little of it dissolves. Check our \"Tutorial section\" for gas collection methods."
+    },
+    "tags": [
+      "hydrogen",
+      "collection"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q416",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Hydrogen burns in oxygen to produce",
+    "options": {
+      "A": "HCl",
+      "B": "H₂O",
+      "C": "NH₃",
+      "D": "CO₂"
+    },
+    "answer": "B",
+    "answer_text": "H₂O",
+    "explanation": {
+      "question_restate": "We are to identify the product formed when hydrogen burns in oxygen.",
+      "principle": "Combustion of hydrogen produces water.",
+      "steps": [
+        "The balanced equation is 2H₂ + O₂ → 2H₂O.",
+        "The product may appear as steam or condensed droplets.",
+        "No carbon is present, so carbon oxides are not formed.",
+        "Therefore the product is H₂O."
+      ],
+      "final_answer": "B. H₂O",
+      "simple_explanation": "Burning hydrogen produces water. Check our \"Tutorial section\" for combustion equations."
+    },
+    "tags": [
+      "hydrogen",
+      "combustion"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q417",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: commercial production from water gas and petroleum cracking",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "After the water-gas shift reaction, a common gas removed to obtain purer hydrogen is",
+    "options": {
+      "A": "CO₂",
+      "B": "Cl₂",
+      "C": "N₂",
+      "D": "NH₃"
+    },
+    "answer": "A",
+    "answer_text": "CO₂",
+    "explanation": {
+      "question_restate": "We are to identify a gas commonly removed after the shift reaction.",
+      "principle": "The shift reaction produces carbon(IV) oxide alongside hydrogen.",
+      "steps": [
+        "The equation produces CO₂ and H₂.",
+        "Hydrogen is the desired product.",
+        "CO₂ is removed to purify the hydrogen stream.",
+        "Therefore CO₂ is the gas commonly removed."
+      ],
+      "final_answer": "A. CO₂",
+      "simple_explanation": "Removing CO₂ helps purify hydrogen after the shift reaction. Check our \"Tutorial section\" for industrial gas purification."
+    },
+    "tags": [
+      "hydrogen",
+      "purification",
+      "water_gas"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q418",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: laboratory preparation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which equation correctly represents the reaction between magnesium and hydrochloric acid?",
+    "options": {
+      "A": "Mg + HCl → MgCl + H₂",
+      "B": "Mg + 2HCl → MgCl₂ + H₂",
+      "C": "2Mg + HCl → 2MgCl + H₂",
+      "D": "Mg + 2HCl → MgH₂ + Cl₂"
+    },
+    "answer": "B",
+    "answer_text": "Mg + 2HCl → MgCl₂ + H₂",
+    "explanation": {
+      "question_restate": "We are to choose the balanced equation for magnesium reacting with hydrochloric acid.",
+      "principle": "Magnesium forms Mg²⁺ and hydrogen ions combine to form H₂.",
+      "steps": [
+        "Magnesium forms magnesium chloride, MgCl₂.",
+        "Two HCl molecules provide the necessary two chloride ions and the hydrogen ions.",
+        "The hydrogen ions combine to form H₂ gas.",
+        "Therefore the correct equation is Mg + 2HCl → MgCl₂ + H₂."
+      ],
+      "final_answer": "B. Mg + 2HCl → MgCl₂ + H₂",
+      "simple_explanation": "Balanced equations help show clearly how salt and gas are formed. Check our \"Tutorial section\" for worked equations."
+    },
+    "tags": [
+      "hydrogen",
+      "lab_preparation",
+      "equation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q419",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: properties",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Hydrogen diffuses quickly mainly because its molecules are",
+    "options": {
+      "A": "very heavy",
+      "B": "very light",
+      "C": "coloured",
+      "D": "metallic"
+    },
+    "answer": "B",
+    "answer_text": "very light",
+    "explanation": {
+      "question_restate": "We are to explain why hydrogen diffuses rapidly.",
+      "principle": "Lighter gas particles move more quickly on average at the same temperature.",
+      "steps": [
+        "Hydrogen molecules have very low mass.",
+        "This allows the gas to spread rapidly through space.",
+        "That is why hydrogen diffuses faster than many heavier gases.",
+        "Therefore the molecules are very light."
+      ],
+      "final_answer": "B. very light",
+      "simple_explanation": "Hydrogen diffuses rapidly because its molecules are very light. Check our \"Tutorial section\" for gas behavior."
+    },
+    "tags": [
+      "hydrogen",
+      "properties",
+      "diffusion"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q420",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Hydrogen: test for hydrogen",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A safety reason for keeping the mouth of the test tube away from the face during the hydrogen test is that hydrogen",
+    "options": {
+      "A": "may ignite suddenly with a pop",
+      "B": "changes to chlorine",
+      "C": "freezes immediately",
+      "D": "always explodes without oxygen"
+    },
+    "answer": "A",
+    "answer_text": "may ignite suddenly with a pop",
+    "explanation": {
+      "question_restate": "We are to explain a safety rule used during the hydrogen test.",
+      "principle": "Hydrogen can ignite suddenly when brought into contact with a flame.",
+      "steps": [
+        "Near the mouth of the tube, hydrogen mixes with air.",
+        "When a lighted splint is applied, the gas may burn rapidly.",
+        "The pop can occur suddenly.",
+        "Therefore the tube is kept away from the face because hydrogen may ignite suddenly."
+      ],
+      "final_answer": "A. may ignite suddenly with a pop",
+      "simple_explanation": "Safety matters because hydrogen can ignite quickly. Check our \"Tutorial section\" for laboratory precautions."
+    },
+    "tags": [
+      "hydrogen",
+      "test",
+      "safety"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q421",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: chlorine as representative halogen",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Chlorine is a representative halogen because it has",
+    "options": {
+      "A": "7 valence electrons",
+      "B": "1 valence electron",
+      "C": "metallic bonding",
+      "D": "zero valency"
+    },
+    "answer": "A",
+    "answer_text": "7 valence electrons",
+    "explanation": {
+      "question_restate": "We are to identify the feature that makes chlorine a halogen.",
+      "principle": "Halogens are Group 17 elements with seven valence electrons.",
+      "steps": [
+        "Chlorine has seven electrons in its outer shell.",
+        "This is typical of the halogen family.",
+        "Such elements tend to gain one electron in simple ionic compounds.",
+        "Therefore chlorine is a representative halogen because it has seven valence electrons."
+      ],
+      "final_answer": "A. 7 valence electrons",
+      "simple_explanation": "Group 17 elements have seven valence electrons. Check our \"Tutorial section\" for periodic properties."
+    },
+    "tags": [
+      "halogens",
+      "chlorine",
+      "periodic_table"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q422",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: chlorine as representative halogen",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A typical halogen behavior shown by chlorine is that it",
+    "options": {
+      "A": "forms Cl⁻ by gaining one electron",
+      "B": "forms Na⁺ by losing one electron",
+      "C": "remains completely unreactive",
+      "D": "acts as a metal in water"
+    },
+    "answer": "A",
+    "answer_text": "forms Cl⁻ by gaining one electron",
+    "explanation": {
+      "question_restate": "We are to choose the behavior that shows chlorine acting like a halogen.",
+      "principle": "Halogens tend to gain one electron to complete their outer shell.",
+      "steps": [
+        "Chlorine needs one more electron to complete its octet.",
+        "So it commonly forms chloride ion, Cl⁻.",
+        "This is typical of Group 17 chemistry.",
+        "Therefore chlorine forms Cl⁻ by gaining one electron."
+      ],
+      "final_answer": "A. forms Cl⁻ by gaining one electron",
+      "simple_explanation": "Chlorine acts like a typical halogen when it forms chloride ions. Check our \"Tutorial section\" for group trends."
+    },
+    "tags": [
+      "halogens",
+      "chlorine",
+      "group_properties"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q423",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: laboratory preparation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The common laboratory preparation of chlorine uses concentrated HCl and",
+    "options": {
+      "A": "MnO₂",
+      "B": "NaOH",
+      "C": "NH₄Cl",
+      "D": "CuO"
+    },
+    "answer": "A",
+    "answer_text": "MnO₂",
+    "explanation": {
+      "question_restate": "We are to identify the reagent used with concentrated HCl in preparing chlorine.",
+      "principle": "Manganese(IV) oxide is the oxidizing agent in this reaction.",
+      "steps": [
+        "Chloride ions come from the acid.",
+        "MnO₂ helps oxidize the chloride to chlorine gas.",
+        "This is a standard school-laboratory preparation.",
+        "Therefore MnO₂ is the reagent used."
+      ],
+      "final_answer": "A. MnO₂",
+      "simple_explanation": "Chlorine is commonly prepared in the lab using MnO₂ and concentrated HCl. Check our \"Tutorial section\" for preparations."
+    },
+    "tags": [
+      "halogens",
+      "chlorine",
+      "lab_preparation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q424",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: laboratory preparation",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Chlorine is usually collected by downward delivery because it is",
+    "options": {
+      "A": "lighter than air and insoluble",
+      "B": "denser than air and fairly soluble in water",
+      "C": "a liquid at room temperature",
+      "D": "neutral and colourless"
+    },
+    "answer": "B",
+    "answer_text": "denser than air and fairly soluble in water",
+    "explanation": {
+      "question_restate": "We are to explain the collection method for chlorine.",
+      "principle": "Collection depends on density and solubility.",
+      "steps": [
+        "Chlorine is denser than air.",
+        "It is also fairly soluble in water and reacts with it.",
+        "So it is unsuitable for collection over water.",
+        "Therefore it is usually collected by downward delivery."
+      ],
+      "final_answer": "B. denser than air and fairly soluble in water",
+      "simple_explanation": "Chlorine is collected by downward delivery because water is unsuitable. Check our \"Tutorial section\" for gas collection."
+    },
+    "tags": [
+      "halogens",
+      "chlorine",
+      "collection"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q425",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: industrial preparation by electrolysis",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The industrial source of chlorine is mainly",
+    "options": {
+      "A": "brine",
+      "B": "liquid air",
+      "C": "steam",
+      "D": "limestone"
+    },
+    "answer": "A",
+    "answer_text": "brine",
+    "explanation": {
+      "question_restate": "We are to identify the raw material for industrial chlorine manufacture.",
+      "principle": "Brine is concentrated sodium chloride solution used in the chlor-alkali process.",
+      "steps": [
+        "Brine is passed through an electrolytic cell.",
+        "Chlorine is liberated at the anode.",
+        "Other products include hydrogen and sodium hydroxide.",
+        "Therefore the industrial source is brine."
+      ],
+      "final_answer": "A. brine",
+      "simple_explanation": "Industrial chlorine is obtained by electrolysis of brine. Check our \"Tutorial section\" for electrolysis."
+    },
+    "tags": [
+      "halogens",
+      "chlorine",
+      "industrial_preparation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q426",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: industrial preparation by electrolysis",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "During electrolysis of brine, the ion discharged at the anode is",
+    "options": {
+      "A": "Na⁺",
+      "B": "Cl⁻",
+      "C": "H⁺",
+      "D": "NH₄⁺"
+    },
+    "answer": "B",
+    "answer_text": "Cl⁻",
+    "explanation": {
+      "question_restate": "We are to identify the ion responsible for chlorine formation in brine electrolysis.",
+      "principle": "Oxidation occurs at the anode.",
+      "steps": [
+        "Chloride ions move to the positive electrode.",
+        "There they lose electrons and form chlorine gas.",
+        "This is the anode process.",
+        "Therefore Cl⁻ is the ion discharged at the anode."
+      ],
+      "final_answer": "B. Cl⁻",
+      "simple_explanation": "Chloride ions are oxidized at the anode to produce chlorine. Check our \"Tutorial section\" for electrode processes."
+    },
+    "tags": [
+      "halogens",
+      "chlorine",
+      "electrolysis"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q427",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: properties and uses",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "One important use of chlorine is in",
+    "options": {
+      "A": "disinfecting water",
+      "B": "filling balloons safely",
+      "C": "turning limewater milky",
+      "D": "testing for sulphate"
+    },
+    "answer": "A",
+    "answer_text": "disinfecting water",
+    "explanation": {
+      "question_restate": "We are to identify a common practical use of chlorine.",
+      "principle": "Chlorine is used to kill harmful microorganisms in water.",
+      "steps": [
+        "Small quantities of chlorine or chlorine compounds are added to water.",
+        "They destroy many bacteria and other pathogens.",
+        "This helps make water safe for use.",
+        "Therefore one important use is disinfecting water."
+      ],
+      "final_answer": "A. disinfecting water",
+      "simple_explanation": "Chlorine is widely used in water treatment. Check our \"Tutorial section\" for applications."
+    },
+    "tags": [
+      "halogens",
+      "chlorine",
+      "uses"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q428",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: properties and uses",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Chlorine bleaches mainly because in moist conditions it acts as",
+    "options": {
+      "A": "a reducing agent",
+      "B": "an oxidizing agent",
+      "C": "a metal",
+      "D": "an alkali"
+    },
+    "answer": "B",
+    "answer_text": "an oxidizing agent",
+    "explanation": {
+      "question_restate": "We are to explain the bleaching action of chlorine.",
+      "principle": "Moist chlorine produces species that oxidize coloured substances.",
+      "steps": [
+        "Dry chlorine shows little bleaching effect.",
+        "In moist conditions, chlorine forms substances such as hypochlorous acid.",
+        "These oxidize the coloured material to colourless products.",
+        "Therefore chlorine bleaches mainly by acting as an oxidizing agent."
+      ],
+      "final_answer": "B. an oxidizing agent",
+      "simple_explanation": "Chlorine bleaches by oxidation in the presence of moisture. Check our \"Tutorial section\" for bleaching agents."
+    },
+    "tags": [
+      "halogens",
+      "chlorine",
+      "bleaching"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q429",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: hydrogen chloride and hydrochloric acid",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Hydrochloric acid is formed when hydrogen chloride gas",
+    "options": {
+      "A": "dissolves in water",
+      "B": "freezes",
+      "C": "reacts with silver nitrate",
+      "D": "burns in oxygen"
+    },
+    "answer": "A",
+    "answer_text": "dissolves in water",
+    "explanation": {
+      "question_restate": "We are to distinguish hydrogen chloride gas from hydrochloric acid.",
+      "principle": "Hydrochloric acid is the aqueous solution of hydrogen chloride.",
+      "steps": [
+        "HCl gas in the dry state is simply hydrogen chloride.",
+        "When dissolved in water, it ionizes and forms an acidic solution.",
+        "That solution is called hydrochloric acid.",
+        "Therefore it is formed when hydrogen chloride dissolves in water."
+      ],
+      "final_answer": "A. dissolves in water",
+      "simple_explanation": "Hydrogen chloride becomes hydrochloric acid in water. Check our \"Tutorial section\" for ionization."
+    },
+    "tags": [
+      "halogens",
+      "hcl",
+      "hydrochloric_acid"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q430",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: hydrogen chloride and hydrochloric acid",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Dry HCl gas does not change dry blue litmus because",
+    "options": {
+      "A": "it is basic",
+      "B": "it does not ionize without water",
+      "C": "it contains no hydrogen",
+      "D": "litmus reacts only with bases"
+    },
+    "answer": "B",
+    "answer_text": "it does not ionize without water",
+    "explanation": {
+      "question_restate": "We are to explain why dry HCl gas does not show ordinary acidic behavior with dry litmus.",
+      "principle": "Indicator reactions usually depend on ions in water.",
+      "steps": [
+        "Dry HCl is covalent.",
+        "Without water, the ions responsible for acidity are not produced in the usual way.",
+        "So dry blue litmus does not turn red.",
+        "Therefore the reason is that it does not ionize without water."
+      ],
+      "final_answer": "B. it does not ionize without water",
+      "simple_explanation": "The usual litmus change requires water. Check our \"Tutorial section\" for acid behavior."
+    },
+    "tags": [
+      "halogens",
+      "hcl",
+      "acidic_behaviour"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q431",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: chlorides and test for chlorides",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Chloride ions are tested for using acidified",
+    "options": {
+      "A": "AgNO₃",
+      "B": "BaCl₂",
+      "C": "NaOH",
+      "D": "NH₃"
+    },
+    "answer": "A",
+    "answer_text": "AgNO₃",
+    "explanation": {
+      "question_restate": "We are to identify the reagent used to test for chloride ions.",
+      "principle": "Acidified silver nitrate gives a characteristic precipitate with chloride ions.",
+      "steps": [
+        "The solution is first acidified with dilute nitric acid.",
+        "Silver nitrate is then added.",
+        "A white precipitate of AgCl indicates chloride ions.",
+        "Therefore acidified AgNO₃ is the correct reagent."
+      ],
+      "final_answer": "A. AgNO₃",
+      "simple_explanation": "Acidified silver nitrate is the standard chloride test. Check our \"Tutorial section\" for anion tests."
+    },
+    "tags": [
+      "halogens",
+      "chloride_test"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q432",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: chlorides and test for chlorides",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The precipitate produced in the chloride test is",
+    "options": {
+      "A": "AgCl",
+      "B": "BaSO₄",
+      "C": "CaCO₃",
+      "D": "PbS"
+    },
+    "answer": "A",
+    "answer_text": "AgCl",
+    "explanation": {
+      "question_restate": "We are to identify the precipitate formed when silver nitrate reacts with chloride ions.",
+      "principle": "Silver chloride is the insoluble product.",
+      "steps": [
+        "Silver ions come from AgNO₃.",
+        "Chloride ions come from the sample.",
+        "These combine to form AgCl.",
+        "Therefore the precipitate is AgCl."
+      ],
+      "final_answer": "A. AgCl",
+      "simple_explanation": "Silver chloride is the white precipitate in the chloride test. Check our \"Tutorial section\" for precipitate names."
+    },
+    "tags": [
+      "halogens",
+      "chloride_test",
+      "precipitate"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q433",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: properties and uses",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Chlorine gas is commonly described as",
+    "options": {
+      "A": "greenish-yellow with a choking smell",
+      "B": "colourless and odourless",
+      "C": "brown and pleasant-smelling",
+      "D": "black and acidic"
+    },
+    "answer": "A",
+    "answer_text": "greenish-yellow with a choking smell",
+    "explanation": {
+      "question_restate": "We are to identify the common physical description of chlorine.",
+      "principle": "JAMB-style questions often use simple physical descriptions for gas identification.",
+      "steps": [
+        "Chlorine is greenish-yellow in colour.",
+        "It has a choking smell.",
+        "It is also poisonous.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. greenish-yellow with a choking smell",
+      "simple_explanation": "Colour and smell are useful clues in identifying chlorine. Check our \"Tutorial section\" for gas summaries."
+    },
+    "tags": [
+      "halogens",
+      "chlorine",
+      "properties"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q434",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: properties and uses",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Why is moist chlorine more effective in bleaching than dry chlorine?",
+    "options": {
+      "A": "Moisture helps form the active oxidizing species",
+      "B": "Dry chlorine is metallic",
+      "C": "Water turns chlorine into nitrogen",
+      "D": "Dry chlorine is always basic"
+    },
+    "answer": "A",
+    "answer_text": "Moisture helps form the active oxidizing species",
+    "explanation": {
+      "question_restate": "We are to explain why chlorine bleaches better when moisture is present.",
+      "principle": "Water helps chlorine form the species responsible for bleaching.",
+      "steps": [
+        "Dry chlorine has little bleaching action.",
+        "With moisture, chlorine forms compounds such as hypochlorous acid.",
+        "These oxidize the coloured material.",
+        "Therefore moisture helps form the active oxidizing species."
+      ],
+      "final_answer": "A. Moisture helps form the active oxidizing species",
+      "simple_explanation": "Moisture activates chlorine bleaching. Check our \"Tutorial section\" for the underlying chemistry."
+    },
+    "tags": [
+      "halogens",
+      "chlorine",
+      "bleaching"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q435",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: hydrogen chloride and hydrochloric acid",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which gas forms dense white fumes with ammonia?",
+    "options": {
+      "A": "O₂",
+      "B": "HCl",
+      "C": "N₂",
+      "D": "Cl₂"
+    },
+    "answer": "B",
+    "answer_text": "HCl",
+    "explanation": {
+      "question_restate": "We are to identify the gas that gives dense white fumes with ammonia.",
+      "principle": "Hydrogen chloride reacts with ammonia to form solid ammonium chloride.",
+      "steps": [
+        "Ammonia gas is NH₃.",
+        "Hydrogen chloride gas is HCl.",
+        "They combine to form NH₄Cl, seen as white fumes.",
+        "Therefore the gas is HCl."
+      ],
+      "final_answer": "B. HCl",
+      "simple_explanation": "Dense white fumes with ammonia are a classic test for HCl gas. Check our \"Tutorial section\" for gas identification."
+    },
+    "tags": [
+      "halogens",
+      "hcl",
+      "ammonia_test"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q436",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: industrial preparation by electrolysis",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A major gas formed at the cathode during electrolysis of brine is",
+    "options": {
+      "A": "Cl₂",
+      "B": "H₂",
+      "C": "CO₂",
+      "D": "SO₂"
+    },
+    "answer": "B",
+    "answer_text": "H₂",
+    "explanation": {
+      "question_restate": "We are to identify the gas formed at the cathode in brine electrolysis.",
+      "principle": "Reduction occurs at the cathode and hydrogen is produced.",
+      "steps": [
+        "In aqueous brine, water is reduced at the cathode.",
+        "This releases hydrogen gas.",
+        "Chlorine is formed instead at the anode.",
+        "Therefore the gas formed at the cathode is H₂."
+      ],
+      "final_answer": "B. H₂",
+      "simple_explanation": "Brine electrolysis produces hydrogen at the cathode. Check our \"Tutorial section\" for electrode products."
+    },
+    "tags": [
+      "halogens",
+      "chlorine",
+      "electrolysis"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q437",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: chlorides and test for chlorides",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Why is dilute nitric acid used before AgNO₃ in the chloride test instead of dilute HCl?",
+    "options": {
+      "A": "HCl would introduce chloride ions",
+      "B": "HNO₃ is alkaline",
+      "C": "HCl would remove all silver ions",
+      "D": "HNO₃ supplies silver ions"
+    },
+    "answer": "A",
+    "answer_text": "HCl would introduce chloride ions",
+    "explanation": {
+      "question_restate": "We are to explain why nitric acid is chosen for the chloride test.",
+      "principle": "The reagent used must not add the ion being tested for.",
+      "steps": [
+        "Hydrochloric acid contains chloride ions.",
+        "If HCl were used, it could itself give a white AgCl precipitate.",
+        "That would cause a false positive result.",
+        "Therefore HCl is not used because it would introduce chloride ions."
+      ],
+      "final_answer": "A. HCl would introduce chloride ions",
+      "simple_explanation": "Do not use a reagent that adds the ion being tested for. Check our \"Tutorial section\" for practical analysis logic."
+    },
+    "tags": [
+      "halogens",
+      "chloride_test",
+      "reagent_choice"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q438",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: properties and uses",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Chlorine water loses colour on standing in sunlight mainly because",
+    "options": {
+      "A": "chlorine is destroyed in light-driven reactions",
+      "B": "it becomes metallic silver",
+      "C": "it changes into pure water instantly",
+      "D": "oxygen is removed from all molecules"
+    },
+    "answer": "A",
+    "answer_text": "chlorine is destroyed in light-driven reactions",
+    "explanation": {
+      "question_restate": "We are to explain why chlorine water fades in sunlight.",
+      "principle": "Chlorine water is unstable in light and the dissolved chlorine is gradually lost through reactions.",
+      "steps": [
+        "The dissolved chlorine and related species undergo photochemical changes.",
+        "These changes reduce the amount of chlorine present.",
+        "As a result, the colour becomes less intense.",
+        "Therefore chlorine water fades because chlorine is destroyed in light-driven reactions."
+      ],
+      "final_answer": "A. chlorine is destroyed in light-driven reactions",
+      "simple_explanation": "Chlorine water is unstable in light, so its colour fades. Check our \"Tutorial section\" for common observations."
+    },
+    "tags": [
+      "halogens",
+      "chlorine_water",
+      "light"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q439",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: chlorine as representative halogen",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement best summarizes why chlorine is often used to represent the halogens in school chemistry?",
+    "options": {
+      "A": "It clearly shows the common tendency to form halides",
+      "B": "It is the only halogen that reacts",
+      "C": "It is metallic and unreactive",
+      "D": "It contains only one valence electron"
+    },
+    "answer": "A",
+    "answer_text": "It clearly shows the common tendency to form halides",
+    "explanation": {
+      "question_restate": "We are to explain why chlorine is commonly used as a representative halogen.",
+      "principle": "A representative group member should display the usual chemistry of the group clearly.",
+      "steps": [
+        "Chlorine forms chloride ions and chloride compounds readily.",
+        "This is typical halogen behavior.",
+        "It also shows the expected seven-valence-electron pattern.",
+        "Therefore chlorine is often used because it clearly shows the common tendency to form halides."
+      ],
+      "final_answer": "A. It clearly shows the common tendency to form halides",
+      "simple_explanation": "Chlorine is studied as a model halogen because it shows typical Group 17 chemistry. Check our \"Tutorial section\" for group chemistry."
+    },
+    "tags": [
+      "halogens",
+      "chlorine",
+      "halides"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q440",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Halogens: chlorides and test for chlorides",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which compound would give a positive chloride test with acidified silver nitrate?",
+    "options": {
+      "A": "Na₂SO₄",
+      "B": "KNO₃",
+      "C": "NH₄Cl",
+      "D": "CaCO₃"
+    },
+    "answer": "C",
+    "answer_text": "NH₄Cl",
+    "explanation": {
+      "question_restate": "We are to identify a compound that contains chloride ions.",
+      "principle": "Any soluble chloride can react with acidified silver nitrate to form white AgCl.",
+      "steps": [
+        "Ammonium chloride contains Cl⁻ ions.",
+        "Acidified AgNO₃ reacts with chloride ions to form a white precipitate of AgCl.",
+        "The other compounds listed do not contain chloride ions.",
+        "Therefore NH₄Cl will give a positive chloride test."
+      ],
+      "final_answer": "C. NH₄Cl",
+      "simple_explanation": "A positive chloride test requires chloride ions in the sample. Check our \"Tutorial section\" for anion tests."
+    },
+    "tags": [
+      "halogens",
+      "chloride_test",
+      "salts"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q441",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: oxygen: preparation, properties, uses, commercial production from liquid air",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A common laboratory source of oxygen is the decomposition of potassium trioxochlorate(V) in the presence of",
+    "options": {
+      "A": "MnO₂",
+      "B": "NaCl",
+      "C": "HCl",
+      "D": "NH₄Cl"
+    },
+    "answer": "A",
+    "answer_text": "MnO₂",
+    "explanation": {
+      "question_restate": "We are to identify the catalyst used in the laboratory preparation of oxygen from KClO₃.",
+      "principle": "Manganese(IV) oxide helps KClO₃ decompose more easily.",
+      "steps": [
+        "Potassium trioxochlorate(V) decomposes on heating.",
+        "The products include oxygen gas.",
+        "Manganese(IV) oxide speeds the decomposition.",
+        "Therefore MnO₂ is used."
+      ],
+      "final_answer": "A. MnO₂",
+      "simple_explanation": "KClO₃ with MnO₂ is a standard lab source of oxygen. Check our \"Tutorial section\" for preparations."
+    },
+    "tags": [
+      "oxygen",
+      "lab_preparation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q442",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: oxygen: preparation, properties, uses, commercial production from liquid air",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Oxygen is collected over water because it is",
+    "options": {
+      "A": "only slightly soluble and not very reactive with water during collection",
+      "B": "a liquid at room temperature",
+      "C": "strongly acidic",
+      "D": "heavier than mercury"
+    },
+    "answer": "A",
+    "answer_text": "only slightly soluble and not very reactive with water during collection",
+    "explanation": {
+      "question_restate": "We are to explain why water displacement can be used to collect oxygen.",
+      "principle": "A gas collected over water should be only slightly soluble and not react appreciably with water.",
+      "steps": [
+        "Oxygen dissolves only a little in water.",
+        "It does not significantly react with water during collection.",
+        "So it can displace water from an inverted gas jar.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. only slightly soluble and not very reactive with water during collection",
+      "simple_explanation": "Oxygen can be collected over water because little dissolves. Check our \"Tutorial section\" for gas collection."
+    },
+    "tags": [
+      "oxygen",
+      "collection"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q443",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: oxygen: preparation, properties, uses, commercial production from liquid air",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Industrial oxygen is obtained from air by",
+    "options": {
+      "A": "fractional distillation of liquid air",
+      "B": "electrolysis of brine",
+      "C": "destructive distillation",
+      "D": "neutralization"
+    },
+    "answer": "A",
+    "answer_text": "fractional distillation of liquid air",
+    "explanation": {
+      "question_restate": "We are to identify the industrial method used to obtain oxygen from air.",
+      "principle": "The gases in liquid air can be separated because they have different boiling points.",
+      "steps": [
+        "Air is liquefied first.",
+        "The liquid mixture is then fractionally distilled.",
+        "Nitrogen and oxygen separate on the basis of volatility.",
+        "Therefore oxygen is obtained by fractional distillation of liquid air."
+      ],
+      "final_answer": "A. fractional distillation of liquid air",
+      "simple_explanation": "Large-scale oxygen comes from liquid air by fractional distillation. Check our \"Tutorial section\" for separation methods."
+    },
+    "tags": [
+      "oxygen",
+      "commercial_production"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q444",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: oxygen: preparation, properties, uses, commercial production from liquid air",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A glowing splint relights in oxygen because oxygen",
+    "options": {
+      "A": "is the fuel",
+      "B": "supports combustion strongly",
+      "C": "is a basic gas",
+      "D": "is a reducing agent"
+    },
+    "answer": "B",
+    "answer_text": "supports combustion strongly",
+    "explanation": {
+      "question_restate": "We are to explain the basis of the glowing-splint test for oxygen.",
+      "principle": "Oxygen allows combustion to proceed more vigorously.",
+      "steps": [
+        "A glowing splint is still hot and partly burning.",
+        "In oxygen, the combustion becomes stronger and the splint bursts into flame again.",
+        "This is the characteristic test for oxygen.",
+        "Therefore oxygen supports combustion strongly."
+      ],
+      "final_answer": "B. supports combustion strongly",
+      "simple_explanation": "Oxygen is identified because it relights a glowing splint. Check our \"Tutorial section\" for gas tests."
+    },
+    "tags": [
+      "oxygen",
+      "test",
+      "properties"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q445",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: oxides: acidic, basic, amphoteric and neutral",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which oxide is basic?",
+    "options": {
+      "A": "CaO",
+      "B": "CO₂",
+      "C": "SO₃",
+      "D": "Al₂O₃"
+    },
+    "answer": "A",
+    "answer_text": "CaO",
+    "explanation": {
+      "question_restate": "We are to identify a basic oxide.",
+      "principle": "Basic oxides are usually metallic oxides, especially of active metals.",
+      "steps": [
+        "Calcium oxide is an oxide of a reactive metal.",
+        "It forms an alkaline substance in water and reacts with acids.",
+        "CO₂ and SO₃ are acidic, while Al₂O₃ is amphoteric.",
+        "Therefore CaO is basic."
+      ],
+      "final_answer": "A. CaO",
+      "simple_explanation": "Reactive metal oxides are often basic. Check our \"Tutorial section\" for oxide classification."
+    },
+    "tags": [
+      "oxygen",
+      "oxides",
+      "basic"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q446",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: oxides: acidic, basic, amphoteric and neutral",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which oxide is usually classified as neutral?",
+    "options": {
+      "A": "CO",
+      "B": "SO₂",
+      "C": "Na₂O",
+      "D": "Al₂O₃"
+    },
+    "answer": "A",
+    "answer_text": "CO",
+    "explanation": {
+      "question_restate": "We are to identify a neutral oxide.",
+      "principle": "Neutral oxides are neither strongly acidic nor basic under ordinary conditions.",
+      "steps": [
+        "CO is usually treated as a neutral oxide.",
+        "SO₂ is acidic, Na₂O is basic, and Al₂O₃ is amphoteric.",
+        "Therefore CO is the neutral oxide among the options.",
+        "This is a standard oxide-classification question."
+      ],
+      "final_answer": "A. CO",
+      "simple_explanation": "CO is a common example of a neutral oxide. Check our \"Tutorial section\" for oxide types."
+    },
+    "tags": [
+      "oxygen",
+      "oxides",
+      "neutral"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q447",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: ozone as an allotrope and its atmospheric importance",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Ozone has the formula",
+    "options": {
+      "A": "O",
+      "B": "O₂",
+      "C": "O₃",
+      "D": "O₄"
+    },
+    "answer": "C",
+    "answer_text": "O₃",
+    "explanation": {
+      "question_restate": "We are to state the molecular formula of ozone.",
+      "principle": "Ozone is an allotrope of oxygen containing three atoms per molecule.",
+      "steps": [
+        "Ordinary oxygen is O₂.",
+        "Ozone contains three oxygen atoms.",
+        "Therefore its formula is O₃.",
+        "So option C is correct."
+      ],
+      "final_answer": "C. O₃",
+      "simple_explanation": "Ozone is O₃, the triatomic allotrope of oxygen. Check our \"Tutorial section\" for allotropy."
+    },
+    "tags": [
+      "oxygen",
+      "ozone",
+      "allotrope"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q448",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: ozone as an allotrope and its atmospheric importance",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The main atmospheric importance of ozone is that it",
+    "options": {
+      "A": "protects the earth by absorbing ultraviolet radiation",
+      "B": "supplies nitrogen to plants",
+      "C": "causes water hardness",
+      "D": "forms chalk directly"
+    },
+    "answer": "A",
+    "answer_text": "protects the earth by absorbing ultraviolet radiation",
+    "explanation": {
+      "question_restate": "We are to state the main atmospheric role of ozone.",
+      "principle": "Ozone in the upper atmosphere absorbs a large amount of harmful UV radiation.",
+      "steps": [
+        "This reduces the amount of ultraviolet radiation reaching the Earth's surface.",
+        "That protection helps living organisms.",
+        "Therefore the ozone layer is important because it absorbs ultraviolet radiation.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. protects the earth by absorbing ultraviolet radiation",
+      "simple_explanation": "The ozone layer helps protect life from UV radiation. Check our \"Tutorial section\" for atmospheric chemistry."
+    },
+    "tags": [
+      "oxygen",
+      "ozone",
+      "atmosphere"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q449",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: sulphur: allotropes and uses",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The two common crystalline allotropes of sulphur are",
+    "options": {
+      "A": "rhombic and monoclinic sulphur",
+      "B": "diamond and graphite",
+      "C": "red and white phosphorus",
+      "D": "charcoal and coke"
+    },
+    "answer": "A",
+    "answer_text": "rhombic and monoclinic sulphur",
+    "explanation": {
+      "question_restate": "We are to name the common crystalline allotropes of sulphur.",
+      "principle": "Sulphur exists in more than one structural form.",
+      "steps": [
+        "Rhombic sulphur is stable at room temperature.",
+        "Monoclinic sulphur is stable at higher temperatures.",
+        "Both are forms of the same element.",
+        "Therefore the common crystalline allotropes are rhombic and monoclinic sulphur."
+      ],
+      "final_answer": "A. rhombic and monoclinic sulphur",
+      "simple_explanation": "Rhombic and monoclinic are the common crystalline allotropes of sulphur. Check our \"Tutorial section\" for allotropes."
+    },
+    "tags": [
+      "sulphur",
+      "allotropes"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q450",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: sulphur: allotropes and uses",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "At room temperature the more stable allotrope of sulphur is",
+    "options": {
+      "A": "monoclinic sulphur",
+      "B": "rhombic sulphur",
+      "C": "plastic sulphur",
+      "D": "liquid sulphur"
+    },
+    "answer": "B",
+    "answer_text": "rhombic sulphur",
+    "explanation": {
+      "question_restate": "We are to identify the more stable sulphur allotrope at room temperature.",
+      "principle": "Different allotropes are stable under different conditions.",
+      "steps": [
+        "Rhombic sulphur is stable at ordinary temperatures.",
+        "Monoclinic sulphur tends to change to rhombic sulphur on standing at room temperature.",
+        "This shows rhombic sulphur is the more stable form.",
+        "Therefore the answer is rhombic sulphur."
+      ],
+      "final_answer": "B. rhombic sulphur",
+      "simple_explanation": "Rhombic sulphur is the stable room-temperature allotrope. Check our \"Tutorial section\" for stability patterns."
+    },
+    "tags": [
+      "sulphur",
+      "allotropes",
+      "stability"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q451",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: sulphur(IV) oxide",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "When sulphur burns in air, the gaseous product formed is mainly",
+    "options": {
+      "A": "SO₂",
+      "B": "SO₃",
+      "C": "H₂S",
+      "D": "Cl₂"
+    },
+    "answer": "A",
+    "answer_text": "SO₂",
+    "explanation": {
+      "question_restate": "We are to identify the main gaseous product when sulphur burns in air.",
+      "principle": "Sulphur reacts with oxygen during combustion to form sulphur(IV) oxide.",
+      "steps": [
+        "Sulphur burns with a blue flame.",
+        "The principal product is sulphur(IV) oxide, SO₂.",
+        "This gas has a choking smell.",
+        "Therefore the product is SO₂."
+      ],
+      "final_answer": "A. SO₂",
+      "simple_explanation": "Burning sulphur in air gives SO₂. Check our \"Tutorial section\" for sulphur compounds."
+    },
+    "tags": [
+      "sulphur",
+      "sulphur_iv_oxide"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q452",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: sulphur(IV) oxide",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Sulphur(IV) oxide acts as a bleaching agent mainly because it is",
+    "options": {
+      "A": "a reducing agent",
+      "B": "a basic oxide",
+      "C": "a metal",
+      "D": "a noble gas"
+    },
+    "answer": "A",
+    "answer_text": "a reducing agent",
+    "explanation": {
+      "question_restate": "We are to explain the bleaching action of sulphur(IV) oxide.",
+      "principle": "SO₂ bleaches by reduction, unlike chlorine which usually bleaches by oxidation.",
+      "steps": [
+        "SO₂ can reduce coloured substances to colourless forms.",
+        "The bleaching effect is often reversible.",
+        "This is why it is used for delicate materials such as wool and silk.",
+        "Therefore its reducing property explains the bleaching action."
+      ],
+      "final_answer": "A. a reducing agent",
+      "simple_explanation": "SO₂ bleaches by reduction. Check our \"Tutorial section\" for comparing bleaching agents."
+    },
+    "tags": [
+      "sulphur",
+      "sulphur_iv_oxide",
+      "bleaching"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q453",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: trioxosulphate(IV) acid and salts",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The salts of trioxosulphate(IV) acid are called",
+    "options": {
+      "A": "sulphites",
+      "B": "sulphates",
+      "C": "sulphides",
+      "D": "nitrates"
+    },
+    "answer": "A",
+    "answer_text": "sulphites",
+    "explanation": {
+      "question_restate": "We are to name the salts formed from trioxosulphate(IV) acid.",
+      "principle": "H₂SO₃ gives salts that contain the sulphite ion.",
+      "steps": [
+        "The acid H₂SO₃ is commonly called sulphurous acid.",
+        "Its salts contain SO₃²⁻.",
+        "These salts are called sulphites.",
+        "Therefore the correct name is sulphites."
+      ],
+      "final_answer": "A. sulphites",
+      "simple_explanation": "Sulphites come from sulphur(IV) acid. Check our \"Tutorial section\" for naming of salts."
+    },
+    "tags": [
+      "sulphur",
+      "sulphites"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q454",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: tetraoxosulphate(VI) acid, including contact process",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The catalyst used in the contact process is",
+    "options": {
+      "A": "V₂O₅",
+      "B": "Fe",
+      "C": "Ni",
+      "D": "Pt-Rh"
+    },
+    "answer": "A",
+    "answer_text": "V₂O₅",
+    "explanation": {
+      "question_restate": "We are to identify the catalyst used in the contact process.",
+      "principle": "Vanadium(V) oxide is the standard catalyst for oxidation of SO₂ to SO₃.",
+      "steps": [
+        "SO₂ is oxidized to SO₃ in the process.",
+        "V₂O₅ speeds the reaction.",
+        "It helps equilibrium be reached more quickly.",
+        "Therefore the catalyst is V₂O₅."
+      ],
+      "final_answer": "A. V₂O₅",
+      "simple_explanation": "V₂O₅ is the contact-process catalyst. Check our \"Tutorial section\" for industrial processes."
+    },
+    "tags": [
+      "sulphur",
+      "contact_process",
+      "catalyst"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q455",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: tetraoxosulphate(VI) acid, including contact process",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The reason SO₃ is not absorbed directly in water during the contact process is that it",
+    "options": {
+      "A": "is insoluble in water",
+      "B": "reacts violently and forms acid mist",
+      "C": "forms chlorine",
+      "D": "is neutral"
+    },
+    "answer": "B",
+    "answer_text": "reacts violently and forms acid mist",
+    "explanation": {
+      "question_restate": "We are to explain why the contact process avoids direct absorption of SO₃ in water.",
+      "principle": "Direct absorption gives a reaction that is difficult to control and produces acid mist.",
+      "steps": [
+        "SO₃ reacts very vigorously with water.",
+        "The product forms a fine mist that is difficult to condense efficiently.",
+        "So SO₃ is absorbed in concentrated H₂SO₄ instead.",
+        "Therefore it is not absorbed directly in water because it reacts violently and forms acid mist."
+      ],
+      "final_answer": "B. reacts violently and forms acid mist",
+      "simple_explanation": "The contact process avoids direct absorption of SO₃ in water. Check our \"Tutorial section\" for process flow."
+    },
+    "tags": [
+      "sulphur",
+      "contact_process",
+      "oleum"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q456",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: test for sulphate",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sulphate ions give a white precipitate with acidified",
+    "options": {
+      "A": "BaCl₂",
+      "B": "AgNO₃",
+      "C": "NaOH",
+      "D": "NH₃"
+    },
+    "answer": "A",
+    "answer_text": "BaCl₂",
+    "explanation": {
+      "question_restate": "We are to identify the reagent used in testing for sulphate ions.",
+      "principle": "Barium ions form an insoluble white precipitate with sulphate ions.",
+      "steps": [
+        "The test solution is first acidified.",
+        "Barium chloride is then added.",
+        "BaSO₄ forms if sulphate ions are present.",
+        "Therefore acidified BaCl₂ is used."
+      ],
+      "final_answer": "A. BaCl₂",
+      "simple_explanation": "Acidified barium chloride is used to test for sulphate ions. Check our \"Tutorial section\" for anion tests."
+    },
+    "tags": [
+      "sulphur",
+      "sulphate_test"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q457",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: hydrogen sulphide: preparation, properties and test for sulphide",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Hydrogen sulphide is recognized by its characteristic",
+    "options": {
+      "A": "rotten-egg smell",
+      "B": "brown colour",
+      "C": "greenish-yellow colour",
+      "D": "ability to relight a glowing splint"
+    },
+    "answer": "A",
+    "answer_text": "rotten-egg smell",
+    "explanation": {
+      "question_restate": "We are to identify a familiar property of hydrogen sulphide.",
+      "principle": "H₂S has a well-known offensive smell.",
+      "steps": [
+        "Hydrogen sulphide is a colourless gas.",
+        "Its smell is like rotten eggs.",
+        "This is one of its most familiar identifying features.",
+        "Therefore the correct answer is rotten-egg smell."
+      ],
+      "final_answer": "A. rotten-egg smell",
+      "simple_explanation": "H₂S is known for its rotten-egg smell. Check our \"Tutorial section\" for gas properties."
+    },
+    "tags": [
+      "sulphur",
+      "hydrogen_sulphide"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q458",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: hydrogen sulphide: preparation, properties and test for sulphide",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Hydrogen sulphide turns moist lead(II) ethanoate paper black because it forms",
+    "options": {
+      "A": "PbS",
+      "B": "AgCl",
+      "C": "BaSO₄",
+      "D": "CaCO₃"
+    },
+    "answer": "A",
+    "answer_text": "PbS",
+    "explanation": {
+      "question_restate": "We are to identify the black product formed when H₂S contacts lead(II) ethanoate paper.",
+      "principle": "Lead(II) sulphide is the black compound formed.",
+      "steps": [
+        "The test paper contains lead(II) ions.",
+        "Hydrogen sulphide supplies sulphide ions.",
+        "These combine to form black lead(II) sulphide, PbS.",
+        "Therefore the black product is PbS."
+      ],
+      "final_answer": "A. PbS",
+      "simple_explanation": "The blackening in the H₂S test is due to PbS. Check our \"Tutorial section\" for confirmatory tests."
+    },
+    "tags": [
+      "sulphur",
+      "hydrogen_sulphide",
+      "test"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q459",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: oxygen: preparation, properties, uses, commercial production from liquid air",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement best combines a property and a source of oxygen?",
+    "options": {
+      "A": "Oxygen burns with a pop and is obtained from brine",
+      "B": "Oxygen supports combustion and is obtained industrially from liquid air",
+      "C": "Oxygen is acidic and is obtained from marble",
+      "D": "Oxygen forms white fumes with ammonia and is obtained from sulphur"
+    },
+    "answer": "B",
+    "answer_text": "Oxygen supports combustion and is obtained industrially from liquid air",
+    "explanation": {
+      "question_restate": "We are to choose the statement that correctly combines an important property of oxygen with its industrial source.",
+      "principle": "Oxygen is widely known for supporting combustion and is produced on a large scale from liquid air.",
+      "steps": [
+        "A glowing splint relights in oxygen because it supports combustion.",
+        "Industrially, oxygen is obtained by fractional distillation of liquid air.",
+        "The other options mix oxygen with properties or sources of other substances.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Oxygen supports combustion and is obtained industrially from liquid air",
+      "simple_explanation": "This combines one key property and one key industrial fact about oxygen. Check our \"Tutorial section\" for oxygen revision."
+    },
+    "tags": [
+      "oxygen",
+      "properties",
+      "commercial_production"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q460",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Oxygen and sulphur: test for sulphate",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The white precipitate formed when sulphate ions react with barium chloride solution is",
+    "options": {
+      "A": "AgCl",
+      "B": "BaSO₄",
+      "C": "PbS",
+      "D": "CaCO₃"
+    },
+    "answer": "B",
+    "answer_text": "BaSO₄",
+    "explanation": {
+      "question_restate": "We are to identify the white precipitate obtained in the sulphate test.",
+      "principle": "Barium ions combine with sulphate ions to form insoluble barium sulphate.",
+      "steps": [
+        "In the sulphate test, acidified barium chloride is added to the sample.",
+        "If sulphate ions are present, Ba²⁺ combines with SO₄²⁻.",
+        "The product formed is BaSO₄, which is white and insoluble.",
+        "Therefore the precipitate is BaSO₄."
+      ],
+      "final_answer": "B. BaSO₄",
+      "simple_explanation": "BaSO₄ is the classic white precipitate used to confirm sulphate ions. Check our \"Tutorial section\" for anion tests."
+    },
+    "tags": [
+      "sulphur",
+      "sulphate_test",
+      "precipitate"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q461",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: laboratory preparation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A laboratory method of preparing nitrogen involves warming a mixture that forms ammonium nitrite, which decomposes to",
+    "options": {
+      "A": "N₂ and H₂O",
+      "B": "NH₃ and O₂",
+      "C": "NO₂ and H₂",
+      "D": "HNO₃ and NH₃"
+    },
+    "answer": "A",
+    "answer_text": "N₂ and H₂O",
+    "explanation": {
+      "question_restate": "We are to identify the products of decomposition of ammonium nitrite.",
+      "principle": "Ammonium nitrite is unstable and breaks down into nitrogen and water.",
+      "steps": [
+        "In the laboratory it is usually formed in situ.",
+        "On warming, it decomposes.",
+        "The gaseous product is nitrogen.",
+        "Therefore the products are N₂ and H₂O."
+      ],
+      "final_answer": "A. N₂ and H₂O",
+      "simple_explanation": "Ammonium nitrite decomposes to nitrogen and water. Check our \"Tutorial section\" for laboratory preparations."
+    },
+    "tags": [
+      "nitrogen",
+      "lab_preparation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q462",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: production from liquid air",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Industrial nitrogen is obtained mainly by",
+    "options": {
+      "A": "oxidation of ammonia",
+      "B": "fractional distillation of liquid air",
+      "C": "electrolysis of brine",
+      "D": "destructive distillation of coal"
+    },
+    "answer": "B",
+    "answer_text": "fractional distillation of liquid air",
+    "explanation": {
+      "question_restate": "We are to identify the industrial source of nitrogen.",
+      "principle": "Air is the major source of industrial nitrogen.",
+      "steps": [
+        "Air is liquefied first.",
+        "The liquid mixture is then fractionally distilled.",
+        "Nitrogen separates because its boiling point is lower than oxygen’s.",
+        "Therefore the method used is fractional distillation of liquid air."
+      ],
+      "final_answer": "B. fractional distillation of liquid air",
+      "simple_explanation": "Industrial nitrogen comes from liquid air. Check our \"Tutorial section\" for separation of air."
+    },
+    "tags": [
+      "nitrogen",
+      "commercial_production"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q463",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: ammonia: Haber process, properties, uses",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The Haber process combines nitrogen with",
+    "options": {
+      "A": "oxygen",
+      "B": "hydrogen",
+      "C": "chlorine",
+      "D": "sulphur"
+    },
+    "answer": "B",
+    "answer_text": "hydrogen",
+    "explanation": {
+      "question_restate": "We are to identify the other reactant in the Haber process.",
+      "principle": "Ammonia is made by combining nitrogen and hydrogen.",
+      "steps": [
+        "The equation is N₂ + 3H₂ ⇌ 2NH₃.",
+        "Hydrogen supplies the hydrogen atoms needed in ammonia.",
+        "This is a major industrial reaction.",
+        "Therefore nitrogen combines with hydrogen."
+      ],
+      "final_answer": "B. hydrogen",
+      "simple_explanation": "The Haber process combines nitrogen and hydrogen to form ammonia. Check our \"Tutorial section\" for named processes."
+    },
+    "tags": [
+      "nitrogen",
+      "haber_process"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q464",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: ammonia: Haber process, properties, uses",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The catalyst used in the Haber process is",
+    "options": {
+      "A": "V₂O₅",
+      "B": "Fe",
+      "C": "Pt-Rh",
+      "D": "Ni"
+    },
+    "answer": "B",
+    "answer_text": "Fe",
+    "explanation": {
+      "question_restate": "We are to identify the catalyst used in ammonia manufacture.",
+      "principle": "Finely divided iron is the standard catalyst for the Haber process.",
+      "steps": [
+        "The Haber reaction would proceed too slowly without a catalyst.",
+        "Iron speeds the reaction so equilibrium is reached faster.",
+        "It does not change the equilibrium constant itself.",
+        "Therefore the catalyst is Fe."
+      ],
+      "final_answer": "B. Fe",
+      "simple_explanation": "Iron is the classic catalyst in the Haber process. Check our \"Tutorial section\" for industrial catalysts."
+    },
+    "tags": [
+      "nitrogen",
+      "haber_process",
+      "catalyst"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q465",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: ammonia: Haber process, properties, uses",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Ammonia turns damp red litmus paper blue because it is",
+    "options": {
+      "A": "acidic",
+      "B": "alkaline in moist conditions",
+      "C": "a strong oxidizing gas",
+      "D": "a neutral gas"
+    },
+    "answer": "B",
+    "answer_text": "alkaline in moist conditions",
+    "explanation": {
+      "question_restate": "We are to explain why ammonia changes red litmus to blue.",
+      "principle": "Ammonia forms an alkaline solution when it dissolves in moisture.",
+      "steps": [
+        "Ammonia dissolves partly in water.",
+        "This produces hydroxide ions in solution.",
+        "Hydroxide ions make the solution alkaline.",
+        "Therefore ammonia turns damp red litmus blue because it is alkaline in moist conditions."
+      ],
+      "final_answer": "B. alkaline in moist conditions",
+      "simple_explanation": "Ammonia behaves as a basic gas in moisture. Check our \"Tutorial section\" for gas tests."
+    },
+    "tags": [
+      "nitrogen",
+      "ammonia",
+      "properties"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q466",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: ammonia: Haber process, properties, uses",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A major use of ammonia is in the manufacture of",
+    "options": {
+      "A": "fertilizers",
+      "B": "glass",
+      "C": "silver nitrate",
+      "D": "charcoal"
+    },
+    "answer": "A",
+    "answer_text": "fertilizers",
+    "explanation": {
+      "question_restate": "We are to identify a major industrial use of ammonia.",
+      "principle": "Ammonia is an essential starting material for many fertilizers.",
+      "steps": [
+        "It can be converted into ammonium salts.",
+        "It can also be used to make nitric acid.",
+        "These products are important fertilizer materials.",
+        "Therefore ammonia is used in the manufacture of fertilizers."
+      ],
+      "final_answer": "A. fertilizers",
+      "simple_explanation": "Ammonia is one of the most important fertilizer chemicals. Check our \"Tutorial section\" for industrial importance."
+    },
+    "tags": [
+      "nitrogen",
+      "ammonia",
+      "uses"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q467",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: ammonium salts",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "When an ammonium salt is warmed with sodium hydroxide solution, the gas evolved is",
+    "options": {
+      "A": "NH₃",
+      "B": "O₂",
+      "C": "CO₂",
+      "D": "Cl₂"
+    },
+    "answer": "A",
+    "answer_text": "NH₃",
+    "explanation": {
+      "question_restate": "We are to identify the gas evolved from an ammonium salt by alkali.",
+      "principle": "Strong alkalis liberate ammonia from ammonium salts.",
+      "steps": [
+        "The ammonium ion is NH₄⁺.",
+        "On warming with NaOH, NH₃ gas is released.",
+        "This is the basis of the test for ammonium ions.",
+        "Therefore the gas evolved is NH₃."
+      ],
+      "final_answer": "A. NH₃",
+      "simple_explanation": "Warm alkali releases ammonia from ammonium salts. Check our \"Tutorial section\" for cation tests."
+    },
+    "tags": [
+      "nitrogen",
+      "ammonium_salts",
+      "test_for_ammonium"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q468",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: oxidation of ammonia to nitrogen(IV) oxide and trioxonitrate(V) acid",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In the Ostwald process, ammonia is first oxidized to",
+    "options": {
+      "A": "NO",
+      "B": "NO₂",
+      "C": "N₂ only",
+      "D": "HNO₃"
+    },
+    "answer": "A",
+    "answer_text": "NO",
+    "explanation": {
+      "question_restate": "We are to identify the first oxide formed in the industrial conversion of ammonia to nitric acid.",
+      "principle": "The Ostwald process proceeds stepwise through nitrogen oxides.",
+      "steps": [
+        "Ammonia is first oxidized to nitric oxide, NO.",
+        "NO is then oxidized further to NO₂.",
+        "The oxides are then used to form nitric acid.",
+        "Therefore the first product is NO."
+      ],
+      "final_answer": "A. NO",
+      "simple_explanation": "The Ostwald process first forms NO. Check our \"Tutorial section\" for industrial reaction sequences."
+    },
+    "tags": [
+      "nitrogen",
+      "ostwald_process"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q469",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: test for ammonium",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A positive test for ammonium ions is that the gas evolved on warming with NaOH",
+    "options": {
+      "A": "relights a glowing splint",
+      "B": "turns damp red litmus blue",
+      "C": "bleaches damp litmus",
+      "D": "turns limewater milky"
+    },
+    "answer": "B",
+    "answer_text": "turns damp red litmus blue",
+    "explanation": {
+      "question_restate": "We are to identify the confirmatory test for the gas evolved from ammonium salts with alkali.",
+      "principle": "The gas released is ammonia, which is alkaline in moist conditions.",
+      "steps": [
+        "Warming with NaOH releases NH₃ if NH₄⁺ is present.",
+        "Ammonia turns damp red litmus blue.",
+        "This confirms the presence of ammonium ions.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. turns damp red litmus blue",
+      "simple_explanation": "Ammonium ions are confirmed because the evolved ammonia turns damp red litmus blue. Check our \"Tutorial section\" for gas tests."
+    },
+    "tags": [
+      "nitrogen",
+      "test_for_ammonium"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q470",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: trioxonitrate(V) acid and nitrates",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Trioxonitrate(V) acid is also called",
+    "options": {
+      "A": "nitric acid",
+      "B": "sulphuric acid",
+      "C": "hydrochloric acid",
+      "D": "carbonic acid"
+    },
+    "answer": "A",
+    "answer_text": "nitric acid",
+    "explanation": {
+      "question_restate": "We are to identify the common name for trioxonitrate(V) acid.",
+      "principle": "This is the systematic name for HNO₃.",
+      "steps": [
+        "HNO₃ is commonly called nitric acid.",
+        "Its salts are nitrates.",
+        "Both the common and systematic names should be recognized.",
+        "Therefore trioxonitrate(V) acid is nitric acid."
+      ],
+      "final_answer": "A. nitric acid",
+      "simple_explanation": "Nitric acid is trioxonitrate(V) acid. Check our \"Tutorial section\" for naming practice."
+    },
+    "tags": [
+      "nitrogen",
+      "nitric_acid",
+      "nitrates"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q471",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: trioxonitrate(V) acid and nitrates",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A general property of nitrates is that they are",
+    "options": {
+      "A": "generally soluble in water",
+      "B": "mostly insoluble in water",
+      "C": "always neutral oxides",
+      "D": "always gases"
+    },
+    "answer": "A",
+    "answer_text": "generally soluble in water",
+    "explanation": {
+      "question_restate": "We are to state a common solubility rule for nitrates.",
+      "principle": "Nitrate salts are generally soluble in water.",
+      "steps": [
+        "This is a useful rule in qualitative analysis and equation work.",
+        "Because they are usually soluble, nitrates rarely form precipitates in simple tests.",
+        "Therefore option A is correct.",
+        "Remembering this rule is important for objective chemistry."
+      ],
+      "final_answer": "A. generally soluble in water",
+      "simple_explanation": "Nitrates are generally soluble in water. Check our \"Tutorial section\" for solubility rules."
+    },
+    "tags": [
+      "nitrogen",
+      "nitrates",
+      "solubility"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q472",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: oxides of nitrogen",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The brown gas among the oxides of nitrogen is",
+    "options": {
+      "A": "NO₂",
+      "B": "NO",
+      "C": "N₂",
+      "D": "NH₃"
+    },
+    "answer": "A",
+    "answer_text": "NO₂",
+    "explanation": {
+      "question_restate": "We are to identify the brown oxide of nitrogen.",
+      "principle": "Nitrogen(IV) oxide has a characteristic brown colour.",
+      "steps": [
+        "NO is colourless.",
+        "NO₂ is brown.",
+        "This physical property often helps identify it in reactions.",
+        "Therefore the brown gas is NO₂."
+      ],
+      "final_answer": "A. NO₂",
+      "simple_explanation": "NO₂ is the familiar brown oxide of nitrogen. Check our \"Tutorial section\" for gas properties."
+    },
+    "tags": [
+      "nitrogen",
+      "oxides_of_nitrogen"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q473",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: oxides of nitrogen",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The colourless oxide that turns brown in air is",
+    "options": {
+      "A": "NO",
+      "B": "NO₂",
+      "C": "N₂",
+      "D": "N₂O₄"
+    },
+    "answer": "A",
+    "answer_text": "NO",
+    "explanation": {
+      "question_restate": "We are to identify the oxide that is initially colourless but turns brown in air.",
+      "principle": "NO is oxidized by oxygen to NO₂.",
+      "steps": [
+        "Fresh NO is colourless.",
+        "When exposed to air, it reacts with oxygen.",
+        "The product, NO₂, is brown.",
+        "Therefore the original colourless oxide is NO."
+      ],
+      "final_answer": "A. NO",
+      "simple_explanation": "NO becomes brown NO₂ in air. Check our \"Tutorial section\" for nitrogen oxides."
+    },
+    "tags": [
+      "nitrogen",
+      "oxides_of_nitrogen"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q474",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: nitrogen cycle",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Nitrogen fixation is important because it converts atmospheric nitrogen into",
+    "options": {
+      "A": "useful combined nitrogen compounds",
+      "B": "graphite",
+      "C": "chlorine",
+      "D": "silver chloride"
+    },
+    "answer": "A",
+    "answer_text": "useful combined nitrogen compounds",
+    "explanation": {
+      "question_restate": "We are to explain why nitrogen fixation matters.",
+      "principle": "Atmospheric nitrogen is very stable and needs to be changed into combined forms to become useful biologically.",
+      "steps": [
+        "Nitrogen fixation can produce ammonia, nitrites or nitrates.",
+        "These are forms plants can use.",
+        "Thus fixation makes nitrogen available in the biosphere.",
+        "Therefore it converts atmospheric nitrogen into useful combined nitrogen compounds."
+      ],
+      "final_answer": "A. useful combined nitrogen compounds",
+      "simple_explanation": "Nitrogen fixation makes atmospheric nitrogen usable in the environment. Check our \"Tutorial section\" for the nitrogen cycle."
+    },
+    "tags": [
+      "nitrogen",
+      "nitrogen_cycle"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q475",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: nitrogen cycle",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The conversion of ammonium compounds to nitrates is called",
+    "options": {
+      "A": "denitrification",
+      "B": "nitrification",
+      "C": "distillation",
+      "D": "combustion"
+    },
+    "answer": "B",
+    "answer_text": "nitrification",
+    "explanation": {
+      "question_restate": "We are to identify the process that turns ammonium compounds into nitrates.",
+      "principle": "Nitrification is the oxidation step of the nitrogen cycle.",
+      "steps": [
+        "Ammonium compounds are oxidized to nitrites and then nitrates.",
+        "This is carried out by nitrifying bacteria.",
+        "Therefore the process is called nitrification.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. nitrification",
+      "simple_explanation": "Nitrification converts ammonium compounds into nitrates. Check our \"Tutorial section\" for cycle terminology."
+    },
+    "tags": [
+      "nitrogen",
+      "nitrogen_cycle",
+      "nitrification"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q476",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: ammonia: Haber process, properties, uses",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "High pressure is used in the Haber process because the reaction",
+    "options": {
+      "A": "produces fewer gas molecules",
+      "B": "produces more gas molecules",
+      "C": "contains no gases",
+      "D": "requires chlorine"
+    },
+    "answer": "A",
+    "answer_text": "produces fewer gas molecules",
+    "explanation": {
+      "question_restate": "We are to explain why high pressure favors ammonia formation.",
+      "principle": "High pressure favors the equilibrium side with fewer moles of gas.",
+      "steps": [
+        "The equation is N₂ + 3H₂ ⇌ 2NH₃.",
+        "There are four moles of gas on the left and two on the right.",
+        "So higher pressure favors the product side.",
+        "Therefore high pressure is used because the reaction produces fewer gas molecules."
+      ],
+      "final_answer": "A. produces fewer gas molecules",
+      "simple_explanation": "Pressure favors the side with fewer gas molecules. Check our \"Tutorial section\" for equilibrium."
+    },
+    "tags": [
+      "nitrogen",
+      "haber_process",
+      "equilibrium"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q477",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: ammonia: Haber process, properties, uses",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Moderate temperature is used in the Haber process rather than an extremely high temperature because the reaction is",
+    "options": {
+      "A": "exothermic",
+      "B": "endothermic",
+      "C": "neutral only",
+      "D": "photochemical"
+    },
+    "answer": "A",
+    "answer_text": "exothermic",
+    "explanation": {
+      "question_restate": "We are to explain why the Haber process does not simply use the highest possible temperature.",
+      "principle": "Industrial conditions balance equilibrium yield with reaction rate.",
+      "steps": [
+        "The Haber reaction is exothermic.",
+        "Lower temperature favors ammonia yield at equilibrium.",
+        "But too low a temperature makes the reaction too slow.",
+        "Therefore a moderate temperature is used because the reaction is exothermic."
+      ],
+      "final_answer": "A. exothermic",
+      "simple_explanation": "The Haber process is a compromise between rate and yield. Check our \"Tutorial section\" for condition choice."
+    },
+    "tags": [
+      "nitrogen",
+      "haber_process",
+      "equilibrium"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q478",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: ammonium salts",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is an ammonium salt?",
+    "options": {
+      "A": "NH₄Cl",
+      "B": "NaCl",
+      "C": "K₂SO₄",
+      "D": "CaCO₃"
+    },
+    "answer": "A",
+    "answer_text": "NH₄Cl",
+    "explanation": {
+      "question_restate": "We are to identify a salt containing the ammonium ion.",
+      "principle": "Ammonium salts contain NH₄⁺ as the cation.",
+      "steps": [
+        "NH₄Cl is ammonium chloride.",
+        "Its cation is NH₄⁺.",
+        "The other salts contain sodium, potassium or calcium ions instead.",
+        "Therefore NH₄Cl is the ammonium salt."
+      ],
+      "final_answer": "A. NH₄Cl",
+      "simple_explanation": "Ammonium salts are identified by NH₄⁺. Check our \"Tutorial section\" for common ions."
+    },
+    "tags": [
+      "nitrogen",
+      "ammonium_salts"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q479",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: oxidation of ammonia to nitrogen(IV) oxide and trioxonitrate(V) acid",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The industrial process for converting ammonia to nitric acid is the",
+    "options": {
+      "A": "Haber process",
+      "B": "Ostwald process",
+      "C": "contact process",
+      "D": "blast furnace process"
+    },
+    "answer": "B",
+    "answer_text": "Ostwald process",
+    "explanation": {
+      "question_restate": "We are to identify the named industrial process that converts ammonia into nitric acid.",
+      "principle": "Different named processes produce different important chemicals.",
+      "steps": [
+        "The Haber process produces ammonia.",
+        "The contact process produces sulphuric acid.",
+        "The Ostwald process converts ammonia into nitric acid.",
+        "Therefore the correct answer is Ostwald process."
+      ],
+      "final_answer": "B. Ostwald process",
+      "simple_explanation": "Haber makes NH₃, Ostwald makes HNO₃. Check our \"Tutorial section\" for named processes."
+    },
+    "tags": [
+      "nitrogen",
+      "ostwald_process"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q480",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Nitrogen: nitrogen cycle",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The process that returns nitrogen from nitrates in the soil to the atmosphere is",
+    "options": {
+      "A": "nitrification",
+      "B": "denitrification",
+      "C": "fixation",
+      "D": "neutralization"
+    },
+    "answer": "B",
+    "answer_text": "denitrification",
+    "explanation": {
+      "question_restate": "We are to identify the process that sends nitrogen back into the atmosphere.",
+      "principle": "Denitrifying bacteria convert nitrates into gaseous nitrogen compounds.",
+      "steps": [
+        "This reduces the amount of nitrate in the soil.",
+        "Nitrogen is thereby returned to the atmosphere.",
+        "This step is called denitrification.",
+        "Therefore the correct answer is denitrification."
+      ],
+      "final_answer": "B. denitrification",
+      "simple_explanation": "Denitrification returns nitrogen to the air. Check our \"Tutorial section\" for the nitrogen cycle."
+    },
+    "tags": [
+      "nitrogen",
+      "nitrogen_cycle",
+      "denitrification"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q481",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: allotropes",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Diamond and graphite are allotropes of carbon because they",
+    "options": {
+      "A": "contain only carbon but have different structures",
+      "B": "contain different elements",
+      "C": "are both liquids",
+      "D": "have identical properties"
+    },
+    "answer": "A",
+    "answer_text": "contain only carbon but have different structures",
+    "explanation": {
+      "question_restate": "We are to explain why diamond and graphite are allotropes of carbon.",
+      "principle": "Allotropes are different structural forms of the same element.",
+      "steps": [
+        "Diamond and graphite both consist only of carbon atoms.",
+        "Their atomic arrangements are different.",
+        "This gives them different properties.",
+        "Therefore they are allotropes because they contain only carbon but have different structures."
+      ],
+      "final_answer": "A. contain only carbon but have different structures",
+      "simple_explanation": "Allotropy means same element, different structure. Check our \"Tutorial section\" for structure-property links."
+    },
+    "tags": [
+      "carbon",
+      "allotropes"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q482",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: allotropes",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Diamond is extremely hard because it has",
+    "options": {
+      "A": "a giant three-dimensional covalent structure",
+      "B": "weak forces between layers",
+      "C": "delocalized ions",
+      "D": "high water content"
+    },
+    "answer": "A",
+    "answer_text": "a giant three-dimensional covalent structure",
+    "explanation": {
+      "question_restate": "We are to explain why diamond is so hard.",
+      "principle": "A giant covalent network gives a very rigid structure.",
+      "steps": [
+        "Each carbon atom in diamond is strongly covalently bonded to others.",
+        "These bonds extend through a three-dimensional network.",
+        "A great deal of energy is required to break this structure.",
+        "Therefore diamond is extremely hard because it has a giant three-dimensional covalent structure."
+      ],
+      "final_answer": "A. a giant three-dimensional covalent structure",
+      "simple_explanation": "Diamond’s hardness comes from its giant covalent network. Check our \"Tutorial section\" for allotrope structures."
+    },
+    "tags": [
+      "carbon",
+      "allotropes",
+      "diamond"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q483",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: allotropes",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Graphite conducts electricity because it contains",
+    "options": {
+      "A": "delocalized electrons",
+      "B": "mobile sodium ions",
+      "C": "water molecules",
+      "D": "chloride ions"
+    },
+    "answer": "A",
+    "answer_text": "delocalized electrons",
+    "explanation": {
+      "question_restate": "We are to explain why graphite conducts electricity.",
+      "principle": "Graphite contains electrons that can move through its layers.",
+      "steps": [
+        "In graphite, each carbon atom contributes one electron to a delocalized system.",
+        "These electrons are free to move within the layers.",
+        "That movement carries electrical charge.",
+        "Therefore graphite conducts because it contains delocalized electrons."
+      ],
+      "final_answer": "A. delocalized electrons",
+      "simple_explanation": "Graphite conducts because of delocalized electrons. Check our \"Tutorial section\" for structure-property relationships."
+    },
+    "tags": [
+      "carbon",
+      "allotropes",
+      "graphite"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q484",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: carbon(IV) oxide",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Complete combustion of carbon in excess oxygen produces",
+    "options": {
+      "A": "CO₂",
+      "B": "CO",
+      "C": "CH₄",
+      "D": "CaCO₃"
+    },
+    "answer": "A",
+    "answer_text": "CO₂",
+    "explanation": {
+      "question_restate": "We are to identify the product of complete combustion of carbon.",
+      "principle": "Complete combustion means there is sufficient oxygen for full oxidation.",
+      "steps": [
+        "Carbon reacts with oxygen during burning.",
+        "With excess oxygen, the product is carbon(IV) oxide.",
+        "Incomplete combustion would instead give carbon(II) oxide.",
+        "Therefore complete combustion produces CO₂."
+      ],
+      "final_answer": "A. CO₂",
+      "simple_explanation": "Complete combustion of carbon gives CO₂. Check our \"Tutorial section\" for combustion products."
+    },
+    "tags": [
+      "carbon",
+      "carbon_iv_oxide"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q485",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: carbon(IV) oxide",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The milkiness produced when carbon(IV) oxide is passed through limewater is due to formation of",
+    "options": {
+      "A": "CaCO₃",
+      "B": "AgCl",
+      "C": "PbS",
+      "D": "NaOH"
+    },
+    "answer": "A",
+    "answer_text": "CaCO₃",
+    "explanation": {
+      "question_restate": "We are to identify the substance responsible for the limewater test of CO₂.",
+      "principle": "The milkiness is caused by an insoluble white precipitate.",
+      "steps": [
+        "CO₂ reacts with calcium hydroxide in limewater.",
+        "This produces calcium carbonate and water.",
+        "Calcium carbonate is white and insoluble.",
+        "Therefore the milkiness is due to CaCO₃."
+      ],
+      "final_answer": "A. CaCO₃",
+      "simple_explanation": "The limewater test for CO₂ gives CaCO₃. Check our \"Tutorial section\" for gas tests."
+    },
+    "tags": [
+      "carbon",
+      "carbon_iv_oxide",
+      "limewater_test"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q486",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: carbon(II) oxide",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Carbon(II) oxide is formed when carbon burns in",
+    "options": {
+      "A": "limited oxygen",
+      "B": "excess oxygen",
+      "C": "water only",
+      "D": "nitrogen only"
+    },
+    "answer": "A",
+    "answer_text": "limited oxygen",
+    "explanation": {
+      "question_restate": "We are to identify the condition that leads to the formation of carbon(II) oxide.",
+      "principle": "Carbon(II) oxide results from incomplete combustion.",
+      "steps": [
+        "If oxygen is limited, carbon is not fully oxidized.",
+        "This incomplete combustion can produce CO.",
+        "With plenty of oxygen, CO₂ is formed instead.",
+        "Therefore CO is formed when oxygen supply is limited."
+      ],
+      "final_answer": "A. limited oxygen",
+      "simple_explanation": "CO is produced during incomplete combustion. Check our \"Tutorial section\" for combustion conditions."
+    },
+    "tags": [
+      "carbon",
+      "carbon_ii_oxide"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q487",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: carbon(II) oxide",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Carbon(II) oxide is very poisonous because it",
+    "options": {
+      "A": "combines strongly with haemoglobin",
+      "B": "turns damp red litmus blue",
+      "C": "forms AgCl in blood",
+      "D": "is strongly alkaline"
+    },
+    "answer": "A",
+    "answer_text": "combines strongly with haemoglobin",
+    "explanation": {
+      "question_restate": "We are to explain why carbon(II) oxide is dangerous.",
+      "principle": "CO interferes with the transport of oxygen in the blood.",
+      "steps": [
+        "Haemoglobin normally carries oxygen.",
+        "CO binds strongly to haemoglobin.",
+        "This prevents normal oxygen transport to tissues.",
+        "Therefore CO is poisonous because it combines strongly with haemoglobin."
+      ],
+      "final_answer": "A. combines strongly with haemoglobin",
+      "simple_explanation": "CO poisoning happens because oxygen transport is blocked. Check our \"Tutorial section\" for safety notes."
+    },
+    "tags": [
+      "carbon",
+      "carbon_ii_oxide",
+      "poisonous"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q488",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: coal",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Coal is best described as",
+    "options": {
+      "A": "a naturally occurring carbonaceous material with impurities",
+      "B": "pure carbon only",
+      "C": "a noble gas",
+      "D": "a basic oxide"
+    },
+    "answer": "A",
+    "answer_text": "a naturally occurring carbonaceous material with impurities",
+    "explanation": {
+      "question_restate": "We are to describe coal correctly.",
+      "principle": "Coal is rich in carbon but is not chemically pure.",
+      "steps": [
+        "Coal contains carbon together with other substances such as hydrogen, sulphur, moisture and mineral matter.",
+        "Its composition varies from one type of coal to another.",
+        "Therefore it is not pure carbon.",
+        "So coal is a naturally occurring carbonaceous material with impurities."
+      ],
+      "final_answer": "A. a naturally occurring carbonaceous material with impurities",
+      "simple_explanation": "Coal is carbon-rich but not pure. Check our \"Tutorial section\" for fossil fuel chemistry."
+    },
+    "tags": [
+      "carbon",
+      "coal"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q489",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: coke",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Coke is obtained from coal by",
+    "options": {
+      "A": "destructive distillation",
+      "B": "electrolysis",
+      "C": "neutralization",
+      "D": "fractional distillation of air"
+    },
+    "answer": "A",
+    "answer_text": "destructive distillation",
+    "explanation": {
+      "question_restate": "We are to identify the process that yields coke from coal.",
+      "principle": "Coke is the solid residue left after coal is heated strongly without air.",
+      "steps": [
+        "Coal is heated in the absence of air.",
+        "Volatile substances are driven off.",
+        "A carbon-rich porous solid remains.",
+        "That solid is coke, formed by destructive distillation."
+      ],
+      "final_answer": "A. destructive distillation",
+      "simple_explanation": "Coke is produced by destructive distillation of coal. Check our \"Tutorial section\" for coal products."
+    },
+    "tags": [
+      "carbon",
+      "coke",
+      "destructive_distillation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q490",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: destructive distillation of wood and coal",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The absence of air in destructive distillation is important because it",
+    "options": {
+      "A": "prevents simple combustion and allows useful products to form",
+      "B": "makes the material dissolve in water",
+      "C": "turns all carbon into diamond",
+      "D": "creates silver ions"
+    },
+    "answer": "A",
+    "answer_text": "prevents simple combustion and allows useful products to form",
+    "explanation": {
+      "question_restate": "We are to explain why destructive distillation is carried out without air.",
+      "principle": "The goal is controlled thermal decomposition, not ordinary burning.",
+      "steps": [
+        "If air were present, the material would burn away.",
+        "That would destroy many useful products.",
+        "Heating without air allows decomposition into solid, liquid and gaseous products.",
+        "Therefore the absence of air prevents simple combustion and allows useful products to form."
+      ],
+      "final_answer": "A. prevents simple combustion and allows useful products to form",
+      "simple_explanation": "Destructive distillation means strong heating without air. Check our \"Tutorial section\" for process principles."
+    },
+    "tags": [
+      "carbon",
+      "destructive_distillation"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q491",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: synthetic gas",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Synthetic gas is mainly a mixture of",
+    "options": {
+      "A": "CO and H₂",
+      "B": "CO₂ and O₂",
+      "C": "N₂ and H₂",
+      "D": "Cl₂ and H₂"
+    },
+    "answer": "A",
+    "answer_text": "CO and H₂",
+    "explanation": {
+      "question_restate": "We are to identify the composition of synthetic gas.",
+      "principle": "Syngas is an industrial gas mixture used as a feedstock.",
+      "steps": [
+        "Its two main components are carbon(II) oxide and hydrogen.",
+        "This mixture is useful in several industrial syntheses.",
+        "That is why it is called synthesis gas.",
+        "Therefore synthetic gas is mainly CO and H₂."
+      ],
+      "final_answer": "A. CO and H₂",
+      "simple_explanation": "Syngas mainly contains CO and H₂. Check our \"Tutorial section\" for industrial gases."
+    },
+    "tags": [
+      "carbon",
+      "synthetic_gas"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q492",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: synthetic gas",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "An important industrial use of synthetic gas is the manufacture of",
+    "options": {
+      "A": "methanol",
+      "B": "chalk",
+      "C": "silver chloride",
+      "D": "diamond"
+    },
+    "answer": "A",
+    "answer_text": "methanol",
+    "explanation": {
+      "question_restate": "We are to identify a major product made from synthetic gas.",
+      "principle": "Syngas is a feedstock for methanol and other chemicals.",
+      "steps": [
+        "CO and H₂ are reacted under suitable conditions.",
+        "One important product formed this way is methanol.",
+        "This makes synthetic gas economically valuable.",
+        "Therefore the correct answer is methanol."
+      ],
+      "final_answer": "A. methanol",
+      "simple_explanation": "Syngas is widely used to make methanol. Check our \"Tutorial section\" for industrial applications."
+    },
+    "tags": [
+      "carbon",
+      "synthetic_gas",
+      "uses"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q493",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: carbon(IV) oxide",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "If excess CO₂ is passed through limewater after the initial milkiness appears, the mixture clears because",
+    "options": {
+      "A": "soluble calcium hydrogencarbonate forms",
+      "B": "oxygen is released",
+      "C": "AgCl dissolves",
+      "D": "NaOH is produced"
+    },
+    "answer": "A",
+    "answer_text": "soluble calcium hydrogencarbonate forms",
+    "explanation": {
+      "question_restate": "We are to explain why the milkiness in limewater disappears with excess CO₂.",
+      "principle": "The initial precipitate can dissolve when more CO₂ reacts with it.",
+      "steps": [
+        "At first, insoluble CaCO₃ is formed.",
+        "With more CO₂ and water, the CaCO₃ changes into soluble calcium hydrogencarbonate.",
+        "This dissolves in the solution.",
+        "Therefore the mixture clears because soluble calcium hydrogencarbonate forms."
+      ],
+      "final_answer": "A. soluble calcium hydrogencarbonate forms",
+      "simple_explanation": "Excess CO₂ can dissolve the first precipitate. Check our \"Tutorial section\" for gas-test exceptions."
+    },
+    "tags": [
+      "carbon",
+      "carbon_iv_oxide",
+      "limewater_test"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q494",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: carbon(II) oxide",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement about carbon(II) oxide is correct?",
+    "options": {
+      "A": "It is a neutral oxide and a reducing agent",
+      "B": "It is an acidic oxide that turns limewater milky",
+      "C": "It is a brown gas",
+      "D": "It is strongly basic in water"
+    },
+    "answer": "A",
+    "answer_text": "It is a neutral oxide and a reducing agent",
+    "explanation": {
+      "question_restate": "We are to choose a correct description of carbon(II) oxide.",
+      "principle": "CO is commonly classified as a neutral oxide but it can reduce some metallic oxides.",
+      "steps": [
+        "CO does not behave like a typical acidic oxide in water.",
+        "It can remove oxygen from certain metal oxides.",
+        "This makes it useful in metallurgy.",
+        "Therefore it is a neutral oxide and a reducing agent."
+      ],
+      "final_answer": "A. It is a neutral oxide and a reducing agent",
+      "simple_explanation": "CO is neutral as an oxide but useful as a reducing agent. Check our \"Tutorial section\" for oxide classes."
+    },
+    "tags": [
+      "carbon",
+      "carbon_ii_oxide",
+      "reducing_agent"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q495",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: allotropes",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Graphite is useful as a lubricant because",
+    "options": {
+      "A": "its layers can slide over one another easily",
+      "B": "it is extremely hard",
+      "C": "it is liquid",
+      "D": "it forms ions in water"
+    },
+    "answer": "A",
+    "answer_text": "its layers can slide over one another easily",
+    "explanation": {
+      "question_restate": "We are to explain why graphite is soft and slippery.",
+      "principle": "Graphite has a layered structure held together by weak forces between the layers.",
+      "steps": [
+        "Within each layer, the bonds are strong.",
+        "Between layers, the forces are much weaker.",
+        "This allows the layers to slide easily.",
+        "Therefore graphite is useful as a lubricant."
+      ],
+      "final_answer": "A. its layers can slide over one another easily",
+      "simple_explanation": "Graphite is slippery because its layers slide easily. Check our \"Tutorial section\" for allotrope properties."
+    },
+    "tags": [
+      "carbon",
+      "allotropes",
+      "graphite"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q496",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: coal",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "As coal changes from peat to anthracite, the carbon content generally",
+    "options": {
+      "A": "increases",
+      "B": "decreases",
+      "C": "stays exactly the same",
+      "D": "becomes zero"
+    },
+    "answer": "A",
+    "answer_text": "increases",
+    "explanation": {
+      "question_restate": "We are to identify the general trend in carbon content as coal matures.",
+      "principle": "More mature coal types tend to have higher carbon content.",
+      "steps": [
+        "Peat is relatively low in carbon and high in moisture.",
+        "Anthracite has a higher carbon content and fewer volatile impurities.",
+        "This shows an overall increase in carbon content during coalification.",
+        "Therefore the carbon content generally increases."
+      ],
+      "final_answer": "A. increases",
+      "simple_explanation": "Carbon content generally rises as coal matures. Check our \"Tutorial section\" for coal types."
+    },
+    "tags": [
+      "carbon",
+      "coal",
+      "coalification"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q497",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: coke",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In metallurgy, coke is important mainly because it acts as",
+    "options": {
+      "A": "a fuel and reducing agent",
+      "B": "an indicator",
+      "C": "a halogen",
+      "D": "a source of silver ions"
+    },
+    "answer": "A",
+    "answer_text": "a fuel and reducing agent",
+    "explanation": {
+      "question_restate": "We are to identify the role of coke in metallurgy.",
+      "principle": "Coke supplies heat and helps create reducing conditions in furnaces.",
+      "steps": [
+        "Coke burns to supply heat.",
+        "It also helps form carbon(II) oxide.",
+        "CO and carbon can reduce metal oxides.",
+        "Therefore coke acts as a fuel and reducing agent."
+      ],
+      "final_answer": "A. a fuel and reducing agent",
+      "simple_explanation": "Coke is important in metal extraction because it supplies heat and reducing power. Check our \"Tutorial section\" for metallurgy."
+    },
+    "tags": [
+      "carbon",
+      "coke",
+      "metallurgy"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q498",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: destructive distillation of wood and coal",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which product is more associated with wood than with coal in destructive distillation?",
+    "options": {
+      "A": "wood charcoal",
+      "B": "coal tar",
+      "C": "coke",
+      "D": "coal gas"
+    },
+    "answer": "A",
+    "answer_text": "wood charcoal",
+    "explanation": {
+      "question_restate": "We are to distinguish between wood and coal distillation products.",
+      "principle": "The names of the products often indicate the material from which they come.",
+      "steps": [
+        "Wood heated without air gives products such as wood charcoal.",
+        "Coal heated without air gives products such as coke, coal gas and coal tar.",
+        "Therefore wood charcoal is more associated with wood.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. wood charcoal",
+      "simple_explanation": "Keep wood products separate from coal products in revision. Check our \"Tutorial section\" for comparison tables."
+    },
+    "tags": [
+      "carbon",
+      "destructive_distillation",
+      "wood"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q499",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: synthetic gas",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Synthetic gas is called a feedstock because it",
+    "options": {
+      "A": "serves as a starting material for making other chemicals",
+      "B": "is eaten by living things",
+      "C": "contains only oxygen",
+      "D": "cannot undergo further reaction"
+    },
+    "answer": "A",
+    "answer_text": "serves as a starting material for making other chemicals",
+    "explanation": {
+      "question_restate": "We are to explain why syngas is called a feedstock.",
+      "principle": "A feedstock is a raw material used to produce other chemicals.",
+      "steps": [
+        "Syngas contains CO and H₂.",
+        "These gases can be converted into methanol and other valuable substances.",
+        "So syngas is used as a starting material in synthesis.",
+        "Therefore it is called a feedstock because it serves as a starting material for making other chemicals."
+      ],
+      "final_answer": "A. serves as a starting material for making other chemicals",
+      "simple_explanation": "Syngas is valuable because it can be turned into many useful products. Check our \"Tutorial section\" for industrial chemistry."
+    },
+    "tags": [
+      "carbon",
+      "synthetic_gas",
+      "feedstock"
+    ],
+    "active": true
+  },
+  {
+    "id": "chem_15_q500",
+    "subject_code": "chem",
+    "subject_name": "Chemistry",
+    "topic_id": "chem_15",
+    "topic_title": "Non-metals and their compounds",
+    "subtopic": "Carbon: carbon(IV) oxide and carbon(II) oxide comparison",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement best compares carbon(IV) oxide with carbon(II) oxide?",
+    "options": {
+      "A": "CO₂ is an acidic oxide, while CO is a neutral oxide and reducing agent",
+      "B": "CO₂ is a reducing gas, while CO is acidic",
+      "C": "Both are brown gases and both turn limewater milky directly",
+      "D": "CO₂ combines strongly with haemoglobin while CO does not"
+    },
+    "answer": "A",
+    "answer_text": "CO₂ is an acidic oxide, while CO is a neutral oxide and reducing agent",
+    "explanation": {
+      "question_restate": "We are to compare the two common oxides of carbon.",
+      "principle": "Carbon(IV) oxide and carbon(II) oxide differ in both classification and chemical behavior.",
+      "steps": [
+        "CO₂ is usually classified as an acidic oxide because it reacts with bases and can form an acid in water.",
+        "CO is usually classified as a neutral oxide.",
+        "CO can also act as a reducing agent in metallurgy.",
+        "Therefore the best comparison is that CO₂ is acidic, while CO is neutral and reducing."
+      ],
+      "final_answer": "A. CO₂ is an acidic oxide, while CO is a neutral oxide and reducing agent",
+      "simple_explanation": "This side-by-side comparison is common in objective chemistry questions. Check our \"Tutorial section\" for quick revision tables."
+    },
+    "tags": [
+      "carbon",
+      "carbon_iv_oxide",
+      "carbon_ii_oxide",
+      "comparison"
+    ],
+    "active": true
   }
 ]
   
