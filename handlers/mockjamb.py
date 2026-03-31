@@ -4,7 +4,6 @@
 
 import math
 import logging
-from typing import Optional
 
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CallbackQueryHandler, CommandHandler, ContextTypes
@@ -30,6 +29,56 @@ def make_mockjamb_welcome_keyboard() -> InlineKeyboardMarkup:
     )
 
 
+def make_course_page_keyboard(page: int = 1) -> InlineKeyboardMarkup:
+    courses = get_course_subject_map()
+    total_courses = len(courses)
+    total_pages = max(1, math.ceil(total_courses / COURSES_PER_PAGE))
+
+    page = max(1, min(page, total_pages))
+
+    start = (page - 1) * COURSES_PER_PAGE
+    end = start + COURSES_PER_PAGE
+    page_courses = courses[start:end]
+
+    rows = []
+
+    for course in page_courses:
+        rows.append([
+            InlineKeyboardButton(
+                course["course_name"],
+                callback_data=f"mj_course_select::{course['course_code']}"
+            )
+        ])
+
+    nav_row = []
+    if page > 1:
+        nav_row.append(
+            InlineKeyboardButton("◀ Prev", callback_data=f"mj_course_page_{page - 1}")
+        )
+    if page < total_pages:
+        nav_row.append(
+            InlineKeyboardButton("Next ▶", callback_data=f"mj_course_page_{page + 1}")
+        )
+    if nav_row:
+        rows.append(nav_row)
+
+    rows.append([InlineKeyboardButton("⬅️ Back to Mock JAMB", callback_data="mock:jamb")])
+    rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
+
+    return InlineKeyboardMarkup(rows)
+
+
+def make_course_recommendation_keyboard(course_code: str) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("✅ Use This Combination", callback_data=f"mj_use_course::{course_code}")],
+            [InlineKeyboardButton("🔁 Change Course", callback_data="mj_course_page_1")],
+            [InlineKeyboardButton("⬅️ Back to Mock JAMB", callback_data="mock:jamb")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+
 # ====================================================================
 # Message Builders
 # ====================================================================
@@ -44,43 +93,211 @@ def build_mockjamb_welcome_text() -> str:
     )
 
 
+def build_course_page_text(page: int, total_pages: int) -> str:
+    return (
+        "🎯 *Choose Your Intended Course*\n\n"
+        "Select your course below and we will recommend a likely JAMB subject combination for your mock exam.\n\n"
+        f"_Page {page} of {total_pages}_"
+    )
+
+
+def build_course_recommendation_text(course_code: str) -> str:
+    course = get_course_by_code(course_code)
+    if not course:
+        return "⚠️ Course not found."
+
+    subjects = get_course_subjects(course_code)
+
+    lines = [
+        "🎯 *Recommended Subject Combination*",
+        "",
+        f"*Course:* {course['course_name']}",
+        "",
+        "*Recommended Subjects:*",
+    ]
+
+    for subject in subjects:
+        lines.append(f"• {subject['name']}")
+
+    notes = (course.get("notes") or "").strip()
+    if notes:
+        lines.extend(["", f"_Note: {notes}_"])
+
+    lines.extend([
+        "",
+        "Do you want to continue with this combination?"
+    ])
+
+    return "\n".join(lines)
+
+
 # ====================================================================
 # Entry Handler
 # ====================================================================
 async def mockjamb_start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    text = build_mockjamb_welcome_text()
+    markup = make_mockjamb_welcome_keyboard()
+
+    context.user_data["mj_course_code"] = None
+    context.user_data["mj_subject_codes"] = []
+    context.user_data["mj_mode"] = None
+    context.user_data["mj_room_code"] = None
+
     if update.callback_query:
         query = update.callback_query
         await query.answer()
 
-        context.user_data["mj_course_code"] = None
-        context.user_data["mj_subject_codes"] = []
-        context.user_data["mj_mode"] = None
-        context.user_data["mj_room_code"] = None
-
         try:
             await query.edit_message_text(
-                build_mockjamb_welcome_text(),
+                text,
                 parse_mode="Markdown",
-                reply_markup=make_mockjamb_welcome_keyboard(),
+                reply_markup=markup,
             )
         except Exception:
             await query.message.reply_text(
-                build_mockjamb_welcome_text(),
+                text,
                 parse_mode="Markdown",
-                reply_markup=make_mockjamb_welcome_keyboard(),
+                reply_markup=markup,
             )
         return
 
     if update.message:
-        context.user_data["mj_course_code"] = None
-        context.user_data["mj_subject_codes"] = []
-        context.user_data["mj_mode"] = None
-        context.user_data["mj_room_code"] = None
-
         await update.message.reply_text(
-            build_mockjamb_welcome_text(),
+            text,
             parse_mode="Markdown",
-            reply_markup=make_mockjamb_welcome_keyboard(),
+            reply_markup=markup,
+        )
+
+
+# ====================================================================
+# Course Pagination Handler
+# ====================================================================
+async def mockjamb_course_page_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    try:
+        page = int(query.data.replace("mj_course_page_", "", 1))
+    except Exception:
+        return await query.message.reply_text("⚠️ Invalid course page.")
+
+    courses = get_course_subject_map()
+    total_courses = len(courses)
+    total_pages = max(1, math.ceil(total_courses / COURSES_PER_PAGE))
+    page = max(1, min(page, total_pages))
+
+    text = build_course_page_text(page, total_pages)
+    markup = make_course_page_keyboard(page)
+
+    try:
+        await query.edit_message_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
+# ====================================================================
+# Course Selected Handler
+# ====================================================================
+async def mockjamb_course_select_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    try:
+        _, course_code = query.data.split("::", 1)
+    except Exception:
+        return await query.message.reply_text("⚠️ Invalid course selection.")
+
+    course = get_course_by_code(course_code)
+    if not course:
+        return await query.message.reply_text("⚠️ Course not found.")
+
+    subjects = get_course_subjects(course_code)
+
+    context.user_data["mj_course_code"] = course_code
+    context.user_data["mj_subject_codes"] = [subject["code"] for subject in subjects]
+
+    text = build_course_recommendation_text(course_code)
+    markup = make_course_recommendation_keyboard(course_code)
+
+    try:
+        await query.edit_message_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
+# ====================================================================
+# Temporary "Use This Combination" Handler
+# ====================================================================
+async def mockjamb_use_course_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    try:
+        _, course_code = query.data.split("::", 1)
+    except Exception:
+        return await query.message.reply_text("⚠️ Invalid course confirmation.")
+
+    course = get_course_by_code(course_code)
+    if not course:
+        return await query.message.reply_text("⚠️ Course not found.")
+
+    subjects = get_course_subjects(course_code)
+    context.user_data["mj_course_code"] = course_code
+    context.user_data["mj_subject_codes"] = [subject["code"] for subject in subjects]
+
+    subject_names = "\n".join([f"• {subject['name']}" for subject in subjects])
+
+    text = (
+        "✅ *Subject Combination Saved*\n\n"
+        f"*Course:* {course['course_name']}\n\n"
+        "*Your Mock JAMB / UTME subjects are:*\n"
+        f"{subject_names}\n\n"
+        "Next step: we will now build the screen where you choose whether to *Write Alone* or *Invite Friends*."
+    )
+
+    markup = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("⬅️ Change Course", callback_data="mj_course_page_1")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+    try:
+        await query.edit_message_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
         )
 
 
@@ -90,4 +307,6 @@ async def mockjamb_start_handler(update: Update, context: ContextTypes.DEFAULT_T
 def register_handlers(application):
     application.add_handler(CommandHandler("mockjamb", mockjamb_start_handler))
     application.add_handler(CallbackQueryHandler(mockjamb_start_handler, pattern=r"^mock:jamb$"))
-
+    application.add_handler(CallbackQueryHandler(mockjamb_course_page_handler, pattern=r"^mj_course_page_"))
+    application.add_handler(CallbackQueryHandler(mockjamb_course_select_handler, pattern=r"^mj_course_select::"))
+    application.add_handler(CallbackQueryHandler(mockjamb_use_course_handler, pattern=r"^mj_use_course::"))
