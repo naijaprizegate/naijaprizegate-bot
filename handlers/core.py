@@ -120,10 +120,11 @@ def build_main_menu_keyboard():
             [InlineKeyboardButton("🧠 Play Trivia Questions (Win iPhone 17 Pro Max)", callback_data="playtrivia")],
             [InlineKeyboardButton("⚔️ Challenge Friends (Free)", callback_data="challenge:start")],
             [InlineKeyboardButton("🔥 Battle Mode (Free)", callback_data="battle:menu")],
-            [InlineKeyboardButton("🎓 JAMB Practice", callback_data="jambpractice")],
+            [InlineKeyboardButton("🎓 JAMB / WAEC / NECO Practice", callback_data="exam:hub")],
             [InlineKeyboardButton("📂 Other Menu", callback_data="menu:other")],
         ]
     )
+
 
 
 def build_other_menu_keyboard():
@@ -136,6 +137,19 @@ def build_other_menu_keyboard():
             [InlineKeyboardButton("📘 Terms & Fair Play", callback_data="terms")],
             [InlineKeyboardButton("❓ FAQs", callback_data="faq")],
             [InlineKeyboardButton("📩 Contact Support / Admin", callback_data="support:start")],
+            [InlineKeyboardButton("⬅️ Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+
+def build_exam_hub_keyboard():
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("🎓 JAMB Practice", callback_data="jambpractice")],
+            [InlineKeyboardButton("📝 Mock JAMB / UTME", callback_data="mock:jamb")],
+            [InlineKeyboardButton("📘 WAEC / NECO Practice", callback_data="waecneco:practice")],
+            [InlineKeyboardButton("🧪 Mock WAEC / NECO Exams", callback_data="mock:waecneco")],
+            [InlineKeyboardButton("📚 Tutorials", callback_data="tutorials")],
             [InlineKeyboardButton("⬅️ Back to Main Menu", callback_data="menu:main")],
         ]
     )
@@ -162,11 +176,47 @@ def build_start_text(user_first_name: str) -> str:
     )
 
 
+def build_exam_hub_text() -> str:
+    return (
+        "🎓 *Welcome to Exam Practice Hub*\n\n"
+        "Prepare for JAMB, WAEC, and NECO with practice questions, mock exams, and tutorials.\n\n"
+        "Choose how you want to begin:"
+    )
+
+
+
 def build_other_menu_text() -> str:
     return (
         "📂 *Other Menu*\n\n"
         "Choose any of the options below:"
     )
+
+
+# ----------------------------------------
+# Exam Hub Handler
+# ---------------------------------------
+async def exam_hub_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    text = build_exam_hub_text()
+    markup = build_exam_hub_keyboard()
+
+    try:
+        await query.edit_message_text(
+            text,
+            reply_markup=markup,
+            parse_mode="Markdown",
+        )
+    except Exception:
+        await query.message.reply_text(
+            text,
+            reply_markup=markup,
+            parse_mode="Markdown",
+        )
 
 
 # ===============================================================
@@ -526,6 +576,7 @@ def register_handlers(application):
     # ---------------------------------------------------
     # Callback buttons
     # ---------------------------------------------------
+    application.add_handler(CallbackQueryHandler(exam_hub_handler, pattern=r"^exam:hub$"))
     application.add_handler(CallbackQueryHandler(other_menu_handler, pattern=r"^menu:other$"))
     application.add_handler(CallbackQueryHandler(go_start_callback, pattern=r"^menu:main$"))
     application.add_handler(CallbackQueryHandler(go_start_callback, pattern=r"^go_start$"))
