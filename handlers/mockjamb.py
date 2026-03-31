@@ -60,13 +60,13 @@ async def mockjamb_start_handler(update: Update, context: ContextTypes.DEFAULT_T
         try:
             await query.edit_message_text(
                 build_mockjamb_welcome_text(),
-                parse_mode="MarkdownV2",
+                parse_mode="Markdown",
                 reply_markup=make_mockjamb_welcome_keyboard(),
             )
         except Exception:
             await query.message.reply_text(
                 build_mockjamb_welcome_text(),
-                parse_mode="MarkdownV2",
+                parse_mode="Markdown",
                 reply_markup=make_mockjamb_welcome_keyboard(),
             )
         return
@@ -79,7 +79,7 @@ async def mockjamb_start_handler(update: Update, context: ContextTypes.DEFAULT_T
 
         await update.message.reply_text(
             build_mockjamb_welcome_text(),
-            parse_mode="MarkdownV2",
+            parse_mode="Markdown",
             reply_markup=make_mockjamb_welcome_keyboard(),
         )
 
@@ -90,3 +90,4 @@ async def mockjamb_start_handler(update: Update, context: ContextTypes.DEFAULT_T
 def register_handlers(application):
     application.add_handler(CommandHandler("mockjamb", mockjamb_start_handler))
     application.add_handler(CallbackQueryHandler(mockjamb_start_handler, pattern=r"^mock:jamb$"))
+
