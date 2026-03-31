@@ -38,7 +38,7 @@ def build_mockjamb_welcome_text() -> str:
         "📝 *Welcome to Mock JAMB / UTME*\n\n"
         "This mock exam is designed to simulate the real UTME experience.\n\n"
         "You will write *4 subjects*:\n"
-        "• *Use of English* \\(compulsory\\)\n"
+        "• *Use of English* (compulsory)\n"
         "• *3 other subjects* based on your intended course\n\n"
         "To begin, choose your intended course and we will recommend a likely JAMB subject combination for you."
     )
