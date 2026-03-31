@@ -67,6 +67,7 @@ from services.airtime_service import handle_claim_airtime_button, handle_airtime
 from handlers.support import support_conv, admin_reply
 from handlers.challenge import register_handlers as register_challenge_handlers
 from tasks import start_background_tasks, stop_background_tasks
+from handlers.mockjamb import register_handlers as register_mockjamb_handlers
 
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
@@ -210,6 +211,7 @@ async def on_startup():
         core.register_handlers(application)
         playtrivia.register_handlers(application)
         jambpractice.register_handlers(application)
+        register_mockjamb_handlers(application)
         battle.register_handlers(application)
         register_challenge_handlers(application)
         free.register_handlers(application)
