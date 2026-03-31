@@ -355,7 +355,7 @@ def make_mode_keyboard(subject_code: str):
     return InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("📚 By Topics", callback_data=f"jp_mode_topics_{subject_code}")],
-            [InlineKeyboardButton("📝 Mock UTME", callback_data=f"jp_mode_mock_{subject_code}")],
+            [InlineKeyboardButton("📝 Mock UTME (By Subject)", callback_data=f"jp_mode_mock_{subject_code}")],
             [InlineKeyboardButton("⬅️ Back to Subjects", callback_data="jambpractice")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
