@@ -52,5 +52,35 @@
     "name": "Geography",
     "folder": "geography",
     "active": true
+  },
+  {
+    "code": "acct",
+    "name": "Accounting",
+    "folder": "accounting",
+    "active": true
+  },
+  {
+    "code": "comm",
+    "name": "Commerce",
+    "folder": "commerce",
+    "active": true
+  },
+  {
+    "code": "agric",
+    "name": "Agricultural Science",
+    "folder": "agricultural_science",
+    "active": true
+  },
+  {
+    "code": "crs",
+    "name": "Christian Religious Studies",
+    "folder": "christian_religious_studies",
+    "active": true
+  },
+  {
+    "code": "irs",
+    "name": "Islamic Religious Studies",
+    "folder": "islamic_religious_studies",
+    "active": true
   }
 ]
