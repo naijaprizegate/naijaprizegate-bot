@@ -305,14 +305,16 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return
 
         if arg.startswith("payok_mockjamb_"):
+            tx_ref = arg.replace("payok_mockjamb_", "", 1).strip()
+
             if update.message:
                 await update.message.reply_text(
-                    "✅ *Payment confirmed!*\n\nOpening *Mock JAMB / UTME* now...",
+                    "✅ *Payment confirmed!*\n\nPreparing your *Mock JAMB / UTME* exam...",
                     parse_mode="Markdown",
                 )
 
-            from handlers.mockjamb import mockjamb_start_handler
-            await mockjamb_start_handler(update, context)
+            from handlers.mockjamb import mockjamb_payment_success_handler
+            await mockjamb_payment_success_handler(update, context, tx_ref)
             return
         
         # -------------------------------------------------------
