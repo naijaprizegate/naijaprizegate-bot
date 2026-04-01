@@ -127,7 +127,7 @@ async def create_checkout(
         logger.warning("🚫 Invalid MOCKJAMB amount=%s user_id=%s", amount, user_id)
         return None
 
-    if product_type not in {"TRIVIA", "JAMB"}:
+    if product_type not in {"TRIVIA", "JAMB", "MOCKJAMB"}:
         logger.warning("🚫 Unknown product_type=%s user_id=%s", product_type, user_id)
         return None
 
