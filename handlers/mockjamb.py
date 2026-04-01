@@ -2,14 +2,18 @@
 # handlers/mockjamb.py
 # ====================================================================
 
+import json
 import math
 import logging
 
+from sqlalchemy import text
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CallbackQueryHandler, CommandHandler, ContextTypes
 
 from jamb_loader import get_course_subject_map, get_course_by_code, get_course_subjects
-
+from db import get_async_session
+from services.flutterwave_client import create_checkout, build_tx_ref
+from services.mockjamb_payments import create_pending_mockjamb_payment
 
 logger = logging.getLogger(__name__)
 
@@ -445,26 +449,90 @@ async def mockjamb_pay_solo_handler(update: Update, context: ContextTypes.DEFAUL
     await query.answer()
 
     course_code = context.user_data.get("mj_course_code")
-    if not course_code:
+    subject_codes = context.user_data.get("mj_subject_codes") or []
+
+    if not course_code or not subject_codes:
         return await query.message.reply_text(
-            "⚠️ No saved course found. Please choose your course again."
+            "⚠️ Your Mock JAMB setup is incomplete.\n\nPlease choose your course again.",
+            reply_markup=make_mockjamb_welcome_keyboard(),
         )
 
     course = get_course_by_code(course_code)
-    subjects = get_course_subjects(course_code)
-    subject_lines = "\n".join([f"• {subject['name']}" for subject in subjects])
+    if not course:
+        return await query.message.reply_text(
+            "⚠️ Course not found. Please choose your course again."
+        )
+
+    amount = MOCKJAMB_SOLO_FEE
+    user = query.from_user
+    tg_id = user.id
+    username = user.username or f"user_{tg_id}"
+    email = f"{username}@naijaprizegate.ng"
+
+    tx_ref = build_tx_ref("MOCKJAMB")
+    subject_codes_json = json.dumps(subject_codes)
+
+    async with get_async_session() as session:
+        await create_pending_mockjamb_payment(
+            session,
+            payment_reference=tx_ref,
+            user_id=tg_id,
+            amount_paid=amount,
+            course_code=course_code,
+            subject_codes_json=subject_codes_json,
+            exam_mode="solo",
+        )
+        await session.commit()
+
+    checkout_url = await create_checkout(
+        user_id=tg_id,
+        amount=amount,
+        username=username,
+        email=email,
+        tx_ref=tx_ref,
+        meta={
+            "tg_id": str(tg_id),
+            "username": username,
+            "product_type": "MOCKJAMB",
+            "course_code": course_code,
+            "exam_mode": "solo",
+        },
+        product_type="MOCKJAMB",
+    )
+
+    if not checkout_url:
+        async with get_async_session() as session:
+            await session.execute(
+                text("""
+                    update mockjamb_payments
+                    set
+                        payment_status = 'expired',
+                        updated_at = now()
+                    where payment_reference = :payment_reference
+                      and lower(coalesce(payment_status, '')) = 'pending'
+                """),
+                {"payment_reference": tx_ref},
+            )
+            await session.commit()
+
+        return await query.message.reply_text(
+            "⚠️ Payment service is unavailable right now. Please try again shortly."
+        )
+
+    subject_names = "\n".join([f"• {subject['name']}" for subject in get_course_subjects(course_code)])
 
     text = (
-        "✅ *Solo Payment Step Reached*\n\n"
+        "💳 *Mock JAMB / UTME Payment*\n\n"
         f"*Course:* {course['course_name']}\n\n"
         "*Subjects:*\n"
-        f"{subject_lines}\n\n"
-        f"*Amount to Pay:* ₦{MOCKJAMB_SOLO_FEE}\n\n"
-        "Next step: we will connect this button to your real payment flow."
+        f"{subject_names}\n\n"
+        f"*Amount:* ₦{amount}\n\n"
+        "Tap below to complete your payment securely."
     )
 
     markup = InlineKeyboardMarkup(
         [
+            [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
             [InlineKeyboardButton("⬅️ Back", callback_data="mj_mode_solo")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
