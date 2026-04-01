@@ -14,8 +14,16 @@ from jamb_loader import get_course_subject_map, get_course_by_code, get_course_s
 from db import get_async_session
 from services.flutterwave_client import create_checkout, build_tx_ref
 from services.mockjamb_payments import create_pending_mockjamb_payment, get_mockjamb_payment
-from services.mockjamb_session_service import get_or_create_mockjamb_session_from_payment
-from services.mockjamb_exam_service import start_mockjamb_subject
+from services.mockjamb_session_service import (
+    get_or_create_mockjamb_session_from_payment,
+    mark_mockjamb_subject_completed,
+    get_mockjamb_session_by_payment_reference,
+)
+from services.mockjamb_exam_service import (
+    start_mockjamb_subject,
+    answer_mockjamb_question,
+    calculate_mockjamb_subject_score,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -128,6 +136,49 @@ def get_course_subjects_for_code(subject_code: str):
     from jamb_loader import get_subject_by_code
     return get_subject_by_code(subject_code)
 
+
+def make_mockjamb_question_answer_keyboard(
+    subject_code: str,
+    question_order: int,
+) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("A", callback_data=f"mj_ans::{subject_code}::{question_order}::A"),
+                InlineKeyboardButton("B", callback_data=f"mj_ans::{subject_code}::{question_order}::B"),
+            ],
+            [
+                InlineKeyboardButton("C", callback_data=f"mj_ans::{subject_code}::{question_order}::C"),
+                InlineKeyboardButton("D", callback_data=f"mj_ans::{subject_code}::{question_order}::D"),
+            ],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+
+def make_mockjamb_next_subject_keyboard(subject_codes: list[str]) -> InlineKeyboardMarkup:
+    rows = []
+
+    for code in subject_codes:
+        subject = get_subject_by_code(code)
+        if subject:
+            rows.append([
+                InlineKeyboardButton(
+                    f"📘 Start {subject['name']}",
+                    callback_data=f"mj_start_subject::{code}"
+                )
+            ])
+
+    rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
+    return InlineKeyboardMarkup(rows)
+
+
+def make_mockjamb_final_result_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
 
 # ====================================================================
 # Message Builders
@@ -266,7 +317,7 @@ def build_mockjamb_live_question_text(
         options = {}
 
     lines = [
-        f"📝 *Mock JAMB / UTME*",
+        "📝 *Mock JAMB / UTME*",
         "",
         f"*Subject:* {subject_name}",
         f"*Question:* {question_number} of {total_questions}",
@@ -284,10 +335,77 @@ def build_mockjamb_live_question_text(
         f"C. {options.get('C', '---')}",
         f"D. {options.get('D', '---')}",
         "",
-        "_Answer handling is the next step. For now, this confirms the real subject paper and timer flow are working._",
+        "Choose your answer below.",
     ])
 
     return "\n".join(lines)
+
+
+def build_mockjamb_subject_completed_text(
+    *,
+    course_code: str,
+    completed_subject_code: str,
+    score_100: int,
+    remaining_subject_codes: list[str],
+) -> str:
+    course = get_course_by_code(course_code)
+    completed_subject = get_subject_by_code(completed_subject_code)
+
+    course_name = course["course_name"] if course else course_code
+    subject_name = completed_subject["name"] if completed_subject else completed_subject_code.upper()
+
+    lines = [
+        "✅ *Subject Completed*",
+        "",
+        f"*Course:* {course_name}",
+        f"*Completed Subject:* {subject_name}",
+        f"*Score:* {score_100}",
+        "",
+    ]
+
+    if remaining_subject_codes:
+        lines.append("*Choose your next subject:*")
+        for code in remaining_subject_codes:
+            subject = get_subject_by_code(code)
+            if subject:
+                lines.append(f"• {subject['name']}")
+    else:
+        lines.append("All subjects completed.")
+
+    return "\n".join(lines)
+
+
+def build_mockjamb_final_result_text(
+    *,
+    course_code: str,
+    subject_codes: list[str],
+    scores: dict,
+) -> str:
+    course = get_course_by_code(course_code)
+    course_name = course["course_name"] if course else course_code
+
+    aggregate = 0
+    lines = [
+        "📊 *Mock JAMB / UTME Result*",
+        "",
+        f"*Course:* {course_name}",
+        "",
+    ]
+
+    for code in subject_codes:
+        subject = get_subject_by_code(code)
+        subject_name = subject["name"] if subject else code.upper()
+        score = int(scores.get(code) or 0)
+        aggregate += score
+        lines.append(f"{subject_name} {score}")
+
+    lines.extend([
+        "",
+        f"*Aggregate:* {aggregate}",
+    ])
+
+    return "\n".join(lines)
+
 
 # ====================================================================
 # Entry Handler
@@ -761,7 +879,6 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
         return await query.message.reply_text("⚠️ Invalid subject selection.")
 
     payment_reference = context.user_data.get("mj_payment_reference")
-    mj_course_code = context.user_data.get("mj_course_code")
     mj_subject_codes = context.user_data.get("mj_subject_codes") or []
 
     if not payment_reference:
@@ -787,7 +904,12 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
             await session.commit()
         except Exception as e:
             await session.rollback()
-            logger.exception("Failed to start Mock JAMB subject | tx_ref=%s | subject=%s | err=%s", payment_reference, subject_code, e)
+            logger.exception(
+                "Failed to start Mock JAMB subject | tx_ref=%s | subject=%s | err=%s",
+                payment_reference,
+                subject_code,
+                e,
+            )
             return await query.message.reply_text(
                 "⚠️ Could not start this subject right now. Please try again."
             )
@@ -811,11 +933,9 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
         exam_ends_at=session_row.get("exam_ends_at"),
     )
 
-    markup = InlineKeyboardMarkup(
-        [
-            [InlineKeyboardButton("⬅️ Back to Subject Choice", callback_data="payok_mockjamb_return")],
-            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
-        ]
+    markup = make_mockjamb_question_answer_keyboard(
+        subject_code=subject_code,
+        question_order=1,
     )
 
     try:
@@ -829,8 +949,167 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
             message_text,
             parse_mode="Markdown",
             reply_markup=markup,
-        )          
+        )        
 
+
+# -----------------------------------------------
+# Mock JAMB Answer Handler
+# -----------------------------------------------
+async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    try:
+        _, subject_code, question_order_raw, selected_option = query.data.split("::", 3)
+        question_order = int(question_order_raw)
+    except Exception:
+        return await query.message.reply_text("⚠️ Invalid answer submission.")
+
+    payment_reference = context.user_data.get("mj_payment_reference")
+    course_code = context.user_data.get("mj_course_code")
+    subject_codes = context.user_data.get("mj_subject_codes") or []
+
+    if not payment_reference or not course_code:
+        return await query.message.reply_text(
+            "⚠️ Mock JAMB exam session not found."
+        )
+
+    async with get_async_session() as session:
+        try:
+            answer_result = await answer_mockjamb_question(
+                session,
+                payment_reference=payment_reference,
+                subject_code=subject_code,
+                question_order=question_order,
+                selected_option=selected_option,
+            )
+
+            if answer_result.get("status") == "next_question":
+                await session.commit()
+
+                next_question = answer_result["next_question"]
+                next_question_order = int(answer_result["next_question_order"])
+                total_questions = int(answer_result["total_questions"])
+
+                session_row = await get_mockjamb_session_by_payment_reference(
+                    session,
+                    payment_reference,
+                )
+
+                context.user_data["mj_current_subject_code"] = subject_code
+                context.user_data["mj_current_question_order"] = next_question_order
+
+                message_text = build_mockjamb_live_question_text(
+                    subject_code=subject_code,
+                    question_row=next_question,
+                    question_number=next_question_order,
+                    total_questions=total_questions,
+                    exam_ends_at=(session_row or {}).get("exam_ends_at"),
+                )
+
+                markup = make_mockjamb_question_answer_keyboard(
+                    subject_code=subject_code,
+                    question_order=next_question_order,
+                )
+
+                try:
+                    await query.edit_message_text(
+                        message_text,
+                        parse_mode="Markdown",
+                        reply_markup=markup,
+                    )
+                except Exception:
+                    await query.message.reply_text(
+                        message_text,
+                        parse_mode="Markdown",
+                        reply_markup=markup,
+                    )
+                return
+
+            if answer_result.get("status") == "completed_subject":
+                score_info = await calculate_mockjamb_subject_score(
+                    session,
+                    payment_reference=payment_reference,
+                    subject_code=subject_code,
+                )
+
+                session_row = await mark_mockjamb_subject_completed(
+                    session,
+                    payment_reference=payment_reference,
+                    subject_code=subject_code,
+                    score=int(score_info["score_100"]),
+                )
+                await session.commit()
+
+                if not session_row:
+                    return await query.message.reply_text(
+                        "⚠️ Could not finalize this subject."
+                    )
+
+                try:
+                    completed_subjects = json.loads(session_row.get("completed_subjects_json") or "[]")
+                except Exception:
+                    completed_subjects = []
+
+                try:
+                    scores = json.loads(session_row.get("scores_json") or "{}")
+                except Exception:
+                    scores = {}
+
+                remaining_subject_codes = [
+                    code for code in subject_codes if code not in completed_subjects
+                ]
+
+                if remaining_subject_codes:
+                    message_text = build_mockjamb_subject_completed_text(
+                        course_code=course_code,
+                        completed_subject_code=subject_code,
+                        score_100=int(score_info["score_100"]),
+                        remaining_subject_codes=remaining_subject_codes,
+                    )
+                    markup = make_mockjamb_next_subject_keyboard(remaining_subject_codes)
+                else:
+                    message_text = build_mockjamb_final_result_text(
+                        course_code=course_code,
+                        subject_codes=subject_codes,
+                        scores=scores,
+                    )
+                    markup = make_mockjamb_final_result_keyboard()
+
+                try:
+                    await query.edit_message_text(
+                        message_text,
+                        parse_mode="Markdown",
+                        reply_markup=markup,
+                    )
+                except Exception:
+                    await query.message.reply_text(
+                        message_text,
+                        parse_mode="Markdown",
+                        reply_markup=markup,
+                    )
+                return
+
+            await session.rollback()
+            return await query.message.reply_text(
+                "⚠️ Could not process that answer."
+            )
+
+        except Exception as e:
+            await session.rollback()
+            logger.exception(
+                "Failed to process Mock JAMB answer | tx_ref=%s | subject=%s | q=%s | err=%s",
+                payment_reference,
+                subject_code,
+                question_order,
+                e,
+            )
+            return await query.message.reply_text(
+                "⚠️ Could not process your answer right now. Please try again."
+            )
 
 # -------------------------------------------------
 # Mock JAMB Return to Exam Ready Handler
@@ -880,5 +1159,6 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_mode_friends_handler, pattern=r"^mj_mode_friends$"))
     application.add_handler(CallbackQueryHandler(mockjamb_pay_solo_handler, pattern=r"^mj_pay_solo$"))
     application.add_handler(CallbackQueryHandler(mockjamb_start_subject_handler, pattern=r"^mj_start_subject::"))
+    application.add_handler(CallbackQueryHandler(mockjamb_answer_handler, pattern=r"^mj_ans::"))
     application.add_handler(CallbackQueryHandler(mockjamb_return_to_exam_ready_handler, pattern=r"^payok_mockjamb_return$"))
 
