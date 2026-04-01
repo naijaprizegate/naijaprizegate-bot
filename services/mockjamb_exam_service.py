@@ -15,6 +15,7 @@ from services.mockjamb_session_service import (
     start_mockjamb_session_if_needed,
     set_mockjamb_current_subject,
     get_mockjamb_session_by_payment_reference,
+    mark_mockjamb_subject_completed,
 )
 
 logger = logging.getLogger("mockjamb_exam_service")
@@ -257,3 +258,135 @@ async def start_mockjamb_subject(
         "paper_info": paper_info,
         "current_question": current_question,
     }
+
+
+async def answer_mockjamb_question(
+    session: AsyncSession,
+    *,
+    payment_reference: str,
+    subject_code: str,
+    question_order: int,
+    selected_option: str,
+) -> dict:
+    current_question = await get_mockjamb_subject_question_by_order(
+        session,
+        payment_reference=payment_reference,
+        subject_code=subject_code,
+        question_order=question_order,
+    )
+
+    if not current_question:
+        return {
+            "status": "error",
+            "reason": "question_not_found",
+        }
+
+    selected_option = str(selected_option).strip().upper()
+    correct_option = str(current_question.get("correct_option") or "").strip().upper()
+    is_correct = selected_option == correct_option if correct_option else False
+
+    await session.execute(
+        text("""
+            update public.mockjamb_subject_questions
+            set
+                selected_option = :selected_option,
+                is_correct = :is_correct,
+                updated_at = now()
+            where payment_reference = :payment_reference
+              and subject_code = :subject_code
+              and question_order = :question_order
+        """),
+        {
+            "payment_reference": payment_reference,
+            "subject_code": subject_code,
+            "question_order": int(question_order),
+            "selected_option": selected_option,
+            "is_correct": bool(is_correct),
+        },
+    )
+
+    paper_rows = await get_mockjamb_subject_paper(
+        session,
+        payment_reference=payment_reference,
+        subject_code=subject_code,
+    )
+    total_questions = len(paper_rows)
+
+    next_question_order = int(question_order) + 1
+
+    if next_question_order > total_questions:
+        return {
+            "status": "completed_subject",
+            "selected_option": selected_option,
+            "is_correct": is_correct,
+            "total_questions": total_questions,
+        }
+
+    next_question = await get_mockjamb_subject_question_by_order(
+        session,
+        payment_reference=payment_reference,
+        subject_code=subject_code,
+        question_order=next_question_order,
+    )
+
+    await session.execute(
+        text("""
+            update public.mockjamb_sessions
+            set
+                current_question_index = :current_question_index,
+                updated_at = now()
+            where payment_reference = :payment_reference
+        """),
+        {
+            "payment_reference": payment_reference,
+            "current_question_index": int(next_question_order - 1),
+        },
+    )
+
+    return {
+        "status": "next_question",
+        "selected_option": selected_option,
+        "is_correct": is_correct,
+        "next_question": next_question,
+        "next_question_order": next_question_order,
+        "total_questions": total_questions,
+    }
+
+
+async def calculate_mockjamb_subject_score(
+    session: AsyncSession,
+    *,
+    payment_reference: str,
+    subject_code: str,
+) -> dict:
+    result = await session.execute(
+        text("""
+            select
+                count(*) as total_questions,
+                coalesce(sum(case when is_correct = true then 1 else 0 end), 0) as correct_count
+            from public.mockjamb_subject_questions
+            where payment_reference = :payment_reference
+              and subject_code = :subject_code
+        """),
+        {
+            "payment_reference": payment_reference,
+            "subject_code": subject_code,
+        },
+    )
+    row = result.mappings().first() or {}
+
+    total_questions = int(row.get("total_questions") or 0)
+    correct_count = int(row.get("correct_count") or 0)
+
+    if total_questions <= 0:
+        score_100 = 0
+    else:
+        score_100 = round((correct_count / total_questions) * 100)
+
+    return {
+        "total_questions": total_questions,
+        "correct_count": correct_count,
+        "score_100": int(score_100),
+    }
+
+
