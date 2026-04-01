@@ -304,6 +304,17 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await jambpractice_handler(update, context)
             return
 
+        if arg.startswith("payok_mockjamb_"):
+            if update.message:
+                await update.message.reply_text(
+                    "✅ *Payment confirmed!*\n\nOpening *Mock JAMB / UTME* now...",
+                    parse_mode="Markdown",
+                )
+
+            from handlers.mockjamb import mockjamb_start_handler
+            await mockjamb_start_handler(update, context)
+            return
+        
         # -------------------------------------------------------
         # PAYMENT FAILED DEEP LINKS
         # -------------------------------------------------------
@@ -327,6 +338,17 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             from handlers.jambpractice import jambpractice_handler
             await jambpractice_handler(update, context)
+            return
+
+        if arg.startswith("payfail_mockjamb_"):
+            if update.message:
+                await update.message.reply_text(
+                    "❌ *Mock JAMB / UTME payment was not completed.*\n\nPlease try again.",
+                    parse_mode="Markdown",
+                )
+
+            from handlers.mockjamb import mockjamb_start_handler
+            await mockjamb_start_handler(update, context)
             return
 
         # -------------------------------------------------------
@@ -602,3 +624,5 @@ def register_handlers(application):
         ),
         group=20,
     )
+
+
