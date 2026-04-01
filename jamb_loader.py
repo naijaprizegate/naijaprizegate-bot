@@ -199,6 +199,7 @@ def get_topic_by_id(subject_code: str, topic_id: str) -> Optional[Dict[str, Any]
 # ====================================================================
 # QUESTIONS
 # ====================================================================
+
 def get_questions_for_topic(subject_code: str, topic_id: str) -> List[Dict[str, Any]]:
     """
     Load all active questions for a given subject/topic.
@@ -218,6 +219,87 @@ def get_questions_for_topic(subject_code: str, topic_id: str) -> List[Dict[str, 
 
     active_questions = [q for q in questions if q.get("active") is True]
     return active_questions
+
+
+def get_all_questions_for_subject(subject_code: str) -> List[Dict[str, Any]]:
+    """
+    Load all active questions across all active topics for a subject.
+
+    Example:
+    - biology -> loads questions from all active Biology topic files
+    """
+    topics = get_subject_topics(subject_code)
+    all_questions: List[Dict[str, Any]] = []
+
+    for topic in topics:
+        topic_id = topic.get("id")
+        if not topic_id:
+            continue
+
+        try:
+            topic_questions = get_questions_for_topic(subject_code, topic_id)
+            all_questions.extend(topic_questions)
+        except Exception:
+            # Skip broken topic files without crashing the whole subject loader
+            continue
+
+    return all_questions
+
+
+def get_available_subject_questions_excluding_seen(
+    subject_code: str,
+    seen_question_ids: List[str],
+) -> List[Dict[str, Any]]:
+    """
+    Load all active questions for a subject across all topics
+    and exclude questions the user has already seen in that subject.
+    """
+    all_questions = get_all_questions_for_subject(subject_code)
+    remaining_questions = [
+        q for q in all_questions if q.get("id") not in seen_question_ids
+    ]
+    return remaining_questions
+
+
+def prepare_subject_question_batch(
+    subject_code: str,
+    requested_count: int,
+    seen_question_ids: List[str],
+) -> Dict[str, Any]:
+    """
+    Prepare a subject-wide batch of questions across all topics.
+
+    Logic:
+    - load all active questions for the subject across all active topics
+    - exclude seen questions
+    - if no remaining questions, reset cycle
+    - shuffle remaining questions
+    - cap requested count to available count
+    """
+    all_questions = get_all_questions_for_subject(subject_code)
+    all_question_ids = extract_question_ids(all_questions)
+
+    unseen_questions = [
+        q for q in all_questions if q.get("id") not in seen_question_ids
+    ]
+
+    cycle_reset = False
+
+    if not unseen_questions:
+        unseen_questions = all_questions[:]
+        cycle_reset = True
+
+    shuffled = shuffle_questions(unseen_questions)
+    selected_questions = limit_questions(shuffled, requested_count)
+
+    return {
+        "cycle_reset": cycle_reset,
+        "all_question_ids": all_question_ids,
+        "available_count": len(unseen_questions),
+        "selected_count": len(selected_questions),
+        "selected_questions": selected_questions,
+        "selected_question_ids": extract_question_ids(selected_questions),
+    }
 
 
 def shuffle_questions(questions: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
