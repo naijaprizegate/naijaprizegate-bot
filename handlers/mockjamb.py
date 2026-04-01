@@ -519,9 +519,11 @@ async def mockjamb_pay_solo_handler(update: Update, context: ContextTypes.DEFAUL
             "⚠️ Payment service is unavailable right now. Please try again shortly."
         )
 
-    subject_names = "\n".join([f"• {subject['name']}" for subject in get_course_subjects(course_code)])
+    subject_names = "\n".join(
+        [f"• {subject['name']}" for subject in get_course_subjects(course_code)]
+    )
 
-    text = (
+    message_text = (
         "💳 *Mock JAMB / UTME Payment*\n\n"
         f"*Course:* {course['course_name']}\n\n"
         "*Subjects:*\n"
@@ -540,17 +542,17 @@ async def mockjamb_pay_solo_handler(update: Update, context: ContextTypes.DEFAUL
 
     try:
         await query.edit_message_text(
-            text,
+            message_text,
             parse_mode="Markdown",
             reply_markup=markup,
         )
     except Exception:
         await query.message.reply_text(
-            text,
+            message_text,
             parse_mode="Markdown",
             reply_markup=markup,
         )
-
+        
 
 # ====================================================================
 # Register Handlers
