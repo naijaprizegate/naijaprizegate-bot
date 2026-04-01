@@ -15,6 +15,7 @@ logger = logging.getLogger(__name__)
 
 COURSES_PER_PAGE = 6
 
+MOCKJAMB_SOLO_FEE = 100
 
 # ====================================================================
 # Keyboards
@@ -90,6 +91,16 @@ def make_mockjamb_mode_keyboard() -> InlineKeyboardMarkup:
     )
 
 
+def make_mockjamb_solo_payment_keyboard(course_code: str) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton(f"💳 Pay ₦{MOCKJAMB_SOLO_FEE}", callback_data="mj_pay_solo")],
+            [InlineKeyboardButton("⬅️ Back", callback_data=f"mj_use_course::{course_code}")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+
 # ====================================================================
 # Message Builders
 # ====================================================================
@@ -156,6 +167,24 @@ def build_mockjamb_mode_text(course_code: str) -> str:
         "*Your Mock JAMB / UTME subjects are:*\n"
         f"{subject_lines}\n\n"
         "How would you like to take this mock exam?"
+    )
+
+
+def build_mockjamb_solo_payment_text(course_code: str) -> str:
+    course = get_course_by_code(course_code)
+    if not course:
+        return "⚠️ Course not found."
+
+    subjects = get_course_subjects(course_code)
+    subject_lines = "\n".join([f"• {subject['name']}" for subject in subjects])
+
+    return (
+        "💳 *Mock JAMB / UTME Solo Access*\n\n"
+        f"*Course:* {course['course_name']}\n\n"
+        "*Subjects:*\n"
+        f"{subject_lines}\n\n"
+        f"*Exam Fee:* ₦{MOCKJAMB_SOLO_FEE}\n\n"
+        "Tap below to continue to payment."
     )
 
 
@@ -316,7 +345,7 @@ async def mockjamb_use_course_handler(update: Update, context: ContextTypes.DEFA
 
 
 # ====================================================================
-# Temporary Solo Mode Handler
+# Solo Mode Handler
 # ====================================================================
 async def mockjamb_mode_solo_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -334,24 +363,8 @@ async def mockjamb_mode_solo_handler(update: Update, context: ContextTypes.DEFAU
             reply_markup=make_mockjamb_welcome_keyboard(),
         )
 
-    course = get_course_by_code(course_code)
-    subjects = get_course_subjects(course_code)
-    subject_lines = "\n".join([f"• {subject['name']}" for subject in subjects])
-
-    text = (
-        "🧍 *Write Alone Selected*\n\n"
-        f"*Course:* {course['course_name']}\n\n"
-        "*Subjects:*\n"
-        f"{subject_lines}\n\n"
-        "Next step: we will build the payment screen for solo mock exam access."
-    )
-
-    markup = InlineKeyboardMarkup(
-        [
-            [InlineKeyboardButton("⬅️ Back", callback_data=f"mj_use_course::{course_code}")],
-            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
-        ]
-    )
+    text = build_mockjamb_solo_payment_text(course_code)
+    markup = make_mockjamb_solo_payment_keyboard(course_code)
 
     try:
         await query.edit_message_text(
@@ -368,7 +381,7 @@ async def mockjamb_mode_solo_handler(update: Update, context: ContextTypes.DEFAU
 
 
 # ====================================================================
-# Temporary Friends Mode Handler
+# Friends Mode Handler
 # ====================================================================
 async def mockjamb_mode_friends_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -420,6 +433,57 @@ async def mockjamb_mode_friends_handler(update: Update, context: ContextTypes.DE
         )
 
 
+
+# -------------------------------------------
+# Mock JAMB Pay Solo Handler
+# -------------------------------------------
+async def mockjamb_pay_solo_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    course_code = context.user_data.get("mj_course_code")
+    if not course_code:
+        return await query.message.reply_text(
+            "⚠️ No saved course found. Please choose your course again."
+        )
+
+    course = get_course_by_code(course_code)
+    subjects = get_course_subjects(course_code)
+    subject_lines = "\n".join([f"• {subject['name']}" for subject in subjects])
+
+    text = (
+        "✅ *Solo Payment Step Reached*\n\n"
+        f"*Course:* {course['course_name']}\n\n"
+        "*Subjects:*\n"
+        f"{subject_lines}\n\n"
+        f"*Amount to Pay:* ₦{MOCKJAMB_SOLO_FEE}\n\n"
+        "Next step: we will connect this button to your real payment flow."
+    )
+
+    markup = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("⬅️ Back", callback_data="mj_mode_solo")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+    try:
+        await query.edit_message_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
 # ====================================================================
 # Register Handlers
 # ====================================================================
@@ -431,3 +495,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_use_course_handler, pattern=r"^mj_use_course::"))
     application.add_handler(CallbackQueryHandler(mockjamb_mode_solo_handler, pattern=r"^mj_mode_solo$"))
     application.add_handler(CallbackQueryHandler(mockjamb_mode_friends_handler, pattern=r"^mj_mode_friends$"))
+    application.add_handler(CallbackQueryHandler(mockjamb_pay_solo_handler, pattern=r"^mj_pay_solo$"))
+
