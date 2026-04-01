@@ -23,7 +23,7 @@ async def get_mockjamb_payment(session: AsyncSession, payment_reference: str) ->
                 exam_mode,
                 created_at,
                 updated_at
-            from mockjamb_payments
+            from public.mockjamb_payments
             where payment_reference = :payment_reference
             limit 1
         """),
@@ -52,7 +52,7 @@ async def create_pending_mockjamb_payment(
 
     await session.execute(
         text("""
-            insert into mockjamb_payments (
+            insert into public.mockjamb_payments (
                 payment_reference,
                 user_id,
                 amount_paid,
@@ -111,7 +111,7 @@ async def finalize_mockjamb_payment(
 
     claimed = await session.execute(
         text("""
-            update mockjamb_payments
+            update public.mockjamb_payments
             set
                 payment_status = 'successful',
                 updated_at = now()
