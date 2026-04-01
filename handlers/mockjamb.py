@@ -504,7 +504,7 @@ async def mockjamb_pay_solo_handler(update: Update, context: ContextTypes.DEFAUL
         async with get_async_session() as session:
             await session.execute(
                 text("""
-                    update mockjamb_payments
+                    update public.mockjamb_payments
                     set
                         payment_status = 'expired',
                         updated_at = now()
