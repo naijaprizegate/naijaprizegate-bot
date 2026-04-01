@@ -10,11 +10,12 @@ from sqlalchemy import text
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CallbackQueryHandler, CommandHandler, ContextTypes
 
-from jamb_loader import get_course_subject_map, get_course_by_code, get_course_subjects
+from jamb_loader import get_course_subject_map, get_course_by_code, get_course_subjects, get_subject_by_code
 from db import get_async_session
 from services.flutterwave_client import create_checkout, build_tx_ref
 from services.mockjamb_payments import create_pending_mockjamb_payment, get_mockjamb_payment
 from services.mockjamb_session_service import get_or_create_mockjamb_session_from_payment
+from services.mockjamb_exam_service import start_mockjamb_subject
 
 logger = logging.getLogger(__name__)
 
@@ -236,6 +237,57 @@ def build_mockjamb_exam_ready_text(course_code: str, subject_codes: list[str]) -
         "Choose the subject you want to start with first."
     )
 
+
+def build_mockjamb_live_question_text(
+    *,
+    subject_code: str,
+    question_row: dict,
+    question_number: int,
+    total_questions: int,
+    exam_ends_at=None,
+) -> str:
+    subject = get_subject_by_code(subject_code)
+    subject_name = subject["name"] if subject else subject_code.upper()
+
+    try:
+        payload = json.loads(question_row.get("question_json") or "{}")
+    except Exception:
+        payload = {}
+
+    question_text = (
+        payload.get("question")
+        or payload.get("text")
+        or payload.get("prompt")
+        or "Question text unavailable."
+    )
+
+    options = payload.get("options") or {}
+    if not isinstance(options, dict):
+        options = {}
+
+    lines = [
+        f"📝 *Mock JAMB / UTME*",
+        "",
+        f"*Subject:* {subject_name}",
+        f"*Question:* {question_number} of {total_questions}",
+    ]
+
+    if exam_ends_at:
+        lines.append("⏱ *Exam timer is running*")
+
+    lines.extend([
+        "",
+        f"{question_text}",
+        "",
+        f"A. {options.get('A', '---')}",
+        f"B. {options.get('B', '---')}",
+        f"C. {options.get('C', '---')}",
+        f"D. {options.get('D', '---')}",
+        "",
+        "_Answer handling is the next step. For now, this confirms the real subject paper and timer flow are working._",
+    ])
+
+    return "\n".join(lines)
 
 # ====================================================================
 # Entry Handler
@@ -708,39 +760,76 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
     except Exception:
         return await query.message.reply_text("⚠️ Invalid subject selection.")
 
-    from jamb_loader import get_subject_by_code
+    payment_reference = context.user_data.get("mj_payment_reference")
+    mj_course_code = context.user_data.get("mj_course_code")
+    mj_subject_codes = context.user_data.get("mj_subject_codes") or []
 
-    subject = get_subject_by_code(subject_code)
-    if not subject:
-        return await query.message.reply_text("⚠️ Subject not found.")
+    if not payment_reference:
+        return await query.message.reply_text(
+            "⚠️ Mock JAMB payment reference not found. Please restart from your paid exam link."
+        )
+
+    if subject_code not in mj_subject_codes:
+        return await query.message.reply_text(
+            "⚠️ That subject is not part of your current Mock JAMB subject combination."
+        )
+
+    user_id = query.from_user.id
+
+    async with get_async_session() as session:
+        try:
+            result = await start_mockjamb_subject(
+                session,
+                payment_reference=payment_reference,
+                user_id=int(user_id),
+                subject_code=subject_code,
+            )
+            await session.commit()
+        except Exception as e:
+            await session.rollback()
+            logger.exception("Failed to start Mock JAMB subject | tx_ref=%s | subject=%s | err=%s", payment_reference, subject_code, e)
+            return await query.message.reply_text(
+                "⚠️ Could not start this subject right now. Please try again."
+            )
+
+    session_row = result["session"]
+    current_question = result["current_question"]
+
+    if not current_question:
+        return await query.message.reply_text(
+            "⚠️ No question could be loaded for this subject."
+        )
 
     context.user_data["mj_current_subject_code"] = subject_code
+    context.user_data["mj_current_question_order"] = 1
 
-    text = (
-        "🚀 *Mock JAMB / UTME Exam Starting*\n\n"
-        f"You chose to start with *{subject['name']}*.\n\n"
-        "Next step: we will now connect this to the real timed exam question flow."
+    message_text = build_mockjamb_live_question_text(
+        subject_code=subject_code,
+        question_row=current_question,
+        question_number=1,
+        total_questions=50,
+        exam_ends_at=session_row.get("exam_ends_at"),
     )
 
     markup = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("⬅️ Back to Subject Choice", callback_data=f"payok_mockjamb_return")],
+            [InlineKeyboardButton("⬅️ Back to Subject Choice", callback_data="payok_mockjamb_return")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
 
     try:
         await query.edit_message_text(
-            text,
+            message_text,
             parse_mode="Markdown",
             reply_markup=markup,
         )
     except Exception:
         await query.message.reply_text(
-            text,
+            message_text,
             parse_mode="Markdown",
             reply_markup=markup,
-        )            
+        )          
 
 
 # -------------------------------------------------
@@ -792,3 +881,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_pay_solo_handler, pattern=r"^mj_pay_solo$"))
     application.add_handler(CallbackQueryHandler(mockjamb_start_subject_handler, pattern=r"^mj_start_subject::"))
     application.add_handler(CallbackQueryHandler(mockjamb_return_to_exam_ready_handler, pattern=r"^payok_mockjamb_return$"))
+
