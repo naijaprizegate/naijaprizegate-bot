@@ -79,6 +79,17 @@ def make_course_recommendation_keyboard(course_code: str) -> InlineKeyboardMarku
     )
 
 
+def make_mockjamb_mode_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("🧍 Write Alone", callback_data="mj_mode_solo")],
+            [InlineKeyboardButton("👥 Invite Friends", callback_data="mj_mode_friends")],
+            [InlineKeyboardButton("⬅️ Change Course", callback_data="mj_course_page_1")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+
 # ====================================================================
 # Message Builders
 # ====================================================================
@@ -129,6 +140,23 @@ def build_course_recommendation_text(course_code: str) -> str:
     ])
 
     return "\n".join(lines)
+
+
+def build_mockjamb_mode_text(course_code: str) -> str:
+    course = get_course_by_code(course_code)
+    if not course:
+        return "⚠️ Course not found."
+
+    subjects = get_course_subjects(course_code)
+    subject_lines = "\n".join([f"• {subject['name']}" for subject in subjects])
+
+    return (
+        "✅ *Subject Combination Saved*\n\n"
+        f"*Course:* {course['course_name']}\n\n"
+        "*Your Mock JAMB / UTME subjects are:*\n"
+        f"{subject_lines}\n\n"
+        "How would you like to take this mock exam?"
+    )
 
 
 # ====================================================================
@@ -248,7 +276,7 @@ async def mockjamb_course_select_handler(update: Update, context: ContextTypes.D
 
 
 # ====================================================================
-# Temporary "Use This Combination" Handler
+# Use Recommended Course Combination
 # ====================================================================
 async def mockjamb_use_course_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -270,19 +298,110 @@ async def mockjamb_use_course_handler(update: Update, context: ContextTypes.DEFA
     context.user_data["mj_course_code"] = course_code
     context.user_data["mj_subject_codes"] = [subject["code"] for subject in subjects]
 
-    subject_names = "\n".join([f"• {subject['name']}" for subject in subjects])
+    text = build_mockjamb_mode_text(course_code)
+    markup = make_mockjamb_mode_keyboard()
+
+    try:
+        await query.edit_message_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
+# ====================================================================
+# Temporary Solo Mode Handler
+# ====================================================================
+async def mockjamb_mode_solo_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    context.user_data["mj_mode"] = "solo"
+
+    course_code = context.user_data.get("mj_course_code")
+    if not course_code:
+        return await query.message.reply_text(
+            "⚠️ No saved course found. Please choose your course again.",
+            reply_markup=make_mockjamb_welcome_keyboard(),
+        )
+
+    course = get_course_by_code(course_code)
+    subjects = get_course_subjects(course_code)
+    subject_lines = "\n".join([f"• {subject['name']}" for subject in subjects])
 
     text = (
-        "✅ *Subject Combination Saved*\n\n"
+        "🧍 *Write Alone Selected*\n\n"
         f"*Course:* {course['course_name']}\n\n"
-        "*Your Mock JAMB / UTME subjects are:*\n"
-        f"{subject_names}\n\n"
-        "Next step: we will now build the screen where you choose whether to *Write Alone* or *Invite Friends*."
+        "*Subjects:*\n"
+        f"{subject_lines}\n\n"
+        "Next step: we will build the payment screen for solo mock exam access."
     )
 
     markup = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("⬅️ Change Course", callback_data="mj_course_page_1")],
+            [InlineKeyboardButton("⬅️ Back", callback_data=f"mj_use_course::{course_code}")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+    try:
+        await query.edit_message_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
+# ====================================================================
+# Temporary Friends Mode Handler
+# ====================================================================
+async def mockjamb_mode_friends_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    context.user_data["mj_mode"] = "friends"
+
+    course_code = context.user_data.get("mj_course_code")
+    if not course_code:
+        return await query.message.reply_text(
+            "⚠️ No saved course found. Please choose your course again.",
+            reply_markup=make_mockjamb_welcome_keyboard(),
+        )
+
+    course = get_course_by_code(course_code)
+    subjects = get_course_subjects(course_code)
+    subject_lines = "\n".join([f"• {subject['name']}" for subject in subjects])
+
+    text = (
+        "👥 *Invite Friends Selected*\n\n"
+        f"*Course:* {course['course_name']}\n\n"
+        "*Subjects for this room:*\n"
+        f"{subject_lines}\n\n"
+        "All players in the same room will use this same subject combination.\n\n"
+        "Next step: we will build the multiplayer room and invite link flow."
+    )
+
+    markup = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("⬅️ Back", callback_data=f"mj_use_course::{course_code}")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
@@ -310,3 +429,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_course_page_handler, pattern=r"^mj_course_page_"))
     application.add_handler(CallbackQueryHandler(mockjamb_course_select_handler, pattern=r"^mj_course_select::"))
     application.add_handler(CallbackQueryHandler(mockjamb_use_course_handler, pattern=r"^mj_use_course::"))
+    application.add_handler(CallbackQueryHandler(mockjamb_mode_solo_handler, pattern=r"^mj_mode_solo$"))
+    application.add_handler(CallbackQueryHandler(mockjamb_mode_friends_handler, pattern=r"^mj_mode_friends$"))
