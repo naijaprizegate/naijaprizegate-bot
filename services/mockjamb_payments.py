@@ -93,7 +93,6 @@ async def finalize_mockjamb_payment(
     *,
     payment_reference: str,
     user_id: int,
-    amount_paid: int,
 ) -> tuple[bool, dict | None]:
     """
     Safe/idempotent Mock JAMB finalizer.
