@@ -1,6 +1,6 @@
-# ================================================================
+# ====================================================================
 # handlers/mockjamb.py
-# =================================================================
+# ====================================================================
 
 import json
 import math
@@ -14,7 +14,7 @@ from jamb_loader import get_course_subject_map, get_course_by_code, get_course_s
 from db import get_async_session
 from services.flutterwave_client import create_checkout, build_tx_ref
 from services.mockjamb_payments import create_pending_mockjamb_payment, get_mockjamb_payment
-
+from services.mockjamb_session_service import get_or_create_mockjamb_session_from_payment
 
 logger = logging.getLogger(__name__)
 
@@ -618,41 +618,51 @@ async def mockjamb_payment_success_handler(
     async with get_async_session() as session:
         payment = await get_mockjamb_payment(session, tx_ref)
 
-    if not payment:
-        if update.message:
-            await update.message.reply_text(
-                "⚠️ Mock JAMB payment record not found. Please contact support if payment was deducted."
-            )
-        return
+        if not payment:
+            if update.message:
+                await update.message.reply_text(
+                    "⚠️ Mock JAMB payment record not found. Please contact support if payment was deducted."
+                )
+            return
 
-    if str(payment.get("payment_status", "")).lower().strip() != "successful":
-        if update.message:
-            await update.message.reply_text(
-                "⚠️ Your Mock JAMB payment is not yet marked successful. Please wait a moment and try again."
-            )
-        return
+        if str(payment.get("payment_status", "")).lower().strip() != "successful":
+            if update.message:
+                await update.message.reply_text(
+                    "⚠️ Your Mock JAMB payment is not yet marked successful. Please wait a moment and try again."
+                )
+            return
 
-    course_code = str(payment.get("course_code") or "").strip()
-    subject_codes_json = payment.get("subject_codes_json") or "[]"
-    exam_mode = str(payment.get("exam_mode") or "solo").strip()
+        course_code = str(payment.get("course_code") or "").strip()
+        subject_codes_json = payment.get("subject_codes_json") or "[]"
+        exam_mode = str(payment.get("exam_mode") or "solo").strip()
 
-    try:
-        subject_codes = json.loads(subject_codes_json)
-    except Exception:
-        subject_codes = []
+        try:
+            subject_codes = json.loads(subject_codes_json)
+        except Exception:
+            subject_codes = []
 
-    if not course_code or not subject_codes:
-        if update.message:
-            await update.message.reply_text(
-                "⚠️ Your saved Mock JAMB exam data is incomplete. Please contact support."
-            )
-        return
+        if not course_code or not subject_codes:
+            if update.message:
+                await update.message.reply_text(
+                    "⚠️ Your saved Mock JAMB exam data is incomplete. Please contact support."
+                )
+            return
+
+        mj_session = await get_or_create_mockjamb_session_from_payment(
+            session,
+            payment_reference=tx_ref,
+            user_id=int(payment["user_id"]),
+            course_code=course_code,
+            subject_codes_json=subject_codes_json,
+        )
+        await session.commit()
 
     context.user_data["mj_course_code"] = course_code
     context.user_data["mj_subject_codes"] = subject_codes
     context.user_data["mj_mode"] = exam_mode
     context.user_data["mj_room_code"] = None
     context.user_data["mj_payment_reference"] = tx_ref
+    context.user_data["mj_session_id"] = mj_session["id"]
 
     message_text = build_mockjamb_exam_ready_text(course_code, subject_codes)
     markup = make_mockjamb_exam_ready_keyboard(subject_codes)
@@ -782,4 +792,3 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_pay_solo_handler, pattern=r"^mj_pay_solo$"))
     application.add_handler(CallbackQueryHandler(mockjamb_start_subject_handler, pattern=r"^mj_start_subject::"))
     application.add_handler(CallbackQueryHandler(mockjamb_return_to_exam_ready_handler, pattern=r"^payok_mockjamb_return$"))
-
