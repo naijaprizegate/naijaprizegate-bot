@@ -625,4 +625,3 @@ def register_handlers(application):
         group=20,
     )
 
-
