@@ -24,6 +24,7 @@ from services.mockjamb_exam_service import (
     start_mockjamb_subject,
     answer_mockjamb_question,
     calculate_mockjamb_subject_score,
+    get_mockjamb_review_rows,
 )
 
 logger = logging.getLogger(__name__)
@@ -177,9 +178,12 @@ def make_mockjamb_next_subject_keyboard(subject_codes: list[str]) -> InlineKeybo
 def make_mockjamb_final_result_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         [
+            [InlineKeyboardButton("📄 Preview Result", callback_data="mj_review_all")],
+            [InlineKeyboardButton("❌ Wrong Answers Review", callback_data="mj_review_wrong")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
+
 
 # ====================================================================
 # Message Builders
@@ -396,7 +400,7 @@ def build_mockjamb_final_result_text(
     lines = [
         "📊 *Mock JAMB / UTME Result*",
         "",
-        f"*Course:* {course_name}",
+        f"Course: {course_name}",
         "",
     ]
 
@@ -405,11 +409,11 @@ def build_mockjamb_final_result_text(
         subject_name = subject["name"] if subject else code.upper()
         score = int(scores.get(code) or 0)
         aggregate += score
-        lines.append(f"{subject_name} {score}")
+        lines.append(f"{subject_name}: {score}")
 
     lines.extend([
         "",
-        f"*Aggregate:* {aggregate}",
+        f"Aggregate: {aggregate} / 400",
     ])
 
     return "\n".join(lines)
@@ -535,6 +539,125 @@ def build_mockjamb_question_only_text(
     ])
 
     return "\n".join(lines)
+
+
+
+def sort_review_rows_by_subject_order(rows: list[dict], subject_codes: list[str]) -> list[dict]:
+    subject_order = {code: idx for idx, code in enumerate(subject_codes)}
+
+    return sorted(
+        rows,
+        key=lambda row: (
+            subject_order.get(str(row.get("subject_code") or ""), 999),
+            int(row.get("question_order") or 0),
+        ),
+    )
+
+
+def build_mockjamb_review_text(
+    *,
+    review_row: dict,
+    review_index: int,
+    total_reviews: int,
+) -> str:
+    subject_code = str(review_row.get("subject_code") or "").strip()
+    subject = get_subject_by_code(subject_code)
+    subject_name = subject["name"] if subject else subject_code.upper()
+
+    try:
+        payload = json.loads(review_row.get("question_json") or "{}")
+    except Exception:
+        payload = {}
+
+    question_text = payload.get("question") or payload.get("text") or payload.get("prompt") or "Question text unavailable."
+    options = payload.get("options") or {}
+    if not isinstance(options, dict):
+        options = {}
+
+    passage_title = payload.get("passage_title") or ""
+    passage_text = payload.get("passage") or ""
+
+    explanation = payload.get("explanation") or {}
+    if isinstance(explanation, dict):
+        explanation_text = (
+            explanation.get("simple_explanation")
+            or explanation.get("final_answer")
+            or explanation.get("principle")
+            or "No explanation available."
+        )
+    else:
+        explanation_text = str(explanation or "No explanation available.")
+
+    selected_option = str(review_row.get("selected_option") or "-").upper()
+    correct_option = str(review_row.get("correct_option") or "-").upper()
+    is_correct = bool(review_row.get("is_correct"))
+
+    selected_option_text = str(options.get(selected_option, "---"))
+    correct_option_text = str(options.get(correct_option, "---"))
+
+    lines = [
+        "📄 *Mock JAMB / UTME Review*",
+        "",
+        f"*Review Item:* {review_index} of {total_reviews}",
+        f"*Subject:* {md_escape(subject_name)}",
+        f"*Question No:* {int(review_row.get('question_order') or 0)}",
+        "",
+    ]
+
+    if passage_text:
+        if passage_title:
+            lines.append(f"*Passage Title:* {md_escape(str(passage_title))}")
+            lines.append("")
+        lines.append("*Passage:*")
+        lines.append(md_escape(str(passage_text)))
+        lines.append("")
+
+    lines.extend([
+        "*Question:*",
+        md_escape(str(question_text)),
+        "",
+        f"A\\. {md_escape(str(options.get('A', '---')))}",
+        f"B\\. {md_escape(str(options.get('B', '---')))}",
+        f"C\\. {md_escape(str(options.get('C', '---')))}",
+        f"D\\. {md_escape(str(options.get('D', '---')))}",
+        "",
+        f"*Your Answer:* {md_escape(selected_option)} \\- {md_escape(selected_option_text)}",
+        f"*Correct Answer:* {md_escape(correct_option)} \\- {md_escape(correct_option_text)}",
+        f"*Result:* {'✅ Correct' if is_correct else '❌ Wrong'}",
+        "",
+        "*Explanation:*",
+        md_escape(str(explanation_text)),
+    ])
+
+    return "\n".join(lines)
+
+
+def make_mockjamb_review_nav_keyboard(
+    *,
+    mode: str,
+    current_index: int,
+    total_reviews: int,
+) -> InlineKeyboardMarkup:
+    nav_row = []
+
+    if current_index > 0:
+        nav_row.append(
+            InlineKeyboardButton("⬅ Prev", callback_data=f"mj_review_nav::{mode}::{current_index - 1}")
+        )
+
+    if current_index < total_reviews - 1:
+        nav_row.append(
+            InlineKeyboardButton("Next ➡", callback_data=f"mj_review_nav::{mode}::{current_index + 1}")
+        )
+
+    rows = []
+    if nav_row:
+        rows.append(nav_row)
+
+    rows.append([InlineKeyboardButton("⬅ Back to Result", callback_data="mj_back_to_result")])
+    rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
+
+    return InlineKeyboardMarkup(rows)
 
 
 # ====================================================================
@@ -1338,6 +1461,171 @@ async def mockjamb_return_to_exam_ready_handler(update: Update, context: Context
         )
 
 
+
+async def mockjamb_review_open_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    mode = "all" if query.data == "mj_review_all" else "wrong"
+    payment_reference = context.user_data.get("mj_payment_reference")
+    subject_codes = context.user_data.get("mj_subject_codes") or []
+
+    if not payment_reference:
+        return await query.message.reply_text(
+            "⚠️ Mock JAMB result session not found."
+        )
+
+    async with get_async_session() as session:
+        review_rows = await get_mockjamb_review_rows(
+            session,
+            payment_reference=payment_reference,
+            wrong_only=(mode == "wrong"),
+        )
+
+    review_rows = sort_review_rows_by_subject_order(review_rows, subject_codes)
+
+    if not review_rows:
+        if mode == "wrong":
+            return await query.message.reply_text(
+                "✅ No wrong answers found in this Mock JAMB result."
+            )
+        return await query.message.reply_text(
+            "⚠️ No review items found for this Mock JAMB result."
+        )
+
+    context.user_data["mj_review_mode"] = mode
+    context.user_data["mj_review_rows"] = review_rows
+    context.user_data["mj_review_index"] = 0
+
+    message_text = build_mockjamb_review_text(
+        review_row=review_rows[0],
+        review_index=1,
+        total_reviews=len(review_rows),
+    )
+    markup = make_mockjamb_review_nav_keyboard(
+        mode=mode,
+        current_index=0,
+        total_reviews=len(review_rows),
+    )
+
+    try:
+        await query.edit_message_text(
+            message_text,
+            parse_mode="MarkdownV2",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            message_text,
+            parse_mode="MarkdownV2",
+            reply_markup=markup,
+        )
+
+
+async def mockjamb_review_nav_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    try:
+        _, mode, index_raw = query.data.split("::", 2)
+        index = int(index_raw)
+    except Exception:
+        return await query.message.reply_text("⚠️ Invalid review navigation.")
+
+    review_rows = context.user_data.get("mj_review_rows") or []
+    if not review_rows:
+        return await query.message.reply_text("⚠️ No review session found.")
+
+    if index < 0 or index >= len(review_rows):
+        return await query.message.reply_text("⚠️ Review item out of range.")
+
+    context.user_data["mj_review_mode"] = mode
+    context.user_data["mj_review_index"] = index
+
+    message_text = build_mockjamb_review_text(
+        review_row=review_rows[index],
+        review_index=index + 1,
+        total_reviews=len(review_rows),
+    )
+    markup = make_mockjamb_review_nav_keyboard(
+        mode=mode,
+        current_index=index,
+        total_reviews=len(review_rows),
+    )
+
+    try:
+        await query.edit_message_text(
+            message_text,
+            parse_mode="MarkdownV2",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            message_text,
+            parse_mode="MarkdownV2",
+            reply_markup=markup,
+        )
+
+
+async def mockjamb_back_to_result_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    payment_reference = context.user_data.get("mj_payment_reference")
+    course_code = context.user_data.get("mj_course_code")
+    subject_codes = context.user_data.get("mj_subject_codes") or []
+
+    if not payment_reference or not course_code:
+        return await query.message.reply_text(
+            "⚠️ Mock JAMB result session not found."
+        )
+
+    async with get_async_session() as session:
+        session_row = await get_mockjamb_session_by_payment_reference(
+            session,
+            payment_reference,
+        )
+
+    if not session_row:
+        return await query.message.reply_text(
+            "⚠️ Could not reload your Mock JAMB result."
+        )
+
+    try:
+        scores = json.loads(session_row.get("scores_json") or "{}")
+    except Exception:
+        scores = {}
+
+    message_text = build_mockjamb_final_result_text(
+        course_code=course_code,
+        subject_codes=subject_codes,
+        scores=scores,
+    )
+    markup = make_mockjamb_final_result_keyboard()
+
+    try:
+        await query.edit_message_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
 # ====================================================================
 # Register Handlers
 # ====================================================================
@@ -1353,4 +1641,8 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_start_subject_handler, pattern=r"^mj_start_subject::"))
     application.add_handler(CallbackQueryHandler(mockjamb_answer_handler, pattern=r"^mj_ans::"))
     application.add_handler(CallbackQueryHandler(mockjamb_return_to_exam_ready_handler, pattern=r"^payok_mockjamb_return$"))
+    application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
+    application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
+    application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
 
