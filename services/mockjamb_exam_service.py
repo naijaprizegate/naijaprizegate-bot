@@ -1,6 +1,6 @@
-# =====================================================
+# ======================================================
 # services/mockjamb_exam_service.py
-# =====================================================
+# ======================================================
 import json
 import logging
 from typing import Any
@@ -389,4 +389,63 @@ async def calculate_mockjamb_subject_score(
         "score_100": int(score_100),
     }
 
+
+async def get_mockjamb_review_rows(
+    session: AsyncSession,
+    *,
+    payment_reference: str,
+    wrong_only: bool = False,
+) -> list[dict]:
+    if wrong_only:
+        result = await session.execute(
+            text("""
+                select
+                    id,
+                    session_id,
+                    payment_reference,
+                    user_id,
+                    subject_code,
+                    question_id,
+                    question_order,
+                    question_json,
+                    correct_option,
+                    selected_option,
+                    is_correct,
+                    created_at,
+                    updated_at
+                from public.mockjamb_subject_questions
+                where payment_reference = :payment_reference
+                  and selected_option is not null
+                  and coalesce(is_correct, false) = false
+                order by subject_code asc, question_order asc
+            """),
+            {"payment_reference": payment_reference},
+        )
+    else:
+        result = await session.execute(
+            text("""
+                select
+                    id,
+                    session_id,
+                    payment_reference,
+                    user_id,
+                    subject_code,
+                    question_id,
+                    question_order,
+                    question_json,
+                    correct_option,
+                    selected_option,
+                    is_correct,
+                    created_at,
+                    updated_at
+                from public.mockjamb_subject_questions
+                where payment_reference = :payment_reference
+                  and selected_option is not null
+                order by subject_code asc, question_order asc
+            """),
+            {"payment_reference": payment_reference},
+        )
+
+    rows = result.mappings().all()
+    return [dict(row) for row in rows]
 
