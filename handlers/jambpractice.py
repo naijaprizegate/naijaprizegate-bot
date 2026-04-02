@@ -747,6 +747,8 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["jp_current_question"] = None
     context.user_data["jp_answered_current"] = False
     context.user_data["jp_served_question_ids"] = []
+    context.user_data["jp_shown_passages"] = []
+    context.user_data["jp_last_passage"] = None
 
     topic = next((t for t in get_subject_topics(subject_code) if t["id"] == topic_id), None)
     topic_title = topic["title"] if topic else topic_id
@@ -899,6 +901,11 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
         )
 
     question = batch[current_index]
+    question_type = question.get("question_type", "mcq")
+    passage_id = question.get("passage_id")
+    passage_title = question.get("passage_title", "Comprehension Passage")
+    passage = question.get("passage", "")
+
     question_id = str(question["id"])
     user_id = update.effective_user.id
     subject_code = context.user_data.get("jp_subject_code")
@@ -906,8 +913,10 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
     session_id = context.user_data.get("jp_session_id")
     session_mode = context.user_data.get("jp_session_mode")
     served_question_ids = context.user_data.get("jp_served_question_ids", [])
+    shown_passages = context.user_data.get("jp_shown_passages", [])
+    last_passage = context.user_data.get("jp_last_passage")
 
-    # Charge and record history when question is SERVED, not when answered
+    # Charge and record history when question is served, not when answered
     if question_id not in served_question_ids:
         if session_mode == "free_trial":
             deducted = await deduct_one_free_question(user_id)
@@ -938,6 +947,28 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
     context.user_data["jp_current_question"] = question
     context.user_data["jp_answered_current"] = False
 
+    # Show comprehension passage before the question
+    if question_type == "comprehension_mcq" and passage:
+        should_show_passage = False
+
+        if passage_id:
+            # Preferred method when passage_id exists
+            if passage_id not in shown_passages:
+                should_show_passage = True
+                shown_passages.append(passage_id)
+                context.user_data["jp_shown_passages"] = shown_passages
+        else:
+            # Fallback for current JSON files without passage_id
+            if passage != last_passage:
+                should_show_passage = True
+                context.user_data["jp_last_passage"] = passage
+
+        if should_show_passage:
+            await update.effective_message.reply_text(
+                f"📖 *{passage_title}*\n\n{passage}",
+                parse_mode="Markdown",
+            )
+
     options = question.get("options", {})
 
     option_lines = []
@@ -954,6 +985,7 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
 
     rows = []
     answer_row = []
+
     for key in ["A", "B", "C", "D", "E"]:
         if key in options:
             answer_row.append(
@@ -1239,6 +1271,8 @@ async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["jp_current_question"] = None
     context.user_data["jp_answered_current"] = False
     context.user_data["jp_served_question_ids"] = []
+    context.user_data["jp_shown_passages"] = []
+    context.user_data["jp_last_passage"] = None
 
     topic = next((t for t in get_subject_topics(subject_code) if t["id"] == topic_id), None)
     topic_title = topic["title"] if topic else topic_id
@@ -1284,4 +1318,3 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next$"))
-
