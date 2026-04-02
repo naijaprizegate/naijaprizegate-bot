@@ -291,3 +291,37 @@ async def record_seen_mockjamb_questions(
                 "question_id": str(question_id),
             },
         )
+
+
+async def get_latest_active_mockjamb_session_for_user(
+    session: AsyncSession,
+    *,
+    user_id: int,
+) -> dict | None:
+    result = await session.execute(
+        text("""
+            select
+                id,
+                payment_reference,
+                user_id,
+                course_code,
+                subject_codes_json,
+                completed_subjects_json,
+                scores_json,
+                current_subject_code,
+                current_question_index,
+                exam_started_at,
+                exam_ends_at,
+                status,
+                created_at,
+                updated_at
+            from public.mockjamb_sessions
+            where user_id = :user_id
+              and status in ('ready', 'in_progress', 'completed')
+            order by id desc
+            limit 1
+        """),
+        {"user_id": int(user_id)},
+    )
+    row = result.mappings().first()
+    return dict(row) if row else None
