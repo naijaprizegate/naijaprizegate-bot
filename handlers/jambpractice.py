@@ -22,7 +22,7 @@ from jamb_loader import (
 
 logger = logging.getLogger(__name__)
 
-TOPICS_PER_PAGE = 6
+TOPICS_PER_PAGE = 7
 
 
 # =============================
