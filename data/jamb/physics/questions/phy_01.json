@@ -1,1 +1,3595 @@
-
+[
+  {
+    "id": "phy_01_q001",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Length, area and volume: metre rule",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "The instrument most suitable for measuring the length of a classroom is the",
+    "options": {
+      "A": "micrometer screw gauge",
+      "B": "metre rule",
+      "C": "measuring cylinder",
+      "D": "beam balance"
+    },
+    "answer": "B",
+    "answer_text": "metre rule",
+    "explanation": {
+      "question_restate": "The instrument most suitable for measuring the length of a classroom is the",
+      "principle": "The choice of measuring instrument depends on the size of the object and the accuracy required.",
+      "steps": [
+        "A classroom is a large object, so we need an instrument meant for relatively long straight lengths.",
+        "A metre rule is designed for lengths up to 1 m and can be moved successively along the wall or floor to obtain the full length.",
+        "A micrometer screw gauge is for very small diameters or thicknesses, a measuring cylinder is for volume, and a beam balance is for mass.",
+        "Therefore, the correct answer is B. metre rule."
+      ],
+      "final_answer": "B. metre rule",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "length",
+      "metre_rule"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q002",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Length, area and volume: vernier calipers",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A vernier caliper is preferred to a metre rule when measuring the diameter of a metal rod because the vernier caliper",
+    "options": {
+      "A": "has a larger range",
+      "B": "can measure mass directly",
+      "C": "gives a more precise reading for small diameters",
+      "D": "measures volume automatically"
+    },
+    "answer": "C",
+    "answer_text": "gives a more precise reading for small diameters",
+    "explanation": {
+      "question_restate": "A vernier caliper is preferred to a metre rule when measuring the diameter of a metal rod because the vernier caliper",
+      "principle": "Some instruments are built to read small dimensions more precisely than others.",
+      "steps": [
+        "The diameter of a rod is usually a small length.",
+        "A metre rule can measure it roughly, but its least count is much larger than that of a vernier caliper.",
+        "A vernier caliper is designed for internal, external, and depth measurements and gives better precision for such small dimensions.",
+        "Therefore, the correct answer is C. gives a more precise reading for small diameters."
+      ],
+      "final_answer": "C. gives a more precise reading for small diameters",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "vernier_calipers",
+      "precision"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q003",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Length, area and volume: micrometer screw gauge",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The most suitable instrument for measuring the thickness of a razor blade is the",
+    "options": {
+      "A": "measuring cylinder",
+      "B": "metre rule",
+      "C": "clock",
+      "D": "micrometer screw gauge"
+    },
+    "answer": "D",
+    "answer_text": "micrometer screw gauge",
+    "explanation": {
+      "question_restate": "The most suitable instrument for measuring the thickness of a razor blade is the",
+      "principle": "A micrometer screw gauge is specially made for very small diameters and thicknesses.",
+      "steps": [
+        "A razor blade is very thin, so a highly precise length-measuring instrument is needed.",
+        "A micrometer screw gauge usually has a least count of about 0.01 mm, making it suitable for such thin objects.",
+        "A metre rule would be too crude for this measurement.",
+        "Therefore, the correct answer is D. micrometer screw gauge."
+      ],
+      "final_answer": "D. micrometer screw gauge",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "micrometer_screw_gauge",
+      "thickness"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q004",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Length, area and volume: measuring cylinder",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "The volume of water in a laboratory can be measured directly with a",
+    "options": {
+      "A": "beam balance",
+      "B": "measuring cylinder",
+      "C": "metre rule",
+      "D": "stopwatch"
+    },
+    "answer": "B",
+    "answer_text": "measuring cylinder",
+    "explanation": {
+      "question_restate": "The volume of water in a laboratory can be measured directly with a",
+      "principle": "Liquids are usually measured with instruments graduated in volume units.",
+      "steps": [
+        "A measuring cylinder is marked in cm³ or mL and is meant for direct reading of liquid volume.",
+        "A beam balance measures mass, a metre rule measures length, and a stopwatch measures time.",
+        "Therefore, the correct answer is B. measuring cylinder."
+      ],
+      "final_answer": "B. measuring cylinder",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "volume",
+      "measuring_cylinder"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q005",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Length, area and volume: area from dimensions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A rectangular sheet is 12 cm long and 4 cm wide. Its area is",
+    "options": {
+      "A": "16 cm²",
+      "B": "24 cm²",
+      "C": "48 cm²",
+      "D": "96 cm²"
+    },
+    "answer": "C",
+    "answer_text": "48 cm²",
+    "explanation": {
+      "question_restate": "A rectangular sheet is 12 cm long and 4 cm wide. Its area is",
+      "principle": "Area of a rectangle is found by multiplying length by width.",
+      "steps": [
+        "For a rectangle, area = length × width.",
+        "So, area = 12 cm × 4 cm = 48 cm².",
+        "Notice that the unit is square centimetre because two lengths are multiplied.",
+        "Therefore, the correct answer is C. 48 cm²."
+      ],
+      "final_answer": "C. 48 cm²",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "area",
+      "rectangle"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q006",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Length, area and volume: volume from dimensions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A block has dimensions 5 cm by 3 cm by 2 cm. Its volume is",
+    "options": {
+      "A": "10 cm³",
+      "B": "20 cm³",
+      "C": "30 cm³",
+      "D": "60 cm³"
+    },
+    "answer": "C",
+    "answer_text": "30 cm³",
+    "explanation": {
+      "question_restate": "A block has dimensions 5 cm by 3 cm by 2 cm. Its volume is",
+      "principle": "Volume of a cuboid is obtained by multiplying its three perpendicular dimensions.",
+      "steps": [
+        "Volume = length × width × height.",
+        "So, volume = 5 cm × 3 cm × 2 cm = 30 cm³.",
+        "The unit is cubic centimetre because three lengths are multiplied.",
+        "Therefore, the correct answer is C. 30 cm³."
+      ],
+      "final_answer": "C. 30 cm³",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "volume",
+      "cuboid"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q007",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Length, area and volume: meniscus reading",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "To obtain an accurate reading of water in a measuring cylinder, the observer should read the",
+    "options": {
+      "A": "top of the meniscus at eye level",
+      "B": "bottom of the meniscus at eye level",
+      "C": "bottom of the meniscus from above",
+      "D": "top of the meniscus from below"
+    },
+    "answer": "B",
+    "answer_text": "bottom of the meniscus at eye level",
+    "explanation": {
+      "question_restate": "To obtain an accurate reading of water in a measuring cylinder, the observer should read the",
+      "principle": "For most liquids such as water, the correct reading is taken at the lower meniscus with the eye level with the liquid surface.",
+      "steps": [
+        "Water forms a concave meniscus in a glass cylinder.",
+        "To avoid parallax error, the eye must be at the same horizontal level as the meniscus.",
+        "For a concave meniscus, the correct mark is the bottom of the curve.",
+        "Therefore, the correct answer is B. bottom of the meniscus at eye level."
+      ],
+      "final_answer": "B. bottom of the meniscus at eye level",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "meniscus",
+      "parallax"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q008",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Length, area and volume: displaced volume",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A stone is lowered fully into a measuring cylinder containing water. The water level rises from 35 cm³ to 49 cm³. The volume of the stone is",
+    "options": {
+      "A": "14 cm³",
+      "B": "35 cm³",
+      "C": "49 cm³",
+      "D": "84 cm³"
+    },
+    "answer": "A",
+    "answer_text": "14 cm³",
+    "explanation": {
+      "question_restate": "A stone is lowered fully into a measuring cylinder containing water. The water level rises from 35 cm³ to 49 cm³. The volume of the stone is",
+      "principle": "The volume of an irregular solid can be found from the rise in water level.",
+      "steps": [
+        "Initial water volume = 35 cm³.",
+        "Final volume after immersion = 49 cm³.",
+        "Volume of stone = 49 cm³ − 35 cm³ = 14 cm³.",
+        "Therefore, the correct answer is A. 14 cm³."
+      ],
+      "final_answer": "A. 14 cm³",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "displacement_method",
+      "volume"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q009",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Length, area and volume: least count",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "An instrument that can be used to measure both the external diameter of a pipe and the depth of a test tube is the",
+    "options": {
+      "A": "beam balance",
+      "B": "vernier caliper",
+      "C": "micrometer screw gauge",
+      "D": "measuring cylinder"
+    },
+    "answer": "B",
+    "answer_text": "vernier caliper",
+    "explanation": {
+      "question_restate": "An instrument that can be used to measure both the external diameter of a pipe and the depth of a test tube is the",
+      "principle": "A vernier caliper has jaws for external and internal measurements and a depth probe for depth measurements.",
+      "steps": [
+        "The external diameter of a pipe can be measured using the outer jaws of a vernier caliper.",
+        "The depth of a test tube can be measured using the depth rod attached to the same instrument.",
+        "A micrometer screw gauge does not normally measure depth in this way.",
+        "Therefore, the correct answer is B. vernier caliper."
+      ],
+      "final_answer": "B. vernier caliper",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "vernier_calipers",
+      "depth_gauge"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q010",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Length, area and volume: unit conversion",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The quantity 250 cm³ is equal to",
+    "options": {
+      "A": "0.025 m³",
+      "B": "2.5 × 10⁻⁴ m³",
+      "C": "2.5 × 10⁻³ m³",
+      "D": "25 × 10⁻⁶ m³"
+    },
+    "answer": "B",
+    "answer_text": "2.5 × 10⁻⁴ m³",
+    "explanation": {
+      "question_restate": "The quantity 250 cm³ is equal to",
+      "principle": "Since 1 m = 100 cm, then 1 cm = 10⁻² m and 1 cm³ = (10⁻²)³ m³ = 10⁻⁶ m³.",
+      "steps": [
+        "1 cm³ = 10⁻⁶ m³.",
+        "Therefore, 250 cm³ = 250 × 10⁻⁶ m³ = 2.5 × 10² × 10⁻⁶ m³ = 2.5 × 10⁻⁴ m³.",
+        "Always cube the conversion factor when converting volume units.",
+        "Therefore, the correct answer is B. 2.5 × 10⁻⁴ m³."
+      ],
+      "final_answer": "B. 2.5 × 10⁻⁴ m³",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "unit_conversion",
+      "volume"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q011",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Mass: unit of mass",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "The SI unit of mass is the",
+    "options": {
+      "A": "gram",
+      "B": "newton",
+      "C": "kilogram",
+      "D": "tonne"
+    },
+    "answer": "C",
+    "answer_text": "kilogram",
+    "explanation": {
+      "question_restate": "The SI unit of mass is the",
+      "principle": "Mass is a fundamental physical quantity and its SI unit is fixed by international convention.",
+      "steps": [
+        "The standard SI unit of mass is the kilogram, written as kg.",
+        "Gram is a submultiple of kilogram, while newton is the unit of force.",
+        "Tonne is a larger non-SI multiple commonly used in commerce.",
+        "Therefore, the correct answer is C. kilogram."
+      ],
+      "final_answer": "C. kilogram",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "mass",
+      "SI_unit"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q012",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Mass: use of simple beam balance",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A simple beam balance compares an unknown mass with a known mass by comparing their",
+    "options": {
+      "A": "weights in different gravitational fields",
+      "B": "volumes",
+      "C": "densities",
+      "D": "turning effects about the pivot"
+    },
+    "answer": "D",
+    "answer_text": "turning effects about the pivot",
+    "explanation": {
+      "question_restate": "A simple beam balance compares an unknown mass with a known mass by comparing their",
+      "principle": "A beam balance works on the principle of moments about a central pivot.",
+      "steps": [
+        "When masses are placed on opposite pans, each produces a turning effect about the pivot.",
+        "At balance, the clockwise moment equals the anticlockwise moment.",
+        "Because the arms are equal, equal moments imply equal masses under the same conditions.",
+        "Therefore, the correct answer is D. turning effects about the pivot."
+      ],
+      "final_answer": "D. turning effects about the pivot",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "beam_balance",
+      "principle"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q013",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Mass: concept of beam balance",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "One advantage of the beam balance over a spring balance is that the beam balance",
+    "options": {
+      "A": "measures force directly",
+      "B": "is unaffected by changes in the local value of g",
+      "C": "can measure time",
+      "D": "has no need for standard masses"
+    },
+    "answer": "B",
+    "answer_text": "is unaffected by changes in the local value of g",
+    "explanation": {
+      "question_restate": "One advantage of the beam balance over a spring balance is that the beam balance",
+      "principle": "A beam balance compares masses, while a spring balance depends on weight, which changes with gravitational field strength.",
+      "steps": [
+        "The weight of an object is W = mg, so if g changes, a spring balance reading changes.",
+        "A beam balance compares one mass against another mass, so the same factor g acts on both sides and cancels out.",
+        "That makes the beam balance a better instrument for comparing mass from place to place.",
+        "Therefore, the correct answer is B. is unaffected by changes in the local value of g."
+      ],
+      "final_answer": "B. is unaffected by changes in the local value of g",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "beam_balance",
+      "local_g"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q014",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Mass: use of simple beam balance",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "If a body balances 200 g, 50 g and 20 g standard masses on a simple beam balance, the mass of the body is",
+    "options": {
+      "A": "230 g",
+      "B": "250 g",
+      "C": "270 g",
+      "D": "300 g"
+    },
+    "answer": "C",
+    "answer_text": "270 g",
+    "explanation": {
+      "question_restate": "If a body balances 200 g, 50 g and 20 g standard masses on a simple beam balance, the mass of the body is",
+      "principle": "In a simple beam balance, the unknown mass equals the sum of the standard masses that balance it.",
+      "steps": [
+        "Standard masses used are 200 g, 50 g and 20 g.",
+        "Adding them gives 270 g.",
+        "Therefore the body has mass 270 g.",
+        "Therefore, the correct answer is C. 270 g."
+      ],
+      "final_answer": "C. 270 g",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "beam_balance",
+      "standard_masses"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q015",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Mass: unit of mass",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is not a unit of mass?",
+    "options": {
+      "A": "kg",
+      "B": "g",
+      "C": "mg",
+      "D": "N"
+    },
+    "answer": "D",
+    "answer_text": "N",
+    "explanation": {
+      "question_restate": "Which of the following is not a unit of mass?",
+      "principle": "Units of mass must measure amount of matter, whereas the newton measures force.",
+      "steps": [
+        "kg, g and mg are all units of mass.",
+        "N means newton, which is the SI unit of force.",
+        "So N is not a unit of mass.",
+        "Therefore, the correct answer is D. N."
+      ],
+      "final_answer": "D. N",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "mass",
+      "units"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q016",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Mass: concept of beam balance",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "When a simple beam balance is in equilibrium, the beam is horizontal because",
+    "options": {
+      "A": "the masses are equal and opposite",
+      "B": "the moments of the two sides are equal",
+      "C": "the densities are equal",
+      "D": "the volumes are equal"
+    },
+    "answer": "B",
+    "answer_text": "the moments of the two sides are equal",
+    "explanation": {
+      "question_restate": "When a simple beam balance is in equilibrium, the beam is horizontal because",
+      "principle": "Rotational equilibrium occurs when clockwise and anticlockwise moments are equal.",
+      "steps": [
+        "The beam rotates about a pivot.",
+        "For it to stay horizontal and not turn, the net turning effect must be zero.",
+        "That happens when the moment on one side equals the moment on the other side.",
+        "Therefore, the correct answer is B. the moments of the two sides are equal."
+      ],
+      "final_answer": "B. the moments of the two sides are equal",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "equilibrium",
+      "moments"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q017",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Mass: use of simple beam balance",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The quantity of matter contained in a body is called its",
+    "options": {
+      "A": "weight",
+      "B": "mass",
+      "C": "density",
+      "D": "volume"
+    },
+    "answer": "B",
+    "answer_text": "mass",
+    "explanation": {
+      "question_restate": "The quantity of matter contained in a body is called its",
+      "principle": "Mass is defined as the amount or quantity of matter in a body.",
+      "steps": [
+        "Weight is the gravitational force on the body.",
+        "Volume is the space the body occupies, and density is mass per unit volume.",
+        "The quantity of matter itself is mass.",
+        "Therefore, the correct answer is B. mass."
+      ],
+      "final_answer": "B. mass",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "definition_of_mass"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q018",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Mass: unit conversion",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "0.25 kg is equal to",
+    "options": {
+      "A": "2.5 g",
+      "B": "25 g",
+      "C": "250 g",
+      "D": "2500 g"
+    },
+    "answer": "C",
+    "answer_text": "250 g",
+    "explanation": {
+      "question_restate": "0.25 kg is equal to",
+      "principle": "1 kg = 1000 g, so convert kilograms to grams by multiplying by 1000.",
+      "steps": [
+        "0.25 kg × 1000 = 250 g.",
+        "This is a common conversion in laboratory measurements.",
+        "So the correct answer is 250 g.",
+        "Therefore, the correct answer is C. 250 g."
+      ],
+      "final_answer": "C. 250 g",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "mass_conversion",
+      "kg_to_g"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q019",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Mass: beam balance reading",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student uses a beam balance with damp hands and notices the pans stick slightly to the support. The likely effect is that the measurement becomes",
+    "options": {
+      "A": "more accurate",
+      "B": "less reliable because friction can affect the balance condition",
+      "C": "independent of standard masses",
+      "D": "a measurement of volume"
+    },
+    "answer": "B",
+    "answer_text": "less reliable because friction can affect the balance condition",
+    "explanation": {
+      "question_restate": "A student uses a beam balance with damp hands and notices the pans stick slightly to the support. The likely effect is that the measurement becomes",
+      "principle": "Any extra friction or sticking effect can prevent the balance from settling at the true equilibrium position.",
+      "steps": [
+        "A beam balance should move freely about its pivot.",
+        "If the pans or moving parts stick, the balance may appear level when the moments are not exactly equal.",
+        "That reduces reliability and can introduce error.",
+        "Therefore, the correct answer is B. less reliable because friction can affect the balance condition."
+      ],
+      "final_answer": "B. less reliable because friction can affect the balance condition",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "beam_balance",
+      "reliability"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q020",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Mass: beam balance concept",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A beam balance is best described as an instrument for measuring",
+    "options": {
+      "A": "weight only",
+      "B": "mass by comparison",
+      "C": "force by extension",
+      "D": "density directly"
+    },
+    "answer": "B",
+    "answer_text": "mass by comparison",
+    "explanation": {
+      "question_restate": "A beam balance is best described as an instrument for measuring",
+      "principle": "The beam balance does not read mass from a spring extension; it compares an unknown mass with known masses.",
+      "steps": [
+        "Standard masses are placed on one side and the unknown object on the other.",
+        "When the system balances, the unknown mass is determined by comparison.",
+        "So it measures mass by comparison.",
+        "Therefore, the correct answer is B. mass by comparison."
+      ],
+      "final_answer": "B. mass by comparison",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "beam_balance",
+      "comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q021",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Time: unit of time",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "The SI unit of time is the",
+    "options": {
+      "A": "minute",
+      "B": "hour",
+      "C": "second",
+      "D": "day"
+    },
+    "answer": "C",
+    "answer_text": "second",
+    "explanation": {
+      "question_restate": "The SI unit of time is the",
+      "principle": "Time is a fundamental physical quantity with the SI unit second.",
+      "steps": [
+        "In the SI system, time is measured in second, symbol s.",
+        "Minute, hour and day are convenient larger units but not the basic SI unit.",
+        "So the correct answer is second.",
+        "Therefore, the correct answer is C. second."
+      ],
+      "final_answer": "C. second",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "time",
+      "SI_unit"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q022",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Time: time-measuring devices",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "The most suitable instrument for measuring the time taken by a runner to complete a race is a",
+    "options": {
+      "A": "metre rule",
+      "B": "stopwatch",
+      "C": "beam balance",
+      "D": "measuring cylinder"
+    },
+    "answer": "B",
+    "answer_text": "stopwatch",
+    "explanation": {
+      "question_restate": "The most suitable instrument for measuring the time taken by a runner to complete a race is a",
+      "principle": "Short time intervals in experiments and sporting events are measured with a stopwatch or stop clock.",
+      "steps": [
+        "A race duration is a time interval.",
+        "A stopwatch is designed to start and stop accurately over such intervals.",
+        "The other instruments measure different physical quantities.",
+        "Therefore, the correct answer is B. stopwatch."
+      ],
+      "final_answer": "B. stopwatch",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "stopwatch",
+      "time_measurement"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q023",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Time: time-measuring devices",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following devices measures time by the regular vibration of a quartz crystal?",
+    "options": {
+      "A": "beam balance",
+      "B": "digital watch",
+      "C": "measuring cylinder",
+      "D": "thermometer"
+    },
+    "answer": "B",
+    "answer_text": "digital watch",
+    "explanation": {
+      "question_restate": "Which of the following devices measures time by the regular vibration of a quartz crystal?",
+      "principle": "Modern digital clocks and watches commonly use quartz oscillators with very regular frequency.",
+      "steps": [
+        "Quartz crystals vibrate at a stable rate when electrically excited.",
+        "Electronics count these vibrations to keep time accurately.",
+        "That is why digital watches are often quartz-based.",
+        "Therefore, the correct answer is B. digital watch."
+      ],
+      "final_answer": "B. digital watch",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "quartz_clock",
+      "time_devices"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q024",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Time: unit conversion",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The time interval 2.5 minutes is equal to",
+    "options": {
+      "A": "25 s",
+      "B": "120 s",
+      "C": "150 s",
+      "D": "250 s"
+    },
+    "answer": "C",
+    "answer_text": "150 s",
+    "explanation": {
+      "question_restate": "The time interval 2.5 minutes is equal to",
+      "principle": "1 minute = 60 seconds, so convert minutes to seconds by multiplying by 60.",
+      "steps": [
+        "2.5 × 60 = 150.",
+        "Therefore, 2.5 minutes = 150 s.",
+        "This conversion is important when substituting into formulas that use SI units.",
+        "Therefore, the correct answer is C. 150 s."
+      ],
+      "final_answer": "C. 150 s",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "time_conversion",
+      "minutes_to_seconds"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q025",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Time: measuring periodic motion",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In order to reduce percentage error when timing the oscillation of a pendulum, a student should measure the time for",
+    "options": {
+      "A": "one oscillation only",
+      "B": "many oscillations and divide by the number",
+      "C": "half an oscillation only",
+      "D": "a random part of the motion"
+    },
+    "answer": "B",
+    "answer_text": "many oscillations and divide by the number",
+    "explanation": {
+      "question_restate": "In order to reduce percentage error when timing the oscillation of a pendulum, a student should measure the time for",
+      "principle": "When a time interval is very short, reaction time causes larger percentage error. Measuring many cycles reduces this error.",
+      "steps": [
+        "Human reaction time may be significant if only one swing is timed.",
+        "If the time for, say, 20 oscillations is measured and then divided by 20, the fractional error becomes smaller.",
+        "This gives a more reliable estimate of the period.",
+        "Therefore, the correct answer is B. many oscillations and divide by the number."
+      ],
+      "final_answer": "B. many oscillations and divide by the number",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "timing",
+      "oscillation"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q026",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Time: instruments",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following pairs is correctly matched?",
+    "options": {
+      "A": "Stopwatch — mass",
+      "B": "Calendar — time interval over long periods",
+      "C": "Beam balance — length",
+      "D": "Vernier caliper — time"
+    },
+    "answer": "B",
+    "answer_text": "Calendar — time interval over long periods",
+    "explanation": {
+      "question_restate": "Which of the following pairs is correctly matched?",
+      "principle": "Different instruments are suitable for different ranges and kinds of measurement.",
+      "steps": [
+        "A stopwatch measures short intervals, not mass.",
+        "A calendar is used to keep track of time over days, weeks, months and years.",
+        "A beam balance measures mass, while a vernier caliper measures length.",
+        "Therefore, the correct answer is B. Calendar — time interval over long periods."
+      ],
+      "final_answer": "B. Calendar — time interval over long periods",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "calendar",
+      "time_devices"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q027",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Time: periodic devices",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A pendulum clock keeps poor time on the Moon mainly because the",
+    "options": {
+      "A": "mass of the bob changes",
+      "B": "length of the pendulum changes automatically",
+      "C": "value of g is smaller there",
+      "D": "second is not defined there"
+    },
+    "answer": "C",
+    "answer_text": "value of g is smaller there",
+    "explanation": {
+      "question_restate": "A pendulum clock keeps poor time on the Moon mainly because the",
+      "principle": "The period of a pendulum depends on g according to T = 2π√(l/g).",
+      "steps": [
+        "On the Moon, gravitational field strength is smaller than on Earth.",
+        "If g becomes smaller, the period T increases.",
+        "That means the pendulum swings more slowly and the clock keeps poor time unless adjusted.",
+        "Therefore, the correct answer is C. value of g is smaller there."
+      ],
+      "final_answer": "C. value of g is smaller there",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "pendulum_clock",
+      "g"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q028",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Time: unit conversion",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "One hour is equal to",
+    "options": {
+      "A": "60 s",
+      "B": "600 s",
+      "C": "3600 s",
+      "D": "36 000 s"
+    },
+    "answer": "C",
+    "answer_text": "3600 s",
+    "explanation": {
+      "question_restate": "One hour is equal to",
+      "principle": "1 hour = 60 minutes and 1 minute = 60 seconds.",
+      "steps": [
+        "So, 1 hour = 60 × 60 s = 3600 s.",
+        "This is a basic conversion commonly used in speed calculations.",
+        "Therefore, the correct answer is C. 3600 s."
+      ],
+      "final_answer": "C. 3600 s",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "time_conversion",
+      "hour_to_seconds"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q029",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Time: accuracy",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A clock is said to be accurate if it",
+    "options": {
+      "A": "is beautiful and expensive",
+      "B": "gives the correct time or very nearly so",
+      "C": "has a loud alarm",
+      "D": "is always portable"
+    },
+    "answer": "B",
+    "answer_text": "gives the correct time or very nearly so",
+    "explanation": {
+      "question_restate": "A clock is said to be accurate if it",
+      "principle": "Accuracy means closeness of a measured value to the true value.",
+      "steps": [
+        "For a clock, the measured quantity is time.",
+        "An accurate clock is one that agrees closely with the correct standard time.",
+        "Features like cost or portability do not define accuracy.",
+        "Therefore, the correct answer is B. gives the correct time or very nearly so."
+      ],
+      "final_answer": "B. gives the correct time or very nearly so",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "accuracy",
+      "time"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q030",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Time: precision",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Two stopwatches give repeated readings of 9.81 s, 9.82 s and 9.81 s for the same event, while a third gives 9.4 s, 10.2 s and 9.8 s. The first stopwatch is more",
+    "options": {
+      "A": "precise",
+      "B": "massive",
+      "C": "voluminous",
+      "D": "elastic"
+    },
+    "answer": "A",
+    "answer_text": "precise",
+    "explanation": {
+      "question_restate": "Two stopwatches give repeated readings of 9.81 s, 9.82 s and 9.81 s for the same event, while a third gives 9.4 s, 10.2 s and 9.8 s. The first stopwatch is more",
+      "principle": "Precision refers to how close repeated readings are to one another.",
+      "steps": [
+        "The first stopwatch gives readings that are very close together.",
+        "That means it has good repeatability and is precise.",
+        "Precision is different from accuracy, which compares the readings with the true value.",
+        "Therefore, the correct answer is A. precise."
+      ],
+      "final_answer": "A. precise",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "precision",
+      "repeatability"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q031",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Fundamental physical quantities",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Which of the following is a fundamental physical quantity?",
+    "options": {
+      "A": "velocity",
+      "B": "density",
+      "C": "time",
+      "D": "force"
+    },
+    "answer": "C",
+    "answer_text": "time",
+    "explanation": {
+      "question_restate": "Which of the following is a fundamental physical quantity?",
+      "principle": "Fundamental quantities are basic quantities not defined in terms of others in elementary mechanics.",
+      "steps": [
+        "Time is a basic quantity with SI unit second.",
+        "Velocity, density and force are derived from combinations of more basic quantities.",
+        "So time is fundamental.",
+        "Therefore, the correct answer is C. time."
+      ],
+      "final_answer": "C. time",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "fundamental_quantities",
+      "time"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q032",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Fundamental physical quantities",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which set contains only fundamental quantities?",
+    "options": {
+      "A": "mass, length, time",
+      "B": "force, mass, time",
+      "C": "length, area, volume",
+      "D": "velocity, displacement, time"
+    },
+    "answer": "A",
+    "answer_text": "mass, length, time",
+    "explanation": {
+      "question_restate": "Which set contains only fundamental quantities?",
+      "principle": "At this level, common fundamental quantities include mass, length and time.",
+      "steps": [
+        "Mass, length and time do not need to be expressed in terms of more basic mechanical quantities.",
+        "Force, area, volume and velocity are all derived quantities.",
+        "Therefore only option A contains fundamental quantities only.",
+        "Therefore, the correct answer is A. mass, length, time."
+      ],
+      "final_answer": "A. mass, length, time",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "fundamental_quantities",
+      "set"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q033",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Fundamental physical quantities",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The SI unit of length is the",
+    "options": {
+      "A": "centimetre",
+      "B": "metre",
+      "C": "kilometre",
+      "D": "millimetre"
+    },
+    "answer": "B",
+    "answer_text": "metre",
+    "explanation": {
+      "question_restate": "The SI unit of length is the",
+      "principle": "The internationally accepted SI base unit for length is the metre.",
+      "steps": [
+        "Although centimetre, kilometre and millimetre are useful units, they are multiples or submultiples of the metre.",
+        "The SI base unit remains metre, symbol m.",
+        "Therefore, the correct answer is B. metre."
+      ],
+      "final_answer": "B. metre",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "length",
+      "SI_unit"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q034",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Fundamental physical quantities",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following is not a fundamental quantity?",
+    "options": {
+      "A": "mass",
+      "B": "temperature",
+      "C": "electric current",
+      "D": "pressure"
+    },
+    "answer": "D",
+    "answer_text": "pressure",
+    "explanation": {
+      "question_restate": "Which of the following is not a fundamental quantity?",
+      "principle": "Pressure is derived from force per unit area, so it is not fundamental.",
+      "steps": [
+        "Mass, temperature and electric current are SI base quantities.",
+        "Pressure = force/area, and force itself is derived.",
+        "Therefore pressure is not a fundamental quantity.",
+        "Therefore, the correct answer is D. pressure."
+      ],
+      "final_answer": "D. pressure",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "fundamental_quantities",
+      "pressure"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q035",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Fundamental physical quantities",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The SI unit of electric current is the",
+    "options": {
+      "A": "ohm",
+      "B": "volt",
+      "C": "ampere",
+      "D": "coulomb"
+    },
+    "answer": "C",
+    "answer_text": "ampere",
+    "explanation": {
+      "question_restate": "The SI unit of electric current is the",
+      "principle": "Electric current is a base quantity with SI unit ampere.",
+      "steps": [
+        "Ohm is unit of resistance, volt is unit of potential difference, and coulomb is unit of charge.",
+        "Ampere, symbol A, is the SI unit of current.",
+        "Therefore, the correct answer is C. ampere."
+      ],
+      "final_answer": "C. ampere",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "electric_current",
+      "SI_unit"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q036",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Fundamental physical quantities",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following pairs is correctly matched?",
+    "options": {
+      "A": "Luminous intensity — candela",
+      "B": "Mass — newton",
+      "C": "Time — minute as SI base unit",
+      "D": "Length — centimetre as SI base unit"
+    },
+    "answer": "A",
+    "answer_text": "Luminous intensity — candela",
+    "explanation": {
+      "question_restate": "Which of the following pairs is correctly matched?",
+      "principle": "Each fundamental quantity has a standard SI base unit.",
+      "steps": [
+        "Luminous intensity is measured in candela.",
+        "Mass is measured in kilogram, time in second, and length in metre.",
+        "Therefore the correctly matched pair is luminous intensity — candela.",
+        "Therefore, the correct answer is A. Luminous intensity — candela."
+      ],
+      "final_answer": "A. Luminous intensity — candela",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "SI_base_units",
+      "candela"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q037",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Fundamental physical quantities",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student says that volume is a fundamental quantity because it can be measured directly. This statement is wrong because volume",
+    "options": {
+      "A": "is not useful in physics",
+      "B": "depends on length and is therefore derived",
+      "C": "cannot have a unit",
+      "D": "is always constant"
+    },
+    "answer": "B",
+    "answer_text": "depends on length and is therefore derived",
+    "explanation": {
+      "question_restate": "A student says that volume is a fundamental quantity because it can be measured directly. This statement is wrong because volume",
+      "principle": "Whether a quantity is fundamental depends on definition, not on whether it can be measured directly.",
+      "steps": [
+        "Volume can be found from length × breadth × height.",
+        "So it depends on length and is a derived quantity.",
+        "A quantity may be measured directly in practice and still be derived conceptually.",
+        "Therefore, the correct answer is B. depends on length and is therefore derived."
+      ],
+      "final_answer": "B. depends on length and is therefore derived",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "volume",
+      "derived_quantity"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q038",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Fundamental physical quantities",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a base unit in the SI?",
+    "options": {
+      "A": "newton",
+      "B": "joule",
+      "C": "pascal",
+      "D": "kelvin"
+    },
+    "answer": "D",
+    "answer_text": "kelvin",
+    "explanation": {
+      "question_restate": "Which of the following is a base unit in the SI?",
+      "principle": "Kelvin is the SI base unit for thermodynamic temperature.",
+      "steps": [
+        "Newton, joule and pascal are all derived units.",
+        "Kelvin is a base unit and is written K.",
+        "Therefore kelvin is correct.",
+        "Therefore, the correct answer is D. kelvin."
+      ],
+      "final_answer": "D. kelvin",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "SI_units",
+      "kelvin"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q039",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Fundamental physical quantities",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The quantity that tells how hot or cold a body is, and is treated as fundamental in the SI, is",
+    "options": {
+      "A": "heat",
+      "B": "temperature",
+      "C": "specific heat capacity",
+      "D": "thermal capacity"
+    },
+    "answer": "B",
+    "answer_text": "temperature",
+    "explanation": {
+      "question_restate": "The quantity that tells how hot or cold a body is, and is treated as fundamental in the SI, is",
+      "principle": "Temperature is one of the SI base quantities.",
+      "steps": [
+        "Heat is energy in transit, not a base quantity.",
+        "Specific heat capacity and thermal capacity are derived thermal quantities.",
+        "Temperature itself is the relevant fundamental quantity.",
+        "Therefore, the correct answer is B. temperature."
+      ],
+      "final_answer": "B. temperature",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "temperature",
+      "fundamental"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q040",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Fundamental physical quantities",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which one of the following is not an SI base unit?",
+    "options": {
+      "A": "m",
+      "B": "kg",
+      "C": "s",
+      "D": "N"
+    },
+    "answer": "D",
+    "answer_text": "N",
+    "explanation": {
+      "question_restate": "Which one of the following is not an SI base unit?",
+      "principle": "m, kg and s are base units, but newton is derived from kg, m and s.",
+      "steps": [
+        "Force F = ma.",
+        "So, unit of force = kg m s⁻², which is written as newton.",
+        "Because it is built from base units, N is not itself a base unit.",
+        "Therefore, the correct answer is D. N."
+      ],
+      "final_answer": "D. N",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "SI_units",
+      "newton"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q041",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Derived physical quantities and their units",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Velocity is a derived quantity because it is obtained from",
+    "options": {
+      "A": "mass × time",
+      "B": "length ÷ time",
+      "C": "mass ÷ volume",
+      "D": "force × distance"
+    },
+    "answer": "B",
+    "answer_text": "length ÷ time",
+    "explanation": {
+      "question_restate": "Velocity is a derived quantity because it is obtained from",
+      "principle": "Velocity is defined as displacement per unit time.",
+      "steps": [
+        "Velocity tells how fast displacement changes with time.",
+        "So, velocity = displacement/time.",
+        "Its unit is m s⁻¹, showing it is derived from length and time.",
+        "Therefore, the correct answer is B. length ÷ time."
+      ],
+      "final_answer": "B. length ÷ time",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "velocity",
+      "derived"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q042",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Derived physical quantities and their units",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The SI unit of density is",
+    "options": {
+      "A": "kg m⁻³",
+      "B": "kg m³",
+      "C": "g cm⁻²",
+      "D": "N m⁻²"
+    },
+    "answer": "A",
+    "answer_text": "kg m⁻³",
+    "explanation": {
+      "question_restate": "The SI unit of density is",
+      "principle": "Density is mass per unit volume.",
+      "steps": [
+        "Unit of mass = kg.",
+        "Unit of volume = m³.",
+        "Therefore unit of density = kg/m³ = kg m⁻³.",
+        "Therefore, the correct answer is A. kg m⁻³."
+      ],
+      "final_answer": "A. kg m⁻³",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "density",
+      "SI_unit"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q043",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Derived physical quantities and their units",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Force has SI unit",
+    "options": {
+      "A": "kg m s⁻²",
+      "B": "kg m² s⁻¹",
+      "C": "kg m⁻¹ s⁻²",
+      "D": "N m"
+    },
+    "answer": "A",
+    "answer_text": "kg m s⁻²",
+    "explanation": {
+      "question_restate": "Force has SI unit",
+      "principle": "From Newton's second law, force = mass × acceleration.",
+      "steps": [
+        "Unit of mass = kg.",
+        "Unit of acceleration = m s⁻².",
+        "Therefore, unit of force = kg m s⁻². This derived unit is called the newton.",
+        "Therefore, the correct answer is A. kg m s⁻²."
+      ],
+      "final_answer": "A. kg m s⁻²",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "force",
+      "SI_unit"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q044",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Combinations of fundamental quantities and determination of their units",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The unit of pressure is",
+    "options": {
+      "A": "kg m s⁻¹",
+      "B": "kg m⁻¹ s⁻²",
+      "C": "kg m² s⁻²",
+      "D": "kg m⁻² s"
+    },
+    "answer": "B",
+    "answer_text": "kg m⁻¹ s⁻²",
+    "explanation": {
+      "question_restate": "The unit of pressure is",
+      "principle": "Pressure = force/area, so derive its unit from the units of force and area.",
+      "steps": [
+        "Force has unit kg m s⁻².",
+        "Area has unit m².",
+        "Therefore, pressure unit = (kg m s⁻²)/m² = kg m⁻¹ s⁻².",
+        "Therefore, the correct answer is B. kg m⁻¹ s⁻²."
+      ],
+      "final_answer": "B. kg m⁻¹ s⁻²",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "pressure",
+      "unit_derivation"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q045",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Derived physical quantities and their units",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The unit N m⁻² is also called the",
+    "options": {
+      "A": "joule",
+      "B": "watt",
+      "C": "pascal",
+      "D": "coulomb"
+    },
+    "answer": "C",
+    "answer_text": "pascal",
+    "explanation": {
+      "question_restate": "The unit N m⁻² is also called the",
+      "principle": "The special name for the SI unit of pressure is pascal.",
+      "steps": [
+        "Pressure can be written as N/m².",
+        "The SI special name for this derived unit is pascal, symbol Pa.",
+        "This is frequently tested in JAMB.",
+        "Therefore, the correct answer is C. pascal."
+      ],
+      "final_answer": "C. pascal",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "pascal",
+      "pressure"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q046",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Combinations of fundamental quantities and determination of their units",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Work done is force multiplied by distance. Its SI unit is",
+    "options": {
+      "A": "N m",
+      "B": "N m⁻¹",
+      "C": "kg m⁻¹ s⁻²",
+      "D": "kg s⁻²"
+    },
+    "answer": "A",
+    "answer_text": "N m",
+    "explanation": {
+      "question_restate": "Work done is force multiplied by distance. Its SI unit is",
+      "principle": "From the definition of work, unit of work = unit of force × unit of distance.",
+      "steps": [
+        "Force is measured in N.",
+        "Distance is measured in m.",
+        "Therefore work is measured in N m, which is also called the joule.",
+        "Therefore, the correct answer is A. N m."
+      ],
+      "final_answer": "A. N m",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "work",
+      "units"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q047",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Derived physical quantities and their units",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The unit of acceleration can be obtained by",
+    "options": {
+      "A": "m × s",
+      "B": "m ÷ s",
+      "C": "m ÷ s²",
+      "D": "kg ÷ s²"
+    },
+    "answer": "C",
+    "answer_text": "m ÷ s²",
+    "explanation": {
+      "question_restate": "The unit of acceleration can be obtained by",
+      "principle": "Acceleration is the rate of change of velocity with time.",
+      "steps": [
+        "Velocity has unit m s⁻¹.",
+        "Dividing by time again gives m s⁻².",
+        "So the unit of acceleration is m ÷ s² = m s⁻².",
+        "Therefore, the correct answer is C. m ÷ s²."
+      ],
+      "final_answer": "C. m ÷ s²",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "acceleration",
+      "unit"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q048",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Combinations of fundamental quantities and determination of their units",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "If momentum = mass × velocity, the SI unit of momentum is",
+    "options": {
+      "A": "kg m s⁻¹",
+      "B": "kg m s⁻²",
+      "C": "kg m² s⁻²",
+      "D": "N m"
+    },
+    "answer": "A",
+    "answer_text": "kg m s⁻¹",
+    "explanation": {
+      "question_restate": "If momentum = mass × velocity, the SI unit of momentum is",
+      "principle": "Momentum is found by multiplying mass by velocity.",
+      "steps": [
+        "Mass has unit kg.",
+        "Velocity has unit m s⁻¹.",
+        "Therefore momentum has unit kg m s⁻¹.",
+        "Therefore, the correct answer is A. kg m s⁻¹."
+      ],
+      "final_answer": "A. kg m s⁻¹",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "momentum",
+      "units"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q049",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Derived physical quantities and their units",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is correctly matched?",
+    "options": {
+      "A": "Density — kg m⁻²",
+      "B": "Area — m²",
+      "C": "Volume — m²",
+      "D": "Speed — m s²"
+    },
+    "answer": "B",
+    "answer_text": "Area — m²",
+    "explanation": {
+      "question_restate": "Which of the following is correctly matched?",
+      "principle": "Every derived quantity has a characteristic unit obtained from its definition.",
+      "steps": [
+        "Area is the product of two lengths, so its SI unit is m².",
+        "Density is kg m⁻³, volume is m³, and speed is m s⁻¹.",
+        "So option B is correct.",
+        "Therefore, the correct answer is B. Area — m²."
+      ],
+      "final_answer": "B. Area — m²",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "units",
+      "area"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q050",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Combinations of fundamental quantities and determination of their units",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Power is defined as work done per unit time. The SI unit of power is",
+    "options": {
+      "A": "J s",
+      "B": "J s⁻¹",
+      "C": "N s",
+      "D": "kg m s⁻¹"
+    },
+    "answer": "B",
+    "answer_text": "J s⁻¹",
+    "explanation": {
+      "question_restate": "Power is defined as work done per unit time. The SI unit of power is",
+      "principle": "Since power = work/time, divide the unit of work by the unit of time.",
+      "steps": [
+        "Work is measured in joule, J.",
+        "Time is measured in second, s.",
+        "Therefore power is J/s = J s⁻¹, also called watt.",
+        "Therefore, the correct answer is B. J s⁻¹."
+      ],
+      "final_answer": "B. J s⁻¹",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "power",
+      "units"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q051",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Dimensions: definition of dimensions",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Dimensions of a physical quantity show how the quantity depends on",
+    "options": {
+      "A": "colour and shape",
+      "B": "fundamental quantities",
+      "C": "temperature only",
+      "D": "electric charge only"
+    },
+    "answer": "B",
+    "answer_text": "fundamental quantities",
+    "explanation": {
+      "question_restate": "Dimensions of a physical quantity show how the quantity depends on",
+      "principle": "Dimensional formula expresses a quantity in terms of powers of fundamental quantities.",
+      "steps": [
+        "For example, force depends on mass, length and time.",
+        "Its dimensional formula is [M L T⁻²].",
+        "So dimensions show dependence on basic quantities.",
+        "Therefore, the correct answer is B. fundamental quantities."
+      ],
+      "final_answer": "B. fundamental quantities",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "dimensions",
+      "definition"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q052",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Dimensions: simple examples",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The dimensional formula of velocity is",
+    "options": {
+      "A": "[M L T⁻¹]",
+      "B": "[L T⁻¹]",
+      "C": "[M L² T⁻²]",
+      "D": "[M T⁻¹]"
+    },
+    "answer": "B",
+    "answer_text": "[L T⁻¹]",
+    "explanation": {
+      "question_restate": "The dimensional formula of velocity is",
+      "principle": "Velocity is displacement per unit time.",
+      "steps": [
+        "Displacement has dimension [L].",
+        "Time has dimension [T].",
+        "So velocity has dimension [L]/[T] = [L T⁻¹].",
+        "Therefore, the correct answer is B. [L T⁻¹]."
+      ],
+      "final_answer": "B. [L T⁻¹]",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "dimensions",
+      "velocity"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q053",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Dimensions: simple examples",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The dimensional formula of force is",
+    "options": {
+      "A": "[M L T⁻²]",
+      "B": "[M L² T⁻²]",
+      "C": "[M T⁻²]",
+      "D": "[L T⁻²]"
+    },
+    "answer": "A",
+    "answer_text": "[M L T⁻²]",
+    "explanation": {
+      "question_restate": "The dimensional formula of force is",
+      "principle": "Force = mass × acceleration.",
+      "steps": [
+        "Mass has dimension [M].",
+        "Acceleration has dimension [L T⁻²].",
+        "So force has dimension [M][L T⁻²] = [M L T⁻²].",
+        "Therefore, the correct answer is A. [M L T⁻²]."
+      ],
+      "final_answer": "A. [M L T⁻²]",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "dimensions",
+      "force"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q054",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Dimensions: simple examples",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following has the same dimensions as pressure?",
+    "options": {
+      "A": "energy per unit volume",
+      "B": "momentum",
+      "C": "power",
+      "D": "impulse"
+    },
+    "answer": "A",
+    "answer_text": "energy per unit volume",
+    "explanation": {
+      "question_restate": "Which of the following has the same dimensions as pressure?",
+      "principle": "Pressure = force/area, and energy per unit volume simplifies to the same dimensions.",
+      "steps": [
+        "Pressure has dimensions [M L⁻¹ T⁻²].",
+        "Energy has dimensions [M L² T⁻²].",
+        "Dividing energy by volume [L³] gives [M L⁻¹ T⁻²], the same as pressure.",
+        "Therefore, the correct answer is A. energy per unit volume."
+      ],
+      "final_answer": "A. energy per unit volume",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "dimensions",
+      "pressure"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q055",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Dimensions: simple examples",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The dimensions of area are",
+    "options": {
+      "A": "[L]",
+      "B": "[L²]",
+      "C": "[L³]",
+      "D": "[M L²]"
+    },
+    "answer": "B",
+    "answer_text": "[L²]",
+    "explanation": {
+      "question_restate": "The dimensions of area are",
+      "principle": "Area is obtained by multiplying length by length.",
+      "steps": [
+        "One length contributes [L].",
+        "A second length contributes another [L].",
+        "Therefore area has dimensions [L²].",
+        "Therefore, the correct answer is B. [L²]."
+      ],
+      "final_answer": "B. [L²]",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "dimensions",
+      "area"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q056",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Dimensions: definition of dimensions",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A quantity with dimensional formula [M L⁻³] is most likely",
+    "options": {
+      "A": "pressure",
+      "B": "density",
+      "C": "velocity",
+      "D": "energy"
+    },
+    "answer": "B",
+    "answer_text": "density",
+    "explanation": {
+      "question_restate": "A quantity with dimensional formula [M L⁻³] is most likely",
+      "principle": "Density is mass per unit volume.",
+      "steps": [
+        "Mass contributes [M].",
+        "Volume contributes [L³].",
+        "Therefore density = [M]/[L³] = [M L⁻³].",
+        "Therefore, the correct answer is B. density."
+      ],
+      "final_answer": "B. density",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "dimensions",
+      "density"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q057",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Dimensions: simple examples",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The dimensions of acceleration are",
+    "options": {
+      "A": "[L T⁻¹]",
+      "B": "[L T⁻²]",
+      "C": "[M L T⁻²]",
+      "D": "[M T⁻¹]"
+    },
+    "answer": "B",
+    "answer_text": "[L T⁻²]",
+    "explanation": {
+      "question_restate": "The dimensions of acceleration are",
+      "principle": "Acceleration is change of velocity per unit time.",
+      "steps": [
+        "Velocity has dimensions [L T⁻¹].",
+        "Dividing by time [T] gives [L T⁻²].",
+        "That is the dimensional formula of acceleration.",
+        "Therefore, the correct answer is B. [L T⁻²]."
+      ],
+      "final_answer": "B. [L T⁻²]",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "dimensions",
+      "acceleration"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q058",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Dimensions: simple examples",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The dimensions of work are",
+    "options": {
+      "A": "[M L² T⁻²]",
+      "B": "[M L T⁻²]",
+      "C": "[M L² T⁻¹]",
+      "D": "[M L⁻¹ T⁻²]"
+    },
+    "answer": "A",
+    "answer_text": "[M L² T⁻²]",
+    "explanation": {
+      "question_restate": "The dimensions of work are",
+      "principle": "Work = force × distance.",
+      "steps": [
+        "Force has dimensions [M L T⁻²].",
+        "Distance has dimensions [L].",
+        "Multiplying gives [M L² T⁻²].",
+        "Therefore, the correct answer is A. [M L² T⁻²]."
+      ],
+      "final_answer": "A. [M L² T⁻²]",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "dimensions",
+      "work"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q059",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Dimensions: simple examples",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is dimensionless?",
+    "options": {
+      "A": "relative density",
+      "B": "volume",
+      "C": "speed",
+      "D": "pressure"
+    },
+    "answer": "A",
+    "answer_text": "relative density",
+    "explanation": {
+      "question_restate": "Which of the following is dimensionless?",
+      "principle": "A ratio of two quantities with the same dimensions has no dimension.",
+      "steps": [
+        "Relative density = density of substance / density of water.",
+        "Both numerator and denominator have the same dimensions.",
+        "So the ratio has no dimension and no unit.",
+        "Therefore, the correct answer is A. relative density."
+      ],
+      "final_answer": "A. relative density",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "dimensionless",
+      "relative_density"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q060",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Dimensions: use of dimensional analysis",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Dimensional analysis can be used to check whether a physical equation is",
+    "options": {
+      "A": "grammatically correct",
+      "B": "dimensionally consistent",
+      "C": "experimentally easy",
+      "D": "beautifully written"
+    },
+    "answer": "B",
+    "answer_text": "dimensionally consistent",
+    "explanation": {
+      "question_restate": "Dimensional analysis can be used to check whether a physical equation is",
+      "principle": "An equation in physics should have the same dimensions on both sides.",
+      "steps": [
+        "If the dimensions on the left and right sides do not match, the equation cannot be correct physically.",
+        "Dimensional analysis is therefore a useful checking tool.",
+        "It does not replace experiment, but it helps detect errors.",
+        "Therefore, the correct answer is B. dimensionally consistent."
+      ],
+      "final_answer": "B. dimensionally consistent",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "dimensional_analysis",
+      "equations"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q061",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Limitations of experimental measurements: accuracy of measuring instruments",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "The closeness of a measured value to the true value is called",
+    "options": {
+      "A": "precision",
+      "B": "accuracy",
+      "C": "estimate",
+      "D": "range"
+    },
+    "answer": "B",
+    "answer_text": "accuracy",
+    "explanation": {
+      "question_restate": "The closeness of a measured value to the true value is called",
+      "principle": "Accuracy refers to how near a measured value is to the actual or accepted true value.",
+      "steps": [
+        "If your reading is very close to the true value, it is accurate.",
+        "Precision, on the other hand, is about repeatability.",
+        "JAMB often tests the difference between these two ideas.",
+        "Therefore, the correct answer is B. accuracy."
+      ],
+      "final_answer": "B. accuracy",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "accuracy",
+      "measurement"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q062",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Limitations of experimental measurements: simple estimation of errors",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "If the true length of a rod is 20.0 cm and a student records 19.8 cm, the absolute error is",
+    "options": {
+      "A": "0.1 cm",
+      "B": "0.2 cm",
+      "C": "0.5 cm",
+      "D": "1.0 cm"
+    },
+    "answer": "B",
+    "answer_text": "0.2 cm",
+    "explanation": {
+      "question_restate": "If the true length of a rod is 20.0 cm and a student records 19.8 cm, the absolute error is",
+      "principle": "Absolute error is the magnitude of the difference between measured value and true value.",
+      "steps": [
+        "True value = 20.0 cm and measured value = 19.8 cm.",
+        "Difference = 20.0 − 19.8 = 0.2 cm.",
+        "We take the magnitude, so absolute error is 0.2 cm.",
+        "Therefore, the correct answer is B. 0.2 cm."
+      ],
+      "final_answer": "B. 0.2 cm",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "absolute_error",
+      "measurement"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q063",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Limitations of experimental measurements: significant figures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following has three significant figures?",
+    "options": {
+      "A": "0.00520",
+      "B": "0.0502",
+      "C": "5.0020",
+      "D": "5000"
+    },
+    "answer": "B",
+    "answer_text": "0.0502",
+    "explanation": {
+      "question_restate": "Which of the following has three significant figures?",
+      "principle": "Leading zeros are not significant, but zeros between non-zero digits are significant.",
+      "steps": [
+        "In 0.0502, the leading zeros are not counted.",
+        "The significant figures are 5, 0 and 2, giving three significant figures.",
+        "Be careful with trailing zeros and the presence or absence of a decimal point.",
+        "Therefore, the correct answer is B. 0.0502."
+      ],
+      "final_answer": "B. 0.0502",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "significant_figures",
+      "counting"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q064",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Limitations of experimental measurements: standard form",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The number 0.00072 written in standard form is",
+    "options": {
+      "A": "72 × 10⁻⁵",
+      "B": "7.2 × 10⁻⁴",
+      "C": "0.72 × 10⁻³",
+      "D": "7.2 × 10⁴"
+    },
+    "answer": "B",
+    "answer_text": "7.2 × 10⁻⁴",
+    "explanation": {
+      "question_restate": "The number 0.00072 written in standard form is",
+      "principle": "In standard form, a number is written as a × 10ⁿ where 1 ≤ a < 10.",
+      "steps": [
+        "Moving the decimal point in 0.00072 four places to the right gives 7.2.",
+        "So the exponent is −4.",
+        "Therefore 0.00072 = 7.2 × 10⁻⁴.",
+        "Therefore, the correct answer is B. 7.2 × 10⁻⁴."
+      ],
+      "final_answer": "B. 7.2 × 10⁻⁴",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "standard_form",
+      "scientific_notation"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q065",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Limitations of experimental measurements: accuracy of measuring instruments",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Parallax error can be reduced when taking a scale reading by placing the eye",
+    "options": {
+      "A": "well above the mark",
+      "B": "well below the mark",
+      "C": "at random positions",
+      "D": "directly in line with the mark"
+    },
+    "answer": "D",
+    "answer_text": "directly in line with the mark",
+    "explanation": {
+      "question_restate": "Parallax error can be reduced when taking a scale reading by placing the eye",
+      "principle": "Parallax arises when the eye is not in the correct line of sight with the mark being read.",
+      "steps": [
+        "If the eye is above or below the mark, the reading appears shifted.",
+        "The observer should place the eye directly in line with the pointer or meniscus and the scale mark.",
+        "This minimizes reading error.",
+        "Therefore, the correct answer is D. directly in line with the mark."
+      ],
+      "final_answer": "D. directly in line with the mark",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "parallax",
+      "reading_error"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q066",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Limitations of experimental measurements: significant figures",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The result of a calculation is 12.4768. Correct to three significant figures, this is",
+    "options": {
+      "A": "12.4",
+      "B": "12.5",
+      "C": "12.48",
+      "D": "12.477"
+    },
+    "answer": "B",
+    "answer_text": "12.5",
+    "explanation": {
+      "question_restate": "The result of a calculation is 12.4768. Correct to three significant figures, this is",
+      "principle": "When rounding to three significant figures, keep the first three significant digits and inspect the next digit.",
+      "steps": [
+        "The first three significant digits are 1, 2 and 4 in 12.4768.",
+        "The next digit is 7, so the 4 rounds up to 5.",
+        "Therefore the number becomes 12.5 to three significant figures.",
+        "Therefore, the correct answer is B. 12.5."
+      ],
+      "final_answer": "B. 12.5",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "rounding",
+      "significant_figures"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q067",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Limitations of experimental measurements: standard form",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The number 6.3 × 10⁵ in ordinary form is",
+    "options": {
+      "A": "63 000",
+      "B": "630 000",
+      "C": "6 300 000",
+      "D": "0.00063"
+    },
+    "answer": "B",
+    "answer_text": "630 000",
+    "explanation": {
+      "question_restate": "The number 6.3 × 10⁵ in ordinary form is",
+      "principle": "A positive power of 10 shifts the decimal point to the right.",
+      "steps": [
+        "6.3 × 10⁵ means move the decimal point in 6.3 five places to the right.",
+        "That gives 630 000.",
+        "This is useful for very large numbers.",
+        "Therefore, the correct answer is B. 630 000."
+      ],
+      "final_answer": "B. 630 000",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "standard_form",
+      "conversion"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q068",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Limitations of experimental measurements: simple estimation of errors",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A length is recorded as 4.20 cm using an instrument readable to the nearest 0.01 cm. The maximum possible error due to reading is about",
+    "options": {
+      "A": "±0.20 cm",
+      "B": "±0.10 cm",
+      "C": "±0.01 cm",
+      "D": "±0.005 cm"
+    },
+    "answer": "D",
+    "answer_text": "±0.005 cm",
+    "explanation": {
+      "question_restate": "A length is recorded as 4.20 cm using an instrument readable to the nearest 0.01 cm. The maximum possible error due to reading is about",
+      "principle": "For a scale read to the nearest smallest division, the maximum reading error is usually about half that division.",
+      "steps": [
+        "Smallest division = 0.01 cm.",
+        "Half of this is 0.005 cm.",
+        "So the maximum possible reading error is approximately ±0.005 cm.",
+        "Therefore, the correct answer is D. ±0.005 cm."
+      ],
+      "final_answer": "D. ±0.005 cm",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "maximum_error",
+      "least_count"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q069",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Limitations of experimental measurements: accuracy of measuring instruments",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "An instrument with a smaller least count is generally",
+    "options": {
+      "A": "less sensitive",
+      "B": "more suitable for precise measurement",
+      "C": "useless in practice",
+      "D": "only for mass measurement"
+    },
+    "answer": "B",
+    "answer_text": "more suitable for precise measurement",
+    "explanation": {
+      "question_restate": "An instrument with a smaller least count is generally",
+      "principle": "Least count is the smallest measurement an instrument can read.",
+      "steps": [
+        "The smaller the least count, the finer the reading that can be taken.",
+        "That makes the instrument better for precision work.",
+        "However, proper use is still important to get good results.",
+        "Therefore, the correct answer is B. more suitable for precise measurement."
+      ],
+      "final_answer": "B. more suitable for precise measurement",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "least_count",
+      "precision"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q070",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Limitations of experimental measurements: significant figures",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "How many significant figures are there in 0.02040?",
+    "options": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "answer": "C",
+    "answer_text": "4",
+    "explanation": {
+      "question_restate": "How many significant figures are there in 0.02040?",
+      "principle": "Leading zeros are not significant; zeros between significant digits and trailing zeros after a decimal point are significant.",
+      "steps": [
+        "In 0.02040, the zeros before 2 are leading zeros and are not counted.",
+        "The significant digits are 2, 0, 4, 0.",
+        "Therefore there are four significant figures.",
+        "Therefore, the correct answer is C. 4."
+      ],
+      "final_answer": "C. 4",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "significant_figures",
+      "zeros"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q071",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Measurement, position, distance and displacement",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Distance is a scalar quantity because it has",
+    "options": {
+      "A": "magnitude only",
+      "B": "direction only",
+      "C": "both magnitude and direction",
+      "D": "neither magnitude nor direction"
+    },
+    "answer": "A",
+    "answer_text": "magnitude only",
+    "explanation": {
+      "question_restate": "Distance is a scalar quantity because it has",
+      "principle": "A scalar has magnitude only, while a vector has both magnitude and direction.",
+      "steps": [
+        "Distance tells how much ground has been covered.",
+        "It does not specify direction.",
+        "Therefore distance is a scalar quantity.",
+        "Therefore, the correct answer is A. magnitude only."
+      ],
+      "final_answer": "A. magnitude only",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "distance",
+      "scalar"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q072",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Measurement, position, distance and displacement",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Displacement differs from distance because displacement has",
+    "options": {
+      "A": "temperature",
+      "B": "direction",
+      "C": "mass",
+      "D": "colour"
+    },
+    "answer": "B",
+    "answer_text": "direction",
+    "explanation": {
+      "question_restate": "Displacement differs from distance because displacement has",
+      "principle": "Displacement is a vector quantity, so direction is essential.",
+      "steps": [
+        "Distance only tells the total path length covered.",
+        "Displacement tells the change in position from start to finish, including direction.",
+        "So direction is the key difference.",
+        "Therefore, the correct answer is B. direction."
+      ],
+      "final_answer": "B. direction",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "displacement",
+      "vector"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q073",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Measurement, position, distance and displacement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A boy walks 3 m east and then 4 m west. His distance travelled is",
+    "options": {
+      "A": "1 m",
+      "B": "4 m",
+      "C": "7 m",
+      "D": "12 m"
+    },
+    "answer": "C",
+    "answer_text": "7 m",
+    "explanation": {
+      "question_restate": "A boy walks 3 m east and then 4 m west. His distance travelled is",
+      "principle": "Distance is the total length of the path travelled, regardless of direction.",
+      "steps": [
+        "First part of journey = 3 m.",
+        "Second part = 4 m.",
+        "Total distance = 3 m + 4 m = 7 m.",
+        "Therefore, the correct answer is C. 7 m."
+      ],
+      "final_answer": "C. 7 m",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "distance",
+      "path_length"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q074",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Measurement, position, distance and displacement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A boy walks 3 m east and then 4 m west. His displacement from the starting point is",
+    "options": {
+      "A": "1 m west",
+      "B": "1 m east",
+      "C": "7 m east",
+      "D": "7 m west"
+    },
+    "answer": "A",
+    "answer_text": "1 m west",
+    "explanation": {
+      "question_restate": "A boy walks 3 m east and then 4 m west. His displacement from the starting point is",
+      "principle": "Displacement is the net change in position with direction.",
+      "steps": [
+        "Take east as positive. Then the motion is +3 m and −4 m.",
+        "Net displacement = −1 m.",
+        "That means 1 m west.",
+        "Therefore, the correct answer is A. 1 m west."
+      ],
+      "final_answer": "A. 1 m west",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "displacement",
+      "east_west"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q075",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Measurement, position, distance and displacement",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A particle moves from x = 2 m to x = 11 m on a straight line. Its displacement is",
+    "options": {
+      "A": "9 m",
+      "B": "13 m",
+      "C": "−9 m",
+      "D": "11 m"
+    },
+    "answer": "A",
+    "answer_text": "9 m",
+    "explanation": {
+      "question_restate": "A particle moves from x = 2 m to x = 11 m on a straight line. Its displacement is",
+      "principle": "Displacement on a straight line is final position minus initial position.",
+      "steps": [
+        "Initial position = 2 m.",
+        "Final position = 11 m.",
+        "Displacement = 11 − 2 = 9 m.",
+        "Therefore, the correct answer is A. 9 m."
+      ],
+      "final_answer": "A. 9 m",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "position",
+      "coordinate"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q076",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Measurement, position, distance and displacement",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The point from which position is measured is called the",
+    "options": {
+      "A": "origin",
+      "B": "radius",
+      "C": "density point",
+      "D": "pivot only"
+    },
+    "answer": "A",
+    "answer_text": "origin",
+    "explanation": {
+      "question_restate": "The point from which position is measured is called the",
+      "principle": "Coordinates are measured relative to a chosen reference point called the origin.",
+      "steps": [
+        "In a coordinate system, position is specified relative to zero.",
+        "That zero reference point is the origin.",
+        "Without a chosen origin, position statements are incomplete.",
+        "Therefore, the correct answer is A. origin."
+      ],
+      "final_answer": "A. origin",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "coordinates",
+      "origin"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q077",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Measurement, position, distance and displacement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The statement 'the car is 20 m north of the school gate' gives the car's",
+    "options": {
+      "A": "mass",
+      "B": "position relative to a reference point",
+      "C": "speed only",
+      "D": "density"
+    },
+    "answer": "B",
+    "answer_text": "position relative to a reference point",
+    "explanation": {
+      "question_restate": "The statement 'the car is 20 m north of the school gate' gives the car's",
+      "principle": "Position describes where an object is relative to a specified reference point or frame.",
+      "steps": [
+        "The school gate serves as the reference point.",
+        "The direction north and the distance 20 m locate the car.",
+        "So the statement specifies position.",
+        "Therefore, the correct answer is B. position relative to a reference point."
+      ],
+      "final_answer": "B. position relative to a reference point",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "position",
+      "reference_point"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q078",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Measurement, position, distance and displacement",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A frame of reference is important in motion because it",
+    "options": {
+      "A": "changes the mass of objects",
+      "B": "provides the basis for describing position and motion",
+      "C": "creates energy",
+      "D": "removes all errors"
+    },
+    "answer": "B",
+    "answer_text": "provides the basis for describing position and motion",
+    "explanation": {
+      "question_restate": "A frame of reference is important in motion because it",
+      "principle": "Motion can only be described meaningfully relative to some chosen observer or reference frame.",
+      "steps": [
+        "If you do not state what the motion is being compared with, words like 'moving' or 'at rest' can be ambiguous.",
+        "A frame of reference supplies the origin, axes, and observer basis.",
+        "That is why it is fundamental in mechanics.",
+        "Therefore, the correct answer is B. provides the basis for describing position and motion."
+      ],
+      "final_answer": "B. provides the basis for describing position and motion",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "frame_of_reference",
+      "motion"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q079",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Measurement, position, distance and displacement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a vector quantity?",
+    "options": {
+      "A": "speed",
+      "B": "distance",
+      "C": "displacement",
+      "D": "area"
+    },
+    "answer": "C",
+    "answer_text": "displacement",
+    "explanation": {
+      "question_restate": "Which of the following is a vector quantity?",
+      "principle": "A vector has both magnitude and direction.",
+      "steps": [
+        "Speed and distance are scalars.",
+        "Area is treated as a scalar at this level.",
+        "Displacement includes direction, so it is the vector quantity here.",
+        "Therefore, the correct answer is C. displacement."
+      ],
+      "final_answer": "C. displacement",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "vector",
+      "displacement"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q080",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Measurement, position, distance and displacement",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A runner completes one full lap of a circular track and returns to the starting point. The displacement is",
+    "options": {
+      "A": "equal to the circumference",
+      "B": "half the circumference",
+      "C": "one-quarter of the circumference",
+      "D": "zero"
+    },
+    "answer": "D",
+    "answer_text": "zero",
+    "explanation": {
+      "question_restate": "A runner completes one full lap of a circular track and returns to the starting point. The displacement is",
+      "principle": "Displacement depends only on starting and ending positions.",
+      "steps": [
+        "After one full lap, the runner ends exactly where the motion began.",
+        "So final position = initial position.",
+        "Hence displacement = 0, even though distance travelled is not zero.",
+        "Therefore, the correct answer is D. zero."
+      ],
+      "final_answer": "D. zero",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "displacement",
+      "closed_path"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q081",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Length, area and volume: instrument reading",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A metre rule reading has uncertainty because the smallest division is 1 mm. The likely maximum reading error is about",
+    "options": {
+      "A": "±1 mm",
+      "B": "±0.5 mm",
+      "C": "±2 mm",
+      "D": "±0.1 mm"
+    },
+    "answer": "B",
+    "answer_text": "±0.5 mm",
+    "explanation": {
+      "question_restate": "A metre rule reading has uncertainty because the smallest division is 1 mm. The likely maximum reading error is about",
+      "principle": "For a scale read by eye, the maximum reading error is commonly about half the smallest division.",
+      "steps": [
+        "Smallest division on the metre rule = 1 mm.",
+        "Half of this is 0.5 mm.",
+        "So the likely maximum reading error is about ±0.5 mm.",
+        "Therefore, the correct answer is B. ±0.5 mm."
+      ],
+      "final_answer": "B. ±0.5 mm",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "metre_rule",
+      "uncertainty"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q082",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Length, area and volume: vernier calipers",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The main advantage of a micrometer screw gauge over a vernier caliper in measuring a wire diameter is that the micrometer",
+    "options": {
+      "A": "has a larger measuring range",
+      "B": "is generally more precise for very small thicknesses",
+      "C": "can measure liquid volume",
+      "D": "does not require zero correction"
+    },
+    "answer": "B",
+    "answer_text": "is generally more precise for very small thicknesses",
+    "explanation": {
+      "question_restate": "The main advantage of a micrometer screw gauge over a vernier caliper in measuring a wire diameter is that the micrometer",
+      "principle": "Both instruments measure small lengths, but the micrometer screw gauge usually has a smaller least count.",
+      "steps": [
+        "A wire diameter is often very small.",
+        "The micrometer screw gauge commonly reads to 0.01 mm or better, so it is excellent for such work.",
+        "Zero error may still occur, so option D is wrong.",
+        "Therefore, the correct answer is B. is generally more precise for very small thicknesses."
+      ],
+      "final_answer": "B. is generally more precise for very small thicknesses",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "micrometer",
+      "precision"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q083",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Combinations of fundamental quantities and determination of their units",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "If speed = distance/time, then the SI unit of speed is",
+    "options": {
+      "A": "m s⁻¹",
+      "B": "m s",
+      "C": "m² s⁻¹",
+      "D": "kg m s⁻¹"
+    },
+    "answer": "A",
+    "answer_text": "m s⁻¹",
+    "explanation": {
+      "question_restate": "If speed = distance/time, then the SI unit of speed is",
+      "principle": "Speed is length per time.",
+      "steps": [
+        "Distance has unit metre, m.",
+        "Time has unit second, s.",
+        "So speed has unit m/s = m s⁻¹.",
+        "Therefore, the correct answer is A. m s⁻¹."
+      ],
+      "final_answer": "A. m s⁻¹",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "speed",
+      "unit"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q084",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Measurement, position, distance and displacement",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A car travels 6 km north and then 8 km east. The magnitude of its displacement is",
+    "options": {
+      "A": "2 km",
+      "B": "10 km",
+      "C": "14 km",
+      "D": "48 km"
+    },
+    "answer": "B",
+    "answer_text": "10 km",
+    "explanation": {
+      "question_restate": "A car travels 6 km north and then 8 km east. The magnitude of its displacement is",
+      "principle": "When two displacements are perpendicular, the resultant displacement is found using Pythagoras' theorem.",
+      "steps": [
+        "The north and east movements form a right angle.",
+        "Magnitude of displacement = √(6² + 8²) km = √(36 + 64) km = √100 km = 10 km.",
+        "So the magnitude is 10 km.",
+        "Therefore, the correct answer is B. 10 km."
+      ],
+      "final_answer": "B. 10 km",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "displacement",
+      "pythagoras"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q085",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Limitations of experimental measurements: standard form",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is correctly written in standard form?",
+    "options": {
+      "A": "45.2 × 10³",
+      "B": "0.82 × 10⁻²",
+      "C": "8.2 × 10⁻³",
+      "D": "82 × 10⁻¹"
+    },
+    "answer": "C",
+    "answer_text": "8.2 × 10⁻³",
+    "explanation": {
+      "question_restate": "Which of the following is correctly written in standard form?",
+      "principle": "In standard form, the number before the power of ten must be at least 1 and less than 10.",
+      "steps": [
+        "Option C has coefficient 8.2, which lies between 1 and 10.",
+        "The other coefficients 45.2, 0.82 and 82 do not satisfy the rule.",
+        "Therefore C is the properly written standard form.",
+        "Therefore, the correct answer is C. 8.2 × 10⁻³."
+      ],
+      "final_answer": "C. 8.2 × 10⁻³",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "standard_form",
+      "correct_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q086",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Derived physical quantities and their units",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The SI unit of energy expressed in base units is",
+    "options": {
+      "A": "kg m² s⁻²",
+      "B": "kg m s⁻²",
+      "C": "kg m⁻¹ s⁻²",
+      "D": "kg m² s⁻¹"
+    },
+    "answer": "A",
+    "answer_text": "kg m² s⁻²",
+    "explanation": {
+      "question_restate": "The SI unit of energy expressed in base units is",
+      "principle": "Energy or work = force × distance.",
+      "steps": [
+        "Force has base unit expression kg m s⁻².",
+        "Multiplying by distance m gives kg m² s⁻².",
+        "That is the base-unit form of the joule.",
+        "Therefore, the correct answer is A. kg m² s⁻²."
+      ],
+      "final_answer": "A. kg m² s⁻²",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "energy",
+      "base_units"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q087",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Dimensions: simple examples",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The quantity with dimensions [L T⁻¹] is",
+    "options": {
+      "A": "acceleration",
+      "B": "velocity",
+      "C": "force",
+      "D": "density"
+    },
+    "answer": "B",
+    "answer_text": "velocity",
+    "explanation": {
+      "question_restate": "The quantity with dimensions [L T⁻¹] is",
+      "principle": "Velocity is length per time, so its dimensional formula is [L T⁻¹].",
+      "steps": [
+        "Acceleration is [L T⁻²], force is [M L T⁻²], and density is [M L⁻³].",
+        "Only velocity matches [L T⁻¹].",
+        "Therefore, the correct answer is B. velocity."
+      ],
+      "final_answer": "B. velocity",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "dimensions",
+      "identify_quantity"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q088",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Limitations of experimental measurements: significant figures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Rounded to two significant figures, 0.00986 becomes",
+    "options": {
+      "A": "0.0099",
+      "B": "0.0098",
+      "C": "0.010",
+      "D": "0.00986"
+    },
+    "answer": "A",
+    "answer_text": "0.0099",
+    "explanation": {
+      "question_restate": "Rounded to two significant figures, 0.00986 becomes",
+      "principle": "The first two significant figures in 0.00986 are 9 and 8.",
+      "steps": [
+        "The next digit after 9 and 8 is 6, so the 8 rounds up to 9.",
+        "Thus 0.00986 becomes 0.0099 to two significant figures.",
+        "Leading zeros do not count as significant figures.",
+        "Therefore, the correct answer is A. 0.0099."
+      ],
+      "final_answer": "A. 0.0099",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "significant_figures",
+      "rounding"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q089",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Mass: unit of mass",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "An astronaut has mass 75 kg on Earth. On the Moon, his mass is",
+    "options": {
+      "A": "75 kg",
+      "B": "12.5 kg",
+      "C": "0 kg",
+      "D": "750 kg"
+    },
+    "answer": "A",
+    "answer_text": "75 kg",
+    "explanation": {
+      "question_restate": "An astronaut has mass 75 kg on Earth. On the Moon, his mass is",
+      "principle": "Mass is the amount of matter in a body and does not depend on location.",
+      "steps": [
+        "Gravitational field strength changes from Earth to Moon, so weight changes.",
+        "But the amount of matter in the astronaut remains the same.",
+        "Therefore his mass is still 75 kg.",
+        "Therefore, the correct answer is A. 75 kg."
+      ],
+      "final_answer": "A. 75 kg",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "mass",
+      "moon"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q090",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Time: precision and accuracy",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "An instrument that gives nearly the same reading each time but far from the true value is",
+    "options": {
+      "A": "accurate but not precise",
+      "B": "precise but not accurate",
+      "C": "both accurate and precise",
+      "D": "neither readable nor useful"
+    },
+    "answer": "B",
+    "answer_text": "precise but not accurate",
+    "explanation": {
+      "question_restate": "An instrument that gives nearly the same reading each time but far from the true value is",
+      "principle": "Precision is repeatability; accuracy is closeness to the true value.",
+      "steps": [
+        "If repeated readings are close to one another, the instrument is precise.",
+        "If they are far from the true value, it is not accurate.",
+        "So such an instrument is precise but not accurate.",
+        "Therefore, the correct answer is B. precise but not accurate."
+      ],
+      "final_answer": "B. precise but not accurate",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "accuracy",
+      "precision"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q091",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Combinations of fundamental quantities and determination of their units",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The unit of frequency is s⁻¹. Frequency is therefore the reciprocal of",
+    "options": {
+      "A": "mass",
+      "B": "time",
+      "C": "length",
+      "D": "temperature"
+    },
+    "answer": "B",
+    "answer_text": "time",
+    "explanation": {
+      "question_restate": "The unit of frequency is s⁻¹. Frequency is therefore the reciprocal of",
+      "principle": "If a quantity has unit s⁻¹, it means 'per second', which is inverse time.",
+      "steps": [
+        "Frequency counts how many cycles occur in one second.",
+        "So its unit is 1/second = s⁻¹.",
+        "That means it is the reciprocal of time period.",
+        "Therefore, the correct answer is B. time."
+      ],
+      "final_answer": "B. time",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "frequency",
+      "reciprocal_time"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q092",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Length, area and volume: volume conversion",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "One litre is equal to",
+    "options": {
+      "A": "1 cm³",
+      "B": "10 cm³",
+      "C": "100 cm³",
+      "D": "1000 cm³"
+    },
+    "answer": "D",
+    "answer_text": "1000 cm³",
+    "explanation": {
+      "question_restate": "One litre is equal to",
+      "principle": "A litre is a common volume unit equal to one cubic decimetre.",
+      "steps": [
+        "1 dm = 10 cm, so 1 dm³ = (10 cm)³ = 1000 cm³.",
+        "Since 1 litre = 1 dm³, it follows that 1 litre = 1000 cm³.",
+        "This is also equal to 1000 mL.",
+        "Therefore, the correct answer is D. 1000 cm³."
+      ],
+      "final_answer": "D. 1000 cm³",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "litre",
+      "volume_conversion"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q093",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Derived physical quantities and their units",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following is correctly stated?",
+    "options": {
+      "A": "Mass is derived from force and acceleration",
+      "B": "Density is mass per unit volume",
+      "C": "Area is volume per unit length",
+      "D": "Velocity is force per unit mass"
+    },
+    "answer": "B",
+    "answer_text": "Density is mass per unit volume",
+    "explanation": {
+      "question_restate": "Which of the following is correctly stated?",
+      "principle": "Definitions are important because they determine both the meaning and the units of derived quantities.",
+      "steps": [
+        "Density tells how much mass is packed into a given volume.",
+        "Therefore density = mass/volume.",
+        "The other statements give incorrect definitions.",
+        "Therefore, the correct answer is B. Density is mass per unit volume."
+      ],
+      "final_answer": "B. Density is mass per unit volume",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "density",
+      "definition"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q094",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Limitations of experimental measurements: standard form",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The value 3.45 × 10⁻² m written in centimetres is",
+    "options": {
+      "A": "0.345 cm",
+      "B": "3.45 cm",
+      "C": "34.5 cm",
+      "D": "345 cm"
+    },
+    "answer": "B",
+    "answer_text": "3.45 cm",
+    "explanation": {
+      "question_restate": "The value 3.45 × 10⁻² m written in centimetres is",
+      "principle": "1 m = 100 cm, so multiply metres by 100 to convert to centimetres.",
+      "steps": [
+        "3.45 × 10⁻² m = 0.0345 m.",
+        "Converting to centimetres gives 0.0345 × 100 = 3.45 cm.",
+        "So option B is correct.",
+        "Therefore, the correct answer is B. 3.45 cm."
+      ],
+      "final_answer": "B. 3.45 cm",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "standard_form",
+      "length_conversion"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q095",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Dimensions: simple examples",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The dimensions of pressure multiplied by volume are the dimensions of",
+    "options": {
+      "A": "force",
+      "B": "work",
+      "C": "density",
+      "D": "velocity"
+    },
+    "answer": "B",
+    "answer_text": "work",
+    "explanation": {
+      "question_restate": "The dimensions of pressure multiplied by volume are the dimensions of",
+      "principle": "Pressure × volume is closely related to work because pressure = force/area and volume = area × distance.",
+      "steps": [
+        "Dimensions of pressure = [M L⁻¹ T⁻²].",
+        "Dimensions of volume = [L³].",
+        "Multiplying gives [M L² T⁻²], which are the dimensions of work or energy.",
+        "Therefore, the correct answer is B. work."
+      ],
+      "final_answer": "B. work",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "dimensions",
+      "pressure_volume"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q096",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Measurement, position, distance and displacement",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A bus moves from point P to point Q and then returns to P. Which statement is correct?",
+    "options": {
+      "A": "Distance = 0 and displacement = 0",
+      "B": "Distance ≠ 0 but displacement = 0",
+      "C": "Distance = displacement",
+      "D": "Both distance and displacement are negative"
+    },
+    "answer": "B",
+    "answer_text": "Distance ≠ 0 but displacement = 0",
+    "explanation": {
+      "question_restate": "A bus moves from point P to point Q and then returns to P. Which statement is correct?",
+      "principle": "A round trip covers actual path length, but the net change in position may be zero.",
+      "steps": [
+        "The bus clearly travelled along a path, so distance is not zero.",
+        "However, it ended where it started.",
+        "Therefore displacement is zero while distance is not zero.",
+        "Therefore, the correct answer is B. Distance ≠ 0 but displacement = 0."
+      ],
+      "final_answer": "B. Distance ≠ 0 but displacement = 0",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "distance",
+      "displacement"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q097",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Length, area and volume: instrument choice",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following quantities is best measured with a measuring cylinder?",
+    "options": {
+      "A": "Diameter of a wire",
+      "B": "Thickness of a coin",
+      "C": "Volume of kerosene",
+      "D": "Mass of sand"
+    },
+    "answer": "C",
+    "answer_text": "Volume of kerosene",
+    "explanation": {
+      "question_restate": "Which of the following quantities is best measured with a measuring cylinder?",
+      "principle": "A measuring cylinder is designed for direct reading of the volume of liquids.",
+      "steps": [
+        "Kerosene is a liquid, so its volume can be measured directly in the cylinder.",
+        "The other options require different instruments: wire and coin thickness need precision length instruments, while mass requires a balance.",
+        "Therefore, the correct answer is C. Volume of kerosene."
+      ],
+      "final_answer": "C. Volume of kerosene",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "measuring_cylinder",
+      "liquid_volume"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q098",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Fundamental physical quantities",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The number of fundamental quantities needed to derive pressure in mechanics at this level is",
+    "options": {
+      "A": "one",
+      "B": "two",
+      "C": "three",
+      "D": "four"
+    },
+    "answer": "C",
+    "answer_text": "three",
+    "explanation": {
+      "question_restate": "The number of fundamental quantities needed to derive pressure in mechanics at this level is",
+      "principle": "Pressure in mechanics can be expressed using mass, length and time.",
+      "steps": [
+        "Pressure = force/area.",
+        "Force involves mass, length and time as [M L T⁻²], and area contributes [L²].",
+        "So pressure finally depends on M, L and T only: three fundamental quantities.",
+        "Therefore, the correct answer is C. three."
+      ],
+      "final_answer": "C. three",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "fundamental_quantities",
+      "pressure"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q099",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Limitations of experimental measurements: significant figures",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "When multiplying 2.4 by 3.16, the final answer should reasonably be quoted to",
+    "options": {
+      "A": "1 significant figure",
+      "B": "2 significant figures",
+      "C": "3 significant figures",
+      "D": "5 significant figures"
+    },
+    "answer": "B",
+    "answer_text": "2 significant figures",
+    "explanation": {
+      "question_restate": "When multiplying 2.4 by 3.16, the final answer should reasonably be quoted to",
+      "principle": "In multiplication, the result is usually quoted to the same number of significant figures as the factor with the fewest significant figures.",
+      "steps": [
+        "2.4 has 2 significant figures.",
+        "3.16 has 3 significant figures.",
+        "So the final answer should reasonably be given to 2 significant figures.",
+        "Therefore, the correct answer is B. 2 significant figures."
+      ],
+      "final_answer": "B. 2 significant figures",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "significant_figures",
+      "multiplication"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q100",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements and Units",
+    "subtopic": "Measurement, position, distance and displacement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A student says, 'distance and displacement are always equal.' The statement is true only when the object moves",
+    "options": {
+      "A": "to and fro repeatedly",
+      "B": "along a curved path",
+      "C": "in a straight line without changing direction",
+      "D": "round a closed path"
+    },
+    "answer": "C",
+    "answer_text": "in a straight line without changing direction",
+    "explanation": {
+      "question_restate": "A student says, 'distance and displacement are always equal.' The statement is true only when the object moves",
+      "principle": "Distance equals displacement only in a special case where the path length is exactly the straight-line separation between start and finish.",
+      "steps": [
+        "If the motion is along a straight line in one direction only, the actual path covered equals the net change in position.",
+        "Any turning back, curving, or closed path makes the distance larger than the displacement.",
+        "So the condition is straight-line motion without change of direction.",
+        "Therefore, the correct answer is C. in a straight line without changing direction."
+      ],
+      "final_answer": "C. in a straight line without changing direction",
+      "simple_explanation": "This question tests the basic idea behind measurement and units in JAMB Physics. Learn the rule, know the unit, and pay attention to what the instrument actually measures. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "distance",
+      "displacement_equality"
+    ],
+    "active": true
+  }
+]
