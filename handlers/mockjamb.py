@@ -415,6 +415,128 @@ def build_mockjamb_final_result_text(
     return "\n".join(lines)
 
 
+# ----Question Has Passage-----------
+def question_has_passage(question_row: dict) -> bool:
+    try:
+        payload = json.loads(question_row.get("question_json") or "{}")
+    except Exception:
+        payload = {}
+
+    raw_passage_text = str(payload.get("passage") or "").strip()
+    question_type = str(payload.get("question_type") or "").strip().lower()
+
+    return bool(raw_passage_text) or question_type == "comprehension_mcq"
+
+
+def build_mockjamb_passage_text(
+    *,
+    subject_code: str,
+    question_row: dict,
+    question_number: int,
+    total_questions: int,
+    exam_ends_at=None,
+) -> str:
+    subject = get_subject_by_code(subject_code)
+    subject_name = subject["name"] if subject else subject_code.upper()
+
+    try:
+        payload = json.loads(question_row.get("question_json") or "{}")
+    except Exception:
+        payload = {}
+
+    raw_passage_title = payload.get("passage_title") or ""
+    raw_passage_text = payload.get("passage") or ""
+
+    safe_subject_name = md_escape(str(subject_name))
+    safe_passage_title = md_escape(str(raw_passage_title)) if raw_passage_title else ""
+    safe_passage_text = md_escape(str(raw_passage_text)) if raw_passage_text else ""
+
+    lines = [
+        "📝 *Mock JAMB / UTME*",
+        "",
+        f"*Subject:* {safe_subject_name}",
+        f"*Question:* {question_number} of {total_questions}",
+    ]
+
+    if exam_ends_at:
+        lines.append("⏱ *Exam timer is running*")
+
+    if safe_passage_title:
+        lines.extend([
+            "",
+            f"*Passage Title:* {safe_passage_title}",
+        ])
+
+    if safe_passage_text:
+        lines.extend([
+            "",
+            "*Passage:*",
+            safe_passage_text,
+        ])
+
+    return "\n".join(lines)
+
+
+def build_mockjamb_question_only_text(
+    *,
+    subject_code: str,
+    question_row: dict,
+    question_number: int,
+    total_questions: int,
+    exam_ends_at=None,
+) -> str:
+    subject = get_subject_by_code(subject_code)
+    subject_name = subject["name"] if subject else subject_code.upper()
+
+    try:
+        payload = json.loads(question_row.get("question_json") or "{}")
+    except Exception:
+        payload = {}
+
+    raw_question_text = (
+        payload.get("question")
+        or payload.get("text")
+        or payload.get("prompt")
+        or "Question text unavailable."
+    )
+
+    options = payload.get("options") or {}
+    if not isinstance(options, dict):
+        options = {}
+
+    question_text = md_escape(str(raw_question_text))
+    option_a = md_escape(str(options.get("A", "---")))
+    option_b = md_escape(str(options.get("B", "---")))
+    option_c = md_escape(str(options.get("C", "---")))
+    option_d = md_escape(str(options.get("D", "---")))
+    safe_subject_name = md_escape(str(subject_name))
+
+    lines = [
+        "📝 *Mock JAMB / UTME*",
+        "",
+        f"*Subject:* {safe_subject_name}",
+        f"*Question:* {question_number} of {total_questions}",
+    ]
+
+    if exam_ends_at:
+        lines.append("⏱ *Exam timer is running*")
+
+    lines.extend([
+        "",
+        "*Question:*",
+        question_text,
+        "",
+        f"A\\. {option_a}",
+        f"B\\. {option_b}",
+        f"C\\. {option_c}",
+        f"D\\. {option_d}",
+        "",
+        "Choose your answer below\\.",
+    ])
+
+    return "\n".join(lines)
+
+
 # ====================================================================
 # Entry Handler
 # ====================================================================
@@ -933,7 +1055,7 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
     context.user_data["mj_current_subject_code"] = subject_code
     context.user_data["mj_current_question_order"] = 1
 
-    message_text = build_mockjamb_live_question_text(
+    question_text = build_mockjamb_question_only_text(
         subject_code=subject_code,
         question_row=current_question,
         question_number=1,
@@ -946,18 +1068,49 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
         question_order=1,
     )
 
+    if question_has_passage(current_question):
+        passage_text = build_mockjamb_passage_text(
+            subject_code=subject_code,
+            question_row=current_question,
+            question_number=1,
+            total_questions=50,
+            exam_ends_at=session_row.get("exam_ends_at"),
+        )
+
+        try:
+            await query.edit_message_text(
+                passage_text,
+                parse_mode="MarkdownV2",
+            )
+            await query.message.reply_text(
+                question_text,
+                parse_mode="MarkdownV2",
+                reply_markup=markup,
+            )
+        except Exception:
+            await query.message.reply_text(
+                passage_text,
+                parse_mode="MarkdownV2",
+            )
+            await query.message.reply_text(
+                question_text,
+                parse_mode="MarkdownV2",
+                reply_markup=markup,
+            )
+        return
+
     try:
         await query.edit_message_text(
-            message_text,
+            question_text,
             parse_mode="MarkdownV2",
             reply_markup=markup,
         )
     except Exception:
         await query.message.reply_text(
-            message_text,
+            question_text,
             parse_mode="MarkdownV2",
             reply_markup=markup,
-        )        
+        ) 
 
 
 # -----------------------------------------------
@@ -1010,7 +1163,7 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                 context.user_data["mj_current_subject_code"] = subject_code
                 context.user_data["mj_current_question_order"] = next_question_order
 
-                message_text = build_mockjamb_live_question_text(
+                question_text = build_mockjamb_question_only_text(
                     subject_code=subject_code,
                     question_row=next_question,
                     question_number=next_question_order,
@@ -1023,15 +1176,46 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                     question_order=next_question_order,
                 )
 
+                if question_has_passage(next_question):
+                    passage_text = build_mockjamb_passage_text(
+                        subject_code=subject_code,
+                        question_row=next_question,
+                        question_number=next_question_order,
+                        total_questions=total_questions,
+                        exam_ends_at=(session_row or {}).get("exam_ends_at"),
+                    )
+
+                    try:
+                        await query.edit_message_text(
+                            passage_text,
+                            parse_mode="MarkdownV2",
+                        )
+                        await query.message.reply_text(
+                            question_text,
+                            parse_mode="MarkdownV2",
+                            reply_markup=markup,
+                        )
+                    except Exception:
+                        await query.message.reply_text(
+                            passage_text,
+                            parse_mode="MarkdownV2",
+                        )
+                        await query.message.reply_text(
+                            question_text,
+                            parse_mode="MarkdownV2",
+                            reply_markup=markup,
+                        )
+                    return
+
                 try:
                     await query.edit_message_text(
-                        message_text,
+                        question_text,
                         parse_mode="MarkdownV2",
                         reply_markup=markup,
                     )
                 except Exception:
                     await query.message.reply_text(
-                        message_text,
+                        question_text,
                         parse_mode="MarkdownV2",
                         reply_markup=markup,
                     )
@@ -1169,3 +1353,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_start_subject_handler, pattern=r"^mj_start_subject::"))
     application.add_handler(CallbackQueryHandler(mockjamb_answer_handler, pattern=r"^mj_ans::"))
     application.add_handler(CallbackQueryHandler(mockjamb_return_to_exam_ready_handler, pattern=r"^payok_mockjamb_return$"))
+
