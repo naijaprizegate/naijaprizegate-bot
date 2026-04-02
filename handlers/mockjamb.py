@@ -400,7 +400,7 @@ def build_mockjamb_final_result_text(
     lines = [
         "📊 *Mock JAMB / UTME Result*",
         "",
-        f"Course: {course_name}",
+        f"*Course:* {course_name}",
         "",
     ]
 
@@ -409,11 +409,11 @@ def build_mockjamb_final_result_text(
         subject_name = subject["name"] if subject else code.upper()
         score = int(scores.get(code) or 0)
         aggregate += score
-        lines.append(f"{subject_name}: {score}")
+        lines.append(f"*{subject_name}:* {score}")
 
     lines.extend([
         "",
-        f"Aggregate: {aggregate} / 400",
+        f"*Aggregate:* {aggregate} / 400",
     ])
 
     return "\n".join(lines)
@@ -569,7 +569,13 @@ def build_mockjamb_review_text(
     except Exception:
         payload = {}
 
-    question_text = payload.get("question") or payload.get("text") or payload.get("prompt") or "Question text unavailable."
+    question_text = (
+        payload.get("question")
+        or payload.get("text")
+        or payload.get("prompt")
+        or "Question text unavailable."
+    )
+
     options = payload.get("options") or {}
     if not isinstance(options, dict):
         options = {}
@@ -578,15 +584,19 @@ def build_mockjamb_review_text(
     passage_text = payload.get("passage") or ""
 
     explanation = payload.get("explanation") or {}
-    if isinstance(explanation, dict):
-        explanation_text = (
-            explanation.get("simple_explanation")
-            or explanation.get("final_answer")
-            or explanation.get("principle")
-            or "No explanation available."
-        )
-    else:
-        explanation_text = str(explanation or "No explanation available.")
+    if not isinstance(explanation, dict):
+        explanation = {}
+
+    principle = str(explanation.get("principle") or "No principle available.").strip()
+    steps = explanation.get("steps") or []
+    if not isinstance(steps, list):
+        steps = []
+
+    simple_explanation = str(
+        explanation.get("simple_explanation")
+        or explanation.get("final_answer")
+        or "No simple explanation available."
+    ).strip()
 
     selected_option = str(review_row.get("selected_option") or "-").upper()
     correct_option = str(review_row.get("correct_option") or "-").upper()
@@ -626,7 +636,22 @@ def build_mockjamb_review_text(
         f"*Result:* {'✅ Correct' if is_correct else '❌ Wrong'}",
         "",
         "*Explanation:*",
-        md_escape(str(explanation_text)),
+        "",
+        f"*Principle:* {md_escape(principle)}",
+        "",
+        "*Steps:*",
+    ])
+
+    if steps:
+        for idx, step in enumerate(steps, start=1):
+            lines.append(f"{idx}\\. {md_escape(str(step))}")
+    else:
+        lines.append("No steps available\\.")
+
+    lines.extend([
+        "",
+        "*Simple Explanation:*",
+        md_escape(simple_explanation),
     ])
 
     return "\n".join(lines)
@@ -1644,5 +1669,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
-
 
