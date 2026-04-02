@@ -19,12 +19,14 @@ from services.mockjamb_session_service import (
     get_or_create_mockjamb_session_from_payment,
     mark_mockjamb_subject_completed,
     get_mockjamb_session_by_payment_reference,
+    get_latest_active_mockjamb_session_for_user,
 )
 from services.mockjamb_exam_service import (
     start_mockjamb_subject,
     answer_mockjamb_question,
     calculate_mockjamb_subject_score,
     get_mockjamb_review_rows,
+    get_mockjamb_subject_question_by_order,
 )
 
 logger = logging.getLogger(__name__)
@@ -685,10 +687,176 @@ def make_mockjamb_review_nav_keyboard(
     return InlineKeyboardMarkup(rows)
 
 
+def build_mockjamb_resume_prompt_text(
+    *,
+    course_code: str,
+    subject_codes: list[str],
+    completed_subjects: list[str],
+    current_subject_code: str | None,
+    current_question_index: int,
+) -> str:
+    course = get_course_by_code(course_code)
+    course_name = course["course_name"] if course else course_code
+
+    remaining_subject_codes = [
+        code for code in subject_codes if code not in completed_subjects
+    ]
+
+    lines = [
+        "📝 *Resume Mock JAMB / UTME*",
+        "",
+        f"*Course:* {course_name}",
+        "",
+    ]
+
+    if current_subject_code:
+        current_subject = get_subject_by_code(current_subject_code)
+        current_subject_name = current_subject["name"] if current_subject else current_subject_code.upper()
+        next_question_no = max(1, int(current_question_index or 0) + 1)
+
+        lines.extend([
+            f"*Current Subject:* {current_subject_name}",
+            f"*Resume From:* Question {next_question_no}",
+            "",
+        ])
+    else:
+        lines.extend([
+            "You have an active Mock JAMB exam in progress.",
+            "",
+        ])
+
+    if completed_subjects:
+        lines.append("*Completed Subjects:*")
+        for code in completed_subjects:
+            subject = get_subject_by_code(code)
+            if subject:
+                lines.append(f"• {subject['name']}")
+        lines.append("")
+
+    if remaining_subject_codes:
+        lines.append("*Remaining Subjects:*")
+        for code in remaining_subject_codes:
+            subject = get_subject_by_code(code)
+            if subject:
+                lines.append(f"• {subject['name']}")
+    else:
+        lines.append("All subjects have been completed.")
+
+    lines.extend([
+        "",
+        "Tap below to continue.",
+    ])
+
+    return "\n".join(lines)
+
+
+def make_mockjamb_resume_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("▶ Resume Exam", callback_data="mj_resume_exam")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+
+def build_mockjamb_continue_subject_choice_text(
+    *,
+    course_code: str,
+    remaining_subject_codes: list[str],
+) -> str:
+    course = get_course_by_code(course_code)
+    course_name = course["course_name"] if course else course_code
+
+    lines = [
+        "📝 *Mock JAMB / UTME In Progress*",
+        "",
+        f"*Course:* {course_name}",
+        "",
+        "*Choose the next subject to continue:*",
+    ]
+
+    for code in remaining_subject_codes:
+        subject = get_subject_by_code(code)
+        if subject:
+            lines.append(f"• {subject['name']}")
+
+    return "\n".join(lines)
+
+
 # ====================================================================
 # Entry Handler
 # ====================================================================
 async def mockjamb_start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user = update.effective_user
+    if not user:
+        return
+
+    async with get_async_session() as session:
+        active_session = await get_latest_active_mockjamb_session_for_user(
+            session,
+            user_id=int(user.id),
+        )
+
+    if active_session:
+        course_code = str(active_session.get("course_code") or "").strip()
+
+        try:
+            subject_codes = json.loads(active_session.get("subject_codes_json") or "[]")
+        except Exception:
+            subject_codes = []
+
+        try:
+            completed_subjects = json.loads(active_session.get("completed_subjects_json") or "[]")
+        except Exception:
+            completed_subjects = []
+
+        current_subject_code = str(active_session.get("current_subject_code") or "").strip() or None
+        current_question_index = int(active_session.get("current_question_index") or 0)
+        payment_reference = str(active_session.get("payment_reference") or "").strip()
+
+        if course_code and subject_codes and payment_reference:
+            context.user_data["mj_course_code"] = course_code
+            context.user_data["mj_subject_codes"] = subject_codes
+            context.user_data["mj_mode"] = "solo"
+            context.user_data["mj_room_code"] = None
+            context.user_data["mj_payment_reference"] = payment_reference
+            context.user_data["mj_session_id"] = active_session["id"]
+
+            text = build_mockjamb_resume_prompt_text(
+                course_code=course_code,
+                subject_codes=subject_codes,
+                completed_subjects=completed_subjects,
+                current_subject_code=current_subject_code,
+                current_question_index=current_question_index,
+            )
+            markup = make_mockjamb_resume_keyboard()
+
+            if update.callback_query:
+                query = update.callback_query
+                await query.answer()
+
+                try:
+                    await query.edit_message_text(
+                        text,
+                        parse_mode="Markdown",
+                        reply_markup=markup,
+                    )
+                except Exception:
+                    await query.message.reply_text(
+                        text,
+                        parse_mode="Markdown",
+                        reply_markup=markup,
+                    )
+                return
+
+            if update.message:
+                await update.message.reply_text(
+                    text,
+                    parse_mode="Markdown",
+                    reply_markup=markup,
+                )
+                return
+
     text = build_mockjamb_welcome_text()
     markup = make_mockjamb_welcome_keyboard()
 
@@ -1651,6 +1819,203 @@ async def mockjamb_back_to_result_handler(update: Update, context: ContextTypes.
         )
 
 
+# ---------------------------------------
+# Mock JAMB Resume Exam Handler
+# ---------------------------------------
+async def mockjamb_resume_exam_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    user_id = query.from_user.id
+
+    async with get_async_session() as session:
+        active_session = await get_latest_active_mockjamb_session_for_user(
+            session,
+            user_id=int(user_id),
+        )
+
+    if not active_session:
+        return await query.message.reply_text(
+            "⚠️ No active Mock JAMB exam was found."
+        )
+
+    payment_reference = str(active_session.get("payment_reference") or "").strip()
+    course_code = str(active_session.get("course_code") or "").strip()
+    current_subject_code = str(active_session.get("current_subject_code") or "").strip() or None
+    current_question_index = int(active_session.get("current_question_index") or 0)
+    status = str(active_session.get("status") or "").strip().lower()
+
+    try:
+        subject_codes = json.loads(active_session.get("subject_codes_json") or "[]")
+    except Exception:
+        subject_codes = []
+
+    try:
+        completed_subjects = json.loads(active_session.get("completed_subjects_json") or "[]")
+    except Exception:
+        completed_subjects = []
+
+    try:
+        scores = json.loads(active_session.get("scores_json") or "{}")
+    except Exception:
+        scores = {}
+
+    if not payment_reference or not course_code or not subject_codes:
+        return await query.message.reply_text(
+            "⚠️ This Mock JAMB session is incomplete and cannot be resumed."
+        )
+
+    context.user_data["mj_course_code"] = course_code
+    context.user_data["mj_subject_codes"] = subject_codes
+    context.user_data["mj_mode"] = "solo"
+    context.user_data["mj_room_code"] = None
+    context.user_data["mj_payment_reference"] = payment_reference
+    context.user_data["mj_session_id"] = active_session["id"]
+
+    if status == "completed":
+        message_text = build_mockjamb_final_result_text(
+            course_code=course_code,
+            subject_codes=subject_codes,
+            scores=scores,
+        )
+        markup = make_mockjamb_final_result_keyboard()
+
+        try:
+            await query.edit_message_text(
+                message_text,
+                parse_mode="Markdown",
+                reply_markup=markup,
+            )
+        except Exception:
+            await query.message.reply_text(
+                message_text,
+                parse_mode="Markdown",
+                reply_markup=markup,
+            )
+        return
+
+    remaining_subject_codes = [
+        code for code in subject_codes if code not in completed_subjects
+    ]
+
+    if current_subject_code:
+        next_question_order = max(1, current_question_index + 1)
+
+        async with get_async_session() as session:
+            question_row = await get_mockjamb_subject_question_by_order(
+                session,
+                payment_reference=payment_reference,
+                subject_code=current_subject_code,
+                question_order=next_question_order,
+            )
+
+        if question_row:
+            context.user_data["mj_current_subject_code"] = current_subject_code
+            context.user_data["mj_current_question_order"] = next_question_order
+
+            question_text = build_mockjamb_question_only_text(
+                subject_code=current_subject_code,
+                question_row=question_row,
+                question_number=next_question_order,
+                total_questions=50,
+                exam_ends_at=active_session.get("exam_ends_at"),
+            )
+
+            markup = make_mockjamb_question_answer_keyboard(
+                subject_code=current_subject_code,
+                question_order=next_question_order,
+            )
+
+            if question_has_passage(question_row):
+                passage_text = build_mockjamb_passage_text(
+                    subject_code=current_subject_code,
+                    question_row=question_row,
+                    question_number=next_question_order,
+                    total_questions=50,
+                    exam_ends_at=active_session.get("exam_ends_at"),
+                )
+
+                try:
+                    await query.edit_message_text(
+                        passage_text,
+                        parse_mode="MarkdownV2",
+                    )
+                    await query.message.reply_text(
+                        question_text,
+                        parse_mode="MarkdownV2",
+                        reply_markup=markup,
+                    )
+                except Exception:
+                    await query.message.reply_text(
+                        passage_text,
+                        parse_mode="MarkdownV2",
+                    )
+                    await query.message.reply_text(
+                        question_text,
+                        parse_mode="MarkdownV2",
+                        reply_markup=markup,
+                    )
+                return
+
+            try:
+                await query.edit_message_text(
+                    question_text,
+                    parse_mode="MarkdownV2",
+                    reply_markup=markup,
+                )
+            except Exception:
+                await query.message.reply_text(
+                    question_text,
+                    parse_mode="MarkdownV2",
+                    reply_markup=markup,
+                )
+            return
+
+    if remaining_subject_codes:
+        message_text = build_mockjamb_continue_subject_choice_text(
+            course_code=course_code,
+            remaining_subject_codes=remaining_subject_codes,
+        )
+        markup = make_mockjamb_next_subject_keyboard(remaining_subject_codes)
+
+        try:
+            await query.edit_message_text(
+                message_text,
+                parse_mode="Markdown",
+                reply_markup=markup,
+            )
+        except Exception:
+            await query.message.reply_text(
+                message_text,
+                parse_mode="Markdown",
+                reply_markup=markup,
+            )
+        return
+
+    message_text = build_mockjamb_final_result_text(
+        course_code=course_code,
+        subject_codes=subject_codes,
+        scores=scores,
+    )
+    markup = make_mockjamb_final_result_keyboard()
+
+    try:
+        await query.edit_message_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
 # ====================================================================
 # Register Handlers
 # ====================================================================
@@ -1666,7 +2031,9 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_start_subject_handler, pattern=r"^mj_start_subject::"))
     application.add_handler(CallbackQueryHandler(mockjamb_answer_handler, pattern=r"^mj_ans::"))
     application.add_handler(CallbackQueryHandler(mockjamb_return_to_exam_ready_handler, pattern=r"^payok_mockjamb_return$"))
+    application.add_handler(CallbackQueryHandler(mockjamb_resume_exam_handler, pattern=r"^mj_resume_exam$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
 
