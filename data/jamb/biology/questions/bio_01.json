@@ -1,1 +1,3637 @@
-
+[
+  {
+    "id": "bio_01_q001",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is the best evidence that a potted plant is a living thing?",
+    "options": {
+      "A": "It is green in colour",
+      "B": "It can manufacture food and respond to light",
+      "C": "It is fixed to one position",
+      "D": "It contains water in its tissues"
+    },
+    "answer": "B",
+    "answer_text": "It can manufacture food and respond to light",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Living things carry out life processes such as nutrition, respiration, growth, excretion, movement or response, and reproduction.",
+      "steps": [
+        "Being green alone is not enough to prove life because some non-living objects can also be green.",
+        "A living plant manufactures food by photosynthesis and also bends or grows toward light, showing response to stimuli.",
+        "Being fixed in one place does not mean it is non-living; many plants are stationary but alive.",
+        "The option that combines real life processes is therefore the correct one."
+      ],
+      "final_answer": "B. It can manufacture food and respond to light",
+      "simple_explanation": "A plant is recognized as living not merely by appearance but by the life activities it performs, especially nutrition and response. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "life_processes",
+      "plants",
+      "response"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q002",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A student touched the leaf of Mimosa pudica and the leaflets folded up immediately. This shows",
+    "options": {
+      "A": "nutrition",
+      "B": "excretion",
+      "C": "irritability",
+      "D": "reproduction"
+    },
+    "answer": "C",
+    "answer_text": "irritability",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Irritability or sensitivity is the ability of a living thing to detect and respond to changes in its environment.",
+      "steps": [
+        "The folding of Mimosa leaflets happens after touch, which is a stimulus.",
+        "The plant detects that stimulus and responds almost immediately.",
+        "This is not nutrition, excretion, or reproduction.",
+        "It is a clear example of irritability, also called sensitivity or response to stimuli."
+      ],
+      "final_answer": "C. irritability",
+      "simple_explanation": "When an organism notices a change and reacts to it, that life process is irritability. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "mimosa",
+      "sensitivity",
+      "stimulus"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q003",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Which of the following is NOT a characteristic of living things?",
+    "options": {
+      "A": "Respiration",
+      "B": "Growth",
+      "C": "Crystallization",
+      "D": "Excretion"
+    },
+    "answer": "C",
+    "answer_text": "Crystallization",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Living things show common life processes, whereas crystallization is a property of some non-living substances.",
+      "steps": [
+        "Respiration, growth, and excretion are standard characteristics of life.",
+        "Crystals can increase in size, but that increase is not biological growth.",
+        "Crystallization is a physical process in non-living matter.",
+        "Therefore it is not a characteristic of living things."
+      ],
+      "final_answer": "C. Crystallization",
+      "simple_explanation": "JAMB often tests the difference between true biological growth and non-living increase such as crystal formation. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "non_living",
+      "crystals",
+      "growth"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q004",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following processes occurs in both plants and animals as a sign of life?",
+    "options": {
+      "A": "Photosynthesis",
+      "B": "Locomotion from place to place",
+      "C": "Respiration",
+      "D": "Manufacture of chlorophyll"
+    },
+    "answer": "C",
+    "answer_text": "Respiration",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Respiration is a universal process in living cells used to release energy from food.",
+      "steps": [
+        "Plants and animals both need energy for life activities.",
+        "That energy is released through respiration in their cells.",
+        "Photosynthesis and manufacture of chlorophyll are restricted to green plants and some other organisms, not animals.",
+        "Locomotion from place to place is not shown by all plants."
+      ],
+      "final_answer": "C. Respiration",
+      "simple_explanation": "Both plants and animals respire, even though they do not obtain food in the same way. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "respiration",
+      "plants_and_animals"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q005",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A boy says that a car is living because it moves. The best reply is that movement alone does not prove life because a car",
+    "options": {
+      "A": "uses fuel",
+      "B": "can be repaired when damaged",
+      "C": "does not carry out metabolism or reproduction",
+      "D": "changes position"
+    },
+    "answer": "C",
+    "answer_text": "does not carry out metabolism or reproduction",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Movement by itself is not enough to define life; living things must perform coordinated metabolic processes and other life functions.",
+      "steps": [
+        "Cars can move, but that movement is produced externally by mechanical systems and fuel combustion.",
+        "A car does not respire biologically, grow by cell division, reproduce its own kind, or excrete metabolic wastes.",
+        "Living things show internal organization and metabolism.",
+        "Therefore movement alone is not sufficient evidence of life."
+      ],
+      "final_answer": "C. does not carry out metabolism or reproduction",
+      "simple_explanation": "Many non-living things move, so JAMB likes asking for the deeper features that truly define life. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "movement",
+      "metabolism",
+      "non_living"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q006",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is the best example of excretion in a mammal?",
+    "options": {
+      "A": "Passing out faeces",
+      "B": "Sweating out urea, water and salts",
+      "C": "Chewing food in the mouth",
+      "D": "Taking in oxygen"
+    },
+    "answer": "B",
+    "answer_text": "Sweating out urea, water and salts",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Excretion is the removal of metabolic waste products produced by cells.",
+      "steps": [
+        "Sweat contains water, salts, and a little urea, all of which are removed from the body.",
+        "Faeces mainly represents undigested food and is removed by egestion, not excretion.",
+        "Chewing is digestion, while taking in oxygen is part of breathing.",
+        "Therefore sweating out metabolic wastes is the correct example."
+      ],
+      "final_answer": "B. Sweating out urea, water and salts",
+      "simple_explanation": "Excretion and egestion are different. JAMB often tests that distinction directly. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "excretion",
+      "egestion",
+      "mammal"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q007",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The increase in dry mass of a seedling over several days is the best indication of",
+    "options": {
+      "A": "crystallization",
+      "B": "growth",
+      "C": "locomotion",
+      "D": "germination only"
+    },
+    "answer": "B",
+    "answer_text": "growth",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "True biological growth is a permanent increase in size and dry mass due to synthesis of new protoplasm and cells.",
+      "steps": [
+        "Dry mass increase means new living material has been formed.",
+        "This is different from merely taking in water, which may enlarge an object temporarily.",
+        "Crystallization is a non-living process.",
+        "Hence the change described is true growth."
+      ],
+      "final_answer": "B. growth",
+      "simple_explanation": "Growth is not just getting bigger; it is a lasting increase in living material. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "growth",
+      "dry_mass"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q008",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following statements best distinguishes growth in a living organism from increase in size of a crystal?",
+    "options": {
+      "A": "Both involve increase in surface area only",
+      "B": "Growth in organisms is internal and irreversible, while crystal increase is external accretion",
+      "C": "Crystals increase only in mass, not in size",
+      "D": "Organisms grow only when placed in water"
+    },
+    "answer": "B",
+    "answer_text": "Growth in organisms is internal and irreversible, while crystal increase is external accretion",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Biological growth occurs from within through cell division and assimilation, while crystals enlarge by deposition of particles on their outside.",
+      "steps": [
+        "In organisms, new cells and protoplasm are formed from inside the body.",
+        "In crystals, particles simply attach to the outer surface from the surrounding medium.",
+        "That is why crystal enlargement is not regarded as true biological growth.",
+        "The best distinction is internal irreversible growth versus external accretion."
+      ],
+      "final_answer": "B. Growth in organisms is internal and irreversible, while crystal increase is external accretion",
+      "simple_explanation": "This is a classic JAMB comparison question: living growth happens from inside; crystal increase happens by deposition on the outside. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "growth",
+      "crystal",
+      "comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q009",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A housefly lays eggs which hatch into maggots. The process illustrated is",
+    "options": {
+      "A": "nutrition",
+      "B": "reproduction",
+      "C": "respiration",
+      "D": "sensitivity"
+    },
+    "answer": "B",
+    "answer_text": "reproduction",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Reproduction is the production of new individuals of the same kind.",
+      "steps": [
+        "The eggs develop into young stages of the same organism.",
+        "That means the organism has produced offspring.",
+        "The question is not about feeding, breathing, or response.",
+        "Therefore the life process shown is reproduction."
+      ],
+      "final_answer": "B. reproduction",
+      "simple_explanation": "Whenever new individuals are formed, the process is reproduction. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "reproduction",
+      "life_cycle"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q010",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is the best example of nutrition in a green plant?",
+    "options": {
+      "A": "Absorption of oxygen through stomata",
+      "B": "Manufacture of glucose from CO₂ and H₂O in the presence of light",
+      "C": "Loss of water vapour through leaves",
+      "D": "Bending of the shoot toward light"
+    },
+    "answer": "B",
+    "answer_text": "Manufacture of glucose from CO₂ and H₂O in the presence of light",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Nutrition in green plants mainly refers to autotrophic feeding through photosynthesis.",
+      "steps": [
+        "Green plants make organic food from simple inorganic raw materials.",
+        "Carbon dioxide and water are converted into glucose in the presence of light and chlorophyll.",
+        "The other options describe respiration, transpiration, and response respectively.",
+        "So the correct example of plant nutrition is photosynthesis."
+      ],
+      "final_answer": "B. Manufacture of glucose from CO₂ and H₂O in the presence of light",
+      "simple_explanation": "For plants, nutrition usually points to photosynthesis in UTME Biology. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "nutrition",
+      "photosynthesis"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q011",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following pairs consists only of life processes?",
+    "options": {
+      "A": "Rusting and respiration",
+      "B": "Growth and excretion",
+      "C": "Diffusion and evaporation",
+      "D": "Combustion and movement"
+    },
+    "answer": "B",
+    "answer_text": "Growth and excretion",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Life processes are activities carried out by living things to maintain life.",
+      "steps": [
+        "Growth and excretion are both standard life processes.",
+        "Rusting and combustion are chemical changes in non-living matter.",
+        "Evaporation is a physical process and diffusion can occur in living and non-living systems.",
+        "Therefore only option B contains two definite life processes."
+      ],
+      "final_answer": "B. Growth and excretion",
+      "simple_explanation": "A good exam strategy is to ask whether the process is specifically biological or just general physical/chemical change. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "life_processes",
+      "classification"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q012",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A yam tuber kept in a store room later produces shoots. This is evidence mainly of",
+    "options": {
+      "A": "irritability and photosynthesis",
+      "B": "respiration and dormancy",
+      "C": "growth and reproduction",
+      "D": "movement and excretion"
+    },
+    "answer": "C",
+    "answer_text": "growth and reproduction",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "The formation of new shoots from a stored tuber shows renewed development and vegetative propagation.",
+      "steps": [
+        "The bud begins to divide and enlarge, which is growth.",
+        "The shoot can give rise to a new plant of the same kind, showing vegetative reproduction.",
+        "Although respiration is also occurring, it is not the main evidence highlighted by the question.",
+        "Hence growth and reproduction is the best answer."
+      ],
+      "final_answer": "C. growth and reproduction",
+      "simple_explanation": "A sprouting tuber shows that even when stored, living tissues can resume growth and produce a new plant. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "yam",
+      "vegetative_reproduction",
+      "growth"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q013",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is the best reason why seeds are regarded as living?",
+    "options": {
+      "A": "They are always green",
+      "B": "They can germinate under suitable conditions",
+      "C": "They remain dry for long periods",
+      "D": "They are always visible to the naked eye"
+    },
+    "answer": "B",
+    "answer_text": "They can germinate under suitable conditions",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Dormant seeds are living because their cells are alive and capable of resuming metabolism and growth during germination.",
+      "steps": [
+        "A seed may appear inactive, but its embryo is alive.",
+        "When moisture, oxygen, and suitable temperature are available, it germinates.",
+        "That ability to resume life processes shows it is living.",
+        "Colour, dryness, or visibility do not define life."
+      ],
+      "final_answer": "B. They can germinate under suitable conditions",
+      "simple_explanation": "JAMB sometimes tests dormant life forms. A dormant seed is still alive because it can germinate. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "seed",
+      "dormancy",
+      "germination"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q014",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The removal of undigested food through the anus is known as",
+    "options": {
+      "A": "excretion",
+      "B": "egestion",
+      "C": "secretion",
+      "D": "digestion"
+    },
+    "answer": "B",
+    "answer_text": "egestion",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Egestion is the elimination of undigested food, while excretion is the removal of metabolic waste made by cells.",
+      "steps": [
+        "Undigested food has never become part of the body's metabolism.",
+        "It is therefore not a metabolic waste product.",
+        "Its removal through the anus is called egestion.",
+        "This is different from excretion of urea, CO₂, excess salts, and water."
+      ],
+      "final_answer": "B. egestion",
+      "simple_explanation": "Many students mix up egestion and excretion, so this is an important exam point. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "egestion",
+      "excretion"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q015",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following activities best demonstrates irritability in animals?",
+    "options": {
+      "A": "A lizard basking in the sun after a cold night",
+      "B": "A goat chewing cud",
+      "C": "A hen laying eggs",
+      "D": "A fish increasing in size"
+    },
+    "answer": "A",
+    "answer_text": "A lizard basking in the sun after a cold night",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Irritability is response to environmental changes; basking is a behavioural response to temperature.",
+      "steps": [
+        "The environment becomes cold at night, lowering the lizard's body temperature.",
+        "The lizard responds by moving into sunlight to warm itself.",
+        "That is a response to a stimulus.",
+        "Chewing cud is feeding, laying eggs is reproduction, and increasing size is growth."
+      ],
+      "final_answer": "A. A lizard basking in the sun after a cold night",
+      "simple_explanation": "Response to temperature, light, touch, or chemicals is a common way JAMB tests irritability. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "animal_response",
+      "temperature"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q016",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Which of the following life processes is directly concerned with the release of energy from food?",
+    "options": {
+      "A": "Respiration",
+      "B": "Excretion",
+      "C": "Reproduction",
+      "D": "Locomotion"
+    },
+    "answer": "A",
+    "answer_text": "Respiration",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Respiration releases usable energy from food molecules inside living cells.",
+      "steps": [
+        "Food contains chemical energy.",
+        "Respiration breaks down food molecules to release that energy for body activities.",
+        "Excretion removes wastes, reproduction forms new individuals, and locomotion is movement.",
+        "Thus respiration is the correct process."
+      ],
+      "final_answer": "A. Respiration",
+      "simple_explanation": "Even when oxygen is not mentioned, remember respiration is the life process for energy release. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "respiration",
+      "energy"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q017",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A green plant kept in darkness for a long time may die mainly because it cannot",
+    "options": {
+      "A": "reproduce",
+      "B": "carry out photosynthesis sufficiently",
+      "C": "respire",
+      "D": "respond to stimuli"
+    },
+    "answer": "B",
+    "answer_text": "carry out photosynthesis sufficiently",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Light is required for photosynthesis, through which green plants manufacture food.",
+      "steps": [
+        "Plants respire both day and night, but they need food reserves to keep respiring.",
+        "In prolonged darkness, photosynthesis stops or becomes grossly reduced.",
+        "If stored food is exhausted, the plant cannot maintain life.",
+        "So the main problem is failure to manufacture enough food."
+      ],
+      "final_answer": "B. carry out photosynthesis sufficiently",
+      "simple_explanation": "Plants do respire in darkness, but without continued food production they eventually weaken and may die. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "plant_nutrition",
+      "darkness"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q018",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following combinations is correct for all living things?",
+    "options": {
+      "A": "Movement from place to place, photosynthesis and reproduction",
+      "B": "Growth, respiration and irritability",
+      "C": "Green colour, excretion and locomotion",
+      "D": "Locomotion, feeding on solid food and sensitivity"
+    },
+    "answer": "B",
+    "answer_text": "Growth, respiration and irritability",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Some life processes are universal, while others occur only in certain groups of organisms.",
+      "steps": [
+        "All living things respire, grow, and respond to stimuli.",
+        "Not all living things photosynthesize, move from place to place, or feed on solid food.",
+        "Many living things are not green.",
+        "Therefore the universal combination is growth, respiration, and irritability."
+      ],
+      "final_answer": "B. Growth, respiration and irritability",
+      "simple_explanation": "When JAMB asks for processes shown by all living things, avoid options containing special features of only plants or only animals. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "universal_characteristics",
+      "comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q019",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following best shows that fungi are living things?",
+    "options": {
+      "A": "They are found on damp bread",
+      "B": "They can grow and reproduce by spores",
+      "C": "They are usually soft",
+      "D": "They lack chlorophyll"
+    },
+    "answer": "B",
+    "answer_text": "They can grow and reproduce by spores",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Living things are identified by the processes they perform, not just by where they are found or what they lack.",
+      "steps": [
+        "Fungi increase in size and produce spores for reproduction.",
+        "Those are clear biological activities.",
+        "Being soft or lacking chlorophyll does not by itself prove life.",
+        "Thus growth and spore formation give the best evidence."
+      ],
+      "final_answer": "B. They can grow and reproduce by spores",
+      "simple_explanation": "The strongest proof of life is always a genuine life process. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "fungi",
+      "growth",
+      "spores"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q020",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following statements about movement in living things is correct?",
+    "options": {
+      "A": "Only animals move",
+      "B": "Plants do not show any form of movement",
+      "C": "Movement may be internal or external in living things",
+      "D": "All movements in organisms are locomotion"
+    },
+    "answer": "C",
+    "answer_text": "Movement may be internal or external in living things",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Living things may show movement of the whole body or movement of parts and materials within the body.",
+      "steps": [
+        "Animals often show locomotion from place to place.",
+        "Plants also show movement such as growth curvature, opening of flowers, and cytoplasmic streaming.",
+        "Movement of blood, food, or cell contents also counts as biological movement.",
+        "So movement may be internal or external."
+      ],
+      "final_answer": "C. Movement may be internal or external in living things",
+      "simple_explanation": "Do not reduce movement only to walking or swimming; biology includes internal movement too. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "movement",
+      "locomotion"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q021",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "An organism is said to be metabolically active when it is",
+    "options": {
+      "A": "changing food materials through chemical reactions in its body",
+      "B": "moving very fast from place to place",
+      "C": "reproducing only at night",
+      "D": "green in colour"
+    },
+    "answer": "A",
+    "answer_text": "changing food materials through chemical reactions in its body",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Metabolism refers to all the chemical reactions going on in a living organism.",
+      "steps": [
+        "Food is broken down and new substances are built up through body chemistry.",
+        "These reactions include respiration, synthesis, and breakdown processes.",
+        "Fast movement or green colour is not the meaning of metabolism.",
+        "Therefore metabolic activity means internal chemical reactions are occurring."
+      ],
+      "final_answer": "A. changing food materials through chemical reactions in its body",
+      "simple_explanation": "Metabolism is a core concept behind many life processes, especially nutrition, respiration, and growth. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "metabolism",
+      "chemical_reactions"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q022",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a non-living thing showing a feature that can be mistaken for growth?",
+    "options": {
+      "A": "A germinating bean seed",
+      "B": "A young chick increasing in mass",
+      "C": "A sugar crystal increasing in size in solution",
+      "D": "A seedling producing more leaves"
+    },
+    "answer": "C",
+    "answer_text": "A sugar crystal increasing in size in solution",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Some non-living objects may increase in size, but not by true biological growth.",
+      "steps": [
+        "A crystal can become larger when more particles deposit on it from a solution.",
+        "That enlargement is external accretion, not cell division or synthesis of protoplasm.",
+        "The other options involve true living growth.",
+        "Hence the crystal is the correct answer."
+      ],
+      "final_answer": "C. A sugar crystal increasing in size in solution",
+      "simple_explanation": "This question checks whether you can separate true growth from mere increase in size. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "crystal",
+      "true_growth"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q023",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following would be the best test for determining whether an unknown object is living?",
+    "options": {
+      "A": "Check whether it is heavy",
+      "B": "Observe whether it performs several life processes",
+      "C": "Check whether it has colour",
+      "D": "Observe whether it can remain dry"
+    },
+    "answer": "B",
+    "answer_text": "Observe whether it performs several life processes",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "No single superficial feature proves life as reliably as the performance of life processes.",
+      "steps": [
+        "Colour, weight, or dryness may occur in both living and non-living things.",
+        "A dependable test is to look for activities such as growth, respiration, excretion, response, and reproduction.",
+        "Living things are functionally organized and active biologically.",
+        "Therefore observing several life processes gives the best answer."
+      ],
+      "final_answer": "B. Observe whether it performs several life processes",
+      "simple_explanation": "In exams, functional evidence is stronger than appearance-based evidence. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "identification_of_life",
+      "life_processes"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q024",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The process by which organisms maintain themselves and carry out their activities is generally called",
+    "options": {
+      "A": "ecology",
+      "B": "taxonomy",
+      "C": "life processes",
+      "D": "evolution"
+    },
+    "answer": "C",
+    "answer_text": "life processes",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Life processes are the various activities that keep organisms alive and functioning.",
+      "steps": [
+        "These include nutrition, respiration, growth, excretion, movement, sensitivity, and reproduction.",
+        "Ecology studies relationships with the environment, taxonomy deals with classification, and evolution concerns long-term change.",
+        "The question asks for the general activities of living things.",
+        "So the correct expression is life processes."
+      ],
+      "final_answer": "C. life processes",
+      "simple_explanation": "This is a foundational definition question, but JAMB often hides it among related terms. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "definition",
+      "life_processes"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q025",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following best explains why a hibernating animal is still considered living?",
+    "options": {
+      "A": "It changes colour in winter",
+      "B": "Its life processes continue at a reduced rate",
+      "C": "It remains completely inactive chemically",
+      "D": "It no longer needs energy"
+    },
+    "answer": "B",
+    "answer_text": "Its life processes continue at a reduced rate",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Some organisms enter dormant or low-activity states, but their basic life processes still continue slowly.",
+      "steps": [
+        "During hibernation, breathing, heartbeat, and metabolism are greatly reduced, not absent.",
+        "The animal still remains alive and can return to active life later.",
+        "If chemical activity stopped completely, the organism would be dead.",
+        "So reduced life processes explain why it is still living."
+      ],
+      "final_answer": "B. Its life processes continue at a reduced rate",
+      "simple_explanation": "Dormancy does not mean death; it means lowered activity. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "hibernation",
+      "dormancy"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q026",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is most directly involved in the removal of carbon(IV) oxide from the human body?",
+    "options": {
+      "A": "Nutrition",
+      "B": "Respiration only",
+      "C": "Excretion",
+      "D": "Reproduction"
+    },
+    "answer": "C",
+    "answer_text": "Excretion",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Carbon(IV) oxide is a metabolic waste product and its removal is classified as excretion.",
+      "steps": [
+        "Cells produce carbon(IV) oxide during respiration.",
+        "The lungs remove it from the body.",
+        "Because it is a waste product of metabolism, its removal is excretion.",
+        "Therefore excretion is the best answer."
+      ],
+      "final_answer": "C. Excretion",
+      "simple_explanation": "The gas is produced in respiration but removed by excretion; JAMB can test either angle. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "carbon_iv_oxide",
+      "excretion"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q027",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The opening of flower buds in the morning and closing at night is mainly an example of",
+    "options": {
+      "A": "reproduction",
+      "B": "movement in response to stimuli",
+      "C": "excretion",
+      "D": "digestion"
+    },
+    "answer": "B",
+    "answer_text": "movement in response to stimuli",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Plants can move parts of their bodies in response to environmental changes such as light and temperature.",
+      "steps": [
+        "Flower parts may open and close according to day-night conditions.",
+        "That is a response to external stimuli and therefore a form of movement or irritability.",
+        "It is not directly reproduction, though flowers are reproductive organs.",
+        "Hence movement in response to stimuli is best."
+      ],
+      "final_answer": "B. movement in response to stimuli",
+      "simple_explanation": "Plant movement questions often test whether you know that plants do move, though not usually by locomotion. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "plant_movement",
+      "response"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q028",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following statements is correct about respiration and breathing?",
+    "options": {
+      "A": "They mean exactly the same thing",
+      "B": "Breathing is a physical process, while respiration is a chemical process in cells",
+      "C": "Respiration occurs only in lungs",
+      "D": "Breathing occurs only in plants"
+    },
+    "answer": "B",
+    "answer_text": "Breathing is a physical process, while respiration is a chemical process in cells",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Breathing is the exchange of gases with the environment, whereas respiration is the release of energy in cells.",
+      "steps": [
+        "Breathing or ventilation moves air in and out of respiratory surfaces.",
+        "Respiration occurs inside cells and involves chemical breakdown of food to release energy.",
+        "So the two terms are related but not identical.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Breathing is a physical process, while respiration is a chemical process in cells",
+      "simple_explanation": "This distinction is extremely important in UTME Biology. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "breathing_vs_respiration",
+      "definition"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q029",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A response of plant roots growing downward into the soil is evidence of",
+    "options": {
+      "A": "phototropism",
+      "B": "hydrotropism",
+      "C": "geotropism",
+      "D": "reproduction"
+    },
+    "answer": "C",
+    "answer_text": "geotropism",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Geotropism is the growth response of plant parts to gravity.",
+      "steps": [
+        "Roots usually grow toward gravitational pull, so they are positively geotropic.",
+        "Phototropism is response to light; hydrotropism is response to water.",
+        "The question asks specifically about downward growth.",
+        "That indicates geotropism."
+      ],
+      "final_answer": "C. geotropism",
+      "simple_explanation": "Although this belongs to plant response, it also shows the general life characteristic of irritability. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "roots",
+      "geotropism",
+      "response"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q030",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is an example of secretion rather than excretion?",
+    "options": {
+      "A": "Release of bile by the liver",
+      "B": "Removal of urea in urine",
+      "C": "Loss of carbon(IV) oxide through the lungs",
+      "D": "Sweating out salts"
+    },
+    "answer": "A",
+    "answer_text": "Release of bile by the liver",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Secretion is the production of useful substances for body functions, while excretion is removal of metabolic waste.",
+      "steps": [
+        "Bile helps digestion and is useful in the body, so its release is secretion.",
+        "Urea, carbon(IV) oxide, and excess salts are wastes removed from the body.",
+        "Those are excretory products.",
+        "Hence option A is correct."
+      ],
+      "final_answer": "A. Release of bile by the liver",
+      "simple_explanation": "Learning to separate secretion from excretion helps to avoid common exam traps. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "secretion",
+      "excretion",
+      "liver"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q031",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A flame that burns brightly, consumes oxygen and releases energy is still not considered living because it does not",
+    "options": {
+      "A": "move",
+      "B": "give off heat",
+      "C": "maintain cellular organization and heredity",
+      "D": "use gases from the environment"
+    },
+    "answer": "C",
+    "answer_text": "maintain cellular organization and heredity",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Some non-living systems resemble living things in one or two ways, but they lack the organized cellular basis of life and heredity.",
+      "steps": [
+        "Fire may seem to feed, spread, and use oxygen.",
+        "However, it has no cells, no genetic material, and no true biological reproduction.",
+        "Living things are built of cells and pass hereditary information to offspring.",
+        "Therefore lack of cellular organization and heredity shows it is not living."
+      ],
+      "final_answer": "C. maintain cellular organization and heredity",
+      "simple_explanation": "JAMB sometimes uses borderline examples like fire or crystals to test deep understanding of life. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "fire",
+      "cellular_basis",
+      "heredity"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q032",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The ability of an organism to produce young ones that resemble it is called",
+    "options": {
+      "A": "adaptation",
+      "B": "growth",
+      "C": "reproduction",
+      "D": "nutrition"
+    },
+    "answer": "C",
+    "answer_text": "reproduction",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Reproduction is the life process by which organisms give rise to offspring of the same kind.",
+      "steps": [
+        "The keyword here is producing young ones.",
+        "Adaptation relates to survival features, growth is increase in size, and nutrition is feeding.",
+        "Only reproduction fits the statement exactly.",
+        "So option C is correct."
+      ],
+      "final_answer": "C. reproduction",
+      "simple_explanation": "Watch out for straightforward reproduction questions mixed with other life processes. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "reproduction",
+      "offspring"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q033",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following life processes is most directly responsible for continuity of a species?",
+    "options": {
+      "A": "Respiration",
+      "B": "Excretion",
+      "C": "Reproduction",
+      "D": "Irritability"
+    },
+    "answer": "C",
+    "answer_text": "Reproduction",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "A species continues from generation to generation only when organisms reproduce.",
+      "steps": [
+        "An individual may stay alive by respiration and excretion.",
+        "However, survival of the species depends on producing offspring.",
+        "Therefore continuity of a species is tied most directly to reproduction.",
+        "That makes option C correct."
+      ],
+      "final_answer": "C. Reproduction",
+      "simple_explanation": "Many life processes preserve the individual, but reproduction preserves the species. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "species_continuity",
+      "reproduction"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q034",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Characteristics of living things",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following would be least useful in deciding whether a newly discovered object is alive?",
+    "options": {
+      "A": "Whether it can respond to changes in light",
+      "B": "Whether it shows internal chemical activity",
+      "C": "Whether it has an attractive shape",
+      "D": "Whether it can reproduce or grow"
+    },
+    "answer": "C",
+    "answer_text": "Whether it has an attractive shape",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on characteristics of living things.",
+      "principle": "Appearance alone is a weak indicator of life compared with true biological functions.",
+      "steps": [
+        "Response, metabolism, growth, and reproduction are all strong biological criteria.",
+        "An attractive or regular shape can occur in non-living objects such as crystals or machines.",
+        "Therefore shape is least useful in deciding whether something is alive.",
+        "Option C is the best answer."
+      ],
+      "final_answer": "C. Whether it has an attractive shape",
+      "simple_explanation": "Functional evidence beats superficial appearance in biology questions. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "criteria_of_life",
+      "appearance"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q035",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "The basic structural and functional unit of life is the",
+    "options": {
+      "A": "organ",
+      "B": "cell",
+      "C": "tissue",
+      "D": "nucleus"
+    },
+    "answer": "B",
+    "answer_text": "cell",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "All living organisms are made of cells, and the cell is the smallest unit that can carry out life processes.",
+      "steps": [
+        "Tissues are groups of similar cells, and organs are made of tissues.",
+        "The nucleus is only one part of the cell.",
+        "The complete basic unit is the cell itself.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. cell",
+      "simple_explanation": "Whenever JAMB asks for the fundamental unit of life, the answer is cell. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "cell",
+      "basic_unit"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q036",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which cell component controls the activities of the cell?",
+    "options": {
+      "A": "Cell membrane",
+      "B": "Nucleus",
+      "C": "Vacuole",
+      "D": "Cell wall"
+    },
+    "answer": "B",
+    "answer_text": "Nucleus",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "The nucleus acts as the control centre because it contains genetic material and regulates cellular activities.",
+      "steps": [
+        "The nucleus houses chromosomes and genes.",
+        "These influence protein synthesis and many cell functions.",
+        "The membrane regulates entry and exit, but does not serve as the main control centre.",
+        "Hence the nucleus is correct."
+      ],
+      "final_answer": "B. Nucleus",
+      "simple_explanation": "Think of the nucleus as the command centre of the cell. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "nucleus",
+      "control"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q037",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The selectively permeable boundary that controls movement of substances into and out of the cell is the",
+    "options": {
+      "A": "cell wall",
+      "B": "plasma membrane",
+      "C": "nucleolus",
+      "D": "cytoplasm"
+    },
+    "answer": "B",
+    "answer_text": "plasma membrane",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "The plasma membrane is selectively permeable, allowing some substances in or out while restricting others.",
+      "steps": [
+        "The cell wall is generally freely permeable and gives support, especially in plants.",
+        "The cytoplasm is the living material inside the cell.",
+        "The nucleolus is inside the nucleus.",
+        "Therefore the selectively permeable boundary is the plasma membrane."
+      ],
+      "final_answer": "B. plasma membrane",
+      "simple_explanation": "JAMB often uses 'cell membrane' and 'plasma membrane' interchangeably. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "cell_membrane",
+      "transport"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q038",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is present in a plant cell but absent in a typical animal cell?",
+    "options": {
+      "A": "Nucleus",
+      "B": "Mitochondrion",
+      "C": "Cell wall",
+      "D": "Cytoplasm"
+    },
+    "answer": "C",
+    "answer_text": "Cell wall",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Plant cells possess a cellulose cell wall outside the cell membrane, whereas typical animal cells do not.",
+      "steps": [
+        "Both plant and animal cells have nuclei, mitochondria, and cytoplasm.",
+        "The clear distinguishing structure here is the cell wall.",
+        "It provides support, shape, and protection in plant cells.",
+        "So option C is correct."
+      ],
+      "final_answer": "C. Cell wall",
+      "simple_explanation": "For plant-animal cell comparisons, first look for cell wall, chloroplast, and large vacuole. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "plant_cell",
+      "animal_cell",
+      "cell_wall"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q039",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The organelle responsible for aerobic respiration in the cell is the",
+    "options": {
+      "A": "chloroplast",
+      "B": "mitochondrion",
+      "C": "ribosome",
+      "D": "golgi body"
+    },
+    "answer": "B",
+    "answer_text": "mitochondrion",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Mitochondria are the sites where most aerobic respiration occurs and ATP is generated.",
+      "steps": [
+        "Aerobic respiration uses oxygen to release large amounts of energy from food.",
+        "This process mainly occurs in mitochondria.",
+        "Chloroplasts carry out photosynthesis, while ribosomes make proteins.",
+        "Therefore mitochondrion is correct."
+      ],
+      "final_answer": "B. mitochondrion",
+      "simple_explanation": "A common exam clue is 'powerhouse of the cell'—that refers to mitochondrion. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "mitochondrion",
+      "respiration"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q040",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Photosynthesis takes place mainly in the",
+    "options": {
+      "A": "vacuole",
+      "B": "centrosome",
+      "C": "chloroplast",
+      "D": "lysosome"
+    },
+    "answer": "C",
+    "answer_text": "chloroplast",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Chloroplasts contain chlorophyll and are the major sites of photosynthesis in green plants.",
+      "steps": [
+        "Light energy is trapped by chlorophyll inside chloroplasts.",
+        "The products of photosynthesis are then used by the cell and the plant.",
+        "Vacuoles store substances, while lysosomes are associated with digestion.",
+        "Hence chloroplast is correct."
+      ],
+      "final_answer": "C. chloroplast",
+      "simple_explanation": "When the question mentions chlorophyll or photosynthesis, think chloroplast. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "chloroplast",
+      "photosynthesis"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q041",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The jelly-like material in which cell organelles are suspended is the",
+    "options": {
+      "A": "cytoplasm",
+      "B": "nucleoplasm",
+      "C": "cell sap",
+      "D": "middle lamella"
+    },
+    "answer": "A",
+    "answer_text": "cytoplasm",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Cytoplasm is the semi-fluid living material that fills much of the cell and contains organelles.",
+      "steps": [
+        "It is the medium for many chemical reactions.",
+        "Cell organelles such as mitochondria and ribosomes lie within it.",
+        "Nucleoplasm is inside the nucleus, and cell sap is mainly in the vacuole.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. cytoplasm",
+      "simple_explanation": "Cytoplasm is a favourite basic-identification topic in UTME Biology. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "cytoplasm",
+      "organelle_support"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q042",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following structures is chiefly responsible for protein synthesis?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Vacuole",
+      "C": "Cell wall",
+      "D": "Centriole"
+    },
+    "answer": "A",
+    "answer_text": "Ribosome",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Ribosomes are the sites where amino acids are assembled into proteins according to genetic instructions.",
+      "steps": [
+        "Proteins are needed for enzymes, body structures, hormones, and repair.",
+        "Ribosomes read the instructions ultimately derived from genes.",
+        "Vacuoles store materials and centrioles help in cell division in animal cells.",
+        "Therefore ribosome is correct."
+      ],
+      "final_answer": "A. Ribosome",
+      "simple_explanation": "When you see protein synthesis, immediately think ribosome. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "ribosome",
+      "protein_synthesis"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q043",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In a plant cell, the large central vacuole mainly functions in",
+    "options": {
+      "A": "controlling heredity",
+      "B": "storing cell sap and maintaining turgidity",
+      "C": "producing ATP",
+      "D": "making starch granules only"
+    },
+    "answer": "B",
+    "answer_text": "storing cell sap and maintaining turgidity",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "The vacuole stores cell sap and helps maintain turgor pressure, which supports the plant cell.",
+      "steps": [
+        "Cell sap contains water, sugars, salts, pigments, and wastes.",
+        "When the vacuole is full, it pushes against the cell wall and keeps the cell firm.",
+        "This contributes to support in herbaceous plants.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. storing cell sap and maintaining turgidity",
+      "simple_explanation": "The plant vacuole is important in storage and support through turgidity. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "vacuole",
+      "turgidity",
+      "plant_cell"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q044",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following cell structures is mainly concerned with inheritance?",
+    "options": {
+      "A": "Nucleus",
+      "B": "Cell wall",
+      "C": "Mitochondrion",
+      "D": "Golgi body"
+    },
+    "answer": "A",
+    "answer_text": "Nucleus",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Genes are located on chromosomes in the nucleus, making it the major structure linked with inheritance.",
+      "steps": [
+        "Inheritance involves transmission of genetic information from parents to offspring.",
+        "This information is stored mainly in the nucleus.",
+        "Although mitochondria contain limited DNA, standard UTME questions expect nucleus here.",
+        "So the correct answer is nucleus."
+      ],
+      "final_answer": "A. Nucleus",
+      "simple_explanation": "For JAMB purposes, nucleus is the central structure for heredity. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "inheritance",
+      "nucleus"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q045",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following pairs is correctly matched?",
+    "options": {
+      "A": "Chloroplast — protein synthesis",
+      "B": "Ribosome — starch storage",
+      "C": "Mitochondrion — energy release",
+      "D": "Cell wall — control of cell activities"
+    },
+    "answer": "C",
+    "answer_text": "Mitochondrion — energy release",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Each organelle has a characteristic function; mitochondria are linked with energy release through respiration.",
+      "steps": [
+        "Chloroplasts carry out photosynthesis, not protein synthesis.",
+        "Ribosomes synthesize proteins, not store starch.",
+        "The cell wall supports and protects but does not control activities.",
+        "Therefore the correctly matched pair is mitochondrion — energy release."
+      ],
+      "final_answer": "C. Mitochondrion — energy release",
+      "simple_explanation": "Matching organelles to functions is a common JAMB testing pattern. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "organelle_function",
+      "matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q046",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The cell wall of plants is mainly made of",
+    "options": {
+      "A": "glycogen",
+      "B": "cellulose",
+      "C": "chitin",
+      "D": "starch"
+    },
+    "answer": "B",
+    "answer_text": "cellulose",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Plant cell walls are chiefly composed of cellulose, a strong structural carbohydrate.",
+      "steps": [
+        "Cellulose provides rigidity and support to plant tissues.",
+        "Chitin is associated with fungal cell walls and arthropod exoskeletons.",
+        "Glycogen is animal storage carbohydrate, while starch is plant storage carbohydrate.",
+        "So cellulose is correct."
+      ],
+      "final_answer": "B. cellulose",
+      "simple_explanation": "Know the structural carbohydrates: cellulose in plants, chitin in fungi. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "cell_wall",
+      "cellulose"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q047",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following organelles is absent in mature red blood cells of humans?",
+    "options": {
+      "A": "Cell membrane",
+      "B": "Cytoplasm",
+      "C": "Nucleus",
+      "D": "Haemoglobin"
+    },
+    "answer": "C",
+    "answer_text": "Nucleus",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Mature mammalian red blood cells lose their nucleus to create more space for haemoglobin.",
+      "steps": [
+        "This adaptation increases their oxygen-carrying efficiency.",
+        "They still possess a membrane and cytoplasm, though specialized.",
+        "Haemoglobin is present in abundance.",
+        "Therefore the absent structure is the nucleus."
+      ],
+      "final_answer": "C. Nucleus",
+      "simple_explanation": "This is a very popular UTME Biology fact about mammalian red blood cells. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "red_blood_cell",
+      "nucleus_absent"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q048",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following features makes the plasma membrane different from the cell wall?",
+    "options": {
+      "A": "It is living and selectively permeable",
+      "B": "It is non-living and rigid",
+      "C": "It contains cellulose",
+      "D": "It is present only in plants"
+    },
+    "answer": "A",
+    "answer_text": "It is living and selectively permeable",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "The plasma membrane is a living boundary that regulates movement of substances, unlike the generally rigid cell wall.",
+      "steps": [
+        "The cell wall is mainly non-living and provides support.",
+        "The plasma membrane is delicate, living, and selectively permeable.",
+        "It is present in both plant and animal cells.",
+        "Thus option A gives the correct distinction."
+      ],
+      "final_answer": "A. It is living and selectively permeable",
+      "simple_explanation": "Remember: membrane regulates; wall supports. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "plasma_membrane",
+      "cell_wall",
+      "comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q049",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The nucleolus is found inside the",
+    "options": {
+      "A": "cell wall",
+      "B": "nucleus",
+      "C": "cytoplasm",
+      "D": "vacuole"
+    },
+    "answer": "B",
+    "answer_text": "nucleus",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "The nucleolus is a body inside the nucleus and is involved in ribosome formation.",
+      "steps": [
+        "It is not a separate cell organ surrounding the cell.",
+        "Its location is within the nucleus.",
+        "Therefore the correct answer is nucleus.",
+        "JAMB may ask for location before asking for function."
+      ],
+      "final_answer": "B. nucleus",
+      "simple_explanation": "Location questions are common stepping-stones to function questions. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "nucleolus",
+      "location"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q050",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is common to both plant and animal cells?",
+    "options": {
+      "A": "Chloroplast",
+      "B": "Cell wall",
+      "C": "Large central vacuole",
+      "D": "Plasma membrane"
+    },
+    "answer": "D",
+    "answer_text": "Plasma membrane",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Both plant and animal cells possess a plasma membrane surrounding the cytoplasm.",
+      "steps": [
+        "Chloroplasts and cell walls are characteristic of plant cells.",
+        "Large permanent vacuoles are also typical of plant cells.",
+        "The plasma membrane is common to both cell types.",
+        "Hence option D is correct."
+      ],
+      "final_answer": "D. Plasma membrane",
+      "simple_explanation": "In plant-animal comparisons, identify shared structures versus unique ones. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "common_features",
+      "cell_comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q051",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A cell is described as the functional unit of life mainly because it",
+    "options": {
+      "A": "contains water",
+      "B": "is always visible to the naked eye",
+      "C": "can carry out all basic life activities",
+      "D": "is always rectangular in shape"
+    },
+    "answer": "C",
+    "answer_text": "can carry out all basic life activities",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "The cell is called functional because it is capable of performing the essential processes of life.",
+      "steps": [
+        "Even a single-celled organism can feed, respire, excrete, grow, and reproduce.",
+        "That shows the cell itself is a functioning living unit.",
+        "Water content or shape does not define its functional status.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. can carry out all basic life activities",
+      "simple_explanation": "Structural unit means building block; functional unit means it can actually do life activities. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "functional_unit",
+      "cell"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q052",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is the main function of the cell wall?",
+    "options": {
+      "A": "Regulation of substances entering the cell",
+      "B": "Support and protection",
+      "C": "Protein synthesis",
+      "D": "Control of cell division"
+    },
+    "answer": "B",
+    "answer_text": "Support and protection",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "The plant cell wall gives the cell rigidity, shape, and protection against mechanical damage and bursting.",
+      "steps": [
+        "Support is especially important in non-woody plant tissues.",
+        "Selective control of substances is done mainly by the plasma membrane.",
+        "Protein synthesis occurs at ribosomes.",
+        "Hence support and protection is correct."
+      ],
+      "final_answer": "B. Support and protection",
+      "simple_explanation": "When both cell wall and membrane appear in options, separate support from selective transport. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "cell_wall",
+      "support"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q053",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which organelle contains chlorophyll?",
+    "options": {
+      "A": "Mitochondrion",
+      "B": "Chloroplast",
+      "C": "Ribosome",
+      "D": "Golgi body"
+    },
+    "answer": "B",
+    "answer_text": "Chloroplast",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Chlorophyll, the green pigment that traps light energy, is located in chloroplasts.",
+      "steps": [
+        "The name itself gives a clue: chloro- relates to green.",
+        "This organelle is present mainly in photosynthetic plant cells.",
+        "Mitochondria handle respiration, and ribosomes handle protein synthesis.",
+        "So chloroplast is correct."
+      ],
+      "final_answer": "B. Chloroplast",
+      "simple_explanation": "Pigment-based questions often point directly to chloroplast. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "chlorophyll",
+      "chloroplast"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q054",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The cell membrane is described as selectively permeable because it",
+    "options": {
+      "A": "allows all substances to pass through it freely",
+      "B": "allows some substances to pass more easily than others",
+      "C": "is made of cellulose",
+      "D": "is thicker than the cell wall"
+    },
+    "answer": "B",
+    "answer_text": "allows some substances to pass more easily than others",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Selective permeability means the membrane controls passage of materials, admitting some and restricting others.",
+      "steps": [
+        "Cells must take in useful substances and limit harmful or unnecessary ones.",
+        "The plasma membrane helps maintain internal balance by this control.",
+        "It does not allow all substances to move freely.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. allows some substances to pass more easily than others",
+      "simple_explanation": "This idea is essential for understanding osmosis and diffusion later in Biology. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "selective_permeability",
+      "transport"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q055",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following structures would be most numerous in a cell specialized for secretion of enzymes?",
+    "options": {
+      "A": "Ribosomes",
+      "B": "Cell wall",
+      "C": "Chloroplasts",
+      "D": "Large vacuoles only"
+    },
+    "answer": "A",
+    "answer_text": "Ribosomes",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Enzymes are proteins, and cells that produce many proteins need abundant ribosomes.",
+      "steps": [
+        "Secretory cells synthesize large amounts of protein materials.",
+        "Ribosomes are the direct sites of protein synthesis.",
+        "Therefore such cells would have many ribosomes.",
+        "The other options are not the main structures for enzyme production."
+      ],
+      "final_answer": "A. Ribosomes",
+      "simple_explanation": "Link cell specialization to organelle abundance: more protein production means more ribosomes. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "specialized_cells",
+      "ribosome",
+      "enzyme"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q056",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following best explains why plant cells are usually more regular in shape than animal cells?",
+    "options": {
+      "A": "They lack a nucleus",
+      "B": "They possess a rigid cell wall",
+      "C": "They do not contain cytoplasm",
+      "D": "They have no membrane"
+    },
+    "answer": "B",
+    "answer_text": "They possess a rigid cell wall",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "The rigid cellulose cell wall helps plant cells maintain a more definite and regular shape.",
+      "steps": [
+        "Animal cells are bounded only by the delicate plasma membrane and can change shape more easily.",
+        "Plant cells also have nuclei, cytoplasm, and membranes.",
+        "The extra rigid wall is what produces the regular outline.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. They possess a rigid cell wall",
+      "simple_explanation": "This is a standard comparison point between plant and animal cells. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "plant_animal_difference",
+      "shape"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q057",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is NOT a function of the nucleus?",
+    "options": {
+      "A": "Control of cell activities",
+      "B": "Storage of hereditary material",
+      "C": "Formation of spindle fibres in typical animal cells",
+      "D": "Regulation of cell division"
+    },
+    "answer": "C",
+    "answer_text": "Formation of spindle fibres in typical animal cells",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "In standard school Biology, spindle formation in animal cells is associated with centrioles rather than the nucleus itself.",
+      "steps": [
+        "The nucleus controls activities and houses genes.",
+        "It also plays a key role in cell division through its chromosomes.",
+        "But the formation of spindle fibres in animal cells is attributed to centrioles/centrosomes.",
+        "Therefore option C is not a function of the nucleus."
+      ],
+      "final_answer": "C. Formation of spindle fibres in typical animal cells",
+      "simple_explanation": "When a question asks for NOT, slow down and eliminate the true statements carefully. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "nucleus",
+      "centrioles",
+      "not_question"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q058",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In a palisade mesophyll cell, numerous chloroplasts are present mainly because the cell is specialized for",
+    "options": {
+      "A": "support",
+      "B": "photosynthesis",
+      "C": "storage of water only",
+      "D": "cell division"
+    },
+    "answer": "B",
+    "answer_text": "photosynthesis",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Palisade mesophyll cells are packed with chloroplasts to capture light efficiently for photosynthesis.",
+      "steps": [
+        "These cells are located in the leaf where light is available.",
+        "Their main job is food manufacture.",
+        "That is why they contain many chloroplasts.",
+        "Hence photosynthesis is the correct answer."
+      ],
+      "final_answer": "B. photosynthesis",
+      "simple_explanation": "Cell specialization questions often depend on linking structure abundance with function. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "palisade",
+      "chloroplast",
+      "photosynthesis"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q059",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The fluid content of the vacuole is called",
+    "options": {
+      "A": "plasma",
+      "B": "serum",
+      "C": "cell sap",
+      "D": "nucleoplasm"
+    },
+    "answer": "C",
+    "answer_text": "cell sap",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "The vacuole of plant cells contains cell sap, which is mostly water with dissolved substances.",
+      "steps": [
+        "Cell sap may contain sugars, salts, pigments, and waste products.",
+        "It contributes to osmotic balance and turgidity.",
+        "Plasma and serum belong to blood, while nucleoplasm is inside the nucleus.",
+        "Therefore the correct answer is cell sap."
+      ],
+      "final_answer": "C. cell sap",
+      "simple_explanation": "This is a straightforward factual question that often appears in basic cell biology. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "cell_sap",
+      "vacuole"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q060",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Use the simplified diagram below to answer the question.\n\n  ______________________\n |                      |\n |   o      ()      ~   |\n |                      |\n |___________|__________|\n\nThe outer rigid boundary represented in the diagram is most likely the",
+    "options": {
+      "A": "plasma membrane",
+      "B": "cell wall",
+      "C": "cytoplasm",
+      "D": "nucleolus"
+    },
+    "answer": "B",
+    "answer_text": "cell wall",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "A rigid outer boundary in a simple plant-cell sketch represents the cell wall, which surrounds the membrane.",
+      "steps": [
+        "The question deliberately says the boundary is rigid.",
+        "Rigidity and outer support are properties of the plant cell wall.",
+        "The plasma membrane lies just inside it and is not rigid.",
+        "So the labelled outer boundary is best interpreted as the cell wall."
+      ],
+      "final_answer": "B. cell wall",
+      "simple_explanation": "In diagram questions, look for key descriptive words such as rigid, outer, selectively permeable, or green bodies. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "diagram",
+      "cell_wall",
+      "plant_cell"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q061",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Use the simplified diagram below to answer the question.\n\n  __________________\n |   *   *   *   *  |\n |        O         |\n |__________________|\n\nThe star-like bodies are most likely chloroplasts because they are associated with",
+    "options": {
+      "A": "storage of hereditary material",
+      "B": "capture of light energy",
+      "C": "control of osmosis only",
+      "D": "formation of spindle fibres"
+    },
+    "answer": "B",
+    "answer_text": "capture of light energy",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Chloroplasts contain chlorophyll and are specialized for trapping light energy during photosynthesis.",
+      "steps": [
+        "A diagram with many similar bodies in a plant cell often suggests chloroplasts.",
+        "Their key function is light absorption for photosynthesis.",
+        "They are not the structures for heredity or spindle formation.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. capture of light energy",
+      "simple_explanation": "When many small green bodies are shown in a plant cell, JAMB usually expects chloroplasts and photosynthesis. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "diagram",
+      "chloroplast",
+      "light_energy"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q062",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following structures is present in onion epidermal cells but absent in human cheek cells?",
+    "options": {
+      "A": "Cell membrane",
+      "B": "Nucleus",
+      "C": "Cell wall",
+      "D": "Cytoplasm"
+    },
+    "answer": "C",
+    "answer_text": "Cell wall",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Onion epidermal cells are plant cells and therefore have cell walls, unlike cheek cells which are animal cells.",
+      "steps": [
+        "Both cells have membranes, nuclei, and cytoplasm.",
+        "The main difference here is the cell wall.",
+        "That wall gives the onion cell a more fixed shape.",
+        "Thus option C is correct."
+      ],
+      "final_answer": "C. Cell wall",
+      "simple_explanation": "Comparing onion epidermis with cheek cells is a classic school Biology practical link. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "onion_cell",
+      "cheek_cell",
+      "comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q063",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A cell lacking chloroplasts would most likely be unable to",
+    "options": {
+      "A": "carry out respiration",
+      "B": "synthesize proteins",
+      "C": "photosynthesize",
+      "D": "divide"
+    },
+    "answer": "C",
+    "answer_text": "photosynthesize",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Chloroplasts are required for photosynthesis, but not for respiration or general protein synthesis.",
+      "steps": [
+        "Respiration occurs mainly in mitochondria, and protein synthesis occurs at ribosomes.",
+        "Cell division uses nuclear material and other structures.",
+        "Without chloroplasts, the cell cannot carry out photosynthesis.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. photosynthesize",
+      "simple_explanation": "Always match the missing organelle to the process it performs. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "chloroplast_absence",
+      "photosynthesis"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q064",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following statements is correct about cytoplasm?",
+    "options": {
+      "A": "It is non-living and found only in plant cells",
+      "B": "It is the site of many metabolic reactions in the cell",
+      "C": "It controls heredity directly",
+      "D": "It is outside the cell membrane"
+    },
+    "answer": "B",
+    "answer_text": "It is the site of many metabolic reactions in the cell",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Cytoplasm is living material within the cell and serves as the medium for many chemical reactions.",
+      "steps": [
+        "Enzymes operate in the cytoplasm and several metabolic pathways occur there.",
+        "It is present in both plant and animal cells.",
+        "Heredity is mainly associated with nuclear genes.",
+        "So the correct statement is that it is the site of many metabolic reactions."
+      ],
+      "final_answer": "B. It is the site of many metabolic reactions in the cell",
+      "simple_explanation": "Metabolism is not confined to one organelle; the cytoplasm is very active chemically. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "cytoplasm",
+      "metabolism"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q065",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following best compares the vacuoles of plant and animal cells?",
+    "options": {
+      "A": "Both are always absent",
+      "B": "Plant vacuoles are usually larger and more permanent",
+      "C": "Animal vacuoles contain chlorophyll",
+      "D": "Plant vacuoles control heredity"
+    },
+    "answer": "B",
+    "answer_text": "Plant vacuoles are usually larger and more permanent",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Plant cells usually possess a large permanent central vacuole, while animal vacuoles are smaller and often temporary.",
+      "steps": [
+        "This difference contributes to the shape and turgidity of plant cells.",
+        "Animal cells may have small vacuoles or vesicles, but not the large central vacuole typical of plants.",
+        "Chlorophyll is in chloroplasts, not vacuoles.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Plant vacuoles are usually larger and more permanent",
+      "simple_explanation": "This is another common plant-versus-animal cell comparison point. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "vacuole_comparison",
+      "plant_vs_animal"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q066",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A cell that contains a cell wall, chloroplasts and a large permanent vacuole is most likely a",
+    "options": {
+      "A": "nerve cell",
+      "B": "root hair cell",
+      "C": "leaf cell",
+      "D": "red blood cell"
+    },
+    "answer": "C",
+    "answer_text": "leaf cell",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "A typical leaf cell contains chloroplasts for photosynthesis, along with a cell wall and large vacuole.",
+      "steps": [
+        "Root hair cells have cell walls and vacuoles but generally no chloroplasts because they are underground.",
+        "Animal cells such as nerve or red blood cells lack cell walls and chloroplasts.",
+        "A leaf cell best fits all three features.",
+        "Hence option C is correct."
+      ],
+      "final_answer": "C. leaf cell",
+      "simple_explanation": "When chloroplasts appear in the clues, think of green aerial plant tissues like leaves. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "leaf_cell",
+      "chloroplast",
+      "identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q067",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Cell structure and functions of cell components",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following organelles would be expected to be especially abundant in a very active muscle cell?",
+    "options": {
+      "A": "Mitochondria",
+      "B": "Chloroplasts",
+      "C": "Cell wall",
+      "D": "Large central vacuole"
+    },
+    "answer": "A",
+    "answer_text": "Mitochondria",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on cell structure and functions of cell components.",
+      "principle": "Active muscle cells require large amounts of energy, so they contain many mitochondria for aerobic respiration.",
+      "steps": [
+        "Muscle contraction uses ATP continuously.",
+        "ATP is produced largely in mitochondria during aerobic respiration.",
+        "Animal muscle cells do not have chloroplasts or cell walls.",
+        "Therefore mitochondria would be especially abundant."
+      ],
+      "final_answer": "A. Mitochondria",
+      "simple_explanation": "A useful rule: more energy demand means more mitochondria. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "muscle_cell",
+      "mitochondria",
+      "energy"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q068",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Which of the following gives the correct order of organization in multicellular organisms?",
+    "options": {
+      "A": "Cell → tissue → organ → system → organism",
+      "B": "Tissue → cell → organ → system → organism",
+      "C": "Cell → organ → tissue → system → organism",
+      "D": "System → organ → tissue → cell → organism"
+    },
+    "answer": "A",
+    "answer_text": "Cell → tissue → organ → system → organism",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "In multicellular organisms, similar cells form tissues, tissues form organs, organs form systems, and systems make up the organism.",
+      "steps": [
+        "The cell is the smallest living unit.",
+        "A group of similar cells performing a common function forms a tissue.",
+        "Different tissues combine to form an organ, and organs work together in systems.",
+        "Therefore option A is the correct sequence."
+      ],
+      "final_answer": "A. Cell → tissue → organ → system → organism",
+      "simple_explanation": "This sequence is one of the most important facts in bio_01. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "levels_of_organization",
+      "sequence"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q069",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A group of similar cells performing the same function is called a",
+    "options": {
+      "A": "system",
+      "B": "tissue",
+      "C": "organ",
+      "D": "organelle"
+    },
+    "answer": "B",
+    "answer_text": "tissue",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "A tissue is a collection of similar cells working together to perform a specific function.",
+      "steps": [
+        "Examples include muscle tissue, xylem tissue, and epithelial tissue.",
+        "An organ is made of different tissues, not just similar cells.",
+        "An organelle is part of a cell, not a group of cells.",
+        "Hence tissue is correct."
+      ],
+      "final_answer": "B. tissue",
+      "simple_explanation": "To answer quickly, remember: similar cells together = tissue. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "tissue",
+      "definition"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q070",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The stomach is best described as a",
+    "options": {
+      "A": "cell",
+      "B": "tissue",
+      "C": "organ",
+      "D": "system"
+    },
+    "answer": "C",
+    "answer_text": "organ",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "An organ is a body part made of different tissues working together for a specific function.",
+      "steps": [
+        "The stomach contains muscle tissue, epithelial tissue, connective tissue, and nerve supply.",
+        "All these tissues cooperate in digestion.",
+        "Therefore the stomach is an organ.",
+        "It is not a single cell, a tissue, or a full system."
+      ],
+      "final_answer": "C. organ",
+      "simple_explanation": "In UTME Biology, body parts with several tissue types are classified as organs. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "stomach",
+      "organ"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q071",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The circulatory system is made up of",
+    "options": {
+      "A": "one type of tissue only",
+      "B": "different organs working together",
+      "C": "similar cells only",
+      "D": "one organelle and one organ"
+    },
+    "answer": "B",
+    "answer_text": "different organs working together",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "A system consists of several organs that cooperate to perform a broad function in the organism.",
+      "steps": [
+        "In the circulatory system, the heart and blood vessels work together to transport materials.",
+        "That makes it a system rather than a single organ or tissue.",
+        "The question is testing the difference between organ and system.",
+        "Thus option B is correct."
+      ],
+      "final_answer": "B. different organs working together",
+      "simple_explanation": "Organs combine into systems when a larger body function is involved. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "system",
+      "circulatory_system"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q072",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is an example of a tissue in flowering plants?",
+    "options": {
+      "A": "Leaf",
+      "B": "Xylem",
+      "C": "Shoot system",
+      "D": "Root"
+    },
+    "answer": "B",
+    "answer_text": "Xylem",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "Xylem is a vascular tissue specialized for conduction and support in plants.",
+      "steps": [
+        "Leaf and root are organs, while the shoot system is a system.",
+        "Xylem is a group of related cells working together.",
+        "Therefore it is correctly classified as a tissue.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. Xylem",
+      "simple_explanation": "JAMB often mixes plant tissues with organs to test classification skill. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "xylem",
+      "plant_tissue"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q073",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is the highest level of organization listed?",
+    "options": {
+      "A": "Cell",
+      "B": "Tissue",
+      "C": "System",
+      "D": "Organism"
+    },
+    "answer": "D",
+    "answer_text": "Organism",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "The organism is the complete living individual and represents the highest level in this sequence.",
+      "steps": [
+        "Cells form tissues, tissues form organs, organs form systems, and systems form the organism.",
+        "The full living individual is therefore the most complex level among the options.",
+        "Hence the highest level listed is organism.",
+        "Option D is correct."
+      ],
+      "final_answer": "D. Organism",
+      "simple_explanation": "Whenever the full living body is involved, think organism. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "organism",
+      "levels"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q074",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The heart, arteries and veins together make up the",
+    "options": {
+      "A": "tissue",
+      "B": "organ",
+      "C": "circulatory system",
+      "D": "organism"
+    },
+    "answer": "C",
+    "answer_text": "circulatory system",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "Several organs working together in transport form the circulatory system.",
+      "steps": [
+        "The heart is an organ, and blood vessels are also organs or organ structures in the system.",
+        "Together they perform circulation throughout the body.",
+        "That is broader than one organ.",
+        "So the correct answer is circulatory system."
+      ],
+      "final_answer": "C. circulatory system",
+      "simple_explanation": "Linking examples to levels of organization is a common examination approach. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "circulatory_system",
+      "examples"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q075",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following sequences shows increasing complexity?",
+    "options": {
+      "A": "Organism → system → organ → tissue → cell",
+      "B": "Cell → tissue → organ → system → organism",
+      "C": "Tissue → cell → organ → organism → system",
+      "D": "Cell → organelle → tissue → organ → organism"
+    },
+    "answer": "B",
+    "answer_text": "Cell → tissue → organ → system → organism",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "Biological organization increases from the simplest living unit to the complete individual.",
+      "steps": [
+        "The correct increasing order begins with cell.",
+        "Then come tissue, organ, system, and finally organism.",
+        "Any option reversing or mixing this order is incorrect.",
+        "Therefore option B is the correct sequence."
+      ],
+      "final_answer": "B. Cell → tissue → organ → system → organism",
+      "simple_explanation": "Increasing complexity questions are usually sequence questions—read each option carefully. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "complexity",
+      "sequence"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q076",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following best distinguishes a tissue from an organ?",
+    "options": {
+      "A": "A tissue is made of similar cells, while an organ is made of different tissues",
+      "B": "A tissue is larger than an organ",
+      "C": "A tissue is found only in animals",
+      "D": "An organ is always microscopic"
+    },
+    "answer": "A",
+    "answer_text": "A tissue is made of similar cells, while an organ is made of different tissues",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "A tissue is a group of similar cells with a common function, whereas an organ contains several tissues working together.",
+      "steps": [
+        "Muscle tissue is made of similar muscle cells.",
+        "The heart, by contrast, contains muscle tissue, nerve tissue, blood vessels, and connective tissue.",
+        "That is why the heart is an organ and not merely a tissue.",
+        "Thus option A is correct."
+      ],
+      "final_answer": "A. A tissue is made of similar cells, while an organ is made of different tissues",
+      "simple_explanation": "This distinction is central to understanding levels of organization. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "tissue_vs_organ",
+      "comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q077",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "An Amoeba is described as an organism because it",
+    "options": {
+      "A": "has many organs",
+      "B": "consists of one cell that performs all life functions",
+      "C": "contains only a nucleus",
+      "D": "is larger than all cells"
+    },
+    "answer": "B",
+    "answer_text": "consists of one cell that performs all life functions",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "Amoeba is unicellular, but its single cell can perform all essential activities of life.",
+      "steps": [
+        "An organism is a complete living individual.",
+        "In unicellular organisms, one cell is enough to function as the whole organism.",
+        "Therefore Amoeba is an organism even though it is only one cell.",
+        "Option B is correct."
+      ],
+      "final_answer": "B. consists of one cell that performs all life functions",
+      "simple_explanation": "JAMB likes to compare unicellular organisms with multicellular levels of organization. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "amoeba",
+      "unicellular",
+      "organism"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q078",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is an organ system in mammals?",
+    "options": {
+      "A": "Liver",
+      "B": "Blood",
+      "C": "Digestive system",
+      "D": "Epithelial tissue"
+    },
+    "answer": "C",
+    "answer_text": "Digestive system",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "An organ system is a group of organs performing a major body function, such as digestion.",
+      "steps": [
+        "The liver is a single organ.",
+        "Blood is a tissue, and epithelial tissue is also a tissue.",
+        "Digestive system includes the mouth, oesophagus, stomach, intestines and associated organs.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. Digestive system",
+      "simple_explanation": "This question checks whether you can classify examples correctly across levels. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "digestive_system",
+      "classification"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q079",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In higher plants, the root is best classified as a/an",
+    "options": {
+      "A": "cell",
+      "B": "organ",
+      "C": "tissue",
+      "D": "organism"
+    },
+    "answer": "B",
+    "answer_text": "organ",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "The root is an organ because it consists of several tissues performing functions such as absorption and anchorage.",
+      "steps": [
+        "Tissues in the root include epidermis, cortex, xylem, and phloem.",
+        "Together they carry out specific functions for the plant.",
+        "Therefore the root is an organ.",
+        "It is not a tissue or an entire organism."
+      ],
+      "final_answer": "B. organ",
+      "simple_explanation": "Plant organs include root, stem and leaf. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "root",
+      "plant_organ"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q080",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following correctly matches the example with its level of organization?",
+    "options": {
+      "A": "Blood — organ",
+      "B": "Neuron — tissue",
+      "C": "Kidney — organ",
+      "D": "Xylem vessel — system"
+    },
+    "answer": "C",
+    "answer_text": "Kidney — organ",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "The kidney is a definite organ made of several tissues and specialized for excretion and osmoregulation.",
+      "steps": [
+        "Blood is a tissue, not an organ.",
+        "A neuron is a single cell, not a tissue.",
+        "A xylem vessel element is a specialized cell or part of xylem tissue, not a system.",
+        "So the correctly matched pair is kidney — organ."
+      ],
+      "final_answer": "C. Kidney — organ",
+      "simple_explanation": "Mixed matching questions are popular because they test several concepts at once. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "matching",
+      "kidney",
+      "organ"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q081",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is an example of a cell?",
+    "options": {
+      "A": "Neuron",
+      "B": "Muscle",
+      "C": "Stomach",
+      "D": "Respiratory system"
+    },
+    "answer": "A",
+    "answer_text": "Neuron",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "A neuron is a single nerve cell specialized for transmitting impulses.",
+      "steps": [
+        "Muscle is usually referred to as muscle tissue or an organ depending on context.",
+        "Stomach is an organ, and respiratory system is a system.",
+        "The clearly cellular example here is neuron.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. Neuron",
+      "simple_explanation": "When an example ends in something like red blood cell, ovum, sperm cell, or neuron, think cell level. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "neuron",
+      "cell"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q082",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The epidermis of a leaf is best described as a",
+    "options": {
+      "A": "system",
+      "B": "organ",
+      "C": "tissue",
+      "D": "organism"
+    },
+    "answer": "C",
+    "answer_text": "tissue",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "The epidermis is a protective layer made of similar cells, so it is a tissue.",
+      "steps": [
+        "The whole leaf is the organ.",
+        "The epidermis is one tissue within that organ.",
+        "Its cells work together in protection and regulation.",
+        "Therefore the correct classification is tissue."
+      ],
+      "final_answer": "C. tissue",
+      "simple_explanation": "Part-whole relationships help here: epidermis is part of leaf, so it is a tissue within an organ. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "leaf_epidermis",
+      "tissue"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q083",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is NOT correctly arranged?",
+    "options": {
+      "A": "Cell → tissue",
+      "B": "Organ → system",
+      "C": "System → organism",
+      "D": "Tissue → cell"
+    },
+    "answer": "D",
+    "answer_text": "Tissue → cell",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "In biological organization, tissues are made from cells, not the other way round.",
+      "steps": [
+        "Cells combine to form tissues.",
+        "Organs combine into systems, and systems into organisms.",
+        "Thus options A, B, and C are correct directions of organization.",
+        "Option D is the incorrect arrangement."
+      ],
+      "final_answer": "D. Tissue → cell",
+      "simple_explanation": "For NOT questions, verify each option against the standard order before choosing. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "sequence_error",
+      "not_question"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q084",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A student describes the liver as a tissue because it is found in the body. Why is this description wrong?",
+    "options": {
+      "A": "The liver is non-living",
+      "B": "The liver is made of different tissues working together",
+      "C": "The liver is too small to be an organ",
+      "D": "The liver is a system"
+    },
+    "answer": "B",
+    "answer_text": "The liver is made of different tissues working together",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "An organ consists of several tissues performing a common function, and the liver fits this definition.",
+      "steps": [
+        "The liver contains epithelial tissues, connective tissues, blood vessels, nerves and other components.",
+        "Because different tissues are integrated in one structure, it is an organ.",
+        "It is not a single tissue and not an entire system.",
+        "Therefore option B explains why the description is wrong."
+      ],
+      "final_answer": "B. The liver is made of different tissues working together",
+      "simple_explanation": "JAMB often uses wrongly classified examples and asks you to correct them conceptually. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "liver",
+      "organ",
+      "misclassification"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q085",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A collection of organs that work together to digest food forms the",
+    "options": {
+      "A": "digestive tissue",
+      "B": "digestive organ",
+      "C": "digestive system",
+      "D": "digestive cell"
+    },
+    "answer": "C",
+    "answer_text": "digestive system",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "A set of organs cooperating in digestion is classified as a system.",
+      "steps": [
+        "Systems are broader than organs.",
+        "The mouth, stomach, small intestine, liver and pancreas all contribute to digestion.",
+        "Together they form the digestive system.",
+        "Hence option C is correct."
+      ],
+      "final_answer": "C. digestive system",
+      "simple_explanation": "Look out for the phrase 'work together'—it often points to a system. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "digestive_system",
+      "organs"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q086",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is correctly arranged from simplest to most complex in a flowering plant?",
+    "options": {
+      "A": "Cell → tissue → organ → system → organism",
+      "B": "Cell → organ → tissue → system → organism",
+      "C": "Tissue → cell → organ → organism → system",
+      "D": "Organism → system → organ → tissue → cell"
+    },
+    "answer": "A",
+    "answer_text": "Cell → tissue → organ → system → organism",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "The same hierarchical order applies in both plants and animals.",
+      "steps": [
+        "A single cell is the simplest living unit.",
+        "Similar cells form tissues, tissues form organs, organs form systems, and systems make up the full organism.",
+        "This order does not change simply because the organism is a plant.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. Cell → tissue → organ → system → organism",
+      "simple_explanation": "Do not think levels of organization apply only to animals; they apply to plants too. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "plant_levels",
+      "sequence"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q087",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The shoot system and root system together constitute the",
+    "options": {
+      "A": "organism",
+      "B": "organ",
+      "C": "tissue",
+      "D": "cell"
+    },
+    "answer": "A",
+    "answer_text": "organism",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "In a plant, the root and shoot systems together make up the whole organism.",
+      "steps": [
+        "Each of the two is a system.",
+        "When combined, they form the complete plant body.",
+        "The whole living individual is the organism.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. organism",
+      "simple_explanation": "This is a nice plant-based example of systems forming an organism. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "root_system",
+      "shoot_system",
+      "organism"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q088",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following examples shows the correct progression from cell to organism?",
+    "options": {
+      "A": "Guard cell → epidermis → leaf → shoot system → bean plant",
+      "B": "Leaf → xylem → root → plant system → maize",
+      "C": "Neuron → brain → nerve tissue → nervous system → man",
+      "D": "Muscle tissue → muscle cell → heart → circulatory system → goat"
+    },
+    "answer": "A",
+    "answer_text": "Guard cell → epidermis → leaf → shoot system → bean plant",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "A valid progression must move from a specific cell to a tissue, then an organ, a system, and finally the full organism.",
+      "steps": [
+        "A guard cell is a cell.",
+        "The epidermis is a tissue, the leaf is an organ, the shoot system is a system, and the bean plant is the organism.",
+        "The other options mix up the order of cell, tissue, organ, and system.",
+        "Hence option A is correct."
+      ],
+      "final_answer": "A. Guard cell → epidermis → leaf → shoot system → bean plant",
+      "simple_explanation": "Sequence-by-example questions are common and require careful classification at every step. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "progression",
+      "guard_cell",
+      "sequence"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q089",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is an example of an organ in mammals?",
+    "options": {
+      "A": "Blood",
+      "B": "Kidney",
+      "C": "Muscle tissue",
+      "D": "Respiratory system"
+    },
+    "answer": "B",
+    "answer_text": "Kidney",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "The kidney is an organ specialized for excretion and osmoregulation.",
+      "steps": [
+        "Blood and muscle tissue are tissues.",
+        "Respiratory system is a system.",
+        "The kidney contains several tissues working together, so it is an organ.",
+        "Thus option B is correct."
+      ],
+      "final_answer": "B. Kidney",
+      "simple_explanation": "Kidney, heart, stomach, liver, and lung are standard organ examples. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "kidney",
+      "mammal_organ"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q090",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A group of similar xylem cells performing conduction and support is known as",
+    "options": {
+      "A": "an organ",
+      "B": "a tissue",
+      "C": "a system",
+      "D": "an organism"
+    },
+    "answer": "B",
+    "answer_text": "a tissue",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "When similar cells work together for a common role, the level is tissue.",
+      "steps": [
+        "Xylem contains specialized conducting cells.",
+        "These cooperate mainly in water transport and support.",
+        "That matches the definition of a tissue.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. a tissue",
+      "simple_explanation": "In plant anatomy, xylem and phloem are treated as tissues. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "xylem",
+      "tissue"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q091",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "If a microscope shows many similar elongated cells arranged together to carry water, the structure is most likely",
+    "options": {
+      "A": "a system",
+      "B": "an organ",
+      "C": "xylem tissue",
+      "D": "a full organism"
+    },
+    "answer": "C",
+    "answer_text": "xylem tissue",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "Many similar water-conducting cells grouped together form xylem tissue.",
+      "steps": [
+        "The description refers to microscopic similar cells with a common function.",
+        "That fits the definition of tissue rather than organ or system.",
+        "Because the function given is water transport, xylem tissue is the best answer.",
+        "Hence option C is correct."
+      ],
+      "final_answer": "C. xylem tissue",
+      "simple_explanation": "Always use both structure and function clues when classifying biological levels. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "microscope",
+      "xylem_tissue",
+      "classification"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q092",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is an organism?",
+    "options": {
+      "A": "A paramecium",
+      "B": "A liver lobule",
+      "C": "A root hair",
+      "D": "A muscle fibre tissue"
+    },
+    "answer": "A",
+    "answer_text": "A paramecium",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "Paramecium is a unicellular living individual and therefore an organism.",
+      "steps": [
+        "A liver lobule is part of an organ.",
+        "A root hair is a specialized cell or cellular extension.",
+        "Muscle fibre tissue is a tissue.",
+        "Paramecium alone represents a complete organism."
+      ],
+      "final_answer": "A. A paramecium",
+      "simple_explanation": "Single-celled organisms are complete organisms even though they consist of one cell. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "paramecium",
+      "organism"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q093",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following best explains why the kidney is not a system?",
+    "options": {
+      "A": "It is too small to be a system",
+      "B": "It is made mainly of one type of cell only",
+      "C": "It is one organ that works with other organs in the excretory system",
+      "D": "It cannot perform any specific function"
+    },
+    "answer": "C",
+    "answer_text": "It is one organ that works with other organs in the excretory system",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "A system consists of multiple organs, whereas the kidney is one organ within the excretory system.",
+      "steps": [
+        "The kidney has an important specific function, but it does not by itself make up the entire system.",
+        "It works alongside structures such as ureters, bladder and urethra.",
+        "That is why it is classified as an organ, not a system.",
+        "Hence option C is correct."
+      ],
+      "final_answer": "C. It is one organ that works with other organs in the excretory system",
+      "simple_explanation": "This is another test of organ-versus-system classification. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "kidney",
+      "excretory_system",
+      "organ_vs_system"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q094",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Use the simplified arrangement below to answer the question.\n\nI.   palisade cell\nII.  palisade tissue\nIII. leaf\nIV.  shoot system\nV.   maize plant\n\nWhich of the following gives the correct order from simplest to most complex?",
+    "options": {
+      "A": "I, II, III, IV, V",
+      "B": "II, I, III, IV, V",
+      "C": "I, III, II, IV, V",
+      "D": "V, IV, III, II, I"
+    },
+    "answer": "A",
+    "answer_text": "I, II, III, IV, V",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "The progression should move from cell to tissue to organ to system to organism.",
+      "steps": [
+        "A palisade cell is the cell level.",
+        "Palisade tissue is the tissue level, leaf is the organ, shoot system is the system, and maize plant is the organism.",
+        "This matches option A exactly.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. I, II, III, IV, V",
+      "simple_explanation": "This mirrors the sequence pattern commonly used in UTME past questions. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "diagram_style",
+      "sequence",
+      "plant"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q095",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The nervous system is composed chiefly of organs such as the",
+    "options": {
+      "A": "brain and spinal cord",
+      "B": "stomach and intestine",
+      "C": "kidney and ureter",
+      "D": "leaf and stem"
+    },
+    "answer": "A",
+    "answer_text": "brain and spinal cord",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "The nervous system includes organs that coordinate and transmit impulses, notably the brain and spinal cord.",
+      "steps": [
+        "The other paired organs belong to digestive, excretory, or plant structures.",
+        "A system is identified by the organs associated with its main function.",
+        "Brain and spinal cord are central nervous organs.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. brain and spinal cord",
+      "simple_explanation": "Sometimes JAMB asks levels of organization indirectly through system membership. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "nervous_system",
+      "organs"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q096",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is made up of more than one tissue type?",
+    "options": {
+      "A": "Epithelial tissue",
+      "B": "Xylem tissue",
+      "C": "Heart",
+      "D": "Neuron"
+    },
+    "answer": "C",
+    "answer_text": "Heart",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "An organ is made up of several tissue types, and the heart is an organ.",
+      "steps": [
+        "The heart contains cardiac muscle tissue, connective tissue, blood vessels, nerve tissue, and lining tissues.",
+        "The other options are either tissues or a single cell.",
+        "Therefore the structure made up of more than one tissue type is the heart.",
+        "Hence option C is correct."
+      ],
+      "final_answer": "C. Heart",
+      "simple_explanation": "Use the presence of multiple tissue types as a clue for organs. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "heart",
+      "organ",
+      "tissue_types"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q097",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement about levels of organization is correct?",
+    "options": {
+      "A": "All organisms must possess tissues and organs",
+      "B": "A unicellular organism may consist of only one cell but still function as an organism",
+      "C": "A tissue is smaller than a cell because it is microscopic",
+      "D": "An organ is formed directly from organelles"
+    },
+    "answer": "B",
+    "answer_text": "A unicellular organism may consist of only one cell but still function as an organism",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "Unicellular organisms are complete organisms even without tissues and organs.",
+      "steps": [
+        "Amoeba and Paramecium are examples of one-celled organisms performing all life functions.",
+        "Therefore not all organisms have tissues and organs.",
+        "Tissues are made of cells, and organs are made of tissues, not organelles.",
+        "Hence option B is the correct statement."
+      ],
+      "final_answer": "B. A unicellular organism may consist of only one cell but still function as an organism",
+      "simple_explanation": "This question tests whether you can apply the hierarchy flexibly to both unicellular and multicellular life. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "unicellular",
+      "levels",
+      "statement"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q098",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following represents an organ system in a flowering plant?",
+    "options": {
+      "A": "Phloem",
+      "B": "Leaf",
+      "C": "Root system",
+      "D": "Guard cell"
+    },
+    "answer": "C",
+    "answer_text": "Root system",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "Root system is one of the two major organ systems in flowering plants.",
+      "steps": [
+        "Phloem is a tissue, leaf is an organ, and guard cell is a cell.",
+        "A system must include multiple organs working together.",
+        "The root system includes all the roots of the plant working together.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. Root system",
+      "simple_explanation": "Plant questions can test systems just as animal questions do. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "root_system",
+      "plant_system"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q099",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A science teacher lists the following: heart, blood, cardiac muscle, man. Which arrangement shows increasing level of organization?",
+    "options": {
+      "A": "Cardiac muscle → blood → heart → man",
+      "B": "Blood → cardiac muscle → heart → man",
+      "C": "Cardiac muscle → heart → man → blood",
+      "D": "Blood → heart → cardiac muscle → man"
+    },
+    "answer": "A",
+    "answer_text": "Cardiac muscle → blood → heart → man",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "Cardiac muscle represents tissue, heart is an organ, and man is the organism; blood is also a tissue and here is less specific than heart.",
+      "steps": [
+        "The best progression available begins with tissue-level structures before moving to organ and organism.",
+        "Cardiac muscle is a tissue, blood is also a tissue, but the option uses them before the organ heart and finally man.",
+        "Among the choices, A gives the nearest correct increasing order toward complexity.",
+        "Therefore option A is the best answer."
+      ],
+      "final_answer": "A. Cardiac muscle → blood → heart → man",
+      "simple_explanation": "When options are imperfect, choose the one that best preserves the hierarchy tested in the syllabus. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "increasing_order",
+      "heart",
+      "man"
+    ],
+    "active": true
+  },
+  {
+    "id": "bio_01_q100",
+    "subject_code": "bio",
+    "subject_name": "Biology",
+    "topic_id": "bio_01",
+    "topic_title": "Living Organisms",
+    "subtopic": "Levels of organization: cell, tissue, organ, system and organism",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following examples correctly links all five levels of organization in a mammal?",
+    "options": {
+      "A": "Red blood cell → blood → heart → circulatory system → rabbit",
+      "B": "Blood → red blood cell → heart → rabbit → circulatory system",
+      "C": "Heart → blood → circulatory system → rabbit → red blood cell",
+      "D": "Red blood cell → heart → blood → circulatory system → rabbit"
+    },
+    "answer": "A",
+    "answer_text": "Red blood cell → blood → heart → circulatory system → rabbit",
+    "explanation": {
+      "question_restate": "We are to identify the best answer to this JAMB-style Biology question on levels of organization: cell, tissue, organ, system and organism.",
+      "principle": "A full five-level link should follow cell to tissue to organ to system to organism.",
+      "steps": [
+        "Red blood cell is the cell level.",
+        "Blood is treated as a tissue, heart is an organ, circulatory system is a system, and rabbit is the organism.",
+        "Option A follows that hierarchy correctly.",
+        "Therefore option A is the best answer."
+      ],
+      "final_answer": "A. Red blood cell → blood → heart → circulatory system → rabbit",
+      "simple_explanation": "Questions like this are excellent for revision because they force you to classify each example correctly. To understand this topic better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "five_levels",
+      "mammal",
+      "sequence"
+    ],
+    "active": true
+  }
+]
