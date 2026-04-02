@@ -1,6 +1,6 @@
-# ===================================================================
+# ====================================================================
 # handlers/mockjamb.py
-# ===================================================================
+# ====================================================================
 
 import json
 import math
@@ -12,6 +12,7 @@ from telegram.ext import CallbackQueryHandler, CommandHandler, ContextTypes
 
 from jamb_loader import get_course_subject_map, get_course_by_code, get_course_subjects, get_subject_by_code
 from db import get_async_session
+from helpers import md_escape
 from services.flutterwave_client import create_checkout, build_tx_ref
 from services.mockjamb_payments import create_pending_mockjamb_payment, get_mockjamb_payment
 from services.mockjamb_session_service import (
@@ -305,7 +306,7 @@ def build_mockjamb_live_question_text(
     except Exception:
         payload = {}
 
-    question_text = (
+    raw_question_text = (
         payload.get("question")
         or payload.get("text")
         or payload.get("prompt")
@@ -316,10 +317,17 @@ def build_mockjamb_live_question_text(
     if not isinstance(options, dict):
         options = {}
 
+    question_text = md_escape(str(raw_question_text))
+    option_a = md_escape(str(options.get("A", "---")))
+    option_b = md_escape(str(options.get("B", "---")))
+    option_c = md_escape(str(options.get("C", "---")))
+    option_d = md_escape(str(options.get("D", "---")))
+    safe_subject_name = md_escape(str(subject_name))
+
     lines = [
         "📝 *Mock JAMB / UTME*",
         "",
-        f"*Subject:* {subject_name}",
+        f"*Subject:* {safe_subject_name}",
         f"*Question:* {question_number} of {total_questions}",
     ]
 
@@ -328,14 +336,14 @@ def build_mockjamb_live_question_text(
 
     lines.extend([
         "",
-        f"{question_text}",
+        question_text,
         "",
-        f"A. {options.get('A', '---')}",
-        f"B. {options.get('B', '---')}",
-        f"C. {options.get('C', '---')}",
-        f"D. {options.get('D', '---')}",
+        f"A\\. {option_a}",
+        f"B\\. {option_b}",
+        f"C\\. {option_c}",
+        f"D\\. {option_d}",
         "",
-        "Choose your answer below.",
+        "Choose your answer below\\.",
     ])
 
     return "\n".join(lines)
@@ -941,13 +949,13 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
     try:
         await query.edit_message_text(
             message_text,
-            parse_mode="Markdown",
+            parse_mode="MarkdownV2",
             reply_markup=markup,
         )
     except Exception:
         await query.message.reply_text(
             message_text,
-            parse_mode="Markdown",
+            parse_mode="MarkdownV2",
             reply_markup=markup,
         )        
 
@@ -1018,13 +1026,13 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                 try:
                     await query.edit_message_text(
                         message_text,
-                        parse_mode="Markdown",
+                        parse_mode="MarkdownV2",
                         reply_markup=markup,
                     )
                 except Exception:
                     await query.message.reply_text(
                         message_text,
-                        parse_mode="Markdown",
+                        parse_mode="MarkdownV2",
                         reply_markup=markup,
                     )
                 return
@@ -1161,4 +1169,3 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_start_subject_handler, pattern=r"^mj_start_subject::"))
     application.add_handler(CallbackQueryHandler(mockjamb_answer_handler, pattern=r"^mj_ans::"))
     application.add_handler(CallbackQueryHandler(mockjamb_return_to_exam_ready_handler, pattern=r"^payok_mockjamb_return$"))
-
