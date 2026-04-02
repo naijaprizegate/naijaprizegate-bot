@@ -1,0 +1,272 @@
+{
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topics": [
+    {
+      "id": "phy_01",
+      "number": 1,
+      "title": "Measurements and Units",
+      "file": "questions/phy_01.json",
+      "active": true
+    },
+    {
+      "id": "phy_02",
+      "number": 2,
+      "title": "Scalars and Vectors",
+      "file": "questions/phy_02.json",
+      "active": true
+    },
+    {
+      "id": "phy_03",
+      "number": 3,
+      "title": "Motion",
+      "file": "questions/phy_03.json",
+      "active": true
+    },
+    {
+      "id": "phy_04",
+      "number": 4,
+      "title": "Gravitational Field",
+      "file": "questions/phy_04.json",
+      "active": true
+    },
+    {
+      "id": "phy_05",
+      "number": 5,
+      "title": "Equilibrium of Forces",
+      "file": "questions/phy_05.json",
+      "active": true
+    },
+    {
+      "id": "phy_06",
+      "number": 6,
+      "title": "Work, Energy and Power",
+      "file": "questions/phy_06.json",
+      "active": true
+    },
+    {
+      "id": "phy_07",
+      "number": 7,
+      "title": "Friction",
+      "file": "questions/phy_07.json",
+      "active": true
+    },
+    {
+      "id": "phy_08",
+      "number": 8,
+      "title": "Simple Machines",
+      "file": "questions/phy_08.json",
+      "active": true
+    },
+    {
+      "id": "phy_09",
+      "number": 9,
+      "title": "Elasticity",
+      "file": "questions/phy_09.json",
+      "active": true
+    },
+    {
+      "id": "phy_10",
+      "number": 10,
+      "title": "Pressure",
+      "file": "questions/phy_10.json",
+      "active": true
+    },
+    {
+      "id": "phy_11",
+      "number": 11,
+      "title": "Liquids at Rest",
+      "file": "questions/phy_11.json",
+      "active": true
+    },
+    {
+      "id": "phy_12",
+      "number": 12,
+      "title": "Temperature and Its Measurement",
+      "file": "questions/phy_12.json",
+      "active": true
+    },
+    {
+      "id": "phy_13",
+      "number": 13,
+      "title": "Thermal Expansion",
+      "file": "questions/phy_13.json",
+      "active": true
+    },
+    {
+      "id": "phy_14",
+      "number": 14,
+      "title": "Gas Laws",
+      "file": "questions/phy_14.json",
+      "active": true
+    },
+    {
+      "id": "phy_15",
+      "number": 15,
+      "title": "Quantity of Heat",
+      "file": "questions/phy_15.json",
+      "active": true
+    },
+    {
+      "id": "phy_16",
+      "number": 16,
+      "title": "Change of State",
+      "file": "questions/phy_16.json",
+      "active": true
+    },
+    {
+      "id": "phy_17",
+      "number": 17,
+      "title": "Vapours",
+      "file": "questions/phy_17.json",
+      "active": true
+    },
+    {
+      "id": "phy_18",
+      "number": 18,
+      "title": "Structure of Matter and Kinetic Theory",
+      "file": "questions/phy_18.json",
+      "active": true
+    },
+    {
+      "id": "phy_19",
+      "number": 19,
+      "title": "Transfer of Heat",
+      "file": "questions/phy_19.json",
+      "active": true
+    },
+    {
+      "id": "phy_20",
+      "number": 20,
+      "title": "Waves",
+      "file": "questions/phy_20.json",
+      "active": true
+    },
+    {
+      "id": "phy_21",
+      "number": 21,
+      "title": "Propagation of Sound Waves",
+      "file": "questions/phy_21.json",
+      "active": true
+    },
+    {
+      "id": "phy_22",
+      "number": 22,
+      "title": "Characteristics of Sound Waves",
+      "file": "questions/phy_22.json",
+      "active": true
+    },
+    {
+      "id": "phy_23",
+      "number": 23,
+      "title": "Light Energy",
+      "file": "questions/phy_23.json",
+      "active": true
+    },
+    {
+      "id": "phy_24",
+      "number": 24,
+      "title": "Reflection of Light at Plane and Curved Surfaces",
+      "file": "questions/phy_24.json",
+      "active": true
+    },
+    {
+      "id": "phy_25",
+      "number": 25,
+      "title": "Refraction of Light Through Plane and Curved Surfaces",
+      "file": "questions/phy_25.json",
+      "active": true
+    },
+    {
+      "id": "phy_26",
+      "number": 26,
+      "title": "Optical Instruments",
+      "file": "questions/phy_26.json",
+      "active": true
+    },
+    {
+      "id": "phy_27",
+      "number": 27,
+      "title": "Dispersion of Light and Colours",
+      "file": "questions/phy_27.json",
+      "active": true
+    },
+    {
+      "id": "phy_28",
+      "number": 28,
+      "title": "Electrostatics",
+      "file": "questions/phy_28.json",
+      "active": true
+    },
+    {
+      "id": "phy_29",
+      "number": 29,
+      "title": "Capacitors",
+      "file": "questions/phy_29.json",
+      "active": true
+    },
+    {
+      "id": "phy_30",
+      "number": 30,
+      "title": "Electric Cells",
+      "file": "questions/phy_30.json",
+      "active": true
+    },
+    {
+      "id": "phy_31",
+      "number": 31,
+      "title": "Current Electricity",
+      "file": "questions/phy_31.json",
+      "active": true
+    },
+    {
+      "id": "phy_32",
+      "number": 32,
+      "title": "Electrical Energy and Power",
+      "file": "questions/phy_32.json",
+      "active": true
+    },
+    {
+      "id": "phy_33",
+      "number": 33,
+      "title": "Magnets and Magnetic Fields",
+      "file": "questions/phy_33.json",
+      "active": true
+    },
+    {
+      "id": "phy_34",
+      "number": 34,
+      "title": "Force on a Current-Carrying Conductor in a Magnetic Field",
+      "file": "questions/phy_34.json",
+      "active": true
+    },
+    {
+      "id": "phy_35",
+      "number": 35,
+      "title": "Electromagnetic Induction and Inductance",
+      "file": "questions/phy_35.json",
+      "active": true
+    },
+    {
+      "id": "phy_36",
+      "number": 36,
+      "title": "Simple A.C. Circuits",
+      "file": "questions/phy_36.json",
+      "active": true
+    },
+    {
+      "id": "phy_37",
+      "number": 37,
+      "title": "Conduction of Electricity Through Liquids and Gases",
+      "file": "questions/phy_37.json",
+      "active": true
+    },
+    {
+      "id": "phy_38",
+      "number": 38,
+      "title": "Elementary Modern Physics",
+      "file": "questions/phy_38.json",
+      "active": true
+    }
+  ]
+}
