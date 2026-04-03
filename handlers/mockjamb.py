@@ -29,6 +29,7 @@ from services.mockjamb_exam_service import (
     get_mockjamb_review_rows,
     get_mockjamb_subject_question_by_order,
     get_mockjamb_subject_question_count,
+    get_mockjamb_subject_result_stats,
 )
 
 logger = logging.getLogger(__name__)
@@ -463,15 +464,20 @@ def build_mockjamb_final_result_text(
     course_code: str,
     subject_codes: list[str],
     scores: dict,
+    answered_counts: dict | None = None,
+    correct_counts: dict | None = None,
 ) -> str:
     course = get_course_by_code(course_code)
     course_name = course["course_name"] if course else course_code
+
+    answered_counts = answered_counts or {}
+    correct_counts = correct_counts or {}
 
     aggregate = 0
     lines = [
         "📊 *Mock JAMB / UTME Result*",
         "",
-        f"*Course:* {course_name}",
+        f"Course: {course_name}",
         "",
     ]
 
@@ -480,12 +486,31 @@ def build_mockjamb_final_result_text(
         subject_name = subject["name"] if subject else code.upper()
         score = int(scores.get(code) or 0)
         aggregate += score
-        lines.append(f"*{subject_name}:* {score}")
+        lines.append(f"{subject_name}: {score}")
 
     lines.extend([
         "",
-        f"*Aggregate:* {aggregate} / 400",
+        f"Aggregate: {aggregate} / 400",
+        "",
+        "━━━━━━━━━━━━━━━━━━",
+        "📦 *Detailed Breakdown*",
+        "",
     ])
+
+    for code in subject_codes:
+        subject = get_subject_by_code(code)
+        subject_name = subject["name"] if subject else code.upper()
+        answered = int(answered_counts.get(code) or 0)
+        correct = int(correct_counts.get(code) or 0)
+        score = int(scores.get(code) or 0)
+
+        lines.extend([
+            f"*{subject_name}*",
+            f"Answered: {answered}",
+            f"Correct: {correct}",
+            f"Score: {score}/100",
+            "",
+        ])
 
     return "\n".join(lines)
 
@@ -932,18 +957,32 @@ async def build_mockjamb_result_from_session(
             payment_reference,
         )
 
-    if not session_row:
-        return None
+        if not session_row:
+            return None
 
-    try:
-        scores = json.loads(session_row.get("scores_json") or "{}")
-    except Exception:
-        scores = {}
+        try:
+            scores = json.loads(session_row.get("scores_json") or "{}")
+        except Exception:
+            scores = {}
+
+        answered_counts = {}
+        correct_counts = {}
+
+        for subject_code in subject_codes:
+            stats = await get_mockjamb_subject_result_stats(
+                session,
+                payment_reference=payment_reference,
+                subject_code=subject_code,
+            )
+            answered_counts[subject_code] = int(stats.get("answered_count") or 0)
+            correct_counts[subject_code] = int(stats.get("correct_count") or 0)
 
     message_text = build_mockjamb_final_result_text(
         course_code=course_code,
         subject_codes=subject_codes,
         scores=scores,
+        answered_counts=answered_counts,
+        correct_counts=correct_counts,
     )
     markup = make_mockjamb_final_result_keyboard()
     return message_text, markup
@@ -959,6 +998,8 @@ async def finalize_mockjamb_exam_now(
     subject_codes: list[str],
 ) -> tuple[str, InlineKeyboardMarkup]:
     scores = {}
+    answered_counts = {}
+    correct_counts = {}
 
     async with get_async_session() as session:
         for subject_code in subject_codes:
@@ -968,6 +1009,14 @@ async def finalize_mockjamb_exam_now(
                 subject_code=subject_code,
             )
             scores[subject_code] = int(score_info.get("score_100") or 0)
+
+            stats = await get_mockjamb_subject_result_stats(
+                session,
+                payment_reference=payment_reference,
+                subject_code=subject_code,
+            )
+            answered_counts[subject_code] = int(stats.get("answered_count") or 0)
+            correct_counts[subject_code] = int(stats.get("correct_count") or 0)
 
         await session.execute(
             text("""
@@ -993,10 +1042,11 @@ async def finalize_mockjamb_exam_now(
         course_code=course_code,
         subject_codes=subject_codes,
         scores=scores,
+        answered_counts=answered_counts,
+        correct_counts=correct_counts,
     )
     markup = make_mockjamb_final_result_keyboard()
     return message_text, markup
-
 
 # ====================================================================
 # Entry Handler
@@ -1915,10 +1965,24 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                     )
                     markup = make_mockjamb_next_subject_keyboard(remaining_subject_codes)
                 else:
+                    answered_counts = {}
+                    correct_counts = {}
+
+                    for code in subject_codes:
+                        stats = await get_mockjamb_subject_result_stats(
+                            session,
+                            payment_reference=payment_reference,
+                            subject_code=code,
+                        )
+                        answered_counts[code] = int(stats.get("answered_count") or 0)
+                        correct_counts[code] = int(stats.get("correct_count") or 0)
+
                     message_text = build_mockjamb_final_result_text(
                         course_code=course_code,
                         subject_codes=subject_codes,
                         scores=scores,
+                        answered_counts=answered_counts,
+                        correct_counts=correct_counts,
                     )
                     markup = make_mockjamb_final_result_keyboard()
 
@@ -2124,20 +2188,34 @@ async def mockjamb_back_to_result_handler(update: Update, context: ContextTypes.
             payment_reference,
         )
 
-    if not session_row:
-        return await query.message.reply_text(
-            "⚠️ Could not reload your Mock JAMB result."
-        )
+        if not session_row:
+            return await query.message.reply_text(
+                "⚠️ Could not reload your Mock JAMB result."
+            )
 
-    try:
-        scores = json.loads(session_row.get("scores_json") or "{}")
-    except Exception:
-        scores = {}
+        try:
+            scores = json.loads(session_row.get("scores_json") or "{}")
+        except Exception:
+            scores = {}
+
+        answered_counts = {}
+        correct_counts = {}
+
+        for code in subject_codes:
+            stats = await get_mockjamb_subject_result_stats(
+                session,
+                payment_reference=payment_reference,
+                subject_code=code,
+            )
+            answered_counts[code] = int(stats.get("answered_count") or 0)
+            correct_counts[code] = int(stats.get("correct_count") or 0)
 
     message_text = build_mockjamb_final_result_text(
         course_code=course_code,
         subject_codes=subject_codes,
         scores=scores,
+        answered_counts=answered_counts,
+        correct_counts=correct_counts,
     )
     markup = make_mockjamb_final_result_keyboard()
 
@@ -2212,10 +2290,25 @@ async def mockjamb_resume_exam_handler(update: Update, context: ContextTypes.DEF
     context.user_data["mj_session_id"] = active_session["id"]
 
     if status == "completed":
+        answered_counts = {}
+        correct_counts = {}
+
+        async with get_async_session() as session:
+            for code in subject_codes:
+                stats = await get_mockjamb_subject_result_stats(
+                    session,
+                    payment_reference=payment_reference,
+                    subject_code=code,
+                )
+                answered_counts[code] = int(stats.get("answered_count") or 0)
+                correct_counts[code] = int(stats.get("correct_count") or 0)
+
         message_text = build_mockjamb_final_result_text(
             course_code=course_code,
             subject_codes=subject_codes,
             scores=scores,
+            answered_counts=answered_counts,
+            correct_counts=correct_counts,
         )
         markup = make_mockjamb_final_result_keyboard()
 
@@ -2338,10 +2431,25 @@ async def mockjamb_resume_exam_handler(update: Update, context: ContextTypes.DEF
             )
         return
 
+    answered_counts = {}
+    correct_counts = {}
+
+    async with get_async_session() as session:
+        for code in subject_codes:
+            stats = await get_mockjamb_subject_result_stats(
+                session,
+                payment_reference=payment_reference,
+                subject_code=code,
+            )
+            answered_counts[code] = int(stats.get("answered_count") or 0)
+            correct_counts[code] = int(stats.get("correct_count") or 0)
+
     message_text = build_mockjamb_final_result_text(
         course_code=course_code,
         subject_codes=subject_codes,
         scores=scores,
+        answered_counts=answered_counts,
+        correct_counts=correct_counts,
     )
     markup = make_mockjamb_final_result_keyboard()
 
@@ -2475,4 +2583,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
 
