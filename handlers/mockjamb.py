@@ -514,10 +514,7 @@ def build_mockjamb_passage_text(
     subject = get_subject_by_code(subject_code)
     subject_name = subject["name"] if subject else subject_code.upper()
 
-    try:
-        payload = json.loads(question_row.get("question_json") or "{}")
-    except Exception:
-        payload = {}
+    payload = get_question_payload(question_row)
 
     raw_passage_title = payload.get("passage_title") or ""
     raw_passage_text = payload.get("passage") or ""
@@ -564,10 +561,7 @@ def build_mockjamb_question_only_text(
     subject = get_subject_by_code(subject_code)
     subject_name = subject["name"] if subject else subject_code.upper()
 
-    try:
-        payload = json.loads(question_row.get("question_json") or "{}")
-    except Exception:
-        payload = {}
+    payload = get_question_payload(question_row)
 
     raw_question_text = (
         payload.get("question")
@@ -858,6 +852,52 @@ def build_mockjamb_continue_subject_choice_text(
             lines.append(f"• {subject['name']}")
 
     return "\n".join(lines)
+
+
+def get_question_payload(question_row: dict) -> dict:
+    try:
+        return json.loads(question_row.get("question_json") or "{}")
+    except Exception:
+        return {}
+
+
+def get_question_passage_id(question_row: dict) -> str:
+    payload = get_question_payload(question_row)
+    return str(payload.get("passage_id") or "").strip()
+
+
+def question_has_passage(question_row: dict) -> bool:
+    payload = get_question_payload(question_row)
+    raw_passage_text = str(payload.get("passage") or "").strip()
+    question_type = str(payload.get("question_type") or "").strip().lower()
+    return bool(raw_passage_text) or question_type == "comprehension_mcq"
+
+
+def should_show_passage_for_question(
+    *,
+    question_row: dict,
+    context: ContextTypes.DEFAULT_TYPE,
+    force_show: bool = False,
+) -> bool:
+    if not question_has_passage(question_row):
+        return False
+
+    current_passage_id = get_question_passage_id(question_row)
+
+    if force_show:
+        return True
+
+    last_passage_id_shown = str(context.user_data.get("mj_last_passage_id_shown") or "").strip()
+
+    # If there is no passage_id, fall back to showing passage
+    if not current_passage_id:
+        return True
+
+    return current_passage_id != last_passage_id_shown
+
+
+def mark_passage_as_shown(question_row: dict, context: ContextTypes.DEFAULT_TYPE) -> None:
+    context.user_data["mj_last_passage_id_shown"] = get_question_passage_id(question_row)
 
 
 # --------------------------------------------
@@ -1546,9 +1586,10 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
 
     context.user_data["mj_current_subject_code"] = subject_code
     context.user_data["mj_current_question_order"] = 1
+    context.user_data["mj_last_passage_id_shown"] = ""
 
     total_questions = get_mockjamb_subject_question_count(subject_code)
-    
+
     question_text = build_mockjamb_question_only_text(
         subject_code=subject_code,
         question_row=current_question,
@@ -1562,7 +1603,11 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
         question_order=1,
     )
 
-    if question_has_passage(current_question):
+    if should_show_passage_for_question(
+        question_row=current_question,
+        context=context,
+        force_show=False,
+    ):
         passage_text = build_mockjamb_passage_text(
             subject_code=subject_code,
             question_row=current_question,
@@ -1570,6 +1615,7 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
             total_questions=total_questions,
             exam_ends_at=session_row.get("exam_ends_at"),
         )
+        mark_passage_as_shown(current_question, context)
 
         try:
             await query.edit_message_text(
@@ -1775,7 +1821,11 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                     question_order=next_question_order,
                 )
 
-                if question_has_passage(next_question):
+                if should_show_passage_for_question(
+                    question_row=next_question,
+                    context=context,
+                    force_show=False,
+                ):
                     passage_text = build_mockjamb_passage_text(
                         subject_code=subject_code,
                         question_row=next_question,
@@ -1783,6 +1833,7 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                         total_questions=total_questions,
                         exam_ends_at=(session_row or {}).get("exam_ends_at"),
                     )
+                    mark_passage_as_shown(next_question, context)
 
                     try:
                         await query.edit_message_text(
@@ -1853,6 +1904,7 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                 remaining_subject_codes = [
                     code for code in subject_codes if code not in completed_subjects
                 ]
+                context.user_data["mj_last_passage_id_shown"] = ""
 
                 if remaining_subject_codes:
                     message_text = build_mockjamb_subject_completed_text(
@@ -2215,7 +2267,11 @@ async def mockjamb_resume_exam_handler(update: Update, context: ContextTypes.DEF
                 question_order=next_question_order,
             )
 
-            if question_has_passage(question_row):
+            if should_show_passage_for_question(
+                question_row=question_row,
+                context=context,
+                force_show=True,
+            ):
                 passage_text = build_mockjamb_passage_text(
                     subject_code=current_subject_code,
                     question_row=question_row,
@@ -2223,6 +2279,7 @@ async def mockjamb_resume_exam_handler(update: Update, context: ContextTypes.DEF
                     total_questions=total_questions,
                     exam_ends_at=active_session.get("exam_ends_at"),
                 )
+                mark_passage_as_shown(question_row, context)
 
                 try:
                     await query.edit_message_text(
