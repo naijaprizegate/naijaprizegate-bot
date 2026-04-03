@@ -477,7 +477,7 @@ def build_mockjamb_final_result_text(
     lines = [
         "📊 *Mock JAMB / UTME Result*",
         "",
-        f"Course: {course_name}",
+        f"Course: *{course_name}*",
         "",
     ]
 
@@ -486,11 +486,11 @@ def build_mockjamb_final_result_text(
         subject_name = subject["name"] if subject else code.upper()
         score = int(scores.get(code) or 0)
         aggregate += score
-        lines.append(f"{subject_name}: {score}")
+        lines.append(f"*{subject_name}*: *{score}*")
 
     lines.extend([
         "",
-        f"Aggregate: {aggregate} / 400",
+        f"*Aggregate:* *{aggregate} / 400*",
         "",
         "━━━━━━━━━━━━━━━━━━",
         "📦 *Detailed Breakdown*",
@@ -2583,5 +2583,6 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
 
 
