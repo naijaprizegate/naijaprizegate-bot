@@ -28,6 +28,7 @@ from services.mockjamb_exam_service import (
     calculate_mockjamb_subject_score,
     get_mockjamb_review_rows,
     get_mockjamb_subject_question_by_order,
+    get_mockjamb_subject_question_count,
 )
 
 logger = logging.getLogger(__name__)
@@ -1419,11 +1420,13 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
     context.user_data["mj_current_subject_code"] = subject_code
     context.user_data["mj_current_question_order"] = 1
 
+    total_questions = get_mockjamb_subject_question_count(subject_code)
+    
     question_text = build_mockjamb_question_only_text(
         subject_code=subject_code,
         question_row=current_question,
         question_number=1,
-        total_questions=50,
+        total_questions=total_questions,
         exam_ends_at=session_row.get("exam_ends_at"),
     )
 
@@ -1437,7 +1440,7 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
             subject_code=subject_code,
             question_row=current_question,
             question_number=1,
-            total_questions=50,
+            total_questions=total_questions,
             exam_ends_at=session_row.get("exam_ends_at"),
         )
 
@@ -1964,11 +1967,13 @@ async def mockjamb_resume_exam_handler(update: Update, context: ContextTypes.DEF
             context.user_data["mj_current_subject_code"] = current_subject_code
             context.user_data["mj_current_question_order"] = next_question_order
 
+            total_questions = get_mockjamb_subject_question_count(current_subject_code)
+
             question_text = build_mockjamb_question_only_text(
                 subject_code=current_subject_code,
                 question_row=question_row,
                 question_number=next_question_order,
-                total_questions=50,
+                total_questions=total_questions,
                 exam_ends_at=active_session.get("exam_ends_at"),
             )
 
@@ -1982,7 +1987,7 @@ async def mockjamb_resume_exam_handler(update: Update, context: ContextTypes.DEF
                     subject_code=current_subject_code,
                     question_row=question_row,
                     question_number=next_question_order,
-                    total_questions=50,
+                    total_questions=total_questions,
                     exam_ends_at=active_session.get("exam_ends_at"),
                 )
 
