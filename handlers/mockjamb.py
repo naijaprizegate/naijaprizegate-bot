@@ -5,6 +5,7 @@
 import json
 import math
 import logging
+from datetime import datetime, timezone
 
 from sqlalchemy import text
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
@@ -185,6 +186,44 @@ def make_mockjamb_final_result_keyboard() -> InlineKeyboardMarkup:
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
+
+
+# --------------------------------------
+# Mock Time Remaining
+# -------------------------------------
+def format_mockjamb_time_remaining(exam_ends_at) -> str:
+    """
+    Returns a friendly remaining-time string like:
+    - 1h 42m
+    - 18m
+    - Time up
+    """
+    if not exam_ends_at:
+        return "Unknown"
+
+    if isinstance(exam_ends_at, str):
+        try:
+            exam_ends_at = datetime.fromisoformat(exam_ends_at.replace("Z", "+00:00"))
+        except Exception:
+            return "Unknown"
+
+    if exam_ends_at.tzinfo is None:
+        exam_ends_at = exam_ends_at.replace(tzinfo=timezone.utc)
+
+    now = datetime.now(timezone.utc)
+    delta = exam_ends_at - now
+    total_seconds = int(delta.total_seconds())
+
+    if total_seconds <= 0:
+        return "Time up"
+
+    hours = total_seconds // 3600
+    minutes = (total_seconds % 3600) // 60
+
+    if hours > 0:
+        return f"{hours}h {minutes}m"
+
+    return f"{minutes}m"
 
 
 # ====================================================================
@@ -465,7 +504,8 @@ def build_mockjamb_passage_text(
     ]
 
     if exam_ends_at:
-        lines.append("⏱ *Exam timer is running*")
+        remaining = format_mockjamb_time_remaining(exam_ends_at)
+        lines.append(f"⏱ *Time remaining:* {md_escape(remaining)}")
 
     if safe_passage_title:
         lines.extend([
@@ -525,7 +565,8 @@ def build_mockjamb_question_only_text(
     ]
 
     if exam_ends_at:
-        lines.append("⏱ *Exam timer is running*")
+        remaining = format_mockjamb_time_remaining(exam_ends_at)
+        lines.append(f"⏱ *Time remaining:* {md_escape(remaining)}")
 
     lines.extend([
         "",
@@ -694,6 +735,7 @@ def build_mockjamb_resume_prompt_text(
     completed_subjects: list[str],
     current_subject_code: str | None,
     current_question_index: int,
+    exam_ends_at=None,
 ) -> str:
     course = get_course_by_code(course_code)
     course_name = course["course_name"] if course else course_code
@@ -708,6 +750,11 @@ def build_mockjamb_resume_prompt_text(
         f"*Course:* {course_name}",
         "",
     ]
+
+    if exam_ends_at:
+        remaining = format_mockjamb_time_remaining(exam_ends_at)
+        lines.append(f"*Time Remaining:* {remaining}")
+        lines.append("")
 
     if current_subject_code:
         current_subject = get_subject_by_code(current_subject_code)
@@ -828,6 +875,7 @@ async def mockjamb_start_handler(update: Update, context: ContextTypes.DEFAULT_T
                 completed_subjects=completed_subjects,
                 current_subject_code=current_subject_code,
                 current_question_index=current_question_index,
+                exam_ends_at=active_session.get("exam_ends_at"),
             )
             markup = make_mockjamb_resume_keyboard()
 
@@ -2035,5 +2083,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
-
 
