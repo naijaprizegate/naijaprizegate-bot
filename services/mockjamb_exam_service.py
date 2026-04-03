@@ -460,3 +460,31 @@ async def get_mockjamb_review_rows(
 
     rows = result.mappings().all()
     return [dict(row) for row in rows]
+
+
+async def get_mockjamb_subject_result_stats(
+    session: AsyncSession,
+    *,
+    payment_reference: str,
+    subject_code: str,
+) -> dict:
+    result = await session.execute(
+        text("""
+            select
+                count(selected_option) as answered_count,
+                coalesce(sum(case when is_correct = true then 1 else 0 end), 0) as correct_count
+            from public.mockjamb_subject_questions
+            where payment_reference = :payment_reference
+              and subject_code = :subject_code
+        """),
+        {
+            "payment_reference": payment_reference,
+            "subject_code": subject_code,
+        },
+    )
+    row = result.mappings().first() or {}
+
+    return {
+        "answered_count": int(row.get("answered_count") or 0),
+        "correct_count": int(row.get("correct_count") or 0),
+    }
