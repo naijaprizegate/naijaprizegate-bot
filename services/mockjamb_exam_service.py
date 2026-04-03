@@ -21,7 +21,12 @@ from services.mockjamb_session_service import (
 logger = logging.getLogger("mockjamb_exam_service")
 logger.setLevel(logging.INFO)
 
-MOCKJAMB_SUBJECT_QUESTION_COUNT = 50
+
+def get_mockjamb_subject_question_count(subject_code: str) -> int:
+    subject_code = str(subject_code or "").strip().lower()
+    if subject_code == "eng":
+        return 60
+    return 40
 
 
 def _extract_correct_option(question: dict[str, Any]) -> str | None:
@@ -113,7 +118,7 @@ async def create_mockjamb_subject_paper_if_needed(
     payment_reference: str,
     user_id: int,
     subject_code: str,
-    requested_count: int = MOCKJAMB_SUBJECT_QUESTION_COUNT,
+    requested_count: int | None = None,
 ) -> dict:
     existing_session = await get_mockjamb_session_by_payment_reference(session, payment_reference)
     if not existing_session:
@@ -138,6 +143,9 @@ async def create_mockjamb_subject_paper_if_needed(
         user_id=int(user_id),
         subject_code=subject_code,
     )
+
+    if requested_count is None:
+        requested_count = get_mockjamb_subject_question_count(subject_code)
 
     batch = prepare_subject_question_batch(
         subject_code=subject_code,
@@ -238,12 +246,14 @@ async def start_mockjamb_subject(
         subject_code=subject_code,
     )
 
+    requested_count = get_mockjamb_subject_question_count(subject_code)
+
     paper_info = await create_mockjamb_subject_paper_if_needed(
         session,
         payment_reference=payment_reference,
         user_id=int(user_id),
         subject_code=subject_code,
-        requested_count=MOCKJAMB_SUBJECT_QUESTION_COUNT,
+        requested_count=requested_count,
     )
 
     current_question = await get_mockjamb_subject_question_by_order(
@@ -378,10 +388,12 @@ async def calculate_mockjamb_subject_score(
     total_questions = int(row.get("total_questions") or 0)
     correct_count = int(row.get("correct_count") or 0)
 
-    if total_questions <= 0:
+    expected_total = get_mockjamb_subject_question_count(subject_code)
+
+    if expected_total <= 0:
         score_100 = 0
     else:
-        score_100 = round((correct_count / total_questions) * 100)
+        score_100 = round((correct_count / expected_total) * 100)
 
     return {
         "total_questions": total_questions,
@@ -448,4 +460,3 @@ async def get_mockjamb_review_rows(
 
     rows = result.mappings().all()
     return [dict(row) for row in rows]
-
