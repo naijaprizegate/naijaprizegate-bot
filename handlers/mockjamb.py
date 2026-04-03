@@ -157,6 +157,7 @@ def make_mockjamb_question_answer_keyboard(
                 InlineKeyboardButton("C", callback_data=f"mj_ans::{subject_code}::{question_order}::C"),
                 InlineKeyboardButton("D", callback_data=f"mj_ans::{subject_code}::{question_order}::D"),
             ],
+            [InlineKeyboardButton("✅ Submit Exam Now", callback_data="mj_submit_exam_confirm")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
@@ -188,6 +189,34 @@ def make_mockjamb_final_result_keyboard() -> InlineKeyboardMarkup:
         ]
     )
 
+
+def make_mockjamb_submit_exam_confirm_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("✅ Yes, Submit Now", callback_data="mj_submit_exam_yes")],
+            [InlineKeyboardButton("❌ No, Continue Exam", callback_data="mj_submit_exam_no")],
+        ]
+    )
+
+
+def build_mockjamb_submit_exam_confirm_text() -> str:
+    return (
+        "⚠️ *Submit Mock JAMB / UTME Now?*\n\n"
+        "If you submit now:\n"
+        "• your exam will end immediately\n"
+        "• unanswered questions will count as zero\n"
+        "• your current scores will be calculated and shown\n\n"
+        "Are you sure you want to submit?"
+    )
+
+
+def make_mockjamb_stale_action_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("▶ Resume Exam", callback_data="mj_resume_exam")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
 
 # --------------------------------------
 # Mock Time Remaining
@@ -829,6 +858,104 @@ def build_mockjamb_continue_subject_choice_text(
             lines.append(f"• {subject['name']}")
 
     return "\n".join(lines)
+
+
+# --------------------------------------------
+# Mock JAMB Time Expire
+# ------------------------------------------
+def is_mockjamb_time_expired(exam_ends_at) -> bool:
+    if not exam_ends_at:
+        return False
+
+    if isinstance(exam_ends_at, str):
+        try:
+            exam_ends_at = datetime.fromisoformat(exam_ends_at.replace("Z", "+00:00"))
+        except Exception:
+            return False
+
+    if exam_ends_at.tzinfo is None:
+        exam_ends_at = exam_ends_at.replace(tzinfo=timezone.utc)
+
+    now = datetime.now(timezone.utc)
+    return now >= exam_ends_at
+
+
+async def build_mockjamb_result_from_session(
+    *,
+    payment_reference: str,
+    course_code: str,
+    subject_codes: list[str],
+) -> tuple[str, InlineKeyboardMarkup] | None:
+    async with get_async_session() as session:
+        session_row = await get_mockjamb_session_by_payment_reference(
+            session,
+            payment_reference,
+        )
+
+    if not session_row:
+        return None
+
+    try:
+        scores = json.loads(session_row.get("scores_json") or "{}")
+    except Exception:
+        scores = {}
+
+    message_text = build_mockjamb_final_result_text(
+        course_code=course_code,
+        subject_codes=subject_codes,
+        scores=scores,
+    )
+    markup = make_mockjamb_final_result_keyboard()
+    return message_text, markup
+
+
+# ------------------------------------
+# Finalize Mockjamb Exam Now
+# ------------------------------------
+async def finalize_mockjamb_exam_now(
+    *,
+    payment_reference: str,
+    course_code: str,
+    subject_codes: list[str],
+) -> tuple[str, InlineKeyboardMarkup]:
+    scores = {}
+
+    async with get_async_session() as session:
+        for subject_code in subject_codes:
+            score_info = await calculate_mockjamb_subject_score(
+                session,
+                payment_reference=payment_reference,
+                subject_code=subject_code,
+            )
+            scores[subject_code] = int(score_info.get("score_100") or 0)
+
+        await session.execute(
+            text("""
+                update public.mockjamb_sessions
+                set
+                    completed_subjects_json = :completed_subjects_json,
+                    scores_json = :scores_json,
+                    current_subject_code = null,
+                    current_question_index = 0,
+                    status = 'completed',
+                    updated_at = now()
+                where payment_reference = :payment_reference
+            """),
+            {
+                "payment_reference": payment_reference,
+                "completed_subjects_json": json.dumps(subject_codes),
+                "scores_json": json.dumps(scores),
+            },
+        )
+        await session.commit()
+
+    message_text = build_mockjamb_final_result_text(
+        course_code=course_code,
+        subject_codes=subject_codes,
+        scores=scores,
+    )
+    markup = make_mockjamb_final_result_keyboard()
+    return message_text, markup
 
 
 # ====================================================================
@@ -1507,6 +1634,111 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
 
     async with get_async_session() as session:
         try:
+            active_session = await get_mockjamb_session_by_payment_reference(
+                session,
+                payment_reference,
+            )
+
+            if not active_session:
+                return await query.message.reply_text(
+                    "⚠️ Mock JAMB session not found."
+                )
+
+            # ---------------------------------------------------
+            # STALE BUTTON / ENDED EXAM GUARD
+            # ---------------------------------------------------
+            current_subject_code = str(active_session.get("current_subject_code") or "").strip()
+            current_question_index = int(active_session.get("current_question_index") or 0)
+            expected_question_order = max(1, current_question_index + 1)
+            session_status = str(active_session.get("status") or "").strip().lower()
+
+            if session_status == "completed":
+                result_payload = await build_mockjamb_result_from_session(
+                    payment_reference=payment_reference,
+                    course_code=course_code,
+                    subject_codes=subject_codes,
+                )
+
+                if not result_payload:
+                    return await query.message.reply_text(
+                        "⚠️ This Mock JAMB exam has already ended."
+                    )
+
+                message_text, markup = result_payload
+                ended_text = (
+                    "⚠️ *This Mock JAMB exam has already ended.*\n\n"
+                    f"{message_text}"
+                )
+
+                try:
+                    await query.edit_message_text(
+                        ended_text,
+                        parse_mode="Markdown",
+                        reply_markup=markup,
+                    )
+                except Exception:
+                    await query.message.reply_text(
+                        ended_text,
+                        parse_mode="Markdown",
+                        reply_markup=markup,
+                    )
+                return
+
+            if subject_code != current_subject_code or int(question_order) != int(expected_question_order):
+                return await query.message.reply_text(
+                    "⚠️ That question is no longer active.\n\nTap below to continue from your current live question.",
+                    parse_mode="Markdown",
+                    reply_markup=make_mockjamb_stale_action_keyboard(),
+                )
+
+            # ---------------------------------------------------
+            # TIME EXPIRY GUARD
+            # ---------------------------------------------------
+            if is_mockjamb_time_expired(active_session.get("exam_ends_at")):
+                await session.execute(
+                    text("""
+                        update public.mockjamb_sessions
+                        set
+                            status = 'completed',
+                            updated_at = now()
+                        where payment_reference = :payment_reference
+                    """),
+                    {"payment_reference": payment_reference},
+                )
+                await session.commit()
+
+                result_payload = await build_mockjamb_result_from_session(
+                    payment_reference=payment_reference,
+                    course_code=course_code,
+                    subject_codes=subject_codes,
+                )
+
+                if not result_payload:
+                    return await query.message.reply_text(
+                        "⏰ Mock JAMB time is up.\n\nYour exam has ended."
+                    )
+
+                message_text, markup = result_payload
+                timeout_text = (
+                    "⏰ *Mock JAMB time is up.*\n\n"
+                    "Your exam has ended. Here is your result:\n\n"
+                    f"{message_text}"
+                )
+
+                try:
+                    await query.edit_message_text(
+                        timeout_text,
+                        parse_mode="Markdown",
+                        reply_markup=markup,
+                    )
+                except Exception:
+                    await query.message.reply_text(
+                        timeout_text,
+                        parse_mode="Markdown",
+                        reply_markup=markup,
+                    )
+                return
+
             answer_result = await answer_mockjamb_question(
                 session,
                 payment_reference=payment_reference,
@@ -1669,6 +1901,7 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
             return await query.message.reply_text(
                 "⚠️ Could not process your answer right now. Please try again."
             )
+
 
 # -------------------------------------------------
 # Mock JAMB Return to Exam Ready Handler
@@ -2069,6 +2302,100 @@ async def mockjamb_resume_exam_handler(update: Update, context: ContextTypes.DEF
         )
 
 
+# -------------------------------------------
+# MockJAMB Submit Exam Confirmation
+# -------------------------------------------
+async def mockjamb_submit_exam_confirm_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    text = build_mockjamb_submit_exam_confirm_text()
+    markup = make_mockjamb_submit_exam_confirm_keyboard()
+
+    try:
+        await query.edit_message_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
+async def mockjamb_submit_exam_no_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    payment_reference = context.user_data.get("mj_payment_reference")
+    if not payment_reference:
+        return await query.message.reply_text(
+            "⚠️ No active Mock JAMB exam session found."
+        )
+
+    await mockjamb_resume_exam_handler(update, context)
+
+
+async def mockjamb_submit_exam_yes_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    payment_reference = context.user_data.get("mj_payment_reference")
+    course_code = context.user_data.get("mj_course_code")
+    subject_codes = context.user_data.get("mj_subject_codes") or []
+
+    if not payment_reference or not course_code or not subject_codes:
+        return await query.message.reply_text(
+            "⚠️ No active Mock JAMB exam session found."
+        )
+
+    try:
+        message_text, markup = await finalize_mockjamb_exam_now(
+            payment_reference=payment_reference,
+            course_code=course_code,
+            subject_codes=subject_codes,
+        )
+    except Exception as e:
+        logger.exception(
+            "Failed to submit Mock JAMB exam early | tx_ref=%s | err=%s",
+            payment_reference,
+            e,
+        )
+        return await query.message.reply_text(
+            "⚠️ Could not submit your exam right now. Please try again."
+        )
+
+    submit_text = (
+        "✅ *Mock JAMB / UTME submitted successfully.*\n\n"
+        f"{message_text}"
+    )
+
+    try:
+        await query.edit_message_text(
+            submit_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            submit_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
 # ====================================================================
 # Register Handlers
 # ====================================================================
@@ -2082,6 +2409,9 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_mode_friends_handler, pattern=r"^mj_mode_friends$"))
     application.add_handler(CallbackQueryHandler(mockjamb_pay_solo_handler, pattern=r"^mj_pay_solo$"))
     application.add_handler(CallbackQueryHandler(mockjamb_start_subject_handler, pattern=r"^mj_start_subject::"))
+    application.add_handler(CallbackQueryHandler(mockjamb_submit_exam_confirm_handler, pattern=r"^mj_submit_exam_confirm$"))
+    application.add_handler(CallbackQueryHandler(mockjamb_submit_exam_yes_handler, pattern=r"^mj_submit_exam_yes$"))
+    application.add_handler(CallbackQueryHandler(mockjamb_submit_exam_no_handler, pattern=r"^mj_submit_exam_no$"))
     application.add_handler(CallbackQueryHandler(mockjamb_answer_handler, pattern=r"^mj_ans::"))
     application.add_handler(CallbackQueryHandler(mockjamb_return_to_exam_ready_handler, pattern=r"^payok_mockjamb_return$"))
     application.add_handler(CallbackQueryHandler(mockjamb_resume_exam_handler, pattern=r"^mj_resume_exam$"))
