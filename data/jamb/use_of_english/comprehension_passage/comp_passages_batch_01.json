@@ -9,7 +9,6 @@
     "difficulty": "medium",
     "question_type": "comprehension_mcq",
     "exam_bucket": "comprehension_passage",
-    "passage_id": "eng_cp_p001",
     "passage_title": "The School Garden",
     "passage": "When Community Junior College introduced a school garden, many students first thought it was only another way of making them work. The principal, however, explained that the garden was meant to serve as a practical learning centre. Science teachers used it to teach plant growth, while Home Economics teachers showed students how vegetables could be prepared into healthy meals. At first, only a few students showed interest. Later, as the crops began to grow, more students became curious and started taking part in watering, weeding and record keeping. Parents who visited the school praised the project, and some even donated seeds and tools. By the end of the term, the garden had become both a source of food and a source of pride for the school.",
     "question": "The main idea of the passage is that the school garden",
@@ -21,7 +20,27 @@
     },
     "answer": "B",
     "answer_text": "became useful as both a learning centre and a source of pride",
-    "active": true
+    "explanation": {
+      "question_restate": "We are to answer a JAMB-style comprehension question on the subtopic 'Main idea / central theme' using the passage titled 'The School Garden'.",
+      "principle": "The main idea is the central message that runs through the whole passage. It must cover the entire passage, not just one small detail.",
+      "steps": [
+        "First, read the whole passage and identify what it is mainly talking about.",
+        "Next, check whether the option covers the beginning, middle and end of the passage.",
+        "The passage explains that the garden was used for learning, attracted more student interest and later became a source of pride.",
+        "Eliminate options that are too narrow, too extreme or not supported by the passage.",
+        "The correct answer is the option that best states the overall message of the passage: became useful as both a learning centre and a source of pride."
+      ],
+      "final_answer": "B. became useful as both a learning centre and a source of pride",
+      "simple_explanation": "The passage is not mainly about punishment or dislike. It shows that the school garden became helpful for teaching and also made the school proud."
+    },
+    "tags": [
+      "comprehension",
+      "use_of_english",
+      "eng_cp",
+      "main_idea_central_theme"
+    ],
+    "active": true,
+    "passage_id": "eng_cp_p001"
   },
   {
     "id": "eng_cp_q002",
@@ -33,7 +52,6 @@
     "difficulty": "medium",
     "question_type": "comprehension_mcq",
     "exam_bucket": "comprehension_passage",
-    "passage_id": "eng_cp_p001",
     "passage_title": "The School Garden",
     "passage": "When Community Junior College introduced a school garden, many students first thought it was only another way of making them work. The principal, however, explained that the garden was meant to serve as a practical learning centre. Science teachers used it to teach plant growth, while Home Economics teachers showed students how vegetables could be prepared into healthy meals. At first, only a few students showed interest. Later, as the crops began to grow, more students became curious and started taking part in watering, weeding and record keeping. Parents who visited the school praised the project, and some even donated seeds and tools. By the end of the term, the garden had become both a source of food and a source of pride for the school.",
     "question": "Which of the following shows that the project was successful?",
@@ -45,7 +63,27 @@
     },
     "answer": "B",
     "answer_text": "Parents donated seeds and tools",
-    "active": true
+    "explanation": {
+      "question_restate": "We are to answer a JAMB-style comprehension question on the subtopic 'Supporting details' using the passage titled 'The School Garden'.",
+      "principle": "Supporting details are specific facts in the passage that help to prove or develop the main idea.",
+      "steps": [
+        "First, look for direct evidence in the passage that shows progress or success.",
+        "Next, compare the options with what the passage actually says.",
+        "The passage says parents praised the project and some donated seeds and tools.",
+        "That is a clear sign that the project was valued and successful.",
+        "So the best answer is: Parents donated seeds and tools."
+      ],
+      "final_answer": "B. Parents donated seeds and tools",
+      "simple_explanation": "When people support a project and donate useful things for it, it shows the project is doing well."
+    },
+    "tags": [
+      "comprehension",
+      "use_of_english",
+      "eng_cp",
+      "supporting_details"
+    ],
+    "active": true,
+    "passage_id": "eng_cp_p001"
   },
   {
     "id": "eng_cp_q003",
@@ -57,7 +95,6 @@
     "difficulty": "medium",
     "question_type": "comprehension_mcq",
     "exam_bucket": "comprehension_passage",
-    "passage_id": "eng_cp_p001",
     "passage_title": "The School Garden",
     "passage": "When Community Junior College introduced a school garden, many students first thought it was only another way of making them work. The principal, however, explained that the garden was meant to serve as a practical learning centre. Science teachers used it to teach plant growth, while Home Economics teachers showed students how vegetables could be prepared into healthy meals. At first, only a few students showed interest. Later, as the crops began to grow, more students became curious and started taking part in watering, weeding and record keeping. Parents who visited the school praised the project, and some even donated seeds and tools. By the end of the term, the garden had become both a source of food and a source of pride for the school.",
     "question": "The writer's purpose in the passage is to",
@@ -69,7 +106,27 @@
     },
     "answer": "A",
     "answer_text": "show how a simple school project can become educationally valuable",
-    "active": true
+    "explanation": {
+      "question_restate": "We are to answer a JAMB-style comprehension question on the subtopic 'Writer's purpose' using the passage titled 'The School Garden'.",
+      "principle": "Writer's purpose asks why the writer wrote the passage — to explain, inform, persuade, warn or describe.",
+      "steps": [
+        "First, think about the overall aim of the passage.",
+        "Next, notice that the writer explains how the garden moved from being doubted to being useful.",
+        "The writer is not attacking teachers or saying farming should replace learning.",
+        "Instead, the writer is showing the value of a simple school project.",
+        "So the correct answer is: show how a simple school project can become educationally valuable."
+      ],
+      "final_answer": "A. show how a simple school project can become educationally valuable",
+      "simple_explanation": "The writer wants readers to see that the garden helped teaching and improved the school."
+    },
+    "tags": [
+      "comprehension",
+      "use_of_english",
+      "eng_cp",
+      "writer_s_purpose"
+    ],
+    "active": true,
+    "passage_id": "eng_cp_p001"
   },
   {
     "id": "eng_cp_q004",
@@ -81,7 +138,6 @@
     "difficulty": "hard",
     "question_type": "comprehension_mcq",
     "exam_bucket": "comprehension_passage",
-    "passage_id": "eng_cp_p001",
     "passage_title": "The School Garden",
     "passage": "When Community Junior College introduced a school garden, many students first thought it was only another way of making them work. The principal, however, explained that the garden was meant to serve as a practical learning centre. Science teachers used it to teach plant growth, while Home Economics teachers showed students how vegetables could be prepared into healthy meals. At first, only a few students showed interest. Later, as the crops began to grow, more students became curious and started taking part in watering, weeding and record keeping. Parents who visited the school praised the project, and some even donated seeds and tools. By the end of the term, the garden had become both a source of food and a source of pride for the school.",
     "question": "It can be inferred from the passage that students became more interested in the garden when they",
@@ -93,7 +149,27 @@
     },
     "answer": "B",
     "answer_text": "saw practical results from the project",
-    "active": true
+    "explanation": {
+      "question_restate": "We are to answer a JAMB-style comprehension question on the subtopic 'Inference' using the passage titled 'The School Garden'.",
+      "principle": "An inference is a conclusion reached from clues in the passage, even when the answer is not stated word for word.",
+      "steps": [
+        "First, identify what changed in the students' attitude.",
+        "The passage says more students became curious later as the crops began to grow.",
+        "This suggests that visible success made them more interested.",
+        "Reject options that are not hinted at anywhere in the passage.",
+        "The best inferred answer is: saw practical results from the project."
+      ],
+      "final_answer": "B. saw practical results from the project",
+      "simple_explanation": "The passage suggests that when students saw the crops growing and the project working, they became more interested."
+    },
+    "tags": [
+      "comprehension",
+      "use_of_english",
+      "eng_cp",
+      "inference"
+    ],
+    "active": true,
+    "passage_id": "eng_cp_p001"
   },
   {
     "id": "eng_cp_q005",
@@ -105,7 +181,6 @@
     "difficulty": "medium",
     "question_type": "comprehension_mcq",
     "exam_bucket": "comprehension_passage",
-    "passage_id": "eng_cp_p001",
     "passage_title": "The School Garden",
     "passage": "When Community Junior College introduced a school garden, many students first thought it was only another way of making them work. The principal, however, explained that the garden was meant to serve as a practical learning centre. Science teachers used it to teach plant growth, while Home Economics teachers showed students how vegetables could be prepared into healthy meals. At first, only a few students showed interest. Later, as the crops began to grow, more students became curious and started taking part in watering, weeding and record keeping. Parents who visited the school praised the project, and some even donated seeds and tools. By the end of the term, the garden had become both a source of food and a source of pride for the school.",
     "question": "The word 'praised' as used in the passage means",
@@ -117,126 +192,26 @@
     },
     "answer": "B",
     "answer_text": "spoke well of",
-    "active": true
-  },
-  {
-    "id": "eng_cp_q006",
-    "subject_code": "eng",
-    "subject_name": "Use of English",
-    "topic_id": "eng_cp",
-    "topic_title": "Comprehension",
-    "subtopic": "Main idea / central theme",
-    "difficulty": "medium",
-    "question_type": "comprehension_mcq",
-    "exam_bucket": "comprehension_passage",
-    "passage_id": "eng_cp_p002",
-    "passage_title": "A Careful Cyclist",
-    "passage": "Bisi had always enjoyed cycling to school, especially because it saved her the cost of transport. One Monday morning, however, she noticed that the road was unusually busy. Heavy vehicles moved noisily, impatient traders pushed handcarts across the street, and some school children ran carelessly between moving cars. Bisi remembered the road safety lesson her class teacher had given the previous week. Instead of trying to ride quickly through the confusion, she got off her bicycle at the most dangerous points and walked it across. Although this delayed her a little, she arrived safely and still in good time for assembly. Later that day, the teacher used Bisi's decision as an example of how caution can prevent accidents.",
-    "question": "The central idea of the passage is that",
-    "options": {
-      "A": "cycling is always faster than public transport",
-      "B": "busy roads should be closed to students",
-      "C": "careful behaviour on the road can prevent accidents",
-      "D": "teachers should accompany all students to school"
+    "explanation": {
+      "question_restate": "We are to answer a JAMB-style comprehension question on the subtopic 'Contextual meaning of words and expressions' using the passage titled 'The School Garden'.",
+      "principle": "Contextual meaning asks you to explain a word according to how it is used in the passage.",
+      "steps": [
+        "First, find the sentence where the word appears.",
+        "Parents praised the project and even donated seeds and tools.",
+        "Their action shows approval, not criticism or mockery.",
+        "So the word means to speak well of or approve.",
+        "The correct answer is: spoke well of."
+      ],
+      "final_answer": "B. spoke well of",
+      "simple_explanation": "Because the parents supported the project, 'praised' here means they spoke well of it."
     },
-    "answer": "C",
-    "answer_text": "careful behaviour on the road can prevent accidents",
-    "active": true
-  },
-  {
-    "id": "eng_cp_q007",
-    "subject_code": "eng",
-    "subject_name": "Use of English",
-    "topic_id": "eng_cp",
-    "topic_title": "Comprehension",
-    "subtopic": "Supporting details",
-    "difficulty": "medium",
-    "question_type": "comprehension_mcq",
-    "exam_bucket": "comprehension_passage",
-    "passage_id": "eng_cp_p002",
-    "passage_title": "A Careful Cyclist",
-    "passage": "Bisi had always enjoyed cycling to school, especially because it saved her the cost of transport. One Monday morning, however, she noticed that the road was unusually busy. Heavy vehicles moved noisily, impatient traders pushed handcarts across the street, and some school children ran carelessly between moving cars. Bisi remembered the road safety lesson her class teacher had given the previous week. Instead of trying to ride quickly through the confusion, she got off her bicycle at the most dangerous points and walked it across. Although this delayed her a little, she arrived safely and still in good time for assembly. Later that day, the teacher used Bisi's decision as an example of how caution can prevent accidents.",
-    "question": "Why did Bisi get off her bicycle at some points?",
-    "options": {
-      "A": "Her bicycle had developed a fault",
-      "B": "She wanted to greet some traders",
-      "C": "She considered those points dangerous",
-      "D": "She was already late for assembly"
-    },
-    "answer": "C",
-    "answer_text": "She considered those points dangerous",
-    "active": true
-  },
-  {
-    "id": "eng_cp_q008",
-    "subject_code": "eng",
-    "subject_name": "Use of English",
-    "topic_id": "eng_cp",
-    "topic_title": "Comprehension",
-    "subtopic": "Reference words and pronouns",
-    "difficulty": "medium",
-    "question_type": "comprehension_mcq",
-    "exam_bucket": "comprehension_passage",
-    "passage_id": "eng_cp_p002",
-    "passage_title": "A Careful Cyclist",
-    "passage": "Bisi had always enjoyed cycling to school, especially because it saved her the cost of transport. One Monday morning, however, she noticed that the road was unusually busy. Heavy vehicles moved noisily, impatient traders pushed handcarts across the street, and some school children ran carelessly between moving cars. Bisi remembered the road safety lesson her class teacher had given the previous week. Instead of trying to ride quickly through the confusion, she got off her bicycle at the most dangerous points and walked it across. Although this delayed her a little, she arrived safely and still in good time for assembly. Later that day, the teacher used Bisi's decision as an example of how caution can prevent accidents.",
-    "question": "In the passage, the word 'this' in 'this delayed her a little' refers to",
-    "options": {
-      "A": "cycling to school every day",
-      "B": "walking the bicycle across dangerous points",
-      "C": "the teacher's lesson in class",
-      "D": "the morning assembly"
-    },
-    "answer": "B",
-    "answer_text": "walking the bicycle across dangerous points",
-    "active": true
-  },
-  {
-    "id": "eng_cp_q009",
-    "subject_code": "eng",
-    "subject_name": "Use of English",
-    "topic_id": "eng_cp",
-    "topic_title": "Comprehension",
-    "subtopic": "Writer's tone and attitude",
-    "difficulty": "medium",
-    "question_type": "comprehension_mcq",
-    "exam_bucket": "comprehension_passage",
-    "passage_id": "eng_cp_p002",
-    "passage_title": "A Careful Cyclist",
-    "passage": "Bisi had always enjoyed cycling to school, especially because it saved her the cost of transport. One Monday morning, however, she noticed that the road was unusually busy. Heavy vehicles moved noisily, impatient traders pushed handcarts across the street, and some school children ran carelessly between moving cars. Bisi remembered the road safety lesson her class teacher had given the previous week. Instead of trying to ride quickly through the confusion, she got off her bicycle at the most dangerous points and walked it across. Although this delayed her a little, she arrived safely and still in good time for assembly. Later that day, the teacher used Bisi's decision as an example of how caution can prevent accidents.",
-    "question": "The writer's attitude towards Bisi's action is mainly",
-    "options": {
-      "A": "approving",
-      "B": "mocking",
-      "C": "indifferent",
-      "D": "suspicious"
-    },
-    "answer": "A",
-    "answer_text": "approving",
-    "active": true
-  },
-  {
-    "id": "eng_cp_q010",
-    "subject_code": "eng",
-    "subject_name": "Use of English",
-    "topic_id": "eng_cp",
-    "topic_title": "Comprehension",
-    "subtopic": "Conclusion from passage",
-    "difficulty": "hard",
-    "question_type": "comprehension_mcq",
-    "exam_bucket": "comprehension_passage",
-    "passage_id": "eng_cp_p002",
-    "passage_title": "A Careful Cyclist",
-    "passage": "Bisi had always enjoyed cycling to school, especially because it saved her the cost of transport. One Monday morning, however, she noticed that the road was unusually busy. Heavy vehicles moved noisily, impatient traders pushed handcarts across the street, and some school children ran carelessly between moving cars. Bisi remembered the road safety lesson her class teacher had given the previous week. Instead of trying to ride quickly through the confusion, she got off her bicycle at the most dangerous points and walked it across. Although this delayed her a little, she arrived safely and still in good time for assembly. Later that day, the teacher used Bisi's decision as an example of how caution can prevent accidents.",
-    "question": "Which of the following is the best conclusion from the passage?",
-    "options": {
-      "A": "Students should stop cycling completely",
-      "B": "Road safety knowledge is useful when applied in real situations",
-      "C": "Assembly should be cancelled on busy days",
-      "D": "Teachers should punish careless traders"
-    },
-    "answer": "B",
-    "answer_text": "Road safety knowledge is useful when applied in real situations",
-    "active": true
+    "tags": [
+      "comprehension",
+      "use_of_english",
+      "eng_cp",
+      "contextual_meaning_of_words_and_expressions"
+    ],
+    "active": true,
+    "passage_id": "eng_cp_p001"
   }
 ]
