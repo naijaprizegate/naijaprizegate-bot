@@ -11,6 +11,35 @@ from typing import Any, Dict, List, Optional
 BASE_DIR = Path(__file__).resolve().parent
 JAMB_DATA_DIR = BASE_DIR / "data" / "jamb"
 
+ENG_EXACT_BLUEPRINT = [
+    {"name": "comprehension", "topic_ids": ["eng_01"], "count": 5},
+    {"name": "cloze", "topic_ids": ["eng_03"], "count": 10},
+    {"name": "reading_text", "topic_ids": ["eng_02"], "count": 10},
+    {"name": "sentence_interpretation", "topic_ids": ["eng_04"], "count": 5},
+    {"name": "antonyms", "topic_ids": ["eng_06"], "count": 5},
+    {"name": "synonyms", "topic_ids": ["eng_05"], "count": 5},
+    {
+        "name": "sentence_completion",
+        "topic_ids": [
+            "eng_07",
+            "eng_08",
+            "eng_09",
+            "eng_10",
+            "eng_11",
+            "eng_12",
+            "eng_13",
+            "eng_14",
+            "eng_15",
+        ],
+        "count": 10,
+    },
+    {
+        "name": "oral_forms",
+        "topic_ids": ["eng_16", "eng_17", "eng_18", "eng_19", "eng_20"],
+        "count": 10,
+    },
+]
+
 
 def load_json_file(file_path: Path) -> Any:
     """
@@ -221,6 +250,30 @@ def get_questions_for_topic(subject_code: str, topic_id: str) -> List[Dict[str, 
     return active_questions
 
 
+def get_questions_for_topic_ids(
+    subject_code: str,
+    topic_ids: List[str],
+) -> List[Dict[str, Any]]:
+    """
+    Load all active questions from multiple topic IDs for one subject.
+
+    Example:
+    - eng + ['eng_16', 'eng_17', 'eng_18'] -> loads all active questions
+      from those oral English topics.
+    """
+    all_questions: List[Dict[str, Any]] = []
+
+    for topic_id in topic_ids:
+        try:
+            topic_questions = get_questions_for_topic(subject_code, topic_id)
+            all_questions.extend(topic_questions)
+        except Exception:
+            # Skip broken or missing topic files without crashing
+            continue
+
+    return all_questions
+
+
 def get_all_questions_for_subject(subject_code: str) -> List[Dict[str, Any]]:
     """
     Load all active questions across all active topics for a subject.
@@ -299,6 +352,70 @@ def prepare_subject_question_batch(
         "selected_count": len(selected_questions),
         "selected_questions": selected_questions,
         "selected_question_ids": extract_question_ids(selected_questions),
+    }
+
+
+
+def prepare_use_of_english_batch(
+    seen_question_ids: List[str],
+) -> Dict[str, Any]:
+    """
+    Prepare a UTME-structured Use of English paper using the fixed blueprint.
+
+    Logic:
+    - use ENG_EXACT_BLUEPRINT
+    - load questions from the mapped topic IDs for each section
+    - exclude seen questions first
+    - if a section does not have enough unseen questions, reset that section
+    - shuffle within each section
+    - pick the required count for each section
+    - combine all selected questions in blueprint order
+    """
+    selected_questions: List[Dict[str, Any]] = []
+    selected_question_ids: List[str] = []
+    cycle_reset = False
+
+    for section in ENG_EXACT_BLUEPRINT:
+        section_name = str(section["name"])
+        topic_ids = section["topic_ids"]
+        required_count = int(section["count"])
+
+        section_questions = get_questions_for_topic_ids("eng", topic_ids)
+
+        unseen_section_questions = [
+            q for q in section_questions
+            if q.get("id") not in seen_question_ids
+            and q.get("id") not in selected_question_ids
+        ]
+
+        if len(unseen_section_questions) < required_count:
+            cycle_reset = True
+            unseen_section_questions = [
+                q for q in section_questions
+                if q.get("id") not in selected_question_ids
+            ]
+
+        shuffled_section_questions = shuffle_questions(unseen_section_questions)                
+        picked_questions = limit_questions(shuffled_section_questions, required_count)
+
+        
+        if len(picked_questions) != required_count:
+            raise ValueError(
+                f"Use of English section '{section_name}' requires {required_count} questions, "
+                f"but only {len(picked_questions)} were available."
+            )
+        
+        for question in picked_questions:
+            question["_utme_section"] = section_name
+
+        selected_questions.extend(picked_questions)
+        selected_question_ids.extend(extract_question_ids(picked_questions))
+
+    return {
+        "cycle_reset": cycle_reset,
+        "selected_count": len(selected_questions),
+        "selected_questions": selected_questions,
+        "selected_question_ids": selected_question_ids,
     }
 
 
