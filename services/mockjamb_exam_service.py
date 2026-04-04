@@ -8,7 +8,7 @@ from typing import Any
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from jamb_loader import prepare_subject_question_batch
+from jamb_loader import prepare_subject_question_batch, prepare_use_of_english_batch
 from services.mockjamb_session_service import (
     get_seen_mockjamb_question_ids,
     record_seen_mockjamb_questions,
@@ -147,11 +147,21 @@ async def create_mockjamb_subject_paper_if_needed(
     if requested_count is None:
         requested_count = get_mockjamb_subject_question_count(subject_code)
 
-    batch = prepare_subject_question_batch(
-        subject_code=subject_code,
-        requested_count=requested_count,
-        seen_question_ids=seen_question_ids,
-    )
+    if subject_code == "eng":
+        batch = prepare_use_of_english_batch(
+            seen_question_ids=seen_question_ids,
+        )
+    else:
+        batch = prepare_subject_question_batch(
+            subject_code=subject_code,
+            requested_count=requested_count,
+            seen_question_ids=seen_question_ids,
+        )
+
+    if subject_code == "eng" and int(batch.get("selected_count") or 0) != 60:
+        raise ValueError(
+            f"Use of English paper must contain exactly 60 questions, got {batch.get('selected_count')}"
+        )
 
     selected_questions = batch["selected_questions"]
     selected_question_ids = batch["selected_question_ids"]
@@ -488,3 +498,4 @@ async def get_mockjamb_subject_result_stats(
         "answered_count": int(row.get("answered_count") or 0),
         "correct_count": int(row.get("correct_count") or 0),
     }
+
