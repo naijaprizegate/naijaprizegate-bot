@@ -1,0 +1,382 @@
+{
+  "subject_code": "eng",
+  "subject_name": "Use of English",
+  "paper_total_questions": 60,
+  "paper_structure": {
+    "section_a": {
+      "name": "Comprehension and Summary",
+      "total_questions": 25,
+      "buckets": [
+        {
+          "bucket": "comprehension_passage",
+          "label": "Comprehension Passage",
+          "question_count": 5,
+          "passage_based": true,
+          "selection_rule": "Select one passage_id and take 5 linked questions in sequence.",
+          "question_types": [
+            "comprehension_mcq",
+            "passage_based_mcq"
+          ],
+          "source_topics": [
+            "Comprehension"
+          ],
+          "source_subtopics": [
+            "Reading comprehension passages",
+            "Main idea / central theme",
+            "Supporting details",
+            "Topic sentence",
+            "Writer's purpose",
+            "Writer's tone and attitude",
+            "Inference",
+            "Deduction",
+            "Conclusion from passage",
+            "Contextual meaning of words and expressions",
+            "Reference words and pronouns",
+            "Sequence of ideas",
+            "Cause-and-effect relationships",
+            "Fact and opinion",
+            "Figurative expressions as used in passages"
+          ]
+        },
+        {
+          "bucket": "cloze_passage",
+          "label": "Cloze Passage",
+          "question_count": 10,
+          "passage_based": true,
+          "selection_rule": "Select one passage_id and take 10 linked questions in sequence.",
+          "question_types": [
+            "cloze_mcq",
+            "gap_fill_passage_mcq"
+          ],
+          "source_topics": [
+            "Cloze Test"
+          ],
+          "source_subtopics": [
+            "Gap-filling in passages",
+            "Choosing words from context",
+            "Grammar-based completion",
+            "Vocabulary-based completion",
+            "Collocation in context",
+            "Idiomatic completion in context",
+            "Structural clues in passages",
+            "Cohesion and coherence in passage completion"
+          ]
+        },
+        {
+          "bucket": "reading_text",
+          "label": "Reading Text / Summary",
+          "question_count": 10,
+          "passage_based": true,
+          "selection_rule": "Select one passage_id and take 10 linked questions in sequence.",
+          "question_types": [
+            "reading_text_mcq",
+            "summary_mcq"
+          ],
+          "source_topics": [
+            "Summary"
+          ],
+          "source_subtopics": [
+            "Summarizing short passages",
+            "Identifying key points",
+            "Distinguishing main points from minor details",
+            "Condensing sentences and ideas",
+            "Replacing lengthy expressions with shorter equivalents",
+            "Choosing the best summary statement",
+            "Restating ideas without changing meaning",
+            "Logical linkage of summarized points"
+          ]
+        }
+      ]
+    },
+    "section_b": {
+      "name": "Lexis and Structure",
+      "total_questions": 25,
+      "buckets": [
+        {
+          "bucket": "sentence_interpretation",
+          "label": "Sentence Interpretation",
+          "question_count": 5,
+          "passage_based": false,
+          "selection_rule": "Shuffle eligible unseen questions and take 5.",
+          "question_types": [
+            "sentence_interpretation_mcq",
+            "meaning_in_context_mcq"
+          ],
+          "source_topics": [
+            "Sentence Interpretation",
+            "Idioms and Figurative Expression"
+          ],
+          "source_subtopics": [
+            "Interpretation of statements and expressions",
+            "Meaning of sentences in context",
+            "Idiomatic interpretation",
+            "Figurative interpretation",
+            "Proverbs and implied meaning",
+            "Speaker's intention",
+            "Attitude conveyed by a sentence",
+            "Closest meaning to a given sentence",
+            "Proverbs",
+            "Euphemism",
+            "Irony",
+            "Hyperbole",
+            "Metaphor",
+            "Simile",
+            "Personification"
+          ]
+        },
+        {
+          "bucket": "antonyms",
+          "label": "Antonyms",
+          "question_count": 5,
+          "passage_based": false,
+          "selection_rule": "Shuffle eligible unseen questions and take 5.",
+          "question_types": [
+            "antonym_mcq",
+            "opposite_in_meaning_mcq"
+          ],
+          "source_topics": [
+            "Antonyms"
+          ],
+          "source_subtopics": [
+            "Words opposite in meaning",
+            "Context-based antonyms",
+            "Contrasting expressions",
+            "Opposite meaning in sentence use"
+          ]
+        },
+        {
+          "bucket": "synonyms",
+          "label": "Synonyms",
+          "question_count": 5,
+          "passage_based": false,
+          "selection_rule": "Shuffle eligible unseen questions and take 5.",
+          "question_types": [
+            "synonym_mcq",
+            "nearest_in_meaning_mcq"
+          ],
+          "source_topics": [
+            "Synonyms"
+          ],
+          "source_subtopics": [
+            "Words similar in meaning",
+            "Context-based synonyms",
+            "Vocabulary development",
+            "Near-synonyms in sentence context",
+            "Appropriate word substitution"
+          ]
+        },
+        {
+          "bucket": "sentence_completion",
+          "label": "Sentence Completion",
+          "question_count": 10,
+          "passage_based": false,
+          "selection_rule": "Shuffle eligible unseen questions and take 10.",
+          "question_types": [
+            "sentence_completion_mcq",
+            "lexis_structure_mcq",
+            "grammar_completion_mcq"
+          ],
+          "source_topics": [
+            "Homonyms",
+            "Idioms and Figurative Expression",
+            "Word Classes and Their Functions",
+            "Sentence and Clause Patterns",
+            "Tense and Aspect",
+            "Concord",
+            "Degree of Comparison",
+            "Question Tags",
+            "Punctuation and Spelling"
+          ],
+          "source_subtopics": [
+            "Words with same pronunciation but different meanings",
+            "Words with same spelling but different meanings",
+            "Distinguishing meaning through context",
+            "Confusable word pairs",
+            "Standard British English idioms",
+            "Idiomatic expressions in sentences",
+            "Figurative usage of words",
+            "Literal versus figurative meaning",
+            "Nouns",
+            "Pronouns",
+            "Verbs",
+            "Adjectives",
+            "Adverbs",
+            "Prepositions",
+            "Conjunctions",
+            "Interjections",
+            "Articles and determiners",
+            "Functions of word classes in sentences",
+            "Identifying grammatical role in context",
+            "Sentence types: statement, question, command, exclamation",
+            "Simple sentences",
+            "Compound sentences",
+            "Complex sentences",
+            "Compound-complex sentences",
+            "Main clause",
+            "Subordinate clause",
+            "Noun clause",
+            "Adjectival clause",
+            "Adverbial clause",
+            "Phrase versus clause",
+            "Sentence construction",
+            "Structural patterns in English sentences",
+            "Present tense",
+            "Past tense",
+            "Future meaning in English",
+            "Present continuous",
+            "Past continuous",
+            "Future continuous",
+            "Present perfect",
+            "Past perfect",
+            "Future perfect",
+            "Present perfect continuous",
+            "Past perfect continuous",
+            "Sequence of tenses",
+            "Correct tense usage in context",
+            "Subject-verb agreement",
+            "Agreement with singular and plural subjects",
+            "Concord with collective nouns",
+            "Concord with compound subjects",
+            "Concord with indefinite pronouns",
+            "Proximity concord",
+            "Notional concord",
+            "Agreement after expressions of quantity",
+            "Agreement in either...or / neither...nor structures",
+            "Positive degree",
+            "Comparative degree",
+            "Superlative degree",
+            "Regular comparison forms",
+            "Irregular comparison forms",
+            "Comparing equals and unequals",
+            "Correct comparative structures",
+            "Misuse of comparison forms",
+            "Positive statement with negative tag",
+            "Negative statement with positive tag",
+            "Tag formation with auxiliaries",
+            "Tag formation without auxiliaries",
+            "Question tags with imperative sentences",
+            "Question tags with let's",
+            "Intonation patterns in question tags",
+            "Common errors in question tag formation",
+            "Full stop",
+            "Comma",
+            "Semicolon",
+            "Colon",
+            "Question mark",
+            "Exclamation mark",
+            "Apostrophe",
+            "Quotation marks",
+            "Hyphen",
+            "Capital letters",
+            "Paragraphing basics",
+            "Common spelling errors",
+            "British spelling forms",
+            "Confusable spellings",
+            "Correct written conventions"
+          ]
+        }
+      ]
+    },
+    "section_c": {
+      "name": "Oral Forms",
+      "total_questions": 10,
+      "buckets": [
+        {
+          "bucket": "oral_forms",
+          "label": "Oral Forms",
+          "question_count": 10,
+          "passage_based": false,
+          "selection_rule": "Shuffle eligible unseen questions and take 10.",
+          "question_types": [
+            "oral_forms_mcq",
+            "pronunciation_mcq"
+          ],
+          "source_topics": [
+            "Vowels",
+            "Consonants",
+            "Rhymes and Homophones",
+            "Word Stress",
+            "Intonation and Emphatic Stress"
+          ],
+          "source_subtopics": [
+            "Pure vowels (monophthongs)",
+            "Diphthongs",
+            "Short vowels",
+            "Long vowels",
+            "Identification of vowel sounds in words",
+            "Sound-symbol relationship",
+            "Distinguishing similar vowel sounds",
+            "Pronunciation practice through examples",
+            "Consonant sounds in English",
+            "Voiced and voiceless consonants",
+            "Consonant clusters",
+            "Nasal sounds",
+            "Fricatives",
+            "Plosives",
+            "Affricates",
+            "Liquids and semivowels",
+            "Identification of consonant sounds in words",
+            "Distinguishing similar consonant sounds",
+            "Rhyming words",
+            "Recognition of rhyme in pronunciation",
+            "Homophones",
+            "Words that sound alike but differ in meaning/spelling",
+            "Sound discrimination in spoken English",
+            "Avoiding confusion in pronunciation-based questions",
+            "Stress in monosyllabic words",
+            "Stress in polysyllabic words",
+            "Primary stress",
+            "Secondary stress",
+            "Stress placement in nouns",
+            "Stress placement in verbs",
+            "Stress shift due to word class",
+            "Stress in compound words",
+            "Correct accentuation of syllables",
+            "Rising intonation",
+            "Falling intonation",
+            "Rising-falling patterns",
+            "Intonation in statements",
+            "Intonation in questions",
+            "Intonation in commands and requests",
+            "Emphatic stress for meaning focus",
+            "Contrastive stress",
+            "Stress in connected speech",
+            "How stress changes meaning"
+          ]
+        }
+      ]
+    }
+  },
+  "selector_order": [
+    "comprehension_passage",
+    "cloze_passage",
+    "reading_text",
+    "sentence_interpretation",
+    "antonyms",
+    "synonyms",
+    "sentence_completion",
+    "oral_forms"
+  ],
+  "bucket_lookup": {
+    "Comprehension": "comprehension_passage",
+    "Summary": "reading_text",
+    "Cloze Test": "cloze_passage",
+    "Sentence Interpretation": "sentence_interpretation",
+    "Synonyms": "synonyms",
+    "Antonyms": "antonyms",
+    "Homonyms": "sentence_completion",
+    "Idioms and Figurative Expression": "sentence_completion",
+    "Word Classes and Their Functions": "sentence_completion",
+    "Sentence and Clause Patterns": "sentence_completion",
+    "Tense and Aspect": "sentence_completion",
+    "Concord": "sentence_completion",
+    "Degree of Comparison": "sentence_completion",
+    "Question Tags": "sentence_completion",
+    "Punctuation and Spelling": "sentence_completion",
+    "Vowels": "oral_forms",
+    "Consonants": "oral_forms",
+    "Rhymes and Homophones": "oral_forms",
+    "Word Stress": "oral_forms",
+    "Intonation and Emphatic Stress": "oral_forms"
+  }
+}
