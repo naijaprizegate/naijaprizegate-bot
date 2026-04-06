@@ -1,1 +1,3702 @@
-
+[
+  {
+    "id": "eng_13_q001",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Positive degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Of all the runners in the trial heat, Ada is as ___ as her elder sister,' the correct option is___",
+    "options": {
+      "A": "fast",
+      "B": "faster",
+      "C": "fastest",
+      "D": "more fast"
+    },
+    "answer": "A",
+    "answer_text": "fast",
+    "explanation": {
+      "question_restate": "In the sentence, 'Of all the runners in the trial heat, Ada is as ___ as her elder sister,' the correct option is___",
+      "principle": "The positive degree is used when two people or things are compared as equals, usually with the structure 'as ... as'.",
+      "steps": [
+        "The expression 'as ... as' signals equality, not superiority.",
+        "When equality is intended, the adjective remains in its base or positive form.",
+        "The base form of 'fast' is 'fast'.",
+        "Therefore, the correct sentence is 'Ada is as fast as her elder sister.'"
+      ],
+      "final_answer": "A. fast",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_degree",
+      "as_as",
+      "equality"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q002",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Positive degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This corridor is not so ___ as the main hall,' the correct option is___",
+    "options": {
+      "A": "wide",
+      "B": "wider",
+      "C": "widest",
+      "D": "more wider"
+    },
+    "answer": "A",
+    "answer_text": "wide",
+    "explanation": {
+      "question_restate": "In the sentence, 'This corridor is not so ___ as the main hall,' the correct option is___",
+      "principle": "The structure 'not so ... as' also takes the positive degree of the adjective.",
+      "steps": [
+        "The sentence is comparing two places using 'not so ... as'.",
+        "That structure does not take the comparative or superlative form.",
+        "It requires the plain adjective form.",
+        "So 'wide' is correct."
+      ],
+      "final_answer": "A. wide",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_degree",
+      "not_so_as",
+      "base_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q003",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Positive degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Her answer was as ___ as the examiner expected,' the correct option is___",
+    "options": {
+      "A": "clear",
+      "B": "clearer",
+      "C": "clearest",
+      "D": "more clearer"
+    },
+    "answer": "A",
+    "answer_text": "clear",
+    "explanation": {
+      "question_restate": "In the sentence, 'Her answer was as ___ as the examiner expected,' the correct option is___",
+      "principle": "The positive degree is the unchanged form of the adjective, and it is used in equality structures.",
+      "steps": [
+        "The pattern 'as ... as' shows that the level of clearness is being matched.",
+        "When two qualities are equal, the adjective stays in its base form.",
+        "The base form here is 'clear'.",
+        "Therefore, option A is correct."
+      ],
+      "final_answer": "A. clear",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_degree",
+      "equality",
+      "adjective_base"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q004",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Positive degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'No other path is so ___ as this one during the rainy season,' the correct option is___",
+    "options": {
+      "A": "muddy",
+      "B": "muddier",
+      "C": "muddiest",
+      "D": "more muddy"
+    },
+    "answer": "A",
+    "answer_text": "muddy",
+    "explanation": {
+      "question_restate": "In the sentence, 'No other path is so ___ as this one during the rainy season,' the correct option is___",
+      "principle": "The structure 'so ... as' takes the positive degree of the adjective.",
+      "steps": [
+        "The sentence does not require a comparative ending like '-er'.",
+        "It also does not need a superlative because it is not using 'the most' or 'the -est' pattern.",
+        "The fixed structure is 'so muddy as'.",
+        "Hence, 'muddy' is correct."
+      ],
+      "final_answer": "A. muddy",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_degree",
+      "so_as",
+      "base_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q005",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Positive degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The village road is as ___ at noon as it is at dawn,' the correct option is___",
+    "options": {
+      "A": "quiet",
+      "B": "quieter",
+      "C": "quietest",
+      "D": "more quieter"
+    },
+    "answer": "A",
+    "answer_text": "quiet",
+    "explanation": {
+      "question_restate": "In the sentence, 'The village road is as ___ at noon as it is at dawn,' the correct option is___",
+      "principle": "When equal degree is expressed, the positive form is used.",
+      "steps": [
+        "The words 'as ... as' compare the road at two times of the day on the same level.",
+        "This requires the simple adjective form.",
+        "The correct base adjective is 'quiet'.",
+        "So the answer is A."
+      ],
+      "final_answer": "A. quiet",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_degree",
+      "as_as",
+      "consistency"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q006",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Positive degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The junior clerk was not as ___ as the manager had feared,' the correct option is___",
+    "options": {
+      "A": "careless",
+      "B": "more careless",
+      "C": "most careless",
+      "D": "carelesser"
+    },
+    "answer": "A",
+    "answer_text": "careless",
+    "explanation": {
+      "question_restate": "In the sentence, 'The junior clerk was not as ___ as the manager had feared,' the correct option is___",
+      "principle": "The positive degree is used after 'as' and 'so' in equality or inequality structures.",
+      "steps": [
+        "The phrase 'not as ... as' is the clue here.",
+        "That pattern uses the positive degree, not the comparative or superlative.",
+        "The correct form is the base adjective 'careless'.",
+        "Thus, option A is correct."
+      ],
+      "final_answer": "A. careless",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_degree",
+      "not_as_as",
+      "standard_structure"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q007",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Positive degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This chair is as ___ as the one in the reception area,' the correct option is___",
+    "options": {
+      "A": "comfortable",
+      "B": "more comfortable",
+      "C": "most comfortable",
+      "D": "comfortablest"
+    },
+    "answer": "A",
+    "answer_text": "comfortable",
+    "explanation": {
+      "question_restate": "In the sentence, 'This chair is as ___ as the one in the reception area,' the correct option is___",
+      "principle": "Even long adjectives remain in the positive form in 'as ... as' structures.",
+      "steps": [
+        "The adjective 'comfortable' is long, but that does not change the rule.",
+        "Since the comparison is between equals, the positive degree is needed.",
+        "The sentence must therefore use 'comfortable', not 'more comfortable'.",
+        "So A is correct."
+      ],
+      "final_answer": "A. comfortable",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_degree",
+      "long_adjective",
+      "base_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q008",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Positive degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The two witnesses sounded equally ___ in their statements,' the correct option is___",
+    "options": {
+      "A": "convincing",
+      "B": "more convincing",
+      "C": "most convincing",
+      "D": "convincinger"
+    },
+    "answer": "A",
+    "answer_text": "convincing",
+    "explanation": {
+      "question_restate": "In the sentence, 'The two witnesses sounded equally ___ in their statements,' the correct option is___",
+      "principle": "Words like 'equally' often call for the base form rather than a comparative or superlative form.",
+      "steps": [
+        "The adverb 'equally' already signals the idea of equal degree.",
+        "Because equality is already expressed, the base adjective should follow.",
+        "The correct form is 'convincing'.",
+        "Therefore, option A is correct."
+      ],
+      "final_answer": "A. convincing",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_degree",
+      "equally",
+      "base_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q009",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Positive degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Her handwriting is just as ___ as her brother's,' the correct option is___",
+    "options": {
+      "A": "legible",
+      "B": "more legible",
+      "C": "most legible",
+      "D": "legibler"
+    },
+    "answer": "A",
+    "answer_text": "legible",
+    "explanation": {
+      "question_restate": "In the sentence, 'Her handwriting is just as ___ as her brother's,' the correct option is___",
+      "principle": "The modifier 'just' does not change the rule that 'as ... as' takes the positive degree.",
+      "steps": [
+        "The comparison here is balanced: one handwriting is equal to the other in legibility.",
+        "That means the adjective must remain in the base form.",
+        "The correct word is 'legible'.",
+        "Hence, A is correct."
+      ],
+      "final_answer": "A. legible",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_degree",
+      "just_as_as",
+      "base_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q010",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Positive degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The meal tasted as ___ as it looked,' the correct option is___",
+    "options": {
+      "A": "good",
+      "B": "better",
+      "C": "best",
+      "D": "more good"
+    },
+    "answer": "A",
+    "answer_text": "good",
+    "explanation": {
+      "question_restate": "In the sentence, 'The meal tasted as ___ as it looked,' the correct option is___",
+      "principle": "The positive degree is the correct form in 'as ... as' constructions, even for adjectives with irregular comparison forms.",
+      "steps": [
+        "The adjective 'good' has irregular comparative and superlative forms: better and best.",
+        "However, this sentence does not need those forms because the pattern is 'as ... as'.",
+        "So the positive form 'good' is required.",
+        "Therefore, A is correct."
+      ],
+      "final_answer": "A. good",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_degree",
+      "as_as",
+      "irregular_base"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q011",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Positive degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The younger child was no less ___ than his sister in class,' the correct option is___",
+    "options": {
+      "A": "brilliant",
+      "B": "more brilliant",
+      "C": "most brilliant",
+      "D": "brillianter"
+    },
+    "answer": "A",
+    "answer_text": "brilliant",
+    "explanation": {
+      "question_restate": "In the sentence, 'The younger child was no less ___ than his sister in class,' the correct option is___",
+      "principle": "In expressions of equal level like 'no less ... than', the base adjective is used.",
+      "steps": [
+        "The phrase 'no less ... than' does not call for a normal comparative adjective form.",
+        "Instead, it keeps the adjective in its plain form.",
+        "The suitable word is 'brilliant'.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. brilliant",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_degree",
+      "no_less_than",
+      "base_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q012",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Positive degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The two fabrics are nearly as ___ as each other,' the correct option is___",
+    "options": {
+      "A": "expensive",
+      "B": "more expensive",
+      "C": "most expensive",
+      "D": "expensiver"
+    },
+    "answer": "A",
+    "answer_text": "expensive",
+    "explanation": {
+      "question_restate": "In the sentence, 'The two fabrics are nearly as ___ as each other,' the correct option is___",
+      "principle": "Adverbs such as 'nearly' do not alter the basic rule of equality comparison.",
+      "steps": [
+        "The phrase 'nearly as ... as' still belongs to the positive-degree pattern.",
+        "That pattern requires the base form of the adjective.",
+        "So 'expensive' is the correct choice.",
+        "Option A is therefore correct."
+      ],
+      "final_answer": "A. expensive",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_degree",
+      "nearly_as_as",
+      "base_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q013",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The second proposal is ___ than the first,' the correct option is___",
+    "options": {
+      "A": "practical",
+      "B": "more practical",
+      "C": "most practical",
+      "D": "practicalest"
+    },
+    "answer": "B",
+    "answer_text": "more practical",
+    "explanation": {
+      "question_restate": "In the sentence, 'The second proposal is ___ than the first,' the correct option is___",
+      "principle": "The comparative degree is used when two people, ideas, or things are being compared directly.",
+      "steps": [
+        "The clue word is 'than'.",
+        "'Than' usually introduces a comparison between two items.",
+        "For long adjectives like 'practical', the comparative is formed with 'more'.",
+        "Therefore, 'more practical' is correct."
+      ],
+      "final_answer": "B. more practical",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comparative_degree",
+      "than",
+      "two_items"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q014",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This exercise is ___ than the one we attempted yesterday,' the correct option is___",
+    "options": {
+      "A": "easy",
+      "B": "easiest",
+      "C": "easier",
+      "D": "more easiest"
+    },
+    "answer": "C",
+    "answer_text": "easier",
+    "explanation": {
+      "question_restate": "In the sentence, 'This exercise is ___ than the one we attempted yesterday,' the correct option is___",
+      "principle": "Short adjectives usually form the comparative by adding '-er'.",
+      "steps": [
+        "The word 'than' signals a two-way comparison.",
+        "'Easy' is a short adjective, so its comparative is formed as 'easier'.",
+        "The superlative 'easiest' would compare one item with many, not one with another.",
+        "Hence, C is correct."
+      ],
+      "final_answer": "C. easier",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comparative_degree",
+      "short_adjective",
+      "than"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q015",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Her explanation sounded ___ than mine,' the correct option is___",
+    "options": {
+      "A": "clear",
+      "B": "clearer",
+      "C": "clearest",
+      "D": "more clearest"
+    },
+    "answer": "B",
+    "answer_text": "clearer",
+    "explanation": {
+      "question_restate": "In the sentence, 'Her explanation sounded ___ than mine,' the correct option is___",
+      "principle": "The comparative form is used when one item is measured against another.",
+      "steps": [
+        "The sentence compares 'her explanation' with 'mine'.",
+        "That is a comparison of two things.",
+        "The correct comparative of 'clear' is 'clearer'.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. clearer",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comparative_degree",
+      "-er_form",
+      "two_way_comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q016",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The new road is ___ than the old one during heavy rain,' the correct option is___",
+    "options": {
+      "A": "safe",
+      "B": "safest",
+      "C": "safer",
+      "D": "more safest"
+    },
+    "answer": "C",
+    "answer_text": "safer",
+    "explanation": {
+      "question_restate": "In the sentence, 'The new road is ___ than the old one during heavy rain,' the correct option is___",
+      "principle": "Comparative degree is required where the sentence compares exactly two alternatives.",
+      "steps": [
+        "The road being discussed is compared with another road.",
+        "That means a comparative adjective is needed.",
+        "The comparative of 'safe' is 'safer'.",
+        "Therefore, option C is correct."
+      ],
+      "final_answer": "C. safer",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comparative_degree",
+      "than",
+      "regular_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q017",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Amina speaks ___ than her cousin in public debates,' the correct option is___",
+    "options": {
+      "A": "confidently",
+      "B": "more confidently",
+      "C": "most confidently",
+      "D": "confidentliest"
+    },
+    "answer": "B",
+    "answer_text": "more confidently",
+    "explanation": {
+      "question_restate": "In the sentence, 'Amina speaks ___ than her cousin in public debates,' the correct option is___",
+      "principle": "Adverbs are also compared, and longer adverbs usually form the comparative with 'more'.",
+      "steps": [
+        "The word 'than' again signals comparison between two speakers.",
+        "The adverb being compared is 'confidently'.",
+        "Its correct comparative form is 'more confidently'.",
+        "So B is correct."
+      ],
+      "final_answer": "B. more confidently",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comparative_degree",
+      "adverb_comparison",
+      "than"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q018",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This route is ___ than that one, though both are rough,' the correct option is___",
+    "options": {
+      "A": "short",
+      "B": "shorter",
+      "C": "shortest",
+      "D": "more shortest"
+    },
+    "answer": "B",
+    "answer_text": "shorter",
+    "explanation": {
+      "question_restate": "In the sentence, 'This route is ___ than that one, though both are rough,' the correct option is___",
+      "principle": "The comparative degree is the correct form for comparing two items.",
+      "steps": [
+        "The two items are 'this route' and 'that one'.",
+        "Because only two things are being compared, the comparative is needed.",
+        "The comparative of 'short' is 'shorter'.",
+        "Thus, option B is correct."
+      ],
+      "final_answer": "B. shorter",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comparative_degree",
+      "two_routes",
+      "regular_short"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q019",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The teacher's second example was ___ than the first,' the correct option is___",
+    "options": {
+      "A": "illustrative",
+      "B": "more illustrative",
+      "C": "most illustrative",
+      "D": "illustrativer"
+    },
+    "answer": "B",
+    "answer_text": "more illustrative",
+    "explanation": {
+      "question_restate": "In the sentence, 'The teacher's second example was ___ than the first,' the correct option is___",
+      "principle": "Long adjectives usually form their comparative with 'more'.",
+      "steps": [
+        "The adjective 'illustrative' is not normally turned into '-er' form.",
+        "Since the sentence compares two examples, the comparative is needed.",
+        "The correct form is 'more illustrative'.",
+        "Therefore, B is correct."
+      ],
+      "final_answer": "B. more illustrative",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comparative_degree",
+      "long_adjective",
+      "more"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q020",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The river is ___ now than it was in May,' the correct option is___",
+    "options": {
+      "A": "deep",
+      "B": "deeper",
+      "C": "deepest",
+      "D": "more deepest"
+    },
+    "answer": "B",
+    "answer_text": "deeper",
+    "explanation": {
+      "question_restate": "In the sentence, 'The river is ___ now than it was in May,' the correct option is___",
+      "principle": "Comparison can also be made between two states or two times, and the comparative degree is used.",
+      "steps": [
+        "The sentence compares the river now with the river in May.",
+        "That is still a comparison between two states.",
+        "The comparative of 'deep' is 'deeper'.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. deeper",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comparative_degree",
+      "time_comparison",
+      "state_change"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q021",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'His recent poems are ___ than his early ones,' the correct option is___",
+    "options": {
+      "A": "mature",
+      "B": "maturer",
+      "C": "more mature",
+      "D": "most mature"
+    },
+    "answer": "C",
+    "answer_text": "more mature",
+    "explanation": {
+      "question_restate": "In the sentence, 'His recent poems are ___ than his early ones,' the correct option is___",
+      "principle": "Some adjectives can take either '-er' or 'more', but standard exam usage often prefers the more natural accepted form.",
+      "steps": [
+        "The sentence compares recent poems with early ones.",
+        "That calls for a comparative form.",
+        "Although some variation exists in usage, 'more mature' is the safer standard examination choice.",
+        "Therefore, C is correct."
+      ],
+      "final_answer": "C. more mature",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comparative_degree",
+      "accepted_usage",
+      "style"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q022",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The laboratory appears ___ than the classroom,' the correct option is___",
+    "options": {
+      "A": "quiet",
+      "B": "quieter",
+      "C": "quietest",
+      "D": "most quiet"
+    },
+    "answer": "B",
+    "answer_text": "quieter",
+    "explanation": {
+      "question_restate": "In the sentence, 'The laboratory appears ___ than the classroom,' the correct option is___",
+      "principle": "The comparative form is appropriate when two places are being compared.",
+      "steps": [
+        "The sentence compares the laboratory with the classroom.",
+        "That comparison involves two nouns only.",
+        "The comparative of 'quiet' is 'quieter'.",
+        "Hence, B is correct."
+      ],
+      "final_answer": "B. quieter",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comparative_degree",
+      "than",
+      "regular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q023",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'She arrived ___ than the rest of the panel members,' the correct option is___",
+    "options": {
+      "A": "early",
+      "B": "earliest",
+      "C": "earlier",
+      "D": "more earliest"
+    },
+    "answer": "C",
+    "answer_text": "earlier",
+    "explanation": {
+      "question_restate": "In the sentence, 'She arrived ___ than the rest of the panel members,' the correct option is___",
+      "principle": "Adverbs of time can also take comparative forms when two levels are compared.",
+      "steps": [
+        "The sentence compares her arrival time with that of others.",
+        "The correct comparative of 'early' is 'earlier'.",
+        "The superlative 'earliest' would point to one among all, which is not the needed structure here.",
+        "So C is correct."
+      ],
+      "final_answer": "C. earlier",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comparative_degree",
+      "adverb",
+      "time_comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q024",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This pattern is ___ than the previous one for beginners to follow,' the correct option is___",
+    "options": {
+      "A": "simple",
+      "B": "simpler",
+      "C": "simplest",
+      "D": "more simplest"
+    },
+    "answer": "B",
+    "answer_text": "simpler",
+    "explanation": {
+      "question_restate": "In the sentence, 'This pattern is ___ than the previous one for beginners to follow,' the correct option is___",
+      "principle": "Short adjectives generally form the comparative with '-er'.",
+      "steps": [
+        "The sentence compares this pattern with a previous one.",
+        "That is a two-item comparison.",
+        "The adjective 'simple' correctly becomes 'simpler'.",
+        "Therefore, option B is correct."
+      ],
+      "final_answer": "B. simpler",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comparative_degree",
+      "regular_form",
+      "instructional"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q025",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Superlative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Of the three essays, Halima's was the ___,' the correct option is___",
+    "options": {
+      "A": "good",
+      "B": "better",
+      "C": "best",
+      "D": "more good"
+    },
+    "answer": "C",
+    "answer_text": "best",
+    "explanation": {
+      "question_restate": "In the sentence, 'Of the three essays, Halima's was the ___,' the correct option is___",
+      "principle": "The superlative degree is used when one item is shown to stand above all others in a group of three or more.",
+      "steps": [
+        "The phrase 'Of the three essays' tells us that one is being selected from a group.",
+        "That means the superlative degree is needed.",
+        "The adjective 'good' has the irregular superlative 'best'.",
+        "Therefore, C is correct."
+      ],
+      "final_answer": "C. best",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "superlative_degree",
+      "three_or_more",
+      "irregular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q026",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Superlative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This is the ___ route to the village during the dry season,' the correct option is___",
+    "options": {
+      "A": "short",
+      "B": "shorter",
+      "C": "shortest",
+      "D": "more shorter"
+    },
+    "answer": "C",
+    "answer_text": "shortest",
+    "explanation": {
+      "question_restate": "In the sentence, 'This is the ___ route to the village during the dry season,' the correct option is___",
+      "principle": "The superlative degree is often marked by 'the' and is used to identify one item as highest or lowest in a group.",
+      "steps": [
+        "The phrase 'This is the ... route' shows selection of one route above all others.",
+        "For short adjectives, the superlative is usually formed with '-est'.",
+        "So 'shortest' is correct.",
+        "Therefore, C is the right answer."
+      ],
+      "final_answer": "C. shortest",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "superlative_degree",
+      "the",
+      "regular_superlative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q027",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Superlative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Among all the candidates, she appeared the ___ prepared,' the correct option is___",
+    "options": {
+      "A": "well",
+      "B": "better",
+      "C": "best",
+      "D": "more well"
+    },
+    "answer": "C",
+    "answer_text": "best",
+    "explanation": {
+      "question_restate": "In the sentence, 'Among all the candidates, she appeared the ___ prepared,' the correct option is___",
+      "principle": "When one person is being identified as highest in a whole group, the superlative is required.",
+      "steps": [
+        "The phrase 'Among all the candidates' shows group comparison.",
+        "The adjective/adverb family here is irregular: well, better, best.",
+        "The correct superlative is 'best'.",
+        "Hence, C is correct."
+      ],
+      "final_answer": "C. best",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "superlative_degree",
+      "among_all",
+      "irregular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q028",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Superlative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'That was the ___ speech delivered at the ceremony,' the correct option is___",
+    "options": {
+      "A": "moving",
+      "B": "more moving",
+      "C": "most moving",
+      "D": "movinger"
+    },
+    "answer": "C",
+    "answer_text": "most moving",
+    "explanation": {
+      "question_restate": "In the sentence, 'That was the ___ speech delivered at the ceremony,' the correct option is___",
+      "principle": "Long adjectives and many participial adjectives usually form the superlative with 'most'.",
+      "steps": [
+        "The sentence selects one speech above all others at the ceremony.",
+        "That calls for the superlative degree.",
+        "The adjective 'moving' therefore becomes 'most moving'.",
+        "So C is correct."
+      ],
+      "final_answer": "C. most moving",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "superlative_degree",
+      "long_adjective",
+      "most"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q029",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Superlative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Mount Koto is the ___ point in the district,' the correct option is___",
+    "options": {
+      "A": "high",
+      "B": "higher",
+      "C": "highest",
+      "D": "more high"
+    },
+    "answer": "C",
+    "answer_text": "highest",
+    "explanation": {
+      "question_restate": "In the sentence, 'Mount Koto is the ___ point in the district,' the correct option is___",
+      "principle": "The superlative degree is used where one thing is at the extreme end of a scale within a set.",
+      "steps": [
+        "The phrase 'the ... point in the district' suggests the topmost level in a group.",
+        "That requires the superlative, not the comparative.",
+        "The superlative of 'high' is 'highest'.",
+        "Therefore, C is correct."
+      ],
+      "final_answer": "C. highest",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "superlative_degree",
+      "highest_point",
+      "regular_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q030",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Superlative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Of all the solutions suggested, theirs was the ___ acceptable,' the correct option is___",
+    "options": {
+      "A": "acceptable",
+      "B": "more acceptable",
+      "C": "most acceptable",
+      "D": "acceptablest"
+    },
+    "answer": "C",
+    "answer_text": "most acceptable",
+    "explanation": {
+      "question_restate": "In the sentence, 'Of all the solutions suggested, theirs was the ___ acceptable,' the correct option is___",
+      "principle": "Long adjectives often form the superlative with 'most'.",
+      "steps": [
+        "The words 'Of all the solutions' show a group comparison.",
+        "This means one solution is being selected as the top one.",
+        "The correct superlative form is 'most acceptable'.",
+        "So option C is correct."
+      ],
+      "final_answer": "C. most acceptable",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "superlative_degree",
+      "long_adjective",
+      "most_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q031",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Superlative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'He is the ___ player on the school team this season,' the correct option is___",
+    "options": {
+      "A": "valuable",
+      "B": "more valuable",
+      "C": "most valuable",
+      "D": "valuablest"
+    },
+    "answer": "C",
+    "answer_text": "most valuable",
+    "explanation": {
+      "question_restate": "In the sentence, 'He is the ___ player on the school team this season,' the correct option is___",
+      "principle": "When one member of a group is singled out above the rest, the superlative is appropriate.",
+      "steps": [
+        "The school team contains many players, and one is being singled out.",
+        "That requires the superlative degree.",
+        "The correct form of 'valuable' in the superlative is 'most valuable'.",
+        "Therefore, C is correct."
+      ],
+      "final_answer": "C. most valuable",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "superlative_degree",
+      "team_group",
+      "most"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q032",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Superlative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This is the ___ excuse I have heard today,' the correct option is___",
+    "options": {
+      "A": "weak",
+      "B": "weaker",
+      "C": "weakest",
+      "D": "more weaker"
+    },
+    "answer": "C",
+    "answer_text": "weakest",
+    "explanation": {
+      "question_restate": "In the sentence, 'This is the ___ excuse I have heard today,' the correct option is___",
+      "principle": "The superlative is used to identify the lowest or highest degree within a set.",
+      "steps": [
+        "The speaker compares one excuse with all the others heard today.",
+        "That is a group comparison, so the superlative is needed.",
+        "The superlative of 'weak' is 'weakest'.",
+        "Thus, C is correct."
+      ],
+      "final_answer": "C. weakest",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "superlative_degree",
+      "heard_today",
+      "regular_short"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q033",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Superlative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Of the four buildings, the library is the ___ maintained,' the correct option is___",
+    "options": {
+      "A": "well",
+      "B": "better",
+      "C": "best",
+      "D": "good"
+    },
+    "answer": "C",
+    "answer_text": "best",
+    "explanation": {
+      "question_restate": "In the sentence, 'Of the four buildings, the library is the ___ maintained,' the correct option is___",
+      "principle": "Irregular forms must be remembered because they do not follow normal '-er' and '-est' patterns.",
+      "steps": [
+        "The phrase 'Of the four buildings' shows group comparison.",
+        "The expression needed is based on 'well' in the sense of maintenance quality.",
+        "The correct superlative is 'best'.",
+        "So option C is correct."
+      ],
+      "final_answer": "C. best",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "superlative_degree",
+      "irregular_adverbial",
+      "best"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q034",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Superlative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'That was the ___ mistake the clerk could have made,' the correct option is___",
+    "options": {
+      "A": "bad",
+      "B": "worse",
+      "C": "worst",
+      "D": "most bad"
+    },
+    "answer": "C",
+    "answer_text": "worst",
+    "explanation": {
+      "question_restate": "In the sentence, 'That was the ___ mistake the clerk could have made,' the correct option is___",
+      "principle": "The adjective 'bad' has irregular comparison forms: worse and worst.",
+      "steps": [
+        "The phrase 'the ... mistake' signals the superlative.",
+        "Since 'bad' is irregular, we do not use 'baddest' in standard examination grammar.",
+        "Its correct superlative is 'worst'.",
+        "Therefore, C is correct."
+      ],
+      "final_answer": "C. worst",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "superlative_degree",
+      "irregular_bad",
+      "worst"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q035",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Superlative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'She gave the ___ account of the incident among the reporters,' the correct option is___",
+    "options": {
+      "A": "accurate",
+      "B": "more accurate",
+      "C": "most accurate",
+      "D": "accurater"
+    },
+    "answer": "C",
+    "answer_text": "most accurate",
+    "explanation": {
+      "question_restate": "In the sentence, 'She gave the ___ account of the incident among the reporters,' the correct option is___",
+      "principle": "The superlative identifies one member as highest in quality among a group.",
+      "steps": [
+        "The group here is 'the reporters'.",
+        "One account is being selected above all the rest.",
+        "The adjective 'accurate' therefore takes the superlative form 'most accurate'.",
+        "Hence, C is correct."
+      ],
+      "final_answer": "C. most accurate",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "superlative_degree",
+      "among_group",
+      "most"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q036",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Superlative degree",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This is the ___ river crossing in the region,' the correct option is___",
+    "options": {
+      "A": "dangerous",
+      "B": "more dangerous",
+      "C": "most dangerous",
+      "D": "dangerouser"
+    },
+    "answer": "C",
+    "answer_text": "most dangerous",
+    "explanation": {
+      "question_restate": "In the sentence, 'This is the ___ river crossing in the region,' the correct option is___",
+      "principle": "Long adjectives usually take 'most' in the superlative.",
+      "steps": [
+        "The sentence identifies one crossing as having the highest degree of danger in the region.",
+        "That calls for a superlative form.",
+        "The correct form is 'most dangerous'.",
+        "So C is the answer."
+      ],
+      "final_answer": "C. most dangerous",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "superlative_degree",
+      "regional_group",
+      "most_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q037",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Regular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The second film was ___ than the first,' the correct option is___",
+    "options": {
+      "A": "funny",
+      "B": "funnier",
+      "C": "funniest",
+      "D": "more funny"
+    },
+    "answer": "B",
+    "answer_text": "funnier",
+    "explanation": {
+      "question_restate": "In the sentence, 'The second film was ___ than the first,' the correct option is___",
+      "principle": "Many regular adjectives form their comparative by predictable spelling rules such as changing '-y' to '-ier'.",
+      "steps": [
+        "The sentence compares two films, so the comparative degree is needed.",
+        "The adjective 'funny' ends in 'y' after a consonant.",
+        "That 'y' changes to 'i' before adding '-er', giving 'funnier'.",
+        "Therefore, B is correct."
+      ],
+      "final_answer": "B. funnier",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "regular_comparison",
+      "y_to_ier",
+      "comparative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q038",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Regular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This lane is the ___ of the three passages,' the correct option is___",
+    "options": {
+      "A": "narrow",
+      "B": "narrower",
+      "C": "narrowest",
+      "D": "more narrow"
+    },
+    "answer": "C",
+    "answer_text": "narrowest",
+    "explanation": {
+      "question_restate": "In the sentence, 'This lane is the ___ of the three passages,' the correct option is___",
+      "principle": "Short regular adjectives often form the superlative by adding '-est'.",
+      "steps": [
+        "The phrase 'of the three passages' shows comparison within a group.",
+        "That means the superlative is needed.",
+        "The adjective 'narrow' therefore becomes 'narrowest'.",
+        "So C is correct."
+      ],
+      "final_answer": "C. narrowest",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "regular_comparison",
+      "est",
+      "superlative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q039",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Regular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The weather became ___ as evening approached,' the correct option is___",
+    "options": {
+      "A": "cool",
+      "B": "cooler",
+      "C": "coolest",
+      "D": "more coolest"
+    },
+    "answer": "B",
+    "answer_text": "cooler",
+    "explanation": {
+      "question_restate": "In the sentence, 'The weather became ___ as evening approached,' the correct option is___",
+      "principle": "Regular short adjectives often form the comparative with '-er'.",
+      "steps": [
+        "The sentence shows a change from one state to another.",
+        "That naturally requires a comparative sense.",
+        "The comparative of 'cool' is 'cooler'.",
+        "Hence, B is correct."
+      ],
+      "final_answer": "B. cooler",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "regular_comparison",
+      "state_change",
+      "er"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q040",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Regular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This is the ___ answer in the entire script,' the correct option is___",
+    "options": {
+      "A": "simple",
+      "B": "simpler",
+      "C": "simplest",
+      "D": "more simpler"
+    },
+    "answer": "C",
+    "answer_text": "simplest",
+    "explanation": {
+      "question_restate": "In the sentence, 'This is the ___ answer in the entire script,' the correct option is___",
+      "principle": "For many short adjectives, the superlative takes '-est'.",
+      "steps": [
+        "The phrase 'in the entire script' suggests comparison with all other answers in the script.",
+        "That requires the superlative degree.",
+        "The superlative of 'simple' is 'simplest'.",
+        "Therefore, C is correct."
+      ],
+      "final_answer": "C. simplest",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "regular_comparison",
+      "short_adj",
+      "superlative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q041",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Regular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The later edition is ___ than the earlier one,' the correct option is___",
+    "options": {
+      "A": "cheap",
+      "B": "cheaper",
+      "C": "cheapest",
+      "D": "more cheapest"
+    },
+    "answer": "B",
+    "answer_text": "cheaper",
+    "explanation": {
+      "question_restate": "In the sentence, 'The later edition is ___ than the earlier one,' the correct option is___",
+      "principle": "Short adjectives like 'cheap' regularly take '-er' in the comparative.",
+      "steps": [
+        "The sentence compares two editions.",
+        "That means a comparative adjective is required.",
+        "The correct comparative of 'cheap' is 'cheaper'.",
+        "So B is correct."
+      ],
+      "final_answer": "B. cheaper",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "regular_comparison",
+      "cheap",
+      "comparative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q042",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Regular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'He chose the ___ seat near the window,' the correct option is___",
+    "options": {
+      "A": "close",
+      "B": "closer",
+      "C": "closest",
+      "D": "more closer"
+    },
+    "answer": "C",
+    "answer_text": "closest",
+    "explanation": {
+      "question_restate": "In the sentence, 'He chose the ___ seat near the window,' the correct option is___",
+      "principle": "The superlative degree is needed when selecting one item from several.",
+      "steps": [
+        "The speaker is choosing one seat as nearest the window.",
+        "That requires the superlative form.",
+        "The regular superlative of 'close' is 'closest'.",
+        "Hence, C is correct."
+      ],
+      "final_answer": "C. closest",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "regular_comparison",
+      "closest",
+      "selection_from_group"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q043",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Regular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This carton is ___ than the previous one,' the correct option is___",
+    "options": {
+      "A": "heavy",
+      "B": "heavier",
+      "C": "heaviest",
+      "D": "more heavy"
+    },
+    "answer": "B",
+    "answer_text": "heavier",
+    "explanation": {
+      "question_restate": "In the sentence, 'This carton is ___ than the previous one,' the correct option is___",
+      "principle": "Adjectives ending in consonant + y often form the comparative by changing y to i and adding -er.",
+      "steps": [
+        "The comparison is between two cartons.",
+        "The adjective 'heavy' follows the regular spelling rule.",
+        "Its comparative form is 'heavier'.",
+        "Therefore, B is correct."
+      ],
+      "final_answer": "B. heavier",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "regular_comparison",
+      "y_change",
+      "comparative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q044",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Regular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Of all the roads we inspected, this one is the ___,' the correct option is___",
+    "options": {
+      "A": "dusty",
+      "B": "dustier",
+      "C": "dustiest",
+      "D": "more dusty"
+    },
+    "answer": "C",
+    "answer_text": "dustiest",
+    "explanation": {
+      "question_restate": "In the sentence, 'Of all the roads we inspected, this one is the ___,' the correct option is___",
+      "principle": "Regular adjectives ending in consonant + y form the superlative by changing y to i and adding -est.",
+      "steps": [
+        "The phrase 'Of all the roads' signals superlative comparison.",
+        "'Dusty' therefore becomes 'dustiest'.",
+        "The comparative 'dustier' would be wrong because more than two roads are involved.",
+        "So option C is correct."
+      ],
+      "final_answer": "C. dustiest",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "regular_comparison",
+      "y_change_superlative",
+      "group_comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q045",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Regular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The market looked ___ after the renovation,' the correct option is___",
+    "options": {
+      "A": "busy",
+      "B": "busier",
+      "C": "busiest",
+      "D": "more busiest"
+    },
+    "answer": "B",
+    "answer_text": "busier",
+    "explanation": {
+      "question_restate": "In the sentence, 'The market looked ___ after the renovation,' the correct option is___",
+      "principle": "A change from one condition to another often takes the comparative form.",
+      "steps": [
+        "The sentence suggests the market became more busy than before.",
+        "'Busy' follows the consonant + y rule.",
+        "Its comparative form is 'busier'.",
+        "Thus, B is correct."
+      ],
+      "final_answer": "B. busier",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "regular_comparison",
+      "state_change",
+      "comparative_y"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q046",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Regular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'That is the ___ room on the corridor,' the correct option is___",
+    "options": {
+      "A": "large",
+      "B": "larger",
+      "C": "largest",
+      "D": "more larger"
+    },
+    "answer": "C",
+    "answer_text": "largest",
+    "explanation": {
+      "question_restate": "In the sentence, 'That is the ___ room on the corridor,' the correct option is___",
+      "principle": "Short regular adjectives take '-est' in the superlative.",
+      "steps": [
+        "The sentence identifies one room as bigger than all the others on the corridor.",
+        "That requires the superlative form.",
+        "The correct form is 'largest'.",
+        "Hence, C is correct."
+      ],
+      "final_answer": "C. largest",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "regular_comparison",
+      "largest",
+      "superlative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q047",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Regular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The third attempt was ___ than the second,' the correct option is___",
+    "options": {
+      "A": "brave",
+      "B": "braver",
+      "C": "bravest",
+      "D": "more bravest"
+    },
+    "answer": "B",
+    "answer_text": "braver",
+    "explanation": {
+      "question_restate": "In the sentence, 'The third attempt was ___ than the second,' the correct option is___",
+      "principle": "Regular one-syllable adjectives typically form the comparative with '-er'.",
+      "steps": [
+        "The sentence compares the third attempt with the second.",
+        "That is a two-item comparison.",
+        "The comparative of 'brave' is 'braver'.",
+        "So B is correct."
+      ],
+      "final_answer": "B. braver",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "regular_comparison",
+      "comparative_regular",
+      "braver"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q048",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Regular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'She gave the ___ smile in the photograph,' the correct option is___",
+    "options": {
+      "A": "warm",
+      "B": "warmer",
+      "C": "warmest",
+      "D": "more warm"
+    },
+    "answer": "C",
+    "answer_text": "warmest",
+    "explanation": {
+      "question_restate": "In the sentence, 'She gave the ___ smile in the photograph,' the correct option is___",
+      "principle": "A superlative is used when one item is singled out as highest in degree in a set.",
+      "steps": [
+        "The sentence points to one smile as the one with the greatest warmth among possible smiles in the set.",
+        "That requires the superlative form.",
+        "The correct word is 'warmest'.",
+        "Therefore, C is correct."
+      ],
+      "final_answer": "C. warmest",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "regular_comparison",
+      "superlative_regular",
+      "warmest"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q049",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Irregular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Her second essay was ___ than the first,' the correct option is___",
+    "options": {
+      "A": "good",
+      "B": "better",
+      "C": "best",
+      "D": "gooder"
+    },
+    "answer": "B",
+    "answer_text": "better",
+    "explanation": {
+      "question_restate": "In the sentence, 'Her second essay was ___ than the first,' the correct option is___",
+      "principle": "Some adjectives have irregular comparison forms and must be memorized because they do not take normal '-er' or '-est' endings.",
+      "steps": [
+        "The adjective 'good' forms its comparative irregularly.",
+        "It becomes 'better', not 'gooder'.",
+        "Since the sentence compares two essays, the comparative is required.",
+        "Therefore, B is correct."
+      ],
+      "final_answer": "B. better",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "irregular_comparison",
+      "good_better_best",
+      "comparative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q050",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Irregular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This is the ___ result we have recorded so far,' the correct option is___",
+    "options": {
+      "A": "good",
+      "B": "better",
+      "C": "best",
+      "D": "goodest"
+    },
+    "answer": "C",
+    "answer_text": "best",
+    "explanation": {
+      "question_restate": "In the sentence, 'This is the ___ result we have recorded so far,' the correct option is___",
+      "principle": "The superlative of 'good' is 'best'.",
+      "steps": [
+        "The phrase 'so far' shows that one result is being judged against all previous results.",
+        "That means the superlative is required.",
+        "The correct irregular superlative is 'best'.",
+        "Hence, C is correct."
+      ],
+      "final_answer": "C. best",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "irregular_comparison",
+      "best",
+      "superlative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q051",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Irregular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The patient's condition looked ___ this morning than last night,' the correct option is___",
+    "options": {
+      "A": "bad",
+      "B": "worse",
+      "C": "worst",
+      "D": "badder"
+    },
+    "answer": "B",
+    "answer_text": "worse",
+    "explanation": {
+      "question_restate": "In the sentence, 'The patient's condition looked ___ this morning than last night,' the correct option is___",
+      "principle": "The adjective 'bad' compares irregularly as worse and worst.",
+      "steps": [
+        "The sentence compares two times: this morning and last night.",
+        "That requires the comparative degree.",
+        "The comparative of 'bad' is 'worse'.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. worse",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "irregular_comparison",
+      "bad_worse_worst",
+      "comparative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q052",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Irregular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'That was the ___ excuse offered by any of the players,' the correct option is___",
+    "options": {
+      "A": "bad",
+      "B": "worse",
+      "C": "worst",
+      "D": "baddest"
+    },
+    "answer": "C",
+    "answer_text": "worst",
+    "explanation": {
+      "question_restate": "In the sentence, 'That was the ___ excuse offered by any of the players,' the correct option is___",
+      "principle": "The superlative of 'bad' is 'worst', not 'baddest' in formal exam English.",
+      "steps": [
+        "The sentence picks one excuse out of many.",
+        "That calls for the superlative form.",
+        "The correct irregular superlative is 'worst'.",
+        "Therefore, C is correct."
+      ],
+      "final_answer": "C. worst",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "irregular_comparison",
+      "worst",
+      "superlative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q053",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Irregular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'He arrived ___ than I expected,' the correct option is___",
+    "options": {
+      "A": "late",
+      "B": "later",
+      "C": "latest",
+      "D": "more late"
+    },
+    "answer": "B",
+    "answer_text": "later",
+    "explanation": {
+      "question_restate": "In the sentence, 'He arrived ___ than I expected,' the correct option is___",
+      "principle": "Some time-related adjectives and adverbs have established comparison forms that should be used carefully.",
+      "steps": [
+        "The sentence compares actual arrival with expected arrival.",
+        "That creates a comparative meaning.",
+        "The correct comparative form of 'late' here is 'later'.",
+        "So B is correct."
+      ],
+      "final_answer": "B. later",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "irregular_comparison",
+      "late_later_latest",
+      "comparative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q054",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Irregular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Of the three applicants, she submitted her form the ___,' the correct option is___",
+    "options": {
+      "A": "late",
+      "B": "later",
+      "C": "latest",
+      "D": "more late"
+    },
+    "answer": "C",
+    "answer_text": "latest",
+    "explanation": {
+      "question_restate": "In the sentence, 'Of the three applicants, she submitted her form the ___,' the correct option is___",
+      "principle": "The superlative of 'late' in ordinary sequence comparison is 'latest'.",
+      "steps": [
+        "The sentence compares three applicants.",
+        "One is being identified as last in time.",
+        "That requires the superlative form 'latest'.",
+        "Therefore, C is correct."
+      ],
+      "final_answer": "C. latest",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "irregular_comparison",
+      "latest",
+      "superlative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q055",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Irregular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The younger child behaved ___ than his elder brother at the event,' the correct option is___",
+    "options": {
+      "A": "well",
+      "B": "better",
+      "C": "best",
+      "D": "more well"
+    },
+    "answer": "B",
+    "answer_text": "better",
+    "explanation": {
+      "question_restate": "In the sentence, 'The younger child behaved ___ than his elder brother at the event,' the correct option is___",
+      "principle": "The adverb 'well' has irregular comparison forms: better and best.",
+      "steps": [
+        "The sentence compares two children.",
+        "That requires a comparative form.",
+        "The correct comparative of 'well' is 'better'.",
+        "Hence, B is correct."
+      ],
+      "final_answer": "B. better",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "irregular_comparison",
+      "well_better_best",
+      "adverb"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q056",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Irregular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Of all the dancers, Teni performed the ___,' the correct option is___",
+    "options": {
+      "A": "well",
+      "B": "better",
+      "C": "best",
+      "D": "good"
+    },
+    "answer": "C",
+    "answer_text": "best",
+    "explanation": {
+      "question_restate": "In the sentence, 'Of all the dancers, Teni performed the ___,' the correct option is___",
+      "principle": "The superlative of 'well' is 'best'.",
+      "steps": [
+        "The phrase 'Of all the dancers' shows group comparison.",
+        "That means the superlative must be used.",
+        "The correct form is 'best'.",
+        "So C is correct."
+      ],
+      "final_answer": "C. best",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "irregular_comparison",
+      "best",
+      "adverb_superlative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q057",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Irregular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The hunter moved ___ into the forest than the others,' the correct option is___",
+    "options": {
+      "A": "far",
+      "B": "farther",
+      "C": "farthest",
+      "D": "more far"
+    },
+    "answer": "B",
+    "answer_text": "farther",
+    "explanation": {
+      "question_restate": "In the sentence, 'The hunter moved ___ into the forest than the others,' the correct option is___",
+      "principle": "The adjective or adverb 'far' has irregular comparison forms such as farther/farthest in distance contexts.",
+      "steps": [
+        "The sentence compares the movement of one hunter with that of others.",
+        "That requires a comparative form.",
+        "The accepted answer here is 'farther'.",
+        "Therefore, B is correct."
+      ],
+      "final_answer": "B. farther",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "irregular_comparison",
+      "far_farther_farthest",
+      "comparative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q058",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Irregular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'That village is the ___ point our team reached on foot,' the correct option is___",
+    "options": {
+      "A": "far",
+      "B": "farther",
+      "C": "farthest",
+      "D": "more far"
+    },
+    "answer": "C",
+    "answer_text": "farthest",
+    "explanation": {
+      "question_restate": "In the sentence, 'That village is the ___ point our team reached on foot,' the correct option is___",
+      "principle": "The superlative of 'far' in distance comparison is commonly 'farthest'.",
+      "steps": [
+        "The sentence identifies the greatest distance reached.",
+        "That is a superlative idea.",
+        "So the correct word is 'farthest'.",
+        "Hence, option C is correct."
+      ],
+      "final_answer": "C. farthest",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "irregular_comparison",
+      "farthest",
+      "superlative_distance"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q059",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Irregular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This question is ___ than the last one,' the correct option is___",
+    "options": {
+      "A": "little",
+      "B": "less",
+      "C": "least",
+      "D": "littler"
+    },
+    "answer": "B",
+    "answer_text": "less",
+    "explanation": {
+      "question_restate": "In the sentence, 'This question is ___ than the last one,' the correct option is___",
+      "principle": "The adjective or determiner 'little' can compare irregularly as less and least when it refers to amount or degree.",
+      "steps": [
+        "The sentence compares the degree of difficulty of two questions.",
+        "That needs a comparative form.",
+        "The correct irregular comparative here is 'less'.",
+        "So B is correct."
+      ],
+      "final_answer": "B. less",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "irregular_comparison",
+      "little_less_least",
+      "comparative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q060",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Irregular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This is the ___ amount of water the tank has held all week,' the correct option is___",
+    "options": {
+      "A": "little",
+      "B": "less",
+      "C": "least",
+      "D": "littlest"
+    },
+    "answer": "C",
+    "answer_text": "least",
+    "explanation": {
+      "question_restate": "In the sentence, 'This is the ___ amount of water the tank has held all week,' the correct option is___",
+      "principle": "The superlative of 'little' in amount is 'least'.",
+      "steps": [
+        "The sentence refers to all the times within the week.",
+        "That makes it a group or range comparison.",
+        "The correct irregular superlative is 'least'.",
+        "Therefore, C is correct."
+      ],
+      "final_answer": "C. least",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "irregular_comparison",
+      "least",
+      "superlative_amount"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q061",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Irregular comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The second crop looked ___ than the first after the fertilizer was applied,' the correct option is___",
+    "options": {
+      "A": "good",
+      "B": "better",
+      "C": "best",
+      "D": "gooder"
+    },
+    "answer": "B",
+    "answer_text": "better",
+    "explanation": {
+      "question_restate": "In the sentence, 'The second crop looked ___ than the first after the fertilizer was applied,' the correct option is___",
+      "principle": "Irregular comparison forms should be used even in ordinary contextual sentences.",
+      "steps": [
+        "The crop after treatment is being compared with the earlier crop.",
+        "That is a comparison of two states.",
+        "The correct irregular comparative of 'good' is 'better'.",
+        "Hence, B is correct."
+      ],
+      "final_answer": "B. better",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "irregular_comparison",
+      "better",
+      "contextual_comparative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q062",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparing equals and unequals",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This engine is not as ___ as the older model,' the correct option is___",
+    "options": {
+      "A": "reliable",
+      "B": "more reliable",
+      "C": "most reliable",
+      "D": "reliablest"
+    },
+    "answer": "A",
+    "answer_text": "reliable",
+    "explanation": {
+      "question_restate": "In the sentence, 'This engine is not as ___ as the older model,' the correct option is___",
+      "principle": "Comparing unequals with 'not as ... as' still requires the positive degree, not the comparative form.",
+      "steps": [
+        "The structure is 'not as ... as'.",
+        "That pattern uses the base adjective.",
+        "The correct adjective is therefore 'reliable'.",
+        "So A is correct."
+      ],
+      "final_answer": "A. reliable",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "equals_unequals",
+      "not_as_as",
+      "base_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q063",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparing equals and unequals",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Her current office is just as ___ as the former one,' the correct option is___",
+    "options": {
+      "A": "spacious",
+      "B": "more spacious",
+      "C": "most spacious",
+      "D": "spaciousest"
+    },
+    "answer": "A",
+    "answer_text": "spacious",
+    "explanation": {
+      "question_restate": "In the sentence, 'Her current office is just as ___ as the former one,' the correct option is___",
+      "principle": "When two items are said to be equal in degree, the positive form is used.",
+      "steps": [
+        "The phrase 'just as ... as' signals equal comparison.",
+        "That means the adjective should remain in the positive form.",
+        "The correct answer is 'spacious'.",
+        "Therefore, option A is correct."
+      ],
+      "final_answer": "A. spacious",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "equals_unequals",
+      "equal_comparison",
+      "positive"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q064",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparing equals and unequals",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The lecture was less ___ than we had feared,' the correct option is___",
+    "options": {
+      "A": "confusing",
+      "B": "more confusing",
+      "C": "most confusing",
+      "D": "confusinger"
+    },
+    "answer": "A",
+    "answer_text": "confusing",
+    "explanation": {
+      "question_restate": "In the sentence, 'The lecture was less ___ than we had feared,' the correct option is___",
+      "principle": "After 'less', the adjective usually remains in its plain form because 'less' itself carries the comparative idea.",
+      "steps": [
+        "The word 'less' already expresses comparison.",
+        "So the adjective does not need another comparative marker.",
+        "The correct structure is 'less confusing', not 'less more confusing'.",
+        "Hence, A is correct."
+      ],
+      "final_answer": "A. confusing",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "equals_unequals",
+      "less_than",
+      "base_form_after_less"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q065",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparing equals and unequals",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The apprentice is as ___ as his master in handling the machine,' the correct option is___",
+    "options": {
+      "A": "skillful",
+      "B": "more skillful",
+      "C": "most skillful",
+      "D": "skillfuller"
+    },
+    "answer": "A",
+    "answer_text": "skillful",
+    "explanation": {
+      "question_restate": "In the sentence, 'The apprentice is as ___ as his master in handling the machine,' the correct option is___",
+      "principle": "Equality comparison requires the positive degree.",
+      "steps": [
+        "The phrase 'as ... as' is the key structure.",
+        "That means the adjective must stay in its base form.",
+        "The correct word is 'skillful'.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. skillful",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "equals_unequals",
+      "as_as",
+      "base_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q066",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparing equals and unequals",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'No other speaker was as ___ as the keynote presenter,' the correct option is___",
+    "options": {
+      "A": "persuasive",
+      "B": "more persuasive",
+      "C": "most persuasive",
+      "D": "persuasivest"
+    },
+    "answer": "A",
+    "answer_text": "persuasive",
+    "explanation": {
+      "question_restate": "In the sentence, 'No other speaker was as ___ as the keynote presenter,' the correct option is___",
+      "principle": "Negative equality comparisons still use the positive degree.",
+      "steps": [
+        "The sentence says no other speaker matched the keynote presenter in persuasiveness.",
+        "The structure used is still based on 'as ... as'.",
+        "Therefore, the adjective must remain in the base form.",
+        "So A is correct."
+      ],
+      "final_answer": "A. persuasive",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "equals_unequals",
+      "negative_equality",
+      "base_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q067",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparing equals and unequals",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This approach is less ___ than the previous one, though it is safer,' the correct option is___",
+    "options": {
+      "A": "expensive",
+      "B": "more expensive",
+      "C": "most expensive",
+      "D": "expensiver"
+    },
+    "answer": "A",
+    "answer_text": "expensive",
+    "explanation": {
+      "question_restate": "In the sentence, 'This approach is less ___ than the previous one, though it is safer,' the correct option is___",
+      "principle": "The word 'less' already performs the comparative function, so the following adjective should not also be put in the comparative.",
+      "steps": [
+        "The sentence compares two approaches.",
+        "However, 'less' is already the marker of lower degree.",
+        "So the adjective stays in its plain form: 'expensive'.",
+        "Therefore, option A is correct."
+      ],
+      "final_answer": "A. expensive",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "equals_unequals",
+      "less",
+      "comparative_meaning_without_more"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q068",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparing equals and unequals",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Her handwriting is nearly as ___ as print,' the correct option is___",
+    "options": {
+      "A": "neat",
+      "B": "neater",
+      "C": "neatest",
+      "D": "more neat"
+    },
+    "answer": "A",
+    "answer_text": "neat",
+    "explanation": {
+      "question_restate": "In the sentence, 'Her handwriting is nearly as ___ as print,' the correct option is___",
+      "principle": "Expressions such as 'nearly as ... as' still require the positive degree.",
+      "steps": [
+        "The idea is one of approximate equality.",
+        "The structure remains 'as ... as'.",
+        "So the base adjective 'neat' is the right choice.",
+        "Hence, A is correct."
+      ],
+      "final_answer": "A. neat",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "equals_unequals",
+      "nearly_as_as",
+      "positive"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q069",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparing equals and unequals",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This field is not so ___ as the one behind the school,' the correct option is___",
+    "options": {
+      "A": "dry",
+      "B": "drier",
+      "C": "driest",
+      "D": "more dry"
+    },
+    "answer": "A",
+    "answer_text": "dry",
+    "explanation": {
+      "question_restate": "In the sentence, 'This field is not so ___ as the one behind the school,' the correct option is___",
+      "principle": "The structure 'not so ... as' uses the positive degree.",
+      "steps": [
+        "The sentence compares two fields and shows inequality.",
+        "Yet the grammatical structure still takes the base adjective.",
+        "The correct form is 'dry'.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. dry",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "equals_unequals",
+      "not_so_as",
+      "positive"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q070",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparing equals and unequals",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The twins are equally ___ in mathematics,' the correct option is___",
+    "options": {
+      "A": "gifted",
+      "B": "more gifted",
+      "C": "most gifted",
+      "D": "giftedest"
+    },
+    "answer": "A",
+    "answer_text": "gifted",
+    "explanation": {
+      "question_restate": "In the sentence, 'The twins are equally ___ in mathematics,' the correct option is___",
+      "principle": "The word 'equally' already expresses equal degree, so the positive form follows.",
+      "steps": [
+        "Because 'equally' marks sameness of degree, no comparative or superlative is needed.",
+        "The adjective should remain in the base form.",
+        "The correct word is 'gifted'.",
+        "Therefore, A is correct."
+      ],
+      "final_answer": "A. gifted",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "equals_unequals",
+      "equally",
+      "base"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q071",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparing equals and unequals",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The revised plan is no less ___ than the original draft,' the correct option is___",
+    "options": {
+      "A": "ambitious",
+      "B": "more ambitious",
+      "C": "most ambitious",
+      "D": "ambitiousest"
+    },
+    "answer": "A",
+    "answer_text": "ambitious",
+    "explanation": {
+      "question_restate": "In the sentence, 'The revised plan is no less ___ than the original draft,' the correct option is___",
+      "principle": "After 'less', the adjective remains in the positive form because 'less' carries the comparison.",
+      "steps": [
+        "The phrase 'no less ... than' compares two plans at roughly equal high degree.",
+        "The word 'less' already provides the comparative force.",
+        "So the adjective should be in the base form: 'ambitious'.",
+        "Hence, A is correct."
+      ],
+      "final_answer": "A. ambitious",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "equals_unequals",
+      "no_less_than",
+      "base_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q072",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparing equals and unequals",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The northern route is not as ___ as many travellers suppose,' the correct option is___",
+    "options": {
+      "A": "dangerous",
+      "B": "more dangerous",
+      "C": "most dangerous",
+      "D": "dangerouser"
+    },
+    "answer": "A",
+    "answer_text": "dangerous",
+    "explanation": {
+      "question_restate": "In the sentence, 'The northern route is not as ___ as many travellers suppose,' the correct option is___",
+      "principle": "The positive degree is used in 'not as ... as' constructions.",
+      "steps": [
+        "The structure here is standard negative equality.",
+        "That means the adjective must remain in its plain form.",
+        "The correct answer is 'dangerous'.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. dangerous",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "equals_unequals",
+      "not_as_as",
+      "positive_degree"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q073",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparing equals and unequals",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The two accounts are almost as ___ as each other in detail,' the correct option is___",
+    "options": {
+      "A": "complete",
+      "B": "more complete",
+      "C": "most complete",
+      "D": "completer"
+    },
+    "answer": "A",
+    "answer_text": "complete",
+    "explanation": {
+      "question_restate": "In the sentence, 'The two accounts are almost as ___ as each other in detail,' the correct option is___",
+      "principle": "Approximate equality still takes the positive degree.",
+      "steps": [
+        "The sentence signals close similarity, not superiority.",
+        "Therefore, the 'as ... as' pattern should use the base adjective.",
+        "The correct form is 'complete'.",
+        "Hence, A is correct."
+      ],
+      "final_answer": "A. complete",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "equals_unequals",
+      "almost_as_as",
+      "positive"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q074",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Comparing equals and unequals",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Her score was not so ___ as the examiner's remarks suggested,' the correct option is___",
+    "options": {
+      "A": "poor",
+      "B": "poorer",
+      "C": "poorest",
+      "D": "more poor"
+    },
+    "answer": "A",
+    "answer_text": "poor",
+    "explanation": {
+      "question_restate": "In the sentence, 'Her score was not so ___ as the examiner's remarks suggested,' the correct option is___",
+      "principle": "Negative equality structures require the positive form of the adjective.",
+      "steps": [
+        "The sentence uses the frame 'not so ... as'.",
+        "That construction requires the plain adjective form.",
+        "The correct word is 'poor'.",
+        "Therefore, A is correct."
+      ],
+      "final_answer": "A. poor",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "equals_unequals",
+      "so_as",
+      "positive_degree"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q075",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Correct comparative structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'My brother is taller ___ I am,' the correct option is___",
+    "options": {
+      "A": "than",
+      "B": "to",
+      "C": "from",
+      "D": "as"
+    },
+    "answer": "A",
+    "answer_text": "than",
+    "explanation": {
+      "question_restate": "In the sentence, 'My brother is taller ___ I am,' the correct option is___",
+      "principle": "A comparative adjective is properly followed by 'than' when two items are compared.",
+      "steps": [
+        "The adjective 'taller' is a comparative form.",
+        "Comparative forms normally go with 'than', not 'to' or 'from'.",
+        "Therefore, the sentence should read 'My brother is taller than I am.'",
+        "So A is correct."
+      ],
+      "final_answer": "A. than",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "correct_structures",
+      "than",
+      "comparative_link"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q076",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Correct comparative structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This machine is not as efficient ___ the previous one,' the correct option is___",
+    "options": {
+      "A": "than",
+      "B": "as",
+      "C": "to",
+      "D": "like"
+    },
+    "answer": "B",
+    "answer_text": "as",
+    "explanation": {
+      "question_restate": "In the sentence, 'This machine is not as efficient ___ the previous one,' the correct option is___",
+      "principle": "The structure for equality and inequality is 'as ... as', not 'as ... than'.",
+      "steps": [
+        "The first 'as' already appears before the adjective.",
+        "The correct word to complete the pair is another 'as'.",
+        "This gives the standard structure 'not as efficient as'.",
+        "Hence, B is correct."
+      ],
+      "final_answer": "B. as",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "correct_structures",
+      "as_as",
+      "pairing"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q077",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Correct comparative structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The more he practised, the ___ he became,' the correct option is___",
+    "options": {
+      "A": "skilful",
+      "B": "more skilful",
+      "C": "most skilful",
+      "D": "skillfuller"
+    },
+    "answer": "B",
+    "answer_text": "more skilful",
+    "explanation": {
+      "question_restate": "In the sentence, 'The more he practised, the ___ he became,' the correct option is___",
+      "principle": "The correlative structure 'the more ..., the more ...' requires parallel comparative forms.",
+      "steps": [
+        "The sentence begins with 'The more he practised'.",
+        "That pattern should be matched by another comparative phrase.",
+        "The correct completion is 'the more skilful he became'.",
+        "Therefore, B is correct."
+      ],
+      "final_answer": "B. more skilful",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "correct_structures",
+      "the_more_the_more",
+      "correlative_comparison"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q078",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Correct comparative structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'She is one of the ___ students in the department,' the correct option is___",
+    "options": {
+      "A": "bright",
+      "B": "brighter",
+      "C": "brightest",
+      "D": "more brighter"
+    },
+    "answer": "C",
+    "answer_text": "brightest",
+    "explanation": {
+      "question_restate": "In the sentence, 'She is one of the ___ students in the department,' the correct option is___",
+      "principle": "The expression 'one of the' is followed by a superlative because it places someone within a top group.",
+      "steps": [
+        "The sentence does not compare just two students.",
+        "Instead, it places her among the highest-ranking students in a larger group.",
+        "That requires the superlative form.",
+        "So 'brightest' is correct."
+      ],
+      "final_answer": "C. brightest",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "correct_structures",
+      "one_of_the",
+      "superlative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q079",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Correct comparative structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The higher we climbed, the ___ the air became,' the correct option is___",
+    "options": {
+      "A": "thin",
+      "B": "thinner",
+      "C": "thinnest",
+      "D": "more thinnest"
+    },
+    "answer": "B",
+    "answer_text": "thinner",
+    "explanation": {
+      "question_restate": "In the sentence, 'The higher we climbed, the ___ the air became,' the correct option is___",
+      "principle": "In correlative comparison, both halves should use the comparative pattern.",
+      "steps": [
+        "The first part is 'The higher we climbed'.",
+        "The second part should also use a comparative adjective.",
+        "The correct form of 'thin' is 'thinner'.",
+        "Hence, B is correct."
+      ],
+      "final_answer": "B. thinner",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "correct_structures",
+      "parallel_comparative",
+      "the_the"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q080",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Correct comparative structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'No sooner had the rain stopped than the road became ___,' the correct option is___",
+    "options": {
+      "A": "busy",
+      "B": "busier",
+      "C": "busiest",
+      "D": "more busiest"
+    },
+    "answer": "B",
+    "answer_text": "busier",
+    "explanation": {
+      "question_restate": "In the sentence, 'No sooner had the rain stopped than the road became ___,' the correct option is___",
+      "principle": "A change from one condition to another often calls for a comparative idea when the meaning is 'more than before'.",
+      "steps": [
+        "The sentence suggests that after the rain stopped, the road changed to a higher level of activity.",
+        "That creates a comparative meaning.",
+        "The correct comparative of 'busy' is 'busier'.",
+        "Therefore, B is correct."
+      ],
+      "final_answer": "B. busier",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "correct_structures",
+      "contextual_comparison",
+      "state_change"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q081",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Correct comparative structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This novel is by far the ___ in the series,' the correct option is___",
+    "options": {
+      "A": "interesting",
+      "B": "more interesting",
+      "C": "most interesting",
+      "D": "interestinger"
+    },
+    "answer": "C",
+    "answer_text": "most interesting",
+    "explanation": {
+      "question_restate": "In the sentence, 'This novel is by far the ___ in the series,' the correct option is___",
+      "principle": "Expressions like 'by far the' are typically followed by a superlative form.",
+      "steps": [
+        "'By far the' strongly marks the highest degree in a group.",
+        "That means the superlative is needed.",
+        "The correct form is 'most interesting'.",
+        "So C is correct."
+      ],
+      "final_answer": "C. most interesting",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "correct_structures",
+      "by_far_the",
+      "superlative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q082",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Correct comparative structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'His current performance is better ___ it was last term,' the correct option is___",
+    "options": {
+      "A": "as",
+      "B": "than",
+      "C": "like",
+      "D": "to"
+    },
+    "answer": "B",
+    "answer_text": "than",
+    "explanation": {
+      "question_restate": "In the sentence, 'His current performance is better ___ it was last term,' the correct option is___",
+      "principle": "The comparative form 'better' should be followed by 'than' in standard comparison structures.",
+      "steps": [
+        "The adjective 'better' is comparative.",
+        "Comparative forms pair with 'than'.",
+        "The sentence should therefore read 'better than it was last term'.",
+        "Hence, B is correct."
+      ],
+      "final_answer": "B. than",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "correct_structures",
+      "better_than",
+      "link_word"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q083",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Correct comparative structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The less you speak, the ___ you are to make careless mistakes,' the correct option is___",
+    "options": {
+      "A": "likely",
+      "B": "less likely",
+      "C": "least likely",
+      "D": "more likely"
+    },
+    "answer": "B",
+    "answer_text": "less likely",
+    "explanation": {
+      "question_restate": "In the sentence, 'The less you speak, the ___ you are to make careless mistakes,' the correct option is___",
+      "principle": "Correlative comparison requires structural balance: 'the less ..., the less ...' or similar matched forms.",
+      "steps": [
+        "The sentence starts with 'The less you speak'.",
+        "To maintain the pattern, the second half should also contain a comparative phrase.",
+        "The meaningful and grammatical completion is 'the less likely'.",
+        "Therefore, B is correct."
+      ],
+      "final_answer": "B. less likely",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "correct_structures",
+      "the_less_the_less",
+      "parallel"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q084",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Correct comparative structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'That explanation is superior ___ the one we heard earlier,' the correct option is___",
+    "options": {
+      "A": "than",
+      "B": "to",
+      "C": "from",
+      "D": "as"
+    },
+    "answer": "B",
+    "answer_text": "to",
+    "explanation": {
+      "question_restate": "In the sentence, 'That explanation is superior ___ the one we heard earlier,' the correct option is___",
+      "principle": "Some comparison words take fixed prepositions; for example, 'superior' is followed by 'to', not 'than'.",
+      "steps": [
+        "Although 'superior' expresses comparison, it does not follow the normal 'than' pattern.",
+        "Its standard partner is 'to'.",
+        "The correct phrase is 'superior to'.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. to",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "correct_structures",
+      "superior_to",
+      "fixed_expression"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q085",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Correct comparative structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This exercise is inferior ___ the one on the previous page,' the correct option is___",
+    "options": {
+      "A": "than",
+      "B": "to",
+      "C": "as",
+      "D": "for"
+    },
+    "answer": "B",
+    "answer_text": "to",
+    "explanation": {
+      "question_restate": "In the sentence, 'This exercise is inferior ___ the one on the previous page,' the correct option is___",
+      "principle": "Like 'superior', the adjective 'inferior' takes the preposition 'to'.",
+      "steps": [
+        "The word 'inferior' expresses lower rank or quality.",
+        "In standard usage, it is followed by 'to'.",
+        "The correct structure is therefore 'inferior to'.",
+        "Hence, B is correct."
+      ],
+      "final_answer": "B. to",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "correct_structures",
+      "inferior_to",
+      "fixed_pair"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q086",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Correct comparative structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Our new hostel is preferable ___ the rented apartment,' the correct option is___",
+    "options": {
+      "A": "than",
+      "B": "to",
+      "C": "from",
+      "D": "as"
+    },
+    "answer": "B",
+    "answer_text": "to",
+    "explanation": {
+      "question_restate": "In the sentence, 'Our new hostel is preferable ___ the rented apartment,' the correct option is___",
+      "principle": "The adjective 'preferable' is followed by 'to', not 'than'.",
+      "steps": [
+        "This is a fixed comparison structure in formal English.",
+        "Even though comparison is involved, the right preposition is 'to'.",
+        "So the sentence should read 'preferable to the rented apartment'.",
+        "Therefore, B is correct."
+      ],
+      "final_answer": "B. to",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "correct_structures",
+      "preferable_to",
+      "fixed_preposition"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q087",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Correct comparative structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'He is not so much stubborn ___ inexperienced,' the correct option is___",
+    "options": {
+      "A": "than",
+      "B": "as",
+      "C": "to",
+      "D": "like"
+    },
+    "answer": "B",
+    "answer_text": "as",
+    "explanation": {
+      "question_restate": "In the sentence, 'He is not so much stubborn ___ inexperienced,' the correct option is___",
+      "principle": "The idiomatic comparison structure is 'not so much ... as'.",
+      "steps": [
+        "This pattern does not take 'than'.",
+        "The correct pair is 'so much ... as'.",
+        "That yields the meaning that inexperience, rather than stubbornness, is the stronger explanation.",
+        "So B is correct."
+      ],
+      "final_answer": "B. as",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "correct_structures",
+      "not_so_much_as",
+      "idiomatic"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q088",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Misuse of comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'She is more taller than her sister,' the correct replacement for the highlighted comparison is___",
+    "options": {
+      "A": "more tall",
+      "B": "tallest",
+      "C": "taller",
+      "D": "most tall"
+    },
+    "answer": "C",
+    "answer_text": "taller",
+    "explanation": {
+      "question_restate": "In the sentence, 'She is more taller than her sister,' the correct replacement for the highlighted comparison is___",
+      "principle": "A double comparative is incorrect because comparison should be marked only once.",
+      "steps": [
+        "The word 'taller' is already comparative.",
+        "Adding 'more' creates an incorrect double comparison.",
+        "The correct single comparative form is 'taller'.",
+        "Therefore, C is correct."
+      ],
+      "final_answer": "C. taller",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "misuse_of_forms",
+      "double_comparative",
+      "correction"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q089",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Misuse of comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This is the most fastest route to town,' the correct replacement is___",
+    "options": {
+      "A": "faster",
+      "B": "fast",
+      "C": "fastest",
+      "D": "most fast"
+    },
+    "answer": "C",
+    "answer_text": "fastest",
+    "explanation": {
+      "question_restate": "In the sentence, 'This is the most fastest route to town,' the correct replacement is___",
+      "principle": "A superlative should not be marked twice with both 'most' and '-est'.",
+      "steps": [
+        "'Fastest' is already a superlative form.",
+        "Adding 'most' before it is wrong.",
+        "The correct form is simply 'fastest'.",
+        "So option C is correct."
+      ],
+      "final_answer": "C. fastest",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "misuse_of_forms",
+      "double_superlative",
+      "correction"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q090",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Misuse of comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'He is the better player in the whole team,' the best replacement for 'better' is___",
+    "options": {
+      "A": "good",
+      "B": "best",
+      "C": "more good",
+      "D": "goodest"
+    },
+    "answer": "B",
+    "answer_text": "best",
+    "explanation": {
+      "question_restate": "In the sentence, 'He is the better player in the whole team,' the best replacement for 'better' is___",
+      "principle": "When one person is selected from an entire group, the superlative, not the comparative, should be used.",
+      "steps": [
+        "The phrase 'in the whole team' shows group comparison.",
+        "That means the sentence needs a superlative.",
+        "The irregular superlative of 'good' is 'best'.",
+        "Therefore, B is correct."
+      ],
+      "final_answer": "B. best",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "misuse_of_forms",
+      "wrong_degree",
+      "team_group"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q091",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Misuse of comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Of the two brothers, Musa is the tallest,' the best replacement for 'tallest' is___",
+    "options": {
+      "A": "tall",
+      "B": "taller",
+      "C": "more tall",
+      "D": "most tall"
+    },
+    "answer": "B",
+    "answer_text": "taller",
+    "explanation": {
+      "question_restate": "In the sentence, 'Of the two brothers, Musa is the tallest,' the best replacement for 'tallest' is___",
+      "principle": "When only two items are compared, the comparative is usually more appropriate than the superlative.",
+      "steps": [
+        "The sentence clearly mentions two brothers.",
+        "Comparison between two should normally use the comparative degree.",
+        "The correct form is 'taller'.",
+        "So B is correct."
+      ],
+      "final_answer": "B. taller",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "misuse_of_forms",
+      "two_items",
+      "comparative_needed"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q092",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Misuse of comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Her new design is more better than the first one,' the correct replacement for the faulty expression is___",
+    "options": {
+      "A": "better",
+      "B": "best",
+      "C": "good",
+      "D": "more good"
+    },
+    "answer": "A",
+    "answer_text": "better",
+    "explanation": {
+      "question_restate": "In the sentence, 'Her new design is more better than the first one,' the correct replacement for the faulty expression is___",
+      "principle": "Irregular comparatives should not be doubled with 'more'.",
+      "steps": [
+        "The word 'better' is already the comparative of 'good' or 'well'.",
+        "Adding 'more' makes the phrase ungrammatical.",
+        "The correct replacement is simply 'better'.",
+        "Hence, A is correct."
+      ],
+      "final_answer": "A. better",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "misuse_of_forms",
+      "double_comparative",
+      "better"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q093",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Misuse of comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This bag is the more expensive of the three,' the correct replacement for 'more expensive' is___",
+    "options": {
+      "A": "expensive",
+      "B": "most expensive",
+      "C": "expensivest",
+      "D": "more expensiver"
+    },
+    "answer": "B",
+    "answer_text": "most expensive",
+    "explanation": {
+      "question_restate": "In the sentence, 'This bag is the more expensive of the three,' the correct replacement for 'more expensive' is___",
+      "principle": "When a sentence refers to three or more items and selects one above the rest, the superlative should be used.",
+      "steps": [
+        "The phrase 'of the three' shows group comparison.",
+        "Therefore, the superlative is required.",
+        "The correct form is 'most expensive'.",
+        "So B is correct."
+      ],
+      "final_answer": "B. most expensive",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "misuse_of_forms",
+      "three_items",
+      "superlative_needed"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q094",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Misuse of comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This answer is as clearer as the model one,' the correct replacement for 'clearer' is___",
+    "options": {
+      "A": "clear",
+      "B": "clearest",
+      "C": "more clear",
+      "D": "more clearer"
+    },
+    "answer": "A",
+    "answer_text": "clear",
+    "explanation": {
+      "question_restate": "In the sentence, 'This answer is as clearer as the model one,' the correct replacement for 'clearer' is___",
+      "principle": "The structure 'as ... as' takes the positive degree, not the comparative.",
+      "steps": [
+        "'Clearer' is a comparative form.",
+        "But the frame 'as ... as' requires the base adjective.",
+        "Therefore, the correct replacement is 'clear'.",
+        "Hence, A is correct."
+      ],
+      "final_answer": "A. clear",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "misuse_of_forms",
+      "as_as",
+      "positive_needed"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q095",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Misuse of comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'She is one of the brighter students in the school,' the correct replacement for 'brighter' is___",
+    "options": {
+      "A": "bright",
+      "B": "brightest",
+      "C": "more bright",
+      "D": "most brightest"
+    },
+    "answer": "B",
+    "answer_text": "brightest",
+    "explanation": {
+      "question_restate": "In the sentence, 'She is one of the brighter students in the school,' the correct replacement for 'brighter' is___",
+      "principle": "The structure 'one of the' should normally be followed by a superlative form.",
+      "steps": [
+        "The sentence places her within a group of top students.",
+        "That means the superlative is needed, not the comparative.",
+        "The correct replacement is 'brightest'.",
+        "Therefore, B is correct."
+      ],
+      "final_answer": "B. brightest",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "misuse_of_forms",
+      "one_of_the",
+      "superlative_needed"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q096",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Misuse of comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This fence is more stronger than the old one,' the correct replacement for the faulty expression is___",
+    "options": {
+      "A": "strong",
+      "B": "stronger",
+      "C": "strongest",
+      "D": "more strongest"
+    },
+    "answer": "B",
+    "answer_text": "stronger",
+    "explanation": {
+      "question_restate": "In the sentence, 'This fence is more stronger than the old one,' the correct replacement for the faulty expression is___",
+      "principle": "A regular comparative already shows increased degree and should not be doubled with 'more'.",
+      "steps": [
+        "The adjective 'strong' forms its comparative as 'stronger'.",
+        "Adding 'more' makes the construction faulty.",
+        "The correct replacement is 'stronger'.",
+        "So B is correct."
+      ],
+      "final_answer": "B. stronger",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "misuse_of_forms",
+      "double_comparative",
+      "stronger"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q097",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Misuse of comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'That was the baddest excuse I had ever heard,' the correct replacement for 'baddest' is___",
+    "options": {
+      "A": "badder",
+      "B": "worst",
+      "C": "worse",
+      "D": "most bad"
+    },
+    "answer": "B",
+    "answer_text": "worst",
+    "explanation": {
+      "question_restate": "In the sentence, 'That was the baddest excuse I had ever heard,' the correct replacement for 'baddest' is___",
+      "principle": "Irregular adjectives should use their accepted comparison forms rather than invented regular forms.",
+      "steps": [
+        "The adjective 'bad' compares as worse and worst.",
+        "'Baddest' is not the standard examination form here.",
+        "Because the sentence identifies the lowest quality among many excuses heard over time, the superlative 'worst' is needed.",
+        "Hence, B is correct."
+      ],
+      "final_answer": "B. worst",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "misuse_of_forms",
+      "irregular_superlative",
+      "bad"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q098",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Misuse of comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'No other runner was faster than Chika,' the statement means that Chika was the ___ runner.",
+    "options": {
+      "A": "fast",
+      "B": "faster",
+      "C": "fastest",
+      "D": "most fast"
+    },
+    "answer": "C",
+    "answer_text": "fastest",
+    "explanation": {
+      "question_restate": "In the sentence, 'No other runner was faster than Chika,' the statement means that Chika was the ___ runner.",
+      "principle": "Equivalent comparison structures often transform a negative comparative statement into a superlative statement.",
+      "steps": [
+        "'No other runner was faster than Chika' means Chika outran all the others.",
+        "That is the meaning of the superlative degree.",
+        "The correct completion is 'fastest'.",
+        "Therefore, C is correct."
+      ],
+      "final_answer": "C. fastest",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "misuse_of_forms",
+      "equivalent_transformation",
+      "superlative_meaning"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q099",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Misuse of comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This room is lesser spacious than that one,' the correct replacement for 'lesser spacious' is___",
+    "options": {
+      "A": "less spacious",
+      "B": "least spacious",
+      "C": "more spacious",
+      "D": "spaciousest"
+    },
+    "answer": "A",
+    "answer_text": "less spacious",
+    "explanation": {
+      "question_restate": "In the sentence, 'This room is lesser spacious than that one,' the correct replacement for 'lesser spacious' is___",
+      "principle": "In ordinary comparison of degree, 'less' is preferred to 'lesser' before adjectives.",
+      "steps": [
+        "The word 'lesser' has limited special uses and is not the best choice in normal adjective comparison here.",
+        "The standard structure is 'less spacious than'.",
+        "So the correct replacement is 'less spacious'.",
+        "Hence, A is correct."
+      ],
+      "final_answer": "A. less spacious",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "misuse_of_forms",
+      "wrong_lesser",
+      "standard_usage"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_13_q100",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_13",
+    "topic_title": "Degree of Comparison",
+    "subtopic": "Misuse of comparison forms",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'She sings the best of the two contestants,' the better replacement for 'best' is___",
+    "options": {
+      "A": "good",
+      "B": "better",
+      "C": "well",
+      "D": "most well"
+    },
+    "answer": "B",
+    "answer_text": "better",
+    "explanation": {
+      "question_restate": "In the sentence, 'She sings the best of the two contestants,' the better replacement for 'best' is___",
+      "principle": "When only two people are compared, the comparative is usually preferred over the superlative.",
+      "steps": [
+        "The sentence involves exactly two contestants.",
+        "Therefore, the comparative should be used.",
+        "The correct replacement is 'better'.",
+        "So B is correct."
+      ],
+      "final_answer": "B. better",
+      "simple_explanation": "Questions on degree of comparison test whether you know when to use the base form, the comparative form, and the superlative form correctly in context. In examinations, always ask whether the sentence compares equals, two items, or one item against a larger group. For fuller teaching notes, drills, and guided lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "misuse_of_forms",
+      "two_contestants",
+      "comparative"
+    ],
+    "active": true
+  }
+]
