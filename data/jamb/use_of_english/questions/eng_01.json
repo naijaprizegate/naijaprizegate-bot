@@ -1578,6 +1578,2467 @@
       "public_life"
     ],
     "active": true
+  },
+  {
+    "id": "eng_01_q041",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Main idea / central theme",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p011",
+    "passage_title": "The School Garden Project",
+    "passage_text": "At the start of the rainy season, the principal of Oke-Asiwaju Community School asked each class to cultivate a small section of land behind the science block. Some pupils groaned because they thought the activity would only stain their uniforms and steal time from games. Their biology teacher, however, explained that the garden was not merely for producing vegetables for the school kitchen. It was designed to teach observation, patience and responsibility. The students first cleared weeds, then measured plots, loosened the soil and planted okra, tomatoes and spinach. During the following weeks, they kept simple notebooks in which they recorded germination dates, pest attacks and the effect of watering patterns. By mid-term, the garden had become one of the busiest corners of the school. Pupils who had once ignored class discussions now argued about mulch, drainage and leaf colour. Even parents began to ask for seedlings. The project did not turn every child into a farmer, but it made learning feel less distant from everyday life.",
+    "question": "The passage is mainly about how the school garden project",
+    "options": {
+      "A": "replaced classroom teaching entirely",
+      "B": "taught practical responsibility by linking learning with real life",
+      "C": "made all the pupils become farmers",
+      "D": "was introduced mainly to decorate the science block"
+    },
+    "answer": "B",
+    "answer_text": "taught practical responsibility by linking learning with real life",
+    "explanation": {
+      "question_restate": "We are to identify the broad idea that connects the beginning, middle and end of the passage.",
+      "principle": "The main idea is the central message around which the other details are built.",
+      "steps": [
+        "The passage begins with resistance from some pupils who saw the work as dirty and unnecessary.",
+        "The biology teacher then explains that the garden is meant to teach observation, patience and responsibility.",
+        "Later details show pupils recording plant growth and discussing mulch, drainage and leaf colour.",
+        "The final sentence states that the project made learning feel less distant from everyday life.",
+        "So the central theme is that the garden connected practical activity with meaningful learning."
+      ],
+      "final_answer": "B. taught practical responsibility by linking learning with real life",
+      "simple_explanation": "The garden was not just about growing vegetables. It helped students see that school knowledge can be useful in daily life. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "main_idea_central_theme",
+      "eng_01_p011"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q042",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Supporting details",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p011",
+    "passage_title": "The School Garden Project",
+    "passage_text": "At the start of the rainy season, the principal of Oke-Asiwaju Community School asked each class to cultivate a small section of land behind the science block. Some pupils groaned because they thought the activity would only stain their uniforms and steal time from games. Their biology teacher, however, explained that the garden was not merely for producing vegetables for the school kitchen. It was designed to teach observation, patience and responsibility. The students first cleared weeds, then measured plots, loosened the soil and planted okra, tomatoes and spinach. During the following weeks, they kept simple notebooks in which they recorded germination dates, pest attacks and the effect of watering patterns. By mid-term, the garden had become one of the busiest corners of the school. Pupils who had once ignored class discussions now argued about mulch, drainage and leaf colour. Even parents began to ask for seedlings. The project did not turn every child into a farmer, but it made learning feel less distant from everyday life.",
+    "question": "Which of the following is given in the passage as part of the pupils' work in the garden?",
+    "options": {
+      "A": "They imported fertilizers from abroad",
+      "B": "They recorded germination dates and pest attacks in notebooks",
+      "C": "They sold all the vegetables in the market",
+      "D": "They built a new classroom beside the plots"
+    },
+    "answer": "B",
+    "answer_text": "They recorded germination dates and pest attacks in notebooks",
+    "explanation": {
+      "question_restate": "We are to select a detail that is directly stated in the passage.",
+      "principle": "Supporting details are exact facts or examples the writer uses to develop the main point.",
+      "steps": [
+        "The passage says the students kept simple notebooks.",
+        "In those notebooks, they recorded germination dates, pest attacks and the effect of watering patterns.",
+        "That matches option B directly.",
+        "The other options add information not found in the passage.",
+        "In comprehension, once a question asks for a supporting detail, your safest method is to return to the passage and look for what is explicitly mentioned."
+      ],
+      "final_answer": "B. They recorded germination dates and pest attacks in notebooks",
+      "simple_explanation": "A supporting-detail question rewards careful reading, not guessing. The correct answer is stated almost word for word in the passage. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "supporting_details",
+      "eng_01_p011"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q043",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Inference",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p011",
+    "passage_title": "The School Garden Project",
+    "passage_text": "At the start of the rainy season, the principal of Oke-Asiwaju Community School asked each class to cultivate a small section of land behind the science block. Some pupils groaned because they thought the activity would only stain their uniforms and steal time from games. Their biology teacher, however, explained that the garden was not merely for producing vegetables for the school kitchen. It was designed to teach observation, patience and responsibility. The students first cleared weeds, then measured plots, loosened the soil and planted okra, tomatoes and spinach. During the following weeks, they kept simple notebooks in which they recorded germination dates, pest attacks and the effect of watering patterns. By mid-term, the garden had become one of the busiest corners of the school. Pupils who had once ignored class discussions now argued about mulch, drainage and leaf colour. Even parents began to ask for seedlings. The project did not turn every child into a farmer, but it made learning feel less distant from everyday life.",
+    "question": "It may be inferred from the passage that some pupils later became interested in the garden because they",
+    "options": {
+      "A": "were forced to join an agricultural club",
+      "B": "discovered that the activity involved thinking and observation, not mere manual labour",
+      "C": "wanted to avoid attending their normal classes",
+      "D": "received money for each vegetable harvested"
+    },
+    "answer": "B",
+    "answer_text": "discovered that the activity involved thinking and observation, not mere manual labour",
+    "explanation": {
+      "question_restate": "We are to infer a reasonable idea from the clues in the passage.",
+      "principle": "Inference means drawing a conclusion from evidence that is suggested, even if not plainly stated in one sentence.",
+      "steps": [
+        "At first, some pupils thought the activity would only dirty their uniforms and reduce play time.",
+        "Later, the passage shows them discussing mulch, drainage and leaf colour and keeping observation notes.",
+        "These details suggest that they came to see the work as intellectually engaging, not merely physical labour.",
+        "Nothing in the passage mentions payment, forced club membership or class avoidance.",
+        "Therefore option B is the best inference."
+      ],
+      "final_answer": "B. discovered that the activity involved thinking and observation, not mere manual labour",
+      "simple_explanation": "The passage suggests a change in attitude: the pupils moved from seeing the garden as punishment to seeing it as meaningful learning. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "inference",
+      "eng_01_p011"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q044",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Contextual meaning of words and expressions",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p011",
+    "passage_title": "The School Garden Project",
+    "passage_text": "At the start of the rainy season, the principal of Oke-Asiwaju Community School asked each class to cultivate a small section of land behind the science block. Some pupils groaned because they thought the activity would only stain their uniforms and steal time from games. Their biology teacher, however, explained that the garden was not merely for producing vegetables for the school kitchen. It was designed to teach observation, patience and responsibility. The students first cleared weeds, then measured plots, loosened the soil and planted okra, tomatoes and spinach. During the following weeks, they kept simple notebooks in which they recorded germination dates, pest attacks and the effect of watering patterns. By mid-term, the garden had become one of the busiest corners of the school. Pupils who had once ignored class discussions now argued about mulch, drainage and leaf colour. Even parents began to ask for seedlings. The project did not turn every child into a farmer, but it made learning feel less distant from everyday life.",
+    "question": "In the passage, the expression 'made learning feel less distant from everyday life' means that learning became",
+    "options": {
+      "A": "less expensive for parents",
+      "B": "more closely connected with practical experience",
+      "C": "limited to farming activities only",
+      "D": "easier than all other school subjects"
+    },
+    "answer": "B",
+    "answer_text": "more closely connected with practical experience",
+    "explanation": {
+      "question_restate": "We are to explain the meaning of an expression as it is used in the passage.",
+      "principle": "Contextual meaning depends on how a word or expression functions in its sentence and in the whole passage.",
+      "steps": [
+        "The expression appears in the final sentence of the passage.",
+        "Before that line, the writer has shown students observing crops, recording changes and discussing practical matters such as drainage.",
+        "These examples show that school learning was no longer abstract or remote.",
+        "So 'less distant from everyday life' means more directly linked to real experience.",
+        "This is why option B is correct."
+      ],
+      "final_answer": "B. more closely connected with practical experience",
+      "simple_explanation": "The expression means that what students learned in school now felt real, useful and connected to ordinary life. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "contextual_meaning",
+      "eng_01_p011"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q045",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Writer's purpose",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p011",
+    "passage_title": "The School Garden Project",
+    "passage_text": "At the start of the rainy season, the principal of Oke-Asiwaju Community School asked each class to cultivate a small section of land behind the science block. Some pupils groaned because they thought the activity would only stain their uniforms and steal time from games. Their biology teacher, however, explained that the garden was not merely for producing vegetables for the school kitchen. It was designed to teach observation, patience and responsibility. The students first cleared weeds, then measured plots, loosened the soil and planted okra, tomatoes and spinach. During the following weeks, they kept simple notebooks in which they recorded germination dates, pest attacks and the effect of watering patterns. By mid-term, the garden had become one of the busiest corners of the school. Pupils who had once ignored class discussions now argued about mulch, drainage and leaf colour. Even parents began to ask for seedlings. The project did not turn every child into a farmer, but it made learning feel less distant from everyday life.",
+    "question": "The writer's purpose in the passage is mainly to",
+    "options": {
+      "A": "show how a simple school activity can become an effective means of education",
+      "B": "argue that games should be banned in schools",
+      "C": "prove that agriculture is the only useful subject",
+      "D": "mock pupils who dislike dirty work"
+    },
+    "answer": "A",
+    "answer_text": "show how a simple school activity can become an effective means of education",
+    "explanation": {
+      "question_restate": "We are to identify why the writer presented this information.",
+      "principle": "Writer's purpose asks what the writer is trying to achieve: to inform, persuade, illustrate, criticize or entertain.",
+      "steps": [
+        "The passage does not merely describe a garden; it shows the educational value of the project.",
+        "The writer explains the aims, records the pupils' change in attitude and ends with a clear educational lesson.",
+        "There is no serious attempt to condemn games or claim that only agriculture matters.",
+        "The tone is explanatory rather than mocking.",
+        "So the main purpose is to show how a practical project can educate effectively."
+      ],
+      "final_answer": "A. show how a simple school activity can become an effective means of education",
+      "simple_explanation": "The writer wants the reader to see the school garden as a meaningful teaching method, not just a farming exercise. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "writers_purpose",
+      "eng_01_p011"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q046",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Writer's tone and attitude",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p012",
+    "passage_title": "The Radio Repairer",
+    "passage_text": "In a narrow shop near the motor park, Musa repaired radios, torches and small speakers that many people assumed were beyond saving. His tools looked unimpressive: a soldering iron, a cracked magnifying lens, a box of screws and a wooden stool darkened by years of use. Yet customers travelled from surrounding villages because Musa had earned a reputation for patience. He listened carefully when owners described a fault, opened each device slowly and often paused to test one wire after another instead of replacing parts carelessly. Apprentices who came to learn from him were surprised that he spent so much time asking questions before touching a machine. Musa said that haste was the enemy of accurate work. According to him, a repairer who guesses too quickly may produce smoke where sound should be. Business was not always brisk, especially when imported gadgets became cheaper, but loyal customers kept returning. They said his greatest skill was not in his hands alone; it was in the discipline with which he refused to pretend that every problem had the same cause.",
+    "question": "The writer's tone in the passage is best described as",
+    "options": {
+      "A": "admiring and respectful",
+      "B": "bitter and accusing",
+      "C": "comic and unserious",
+      "D": "fearful and confused"
+    },
+    "answer": "A",
+    "answer_text": "admiring and respectful",
+    "explanation": {
+      "question_restate": "We are to determine the attitude revealed by the writer's choice of details and expressions.",
+      "principle": "Tone is the writer's emotional attitude to the subject, as shown through diction and presentation.",
+      "steps": [
+        "The passage highlights Musa's patience, care and reputation.",
+        "His methods are described positively, especially his refusal to rush or pretend.",
+        "There is no mocking language or hostile criticism.",
+        "The overall feeling is one of approval for disciplined craftsmanship.",
+        "Therefore the tone is admiring and respectful."
+      ],
+      "final_answer": "A. admiring and respectful",
+      "simple_explanation": "The writer clearly respects Musa's careful way of working and presents him as someone worthy of esteem. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "tone_attitude",
+      "eng_01_p012"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q047",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Deduction",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p012",
+    "passage_title": "The Radio Repairer",
+    "passage_text": "In a narrow shop near the motor park, Musa repaired radios, torches and small speakers that many people assumed were beyond saving. His tools looked unimpressive: a soldering iron, a cracked magnifying lens, a box of screws and a wooden stool darkened by years of use. Yet customers travelled from surrounding villages because Musa had earned a reputation for patience. He listened carefully when owners described a fault, opened each device slowly and often paused to test one wire after another instead of replacing parts carelessly. Apprentices who came to learn from him were surprised that he spent so much time asking questions before touching a machine. Musa said that haste was the enemy of accurate work. According to him, a repairer who guesses too quickly may produce smoke where sound should be. Business was not always brisk, especially when imported gadgets became cheaper, but loyal customers kept returning. They said his greatest skill was not in his hands alone; it was in the discipline with which he refused to pretend that every problem had the same cause.",
+    "question": "From the passage, one may deduce that Musa believed a good repairer should first",
+    "options": {
+      "A": "replace as many parts as possible",
+      "B": "understand the exact nature of a fault before acting",
+      "C": "charge high fees to discourage unserious customers",
+      "D": "prefer new gadgets to old ones"
+    },
+    "answer": "B",
+    "answer_text": "understand the exact nature of a fault before acting",
+    "explanation": {
+      "question_restate": "We are to deduce Musa's working principle from the evidence given in the passage.",
+      "principle": "Deduction is a logical conclusion reached from stated facts and patterns in the passage.",
+      "steps": [
+        "The passage says Musa listened carefully to descriptions of faults.",
+        "It also says he tested one wire after another instead of replacing parts carelessly.",
+        "He warned that haste causes mistakes and that not every problem has the same cause.",
+        "These details support the logical deduction that diagnosis should come before action.",
+        "Therefore option B expresses his principle best."
+      ],
+      "final_answer": "B. understand the exact nature of a fault before acting",
+      "simple_explanation": "Musa's habit shows that correct understanding must come before repair. He does not believe in careless trial and error. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "deduction",
+      "eng_01_p012"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q048",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Reference words and pronouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p012",
+    "passage_title": "The Radio Repairer",
+    "passage_text": "In a narrow shop near the motor park, Musa repaired radios, torches and small speakers that many people assumed were beyond saving. His tools looked unimpressive: a soldering iron, a cracked magnifying lens, a box of screws and a wooden stool darkened by years of use. Yet customers travelled from surrounding villages because Musa had earned a reputation for patience. He listened carefully when owners described a fault, opened each device slowly and often paused to test one wire after another instead of replacing parts carelessly. Apprentices who came to learn from him were surprised that he spent so much time asking questions before touching a machine. Musa said that haste was the enemy of accurate work. According to him, a repairer who guesses too quickly may produce smoke where sound should be. Business was not always brisk, especially when imported gadgets became cheaper, but loyal customers kept returning. They said his greatest skill was not in his hands alone; it was in the discipline with which he refused to pretend that every problem had the same cause.",
+    "question": "In the sentence, 'They said his greatest skill was not in his hands alone,' the word 'They' refers to",
+    "options": {
+      "A": "the apprentices",
+      "B": "the surrounding villages",
+      "C": "the loyal customers",
+      "D": "the imported gadgets"
+    },
+    "answer": "C",
+    "answer_text": "the loyal customers",
+    "explanation": {
+      "question_restate": "We are to identify the noun to which the pronoun refers.",
+      "principle": "Reference questions test whether you can link a pronoun back to the correct person or thing mentioned earlier.",
+      "steps": [
+        "The sentence appears near the end of the passage after the writer says loyal customers kept returning.",
+        "The next sentence begins, 'They said his greatest skill...'",
+        "The nearest plural noun that makes clear sense is 'loyal customers'.",
+        "The apprentices are mentioned earlier, but the passage specifically attaches the reported opinion to returning customers.",
+        "So 'They' refers to the loyal customers."
+      ],
+      "final_answer": "C. the loyal customers",
+      "simple_explanation": "Always look for the nearest suitable noun that agrees in number and meaning with the pronoun. Here, it is the loyal customers. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "reference_words_pronouns",
+      "eng_01_p012"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q049",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Fact and opinion",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p012",
+    "passage_title": "The Radio Repairer",
+    "passage_text": "In a narrow shop near the motor park, Musa repaired radios, torches and small speakers that many people assumed were beyond saving. His tools looked unimpressive: a soldering iron, a cracked magnifying lens, a box of screws and a wooden stool darkened by years of use. Yet customers travelled from surrounding villages because Musa had earned a reputation for patience. He listened carefully when owners described a fault, opened each device slowly and often paused to test one wire after another instead of replacing parts carelessly. Apprentices who came to learn from him were surprised that he spent so much time asking questions before touching a machine. Musa said that haste was the enemy of accurate work. According to him, a repairer who guesses too quickly may produce smoke where sound should be. Business was not always brisk, especially when imported gadgets became cheaper, but loyal customers kept returning. They said his greatest skill was not in his hands alone; it was in the discipline with which he refused to pretend that every problem had the same cause.",
+    "question": "Which of the following is an opinion expressed in the passage?",
+    "options": {
+      "A": "Customers travelled from surrounding villages",
+      "B": "Musa used a soldering iron and a magnifying lens",
+      "C": "Haste was the enemy of accurate work",
+      "D": "Imported gadgets became cheaper"
+    },
+    "answer": "C",
+    "answer_text": "Haste was the enemy of accurate work",
+    "explanation": {
+      "question_restate": "We are to distinguish between a verifiable statement and a judgment or belief.",
+      "principle": "A fact can be checked or proved, while an opinion expresses a view, interpretation or personal judgment.",
+      "steps": [
+        "Option C is a statement of belief or principle attributed to Musa.",
+        "It reflects his view about careful work, not a measurable fact in the same direct way as the others.",
+        "The other options describe events or objects that could be checked from the situation given.",
+        "Comprehension questions often test this difference by mixing reported observations with personal conclusions.",
+        "Therefore option C is the opinion."
+      ],
+      "final_answer": "C. Haste was the enemy of accurate work",
+      "simple_explanation": "Facts can be verified directly. Opinions reflect what someone thinks or believes. Musa's statement about haste is a judgment. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "fact_opinion",
+      "eng_01_p012"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q050",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Reading comprehension passages",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p012",
+    "passage_title": "The Radio Repairer",
+    "passage_text": "In a narrow shop near the motor park, Musa repaired radios, torches and small speakers that many people assumed were beyond saving. His tools looked unimpressive: a soldering iron, a cracked magnifying lens, a box of screws and a wooden stool darkened by years of use. Yet customers travelled from surrounding villages because Musa had earned a reputation for patience. He listened carefully when owners described a fault, opened each device slowly and often paused to test one wire after another instead of replacing parts carelessly. Apprentices who came to learn from him were surprised that he spent so much time asking questions before touching a machine. Musa said that haste was the enemy of accurate work. According to him, a repairer who guesses too quickly may produce smoke where sound should be. Business was not always brisk, especially when imported gadgets became cheaper, but loyal customers kept returning. They said his greatest skill was not in his hands alone; it was in the discipline with which he refused to pretend that every problem had the same cause.",
+    "question": "Which of the following statements best captures the lesson of the passage?",
+    "options": {
+      "A": "Old gadgets should never be repaired",
+      "B": "Skill is strengthened by patience, discipline and accurate diagnosis",
+      "C": "Villagers prefer modern devices because they are fashionable",
+      "D": "Apprentices learn best when allowed to work without supervision"
+    },
+    "answer": "B",
+    "answer_text": "Skill is strengthened by patience, discipline and accurate diagnosis",
+    "explanation": {
+      "question_restate": "We are to choose the best overall understanding of the passage as a whole.",
+      "principle": "A general comprehension question tests whether you can combine the details into one sensible lesson or message.",
+      "steps": [
+        "The writer repeatedly emphasizes Musa's patience, his habit of asking questions and his refusal to guess carelessly.",
+        "Customers value not only his hands but also his disciplined method.",
+        "The passage does not condemn repair generally, nor does it praise unsupervised apprenticeship.",
+        "Its strongest lesson is that real skill depends on careful diagnosis and disciplined patience.",
+        "That is why option B is the best summary response."
+      ],
+      "final_answer": "B. Skill is strengthened by patience, discipline and accurate diagnosis",
+      "simple_explanation": "This passage teaches that good workmanship is not guesswork. It grows from patience, care and disciplined thinking. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "reading_passage",
+      "eng_01_p012"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q051",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Sequence of ideas",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p013",
+    "passage_title": "The Flood Warning",
+    "passage_text": "For several years, residents of the riverside settlement had treated weather warnings as if they were distant rumours meant for other places. When radio announcers mentioned heavy rainfall upstream, most people simply moved their basins indoors and continued with their routines. Matters changed one August when the river rose unusually fast after three days of rain. At dawn, children noticed that the footpath to the market had disappeared under brown water. By noon, elders were knocking on doors and urging families to move valuables to higher ground. Some men still argued that the water would soon withdraw, but the current kept swelling and carrying logs, plastic containers and uprooted shrubs. By evening, the primary school on the hill had become a temporary shelter for dozens of households. No lives were lost, partly because a local volunteer group had earlier mapped safe routes and stored dry food in the school hall. In later meetings, many residents admitted that the flood had taught them the cost of ignoring small warnings until they become large emergencies.",
+    "question": "Which of the following presents the events in the order in which they occurred?",
+    "options": {
+      "A": "Families moved valuables; radio warnings were ignored; the river rose; the school became a shelter",
+      "B": "The river rose; children noticed the submerged footpath; families were urged to move valuables; the school became a shelter",
+      "C": "The school became a shelter; elders knocked on doors; the river rose; children noticed the footpath disappear",
+      "D": "Radio warnings were ignored; the school became a shelter; the river rose; residents held later meetings"
+    },
+    "answer": "B",
+    "answer_text": "The river rose; children noticed the submerged footpath; families were urged to move valuables; the school became a shelter",
+    "explanation": {
+      "question_restate": "We are to arrange the major events in the passage in their correct sequence.",
+      "principle": "Sequence questions require careful attention to time markers such as 'at dawn', 'by noon' and 'by evening'.",
+      "steps": [
+        "The passage first reports heavy rainfall and the unusual rise of the river.",
+        "At dawn, children noticed that the footpath had disappeared under water.",
+        "By noon, elders were urging families to move valuables.",
+        "By evening, the primary school on the hill had become a temporary shelter.",
+        "Option B follows this exact order."
+      ],
+      "final_answer": "B. The river rose; children noticed the submerged footpath; families were urged to move valuables; the school became a shelter",
+      "simple_explanation": "Watch time signals closely. They often provide the key to sequence questions in comprehension passages. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "sequence_ideas",
+      "eng_01_p013"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q052",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Cause-and-effect relationships",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p013",
+    "passage_title": "The Flood Warning",
+    "passage_text": "For several years, residents of the riverside settlement had treated weather warnings as if they were distant rumours meant for other places. When radio announcers mentioned heavy rainfall upstream, most people simply moved their basins indoors and continued with their routines. Matters changed one August when the river rose unusually fast after three days of rain. At dawn, children noticed that the footpath to the market had disappeared under brown water. By noon, elders were knocking on doors and urging families to move valuables to higher ground. Some men still argued that the water would soon withdraw, but the current kept swelling and carrying logs, plastic containers and uprooted shrubs. By evening, the primary school on the hill had become a temporary shelter for dozens of households. No lives were lost, partly because a local volunteer group had earlier mapped safe routes and stored dry food in the school hall. In later meetings, many residents admitted that the flood had taught them the cost of ignoring small warnings until they become large emergencies.",
+    "question": "What mainly caused the residents to change their attitude to weather warnings?",
+    "options": {
+      "A": "The building of a new market",
+      "B": "An unusually rapid rise in the river after days of rain",
+      "C": "The arrival of a new radio station",
+      "D": "The loss of many lives in the flood"
+    },
+    "answer": "B",
+    "answer_text": "An unusually rapid rise in the river after days of rain",
+    "explanation": {
+      "question_restate": "We are to identify the event that produced the change in attitude described in the passage.",
+      "principle": "Cause-and-effect questions ask what led directly to a later response or outcome.",
+      "steps": [
+        "For years, residents treated warnings casually.",
+        "The turning point came when the river rose unusually fast after three days of rain.",
+        "That concrete experience transformed the warnings from distant rumours into urgent reality.",
+        "The passage clearly states that no lives were lost, so option D is wrong.",
+        "Therefore option B is the correct cause."
+      ],
+      "final_answer": "B. An unusually rapid rise in the river after days of rain",
+      "simple_explanation": "People often ignore warnings until a real event forces them to take danger seriously. That is what happened here. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "cause_effect",
+      "eng_01_p013"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q053",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Conclusion from passage",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p013",
+    "passage_title": "The Flood Warning",
+    "passage_text": "For several years, residents of the riverside settlement had treated weather warnings as if they were distant rumours meant for other places. When radio announcers mentioned heavy rainfall upstream, most people simply moved their basins indoors and continued with their routines. Matters changed one August when the river rose unusually fast after three days of rain. At dawn, children noticed that the footpath to the market had disappeared under brown water. By noon, elders were knocking on doors and urging families to move valuables to higher ground. Some men still argued that the water would soon withdraw, but the current kept swelling and carrying logs, plastic containers and uprooted shrubs. By evening, the primary school on the hill had become a temporary shelter for dozens of households. No lives were lost, partly because a local volunteer group had earlier mapped safe routes and stored dry food in the school hall. In later meetings, many residents admitted that the flood had taught them the cost of ignoring small warnings until they become large emergencies.",
+    "question": "A reasonable conclusion from the passage is that communities handle disasters better when they",
+    "options": {
+      "A": "wait for government officials before doing anything",
+      "B": "treat early warnings seriously and prepare in advance",
+      "C": "move permanently away from rivers",
+      "D": "avoid listening to the radio"
+    },
+    "answer": "B",
+    "answer_text": "treat early warnings seriously and prepare in advance",
+    "explanation": {
+      "question_restate": "We are to reach a sensible conclusion based on the full meaning of the passage.",
+      "principle": "A conclusion is a broader judgment that grows naturally out of the details and final lesson of the passage.",
+      "steps": [
+        "The passage shows that residents had ignored small warnings in the past.",
+        "It also shows that a volunteer group had mapped safe routes and stored food before the flood.",
+        "Because of that preparation, no lives were lost.",
+        "The closing sentence states the cost of ignoring small warnings until they become large emergencies.",
+        "So the sound conclusion is that early attention and preparation improve disaster response."
+      ],
+      "final_answer": "B. treat early warnings seriously and prepare in advance",
+      "simple_explanation": "The passage teaches preparedness. Small warnings should not be neglected because preparation saves lives and reduces panic. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "conclusion_from_passage",
+      "eng_01_p013"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q054",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Topic sentence",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p013",
+    "passage_title": "The Flood Warning",
+    "passage_text": "For several years, residents of the riverside settlement had treated weather warnings as if they were distant rumours meant for other places. When radio announcers mentioned heavy rainfall upstream, most people simply moved their basins indoors and continued with their routines. Matters changed one August when the river rose unusually fast after three days of rain. At dawn, children noticed that the footpath to the market had disappeared under brown water. By noon, elders were knocking on doors and urging families to move valuables to higher ground. Some men still argued that the water would soon withdraw, but the current kept swelling and carrying logs, plastic containers and uprooted shrubs. By evening, the primary school on the hill had become a temporary shelter for dozens of households. No lives were lost, partly because a local volunteer group had earlier mapped safe routes and stored dry food in the school hall. In later meetings, many residents admitted that the flood had taught them the cost of ignoring small warnings until they become large emergencies.",
+    "question": "Which of the following would best serve as the topic sentence for the passage?",
+    "options": {
+      "A": "Many rivers in the country are useful for transport and fishing",
+      "B": "People often ignore danger signals until a serious flood teaches them to value preparedness",
+      "C": "Children usually notice environmental changes before adults do",
+      "D": "Temporary shelters are expensive to maintain in rural areas"
+    },
+    "answer": "B",
+    "answer_text": "People often ignore danger signals until a serious flood teaches them to value preparedness",
+    "explanation": {
+      "question_restate": "We are to choose the sentence that best introduces the dominant idea of the whole passage.",
+      "principle": "A topic sentence states the controlling idea under which the supporting details can fit logically.",
+      "steps": [
+        "The whole passage contrasts earlier neglect of warnings with later recognition of their importance.",
+        "The flood serves as the event that exposes the danger of that neglect.",
+        "Option B captures both the earlier attitude and the lesson learned afterward.",
+        "The other options focus on minor or unrelated issues.",
+        "Therefore option B is the best topic sentence."
+      ],
+      "final_answer": "B. People often ignore danger signals until a serious flood teaches them to value preparedness",
+      "simple_explanation": "A good topic sentence should be broad enough to cover the entire passage and specific enough to match its real focus. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "topic_sentence",
+      "eng_01_p013"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q055",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Figurative expressions as used in passages",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p013",
+    "passage_title": "The Flood Warning",
+    "passage_text": "For several years, residents of the riverside settlement had treated weather warnings as if they were distant rumours meant for other places. When radio announcers mentioned heavy rainfall upstream, most people simply moved their basins indoors and continued with their routines. Matters changed one August when the river rose unusually fast after three days of rain. At dawn, children noticed that the footpath to the market had disappeared under brown water. By noon, elders were knocking on doors and urging families to move valuables to higher ground. Some men still argued that the water would soon withdraw, but the current kept swelling and carrying logs, plastic containers and uprooted shrubs. By evening, the primary school on the hill had become a temporary shelter for dozens of households. No lives were lost, partly because a local volunteer group had earlier mapped safe routes and stored dry food in the school hall. In later meetings, many residents admitted that the flood had taught them the cost of ignoring small warnings until they become large emergencies.",
+    "question": "The expression 'distant rumours meant for other places' suggests that the warnings were seen as",
+    "options": {
+      "A": "false stories invented by announcers",
+      "B": "matters that did not seem personally relevant to the residents",
+      "C": "messages delivered too softly to be heard",
+      "D": "songs meant to entertain listeners"
+    },
+    "answer": "B",
+    "answer_text": "matters that did not seem personally relevant to the residents",
+    "explanation": {
+      "question_restate": "We are to interpret the figurative force of an expression used by the writer.",
+      "principle": "Figurative expressions often communicate attitude or perception rather than literal meaning.",
+      "steps": [
+        "The warnings are called 'distant rumours', not because they were physically far away alone, but because people emotionally detached themselves from them.",
+        "The phrase 'meant for other places' reinforces this idea of psychological distance.",
+        "The residents behaved as if the danger concerned someone else.",
+        "So the expression points to a sense of non-involvement, not to poor sound quality or entertainment.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. matters that did not seem personally relevant to the residents",
+      "simple_explanation": "The writer means that the people did not take the warnings personally. They treated the danger as another community's problem. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "figurative_expression",
+      "eng_01_p013"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q056",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Main idea / central theme",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p014",
+    "passage_title": "The Debate Club",
+    "passage_text": "When Amara joined the debate club in her first term, she imagined that success depended mainly on speaking loudly and quickly. She soon discovered that the best debaters in the school did something different. Before each contest, they read newspapers, checked meanings in the dictionary and wrote short notes that arranged their ideas in logical order. During practice sessions, the club coordinator stopped speakers whenever they made claims they could not support. He reminded them that confidence without evidence was like a beautifully painted pot with a crack at the bottom. At first, Amara found the corrections embarrassing. She often mistook emotion for argument and repeated points already answered by the opposing side. Gradually, however, she learned to define terms, anticipate objections and choose examples that matched the motion. By the end of the session, she had not become the loudest speaker in the club, but she had become one of the most convincing. She later said that debate trained her mind more than it trained her voice.",
+    "question": "The main idea of the passage is that effective debating depends more on",
+    "options": {
+      "A": "volume and speed than on logic",
+      "B": "evidence, structure and careful thinking than on mere loudness",
+      "C": "memorizing many dictionary words only",
+      "D": "attacking the opposing side emotionally"
+    },
+    "answer": "B",
+    "answer_text": "evidence, structure and careful thinking than on mere loudness",
+    "explanation": {
+      "question_restate": "We are to identify the chief point the writer is making about debating.",
+      "principle": "The central theme is the controlling idea that unites all the details.",
+      "steps": [
+        "Amara begins by thinking loudness and speed are enough.",
+        "The passage then shows that strong debaters read widely, arrange ideas logically and support claims with evidence.",
+        "Amara eventually becomes convincing, not because she is the loudest, but because she learns disciplined argument.",
+        "The final sentence confirms that debate trained her mind more than her voice.",
+        "This makes option B the central idea."
+      ],
+      "final_answer": "B. evidence, structure and careful thinking than on mere loudness",
+      "simple_explanation": "The passage teaches that good debating is not noise. It is organized, evidence-based thinking. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "main_idea_central_theme",
+      "eng_01_p014"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q057",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Supporting details",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p014",
+    "passage_title": "The Debate Club",
+    "passage_text": "When Amara joined the debate club in her first term, she imagined that success depended mainly on speaking loudly and quickly. She soon discovered that the best debaters in the school did something different. Before each contest, they read newspapers, checked meanings in the dictionary and wrote short notes that arranged their ideas in logical order. During practice sessions, the club coordinator stopped speakers whenever they made claims they could not support. He reminded them that confidence without evidence was like a beautifully painted pot with a crack at the bottom. At first, Amara found the corrections embarrassing. She often mistook emotion for argument and repeated points already answered by the opposing side. Gradually, however, she learned to define terms, anticipate objections and choose examples that matched the motion. By the end of the session, she had not become the loudest speaker in the club, but she had become one of the most convincing. She later said that debate trained her mind more than it trained her voice.",
+    "question": "Which of the following is mentioned as one of the habits of the best debaters in the school?",
+    "options": {
+      "A": "They avoided dictionaries because they trusted instinct",
+      "B": "They arranged their ideas in logical order before contests",
+      "C": "They refused to listen to opposing arguments",
+      "D": "They depended entirely on emotional language"
+    },
+    "answer": "B",
+    "answer_text": "They arranged their ideas in logical order before contests",
+    "explanation": {
+      "question_restate": "We are to choose a detail directly stated in the passage.",
+      "principle": "Supporting details are the concrete pieces of information that explain or prove the main idea.",
+      "steps": [
+        "The writer says the best debaters read newspapers, checked meanings in the dictionary and wrote short notes arranging their ideas logically.",
+        "Option B reflects that detail accurately.",
+        "The remaining options contradict the passage.",
+        "This is a straightforward retrieval question.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. They arranged their ideas in logical order before contests",
+      "simple_explanation": "When a detail is directly mentioned in the passage, stay close to the wording and do not be distracted by attractive wrong options. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "supporting_details",
+      "eng_01_p014"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q058",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Inference",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p014",
+    "passage_title": "The Debate Club",
+    "passage_text": "When Amara joined the debate club in her first term, she imagined that success depended mainly on speaking loudly and quickly. She soon discovered that the best debaters in the school did something different. Before each contest, they read newspapers, checked meanings in the dictionary and wrote short notes that arranged their ideas in logical order. During practice sessions, the club coordinator stopped speakers whenever they made claims they could not support. He reminded them that confidence without evidence was like a beautifully painted pot with a crack at the bottom. At first, Amara found the corrections embarrassing. She often mistook emotion for argument and repeated points already answered by the opposing side. Gradually, however, she learned to define terms, anticipate objections and choose examples that matched the motion. By the end of the session, she had not become the loudest speaker in the club, but she had become one of the most convincing. She later said that debate trained her mind more than it trained her voice.",
+    "question": "It may be inferred that Amara's early weakness in debating was that she",
+    "options": {
+      "A": "lacked interest in school activities",
+      "B": "confused strong feeling with strong argument",
+      "C": "could not speak English fluently",
+      "D": "was afraid of reading newspapers"
+    },
+    "answer": "B",
+    "answer_text": "confused strong feeling with strong argument",
+    "explanation": {
+      "question_restate": "We are to infer Amara's early problem from what the writer says about her growth.",
+      "principle": "Inference requires you to read implications from the evidence supplied.",
+      "steps": [
+        "The passage states that she 'often mistook emotion for argument'.",
+        "Even before she improved, this detail shows that she relied too much on feeling and too little on evidence.",
+        "The passage does not say she lacked interest, could not speak English or feared newspapers.",
+        "Thus the best inference is that her early weakness lay in emotional rather than logical argument.",
+        "Option B fits the passage exactly."
+      ],
+      "final_answer": "B. confused strong feeling with strong argument",
+      "simple_explanation": "Amara's problem was not lack of speech. It was lack of disciplined reasoning. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "inference",
+      "eng_01_p014"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q059",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Writer's tone and attitude",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p014",
+    "passage_title": "The Debate Club",
+    "passage_text": "When Amara joined the debate club in her first term, she imagined that success depended mainly on speaking loudly and quickly. She soon discovered that the best debaters in the school did something different. Before each contest, they read newspapers, checked meanings in the dictionary and wrote short notes that arranged their ideas in logical order. During practice sessions, the club coordinator stopped speakers whenever they made claims they could not support. He reminded them that confidence without evidence was like a beautifully painted pot with a crack at the bottom. At first, Amara found the corrections embarrassing. She often mistook emotion for argument and repeated points already answered by the opposing side. Gradually, however, she learned to define terms, anticipate objections and choose examples that matched the motion. By the end of the session, she had not become the loudest speaker in the club, but she had become one of the most convincing. She later said that debate trained her mind more than it trained her voice.",
+    "question": "The writer's attitude to the debate club is mainly",
+    "options": {
+      "A": "appreciative of its training value",
+      "B": "mocking and dismissive",
+      "C": "angry at school competitions",
+      "D": "indifferent to student growth"
+    },
+    "answer": "A",
+    "answer_text": "appreciative of its training value",
+    "explanation": {
+      "question_restate": "We are to identify how the writer feels about the debate club experience.",
+      "principle": "Tone and attitude are revealed by the way the writer selects and presents information.",
+      "steps": [
+        "The passage highlights discipline, growth and intellectual training.",
+        "Amara's embarrassment is temporary and leads to improvement.",
+        "The final sentence strongly values the training of the mind.",
+        "These signals show approval, not mockery or indifference.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. appreciative of its training value",
+      "simple_explanation": "The writer presents the club as a useful place of growth, so the attitude is clearly appreciative. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "tone_attitude",
+      "eng_01_p014"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q060",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Deduction",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p014",
+    "passage_title": "The Debate Club",
+    "passage_text": "When Amara joined the debate club in her first term, she imagined that success depended mainly on speaking loudly and quickly. She soon discovered that the best debaters in the school did something different. Before each contest, they read newspapers, checked meanings in the dictionary and wrote short notes that arranged their ideas in logical order. During practice sessions, the club coordinator stopped speakers whenever they made claims they could not support. He reminded them that confidence without evidence was like a beautifully painted pot with a crack at the bottom. At first, Amara found the corrections embarrassing. She often mistook emotion for argument and repeated points already answered by the opposing side. Gradually, however, she learned to define terms, anticipate objections and choose examples that matched the motion. By the end of the session, she had not become the loudest speaker in the club, but she had become one of the most convincing. She later said that debate trained her mind more than it trained her voice.",
+    "question": "From the passage, one may deduce that the club coordinator valued",
+    "options": {
+      "A": "victory at any cost",
+      "B": "argument supported by evidence and clear reasoning",
+      "C": "loud voices above careful preparation",
+      "D": "short speeches without content"
+    },
+    "answer": "B",
+    "answer_text": "argument supported by evidence and clear reasoning",
+    "explanation": {
+      "question_restate": "We are to deduce the coordinator's standard for good debating.",
+      "principle": "Deduction is a reasoned conclusion drawn from repeated clues in the passage.",
+      "steps": [
+        "The coordinator stopped speakers when they made unsupported claims.",
+        "He insisted that confidence alone was not enough.",
+        "Amara later learned to define terms, anticipate objections and choose fitting examples.",
+        "These details show the coordinator's emphasis on evidence and logic.",
+        "So option B best states the deduction."
+      ],
+      "final_answer": "B. argument supported by evidence and clear reasoning",
+      "simple_explanation": "A good teacher of debate values proof, structure and reasoning more than noise or appearance. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "deduction",
+      "eng_01_p014"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q061",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Reference words and pronouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p015",
+    "passage_title": "The New Bus Route",
+    "passage_text": "The transport company introduced a new bus route linking three growing suburbs to the central market. On the first morning, many passengers welcomed the buses because they hoped to spend less time waiting at crowded junctions. The company had advertised the service as faster, cleaner and more reliable than the informal minibuses that already operated along parts of the road. During the first week, however, the timetable remained uncertain. Some buses arrived late because a bridge on the route was undergoing repairs, while others failed to stop long enough for elderly passengers to board safely. Complaints increased, and the company responded by assigning inspectors to major stops and adjusting departure times. Within a month, the service improved noticeably. Traders could predict when to leave home, students missed fewer morning classes and the pressure on some old bus stops reduced. Although the scheme began with confusion, it eventually showed that a useful idea may require patient adjustment before people fully trust it.",
+    "question": "In the sentence, 'Although the scheme began with confusion, it eventually showed that a useful idea may require patient adjustment,' the word 'it' refers to",
+    "options": {
+      "A": "the bridge",
+      "B": "the route itself",
+      "C": "the service scheme",
+      "D": "the central market"
+    },
+    "answer": "C",
+    "answer_text": "the service scheme",
+    "explanation": {
+      "question_restate": "We are to identify what the pronoun 'it' stands for in the sentence.",
+      "principle": "Reference questions test the ability to connect a pronoun with the correct earlier noun or idea.",
+      "steps": [
+        "The sentence speaks about a scheme that began with confusion and later proved useful after adjustment.",
+        "Throughout the passage, the writer is discussing the newly introduced bus service.",
+        "Therefore 'it' refers to the service scheme, not to the bridge or market.",
+        "The bridge is only one cause of delay, not the subject of the conclusion.",
+        "So option C is correct."
+      ],
+      "final_answer": "C. the service scheme",
+      "simple_explanation": "Trace the pronoun back to the main idea of the sentence. Here, the sentence is about the bus service scheme as a whole. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "reference_words_pronouns",
+      "eng_01_p015"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q062",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Fact and opinion",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p015",
+    "passage_title": "The New Bus Route",
+    "passage_text": "The transport company introduced a new bus route linking three growing suburbs to the central market. On the first morning, many passengers welcomed the buses because they hoped to spend less time waiting at crowded junctions. The company had advertised the service as faster, cleaner and more reliable than the informal minibuses that already operated along parts of the road. During the first week, however, the timetable remained uncertain. Some buses arrived late because a bridge on the route was undergoing repairs, while others failed to stop long enough for elderly passengers to board safely. Complaints increased, and the company responded by assigning inspectors to major stops and adjusting departure times. Within a month, the service improved noticeably. Traders could predict when to leave home, students missed fewer morning classes and the pressure on some old bus stops reduced. Although the scheme began with confusion, it eventually showed that a useful idea may require patient adjustment before people fully trust it.",
+    "question": "Which of the following is an opinion rather than a fact in the passage?",
+    "options": {
+      "A": "The company introduced a new bus route",
+      "B": "The service was advertised as faster, cleaner and more reliable",
+      "C": "A bridge on the route was undergoing repairs",
+      "D": "Inspectors were assigned to major stops"
+    },
+    "answer": "B",
+    "answer_text": "The service was advertised as faster, cleaner and more reliable",
+    "explanation": {
+      "question_restate": "We are to identify the statement that expresses a claim or evaluation rather than a directly established fact.",
+      "principle": "An opinion often contains judgmental language or promotional claims that can reflect a viewpoint.",
+      "steps": [
+        "Option B reports the company's promotional description of its own service.",
+        "Words such as 'faster', 'cleaner' and 'more reliable' are evaluative and part of an advertisement.",
+        "The other options describe actions or situations presented as direct occurrences in the passage.",
+        "This makes option B the clearest example of opinion or claim.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. The service was advertised as faster, cleaner and more reliable",
+      "simple_explanation": "Advertisements often contain opinions or claims designed to persuade. That is why option B is the best answer. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "fact_opinion",
+      "eng_01_p015"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q063",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Reading comprehension passages",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p015",
+    "passage_title": "The New Bus Route",
+    "passage_text": "The transport company introduced a new bus route linking three growing suburbs to the central market. On the first morning, many passengers welcomed the buses because they hoped to spend less time waiting at crowded junctions. The company had advertised the service as faster, cleaner and more reliable than the informal minibuses that already operated along parts of the road. During the first week, however, the timetable remained uncertain. Some buses arrived late because a bridge on the route was undergoing repairs, while others failed to stop long enough for elderly passengers to board safely. Complaints increased, and the company responded by assigning inspectors to major stops and adjusting departure times. Within a month, the service improved noticeably. Traders could predict when to leave home, students missed fewer morning classes and the pressure on some old bus stops reduced. Although the scheme began with confusion, it eventually showed that a useful idea may require patient adjustment before people fully trust it.",
+    "question": "Which of the following best summarizes the passage?",
+    "options": {
+      "A": "A transport service failed completely because passengers rejected it",
+      "B": "A new bus route faced early difficulties but improved after adjustments",
+      "C": "Bridge repairs made all public transport impossible",
+      "D": "Elderly passengers were the only people who used the new service"
+    },
+    "answer": "B",
+    "answer_text": "A new bus route faced early difficulties but improved after adjustments",
+    "explanation": {
+      "question_restate": "We are to choose the statement that best represents the passage as a whole.",
+      "principle": "A good summary includes the main development without unnecessary minor details.",
+      "steps": [
+        "The service begins with public hope, then experiences delays and complaints.",
+        "The company responds by changing departure times and using inspectors.",
+        "Within a month, the service improves and proves helpful.",
+        "Option B captures this full movement from difficulty to improvement.",
+        "That makes it the best summary."
+      ],
+      "final_answer": "B. A new bus route faced early difficulties but improved after adjustments",
+      "simple_explanation": "A strong summary covers the beginning, the problem and the outcome. Option B does that best. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "reading_passage",
+      "eng_01_p015"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q064",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Sequence of ideas",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p015",
+    "passage_title": "The New Bus Route",
+    "passage_text": "The transport company introduced a new bus route linking three growing suburbs to the central market. On the first morning, many passengers welcomed the buses because they hoped to spend less time waiting at crowded junctions. The company had advertised the service as faster, cleaner and more reliable than the informal minibuses that already operated along parts of the road. During the first week, however, the timetable remained uncertain. Some buses arrived late because a bridge on the route was undergoing repairs, while others failed to stop long enough for elderly passengers to board safely. Complaints increased, and the company responded by assigning inspectors to major stops and adjusting departure times. Within a month, the service improved noticeably. Traders could predict when to leave home, students missed fewer morning classes and the pressure on some old bus stops reduced. Although the scheme began with confusion, it eventually showed that a useful idea may require patient adjustment before people fully trust it.",
+    "question": "Which event happened last according to the passage?",
+    "options": {
+      "A": "The service was advertised to passengers",
+      "B": "Complaints increased about lateness and unsafe stops",
+      "C": "Inspectors were assigned to major stops",
+      "D": "Students missed fewer morning classes"
+    },
+    "answer": "D",
+    "answer_text": "Students missed fewer morning classes",
+    "explanation": {
+      "question_restate": "We are to identify the final event among those listed.",
+      "principle": "Sequence questions demand attention to time markers such as 'first week' and 'within a month'.",
+      "steps": [
+        "The service was first introduced and advertised.",
+        "During the first week, problems produced complaints.",
+        "The company then assigned inspectors and adjusted the timetable.",
+        "Within a month, the improvements led to benefits, including students missing fewer classes.",
+        "Therefore option D occurred last."
+      ],
+      "final_answer": "D. Students missed fewer morning classes",
+      "simple_explanation": "Always follow the time flow of the passage. Benefits that appear after improvements usually come later than the complaints that caused them. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "sequence_ideas",
+      "eng_01_p015"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q065",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Cause-and-effect relationships",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p015",
+    "passage_title": "The New Bus Route",
+    "passage_text": "The transport company introduced a new bus route linking three growing suburbs to the central market. On the first morning, many passengers welcomed the buses because they hoped to spend less time waiting at crowded junctions. The company had advertised the service as faster, cleaner and more reliable than the informal minibuses that already operated along parts of the road. During the first week, however, the timetable remained uncertain. Some buses arrived late because a bridge on the route was undergoing repairs, while others failed to stop long enough for elderly passengers to board safely. Complaints increased, and the company responded by assigning inspectors to major stops and adjusting departure times. Within a month, the service improved noticeably. Traders could predict when to leave home, students missed fewer morning classes and the pressure on some old bus stops reduced. Although the scheme began with confusion, it eventually showed that a useful idea may require patient adjustment before people fully trust it.",
+    "question": "Why did complaints about the new route increase during the first week?",
+    "options": {
+      "A": "Passengers preferred walking to the market",
+      "B": "Buses arrived late and sometimes failed to stop properly for elderly passengers",
+      "C": "The company reduced the number of buses immediately",
+      "D": "Students refused to pay their fares"
+    },
+    "answer": "B",
+    "answer_text": "Buses arrived late and sometimes failed to stop properly for elderly passengers",
+    "explanation": {
+      "question_restate": "We are to identify the direct reasons for the complaints mentioned in the passage.",
+      "principle": "Cause-and-effect questions require a clear link between the stated problem and its result.",
+      "steps": [
+        "The passage states that some buses arrived late because a bridge was under repair.",
+        "It also says others failed to stop long enough for elderly passengers to board safely.",
+        "These two issues explain the rise in complaints.",
+        "The other options are not stated in the passage.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. Buses arrived late and sometimes failed to stop properly for elderly passengers",
+      "simple_explanation": "The complaints were caused by poor early implementation: lateness and unsafe boarding conditions. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "cause_effect",
+      "eng_01_p015"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q066",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Conclusion from passage",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p016",
+    "passage_title": "The Apprentice Tailor",
+    "passage_text": "When Kelechi was sent to learn tailoring, he believed that the trade consisted mainly of pressing pedals and guiding cloth under a needle. His master quickly corrected that impression. Before touching expensive fabric, Kelechi had to sweep the workshop, sort buttons by size, fold finished clothes properly and learn the names of common materials. He complained silently that these duties delayed real learning. Months later, when he was finally allowed to cut cloth, he understood why the earlier discipline mattered. A careless fold could create deep wrinkles; a missing button could offend a customer; a wrong measurement could waste fabric that someone had bought with difficulty. As his skill improved, he also noticed that clients judged the workshop by many small signs: the neatness of shelves, the punctuality of delivery and the respect shown during fittings. By his second year, Kelechi no longer saw the minor tasks as punishment. He recognized them as part of the invisible structure that held the business together.",
+    "question": "Which of the following is the most reasonable conclusion from the passage?",
+    "options": {
+      "A": "Minor workshop duties can contribute significantly to professional excellence",
+      "B": "Tailoring can be learned in a few days without discipline",
+      "C": "Customers care only about low prices",
+      "D": "Buttons and shelves are more important than sewing"
+    },
+    "answer": "A",
+    "answer_text": "Minor workshop duties can contribute significantly to professional excellence",
+    "explanation": {
+      "question_restate": "We are to reach a logical conclusion from the lesson of the whole passage.",
+      "principle": "A conclusion gathers the implications of the details into one sound general judgment.",
+      "steps": [
+        "At first Kelechi saw tasks like sweeping, sorting buttons and folding clothes as delays.",
+        "Later he understood that these small duties affected quality, customer satisfaction and order in the workshop.",
+        "The passage ends by calling them part of the invisible structure of the business.",
+        "This supports the conclusion that apparently minor duties are essential to professional excellence.",
+        "Hence option A is correct."
+      ],
+      "final_answer": "A. Minor workshop duties can contribute significantly to professional excellence",
+      "simple_explanation": "The passage teaches that success often depends on small disciplines people ignore at first. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "conclusion_from_passage",
+      "eng_01_p016"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q067",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Topic sentence",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p016",
+    "passage_title": "The Apprentice Tailor",
+    "passage_text": "When Kelechi was sent to learn tailoring, he believed that the trade consisted mainly of pressing pedals and guiding cloth under a needle. His master quickly corrected that impression. Before touching expensive fabric, Kelechi had to sweep the workshop, sort buttons by size, fold finished clothes properly and learn the names of common materials. He complained silently that these duties delayed real learning. Months later, when he was finally allowed to cut cloth, he understood why the earlier discipline mattered. A careless fold could create deep wrinkles; a missing button could offend a customer; a wrong measurement could waste fabric that someone had bought with difficulty. As his skill improved, he also noticed that clients judged the workshop by many small signs: the neatness of shelves, the punctuality of delivery and the respect shown during fittings. By his second year, Kelechi no longer saw the minor tasks as punishment. He recognized them as part of the invisible structure that held the business together.",
+    "question": "Which of the following would best serve as the topic sentence for the passage?",
+    "options": {
+      "A": "Many young people dislike learning trades in urban workshops",
+      "B": "An apprentice often discovers that small tasks are part of the deeper discipline of a craft",
+      "C": "Customers usually complain about wrong measurements",
+      "D": "Expensive fabric should not be used by beginners"
+    },
+    "answer": "B",
+    "answer_text": "An apprentice often discovers that small tasks are part of the deeper discipline of a craft",
+    "explanation": {
+      "question_restate": "We are to select the sentence that best introduces the central controlling idea of the passage.",
+      "principle": "A topic sentence should summarize the general direction that the rest of the paragraph or passage develops.",
+      "steps": [
+        "The passage begins with Kelechi's mistaken belief that tailoring is only about sewing.",
+        "It then explains why sweeping, sorting, folding and careful measuring all matter.",
+        "The final sentence confirms that these small tasks support the whole business.",
+        "Option B covers that broad lesson perfectly.",
+        "Therefore option B is the best topic sentence."
+      ],
+      "final_answer": "B. An apprentice often discovers that small tasks are part of the deeper discipline of a craft",
+      "simple_explanation": "A good topic sentence should prepare the reader for all the later supporting details. Option B does this most effectively. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "topic_sentence",
+      "eng_01_p016"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q068",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Figurative expressions as used in passages",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p016",
+    "passage_title": "The Apprentice Tailor",
+    "passage_text": "When Kelechi was sent to learn tailoring, he believed that the trade consisted mainly of pressing pedals and guiding cloth under a needle. His master quickly corrected that impression. Before touching expensive fabric, Kelechi had to sweep the workshop, sort buttons by size, fold finished clothes properly and learn the names of common materials. He complained silently that these duties delayed real learning. Months later, when he was finally allowed to cut cloth, he understood why the earlier discipline mattered. A careless fold could create deep wrinkles; a missing button could offend a customer; a wrong measurement could waste fabric that someone had bought with difficulty. As his skill improved, he also noticed that clients judged the workshop by many small signs: the neatness of shelves, the punctuality of delivery and the respect shown during fittings. By his second year, Kelechi no longer saw the minor tasks as punishment. He recognized them as part of the invisible structure that held the business together.",
+    "question": "The expression 'the invisible structure that held the business together' refers to",
+    "options": {
+      "A": "hidden metal poles supporting the workshop roof",
+      "B": "the unnoticed habits and disciplines that keep the workshop functioning well",
+      "C": "a secret financial account owned by the master",
+      "D": "the physical thread used in sewing clothes"
+    },
+    "answer": "B",
+    "answer_text": "the unnoticed habits and disciplines that keep the workshop functioning well",
+    "explanation": {
+      "question_restate": "We are to interpret a figurative expression from the closing sentence of the passage.",
+      "principle": "Figurative language often uses a concrete image to explain an abstract idea more vividly.",
+      "steps": [
+        "The business is said to be held together by an 'invisible structure'.",
+        "This cannot mean a literal physical structure because the preceding details concern habits such as neatness, punctuality and respect.",
+        "The writer uses the image of a supporting structure to represent hidden disciplines that sustain the business.",
+        "Therefore option B captures the figurative meaning.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. the unnoticed habits and disciplines that keep the workshop functioning well",
+      "simple_explanation": "The writer compares good habits to a building frame: you may not notice them quickly, but they keep everything standing. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "figurative_expression",
+      "eng_01_p016"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q069",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Main idea / central theme",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p016",
+    "passage_title": "The Apprentice Tailor",
+    "passage_text": "When Kelechi was sent to learn tailoring, he believed that the trade consisted mainly of pressing pedals and guiding cloth under a needle. His master quickly corrected that impression. Before touching expensive fabric, Kelechi had to sweep the workshop, sort buttons by size, fold finished clothes properly and learn the names of common materials. He complained silently that these duties delayed real learning. Months later, when he was finally allowed to cut cloth, he understood why the earlier discipline mattered. A careless fold could create deep wrinkles; a missing button could offend a customer; a wrong measurement could waste fabric that someone had bought with difficulty. As his skill improved, he also noticed that clients judged the workshop by many small signs: the neatness of shelves, the punctuality of delivery and the respect shown during fittings. By his second year, Kelechi no longer saw the minor tasks as punishment. He recognized them as part of the invisible structure that held the business together.",
+    "question": "The passage is mainly about how apprenticeship taught Kelechi that",
+    "options": {
+      "A": "customers do not understand tailoring",
+      "B": "successful tailoring depends on more than operating a sewing machine",
+      "C": "sweeping is the most important part of tailoring",
+      "D": "expensive cloth should never be cut by learners"
+    },
+    "answer": "B",
+    "answer_text": "successful tailoring depends on more than operating a sewing machine",
+    "explanation": {
+      "question_restate": "We are to identify the central message of the passage.",
+      "principle": "The main idea is the broad point that explains why all the details are included.",
+      "steps": [
+        "Kelechi begins by thinking tailoring is mainly pedal work and guiding cloth.",
+        "The master makes him learn many related duties before cutting fabric.",
+        "Later he sees how these details affect quality, customer trust and business reputation.",
+        "Thus the passage teaches that tailoring includes discipline, service and organization, not just stitching.",
+        "This makes option B correct."
+      ],
+      "final_answer": "B. successful tailoring depends on more than operating a sewing machine",
+      "simple_explanation": "The central lesson is that a trade is wider than its most visible action. Tailoring includes discipline, order and customer care. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "main_idea_central_theme",
+      "eng_01_p016"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q070",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Supporting details",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p016",
+    "passage_title": "The Apprentice Tailor",
+    "passage_text": "When Kelechi was sent to learn tailoring, he believed that the trade consisted mainly of pressing pedals and guiding cloth under a needle. His master quickly corrected that impression. Before touching expensive fabric, Kelechi had to sweep the workshop, sort buttons by size, fold finished clothes properly and learn the names of common materials. He complained silently that these duties delayed real learning. Months later, when he was finally allowed to cut cloth, he understood why the earlier discipline mattered. A careless fold could create deep wrinkles; a missing button could offend a customer; a wrong measurement could waste fabric that someone had bought with difficulty. As his skill improved, he also noticed that clients judged the workshop by many small signs: the neatness of shelves, the punctuality of delivery and the respect shown during fittings. By his second year, Kelechi no longer saw the minor tasks as punishment. He recognized them as part of the invisible structure that held the business together.",
+    "question": "Which of the following is mentioned as one of the signs by which clients judged the workshop?",
+    "options": {
+      "A": "The colour of the workshop walls",
+      "B": "The neatness of the shelves",
+      "C": "The number of radios in the shop",
+      "D": "The age of the sewing machines"
+    },
+    "answer": "B",
+    "answer_text": "The neatness of the shelves",
+    "explanation": {
+      "question_restate": "We are to identify one detail directly stated in the passage.",
+      "principle": "Supporting details are specific examples the writer uses to prove a general point.",
+      "steps": [
+        "The passage says clients judged the workshop by small signs including the neatness of shelves, punctuality of delivery and respect shown during fittings.",
+        "Option B reproduces one of these directly stated signs.",
+        "The other options are not mentioned.",
+        "Therefore option B is the correct supporting detail.",
+        "Careful location of exact wording is important in questions of this kind."
+      ],
+      "final_answer": "B. The neatness of the shelves",
+      "simple_explanation": "The writer names specific signs that shape customer judgment. 'Neatness of the shelves' is one of them. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "supporting_details",
+      "eng_01_p016"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q071",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Inference",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p017",
+    "passage_title": "The Examination Hall",
+    "passage_text": "Five minutes before the examination began, the hall was filled with the restless music of shuffling sandals, whispered formulas and pages turning too quickly to be useful. The supervisor walked between the rows with a box of answer sheets and reminded candidates to write their numbers clearly. Outside, rain tapped the window panes, but inside the louder storm was in the minds of the students. Some stared at the wall as if it might reveal forgotten definitions. Others arranged pens, rulers and identity cards with unusual care, hoping order on the desk would produce order in thought. When the question papers were distributed, the noise dropped suddenly. A few students bent over their scripts at once, while others first scanned every page and underlined key instructions. In the middle of the paper, several candidates relaxed when they reached familiar topics. By the last ten minutes, however, the hall grew tense again as wrists moved faster and answer booklets passed from one hand to another. The experience reminded many of them that examinations test calm judgment as much as memory.",
+    "question": "It may be inferred from the passage that some candidates arranged their pens and identity cards carefully because they",
+    "options": {
+      "A": "had already finished the examination mentally",
+      "B": "were trying to create a sense of control over their nervousness",
+      "C": "wanted to impress the supervisor with expensive materials",
+      "D": "planned to exchange items during the examination"
+    },
+    "answer": "B",
+    "answer_text": "were trying to create a sense of control over their nervousness",
+    "explanation": {
+      "question_restate": "We are to infer the reason behind a behaviour described in the passage.",
+      "principle": "Inference looks beyond the literal action to the likely meaning suggested by the context.",
+      "steps": [
+        "The passage says the hall was tense and that the louder storm was in the minds of the students.",
+        "It adds that some arranged items with unusual care, hoping order on the desk would produce order in thought.",
+        "This strongly suggests an attempt to calm anxiety by creating external order.",
+        "The passage gives no support for cheating or showing off.",
+        "So option B is the best inference."
+      ],
+      "final_answer": "B. were trying to create a sense of control over their nervousness",
+      "simple_explanation": "The students were nervous, and careful arrangement of materials was a way of steadying themselves mentally. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "inference",
+      "eng_01_p017"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q072",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Contextual meaning of words and expressions",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p017",
+    "passage_title": "The Examination Hall",
+    "passage_text": "Five minutes before the examination began, the hall was filled with the restless music of shuffling sandals, whispered formulas and pages turning too quickly to be useful. The supervisor walked between the rows with a box of answer sheets and reminded candidates to write their numbers clearly. Outside, rain tapped the window panes, but inside the louder storm was in the minds of the students. Some stared at the wall as if it might reveal forgotten definitions. Others arranged pens, rulers and identity cards with unusual care, hoping order on the desk would produce order in thought. When the question papers were distributed, the noise dropped suddenly. A few students bent over their scripts at once, while others first scanned every page and underlined key instructions. In the middle of the paper, several candidates relaxed when they reached familiar topics. By the last ten minutes, however, the hall grew tense again as wrists moved faster and answer booklets passed from one hand to another. The experience reminded many of them that examinations test calm judgment as much as memory.",
+    "question": "In the passage, the expression 'the louder storm was in the minds of the students' means that the students were",
+    "options": {
+      "A": "hearing frightening thunder more clearly than the rain outside",
+      "B": "experiencing stronger inner anxiety than the actual weather outside",
+      "C": "talking so loudly that the rain could not be heard",
+      "D": "planning to leave the hall because of the storm"
+    },
+    "answer": "B",
+    "answer_text": "experiencing stronger inner anxiety than the actual weather outside",
+    "explanation": {
+      "question_restate": "We are to interpret a figurative expression in its context.",
+      "principle": "Contextual meaning often requires distinguishing literal description from figurative comparison.",
+      "steps": [
+        "The writer first mentions rain tapping the window panes.",
+        "The phrase then contrasts this outer weather with a 'louder storm' inside the students' minds.",
+        "A mental storm is a metaphor for fear, tension and anxious thoughts.",
+        "Thus the expression means the students' inner anxiety was stronger than the rain outside.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. experiencing stronger inner anxiety than the actual weather outside",
+      "simple_explanation": "The writer uses 'storm' figuratively to describe the tension and confusion in the students' minds before the examination. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "contextual_meaning",
+      "eng_01_p017"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q073",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Writer's purpose",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p017",
+    "passage_title": "The Examination Hall",
+    "passage_text": "Five minutes before the examination began, the hall was filled with the restless music of shuffling sandals, whispered formulas and pages turning too quickly to be useful. The supervisor walked between the rows with a box of answer sheets and reminded candidates to write their numbers clearly. Outside, rain tapped the window panes, but inside the louder storm was in the minds of the students. Some stared at the wall as if it might reveal forgotten definitions. Others arranged pens, rulers and identity cards with unusual care, hoping order on the desk would produce order in thought. When the question papers were distributed, the noise dropped suddenly. A few students bent over their scripts at once, while others first scanned every page and underlined key instructions. In the middle of the paper, several candidates relaxed when they reached familiar topics. By the last ten minutes, however, the hall grew tense again as wrists moved faster and answer booklets passed from one hand to another. The experience reminded many of them that examinations test calm judgment as much as memory.",
+    "question": "The writer's main purpose in the passage is to",
+    "options": {
+      "A": "describe the emotional atmosphere of an examination hall",
+      "B": "prove that all examinations are unfair",
+      "C": "argue that rain should stop school examinations",
+      "D": "teach students how to answer every question correctly"
+    },
+    "answer": "A",
+    "answer_text": "describe the emotional atmosphere of an examination hall",
+    "explanation": {
+      "question_restate": "We are to identify the main reason the writer composed the passage.",
+      "principle": "Writer's purpose asks what the writer chiefly intends the reader to observe or understand.",
+      "steps": [
+        "The passage focuses on sounds, actions, tension and shifting emotions before and during the examination.",
+        "It does not mainly debate policy, condemn examinations or provide an answer guide.",
+        "The closing sentence draws a reflective lesson from the experience.",
+        "These clues show that the main purpose is descriptive and reflective.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. describe the emotional atmosphere of an examination hall",
+      "simple_explanation": "The writer wants the reader to feel the tension, routine and mental pressure of the examination hall. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "writers_purpose",
+      "eng_01_p017"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q074",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Writer's tone and attitude",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p017",
+    "passage_title": "The Examination Hall",
+    "passage_text": "Five minutes before the examination began, the hall was filled with the restless music of shuffling sandals, whispered formulas and pages turning too quickly to be useful. The supervisor walked between the rows with a box of answer sheets and reminded candidates to write their numbers clearly. Outside, rain tapped the window panes, but inside the louder storm was in the minds of the students. Some stared at the wall as if it might reveal forgotten definitions. Others arranged pens, rulers and identity cards with unusual care, hoping order on the desk would produce order in thought. When the question papers were distributed, the noise dropped suddenly. A few students bent over their scripts at once, while others first scanned every page and underlined key instructions. In the middle of the paper, several candidates relaxed when they reached familiar topics. By the last ten minutes, however, the hall grew tense again as wrists moved faster and answer booklets passed from one hand to another. The experience reminded many of them that examinations test calm judgment as much as memory.",
+    "question": "The writer's tone in the passage is best described as",
+    "options": {
+      "A": "reflective and observant",
+      "B": "mocking and cruel",
+      "C": "joyfully humorous",
+      "D": "angrily political"
+    },
+    "answer": "A",
+    "answer_text": "reflective and observant",
+    "explanation": {
+      "question_restate": "We are to decide the tone created by the writer's language and method of description.",
+      "principle": "Tone can often be identified by asking whether the writer is approving, mocking, neutral, excited, reflective or something else.",
+      "steps": [
+        "The passage carefully notices gestures, sounds and changing moods in the hall.",
+        "It does not ridicule the students; instead, it observes them sympathetically.",
+        "The final sentence broadens the experience into a thoughtful comment about calm judgment and memory.",
+        "These qualities make the tone reflective and observant.",
+        "Hence option A is correct."
+      ],
+      "final_answer": "A. reflective and observant",
+      "simple_explanation": "The writer watches the scene carefully and ends with a thoughtful lesson, so the tone is reflective rather than mocking. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "tone_attitude",
+      "eng_01_p017"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q075",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Deduction",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p017",
+    "passage_title": "The Examination Hall",
+    "passage_text": "Five minutes before the examination began, the hall was filled with the restless music of shuffling sandals, whispered formulas and pages turning too quickly to be useful. The supervisor walked between the rows with a box of answer sheets and reminded candidates to write their numbers clearly. Outside, rain tapped the window panes, but inside the louder storm was in the minds of the students. Some stared at the wall as if it might reveal forgotten definitions. Others arranged pens, rulers and identity cards with unusual care, hoping order on the desk would produce order in thought. When the question papers were distributed, the noise dropped suddenly. A few students bent over their scripts at once, while others first scanned every page and underlined key instructions. In the middle of the paper, several candidates relaxed when they reached familiar topics. By the last ten minutes, however, the hall grew tense again as wrists moved faster and answer booklets passed from one hand to another. The experience reminded many of them that examinations test calm judgment as much as memory.",
+    "question": "From the passage, one may deduce that students who first scanned every page of the question paper probably wanted to",
+    "options": {
+      "A": "identify instructions and plan their approach before beginning",
+      "B": "find the supervisor's mistakes in printing",
+      "C": "copy from neighbours without being noticed",
+      "D": "avoid answering the examination altogether"
+    },
+    "answer": "A",
+    "answer_text": "identify instructions and plan their approach before beginning",
+    "explanation": {
+      "question_restate": "We are to deduce why some students scanned the whole paper before writing.",
+      "principle": "Deduction involves a reasoned explanation based on clues in the passage.",
+      "steps": [
+        "The passage says some students first scanned every page and underlined key instructions.",
+        "This behaviour suggests strategy and planning.",
+        "Students often do this to understand the paper structure, avoid mistakes and decide how to manage time.",
+        "Nothing in the passage suggests printing complaints, cheating or refusal to answer.",
+        "Therefore option A is the best deduction."
+      ],
+      "final_answer": "A. identify instructions and plan their approach before beginning",
+      "simple_explanation": "Scanning a question paper first is usually a sign of strategy: the student wants to understand instructions and plan effectively. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "deduction",
+      "eng_01_p017"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q076",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Reference words and pronouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p018",
+    "passage_title": "The Town Water Tank",
+    "passage_text": "For months, the water tank near the health centre stood like a promise that had forgotten how to speak. It had been installed with much celebration, yet no water flowed from the taps beneath it. Women still walked long distances to the stream, and children carried buckets before school as they had always done. Each week, someone offered a different explanation. Some said the pump had not been connected to electricity. Others blamed missing pipes or careless contractors. Frustration grew because the structure was visible proof of an unfinished plan. Eventually, the district engineer visited the site with two technicians. After several hours of inspection, they discovered that the problem was less dramatic than many had imagined: a damaged control valve had prevented the system from distributing water properly. Once the valve was replaced and the pump tested, clear water began to run. The crowd that gathered cheered, but the celebration was mixed with a lesson. Public projects do not serve people merely because they look complete from a distance.",
+    "question": "In the sentence, 'Once the valve was replaced and the pump tested, clear water began to run,' the word 'it' is omitted, but the action concerns mainly the",
+    "options": {
+      "A": "health centre",
+      "B": "water distribution system",
+      "C": "crowd that gathered",
+      "D": "stream used by the women"
+    },
+    "answer": "B",
+    "answer_text": "water distribution system",
+    "explanation": {
+      "question_restate": "We are to identify the thing to which the actions of replacing the valve and testing the pump properly belong.",
+      "principle": "Reference in comprehension is not always a direct pronoun question; sometimes it involves linking an action to the right earlier noun or idea.",
+      "steps": [
+        "The passage discusses the water tank project and explains that the damaged control valve prevented distribution.",
+        "A valve and pump are parts of the water system, not of the health centre or crowd.",
+        "When these parts are repaired, water begins to run from the taps.",
+        "So the action concerns the water distribution system.",
+        "That makes option B correct."
+      ],
+      "final_answer": "B. water distribution system",
+      "simple_explanation": "The repair happened within the water system itself. Understanding reference sometimes means tracking the system or object under discussion. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "reference_words_pronouns",
+      "eng_01_p018"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q077",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Fact and opinion",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p018",
+    "passage_title": "The Town Water Tank",
+    "passage_text": "For months, the water tank near the health centre stood like a promise that had forgotten how to speak. It had been installed with much celebration, yet no water flowed from the taps beneath it. Women still walked long distances to the stream, and children carried buckets before school as they had always done. Each week, someone offered a different explanation. Some said the pump had not been connected to electricity. Others blamed missing pipes or careless contractors. Frustration grew because the structure was visible proof of an unfinished plan. Eventually, the district engineer visited the site with two technicians. After several hours of inspection, they discovered that the problem was less dramatic than many had imagined: a damaged control valve had prevented the system from distributing water properly. Once the valve was replaced and the pump tested, clear water began to run. The crowd that gathered cheered, but the celebration was mixed with a lesson. Public projects do not serve people merely because they look complete from a distance.",
+    "question": "Which of the following is an opinion found in the passage?",
+    "options": {
+      "A": "The water tank stood near the health centre",
+      "B": "Women still walked to the stream",
+      "C": "The tank stood like a promise that had forgotten how to speak",
+      "D": "A damaged control valve prevented proper distribution"
+    },
+    "answer": "C",
+    "answer_text": "The tank stood like a promise that had forgotten how to speak",
+    "explanation": {
+      "question_restate": "We are to distinguish a descriptive judgment from directly reportable fact.",
+      "principle": "Opinion may appear in figurative or expressive language that reflects the writer's attitude.",
+      "steps": [
+        "Options A, B and D describe factual conditions or findings in the story.",
+        "Option C is a figurative, interpretive expression used by the writer.",
+        "It reflects frustration and disappointment, not a measurable fact.",
+        "That makes option C the clearest opinion-like statement in the passage.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. The tank stood like a promise that had forgotten how to speak",
+      "simple_explanation": "Expressive language often signals opinion or attitude. The water tank cannot literally forget to speak; this is the writer's descriptive judgment. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "fact_opinion",
+      "eng_01_p018"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q078",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Reading comprehension passages",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p018",
+    "passage_title": "The Town Water Tank",
+    "passage_text": "For months, the water tank near the health centre stood like a promise that had forgotten how to speak. It had been installed with much celebration, yet no water flowed from the taps beneath it. Women still walked long distances to the stream, and children carried buckets before school as they had always done. Each week, someone offered a different explanation. Some said the pump had not been connected to electricity. Others blamed missing pipes or careless contractors. Frustration grew because the structure was visible proof of an unfinished plan. Eventually, the district engineer visited the site with two technicians. After several hours of inspection, they discovered that the problem was less dramatic than many had imagined: a damaged control valve had prevented the system from distributing water properly. Once the valve was replaced and the pump tested, clear water began to run. The crowd that gathered cheered, but the celebration was mixed with a lesson. Public projects do not serve people merely because they look complete from a distance.",
+    "question": "Which of the following best captures the message of the passage?",
+    "options": {
+      "A": "Visible completion of a public project does not guarantee that it is actually serving people",
+      "B": "Engineers should never visit project sites after construction",
+      "C": "Streams are always better than water tanks for communities",
+      "D": "Crowds make it impossible to repair public facilities"
+    },
+    "answer": "A",
+    "answer_text": "Visible completion of a public project does not guarantee that it is actually serving people",
+    "explanation": {
+      "question_restate": "We are to choose the best overall understanding of the passage.",
+      "principle": "A general comprehension question demands a statement broad enough to include the passage's main lesson.",
+      "steps": [
+        "The tank looked complete and stood prominently near the health centre.",
+        "Yet the taps produced no water, so the project was not actually serving the people.",
+        "Only after the damaged valve was replaced did the project become functional.",
+        "The final sentence states this lesson explicitly in a broader way.",
+        "Hence option A is the best answer."
+      ],
+      "final_answer": "A. Visible completion of a public project does not guarantee that it is actually serving people",
+      "simple_explanation": "The passage warns against judging public projects by appearance alone. Real value lies in actual service. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "reading_passage",
+      "eng_01_p018"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q079",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Sequence of ideas",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p018",
+    "passage_title": "The Town Water Tank",
+    "passage_text": "For months, the water tank near the health centre stood like a promise that had forgotten how to speak. It had been installed with much celebration, yet no water flowed from the taps beneath it. Women still walked long distances to the stream, and children carried buckets before school as they had always done. Each week, someone offered a different explanation. Some said the pump had not been connected to electricity. Others blamed missing pipes or careless contractors. Frustration grew because the structure was visible proof of an unfinished plan. Eventually, the district engineer visited the site with two technicians. After several hours of inspection, they discovered that the problem was less dramatic than many had imagined: a damaged control valve had prevented the system from distributing water properly. Once the valve was replaced and the pump tested, clear water began to run. The crowd that gathered cheered, but the celebration was mixed with a lesson. Public projects do not serve people merely because they look complete from a distance.",
+    "question": "Which of the following happened first?",
+    "options": {
+      "A": "The district engineer visited the site",
+      "B": "Clear water began to run from the taps",
+      "C": "Women still walked long distances to the stream",
+      "D": "The damaged valve was replaced"
+    },
+    "answer": "C",
+    "answer_text": "Women still walked long distances to the stream",
+    "explanation": {
+      "question_restate": "We are to identify the earliest event among the options.",
+      "principle": "Sequence questions often compare background conditions with later corrective actions.",
+      "steps": [
+        "Before the inspection and repairs, the passage says women still walked long distances to the stream.",
+        "The district engineer's visit came later.",
+        "Replacement of the valve and the flow of water happened after inspection.",
+        "So the continuing dependence on the stream is the earliest event listed.",
+        "Therefore option C is correct."
+      ],
+      "final_answer": "C. Women still walked long distances to the stream",
+      "simple_explanation": "Find the background condition first, then place the repairs and results after it. That is the safest method for sequence questions. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "sequence_ideas",
+      "eng_01_p018"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q080",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Cause-and-effect relationships",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p018",
+    "passage_title": "The Town Water Tank",
+    "passage_text": "For months, the water tank near the health centre stood like a promise that had forgotten how to speak. It had been installed with much celebration, yet no water flowed from the taps beneath it. Women still walked long distances to the stream, and children carried buckets before school as they had always done. Each week, someone offered a different explanation. Some said the pump had not been connected to electricity. Others blamed missing pipes or careless contractors. Frustration grew because the structure was visible proof of an unfinished plan. Eventually, the district engineer visited the site with two technicians. After several hours of inspection, they discovered that the problem was less dramatic than many had imagined: a damaged control valve had prevented the system from distributing water properly. Once the valve was replaced and the pump tested, clear water began to run. The crowd that gathered cheered, but the celebration was mixed with a lesson. Public projects do not serve people merely because they look complete from a distance.",
+    "question": "What was the immediate cause of the taps' failure to produce water?",
+    "options": {
+      "A": "The women preferred stream water",
+      "B": "The project had no roof over the tank",
+      "C": "A damaged control valve prevented proper distribution",
+      "D": "The crowd celebrated too early"
+    },
+    "answer": "C",
+    "answer_text": "A damaged control valve prevented proper distribution",
+    "explanation": {
+      "question_restate": "We are to identify the direct cause of the problem described in the passage.",
+      "principle": "In cause-and-effect questions, the immediate cause is the specific factor named as producing the result.",
+      "steps": [
+        "Many guesses were offered in the community, but the engineer's inspection identified the true cause.",
+        "The passage states that a damaged control valve prevented the system from distributing water properly.",
+        "That is the exact direct cause, not merely a rumour.",
+        "Therefore option C is correct.",
+        "Good comprehension often requires separating proven explanation from popular speculation."
+      ],
+      "final_answer": "C. A damaged control valve prevented proper distribution",
+      "simple_explanation": "The actual problem was technical and specific: the control valve was damaged, so water could not be distributed through the taps. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "cause_effect",
+      "eng_01_p018"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q081",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Conclusion from passage",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p019",
+    "passage_title": "The Mango Tree",
+    "passage_text": "At the edge of the compound stood an old mango tree whose branches leaned over the fence like arms tired from many seasons of giving. In March, children watched its small green fruits the way traders watch coins accumulate in a drawer. By April, stones began to fly at the lower branches whenever no adult was nearby. Grandmother disliked this habit. She said a tree was not a stubborn enemy to be attacked but a patient host that should be treated with respect. So she made a rule: nobody would pluck the fruits until the first ripe mango fell by itself. The waiting felt endless, yet it sharpened everyone's attention. They began to notice changes they had ignored before—the deepening colour of the skin, the sweeter smell carried by afternoon heat and the birds that arrived earlier each day. When the first mango finally dropped onto the sand, the children rushed toward it as though it were a medal. What they tasted was not only sweetness but the reward of restraint.",
+    "question": "The most reasonable conclusion from the passage is that waiting can sometimes",
+    "options": {
+      "A": "destroy every good opportunity",
+      "B": "increase appreciation by teaching patience and observation",
+      "C": "prevent fruits from ever becoming ripe",
+      "D": "make children lose all interest in rewards"
+    },
+    "answer": "B",
+    "answer_text": "increase appreciation by teaching patience and observation",
+    "explanation": {
+      "question_restate": "We are to draw a broad conclusion from the story of the mango tree.",
+      "principle": "A conclusion should arise naturally from the actions, feelings and final lesson of the passage.",
+      "steps": [
+        "Grandmother prevents the children from plucking the mangoes too early.",
+        "The waiting seems difficult, but it sharpens their attention to colour, smell and signs of ripeness.",
+        "When the fruit finally falls, the children enjoy not only its sweetness but also the reward of restraint.",
+        "This supports the conclusion that waiting can deepen appreciation.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. increase appreciation by teaching patience and observation",
+      "simple_explanation": "The story shows that patience can enrich enjoyment. Waiting taught the children to notice and value what they received. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "conclusion_from_passage",
+      "eng_01_p019"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q082",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Topic sentence",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p019",
+    "passage_title": "The Mango Tree",
+    "passage_text": "At the edge of the compound stood an old mango tree whose branches leaned over the fence like arms tired from many seasons of giving. In March, children watched its small green fruits the way traders watch coins accumulate in a drawer. By April, stones began to fly at the lower branches whenever no adult was nearby. Grandmother disliked this habit. She said a tree was not a stubborn enemy to be attacked but a patient host that should be treated with respect. So she made a rule: nobody would pluck the fruits until the first ripe mango fell by itself. The waiting felt endless, yet it sharpened everyone's attention. They began to notice changes they had ignored before—the deepening colour of the skin, the sweeter smell carried by afternoon heat and the birds that arrived earlier each day. When the first mango finally dropped onto the sand, the children rushed toward it as though it were a medal. What they tasted was not only sweetness but the reward of restraint.",
+    "question": "Which of the following would best serve as the topic sentence for the passage?",
+    "options": {
+      "A": "Children usually like throwing stones at fruit trees",
+      "B": "Patience can transform a simple reward into a deeper lesson",
+      "C": "Mango trees produce fruit in March and April",
+      "D": "Birds often arrive before fruits become ripe"
+    },
+    "answer": "B",
+    "answer_text": "Patience can transform a simple reward into a deeper lesson",
+    "explanation": {
+      "question_restate": "We are to choose the statement that best introduces the main direction of the passage.",
+      "principle": "The topic sentence should cover both the events and the lesson developed by the passage.",
+      "steps": [
+        "The passage does more than describe a mango tree; it shows how waiting changes the children's experience.",
+        "Grandmother's rule leads them to observe more closely and to appreciate the fruit more deeply.",
+        "The final line confirms that the story is about sweetness joined with restraint.",
+        "Option B includes both patience and lesson, so it fits the whole passage best.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Patience can transform a simple reward into a deeper lesson",
+      "simple_explanation": "A topic sentence must point toward the final lesson, not just one small detail from the story. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "topic_sentence",
+      "eng_01_p019"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q083",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Figurative expressions as used in passages",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p019",
+    "passage_title": "The Mango Tree",
+    "passage_text": "At the edge of the compound stood an old mango tree whose branches leaned over the fence like arms tired from many seasons of giving. In March, children watched its small green fruits the way traders watch coins accumulate in a drawer. By April, stones began to fly at the lower branches whenever no adult was nearby. Grandmother disliked this habit. She said a tree was not a stubborn enemy to be attacked but a patient host that should be treated with respect. So she made a rule: nobody would pluck the fruits until the first ripe mango fell by itself. The waiting felt endless, yet it sharpened everyone's attention. They began to notice changes they had ignored before—the deepening colour of the skin, the sweeter smell carried by afternoon heat and the birds that arrived earlier each day. When the first mango finally dropped onto the sand, the children rushed toward it as though it were a medal. What they tasted was not only sweetness but the reward of restraint.",
+    "question": "The expression 'whose branches leaned over the fence like arms tired from many seasons of giving' suggests mainly that the tree",
+    "options": {
+      "A": "was weak because it had stopped producing fruit",
+      "B": "appeared old, generous and heavily burdened with years of fruiting",
+      "C": "had been damaged by children throwing stones at it",
+      "D": "grew in a direction that prevented sunlight"
+    },
+    "answer": "B",
+    "answer_text": "appeared old, generous and heavily burdened with years of fruiting",
+    "explanation": {
+      "question_restate": "We are to interpret the figurative comparison used in describing the tree.",
+      "principle": "Figurative language uses image and comparison to create mood and suggest qualities indirectly.",
+      "steps": [
+        "The branches are compared to tired arms after many seasons of giving.",
+        "This suggests long service, generosity and age, not literal human tiredness.",
+        "The image creates a sense of a tree that has given fruit faithfully over many years.",
+        "Option B captures that idea best.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. appeared old, generous and heavily burdened with years of fruiting",
+      "simple_explanation": "The writer personifies the tree to make it seem like a generous old giver whose long years of fruiting can almost be seen physically. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "figurative_expression",
+      "eng_01_p019"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q084",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Inference",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p019",
+    "passage_title": "The Mango Tree",
+    "passage_text": "At the edge of the compound stood an old mango tree whose branches leaned over the fence like arms tired from many seasons of giving. In March, children watched its small green fruits the way traders watch coins accumulate in a drawer. By April, stones began to fly at the lower branches whenever no adult was nearby. Grandmother disliked this habit. She said a tree was not a stubborn enemy to be attacked but a patient host that should be treated with respect. So she made a rule: nobody would pluck the fruits until the first ripe mango fell by itself. The waiting felt endless, yet it sharpened everyone's attention. They began to notice changes they had ignored before—the deepening colour of the skin, the sweeter smell carried by afternoon heat and the birds that arrived earlier each day. When the first mango finally dropped onto the sand, the children rushed toward it as though it were a medal. What they tasted was not only sweetness but the reward of restraint.",
+    "question": "It may be inferred that Grandmother opposed the children's habit of throwing stones because she believed it was",
+    "options": {
+      "A": "wasteful and disrespectful",
+      "B": "too noisy for birds",
+      "C": "illegal in the compound",
+      "D": "dangerous only during the rainy season"
+    },
+    "answer": "A",
+    "answer_text": "wasteful and disrespectful",
+    "explanation": {
+      "question_restate": "We are to infer Grandmother's attitude from her rule and explanation.",
+      "principle": "Inference depends on interpreting what the writer implies through description and reported speech.",
+      "steps": [
+        "Grandmother says the tree is not a stubborn enemy to be attacked but a patient host to be treated with respect.",
+        "This statement shows moral disapproval of the stoning habit.",
+        "Her language suggests both disrespect and poor treatment of a generous source of fruit.",
+        "The passage does not focus on legality or rainy-season danger.",
+        "So option A is the best inference."
+      ],
+      "final_answer": "A. wasteful and disrespectful",
+      "simple_explanation": "Grandmother sees the tree almost as a generous giver, so attacking it with stones appears rude and improper. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "inference",
+      "eng_01_p019"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q085",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Contextual meaning of words and expressions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p019",
+    "passage_title": "The Mango Tree",
+    "passage_text": "At the edge of the compound stood an old mango tree whose branches leaned over the fence like arms tired from many seasons of giving. In March, children watched its small green fruits the way traders watch coins accumulate in a drawer. By April, stones began to fly at the lower branches whenever no adult was nearby. Grandmother disliked this habit. She said a tree was not a stubborn enemy to be attacked but a patient host that should be treated with respect. So she made a rule: nobody would pluck the fruits until the first ripe mango fell by itself. The waiting felt endless, yet it sharpened everyone's attention. They began to notice changes they had ignored before—the deepening colour of the skin, the sweeter smell carried by afternoon heat and the birds that arrived earlier each day. When the first mango finally dropped onto the sand, the children rushed toward it as though it were a medal. What they tasted was not only sweetness but the reward of restraint.",
+    "question": "In the passage, the word 'restraint' most nearly means",
+    "options": {
+      "A": "anger",
+      "B": "self-control",
+      "C": "excitement",
+      "D": "hunger"
+    },
+    "answer": "B",
+    "answer_text": "self-control",
+    "explanation": {
+      "question_restate": "We are to determine the meaning of a word from the context of the passage.",
+      "principle": "Contextual meaning comes from the surrounding sentences and the situation described.",
+      "steps": [
+        "The final sentence says the children tasted not only sweetness but also the reward of restraint.",
+        "Earlier, they were made to wait instead of plucking the fruits immediately.",
+        "This shows that 'restraint' refers to holding oneself back.",
+        "Among the options, 'self-control' gives that meaning best.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. self-control",
+      "simple_explanation": "Because the children waited instead of acting immediately, 'restraint' here means self-control. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "contextual_meaning",
+      "eng_01_p019"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q086",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Writer's purpose",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p020",
+    "passage_title": "The Reading Challenge",
+    "passage_text": "At the beginning of the term, the English teacher announced a reading challenge that required each student to finish two novels and one biography before the holidays. Groans filled the classroom because many students already associated long books with boredom and punishment. The teacher did not reduce the task. Instead, she explained how to break each text into manageable portions and asked students to keep short response journals. Every Friday, volunteers read aloud the lines they found most striking and explained why they chose them. Something unexpected happened. Students who rarely spoke in class began to defend characters, predict endings and compare one writer's style with another's. The competition for the highest number of thoughtful journal entries also added energy. By the final week, the complaint that books were too long had almost disappeared. The challenge succeeded not because reading suddenly became easy, but because the students were shown practical ways to enter books without fear.",
+    "question": "The writer's main purpose in the passage is to show how",
+    "options": {
+      "A": "a reading task became successful when students were given practical guidance",
+      "B": "biographies are more valuable than novels",
+      "C": "holiday assignments should always be cancelled",
+      "D": "journal writing is superior to all other school activities"
+    },
+    "answer": "A",
+    "answer_text": "a reading task became successful when students were given practical guidance",
+    "explanation": {
+      "question_restate": "We are to identify what the writer chiefly wants the reader to understand.",
+      "principle": "Writer's purpose is the main intention behind the passage.",
+      "steps": [
+        "The teacher announces a difficult reading challenge that students initially dislike.",
+        "Instead of cancelling it, she provides methods: breaking texts into portions and keeping response journals.",
+        "Students later become more engaged and confident.",
+        "This shows the writer's interest in explaining how guidance turned resistance into participation.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. a reading task became successful when students were given practical guidance",
+      "simple_explanation": "The writer is not merely praising books; the real focus is on how good guidance helped students enter books without fear. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "writers_purpose",
+      "eng_01_p020"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q087",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Writer's tone and attitude",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p020",
+    "passage_title": "The Reading Challenge",
+    "passage_text": "At the beginning of the term, the English teacher announced a reading challenge that required each student to finish two novels and one biography before the holidays. Groans filled the classroom because many students already associated long books with boredom and punishment. The teacher did not reduce the task. Instead, she explained how to break each text into manageable portions and asked students to keep short response journals. Every Friday, volunteers read aloud the lines they found most striking and explained why they chose them. Something unexpected happened. Students who rarely spoke in class began to defend characters, predict endings and compare one writer's style with another's. The competition for the highest number of thoughtful journal entries also added energy. By the final week, the complaint that books were too long had almost disappeared. The challenge succeeded not because reading suddenly became easy, but because the students were shown practical ways to enter books without fear.",
+    "question": "The writer's tone in the passage is best described as",
+    "options": {
+      "A": "hopeful and encouraging",
+      "B": "sarcastic and dismissive",
+      "C": "furious and threatening",
+      "D": "cold and detached"
+    },
+    "answer": "A",
+    "answer_text": "hopeful and encouraging",
+    "explanation": {
+      "question_restate": "We are to identify the emotional colouring of the passage.",
+      "principle": "Tone is discovered through the writer's selection of words, examples and ending.",
+      "steps": [
+        "The passage starts with student complaints but moves steadily toward improvement.",
+        "The teacher's methods are presented positively, and the ending emphasizes practical success.",
+        "The language is not insulting or bitter.",
+        "The overall effect is one of encouragement and confidence in growth.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. hopeful and encouraging",
+      "simple_explanation": "The passage gives the reader hope that students can improve when they are guided well, so the tone is encouraging. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "tone_attitude",
+      "eng_01_p020"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q088",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Deduction",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p020",
+    "passage_title": "The Reading Challenge",
+    "passage_text": "At the beginning of the term, the English teacher announced a reading challenge that required each student to finish two novels and one biography before the holidays. Groans filled the classroom because many students already associated long books with boredom and punishment. The teacher did not reduce the task. Instead, she explained how to break each text into manageable portions and asked students to keep short response journals. Every Friday, volunteers read aloud the lines they found most striking and explained why they chose them. Something unexpected happened. Students who rarely spoke in class began to defend characters, predict endings and compare one writer's style with another's. The competition for the highest number of thoughtful journal entries also added energy. By the final week, the complaint that books were too long had almost disappeared. The challenge succeeded not because reading suddenly became easy, but because the students were shown practical ways to enter books without fear.",
+    "question": "From the passage, one may deduce that the teacher believed many students feared long books mainly because they",
+    "options": {
+      "A": "lacked practical strategies for approaching them",
+      "B": "were too young to understand fiction",
+      "C": "preferred science subjects only",
+      "D": "had already read all the available novels"
+    },
+    "answer": "A",
+    "answer_text": "lacked practical strategies for approaching them",
+    "explanation": {
+      "question_restate": "We are to deduce the teacher's understanding of the students' problem.",
+      "principle": "Deduction is a logical conclusion that follows from the writer's clues.",
+      "steps": [
+        "The teacher does not reduce the reading task.",
+        "Instead, she teaches students how to break books into manageable portions and keep response journals.",
+        "This response suggests she believed the problem was not impossible difficulty alone, but lack of method.",
+        "Because the students improve after receiving strategies, the deduction is strengthened.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. lacked practical strategies for approaching them",
+      "simple_explanation": "The teacher acts as if the students need a method, not an excuse. That is why she teaches them how to approach the books step by step. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "deduction",
+      "eng_01_p020"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q089",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Reference words and pronouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p020",
+    "passage_title": "The Reading Challenge",
+    "passage_text": "At the beginning of the term, the English teacher announced a reading challenge that required each student to finish two novels and one biography before the holidays. Groans filled the classroom because many students already associated long books with boredom and punishment. The teacher did not reduce the task. Instead, she explained how to break each text into manageable portions and asked students to keep short response journals. Every Friday, volunteers read aloud the lines they found most striking and explained why they chose them. Something unexpected happened. Students who rarely spoke in class began to defend characters, predict endings and compare one writer's style with another's. The competition for the highest number of thoughtful journal entries also added energy. By the final week, the complaint that books were too long had almost disappeared. The challenge succeeded not because reading suddenly became easy, but because the students were shown practical ways to enter books without fear.",
+    "question": "In the sentence, 'The teacher did not reduce the task. Instead, she explained how to break each text into manageable portions,' the word 'she' refers to",
+    "options": {
+      "A": "the highest-scoring student",
+      "B": "the English teacher",
+      "C": "one of the volunteers",
+      "D": "the biography writer"
+    },
+    "answer": "B",
+    "answer_text": "the English teacher",
+    "explanation": {
+      "question_restate": "We are to identify the noun to which the pronoun refers.",
+      "principle": "Pronoun reference is solved by tracing the pronoun to the nearest suitable earlier noun.",
+      "steps": [
+        "The passage begins with 'the English teacher announced a reading challenge'.",
+        "The next relevant singular female person is therefore the teacher.",
+        "No other female figure is introduced before the pronoun 'she' appears.",
+        "So the reference is straightforward.",
+        "Option B is correct."
+      ],
+      "final_answer": "B. the English teacher",
+      "simple_explanation": "The pronoun points back to the previously mentioned English teacher. Always trace pronouns carefully. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "reference_words_pronouns",
+      "eng_01_p020"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q090",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Fact and opinion",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p020",
+    "passage_title": "The Reading Challenge",
+    "passage_text": "At the beginning of the term, the English teacher announced a reading challenge that required each student to finish two novels and one biography before the holidays. Groans filled the classroom because many students already associated long books with boredom and punishment. The teacher did not reduce the task. Instead, she explained how to break each text into manageable portions and asked students to keep short response journals. Every Friday, volunteers read aloud the lines they found most striking and explained why they chose them. Something unexpected happened. Students who rarely spoke in class began to defend characters, predict endings and compare one writer's style with another's. The competition for the highest number of thoughtful journal entries also added energy. By the final week, the complaint that books were too long had almost disappeared. The challenge succeeded not because reading suddenly became easy, but because the students were shown practical ways to enter books without fear.",
+    "question": "Which of the following is an opinion in the passage?",
+    "options": {
+      "A": "Each student was required to finish two novels and one biography",
+      "B": "Volunteers read aloud lines they found most striking",
+      "C": "Long books were associated with boredom and punishment",
+      "D": "The challenge succeeded because students were shown practical ways to enter books without fear"
+    },
+    "answer": "C",
+    "answer_text": "Long books were associated with boredom and punishment",
+    "explanation": {
+      "question_restate": "We are to identify the statement that reflects attitude or feeling rather than plain fact.",
+      "principle": "Opinion often expresses a subjective impression, response or evaluation.",
+      "steps": [
+        "Option C reports a way students felt about long books.",
+        "Words such as 'boredom' and 'punishment' express personal attitude, not objective measurable fact.",
+        "The other options describe actions or outcomes in the passage.",
+        "Therefore option C is the best example of opinion or subjective perception.",
+        "So option C is correct."
+      ],
+      "final_answer": "C. Long books were associated with boredom and punishment",
+      "simple_explanation": "Calling books 'boring' or like 'punishment' shows feeling and judgment. That is why it is opinion-based language. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "fact_opinion",
+      "eng_01_p020"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q091",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Reading comprehension passages",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p021",
+    "passage_title": "The Market Fire",
+    "passage_text": "The fire started shortly after sunset in a row of wooden stalls where traders sold plastic wares, batteries and foam slippers. At first, some bystanders thought the smoke came from a cooking stand nearby. By the time flames became visible, however, the dry roofing sheets had already carried the fire from one shop to another. Traders shouted conflicting instructions. Some ran for water, others for goods, and a few stood frozen, unable to choose between money boxes and merchandise. The nearest fire service team arrived late because a delivery truck had broken down near the junction leading to the market. Even so, the officers managed to stop the flames from reaching the grain section. The damage was serious, but it might have been worse. In the days that followed, many people blamed weak wiring, while others pointed to the cluttered arrangement of the stalls. The incident revealed how quickly confusion multiplies when safety measures are treated as matters for another day.",
+    "question": "Which of the following best summarizes the passage?",
+    "options": {
+      "A": "A market fire spread quickly, exposed poor safety conditions and showed how confusion worsens emergencies",
+      "B": "Fire service officers caused a market fire through lateness",
+      "C": "Plastic wares are the most dangerous goods in any market",
+      "D": "Markets should never operate after sunset"
+    },
+    "answer": "A",
+    "answer_text": "A market fire spread quickly, exposed poor safety conditions and showed how confusion worsens emergencies",
+    "explanation": {
+      "question_restate": "We are to choose the statement that best captures the passage as a whole.",
+      "principle": "A summary should include the main event, the important conditions around it and the passage's lesson.",
+      "steps": [
+        "The passage recounts the fire, the delays and confusion during response, and the later reflections about safety measures.",
+        "It does not argue that all markets should close after sunset or that plastic wares alone caused the fire.",
+        "Option A includes both the event and its broader lesson.",
+        "That makes it the best summary.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. A market fire spread quickly, exposed poor safety conditions and showed how confusion worsens emergencies",
+      "simple_explanation": "A strong summary should not focus on one minor detail. It should carry the event and the lesson together. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "reading_passage",
+      "eng_01_p021"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q092",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Sequence of ideas",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p021",
+    "passage_title": "The Market Fire",
+    "passage_text": "The fire started shortly after sunset in a row of wooden stalls where traders sold plastic wares, batteries and foam slippers. At first, some bystanders thought the smoke came from a cooking stand nearby. By the time flames became visible, however, the dry roofing sheets had already carried the fire from one shop to another. Traders shouted conflicting instructions. Some ran for water, others for goods, and a few stood frozen, unable to choose between money boxes and merchandise. The nearest fire service team arrived late because a delivery truck had broken down near the junction leading to the market. Even so, the officers managed to stop the flames from reaching the grain section. The damage was serious, but it might have been worse. In the days that followed, many people blamed weak wiring, while others pointed to the cluttered arrangement of the stalls. The incident revealed how quickly confusion multiplies when safety measures are treated as matters for another day.",
+    "question": "Which of the following events occurred before the fire service team arrived?",
+    "options": {
+      "A": "The flames were stopped from reaching the grain section",
+      "B": "The officers blamed weak wiring",
+      "C": "Some bystanders first mistook the smoke for that from a cooking stand",
+      "D": "People held discussions in the following days"
+    },
+    "answer": "C",
+    "answer_text": "Some bystanders first mistook the smoke for that from a cooking stand",
+    "explanation": {
+      "question_restate": "We are to identify the event that happened earlier than the arrival of the fire service team.",
+      "principle": "Sequence questions require careful arrangement of events from beginning to end.",
+      "steps": [
+        "At first, some bystanders thought the smoke came from a cooking stand.",
+        "Later, flames became visible and traders reacted in confusion.",
+        "Only after that did the fire service team arrive, though late.",
+        "Discussions about causes took place in the following days, which is much later.",
+        "Thus option C is correct."
+      ],
+      "final_answer": "C. Some bystanders first mistook the smoke for that from a cooking stand",
+      "simple_explanation": "The earliest stage of the incident involved misreading the smoke. That happened before the officers arrived. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "sequence_ideas",
+      "eng_01_p021"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q093",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Cause-and-effect relationships",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p021",
+    "passage_title": "The Market Fire",
+    "passage_text": "The fire started shortly after sunset in a row of wooden stalls where traders sold plastic wares, batteries and foam slippers. At first, some bystanders thought the smoke came from a cooking stand nearby. By the time flames became visible, however, the dry roofing sheets had already carried the fire from one shop to another. Traders shouted conflicting instructions. Some ran for water, others for goods, and a few stood frozen, unable to choose between money boxes and merchandise. The nearest fire service team arrived late because a delivery truck had broken down near the junction leading to the market. Even so, the officers managed to stop the flames from reaching the grain section. The damage was serious, but it might have been worse. In the days that followed, many people blamed weak wiring, while others pointed to the cluttered arrangement of the stalls. The incident revealed how quickly confusion multiplies when safety measures are treated as matters for another day.",
+    "question": "Why did the nearest fire service team arrive late?",
+    "options": {
+      "A": "Its officers did not know the market location",
+      "B": "A delivery truck had broken down near the junction leading to the market",
+      "C": "The officers were attending another fire in a different town",
+      "D": "The traders refused to call for help early enough"
+    },
+    "answer": "B",
+    "answer_text": "A delivery truck had broken down near the junction leading to the market",
+    "explanation": {
+      "question_restate": "We are to identify the stated cause of the delay.",
+      "principle": "Cause-and-effect questions often test whether you can separate the actual reason from guessed alternatives.",
+      "steps": [
+        "The passage explicitly states the reason for the lateness.",
+        "It says the nearest fire service team arrived late because a delivery truck had broken down near the junction leading to the market.",
+        "This is not left to inference; it is directly stated.",
+        "Therefore option B is correct.",
+        "Always prefer the stated cause over invented explanations."
+      ],
+      "final_answer": "B. A delivery truck had broken down near the junction leading to the market",
+      "simple_explanation": "The delay was due to blocked access, not ignorance or refusal to help. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "cause_effect",
+      "eng_01_p021"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q094",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Conclusion from passage",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p021",
+    "passage_title": "The Market Fire",
+    "passage_text": "The fire started shortly after sunset in a row of wooden stalls where traders sold plastic wares, batteries and foam slippers. At first, some bystanders thought the smoke came from a cooking stand nearby. By the time flames became visible, however, the dry roofing sheets had already carried the fire from one shop to another. Traders shouted conflicting instructions. Some ran for water, others for goods, and a few stood frozen, unable to choose between money boxes and merchandise. The nearest fire service team arrived late because a delivery truck had broken down near the junction leading to the market. Even so, the officers managed to stop the flames from reaching the grain section. The damage was serious, but it might have been worse. In the days that followed, many people blamed weak wiring, while others pointed to the cluttered arrangement of the stalls. The incident revealed how quickly confusion multiplies when safety measures are treated as matters for another day.",
+    "question": "A reasonable conclusion from the passage is that market disasters become worse when",
+    "options": {
+      "A": "goods are sold after sunset only",
+      "B": "people neglect safety planning until an emergency occurs",
+      "C": "plastic goods are displayed beside grain",
+      "D": "fire officers arrive with too much equipment"
+    },
+    "answer": "B",
+    "answer_text": "people neglect safety planning until an emergency occurs",
+    "explanation": {
+      "question_restate": "We are to derive a broader lesson from the incident described.",
+      "principle": "A conclusion grows from the facts, reactions and final comment of the passage.",
+      "steps": [
+        "The passage ends by stating that confusion multiplies when safety measures are treated as matters for another day.",
+        "Earlier details show weak wiring concerns, cluttered stall arrangement and disorganized reaction during the fire.",
+        "These clues support a general conclusion about neglect of preparation.",
+        "The passage does not claim that selling after sunset alone causes disaster.",
+        "Thus option B is the best conclusion."
+      ],
+      "final_answer": "B. people neglect safety planning until an emergency occurs",
+      "simple_explanation": "The key lesson is preparedness. Emergencies become more destructive when safety is ignored beforehand. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "conclusion_from_passage",
+      "eng_01_p021"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q095",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Topic sentence",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p021",
+    "passage_title": "The Market Fire",
+    "passage_text": "The fire started shortly after sunset in a row of wooden stalls where traders sold plastic wares, batteries and foam slippers. At first, some bystanders thought the smoke came from a cooking stand nearby. By the time flames became visible, however, the dry roofing sheets had already carried the fire from one shop to another. Traders shouted conflicting instructions. Some ran for water, others for goods, and a few stood frozen, unable to choose between money boxes and merchandise. The nearest fire service team arrived late because a delivery truck had broken down near the junction leading to the market. Even so, the officers managed to stop the flames from reaching the grain section. The damage was serious, but it might have been worse. In the days that followed, many people blamed weak wiring, while others pointed to the cluttered arrangement of the stalls. The incident revealed how quickly confusion multiplies when safety measures are treated as matters for another day.",
+    "question": "Which of the following would best serve as the topic sentence for the passage?",
+    "options": {
+      "A": "Fire incidents in markets are always caused by electricity",
+      "B": "A sudden market fire revealed how delay and poor safety readiness can intensify damage",
+      "C": "Traders often disagree during difficult moments",
+      "D": "Grain sections are safer than battery stalls in most markets"
+    },
+    "answer": "B",
+    "answer_text": "A sudden market fire revealed how delay and poor safety readiness can intensify damage",
+    "explanation": {
+      "question_restate": "We are to select the sentence that best introduces the main idea of the passage.",
+      "principle": "A topic sentence should be broad enough to cover the main event and the lesson developed from it.",
+      "steps": [
+        "The passage is not only about a fire; it is about how confusion, lateness and poor safety conditions worsened the danger.",
+        "Option B includes the event, the delay and the issue of readiness.",
+        "The other options are too narrow or too absolute.",
+        "Therefore option B best serves as the topic sentence.",
+        "It provides the right frame for all the details that follow."
+      ],
+      "final_answer": "B. A sudden market fire revealed how delay and poor safety readiness can intensify damage",
+      "simple_explanation": "A topic sentence should prepare the reader for both the incident and its lesson. Option B does that effectively. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "topic_sentence",
+      "eng_01_p021"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q096",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Figurative expressions as used in passages",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p022",
+    "passage_title": "The Scholarship Letter",
+    "passage_text": "When the principal sent for Bisi during afternoon prep, she feared she had broken some rule without noticing it. Instead, he handed her a sealed envelope bearing the crest of a foundation she recognized only vaguely. Her hands trembled as she opened it. The letter announced that she had been awarded a scholarship to complete her secondary education, together with a small annual allowance for books. For a moment, the words looked unreal, like lines borrowed from another person's story. Bisi had studied hard for years, often by the light of a rechargeable lamp when electricity failed, but hope had remained cautious in her mind. She knew of talented students whose education had stalled because of fees. When she finished reading, she did not shout. She simply sat down and pressed the paper against her chest. The principal smiled and told her that quiet news can still change a life loudly. By evening, her family had read the letter so many times that the fold lines began to soften.",
+    "question": "The principal's statement that 'quiet news can still change a life loudly' means that",
+    "options": {
+      "A": "good news should always be announced through loudspeakers",
+      "B": "important events may arrive calmly yet have a great impact",
+      "C": "students should celebrate scholarships noisily",
+      "D": "principals prefer silent assemblies"
+    },
+    "answer": "B",
+    "answer_text": "important events may arrive calmly yet have a great impact",
+    "explanation": {
+      "question_restate": "We are to interpret the figurative meaning of the principal's statement.",
+      "principle": "Figurative expressions often contrast literal words in order to communicate a deeper idea.",
+      "steps": [
+        "The news of the scholarship is 'quiet' because Bisi does not shout or create a scene.",
+        "Yet the effect is 'loud' in the sense that it powerfully changes her life and future.",
+        "The sentence contrasts outward calm with inward significance.",
+        "Therefore option B expresses the meaning best.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. important events may arrive calmly yet have a great impact",
+      "simple_explanation": "The principal means that life-changing events do not need noise to be powerful. Calm moments can have huge consequences. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "figurative_expression",
+      "eng_01_p022"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q097",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Main idea / central theme",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p022",
+    "passage_title": "The Scholarship Letter",
+    "passage_text": "When the principal sent for Bisi during afternoon prep, she feared she had broken some rule without noticing it. Instead, he handed her a sealed envelope bearing the crest of a foundation she recognized only vaguely. Her hands trembled as she opened it. The letter announced that she had been awarded a scholarship to complete her secondary education, together with a small annual allowance for books. For a moment, the words looked unreal, like lines borrowed from another person's story. Bisi had studied hard for years, often by the light of a rechargeable lamp when electricity failed, but hope had remained cautious in her mind. She knew of talented students whose education had stalled because of fees. When she finished reading, she did not shout. She simply sat down and pressed the paper against her chest. The principal smiled and told her that quiet news can still change a life loudly. By evening, her family had read the letter so many times that the fold lines began to soften.",
+    "question": "The central theme of the passage is that",
+    "options": {
+      "A": "many principals enjoy surprising students",
+      "B": "a long-awaited opportunity can transform the future of a hardworking student",
+      "C": "secondary schools should depend on private foundations only",
+      "D": "electricity failure is the greatest obstacle to education"
+    },
+    "answer": "B",
+    "answer_text": "a long-awaited opportunity can transform the future of a hardworking student",
+    "explanation": {
+      "question_restate": "We are to identify the main message that runs through the passage.",
+      "principle": "The central theme is the broad idea that unifies the details.",
+      "steps": [
+        "The passage focuses on Bisi's scholarship letter and its emotional and practical significance.",
+        "Her hard work, cautious hope and financial uncertainty all prepare for the meaning of the award.",
+        "The final details show how deeply the letter affects her and her family.",
+        "So the central message is the life-changing power of a deserved opportunity.",
+        "That makes option B correct."
+      ],
+      "final_answer": "B. a long-awaited opportunity can transform the future of a hardworking student",
+      "simple_explanation": "The passage is about more than a letter. It is about how an educational opportunity can change a diligent student's life. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "main_idea_central_theme",
+      "eng_01_p022"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q098",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Supporting details",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p022",
+    "passage_title": "The Scholarship Letter",
+    "passage_text": "When the principal sent for Bisi during afternoon prep, she feared she had broken some rule without noticing it. Instead, he handed her a sealed envelope bearing the crest of a foundation she recognized only vaguely. Her hands trembled as she opened it. The letter announced that she had been awarded a scholarship to complete her secondary education, together with a small annual allowance for books. For a moment, the words looked unreal, like lines borrowed from another person's story. Bisi had studied hard for years, often by the light of a rechargeable lamp when electricity failed, but hope had remained cautious in her mind. She knew of talented students whose education had stalled because of fees. When she finished reading, she did not shout. She simply sat down and pressed the paper against her chest. The principal smiled and told her that quiet news can still change a life loudly. By evening, her family had read the letter so many times that the fold lines began to soften.",
+    "question": "Which of the following details is mentioned in the passage about the scholarship?",
+    "options": {
+      "A": "It included a hostel space and free uniforms",
+      "B": "It offered an annual allowance for books",
+      "C": "It required Bisi to transfer to another country",
+      "D": "It was awarded after a public debate competition"
+    },
+    "answer": "B",
+    "answer_text": "It offered an annual allowance for books",
+    "explanation": {
+      "question_restate": "We are to identify a detail directly stated in the passage.",
+      "principle": "Supporting details are precise facts used by the writer to build the main event.",
+      "steps": [
+        "The letter announced a scholarship to complete secondary education and a small annual allowance for books.",
+        "Option B matches that detail exactly.",
+        "The other options add information the passage never mentions.",
+        "This makes option B the correct answer.",
+        "In supporting-detail questions, direct wording from the passage is often the safest guide."
+      ],
+      "final_answer": "B. It offered an annual allowance for books",
+      "simple_explanation": "The passage states clearly that the award included money for books. That direct detail makes option B correct. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "supporting_details",
+      "eng_01_p022"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q099",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Contextual meaning of words and expressions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p022",
+    "passage_title": "The Scholarship Letter",
+    "passage_text": "When the principal sent for Bisi during afternoon prep, she feared she had broken some rule without noticing it. Instead, he handed her a sealed envelope bearing the crest of a foundation she recognized only vaguely. Her hands trembled as she opened it. The letter announced that she had been awarded a scholarship to complete her secondary education, together with a small annual allowance for books. For a moment, the words looked unreal, like lines borrowed from another person's story. Bisi had studied hard for years, often by the light of a rechargeable lamp when electricity failed, but hope had remained cautious in her mind. She knew of talented students whose education had stalled because of fees. When she finished reading, she did not shout. She simply sat down and pressed the paper against her chest. The principal smiled and told her that quiet news can still change a life loudly. By evening, her family had read the letter so many times that the fold lines began to soften.",
+    "question": "In the passage, the word 'crest' most nearly refers to a",
+    "options": {
+      "A": "formal symbol or emblem",
+      "B": "type of writing table",
+      "C": "sealed stamp of approval on exams",
+      "D": "sharp fold in a piece of cloth"
+    },
+    "answer": "A",
+    "answer_text": "formal symbol or emblem",
+    "explanation": {
+      "question_restate": "We are to determine the meaning of a word from its context in the passage.",
+      "principle": "The best contextual meaning is found by examining what the word is attached to and how it functions in the sentence.",
+      "steps": [
+        "The letter bears the crest of a foundation.",
+        "In such a context, 'crest' refers to the identifying symbol or emblem of an organization.",
+        "It does not mean a cloth fold or a desk.",
+        "The sentence concerns official appearance and identity.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. formal symbol or emblem",
+      "simple_explanation": "Because the word is linked to a foundation and a letter, it refers to an official emblem or symbol. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "contextual_meaning",
+      "eng_01_p022"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q100",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Writer's purpose",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p022",
+    "passage_title": "The Scholarship Letter",
+    "passage_text": "When the principal sent for Bisi during afternoon prep, she feared she had broken some rule without noticing it. Instead, he handed her a sealed envelope bearing the crest of a foundation she recognized only vaguely. Her hands trembled as she opened it. The letter announced that she had been awarded a scholarship to complete her secondary education, together with a small annual allowance for books. For a moment, the words looked unreal, like lines borrowed from another person's story. Bisi had studied hard for years, often by the light of a rechargeable lamp when electricity failed, but hope had remained cautious in her mind. She knew of talented students whose education had stalled because of fees. When she finished reading, she did not shout. She simply sat down and pressed the paper against her chest. The principal smiled and told her that quiet news can still change a life loudly. By evening, her family had read the letter so many times that the fold lines began to soften.",
+    "question": "The writer's purpose in the passage is mainly to",
+    "options": {
+      "A": "criticize foundations for choosing students secretly",
+      "B": "present the emotional and practical significance of a scholarship award",
+      "C": "argue that every student should expect financial support",
+      "D": "compare afternoon prep with evening prep"
+    },
+    "answer": "B",
+    "answer_text": "present the emotional and practical significance of a scholarship award",
+    "explanation": {
+      "question_restate": "We are to identify the main reason the writer tells this story.",
+      "principle": "Writer's purpose can often be discovered by asking what effect or understanding the passage is designed to produce.",
+      "steps": [
+        "The passage carefully presents Bisi's fear, surprise, cautious hope and quiet joy.",
+        "It also explains why the scholarship matters: school fees threaten many talented students.",
+        "The writer is therefore interested in both emotional response and practical life change.",
+        "The passage does not mainly criticize the foundation or make a general policy argument.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. present the emotional and practical significance of a scholarship award",
+      "simple_explanation": "The writer wants the reader to feel both the emotional weight and the life-changing value of the scholarship. For more guided practice and full lesson breakdowns, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "comprehension",
+      "writers_purpose",
+      "eng_01_p022"
+    ],
+    "active": true
   }
 ]
+  
   
