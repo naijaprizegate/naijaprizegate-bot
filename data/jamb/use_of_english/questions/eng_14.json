@@ -1,0 +1,3702 @@
+[
+  {
+    "id": "eng_14_q001",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Positive statement with negative tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Amina is punctual, ___?', the correct tag is___",
+    "options": {
+      "A": "isn't she",
+      "B": "is she",
+      "C": "doesn't she",
+      "D": "does she"
+    },
+    "answer": "A",
+    "answer_text": "isn't she",
+    "explanation": {
+      "question_restate": "In the sentence, 'Amina is punctual, ___?', the correct tag is___",
+      "principle": "A positive statement normally takes a negative question tag, and the auxiliary in the tag must match the verb in the statement.",
+      "steps": [
+        "The statement 'Amina is punctual' is positive because it contains no negative word.",
+        "The main verb here is 'is', which is also the auxiliary for the tag.",
+        "A positive statement takes a negative tag, so 'is' becomes 'isn't'.",
+        "The pronoun replacing 'Amina' is 'she', so the correct tag is 'isn't she'."
+      ],
+      "final_answer": "A. isn't she",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_statement",
+      "negative_tag",
+      "be_verb"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q002",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Positive statement with negative tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The boys were absent, ___?', the correct tag is___",
+    "options": {
+      "A": "weren't they",
+      "B": "were they",
+      "C": "didn't they",
+      "D": "wasn't they"
+    },
+    "answer": "A",
+    "answer_text": "weren't they",
+    "explanation": {
+      "question_restate": "In the sentence, 'The boys were absent, ___?', the correct tag is___",
+      "principle": "A positive clause with 'were' takes the negative tag 'weren't' plus the correct pronoun.",
+      "steps": [
+        "The statement is positive.",
+        "Its auxiliary is 'were'.",
+        "Because the tag must be negative, we change 'were' to 'weren't'.",
+        "The pronoun for 'the boys' is 'they', so the correct tag is 'weren't they'."
+      ],
+      "final_answer": "A. weren't they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_statement",
+      "negative_tag",
+      "past_be"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q003",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Positive statement with negative tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Your sister can swim well, ___?', the correct tag is___",
+    "options": {
+      "A": "can't she",
+      "B": "can she",
+      "C": "doesn't she",
+      "D": "isn't she"
+    },
+    "answer": "A",
+    "answer_text": "can't she",
+    "explanation": {
+      "question_restate": "In the sentence, 'Your sister can swim well, ___?', the correct tag is___",
+      "principle": "When a modal verb appears in the statement, the same modal is usually used in the tag.",
+      "steps": [
+        "The statement uses the modal 'can'.",
+        "Because the statement is positive, the tag must be negative.",
+        "The negative form of 'can' in the tag is 'can't'.",
+        "The noun phrase 'your sister' becomes 'she', giving 'can't she'."
+      ],
+      "final_answer": "A. can't she",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_statement",
+      "negative_tag",
+      "modal"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q004",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Positive statement with negative tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'They have finished the assignment, ___?', the correct tag is___",
+    "options": {
+      "A": "haven't they",
+      "B": "have they",
+      "C": "didn't they",
+      "D": "aren't they"
+    },
+    "answer": "A",
+    "answer_text": "haven't they",
+    "explanation": {
+      "question_restate": "In the sentence, 'They have finished the assignment, ___?', the correct tag is___",
+      "principle": "The auxiliary in the question tag should match the auxiliary used in the statement.",
+      "steps": [
+        "The sentence uses the auxiliary 'have'.",
+        "Since the statement is positive, the tag must be negative.",
+        "The negative tag formed from 'have' is 'haven't'.",
+        "The subject 'they' remains 'they', so the correct tag is 'haven't they'."
+      ],
+      "final_answer": "A. haven't they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_statement",
+      "negative_tag",
+      "present_perfect"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q005",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Positive statement with negative tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Chinedu will arrive early, ___?', the correct tag is___",
+    "options": {
+      "A": "won't he",
+      "B": "will he",
+      "C": "doesn't he",
+      "D": "isn't he"
+    },
+    "answer": "A",
+    "answer_text": "won't he",
+    "explanation": {
+      "question_restate": "In the sentence, 'Chinedu will arrive early, ___?', the correct tag is___",
+      "principle": "A positive statement with 'will' normally takes the negative tag 'won't'.",
+      "steps": [
+        "The auxiliary in the statement is 'will'.",
+        "A positive clause must take a negative tag.",
+        "The contracted negative form of 'will' is 'won't'.",
+        "Since 'Chinedu' becomes 'he', the correct tag is 'won't he'."
+      ],
+      "final_answer": "A. won't he",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_statement",
+      "negative_tag",
+      "future"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q006",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Positive statement with negative tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The teachers should attend the workshop, ___?', the correct tag is___",
+    "options": {
+      "A": "shouldn't they",
+      "B": "should they",
+      "C": "don't they",
+      "D": "won't they"
+    },
+    "answer": "A",
+    "answer_text": "shouldn't they",
+    "explanation": {
+      "question_restate": "In the sentence, 'The teachers should attend the workshop, ___?', the correct tag is___",
+      "principle": "Question tags repeat the same auxiliary used in the statement whenever possible.",
+      "steps": [
+        "The auxiliary in the statement is 'should'.",
+        "Because the statement is positive, the tag must be negative.",
+        "The negative form is 'shouldn't'.",
+        "The pronoun for 'the teachers' is 'they', so the correct tag is 'shouldn't they'."
+      ],
+      "final_answer": "A. shouldn't they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_statement",
+      "negative_tag",
+      "should"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q007",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Positive statement with negative tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Ngozi was laughing loudly, ___?', the correct tag is___",
+    "options": {
+      "A": "wasn't she",
+      "B": "was she",
+      "C": "didn't she",
+      "D": "isn't she"
+    },
+    "answer": "A",
+    "answer_text": "wasn't she",
+    "explanation": {
+      "question_restate": "In the sentence, 'Ngozi was laughing loudly, ___?', the correct tag is___",
+      "principle": "The auxiliary in the statement should be carried into the tag, while the polarity changes.",
+      "steps": [
+        "The verb phrase 'was laughing' contains the auxiliary 'was'.",
+        "The statement is positive, so the tag must be negative.",
+        "The negative form is 'wasn't'.",
+        "The subject 'Ngozi' becomes 'she', giving 'wasn't she'."
+      ],
+      "final_answer": "A. wasn't she",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_statement",
+      "negative_tag",
+      "past_continuous"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q008",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Positive statement with negative tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This book belongs to Emeka, ___?', the correct tag is___",
+    "options": {
+      "A": "doesn't it",
+      "B": "does it",
+      "C": "isn't it",
+      "D": "didn't it"
+    },
+    "answer": "A",
+    "answer_text": "doesn't it",
+    "explanation": {
+      "question_restate": "In the sentence, 'This book belongs to Emeka, ___?', the correct tag is___",
+      "principle": "Where there is no auxiliary in the statement, the tag is formed with do, does, or did as required by tense.",
+      "steps": [
+        "The main verb is 'belongs', which is a lexical verb and not an auxiliary.",
+        "Because the verb is in the simple present and the subject 'this book' is singular, we use 'does' in the tag.",
+        "The statement is positive, so the tag must be negative: 'doesn't'.",
+        "The pronoun for 'this book' is 'it', so the tag is 'doesn't it'."
+      ],
+      "final_answer": "A. doesn't it",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_statement",
+      "negative_tag",
+      "lexical_verb"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q009",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Positive statement with negative tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The rain stopped at noon, ___?', the correct tag is___",
+    "options": {
+      "A": "didn't it",
+      "B": "did it",
+      "C": "doesn't it",
+      "D": "wasn't it"
+    },
+    "answer": "A",
+    "answer_text": "didn't it",
+    "explanation": {
+      "question_restate": "In the sentence, 'The rain stopped at noon, ___?', the correct tag is___",
+      "principle": "Simple past statements without auxiliaries usually take 'did' in the tag.",
+      "steps": [
+        "The verb 'stopped' is in the simple past.",
+        "There is no auxiliary verb in the statement.",
+        "For simple past tags, we use 'did', and since the statement is positive, the tag must be negative: 'didn't'.",
+        "The subject 'the rain' becomes 'it', so the correct tag is 'didn't it'."
+      ],
+      "final_answer": "A. didn't it",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_statement",
+      "negative_tag",
+      "simple_past"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q010",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Positive statement with negative tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Kemi and Bisi play tennis, ___?', the correct tag is___",
+    "options": {
+      "A": "don't they",
+      "B": "do they",
+      "C": "aren't they",
+      "D": "didn't they"
+    },
+    "answer": "A",
+    "answer_text": "don't they",
+    "explanation": {
+      "question_restate": "In the sentence, 'Kemi and Bisi play tennis, ___?', the correct tag is___",
+      "principle": "Simple present statements with ordinary verbs take do/does in the tag, depending on the subject.",
+      "steps": [
+        "The verb 'play' is in the simple present.",
+        "There is no auxiliary in the statement, so the tag must use do/does.",
+        "The subject 'Kemi and Bisi' is plural, so we use 'do'.",
+        "Because the statement is positive, the tag becomes 'don't they'."
+      ],
+      "final_answer": "A. don't they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_statement",
+      "negative_tag",
+      "simple_present_plural"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q011",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Positive statement with negative tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Your father drives carefully, ___?', the correct tag is___",
+    "options": {
+      "A": "doesn't he",
+      "B": "does he",
+      "C": "isn't he",
+      "D": "didn't he"
+    },
+    "answer": "A",
+    "answer_text": "doesn't he",
+    "explanation": {
+      "question_restate": "In the sentence, 'Your father drives carefully, ___?', the correct tag is___",
+      "principle": "A simple present statement with a singular subject and no auxiliary takes 'does' in the tag.",
+      "steps": [
+        "The verb 'drives' is simple present.",
+        "There is no auxiliary verb in the statement.",
+        "The subject 'your father' is singular, so we use 'does' in the tag.",
+        "The statement is positive, so the correct tag is 'doesn't he'."
+      ],
+      "final_answer": "A. doesn't he",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_statement",
+      "negative_tag",
+      "simple_present_singular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q012",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Positive statement with negative tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The child has been sleeping, ___?', the correct tag is___",
+    "options": {
+      "A": "hasn't he",
+      "B": "has he",
+      "C": "isn't he",
+      "D": "didn't he"
+    },
+    "answer": "A",
+    "answer_text": "hasn't he",
+    "explanation": {
+      "question_restate": "In the sentence, 'The child has been sleeping, ___?', the correct tag is___",
+      "principle": "The auxiliary in the statement should be echoed in the tag, while the pronoun must match the subject.",
+      "steps": [
+        "The verb phrase 'has been sleeping' begins with the auxiliary 'has'.",
+        "A positive statement takes a negative tag.",
+        "Therefore, 'has' changes to 'hasn't'.",
+        "The pronoun for 'the child' is commonly 'he' or 'she'; among the options, 'hasn't he' is the correct matching structure."
+      ],
+      "final_answer": "A. hasn't he",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "positive_statement",
+      "negative_tag",
+      "present_perfect_continuous"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q013",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Negative statement with positive tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Aisha is not late, ___?', the correct tag is___",
+    "options": {
+      "A": "is she",
+      "B": "isn't she",
+      "C": "does she",
+      "D": "doesn't she"
+    },
+    "answer": "A",
+    "answer_text": "is she",
+    "explanation": {
+      "question_restate": "In the sentence, 'Aisha is not late, ___?', the correct tag is___",
+      "principle": "A negative statement normally takes a positive question tag with the same auxiliary.",
+      "steps": [
+        "The statement contains the negative word 'not', so it is negative.",
+        "A negative statement takes a positive tag.",
+        "The auxiliary used is 'is', so the tag should also use 'is'.",
+        "The subject 'Aisha' becomes 'she', making the correct tag 'is she'."
+      ],
+      "final_answer": "A. is she",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "negative_statement",
+      "positive_tag",
+      "be_verb"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q014",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Negative statement with positive tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'They were not invited, ___?', the correct tag is___",
+    "options": {
+      "A": "were they",
+      "B": "weren't they",
+      "C": "did they",
+      "D": "was they"
+    },
+    "answer": "A",
+    "answer_text": "were they",
+    "explanation": {
+      "question_restate": "In the sentence, 'They were not invited, ___?', the correct tag is___",
+      "principle": "A negative clause with 'were' takes the positive tag 'were they'.",
+      "steps": [
+        "The word 'not' makes the statement negative.",
+        "So the tag must be positive.",
+        "The statement uses 'were', so the tag should also use 'were'.",
+        "The correct pronoun is 'they', giving 'were they'."
+      ],
+      "final_answer": "A. were they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "negative_statement",
+      "positive_tag",
+      "past_be"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q015",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Negative statement with positive tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Ngozi cannot dance well, ___?', the correct tag is___",
+    "options": {
+      "A": "can she",
+      "B": "can't she",
+      "C": "does she",
+      "D": "is she"
+    },
+    "answer": "A",
+    "answer_text": "can she",
+    "explanation": {
+      "question_restate": "In the sentence, 'Ngozi cannot dance well, ___?', the correct tag is___",
+      "principle": "A negative statement with a modal verb takes a positive tag using the same modal.",
+      "steps": [
+        "The negative word here is built into 'cannot'.",
+        "So the tag must be positive.",
+        "The modal used is 'can', and the pronoun for 'Ngozi' is 'she'.",
+        "Therefore, the correct tag is 'can she'."
+      ],
+      "final_answer": "A. can she",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "negative_statement",
+      "positive_tag",
+      "modal"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q016",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Negative statement with positive tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'They have not submitted the form, ___?', the correct tag is___",
+    "options": {
+      "A": "have they",
+      "B": "haven't they",
+      "C": "did they",
+      "D": "are they"
+    },
+    "answer": "A",
+    "answer_text": "have they",
+    "explanation": {
+      "question_restate": "In the sentence, 'They have not submitted the form, ___?', the correct tag is___",
+      "principle": "A negative present perfect statement takes a positive tag with 'have' or 'has'.",
+      "steps": [
+        "The statement contains 'have not', so it is negative.",
+        "A negative statement must be followed by a positive tag.",
+        "The auxiliary remains 'have'.",
+        "Since the subject is 'they', the correct tag is 'have they'."
+      ],
+      "final_answer": "A. have they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "negative_statement",
+      "positive_tag",
+      "present_perfect"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q017",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Negative statement with positive tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Chika will not travel tomorrow, ___?', the correct tag is___",
+    "options": {
+      "A": "will she",
+      "B": "won't she",
+      "C": "does she",
+      "D": "is she"
+    },
+    "answer": "A",
+    "answer_text": "will she",
+    "explanation": {
+      "question_restate": "In the sentence, 'Chika will not travel tomorrow, ___?', the correct tag is___",
+      "principle": "A negative statement with 'will' takes the positive tag 'will' plus the appropriate pronoun.",
+      "steps": [
+        "The expression 'will not' makes the statement negative.",
+        "Therefore the tag must be positive.",
+        "The auxiliary remains 'will'.",
+        "The subject 'Chika' becomes 'she', giving 'will she'."
+      ],
+      "final_answer": "A. will she",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "negative_statement",
+      "positive_tag",
+      "future"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q018",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Negative statement with positive tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The boys should not make noise, ___?', the correct tag is___",
+    "options": {
+      "A": "should they",
+      "B": "shouldn't they",
+      "C": "do they",
+      "D": "will they"
+    },
+    "answer": "A",
+    "answer_text": "should they",
+    "explanation": {
+      "question_restate": "In the sentence, 'The boys should not make noise, ___?', the correct tag is___",
+      "principle": "The polarity of the tag must be opposite to that of the statement.",
+      "steps": [
+        "The statement is negative because it contains 'should not'.",
+        "Therefore the tag must be positive.",
+        "The auxiliary in the statement is 'should', so the tag also uses 'should'.",
+        "The pronoun for 'the boys' is 'they', hence 'should they'."
+      ],
+      "final_answer": "A. should they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "negative_statement",
+      "positive_tag",
+      "should"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q019",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Negative statement with positive tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The car was not moving, ___?', the correct tag is___",
+    "options": {
+      "A": "was it",
+      "B": "wasn't it",
+      "C": "did it",
+      "D": "is it"
+    },
+    "answer": "A",
+    "answer_text": "was it",
+    "explanation": {
+      "question_restate": "In the sentence, 'The car was not moving, ___?', the correct tag is___",
+      "principle": "In negative continuous statements, the positive tag repeats the auxiliary 'was' or 'were'.",
+      "steps": [
+        "The phrase 'was not moving' is negative.",
+        "A positive tag is therefore needed.",
+        "The auxiliary is 'was'.",
+        "The subject 'the car' becomes 'it', so the correct tag is 'was it'."
+      ],
+      "final_answer": "A. was it",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "negative_statement",
+      "positive_tag",
+      "continuous"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q020",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Negative statement with positive tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This pen does not write well, ___?', the correct tag is___",
+    "options": {
+      "A": "does it",
+      "B": "doesn't it",
+      "C": "is it",
+      "D": "did it"
+    },
+    "answer": "A",
+    "answer_text": "does it",
+    "explanation": {
+      "question_restate": "In the sentence, 'This pen does not write well, ___?', the correct tag is___",
+      "principle": "Simple present negative statements with 'does not' take positive tags with 'does'.",
+      "steps": [
+        "The statement already uses the auxiliary 'does not'.",
+        "Because the statement is negative, the tag must be positive.",
+        "The correct positive form is 'does'.",
+        "The pronoun for 'this pen' is 'it', so the tag is 'does it'."
+      ],
+      "final_answer": "A. does it",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "negative_statement",
+      "positive_tag",
+      "simple_present"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q021",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Negative statement with positive tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The rain did not stop early, ___?', the correct tag is___",
+    "options": {
+      "A": "did it",
+      "B": "didn't it",
+      "C": "does it",
+      "D": "was it"
+    },
+    "answer": "A",
+    "answer_text": "did it",
+    "explanation": {
+      "question_restate": "In the sentence, 'The rain did not stop early, ___?', the correct tag is___",
+      "principle": "A simple past negative statement takes a positive tag with 'did'.",
+      "steps": [
+        "The statement contains 'did not stop', so it is negative.",
+        "Therefore the tag must be positive.",
+        "The tense is simple past, so we use 'did'.",
+        "The subject 'the rain' becomes 'it', giving 'did it'."
+      ],
+      "final_answer": "A. did it",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "negative_statement",
+      "positive_tag",
+      "simple_past"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q022",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Negative statement with positive tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Your parents do not live here, ___?', the correct tag is___",
+    "options": {
+      "A": "do they",
+      "B": "don't they",
+      "C": "are they",
+      "D": "did they"
+    },
+    "answer": "A",
+    "answer_text": "do they",
+    "explanation": {
+      "question_restate": "In the sentence, 'Your parents do not live here, ___?', the correct tag is___",
+      "principle": "Negative simple present statements with ordinary verbs take positive tags with do or does.",
+      "steps": [
+        "The expression 'do not live' is negative.",
+        "So the tag must be positive.",
+        "The subject 'your parents' is plural, so the helper is 'do'.",
+        "That gives the tag 'do they'."
+      ],
+      "final_answer": "A. do they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "negative_statement",
+      "positive_tag",
+      "simple_present_plural"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q023",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Negative statement with positive tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The girl has not been crying, ___?', the correct tag is___",
+    "options": {
+      "A": "has she",
+      "B": "hasn't she",
+      "C": "is she",
+      "D": "did she"
+    },
+    "answer": "A",
+    "answer_text": "has she",
+    "explanation": {
+      "question_restate": "In the sentence, 'The girl has not been crying, ___?', the correct tag is___",
+      "principle": "In a negative perfect continuous statement, the tag must be positive and should echo the first auxiliary.",
+      "steps": [
+        "The statement is negative because it contains 'has not'.",
+        "The first auxiliary is 'has', and that is the auxiliary that must appear in the tag.",
+        "The tag must be positive.",
+        "The subject 'the girl' becomes 'she', so the correct tag is 'has she'."
+      ],
+      "final_answer": "A. has she",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "negative_statement",
+      "positive_tag",
+      "perfect_continuous"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q024",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Negative statement with positive tag",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Bode does not own a bicycle, ___?', the correct tag is___",
+    "options": {
+      "A": "does he",
+      "B": "doesn't he",
+      "C": "is he",
+      "D": "did he"
+    },
+    "answer": "A",
+    "answer_text": "does he",
+    "explanation": {
+      "question_restate": "In the sentence, 'Bode does not own a bicycle, ___?', the correct tag is___",
+      "principle": "A negative statement with 'does not' takes a positive tag with 'does'.",
+      "steps": [
+        "The statement already contains 'does not', so it is negative.",
+        "The tag must therefore be positive.",
+        "The auxiliary to repeat is 'does'.",
+        "Since 'Bode' becomes 'he', the correct tag is 'does he'."
+      ],
+      "final_answer": "A. does he",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "negative_statement",
+      "positive_tag",
+      "lexical_verb"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q025",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation with auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'She has finished the work, ___?', the correct tag is___",
+    "options": {
+      "A": "hasn't she",
+      "B": "doesn't she",
+      "C": "isn't she",
+      "D": "didn't she"
+    },
+    "answer": "A",
+    "answer_text": "hasn't she",
+    "explanation": {
+      "question_restate": "In the sentence, 'She has finished the work, ___?', the correct tag is___",
+      "principle": "When a statement already contains an auxiliary, the tag usually repeats that same auxiliary.",
+      "steps": [
+        "The statement uses 'has' as its auxiliary.",
+        "The statement is positive, so the tag must be negative.",
+        "The correct negative tag built from 'has' is 'hasn't she'.",
+        "Therefore, option A is correct."
+      ],
+      "final_answer": "A. hasn't she",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "auxiliary",
+      "has",
+      "present_perfect"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q026",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation with auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The women are singing, ___?', the correct tag is___",
+    "options": {
+      "A": "aren't they",
+      "B": "don't they",
+      "C": "weren't they",
+      "D": "are they"
+    },
+    "answer": "A",
+    "answer_text": "aren't they",
+    "explanation": {
+      "question_restate": "In the sentence, 'The women are singing, ___?', the correct tag is___",
+      "principle": "Continuous tenses use forms of 'be', and the same form of 'be' appears in the tag.",
+      "steps": [
+        "The verb phrase 'are singing' uses 'are' as the auxiliary.",
+        "Because the statement is positive, the tag must be negative.",
+        "The subject 'the women' becomes 'they'.",
+        "So the correct tag is 'aren't they'."
+      ],
+      "final_answer": "A. aren't they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "auxiliary",
+      "are",
+      "present_continuous"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q027",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation with auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'He was reading quietly, ___?', the correct tag is___",
+    "options": {
+      "A": "wasn't he",
+      "B": "didn't he",
+      "C": "isn't he",
+      "D": "was he"
+    },
+    "answer": "A",
+    "answer_text": "wasn't he",
+    "explanation": {
+      "question_restate": "In the sentence, 'He was reading quietly, ___?', the correct tag is___",
+      "principle": "The auxiliary in a past continuous statement should be repeated in the tag.",
+      "steps": [
+        "The statement contains the auxiliary 'was'.",
+        "Its polarity is positive, so the tag must be negative.",
+        "The pronoun for 'he' remains 'he'.",
+        "Therefore, the correct tag is 'wasn't he'."
+      ],
+      "final_answer": "A. wasn't he",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "auxiliary",
+      "was",
+      "past_continuous"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q028",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation with auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'They had left before noon, ___?', the correct tag is___",
+    "options": {
+      "A": "hadn't they",
+      "B": "didn't they",
+      "C": "haven't they",
+      "D": "weren't they"
+    },
+    "answer": "A",
+    "answer_text": "hadn't they",
+    "explanation": {
+      "question_restate": "In the sentence, 'They had left before noon, ___?', the correct tag is___",
+      "principle": "Past perfect statements take tags with 'had'.",
+      "steps": [
+        "The verb phrase 'had left' is in the past perfect.",
+        "Question tags should repeat the first auxiliary in the statement.",
+        "Because the statement is positive, the tag must be negative.",
+        "Thus, the correct tag is 'hadn't they'."
+      ],
+      "final_answer": "A. hadn't they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "auxiliary",
+      "had",
+      "past_perfect"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q029",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation with auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The visitors will return soon, ___?', the correct tag is___",
+    "options": {
+      "A": "won't they",
+      "B": "will they",
+      "C": "don't they",
+      "D": "aren't they"
+    },
+    "answer": "A",
+    "answer_text": "won't they",
+    "explanation": {
+      "question_restate": "In the sentence, 'The visitors will return soon, ___?', the correct tag is___",
+      "principle": "A future statement with 'will' normally takes a tag with 'won't' if the statement is positive.",
+      "steps": [
+        "The statement uses 'will'.",
+        "A positive statement requires a negative tag.",
+        "The negative contracted form is 'won't'.",
+        "The subject 'the visitors' becomes 'they', so the correct tag is 'won't they'."
+      ],
+      "final_answer": "A. won't they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "auxiliary",
+      "will",
+      "future"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q030",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation with auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'You should apologize, ___?', the correct tag is___",
+    "options": {
+      "A": "shouldn't you",
+      "B": "should you",
+      "C": "don't you",
+      "D": "won't you"
+    },
+    "answer": "A",
+    "answer_text": "shouldn't you",
+    "explanation": {
+      "question_restate": "In the sentence, 'You should apologize, ___?', the correct tag is___",
+      "principle": "Modal auxiliaries such as should, could, and might are usually repeated in the tag.",
+      "steps": [
+        "The modal in the statement is 'should'.",
+        "The statement is positive, so the tag must be negative.",
+        "The pronoun for 'you' remains 'you'.",
+        "Therefore, the correct tag is 'shouldn't you'."
+      ],
+      "final_answer": "A. shouldn't you",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "auxiliary",
+      "should",
+      "modal"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q031",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation with auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'He may join us later, ___?', the correct tag is___",
+    "options": {
+      "A": "mayn't he",
+      "B": "may he",
+      "C": "doesn't he",
+      "D": "won't he"
+    },
+    "answer": "A",
+    "answer_text": "mayn't he",
+    "explanation": {
+      "question_restate": "In the sentence, 'He may join us later, ___?', the correct tag is___",
+      "principle": "Where the modal appears in the statement, the same modal is expected in the tag in formal grammar exercises.",
+      "steps": [
+        "The statement uses the modal 'may'.",
+        "Because the statement is positive, a negative tag is expected.",
+        "The matching negative tag in formal grammar testing is 'mayn't he'.",
+        "So option A is correct in this exam-style context."
+      ],
+      "final_answer": "A. mayn't he",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "auxiliary",
+      "may",
+      "modal"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q032",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation with auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The patient must rest, ___?', the correct tag is___",
+    "options": {
+      "A": "mustn't he",
+      "B": "must he",
+      "C": "doesn't he",
+      "D": "isn't he"
+    },
+    "answer": "A",
+    "answer_text": "mustn't he",
+    "explanation": {
+      "question_restate": "In the sentence, 'The patient must rest, ___?', the correct tag is___",
+      "principle": "Question tags usually repeat the modal verb of the statement.",
+      "steps": [
+        "The modal in the statement is 'must'.",
+        "The statement is positive, so the tag must be negative.",
+        "The correct negative form is 'mustn't'.",
+        "The pronoun replacing 'the patient' is 'he', so the tag is 'mustn't he'."
+      ],
+      "final_answer": "A. mustn't he",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "auxiliary",
+      "must",
+      "modal"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q033",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation with auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'We could see the bridge from here, ___?', the correct tag is___",
+    "options": {
+      "A": "couldn't we",
+      "B": "could we",
+      "C": "didn't we",
+      "D": "weren't we"
+    },
+    "answer": "A",
+    "answer_text": "couldn't we",
+    "explanation": {
+      "question_restate": "In the sentence, 'We could see the bridge from here, ___?', the correct tag is___",
+      "principle": "A positive clause with 'could' takes the negative tag 'couldn't'.",
+      "steps": [
+        "The auxiliary in the statement is 'could'.",
+        "A positive statement takes a negative tag.",
+        "The subject 'we' remains 'we'.",
+        "Hence, the correct tag is 'couldn't we'."
+      ],
+      "final_answer": "A. couldn't we",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "auxiliary",
+      "could",
+      "modal"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q034",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation with auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The light might fail again, ___?', the correct tag is___",
+    "options": {
+      "A": "mightn't it",
+      "B": "might it",
+      "C": "doesn't it",
+      "D": "won't it"
+    },
+    "answer": "A",
+    "answer_text": "mightn't it",
+    "explanation": {
+      "question_restate": "In the sentence, 'The light might fail again, ___?', the correct tag is___",
+      "principle": "The modal verb in the statement is echoed in the tag, while the polarity changes.",
+      "steps": [
+        "The statement uses 'might'.",
+        "Because the statement is positive, the tag must be negative.",
+        "The subject 'the light' becomes 'it'.",
+        "Therefore, the correct tag is 'mightn't it'."
+      ],
+      "final_answer": "A. mightn't it",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "auxiliary",
+      "might",
+      "modal"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q035",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation with auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'She has been waiting for hours, ___?', the correct tag is___",
+    "options": {
+      "A": "hasn't she",
+      "B": "isn't she",
+      "C": "doesn't she",
+      "D": "hadn't she"
+    },
+    "answer": "A",
+    "answer_text": "hasn't she",
+    "explanation": {
+      "question_restate": "In the sentence, 'She has been waiting for hours, ___?', the correct tag is___",
+      "principle": "In perfect continuous structures, the tag is formed from the first auxiliary, not from 'been'.",
+      "steps": [
+        "The verb phrase is 'has been waiting'.",
+        "The first auxiliary is 'has', and that is what should appear in the tag.",
+        "The statement is positive, so the tag must be negative.",
+        "Thus, the correct tag is 'hasn't she'."
+      ],
+      "final_answer": "A. hasn't she",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "auxiliary",
+      "perfect_continuous",
+      "has"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q036",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation with auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The children would enjoy the trip, ___?', the correct tag is___",
+    "options": {
+      "A": "wouldn't they",
+      "B": "would they",
+      "C": "didn't they",
+      "D": "aren't they"
+    },
+    "answer": "A",
+    "answer_text": "wouldn't they",
+    "explanation": {
+      "question_restate": "In the sentence, 'The children would enjoy the trip, ___?', the correct tag is___",
+      "principle": "A statement with 'would' normally takes a tag with 'would' as well.",
+      "steps": [
+        "The modal in the statement is 'would'.",
+        "The statement is positive, so the tag should be negative.",
+        "The subject 'the children' becomes 'they'.",
+        "So the correct tag is 'wouldn't they'."
+      ],
+      "final_answer": "A. wouldn't they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "auxiliary",
+      "would",
+      "modal"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q037",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation without auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Mary likes music, ___?', the correct tag is___",
+    "options": {
+      "A": "doesn't she",
+      "B": "isn't she",
+      "C": "didn't she",
+      "D": "hasn't she"
+    },
+    "answer": "A",
+    "answer_text": "doesn't she",
+    "explanation": {
+      "question_restate": "In the sentence, 'Mary likes music, ___?', the correct tag is___",
+      "principle": "When no auxiliary appears in a simple present statement, the tag is usually formed with do or does.",
+      "steps": [
+        "The verb 'likes' is simple present.",
+        "There is no helping verb in the statement.",
+        "Because 'Mary' is singular, the correct helper is 'does'.",
+        "Since the statement is positive, the tag is negative: 'doesn't she'."
+      ],
+      "final_answer": "A. doesn't she",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "no_auxiliary",
+      "simple_present",
+      "does"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q038",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation without auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The farmers work hard, ___?', the correct tag is___",
+    "options": {
+      "A": "don't they",
+      "B": "aren't they",
+      "C": "didn't they",
+      "D": "won't they"
+    },
+    "answer": "A",
+    "answer_text": "don't they",
+    "explanation": {
+      "question_restate": "In the sentence, 'The farmers work hard, ___?', the correct tag is___",
+      "principle": "Simple present plural statements without auxiliaries usually take 'do' in the tag.",
+      "steps": [
+        "The main verb is 'work'.",
+        "There is no auxiliary in the statement.",
+        "The subject 'the farmers' is plural, so we use 'do'.",
+        "Because the statement is positive, the correct tag is 'don't they'."
+      ],
+      "final_answer": "A. don't they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "no_auxiliary",
+      "simple_present_plural",
+      "do"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q039",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation without auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Your brother plays football well, ___?', the correct tag is___",
+    "options": {
+      "A": "doesn't he",
+      "B": "don't he",
+      "C": "isn't he",
+      "D": "didn't he"
+    },
+    "answer": "A",
+    "answer_text": "doesn't he",
+    "explanation": {
+      "question_restate": "In the sentence, 'Your brother plays football well, ___?', the correct tag is___",
+      "principle": "A simple present statement with a singular subject takes a 'does' tag if no auxiliary is present.",
+      "steps": [
+        "The verb 'plays' is an ordinary simple present verb.",
+        "There is no auxiliary in the statement itself.",
+        "The subject is singular, so the helper used in the tag is 'does'.",
+        "The statement is positive, so the correct tag is 'doesn't he'."
+      ],
+      "final_answer": "A. doesn't he",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "no_auxiliary",
+      "simple_present_singular",
+      "does"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q040",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation without auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The bell rang early, ___?', the correct tag is___",
+    "options": {
+      "A": "didn't it",
+      "B": "doesn't it",
+      "C": "wasn't it",
+      "D": "isn't it"
+    },
+    "answer": "A",
+    "answer_text": "didn't it",
+    "explanation": {
+      "question_restate": "In the sentence, 'The bell rang early, ___?', the correct tag is___",
+      "principle": "Simple past statements without auxiliaries take 'did' in the tag.",
+      "steps": [
+        "The verb 'rang' is in the simple past.",
+        "Since there is no auxiliary, the tag must be formed with 'did'.",
+        "The statement is positive, so the tag is negative.",
+        "The subject 'the bell' becomes 'it', giving 'didn't it'."
+      ],
+      "final_answer": "A. didn't it",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "no_auxiliary",
+      "simple_past",
+      "did"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q041",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation without auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Kola wrote the letter, ___?', the correct tag is___",
+    "options": {
+      "A": "didn't he",
+      "B": "doesn't he",
+      "C": "wasn't he",
+      "D": "hasn't he"
+    },
+    "answer": "A",
+    "answer_text": "didn't he",
+    "explanation": {
+      "question_restate": "In the sentence, 'Kola wrote the letter, ___?', the correct tag is___",
+      "principle": "Simple past tags rely on 'did' when the statement contains only a lexical verb.",
+      "steps": [
+        "The main verb is 'wrote', which is past tense.",
+        "No auxiliary is present in the statement.",
+        "For a simple past tag, we use 'did'.",
+        "Because the statement is positive, the correct tag is 'didn't he'."
+      ],
+      "final_answer": "A. didn't he",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "no_auxiliary",
+      "simple_past",
+      "did"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q042",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation without auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The baby cries often, ___?', the correct tag is___",
+    "options": {
+      "A": "doesn't it",
+      "B": "don't it",
+      "C": "isn't it",
+      "D": "didn't it"
+    },
+    "answer": "A",
+    "answer_text": "doesn't it",
+    "explanation": {
+      "question_restate": "In the sentence, 'The baby cries often, ___?', the correct tag is___",
+      "principle": "When the subject is singular and the main verb is in the present simple, the tag takes 'does'.",
+      "steps": [
+        "The verb 'cries' is simple present.",
+        "There is no auxiliary in the statement.",
+        "The subject 'the baby' is singular, so 'does' is used.",
+        "The positive statement therefore takes the negative tag 'doesn't it'."
+      ],
+      "final_answer": "A. doesn't it",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "no_auxiliary",
+      "simple_present",
+      "pronoun_it"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q043",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation without auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Your sisters enjoy reading novels, ___?', the correct tag is___",
+    "options": {
+      "A": "don't they",
+      "B": "doesn't they",
+      "C": "aren't they",
+      "D": "didn't they"
+    },
+    "answer": "A",
+    "answer_text": "don't they",
+    "explanation": {
+      "question_restate": "In the sentence, 'Your sisters enjoy reading novels, ___?', the correct tag is___",
+      "principle": "Plural simple present statements without auxiliaries take do/don't in the tag.",
+      "steps": [
+        "The main verb is 'enjoy'.",
+        "There is no auxiliary in the statement.",
+        "The subject 'your sisters' is plural, so the helper is 'do'.",
+        "Because the statement is positive, the correct tag is 'don't they'."
+      ],
+      "final_answer": "A. don't they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "no_auxiliary",
+      "plural_subject",
+      "do"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q044",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation without auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The train arrived late, ___?', the correct tag is___",
+    "options": {
+      "A": "didn't it",
+      "B": "doesn't it",
+      "C": "wasn't it",
+      "D": "hasn't it"
+    },
+    "answer": "A",
+    "answer_text": "didn't it",
+    "explanation": {
+      "question_restate": "In the sentence, 'The train arrived late, ___?', the correct tag is___",
+      "principle": "Simple past question tags are formed with did/didn't when no auxiliary exists in the statement.",
+      "steps": [
+        "The verb 'arrived' is in the simple past.",
+        "No helping verb is present.",
+        "So the tag uses 'did'.",
+        "The statement is positive, making the tag 'didn't it'."
+      ],
+      "final_answer": "A. didn't it",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "no_auxiliary",
+      "simple_past",
+      "it"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q045",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation without auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The woman sells vegetables here, ___?', the correct tag is___",
+    "options": {
+      "A": "doesn't she",
+      "B": "don't she",
+      "C": "isn't she",
+      "D": "didn't she"
+    },
+    "answer": "A",
+    "answer_text": "doesn't she",
+    "explanation": {
+      "question_restate": "In the sentence, 'The woman sells vegetables here, ___?', the correct tag is___",
+      "principle": "Simple present tags with a singular subject and a lexical verb use does/doesn't.",
+      "steps": [
+        "The verb 'sells' is simple present.",
+        "There is no auxiliary verb in the main clause.",
+        "The singular subject 'the woman' becomes 'she', and the helper is 'does'.",
+        "Therefore, the correct tag is 'doesn't she'."
+      ],
+      "final_answer": "A. doesn't she",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "no_auxiliary",
+      "simple_present",
+      "does_singular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q046",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation without auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The players trained yesterday, ___?', the correct tag is___",
+    "options": {
+      "A": "didn't they",
+      "B": "don't they",
+      "C": "weren't they",
+      "D": "haven't they"
+    },
+    "answer": "A",
+    "answer_text": "didn't they",
+    "explanation": {
+      "question_restate": "In the sentence, 'The players trained yesterday, ___?', the correct tag is___",
+      "principle": "Past actions expressed with ordinary verbs usually take did/didn't in the tag.",
+      "steps": [
+        "The verb 'trained' is past tense.",
+        "Because there is no auxiliary in the statement, the tag uses 'did'.",
+        "The subject 'the players' becomes 'they'.",
+        "Since the statement is positive, the correct tag is 'didn't they'."
+      ],
+      "final_answer": "A. didn't they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "no_auxiliary",
+      "past_plural",
+      "did"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q047",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation without auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'This radio works perfectly, ___?', the correct tag is___",
+    "options": {
+      "A": "doesn't it",
+      "B": "don't it",
+      "C": "isn't it",
+      "D": "didn't it"
+    },
+    "answer": "A",
+    "answer_text": "doesn't it",
+    "explanation": {
+      "question_restate": "In the sentence, 'This radio works perfectly, ___?', the correct tag is___",
+      "principle": "A singular subject with a simple present lexical verb takes does/doesn't in the tag.",
+      "steps": [
+        "The statement contains the verb 'works', which is simple present.",
+        "There is no auxiliary in the clause.",
+        "The subject 'this radio' is singular, so the helper is 'does'.",
+        "Therefore, the correct tag is 'doesn't it'."
+      ],
+      "final_answer": "A. doesn't it",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "no_auxiliary",
+      "present_singular",
+      "device"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q048",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Tag formation without auxiliaries",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Our team played well, ___?', the correct tag is___",
+    "options": {
+      "A": "didn't it",
+      "B": "didn't they",
+      "C": "doesn't it",
+      "D": "wasn't it"
+    },
+    "answer": "A",
+    "answer_text": "didn't it",
+    "explanation": {
+      "question_restate": "In the sentence, 'Our team played well, ___?', the correct tag is___",
+      "principle": "Where no auxiliary is present, the tag is formed with 'did' in the simple past; the pronoun should match the grammatical subject.",
+      "steps": [
+        "The verb 'played' is past tense.",
+        "The statement has no auxiliary verb.",
+        "So the tag must use 'did'.",
+        "In this exam-style singular team reference, the correct pronoun is 'it', giving 'didn't it'."
+      ],
+      "final_answer": "A. didn't it",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "no_auxiliary",
+      "collective",
+      "past_did"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q049",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with imperative sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Open the window, ___?', the most suitable tag is___",
+    "options": {
+      "A": "will you",
+      "B": "won't you",
+      "C": "shall we",
+      "D": "do you"
+    },
+    "answer": "A",
+    "answer_text": "will you",
+    "explanation": {
+      "question_restate": "In the sentence, 'Open the window, ___?', the most suitable tag is___",
+      "principle": "Imperative sentences often take 'will you?' as a common question tag, especially in neutral requests or instructions.",
+      "steps": [
+        "The clause 'Open the window' is an imperative because it gives a command or instruction.",
+        "Imperatives do not usually show a subject in front, so their tags follow special rules.",
+        "A common neutral tag for an imperative is 'will you?'.",
+        "Therefore, the most suitable answer is 'will you'."
+      ],
+      "final_answer": "A. will you",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "imperative",
+      "request",
+      "will_you"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q050",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with imperative sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Pass me the file, ___?', the most suitable tag is___",
+    "options": {
+      "A": "will you",
+      "B": "shall we",
+      "C": "aren't you",
+      "D": "don't you"
+    },
+    "answer": "A",
+    "answer_text": "will you",
+    "explanation": {
+      "question_restate": "In the sentence, 'Pass me the file, ___?', the most suitable tag is___",
+      "principle": "A direct request in imperative form commonly takes 'will you?' in standard tag-question practice.",
+      "steps": [
+        "The sentence is a request, not a statement.",
+        "Question tags for imperatives often use 'will you?'.",
+        "This form sounds natural and is commonly tested in grammar exercises.",
+        "So the correct answer is 'will you'."
+      ],
+      "final_answer": "A. will you",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "imperative",
+      "request",
+      "file"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q051",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with imperative sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Sit down, ___?', the most suitable tag is___",
+    "options": {
+      "A": "will you",
+      "B": "won't you",
+      "C": "shall we",
+      "D": "aren't you"
+    },
+    "answer": "A",
+    "answer_text": "will you",
+    "explanation": {
+      "question_restate": "In the sentence, 'Sit down, ___?', the most suitable tag is___",
+      "principle": "Simple commands typically take 'will you?' as the usual tag.",
+      "steps": [
+        "The sentence gives a direct command.",
+        "For neutral commands, the conventional tag is 'will you?'.",
+        "This pattern is standard in many exam questions on question tags.",
+        "Hence, the correct tag is 'will you'."
+      ],
+      "final_answer": "A. will you",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "imperative",
+      "command",
+      "neutral_tag"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q052",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with imperative sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Kindly wait outside, ___?', the most suitable tag is___",
+    "options": {
+      "A": "will you",
+      "B": "won't you",
+      "C": "shall we",
+      "D": "don't you"
+    },
+    "answer": "A",
+    "answer_text": "will you",
+    "explanation": {
+      "question_restate": "In the sentence, 'Kindly wait outside, ___?', the most suitable tag is___",
+      "principle": "Even polite imperatives often take 'will you?' as their standard tag.",
+      "steps": [
+        "The word 'Kindly' softens the command but does not change its imperative nature.",
+        "Imperative sentences often take 'will you?' in the tag.",
+        "This is the safest standard answer in objective grammar testing.",
+        "Therefore, option A is correct."
+      ],
+      "final_answer": "A. will you",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "imperative",
+      "polite_command",
+      "will_you"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q053",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with imperative sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Please lend me your pen, ___?', the most suitable tag is___",
+    "options": {
+      "A": "will you",
+      "B": "shall we",
+      "C": "aren't you",
+      "D": "did you"
+    },
+    "answer": "A",
+    "answer_text": "will you",
+    "explanation": {
+      "question_restate": "In the sentence, 'Please lend me your pen, ___?', the most suitable tag is___",
+      "principle": "Polite requests introduced by 'please' often take 'will you?' in question tag exercises.",
+      "steps": [
+        "The presence of 'Please' makes the sentence polite, but it remains imperative.",
+        "Question tags for such requests normally use 'will you?'.",
+        "Other options do not fit the standard imperative tag pattern.",
+        "So the correct answer is 'will you'."
+      ],
+      "final_answer": "A. will you",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "imperative",
+      "please",
+      "request"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q054",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with imperative sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Do keep quiet, ___?', the most suitable tag is___",
+    "options": {
+      "A": "will you",
+      "B": "won't you",
+      "C": "shall we",
+      "D": "do you"
+    },
+    "answer": "A",
+    "answer_text": "will you",
+    "explanation": {
+      "question_restate": "In the sentence, 'Do keep quiet, ___?', the most suitable tag is___",
+      "principle": "Even emphatic imperatives formed with 'do' generally take 'will you?' as the standard tag.",
+      "steps": [
+        "The word 'Do' adds emphasis to the command.",
+        "However, the sentence still remains an imperative.",
+        "The usual tag for imperatives is 'will you?'.",
+        "Therefore, the correct tag is 'will you'."
+      ],
+      "final_answer": "A. will you",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "imperative",
+      "emphatic_imperative",
+      "will_you"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q055",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with imperative sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Turn off the lights before you leave, ___?', the most suitable tag is___",
+    "options": {
+      "A": "will you",
+      "B": "won't you",
+      "C": "shall we",
+      "D": "aren't you"
+    },
+    "answer": "A",
+    "answer_text": "will you",
+    "explanation": {
+      "question_restate": "In the sentence, 'Turn off the lights before you leave, ___?', the most suitable tag is___",
+      "principle": "Imperative instructions commonly take 'will you?' as the neutral tag.",
+      "steps": [
+        "The sentence instructs someone to do something.",
+        "It is therefore imperative in mood.",
+        "The commonly accepted tag is 'will you?'.",
+        "Hence, option A is correct."
+      ],
+      "final_answer": "A. will you",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "imperative",
+      "instruction",
+      "will_you"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q056",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with imperative sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Tell the truth, ___?', the most suitable tag is___",
+    "options": {
+      "A": "will you",
+      "B": "shall we",
+      "C": "won't you",
+      "D": "did you"
+    },
+    "answer": "A",
+    "answer_text": "will you",
+    "explanation": {
+      "question_restate": "In the sentence, 'Tell the truth, ___?', the most suitable tag is___",
+      "principle": "A bare imperative clause is usually followed by 'will you?' in question-tag grammar exercises.",
+      "steps": [
+        "The sentence gives a command.",
+        "Imperatives do not follow the ordinary positive/negative tag rule used for statements.",
+        "Instead, a standard tag such as 'will you?' is used.",
+        "So the correct answer is 'will you'."
+      ],
+      "final_answer": "A. will you",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "imperative",
+      "command",
+      "truth"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q057",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with imperative sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Let me explain first, ___?', the most suitable tag is___",
+    "options": {
+      "A": "will you",
+      "B": "shall I",
+      "C": "shan't we",
+      "D": "do I"
+    },
+    "answer": "B",
+    "answer_text": "shall I",
+    "explanation": {
+      "question_restate": "In the sentence, 'Let me explain first, ___?', the most suitable tag is___",
+      "principle": "Special imperative forms beginning with 'Let me' commonly take 'shall I?' as the tag.",
+      "steps": [
+        "The clause begins with 'Let me', which is a special kind of imperative request for permission.",
+        "The usual tag for 'Let me ...' is 'shall I?'.",
+        "That structure asks for consent in a polite way.",
+        "Therefore, option B is correct."
+      ],
+      "final_answer": "B. shall I",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "imperative",
+      "let_me",
+      "shall_i"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q058",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with imperative sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Take your seat now, ___?', the most suitable tag is___",
+    "options": {
+      "A": "will you",
+      "B": "won't you",
+      "C": "shall we",
+      "D": "isn't it"
+    },
+    "answer": "A",
+    "answer_text": "will you",
+    "explanation": {
+      "question_restate": "In the sentence, 'Take your seat now, ___?', the most suitable tag is___",
+      "principle": "Ordinary commands in imperative form usually take 'will you?' as the standard tag.",
+      "steps": [
+        "The sentence is a direct command.",
+        "For such commands, 'will you?' is the normal exam answer.",
+        "This is different from tags on declarative statements.",
+        "Hence, the correct tag is 'will you'."
+      ],
+      "final_answer": "A. will you",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "imperative",
+      "classroom_command",
+      "will_you"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q059",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with imperative sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Help me with this box, ___?', the most suitable tag is___",
+    "options": {
+      "A": "will you",
+      "B": "shall we",
+      "C": "don't you",
+      "D": "did you"
+    },
+    "answer": "A",
+    "answer_text": "will you",
+    "explanation": {
+      "question_restate": "In the sentence, 'Help me with this box, ___?', the most suitable tag is___",
+      "principle": "Requests in the imperative often take 'will you?' in question-tag exercises.",
+      "steps": [
+        "The sentence asks someone to help.",
+        "That makes it an imperative request.",
+        "The standard tag for this form is 'will you?'.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. will you",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "imperative",
+      "request_help",
+      "will_you"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q060",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with imperative sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Do not touch the wire, ___?', the most suitable tag is___",
+    "options": {
+      "A": "will you",
+      "B": "won't you",
+      "C": "shall we",
+      "D": "do you"
+    },
+    "answer": "A",
+    "answer_text": "will you",
+    "explanation": {
+      "question_restate": "In the sentence, 'Do not touch the wire, ___?', the most suitable tag is___",
+      "principle": "Negative imperatives also commonly take 'will you?' as the tag in standard usage.",
+      "steps": [
+        "The sentence is an imperative warning expressed negatively.",
+        "Even here, the usual tag is still 'will you?'.",
+        "The tag does not simply copy the negative form of the command.",
+        "Therefore, A is correct."
+      ],
+      "final_answer": "A. will you",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "imperative",
+      "negative_imperative",
+      "will_you"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q061",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with imperative sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Keep this secret, ___?', the most suitable tag is___",
+    "options": {
+      "A": "will you",
+      "B": "shall we",
+      "C": "won't they",
+      "D": "aren't you"
+    },
+    "answer": "A",
+    "answer_text": "will you",
+    "explanation": {
+      "question_restate": "In the sentence, 'Keep this secret, ___?', the most suitable tag is___",
+      "principle": "Imperative requests and commands generally take 'will you?' as their standard tag.",
+      "steps": [
+        "The sentence tells someone what to do.",
+        "This places it in the imperative group.",
+        "The usual neutral tag for an imperative is 'will you?'.",
+        "Hence, the correct answer is 'will you'."
+      ],
+      "final_answer": "A. will you",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "imperative",
+      "request",
+      "secret"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q062",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with let's",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Let's go home now, ___?', the correct tag is___",
+    "options": {
+      "A": "shall we",
+      "B": "will you",
+      "C": "shan't we",
+      "D": "don't we"
+    },
+    "answer": "A",
+    "answer_text": "shall we",
+    "explanation": {
+      "question_restate": "In the sentence, 'Let's go home now, ___?', the correct tag is___",
+      "principle": "Sentences beginning with 'Let's' usually take the tag 'shall we?'.",
+      "steps": [
+        "'Let's' means 'let us' and is used to make a suggestion that includes the speaker.",
+        "The standard tag that follows such a suggestion is 'shall we?'.",
+        "This is one of the most important fixed patterns in question tags.",
+        "Therefore, the correct answer is 'shall we'."
+      ],
+      "final_answer": "A. shall we",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "lets",
+      "shall_we",
+      "suggestion"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q063",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with let's",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Let's begin the meeting, ___?', the correct tag is___",
+    "options": {
+      "A": "shall we",
+      "B": "will you",
+      "C": "don't we",
+      "D": "aren't we"
+    },
+    "answer": "A",
+    "answer_text": "shall we",
+    "explanation": {
+      "question_restate": "In the sentence, 'Let's begin the meeting, ___?', the correct tag is___",
+      "principle": "The fixed tag commonly used after 'Let's' is 'shall we?'.",
+      "steps": [
+        "The sentence begins with 'Let's', so it is not treated like an ordinary statement.",
+        "This pattern uses a special tag rather than the normal positive/negative reversal.",
+        "The standard tag is 'shall we?'.",
+        "Hence, option A is correct."
+      ],
+      "final_answer": "A. shall we",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "lets",
+      "meeting",
+      "shall_we"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q064",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with let's",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Let's not waste time, ___?', the correct tag is___",
+    "options": {
+      "A": "shall we",
+      "B": "will you",
+      "C": "don't we",
+      "D": "aren't we"
+    },
+    "answer": "A",
+    "answer_text": "shall we",
+    "explanation": {
+      "question_restate": "In the sentence, 'Let's not waste time, ___?', the correct tag is___",
+      "principle": "Even when 'Let's' is followed by 'not', the usual tag remains 'shall we?'.",
+      "steps": [
+        "The sentence is still a suggestion involving speaker and listener.",
+        "The fixed tag after 'Let's' is generally 'shall we?'.",
+        "This remains the standard exam answer even in the negative form.",
+        "Therefore, A is correct."
+      ],
+      "final_answer": "A. shall we",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "lets",
+      "negative_suggestion",
+      "shall_we"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q065",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with let's",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Let's invite the principal, ___?', the correct tag is___",
+    "options": {
+      "A": "shall we",
+      "B": "shan't we",
+      "C": "will you",
+      "D": "don't we"
+    },
+    "answer": "A",
+    "answer_text": "shall we",
+    "explanation": {
+      "question_restate": "In the sentence, 'Let's invite the principal, ___?', the correct tag is___",
+      "principle": "Suggestions starting with 'Let's' are normally followed by 'shall we?'.",
+      "steps": [
+        "The phrase 'Let's invite...' includes both speaker and listener.",
+        "That kind of suggestion takes the tag 'shall we?'.",
+        "This is a fixed grammatical pattern.",
+        "So the correct answer is 'shall we'."
+      ],
+      "final_answer": "A. shall we",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "lets",
+      "invite",
+      "shall_we"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q066",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with let's",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Let's take a short break, ___?', the correct tag is___",
+    "options": {
+      "A": "shall we",
+      "B": "will you",
+      "C": "don't we",
+      "D": "aren't we"
+    },
+    "answer": "A",
+    "answer_text": "shall we",
+    "explanation": {
+      "question_restate": "In the sentence, 'Let's take a short break, ___?', the correct tag is___",
+      "principle": "The usual question tag after 'Let's' is 'shall we?'.",
+      "steps": [
+        "The sentence proposes an action to be taken together.",
+        "This is exactly the pattern that requires 'shall we?'.",
+        "No other option matches the standard rule as well.",
+        "Hence, A is correct."
+      ],
+      "final_answer": "A. shall we",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "lets",
+      "break",
+      "fixed_tag"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q067",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with let's",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Let's be careful with the chemicals, ___?', the correct tag is___",
+    "options": {
+      "A": "shall we",
+      "B": "will you",
+      "C": "aren't we",
+      "D": "don't we"
+    },
+    "answer": "A",
+    "answer_text": "shall we",
+    "explanation": {
+      "question_restate": "In the sentence, 'Let's be careful with the chemicals, ___?', the correct tag is___",
+      "principle": "After 'Let's', the established tag is 'shall we?'.",
+      "steps": [
+        "The structure begins with 'Let's', which signals a shared suggestion.",
+        "The standard tag for shared suggestions is 'shall we?'.",
+        "This is tested as a fixed expression in many grammar exercises.",
+        "Therefore, the correct answer is 'shall we'."
+      ],
+      "final_answer": "A. shall we",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "lets",
+      "careful",
+      "shall_we"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q068",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with let's",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Let's check the figures again, ___?', the correct tag is___",
+    "options": {
+      "A": "shall we",
+      "B": "won't we",
+      "C": "will you",
+      "D": "don't we"
+    },
+    "answer": "A",
+    "answer_text": "shall we",
+    "explanation": {
+      "question_restate": "In the sentence, 'Let's check the figures again, ___?', the correct tag is___",
+      "principle": "Question tags with 'Let's' do not usually follow the ordinary reversed-polarity pattern.",
+      "steps": [
+        "The sentence is not a simple statement; it is a suggestion.",
+        "Suggestions with 'Let's' usually take 'shall we?'.",
+        "This is the safest standard answer in objective tests.",
+        "Thus, option A is correct."
+      ],
+      "final_answer": "A. shall we",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "lets",
+      "check",
+      "shall_we"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q069",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with let's",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Let's wait for the others, ___?', the correct tag is___",
+    "options": {
+      "A": "shall we",
+      "B": "will you",
+      "C": "don't we",
+      "D": "aren't we"
+    },
+    "answer": "A",
+    "answer_text": "shall we",
+    "explanation": {
+      "question_restate": "In the sentence, 'Let's wait for the others, ___?', the correct tag is___",
+      "principle": "The expression 'Let's' is followed by the fixed tag 'shall we?'.",
+      "steps": [
+        "The sentence suggests a joint action.",
+        "For joint suggestions beginning with 'Let's', the tag is 'shall we?'.",
+        "That is the accepted structure in formal grammar testing.",
+        "So A is correct."
+      ],
+      "final_answer": "A. shall we",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "lets",
+      "wait",
+      "shall_we"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q070",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with let's",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Let's tell him the truth, ___?', the correct tag is___",
+    "options": {
+      "A": "shall we",
+      "B": "will you",
+      "C": "don't we",
+      "D": "isn't it"
+    },
+    "answer": "A",
+    "answer_text": "shall we",
+    "explanation": {
+      "question_restate": "In the sentence, 'Let's tell him the truth, ___?', the correct tag is___",
+      "principle": "A suggestion involving the speaker and listener normally takes 'shall we?' after 'Let's'.",
+      "steps": [
+        "The phrase 'Let's tell him...' includes the speaker and the listener together.",
+        "That shared suggestion requires the tag 'shall we?'.",
+        "The ordinary statement-tag rules do not apply here.",
+        "Therefore, option A is correct."
+      ],
+      "final_answer": "A. shall we",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "lets",
+      "truth",
+      "shared_suggestion"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q071",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with let's",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Let's keep the room tidy, ___?', the correct tag is___",
+    "options": {
+      "A": "shall we",
+      "B": "won't we",
+      "C": "will you",
+      "D": "don't we"
+    },
+    "answer": "A",
+    "answer_text": "shall we",
+    "explanation": {
+      "question_restate": "In the sentence, 'Let's keep the room tidy, ___?', the correct tag is___",
+      "principle": "The tag after 'Let's' is typically 'shall we?'.",
+      "steps": [
+        "The clause uses 'Let's', which is the key signal.",
+        "This form takes a fixed tag in question-tag grammar.",
+        "That fixed tag is 'shall we?'.",
+        "Hence, A is correct."
+      ],
+      "final_answer": "A. shall we",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "lets",
+      "tidy",
+      "shall_we"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q072",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with let's",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Let's think about it carefully, ___?', the correct tag is___",
+    "options": {
+      "A": "shall we",
+      "B": "will you",
+      "C": "don't we",
+      "D": "aren't we"
+    },
+    "answer": "A",
+    "answer_text": "shall we",
+    "explanation": {
+      "question_restate": "In the sentence, 'Let's think about it carefully, ___?', the correct tag is___",
+      "principle": "The usual tag for collaborative suggestions beginning with 'Let's' is 'shall we?'.",
+      "steps": [
+        "The sentence asks for a shared action.",
+        "Because it begins with 'Let's', it takes the special fixed tag.",
+        "That tag is 'shall we?'.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. shall we",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "lets",
+      "think",
+      "shall_we"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q073",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with let's",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Let's call the doctor immediately, ___?', the correct tag is___",
+    "options": {
+      "A": "shall we",
+      "B": "will you",
+      "C": "shan't we",
+      "D": "don't we"
+    },
+    "answer": "A",
+    "answer_text": "shall we",
+    "explanation": {
+      "question_restate": "In the sentence, 'Let's call the doctor immediately, ___?', the correct tag is___",
+      "principle": "With 'Let's', the accepted tag in standard grammar tests is 'shall we?'.",
+      "steps": [
+        "The form 'Let's' introduces a proposal.",
+        "The matching question tag is not formed by reversing polarity in the normal way.",
+        "Instead, the standard tag is 'shall we?'.",
+        "Therefore, A is correct."
+      ],
+      "final_answer": "A. shall we",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "lets",
+      "doctor",
+      "shall_we"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q074",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Question tags with let's",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Let's try another method, ___?', the correct tag is___",
+    "options": {
+      "A": "shall we",
+      "B": "will you",
+      "C": "don't we",
+      "D": "aren't we"
+    },
+    "answer": "A",
+    "answer_text": "shall we",
+    "explanation": {
+      "question_restate": "In the sentence, 'Let's try another method, ___?', the correct tag is___",
+      "principle": "After 'Let's', the proper question tag is generally 'shall we?'.",
+      "steps": [
+        "The phrase 'Let's try...' is a suggestion to act together.",
+        "That form takes the fixed tag 'shall we?'.",
+        "This is a standard rule often tested in objective English papers.",
+        "Hence, option A is correct."
+      ],
+      "final_answer": "A. shall we",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "lets",
+      "method",
+      "fixed_tag"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q075",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Intonation patterns in question tags",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In speech, when the speaker says, 'You have finished, haven't you?' and expects agreement, the tag usually carries a ___ tone.",
+    "options": {
+      "A": "falling",
+      "B": "rising",
+      "C": "broken",
+      "D": "level"
+    },
+    "answer": "A",
+    "answer_text": "falling",
+    "explanation": {
+      "question_restate": "In speech, when the speaker says, 'You have finished, haven't you?' and expects agreement, the tag usually carries a ___ tone.",
+      "principle": "Question tags spoken to confirm what the speaker already believes often take a falling tone.",
+      "steps": [
+        "A falling tone usually shows that the speaker expects the listener to agree.",
+        "In such cases, the tag behaves more like a request for confirmation than a real question.",
+        "The tag 'haven't you?' in this context signals expected agreement.",
+        "Therefore, the correct answer is 'falling'."
+      ],
+      "final_answer": "A. falling",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "intonation",
+      "agreement",
+      "falling_tone"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q076",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Intonation patterns in question tags",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In speech, when the speaker says, 'You have finished, haven't you?' but is genuinely unsure, the tag usually carries a ___ tone.",
+    "options": {
+      "A": "falling",
+      "B": "rising",
+      "C": "disappearing",
+      "D": "neutral"
+    },
+    "answer": "B",
+    "answer_text": "rising",
+    "explanation": {
+      "question_restate": "In speech, when the speaker says, 'You have finished, haven't you?' but is genuinely unsure, the tag usually carries a ___ tone.",
+      "principle": "When the speaker is genuinely asking for information, the tag often takes a rising tone.",
+      "steps": [
+        "A rising tone signals uncertainty or a real request for information.",
+        "In that case, the question tag acts more like a true question.",
+        "Because the speaker is unsure, the tone rises at the end.",
+        "So the correct answer is 'rising'."
+      ],
+      "final_answer": "B. rising",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "intonation",
+      "real_question",
+      "rising_tone"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q077",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Intonation patterns in question tags",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In speech, a tag question used mainly to seek confirmation often ends with a ___ tone.",
+    "options": {
+      "A": "falling",
+      "B": "rising",
+      "C": "double",
+      "D": "silent"
+    },
+    "answer": "A",
+    "answer_text": "falling",
+    "explanation": {
+      "question_restate": "In speech, a tag question used mainly to seek confirmation often ends with a ___ tone.",
+      "principle": "Confirmation tags often take a falling tone because the speaker expects the answer to be yes.",
+      "steps": [
+        "The speaker already believes the statement is true.",
+        "The tag is used mostly to confirm that belief.",
+        "This kind of tag commonly takes a falling tone.",
+        "Hence, option A is correct."
+      ],
+      "final_answer": "A. falling",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "intonation",
+      "confirmation",
+      "falling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q078",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Intonation patterns in question tags",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In speech, a tag question that functions like a real question commonly ends with a ___ tone.",
+    "options": {
+      "A": "falling",
+      "B": "rising",
+      "C": "flat",
+      "D": "nasal"
+    },
+    "answer": "B",
+    "answer_text": "rising",
+    "explanation": {
+      "question_restate": "In speech, a tag question that functions like a real question commonly ends with a ___ tone.",
+      "principle": "A rising tone is commonly used when the speaker does not know the answer and truly asks for information.",
+      "steps": [
+        "Here the tag is not simply seeking agreement.",
+        "Instead, the speaker wants real information from the listener.",
+        "That communicative purpose is normally marked by a rising tone.",
+        "Therefore, the correct answer is 'rising'."
+      ],
+      "final_answer": "B. rising",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "intonation",
+      "uncertainty",
+      "rising"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q079",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Intonation patterns in question tags",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In speech, when a teacher says, 'We submitted the forms yesterday, didn't we?' while reminding the class of a known fact, the tag is likely to have a ___ tone.",
+    "options": {
+      "A": "falling",
+      "B": "rising",
+      "C": "mixed",
+      "D": "whispered"
+    },
+    "answer": "A",
+    "answer_text": "falling",
+    "explanation": {
+      "question_restate": "In speech, when a teacher says, 'We submitted the forms yesterday, didn't we?' while reminding the class of a known fact, the tag is likely to have a ___ tone.",
+      "principle": "Tags used as reminders or confirmation checks usually carry a falling tone.",
+      "steps": [
+        "The teacher already seems to know the answer.",
+        "The tag is used to prompt agreement or recollection, not to ask genuinely.",
+        "Such tags are usually spoken with a falling tone.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. falling",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "intonation",
+      "reminder",
+      "falling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q080",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Intonation patterns in question tags",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In speech, when a student says, 'The test starts at ten, doesn't it?' because he is uncertain, the tag should normally have a ___ tone.",
+    "options": {
+      "A": "falling",
+      "B": "rising",
+      "C": "harsh",
+      "D": "monotone"
+    },
+    "answer": "B",
+    "answer_text": "rising",
+    "explanation": {
+      "question_restate": "In speech, when a student says, 'The test starts at ten, doesn't it?' because he is uncertain, the tag should normally have a ___ tone.",
+      "principle": "Uncertainty in tag questions is usually signalled by a rising tone.",
+      "steps": [
+        "The student is unsure about the starting time.",
+        "He is genuinely asking for information.",
+        "That kind of question tag usually rises in pitch at the end.",
+        "Thus, the correct answer is 'rising'."
+      ],
+      "final_answer": "B. rising",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "intonation",
+      "uncertain_student",
+      "rising"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q081",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Intonation patterns in question tags",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In spoken English, a falling tone on a tag question often suggests that the speaker expects the listener to ___",
+    "options": {
+      "A": "disagree",
+      "B": "confirm the statement",
+      "C": "remain silent",
+      "D": "change the topic"
+    },
+    "answer": "B",
+    "answer_text": "confirm the statement",
+    "explanation": {
+      "question_restate": "In spoken English, a falling tone on a tag question often suggests that the speaker expects the listener to ___",
+      "principle": "Falling intonation on a tag commonly shows that the speaker expects confirmation.",
+      "steps": [
+        "A falling tone sounds more confident.",
+        "It often means the speaker believes the statement is true.",
+        "The tag is therefore used to invite confirmation rather than fresh information.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. confirm the statement",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "intonation",
+      "meaning",
+      "confirmation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q082",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Intonation patterns in question tags",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In spoken English, a rising tone on a tag question often suggests that the speaker is ___",
+    "options": {
+      "A": "certain",
+      "B": "uncertain and asking genuinely",
+      "C": "angry only",
+      "D": "ignoring the listener"
+    },
+    "answer": "B",
+    "answer_text": "uncertain and asking genuinely",
+    "explanation": {
+      "question_restate": "In spoken English, a rising tone on a tag question often suggests that the speaker is ___",
+      "principle": "Rising intonation usually indicates uncertainty or a genuine question.",
+      "steps": [
+        "A rising tone typically marks openness and uncertainty.",
+        "The speaker does not sound fully sure of the statement.",
+        "So the listener is being asked for real information or confirmation.",
+        "Hence, option B is correct."
+      ],
+      "final_answer": "B. uncertain and asking genuinely",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "intonation",
+      "meaning",
+      "uncertain"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q083",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Intonation patterns in question tags",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In classroom speech, 'You can solve it, can't you?' said with falling tone mainly invites ___",
+    "options": {
+      "A": "confirmation",
+      "B": "argument",
+      "C": "punishment",
+      "D": "silence"
+    },
+    "answer": "A",
+    "answer_text": "confirmation",
+    "explanation": {
+      "question_restate": "In classroom speech, 'You can solve it, can't you?' said with falling tone mainly invites ___",
+      "principle": "A falling tone on a tag question usually invites confirmation from the listener.",
+      "steps": [
+        "The speaker sounds confident that the listener can solve it.",
+        "The tag is therefore not a strong expression of doubt.",
+        "Its communicative function is mainly to get confirmation.",
+        "Thus, the correct answer is 'confirmation'."
+      ],
+      "final_answer": "A. confirmation",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "intonation",
+      "classroom",
+      "confirmation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q084",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Intonation patterns in question tags",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In classroom speech, 'You can solve it, can't you?' said with rising tone mainly shows ___",
+    "options": {
+      "A": "certainty",
+      "B": "genuine doubt",
+      "C": "celebration",
+      "D": "disrespect"
+    },
+    "answer": "B",
+    "answer_text": "genuine doubt",
+    "explanation": {
+      "question_restate": "In classroom speech, 'You can solve it, can't you?' said with rising tone mainly shows ___",
+      "principle": "A rising tone in a tag question often shows that the speaker is not sure and genuinely seeks an answer.",
+      "steps": [
+        "The speaker sounds doubtful when the tone rises.",
+        "This makes the tag function like a real question.",
+        "The listener is expected to provide information.",
+        "Therefore, the correct answer is 'genuine doubt'."
+      ],
+      "final_answer": "B. genuine doubt",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "intonation",
+      "classroom",
+      "doubt"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q085",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Intonation patterns in question tags",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In speech, the difference between rising and falling intonation in question tags mainly affects the ___",
+    "options": {
+      "A": "spelling",
+      "B": "meaning and attitude",
+      "C": "tense only",
+      "D": "punctuation only"
+    },
+    "answer": "B",
+    "answer_text": "meaning and attitude",
+    "explanation": {
+      "question_restate": "In speech, the difference between rising and falling intonation in question tags mainly affects the ___",
+      "principle": "Intonation changes how the tag is understood, especially whether it seeks confirmation or real information.",
+      "steps": [
+        "The words of the tag may remain the same.",
+        "However, a different tone changes the speaker's attitude and communicative purpose.",
+        "That means intonation affects meaning in use, not just sound.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. meaning and attitude",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "intonation",
+      "function",
+      "attitude"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q086",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Intonation patterns in question tags",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In spoken grammar, a tag pronounced with falling intonation sounds more like a request for ___",
+    "options": {
+      "A": "information",
+      "B": "confirmation",
+      "C": "permission",
+      "D": "apology"
+    },
+    "answer": "B",
+    "answer_text": "confirmation",
+    "explanation": {
+      "question_restate": "In spoken grammar, a tag pronounced with falling intonation sounds more like a request for ___",
+      "principle": "Falling intonation often makes a tag question sound like a request for confirmation rather than information.",
+      "steps": [
+        "The speaker usually believes the statement already.",
+        "The tag is used to get the listener to confirm it.",
+        "That communicative effect is associated with a falling tone.",
+        "Hence, B is correct."
+      ],
+      "final_answer": "B. confirmation",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "intonation",
+      "falling",
+      "request_for_confirmation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q087",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Intonation patterns in question tags",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In spoken grammar, a tag pronounced with rising intonation sounds more like a request for ___",
+    "options": {
+      "A": "confirmation only",
+      "B": "new information",
+      "C": "silence",
+      "D": "approval only"
+    },
+    "answer": "B",
+    "answer_text": "new information",
+    "explanation": {
+      "question_restate": "In spoken grammar, a tag pronounced with rising intonation sounds more like a request for ___",
+      "principle": "Rising intonation typically makes a tag sound more like a genuine question asking for information.",
+      "steps": [
+        "The speaker sounds less certain.",
+        "The listener is expected to answer in a more informative way.",
+        "This effect is linked with rising tone.",
+        "Therefore, option B is correct."
+      ],
+      "final_answer": "B. new information",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "intonation",
+      "rising",
+      "information"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q088",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Common errors in question tag formation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'She is your sister, doesn't she?' the error lies in the tag because it should be___",
+    "options": {
+      "A": "is she",
+      "B": "isn't she",
+      "C": "does she",
+      "D": "wasn't she"
+    },
+    "answer": "B",
+    "answer_text": "isn't she",
+    "explanation": {
+      "question_restate": "In the sentence, 'She is your sister, doesn't she?' the error lies in the tag because it should be___",
+      "principle": "A frequent error in question tags is using the wrong auxiliary; the tag must match the statement verb.",
+      "steps": [
+        "The statement uses the verb 'is'.",
+        "So the tag must also be built from 'is', not from 'does'.",
+        "The statement is positive, which means the tag must be negative.",
+        "Therefore, the correct tag is 'isn't she'."
+      ],
+      "final_answer": "B. isn't she",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "common_errors",
+      "wrong_auxiliary",
+      "be_verb"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q089",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Common errors in question tag formation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The boys play well, aren't they?' the tag is wrong because it should be___",
+    "options": {
+      "A": "don't they",
+      "B": "didn't they",
+      "C": "weren't they",
+      "D": "aren't they"
+    },
+    "answer": "A",
+    "answer_text": "don't they",
+    "explanation": {
+      "question_restate": "In the sentence, 'The boys play well, aren't they?' the tag is wrong because it should be___",
+      "principle": "A common error is using 'be' in the tag when the statement actually needs do-support.",
+      "steps": [
+        "The statement verb is 'play', a simple present lexical verb.",
+        "There is no auxiliary in the statement.",
+        "So the tag must use do/does, not 'are'.",
+        "Since the subject is plural and the statement is positive, the correct tag is 'don't they'."
+      ],
+      "final_answer": "A. don't they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "common_errors",
+      "wrong_auxiliary",
+      "simple_present"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q090",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Common errors in question tag formation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Kola didn't come early, didn't he?' the tag is wrong because it should be___",
+    "options": {
+      "A": "did he",
+      "B": "does he",
+      "C": "was he",
+      "D": "had he"
+    },
+    "answer": "A",
+    "answer_text": "did he",
+    "explanation": {
+      "question_restate": "In the sentence, 'Kola didn't come early, didn't he?' the tag is wrong because it should be___",
+      "principle": "Another common mistake is using a negative tag after a negative statement; the tag should change polarity.",
+      "steps": [
+        "The statement already contains 'didn't', so it is negative.",
+        "A negative statement must take a positive tag.",
+        "The tense is simple past, so the auxiliary is 'did'.",
+        "Therefore, the correct tag is 'did he'."
+      ],
+      "final_answer": "A. did he",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "common_errors",
+      "double_negative",
+      "past"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q091",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Common errors in question tag formation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Let's go now, will we?' the tag is wrong because it should be___",
+    "options": {
+      "A": "shall we",
+      "B": "will you",
+      "C": "shan't we",
+      "D": "don't we"
+    },
+    "answer": "A",
+    "answer_text": "shall we",
+    "explanation": {
+      "question_restate": "In the sentence, 'Let's go now, will we?' the tag is wrong because it should be___",
+      "principle": "A common error is treating 'Let's' like an ordinary statement instead of using its special fixed tag.",
+      "steps": [
+        "The sentence begins with 'Let's'.",
+        "That form has a special standard tag.",
+        "The correct tag after 'Let's' is 'shall we?'.",
+        "Therefore, option A is correct."
+      ],
+      "final_answer": "A. shall we",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "common_errors",
+      "lets",
+      "fixed_tag"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q092",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Common errors in question tag formation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Open the door, shall you?' the tag is wrong because the standard form is___",
+    "options": {
+      "A": "will you",
+      "B": "shall we",
+      "C": "won't you",
+      "D": "do you"
+    },
+    "answer": "A",
+    "answer_text": "will you",
+    "explanation": {
+      "question_restate": "In the sentence, 'Open the door, shall you?' the tag is wrong because the standard form is___",
+      "principle": "Imperatives often take 'will you?' in the tag, not 'shall you?'.",
+      "steps": [
+        "The clause 'Open the door' is imperative.",
+        "The standard tag for a neutral imperative is 'will you?'.",
+        "Using 'shall you?' here is not the expected exam answer.",
+        "So the correct replacement is 'will you'."
+      ],
+      "final_answer": "A. will you",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "common_errors",
+      "imperative",
+      "wrong_tag"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q093",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Common errors in question tag formation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Mary likes rice, don't she?' the error lies in the tag because it should be___",
+    "options": {
+      "A": "doesn't she",
+      "B": "don't she",
+      "C": "isn't she",
+      "D": "didn't she"
+    },
+    "answer": "A",
+    "answer_text": "doesn't she",
+    "explanation": {
+      "question_restate": "In the sentence, 'Mary likes rice, don't she?' the error lies in the tag because it should be___",
+      "principle": "A singular simple present statement with a lexical verb takes 'does', not 'do', in the tag.",
+      "steps": [
+        "The subject 'Mary' is singular.",
+        "The verb 'likes' is simple present with no auxiliary.",
+        "That means the tag needs 'does'.",
+        "Because the statement is positive, the correct tag is 'doesn't she'."
+      ],
+      "final_answer": "A. doesn't she",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "common_errors",
+      "agreement",
+      "doesnt_she"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q094",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Common errors in question tag formation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The girls were absent, wasn't they?' the error lies in the tag because it should be___",
+    "options": {
+      "A": "weren't they",
+      "B": "wasn't they",
+      "C": "didn't they",
+      "D": "aren't they"
+    },
+    "answer": "A",
+    "answer_text": "weren't they",
+    "explanation": {
+      "question_restate": "In the sentence, 'The girls were absent, wasn't they?' the error lies in the tag because it should be___",
+      "principle": "The tag must match the number and auxiliary of the statement subject.",
+      "steps": [
+        "The statement uses 'were', which is the plural past form of 'be'.",
+        "The subject is plural: 'the girls'.",
+        "So the tag must also use 'were'.",
+        "Because the statement is positive, the correct tag is 'weren't they'."
+      ],
+      "final_answer": "A. weren't they",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "common_errors",
+      "wrong_agreement",
+      "were"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q095",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Common errors in question tag formation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'He has finished, doesn't he?' the error lies in the tag because it should be___",
+    "options": {
+      "A": "hasn't he",
+      "B": "does he",
+      "C": "didn't he",
+      "D": "isn't he"
+    },
+    "answer": "A",
+    "answer_text": "hasn't he",
+    "explanation": {
+      "question_restate": "In the sentence, 'He has finished, doesn't he?' the error lies in the tag because it should be___",
+      "principle": "A tag must repeat the auxiliary already present in the statement instead of changing to another one.",
+      "steps": [
+        "The statement is in the present perfect: 'has finished'.",
+        "So the tag must use 'has', not 'does'.",
+        "The statement is positive, so the tag must be negative.",
+        "Therefore, the correct tag is 'hasn't he'."
+      ],
+      "final_answer": "A. hasn't he",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "common_errors",
+      "present_perfect",
+      "match_auxiliary"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q096",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Common errors in question tag formation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The train arrived late, doesn't it?' the error lies in the tag because it should be___",
+    "options": {
+      "A": "didn't it",
+      "B": "doesn't it",
+      "C": "wasn't it",
+      "D": "hasn't it"
+    },
+    "answer": "A",
+    "answer_text": "didn't it",
+    "explanation": {
+      "question_restate": "In the sentence, 'The train arrived late, doesn't it?' the error lies in the tag because it should be___",
+      "principle": "Simple past lexical verbs take 'did' in the tag, not 'does'.",
+      "steps": [
+        "The verb 'arrived' is simple past.",
+        "There is no auxiliary in the statement.",
+        "So the helper for the tag must be 'did'.",
+        "Since the statement is positive, the correct tag is 'didn't it'."
+      ],
+      "final_answer": "A. didn't it",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "common_errors",
+      "past_verb",
+      "did"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q097",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Common errors in question tag formation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'He isn't coming, isn't he?' the tag is faulty because it should be___",
+    "options": {
+      "A": "is he",
+      "B": "isn't he",
+      "C": "does he",
+      "D": "did he"
+    },
+    "answer": "A",
+    "answer_text": "is he",
+    "explanation": {
+      "question_restate": "In the sentence, 'He isn't coming, isn't he?' the tag is faulty because it should be___",
+      "principle": "A negative statement should not be followed by a negative tag; the tag should switch polarity.",
+      "steps": [
+        "The statement 'He isn't coming' is already negative.",
+        "So the tag must be positive.",
+        "The auxiliary is 'is', so the positive tag is 'is he'.",
+        "Therefore, option A is correct."
+      ],
+      "final_answer": "A. is he",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "common_errors",
+      "negative_statement",
+      "positive_tag"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q098",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Common errors in question tag formation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Let me try, will I?' the tag is faulty because it should be___",
+    "options": {
+      "A": "shall I",
+      "B": "will you",
+      "C": "shall we",
+      "D": "do I"
+    },
+    "answer": "A",
+    "answer_text": "shall I",
+    "explanation": {
+      "question_restate": "In the sentence, 'Let me try, will I?' the tag is faulty because it should be___",
+      "principle": "A special error often tested is using the wrong tag after 'Let me'; the standard tag is 'shall I?'.",
+      "steps": [
+        "The sentence begins with 'Let me', which is a request for permission.",
+        "The normal tag for this pattern is 'shall I?'.",
+        "Using 'will I?' is not the expected standard form.",
+        "Hence, A is correct."
+      ],
+      "final_answer": "A. shall I",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "common_errors",
+      "let_me",
+      "shall_i"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q099",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Common errors in question tag formation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Everyone is ready, aren't they?' the tag is faulty in strict formal agreement because it should be___",
+    "options": {
+      "A": "isn't he",
+      "B": "isn't everyone",
+      "C": "aren't they",
+      "D": "doesn't he"
+    },
+    "answer": "A",
+    "answer_text": "isn't he",
+    "explanation": {
+      "question_restate": "In the sentence, 'Everyone is ready, aren't they?' the tag is faulty in strict formal agreement because it should be___",
+      "principle": "A common error is using a plural pronoun with a formally singular indefinite subject in exam-style grammar questions.",
+      "steps": [
+        "The subject 'everyone' is grammatically singular in formal agreement.",
+        "The verb in the statement is 'is'.",
+        "Therefore, the tag should also use singular agreement.",
+        "In strict exam-style usage, the correct tag is 'isn't he'."
+      ],
+      "final_answer": "A. isn't he",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "common_errors",
+      "indefinite_pronoun",
+      "formal_agreement"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_14_q100",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_14",
+    "topic_title": "Question Tags",
+    "subtopic": "Common errors in question tag formation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Nothing happened, did it not?' the more natural standard tag form is___",
+    "options": {
+      "A": "didn't it",
+      "B": "did it",
+      "C": "doesn't it",
+      "D": "wasn't it"
+    },
+    "answer": "A",
+    "answer_text": "didn't it",
+    "explanation": {
+      "question_restate": "In the sentence, 'Nothing happened, did it not?' the more natural standard tag form is___",
+      "principle": "Though full forms are possible in some contexts, standard tag exercises usually prefer the contracted tag form.",
+      "steps": [
+        "The statement is positive in structure with the subject 'Nothing' but the sense is negative in meaning.",
+        "Standard exam practice often treats it as a positive clause needing a negative tag with 'did'.",
+        "The natural contracted form is 'didn't it?'.",
+        "So option A is the expected answer here."
+      ],
+      "final_answer": "A. didn't it",
+      "simple_explanation": "Question tags test whether you can match tense, auxiliary, polarity, and subject correctly. In examinations, first decide whether the statement is positive or negative, then pick the matching opposite-polarity tag with the same auxiliary or an appropriate helping verb. For fuller notes, guided examples, and beginner-friendly lessons, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "common_errors",
+      "awkward_form",
+      "natural_contraction"
+    ],
+    "active": true
+  }
+]
