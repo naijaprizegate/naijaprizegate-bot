@@ -9,6 +9,7 @@ from typing import Optional
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import CommandHandler, CallbackQueryHandler, ContextTypes
 from sqlalchemy import text
+from helpers import md_escape
 
 from services.flutterwave_client import create_checkout, build_tx_ref, calculate_jamb_credits
 from services.jamb_payments import create_pending_jamb_payment
@@ -971,15 +972,20 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
 
     options = question.get("options", {})
 
+    safe_question_text = md_escape(str(question.get("question") or "Question unavailable."))
+    safe_question_no = md_escape(str(current_index + 1))
+    safe_total = md_escape(str(len(batch)))
+
     option_lines = []
     for key in ["A", "B", "C", "D", "E"]:
         if key in options:
-            option_lines.append(f"{key}. {options[key]}")
+            safe_option_text = md_escape(str(options[key]))
+            option_lines.append(f"{key}\\. {safe_option_text}")
 
     text_msg = (
         f"📘 *JAMB Practice*\n"
-        f"Question {current_index + 1} of {len(batch)}\n\n"
-        f"{question['question']}\n\n"
+        f"Question {safe_question_no} of {safe_total}\n\n"
+        f"{safe_question_text}\n\n"
         + "\n".join(option_lines)
     )
 
@@ -1002,7 +1008,7 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
 
     await update.effective_message.reply_text(
         text_msg,
-        parse_mode="Markdown",
+        parse_mode="MarkdownV2",
         reply_markup=InlineKeyboardMarkup(rows),
     )
 
@@ -1318,3 +1324,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next$"))
+
