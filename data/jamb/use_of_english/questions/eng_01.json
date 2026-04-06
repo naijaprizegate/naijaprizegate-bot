@@ -797,5 +797,787 @@
       "eng_01_p004"
     ],
     "active": true
+  },
+  {
+    "id": "eng_01_q021",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Writer's purpose",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p006",
+    "passage_title": "The Night Market Ban",
+    "passage_text": "When the town council announced a ban on trading along the main highway after 10 p.m., many traders accused it of trying to destroy their livelihoods. According to the council, however, the decision followed months of complaints about traffic jams, petty theft and accidents involving late-night buses. A committee had earlier advised the council to build a proper night market with lighting, water and waste bins, but budget delays meant the project could not begin immediately. In the absence of that alternative, the council imposed the ban and promised stricter patrols. Some residents praised the move, saying the road had become dangerously congested. Others argued that the council was punishing hardworking people for problems it had failed to solve. Within two weeks, a number of traders relocated to side streets, while others stayed indoors and complained that their sales had dropped sharply. The debate revealed a familiar problem in public policy: a measure may address one danger while creating another burden.",
+    "question": "The writer's main purpose in the passage is to",
+    "options": {
+      "A": "mock traders who resisted the ban",
+      "B": "present a balanced account of a controversial policy decision",
+      "C": "prove that all councils are insensitive",
+      "D": "encourage all traders to break the ban"
+    },
+    "answer": "B",
+    "answer_text": "present a balanced account of a controversial policy decision",
+    "explanation": {
+      "question_restate": "We are to identify why the writer presented the passage the way he or she did.",
+      "principle": "Writer's purpose refers to the reason the passage was written: to inform, persuade, criticize, entertain, or present an issue for reflection.",
+      "steps": [
+        "The passage gives the council's reasons for the ban and also the traders' objections.",
+        "It reports reactions from residents on both sides instead of praising only one group.",
+        "The final sentence broadens the issue into a general policy problem.",
+        "So the writer's aim is mainly to present and examine a public issue in a balanced way."
+      ],
+      "final_answer": "B. present a balanced account of a controversial policy decision",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "writer_purpose",
+      "policy"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q022",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Writer's tone and attitude",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p006",
+    "passage_title": "The Night Market Ban",
+    "passage_text": "When the town council announced a ban on trading along the main highway after 10 p.m., many traders accused it of trying to destroy their livelihoods. According to the council, however, the decision followed months of complaints about traffic jams, petty theft and accidents involving late-night buses. A committee had earlier advised the council to build a proper night market with lighting, water and waste bins, but budget delays meant the project could not begin immediately. In the absence of that alternative, the council imposed the ban and promised stricter patrols. Some residents praised the move, saying the road had become dangerously congested. Others argued that the council was punishing hardworking people for problems it had failed to solve. Within two weeks, a number of traders relocated to side streets, while others stayed indoors and complained that their sales had dropped sharply. The debate revealed a familiar problem in public policy: a measure may address one danger while creating another burden.",
+    "question": "The writer's tone in the passage is best described as",
+    "options": {
+      "A": "balanced and reflective",
+      "B": "playful and comic",
+      "C": "furious and abusive",
+      "D": "careless and indifferent"
+    },
+    "answer": "A",
+    "answer_text": "balanced and reflective",
+    "explanation": {
+      "question_restate": "We are to determine the attitude or emotional colouring of the writer's language.",
+      "principle": "Tone is the writer's attitude as revealed through word choice, sentence style and the way facts are arranged.",
+      "steps": [
+        "The writer does not use insulting or exaggerated language against either side.",
+        "Both advantages and disadvantages of the ban are presented.",
+        "The closing sentence reflects on a wider public-policy lesson.",
+        "These features show a balanced, thoughtful and reflective tone."
+      ],
+      "final_answer": "A. balanced and reflective",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "tone",
+      "attitude"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q023",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Cause-and-effect relationships",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p006",
+    "passage_title": "The Night Market Ban",
+    "passage_text": "When the town council announced a ban on trading along the main highway after 10 p.m., many traders accused it of trying to destroy their livelihoods. According to the council, however, the decision followed months of complaints about traffic jams, petty theft and accidents involving late-night buses. A committee had earlier advised the council to build a proper night market with lighting, water and waste bins, but budget delays meant the project could not begin immediately. In the absence of that alternative, the council imposed the ban and promised stricter patrols. Some residents praised the move, saying the road had become dangerously congested. Others argued that the council was punishing hardworking people for problems it had failed to solve. Within two weeks, a number of traders relocated to side streets, while others stayed indoors and complained that their sales had dropped sharply. The debate revealed a familiar problem in public policy: a measure may address one danger while creating another burden.",
+    "question": "According to the passage, the immediate cause of the ban was",
+    "options": {
+      "A": "the completion of a new market",
+      "B": "months of complaints about congestion, theft and accidents",
+      "C": "pressure from traders on side streets",
+      "D": "the refusal of buses to use the highway"
+    },
+    "answer": "B",
+    "answer_text": "months of complaints about congestion, theft and accidents",
+    "explanation": {
+      "question_restate": "We are to identify the reason that directly led to the council's action.",
+      "principle": "Cause-and-effect questions ask you to connect an action with the event or condition that produced it.",
+      "steps": [
+        "The second sentence states that the decision followed months of complaints.",
+        "Those complaints concerned traffic jams, petty theft and accidents.",
+        "That is the direct trigger mentioned by the writer.",
+        "Therefore the immediate cause of the ban is the accumulation of these complaints."
+      ],
+      "final_answer": "B. months of complaints about congestion, theft and accidents",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "cause_effect",
+      "policy"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q024",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Fact and opinion",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p006",
+    "passage_title": "The Night Market Ban",
+    "passage_text": "When the town council announced a ban on trading along the main highway after 10 p.m., many traders accused it of trying to destroy their livelihoods. According to the council, however, the decision followed months of complaints about traffic jams, petty theft and accidents involving late-night buses. A committee had earlier advised the council to build a proper night market with lighting, water and waste bins, but budget delays meant the project could not begin immediately. In the absence of that alternative, the council imposed the ban and promised stricter patrols. Some residents praised the move, saying the road had become dangerously congested. Others argued that the council was punishing hardworking people for problems it had failed to solve. Within two weeks, a number of traders relocated to side streets, while others stayed indoors and complained that their sales had dropped sharply. The debate revealed a familiar problem in public policy: a measure may address one danger while creating another burden.",
+    "question": "Which of the following statements from the passage is an opinion rather than a verifiable fact?",
+    "options": {
+      "A": "A committee had earlier advised the council to build a proper night market",
+      "B": "Within two weeks, some traders relocated to side streets",
+      "C": "The road had become dangerously congested",
+      "D": "Budget delays meant the project could not begin immediately"
+    },
+    "answer": "C",
+    "answer_text": "The road had become dangerously congested",
+    "explanation": {
+      "question_restate": "We are to separate a statement that can be checked from one that expresses judgement.",
+      "principle": "A fact can in principle be verified, while an opinion often contains judgement, interpretation or value-laden wording.",
+      "steps": [
+        "Options A, B and D report concrete happenings or decisions that could be checked.",
+        "Option C includes the evaluative word 'dangerously'.",
+        "That wording shows judgement about the condition of the road, not just bare description.",
+        "So option C is the opinion."
+      ],
+      "final_answer": "C. The road had become dangerously congested",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "fact_opinion",
+      "evaluation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q025",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Sequence of ideas",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p007",
+    "passage_title": "The Science Club Project",
+    "passage_text": "The science club at Liberty Secondary School decided to build a small weather station after repeated floods damaged the school garden. At the first meeting, members argued over whether such a project was too ambitious for students who had never handled measuring instruments before. The club patron disagreed. He reminded them that careful observation often begins with simple tools and disciplined record-keeping. With money raised from a book fair, the students bought rain gauges, a thermometer and a wind vane made by a local artisan. They then divided themselves into teams responsible for morning readings, afternoon readings and data recording. The first month was discouraging because several entries were incomplete and one instrument was damaged by rough handling. Instead of abandoning the project, the club reviewed its mistakes, created clearer duty rosters and trained younger members more patiently. By the end of the term, the records were accurate enough for the students to compare rainfall patterns and identify the weeks when flooding was most likely.",
+    "question": "Which of the following best shows the order of events in the passage?",
+    "options": {
+      "A": "Flooding occurred, the project was abandoned, funds were raised, results were published",
+      "B": "Flooding occurred, tools were bought, mistakes were corrected, useful records were obtained",
+      "C": "Tools were bought, flooding began, the club argued, the patron resigned",
+      "D": "Students compared rainfall, then they discussed whether to begin the project"
+    },
+    "answer": "B",
+    "answer_text": "Flooding occurred, tools were bought, mistakes were corrected, useful records were obtained",
+    "explanation": {
+      "question_restate": "We are to trace the correct order in which the events unfolded.",
+      "principle": "Sequence-of-ideas questions test your ability to follow the progression of actions or thoughts in a passage.",
+      "steps": [
+        "The floods first created the problem that led to the idea of a weather station.",
+        "After discussion, the students raised money and bought tools.",
+        "Later they experienced mistakes and corrected them.",
+        "Finally their records became accurate enough for comparison, so option B gives the right sequence."
+      ],
+      "final_answer": "B. Flooding occurred, tools were bought, mistakes were corrected, useful records were obtained",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "sequence",
+      "events"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q026",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Topic sentence",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p007",
+    "passage_title": "The Science Club Project",
+    "passage_text": "The science club at Liberty Secondary School decided to build a small weather station after repeated floods damaged the school garden. At the first meeting, members argued over whether such a project was too ambitious for students who had never handled measuring instruments before. The club patron disagreed. He reminded them that careful observation often begins with simple tools and disciplined record-keeping. With money raised from a book fair, the students bought rain gauges, a thermometer and a wind vane made by a local artisan. They then divided themselves into teams responsible for morning readings, afternoon readings and data recording. The first month was discouraging because several entries were incomplete and one instrument was damaged by rough handling. Instead of abandoning the project, the club reviewed its mistakes, created clearer duty rosters and trained younger members more patiently. By the end of the term, the records were accurate enough for the students to compare rainfall patterns and identify the weeks when flooding was most likely.",
+    "question": "Which sentence best expresses the controlling idea of the passage?",
+    "options": {
+      "A": "Students can succeed in a practical project through persistence and organization",
+      "B": "Rain gauges are more useful than thermometers in schools",
+      "C": "Book fairs should be organized every term",
+      "D": "Young members always damage scientific instruments"
+    },
+    "answer": "A",
+    "answer_text": "Students can succeed in a practical project through persistence and organization",
+    "explanation": {
+      "question_restate": "We are to choose the statement that could serve as the topic sentence for the whole passage.",
+      "principle": "A topic sentence states the main controlling idea from which the details in the passage flow.",
+      "steps": [
+        "The passage is not mainly about one instrument or about book fairs.",
+        "It shows how the students faced doubt, mistakes and discouragement.",
+        "They succeeded because they reorganized themselves and persisted.",
+        "So option A captures the controlling idea best."
+      ],
+      "final_answer": "A. Students can succeed in a practical project through persistence and organization",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "topic_sentence",
+      "controlling_idea"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q027",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Deduction",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p007",
+    "passage_title": "The Science Club Project",
+    "passage_text": "The science club at Liberty Secondary School decided to build a small weather station after repeated floods damaged the school garden. At the first meeting, members argued over whether such a project was too ambitious for students who had never handled measuring instruments before. The club patron disagreed. He reminded them that careful observation often begins with simple tools and disciplined record-keeping. With money raised from a book fair, the students bought rain gauges, a thermometer and a wind vane made by a local artisan. They then divided themselves into teams responsible for morning readings, afternoon readings and data recording. The first month was discouraging because several entries were incomplete and one instrument was damaged by rough handling. Instead of abandoning the project, the club reviewed its mistakes, created clearer duty rosters and trained younger members more patiently. By the end of the term, the records were accurate enough for the students to compare rainfall patterns and identify the weeks when flooding was most likely.",
+    "question": "From the patron's advice, one can deduce that he believed scientific work depends largely on",
+    "options": {
+      "A": "luck during the rainy season",
+      "B": "expensive imported equipment",
+      "C": "careful observation and consistent records",
+      "D": "avoiding all practical activities"
+    },
+    "answer": "C",
+    "answer_text": "careful observation and consistent records",
+    "explanation": {
+      "question_restate": "We are to draw a logical conclusion from the patron's statement and the later success of the project.",
+      "principle": "Deduction is a reasoned conclusion drawn from stated clues. It must follow logically from the passage.",
+      "steps": [
+        "The patron said careful observation begins with simple tools and disciplined record-keeping.",
+        "The students later improved by keeping clearer duty rosters and more accurate records.",
+        "This shows that, in his view, method and consistency matter greatly in scientific work.",
+        "Hence option C is the best deduction."
+      ],
+      "final_answer": "C. careful observation and consistent records",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "deduction",
+      "science_club"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q028",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Conclusion from passage",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p007",
+    "passage_title": "The Science Club Project",
+    "passage_text": "The science club at Liberty Secondary School decided to build a small weather station after repeated floods damaged the school garden. At the first meeting, members argued over whether such a project was too ambitious for students who had never handled measuring instruments before. The club patron disagreed. He reminded them that careful observation often begins with simple tools and disciplined record-keeping. With money raised from a book fair, the students bought rain gauges, a thermometer and a wind vane made by a local artisan. They then divided themselves into teams responsible for morning readings, afternoon readings and data recording. The first month was discouraging because several entries were incomplete and one instrument was damaged by rough handling. Instead of abandoning the project, the club reviewed its mistakes, created clearer duty rosters and trained younger members more patiently. By the end of the term, the records were accurate enough for the students to compare rainfall patterns and identify the weeks when flooding was most likely.",
+    "question": "The most reasonable conclusion from the passage is that the science club",
+    "options": {
+      "A": "proved that students cannot handle practical tasks",
+      "B": "succeeded only because flooding stopped completely",
+      "C": "turned an initial challenge into a learning opportunity",
+      "D": "received full support from all members from the beginning"
+    },
+    "answer": "C",
+    "answer_text": "turned an initial challenge into a learning opportunity",
+    "explanation": {
+      "question_restate": "We are to decide what broad conclusion naturally follows from the details in the passage.",
+      "principle": "A conclusion from a passage sums up what the events, facts or arguments finally show.",
+      "steps": [
+        "The project began with doubt and later suffered errors.",
+        "The students did not give up; instead, they corrected the mistakes.",
+        "In the end, they obtained useful records and learned practical discipline.",
+        "So the passage leads to the conclusion that they converted difficulty into learning."
+      ],
+      "final_answer": "C. turned an initial challenge into a learning opportunity",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "conclusion",
+      "learning_process"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q029",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Figurative expressions as used in passages",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p008",
+    "passage_title": "Grandmother's Kola Nut",
+    "passage_text": "Whenever Grandmother wanted to settle a quarrel in the compound, she would first ask for a kola nut. To us as children, the request seemed odd. We thought the nut was merely a snack for elders with patient jaws. But Grandmother handled it as though it were a little speech made visible. She would break it slowly, offer portions to both sides and ask each person to speak only after tasting it. The quarrelers often lowered their voices at once, perhaps because the ritual reminded them that they belonged to one household before they became opponents. On the day two brothers nearly fought over a strip of farmland, she repeated the same ceremony under the mango tree. By the time the last fragment had been shared, accusation had given way to explanation and explanation to laughter. Years later, I understood that Grandmother had been using tradition not as decoration, but as a quiet instrument of peace.",
+    "question": "In the expression, 'a little speech made visible,' the writer means that the kola nut",
+    "options": {
+      "A": "was able to speak like a human being",
+      "B": "served as a symbolic message without spoken words",
+      "C": "contained written instructions inside it",
+      "D": "was too small to be important"
+    },
+    "answer": "B",
+    "answer_text": "served as a symbolic message without spoken words",
+    "explanation": {
+      "question_restate": "We are to interpret a figurative expression used by the writer.",
+      "principle": "Figurative expressions do not usually mean exactly what the words say on the surface. They often suggest a deeper idea.",
+      "steps": [
+        "A kola nut cannot literally make a speech.",
+        "The writer is using imagery to show that the ritual itself communicated meaning.",
+        "Grandmother's act signalled peace, respect and shared belonging before anyone spoke.",
+        "Therefore the expression means the kola nut functioned as a symbolic message."
+      ],
+      "final_answer": "B. served as a symbolic message without spoken words",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "figurative_expression",
+      "symbolism"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q030",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Reference words and pronouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p008",
+    "passage_title": "Grandmother's Kola Nut",
+    "passage_text": "Whenever Grandmother wanted to settle a quarrel in the compound, she would first ask for a kola nut. To us as children, the request seemed odd. We thought the nut was merely a snack for elders with patient jaws. But Grandmother handled it as though it were a little speech made visible. She would break it slowly, offer portions to both sides and ask each person to speak only after tasting it. The quarrelers often lowered their voices at once, perhaps because the ritual reminded them that they belonged to one household before they became opponents. On the day two brothers nearly fought over a strip of farmland, she repeated the same ceremony under the mango tree. By the time the last fragment had been shared, accusation had given way to explanation and explanation to laughter. Years later, I understood that Grandmother had been using tradition not as decoration, but as a quiet instrument of peace.",
+    "question": "In the passage, the word 'it' in 'she repeated the same ceremony' refers to",
+    "options": {
+      "A": "the quarrel",
+      "B": "the farmland",
+      "C": "the ritual involving the kola nut",
+      "D": "the mango tree"
+    },
+    "answer": "C",
+    "answer_text": "the ritual involving the kola nut",
+    "explanation": {
+      "question_restate": "We are to identify what an earlier word or idea is being pointed back to.",
+      "principle": "Reference words and pronouns help writers avoid repetition. The reader must trace them back carefully.",
+      "steps": [
+        "Before that line, the passage explains how Grandmother used the kola nut ritual to settle quarrels.",
+        "The phrase 'the same ceremony' clearly points back to that peace-making ritual.",
+        "It does not refer to the quarrel itself or to the location.",
+        "So the correct referent is the ritual involving the kola nut."
+      ],
+      "final_answer": "C. the ritual involving the kola nut",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "reference_words",
+      "pronouns"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q031",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Contextual meaning of words and expressions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p008",
+    "passage_title": "Grandmother's Kola Nut",
+    "passage_text": "Whenever Grandmother wanted to settle a quarrel in the compound, she would first ask for a kola nut. To us as children, the request seemed odd. We thought the nut was merely a snack for elders with patient jaws. But Grandmother handled it as though it were a little speech made visible. She would break it slowly, offer portions to both sides and ask each person to speak only after tasting it. The quarrelers often lowered their voices at once, perhaps because the ritual reminded them that they belonged to one household before they became opponents. On the day two brothers nearly fought over a strip of farmland, she repeated the same ceremony under the mango tree. By the time the last fragment had been shared, accusation had given way to explanation and explanation to laughter. Years later, I understood that Grandmother had been using tradition not as decoration, but as a quiet instrument of peace.",
+    "question": "As used in the passage, 'ritual' most nearly means",
+    "options": {
+      "A": "a repeated symbolic practice",
+      "B": "a careless habit",
+      "C": "a public punishment",
+      "D": "an expensive festival"
+    },
+    "answer": "A",
+    "answer_text": "a repeated symbolic practice",
+    "explanation": {
+      "question_restate": "We are to determine the meaning of a word from how it functions inside the passage.",
+      "principle": "Contextual meaning is the meaning a word carries in a particular passage, not necessarily every meaning in the dictionary.",
+      "steps": [
+        "Grandmother repeatedly used the same ordered act before settling quarrels.",
+        "The act had symbolic importance and followed a recognizable pattern.",
+        "That is why 'ritual' here means a repeated symbolic practice.",
+        "The context does not suggest carelessness, punishment or costliness."
+      ],
+      "final_answer": "A. a repeated symbolic practice",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "contextual_meaning",
+      "vocabulary"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q032",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Inference",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p008",
+    "passage_title": "Grandmother's Kola Nut",
+    "passage_text": "Whenever Grandmother wanted to settle a quarrel in the compound, she would first ask for a kola nut. To us as children, the request seemed odd. We thought the nut was merely a snack for elders with patient jaws. But Grandmother handled it as though it were a little speech made visible. She would break it slowly, offer portions to both sides and ask each person to speak only after tasting it. The quarrelers often lowered their voices at once, perhaps because the ritual reminded them that they belonged to one household before they became opponents. On the day two brothers nearly fought over a strip of farmland, she repeated the same ceremony under the mango tree. By the time the last fragment had been shared, accusation had given way to explanation and explanation to laughter. Years later, I understood that Grandmother had been using tradition not as decoration, but as a quiet instrument of peace.",
+    "question": "It can be inferred that the children at first failed to understand the ceremony because they",
+    "options": {
+      "A": "had never seen a kola nut before",
+      "B": "viewed the nut only in its ordinary physical use",
+      "C": "disliked listening to adults",
+      "D": "believed all quarrels should end in laughter"
+    },
+    "answer": "B",
+    "answer_text": "viewed the nut only in its ordinary physical use",
+    "explanation": {
+      "question_restate": "We are to infer why the children found Grandmother's action strange at first.",
+      "principle": "Inference requires the reader to move from stated clues to an unstated but reasonable understanding.",
+      "steps": [
+        "The narrator says the children thought the nut was merely a snack for elders.",
+        "Later the narrator realizes it was being used as an instrument of peace.",
+        "This contrast shows that the children saw only the ordinary physical use of the nut.",
+        "They did not yet grasp its symbolic and social significance."
+      ],
+      "final_answer": "B. viewed the nut only in its ordinary physical use",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "inference",
+      "tradition"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q033",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Writer's tone and attitude",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p009",
+    "passage_title": "A Letter from the Head Teacher",
+    "passage_text": "The head teacher's letter to parents began politely enough, thanking them for their support during the previous term. It soon turned to the issue that had troubled the school for months: persistent lateness. Without naming any child, the letter described how late arrival disrupted assembly, delayed attendance records and unsettled lessons already in progress. It acknowledged that traffic, distance and family duties could create genuine difficulties, yet it insisted that these challenges should lead to better planning rather than repeated excuses. The head teacher then announced that the school gate would be closed fifteen minutes after the official start of classes, except in emergencies explained in writing. Some parents considered the rule severe, but others welcomed it as a necessary reminder that discipline is learned in daily habits. The letter ended by inviting parents to a meeting, not merely to hear complaints, but to discuss practical ways of helping children develop punctuality.",
+    "question": "The tone of the head teacher's letter is best described as",
+    "options": {
+      "A": "firm but respectful",
+      "B": "joking and unserious",
+      "C": "bitter and revengeful",
+      "D": "confused and uncertain"
+    },
+    "answer": "A",
+    "answer_text": "firm but respectful",
+    "explanation": {
+      "question_restate": "We are to identify the emotional attitude conveyed by the letter.",
+      "principle": "A writer can sound firm without sounding rude. Tone is detected through both content and manner.",
+      "steps": [
+        "The letter starts with appreciation and remains polite throughout.",
+        "At the same time, it clearly insists on punctuality and announces a strict rule.",
+        "This combination shows firmness joined with respect.",
+        "Therefore option A best describes the tone."
+      ],
+      "final_answer": "A. firm but respectful",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "tone",
+      "school_letter"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q034",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Writer's purpose",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p009",
+    "passage_title": "A Letter from the Head Teacher",
+    "passage_text": "The head teacher's letter to parents began politely enough, thanking them for their support during the previous term. It soon turned to the issue that had troubled the school for months: persistent lateness. Without naming any child, the letter described how late arrival disrupted assembly, delayed attendance records and unsettled lessons already in progress. It acknowledged that traffic, distance and family duties could create genuine difficulties, yet it insisted that these challenges should lead to better planning rather than repeated excuses. The head teacher then announced that the school gate would be closed fifteen minutes after the official start of classes, except in emergencies explained in writing. Some parents considered the rule severe, but others welcomed it as a necessary reminder that discipline is learned in daily habits. The letter ended by inviting parents to a meeting, not merely to hear complaints, but to discuss practical ways of helping children develop punctuality.",
+    "question": "The main purpose of the letter is to",
+    "options": {
+      "A": "praise parents for buying uniforms",
+      "B": "entertain parents with stories about assembly",
+      "C": "address lateness and encourage practical cooperation",
+      "D": "threaten to expel all late-coming pupils immediately"
+    },
+    "answer": "C",
+    "answer_text": "address lateness and encourage practical cooperation",
+    "explanation": {
+      "question_restate": "We are to identify the central aim of the letter.",
+      "principle": "Writer's purpose asks why the writer communicated the message in the first place.",
+      "steps": [
+        "The letter focuses on persistent lateness as the main school concern.",
+        "It explains its effects, states a new measure and invites parents to discuss solutions.",
+        "This shows that the writer wants not only to correct the problem but also to secure cooperation.",
+        "So option C states the purpose best."
+      ],
+      "final_answer": "C. address lateness and encourage practical cooperation",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "writer_purpose",
+      "school_policy"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q035",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Supporting details",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p009",
+    "passage_title": "A Letter from the Head Teacher",
+    "passage_text": "The head teacher's letter to parents began politely enough, thanking them for their support during the previous term. It soon turned to the issue that had troubled the school for months: persistent lateness. Without naming any child, the letter described how late arrival disrupted assembly, delayed attendance records and unsettled lessons already in progress. It acknowledged that traffic, distance and family duties could create genuine difficulties, yet it insisted that these challenges should lead to better planning rather than repeated excuses. The head teacher then announced that the school gate would be closed fifteen minutes after the official start of classes, except in emergencies explained in writing. Some parents considered the rule severe, but others welcomed it as a necessary reminder that discipline is learned in daily habits. The letter ended by inviting parents to a meeting, not merely to hear complaints, but to discuss practical ways of helping children develop punctuality.",
+    "question": "Which of the following is mentioned in the passage as an effect of lateness?",
+    "options": {
+      "A": "It improves attendance records",
+      "B": "It unsettles lessons already in progress",
+      "C": "It shortens the school calendar",
+      "D": "It increases the number of teachers"
+    },
+    "answer": "B",
+    "answer_text": "It unsettles lessons already in progress",
+    "explanation": {
+      "question_restate": "We are to pick an effect that is directly stated in the passage.",
+      "principle": "Supporting details supply concrete evidence used by the writer to explain the issue.",
+      "steps": [
+        "The passage says lateness disrupted assembly, delayed attendance records and unsettled lessons already in progress.",
+        "Option B matches one of those exact effects.",
+        "The other options are not stated in the passage.",
+        "So option B is correct."
+      ],
+      "final_answer": "B. It unsettles lessons already in progress",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "supporting_details",
+      "lateness"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q036",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Conclusion from passage",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p009",
+    "passage_title": "A Letter from the Head Teacher",
+    "passage_text": "The head teacher's letter to parents began politely enough, thanking them for their support during the previous term. It soon turned to the issue that had troubled the school for months: persistent lateness. Without naming any child, the letter described how late arrival disrupted assembly, delayed attendance records and unsettled lessons already in progress. It acknowledged that traffic, distance and family duties could create genuine difficulties, yet it insisted that these challenges should lead to better planning rather than repeated excuses. The head teacher then announced that the school gate would be closed fifteen minutes after the official start of classes, except in emergencies explained in writing. Some parents considered the rule severe, but others welcomed it as a necessary reminder that discipline is learned in daily habits. The letter ended by inviting parents to a meeting, not merely to hear complaints, but to discuss practical ways of helping children develop punctuality.",
+    "question": "From the passage, one may conclude that the head teacher believes punctuality is",
+    "options": {
+      "A": "a habit that reflects wider discipline",
+      "B": "important only during examinations",
+      "C": "impossible for most children to learn",
+      "D": "the sole duty of transport workers"
+    },
+    "answer": "A",
+    "answer_text": "a habit that reflects wider discipline",
+    "explanation": {
+      "question_restate": "We are to draw the broad conclusion that follows from the letter.",
+      "principle": "A conclusion from a passage must grow naturally out of the writer's statements and emphasis.",
+      "steps": [
+        "The letter links punctuality with planning and daily habits.",
+        "It also reports approval from parents who saw discipline as learned in ordinary routines.",
+        "This suggests that punctuality is viewed as part of a larger moral and behavioural discipline.",
+        "Therefore option A is the best conclusion."
+      ],
+      "final_answer": "A. a habit that reflects wider discipline",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "conclusion",
+      "discipline"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q037",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Main idea / central theme",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p010",
+    "passage_title": "The Bus Conductor",
+    "passage_text": "Every morning, Musa met the same bus conductor at the junction on his way to work. The man had a voice sharp enough to cut through engines, arguments and the impatience of passengers already late for the day. Yet beneath that rough command was an efficiency Musa had come to admire. The conductor remembered who had paid, who was likely to forget a bag and which roads flooded after a night of heavy rain. One Monday, when a frightened child climbed into the wrong vehicle, the conductor halted the bus, ignored the grumbling of commuters and searched until he found the child's mother among the roadside crowd. From then on, Musa no longer dismissed him as just another noisy worker in a stained shirt. He began to see that some people perform unnoticed acts of order and care in places where others notice only disorder.",
+    "question": "The central idea of the passage is that the bus conductor",
+    "options": {
+      "A": "was hated by all passengers because of his loud voice",
+      "B": "combined rough manners with useful efficiency and hidden care",
+      "C": "wanted Musa to change his route to work",
+      "D": "caused disorder at the junction every morning"
+    },
+    "answer": "B",
+    "answer_text": "combined rough manners with useful efficiency and hidden care",
+    "explanation": {
+      "question_restate": "We are to identify the main point the writer is making about the conductor.",
+      "principle": "The main idea is the broad message around which all the descriptive details are arranged.",
+      "steps": [
+        "The passage begins with the conductor's harsh voice.",
+        "It then reveals his efficiency, memory and concern for a lost child.",
+        "The final line explains that Musa changed his understanding of such workers.",
+        "So the central theme is that the conductor's rough exterior hides competence and care."
+      ],
+      "final_answer": "B. combined rough manners with useful efficiency and hidden care",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "main_idea",
+      "character"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q038",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Writer's tone and attitude",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p010",
+    "passage_title": "The Bus Conductor",
+    "passage_text": "Every morning, Musa met the same bus conductor at the junction on his way to work. The man had a voice sharp enough to cut through engines, arguments and the impatience of passengers already late for the day. Yet beneath that rough command was an efficiency Musa had come to admire. The conductor remembered who had paid, who was likely to forget a bag and which roads flooded after a night of heavy rain. One Monday, when a frightened child climbed into the wrong vehicle, the conductor halted the bus, ignored the grumbling of commuters and searched until he found the child's mother among the roadside crowd. From then on, Musa no longer dismissed him as just another noisy worker in a stained shirt. He began to see that some people perform unnoticed acts of order and care in places where others notice only disorder.",
+    "question": "The writer's attitude to the conductor is mainly one of",
+    "options": {
+      "A": "growing respect",
+      "B": "mockery",
+      "C": "fear and hatred",
+      "D": "total indifference"
+    },
+    "answer": "A",
+    "answer_text": "growing respect",
+    "explanation": {
+      "question_restate": "We are to determine how Musa, and by extension the writer, finally regards the conductor.",
+      "principle": "A passage may reveal a changing attitude, and the final tone often becomes clear at the end.",
+      "steps": [
+        "At first the conductor appears rough and noisy.",
+        "As the passage develops, Musa notices his reliability and kindness.",
+        "The final paragraph openly shows a changed, more appreciative view.",
+        "Therefore the attitude is one of growing respect."
+      ],
+      "final_answer": "A. growing respect",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "tone",
+      "attitude",
+      "character"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q039",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Contextual meaning of words and expressions",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p010",
+    "passage_title": "The Bus Conductor",
+    "passage_text": "Every morning, Musa met the same bus conductor at the junction on his way to work. The man had a voice sharp enough to cut through engines, arguments and the impatience of passengers already late for the day. Yet beneath that rough command was an efficiency Musa had come to admire. The conductor remembered who had paid, who was likely to forget a bag and which roads flooded after a night of heavy rain. One Monday, when a frightened child climbed into the wrong vehicle, the conductor halted the bus, ignored the grumbling of commuters and searched until he found the child's mother among the roadside crowd. From then on, Musa no longer dismissed him as just another noisy worker in a stained shirt. He began to see that some people perform unnoticed acts of order and care in places where others notice only disorder.",
+    "question": "In the passage, the expression 'voice sharp enough to cut through engines' suggests that the conductor's voice was",
+    "options": {
+      "A": "physically dangerous",
+      "B": "pleasantly musical",
+      "C": "very loud and penetrating",
+      "D": "soft but persuasive"
+    },
+    "answer": "C",
+    "answer_text": "very loud and penetrating",
+    "explanation": {
+      "question_restate": "We are to interpret an expression according to the context of the passage.",
+      "principle": "Writers often use vivid imagery to help the reader feel the force of an experience. The meaning must be inferred from context.",
+      "steps": [
+        "A voice cannot literally cut through engines.",
+        "The expression compares the force of the voice to something able to pierce surrounding noise.",
+        "This suggests unusual loudness and carrying power.",
+        "So the expression means the conductor's voice was very loud and penetrating."
+      ],
+      "final_answer": "C. very loud and penetrating",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "contextual_meaning",
+      "imagery"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_01_q040",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_01",
+    "topic_title": "Comprehension",
+    "subtopic": "Inference",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "passage_id": "eng_01_p010",
+    "passage_title": "The Bus Conductor",
+    "passage_text": "Every morning, Musa met the same bus conductor at the junction on his way to work. The man had a voice sharp enough to cut through engines, arguments and the impatience of passengers already late for the day. Yet beneath that rough command was an efficiency Musa had come to admire. The conductor remembered who had paid, who was likely to forget a bag and which roads flooded after a night of heavy rain. One Monday, when a frightened child climbed into the wrong vehicle, the conductor halted the bus, ignored the grumbling of commuters and searched until he found the child's mother among the roadside crowd. From then on, Musa no longer dismissed him as just another noisy worker in a stained shirt. He began to see that some people perform unnoticed acts of order and care in places where others notice only disorder.",
+    "question": "From the passage, it may be inferred that Musa previously regarded workers like the conductor as",
+    "options": {
+      "A": "important agents of public safety",
+      "B": "ordinary noisy people with little worth noticing",
+      "C": "men who should become school teachers",
+      "D": "victims of road accidents"
+    },
+    "answer": "B",
+    "answer_text": "ordinary noisy people with little worth noticing",
+    "explanation": {
+      "question_restate": "We are to infer Musa's earlier attitude before his opinion changed.",
+      "principle": "Inference often involves comparing an earlier impression with a later realization.",
+      "steps": [
+        "The passage says Musa no longer dismissed him as just another noisy worker in a stained shirt.",
+        "The phrase 'no longer' reveals that this was Musa's earlier view.",
+        "He had not previously recognized the man's quiet usefulness.",
+        "So it is reasonable to infer that he once saw such workers as ordinary noisy people not worth much notice."
+      ],
+      "final_answer": "B. ordinary noisy people with little worth noticing",
+      "simple_explanation": "To master this comprehension skill more confidently, visit our \"Tutorial section\" for a fuller beginner-friendly and exam-focused lesson."
+    },
+    "tags": [
+      "inference",
+      "public_life"
+    ],
+    "active": true
   }
 ]
+  
