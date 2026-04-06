@@ -1,1 +1,3604 @@
-
+[
+  {
+    "id": "eng_10_q001",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Sentence types: statement, question, command, exclamation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the expression, 'Please submit the report before noon,' the sentence is best described as a___",
+    "options": {
+      "A": "statement",
+      "B": "question",
+      "C": "command",
+      "D": "exclamation"
+    },
+    "answer": "C",
+    "answer_text": "command",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about sentence types: statement, question, command, exclamation from the sentence or description given.",
+      "principle": "Sentence type depends on the speaker's communicative purpose: giving information, asking, ordering/requesting, or expressing strong feeling.",
+      "steps": [
+        "The sentence begins with 'Please,' but politeness does not change its function.",
+        "The speaker is not merely giving information; the speaker is telling someone what to do.",
+        "A sentence that instructs, orders, or requests is a command, often called an imperative sentence.",
+        "Therefore, the correct description is command."
+      ],
+      "final_answer": "C. command",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sentence_type",
+      "imperative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q002",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Sentence types: statement, question, command, exclamation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Why did the manager reject the proposal?' the sentence type is a___",
+    "options": {
+      "A": "statement",
+      "B": "question",
+      "C": "command",
+      "D": "exclamation"
+    },
+    "answer": "B",
+    "answer_text": "question",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about sentence types: statement, question, command, exclamation from the sentence or description given.",
+      "principle": "A question seeks information and often ends with a question mark or begins with an interrogative word.",
+      "steps": [
+        "The sentence asks for a reason.",
+        "It begins with the question word 'Why' and ends with a question mark.",
+        "That shows the speaker is seeking information, not giving an order or stating a fact.",
+        "So it is a question."
+      ],
+      "final_answer": "B. question",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sentence_type",
+      "interrogative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q003",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Sentence types: statement, question, command, exclamation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the expression, 'What a remarkable performance that was!' the sentence is an___",
+    "options": {
+      "A": "exclamation",
+      "B": "statement",
+      "C": "command",
+      "D": "question"
+    },
+    "answer": "A",
+    "answer_text": "exclamation",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about sentence types: statement, question, command, exclamation from the sentence or description given.",
+      "principle": "An exclamatory sentence expresses strong emotion such as surprise, admiration, joy, or shock.",
+      "steps": [
+        "The sentence does not request information and does not instruct anyone.",
+        "It expresses strong admiration through the structure 'What a ...!'",
+        "That emotional force marks it out as exclamatory.",
+        "Hence it is an exclamation."
+      ],
+      "final_answer": "A. exclamation",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sentence_type",
+      "exclamatory"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q004",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Sentence types: statement, question, command, exclamation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The students have completed the assignment,' the sentence type is a___",
+    "options": {
+      "A": "command",
+      "B": "question",
+      "C": "statement",
+      "D": "exclamation"
+    },
+    "answer": "C",
+    "answer_text": "statement",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about sentence types: statement, question, command, exclamation from the sentence or description given.",
+      "principle": "A statement, also called a declarative sentence, gives information or presents a fact, opinion, or report.",
+      "steps": [
+        "The sentence calmly reports what the students have done.",
+        "There is no request, no question, and no strong emotional outburst.",
+        "Its purpose is simply to make a declaration.",
+        "Therefore it is a statement."
+      ],
+      "final_answer": "C. statement",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sentence_type",
+      "declarative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q005",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Sentence types: statement, question, command, exclamation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the expression, 'Do not touch the switch with wet hands,' the sentence is best classified as a___",
+    "options": {
+      "A": "question",
+      "B": "statement",
+      "C": "command",
+      "D": "exclamation"
+    },
+    "answer": "C",
+    "answer_text": "command",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about sentence types: statement, question, command, exclamation from the sentence or description given.",
+      "principle": "Commands may be positive or negative. A negative imperative often begins with 'Do not'.",
+      "steps": [
+        "The sentence tells the listener to avoid an action.",
+        "The structure 'Do not + verb' is a common marker of a negative command.",
+        "Its purpose is instruction or warning.",
+        "So it is a command."
+      ],
+      "final_answer": "C. command",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sentence_type",
+      "negative_imperative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q006",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Sentence types: statement, question, command, exclamation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Could you open the window, please?' the sentence is grammatically a question but functionally a___",
+    "options": {
+      "A": "statement",
+      "B": "command or request",
+      "C": "pure exclamation",
+      "D": "simple statement"
+    },
+    "answer": "B",
+    "answer_text": "command or request",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about sentence types: statement, question, command, exclamation from the sentence or description given.",
+      "principle": "In English usage, some interrogative forms perform the function of polite requests rather than genuine information-seeking questions.",
+      "steps": [
+        "The sentence is shaped like a question, but the speaker already knows whether the hearer can respond in practice.",
+        "Its real intention is to get the hearer to open the window.",
+        "JAMB often tests both form and communicative value.",
+        "So its function is best described as a command or request."
+      ],
+      "final_answer": "B. command or request",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sentence_type",
+      "polite_request"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q007",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Sentence types: statement, question, command, exclamation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'How carelessly he handled the fragile vase!' the sentence is a/an___",
+    "options": {
+      "A": "statement",
+      "B": "question",
+      "C": "command",
+      "D": "exclamation"
+    },
+    "answer": "D",
+    "answer_text": "exclamation",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about sentence types: statement, question, command, exclamation from the sentence or description given.",
+      "principle": "An exclamation often uses 'How' or 'What' to show strong feeling.",
+      "steps": [
+        "The sentence begins with 'How' not to ask a question but to express strong disapproval.",
+        "It ends with an exclamation mark.",
+        "The emotional emphasis is central to its meaning.",
+        "Therefore it is an exclamation."
+      ],
+      "final_answer": "D. exclamation",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sentence_type",
+      "emotion"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q008",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Sentence types: statement, question, command, exclamation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the expression, 'Kindly keep your phones switched off during the lecture,' the sentence type is a___",
+    "options": {
+      "A": "command",
+      "B": "statement",
+      "C": "question",
+      "D": "exclamation"
+    },
+    "answer": "A",
+    "answer_text": "command",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about sentence types: statement, question, command, exclamation from the sentence or description given.",
+      "principle": "An imperative sentence may sound polite through words like 'kindly', yet it still directs an action.",
+      "steps": [
+        "'Kindly' softens the tone but does not remove the directive force.",
+        "The speaker is instructing the audience what to do during the lecture.",
+        "That is the function of an imperative sentence.",
+        "Hence it is a command."
+      ],
+      "final_answer": "A. command",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sentence_type",
+      "imperative_polite"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q009",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Simple sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The old bridge collapsed suddenly,' the sentence is simple because it contains___",
+    "options": {
+      "A": "two independent clauses",
+      "B": "one main clause only",
+      "C": "one subordinate clause only",
+      "D": "a phrase without a verb"
+    },
+    "answer": "B",
+    "answer_text": "one main clause only",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about simple sentences from the sentence or description given.",
+      "principle": "A simple sentence has one finite verb pattern forming one main or independent clause, though it may have modifiers.",
+      "steps": [
+        "The subject is 'The old bridge.'",
+        "The finite verb is 'collapsed.'",
+        "The adverb 'suddenly' only modifies the verb; it does not create another clause.",
+        "Therefore the sentence has one main clause only and is simple."
+      ],
+      "final_answer": "B. one main clause only",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "simple_sentence",
+      "main_clause"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q010",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Simple sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The sentence, 'My younger sister sings beautifully at church,' is simple because it has___",
+    "options": {
+      "A": "one subject and one predicate",
+      "B": "two coordinate clauses",
+      "C": "one main clause and one subordinate clause",
+      "D": "two finite verbs"
+    },
+    "answer": "A",
+    "answer_text": "one subject and one predicate",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about simple sentences from the sentence or description given.",
+      "principle": "A simple sentence usually has a single subject-predicate structure, though either part may be expanded.",
+      "steps": [
+        "The subject is 'My younger sister.'",
+        "The predicate is 'sings beautifully at church.'",
+        "No second finite verb or extra clause is introduced.",
+        "So the sentence is simple because it has one subject and one predicate."
+      ],
+      "final_answer": "A. one subject and one predicate",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "simple_sentence",
+      "subject_predicate"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q011",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Simple sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'After the long journey, the passengers rested,' the sentence is simple because the opening group of words is a___",
+    "options": {
+      "A": "subordinate clause",
+      "B": "main clause",
+      "C": "prepositional phrase",
+      "D": "coordinate clause"
+    },
+    "answer": "C",
+    "answer_text": "prepositional phrase",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about simple sentences from the sentence or description given.",
+      "principle": "A phrase does not contain a subject-verb combination functioning as a clause. A simple sentence may begin with a phrase and still remain simple.",
+      "steps": [
+        "'After the long journey' begins with the preposition 'after.'",
+        "It does not have its own finite verb.",
+        "The only finite verb in the whole sentence is 'rested.'",
+        "Therefore the opening part is a prepositional phrase, and the sentence remains simple."
+      ],
+      "final_answer": "C. prepositional phrase",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "simple_sentence",
+      "phrase"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q012",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Simple sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Running across the field, the boy waved to us,' the sentence is simple because 'Running across the field' is a___",
+    "options": {
+      "A": "main clause",
+      "B": "participial phrase",
+      "C": "noun clause",
+      "D": "adverbial clause"
+    },
+    "answer": "B",
+    "answer_text": "participial phrase",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about simple sentences from the sentence or description given.",
+      "principle": "A participial phrase adds descriptive information but does not count as a full clause because it lacks a finite verb.",
+      "steps": [
+        "'Running' here is a present participle, not the main finite verb.",
+        "The main clause is 'the boy waved to us.'",
+        "Since the introductory group is only a participial phrase, there is still one main clause.",
+        "Hence the sentence is simple."
+      ],
+      "final_answer": "B. participial phrase",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "simple_sentence",
+      "participial_phrase"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q013",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Simple sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a simple sentence?",
+    "options": {
+      "A": "The rain stopped and the children ran out.",
+      "B": "Although the rain stopped, the children waited.",
+      "C": "The rain having stopped, the children ran out.",
+      "D": "The children ran out, and they shouted loudly."
+    },
+    "answer": "C",
+    "answer_text": "The rain having stopped, the children ran out.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about simple sentences from the sentence or description given.",
+      "principle": "A simple sentence has one independent clause; phrases may be attached without changing that basic structure.",
+      "steps": [
+        "Option A has two main clauses joined by 'and,' so it is compound.",
+        "Option B has a main clause plus a subordinate clause, so it is complex.",
+        "Option C contains the main clause 'the children ran out' and the absolute phrase 'The rain having stopped.'",
+        "Therefore Option C is the simple sentence."
+      ],
+      "final_answer": "C. The rain having stopped, the children ran out.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "simple_sentence",
+      "identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q014",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Simple sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'To win the scholarship requires discipline,' the sentence is simple because 'To win the scholarship' is a___",
+    "options": {
+      "A": "noun phrase functioning as subject",
+      "B": "subordinate clause",
+      "C": "main clause",
+      "D": "coordinate clause"
+    },
+    "answer": "A",
+    "answer_text": "noun phrase functioning as subject",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about simple sentences from the sentence or description given.",
+      "principle": "An infinitive phrase can function as a noun unit in a sentence. It is still a phrase, not a clause.",
+      "steps": [
+        "'To win the scholarship' acts as the subject of the verb 'requires.'",
+        "It does not contain a finite verb of its own.",
+        "The sentence therefore has only one main clause.",
+        "That makes it a simple sentence."
+      ],
+      "final_answer": "A. noun phrase functioning as subject",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "simple_sentence",
+      "infinitive_phrase"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q015",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Simple sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The sentence, 'The chairman, despite the protests, continued the meeting,' remains simple because 'despite the protests' is a___",
+    "options": {
+      "A": "noun clause",
+      "B": "prepositional phrase",
+      "C": "main clause",
+      "D": "adjectival clause"
+    },
+    "answer": "B",
+    "answer_text": "prepositional phrase",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about simple sentences from the sentence or description given.",
+      "principle": "Inserted prepositional phrases do not create extra clauses in a sentence.",
+      "steps": [
+        "The core sentence is 'The chairman continued the meeting.'",
+        "'despite the protests' is added information introduced by a preposition.",
+        "No extra finite verb is introduced.",
+        "So the sentence is still simple."
+      ],
+      "final_answer": "B. prepositional phrase",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "simple_sentence",
+      "insertion"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q016",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Simple sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Her courage under pressure impressed the panel,' the sentence is simple because the expression 'under pressure' is a___",
+    "options": {
+      "A": "subordinate clause",
+      "B": "coordinate clause",
+      "C": "prepositional phrase",
+      "D": "finite clause"
+    },
+    "answer": "C",
+    "answer_text": "prepositional phrase",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about simple sentences from the sentence or description given.",
+      "principle": "A simple sentence may contain modifying phrases, provided there is only one finite clause.",
+      "steps": [
+        "The main subject is 'Her courage under pressure.'",
+        "The main finite verb is 'impressed.'",
+        "'under pressure' only qualifies 'courage' as a prepositional phrase.",
+        "Therefore the sentence is simple."
+      ],
+      "final_answer": "C. prepositional phrase",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "simple_sentence",
+      "modifier"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q017",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Compound sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The bell rang and the students entered the hall,' the sentence is compound because it contains___",
+    "options": {
+      "A": "one main clause and one subordinate clause",
+      "B": "two independent clauses joined by a coordinator",
+      "C": "one phrase and one clause",
+      "D": "two subordinate clauses"
+    },
+    "answer": "B",
+    "answer_text": "two independent clauses joined by a coordinator",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about compound sentences from the sentence or description given.",
+      "principle": "A compound sentence contains at least two independent clauses linked by a coordinating conjunction or a semicolon.",
+      "steps": [
+        "'The bell rang' can stand alone as a complete sentence.",
+        "'the students entered the hall' can also stand alone.",
+        "They are joined by the coordinating conjunction 'and.'",
+        "Therefore the sentence is compound."
+      ],
+      "final_answer": "B. two independent clauses joined by a coordinator",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_sentence",
+      "coordination"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q018",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Compound sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a compound sentence?",
+    "options": {
+      "A": "When the bell rang, the students entered the hall.",
+      "B": "The bell rang; the students entered the hall.",
+      "C": "Ringing loudly, the bell signalled the break.",
+      "D": "The loud bell signalled the break."
+    },
+    "answer": "B",
+    "answer_text": "The bell rang; the students entered the hall.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about compound sentences from the sentence or description given.",
+      "principle": "A semicolon may join two related independent clauses to form a compound sentence.",
+      "steps": [
+        "Option A is complex because it has a subordinate clause introduced by 'When.'",
+        "Option B has two complete clauses separated by a semicolon.",
+        "Option C is simple with a participial phrase.",
+        "Option D is simple.",
+        "So Option B is compound."
+      ],
+      "final_answer": "B. The bell rang; the students entered the hall.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_sentence",
+      "semicolon"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q019",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Compound sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Ada revised thoroughly, but she still felt nervous,' the conjunction introduces a relationship of___",
+    "options": {
+      "A": "addition",
+      "B": "cause",
+      "C": "contrast",
+      "D": "time"
+    },
+    "answer": "C",
+    "answer_text": "contrast",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about compound sentences from the sentence or description given.",
+      "principle": "Coordinating conjunctions not only join clauses; they also show logical links such as addition, contrast, alternative, or result.",
+      "steps": [
+        "The first clause says Ada revised thoroughly.",
+        "The second says she still felt nervous.",
+        "The conjunction 'but' signals opposition between expectation and outcome.",
+        "So the relationship is contrast."
+      ],
+      "final_answer": "C. contrast",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_sentence",
+      "contrast"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q020",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Compound sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The sentence, 'He may join us now, or he may come later,' is compound because the clauses are linked by___",
+    "options": {
+      "A": "a subordinating conjunction",
+      "B": "a relative pronoun",
+      "C": "a coordinating conjunction",
+      "D": "an infinitive marker"
+    },
+    "answer": "C",
+    "answer_text": "a coordinating conjunction",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about compound sentences from the sentence or description given.",
+      "principle": "Compound sentences are commonly joined with coordinating conjunctions such as and, but, or, nor, for, so, and yet.",
+      "steps": [
+        "Both clauses can stand independently.",
+        "The linking word is 'or.'",
+        "'Or' is a coordinating conjunction expressing alternative.",
+        "Hence the sentence is compound."
+      ],
+      "final_answer": "C. a coordinating conjunction",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_sentence",
+      "or"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q021",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Compound sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Ngozi wanted to complain, yet she remained silent,' the word 'yet' functions as___",
+    "options": {
+      "A": "a subordinating conjunction",
+      "B": "a relative pronoun",
+      "C": "a coordinating conjunction",
+      "D": "an adverb of time only"
+    },
+    "answer": "C",
+    "answer_text": "a coordinating conjunction",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about compound sentences from the sentence or description given.",
+      "principle": "In clause joining, 'yet' may serve as a coordinating conjunction showing unexpected contrast.",
+      "steps": [
+        "The two parts are both independent clauses.",
+        "'yet' links them without making one depend on the other.",
+        "The meaning is contrast: one expects complaint, but silence follows.",
+        "Therefore 'yet' is a coordinating conjunction."
+      ],
+      "final_answer": "C. a coordinating conjunction",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_sentence",
+      "yet"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q022",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Compound sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is NOT a compound sentence?",
+    "options": {
+      "A": "The lights failed, so the generator was started.",
+      "B": "The lights failed and the room became dark.",
+      "C": "Because the lights failed, the room became dark.",
+      "D": "The lights failed; the room became dark."
+    },
+    "answer": "C",
+    "answer_text": "Because the lights failed, the room became dark.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about compound sentences from the sentence or description given.",
+      "principle": "A complex sentence, not a compound one, contains a main clause and at least one subordinate clause.",
+      "steps": [
+        "Option A has two main clauses joined by 'so.'",
+        "Option B has two main clauses joined by 'and.'",
+        "Option C contains the subordinate clause 'Because the lights failed' and the main clause 'the room became dark.'",
+        "Therefore Option C is not compound."
+      ],
+      "final_answer": "C. Because the lights failed, the room became dark.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_sentence",
+      "contrast_with_complex"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q023",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Compound sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The child was tired, but he refused to sleep,' the two clauses are___",
+    "options": {
+      "A": "a main clause and a subordinate clause",
+      "B": "two independent clauses",
+      "C": "two noun clauses",
+      "D": "two phrases"
+    },
+    "answer": "B",
+    "answer_text": "two independent clauses",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about compound sentences from the sentence or description given.",
+      "principle": "If each part can stand alone as a complete thought, the clauses are independent.",
+      "steps": [
+        "'The child was tired' is complete.",
+        "'he refused to sleep' is also complete.",
+        "'but' joins them without making one dependent on the other.",
+        "So the two clauses are independent."
+      ],
+      "final_answer": "B. two independent clauses",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_sentence",
+      "independent_clauses"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q024",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Compound sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A compound sentence may be formed by joining two simple sentences with___",
+    "options": {
+      "A": "a coordinating conjunction",
+      "B": "only a preposition",
+      "C": "an article",
+      "D": "an adjective"
+    },
+    "answer": "A",
+    "answer_text": "a coordinating conjunction",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about compound sentences from the sentence or description given.",
+      "principle": "To build a compound sentence, English commonly links two equal clauses with coordinators or a semicolon.",
+      "steps": [
+        "Simple sentences contain one main clause each.",
+        "When two such clauses of equal status are linked, the result is often compound.",
+        "The normal linking tool is a coordinating conjunction.",
+        "Therefore the correct answer is a coordinating conjunction."
+      ],
+      "final_answer": "A. a coordinating conjunction",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_sentence",
+      "formation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q025",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Complex sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Although the road was narrow, the driver remained calm,' the sentence is complex because it contains___",
+    "options": {
+      "A": "two independent clauses only",
+      "B": "one main clause and one subordinate clause",
+      "C": "three coordinate clauses",
+      "D": "a phrase without a verb"
+    },
+    "answer": "B",
+    "answer_text": "one main clause and one subordinate clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about complex sentences from the sentence or description given.",
+      "principle": "A complex sentence consists of one main clause and at least one subordinate clause.",
+      "steps": [
+        "'Although the road was narrow' cannot stand alone as a complete sentence in this use.",
+        "'the driver remained calm' is complete and can stand alone.",
+        "That gives us one subordinate clause plus one main clause.",
+        "Hence the sentence is complex."
+      ],
+      "final_answer": "B. one main clause and one subordinate clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "complex_sentence",
+      "subordination"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q026",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Complex sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a complex sentence?",
+    "options": {
+      "A": "The rain fell, and the traders ran for cover.",
+      "B": "The rain fell; the traders ran for cover.",
+      "C": "When the rain fell, the traders ran for cover.",
+      "D": "The falling rain drove traders indoors."
+    },
+    "answer": "C",
+    "answer_text": "When the rain fell, the traders ran for cover.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about complex sentences from the sentence or description given.",
+      "principle": "A complex sentence contains a dependent clause introduced by a subordinating word such as when, because, although, if, since, or while.",
+      "steps": [
+        "Option A is compound because it joins two main clauses with 'and.'",
+        "Option B is also compound because a semicolon joins two main clauses.",
+        "Option C includes the subordinate clause 'When the rain fell.'",
+        "Therefore Option C is complex."
+      ],
+      "final_answer": "C. When the rain fell, the traders ran for cover.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "complex_sentence",
+      "identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q027",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Complex sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'If you study consistently, you will improve,' the clause 'If you study consistently' is a___",
+    "options": {
+      "A": "main clause",
+      "B": "subordinate clause",
+      "C": "coordinate clause",
+      "D": "noun phrase"
+    },
+    "answer": "B",
+    "answer_text": "subordinate clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about complex sentences from the sentence or description given.",
+      "principle": "A clause introduced by 'if' in such a sentence depends on the main clause for full meaning.",
+      "steps": [
+        "It begins with a subordinating conjunction, 'if.'",
+        "It expresses condition, not a complete assertion in isolation.",
+        "The main clause is 'you will improve.'",
+        "So the clause is subordinate."
+      ],
+      "final_answer": "B. subordinate clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "complex_sentence",
+      "conditional_clause"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q028",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Complex sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The sentence, 'She smiled because the news relieved her,' is complex because 'because the news relieved her' functions as___",
+    "options": {
+      "A": "an independent clause",
+      "B": "a subordinate clause of reason",
+      "C": "a noun phrase",
+      "D": "a coordinate clause"
+    },
+    "answer": "B",
+    "answer_text": "a subordinate clause of reason",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about complex sentences from the sentence or description given.",
+      "principle": "Reason clauses introduced by 'because' are subordinate in structure and modify the main clause.",
+      "steps": [
+        "The main statement is 'She smiled.'",
+        "The rest explains the reason for that action.",
+        "Since it begins with 'because' and depends on the main clause, it is a subordinate clause of reason.",
+        "Thus the sentence is complex."
+      ],
+      "final_answer": "B. a subordinate clause of reason",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "complex_sentence",
+      "reason"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q029",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Complex sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The teacher left after the lesson ended,' the sentence is complex because it has___",
+    "options": {
+      "A": "one clause only",
+      "B": "one phrase and no clause",
+      "C": "a main clause and a time clause",
+      "D": "two independent clauses"
+    },
+    "answer": "C",
+    "answer_text": "a main clause and a time clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about complex sentences from the sentence or description given.",
+      "principle": "A time clause introduced by 'after' is subordinate and makes the whole sentence complex.",
+      "steps": [
+        "'The teacher left' is the main clause.",
+        "'after the lesson ended' includes the finite verb 'ended' and tells time.",
+        "Because it depends on the main clause, it is a subordinate time clause.",
+        "Therefore the whole sentence is complex."
+      ],
+      "final_answer": "C. a main clause and a time clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "complex_sentence",
+      "time_clause"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q030",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Complex sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which statement best describes a complex sentence?",
+    "options": {
+      "A": "It contains only one phrase.",
+      "B": "It contains two or more independent clauses only.",
+      "C": "It contains one main clause and at least one dependent clause.",
+      "D": "It contains no verb."
+    },
+    "answer": "C",
+    "answer_text": "It contains one main clause and at least one dependent clause.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about complex sentences from the sentence or description given.",
+      "principle": "The defining feature of a complex sentence is subordination: one clause is central, and another depends on it.",
+      "steps": [
+        "A complex sentence is not defined by length but by structure.",
+        "The main clause can stand alone.",
+        "The dependent clause cannot stand independently in the same sense.",
+        "So the best description is one main clause with at least one dependent clause."
+      ],
+      "final_answer": "C. It contains one main clause and at least one dependent clause.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "complex_sentence",
+      "definition"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q031",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Complex sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Since the hall was full, many guests stood outside,' the introductory clause is___",
+    "options": {
+      "A": "independent and complete",
+      "B": "subordinate and dependent",
+      "C": "a mere phrase",
+      "D": "coordinate and equal"
+    },
+    "answer": "B",
+    "answer_text": "subordinate and dependent",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about complex sentences from the sentence or description given.",
+      "principle": "Clauses introduced by 'since' in this context depend on a main clause and usually express reason.",
+      "steps": [
+        "The clause begins with 'Since.'",
+        "It prepares the ground for the main statement but is not complete in the intended use.",
+        "The complete assertion is found in 'many guests stood outside.'",
+        "Hence the introductory clause is subordinate and dependent."
+      ],
+      "final_answer": "B. subordinate and dependent",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "complex_sentence",
+      "since_clause"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q032",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Complex sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The sentence, 'Wherever he goes, trouble seems to follow him,' is complex because the first clause___",
+    "options": {
+      "A": "is a noun clause serving as subject",
+      "B": "is a subordinate clause of place",
+      "C": "is an independent clause",
+      "D": "contains no verb"
+    },
+    "answer": "B",
+    "answer_text": "is a subordinate clause of place",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about complex sentences from the sentence or description given.",
+      "principle": "Clauses introduced by 'wherever' often function adverbially, showing place or extent of place.",
+      "steps": [
+        "'Wherever he goes' has a subject and a verb, so it is a clause.",
+        "It does not stand as the central statement here; it modifies the main clause.",
+        "It answers the idea of place or range of place.",
+        "So it is a subordinate clause of place, making the sentence complex."
+      ],
+      "final_answer": "B. is a subordinate clause of place",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "complex_sentence",
+      "place_clause"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q033",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Compound-complex sentences",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In the sentence, 'When the lights went out, the audience screamed and the ushers moved quickly,' the sentence is___",
+    "options": {
+      "A": "simple",
+      "B": "compound",
+      "C": "complex",
+      "D": "compound-complex"
+    },
+    "answer": "D",
+    "answer_text": "compound-complex",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about compound-complex sentences from the sentence or description given.",
+      "principle": "A compound-complex sentence contains at least two independent clauses and at least one subordinate clause.",
+      "steps": [
+        "'When the lights went out' is a subordinate clause.",
+        "'the audience screamed' is one independent clause.",
+        "'the ushers moved quickly' is another independent clause joined by 'and.'",
+        "Therefore the sentence is compound-complex."
+      ],
+      "final_answer": "D. compound-complex",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_complex",
+      "mixed_structure"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q034",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Compound-complex sentences",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following is a compound-complex sentence?",
+    "options": {
+      "A": "Although the food was expensive, we bought it.",
+      "B": "The food was expensive, but we bought it.",
+      "C": "Although the food was expensive, we bought it and we enjoyed it.",
+      "D": "The expensive food pleased us."
+    },
+    "answer": "C",
+    "answer_text": "Although the food was expensive, we bought it and we enjoyed it.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about compound-complex sentences from the sentence or description given.",
+      "principle": "To be compound-complex, a sentence must combine coordination and subordination.",
+      "steps": [
+        "Option A is complex only.",
+        "Option B is compound only.",
+        "Option C has the subordinate clause 'Although the food was expensive' plus two main clauses: 'we bought it' and 'we enjoyed it.'",
+        "Hence Option C is compound-complex."
+      ],
+      "final_answer": "C. Although the food was expensive, we bought it and we enjoyed it.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_complex",
+      "identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q035",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Compound-complex sentences",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In the sentence, 'If the rain continues, the match will be delayed, and the fans will be disappointed,' the sentence contains___",
+    "options": {
+      "A": "one independent clause only",
+      "B": "two independent clauses and one subordinate clause",
+      "C": "two subordinate clauses only",
+      "D": "three independent clauses"
+    },
+    "answer": "B",
+    "answer_text": "two independent clauses and one subordinate clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about compound-complex sentences from the sentence or description given.",
+      "principle": "Compound-complex structure requires both multiple main clauses and at least one dependent clause.",
+      "steps": [
+        "'If the rain continues' is subordinate.",
+        "'the match will be delayed' is a main clause.",
+        "'the fans will be disappointed' is another main clause joined by 'and.'",
+        "So the sentence contains two independent clauses and one subordinate clause."
+      ],
+      "final_answer": "B. two independent clauses and one subordinate clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_complex",
+      "clause_count"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q036",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Compound-complex sentences",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The sentence, 'Because the road was flooded, we stayed indoors, but the children kept playing,' is best described as___",
+    "options": {
+      "A": "compound-complex",
+      "B": "complex",
+      "C": "compound",
+      "D": "simple"
+    },
+    "answer": "A",
+    "answer_text": "compound-complex",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about compound-complex sentences from the sentence or description given.",
+      "principle": "A sentence with a subordinate clause plus two coordinated main clauses is compound-complex.",
+      "steps": [
+        "'Because the road was flooded' is subordinate.",
+        "'we stayed indoors' is one main clause.",
+        "'the children kept playing' is another main clause joined by 'but.'",
+        "Therefore the sentence is compound-complex."
+      ],
+      "final_answer": "A. compound-complex",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_complex",
+      "because_but"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q037",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Compound-complex sentences",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which feature must a compound-complex sentence have?",
+    "options": {
+      "A": "Only one clause",
+      "B": "At least two independent clauses and one dependent clause",
+      "C": "Two phrases and no verbs",
+      "D": "One independent clause and one phrase"
+    },
+    "answer": "B",
+    "answer_text": "At least two independent clauses and one dependent clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about compound-complex sentences from the sentence or description given.",
+      "principle": "The name itself combines the features of compound and complex structures.",
+      "steps": [
+        "'Compound' contributes the requirement of at least two independent clauses.",
+        "'Complex' contributes the presence of at least one dependent clause.",
+        "Both must appear together in the same sentence.",
+        "So the correct feature is at least two independent clauses and one dependent clause."
+      ],
+      "final_answer": "B. At least two independent clauses and one dependent clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_complex",
+      "definition"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q038",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Compound-complex sentences",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In the sentence, 'After the guests arrived, the band started, and the dancers filled the stage,' the clause 'After the guests arrived' is___",
+    "options": {
+      "A": "an independent clause",
+      "B": "a subordinate clause",
+      "C": "a noun phrase",
+      "D": "a coordinate clause"
+    },
+    "answer": "B",
+    "answer_text": "a subordinate clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about compound-complex sentences from the sentence or description given.",
+      "principle": "An introductory clause beginning with 'after' functions as a subordinate clause of time.",
+      "steps": [
+        "It has its own subject and verb: 'guests arrived.'",
+        "But it depends on the rest of the sentence to complete the full message.",
+        "The other two clauses are independent and coordinated.",
+        "Hence the clause is subordinate."
+      ],
+      "final_answer": "B. a subordinate clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_complex",
+      "time_intro"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q039",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Compound-complex sentences",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The sentence, 'Though he apologised, the teacher punished him and the principal supported the decision,' is a/an___",
+    "options": {
+      "A": "simple sentence",
+      "B": "complex sentence",
+      "C": "compound-complex sentence",
+      "D": "compound sentence"
+    },
+    "answer": "C",
+    "answer_text": "compound-complex sentence",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about compound-complex sentences from the sentence or description given.",
+      "principle": "The sentence combines a concessive subordinate clause with two equal main clauses.",
+      "steps": [
+        "'Though he apologised' is subordinate.",
+        "'the teacher punished him' is one main clause.",
+        "'the principal supported the decision' is another main clause joined by 'and.'",
+        "Therefore the sentence is compound-complex."
+      ],
+      "final_answer": "C. compound-complex sentence",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_complex",
+      "concession"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q040",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Compound-complex sentences",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following is NOT a compound-complex sentence?",
+    "options": {
+      "A": "If the bus comes early, we will leave and we will arrive before noon.",
+      "B": "Because she prepared well, she passed the test and her parents celebrated.",
+      "C": "She prepared well and passed the test.",
+      "D": "When the gate opened, the crowd cheered and the band played."
+    },
+    "answer": "C",
+    "answer_text": "She prepared well and passed the test.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about compound-complex sentences from the sentence or description given.",
+      "principle": "A sentence that has only coordination without subordination is compound, not compound-complex.",
+      "steps": [
+        "Option A has a subordinate clause plus two main clauses.",
+        "Option B also has a subordinate clause plus two main clauses.",
+        "Option D follows the same mixed pattern.",
+        "Option C has only two independent clauses joined by 'and,' so it is merely compound."
+      ],
+      "final_answer": "C. She prepared well and passed the test.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_complex",
+      "negative_item"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q041",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Main clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Although the store was crowded, the cashier remained patient,' the main clause is___",
+    "options": {
+      "A": "Although the store was crowded",
+      "B": "the cashier remained patient",
+      "C": "Although the store",
+      "D": "was crowded, the cashier"
+    },
+    "answer": "B",
+    "answer_text": "the cashier remained patient",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about main clause from the sentence or description given.",
+      "principle": "The main clause expresses the core statement and can stand on its own.",
+      "steps": [
+        "The clause introduced by 'Although' is dependent.",
+        "'the cashier remained patient' is complete in meaning and structure.",
+        "It can stand alone as a sentence.",
+        "Therefore it is the main clause."
+      ],
+      "final_answer": "B. the cashier remained patient",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "main_clause",
+      "identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q042",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Main clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'When the whistle sounded, the runners sprang forward,' the main clause is___",
+    "options": {
+      "A": "When the whistle sounded",
+      "B": "the whistle sounded",
+      "C": "the runners sprang forward",
+      "D": "When the runners sprang"
+    },
+    "answer": "C",
+    "answer_text": "the runners sprang forward",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about main clause from the sentence or description given.",
+      "principle": "The main clause is the clause that carries the central assertion of the sentence.",
+      "steps": [
+        "'When the whistle sounded' gives time and depends on another clause.",
+        "The central action being asserted is that the runners sprang forward.",
+        "That clause is structurally complete.",
+        "So it is the main clause."
+      ],
+      "final_answer": "C. the runners sprang forward",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "main_clause",
+      "time_relation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q043",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Main clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following best defines a main clause?",
+    "options": {
+      "A": "A group of words without a finite verb",
+      "B": "A clause that cannot stand alone",
+      "C": "A clause that can stand independently as a complete sentence",
+      "D": "A phrase introduced by a preposition"
+    },
+    "answer": "C",
+    "answer_text": "A clause that can stand independently as a complete sentence",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about main clause from the sentence or description given.",
+      "principle": "A main clause, also called an independent clause, has a subject and a finite verb and can express a complete thought by itself.",
+      "steps": [
+        "It must be grammatically complete.",
+        "It does not depend on a subordinating word for survival.",
+        "Subordinate clauses need support, but main clauses do not.",
+        "Thus the best definition is a clause that can stand independently."
+      ],
+      "final_answer": "C. A clause that can stand independently as a complete sentence",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "main_clause",
+      "definition"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q044",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Main clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Because the evidence was weak, the case collapsed,' the main clause is___",
+    "options": {
+      "A": "Because the evidence was weak",
+      "B": "the evidence was weak",
+      "C": "the case collapsed",
+      "D": "Because the case collapsed"
+    },
+    "answer": "C",
+    "answer_text": "the case collapsed",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about main clause from the sentence or description given.",
+      "principle": "Main clauses contain the sentence's central assertion, while reason clauses are dependent.",
+      "steps": [
+        "The 'Because' clause explains the cause.",
+        "The clause 'the case collapsed' gives the central outcome.",
+        "It can stand alone as a full sentence.",
+        "Therefore it is the main clause."
+      ],
+      "final_answer": "C. the case collapsed",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "main_clause",
+      "reason"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q045",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Main clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'If you need help, call me immediately,' the main clause is___",
+    "options": {
+      "A": "If you need help",
+      "B": "call me immediately",
+      "C": "you need help",
+      "D": "If you call me"
+    },
+    "answer": "B",
+    "answer_text": "call me immediately",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about main clause from the sentence or description given.",
+      "principle": "An imperative clause can also serve as a main clause if it expresses the central message independently.",
+      "steps": [
+        "'If you need help' is a conditional subordinate clause.",
+        "'call me immediately' is complete as an imperative statement.",
+        "That is the main message of the sentence.",
+        "Hence it is the main clause."
+      ],
+      "final_answer": "B. call me immediately",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "main_clause",
+      "imperative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q046",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Main clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The villagers celebrated after the bridge was repaired,' the main clause is___",
+    "options": {
+      "A": "after the bridge was repaired",
+      "B": "the bridge was repaired",
+      "C": "The villagers celebrated",
+      "D": "after the villagers celebrated"
+    },
+    "answer": "C",
+    "answer_text": "The villagers celebrated",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about main clause from the sentence or description given.",
+      "principle": "The main clause survives independently, while the time clause introduced by 'after' does not in this context.",
+      "steps": [
+        "'The villagers celebrated' is a full statement.",
+        "'after the bridge was repaired' only adds time information.",
+        "The latter depends on the former.",
+        "So the main clause is 'The villagers celebrated.'"
+      ],
+      "final_answer": "C. The villagers celebrated",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "main_clause",
+      "after_clause"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q047",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Main clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which part of the sentence usually carries the central message in a complex sentence?",
+    "options": {
+      "A": "the subordinate clause",
+      "B": "the phrase",
+      "C": "the main clause",
+      "D": "the article"
+    },
+    "answer": "C",
+    "answer_text": "the main clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about main clause from the sentence or description given.",
+      "principle": "In complex structures, the main clause is the backbone of meaning; other clauses modify or support it.",
+      "steps": [
+        "Subordinate clauses add time, reason, condition, description, or content.",
+        "But the main clause is the sentence core.",
+        "Without it, the sentence loses its central assertion.",
+        "Therefore the answer is the main clause."
+      ],
+      "final_answer": "C. the main clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "main_clause",
+      "core_meaning"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q048",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Main clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Though the plan was risky, everyone agreed to try it,' the main clause is___",
+    "options": {
+      "A": "Though the plan was risky",
+      "B": "everyone agreed to try it",
+      "C": "the plan was risky",
+      "D": "agreed though the plan"
+    },
+    "answer": "B",
+    "answer_text": "everyone agreed to try it",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about main clause from the sentence or description given.",
+      "principle": "Concessive clauses introduced by 'though' are dependent; the independent clause states the main decision or action.",
+      "steps": [
+        "The first clause concedes a difficulty.",
+        "The second clause gives the actual decision taken.",
+        "It can stand alone and make complete sense.",
+        "Thus it is the main clause."
+      ],
+      "final_answer": "B. everyone agreed to try it",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "main_clause",
+      "concession"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q049",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Subordinate clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Because the engine failed, the pilot made an emergency landing,' the clause 'Because the engine failed' is a___",
+    "options": {
+      "A": "main clause",
+      "B": "subordinate clause",
+      "C": "phrase",
+      "D": "compound clause"
+    },
+    "answer": "B",
+    "answer_text": "subordinate clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about subordinate clause from the sentence or description given.",
+      "principle": "A subordinate clause has a subject and a finite verb but depends on the main clause for complete meaning in context.",
+      "steps": [
+        "The clause begins with the subordinating conjunction 'Because.'",
+        "It expresses reason, not the complete central assertion.",
+        "The main statement is 'the pilot made an emergency landing.'",
+        "Therefore the first clause is subordinate."
+      ],
+      "final_answer": "B. subordinate clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subordinate_clause",
+      "reason"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q050",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Subordinate clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a subordinate clause?",
+    "options": {
+      "A": "the players celebrated",
+      "B": "because the players celebrated",
+      "C": "the happy players",
+      "D": "celebrating wildly"
+    },
+    "answer": "B",
+    "answer_text": "because the players celebrated",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about subordinate clause from the sentence or description given.",
+      "principle": "A subordinate clause usually contains a subject and a finite verb and is introduced by a subordinating word.",
+      "steps": [
+        "Option A is an independent clause.",
+        "Option C is a phrase.",
+        "Option D is a participial phrase.",
+        "Option B has a subject, a finite verb, and the subordinator 'because,' so it is subordinate."
+      ],
+      "final_answer": "B. because the players celebrated",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subordinate_clause",
+      "identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q051",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Subordinate clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'If the alarm rings, leave the building at once,' the clause 'If the alarm rings' is subordinate because it___",
+    "options": {
+      "A": "can stand alone as a full command",
+      "B": "depends on the main clause for full meaning",
+      "C": "contains no verb",
+      "D": "is only a noun phrase"
+    },
+    "answer": "B",
+    "answer_text": "depends on the main clause for full meaning",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about subordinate clause from the sentence or description given.",
+      "principle": "Dependence is the key mark of subordination.",
+      "steps": [
+        "The clause has a subject and a verb, but it is introduced by 'If.'",
+        "It sets a condition and waits for the main action.",
+        "That makes it dependent on 'leave the building at once.'",
+        "So it depends on the main clause for full meaning."
+      ],
+      "final_answer": "B. depends on the main clause for full meaning",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subordinate_clause",
+      "condition"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q052",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Subordinate clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A subordinate clause may perform the function of a noun, adjective, or adverb, but it is always___",
+    "options": {
+      "A": "independent in meaning",
+      "B": "dependent on another clause",
+      "C": "without a subject",
+      "D": "without a verb"
+    },
+    "answer": "B",
+    "answer_text": "dependent on another clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about subordinate clause from the sentence or description given.",
+      "principle": "Different subordinate clauses perform different functions, but all share the quality of dependence.",
+      "steps": [
+        "Noun clauses act like nouns.",
+        "Adjectival clauses qualify nouns.",
+        "Adverbial clauses modify verbs, adjectives, or whole clauses.",
+        "Yet all of them depend on another clause."
+      ],
+      "final_answer": "B. dependent on another clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subordinate_clause",
+      "general_property"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q053",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Subordinate clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The team that won the trophy returned home today,' the clause 'that won the trophy' is a___",
+    "options": {
+      "A": "subordinate clause",
+      "B": "main clause",
+      "C": "compound clause",
+      "D": "prepositional phrase"
+    },
+    "answer": "A",
+    "answer_text": "subordinate clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about subordinate clause from the sentence or description given.",
+      "principle": "Relative clauses are subordinate because they modify a noun and depend on a main clause.",
+      "steps": [
+        "The clause describes 'The team.'",
+        "It begins with the relative word 'that.'",
+        "It cannot serve as the sentence's main assertion in this structure.",
+        "Therefore it is a subordinate clause."
+      ],
+      "final_answer": "A. subordinate clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subordinate_clause",
+      "relative_clause"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q054",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Subordinate clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'She smiled when she saw her mother,' the clause 'when she saw her mother' is a___",
+    "options": {
+      "A": "main clause",
+      "B": "subordinate clause",
+      "C": "noun phrase",
+      "D": "independent clause"
+    },
+    "answer": "B",
+    "answer_text": "subordinate clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about subordinate clause from the sentence or description given.",
+      "principle": "Time clauses introduced by 'when' are subordinate when they modify the main action.",
+      "steps": [
+        "The main action is 'She smiled.'",
+        "The 'when' clause tells the time of that action.",
+        "It depends on the main clause for full communicative force.",
+        "So it is subordinate."
+      ],
+      "final_answer": "B. subordinate clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subordinate_clause",
+      "time"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q055",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Subordinate clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which statement about subordinate clauses is correct?",
+    "options": {
+      "A": "They can never contain a subject.",
+      "B": "They always stand alone as complete sentences.",
+      "C": "They are dependent clauses introduced or marked by subordinating devices.",
+      "D": "They are merely groups of words without verbs."
+    },
+    "answer": "C",
+    "answer_text": "They are dependent clauses introduced or marked by subordinating devices.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about subordinate clause from the sentence or description given.",
+      "principle": "A subordinate clause is a full clause in grammar, but not a fully independent sentence in function.",
+      "steps": [
+        "It commonly has both subject and verb.",
+        "It is attached to a main clause by conjunctions, relative pronouns, or similar markers.",
+        "Its meaning is completed within the larger sentence.",
+        "Hence option C is correct."
+      ],
+      "final_answer": "C. They are dependent clauses introduced or marked by subordinating devices.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subordinate_clause",
+      "definition"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q056",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Subordinate clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Unless you apologise, the matter will not end here,' the clause 'Unless you apologise' is subordinate because it expresses___",
+    "options": {
+      "A": "contrast",
+      "B": "condition",
+      "C": "addition",
+      "D": "command"
+    },
+    "answer": "B",
+    "answer_text": "condition",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about subordinate clause from the sentence or description given.",
+      "principle": "The conjunction 'unless' introduces a condition under which the main clause will or will not happen.",
+      "steps": [
+        "The clause does not make the complete main assertion.",
+        "It sets the condition for the matter not ending.",
+        "That is the work of a dependent conditional clause.",
+        "Therefore it expresses condition."
+      ],
+      "final_answer": "B. condition",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subordinate_clause",
+      "unless"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q057",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Noun clause",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In the sentence, 'What he said surprised the audience,' the clause 'What he said' functions as a___",
+    "options": {
+      "A": "noun clause",
+      "B": "adverbial clause",
+      "C": "adjectival clause",
+      "D": "prepositional phrase"
+    },
+    "answer": "A",
+    "answer_text": "noun clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about noun clause from the sentence or description given.",
+      "principle": "A noun clause is a subordinate clause that performs the work of a noun in a sentence.",
+      "steps": [
+        "Ask what role the clause plays.",
+        "Here, 'What he said' serves as the subject of the verb 'surprised.'",
+        "Since it functions like a noun and is a clause, it is a noun clause.",
+        "Therefore the correct answer is noun clause."
+      ],
+      "final_answer": "A. noun clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "noun_clause",
+      "subject_position"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q058",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Noun clause",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The teacher explained why the test was postponed,' the clause 'why the test was postponed' is a___",
+    "options": {
+      "A": "noun clause",
+      "B": "adjectival clause",
+      "C": "main clause",
+      "D": "phrase"
+    },
+    "answer": "A",
+    "answer_text": "noun clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about noun clause from the sentence or description given.",
+      "principle": "A clause functioning as the object or complement of a verb is often a noun clause.",
+      "steps": [
+        "The verb is 'explained.'",
+        "What did the teacher explain? 'why the test was postponed.'",
+        "Since the clause answers the object question of the verb, it functions as a noun clause.",
+        "So the answer is noun clause."
+      ],
+      "final_answer": "A. noun clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "noun_clause",
+      "object_position"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q059",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Noun clause",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following contains a noun clause?",
+    "options": {
+      "A": "The girl in the red dress waved.",
+      "B": "The girl who waved wore red.",
+      "C": "I know that the girl waved.",
+      "D": "Waving cheerfully, the girl left."
+    },
+    "answer": "C",
+    "answer_text": "I know that the girl waved.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about noun clause from the sentence or description given.",
+      "principle": "A noun clause typically answers a noun-type question such as what, that-thing, or whether.",
+      "steps": [
+        "Option A contains a phrase.",
+        "Option B contains an adjectival clause describing 'girl.'",
+        "Option C contains 'that the girl waved,' which is the object of 'know.'",
+        "Therefore Option C contains a noun clause."
+      ],
+      "final_answer": "C. I know that the girl waved.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "noun_clause",
+      "identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q060",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Noun clause",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Whether he will return remains uncertain,' the clause 'Whether he will return' functions as the___",
+    "options": {
+      "A": "object of the sentence",
+      "B": "subject of the sentence",
+      "C": "adverbial modifier",
+      "D": "adjectival qualifier"
+    },
+    "answer": "B",
+    "answer_text": "subject of the sentence",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about noun clause from the sentence or description given.",
+      "principle": "Noun clauses can stand in subject position, before the main verb.",
+      "steps": [
+        "The main verb is 'remains.'",
+        "What remains uncertain? 'Whether he will return.'",
+        "That means the clause occupies the subject slot.",
+        "Hence it functions as the subject."
+      ],
+      "final_answer": "B. subject of the sentence",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "noun_clause",
+      "subject"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q061",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Noun clause",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Her fear is that the bridge may collapse,' the clause 'that the bridge may collapse' is a noun clause functioning as___",
+    "options": {
+      "A": "subject complement",
+      "B": "adverbial clause",
+      "C": "main clause",
+      "D": "adjective phrase"
+    },
+    "answer": "A",
+    "answer_text": "subject complement",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about noun clause from the sentence or description given.",
+      "principle": "After a linking verb, a noun clause may rename or complete the meaning of the subject; this is complement function.",
+      "steps": [
+        "The linking verb is 'is.'",
+        "The clause tells us what her fear is.",
+        "That means it completes the subject's meaning.",
+        "So it functions as a subject complement."
+      ],
+      "final_answer": "A. subject complement",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "noun_clause",
+      "complement"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q062",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Noun clause",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A noun clause differs from a noun phrase because a noun clause___",
+    "options": {
+      "A": "contains a subject and a finite verb",
+      "B": "cannot serve as subject",
+      "C": "never serves as object",
+      "D": "has no internal structure"
+    },
+    "answer": "A",
+    "answer_text": "contains a subject and a finite verb",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about noun clause from the sentence or description given.",
+      "principle": "The presence of a clause pattern, especially a subject and a finite verb, distinguishes a clause from a phrase.",
+      "steps": [
+        "A phrase lacks full clause structure.",
+        "A noun clause is clause-based and can function like a noun.",
+        "That is why it may serve as subject, object, or complement.",
+        "Therefore it contains a subject and a finite verb."
+      ],
+      "final_answer": "A. contains a subject and a finite verb",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "noun_clause",
+      "phrase_vs_clause"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q063",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Noun clause",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In the sentence, 'I cannot imagine how she solved the puzzle so quickly,' the clause 'how she solved the puzzle so quickly' is a___",
+    "options": {
+      "A": "noun clause",
+      "B": "adjectival clause",
+      "C": "prepositional phrase",
+      "D": "main clause"
+    },
+    "answer": "A",
+    "answer_text": "noun clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about noun clause from the sentence or description given.",
+      "principle": "Clauses following verbs of thinking, knowing, asking, imagining, or explaining often function as noun clauses.",
+      "steps": [
+        "The verb 'imagine' needs content: imagine what?",
+        "The clause provides that content.",
+        "It does not describe a noun; instead it acts as the object of the verb.",
+        "So it is a noun clause."
+      ],
+      "final_answer": "A. noun clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "noun_clause",
+      "content_clause"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q064",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Noun clause",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The truth is that nobody informed us,' the clause 'that nobody informed us' is a noun clause because it___",
+    "options": {
+      "A": "modifies the noun 'truth' directly as an adjective",
+      "B": "functions as complement after the linking verb",
+      "C": "shows time of the action",
+      "D": "joins two main clauses"
+    },
+    "answer": "B",
+    "answer_text": "functions as complement after the linking verb",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about noun clause from the sentence or description given.",
+      "principle": "After linking verbs like is, seems, becomes, a clause may function as complement and thus behave like a noun clause.",
+      "steps": [
+        "The clause completes the idea introduced by 'The truth is ...'",
+        "It does not mainly express time, place, or manner.",
+        "It also does not coordinate two main clauses.",
+        "Therefore it functions as complement after the linking verb."
+      ],
+      "final_answer": "B. functions as complement after the linking verb",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "noun_clause",
+      "linking_verb"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q065",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Adjectival clause",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The book that you lent me is fascinating,' the clause 'that you lent me' is an___",
+    "options": {
+      "A": "adjectival clause",
+      "B": "noun clause",
+      "C": "adverbial clause",
+      "D": "main clause"
+    },
+    "answer": "A",
+    "answer_text": "adjectival clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about adjectival clause from the sentence or description given.",
+      "principle": "An adjectival clause modifies a noun or pronoun, usually introduced by a relative word such as who, whom, whose, which, or that.",
+      "steps": [
+        "Ask what the clause describes.",
+        "It describes 'The book.'",
+        "Because it qualifies a noun, it behaves like an adjective.",
+        "Therefore it is an adjectival clause."
+      ],
+      "final_answer": "A. adjectival clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "adjectival_clause",
+      "relative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q066",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Adjectival clause",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which of the following contains an adjectival clause?",
+    "options": {
+      "A": "I know that she succeeded.",
+      "B": "The lady who called you is outside.",
+      "C": "When he arrived, we left.",
+      "D": "To travel abroad is expensive."
+    },
+    "answer": "B",
+    "answer_text": "The lady who called you is outside.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about adjectival clause from the sentence or description given.",
+      "principle": "Adjectival clauses are relative clauses that describe nouns.",
+      "steps": [
+        "Option A contains a noun clause.",
+        "Option B has 'who called you,' which describes 'The lady.'",
+        "Option C contains an adverbial time clause.",
+        "Option D contains an infinitive phrase.",
+        "Hence Option B is correct."
+      ],
+      "final_answer": "B. The lady who called you is outside.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "adjectival_clause",
+      "identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q067",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Adjectival clause",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Students whose forms are incomplete will not be registered,' the clause 'whose forms are incomplete' modifies___",
+    "options": {
+      "A": "registered",
+      "B": "Students",
+      "C": "will",
+      "D": "not"
+    },
+    "answer": "B",
+    "answer_text": "Students",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about adjectival clause from the sentence or description given.",
+      "principle": "An adjectival clause attaches to a noun and narrows or identifies it.",
+      "steps": [
+        "The clause begins with the relative word 'whose.'",
+        "It tells us which students are being referred to.",
+        "That means it modifies the noun 'Students.'",
+        "So the correct answer is 'Students.'"
+      ],
+      "final_answer": "B. Students",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "adjectival_clause",
+      "modifies_noun"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q068",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Adjectival clause",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The man whom we met yesterday is a surgeon,' the clause 'whom we met yesterday' is an adjectival clause because it___",
+    "options": {
+      "A": "acts as the object of a verb only",
+      "B": "qualifies the noun 'man'",
+      "C": "shows reason",
+      "D": "expresses condition"
+    },
+    "answer": "B",
+    "answer_text": "qualifies the noun 'man'",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about adjectival clause from the sentence or description given.",
+      "principle": "Adjectival clauses function like adjectives by telling us more about a noun.",
+      "steps": [
+        "The clause tells us which man is being referred to.",
+        "It is attached to the noun 'man.'",
+        "It does not show condition or reason.",
+        "Therefore it qualifies the noun 'man.'"
+      ],
+      "final_answer": "B. qualifies the noun 'man'",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "adjectival_clause",
+      "qualifying"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q069",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Adjectival clause",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "An adjectival clause is usually introduced by a___",
+    "options": {
+      "A": "relative pronoun or relative adverb",
+      "B": "coordinating conjunction only",
+      "C": "preposition only",
+      "D": "modal auxiliary"
+    },
+    "answer": "A",
+    "answer_text": "relative pronoun or relative adverb",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about adjectival clause from the sentence or description given.",
+      "principle": "Relative words are the normal markers of adjectival clauses.",
+      "steps": [
+        "Common relative pronouns include who, whom, whose, which, and that.",
+        "Relative adverbs include where and when in some noun-modifying uses.",
+        "These introduce clauses that qualify nouns.",
+        "So the correct answer is relative pronoun or relative adverb."
+      ],
+      "final_answer": "A. relative pronoun or relative adverb",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "adjectival_clause",
+      "markers"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q070",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Adjectival clause",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The village where my grandmother was born has changed greatly,' the clause 'where my grandmother was born' is an___",
+    "options": {
+      "A": "adverbial clause",
+      "B": "adjectival clause",
+      "C": "noun clause",
+      "D": "main clause"
+    },
+    "answer": "B",
+    "answer_text": "adjectival clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about adjectival clause from the sentence or description given.",
+      "principle": "A clause introduced by 'where' can be adjectival when it modifies a noun naming a place.",
+      "steps": [
+        "Here the noun being described is 'The village.'",
+        "The clause tells us which village.",
+        "So even though 'where' suggests place, the clause's function is to qualify a noun.",
+        "Hence it is adjectival."
+      ],
+      "final_answer": "B. adjectival clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "adjectival_clause",
+      "where_relative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q071",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Adjectival clause",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Any candidate who arrives late will not be admitted,' the clause 'who arrives late' performs the function of___",
+    "options": {
+      "A": "describing the noun 'candidate'",
+      "B": "naming the action",
+      "C": "expressing condition only",
+      "D": "linking two main clauses"
+    },
+    "answer": "A",
+    "answer_text": "describing the noun 'candidate'",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about adjectival clause from the sentence or description given.",
+      "principle": "Function matters more than appearance. A clause that qualifies a noun is adjectival.",
+      "steps": [
+        "The clause identifies the kind of candidate meant.",
+        "It limits the reference of 'candidate.'",
+        "That descriptive role is adjectival.",
+        "Therefore it describes the noun 'candidate.'"
+      ],
+      "final_answer": "A. describing the noun 'candidate'",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "adjectival_clause",
+      "restrictive"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q072",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Adjectival clause",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which statement about adjectival clauses is correct?",
+    "options": {
+      "A": "They always modify verbs.",
+      "B": "They function like adjectives by qualifying nouns or pronouns.",
+      "C": "They can never begin with 'that.'",
+      "D": "They are always independent clauses."
+    },
+    "answer": "B",
+    "answer_text": "They function like adjectives by qualifying nouns or pronouns.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about adjectival clause from the sentence or description given.",
+      "principle": "Adjectival clauses are dependent clauses with adjective-like function.",
+      "steps": [
+        "They do not normally modify verbs; adverbial clauses do that.",
+        "They often begin with relative words, including 'that.'",
+        "They depend on a main clause.",
+        "Thus the correct statement is that they qualify nouns or pronouns."
+      ],
+      "final_answer": "B. They function like adjectives by qualifying nouns or pronouns.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "adjectival_clause",
+      "definition"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q073",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Adverbial clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'When the meeting ended, everyone rushed out,' the clause 'When the meeting ended' is an___",
+    "options": {
+      "A": "adverbial clause",
+      "B": "noun clause",
+      "C": "adjectival clause",
+      "D": "main clause"
+    },
+    "answer": "A",
+    "answer_text": "adverbial clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about adverbial clause from the sentence or description given.",
+      "principle": "An adverbial clause modifies a verb, adjective, or whole clause by showing time, reason, condition, concession, purpose, and similar relations.",
+      "steps": [
+        "The main action is 'everyone rushed out.'",
+        "The introductory clause tells us when that happened.",
+        "A clause that modifies the action by giving time is adverbial.",
+        "Therefore it is an adverbial clause."
+      ],
+      "final_answer": "A. adverbial clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "adverbial_clause",
+      "time"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q074",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Adverbial clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following contains an adverbial clause?",
+    "options": {
+      "A": "I know what he wants.",
+      "B": "The girl who won the prize is my cousin.",
+      "C": "We waited until the rain stopped.",
+      "D": "The tall boy at the gate is my brother."
+    },
+    "answer": "C",
+    "answer_text": "We waited until the rain stopped.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about adverbial clause from the sentence or description given.",
+      "principle": "Adverbial clauses usually answer questions like when, why, how, under what condition, or to what extent.",
+      "steps": [
+        "Option A contains a noun clause.",
+        "Option B contains an adjectival clause.",
+        "Option C has 'until the rain stopped,' which tells time/limit of waiting.",
+        "So Option C contains an adverbial clause."
+      ],
+      "final_answer": "C. We waited until the rain stopped.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "adverbial_clause",
+      "identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q075",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Adverbial clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'He spoke softly so that the baby would not wake up,' the clause 'so that the baby would not wake up' expresses___",
+    "options": {
+      "A": "result or purpose",
+      "B": "description of a noun",
+      "C": "the object of the verb",
+      "D": "addition"
+    },
+    "answer": "A",
+    "answer_text": "result or purpose",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about adverbial clause from the sentence or description given.",
+      "principle": "Clauses introduced by 'so that' commonly express purpose, and sometimes intended result.",
+      "steps": [
+        "The clause explains why he spoke softly.",
+        "It does not describe a noun or serve as the object of 'spoke.'",
+        "Its meaning is purpose: he wanted to prevent the baby from waking.",
+        "Therefore it expresses result or purpose."
+      ],
+      "final_answer": "A. result or purpose",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "adverbial_clause",
+      "purpose"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q076",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Adverbial clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Because she was ill, she missed the lecture,' the clause 'Because she was ill' is adverbial because it shows___",
+    "options": {
+      "A": "reason",
+      "B": "description",
+      "C": "identity",
+      "D": "possession"
+    },
+    "answer": "A",
+    "answer_text": "reason",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about adverbial clause from the sentence or description given.",
+      "principle": "Reason clauses modify the main action by explaining its cause.",
+      "steps": [
+        "The main action is 'she missed the lecture.'",
+        "The clause tells why that happened.",
+        "That is an adverbial function of reason.",
+        "So the answer is reason."
+      ],
+      "final_answer": "A. reason",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "adverbial_clause",
+      "reason"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q077",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Adverbial clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'If you press this button, the machine will start,' the clause 'If you press this button' is an adverbial clause of___",
+    "options": {
+      "A": "condition",
+      "B": "place",
+      "C": "description",
+      "D": "comparison"
+    },
+    "answer": "A",
+    "answer_text": "condition",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about adverbial clause from the sentence or description given.",
+      "principle": "A condition clause states the circumstance on which another action depends.",
+      "steps": [
+        "The machine will start only on a certain condition.",
+        "That condition is pressing the button.",
+        "The clause therefore modifies the main clause adverbially by expressing condition.",
+        "Hence the answer is condition."
+      ],
+      "final_answer": "A. condition",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "adverbial_clause",
+      "condition"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q078",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Adverbial clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Although he was tired, he continued working,' the clause 'Although he was tired' is an adverbial clause of___",
+    "options": {
+      "A": "purpose",
+      "B": "concession",
+      "C": "place",
+      "D": "manner"
+    },
+    "answer": "B",
+    "answer_text": "concession",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about adverbial clause from the sentence or description given.",
+      "principle": "Concessive clauses express a contrast between an expected obstacle and the actual outcome.",
+      "steps": [
+        "Tiredness would normally discourage further work.",
+        "Yet he continued working.",
+        "The clause introduced by 'Although' shows concession.",
+        "Therefore the answer is concession."
+      ],
+      "final_answer": "B. concession",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "adverbial_clause",
+      "concession"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q079",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Adverbial clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which statement is true of adverbial clauses?",
+    "options": {
+      "A": "They modify nouns only.",
+      "B": "They function like adverbs by modifying verbs, adjectives, or whole clauses.",
+      "C": "They can never begin a sentence.",
+      "D": "They are always independent."
+    },
+    "answer": "B",
+    "answer_text": "They function like adverbs by modifying verbs, adjectives, or whole clauses.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about adverbial clause from the sentence or description given.",
+      "principle": "The function of an adverbial clause is what defines it, not just the word that introduces it.",
+      "steps": [
+        "They can appear at the beginning, middle, or end of a sentence.",
+        "They are subordinate, not independent.",
+        "They often modify the action or the whole idea of the main clause.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. They function like adverbs by modifying verbs, adjectives, or whole clauses.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "adverbial_clause",
+      "definition"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q080",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Phrase versus clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a clause and not a phrase?",
+    "options": {
+      "A": "under the tall tree",
+      "B": "to finish the work",
+      "C": "because the bell rang",
+      "D": "after the match"
+    },
+    "answer": "C",
+    "answer_text": "because the bell rang",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about phrase versus clause from the sentence or description given.",
+      "principle": "A clause contains a subject and a finite verb, while a phrase does not contain a full finite clause structure.",
+      "steps": [
+        "Option A is a prepositional phrase.",
+        "Option B is an infinitive phrase.",
+        "Option D is a prepositional phrase.",
+        "Option C contains the subject 'the bell' and the finite verb 'rang,' so it is a clause."
+      ],
+      "final_answer": "C. because the bell rang",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "phrase_vs_clause",
+      "identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q081",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Phrase versus clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'After the show, the crowd left quietly,' the expression 'After the show' is a phrase because it___",
+    "options": {
+      "A": "contains a subject and a finite verb",
+      "B": "does not contain a subject-verb clause structure",
+      "C": "can stand alone as a sentence",
+      "D": "joins two main clauses"
+    },
+    "answer": "B",
+    "answer_text": "does not contain a subject-verb clause structure",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about phrase versus clause from the sentence or description given.",
+      "principle": "A phrase is a meaningful group of words that lacks full clause structure.",
+      "steps": [
+        "'After the show' begins with a preposition.",
+        "There is no finite verb in that group.",
+        "The complete clause is 'the crowd left quietly.'",
+        "Therefore the expression is a phrase."
+      ],
+      "final_answer": "B. does not contain a subject-verb clause structure",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "phrase_vs_clause",
+      "prepositional_phrase"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q082",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Phrase versus clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'When the show ended, the crowd left quietly,' the expression 'When the show ended' is a clause because it contains___",
+    "options": {
+      "A": "a preposition only",
+      "B": "a noun without a verb",
+      "C": "a subject and a finite verb",
+      "D": "an adjective and a noun"
+    },
+    "answer": "C",
+    "answer_text": "a subject and a finite verb",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about phrase versus clause from the sentence or description given.",
+      "principle": "The presence of a subject and a finite verb is the key test for clausehood.",
+      "steps": [
+        "'the show' is the subject.",
+        "'ended' is the finite verb.",
+        "This makes the group a clause, not a phrase.",
+        "So the correct answer is a subject and a finite verb."
+      ],
+      "final_answer": "C. a subject and a finite verb",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "phrase_vs_clause",
+      "finite_verb"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q083",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Phrase versus clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A phrase differs from a clause mainly because a phrase___",
+    "options": {
+      "A": "has stronger meaning",
+      "B": "lacks a full subject-finite verb structure",
+      "C": "always begins with a preposition",
+      "D": "cannot appear in a sentence"
+    },
+    "answer": "B",
+    "answer_text": "lacks a full subject-finite verb structure",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about phrase versus clause from the sentence or description given.",
+      "principle": "Not all phrases begin with prepositions, but all phrases lack full clause structure.",
+      "steps": [
+        "There are noun phrases, verb phrases, infinitive phrases, participial phrases, and prepositional phrases.",
+        "What unites them is that they are not full finite clauses.",
+        "A clause, by contrast, has subject-predicate structure.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. lacks a full subject-finite verb structure",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "phrase_vs_clause",
+      "definition"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q084",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Phrase versus clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following pairs is correctly matched?",
+    "options": {
+      "A": "'because he arrived late' — phrase",
+      "B": "'under the bed' — clause",
+      "C": "'that she was absent' — clause",
+      "D": "'to the market' — clause"
+    },
+    "answer": "C",
+    "answer_text": "'that she was absent' — clause",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about phrase versus clause from the sentence or description given.",
+      "principle": "A content group with subject and finite verb is a clause; a group without such structure is a phrase.",
+      "steps": [
+        "'because he arrived late' contains subject and verb, so it is a clause, not a phrase.",
+        "'under the bed' and 'to the market' are prepositional phrases.",
+        "'that she was absent' has subject and verb and functions as a clause.",
+        "So option C is correctly matched."
+      ],
+      "final_answer": "C. 'that she was absent' — clause",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "phrase_vs_clause",
+      "matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q085",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Phrase versus clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Shouting loudly, the fans rushed forward,' the expression 'Shouting loudly' is a___",
+    "options": {
+      "A": "clause",
+      "B": "phrase",
+      "C": "main clause",
+      "D": "noun clause"
+    },
+    "answer": "B",
+    "answer_text": "phrase",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about phrase versus clause from the sentence or description given.",
+      "principle": "A participial group may look verbal, but without a finite verb and full subject structure it remains a phrase.",
+      "steps": [
+        "'Shouting' is a present participle, not a finite verb here.",
+        "The group lacks an explicit subject of its own.",
+        "The main clause is 'the fans rushed forward.'",
+        "Therefore 'Shouting loudly' is a phrase."
+      ],
+      "final_answer": "B. phrase",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "phrase_vs_clause",
+      "participial"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q086",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Phrase versus clause",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'That he refused the offer shocked everyone,' the opening group is a clause rather than a phrase because it___",
+    "options": {
+      "A": "acts as subject only",
+      "B": "contains the subject 'he' and the finite verb 'refused'",
+      "C": "begins with 'That'",
+      "D": "appears before the main verb"
+    },
+    "answer": "B",
+    "answer_text": "contains the subject 'he' and the finite verb 'refused'",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about phrase versus clause from the sentence or description given.",
+      "principle": "Position alone does not determine class; internal structure does.",
+      "steps": [
+        "Many groups can stand in subject position, including phrases and clauses.",
+        "What makes this one a clause is the internal subject 'he' and finite verb 'refused.'",
+        "It therefore has clause structure.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. contains the subject 'he' and the finite verb 'refused'",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "phrase_vs_clause",
+      "subject_clause"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q087",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Sentence construction",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Choose the option that best completes the sentence correctly: 'Neither the principal nor the teachers ___ aware of the change in timetable.'",
+    "options": {
+      "A": "was",
+      "B": "is",
+      "C": "were",
+      "D": "be"
+    },
+    "answer": "C",
+    "answer_text": "were",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about sentence construction from the sentence or description given.",
+      "principle": "Correct sentence construction in English requires attention to agreement, especially with correlative structures such as 'neither...nor.'",
+      "steps": [
+        "With 'neither...nor,' the verb often agrees with the nearer subject.",
+        "The nearer subject here is 'the teachers,' which is plural.",
+        "Therefore the correct plural verb is 'were.'",
+        "So option C gives the correct construction."
+      ],
+      "final_answer": "C. were",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sentence_construction",
+      "agreement"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q088",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Sentence construction",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Choose the best constructed sentence.",
+    "options": {
+      "A": "Hardly had he arrived when the meeting began.",
+      "B": "Hardly he had arrived when the meeting began.",
+      "C": "Hardly had he arrived than the meeting began.",
+      "D": "Hardly he arrived when the meeting began."
+    },
+    "answer": "A",
+    "answer_text": "Hardly had he arrived when the meeting began.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about sentence construction from the sentence or description given.",
+      "principle": "Some English constructions follow fixed idiomatic patterns; 'Hardly ... when ...' is one of them and requires inversion.",
+      "steps": [
+        "After 'Hardly,' formal English uses auxiliary inversion: 'had he arrived.'",
+        "The pair is 'Hardly ... when ...,' not 'Hardly ... than ...'",
+        "Options B, C, and D break one or both of these rules.",
+        "Therefore option A is the best constructed sentence."
+      ],
+      "final_answer": "A. Hardly had he arrived when the meeting began.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sentence_construction",
+      "idiomatic_pattern"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q089",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Sentence construction",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Which option is correctly constructed?",
+    "options": {
+      "A": "No sooner did the rain start when the traders ran.",
+      "B": "No sooner had the rain started than the traders ran.",
+      "C": "No sooner the rain had started than the traders ran.",
+      "D": "No sooner had the rain started when the traders ran."
+    },
+    "answer": "B",
+    "answer_text": "No sooner had the rain started than the traders ran.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about sentence construction from the sentence or description given.",
+      "principle": "The correlative pattern is 'No sooner ... than ...' and usually takes inversion in formal English.",
+      "steps": [
+        "Correct structure is 'No sooner had + subject + past participle ... than ...'",
+        "Option B follows that pattern exactly.",
+        "The others misuse word order or the conjunction pair.",
+        "Hence option B is correct."
+      ],
+      "final_answer": "B. No sooner had the rain started than the traders ran.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sentence_construction",
+      "no_sooner"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q090",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Sentence construction",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Choose the sentence that is properly constructed.",
+    "options": {
+      "A": "Each of the players have received a medal.",
+      "B": "Each of the players has received a medal.",
+      "C": "Each of the players were receiving a medal.",
+      "D": "Each of the players have been receiving a medal."
+    },
+    "answer": "B",
+    "answer_text": "Each of the players has received a medal.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about sentence construction from the sentence or description given.",
+      "principle": "The subject 'Each' is singular, even when followed by a plural noun in a prepositional phrase.",
+      "steps": [
+        "The real subject is 'Each,' not 'players.'",
+        "A singular subject takes a singular verb.",
+        "Therefore 'has received' is the correct verb form.",
+        "So option B is properly constructed."
+      ],
+      "final_answer": "B. Each of the players has received a medal.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sentence_construction",
+      "subject_verb"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q091",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Sentence construction",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Choose the correctly constructed sentence.",
+    "options": {
+      "A": "The committee have announced its decision.",
+      "B": "The committee has announced their decision.",
+      "C": "The committee has announced its decision.",
+      "D": "The committee announce its decision."
+    },
+    "answer": "C",
+    "answer_text": "The committee has announced its decision.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about sentence construction from the sentence or description given.",
+      "principle": "In standard exam English, collective nouns are often treated as singular when the group acts as one unit.",
+      "steps": [
+        "'The committee' is treated as one body here.",
+        "A singular verb is therefore appropriate: 'has announced.'",
+        "The matching possessive should also be singular: 'its.'",
+        "Hence option C is the correct construction."
+      ],
+      "final_answer": "C. The committee has announced its decision.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sentence_construction",
+      "collective_noun"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q092",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Sentence construction",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Choose the option that best completes the sentence: 'Scarcely ___ the lecture begun when the light failed.'",
+    "options": {
+      "A": "had",
+      "B": "has",
+      "C": "did",
+      "D": "was"
+    },
+    "answer": "A",
+    "answer_text": "had",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about sentence construction from the sentence or description given.",
+      "principle": "After adverbials like 'scarcely' in this pattern, formal English takes inversion with 'had.'",
+      "steps": [
+        "The idiomatic structure is 'Scarcely had + subject + past participle ... when ...'",
+        "Here the subject follows the gap: 'the lecture.'",
+        "So the correct auxiliary to produce inversion is 'had.'",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. had",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sentence_construction",
+      "inversion"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q093",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Sentence construction",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Choose the sentence that is best constructed.",
+    "options": {
+      "A": "Not only was he late, but he also forgot the documents.",
+      "B": "Not only he was late, but also he forgot the documents.",
+      "C": "Not only was he late, but also forgot the documents.",
+      "D": "Not only he was late, but he also forgot the documents."
+    },
+    "answer": "A",
+    "answer_text": "Not only was he late, but he also forgot the documents.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about sentence construction from the sentence or description given.",
+      "principle": "Correlative emphasis with 'Not only' usually triggers inversion in the first clause.",
+      "steps": [
+        "Option A correctly uses inversion: 'was he late.'",
+        "It also pairs the first clause neatly with 'but he also forgot ...'",
+        "The other options violate expected word order or omit a needed subject.",
+        "So option A is the best constructed sentence."
+      ],
+      "final_answer": "A. Not only was he late, but he also forgot the documents.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sentence_construction",
+      "correlative"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q094",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Structural patterns in English sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence pattern 'SVO,' the letters stand for___",
+    "options": {
+      "A": "Subject, Verb, Object",
+      "B": "Sentence, Verb, Order",
+      "C": "Subject, Voice, Object",
+      "D": "Statement, Verb, Object"
+    },
+    "answer": "A",
+    "answer_text": "Subject, Verb, Object",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about structural patterns in english sentences from the sentence or description given.",
+      "principle": "Structural patterns in English are often described through abbreviated formulas showing the arrangement of sentence elements.",
+      "steps": [
+        "'S' stands for Subject.",
+        "'V' stands for Verb.",
+        "'O' stands for Object.",
+        "Therefore SVO means Subject, Verb, Object."
+      ],
+      "final_answer": "A. Subject, Verb, Object",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "structural_patterns",
+      "SVO"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q095",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Structural patterns in English sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The sentence, 'The boy opened the gate,' follows the structural pattern___",
+    "options": {
+      "A": "SV",
+      "B": "SVC",
+      "C": "SVO",
+      "D": "SVA"
+    },
+    "answer": "C",
+    "answer_text": "SVO",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about structural patterns in english sentences from the sentence or description given.",
+      "principle": "A pattern is identified by examining the function of each major element after the verb.",
+      "steps": [
+        "'The boy' is the Subject.",
+        "'opened' is the Verb.",
+        "'the gate' receives the action and is therefore the Object.",
+        "So the sentence follows SVO."
+      ],
+      "final_answer": "C. SVO",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "structural_patterns",
+      "pattern_identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q096",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Structural patterns in English sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The sentence, 'The baby slept peacefully,' follows the pattern___",
+    "options": {
+      "A": "SVA",
+      "B": "SVO",
+      "C": "SVC",
+      "D": "SVOO"
+    },
+    "answer": "A",
+    "answer_text": "SVA",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about structural patterns in english sentences from the sentence or description given.",
+      "principle": "An adverbial element after an intransitive verb gives the pattern SVA if it is treated as part of the core structure.",
+      "steps": [
+        "'The baby' is Subject.",
+        "'slept' is Verb.",
+        "'peacefully' functions adverbially.",
+        "Therefore the pattern is SVA."
+      ],
+      "final_answer": "A. SVA",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "structural_patterns",
+      "SVA"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q097",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Structural patterns in English sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The soup tastes delicious,' the structural pattern is___",
+    "options": {
+      "A": "SVO",
+      "B": "SVC",
+      "C": "SV",
+      "D": "SVOO"
+    },
+    "answer": "B",
+    "answer_text": "SVC",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about structural patterns in english sentences from the sentence or description given.",
+      "principle": "Linking verbs such as be, seem, appear, become, look, taste, smell, and remain often take complements rather than objects.",
+      "steps": [
+        "'The soup' is Subject.",
+        "'tastes' is the Verb, but it is a linking verb here.",
+        "'delicious' describes the subject and functions as Complement, not Object.",
+        "So the pattern is SVC."
+      ],
+      "final_answer": "B. SVC",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "structural_patterns",
+      "linking_verb"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q098",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Structural patterns in English sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The sentence, 'My uncle gave me a bicycle,' follows the pattern___",
+    "options": {
+      "A": "SVO",
+      "B": "SVC",
+      "C": "SVOO",
+      "D": "SVA"
+    },
+    "answer": "C",
+    "answer_text": "SVOO",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about structural patterns in english sentences from the sentence or description given.",
+      "principle": "Some transitive verbs take two objects: an indirect object and a direct object.",
+      "steps": [
+        "'My uncle' is Subject.",
+        "'gave' is Verb.",
+        "'me' is the indirect object and 'a bicycle' is the direct object.",
+        "Thus the pattern is SVOO."
+      ],
+      "final_answer": "C. SVOO",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "structural_patterns",
+      "double_object"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q099",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Structural patterns in English sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which sentence illustrates the SV pattern?",
+    "options": {
+      "A": "The girl became angry.",
+      "B": "The girl sang.",
+      "C": "The girl sang a song.",
+      "D": "The girl sang at the concert."
+    },
+    "answer": "B",
+    "answer_text": "The girl sang.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about structural patterns in english sentences from the sentence or description given.",
+      "principle": "SV is the bare subject-verb pattern with no object or complement required.",
+      "steps": [
+        "Option A is SVC because 'angry' is a complement.",
+        "Option C is SVO because 'a song' is the object.",
+        "Option D may be analysed as SVA because of the adverbial extension.",
+        "Option B presents the plain SV pattern."
+      ],
+      "final_answer": "B. The girl sang.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "structural_patterns",
+      "SV"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_10_q100",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_10",
+    "topic_title": "Sentence and Clause Patterns",
+    "subtopic": "Structural patterns in English sentences",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which statement about structural patterns in English is correct?",
+    "options": {
+      "A": "Every sentence must follow only the SVO pattern.",
+      "B": "Patterns help us describe how subjects, verbs, objects, complements, and adverbials are arranged.",
+      "C": "Structural pattern ignores the function of words in a sentence.",
+      "D": "Patterns are useful only in poetry."
+    },
+    "answer": "B",
+    "answer_text": "Patterns help us describe how subjects, verbs, objects, complements, and adverbials are arranged.",
+    "explanation": {
+      "question_restate": "We are to determine the correct answer about structural patterns in english sentences from the sentence or description given.",
+      "principle": "Structural pattern analysis is a way of describing sentence architecture and grammatical relationships.",
+      "steps": [
+        "English sentences do not all share one fixed pattern.",
+        "Different verbs permit different structures.",
+        "Pattern analysis helps learners see how sentence parts function and combine.",
+        "Therefore option B is correct."
+      ],
+      "final_answer": "B. Patterns help us describe how subjects, verbs, objects, complements, and adverbials are arranged.",
+      "simple_explanation": "In JAMB, do not rush to answer from appearance alone. First identify the finite verb, then check how many clauses are present and what work each part is doing. For fuller guided examples and beginner-friendly drills, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "structural_patterns",
+      "general"
+    ],
+    "active": true
+  }
+]
