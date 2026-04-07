@@ -513,7 +513,7 @@ async def jambpractice_handler(update: Update, context: ContextTypes.DEFAULT_TYP
 
     await update.effective_message.reply_text(
         text_msg,
-        parse_mode="Markdown",
+        parse_mode="MarkdownV2",
         reply_markup=make_subject_keyboard(),
     )
 
@@ -545,7 +545,7 @@ async def jamb_subject_handler(update: Update, context: ContextTypes.DEFAULT_TYP
     await query.message.reply_text(
         f"📘 *You selected:* {subject['name']}\n\n"
         "How would you like to practice?",
-        parse_mode="Markdown",
+        parse_mode="MarkdownV2",
         reply_markup=make_mode_keyboard(subject_code),
     )
 
@@ -575,7 +575,7 @@ async def jamb_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"📚 *{subject['name']} Topics*\n\n"
             f"Choose a topic below.\n"
             f"_Page {page} of {total_pages}_",
-            parse_mode="Markdown",
+            parse_mode="MarkdownV2",
             reply_markup=kb,
         )
 
@@ -590,7 +590,7 @@ async def jamb_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"📝 *Mock UTME for {subject['name']}*\n\n"
             "Mock UTME mode is coming next.\n"
             "For now, please use *By Topics* while we complete the full flow.",
-            parse_mode="Markdown",
+            parse_mode="MarkdownV2",
             reply_markup=make_mode_keyboard(subject_code),
         )
 
@@ -621,7 +621,7 @@ async def jamb_topic_page_handler(update: Update, context: ContextTypes.DEFAULT_
         f"📚 *{subject['name']} Topics*\n\n"
         f"Choose a topic below.\n"
         f"_Page {page} of {total_pages}_",
-        parse_mode="Markdown",
+        parse_mode="MarkdownV2",
         reply_markup=kb,
     )
 
@@ -664,7 +664,7 @@ async def jamb_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
         f"🎁 Free questions left: *{free_remaining}*\n"
         f"💳 Paid question credits: *{paid_credits}*\n\n"
         "Choose how you want to continue:",
-        parse_mode="Markdown",
+        parse_mode="MarkdownV2",
         reply_markup=make_topic_access_keyboard_for_subject(
             subject_code,
             has_free_trial,
@@ -763,7 +763,7 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
         f"📚 Questions in this session: *{len(selected_questions)}*"
         f"{reset_note}\n\n"
         "Next step: we will now start serving Question 1.",
-        parse_mode="Markdown",
+        parse_mode="MarkdownV2",
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton("▶ Start Questions", callback_data="jp_serve_first")],
@@ -855,7 +855,7 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
         f"💰 Amount: *₦{amount}*\n\n"
         "After successful payment, your JAMB question credits will be added automatically.\n\n"
         "Tap below to complete payment.",
-        parse_mode="Markdown",
+        parse_mode="MarkdownV2",
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
@@ -892,7 +892,7 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
             f"✅ Correct: *{correct_count}*\n"
             f"❌ Wrong: *{wrong_count}*\n\n"
             "Great job. You can return to JAMB Practice for another topic.",
-            parse_mode="Markdown",
+            parse_mode="MarkdownV2",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [InlineKeyboardButton("🎓 JAMB Practice", callback_data="jambpractice")],
@@ -967,7 +967,7 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
         if should_show_passage:
             await update.effective_message.reply_text(
                 f"📖 *{passage_title}*\n\n{passage}",
-                parse_mode="Markdown",
+                parse_mode="MarkdownV2",
             )
 
     options = question.get("options", {})
@@ -1085,7 +1085,7 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
 
     await query.message.reply_text(
         result_text,
-        parse_mode="Markdown",
+        parse_mode="MarkdownV2",
         reply_markup=make_after_answer_keyboard(),
     )
 
@@ -1133,7 +1133,7 @@ async def jamb_answer_details_handler(update: Update, context: ContextTypes.DEFA
 
     await query.message.reply_text(
         "\n".join(lines),
-        parse_mode="Markdown",
+        parse_mode="MarkdownV2",
         reply_markup=make_after_details_keyboard(),
     )
 
@@ -1171,7 +1171,7 @@ async def jamb_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_T
     await query.message.reply_text(
         f"📘 *You selected:* {subject['name']}\n\n"
         "How would you like to practice?",
-        parse_mode="Markdown",
+        parse_mode="MarkdownV2",
         reply_markup=make_mode_keyboard(subject_code),
     )
 
