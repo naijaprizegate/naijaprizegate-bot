@@ -1182,7 +1182,7 @@ async def jamb_answer_details_handler(update: Update, context: ContextTypes.DEFA
     principle = explanation.get("principle", "")
     steps = explanation.get("steps", [])
     if not isinstance(steps, list):
-    steps = []
+        steps = []
     final_answer = explanation.get("final_answer", "")
     simple_explanation = explanation.get("simple_explanation", "")
 
