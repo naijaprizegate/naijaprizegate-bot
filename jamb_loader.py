@@ -274,6 +274,36 @@ def get_questions_for_topic_ids(
     return all_questions
 
 
+def group_questions_by_passage_id(
+    questions: List[Dict[str, Any]],
+) -> Dict[str, List[Dict[str, Any]]]:
+    """
+    Group questions by passage_id.
+
+    Only questions with a non-empty passage_id are grouped.
+    Questions without passage_id are ignored here.
+
+    Example:
+    {
+        "eng_01_p001": [q1, q2, q3, q4, q5],
+        "eng_01_p002": [q6, q7, q8, q9, q10],
+    }
+    """
+    grouped: Dict[str, List[Dict[str, Any]]] = {}
+
+    for question in questions:
+        passage_id = str(question.get("passage_id") or "").strip()
+        if not passage_id:
+            continue
+
+        if passage_id not in grouped:
+            grouped[passage_id] = []
+
+        grouped[passage_id].append(question)
+
+    return grouped
+
+
 def get_all_questions_for_subject(subject_code: str) -> List[Dict[str, Any]]:
     """
     Load all active questions across all active topics for a subject.
@@ -395,8 +425,26 @@ def prepare_use_of_english_batch(
                 if q.get("id") not in selected_question_ids
             ]
 
-        shuffled_section_questions = shuffle_questions(unseen_section_questions)                
-        picked_questions = limit_questions(shuffled_section_questions, required_count)
+        if section_name in {"comprehension", "reading_text"}:
+            grouped_passages = group_questions_by_passage_id(unseen_section_questions)
+
+            eligible_passage_groups = [
+                questions
+                for _, questions in grouped_passages.items()
+                if len(questions) >= required_count
+            ]
+
+            if not eligible_passage_groups:
+                raise ValueError(
+                    f"Use of English section '{section_name}' requires a passage group "
+                    f"with at least {required_count} questions, but none was available."
+                )
+
+            chosen_group = shuffle_questions(eligible_passage_groups)[0]
+            picked_questions = limit_questions(chosen_group, required_count)
+        else:
+            shuffled_section_questions = shuffle_questions(unseen_section_questions)
+            picked_questions = limit_questions(shuffled_section_questions, required_count)
 
         
         if len(picked_questions) != required_count:
@@ -551,4 +599,3 @@ def format_course_subjects_for_message(course_code: str) -> str:
         lines.extend(["", f"Note: {notes}"])
 
     return "\n".join(lines)
-
