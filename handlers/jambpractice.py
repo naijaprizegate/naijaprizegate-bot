@@ -467,22 +467,24 @@ def make_paid_session_count_keyboard():
 # Message builders
 # =============================
 def build_welcome_text(free_remaining: int, paid_credits: int) -> str:
+    safe_free_remaining = md_escape(str(free_remaining))
+    safe_paid_credits = md_escape(str(paid_credits))
+
     return (
         "🎓 *Welcome to JAMB Practice*\n\n"
-        "Practice original UTME-style questions by subject and topic.\n"
-        "You can study with detailed answer explanations after each question.\n\n"
+        "Practice original UTME\\-style questions by subject and topic\\.\n"
+        "You can study with detailed answer explanations after each question\\.\n\n"
         "*How it works:*\n"
-        "• First-time users get *5 free questions*\n"
+        "• First\\-time users get *5 free questions*\n"
         "• After that, it costs *₦100 per 50 questions*\n"
         "• Questions are served topic by topic\n"
         "• Repeats are avoided until you exhaust the topic bank\n\n"
         "*Disclaimer:*\n"
-        "This is an independent study tool and not an official JAMB platform.\n\n"
-        f"🎁 Free questions left: *{free_remaining}*\n"
-        f"💳 Paid question credits: *{paid_credits}*\n\n"
-        "Please choose a subject below."
+        "This is an independent study tool and not an official JAMB platform\\.\n\n"
+        f"🎁 Free questions left: *{safe_free_remaining}*\n"
+        f"💳 Paid question credits: *{safe_paid_credits}*\n\n"
+        "Please choose a subject below\\."
     )
-
 
 # =============================
 # Entry point
