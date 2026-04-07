@@ -14,7 +14,7 @@ JAMB_DATA_DIR = BASE_DIR / "data" / "jamb"
 ENG_EXACT_BLUEPRINT = [
     {"name": "comprehension", "topic_ids": ["eng_01"], "count": 5},
     {"name": "cloze", "topic_ids": ["eng_03"], "count": 10},
-    {"name": "reading_text", "topic_ids": ["eng_02"], "count": 10},
+    {"name": "summary", "topic_ids": ["eng_02"], "count": 10},
     {"name": "sentence_interpretation", "topic_ids": ["eng_04"], "count": 5},
     {"name": "antonyms", "topic_ids": ["eng_06"], "count": 5},
     {"name": "synonyms", "topic_ids": ["eng_05"], "count": 5},
@@ -425,7 +425,7 @@ def prepare_use_of_english_batch(
                 if q.get("id") not in selected_question_ids
             ]
 
-        if section_name in {"comprehension", "reading_text"}:
+        if section_name in {"comprehension", "summary"}:
             grouped_passages = group_questions_by_passage_id(unseen_section_questions)
 
             eligible_passage_groups = [
