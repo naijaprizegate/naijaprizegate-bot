@@ -573,10 +573,14 @@ async def jamb_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         subject = get_subject_by_code(subject_code)
         kb, page, total_pages = make_topics_keyboard(subject_code, 1)
 
+        safe_subject_name = md_escape(str(subject["name"]))
+        safe_page = md_escape(str(page))
+        safe_total_pages = md_escape(str(total_pages))
+
         return await query.message.reply_text(
-            f"📚 *{subject['name']} Topics*\n\n"
-            f"Choose a topic below.\n"
-            f"_Page {page} of {total_pages}_",
+            f"📚 *{safe_subject_name} Topics*\n\n"
+            f"Choose a topic below\\.\n"
+            f"_Page {safe_page} of {safe_total_pages}_",
             parse_mode="MarkdownV2",
             reply_markup=kb,
         )
@@ -587,11 +591,12 @@ async def jamb_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data["jp_mode"] = "mock_utme"
 
         subject = get_subject_by_code(subject_code)
+        safe_subject_name = md_escape(str(subject["name"]))
 
         return await query.message.reply_text(
-            f"📝 *Mock UTME for {subject['name']}*\n\n"
-            "Mock UTME mode is coming next.\n"
-            "For now, please use *By Topics* while we complete the full flow.",
+            f"📝 *Mock UTME for {safe_subject_name}*\n\n"
+            "Mock UTME mode is coming next\\.\n"
+            "For now, please use *By Topics* while we complete the full flow\\.",
             parse_mode="MarkdownV2",
             reply_markup=make_mode_keyboard(subject_code),
         )
@@ -611,7 +616,10 @@ async def jamb_topic_page_handler(update: Update, context: ContextTypes.DEFAULT_
         _, _, subject_code, page_str = query.data.split("_", 3)
         page = int(page_str)
     except Exception:
-        return await query.message.reply_text("⚠️ Invalid topic page.")
+        return await query.message.reply_text(
+            "⚠️ Invalid topic page\\.",
+            parse_mode="MarkdownV2",
+        )
 
     context.user_data["jp_subject_code"] = subject_code
     context.user_data["jp_topic_page"] = page
@@ -619,10 +627,14 @@ async def jamb_topic_page_handler(update: Update, context: ContextTypes.DEFAULT_
     subject = get_subject_by_code(subject_code)
     kb, page, total_pages = make_topics_keyboard(subject_code, page)
 
+    safe_subject_name = md_escape(str(subject["name"]))
+    safe_page = md_escape(str(page))
+    safe_total_pages = md_escape(str(total_pages))
+
     await query.message.reply_text(
-        f"📚 *{subject['name']} Topics*\n\n"
-        f"Choose a topic below.\n"
-        f"_Page {page} of {total_pages}_",
+        f"📚 *{safe_subject_name} Topics*\n\n"
+        f"Choose a topic below\\.\n"
+        f"_Page {safe_page} of {safe_total_pages}_",
         parse_mode="MarkdownV2",
         reply_markup=kb,
     )
@@ -641,13 +653,19 @@ async def jamb_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     try:
         _, subject_code, topic_id = query.data.split("::")
     except Exception:
-        return await query.message.reply_text("⚠️ Invalid topic selection.")
+        return await query.message.reply_text(
+            "⚠️ Invalid topic selection\\.",
+            parse_mode="MarkdownV2",
+        )
 
     topics = get_subject_topics(subject_code)
     selected_topic = next((t for t in topics if t["id"] == topic_id), None)
 
     if not selected_topic:
-        return await query.message.reply_text("⚠️ Topic not found.")
+        return await query.message.reply_text(
+            "⚠️ Topic not found\\.",
+            parse_mode="MarkdownV2",
+        )
 
     context.user_data["jp_subject_code"] = subject_code
     context.user_data["jp_topic_id"] = topic_id
@@ -661,10 +679,14 @@ async def jamb_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     has_free_trial = free_remaining > 0
     has_paid_credits = paid_credits > 0
 
+    safe_topic_title = md_escape(str(selected_topic["title"]))
+    safe_free_remaining = md_escape(str(free_remaining))
+    safe_paid_credits = md_escape(str(paid_credits))
+
     await query.message.reply_text(
-        f"✅ *Topic selected:* {selected_topic['title']}\n\n"
-        f"🎁 Free questions left: *{free_remaining}*\n"
-        f"💳 Paid question credits: *{paid_credits}*\n\n"
+        f"✅ *Topic selected:* {safe_topic_title}\n\n"
+        f"🎁 Free questions left: *{safe_free_remaining}*\n"
+        f"💳 Paid question credits: *{safe_paid_credits}*\n\n"
         "Choose how you want to continue:",
         parse_mode="MarkdownV2",
         reply_markup=make_topic_access_keyboard_for_subject(
@@ -693,7 +715,8 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
 
     if not subject_code or not topic_id:
         return await query.message.reply_text(
-            "⚠️ Topic session data missing. Please choose your subject and topic again.",
+            "⚠️ Topic session data missing\\. Please choose your subject and topic again\\.",
+            parse_mode="MarkdownV2",
             reply_markup=make_subject_keyboard(),
         )
 
@@ -702,7 +725,8 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
 
     if free_remaining <= 0:
         return await query.message.reply_text(
-            "⚠️ You have no free JAMB questions left.\n\nPlease buy a question pack to continue."
+            "⚠️ You have no free JAMB questions left\\.\n\nPlease buy a question pack to continue\\.",
+            parse_mode="MarkdownV2",
         )
 
     requested_count = min(5, free_remaining)
@@ -728,7 +752,8 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
 
     if not selected_questions:
         return await query.message.reply_text(
-            "⚠️ No active questions found for this topic yet."
+            "⚠️ No active questions found for this topic yet\\.",
+            parse_mode="MarkdownV2",
         )
 
     session_id = await create_jamb_session(
@@ -756,15 +781,26 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
     topic = next((t for t in get_subject_topics(subject_code) if t["id"] == topic_id), None)
     topic_title = topic["title"] if topic else topic_id
 
-    reset_note = "\n♻️ Topic cycle reset because you already exhausted this topic before." if batch["cycle_reset"] else ""
+    subject = get_subject_by_code(subject_code)
+    subject_name = subject["name"] if subject else subject_code
+
+    safe_subject_name = md_escape(str(subject_name))
+    safe_topic_title = md_escape(str(topic_title))
+    safe_question_count = md_escape(str(len(selected_questions)))
+
+    reset_note = (
+        "\n♻️ Topic cycle reset because you already exhausted this topic before\\."
+        if batch["cycle_reset"]
+        else ""
+    )
 
     await query.message.reply_text(
         f"🎉 *Free Trial Started*\n\n"
-        f"📘 Subject: *{get_subject_by_code(subject_code)['name']}*\n"
-        f"🧪 Topic: *{topic_title}*\n"
-        f"📚 Questions in this session: *{len(selected_questions)}*"
+        f"📘 Subject: *{safe_subject_name}*\n"
+        f"🧪 Topic: *{safe_topic_title}*\n"
+        f"📚 Questions in this session: *{safe_question_count}*"
         f"{reset_note}\n\n"
-        "Next step: we will now start serving Question 1.",
+        "Next step: we will now start serving Question 1\\.",
         parse_mode="MarkdownV2",
         reply_markup=InlineKeyboardMarkup(
             [
@@ -796,7 +832,10 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
     }
 
     if pack_size not in pricing_map:
-        return await query.message.reply_text("⚠️ Invalid JAMB package selected.")
+        return await query.message.reply_text(
+            "⚠️ Invalid JAMB package selected\\.",
+            parse_mode="MarkdownV2",
+        )
 
     amount = pricing_map[pack_size]
     credits = calculate_jamb_credits(amount)
@@ -848,15 +887,19 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
             await session.commit()
 
         return await query.message.reply_text(
-            "⚠️ Payment service unavailable. Please try again shortly."
+            "⚠️ Payment service unavailable\\. Please try again shortly\\.",
+            parse_mode="MarkdownV2",
         )
+
+    safe_credits = md_escape(str(credits))
+    safe_amount = md_escape(str(amount))
 
     await query.message.reply_text(
         f"💳 *JAMB Question Pack Selected*\n\n"
-        f"📚 Questions: *{credits}*\n"
-        f"💰 Amount: *₦{amount}*\n\n"
-        "After successful payment, your JAMB question credits will be added automatically.\n\n"
-        "Tap below to complete payment.",
+        f"📚 Questions: *{safe_credits}*\n"
+        f"💰 Amount: *₦{safe_amount}*\n\n"
+        "After successful payment, your JAMB question credits will be added automatically\\.\n\n"
+        "Tap below to complete payment\\.",
         parse_mode="MarkdownV2",
         reply_markup=InlineKeyboardMarkup(
             [
@@ -876,7 +919,8 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
 
     if not batch:
         return await update.effective_message.reply_text(
-            "⚠️ No active JAMB question session found."
+            "⚠️ No active JAMB question session found\\.",
+            parse_mode="MarkdownV2",
         )
 
     if current_index >= len(batch):
@@ -888,12 +932,16 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
         wrong_count = int(context.user_data.get("jp_wrong_count", 0))
         total = len(batch)
 
+        safe_total = md_escape(str(total))
+        safe_correct_count = md_escape(str(correct_count))
+        safe_wrong_count = md_escape(str(wrong_count))
+
         return await update.effective_message.reply_text(
             f"✅ *Practice Completed*\n\n"
-            f"📚 Total Questions: *{total}*\n"
-            f"✅ Correct: *{correct_count}*\n"
-            f"❌ Wrong: *{wrong_count}*\n\n"
-            "Great job. You can return to JAMB Practice for another topic.",
+            f"📚 Total Questions: *{safe_total}*\n"
+            f"✅ Correct: *{safe_correct_count}*\n"
+            f"❌ Wrong: *{safe_wrong_count}*\n\n"
+            "Great job\\. You can return to JAMB Practice for another topic\\.",
             parse_mode="MarkdownV2",
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -925,13 +973,15 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
             deducted = await deduct_one_free_question(user_id)
             if not deducted:
                 return await update.effective_message.reply_text(
-                    "⚠️ You have no free question balance left.\n\nPlease buy a question pack to continue."
+                    "⚠️ You have no free question balance left\\.\n\nPlease buy a question pack to continue\\.",
+                    parse_mode="MarkdownV2",
                 )
         elif session_mode == "paid_session":
             deducted = await deduct_one_paid_question(user_id)
             if not deducted:
                 return await update.effective_message.reply_text(
-                    "⚠️ You have no paid JAMB question credits left.\n\nPlease buy another question pack to continue."
+                    "⚠️ You have no paid JAMB question credits left\\.\n\nPlease buy another question pack to continue\\.",
+                    parse_mode="MarkdownV2",
                 )
 
         await add_question_to_topic_history(
@@ -967,8 +1017,11 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
                 context.user_data["jp_last_passage"] = passage
 
         if should_show_passage:
+            safe_passage_title = md_escape(str(passage_title))
+            safe_passage = md_escape(str(passage))
+
             await update.effective_message.reply_text(
-                f"📖 *{passage_title}*\n\n{passage}",
+                f"📖 *{safe_passage_title}*\n\n{safe_passage}",
                 parse_mode="MarkdownV2",
             )
 
@@ -1015,6 +1068,9 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
     )
 
 
+# ----------------------------------------
+# JAMB Serve First Handler
+# ----------------------------------------  
 async def jamb_serve_first_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if query:
@@ -1033,22 +1089,29 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
     await query.answer()
 
     if context.user_data.get("jp_answered_current", False):
-        return await query.answer("You already answered this question.", show_alert=False)
+        return await query.answer("You already answered this question\\.", show_alert=False)
 
     try:
         _, selected_option = query.data.split("::", 1)
     except Exception:
-        return await query.message.reply_text("⚠️ Invalid answer selection.")
+        return await query.message.reply_text(
+            "⚠️ Invalid answer selection\\.",
+            parse_mode="MarkdownV2",
+        )
 
     question = context.user_data.get("jp_current_question")
     if not question:
-        return await query.message.reply_text("⚠️ No active question found.")
+        return await query.message.reply_text(
+            "⚠️ No active question found\\.",
+            parse_mode="MarkdownV2",
+        )
 
     user_id = update.effective_user.id
     session_id_raw = context.user_data.get("jp_session_id")
     if not session_id_raw:
         return await query.message.reply_text(
-            "⚠️ Session expired. Please start again from JAMB Practice."
+            "⚠️ Session expired\\. Please start again from JAMB Practice\\.",
+            parse_mode="MarkdownV2",
         )
 
     session_id = int(session_id_raw)
@@ -1077,12 +1140,16 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
 
     if is_correct:
         context.user_data["jp_correct_count"] = int(context.user_data.get("jp_correct_count", 0)) + 1
-        result_text = "✅ *Correct!*"
+        result_text = "✅ *Correct\\!*"
     else:
         context.user_data["jp_wrong_count"] = int(context.user_data.get("jp_wrong_count", 0)) + 1
+
+        safe_correct_option = md_escape(str(correct_option))
+        safe_correct_option_text = md_escape(str(question["options"].get(correct_option, "---")))
+
         result_text = (
-            f"❌ *Wrong!*\n\n"
-            f"Correct answer: *{correct_option}* — {question['options'][correct_option]}"
+            f"❌ *Wrong\\!*\n\n"
+            f"Correct answer: *{safe_correct_option}* \\- {safe_correct_option_text}"
         )
 
     await query.message.reply_text(
@@ -1090,6 +1157,7 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         parse_mode="MarkdownV2",
         reply_markup=make_after_answer_keyboard(),
     )
+
 
 # --------------------------------------------
 # JAMB Answer Details Handler
@@ -1103,35 +1171,40 @@ async def jamb_answer_details_handler(update: Update, context: ContextTypes.DEFA
 
     question = context.user_data.get("jp_current_question")
     if not question:
-        return await query.message.reply_text("⚠️ No answered question found.")
+        return await query.message.reply_text(
+            "⚠️ No answered question found\\.",
+            parse_mode="MarkdownV2",
+        )
 
     explanation = question.get("explanation", {})
 
     question_restate = explanation.get("question_restate", "")
     principle = explanation.get("principle", "")
     steps = explanation.get("steps", [])
+    if not isinstance(steps, list):
+    steps = []
     final_answer = explanation.get("final_answer", "")
     simple_explanation = explanation.get("simple_explanation", "")
 
     lines = ["📖 *Answer Details*\n"]
 
     if question_restate:
-        lines.append(f"*Question Restated*\n{question_restate}\n")
+        lines.append(f"*Question Restated*\n{md_escape(str(question_restate))}\n")
 
     if principle:
-        lines.append(f"*Principle*\n{principle}\n")
+        lines.append(f"*Principle*\n{md_escape(str(principle))}\n")
 
     if steps:
-        lines.append("*Step-by-step Solution*")
+        lines.append("*Step\\-by\\-step Solution*")
         for i, step in enumerate(steps, start=1):
-            lines.append(f"{i}. {step}")
+            lines.append(f"{i}\\. {md_escape(str(step))}")
         lines.append("")
 
     if final_answer:
-        lines.append(f"*Final Answer*\n{final_answer}\n")
+        lines.append(f"*Final Answer*\n{md_escape(str(final_answer))}\n")
 
     if simple_explanation:
-        lines.append(f"*Simple Explanation*\n{simple_explanation}")
+        lines.append(f"*Simple Explanation*\n{md_escape(str(simple_explanation))}")
 
     await query.message.reply_text(
         "\n".join(lines),
@@ -1170,9 +1243,11 @@ async def jamb_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_T
     context.user_data["jp_mode"] = None
     context.user_data["jp_topic_id"] = None
 
+    safe_subject_name = md_escape(str(subject["name"]))
+
     await query.message.reply_text(
-        f"📘 *You selected:* {subject['name']}\n\n"
-        "How would you like to practice?",
+        f"📘 *You selected:* {safe_subject_name}\n\n"
+        "How would you like to practice\\?",
         parse_mode="MarkdownV2",
         reply_markup=make_mode_keyboard(subject_code),
     )
@@ -1192,14 +1267,17 @@ async def jamb_use_paid_handler(update: Update, context: ContextTypes.DEFAULT_TY
 
     if paid_credits <= 0:
         return await query.message.reply_text(
-            "⚠️ You do not have any paid JAMB question credits yet.\n\nPlease buy a question pack first."
+            "⚠️ You do not have any paid JAMB question credits yet\\.\n\nPlease buy a question pack first\\.",
+            parse_mode="MarkdownV2",
         )
+
+    safe_paid_credits = md_escape(str(paid_credits))
 
     await query.message.reply_text(
         f"💳 *Use Paid Credits*\n\n"
-        f"You currently have *{paid_credits} paid question credits*.\n\n"
-        "How many questions do you want to answer in this session?",
-        parse_mode="Markdown",
+        f"You currently have *{safe_paid_credits} paid question credits*\\.\n\n"
+        "How many questions do you want to answer in this session\\?",
+        parse_mode="MarkdownV2",
         reply_markup=make_paid_session_count_keyboard(),
     )
 
@@ -1217,7 +1295,10 @@ async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
     try:
         requested_count = int(query.data.replace("jp_paidcount_", "", 1))
     except Exception:
-        return await query.message.reply_text("⚠️ Invalid paid session size.")
+        return await query.message.reply_text(
+            "⚠️ Invalid paid session size\\.",
+            parse_mode="MarkdownV2",
+        )
 
     user_id = update.effective_user.id
     subject_code = context.user_data.get("jp_subject_code")
@@ -1225,13 +1306,15 @@ async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
 
     if not subject_code or not topic_id:
         return await query.message.reply_text(
-            "⚠️ Topic session data missing. Please choose your subject and topic again."
+            "⚠️ Topic session data missing\\. Please choose your subject and topic again\\.",
+            parse_mode="MarkdownV2",
         )
 
     paid_credits = await get_paid_question_credits(user_id)
     if paid_credits <= 0:
         return await query.message.reply_text(
-            "⚠️ You do not have enough paid JAMB credits.\n\nPlease buy a question pack first."
+            "⚠️ You do not have enough paid JAMB credits\\.\n\nPlease buy a question pack first\\.",
+            parse_mode="MarkdownV2",
         )
 
     actual_count = min(requested_count, paid_credits)
@@ -1257,7 +1340,8 @@ async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
 
     if not selected_questions:
         return await query.message.reply_text(
-            "⚠️ No active questions found for this topic yet."
+            "⚠️ No active questions found for this topic yet\\.",
+            parse_mode="MarkdownV2",
         )
 
     session_id = await create_jamb_session(
@@ -1285,20 +1369,37 @@ async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
     topic = next((t for t in get_subject_topics(subject_code) if t["id"] == topic_id), None)
     topic_title = topic["title"] if topic else topic_id
 
-    reset_note = "\n♻️ Topic cycle reset because you already exhausted this topic before." if batch["cycle_reset"] else ""
+    subject = get_subject_by_code(subject_code)
+    subject_name = subject["name"] if subject else subject_code
+
+    safe_subject_name = md_escape(str(subject_name))
+    safe_topic_title = md_escape(str(topic_title))
+    safe_question_count = md_escape(str(len(selected_questions)))
+    safe_requested_count = md_escape(str(requested_count))
+    safe_paid_credits = md_escape(str(paid_credits))
+
+    reset_note = (
+        "\n♻️ Topic cycle reset because you already exhausted this topic before\\."
+        if batch["cycle_reset"]
+        else ""
+    )
+
     adjusted_note = ""
     if actual_count < requested_count:
-        adjusted_note = f"\nℹ️ You requested *{requested_count}*, but you currently have *{paid_credits}* paid credits available."
+        adjusted_note = (
+            f"\nℹ️ You requested *{safe_requested_count}*, but you currently have "
+            f"*{safe_paid_credits}* paid credits available\\."
+        )
 
     await query.message.reply_text(
         f"✅ *Paid Session Started*\n\n"
-        f"📘 Subject: *{get_subject_by_code(subject_code)['name']}*\n"
-        f"🧪 Topic: *{topic_title}*\n"
-        f"📚 Questions in this session: *{len(selected_questions)}*"
+        f"📘 Subject: *{safe_subject_name}*\n"
+        f"🧪 Topic: *{safe_topic_title}*\n"
+        f"📚 Questions in this session: *{safe_question_count}*"
         f"{adjusted_note}"
         f"{reset_note}\n\n"
-        "Tap below to start Question 1.",
-        parse_mode="Markdown",
+        "Tap below to start Question 1\\.",
+        parse_mode="MarkdownV2",
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton("▶ Start Questions", callback_data="jp_serve_first")],
@@ -1326,4 +1427,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next$"))
+
 
