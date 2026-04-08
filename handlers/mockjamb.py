@@ -1958,70 +1958,91 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                     question_order=next_question_order,
                 )
 
-                if should_show_passage_for_question(
-                    question_row=next_question,
-                    context=context,
-                    force_show=False,
-                ):
-                    paper_info = await session.execute(
-                        text("""
-                            select
-                                question_order,
-                                question_json
-                            from public.mockjamb_subject_questions
-                            where payment_reference = :payment_reference
-                            and subject_code = :subject_code
-                            order by question_order asc
-                        """),
-                        {
-                            "payment_reference": payment_reference,
-                            "subject_code": subject_code,
-                        },
-                    )
-                    paper_rows = [dict(row) for row in paper_info.mappings().all()]
-
-                    passage_start, passage_end = get_passage_question_range(
-                        paper_rows=paper_rows,
-                        current_question_row=next_question,
-                    )
-
-                    passage_text = build_mockjamb_passage_text(
-                        subject_code=subject_code,
+                # ---------------------------------------------------
+                # CASE 1: NEXT QUESTION STILL BELONGS TO A PASSAGE BLOCK
+                # ---------------------------------------------------
+                if question_has_passage(next_question):
+                    # Only show the passage message again if it is a NEW passage
+                    if should_show_passage_for_question(
                         question_row=next_question,
-                        question_start=passage_start,
-                        question_end=passage_end,
-                        total_questions=total_questions,
-                        exam_ends_at=(session_row or {}).get("exam_ends_at"),
-                    )
-                    mark_passage_as_shown(next_question, context)
+                        context=context,
+                        force_show=False,
+                    ):
+                        paper_info = await session.execute(
+                            text("""
+                                select
+                                    question_order,
+                                    question_json
+                                from public.mockjamb_subject_questions
+                                where payment_reference = :payment_reference
+                                and subject_code = :subject_code
+                                order by question_order asc
+                            """),
+                            {
+                                "payment_reference": payment_reference,
+                                "subject_code": subject_code,
+                            },
+                        )
+                        paper_rows = [dict(row) for row in paper_info.mappings().all()]
 
+                        passage_start, passage_end = get_passage_question_range(
+                            paper_rows=paper_rows,
+                            current_question_row=next_question,
+                        )
+
+                        passage_text = build_mockjamb_passage_text(
+                            subject_code=subject_code,
+                            question_row=next_question,
+                            question_start=passage_start,
+                            question_end=passage_end,
+                            total_questions=total_questions,
+                            exam_ends_at=(session_row or {}).get("exam_ends_at"),
+                        )
+                        mark_passage_as_shown(next_question, context)
+
+                        try:
+                            await query.edit_message_text(
+                                passage_text,
+                                parse_mode="MarkdownV2",
+                            )
+
+                            store_mockjamb_passage_message_id(
+                                message_id=query.message.message_id,
+                                context=context,
+                            )
+
+                            await query.message.reply_text(
+                                question_text,
+                                parse_mode="MarkdownV2",
+                                reply_markup=markup,
+                            )
+                        except Exception:
+                            sent_passage = await query.message.reply_text(
+                                passage_text,
+                                parse_mode="MarkdownV2",
+                            )
+
+                            store_mockjamb_passage_message_id(
+                                message_id=sent_passage.message_id,
+                                context=context,
+                            )
+
+                            await query.message.reply_text(
+                                question_text,
+                                parse_mode="MarkdownV2",
+                                reply_markup=markup,
+                            )
+                        return
+
+                    # Same passage block continues (for example question 2, 3, 4, 5)
+                    # Do NOT delete the passage. Just update the question message.
                     try:
                         await query.edit_message_text(
-                            passage_text,
-                            parse_mode="MarkdownV2",
-                        )
-
-                        store_mockjamb_passage_message_id(
-                            message_id=query.message.message_id,
-                            context=context,
-                        )
-
-                        await query.message.reply_text(
                             question_text,
                             parse_mode="MarkdownV2",
                             reply_markup=markup,
                         )
                     except Exception:
-                        sent_passage = await query.message.reply_text(
-                            passage_text,
-                            parse_mode="MarkdownV2",
-                        )
-
-                        store_mockjamb_passage_message_id(
-                            message_id=sent_passage.message_id,
-                            context=context,
-                        )
-
                         await query.message.reply_text(
                             question_text,
                             parse_mode="MarkdownV2",
@@ -2029,6 +2050,9 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                         )
                     return
 
+                # ---------------------------------------------------
+                # CASE 2: NEXT QUESTION HAS NO PASSAGE
+                # ---------------------------------------------------
                 await clear_mockjamb_passage_message(
                     chat_id=query.message.chat_id,
                     context=context,
