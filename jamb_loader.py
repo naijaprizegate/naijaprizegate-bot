@@ -418,13 +418,6 @@ def prepare_use_of_english_batch(
             and q.get("id") not in selected_question_ids
         ]
 
-        if len(unseen_section_questions) < required_count:
-            cycle_reset = True
-            unseen_section_questions = [
-                q for q in section_questions
-                if q.get("id") not in selected_question_ids
-            ]
-
         if section_name in {"comprehension", "summary"}:
             grouped_passages = group_questions_by_passage_id(unseen_section_questions)
 
@@ -435,6 +428,20 @@ def prepare_use_of_english_batch(
             ]
 
             if not eligible_passage_groups:
+                cycle_reset = True
+                unseen_section_questions = [
+                    q for q in section_questions
+                    if q.get("id") not in selected_question_ids
+                ]
+
+                grouped_passages = group_questions_by_passage_id(unseen_section_questions)
+                eligible_passage_groups = [
+                    questions
+                    for _, questions in grouped_passages.items()
+                    if len(questions) >= required_count
+                ]
+
+            if not eligible_passage_groups:
                 raise ValueError(
                     f"Use of English section '{section_name}' requires a passage group "
                     f"with at least {required_count} questions, but none was available."
@@ -443,6 +450,13 @@ def prepare_use_of_english_batch(
             chosen_group = shuffle_questions(eligible_passage_groups)[0]
             picked_questions = limit_questions(chosen_group, required_count)
         else:
+            if len(unseen_section_questions) < required_count:
+                cycle_reset = True
+                unseen_section_questions = [
+                    q for q in section_questions
+                    if q.get("id") not in selected_question_ids
+                ]
+
             shuffled_section_questions = shuffle_questions(unseen_section_questions)
             picked_questions = limit_questions(shuffled_section_questions, required_count)
 
