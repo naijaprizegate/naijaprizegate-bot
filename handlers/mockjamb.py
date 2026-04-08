@@ -957,6 +957,36 @@ def mark_passage_as_shown(question_row: dict, context: ContextTypes.DEFAULT_TYPE
     context.user_data["mj_last_passage_id_shown"] = get_question_passage_id(question_row)
 
 
+async def clear_mockjamb_passage_message(
+    *,
+    chat_id: int,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> None:
+    passage_message_id = context.user_data.get("mj_active_passage_message_id")
+
+    if not passage_message_id:
+        return
+
+    try:
+        await context.bot.delete_message(
+            chat_id=chat_id,
+            message_id=int(passage_message_id),
+        )
+    except Exception:
+        # Ignore delete errors
+        pass
+
+    context.user_data["mj_active_passage_message_id"] = None
+    context.user_data["mj_last_passage_id_shown"] = ""
+
+
+def store_mockjamb_passage_message_id(
+    *,
+    message_id: int | None,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> None:
+    context.user_data["mj_active_passage_message_id"] = message_id
+
 # --------------------------------------------
 # Mock JAMB Time Expire
 # ------------------------------------------
@@ -1669,6 +1699,7 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
     context.user_data["mj_current_subject_code"] = subject_code
     context.user_data["mj_current_question_order"] = 1
     context.user_data["mj_last_passage_id_shown"] = ""
+    context.user_data["mj_active_passage_message_id"] = None
 
     total_questions = get_mockjamb_subject_question_count(subject_code)
 
@@ -1711,22 +1742,39 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
                 passage_text,
                 parse_mode="MarkdownV2",
             )
+
+            store_mockjamb_passage_message_id(
+                message_id=query.message.message_id,
+                context=context,
+            )
+
             await query.message.reply_text(
                 question_text,
                 parse_mode="MarkdownV2",
                 reply_markup=markup,
             )
         except Exception:
-            await query.message.reply_text(
+            sent_passage = await query.message.reply_text(
                 passage_text,
                 parse_mode="MarkdownV2",
             )
+
+            store_mockjamb_passage_message_id(
+                message_id=sent_passage.message_id,
+                context=context,
+            )
+
             await query.message.reply_text(
                 question_text,
                 parse_mode="MarkdownV2",
                 reply_markup=markup,
             )
         return
+
+    await clear_mockjamb_passage_message(
+        chat_id=query.message.chat_id,
+        context=context,
+    )
 
     try:
         await query.edit_message_text(
@@ -1936,7 +1984,7 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                         paper_rows=paper_rows,
                         current_question_row=next_question,
                     )
-                    
+
                     passage_text = build_mockjamb_passage_text(
                         subject_code=subject_code,
                         question_row=next_question,
@@ -1952,22 +2000,39 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                             passage_text,
                             parse_mode="MarkdownV2",
                         )
+
+                        store_mockjamb_passage_message_id(
+                            message_id=query.message.message_id,
+                            context=context,
+                        )
+
                         await query.message.reply_text(
                             question_text,
                             parse_mode="MarkdownV2",
                             reply_markup=markup,
                         )
                     except Exception:
-                        await query.message.reply_text(
+                        sent_passage = await query.message.reply_text(
                             passage_text,
                             parse_mode="MarkdownV2",
                         )
+
+                        store_mockjamb_passage_message_id(
+                            message_id=sent_passage.message_id,
+                            context=context,
+                        )
+
                         await query.message.reply_text(
                             question_text,
                             parse_mode="MarkdownV2",
                             reply_markup=markup,
                         )
                     return
+
+                await clear_mockjamb_passage_message(
+                    chat_id=query.message.chat_id,
+                    context=context,
+                )
 
                 try:
                     await query.edit_message_text(
@@ -1984,6 +2049,11 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                 return
 
             if answer_result.get("status") == "completed_subject":
+                await clear_mockjamb_passage_message(
+                    chat_id=query.message.chat_id,
+                    context=context,
+                )
+                
                 score_info = await calculate_mockjamb_subject_score(
                     session,
                     payment_reference=payment_reference,
@@ -2669,3 +2739,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
