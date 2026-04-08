@@ -532,7 +532,8 @@ def build_mockjamb_passage_text(
     *,
     subject_code: str,
     question_row: dict,
-    question_number: int,
+    question_start: int,
+    question_end: int,
     total_questions: int,
     exam_ends_at=None,
 ) -> str:
@@ -552,7 +553,11 @@ def build_mockjamb_passage_text(
         "📝 *Mock JAMB / UTME*",
         "",
         f"*Subject:* {safe_subject_name}",
-        f"*Question:* {question_number} of {total_questions}",
+        (
+            f"*Questions:* {question_start} \\- {question_end} of {total_questions}"
+            if question_start != question_end
+            else f"*Question:* {question_start} of {total_questions}"
+        ),
     ]
 
     if exam_ends_at:
@@ -889,6 +894,33 @@ def get_question_payload(question_row: dict) -> dict:
 def get_question_passage_id(question_row: dict) -> str:
     payload = get_question_payload(question_row)
     return str(payload.get("passage_id") or "").strip()
+
+
+def get_passage_question_range(
+    *,
+    paper_rows: list[dict],
+    current_question_row: dict,
+) -> tuple[int, int]:
+    current_passage_id = get_question_passage_id(current_question_row)
+    current_order = int(current_question_row.get("question_order") or 0)
+
+    if not current_passage_id:
+        return current_order, current_order
+
+    matching_orders = []
+
+    for row in paper_rows:
+        row_passage_id = get_question_passage_id(row)
+        if row_passage_id == current_passage_id:
+            row_order = int(row.get("question_order") or 0)
+            if row_order > 0:
+                matching_orders.append(row_order)
+
+    if not matching_orders:
+        return current_order, current_order
+
+    matching_orders = sorted(set(matching_orders))
+    return matching_orders[0], matching_orders[-1]
 
 
 def question_has_passage(question_row: dict) -> bool:
@@ -1658,10 +1690,17 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
         context=context,
         force_show=False,
     ):
+        paper_rows = result["paper_info"]["paper_rows"]
+        passage_start, passage_end = get_passage_question_range(
+            paper_rows=paper_rows,
+            current_question_row=current_question,
+        )
+
         passage_text = build_mockjamb_passage_text(
             subject_code=subject_code,
             question_row=current_question,
-            question_number=1,
+            question_start=passage_start,
+            question_end=passage_end,
             total_questions=total_questions,
             exam_ends_at=session_row.get("exam_ends_at"),
         )
@@ -1876,10 +1915,33 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                     context=context,
                     force_show=False,
                 ):
+                    paper_info = await session.execute(
+                        text("""
+                            select
+                                question_order,
+                                question_json
+                            from public.mockjamb_subject_questions
+                            where payment_reference = :payment_reference
+                            and subject_code = :subject_code
+                            order by question_order asc
+                        """),
+                        {
+                            "payment_reference": payment_reference,
+                            "subject_code": subject_code,
+                        },
+                    )
+                    paper_rows = [dict(row) for row in paper_info.mappings().all()]
+
+                    passage_start, passage_end = get_passage_question_range(
+                        paper_rows=paper_rows,
+                        current_question_row=next_question,
+                    )
+                    
                     passage_text = build_mockjamb_passage_text(
                         subject_code=subject_code,
                         question_row=next_question,
-                        question_number=next_question_order,
+                        question_start=passage_start,
+                        question_end=passage_end,
                         total_questions=total_questions,
                         exam_ends_at=(session_row or {}).get("exam_ends_at"),
                     )
@@ -2365,10 +2427,34 @@ async def mockjamb_resume_exam_handler(update: Update, context: ContextTypes.DEF
                 context=context,
                 force_show=True,
             ):
+                async with get_async_session() as range_session:
+                    result = await range_session.execute(
+                        text("""
+                            select
+                                question_order,
+                                question_json
+                            from public.mockjamb_subject_questions
+                            where payment_reference = :payment_reference
+                            and subject_code = :subject_code
+                            order by question_order asc
+                        """),
+                        {
+                            "payment_reference": payment_reference,
+                            "subject_code": current_subject_code,
+                        },
+                    )
+                    paper_rows = [dict(row) for row in result.mappings().all()]
+
+                passage_start, passage_end = get_passage_question_range(
+                    paper_rows=paper_rows,
+                    current_question_row=question_row,
+                )
+                
                 passage_text = build_mockjamb_passage_text(
                     subject_code=current_subject_code,
                     question_row=question_row,
-                    question_number=next_question_order,
+                    question_start=passage_start,
+                    question_end=passage_end,
                     total_questions=total_questions,
                     exam_ends_at=active_session.get("exam_ends_at"),
                 )
@@ -2583,6 +2669,3 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
-
-
-
