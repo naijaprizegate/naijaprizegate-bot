@@ -344,48 +344,6 @@ def get_available_subject_questions_excluding_seen(
     return remaining_questions
 
 
-def prepare_subject_question_batch(
-    subject_code: str,
-    requested_count: int,
-    seen_question_ids: List[str],
-) -> Dict[str, Any]:
-    """
-    Prepare a subject-wide batch of questions across all topics.
-
-    Logic:
-    - load all active questions for the subject across all active topics
-    - exclude seen questions
-    - if no remaining questions, reset cycle
-    - shuffle remaining questions
-    - cap requested count to available count
-    """
-    all_questions = get_all_questions_for_subject(subject_code)
-    all_question_ids = extract_question_ids(all_questions)
-
-    unseen_questions = [
-        q for q in all_questions if q.get("id") not in seen_question_ids
-    ]
-
-    cycle_reset = False
-
-    if not unseen_questions:
-        unseen_questions = all_questions[:]
-        cycle_reset = True
-
-    shuffled = shuffle_questions(unseen_questions)
-    selected_questions = limit_questions(shuffled, requested_count)
-
-    return {
-        "cycle_reset": cycle_reset,
-        "all_question_ids": all_question_ids,
-        "available_count": len(unseen_questions),
-        "selected_count": len(selected_questions),
-        "selected_questions": selected_questions,
-        "selected_question_ids": extract_question_ids(selected_questions),
-    }
-
-
-
 def prepare_use_of_english_batch(
     seen_question_ids: List[str],
 ) -> Dict[str, Any]:
@@ -504,6 +462,149 @@ def extract_question_ids(questions: List[Dict[str, Any]]) -> List[str]:
     return [q["id"] for q in questions if "id" in q]
 
 
+def rotate_topic_list(
+    topics: List[Dict[str, Any]],
+    start_index: int,
+) -> List[Dict[str, Any]]:
+    """
+    Rotate topic order so selection can start from a saved topic pointer.
+
+    Example:
+    topics = [t1, t2, t3, t4, t5], start_index = 3
+    result = [t4, t5, t1, t2, t3]
+    """
+    if not topics:
+        return []
+
+    safe_start_index = max(0, int(start_index or 0)) % len(topics)
+    return topics[safe_start_index:] + topics[:safe_start_index]
+
+
+def select_rotating_balanced_subject_questions(
+    subject_code: str,
+    requested_count: int,
+    seen_question_ids: List[str],
+    start_topic_index: int = 0,
+) -> Dict[str, Any]:
+    """
+    Select subject questions across active topics using a rotating topic start.
+
+    Logic:
+    - load all active topics for the subject
+    - rotate topic order from start_topic_index
+    - first pick one unseen question from each topic in rotated order
+    - if unseen questions are exhausted for all topics, fall back to all active questions
+    - then fill remaining slots from leftover questions in the same rotated topic order
+    - shuffle final result before returning
+    - return next_topic_index so future attempts can continue from where this one stopped
+
+    This is useful when a subject has more topics than the requested question count.
+    """
+    topics = get_subject_topics(subject_code)
+    if not topics:
+        return {
+            "selected_questions": [],
+            "next_topic_index": 0,
+            "cycle_reset": False,
+        }
+
+    rotated_topics = rotate_topic_list(topics, start_topic_index)
+
+    topic_buckets: List[Dict[str, Any]] = []
+    fallback_topic_buckets: List[Dict[str, Any]] = []
+
+    for topic in rotated_topics:
+        topic_id = topic.get("id")
+        if not topic_id:
+            continue
+
+        try:
+            all_topic_questions = get_questions_for_topic(subject_code, topic_id)
+        except Exception:
+            continue
+
+        unseen_topic_questions = [
+            q for q in all_topic_questions
+            if q.get("id") not in seen_question_ids
+        ]
+
+        topic_buckets.append({
+            "topic_id": topic_id,
+            "questions": shuffle_questions(unseen_topic_questions),
+        })
+
+        fallback_topic_buckets.append({
+            "topic_id": topic_id,
+            "questions": shuffle_questions(all_topic_questions),
+        })
+
+    cycle_reset = False
+
+    # If no unseen questions remain anywhere, reset cycle and use all active questions
+    if not any(bucket["questions"] for bucket in topic_buckets):
+        cycle_reset = True
+        topic_buckets = fallback_topic_buckets
+
+    selected_questions: List[Dict[str, Any]] = []
+    selected_ids = set()
+    represented_topic_ids: List[str] = []
+
+    # PASS 1:
+    # take one question from each topic bucket in rotated order
+    for bucket in topic_buckets:
+        if len(selected_questions) >= requested_count:
+            break
+
+        topic_id = str(bucket.get("topic_id") or "").strip()
+        questions = bucket.get("questions") or []
+
+        chosen = None
+        for question in questions:
+            qid = question.get("id")
+            if qid and qid not in selected_ids:
+                chosen = question
+                break
+
+        if chosen:
+            selected_questions.append(chosen)
+            selected_ids.add(chosen["id"])
+            represented_topic_ids.append(topic_id)
+
+    # PASS 2:
+    # fill the remaining slots from leftover questions in the same rotated order
+    for bucket in topic_buckets:
+        if len(selected_questions) >= requested_count:
+            break
+
+        questions = bucket.get("questions") or []
+
+        for question in questions:
+            if len(selected_questions) >= requested_count:
+                break
+
+            qid = question.get("id")
+            if qid and qid not in selected_ids:
+                selected_questions.append(question)
+                selected_ids.add(qid)
+
+    # Final shuffle so the paper does not appear topic-grouped
+    selected_questions = shuffle_questions(selected_questions)
+
+    # Figure out where next attempt should begin
+    # If we represented 40 topics this time, next time start after the 40th covered topic
+    if represented_topic_ids:
+        covered_count = min(len(represented_topic_ids), len(rotated_topics), requested_count)
+        next_topic_index = (start_topic_index + covered_count) % len(rotated_topics)
+    else:
+        next_topic_index = start_topic_index % len(rotated_topics)
+
+    return {
+        "selected_questions": selected_questions,
+        "next_topic_index": next_topic_index,
+        "cycle_reset": cycle_reset,
+    }
+
+
 def get_available_questions_excluding_seen(
     subject_code: str,
     topic_id: str,
@@ -546,7 +647,6 @@ def prepare_topic_question_batch(
     cycle_reset = False
 
     if not unseen_questions:
-        # User has exhausted the topic, so reset cycle
         unseen_questions = all_questions[:]
         cycle_reset = True
 
@@ -562,6 +662,55 @@ def prepare_topic_question_batch(
         "selected_question_ids": extract_question_ids(selected_questions)
     }
 
+
+def prepare_subject_question_batch(
+    subject_code: str,
+    requested_count: int,
+    seen_question_ids: List[str],
+    start_topic_index: int = 0,
+) -> Dict[str, Any]:
+    """
+    Prepare a subject-wide batch of questions across all active topics,
+    ensuring rotating topic representation as much as possible.
+
+    Logic:
+    - load all active questions for the subject across all active topics
+    - exclude seen questions
+    - if no unseen questions remain at all, reset cycle
+    - rotate topic priority from start_topic_index
+    - first pick one question from as many topics as possible
+    - then fill remaining slots from leftover questions
+    - shuffle final selected set
+    - return next_topic_index for the next attempt
+    """
+    all_questions = get_all_questions_for_subject(subject_code)
+    all_question_ids = extract_question_ids(all_questions)
+
+    unseen_questions = [
+        q for q in all_questions if q.get("id") not in seen_question_ids
+    ]
+
+    result = select_rotating_balanced_subject_questions(
+        subject_code=subject_code,
+        requested_count=requested_count,
+        seen_question_ids=seen_question_ids,
+        start_topic_index=start_topic_index,
+    )
+
+    selected_questions = result.get("selected_questions") or []
+    cycle_reset = bool(result.get("cycle_reset"))
+    next_topic_index = int(result.get("next_topic_index") or 0)
+
+    return {
+        "cycle_reset": cycle_reset,
+        "all_question_ids": all_question_ids,
+        "available_count": len(unseen_questions) if unseen_questions else len(all_questions),
+        "selected_count": len(selected_questions),
+        "selected_questions": selected_questions,
+        "selected_question_ids": extract_question_ids(selected_questions),
+        "start_topic_index_used": int(start_topic_index or 0),
+        "next_topic_index": next_topic_index,
+    }
 
 # ====================================================================
 # MESSAGE HELPERS
@@ -613,3 +762,4 @@ def format_course_subjects_for_message(course_code: str) -> str:
         lines.extend(["", f"Note: {notes}"])
 
     return "\n".join(lines)
+
