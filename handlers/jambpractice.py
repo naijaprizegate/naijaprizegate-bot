@@ -2,8 +2,10 @@
 # handlers/jambpractice.py
 # ====================================================================
 
+import json
 import math
 import logging
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
@@ -19,6 +21,8 @@ from jamb_loader import (
     get_subject_topics,
     get_subject_by_code,
     prepare_topic_question_batch,
+    prepare_subject_question_batch,
+    prepare_use_of_english_batch,
 )
 
 logger = logging.getLogger(__name__)
@@ -327,6 +331,494 @@ async def complete_jamb_session(session_id: int):
 
 
 # =============================
+# Mock-by-subject helpers
+# =============================
+def get_jamb_mock_question_count(subject_code: str) -> int:
+    subject_code = str(subject_code or "").strip().lower()
+    return 60 if subject_code == "eng" else 40
+
+
+def get_jamb_mock_duration_minutes(subject_code: str) -> int:
+    subject_code = str(subject_code or "").strip().lower()
+    return 45 if subject_code == "eng" else 30
+
+
+def extract_correct_option(question: dict) -> str:
+    for key in ("correct_option", "correct_answer", "answer", "correctAnswer"):
+        value = question.get(key)
+        if value:
+            return str(value).strip().upper()
+    return ""
+
+
+def format_jamb_mock_time_remaining(exam_ends_at) -> str:
+    if not exam_ends_at:
+        return "Unknown"
+
+    if isinstance(exam_ends_at, str):
+        try:
+            exam_ends_at = datetime.fromisoformat(exam_ends_at.replace("Z", "+00:00"))
+        except Exception:
+            return "Unknown"
+
+    if exam_ends_at.tzinfo is None:
+        exam_ends_at = exam_ends_at.replace(tzinfo=timezone.utc)
+
+    now = datetime.now(timezone.utc)
+    delta = exam_ends_at - now
+    total_seconds = int(delta.total_seconds())
+
+    if total_seconds <= 0:
+        return "Time up"
+
+    hours = total_seconds // 3600
+    minutes = (total_seconds % 3600) // 60
+
+    if hours > 0:
+        return f"{hours}h {minutes}m"
+
+    return f"{minutes}m"
+
+
+def is_jamb_mock_time_expired(exam_ends_at) -> bool:
+    if not exam_ends_at:
+        return False
+
+    if isinstance(exam_ends_at, str):
+        try:
+            exam_ends_at = datetime.fromisoformat(exam_ends_at.replace("Z", "+00:00"))
+        except Exception:
+            return False
+
+    if exam_ends_at.tzinfo is None:
+        exam_ends_at = exam_ends_at.replace(tzinfo=timezone.utc)
+
+    return datetime.now(timezone.utc) >= exam_ends_at
+
+
+async def get_seen_question_ids_for_subject(user_id: int, subject_code: str) -> list[str]:
+    async with get_async_session() as session:
+        result = await session.execute(
+            text("""
+                select distinct question_id
+                from jamb_user_topic_history
+                where user_id = :user_id
+                  and subject_code = :subject_code
+            """),
+            {
+                "user_id": user_id,
+                "subject_code": subject_code,
+            },
+        )
+        rows = result.fetchall()
+        return [str(row[0]) for row in rows]
+
+
+async def reset_subject_history(user_id: int, subject_code: str):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    delete from jamb_user_topic_history
+                    where user_id = :user_id
+                      and subject_code = :subject_code
+                """),
+                {
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                },
+            )
+
+
+async def add_question_to_subject_history(
+    user_id: int,
+    subject_code: str,
+    question_id: str,
+    topic_id: str | None = None,
+):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    insert into jamb_user_topic_history (
+                        user_id,
+                        subject_code,
+                        topic_id,
+                        question_id
+                    )
+                    values (
+                        :user_id,
+                        :subject_code,
+                        :topic_id,
+                        :question_id
+                    )
+                    on conflict (user_id, subject_code, topic_id, question_id) do nothing
+                """),
+                {
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                    "topic_id": topic_id or "__mock_subject__",
+                    "question_id": question_id,
+                },
+            )
+
+
+async def deduct_paid_questions(user_id: int, question_count: int) -> bool:
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    update jamb_user_access
+                    set
+                        paid_question_credits = paid_question_credits - :question_count,
+                        total_questions_used = total_questions_used + :question_count,
+                        updated_at = now()
+                    where user_id = :user_id
+                      and paid_question_credits >= :question_count
+                    returning paid_question_credits
+                """),
+                {
+                    "user_id": user_id,
+                    "question_count": int(question_count),
+                },
+            )
+            row = result.first()
+            return row is not None
+
+
+async def get_latest_active_jamb_mock_session_for_user(user_id: int, subject_code: str) -> Optional[dict]:
+    async with get_async_session() as session:
+        result = await session.execute(
+            text("""
+                select
+                    id,
+                    user_id,
+                    subject_code,
+                    topic_id,
+                    mode,
+                    question_target,
+                    questions_served,
+                    correct_count,
+                    wrong_count,
+                    current_question_index,
+                    exam_ends_at,
+                    status,
+                    created_at,
+                    ended_at,
+                    updated_at
+                from jamb_sessions
+                where user_id = :user_id
+                  and subject_code = :subject_code
+                  and mode = 'mock_utme'
+                  and status = 'active'
+                order by id desc
+                limit 1
+            """),
+            {
+                "user_id": int(user_id),
+                "subject_code": subject_code,
+            },
+        )
+        row = result.mappings().first()
+        return dict(row) if row else None
+
+
+async def set_jamb_session_current_question_index(session_id: int, current_question_index: int):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    update jamb_sessions
+                    set
+                        current_question_index = :current_question_index,
+                        updated_at = now()
+                    where id = :session_id
+                """),
+                {
+                    "session_id": int(session_id),
+                    "current_question_index": int(current_question_index),
+                },
+            )
+
+
+async def get_jamb_session_paper(session_id: int) -> list[dict]:
+    async with get_async_session() as session:
+        result = await session.execute(
+            text("""
+                select
+                    id,
+                    session_id,
+                    user_id,
+                    subject_code,
+                    question_id,
+                    question_order,
+                    question_json,
+                    correct_option,
+                    selected_option,
+                    is_correct,
+                    created_at,
+                    updated_at
+                from jamb_session_questions
+                where session_id = :session_id
+                order by question_order asc
+            """),
+            {"session_id": int(session_id)},
+        )
+        rows = result.mappings().all()
+        return [dict(row) for row in rows]
+
+
+async def create_jamb_subject_mock_paper_if_needed(
+    user_id: int,
+    session_id: int,
+    subject_code: str,
+) -> dict:
+    existing_paper = await get_jamb_session_paper(session_id)
+    if existing_paper:
+        return {
+            "created_now": False,
+            "paper_rows": existing_paper,
+            "selected_count": len(existing_paper),
+            "cycle_reset": False,
+        }
+
+    seen_question_ids = await get_seen_question_ids_for_subject(user_id, subject_code)
+    requested_count = get_jamb_mock_question_count(subject_code)
+
+    if subject_code == "eng":
+        batch = prepare_use_of_english_batch(
+            seen_question_ids=seen_question_ids,
+        )
+    else:
+        batch = prepare_subject_question_batch(
+            subject_code=subject_code,
+            requested_count=requested_count,
+            seen_question_ids=seen_question_ids,
+        )
+
+    if batch.get("cycle_reset"):
+        await reset_subject_history(user_id, subject_code)
+
+    selected_questions = batch["selected_questions"]
+
+    async with get_async_session() as session:
+        async with session.begin():
+            for idx, question in enumerate(selected_questions, start=1):
+                await session.execute(
+                    text("""
+                        insert into jamb_session_questions (
+                            session_id,
+                            user_id,
+                            subject_code,
+                            question_id,
+                            question_order,
+                            question_json,
+                            correct_option,
+                            selected_option,
+                            is_correct,
+                            created_at,
+                            updated_at
+                        )
+                        values (
+                            :session_id,
+                            :user_id,
+                            :subject_code,
+                            :question_id,
+                            :question_order,
+                            :question_json,
+                            :correct_option,
+                            null,
+                            null,
+                            now(),
+                            now()
+                        )
+                        on conflict (session_id, question_id) do nothing
+                    """),
+                    {
+                        "session_id": int(session_id),
+                        "user_id": int(user_id),
+                        "subject_code": subject_code,
+                        "question_id": str(question.get("id")),
+                        "question_order": idx,
+                        "question_json": json.dumps(question),
+                        "correct_option": extract_correct_option(question),
+                    },
+                )
+
+    for question in selected_questions:
+        await add_question_to_subject_history(
+            user_id=user_id,
+            subject_code=subject_code,
+            question_id=str(question.get("id")),
+            topic_id=str(question.get("topic_id") or "__mock_subject__"),
+        )
+
+    paper_rows = await get_jamb_session_paper(session_id)
+
+    return {
+        "created_now": True,
+        "paper_rows": paper_rows,
+        "selected_count": len(paper_rows),
+        "cycle_reset": bool(batch.get("cycle_reset")),
+    }
+
+
+async def create_jamb_mock_session(
+    user_id: int,
+    subject_code: str,
+    question_target: int,
+) -> int:
+    exam_ends_at = datetime.now(timezone.utc) + timedelta(
+        minutes=get_jamb_mock_duration_minutes(subject_code)
+    )
+
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    insert into jamb_sessions (
+                        user_id,
+                        subject_code,
+                        topic_id,
+                        mode,
+                        question_target,
+                        current_question_index,
+                        exam_ends_at,
+                        status,
+                        updated_at
+                    )
+                    values (
+                        :user_id,
+                        :subject_code,
+                        :topic_id,
+                        'mock_utme',
+                        :question_target,
+                        0,
+                        :exam_ends_at,
+                        'active',
+                        now()
+                    )
+                    returning id
+                """),
+                {
+                    "user_id": int(user_id),
+                    "subject_code": subject_code,
+                    "topic_id": "__mock_subject__",
+                    "question_target": int(question_target),
+                    "exam_ends_at": exam_ends_at,
+                },
+            )
+            session_id = result.scalar_one()
+            return int(session_id)
+
+
+async def get_jamb_session_by_id(session_id: int) -> Optional[dict]:
+    async with get_async_session() as session:
+        result = await session.execute(
+            text("""
+                select
+                    id,
+                    user_id,
+                    subject_code,
+                    topic_id,
+                    mode,
+                    question_target,
+                    questions_served,
+                    correct_count,
+                    wrong_count,
+                    current_question_index,
+                    exam_ends_at,
+                    status,
+                    created_at,
+                    ended_at,
+                    updated_at
+                from jamb_sessions
+                where id = :session_id
+                limit 1
+            """),
+            {"session_id": int(session_id)},
+        )
+        row = result.mappings().first()
+        return dict(row) if row else None
+
+
+def build_jamb_mock_resume_text(subject_name: str, next_question_no: int, exam_ends_at) -> str:
+    safe_subject_name = md_escape(str(subject_name))
+    safe_next_question_no = md_escape(str(next_question_no))
+    safe_remaining = md_escape(format_jamb_mock_time_remaining(exam_ends_at))
+
+    return (
+        f"📝 *Resume Mock UTME*\n\n"
+        f"📘 Subject: *{safe_subject_name}*\n"
+        f"⏱ Time Remaining: *{safe_remaining}*\n"
+        f"➡ Resume From: *Question {safe_next_question_no}*\n\n"
+        "Tap below to continue your subject mock\\."
+    )
+
+
+def make_jamb_mock_resume_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("▶ Resume Mock", callback_data="jp_mock_resume")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+
+def build_jamb_mock_access_text(subject_name: str, question_count: int, paid_credits: int) -> str:
+    safe_subject_name = md_escape(str(subject_name))
+    safe_question_count = md_escape(str(question_count))
+    safe_paid_credits = md_escape(str(paid_credits))
+    duration_text = "45 minutes" if question_count == 60 else "30 minutes"
+    safe_duration = md_escape(duration_text)
+
+    return (
+        f"📝 *Mock UTME \\(By Subject\\)*\n\n"
+        f"📘 Subject: *{safe_subject_name}*\n"
+        f"📚 Questions: *{safe_question_count}*\n"
+        f"⏱ Time Allowed: *{safe_duration}*\n"
+        f"💳 Paid Credits Available: *{safe_paid_credits}*\n\n"
+        "This mode uses a full subject paper and is paid only\\.\n"
+        "If you have enough credits, you can start immediately\\."
+    )
+
+
+def make_jamb_mock_access_keyboard(subject_code: str, can_start: bool) -> InlineKeyboardMarkup:
+    rows = []
+
+    if can_start:
+        rows.append([InlineKeyboardButton("▶ Start Mock Now", callback_data="jp_mock_start_paid")])
+
+    rows.extend([
+        [InlineKeyboardButton("💳 Get 50 Questions — ₦100", callback_data="jp_buy_50")],
+        [InlineKeyboardButton("💳 Get 100 Questions — ₦200", callback_data="jp_buy_100")],
+        [InlineKeyboardButton("💳 Get 150 Questions — ₦300", callback_data="jp_buy_150")],
+        [InlineKeyboardButton("💳 Get 200 Questions — ₦400", callback_data="jp_buy_200")],
+        [InlineKeyboardButton("⬅️ Back to Mode", callback_data=f"jp_back_mode_{subject_code}")],
+        [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+    ])
+
+    return InlineKeyboardMarkup(rows)
+
+def build_jamb_batch_from_paper_rows(paper_rows: list[dict]) -> list[dict]:
+    batch = []
+
+    for row in paper_rows:
+        payload = row.get("question_json")
+
+        if isinstance(payload, str):
+            try:
+                payload = json.loads(payload)
+            except Exception:
+                payload = {}
+        elif not isinstance(payload, dict):
+            payload = {}
+
+        batch.append(payload)
+
+    return batch
+
+# =============================
 # Keyboards
 # =============================
 def make_subject_keyboard():
@@ -589,16 +1081,52 @@ async def jamb_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         subject_code = data.replace("jp_mode_mock_", "", 1)
         context.user_data["jp_subject_code"] = subject_code
         context.user_data["jp_mode"] = "mock_utme"
+        context.user_data["jp_topic_id"] = None
+
+        tg = update.effective_user
+        user_id = tg.id
 
         subject = get_subject_by_code(subject_code)
-        safe_subject_name = md_escape(str(subject["name"]))
+        if not subject:
+            return await query.message.reply_text(
+                "⚠️ Subject not found\\.",
+                parse_mode="MarkdownV2",
+            )
+
+        active_session = await get_latest_active_jamb_mock_session_for_user(
+            user_id=user_id,
+            subject_code=subject_code,
+        )
+
+        if active_session and not is_jamb_mock_time_expired(active_session.get("exam_ends_at")):
+            context.user_data["jp_session_id"] = int(active_session["id"])
+            context.user_data["jp_session_mode"] = "mock_utme"
+
+            next_question_no = max(1, int(active_session.get("current_question_index") or 0) + 1)
+
+            return await query.message.reply_text(
+                build_jamb_mock_resume_text(
+                    subject_name=subject["name"],
+                    next_question_no=next_question_no,
+                    exam_ends_at=active_session.get("exam_ends_at"),
+                ),
+                parse_mode="MarkdownV2",
+                reply_markup=make_jamb_mock_resume_keyboard(),
+            )
+
+        access = await get_jamb_user_access(user_id)
+        paid_credits = int((access or {}).get("paid_question_credits", 0))
+        question_count = get_jamb_mock_question_count(subject_code)
+        can_start = paid_credits >= question_count
 
         return await query.message.reply_text(
-            f"📝 *Mock UTME for {safe_subject_name}*\n\n"
-            "Mock UTME mode is coming next\\.\n"
-            "For now, please use *By Topics* while we complete the full flow\\.",
+            build_jamb_mock_access_text(
+                subject_name=subject["name"],
+                question_count=question_count,
+                paid_credits=paid_credits,
+            ),
             parse_mode="MarkdownV2",
-            reply_markup=make_mode_keyboard(subject_code),
+            reply_markup=make_jamb_mock_access_keyboard(subject_code, can_start),
         )
 
 
@@ -914,8 +1442,17 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
 # Question serving
 # =============================
 async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    session_mode = context.user_data.get("jp_session_mode")
+    session_id = context.user_data.get("jp_session_id")
     batch = context.user_data.get("jp_question_batch") or []
     current_index = int(context.user_data.get("jp_current_index", 0))
+
+    # Reload mock paper from DB if needed
+    if session_mode == "mock_utme" and not batch and session_id:
+        paper_rows = await get_jamb_session_paper(int(session_id))
+        batch = build_jamb_batch_from_paper_rows(paper_rows)
+        context.user_data["jp_question_batch"] = batch
+        context.user_data["jp_question_ids"] = [str(q.get("id")) for q in batch if q.get("id")]
 
     if not batch:
         return await update.effective_message.reply_text(
@@ -923,8 +1460,38 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
             parse_mode="MarkdownV2",
         )
 
+    session_row = None
+    if session_mode == "mock_utme" and session_id:
+        session_row = await get_jamb_session_by_id(int(session_id))
+        if not session_row:
+            return await update.effective_message.reply_text(
+                "⚠️ Mock session could not be reloaded\\.",
+                parse_mode="MarkdownV2",
+            )
+
+        if is_jamb_mock_time_expired(session_row.get("exam_ends_at")):
+            await complete_jamb_session(int(session_id))
+
+            safe_total = md_escape(str(len(batch)))
+            safe_correct_count = md_escape(str(session_row.get("correct_count") or 0))
+            safe_wrong_count = md_escape(str(session_row.get("wrong_count") or 0))
+
+            return await update.effective_message.reply_text(
+                f"⏰ *Mock time is up\\.*\n\n"
+                f"📚 Total Questions: *{safe_total}*\n"
+                f"✅ Correct: *{safe_correct_count}*\n"
+                f"❌ Wrong: *{safe_wrong_count}*\n\n"
+                "This subject mock has ended\\.",
+                parse_mode="MarkdownV2",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [InlineKeyboardButton("🎓 JAMB Practice", callback_data="jambpractice")],
+                        [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+                    ]
+                ),
+            )
+
     if current_index >= len(batch):
-        session_id = context.user_data.get("jp_session_id")
         if session_id:
             await complete_jamb_session(int(session_id))
 
@@ -936,12 +1503,19 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
         safe_correct_count = md_escape(str(correct_count))
         safe_wrong_count = md_escape(str(wrong_count))
 
+        title = "✅ *Mock Completed*" if session_mode == "mock_utme" else "✅ *Practice Completed*"
+        outro = (
+            "Great job\\. You can return to JAMB Practice for another subject\\."
+            if session_mode == "mock_utme"
+            else "Great job\\. You can return to JAMB Practice for another topic\\."
+        )
+
         return await update.effective_message.reply_text(
-            f"✅ *Practice Completed*\n\n"
+            f"{title}\n\n"
             f"📚 Total Questions: *{safe_total}*\n"
             f"✅ Correct: *{safe_correct_count}*\n"
             f"❌ Wrong: *{safe_wrong_count}*\n\n"
-            "Great job\\. You can return to JAMB Practice for another topic\\.",
+            f"{outro}",
             parse_mode="MarkdownV2",
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -960,9 +1534,7 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
     question_id = str(question["id"])
     user_id = update.effective_user.id
     subject_code = context.user_data.get("jp_subject_code")
-    topic_id = context.user_data.get("jp_topic_id")
-    session_id = context.user_data.get("jp_session_id")
-    session_mode = context.user_data.get("jp_session_mode")
+    topic_id = str(question.get("topic_id") or context.user_data.get("jp_topic_id") or "__mock_subject__")
     served_question_ids = context.user_data.get("jp_served_question_ids", [])
     shown_passages = context.user_data.get("jp_shown_passages", [])
     last_passage = context.user_data.get("jp_last_passage")
@@ -976,6 +1548,17 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
                     "⚠️ You have no free question balance left\\.\n\nPlease buy a question pack to continue\\.",
                     parse_mode="MarkdownV2",
                 )
+
+            await add_question_to_topic_history(
+                user_id=user_id,
+                subject_code=subject_code,
+                topic_id=topic_id,
+                question_id=question_id,
+            )
+
+            if session_id:
+                await increment_jamb_session_served(int(session_id))
+
         elif session_mode == "paid_session":
             deducted = await deduct_one_paid_question(user_id)
             if not deducted:
@@ -984,15 +1567,19 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
                     parse_mode="MarkdownV2",
                 )
 
-        await add_question_to_topic_history(
-            user_id=user_id,
-            subject_code=subject_code,
-            topic_id=topic_id,
-            question_id=question_id,
-        )
+            await add_question_to_topic_history(
+                user_id=user_id,
+                subject_code=subject_code,
+                topic_id=topic_id,
+                question_id=question_id,
+            )
 
-        if session_id:
-            await increment_jamb_session_served(int(session_id))
+            if session_id:
+                await increment_jamb_session_served(int(session_id))
+
+        elif session_mode == "mock_utme":
+            if session_id:
+                await increment_jamb_session_served(int(session_id))
 
         served_question_ids.append(question_id)
         context.user_data["jp_served_question_ids"] = served_question_ids
@@ -1000,18 +1587,19 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
     context.user_data["jp_current_question"] = question
     context.user_data["jp_answered_current"] = False
 
+    if session_mode == "mock_utme" and session_id:
+        await set_jamb_session_current_question_index(int(session_id), current_index)
+
     # Show comprehension passage before the question
     if question_type == "comprehension_mcq" and passage:
         should_show_passage = False
 
         if passage_id:
-            # Preferred method when passage_id exists
             if passage_id not in shown_passages:
                 should_show_passage = True
                 shown_passages.append(passage_id)
                 context.user_data["jp_shown_passages"] = shown_passages
         else:
-            # Fallback for current JSON files without passage_id
             if passage != last_passage:
                 should_show_passage = True
                 context.user_data["jp_last_passage"] = passage
@@ -1031,6 +1619,17 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
     safe_question_no = md_escape(str(current_index + 1))
     safe_total = md_escape(str(len(batch)))
 
+    header_lines = []
+    if session_mode == "mock_utme":
+        remaining = format_jamb_mock_time_remaining((session_row or {}).get("exam_ends_at"))
+        safe_remaining = md_escape(str(remaining))
+        header_lines.append("📝 *Mock UTME \\(By Subject\\)*")
+        header_lines.append(f"⏱ Time Remaining: *{safe_remaining}*")
+    else:
+        header_lines.append("📘 *JAMB Practice*")
+
+    header_lines.append(f"Question {safe_question_no} of {safe_total}")
+
     option_lines = []
     for key in ["A", "B", "C", "D", "E"]:
         if key in options:
@@ -1038,9 +1637,9 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
             option_lines.append(f"{key}\\. {safe_option_text}")
 
     text_msg = (
-        f"📘 *JAMB Practice*\n"
-        f"Question {safe_question_no} of {safe_total}\n\n"
-        f"{safe_question_text}\n\n"
+        "\n".join(header_lines)
+        + "\n\n"
+        + f"{safe_question_text}\n\n"
         + "\n".join(option_lines)
     )
 
@@ -1115,11 +1714,14 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         )
 
     session_id = int(session_id_raw)
+    session_mode = context.user_data.get("jp_session_mode")
     subject_code = context.user_data.get("jp_subject_code")
-    topic_id = context.user_data.get("jp_topic_id")
+    topic_id = str(question.get("topic_id") or context.user_data.get("jp_topic_id") or "__mock_subject__")
     question_id = str(question["id"])
-    correct_option = str(question["answer"])
+    correct_option = str(question["answer"]).strip().upper()
+    selected_option = str(selected_option).strip().upper()
     is_correct = selected_option == correct_option
+    question_order = int(context.user_data.get("jp_current_index", 0)) + 1
 
     await record_jamb_attempt(
         session_id=session_id,
@@ -1133,6 +1735,27 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
     )
 
     await increment_jamb_session_result(session_id, is_correct)
+
+    if session_mode == "mock_utme":
+        async with get_async_session() as session:
+            async with session.begin():
+                await session.execute(
+                    text("""
+                        update jamb_session_questions
+                        set
+                            selected_option = :selected_option,
+                            is_correct = :is_correct,
+                            updated_at = now()
+                        where session_id = :session_id
+                          and question_order = :question_order
+                    """),
+                    {
+                        "session_id": int(session_id),
+                        "question_order": int(question_order),
+                        "selected_option": selected_option,
+                        "is_correct": bool(is_correct),
+                    },
+                )
 
     context.user_data["jp_answered_current"] = True
     context.user_data["jp_last_selected_option"] = selected_option
@@ -1183,6 +1806,7 @@ async def jamb_answer_details_handler(update: Update, context: ContextTypes.DEFA
     steps = explanation.get("steps", [])
     if not isinstance(steps, list):
         steps = []
+
     final_answer = explanation.get("final_answer", "")
     simple_explanation = explanation.get("simple_explanation", "")
 
@@ -1408,6 +2032,201 @@ async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
         ),
     )
 
+
+async def jamb_mock_start_paid_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    tg = update.effective_user
+    user_id = tg.id
+
+    subject_code = context.user_data.get("jp_subject_code")
+    if not subject_code:
+        return await query.message.reply_text(
+            "⚠️ Subject session data missing\\. Please choose your subject again\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    subject = get_subject_by_code(subject_code)
+    if not subject:
+        return await query.message.reply_text(
+            "⚠️ Subject not found\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    question_target = get_jamb_mock_question_count(subject_code)
+    paid_credits = await get_paid_question_credits(user_id)
+
+    if paid_credits < question_target:
+        safe_paid_credits = md_escape(str(paid_credits))
+        safe_question_target = md_escape(str(question_target))
+
+        return await query.message.reply_text(
+            f"⚠️ You do not have enough paid JAMB credits for this mock\\.\n\n"
+            f"💳 Available credits: *{safe_paid_credits}*\n"
+            f"📚 Required credits: *{safe_question_target}*\n\n"
+            "Please buy more credits and try again\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    deducted = await deduct_paid_questions(user_id, question_target)
+    if not deducted:
+        return await query.message.reply_text(
+            "⚠️ Could not reserve your paid credits for this mock right now\\. Please try again\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    session_id = await create_jamb_mock_session(
+        user_id=user_id,
+        subject_code=subject_code,
+        question_target=question_target,
+    )
+
+    paper_info = await create_jamb_subject_mock_paper_if_needed(
+        user_id=user_id,
+        session_id=session_id,
+        subject_code=subject_code,
+    )
+
+    paper_rows = paper_info.get("paper_rows") or []
+    batch = build_jamb_batch_from_paper_rows(paper_rows)
+
+    if not batch:
+        return await query.message.reply_text(
+            "⚠️ No active questions could be prepared for this mock paper yet\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    session_row = await get_jamb_session_by_id(session_id)
+    exam_ends_at = (session_row or {}).get("exam_ends_at")
+
+    context.user_data["jp_session_id"] = session_id
+    context.user_data["jp_session_mode"] = "mock_utme"
+    context.user_data["jp_mode"] = "mock_utme"
+    context.user_data["jp_topic_id"] = None
+    context.user_data["jp_question_batch"] = batch
+    context.user_data["jp_question_ids"] = [str(q.get("id")) for q in batch if q.get("id")]
+    context.user_data["jp_current_index"] = 0
+    context.user_data["jp_session_target"] = len(batch)
+    context.user_data["jp_correct_count"] = 0
+    context.user_data["jp_wrong_count"] = 0
+    context.user_data["jp_current_question"] = None
+    context.user_data["jp_answered_current"] = False
+    context.user_data["jp_served_question_ids"] = []
+    context.user_data["jp_shown_passages"] = []
+    context.user_data["jp_last_passage"] = None
+
+    safe_subject_name = md_escape(str(subject["name"]))
+    safe_question_target = md_escape(str(question_target))
+    safe_duration = md_escape(format_jamb_mock_time_remaining(exam_ends_at))
+
+    reset_note = (
+        "\n♻️ Subject cycle reset because you already exhausted the unseen pool before\\."
+        if paper_info.get("cycle_reset")
+        else ""
+    )
+
+    await query.message.reply_text(
+        f"📝 *Subject Mock Started*\n\n"
+        f"📘 Subject: *{safe_subject_name}*\n"
+        f"📚 Questions: *{safe_question_target}*\n"
+        f"⏱ Time Allowed: *{safe_duration}*"
+        f"{reset_note}\n\n"
+        "Tap below to start Question 1\\.",
+        parse_mode="MarkdownV2",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("▶ Start Questions", callback_data="jp_serve_first")],
+                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+            ]
+        ),
+    )
+
+async def jamb_mock_resume_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    tg = update.effective_user
+    user_id = tg.id
+    subject_code = context.user_data.get("jp_subject_code")
+
+    if not subject_code:
+        return await query.message.reply_text(
+            "⚠️ Subject session data missing\\. Please choose your subject again\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    active_session = await get_latest_active_jamb_mock_session_for_user(
+        user_id=user_id,
+        subject_code=subject_code,
+    )
+
+    if not active_session:
+        return await query.message.reply_text(
+            "⚠️ No active subject mock was found for this subject\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    session_id = int(active_session["id"])
+
+    if is_jamb_mock_time_expired(active_session.get("exam_ends_at")):
+        await complete_jamb_session(session_id)
+
+        safe_correct = md_escape(str(active_session.get("correct_count") or 0))
+        safe_wrong = md_escape(str(active_session.get("wrong_count") or 0))
+        safe_total = md_escape(str(active_session.get("question_target") or 0))
+
+        return await query.message.reply_text(
+            f"⏰ *Mock time is up\\.*\n\n"
+            f"📚 Total Questions: *{safe_total}*\n"
+            f"✅ Correct: *{safe_correct}*\n"
+            f"❌ Wrong: *{safe_wrong}*\n\n"
+            "This subject mock has ended\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    paper_rows = await get_jamb_session_paper(session_id)
+    batch = build_jamb_batch_from_paper_rows(paper_rows)
+
+    if not batch:
+        return await query.message.reply_text(
+            "⚠️ Could not reload your saved mock paper\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    current_index = int(active_session.get("current_question_index") or 0)
+
+    already_served_ids = []
+    for i, row in enumerate(paper_rows):
+        if i <= current_index:
+            qid = row.get("question_id")
+            if qid:
+                already_served_ids.append(str(qid))
+
+    context.user_data["jp_session_id"] = session_id
+    context.user_data["jp_session_mode"] = "mock_utme"
+    context.user_data["jp_mode"] = "mock_utme"
+    context.user_data["jp_question_batch"] = batch
+    context.user_data["jp_question_ids"] = [str(q.get("id")) for q in batch if q.get("id")]
+    context.user_data["jp_current_index"] = current_index
+    context.user_data["jp_session_target"] = len(batch)
+    context.user_data["jp_correct_count"] = int(active_session.get("correct_count") or 0)
+    context.user_data["jp_wrong_count"] = int(active_session.get("wrong_count") or 0)
+    context.user_data["jp_current_question"] = None
+    context.user_data["jp_answered_current"] = False
+    context.user_data["jp_served_question_ids"] = already_served_ids
+    context.user_data["jp_shown_passages"] = []
+    context.user_data["jp_last_passage"] = None
+
+    await send_current_jamb_question(update, context)
+
+
 # =============================
 # Register handlers
 # =============================
@@ -1416,6 +2235,10 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jambpractice_handler, pattern=r"^jambpractice$"))
     application.add_handler(CallbackQueryHandler(jamb_subject_handler, pattern=r"^jp_subj_"))
     application.add_handler(CallbackQueryHandler(jamb_mode_handler, pattern=r"^jp_mode_"))
+
+    application.add_handler(CallbackQueryHandler(jamb_mock_start_paid_handler, pattern=r"^jp_mock_start_paid$"))
+    application.add_handler(CallbackQueryHandler(jamb_mock_resume_handler, pattern=r"^jp_mock_resume$"))
+
     application.add_handler(CallbackQueryHandler(jamb_topic_page_handler, pattern=r"^jp_topicpage_"))
     application.add_handler(CallbackQueryHandler(jamb_topic_handler, pattern=r"^jp_topic::"))
     application.add_handler(CallbackQueryHandler(jamb_back_mode_handler, pattern=r"^jp_back_mode_"))
@@ -1427,5 +2250,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next$"))
-
 
