@@ -489,16 +489,12 @@ def select_rotating_balanced_subject_questions(
     """
     Select subject questions across active topics using a rotating topic start.
 
-    Logic:
-    - load all active topics for the subject
-    - rotate topic order from start_topic_index
-    - first pick one unseen question from each topic in rotated order
-    - if unseen questions are exhausted for all topics, fall back to all active questions
-    - then fill remaining slots from leftover questions in the same rotated topic order
-    - shuffle final result before returning
+    Rules:
+    - if topic count is 20 or less, try to take up to 2 questions per topic first
+    - if topic count is above 20, try to take 1 question per topic first
+    - after the first pass, fill remaining slots from leftover questions
+    - if unseen questions are exhausted everywhere, reset cycle and use all active questions
     - return next_topic_index so future attempts can continue from where this one stopped
-
-    This is useful when a subject has more topics than the requested question count.
     """
     topics = get_subject_topics(subject_code)
     if not topics:
@@ -509,6 +505,12 @@ def select_rotating_balanced_subject_questions(
         }
 
     rotated_topics = rotate_topic_list(topics, start_topic_index)
+    topic_count = len(rotated_topics)
+
+    # New rule:
+    # <= 20 topics => up to 2 questions per topic first
+    # > 20 topics  => 1 question per topic first
+    initial_per_topic_target = 2 if topic_count <= 20 else 1
 
     topic_buckets: List[Dict[str, Any]] = []
     fallback_topic_buckets: List[Dict[str, Any]] = []
@@ -550,7 +552,7 @@ def select_rotating_balanced_subject_questions(
     represented_topic_ids: List[str] = []
 
     # PASS 1:
-    # take one question from each topic bucket in rotated order
+    # Take up to initial_per_topic_target from each topic in rotated order
     for bucket in topic_buckets:
         if len(selected_questions) >= requested_count:
             break
@@ -558,20 +560,26 @@ def select_rotating_balanced_subject_questions(
         topic_id = str(bucket.get("topic_id") or "").strip()
         questions = bucket.get("questions") or []
 
-        chosen = None
+        picked_from_this_topic = 0
+
         for question in questions:
-            qid = question.get("id")
-            if qid and qid not in selected_ids:
-                chosen = question
+            if len(selected_questions) >= requested_count:
                 break
 
-        if chosen:
-            selected_questions.append(chosen)
-            selected_ids.add(chosen["id"])
+            if picked_from_this_topic >= initial_per_topic_target:
+                break
+
+            qid = question.get("id")
+            if qid and qid not in selected_ids:
+                selected_questions.append(question)
+                selected_ids.add(qid)
+                picked_from_this_topic += 1
+
+        if picked_from_this_topic > 0:
             represented_topic_ids.append(topic_id)
 
     # PASS 2:
-    # fill the remaining slots from leftover questions in the same rotated order
+    # Fill the remaining slots from leftover questions in the same rotated order
     for bucket in topic_buckets:
         if len(selected_questions) >= requested_count:
             break
@@ -590,11 +598,10 @@ def select_rotating_balanced_subject_questions(
     # Final shuffle so the paper does not appear topic-grouped
     selected_questions = shuffle_questions(selected_questions)
 
-    # Figure out where next attempt should begin
-    # If we represented 40 topics this time, next time start after the 40th covered topic
+    # Compute next topic pointer for future attempts
     if represented_topic_ids:
-        covered_count = min(len(represented_topic_ids), len(rotated_topics), requested_count)
-        next_topic_index = (start_topic_index + covered_count) % len(rotated_topics)
+        covered_topic_count = min(len(represented_topic_ids), len(rotated_topics))
+        next_topic_index = (start_topic_index + covered_topic_count) % len(rotated_topics)
     else:
         next_topic_index = start_topic_index % len(rotated_topics)
 
@@ -672,16 +679,6 @@ def prepare_subject_question_batch(
     """
     Prepare a subject-wide batch of questions across all active topics,
     ensuring rotating topic representation as much as possible.
-
-    Logic:
-    - load all active questions for the subject across all active topics
-    - exclude seen questions
-    - if no unseen questions remain at all, reset cycle
-    - rotate topic priority from start_topic_index
-    - first pick one question from as many topics as possible
-    - then fill remaining slots from leftover questions
-    - shuffle final selected set
-    - return next_topic_index for the next attempt
     """
     all_questions = get_all_questions_for_subject(subject_code)
     all_question_ids = extract_question_ids(all_questions)
@@ -711,6 +708,7 @@ def prepare_subject_question_batch(
         "start_topic_index_used": int(start_topic_index or 0),
         "next_topic_index": next_topic_index,
     }
+
 
 # ====================================================================
 # MESSAGE HELPERS
@@ -762,4 +760,5 @@ def format_course_subjects_for_message(course_code: str) -> str:
         lines.extend(["", f"Note: {notes}"])
 
     return "\n".join(lines)
+
 
