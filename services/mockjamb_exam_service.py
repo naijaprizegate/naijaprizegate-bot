@@ -37,6 +37,66 @@ def _extract_correct_option(question: dict[str, Any]) -> str | None:
     return None
 
 
+async def get_mockjamb_topic_rotation_start(
+    session: AsyncSession,
+    *,
+    user_id: int,
+    subject_code: str,
+) -> int:
+    result = await session.execute(
+        text("""
+            select next_topic_index
+            from public.mockjamb_topic_rotation
+            where user_id = :user_id
+              and subject_code = :subject_code
+            limit 1
+        """),
+        {
+            "user_id": int(user_id),
+            "subject_code": str(subject_code).strip().lower(),
+        },
+    )
+    row = result.mappings().first()
+    if not row:
+        return 0
+    return int(row.get("next_topic_index") or 0)
+
+
+async def save_mockjamb_topic_rotation_start(
+    session: AsyncSession,
+    *,
+    user_id: int,
+    subject_code: str,
+    next_topic_index: int,
+) -> None:
+    await session.execute(
+        text("""
+            insert into public.mockjamb_topic_rotation (
+                user_id,
+                subject_code,
+                next_topic_index,
+                created_at,
+                updated_at
+            )
+            values (
+                :user_id,
+                :subject_code,
+                :next_topic_index,
+                now(),
+                now()
+            )
+            on conflict (user_id, subject_code)
+            do update set
+                next_topic_index = excluded.next_topic_index,
+                updated_at = now()
+        """),
+        {
+            "user_id": int(user_id),
+            "subject_code": str(subject_code).strip().lower(),
+            "next_topic_index": int(next_topic_index or 0),
+        },
+    )
+
 async def get_mockjamb_subject_paper(
     session: AsyncSession,
     *,
@@ -152,10 +212,24 @@ async def create_mockjamb_subject_paper_if_needed(
             seen_question_ids=seen_question_ids,
         )
     else:
+        start_topic_index = await get_mockjamb_topic_rotation_start(
+            session,
+            user_id=int(user_id),
+            subject_code=subject_code,
+        )
+
         batch = prepare_subject_question_batch(
             subject_code=subject_code,
             requested_count=requested_count,
             seen_question_ids=seen_question_ids,
+            start_topic_index=start_topic_index,
+        )
+
+        await save_mockjamb_topic_rotation_start(
+            session,
+            user_id=int(user_id),
+            subject_code=subject_code,
+            next_topic_index=int(batch.get("next_topic_index") or 0),
         )
 
     if subject_code == "eng" and int(batch.get("selected_count") or 0) != 60:
@@ -233,6 +307,8 @@ async def create_mockjamb_subject_paper_if_needed(
         "selected_count": batch["selected_count"],
         "paper_rows": paper_rows,
         "selected_question_ids": selected_question_ids,
+        "start_topic_index_used": batch.get("start_topic_index_used"),
+        "next_topic_index": batch.get("next_topic_index"),
     }
 
 
