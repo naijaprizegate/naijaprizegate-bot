@@ -32,6 +32,8 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 def _product_type_from_tx_ref(tx_ref: str) -> str:
     tx_ref = (tx_ref or "").upper().strip()
 
+    if tx_ref.startswith("JAMBMOCKSUBJECT-"):
+        return "JAMBMOCKSUBJECT"
     if tx_ref.startswith("JAMB-"):
         return "JAMB"
     if tx_ref.startswith("MOCKJAMB-"):
@@ -48,6 +50,9 @@ def _success_url(tx_ref: str, product_type: str) -> str:
     if product_type == "JAMB":
         return f"https://t.me/{BOT_USERNAME}?start=payok_jamb_{tx_ref}"
 
+    if product_type == "JAMBMOCKSUBJECT":
+        return f"https://t.me/{BOT_USERNAME}?start=payok_jambmocksubject_{tx_ref}"
+
     if product_type == "MOCKJAMB":
         return f"https://t.me/{BOT_USERNAME}?start=payok_mockjamb_{tx_ref}"
 
@@ -59,6 +64,9 @@ def _failed_url(tx_ref: str, product_type: str) -> str:
 
     if product_type == "JAMB":
         return f"https://t.me/{BOT_USERNAME}?start=payfail_jamb_{tx_ref}"
+
+    if product_type == "JAMBMOCKSUBJECT":
+        return f"https://t.me/{BOT_USERNAME}?start=payfail_jambmocksubject_{tx_ref}"
 
     if product_type == "MOCKJAMB":
         return f"https://t.me/{BOT_USERNAME}?start=payfail_mockjamb_{tx_ref}"
@@ -90,6 +98,13 @@ async def _send_payment_success_message(
                 f"You received *{amount_or_units}* JAMB question credit"
                 f"{'s' if amount_or_units != 1 else ''} 📚\n\n"
                 "You can now continue your JAMB Practice."
+            )
+        elif product_type == "JAMBMOCKSUBJECT":
+            text = (
+                "🎉 *Payment Successful!*\n\n"
+                f"You received *{amount_or_units}* mock session"
+                f"{'s' if amount_or_units != 1 else ''} 🎟\n\n"
+                "You can now continue your Mock UTME \\(By Subject\\)."
             )
         elif product_type == "MOCKJAMB":
             text = (
@@ -127,8 +142,8 @@ async def _finalize_from_verified_data(
     flw_tx_id = str(verified.get("flw_tx_id") or "")
 
     raw_product_type = meta.get("product_type") or _product_type_from_tx_ref(tx_ref)
-    product_type = str(raw_product_type).upper().strip()
-
+    product_type = str(raw_product_type).upper().strip()    
+    
     if product_type == "JAMB":
         tg_id_raw = meta.get("tg_id")
         if not tg_id_raw:
@@ -159,6 +174,45 @@ async def _finalize_from_verified_data(
             "display_amount": credits,
         }
 
+    
+    if product_type == "JAMBMOCKSUBJECT":
+        tg_id_raw = meta.get("tg_id")
+        mock_sessions_added_raw = meta.get("mock_sessions_added")
+
+        if not tg_id_raw:
+            payment = await get_jamb_payment(session, tx_ref)
+            tg_id_raw = payment.get("user_id") if payment else None
+            mock_sessions_added_raw = (
+                mock_sessions_added_raw
+                or (payment.get("mock_sessions_added") if payment else None)
+            )
+
+        if not tg_id_raw:
+            return "JAMBMOCKSUBJECT", {
+                "status": "error",
+                "reason": "missing_tg_id",
+                "credited_now": False,
+            }
+
+        did_credit, payment, credits, mock_sessions = await finalize_jamb_payment(
+            session,
+            payment_reference=tx_ref,
+            user_id=int(tg_id_raw),
+            amount_paid=amount,
+            question_credits_added=0,
+            mock_sessions_added=int(mock_sessions_added_raw or 0),
+        )
+
+        return "JAMBMOCKSUBJECT", {
+            "status": "successful" if payment else "error",
+            "credited_now": did_credit,
+            "credits": credits,
+            "mock_sessions": mock_sessions,
+            "tg_id": int(tg_id_raw),
+            "payment": payment,
+            "display_amount": mock_sessions,
+        }
+    
     if product_type == "MOCKJAMB":
         tg_id_raw = meta.get("tg_id")
         if not tg_id_raw:
@@ -291,6 +345,12 @@ async def flutterwave_webhook(
                 product_type="JAMB",
                 amount_or_units=int(info["credits"]),
             )
+        elif product_type == "JAMBMOCKSUBJECT":
+            await _send_payment_success_message(
+                tg_id=int(info["tg_id"]),
+                product_type="JAMBMOCKSUBJECT",
+                amount_or_units=int(info["mock_sessions"]),
+            )
         elif product_type == "TRIVIA":
             await _send_payment_success_message(
                 tg_id=int(info["tg_id"]),
@@ -356,6 +416,12 @@ async def flutterwave_redirect(
                             product_type="JAMB",
                             amount_or_units=int(info["credits"]),
                         )
+                    elif product_type == "JAMBMOCKSUBJECT":
+                        await _send_payment_success_message(
+                            tg_id=int(info["tg_id"]),
+                            product_type="JAMBMOCKSUBJECT",
+                            amount_or_units=int(info["mock_sessions"]),
+                        )
                     elif product_type == "TRIVIA":
                         await _send_payment_success_message(
                             tg_id=int(info["tg_id"]),
@@ -369,6 +435,18 @@ async def flutterwave_redirect(
                             amount_or_units=int(info.get("display_amount") or 0),
                         )
 
+                if product_type == "JAMBMOCKSUBJECT":
+                    mock_sessions = int(info.get("mock_sessions") or 0)
+                    return HTMLResponse(f"""
+                        <html><body style="font-family: Arial, sans-serif; text-align:center; padding:40px;">
+                        <h2 style="color:green;">✅ Mock UTME \\(By Subject\\) Payment Successful</h2>
+                        <p>Transaction Reference: <b>{tx_ref}</b></p>
+                        <p>🎟 You’ve been credited with <b>{mock_sessions} mock session{'s' if mock_sessions != 1 else ''}</b>.</p>
+                        <p>This tab will redirect to Telegram in 5 seconds...</p>
+                        <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
+                        </body></html>
+                    """, status_code=200)
+                
                 if product_type == "MOCKJAMB":
                     return HTMLResponse(f"""
                         <html><body style="font-family: Arial, sans-serif; text-align:center; padding:40px;">
@@ -487,6 +565,19 @@ async def flutterwave_redirect_status(
             )
 
             if info.get("status") == "successful":
+                if product_type == "JAMBMOCKSUBJECT":
+                    mock_sessions = int(info.get("mock_sessions") or 0)
+                    return JSONResponse({
+                        "done": True,
+                        "html": f"""
+                        <h2 style="color:green;">✅ Mock UTME \\(By Subject\\) Payment Successful</h2>
+                        <p>Transaction Reference: <b>{tx_ref}</b></p>
+                        <p>🎟 You’ve been credited with <b>{mock_sessions} mock session{'s' if mock_sessions != 1 else ''}</b>.</p>
+                        <p>This tab will redirect to Telegram in 5 seconds...</p>
+                        <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
+                        """
+                    })
+                
                 if product_type == "MOCKJAMB":
                     return JSONResponse({
                         "done": True,
@@ -573,3 +664,5 @@ async def flutterwave_redirect_status(
             <p><a href="https://t.me/{BOT_USERNAME}">Return to Telegram</a></p>
             """
         })
+
+
