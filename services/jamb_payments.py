@@ -21,6 +21,7 @@ async def get_jamb_payment(session: AsyncSession, payment_reference: str) -> dic
                 user_id,
                 amount_paid,
                 question_credits_added,
+                mock_sessions_added,
                 payment_status,
                 created_at,
                 updated_at
@@ -41,14 +42,20 @@ async def create_pending_jamb_payment(
     user_id: int,
     amount_paid: int,
     question_credits_added: int | None = None,
+    mock_sessions_added: int | None = None,
 ) -> dict:
     existing = await get_jamb_payment(session, payment_reference)
     if existing:
         return existing
 
-    credits = int(question_credits_added or calculate_jamb_credits(int(amount_paid)))
-    if credits <= 0:
-        raise ValueError(f"Invalid JAMB credits for amount {amount_paid}")
+    credits = int(question_credits_added or 0)
+    mock_sessions = int(mock_sessions_added or 0)
+
+    if credits <= 0 and mock_sessions <= 0:
+        credits = int(calculate_jamb_credits(int(amount_paid)))
+
+    if credits <= 0 and mock_sessions <= 0:
+        raise ValueError(f"Invalid JAMB payment package for amount {amount_paid}")
 
     await session.execute(
         text("""
@@ -57,6 +64,7 @@ async def create_pending_jamb_payment(
                 user_id,
                 amount_paid,
                 question_credits_added,
+                mock_sessions_added,
                 payment_status,
                 created_at,
                 updated_at
@@ -66,6 +74,7 @@ async def create_pending_jamb_payment(
                 :user_id,
                 :amount_paid,
                 :question_credits_added,
+                :mock_sessions_added,
                 'pending',
                 now(),
                 now()
@@ -75,7 +84,8 @@ async def create_pending_jamb_payment(
             "payment_reference": payment_reference,
             "user_id": int(user_id),
             "amount_paid": int(amount_paid),
-            "question_credits_added": credits,
+            "question_credits_added": int(credits),
+            "mock_sessions_added": int(mock_sessions),
         },
     )
     await session.flush()
@@ -89,11 +99,16 @@ async def finalize_jamb_payment(
     user_id: int,
     amount_paid: int,
     question_credits_added: int | None = None,
-) -> tuple[bool, dict | None, int]:
+    mock_sessions_added: int | None = None,
+) -> tuple[bool, dict | None, int, int]:
     """
     Safe/idempotent JAMB finalizer.
-    Claims the payment row first, then credits jamb_user_access.
-    Returns (did_credit_now, payment_row, credits)
+    Can credit either:
+    - question credits, or
+    - mock sessions
+
+    Returns:
+    (did_credit_now, payment_row, credits_added, mock_sessions_added)
     """
     payment = await get_jamb_payment(session, payment_reference)
 
@@ -104,21 +119,23 @@ async def finalize_jamb_payment(
             user_id=int(user_id),
             amount_paid=int(amount_paid),
             question_credits_added=question_credits_added,
+            mock_sessions_added=mock_sessions_added,
         )
 
     credits = int(payment.get("question_credits_added") or question_credits_added or 0)
-    if credits <= 0:
+    mock_sessions = int(payment.get("mock_sessions_added") or mock_sessions_added or 0)
+
+    if credits <= 0 and mock_sessions <= 0:
         credits = calculate_jamb_credits(int(amount_paid))
 
-    if credits <= 0:
+    if credits <= 0 and mock_sessions <= 0:
         logger.error(
-            "❌ Invalid JAMB credits | payment_reference=%s | amount=%s",
+            "❌ Invalid JAMB package | payment_reference=%s | amount=%s",
             payment_reference,
             amount_paid,
         )
-        return False, payment, 0
+        return False, payment, 0, 0
 
-    # Claim row first. Only one request can win this.
     claimed = await session.execute(
         text("""
             update jamb_payments
@@ -135,7 +152,12 @@ async def finalize_jamb_payment(
     claimed_row = claimed.first()
     if not claimed_row:
         latest = await get_jamb_payment(session, payment_reference)
-        return False, latest, int((latest or {}).get("question_credits_added") or credits)
+        return (
+            False,
+            latest,
+            int((latest or {}).get("question_credits_added") or 0),
+            int((latest or {}).get("mock_sessions_added") or 0),
+        )
 
     await session.execute(
         text("""
@@ -146,20 +168,36 @@ async def finalize_jamb_payment(
         {"user_id": int(user_id)},
     )
 
-    await session.execute(
-        text("""
-            update jamb_user_access
-            set
-                paid_question_credits = paid_question_credits + :credits,
-                updated_at = now()
-            where user_id = :user_id
-        """),
-        {
-            "user_id": int(user_id),
-            "credits": int(credits),
-        },
-    )
+    if mock_sessions > 0:
+        await session.execute(
+            text("""
+                update jamb_user_access
+                set
+                    mock_sessions_available = mock_sessions_available + :mock_sessions,
+                    updated_at = now()
+                where user_id = :user_id
+            """),
+            {
+                "user_id": int(user_id),
+                "mock_sessions": int(mock_sessions),
+            },
+        )
+
+    elif credits > 0:
+        await session.execute(
+            text("""
+                update jamb_user_access
+                set
+                    paid_question_credits = paid_question_credits + :credits,
+                    updated_at = now()
+                where user_id = :user_id
+            """),
+            {
+                "user_id": int(user_id),
+                "credits": int(credits),
+            },
+        )
 
     latest = await get_jamb_payment(session, payment_reference)
-    return True, latest, int(credits)
+    return True, latest, int(credits), int(mock_sessions)
 
