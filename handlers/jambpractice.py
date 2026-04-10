@@ -146,6 +146,33 @@ async def get_paid_question_credits(user_id: int) -> int:
     access = await get_jamb_user_access(user_id)
     return int((access or {}).get("paid_question_credits", 0))
 
+async def get_mock_sessions_available(user_id: int) -> int:
+    access = await get_jamb_user_access(user_id)
+    return int((access or {}).get("mock_sessions_available", 0))
+
+
+async def deduct_one_mock_session(user_id: int) -> bool:
+    """
+    Deduct 1 mock session if available.
+    Returns True if deducted, False otherwise.
+    """
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    update jamb_user_access
+                    set
+                        mock_sessions_available = mock_sessions_available - 1,
+                        updated_at = now()
+                    where user_id = :user_id
+                      and mock_sessions_available > 0
+                    returning mock_sessions_available
+                """),
+                {"user_id": user_id},
+            )
+            row = result.first()
+            return row is not None
+
 
 async def deduct_one_free_question(user_id: int) -> bool:
     """
@@ -765,10 +792,10 @@ def make_jamb_mock_resume_keyboard() -> InlineKeyboardMarkup:
     )
 
 
-def build_jamb_mock_access_text(subject_name: str, question_count: int, paid_credits: int) -> str:
+def build_jamb_mock_access_text(subject_name: str, question_count: int, mock_sessions_available: int) -> str:
     safe_subject_name = md_escape(str(subject_name))
     safe_question_count = md_escape(str(question_count))
-    safe_paid_credits = md_escape(str(paid_credits))
+    safe_mock_sessions = md_escape(str(mock_sessions_available))
     duration_text = "45 minutes" if question_count == 60 else "30 minutes"
     safe_duration = md_escape(duration_text)
 
@@ -777,9 +804,9 @@ def build_jamb_mock_access_text(subject_name: str, question_count: int, paid_cre
         f"📘 Subject: *{safe_subject_name}*\n"
         f"📚 Questions: *{safe_question_count}*\n"
         f"⏱ Time Allowed: *{safe_duration}*\n"
-        f"💳 Paid Credits Available: *{safe_paid_credits}*\n\n"
-        "This mode uses a full subject paper and is paid only\\.\n"
-        "If you have enough credits, you can start immediately\\."
+        f"🎟 Mock Sessions Available: *{safe_mock_sessions}*\n\n"
+        "This mode uses a full subject paper and is paid separately from topic practice\\.\n"
+        "If you already have a mock session, you can start immediately\\."
     )
 
 
@@ -790,15 +817,17 @@ def make_jamb_mock_access_keyboard(subject_code: str, can_start: bool) -> Inline
         rows.append([InlineKeyboardButton("▶ Start Mock Now", callback_data="jp_mock_start_paid")])
 
     rows.extend([
-        [InlineKeyboardButton("💳 Get 50 Questions — ₦100", callback_data="jp_buy_50")],
-        [InlineKeyboardButton("💳 Get 100 Questions — ₦200", callback_data="jp_buy_100")],
-        [InlineKeyboardButton("💳 Get 150 Questions — ₦300", callback_data="jp_buy_150")],
-        [InlineKeyboardButton("💳 Get 200 Questions — ₦400", callback_data="jp_buy_200")],
+        [InlineKeyboardButton("🎟 Get 1 Mock Session — ₦100", callback_data="jp_mock_buy_1")],
+        [InlineKeyboardButton("🎟 Get 2 Mock Sessions — ₦200", callback_data="jp_mock_buy_2")],
+        [InlineKeyboardButton("🎟 Get 3 Mock Sessions — ₦300", callback_data="jp_mock_buy_3")],
+        [InlineKeyboardButton("🎟 Get 4 Mock Sessions — ₦400", callback_data="jp_mock_buy_4")],
+        [InlineKeyboardButton("🎟 Get 5 Mock Sessions — ₦500", callback_data="jp_mock_buy_5")],
         [InlineKeyboardButton("⬅️ Back to Mode", callback_data=f"jp_back_mode_{subject_code}")],
         [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
     ])
 
     return InlineKeyboardMarkup(rows)
+
 
 def build_jamb_batch_from_paper_rows(paper_rows: list[dict]) -> list[dict]:
     batch = []
@@ -1114,16 +1143,15 @@ async def jamb_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 reply_markup=make_jamb_mock_resume_keyboard(),
             )
 
-        access = await get_jamb_user_access(user_id)
-        paid_credits = int((access or {}).get("paid_question_credits", 0))
+        mock_sessions_available = await get_mock_sessions_available(user_id)
         question_count = get_jamb_mock_question_count(subject_code)
-        can_start = paid_credits >= question_count
+        can_start = mock_sessions_available >= 1
 
         return await query.message.reply_text(
             build_jamb_mock_access_text(
                 subject_name=subject["name"],
                 question_count=question_count,
-                paid_credits=paid_credits,
+                mock_sessions_available=mock_sessions_available,
             ),
             parse_mode="MarkdownV2",
             reply_markup=make_jamb_mock_access_keyboard(subject_code, can_start),
@@ -1437,6 +1465,107 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
             ]
         ),
     )
+
+
+async def jamb_mock_buy_session_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    data = query.data
+    session_count_str = data.replace("jp_mock_buy_", "", 1)
+
+    pricing_map = {
+        "1": 100,
+        "2": 200,
+        "3": 300,
+        "4": 400,
+        "5": 500,
+    }
+
+    if session_count_str not in pricing_map:
+        return await query.message.reply_text(
+            "⚠️ Invalid mock session package selected\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    session_count = int(session_count_str)
+    amount = pricing_map[session_count_str]
+
+    user = query.from_user
+    tg_id = user.id
+    username = user.username or f"user_{tg_id}"
+    email = f"{username}@naijaprizegate.ng"
+
+    tx_ref = build_tx_ref("JAMBMOCKSUBJECT")
+
+    async with get_async_session() as session:
+        async with session.begin():
+            await create_pending_jamb_payment(
+                session,
+                payment_reference=tx_ref,
+                user_id=tg_id,
+                amount_paid=amount,
+                question_credits_added=0,
+                mock_sessions_added=session_count,
+            )
+
+    checkout_url = await create_checkout(
+        user_id=tg_id,
+        amount=amount,
+        username=username,
+        email=email,
+        tx_ref=tx_ref,
+        meta={
+            "tg_id": str(tg_id),
+            "username": username,
+            "product_type": "JAMBMOCKSUBJECT",
+            "mock_sessions_added": str(session_count),
+        },
+        product_type="JAMBMOCKSUBJECT",
+    )
+
+    if not checkout_url:
+        async with get_async_session() as session:
+            async with session.begin():
+                await session.execute(
+                    text("""
+                        update jamb_payments
+                        set
+                            payment_status = 'expired',
+                            updated_at = now()
+                        where payment_reference = :payment_reference
+                          and lower(coalesce(payment_status, '')) = 'pending'
+                    """),
+                    {"payment_reference": tx_ref},
+                )
+
+        return await query.message.reply_text(
+            "⚠️ Payment service unavailable\\. Please try again shortly\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    safe_sessions = md_escape(str(session_count))
+    safe_amount = md_escape(str(amount))
+
+    await query.message.reply_text(
+        f"🎟 *Mock Session Package Selected*\n\n"
+        f"🎫 Sessions: *{safe_sessions}*\n"
+        f"💰 Amount: *₦{safe_amount}*\n\n"
+        "After successful payment, your mock sessions will be added automatically\\.\n\n"
+        "Tap below to complete payment\\.",
+        parse_mode="MarkdownV2",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
+                [InlineKeyboardButton("⬅️ Back to Mode", callback_data=f"jp_back_mode_{context.user_data.get('jp_subject_code')}")],
+                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+            ]
+        ),
+    )
+
 
 # =============================
 # Question serving
@@ -2057,27 +2186,25 @@ async def jamb_mock_start_paid_handler(update: Update, context: ContextTypes.DEF
             parse_mode="MarkdownV2",
         )
 
-    question_target = get_jamb_mock_question_count(subject_code)
-    paid_credits = await get_paid_question_credits(user_id)
+    available_sessions = await get_mock_sessions_available(user_id)
 
-    if paid_credits < question_target:
-        safe_paid_credits = md_escape(str(paid_credits))
-        safe_question_target = md_escape(str(question_target))
-
+    if available_sessions < 1:
+        safe_available = md_escape(str(available_sessions))
         return await query.message.reply_text(
-            f"⚠️ You do not have enough paid JAMB credits for this mock\\.\n\n"
-            f"💳 Available credits: *{safe_paid_credits}*\n"
-            f"📚 Required credits: *{safe_question_target}*\n\n"
-            "Please buy more credits and try again\\.",
+            f"⚠️ You do not have any mock sessions available\\.\n\n"
+            f"🎟 Available mock sessions: *{safe_available}*\n\n"
+            "Please buy a mock session first\\.",
             parse_mode="MarkdownV2",
         )
 
-    deducted = await deduct_paid_questions(user_id, question_target)
+    deducted = await deduct_one_mock_session(user_id)
     if not deducted:
         return await query.message.reply_text(
-            "⚠️ Could not reserve your paid credits for this mock right now\\. Please try again\\.",
+            "⚠️ Could not reserve your mock session right now\\. Please try again\\.",
             parse_mode="MarkdownV2",
         )
+
+    question_target = get_jamb_mock_question_count(subject_code)
 
     session_id = await create_jamb_mock_session(
         user_id=user_id,
@@ -2144,6 +2271,7 @@ async def jamb_mock_start_paid_handler(update: Update, context: ContextTypes.DEF
             ]
         ),
     )
+
 
 async def jamb_mock_resume_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -2246,8 +2374,10 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_use_paid_handler, pattern=r"^jp_use_paid$"))
     application.add_handler(CallbackQueryHandler(jamb_paid_count_handler, pattern=r"^jp_paidcount_"))
     application.add_handler(CallbackQueryHandler(jamb_buy_pack_handler, pattern=r"^jp_buy_"))
+    application.add_handler(CallbackQueryHandler(jamb_mock_buy_session_handler, pattern=r"^jp_mock_buy_"))
     application.add_handler(CallbackQueryHandler(jamb_serve_first_handler, pattern=r"^jp_serve_first$"))
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next$"))
+
 
