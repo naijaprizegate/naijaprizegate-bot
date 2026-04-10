@@ -1019,7 +1019,7 @@ def build_welcome_text(
         "• *By Topics* uses *paid question credits*\n"
         "• *Mock UTME \\(By Subject\\)* does *not* use question credits\n"
         "• *Mock UTME \\(By Subject\\)* uses *mock sessions* instead\n"
-        "• *1 subject mock = 1 mock session*\n\n"
+        "• *1 subject mock \\= 1 mock session*\n\n"
         "*Simple examples:*\n"
         "• If you want to practise *Chemistry \\> Acids, Bases and Salts*, use *By Topics*\n"
         "• If you want to write a full *Chemistry mock exam*, use *Mock UTME \\(By Subject\\)*\n\n"
