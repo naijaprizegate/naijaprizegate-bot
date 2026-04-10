@@ -1072,6 +1072,62 @@ async def jamb_subject_handler(update: Update, context: ContextTypes.DEFAULT_TYP
         reply_markup=make_mode_keyboard(subject_code),
     )
 
+# --------------------------------
+# JAMB SUBJECT MOCK SCREEN
+# -------------------------------- 
+async def open_jamb_subject_mock_screen(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    subject_code: str,
+):
+    context.user_data["jp_subject_code"] = subject_code
+    context.user_data["jp_mode"] = "mock_utme"
+    context.user_data["jp_topic_id"] = None
+
+    tg = update.effective_user
+    user_id = tg.id
+
+    subject = get_subject_by_code(subject_code)
+    if not subject:
+        return await update.effective_message.reply_text(
+            "⚠️ Subject not found\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    active_session = await get_latest_active_jamb_mock_session_for_user(
+        user_id=user_id,
+        subject_code=subject_code,
+    )
+
+    if active_session and not is_jamb_mock_time_expired(active_session.get("exam_ends_at")):
+        context.user_data["jp_session_id"] = int(active_session["id"])
+        context.user_data["jp_session_mode"] = "mock_utme"
+
+        next_question_no = max(1, int(active_session.get("current_question_index") or 0) + 1)
+
+        return await update.effective_message.reply_text(
+            build_jamb_mock_resume_text(
+                subject_name=subject["name"],
+                next_question_no=next_question_no,
+                exam_ends_at=active_session.get("exam_ends_at"),
+            ),
+            parse_mode="MarkdownV2",
+            reply_markup=make_jamb_mock_resume_keyboard(),
+        )
+
+    mock_sessions_available = await get_mock_sessions_available(user_id)
+    question_count = get_jamb_mock_question_count(subject_code)
+    can_start = mock_sessions_available >= 1
+
+    return await update.effective_message.reply_text(
+        build_jamb_mock_access_text(
+            subject_name=subject["name"],
+            question_count=question_count,
+            mock_sessions_available=mock_sessions_available,
+        ),
+        parse_mode="MarkdownV2",
+        reply_markup=make_jamb_mock_access_keyboard(subject_code, can_start),
+    )
 
 # =============================
 # Mode selected
@@ -1108,54 +1164,7 @@ async def jamb_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if data.startswith("jp_mode_mock_"):
         subject_code = data.replace("jp_mode_mock_", "", 1)
-        context.user_data["jp_subject_code"] = subject_code
-        context.user_data["jp_mode"] = "mock_utme"
-        context.user_data["jp_topic_id"] = None
-
-        tg = update.effective_user
-        user_id = tg.id
-
-        subject = get_subject_by_code(subject_code)
-        if not subject:
-            return await query.message.reply_text(
-                "⚠️ Subject not found\\.",
-                parse_mode="MarkdownV2",
-            )
-
-        active_session = await get_latest_active_jamb_mock_session_for_user(
-            user_id=user_id,
-            subject_code=subject_code,
-        )
-
-        if active_session and not is_jamb_mock_time_expired(active_session.get("exam_ends_at")):
-            context.user_data["jp_session_id"] = int(active_session["id"])
-            context.user_data["jp_session_mode"] = "mock_utme"
-
-            next_question_no = max(1, int(active_session.get("current_question_index") or 0) + 1)
-
-            return await query.message.reply_text(
-                build_jamb_mock_resume_text(
-                    subject_name=subject["name"],
-                    next_question_no=next_question_no,
-                    exam_ends_at=active_session.get("exam_ends_at"),
-                ),
-                parse_mode="MarkdownV2",
-                reply_markup=make_jamb_mock_resume_keyboard(),
-            )
-
-        mock_sessions_available = await get_mock_sessions_available(user_id)
-        question_count = get_jamb_mock_question_count(subject_code)
-        can_start = mock_sessions_available >= 1
-
-        return await query.message.reply_text(
-            build_jamb_mock_access_text(
-                subject_name=subject["name"],
-                question_count=question_count,
-                mock_sessions_available=mock_sessions_available,
-            ),
-            parse_mode="MarkdownV2",
-            reply_markup=make_jamb_mock_access_keyboard(subject_code, can_start),
-        )
+        return await open_jamb_subject_mock_screen(update, context, subject_code)
 
 
 # =============================
@@ -1477,6 +1486,18 @@ async def jamb_mock_buy_session_handler(update: Update, context: ContextTypes.DE
     data = query.data
     session_count_str = data.replace("jp_mock_buy_", "", 1)
 
+    user = query.from_user
+    tg_id = user.id
+    username = user.username or f"user_{tg_id}"
+    email = f"{username}@naijaprizegate.ng"
+
+    subject_code = context.user_data.get("jp_subject_code")
+    if not subject_code:
+        return await query.message.reply_text(
+            "⚠️ Subject session data missing\\. Please choose your subject again\\.",
+            parse_mode="MarkdownV2",
+        )
+    
     pricing_map = {
         "1": 100,
         "2": 200,
@@ -1494,10 +1515,6 @@ async def jamb_mock_buy_session_handler(update: Update, context: ContextTypes.DE
     session_count = int(session_count_str)
     amount = pricing_map[session_count_str]
 
-    user = query.from_user
-    tg_id = user.id
-    username = user.username or f"user_{tg_id}"
-    email = f"{username}@naijaprizegate.ng"
 
     tx_ref = build_tx_ref("JAMBMOCKSUBJECT")
 
@@ -1523,6 +1540,7 @@ async def jamb_mock_buy_session_handler(update: Update, context: ContextTypes.DE
             "username": username,
             "product_type": "JAMBMOCKSUBJECT",
             "mock_sessions_added": str(session_count),
+            "subject_code": str(subject_code),
         },
         product_type="JAMBMOCKSUBJECT",
     )
