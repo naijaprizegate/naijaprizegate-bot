@@ -1,6 +1,6 @@
-# =============================================================
+# ===============================================================
 # handlers/core.py — Compliance-Safe Version (Polished)
-# =============================================================
+# ===============================================================
 import re
 import logging
 
@@ -317,6 +317,34 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await mockjamb_payment_success_handler(update, context, tx_ref)
             return
         
+        if arg.startswith("payok_jambmocksubject_"):
+            payload = arg.replace("payok_jambmocksubject_", "", 1).strip()
+
+            subject_code = ""
+            tx_ref = ""
+
+            if "_" in payload:
+                subject_code, tx_ref = payload.split("_", 1)
+                subject_code = subject_code.strip().lower()
+                tx_ref = tx_ref.strip()
+            else:
+                tx_ref = payload
+
+            if update.message:
+                await update.message.reply_text(
+                    "✅ *Payment confirmed!*\n\nOpening your *subject mock screen* now...",
+                    parse_mode="Markdown",
+                )
+
+            if subject_code:
+                from handlers.jambpractice import open_jamb_subject_mock_screen
+                await open_jamb_subject_mock_screen(update, context, subject_code)
+                return
+
+            from handlers.jambpractice import jambpractice_handler
+            await jambpractice_handler(update, context)
+            return        
+        
         # -------------------------------------------------------
         # PAYMENT FAILED DEEP LINKS
         # -------------------------------------------------------
@@ -353,6 +381,29 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await mockjamb_start_handler(update, context)
             return
 
+        if arg.startswith("payfail_jambmocksubject_"):
+            payload = arg.replace("payfail_jambmocksubject_", "", 1).strip()
+
+            subject_code = ""
+            if "_" in payload:
+                subject_code, _ = payload.split("_", 1)
+                subject_code = subject_code.strip().lower()
+
+            if update.message:
+                await update.message.reply_text(
+                    "❌ *Mock UTME \\(By Subject\\) payment was not completed.*\n\nPlease try again.",
+                    parse_mode="MarkdownV2",
+                )
+
+            if subject_code:
+                from handlers.jambpractice import open_jamb_subject_mock_screen
+                await open_jamb_subject_mock_screen(update, context, subject_code)
+                return
+
+            from handlers.jambpractice import jambpractice_handler
+            await jambpractice_handler(update, context)
+            return
+        
         # -------------------------------------------------------
         # CHALLENGE LINK HANDLER
         # -------------------------------------------------------
@@ -626,4 +677,3 @@ def register_handlers(application):
         ),
         group=20,
     )
-
