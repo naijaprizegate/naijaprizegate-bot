@@ -800,13 +800,22 @@ def build_jamb_mock_access_text(subject_name: str, question_count: int, mock_ses
     safe_duration = md_escape(duration_text)
 
     return (
-        f"📝 *Mock UTME \\(By Subject\\)*\n\n"
+        "📝 *Mock UTME \\(By Subject\\)*\n\n"
+        "This is a *full subject mock exam*\\.\n\n"
         f"📘 Subject: *{safe_subject_name}*\n"
-        f"📚 Questions: *{safe_question_count}*\n"
+        f"📚 Total Questions: *{safe_question_count}*\n"
         f"⏱ Time Allowed: *{safe_duration}*\n"
         f"🎟 Mock Sessions Available: *{safe_mock_sessions}*\n\n"
-        "This mode uses a full subject paper and is paid separately from topic practice\\.\n"
-        "If you already have a mock session, you can start immediately\\."
+        "*What this means:*\n"
+        "• You will answer a *full paper* for this subject\n"
+        "• *Use of English* has *60 questions*\n"
+        "• *Other subjects* have *40 questions*\n\n"
+        "• If you want to practise only one topic, use *By Topics*\n"
+        "• If you want to write the full subject like an exam, use *Mock UTME \\(By Subject\\)*\n\n"
+        "*Before you start:*\n"
+        "• If you already have at least *1 mock session*, you can start now\n"
+        "• If your mock sessions are *0*, get a mock session first\n\n"
+        "Choose what you want to do below\\."
     )
 
 
@@ -987,23 +996,39 @@ def make_paid_session_count_keyboard():
 # =============================
 # Message builders
 # =============================
-def build_welcome_text(free_remaining: int, paid_credits: int) -> str:
+def build_welcome_text(
+    free_remaining: int,
+    paid_credits: int,
+    mock_sessions_available: int,
+) -> str:
     safe_free_remaining = md_escape(str(free_remaining))
     safe_paid_credits = md_escape(str(paid_credits))
+    safe_mock_sessions = md_escape(str(mock_sessions_available))
 
     return (
         "🎓 *Welcome to JAMB Practice*\n\n"
-        "Practice original UTME\\-style questions by subject and topic\\.\n"
-        "You can study with detailed answer explanations after each question\\.\n\n"
-        "*How it works:*\n"
-        "• First\\-time users get *5 free questions*\n"
-        "• After that, it costs *₦100 per 50 questions*\n"
-        "• Questions are served topic by topic\n"
-        "• Repeats are avoided until you exhaust the topic bank\n\n"
+        "This section helps you practise for JAMB in *two different ways*:\n\n"
+        "1\\. *By Topics* \n"
+        "   You choose one subject, then choose one topic under that subject, and practise questions from that topic\\.\n\n"
+        "2\\. *Mock UTME \\(By Subject\\)* \n"
+        "   You choose one full subject and answer it like an exam paper\\.\n"
+        "   *Use of English* has *60 questions*\\.\n"
+        "   *Other subjects* have *40 questions*\\.\n\n"
+        "*How payment works:*\n"
+        "• *First\\-time users* get *5 free questions* for *By Topics* practice only\n"
+        "• *By Topics* uses *paid question credits*\n"
+        "• *Mock UTME \\(By Subject\\)* does *not* use question credits\n"
+        "• *Mock UTME \\(By Subject\\)* uses *mock sessions* instead\n"
+        "• *1 subject mock = 1 mock session*\n\n"
+        "*Simple examples:*\n"
+        "• If you want to practise *Chemistry \\> Acids, Bases and Salts*, use *By Topics*\n"
+        "• If you want to write a full *Chemistry mock exam*, use *Mock UTME \\(By Subject\\)*\n\n"
+        "*Your current balances:*\n"
+        f"🎁 Free questions left: *{safe_free_remaining}*\n"
+        f"💳 Paid question credits: *{safe_paid_credits}*\n"
+        f"🎟 Mock sessions available: *{safe_mock_sessions}*\n\n"
         "*Disclaimer:*\n"
         "This is an independent study tool and not an official JAMB platform\\.\n\n"
-        f"🎁 Free questions left: *{safe_free_remaining}*\n"
-        f"💳 Paid question credits: *{safe_paid_credits}*\n\n"
         "Please choose a subject below\\."
     )
 
@@ -1026,13 +1051,18 @@ async def jambpractice_handler(update: Update, context: ContextTypes.DEFAULT_TYP
 
     free_remaining = int((access or {}).get("free_questions_remaining", 5))
     paid_credits = int((access or {}).get("paid_question_credits", 0))
+    mock_sessions_available = int((access or {}).get("mock_sessions_available", 0))
 
     context.user_data["jp_subject_code"] = None
     context.user_data["jp_mode"] = None
     context.user_data["jp_topic_id"] = None
     context.user_data["jp_topic_page"] = 1
 
-    text_msg = build_welcome_text(free_remaining, paid_credits)
+    text_msg = build_welcome_text(
+        free_remaining,
+        paid_credits,
+        mock_sessions_available,
+    )
 
     await update.effective_message.reply_text(
         text_msg,
@@ -2397,5 +2427,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next$"))
-
 
