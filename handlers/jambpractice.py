@@ -53,6 +53,7 @@ async def get_jamb_user_access(user_id: int) -> Optional[dict]:
                 select
                     free_questions_remaining,
                     paid_question_credits,
+                    mock_sessions_available,
                     total_questions_used
                 from jamb_user_access
                 where user_id = :user_id
@@ -61,7 +62,6 @@ async def get_jamb_user_access(user_id: int) -> Optional[dict]:
         )
         row = result.mappings().first()
         return dict(row) if row else None
-
 
 async def create_jamb_session(
     user_id: int,
