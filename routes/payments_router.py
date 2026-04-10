@@ -44,13 +44,16 @@ def _product_type_from_tx_ref(tx_ref: str) -> str:
     return "TRIVIA"
 
 
-def _success_url(tx_ref: str, product_type: str) -> str:
+def _success_url(tx_ref: str, product_type: str, subject_code: str | None = None) -> str:
     product_type = (product_type or "").upper().strip()
+    subject_code = (subject_code or "").strip().lower()
 
     if product_type == "JAMB":
         return f"https://t.me/{BOT_USERNAME}?start=payok_jamb_{tx_ref}"
 
     if product_type == "JAMBMOCKSUBJECT":
+        if subject_code:
+            return f"https://t.me/{BOT_USERNAME}?start=payok_jambmocksubject_{subject_code}_{tx_ref}"
         return f"https://t.me/{BOT_USERNAME}?start=payok_jambmocksubject_{tx_ref}"
 
     if product_type == "MOCKJAMB":
@@ -59,13 +62,16 @@ def _success_url(tx_ref: str, product_type: str) -> str:
     return f"https://t.me/{BOT_USERNAME}?start=payok_trivia_{tx_ref}"
 
 
-def _failed_url(tx_ref: str, product_type: str) -> str:
+def _failed_url(tx_ref: str, product_type: str, subject_code: str | None = None) -> str:
     product_type = (product_type or "").upper().strip()
+    subject_code = (subject_code or "").strip().lower()
 
     if product_type == "JAMB":
         return f"https://t.me/{BOT_USERNAME}?start=payfail_jamb_{tx_ref}"
 
     if product_type == "JAMBMOCKSUBJECT":
+        if subject_code:
+            return f"https://t.me/{BOT_USERNAME}?start=payfail_jambmocksubject_{subject_code}_{tx_ref}"
         return f"https://t.me/{BOT_USERNAME}?start=payfail_jambmocksubject_{tx_ref}"
 
     if product_type == "MOCKJAMB":
@@ -398,8 +404,9 @@ async def flutterwave_redirect(
             )
             await session.commit()
 
-            success_url = _success_url(tx_ref, product_type)
-            failed_url = _failed_url(tx_ref, product_type)
+            subject_code = str((verified.get("meta") or {}).get("subject_code") or "").strip().lower()
+            success_url = _success_url(tx_ref, product_type, subject_code)
+            failed_url = _failed_url(tx_ref, product_type, subject_code)
 
             logger.info(
                 "↩️ Redirect target chosen | tx_ref=%s | product_type=%s | success_url=%s",
@@ -554,8 +561,9 @@ async def flutterwave_redirect_status(
             )
             await session.commit()
 
-            success_url = _success_url(tx_ref, product_type)
-            failed_url = _failed_url(tx_ref, product_type)
+            subject_code = str((verified.get("meta") or {}).get("subject_code") or "").strip().lower()
+            success_url = _success_url(tx_ref, product_type, subject_code)
+            failed_url = _failed_url(tx_ref, product_type, subject_code)
 
             logger.info(
                 "↩️ Redirect status target chosen | tx_ref=%s | product_type=%s | success_url=%s",
@@ -664,5 +672,4 @@ async def flutterwave_redirect_status(
             <p><a href="https://t.me/{BOT_USERNAME}">Return to Telegram</a></p>
             """
         })
-
 
