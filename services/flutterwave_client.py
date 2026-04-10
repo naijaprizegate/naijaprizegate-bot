@@ -24,6 +24,7 @@ WEBHOOK_REDIRECT_URL = os.getenv(
 TRIVIA_ALLOWED_PACKAGES = {100, 500, 1000}
 JAMB_ALLOWED_PACKAGES = {100, 200, 300, 400}
 MOCKJAMB_ALLOWED_PACKAGES = {100}
+JAMBMOCKSUBJECT_ALLOWED_PACKAGES = {100, 200, 300, 400, 500}
 
 PRICE_TO_TRIES = {
     100: 1,
@@ -127,7 +128,11 @@ async def create_checkout(
         logger.warning("🚫 Invalid MOCKJAMB amount=%s user_id=%s", amount, user_id)
         return None
 
-    if product_type not in {"TRIVIA", "JAMB", "MOCKJAMB"}:
+    if product_type == "JAMBMOCKSUBJECT" and amount not in JAMBMOCKSUBJECT_ALLOWED_PACKAGES:
+        logger.warning("🚫 Invalid JAMBMOCKSUBJECT amount=%s user_id=%s", amount, user_id)
+        return None
+
+    if product_type not in {"TRIVIA", "JAMB", "MOCKJAMB", "JAMBMOCKSUBJECT"}:
         logger.warning("🚫 Unknown product_type=%s user_id=%s", product_type, user_id)
         return None
 
