@@ -357,6 +357,31 @@ async def complete_jamb_session(session_id: int):
             )
 
 
+async def clear_jamb_session_state(context: ContextTypes.DEFAULT_TYPE):
+    keys_to_clear = [
+        "jp_session_id",
+        "jp_session_mode",
+        "jp_question_batch",
+        "jp_question_ids",
+        "jp_current_index",
+        "jp_session_target",
+        "jp_correct_count",
+        "jp_wrong_count",
+        "jp_current_question",
+        "jp_answered_current",
+        "jp_served_question_ids",
+        "jp_shown_passages",
+        "jp_last_passage",
+        "jp_last_passage_id_shown",
+        "jp_active_passage_message_id",
+        "jp_last_selected_option",
+        "jp_last_correct_option",
+    ]
+
+    for key in keys_to_clear:
+        context.user_data.pop(key, None)
+
+
 # =============================
 # Mock-by-subject helpers
 # =============================
@@ -962,7 +987,7 @@ def make_after_answer_keyboard():
         [
             [InlineKeyboardButton("➡️ Next", callback_data="jp_next")],
             [InlineKeyboardButton("📖 Answer Details", callback_data="jp_details")],
-            [InlineKeyboardButton("🏠 End Practice", callback_data="menu:main")],
+            [InlineKeyboardButton("🏠 End Practice", callback_data="jp_end_session")],
         ]
     )
 
@@ -971,7 +996,7 @@ def make_after_details_keyboard():
     return InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("➡️ Next", callback_data="jp_next")],
-            [InlineKeyboardButton("🏠 End Practice", callback_data="menu:main")],
+            [InlineKeyboardButton("🏠 End Practice", callback_data="jp_end_session")],
         ]
     )
 
@@ -2013,7 +2038,7 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
     if answer_row:
         rows.append(answer_row)
 
-    rows.append([InlineKeyboardButton("🏠 End Practice", callback_data="menu:main")])
+    rows.append([InlineKeyboardButton("🏠 End Practice", callback_data="jp_end_session")])
 
     await update.effective_message.reply_text(
         text_msg,
@@ -2205,6 +2230,31 @@ async def jamb_next_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await send_current_jamb_question(update, context)
 
+
+# ------------------------------
+# JAMB End Session Handler
+# ------------------------------
+async def jamb_end_session_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    session_id = context.user_data.get("jp_session_id")
+    session_mode = context.user_data.get("jp_session_mode")
+
+    if session_mode == "mock_utme" and session_id:
+        await clear_jp_passage_message(
+            chat_id=query.message.chat_id,
+            context=context,
+        )
+        await complete_jamb_session(int(session_id))
+
+    await clear_jamb_session_state(context)
+
+    from handlers.core import go_start_callback
+    await go_start_callback(update, context)
 
 # =============================
 # Back to mode
@@ -2498,7 +2548,7 @@ async def jamb_mock_start_paid_handler(update: Update, context: ContextTypes.DEF
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton("▶ Start Questions", callback_data="jp_serve_first")],
-                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="jp_end_session")],
             ]
         ),
     )
@@ -2609,8 +2659,8 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_buy_pack_handler, pattern=r"^jp_buy_"))
     application.add_handler(CallbackQueryHandler(jamb_mock_buy_session_handler, pattern=r"^jp_mock_buy_"))
     application.add_handler(CallbackQueryHandler(jamb_serve_first_handler, pattern=r"^jp_serve_first$"))
+    application.add_handler(CallbackQueryHandler(jamb_end_session_handler, pattern=r"^jp_end_session$"))
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next$"))
-
 
