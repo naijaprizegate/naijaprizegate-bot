@@ -1372,6 +1372,8 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["jp_served_question_ids"] = []
     context.user_data["jp_shown_passages"] = []
     context.user_data["jp_last_passage"] = None
+    context.user_data["jp_last_passage_id_shown"] = ""
+    context.user_data["jp_active_passage_message_id"] = None
 
     topic = next((t for t in get_subject_topics(subject_code) if t["id"] == topic_id), None)
     topic_title = topic["title"] if topic else topic_id
@@ -1615,6 +1617,162 @@ async def jamb_mock_buy_session_handler(update: Update, context: ContextTypes.DE
     )
 
 
+def get_jp_passage_id(question: dict) -> str:
+    """
+    Return a stable passage identifier for a question.
+    Prefer explicit passage_id. Fall back to question_type + passage text.
+    """
+    passage_id = str(question.get("passage_id") or "").strip()
+    if passage_id:
+        return passage_id
+
+    passage = str(question.get("passage") or "").strip()
+    question_type = str(question.get("question_type") or "").strip().lower()
+
+    if passage and question_type in {"comprehension_mcq", "summary_mcq"}:
+        return f"{question_type}::{passage[:120]}"
+
+    return ""
+
+
+def question_has_passage(question: dict) -> bool:
+    passage = str(question.get("passage") or "").strip()
+    question_type = str(question.get("question_type") or "").strip().lower()
+    return bool(passage and question_type in {"comprehension_mcq", "summary_mcq"})
+
+
+def should_show_jp_passage_for_question(
+    question: dict,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> bool:
+    """
+    Show passage only if:
+    - the question belongs to a passage block, and
+    - it is a different passage from the last shown one
+    """
+    if not question_has_passage(question):
+        return False
+
+    current_passage_id = get_jp_passage_id(question)
+    last_passage_id = str(context.user_data.get("jp_last_passage_id_shown") or "").strip()
+
+    return current_passage_id != last_passage_id
+
+
+def mark_jp_passage_as_shown(question: dict, context: ContextTypes.DEFAULT_TYPE) -> None:
+    context.user_data["jp_last_passage_id_shown"] = get_jp_passage_id(question)
+
+
+def store_jp_passage_message_id(
+    *,
+    message_id: int | None,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> None:
+    context.user_data["jp_active_passage_message_id"] = message_id
+
+
+async def clear_jp_passage_message(
+    *,
+    chat_id: int,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> None:
+    passage_message_id = context.user_data.get("jp_active_passage_message_id")
+    if not passage_message_id:
+        return
+
+    try:
+        await context.bot.delete_message(
+            chat_id=chat_id,
+            message_id=int(passage_message_id),
+        )
+    except Exception:
+        pass
+
+    context.user_data["jp_active_passage_message_id"] = None
+    context.user_data["jp_last_passage_id_shown"] = ""
+
+
+def get_jp_passage_question_range(batch: list[dict], current_index: int) -> tuple[int, int]:
+    """
+    For the current question, find the full contiguous block of questions
+    that belong to the same passage.
+    Returns 1-based question numbers.
+    """
+    if current_index < 0 or current_index >= len(batch):
+        return (current_index + 1, current_index + 1)
+
+    current_question = batch[current_index]
+    current_passage_id = get_jp_passage_id(current_question)
+
+    if not current_passage_id:
+        q_no = current_index + 1
+        return (q_no, q_no)
+
+    start = current_index
+    end = current_index
+
+    # scan backward
+    i = current_index - 1
+    while i >= 0:
+        if get_jp_passage_id(batch[i]) == current_passage_id:
+            start = i
+            i -= 1
+        else:
+            break
+
+    # scan forward
+    i = current_index + 1
+    while i < len(batch):
+        if get_jp_passage_id(batch[i]) == current_passage_id:
+            end = i
+            i += 1
+        else:
+            break
+
+    return (start + 1, end + 1)
+
+
+def build_jp_passage_text(
+    *,
+    subject_name: str,
+    question_start: int,
+    question_end: int,
+    total_questions: int,
+    exam_ends_at,
+    question: dict,
+) -> str:
+    safe_subject_name = md_escape(str(subject_name))
+    safe_q_start = md_escape(str(question_start))
+    safe_q_end = md_escape(str(question_end))
+    safe_total = md_escape(str(total_questions))
+
+    passage_title = str(question.get("passage_title") or "Passage").strip()
+    passage_text = str(question.get("passage") or "").strip()
+
+    safe_passage_title = md_escape(passage_title)
+    safe_passage_text = md_escape(passage_text)
+
+    lines = [
+        "📝 *Mock JAMB / UTME*" if str(question.get("_session_mode") or "") == "mock_utme" else "📘 *JAMB Practice*",
+        "",
+        f"Subject: *{safe_subject_name}*",
+        f"Questions: *{safe_q_start} - {safe_q_end} of {safe_total}*",
+    ]
+
+    if exam_ends_at:
+        safe_remaining = md_escape(str(format_jamb_mock_time_remaining(exam_ends_at)))
+        lines.append(f"⏱ Time remaining: *{safe_remaining}*")
+
+    lines.extend([
+        "",
+        f"Passage Title: *{safe_passage_title}*",
+        "",
+        "Passage:",
+        safe_passage_text,
+    ])
+
+    return "\n".join(lines)
+
 # =============================
 # Question serving
 # =============================
@@ -1647,6 +1805,10 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
             )
 
         if is_jamb_mock_time_expired(session_row.get("exam_ends_at")):
+            await clear_jp_passage_message(
+                chat_id=update.effective_message.chat_id,
+                context=context,
+            )
             await complete_jamb_session(int(session_id))
 
             safe_total = md_escape(str(len(batch)))
@@ -1669,6 +1831,11 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
             )
 
     if current_index >= len(batch):
+        await clear_jp_passage_message(
+            chat_id=update.effective_message.chat_id,
+            context=context,
+        )
+
         if session_id:
             await complete_jamb_session(int(session_id))
 
@@ -1703,18 +1870,12 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
         )
 
     question = batch[current_index]
-    question_type = question.get("question_type", "mcq")
-    passage_id = question.get("passage_id")
-    passage_title = question.get("passage_title", "Comprehension Passage")
-    passage = question.get("passage", "")
 
     question_id = str(question["id"])
     user_id = update.effective_user.id
     subject_code = context.user_data.get("jp_subject_code")
     topic_id = str(question.get("topic_id") or context.user_data.get("jp_topic_id") or "__mock_subject__")
     served_question_ids = context.user_data.get("jp_served_question_ids", [])
-    shown_passages = context.user_data.get("jp_shown_passages", [])
-    last_passage = context.user_data.get("jp_last_passage")
 
     # Charge and record history when question is served, not when answered
     if question_id not in served_question_ids:
@@ -1767,28 +1928,44 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
     if session_mode == "mock_utme" and session_id:
         await set_jamb_session_current_question_index(int(session_id), current_index)
 
-    # Show comprehension passage before the question
-    if question_type == "comprehension_mcq" and passage:
-        should_show_passage = False
+    subject = get_subject_by_code(subject_code) or {"name": subject_code}
+    subject_name = subject.get("name", subject_code)
 
-        if passage_id:
-            if passage_id not in shown_passages:
-                should_show_passage = True
-                shown_passages.append(passage_id)
-                context.user_data["jp_shown_passages"] = shown_passages
-        else:
-            if passage != last_passage:
-                should_show_passage = True
-                context.user_data["jp_last_passage"] = passage
+    # Tag question with session mode for builder
+    question["_session_mode"] = session_mode
 
-        if should_show_passage:
-            safe_passage_title = md_escape(str(passage_title))
-            safe_passage = md_escape(str(passage))
+    # CASE 1: current question belongs to a passage block
+    if question_has_passage(question):
+        if should_show_jp_passage_for_question(question, context):
+            passage_start, passage_end = get_jp_passage_question_range(batch, current_index)
 
-            await update.effective_message.reply_text(
-                f"📖 *{safe_passage_title}*\n\n{safe_passage}",
+            passage_text_msg = build_jp_passage_text(
+                subject_name=subject_name,
+                question_start=passage_start,
+                question_end=passage_end,
+                total_questions=len(batch),
+                exam_ends_at=(session_row or {}).get("exam_ends_at") if session_mode == "mock_utme" else None,
+                question=question,
+            )
+
+            mark_jp_passage_as_shown(question, context)
+
+            sent_passage = await update.effective_message.reply_text(
+                passage_text_msg,
                 parse_mode="MarkdownV2",
             )
+
+            store_jp_passage_message_id(
+                message_id=sent_passage.message_id,
+                context=context,
+            )
+
+    # CASE 2: current question does not belong to a passage block
+    else:
+        await clear_jp_passage_message(
+            chat_id=update.effective_message.chat_id,
+            context=context,
+        )
 
     options = question.get("options", {})
 
@@ -1842,6 +2019,7 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
         parse_mode="MarkdownV2",
         reply_markup=InlineKeyboardMarkup(rows),
     )
+
 
 
 # ----------------------------------------
@@ -2166,6 +2344,8 @@ async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["jp_served_question_ids"] = []
     context.user_data["jp_shown_passages"] = []
     context.user_data["jp_last_passage"] = None
+    context.user_data["jp_last_passage_id_shown"] = ""
+    context.user_data["jp_active_passage_message_id"] = None
 
     topic = next((t for t in get_subject_topics(subject_code) if t["id"] == topic_id), None)
     topic_title = topic["title"] if topic else topic_id
@@ -2293,6 +2473,8 @@ async def jamb_mock_start_paid_handler(update: Update, context: ContextTypes.DEF
     context.user_data["jp_served_question_ids"] = []
     context.user_data["jp_shown_passages"] = []
     context.user_data["jp_last_passage"] = None
+    context.user_data["jp_last_passage_id_shown"] = ""
+    context.user_data["jp_active_passage_message_id"] = None
 
     safe_subject_name = md_escape(str(subject["name"]))
     safe_question_target = md_escape(str(question_target))
@@ -2399,6 +2581,8 @@ async def jamb_mock_resume_handler(update: Update, context: ContextTypes.DEFAULT
     context.user_data["jp_served_question_ids"] = already_served_ids
     context.user_data["jp_shown_passages"] = []
     context.user_data["jp_last_passage"] = None
+    context.user_data["jp_last_passage_id_shown"] = ""
+    context.user_data["jp_active_passage_message_id"] = None
 
     await send_current_jamb_question(update, context)
 
@@ -2427,4 +2611,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next$"))
+
 
