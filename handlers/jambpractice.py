@@ -1756,7 +1756,7 @@ def build_jp_passage_text(
         "📝 *Mock JAMB / UTME*" if str(question.get("_session_mode") or "") == "mock_utme" else "📘 *JAMB Practice*",
         "",
         f"Subject: *{safe_subject_name}*",
-        f"Questions: *{safe_q_start} - {safe_q_end} of {safe_total}*",
+        f"Questions: *{safe_q_start} \\- {safe_q_end} of {safe_total}*",
     ]
 
     if exam_ends_at:
@@ -1772,6 +1772,7 @@ def build_jp_passage_text(
     ])
 
     return "\n".join(lines)
+
 
 # =============================
 # Question serving
