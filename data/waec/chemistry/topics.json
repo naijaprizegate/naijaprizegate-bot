@@ -1,1 +1,132 @@
-
+{
+  "subject_code": "chem",
+  "subject_name": "Chemistry",
+  "topics": [
+    {
+      "id": "chem_01",
+      "number": 1,
+      "title": "Introduction to Chemistry",
+      "file": "questions/chem_01.json",
+      "active": true
+    },
+    {
+      "id": "chem_02",
+      "number": 2,
+      "title": "Structure of the Atom",
+      "file": "questions/chem_02.json",
+      "active": true
+    },
+    {
+      "id": "chem_03",
+      "number": 3,
+      "title": "Standard Separation Techniques for Mixtures",
+      "file": "questions/chem_03.json",
+      "active": true
+    },
+    {
+      "id": "chem_04",
+      "number": 4,
+      "title": "Periodic Chemistry",
+      "file": "questions/chem_04.json",
+      "active": true
+    },
+    {
+      "id": "chem_05",
+      "number": 5,
+      "title": "Chemical Bonds",
+      "file": "questions/chem_05.json",
+      "active": true
+    },
+    {
+      "id": "chem_06",
+      "number": 6,
+      "title": "Stoichiometry and Chemical Reactions",
+      "file": "questions/chem_06.json",
+      "active": true
+    },
+    {
+      "id": "chem_07",
+      "number": 7,
+      "title": "States of Matter",
+      "file": "questions/chem_07.json",
+      "active": true
+    },
+    {
+      "id": "chem_08",
+      "number": 8,
+      "title": "Energy and Energy Changes",
+      "file": "questions/chem_08.json",
+      "active": true
+    },
+    {
+      "id": "chem_09",
+      "number": 9,
+      "title": "Acids, Bases and Salts",
+      "file": "questions/chem_09.json",
+      "active": true
+    },
+    {
+      "id": "chem_10",
+      "number": 10,
+      "title": "Solubility of Substances",
+      "file": "questions/chem_10.json",
+      "active": true
+    },
+    {
+      "id": "chem_11",
+      "number": 11,
+      "title": "Chemical Kinetics and Equilibrium",
+      "file": "questions/chem_11.json",
+      "active": true
+    },
+    {
+      "id": "chem_12",
+      "number": 12,
+      "title": "Redox Reactions",
+      "file": "questions/chem_12.json",
+      "active": true
+    },
+    {
+      "id": "chem_13",
+      "number": 13,
+      "title": "Non-metals and their Compounds",
+      "file": "questions/chem_13.json",
+      "active": true
+    },
+    {
+      "id": "chem_14",
+      "number": 14,
+      "title": "Metals and their Compounds",
+      "file": "questions/chem_14.json",
+      "active": true
+    },
+    {
+      "id": "chem_15",
+      "number": 15,
+      "title": "Chemistry of Carbon Compounds",
+      "file": "questions/chem_15.json",
+      "active": true
+    },
+    {
+      "id": "chem_16",
+      "number": 16,
+      "title": "Chemistry, Industry and the Environment",
+      "file": "questions/chem_16.json",
+      "active": true
+    },
+    {
+      "id": "chem_17",
+      "number": 17,
+      "title": "Basic Biochemistry and Synthetic Polymers",
+      "file": "questions/chem_17.json",
+      "active": true
+    },
+    {
+      "id": "chem_18",
+      "number": 18,
+      "title": "Practicals",
+      "file": "questions/chem_18.json",
+      "active": true
+    }
+  ]
+}
