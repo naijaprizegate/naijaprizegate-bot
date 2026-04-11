@@ -1,1 +1,80 @@
-
+[
+  {
+    "code": "eng",
+    "name": "Use of English",
+    "folder": "use_of_english",
+    "active": true
+  },
+  {
+    "code": "math",
+    "name": "Mathematics",
+    "folder": "mathematics",
+    "active": true
+  },
+  {
+    "code": "phys",
+    "name": "Physics",
+    "folder": "physics",
+    "active": true
+  },
+  {
+    "code": "chem",
+    "name": "Chemistry",
+    "folder": "chemistry",
+    "active": true
+  },
+  {
+    "code": "bio",
+    "name": "Biology",
+    "folder": "biology",
+    "active": true
+  },
+  {
+    "code": "econ",
+    "name": "Economics",
+    "folder": "economics",
+    "active": true
+  },
+  {
+    "code": "gov",
+    "name": "Government",
+    "folder": "government",
+    "active": true
+  },
+  {
+    "code": "lit",
+    "name": "Literature in English",
+    "folder": "literature_in_english",
+    "active": true
+  },
+  {
+    "code": "geo",
+    "name": "Geography",
+    "folder": "geography",
+    "active": true
+  },
+  {
+    "code": "acct",
+    "name": "Accounting",
+    "folder": "accounting",
+    "active": true
+  },
+  {
+    "code": "comm",
+    "name": "Commerce",
+    "folder": "commerce",
+    "active": true
+  },
+  {
+    "code": "agric",
+    "name": "Agricultural Science",
+    "folder": "agricultural_science",
+    "active": true
+  },
+  {
+    "code": "crs",
+    "name": "Christian Religious Studies",
+    "folder": "christian_religious_studies",
+    "active": true
+  }
+]
