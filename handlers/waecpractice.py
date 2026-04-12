@@ -1,6 +1,6 @@
-# ======================================================
+# ====================================================
 # handlers/waecpractice.py
-# =====================================================
+# ===================================================
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes
 
@@ -87,6 +87,31 @@ def make_waec_topics_keyboard(subject_code: str, page: int = 1):
     rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
 
     return InlineKeyboardMarkup(rows), page, total_pages
+
+
+def make_waec_topic_access_keyboard_for_subject(
+    subject_code: str,
+    has_free_trial: bool,
+    has_paid_credits: bool,
+):
+    rows = []
+
+    if has_free_trial:
+        rows.append([InlineKeyboardButton("🎁 Use Free Trial (5 Questions)", callback_data="wp_start_free")])
+
+    if has_paid_credits:
+        rows.append([InlineKeyboardButton("✅ Use Paid Credits", callback_data="wp_use_paid")])
+
+    rows.extend([
+        [InlineKeyboardButton("💳 Get 50 Questions — ₦100", callback_data="wp_buy_50")],
+        [InlineKeyboardButton("💳 Get 100 Questions — ₦200", callback_data="wp_buy_100")],
+        [InlineKeyboardButton("💳 Get 150 Questions — ₦300", callback_data="wp_buy_150")],
+        [InlineKeyboardButton("💳 Get 200 Questions — ₦400", callback_data="wp_buy_200")],
+        [InlineKeyboardButton("⬅️ Back to Topics", callback_data=f"wp_topicpage_{subject_code}_1")],
+        [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+    ])
+
+    return InlineKeyboardMarkup(rows)
 
 
 def build_waec_welcome_text() -> str:
@@ -252,12 +277,27 @@ async def waec_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     context.user_data["wp_subject_code"] = subject_code
     context.user_data["wp_topic_id"] = topic_id
 
+    # Temporary WAEC balances for now, matching JAMB screen shape first
+    free_remaining = 5
+    paid_credits = 0
+    has_free_trial = free_remaining > 0
+    has_paid_credits = paid_credits > 0
+
     safe_topic_title = md_escape(str(selected_topic["title"]))
+    safe_free_remaining = md_escape(str(free_remaining))
+    safe_paid_credits = md_escape(str(paid_credits))
 
     await query.message.reply_text(
         f"✅ *Topic selected:* {safe_topic_title}\n\n"
-        "Next step: topic access screen will be connected next\\.",
+        f"🎁 Free questions left: *{safe_free_remaining}*\n"
+        f"💳 Paid question credits: *{safe_paid_credits}*\n\n"
+        "Choose how you want to continue:",
         parse_mode="MarkdownV2",
+        reply_markup=make_waec_topic_access_keyboard_for_subject(
+            subject_code,
+            has_free_trial,
+            has_paid_credits,
+        ),
     )
 
 
@@ -283,7 +323,8 @@ async def waec_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_T
         parse_mode="MarkdownV2",
         reply_markup=make_waec_mode_keyboard(subject_code),
     )
-    
+
 def register_handlers(application):
     application.add_handler(CommandHandler("waecpractice", waecpractice_handler))
     application.add_handler(CallbackQueryHandler(waecpractice_handler, pattern=r"^waecneco:practice$"))
+
