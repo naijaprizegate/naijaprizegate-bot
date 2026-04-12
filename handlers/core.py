@@ -1,6 +1,6 @@
-# =============================================================
+# ===============================================================
 # handlers/core.py — Compliance-Safe Version (Polished)
-# =============================================================
+# ===============================================================
 import re
 import logging
 
@@ -654,6 +654,12 @@ def register_handlers(application):
         waec_mode_handler,
         waec_topic_page_handler,
         waec_topic_handler,
+        waec_start_free_handler,
+        waec_serve_first_handler,
+        waec_answer_handler,
+        waec_answer_details_handler,
+        waec_next_handler,
+        waec_end_session_handler,
         waec_back_mode_handler,
     )
     
@@ -672,8 +678,14 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(waec_mode_handler, pattern=r"^wp_mode_"))
     application.add_handler(CallbackQueryHandler(waec_topic_page_handler, pattern=r"^wp_topicpage_"))
     application.add_handler(CallbackQueryHandler(waec_topic_handler, pattern=r"^wp_topic::"))
-    application.add_handler(CallbackQueryHandler(waec_back_mode_handler, pattern=r"^wp_back_mode_"))    
-    
+    application.add_handler(CallbackQueryHandler(waec_back_mode_handler, pattern=r"^wp_back_mode_"))
+    application.add_handler(CallbackQueryHandler(waec_start_free_handler, pattern=r"^wp_start_free$"))
+    application.add_handler(CallbackQueryHandler(waec_serve_first_handler, pattern=r"^wp_serve_first$"))
+    application.add_handler(CallbackQueryHandler(waec_end_session_handler, pattern=r"^wp_end_session$"))
+    application.add_handler(CallbackQueryHandler(waec_answer_handler, pattern=r"^wp_ans::"))
+    application.add_handler(CallbackQueryHandler(waec_answer_details_handler, pattern=r"^wp_details$"))
+    application.add_handler(CallbackQueryHandler(waec_next_handler, pattern=r"^wp_next$"))
+
     # ---------------------------------------------------
     # Leaderboard
     # ---------------------------------------------------
@@ -693,3 +705,4 @@ def register_handlers(application):
         ),
         group=20,
     )
+
