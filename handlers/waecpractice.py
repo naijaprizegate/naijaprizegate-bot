@@ -3,6 +3,11 @@
 # ===================================================
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes
+from sqlalchemy import text
+
+from db import get_async_session
+from services.flutterwave_client import create_checkout, build_tx_ref, calculate_jamb_credits
+from services.waec_payments import create_pending_waec_payment
 
 from helpers import md_escape
 from waec_loader import (
@@ -15,6 +20,292 @@ from waec_loader import (
 import math
 
 TOPICS_PER_PAGE = 7
+
+# =============================
+# WAEC DB helpers
+# =============================
+async def ensure_waec_user_access(user_id: int):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    insert into waec_user_access (user_id)
+                    values (:user_id)
+                    on conflict (user_id) do nothing
+                """),
+                {"user_id": user_id},
+            )
+
+
+async def get_waec_user_access(user_id: int):
+    async with get_async_session() as session:
+        result = await session.execute(
+            text("""
+                select
+                    free_questions_remaining,
+                    paid_question_credits,
+                    mock_sessions_available,
+                    total_questions_used
+                from waec_user_access
+                where user_id = :user_id
+            """),
+            {"user_id": user_id},
+        )
+        row = result.mappings().first()
+        return dict(row) if row else None
+
+
+async def create_waec_session(
+    user_id: int,
+    subject_code: str,
+    topic_id: str,
+    question_target: int,
+    mode: str = "topic_practice",
+) -> int:
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    insert into waec_sessions (
+                        user_id,
+                        subject_code,
+                        topic_id,
+                        mode,
+                        question_target,
+                        status
+                    )
+                    values (
+                        :user_id,
+                        :subject_code,
+                        :topic_id,
+                        :mode,
+                        :question_target,
+                        'active'
+                    )
+                    returning id
+                """),
+                {
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                    "topic_id": topic_id,
+                    "mode": mode,
+                    "question_target": question_target,
+                },
+            )
+            return int(result.scalar_one())
+
+
+async def get_seen_waec_question_ids_for_topic(user_id: int, subject_code: str, topic_id: str) -> list[str]:
+    async with get_async_session() as session:
+        result = await session.execute(
+            text("""
+                select question_id
+                from waec_user_topic_history
+                where user_id = :user_id
+                  and subject_code = :subject_code
+                  and topic_id = :topic_id
+            """),
+            {
+                "user_id": user_id,
+                "subject_code": subject_code,
+                "topic_id": topic_id,
+            },
+        )
+        rows = result.fetchall()
+        return [str(row[0]) for row in rows]
+
+
+async def reset_waec_topic_history(user_id: int, subject_code: str, topic_id: str):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    delete from waec_user_topic_history
+                    where user_id = :user_id
+                      and subject_code = :subject_code
+                      and topic_id = :topic_id
+                """),
+                {
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                    "topic_id": topic_id,
+                },
+            )
+
+
+async def get_waec_paid_question_credits(user_id: int) -> int:
+    access = await get_waec_user_access(user_id)
+    return int((access or {}).get("paid_question_credits", 0))
+
+
+async def deduct_one_waec_free_question(user_id: int) -> bool:
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    update waec_user_access
+                    set
+                        free_questions_remaining = free_questions_remaining - 1,
+                        total_questions_used = total_questions_used + 1,
+                        updated_at = now()
+                    where user_id = :user_id
+                      and free_questions_remaining > 0
+                    returning free_questions_remaining
+                """),
+                {"user_id": user_id},
+            )
+            return result.first() is not None
+
+
+async def deduct_one_waec_paid_question(user_id: int) -> bool:
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    update waec_user_access
+                    set
+                        paid_question_credits = paid_question_credits - 1,
+                        total_questions_used = total_questions_used + 1,
+                        updated_at = now()
+                    where user_id = :user_id
+                      and paid_question_credits > 0
+                    returning paid_question_credits
+                """),
+                {"user_id": user_id},
+            )
+            return result.first() is not None
+
+
+async def add_question_to_waec_topic_history(
+    user_id: int,
+    subject_code: str,
+    topic_id: str,
+    question_id: str,
+):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    insert into waec_user_topic_history (
+                        user_id,
+                        subject_code,
+                        topic_id,
+                        question_id
+                    )
+                    values (
+                        :user_id,
+                        :subject_code,
+                        :topic_id,
+                        :question_id
+                    )
+                    on conflict (user_id, subject_code, topic_id, question_id) do nothing
+                """),
+                {
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                    "topic_id": topic_id,
+                    "question_id": question_id,
+                },
+            )
+
+
+async def record_waec_attempt(
+    session_id: int,
+    user_id: int,
+    subject_code: str,
+    topic_id: str,
+    question_id: str,
+    selected_option: str,
+    correct_option: str,
+    is_correct: bool,
+):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    insert into waec_attempts (
+                        session_id,
+                        user_id,
+                        subject_code,
+                        topic_id,
+                        question_id,
+                        selected_option,
+                        correct_option,
+                        is_correct
+                    )
+                    values (
+                        :session_id,
+                        :user_id,
+                        :subject_code,
+                        :topic_id,
+                        :question_id,
+                        :selected_option,
+                        :correct_option,
+                        :is_correct
+                    )
+                """),
+                {
+                    "session_id": session_id,
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                    "topic_id": topic_id,
+                    "question_id": question_id,
+                    "selected_option": selected_option,
+                    "correct_option": correct_option,
+                    "is_correct": is_correct,
+                },
+            )
+
+
+async def increment_waec_session_served(session_id: int):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    update waec_sessions
+                    set questions_served = questions_served + 1
+                    where id = :session_id
+                """),
+                {"session_id": session_id},
+            )
+
+
+async def increment_waec_session_result(session_id: int, is_correct: bool):
+    async with get_async_session() as session:
+        async with session.begin():
+            if is_correct:
+                await session.execute(
+                    text("""
+                        update waec_sessions
+                        set correct_count = correct_count + 1
+                        where id = :session_id
+                    """),
+                    {"session_id": session_id},
+                )
+            else:
+                await session.execute(
+                    text("""
+                        update waec_sessions
+                        set wrong_count = wrong_count + 1
+                        where id = :session_id
+                    """),
+                    {"session_id": session_id},
+                )
+
+
+async def complete_waec_session(session_id: int):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    update waec_sessions
+                    set
+                        status = 'completed',
+                        ended_at = now()
+                    where id = :session_id
+                """),
+                {"session_id": session_id},
+            )
 
 
 def make_waec_subject_keyboard():
@@ -164,6 +455,289 @@ def clear_waec_session_state(context: ContextTypes.DEFAULT_TYPE):
     for key in keys_to_clear:
         context.user_data.pop(key, None)
 
+
+async def ensure_waec_user_access(user_id: int):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    insert into waec_user_access (user_id)
+                    values (:user_id)
+                    on conflict (user_id) do nothing
+                """),
+                {"user_id": user_id},
+            )
+
+
+async def get_waec_user_access(user_id: int):
+    async with get_async_session() as session:
+        result = await session.execute(
+            text("""
+                select
+                    free_questions_remaining,
+                    paid_question_credits,
+                    mock_sessions_available,
+                    total_questions_used
+                from waec_user_access
+                where user_id = :user_id
+            """),
+            {"user_id": user_id},
+        )
+        row = result.mappings().first()
+        return dict(row) if row else None
+
+
+async def create_waec_session(
+    user_id: int,
+    subject_code: str,
+    topic_id: str,
+    question_target: int,
+    mode: str = "topic_practice",
+) -> int:
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    insert into waec_sessions (
+                        user_id,
+                        subject_code,
+                        topic_id,
+                        mode,
+                        question_target,
+                        status
+                    )
+                    values (
+                        :user_id,
+                        :subject_code,
+                        :topic_id,
+                        :mode,
+                        :question_target,
+                        'active'
+                    )
+                    returning id
+                """),
+                {
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                    "topic_id": topic_id,
+                    "mode": mode,
+                    "question_target": question_target,
+                },
+            )
+            return int(result.scalar_one())
+
+
+async def get_seen_waec_question_ids_for_topic(user_id: int, subject_code: str, topic_id: str) -> list[str]:
+    async with get_async_session() as session:
+        result = await session.execute(
+            text("""
+                select question_id
+                from waec_user_topic_history
+                where user_id = :user_id
+                  and subject_code = :subject_code
+                  and topic_id = :topic_id
+            """),
+            {
+                "user_id": user_id,
+                "subject_code": subject_code,
+                "topic_id": topic_id,
+            },
+        )
+        rows = result.fetchall()
+        return [str(row[0]) for row in rows]
+
+
+async def reset_waec_topic_history(user_id: int, subject_code: str, topic_id: str):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    delete from waec_user_topic_history
+                    where user_id = :user_id
+                      and subject_code = :subject_code
+                      and topic_id = :topic_id
+                """),
+                {
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                    "topic_id": topic_id,
+                },
+            )
+
+
+async def get_waec_paid_question_credits(user_id: int) -> int:
+    access = await get_waec_user_access(user_id)
+    return int((access or {}).get("paid_question_credits", 0))
+
+
+async def deduct_one_waec_free_question(user_id: int) -> bool:
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    update waec_user_access
+                    set
+                        free_questions_remaining = free_questions_remaining - 1,
+                        total_questions_used = total_questions_used + 1,
+                        updated_at = now()
+                    where user_id = :user_id
+                      and free_questions_remaining > 0
+                    returning free_questions_remaining
+                """),
+                {"user_id": user_id},
+            )
+            return result.first() is not None
+
+
+async def deduct_one_waec_paid_question(user_id: int) -> bool:
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    update waec_user_access
+                    set
+                        paid_question_credits = paid_question_credits - 1,
+                        total_questions_used = total_questions_used + 1,
+                        updated_at = now()
+                    where user_id = :user_id
+                      and paid_question_credits > 0
+                    returning paid_question_credits
+                """),
+                {"user_id": user_id},
+            )
+            return result.first() is not None
+
+
+async def add_question_to_waec_topic_history(
+    user_id: int,
+    subject_code: str,
+    topic_id: str,
+    question_id: str,
+):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    insert into waec_user_topic_history (
+                        user_id,
+                        subject_code,
+                        topic_id,
+                        question_id
+                    )
+                    values (
+                        :user_id,
+                        :subject_code,
+                        :topic_id,
+                        :question_id
+                    )
+                    on conflict (user_id, subject_code, topic_id, question_id) do nothing
+                """),
+                {
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                    "topic_id": topic_id,
+                    "question_id": question_id,
+                },
+            )
+
+
+async def record_waec_attempt(
+    session_id: int,
+    user_id: int,
+    subject_code: str,
+    topic_id: str,
+    question_id: str,
+    selected_option: str,
+    correct_option: str,
+    is_correct: bool,
+):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    insert into waec_attempts (
+                        session_id,
+                        user_id,
+                        subject_code,
+                        topic_id,
+                        question_id,
+                        selected_option,
+                        correct_option,
+                        is_correct
+                    )
+                    values (
+                        :session_id,
+                        :user_id,
+                        :subject_code,
+                        :topic_id,
+                        :question_id,
+                        :selected_option,
+                        :correct_option,
+                        :is_correct
+                    )
+                """),
+                {
+                    "session_id": session_id,
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                    "topic_id": topic_id,
+                    "question_id": question_id,
+                    "selected_option": selected_option,
+                    "correct_option": correct_option,
+                    "is_correct": is_correct,
+                },
+            )
+
+
+async def increment_waec_session_served(session_id: int):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    update waec_sessions
+                    set questions_served = questions_served + 1
+                    where id = :session_id
+                """),
+                {"session_id": session_id},
+            )
+
+
+async def increment_waec_session_result(session_id: int, is_correct: bool):
+    async with get_async_session() as session:
+        async with session.begin():
+            if is_correct:
+                await session.execute(
+                    text("""
+                        update waec_sessions
+                        set correct_count = correct_count + 1
+                        where id = :session_id
+                    """),
+                    {"session_id": session_id},
+                )
+            else:
+                await session.execute(
+                    text("""
+                        update waec_sessions
+                        set wrong_count = wrong_count + 1
+                        where id = :session_id
+                    """),
+                    {"session_id": session_id},
+                )
+
+
+async def complete_waec_session(session_id: int):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    update waec_sessions
+                    set
+                        status = 'completed',
+                        ended_at = now()
+                    where id = :session_id
+                """),
+                {"session_id": session_id},
+            )
 
 async def waecpractice_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.callback_query:
