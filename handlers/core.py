@@ -652,6 +652,9 @@ def register_handlers(application):
         waecpractice_handler,
         waec_subject_handler,
         waec_mode_handler,
+        waec_topic_page_handler,
+        waec_topic_handler,
+        waec_back_mode_handler,
     )
     
     # ---------------------------------------------------
@@ -667,6 +670,9 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(waecpractice_handler, pattern=r"^waecneco:practice$"))
     application.add_handler(CallbackQueryHandler(waec_subject_handler, pattern=r"^wp_subj_"))
     application.add_handler(CallbackQueryHandler(waec_mode_handler, pattern=r"^wp_mode_"))
+    application.add_handler(CallbackQueryHandler(waec_topic_page_handler, pattern=r"^wp_topicpage_"))
+    application.add_handler(CallbackQueryHandler(waec_topic_handler, pattern=r"^wp_topic::"))
+    application.add_handler(CallbackQueryHandler(waec_back_mode_handler, pattern=r"^wp_back_mode_"))    
     
     # ---------------------------------------------------
     # Leaderboard
