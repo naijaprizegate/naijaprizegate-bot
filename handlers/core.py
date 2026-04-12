@@ -648,6 +648,8 @@ def register_handlers(application):
     application.add_handler(CommandHandler("terms", terms_handler, block=True))
     application.add_handler(CommandHandler("faq", faq_handler, block=True))
 
+    from handlers.waecpractice import waecpractice_handler
+    
     # ---------------------------------------------------
     # Callback buttons
     # ---------------------------------------------------
@@ -657,7 +659,8 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(go_start_callback, pattern=r"^go_start$"))
     application.add_handler(CallbackQueryHandler(terms_handler, pattern=r"^terms$"))
     application.add_handler(CallbackQueryHandler(faq_handler, pattern=r"^faq$"))
-
+    application.add_handler(CallbackQueryHandler(waecpractice_handler, pattern=r"^waecneco:practice$"))
+    
     # ---------------------------------------------------
     # Leaderboard
     # ---------------------------------------------------
