@@ -425,10 +425,30 @@ def make_after_details_keyboard():
     )
 
 
-def build_waec_welcome_text() -> str:
+def build_waec_welcome_text(
+    free_remaining: int,
+    paid_credits: int,
+    mock_sessions_available: int,
+) -> str:
+    safe_free_remaining = md_escape(str(free_remaining))
+    safe_paid_credits = md_escape(str(paid_credits))
+    safe_mock_sessions = md_escape(str(mock_sessions_available))
+
     return (
         "📘 *Welcome to WAEC / NECO Practice*\n\n"
-        "This section helps you practise for WAEC and NECO just like JAMB Practice\\.\n\n"
+        "This section helps you practise for WAEC and NECO in *two different ways*:\n\n"
+        "1\\. *By Topics*\n"
+        "   You choose one subject, then one topic, and practise questions from that topic\\.\n\n"
+        "2\\. *Mock WAEC / NECO*\n"
+        "   This will later let you write a full subject paper like an exam\\.\n\n"
+        "*How payment works:*\n"
+        "• *First\\-time users* get *5 free questions* for *By Topics* practice only\n"
+        "• *By Topics* uses *paid question credits*\n"
+        "• Full mock support will be connected next\n\n"
+        "*Your current balances:*\n"
+        f"🎁 Free questions left: *{safe_free_remaining}*\n"
+        f"💳 Paid question credits: *{safe_paid_credits}*\n"
+        f"🎟 Mock sessions available: *{safe_mock_sessions}*\n\n"
         "Please choose a subject below\\."
     )
 
@@ -740,23 +760,39 @@ async def complete_waec_session(session_id: int):
             )
 
 async def waecpractice_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    tg = update.effective_user
+    if not tg:
+        return
+
     if update.callback_query:
         try:
             await update.callback_query.answer()
         except Exception:
             pass
 
+    await ensure_waec_user_access(tg.id)
+    access = await get_waec_user_access(tg.id)
+
+    free_remaining = int((access or {}).get("free_questions_remaining", 5))
+    paid_credits = int((access or {}).get("paid_question_credits", 0))
+    mock_sessions_available = int((access or {}).get("mock_sessions_available", 0))
+
     context.user_data["wp_subject_code"] = None
     context.user_data["wp_mode"] = None
     context.user_data["wp_topic_id"] = None
     context.user_data["wp_topic_page"] = 1
 
+    text_msg = build_waec_welcome_text(
+        free_remaining,
+        paid_credits,
+        mock_sessions_available,
+    )
+
     await update.effective_message.reply_text(
-        build_waec_welcome_text(),
+        text_msg,
         parse_mode="MarkdownV2",
         reply_markup=make_waec_subject_keyboard(),
     )
-
 
 async def waec_subject_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
