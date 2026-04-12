@@ -166,3 +166,19 @@ def prepare_waec_topic_question_batch(
         "selected_questions": selected_questions,
         "selected_question_ids": extract_question_ids(selected_questions)
     }
+
+def get_available_questions_excluding_seen(
+    subject_code: str,
+    topic_id: str,
+    seen_question_ids: List[str]
+) -> List[Dict[str, Any]]:
+    """
+    Load all active questions for a topic and exclude questions
+    the user has already seen in that topic.
+    """
+    all_questions = get_waec_questions_for_topic(subject_code, topic_id)
+    remaining_questions = [
+        q for q in all_questions if q.get("id") not in seen_question_ids
+    ]
+    return remaining_questions
+
