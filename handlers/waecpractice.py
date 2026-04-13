@@ -1,6 +1,6 @@
-# =====================================================
+# ====================================================
 # handlers/waecpractice.py
-# =====================================================
+# ===================================================
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes
 from sqlalchemy import text
@@ -902,6 +902,78 @@ async def waec_topic_page_handler(update: Update, context: ContextTypes.DEFAULT_
         reply_markup=kb,
     )
 
+async def send_waec_topic_access_screen(
+    message,
+    context: ContextTypes.DEFAULT_TYPE,
+    subject_code: str,
+    topic_id: str,
+):
+    subject = get_waec_subject_by_code(subject_code)
+    if not subject:
+        return await message.reply_text(
+            "⚠️ WAEC subject not found\\.",
+            parse_mode="MarkdownV2",
+            reply_markup=make_waec_subject_keyboard(),
+        )
+
+    topics = get_waec_subject_topics(subject_code)
+    selected_topic = next((t for t in topics if t["id"] == topic_id), None)
+    if not selected_topic:
+        return await message.reply_text(
+            "⚠️ WAEC topic not found\\.",
+            parse_mode="MarkdownV2",
+            reply_markup=make_waec_subject_keyboard(),
+        )
+
+    tg = getattr(message, "from_user", None)
+    if not tg:
+        return
+
+    await ensure_waec_user_access(tg.id)
+    access = await get_waec_user_access(tg.id)
+
+    free_remaining = int((access or {}).get("free_questions_remaining", 0))
+    paid_credits = int((access or {}).get("paid_question_credits", 0))
+    has_free_trial = free_remaining > 0
+    has_paid_credits = paid_credits > 0
+
+    context.user_data["wp_subject_code"] = subject_code
+    context.user_data["wp_topic_id"] = topic_id
+
+    topic_title = str(selected_topic["title"])
+
+    lines = [
+        f"✅ Topic selected: {topic_title}",
+        "",
+        f"🎁 Free questions left: {free_remaining}",
+        f"💳 Paid question credits: {paid_credits}",
+        "",
+        "Choose how you want to continue:",
+    ]
+
+    keyboard = []
+
+    if has_free_trial:
+        keyboard.append([InlineKeyboardButton("🎁 Use Free Trial", callback_data="wp_start_free")])
+
+    if has_paid_credits:
+        keyboard.append([InlineKeyboardButton("✅ Use Paid Credits", callback_data="wp_use_paid")])
+
+    keyboard.extend(
+        [
+            [InlineKeyboardButton("💳 Get 50 Questions — ₦100", callback_data="wp_buy_50")],
+            [InlineKeyboardButton("💳 Get 100 Questions — ₦200", callback_data="wp_buy_100")],
+            [InlineKeyboardButton("💳 Get 150 Questions — ₦300", callback_data="wp_buy_150")],
+            [InlineKeyboardButton("💳 Get 200 Questions — ₦400", callback_data="wp_buy_200")],
+            [InlineKeyboardButton("⬅️ Back to Topics", callback_data=f"wp_back_mode_{subject_code}")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+    await message.reply_text(
+        "\n".join(lines),
+        reply_markup=InlineKeyboardMarkup(keyboard),
+    )
 
 async def waec_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -1513,6 +1585,9 @@ async def waec_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
     username = user.username or f"user_{tg_id}"
     email = f"{username}@naijaprizegate.ng"
 
+    subject_code = context.user_data.get("wp_subject_code")
+    topic_id = context.user_data.get("wp_topic_id")
+
     tx_ref = build_tx_ref("WAEC")
 
     async with get_async_session() as session:
@@ -1522,6 +1597,8 @@ async def waec_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
             user_id=tg_id,
             amount_paid=amount,
             question_credits_added=credits,
+            subject_code=subject_code,
+            topic_id=topic_id,
         )
         await session.commit()
 
@@ -1605,5 +1682,4 @@ async def waec_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_T
 def register_handlers(application):
     application.add_handler(CommandHandler("waecpractice", waecpractice_handler))
     application.add_handler(CallbackQueryHandler(waecpractice_handler, pattern=r"^waecneco:practice$"))
-
 
