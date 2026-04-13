@@ -1,6 +1,6 @@
-# ==================================================
+# ====================================================
 # handlers/waecpractice.py
-# ==================================================
+# ===================================================
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes
 from sqlalchemy import text
@@ -1350,6 +1350,42 @@ async def waec_end_session_handler(update: Update, context: ContextTypes.DEFAULT
 
     from handlers.core import go_start_callback
     await go_start_callback(update, context)
+
+
+async def waec_use_paid_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    user_id = update.effective_user.id
+    paid_credits = await get_waec_paid_question_credits(user_id)
+
+    if paid_credits <= 0:
+        return await query.message.reply_text(
+            "⚠️ You do not have any paid WAEC question credits yet\\.\n\nPlease buy a question pack first\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    await query.message.reply_text(
+        "✅ *Use Paid Credits*\n\nChoose how many WAEC questions you want in this paid session\\.",
+        parse_mode="MarkdownV2",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("10", callback_data="wp_paidcount_10"),
+                    InlineKeyboardButton("20", callback_data="wp_paidcount_20"),
+                ],
+                [
+                    InlineKeyboardButton("30", callback_data="wp_paidcount_30"),
+                    InlineKeyboardButton("50", callback_data="wp_paidcount_50"),
+                ],
+                [InlineKeyboardButton("⬅️ Back to WAEC / NECO Practice", callback_data="waecneco:practice")],
+                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+            ]
+        ),
+    )
 
 
 async def waec_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
