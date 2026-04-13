@@ -440,7 +440,7 @@ def build_waec_welcome_text(
         "This section helps you practise for WAEC and NECO in *two different ways*:\n\n"
         "1\\. *By Topics*\n"
         "   You choose one subject, then one topic, and practise questions from that topic\\.\n\n"
-        "2\\. *Mock WAEC / NECO (By Subject)*\n"
+        "2\\. *Mock WAEC / NECO \\(By Subject\\)*\n"
         "   This will later let you write a full subject paper like an exam\\.\n\n"
         "*How payment works:*\n"
         "• *First\\-time users* get *5 free questions* for *By Topics* practice only\n"
@@ -1652,5 +1652,4 @@ async def waec_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_T
 def register_handlers(application):
     application.add_handler(CommandHandler("waecpractice", waecpractice_handler))
     application.add_handler(CallbackQueryHandler(waecpractice_handler, pattern=r"^waecneco:practice$"))
-
 
