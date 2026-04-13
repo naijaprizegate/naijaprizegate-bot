@@ -661,6 +661,8 @@ def register_handlers(application):
         waec_next_handler,
         waec_end_session_handler,
         waec_use_paid_handler,
+        waec_paid_count_handler,
+        waec_buy_pack_handler,
         waec_back_mode_handler,
     )
     
@@ -682,6 +684,8 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(waec_back_mode_handler, pattern=r"^wp_back_mode_"))
     application.add_handler(CallbackQueryHandler(waec_start_free_handler, pattern=r"^wp_start_free$"))
     application.add_handler(CallbackQueryHandler(waec_use_paid_handler, pattern=r"^wp_use_paid$"))
+    application.add_handler(CallbackQueryHandler(waec_paid_count_handler, pattern=r"^wp_paidcount_"))
+    application.add_handler(CallbackQueryHandler(waec_buy_pack_handler, pattern=r"^wp_buy_"))
     application.add_handler(CallbackQueryHandler(waec_serve_first_handler, pattern=r"^wp_serve_first$"))
     application.add_handler(CallbackQueryHandler(waec_end_session_handler, pattern=r"^wp_end_session$"))
     application.add_handler(CallbackQueryHandler(waec_answer_handler, pattern=r"^wp_ans::"))
