@@ -313,7 +313,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     parse_mode="Markdown",
                 )
 
-            from db import get_async_session
             from services.waec_payment_finalizer import get_waec_payment
             from handlers.waecpractice import (
                 waecpractice_handler,
