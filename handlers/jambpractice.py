@@ -1304,7 +1304,7 @@ async def jamb_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     safe_paid_credits = md_escape(str(paid_credits))
 
     await query.message.reply_text(
-        f"✅ *Topic selected:* *{safe_topic_title}*\n\n"
+        f"✅ Topic selected: *{safe_topic_title}*\n\n"
         f"🎁 Free questions left: *{safe_free_remaining}*\n"
         f"💳 Paid question credits: *{safe_paid_credits}*\n\n"
         "Choose how you want to continue:",
