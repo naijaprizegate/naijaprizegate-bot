@@ -907,6 +907,7 @@ async def send_waec_topic_access_screen(
     context: ContextTypes.DEFAULT_TYPE,
     subject_code: str,
     topic_id: str,
+    user_id: int,
 ):
     subject = get_waec_subject_by_code(subject_code)
     if not subject:
@@ -925,12 +926,8 @@ async def send_waec_topic_access_screen(
             reply_markup=make_waec_subject_keyboard(),
         )
 
-    tg = getattr(message, "from_user", None)
-    if not tg:
-        return
-
-    await ensure_waec_user_access(tg.id)
-    access = await get_waec_user_access(tg.id)
+    await ensure_waec_user_access(user_id)
+    access = await get_waec_user_access(user_id)
 
     free_remaining = int((access or {}).get("free_questions_remaining", 0))
     paid_credits = int((access or {}).get("paid_question_credits", 0))
@@ -982,50 +979,23 @@ async def waec_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     await query.answer()
 
+    data = query.data or ""
     try:
-        _, subject_code, topic_id = query.data.split("::")
-    except Exception:
+        _, payload = data.split("::", 1)
+        subject_code, topic_id = payload.split(":", 1)
+    except ValueError:
         return await query.message.reply_text(
-            "⚠️ Invalid topic selection\\.",
+            "⚠️ Invalid WAEC topic selection\\.",
             parse_mode="MarkdownV2",
+            reply_markup=make_waec_subject_keyboard(),
         )
 
-    topics = get_waec_subject_topics(subject_code)
-    selected_topic = next((t for t in topics if t["id"] == topic_id), None)
-
-    if not selected_topic:
-        return await query.message.reply_text(
-            "⚠️ Topic not found\\.",
-            parse_mode="MarkdownV2",
-        )
-
-    context.user_data["wp_subject_code"] = subject_code
-    context.user_data["wp_topic_id"] = topic_id
-
-    tg = update.effective_user
-    await ensure_waec_user_access(tg.id)
-    access = await get_waec_user_access(tg.id)
-
-    free_remaining = int((access or {}).get("free_questions_remaining", 0))
-    paid_credits = int((access or {}).get("paid_question_credits", 0))
-    has_free_trial = free_remaining > 0
-    has_paid_credits = paid_credits > 0
-
-    safe_topic_title = md_escape(str(selected_topic["title"]))
-    safe_free_remaining = md_escape(str(free_remaining))
-    safe_paid_credits = md_escape(str(paid_credits))
-
-    await query.message.reply_text(
-        f"✅ *Topic selected:* {safe_topic_title}\n\n"
-        f"🎁 Free questions left: *{safe_free_remaining}*\n"
-        f"💳 Paid question credits: *{safe_paid_credits}*\n\n"
-        "Choose how you want to continue:",
-        parse_mode="MarkdownV2",
-        reply_markup=make_waec_topic_access_keyboard_for_subject(
-            subject_code,
-            has_free_trial,
-            has_paid_credits,
-        ),
+    await send_waec_topic_access_screen(
+        query.message,
+        context,
+        subject_code=subject_code,
+        topic_id=topic_id,
+        user_id=update.effective_user.id,
     )
 
 
