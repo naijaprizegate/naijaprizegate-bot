@@ -4,6 +4,7 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes
 from sqlalchemy import text
+from html import escape
 
 from db import get_async_session
 from services.flutterwave_client import create_checkout, build_tx_ref, calculate_jamb_credits
@@ -940,10 +941,10 @@ async def send_waec_topic_access_screen(
     topic_title = str(selected_topic["title"])
 
     lines = [
-        f"✅ Topic selected: {topic_title}",
+        f"✅ Topic selected: <b>{escape(topic_title)}</b>",
         "",
-        f"🎁 Free questions left: {free_remaining}",
-        f"💳 Paid question credits: {paid_credits}",
+        f"🎁 Free questions left: <b>{free_remaining}</b>",
+        f"💳 Paid question credits: <b>{paid_credits}</b>",
         "",
         "Choose how you want to continue:",
     ]
@@ -969,6 +970,7 @@ async def send_waec_topic_access_screen(
 
     await message.reply_text(
         "\n".join(lines),
+        parse_mode="HTML",
         reply_markup=InlineKeyboardMarkup(keyboard),
     )
 
