@@ -862,7 +862,7 @@ async def waec_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         safe_subject_name = md_escape(str(subject["name"])) if subject else md_escape(subject_code)
 
         return await query.message.reply_text(
-            f"📝 *Mock WAEC / NECO (By Subject)*\n\n"
+            f"📝 *Mock WAEC / NECO \\(By Subject\\)*\n\n"
             f"Subject: *{safe_subject_name}*\n\n"
             "This part will be connected after normal topic practice is finished\\.",
             parse_mode="MarkdownV2",
