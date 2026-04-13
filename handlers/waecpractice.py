@@ -1101,6 +1101,44 @@ async def send_current_waec_question(update: Update, context: ContextTypes.DEFAU
         )
 
     question = batch[current_index]
+    question_id = str(question["id"])
+    user_id = update.effective_user.id
+    subject_code = context.user_data.get("wp_subject_code")
+    topic_id = str(question.get("topic_id") or context.user_data.get("wp_topic_id"))
+    served_question_ids = context.user_data.get("wp_served_question_ids", [])
+    session_id = context.user_data.get("wp_session_id")
+    session_mode = context.user_data.get("wp_session_mode")
+
+    if question_id not in served_question_ids:
+        if session_mode == "free_trial":
+            deducted = await deduct_one_waec_free_question(user_id)
+            if not deducted:
+                return await update.effective_message.reply_text(
+                    "⚠️ You have no free WAEC questions left\\.\n\nPlease buy a question pack to continue\\.",
+                    parse_mode="MarkdownV2",
+                )
+
+        elif session_mode == "paid_session":
+            deducted = await deduct_one_waec_paid_question(user_id)
+            if not deducted:
+                return await update.effective_message.reply_text(
+                    "⚠️ You have no paid WAEC question credits left\\.\n\nPlease buy another question pack to continue\\.",
+                    parse_mode="MarkdownV2",
+                )
+
+        await add_question_to_waec_topic_history(
+            user_id=user_id,
+            subject_code=subject_code,
+            topic_id=topic_id,
+            question_id=question_id,
+        )
+
+        if session_id:
+            await increment_waec_session_served(int(session_id))
+
+        served_question_ids.append(question_id)
+        context.user_data["wp_served_question_ids"] = served_question_ids
+    
     context.user_data["wp_current_question"] = question
     context.user_data["wp_answered_current"] = False
 
