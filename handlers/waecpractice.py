@@ -964,6 +964,9 @@ async def waec_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
 
     await query.answer()
 
+    tg = update.effective_user
+    user_id = tg.id
+
     subject_code = context.user_data.get("wp_subject_code")
     topic_id = context.user_data.get("wp_topic_id")
 
@@ -974,8 +977,22 @@ async def waec_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
             reply_markup=make_waec_subject_keyboard(),
         )
 
-    requested_count = 5
-    seen_question_ids = context.user_data.get("wp_served_question_ids", [])
+    access = await get_waec_user_access(user_id)
+    free_remaining = int((access or {}).get("free_questions_remaining", 0))
+
+    if free_remaining <= 0:
+        return await query.message.reply_text(
+            "⚠️ You have no free WAEC questions left\\.\n\nPlease buy a question pack to continue\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    requested_count = min(5, free_remaining)
+
+    seen_question_ids = await get_seen_waec_question_ids_for_topic(
+        user_id=user_id,
+        subject_code=subject_code,
+        topic_id=topic_id,
+    )
 
     batch = prepare_waec_topic_question_batch(
         subject_code=subject_code,
@@ -983,6 +1000,9 @@ async def waec_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
         requested_count=requested_count,
         seen_question_ids=seen_question_ids,
     )
+
+    if batch["cycle_reset"]:
+        await reset_waec_topic_history(user_id, subject_code, topic_id)
 
     selected_questions = batch["selected_questions"]
     selected_question_ids = batch["selected_question_ids"]
@@ -993,6 +1013,15 @@ async def waec_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
             parse_mode="MarkdownV2",
         )
 
+    session_id = await create_waec_session(
+        user_id=user_id,
+        subject_code=subject_code,
+        topic_id=topic_id,
+        question_target=len(selected_questions),
+        mode="topic_practice",
+    )
+
+    context.user_data["wp_session_id"] = session_id
     context.user_data["wp_session_mode"] = "free_trial"
     context.user_data["wp_question_batch"] = selected_questions
     context.user_data["wp_question_ids"] = selected_question_ids
