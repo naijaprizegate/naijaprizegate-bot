@@ -332,6 +332,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     context,
                     subject_code=str(subject_code),
                     topic_id=str(topic_id),
+                    user_id=update.effective_user.id,
                 )
                 return
 
@@ -756,4 +757,5 @@ def register_handlers(application):
         ),
         group=20,
     )
+
 
