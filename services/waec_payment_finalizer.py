@@ -21,6 +21,8 @@ async def get_waec_payment(session: AsyncSession, payment_reference: str) -> dic
                 amount_paid,
                 question_credits_added,
                 mock_sessions_added,
+                subject_code,
+                topic_id,
                 payment_status,
                 created_at,
                 updated_at
