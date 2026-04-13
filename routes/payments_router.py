@@ -19,6 +19,7 @@ from services.flutterwave_client import (
 from services.trivia_payments import finalize_trivia_payment, get_trivia_payment
 from services.jamb_payments import finalize_jamb_payment, get_jamb_payment
 from services.mockjamb_payments import finalize_mockjamb_payment, get_mockjamb_payment
+from services.waec_payment_finalizer import finalize_waec_payment, get_waec_payment
 
 logger = logging.getLogger("payments_router")
 logger.setLevel(logging.INFO)
@@ -36,6 +37,8 @@ def _product_type_from_tx_ref(tx_ref: str) -> str:
         return "JAMBMOCKSUBJECT"
     if tx_ref.startswith("JAMB-"):
         return "JAMB"
+    if tx_ref.startswith("WAEC-"):
+        return "WAEC"
     if tx_ref.startswith("MOCKJAMB-"):
         return "MOCKJAMB"
     if tx_ref.startswith("TRIVIA-"):
@@ -50,6 +53,9 @@ def _success_url(tx_ref: str, product_type: str, subject_code: str | None = None
 
     if product_type == "JAMB":
         return f"https://t.me/{BOT_USERNAME}?start=payok_jamb_{tx_ref}"
+
+    if product_type == "WAEC":
+        return f"https://t.me/{BOT_USERNAME}?start=payok_waec_{tx_ref}"
 
     if product_type == "JAMBMOCKSUBJECT":
         if subject_code:
@@ -69,6 +75,9 @@ def _failed_url(tx_ref: str, product_type: str, subject_code: str | None = None)
     if product_type == "JAMB":
         return f"https://t.me/{BOT_USERNAME}?start=payfail_jamb_{tx_ref}"
 
+    if product_type == "WAEC":
+        return f"https://t.me/{BOT_USERNAME}?start=payfail_waec_{tx_ref}"
+    
     if product_type == "JAMBMOCKSUBJECT":
         if subject_code:
             return f"https://t.me/{BOT_USERNAME}?start=payfail_jambmocksubject_{subject_code}_{tx_ref}"
@@ -105,6 +114,15 @@ async def _send_payment_success_message(
                 f"{'s' if amount_or_units != 1 else ''} 📚\n\n"
                 "You can now continue your JAMB Practice."
             )
+        
+        elif product_type == "WAEC":
+            text = (
+                "🎉 *Payment Successful!*\n\n"
+                f"You received *{amount_or_units}* WAEC question credit"
+                f"{'s' if amount_or_units != 1 else ''} 📚\n\n"
+                "You can now continue your WAEC / NECO Practice."
+            )
+        
         elif product_type == "JAMBMOCKSUBJECT":
             text = (
                 "🎉 *Payment Successful!*\n\n"
@@ -180,7 +198,38 @@ async def _finalize_from_verified_data(
             "display_amount": credits,
         }
 
-    
+    if product_type == "WAEC":
+        tg_id_raw = meta.get("tg_id")
+        if not tg_id_raw:
+            payment = await get_waec_payment(session, tx_ref)
+            tg_id_raw = payment.get("user_id") if payment else None
+
+        if not tg_id_raw:
+            return "WAEC", {
+                "status": "error",
+                "reason": "missing_tg_id",
+                "credited_now": False,
+            }
+
+        did_credit, payment, credits, mock_sessions = await finalize_waec_payment(
+            session,
+            payment_reference=tx_ref,
+            user_id=int(tg_id_raw),
+            amount_paid=amount,
+            question_credits_added=None,
+            mock_sessions_added=None,
+        )
+
+        return "WAEC", {
+            "status": "successful" if payment else "error",
+            "credited_now": did_credit,
+            "credits": credits,
+            "mock_sessions": mock_sessions,
+            "tg_id": int(tg_id_raw),
+            "payment": payment,
+            "display_amount": credits,
+        }
+
     if product_type == "JAMBMOCKSUBJECT":
         tg_id_raw = meta.get("tg_id")
         mock_sessions_added_raw = meta.get("mock_sessions_added")
@@ -351,6 +400,12 @@ async def flutterwave_webhook(
                 product_type="JAMB",
                 amount_or_units=int(info["credits"]),
             )
+        elif product_type == "WAEC":
+            await _send_payment_success_message(
+                tg_id=int(info["tg_id"]),
+                product_type="WAEC",
+                amount_or_units=int(info["credits"]),
+            )
         elif product_type == "JAMBMOCKSUBJECT":
             await _send_payment_success_message(
                 tg_id=int(info["tg_id"]),
@@ -423,6 +478,12 @@ async def flutterwave_redirect(
                             product_type="JAMB",
                             amount_or_units=int(info["credits"]),
                         )
+                    elif product_type == "WAEC":
+                        await _send_payment_success_message(
+                            tg_id=int(info["tg_id"]),
+                            product_type="WAEC",
+                            amount_or_units=int(info["credits"]),
+                        )
                     elif product_type == "JAMBMOCKSUBJECT":
                         await _send_payment_success_message(
                             tg_id=int(info["tg_id"]),
@@ -472,6 +533,18 @@ async def flutterwave_redirect(
                         <h2 style="color:green;">✅ JAMB Payment Successful</h2>
                         <p>Transaction Reference: <b>{tx_ref}</b></p>
                         <p>📚 You’ve been credited with <b>{credits} JAMB question credits</b>.</p>
+                        <p>This tab will redirect to Telegram in 5 seconds...</p>
+                        <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
+                        </body></html>
+                    """, status_code=200)
+
+                if product_type == "WAEC":
+                    credits = int(info.get("credits") or 0)
+                    return HTMLResponse(f"""
+                        <html><body style="font-family: Arial, sans-serif; text-align:center; padding:40px;">
+                        <h2 style="color:green;">✅ WAEC Payment Successful</h2>
+                        <p>Transaction Reference: <b>{tx_ref}</b></p>
+                        <p>📚 You’ve been credited with <b>{credits} WAEC question credits</b>.</p>
                         <p>This tab will redirect to Telegram in 5 seconds...</p>
                         <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
                         </body></html>
@@ -610,6 +683,19 @@ async def flutterwave_redirect_status(
                         <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
                         """
                     })
+                
+                if product_type == "WAEC":
+                    credits = int(info.get("credits") or 0)
+                    return JSONResponse({
+                        "done": True,
+                        "html": f"""
+                        <h2 style="color:green;">✅ WAEC Payment Successful</h2>
+                        <p>Transaction Reference: <b>{tx_ref}</b></p>
+                        <p>📚 You’ve been credited with <b>{credits} WAEC question credits</b>.</p>
+                        <p>This tab will redirect to Telegram in 5 seconds...</p>
+                        <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
+                        """
+                    })
 
                 tries = int(info.get("tries") or 0)
                 return JSONResponse({
@@ -672,4 +758,3 @@ async def flutterwave_redirect_status(
             <p><a href="https://t.me/{BOT_USERNAME}">Return to Telegram</a></p>
             """
         })
-
