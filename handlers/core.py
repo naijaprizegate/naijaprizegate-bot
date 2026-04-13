@@ -304,6 +304,17 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await jambpractice_handler(update, context)
             return
 
+        if arg.startswith("payok_waec_"):
+            if update.message:
+                await update.message.reply_text(
+                    "✅ *Payment confirmed!*\n\nOpening *WAEC / NECO Practice* now...",
+                    parse_mode="Markdown",
+                )
+
+            from handlers.waecpractice import waecpractice_handler
+            await waecpractice_handler(update, context)
+            return
+        
         if arg.startswith("payok_mockjamb_"):
             tx_ref = arg.replace("payok_mockjamb_", "", 1).strip()
 
@@ -370,6 +381,17 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await jambpractice_handler(update, context)
             return
 
+        if arg.startswith("payfail_waec_"):
+            if update.message:
+                await update.message.reply_text(
+                    "❌ *WAEC payment was not completed.*\n\nPlease try again.",
+                    parse_mode="Markdown",
+                )
+
+            from handlers.waecpractice import waecpractice_handler
+            await waecpractice_handler(update, context)
+            return
+        
         if arg.startswith("payfail_mockjamb_"):
             if update.message:
                 await update.message.reply_text(
@@ -711,3 +733,4 @@ def register_handlers(application):
         ),
         group=20,
     )
+
