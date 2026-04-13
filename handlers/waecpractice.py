@@ -1,6 +1,6 @@
-# ====================================================
+# =====================================================
 # handlers/waecpractice.py
-# ===================================================
+# =====================================================
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes
 from sqlalchemy import text
