@@ -1342,6 +1342,10 @@ async def waec_end_session_handler(update: Update, context: ContextTypes.DEFAULT
 
     await query.answer()
 
+    session_id = context.user_data.get("wp_session_id")
+    if session_id:
+        await complete_waec_session(int(session_id))
+
     clear_waec_session_state(context)
 
     from handlers.core import go_start_callback
