@@ -336,7 +336,7 @@ def make_waec_mode_keyboard(subject_code: str):
     return InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("📚 By Topics", callback_data=f"wp_mode_topics_{subject_code}")],
-            [InlineKeyboardButton("📝 Mock WAEC / NECO", callback_data=f"wp_mode_mock_{subject_code}")],
+            [InlineKeyboardButton("📝 Mock WAEC / NECO (By Subject)", callback_data=f"wp_mode_mock_{subject_code}")],
             [InlineKeyboardButton("⬅️ Back to Subjects", callback_data="waecneco:practice")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
@@ -440,7 +440,7 @@ def build_waec_welcome_text(
         "This section helps you practise for WAEC and NECO in *two different ways*:\n\n"
         "1\\. *By Topics*\n"
         "   You choose one subject, then one topic, and practise questions from that topic\\.\n\n"
-        "2\\. *Mock WAEC / NECO*\n"
+        "2\\. *Mock WAEC / NECO (By Subject)*\n"
         "   This will later let you write a full subject paper like an exam\\.\n\n"
         "*How payment works:*\n"
         "• *First\\-time users* get *5 free questions* for *By Topics* practice only\n"
@@ -862,7 +862,7 @@ async def waec_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         safe_subject_name = md_escape(str(subject["name"])) if subject else md_escape(subject_code)
 
         return await query.message.reply_text(
-            f"📝 *Mock WAEC / NECO*\n\n"
+            f"📝 *Mock WAEC / NECO (By Subject)*\n\n"
             f"Subject: *{safe_subject_name}*\n\n"
             "This part will be connected after normal topic practice is finished\\.",
             parse_mode="MarkdownV2",
@@ -1652,4 +1652,5 @@ async def waec_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_T
 def register_handlers(application):
     application.add_handler(CommandHandler("waecpractice", waecpractice_handler))
     application.add_handler(CallbackQueryHandler(waecpractice_handler, pattern=r"^waecneco:practice$"))
+
 
