@@ -979,11 +979,9 @@ async def waec_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     await query.answer()
 
-    data = query.data or ""
     try:
-        _, payload = data.split("::", 1)
-        subject_code, topic_id = payload.split(":", 1)
-    except ValueError:
+        _, subject_code, topic_id = query.data.split("::")
+    except Exception:
         return await query.message.reply_text(
             "⚠️ Invalid WAEC topic selection\\.",
             parse_mode="MarkdownV2",
