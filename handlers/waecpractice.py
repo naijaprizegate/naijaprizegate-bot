@@ -1388,6 +1388,197 @@ async def waec_use_paid_handler(update: Update, context: ContextTypes.DEFAULT_TY
     )
 
 
+async def waec_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    try:
+        requested_count = int(query.data.replace("wp_paidcount_", "", 1))
+    except Exception:
+        return await query.message.reply_text(
+            "⚠️ Invalid paid session selection\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    user_id = update.effective_user.id
+    subject_code = context.user_data.get("wp_subject_code")
+    topic_id = context.user_data.get("wp_topic_id")
+
+    if not subject_code or not topic_id:
+        return await query.message.reply_text(
+            "⚠️ Topic session data missing\\. Please choose your subject and topic again\\.",
+            parse_mode="MarkdownV2",
+            reply_markup=make_waec_subject_keyboard(),
+        )
+
+    paid_credits = await get_waec_paid_question_credits(user_id)
+    if paid_credits <= 0:
+        return await query.message.reply_text(
+            "⚠️ You do not have any paid WAEC question credits left\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    requested_count = min(requested_count, paid_credits)
+
+    seen_question_ids = await get_seen_waec_question_ids_for_topic(
+        user_id=user_id,
+        subject_code=subject_code,
+        topic_id=topic_id,
+    )
+
+    batch = prepare_waec_topic_question_batch(
+        subject_code=subject_code,
+        topic_id=topic_id,
+        requested_count=requested_count,
+        seen_question_ids=seen_question_ids,
+    )
+
+    if batch["cycle_reset"]:
+        await reset_waec_topic_history(user_id, subject_code, topic_id)
+
+    selected_questions = batch["selected_questions"]
+    selected_question_ids = batch["selected_question_ids"]
+
+    if not selected_questions:
+        return await query.message.reply_text(
+            "⚠️ No active questions found for this topic yet\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    session_id = await create_waec_session(
+        user_id=user_id,
+        subject_code=subject_code,
+        topic_id=topic_id,
+        question_target=len(selected_questions),
+        mode="topic_practice",
+    )
+
+    context.user_data["wp_session_id"] = session_id
+    context.user_data["wp_session_mode"] = "paid_session"
+    context.user_data["wp_question_batch"] = selected_questions
+    context.user_data["wp_question_ids"] = selected_question_ids
+    context.user_data["wp_current_index"] = 0
+    context.user_data["wp_session_target"] = len(selected_questions)
+    context.user_data["wp_correct_count"] = 0
+    context.user_data["wp_wrong_count"] = 0
+    context.user_data["wp_current_question"] = None
+    context.user_data["wp_answered_current"] = False
+    context.user_data["wp_served_question_ids"] = []
+
+    await query.message.reply_text(
+        f"🎉 *Paid Session Started*\n\n"
+        f"📚 Questions in this session: *{md_escape(str(len(selected_questions)))}*\n\n"
+        "Next step: we will now start serving Question 1\\.",
+        parse_mode="MarkdownV2",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("▶ Start Questions", callback_data="wp_serve_first")],
+                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+            ]
+        ),
+    )
+
+
+async def waec_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    data = query.data
+    pack_size = data.replace("wp_buy_", "", 1)
+
+    pricing_map = {
+        "50": 100,
+        "100": 200,
+        "150": 300,
+        "200": 400,
+    }
+
+    if pack_size not in pricing_map:
+        return await query.message.reply_text(
+            "⚠️ Invalid WAEC package selected\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    amount = pricing_map[pack_size]
+    credits = calculate_jamb_credits(amount)
+
+    user = query.from_user
+    tg_id = user.id
+    username = user.username or f"user_{tg_id}"
+    email = f"{username}@naijaprizegate.ng"
+
+    tx_ref = build_tx_ref("WAEC")
+
+    async with get_async_session() as session:
+        await create_pending_waec_payment(
+            session,
+            payment_reference=tx_ref,
+            user_id=tg_id,
+            amount_paid=amount,
+            question_credits_added=credits,
+        )
+        await session.commit()
+
+    checkout_url = await create_checkout(
+        user_id=tg_id,
+        amount=amount,
+        username=username,
+        email=email,
+        tx_ref=tx_ref,
+        meta={
+            "tg_id": str(tg_id),
+            "username": username,
+            "product_type": "WAEC",
+        },
+        product_type="WAEC",
+    )
+
+    if not checkout_url:
+        async with get_async_session() as session:
+            await session.execute(
+                text("""
+                    update waec_payments
+                    set
+                        payment_status = 'expired',
+                        updated_at = now()
+                    where payment_reference = :payment_reference
+                      and lower(coalesce(payment_status, '')) = 'pending'
+                """),
+                {"payment_reference": tx_ref},
+            )
+            await session.commit()
+
+        return await query.message.reply_text(
+            "⚠️ Payment service unavailable\\. Please try again shortly\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    safe_credits = md_escape(str(credits))
+    safe_amount = md_escape(str(amount))
+
+    await query.message.reply_text(
+        f"💳 *WAEC Question Pack Selected*\n\n"
+        f"📚 Questions: *{safe_credits}*\n"
+        f"💰 Amount: *₦{safe_amount}*\n\n"
+        "After successful payment, your WAEC question credits will be added automatically\\.\n\n"
+        "Tap below to complete payment\\.",
+        parse_mode="MarkdownV2",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
+                [InlineKeyboardButton("⬅️ Back to WAEC / NECO Practice", callback_data="waecneco:practice")],
+                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+            ]
+        ),
+    )
+
+
 async def waec_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -1414,4 +1605,5 @@ async def waec_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_T
 def register_handlers(application):
     application.add_handler(CommandHandler("waecpractice", waecpractice_handler))
     application.add_handler(CallbackQueryHandler(waecpractice_handler, pattern=r"^waecneco:practice$"))
+
 
