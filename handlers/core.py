@@ -305,13 +305,37 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return
 
         if arg.startswith("payok_waec_"):
+            tx_ref = arg.replace("payok_waec_", "", 1).strip()
+
             if update.message:
                 await update.message.reply_text(
-                    "✅ *Payment confirmed!*\n\nOpening *WAEC / NECO Practice* now...",
+                    "✅ *Payment confirmed!*\n\nOpening your WAEC topic page now...",
                     parse_mode="Markdown",
                 )
 
-            from handlers.waecpractice import waecpractice_handler
+            from db import get_async_session
+            from services.waec_payment_finalizer import get_waec_payment
+            from handlers.waecpractice import (
+                waecpractice_handler,
+                send_waec_topic_access_screen,
+            )
+
+            payment = None
+            async with get_async_session() as session:
+                payment = await get_waec_payment(session, tx_ref)
+
+            subject_code = (payment or {}).get("subject_code")
+            topic_id = (payment or {}).get("topic_id")
+
+            if subject_code and topic_id and update.effective_message:
+                await send_waec_topic_access_screen(
+                    update.effective_message,
+                    context,
+                    subject_code=str(subject_code),
+                    topic_id=str(topic_id),
+                )
+                return
+
             await waecpractice_handler(update, context)
             return
         
