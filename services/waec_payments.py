@@ -11,6 +11,8 @@ async def create_pending_waec_payment(
     amount_paid: int,
     question_credits_added: int = 0,
     mock_sessions_added: int = 0,
+    subject_code: str | None = None,
+    topic_id: str | None = None,
 ):
     await session.execute(
         text("""
@@ -20,6 +22,8 @@ async def create_pending_waec_payment(
                 amount_paid,
                 question_credits_added,
                 mock_sessions_added,
+                subject_code,
+                topic_id,
                 payment_status
             )
             values (
@@ -28,6 +32,8 @@ async def create_pending_waec_payment(
                 :amount_paid,
                 :question_credits_added,
                 :mock_sessions_added,
+                :subject_code,
+                :topic_id,
                 'pending'
             )
         """),
@@ -37,5 +43,7 @@ async def create_pending_waec_payment(
             "amount_paid": int(amount_paid),
             "question_credits_added": int(question_credits_added),
             "mock_sessions_added": int(mock_sessions_added),
+            "subject_code": subject_code,
+            "topic_id": topic_id,
         },
     )
