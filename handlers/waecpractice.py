@@ -1220,6 +1220,32 @@ async def waec_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
     correct_option = str(question["answer"]).strip().upper()
     selected_option = str(selected_option).strip().upper()
     is_correct = selected_option == correct_option
+    
+    session_id_raw = context.user_data.get("wp_session_id")
+    if not session_id_raw:
+        return await query.message.reply_text(
+            "⚠️ Session expired\\. Please start again from WAEC / NECO Practice\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    session_id = int(session_id_raw)
+    user_id = update.effective_user.id
+    subject_code = context.user_data.get("wp_subject_code")
+    topic_id = str(question.get("topic_id") or context.user_data.get("wp_topic_id"))
+    question_id = str(question["id"])
+
+    await record_waec_attempt(
+        session_id=session_id,
+        user_id=user_id,
+        subject_code=subject_code,
+        topic_id=topic_id,
+        question_id=question_id,
+        selected_option=selected_option,
+        correct_option=correct_option,
+        is_correct=is_correct,
+    )
+
+    await increment_waec_session_result(session_id, is_correct)
 
     context.user_data["wp_answered_current"] = True
     context.user_data["wp_last_selected_option"] = selected_option
