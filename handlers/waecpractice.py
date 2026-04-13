@@ -930,8 +930,12 @@ async def waec_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     context.user_data["wp_subject_code"] = subject_code
     context.user_data["wp_topic_id"] = topic_id
 
-    free_remaining = 5
-    paid_credits = 0
+    tg = update.effective_user
+    await ensure_waec_user_access(tg.id)
+    access = await get_waec_user_access(tg.id)
+
+    free_remaining = int((access or {}).get("free_questions_remaining", 0))
+    paid_credits = int((access or {}).get("paid_question_credits", 0))
     has_free_trial = free_remaining > 0
     has_paid_credits = paid_credits > 0
 
