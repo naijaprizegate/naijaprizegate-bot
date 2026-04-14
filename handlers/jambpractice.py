@@ -1184,6 +1184,101 @@ async def open_jamb_subject_mock_screen(
         reply_markup=make_jamb_mock_access_keyboard(subject_code, can_start),
     )
 
+
+async def jamb_mock_buy_session_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    data = query.data or ""
+    session_count_str = data.replace("jp_mock_buy_", "", 1)
+
+    pricing_map = {
+        "1": 100,
+        "2": 200,
+        "3": 300,
+        "4": 400,
+        "5": 500,
+    }
+
+    if session_count_str not in pricing_map:
+        return await query.message.reply_text(
+            "⚠️ Invalid mock session package selected\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    subject_code = context.user_data.get("jp_subject_code")
+    if not subject_code:
+        return await query.message.reply_text(
+            "⚠️ Subject session data missing\\. Please choose your subject again\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    session_count = int(session_count_str)
+    amount = pricing_map[session_count_str]
+
+    user = query.from_user
+    tg_id = user.id
+    username = user.username or f"user_{tg_id}"
+    email = f"{username}@naijaprizegate.ng"
+
+    tx_ref = build_tx_ref("JAMBMOCKSUBJECT")
+
+    async with get_async_session() as session:
+        async with session.begin():
+            await create_pending_jamb_payment(
+                session,
+                payment_reference=tx_ref,
+                user_id=tg_id,
+                amount_paid=amount,
+                question_credits_added=0,
+                mock_sessions_added=session_count,
+                subject_code=subject_code,
+                topic_id=None,
+            )
+
+    checkout_url = await create_checkout(
+        user_id=tg_id,
+        amount=amount,
+        username=username,
+        email=email,
+        tx_ref=tx_ref,
+        meta={
+            "tg_id": str(tg_id),
+            "username": username,
+            "product_type": "JAMBMOCKSUBJECT",
+            "subject_code": subject_code,
+        },
+        product_type="JAMBMOCKSUBJECT",
+    )
+
+    if not checkout_url:
+        return await query.message.reply_text(
+            "⚠️ Payment service unavailable\\. Please try again shortly\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    safe_amount = md_escape(str(amount))
+    safe_session_count = md_escape(str(session_count))
+
+    await query.message.reply_text(
+        f"🎟 *Mock UTME Session Selected*\n\n"
+        f"🧾 Sessions: *{safe_session_count}*\n"
+        f"💰 Amount: *₦{safe_amount}*\n\n"
+        "After successful payment, your mock session will be added automatically\\.\n\n"
+        "Tap below to complete payment\\.",
+        parse_mode="MarkdownV2",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
+                [InlineKeyboardButton("⬅️ Back to Mock Screen", callback_data=f"jp_mode_mock_{subject_code}")],
+                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+            ]
+        ),
+    )
+
 # =============================
 # Mode selected
 # =============================
