@@ -5,6 +5,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes
 from sqlalchemy import text
 from html import escape
+from datetime import datetime, timezone, timedelta
 
 from db import get_async_session
 from services.flutterwave_client import create_checkout, build_tx_ref, calculate_jamb_credits
@@ -126,6 +127,8 @@ async def create_waec_mock_session(
     question_target: int,
     duration_minutes: int,
 ) -> int:
+    exam_ends_at = datetime.now(timezone.utc) + timedelta(minutes=duration_minutes)
+
     async with get_async_session() as session:
         async with session.begin():
             result = await session.execute(
@@ -136,20 +139,20 @@ async def create_waec_mock_session(
                         topic_id,
                         mode,
                         question_target,
+                        current_question_index,
+                        exam_ends_at,
                         status,
-                        correct_count,
-                        wrong_count,
-                        started_at
+                        updated_at
                     )
                     values (
                         :user_id,
                         :subject_code,
-                        null,
+                        :topic_id,
                         'mock_by_subject',
                         :question_target,
+                        0,
+                        :exam_ends_at,
                         'active',
-                        0,
-                        0,
                         now()
                     )
                     returning id
@@ -157,7 +160,9 @@ async def create_waec_mock_session(
                 {
                     "user_id": int(user_id),
                     "subject_code": subject_code,
+                    "topic_id": "__mock_subject__",
                     "question_target": int(question_target),
+                    "exam_ends_at": exam_ends_at,
                 },
             )
             return int(result.scalar_one())
