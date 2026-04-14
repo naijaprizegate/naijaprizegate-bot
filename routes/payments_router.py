@@ -181,12 +181,13 @@ async def _finalize_from_verified_data(
                 "credited_now": False,
             }
 
-        did_credit, payment, credits = await finalize_jamb_payment(
+        did_credit, payment, credits, mock_sessions = await finalize_jamb_payment(
             session,
             payment_reference=tx_ref,
             user_id=int(tg_id_raw),
             amount_paid=amount,
             question_credits_added=None,
+            mock_sessions_added=None,
         )
 
         return "JAMB", {
@@ -758,3 +759,4 @@ async def flutterwave_redirect_status(
             <p><a href="https://t.me/{BOT_USERNAME}">Return to Telegram</a></p>
             """
         })
+
