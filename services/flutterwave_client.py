@@ -26,6 +26,7 @@ JAMB_ALLOWED_PACKAGES = {100, 200, 300, 400}
 WAEC_ALLOWED_PACKAGES = {100, 200, 300, 400}
 MOCKJAMB_ALLOWED_PACKAGES = {100}
 JAMBMOCKSUBJECT_ALLOWED_PACKAGES = {100, 200, 300, 400, 500}
+WAECMOCKSUBJECT_ALLOWED_PACKAGES = {100, 200, 300, 400, 500}
 
 PRICE_TO_TRIES = {
     100: 1,
@@ -137,7 +138,11 @@ async def create_checkout(
         logger.warning("🚫 Invalid JAMBMOCKSUBJECT amount=%s user_id=%s", amount, user_id)
         return None
 
-    if product_type not in {"TRIVIA", "JAMB", "WAEC", "MOCKJAMB", "JAMBMOCKSUBJECT"}:
+    if product_type == "WAECMOCKSUBJECT" and amount not in WAECMOCKSUBJECT_ALLOWED_PACKAGES:
+        logger.warning("🚫 Invalid WAECMOCKSUBJECT amount=%s user_id=%s", amount, user_id)
+        return None
+    
+    if product_type not in {"TRIVIA", "JAMB", "WAEC", "MOCKJAMB", "JAMBMOCKSUBJECT", "WAECMOCKSUBJECT"}:
         logger.warning("🚫 Unknown product_type=%s user_id=%s", product_type, user_id)
         return None
 
