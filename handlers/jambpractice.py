@@ -1260,9 +1260,50 @@ async def jamb_topic_page_handler(update: Update, context: ContextTypes.DEFAULT_
     )
 
 
-# =============================
-# Topic selected
-# =============================
+async def send_jamb_topic_access_screen(
+    message,
+    context: ContextTypes.DEFAULT_TYPE,
+    subject_code: str,
+    topic_id: str,
+    user_id: int,
+):
+    topics = get_subject_topics(subject_code)
+    selected_topic = next((t for t in topics if t["id"] == topic_id), None)
+
+    if not selected_topic:
+        return await message.reply_text(
+            "⚠️ Topic not found\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    context.user_data["jp_subject_code"] = subject_code
+    context.user_data["jp_topic_id"] = topic_id
+
+    await ensure_jamb_user_access(user_id)
+    access = await get_jamb_user_access(user_id)
+
+    free_remaining = int((access or {}).get("free_questions_remaining", 0))
+    paid_credits = int((access or {}).get("paid_question_credits", 0))
+    has_free_trial = free_remaining > 0
+    has_paid_credits = paid_credits > 0
+
+    safe_topic_title = md_escape(str(selected_topic["title"]))
+    safe_free_remaining = md_escape(str(free_remaining))
+    safe_paid_credits = md_escape(str(paid_credits))
+
+    await message.reply_text(
+        f"✅ *Topic selected:* {safe_topic_title}\n\n"
+        f"🎁 Free questions left: *{safe_free_remaining}*\n"
+        f"💳 Paid question credits: *{safe_paid_credits}*\n\n"
+        "Choose how you want to continue:",
+        parse_mode="MarkdownV2",
+        reply_markup=make_topic_access_keyboard_for_subject(
+            subject_code,
+            has_free_trial,
+            has_paid_credits,
+        ),
+    )
+
 async def jamb_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -1278,42 +1319,12 @@ async def jamb_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
             parse_mode="MarkdownV2",
         )
 
-    topics = get_subject_topics(subject_code)
-    selected_topic = next((t for t in topics if t["id"] == topic_id), None)
-
-    if not selected_topic:
-        return await query.message.reply_text(
-            "⚠️ Topic not found\\.",
-            parse_mode="MarkdownV2",
-        )
-
-    context.user_data["jp_subject_code"] = subject_code
-    context.user_data["jp_topic_id"] = topic_id
-
-    tg = update.effective_user
-    await ensure_jamb_user_access(tg.id)
-    access = await get_jamb_user_access(tg.id)
-
-    free_remaining = int((access or {}).get("free_questions_remaining", 0))
-    paid_credits = int((access or {}).get("paid_question_credits", 0))
-    has_free_trial = free_remaining > 0
-    has_paid_credits = paid_credits > 0
-
-    safe_topic_title = md_escape(str(selected_topic["title"]))
-    safe_free_remaining = md_escape(str(free_remaining))
-    safe_paid_credits = md_escape(str(paid_credits))
-
-    await query.message.reply_text(
-        f"✅ Topic selected: *{safe_topic_title}*\n\n"
-        f"🎁 Free questions left: *{safe_free_remaining}*\n"
-        f"💳 Paid question credits: *{safe_paid_credits}*\n\n"
-        "Choose how you want to continue:",
-        parse_mode="MarkdownV2",
-        reply_markup=make_topic_access_keyboard_for_subject(
-            subject_code,
-            has_free_trial,
-            has_paid_credits,
-        ),
+    await send_jamb_topic_access_screen(
+        query.message,
+        context,
+        subject_code=subject_code,
+        topic_id=topic_id,
+        user_id=update.effective_user.id,
     )
 
 
@@ -1467,6 +1478,9 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
     username = user.username or f"user_{tg_id}"
     email = f"{username}@naijaprizegate.ng"
 
+    subject_code = context.user_data.get("jp_subject_code")
+    topic_id = context.user_data.get("jp_topic_id")
+
     tx_ref = build_tx_ref("JAMB")
 
     async with get_async_session() as session:
@@ -1476,6 +1490,8 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
             user_id=tg_id,
             amount_paid=amount,
             question_credits_added=credits,
+            subject_code=subject_code,
+            topic_id=topic_id,
         )
         await session.commit()
 
@@ -1489,6 +1505,8 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
             "tg_id": str(tg_id),
             "username": username,
             "product_type": "JAMB",
+            "subject_code": str(subject_code) if subject_code else "",
+            "topic_id": str(topic_id) if topic_id else "",
         },
         product_type="JAMB",
     )
@@ -1527,115 +1545,6 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
             [
                 [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
                 [InlineKeyboardButton("⬅️ Back to JAMB Practice", callback_data="jambpractice")],
-                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
-            ]
-        ),
-    )
-
-
-async def jamb_mock_buy_session_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    if not query:
-        return
-
-    await query.answer()
-
-    data = query.data
-    session_count_str = data.replace("jp_mock_buy_", "", 1)
-
-    user = query.from_user
-    tg_id = user.id
-    username = user.username or f"user_{tg_id}"
-    email = f"{username}@naijaprizegate.ng"
-
-    subject_code = context.user_data.get("jp_subject_code")
-    if not subject_code:
-        return await query.message.reply_text(
-            "⚠️ Subject session data missing\\. Please choose your subject again\\.",
-            parse_mode="MarkdownV2",
-        )
-    
-    pricing_map = {
-        "1": 100,
-        "2": 200,
-        "3": 300,
-        "4": 400,
-        "5": 500,
-    }
-
-    if session_count_str not in pricing_map:
-        return await query.message.reply_text(
-            "⚠️ Invalid mock session package selected\\.",
-            parse_mode="MarkdownV2",
-        )
-
-    session_count = int(session_count_str)
-    amount = pricing_map[session_count_str]
-
-
-    tx_ref = build_tx_ref("JAMBMOCKSUBJECT")
-
-    async with get_async_session() as session:
-        async with session.begin():
-            await create_pending_jamb_payment(
-                session,
-                payment_reference=tx_ref,
-                user_id=tg_id,
-                amount_paid=amount,
-                question_credits_added=0,
-                mock_sessions_added=session_count,
-            )
-
-    checkout_url = await create_checkout(
-        user_id=tg_id,
-        amount=amount,
-        username=username,
-        email=email,
-        tx_ref=tx_ref,
-        meta={
-            "tg_id": str(tg_id),
-            "username": username,
-            "product_type": "JAMBMOCKSUBJECT",
-            "mock_sessions_added": str(session_count),
-            "subject_code": str(subject_code),
-        },
-        product_type="JAMBMOCKSUBJECT",
-    )
-
-    if not checkout_url:
-        async with get_async_session() as session:
-            async with session.begin():
-                await session.execute(
-                    text("""
-                        update jamb_payments
-                        set
-                            payment_status = 'expired',
-                            updated_at = now()
-                        where payment_reference = :payment_reference
-                          and lower(coalesce(payment_status, '')) = 'pending'
-                    """),
-                    {"payment_reference": tx_ref},
-                )
-
-        return await query.message.reply_text(
-            "⚠️ Payment service unavailable\\. Please try again shortly\\.",
-            parse_mode="MarkdownV2",
-        )
-
-    safe_sessions = md_escape(str(session_count))
-    safe_amount = md_escape(str(amount))
-
-    await query.message.reply_text(
-        f"🎟 *Mock Session Package Selected*\n\n"
-        f"🎫 Sessions: *{safe_sessions}*\n"
-        f"💰 Amount: *₦{safe_amount}*\n\n"
-        "After successful payment, your mock sessions will be added automatically\\.\n\n"
-        "Tap below to complete payment\\.",
-        parse_mode="MarkdownV2",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
-                [InlineKeyboardButton("⬅️ Back to Mode", callback_data=f"jp_back_mode_{context.user_data.get('jp_subject_code')}")],
                 [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
             ]
         ),
@@ -2663,4 +2572,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next$"))
+
 
