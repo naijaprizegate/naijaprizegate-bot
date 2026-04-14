@@ -22,6 +22,8 @@ async def get_jamb_payment(session: AsyncSession, payment_reference: str) -> dic
                 amount_paid,
                 question_credits_added,
                 mock_sessions_added,
+                subject_code,
+                topic_id,
                 payment_status,
                 created_at,
                 updated_at
@@ -41,9 +43,11 @@ async def create_pending_jamb_payment(
     payment_reference: str,
     user_id: int,
     amount_paid: int,
-    question_credits_added: int | None = None,
-    mock_sessions_added: int | None = None,
-) -> dict:
+    question_credits_added: int = 0,
+    mock_sessions_added: int = 0,
+    subject_code: str | None = None,
+    topic_id: str | None = None,
+):
     existing = await get_jamb_payment(session, payment_reference)
     if existing:
         return existing
@@ -66,6 +70,8 @@ async def create_pending_jamb_payment(
                 question_credits_added,
                 mock_sessions_added,
                 payment_status,
+                subject_code,
+                topic_id,
                 created_at,
                 updated_at
             )
@@ -76,6 +82,8 @@ async def create_pending_jamb_payment(
                 :question_credits_added,
                 :mock_sessions_added,
                 'pending',
+                :subject_code,
+                :topic_id,
                 now(),
                 now()
             )
@@ -86,6 +94,8 @@ async def create_pending_jamb_payment(
             "amount_paid": int(amount_paid),
             "question_credits_added": int(credits),
             "mock_sessions_added": int(mock_sessions),
+            "subject_code": subject_code,
+            "topic_id": topic_id,
         },
     )
     await session.flush()
