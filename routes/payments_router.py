@@ -33,6 +33,8 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 def _product_type_from_tx_ref(tx_ref: str) -> str:
     tx_ref = (tx_ref or "").upper().strip()
 
+    if tx_ref.startswith("WAECMOCKSUBJECT-"):
+        return "WAECMOCKSUBJECT"
     if tx_ref.startswith("JAMBMOCKSUBJECT-"):
         return "JAMBMOCKSUBJECT"
     if tx_ref.startswith("JAMB-"):
@@ -57,6 +59,11 @@ def _success_url(tx_ref: str, product_type: str, subject_code: str | None = None
     if product_type == "WAEC":
         return f"https://t.me/{BOT_USERNAME}?start=payok_waec_{tx_ref}"
 
+    if product_type == "WAECMOCKSUBJECT":
+        if subject_code:
+            return f"https://t.me/{BOT_USERNAME}?start=payok_waecmocksubject_{subject_code}_{tx_ref}"
+        return f"https://t.me/{BOT_USERNAME}?start=payok_waecmocksubject_{tx_ref}"
+
     if product_type == "JAMBMOCKSUBJECT":
         if subject_code:
             return f"https://t.me/{BOT_USERNAME}?start=payok_jambmocksubject_{subject_code}_{tx_ref}"
@@ -77,6 +84,11 @@ def _failed_url(tx_ref: str, product_type: str, subject_code: str | None = None)
 
     if product_type == "WAEC":
         return f"https://t.me/{BOT_USERNAME}?start=payfail_waec_{tx_ref}"
+    
+    if product_type == "WAECMOCKSUBJECT":
+        if subject_code:
+            return f"https://t.me/{BOT_USERNAME}?start=payfail_waecmocksubject_{subject_code}_{tx_ref}"
+        return f"https://t.me/{BOT_USERNAME}?start=payfail_waecmocksubject_{tx_ref}"
     
     if product_type == "JAMBMOCKSUBJECT":
         if subject_code:
@@ -130,6 +142,14 @@ async def _send_payment_success_message(
                 f"{'s' if amount_or_units != 1 else ''} 🎟\n\n"
                 "You can now continue your Mock UTME \\(By Subject\\)."
             )
+        
+        elif product_type == "WAECMOCKSUBJECT":
+            text = (
+                "🎉 *Payment Successful!*\n\n"
+                "Your *Mock WAEC / NECO (By Subject)* session(s) have been added 📝\n\n"
+                "You can now continue to your mock subject screen."
+            )
+        
         elif product_type == "MOCKJAMB":
             text = (
                 "🎉 *Payment Successful!*\n\n"
@@ -231,6 +251,44 @@ async def _finalize_from_verified_data(
             "display_amount": credits,
         }
 
+    if product_type == "WAECMOCKSUBJECT":
+        tg_id_raw = meta.get("tg_id")
+        mock_sessions_added_raw = meta.get("mock_sessions_added")
+
+        if not tg_id_raw:
+            payment = await get_waec_payment(session, tx_ref)
+            tg_id_raw = payment.get("user_id") if payment else None
+            mock_sessions_added_raw = (
+                mock_sessions_added_raw
+                or (payment.get("mock_sessions_added") if payment else None)
+            )
+
+        if not tg_id_raw:
+            return "WAECMOCKSUBJECT", {
+                "status": "error",
+                "reason": "missing_tg_id",
+                "credited_now": False,
+            }
+
+        did_credit, payment, credits, mock_sessions = await finalize_waec_payment(
+            session,
+            payment_reference=tx_ref,
+            user_id=int(tg_id_raw),
+            amount_paid=amount,
+            question_credits_added=0,
+            mock_sessions_added=int(mock_sessions_added_raw or 0),
+        )
+
+        return "WAECMOCKSUBJECT", {
+            "status": "successful" if payment else "error",
+            "credited_now": did_credit,
+            "credits": credits,
+            "mock_sessions": mock_sessions,
+            "tg_id": int(tg_id_raw),
+            "payment": payment,
+            "display_amount": mock_sessions,
+        }
+    
     if product_type == "JAMBMOCKSUBJECT":
         tg_id_raw = meta.get("tg_id")
         mock_sessions_added_raw = meta.get("mock_sessions_added")
@@ -413,6 +471,12 @@ async def flutterwave_webhook(
                 product_type="JAMBMOCKSUBJECT",
                 amount_or_units=int(info["mock_sessions"]),
             )
+        elif product_type == "WAECMOCKSUBJECT":
+            await _send_payment_success_message(
+                tg_id=int(info["tg_id"]),
+                product_type="WAECMOCKSUBJECT",
+                amount_or_units=int(info["mock_sessions"]),
+            )
         elif product_type == "TRIVIA":
             await _send_payment_success_message(
                 tg_id=int(info["tg_id"]),
@@ -491,6 +555,12 @@ async def flutterwave_redirect(
                             product_type="JAMBMOCKSUBJECT",
                             amount_or_units=int(info["mock_sessions"]),
                         )
+                    elif product_type == "WAECMOCKSUBJECT":
+                        await _send_payment_success_message(
+                            tg_id=int(info["tg_id"]),
+                            product_type="WAECMOCKSUBJECT",
+                            amount_or_units=int(info["mock_sessions"]),
+                        )
                     elif product_type == "TRIVIA":
                         await _send_payment_success_message(
                             tg_id=int(info["tg_id"]),
@@ -516,6 +586,18 @@ async def flutterwave_redirect(
                         </body></html>
                     """, status_code=200)
                 
+                if product_type == "WAECMOCKSUBJECT":
+                    mock_sessions = int(info.get("mock_sessions") or 0)
+                    return HTMLResponse(f"""
+                        <html><body style="font-family: Arial, sans-serif; text-align:center; padding:40px;">
+                        <h2 style="color:green;">✅ Mock WAEC / NECO (By Subject) Payment Successful</h2>
+                        <p>Transaction Reference: <b>{tx_ref}</b></p>
+                        <p>🎟 You’ve been credited with <b>{mock_sessions} mock session{'s' if mock_sessions != 1 else ''}</b>.</p>
+                        <p>This tab will redirect to Telegram in 5 seconds.</p>
+                        <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
+                        </body></html>
+                    """, status_code=200)
+
                 if product_type == "MOCKJAMB":
                     return HTMLResponse(f"""
                         <html><body style="font-family: Arial, sans-serif; text-align:center; padding:40px;">
