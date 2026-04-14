@@ -826,6 +826,84 @@ async def waec_subject_handler(update: Update, context: ContextTypes.DEFAULT_TYP
     )
 
 
+def get_waec_subject_question_count(subject_code: str) -> int:
+    return 60
+
+
+def build_waec_mock_access_text(
+    subject_name: str,
+    question_count: int,
+    mock_sessions_available: int,
+) -> str:
+    safe_subject_name = md_escape(str(subject_name))
+    safe_question_count = md_escape(str(question_count))
+    safe_mock_sessions = md_escape(str(mock_sessions_available))
+    safe_duration = md_escape("30 minutes")
+
+    return (
+        "📝 *Mock WAEC / NECO \\(By Subject\\)*\n\n"
+        "This is a *full subject mock exam*\\.\n\n"
+        f"📘 Subject: *{safe_subject_name}*\n"
+        f"❓ Number of Questions: *{safe_question_count}*\n"
+        f"⏱ Time Allowed: *{safe_duration}*\n"
+        f"🎟 Mock Sessions Available: *{safe_mock_sessions}*\n\n"
+        "Choose how you want to continue:"
+    )
+
+
+def make_waec_mock_access_keyboard(subject_code: str, can_start: bool):
+    rows = []
+
+    if can_start:
+        rows.append([InlineKeyboardButton("✅ Start Mock Exam", callback_data="wp_mock_start_paid")])
+
+    rows.extend(
+        [
+            [InlineKeyboardButton("💳 Buy 1 Mock Session — ₦100", callback_data="wp_mock_buy_1")],
+            [InlineKeyboardButton("⬅️ Back to Practice Mode", callback_data=f"wp_subject_{subject_code}")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+    return InlineKeyboardMarkup(rows)
+
+
+async def open_waec_subject_mock_screen(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+    subject_code: str,
+):
+    subject = get_waec_subject_by_code(subject_code)
+    if not subject:
+        target = update.callback_query.message if update.callback_query else update.effective_message
+        return await target.reply_text(
+            "⚠️ Subject not found\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    context.user_data["wp_subject_code"] = subject_code
+    context.user_data["wp_mode"] = "mock_by_subject"
+
+    tg = update.effective_user
+    await ensure_waec_user_access(tg.id)
+    access = await get_waec_user_access(tg.id)
+
+    mock_sessions_available = int((access or {}).get("mock_sessions_available", 0))
+
+    question_count = get_waec_subject_question_count(subject_code)
+    can_start = mock_sessions_available > 0
+
+    await update.effective_message.reply_text(
+        build_waec_mock_access_text(
+            subject_name=subject["name"],
+            question_count=question_count,
+            mock_sessions_available=mock_sessions_available,
+        ),
+        parse_mode="MarkdownV2",
+        reply_markup=make_waec_mock_access_keyboard(subject_code, can_start),
+    )
+
+
 async def waec_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -858,15 +936,7 @@ async def waec_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if data.startswith("wp_mode_mock_"):
         subject_code = data.replace("wp_mode_mock_", "", 1)
-        subject = get_waec_subject_by_code(subject_code)
-        safe_subject_name = md_escape(str(subject["name"])) if subject else md_escape(subject_code)
-
-        return await query.message.reply_text(
-            f"📝 *Mock WAEC / NECO \\(By Subject\\)*\n\n"
-            f"Subject: *{safe_subject_name}*\n\n"
-            "This part will be connected after normal topic practice is finished\\.",
-            parse_mode="MarkdownV2",
-        )
+        return await open_waec_subject_mock_screen(update, context, subject_code)
 
 
 async def waec_topic_page_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -1652,4 +1722,5 @@ async def waec_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_T
 def register_handlers(application):
     application.add_handler(CommandHandler("waecpractice", waecpractice_handler))
     application.add_handler(CallbackQueryHandler(waecpractice_handler, pattern=r"^waecneco:practice$"))
+
 
