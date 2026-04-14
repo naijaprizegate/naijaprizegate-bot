@@ -404,6 +404,34 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await jambpractice_handler(update, context)
             return        
         
+        if arg.startswith("payok_waecmocksubject_"):
+            payload = arg.replace("payok_waecmocksubject_", "", 1).strip()
+
+            subject_code = ""
+            tx_ref = ""
+
+            if "_" in payload:
+                subject_code, tx_ref = payload.split("_", 1)
+                subject_code = subject_code.strip().lower()
+                tx_ref = tx_ref.strip()
+            else:
+                tx_ref = payload
+
+            if update.message:
+                await update.message.reply_text(
+                    "✅ *Payment confirmed!*\n\nOpening your *WAEC mock subject screen* now.",
+                    parse_mode="Markdown",
+                )
+
+            if subject_code:
+                from handlers.waecpractice import open_waec_subject_mock_screen
+                await open_waec_subject_mock_screen(update, context, subject_code)
+                return
+
+            from handlers.waecpractice import waecpractice_handler
+            await waecpractice_handler(update, context)
+            return
+
         # -------------------------------------------------------
         # PAYMENT FAILED DEEP LINKS
         # -------------------------------------------------------
@@ -474,6 +502,29 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await jambpractice_handler(update, context)
             return
         
+        if arg.startswith("payfail_waecmocksubject_"):
+            payload = arg.replace("payfail_waecmocksubject_", "", 1).strip()
+
+            subject_code = ""
+            if "_" in payload:
+                subject_code, _ = payload.split("_", 1)
+                subject_code = subject_code.strip().lower()
+
+            if update.message:
+                await update.message.reply_text(
+                    "❌ *Mock WAEC / NECO \\(By Subject\\) payment was not completed.*\n\nPlease try again.",
+                    parse_mode="MarkdownV2",
+                )
+
+            if subject_code:
+                from handlers.waecpractice import open_waec_subject_mock_screen
+                await open_waec_subject_mock_screen(update, context, subject_code)
+                return
+
+            from handlers.waecpractice import waecpractice_handler
+            await waecpractice_handler(update, context)
+            return
+
         # -------------------------------------------------------
         # CHALLENGE LINK HANDLER
         # -------------------------------------------------------
@@ -734,6 +785,8 @@ def register_handlers(application):
         waec_paid_count_handler,
         waec_buy_pack_handler,
         waec_back_mode_handler,
+        waec_mock_start_paid_handler,
+        waec_mock_buy_session_handler,
     )
     
     # ---------------------------------------------------
@@ -749,6 +802,8 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(waecpractice_handler, pattern=r"^waecneco:practice$"))
     application.add_handler(CallbackQueryHandler(waec_subject_handler, pattern=r"^wp_subj_"))
     application.add_handler(CallbackQueryHandler(waec_mode_handler, pattern=r"^wp_mode_"))
+    application.add_handler(CallbackQueryHandler(waec_mock_start_paid_handler, pattern=r"^wp_mock_start_paid$"))
+    application.add_handler(CallbackQueryHandler(waec_mock_buy_session_handler, pattern=r"^wp_mock_buy_"))
     application.add_handler(CallbackQueryHandler(waec_topic_page_handler, pattern=r"^wp_topicpage_"))
     application.add_handler(CallbackQueryHandler(waec_topic_handler, pattern=r"^wp_topic::"))
     application.add_handler(CallbackQueryHandler(waec_back_mode_handler, pattern=r"^wp_back_mode_"))
