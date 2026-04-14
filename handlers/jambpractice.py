@@ -1387,7 +1387,7 @@ async def send_jamb_topic_access_screen(
     safe_paid_credits = md_escape(str(paid_credits))
 
     await message.reply_text(
-        f"✅ *Topic selected:* {safe_topic_title}\n\n"
+        f"✅ Topic selected: *{safe_topic_title}*\n\n"
         f"🎁 Free questions left: *{safe_free_remaining}*\n"
         f"💳 Paid question credits: *{safe_paid_credits}*\n\n"
         "Choose how you want to continue:",
