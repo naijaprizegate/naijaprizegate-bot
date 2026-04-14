@@ -56,6 +56,30 @@ async def get_waec_user_access(user_id: int):
         return dict(row) if row else None
 
 
+async def get_waec_mock_sessions_available(user_id: int) -> int:
+    access = await get_waec_user_access(user_id)
+    return int((access or {}).get("mock_sessions_available", 0))
+
+
+async def deduct_one_waec_mock_session(user_id: int) -> bool:
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    update waec_user_access
+                    set
+                        mock_sessions_available = mock_sessions_available - 1,
+                        updated_at = now()
+                    where user_id = :user_id
+                      and coalesce(mock_sessions_available, 0) >= 1
+                    returning mock_sessions_available
+                """),
+                {"user_id": int(user_id)},
+            )
+            row = result.first()
+            return row is not None
+
+
 async def create_waec_session(
     user_id: int,
     subject_code: str,
@@ -91,6 +115,53 @@ async def create_waec_session(
                     "topic_id": topic_id,
                     "mode": mode,
                     "question_target": question_target,
+                },
+            )
+            return int(result.scalar_one())
+
+
+async def create_waec_mock_session(
+    user_id: int,
+    subject_code: str,
+    question_target: int,
+    duration_minutes: int,
+) -> int:
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    insert into waec_sessions (
+                        user_id,
+                        subject_code,
+                        topic_id,
+                        mode,
+                        question_target,
+                        current_index,
+                        correct_count,
+                        wrong_count,
+                        is_completed,
+                        started_at,
+                        completed_at
+                    )
+                    values (
+                        :user_id,
+                        :subject_code,
+                        null,
+                        'mock_by_subject',
+                        :question_target,
+                        0,
+                        0,
+                        0,
+                        false,
+                        now(),
+                        null
+                    )
+                    returning id
+                """),
+                {
+                    "user_id": int(user_id),
+                    "subject_code": subject_code,
+                    "question_target": int(question_target),
                 },
             )
             return int(result.scalar_one())
@@ -477,289 +548,6 @@ def clear_waec_session_state(context: ContextTypes.DEFAULT_TYPE):
         context.user_data.pop(key, None)
 
 
-async def ensure_waec_user_access(user_id: int):
-    async with get_async_session() as session:
-        async with session.begin():
-            await session.execute(
-                text("""
-                    insert into waec_user_access (user_id)
-                    values (:user_id)
-                    on conflict (user_id) do nothing
-                """),
-                {"user_id": user_id},
-            )
-
-
-async def get_waec_user_access(user_id: int):
-    async with get_async_session() as session:
-        result = await session.execute(
-            text("""
-                select
-                    free_questions_remaining,
-                    paid_question_credits,
-                    mock_sessions_available,
-                    total_questions_used
-                from waec_user_access
-                where user_id = :user_id
-            """),
-            {"user_id": user_id},
-        )
-        row = result.mappings().first()
-        return dict(row) if row else None
-
-
-async def create_waec_session(
-    user_id: int,
-    subject_code: str,
-    topic_id: str,
-    question_target: int,
-    mode: str = "topic_practice",
-) -> int:
-    async with get_async_session() as session:
-        async with session.begin():
-            result = await session.execute(
-                text("""
-                    insert into waec_sessions (
-                        user_id,
-                        subject_code,
-                        topic_id,
-                        mode,
-                        question_target,
-                        status
-                    )
-                    values (
-                        :user_id,
-                        :subject_code,
-                        :topic_id,
-                        :mode,
-                        :question_target,
-                        'active'
-                    )
-                    returning id
-                """),
-                {
-                    "user_id": user_id,
-                    "subject_code": subject_code,
-                    "topic_id": topic_id,
-                    "mode": mode,
-                    "question_target": question_target,
-                },
-            )
-            return int(result.scalar_one())
-
-
-async def get_seen_waec_question_ids_for_topic(user_id: int, subject_code: str, topic_id: str) -> list[str]:
-    async with get_async_session() as session:
-        result = await session.execute(
-            text("""
-                select question_id
-                from waec_user_topic_history
-                where user_id = :user_id
-                  and subject_code = :subject_code
-                  and topic_id = :topic_id
-            """),
-            {
-                "user_id": user_id,
-                "subject_code": subject_code,
-                "topic_id": topic_id,
-            },
-        )
-        rows = result.fetchall()
-        return [str(row[0]) for row in rows]
-
-
-async def reset_waec_topic_history(user_id: int, subject_code: str, topic_id: str):
-    async with get_async_session() as session:
-        async with session.begin():
-            await session.execute(
-                text("""
-                    delete from waec_user_topic_history
-                    where user_id = :user_id
-                      and subject_code = :subject_code
-                      and topic_id = :topic_id
-                """),
-                {
-                    "user_id": user_id,
-                    "subject_code": subject_code,
-                    "topic_id": topic_id,
-                },
-            )
-
-
-async def get_waec_paid_question_credits(user_id: int) -> int:
-    access = await get_waec_user_access(user_id)
-    return int((access or {}).get("paid_question_credits", 0))
-
-
-async def deduct_one_waec_free_question(user_id: int) -> bool:
-    async with get_async_session() as session:
-        async with session.begin():
-            result = await session.execute(
-                text("""
-                    update waec_user_access
-                    set
-                        free_questions_remaining = free_questions_remaining - 1,
-                        total_questions_used = total_questions_used + 1,
-                        updated_at = now()
-                    where user_id = :user_id
-                      and free_questions_remaining > 0
-                    returning free_questions_remaining
-                """),
-                {"user_id": user_id},
-            )
-            return result.first() is not None
-
-
-async def deduct_one_waec_paid_question(user_id: int) -> bool:
-    async with get_async_session() as session:
-        async with session.begin():
-            result = await session.execute(
-                text("""
-                    update waec_user_access
-                    set
-                        paid_question_credits = paid_question_credits - 1,
-                        total_questions_used = total_questions_used + 1,
-                        updated_at = now()
-                    where user_id = :user_id
-                      and paid_question_credits > 0
-                    returning paid_question_credits
-                """),
-                {"user_id": user_id},
-            )
-            return result.first() is not None
-
-
-async def add_question_to_waec_topic_history(
-    user_id: int,
-    subject_code: str,
-    topic_id: str,
-    question_id: str,
-):
-    async with get_async_session() as session:
-        async with session.begin():
-            await session.execute(
-                text("""
-                    insert into waec_user_topic_history (
-                        user_id,
-                        subject_code,
-                        topic_id,
-                        question_id
-                    )
-                    values (
-                        :user_id,
-                        :subject_code,
-                        :topic_id,
-                        :question_id
-                    )
-                    on conflict (user_id, subject_code, topic_id, question_id) do nothing
-                """),
-                {
-                    "user_id": user_id,
-                    "subject_code": subject_code,
-                    "topic_id": topic_id,
-                    "question_id": question_id,
-                },
-            )
-
-
-async def record_waec_attempt(
-    session_id: int,
-    user_id: int,
-    subject_code: str,
-    topic_id: str,
-    question_id: str,
-    selected_option: str,
-    correct_option: str,
-    is_correct: bool,
-):
-    async with get_async_session() as session:
-        async with session.begin():
-            await session.execute(
-                text("""
-                    insert into waec_attempts (
-                        session_id,
-                        user_id,
-                        subject_code,
-                        topic_id,
-                        question_id,
-                        selected_option,
-                        correct_option,
-                        is_correct
-                    )
-                    values (
-                        :session_id,
-                        :user_id,
-                        :subject_code,
-                        :topic_id,
-                        :question_id,
-                        :selected_option,
-                        :correct_option,
-                        :is_correct
-                    )
-                """),
-                {
-                    "session_id": session_id,
-                    "user_id": user_id,
-                    "subject_code": subject_code,
-                    "topic_id": topic_id,
-                    "question_id": question_id,
-                    "selected_option": selected_option,
-                    "correct_option": correct_option,
-                    "is_correct": is_correct,
-                },
-            )
-
-
-async def increment_waec_session_served(session_id: int):
-    async with get_async_session() as session:
-        async with session.begin():
-            await session.execute(
-                text("""
-                    update waec_sessions
-                    set questions_served = questions_served + 1
-                    where id = :session_id
-                """),
-                {"session_id": session_id},
-            )
-
-
-async def increment_waec_session_result(session_id: int, is_correct: bool):
-    async with get_async_session() as session:
-        async with session.begin():
-            if is_correct:
-                await session.execute(
-                    text("""
-                        update waec_sessions
-                        set correct_count = correct_count + 1
-                        where id = :session_id
-                    """),
-                    {"session_id": session_id},
-                )
-            else:
-                await session.execute(
-                    text("""
-                        update waec_sessions
-                        set wrong_count = wrong_count + 1
-                        where id = :session_id
-                    """),
-                    {"session_id": session_id},
-                )
-
-
-async def complete_waec_session(session_id: int):
-    async with get_async_session() as session:
-        async with session.begin():
-            await session.execute(
-                text("""
-                    update waec_sessions
-                    set
-                        status = 'completed',
-                        ended_at = now()
-                    where id = :session_id
-                """),
-                {"session_id": session_id},
-            )
-
 async def waecpractice_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg = update.effective_user
     if not tg:
@@ -859,7 +647,11 @@ def make_waec_mock_access_keyboard(subject_code: str, can_start: bool):
 
     rows.extend(
         [
-            [InlineKeyboardButton("💳 Buy 1 Mock Session — ₦100", callback_data="wp_mock_buy_1")],
+            [InlineKeyboardButton("💳 Get 1 Mock Session — ₦100", callback_data="wp_mock_buy_1")],
+            [InlineKeyboardButton("💳 Get 2 Mock Sessions — ₦200", callback_data="wp_mock_buy_2")],
+            [InlineKeyboardButton("💳 Get 3 Mock Sessions — ₦300", callback_data="wp_mock_buy_3")],
+            [InlineKeyboardButton("💳 Get 4 Mock Sessions — ₦400", callback_data="wp_mock_buy_4")],
+            [InlineKeyboardButton("💳 Get 5 Mock Sessions — ₦500", callback_data="wp_mock_buy_5")],
             [InlineKeyboardButton("⬅️ Back to Practice Mode", callback_data=f"wp_subject_{subject_code}")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
@@ -901,6 +693,178 @@ async def open_waec_subject_mock_screen(
         ),
         parse_mode="MarkdownV2",
         reply_markup=make_waec_mock_access_keyboard(subject_code, can_start),
+    )
+
+
+async def waec_mock_start_paid_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    tg = update.effective_user
+    user_id = tg.id
+
+    subject_code = context.user_data.get("wp_subject_code")
+    if not subject_code:
+        return await query.message.reply_text(
+            "⚠️ Subject session data missing\\. Please choose your subject again\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    subject = get_waec_subject_by_code(subject_code)
+    if not subject:
+        return await query.message.reply_text(
+            "⚠️ Subject not found\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    available_sessions = await get_waec_mock_sessions_available(user_id)
+
+    if available_sessions < 1:
+        safe_available = md_escape(str(available_sessions))
+        return await query.message.reply_text(
+            f"⚠️ You do not have any mock sessions available\\.\n\n"
+            f"🎟 Available mock sessions: *{safe_available}*\n\n"
+            "Please buy a mock session first\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    deducted = await deduct_one_waec_mock_session(user_id)
+    if not deducted:
+        return await query.message.reply_text(
+            "⚠️ Could not reserve your mock session right now\\. Please try again\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    question_count = get_waec_subject_question_count(subject_code)
+    duration_minutes = 30
+
+    session_id = await create_waec_mock_session(
+        user_id=user_id,
+        subject_code=subject_code,
+        question_target=question_count,
+        duration_minutes=duration_minutes,
+    )
+
+    context.user_data["wp_session_id"] = session_id
+    context.user_data["wp_session_mode"] = "mock_session"
+    context.user_data["wp_current_index"] = 0
+    context.user_data["wp_correct_count"] = 0
+    context.user_data["wp_wrong_count"] = 0
+    context.user_data["wp_answered_current"] = False
+
+    safe_subject_name = md_escape(str(subject["name"]))
+    safe_question_count = md_escape(str(question_count))
+
+    await query.message.reply_text(
+        f"✅ *Mock Started*\n\n"
+        f"📘 Subject: *{safe_subject_name}*\n"
+        f"📚 Questions in this subject: *{safe_question_count}*\n\n"
+        "Tap below to start Question 1\\.",
+        parse_mode="MarkdownV2",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("▶ Start Mock", callback_data="wp_mock_serve_first")],
+                [InlineKeyboardButton("🏠 End Mock", callback_data="wp_end_session")],
+            ]
+        ),
+    )
+
+
+async def waec_mock_buy_session_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    data = query.data or ""
+    session_count_str = data.replace("wp_mock_buy_", "", 1)
+
+    pricing_map = {
+        "1": 100,
+        "2": 200,
+        "3": 300,
+        "4": 400,
+        "5": 500,
+    }
+
+    if session_count_str not in pricing_map:
+        return await query.message.reply_text(
+            "⚠️ Invalid mock session package selected\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    subject_code = context.user_data.get("wp_subject_code")
+    if not subject_code:
+        return await query.message.reply_text(
+            "⚠️ Subject session data missing\\. Please choose your subject again\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    session_count = int(session_count_str)
+    amount = pricing_map[session_count_str]
+
+    user = query.from_user
+    tg_id = user.id
+    username = user.username or f"user_{tg_id}"
+    email = f"{username}@naijaprizegate.ng"
+
+    tx_ref = build_tx_ref("WAECMOCKSUBJECT")
+
+    async with get_async_session() as session:
+        async with session.begin():
+            await create_pending_waec_payment(
+                session,
+                payment_reference=tx_ref,
+                user_id=tg_id,
+                amount_paid=amount,
+                question_credits_added=0,
+                mock_sessions_added=session_count,
+                subject_code=subject_code,
+                topic_id=None,
+            )
+
+    checkout_url = await create_checkout(
+        user_id=tg_id,
+        amount=amount,
+        username=username,
+        email=email,
+        tx_ref=tx_ref,
+        meta={
+            "tg_id": str(tg_id),
+            "username": username,
+            "product_type": "WAECMOCKSUBJECT",
+            "subject_code": subject_code,
+        },
+        product_type="WAECMOCKSUBJECT",
+    )
+
+    if not checkout_url:
+        return await query.message.reply_text(
+            "⚠️ Payment service unavailable\\. Please try again shortly\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    safe_amount = md_escape(str(amount))
+    safe_session_count = md_escape(str(session_count))
+
+    await query.message.reply_text(
+        f"🎟 *Mock WAEC / NECO Session Selected*\n\n"
+        f"🧾 Sessions: *{safe_session_count}*\n"
+        f"💰 Amount: *₦{safe_amount}*\n\n"
+        "After successful payment, your mock session will be added automatically\\.\n\n"
+        "Tap below to complete payment\\.",
+        parse_mode="MarkdownV2",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
+                [InlineKeyboardButton("⬅️ Back to Mock Screen", callback_data=f"wp_mode_mock_{subject_code}")],
+                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+            ]
+        ),
     )
 
 
@@ -1722,5 +1686,4 @@ async def waec_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_T
 def register_handlers(application):
     application.add_handler(CommandHandler("waecpractice", waecpractice_handler))
     application.add_handler(CallbackQueryHandler(waecpractice_handler, pattern=r"^waecneco:practice$"))
-
 
