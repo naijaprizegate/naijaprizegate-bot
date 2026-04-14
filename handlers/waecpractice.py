@@ -767,7 +767,7 @@ async def waec_mock_start_paid_handler(update: Update, context: ContextTypes.DEF
         parse_mode="MarkdownV2",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("▶ Start Mock", callback_data="wp_mock_serve_first")],
+                [InlineKeyboardButton("▶ Start Mock", callback_data="wp_serve_first")],
                 [InlineKeyboardButton("🏠 End Mock", callback_data="wp_end_session")],
             ]
         ),
