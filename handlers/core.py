@@ -294,13 +294,37 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return
 
         if arg.startswith("payok_jamb_"):
+            tx_ref = arg.replace("payok_jamb_", "", 1).strip()
+
             if update.message:
                 await update.message.reply_text(
-                    "✅ *Payment confirmed!*\n\nOpening *JAMB Practice* now...",
+                    "✅ *Payment confirmed!*\n\nOpening your JAMB topic page now...",
                     parse_mode="Markdown",
                 )
 
-            from handlers.jambpractice import jambpractice_handler
+            from services.jamb_payments import get_jamb_payment
+            from handlers.jambpractice import (
+                jambpractice_handler,
+                send_jamb_topic_access_screen,
+            )
+
+            payment = None
+            async with get_async_session() as session:
+                payment = await get_jamb_payment(session, tx_ref)
+
+            subject_code = (payment or {}).get("subject_code")
+            topic_id = (payment or {}).get("topic_id")
+
+            if subject_code and topic_id and update.effective_message:
+                await send_jamb_topic_access_screen(
+                    update.effective_message,
+                    context,
+                    subject_code=str(subject_code),
+                    topic_id=str(topic_id),
+                    user_id=update.effective_user.id,
+                )
+                return
+
             await jambpractice_handler(update, context)
             return
 
@@ -757,5 +781,4 @@ def register_handlers(application):
         ),
         group=20,
     )
-
 
