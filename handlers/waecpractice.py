@@ -136,12 +136,10 @@ async def create_waec_mock_session(
                         topic_id,
                         mode,
                         question_target,
-                        current_index,
+                        status,
                         correct_count,
                         wrong_count,
-                        is_completed,
-                        started_at,
-                        completed_at
+                        started_at
                     )
                     values (
                         :user_id,
@@ -149,12 +147,10 @@ async def create_waec_mock_session(
                         null,
                         'mock_by_subject',
                         :question_target,
+                        'active',
                         0,
                         0,
-                        0,
-                        false,
-                        now(),
-                        null
+                        now()
                     )
                     returning id
                 """),
