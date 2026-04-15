@@ -1,30 +1,36 @@
 # ====================================================
 # handlers/waecpractice.py
 # ===================================================
+import json
+import math
+import logging
+from datetime import datetime, timedelta, timezone
+from typing import Optional
+
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext import ContextTypes
+from telegram.ext import CommandHandler, CallbackQueryHandler, ContextTypes
 from sqlalchemy import text
-from html import escape
-from datetime import datetime, timezone, timedelta
-
-from db import get_async_session
-from services.flutterwave_client import create_checkout, build_tx_ref, calculate_jamb_credits
-from services.waec_payments import create_pending_waec_payment
-
 from helpers import md_escape
+
+from services.flutterwave_client import create_checkout, build_tx_ref, calculate_waec_credits
+from services.waec_payments import create_pending_waec_payment
+from db import get_async_session
 from waec_loader import (
     get_waec_subjects,
     get_waec_subject_by_code,
     get_waec_subject_topics,
     prepare_waec_topic_question_batch,
+    prepare_waec_subject_question_batch,
+    prepare_waec_english_objective_batch,
 )
 
-import math
+logger = logging.getLogger(__name__)
 
 TOPICS_PER_PAGE = 7
 
+
 # =============================
-# WAEC DB helpers
+# DB helpers
 # =============================
 async def ensure_waec_user_access(user_id: int):
     async with get_async_session() as session:
@@ -39,7 +45,7 @@ async def ensure_waec_user_access(user_id: int):
             )
 
 
-async def get_waec_user_access(user_id: int):
+async def get_waec_user_access(user_id: int) -> Optional[dict]:
     async with get_async_session() as session:
         result = await session.execute(
             text("""
@@ -55,31 +61,6 @@ async def get_waec_user_access(user_id: int):
         )
         row = result.mappings().first()
         return dict(row) if row else None
-
-
-async def get_waec_mock_sessions_available(user_id: int) -> int:
-    access = await get_waec_user_access(user_id)
-    return int((access or {}).get("mock_sessions_available", 0))
-
-
-async def deduct_one_waec_mock_session(user_id: int) -> bool:
-    async with get_async_session() as session:
-        async with session.begin():
-            result = await session.execute(
-                text("""
-                    update waec_user_access
-                    set
-                        mock_sessions_available = mock_sessions_available - 1,
-                        updated_at = now()
-                    where user_id = :user_id
-                      and coalesce(mock_sessions_available, 0) >= 1
-                    returning mock_sessions_available
-                """),
-                {"user_id": int(user_id)},
-            )
-            row = result.first()
-            return row is not None
-
 
 async def create_waec_session(
     user_id: int,
@@ -118,57 +99,11 @@ async def create_waec_session(
                     "question_target": question_target,
                 },
             )
-            return int(result.scalar_one())
+            session_id = result.scalar_one()
+            return int(session_id)
 
 
-async def create_waec_mock_session(
-    user_id: int,
-    subject_code: str,
-    question_target: int,
-    duration_minutes: int,
-) -> int:
-    exam_ends_at = datetime.now(timezone.utc) + timedelta(minutes=duration_minutes)
-
-    async with get_async_session() as session:
-        async with session.begin():
-            result = await session.execute(
-                text("""
-                    insert into waec_sessions (
-                        user_id,
-                        subject_code,
-                        topic_id,
-                        mode,
-                        question_target,
-                        current_question_index,
-                        exam_ends_at,
-                        status,
-                        updated_at
-                    )
-                    values (
-                        :user_id,
-                        :subject_code,
-                        :topic_id,
-                        'mock_by_subject',
-                        :question_target,
-                        0,
-                        :exam_ends_at,
-                        'active',
-                        now()
-                    )
-                    returning id
-                """),
-                {
-                    "user_id": int(user_id),
-                    "subject_code": subject_code,
-                    "topic_id": "__mock_subject__",
-                    "question_target": int(question_target),
-                    "exam_ends_at": exam_ends_at,
-                },
-            )
-            return int(result.scalar_one())
-
-
-async def get_seen_waec_question_ids_for_topic(user_id: int, subject_code: str, topic_id: str) -> list[str]:
+async def get_seen_question_ids_for_topic(user_id: int, subject_code: str, topic_id: str) -> list[str]:
     async with get_async_session() as session:
         result = await session.execute(
             text("""
@@ -188,7 +123,7 @@ async def get_seen_waec_question_ids_for_topic(user_id: int, subject_code: str, 
         return [str(row[0]) for row in rows]
 
 
-async def reset_waec_topic_history(user_id: int, subject_code: str, topic_id: str):
+async def reset_topic_history(user_id: int, subject_code: str, topic_id: str):
     async with get_async_session() as session:
         async with session.begin():
             await session.execute(
@@ -210,8 +145,39 @@ async def get_waec_paid_question_credits(user_id: int) -> int:
     access = await get_waec_user_access(user_id)
     return int((access or {}).get("paid_question_credits", 0))
 
+async def get_waec_mock_sessions_available(user_id: int) -> int:
+    access = await get_waec_user_access(user_id)
+    return int((access or {}).get("mock_sessions_available", 0))
 
-async def deduct_one_waec_free_question(user_id: int) -> bool:
+
+async def deduct_one_waec_mock_session(user_id: int) -> bool:
+    """
+    Deduct 1 mock session if available.
+    Returns True if deducted, False otherwise.
+    """
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    update waec_user_access
+                    set
+                        mock_sessions_available = mock_sessions_available - 1,
+                        updated_at = now()
+                    where user_id = :user_id
+                      and mock_sessions_available > 0
+                    returning mock_sessions_available
+                """),
+                {"user_id": user_id},
+            )
+            row = result.first()
+            return row is not None
+
+
+async def deduct_one_free_question(user_id: int) -> bool:
+    """
+    Deduct 1 free question if available.
+    Returns True if deducted, False otherwise.
+    """
     async with get_async_session() as session:
         async with session.begin():
             result = await session.execute(
@@ -227,10 +193,15 @@ async def deduct_one_waec_free_question(user_id: int) -> bool:
                 """),
                 {"user_id": user_id},
             )
-            return result.first() is not None
+            row = result.first()
+            return row is not None
 
 
-async def deduct_one_waec_paid_question(user_id: int) -> bool:
+async def deduct_one_paid_question(user_id: int) -> bool:
+    """
+    Deduct 1 paid question credit if available.
+    Returns True if deducted, False otherwise.
+    """
     async with get_async_session() as session:
         async with session.begin():
             result = await session.execute(
@@ -246,10 +217,11 @@ async def deduct_one_waec_paid_question(user_id: int) -> bool:
                 """),
                 {"user_id": user_id},
             )
-            return result.first() is not None
+            row = result.first()
+            return row is not None
 
 
-async def add_question_to_waec_topic_history(
+async def add_question_to_topic_history(
     user_id: int,
     subject_code: str,
     topic_id: str,
@@ -336,7 +308,8 @@ async def increment_waec_session_served(session_id: int):
             await session.execute(
                 text("""
                     update waec_sessions
-                    set questions_served = questions_served + 1
+                    set
+                        questions_served = questions_served + 1
                     where id = :session_id
                 """),
                 {"session_id": session_id},
@@ -350,7 +323,8 @@ async def increment_waec_session_result(session_id: int, is_correct: bool):
                 await session.execute(
                     text("""
                         update waec_sessions
-                        set correct_count = correct_count + 1
+                        set
+                            correct_count = correct_count + 1
                         where id = :session_id
                     """),
                     {"session_id": session_id},
@@ -359,7 +333,8 @@ async def increment_waec_session_result(session_id: int, is_correct: bool):
                 await session.execute(
                     text("""
                         update waec_sessions
-                        set wrong_count = wrong_count + 1
+                        set
+                            wrong_count = wrong_count + 1
                         where id = :session_id
                     """),
                     {"session_id": session_id},
@@ -381,6 +356,533 @@ async def complete_waec_session(session_id: int):
             )
 
 
+async def clear_waec_session_state(context: ContextTypes.DEFAULT_TYPE):
+    keys_to_clear = [
+        "wp_session_id",
+        "wp_session_mode",
+        "wp_question_batch",
+        "wp_question_ids",
+        "wp_current_index",
+        "wp_session_target",
+        "wp_correct_count",
+        "wp_wrong_count",
+        "wp_current_question",
+        "wp_answered_current",
+        "wp_served_question_ids",
+        "wp_shown_passages",
+        "wp_last_passage",
+        "wp_last_passage_id_shown",
+        "wp_active_passage_message_id",
+        "wp_last_selected_option",
+        "wp_last_correct_option",
+    ]
+
+    for key in keys_to_clear:
+        context.user_data.pop(key, None)
+
+
+# =============================
+# Mock-by-subject helpers
+# =============================
+def get_waec_mock_question_count(subject_code: str) -> int:
+    subject_code = str(subject_code or "").strip().lower()
+    return 60 if subject_code == "eng" else 40
+
+
+def get_waec_mock_duration_minutes(subject_code: str) -> int:
+    subject_code = str(subject_code or "").strip().lower()
+    return 45 if subject_code == "eng" else 30
+
+
+def extract_correct_option(question: dict) -> str:
+    for key in ("correct_option", "correct_answer", "answer", "correctAnswer"):
+        value = question.get(key)
+        if value:
+            return str(value).strip().upper()
+    return ""
+
+
+def format_waec_mock_time_remaining(exam_ends_at) -> str:
+    if not exam_ends_at:
+        return "Unknown"
+
+    if isinstance(exam_ends_at, str):
+        try:
+            exam_ends_at = datetime.fromisoformat(exam_ends_at.replace("Z", "+00:00"))
+        except Exception:
+            return "Unknown"
+
+    if exam_ends_at.tzinfo is None:
+        exam_ends_at = exam_ends_at.replace(tzinfo=timezone.utc)
+
+    now = datetime.now(timezone.utc)
+    delta = exam_ends_at - now
+    total_seconds = int(delta.total_seconds())
+
+    if total_seconds <= 0:
+        return "Time up"
+
+    hours = total_seconds // 3600
+    minutes = (total_seconds % 3600) // 60
+
+    if hours > 0:
+        return f"{hours}h {minutes}m"
+
+    return f"{minutes}m"
+
+
+def is_waec_mock_time_expired(exam_ends_at) -> bool:
+    if not exam_ends_at:
+        return False
+
+    if isinstance(exam_ends_at, str):
+        try:
+            exam_ends_at = datetime.fromisoformat(exam_ends_at.replace("Z", "+00:00"))
+        except Exception:
+            return False
+
+    if exam_ends_at.tzinfo is None:
+        exam_ends_at = exam_ends_at.replace(tzinfo=timezone.utc)
+
+    return datetime.now(timezone.utc) >= exam_ends_at
+
+
+async def get_seen_question_ids_for_subject(user_id: int, subject_code: str) -> list[str]:
+    async with get_async_session() as session:
+        result = await session.execute(
+            text("""
+                select distinct question_id
+                from waec_user_topic_history
+                where user_id = :user_id
+                  and subject_code = :subject_code
+            """),
+            {
+                "user_id": user_id,
+                "subject_code": subject_code,
+            },
+        )
+        rows = result.fetchall()
+        return [str(row[0]) for row in rows]
+
+
+async def reset_subject_history(user_id: int, subject_code: str):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    delete from waec_user_topic_history
+                    where user_id = :user_id
+                      and subject_code = :subject_code
+                """),
+                {
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                },
+            )
+
+
+async def add_question_to_subject_history(
+    user_id: int,
+    subject_code: str,
+    question_id: str,
+    topic_id: str | None = None,
+):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    insert into waec_user_topic_history (
+                        user_id,
+                        subject_code,
+                        topic_id,
+                        question_id
+                    )
+                    values (
+                        :user_id,
+                        :subject_code,
+                        :topic_id,
+                        :question_id
+                    )
+                    on conflict (user_id, subject_code, topic_id, question_id) do nothing
+                """),
+                {
+                    "user_id": user_id,
+                    "subject_code": subject_code,
+                    "topic_id": topic_id or "__mock_subject__",
+                    "question_id": question_id,
+                },
+            )
+
+
+async def deduct_paid_questions(user_id: int, question_count: int) -> bool:
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    update waec_user_access
+                    set
+                        paid_question_credits = paid_question_credits - :question_count,
+                        total_questions_used = total_questions_used + :question_count,
+                        updated_at = now()
+                    where user_id = :user_id
+                      and paid_question_credits >= :question_count
+                    returning paid_question_credits
+                """),
+                {
+                    "user_id": user_id,
+                    "question_count": int(question_count),
+                },
+            )
+            row = result.first()
+            return row is not None
+
+
+async def get_latest_active_waec_mock_session_for_user(user_id: int, subject_code: str) -> Optional[dict]:
+    async with get_async_session() as session:
+        result = await session.execute(
+            text("""
+                select
+                    id,
+                    user_id,
+                    subject_code,
+                    topic_id,
+                    mode,
+                    question_target,
+                    questions_served,
+                    correct_count,
+                    wrong_count,
+                    current_question_index,
+                    exam_ends_at,
+                    status,
+                    created_at,
+                    ended_at,
+                    updated_at
+                from waec_sessions
+                where user_id = :user_id
+                  and subject_code = :subject_code
+                  and mode = 'mock_waec'
+                  and status = 'active'
+                order by id desc
+                limit 1
+            """),
+            {
+                "user_id": int(user_id),
+                "subject_code": subject_code,
+            },
+        )
+        row = result.mappings().first()
+        return dict(row) if row else None
+
+
+async def set_waec_session_current_question_index(session_id: int, current_question_index: int):
+    async with get_async_session() as session:
+        async with session.begin():
+            await session.execute(
+                text("""
+                    update waec_sessions
+                    set
+                        current_question_index = :current_question_index,
+                        updated_at = now()
+                    where id = :session_id
+                """),
+                {
+                    "session_id": int(session_id),
+                    "current_question_index": int(current_question_index),
+                },
+            )
+
+
+async def get_waec_session_paper(session_id: int) -> list[dict]:
+    async with get_async_session() as session:
+        result = await session.execute(
+            text("""
+                select
+                    id,
+                    session_id,
+                    user_id,
+                    subject_code,
+                    question_id,
+                    question_order,
+                    question_json,
+                    correct_option,
+                    selected_option,
+                    is_correct,
+                    created_at,
+                    updated_at
+                from waec_session_questions
+                where session_id = :session_id
+                order by question_order asc
+            """),
+            {"session_id": int(session_id)},
+        )
+        rows = result.mappings().all()
+        return [dict(row) for row in rows]
+
+
+async def create_waec_subject_mock_paper_if_needed(
+    user_id: int,
+    session_id: int,
+    subject_code: str,
+) -> dict:
+    existing_paper = await get_waec_session_paper(session_id)
+    if existing_paper:
+        return {
+            "created_now": False,
+            "paper_rows": existing_paper,
+            "selected_count": len(existing_paper),
+            "cycle_reset": False,
+        }
+
+    seen_question_ids = await get_seen_question_ids_for_subject(user_id, subject_code)
+    requested_count = get_waec_mock_question_count(subject_code)
+
+    if subject_code == "eng":
+        batch = prepare_waec_english_objective_batch(
+            seen_question_ids=seen_question_ids,
+        )
+    else:
+        batch = prepare_waec_subject_question_batch(
+            subject_code=subject_code,
+            requested_count=requested_count,
+            seen_question_ids=seen_question_ids,
+        )
+
+    if batch.get("cycle_reset"):
+        await reset_subject_history(user_id, subject_code)
+
+    selected_questions = batch["selected_questions"]
+
+    async with get_async_session() as session:
+        async with session.begin():
+            for idx, question in enumerate(selected_questions, start=1):
+                await session.execute(
+                    text("""
+                        insert into waec_session_questions (
+                            session_id,
+                            user_id,
+                            subject_code,
+                            question_id,
+                            question_order,
+                            question_json,
+                            correct_option,
+                            selected_option,
+                            is_correct,
+                            created_at,
+                            updated_at
+                        )
+                        values (
+                            :session_id,
+                            :user_id,
+                            :subject_code,
+                            :question_id,
+                            :question_order,
+                            :question_json,
+                            :correct_option,
+                            null,
+                            null,
+                            now(),
+                            now()
+                        )
+                        on conflict (session_id, question_id) do nothing
+                    """),
+                    {
+                        "session_id": int(session_id),
+                        "user_id": int(user_id),
+                        "subject_code": subject_code,
+                        "question_id": str(question.get("id")),
+                        "question_order": idx,
+                        "question_json": json.dumps(question),
+                        "correct_option": extract_correct_option(question),
+                    },
+                )
+
+    for question in selected_questions:
+        await add_question_to_subject_history(
+            user_id=user_id,
+            subject_code=subject_code,
+            question_id=str(question.get("id")),
+            topic_id=str(question.get("topic_id") or "__mock_subject__"),
+        )
+
+    paper_rows = await get_waec_session_paper(session_id)
+
+    return {
+        "created_now": True,
+        "paper_rows": paper_rows,
+        "selected_count": len(paper_rows),
+        "cycle_reset": bool(batch.get("cycle_reset")),
+    }
+
+
+async def create_waec_mock_session(
+    user_id: int,
+    subject_code: str,
+    question_target: int,
+) -> int:
+    exam_ends_at = datetime.now(timezone.utc) + timedelta(
+        minutes=get_waec_mock_duration_minutes(subject_code)
+    )
+
+    async with get_async_session() as session:
+        async with session.begin():
+            result = await session.execute(
+                text("""
+                    insert into waec_sessions (
+                        user_id,
+                        subject_code,
+                        topic_id,
+                        mode,
+                        question_target,
+                        current_question_index,
+                        exam_ends_at,
+                        status,
+                        updated_at
+                    )
+                    values (
+                        :user_id,
+                        :subject_code,
+                        :topic_id,
+                        'mock_waec',
+                        :question_target,
+                        0,
+                        :exam_ends_at,
+                        'active',
+                        now()
+                    )
+                    returning id
+                """),
+                {
+                    "user_id": int(user_id),
+                    "subject_code": subject_code,
+                    "topic_id": "__mock_subject__",
+                    "question_target": int(question_target),
+                    "exam_ends_at": exam_ends_at,
+                },
+            )
+            session_id = result.scalar_one()
+            return int(session_id)
+
+
+async def get_waec_session_by_id(session_id: int) -> Optional[dict]:
+    async with get_async_session() as session:
+        result = await session.execute(
+            text("""
+                select
+                    id,
+                    user_id,
+                    subject_code,
+                    topic_id,
+                    mode,
+                    question_target,
+                    questions_served,
+                    correct_count,
+                    wrong_count,
+                    current_question_index,
+                    exam_ends_at,
+                    status,
+                    created_at,
+                    ended_at,
+                    updated_at
+                from waec_sessions
+                where id = :session_id
+                limit 1
+            """),
+            {"session_id": int(session_id)},
+        )
+        row = result.mappings().first()
+        return dict(row) if row else None
+
+
+def build_waec_mock_resume_text(subject_name: str, next_question_no: int, exam_ends_at) -> str:
+    safe_subject_name = md_escape(str(subject_name))
+    safe_next_question_no = md_escape(str(next_question_no))
+    safe_remaining = md_escape(format_waec_mock_time_remaining(exam_ends_at))
+
+    return (
+        f"📝 *Resume Mock waec*\n\n"
+        f"📘 Subject: *{safe_subject_name}*\n"
+        f"⏱ Time Remaining: *{safe_remaining}*\n"
+        f"➡ Resume From: *Question {safe_next_question_no}*\n\n"
+        "Tap below to continue your subject mock\\."
+    )
+
+
+def make_waec_mock_resume_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("▶ Resume Mock", callback_data="wp_mock_resume")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+
+def build_waec_mock_access_text(subject_name: str, question_count: int, mock_sessions_available: int) -> str:
+    safe_subject_name = md_escape(str(subject_name))
+    safe_question_count = md_escape(str(question_count))
+    safe_mock_sessions = md_escape(str(mock_sessions_available))
+    duration_text = "45 minutes" if question_count == 60 else "30 minutes"
+    safe_duration = md_escape(duration_text)
+
+    return (
+        "📝 *Mock WAEC / NECO \\(By Subject\\)*\n\n"
+        "This is a *full subject mock exam*\\.\n\n"
+        f"📘 Subject: *{safe_subject_name}*\n"
+        f"📚 Total Questions: *{safe_question_count}*\n"
+        f"⏱ Time Allowed: *{safe_duration}*\n"
+        f"🎟 Mock Sessions Available: *{safe_mock_sessions}*\n\n"
+        "*What this means:*\n"
+        "• You will answer a *full paper* for this subject\n"
+        "• *Use of English* has *60 questions*\n"
+        "• *Other subjects* have *40 questions*\n\n"
+        "• If you want to practise only one topic, use *By Topics*\n"
+        "• If you want to write the full subject like an exam, use *Mock WAEC / NECO \\(By Subject\\)*\n\n"
+        "*Before you start:*\n"
+        "• If you already have at least *1 mock session*, you can start now\n"
+        "• If your mock sessions are *0*, get a mock session first\n\n"
+        "Choose what you want to do below\\."
+    )
+
+
+def make_waec_mock_access_keyboard(subject_code: str, can_start: bool) -> InlineKeyboardMarkup:
+    rows = []
+
+    if can_start:
+        rows.append([InlineKeyboardButton("▶ Start Mock Now", callback_data="wp_mock_start_paid")])
+
+    rows.extend([
+        [InlineKeyboardButton("🎟 Get 1 Mock Session — ₦100", callback_data="wp_mock_buy_1")],
+        [InlineKeyboardButton("🎟 Get 2 Mock Sessions — ₦200", callback_data="wp_mock_buy_2")],
+        [InlineKeyboardButton("🎟 Get 3 Mock Sessions — ₦300", callback_data="wp_mock_buy_3")],
+        [InlineKeyboardButton("🎟 Get 4 Mock Sessions — ₦400", callback_data="wp_mock_buy_4")],
+        [InlineKeyboardButton("🎟 Get 5 Mock Sessions — ₦500", callback_data="wp_mock_buy_5")],
+        [InlineKeyboardButton("⬅️ Back to Mode", callback_data=f"wp_back_mode_{subject_code}")],
+        [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+    ])
+
+    return InlineKeyboardMarkup(rows)
+
+
+def build_waec_batch_from_paper_rows(paper_rows: list[dict]) -> list[dict]:
+    batch = []
+
+    for row in paper_rows:
+        payload = row.get("question_json")
+
+        if isinstance(payload, str):
+            try:
+                payload = json.loads(payload)
+            except Exception:
+                payload = {}
+        elif not isinstance(payload, dict):
+            payload = {}
+
+        batch.append(payload)
+
+    return batch
+
+# =============================
+# Keyboards
+# =============================
 def make_waec_subject_keyboard():
     subjects = get_waec_subjects()
     rows = []
@@ -409,13 +911,13 @@ def make_waec_mode_keyboard(subject_code: str):
         [
             [InlineKeyboardButton("📚 By Topics", callback_data=f"wp_mode_topics_{subject_code}")],
             [InlineKeyboardButton("📝 Mock WAEC / NECO (By Subject)", callback_data=f"wp_mode_mock_{subject_code}")],
-            [InlineKeyboardButton("⬅️ Back to Subjects", callback_data="waecneco:practice")],
+            [InlineKeyboardButton("⬅️ Back to Subjects", callback_data="waecpractice")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
 
 
-def make_waec_topics_keyboard(subject_code: str, page: int = 1):
+def make_topics_keyboard(subject_code: str, page: int = 1):
     topics = get_waec_subject_topics(subject_code)
     total_topics = len(topics)
     total_pages = max(1, math.ceil(total_topics / TOPICS_PER_PAGE))
@@ -454,7 +956,7 @@ def make_waec_topics_keyboard(subject_code: str, page: int = 1):
     return InlineKeyboardMarkup(rows), page, total_pages
 
 
-def make_waec_topic_access_keyboard_for_subject(
+def make_topic_access_keyboard_for_subject(
     subject_code: str,
     has_free_trial: bool,
     has_paid_credits: bool,
@@ -498,6 +1000,26 @@ def make_after_details_keyboard():
     )
 
 
+def make_paid_session_count_keyboard():
+    return InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("10", callback_data="wp_paidcount_10"),
+                InlineKeyboardButton("20", callback_data="wp_paidcount_20"),
+            ],
+            [
+                InlineKeyboardButton("30", callback_data="wp_paidcount_30"),
+                InlineKeyboardButton("50", callback_data="wp_paidcount_50"),
+            ],
+            [InlineKeyboardButton("⬅️ Back to WAEC / NECO Practice", callback_data="waecpractice")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+
+# =============================
+# Message builders
+# =============================
 def build_waec_welcome_text(
     free_remaining: int,
     paid_credits: int,
@@ -508,47 +1030,35 @@ def build_waec_welcome_text(
     safe_mock_sessions = md_escape(str(mock_sessions_available))
 
     return (
-        "📘 *Welcome to WAEC / NECO Practice*\n\n"
-        "This section helps you practise for WAEC and NECO in *two different ways*:\n\n"
-        "1\\. *By Topics*\n"
-        "   You choose one subject, then one topic, and practise questions from that topic\\.\n\n"
-        "2\\. *Mock WAEC / NECO \\(By Subject\\)*\n"
-        "   This will later let you write a full subject paper like an exam\\.\n\n"
+        "🎓 *Welcome to WAEC / NECO Practice*\n\n"
+        "This section helps you practise for waec in *two different ways*:\n\n"
+        "1\\. *By Topics* \n"
+        "   You choose one subject, then choose one topic under that subject, and practise questions from that topic\\.\n\n"
+        "2\\. *Mock WAEC / NECO \\(By Subject\\)* \n"
+        "   You choose one full subject and answer it like an exam paper\\.\n"
+        "   *Use of English* has *60 questions*\\.\n"
+        "   *Other subjects* have *40 questions*\\.\n\n"
         "*How payment works:*\n"
         "• *First\\-time users* get *5 free questions* for *By Topics* practice only\n"
         "• *By Topics* uses *paid question credits*\n"
-        "• Full mock support will be connected next\n\n"
+        "• *Mock WAEC / NECO \\(By Subject\\)* does *not* use question credits\n"
+        "• *Mock WAEC / NECO \\(By Subject\\)* uses *mock sessions* instead\n"
+        "• *1 subject mock \\= 1 mock session*\n\n"
+        "*Simple examples:*\n"
+        "• If you want to practise *Chemistry \\> Acids, Bases and Salts*, use *By Topics*\n"
+        "• If you want to write a full *Chemistry mock exam*, use *Mock WAEC / NECO \\(By Subject\\)*\n\n"
         "*Your current balances:*\n"
         f"🎁 Free questions left: *{safe_free_remaining}*\n"
         f"💳 Paid question credits: *{safe_paid_credits}*\n"
         f"🎟 Mock sessions available: *{safe_mock_sessions}*\n\n"
+        "*Disclaimer:*\n"
+        "This is an independent study tool and not an official WAEC platform\\.\n\n"
         "Please choose a subject below\\."
     )
 
-
-def clear_waec_session_state(context: ContextTypes.DEFAULT_TYPE):
-    keys_to_clear = [
-        "wp_subject_code",
-        "wp_mode",
-        "wp_topic_id",
-        "wp_topic_page",
-        "wp_question_batch",
-        "wp_question_ids",
-        "wp_current_index",
-        "wp_session_target",
-        "wp_correct_count",
-        "wp_wrong_count",
-        "wp_current_question",
-        "wp_answered_current",
-        "wp_served_question_ids",
-        "wp_last_selected_option",
-        "wp_last_correct_option",
-    ]
-
-    for key in keys_to_clear:
-        context.user_data.pop(key, None)
-
-
+# =============================
+# Entry point
+# =============================
 async def waecpractice_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg = update.effective_user
     if not tg:
@@ -584,6 +1094,10 @@ async def waecpractice_handler(update: Update, context: ContextTypes.DEFAULT_TYP
         reply_markup=make_waec_subject_keyboard(),
     )
 
+
+# =============================
+# Subject selected
+# =============================
 async def waec_subject_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -605,88 +1119,61 @@ async def waec_subject_handler(update: Update, context: ContextTypes.DEFAULT_TYP
     context.user_data["wp_topic_id"] = None
     context.user_data["wp_topic_page"] = 1
 
-    safe_subject_name = md_escape(str(subject["name"]))
-
     await query.message.reply_text(
-        f"📘 *You selected:* {safe_subject_name}\n\n"
-        "How would you like to practice\\?",
+        f"📘 *You selected:* {subject['name']}\n\n"
+        "How would you like to practice?",
         parse_mode="MarkdownV2",
         reply_markup=make_waec_mode_keyboard(subject_code),
     )
 
-
-def get_waec_subject_question_count(subject_code: str) -> int:
-    return 60
-
-
-def build_waec_mock_access_text(
-    subject_name: str,
-    question_count: int,
-    mock_sessions_available: int,
-) -> str:
-    safe_subject_name = md_escape(str(subject_name))
-    safe_question_count = md_escape(str(question_count))
-    safe_mock_sessions = md_escape(str(mock_sessions_available))
-    safe_duration = md_escape("30 minutes")
-
-    return (
-        "📝 *Mock WAEC / NECO \\(By Subject\\)*\n\n"
-        "This is a *full subject mock exam*\\.\n\n"
-        f"📘 Subject: *{safe_subject_name}*\n"
-        f"❓ Number of Questions: *{safe_question_count}*\n"
-        f"⏱ Time Allowed: *{safe_duration}*\n"
-        f"🎟 Mock Sessions Available: *{safe_mock_sessions}*\n\n"
-        "Choose how you want to continue:"
-    )
-
-
-def make_waec_mock_access_keyboard(subject_code: str, can_start: bool):
-    rows = []
-
-    if can_start:
-        rows.append([InlineKeyboardButton("✅ Start Mock Exam", callback_data="wp_mock_start_paid")])
-
-    rows.extend(
-        [
-            [InlineKeyboardButton("💳 Get 1 Mock Session — ₦100", callback_data="wp_mock_buy_1")],
-            [InlineKeyboardButton("💳 Get 2 Mock Sessions — ₦200", callback_data="wp_mock_buy_2")],
-            [InlineKeyboardButton("💳 Get 3 Mock Sessions — ₦300", callback_data="wp_mock_buy_3")],
-            [InlineKeyboardButton("💳 Get 4 Mock Sessions — ₦400", callback_data="wp_mock_buy_4")],
-            [InlineKeyboardButton("💳 Get 5 Mock Sessions — ₦500", callback_data="wp_mock_buy_5")],
-            [InlineKeyboardButton("⬅️ Back to Practice Mode", callback_data=f"wp_subject_{subject_code}")],
-            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
-        ]
-    )
-
-    return InlineKeyboardMarkup(rows)
-
-
+# --------------------------------
+# waec SUBJECT MOCK SCREEN
+# -------------------------------- 
 async def open_waec_subject_mock_screen(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
     subject_code: str,
 ):
+    context.user_data["wp_subject_code"] = subject_code
+    context.user_data["wp_mode"] = "mock_by_subject"
+    context.user_data["wp_topic_id"] = None
+
+    tg = update.effective_user
+    user_id = tg.id
+
     subject = get_waec_subject_by_code(subject_code)
     if not subject:
-        target = update.callback_query.message if update.callback_query else update.effective_message
-        return await target.reply_text(
+        return await update.effective_message.reply_text(
             "⚠️ Subject not found\\.",
             parse_mode="MarkdownV2",
         )
 
-    context.user_data["wp_subject_code"] = subject_code
-    context.user_data["wp_mode"] = "mock_by_subject"
+    active_session = await get_latest_active_waec_mock_session_for_user(
+        user_id=user_id,
+        subject_code=subject_code,
+    )
 
-    tg = update.effective_user
-    await ensure_waec_user_access(tg.id)
-    access = await get_waec_user_access(tg.id)
+    if active_session and not is_waec_mock_time_expired(active_session.get("exam_ends_at")):
+        context.user_data["wp_session_id"] = int(active_session["id"])
+        context.user_data["wp_session_mode"] = "mock_by_subject"
 
-    mock_sessions_available = int((access or {}).get("mock_sessions_available", 0))
+        next_question_no = max(1, int(active_session.get("current_question_index") or 0) + 1)
 
-    question_count = get_waec_subject_question_count(subject_code)
-    can_start = mock_sessions_available > 0
+        return await update.effective_message.reply_text(
+            build_waec_mock_resume_text(
+                subject_name=subject["name"],
+                next_question_no=next_question_no,
+                exam_ends_at=active_session.get("exam_ends_at"),
+            ),
+            parse_mode="MarkdownV2",
+            reply_markup=make_waec_mock_resume_keyboard(),
+        )
 
-    await update.effective_message.reply_text(
+    mock_sessions_available = await get_waec_mock_sessions_available(user_id)
+    question_count = get_waec_mock_question_count(subject_code)
+    can_start = mock_sessions_available >= 1
+
+    return await update.effective_message.reply_text(
         build_waec_mock_access_text(
             subject_name=subject["name"],
             question_count=question_count,
@@ -694,83 +1181,6 @@ async def open_waec_subject_mock_screen(
         ),
         parse_mode="MarkdownV2",
         reply_markup=make_waec_mock_access_keyboard(subject_code, can_start),
-    )
-
-
-async def waec_mock_start_paid_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    if not query:
-        return
-
-    await query.answer()
-
-    tg = update.effective_user
-    user_id = tg.id
-
-    subject_code = context.user_data.get("wp_subject_code")
-    if not subject_code:
-        return await query.message.reply_text(
-            "⚠️ Subject session data missing\\. Please choose your subject again\\.",
-            parse_mode="MarkdownV2",
-        )
-
-    subject = get_waec_subject_by_code(subject_code)
-    if not subject:
-        return await query.message.reply_text(
-            "⚠️ Subject not found\\.",
-            parse_mode="MarkdownV2",
-        )
-
-    available_sessions = await get_waec_mock_sessions_available(user_id)
-
-    if available_sessions < 1:
-        safe_available = md_escape(str(available_sessions))
-        return await query.message.reply_text(
-            f"⚠️ You do not have any mock sessions available\\.\n\n"
-            f"🎟 Available mock sessions: *{safe_available}*\n\n"
-            "Please buy a mock session first\\.",
-            parse_mode="MarkdownV2",
-        )
-
-    deducted = await deduct_one_waec_mock_session(user_id)
-    if not deducted:
-        return await query.message.reply_text(
-            "⚠️ Could not reserve your mock session right now\\. Please try again\\.",
-            parse_mode="MarkdownV2",
-        )
-
-    question_count = get_waec_subject_question_count(subject_code)
-    duration_minutes = 30
-
-    session_id = await create_waec_mock_session(
-        user_id=user_id,
-        subject_code=subject_code,
-        question_target=question_count,
-        duration_minutes=duration_minutes,
-    )
-
-    context.user_data["wp_session_id"] = session_id
-    context.user_data["wp_session_mode"] = "mock_session"
-    context.user_data["wp_current_index"] = 0
-    context.user_data["wp_correct_count"] = 0
-    context.user_data["wp_wrong_count"] = 0
-    context.user_data["wp_answered_current"] = False
-
-    safe_subject_name = md_escape(str(subject["name"]))
-    safe_question_count = md_escape(str(question_count))
-
-    await query.message.reply_text(
-        f"✅ *Mock Started*\n\n"
-        f"📘 Subject: *{safe_subject_name}*\n"
-        f"📚 Questions in this subject: *{safe_question_count}*\n\n"
-        "Tap below to start Question 1\\.",
-        parse_mode="MarkdownV2",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [InlineKeyboardButton("▶ Start Mock", callback_data="wp_serve_first")],
-                [InlineKeyboardButton("🏠 End Mock", callback_data="wp_end_session")],
-            ]
-        ),
     )
 
 
@@ -813,7 +1223,7 @@ async def waec_mock_buy_session_handler(update: Update, context: ContextTypes.DE
     username = user.username or f"user_{tg_id}"
     email = f"{username}@naijaprizegate.ng"
 
-    tx_ref = build_tx_ref("WAECMOCKSUBJECT")
+    tx_ref = build_tx_ref("waecMOCKSUBJECT")
 
     async with get_async_session() as session:
         async with session.begin():
@@ -837,10 +1247,10 @@ async def waec_mock_buy_session_handler(update: Update, context: ContextTypes.DE
         meta={
             "tg_id": str(tg_id),
             "username": username,
-            "product_type": "WAECMOCKSUBJECT",
+            "product_type": "waecMOCKSUBJECT",
             "subject_code": subject_code,
         },
-        product_type="WAECMOCKSUBJECT",
+        product_type="waecMOCKSUBJECT",
     )
 
     if not checkout_url:
@@ -853,7 +1263,7 @@ async def waec_mock_buy_session_handler(update: Update, context: ContextTypes.DE
     safe_session_count = md_escape(str(session_count))
 
     await query.message.reply_text(
-        f"🎟 *Mock WAEC / NECO Session Selected*\n\n"
+        f"🎟 *Mock WAEC Session Selected*\n\n"
         f"🧾 Sessions: *{safe_session_count}*\n"
         f"💰 Amount: *₦{safe_amount}*\n\n"
         "After successful payment, your mock session will be added automatically\\.\n\n"
@@ -868,7 +1278,9 @@ async def waec_mock_buy_session_handler(update: Update, context: ContextTypes.DE
         ),
     )
 
-
+# =============================
+# Mode selected
+# =============================
 async def waec_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -885,7 +1297,7 @@ async def waec_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data["wp_topic_page"] = 1
 
         subject = get_waec_subject_by_code(subject_code)
-        kb, page, total_pages = make_waec_topics_keyboard(subject_code, 1)
+        kb, page, total_pages = make_topics_keyboard(subject_code, 1)
 
         safe_subject_name = md_escape(str(subject["name"]))
         safe_page = md_escape(str(page))
@@ -904,6 +1316,9 @@ async def waec_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return await open_waec_subject_mock_screen(update, context, subject_code)
 
 
+# =============================
+# Topic pagination
+# =============================
 async def waec_topic_page_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -924,7 +1339,7 @@ async def waec_topic_page_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["wp_topic_page"] = page
 
     subject = get_waec_subject_by_code(subject_code)
-    kb, page, total_pages = make_waec_topics_keyboard(subject_code, page)
+    kb, page, total_pages = make_topics_keyboard(subject_code, page)
 
     safe_subject_name = md_escape(str(subject["name"]))
     safe_page = md_escape(str(page))
@@ -938,6 +1353,7 @@ async def waec_topic_page_handler(update: Update, context: ContextTypes.DEFAULT_
         reply_markup=kb,
     )
 
+
 async def send_waec_topic_access_screen(
     message,
     context: ContextTypes.DEFAULT_TYPE,
@@ -945,22 +1361,17 @@ async def send_waec_topic_access_screen(
     topic_id: str,
     user_id: int,
 ):
-    subject = get_waec_subject_by_code(subject_code)
-    if not subject:
-        return await message.reply_text(
-            "⚠️ WAEC subject not found\\.",
-            parse_mode="MarkdownV2",
-            reply_markup=make_waec_subject_keyboard(),
-        )
-
     topics = get_waec_subject_topics(subject_code)
     selected_topic = next((t for t in topics if t["id"] == topic_id), None)
+
     if not selected_topic:
         return await message.reply_text(
-            "⚠️ WAEC topic not found\\.",
+            "⚠️ Topic not found\\.",
             parse_mode="MarkdownV2",
-            reply_markup=make_waec_subject_keyboard(),
         )
+
+    context.user_data["wp_subject_code"] = subject_code
+    context.user_data["wp_topic_id"] = topic_id
 
     await ensure_waec_user_access(user_id)
     access = await get_waec_user_access(user_id)
@@ -970,43 +1381,21 @@ async def send_waec_topic_access_screen(
     has_free_trial = free_remaining > 0
     has_paid_credits = paid_credits > 0
 
-    context.user_data["wp_subject_code"] = subject_code
-    context.user_data["wp_topic_id"] = topic_id
-
-    topic_title = str(selected_topic["title"])
-
-    lines = [
-        f"✅ Topic selected: <b>{escape(topic_title)}</b>",
-        "",
-        f"🎁 Free questions left: <b>{free_remaining}</b>",
-        f"💳 Paid question credits: <b>{paid_credits}</b>",
-        "",
-        "Choose how you want to continue:",
-    ]
-
-    keyboard = []
-
-    if has_free_trial:
-        keyboard.append([InlineKeyboardButton("🎁 Use Free Trial", callback_data="wp_start_free")])
-
-    if has_paid_credits:
-        keyboard.append([InlineKeyboardButton("✅ Use Paid Credits", callback_data="wp_use_paid")])
-
-    keyboard.extend(
-        [
-            [InlineKeyboardButton("💳 Get 50 Questions — ₦100", callback_data="wp_buy_50")],
-            [InlineKeyboardButton("💳 Get 100 Questions — ₦200", callback_data="wp_buy_100")],
-            [InlineKeyboardButton("💳 Get 150 Questions — ₦300", callback_data="wp_buy_150")],
-            [InlineKeyboardButton("💳 Get 200 Questions — ₦400", callback_data="wp_buy_200")],
-            [InlineKeyboardButton("⬅️ Back to Topics", callback_data=f"wp_back_mode_{subject_code}")],
-            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
-        ]
-    )
+    safe_topic_title = md_escape(str(selected_topic["title"]))
+    safe_free_remaining = md_escape(str(free_remaining))
+    safe_paid_credits = md_escape(str(paid_credits))
 
     await message.reply_text(
-        "\n".join(lines),
-        parse_mode="HTML",
-        reply_markup=InlineKeyboardMarkup(keyboard),
+        f"✅ Topic selected: *{safe_topic_title}*\n\n"
+        f"🎁 Free questions left: *{safe_free_remaining}*\n"
+        f"💳 Paid question credits: *{safe_paid_credits}*\n\n"
+        "Choose how you want to continue:",
+        parse_mode="MarkdownV2",
+        reply_markup=make_topic_access_keyboard_for_subject(
+            subject_code,
+            has_free_trial,
+            has_paid_credits,
+        ),
     )
 
 async def waec_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -1020,9 +1409,8 @@ async def waec_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
         _, subject_code, topic_id = query.data.split("::")
     except Exception:
         return await query.message.reply_text(
-            "⚠️ Invalid WAEC topic selection\\.",
+            "⚠️ Invalid topic selection\\.",
             parse_mode="MarkdownV2",
-            reply_markup=make_waec_subject_keyboard(),
         )
 
     await send_waec_topic_access_screen(
@@ -1034,6 +1422,9 @@ async def waec_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     )
 
 
+# =============================
+# Free trial start
+# =============================
 async def waec_start_free_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -1059,13 +1450,13 @@ async def waec_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
 
     if free_remaining <= 0:
         return await query.message.reply_text(
-            "⚠️ You have no free WAEC questions left\\.\n\nPlease buy a question pack to continue\\.",
+            "⚠️ You have no free waec questions left\\.\n\nPlease buy a question pack to continue\\.",
             parse_mode="MarkdownV2",
         )
 
     requested_count = min(5, free_remaining)
 
-    seen_question_ids = await get_seen_waec_question_ids_for_topic(
+    seen_question_ids = await get_seen_question_ids_for_topic(
         user_id=user_id,
         subject_code=subject_code,
         topic_id=topic_id,
@@ -1079,7 +1470,7 @@ async def waec_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
     )
 
     if batch["cycle_reset"]:
-        await reset_waec_topic_history(user_id, subject_code, topic_id)
+        await reset_topic_history(user_id, subject_code, topic_id)
 
     selected_questions = batch["selected_questions"]
     selected_question_ids = batch["selected_question_ids"]
@@ -1109,6 +1500,10 @@ async def waec_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["wp_current_question"] = None
     context.user_data["wp_answered_current"] = False
     context.user_data["wp_served_question_ids"] = []
+    context.user_data["wp_shown_passages"] = []
+    context.user_data["wp_last_passage"] = None
+    context.user_data["wp_last_passage_id_shown"] = ""
+    context.user_data["wp_active_passage_message_id"] = None
 
     topic = next((t for t in get_waec_subject_topics(subject_code) if t["id"] == topic_id), None)
     topic_title = topic["title"] if topic else topic_id
@@ -1143,17 +1538,336 @@ async def waec_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
     )
 
 
-async def send_current_waec_question(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    batch = context.user_data.get("wp_question_batch") or []
-    current_index = int(context.user_data.get("wp_current_index", 0))
+# =============================
+# Buy question pack
+# =============================
+async def waec_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
 
-    if not batch:
-        return await update.effective_message.reply_text(
-            "⚠️ No active WAEC question session found\\.",
+    await query.answer()
+
+    data = query.data
+    pack_size = data.replace("wp_buy_", "", 1)
+
+    pricing_map = {
+        "50": 100,
+        "100": 200,
+        "150": 300,
+        "200": 400,
+    }
+
+    if pack_size not in pricing_map:
+        return await query.message.reply_text(
+            "⚠️ Invalid waec package selected\\.",
             parse_mode="MarkdownV2",
         )
 
+    amount = pricing_map[pack_size]
+    credits = calculate_waec_credits(amount)
+
+    user = query.from_user
+    tg_id = user.id
+    username = user.username or f"user_{tg_id}"
+    email = f"{username}@naijaprizegate.ng"
+
+    subject_code = context.user_data.get("wp_subject_code")
+    topic_id = context.user_data.get("wp_topic_id")
+
+    tx_ref = build_tx_ref("waec")
+
+    async with get_async_session() as session:
+        await create_pending_waec_payment(
+            session,
+            payment_reference=tx_ref,
+            user_id=tg_id,
+            amount_paid=amount,
+            question_credits_added=credits,
+            subject_code=subject_code,
+            topic_id=topic_id,
+        )
+        await session.commit()
+
+    checkout_url = await create_checkout(
+        user_id=tg_id,
+        amount=amount,
+        username=username,
+        email=email,
+        tx_ref=tx_ref,
+        meta={
+            "tg_id": str(tg_id),
+            "username": username,
+            "product_type": "waec",
+            "subject_code": str(subject_code) if subject_code else "",
+            "topic_id": str(topic_id) if topic_id else "",
+        },
+        product_type="waec",
+    )
+
+    if not checkout_url:
+        async with get_async_session() as session:
+            await session.execute(
+                text("""
+                    update waec_payments
+                    set
+                        payment_status = 'expired',
+                        updated_at = now()
+                    where payment_reference = :payment_reference
+                        and lower(coalesce(payment_status, '')) = 'pending'
+                """),
+                {"payment_reference": tx_ref},
+            )
+            await session.commit()
+
+        return await query.message.reply_text(
+            "⚠️ Payment service unavailable\\. Please try again shortly\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    safe_credits = md_escape(str(credits))
+    safe_amount = md_escape(str(amount))
+
+    await query.message.reply_text(
+        f"💳 *waec Question Pack Selected*\n\n"
+        f"📚 Questions: *{safe_credits}*\n"
+        f"💰 Amount: *₦{safe_amount}*\n\n"
+        "After successful payment, your waec question credits will be added automatically\\.\n\n"
+        "Tap below to complete payment\\.",
+        parse_mode="MarkdownV2",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
+                [InlineKeyboardButton("⬅️ Back to WAEC / NECO Practice", callback_data="waecpractice")],
+                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+            ]
+        ),
+    )
+
+
+def get_wp_passage_id(question: dict) -> str:
+    """
+    Return a stable passage identifier for a question.
+    Prefer explicit passage_id. Fall back to question_type + passage text.
+    """
+    passage_id = str(question.get("passage_id") or "").strip()
+    if passage_id:
+        return passage_id
+
+    passage = str(question.get("passage") or "").strip()
+    question_type = str(question.get("question_type") or "").strip().lower()
+
+    if passage and question_type in {"comprehension_mcq", "summary_mcq"}:
+        return f"{question_type}::{passage[:120]}"
+
+    return ""
+
+
+def question_has_passage(question: dict) -> bool:
+    passage = str(question.get("passage") or "").strip()
+    question_type = str(question.get("question_type") or "").strip().lower()
+    return bool(passage and question_type in {"comprehension_mcq", "summary_mcq"})
+
+
+def should_show_wp_passage_for_question(
+    question: dict,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> bool:
+    """
+    Show passage only if:
+    - the question belongs to a passage block, and
+    - it is a different passage from the last shown one
+    """
+    if not question_has_passage(question):
+        return False
+
+    current_passage_id = get_wp_passage_id(question)
+    last_passage_id = str(context.user_data.get("wp_last_passage_id_shown") or "").strip()
+
+    return current_passage_id != last_passage_id
+
+
+def mark_wp_passage_as_shown(question: dict, context: ContextTypes.DEFAULT_TYPE) -> None:
+    context.user_data["wp_last_passage_id_shown"] = get_wp_passage_id(question)
+
+
+def store_wp_passage_message_id(
+    *,
+    message_id: int | None,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> None:
+    context.user_data["wp_active_passage_message_id"] = message_id
+
+
+async def clear_wp_passage_message(
+    *,
+    chat_id: int,
+    context: ContextTypes.DEFAULT_TYPE,
+) -> None:
+    passage_message_id = context.user_data.get("wp_active_passage_message_id")
+    if not passage_message_id:
+        return
+
+    try:
+        await context.bot.delete_message(
+            chat_id=chat_id,
+            message_id=int(passage_message_id),
+        )
+    except Exception:
+        pass
+
+    context.user_data["wp_active_passage_message_id"] = None
+    context.user_data["wp_last_passage_id_shown"] = ""
+
+
+def get_wp_passage_question_range(batch: list[dict], current_index: int) -> tuple[int, int]:
+    """
+    For the current question, find the full contiguous block of questions
+    that belong to the same passage.
+    Returns 1-based question numbers.
+    """
+    if current_index < 0 or current_index >= len(batch):
+        return (current_index + 1, current_index + 1)
+
+    current_question = batch[current_index]
+    current_passage_id = get_wp_passage_id(current_question)
+
+    if not current_passage_id:
+        q_no = current_index + 1
+        return (q_no, q_no)
+
+    start = current_index
+    end = current_index
+
+    # scan backward
+    i = current_index - 1
+    while i >= 0:
+        if get_wp_passage_id(batch[i]) == current_passage_id:
+            start = i
+            i -= 1
+        else:
+            break
+
+    # scan forward
+    i = current_index + 1
+    while i < len(batch):
+        if get_wp_passage_id(batch[i]) == current_passage_id:
+            end = i
+            i += 1
+        else:
+            break
+
+    return (start + 1, end + 1)
+
+
+def build_wp_passage_text(
+    *,
+    subject_name: str,
+    question_start: int,
+    question_end: int,
+    total_questions: int,
+    exam_ends_at,
+    question: dict,
+) -> str:
+    safe_subject_name = md_escape(str(subject_name))
+    safe_q_start = md_escape(str(question_start))
+    safe_q_end = md_escape(str(question_end))
+    safe_total = md_escape(str(total_questions))
+
+    passage_title = str(question.get("passage_title") or "Passage").strip()
+    passage_text = str(question.get("passage") or "").strip()
+
+    safe_passage_title = md_escape(passage_title)
+    safe_passage_text = md_escape(passage_text)
+
+    lines = [
+        "📝 *Mock WAEC / NECO*" if str(question.get("_session_mode") or "") == "mock_by_subject" else "📘 *WAEC / NECO Practice*",
+        "",
+        f"Subject: *{safe_subject_name}*",
+        f"Questions: *{safe_q_start} \\- {safe_q_end} of {safe_total}*",
+    ]
+
+    if exam_ends_at:
+        safe_remaining = md_escape(str(format_waec_mock_time_remaining(exam_ends_at)))
+        lines.append(f"⏱ Time remaining: *{safe_remaining}*")
+
+    lines.extend([
+        "",
+        f"Passage Title: *{safe_passage_title}*",
+        "",
+        "Passage:",
+        safe_passage_text,
+    ])
+
+    return "\n".join(lines)
+
+
+# =============================
+# Question serving
+# =============================
+async def send_current_waec_question(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    session_mode = context.user_data.get("wp_session_mode")
+    session_id = context.user_data.get("wp_session_id")
+    batch = context.user_data.get("wp_question_batch") or []
+    current_index = int(context.user_data.get("wp_current_index", 0))
+
+    # Reload mock paper from DB if needed
+    if session_mode == "mock_by_subject" and not batch and session_id:
+        paper_rows = await get_waec_session_paper(int(session_id))
+        batch = build_waec_batch_from_paper_rows(paper_rows)
+        context.user_data["wp_question_batch"] = batch
+        context.user_data["wp_question_ids"] = [str(q.get("id")) for q in batch if q.get("id")]
+
+    if not batch:
+        return await update.effective_message.reply_text(
+            "⚠️ No active waec question session found\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    session_row = None
+    if session_mode == "mock_by_subject" and session_id:
+        session_row = await get_waec_session_by_id(int(session_id))
+        if not session_row:
+            return await update.effective_message.reply_text(
+                "⚠️ Mock session could not be reloaded\\.",
+                parse_mode="MarkdownV2",
+            )
+
+        if is_waec_mock_time_expired(session_row.get("exam_ends_at")):
+            await clear_wp_passage_message(
+                chat_id=update.effective_message.chat_id,
+                context=context,
+            )
+            await complete_waec_session(int(session_id))
+
+            safe_total = md_escape(str(len(batch)))
+            safe_correct_count = md_escape(str(session_row.get("correct_count") or 0))
+            safe_wrong_count = md_escape(str(session_row.get("wrong_count") or 0))
+
+            return await update.effective_message.reply_text(
+                f"⏰ *Mock time is up\\.*\n\n"
+                f"📚 Total Questions: *{safe_total}*\n"
+                f"✅ Correct: *{safe_correct_count}*\n"
+                f"❌ Wrong: *{safe_wrong_count}*\n\n"
+                "This subject mock has ended\\.",
+                parse_mode="MarkdownV2",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [InlineKeyboardButton("🎓 WAEC / NECO Practice", callback_data="waecpractice")],
+                        [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+                    ]
+                ),
+            )
+
     if current_index >= len(batch):
+        await clear_wp_passage_message(
+            chat_id=update.effective_message.chat_id,
+            context=context,
+        )
+
+        if session_id:
+            await complete_waec_session(int(session_id))
+
         correct_count = int(context.user_data.get("wp_correct_count", 0))
         wrong_count = int(context.user_data.get("wp_wrong_count", 0))
         total = len(batch)
@@ -1162,68 +1876,142 @@ async def send_current_waec_question(update: Update, context: ContextTypes.DEFAU
         safe_correct_count = md_escape(str(correct_count))
         safe_wrong_count = md_escape(str(wrong_count))
 
+        title = "✅ *Mock Completed*" if session_mode == "mock_by_subject" else "✅ *Practice Completed*"
+        outro = (
+            "Great job\\. You can return to WAEC / NECO Practice for another subject\\."
+            if session_mode == "mock_by_subject"
+            else "Great job\\. You can return to WAEC / NECO Practice for another topic\\."
+        )
+
         return await update.effective_message.reply_text(
-            f"✅ *Practice Completed*\n\n"
+            f"{title}\n\n"
             f"📚 Total Questions: *{safe_total}*\n"
             f"✅ Correct: *{safe_correct_count}*\n"
             f"❌ Wrong: *{safe_wrong_count}*\n\n"
-            "Great job\\. You can return to WAEC / NECO Practice for another topic\\.",
+            f"{outro}",
             parse_mode="MarkdownV2",
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("📘 WAEC / NECO Practice", callback_data="waecneco:practice")],
+                    [InlineKeyboardButton("🎓 WAEC / NECO Practice", callback_data="waecpractice")],
                     [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
                 ]
             ),
         )
 
     question = batch[current_index]
+
     question_id = str(question["id"])
     user_id = update.effective_user.id
     subject_code = context.user_data.get("wp_subject_code")
-    topic_id = str(question.get("topic_id") or context.user_data.get("wp_topic_id"))
+    topic_id = str(question.get("topic_id") or context.user_data.get("wp_topic_id") or "__mock_subject__")
     served_question_ids = context.user_data.get("wp_served_question_ids", [])
-    session_id = context.user_data.get("wp_session_id")
-    session_mode = context.user_data.get("wp_session_mode")
 
+    # Charge and record history when question is served, not when answered
     if question_id not in served_question_ids:
         if session_mode == "free_trial":
-            deducted = await deduct_one_waec_free_question(user_id)
+            deducted = await deduct_one_free_question(user_id)
             if not deducted:
                 return await update.effective_message.reply_text(
-                    "⚠️ You have no free WAEC questions left\\.\n\nPlease buy a question pack to continue\\.",
+                    "⚠️ You have no free question balance left\\.\n\nPlease buy a question pack to continue\\.",
                     parse_mode="MarkdownV2",
                 )
+
+            await add_question_to_topic_history(
+                user_id=user_id,
+                subject_code=subject_code,
+                topic_id=topic_id,
+                question_id=question_id,
+            )
+
+            if session_id:
+                await increment_waec_session_served(int(session_id))
 
         elif session_mode == "paid_session":
-            deducted = await deduct_one_waec_paid_question(user_id)
+            deducted = await deduct_one_paid_question(user_id)
             if not deducted:
                 return await update.effective_message.reply_text(
-                    "⚠️ You have no paid WAEC question credits left\\.\n\nPlease buy another question pack to continue\\.",
+                    "⚠️ You have no paid waec question credits left\\.\n\nPlease buy another question pack to continue\\.",
                     parse_mode="MarkdownV2",
                 )
 
-        await add_question_to_waec_topic_history(
-            user_id=user_id,
-            subject_code=subject_code,
-            topic_id=topic_id,
-            question_id=question_id,
-        )
+            await add_question_to_topic_history(
+                user_id=user_id,
+                subject_code=subject_code,
+                topic_id=topic_id,
+                question_id=question_id,
+            )
 
-        if session_id:
-            await increment_waec_session_served(int(session_id))
+            if session_id:
+                await increment_waec_session_served(int(session_id))
+
+        elif session_mode == "mock_by_subject":
+            if session_id:
+                await increment_waec_session_served(int(session_id))
 
         served_question_ids.append(question_id)
         context.user_data["wp_served_question_ids"] = served_question_ids
-    
+
     context.user_data["wp_current_question"] = question
     context.user_data["wp_answered_current"] = False
+
+    if session_mode == "mock_by_subject" and session_id:
+        await set_waec_session_current_question_index(int(session_id), current_index)
+
+    subject = get_waec_subject_by_code(subject_code) or {"name": subject_code}
+    subject_name = subject.get("name", subject_code)
+
+    # Tag question with session mode for builder
+    question["_session_mode"] = session_mode
+
+    # CASE 1: current question belongs to a passage block
+    if question_has_passage(question):
+        if should_show_wp_passage_for_question(question, context):
+            passage_start, passage_end = get_wp_passage_question_range(batch, current_index)
+
+            passage_text_msg = build_wp_passage_text(
+                subject_name=subject_name,
+                question_start=passage_start,
+                question_end=passage_end,
+                total_questions=len(batch),
+                exam_ends_at=(session_row or {}).get("exam_ends_at") if session_mode == "mock_by_subject" else None,
+                question=question,
+            )
+
+            mark_wp_passage_as_shown(question, context)
+
+            sent_passage = await update.effective_message.reply_text(
+                passage_text_msg,
+                parse_mode="MarkdownV2",
+            )
+
+            store_wp_passage_message_id(
+                message_id=sent_passage.message_id,
+                context=context,
+            )
+
+    # CASE 2: current question does not belong to a passage block
+    else:
+        await clear_wp_passage_message(
+            chat_id=update.effective_message.chat_id,
+            context=context,
+        )
 
     options = question.get("options", {})
 
     safe_question_text = md_escape(str(question.get("question") or "Question unavailable."))
     safe_question_no = md_escape(str(current_index + 1))
     safe_total = md_escape(str(len(batch)))
+
+    header_lines = []
+    if session_mode == "mock_by_subject":
+        remaining = format_waec_mock_time_remaining((session_row or {}).get("exam_ends_at"))
+        safe_remaining = md_escape(str(remaining))
+        header_lines.append("📝 *Mock WAEC / NECO \\(By Subject\\)*")
+        header_lines.append(f"⏱ Time Remaining: *{safe_remaining}*")
+    else:
+        header_lines.append("📘 *WAEC / NECO Practice*")
+
+    header_lines.append(f"Question {safe_question_no} of {safe_total}")
 
     option_lines = []
     for key in ["A", "B", "C", "D", "E"]:
@@ -1232,9 +2020,9 @@ async def send_current_waec_question(update: Update, context: ContextTypes.DEFAU
             option_lines.append(f"{key}\\. {safe_option_text}")
 
     text_msg = (
-        "📘 *WAEC / NECO Practice*\n\n"
-        f"Question {safe_question_no} of {safe_total}\n\n"
-        f"{safe_question_text}\n\n"
+        "\n".join(header_lines)
+        + "\n\n"
+        + f"{safe_question_text}\n\n"
         + "\n".join(option_lines)
     )
 
@@ -1262,6 +2050,10 @@ async def send_current_waec_question(update: Update, context: ContextTypes.DEFAU
     )
 
 
+
+# ----------------------------------------
+# waec Serve First Handler
+# ----------------------------------------  
 async def waec_serve_first_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if query:
@@ -1269,6 +2061,9 @@ async def waec_serve_first_handler(update: Update, context: ContextTypes.DEFAULT
     await send_current_waec_question(update, context)
 
 
+# =============================
+# Answer handling
+# =============================
 async def waec_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -1294,10 +2089,7 @@ async def waec_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
             parse_mode="MarkdownV2",
         )
 
-    correct_option = str(question["answer"]).strip().upper()
-    selected_option = str(selected_option).strip().upper()
-    is_correct = selected_option == correct_option
-    
+    user_id = update.effective_user.id
     session_id_raw = context.user_data.get("wp_session_id")
     if not session_id_raw:
         return await query.message.reply_text(
@@ -1306,10 +2098,14 @@ async def waec_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         )
 
     session_id = int(session_id_raw)
-    user_id = update.effective_user.id
+    session_mode = context.user_data.get("wp_session_mode")
     subject_code = context.user_data.get("wp_subject_code")
-    topic_id = str(question.get("topic_id") or context.user_data.get("wp_topic_id"))
+    topic_id = str(question.get("topic_id") or context.user_data.get("wp_topic_id") or "__mock_subject__")
     question_id = str(question["id"])
+    correct_option = str(question["answer"]).strip().upper()
+    selected_option = str(selected_option).strip().upper()
+    is_correct = selected_option == correct_option
+    question_order = int(context.user_data.get("wp_current_index", 0)) + 1
 
     await record_waec_attempt(
         session_id=session_id,
@@ -1323,6 +2119,27 @@ async def waec_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
     )
 
     await increment_waec_session_result(session_id, is_correct)
+
+    if session_mode == "mock_by_subject":
+        async with get_async_session() as session:
+            async with session.begin():
+                await session.execute(
+                    text("""
+                        update waec_session_questions
+                        set
+                            selected_option = :selected_option,
+                            is_correct = :is_correct,
+                            updated_at = now()
+                        where session_id = :session_id
+                          and question_order = :question_order
+                    """),
+                    {
+                        "session_id": int(session_id),
+                        "question_order": int(question_order),
+                        "selected_option": selected_option,
+                        "is_correct": bool(is_correct),
+                    },
+                )
 
     context.user_data["wp_answered_current"] = True
     context.user_data["wp_last_selected_option"] = selected_option
@@ -1349,6 +2166,9 @@ async def waec_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
     )
 
 
+# --------------------------------------------
+# waec Answer Details Handler
+# --------------------------------------------
 async def waec_answer_details_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -1400,7 +2220,9 @@ async def waec_answer_details_handler(update: Update, context: ContextTypes.DEFA
         reply_markup=make_after_details_keyboard(),
     )
 
-
+# ------------------------------
+# waec Next Handler
+# -----------------------------
 async def waec_next_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if query:
@@ -1412,6 +2234,9 @@ async def waec_next_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await send_current_waec_question(update, context)
 
 
+# ------------------------------
+# waec End Session Handler
+# ------------------------------
 async def waec_end_session_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -1420,15 +2245,49 @@ async def waec_end_session_handler(update: Update, context: ContextTypes.DEFAULT
     await query.answer()
 
     session_id = context.user_data.get("wp_session_id")
-    if session_id:
+    session_mode = context.user_data.get("wp_session_mode")
+
+    if session_mode == "mock_by_subject" and session_id:
+        await clear_wp_passage_message(
+            chat_id=query.message.chat_id,
+            context=context,
+        )
         await complete_waec_session(int(session_id))
 
-    clear_waec_session_state(context)
+    await clear_waec_session_state(context)
 
     from handlers.core import go_start_callback
     await go_start_callback(update, context)
 
+# =============================
+# Back to mode
+# =============================
+async def waec_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
 
+    await query.answer()
+
+    subject_code = query.data.replace("wp_back_mode_", "", 1)
+    subject = get_waec_subject_by_code(subject_code)
+
+    context.user_data["wp_subject_code"] = subject_code
+    context.user_data["wp_mode"] = None
+    context.user_data["wp_topic_id"] = None
+
+    safe_subject_name = md_escape(str(subject["name"]))
+
+    await query.message.reply_text(
+        f"📘 *You selected:* {safe_subject_name}\n\n"
+        "How would you like to practice\\?",
+        parse_mode="MarkdownV2",
+        reply_markup=make_waec_mode_keyboard(subject_code),
+    )
+
+# --------------------------------------
+# waec Use Paid Handler
+# -------------------------------------
 async def waec_use_paid_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -1441,30 +2300,24 @@ async def waec_use_paid_handler(update: Update, context: ContextTypes.DEFAULT_TY
 
     if paid_credits <= 0:
         return await query.message.reply_text(
-            "⚠️ You do not have any paid WAEC question credits yet\\.\n\nPlease buy a question pack first\\.",
+            "⚠️ You do not have any paid waec question credits yet\\.\n\nPlease buy a question pack first\\.",
             parse_mode="MarkdownV2",
         )
 
+    safe_paid_credits = md_escape(str(paid_credits))
+
     await query.message.reply_text(
-        "✅ *Use Paid Credits*\n\nChoose how many WAEC questions you want in this paid session\\.",
+        f"💳 *Use Paid Credits*\n\n"
+        f"You currently have *{safe_paid_credits} paid question credits*\\.\n\n"
+        "How many questions do you want to answer in this session\\?",
         parse_mode="MarkdownV2",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("10", callback_data="wp_paidcount_10"),
-                    InlineKeyboardButton("20", callback_data="wp_paidcount_20"),
-                ],
-                [
-                    InlineKeyboardButton("30", callback_data="wp_paidcount_30"),
-                    InlineKeyboardButton("50", callback_data="wp_paidcount_50"),
-                ],
-                [InlineKeyboardButton("⬅️ Back to WAEC / NECO Practice", callback_data="waecneco:practice")],
-                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
-            ]
-        ),
+        reply_markup=make_paid_session_count_keyboard(),
     )
 
 
+# ----------------------------------
+# waec Paid Count Handler
+# ----------------------------------
 async def waec_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -1476,7 +2329,7 @@ async def waec_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
         requested_count = int(query.data.replace("wp_paidcount_", "", 1))
     except Exception:
         return await query.message.reply_text(
-            "⚠️ Invalid paid session selection\\.",
+            "⚠️ Invalid paid session size\\.",
             parse_mode="MarkdownV2",
         )
 
@@ -1488,19 +2341,18 @@ async def waec_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
         return await query.message.reply_text(
             "⚠️ Topic session data missing\\. Please choose your subject and topic again\\.",
             parse_mode="MarkdownV2",
-            reply_markup=make_waec_subject_keyboard(),
         )
 
     paid_credits = await get_waec_paid_question_credits(user_id)
     if paid_credits <= 0:
         return await query.message.reply_text(
-            "⚠️ You do not have any paid WAEC question credits left\\.",
+            "⚠️ You do not have enough paid waec credits\\.\n\nPlease buy a question pack first\\.",
             parse_mode="MarkdownV2",
         )
 
-    requested_count = min(requested_count, paid_credits)
+    actual_count = min(requested_count, paid_credits)
 
-    seen_question_ids = await get_seen_waec_question_ids_for_topic(
+    seen_question_ids = await get_seen_question_ids_for_topic(
         user_id=user_id,
         subject_code=subject_code,
         topic_id=topic_id,
@@ -1509,12 +2361,12 @@ async def waec_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
     batch = prepare_waec_topic_question_batch(
         subject_code=subject_code,
         topic_id=topic_id,
-        requested_count=requested_count,
+        requested_count=actual_count,
         seen_question_ids=seen_question_ids,
     )
 
     if batch["cycle_reset"]:
-        await reset_waec_topic_history(user_id, subject_code, topic_id)
+        await reset_topic_history(user_id, subject_code, topic_id)
 
     selected_questions = batch["selected_questions"]
     selected_question_ids = batch["selected_question_ids"]
@@ -1544,11 +2396,44 @@ async def waec_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["wp_current_question"] = None
     context.user_data["wp_answered_current"] = False
     context.user_data["wp_served_question_ids"] = []
+    context.user_data["wp_shown_passages"] = []
+    context.user_data["wp_last_passage"] = None
+    context.user_data["wp_last_passage_id_shown"] = ""
+    context.user_data["wp_active_passage_message_id"] = None
+
+    topic = next((t for t in get_waec_subject_topics(subject_code) if t["id"] == topic_id), None)
+    topic_title = topic["title"] if topic else topic_id
+
+    subject = get_waec_subject_by_code(subject_code)
+    subject_name = subject["name"] if subject else subject_code
+
+    safe_subject_name = md_escape(str(subject_name))
+    safe_topic_title = md_escape(str(topic_title))
+    safe_question_count = md_escape(str(len(selected_questions)))
+    safe_requested_count = md_escape(str(requested_count))
+    safe_paid_credits = md_escape(str(paid_credits))
+
+    reset_note = (
+        "\n♻️ Topic cycle reset because you already exhausted this topic before\\."
+        if batch["cycle_reset"]
+        else ""
+    )
+
+    adjusted_note = ""
+    if actual_count < requested_count:
+        adjusted_note = (
+            f"\nℹ️ You requested *{safe_requested_count}*, but you currently have "
+            f"*{safe_paid_credits}* paid credits available\\."
+        )
 
     await query.message.reply_text(
-        f"🎉 *Paid Session Started*\n\n"
-        f"📚 Questions in this session: *{md_escape(str(len(selected_questions)))}*\n\n"
-        "Next step: we will now start serving Question 1\\.",
+        f"✅ *Paid Session Started*\n\n"
+        f"📘 Subject: *{safe_subject_name}*\n"
+        f"🧪 Topic: *{safe_topic_title}*\n"
+        f"📚 Questions in this session: *{safe_question_count}*"
+        f"{adjusted_note}"
+        f"{reset_note}\n\n"
+        "Tap below to start Question 1\\.",
         parse_mode="MarkdownV2",
         reply_markup=InlineKeyboardMarkup(
             [
@@ -1559,132 +2444,225 @@ async def waec_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
     )
 
 
-async def waec_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def waec_mock_start_paid_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
 
     await query.answer()
 
-    data = query.data
-    pack_size = data.replace("wp_buy_", "", 1)
-
-    pricing_map = {
-        "50": 100,
-        "100": 200,
-        "150": 300,
-        "200": 400,
-    }
-
-    if pack_size not in pricing_map:
-        return await query.message.reply_text(
-            "⚠️ Invalid WAEC package selected\\.",
-            parse_mode="MarkdownV2",
-        )
-
-    amount = pricing_map[pack_size]
-    credits = calculate_jamb_credits(amount)
-
-    user = query.from_user
-    tg_id = user.id
-    username = user.username or f"user_{tg_id}"
-    email = f"{username}@naijaprizegate.ng"
+    tg = update.effective_user
+    user_id = tg.id
 
     subject_code = context.user_data.get("wp_subject_code")
-    topic_id = context.user_data.get("wp_topic_id")
-
-    tx_ref = build_tx_ref("WAEC")
-
-    async with get_async_session() as session:
-        await create_pending_waec_payment(
-            session,
-            payment_reference=tx_ref,
-            user_id=tg_id,
-            amount_paid=amount,
-            question_credits_added=credits,
-            subject_code=subject_code,
-            topic_id=topic_id,
-        )
-        await session.commit()
-
-    checkout_url = await create_checkout(
-        user_id=tg_id,
-        amount=amount,
-        username=username,
-        email=email,
-        tx_ref=tx_ref,
-        meta={
-            "tg_id": str(tg_id),
-            "username": username,
-            "product_type": "WAEC",
-        },
-        product_type="WAEC",
-    )
-
-    if not checkout_url:
-        async with get_async_session() as session:
-            await session.execute(
-                text("""
-                    update waec_payments
-                    set
-                        payment_status = 'expired',
-                        updated_at = now()
-                    where payment_reference = :payment_reference
-                      and lower(coalesce(payment_status, '')) = 'pending'
-                """),
-                {"payment_reference": tx_ref},
-            )
-            await session.commit()
-
+    if not subject_code:
         return await query.message.reply_text(
-            "⚠️ Payment service unavailable\\. Please try again shortly\\.",
+            "⚠️ Subject session data missing\\. Please choose your subject again\\.",
             parse_mode="MarkdownV2",
         )
 
-    safe_credits = md_escape(str(credits))
-    safe_amount = md_escape(str(amount))
+    subject = get_waec_subject_by_code(subject_code)
+    if not subject:
+        return await query.message.reply_text(
+            "⚠️ Subject not found\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    available_sessions = await get_waec_mock_sessions_available(user_id)
+    if available_sessions < 1:
+        safe_available = md_escape(str(available_sessions))
+        return await query.message.reply_text(
+            f"⚠️ You do not have any mock sessions available\\.\n\n"
+            f"🎟 Available mock sessions: *{safe_available}*\n\n"
+            "Please buy a mock session first\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    deducted = await deduct_one_waec_mock_session(user_id)
+    if not deducted:
+        return await query.message.reply_text(
+            "⚠️ Could not reserve your mock session right now\\. Please try again\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    question_target = get_waec_mock_question_count(subject_code)
+
+    session_id = await create_waec_mock_session(
+        user_id=user_id,
+        subject_code=subject_code,
+        question_target=question_target,
+    )
+
+    paper_info = await create_waec_subject_mock_paper_if_needed(
+        user_id=user_id,
+        session_id=session_id,
+        subject_code=subject_code,
+    )
+
+    paper_rows = paper_info.get("paper_rows") or []
+    batch = build_waec_batch_from_paper_rows(paper_rows)
+
+    if not batch:
+        return await query.message.reply_text(
+            "⚠️ No active questions could be prepared for this mock paper yet\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    session_row = await get_waec_session_by_id(session_id)
+    exam_ends_at = (session_row or {}).get("exam_ends_at")
+
+    context.user_data["wp_session_id"] = session_id
+    context.user_data["wp_session_mode"] = "mock_by_subject"
+    context.user_data["wp_mode"] = "mock_by_subject"
+    context.user_data["wp_topic_id"] = None
+    context.user_data["wp_question_batch"] = batch
+    context.user_data["wp_question_ids"] = [str(q.get("id")) for q in batch if q.get("id")]
+    context.user_data["wp_current_index"] = 0
+    context.user_data["wp_session_target"] = len(batch)
+    context.user_data["wp_correct_count"] = 0
+    context.user_data["wp_wrong_count"] = 0
+    context.user_data["wp_current_question"] = None
+    context.user_data["wp_answered_current"] = False
+    context.user_data["wp_served_question_ids"] = []
+    context.user_data["wp_shown_passages"] = []
+    context.user_data["wp_last_passage"] = None
+    context.user_data["wp_last_passage_id_shown"] = ""
+    context.user_data["wp_active_passage_message_id"] = None
+
+    safe_subject_name = md_escape(str(subject["name"]))
+    safe_question_count = md_escape(str(len(batch)))
+    safe_duration = md_escape(str(format_waec_mock_time_remaining(exam_ends_at)))
+
+    reset_note = (
+        "\n♻️ Subject cycle reset because you already exhausted the unseen pool before\\."
+        if paper_info.get("cycle_reset")
+        else ""
+    )
 
     await query.message.reply_text(
-        f"💳 *WAEC Question Pack Selected*\n\n"
-        f"📚 Questions: *{safe_credits}*\n"
-        f"💰 Amount: *₦{safe_amount}*\n\n"
-        "After successful payment, your WAEC question credits will be added automatically\\.\n\n"
-        "Tap below to complete payment\\.",
+        f"📝 *Subject Mock Started*\n\n"
+        f"📘 Subject: *{safe_subject_name}*\n"
+        f"📚 Questions: *{safe_question_count}*\n"
+        f"⏱ Time Allowed: *{safe_duration}*"
+        f"{reset_note}\n\n"
+        "Tap below to start Question 1\\.",
         parse_mode="MarkdownV2",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
-                [InlineKeyboardButton("⬅️ Back to WAEC / NECO Practice", callback_data="waecneco:practice")],
-                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+                [InlineKeyboardButton("▶ Start Mock", callback_data="wp_serve_first")],
+                [InlineKeyboardButton("🏠 End Mock", callback_data="wp_end_session")],
             ]
         ),
     )
 
 
-async def waec_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def waec_mock_resume_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
 
     await query.answer()
 
-    subject_code = query.data.replace("wp_back_mode_", "", 1)
-    subject = get_waec_subject_by_code(subject_code)
+    tg = update.effective_user
+    user_id = tg.id
+    subject_code = context.user_data.get("wp_subject_code")
 
-    context.user_data["wp_subject_code"] = subject_code
-    context.user_data["wp_mode"] = None
-    context.user_data["wp_topic_id"] = None
+    if not subject_code:
+        return await query.message.reply_text(
+            "⚠️ Subject session data missing\\. Please choose your subject again\\.",
+            parse_mode="MarkdownV2",
+        )
 
-    safe_subject_name = md_escape(str(subject["name"]))
-
-    await query.message.reply_text(
-        f"📘 *You selected:* {safe_subject_name}\n\n"
-        "How would you like to practice\\?",
-        parse_mode="MarkdownV2",
-        reply_markup=make_waec_mode_keyboard(subject_code),
+    active_session = await get_latest_active_waec_mock_session_for_user(
+        user_id=user_id,
+        subject_code=subject_code,
     )
 
+    if not active_session:
+        return await query.message.reply_text(
+            "⚠️ No active subject mock was found for this subject\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    session_id = int(active_session["id"])
+
+    if is_waec_mock_time_expired(active_session.get("exam_ends_at")):
+        await complete_waec_session(session_id)
+
+        safe_correct = md_escape(str(active_session.get("correct_count") or 0))
+        safe_wrong = md_escape(str(active_session.get("wrong_count") or 0))
+        safe_total = md_escape(str(active_session.get("question_target") or 0))
+
+        return await query.message.reply_text(
+            f"⏰ *Mock time is up\\.*\n\n"
+            f"📚 Total Questions: *{safe_total}*\n"
+            f"✅ Correct: *{safe_correct}*\n"
+            f"❌ Wrong: *{safe_wrong}*\n\n"
+            "This subject mock has ended\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    paper_rows = await get_waec_session_paper(session_id)
+    batch = build_waec_batch_from_paper_rows(paper_rows)
+
+    if not batch:
+        return await query.message.reply_text(
+            "⚠️ Could not reload your saved mock paper\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    current_index = int(active_session.get("current_question_index") or 0)
+
+    already_served_ids = []
+    for i, row in enumerate(paper_rows):
+        if i <= current_index:
+            qid = row.get("question_id")
+            if qid:
+                already_served_ids.append(str(qid))
+
+    context.user_data["wp_session_id"] = session_id
+    context.user_data["wp_session_mode"] = "mock_by_subject"
+    context.user_data["wp_mode"] = "mock_by_subject"
+    context.user_data["wp_question_batch"] = batch
+    context.user_data["wp_question_ids"] = [str(q.get("id")) for q in batch if q.get("id")]
+    context.user_data["wp_current_index"] = current_index
+    context.user_data["wp_session_target"] = len(batch)
+    context.user_data["wp_correct_count"] = int(active_session.get("correct_count") or 0)
+    context.user_data["wp_wrong_count"] = int(active_session.get("wrong_count") or 0)
+    context.user_data["wp_current_question"] = None
+    context.user_data["wp_answered_current"] = False
+    context.user_data["wp_served_question_ids"] = already_served_ids
+    context.user_data["wp_shown_passages"] = []
+    context.user_data["wp_last_passage"] = None
+    context.user_data["wp_last_passage_id_shown"] = ""
+    context.user_data["wp_active_passage_message_id"] = None
+
+    await send_current_waec_question(update, context)
+
+
+# =============================
+# Register handlers
+# =============================
 def register_handlers(application):
     application.add_handler(CommandHandler("waecpractice", waecpractice_handler))
-    application.add_handler(CallbackQueryHandler(waecpractice_handler, pattern=r"^waecneco:practice$"))
+    application.add_handler(CallbackQueryHandler(waecpractice_handler, pattern=r"^waecpractice$"))
+    application.add_handler(CallbackQueryHandler(waec_subject_handler, pattern=r"^wp_subj_"))
+    application.add_handler(CallbackQueryHandler(waec_mode_handler, pattern=r"^wp_mode_"))
+
+    application.add_handler(CallbackQueryHandler(waec_mock_start_paid_handler, pattern=r"^wp_mock_start_paid$"))
+    application.add_handler(CallbackQueryHandler(waec_mock_resume_handler, pattern=r"^wp_mock_resume$"))
+
+    application.add_handler(CallbackQueryHandler(waec_topic_page_handler, pattern=r"^wp_topicpage_"))
+    application.add_handler(CallbackQueryHandler(waec_topic_handler, pattern=r"^wp_topic::"))
+    application.add_handler(CallbackQueryHandler(waec_back_mode_handler, pattern=r"^wp_back_mode_"))
+    application.add_handler(CallbackQueryHandler(waec_start_free_handler, pattern=r"^wp_start_free$"))
+    application.add_handler(CallbackQueryHandler(waec_use_paid_handler, pattern=r"^wp_use_paid$"))
+    application.add_handler(CallbackQueryHandler(waec_paid_count_handler, pattern=r"^wp_paidcount_"))
+    application.add_handler(CallbackQueryHandler(waec_buy_pack_handler, pattern=r"^wp_buy_"))
+    application.add_handler(CallbackQueryHandler(waec_mock_buy_session_handler, pattern=r"^wp_mock_buy_"))
+    application.add_handler(CallbackQueryHandler(waec_serve_first_handler, pattern=r"^wp_serve_first$"))
+    application.add_handler(CallbackQueryHandler(waec_end_session_handler, pattern=r"^wp_end_session$"))
+    application.add_handler(CallbackQueryHandler(waec_answer_handler, pattern=r"^wp_ans::"))
+    application.add_handler(CallbackQueryHandler(waec_answer_details_handler, pattern=r"^wp_details$"))
+    application.add_handler(CallbackQueryHandler(waec_next_handler, pattern=r"^wp_next$"))
 
