@@ -48,7 +48,7 @@ async def create_pending_mockwaec_payment(
         return existing
 
     if int(amount_paid) <= 0:
-        raise ValueError(f"Invalid Mock JAMB amount: {amount_paid}")
+        raise ValueError(f"Invalid Mock WAEC amount: {amount_paid}")
 
     await session.execute(
         text("""
@@ -95,14 +95,14 @@ async def finalize_mockwaec_payment(
     user_id: int,
 ) -> tuple[bool, dict | None]:
     """
-    Safe/idempotent Mock JAMB finalizer.
+    Safe/idempotent Mock WAEC finalizer.
     Only marks payment successful for now.
     Returns (did_finalize_now, payment_row)
     """
     payment = await get_mockwaec_payment(session, payment_reference)
     if not payment:
         logger.error(
-            "❌ Mock JAMB payment not found during finalize | payment_reference=%s | user_id=%s",
+            "❌ Mock WAEC payment not found during finalize | payment_reference=%s | user_id=%s",
             payment_reference,
             user_id,
         )
