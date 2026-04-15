@@ -2,7 +2,7 @@
 # app.py
 # =====================================================
 # 1️⃣ Import & initialize secure logging first
-# -------------------------------------------------
+# ----------------------------------------------------
 from logging_setup import logger, tg_error_handler  # must be first to protect secrets
 
 import os
