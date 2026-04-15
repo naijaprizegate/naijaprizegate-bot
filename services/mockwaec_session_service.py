@@ -11,7 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 logger = logging.getLogger("mockwaec_session_service")
 logger.setLevel(logging.INFO)
 
-MOCKJAMB_EXAM_DURATION_MINUTES = 120
+MOCKWAEC_EXAM_DURATION_MINUTES = 120
 
 
 async def get_mockwaec_session_by_payment_reference(
@@ -135,7 +135,7 @@ async def start_mockwaec_session_if_needed(
         return existing
 
     now = datetime.now(timezone.utc)
-    ends_at = now + timedelta(minutes=MOCKJAMB_EXAM_DURATION_MINUTES)
+    ends_at = now + timedelta(minutes=MOCKWAEC_EXAM_DURATION_MINUTES)
 
     await session.execute(
         text("""
