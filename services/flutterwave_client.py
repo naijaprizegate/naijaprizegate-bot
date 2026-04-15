@@ -55,6 +55,8 @@ def calculate_jamb_credits(amount: int) -> int:
         return 0
     return JAMB_PRICE_TO_CREDITS.get(amount, 0)
 
+def calculate_waec_credits(amount: int) -> int:
+    return calculate_jamb_credits(amount)
 
 def normalize_flw_status(raw_status: Optional[str]) -> str:
     status = (raw_status or "").lower().strip()
