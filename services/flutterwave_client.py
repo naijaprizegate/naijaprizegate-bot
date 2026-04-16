@@ -25,6 +25,7 @@ TRIVIA_ALLOWED_PACKAGES = {100, 500, 1000}
 JAMB_ALLOWED_PACKAGES = {100, 200, 300, 400}
 WAEC_ALLOWED_PACKAGES = {100, 200, 300, 400}
 MOCKJAMB_ALLOWED_PACKAGES = {100}
+MOCKWAEC_ALLOWED_PACKAGES = {100}
 JAMBMOCKSUBJECT_ALLOWED_PACKAGES = {100, 200, 300, 400, 500}
 WAECMOCKSUBJECT_ALLOWED_PACKAGES = {100, 200, 300, 400, 500}
 
@@ -136,6 +137,10 @@ async def create_checkout(
         logger.warning("🚫 Invalid MOCKJAMB amount=%s user_id=%s", amount, user_id)
         return None
 
+    if product_type == "MOCKWAEC" and amount not in MOCKWAEC_ALLOWED_PACKAGES:
+        logger.warning("🚫 Invalid MOCKWAEC amount=%s user_id=%s", amount, user_id)
+        return None
+    
     if product_type == "JAMBMOCKSUBJECT" and amount not in JAMBMOCKSUBJECT_ALLOWED_PACKAGES:
         logger.warning("🚫 Invalid JAMBMOCKSUBJECT amount=%s user_id=%s", amount, user_id)
         return None
@@ -144,7 +149,15 @@ async def create_checkout(
         logger.warning("🚫 Invalid WAECMOCKSUBJECT amount=%s user_id=%s", amount, user_id)
         return None
     
-    if product_type not in {"TRIVIA", "JAMB", "WAEC", "MOCKJAMB", "JAMBMOCKSUBJECT", "WAECMOCKSUBJECT"}:
+    if product_type not in {
+        "TRIVIA",
+        "JAMB",
+        "WAEC",
+        "MOCKJAMB",
+        "MOCKWAEC",
+        "JAMBMOCKSUBJECT",
+        "WAECMOCKSUBJECT",
+    }:
         logger.warning("🚫 Unknown product_type=%s user_id=%s", product_type, user_id)
         return None
 
@@ -298,3 +311,4 @@ async def verify_payment(tx_ref: str) -> dict[str, Any]:
         "flw_tx_id": tx_data.get("id"),
         "meta": tx_data.get("meta") or {},
     }
+
