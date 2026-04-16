@@ -11,7 +11,7 @@ from sqlalchemy import text
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CallbackQueryHandler, CommandHandler, ContextTypes
 
-from waec_loader import get_course_subject_map, get_course_by_code, get_course_subjects, get_subject_by_code
+from waec_loader import get_waec_subjects, get_subject_by_code
 from db import get_async_session
 from helpers import md_escape
 from services.flutterwave_client import create_checkout, build_tx_ref
@@ -44,7 +44,7 @@ MOCKWAEC_SOLO_FEE = 100
 def make_mockwaec_welcome_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("🎯 Choose Course", callback_data="mw_course_page_1")],
+            [InlineKeyboardButton("📚 Choose Subjects", callback_data="mw_subjects_open")],
             [InlineKeyboardButton("⬅️ Back to Exam Hub", callback_data="exam:hub")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
@@ -263,11 +263,10 @@ def format_mockwaec_time_remaining(exam_ends_at) -> str:
 def build_mockwaec_welcome_text() -> str:
     return (
         "📝 *Welcome to Mock WAEC / NECO*\n\n"
-        "This mock exam is designed to simulate the real UTME experience.\n\n"
-        "You will write *4 subjects*:\n"
-        "• *Use of English* (compulsory)\n"
-        "• *3 other subjects* based on your intended course\n\n"
-        "To begin, choose your intended course and we will recommend a likely WAEC/NECO subject combination for you."
+        "This mock exam is designed to simulate the real WAEC / NECO experience.\n\n"
+        "You can choose a minimum of *7 subjects* and a maximum of *9 subjects*.\n\n"
+        "*English Language* is compulsory.\n\n"
+        "To begin, tap *Choose Subjects* and select the subjects you want for your mock exam."
     )
 
 
@@ -1188,7 +1187,6 @@ async def mockwaec_start_handler(update: Update, context: ContextTypes.DEFAULT_T
     text = build_mockwaec_welcome_text()
     markup = make_mockwaec_welcome_keyboard()
 
-    context.user_data["mw_course_code"] = None
     context.user_data["mw_subject_codes"] = []
     context.user_data["mw_mode"] = None
     context.user_data["mw_room_code"] = None
@@ -1213,6 +1211,68 @@ async def mockwaec_start_handler(update: Update, context: ContextTypes.DEFAULT_T
 
     if update.message:
         await update.message.reply_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
+async def mockwaec_subjects_open_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    subjects = get_waec_subjects()
+    selected_codes = context.user_data.get("mw_subject_codes") or []
+
+    lines = [
+        "📚 *Choose Your Subjects*",
+        "",
+        "Select a minimum of *7 subjects* and a maximum of *9 subjects*.",
+        "",
+        "*Compulsory:* English Language",
+        "",
+        f"*Selected:* {len(selected_codes)}",
+    ]
+
+    if selected_codes:
+        lines.append("")
+        lines.append("*Current Selection:*")
+        for code in selected_codes:
+            subject = get_subject_by_code(code)
+            if subject:
+                lines.append(f"• {subject['name']}")
+
+    text = "\n".join(lines)
+
+    rows = []
+    for subject in subjects:
+        code = subject["code"]
+        name = subject["name"]
+        prefix = "✅ " if code in selected_codes else ""
+        rows.append([
+            InlineKeyboardButton(
+                f"{prefix}{name}",
+                callback_data=f"mw_subject_toggle::{code}"
+            )
+        ])
+
+    rows.append([InlineKeyboardButton("➡️ Continue", callback_data="mw_subjects_continue")])
+    rows.append([InlineKeyboardButton("⬅️ Back to Mock WAEC/NECO", callback_data="mock:waec")])
+    rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
+
+    markup = InlineKeyboardMarkup(rows)
+
+    try:
+        await query.edit_message_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
             text,
             parse_mode="Markdown",
             reply_markup=markup,
@@ -2747,6 +2807,7 @@ async def mockwaec_submit_exam_yes_handler(update: Update, context: ContextTypes
 def register_handlers(application):
     application.add_handler(CommandHandler("mockwaec", mockwaec_start_handler))
     application.add_handler(CallbackQueryHandler(mockwaec_start_handler, pattern=r"^mock:waec$"))
+    application.add_handler(CallbackQueryHandler(mockwaec_subjects_open_handler, pattern=r"^mw_subjects_open$"))
     application.add_handler(CallbackQueryHandler(mockwaec_course_page_handler, pattern=r"^mw_course_page_"))
     application.add_handler(CallbackQueryHandler(mockwaec_course_select_handler, pattern=r"^mw_course_select::"))
     application.add_handler(CallbackQueryHandler(mockwaec_use_course_handler, pattern=r"^mw_use_course::"))
@@ -2763,4 +2824,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
+
 
