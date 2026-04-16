@@ -1,8 +1,8 @@
-# ===================================================
-# app.py
 # ====================================================
+# app.py
+# =====================================================
 # 1️⃣ Import & initialize secure logging first
-# ----------------------------------------------------
+# -------------------------------------------------
 from logging_setup import logger, tg_error_handler  # must be first to protect secrets
 
 import os
@@ -68,6 +68,7 @@ from handlers.support import support_conv, admin_reply
 from handlers.challenge import register_handlers as register_challenge_handlers
 from tasks import start_background_tasks, stop_background_tasks
 from handlers.mockjamb import register_handlers as register_mockjamb_handlers
+from handlers.mockwaec import register_handlers as register_mockwaec_handlers
 from handlers.waecpractice import register_handlers as register_waec_handlers
 
 logging.getLogger("httpx").setLevel(logging.WARNING)
@@ -214,6 +215,7 @@ async def on_startup():
         jambpractice.register_handlers(application)
         register_waec_handlers(application)
         register_mockjamb_handlers(application)
+        register_mockwaec_handlers(application)
         battle.register_handlers(application)
         register_challenge_handlers(application)
         free.register_handlers(application)
