@@ -376,6 +376,19 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await mockjamb_payment_success_handler(update, context, tx_ref)
             return
         
+        if arg.startswith("payok_mockwaec_"):
+            tx_ref = arg.replace("payok_mockwaec_", "", 1).strip()
+
+            if update.message:
+                await update.message.reply_text(
+                    "✅ *Payment confirmed!*\n\nPreparing your *Mock WAEC / NECO* exam...",
+                    parse_mode="Markdown",
+                )
+
+            from handlers.mockwaec import mockwaec_payment_success_handler
+            await mockwaec_payment_success_handler(update, context, tx_ref)
+            return
+        
         if arg.startswith("payok_jambmocksubject_"):
             payload = arg.replace("payok_jambmocksubject_", "", 1).strip()
 
@@ -479,6 +492,17 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await mockjamb_start_handler(update, context)
             return
 
+        if arg.startswith("payfail_mockwaec_"):
+            if update.message:
+                await update.message.reply_text(
+                    "❌ *Mock WAEC / NECO payment was not completed.*\n\nPlease try again.",
+                    parse_mode="Markdown",
+                )
+
+            from handlers.mockwaec import mockwaec_start_handler
+            await mockwaec_start_handler(update, context)
+            return
+        
         if arg.startswith("payfail_jambmocksubject_"):
             payload = arg.replace("payfail_jambmocksubject_", "", 1).strip()
 
@@ -798,4 +822,3 @@ def register_handlers(application):
         ),
         group=20,
     )
-
