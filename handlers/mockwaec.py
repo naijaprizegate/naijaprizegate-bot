@@ -112,14 +112,36 @@ def make_mockwaec_mode_keyboard() -> InlineKeyboardMarkup:
     )
 
 
-def make_mockwaec_solo_payment_keyboard(course_code: str) -> InlineKeyboardMarkup:
+def make_mockwaec_solo_payment_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         [
             [InlineKeyboardButton(f"💳 Pay ₦{MOCKWAEC_SOLO_FEE}", callback_data="mw_pay_solo")],
-            [InlineKeyboardButton("⬅️ Back", callback_data=f"mw_use_course::{course_code}")],
+            [InlineKeyboardButton("⬅️ Back", callback_data="mw_subjects_open")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
+
+
+def make_mockwaec_subject_selection_keyboard(selected_codes: list[str]) -> InlineKeyboardMarkup:
+    subjects = get_waec_subjects()
+    rows = []
+
+    for subject in subjects:
+        code = subject["code"]
+        name = subject["name"]
+        prefix = "✅ " if code in selected_codes else ""
+        rows.append([
+            InlineKeyboardButton(
+                f"{prefix}{name}",
+                callback_data=f"mw_subject_toggle::{code}"
+            )
+        ])
+
+    rows.append([InlineKeyboardButton("➡️ Continue", callback_data="mw_subjects_continue")])
+    rows.append([InlineKeyboardButton("⬅️ Back to Mock WAEC/NECO", callback_data="mock:waec")])
+    rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
+
+    return InlineKeyboardMarkup(rows)
 
 
 def make_mockwaec_exam_ready_keyboard(subject_codes: list[str]) -> InlineKeyboardMarkup:
@@ -308,49 +330,78 @@ def build_course_recommendation_text(course_code: str) -> str:
     return "\n".join(lines)
 
 
-def build_mockwaec_mode_text(course_code: str) -> str:
-    course = get_course_by_code(course_code)
-    if not course:
-        return "⚠️ Course not found."
+def build_mockwaec_mode_text(subject_codes: list[str]) -> str:
+    subject_lines = []
 
-    subjects = get_course_subjects(course_code)
-    subject_lines = "\n".join([f"• {subject['name']}" for subject in subjects])
+    for code in subject_codes:
+        subject = get_subject_by_code(code)
+        if subject:
+            subject_lines.append(f"• {subject['name']}")
+
+    joined_subjects = "\n".join(subject_lines)
 
     return (
-        "✅ *Subject Combination Saved*\n\n"
-        f"*Course:* {course['course_name']}\n\n"
+        "✅ *Subjects Saved*\n\n"
         "*Your Mock WAEC / NECO subjects are:*\n"
-        f"{subject_lines}\n\n"
+        f"{joined_subjects}\n\n"
         "How would you like to take this mock exam?"
     )
 
 
-def build_mockwaec_solo_payment_text(course_code: str) -> str:
-    course = get_course_by_code(course_code)
-    if not course:
-        return "⚠️ Course not found."
+def build_mockwaec_solo_payment_text(subject_codes: list[str]) -> str:
+    subject_lines = []
 
-    subjects = get_course_subjects(course_code)
-    subject_lines = "\n".join([f"• {subject['name']}" for subject in subjects])
+    for code in subject_codes:
+        subject = get_subject_by_code(code)
+        if subject:
+            subject_lines.append(f"• {subject['name']}")
+
+    joined_subjects = "\n".join(subject_lines)
 
     return (
         "💳 *Mock WAEC / NECO Solo Access*\n\n"
-        f"*Course:* {course['course_name']}\n\n"
         "*Subjects:*\n"
-        f"{subject_lines}\n\n"
+        f"{joined_subjects}\n\n"
         f"*Exam Fee:* ₦{MOCKWAEC_SOLO_FEE}\n\n"
         "Tap below to continue to payment."
     )
 
 
-def build_mockwaec_exam_ready_text(course_code: str, subject_codes: list[str]) -> str:
-    course = get_course_by_code(course_code)
-    if not course:
-        return "⚠️ Course not found."
+def build_mockwaec_subject_selection_text(selected_codes: list[str]) -> str:
+    lines = [
+        "📚 *Choose Your Subjects*",
+        "",
+        "Select a minimum of *7 subjects* and a maximum of *9 subjects*.",
+        "",
+        "*Compulsory:* English Language",
+        "",
+        f"*Selected:* {len(selected_codes)}",
+    ]
 
+    if selected_codes:
+        lines.extend([
+            "",
+            "*Current Selection:*",
+        ])
+
+        for code in selected_codes:
+            subject = get_subject_by_code(code)
+            if subject:
+                lines.append(f"• {subject['name']}")
+    else:
+        lines.extend([
+            "",
+            "_No subject selected yet._"
+        ])
+
+    return "\n".join(lines)
+
+
+def build_mockwaec_exam_ready_text(subject_codes: list[str]) -> str:
     subject_lines = []
+
     for code in subject_codes:
-        subject = get_course_subjects_for_code(code)
+        subject = get_subject_by_code(code)
         if subject:
             subject_lines.append(f"• {subject['name']}")
 
@@ -358,7 +409,6 @@ def build_mockwaec_exam_ready_text(course_code: str, subject_codes: list[str]) -
 
     return (
         "📝 *Mock WAEC / NECO Exam Ready*\n\n"
-        f"*Course:* {course['course_name']}\n\n"
         "*Your subjects:*\n"
         f"{joined_subjects}\n\n"
         "Choose the subject you want to start with first."
@@ -426,21 +476,16 @@ def build_mockwaec_live_question_text(
 
 def build_mockwaec_subject_completed_text(
     *,
-    course_code: str,
     completed_subject_code: str,
     score_100: int,
     remaining_subject_codes: list[str],
 ) -> str:
-    course = get_course_by_code(course_code)
     completed_subject = get_subject_by_code(completed_subject_code)
-
-    course_name = course["course_name"] if course else course_code
     subject_name = completed_subject["name"] if completed_subject else completed_subject_code.upper()
 
     lines = [
         "✅ *Subject Completed*",
         "",
-        f"*Course:* {course_name}",
         f"*Completed Subject:* {subject_name}",
         f"*Score:* {score_100}",
         "",
@@ -460,23 +505,17 @@ def build_mockwaec_subject_completed_text(
 
 def build_mockwaec_final_result_text(
     *,
-    course_code: str,
     subject_codes: list[str],
     scores: dict,
     answered_counts: dict | None = None,
     correct_counts: dict | None = None,
 ) -> str:
-    course = get_course_by_code(course_code)
-    course_name = course["course_name"] if course else course_code
-
     answered_counts = answered_counts or {}
     correct_counts = correct_counts or {}
 
     aggregate = 0
     lines = [
         "📊 *Mock WAEC / NECO Result*",
-        "",
-        f"Course: *{course_name}*",
         "",
     ]
 
@@ -489,7 +528,7 @@ def build_mockwaec_final_result_text(
 
     lines.extend([
         "",
-        f"*Aggregate:* *{aggregate} / 400*",
+        f"*Aggregate:* *{aggregate}*",
         "",
         "━━━━━━━━━━━━━━━━━━",
         "📦 *Detailed Breakdown*",
@@ -783,24 +822,18 @@ def make_mockwaec_review_nav_keyboard(
 
 def build_mockwaec_resume_prompt_text(
     *,
-    course_code: str,
     subject_codes: list[str],
     completed_subjects: list[str],
     current_subject_code: str | None,
     current_question_index: int,
     exam_ends_at=None,
 ) -> str:
-    course = get_course_by_code(course_code)
-    course_name = course["course_name"] if course else course_code
-
     remaining_subject_codes = [
         code for code in subject_codes if code not in completed_subjects
     ]
 
     lines = [
         "📝 *Resume Mock WAEC / NECO*",
-        "",
-        f"*Course:* {course_name}",
         "",
     ]
 
@@ -861,16 +894,10 @@ def make_mockwaec_resume_keyboard() -> InlineKeyboardMarkup:
 
 def build_mockwaec_continue_subject_choice_text(
     *,
-    course_code: str,
     remaining_subject_codes: list[str],
 ) -> str:
-    course = get_course_by_code(course_code)
-    course_name = course["course_name"] if course else course_code
-
     lines = [
         "📝 *Mock WAEC / NECO In Progress*",
-        "",
-        f"*Course:* {course_name}",
         "",
         "*Choose the next subject to continue:*",
     ]
@@ -1039,7 +1066,6 @@ async def build_mockwaec_result_from_session(
             correct_counts[subject_code] = int(stats.get("correct_count") or 0)
 
     message_text = build_mockwaec_final_result_text(
-        course_code=course_code,
         subject_codes=subject_codes,
         scores=scores,
         answered_counts=answered_counts,
@@ -1100,7 +1126,6 @@ async def finalize_mockwaec_exam_now(
         await session.commit()
 
     message_text = build_mockwaec_final_result_text(
-        course_code=course_code,
         subject_codes=subject_codes,
         scores=scores,
         answered_counts=answered_counts,
@@ -1149,7 +1174,6 @@ async def mockwaec_start_handler(update: Update, context: ContextTypes.DEFAULT_T
             context.user_data["mw_session_id"] = active_session["id"]
 
             text = build_mockwaec_resume_prompt_text(
-                course_code=course_code,
                 subject_codes=subject_codes,
                 completed_subjects=completed_subjects,
                 current_subject_code=current_subject_code,
@@ -1224,46 +1248,113 @@ async def mockwaec_subjects_open_handler(update: Update, context: ContextTypes.D
 
     await query.answer()
 
-    subjects = get_waec_subjects()
     selected_codes = context.user_data.get("mw_subject_codes") or []
 
-    lines = [
-        "📚 *Choose Your Subjects*",
-        "",
-        "Select a minimum of *7 subjects* and a maximum of *9 subjects*.",
-        "",
-        "*Compulsory:* English Language",
-        "",
-        f"*Selected:* {len(selected_codes)}",
-    ]
+    text = build_mockwaec_subject_selection_text(selected_codes)
+    markup = make_mockwaec_subject_selection_keyboard(selected_codes)
 
-    if selected_codes:
-        lines.append("")
-        lines.append("*Current Selection:*")
-        for code in selected_codes:
-            subject = get_subject_by_code(code)
-            if subject:
-                lines.append(f"• {subject['name']}")
+    try:
+        await query.edit_message_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
 
-    text = "\n".join(lines)
 
-    rows = []
-    for subject in subjects:
-        code = subject["code"]
-        name = subject["name"]
-        prefix = "✅ " if code in selected_codes else ""
-        rows.append([
-            InlineKeyboardButton(
-                f"{prefix}{name}",
-                callback_data=f"mw_subject_toggle::{code}"
+async def mockwaec_subject_toggle_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    try:
+        _, subject_code = query.data.split("::", 1)
+    except Exception:
+        return await query.message.reply_text("⚠️ Invalid subject selection.")
+
+    subject = get_subject_by_code(subject_code)
+    if not subject:
+        return await query.message.reply_text("⚠️ Subject not found.")
+
+    selected_codes = context.user_data.get("mw_subject_codes") or []
+
+    if subject_code in selected_codes:
+        selected_codes.remove(subject_code)
+    else:
+        if len(selected_codes) >= 9:
+            return await query.answer(
+                "You can select a maximum of 9 subjects.",
+                show_alert=True,
             )
-        ])
+        selected_codes.append(subject_code)
 
-    rows.append([InlineKeyboardButton("➡️ Continue", callback_data="mw_subjects_continue")])
-    rows.append([InlineKeyboardButton("⬅️ Back to Mock WAEC/NECO", callback_data="mock:waec")])
-    rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
+    context.user_data["mw_subject_codes"] = selected_codes
 
-    markup = InlineKeyboardMarkup(rows)
+    text = build_mockwaec_subject_selection_text(selected_codes)
+    markup = make_mockwaec_subject_selection_keyboard(selected_codes)
+
+    try:
+        await query.edit_message_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
+async def mockwaec_subjects_continue_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    selected_codes = context.user_data.get("mw_subject_codes") or []
+
+    if len(selected_codes) < 7:
+        return await query.answer(
+            "Please select at least 7 subjects.",
+            show_alert=True,
+        )
+
+    if len(selected_codes) > 9:
+        return await query.answer(
+            "You can select a maximum of 9 subjects.",
+            show_alert=True,
+        )
+
+    if "eng" not in selected_codes:
+        return await query.answer(
+            "English Language is compulsory. Please add it before continuing.",
+            show_alert=True,
+        )
+
+    subject_lines = []
+    for code in selected_codes:
+        subject = get_subject_by_code(code)
+        if subject:
+            subject_lines.append(f"• {subject['name']}")
+
+    text = (
+        "✅ *Subjects Saved*\n\n"
+        "*Your selected Mock WAEC / NECO subjects are:*\n"
+        f"{chr(10).join(subject_lines)}\n\n"
+        "How would you like to take this mock exam?"
+    )
+
+    markup = make_mockwaec_mode_keyboard()
 
     try:
         await query.edit_message_text(
@@ -1409,15 +1500,15 @@ async def mockwaec_mode_solo_handler(update: Update, context: ContextTypes.DEFAU
 
     context.user_data["mw_mode"] = "solo"
 
-    course_code = context.user_data.get("mw_course_code")
-    if not course_code:
+    subject_codes = context.user_data.get("mw_subject_codes") or []
+    if not subject_codes:
         return await query.message.reply_text(
-            "⚠️ No saved course found. Please choose your course again.",
+            "⚠️ No saved subjects found. Please choose your subjects again.",
             reply_markup=make_mockwaec_welcome_keyboard(),
         )
 
-    text = build_mockwaec_solo_payment_text(course_code)
-    markup = make_mockwaec_solo_payment_keyboard(course_code)
+    text = build_mockwaec_solo_payment_text(subject_codes)
+    markup = make_mockwaec_solo_payment_keyboard()
 
     try:
         await query.edit_message_text(
@@ -1445,29 +1536,30 @@ async def mockwaec_mode_friends_handler(update: Update, context: ContextTypes.DE
 
     context.user_data["mw_mode"] = "friends"
 
-    course_code = context.user_data.get("mw_course_code")
-    if not course_code:
+    subject_codes = context.user_data.get("mw_subject_codes") or []
+    if not subject_codes:
         return await query.message.reply_text(
-            "⚠️ No saved course found. Please choose your course again.",
+            "⚠️ No saved subjects found. Please choose your subjects again.",
             reply_markup=make_mockwaec_welcome_keyboard(),
         )
 
-    course = get_course_by_code(course_code)
-    subjects = get_course_subjects(course_code)
-    subject_lines = "\n".join([f"• {subject['name']}" for subject in subjects])
+    subject_lines = []
+    for code in subject_codes:
+        subject = get_subject_by_code(code)
+        if subject:
+            subject_lines.append(f"• {subject['name']}")
 
     text = (
         "👥 *Invite Friends Selected*\n\n"
-        f"*Course:* {course['course_name']}\n\n"
         "*Subjects for this room:*\n"
-        f"{subject_lines}\n\n"
+        f"{chr(10).join(subject_lines)}\n\n"
         "All players in the same room will use this same subject combination.\n\n"
         "Next step: we will build the multiplayer room and invite link flow."
     )
 
     markup = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("⬅️ Back", callback_data=f"mw_use_course::{course_code}")],
+            [InlineKeyboardButton("⬅️ Back", callback_data="mw_subjects_continue")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
@@ -1497,19 +1589,12 @@ async def mockwaec_pay_solo_handler(update: Update, context: ContextTypes.DEFAUL
 
     await query.answer()
 
-    course_code = context.user_data.get("mw_course_code")
     subject_codes = context.user_data.get("mw_subject_codes") or []
 
-    if not course_code or not subject_codes:
+    if not subject_codes:
         return await query.message.reply_text(
-            "⚠️ Your Mock WAEC / NECO setup is incomplete.\n\nPlease choose your course again.",
+            "⚠️ Your Mock WAEC / NECO setup is incomplete.\n\nPlease choose your subjects again.",
             reply_markup=make_mockwaec_welcome_keyboard(),
-        )
-
-    course = get_course_by_code(course_code)
-    if not course:
-        return await query.message.reply_text(
-            "⚠️ Course not found. Please choose your course again."
         )
 
     amount = MOCKWAEC_SOLO_FEE
@@ -1527,7 +1612,7 @@ async def mockwaec_pay_solo_handler(update: Update, context: ContextTypes.DEFAUL
             payment_reference=tx_ref,
             user_id=tg_id,
             amount_paid=amount,
-            course_code=course_code,
+            course_code="custom",
             subject_codes_json=subject_codes_json,
             exam_mode="solo",
         )
@@ -1543,7 +1628,7 @@ async def mockwaec_pay_solo_handler(update: Update, context: ContextTypes.DEFAUL
             "tg_id": str(tg_id),
             "username": username,
             "product_type": "MOCKWAEC",
-            "course_code": course_code,
+            "course_code": "custom",
             "exam_mode": "solo",
         },
         product_type="MOCKWAEC",
@@ -1568,15 +1653,16 @@ async def mockwaec_pay_solo_handler(update: Update, context: ContextTypes.DEFAUL
             "⚠️ Payment service is unavailable right now. Please try again shortly."
         )
 
-    subject_names = "\n".join(
-        [f"• {subject['name']}" for subject in get_course_subjects(course_code)]
-    )
+    subject_names = []
+    for code in subject_codes:
+        subject = get_subject_by_code(code)
+        if subject:
+            subject_names.append(f"• {subject['name']}")
 
     message_text = (
         "💳 *Mock WAEC / NECO Payment*\n\n"
-        f"*Course:* {course['course_name']}\n\n"
         "*Subjects:*\n"
-        f"{subject_names}\n\n"
+        f"{chr(10).join(subject_names)}\n\n"
         f"*Amount:* ₦{amount}\n\n"
         "Tap below to complete your payment securely."
     )
@@ -1668,7 +1754,7 @@ async def mockwaec_payment_success_handler(
     context.user_data["mw_payment_reference"] = tx_ref
     context.user_data["mw_session_id"] = mw_session["id"]
 
-    message_text = build_mockwaec_exam_ready_text(course_code, subject_codes)
+    message_text = build_mockwaec_exam_ready_text(subject_codes)
     markup = make_mockwaec_exam_ready_keyboard(subject_codes)
 
     if update.message:
@@ -2174,7 +2260,6 @@ async def mockwaec_answer_handler(update: Update, context: ContextTypes.DEFAULT_
 
                 if remaining_subject_codes:
                     message_text = build_mockwaec_subject_completed_text(
-                        course_code=course_code,
                         completed_subject_code=subject_code,
                         score_100=int(score_info["score_100"]),
                         remaining_subject_codes=remaining_subject_codes,
@@ -2194,7 +2279,6 @@ async def mockwaec_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                         correct_counts[code] = int(stats.get("correct_count") or 0)
 
                     message_text = build_mockwaec_final_result_text(
-                        course_code=course_code,
                         subject_codes=subject_codes,
                         scores=scores,
                         answered_counts=answered_counts,
@@ -2427,7 +2511,6 @@ async def mockwaec_back_to_result_handler(update: Update, context: ContextTypes.
             correct_counts[code] = int(stats.get("correct_count") or 0)
 
     message_text = build_mockwaec_final_result_text(
-        course_code=course_code,
         subject_codes=subject_codes,
         scores=scores,
         answered_counts=answered_counts,
@@ -2520,7 +2603,6 @@ async def mockwaec_resume_exam_handler(update: Update, context: ContextTypes.DEF
                 correct_counts[code] = int(stats.get("correct_count") or 0)
 
         message_text = build_mockwaec_final_result_text(
-            course_code=course_code,
             subject_codes=subject_codes,
             scores=scores,
             answered_counts=answered_counts,
@@ -2652,7 +2734,6 @@ async def mockwaec_resume_exam_handler(update: Update, context: ContextTypes.DEF
 
     if remaining_subject_codes:
         message_text = build_mockwaec_continue_subject_choice_text(
-            course_code=course_code,
             remaining_subject_codes=remaining_subject_codes,
         )
         markup = make_mockwaec_next_subject_keyboard(remaining_subject_codes)
@@ -2685,7 +2766,6 @@ async def mockwaec_resume_exam_handler(update: Update, context: ContextTypes.DEF
             correct_counts[code] = int(stats.get("correct_count") or 0)
 
     message_text = build_mockwaec_final_result_text(
-        course_code=course_code,
         subject_codes=subject_codes,
         scores=scores,
         answered_counts=answered_counts,
@@ -2808,6 +2888,8 @@ def register_handlers(application):
     application.add_handler(CommandHandler("mockwaec", mockwaec_start_handler))
     application.add_handler(CallbackQueryHandler(mockwaec_start_handler, pattern=r"^mock:waec$"))
     application.add_handler(CallbackQueryHandler(mockwaec_subjects_open_handler, pattern=r"^mw_subjects_open$"))
+    application.add_handler(CallbackQueryHandler(mockwaec_subject_toggle_handler, pattern=r"^mw_subject_toggle::"))
+    application.add_handler(CallbackQueryHandler(mockwaec_subjects_continue_handler, pattern=r"^mw_subjects_continue$"))
     application.add_handler(CallbackQueryHandler(mockwaec_course_page_handler, pattern=r"^mw_course_page_"))
     application.add_handler(CallbackQueryHandler(mockwaec_course_select_handler, pattern=r"^mw_course_select::"))
     application.add_handler(CallbackQueryHandler(mockwaec_use_course_handler, pattern=r"^mw_use_course::"))
@@ -2824,5 +2906,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
-
 
