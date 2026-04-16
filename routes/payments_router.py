@@ -19,6 +19,7 @@ from services.flutterwave_client import (
 from services.trivia_payments import finalize_trivia_payment, get_trivia_payment
 from services.jamb_payments import finalize_jamb_payment, get_jamb_payment
 from services.mockjamb_payments import finalize_mockjamb_payment, get_mockjamb_payment
+from services.mockwaec_payments import finalize_mockwaec_payment, get_mockwaec_payment
 from services.waec_payment_finalizer import finalize_waec_payment, get_waec_payment
 
 logger = logging.getLogger("payments_router")
@@ -43,6 +44,8 @@ def _product_type_from_tx_ref(tx_ref: str) -> str:
         return "WAEC"
     if tx_ref.startswith("MOCKJAMB-"):
         return "MOCKJAMB"
+    if tx_ref.startswith("MOCKWAEC-"):
+        return "MOCKWAEC"
     if tx_ref.startswith("TRIVIA-"):
         return "TRIVIA"
 
@@ -72,6 +75,9 @@ def _success_url(tx_ref: str, product_type: str, subject_code: str | None = None
     if product_type == "MOCKJAMB":
         return f"https://t.me/{BOT_USERNAME}?start=payok_mockjamb_{tx_ref}"
 
+    if product_type == "MOCKWAEC":
+        return f"https://t.me/{BOT_USERNAME}?start=payok_mockwaec_{tx_ref}"
+    
     return f"https://t.me/{BOT_USERNAME}?start=payok_trivia_{tx_ref}"
 
 
@@ -98,6 +104,9 @@ def _failed_url(tx_ref: str, product_type: str, subject_code: str | None = None)
     if product_type == "MOCKJAMB":
         return f"https://t.me/{BOT_USERNAME}?start=payfail_mockjamb_{tx_ref}"
 
+    if product_type == "MOCKWAEC":
+        return f"https://t.me/{BOT_USERNAME}?start=payfail_mockwaec_{tx_ref}"
+    
     return f"https://t.me/{BOT_USERNAME}?start=payfail_trivia_{tx_ref}"
 
 
@@ -156,6 +165,13 @@ async def _send_payment_success_message(
                 "Your *Mock JAMB / UTME* access has been activated 📝\n\n"
                 "You can now continue to your mock exam."
             )
+        
+        elif product_type == "MOCKWAEC":
+            text = (
+                "🎉 *Payment Successful!*\n\n"
+                "Your *Mock WAEC / NECO* access has been activated 📝\n\n"
+                "You can now continue to your mock exam."
+            )        
         else:
             return
 
@@ -354,6 +370,33 @@ async def _finalize_from_verified_data(
             "display_amount": amount,
         }
 
+    if product_type == "MOCKWAEC":
+        tg_id_raw = meta.get("tg_id")
+        if not tg_id_raw:
+            payment = await get_mockwaec_payment(session, tx_ref)
+            tg_id_raw = payment.get("user_id") if payment else None
+
+        if not tg_id_raw:
+            return "MOCKWAEC", {
+                "status": "error",
+                "reason": "missing_tg_id",
+                "credited_now": False,
+            }
+
+        did_finalize, payment = await finalize_mockwaec_payment(
+            session,
+            payment_reference=tx_ref,
+            user_id=int(tg_id_raw),
+        )
+
+        return "MOCKWAEC", {
+            "status": "successful" if payment else "error",
+            "credited_now": did_finalize,
+            "tg_id": int(tg_id_raw),
+            "payment": payment,
+            "display_amount": amount,
+        }
+
     if product_type == "TRIVIA":
         tg_id_raw = meta.get("tg_id")
         username = (meta.get("username") or "Unknown")[:64]
@@ -489,7 +532,13 @@ async def flutterwave_webhook(
                 product_type="MOCKJAMB",
                 amount_or_units=int(info.get("display_amount") or 0),
             )
-
+        elif product_type == "MOCKWAEC":
+            await _send_payment_success_message(
+                tg_id=int(info["tg_id"]),
+                product_type="MOCKWAEC",
+                amount_or_units=int(info.get("display_amount") or 0),
+            )
+    
     return JSONResponse({"status": "success"})
 
 
@@ -574,6 +623,13 @@ async def flutterwave_redirect(
                             amount_or_units=int(info.get("display_amount") or 0),
                         )
 
+                    elif product_type == "MOCKWAEC":
+                        await _send_payment_success_message(
+                            tg_id=int(info["tg_id"]),
+                            product_type="MOCKWAEC",
+                            amount_or_units=int(info.get("display_amount") or 0),
+                        )
+
                 if product_type == "JAMBMOCKSUBJECT":
                     mock_sessions = int(info.get("mock_sessions") or 0)
                     return HTMLResponse(f"""
@@ -604,6 +660,17 @@ async def flutterwave_redirect(
                         <h2 style="color:green;">✅ Mock JAMB / UTME Payment Successful</h2>
                         <p>Transaction Reference: <b>{tx_ref}</b></p>
                         <p>📝 Your Mock JAMB / UTME access has been activated.</p>
+                        <p>This tab will redirect to Telegram in 5 seconds...</p>
+                        <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
+                        </body></html>
+                    """, status_code=200)
+
+                if product_type == "MOCKWAEC":
+                    return HTMLResponse(f"""
+                        <html><body style="font-family: Arial, sans-serif; text-align:center; padding:40px;">
+                        <h2 style="color:green;">✅ Mock WAEC / NECO Payment Successful</h2>
+                        <p>Transaction Reference: <b>{tx_ref}</b></p>
+                        <p>📝 Your Mock WAEC / NECO access has been activated.</p>
                         <p>This tab will redirect to Telegram in 5 seconds...</p>
                         <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
                         </body></html>
@@ -749,6 +816,18 @@ async def flutterwave_redirect_status(
                         <h2 style="color:green;">✅ Mock JAMB / UTME Payment Successful</h2>
                         <p>Transaction Reference: <b>{tx_ref}</b></p>
                         <p>📝 Your Mock JAMB / UTME access has been activated.</p>
+                        <p>This tab will redirect to Telegram in 5 seconds...</p>
+                        <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
+                        """
+                    })
+
+                if product_type == "MOCKWAEC":
+                    return JSONResponse({
+                        "done": True,
+                        "html": f"""
+                        <h2 style="color:green;">✅ Mock WAEC / NECO Payment Successful</h2>
+                        <p>Transaction Reference: <b>{tx_ref}</b></p>
+                        <p>📝 Your Mock WAEC / NECO access has been activated.</p>
                         <p>This tab will redirect to Telegram in 5 seconds...</p>
                         <script>setTimeout(() => window.location.href="{success_url}", 5000);</script>
                         """
