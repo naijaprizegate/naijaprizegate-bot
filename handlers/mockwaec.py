@@ -21,6 +21,7 @@ from services.mockwaec_session_service import (
     mark_mockwaec_subject_completed,
     get_mockwaec_session_by_payment_reference,
     get_latest_active_mockwaec_session_for_user,
+    get_mockwaec_exam_duration_minutes,
 )
 from services.mockwaec_exam_service import (
     start_mockwaec_subject,
@@ -279,6 +280,16 @@ def format_mockwaec_time_remaining(exam_ends_at) -> str:
     return f"{minutes}m"
 
 
+def format_mockwaec_duration_minutes(total_minutes: int) -> str:
+    hours = total_minutes // 60
+    minutes = total_minutes % 60
+
+    if hours > 0 and minutes > 0:
+        return f"{hours}h {minutes}m"
+    if hours > 0:
+        return f"{hours}h"
+    return f"{minutes}m"
+
 # ====================================================================
 # Message Builders
 # ====================================================================
@@ -407,10 +418,16 @@ def build_mockwaec_exam_ready_text(subject_codes: list[str]) -> str:
 
     joined_subjects = "\n".join(subject_lines)
 
+    subject_count = len(subject_codes)
+    duration_minutes = get_mockwaec_exam_duration_minutes(subject_count)
+    formatted_duration = format_mockwaec_duration_minutes(duration_minutes)
+
     return (
         "📝 *Mock WAEC / NECO Exam Ready*\n\n"
         "*Your subjects:*\n"
         f"{joined_subjects}\n\n"
+        f"*Total Subjects:* {subject_count}\n"
+        f"*Allotted Time:* {formatted_duration}\n\n"
         "Choose the subject you want to start with first."
     )
 
