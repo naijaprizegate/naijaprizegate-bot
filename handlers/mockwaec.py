@@ -31,6 +31,7 @@ from services.mockwaec_exam_service import (
     get_mockwaec_subject_question_by_order,
     get_mockwaec_subject_question_count,
     get_mockwaec_subject_result_stats,
+    get_mockwaec_grade_from_score,
 )
 
 logger = logging.getLogger(__name__)
@@ -530,9 +531,10 @@ def build_mockwaec_final_result_text(
     answered_counts = answered_counts or {}
     correct_counts = correct_counts or {}
 
-    aggregate = 0
     lines = [
         "📊 *Mock WAEC / NECO Result*",
+        "",
+        "*Subject Grades:*",
         "",
     ]
 
@@ -540,12 +542,11 @@ def build_mockwaec_final_result_text(
         subject = get_subject_by_code(code)
         subject_name = subject["name"] if subject else code.upper()
         score = int(scores.get(code) or 0)
-        aggregate += score
-        lines.append(f"*{subject_name}*: *{score}*")
+        grade = get_mockwaec_grade_from_score(score)
+
+        lines.append(f"*{subject_name}*: *{grade}* \\({score}/100\\)")
 
     lines.extend([
-        "",
-        f"*Aggregate:* *{aggregate}*",
         "",
         "━━━━━━━━━━━━━━━━━━",
         "📦 *Detailed Breakdown*",
@@ -558,12 +559,14 @@ def build_mockwaec_final_result_text(
         answered = int(answered_counts.get(code) or 0)
         correct = int(correct_counts.get(code) or 0)
         score = int(scores.get(code) or 0)
+        grade = get_mockwaec_grade_from_score(score)
 
         lines.extend([
             f"*{subject_name}*",
             f"Answered: {answered}",
             f"Correct: {correct}",
             f"Score: {score}/100",
+            f"Grade: {grade}",
             "",
         ])
 
