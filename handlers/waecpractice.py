@@ -29,6 +29,37 @@ logger = logging.getLogger(__name__)
 TOPICS_PER_PAGE = 7
 
 
+def get_waec_grade_from_score(score: int) -> str:
+    score = int(score or 0)
+
+    if score >= 75:
+        return "A1"
+    if score >= 70:
+        return "B2"
+    if score >= 65:
+        return "B3"
+    if score >= 60:
+        return "C4"
+    if score >= 55:
+        return "C5"
+    if score >= 50:
+        return "C6"
+    if score >= 45:
+        return "D7"
+    if score >= 40:
+        return "E8"
+    return "F9"
+
+
+def calculate_waec_score_over_100(correct_count: int, total_questions: int) -> int:
+    correct_count = int(correct_count or 0)
+    total_questions = int(total_questions or 0)
+
+    if total_questions <= 0:
+        return 0
+
+    return round((correct_count / total_questions) * 100)
+
 # =============================
 # DB helpers
 # =============================
@@ -1840,15 +1871,25 @@ async def send_current_waec_question(update: Update, context: ContextTypes.DEFAU
             )
             await complete_waec_session(int(session_id))
 
-            safe_total = md_escape(str(len(batch)))
-            safe_correct_count = md_escape(str(session_row.get("correct_count") or 0))
-            safe_wrong_count = md_escape(str(session_row.get("wrong_count") or 0))
+            total = len(batch)
+            correct_count = int(session_row.get("correct_count") or 0)
+            wrong_count = int(session_row.get("wrong_count") or 0)
+            score_100 = calculate_waec_score_over_100(correct_count, total)
+            grade = get_waec_grade_from_score(score_100)
+
+            safe_total = md_escape(str(total))
+            safe_correct_count = md_escape(str(correct_count))
+            safe_wrong_count = md_escape(str(wrong_count))
+            safe_score_100 = md_escape(str(score_100))
+            safe_grade = md_escape(grade)
 
             return await update.effective_message.reply_text(
                 f"⏰ *Mock time is up\\.*\n\n"
                 f"📚 Total Questions: *{safe_total}*\n"
                 f"✅ Correct: *{safe_correct_count}*\n"
-                f"❌ Wrong: *{safe_wrong_count}*\n\n"
+                f"❌ Wrong: *{safe_wrong_count}*\n"
+                f"💯 Score: *{safe_score_100}/100*\n"
+                f"🏅 Grade: *{safe_grade}*\n\n"
                 "This subject mock has ended\\.",
                 parse_mode="MarkdownV2",
                 reply_markup=InlineKeyboardMarkup(
@@ -1872,9 +1913,14 @@ async def send_current_waec_question(update: Update, context: ContextTypes.DEFAU
         wrong_count = int(context.user_data.get("wp_wrong_count", 0))
         total = len(batch)
 
+        score_100 = calculate_waec_score_over_100(correct_count, total)
+        grade = get_waec_grade_from_score(score_100)
+
         safe_total = md_escape(str(total))
         safe_correct_count = md_escape(str(correct_count))
         safe_wrong_count = md_escape(str(wrong_count))
+        safe_score_100 = md_escape(str(score_100))
+        safe_grade = md_escape(grade)
 
         title = "✅ *Mock Completed*" if session_mode == "mock_by_subject" else "✅ *Practice Completed*"
         outro = (
@@ -1887,7 +1933,9 @@ async def send_current_waec_question(update: Update, context: ContextTypes.DEFAU
             f"{title}\n\n"
             f"📚 Total Questions: *{safe_total}*\n"
             f"✅ Correct: *{safe_correct_count}*\n"
-            f"❌ Wrong: *{safe_wrong_count}*\n\n"
+            f"❌ Wrong: *{safe_wrong_count}*\n"
+            f"💯 Score: *{safe_score_100}/100*\n"
+            f"🏅 Grade: *{safe_grade}*\n\n"
             f"{outro}",
             parse_mode="MarkdownV2",
             reply_markup=InlineKeyboardMarkup(
@@ -2589,15 +2637,25 @@ async def waec_mock_resume_handler(update: Update, context: ContextTypes.DEFAULT
     if is_waec_mock_time_expired(active_session.get("exam_ends_at")):
         await complete_waec_session(session_id)
 
-        safe_correct = md_escape(str(active_session.get("correct_count") or 0))
-        safe_wrong = md_escape(str(active_session.get("wrong_count") or 0))
-        safe_total = md_escape(str(active_session.get("question_target") or 0))
+        total = int(active_session.get("question_target") or 0)
+        correct_count = int(active_session.get("correct_count") or 0)
+        wrong_count = int(active_session.get("wrong_count") or 0)
+        score_100 = calculate_waec_score_over_100(correct_count, total)
+        grade = get_waec_grade_from_score(score_100)
+
+        safe_total = md_escape(str(total))
+        safe_correct = md_escape(str(correct_count))
+        safe_wrong = md_escape(str(wrong_count))
+        safe_score_100 = md_escape(str(score_100))
+        safe_grade = md_escape(grade)
 
         return await query.message.reply_text(
             f"⏰ *Mock time is up\\.*\n\n"
             f"📚 Total Questions: *{safe_total}*\n"
             f"✅ Correct: *{safe_correct}*\n"
-            f"❌ Wrong: *{safe_wrong}*\n\n"
+            f"❌ Wrong: *{safe_wrong}*\n"
+            f"💯 Score: *{safe_score_100}/100*\n"
+            f"🏅 Grade: *{safe_grade}*\n\n"
             "This subject mock has ended\\.",
             parse_mode="MarkdownV2",
         )
