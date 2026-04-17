@@ -22,6 +22,27 @@ logger = logging.getLogger("mockwaec_exam_service")
 logger.setLevel(logging.INFO)
 
 
+def get_mockwaec_grade_from_score(score_100: int) -> str:
+    score_100 = int(score_100 or 0)
+
+    if score_100 >= 75:
+        return "A1"
+    if score_100 >= 70:
+        return "B2"
+    if score_100 >= 65:
+        return "B3"
+    if score_100 >= 60:
+        return "C4"
+    if score_100 >= 55:
+        return "C5"
+    if score_100 >= 50:
+        return "C6"
+    if score_100 >= 45:
+        return "D7"
+    if score_100 >= 40:
+        return "E8"
+    return "F9"
+
 def get_mockwaec_subject_question_count(subject_code: str) -> int:
     subject_code = str(subject_code or "").strip().lower()
     if subject_code == "eng":
@@ -574,3 +595,4 @@ async def get_mockwaec_subject_result_stats(
         "answered_count": int(row.get("answered_count") or 0),
         "correct_count": int(row.get("correct_count") or 0),
     }
+
