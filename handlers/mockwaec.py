@@ -1723,12 +1723,17 @@ async def mockwaec_payment_success_handler(
             return
 
         course_code = str(payment.get("course_code") or "").strip()
-        subject_codes_json = payment.get("subject_codes_json") or "[]"
+        subject_codes_raw = payment.get("subject_codes_json")
         exam_mode = str(payment.get("exam_mode") or "solo").strip()
 
-        try:
-            subject_codes = json.loads(subject_codes_json)
-        except Exception:
+        if isinstance(subject_codes_raw, list):
+            subject_codes = subject_codes_raw
+        elif isinstance(subject_codes_raw, str):
+            try:
+                subject_codes = json.loads(subject_codes_raw)
+            except Exception:
+                subject_codes = []
+        else:
             subject_codes = []
 
         if not course_code or not subject_codes:
@@ -2906,4 +2911,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
+
 
