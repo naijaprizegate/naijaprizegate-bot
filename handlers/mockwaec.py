@@ -1748,7 +1748,7 @@ async def mockwaec_payment_success_handler(
             payment_reference=tx_ref,
             user_id=int(payment["user_id"]),
             course_code=course_code,
-            subject_codes_json=subject_codes_json,
+            subject_codes_json=json.dumps(subject_codes),
         )
         await session.commit()
 
@@ -2911,5 +2911,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
-
 
