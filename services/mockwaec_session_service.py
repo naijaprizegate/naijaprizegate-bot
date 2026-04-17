@@ -11,8 +11,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 logger = logging.getLogger("mockwaec_session_service")
 logger.setLevel(logging.INFO)
 
-MOCKWAEC_EXAM_DURATION_MINUTES = 120
 
+def get_mockwaec_exam_duration_minutes(subject_count: int) -> int:
+    if subject_count <= 7:
+        return 180
+    if subject_count == 8:
+        return 200
+    return 220
 
 async def get_mockwaec_session_by_payment_reference(
     session: AsyncSession,
@@ -137,20 +142,30 @@ async def start_mockwaec_session_if_needed(
     exam_ends_at = existing.get("exam_ends_at")
     status = str(existing.get("status") or "").strip().lower()
 
-    if exam_ends_at and getattr(exam_ends_at, "tzinfo", None) is None:
-        exam_ends_at = exam_ends_at.replace(tzinfo=timezone.utc)
-
-    # If already completed, never restart timer
+    # Never restart a completed session
     if status == "completed":
         return existing
 
-    # If timer already exists, keep using it
-    # This allows resume after bad network/app exit
+    # If timer already started, keep using it
+    # so user can resume after bad network / disconnect
     if exam_started_at and exam_ends_at:
         return existing
 
-    # Only first start should create the timer
-    ends_at = now + timedelta(minutes=MOCKWAEC_EXAM_DURATION_MINUTES)
+    subject_codes_raw = existing.get("subject_codes_json") or []
+
+    if isinstance(subject_codes_raw, list):
+        subject_codes = subject_codes_raw
+    elif isinstance(subject_codes_raw, str):
+        try:
+            subject_codes = json.loads(subject_codes_raw)
+        except Exception:
+            subject_codes = []
+    else:
+        subject_codes = []
+
+    subject_count = len(subject_codes)
+    duration_minutes = get_mockwaec_exam_duration_minutes(subject_count)
+    ends_at = now + timedelta(minutes=duration_minutes)
 
     await session.execute(
         text("""
@@ -169,6 +184,7 @@ async def start_mockwaec_session_if_needed(
         },
     )
     await session.flush()
+
     return await get_mockwaec_session_by_payment_reference(session, payment_reference)
 
 
@@ -225,7 +241,7 @@ async def mark_mockwaec_subject_completed(
 
     scores[subject_code] = int(score)
 
-    new_status = "completed" if len(completed_subjects) >= 4 else "in_progress"
+    new_status = "completed" if len(completed_subjects) >= len(subject_codes) else "in_progress"
 
     await session.execute(
         text("""
@@ -332,7 +348,7 @@ async def get_latest_active_mockwaec_session_for_user(
                 updated_at
             from public.mockwaec_sessions
             where user_id = :user_id
-              and status in ('ready', 'in_progress')
+              and status in ('ready', 'in_progress', 'completed')
             order by id desc
             limit 1
         """),
@@ -340,5 +356,4 @@ async def get_latest_active_mockwaec_session_for_user(
     )
     row = result.mappings().first()
     return dict(row) if row else None
-
 
