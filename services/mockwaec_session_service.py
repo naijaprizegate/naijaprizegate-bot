@@ -131,10 +131,25 @@ async def start_mockwaec_session_if_needed(
     if not existing:
         return None
 
-    if existing.get("exam_started_at") and existing.get("exam_ends_at"):
+    now = datetime.now(timezone.utc)
+
+    exam_started_at = existing.get("exam_started_at")
+    exam_ends_at = existing.get("exam_ends_at")
+    status = str(existing.get("status") or "").strip().lower()
+
+    if exam_ends_at and getattr(exam_ends_at, "tzinfo", None) is None:
+        exam_ends_at = exam_ends_at.replace(tzinfo=timezone.utc)
+
+    # If already completed, never restart timer
+    if status == "completed":
         return existing
 
-    now = datetime.now(timezone.utc)
+    # If timer already exists, keep using it
+    # This allows resume after bad network/app exit
+    if exam_started_at and exam_ends_at:
+        return existing
+
+    # Only first start should create the timer
     ends_at = now + timedelta(minutes=MOCKWAEC_EXAM_DURATION_MINUTES)
 
     await session.execute(
@@ -317,7 +332,7 @@ async def get_latest_active_mockwaec_session_for_user(
                 updated_at
             from public.mockwaec_sessions
             where user_id = :user_id
-              and status in ('ready', 'in_progress', 'completed')
+              and status in ('ready', 'in_progress')
             order by id desc
             limit 1
         """),
@@ -325,4 +340,5 @@ async def get_latest_active_mockwaec_session_for_user(
     )
     row = result.mappings().first()
     return dict(row) if row else None
+
 
