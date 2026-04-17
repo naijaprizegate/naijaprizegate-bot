@@ -427,7 +427,7 @@ def build_mockwaec_live_question_text(
     subject_name = subject["name"] if subject else subject_code.upper()
 
     try:
-        payload = json.loads(question_row.get("question_json") or "{}")
+        payload = get_question_payload(question_row)
     except Exception:
         payload = {}
 
@@ -556,7 +556,7 @@ def build_mockwaec_final_result_text(
 # ----Question Has Passage-----------
 def question_has_passage(question_row: dict) -> bool:
     try:
-        payload = json.loads(question_row.get("question_json") or "{}")
+        payload = get_question_payload(question_row)
     except Exception:
         payload = {}
 
@@ -911,10 +911,18 @@ def build_mockwaec_continue_subject_choice_text(
 
 
 def get_question_payload(question_row: dict) -> dict:
-    try:
-        return json.loads(question_row.get("question_json") or "{}")
-    except Exception:
-        return {}
+    raw = question_row.get("question_json")
+
+    if isinstance(raw, dict):
+        return raw
+
+    if isinstance(raw, str):
+        try:
+            return json.loads(raw)
+        except Exception:
+            return {}
+
+    return {}
 
 
 def get_question_passage_id(question_row: dict) -> str:
@@ -2911,4 +2919,3 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
-
