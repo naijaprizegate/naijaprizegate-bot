@@ -544,7 +544,7 @@ def build_mockwaec_final_result_text(
         score = int(scores.get(code) or 0)
         grade = get_mockwaec_grade_from_score(score)
 
-        lines.append(f"*{subject_name}*: *{grade}* \\({score}/100\\)")
+        lines.append(f"*{subject_name}*: *{grade}* \({score}/100\)")
 
     lines.extend([
         "",
@@ -566,7 +566,7 @@ def build_mockwaec_final_result_text(
             f"Answered: {answered}",
             f"Correct: {correct}",
             f"Score: {score}/100",
-            f"Grade: {grade}",
+            f"Grade: *{grade}*",
             "",
         ])
 
@@ -2936,4 +2936,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
+
 
