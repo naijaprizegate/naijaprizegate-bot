@@ -1350,13 +1350,13 @@ async def mockwaec_subjects_continue_handler(update: Update, context: ContextTyp
 
     if len(selected_codes) < 7:
         return await query.answer(
-            "Please select at least 7 subjects.",
+            "Number of subjects must be between 7 and 9.",
             show_alert=True,
         )
 
     if len(selected_codes) > 9:
         return await query.answer(
-            "You can select a maximum of 9 subjects.",
+            "Number of subjects must be between 7 and 9.",
             show_alert=True,
         )
 
