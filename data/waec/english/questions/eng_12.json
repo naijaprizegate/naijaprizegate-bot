@@ -1,1 +1,3702 @@
-
+[
+  {
+    "id": "eng_12_q001",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Subject-verb agreement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The bouquet of roses on the table ___ fresh every morning,' the correct verb is___",
+    "options": {
+      "A": "smell",
+      "B": "smells",
+      "C": "have smelled",
+      "D": "are smelling"
+    },
+    "answer": "B",
+    "answer_text": "smells",
+    "explanation": {
+      "question_restate": "In the sentence, 'The bouquet of roses on the table ___ fresh every morning,' the correct verb is___",
+      "principle": "A verb agrees with the real subject of the sentence, not with a noun inside a modifying phrase.",
+      "steps": [
+        "The central subject is 'bouquet', which is singular.",
+        "The words 'of roses' only describe the bouquet; they do not control the verb.",
+        "A singular subject in the simple present takes a singular verb form such as 'smells'.",
+        "Therefore, the correct sentence is 'The bouquet of roses on the table smells fresh every morning.'"
+      ],
+      "final_answer": "B. smells",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subject_verb_agreement",
+      "headword",
+      "prepositional_phrase"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q002",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Subject-verb agreement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The quality of these mangoes ___ poor after the long journey,' the correct option is___",
+    "options": {
+      "A": "were",
+      "B": "are",
+      "C": "is",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'The quality of these mangoes ___ poor after the long journey,' the correct option is___",
+      "principle": "When a singular head noun is followed by a phrase beginning with 'of', the head noun determines the verb.",
+      "steps": [
+        "The true subject is 'quality', not 'mangoes'.",
+        "'Quality' is singular, so the verb must also be singular.",
+        "Among the options, 'is' matches a singular subject correctly in standard English.",
+        "This is a common exam trap because students may wrongly follow the nearer plural noun."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subject_verb_agreement",
+      "headword",
+      "singular_subject"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q003",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Subject-verb agreement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The leader, together with his supporters, ___ expected at the meeting,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'The leader, together with his supporters, ___ expected at the meeting,' the correct verb is___",
+      "principle": "Expressions such as 'together with', 'as well as', and 'along with' do not change the number of the main subject.",
+      "steps": [
+        "The main subject is 'leader'.",
+        "The group 'together with his supporters' is only additional information.",
+        "Since 'leader' is singular, the correct singular verb is 'is'.",
+        "In concord questions, ignore interrupting expressions and match the verb to the actual subject."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subject_verb_agreement",
+      "together_with",
+      "intervening_phrase"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q004",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Subject-verb agreement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The cost of the repairs ___ beyond what we can afford,' the appropriate verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "have been",
+      "D": "were"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'The cost of the repairs ___ beyond what we can afford,' the appropriate verb is___",
+      "principle": "Abstract nouns such as 'cost', 'price', and 'extent' usually take singular verbs when they function as singular subjects.",
+      "steps": [
+        "The real subject is 'cost'.",
+        "'Of the repairs' merely explains what cost is being discussed.",
+        "Because 'cost' is singular, the verb must be singular too.",
+        "So 'is' is the correct concord choice."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subject_verb_agreement",
+      "cost",
+      "singular_noun"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q005",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Subject-verb agreement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The introduction to those books ___ surprisingly brief,' the correct verb is___",
+    "options": {
+      "A": "was",
+      "B": "were",
+      "C": "are",
+      "D": "have been"
+    },
+    "answer": "A",
+    "answer_text": "was",
+    "explanation": {
+      "question_restate": "In the sentence, 'The introduction to those books ___ surprisingly brief,' the correct verb is___",
+      "principle": "The head noun controls the verb even when a plural noun appears later in the subject phrase.",
+      "steps": [
+        "The head noun is 'introduction'.",
+        "'To those books' is a modifying phrase and cannot control the verb.",
+        "Because the sentence is in the past and the subject is singular, 'was' is correct.",
+        "Always separate the main noun from its modifiers before answering."
+      ],
+      "final_answer": "A. was",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subject_verb_agreement",
+      "introduction",
+      "past_tense"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q006",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Subject-verb agreement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Each page of the report ___ a different watermark,' the correct verb is___",
+    "options": {
+      "A": "show",
+      "B": "shows",
+      "C": "have shown",
+      "D": "were showing"
+    },
+    "answer": "B",
+    "answer_text": "shows",
+    "explanation": {
+      "question_restate": "In the sentence, 'Each page of the report ___ a different watermark,' the correct verb is___",
+      "principle": "The determiner 'each' makes the subject singular, so it takes a singular verb.",
+      "steps": [
+        "The main subject phrase begins with 'Each page'.",
+        "'Each' refers to one item at a time, so the idea is singular.",
+        "A singular present tense verb is therefore required.",
+        "'Shows' correctly agrees with 'Each page'."
+      ],
+      "final_answer": "B. shows",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subject_verb_agreement",
+      "each",
+      "singular_head"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q007",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Subject-verb agreement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The result of the experiments ___ encouraging,' the correct option is___",
+    "options": {
+      "A": "seem",
+      "B": "are",
+      "C": "seems",
+      "D": "have seemed"
+    },
+    "answer": "C",
+    "answer_text": "seems",
+    "explanation": {
+      "question_restate": "In the sentence, 'The result of the experiments ___ encouraging,' the correct option is___",
+      "principle": "Words like 'result', 'effect', and 'outcome' are singular when one result or one effect is being discussed.",
+      "steps": [
+        "The real subject is 'result'.",
+        "'Of the experiments' only tells us where the result came from.",
+        "Since 'result' is singular, the verb should also be singular.",
+        "Therefore, 'seems' is the correct answer."
+      ],
+      "final_answer": "C. seems",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subject_verb_agreement",
+      "result",
+      "scientific_style"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q008",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Subject-verb agreement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The message from the directors ___ clear enough,' the correct verb is___",
+    "options": {
+      "A": "were",
+      "B": "are",
+      "C": "is",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'The message from the directors ___ clear enough,' the correct verb is___",
+      "principle": "A singular noun remains singular even when it is followed by a plural modifier.",
+      "steps": [
+        "The true subject is 'message'.",
+        "The phrase 'from the directors' is only descriptive.",
+        "Because 'message' is singular, the sentence requires 'is'.",
+        "This tests whether you can identify the controlling noun correctly."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subject_verb_agreement",
+      "message",
+      "headword"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q009",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Subject-verb agreement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'A basket of oranges ___ on the kitchen floor,' the correct verb is___",
+    "options": {
+      "A": "lie",
+      "B": "were",
+      "C": "lies",
+      "D": "have lain"
+    },
+    "answer": "C",
+    "answer_text": "lies",
+    "explanation": {
+      "question_restate": "In the sentence, 'A basket of oranges ___ on the kitchen floor,' the correct verb is___",
+      "principle": "The verb agrees with 'basket', not with 'oranges'.",
+      "steps": [
+        "'Basket' is the subject and it is singular.",
+        "'Of oranges' only explains what the basket contains.",
+        "A singular present tense verb is required.",
+        "Hence, 'lies' is the correct answer."
+      ],
+      "final_answer": "C. lies",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subject_verb_agreement",
+      "basket",
+      "location"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q010",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Subject-verb agreement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The plan for the new hostels ___ admirable,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "have been",
+      "D": "were"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'The plan for the new hostels ___ admirable,' the correct verb is___",
+      "principle": "The verb must match the singular noun 'plan'.",
+      "steps": [
+        "The subject is 'plan'.",
+        "'For the new hostels' is a modifying phrase.",
+        "A singular subject takes a singular verb.",
+        "So the correct option is 'is'."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subject_verb_agreement",
+      "plan",
+      "singular_subject"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q011",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Subject-verb agreement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The shape of the windows ___ unusual,' the correct verb is___",
+    "options": {
+      "A": "were",
+      "B": "have been",
+      "C": "is",
+      "D": "are"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'The shape of the windows ___ unusual,' the correct verb is___",
+      "principle": "Ignore plural nouns inside a prepositional phrase and agree with the head noun.",
+      "steps": [
+        "The head noun is 'shape'.",
+        "'Of the windows' does not determine the verb.",
+        "Since 'shape' is singular, the correct form is 'is'.",
+        "This is a standard concord trap in objective tests."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subject_verb_agreement",
+      "shape",
+      "modifier_phrase"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q012",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Subject-verb agreement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The story behind those rumours ___ still unknown,' the correct verb is___",
+    "options": {
+      "A": "remain",
+      "B": "remains",
+      "C": "were",
+      "D": "have remained"
+    },
+    "answer": "B",
+    "answer_text": "remains",
+    "explanation": {
+      "question_restate": "In the sentence, 'The story behind those rumours ___ still unknown,' the correct verb is___",
+      "principle": "A singular subject in the simple present takes a singular verb form.",
+      "steps": [
+        "The real subject is 'story'.",
+        "'Behind those rumours' is descriptive and secondary.",
+        "Because the subject is singular, the correct verb is 'remains'.",
+        "You should always locate the subject before you look at the answer options."
+      ],
+      "final_answer": "B. remains",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "subject_verb_agreement",
+      "story",
+      "present_tense"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q013",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement with singular and plural subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'One of the players ___ already left the dressing room,' the correct option is___",
+    "options": {
+      "A": "have",
+      "B": "has",
+      "C": "were",
+      "D": "are"
+    },
+    "answer": "B",
+    "answer_text": "has",
+    "explanation": {
+      "question_restate": "In the sentence, 'One of the players ___ already left the dressing room,' the correct option is___",
+      "principle": "The expression 'one of' is singular because it refers to one person or thing out of a group.",
+      "steps": [
+        "The core subject is 'One', not 'players'.",
+        "Although 'players' is plural, it sits inside the phrase 'of the players'.",
+        "A singular subject requires the singular auxiliary 'has'.",
+        "Therefore the correct sentence is 'One of the players has already left the dressing room.'"
+      ],
+      "final_answer": "B. has",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "singular_plural",
+      "one_of",
+      "agreement"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q014",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement with singular and plural subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Many a student ___ anxious before the results are released,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Many a student ___ anxious before the results are released,' the correct verb is___",
+      "principle": "The expression 'many a' looks plural in meaning, but it takes a singular noun and a singular verb in formal English.",
+      "steps": [
+        "'Many a student' is treated as singular in concord.",
+        "That is why the verb must also be singular.",
+        "'Is' is the only singular present tense option here.",
+        "This construction appears often in grammar questions because it easily confuses learners."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "singular_plural",
+      "many_a",
+      "exam_trap"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q015",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement with singular and plural subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'More than one candidate ___ disqualified last year,' the correct verb is___",
+    "options": {
+      "A": "were",
+      "B": "was",
+      "C": "have been",
+      "D": "are"
+    },
+    "answer": "B",
+    "answer_text": "was",
+    "explanation": {
+      "question_restate": "In the sentence, 'More than one candidate ___ disqualified last year,' the correct verb is___",
+      "principle": "The expression 'more than one' normally takes a singular verb in standard examination English.",
+      "steps": [
+        "The phrase sounds as if it should be plural, but standard concord treats it as singular.",
+        "Since the event happened in the past, the correct singular past tense verb is 'was'.",
+        "This is a formula you should remember for objective grammar tests.",
+        "So the best answer is 'was'."
+      ],
+      "final_answer": "B. was",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "singular_plural",
+      "more_than_one",
+      "formal_usage"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q016",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement with singular and plural subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'None of the milk ___ wasted if it is stored properly,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'None of the milk ___ wasted if it is stored properly,' the correct verb is___",
+      "principle": "When 'none of' is used with an uncountable noun, a singular verb is appropriate.",
+      "steps": [
+        "The important noun here is 'milk', which is uncountable.",
+        "Uncountable nouns normally take singular verbs.",
+        "Therefore, 'is' correctly agrees with the subject idea.",
+        "Do not be misled by the form 'none'; look at the noun that follows it."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "singular_plural",
+      "none",
+      "uncountable_noun"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q017",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement with singular and plural subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Two-thirds of the land ___ suitable for farming,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "were",
+      "D": "have been"
+    },
+    "answer": "A",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Two-thirds of the land ___ suitable for farming,' the correct verb is___",
+      "principle": "Fractions agree with the noun that follows them; an uncountable noun usually takes a singular verb.",
+      "steps": [
+        "The fraction is 'Two-thirds', but the governing noun is 'land'.",
+        "'Land' here is treated as uncountable.",
+        "Because the noun after the fraction is singular/uncountable in meaning, the verb should be singular.",
+        "So the correct answer is 'is'."
+      ],
+      "final_answer": "A. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "singular_plural",
+      "fraction",
+      "uncountable"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q018",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement with singular and plural subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Two-thirds of the players ___ injured during the match,' the correct verb is___",
+    "options": {
+      "A": "was",
+      "B": "is",
+      "C": "were",
+      "D": "has been"
+    },
+    "answer": "C",
+    "answer_text": "were",
+    "explanation": {
+      "question_restate": "In the sentence, 'Two-thirds of the players ___ injured during the match,' the correct verb is___",
+      "principle": "Fractions agree with the noun that follows them; a plural noun requires a plural verb.",
+      "steps": [
+        "The noun after the fraction is 'players', which is plural.",
+        "Therefore the verb must also be plural.",
+        "Because the event took place in the past, the correct plural past tense form is 'were'.",
+        "This shows that you must inspect the noun after the fraction carefully."
+      ],
+      "final_answer": "C. were",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "singular_plural",
+      "fraction",
+      "plural_noun"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q019",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement with singular and plural subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'A number of workers ___ demanding safer conditions,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "was",
+      "C": "are",
+      "D": "has been"
+    },
+    "answer": "C",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'A number of workers ___ demanding safer conditions,' the correct verb is___",
+      "principle": "The expression 'a number of' means 'several' and usually takes a plural verb.",
+      "steps": [
+        "'A number of workers' refers to many workers.",
+        "That makes the idea plural in meaning.",
+        "A plural subject in the present therefore takes 'are'.",
+        "Students should not confuse this with 'the number of', which behaves differently."
+      ],
+      "final_answer": "C. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "singular_plural",
+      "a_number_of",
+      "plural_meaning"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q020",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement with singular and plural subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The number of applicants ___ increased sharply this year,' the correct verb is___",
+    "options": {
+      "A": "have",
+      "B": "has",
+      "C": "are",
+      "D": "were"
+    },
+    "answer": "B",
+    "answer_text": "has",
+    "explanation": {
+      "question_restate": "In the sentence, 'The number of applicants ___ increased sharply this year,' the correct verb is___",
+      "principle": "The expression 'the number of' refers to one figure or total, so it takes a singular verb.",
+      "steps": [
+        "The real subject is the whole expression 'The number'.",
+        "It refers to one total count.",
+        "A singular subject therefore takes 'has'.",
+        "This is often tested alongside 'a number of', so learners must distinguish them clearly."
+      ],
+      "final_answer": "B. has",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "singular_plural",
+      "the_number_of",
+      "singular_meaning"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q021",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement with singular and plural subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Every boy and girl in the class ___ expected to submit the assignment,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have been"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Every boy and girl in the class ___ expected to submit the assignment,' the correct verb is___",
+      "principle": "When 'every' qualifies paired nouns, the verb is usually singular because each member is considered individually.",
+      "steps": [
+        "The words 'boy and girl' are linked, but 'Every' makes us think of them one by one.",
+        "That singular distributive meaning requires a singular verb.",
+        "'Is' therefore fits the sentence correctly.",
+        "This is an important special rule in concord."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "singular_plural",
+      "every",
+      "paired_nouns"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q022",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement with singular and plural subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Neither answer ___ convincing to the examiner,' the correct verb is___",
+    "options": {
+      "A": "were",
+      "B": "are",
+      "C": "is",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Neither answer ___ convincing to the examiner,' the correct verb is___",
+      "principle": "Indefinite words like 'neither' and 'either' are typically singular in formal agreement.",
+      "steps": [
+        "'Neither answer' refers to not one and not the other.",
+        "In standard grammar, that subject is treated as singular.",
+        "The sentence therefore requires a singular verb.",
+        "Hence, 'is' is correct."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "singular_plural",
+      "neither",
+      "singular_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q023",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement with singular and plural subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Each of the finalists ___ given a certificate,' the correct option is___",
+    "options": {
+      "A": "were",
+      "B": "was",
+      "C": "have been",
+      "D": "are"
+    },
+    "answer": "B",
+    "answer_text": "was",
+    "explanation": {
+      "question_restate": "In the sentence, 'Each of the finalists ___ given a certificate,' the correct option is___",
+      "principle": "The pronoun 'each' is singular even when it is followed by a plural noun in a phrase.",
+      "steps": [
+        "The subject is 'Each', not 'finalists'.",
+        "Because 'each' is singular, the past tense singular verb 'was' is correct.",
+        "The phrase 'of the finalists' only identifies the group.",
+        "A frequent examination mistake is to agree with the plural noun instead of the singular determiner."
+      ],
+      "final_answer": "B. was",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "singular_plural",
+      "each_of",
+      "past_tense"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q024",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with collective nouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The committee ___ divided in its opinion on the proposal,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was being",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'The committee ___ divided in its opinion on the proposal,' the correct verb is___",
+      "principle": "A collective noun may take a plural verb when the members are seen as acting separately.",
+      "steps": [
+        "The noun 'committee' is collective.",
+        "The phrase 'divided in its opinion' shows lack of unity among members.",
+        "Because the members are considered individually, a plural verb is acceptable and preferred here.",
+        "Therefore, 'are' is the best answer."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "collective_noun",
+      "division",
+      "british_usage"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q025",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with collective nouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The jury ___ ready to announce its verdict,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'The jury ___ ready to announce its verdict,' the correct verb is___",
+      "principle": "A collective noun takes a singular verb when the group is seen as one unit acting together.",
+      "steps": [
+        "Here, the jury is acting as a single body.",
+        "The sentence focuses on one collective action: announcing a verdict.",
+        "That unified meaning requires a singular verb.",
+        "Thus, 'is' is correct."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "collective_noun",
+      "unity",
+      "jury"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q026",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with collective nouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The audience ___ clapping and shouting among themselves,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'The audience ___ clapping and shouting among themselves,' the correct verb is___",
+      "principle": "When a collective noun emphasizes the separate behaviour of members, a plural verb is suitable.",
+      "steps": [
+        "The words 'among themselves' point to individual members of the audience.",
+        "That shifts the meaning away from one unit to many persons.",
+        "A plural verb is therefore more appropriate.",
+        "So the correct answer is 'are'."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "collective_noun",
+      "members_acting_separately",
+      "audience"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q027",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with collective nouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The team ___ winning the tournament for the third time,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "have",
+      "D": "were"
+    },
+    "answer": "A",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'The team ___ winning the tournament for the third time,' the correct verb is___",
+      "principle": "A collective noun takes a singular verb when it acts as one body.",
+      "steps": [
+        "The team is presented as one side competing and winning.",
+        "No attention is given to separate members.",
+        "The unit idea calls for a singular verb.",
+        "Hence, 'is' is correct."
+      ],
+      "final_answer": "A. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "collective_noun",
+      "team",
+      "unity"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q028",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with collective nouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The family ___ having dinner when the lights went out,' the correct verb is___",
+    "options": {
+      "A": "was",
+      "B": "were",
+      "C": "have been",
+      "D": "are"
+    },
+    "answer": "A",
+    "answer_text": "was",
+    "explanation": {
+      "question_restate": "In the sentence, 'The family ___ having dinner when the lights went out,' the correct verb is___",
+      "principle": "Collective nouns often take singular verbs when the family or group is viewed as a single household unit.",
+      "steps": [
+        "The sentence presents one family engaged in one activity.",
+        "That is a unified action.",
+        "So the singular past continuous form 'was' is the correct choice.",
+        "Examination questions often require you to judge whether the group is acting as one or as individuals."
+      ],
+      "final_answer": "A. was",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "collective_noun",
+      "family",
+      "one_unit"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q029",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with collective nouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The staff ___ arguing over who should lock the office,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'The staff ___ arguing over who should lock the office,' the correct verb is___",
+      "principle": "A plural verb is appropriate when members of a collective noun are behaving differently or arguing individually.",
+      "steps": [
+        "The verb idea 'arguing over who should lock the office' suggests disagreement among members.",
+        "That means the staff is viewed as separate persons.",
+        "A plural verb is therefore correct.",
+        "So 'are' is the best option."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "collective_noun",
+      "staff",
+      "separate_members"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q030",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with collective nouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The class ___ unusually quiet this morning,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'The class ___ unusually quiet this morning,' the correct verb is___",
+      "principle": "A collective noun takes a singular verb when the class is seen as one body.",
+      "steps": [
+        "The statement describes the class as one group.",
+        "There is no suggestion of separate individuals doing different things.",
+        "A singular verb is therefore required.",
+        "Hence, 'is' is correct."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "collective_noun",
+      "class",
+      "unity"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q031",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with collective nouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The government ___ considering new measures to reduce inflation,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "have",
+      "D": "were"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'The government ___ considering new measures to reduce inflation,' the correct verb is___",
+      "principle": "In formal examination English, institutions like government can take singular verbs when treated as one authority.",
+      "steps": [
+        "The government is presented here as a single governing body.",
+        "The action 'considering new measures' is a unified institutional action.",
+        "So the singular verb 'is' is appropriate.",
+        "This is the safer formal choice in objective grammar tests."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "collective_noun",
+      "government",
+      "official_usage"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q032",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with collective nouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The police ___ investigating the robbery,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "was",
+      "C": "are",
+      "D": "has"
+    },
+    "answer": "C",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'The police ___ investigating the robbery,' the correct verb is___",
+      "principle": "The noun 'police' normally takes a plural verb in standard English.",
+      "steps": [
+        "Although it refers to a force, the word 'police' behaves grammatically like a plural noun.",
+        "Therefore, it takes a plural verb.",
+        "Among the options, 'are' is the correct plural form.",
+        "This is one special collective-like noun you must memorize."
+      ],
+      "final_answer": "C. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "collective_noun",
+      "police",
+      "plural_form"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q033",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with collective nouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The cattle ___ grazing near the river bank,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'The cattle ___ grazing near the river bank,' the correct verb is___",
+      "principle": "The noun 'cattle' is grammatically plural and therefore takes a plural verb.",
+      "steps": [
+        "'Cattle' does not normally take a singular verb in standard usage.",
+        "It refers to animals as a plural group.",
+        "So the correct verb is the plural form 'are'.",
+        "Like 'police', this is a special item often tested in concord questions."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "collective_noun",
+      "cattle",
+      "plural_only"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q034",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with collective nouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The mob ___ throwing stones at passing vehicles,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "has",
+      "D": "was"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'The mob ___ throwing stones at passing vehicles,' the correct verb is___",
+      "principle": "When emphasis falls on the separate actions of members, a collective noun can take a plural verb.",
+      "steps": [
+        "A mob consists of many people acting in a disorderly way.",
+        "The image of many persons throwing stones supports a plural reading.",
+        "Therefore, the plural verb is acceptable here.",
+        "So 'are' is the best option in this context."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "collective_noun",
+      "mob",
+      "separate_action"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q035",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with compound subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Bread and butter ___ his usual breakfast,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have been"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Bread and butter ___ his usual breakfast,' the correct verb is___",
+      "principle": "Two nouns joined by 'and' may take a singular verb when they refer to one item, one meal, or one fixed combination.",
+      "steps": [
+        "'Bread and butter' here is not two separate choices; it is one combined breakfast idea.",
+        "When two words express one unit, the verb is singular.",
+        "Therefore, the correct verb is 'is'.",
+        "This is a classic JAMB-style concord pattern."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_subject",
+      "single_idea",
+      "bread_and_butter"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q036",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with compound subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Rice and stew ___ served at the reception yesterday,' the correct verb is___",
+    "options": {
+      "A": "was",
+      "B": "were",
+      "C": "is",
+      "D": "has been"
+    },
+    "answer": "A",
+    "answer_text": "was",
+    "explanation": {
+      "question_restate": "In the sentence, 'Rice and stew ___ served at the reception yesterday,' the correct verb is___",
+      "principle": "A compound subject may take a singular verb if it names one meal, one item, or one joint concept.",
+      "steps": [
+        "'Rice and stew' is understood as one food combination.",
+        "That single idea requires a singular verb.",
+        "Because the sentence is in the past, the correct singular past verb is 'was'.",
+        "The answer is therefore 'was'."
+      ],
+      "final_answer": "A. was",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_subject",
+      "single_meal",
+      "past_tense"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q037",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with compound subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The principal and the vice-principal ___ arriving shortly,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "was",
+      "C": "are",
+      "D": "has"
+    },
+    "answer": "C",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'The principal and the vice-principal ___ arriving shortly,' the correct verb is___",
+      "principle": "When two different persons are clearly referred to, a compound subject joined by 'and' takes a plural verb.",
+      "steps": [
+        "The repetition of 'the' shows that two separate officials are meant.",
+        "Two subjects joined by 'and' normally require a plural verb.",
+        "Hence, the plural form 'are' is correct.",
+        "Notice how articles can help you decide whether one or two persons are intended."
+      ],
+      "final_answer": "C. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_subject",
+      "two_people",
+      "and"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q038",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with compound subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'My brother and friend ___ here to see you,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'My brother and friend ___ here to see you,' the correct verb is___",
+      "principle": "Where two nouns joined by 'and' refer to two persons, the verb is plural.",
+      "steps": [
+        "The sentence most naturally refers to two individuals: a brother and a friend.",
+        "Two persons joined by 'and' require a plural verb.",
+        "Therefore, 'are' is correct.",
+        "Context is important in deciding whether the pair represents one person or two."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_subject",
+      "two_roles",
+      "plural"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q039",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with compound subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The poet and dramatist ___ been honoured by the academy,' the correct option is___",
+    "options": {
+      "A": "have",
+      "B": "has",
+      "C": "are",
+      "D": "were"
+    },
+    "answer": "B",
+    "answer_text": "has",
+    "explanation": {
+      "question_restate": "In the sentence, 'The poet and dramatist ___ been honoured by the academy,' the correct option is___",
+      "principle": "When one article introduces two titles of the same person, the subject is singular.",
+      "steps": [
+        "The phrase 'The poet and dramatist' can refer to one person with two roles because only one article is used.",
+        "A singular subject therefore takes the singular auxiliary 'has'.",
+        "So the correct sentence is 'The poet and dramatist has been honoured by the academy.'",
+        "This pattern is often tested to see whether you can detect one-person versus two-person reference."
+      ],
+      "final_answer": "B. has",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_subject",
+      "one_person_two_titles",
+      "has_been"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q040",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with compound subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Patience and perseverance ___ necessary for success,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'Patience and perseverance ___ necessary for success,' the correct verb is___",
+      "principle": "Two separate qualities joined by 'and' usually form a plural subject.",
+      "steps": [
+        "'Patience' and 'perseverance' are two distinct virtues.",
+        "Because they are treated as separate qualities, the subject is plural.",
+        "A plural subject takes a plural verb.",
+        "Thus, 'are' is correct."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_subject",
+      "abstract_nouns",
+      "plural"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q041",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with compound subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Time and tide ___ for no one,' the correct verb is___",
+    "options": {
+      "A": "wait",
+      "B": "waits",
+      "C": "is waiting",
+      "D": "has waited"
+    },
+    "answer": "A",
+    "answer_text": "wait",
+    "explanation": {
+      "question_restate": "In the sentence, 'Time and tide ___ for no one,' the correct verb is___",
+      "principle": "Two nouns joined by 'and' generally take a plural verb unless they form one unit.",
+      "steps": [
+        "'Time' and 'tide' are two coordinated nouns.",
+        "The established saying also uses a plural verb.",
+        "Therefore, the correct form is 'wait'.",
+        "This item tests both concord and familiarity with standard usage."
+      ],
+      "final_answer": "A. wait",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_subject",
+      "fixed_expression",
+      "plural_subject"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q042",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with compound subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'A singer and dancer ___ performing tonight,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'A singer and dancer ___ performing tonight,' the correct verb is___",
+      "principle": "A single article before two nouns may indicate one person with two roles, requiring a singular verb.",
+      "steps": [
+        "'A singer and dancer' can refer to one performer who both sings and dances.",
+        "That one-person meaning takes a singular verb.",
+        "Hence, 'is' is correct.",
+        "If the sentence had said 'a singer and a dancer', the answer would likely be plural."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_subject",
+      "one_person_two_roles",
+      "singular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q043",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with compound subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The secretary and treasurer ___ absent from the meeting,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "were",
+      "D": "have"
+    },
+    "answer": "A",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'The secretary and treasurer ___ absent from the meeting,' the correct verb is___",
+      "principle": "One article before two titles often signals one person occupying both offices.",
+      "steps": [
+        "The expression can mean one person who serves as both secretary and treasurer.",
+        "That makes the subject singular.",
+        "The correct singular verb is therefore 'is'.",
+        "This is a familiar pattern in objective concord questions."
+      ],
+      "final_answer": "A. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_subject",
+      "same_person",
+      "office_title"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q044",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with compound subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Thunder and lightning ___ common at the peak of the rainy season,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'Thunder and lightning ___ common at the peak of the rainy season,' the correct verb is___",
+      "principle": "Two separate natural phenomena joined by 'and' normally take a plural verb.",
+      "steps": [
+        "'Thunder' and 'lightning' are distinct though related phenomena.",
+        "Because the sentence presents them as separate coordinated nouns, the subject is plural.",
+        "A plural subject takes 'are'.",
+        "So the correct option is 'are'."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_subject",
+      "two_phenomena",
+      "plural"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q045",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with compound subjects",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The manager and the accountant ___ to inspect the files,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'The manager and the accountant ___ to inspect the files,' the correct verb is___",
+      "principle": "Two subjects joined by 'and' take a plural verb when they clearly refer to different persons.",
+      "steps": [
+        "The article appears before both nouns, so two people are meant.",
+        "Two people form a plural subject.",
+        "Therefore, the plural verb 'are' is correct.",
+        "This helps you see how articles can affect concord."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "compound_subject",
+      "two_people",
+      "articles"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q046",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with indefinite pronouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Everybody in the room ___ eager to hear the news,' the correct verb is___",
+    "options": {
+      "A": "were",
+      "B": "are",
+      "C": "is",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Everybody in the room ___ eager to hear the news,' the correct verb is___",
+      "principle": "Indefinite pronouns such as everybody, everyone, somebody, and nobody are singular in formal concord.",
+      "steps": [
+        "'Everybody' refers to all persons, but grammatically it is singular.",
+        "So it takes a singular verb.",
+        "The correct present tense singular form is 'is'.",
+        "This is one of the most important concord rules to master for examinations."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "indefinite_pronoun",
+      "everybody",
+      "singular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q047",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with indefinite pronouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Someone among the passengers ___ left a wallet on the seat,' the correct option is___",
+    "options": {
+      "A": "have",
+      "B": "has",
+      "C": "are",
+      "D": "were"
+    },
+    "answer": "B",
+    "answer_text": "has",
+    "explanation": {
+      "question_restate": "In the sentence, 'Someone among the passengers ___ left a wallet on the seat,' the correct option is___",
+      "principle": "Indefinite pronouns ending in -one or -body are treated as singular in standard English.",
+      "steps": [
+        "The subject is 'Someone'.",
+        "Although 'passengers' is plural, it appears only in a modifying phrase.",
+        "A singular subject therefore requires 'has'.",
+        "The correct sentence is 'Someone among the passengers has left a wallet on the seat.'"
+      ],
+      "final_answer": "B. has",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "indefinite_pronoun",
+      "someone",
+      "singular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q048",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with indefinite pronouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Neither of the explanations ___ satisfactory,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "have been",
+      "D": "were"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Neither of the explanations ___ satisfactory,' the correct verb is___",
+      "principle": "The pronoun 'neither' is usually singular in formal agreement.",
+      "steps": [
+        "The subject is 'Neither'.",
+        "It means not one and not the other of the explanations.",
+        "That singular idea takes the singular verb 'is'.",
+        "Do not let the plural noun after 'of' confuse you."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "indefinite_pronoun",
+      "neither_of",
+      "singular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q049",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with indefinite pronouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Each of the contestants ___ a registration number,' the correct verb is___",
+    "options": {
+      "A": "have",
+      "B": "has",
+      "C": "are having",
+      "D": "were having"
+    },
+    "answer": "B",
+    "answer_text": "has",
+    "explanation": {
+      "question_restate": "In the sentence, 'Each of the contestants ___ a registration number,' the correct verb is___",
+      "principle": "The pronoun 'each' considers members one by one, so it takes a singular verb.",
+      "steps": [
+        "'Each' is singular in grammar even when many people are involved.",
+        "The plural noun 'contestants' is inside a prepositional phrase.",
+        "Therefore, the singular verb 'has' is correct.",
+        "This is a common area where many candidates make mistakes."
+      ],
+      "final_answer": "B. has",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "indefinite_pronoun",
+      "each",
+      "singular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q050",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with indefinite pronouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Nobody in the offices ___ willing to accept responsibility,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Nobody in the offices ___ willing to accept responsibility,' the correct verb is___",
+      "principle": "Indefinite pronouns like nobody and anybody are singular and take singular verbs.",
+      "steps": [
+        "The actual subject is 'Nobody'.",
+        "'In the offices' is only an added phrase.",
+        "Since 'Nobody' is singular, the correct verb is 'is'.",
+        "Objective tests often place plural nouns after the subject to distract careless readers."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "indefinite_pronoun",
+      "nobody",
+      "singular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q051",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with indefinite pronouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Anyone who breaks the rule ___ punished,' the correct option is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have been"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Anyone who breaks the rule ___ punished,' the correct option is___",
+      "principle": "The indefinite pronoun 'anyone' is singular and requires a singular verb.",
+      "steps": [
+        "'Anyone' refers to any single person.",
+        "For that reason, it is singular in formal grammar.",
+        "So the correct verb is 'is'.",
+        "The sentence expresses a general rule using singular concord."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "indefinite_pronoun",
+      "anyone",
+      "singular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q052",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with indefinite pronouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Something in these boxes ___ making a strange sound,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Something in these boxes ___ making a strange sound,' the correct verb is___",
+      "principle": "Indefinite pronouns such as something, nothing, and anything are singular.",
+      "steps": [
+        "The subject is 'Something'.",
+        "The phrase 'in these boxes' does not change the number of the subject.",
+        "Because 'Something' is singular, the appropriate verb is 'is'.",
+        "Always begin by locating the true subject word."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "indefinite_pronoun",
+      "something",
+      "singular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q053",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with indefinite pronouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Few of the proposals ___ practical enough to adopt,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "was",
+      "C": "are",
+      "D": "has"
+    },
+    "answer": "C",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'Few of the proposals ___ practical enough to adopt,' the correct verb is___",
+      "principle": "Unlike everybody or someone, pronouns such as few, many, and several are plural in meaning and in agreement.",
+      "steps": [
+        "'Few' refers to more than one proposal.",
+        "That makes it plural.",
+        "The sentence therefore needs a plural verb.",
+        "Hence, 'are' is correct."
+      ],
+      "final_answer": "C. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "indefinite_pronoun",
+      "few",
+      "plural"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q054",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with indefinite pronouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Many of the pictures ___ damaged by rainwater,' the correct verb is___",
+    "options": {
+      "A": "was",
+      "B": "is",
+      "C": "were",
+      "D": "has"
+    },
+    "answer": "C",
+    "answer_text": "were",
+    "explanation": {
+      "question_restate": "In the sentence, 'Many of the pictures ___ damaged by rainwater,' the correct verb is___",
+      "principle": "Plural indefinite words such as many and several take plural verbs.",
+      "steps": [
+        "The key subject word is 'Many'.",
+        "It refers to a plural number of pictures.",
+        "Because the event happened in the past, the correct plural past tense form is 'were'.",
+        "So the answer is 'were'."
+      ],
+      "final_answer": "C. were",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "indefinite_pronoun",
+      "many",
+      "plural"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q055",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with indefinite pronouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'None of the answers ___ correct,' the best option in formal concord is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'None of the answers ___ correct,' the best option in formal concord is___",
+      "principle": "When 'none of' is followed by a plural count noun, a plural verb is often preferred in standard usage.",
+      "steps": [
+        "The noun after 'none of' is 'answers', which is plural.",
+        "In this sentence, the meaning is that not any of the answers are correct.",
+        "That plural idea supports the plural verb 'are'.",
+        "Context and the noun after 'of' are both important in answering this kind of question."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "indefinite_pronoun",
+      "none_of_plural",
+      "plural_preferred"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q056",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Concord with indefinite pronouns",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Several of the guests ___ already in the hall,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "was",
+      "C": "are",
+      "D": "has"
+    },
+    "answer": "C",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'Several of the guests ___ already in the hall,' the correct verb is___",
+      "principle": "The pronoun 'several' is plural and therefore takes a plural verb.",
+      "steps": [
+        "'Several' means more than two.",
+        "That makes the subject plural.",
+        "A plural subject in the present requires 'are'.",
+        "This contrasts with singular indefinite pronouns like 'everybody' or 'someone'."
+      ],
+      "final_answer": "C. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "indefinite_pronoun",
+      "several",
+      "plural"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q057",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Proximity concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Either the teachers or the principal ___ to blame for the delay,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Either the teachers or the principal ___ to blame for the delay,' the correct verb is___",
+      "principle": "In proximity concord, the verb agrees with the noun nearest to it in structures like 'either...or' and 'neither...nor'.",
+      "steps": [
+        "The two parts of the subject are 'the teachers' and 'the principal'.",
+        "The noun closest to the verb is 'principal', which is singular.",
+        "Therefore the verb should be singular.",
+        "So the correct answer is 'is'."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "proximity_concord",
+      "either_or",
+      "nearest_subject"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q058",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Proximity concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Either the principal or the teachers ___ to blame for the delay,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'Either the principal or the teachers ___ to blame for the delay,' the correct verb is___",
+      "principle": "With proximity concord, changing the order of the subject parts can change the verb form.",
+      "steps": [
+        "Here the nearest noun to the verb is 'teachers'.",
+        "'Teachers' is plural.",
+        "So the verb must be plural.",
+        "That is why 'are' is correct in this reversed structure."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "proximity_concord",
+      "either_or",
+      "reversal"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q059",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Proximity concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Neither the students nor the lecturer ___ aware of the change in timetable,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Neither the students nor the lecturer ___ aware of the change in timetable,' the correct verb is___",
+      "principle": "In 'neither...nor' constructions, the nearer subject often controls the verb.",
+      "steps": [
+        "The subjects are 'the students' and 'the lecturer'.",
+        "The noun nearest to the verb is 'lecturer', which is singular.",
+        "Therefore, a singular verb is needed.",
+        "Hence, 'is' is correct."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "proximity_concord",
+      "neither_nor",
+      "nearest_singular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q060",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Proximity concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Neither the lecturer nor the students ___ aware of the change in timetable,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "has",
+      "C": "are",
+      "D": "was"
+    },
+    "answer": "C",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'Neither the lecturer nor the students ___ aware of the change in timetable,' the correct verb is___",
+      "principle": "Proximity concord makes the verb agree with the closer part of the compound subject.",
+      "steps": [
+        "The noun nearest to the verb is now 'students'.",
+        "Since 'students' is plural, the verb should also be plural.",
+        "That makes 'are' the correct answer.",
+        "Notice how reversing the subject order changes the verb."
+      ],
+      "final_answer": "C. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "proximity_concord",
+      "neither_nor",
+      "nearest_plural"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q061",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Proximity concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Not only the chairman but also his aides ___ present at the briefing,' the correct verb is___",
+    "options": {
+      "A": "was",
+      "B": "is",
+      "C": "are",
+      "D": "has"
+    },
+    "answer": "C",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'Not only the chairman but also his aides ___ present at the briefing,' the correct verb is___",
+      "principle": "Structures like 'not only...but also' may follow proximity agreement in formal usage.",
+      "steps": [
+        "The nearer subject to the verb is 'aides'.",
+        "'Aides' is plural.",
+        "Therefore the verb should be plural.",
+        "So the correct answer is 'are'."
+      ],
+      "final_answer": "C. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "proximity_concord",
+      "not_only_but_also",
+      "nearest_plural"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q062",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Proximity concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Not only the aides but also the chairman ___ present at the briefing,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have been"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Not only the aides but also the chairman ___ present at the briefing,' the correct verb is___",
+      "principle": "Where proximity agreement is used, the subject nearest the verb determines the verb form.",
+      "steps": [
+        "The closest noun to the verb is 'chairman'.",
+        "That noun is singular.",
+        "So the correct verb must be singular.",
+        "Hence, 'is' is correct."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "proximity_concord",
+      "not_only_but_also",
+      "nearest_singular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q063",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Proximity concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Either the bus drivers or the conductor ___ forgotten the schedule,' the correct option is___",
+    "options": {
+      "A": "have",
+      "B": "has",
+      "C": "are",
+      "D": "were"
+    },
+    "answer": "B",
+    "answer_text": "has",
+    "explanation": {
+      "question_restate": "In the sentence, 'Either the bus drivers or the conductor ___ forgotten the schedule,' the correct option is___",
+      "principle": "In proximity structures, auxiliaries also agree with the nearer subject.",
+      "steps": [
+        "The closer subject is 'conductor'.",
+        "'Conductor' is singular.",
+        "Therefore the singular auxiliary 'has' is required.",
+        "This shows that the rule applies not only to simple verbs but also to helping verbs."
+      ],
+      "final_answer": "B. has",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "proximity_concord",
+      "either_or",
+      "auxiliary"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q064",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Proximity concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Either the conductor or the bus drivers ___ forgotten the schedule,' the correct option is___",
+    "options": {
+      "A": "has",
+      "B": "is",
+      "C": "have",
+      "D": "was"
+    },
+    "answer": "C",
+    "answer_text": "have",
+    "explanation": {
+      "question_restate": "In the sentence, 'Either the conductor or the bus drivers ___ forgotten the schedule,' the correct option is___",
+      "principle": "The nearer subject controls the verb in proximity concord structures.",
+      "steps": [
+        "The closest noun to the verb is 'bus drivers'.",
+        "That noun is plural.",
+        "So the sentence needs the plural auxiliary 'have'.",
+        "Changing the order of the subject changes the answer."
+      ],
+      "final_answer": "C. have",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "proximity_concord",
+      "either_or",
+      "plural_nearest"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q065",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Proximity concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Neither the manager nor his assistants ___ attending the seminar,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'Neither the manager nor his assistants ___ attending the seminar,' the correct verb is___",
+      "principle": "In coordinated negative structures, the verb usually agrees with the nearer noun.",
+      "steps": [
+        "The noun closest to the verb is 'assistants'.",
+        "Because it is plural, the plural verb 'are' is correct.",
+        "This is an example of proximity concord in a continuous construction.",
+        "Always scan the noun nearest the verb before answering."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "proximity_concord",
+      "neither_nor",
+      "continuous"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q066",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Proximity concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Neither his assistants nor the manager ___ attending the seminar,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "have",
+      "D": "were"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Neither his assistants nor the manager ___ attending the seminar,' the correct verb is___",
+      "principle": "The order of the coordinated subjects affects the verb when proximity concord operates.",
+      "steps": [
+        "The nearer noun is 'manager'.",
+        "'Manager' is singular.",
+        "Therefore the verb must be singular.",
+        "So 'is' is the best answer."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "proximity_concord",
+      "neither_nor",
+      "singular_nearest"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q067",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Proximity concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Either my sisters or my mother ___ handling the shop today,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Either my sisters or my mother ___ handling the shop today,' the correct verb is___",
+      "principle": "The verb agrees with the nearer subject in proximity constructions.",
+      "steps": [
+        "The subject nearest the verb is 'mother'.",
+        "That noun is singular.",
+        "Hence, the singular verb 'is' should be used.",
+        "This is a straightforward application of the rule."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "proximity_concord",
+      "either_or",
+      "family_example"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q068",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Notional concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Ten kilometres ___ a long distance to walk in the rain,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Ten kilometres ___ a long distance to walk in the rain,' the correct verb is___",
+      "principle": "Notional concord allows a singular verb when a plural-looking expression represents one amount, one unit, or one whole idea.",
+      "steps": [
+        "'Ten kilometres' is plural in form, but here it refers to one total distance.",
+        "Because it is treated as one amount, the singular verb is appropriate.",
+        "Therefore, 'is' is correct.",
+        "Measurements, sums of money, and periods of time often follow this pattern."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "notional_concord",
+      "measurement",
+      "single_amount"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q069",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Notional concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Five years ___ a short time in research work,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Five years ___ a short time in research work,' the correct verb is___",
+      "principle": "A period of time may take a singular verb when it is viewed as one whole duration.",
+      "steps": [
+        "'Five years' here means one period, not five separate items.",
+        "So the sentence uses singular agreement by meaning.",
+        "That makes 'is' the correct option.",
+        "This is called notional concord because meaning guides the verb form."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "notional_concord",
+      "time_expression",
+      "single_period"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q070",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Notional concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Fifty thousand naira ___ not enough for the project,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Fifty thousand naira ___ not enough for the project,' the correct verb is___",
+      "principle": "Amounts of money are often treated as singular when regarded as one sum.",
+      "steps": [
+        "The amount mentioned is one total sum of money.",
+        "Even though the expression contains a plural-looking number, the meaning is singular as one amount.",
+        "Therefore, a singular verb is appropriate.",
+        "So 'is' is correct."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "notional_concord",
+      "amount_of_money",
+      "singular_meaning"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q071",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Notional concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The team ___ wearing their new jerseys,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'The team ___ wearing their new jerseys,' the correct verb is___",
+      "principle": "Notional concord uses plural agreement when a singular collective noun refers to members acting individually.",
+      "steps": [
+        "The word 'their' suggests attention to individual members.",
+        "That makes the team seem like separate players rather than one unit.",
+        "A plural verb is therefore suitable.",
+        "Hence, 'are' is the best answer."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "notional_concord",
+      "team",
+      "members_emphasized"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q072",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Notional concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The couple ___ planning their holidays separately this year,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'The couple ___ planning their holidays separately this year,' the correct verb is___",
+      "principle": "A collective subject may take a plural verb when the individuals within it are emphasized.",
+      "steps": [
+        "The word 'separately' shows that the two people are being considered as individuals.",
+        "That supports plural agreement by meaning.",
+        "Therefore, 'are' is appropriate.",
+        "This is another example of notional rather than purely grammatical concord."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "notional_concord",
+      "couple",
+      "individual_members"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q073",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Notional concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Three weeks ___ enough to complete the repairs,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Three weeks ___ enough to complete the repairs,' the correct verb is___",
+      "principle": "A time expression may take a singular verb when it represents one complete period.",
+      "steps": [
+        "'Three weeks' is seen here as one block of time available for work.",
+        "That one-period meaning takes a singular verb.",
+        "Hence, 'is' is correct.",
+        "Many candidates wrongly choose a plural verb just because the subject looks plural."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "notional_concord",
+      "time_amount",
+      "single_block"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q074",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Notional concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Twenty litres of petrol ___ too little for the journey,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Twenty litres of petrol ___ too little for the journey,' the correct verb is___",
+      "principle": "Quantities and measures may take singular verbs when treated as one quantity.",
+      "steps": [
+        "The phrase refers to one total quantity of petrol.",
+        "The sentence is not counting separate litres one by one.",
+        "So singular agreement is preferred.",
+        "Therefore, the correct answer is 'is'."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "notional_concord",
+      "measurement",
+      "quantity"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q075",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Notional concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The crowd ___ rushing in different directions after the explosion,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'The crowd ___ rushing in different directions after the explosion,' the correct verb is___",
+      "principle": "When a collective noun suggests many individuals acting separately, plural agreement is possible by meaning.",
+      "steps": [
+        "The expression 'in different directions' highlights separate actions by members.",
+        "That supports a plural reading of the collective noun.",
+        "Hence, the plural verb 'are' is appropriate.",
+        "This is a good example of how meaning can overrule surface form."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "notional_concord",
+      "crowd",
+      "separate_movement"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q076",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Notional concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Twenty dollars ___ all I have left,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Twenty dollars ___ all I have left,' the correct verb is___",
+      "principle": "A money expression can take a singular verb when the amount is viewed as one sum.",
+      "steps": [
+        "The speaker means one total sum left in hand.",
+        "That one-sum meaning calls for singular agreement.",
+        "So 'is' is correct.",
+        "Questions like this test whether you understand meaning-based concord."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "notional_concord",
+      "money",
+      "single_sum"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q077",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Notional concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'The clergy ___ divided among themselves on the issue,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'The clergy ___ divided among themselves on the issue,' the correct verb is___",
+      "principle": "Some collective or class nouns may take plural verbs when the people in the class are emphasized.",
+      "steps": [
+        "'Clergy' refers to a group of persons.",
+        "The phrase 'among themselves' clearly points to separate members.",
+        "That makes plural agreement appropriate.",
+        "Therefore, 'are' is correct."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "notional_concord",
+      "clergy",
+      "plural_meaning"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q078",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Notional concord",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Four hundred kilometres ___ too far for a daily commute,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Four hundred kilometres ___ too far for a daily commute,' the correct verb is___",
+      "principle": "A distance can take a singular verb when it is seen as one measurable extent.",
+      "steps": [
+        "The subject looks plural because of the number, but the meaning is one total distance.",
+        "When treated as a single measure, it takes a singular verb.",
+        "Therefore, 'is' is the correct answer.",
+        "This is a typical exam trap built on notional concord."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "notional_concord",
+      "distance",
+      "single_measure"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q079",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement after expressions of quantity",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'A great deal of money ___ spent on the project last year,' the correct verb is___",
+    "options": {
+      "A": "were",
+      "B": "was",
+      "C": "are",
+      "D": "have been"
+    },
+    "answer": "B",
+    "answer_text": "was",
+    "explanation": {
+      "question_restate": "In the sentence, 'A great deal of money ___ spent on the project last year,' the correct verb is___",
+      "principle": "Expressions of quantity agree with the noun that follows them; uncountable nouns usually take singular verbs.",
+      "steps": [
+        "The key noun here is 'money', which is uncountable.",
+        "An uncountable noun normally takes a singular verb.",
+        "Since the sentence is in the past, 'was' is the correct singular past form.",
+        "Therefore, the answer is 'was'."
+      ],
+      "final_answer": "B. was",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "quantity_expression",
+      "money",
+      "uncountable"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q080",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement after expressions of quantity",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'A lot of books ___ donated to the school library,' the correct verb is___",
+    "options": {
+      "A": "was",
+      "B": "is",
+      "C": "were",
+      "D": "has"
+    },
+    "answer": "C",
+    "answer_text": "were",
+    "explanation": {
+      "question_restate": "In the sentence, 'A lot of books ___ donated to the school library,' the correct verb is___",
+      "principle": "Expressions like 'a lot of' take singular or plural verbs depending on the noun that follows.",
+      "steps": [
+        "The noun after the quantity phrase is 'books', which is plural.",
+        "Therefore, the verb must also be plural.",
+        "Because the action happened in the past, 'were' is correct.",
+        "Always check the noun after the quantity expression."
+      ],
+      "final_answer": "C. were",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "quantity_expression",
+      "a_lot_of",
+      "plural_noun"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q081",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement after expressions of quantity",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Much of the information ___ already outdated,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have been"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Much of the information ___ already outdated,' the correct verb is___",
+      "principle": "Expressions with uncountable nouns take singular verbs.",
+      "steps": [
+        "The noun following the quantity word is 'information', which is uncountable.",
+        "Uncountable nouns require singular verbs.",
+        "Hence, 'is' is the correct answer.",
+        "This contrasts with expressions followed by plural count nouns."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "quantity_expression",
+      "much_of",
+      "uncountable"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q082",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement after expressions of quantity",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'A large proportion of the students ___ from rural communities,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "was",
+      "C": "are",
+      "D": "has"
+    },
+    "answer": "C",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'A large proportion of the students ___ from rural communities,' the correct verb is___",
+      "principle": "Quantity expressions often agree with the following noun rather than with the opening word alone.",
+      "steps": [
+        "The noun after the expression is 'students'.",
+        "Since 'students' is plural, the verb must be plural.",
+        "Therefore, 'are' is correct.",
+        "This rule also applies to expressions like 'a majority of' and 'a percentage of'."
+      ],
+      "final_answer": "C. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "quantity_expression",
+      "proportion_of",
+      "plural_noun"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q083",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement after expressions of quantity",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'A large proportion of the land ___ uncultivated,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'A large proportion of the land ___ uncultivated,' the correct verb is___",
+      "principle": "Where the noun after a quantity expression is uncountable, a singular verb is used.",
+      "steps": [
+        "The noun after the expression is 'land', treated here as uncountable.",
+        "That requires singular agreement.",
+        "Hence, 'is' is correct.",
+        "The same opening phrase can take different verbs depending on the noun that follows."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "quantity_expression",
+      "proportion_of",
+      "uncountable"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q084",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement after expressions of quantity",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Most of the water ___ contaminated after the flood,' the correct verb is___",
+    "options": {
+      "A": "were",
+      "B": "was",
+      "C": "are",
+      "D": "have been"
+    },
+    "answer": "B",
+    "answer_text": "was",
+    "explanation": {
+      "question_restate": "In the sentence, 'Most of the water ___ contaminated after the flood,' the correct verb is___",
+      "principle": "The expression 'most of' agrees with the noun that follows it.",
+      "steps": [
+        "The noun is 'water', which is uncountable.",
+        "An uncountable noun takes a singular verb.",
+        "Because the statement refers to the past, 'was' is correct.",
+        "This is a straightforward application of quantity concord."
+      ],
+      "final_answer": "B. was",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "quantity_expression",
+      "most_of",
+      "uncountable_past"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q085",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement after expressions of quantity",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Most of the documents ___ missing from the cabinet,' the correct verb is___",
+    "options": {
+      "A": "was",
+      "B": "is",
+      "C": "are",
+      "D": "has"
+    },
+    "answer": "C",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'Most of the documents ___ missing from the cabinet,' the correct verb is___",
+      "principle": "When the noun after the quantity phrase is plural, the verb should be plural.",
+      "steps": [
+        "The noun here is 'documents'.",
+        "Since it is plural, the correct verb must also be plural.",
+        "Therefore, 'are' is the best answer.",
+        "This shows how the same quantity phrase behaves differently with different nouns."
+      ],
+      "final_answer": "C. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "quantity_expression",
+      "most_of",
+      "plural_count"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q086",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement after expressions of quantity",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Plenty of time ___ available if we leave now,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Plenty of time ___ available if we leave now,' the correct verb is___",
+      "principle": "The noun 'time' is uncountable, so quantity expressions before it take singular verbs.",
+      "steps": [
+        "The controlling noun is 'time'.",
+        "Time in this sentence is an uncountable concept.",
+        "Therefore, singular agreement is needed.",
+        "So the correct answer is 'is'."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "quantity_expression",
+      "plenty_of",
+      "uncountable_time"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q087",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement after expressions of quantity",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Plenty of reasons ___ given for the decision,' the correct verb is___",
+    "options": {
+      "A": "was",
+      "B": "is",
+      "C": "were",
+      "D": "has"
+    },
+    "answer": "C",
+    "answer_text": "were",
+    "explanation": {
+      "question_restate": "In the sentence, 'Plenty of reasons ___ given for the decision,' the correct verb is___",
+      "principle": "Where a quantity expression is followed by a plural count noun, a plural verb is used.",
+      "steps": [
+        "The noun after the expression is 'reasons', which is plural.",
+        "That calls for a plural verb.",
+        "Since the action is in the past, 'were' is correct.",
+        "This tests whether you can follow the noun after the quantity phrase."
+      ],
+      "final_answer": "C. were",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "quantity_expression",
+      "plenty_of",
+      "plural_reasons"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q088",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement after expressions of quantity",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Half of the cake ___ left on the tray,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Half of the cake ___ left on the tray,' the correct verb is___",
+      "principle": "Fractions and portions agree with the noun that follows them.",
+      "steps": [
+        "The noun after 'Half of' is 'cake', which is singular in this context.",
+        "So the verb must also be singular.",
+        "The correct present tense form is 'is'.",
+        "This is a common quantity-concord pattern."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "quantity_expression",
+      "half_of",
+      "singular_item"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q089",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement after expressions of quantity",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Half of the students ___ absent during the inspection,' the correct verb is___",
+    "options": {
+      "A": "was",
+      "B": "is",
+      "C": "were",
+      "D": "has"
+    },
+    "answer": "C",
+    "answer_text": "were",
+    "explanation": {
+      "question_restate": "In the sentence, 'Half of the students ___ absent during the inspection,' the correct verb is___",
+      "principle": "When a fraction refers to plural count nouns, the verb should be plural.",
+      "steps": [
+        "The noun after the fraction is 'students'.",
+        "Because that noun is plural, the verb must be plural too.",
+        "The past tense plural form is 'were'.",
+        "Therefore, the correct answer is 'were'."
+      ],
+      "final_answer": "C. were",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "quantity_expression",
+      "half_of",
+      "plural_students"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q090",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement in either...or / neither...nor structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Either Musa or Bisi ___ likely to win the prize,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have been"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Either Musa or Bisi ___ likely to win the prize,' the correct verb is___",
+      "principle": "When singular subjects are joined by 'either...or', the verb is singular.",
+      "steps": [
+        "Both 'Musa' and 'Bisi' are singular nouns.",
+        "A structure joining two singular subjects in this way takes a singular verb.",
+        "Therefore, 'is' is correct.",
+        "This remains true even without needing the proximity rule because both options are singular."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "either_neither",
+      "either_or",
+      "two_singulars"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q091",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement in either...or / neither...nor structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Neither Tola nor Amaka ___ invited to the ceremony,' the correct verb is___",
+    "options": {
+      "A": "were",
+      "B": "are",
+      "C": "was",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "was",
+    "explanation": {
+      "question_restate": "In the sentence, 'Neither Tola nor Amaka ___ invited to the ceremony,' the correct verb is___",
+      "principle": "When two singular nouns are joined by 'neither...nor', a singular verb is used.",
+      "steps": [
+        "Both coordinated subjects are singular proper nouns.",
+        "Therefore, the verb should also be singular.",
+        "Because the action is in the past, 'was' is correct.",
+        "This is a simple negative coordination pattern in concord."
+      ],
+      "final_answer": "C. was",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "either_neither",
+      "neither_nor",
+      "two_singulars"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q092",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement in either...or / neither...nor structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Either the boys or the girl ___ responsible for the broken glass,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "were",
+      "C": "is",
+      "D": "have been"
+    },
+    "answer": "C",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Either the boys or the girl ___ responsible for the broken glass,' the correct verb is___",
+      "principle": "In mixed-number either...or structures, the nearer subject usually determines the verb.",
+      "steps": [
+        "The nearer subject is 'girl'.",
+        "That noun is singular.",
+        "So the verb must be singular.",
+        "Hence, 'is' is correct."
+      ],
+      "final_answer": "C. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "either_neither",
+      "mixed_number",
+      "nearest_singular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q093",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement in either...or / neither...nor structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Either the girl or the boys ___ responsible for the broken glass,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'Either the girl or the boys ___ responsible for the broken glass,' the correct verb is___",
+      "principle": "When the nearer noun is plural in an either...or structure, the verb should be plural.",
+      "steps": [
+        "The noun nearest the verb is 'boys'.",
+        "That noun is plural.",
+        "Therefore, the correct verb is plural.",
+        "So 'are' is right."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "either_neither",
+      "mixed_number",
+      "nearest_plural"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q094",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement in either...or / neither...nor structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Neither the doctor nor the nurses ___ available at that moment,' the correct verb is___",
+    "options": {
+      "A": "was",
+      "B": "is",
+      "C": "are",
+      "D": "has"
+    },
+    "answer": "C",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'Neither the doctor nor the nurses ___ available at that moment,' the correct verb is___",
+      "principle": "In mixed structures, the nearer noun often controls the verb by proximity.",
+      "steps": [
+        "The subject closest to the verb is 'nurses'.",
+        "'Nurses' is plural.",
+        "So a plural verb is required.",
+        "Therefore, 'are' is the correct answer."
+      ],
+      "final_answer": "C. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "either_neither",
+      "mixed_number",
+      "nearest_plural"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q095",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement in either...or / neither...nor structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Neither the nurses nor the doctor ___ available at that moment,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Neither the nurses nor the doctor ___ available at that moment,' the correct verb is___",
+      "principle": "The order of the coordinated nouns matters in either...or and neither...nor constructions.",
+      "steps": [
+        "The nearer noun here is 'doctor'.",
+        "Because it is singular, the verb should also be singular.",
+        "That makes 'is' the correct answer.",
+        "Students should notice how reversing the order changes the answer."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "either_neither",
+      "mixed_number",
+      "nearest_singular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q096",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement in either...or / neither...nor structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Either the manager or his assistants ___ to address the press,' the correct verb is___",
+    "options": {
+      "A": "was",
+      "B": "is",
+      "C": "are",
+      "D": "has"
+    },
+    "answer": "C",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'Either the manager or his assistants ___ to address the press,' the correct verb is___",
+      "principle": "The verb in either...or structures frequently follows the nearer noun.",
+      "steps": [
+        "The noun nearest the verb is 'assistants'.",
+        "That noun is plural.",
+        "Hence, the verb should also be plural.",
+        "So the correct option is 'are'."
+      ],
+      "final_answer": "C. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "either_neither",
+      "either_or",
+      "plural_nearest"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q097",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement in either...or / neither...nor structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Neither the witnesses nor the suspect ___ telling the whole truth,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Neither the witnesses nor the suspect ___ telling the whole truth,' the correct verb is___",
+      "principle": "The nearer noun controls the verb in mixed-number neither...nor constructions.",
+      "steps": [
+        "The nearest noun is 'suspect'.",
+        "It is singular.",
+        "Therefore, the sentence requires a singular verb.",
+        "Hence, 'is' is correct."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "either_neither",
+      "neither_nor",
+      "singular_nearest"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q098",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement in either...or / neither...nor structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Either my uncle or my aunts ___ coming to represent the family,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "was",
+      "C": "are",
+      "D": "has"
+    },
+    "answer": "C",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'Either my uncle or my aunts ___ coming to represent the family,' the correct verb is___",
+      "principle": "A plural nearer subject requires a plural verb in this coordinated pattern.",
+      "steps": [
+        "The noun closest to the verb is 'aunts'.",
+        "Since it is plural, the verb must also be plural.",
+        "Therefore, 'are' is correct.",
+        "The same sentence would change if the order of the nouns changed."
+      ],
+      "final_answer": "C. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "either_neither",
+      "family_representative",
+      "plural_nearest"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q099",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement in either...or / neither...nor structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Neither joy nor sorrow ___ permanent,' the correct verb is___",
+    "options": {
+      "A": "are",
+      "B": "is",
+      "C": "were",
+      "D": "have been"
+    },
+    "answer": "B",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "In the sentence, 'Neither joy nor sorrow ___ permanent,' the correct verb is___",
+      "principle": "Two singular nouns joined by 'neither...nor' usually take a singular verb.",
+      "steps": [
+        "Both 'joy' and 'sorrow' are singular abstract nouns.",
+        "A singular verb is therefore needed.",
+        "The correct present tense singular form is 'is'.",
+        "So the answer is 'is'."
+      ],
+      "final_answer": "B. is",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "either_neither",
+      "two_singular_abstracts",
+      "singular"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_12_q100",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_12",
+    "topic_title": "Concord",
+    "subtopic": "Agreement in either...or / neither...nor structures",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In the sentence, 'Either the principal or the vice-principals ___ expected to sign the document,' the correct verb is___",
+    "options": {
+      "A": "is",
+      "B": "are",
+      "C": "was",
+      "D": "has"
+    },
+    "answer": "B",
+    "answer_text": "are",
+    "explanation": {
+      "question_restate": "In the sentence, 'Either the principal or the vice-principals ___ expected to sign the document,' the correct verb is___",
+      "principle": "In mixed-number coordinated subjects, the noun nearest the verb commonly determines agreement.",
+      "steps": [
+        "The noun nearest the verb is 'vice-principals'.",
+        "That noun is plural.",
+        "Hence, the plural verb 'are' is correct.",
+        "This is a direct application of the rule in institutional vocabulary."
+      ],
+      "final_answer": "B. are",
+      "simple_explanation": "Concord means that words that belong together must agree correctly in number and structure. In examinations, always identify the true subject before choosing the verb. For fuller lesson notes, worked examples, and guided practice, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "either_neither",
+      "officials",
+      "plural_nearest"
+    ],
+    "active": true
+  }
+]
