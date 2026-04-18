@@ -4,6 +4,7 @@
 import json
 import logging
 from datetime import datetime, timedelta, timezone
+from typing import Any
 
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -11,7 +12,37 @@ from sqlalchemy.ext.asyncio import AsyncSession
 logger = logging.getLogger("mockwaec_session_service")
 logger.setLevel(logging.INFO)
 
-MOCKWAEC_EXAM_DURATION_MINUTES = 120
+
+def get_mockwaec_exam_duration_minutes(subject_count: int) -> int:
+    if subject_count <= 7:
+        return 180
+    if subject_count == 8:
+        return 200
+    return 220
+
+
+def _load_json_list(value: Any) -> list:
+    if isinstance(value, list):
+        return value
+    if isinstance(value, str):
+        try:
+            loaded = json.loads(value)
+            return loaded if isinstance(loaded, list) else []
+        except Exception:
+            return []
+    return []
+
+
+def _load_json_dict(value: Any) -> dict:
+    if isinstance(value, dict):
+        return value
+    if isinstance(value, str):
+        try:
+            loaded = json.loads(value)
+            return loaded if isinstance(loaded, dict) else {}
+        except Exception:
+            return {}
+    return {}
 
 
 async def get_mockwaec_session_by_payment_reference(
@@ -137,20 +168,25 @@ async def start_mockwaec_session_if_needed(
     exam_ends_at = existing.get("exam_ends_at")
     status = str(existing.get("status") or "").strip().lower()
 
+    if exam_started_at and getattr(exam_started_at, "tzinfo", None) is None:
+        exam_started_at = exam_started_at.replace(tzinfo=timezone.utc)
+
     if exam_ends_at and getattr(exam_ends_at, "tzinfo", None) is None:
         exam_ends_at = exam_ends_at.replace(tzinfo=timezone.utc)
 
-    # If already completed, never restart timer
+    # Never restart a completed session
     if status == "completed":
         return existing
 
-    # If timer already exists, keep using it
-    # This allows resume after bad network/app exit
+    # If timer already started, keep using it
+    # so user can resume after bad network / disconnect
     if exam_started_at and exam_ends_at:
         return existing
 
-    # Only first start should create the timer
-    ends_at = now + timedelta(minutes=MOCKWAEC_EXAM_DURATION_MINUTES)
+    subject_codes = _load_json_list(existing.get("subject_codes_json"))
+    subject_count = len(subject_codes)
+    duration_minutes = get_mockwaec_exam_duration_minutes(subject_count)
+    ends_at = now + timedelta(minutes=duration_minutes)
 
     await session.execute(
         text("""
@@ -169,6 +205,7 @@ async def start_mockwaec_session_if_needed(
         },
     )
     await session.flush()
+
     return await get_mockwaec_session_by_payment_reference(session, payment_reference)
 
 
@@ -207,25 +244,16 @@ async def mark_mockwaec_subject_completed(
     if not existing:
         return None
 
-    completed_subjects = []
-    scores = {}
-
-    try:
-        completed_subjects = json.loads(existing.get("completed_subjects_json") or "[]")
-    except Exception:
-        completed_subjects = []
-
-    try:
-        scores = json.loads(existing.get("scores_json") or "{}")
-    except Exception:
-        scores = {}
+    completed_subjects = _load_json_list(existing.get("completed_subjects_json"))
+    scores = _load_json_dict(existing.get("scores_json"))
+    subject_codes = _load_json_list(existing.get("subject_codes_json"))
 
     if subject_code not in completed_subjects:
         completed_subjects.append(subject_code)
 
     scores[subject_code] = int(score)
 
-    new_status = "completed" if len(completed_subjects) >= 4 else "in_progress"
+    new_status = "completed" if len(completed_subjects) >= len(subject_codes) else "in_progress"
 
     await session.execute(
         text("""
@@ -340,5 +368,3 @@ async def get_latest_active_mockwaec_session_for_user(
     )
     row = result.mappings().first()
     return dict(row) if row else None
-
-
