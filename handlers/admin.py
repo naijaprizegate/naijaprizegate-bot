@@ -47,7 +47,7 @@ from services.mockwaec_payments import (
     create_pending_mockwaec_payment,
     finalize_mockwaec_payment,
 )
-from services.mockwaec_session_service import create_mockwaec_session
+from services.mockwaec_session_service import get_or_create_mockwaec_session_from_payment
 
 from services.mockjamb_payments import (
     create_pending_mockjamb_payment,
@@ -93,7 +93,6 @@ async def test_mockwaec_handler(update: Update, context: ContextTypes.DEFAULT_TY
     if not is_admin(int(user.id)):
         return await message.reply_text("❌ You are not allowed to use this command.")
 
-    # Change these to your real WAEC subject codes if needed
     subject_codes = ["eng", "mat", "bio", "che", "phy", "civ", "eco"]
     course_code = "custom"
     exam_mode = "solo"
@@ -105,7 +104,7 @@ async def test_mockwaec_handler(update: Update, context: ContextTypes.DEFAULT_TY
                 session,
                 payment_reference=payment_reference,
                 user_id=int(user.id),
-                amount_paid=1,
+                amount_paid=100,
                 course_code=course_code,
                 subject_codes_json=json.dumps(subject_codes),
                 exam_mode=exam_mode,
@@ -117,7 +116,7 @@ async def test_mockwaec_handler(update: Update, context: ContextTypes.DEFAULT_TY
                 user_id=int(user.id),
             )
 
-            await create_mockwaec_session(
+            mw_session = await get_or_create_mockwaec_session_from_payment(
                 session,
                 payment_reference=payment_reference,
                 user_id=int(user.id),
@@ -132,6 +131,13 @@ async def test_mockwaec_handler(update: Update, context: ContextTypes.DEFAULT_TY
             logger.exception("Failed to create test Mock WAEC session | err=%s", e)
             return await message.reply_text("⚠️ Could not create test Mock WAEC session.")
 
+    context.user_data["mw_course_code"] = course_code
+    context.user_data["mw_subject_codes"] = subject_codes
+    context.user_data["mw_mode"] = "solo"
+    context.user_data["mw_room_code"] = None
+    context.user_data["mw_payment_reference"] = payment_reference
+    context.user_data["mw_session_id"] = mw_session["id"]
+
     await message.reply_text(
         "✅ Test Mock WAEC session created.\n\n"
         f"Ref: `{payment_reference}`\n"
@@ -139,7 +145,6 @@ async def test_mockwaec_handler(update: Update, context: ContextTypes.DEFAULT_TY
         "Now open Mock WAEC from the menu.",
         parse_mode="Markdown",
     )
-
 
 async def test_mockjamb_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
