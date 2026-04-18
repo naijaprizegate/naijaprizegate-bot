@@ -239,6 +239,16 @@ def make_mockwaec_stale_action_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("▶ Resume Exam", callback_data="mw_resume_exam")],
+            [InlineKeyboardButton("🛑 End Exam", callback_data="mw_end_exam")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+def make_mockwaec_time_up_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("✅ Submit Exam Now", callback_data="mw_submit_exam_confirm")],
+            [InlineKeyboardButton("🛑 End Exam", callback_data="mw_end_exam")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
@@ -854,10 +864,15 @@ def build_mockwaec_resume_prompt_text(
         "",
     ]
 
+    time_up = False
+
     if exam_ends_at:
         remaining = format_mockwaec_time_remaining(exam_ends_at)
         lines.append(f"*Time Remaining:* {remaining}")
         lines.append("")
+
+        if str(remaining).strip().lower() == "time up":
+            time_up = True
 
     if current_subject_code:
         current_subject = get_subject_by_code(current_subject_code)
@@ -892,10 +907,16 @@ def build_mockwaec_resume_prompt_text(
     else:
         lines.append("All subjects have been completed.")
 
-    lines.extend([
-        "",
-        "Tap below to continue.",
-    ])
+    if time_up:
+        lines.extend([
+            "",
+            "Your exam time has ended. You can submit or end the exam below.",
+        ])
+    else:
+        lines.extend([
+            "",
+            "Tap below to continue.",
+        ])
 
     return "\n".join(lines)
 
@@ -904,6 +925,7 @@ def make_mockwaec_resume_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("▶ Resume Exam", callback_data="mw_resume_exam")],
+            [InlineKeyboardButton("🛑 End Exam", callback_data="mw_end_exam")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
@@ -1205,7 +1227,11 @@ async def mockwaec_start_handler(update: Update, context: ContextTypes.DEFAULT_T
                 current_question_index=current_question_index,
                 exam_ends_at=active_session.get("exam_ends_at"),
             )
-            markup = make_mockwaec_resume_keyboard()
+
+            if is_mockwaec_time_expired(active_session.get("exam_ends_at")):
+                markup = make_mockwaec_time_up_keyboard()
+            else:
+                markup = make_mockwaec_resume_keyboard()
 
             if update.callback_query:
                 query = update.callback_query
@@ -1493,10 +1519,12 @@ async def mockwaec_use_course_handler(update: Update, context: ContextTypes.DEFA
         return await query.message.reply_text("⚠️ Course not found.")
 
     subjects = get_course_subjects(course_code)
-    context.user_data["mw_course_code"] = course_code
-    context.user_data["mw_subject_codes"] = [subject["code"] for subject in subjects]
+    subject_codes = [subject["code"] for subject in subjects]
 
-    text = build_mockwaec_mode_text(course_code)
+    context.user_data["mw_course_code"] = course_code
+    context.user_data["mw_subject_codes"] = subject_codes
+
+    text = build_mockwaec_mode_text(subject_codes)
     markup = make_mockwaec_mode_keyboard()
 
     try:
@@ -1845,6 +1873,60 @@ async def mockwaec_start_subject_handler(update: Update, context: ContextTypes.D
 
     async with get_async_session() as session:
         try:
+            active_session = await get_mockwaec_session_by_payment_reference(
+                session,
+                payment_reference,
+            )
+
+            if not active_session:
+                return await query.message.reply_text(
+                    "⚠️ Mock WAEC / NECO session not found."
+                )
+
+            if is_mockwaec_time_expired(active_session.get("exam_ends_at")):
+                await session.execute(
+                    text("""
+                        update public.mockwaec_sessions
+                        set
+                            status = 'completed',
+                            updated_at = now()
+                        where payment_reference = :payment_reference
+                    """),
+                    {"payment_reference": payment_reference},
+                )
+                await session.commit()
+
+                result_payload = await build_mockwaec_result_from_session(
+                    payment_reference=payment_reference,
+                    subject_codes=mw_subject_codes,
+                )
+
+                if not result_payload:
+                    return await query.message.reply_text(
+                        "⏰ Mock WAEC / NECO time is up.\n\nYour exam has ended."
+                    )
+
+                message_text, markup = result_payload
+                timeout_text = (
+                    "⏰ *Mock WAEC / NECO time is up.*\n\n"
+                    "Your exam has ended. Here is your result:\n\n"
+                    f"{message_text}"
+                )
+
+                try:
+                    await query.edit_message_text(
+                        timeout_text,
+                        parse_mode="Markdown",
+                        reply_markup=markup,
+                    )
+                except Exception:
+                    await query.message.reply_text(
+                        timeout_text,
+                        parse_mode="Markdown",
+                        reply_markup=markup,
+                    )
+                return
+
             result = await start_mockwaec_subject(
                 session,
                 payment_reference=payment_reference,
@@ -1852,6 +1934,7 @@ async def mockwaec_start_subject_handler(update: Update, context: ContextTypes.D
                 subject_code=subject_code,
             )
             await session.commit()
+
         except Exception as e:
             await session.rollback()
             logger.exception(
@@ -2367,7 +2450,7 @@ async def mockwaec_return_to_exam_ready_handler(update: Update, context: Context
             "⚠️ Mock WAEC / NECO exam state not found."
         )
 
-    message_text = build_mockwaec_exam_ready_text(course_code, subject_codes)
+    message_text = build_mockwaec_exam_ready_text(subject_codes)
     markup = make_mockwaec_exam_ready_keyboard(subject_codes)
 
     try:
@@ -2618,7 +2701,41 @@ async def mockwaec_resume_exam_handler(update: Update, context: ContextTypes.DEF
     context.user_data["mw_payment_reference"] = payment_reference
     context.user_data["mw_session_id"] = active_session["id"]
 
+    if is_mockwaec_time_expired(active_session.get("exam_ends_at")):
+        await clear_mockwaec_passage_message(
+            chat_id=query.message.chat_id,
+            context=context,
+        )
+
+        message_text = build_mockwaec_resume_prompt_text(
+            subject_codes=subject_codes,
+            completed_subjects=completed_subjects,
+            current_subject_code=current_subject_code,
+            current_question_index=current_question_index,
+            exam_ends_at=active_session.get("exam_ends_at"),
+        )
+        markup = make_mockwaec_time_up_keyboard()
+
+        try:
+            await query.edit_message_text(
+                message_text,
+                parse_mode="Markdown",
+                reply_markup=markup,
+            )
+        except Exception:
+            await query.message.reply_text(
+                message_text,
+                parse_mode="Markdown",
+                reply_markup=markup,
+            )
+        return
+    
     if status == "completed":
+        await clear_mockwaec_passage_message(
+            chat_id=query.message.chat_id,
+            context=context,
+        )
+        
         answered_counts = {}
         correct_counts = {}
 
@@ -2731,16 +2848,28 @@ async def mockwaec_resume_exam_handler(update: Update, context: ContextTypes.DEF
                         passage_text,
                         parse_mode="MarkdownV2",
                     )
+
+                    store_mockwaec_passage_message_id(
+                        message_id=query.message.message_id,
+                        context=context,
+                    )
+
                     await query.message.reply_text(
                         question_text,
                         parse_mode="MarkdownV2",
                         reply_markup=markup,
                     )
                 except Exception:
-                    await query.message.reply_text(
+                    sent_passage = await query.message.reply_text(
                         passage_text,
                         parse_mode="MarkdownV2",
                     )
+
+                    store_mockwaec_passage_message_id(
+                        message_id=sent_passage.message_id,
+                        context=context,
+                    )
+
                     await query.message.reply_text(
                         question_text,
                         parse_mode="MarkdownV2",
@@ -2748,6 +2877,11 @@ async def mockwaec_resume_exam_handler(update: Update, context: ContextTypes.DEF
                     )
                 return
 
+            await clear_mockwaec_passage_message(
+                chat_id=query.message.chat_id,
+                context=context,
+            )
+            
             try:
                 await query.edit_message_text(
                     question_text,
@@ -2763,6 +2897,11 @@ async def mockwaec_resume_exam_handler(update: Update, context: ContextTypes.DEF
             return
 
     if remaining_subject_codes:
+        await clear_mockwaec_passage_message(
+            chat_id=query.message.chat_id,
+            context=context,
+        )
+        
         message_text = build_mockwaec_continue_subject_choice_text(
             remaining_subject_codes=remaining_subject_codes,
         )
@@ -2782,6 +2921,11 @@ async def mockwaec_resume_exam_handler(update: Update, context: ContextTypes.DEF
             )
         return
 
+    await clear_mockwaec_passage_message(
+        chat_id=query.message.chat_id,
+        context=context,
+    )
+    
     answered_counts = {}
     correct_counts = {}
 
@@ -2876,6 +3020,11 @@ async def mockwaec_submit_exam_yes_handler(update: Update, context: ContextTypes
             "⚠️ No active Mock WAEC / NECO exam session found."
         )
 
+    await clear_mockwaec_passage_message(
+        chat_id=query.message.chat_id,
+        context=context,
+    )
+    
     try:
         message_text, markup = await finalize_mockwaec_exam_now(
             payment_reference=payment_reference,
@@ -2911,6 +3060,61 @@ async def mockwaec_submit_exam_yes_handler(update: Update, context: ContextTypes
         )
 
 
+async def mockwaec_end_exam_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    payment_reference = context.user_data.get("mw_payment_reference")
+    course_code = context.user_data.get("mw_course_code")
+    subject_codes = context.user_data.get("mw_subject_codes") or []
+
+    if not payment_reference or not course_code or not subject_codes:
+        return await query.message.reply_text(
+            "⚠️ No active Mock WAEC / NECO exam session found."
+        )
+
+    await clear_mockwaec_passage_message(
+        chat_id=query.message.chat_id,
+        context=context,
+    )
+    
+    try:
+        message_text, markup = await finalize_mockwaec_exam_now(
+            payment_reference=payment_reference,
+            course_code=course_code,
+            subject_codes=subject_codes,
+        )
+    except Exception as e:
+        logger.exception(
+            "Failed to end Mock WAEC / NECO exam | tx_ref=%s | err=%s",
+            payment_reference,
+            e,
+        )
+        return await query.message.reply_text(
+            "⚠️ Could not end your exam right now. Please try again."
+        )
+
+    end_text = (
+        "🛑 *Mock WAEC / NECO exam ended.*\n\n"
+        f"{message_text}"
+    )
+
+    try:
+        await query.edit_message_text(
+            end_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            end_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
 # ====================================================================
 # Register Handlers
 # ====================================================================
@@ -2930,10 +3134,12 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_submit_exam_confirm_handler, pattern=r"^mw_submit_exam_confirm$"))
     application.add_handler(CallbackQueryHandler(mockwaec_submit_exam_yes_handler, pattern=r"^mw_submit_exam_yes$"))
     application.add_handler(CallbackQueryHandler(mockwaec_submit_exam_no_handler, pattern=r"^mw_submit_exam_no$"))
+    application.add_handler(CallbackQueryHandler(mockwaec_end_exam_handler, pattern=r"^mw_end_exam$"))
     application.add_handler(CallbackQueryHandler(mockwaec_answer_handler, pattern=r"^mw_ans::"))
     application.add_handler(CallbackQueryHandler(mockwaec_return_to_exam_ready_handler, pattern=r"^payok_mockwaec_return$"))
     application.add_handler(CallbackQueryHandler(mockwaec_resume_exam_handler, pattern=r"^mw_resume_exam$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
+
 
