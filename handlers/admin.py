@@ -38,8 +38,22 @@ from handlers.core import fallback
 from db import AsyncSessionLocal, get_async_session
 from helpers import add_tries, get_user_by_id
 from models import Proof, User, Payment, GameState, GlobalCounter, PrizeWinner
-from utils.security import is_admin  # external helper (still imported)
 from logging_config import setup_logger
+
+import json
+import time
+
+from services.mockwaec_payments import (
+    create_pending_mockwaec_payment,
+    finalize_mockwaec_payment,
+)
+from services.mockwaec_session_service import create_mockwaec_session
+
+from services.mockjamb_payments import (
+    create_pending_mockjamb_payment,
+    finalize_mockjamb_payment,
+)
+from services.mockjamb_session_service import create_mockjamb_session
 
 logger = logging.getLogger(__name__)
 
@@ -60,6 +74,129 @@ def is_admin(user_id: int) -> bool:
 # Key to store date selection temporary
 DATE_SELECTION_KEY = "csv_export_date_range"
 
+
+def build_test_mockwaec_ref(user_id: int) -> str:
+    return f"TEST_MOCKWAEC_{user_id}_{int(time.time())}"
+
+
+def build_test_mockjamb_ref(user_id: int) -> str:
+    return f"TEST_MOCKJAMB_{user_id}_{int(time.time())}"
+
+
+async def test_mockwaec_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user = update.effective_user
+    message = update.effective_message
+
+    if not user or not message:
+        return
+
+    if not is_admin(int(user.id)):
+        return await message.reply_text("❌ You are not allowed to use this command.")
+
+    # Change these to your real WAEC subject codes if needed
+    subject_codes = ["eng", "mat", "bio", "che", "phy", "civ", "eco"]
+    course_code = "custom"
+    exam_mode = "solo"
+    payment_reference = build_test_mockwaec_ref(int(user.id))
+
+    async with get_async_session() as session:
+        try:
+            await create_pending_mockwaec_payment(
+                session,
+                payment_reference=payment_reference,
+                user_id=int(user.id),
+                amount_paid=1,
+                course_code=course_code,
+                subject_codes_json=json.dumps(subject_codes),
+                exam_mode=exam_mode,
+            )
+
+            await finalize_mockwaec_payment(
+                session,
+                payment_reference=payment_reference,
+                user_id=int(user.id),
+            )
+
+            await create_mockwaec_session(
+                session,
+                payment_reference=payment_reference,
+                user_id=int(user.id),
+                course_code=course_code,
+                subject_codes_json=json.dumps(subject_codes),
+            )
+
+            await session.commit()
+
+        except Exception as e:
+            await session.rollback()
+            logger.exception("Failed to create test Mock WAEC session | err=%s", e)
+            return await message.reply_text("⚠️ Could not create test Mock WAEC session.")
+
+    await message.reply_text(
+        "✅ Test Mock WAEC session created.\n\n"
+        f"Ref: `{payment_reference}`\n"
+        f"Subjects: `{', '.join(subject_codes)}`\n\n"
+        "Now open Mock WAEC from the menu.",
+        parse_mode="Markdown",
+    )
+
+
+async def test_mockjamb_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user = update.effective_user
+    message = update.effective_message
+
+    if not user or not message:
+        return
+
+    if not is_admin(int(user.id)):
+        return await message.reply_text("❌ You are not allowed to use this command.")
+
+    # Change these to your real JAMB subject codes if needed
+    subject_codes = ["eng", "mat", "bio", "che"]
+    course_code = "custom"
+    exam_mode = "solo"
+    payment_reference = build_test_mockjamb_ref(int(user.id))
+
+    async with get_async_session() as session:
+        try:
+            await create_pending_mockjamb_payment(
+                session,
+                payment_reference=payment_reference,
+                user_id=int(user.id),
+                amount_paid=1,
+                course_code=course_code,
+                subject_codes_json=json.dumps(subject_codes),
+                exam_mode=exam_mode,
+            )
+
+            await finalize_mockjamb_payment(
+                session,
+                payment_reference=payment_reference,
+                user_id=int(user.id),
+            )
+
+            await create_mockjamb_session(
+                session,
+                payment_reference=payment_reference,
+                user_id=int(user.id),
+                course_code=course_code,
+                subject_codes_json=json.dumps(subject_codes),
+            )
+
+            await session.commit()
+
+        except Exception as e:
+            await session.rollback()
+            logger.exception("Failed to create test Mock JAMB session | err=%s", e)
+            return await message.reply_text("⚠️ Could not create test Mock JAMB session.")
+
+    await message.reply_text(
+        "✅ Test Mock JAMB session created.\n\n"
+        f"Ref: `{payment_reference}`\n"
+        f"Subjects: `{', '.join(subject_codes)}`\n\n"
+        "Now open Mock JAMB from the menu.",
+        parse_mode="Markdown",
+    )
 
 # ----------------------------
 # SAFE EDIT FUNCTION (robust)
@@ -2642,6 +2779,8 @@ async def show_failed_airtime(update: Update, context: ContextTypes.DEFAULT_TYPE
         reply_markup=keyboard
     )
 
+
+
 #--------Register Handlers--------------
 def register_handlers(application):
     ADMIN_GROUP = 10  # ✅ Admin runs later than user flows
@@ -2679,6 +2818,8 @@ def register_handlers(application):
     application.add_handler(CommandHandler("admin", admin_panel), group=ADMIN_GROUP)
     application.add_handler(CommandHandler("pending_proofs", pending_proofs), group=ADMIN_GROUP)
     application.add_handler(CommandHandler("winners", show_winners_section), group=ADMIN_GROUP)
+    application.add_handler(CommandHandler("test_mockwaec", test_mockwaec_handler), group=ADMIN_GROUP)
+    application.add_handler(CommandHandler("test_mockjamb", test_mockjamb_handler), group=ADMIN_GROUP)
 
     # ✅ You may keep this, but it's optional since ConversationHandler handles /cancel too
     application.add_handler(CommandHandler("cancel", cancel_admin_support_reply), group=ADMIN_GROUP)
@@ -2765,4 +2906,5 @@ def register_handlers(application):
         CallbackQueryHandler(show_failed_airtime, pattern=r"^admin_airtime_failed"),
         group=ADMIN_GROUP
     )
+
 
