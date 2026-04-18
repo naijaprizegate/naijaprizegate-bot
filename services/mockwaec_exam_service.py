@@ -345,13 +345,16 @@ async def start_mockwaec_subject(
         payment_reference=payment_reference,
     )
     if not session_row:
-        raise ValueError(f"Mock JAMB session not found for payment_reference={payment_reference}")
+        raise ValueError(f"Mock WAEC session not found for payment_reference={payment_reference}")
 
-    session_row = await set_mockwaec_current_subject(
-        session,
-        payment_reference=payment_reference,
-        subject_code=subject_code,
-    )
+    current_subject_code = str(session_row.get("current_subject_code") or "").strip()
+
+    if current_subject_code != subject_code:
+        session_row = await set_mockwaec_current_subject(
+            session,
+            payment_reference=payment_reference,
+            subject_code=subject_code,
+        )
 
     requested_count = get_mockwaec_subject_question_count(subject_code)
 
@@ -363,11 +366,13 @@ async def start_mockwaec_subject(
         requested_count=requested_count,
     )
 
+    current_question_order = int(session_row.get("current_question_index") or 0) + 1
+
     current_question = await get_mockwaec_subject_question_by_order(
         session,
         payment_reference=payment_reference,
         subject_code=subject_code,
-        question_order=1,
+        question_order=current_question_order,
     )
 
     return {
@@ -595,4 +600,5 @@ async def get_mockwaec_subject_result_stats(
         "answered_count": int(row.get("answered_count") or 0),
         "correct_count": int(row.get("correct_count") or 0),
     }
+
 
