@@ -1,1 +1,3602 @@
-
+[
+  {
+    "id": "eng_18_q001",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words rhymes with 'light'?",
+    "options": {
+      "A": "late",
+      "B": "lit",
+      "C": "bite",
+      "D": "lot"
+    },
+    "answer": "C",
+    "answer_text": "bite",
+    "explanation": {
+      "question_restate": "Which of the following words rhymes with 'light'?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'bite' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'bite'."
+      ],
+      "final_answer": "C. bite",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q002",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word rhymes with 'day'?",
+    "options": {
+      "A": "die",
+      "B": "say",
+      "C": "debt",
+      "D": "do"
+    },
+    "answer": "B",
+    "answer_text": "say",
+    "explanation": {
+      "question_restate": "Which word rhymes with 'day'?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'say' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'say'."
+      ],
+      "final_answer": "B. say",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q003",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words rhymes with 'sing'?",
+    "options": {
+      "A": "song",
+      "B": "ring",
+      "C": "sang",
+      "D": "sun"
+    },
+    "answer": "B",
+    "answer_text": "ring",
+    "explanation": {
+      "question_restate": "Which of the following words rhymes with 'sing'?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'ring' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'ring'."
+      ],
+      "final_answer": "B. ring",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q004",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word rhymes with 'coat'?",
+    "options": {
+      "A": "cot",
+      "B": "cut",
+      "C": "boat",
+      "D": "court"
+    },
+    "answer": "C",
+    "answer_text": "boat",
+    "explanation": {
+      "question_restate": "Which word rhymes with 'coat'?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'boat' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'boat'."
+      ],
+      "final_answer": "C. boat",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q005",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following rhymes with 'farm'?",
+    "options": {
+      "A": "form",
+      "B": "firm",
+      "C": "harm",
+      "D": "from"
+    },
+    "answer": "C",
+    "answer_text": "harm",
+    "explanation": {
+      "question_restate": "Which of the following rhymes with 'farm'?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'harm' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'harm'."
+      ],
+      "final_answer": "C. harm",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q006",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word rhymes with 'name'?",
+    "options": {
+      "A": "lamb",
+      "B": "same",
+      "C": "sum",
+      "D": "seem"
+    },
+    "answer": "B",
+    "answer_text": "same",
+    "explanation": {
+      "question_restate": "Which word rhymes with 'name'?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'same' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'same'."
+      ],
+      "final_answer": "B. same",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q007",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following rhymes with 'pool'?",
+    "options": {
+      "A": "pull",
+      "B": "pole",
+      "C": "fool",
+      "D": "fall"
+    },
+    "answer": "C",
+    "answer_text": "fool",
+    "explanation": {
+      "question_restate": "Which of the following rhymes with 'pool'?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'fool' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'fool'."
+      ],
+      "final_answer": "C. fool",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q008",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word rhymes with 'near' in British-oriented description?",
+    "options": {
+      "A": "bear",
+      "B": "fear",
+      "C": "far",
+      "D": "fair"
+    },
+    "answer": "B",
+    "answer_text": "fear",
+    "explanation": {
+      "question_restate": "Which word rhymes with 'near' in British-oriented description?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'fear' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'fear'."
+      ],
+      "final_answer": "B. fear",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q009",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following rhymes with 'house'?",
+    "options": {
+      "A": "horse",
+      "B": "mouse",
+      "C": "hose",
+      "D": "mass"
+    },
+    "answer": "B",
+    "answer_text": "mouse",
+    "explanation": {
+      "question_restate": "Which of the following rhymes with 'house'?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'mouse' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'mouse'."
+      ],
+      "final_answer": "B. mouse",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q010",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word rhymes with 'boy'?",
+    "options": {
+      "A": "bay",
+      "B": "buoy",
+      "C": "buy",
+      "D": "bee"
+    },
+    "answer": "B",
+    "answer_text": "buoy",
+    "explanation": {
+      "question_restate": "Which word rhymes with 'boy'?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'buoy' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'buoy'."
+      ],
+      "final_answer": "B. buoy",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q011",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following rhymes with 'bed'?",
+    "options": {
+      "A": "bead",
+      "B": "bird",
+      "C": "head",
+      "D": "bid"
+    },
+    "answer": "C",
+    "answer_text": "head",
+    "explanation": {
+      "question_restate": "Which of the following rhymes with 'bed'?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'head' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'head'."
+      ],
+      "final_answer": "C. head",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q012",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word rhymes with 'moon'?",
+    "options": {
+      "A": "man",
+      "B": "morn",
+      "C": "soon",
+      "D": "son"
+    },
+    "answer": "C",
+    "answer_text": "soon",
+    "explanation": {
+      "question_restate": "Which word rhymes with 'moon'?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'soon' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'soon'."
+      ],
+      "final_answer": "C. soon",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q013",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following rhymes with 'pen'?",
+    "options": {
+      "A": "pin",
+      "B": "pain",
+      "C": "pan",
+      "D": "men"
+    },
+    "answer": "D",
+    "answer_text": "men",
+    "explanation": {
+      "question_restate": "Which of the following rhymes with 'pen'?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'men' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'men'."
+      ],
+      "final_answer": "D. men",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q014",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word rhymes with 'cart' in British-oriented pronunciation?",
+    "options": {
+      "A": "cut",
+      "B": "cat",
+      "C": "part",
+      "D": "coat"
+    },
+    "answer": "C",
+    "answer_text": "part",
+    "explanation": {
+      "question_restate": "Which word rhymes with 'cart' in British-oriented pronunciation?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'part' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'part'."
+      ],
+      "final_answer": "C. part",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q015",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following rhymes with 'thin'?",
+    "options": {
+      "A": "then",
+      "B": "tin",
+      "C": "thing",
+      "D": "thorn"
+    },
+    "answer": "B",
+    "answer_text": "tin",
+    "explanation": {
+      "question_restate": "Which of the following rhymes with 'thin'?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'tin' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'tin'."
+      ],
+      "final_answer": "B. tin",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q016",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word rhymes with 'dress'?",
+    "options": {
+      "A": "dice",
+      "B": "dries",
+      "C": "press",
+      "D": "price"
+    },
+    "answer": "C",
+    "answer_text": "press",
+    "explanation": {
+      "question_restate": "Which word rhymes with 'dress'?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'press' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'press'."
+      ],
+      "final_answer": "C. press",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q017",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Rhyming words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following rhymes with 'gate'?",
+    "options": {
+      "A": "get",
+      "B": "great",
+      "C": "gift",
+      "D": "goat"
+    },
+    "answer": "B",
+    "answer_text": "great",
+    "explanation": {
+      "question_restate": "Which of the following rhymes with 'gate'?",
+      "principle": "Words rhyme when their stressed vowel and following sound pattern match, even if the spellings differ.",
+      "steps": [
+        "To find a rhyme, compare the ending sound, not just the letters.",
+        "'great' shares the same final sound pattern as the base word in the question.",
+        "The other options differ in vowel quality, consonant ending, or both.",
+        "Therefore, the correct answer is 'great'."
+      ],
+      "final_answer": "B. great",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme",
+      "sound_matching"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q018",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair of words rhymes in pronunciation?",
+    "options": {
+      "A": "cough / bough",
+      "B": "rough / tough",
+      "C": "though / through",
+      "D": "move / love"
+    },
+    "answer": "B",
+    "answer_text": "rough / tough",
+    "explanation": {
+      "question_restate": "Which pair of words rhymes in pronunciation?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'rough / tough' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'rough / tough'."
+      ],
+      "final_answer": "B. rough / tough",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q019",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair rhymes when pronounced?",
+    "options": {
+      "A": "food / good",
+      "B": "seat / meat",
+      "C": "blood / brood",
+      "D": "full / fool"
+    },
+    "answer": "B",
+    "answer_text": "seat / meat",
+    "explanation": {
+      "question_restate": "Which pair rhymes when pronounced?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'seat / meat' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'seat / meat'."
+      ],
+      "final_answer": "B. seat / meat",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q020",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair of words does NOT rhyme?",
+    "options": {
+      "A": "see / sea",
+      "B": "light / bite",
+      "C": "day / die",
+      "D": "name / same"
+    },
+    "answer": "C",
+    "answer_text": "day / die",
+    "explanation": {
+      "question_restate": "Which pair of words does NOT rhyme?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'day / die' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'day / die'."
+      ],
+      "final_answer": "C. day / die",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q021",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following pairs rhymes in speech?",
+    "options": {
+      "A": "wear / fair",
+      "B": "bear / beer",
+      "C": "cot / coat",
+      "D": "pull / pool"
+    },
+    "answer": "A",
+    "answer_text": "wear / fair",
+    "explanation": {
+      "question_restate": "Which of the following pairs rhymes in speech?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'wear / fair' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'wear / fair'."
+      ],
+      "final_answer": "A. wear / fair",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q022",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair rhymes in pronunciation despite different spelling?",
+    "options": {
+      "A": "great / gate",
+      "B": "said / paid",
+      "C": "court / cut",
+      "D": "love / move"
+    },
+    "answer": "A",
+    "answer_text": "great / gate",
+    "explanation": {
+      "question_restate": "Which pair rhymes in pronunciation despite different spelling?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'great / gate' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'great / gate'."
+      ],
+      "final_answer": "A. great / gate",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q023",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair of words rhymes?",
+    "options": {
+      "A": "town / down",
+      "B": "tone / ton",
+      "C": "man / main",
+      "D": "sit / seat"
+    },
+    "answer": "A",
+    "answer_text": "town / down",
+    "explanation": {
+      "question_restate": "Which pair of words rhymes?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'town / down' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'town / down'."
+      ],
+      "final_answer": "A. town / down",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q024",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair does NOT rhyme in standard pronunciation?",
+    "options": {
+      "A": "bear / pear",
+      "B": "see / key",
+      "C": "soul / school",
+      "D": "night / write"
+    },
+    "answer": "C",
+    "answer_text": "soul / school",
+    "explanation": {
+      "question_restate": "Which pair does NOT rhyme in standard pronunciation?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'soul / school' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'soul / school'."
+      ],
+      "final_answer": "C. soul / school",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q025",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair of words rhymes in British-oriented pronunciation?",
+    "options": {
+      "A": "sure / cure",
+      "B": "bird / beard",
+      "C": "fair / fear",
+      "D": "cut / court"
+    },
+    "answer": "A",
+    "answer_text": "sure / cure",
+    "explanation": {
+      "question_restate": "Which pair of words rhymes in British-oriented pronunciation?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'sure / cure' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'sure / cure'."
+      ],
+      "final_answer": "A. sure / cure",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q026",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair rhymes in pronunciation?",
+    "options": {
+      "A": "hair / care",
+      "B": "heard / hard",
+      "C": "bed / bead",
+      "D": "put / but"
+    },
+    "answer": "A",
+    "answer_text": "hair / care",
+    "explanation": {
+      "question_restate": "Which pair rhymes in pronunciation?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'hair / care' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'hair / care'."
+      ],
+      "final_answer": "A. hair / care",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q027",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair of words rhymes?",
+    "options": {
+      "A": "late / let",
+      "B": "coat / note",
+      "C": "cot / caught",
+      "D": "boy / buy"
+    },
+    "answer": "B",
+    "answer_text": "coat / note",
+    "explanation": {
+      "question_restate": "Which pair of words rhymes?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'coat / note' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'coat / note'."
+      ],
+      "final_answer": "B. coat / note",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q028",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair does NOT rhyme?",
+    "options": {
+      "A": "ring / sing",
+      "B": "farm / harm",
+      "C": "pen / pain",
+      "D": "moon / soon"
+    },
+    "answer": "C",
+    "answer_text": "pen / pain",
+    "explanation": {
+      "question_restate": "Which pair does NOT rhyme?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'pen / pain' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'pen / pain'."
+      ],
+      "final_answer": "C. pen / pain",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q029",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair rhymes when spoken?",
+    "options": {
+      "A": "fear / hear",
+      "B": "fear / fair",
+      "C": "here / hair",
+      "D": "far / fair"
+    },
+    "answer": "A",
+    "answer_text": "fear / hear",
+    "explanation": {
+      "question_restate": "Which pair rhymes when spoken?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'fear / hear' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'fear / hear'."
+      ],
+      "final_answer": "A. fear / hear",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q030",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair of words rhymes?",
+    "options": {
+      "A": "press / dress",
+      "B": "price / press",
+      "C": "plough / though",
+      "D": "bread / broad"
+    },
+    "answer": "A",
+    "answer_text": "press / dress",
+    "explanation": {
+      "question_restate": "Which pair of words rhymes?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'press / dress' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'press / dress'."
+      ],
+      "final_answer": "A. press / dress",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q031",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following pairs rhymes in speech?",
+    "options": {
+      "A": "choose / shoes",
+      "B": "house / hose",
+      "C": "word / ward",
+      "D": "deep / dip"
+    },
+    "answer": "A",
+    "answer_text": "choose / shoes",
+    "explanation": {
+      "question_restate": "Which of the following pairs rhymes in speech?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'choose / shoes' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'choose / shoes'."
+      ],
+      "final_answer": "A. choose / shoes",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q032",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair of words rhymes?",
+    "options": {
+      "A": "tell / tail",
+      "B": "seed / side",
+      "C": "fall / call",
+      "D": "sun / soon"
+    },
+    "answer": "C",
+    "answer_text": "fall / call",
+    "explanation": {
+      "question_restate": "Which pair of words rhymes?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'fall / call' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'fall / call'."
+      ],
+      "final_answer": "C. fall / call",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q033",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair rhymes in pronunciation and not merely in spelling?",
+    "options": {
+      "A": "rough / cough",
+      "B": "bake / cake",
+      "C": "plough / through",
+      "D": "love / move"
+    },
+    "answer": "B",
+    "answer_text": "bake / cake",
+    "explanation": {
+      "question_restate": "Which pair rhymes in pronunciation and not merely in spelling?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'bake / cake' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'bake / cake'."
+      ],
+      "final_answer": "B. bake / cake",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q034",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Recognition of rhyme in pronunciation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair of words rhymes?",
+    "options": {
+      "A": "same / came",
+      "B": "come / comb",
+      "C": "pull / pole",
+      "D": "read / red"
+    },
+    "answer": "A",
+    "answer_text": "same / came",
+    "explanation": {
+      "question_restate": "Which pair of words rhymes?",
+      "principle": "Rhyme recognition depends on pronunciation, so similar spelling is not enough to guarantee a rhyme.",
+      "steps": [
+        "This question tests whether the words sound alike at the end when spoken.",
+        "Among the options, 'same / came' matches the correct rhyme relationship asked for.",
+        "Some wrong options look similar in spelling but do not rhyme in sound.",
+        "Therefore, the correct answer is 'same / came'."
+      ],
+      "final_answer": "A. same / came",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "rhyme_recognition",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q035",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a homophone of 'sea'?",
+    "options": {
+      "A": "say",
+      "B": "see",
+      "C": "sew",
+      "D": "sigh"
+    },
+    "answer": "B",
+    "answer_text": "see",
+    "explanation": {
+      "question_restate": "Which of the following is a homophone of 'sea'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'see' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'see'."
+      ],
+      "final_answer": "B. see",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q036",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word is a homophone of 'sun'?",
+    "options": {
+      "A": "son",
+      "B": "seen",
+      "C": "soon",
+      "D": "sown"
+    },
+    "answer": "A",
+    "answer_text": "son",
+    "explanation": {
+      "question_restate": "Which word is a homophone of 'sun'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'son' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'son'."
+      ],
+      "final_answer": "A. son",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q037",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a homophone of 'right'?",
+    "options": {
+      "A": "rite",
+      "B": "wrote",
+      "C": "root",
+      "D": "rat"
+    },
+    "answer": "A",
+    "answer_text": "rite",
+    "explanation": {
+      "question_restate": "Which of the following is a homophone of 'right'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'rite' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'rite'."
+      ],
+      "final_answer": "A. rite",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q038",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word is a homophone of 'one'?",
+    "options": {
+      "A": "won",
+      "B": "own",
+      "C": "wan",
+      "D": "wine"
+    },
+    "answer": "A",
+    "answer_text": "won",
+    "explanation": {
+      "question_restate": "Which word is a homophone of 'one'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'won' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'won'."
+      ],
+      "final_answer": "A. won",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q039",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a homophone of 'piece'?",
+    "options": {
+      "A": "peace",
+      "B": "peas",
+      "C": "pace",
+      "D": "pass"
+    },
+    "answer": "A",
+    "answer_text": "peace",
+    "explanation": {
+      "question_restate": "Which of the following is a homophone of 'piece'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'peace' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'peace'."
+      ],
+      "final_answer": "A. peace",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q040",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word is a homophone of 'here'?",
+    "options": {
+      "A": "hair",
+      "B": "hear",
+      "C": "hare",
+      "D": "hero"
+    },
+    "answer": "B",
+    "answer_text": "hear",
+    "explanation": {
+      "question_restate": "Which word is a homophone of 'here'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'hear' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'hear'."
+      ],
+      "final_answer": "B. hear",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q041",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a homophone of 'pair'?",
+    "options": {
+      "A": "peer",
+      "B": "pear",
+      "C": "poor",
+      "D": "par"
+    },
+    "answer": "B",
+    "answer_text": "pear",
+    "explanation": {
+      "question_restate": "Which of the following is a homophone of 'pair'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'pear' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'pear'."
+      ],
+      "final_answer": "B. pear",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q042",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word is a homophone of 'hour'?",
+    "options": {
+      "A": "our",
+      "B": "ore",
+      "C": "owner",
+      "D": "how"
+    },
+    "answer": "A",
+    "answer_text": "our",
+    "explanation": {
+      "question_restate": "Which word is a homophone of 'hour'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'our' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'our'."
+      ],
+      "final_answer": "A. our",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q043",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a homophone of 'flower'?",
+    "options": {
+      "A": "floor",
+      "B": "flour",
+      "C": "flew",
+      "D": "flare"
+    },
+    "answer": "B",
+    "answer_text": "flour",
+    "explanation": {
+      "question_restate": "Which of the following is a homophone of 'flower'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'flour' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'flour'."
+      ],
+      "final_answer": "B. flour",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q044",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word is a homophone of 'knight'?",
+    "options": {
+      "A": "night",
+      "B": "net",
+      "C": "neat",
+      "D": "note"
+    },
+    "answer": "A",
+    "answer_text": "night",
+    "explanation": {
+      "question_restate": "Which word is a homophone of 'knight'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'night' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'night'."
+      ],
+      "final_answer": "A. night",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q045",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a homophone of 'mail'?",
+    "options": {
+      "A": "meal",
+      "B": "male",
+      "C": "mile",
+      "D": "mild"
+    },
+    "answer": "B",
+    "answer_text": "male",
+    "explanation": {
+      "question_restate": "Which of the following is a homophone of 'mail'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'male' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'male'."
+      ],
+      "final_answer": "B. male",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q046",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word is a homophone of 'sale'?",
+    "options": {
+      "A": "sail",
+      "B": "soil",
+      "C": "seal",
+      "D": "cell"
+    },
+    "answer": "A",
+    "answer_text": "sail",
+    "explanation": {
+      "question_restate": "Which word is a homophone of 'sale'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'sail' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'sail'."
+      ],
+      "final_answer": "A. sail",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q047",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a homophone of 'break'?",
+    "options": {
+      "A": "brick",
+      "B": "brake",
+      "C": "bark",
+      "D": "brook"
+    },
+    "answer": "B",
+    "answer_text": "brake",
+    "explanation": {
+      "question_restate": "Which of the following is a homophone of 'break'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'brake' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'brake'."
+      ],
+      "final_answer": "B. brake",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q048",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word is a homophone of 'new'?",
+    "options": {
+      "A": "knew",
+      "B": "now",
+      "C": "gnaw",
+      "D": "no"
+    },
+    "answer": "A",
+    "answer_text": "knew",
+    "explanation": {
+      "question_restate": "Which word is a homophone of 'new'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'knew' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'knew'."
+      ],
+      "final_answer": "A. knew",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q049",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a homophone of 'week'?",
+    "options": {
+      "A": "wick",
+      "B": "weak",
+      "C": "walk",
+      "D": "wake"
+    },
+    "answer": "B",
+    "answer_text": "weak",
+    "explanation": {
+      "question_restate": "Which of the following is a homophone of 'week'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'weak' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'weak'."
+      ],
+      "final_answer": "B. weak",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q050",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word is a homophone of 'wear'?",
+    "options": {
+      "A": "were",
+      "B": "war",
+      "C": "wire",
+      "D": "wore"
+    },
+    "answer": "A",
+    "answer_text": "were",
+    "explanation": {
+      "question_restate": "Which word is a homophone of 'wear'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'were' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'were'."
+      ],
+      "final_answer": "A. were",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q051",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Homophones",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a homophone of 'allowed'?",
+    "options": {
+      "A": "aloud",
+      "B": "alert",
+      "C": "alloyed",
+      "D": "loaded"
+    },
+    "answer": "A",
+    "answer_text": "aloud",
+    "explanation": {
+      "question_restate": "Which of the following is a homophone of 'allowed'?",
+      "principle": "Homophones are words that are pronounced the same but differ in meaning and usually in spelling.",
+      "steps": [
+        "To answer a homophone question, say the target word aloud mentally and compare it with the options.",
+        "'aloud' has the same pronunciation as the target word in the question.",
+        "The other options differ in one or more sounds even if they may look related in spelling.",
+        "Therefore, the correct answer is 'aloud'."
+      ],
+      "final_answer": "A. aloud",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "homophones",
+      "same_sound_different_spelling"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q052",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair consists of words that sound alike but differ in meaning and spelling?",
+    "options": {
+      "A": "seat / sit",
+      "B": "write / right",
+      "C": "cot / coat",
+      "D": "fan / van"
+    },
+    "answer": "B",
+    "answer_text": "write / right",
+    "explanation": {
+      "question_restate": "Which pair consists of words that sound alike but differ in meaning and spelling?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'write / right' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'write / right'."
+      ],
+      "final_answer": "B. write / right",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q053",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following pairs are sound-alike words with different meanings?",
+    "options": {
+      "A": "sun / son",
+      "B": "pull / pool",
+      "C": "late / let",
+      "D": "bad / bed"
+    },
+    "answer": "A",
+    "answer_text": "sun / son",
+    "explanation": {
+      "question_restate": "Which of the following pairs are sound-alike words with different meanings?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'sun / son' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'sun / son'."
+      ],
+      "final_answer": "A. sun / son",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q054",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair consists of homophones?",
+    "options": {
+      "A": "peace / piece",
+      "B": "man / main",
+      "C": "cot / caught",
+      "D": "food / foot"
+    },
+    "answer": "A",
+    "answer_text": "peace / piece",
+    "explanation": {
+      "question_restate": "Which pair consists of homophones?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'peace / piece' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'peace / piece'."
+      ],
+      "final_answer": "A. peace / piece",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q055",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following are words that sound alike but differ in spelling?",
+    "options": {
+      "A": "here / hear",
+      "B": "bird / beard",
+      "C": "look / luck",
+      "D": "bet / bait"
+    },
+    "answer": "A",
+    "answer_text": "here / hear",
+    "explanation": {
+      "question_restate": "Which of the following are words that sound alike but differ in spelling?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'here / hear' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'here / hear'."
+      ],
+      "final_answer": "A. here / hear",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q056",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair contains sound-alike words with different meanings?",
+    "options": {
+      "A": "mail / male",
+      "B": "coat / court",
+      "C": "thin / tin",
+      "D": "see / say"
+    },
+    "answer": "A",
+    "answer_text": "mail / male",
+    "explanation": {
+      "question_restate": "Which pair contains sound-alike words with different meanings?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'mail / male' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'mail / male'."
+      ],
+      "final_answer": "A. mail / male",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q057",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair consists of homophones?",
+    "options": {
+      "A": "flour / flower",
+      "B": "fear / fair",
+      "C": "then / thin",
+      "D": "sun / soon"
+    },
+    "answer": "A",
+    "answer_text": "flour / flower",
+    "explanation": {
+      "question_restate": "Which pair consists of homophones?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'flour / flower' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'flour / flower'."
+      ],
+      "final_answer": "A. flour / flower",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q058",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following are homophones?",
+    "options": {
+      "A": "sale / sail",
+      "B": "full / fool",
+      "C": "hat / heart",
+      "D": "note / not"
+    },
+    "answer": "A",
+    "answer_text": "sale / sail",
+    "explanation": {
+      "question_restate": "Which of the following are homophones?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'sale / sail' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'sale / sail'."
+      ],
+      "final_answer": "A. sale / sail",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q059",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair contains words that sound alike but have different spellings?",
+    "options": {
+      "A": "dear / deer",
+      "B": "seat / set",
+      "C": "day / die",
+      "D": "sit / seat"
+    },
+    "answer": "A",
+    "answer_text": "dear / deer",
+    "explanation": {
+      "question_restate": "Which pair contains words that sound alike but have different spellings?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'dear / deer' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'dear / deer'."
+      ],
+      "final_answer": "A. dear / deer",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q060",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following are homophones?",
+    "options": {
+      "A": "allowed / aloud",
+      "B": "pen / pain",
+      "C": "court / caught",
+      "D": "wood / word"
+    },
+    "answer": "A",
+    "answer_text": "allowed / aloud",
+    "explanation": {
+      "question_restate": "Which of the following are homophones?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'allowed / aloud' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'allowed / aloud'."
+      ],
+      "final_answer": "A. allowed / aloud",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q061",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair consists of words that sound alike but differ in meaning?",
+    "options": {
+      "A": "night / knight",
+      "B": "light / late",
+      "C": "bad / bud",
+      "D": "ship / sheep"
+    },
+    "answer": "A",
+    "answer_text": "night / knight",
+    "explanation": {
+      "question_restate": "Which pair consists of words that sound alike but differ in meaning?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'night / knight' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'night / knight'."
+      ],
+      "final_answer": "A. night / knight",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q062",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following are words that sound alike?",
+    "options": {
+      "A": "one / won",
+      "B": "own / on",
+      "C": "sun / soon",
+      "D": "cut / cart"
+    },
+    "answer": "A",
+    "answer_text": "one / won",
+    "explanation": {
+      "question_restate": "Which of the following are words that sound alike?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'one / won' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'one / won'."
+      ],
+      "final_answer": "A. one / won",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q063",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair consists of homophones?",
+    "options": {
+      "A": "waist / waste",
+      "B": "west / vest",
+      "C": "wood / would",
+      "D": "both A and C"
+    },
+    "answer": "D",
+    "answer_text": "both A and C",
+    "explanation": {
+      "question_restate": "Which pair consists of homophones?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'both A and C' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'both A and C'."
+      ],
+      "final_answer": "D. both A and C",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q064",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following are sound-alike words?",
+    "options": {
+      "A": "bare / bear",
+      "B": "bid / bead",
+      "C": "luck / lock",
+      "D": "man / men"
+    },
+    "answer": "A",
+    "answer_text": "bare / bear",
+    "explanation": {
+      "question_restate": "Which of the following are sound-alike words?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'bare / bear' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'bare / bear'."
+      ],
+      "final_answer": "A. bare / bear",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q065",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair contains words that are alike in sound but different in spelling?",
+    "options": {
+      "A": "pear / pair",
+      "B": "coat / quote",
+      "C": "pool / pull",
+      "D": "deep / dip"
+    },
+    "answer": "A",
+    "answer_text": "pear / pair",
+    "explanation": {
+      "question_restate": "Which pair contains words that are alike in sound but different in spelling?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'pear / pair' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'pear / pair'."
+      ],
+      "final_answer": "A. pear / pair",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q066",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair consists of homophones?",
+    "options": {
+      "A": "hole / whole",
+      "B": "hall / hole",
+      "C": "heel / hill",
+      "D": "word / ward"
+    },
+    "answer": "A",
+    "answer_text": "hole / whole",
+    "explanation": {
+      "question_restate": "Which pair consists of homophones?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'hole / whole' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'hole / whole'."
+      ],
+      "final_answer": "A. hole / whole",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q067",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following are sound-alike words with different meanings?",
+    "options": {
+      "A": "meet / meat",
+      "B": "met / mate",
+      "C": "sit / seat",
+      "D": "bed / bead"
+    },
+    "answer": "A",
+    "answer_text": "meet / meat",
+    "explanation": {
+      "question_restate": "Which of the following are sound-alike words with different meanings?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'meet / meat' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'meet / meat'."
+      ],
+      "final_answer": "A. meet / meat",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q068",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Words that sound alike but differ in meaning/spelling",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair consists of homophones?",
+    "options": {
+      "A": "their / there",
+      "B": "these / this",
+      "C": "thin / then",
+      "D": "beer / bear"
+    },
+    "answer": "A",
+    "answer_text": "their / there",
+    "explanation": {
+      "question_restate": "Which pair consists of homophones?",
+      "principle": "Words may sound alike yet differ in meaning and spelling; such items test careful listening and vocabulary awareness together.",
+      "steps": [
+        "The main clue is sameness of pronunciation together with difference in spelling or meaning.",
+        "Among the options, 'their / there' best fits that description.",
+        "The incorrect options differ in sound or do not fully satisfy the condition stated in the question.",
+        "Therefore, the correct answer is 'their / there'."
+      ],
+      "final_answer": "A. their / there",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_alike",
+      "meaning_difference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q069",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Sound discrimination in spoken English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following pairs differs in the initial consonant sound only?",
+    "options": {
+      "A": "fan / van",
+      "B": "sit / seat",
+      "C": "cot / coat",
+      "D": "man / main"
+    },
+    "answer": "A",
+    "answer_text": "fan / van",
+    "explanation": {
+      "question_restate": "Which of the following pairs differs in the initial consonant sound only?",
+      "principle": "Sound discrimination involves hearing exactly which sound changes between two spoken forms.",
+      "steps": [
+        "In spoken English tests, you must notice whether the difference lies in the beginning, middle, or end of the word.",
+        "'fan / van' fits the sound difference described in the question.",
+        "The other options differ in other ways or contain additional sound changes.",
+        "Therefore, the correct answer is 'fan / van'."
+      ],
+      "final_answer": "A. fan / van",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_discrimination",
+      "spoken_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q070",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Sound discrimination in spoken English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair differs mainly in the vowel sound?",
+    "options": {
+      "A": "fan / van",
+      "B": "ship / sheep",
+      "C": "coat / goat",
+      "D": "bat / bad"
+    },
+    "answer": "B",
+    "answer_text": "ship / sheep",
+    "explanation": {
+      "question_restate": "Which pair differs mainly in the vowel sound?",
+      "principle": "Sound discrimination involves hearing exactly which sound changes between two spoken forms.",
+      "steps": [
+        "In spoken English tests, you must notice whether the difference lies in the beginning, middle, or end of the word.",
+        "'ship / sheep' fits the sound difference described in the question.",
+        "The other options differ in other ways or contain additional sound changes.",
+        "Therefore, the correct answer is 'ship / sheep'."
+      ],
+      "final_answer": "B. ship / sheep",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_discrimination",
+      "spoken_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q071",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Sound discrimination in spoken English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following pairs differs in the final consonant only?",
+    "options": {
+      "A": "bag / back",
+      "B": "bid / bead",
+      "C": "fan / van",
+      "D": "light / late"
+    },
+    "answer": "A",
+    "answer_text": "bag / back",
+    "explanation": {
+      "question_restate": "Which of the following pairs differs in the final consonant only?",
+      "principle": "Sound discrimination involves hearing exactly which sound changes between two spoken forms.",
+      "steps": [
+        "In spoken English tests, you must notice whether the difference lies in the beginning, middle, or end of the word.",
+        "'bag / back' fits the sound difference described in the question.",
+        "The other options differ in other ways or contain additional sound changes.",
+        "Therefore, the correct answer is 'bag / back'."
+      ],
+      "final_answer": "A. bag / back",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_discrimination",
+      "spoken_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q072",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Sound discrimination in spoken English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair contains words that differ in the presence or absence of a final consonant?",
+    "options": {
+      "A": "see / seed",
+      "B": "sit / seat",
+      "C": "pair / pear",
+      "D": "soon / son"
+    },
+    "answer": "A",
+    "answer_text": "see / seed",
+    "explanation": {
+      "question_restate": "Which pair contains words that differ in the presence or absence of a final consonant?",
+      "principle": "Sound discrimination involves hearing exactly which sound changes between two spoken forms.",
+      "steps": [
+        "In spoken English tests, you must notice whether the difference lies in the beginning, middle, or end of the word.",
+        "'see / seed' fits the sound difference described in the question.",
+        "The other options differ in other ways or contain additional sound changes.",
+        "Therefore, the correct answer is 'see / seed'."
+      ],
+      "final_answer": "A. see / seed",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_discrimination",
+      "spoken_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q073",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Sound discrimination in spoken English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair differs mainly in voicing of the initial consonant?",
+    "options": {
+      "A": "fan / van",
+      "B": "sit / seat",
+      "C": "late / light",
+      "D": "coat / court"
+    },
+    "answer": "A",
+    "answer_text": "fan / van",
+    "explanation": {
+      "question_restate": "Which pair differs mainly in voicing of the initial consonant?",
+      "principle": "Sound discrimination involves hearing exactly which sound changes between two spoken forms.",
+      "steps": [
+        "In spoken English tests, you must notice whether the difference lies in the beginning, middle, or end of the word.",
+        "'fan / van' fits the sound difference described in the question.",
+        "The other options differ in other ways or contain additional sound changes.",
+        "Therefore, the correct answer is 'fan / van'."
+      ],
+      "final_answer": "A. fan / van",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_discrimination",
+      "spoken_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q074",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Sound discrimination in spoken English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair differs mainly in vowel length?",
+    "options": {
+      "A": "full / fool",
+      "B": "fan / van",
+      "C": "thin / then",
+      "D": "coat / goat"
+    },
+    "answer": "A",
+    "answer_text": "full / fool",
+    "explanation": {
+      "question_restate": "Which pair differs mainly in vowel length?",
+      "principle": "Sound discrimination involves hearing exactly which sound changes between two spoken forms.",
+      "steps": [
+        "In spoken English tests, you must notice whether the difference lies in the beginning, middle, or end of the word.",
+        "'full / fool' fits the sound difference described in the question.",
+        "The other options differ in other ways or contain additional sound changes.",
+        "Therefore, the correct answer is 'full / fool'."
+      ],
+      "final_answer": "A. full / fool",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_discrimination",
+      "spoken_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q075",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Sound discrimination in spoken English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair differs mainly in the middle vowel sound?",
+    "options": {
+      "A": "pen / pan",
+      "B": "bag / back",
+      "C": "coat / goat",
+      "D": "fan / van"
+    },
+    "answer": "A",
+    "answer_text": "pen / pan",
+    "explanation": {
+      "question_restate": "Which pair differs mainly in the middle vowel sound?",
+      "principle": "Sound discrimination involves hearing exactly which sound changes between two spoken forms.",
+      "steps": [
+        "In spoken English tests, you must notice whether the difference lies in the beginning, middle, or end of the word.",
+        "'pen / pan' fits the sound difference described in the question.",
+        "The other options differ in other ways or contain additional sound changes.",
+        "Therefore, the correct answer is 'pen / pan'."
+      ],
+      "final_answer": "A. pen / pan",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_discrimination",
+      "spoken_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q076",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Sound discrimination in spoken English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair differs mainly in the final affricate and fricative sounds?",
+    "options": {
+      "A": "match / mash",
+      "B": "bit / beat",
+      "C": "fan / van",
+      "D": "cot / coat"
+    },
+    "answer": "A",
+    "answer_text": "match / mash",
+    "explanation": {
+      "question_restate": "Which pair differs mainly in the final affricate and fricative sounds?",
+      "principle": "Sound discrimination involves hearing exactly which sound changes between two spoken forms.",
+      "steps": [
+        "In spoken English tests, you must notice whether the difference lies in the beginning, middle, or end of the word.",
+        "'match / mash' fits the sound difference described in the question.",
+        "The other options differ in other ways or contain additional sound changes.",
+        "Therefore, the correct answer is 'match / mash'."
+      ],
+      "final_answer": "A. match / mash",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_discrimination",
+      "spoken_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q077",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Sound discrimination in spoken English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following pairs contains one word with a silent initial consonant?",
+    "options": {
+      "A": "night / light",
+      "B": "fan / van",
+      "C": "seat / sit",
+      "D": "coat / goat"
+    },
+    "answer": "A",
+    "answer_text": "night / light",
+    "explanation": {
+      "question_restate": "Which of the following pairs contains one word with a silent initial consonant?",
+      "principle": "Sound discrimination involves hearing exactly which sound changes between two spoken forms.",
+      "steps": [
+        "In spoken English tests, you must notice whether the difference lies in the beginning, middle, or end of the word.",
+        "'night / light' fits the sound difference described in the question.",
+        "The other options differ in other ways or contain additional sound changes.",
+        "Therefore, the correct answer is 'night / light'."
+      ],
+      "final_answer": "A. night / light",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_discrimination",
+      "spoken_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q078",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Sound discrimination in spoken English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair requires careful sound discrimination because the spellings look similar but the vowels differ?",
+    "options": {
+      "A": "food / good",
+      "B": "right / write",
+      "C": "sun / son",
+      "D": "mail / male"
+    },
+    "answer": "A",
+    "answer_text": "food / good",
+    "explanation": {
+      "question_restate": "Which pair requires careful sound discrimination because the spellings look similar but the vowels differ?",
+      "principle": "Sound discrimination involves hearing exactly which sound changes between two spoken forms.",
+      "steps": [
+        "In spoken English tests, you must notice whether the difference lies in the beginning, middle, or end of the word.",
+        "'food / good' fits the sound difference described in the question.",
+        "The other options differ in other ways or contain additional sound changes.",
+        "Therefore, the correct answer is 'food / good'."
+      ],
+      "final_answer": "A. food / good",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_discrimination",
+      "spoken_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q079",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Sound discrimination in spoken English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair differs mainly in the consonant sound /θ/ versus /ð/?",
+    "options": {
+      "A": "thin / then",
+      "B": "tin / den",
+      "C": "sin / zen",
+      "D": "fan / van"
+    },
+    "answer": "A",
+    "answer_text": "thin / then",
+    "explanation": {
+      "question_restate": "Which pair differs mainly in the consonant sound /θ/ versus /ð/?",
+      "principle": "Sound discrimination involves hearing exactly which sound changes between two spoken forms.",
+      "steps": [
+        "In spoken English tests, you must notice whether the difference lies in the beginning, middle, or end of the word.",
+        "'thin / then' fits the sound difference described in the question.",
+        "The other options differ in other ways or contain additional sound changes.",
+        "Therefore, the correct answer is 'thin / then'."
+      ],
+      "final_answer": "A. thin / then",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_discrimination",
+      "spoken_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q080",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Sound discrimination in spoken English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair differs mainly in /ʃ/ versus /tʃ/?",
+    "options": {
+      "A": "ship / chip",
+      "B": "sip / zip",
+      "C": "fan / van",
+      "D": "coat / goat"
+    },
+    "answer": "A",
+    "answer_text": "ship / chip",
+    "explanation": {
+      "question_restate": "Which pair differs mainly in /ʃ/ versus /tʃ/?",
+      "principle": "Sound discrimination involves hearing exactly which sound changes between two spoken forms.",
+      "steps": [
+        "In spoken English tests, you must notice whether the difference lies in the beginning, middle, or end of the word.",
+        "'ship / chip' fits the sound difference described in the question.",
+        "The other options differ in other ways or contain additional sound changes.",
+        "Therefore, the correct answer is 'ship / chip'."
+      ],
+      "final_answer": "A. ship / chip",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_discrimination",
+      "spoken_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q081",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Sound discrimination in spoken English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair differs mainly in final /m/ versus /n/?",
+    "options": {
+      "A": "sum / sun",
+      "B": "seat / seed",
+      "C": "cot / coat",
+      "D": "lead / load"
+    },
+    "answer": "A",
+    "answer_text": "sum / sun",
+    "explanation": {
+      "question_restate": "Which pair differs mainly in final /m/ versus /n/?",
+      "principle": "Sound discrimination involves hearing exactly which sound changes between two spoken forms.",
+      "steps": [
+        "In spoken English tests, you must notice whether the difference lies in the beginning, middle, or end of the word.",
+        "'sum / sun' fits the sound difference described in the question.",
+        "The other options differ in other ways or contain additional sound changes.",
+        "Therefore, the correct answer is 'sum / sun'."
+      ],
+      "final_answer": "A. sum / sun",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_discrimination",
+      "spoken_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q082",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Sound discrimination in spoken English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair differs mainly in the diphthongs /eɪ/ and /aɪ/?",
+    "options": {
+      "A": "day / die",
+      "B": "boy / buy",
+      "C": "late / let",
+      "D": "sit / seat"
+    },
+    "answer": "A",
+    "answer_text": "day / die",
+    "explanation": {
+      "question_restate": "Which pair differs mainly in the diphthongs /eɪ/ and /aɪ/?",
+      "principle": "Sound discrimination involves hearing exactly which sound changes between two spoken forms.",
+      "steps": [
+        "In spoken English tests, you must notice whether the difference lies in the beginning, middle, or end of the word.",
+        "'day / die' fits the sound difference described in the question.",
+        "The other options differ in other ways or contain additional sound changes.",
+        "Therefore, the correct answer is 'day / die'."
+      ],
+      "final_answer": "A. day / die",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_discrimination",
+      "spoken_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q083",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Sound discrimination in spoken English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair differs mainly in /ɪ/ and /iː/?",
+    "options": {
+      "A": "sit / seat",
+      "B": "fan / van",
+      "C": "coat / goat",
+      "D": "thin / then"
+    },
+    "answer": "A",
+    "answer_text": "sit / seat",
+    "explanation": {
+      "question_restate": "Which pair differs mainly in /ɪ/ and /iː/?",
+      "principle": "Sound discrimination involves hearing exactly which sound changes between two spoken forms.",
+      "steps": [
+        "In spoken English tests, you must notice whether the difference lies in the beginning, middle, or end of the word.",
+        "'sit / seat' fits the sound difference described in the question.",
+        "The other options differ in other ways or contain additional sound changes.",
+        "Therefore, the correct answer is 'sit / seat'."
+      ],
+      "final_answer": "A. sit / seat",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_discrimination",
+      "spoken_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q084",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Sound discrimination in spoken English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair differs mainly in /p/ and /b/?",
+    "options": {
+      "A": "pat / bat",
+      "B": "fan / van",
+      "C": "ship / sheep",
+      "D": "cot / caught"
+    },
+    "answer": "A",
+    "answer_text": "pat / bat",
+    "explanation": {
+      "question_restate": "Which pair differs mainly in /p/ and /b/?",
+      "principle": "Sound discrimination involves hearing exactly which sound changes between two spoken forms.",
+      "steps": [
+        "In spoken English tests, you must notice whether the difference lies in the beginning, middle, or end of the word.",
+        "'pat / bat' fits the sound difference described in the question.",
+        "The other options differ in other ways or contain additional sound changes.",
+        "Therefore, the correct answer is 'pat / bat'."
+      ],
+      "final_answer": "A. pat / bat",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "sound_discrimination",
+      "spoken_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q085",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Avoiding confusion in pronunciation-based questions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is the best strategy for answering rhyme questions correctly?",
+    "options": {
+      "A": "Rely only on spelling",
+      "B": "Compare final sounds in pronunciation",
+      "C": "Choose the longest word",
+      "D": "Ignore vowel sounds"
+    },
+    "answer": "B",
+    "answer_text": "Compare final sounds in pronunciation",
+    "explanation": {
+      "question_restate": "Which of the following is the best strategy for answering rhyme questions correctly?",
+      "principle": "Pronunciation-based questions are safest when answered by sound comparison rather than by spelling alone.",
+      "steps": [
+        "English often has irregular spelling-to-sound patterns, so visual similarity can be misleading.",
+        "'Compare final sounds in pronunciation' gives the most accurate strategy or explanation for avoiding confusion in this kind of question.",
+        "The other options encourage unsafe guessing or depend too much on spelling.",
+        "Therefore, the correct answer is 'Compare final sounds in pronunciation'."
+      ],
+      "final_answer": "B. Compare final sounds in pronunciation",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "exam_strategy",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q086",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Avoiding confusion in pronunciation-based questions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is the best strategy for identifying homophones?",
+    "options": {
+      "A": "Focus on meaning only",
+      "B": "Check whether the spellings are identical",
+      "C": "Compare the full pronunciation of the words",
+      "D": "Count the letters"
+    },
+    "answer": "C",
+    "answer_text": "Compare the full pronunciation of the words",
+    "explanation": {
+      "question_restate": "Which of the following is the best strategy for identifying homophones?",
+      "principle": "Pronunciation-based questions are safest when answered by sound comparison rather than by spelling alone.",
+      "steps": [
+        "English often has irregular spelling-to-sound patterns, so visual similarity can be misleading.",
+        "'Compare the full pronunciation of the words' gives the most accurate strategy or explanation for avoiding confusion in this kind of question.",
+        "The other options encourage unsafe guessing or depend too much on spelling.",
+        "Therefore, the correct answer is 'Compare the full pronunciation of the words'."
+      ],
+      "final_answer": "C. Compare the full pronunciation of the words",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "exam_strategy",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q087",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Avoiding confusion in pronunciation-based questions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Why is it risky to answer oral English questions by spelling alone?",
+    "options": {
+      "A": "Because spelling and pronunciation may differ",
+      "B": "Because vowels do not matter",
+      "C": "Because all words rhyme",
+      "D": "Because homophones have the same meaning"
+    },
+    "answer": "A",
+    "answer_text": "Because spelling and pronunciation may differ",
+    "explanation": {
+      "question_restate": "Why is it risky to answer oral English questions by spelling alone?",
+      "principle": "Pronunciation-based questions are safest when answered by sound comparison rather than by spelling alone.",
+      "steps": [
+        "English often has irregular spelling-to-sound patterns, so visual similarity can be misleading.",
+        "'Because spelling and pronunciation may differ' gives the most accurate strategy or explanation for avoiding confusion in this kind of question.",
+        "The other options encourage unsafe guessing or depend too much on spelling.",
+        "Therefore, the correct answer is 'Because spelling and pronunciation may differ'."
+      ],
+      "final_answer": "A. Because spelling and pronunciation may differ",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "exam_strategy",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q088",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Avoiding confusion in pronunciation-based questions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In pronunciation-based questions, what should a student do first?",
+    "options": {
+      "A": "Look for the longest option",
+      "B": "Say the words mentally and listen for the sound pattern",
+      "C": "Count the number of letters",
+      "D": "Ignore the consonants"
+    },
+    "answer": "B",
+    "answer_text": "Say the words mentally and listen for the sound pattern",
+    "explanation": {
+      "question_restate": "In pronunciation-based questions, what should a student do first?",
+      "principle": "Pronunciation-based questions are safest when answered by sound comparison rather than by spelling alone.",
+      "steps": [
+        "English often has irregular spelling-to-sound patterns, so visual similarity can be misleading.",
+        "'Say the words mentally and listen for the sound pattern' gives the most accurate strategy or explanation for avoiding confusion in this kind of question.",
+        "The other options encourage unsafe guessing or depend too much on spelling.",
+        "Therefore, the correct answer is 'Say the words mentally and listen for the sound pattern'."
+      ],
+      "final_answer": "B. Say the words mentally and listen for the sound pattern",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "exam_strategy",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q089",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Avoiding confusion in pronunciation-based questions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following helps a student avoid confusion between homophones and look-alike words?",
+    "options": {
+      "A": "Checking only the first letter",
+      "B": "Comparing the actual spoken form",
+      "C": "Choosing the more familiar spelling",
+      "D": "Ignoring word meaning entirely"
+    },
+    "answer": "B",
+    "answer_text": "Comparing the actual spoken form",
+    "explanation": {
+      "question_restate": "Which of the following helps a student avoid confusion between homophones and look-alike words?",
+      "principle": "Pronunciation-based questions are safest when answered by sound comparison rather than by spelling alone.",
+      "steps": [
+        "English often has irregular spelling-to-sound patterns, so visual similarity can be misleading.",
+        "'Comparing the actual spoken form' gives the most accurate strategy or explanation for avoiding confusion in this kind of question.",
+        "The other options encourage unsafe guessing or depend too much on spelling.",
+        "Therefore, the correct answer is 'Comparing the actual spoken form'."
+      ],
+      "final_answer": "B. Comparing the actual spoken form",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "exam_strategy",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q090",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Avoiding confusion in pronunciation-based questions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Why do 'rough' and 'though' create confusion for learners?",
+    "options": {
+      "A": "Because they always rhyme",
+      "B": "Because similar spellings can have different pronunciations",
+      "C": "Because they are homophones",
+      "D": "Because they have the same meaning"
+    },
+    "answer": "B",
+    "answer_text": "Because similar spellings can have different pronunciations",
+    "explanation": {
+      "question_restate": "Why do 'rough' and 'though' create confusion for learners?",
+      "principle": "Pronunciation-based questions are safest when answered by sound comparison rather than by spelling alone.",
+      "steps": [
+        "English often has irregular spelling-to-sound patterns, so visual similarity can be misleading.",
+        "'Because similar spellings can have different pronunciations' gives the most accurate strategy or explanation for avoiding confusion in this kind of question.",
+        "The other options encourage unsafe guessing or depend too much on spelling.",
+        "Therefore, the correct answer is 'Because similar spellings can have different pronunciations'."
+      ],
+      "final_answer": "B. Because similar spellings can have different pronunciations",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "exam_strategy",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q091",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Avoiding confusion in pronunciation-based questions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is the safest approach in rhyme recognition?",
+    "options": {
+      "A": "Assume similar spelling means similar sound",
+      "B": "Compare the stressed vowel and following sound",
+      "C": "Compare the first letter only",
+      "D": "Choose any pair with the same final letter"
+    },
+    "answer": "B",
+    "answer_text": "Compare the stressed vowel and following sound",
+    "explanation": {
+      "question_restate": "Which of the following is the safest approach in rhyme recognition?",
+      "principle": "Pronunciation-based questions are safest when answered by sound comparison rather than by spelling alone.",
+      "steps": [
+        "English often has irregular spelling-to-sound patterns, so visual similarity can be misleading.",
+        "'Compare the stressed vowel and following sound' gives the most accurate strategy or explanation for avoiding confusion in this kind of question.",
+        "The other options encourage unsafe guessing or depend too much on spelling.",
+        "Therefore, the correct answer is 'Compare the stressed vowel and following sound'."
+      ],
+      "final_answer": "B. Compare the stressed vowel and following sound",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "exam_strategy",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q092",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Avoiding confusion in pronunciation-based questions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which statement is correct about homophones?",
+    "options": {
+      "A": "They must have the same spelling",
+      "B": "They sound the same but differ in meaning or spelling",
+      "C": "They always rhyme only partly",
+      "D": "They must begin with the same consonant"
+    },
+    "answer": "B",
+    "answer_text": "They sound the same but differ in meaning or spelling",
+    "explanation": {
+      "question_restate": "Which statement is correct about homophones?",
+      "principle": "Pronunciation-based questions are safest when answered by sound comparison rather than by spelling alone.",
+      "steps": [
+        "English often has irregular spelling-to-sound patterns, so visual similarity can be misleading.",
+        "'They sound the same but differ in meaning or spelling' gives the most accurate strategy or explanation for avoiding confusion in this kind of question.",
+        "The other options encourage unsafe guessing or depend too much on spelling.",
+        "Therefore, the correct answer is 'They sound the same but differ in meaning or spelling'."
+      ],
+      "final_answer": "B. They sound the same but differ in meaning or spelling",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "exam_strategy",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q093",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Avoiding confusion in pronunciation-based questions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following should a student avoid in oral English sound questions?",
+    "options": {
+      "A": "Listening mentally to the pronunciation",
+      "B": "Checking sound classes carefully",
+      "C": "Basing the answer only on how the words look",
+      "D": "Comparing vowel and consonant patterns"
+    },
+    "answer": "C",
+    "answer_text": "Basing the answer only on how the words look",
+    "explanation": {
+      "question_restate": "Which of the following should a student avoid in oral English sound questions?",
+      "principle": "Pronunciation-based questions are safest when answered by sound comparison rather than by spelling alone.",
+      "steps": [
+        "English often has irregular spelling-to-sound patterns, so visual similarity can be misleading.",
+        "'Basing the answer only on how the words look' gives the most accurate strategy or explanation for avoiding confusion in this kind of question.",
+        "The other options encourage unsafe guessing or depend too much on spelling.",
+        "Therefore, the correct answer is 'Basing the answer only on how the words look'."
+      ],
+      "final_answer": "C. Basing the answer only on how the words look",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "exam_strategy",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q094",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Avoiding confusion in pronunciation-based questions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Why is 'see' and 'sea' a useful example in pronunciation practice?",
+    "options": {
+      "A": "Because they are spelled the same",
+      "B": "Because they show that one sound can have different spellings",
+      "C": "Because they do not rhyme",
+      "D": "Because they differ in consonants"
+    },
+    "answer": "B",
+    "answer_text": "Because they show that one sound can have different spellings",
+    "explanation": {
+      "question_restate": "Why is 'see' and 'sea' a useful example in pronunciation practice?",
+      "principle": "Pronunciation-based questions are safest when answered by sound comparison rather than by spelling alone.",
+      "steps": [
+        "English often has irregular spelling-to-sound patterns, so visual similarity can be misleading.",
+        "'Because they show that one sound can have different spellings' gives the most accurate strategy or explanation for avoiding confusion in this kind of question.",
+        "The other options encourage unsafe guessing or depend too much on spelling.",
+        "Therefore, the correct answer is 'Because they show that one sound can have different spellings'."
+      ],
+      "final_answer": "B. Because they show that one sound can have different spellings",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "exam_strategy",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q095",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Avoiding confusion in pronunciation-based questions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is the best advice for pronunciation-based questions in JAMB-style Oral English?",
+    "options": {
+      "A": "Letters are always more reliable than sounds",
+      "B": "Memorize spellings only",
+      "C": "Train your ear for sound contrast",
+      "D": "Ignore weak forms"
+    },
+    "answer": "C",
+    "answer_text": "Train your ear for sound contrast",
+    "explanation": {
+      "question_restate": "Which of the following is the best advice for pronunciation-based questions in JAMB-style Oral English?",
+      "principle": "Pronunciation-based questions are safest when answered by sound comparison rather than by spelling alone.",
+      "steps": [
+        "English often has irregular spelling-to-sound patterns, so visual similarity can be misleading.",
+        "'Train your ear for sound contrast' gives the most accurate strategy or explanation for avoiding confusion in this kind of question.",
+        "The other options encourage unsafe guessing or depend too much on spelling.",
+        "Therefore, the correct answer is 'Train your ear for sound contrast'."
+      ],
+      "final_answer": "C. Train your ear for sound contrast",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "exam_strategy",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q096",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Avoiding confusion in pronunciation-based questions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following best helps to avoid confusion between 'full' and 'fool'?",
+    "options": {
+      "A": "Checking the number of letters",
+      "B": "Listening for the difference in vowel quality and length",
+      "C": "Comparing spelling endings only",
+      "D": "Ignoring the vowels"
+    },
+    "answer": "B",
+    "answer_text": "Listening for the difference in vowel quality and length",
+    "explanation": {
+      "question_restate": "Which of the following best helps to avoid confusion between 'full' and 'fool'?",
+      "principle": "Pronunciation-based questions are safest when answered by sound comparison rather than by spelling alone.",
+      "steps": [
+        "English often has irregular spelling-to-sound patterns, so visual similarity can be misleading.",
+        "'Listening for the difference in vowel quality and length' gives the most accurate strategy or explanation for avoiding confusion in this kind of question.",
+        "The other options encourage unsafe guessing or depend too much on spelling.",
+        "Therefore, the correct answer is 'Listening for the difference in vowel quality and length'."
+      ],
+      "final_answer": "B. Listening for the difference in vowel quality and length",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "exam_strategy",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q097",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Avoiding confusion in pronunciation-based questions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is true about rhyming words?",
+    "options": {
+      "A": "They must begin with the same letter",
+      "B": "They must have identical spellings",
+      "C": "They share the same ending sound pattern",
+      "D": "They always have the same meaning"
+    },
+    "answer": "C",
+    "answer_text": "They share the same ending sound pattern",
+    "explanation": {
+      "question_restate": "Which of the following is true about rhyming words?",
+      "principle": "Pronunciation-based questions are safest when answered by sound comparison rather than by spelling alone.",
+      "steps": [
+        "English often has irregular spelling-to-sound patterns, so visual similarity can be misleading.",
+        "'They share the same ending sound pattern' gives the most accurate strategy or explanation for avoiding confusion in this kind of question.",
+        "The other options encourage unsafe guessing or depend too much on spelling.",
+        "Therefore, the correct answer is 'They share the same ending sound pattern'."
+      ],
+      "final_answer": "C. They share the same ending sound pattern",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "exam_strategy",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q098",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Avoiding confusion in pronunciation-based questions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following best helps a student answer homophone questions accurately?",
+    "options": {
+      "A": "Studying only written definitions",
+      "B": "Comparing pronunciation and then checking meaning",
+      "C": "Choosing words with identical letters",
+      "D": "Focusing only on the first syllable"
+    },
+    "answer": "B",
+    "answer_text": "Comparing pronunciation and then checking meaning",
+    "explanation": {
+      "question_restate": "Which of the following best helps a student answer homophone questions accurately?",
+      "principle": "Pronunciation-based questions are safest when answered by sound comparison rather than by spelling alone.",
+      "steps": [
+        "English often has irregular spelling-to-sound patterns, so visual similarity can be misleading.",
+        "'Comparing pronunciation and then checking meaning' gives the most accurate strategy or explanation for avoiding confusion in this kind of question.",
+        "The other options encourage unsafe guessing or depend too much on spelling.",
+        "Therefore, the correct answer is 'Comparing pronunciation and then checking meaning'."
+      ],
+      "final_answer": "B. Comparing pronunciation and then checking meaning",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "exam_strategy",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q099",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Avoiding confusion in pronunciation-based questions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Why must a student distinguish sound from spelling in oral English?",
+    "options": {
+      "A": "Because English spelling is always exact",
+      "B": "Because pronunciation questions are based on sound, not appearance",
+      "C": "Because all words are phonetic",
+      "D": "Because consonants do not matter"
+    },
+    "answer": "B",
+    "answer_text": "Because pronunciation questions are based on sound, not appearance",
+    "explanation": {
+      "question_restate": "Why must a student distinguish sound from spelling in oral English?",
+      "principle": "Pronunciation-based questions are safest when answered by sound comparison rather than by spelling alone.",
+      "steps": [
+        "English often has irregular spelling-to-sound patterns, so visual similarity can be misleading.",
+        "'Because pronunciation questions are based on sound, not appearance' gives the most accurate strategy or explanation for avoiding confusion in this kind of question.",
+        "The other options encourage unsafe guessing or depend too much on spelling.",
+        "Therefore, the correct answer is 'Because pronunciation questions are based on sound, not appearance'."
+      ],
+      "final_answer": "B. Because pronunciation questions are based on sound, not appearance",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "exam_strategy",
+      "pronunciation"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_18_q100",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_18",
+    "topic_title": "Rhymes and Homophones",
+    "subtopic": "Avoiding confusion in pronunciation-based questions",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following best explains how to avoid confusion in pronunciation-based questions?",
+    "options": {
+      "A": "Treat all similar spellings as similar sounds",
+      "B": "Use actual pronunciation as the final guide",
+      "C": "Ignore all unfamiliar words",
+      "D": "Depend on guesswork if spellings differ"
+    },
+    "answer": "B",
+    "answer_text": "Use actual pronunciation as the final guide",
+    "explanation": {
+      "question_restate": "Which of the following best explains how to avoid confusion in pronunciation-based questions?",
+      "principle": "Pronunciation-based questions are safest when answered by sound comparison rather than by spelling alone.",
+      "steps": [
+        "English often has irregular spelling-to-sound patterns, so visual similarity can be misleading.",
+        "'Use actual pronunciation as the final guide' gives the most accurate strategy or explanation for avoiding confusion in this kind of question.",
+        "The other options encourage unsafe guessing or depend too much on spelling.",
+        "Therefore, the correct answer is 'Use actual pronunciation as the final guide'."
+      ],
+      "final_answer": "B. Use actual pronunciation as the final guide",
+      "simple_explanation": "Rhymes and homophones are sound-based topics. In examinations, do not trust spelling alone; listen mentally to the pronunciation and compare the final sound pattern or the whole sound shape of the word. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "exam_strategy",
+      "pronunciation"
+    ],
+    "active": true
+  }
+]
