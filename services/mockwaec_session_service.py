@@ -348,7 +348,7 @@ async def get_latest_active_mockwaec_session_for_user(
                 updated_at
             from public.mockwaec_sessions
             where user_id = :user_id
-              and status in ('ready', 'in_progress', 'completed')
+              and status in ('ready', 'in_progress')
             order by id desc
             limit 1
         """),
