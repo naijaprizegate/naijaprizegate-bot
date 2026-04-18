@@ -1,1 +1,3602 @@
-
+[
+  {
+    "id": "eng_17_q001",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant sounds in English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words begins with the consonant sound /b/?",
+    "options": {
+      "A": "bat",
+      "B": "pat",
+      "C": "vat",
+      "D": "that"
+    },
+    "answer": "A",
+    "answer_text": "bat",
+    "explanation": {
+      "question_restate": "Which of the following words begins with the consonant sound /b/?",
+      "principle": "Consonant identification in Oral English depends on the actual sound produced, not merely on the written letter.",
+      "steps": [
+        "First identify the sound being tested in the question.",
+        "Among the options, 'bat' contains the target consonant sound in the required position.",
+        "The other options begin or end with different consonant sounds.",
+        "Therefore, the correct answer is 'bat'."
+      ],
+      "final_answer": "A. bat",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "consonants",
+      "general_identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q002",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant sounds in English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the consonant sound /k/?",
+    "options": {
+      "A": "cat",
+      "B": "gate",
+      "C": "chat",
+      "D": "jet"
+    },
+    "answer": "A",
+    "answer_text": "cat",
+    "explanation": {
+      "question_restate": "Which word begins with the consonant sound /k/?",
+      "principle": "Consonant identification in Oral English depends on the actual sound produced, not merely on the written letter.",
+      "steps": [
+        "First identify the sound being tested in the question.",
+        "Among the options, 'cat' contains the target consonant sound in the required position.",
+        "The other options begin or end with different consonant sounds.",
+        "Therefore, the correct answer is 'cat'."
+      ],
+      "final_answer": "A. cat",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "consonants",
+      "general_identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q003",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant sounds in English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words ends with the consonant sound /m/?",
+    "options": {
+      "A": "ban",
+      "B": "beam",
+      "C": "bed",
+      "D": "bag"
+    },
+    "answer": "B",
+    "answer_text": "beam",
+    "explanation": {
+      "question_restate": "Which of the following words ends with the consonant sound /m/?",
+      "principle": "Consonant identification in Oral English depends on the actual sound produced, not merely on the written letter.",
+      "steps": [
+        "First identify the sound being tested in the question.",
+        "Among the options, 'beam' contains the target consonant sound in the required position.",
+        "The other options begin or end with different consonant sounds.",
+        "Therefore, the correct answer is 'beam'."
+      ],
+      "final_answer": "B. beam",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "consonants",
+      "general_identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q004",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant sounds in English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the consonant sound /f/?",
+    "options": {
+      "A": "fan",
+      "B": "van",
+      "C": "pan",
+      "D": "tan"
+    },
+    "answer": "A",
+    "answer_text": "fan",
+    "explanation": {
+      "question_restate": "Which word begins with the consonant sound /f/?",
+      "principle": "Consonant identification in Oral English depends on the actual sound produced, not merely on the written letter.",
+      "steps": [
+        "First identify the sound being tested in the question.",
+        "Among the options, 'fan' contains the target consonant sound in the required position.",
+        "The other options begin or end with different consonant sounds.",
+        "Therefore, the correct answer is 'fan'."
+      ],
+      "final_answer": "A. fan",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "consonants",
+      "general_identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q005",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant sounds in English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words begins with /s/?",
+    "options": {
+      "A": "zoo",
+      "B": "sun",
+      "C": "ship",
+      "D": "judge"
+    },
+    "answer": "B",
+    "answer_text": "sun",
+    "explanation": {
+      "question_restate": "Which of the following words begins with /s/?",
+      "principle": "Consonant identification in Oral English depends on the actual sound produced, not merely on the written letter.",
+      "steps": [
+        "First identify the sound being tested in the question.",
+        "Among the options, 'sun' contains the target consonant sound in the required position.",
+        "The other options begin or end with different consonant sounds.",
+        "Therefore, the correct answer is 'sun'."
+      ],
+      "final_answer": "B. sun",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "consonants",
+      "general_identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q006",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant sounds in English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the consonant sound /ʃ/?",
+    "options": {
+      "A": "sip",
+      "B": "ship",
+      "C": "chip",
+      "D": "zip"
+    },
+    "answer": "B",
+    "answer_text": "ship",
+    "explanation": {
+      "question_restate": "Which word begins with the consonant sound /ʃ/?",
+      "principle": "Consonant identification in Oral English depends on the actual sound produced, not merely on the written letter.",
+      "steps": [
+        "First identify the sound being tested in the question.",
+        "Among the options, 'ship' contains the target consonant sound in the required position.",
+        "The other options begin or end with different consonant sounds.",
+        "Therefore, the correct answer is 'ship'."
+      ],
+      "final_answer": "B. ship",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "consonants",
+      "general_identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q007",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant sounds in English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the consonant sound /h/?",
+    "options": {
+      "A": "hat",
+      "B": "chat",
+      "C": "what",
+      "D": "that"
+    },
+    "answer": "A",
+    "answer_text": "hat",
+    "explanation": {
+      "question_restate": "Which word begins with the consonant sound /h/?",
+      "principle": "Consonant identification in Oral English depends on the actual sound produced, not merely on the written letter.",
+      "steps": [
+        "First identify the sound being tested in the question.",
+        "Among the options, 'hat' contains the target consonant sound in the required position.",
+        "The other options begin or end with different consonant sounds.",
+        "Therefore, the correct answer is 'hat'."
+      ],
+      "final_answer": "A. hat",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "consonants",
+      "general_identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q008",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant sounds in English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following contains the consonant sound /ŋ/ at the end?",
+    "options": {
+      "A": "sing",
+      "B": "sin",
+      "C": "sit",
+      "D": "seed"
+    },
+    "answer": "A",
+    "answer_text": "sing",
+    "explanation": {
+      "question_restate": "Which of the following contains the consonant sound /ŋ/ at the end?",
+      "principle": "Consonant identification in Oral English depends on the actual sound produced, not merely on the written letter.",
+      "steps": [
+        "First identify the sound being tested in the question.",
+        "Among the options, 'sing' contains the target consonant sound in the required position.",
+        "The other options begin or end with different consonant sounds.",
+        "Therefore, the correct answer is 'sing'."
+      ],
+      "final_answer": "A. sing",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "consonants",
+      "general_identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q009",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant sounds in English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the consonant sound /j/ as in 'yes'?",
+    "options": {
+      "A": "yam",
+      "B": "jam",
+      "C": "ham",
+      "D": "wham"
+    },
+    "answer": "A",
+    "answer_text": "yam",
+    "explanation": {
+      "question_restate": "Which word begins with the consonant sound /j/ as in 'yes'?",
+      "principle": "Consonant identification in Oral English depends on the actual sound produced, not merely on the written letter.",
+      "steps": [
+        "First identify the sound being tested in the question.",
+        "Among the options, 'yam' contains the target consonant sound in the required position.",
+        "The other options begin or end with different consonant sounds.",
+        "Therefore, the correct answer is 'yam'."
+      ],
+      "final_answer": "A. yam",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "consonants",
+      "general_identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q010",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant sounds in English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following begins with the consonant sound /w/?",
+    "options": {
+      "A": "van",
+      "B": "wan",
+      "C": "yan",
+      "D": "fan"
+    },
+    "answer": "B",
+    "answer_text": "wan",
+    "explanation": {
+      "question_restate": "Which of the following begins with the consonant sound /w/?",
+      "principle": "Consonant identification in Oral English depends on the actual sound produced, not merely on the written letter.",
+      "steps": [
+        "First identify the sound being tested in the question.",
+        "Among the options, 'wan' contains the target consonant sound in the required position.",
+        "The other options begin or end with different consonant sounds.",
+        "Therefore, the correct answer is 'wan'."
+      ],
+      "final_answer": "B. wan",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "consonants",
+      "general_identification"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q011",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Voiced and voiceless consonants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following pairs contains a voiceless consonant followed by its voiced counterpart?",
+    "options": {
+      "A": "/p/ and /b/",
+      "B": "/b/ and /p/",
+      "C": "/d/ and /t/",
+      "D": "/v/ and /f/"
+    },
+    "answer": "A",
+    "answer_text": "/p/ and /b/",
+    "explanation": {
+      "question_restate": "Which of the following pairs contains a voiceless consonant followed by its voiced counterpart?",
+      "principle": "Voiced consonants are produced with vibration of the vocal cords, while voiceless consonants are produced without that vibration.",
+      "steps": [
+        "A good way to test voicing is to place your fingers gently on your throat while pronouncing the sound.",
+        "Among the options, '/p/ and /b/' matches the correct voicing pattern asked for in the question.",
+        "The remaining options involve the wrong voicing status or the wrong class of sound.",
+        "Therefore, the correct answer is '/p/ and /b/'."
+      ],
+      "final_answer": "A. /p/ and /b/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "voicing",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q012",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Voiced and voiceless consonants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a voiced consonant?",
+    "options": {
+      "A": "/s/",
+      "B": "/f/",
+      "C": "/z/",
+      "D": "/h/"
+    },
+    "answer": "C",
+    "answer_text": "/z/",
+    "explanation": {
+      "question_restate": "Which of the following is a voiced consonant?",
+      "principle": "Voiced consonants are produced with vibration of the vocal cords, while voiceless consonants are produced without that vibration.",
+      "steps": [
+        "A good way to test voicing is to place your fingers gently on your throat while pronouncing the sound.",
+        "Among the options, '/z/' matches the correct voicing pattern asked for in the question.",
+        "The remaining options involve the wrong voicing status or the wrong class of sound.",
+        "Therefore, the correct answer is '/z/'."
+      ],
+      "final_answer": "C. /z/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "voicing",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q013",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Voiced and voiceless consonants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a voiceless consonant?",
+    "options": {
+      "A": "/v/",
+      "B": "/ð/",
+      "C": "/z/",
+      "D": "/θ/"
+    },
+    "answer": "D",
+    "answer_text": "/θ/",
+    "explanation": {
+      "question_restate": "Which of the following is a voiceless consonant?",
+      "principle": "Voiced consonants are produced with vibration of the vocal cords, while voiceless consonants are produced without that vibration.",
+      "steps": [
+        "A good way to test voicing is to place your fingers gently on your throat while pronouncing the sound.",
+        "Among the options, '/θ/' matches the correct voicing pattern asked for in the question.",
+        "The remaining options involve the wrong voicing status or the wrong class of sound.",
+        "Therefore, the correct answer is '/θ/'."
+      ],
+      "final_answer": "D. /θ/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "voicing",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q014",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Voiced and voiceless consonants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair correctly contrasts voiced and voiceless fricatives?",
+    "options": {
+      "A": "/ʃ/ and /tʃ/",
+      "B": "/f/ and /v/",
+      "C": "/m/ and /n/",
+      "D": "/l/ and /r/"
+    },
+    "answer": "B",
+    "answer_text": "/f/ and /v/",
+    "explanation": {
+      "question_restate": "Which pair correctly contrasts voiced and voiceless fricatives?",
+      "principle": "Voiced consonants are produced with vibration of the vocal cords, while voiceless consonants are produced without that vibration.",
+      "steps": [
+        "A good way to test voicing is to place your fingers gently on your throat while pronouncing the sound.",
+        "Among the options, '/f/ and /v/' matches the correct voicing pattern asked for in the question.",
+        "The remaining options involve the wrong voicing status or the wrong class of sound.",
+        "Therefore, the correct answer is '/f/ and /v/'."
+      ],
+      "final_answer": "B. /f/ and /v/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "voicing",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q015",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Voiced and voiceless consonants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following sounds is voiced?",
+    "options": {
+      "A": "/p/",
+      "B": "/t/",
+      "C": "/g/",
+      "D": "/k/"
+    },
+    "answer": "C",
+    "answer_text": "/g/",
+    "explanation": {
+      "question_restate": "Which of the following sounds is voiced?",
+      "principle": "Voiced consonants are produced with vibration of the vocal cords, while voiceless consonants are produced without that vibration.",
+      "steps": [
+        "A good way to test voicing is to place your fingers gently on your throat while pronouncing the sound.",
+        "Among the options, '/g/' matches the correct voicing pattern asked for in the question.",
+        "The remaining options involve the wrong voicing status or the wrong class of sound.",
+        "Therefore, the correct answer is '/g/'."
+      ],
+      "final_answer": "C. /g/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "voicing",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q016",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Voiced and voiceless consonants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following sounds is voiceless?",
+    "options": {
+      "A": "/b/",
+      "B": "/d/",
+      "C": "/g/",
+      "D": "/ʃ/"
+    },
+    "answer": "D",
+    "answer_text": "/ʃ/",
+    "explanation": {
+      "question_restate": "Which of the following sounds is voiceless?",
+      "principle": "Voiced consonants are produced with vibration of the vocal cords, while voiceless consonants are produced without that vibration.",
+      "steps": [
+        "A good way to test voicing is to place your fingers gently on your throat while pronouncing the sound.",
+        "Among the options, '/ʃ/' matches the correct voicing pattern asked for in the question.",
+        "The remaining options involve the wrong voicing status or the wrong class of sound.",
+        "Therefore, the correct answer is '/ʃ/'."
+      ],
+      "final_answer": "D. /ʃ/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "voicing",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q017",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Voiced and voiceless consonants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair consists of a voiceless and a voiced dental fricative?",
+    "options": {
+      "A": "/θ/ and /ð/",
+      "B": "/s/ and /z/",
+      "C": "/f/ and /v/",
+      "D": "/t/ and /d/"
+    },
+    "answer": "A",
+    "answer_text": "/θ/ and /ð/",
+    "explanation": {
+      "question_restate": "Which pair consists of a voiceless and a voiced dental fricative?",
+      "principle": "Voiced consonants are produced with vibration of the vocal cords, while voiceless consonants are produced without that vibration.",
+      "steps": [
+        "A good way to test voicing is to place your fingers gently on your throat while pronouncing the sound.",
+        "Among the options, '/θ/ and /ð/' matches the correct voicing pattern asked for in the question.",
+        "The remaining options involve the wrong voicing status or the wrong class of sound.",
+        "Therefore, the correct answer is '/θ/ and /ð/'."
+      ],
+      "final_answer": "A. /θ/ and /ð/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "voicing",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q018",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Voiced and voiceless consonants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following pairs differs mainly in voicing?",
+    "options": {
+      "A": "fan / van",
+      "B": "sit / seat",
+      "C": "cot / coat",
+      "D": "pen / pan"
+    },
+    "answer": "A",
+    "answer_text": "fan / van",
+    "explanation": {
+      "question_restate": "Which of the following pairs differs mainly in voicing?",
+      "principle": "Voiced consonants are produced with vibration of the vocal cords, while voiceless consonants are produced without that vibration.",
+      "steps": [
+        "A good way to test voicing is to place your fingers gently on your throat while pronouncing the sound.",
+        "Among the options, 'fan / van' matches the correct voicing pattern asked for in the question.",
+        "The remaining options involve the wrong voicing status or the wrong class of sound.",
+        "Therefore, the correct answer is 'fan / van'."
+      ],
+      "final_answer": "A. fan / van",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "voicing",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q019",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Voiced and voiceless consonants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which consonant is the voiced partner of /t/?",
+    "options": {
+      "A": "/k/",
+      "B": "/d/",
+      "C": "/p/",
+      "D": "/g/"
+    },
+    "answer": "B",
+    "answer_text": "/d/",
+    "explanation": {
+      "question_restate": "Which consonant is the voiced partner of /t/?",
+      "principle": "Voiced consonants are produced with vibration of the vocal cords, while voiceless consonants are produced without that vibration.",
+      "steps": [
+        "A good way to test voicing is to place your fingers gently on your throat while pronouncing the sound.",
+        "Among the options, '/d/' matches the correct voicing pattern asked for in the question.",
+        "The remaining options involve the wrong voicing status or the wrong class of sound.",
+        "Therefore, the correct answer is '/d/'."
+      ],
+      "final_answer": "B. /d/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "voicing",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q020",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Voiced and voiceless consonants",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which consonant is the voiceless partner of /ʒ/?",
+    "options": {
+      "A": "/ʃ/",
+      "B": "/dʒ/",
+      "C": "/z/",
+      "D": "/v/"
+    },
+    "answer": "A",
+    "answer_text": "/ʃ/",
+    "explanation": {
+      "question_restate": "Which consonant is the voiceless partner of /ʒ/?",
+      "principle": "Voiced consonants are produced with vibration of the vocal cords, while voiceless consonants are produced without that vibration.",
+      "steps": [
+        "A good way to test voicing is to place your fingers gently on your throat while pronouncing the sound.",
+        "Among the options, '/ʃ/' matches the correct voicing pattern asked for in the question.",
+        "The remaining options involve the wrong voicing status or the wrong class of sound.",
+        "Therefore, the correct answer is '/ʃ/'."
+      ],
+      "final_answer": "A. /ʃ/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "voicing",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q021",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant clusters",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words begins with a consonant cluster?",
+    "options": {
+      "A": "spin",
+      "B": "sip",
+      "C": "sun",
+      "D": "sin"
+    },
+    "answer": "A",
+    "answer_text": "spin",
+    "explanation": {
+      "question_restate": "Which of the following words begins with a consonant cluster?",
+      "principle": "A consonant cluster is a sequence of two or more consonant sounds occurring together without a vowel between them.",
+      "steps": [
+        "To answer this kind of question, listen for how many consonant sounds occur together at the beginning or end of the word.",
+        "'spin' contains the cluster asked for.",
+        "The other options either have fewer consonants together or contain a different cluster.",
+        "Therefore, the correct answer is 'spin'."
+      ],
+      "final_answer": "A. spin",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "clusters",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q022",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant clusters",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word contains a final consonant cluster?",
+    "options": {
+      "A": "see",
+      "B": "desk",
+      "C": "say",
+      "D": "so"
+    },
+    "answer": "B",
+    "answer_text": "desk",
+    "explanation": {
+      "question_restate": "Which word contains a final consonant cluster?",
+      "principle": "A consonant cluster is a sequence of two or more consonant sounds occurring together without a vowel between them.",
+      "steps": [
+        "To answer this kind of question, listen for how many consonant sounds occur together at the beginning or end of the word.",
+        "'desk' contains the cluster asked for.",
+        "The other options either have fewer consonants together or contain a different cluster.",
+        "Therefore, the correct answer is 'desk'."
+      ],
+      "final_answer": "B. desk",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "clusters",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q023",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant clusters",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words begins with the cluster /pl/?",
+    "options": {
+      "A": "play",
+      "B": "pay",
+      "C": "pray",
+      "D": "clay"
+    },
+    "answer": "A",
+    "answer_text": "play",
+    "explanation": {
+      "question_restate": "Which of the following words begins with the cluster /pl/?",
+      "principle": "A consonant cluster is a sequence of two or more consonant sounds occurring together without a vowel between them.",
+      "steps": [
+        "To answer this kind of question, listen for how many consonant sounds occur together at the beginning or end of the word.",
+        "'play' contains the cluster asked for.",
+        "The other options either have fewer consonants together or contain a different cluster.",
+        "Therefore, the correct answer is 'play'."
+      ],
+      "final_answer": "A. play",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "clusters",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q024",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant clusters",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the cluster /str/?",
+    "options": {
+      "A": "street",
+      "B": "seat",
+      "C": "sheet",
+      "D": "state"
+    },
+    "answer": "A",
+    "answer_text": "street",
+    "explanation": {
+      "question_restate": "Which word begins with the cluster /str/?",
+      "principle": "A consonant cluster is a sequence of two or more consonant sounds occurring together without a vowel between them.",
+      "steps": [
+        "To answer this kind of question, listen for how many consonant sounds occur together at the beginning or end of the word.",
+        "'street' contains the cluster asked for.",
+        "The other options either have fewer consonants together or contain a different cluster.",
+        "Therefore, the correct answer is 'street'."
+      ],
+      "final_answer": "A. street",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "clusters",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q025",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant clusters",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following contains the cluster /bl/?",
+    "options": {
+      "A": "blue",
+      "B": "glue",
+      "C": "true",
+      "D": "few"
+    },
+    "answer": "A",
+    "answer_text": "blue",
+    "explanation": {
+      "question_restate": "Which of the following contains the cluster /bl/?",
+      "principle": "A consonant cluster is a sequence of two or more consonant sounds occurring together without a vowel between them.",
+      "steps": [
+        "To answer this kind of question, listen for how many consonant sounds occur together at the beginning or end of the word.",
+        "'blue' contains the cluster asked for.",
+        "The other options either have fewer consonants together or contain a different cluster.",
+        "Therefore, the correct answer is 'blue'."
+      ],
+      "final_answer": "A. blue",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "clusters",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q026",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant clusters",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word contains the final cluster /mp/?",
+    "options": {
+      "A": "map",
+      "B": "lamp",
+      "C": "lap",
+      "D": "lime"
+    },
+    "answer": "B",
+    "answer_text": "lamp",
+    "explanation": {
+      "question_restate": "Which word contains the final cluster /mp/?",
+      "principle": "A consonant cluster is a sequence of two or more consonant sounds occurring together without a vowel between them.",
+      "steps": [
+        "To answer this kind of question, listen for how many consonant sounds occur together at the beginning or end of the word.",
+        "'lamp' contains the cluster asked for.",
+        "The other options either have fewer consonants together or contain a different cluster.",
+        "Therefore, the correct answer is 'lamp'."
+      ],
+      "final_answer": "B. lamp",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "clusters",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q027",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant clusters",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words begins with the cluster /tr/?",
+    "options": {
+      "A": "tree",
+      "B": "tea",
+      "C": "three",
+      "D": "free"
+    },
+    "answer": "A",
+    "answer_text": "tree",
+    "explanation": {
+      "question_restate": "Which of the following words begins with the cluster /tr/?",
+      "principle": "A consonant cluster is a sequence of two or more consonant sounds occurring together without a vowel between them.",
+      "steps": [
+        "To answer this kind of question, listen for how many consonant sounds occur together at the beginning or end of the word.",
+        "'tree' contains the cluster asked for.",
+        "The other options either have fewer consonants together or contain a different cluster.",
+        "Therefore, the correct answer is 'tree'."
+      ],
+      "final_answer": "A. tree",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "clusters",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q028",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant clusters",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word contains the final consonant cluster /nd/?",
+    "options": {
+      "A": "hand",
+      "B": "ham",
+      "C": "hat",
+      "D": "hen"
+    },
+    "answer": "A",
+    "answer_text": "hand",
+    "explanation": {
+      "question_restate": "Which word contains the final consonant cluster /nd/?",
+      "principle": "A consonant cluster is a sequence of two or more consonant sounds occurring together without a vowel between them.",
+      "steps": [
+        "To answer this kind of question, listen for how many consonant sounds occur together at the beginning or end of the word.",
+        "'hand' contains the cluster asked for.",
+        "The other options either have fewer consonants together or contain a different cluster.",
+        "Therefore, the correct answer is 'hand'."
+      ],
+      "final_answer": "A. hand",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "clusters",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q029",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant clusters",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the consonant cluster /sk/?",
+    "options": {
+      "A": "school",
+      "B": "cool",
+      "C": "tool",
+      "D": "fool"
+    },
+    "answer": "A",
+    "answer_text": "school",
+    "explanation": {
+      "question_restate": "Which word begins with the consonant cluster /sk/?",
+      "principle": "A consonant cluster is a sequence of two or more consonant sounds occurring together without a vowel between them.",
+      "steps": [
+        "To answer this kind of question, listen for how many consonant sounds occur together at the beginning or end of the word.",
+        "'school' contains the cluster asked for.",
+        "The other options either have fewer consonants together or contain a different cluster.",
+        "Therefore, the correct answer is 'school'."
+      ],
+      "final_answer": "A. school",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "clusters",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q030",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Consonant clusters",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words begins with a three-consonant cluster?",
+    "options": {
+      "A": "stop",
+      "B": "top",
+      "C": "shop",
+      "D": "soap"
+    },
+    "answer": "A",
+    "answer_text": "stop",
+    "explanation": {
+      "question_restate": "Which of the following words begins with a three-consonant cluster?",
+      "principle": "A consonant cluster is a sequence of two or more consonant sounds occurring together without a vowel between them.",
+      "steps": [
+        "To answer this kind of question, listen for how many consonant sounds occur together at the beginning or end of the word.",
+        "'stop' contains the cluster asked for.",
+        "The other options either have fewer consonants together or contain a different cluster.",
+        "Therefore, the correct answer is 'stop'."
+      ],
+      "final_answer": "A. stop",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "clusters",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q031",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Nasal sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a nasal consonant?",
+    "options": {
+      "A": "/m/",
+      "B": "/s/",
+      "C": "/t/",
+      "D": "/f/"
+    },
+    "answer": "A",
+    "answer_text": "/m/",
+    "explanation": {
+      "question_restate": "Which of the following is a nasal consonant?",
+      "principle": "Nasal consonants are produced when air passes through the nose because the mouth passage is fully blocked at some point.",
+      "steps": [
+        "English has three main nasal consonants commonly taught in Oral English: /m/, /n/, and /ŋ/.",
+        "In this question, '/m/' best matches the nasal sound or word pattern being tested.",
+        "The other options belong to different consonant classes or contain different places of articulation.",
+        "Therefore, the correct answer is '/m/'."
+      ],
+      "final_answer": "A. /m/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "nasals",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q032",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Nasal sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with a nasal consonant?",
+    "options": {
+      "A": "man",
+      "B": "fan",
+      "C": "van",
+      "D": "tan"
+    },
+    "answer": "A",
+    "answer_text": "man",
+    "explanation": {
+      "question_restate": "Which word begins with a nasal consonant?",
+      "principle": "Nasal consonants are produced when air passes through the nose because the mouth passage is fully blocked at some point.",
+      "steps": [
+        "English has three main nasal consonants commonly taught in Oral English: /m/, /n/, and /ŋ/.",
+        "In this question, 'man' best matches the nasal sound or word pattern being tested.",
+        "The other options belong to different consonant classes or contain different places of articulation.",
+        "Therefore, the correct answer is 'man'."
+      ],
+      "final_answer": "A. man",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "nasals",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q033",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Nasal sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word ends with the nasal consonant /n/?",
+    "options": {
+      "A": "sun",
+      "B": "suit",
+      "C": "seat",
+      "D": "soap"
+    },
+    "answer": "A",
+    "answer_text": "sun",
+    "explanation": {
+      "question_restate": "Which word ends with the nasal consonant /n/?",
+      "principle": "Nasal consonants are produced when air passes through the nose because the mouth passage is fully blocked at some point.",
+      "steps": [
+        "English has three main nasal consonants commonly taught in Oral English: /m/, /n/, and /ŋ/.",
+        "In this question, 'sun' best matches the nasal sound or word pattern being tested.",
+        "The other options belong to different consonant classes or contain different places of articulation.",
+        "Therefore, the correct answer is 'sun'."
+      ],
+      "final_answer": "A. sun",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "nasals",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q034",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Nasal sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words contains the nasal /ŋ/?",
+    "options": {
+      "A": "sing",
+      "B": "sin",
+      "C": "seed",
+      "D": "seat"
+    },
+    "answer": "A",
+    "answer_text": "sing",
+    "explanation": {
+      "question_restate": "Which of the following words contains the nasal /ŋ/?",
+      "principle": "Nasal consonants are produced when air passes through the nose because the mouth passage is fully blocked at some point.",
+      "steps": [
+        "English has three main nasal consonants commonly taught in Oral English: /m/, /n/, and /ŋ/.",
+        "In this question, 'sing' best matches the nasal sound or word pattern being tested.",
+        "The other options belong to different consonant classes or contain different places of articulation.",
+        "Therefore, the correct answer is 'sing'."
+      ],
+      "final_answer": "A. sing",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "nasals",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q035",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Nasal sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which set contains only nasal consonants?",
+    "options": {
+      "A": "/m, n, ŋ/",
+      "B": "/f, v, s/",
+      "C": "/p, b, t/",
+      "D": "/l, r, w/"
+    },
+    "answer": "A",
+    "answer_text": "/m, n, ŋ/",
+    "explanation": {
+      "question_restate": "Which set contains only nasal consonants?",
+      "principle": "Nasal consonants are produced when air passes through the nose because the mouth passage is fully blocked at some point.",
+      "steps": [
+        "English has three main nasal consonants commonly taught in Oral English: /m/, /n/, and /ŋ/.",
+        "In this question, '/m, n, ŋ/' best matches the nasal sound or word pattern being tested.",
+        "The other options belong to different consonant classes or contain different places of articulation.",
+        "Therefore, the correct answer is '/m, n, ŋ/'."
+      ],
+      "final_answer": "A. /m, n, ŋ/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "nasals",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q036",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Nasal sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with /n/?",
+    "options": {
+      "A": "near",
+      "B": "year",
+      "C": "gear",
+      "D": "dear"
+    },
+    "answer": "A",
+    "answer_text": "near",
+    "explanation": {
+      "question_restate": "Which word begins with /n/?",
+      "principle": "Nasal consonants are produced when air passes through the nose because the mouth passage is fully blocked at some point.",
+      "steps": [
+        "English has three main nasal consonants commonly taught in Oral English: /m/, /n/, and /ŋ/.",
+        "In this question, 'near' best matches the nasal sound or word pattern being tested.",
+        "The other options belong to different consonant classes or contain different places of articulation.",
+        "Therefore, the correct answer is 'near'."
+      ],
+      "final_answer": "A. near",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "nasals",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q037",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Nasal sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word contains /m/ as its final consonant sound?",
+    "options": {
+      "A": "same",
+      "B": "seam",
+      "C": "seem",
+      "D": "sum"
+    },
+    "answer": "D",
+    "answer_text": "sum",
+    "explanation": {
+      "question_restate": "Which word contains /m/ as its final consonant sound?",
+      "principle": "Nasal consonants are produced when air passes through the nose because the mouth passage is fully blocked at some point.",
+      "steps": [
+        "English has three main nasal consonants commonly taught in Oral English: /m/, /n/, and /ŋ/.",
+        "In this question, 'sum' best matches the nasal sound or word pattern being tested.",
+        "The other options belong to different consonant classes or contain different places of articulation.",
+        "Therefore, the correct answer is 'sum'."
+      ],
+      "final_answer": "D. sum",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "nasals",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q038",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Nasal sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word contains the same final nasal sound as 'sing'?",
+    "options": {
+      "A": "ring",
+      "B": "ran",
+      "C": "rim",
+      "D": "red"
+    },
+    "answer": "A",
+    "answer_text": "ring",
+    "explanation": {
+      "question_restate": "Which word contains the same final nasal sound as 'sing'?",
+      "principle": "Nasal consonants are produced when air passes through the nose because the mouth passage is fully blocked at some point.",
+      "steps": [
+        "English has three main nasal consonants commonly taught in Oral English: /m/, /n/, and /ŋ/.",
+        "In this question, 'ring' best matches the nasal sound or word pattern being tested.",
+        "The other options belong to different consonant classes or contain different places of articulation.",
+        "Therefore, the correct answer is 'ring'."
+      ],
+      "final_answer": "A. ring",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "nasals",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q039",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Nasal sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which nasal sound is made with the lips fully closed?",
+    "options": {
+      "A": "/n/",
+      "B": "/m/",
+      "C": "/ŋ/",
+      "D": "/l/"
+    },
+    "answer": "B",
+    "answer_text": "/m/",
+    "explanation": {
+      "question_restate": "Which nasal sound is made with the lips fully closed?",
+      "principle": "Nasal consonants are produced when air passes through the nose because the mouth passage is fully blocked at some point.",
+      "steps": [
+        "English has three main nasal consonants commonly taught in Oral English: /m/, /n/, and /ŋ/.",
+        "In this question, '/m/' best matches the nasal sound or word pattern being tested.",
+        "The other options belong to different consonant classes or contain different places of articulation.",
+        "Therefore, the correct answer is '/m/'."
+      ],
+      "final_answer": "B. /m/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "nasals",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q040",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Nasal sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which nasal sound is made at the back of the mouth?",
+    "options": {
+      "A": "/m/",
+      "B": "/n/",
+      "C": "/ŋ/",
+      "D": "/w/"
+    },
+    "answer": "C",
+    "answer_text": "/ŋ/",
+    "explanation": {
+      "question_restate": "Which nasal sound is made at the back of the mouth?",
+      "principle": "Nasal consonants are produced when air passes through the nose because the mouth passage is fully blocked at some point.",
+      "steps": [
+        "English has three main nasal consonants commonly taught in Oral English: /m/, /n/, and /ŋ/.",
+        "In this question, '/ŋ/' best matches the nasal sound or word pattern being tested.",
+        "The other options belong to different consonant classes or contain different places of articulation.",
+        "Therefore, the correct answer is '/ŋ/'."
+      ],
+      "final_answer": "C. /ŋ/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "nasals",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q041",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Fricatives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a fricative?",
+    "options": {
+      "A": "/f/",
+      "B": "/b/",
+      "C": "/m/",
+      "D": "/l/"
+    },
+    "answer": "A",
+    "answer_text": "/f/",
+    "explanation": {
+      "question_restate": "Which of the following is a fricative?",
+      "principle": "Fricatives are produced when air passes through a narrow opening and creates audible friction.",
+      "steps": [
+        "Common English fricatives include /f, v, s, z, ʃ, ʒ, θ, ð, h/.",
+        "Among the options, '/f/' fits the fricative description or contains the required fricative sound.",
+        "The others belong to different consonant types or contain the wrong target sound.",
+        "Therefore, the correct answer is '/f/'."
+      ],
+      "final_answer": "A. /f/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "fricatives",
+      "consonant_class"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q042",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Fricatives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair contains only fricatives?",
+    "options": {
+      "A": "/f/ and /v/",
+      "B": "/p/ and /b/",
+      "C": "/m/ and /n/",
+      "D": "/l/ and /r/"
+    },
+    "answer": "A",
+    "answer_text": "/f/ and /v/",
+    "explanation": {
+      "question_restate": "Which pair contains only fricatives?",
+      "principle": "Fricatives are produced when air passes through a narrow opening and creates audible friction.",
+      "steps": [
+        "Common English fricatives include /f, v, s, z, ʃ, ʒ, θ, ð, h/.",
+        "Among the options, '/f/ and /v/' fits the fricative description or contains the required fricative sound.",
+        "The others belong to different consonant types or contain the wrong target sound.",
+        "Therefore, the correct answer is '/f/ and /v/'."
+      ],
+      "final_answer": "A. /f/ and /v/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "fricatives",
+      "consonant_class"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q043",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Fricatives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the fricative /z/?",
+    "options": {
+      "A": "zip",
+      "B": "sip",
+      "C": "chip",
+      "D": "tip"
+    },
+    "answer": "A",
+    "answer_text": "zip",
+    "explanation": {
+      "question_restate": "Which word begins with the fricative /z/?",
+      "principle": "Fricatives are produced when air passes through a narrow opening and creates audible friction.",
+      "steps": [
+        "Common English fricatives include /f, v, s, z, ʃ, ʒ, θ, ð, h/.",
+        "Among the options, 'zip' fits the fricative description or contains the required fricative sound.",
+        "The others belong to different consonant types or contain the wrong target sound.",
+        "Therefore, the correct answer is 'zip'."
+      ],
+      "final_answer": "A. zip",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "fricatives",
+      "consonant_class"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q044",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Fricatives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words begins with the fricative /ʃ/?",
+    "options": {
+      "A": "ship",
+      "B": "chip",
+      "C": "sip",
+      "D": "tip"
+    },
+    "answer": "A",
+    "answer_text": "ship",
+    "explanation": {
+      "question_restate": "Which of the following words begins with the fricative /ʃ/?",
+      "principle": "Fricatives are produced when air passes through a narrow opening and creates audible friction.",
+      "steps": [
+        "Common English fricatives include /f, v, s, z, ʃ, ʒ, θ, ð, h/.",
+        "Among the options, 'ship' fits the fricative description or contains the required fricative sound.",
+        "The others belong to different consonant types or contain the wrong target sound.",
+        "Therefore, the correct answer is 'ship'."
+      ],
+      "final_answer": "A. ship",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "fricatives",
+      "consonant_class"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q045",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Fricatives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which sound is a voiced fricative?",
+    "options": {
+      "A": "/s/",
+      "B": "/ʃ/",
+      "C": "/z/",
+      "D": "/t/"
+    },
+    "answer": "C",
+    "answer_text": "/z/",
+    "explanation": {
+      "question_restate": "Which sound is a voiced fricative?",
+      "principle": "Fricatives are produced when air passes through a narrow opening and creates audible friction.",
+      "steps": [
+        "Common English fricatives include /f, v, s, z, ʃ, ʒ, θ, ð, h/.",
+        "Among the options, '/z/' fits the fricative description or contains the required fricative sound.",
+        "The others belong to different consonant types or contain the wrong target sound.",
+        "Therefore, the correct answer is '/z/'."
+      ],
+      "final_answer": "C. /z/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "fricatives",
+      "consonant_class"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q046",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Fricatives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the dental fricative /θ/?",
+    "options": {
+      "A": "then",
+      "B": "thin",
+      "C": "den",
+      "D": "tin"
+    },
+    "answer": "B",
+    "answer_text": "thin",
+    "explanation": {
+      "question_restate": "Which word begins with the dental fricative /θ/?",
+      "principle": "Fricatives are produced when air passes through a narrow opening and creates audible friction.",
+      "steps": [
+        "Common English fricatives include /f, v, s, z, ʃ, ʒ, θ, ð, h/.",
+        "Among the options, 'thin' fits the fricative description or contains the required fricative sound.",
+        "The others belong to different consonant types or contain the wrong target sound.",
+        "Therefore, the correct answer is 'thin'."
+      ],
+      "final_answer": "B. thin",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "fricatives",
+      "consonant_class"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q047",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Fricatives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the voiced dental fricative /ð/?",
+    "options": {
+      "A": "then",
+      "B": "thin",
+      "C": "ten",
+      "D": "zen"
+    },
+    "answer": "A",
+    "answer_text": "then",
+    "explanation": {
+      "question_restate": "Which word begins with the voiced dental fricative /ð/?",
+      "principle": "Fricatives are produced when air passes through a narrow opening and creates audible friction.",
+      "steps": [
+        "Common English fricatives include /f, v, s, z, ʃ, ʒ, θ, ð, h/.",
+        "Among the options, 'then' fits the fricative description or contains the required fricative sound.",
+        "The others belong to different consonant types or contain the wrong target sound.",
+        "Therefore, the correct answer is 'then'."
+      ],
+      "final_answer": "A. then",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "fricatives",
+      "consonant_class"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q048",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Fricatives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following contains the fricative /h/?",
+    "options": {
+      "A": "hat",
+      "B": "chat",
+      "C": "that",
+      "D": "what"
+    },
+    "answer": "A",
+    "answer_text": "hat",
+    "explanation": {
+      "question_restate": "Which of the following contains the fricative /h/?",
+      "principle": "Fricatives are produced when air passes through a narrow opening and creates audible friction.",
+      "steps": [
+        "Common English fricatives include /f, v, s, z, ʃ, ʒ, θ, ð, h/.",
+        "Among the options, 'hat' fits the fricative description or contains the required fricative sound.",
+        "The others belong to different consonant types or contain the wrong target sound.",
+        "Therefore, the correct answer is 'hat'."
+      ],
+      "final_answer": "A. hat",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "fricatives",
+      "consonant_class"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q049",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Fricatives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair contrasts voiceless and voiced labiodental fricatives?",
+    "options": {
+      "A": "/f/ and /v/",
+      "B": "/s/ and /z/",
+      "C": "/t/ and /d/",
+      "D": "/k/ and /g/"
+    },
+    "answer": "A",
+    "answer_text": "/f/ and /v/",
+    "explanation": {
+      "question_restate": "Which pair contrasts voiceless and voiced labiodental fricatives?",
+      "principle": "Fricatives are produced when air passes through a narrow opening and creates audible friction.",
+      "steps": [
+        "Common English fricatives include /f, v, s, z, ʃ, ʒ, θ, ð, h/.",
+        "Among the options, '/f/ and /v/' fits the fricative description or contains the required fricative sound.",
+        "The others belong to different consonant types or contain the wrong target sound.",
+        "Therefore, the correct answer is '/f/ and /v/'."
+      ],
+      "final_answer": "A. /f/ and /v/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "fricatives",
+      "consonant_class"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q050",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Fricatives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word contains the fricative /ʒ/ as in 'measure'?",
+    "options": {
+      "A": "pleasure",
+      "B": "mission",
+      "C": "nature",
+      "D": "machine"
+    },
+    "answer": "A",
+    "answer_text": "pleasure",
+    "explanation": {
+      "question_restate": "Which word contains the fricative /ʒ/ as in 'measure'?",
+      "principle": "Fricatives are produced when air passes through a narrow opening and creates audible friction.",
+      "steps": [
+        "Common English fricatives include /f, v, s, z, ʃ, ʒ, θ, ð, h/.",
+        "Among the options, 'pleasure' fits the fricative description or contains the required fricative sound.",
+        "The others belong to different consonant types or contain the wrong target sound.",
+        "Therefore, the correct answer is 'pleasure'."
+      ],
+      "final_answer": "A. pleasure",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "fricatives",
+      "consonant_class"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q051",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Plosives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a plosive?",
+    "options": {
+      "A": "/p/",
+      "B": "/s/",
+      "C": "/m/",
+      "D": "/l/"
+    },
+    "answer": "A",
+    "answer_text": "/p/",
+    "explanation": {
+      "question_restate": "Which of the following is a plosive?",
+      "principle": "Plosives, also called stops, are produced by completely blocking the airflow and then releasing it suddenly.",
+      "steps": [
+        "The main English plosives are /p, b, t, d, k, g/.",
+        "In this question, '/p/' correctly identifies the plosive sound or word example required.",
+        "The other options either belong to another sound class or represent the wrong place or voicing feature.",
+        "Therefore, the correct answer is '/p/'."
+      ],
+      "final_answer": "A. /p/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "plosives",
+      "stops"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q052",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Plosives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which set contains only plosives?",
+    "options": {
+      "A": "/p, b, t, d, k, g/",
+      "B": "/f, v, s, z/",
+      "C": "/m, n, ŋ/",
+      "D": "/l, r, w, j/"
+    },
+    "answer": "A",
+    "answer_text": "/p, b, t, d, k, g/",
+    "explanation": {
+      "question_restate": "Which set contains only plosives?",
+      "principle": "Plosives, also called stops, are produced by completely blocking the airflow and then releasing it suddenly.",
+      "steps": [
+        "The main English plosives are /p, b, t, d, k, g/.",
+        "In this question, '/p, b, t, d, k, g/' correctly identifies the plosive sound or word example required.",
+        "The other options either belong to another sound class or represent the wrong place or voicing feature.",
+        "Therefore, the correct answer is '/p, b, t, d, k, g/'."
+      ],
+      "final_answer": "A. /p, b, t, d, k, g/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "plosives",
+      "stops"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q053",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Plosives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the voiceless plosive /k/?",
+    "options": {
+      "A": "cat",
+      "B": "gate",
+      "C": "chat",
+      "D": "hat"
+    },
+    "answer": "A",
+    "answer_text": "cat",
+    "explanation": {
+      "question_restate": "Which word begins with the voiceless plosive /k/?",
+      "principle": "Plosives, also called stops, are produced by completely blocking the airflow and then releasing it suddenly.",
+      "steps": [
+        "The main English plosives are /p, b, t, d, k, g/.",
+        "In this question, 'cat' correctly identifies the plosive sound or word example required.",
+        "The other options either belong to another sound class or represent the wrong place or voicing feature.",
+        "Therefore, the correct answer is 'cat'."
+      ],
+      "final_answer": "A. cat",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "plosives",
+      "stops"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q054",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Plosives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the voiced plosive /g/?",
+    "options": {
+      "A": "coat",
+      "B": "goat",
+      "C": "boat",
+      "D": "vote"
+    },
+    "answer": "B",
+    "answer_text": "goat",
+    "explanation": {
+      "question_restate": "Which word begins with the voiced plosive /g/?",
+      "principle": "Plosives, also called stops, are produced by completely blocking the airflow and then releasing it suddenly.",
+      "steps": [
+        "The main English plosives are /p, b, t, d, k, g/.",
+        "In this question, 'goat' correctly identifies the plosive sound or word example required.",
+        "The other options either belong to another sound class or represent the wrong place or voicing feature.",
+        "Therefore, the correct answer is 'goat'."
+      ],
+      "final_answer": "B. goat",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "plosives",
+      "stops"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q055",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Plosives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair contains a voiceless and a voiced bilabial plosive?",
+    "options": {
+      "A": "/p/ and /b/",
+      "B": "/t/ and /d/",
+      "C": "/k/ and /g/",
+      "D": "/f/ and /v/"
+    },
+    "answer": "A",
+    "answer_text": "/p/ and /b/",
+    "explanation": {
+      "question_restate": "Which pair contains a voiceless and a voiced bilabial plosive?",
+      "principle": "Plosives, also called stops, are produced by completely blocking the airflow and then releasing it suddenly.",
+      "steps": [
+        "The main English plosives are /p, b, t, d, k, g/.",
+        "In this question, '/p/ and /b/' correctly identifies the plosive sound or word example required.",
+        "The other options either belong to another sound class or represent the wrong place or voicing feature.",
+        "Therefore, the correct answer is '/p/ and /b/'."
+      ],
+      "final_answer": "A. /p/ and /b/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "plosives",
+      "stops"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q056",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Plosives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words ends with the plosive /t/?",
+    "options": {
+      "A": "seat",
+      "B": "seed",
+      "C": "seem",
+      "D": "seen"
+    },
+    "answer": "A",
+    "answer_text": "seat",
+    "explanation": {
+      "question_restate": "Which of the following words ends with the plosive /t/?",
+      "principle": "Plosives, also called stops, are produced by completely blocking the airflow and then releasing it suddenly.",
+      "steps": [
+        "The main English plosives are /p, b, t, d, k, g/.",
+        "In this question, 'seat' correctly identifies the plosive sound or word example required.",
+        "The other options either belong to another sound class or represent the wrong place or voicing feature.",
+        "Therefore, the correct answer is 'seat'."
+      ],
+      "final_answer": "A. seat",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "plosives",
+      "stops"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q057",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Plosives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word ends with the voiced plosive /d/?",
+    "options": {
+      "A": "cat",
+      "B": "cab",
+      "C": "card",
+      "D": "calm"
+    },
+    "answer": "C",
+    "answer_text": "card",
+    "explanation": {
+      "question_restate": "Which word ends with the voiced plosive /d/?",
+      "principle": "Plosives, also called stops, are produced by completely blocking the airflow and then releasing it suddenly.",
+      "steps": [
+        "The main English plosives are /p, b, t, d, k, g/.",
+        "In this question, 'card' correctly identifies the plosive sound or word example required.",
+        "The other options either belong to another sound class or represent the wrong place or voicing feature.",
+        "Therefore, the correct answer is 'card'."
+      ],
+      "final_answer": "C. card",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "plosives",
+      "stops"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q058",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Plosives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the alveolar plosive /t/?",
+    "options": {
+      "A": "tea",
+      "B": "sea",
+      "C": "she",
+      "D": "cheer"
+    },
+    "answer": "A",
+    "answer_text": "tea",
+    "explanation": {
+      "question_restate": "Which word begins with the alveolar plosive /t/?",
+      "principle": "Plosives, also called stops, are produced by completely blocking the airflow and then releasing it suddenly.",
+      "steps": [
+        "The main English plosives are /p, b, t, d, k, g/.",
+        "In this question, 'tea' correctly identifies the plosive sound or word example required.",
+        "The other options either belong to another sound class or represent the wrong place or voicing feature.",
+        "Therefore, the correct answer is 'tea'."
+      ],
+      "final_answer": "A. tea",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "plosives",
+      "stops"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q059",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Plosives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which sound is the voiced partner of /k/?",
+    "options": {
+      "A": "/b/",
+      "B": "/d/",
+      "C": "/g/",
+      "D": "/v/"
+    },
+    "answer": "C",
+    "answer_text": "/g/",
+    "explanation": {
+      "question_restate": "Which sound is the voiced partner of /k/?",
+      "principle": "Plosives, also called stops, are produced by completely blocking the airflow and then releasing it suddenly.",
+      "steps": [
+        "The main English plosives are /p, b, t, d, k, g/.",
+        "In this question, '/g/' correctly identifies the plosive sound or word example required.",
+        "The other options either belong to another sound class or represent the wrong place or voicing feature.",
+        "Therefore, the correct answer is '/g/'."
+      ],
+      "final_answer": "C. /g/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "plosives",
+      "stops"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q060",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Plosives",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the bilabial plosive /b/?",
+    "options": {
+      "A": "bat",
+      "B": "vat",
+      "C": "fat",
+      "D": "mat"
+    },
+    "answer": "A",
+    "answer_text": "bat",
+    "explanation": {
+      "question_restate": "Which word begins with the bilabial plosive /b/?",
+      "principle": "Plosives, also called stops, are produced by completely blocking the airflow and then releasing it suddenly.",
+      "steps": [
+        "The main English plosives are /p, b, t, d, k, g/.",
+        "In this question, 'bat' correctly identifies the plosive sound or word example required.",
+        "The other options either belong to another sound class or represent the wrong place or voicing feature.",
+        "Therefore, the correct answer is 'bat'."
+      ],
+      "final_answer": "A. bat",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "plosives",
+      "stops"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q061",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Affricates",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is an affricate?",
+    "options": {
+      "A": "/tʃ/",
+      "B": "/s/",
+      "C": "/m/",
+      "D": "/l/"
+    },
+    "answer": "A",
+    "answer_text": "/tʃ/",
+    "explanation": {
+      "question_restate": "Which of the following is an affricate?",
+      "principle": "Affricates begin like plosives and release into fricatives, which is why they feel like combined consonant actions.",
+      "steps": [
+        "English commonly teaches two affricates: /tʃ/ and /dʒ/.",
+        "Among the options, '/tʃ/' matches the affricate sound asked for.",
+        "The distractors contain fricatives, plosives, or other consonants instead.",
+        "Therefore, the correct answer is '/tʃ/'."
+      ],
+      "final_answer": "A. /tʃ/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "affricates",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q062",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Affricates",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair contains the two common English affricates?",
+    "options": {
+      "A": "/tʃ/ and /dʒ/",
+      "B": "/ʃ/ and /ʒ/",
+      "C": "/p/ and /b/",
+      "D": "/l/ and /r/"
+    },
+    "answer": "A",
+    "answer_text": "/tʃ/ and /dʒ/",
+    "explanation": {
+      "question_restate": "Which pair contains the two common English affricates?",
+      "principle": "Affricates begin like plosives and release into fricatives, which is why they feel like combined consonant actions.",
+      "steps": [
+        "English commonly teaches two affricates: /tʃ/ and /dʒ/.",
+        "Among the options, '/tʃ/ and /dʒ/' matches the affricate sound asked for.",
+        "The distractors contain fricatives, plosives, or other consonants instead.",
+        "Therefore, the correct answer is '/tʃ/ and /dʒ/'."
+      ],
+      "final_answer": "A. /tʃ/ and /dʒ/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "affricates",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q063",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Affricates",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the affricate /tʃ/?",
+    "options": {
+      "A": "chair",
+      "B": "share",
+      "C": "care",
+      "D": "pair"
+    },
+    "answer": "A",
+    "answer_text": "chair",
+    "explanation": {
+      "question_restate": "Which word begins with the affricate /tʃ/?",
+      "principle": "Affricates begin like plosives and release into fricatives, which is why they feel like combined consonant actions.",
+      "steps": [
+        "English commonly teaches two affricates: /tʃ/ and /dʒ/.",
+        "Among the options, 'chair' matches the affricate sound asked for.",
+        "The distractors contain fricatives, plosives, or other consonants instead.",
+        "Therefore, the correct answer is 'chair'."
+      ],
+      "final_answer": "A. chair",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "affricates",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q064",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Affricates",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the affricate /dʒ/?",
+    "options": {
+      "A": "jam",
+      "B": "yam",
+      "C": "zam",
+      "D": "ham"
+    },
+    "answer": "A",
+    "answer_text": "jam",
+    "explanation": {
+      "question_restate": "Which word begins with the affricate /dʒ/?",
+      "principle": "Affricates begin like plosives and release into fricatives, which is why they feel like combined consonant actions.",
+      "steps": [
+        "English commonly teaches two affricates: /tʃ/ and /dʒ/.",
+        "Among the options, 'jam' matches the affricate sound asked for.",
+        "The distractors contain fricatives, plosives, or other consonants instead.",
+        "Therefore, the correct answer is 'jam'."
+      ],
+      "final_answer": "A. jam",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "affricates",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q065",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Affricates",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words contains the affricate /tʃ/ at the end?",
+    "options": {
+      "A": "match",
+      "B": "mass",
+      "C": "mask",
+      "D": "map"
+    },
+    "answer": "A",
+    "answer_text": "match",
+    "explanation": {
+      "question_restate": "Which of the following words contains the affricate /tʃ/ at the end?",
+      "principle": "Affricates begin like plosives and release into fricatives, which is why they feel like combined consonant actions.",
+      "steps": [
+        "English commonly teaches two affricates: /tʃ/ and /dʒ/.",
+        "Among the options, 'match' matches the affricate sound asked for.",
+        "The distractors contain fricatives, plosives, or other consonants instead.",
+        "Therefore, the correct answer is 'match'."
+      ],
+      "final_answer": "A. match",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "affricates",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q066",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Affricates",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word ends with the affricate /dʒ/?",
+    "options": {
+      "A": "badge",
+      "B": "back",
+      "C": "bank",
+      "D": "bath"
+    },
+    "answer": "A",
+    "answer_text": "badge",
+    "explanation": {
+      "question_restate": "Which word ends with the affricate /dʒ/?",
+      "principle": "Affricates begin like plosives and release into fricatives, which is why they feel like combined consonant actions.",
+      "steps": [
+        "English commonly teaches two affricates: /tʃ/ and /dʒ/.",
+        "Among the options, 'badge' matches the affricate sound asked for.",
+        "The distractors contain fricatives, plosives, or other consonants instead.",
+        "Therefore, the correct answer is 'badge'."
+      ],
+      "final_answer": "A. badge",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "affricates",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q067",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Affricates",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair contrasts the voiceless and voiced affricates?",
+    "options": {
+      "A": "/tʃ/ and /dʒ/",
+      "B": "/s/ and /z/",
+      "C": "/f/ and /v/",
+      "D": "/k/ and /g/"
+    },
+    "answer": "A",
+    "answer_text": "/tʃ/ and /dʒ/",
+    "explanation": {
+      "question_restate": "Which pair contrasts the voiceless and voiced affricates?",
+      "principle": "Affricates begin like plosives and release into fricatives, which is why they feel like combined consonant actions.",
+      "steps": [
+        "English commonly teaches two affricates: /tʃ/ and /dʒ/.",
+        "Among the options, '/tʃ/ and /dʒ/' matches the affricate sound asked for.",
+        "The distractors contain fricatives, plosives, or other consonants instead.",
+        "Therefore, the correct answer is '/tʃ/ and /dʒ/'."
+      ],
+      "final_answer": "A. /tʃ/ and /dʒ/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "affricates",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q068",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Affricates",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following begins with /dʒ/?",
+    "options": {
+      "A": "giant",
+      "B": "grant",
+      "C": "gland",
+      "D": "glad"
+    },
+    "answer": "A",
+    "answer_text": "giant",
+    "explanation": {
+      "question_restate": "Which of the following begins with /dʒ/?",
+      "principle": "Affricates begin like plosives and release into fricatives, which is why they feel like combined consonant actions.",
+      "steps": [
+        "English commonly teaches two affricates: /tʃ/ and /dʒ/.",
+        "Among the options, 'giant' matches the affricate sound asked for.",
+        "The distractors contain fricatives, plosives, or other consonants instead.",
+        "Therefore, the correct answer is 'giant'."
+      ],
+      "final_answer": "A. giant",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "affricates",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q069",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Affricates",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word contains an affricate rather than a fricative?",
+    "options": {
+      "A": "cheap",
+      "B": "sheep",
+      "C": "seat",
+      "D": "heat"
+    },
+    "answer": "A",
+    "answer_text": "cheap",
+    "explanation": {
+      "question_restate": "Which word contains an affricate rather than a fricative?",
+      "principle": "Affricates begin like plosives and release into fricatives, which is why they feel like combined consonant actions.",
+      "steps": [
+        "English commonly teaches two affricates: /tʃ/ and /dʒ/.",
+        "Among the options, 'cheap' matches the affricate sound asked for.",
+        "The distractors contain fricatives, plosives, or other consonants instead.",
+        "Therefore, the correct answer is 'cheap'."
+      ],
+      "final_answer": "A. cheap",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "affricates",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q070",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Affricates",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words begins with the same consonant sound as 'judge'?",
+    "options": {
+      "A": "jar",
+      "B": "yard",
+      "C": "zebra",
+      "D": "shame"
+    },
+    "answer": "A",
+    "answer_text": "jar",
+    "explanation": {
+      "question_restate": "Which of the following words begins with the same consonant sound as 'judge'?",
+      "principle": "Affricates begin like plosives and release into fricatives, which is why they feel like combined consonant actions.",
+      "steps": [
+        "English commonly teaches two affricates: /tʃ/ and /dʒ/.",
+        "Among the options, 'jar' matches the affricate sound asked for.",
+        "The distractors contain fricatives, plosives, or other consonants instead.",
+        "Therefore, the correct answer is 'jar'."
+      ],
+      "final_answer": "A. jar",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "affricates",
+      "oral_english"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q071",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Liquids and semivowels",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a liquid consonant?",
+    "options": {
+      "A": "/l/",
+      "B": "/w/",
+      "C": "/j/",
+      "D": "/m/"
+    },
+    "answer": "A",
+    "answer_text": "/l/",
+    "explanation": {
+      "question_restate": "Which of the following is a liquid consonant?",
+      "principle": "Liquids in English are usually /l/ and /r/, while semivowels or glides are /w/ and /j/.",
+      "steps": [
+        "These sound classes are grouped by how air flows and how the tongue moves during articulation.",
+        "'/l/' correctly matches the liquid or semivowel pattern being tested.",
+        "The other options belong to different classes of consonants.",
+        "Therefore, the correct answer is '/l/'."
+      ],
+      "final_answer": "A. /l/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "liquids",
+      "semivowels"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q072",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Liquids and semivowels",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair contains the English liquid consonants?",
+    "options": {
+      "A": "/l/ and /r/",
+      "B": "/w/ and /j/",
+      "C": "/m/ and /n/",
+      "D": "/f/ and /v/"
+    },
+    "answer": "A",
+    "answer_text": "/l/ and /r/",
+    "explanation": {
+      "question_restate": "Which pair contains the English liquid consonants?",
+      "principle": "Liquids in English are usually /l/ and /r/, while semivowels or glides are /w/ and /j/.",
+      "steps": [
+        "These sound classes are grouped by how air flows and how the tongue moves during articulation.",
+        "'/l/ and /r/' correctly matches the liquid or semivowel pattern being tested.",
+        "The other options belong to different classes of consonants.",
+        "Therefore, the correct answer is '/l/ and /r/'."
+      ],
+      "final_answer": "A. /l/ and /r/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "liquids",
+      "semivowels"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q073",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Liquids and semivowels",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a semivowel?",
+    "options": {
+      "A": "/m/",
+      "B": "/w/",
+      "C": "/l/",
+      "D": "/t/"
+    },
+    "answer": "B",
+    "answer_text": "/w/",
+    "explanation": {
+      "question_restate": "Which of the following is a semivowel?",
+      "principle": "Liquids in English are usually /l/ and /r/, while semivowels or glides are /w/ and /j/.",
+      "steps": [
+        "These sound classes are grouped by how air flows and how the tongue moves during articulation.",
+        "'/w/' correctly matches the liquid or semivowel pattern being tested.",
+        "The other options belong to different classes of consonants.",
+        "Therefore, the correct answer is '/w/'."
+      ],
+      "final_answer": "B. /w/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "liquids",
+      "semivowels"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q074",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Liquids and semivowels",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair contains the semivowels?",
+    "options": {
+      "A": "/w/ and /j/",
+      "B": "/l/ and /r/",
+      "C": "/m/ and /n/",
+      "D": "/p/ and /b/"
+    },
+    "answer": "A",
+    "answer_text": "/w/ and /j/",
+    "explanation": {
+      "question_restate": "Which pair contains the semivowels?",
+      "principle": "Liquids in English are usually /l/ and /r/, while semivowels or glides are /w/ and /j/.",
+      "steps": [
+        "These sound classes are grouped by how air flows and how the tongue moves during articulation.",
+        "'/w/ and /j/' correctly matches the liquid or semivowel pattern being tested.",
+        "The other options belong to different classes of consonants.",
+        "Therefore, the correct answer is '/w/ and /j/'."
+      ],
+      "final_answer": "A. /w/ and /j/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "liquids",
+      "semivowels"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q075",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Liquids and semivowels",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the liquid /r/?",
+    "options": {
+      "A": "road",
+      "B": "load",
+      "C": "yoke",
+      "D": "woke"
+    },
+    "answer": "A",
+    "answer_text": "road",
+    "explanation": {
+      "question_restate": "Which word begins with the liquid /r/?",
+      "principle": "Liquids in English are usually /l/ and /r/, while semivowels or glides are /w/ and /j/.",
+      "steps": [
+        "These sound classes are grouped by how air flows and how the tongue moves during articulation.",
+        "'road' correctly matches the liquid or semivowel pattern being tested.",
+        "The other options belong to different classes of consonants.",
+        "Therefore, the correct answer is 'road'."
+      ],
+      "final_answer": "A. road",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "liquids",
+      "semivowels"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q076",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Liquids and semivowels",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the liquid /l/?",
+    "options": {
+      "A": "light",
+      "B": "right",
+      "C": "white",
+      "D": "fight"
+    },
+    "answer": "A",
+    "answer_text": "light",
+    "explanation": {
+      "question_restate": "Which word begins with the liquid /l/?",
+      "principle": "Liquids in English are usually /l/ and /r/, while semivowels or glides are /w/ and /j/.",
+      "steps": [
+        "These sound classes are grouped by how air flows and how the tongue moves during articulation.",
+        "'light' correctly matches the liquid or semivowel pattern being tested.",
+        "The other options belong to different classes of consonants.",
+        "Therefore, the correct answer is 'light'."
+      ],
+      "final_answer": "A. light",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "liquids",
+      "semivowels"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q077",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Liquids and semivowels",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the semivowel /w/?",
+    "options": {
+      "A": "wine",
+      "B": "vine",
+      "C": "fine",
+      "D": "line"
+    },
+    "answer": "A",
+    "answer_text": "wine",
+    "explanation": {
+      "question_restate": "Which word begins with the semivowel /w/?",
+      "principle": "Liquids in English are usually /l/ and /r/, while semivowels or glides are /w/ and /j/.",
+      "steps": [
+        "These sound classes are grouped by how air flows and how the tongue moves during articulation.",
+        "'wine' correctly matches the liquid or semivowel pattern being tested.",
+        "The other options belong to different classes of consonants.",
+        "Therefore, the correct answer is 'wine'."
+      ],
+      "final_answer": "A. wine",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "liquids",
+      "semivowels"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q078",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Liquids and semivowels",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the semivowel /j/ as in 'yes'?",
+    "options": {
+      "A": "yam",
+      "B": "jam",
+      "C": "ham",
+      "D": "dam"
+    },
+    "answer": "A",
+    "answer_text": "yam",
+    "explanation": {
+      "question_restate": "Which word begins with the semivowel /j/ as in 'yes'?",
+      "principle": "Liquids in English are usually /l/ and /r/, while semivowels or glides are /w/ and /j/.",
+      "steps": [
+        "These sound classes are grouped by how air flows and how the tongue moves during articulation.",
+        "'yam' correctly matches the liquid or semivowel pattern being tested.",
+        "The other options belong to different classes of consonants.",
+        "Therefore, the correct answer is 'yam'."
+      ],
+      "final_answer": "A. yam",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "liquids",
+      "semivowels"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q079",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Liquids and semivowels",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following contains a liquid sound at the end?",
+    "options": {
+      "A": "bell",
+      "B": "beam",
+      "C": "bet",
+      "D": "beg"
+    },
+    "answer": "A",
+    "answer_text": "bell",
+    "explanation": {
+      "question_restate": "Which of the following contains a liquid sound at the end?",
+      "principle": "Liquids in English are usually /l/ and /r/, while semivowels or glides are /w/ and /j/.",
+      "steps": [
+        "These sound classes are grouped by how air flows and how the tongue moves during articulation.",
+        "'bell' correctly matches the liquid or semivowel pattern being tested.",
+        "The other options belong to different classes of consonants.",
+        "Therefore, the correct answer is 'bell'."
+      ],
+      "final_answer": "A. bell",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "liquids",
+      "semivowels"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q080",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Liquids and semivowels",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair contrasts a liquid and a semivowel?",
+    "options": {
+      "A": "/l/ and /w/",
+      "B": "/m/ and /n/",
+      "C": "/f/ and /v/",
+      "D": "/p/ and /b/"
+    },
+    "answer": "A",
+    "answer_text": "/l/ and /w/",
+    "explanation": {
+      "question_restate": "Which pair contrasts a liquid and a semivowel?",
+      "principle": "Liquids in English are usually /l/ and /r/, while semivowels or glides are /w/ and /j/.",
+      "steps": [
+        "These sound classes are grouped by how air flows and how the tongue moves during articulation.",
+        "'/l/ and /w/' correctly matches the liquid or semivowel pattern being tested.",
+        "The other options belong to different classes of consonants.",
+        "Therefore, the correct answer is '/l/ and /w/'."
+      ],
+      "final_answer": "A. /l/ and /w/",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "liquids",
+      "semivowels"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q081",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Identification of consonant sounds in words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words begins with the same consonant sound as 'fan'?",
+    "options": {
+      "A": "van",
+      "B": "fine",
+      "C": "pan",
+      "D": "ban"
+    },
+    "answer": "B",
+    "answer_text": "fine",
+    "explanation": {
+      "question_restate": "Which of the following words begins with the same consonant sound as 'fan'?",
+      "principle": "Consonant identification questions require matching the actual sound value, not just comparing letters.",
+      "steps": [
+        "Some words may look alike in spelling but begin or end with different sounds.",
+        "Among the options, 'fine' matches the same consonant sound position required by the question.",
+        "The remaining options differ in place, manner, or voicing.",
+        "Therefore, the correct answer is 'fine'."
+      ],
+      "final_answer": "B. fine",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "identification",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q082",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Identification of consonant sounds in words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the same consonant sound as 'zoo'?",
+    "options": {
+      "A": "sip",
+      "B": "zip",
+      "C": "shoe",
+      "D": "chip"
+    },
+    "answer": "B",
+    "answer_text": "zip",
+    "explanation": {
+      "question_restate": "Which word begins with the same consonant sound as 'zoo'?",
+      "principle": "Consonant identification questions require matching the actual sound value, not just comparing letters.",
+      "steps": [
+        "Some words may look alike in spelling but begin or end with different sounds.",
+        "Among the options, 'zip' matches the same consonant sound position required by the question.",
+        "The remaining options differ in place, manner, or voicing.",
+        "Therefore, the correct answer is 'zip'."
+      ],
+      "final_answer": "B. zip",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "identification",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q083",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Identification of consonant sounds in words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words ends with the same consonant sound as 'bag'?",
+    "options": {
+      "A": "back",
+      "B": "badge",
+      "C": "rag",
+      "D": "bath"
+    },
+    "answer": "C",
+    "answer_text": "rag",
+    "explanation": {
+      "question_restate": "Which of the following words ends with the same consonant sound as 'bag'?",
+      "principle": "Consonant identification questions require matching the actual sound value, not just comparing letters.",
+      "steps": [
+        "Some words may look alike in spelling but begin or end with different sounds.",
+        "Among the options, 'rag' matches the same consonant sound position required by the question.",
+        "The remaining options differ in place, manner, or voicing.",
+        "Therefore, the correct answer is 'rag'."
+      ],
+      "final_answer": "C. rag",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "identification",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q084",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Identification of consonant sounds in words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the same consonant sound as 'thin'?",
+    "options": {
+      "A": "then",
+      "B": "tin",
+      "C": "thin",
+      "D": "sin"
+    },
+    "answer": "C",
+    "answer_text": "thin",
+    "explanation": {
+      "question_restate": "Which word begins with the same consonant sound as 'thin'?",
+      "principle": "Consonant identification questions require matching the actual sound value, not just comparing letters.",
+      "steps": [
+        "Some words may look alike in spelling but begin or end with different sounds.",
+        "Among the options, 'thin' matches the same consonant sound position required by the question.",
+        "The remaining options differ in place, manner, or voicing.",
+        "Therefore, the correct answer is 'thin'."
+      ],
+      "final_answer": "C. thin",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "identification",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q085",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Identification of consonant sounds in words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following begins with the same consonant sound as 'ship'?",
+    "options": {
+      "A": "sheep",
+      "B": "chip",
+      "C": "sip",
+      "D": "jeep"
+    },
+    "answer": "A",
+    "answer_text": "sheep",
+    "explanation": {
+      "question_restate": "Which of the following begins with the same consonant sound as 'ship'?",
+      "principle": "Consonant identification questions require matching the actual sound value, not just comparing letters.",
+      "steps": [
+        "Some words may look alike in spelling but begin or end with different sounds.",
+        "Among the options, 'sheep' matches the same consonant sound position required by the question.",
+        "The remaining options differ in place, manner, or voicing.",
+        "Therefore, the correct answer is 'sheep'."
+      ],
+      "final_answer": "A. sheep",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "identification",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q086",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Identification of consonant sounds in words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word ends with the same consonant sound as 'match'?",
+    "options": {
+      "A": "mass",
+      "B": "much",
+      "C": "badge",
+      "D": "math"
+    },
+    "answer": "B",
+    "answer_text": "much",
+    "explanation": {
+      "question_restate": "Which word ends with the same consonant sound as 'match'?",
+      "principle": "Consonant identification questions require matching the actual sound value, not just comparing letters.",
+      "steps": [
+        "Some words may look alike in spelling but begin or end with different sounds.",
+        "Among the options, 'much' matches the same consonant sound position required by the question.",
+        "The remaining options differ in place, manner, or voicing.",
+        "Therefore, the correct answer is 'much'."
+      ],
+      "final_answer": "B. much",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "identification",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q087",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Identification of consonant sounds in words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the same consonant sound as 'judge'?",
+    "options": {
+      "A": "jar",
+      "B": "yard",
+      "C": "zebra",
+      "D": "sure"
+    },
+    "answer": "A",
+    "answer_text": "jar",
+    "explanation": {
+      "question_restate": "Which word begins with the same consonant sound as 'judge'?",
+      "principle": "Consonant identification questions require matching the actual sound value, not just comparing letters.",
+      "steps": [
+        "Some words may look alike in spelling but begin or end with different sounds.",
+        "Among the options, 'jar' matches the same consonant sound position required by the question.",
+        "The remaining options differ in place, manner, or voicing.",
+        "Therefore, the correct answer is 'jar'."
+      ],
+      "final_answer": "A. jar",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "identification",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q088",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Identification of consonant sounds in words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following words begins with the same consonant sound as 'man'?",
+    "options": {
+      "A": "nap",
+      "B": "mat",
+      "C": "van",
+      "D": "fan"
+    },
+    "answer": "B",
+    "answer_text": "mat",
+    "explanation": {
+      "question_restate": "Which of the following words begins with the same consonant sound as 'man'?",
+      "principle": "Consonant identification questions require matching the actual sound value, not just comparing letters.",
+      "steps": [
+        "Some words may look alike in spelling but begin or end with different sounds.",
+        "Among the options, 'mat' matches the same consonant sound position required by the question.",
+        "The remaining options differ in place, manner, or voicing.",
+        "Therefore, the correct answer is 'mat'."
+      ],
+      "final_answer": "B. mat",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "identification",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q089",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Identification of consonant sounds in words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which word begins with the same consonant sound as 'road'?",
+    "options": {
+      "A": "load",
+      "B": "rake",
+      "C": "woke",
+      "D": "yoke"
+    },
+    "answer": "B",
+    "answer_text": "rake",
+    "explanation": {
+      "question_restate": "Which word begins with the same consonant sound as 'road'?",
+      "principle": "Consonant identification questions require matching the actual sound value, not just comparing letters.",
+      "steps": [
+        "Some words may look alike in spelling but begin or end with different sounds.",
+        "Among the options, 'rake' matches the same consonant sound position required by the question.",
+        "The remaining options differ in place, manner, or voicing.",
+        "Therefore, the correct answer is 'rake'."
+      ],
+      "final_answer": "B. rake",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "identification",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q090",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Identification of consonant sounds in words",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following ends with the same consonant sound as 'sing'?",
+    "options": {
+      "A": "ring",
+      "B": "ran",
+      "C": "rim",
+      "D": "red"
+    },
+    "answer": "A",
+    "answer_text": "ring",
+    "explanation": {
+      "question_restate": "Which of the following ends with the same consonant sound as 'sing'?",
+      "principle": "Consonant identification questions require matching the actual sound value, not just comparing letters.",
+      "steps": [
+        "Some words may look alike in spelling but begin or end with different sounds.",
+        "Among the options, 'ring' matches the same consonant sound position required by the question.",
+        "The remaining options differ in place, manner, or voicing.",
+        "Therefore, the correct answer is 'ring'."
+      ],
+      "final_answer": "A. ring",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "identification",
+      "consonants"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q091",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Distinguishing similar consonant sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair best distinguishes /f/ from /v/?",
+    "options": {
+      "A": "fan / van",
+      "B": "fan / pan",
+      "C": "van / ban",
+      "D": "fat / mat"
+    },
+    "answer": "A",
+    "answer_text": "fan / van",
+    "explanation": {
+      "question_restate": "Which pair best distinguishes /f/ from /v/?",
+      "principle": "Distinguishing similar consonant sounds is important because a change in one consonant can change meaning completely.",
+      "steps": [
+        "These questions are often answered best through minimal pairs or near-minimal pairs.",
+        "The pair 'fan / van' provides the clearest contrast for the consonants named in the question.",
+        "The other pairs either contrast different sounds or fail to isolate the intended distinction.",
+        "Therefore, the correct answer is 'fan / van'."
+      ],
+      "final_answer": "A. fan / van",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "distinguish",
+      "consonant_pairs"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q092",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Distinguishing similar consonant sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair best distinguishes /s/ from /z/?",
+    "options": {
+      "A": "sip / zip",
+      "B": "sip / ship",
+      "C": "zip / chip",
+      "D": "seat / sit"
+    },
+    "answer": "A",
+    "answer_text": "sip / zip",
+    "explanation": {
+      "question_restate": "Which pair best distinguishes /s/ from /z/?",
+      "principle": "Distinguishing similar consonant sounds is important because a change in one consonant can change meaning completely.",
+      "steps": [
+        "These questions are often answered best through minimal pairs or near-minimal pairs.",
+        "The pair 'sip / zip' provides the clearest contrast for the consonants named in the question.",
+        "The other pairs either contrast different sounds or fail to isolate the intended distinction.",
+        "Therefore, the correct answer is 'sip / zip'."
+      ],
+      "final_answer": "A. sip / zip",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "distinguish",
+      "consonant_pairs"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q093",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Distinguishing similar consonant sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair best distinguishes /tʃ/ from /ʃ/?",
+    "options": {
+      "A": "chip / ship",
+      "B": "jam / yam",
+      "C": "fan / van",
+      "D": "coat / goat"
+    },
+    "answer": "A",
+    "answer_text": "chip / ship",
+    "explanation": {
+      "question_restate": "Which pair best distinguishes /tʃ/ from /ʃ/?",
+      "principle": "Distinguishing similar consonant sounds is important because a change in one consonant can change meaning completely.",
+      "steps": [
+        "These questions are often answered best through minimal pairs or near-minimal pairs.",
+        "The pair 'chip / ship' provides the clearest contrast for the consonants named in the question.",
+        "The other pairs either contrast different sounds or fail to isolate the intended distinction.",
+        "Therefore, the correct answer is 'chip / ship'."
+      ],
+      "final_answer": "A. chip / ship",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "distinguish",
+      "consonant_pairs"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q094",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Distinguishing similar consonant sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair best distinguishes /θ/ from /ð/?",
+    "options": {
+      "A": "thin / then",
+      "B": "tin / den",
+      "C": "sin / zen",
+      "D": "fan / van"
+    },
+    "answer": "A",
+    "answer_text": "thin / then",
+    "explanation": {
+      "question_restate": "Which pair best distinguishes /θ/ from /ð/?",
+      "principle": "Distinguishing similar consonant sounds is important because a change in one consonant can change meaning completely.",
+      "steps": [
+        "These questions are often answered best through minimal pairs or near-minimal pairs.",
+        "The pair 'thin / then' provides the clearest contrast for the consonants named in the question.",
+        "The other pairs either contrast different sounds or fail to isolate the intended distinction.",
+        "Therefore, the correct answer is 'thin / then'."
+      ],
+      "final_answer": "A. thin / then",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "distinguish",
+      "consonant_pairs"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q095",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Distinguishing similar consonant sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair best distinguishes /p/ from /b/?",
+    "options": {
+      "A": "pat / bat",
+      "B": "fat / vat",
+      "C": "sip / zip",
+      "D": "coat / goat"
+    },
+    "answer": "A",
+    "answer_text": "pat / bat",
+    "explanation": {
+      "question_restate": "Which pair best distinguishes /p/ from /b/?",
+      "principle": "Distinguishing similar consonant sounds is important because a change in one consonant can change meaning completely.",
+      "steps": [
+        "These questions are often answered best through minimal pairs or near-minimal pairs.",
+        "The pair 'pat / bat' provides the clearest contrast for the consonants named in the question.",
+        "The other pairs either contrast different sounds or fail to isolate the intended distinction.",
+        "Therefore, the correct answer is 'pat / bat'."
+      ],
+      "final_answer": "A. pat / bat",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "distinguish",
+      "consonant_pairs"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q096",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Distinguishing similar consonant sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair best distinguishes /t/ from /d/?",
+    "options": {
+      "A": "ten / den",
+      "B": "fan / van",
+      "C": "seat / sit",
+      "D": "ship / sheep"
+    },
+    "answer": "A",
+    "answer_text": "ten / den",
+    "explanation": {
+      "question_restate": "Which pair best distinguishes /t/ from /d/?",
+      "principle": "Distinguishing similar consonant sounds is important because a change in one consonant can change meaning completely.",
+      "steps": [
+        "These questions are often answered best through minimal pairs or near-minimal pairs.",
+        "The pair 'ten / den' provides the clearest contrast for the consonants named in the question.",
+        "The other pairs either contrast different sounds or fail to isolate the intended distinction.",
+        "Therefore, the correct answer is 'ten / den'."
+      ],
+      "final_answer": "A. ten / den",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "distinguish",
+      "consonant_pairs"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q097",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Distinguishing similar consonant sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair best distinguishes /k/ from /g/?",
+    "options": {
+      "A": "coat / goat",
+      "B": "fan / van",
+      "C": "thin / then",
+      "D": "ship / chip"
+    },
+    "answer": "A",
+    "answer_text": "coat / goat",
+    "explanation": {
+      "question_restate": "Which pair best distinguishes /k/ from /g/?",
+      "principle": "Distinguishing similar consonant sounds is important because a change in one consonant can change meaning completely.",
+      "steps": [
+        "These questions are often answered best through minimal pairs or near-minimal pairs.",
+        "The pair 'coat / goat' provides the clearest contrast for the consonants named in the question.",
+        "The other pairs either contrast different sounds or fail to isolate the intended distinction.",
+        "Therefore, the correct answer is 'coat / goat'."
+      ],
+      "final_answer": "A. coat / goat",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "distinguish",
+      "consonant_pairs"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q098",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Distinguishing similar consonant sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair best distinguishes /l/ from /r/?",
+    "options": {
+      "A": "light / right",
+      "B": "fan / van",
+      "C": "seat / sit",
+      "D": "coat / court"
+    },
+    "answer": "A",
+    "answer_text": "light / right",
+    "explanation": {
+      "question_restate": "Which pair best distinguishes /l/ from /r/?",
+      "principle": "Distinguishing similar consonant sounds is important because a change in one consonant can change meaning completely.",
+      "steps": [
+        "These questions are often answered best through minimal pairs or near-minimal pairs.",
+        "The pair 'light / right' provides the clearest contrast for the consonants named in the question.",
+        "The other pairs either contrast different sounds or fail to isolate the intended distinction.",
+        "Therefore, the correct answer is 'light / right'."
+      ],
+      "final_answer": "A. light / right",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "distinguish",
+      "consonant_pairs"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q099",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Distinguishing similar consonant sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair best distinguishes /m/ from /n/?",
+    "options": {
+      "A": "mat / nat",
+      "B": "fan / van",
+      "C": "coat / goat",
+      "D": "ship / sheep"
+    },
+    "answer": "A",
+    "answer_text": "mat / nat",
+    "explanation": {
+      "question_restate": "Which pair best distinguishes /m/ from /n/?",
+      "principle": "Distinguishing similar consonant sounds is important because a change in one consonant can change meaning completely.",
+      "steps": [
+        "These questions are often answered best through minimal pairs or near-minimal pairs.",
+        "The pair 'mat / nat' provides the clearest contrast for the consonants named in the question.",
+        "The other pairs either contrast different sounds or fail to isolate the intended distinction.",
+        "Therefore, the correct answer is 'mat / nat'."
+      ],
+      "final_answer": "A. mat / nat",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "distinguish",
+      "consonant_pairs"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_17_q100",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_17",
+    "topic_title": "Consonants",
+    "subtopic": "Distinguishing similar consonant sounds",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which pair best distinguishes /w/ from /j/?",
+    "options": {
+      "A": "wine / yam",
+      "B": "fan / van",
+      "C": "light / right",
+      "D": "thin / then"
+    },
+    "answer": "A",
+    "answer_text": "wine / yam",
+    "explanation": {
+      "question_restate": "Which pair best distinguishes /w/ from /j/?",
+      "principle": "Distinguishing similar consonant sounds is important because a change in one consonant can change meaning completely.",
+      "steps": [
+        "These questions are often answered best through minimal pairs or near-minimal pairs.",
+        "The pair 'wine / yam' provides the clearest contrast for the consonants named in the question.",
+        "The other pairs either contrast different sounds or fail to isolate the intended distinction.",
+        "Therefore, the correct answer is 'wine / yam'."
+      ],
+      "final_answer": "A. wine / yam",
+      "simple_explanation": "Consonant questions in Oral English test how well you can identify sound classes, notice voicing, and distinguish actual pronunciation from spelling. In examinations, focus on the sound made in the mouth, not just the letters on the page. For fuller lessons, guided drills, and beginner-friendly explanations, check our \"Tutorial section\"."
+    },
+    "tags": [
+      "distinguish",
+      "consonant_pairs"
+    ],
+    "active": true
+  }
+]
