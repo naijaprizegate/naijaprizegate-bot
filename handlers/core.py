@@ -146,9 +146,9 @@ def build_exam_hub_keyboard():
     return InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("🎓 JAMB Practice", callback_data="jambpractice")],
-            [InlineKeyboardButton("📝 Mock JAMB / UTME", callback_data="mock:jamb")],
             [InlineKeyboardButton("📘 WAEC / NECO Practice", callback_data="waecpractice")],
-            [InlineKeyboardButton("🧪 Mock WAEC / NECO Exams", callback_data="mock:waec")],
+            [InlineKeyboardButton("📝 Mock JAMB / UTME", callback_data="mock:jamb")],
+            [InlineKeyboardButton("🧪 Mock WAEC / NECO", callback_data="mock:waec")],
             [InlineKeyboardButton("📚 Tutorials", callback_data="tutorials")],
             [InlineKeyboardButton("⬅️ Back to Main Menu", callback_data="menu:main")],
         ]
@@ -822,3 +822,4 @@ def register_handlers(application):
         ),
         group=20,
     )
+
