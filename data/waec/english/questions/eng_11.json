@@ -1,1 +1,3602 @@
-
+[
+  {
+    "id": "eng_11_q001",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Please be quiet; the principal ____ to the final-year students.",
+    "options": {
+      "A": "is speaking",
+      "B": "speaks",
+      "C": "has spoken",
+      "D": "spoke"
+    },
+    "answer": "A",
+    "answer_text": "is speaking",
+    "explanation": {
+      "question_restate": "We are to choose the tense for an action happening now.",
+      "principle": "The present continuous is used for actions happening now, temporary situations, current trends, and arrangements around the present.",
+      "steps": [
+        "The request for silence shows the action is in progress now.",
+        "The present continuous is used for actions happening at the moment of speaking.",
+        "'Is speaking' fits the singular subject 'principal'.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. is speaking",
+      "simple_explanation": "The action is going on right now, so we use the present continuous. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_continuous",
+      "now"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q002",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "At the moment, the technicians ____ the microphones for the ceremony.",
+    "options": {
+      "A": "are testing",
+      "B": "test",
+      "C": "tested",
+      "D": "have tested"
+    },
+    "answer": "A",
+    "answer_text": "are testing",
+    "explanation": {
+      "question_restate": "We are to identify the tense signaled by 'at the moment'.",
+      "principle": "The present continuous is used for actions happening now, temporary situations, current trends, and arrangements around the present.",
+      "steps": [
+        "'At the moment' strongly points to an ongoing action.",
+        "Ongoing present-time action takes the present continuous.",
+        "The plural subject 'technicians' takes 'are testing'.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. are testing",
+      "simple_explanation": "The time phrase clearly shows that the action is still in progress. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_continuous",
+      "moment"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q003",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Why ____ you ____ at me as if I caused the delay?",
+    "options": {
+      "A": "are / staring",
+      "B": "do / stare",
+      "C": "have / stared",
+      "D": "did / stare"
+    },
+    "answer": "A",
+    "answer_text": "are / staring",
+    "explanation": {
+      "question_restate": "We are to choose the correct question form for an action in progress.",
+      "principle": "The present continuous is used for actions happening now, temporary situations, current trends, and arrangements around the present.",
+      "steps": [
+        "The speaker reacts to what is happening now.",
+        "Questions about current action take the present continuous.",
+        "With 'you', the auxiliary is 'are'.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. are / staring",
+      "simple_explanation": "The speaker is asking about something happening right then. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_continuous",
+      "question"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q004",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "This week, our class ____ extra lessons because the examination is close.",
+    "options": {
+      "A": "is having",
+      "B": "has",
+      "C": "had",
+      "D": "has had"
+    },
+    "answer": "A",
+    "answer_text": "is having",
+    "explanation": {
+      "question_restate": "We are to choose the form for a temporary present arrangement.",
+      "principle": "The present continuous is used for actions happening now, temporary situations, current trends, and arrangements around the present.",
+      "steps": [
+        "'This week' suggests a temporary arrangement around now.",
+        "Temporary current situations often use the present continuous.",
+        "'Is having' fits the context well.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. is having",
+      "simple_explanation": "The arrangement is temporary and current, not permanent. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_continuous",
+      "temporary"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q005",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The company ____ more workers this month because demand has increased.",
+    "options": {
+      "A": "is employing",
+      "B": "employs",
+      "C": "employed",
+      "D": "has employed yesterday"
+    },
+    "answer": "A",
+    "answer_text": "is employing",
+    "explanation": {
+      "question_restate": "We are to identify the tense for a current developing process.",
+      "principle": "The present continuous is used for actions happening now, temporary situations, current trends, and arrangements around the present.",
+      "steps": [
+        "'This month' suggests a process unfolding around the present time.",
+        "A developing process is often expressed with the present continuous.",
+        "'Is employing' is therefore suitable.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. is employing",
+      "simple_explanation": "The sentence describes an ongoing current process. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_continuous",
+      "trend"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q006",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Listen! Somebody ____ at the back door.",
+    "options": {
+      "A": "is knocking",
+      "B": "knocks",
+      "C": "knocked",
+      "D": "has knocked"
+    },
+    "answer": "A",
+    "answer_text": "is knocking",
+    "explanation": {
+      "question_restate": "We are to choose the tense for an immediate action.",
+      "principle": "The present continuous is used for actions happening now, temporary situations, current trends, and arrangements around the present.",
+      "steps": [
+        "Words like 'Listen!' often introduce action happening right now.",
+        "The present continuous expresses that immediate ongoing act.",
+        "'Somebody' is singular, so 'is knocking' fits.",
+        "Thus A is correct."
+      ],
+      "final_answer": "A. is knocking",
+      "simple_explanation": "The action is taking place now, at the moment of speaking. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_continuous",
+      "listen"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q007",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The students ____ less noise these days because the new librarian is strict.",
+    "options": {
+      "A": "are making",
+      "B": "make",
+      "C": "made",
+      "D": "have made yesterday"
+    },
+    "answer": "A",
+    "answer_text": "are making",
+    "explanation": {
+      "question_restate": "We are to choose the correct tense for a current trend.",
+      "principle": "The present continuous is used for actions happening now, temporary situations, current trends, and arrangements around the present.",
+      "steps": [
+        "'These days' can suggest a changing pattern around the present.",
+        "Such temporary or developing trends often take the present continuous.",
+        "'Are making' matches the plural subject.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. are making",
+      "simple_explanation": "The sentence talks about a present trend, not a fixed timeless habit. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_continuous",
+      "trend"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q008",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "For now, the director ____ in Kano until the repairs in Abuja are completed.",
+    "options": {
+      "A": "is staying",
+      "B": "stays",
+      "C": "stayed",
+      "D": "has stayed in 2022"
+    },
+    "answer": "A",
+    "answer_text": "is staying",
+    "explanation": {
+      "question_restate": "We are to choose the tense for temporary residence.",
+      "principle": "The present continuous is used for actions happening now, temporary situations, current trends, and arrangements around the present.",
+      "steps": [
+        "'For now' clearly marks the arrangement as temporary.",
+        "Temporary living arrangements are commonly expressed with the present continuous.",
+        "'Is staying' therefore fits the meaning.",
+        "So A is correct."
+      ],
+      "final_answer": "A. is staying",
+      "simple_explanation": "The action is temporary and current, so present continuous is best. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_continuous",
+      "temporary_stay"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q009",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "When the lights went out, the students ____ their notes quietly.",
+    "options": {
+      "A": "were revising",
+      "B": "revised",
+      "C": "have revised",
+      "D": "are revising"
+    },
+    "answer": "A",
+    "answer_text": "were revising",
+    "explanation": {
+      "question_restate": "We are to choose the tense for an action in progress when another past action happened.",
+      "principle": "The past continuous describes an action that was in progress at a particular time in the past.",
+      "steps": [
+        "The clause 'when the lights went out' is a shorter past action.",
+        "The longer background action in progress takes the past continuous.",
+        "'Were revising' fits the plural subject 'students'.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. were revising",
+      "simple_explanation": "Use the past continuous for an action that was already going on when another past action interrupted it. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_continuous",
+      "interrupted_action"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q010",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "At 8 p.m. yesterday, the chairman ____ the final draft of the speech.",
+    "options": {
+      "A": "was reviewing",
+      "B": "reviewed",
+      "C": "reviews",
+      "D": "has reviewed"
+    },
+    "answer": "A",
+    "answer_text": "was reviewing",
+    "explanation": {
+      "question_restate": "We are to choose the tense that shows action in progress at a particular past time.",
+      "principle": "The past continuous describes an action that was in progress at a particular time in the past.",
+      "steps": [
+        "'At 8 p.m. yesterday' fixes a point in the past.",
+        "An action in progress at that point takes the past continuous.",
+        "'Was reviewing' is therefore correct.",
+        "Hence A is right."
+      ],
+      "final_answer": "A. was reviewing",
+      "simple_explanation": "The sentence focuses on what was happening at a specific past moment. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_continuous",
+      "specific_past_time"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q011",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "While the nurse ____ the patient, the doctor checked the chart.",
+    "options": {
+      "A": "was examining",
+      "B": "examined",
+      "C": "examines",
+      "D": "has examined"
+    },
+    "answer": "A",
+    "answer_text": "was examining",
+    "explanation": {
+      "question_restate": "We are to identify the tense used with 'while' for background action.",
+      "principle": "The past continuous describes an action that was in progress at a particular time in the past.",
+      "steps": [
+        "'While' often introduces a longer action in progress.",
+        "That longer action is commonly expressed in the past continuous.",
+        "'Was examining' therefore fits the structure.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. was examining",
+      "simple_explanation": "With 'while', the background action is often in the continuous form. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_continuous",
+      "while_clause"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q012",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The children ____ in the field when the rain started.",
+    "options": {
+      "A": "were playing",
+      "B": "played",
+      "C": "have played",
+      "D": "are playing"
+    },
+    "answer": "A",
+    "answer_text": "were playing",
+    "explanation": {
+      "question_restate": "We are to choose the correct tense for an interrupted activity in the past.",
+      "principle": "The past continuous describes an action that was in progress at a particular time in the past.",
+      "steps": [
+        "The children were already engaged in the action.",
+        "The rain started and interrupted that ongoing action.",
+        "The interrupted action takes the past continuous: 'were playing'.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. were playing",
+      "simple_explanation": "The action of playing was continuing until the rain began. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_continuous",
+      "interruption"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q013",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "I met Amina while she ____ for the scholarship interview.",
+    "options": {
+      "A": "was preparing",
+      "B": "prepared",
+      "C": "prepares",
+      "D": "has prepared"
+    },
+    "answer": "A",
+    "answer_text": "was preparing",
+    "explanation": {
+      "question_restate": "We are to identify the background action in the past.",
+      "principle": "The past continuous describes an action that was in progress at a particular time in the past.",
+      "steps": [
+        "The meeting happened during another action already in progress.",
+        "That background action is expressed with the past continuous.",
+        "'Was preparing' therefore fits.",
+        "Hence option A is correct."
+      ],
+      "final_answer": "A. was preparing",
+      "simple_explanation": "Past continuous often gives the background scene in a past narrative. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_continuous",
+      "background"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q014",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The crowd ____ impatient as the officials delayed the result.",
+    "options": {
+      "A": "was becoming",
+      "B": "became",
+      "C": "has become",
+      "D": "becomes"
+    },
+    "answer": "A",
+    "answer_text": "was becoming",
+    "explanation": {
+      "question_restate": "We are to select the tense that shows gradual development in the past.",
+      "principle": "The past continuous describes an action that was in progress at a particular time in the past.",
+      "steps": [
+        "The sentence shows change in progress during a past situation.",
+        "The past continuous can express a developing past state or action.",
+        "'Was becoming' captures that gradual development.",
+        "So A is correct."
+      ],
+      "final_answer": "A. was becoming",
+      "simple_explanation": "The change was happening gradually during that past period. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_continuous",
+      "development"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q015",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "All evening, the mechanic ____ to fix the fault in the generator.",
+    "options": {
+      "A": "was trying",
+      "B": "tried",
+      "C": "tries",
+      "D": "has tried"
+    },
+    "answer": "A",
+    "answer_text": "was trying",
+    "explanation": {
+      "question_restate": "We are to choose the tense for a prolonged past activity.",
+      "principle": "The past continuous describes an action that was in progress at a particular time in the past.",
+      "steps": [
+        "'All evening' suggests duration in the past.",
+        "A prolonged action in progress during that period takes the past continuous.",
+        "'Was trying' fits that meaning.",
+        "Thus A is correct."
+      ],
+      "final_answer": "A. was trying",
+      "simple_explanation": "The sentence stresses an ongoing effort over a period in the past. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_continuous",
+      "duration"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q016",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "At the time we arrived, they ____ the national anthem.",
+    "options": {
+      "A": "were singing",
+      "B": "sang",
+      "C": "have sung",
+      "D": "sing"
+    },
+    "answer": "A",
+    "answer_text": "were singing",
+    "explanation": {
+      "question_restate": "We are to choose the tense for an action already in progress when we arrived.",
+      "principle": "The past continuous describes an action that was in progress at a particular time in the past.",
+      "steps": [
+        "Our arrival happened during another ongoing action.",
+        "That ongoing action takes the past continuous.",
+        "'Were singing' agrees with 'they'.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. were singing",
+      "simple_explanation": "The anthem was already being sung when the new action happened. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_continuous",
+      "arrival"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q017",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "By this time tomorrow, the candidates ____ for the second paper.",
+    "options": {
+      "A": "will be waiting",
+      "B": "waited",
+      "C": "are waiting yesterday",
+      "D": "have waited"
+    },
+    "answer": "A",
+    "answer_text": "will be waiting",
+    "explanation": {
+      "question_restate": "We are to choose the tense for an action that will be in progress at a future time.",
+      "principle": "The future continuous describes an action that will be in progress at a particular time in the future.",
+      "steps": [
+        "'By this time tomorrow' points to a specific future point.",
+        "An action in progress at that future point takes the future continuous.",
+        "'Will be waiting' is correct.",
+        "So option A is right."
+      ],
+      "final_answer": "A. will be waiting",
+      "simple_explanation": "Use the future continuous for something that will be going on at a future time. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_continuous",
+      "future_point"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q018",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "At 10 a.m. next Monday, the committee ____ the budget proposal.",
+    "options": {
+      "A": "will be discussing",
+      "B": "discussed",
+      "C": "has discussed",
+      "D": "discusses yesterday"
+    },
+    "answer": "A",
+    "answer_text": "will be discussing",
+    "explanation": {
+      "question_restate": "We are to identify the tense that shows future action in progress.",
+      "principle": "The future continuous describes an action that will be in progress at a particular time in the future.",
+      "steps": [
+        "The sentence fixes a future time: '10 a.m. next Monday'.",
+        "The activity will be ongoing at that time.",
+        "The correct form is 'will be discussing'.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. will be discussing",
+      "simple_explanation": "The focus is not simple future completion but future ongoing activity. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_continuous",
+      "ongoing_future"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q019",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Do not call me at noon; I ____ the visiting lecturers around the campus.",
+    "options": {
+      "A": "will be showing",
+      "B": "showed",
+      "C": "am showing yesterday",
+      "D": "have shown"
+    },
+    "answer": "A",
+    "answer_text": "will be showing",
+    "explanation": {
+      "question_restate": "We are to choose the tense for a future action already planned to be in progress.",
+      "principle": "The future continuous describes an action that will be in progress at a particular time in the future.",
+      "steps": [
+        "'At noon' refers to a future time in the speaker's warning.",
+        "The action will be continuing at that future moment.",
+        "'Will be showing' therefore fits.",
+        "Thus option A is correct."
+      ],
+      "final_answer": "A. will be showing",
+      "simple_explanation": "The sentence tells us what will be happening at a later time. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_continuous",
+      "planned_future"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q020",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "This time next week, we ____ our final revision for the examination.",
+    "options": {
+      "A": "will be doing",
+      "B": "did",
+      "C": "have done",
+      "D": "do yesterday"
+    },
+    "answer": "A",
+    "answer_text": "will be doing",
+    "explanation": {
+      "question_restate": "We are to choose the tense for future activity in progress.",
+      "principle": "The future continuous describes an action that will be in progress at a particular time in the future.",
+      "steps": [
+        "'This time next week' signals a point in the future.",
+        "The sentence asks for an action that will be underway then.",
+        "'Will be doing' is the correct form.",
+        "So A is correct."
+      ],
+      "final_answer": "A. will be doing",
+      "simple_explanation": "The activity is expected to be ongoing at a future point. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_continuous",
+      "revision"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q021",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "When you reach the office tomorrow morning, the manager ____ with the auditors.",
+    "options": {
+      "A": "will be meeting",
+      "B": "met",
+      "C": "has met",
+      "D": "meets yesterday"
+    },
+    "answer": "A",
+    "answer_text": "will be meeting",
+    "explanation": {
+      "question_restate": "We are to identify the tense for an action expected to be in progress when another future action happens.",
+      "principle": "The future continuous describes an action that will be in progress at a particular time in the future.",
+      "steps": [
+        "Your arrival tomorrow is one future event.",
+        "The manager's meeting will already be going on then.",
+        "That situation takes the future continuous.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. will be meeting",
+      "simple_explanation": "Future continuous often shows what will be happening when another future event occurs. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_continuous",
+      "simultaneous_future"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q022",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "At the time the guests arrive, the caterers ____ the final dishes.",
+    "options": {
+      "A": "will be serving",
+      "B": "served",
+      "C": "have served",
+      "D": "serve last night"
+    },
+    "answer": "A",
+    "answer_text": "will be serving",
+    "explanation": {
+      "question_restate": "We are to choose the tense for future background action.",
+      "principle": "The future continuous describes an action that will be in progress at a particular time in the future.",
+      "steps": [
+        "The guests' arrival sets a future reference point.",
+        "The caterers' action will be ongoing at that point.",
+        "'Will be serving' fits that meaning.",
+        "Hence option A is correct."
+      ],
+      "final_answer": "A. will be serving",
+      "simple_explanation": "The action will be in progress at the future time mentioned. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_continuous",
+      "background_future"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q023",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "By 6 p.m., the players ____ on the training ground, so the coach can address them.",
+    "options": {
+      "A": "will be assembling",
+      "B": "assembled",
+      "C": "assemble yesterday",
+      "D": "have assembled"
+    },
+    "answer": "A",
+    "answer_text": "will be assembling",
+    "explanation": {
+      "question_restate": "We are to select the tense for an action in progress at a future time.",
+      "principle": "The future continuous describes an action that will be in progress at a particular time in the future.",
+      "steps": [
+        "The time marker is future: 'By 6 p.m.' in context.",
+        "The action is presented as ongoing at that time, not fully completed.",
+        "The future continuous expresses that ongoing future process.",
+        "So A is right."
+      ],
+      "final_answer": "A. will be assembling",
+      "simple_explanation": "The speaker imagines the action as continuing at that future moment. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_continuous",
+      "future_process"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q024",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "This evening at eight, I ____ the documentary you recommended.",
+    "options": {
+      "A": "will be watching",
+      "B": "watched",
+      "C": "have watched",
+      "D": "watch yesterday"
+    },
+    "answer": "A",
+    "answer_text": "will be watching",
+    "explanation": {
+      "question_restate": "We are to choose the tense for a future action in progress at a given hour.",
+      "principle": "The future continuous describes an action that will be in progress at a particular time in the future.",
+      "steps": [
+        "The exact future hour is stated: 'this evening at eight'.",
+        "An action happening then takes the future continuous.",
+        "'Will be watching' is correct.",
+        "Therefore A is best."
+      ],
+      "final_answer": "A. will be watching",
+      "simple_explanation": "A specified future hour often calls for future continuous when the action will be underway. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_continuous",
+      "time_reference"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q025",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The principal ____ the new safety rules, so every student is expected to know them.",
+    "options": {
+      "A": "has announced",
+      "B": "announced yesterday ago",
+      "C": "is announcing last week",
+      "D": "had announced tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "has announced",
+    "explanation": {
+      "question_restate": "We are to choose the tense that links a past action to a present result.",
+      "principle": "The present perfect links a past action or experience to the present and often does not mention a finished past time.",
+      "steps": [
+        "The announcement happened before now, and its effect continues in the present.",
+        "The present perfect links past action with present relevance.",
+        "'Has announced' is therefore suitable.",
+        "So A is correct."
+      ],
+      "final_answer": "A. has announced",
+      "simple_explanation": "The rules matter now, so the sentence links the past act of announcing with the present situation. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_perfect",
+      "present_result"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q026",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Scientists ____ several methods of preserving the seeds, and the research is still useful today.",
+    "options": {
+      "A": "have developed",
+      "B": "developed yesterday",
+      "C": "are developing in 2018",
+      "D": "had developed tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "have developed",
+    "explanation": {
+      "question_restate": "We are to select the form that connects earlier work to present usefulness.",
+      "principle": "The present perfect links a past action or experience to the present and often does not mention a finished past time.",
+      "steps": [
+        "The sentence emphasizes current relevance rather than a finished past date.",
+        "The present perfect is appropriate when the exact past time is not given.",
+        "'Have developed' therefore fits.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. have developed",
+      "simple_explanation": "The focus is on the existing result of the earlier development. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_perfect",
+      "current_relevance"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q027",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "I ____ that novel before, so I can follow the discussion easily.",
+    "options": {
+      "A": "have read",
+      "B": "read last night already ago",
+      "C": "am reading in 2020",
+      "D": "had read tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "have read",
+    "explanation": {
+      "question_restate": "We are to choose the tense for past experience affecting the present.",
+      "principle": "The present perfect links a past action or experience to the present and often does not mention a finished past time.",
+      "steps": [
+        "The speaker refers to experience at an unspecified time before now.",
+        "The present perfect is used for such experience.",
+        "'Have read' fits that meaning.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. have read",
+      "simple_explanation": "The speaker's past experience matters because it helps now. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_perfect",
+      "experience"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q028",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The committee ____ its final recommendation, and the board is reviewing it now.",
+    "options": {
+      "A": "has submitted",
+      "B": "submitted yesterday ago",
+      "C": "is submitting last month",
+      "D": "had submitted tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "has submitted",
+    "explanation": {
+      "question_restate": "We are to choose the tense that links a completed action with a current stage.",
+      "principle": "The present perfect links a past action or experience to the present and often does not mention a finished past time.",
+      "steps": [
+        "The recommendation has already been submitted.",
+        "The board is reviewing it now, so the completed earlier action has present consequences.",
+        "The present perfect captures that link.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. has submitted",
+      "simple_explanation": "A present effect often signals the present perfect. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_perfect",
+      "result"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q029",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Many students ____ interest in the new reading competition.",
+    "options": {
+      "A": "have shown",
+      "B": "showed in 2017 yesterday",
+      "C": "are showing last year",
+      "D": "had shown tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "have shown",
+    "explanation": {
+      "question_restate": "We are to choose the correct form for recent present relevance.",
+      "principle": "The present perfect links a past action or experience to the present and often does not mention a finished past time.",
+      "steps": [
+        "The sentence focuses on the present state created by earlier actions.",
+        "No definite finished past time is given.",
+        "The present perfect is therefore suitable.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. have shown",
+      "simple_explanation": "The interest exists now because students have already shown it. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_perfect",
+      "recent_action"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q030",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Since the library reopened, attendance ____ steadily.",
+    "options": {
+      "A": "has increased",
+      "B": "increased yesterday steadily ago",
+      "C": "is increasing last month",
+      "D": "had increased tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "has increased",
+    "explanation": {
+      "question_restate": "We are to choose the tense used with 'since' to connect past starting point with now.",
+      "principle": "The present perfect links a past action or experience to the present and often does not mention a finished past time.",
+      "steps": [
+        "'Since' introduces a starting point in the past.",
+        "The present perfect is natural when the effect continues to the present.",
+        "'Has increased' is correct.",
+        "So A is right."
+      ],
+      "final_answer": "A. has increased",
+      "simple_explanation": "Actions or changes that began after a past point and still matter now often take the present perfect. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_perfect",
+      "since"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q031",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The coach ____ us only once, but his advice still guides our training.",
+    "options": {
+      "A": "has corrected",
+      "B": "corrected yesterday only once ago",
+      "C": "is correcting in 2021",
+      "D": "had corrected tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "has corrected",
+    "explanation": {
+      "question_restate": "We are to identify the tense for a past act with present effect.",
+      "principle": "The present perfect links a past action or experience to the present and often does not mention a finished past time.",
+      "steps": [
+        "The correction happened before now, and its guidance still matters.",
+        "This present relevance favours the present perfect.",
+        "'Has corrected' is therefore best.",
+        "Thus A is correct."
+      ],
+      "final_answer": "A. has corrected",
+      "simple_explanation": "The sentence links a past action to its continuing present importance. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_perfect",
+      "present_effect"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q032",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Our class ____ three practice tests this term.",
+    "options": {
+      "A": "has written",
+      "B": "wrote last term yesterday",
+      "C": "is writing in 2022",
+      "D": "had written tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "has written",
+    "explanation": {
+      "question_restate": "We are to choose the form for actions completed within a period that includes the present.",
+      "principle": "The present perfect links a past action or experience to the present and often does not mention a finished past time.",
+      "steps": [
+        "'This term' is a time period that still includes the present.",
+        "Actions completed within such an unfinished period often take the present perfect.",
+        "'Has written' is acceptable with collective singular 'class'.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. has written",
+      "simple_explanation": "When the time period is not yet finished, the present perfect is often preferred. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_perfect",
+      "unfinished_period"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q033",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "By the time the chairman arrived, the secretary ____ the agenda.",
+    "options": {
+      "A": "had prepared",
+      "B": "prepared",
+      "C": "has prepared",
+      "D": "is preparing"
+    },
+    "answer": "A",
+    "answer_text": "had prepared",
+    "explanation": {
+      "question_restate": "We are to choose the tense for the earlier of two past actions.",
+      "principle": "The past perfect shows that one past action happened before another past action.",
+      "steps": [
+        "Both actions are in the past.",
+        "The preparation happened before the chairman arrived.",
+        "The earlier past action takes the past perfect: 'had prepared'.",
+        "So A is correct."
+      ],
+      "final_answer": "A. had prepared",
+      "simple_explanation": "Use the past perfect when one past action happened before another past action. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_perfect",
+      "earlier_past"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q034",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "When we got to the hall, the audience ____ their seats.",
+    "options": {
+      "A": "had taken",
+      "B": "took",
+      "C": "has taken",
+      "D": "takes"
+    },
+    "answer": "A",
+    "answer_text": "had taken",
+    "explanation": {
+      "question_restate": "We are to identify the tense showing completed action before another past event.",
+      "principle": "The past perfect shows that one past action happened before another past action.",
+      "steps": [
+        "Our arrival is one past event.",
+        "The audience occupied their seats before that arrival.",
+        "That earlier completed action takes the past perfect.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. had taken",
+      "simple_explanation": "The audience sat down before we arrived, so past perfect is needed. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_perfect",
+      "sequence"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q035",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The judge discovered that the witness ____ an important detail.",
+    "options": {
+      "A": "had omitted",
+      "B": "omits",
+      "C": "has omitted",
+      "D": "is omitting"
+    },
+    "answer": "A",
+    "answer_text": "had omitted",
+    "explanation": {
+      "question_restate": "We are to choose the tense for a prior act discovered in the past.",
+      "principle": "The past perfect shows that one past action happened before another past action.",
+      "steps": [
+        "The discovery happened in the past.",
+        "The omission happened even earlier.",
+        "The past perfect marks that earlier past action.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. had omitted",
+      "simple_explanation": "Past perfect helps show which past action came first. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_perfect",
+      "discovery"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q036",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Before the rain started, the farmers ____ most of the maize.",
+    "options": {
+      "A": "had harvested",
+      "B": "harvested",
+      "C": "have harvested",
+      "D": "harvest"
+    },
+    "answer": "A",
+    "answer_text": "had harvested",
+    "explanation": {
+      "question_restate": "We are to select the tense that emphasizes completion before another past event.",
+      "principle": "The past perfect shows that one past action happened before another past action.",
+      "steps": [
+        "The rain starting is past.",
+        "The harvesting was completed before that.",
+        "The past perfect is therefore suitable.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. had harvested",
+      "simple_explanation": "The past perfect makes the time order very clear. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_perfect",
+      "before_clause"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q037",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "She was relieved because she ____ the difficult chapter before the test began.",
+    "options": {
+      "A": "had revised",
+      "B": "revised",
+      "C": "has revised",
+      "D": "is revising"
+    },
+    "answer": "A",
+    "answer_text": "had revised",
+    "explanation": {
+      "question_restate": "We are to identify the earlier past action that explains a later feeling.",
+      "principle": "The past perfect shows that one past action happened before another past action.",
+      "steps": [
+        "Her relief occurred in the past.",
+        "The revision happened before the test and before the relief.",
+        "The earlier action takes the past perfect.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. had revised",
+      "simple_explanation": "Past perfect often explains the cause of a later past state. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_perfect",
+      "cause"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q038",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The team lost confidence because it ____ two easy chances before halftime.",
+    "options": {
+      "A": "had missed",
+      "B": "missed",
+      "C": "has missed",
+      "D": "misses"
+    },
+    "answer": "A",
+    "answer_text": "had missed",
+    "explanation": {
+      "question_restate": "We are to choose the correct tense for an earlier event within a past narrative.",
+      "principle": "The past perfect shows that one past action happened before another past action.",
+      "steps": [
+        "The loss of confidence and halftime belong to the past.",
+        "The missed chances happened before that later point.",
+        "'Had missed' marks the earlier action clearly.",
+        "Thus A is correct."
+      ],
+      "final_answer": "A. had missed",
+      "simple_explanation": "The sentence needs a form that shows one past action had already happened first. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_perfect",
+      "sports"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q039",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "I could not enter because I ____ my identity card at home.",
+    "options": {
+      "A": "had left",
+      "B": "left",
+      "C": "have left",
+      "D": "leave"
+    },
+    "answer": "A",
+    "answer_text": "had left",
+    "explanation": {
+      "question_restate": "We are to identify the action that occurred before the later past problem.",
+      "principle": "The past perfect shows that one past action happened before another past action.",
+      "steps": [
+        "The inability to enter happened in the past.",
+        "Leaving the card at home happened before that.",
+        "The past perfect is the best choice for the earlier event.",
+        "Therefore A is right."
+      ],
+      "final_answer": "A. had left",
+      "simple_explanation": "The card was left behind before the speaker reached the place. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_perfect",
+      "reason"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q040",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The lecturer apologized because he ____ the wrong date in the notice.",
+    "options": {
+      "A": "had written",
+      "B": "wrote",
+      "C": "has written",
+      "D": "writes"
+    },
+    "answer": "A",
+    "answer_text": "had written",
+    "explanation": {
+      "question_restate": "We are to choose the tense showing the cause occurred earlier than the apology.",
+      "principle": "The past perfect shows that one past action happened before another past action.",
+      "steps": [
+        "The apology happened in the past.",
+        "Writing the wrong date happened earlier.",
+        "The earlier action takes the past perfect.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. had written",
+      "simple_explanation": "Past perfect is useful when a mistake happened before the reaction to it. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_perfect",
+      "mistake"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q041",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "By next Friday, the engineers ____ the bridge inspection report.",
+    "options": {
+      "A": "will have completed",
+      "B": "completed",
+      "C": "are completing yesterday",
+      "D": "have complete"
+    },
+    "answer": "A",
+    "answer_text": "will have completed",
+    "explanation": {
+      "question_restate": "We are to choose the tense for an action that will be completed before a future time.",
+      "principle": "The future perfect shows that an action will be completed before a stated future time.",
+      "steps": [
+        "'By next Friday' gives a future deadline.",
+        "The action will be finished before that time.",
+        "That meaning takes the future perfect.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. will have completed",
+      "simple_explanation": "Future perfect is used when an action will already be finished by a later future point. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_perfect",
+      "deadline"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q042",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Before the guests arrive, we ____ the decorations.",
+    "options": {
+      "A": "will have finished",
+      "B": "finished",
+      "C": "have finishing",
+      "D": "are finish yesterday"
+    },
+    "answer": "A",
+    "answer_text": "will have finished",
+    "explanation": {
+      "question_restate": "We are to identify the tense for completion before another future event.",
+      "principle": "The future perfect shows that an action will be completed before a stated future time.",
+      "steps": [
+        "The guests' arrival is in the future.",
+        "The finishing of decorations will happen before that arrival.",
+        "The future perfect expresses that prior future completion.",
+        "So A is correct."
+      ],
+      "final_answer": "A. will have finished",
+      "simple_explanation": "One future action will be complete before another future action begins. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_perfect",
+      "prior_future"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q043",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "By the end of this term, the class ____ all the major grammar units.",
+    "options": {
+      "A": "will have covered",
+      "B": "covered",
+      "C": "has cover",
+      "D": "is covering yesterday"
+    },
+    "answer": "A",
+    "answer_text": "will have covered",
+    "explanation": {
+      "question_restate": "We are to choose the tense for expected completion by a future point.",
+      "principle": "The future perfect shows that an action will be completed before a stated future time.",
+      "steps": [
+        "'By the end of this term' is a future boundary.",
+        "The action is expected to be completed before that boundary.",
+        "The correct form is 'will have covered'.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. will have covered",
+      "simple_explanation": "The sentence looks forward to a completed result at a future time. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_perfect",
+      "term"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q044",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In two years' time, she ____ her law degree and begin pupillage.",
+    "options": {
+      "A": "will have earned",
+      "B": "earned",
+      "C": "has earning",
+      "D": "is earning yesterday"
+    },
+    "answer": "A",
+    "answer_text": "will have earned",
+    "explanation": {
+      "question_restate": "We are to select the tense for future completion before another future step.",
+      "principle": "The future perfect shows that an action will be completed before a stated future time.",
+      "steps": [
+        "The degree will be completed before the next step begins.",
+        "That meaning is future perfect.",
+        "'Will have earned' therefore fits.",
+        "Thus A is correct."
+      ],
+      "final_answer": "A. will have earned",
+      "simple_explanation": "Future perfect emphasizes completion before a later future action. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_perfect",
+      "career"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q045",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "By 6 p.m., the committee ____ its final decision.",
+    "options": {
+      "A": "will have reached",
+      "B": "reached",
+      "C": "has reach",
+      "D": "is reaching yesterday"
+    },
+    "answer": "A",
+    "answer_text": "will have reached",
+    "explanation": {
+      "question_restate": "We are to choose the form that shows expected completion by a stated hour.",
+      "principle": "The future perfect shows that an action will be completed before a stated future time.",
+      "steps": [
+        "A specific future hour is given.",
+        "The decision-making will be complete by then.",
+        "The future perfect is needed.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. will have reached",
+      "simple_explanation": "The sentence expects the decision to be fully completed by 6 p.m. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_perfect",
+      "hour"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q046",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "By the time you return, I ____ the chapter and written my notes.",
+    "options": {
+      "A": "will have read",
+      "B": "read",
+      "C": "am reading yesterday",
+      "D": "have read last week"
+    },
+    "answer": "A",
+    "answer_text": "will have read",
+    "explanation": {
+      "question_restate": "We are to identify the tense showing completion before another future event.",
+      "principle": "The future perfect shows that an action will be completed before a stated future time.",
+      "steps": [
+        "Your return is future.",
+        "The reading will be done before that return.",
+        "The future perfect expresses such prior completion in future time.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. will have read",
+      "simple_explanation": "The action will already be finished when the later future event happens. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_perfect",
+      "reading"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q047",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Before the season ends, the striker ____ twenty goals.",
+    "options": {
+      "A": "will have scored",
+      "B": "scored",
+      "C": "has score",
+      "D": "is scoring yesterday"
+    },
+    "answer": "A",
+    "answer_text": "will have scored",
+    "explanation": {
+      "question_restate": "We are to choose the tense for an achievement expected by a future deadline.",
+      "principle": "The future perfect shows that an action will be completed before a stated future time.",
+      "steps": [
+        "The end of the season is a future point.",
+        "The total of goals is expected to be complete by then.",
+        "That is exactly the work of the future perfect.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. will have scored",
+      "simple_explanation": "A target expected to be complete by a future date usually takes future perfect. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_perfect",
+      "sports"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q048",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future perfect",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "By next month, the company ____ the first phase of the project.",
+    "options": {
+      "A": "will have launched",
+      "B": "launched",
+      "C": "has launch",
+      "D": "is launching yesterday"
+    },
+    "answer": "A",
+    "answer_text": "will have launched",
+    "explanation": {
+      "question_restate": "We are to choose the form that shows completion before a future time marker.",
+      "principle": "The future perfect shows that an action will be completed before a stated future time.",
+      "steps": [
+        "'By next month' marks a future deadline.",
+        "The launch will be complete by that point.",
+        "The correct tense is future perfect.",
+        "Therefore A is right."
+      ],
+      "final_answer": "A. will have launched",
+      "simple_explanation": "The sentence is about something expected to be completed by a future date. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_perfect",
+      "project"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q049",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present perfect continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "She ____ for the scholarship examination since January.",
+    "options": {
+      "A": "has been preparing",
+      "B": "prepared",
+      "C": "is preparing yesterday",
+      "D": "had been prepared tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "has been preparing",
+    "explanation": {
+      "question_restate": "We are to choose the tense for an activity that began in the past and is still continuing.",
+      "principle": "The present perfect continuous emphasizes an activity that began in the past and has continued up to now or has present effects.",
+      "steps": [
+        "'Since January' gives a starting point in the past.",
+        "The activity continues up to now.",
+        "That duration up to the present takes the present perfect continuous.",
+        "So A is correct."
+      ],
+      "final_answer": "A. has been preparing",
+      "simple_explanation": "This tense highlights how long the activity has been going on until now. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_perfect_continuous",
+      "since"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q050",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present perfect continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The workers ____ on the new library building for six months.",
+    "options": {
+      "A": "have been working",
+      "B": "worked yesterday",
+      "C": "are working last year",
+      "D": "had worked tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "have been working",
+    "explanation": {
+      "question_restate": "We are to identify the tense showing ongoing duration up to the present.",
+      "principle": "The present perfect continuous emphasizes an activity that began in the past and has continued up to now or has present effects.",
+      "steps": [
+        "'For six months' emphasizes duration.",
+        "The work started in the past and continues to the present.",
+        "The present perfect continuous is therefore the best choice.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. have been working",
+      "simple_explanation": "Use this tense when the activity started earlier and is still continuing now. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_perfect_continuous",
+      "duration"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q051",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present perfect continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Why are your hands dirty? I ____ in the garden.",
+    "options": {
+      "A": "have been digging",
+      "B": "dug yesterday",
+      "C": "am digging last week",
+      "D": "had dug tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "have been digging",
+    "explanation": {
+      "question_restate": "We are to choose the tense for recent past activity with visible present result.",
+      "principle": "The present perfect continuous emphasizes an activity that began in the past and has continued up to now or has present effects.",
+      "steps": [
+        "The dirty hands show present evidence.",
+        "The activity started before now and its effect is visible now.",
+        "The present perfect continuous highlights that recent ongoing activity.",
+        "Thus A is correct."
+      ],
+      "final_answer": "A. have been digging",
+      "simple_explanation": "This tense can explain a present result by referring to a recent continuing activity. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_perfect_continuous",
+      "present_result"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q052",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present perfect continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The lecturer ____ the same point repeatedly, and the students now understand it better.",
+    "options": {
+      "A": "has been explaining",
+      "B": "explained yesterday",
+      "C": "is explaining in 2020",
+      "D": "had explained tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "has been explaining",
+    "explanation": {
+      "question_restate": "We are to select the tense for repeated activity continuing to the present.",
+      "principle": "The present perfect continuous emphasizes an activity that began in the past and has continued up to now or has present effects.",
+      "steps": [
+        "The action has happened repeatedly up to now.",
+        "The second clause shows a present result of that repeated activity.",
+        "The present perfect continuous fits both meanings.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. has been explaining",
+      "simple_explanation": "Repeated activity from the past up to now is well expressed by the present perfect continuous. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_perfect_continuous",
+      "repetition"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q053",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present perfect continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Fuel prices ____ for weeks, and transport fares are rising with them.",
+    "options": {
+      "A": "have been increasing",
+      "B": "increased yesterday only",
+      "C": "are increasing last month",
+      "D": "had increased tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "have been increasing",
+    "explanation": {
+      "question_restate": "We are to choose the tense that stresses an ongoing trend from the recent past to now.",
+      "principle": "The present perfect continuous emphasizes an activity that began in the past and has continued up to now or has present effects.",
+      "steps": [
+        "The period 'for weeks' shows duration.",
+        "The trend began earlier and is still happening.",
+        "The present perfect continuous captures that ongoing movement.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. have been increasing",
+      "simple_explanation": "The sentence describes a trend that started earlier and continues now. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_perfect_continuous",
+      "trend"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q054",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present perfect continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "I ____ your phone number, but it still refuses to connect.",
+    "options": {
+      "A": "have been trying",
+      "B": "tried yesterday only",
+      "C": "am trying last week",
+      "D": "had tried tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "have been trying",
+    "explanation": {
+      "question_restate": "We are to choose the tense for repeated effort up to now.",
+      "principle": "The present perfect continuous emphasizes an activity that began in the past and has continued up to now or has present effects.",
+      "steps": [
+        "The action started before now and has been repeated up to the present.",
+        "The current failure shows present relevance.",
+        "The present perfect continuous is appropriate.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. have been trying",
+      "simple_explanation": "This tense highlights repeated effort continuing up to the present moment. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_perfect_continuous",
+      "effort"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q055",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present perfect continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The children ____ television all afternoon, so they have not done their homework.",
+    "options": {
+      "A": "have been watching",
+      "B": "watched yesterday",
+      "C": "are watching last year",
+      "D": "had watched tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "have been watching",
+    "explanation": {
+      "question_restate": "We are to identify the tense for an activity continuing over a period up to now.",
+      "principle": "The present perfect continuous emphasizes an activity that began in the past and has continued up to now or has present effects.",
+      "steps": [
+        "'All afternoon' points to duration that reaches the present context.",
+        "The result is seen in the second clause: homework remains undone.",
+        "The present perfect continuous links the activity with that present result.",
+        "So A is correct."
+      ],
+      "final_answer": "A. have been watching",
+      "simple_explanation": "The activity went on for some time and has a present consequence. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_perfect_continuous",
+      "duration_result"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q056",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past perfect continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Before the relief team arrived, the villagers ____ for clean water for days.",
+    "options": {
+      "A": "had been searching",
+      "B": "were searching now",
+      "C": "have been searching",
+      "D": "search yesterday"
+    },
+    "answer": "A",
+    "answer_text": "had been searching",
+    "explanation": {
+      "question_restate": "We are to choose the tense for a past activity that continued up to another past point.",
+      "principle": "The past perfect continuous emphasizes duration of an activity that continued up to a point in the past.",
+      "steps": [
+        "The arrival of the relief team is a past point.",
+        "The search continued for days before that point.",
+        "The past perfect continuous expresses that earlier duration.",
+        "So A is correct."
+      ],
+      "final_answer": "A. had been searching",
+      "simple_explanation": "This tense highlights how long an action had been going on before another past event. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_perfect_continuous",
+      "duration"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q057",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past perfect continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "When the teacher entered, the boys ____ noisily for several minutes.",
+    "options": {
+      "A": "had been arguing",
+      "B": "are arguing yesterday",
+      "C": "have argued",
+      "D": "argued tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "had been arguing",
+    "explanation": {
+      "question_restate": "We are to identify the tense that emphasizes duration before a past interruption.",
+      "principle": "The past perfect continuous emphasizes duration of an activity that continued up to a point in the past.",
+      "steps": [
+        "The teacher's entrance is a past event.",
+        "The argument had already been continuing before that event.",
+        "The past perfect continuous shows that continuing duration.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. had been arguing",
+      "simple_explanation": "The tense helps us see the action as already in progress for some time before another past event. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_perfect_continuous",
+      "interruption"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q058",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past perfect continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "She was tired because she ____ all night.",
+    "options": {
+      "A": "had been reading",
+      "B": "has been reading",
+      "C": "is reading yesterday",
+      "D": "read tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "had been reading",
+    "explanation": {
+      "question_restate": "We are to choose the form that explains a past result by an earlier prolonged activity.",
+      "principle": "The past perfect continuous emphasizes duration of an activity that continued up to a point in the past.",
+      "steps": [
+        "Her tiredness belongs to the past context.",
+        "The reading happened before that past state and lasted for a period.",
+        "The past perfect continuous best expresses that meaning.",
+        "Thus A is correct."
+      ],
+      "final_answer": "A. had been reading",
+      "simple_explanation": "The tense shows the long earlier activity that caused the later past result. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_perfect_continuous",
+      "cause"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q059",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past perfect continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The road was muddy because it ____ heavily before dawn.",
+    "options": {
+      "A": "had been raining",
+      "B": "has been raining",
+      "C": "is raining yesterday",
+      "D": "rained tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "had been raining",
+    "explanation": {
+      "question_restate": "We are to select the tense for a continuing earlier past cause.",
+      "principle": "The past perfect continuous emphasizes duration of an activity that continued up to a point in the past.",
+      "steps": [
+        "The muddy road is described in the past.",
+        "The rain had continued before that condition was observed.",
+        "The past perfect continuous marks that earlier ongoing activity.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. had been raining",
+      "simple_explanation": "The tense explains a past condition by pointing to a continuing earlier action. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_perfect_continuous",
+      "weather"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q060",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past perfect continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "By the time the match was stopped, the home team ____ pressure on the visitors for most of the half.",
+    "options": {
+      "A": "had been putting",
+      "B": "have been putting",
+      "C": "put yesterday",
+      "D": "are putting tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "had been putting",
+    "explanation": {
+      "question_restate": "We are to identify the tense showing duration up to a past point.",
+      "principle": "The past perfect continuous emphasizes duration of an activity that continued up to a point in the past.",
+      "steps": [
+        "The stoppage of the match is a past point.",
+        "The pressure continued for much of the half before that point.",
+        "The past perfect continuous expresses that duration.",
+        "So A is correct."
+      ],
+      "final_answer": "A. had been putting",
+      "simple_explanation": "Use this tense when an earlier action continued up to another past moment. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_perfect_continuous",
+      "sports"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q061",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past perfect continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The engine finally broke down because the driver ____ the warning signs for weeks.",
+    "options": {
+      "A": "had been ignoring",
+      "B": "has been ignoring",
+      "C": "ignored tomorrow",
+      "D": "is ignoring yesterday"
+    },
+    "answer": "A",
+    "answer_text": "had been ignoring",
+    "explanation": {
+      "question_restate": "We are to choose the form that shows repeated continuing action before a past result.",
+      "principle": "The past perfect continuous emphasizes duration of an activity that continued up to a point in the past.",
+      "steps": [
+        "The breakdown happened in the past.",
+        "The ignoring continued before that breakdown.",
+        "The past perfect continuous emphasizes the repeated continuing nature of the earlier action.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. had been ignoring",
+      "simple_explanation": "The tense shows that the neglect had been going on before the later failure. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_perfect_continuous",
+      "repeated_action"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q062",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past perfect continuous",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "When the doctor examined him, he ____ from fever since Monday.",
+    "options": {
+      "A": "had been suffering",
+      "B": "has been suffering",
+      "C": "suffers yesterday",
+      "D": "is suffering tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "had been suffering",
+    "explanation": {
+      "question_restate": "We are to choose the correct tense for a condition continuing up to a past examination.",
+      "principle": "The past perfect continuous emphasizes duration of an activity that continued up to a point in the past.",
+      "steps": [
+        "The doctor's examination is a past event.",
+        "The suffering started earlier and continued up to that moment.",
+        "The past perfect continuous best expresses that duration before the past point.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. had been suffering",
+      "simple_explanation": "The sentence looks back from one past event to a continuing earlier condition. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_perfect_continuous",
+      "illness"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q063",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Sequence of tenses",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The teacher said that the earth ____ round.",
+    "options": {
+      "A": "is",
+      "B": "was being",
+      "C": "has been yesterday",
+      "D": "will have been"
+    },
+    "answer": "A",
+    "answer_text": "is",
+    "explanation": {
+      "question_restate": "We are to choose the correct tense in reported speech where the statement is a universal truth.",
+      "principle": "Sequence of tenses involves choosing verb forms that agree logically with the time relationship in the sentence, especially in reported speech and time clauses.",
+      "steps": [
+        "Even after a reporting verb in the past, universal truths usually remain in the simple present.",
+        "The shape of the earth is still true now.",
+        "Therefore 'is' is the correct choice.",
+        "So A is correct."
+      ],
+      "final_answer": "A. is",
+      "simple_explanation": "In reported speech, general truths do not normally shift into the past. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "sequence_of_tenses",
+      "reported_speech"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q064",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Sequence of tenses",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "He told us that he ____ the assignment the previous night.",
+    "options": {
+      "A": "had finished",
+      "B": "has finished",
+      "C": "finishes tomorrow",
+      "D": "is finishing yesterday"
+    },
+    "answer": "A",
+    "answer_text": "had finished",
+    "explanation": {
+      "question_restate": "We are to choose the tense that correctly shows earlier past action in reported speech.",
+      "principle": "Sequence of tenses involves choosing verb forms that agree logically with the time relationship in the sentence, especially in reported speech and time clauses.",
+      "steps": [
+        "The reporting verb 'told' is in the past.",
+        "The finishing happened before the telling.",
+        "The earlier past action therefore takes the past perfect.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. had finished",
+      "simple_explanation": "Sequence of tenses helps show which action happened first. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "sequence_of_tenses",
+      "earlier_past"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q065",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Sequence of tenses",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "She promised that she ____ the documents the next day.",
+    "options": {
+      "A": "would bring",
+      "B": "will bring yesterday",
+      "C": "brings last week",
+      "D": "has brought tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "would bring",
+    "explanation": {
+      "question_restate": "We are to identify the future-in-the-past form used after a past reporting verb.",
+      "principle": "Sequence of tenses involves choosing verb forms that agree logically with the time relationship in the sentence, especially in reported speech and time clauses.",
+      "steps": [
+        "The promise itself was made in the past.",
+        "The bringing was future relative to that past moment.",
+        "English commonly uses 'would + verb' for future in the past.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. would bring",
+      "simple_explanation": "After a past reporting verb, a later future action is often expressed with 'would'. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "sequence_of_tenses",
+      "future_in_past"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q066",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Sequence of tenses",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "I knew that if he studied hard, he ____ the examination.",
+    "options": {
+      "A": "would pass",
+      "B": "passes yesterday",
+      "C": "has passed tomorrow",
+      "D": "is passing last week"
+    },
+    "answer": "A",
+    "answer_text": "would pass",
+    "explanation": {
+      "question_restate": "We are to choose the tense that agrees logically with a past main clause.",
+      "principle": "Sequence of tenses involves choosing verb forms that agree logically with the time relationship in the sentence, especially in reported speech and time clauses.",
+      "steps": [
+        "The knowing is placed in the past.",
+        "The result is future relative to that past point.",
+        "'Would pass' gives the correct backshifted future meaning.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. would pass",
+      "simple_explanation": "Sequence of tenses is about keeping the time relationship logical within the sentence. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "sequence_of_tenses",
+      "conditional_report"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q067",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Sequence of tenses",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The witness explained that she ____ the suspect before that day.",
+    "options": {
+      "A": "had seen",
+      "B": "has seen",
+      "C": "sees tomorrow",
+      "D": "is seeing yesterday"
+    },
+    "answer": "A",
+    "answer_text": "had seen",
+    "explanation": {
+      "question_restate": "We are to choose the verb that shows earlier past time before a past explanation.",
+      "principle": "Sequence of tenses involves choosing verb forms that agree logically with the time relationship in the sentence, especially in reported speech and time clauses.",
+      "steps": [
+        "The explanation happened in the past.",
+        "The seeing happened even earlier.",
+        "The earlier past event takes the past perfect.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. had seen",
+      "simple_explanation": "When one past action happened before another past action being reported, past perfect is often required. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "sequence_of_tenses",
+      "past_perfect"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q068",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Sequence of tenses",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Our coach warned that whoever relaxed too early ____ regret it.",
+    "options": {
+      "A": "would",
+      "B": "will yesterday",
+      "C": "has",
+      "D": "is"
+    },
+    "answer": "A",
+    "answer_text": "would",
+    "explanation": {
+      "question_restate": "We are to identify the tense that matches a past reporting verb and a future consequence relative to it.",
+      "principle": "Sequence of tenses involves choosing verb forms that agree logically with the time relationship in the sentence, especially in reported speech and time clauses.",
+      "steps": [
+        "The warning was made in the past.",
+        "The regret would happen later relative to that warning.",
+        "'Would regret' is the proper future-in-the-past idea.",
+        "So A is correct."
+      ],
+      "final_answer": "A. would",
+      "simple_explanation": "After a warning in the past, a later consequence is often expressed with 'would'. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "sequence_of_tenses",
+      "warning"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q069",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Sequence of tenses",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "He said that when the rain ____ , they would continue the journey.",
+    "options": {
+      "A": "stopped",
+      "B": "stops",
+      "C": "has stopped yesterday",
+      "D": "is stopping tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "stopped",
+    "explanation": {
+      "question_restate": "We are to choose the correct tense sequence in reported speech.",
+      "principle": "Sequence of tenses involves choosing verb forms that agree logically with the time relationship in the sentence, especially in reported speech and time clauses.",
+      "steps": [
+        "The main reporting verb is past: 'said'.",
+        "In backshifted reported speech, the present form in the time clause often shifts to simple past.",
+        "'Stopped' therefore fits the reported structure best.",
+        "Thus A is correct."
+      ],
+      "final_answer": "A. stopped",
+      "simple_explanation": "The reported sentence keeps the time relationship consistent with the past reporting verb. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "sequence_of_tenses",
+      "time_clause"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q070",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Correct tense usage in context",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Choose the option that best completes the sentence: 'By the time the meeting begins, the secretary ____ copies of the report for everyone.'",
+    "options": {
+      "A": "will have made",
+      "B": "made yesterday",
+      "C": "has make last week",
+      "D": "is making tomorrow ago"
+    },
+    "answer": "A",
+    "answer_text": "will have made",
+    "explanation": {
+      "question_restate": "We are to choose the tense that best fits the meaning of the whole sentence.",
+      "principle": "Correct tense usage depends on meaning, time signals, and the relationship between actions in context.",
+      "steps": [
+        "The report copies must be ready before the meeting begins.",
+        "That is completion before a future point.",
+        "The future perfect is therefore the best fit.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. will have made",
+      "simple_explanation": "Always read the whole context; the meaning often points to the correct tense more clearly than the verb alone. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "correct_usage",
+      "future_context"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q071",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Correct tense usage in context",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Choose the option that best completes the sentence: 'My brother ____ in Port Harcourt for three years, so he knows the city well.'",
+    "options": {
+      "A": "has lived",
+      "B": "lived yesterday",
+      "C": "is living in 2018",
+      "D": "had lived tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "has lived",
+    "explanation": {
+      "question_restate": "We are to choose the tense that links past duration with present knowledge.",
+      "principle": "Correct tense usage depends on meaning, time signals, and the relationship between actions in context.",
+      "steps": [
+        "The second clause shows a present result: he knows the city well.",
+        "The duration before now is relevant to the present.",
+        "The present perfect therefore fits well.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. has lived",
+      "simple_explanation": "When past experience explains a present situation, the present perfect is often the best choice. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "correct_usage",
+      "present_result"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q072",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Correct tense usage in context",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Choose the option that best completes the sentence: 'When I entered the office, the manager ____ on the phone.'",
+    "options": {
+      "A": "was speaking",
+      "B": "speaks",
+      "C": "has spoken",
+      "D": "will speak"
+    },
+    "answer": "A",
+    "answer_text": "was speaking",
+    "explanation": {
+      "question_restate": "We are to identify the tense that fits a background action in a past scene.",
+      "principle": "Correct tense usage depends on meaning, time signals, and the relationship between actions in context.",
+      "steps": [
+        "The entry into the office is a past event.",
+        "The speaking was already in progress at that time.",
+        "That background action takes the past continuous.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. was speaking",
+      "simple_explanation": "In past narratives, the background action is often in the past continuous. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "correct_usage",
+      "past_scene"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q073",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Correct tense usage in context",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Choose the option that best completes the sentence: 'Listen carefully; the examiner ____ an important instruction.'",
+    "options": {
+      "A": "is giving",
+      "B": "gave yesterday",
+      "C": "has given tomorrow",
+      "D": "would give last week"
+    },
+    "answer": "A",
+    "answer_text": "is giving",
+    "explanation": {
+      "question_restate": "We are to choose the tense that fits immediate present context.",
+      "principle": "Correct tense usage depends on meaning, time signals, and the relationship between actions in context.",
+      "steps": [
+        "'Listen carefully' shows the action is happening now.",
+        "An action now in progress takes the present continuous.",
+        "'Is giving' is therefore correct.",
+        "So A is right."
+      ],
+      "final_answer": "A. is giving",
+      "simple_explanation": "Current action around the moment of speaking usually takes the present continuous. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "correct_usage",
+      "immediate_present"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q074",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Correct tense usage in context",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Choose the option that best completes the sentence: 'If the rain continues, the farmers ____ worried about the harvest.'",
+    "options": {
+      "A": "will become",
+      "B": "became yesterday",
+      "C": "have become last year",
+      "D": "are becoming in 2010"
+    },
+    "answer": "A",
+    "answer_text": "will become",
+    "explanation": {
+      "question_restate": "We are to select the tense that suits a likely future result.",
+      "principle": "Correct tense usage depends on meaning, time signals, and the relationship between actions in context.",
+      "steps": [
+        "The if-clause states a present condition with future meaning.",
+        "The result clause takes 'will' for likely future outcome.",
+        "'Will become' fits the sentence.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. will become",
+      "simple_explanation": "In likely future conditions, the if-clause is often simple present while the result clause uses 'will'. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "correct_usage",
+      "conditional"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q075",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Correct tense usage in context",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Choose the option that best completes the sentence: 'She ____ the letter before her father arrived, so the news did not surprise him.'",
+    "options": {
+      "A": "had sent",
+      "B": "sends",
+      "C": "has sent",
+      "D": "is sending"
+    },
+    "answer": "A",
+    "answer_text": "had sent",
+    "explanation": {
+      "question_restate": "We are to identify the tense that shows one past action happened before another.",
+      "principle": "Correct tense usage depends on meaning, time signals, and the relationship between actions in context.",
+      "steps": [
+        "Her father's arrival is one past action.",
+        "The sending happened before that arrival.",
+        "The earlier action takes the past perfect.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. had sent",
+      "simple_explanation": "When one past event clearly happened earlier than another, past perfect is often required. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "correct_usage",
+      "prior_past"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q076",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Correct tense usage in context",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Choose the option that best completes the sentence: 'For several weeks now, the students ____ for the inter-school debate.'",
+    "options": {
+      "A": "have been rehearsing",
+      "B": "rehearsed yesterday",
+      "C": "are rehearsing last year",
+      "D": "had rehearsed tomorrow"
+    },
+    "answer": "A",
+    "answer_text": "have been rehearsing",
+    "explanation": {
+      "question_restate": "We are to choose the tense that best expresses continuing duration up to the present.",
+      "principle": "Correct tense usage depends on meaning, time signals, and the relationship between actions in context.",
+      "steps": [
+        "'For several weeks now' points to an activity that began in the past and continues now.",
+        "The present perfect continuous is best for this duration.",
+        "'Have been rehearsing' is correct.",
+        "Thus A is correct."
+      ],
+      "final_answer": "A. have been rehearsing",
+      "simple_explanation": "A continuing activity over a period up to now usually takes the present perfect continuous. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "correct_usage",
+      "duration"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q077",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present tense",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The school bus ____ at exactly 7:00 a.m. every weekday.",
+    "options": {
+      "A": "leaves",
+      "B": "is leaving",
+      "C": "left",
+      "D": "has left"
+    },
+    "answer": "A",
+    "answer_text": "leaves",
+    "explanation": {
+      "question_restate": "We are to choose the tense that expresses a habitual action.",
+      "principle": "The simple present is used for habits, routines, general truths, present facts, and fixed schedules.",
+      "steps": [
+        "'Every weekday' signals repetition and routine.",
+        "The simple present is used for regular habits and schedules.",
+        "'Leaves' matches the singular subject 'bus'.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. leaves",
+      "simple_explanation": "The sentence describes a repeated routine, so the simple present is needed. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_tense",
+      "routine"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q078",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present tense",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "In good biographies, an honest writer usually ____ both the strengths and the weaknesses of the subject.",
+    "options": {
+      "A": "mentions",
+      "B": "mentioned",
+      "C": "is mentioning",
+      "D": "has mentioned"
+    },
+    "answer": "A",
+    "answer_text": "mentions",
+    "explanation": {
+      "question_restate": "We are to identify the correct present-tense form for a general truth about writers.",
+      "principle": "The simple present is used for habits, routines, general truths, present facts, and fixed schedules.",
+      "steps": [
+        "'Usually' points to customary action.",
+        "Customary or habitual action takes the simple present.",
+        "'Writer' is singular, so the verb takes -s.",
+        "Therefore 'mentions' is correct."
+      ],
+      "final_answer": "A. mentions",
+      "simple_explanation": "The idea is about what writers generally do, not one event in the past. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_tense",
+      "general_truth"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q079",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present tense",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Whenever Musa sees unnecessary waste, he ____ about it immediately.",
+    "options": {
+      "A": "complains",
+      "B": "complained",
+      "C": "is complaining",
+      "D": "has been complaining"
+    },
+    "answer": "A",
+    "answer_text": "complains",
+    "explanation": {
+      "question_restate": "We are to choose the tense used for repeated reaction.",
+      "principle": "The simple present is used for habits, routines, general truths, present facts, and fixed schedules.",
+      "steps": [
+        "'Whenever' shows that the action happens each time a situation occurs.",
+        "That repeated pattern is expressed with the simple present.",
+        "'Complains' also agrees with 'he'.",
+        "So option A is right."
+      ],
+      "final_answer": "A. complains",
+      "simple_explanation": "Use the simple present when an action repeats whenever a condition is met. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_tense",
+      "repeated_action"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q080",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present tense",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The proverb 'A stitch in time saves nine' ____ that prompt action prevents bigger problems.",
+    "options": {
+      "A": "teaches",
+      "B": "taught",
+      "C": "is teaching",
+      "D": "has taught"
+    },
+    "answer": "A",
+    "answer_text": "teaches",
+    "explanation": {
+      "question_restate": "We are to choose the tense suitable for a permanent meaning.",
+      "principle": "The simple present is used for habits, routines, general truths, present facts, and fixed schedules.",
+      "steps": [
+        "Proverbs express timeless truths.",
+        "Timeless truths are stated in the simple present.",
+        "'Teaches' agrees with the singular subject 'proverb'.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. teaches",
+      "simple_explanation": "Proverbs and universal meanings normally stay in the simple present. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_tense",
+      "proverb"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q081",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present tense",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A careful editor ____ every page before approving the final copy.",
+    "options": {
+      "A": "reads",
+      "B": "read",
+      "C": "is reading",
+      "D": "had read"
+    },
+    "answer": "A",
+    "answer_text": "reads",
+    "explanation": {
+      "question_restate": "We are to select the tense that describes professional routine.",
+      "principle": "The simple present is used for habits, routines, general truths, present facts, and fixed schedules.",
+      "steps": [
+        "The sentence states what a careful editor normally does.",
+        "Normal or characteristic action takes the simple present.",
+        "'Editor' is singular, so 'reads' fits.",
+        "Thus option A is correct."
+      ],
+      "final_answer": "A. reads",
+      "simple_explanation": "The statement is about routine professional behaviour. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_tense",
+      "habit"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q082",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present tense",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "In literature, suspense often ____ when the reader knows less than a character.",
+    "options": {
+      "A": "arises",
+      "B": "arose",
+      "C": "is arising",
+      "D": "has arisen"
+    },
+    "answer": "A",
+    "answer_text": "arises",
+    "explanation": {
+      "question_restate": "We are to choose the correct tense for a general literary statement.",
+      "principle": "The simple present is used for habits, routines, general truths, present facts, and fixed schedules.",
+      "steps": [
+        "Academic statements about literature often use the simple present.",
+        "'Often' also suggests a repeated or typical pattern.",
+        "'Suspense' is singular, so 'arises' is correct.",
+        "Therefore A is best."
+      ],
+      "final_answer": "A. arises",
+      "simple_explanation": "When discussing literature in general, the simple present is standard. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_tense",
+      "literature"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q083",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present tense",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The committee's report ____ three major causes of the decline in output.",
+    "options": {
+      "A": "identifies",
+      "B": "identified",
+      "C": "is identifying",
+      "D": "will identify"
+    },
+    "answer": "A",
+    "answer_text": "identifies",
+    "explanation": {
+      "question_restate": "We are to use the tense that suits a present statement about a document.",
+      "principle": "The simple present is used for habits, routines, general truths, present facts, and fixed schedules.",
+      "steps": [
+        "When discussing what a report says, English often uses the simple present.",
+        "The report currently contains that information.",
+        "'Report' is singular, so 'identifies' fits.",
+        "Hence option A is correct."
+      ],
+      "final_answer": "A. identifies",
+      "simple_explanation": "Documents are often described in the simple present because their content is treated as currently valid. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_tense",
+      "document"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q084",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Present tense",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "Each of the players ____ the rules before the match begins.",
+    "options": {
+      "A": "understands",
+      "B": "understand",
+      "C": "understood",
+      "D": "is understanding"
+    },
+    "answer": "A",
+    "answer_text": "understands",
+    "explanation": {
+      "question_restate": "We are to choose the correct present-tense form with a tricky subject.",
+      "principle": "The simple present is used for habits, routines, general truths, present facts, and fixed schedules.",
+      "steps": [
+        "'Each of the players' is grammatically singular.",
+        "A singular subject takes a singular present verb.",
+        "'Understands' is therefore the correct form.",
+        "So A is correct."
+      ],
+      "final_answer": "A. understands",
+      "simple_explanation": "Even though 'players' is plural in meaning, the head word 'each' makes the verb singular. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "present_tense",
+      "subject_verb"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q085",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past tense",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "During the inquiry yesterday, the witness ____ the truth in a calm voice.",
+    "options": {
+      "A": "stated",
+      "B": "states",
+      "C": "has stated",
+      "D": "was stating"
+    },
+    "answer": "A",
+    "answer_text": "stated",
+    "explanation": {
+      "question_restate": "We are to choose the form that suits a definite past time.",
+      "principle": "The simple past is used for completed actions or states in the past, especially when the time is stated or understood.",
+      "steps": [
+        "'Yesterday' is a clear past-time marker.",
+        "Actions completed at a definite past time take the simple past.",
+        "'Stated' therefore fits the sentence.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. stated",
+      "simple_explanation": "A finished action at a stated past time needs the simple past. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_tense",
+      "yesterday"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q086",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past tense",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "When the bell rang, the candidates ____ their answer booklets and looked up.",
+    "options": {
+      "A": "closed",
+      "B": "close",
+      "C": "have closed",
+      "D": "are closing"
+    },
+    "answer": "A",
+    "answer_text": "closed",
+    "explanation": {
+      "question_restate": "We are to identify the proper tense for past narration.",
+      "principle": "The simple past is used for completed actions or states in the past, especially when the time is stated or understood.",
+      "steps": [
+        "The sentence narrates completed actions in sequence.",
+        "Past-time narration normally uses the simple past.",
+        "'Closed' matches 'rang' and 'looked'.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. closed",
+      "simple_explanation": "Narrative actions that happened and ended in the past stay in the simple past. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_tense",
+      "narration"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q087",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past tense",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The novel became popular because it ____ a social problem many readers recognized.",
+    "options": {
+      "A": "addressed",
+      "B": "addresses",
+      "C": "has addressed",
+      "D": "had addressed"
+    },
+    "answer": "A",
+    "answer_text": "addressed",
+    "explanation": {
+      "question_restate": "We are to use the tense that matches another simple past verb.",
+      "principle": "The simple past is used for completed actions or states in the past, especially when the time is stated or understood.",
+      "steps": [
+        "'Became' places the statement in past time.",
+        "The reason-clause also refers to past meaning.",
+        "'Addressed' fits that completed past setting.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. addressed",
+      "simple_explanation": "When two connected actions belong to the same finished past period, simple past often fits both. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_tense",
+      "reason"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q088",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past tense",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Our teacher ____ the difference between phrase and clause before the test began.",
+    "options": {
+      "A": "explained",
+      "B": "explains",
+      "C": "has explained",
+      "D": "will explain"
+    },
+    "answer": "A",
+    "answer_text": "explained",
+    "explanation": {
+      "question_restate": "We are to choose the tense for a completed classroom action in the past.",
+      "principle": "The simple past is used for completed actions or states in the past, especially when the time is stated or understood.",
+      "steps": [
+        "The action happened before the test on a past occasion.",
+        "The focus is simple narration of a completed event.",
+        "'Explained' is the natural simple past form.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. explained",
+      "simple_explanation": "The sentence simply tells us what happened before the test in the past. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_tense",
+      "classroom"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q089",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past tense",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "During the debate, Ada ____ firmly but respectfully.",
+    "options": {
+      "A": "argued",
+      "B": "argues",
+      "C": "has argued",
+      "D": "is arguing"
+    },
+    "answer": "A",
+    "answer_text": "argued",
+    "explanation": {
+      "question_restate": "We are to select the tense suitable for a finished event.",
+      "principle": "The simple past is used for completed actions or states in the past, especially when the time is stated or understood.",
+      "steps": [
+        "'During the debate' refers to a finished occasion.",
+        "A completed act on a finished occasion takes the simple past.",
+        "'Argued' therefore fits the context.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. argued",
+      "simple_explanation": "The debate is over, so the action is presented as completed. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_tense",
+      "finished_event"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q090",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past tense",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The old machine ____ suddenly, and production stopped for two hours.",
+    "options": {
+      "A": "failed",
+      "B": "fails",
+      "C": "has failed",
+      "D": "was failing"
+    },
+    "answer": "A",
+    "answer_text": "failed",
+    "explanation": {
+      "question_restate": "We are to choose the best tense for past sequence.",
+      "principle": "The simple past is used for completed actions or states in the past, especially when the time is stated or understood.",
+      "steps": [
+        "The sentence narrates two finished past events.",
+        "The simple past is normal in such sequence.",
+        "'Failed' goes naturally with 'stopped'.",
+        "Thus A is correct."
+      ],
+      "final_answer": "A. failed",
+      "simple_explanation": "Use simple past for events that happened and ended in the past. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_tense",
+      "sequence"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q091",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past tense",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "After much hesitation, the player ____ the penalty and the crowd cheered.",
+    "options": {
+      "A": "took",
+      "B": "takes",
+      "C": "has taken",
+      "D": "had taken"
+    },
+    "answer": "A",
+    "answer_text": "took",
+    "explanation": {
+      "question_restate": "We are to choose the tense that suits straightforward past narration.",
+      "principle": "The simple past is used for completed actions or states in the past, especially when the time is stated or understood.",
+      "steps": [
+        "The action belongs to a finished past event.",
+        "The crowd's reaction is also in the simple past.",
+        "'Took' is therefore the correct form.",
+        "So A is right."
+      ],
+      "final_answer": "A. took",
+      "simple_explanation": "The whole scene is narrated as a finished past event. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_tense",
+      "sports"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q092",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Past tense",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The journalist ____ the minister's speech accurately in her report last night.",
+    "options": {
+      "A": "quoted",
+      "B": "quotes",
+      "C": "has quoted",
+      "D": "is quoting"
+    },
+    "answer": "A",
+    "answer_text": "quoted",
+    "explanation": {
+      "question_restate": "We are to use the correct tense for a completed past action with a time expression.",
+      "principle": "The simple past is used for completed actions or states in the past, especially when the time is stated or understood.",
+      "steps": [
+        "'Last night' clearly marks past time.",
+        "A completed action at that time takes the simple past.",
+        "'Quoted' is the right form.",
+        "Therefore option A is correct."
+      ],
+      "final_answer": "A. quoted",
+      "simple_explanation": "A definite past time such as 'last night' normally excludes the present perfect and calls for the simple past. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "past_tense",
+      "time_marker"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q093",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future meaning in English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Next term, the new principal ____ a reading campaign in all junior classes.",
+    "options": {
+      "A": "will launch",
+      "B": "launches",
+      "C": "launched",
+      "D": "has launched"
+    },
+    "answer": "A",
+    "answer_text": "will launch",
+    "explanation": {
+      "question_restate": "We are to choose the form that expresses future intention.",
+      "principle": "Future meaning in English can be expressed with will, be going to, the present continuous for arrangements, and the simple present for timetables.",
+      "steps": [
+        "'Next term' points to future time.",
+        "A plain future decision or prediction can take 'will + verb'.",
+        "'Will launch' fits both grammar and meaning.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. will launch",
+      "simple_explanation": "The action is still ahead, so a future form is needed. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_meaning",
+      "will"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q094",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future meaning in English",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The train ____ at 6:15 a.m. tomorrow, so we must leave home before dawn.",
+    "options": {
+      "A": "leaves",
+      "B": "left",
+      "C": "is leaving now",
+      "D": "has left"
+    },
+    "answer": "A",
+    "answer_text": "leaves",
+    "explanation": {
+      "question_restate": "We are to identify future meaning expressed through a timetable.",
+      "principle": "Future meaning in English can be expressed with will, be going to, the present continuous for arrangements, and the simple present for timetables.",
+      "steps": [
+        "Trains, flights, and timetables often use the simple present for fixed schedules.",
+        "The event is future in time but fixed in programme.",
+        "'Leaves' is therefore idiomatic.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. leaves",
+      "simple_explanation": "English does not always use 'will' for future meaning; schedules often take the simple present. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_meaning",
+      "timetable"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q095",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future meaning in English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Look at those dark clouds; it ____ before the match begins.",
+    "options": {
+      "A": "is going to rain",
+      "B": "rains",
+      "C": "has rained",
+      "D": "rained"
+    },
+    "answer": "A",
+    "answer_text": "is going to rain",
+    "explanation": {
+      "question_restate": "We are to choose the future form based on present evidence.",
+      "principle": "Future meaning in English can be expressed with will, be going to, the present continuous for arrangements, and the simple present for timetables.",
+      "steps": [
+        "'Be going to' is common when present evidence points to a future result.",
+        "The dark clouds are the evidence.",
+        "So 'is going to rain' is the best choice.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. is going to rain",
+      "simple_explanation": "Use 'going to' when the future event seems visible or strongly suggested now. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_meaning",
+      "going_to"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q096",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future meaning in English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "At this rate, the team ____ the trophy if it remains disciplined.",
+    "options": {
+      "A": "will win",
+      "B": "wins yesterday",
+      "C": "has won",
+      "D": "won"
+    },
+    "answer": "A",
+    "answer_text": "will win",
+    "explanation": {
+      "question_restate": "We are to choose the correct future result in a conditional sentence.",
+      "principle": "Future meaning in English can be expressed with will, be going to, the present continuous for arrangements, and the simple present for timetables.",
+      "steps": [
+        "The main clause predicts a future result.",
+        "In this type of conditional sentence, the if-clause takes simple present while the result clause takes 'will'.",
+        "'Will win' therefore fits.",
+        "So option A is correct."
+      ],
+      "final_answer": "A. will win",
+      "simple_explanation": "The sentence predicts what is likely to happen in the future. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_meaning",
+      "conditional"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q097",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future meaning in English",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The Governor ____ Abuja on Monday for the education summit.",
+    "options": {
+      "A": "is leaving",
+      "B": "left",
+      "C": "has left",
+      "D": "leaves last Monday"
+    },
+    "answer": "A",
+    "answer_text": "is leaving",
+    "explanation": {
+      "question_restate": "We are to choose a form that expresses planned future arrangement.",
+      "principle": "Future meaning in English can be expressed with will, be going to, the present continuous for arrangements, and the simple present for timetables.",
+      "steps": [
+        "The present continuous can express a personal arrangement already planned.",
+        "'On Monday' gives the sentence future meaning.",
+        "'Is leaving' sounds natural for a planned journey.",
+        "Hence A is correct."
+      ],
+      "final_answer": "A. is leaving",
+      "simple_explanation": "The present continuous can show future arrangement when the plan already exists. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_meaning",
+      "arrangement"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q098",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future meaning in English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "By this evening, I ____ my application letter and send it to the board.",
+    "options": {
+      "A": "will complete",
+      "B": "completed",
+      "C": "complete yesterday",
+      "D": "have complete"
+    },
+    "answer": "A",
+    "answer_text": "will complete",
+    "explanation": {
+      "question_restate": "We are to choose the correct future form with a deadline expression.",
+      "principle": "Future meaning in English can be expressed with will, be going to, the present continuous for arrangements, and the simple present for timetables.",
+      "steps": [
+        "'By this evening' points to future time.",
+        "A simple promise or intention can take 'will'.",
+        "'Will complete' is the only grammatical option here.",
+        "Therefore A is correct."
+      ],
+      "final_answer": "A. will complete",
+      "simple_explanation": "The sentence refers to something expected later today, so a future form is needed. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_meaning",
+      "deadline"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q099",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future meaning in English",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The debate club ____ a public speaking workshop next Friday, according to the notice.",
+    "options": {
+      "A": "holds",
+      "B": "held",
+      "C": "has held",
+      "D": "was holding"
+    },
+    "answer": "A",
+    "answer_text": "holds",
+    "explanation": {
+      "question_restate": "We are to identify future meaning expressed by formal schedule.",
+      "principle": "Future meaning in English can be expressed with will, be going to, the present continuous for arrangements, and the simple present for timetables.",
+      "steps": [
+        "Notices and official programmes often use the simple present for future events.",
+        "'Next Friday' gives future time, but the event is scheduled.",
+        "'Holds' therefore fits the register well.",
+        "Thus A is correct."
+      ],
+      "final_answer": "A. holds",
+      "simple_explanation": "Programmes and notices often express future events with the simple present. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_meaning",
+      "notice"
+    ],
+    "active": true
+  },
+  {
+    "id": "eng_11_q100",
+    "subject_code": "eng",
+    "subject_name": "Use of English",
+    "topic_id": "eng_11",
+    "topic_title": "Tense and Aspect",
+    "subtopic": "Future meaning in English",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Be careful with your spending, or you ____ short of money before the month ends.",
+    "options": {
+      "A": "will run",
+      "B": "ran",
+      "C": "have run",
+      "D": "run yesterday"
+    },
+    "answer": "A",
+    "answer_text": "will run",
+    "explanation": {
+      "question_restate": "We are to choose the correct future consequence.",
+      "principle": "Future meaning in English can be expressed with will, be going to, the present continuous for arrangements, and the simple present for timetables.",
+      "steps": [
+        "The sentence warns about a likely future result.",
+        "A future consequence after 'or' commonly takes 'will'.",
+        "'Will run' is therefore correct.",
+        "So option A is right."
+      ],
+      "final_answer": "A. will run",
+      "simple_explanation": "The clause predicts a future result from present behaviour. To understand this better, check our \"Tutorial section\" for a fuller beginner-friendly lesson."
+    },
+    "tags": [
+      "future_meaning",
+      "warning"
+    ],
+    "active": true
+  }
+]
