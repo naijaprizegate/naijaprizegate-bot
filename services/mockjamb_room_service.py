@@ -429,13 +429,13 @@ def build_mockjamb_waiting_room_text(
     host_user_id: int,
 ) -> str:
     lines = []
-    lines.append("👥 *Mock JAMB Multiplayer Room*")
+    lines.append("👥 Mock JAMB Multiplayer Room")
     lines.append("")
-    lines.append(f"*Room Code:* `{room_code}`")
-    lines.append(f"*Invite Link:* {invite_link}")
-    lines.append(f"*Status:* {room_status}")
+    lines.append(f"Room Code: {room_code}")
+    lines.append(f"Invite Link: {invite_link}")
+    lines.append(f"Status: {room_status}")
     lines.append("")
-    lines.append("*Players:*")
+    lines.append("Players:")
 
     if not players:
         lines.append("• No players yet")
@@ -453,14 +453,14 @@ def build_mockjamb_waiting_room_text(
             host_tag = " 👑 Host" if user_id == int(host_user_id) else ""
 
             lines.append(
-                f"{idx}. `{user_id}`{host_tag}\n"
+                f"{idx}. {user_id}{host_tag}\n"
                 f"   Course: {course_code}\n"
                 f"   Subjects: {subject_text}\n"
                 f"   Status: {player_status}"
             )
 
     lines.append("")
-    lines.append("_Share the room code or invite link with your friends._")
+    lines.append("Share the room code or invite link with your friends.")
 
     return "\n".join(lines)
 
