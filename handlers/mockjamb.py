@@ -1534,14 +1534,12 @@ async def mockjamb_mode_friends_handler(update: Update, context: ContextTypes.DE
     try:
         await query.edit_message_text(
             text,
-            parse_mode="Markdown",
             reply_markup=markup,
             disable_web_page_preview=True,
         )
     except Exception:
         await query.message.reply_text(
             text,
-            parse_mode="Markdown",
             reply_markup=markup,
             disable_web_page_preview=True,
         )
@@ -2991,4 +2989,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
 
