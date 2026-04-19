@@ -127,17 +127,26 @@ def make_mockwaec_solo_payment_keyboard() -> InlineKeyboardMarkup:
 def make_mockwaec_subject_selection_keyboard(selected_codes: list[str]) -> InlineKeyboardMarkup:
     subjects = get_waec_subjects()
     rows = []
+    current_row = []
 
     for subject in subjects:
         code = subject["code"]
         name = subject["name"]
         prefix = "✅ " if code in selected_codes else ""
-        rows.append([
+
+        current_row.append(
             InlineKeyboardButton(
                 f"{prefix}{name}",
                 callback_data=f"mw_subject_toggle::{code}"
             )
-        ])
+        )
+
+        if len(current_row) == 2:
+            rows.append(current_row)
+            current_row = []
+
+    if current_row:
+        rows.append(current_row)
 
     rows.append([InlineKeyboardButton("➡️ Continue", callback_data="mw_subjects_continue")])
     rows.append([InlineKeyboardButton("⬅️ Back to Mock WAEC/NECO", callback_data="mock:waec")])
@@ -145,7 +154,7 @@ def make_mockwaec_subject_selection_keyboard(selected_codes: list[str]) -> Inlin
 
     return InlineKeyboardMarkup(rows)
 
-
+    
 def make_mockwaec_exam_ready_keyboard(subject_codes: list[str]) -> InlineKeyboardMarkup:
     rows = []
 
