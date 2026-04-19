@@ -194,6 +194,7 @@ async def mark_mockjamb_subject_completed(
 
     completed_subjects = []
     scores = {}
+    subject_codes = []
 
     try:
         completed_subjects = json.loads(existing.get("completed_subjects_json") or "[]")
@@ -205,12 +206,17 @@ async def mark_mockjamb_subject_completed(
     except Exception:
         scores = {}
 
+    try:
+        subject_codes = json.loads(existing.get("subject_codes_json") or "[]")
+    except Exception:
+        subject_codes = []
+
     if subject_code not in completed_subjects:
         completed_subjects.append(subject_code)
 
     scores[subject_code] = int(score)
 
-    new_status = "completed" if len(completed_subjects) >= 4 else "in_progress"
+    new_status = "completed" if len(completed_subjects) >= len(subject_codes) else "in_progress"
 
     await session.execute(
         text("""
