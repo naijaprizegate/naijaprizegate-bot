@@ -317,7 +317,7 @@ async def get_latest_active_mockjamb_session_for_user(
                 updated_at
             from public.mockjamb_sessions
             where user_id = :user_id
-              and status in ('ready', 'in_progress', 'completed')
+              and status in ('ready', 'in_progress')
             order by id desc
             limit 1
         """),
@@ -325,3 +325,4 @@ async def get_latest_active_mockjamb_session_for_user(
     )
     row = result.mappings().first()
     return dict(row) if row else None
+
