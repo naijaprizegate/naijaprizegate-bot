@@ -12,6 +12,12 @@
     "active": true
   },
   {
+    "code": "fmath",
+    "name": "Further Mathematics",
+    "folder": "further_mathematics",
+    "active": true
+  },
+  {
     "code": "phys",
     "name": "Physics",
     "folder": "physics",
