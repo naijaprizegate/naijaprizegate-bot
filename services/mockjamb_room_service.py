@@ -370,3 +370,97 @@ async def get_mockjamb_room_subject_paper(
     )
     row = result.mappings().first()
     return dict(row) if row else None
+
+async def get_mockjamb_room_by_invite_token(
+    session: AsyncSession,
+    *,
+    invite_token: str,
+) -> dict | None:
+    result = await session.execute(
+        text("""
+            select
+                id,
+                room_code,
+                host_user_id,
+                status,
+                scheduled_start_at,
+                started_at,
+                ends_at,
+                duration_minutes,
+                invite_token,
+                created_at,
+                updated_at
+            from public.mockjamb_rooms
+            where invite_token = :invite_token
+            limit 1
+        """),
+        {"invite_token": invite_token},
+    )
+    row = result.mappings().first()
+    return dict(row) if row else None
+
+
+def build_mockjamb_invite_link(bot_username: str, room_code: str) -> str:
+    clean_username = str(bot_username or "").replace("@", "").strip()
+    return f"https://t.me/{clean_username}?start=jmroom_{room_code}"
+
+
+def format_mockjamb_player_subjects(subject_codes_raw) -> list[str]:
+    if isinstance(subject_codes_raw, list):
+        return [str(x).strip() for x in subject_codes_raw if str(x).strip()]
+
+    if isinstance(subject_codes_raw, str):
+        try:
+            parsed = json.loads(subject_codes_raw)
+            if isinstance(parsed, list):
+                return [str(x).strip() for x in parsed if str(x).strip()]
+        except Exception:
+            return []
+
+    return []
+
+
+def build_mockjamb_waiting_room_text(
+    *,
+    room_code: str,
+    invite_link: str,
+    room_status: str,
+    players: list[dict],
+    host_user_id: int,
+) -> str:
+    lines = []
+    lines.append("👥 *Mock JAMB Multiplayer Room*")
+    lines.append("")
+    lines.append(f"*Room Code:* `{room_code}`")
+    lines.append(f"*Invite Link:* {invite_link}")
+    lines.append(f"*Status:* {room_status}")
+    lines.append("")
+    lines.append("*Players:*")
+
+    if not players:
+        lines.append("• No players yet")
+    else:
+        for idx, player in enumerate(players, start=1):
+            user_id = int(player.get("user_id") or 0)
+            course_code = str(player.get("course_code") or "Not set").strip()
+            player_status = str(player.get("player_status") or "joined").strip()
+
+            subject_codes = format_mockjamb_player_subjects(
+                player.get("subject_codes_json") or "[]"
+            )
+            subject_text = ", ".join(subject_codes) if subject_codes else "No subjects yet"
+
+            host_tag = " 👑 Host" if user_id == int(host_user_id) else ""
+
+            lines.append(
+                f"{idx}. `{user_id}`{host_tag}\n"
+                f"   Course: {course_code}\n"
+                f"   Subjects: {subject_text}\n"
+                f"   Status: {player_status}"
+            )
+
+    lines.append("")
+    lines.append("_Share the room code or invite link with your friends._")
+
+    return "\n".join(lines)
+
