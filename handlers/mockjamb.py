@@ -1942,6 +1942,120 @@ async def mockjamb_pay_solo_handler(update: Update, context: ContextTypes.DEFAUL
         )
 
 
+# --------------------------------------------
+# Mock JAMB Pay Friends Handler
+# ----------------------------------------------
+async def mockjamb_pay_friends_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    course_code = context.user_data.get("mj_course_code")
+    subject_codes = context.user_data.get("mj_subject_codes") or []
+
+    if not course_code or not subject_codes:
+        return await query.message.reply_text(
+            "⚠️ Your Mock JAMB setup is incomplete.\n\nPlease choose your course again.",
+            reply_markup=make_mockjamb_welcome_keyboard(),
+        )
+
+    course = get_course_by_code(course_code)
+    if not course:
+        return await query.message.reply_text(
+            "⚠️ Course not found. Please choose your course again."
+        )
+
+    amount = MOCKJAMB_SOLO_FEE
+    user = query.from_user
+    tg_id = user.id
+    username = user.username or f"user_{tg_id}"
+    email = f"{username}@naijaprizegate.ng"
+
+    tx_ref = build_tx_ref("MOCKJAMBROOM")
+    subject_codes_json = json.dumps(subject_codes)
+
+    async with get_async_session() as session:
+        await create_pending_mockjamb_payment(
+            session,
+            payment_reference=tx_ref,
+            user_id=tg_id,
+            amount_paid=amount,
+            course_code=course_code,
+            subject_codes_json=subject_codes_json,
+            exam_mode="friends",
+        )
+        await session.commit()
+
+    checkout_url = await create_checkout(
+        user_id=tg_id,
+        amount=amount,
+        username=username,
+        email=email,
+        tx_ref=tx_ref,
+        meta={
+            "tg_id": str(tg_id),
+            "username": username,
+            "product_type": "MOCKJAMB",
+            "course_code": course_code,
+            "exam_mode": "friends",
+        },
+        product_type="MOCKJAMB",
+    )
+
+    if not checkout_url:
+        async with get_async_session() as session:
+            await session.execute(
+                text("""
+                    update public.mockjamb_payments
+                    set
+                        payment_status = 'expired',
+                        updated_at = now()
+                    where payment_reference = :payment_reference
+                      and lower(coalesce(payment_status, '')) = 'pending'
+                """),
+                {"payment_reference": tx_ref},
+            )
+            await session.commit()
+
+        return await query.message.reply_text(
+            "⚠️ Payment service is unavailable right now. Please try again shortly."
+        )
+
+    subject_names = "\n".join(
+        [f"• {subject['name']}" for subject in get_course_subjects(course_code)]
+    )
+
+    message_text = (
+        "👥 *Mock JAMB Multiplayer Host Payment*\n\n"
+        f"*Course:* {course['course_name']}\n\n"
+        "*Subjects:*\n"
+        f"{subject_names}\n\n"
+        f"*Amount:* ₦{amount}\n\n"
+        "Complete this payment to unlock and create your multiplayer room."
+    )
+
+    markup = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
+            [InlineKeyboardButton("⬅️ Back", callback_data="mj_mode_friends")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+    try:
+        await query.edit_message_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
 
 # --------------------------------------------
 # Mockjamb Payment Success Handler
@@ -3263,6 +3377,7 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_room_refresh_handler, pattern=r"^mjr_refresh$"))
     application.add_handler(CallbackQueryHandler(mockjamb_room_join_handler, pattern=r"^mjr_join::"))
     application.add_handler(CallbackQueryHandler(mockjamb_pay_solo_handler, pattern=r"^mj_pay_solo$"))
+    application.add_handler(CallbackQueryHandler(mockjamb_pay_friends_handler, pattern=r"^mj_pay_friends$"))
     application.add_handler(CallbackQueryHandler(mockjamb_start_subject_handler, pattern=r"^mj_start_subject::"))
     application.add_handler(CallbackQueryHandler(mockjamb_submit_exam_confirm_handler, pattern=r"^mj_submit_exam_confirm$"))
     application.add_handler(CallbackQueryHandler(mockjamb_submit_exam_yes_handler, pattern=r"^mj_submit_exam_yes$"))
