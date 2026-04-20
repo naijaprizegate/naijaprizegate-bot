@@ -16,6 +16,8 @@ from telegram.ext import (
 from helpers import md_escape, get_or_create_user
 from db import get_async_session
 from handlers.challenge import join_challenge
+from services.mockjamb_room_service import get_mockjamb_room_by_code
+from handlers.mockjamb import extract_mockjamb_room_code_from_start_payload
 
 logger = logging.getLogger(__name__)
 
@@ -112,7 +114,7 @@ async def faq_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # ===============================================================
-# MAIN MENU / OTHER MENU
+# MAIN MENU / OTHER MENU KEYBOARDS
 # ===============================================================
 def build_main_menu_keyboard():
     return InlineKeyboardMarkup(
@@ -153,6 +155,13 @@ def build_exam_hub_keyboard():
             [InlineKeyboardButton("⬅️ Back to Main Menu", callback_data="menu:main")],
         ]
     )
+
+
+def make_mockjamb_join_room_keyboard(room_code: str) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton("✅ Join This Room", callback_data=f"mjr_join::{room_code}")],
+        [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+    ])
 
 
 def build_start_text(user_first_name: str) -> str:
@@ -268,6 +277,36 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # ===========================================================
     if context.args:
         arg = context.args[0].strip()
+
+        # --------------------------------------
+        # Mock JAMB Invite Room Code/Link
+        # ------------------------------------
+        room_code = extract_mockjamb_room_code_from_start_payload(arg)
+        if room_code:
+            async with get_async_session() as session:
+                room = await get_mockjamb_room_by_code(session, room_code=room_code)
+
+            if not room:
+                return await update.effective_message.reply_text(
+                    "⚠️ This room invite is invalid or no longer available."
+                )
+
+            room_status = str(room.get("status") or "").strip().lower()
+            if room_status != "waiting":
+                return await update.effective_message.reply_text(
+                    "⚠️ This room is no longer open for joining."
+                )
+
+            context.user_data["mjr_room_code"] = room_code
+            context.user_data["mjr_is_host"] = False
+
+            return await update.effective_message.reply_text(
+                "👥 Mock JAMB Room Invite\n\n"
+                f"Room Code: {room_code}\n\n"
+                "You were invited to join a Mock JAMB multiplayer room.\n"
+                "Tap the button below to join this room.",
+                reply_markup=make_mockjamb_join_room_keyboard(room_code),
+            )
 
         # -------------------------------------------------------
         # BATTLE LINK HANDLER
@@ -822,5 +861,4 @@ def register_handlers(application):
         ),
         group=20,
     )
-
 
