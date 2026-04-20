@@ -134,6 +134,14 @@ def make_mockjamb_solo_payment_keyboard(course_code: str) -> InlineKeyboardMarku
         ]
     )
 
+def make_mockjamb_friends_payment_keyboard(course_code: str) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton(f"💳 Pay ₦{MOCKJAMB_SOLO_FEE}", callback_data="mj_pay_friends")],
+            [InlineKeyboardButton("⬅️ Back", callback_data=f"mj_use_course::{course_code}")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
 
 def make_mockjamb_exam_ready_keyboard(subject_codes: list[str]) -> InlineKeyboardMarkup:
     rows = []
@@ -429,6 +437,23 @@ def build_mockjamb_solo_payment_text(course_code: str) -> str:
         "Tap below to continue to payment."
     )
 
+def build_mockjamb_friends_payment_text(course_code: str) -> str:
+    course = get_course_by_code(course_code)
+    if not course:
+        return "⚠️ Course not found."
+
+    subjects = get_course_subjects(course_code)
+    subject_lines = "\n".join([f"• {subject['name']}" for subject in subjects])
+
+    return (
+        "👥 *Mock JAMB Multiplayer Host Access*\n\n"
+        f"*Course:* {course['course_name']}\n\n"
+        "*Your subjects:*\n"
+        f"{subject_lines}\n\n"
+        f"*Host Fee:* ₦{MOCKJAMB_SOLO_FEE}\n\n"
+        "You need to pay first before your multiplayer room can be created.\n\n"
+        "Tap below to continue to payment."
+    )
 
 def build_mockjamb_exam_ready_text(course_code: str, subject_codes: list[str]) -> str:
     course = get_course_by_code(course_code)
@@ -1576,89 +1601,29 @@ async def mockjamb_mode_friends_handler(update: Update, context: ContextTypes.DE
 
     await query.answer()
 
-    user = update.effective_user
-    if not user:
-        return
-
     context.user_data["mj_mode"] = "friends"
 
     course_code = context.user_data.get("mj_course_code")
-    subject_codes = context.user_data.get("mj_subject_codes") or []
-
-    if not course_code or not subject_codes:
+    if not course_code:
         return await query.message.reply_text(
-            "⚠️ Please select your course and subjects first before creating a room.",
+            "⚠️ No saved course found. Please choose your course again.",
             reply_markup=make_mockjamb_welcome_keyboard(),
         )
 
-    bot_username = ""
-    try:
-        me = await context.bot.get_me()
-        bot_username = me.username or ""
-    except Exception:
-        bot_username = ""
-
-    async with get_async_session() as session:
-        try:
-            room = await create_mockjamb_room(
-                session,
-                host_user_id=int(user.id),
-                duration_minutes=120,
-            )
-
-            room_code = room["room_code"]
-
-            await add_mockjamb_room_player(
-                session,
-                room_code=room_code,
-                user_id=int(user.id),
-                course_code=str(course_code),
-                subject_codes_json=json.dumps(subject_codes),
-            )
-
-            players = await list_mockjamb_room_players(
-                session,
-                room_code=room_code,
-            )
-
-            await session.commit()
-
-        except Exception as e:
-            await session.rollback()
-            logger.exception("Failed to create mockjamb room | err=%s", e)
-            return await query.edit_message_text(
-                "⚠️ Could not create multiplayer room. Please try again."
-            )
-
-    invite_link = build_mockjamb_invite_link(bot_username, room_code)
-
-    text = build_mockjamb_waiting_room_text(
-        room_code=room_code,
-        invite_link=invite_link,
-        room_status="waiting",
-        players=players,
-        host_user_id=int(user.id),
-    )
-
-    markup = make_mockjamb_room_waiting_keyboard(
-        is_host=True,
-        room_status="waiting",
-    )
-
-    context.user_data["mjr_room_code"] = room_code
-    context.user_data["mjr_is_host"] = True
+    text = build_mockjamb_friends_payment_text(course_code)
+    markup = make_mockjamb_friends_payment_keyboard(course_code)
 
     try:
         await query.edit_message_text(
             text,
+            parse_mode="Markdown",
             reply_markup=markup,
-            disable_web_page_preview=True,
         )
     except Exception:
         await query.message.reply_text(
             text,
+            parse_mode="Markdown",
             reply_markup=markup,
-            disable_web_page_preview=True,
         )
 
 
@@ -3309,3 +3274,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
