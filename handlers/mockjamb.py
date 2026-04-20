@@ -2091,7 +2091,7 @@ async def mockjamb_payment_success_handler(
 
         course_code = str(payment.get("course_code") or "").strip()
         subject_codes_json = payment.get("subject_codes_json") or "[]"
-        exam_mode = str(payment.get("exam_mode") or "solo").strip()
+        exam_mode = str(payment.get("exam_mode") or "solo").strip().lower()
 
         try:
             subject_codes = json.loads(subject_codes_json)
@@ -2104,6 +2104,98 @@ async def mockjamb_payment_success_handler(
                     "⚠️ Your saved Mock JAMB exam data is incomplete. Please contact support."
                 )
             return
+
+        if exam_mode == "friends":
+            try:
+                room = await create_mockjamb_room(
+                    session,
+                    host_user_id=int(payment["user_id"]),
+                    duration_minutes=120,
+                )
+
+                room_code = room["room_code"]
+
+                await add_mockjamb_room_player(
+                    session,
+                    room_code=room_code,
+                    user_id=int(payment["user_id"]),
+                    course_code=course_code,
+                    subject_codes_json=subject_codes_json,
+                )
+
+                players = await list_mockjamb_room_players(
+                    session,
+                    room_code=room_code,
+                )
+
+                await session.commit()
+
+            except Exception as e:
+                await session.rollback()
+                logger.exception("Failed to create paid multiplayer room | err=%s", e)
+
+                if update.message:
+                    await update.message.reply_text(
+                        "⚠️ Payment succeeded, but room creation failed. Please contact support."
+                    )
+                return
+
+            context.user_data["mj_course_code"] = course_code
+            context.user_data["mj_subject_codes"] = subject_codes
+            context.user_data["mj_mode"] = "friends"
+            context.user_data["mj_room_code"] = room_code
+            context.user_data["mjr_room_code"] = room_code
+            context.user_data["mjr_is_host"] = True
+            context.user_data["mj_payment_reference"] = tx_ref
+            context.user_data["mj_session_id"] = None
+
+            bot_username = ""
+            try:
+                me = await context.bot.get_me()
+                bot_username = me.username or ""
+            except Exception:
+                bot_username = ""
+
+            invite_link = build_mockjamb_invite_link(bot_username, room_code)
+
+            message_text = build_mockjamb_waiting_room_text(
+                room_code=room_code,
+                invite_link=invite_link,
+                room_status="waiting",
+                players=players,
+                host_user_id=int(payment["user_id"]),
+            )
+
+            markup = make_mockjamb_room_waiting_keyboard(
+                is_host=True,
+                room_status="waiting",
+            )
+
+            if update.message:
+                await update.message.reply_text(
+                    message_text,
+                    reply_markup=markup,
+                    disable_web_page_preview=True,
+                )
+                return
+
+            if update.callback_query:
+                query = update.callback_query
+                await query.answer()
+
+                try:
+                    await query.edit_message_text(
+                        message_text,
+                        reply_markup=markup,
+                        disable_web_page_preview=True,
+                    )
+                except Exception:
+                    await query.message.reply_text(
+                        message_text,
+                        reply_markup=markup,
+                        disable_web_page_preview=True,
+                    )
+                return
 
         mj_session = await get_or_create_mockjamb_session_from_payment(
             session,
