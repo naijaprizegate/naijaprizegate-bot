@@ -5,6 +5,8 @@
 import json
 import math
 import logging
+import os
+import urllib.parse
 from datetime import datetime, timezone
 
 from sqlalchemy import text
@@ -252,14 +254,44 @@ def make_mockjamb_time_up_keyboard() -> InlineKeyboardMarkup:
     )
 
 
-def make_mockjamb_room_waiting_keyboard(*, is_host: bool, room_status: str) -> InlineKeyboardMarkup:
+def make_mockjamb_room_waiting_keyboard(
+    *,
+    is_host: bool,
+    room_status: str,
+    room_code: str | None = None,
+) -> InlineKeyboardMarkup:
     rows = []
+
+    share_url = None
+    safe_room_code = str(room_code or "").strip().upper()
+
+    if safe_room_code:
+        bot_username = os.getenv("BOT_USERNAME", "NaijaPrizeGateBot")
+        invite_link = f"https://t.me/{bot_username}?start=jmroom_{safe_room_code}"
+
+        share_text = (
+            "📝 Join my Mock JAMB / UTME room on NaijaPrizeGate!\n\n"
+            f"Room Code: {safe_room_code}\n"
+            "Tap the link below to join:"
+        )
+
+        share_url = (
+            "https://t.me/share/url?"
+            f"url={urllib.parse.quote(invite_link)}"
+            f"&text={urllib.parse.quote(share_text)}"
+        )
 
     if room_status == "waiting":
         if is_host:
-            rows.append([
-                InlineKeyboardButton("📤 Share Room Link / Code", callback_data="mjr_share")
-            ])
+            if share_url:
+                rows.append([
+                    InlineKeyboardButton("📤 Share Room Link / Code", url=share_url)
+                ])
+            else:
+                rows.append([
+                    InlineKeyboardButton("📤 Share Room Link / Code", callback_data="mjr_share")
+                ])
+
             rows.append([
                 InlineKeyboardButton("🔄 Refresh Room", callback_data="mjr_refresh")
             ])
@@ -286,9 +318,15 @@ def make_mockjamb_room_waiting_keyboard(*, is_host: bool, room_status: str) -> I
         ])
 
         if is_host:
-            rows.append([
-                InlineKeyboardButton("📤 Share Room Link / Code", callback_data="mjr_share")
-            ])
+            if share_url:
+                rows.append([
+                    InlineKeyboardButton("📤 Share Room Link / Code", url=share_url)
+                ])
+            else:
+                rows.append([
+                    InlineKeyboardButton("📤 Share Room Link / Code", callback_data="mjr_share")
+                ])
+
             rows.append([
                 InlineKeyboardButton("⬅️ Back to Mode Selection", callback_data="mjr_back_to_mode")
             ])
@@ -1542,6 +1580,7 @@ async def mockjamb_use_course_handler(update: Update, context: ContextTypes.DEFA
         markup = make_mockjamb_room_waiting_keyboard(
             is_host=bool(context.user_data["mjr_is_host"]),
             room_status="waiting",
+            room_code=room_code,
         )
 
         try:
@@ -1770,6 +1809,7 @@ async def mockjamb_room_refresh_handler(update: Update, context: ContextTypes.DE
     markup = make_mockjamb_room_waiting_keyboard(
         is_host=is_host,
         room_status=room_status,
+        room_code=room_code,
     )
 
     try:
@@ -1865,6 +1905,7 @@ async def mockjamb_room_join_handler(update: Update, context: ContextTypes.DEFAU
     markup = make_mockjamb_room_waiting_keyboard(
         is_host=bool(context.user_data["mjr_is_host"]),
         room_status="waiting",
+        room_code=room_code,
     )
 
     try:
@@ -2262,6 +2303,7 @@ async def mockjamb_payment_success_handler(
             markup = make_mockjamb_room_waiting_keyboard(
                 is_host=True,
                 room_status="waiting",
+                room_code=room_code,
             )
 
             if update.message:
@@ -3576,5 +3618,6 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
 
 
