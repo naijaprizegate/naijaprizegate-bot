@@ -256,18 +256,23 @@ def make_mockjamb_room_waiting_keyboard(*, is_host: bool, room_status: str) -> I
     rows = []
 
     if room_status == "waiting":
-        rows.append([
-            InlineKeyboardButton("📚 Choose My Course", callback_data="mjr_pick_course")
-        ])
-
         if is_host:
+            rows.append([
+                InlineKeyboardButton("📤 Share Room Link / Code", callback_data="mjr_share")
+            ])
             rows.append([
                 InlineKeyboardButton("🔄 Refresh Room", callback_data="mjr_refresh")
             ])
             rows.append([
                 InlineKeyboardButton("▶️ Start Match", callback_data="mjr_start")
             ])
+            rows.append([
+                InlineKeyboardButton("⬅️ Back to Mode Selection", callback_data="mjr_back_to_mode")
+            ])
         else:
+            rows.append([
+                InlineKeyboardButton("📚 Choose My Course", callback_data="mjr_pick_course")
+            ])
             rows.append([
                 InlineKeyboardButton("✅ Ready", callback_data="mjr_ready")
             ])
@@ -279,6 +284,14 @@ def make_mockjamb_room_waiting_keyboard(*, is_host: bool, room_status: str) -> I
         rows.append([
             InlineKeyboardButton("🔄 Refresh Room", callback_data="mjr_refresh")
         ])
+
+        if is_host:
+            rows.append([
+                InlineKeyboardButton("📤 Share Room Link / Code", callback_data="mjr_share")
+            ])
+            rows.append([
+                InlineKeyboardButton("⬅️ Back to Mode Selection", callback_data="mjr_back_to_mode")
+            ])
 
     elif room_status == "in_progress":
         rows.append([
@@ -419,6 +432,13 @@ def build_mockjamb_mode_text(course_code: str) -> str:
         "How would you like to take this mock exam?"
     )
 
+def build_mockjamb_room_share_text(room_code: str, invite_link: str) -> str:
+    return (
+        "📤 *Share Mock JAMB Room*\n\n"
+        f"*Room Code:* `{room_code}`\n\n"
+        f"*Invite Link:* {invite_link}\n\n"
+        "Friends can join using either the room code or the invite link."
+    )
 
 def build_mockjamb_solo_payment_text(course_code: str) -> str:
     course = get_course_by_code(course_code)
@@ -1612,6 +1632,79 @@ async def mockjamb_mode_friends_handler(update: Update, context: ContextTypes.DE
 
     text = build_mockjamb_friends_payment_text(course_code)
     markup = make_mockjamb_friends_payment_keyboard(course_code)
+
+    try:
+        await query.edit_message_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
+# --------------------------------------------------
+# Mock JAMB Room Share Handler
+# -------------------------------------------------
+async def mockjamb_room_share_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    room_code = str(context.user_data.get("mjr_room_code") or context.user_data.get("mj_room_code") or "").strip().upper()
+    if not room_code:
+        return await query.message.reply_text(
+            "⚠️ No active room was found."
+        )
+
+    bot_username = ""
+    try:
+        me = await context.bot.get_me()
+        bot_username = me.username or ""
+    except Exception:
+        bot_username = ""
+
+    invite_link = build_mockjamb_invite_link(bot_username, room_code)
+    text = build_mockjamb_room_share_text(room_code, invite_link)
+
+    try:
+        await query.message.reply_text(
+            text,
+            parse_mode="Markdown",
+            disable_web_page_preview=True,
+        )
+    except Exception:
+        await query.message.reply_text(
+            f"Room Code: {room_code}\nInvite Link: {invite_link}",
+            disable_web_page_preview=True,
+        )
+
+
+# -------------------------------------------
+# Mock JAMB Room Back to Mode Handler
+# -------------------------------------------
+async def mockjamb_room_back_to_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    course_code = context.user_data.get("mj_course_code")
+    if not course_code:
+        return await query.message.reply_text(
+            "⚠️ No saved course found. Please choose your course again.",
+            reply_markup=make_mockjamb_welcome_keyboard(),
+        )
+
+    text = build_mockjamb_mode_text(course_code)
+    markup = make_mockjamb_mode_keyboard()
 
     try:
         await query.edit_message_text(
@@ -3467,6 +3560,8 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_room_pick_course_handler, pattern=r"^mjr_pick_course$"))
     application.add_handler(CallbackQueryHandler(mockjamb_mode_friends_handler, pattern=r"^mj_mode_friends$"))
     application.add_handler(CallbackQueryHandler(mockjamb_room_refresh_handler, pattern=r"^mjr_refresh$"))
+    application.add_handler(CallbackQueryHandler(mockjamb_room_share_handler, pattern=r"^mjr_share$"))
+    application.add_handler(CallbackQueryHandler(mockjamb_room_back_to_mode_handler, pattern=r"^mjr_back_to_mode$"))
     application.add_handler(CallbackQueryHandler(mockjamb_room_join_handler, pattern=r"^mjr_join::"))
     application.add_handler(CallbackQueryHandler(mockjamb_pay_solo_handler, pattern=r"^mj_pay_solo$"))
     application.add_handler(CallbackQueryHandler(mockjamb_pay_friends_handler, pattern=r"^mj_pay_friends$"))
@@ -3481,4 +3576,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
 
