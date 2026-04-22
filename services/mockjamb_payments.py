@@ -42,6 +42,8 @@ async def create_pending_mockjamb_payment(
     course_code: str,
     subject_codes_json: str,
     exam_mode: str = "solo",
+    invitee_count: int | None = None,
+    required_player_count: int | None = None,
 ) -> dict:
     existing = await get_mockjamb_payment(session, payment_reference)
     if existing:
@@ -60,6 +62,8 @@ async def create_pending_mockjamb_payment(
                 course_code,
                 subject_codes_json,
                 exam_mode,
+                invitee_count,
+                required_player_count,
                 created_at,
                 updated_at
             )
@@ -71,6 +75,8 @@ async def create_pending_mockjamb_payment(
                 :course_code,
                 :subject_codes_json,
                 :exam_mode,
+                :invitee_count,
+                :required_player_count,
                 now(),
                 now()
             )
@@ -82,6 +88,8 @@ async def create_pending_mockjamb_payment(
             "course_code": course_code,
             "subject_codes_json": subject_codes_json,
             "exam_mode": exam_mode,
+            "invitee_count": int(invitee_count) if invitee_count is not None else None,
+            "required_player_count": int(required_player_count) if required_player_count is not None else None,
         },
     )
     await session.flush()
@@ -132,3 +140,4 @@ async def finalize_mockjamb_payment(
         return False, latest
 
     return True, latest
+
