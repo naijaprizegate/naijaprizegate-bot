@@ -141,7 +141,7 @@ def make_mockjamb_friends_payment_keyboard(course_code: str) -> InlineKeyboardMa
     return InlineKeyboardMarkup(
         [
             [InlineKeyboardButton(f"💳 Pay ₦{MOCKJAMB_SOLO_FEE}", callback_data="mj_pay_friends")],
-            [InlineKeyboardButton("⬅️ Back", callback_data=f"mj_use_course::{course_code}")],
+            [InlineKeyboardButton("⬅️ Back", callback_data="mj_mode_friends")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
@@ -530,7 +530,7 @@ def build_mockjamb_solo_payment_text(course_code: str) -> str:
         "Tap below to continue to payment."
     )
 
-def build_mockjamb_friends_payment_text(course_code: str) -> str:
+def build_mockjamb_friends_payment_text(course_code: str, invitee_count: int | None = None) -> str:
     course = get_course_by_code(course_code)
     if not course:
         return "⚠️ Course not found."
@@ -538,15 +538,25 @@ def build_mockjamb_friends_payment_text(course_code: str) -> str:
     subjects = get_course_subjects(course_code)
     subject_lines = "\n".join([f"• {subject['name']}" for subject in subjects])
 
+    details_block = ""
+    if invitee_count and invitee_count > 0:
+        required_player_count = invitee_count + 1
+        details_block = (
+            f"*Friends to Invite:* {invitee_count}\n"
+            f"*Total Players Required:* {required_player_count}\n\n"
+        )
+
     return (
         "👥 *Mock JAMB Multiplayer Host Access*\n\n"
         f"*Course:* {course['course_name']}\n\n"
         "*Your subjects:*\n"
         f"{subject_lines}\n\n"
+        f"{details_block}"
         f"*Host Fee:* ₦{MOCKJAMB_SOLO_FEE}\n\n"
         "You need to pay first before your multiplayer room can be created.\n\n"
         "Tap below to continue to payment."
     )
+
 
 def build_mockjamb_exam_ready_text(course_code: str, subject_codes: list[str]) -> str:
     course = get_course_by_code(course_code)
@@ -1707,8 +1717,12 @@ async def mockjamb_mode_friends_handler(update: Update, context: ContextTypes.DE
             reply_markup=make_mockjamb_welcome_keyboard(),
         )
 
-    text = build_mockjamb_friends_payment_text(course_code)
-    markup = make_mockjamb_friends_payment_keyboard(course_code)
+    text = (
+        "👥 *Mock JAMB Multiplayer Setup*\n\n"
+        "First, choose how many friends you want to invite.\n\n"
+        "After that, you will continue to payment."
+    )
+    markup = make_mockjamb_invitee_count_keyboard(course_code)
 
     try:
         await query.edit_message_text(
@@ -1758,7 +1772,7 @@ async def mockjamb_invitee_count_handler(update: Update, context: ContextTypes.D
             reply_markup=make_mockjamb_welcome_keyboard(),
         )
 
-    text = build_mockjamb_friends_payment_text(course_code)
+    text = build_mockjamb_friends_payment_text(course_code, invitee_count)
     markup = make_mockjamb_friends_payment_keyboard(course_code)
 
     try:
@@ -3873,5 +3887,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
-
 
