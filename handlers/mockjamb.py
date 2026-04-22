@@ -45,6 +45,7 @@ from services.mockjamb_room_service import (
     build_mockjamb_waiting_room_text,
     get_mockjamb_room_by_code,
     update_mockjamb_room_player_setup,
+    count_mockjamb_room_paid_players,
 )
 
 logger = logging.getLogger(__name__)
@@ -140,6 +141,25 @@ def make_mockjamb_friends_payment_keyboard(course_code: str) -> InlineKeyboardMa
     return InlineKeyboardMarkup(
         [
             [InlineKeyboardButton(f"💳 Pay ₦{MOCKJAMB_SOLO_FEE}", callback_data="mj_pay_friends")],
+            [InlineKeyboardButton("⬅️ Back", callback_data=f"mj_use_course::{course_code}")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+
+def make_mockjamb_invitee_count_keyboard(course_code: str) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("1 Friend", callback_data="mj_invites_1")],
+            [InlineKeyboardButton("2 Friends", callback_data="mj_invites_2")],
+            [InlineKeyboardButton("3 Friends", callback_data="mj_invites_3")],
+            [InlineKeyboardButton("4 Friends", callback_data="mj_invites_4")],
+            [InlineKeyboardButton("5 Friends", callback_data="mj_invites_5")],
+            [InlineKeyboardButton("6 Friends", callback_data="mj_invites_6")],
+            [InlineKeyboardButton("7 Friends", callback_data="mj_invites_7")],
+            [InlineKeyboardButton("8 Friends", callback_data="mj_invites_8")],
+            [InlineKeyboardButton("9 Friends", callback_data="mj_invites_9")],
+            [InlineKeyboardButton("10 Friends", callback_data="mj_invites_10")],
             [InlineKeyboardButton("⬅️ Back", callback_data=f"mj_use_course::{course_code}")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
@@ -259,6 +279,9 @@ def make_mockjamb_room_waiting_keyboard(
     is_host: bool,
     room_status: str,
     room_code: str | None = None,
+    has_course: bool = False,
+    has_paid: bool = False,
+    is_ready: bool = False,
 ) -> InlineKeyboardMarkup:
     rows = []
 
@@ -301,13 +324,25 @@ def make_mockjamb_room_waiting_keyboard(
             rows.append([
                 InlineKeyboardButton("⬅️ Back to Mode Selection", callback_data="mjr_back_to_mode")
             ])
+
         else:
-            rows.append([
-                InlineKeyboardButton("📚 Choose My Course", callback_data="mjr_pick_course")
-            ])
-            rows.append([
-                InlineKeyboardButton("✅ Ready", callback_data="mjr_ready")
-            ])
+            if not has_course:
+                rows.append([
+                    InlineKeyboardButton("📚 Choose My Course", callback_data="mjr_pick_course")
+                ])
+            elif not has_paid:
+                rows.append([
+                    InlineKeyboardButton("💳 Pay Now", callback_data="mjr_pay_friend")
+                ])
+            elif not is_ready:
+                rows.append([
+                    InlineKeyboardButton("✅ Ready", callback_data="mjr_ready")
+                ])
+            else:
+                rows.append([
+                    InlineKeyboardButton("✅ You Are Ready", callback_data="mjr_ready_done")
+                ])
+
             rows.append([
                 InlineKeyboardButton("🔄 Refresh Room", callback_data="mjr_refresh")
             ])
@@ -1581,6 +1616,9 @@ async def mockjamb_use_course_handler(update: Update, context: ContextTypes.DEFA
             is_host=bool(context.user_data["mjr_is_host"]),
             room_status="waiting",
             room_code=room_code,
+            has_course=True,
+            has_paid=False,
+            is_ready=False,
         )
 
         try:
@@ -1686,6 +1724,56 @@ async def mockjamb_mode_friends_handler(update: Update, context: ContextTypes.DE
         )
 
 
+# -----------------------------------------------
+# Mock JAMB Invitee Count Handler
+# -----------------------------------------------
+async def mockjamb_invitee_count_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    data = str(query.data or "").strip()
+
+    try:
+        invitee_count = int(data.replace("mj_invites_", "", 1))
+    except Exception:
+        return await query.message.reply_text(
+            "⚠️ Invalid invitee selection."
+        )
+
+    if invitee_count < 1:
+        return await query.message.reply_text(
+            "⚠️ Invitee count must be at least 1."
+        )
+
+    context.user_data["mj_invitee_count"] = invitee_count
+    context.user_data["mj_mode"] = "friends"
+
+    course_code = context.user_data.get("mj_course_code")
+    if not course_code:
+        return await query.message.reply_text(
+            "⚠️ No saved course found. Please choose your course again.",
+            reply_markup=make_mockjamb_welcome_keyboard(),
+        )
+
+    text = build_mockjamb_friends_payment_text(course_code)
+    markup = make_mockjamb_friends_payment_keyboard(course_code)
+
+    try:
+        await query.edit_message_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
 # --------------------------------------------------
 # Mock JAMB Room Share Handler
 # -------------------------------------------------
@@ -1759,6 +1847,103 @@ async def mockjamb_room_back_to_mode_handler(update: Update, context: ContextTyp
         )
 
 
+
+async def refresh_mockjamb_host_waiting_room(
+    context: ContextTypes.DEFAULT_TYPE,
+    room_code: str,
+) -> None:
+    room_code = str(room_code or "").strip().upper()
+    if not room_code:
+        return
+
+    bot_username = ""
+    try:
+        me = await context.bot.get_me()
+        bot_username = me.username or ""
+    except Exception:
+        bot_username = ""
+
+    async with get_async_session() as session:
+        room = await get_mockjamb_room_by_code(
+            session,
+            room_code=room_code,
+        )
+        if not room:
+            return
+
+        players = await list_mockjamb_room_players(
+            session,
+            room_code=room_code,
+        )
+
+    host_user_id = int(room.get("host_user_id") or 0)
+    if not host_user_id:
+        return
+
+    invite_link = build_mockjamb_invite_link(bot_username, room_code)
+    room_status = str(room.get("status") or "waiting").strip()
+
+    text = build_mockjamb_waiting_room_text(
+        room_code=room_code,
+        invite_link=invite_link,
+        room_status=room_status,
+        players=players,
+        host_user_id=host_user_id,
+    )
+
+    markup = make_mockjamb_room_waiting_keyboard(
+        is_host=True,
+        room_status=room_status,
+    )
+
+    host_waiting_message_id = room.get("host_waiting_message_id")
+
+    if host_waiting_message_id:
+        try:
+            await context.bot.edit_message_text(
+                chat_id=host_user_id,
+                message_id=int(host_waiting_message_id),
+                text=text,
+                reply_markup=markup,
+                disable_web_page_preview=True,
+            )
+            return
+        except Exception:
+            logger.exception(
+                "Failed to edit host waiting room message | room_code=%s",
+                room_code,
+            )
+
+    try:
+        sent = await context.bot.send_message(
+            chat_id=host_user_id,
+            text=text,
+            reply_markup=markup,
+            disable_web_page_preview=True,
+        )
+
+        async with get_async_session() as session:
+            await session.execute(
+                text("""
+                    update public.mockjamb_rooms
+                    set host_waiting_message_id = :message_id,
+                        updated_at = now()
+                    where room_code = :room_code
+                """),
+                {
+                    "room_code": room_code,
+                    "message_id": int(sent.message_id),
+                },
+            )
+            await session.commit()
+
+    except Exception:
+        logger.exception(
+            "Failed to send fallback host waiting room message | room_code=%s",
+            room_code,
+        )
+
+
 async def mockjamb_room_refresh_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -1806,10 +1991,24 @@ async def mockjamb_room_refresh_handler(update: Update, context: ContextTypes.DE
         host_user_id=int(room.get("host_user_id") or 0),
     )
 
+    current_player = None
+    for player in players:
+        if int(player.get("user_id") or 0) == int(user.id):
+            current_player = player
+            break
+
+    has_course = bool(str(current_player.get("course_code") or "").strip())
+    has_paid = bool(current_player.get("has_paid"))
+    is_ready = bool(current_player.get("is_ready"))
+
+    
     markup = make_mockjamb_room_waiting_keyboard(
         is_host=is_host,
         room_status=room_status,
         room_code=room_code,
+        has_course=has_course,
+        has_paid=has_paid,
+        is_ready=is_ready,
     )
 
     try:
@@ -1902,10 +2101,23 @@ async def mockjamb_room_join_handler(update: Update, context: ContextTypes.DEFAU
         host_user_id=int(room.get("host_user_id") or 0),
     )
 
+    current_player = None
+    for player in players:
+        if int(player.get("user_id") or 0) == int(user.id):
+            current_player = player
+            break
+
+    has_course = bool(str((current_player or {}).get("course_code") or "").strip())
+    has_paid = bool((current_player or {}).get("has_paid"))
+    is_ready = bool((current_player or {}).get("is_ready"))
+
     markup = make_mockjamb_room_waiting_keyboard(
         is_host=bool(context.user_data["mjr_is_host"]),
         room_status="waiting",
         room_code=room_code,
+        has_course=has_course,
+        has_paid=has_paid,
+        is_ready=is_ready,
     )
 
     try:
@@ -2088,11 +2300,18 @@ async def mockjamb_pay_friends_handler(update: Update, context: ContextTypes.DEF
 
     course_code = context.user_data.get("mj_course_code")
     subject_codes = context.user_data.get("mj_subject_codes") or []
+    invitee_count = int(context.user_data.get("mj_invitee_count") or 0)
+    required_player_count = invitee_count + 1
 
     if not course_code or not subject_codes:
         return await query.message.reply_text(
             "⚠️ Your Mock JAMB setup is incomplete.\n\nPlease choose your course again.",
             reply_markup=make_mockjamb_welcome_keyboard(),
+        )
+
+    if invitee_count <= 0:
+        return await query.message.reply_text(
+            "⚠️ Please choose how many friends you want to invite first."
         )
 
     course = get_course_by_code(course_code)
@@ -2119,6 +2338,8 @@ async def mockjamb_pay_friends_handler(update: Update, context: ContextTypes.DEF
             course_code=course_code,
             subject_codes_json=subject_codes_json,
             exam_mode="friends",
+            invitee_count=invitee_count,
+            required_player_count=required_player_count,
         )
         await session.commit()
 
@@ -2134,6 +2355,8 @@ async def mockjamb_pay_friends_handler(update: Update, context: ContextTypes.DEF
             "product_type": "MOCKJAMB",
             "course_code": course_code,
             "exam_mode": "friends",
+            "invitee_count": str(invitee_count),
+            "required_player_count": str(required_player_count),
         },
         product_type="MOCKJAMB",
     )
@@ -2166,6 +2389,8 @@ async def mockjamb_pay_friends_handler(update: Update, context: ContextTypes.DEF
         f"*Course:* {course['course_name']}\n\n"
         "*Subjects:*\n"
         f"{subject_names}\n\n"
+        f"*Friends to Invite:* {invitee_count}\n"
+        f"*Total Players Required:* {required_player_count}\n"
         f"*Amount:* ₦{amount}\n\n"
         "Complete this payment to unlock and create your multiplayer room."
     )
@@ -2191,6 +2416,7 @@ async def mockjamb_pay_friends_handler(update: Update, context: ContextTypes.DEF
             reply_markup=markup,
         )
 
+
 # --------------------------------------------
 # Mockjamb Payment Success Handler
 # ---------------------------------------------
@@ -2199,60 +2425,105 @@ async def mockjamb_payment_success_handler(
     context: ContextTypes.DEFAULT_TYPE,
     tx_ref: str,
 ):
-    if not tx_ref:
+    async def send_response(
+        text: str,
+        *,
+        parse_mode: str | None = None,
+        reply_markup=None,
+        disable_web_page_preview: bool = False,
+    ):
+        if update.callback_query:
+            query = update.callback_query
+            try:
+                await query.answer()
+            except Exception:
+                pass
+
+            try:
+                await query.edit_message_text(
+                    text=text,
+                    parse_mode=parse_mode,
+                    reply_markup=reply_markup,
+                    disable_web_page_preview=disable_web_page_preview,
+                )
+            except Exception:
+                await query.message.reply_text(
+                    text=text,
+                    parse_mode=parse_mode,
+                    reply_markup=reply_markup,
+                    disable_web_page_preview=disable_web_page_preview,
+                )
+            return
+
         if update.message:
             await update.message.reply_text(
-                "⚠️ Payment reference is missing. Please try again."
+                text=text,
+                parse_mode=parse_mode,
+                reply_markup=reply_markup,
+                disable_web_page_preview=disable_web_page_preview,
             )
+
+    if not tx_ref:
+        await send_response("⚠️ Payment reference is missing. Please try again.")
         return
 
     async with get_async_session() as session:
         payment = await get_mockjamb_payment(session, tx_ref)
 
         if not payment:
-            if update.message:
-                await update.message.reply_text(
-                    "⚠️ Mock JAMB payment record not found. Please contact support if payment was deducted."
-                )
+            await send_response(
+                "⚠️ Mock JAMB payment record not found. Please contact support if payment was deducted."
+            )
             return
 
-        if str(payment.get("payment_status", "")).lower().strip() != "successful":
-            if update.message:
-                await update.message.reply_text(
-                    "⚠️ Your Mock JAMB payment is not yet marked successful. Please wait a moment and try again."
-                )
+        payment_status = str(payment.get("payment_status") or "").strip().lower()
+        if payment_status != "successful":
+            await send_response(
+                "⚠️ Your Mock JAMB payment is not yet marked successful. Please wait a moment and try again."
+            )
             return
 
         course_code = str(payment.get("course_code") or "").strip()
         subject_codes_json = payment.get("subject_codes_json") or "[]"
         exam_mode = str(payment.get("exam_mode") or "solo").strip().lower()
+        invitee_count = int(payment.get("invitee_count") or 0)
+        required_player_count = int(payment.get("required_player_count") or 0)
+        payer_user_id = int(payment.get("user_id") or 0)
 
         try:
             subject_codes = json.loads(subject_codes_json)
         except Exception:
             subject_codes = []
 
-        if not course_code or not subject_codes:
-            if update.message:
-                await update.message.reply_text(
-                    "⚠️ Your saved Mock JAMB exam data is incomplete. Please contact support."
-                )
+        if not course_code or not subject_codes or payer_user_id <= 0:
+            await send_response(
+                "⚠️ Your saved Mock JAMB exam data is incomplete. Please contact support."
+            )
             return
 
         if exam_mode == "friends":
             try:
-                room = await create_mockjamb_room(
-                    session,
-                    host_user_id=int(payment["user_id"]),
-                    duration_minutes=120,
+                total_required_players = (
+                    required_player_count
+                    if required_player_count > 0
+                    else max(2, invitee_count + 1)
                 )
 
-                room_code = room["room_code"]
+                room = await create_mockjamb_room(
+                    session,
+                    host_user_id=payer_user_id,
+                    duration_minutes=120,
+                    required_player_count=total_required_players,
+                )
+
+                room_code = str(room.get("room_code") or "").strip().upper()
+                if not room_code:
+                    raise ValueError("Room code was not created.")
 
                 await add_mockjamb_room_player(
                     session,
                     room_code=room_code,
-                    user_id=int(payment["user_id"]),
+                    user_id=payer_user_id,
                     course_code=course_code,
                     subject_codes_json=subject_codes_json,
                 )
@@ -2266,12 +2537,14 @@ async def mockjamb_payment_success_handler(
 
             except Exception as e:
                 await session.rollback()
-                logger.exception("Failed to create paid multiplayer room | err=%s", e)
-
-                if update.message:
-                    await update.message.reply_text(
-                        "⚠️ Payment succeeded, but room creation failed. Please contact support."
-                    )
+                logger.exception(
+                    "Failed to create paid multiplayer room | tx_ref=%s | err=%s",
+                    tx_ref,
+                    e,
+                )
+                await send_response(
+                    "⚠️ Payment succeeded, but room creation failed. Please contact support."
+                )
                 return
 
             context.user_data["mj_course_code"] = course_code
@@ -2282,6 +2555,8 @@ async def mockjamb_payment_success_handler(
             context.user_data["mjr_is_host"] = True
             context.user_data["mj_payment_reference"] = tx_ref
             context.user_data["mj_session_id"] = None
+            context.user_data["mj_invitee_count"] = invitee_count
+            context.user_data["mj_required_player_count"] = total_required_players
 
             bot_username = ""
             try:
@@ -2297,84 +2572,63 @@ async def mockjamb_payment_success_handler(
                 invite_link=invite_link,
                 room_status="waiting",
                 players=players,
-                host_user_id=int(payment["user_id"]),
+                host_user_id=payer_user_id,
             )
 
             markup = make_mockjamb_room_waiting_keyboard(
                 is_host=True,
                 room_status="waiting",
                 room_code=room_code,
+                has_course=True,
+                has_paid=True,
+                is_ready=False,
             )
 
-            if update.message:
-                await update.message.reply_text(
-                    message_text,
-                    reply_markup=markup,
-                    disable_web_page_preview=True,
-                )
-                return
+            await send_response(
+                message_text,
+                reply_markup=markup,
+                disable_web_page_preview=True,
+            )
+            return
 
-            if update.callback_query:
-                query = update.callback_query
-                await query.answer()
-
-                try:
-                    await query.edit_message_text(
-                        message_text,
-                        reply_markup=markup,
-                        disable_web_page_preview=True,
-                    )
-                except Exception:
-                    await query.message.reply_text(
-                        message_text,
-                        reply_markup=markup,
-                        disable_web_page_preview=True,
-                    )
-                return
-
-        mj_session = await get_or_create_mockjamb_session_from_payment(
-            session,
-            payment_reference=tx_ref,
-            user_id=int(payment["user_id"]),
-            course_code=course_code,
-            subject_codes_json=subject_codes_json,
-        )
-        await session.commit()
+        try:
+            mj_session = await get_or_create_mockjamb_session_from_payment(
+                session,
+                payment_reference=tx_ref,
+                user_id=payer_user_id,
+                course_code=course_code,
+                subject_codes_json=subject_codes_json,
+            )
+            await session.commit()
+        except Exception as e:
+            await session.rollback()
+            logger.exception(
+                "Failed to create Mock JAMB solo session | tx_ref=%s | err=%s",
+                tx_ref,
+                e,
+            )
+            await send_response(
+                "⚠️ Payment succeeded, but your exam session could not be created right now. Please try again."
+            )
+            return
 
     context.user_data["mj_course_code"] = course_code
     context.user_data["mj_subject_codes"] = subject_codes
     context.user_data["mj_mode"] = exam_mode
     context.user_data["mj_room_code"] = None
+    context.user_data["mjr_room_code"] = None
+    context.user_data["mjr_is_host"] = False
     context.user_data["mj_payment_reference"] = tx_ref
     context.user_data["mj_session_id"] = mj_session["id"]
 
     message_text = build_mockjamb_exam_ready_text(course_code, subject_codes)
     markup = make_mockjamb_exam_ready_keyboard(subject_codes)
 
-    if update.message:
-        await update.message.reply_text(
-            message_text,
-            parse_mode="Markdown",
-            reply_markup=markup,
-        )
-        return
-
-    if update.callback_query:
-        query = update.callback_query
-        await query.answer()
-
-        try:
-            await query.edit_message_text(
-                message_text,
-                parse_mode="Markdown",
-                reply_markup=markup,
-            )
-        except Exception:
-            await query.message.reply_text(
-                message_text,
-                parse_mode="Markdown",
-                reply_markup=markup,
-            )
+    await send_response(
+        message_text,
+        parse_mode="Markdown",
+        reply_markup=markup,
+    )
 
 
 # ------------------------------------------------
@@ -3601,6 +3855,7 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_mode_solo_handler, pattern=r"^mj_mode_solo$"))
     application.add_handler(CallbackQueryHandler(mockjamb_room_pick_course_handler, pattern=r"^mjr_pick_course$"))
     application.add_handler(CallbackQueryHandler(mockjamb_mode_friends_handler, pattern=r"^mj_mode_friends$"))
+    application.add_handler(CallbackQueryHandler(mockjamb_invitee_count_handler, pattern=r"^mj_invites_"))
     application.add_handler(CallbackQueryHandler(mockjamb_room_refresh_handler, pattern=r"^mjr_refresh$"))
     application.add_handler(CallbackQueryHandler(mockjamb_room_share_handler, pattern=r"^mjr_share$"))
     application.add_handler(CallbackQueryHandler(mockjamb_room_back_to_mode_handler, pattern=r"^mjr_back_to_mode$"))
@@ -3618,6 +3873,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
-
 
 
