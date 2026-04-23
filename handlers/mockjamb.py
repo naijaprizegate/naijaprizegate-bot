@@ -1,6 +1,6 @@
-# ==================================================================
+# ====================================================================
 # handlers/mockjamb.py
-# ==================================================================
+# ====================================================================
 
 import json
 import math
@@ -2171,6 +2171,133 @@ async def mockjamb_room_join_handler(update: Update, context: ContextTypes.DEFAU
         )
 
 
+async def mockjamb_room_ready_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    user = update.effective_user
+    if not user:
+        return
+
+    room_code = str(context.user_data.get("mjr_room_code") or "").strip().upper()
+    if not room_code:
+        return await query.answer("No active room found.", show_alert=True)
+
+    async with get_async_session() as session:
+        room = await get_mockjamb_room_by_code(
+            session,
+            room_code=room_code,
+        )
+        if not room:
+            return await query.answer("Room not found.", show_alert=True)
+
+        player = await get_mockjamb_room_player(
+            session,
+            room_code=room_code,
+            user_id=int(user.id),
+        )
+        if not player:
+            return await query.answer("You are not in this room.", show_alert=True)
+
+        payment_status = str(player.get("payment_status") or "").strip().lower()
+        if payment_status != "successful":
+            return await query.answer("Please pay first before getting ready.", show_alert=True)
+
+        course_code = str(player.get("course_code") or "").strip()
+        subject_codes_json = str(player.get("subject_codes_json") or "[]")
+        has_course = bool(course_code and subject_codes_json and subject_codes_json != "[]")
+
+        if not has_course:
+            return await query.answer("Please choose your course first.", show_alert=True)
+
+        already_ready = bool(player.get("is_ready"))
+        if not already_ready:
+            await session.execute(
+                text("""
+                    update public.mockjamb_room_players
+                    set
+                        is_ready = true,
+                        ready_at = coalesce(ready_at, now()),
+                        updated_at = now()
+                    where upper(room_code) = :room_code
+                      and user_id = :user_id
+                """),
+                {
+                    "room_code": room_code,
+                    "user_id": int(user.id),
+                },
+            )
+            await session.commit()
+
+        room = await get_mockjamb_room_by_code(
+            session,
+            room_code=room_code,
+        )
+        players = await list_mockjamb_room_players(
+            session,
+            room_code=room_code,
+        )
+
+    bot_username = ""
+    try:
+        me = await context.bot.get_me()
+        bot_username = me.username or ""
+    except Exception:
+        bot_username = ""
+
+    invite_link = build_mockjamb_invite_link(bot_username, room_code)
+    room_status = str((room or {}).get("status") or "waiting").strip()
+    host_user_id = int((room or {}).get("host_user_id") or 0)
+
+    text = build_mockjamb_waiting_room_text(
+        room_code=room_code,
+        invite_link=invite_link,
+        room_status=room_status,
+        players=players,
+        host_user_id=host_user_id,
+    )
+
+    markup = make_mockjamb_room_waiting_keyboard(
+        is_host=False,
+        room_status=room_status,
+        room_code=room_code,
+        has_course=True,
+        has_paid=True,
+        is_ready=True,
+    )
+
+    try:
+        await query.edit_message_text(
+            text=text,
+            reply_markup=markup,
+            disable_web_page_preview=True,
+        )
+    except BadRequest as e:
+        if "Message is not modified" not in str(e):
+            logger.exception(
+                "Failed to update invitee ready state message | room_code=%s | user_id=%s",
+                room_code,
+                int(user.id),
+            )
+    except Exception:
+        logger.exception(
+            "Unexpected ready handler error | room_code=%s | user_id=%s",
+            room_code,
+            int(user.id),
+        )
+
+    try:
+        await refresh_mockjamb_host_waiting_room(context, room_code)
+    except Exception:
+        logger.exception(
+            "Failed to auto-refresh host after player ready | room_code=%s",
+            room_code,
+        )
+
+
 async def mockjamb_room_pick_course_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -4236,6 +4363,7 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_invitee_count_handler, pattern=r"^mj_invites_"))
     application.add_handler(CallbackQueryHandler(mockjamb_room_refresh_handler, pattern=r"^mjr_refresh$"))
     application.add_handler(CallbackQueryHandler(mockjamb_room_share_handler, pattern=r"^mjr_share$"))
+    application.add_handler(CallbackQueryHandler(mockjamb_room_ready_handler, pattern=r"^mjr_ready(?:_done)?$"))
     application.add_handler(CallbackQueryHandler(mockjamb_room_back_to_mode_handler, pattern=r"^mjr_back_to_mode$"))
     application.add_handler(CallbackQueryHandler(mockjamb_room_join_handler, pattern=r"^mjr_join::"))
     application.add_handler(CallbackQueryHandler(mockjamb_pay_solo_handler, pattern=r"^mj_pay_solo$"))
@@ -4251,4 +4379,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
 
