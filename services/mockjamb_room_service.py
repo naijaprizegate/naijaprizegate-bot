@@ -60,6 +60,7 @@ async def get_mockjamb_room_by_code(
     row = result.mappings().first()
     return dict(row) if row else None
 
+
 async def create_mockjamb_room(
     session: AsyncSession,
     *,
@@ -668,5 +669,4 @@ def build_mockjamb_waiting_room_text(
     lines.append("Share the room code or invite link with your friends.")
 
     return "\n".join(lines)
-
 
