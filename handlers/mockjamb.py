@@ -7,11 +7,12 @@ import math
 import logging
 import os
 import urllib.parse
-from datetime import datetime, timezone
 
+from datetime import datetime, timezone
 from sqlalchemy import text
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CallbackQueryHandler, CommandHandler, ContextTypes
+from telegram.error import BadRequest
 
 from jamb_loader import get_course_subject_map, get_course_by_code, get_course_subjects, get_subject_by_code
 from db import get_async_session
@@ -2036,19 +2037,24 @@ async def mockjamb_room_refresh_handler(update: Update, context: ContextTypes.DE
 
     try:
         await query.edit_message_text(
-            text,
+            text=text,
             reply_markup=markup,
             disable_web_page_preview=True,
         )
+    except BadRequest as e:
+        if "Message is not modified" in str(e):
+            return
+        logger.exception(
+            "Failed to edit room refresh message | room_code=%s | user_id=%s",
+            room_code,
+            int(user.id),
+        )
     except Exception:
-        try:
-            await query.message.reply_text(
-                text,
-                reply_markup=markup,
-                disable_web_page_preview=True,
-            )
-        except Exception:
-            pass
+        logger.exception(
+            "Unexpected refresh error | room_code=%s | user_id=%s",
+            room_code,
+            int(user.id),
+        )
 
 
 async def mockjamb_room_join_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -3977,4 +3983,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
 
