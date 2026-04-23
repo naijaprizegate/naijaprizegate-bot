@@ -5,6 +5,7 @@ import json
 import random
 import string
 import logging
+from datetime import datetime
 
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -27,6 +28,10 @@ async def get_mockjamb_room_by_code(
     *,
     room_code: str,
 ) -> dict | None:
+    room_code = str(room_code or "").strip().upper()
+    if not room_code:
+        return None
+
     result = await session.execute(
         text("""
             select
@@ -39,17 +44,21 @@ async def get_mockjamb_room_by_code(
                 ends_at,
                 duration_minutes,
                 invite_token,
+                expected_players,
+                all_players_ready,
+                started_by_host,
+                host_waiting_message_id,
                 created_at,
                 updated_at
             from public.mockjamb_rooms
-            where room_code = :room_code
+            where upper(room_code) = :room_code
             limit 1
         """),
         {"room_code": room_code},
     )
+
     row = result.mappings().first()
     return dict(row) if row else None
-
 
 async def create_mockjamb_room(
     session: AsyncSession,
@@ -58,11 +67,15 @@ async def create_mockjamb_room(
     duration_minutes: int = 120,
     required_player_count: int = 2,
 ) -> dict:
-    required_player_count = max(2, int(required_player_count or 2))
+    expected_players = max(2, int(required_player_count or 2))
 
     for _ in range(10):
         room_code = build_mockjamb_room_code()
-        existing = await get_mockjamb_room_by_code(session, room_code=room_code)
+
+        existing = await get_mockjamb_room_by_code(
+            session,
+            room_code=room_code,
+        )
         if existing:
             continue
 
@@ -75,7 +88,7 @@ async def create_mockjamb_room(
                     host_user_id,
                     status,
                     duration_minutes,
-                    required_player_count,
+                    expected_players,
                     invite_token,
                     created_at,
                     updated_at
@@ -85,7 +98,7 @@ async def create_mockjamb_room(
                     :host_user_id,
                     'waiting',
                     :duration_minutes,
-                    :required_player_count,
+                    :expected_players,
                     :invite_token,
                     now(),
                     now()
@@ -95,12 +108,19 @@ async def create_mockjamb_room(
                 "room_code": room_code,
                 "host_user_id": int(host_user_id),
                 "duration_minutes": int(duration_minutes),
-                "required_player_count": required_player_count,
+                "expected_players": expected_players,
                 "invite_token": invite_token,
             },
         )
+
         await session.flush()
-        return await get_mockjamb_room_by_code(session, room_code=room_code)
+
+        room = await get_mockjamb_room_by_code(
+            session,
+            room_code=room_code,
+        )
+        if room:
+            return room
 
     raise ValueError("Could not generate a unique Mock JAMB room code.")
 
@@ -157,6 +177,8 @@ async def get_mockjamb_room_player(
     room_code: str,
     user_id: int,
 ) -> dict | None:
+    room_code = str(room_code or "").strip().upper()
+
     result = await session.execute(
         text("""
             select
@@ -169,10 +191,15 @@ async def get_mockjamb_room_player(
                 score_json,
                 current_subject_code,
                 current_question_index,
+                is_host,
+                payment_status,
+                paid_at,
+                is_ready,
+                ready_at,
                 joined_at,
                 updated_at
             from public.mockjamb_room_players
-            where room_code = :room_code
+            where upper(room_code) = :room_code
               and user_id = :user_id
             limit 1
         """),
@@ -181,9 +208,9 @@ async def get_mockjamb_room_player(
             "user_id": int(user_id),
         },
     )
+
     row = result.mappings().first()
     return dict(row) if row else None
-
 
 async def set_mockjamb_room_all_players_ready(
     session,
@@ -257,7 +284,11 @@ async def add_mockjamb_room_player(
     user_id: int,
     course_code: str | None = None,
     subject_codes_json: str = "[]",
+    is_host: bool = False,
+    has_paid: bool = False,
 ) -> dict:
+    room_code = str(room_code or "").strip().upper()
+
     existing = await get_mockjamb_room_player(
         session,
         room_code=room_code,
@@ -265,6 +296,8 @@ async def add_mockjamb_room_player(
     )
     if existing:
         return existing
+
+    payment_status = "successful" if has_paid else "pending"
 
     await session.execute(
         text("""
@@ -277,6 +310,11 @@ async def add_mockjamb_room_player(
                 score_json,
                 current_subject_code,
                 current_question_index,
+                is_host,
+                payment_status,
+                paid_at,
+                is_ready,
+                ready_at,
                 joined_at,
                 updated_at
             )
@@ -289,6 +327,11 @@ async def add_mockjamb_room_player(
                 '{}',
                 null,
                 0,
+                :is_host,
+                :payment_status,
+                :paid_at,
+                false,
+                null,
                 now(),
                 now()
             )
@@ -298,9 +341,14 @@ async def add_mockjamb_room_player(
             "user_id": int(user_id),
             "course_code": course_code,
             "subject_codes_json": subject_codes_json,
+            "is_host": bool(is_host),
+            "payment_status": payment_status,
+            "paid_at": datetime.utcnow() if has_paid else None,
         },
     )
+
     await session.flush()
+
     return await get_mockjamb_room_player(
         session,
         room_code=room_code,
@@ -313,6 +361,8 @@ async def list_mockjamb_room_players(
     *,
     room_code: str,
 ) -> list[dict]:
+    room_code = str(room_code or "").strip().upper()
+
     result = await session.execute(
         text("""
             select
@@ -331,13 +381,18 @@ async def list_mockjamb_room_players(
                 payment_status,
                 is_ready,
                 paid_at,
-                ready_at
+                ready_at,
+                case
+                    when lower(coalesce(payment_status, '')) = 'successful' then true
+                    else false
+                end as has_paid
             from public.mockjamb_room_players
-            where room_code = :room_code
+            where upper(room_code) = :room_code
             order by joined_at asc, id asc
         """),
         {"room_code": room_code},
     )
+
     rows = result.mappings().all()
     return [dict(row) for row in rows]
 
@@ -349,15 +404,36 @@ async def update_mockjamb_room_player_setup(
     user_id: int,
     course_code: str,
     subject_codes_json: str,
+    is_host: bool | None = None,
+    has_paid: bool | None = None,
 ) -> dict | None:
+    room_code = str(room_code or "").strip().upper()
+
+    payment_status = None
+    if has_paid is not None:
+        payment_status = "successful" if has_paid else "pending"
+
     await session.execute(
         text("""
             update public.mockjamb_room_players
             set
                 course_code = :course_code,
                 subject_codes_json = :subject_codes_json,
+                is_host = case
+                    when :is_host_is_null then is_host
+                    else :is_host
+                end,
+                payment_status = case
+                    when :has_paid_is_null then payment_status
+                    else :payment_status
+                end,
+                paid_at = case
+                    when :has_paid_is_null then paid_at
+                    when :has_paid then coalesce(paid_at, now())
+                    else null
+                end,
                 updated_at = now()
-            where room_code = :room_code
+            where upper(room_code) = :room_code
               and user_id = :user_id
         """),
         {
@@ -365,9 +441,16 @@ async def update_mockjamb_room_player_setup(
             "user_id": int(user_id),
             "course_code": course_code,
             "subject_codes_json": subject_codes_json,
+            "is_host": is_host,
+            "is_host_is_null": is_host is None,
+            "has_paid": has_paid,
+            "has_paid_is_null": has_paid is None,
+            "payment_status": payment_status,
         },
     )
+
     await session.flush()
+
     return await get_mockjamb_room_player(
         session,
         room_code=room_code,
@@ -585,3 +668,5 @@ def build_mockjamb_waiting_room_text(
     lines.append("Share the room code or invite link with your friends.")
 
     return "\n".join(lines)
+
+
