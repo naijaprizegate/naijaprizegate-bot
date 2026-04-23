@@ -1932,11 +1932,29 @@ async def refresh_mockjamb_host_waiting_room(
                 disable_web_page_preview=True,
             )
             return
-        except Exception:
+
+        except BadRequest as e:
+            error_text = str(e)
+
+            if "Message is not modified" in error_text:
+                return
+
             logger.exception(
-                "Failed to edit host waiting room message | room_code=%s",
+                "Failed to edit host waiting room message | room_code=%s | host_user_id=%s | err=%s",
                 room_code,
+                host_user_id,
+                error_text,
             )
+            return
+
+        except Exception as e:
+            logger.exception(
+                "Unexpected host waiting room edit error | room_code=%s | host_user_id=%s | err=%s",
+                room_code,
+                host_user_id,
+                e,
+            )
+            return
 
     try:
         sent = await context.bot.send_message(
@@ -1950,9 +1968,10 @@ async def refresh_mockjamb_host_waiting_room(
             await session.execute(
                 text("""
                     update public.mockjamb_rooms
-                    set host_waiting_message_id = :message_id,
+                    set
+                        host_waiting_message_id = :message_id,
                         updated_at = now()
-                    where room_code = :room_code
+                    where upper(room_code) = :room_code
                 """),
                 {
                     "room_code": room_code,
@@ -1961,10 +1980,12 @@ async def refresh_mockjamb_host_waiting_room(
             )
             await session.commit()
 
-    except Exception:
+    except Exception as e:
         logger.exception(
-            "Failed to send fallback host waiting room message | room_code=%s",
+            "Failed to send initial host waiting room message | room_code=%s | host_user_id=%s | err=%s",
             room_code,
+            host_user_id,
+            e,
         )
 
 
