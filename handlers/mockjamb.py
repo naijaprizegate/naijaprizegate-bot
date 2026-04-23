@@ -2555,6 +2555,8 @@ async def mockjamb_payment_success_handler(
                         user_id=payer_user_id,
                         course_code=course_code,
                         subject_codes_json=subject_codes_json,
+                        is_host=True,
+                        has_paid=True,
                     )
                 else:
                     await add_mockjamb_room_player(
@@ -2563,6 +2565,8 @@ async def mockjamb_payment_success_handler(
                         user_id=payer_user_id,
                         course_code=course_code,
                         subject_codes_json=subject_codes_json,
+                        is_host=True,
+                        has_paid=True,
                     )
 
                 players = await list_mockjamb_room_players(
@@ -3915,5 +3919,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
-
 
