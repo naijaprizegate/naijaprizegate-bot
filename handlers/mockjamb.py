@@ -2209,6 +2209,151 @@ async def mockjamb_room_pick_course_handler(update: Update, context: ContextType
             reply_markup=markup,
         )
 
+
+# -------------------------------------------
+# Mock JAMB Room Pay Friend Handler
+# -------------------------------------------
+async def mockjamb_room_pay_friend_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    user = update.effective_user
+    if not user:
+        return
+
+    room_code = str(context.user_data.get("mjr_room_code") or "").strip().upper()
+    if not room_code:
+        return await query.message.reply_text(
+            "⚠️ No active room found. Please re-open your room invite."
+        )
+
+    async with get_async_session() as session:
+        room = await get_mockjamb_room_by_code(
+            session,
+            room_code=room_code,
+        )
+        if not room:
+            return await query.message.reply_text(
+                "⚠️ Room not found."
+            )
+
+        player = await get_mockjamb_room_player(
+            session,
+            room_code=room_code,
+            user_id=int(user.id),
+        )
+        if not player:
+            return await query.message.reply_text(
+                "⚠️ You are not yet in this room."
+            )
+
+        course_code = str(player.get("course_code") or "").strip()
+        subject_codes_json = str(player.get("subject_codes_json") or "[]")
+
+        try:
+            subject_codes = json.loads(subject_codes_json)
+        except Exception:
+            subject_codes = []
+
+        if not course_code or not subject_codes:
+            return await query.message.reply_text(
+                "⚠️ Please choose your course first before payment."
+            )
+
+        payment_status = str(player.get("payment_status") or "").strip().lower()
+        if payment_status == "successful":
+            return await query.message.reply_text(
+                "✅ You have already paid for this room."
+            )
+
+        amount = MOCKJAMB_SOLO_FEE
+        tg_id = int(user.id)
+        username = user.username or f"user_{tg_id}"
+        email = f"{username}@naijaprizegate.ng"
+
+        tx_ref = build_tx_ref("MOCKJAMBROOMFRIEND")
+
+        await create_pending_mockjamb_payment(
+            session,
+            payment_reference=tx_ref,
+            user_id=tg_id,
+            amount_paid=amount,
+            course_code=course_code,
+            subject_codes_json=subject_codes_json,
+            exam_mode="room_friend",
+            invitee_count=0,
+            required_player_count=0,
+            room_code=room_code,
+        )
+        await session.commit()
+
+    checkout_url = await create_checkout(
+        user_id=tg_id,
+        amount=amount,
+        username=username,
+        email=email,
+        tx_ref=tx_ref,
+        meta={
+            "tg_id": str(tg_id),
+            "username": username,
+            "product_type": "MOCKJAMB",
+            "course_code": course_code,
+            "exam_mode": "room_friend",
+            "room_code": room_code,
+        },
+        product_type="MOCKJAMB",
+    )
+
+    if not checkout_url:
+        async with get_async_session() as session:
+            await session.execute(
+                text("""
+                    update public.mockjamb_payments
+                    set
+                        payment_status = 'expired',
+                        updated_at = now()
+                    where payment_reference = :payment_reference
+                      and lower(coalesce(payment_status, '')) = 'pending'
+                """),
+                {"payment_reference": tx_ref},
+            )
+            await session.commit()
+
+        return await query.message.reply_text(
+            "⚠️ Payment service is unavailable right now. Please try again shortly."
+        )
+
+    message_text = (
+        "💳 *Mock JAMB Room Payment*\n\n"
+        f"*Room Code:* {room_code}\n"
+        f"*Amount:* ₦{amount}\n\n"
+        "Complete your payment to join this room as an active player."
+    )
+
+    markup = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
+            [InlineKeyboardButton("⬅️ Back to Room", callback_data="mjr_refresh")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+    try:
+        await query.edit_message_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
 # -------------------------------------------
 # Mock JAMB Pay Solo Handler
 # -------------------------------------------
@@ -2526,6 +2671,7 @@ async def mockjamb_payment_success_handler(
         invitee_count = int(payment.get("invitee_count") or 0)
         required_player_count = int(payment.get("required_player_count") or 0)
         payer_user_id = int(payment.get("user_id") or 0)
+        payment_room_code = str(payment.get("room_code") or "").strip().upper()
 
         try:
             subject_codes = json.loads(subject_codes_json)
@@ -2698,6 +2844,127 @@ async def mockjamb_payment_success_handler(
 
             return
 
+        # ============================================================
+        # ROOM INVITEE PAYMENT FLOW
+        # ============================================================
+        if exam_mode == "room_friend":
+            room_code = payment_room_code
+
+            if not room_code:
+                await send_response(
+                    "⚠️ Payment succeeded, but your room code is missing from the payment record. Please contact support."
+                )
+                return
+
+            try:
+                room = await get_mockjamb_room_by_code(
+                    session,
+                    room_code=room_code,
+                )
+                if not room:
+                    await send_response(
+                        "⚠️ Payment succeeded, but the room was not found."
+                    )
+                    return
+
+                existing_player = await get_mockjamb_room_player(
+                    session,
+                    room_code=room_code,
+                    user_id=payer_user_id,
+                )
+
+                if existing_player:
+                    await update_mockjamb_room_player_setup(
+                        session,
+                        room_code=room_code,
+                        user_id=payer_user_id,
+                        course_code=course_code,
+                        subject_codes_json=subject_codes_json,
+                        has_paid=True,
+                    )
+                else:
+                    await add_mockjamb_room_player(
+                        session,
+                        room_code=room_code,
+                        user_id=payer_user_id,
+                        course_code=course_code,
+                        subject_codes_json=subject_codes_json,
+                        is_host=False,
+                        has_paid=True,
+                    )
+
+                players = await list_mockjamb_room_players(
+                    session,
+                    room_code=room_code,
+                )
+
+                await session.commit()
+
+            except Exception as e:
+                await session.rollback()
+                logger.exception(
+                    "Failed to complete room friend payment flow | tx_ref=%s | room_code=%s | user_id=%s | err=%s",
+                    tx_ref,
+                    room_code,
+                    payer_user_id,
+                    e,
+                )
+                await send_response(
+                    "⚠️ Payment succeeded, but your room access could not be updated right now. Please tap Refresh in the room."
+                )
+                return
+
+            context.user_data["mj_course_code"] = course_code
+            context.user_data["mj_subject_codes"] = subject_codes
+            context.user_data["mj_mode"] = "friends"
+            context.user_data["mj_room_code"] = room_code
+            context.user_data["mjr_room_code"] = room_code
+            context.user_data["mjr_is_host"] = False
+            context.user_data["mj_payment_reference"] = tx_ref
+            context.user_data["mj_session_id"] = None
+
+            bot_username = ""
+            try:
+                me = await context.bot.get_me()
+                bot_username = me.username or ""
+            except Exception:
+                bot_username = ""
+
+            invite_link = build_mockjamb_invite_link(bot_username, room_code)
+
+            message_text = build_mockjamb_waiting_room_text(
+                room_code=room_code,
+                invite_link=invite_link,
+                room_status="waiting",
+                players=players,
+                host_user_id=int((room or {}).get("host_user_id") or 0),
+            )
+
+            markup = make_mockjamb_room_waiting_keyboard(
+                is_host=False,
+                room_status="waiting",
+                room_code=room_code,
+                has_course=True,
+                has_paid=True,
+                is_ready=False,
+            )
+
+            await send_response(
+                message_text,
+                reply_markup=markup,
+                disable_web_page_preview=True,
+            )
+
+            try:
+                await refresh_mockjamb_host_waiting_room(context, room_code)
+            except Exception:
+                logger.exception(
+                    "Failed to auto-refresh host after invitee payment | room_code=%s",
+                    room_code,
+                )
+
+            return
+        
         # ============================================================
         # SOLO FLOW
         # ============================================================
@@ -3964,6 +4231,7 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_use_course_handler, pattern=r"^mj_use_course::"))
     application.add_handler(CallbackQueryHandler(mockjamb_mode_solo_handler, pattern=r"^mj_mode_solo$"))
     application.add_handler(CallbackQueryHandler(mockjamb_room_pick_course_handler, pattern=r"^mjr_pick_course$"))
+    application.add_handler(CallbackQueryHandler(mockjamb_room_pay_friend_handler, pattern=r"^mjr_pay_friend$"))
     application.add_handler(CallbackQueryHandler(mockjamb_mode_friends_handler, pattern=r"^mj_mode_friends$"))
     application.add_handler(CallbackQueryHandler(mockjamb_invitee_count_handler, pattern=r"^mj_invites_"))
     application.add_handler(CallbackQueryHandler(mockjamb_room_refresh_handler, pattern=r"^mjr_refresh$"))
@@ -3983,5 +4251,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
-
 
