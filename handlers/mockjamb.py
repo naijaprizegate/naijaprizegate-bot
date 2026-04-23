@@ -1643,6 +1643,15 @@ async def mockjamb_use_course_handler(update: Update, context: ContextTypes.DEFA
                 reply_markup=markup,
                 disable_web_page_preview=True,
             )
+
+        try:
+            await refresh_mockjamb_host_waiting_room(context, room_code)
+        except Exception:
+            logger.exception(
+                "Failed to auto-refresh host waiting room after course setup | room_code=%s",
+                room_code,
+            )
+
         return
 
     text = build_mockjamb_mode_text(course_code)
@@ -3968,6 +3977,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
-
-
 
