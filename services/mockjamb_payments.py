@@ -1,6 +1,6 @@
-# ====================================================
+# ======================================================
 # services/mockjamb_payments.py
-# ====================================================
+# ======================================================
 import logging
 
 from sqlalchemy import text
@@ -101,7 +101,51 @@ async def create_pending_mockjamb_payment(
             "room_code": normalized_room_code,
         },
     )
-
     await session.flush()
     return await get_mockjamb_payment(session, payment_reference)
 
+
+async def finalize_mockjamb_payment(
+    session: AsyncSession,
+    *,
+    payment_reference: str,
+    user_id: int,
+) -> tuple[bool, dict | None]:
+    """
+    Safe/idempotent Mock JAMB finalizer.
+    Only marks payment successful for now.
+    Returns (did_finalize_now, payment_row)
+    """
+    payment = await get_mockjamb_payment(session, payment_reference)
+    if not payment:
+        logger.error(
+            "❌ Mock JAMB payment not found during finalize | payment_reference=%s | user_id=%s",
+            payment_reference,
+            user_id,
+        )
+        return False, None
+
+    claimed = await session.execute(
+        text("""
+            update public.mockjamb_payments
+            set
+                payment_status = 'successful',
+                updated_at = now()
+            where payment_reference = :payment_reference
+              and user_id = :user_id
+              and lower(coalesce(payment_status, '')) <> 'successful'
+            returning payment_reference
+        """),
+        {
+            "payment_reference": payment_reference,
+            "user_id": int(user_id),
+        },
+    )
+
+    claimed_row = claimed.first()
+    latest = await get_mockjamb_payment(session, payment_reference)
+
+    if not claimed_row:
+        return False, latest
+
+    return True, latest
