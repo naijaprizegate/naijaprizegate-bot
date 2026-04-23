@@ -151,16 +151,26 @@ def make_mockjamb_friends_payment_keyboard(course_code: str) -> InlineKeyboardMa
 def make_mockjamb_invitee_count_keyboard(course_code: str) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("1 Friend", callback_data="mj_invites_1")],
-            [InlineKeyboardButton("2 Friends", callback_data="mj_invites_2")],
-            [InlineKeyboardButton("3 Friends", callback_data="mj_invites_3")],
-            [InlineKeyboardButton("4 Friends", callback_data="mj_invites_4")],
-            [InlineKeyboardButton("5 Friends", callback_data="mj_invites_5")],
-            [InlineKeyboardButton("6 Friends", callback_data="mj_invites_6")],
-            [InlineKeyboardButton("7 Friends", callback_data="mj_invites_7")],
-            [InlineKeyboardButton("8 Friends", callback_data="mj_invites_8")],
-            [InlineKeyboardButton("9 Friends", callback_data="mj_invites_9")],
-            [InlineKeyboardButton("10 Friends", callback_data="mj_invites_10")],
+            [
+                InlineKeyboardButton("1 Friend", callback_data="mj_invites_1"),
+                InlineKeyboardButton("2 Friends", callback_data="mj_invites_2"),
+            ],
+            [
+                InlineKeyboardButton("3 Friends", callback_data="mj_invites_3"),
+                InlineKeyboardButton("4 Friends", callback_data="mj_invites_4"),
+            ],
+            [
+                InlineKeyboardButton("5 Friends", callback_data="mj_invites_5"),
+                InlineKeyboardButton("6 Friends", callback_data="mj_invites_6"),
+            ],
+            [
+                InlineKeyboardButton("7 Friends", callback_data="mj_invites_7"),
+                InlineKeyboardButton("8 Friends", callback_data="mj_invites_8"),
+            ],
+            [
+                InlineKeyboardButton("9 Friends", callback_data="mj_invites_9"),
+                InlineKeyboardButton("10 Friends", callback_data="mj_invites_10"),
+            ],
             [InlineKeyboardButton("⬅️ Back", callback_data=f"mj_use_course::{course_code}")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
