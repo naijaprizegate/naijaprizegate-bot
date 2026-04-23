@@ -2627,11 +2627,52 @@ async def mockjamb_payment_success_handler(
                 is_ready=False,
             )
 
-            await send_response(
-                message_text,
-                reply_markup=markup,
-                disable_web_page_preview=True,
-            )
+            sent_message = None
+
+            if update.callback_query:
+                query = update.callback_query
+                try:
+                    await query.answer()
+                except Exception:
+                    pass
+
+                try:
+                    sent_message = await query.edit_message_text(
+                        text=message_text,
+                        reply_markup=markup,
+                        disable_web_page_preview=True,
+                    )
+                except Exception:
+                    sent_message = await query.message.reply_text(
+                        text=message_text,
+                        reply_markup=markup,
+                        disable_web_page_preview=True,
+                    )
+
+            elif update.message:
+                sent_message = await update.message.reply_text(
+                    text=message_text,
+                    reply_markup=markup,
+                    disable_web_page_preview=True,
+                )
+
+            if sent_message:
+                async with get_async_session() as save_session:
+                    await save_session.execute(
+                        text("""
+                            update public.mockjamb_rooms
+                            set
+                                host_waiting_message_id = :message_id,
+                                updated_at = now()
+                            where room_code = :room_code
+                        """),
+                        {
+                            "message_id": int(sent_message.message_id),
+                            "room_code": room_code,
+                        },
+                    )
+                    await save_session.commit()
+
             return
 
         # ============================================================
@@ -3919,5 +3960,3 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
-
-
