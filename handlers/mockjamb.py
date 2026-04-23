@@ -2509,20 +2509,28 @@ async def mockjamb_payment_success_handler(
         except Exception:
             subject_codes = []
 
+        if not isinstance(subject_codes, list):
+            subject_codes = []
+
         if not course_code or not subject_codes or payer_user_id <= 0:
             await send_response(
                 "⚠️ Your saved Mock JAMB exam data is incomplete. Please contact support."
             )
             return
 
+        # ============================================================
+        # FRIENDS / MULTIPLAYER FLOW
+        # ============================================================
         if exam_mode == "friends":
-            try:
-                total_required_players = (
-                    required_player_count
-                    if required_player_count > 0
-                    else max(2, invitee_count + 1)
-                )
+            room_code = ""
+            players = []
+            total_required_players = (
+                required_player_count
+                if required_player_count > 0
+                else max(2, invitee_count + 1)
+            )
 
+            try:
                 room = await create_mockjamb_room(
                     session,
                     host_user_id=payer_user_id,
@@ -2530,17 +2538,32 @@ async def mockjamb_payment_success_handler(
                     required_player_count=total_required_players,
                 )
 
-                room_code = str(room.get("room_code") or "").strip().upper()
+                room_code = str((room or {}).get("room_code") or "").strip().upper()
                 if not room_code:
                     raise ValueError("Room code was not created.")
 
-                await add_mockjamb_room_player(
+                existing_host_player = await get_mockjamb_room_player(
                     session,
                     room_code=room_code,
                     user_id=payer_user_id,
-                    course_code=course_code,
-                    subject_codes_json=subject_codes_json,
                 )
+
+                if existing_host_player:
+                    await update_mockjamb_room_player_setup(
+                        session,
+                        room_code=room_code,
+                        user_id=payer_user_id,
+                        course_code=course_code,
+                        subject_codes_json=subject_codes_json,
+                    )
+                else:
+                    await add_mockjamb_room_player(
+                        session,
+                        room_code=room_code,
+                        user_id=payer_user_id,
+                        course_code=course_code,
+                        subject_codes_json=subject_codes_json,
+                    )
 
                 players = await list_mockjamb_room_players(
                     session,
@@ -2552,12 +2575,14 @@ async def mockjamb_payment_success_handler(
             except Exception as e:
                 await session.rollback()
                 logger.exception(
-                    "Failed to create paid multiplayer room | tx_ref=%s | err=%s",
+                    "Failed to create paid multiplayer room | tx_ref=%s | exam_mode=%s | user_id=%s | err=%s",
                     tx_ref,
+                    exam_mode,
+                    payer_user_id,
                     e,
                 )
                 await send_response(
-                    "⚠️ Payment succeeded, but room creation failed. Please contact support."
+                    "⚠️ Payment succeeded, but room creation failed. Please try /start again. If it still fails, contact support."
                 )
                 return
 
@@ -2605,6 +2630,9 @@ async def mockjamb_payment_success_handler(
             )
             return
 
+        # ============================================================
+        # SOLO FLOW
+        # ============================================================
         try:
             mj_session = await get_or_create_mockjamb_session_from_payment(
                 session,
@@ -3887,4 +3915,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
 
