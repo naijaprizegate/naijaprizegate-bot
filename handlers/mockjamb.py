@@ -2147,6 +2147,14 @@ async def mockjamb_room_join_handler(update: Update, context: ContextTypes.DEFAU
             disable_web_page_preview=True,
         )
 
+    try:
+        await refresh_mockjamb_host_waiting_room(context, room_code)
+    except Exception:
+        logger.exception(
+            "Failed to auto-refresh host waiting room after join | room_code=%s",
+            room_code,
+        )
+
 
 async def mockjamb_room_pick_course_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -3960,3 +3968,6 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
+
+
