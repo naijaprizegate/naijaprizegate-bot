@@ -176,6 +176,7 @@ def make_mockjamb_invitee_count_keyboard(course_code: str) -> InlineKeyboardMark
         ]
     )
 
+    
 def make_mockjamb_exam_ready_keyboard(subject_codes: list[str]) -> InlineKeyboardMarkup:
     rows = []
 
@@ -2283,7 +2284,7 @@ async def mockjamb_room_ready_handler(update: Update, context: ContextTypes.DEFA
     room_status = str((room or {}).get("status") or "waiting").strip()
     host_user_id = int((room or {}).get("host_user_id") or 0)
 
-    text = build_mockjamb_waiting_room_text(
+    message_text = build_mockjamb_waiting_room_text(
         room_code=room_code,
         invite_link=invite_link,
         room_status=room_status,
@@ -2302,7 +2303,7 @@ async def mockjamb_room_ready_handler(update: Update, context: ContextTypes.DEFA
 
     try:
         await query.edit_message_text(
-            text=text,
+            text=message_text,
             reply_markup=markup,
             disable_web_page_preview=True,
         )
@@ -4410,5 +4411,6 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
 
 
