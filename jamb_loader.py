@@ -762,3 +762,4 @@ def format_course_subjects_for_message(course_code: str) -> str:
     return "\n".join(lines)
 
 
+
