@@ -10,6 +10,8 @@ from datetime import datetime
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from jamb_loader import get_subject_by_code
+
 logger = logging.getLogger("mockjamb_room_service")
 logger.setLevel(logging.INFO)
 
@@ -172,6 +174,7 @@ async def count_mockjamb_room_ready_players(
     row = result.mappings().first()
     return int((row or {}).get("total") or 0)
 
+
 async def get_mockjamb_room_player(
     session: AsyncSession,
     *,
@@ -186,6 +189,9 @@ async def get_mockjamb_room_player(
                 id,
                 room_code,
                 user_id,
+                first_name,
+                last_name,
+                username,
                 course_code,
                 subject_codes_json,
                 player_status,
@@ -212,6 +218,7 @@ async def get_mockjamb_room_player(
 
     row = result.mappings().first()
     return dict(row) if row else None
+
 
 async def set_mockjamb_room_all_players_ready(
     session,
@@ -287,8 +294,15 @@ async def add_mockjamb_room_player(
     subject_codes_json: str = "[]",
     is_host: bool = False,
     has_paid: bool = False,
+    first_name: str | None = None,
+    last_name: str | None = None,
+    username: str | None = None,
 ) -> dict:
     room_code = str(room_code or "").strip().upper()
+
+    clean_first_name = str(first_name or "").strip() or None
+    clean_last_name = str(last_name or "").strip() or None
+    clean_username = str(username or "").strip() or None
 
     existing = await get_mockjamb_room_player(
         session,
@@ -296,7 +310,32 @@ async def add_mockjamb_room_player(
         user_id=user_id,
     )
     if existing:
-        return existing
+        await session.execute(
+            text("""
+                update public.mockjamb_room_players
+                set
+                    first_name = coalesce(:first_name, first_name),
+                    last_name = coalesce(:last_name, last_name),
+                    username = coalesce(:username, username),
+                    updated_at = now()
+                where upper(room_code) = :room_code
+                  and user_id = :user_id
+            """),
+            {
+                "room_code": room_code,
+                "user_id": int(user_id),
+                "first_name": clean_first_name,
+                "last_name": clean_last_name,
+                "username": clean_username,
+            },
+        )
+        await session.flush()
+
+        return await get_mockjamb_room_player(
+            session,
+            room_code=room_code,
+            user_id=user_id,
+        )
 
     payment_status = "successful" if has_paid else "pending"
 
@@ -305,6 +344,9 @@ async def add_mockjamb_room_player(
             insert into public.mockjamb_room_players (
                 room_code,
                 user_id,
+                first_name,
+                last_name,
+                username,
                 course_code,
                 subject_codes_json,
                 player_status,
@@ -322,6 +364,9 @@ async def add_mockjamb_room_player(
             values (
                 :room_code,
                 :user_id,
+                :first_name,
+                :last_name,
+                :username,
                 :course_code,
                 :subject_codes_json,
                 'joined',
@@ -340,6 +385,9 @@ async def add_mockjamb_room_player(
         {
             "room_code": room_code,
             "user_id": int(user_id),
+            "first_name": clean_first_name,
+            "last_name": clean_last_name,
+            "username": clean_username,
             "course_code": course_code,
             "subject_codes_json": subject_codes_json,
             "is_host": bool(is_host),
@@ -370,6 +418,9 @@ async def list_mockjamb_room_players(
                 id,
                 room_code,
                 user_id,
+                first_name,
+                last_name,
+                username,
                 course_code,
                 subject_codes_json,
                 player_status,
@@ -577,6 +628,7 @@ async def get_mockjamb_room_subject_paper(
     row = result.mappings().first()
     return dict(row) if row else None
 
+
 async def get_mockjamb_room_by_invite_token(
     session: AsyncSession,
     *,
@@ -612,18 +664,32 @@ def build_mockjamb_invite_link(bot_username: str, room_code: str) -> str:
 
 
 def format_mockjamb_player_subjects(subject_codes_raw) -> list[str]:
-    if isinstance(subject_codes_raw, list):
-        return [str(x).strip() for x in subject_codes_raw if str(x).strip()]
+    subject_codes: list[str] = []
 
-    if isinstance(subject_codes_raw, str):
+    if isinstance(subject_codes_raw, list):
+        subject_codes = [str(x).strip().lower() for x in subject_codes_raw if str(x).strip()]
+    elif isinstance(subject_codes_raw, str):
         try:
             parsed = json.loads(subject_codes_raw)
             if isinstance(parsed, list):
-                return [str(x).strip() for x in parsed if str(x).strip()]
+                subject_codes = [str(x).strip().lower() for x in parsed if str(x).strip()]
         except Exception:
             return []
+    else:
+        return []
 
-    return []
+    formatted_subjects: list[str] = []
+
+    for code in subject_codes:
+        subject = get_subject_by_code(code)
+        if subject and str(subject.get("name") or "").strip():
+            formatted_subjects.append(str(subject["name"]).strip())
+        else:
+            fallback = code.replace("_", " ").strip()
+            if fallback:
+                formatted_subjects.append(fallback.title())
+
+    return formatted_subjects
 
 
 def build_mockjamb_waiting_room_text(
@@ -633,40 +699,105 @@ def build_mockjamb_waiting_room_text(
     room_status: str,
     players: list[dict],
     host_user_id: int,
+    expected_players: int | None = None,
 ) -> str:
+    safe_room_code = str(room_code or "").strip().upper()
+    safe_invite_link = str(invite_link or "").strip()
+    normalized_status = str(room_status or "waiting").strip().lower()
+
+    status_map = {
+        "waiting": "⏳ Waiting for players",
+        "ready": "✅ All players ready",
+        "locked": "🔒 Locked",
+        "in_progress": "📝 Match in progress",
+        "completed": "🏁 Completed",
+    }
+    pretty_status = status_map.get(
+        normalized_status,
+        normalized_status.replace("_", " ").title(),
+    )
+
+    total_players = len(players)
+    required_players = int(expected_players or 0) if expected_players else 0
+    invited_friends_count = max(0, required_players - 1) if required_players else 0
+
     lines = []
-    lines.append("👥 Mock JAMB Multiplayer Room")
+    lines.append("👥 *Mock JAMB Multiplayer Room*")
     lines.append("")
-    lines.append(f"Room Code: {room_code}")
-    lines.append(f"Invite Link: {invite_link}")
-    lines.append(f"Status: {room_status}")
+    lines.append(f"*Room Code:* `{safe_room_code}`")
+    lines.append(f"*Status:* {pretty_status}")
+
+    if required_players > 0:
+        lines.append(f"*Players Joined:* {total_players} of {required_players}")
+        lines.append(
+            f"*Total Players Required:* {required_players} \\(1 Host + {invited_friends_count} Friend{'s' if invited_friends_count != 1 else ''}\\)"
+        )
+    else:
+        lines.append(f"*Players Joined:* {total_players}")
+
     lines.append("")
-    lines.append("Players:")
+
+    if safe_invite_link:
+        lines.append("*Invite Link:*")
+        lines.append(safe_invite_link)
+        lines.append("")
+
+    lines.append("*Players in Room:*")
 
     if not players:
-        lines.append("• No players yet")
+        lines.append("• No players have joined yet.")
     else:
         for idx, player in enumerate(players, start=1):
             user_id = int(player.get("user_id") or 0)
-            course_code = str(player.get("course_code") or "Not set").strip()
-            player_status = str(player.get("player_status") or "joined").strip()
+            is_host = int(user_id) == int(host_user_id)
 
-            subject_codes = format_mockjamb_player_subjects(
+            first_name = str(player.get("first_name") or "").strip()
+            last_name = str(player.get("last_name") or "").strip()
+            username = str(player.get("username") or "").strip()
+
+            full_name = " ".join(part for part in [first_name, last_name] if part).strip()
+
+            if full_name and username:
+                display_name = f"{full_name} \\(@{username}\\)"
+            elif full_name:
+                display_name = full_name
+            elif username:
+                display_name = f"@{username}"
+            else:
+                display_name = f"User {user_id}"
+
+            course_code = str(player.get("course_code") or "").strip().lower()
+            course = get_course_by_code(course_code) if course_code else None
+            course_text = str((course or {}).get("course_name") or "").strip() or "Not Set"
+
+            subject_names = format_mockjamb_player_subjects(
                 player.get("subject_codes_json") or "[]"
             )
-            subject_text = ", ".join(subject_codes) if subject_codes else "No subjects yet"
+            subject_text = ", ".join(subject_names) if subject_names else "Not Set"
 
-            host_tag = " 👑 Host" if user_id == int(host_user_id) else ""
+            payment_status = str(player.get("payment_status") or "").strip().lower()
+            is_paid = payment_status == "successful"
+            is_ready = bool(player.get("is_ready"))
 
-            lines.append(
-                f"{idx}. {user_id}{host_tag}\n"
-                f"   Course: {course_code}\n"
-                f"   Subjects: {subject_text}\n"
-                f"   Status: {player_status}"
-            )
+            role_label = "👑 Host" if is_host else "👤 Player"
+            payment_label = "💳 Paid" if is_paid else "💰 Not Paid"
+            ready_label = "✅ Ready" if is_ready else "⏳ Waiting"
 
-    lines.append("")
-    lines.append("Share the room code or invite link with your friends.")
+            lines.append(f"{idx}\\. {role_label}: {display_name}")
+            lines.append(f"   • Course: {course_text}")
+            lines.append(f"   • Subjects: {subject_text}")
+            lines.append(f"   • Payment: {payment_label}")
+            lines.append(f"   • Readiness: {ready_label}")
+            lines.append("")
+
+    if normalized_status in ("waiting", "ready"):
+        lines.append("Share the room code or invite link with your friends.")
+    elif normalized_status == "in_progress":
+        lines.append("The match has started. Players can now continue into the exam.")
+    elif normalized_status == "locked":
+        lines.append("This room is currently locked.")
+    else:
+        lines.append("Room status updated.")
 
     return "\n".join(lines)
 
