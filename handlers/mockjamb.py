@@ -1632,6 +1632,7 @@ async def mockjamb_use_course_handler(update: Update, context: ContextTypes.DEFA
             room_status="waiting",
             players=players,
             host_user_id=host_user_id,
+            expected_players=int((room or {}).get("expected_players") or 0),
         )
 
         markup = make_mockjamb_room_waiting_keyboard(
@@ -1924,6 +1925,7 @@ async def refresh_mockjamb_host_waiting_room(
         room_status=room_status,
         players=players,
         host_user_id=host_user_id,
+        expected_players=int((room or {}).get("expected_players") or 0),
     )
 
     markup = make_mockjamb_room_waiting_keyboard(
@@ -2045,6 +2047,7 @@ async def mockjamb_room_refresh_handler(update: Update, context: ContextTypes.DE
         room_status=room_status,
         players=players,
         host_user_id=int(room.get("host_user_id") or 0),
+        expected_players=int((room or {}).get("expected_players") or 0),
     )
 
     current_player = None
@@ -2140,6 +2143,9 @@ async def mockjamb_room_join_handler(update: Update, context: ContextTypes.DEFAU
                 user_id=int(user.id),
                 course_code=None,
                 subject_codes_json="[]",
+                first_name=user.first_name,
+                last_name=user.last_name,
+                username=user.username,
             )
 
         players = await list_mockjamb_room_players(
@@ -2154,12 +2160,13 @@ async def mockjamb_room_join_handler(update: Update, context: ContextTypes.DEFAU
 
     invite_link = build_mockjamb_invite_link(bot_username, room_code)
 
-    text = build_mockjamb_waiting_room_text(
+    message_text = build_mockjamb_waiting_room_text(
         room_code=room_code,
         invite_link=invite_link,
         room_status="waiting",
         players=players,
         host_user_id=int(room.get("host_user_id") or 0),
+        expected_players=int((room or {}).get("expected_players") or 0),
     )
 
     current_player = None
@@ -2183,13 +2190,13 @@ async def mockjamb_room_join_handler(update: Update, context: ContextTypes.DEFAU
 
     try:
         await query.edit_message_text(
-            text,
+            message_text,
             reply_markup=markup,
             disable_web_page_preview=True,
         )
     except Exception:
         await query.message.reply_text(
-            text,
+            message_text,
             reply_markup=markup,
             disable_web_page_preview=True,
         )
@@ -2336,6 +2343,7 @@ async def mockjamb_room_ready_handler(update: Update, context: ContextTypes.DEFA
         room_status=room_status,
         players=players,
         host_user_id=host_user_id,
+        expected_players=int((room or {}).get("expected_players") or 0),
     )
 
     markup = make_mockjamb_room_waiting_keyboard(
@@ -3183,6 +3191,8 @@ async def mockjamb_payment_success_handler(
                         has_paid=True,
                     )
                 else:
+                    payer_tg_user = update.effective_user
+
                     await add_mockjamb_room_player(
                         session,
                         room_code=room_code,
@@ -3191,6 +3201,9 @@ async def mockjamb_payment_success_handler(
                         subject_codes_json=subject_codes_json,
                         is_host=True,
                         has_paid=True,
+                        first_name=(payer_tg_user.first_name if payer_tg_user else None),
+                        last_name=(payer_tg_user.last_name if payer_tg_user else None),
+                        username=(payer_tg_user.username if payer_tg_user else None),
                     )
 
                 players = await list_mockjamb_room_players(
@@ -3253,7 +3266,8 @@ async def mockjamb_payment_success_handler(
                 invite_link=invite_link,
                 room_status="waiting",
                 players=players,
-                host_user_id=payer_user_id,
+                host_user_id=int((room or {}).get("host_user_id") or 0),
+                expected_players=int((room or {}).get("expected_players") or 0),
             )
 
             markup = make_mockjamb_room_waiting_keyboard(
@@ -3352,6 +3366,8 @@ async def mockjamb_payment_success_handler(
                         has_paid=True,
                     )
                 else:
+                    payer_tg_user = update.effective_user
+
                     await add_mockjamb_room_player(
                         session,
                         room_code=room_code,
@@ -3360,6 +3376,9 @@ async def mockjamb_payment_success_handler(
                         subject_codes_json=subject_codes_json,
                         is_host=False,
                         has_paid=True,
+                        first_name=(payer_tg_user.first_name if payer_tg_user else None),
+                        last_name=(payer_tg_user.last_name if payer_tg_user else None),
+                        username=(payer_tg_user.username if payer_tg_user else None),
                     )
 
                 players = await list_mockjamb_room_players(
