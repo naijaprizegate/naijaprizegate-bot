@@ -3299,7 +3299,6 @@ async def mockjamb_payment_success_handler(
                 except Exception:
                     sent_message = await query.message.reply_text(
                         text=message_text,
-                        parse_mode="Markdown",
                         reply_markup=markup,
                         disable_web_page_preview=True,
                     )
@@ -3307,7 +3306,6 @@ async def mockjamb_payment_success_handler(
             elif update.message:
                 sent_message = await update.message.reply_text(
                     text=message_text,
-                    parse_mode="Markdown",
                     reply_markup=markup,
                     disable_web_page_preview=True,
                 )
@@ -4745,6 +4743,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
-
-
 
