@@ -555,7 +555,7 @@ def build_mockjamb_friends_payment_text(course_code: str, invitee_count: int | N
         required_player_count = invitee_count + 1
         details_block = (
             f"*Friends to Invite:* {invitee_count}\n"
-            f"*Total Players Required:* {required_player_count}\n\n"
+            f"*Total Players Required:* {required_player_count} (1 Host + {invitee_count} Friend{'s' if invitee_count != 1 else ''})\n\n"
         )
 
     return (
