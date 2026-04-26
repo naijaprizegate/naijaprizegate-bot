@@ -1647,14 +1647,12 @@ async def mockjamb_use_course_handler(update: Update, context: ContextTypes.DEFA
         try:
             await query.edit_message_text(
                 text,
-                parse_mode="Markdown",
                 reply_markup=markup,
                 disable_web_page_preview=True,
             )
         except Exception:
             await query.message.reply_text(
                 text,
-                parse_mode="Markdown",
                 reply_markup=markup,
                 disable_web_page_preview=True,
             )
@@ -1943,7 +1941,6 @@ async def refresh_mockjamb_host_waiting_room(
                 chat_id=host_user_id,
                 message_id=int(host_waiting_message_id),
                 text=text,
-                parse_mode="Markdown",
                 reply_markup=markup,
                 disable_web_page_preview=True,
             )
@@ -2077,7 +2074,6 @@ async def mockjamb_room_refresh_handler(update: Update, context: ContextTypes.DE
     try:
         await query.edit_message_text(
             text=text,
-            parse_mode="Markdown",
             reply_markup=markup,
             disable_web_page_preview=True,
         )
@@ -2196,7 +2192,6 @@ async def mockjamb_room_join_handler(update: Update, context: ContextTypes.DEFAU
     try:
         await query.edit_message_text(
             message_text,
-            parse_mode="Markdown",
             reply_markup=markup,
             disable_web_page_preview=True,
         )
@@ -2365,7 +2360,6 @@ async def mockjamb_room_ready_handler(update: Update, context: ContextTypes.DEFA
     try:
         await query.edit_message_text(
             text=message_text,
-            parse_mode="Markdown",
             reply_markup=markup,
             disable_web_page_preview=True,
         )
@@ -3299,7 +3293,6 @@ async def mockjamb_payment_success_handler(
                 try:
                     sent_message = await query.edit_message_text(
                         text=message_text,
-                        parse_mode="Markdown",
                         reply_markup=markup,
                         disable_web_page_preview=True,
                     )
@@ -3450,7 +3443,6 @@ async def mockjamb_payment_success_handler(
 
             await send_response(
                 message_text,
-                parse_mode="Markdown",
                 reply_markup=markup,
                 disable_web_page_preview=True,
             )
@@ -4753,4 +4745,6 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
+
 
