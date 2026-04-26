@@ -2462,9 +2462,8 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
                 payment_row = payment_result.mappings().first()
 
                 if not payment_row:
-                    return await query.answer(
-                        f"Player {player_user_id} has no successful payment record.",
-                        show_alert=True,
+                    return await query.message.reply_text(
+                        f"⚠️ Could not find a successful payment record for player {player_user_id} in this room."
                     )
 
                 payment_reference = str(payment_row.get("payment_reference") or "").strip()
@@ -2472,9 +2471,8 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
                 subject_codes_json = str(payment_row.get("subject_codes_json") or "[]")
 
                 if not payment_reference or not course_code or not subject_codes_json:
-                    return await query.answer(
-                        f"Player {player_user_id} payment data is incomplete.",
-                        show_alert=True,
+                    return await query.message.reply_text(
+                        f"⚠️ Payment data is incomplete for player {player_user_id}."
                     )
 
                 session_row = await get_or_create_mockjamb_session_from_payment(
@@ -3134,6 +3132,20 @@ async def mockjamb_payment_success_handler(
                 players = await list_mockjamb_room_players(
                     session,
                     room_code=room_code,
+                )
+
+                await session.execute(
+                    text("""
+                        update public.mockjamb_payments
+                        set
+                            room_code = :room_code,
+                            updated_at = now()
+                        where payment_reference = :payment_reference
+                    """),
+                    {
+                        "room_code": room_code,
+                        "payment_reference": tx_ref,
+                    },
                 )
 
                 await session.commit()
