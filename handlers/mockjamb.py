@@ -2392,6 +2392,11 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
 
     await query.answer()
 
+    host_payment_reference = None
+    host_session = None
+    host_course_code = None
+    host_subject_codes = []
+
     async with get_async_session() as session:
         room = await get_mockjamb_room_by_code(
             session,
@@ -2432,79 +2437,130 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
         if not all_players_ready:
             return await query.answer("All joined players must pay and be ready first.", show_alert=True)
 
-        duration_minutes = int(room.get("duration_minutes") or 120)
+        try:
+            for player in players:
+                player_user_id = int(player.get("user_id") or 0)
 
-        await session.execute(
-            text("""
-                update public.mockjamb_rooms
-                set
-                    status = 'in_progress',
-                    all_players_ready = true,
-                    started_by_host = true,
-                    started_at = now(),
-                    ends_at = now() + make_interval(mins => :duration_minutes),
-                    updated_at = now()
-                where upper(room_code) = :room_code
-            """),
-            {
-                "room_code": room_code,
-                "duration_minutes": duration_minutes,
-            },
+                payment_result = await session.execute(
+                    text("""
+                        select
+                            payment_reference,
+                            course_code,
+                            subject_codes_json
+                        from public.mockjamb_payments
+                        where upper(room_code) = :room_code
+                          and user_id = :user_id
+                          and lower(coalesce(payment_status, '')) = 'successful'
+                        order by updated_at desc, created_at desc
+                        limit 1
+                    """),
+                    {
+                        "room_code": room_code,
+                        "user_id": player_user_id,
+                    },
+                )
+                payment_row = payment_result.mappings().first()
+
+                if not payment_row:
+                    return await query.answer(
+                        f"Player {player_user_id} has no successful payment record.",
+                        show_alert=True,
+                    )
+
+                payment_reference = str(payment_row.get("payment_reference") or "").strip()
+                course_code = str(payment_row.get("course_code") or "").strip()
+                subject_codes_json = str(payment_row.get("subject_codes_json") or "[]")
+
+                if not payment_reference or not course_code or not subject_codes_json:
+                    return await query.answer(
+                        f"Player {player_user_id} payment data is incomplete.",
+                        show_alert=True,
+                    )
+
+                session_row = await get_or_create_mockjamb_session_from_payment(
+                    session,
+                    payment_reference=payment_reference,
+                    user_id=player_user_id,
+                    course_code=course_code,
+                    subject_codes_json=subject_codes_json,
+                )
+
+                if player_user_id == int(user.id):
+                    host_payment_reference = payment_reference
+                    host_session = session_row
+                    host_course_code = course_code
+
+                    try:
+                        host_subject_codes = json.loads(subject_codes_json or "[]")
+                    except Exception:
+                        host_subject_codes = []
+
+            duration_minutes = int(room.get("duration_minutes") or 120)
+
+            await session.execute(
+                text("""
+                    update public.mockjamb_rooms
+                    set
+                        status = 'in_progress',
+                        all_players_ready = true,
+                        started_by_host = true,
+                        started_at = now(),
+                        ends_at = now() + make_interval(mins => :duration_minutes),
+                        updated_at = now()
+                    where upper(room_code) = :room_code
+                """),
+                {
+                    "room_code": room_code,
+                    "duration_minutes": duration_minutes,
+                },
+            )
+
+            await session.commit()
+
+        except Exception as e:
+            await session.rollback()
+            logger.exception(
+                "Failed to start multiplayer Mock JAMB room | room_code=%s | host_user_id=%s | err=%s",
+                room_code,
+                int(user.id),
+                e,
+            )
+            return await query.answer(
+                "Could not start the match right now. Please try again.",
+                show_alert=True,
+            )
+
+    if not host_payment_reference or not host_session or not host_course_code or not host_subject_codes:
+        return await query.message.reply_text(
+            "⚠️ Match was marked started, but the host exam session could not be opened."
         )
-        await session.commit()
 
-        room = await get_mockjamb_room_by_code(
-            session,
-            room_code=room_code,
-        )
-        players = await list_mockjamb_room_players(
-            session,
-            room_code=room_code,
-        )
+    context.user_data["mj_course_code"] = host_course_code
+    context.user_data["mj_subject_codes"] = host_subject_codes
+    context.user_data["mj_mode"] = "friends"
+    context.user_data["mj_room_code"] = room_code
+    context.user_data["mjr_room_code"] = room_code
+    context.user_data["mjr_is_host"] = True
+    context.user_data["mj_payment_reference"] = host_payment_reference
+    context.user_data["mj_session_id"] = host_session["id"]
 
-    bot_username = ""
-    try:
-        me = await context.bot.get_me()
-        bot_username = me.username or ""
-    except Exception:
-        bot_username = ""
-
-    invite_link = build_mockjamb_invite_link(bot_username, room_code)
-    room_status = str((room or {}).get("status") or "in_progress").strip()
-    host_user_id = int((room or {}).get("host_user_id") or 0)
-
-    message_text = build_mockjamb_waiting_room_text(
-        room_code=room_code,
-        invite_link=invite_link,
-        room_status=room_status,
-        players=players,
-        host_user_id=host_user_id,
+    message_text = build_mockjamb_exam_ready_text(
+        host_course_code,
+        host_subject_codes,
     )
-
-    markup = make_mockjamb_room_waiting_keyboard(
-        is_host=True,
-        room_status=room_status,
-        room_code=room_code,
-    )
+    markup = make_mockjamb_exam_ready_keyboard(host_subject_codes)
 
     try:
         await query.edit_message_text(
             text=message_text,
+            parse_mode="Markdown",
             reply_markup=markup,
-            disable_web_page_preview=True,
         )
-    except BadRequest as e:
-        if "Message is not modified" not in str(e):
-            logger.exception(
-                "Failed to update host room after start | room_code=%s | user_id=%s",
-                room_code,
-                int(user.id),
-            )
     except Exception:
-        logger.exception(
-            "Unexpected start handler error | room_code=%s | user_id=%s",
-            room_code,
-            int(user.id),
+        await query.message.reply_text(
+            text=message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
         )
 
 
@@ -4590,5 +4646,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
-
 
