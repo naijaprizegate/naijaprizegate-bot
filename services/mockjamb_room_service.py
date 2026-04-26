@@ -10,7 +10,7 @@ from datetime import datetime
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from jamb_loader import get_subject_by_code
+from jamb_loader import get_subject_by_code, get_course_by_code
 
 logger = logging.getLogger("mockjamb_room_service")
 logger.setLevel(logging.INFO)
