@@ -2396,6 +2396,7 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
     host_session = None
     host_course_code = None
     host_subject_codes = []
+    host_user_id = int(user.id)
 
     async with get_async_session() as session:
         room = await get_mockjamb_room_by_code(
@@ -2405,8 +2406,8 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
         if not room:
             return await query.answer("Room not found.", show_alert=True)
 
-        host_user_id = int(room.get("host_user_id") or 0)
-        if int(user.id) != host_user_id:
+        room_host_user_id = int(room.get("host_user_id") or 0)
+        if int(user.id) != room_host_user_id:
             return await query.answer("Only the host can start the match.", show_alert=True)
 
         players = await list_mockjamb_room_players(
@@ -2421,7 +2422,10 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
 
         all_non_host_paid = (
             len(non_host_players) > 0
-            and all(str(p.get("payment_status") or "").strip().lower() == "successful" for p in non_host_players)
+            and all(
+                str(p.get("payment_status") or "").strip().lower() == "successful"
+                for p in non_host_players
+            )
         )
         all_non_host_ready = (
             len(non_host_players) > 0
@@ -2528,6 +2532,20 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
                 show_alert=True,
             )
 
+    try:
+        await notify_mockjamb_room_players_match_started(
+            context,
+            room_code=room_code,
+            host_user_id=host_user_id,
+            players=players,
+        )
+    except Exception:
+        logger.exception(
+            "Failed to notify invitees that room match started | room_code=%s | host_user_id=%s",
+            room_code,
+            host_user_id,
+        )
+
     if not host_payment_reference or not host_session or not host_course_code or not host_subject_codes:
         return await query.message.reply_text(
             "⚠️ Match was marked started, but the host exam session could not be opened."
@@ -2600,6 +2618,52 @@ async def mockjamb_room_pick_course_handler(update: Update, context: ContextType
             reply_markup=markup,
         )
 
+
+async def notify_mockjamb_room_players_match_started(
+    context: ContextTypes.DEFAULT_TYPE,
+    *,
+    room_code: str,
+    host_user_id: int,
+    players: list[dict],
+) -> None:
+    room_code = str(room_code or "").strip().upper()
+    if not room_code:
+        return
+
+    markup = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("📝 Enter Mock JAMB Exam", callback_data="mock:jamb")],
+            [InlineKeyboardButton("🔄 Refresh Room", callback_data="mjr_refresh")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+    message_text = (
+        "🚀 *Mock JAMB Multiplayer Match Started*\n\n"
+        f"*Room Code:* `{room_code}`\n\n"
+        "The host has started the Mock JAMB exam match.\n"
+        "Tap below to enter your Mock JAMB exam."
+    )
+
+    for player in players:
+        player_user_id = int(player.get("user_id") or 0)
+        if not player_user_id or player_user_id == int(host_user_id):
+            continue
+
+        try:
+            await context.bot.send_message(
+                chat_id=player_user_id,
+                text=message_text,
+                parse_mode="Markdown",
+                reply_markup=markup,
+                disable_web_page_preview=True,
+            )
+        except Exception:
+            logger.exception(
+                "Failed to notify room player that match started | room_code=%s | player_user_id=%s",
+                room_code,
+                player_user_id,
+            )
 
 # -------------------------------------------
 # Mock JAMB Room Pay Friend Handler
@@ -4658,4 +4722,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
 
