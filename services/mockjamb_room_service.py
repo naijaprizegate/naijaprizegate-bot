@@ -1,6 +1,6 @@
-# =====================================================
+# ======================================================
 # services/mockjamb_room_service.py
-# =====================================================
+# ======================================================
 import json
 import random
 import string
@@ -691,6 +691,7 @@ def format_mockjamb_player_subjects(subject_codes_raw) -> list[str]:
 
     return formatted_subjects
 
+
 def build_mockjamb_waiting_room_text(
     *,
     room_code: str,
@@ -799,4 +800,6 @@ def build_mockjamb_waiting_room_text(
         lines.append("Room status updated.")
 
     return "\n".join(lines)
+
+
 
