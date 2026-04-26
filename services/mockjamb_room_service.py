@@ -691,7 +691,6 @@ def format_mockjamb_player_subjects(subject_codes_raw) -> list[str]:
 
     return formatted_subjects
 
-
 def build_mockjamb_waiting_room_text(
     *,
     room_code: str,
@@ -722,27 +721,27 @@ def build_mockjamb_waiting_room_text(
     invited_friends_count = max(0, required_players - 1) if required_players else 0
 
     lines = []
-    lines.append("👥 *Mock JAMB Multiplayer Room*")
+    lines.append("👥 Mock JAMB Multiplayer Room")
     lines.append("")
-    lines.append(f"*Room Code:* `{safe_room_code}`")
-    lines.append(f"*Status:* {pretty_status}")
+    lines.append(f"Room Code: {safe_room_code}")
+    lines.append(f"Status: {pretty_status}")
 
     if required_players > 0:
-        lines.append(f"*Players Joined:* {total_players} of {required_players}")
+        lines.append(f"Players Joined: {total_players} of {required_players}")
         lines.append(
-            f"*Total Players Required:* {required_players} \\(1 Host + {invited_friends_count} Friend{'s' if invited_friends_count != 1 else ''}\\)"
+            f"Total Players Required: {required_players} (1 Host + {invited_friends_count} Friend{'s' if invited_friends_count != 1 else ''})"
         )
     else:
-        lines.append(f"*Players Joined:* {total_players}")
+        lines.append(f"Players Joined: {total_players}")
 
     lines.append("")
 
     if safe_invite_link:
-        lines.append("*Invite Link:*")
+        lines.append("Invite Link:")
         lines.append(safe_invite_link)
         lines.append("")
 
-    lines.append("*Players in Room:*")
+    lines.append("Players in Room:")
 
     if not players:
         lines.append("• No players have joined yet.")
@@ -758,7 +757,7 @@ def build_mockjamb_waiting_room_text(
             full_name = " ".join(part for part in [first_name, last_name] if part).strip()
 
             if full_name and username:
-                display_name = f"{full_name} \\(@{username}\\)"
+                display_name = f"{full_name} (@{username})"
             elif full_name:
                 display_name = full_name
             elif username:
@@ -783,7 +782,7 @@ def build_mockjamb_waiting_room_text(
             payment_label = "💳 Paid" if is_paid else "💰 Not Paid"
             ready_label = "✅ Ready" if is_ready else "⏳ Waiting"
 
-            lines.append(f"{idx}\\. {role_label}: {display_name}")
+            lines.append(f"{idx}. {role_label}: {display_name}")
             lines.append(f"   • Course: {course_text}")
             lines.append(f"   • Subjects: {subject_text}")
             lines.append(f"   • Payment: {payment_label}")
