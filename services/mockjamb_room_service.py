@@ -786,13 +786,13 @@ def build_mockjamb_waiting_room_text(
             is_paid = payment_status == "successful"
             is_ready = bool(player.get("is_ready"))
 
-            role_label = "👑 Host" if is_host else "👤 Player"
-            payment_label = "💳 Paid" if is_paid else "💰 Not Paid"
-            ready_label = "✅ Ready" if is_ready else "⏳ Waiting"
+            role_label = "Host" if is_host else "Player"
+            payment_label = "Paid" if is_paid else "Not Paid"
+            ready_label = "Ready" if is_ready else "Waiting"
 
-            lines.append(f"{idx}. <b>{role_label}:</b> {display_name}")
-            lines.append(f"   • <b>Course:</b> {course_text}")
-            lines.append(f"   • <b>Subjects:</b> {subject_text}")
+            lines.append(f"{idx}. {role_label}: <b>{display_name}</b>")
+            lines.append(f"   • Course: <b>{course_text}</b>")
+            lines.append(f"   • Subjects: <b>{subject_text}</b>")
             lines.append(f"   • <b>Payment:</b> {payment_label}")
             lines.append(f"   • <b>Readiness:</b> {ready_label}")
             lines.append("")
@@ -807,4 +807,5 @@ def build_mockjamb_waiting_room_text(
         lines.append("Room status updated.")
 
     return "\n".join(lines)
+
 
