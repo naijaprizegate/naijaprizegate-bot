@@ -725,6 +725,17 @@ def build_mockjamb_waiting_room_text(
     required_players = int(expected_players or 0) if expected_players else 0
     invited_friends_count = max(0, required_players - 1) if required_players else 0
 
+    active_match_players = 0
+    for player in players:
+        is_host = bool(player.get("is_host"))
+        payment_status = str(player.get("payment_status") or "").strip().lower()
+        is_ready = bool(player.get("is_ready"))
+
+        if is_host:
+            active_match_players += 1
+        elif payment_status == "successful" and is_ready:
+            active_match_players += 1
+    
     lines = []
     lines.append("👥 <b>Mock JAMB Multiplayer Room</b>")
     lines.append("")
@@ -800,12 +811,14 @@ def build_mockjamb_waiting_room_text(
     if normalized_status in ("waiting", "ready"):
         lines.append("Share the room code or invite link with your friends.")
     elif normalized_status == "in_progress":
-        lines.append("The match has started. Players can now continue into the exam.")
+        lines.append(f"Match started with {active_match_players} active player{'s' if active_match_players != 1 else ''}.")
+        lines.append("Players can now continue into the exam.")
     elif normalized_status == "locked":
         lines.append("This room is currently locked.")
     else:
         lines.append("Room status updated.")
 
     return "\n".join(lines)
+
 
 
