@@ -2431,34 +2431,35 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
             room_code=room_code,
         )
 
-        expected_players = int(room.get("expected_players") or 0)
         joined_count = len(players)
 
-        non_host_players = [p for p in players if not bool(p.get("is_host"))]
+        if joined_count < 2:
+            return await query.answer("The Match needs at least 2 players.", show_alert=True)
 
-        all_non_host_paid = (
-            len(non_host_players) > 0
-            and all(
-                str(p.get("payment_status") or "").strip().lower() == "successful"
-                for p in non_host_players
-            )
-        )
-        all_non_host_ready = (
-            len(non_host_players) > 0
-            and all(bool(p.get("is_ready")) for p in non_host_players)
-        )
+        eligible_players = []
+        not_ready_players_exist = False
 
-        room_is_full = expected_players > 0 and joined_count >= expected_players
-        all_players_ready = room_is_full and all_non_host_paid and all_non_host_ready
+        for player in players:
+            is_host = bool(player.get("is_host"))
+            payment_status = str(player.get("payment_status") or "").strip().lower()
+            is_ready = bool(player.get("is_ready"))
 
-        if not room_is_full:
-            return await query.answer("Not all players have joined yet.", show_alert=True)
+            if is_host:
+                eligible_players.append(player)
+                continue
 
-        if not all_players_ready:
-            return await query.answer("All joined players must pay and be ready first.", show_alert=True)
+            if payment_status == "successful" and is_ready:
+                eligible_players.append(player)
+            else:
+                not_ready_players_exist = True
+
+        if len(eligible_players) < 2:
+            if not_ready_players_exist:
+                return await query.answer("Players must be ready before you start.", show_alert=True)
+            return await query.answer("The Match needs at least 2 players.", show_alert=True)
 
         try:
-            for player in players:
+            for player in eligible_players:
                 player_user_id = int(player.get("user_id") or 0)
 
                 payment_result = await session.execute(
@@ -2520,7 +2521,7 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
                     update public.mockjamb_rooms
                     set
                         status = 'in_progress',
-                        all_players_ready = true,
+                        all_players_ready = false,
                         started_by_host = true,
                         started_at = now(),
                         ends_at = now() + make_interval(mins => :duration_minutes),
@@ -2553,7 +2554,7 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
             context,
             room_code=room_code,
             host_user_id=host_user_id,
-            players=players,
+            players=eligible_players,
         )
     except Exception:
         logger.exception(
