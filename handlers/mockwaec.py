@@ -154,7 +154,7 @@ def make_mockwaec_subject_selection_keyboard(selected_codes: list[str]) -> Inlin
 
     return InlineKeyboardMarkup(rows)
 
-    
+
 def make_mockwaec_exam_ready_keyboard(subject_codes: list[str]) -> InlineKeyboardMarkup:
     rows = []
 
@@ -229,6 +229,35 @@ def make_mockwaec_submit_exam_confirm_keyboard() -> InlineKeyboardMarkup:
         [
             [InlineKeyboardButton("✅ Yes, Submit Now", callback_data="mw_submit_exam_yes")],
             [InlineKeyboardButton("❌ No, Continue Exam", callback_data="mw_submit_exam_no")],
+        ]
+    )
+
+
+def make_mockwaec_invitee_count_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("1 Friend", callback_data="mw_invites_1"),
+                InlineKeyboardButton("2 Friends", callback_data="mw_invites_2"),
+            ],
+            [
+                InlineKeyboardButton("3 Friends", callback_data="mw_invites_3"),
+                InlineKeyboardButton("4 Friends", callback_data="mw_invites_4"),
+            ],
+            [
+                InlineKeyboardButton("5 Friends", callback_data="mw_invites_5"),
+                InlineKeyboardButton("6 Friends", callback_data="mw_invites_6"),
+            ],
+            [
+                InlineKeyboardButton("7 Friends", callback_data="mw_invites_7"),
+                InlineKeyboardButton("8 Friends", callback_data="mw_invites_8"),
+            ],
+            [
+                InlineKeyboardButton("9 Friends", callback_data="mw_invites_9"),
+                InlineKeyboardButton("10 Friends", callback_data="mw_invites_10"),
+            ],
+            [InlineKeyboardButton("⬅️ Back", callback_data="mw_subjects_continue")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
 
@@ -590,6 +619,25 @@ def build_mockwaec_final_result_text(
         ])
 
     return "\n".join(lines)
+
+
+def build_mockwaec_invitee_count_text(subject_codes: list[str]) -> str:
+    subject_lines = []
+
+    for code in subject_codes:
+        subject = get_subject_by_code(code)
+        if subject:
+            subject_lines.append(f"• {subject['name']}")
+
+    joined_subjects = "\n".join(subject_lines)
+
+    return (
+        "👥 *Mock WAEC Multiplayer Setup*\n\n"
+        "First, choose how many friends you want to invite.\n\n"
+        "*Your current subjects:*\n"
+        f"{joined_subjects}\n\n"
+        "After that, you will continue to payment."
+    )
 
 
 # ----Question Has Passage-----------
@@ -1605,26 +1653,8 @@ async def mockwaec_mode_friends_handler(update: Update, context: ContextTypes.DE
             reply_markup=make_mockwaec_welcome_keyboard(),
         )
 
-    subject_lines = []
-    for code in subject_codes:
-        subject = get_subject_by_code(code)
-        if subject:
-            subject_lines.append(f"• {subject['name']}")
-
-    text = (
-        "👥 *Invite Friends Selected*\n\n"
-        "*Subjects for this room:*\n"
-        f"{chr(10).join(subject_lines)}\n\n"
-        "All players in the same room will use this same subject combination.\n\n"
-        "Next step: we will build the multiplayer room and invite link flow."
-    )
-
-    markup = InlineKeyboardMarkup(
-        [
-            [InlineKeyboardButton("⬅️ Back", callback_data="mw_subjects_continue")],
-            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
-        ]
-    )
+    text = build_mockwaec_invitee_count_text(subject_codes)
+    markup = make_mockwaec_invitee_count_keyboard()
 
     try:
         await query.edit_message_text(
@@ -1639,6 +1669,131 @@ async def mockwaec_mode_friends_handler(update: Update, context: ContextTypes.DE
             reply_markup=markup,
         )
 
+
+async def mockwaec_invitee_count_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    user = update.effective_user
+    if not user:
+        return
+
+    try:
+        invitee_count = int(str(query.data).replace("mw_invites_", "", 1))
+    except Exception:
+        return await query.answer("⚠️ Invalid invitee count.", show_alert=True)
+
+    if invitee_count < 1:
+        return await query.answer("⚠️ Invitee count must be at least 1.", show_alert=True)
+
+    subject_codes = context.user_data.get("mw_subject_codes") or []
+    if not subject_codes:
+        return await query.answer(
+            "⚠️ No saved subjects found. Please choose your subjects again.",
+            show_alert=True,
+        )
+
+    context.user_data["mw_mode"] = "friends"
+    context.user_data["mw_invitee_count"] = invitee_count
+    context.user_data["mw_required_player_count"] = invitee_count + 1
+
+    amount = MOCKWAEC_SOLO_FEE
+    tg_id = int(user.id)
+    username = user.username or f"user_{tg_id}"
+    email = f"{username}@naijaprizegate.ng"
+    tx_ref = build_tx_ref("MOCKWAECFRIENDS")
+    subject_codes_json = json.dumps(subject_codes)
+
+    async with get_async_session() as session:
+        await create_pending_mockwaec_payment(
+            session,
+            payment_reference=tx_ref,
+            user_id=tg_id,
+            amount_paid=amount,
+            course_code="custom",
+            subject_codes_json=subject_codes_json,
+            exam_mode="friends",
+            invitee_count=invitee_count,
+            required_player_count=invitee_count + 1,
+        )
+        await session.commit()
+
+    checkout_url = await create_checkout(
+        user_id=tg_id,
+        amount=amount,
+        username=username,
+        email=email,
+        tx_ref=tx_ref,
+        meta={
+            "tg_id": str(tg_id),
+            "username": username,
+            "product_type": "MOCKWAEC",
+            "course_code": "custom",
+            "exam_mode": "friends",
+            "invitee_count": str(invitee_count),
+            "required_player_count": str(invitee_count + 1),
+        },
+        product_type="MOCKWAEC",
+    )
+
+    if not checkout_url:
+        async with get_async_session() as session:
+            await session.execute(
+                text("""
+                    update public.mockwaec_payments
+                    set
+                        payment_status = 'expired',
+                        updated_at = now()
+                    where payment_reference = :payment_reference
+                      and lower(coalesce(payment_status, '')) = 'pending'
+                """),
+                {"payment_reference": tx_ref},
+            )
+            await session.commit()
+
+        return await query.answer(
+            "⚠️ Payment service is unavailable right now. Please try again shortly.",
+            show_alert=True,
+        )
+
+    subject_names = []
+    for code in subject_codes:
+        subject = get_subject_by_code(code)
+        if subject:
+            subject_names.append(f"• {subject['name']}")
+
+    message_text = (
+        "👥 *Mock WAEC Multiplayer Host Access*\n\n"
+        "*Subjects:*\n"
+        f"{chr(10).join(subject_names)}\n\n"
+        f"*Friends to Invite:* {invitee_count}\n"
+        f"*Total Players Required:* {invitee_count + 1} (1 Host + {invitee_count} Friend{'s' if invitee_count != 1 else ''})\n\n"
+        f"*Host Fee:* ₦{amount}\n\n"
+        "You need to pay first before your multiplayer room can be created.\n\n"
+        "Tap below to continue to payment."
+    )
+
+    markup = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton(f"💳 Pay ₦{amount}", url=checkout_url)],
+            [InlineKeyboardButton("⬅️ Back", callback_data="mw_mode_friends")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+    try:
+        await query.edit_message_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
 
 
 # -------------------------------------------
@@ -3138,6 +3293,7 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_use_course_handler, pattern=r"^mw_use_course::"))
     application.add_handler(CallbackQueryHandler(mockwaec_mode_solo_handler, pattern=r"^mw_mode_solo$"))
     application.add_handler(CallbackQueryHandler(mockwaec_mode_friends_handler, pattern=r"^mw_mode_friends$"))
+    application.add_handler(CallbackQueryHandler(mockwaec_invitee_count_handler, pattern=r"^mw_invites_"))
     application.add_handler(CallbackQueryHandler(mockwaec_pay_solo_handler, pattern=r"^mw_pay_solo$"))
     application.add_handler(CallbackQueryHandler(mockwaec_start_subject_handler, pattern=r"^mw_start_subject::"))
     application.add_handler(CallbackQueryHandler(mockwaec_submit_exam_confirm_handler, pattern=r"^mw_submit_exam_confirm$"))
@@ -3150,5 +3306,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
-
 
