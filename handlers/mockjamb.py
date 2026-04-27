@@ -2434,7 +2434,9 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
         joined_count = len(players)
 
         if joined_count < 2:
-            return await query.answer("The Match needs at least 2 players.", show_alert=True)
+            return await query.message.reply_text(
+                "⚠️ The Match needs at least 2 players."
+            )
 
         eligible_players = []
         not_ready_players_exist = False
@@ -2455,8 +2457,12 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
 
         if len(eligible_players) < 2:
             if not_ready_players_exist:
-                return await query.answer("Players must be ready before you start.", show_alert=True)
-            return await query.answer("The Match needs at least 2 players.", show_alert=True)
+                return await query.message.reply_text(
+                    "⚠️ Players must be ready before you start."
+                )
+            return await query.message.reply_text(
+                "⚠️ The Match needs at least 2 players."
+            )
 
         try:
             for player in eligible_players:
@@ -2544,9 +2550,8 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
                 int(user.id),
                 e,
             )
-            return await query.answer(
-                "Could not start the match right now. Please try again.",
-                show_alert=True,
+            return await query.message.reply_text(
+                "⚠️ Could not start the match right now. Please try again."
             )
 
     try:
