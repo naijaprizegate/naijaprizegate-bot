@@ -1,6 +1,6 @@
-# =============================================================
+# ==============================================================
 # handlers/mockjamb.py
-# =============================================================
+# ==============================================================
 
 import json
 import math
@@ -2406,8 +2406,6 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
     if not room_code:
         return await query.answer("No active room found.", show_alert=True)
 
-    await query.answer()
-
     host_payment_reference = None
     host_session = None
     host_course_code = None
@@ -2426,6 +2424,20 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
         if int(user.id) != room_host_user_id:
             return await query.answer("Only the host can start the match.", show_alert=True)
 
+        room_status = str(room.get("status") or "").strip().lower()
+
+        if room_status == "in_progress":
+            return await query.answer(
+                "⚠️ This match has already started. Use Resume Match.",
+                show_alert=True,
+            )
+
+        if room_status == "completed":
+            return await query.answer(
+                "⚠️ This match has already ended. Please create a new room for a new match.",
+                show_alert=True,
+            )
+
         players = await list_mockjamb_room_players(
             session,
             room_code=room_code,
@@ -2434,8 +2446,9 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
         joined_count = len(players)
 
         if joined_count < 2:
-            return await query.message.reply_text(
-                "⚠️ The Match needs at least 2 players."
+            return await query.answer(
+                "⚠️ The Match needs at least 2 players.",
+                show_alert=True,
             )
 
         eligible_players = []
@@ -2457,11 +2470,13 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
 
         if len(eligible_players) < 2:
             if not_ready_players_exist:
-                return await query.message.reply_text(
-                    "⚠️ Players must be ready before you start."
+                return await query.answer(
+                    "⚠️ Players must be ready before you start.",
+                    show_alert=True,
                 )
-            return await query.message.reply_text(
-                "⚠️ The Match needs at least 2 players."
+            return await query.answer(
+                "⚠️ The Match needs at least 2 players.",
+                show_alert=True,
             )
 
         try:
@@ -2489,8 +2504,9 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
                 payment_row = payment_result.mappings().first()
 
                 if not payment_row:
-                    return await query.message.reply_text(
-                        f"⚠️ Could not find a successful payment record for player {player_user_id} in this room."
+                    return await query.answer(
+                        f"⚠️ Could not find a successful payment record for player {player_user_id}.",
+                        show_alert=True,
                     )
 
                 payment_reference = str(payment_row.get("payment_reference") or "").strip()
@@ -2498,8 +2514,9 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
                 subject_codes_json = str(payment_row.get("subject_codes_json") or "[]")
 
                 if not payment_reference or not course_code or not subject_codes_json:
-                    return await query.message.reply_text(
-                        f"⚠️ Payment data is incomplete for player {player_user_id}."
+                    return await query.answer(
+                        f"⚠️ Payment data is incomplete for player {player_user_id}.",
+                        show_alert=True,
                     )
 
                 session_row = await get_or_create_mockjamb_session_from_payment(
@@ -2550,8 +2567,9 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
                 int(user.id),
                 e,
             )
-            return await query.message.reply_text(
-                "⚠️ Could not start the match right now. Please try again."
+            return await query.answer(
+                "⚠️ Could not start the match right now. Please try again.",
+                show_alert=True,
             )
 
     try:
@@ -2569,8 +2587,9 @@ async def mockjamb_room_start_handler(update: Update, context: ContextTypes.DEFA
         )
 
     if not host_payment_reference or not host_session or not host_course_code or not host_subject_codes:
-        return await query.message.reply_text(
-            "⚠️ Match was marked started, but the host exam session could not be opened."
+        return await query.answer(
+            "⚠️ Match was marked started, but the host exam session could not be opened.",
+            show_alert=True,
         )
 
     context.user_data["mj_course_code"] = host_course_code
@@ -4759,5 +4778,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
-
 
