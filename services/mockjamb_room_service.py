@@ -5,8 +5,9 @@ import json
 import random
 import string
 import logging
-from datetime import datetime
 
+from datetime import datetime
+from html import escape
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -692,6 +693,7 @@ def format_mockjamb_player_subjects(subject_codes_raw) -> list[str]:
     return formatted_subjects
 
 
+
 def build_mockjamb_waiting_room_text(
     *,
     room_code: str,
@@ -701,8 +703,8 @@ def build_mockjamb_waiting_room_text(
     host_user_id: int,
     expected_players: int | None = None,
 ) -> str:
-    safe_room_code = str(room_code or "").strip().upper()
-    safe_invite_link = str(invite_link or "").strip()
+    safe_room_code = escape(str(room_code or "").strip().upper())
+    safe_invite_link = escape(str(invite_link or "").strip())
     normalized_status = str(room_status or "waiting").strip().lower()
 
     status_map = {
@@ -712,9 +714,11 @@ def build_mockjamb_waiting_room_text(
         "in_progress": "📝 Match in progress",
         "completed": "🏁 Completed",
     }
-    pretty_status = status_map.get(
-        normalized_status,
-        normalized_status.replace("_", " ").title(),
+    pretty_status = escape(
+        status_map.get(
+            normalized_status,
+            normalized_status.replace("_", " ").title(),
+        )
     )
 
     total_players = len(players)
@@ -722,27 +726,28 @@ def build_mockjamb_waiting_room_text(
     invited_friends_count = max(0, required_players - 1) if required_players else 0
 
     lines = []
-    lines.append("👥 Mock JAMB Multiplayer Room")
+    lines.append("👥 <b>Mock JAMB Multiplayer Room</b>")
     lines.append("")
-    lines.append(f"Room Code: {safe_room_code}")
-    lines.append(f"Status: {pretty_status}")
+    lines.append(f"<b>Room Code:</b> <code>{safe_room_code}</code>")
+    lines.append(f"<b>Status:</b> {pretty_status}")
 
     if required_players > 0:
-        lines.append(f"Players Joined: {total_players} of {required_players}")
+        lines.append(f"<b>Players Joined:</b> {total_players} of {required_players}")
         lines.append(
-            f"Total Players Required: {required_players} (1 Host + {invited_friends_count} Friend{'s' if invited_friends_count != 1 else ''})"
+            f"<b>Total Players Required:</b> {required_players} "
+            f"(1 Host + {invited_friends_count} Friend{'s' if invited_friends_count != 1 else ''})"
         )
     else:
-        lines.append(f"Players Joined: {total_players}")
+        lines.append(f"<b>Players Joined:</b> {total_players}")
 
     lines.append("")
 
     if safe_invite_link:
-        lines.append("Invite Link:")
+        lines.append("<b>Invite Link:</b>")
         lines.append(safe_invite_link)
         lines.append("")
 
-    lines.append("Players in Room:")
+    lines.append("<b>Players in Room:</b>")
 
     if not players:
         lines.append("• No players have joined yet.")
@@ -766,14 +771,16 @@ def build_mockjamb_waiting_room_text(
             else:
                 display_name = f"User {user_id}"
 
+            display_name = escape(display_name)
+
             course_code = str(player.get("course_code") or "").strip().lower()
             course = get_course_by_code(course_code) if course_code else None
-            course_text = str((course or {}).get("course_name") or "").strip() or "Not Set"
+            course_text = escape(str((course or {}).get("course_name") or "").strip() or "Not Set")
 
             subject_names = format_mockjamb_player_subjects(
                 player.get("subject_codes_json") or "[]"
             )
-            subject_text = ", ".join(subject_names) if subject_names else "Not Set"
+            subject_text = escape(", ".join(subject_names) if subject_names else "Not Set")
 
             payment_status = str(player.get("payment_status") or "").strip().lower()
             is_paid = payment_status == "successful"
@@ -783,11 +790,11 @@ def build_mockjamb_waiting_room_text(
             payment_label = "💳 Paid" if is_paid else "💰 Not Paid"
             ready_label = "✅ Ready" if is_ready else "⏳ Waiting"
 
-            lines.append(f"{idx}. {role_label}: {display_name}")
-            lines.append(f"   • Course: {course_text}")
-            lines.append(f"   • Subjects: {subject_text}")
-            lines.append(f"   • Payment: {payment_label}")
-            lines.append(f"   • Readiness: {ready_label}")
+            lines.append(f"{idx}. <b>{role_label}:</b> {display_name}")
+            lines.append(f"   • <b>Course:</b> {course_text}")
+            lines.append(f"   • <b>Subjects:</b> {subject_text}")
+            lines.append(f"   • <b>Payment:</b> {payment_label}")
+            lines.append(f"   • <b>Readiness:</b> {ready_label}")
             lines.append("")
 
     if normalized_status in ("waiting", "ready"):
@@ -800,5 +807,4 @@ def build_mockjamb_waiting_room_text(
         lines.append("Room status updated.")
 
     return "\n".join(lines)
-
 
