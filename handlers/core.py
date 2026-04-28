@@ -19,6 +19,12 @@ from handlers.challenge import join_challenge
 from services.mockjamb_room_service import get_mockjamb_room_by_code
 from handlers.mockjamb import extract_mockjamb_room_code_from_start_payload
 
+from services.mockwaec_room_service import get_mockwaec_room_by_code
+from handlers.mockwaec import (
+    extract_mockwaec_room_code_from_start_payload,
+    make_mockwaec_join_room_keyboard,
+)
+
 logger = logging.getLogger(__name__)
 
 
@@ -307,7 +313,39 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 "Tap the button below to join this room.",
                 reply_markup=make_mockjamb_join_room_keyboard(room_code),
             )
+        
+        
+        # --------------------------------------
+        # Mock WAEC Invite Room Code/Link
+        # --------------------------------------
+        room_code = extract_mockwaec_room_code_from_start_payload(arg)
+        if room_code:
+            async with get_async_session() as session:
+                room = await get_mockwaec_room_by_code(session, room_code=room_code)
 
+            if not room:
+                return await update.effective_message.reply_text(
+                    "⚠️ This room invite is invalid or no longer available."
+                )
+
+            room_status = str(room.get("status") or "").strip().lower()
+            if room_status != "waiting":
+                return await update.effective_message.reply_text(
+                    "⚠️ This room is no longer open for joining."
+                )
+
+            context.user_data["mw_room_code"] = room_code
+            context.user_data["mw_is_host"] = False
+
+            return await update.effective_message.reply_text(
+                "👥 Mock WAEC Room Invite\n\n"
+                f"Room Code: {room_code}\n\n"
+                "You were invited to join a Mock WAEC multiplayer room.\n"
+                "Tap the button below to join this room.",
+                reply_markup=make_mockwaec_join_room_keyboard(room_code),
+            )
+
+        
         # -------------------------------------------------------
         # BATTLE LINK HANDLER
         # Example: /start battle_A7K92Q
@@ -861,4 +899,3 @@ def register_handlers(application):
         ),
         group=20,
     )
-
