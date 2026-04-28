@@ -34,6 +34,13 @@ from services.mockwaec_exam_service import (
     get_mockwaec_grade_from_score,
 )
 
+from services.mockwaec_room_service import (
+    create_mockwaec_room,
+    add_mockwaec_room_player,
+    list_mockwaec_room_players,
+    build_mockwaec_invite_link,
+)
+
 logger = logging.getLogger(__name__)
 
 COURSES_PER_PAGE = 6
@@ -262,16 +269,6 @@ def make_mockwaec_invitee_count_keyboard() -> InlineKeyboardMarkup:
     )
 
 
-def build_mockwaec_submit_exam_confirm_text() -> str:
-    return (
-        "⚠️ *Submit Mock WAEC / NECO Now?*\n\n"
-        "If you submit now:\n"
-        "• your exam will end immediately\n"
-        "• unanswered questions will count as zero\n"
-        "• your current scores will be calculated and shown\n\n"
-        "Are you sure you want to submit?"
-    )
-
 
 def make_mockwaec_stale_action_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
@@ -290,6 +287,46 @@ def make_mockwaec_time_up_keyboard() -> InlineKeyboardMarkup:
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
+
+
+def make_mockwaec_room_waiting_keyboard(
+    *,
+    is_host: bool,
+    room_code: str | None = None,
+) -> InlineKeyboardMarkup:
+    rows = []
+
+    safe_room_code = str(room_code or "").strip().upper()
+    share_url = None
+
+    if safe_room_code:
+        from os import getenv
+        import urllib.parse
+
+        bot_username = getenv("BOT_USERNAME", "NaijaPrizeGateBot")
+        invite_link = f"https://t.me/{bot_username}?start=wcroom_{safe_room_code}"
+
+        share_text = (
+            "📝 Join my Mock WAEC room on NaijaPrizeGate!\n\n"
+            f"Room Code: {safe_room_code}\n"
+            "Tap the link below to join:"
+        )
+
+        share_url = (
+            "https://t.me/share/url?"
+            f"url={urllib.parse.quote(invite_link)}"
+            f"&text={urllib.parse.quote(share_text)}"
+        )
+
+    if is_host:
+        if share_url:
+            rows.append([InlineKeyboardButton("📤 Share Room Link / Code", url=share_url)])
+        rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
+    else:
+        rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
+
+    return InlineKeyboardMarkup(rows)
+
 
 # --------------------------------------
 # Mock Time Remaining
@@ -568,6 +605,15 @@ def build_mockwaec_subject_completed_text(
 
     return "\n".join(lines)
 
+def build_mockwaec_submit_exam_confirm_text() -> str:
+    return (
+        "⚠️ *Submit Mock WAEC / NECO Now?*\n\n"
+        "If you submit now:\n"
+        "• your exam will end immediately\n"
+        "• unanswered questions will count as zero\n"
+        "• your current scores will be calculated and shown\n\n"
+        "Are you sure you want to submit?"
+    )
 
 def build_mockwaec_final_result_text(
     *,
@@ -638,6 +684,75 @@ def build_mockwaec_invitee_count_text(subject_codes: list[str]) -> str:
         f"{joined_subjects}\n\n"
         "After that, you will continue to payment."
     )
+
+
+def build_mockwaec_waiting_room_text(
+    *,
+    room_code: str,
+    invite_link: str,
+    room_status: str,
+    players: list[dict],
+    host_user_id: int,
+    expected_players: int | None = None,
+) -> str:
+    total_players = len(players)
+    required_players = int(expected_players or 0) if expected_players else 0
+    invited_friends_count = max(0, required_players - 1) if required_players else 0
+
+    lines = [
+        "👥 <b>Mock WAEC Multiplayer Room</b>",
+        "",
+        f"<b>Room Code:</b> <code>{room_code}</code>",
+        f"<b>Status:</b> {room_status.title()}",
+    ]
+
+    if required_players > 0:
+        lines.append(f"<b>Players Joined:</b> {total_players} of {required_players}")
+        lines.append(
+            f"<b>Total Players Required:</b> {required_players} "
+            f"(1 Host + {invited_friends_count} Friend{'s' if invited_friends_count != 1 else ''})"
+        )
+    else:
+        lines.append(f"<b>Players Joined:</b> {total_players}")
+
+    lines.extend([
+        "",
+        "<b>Invite Link:</b>",
+        invite_link,
+        "",
+        "<b>Players in Room:</b>",
+    ])
+
+    if not players:
+        lines.append("• No players yet.")
+    else:
+        for idx, player in enumerate(players, start=1):
+            user_id = int(player.get("user_id") or 0)
+            is_host = bool(player.get("is_host"))
+
+            first_name = str(player.get("first_name") or "").strip()
+            last_name = str(player.get("last_name") or "").strip()
+            username = str(player.get("username") or "").strip()
+
+            full_name = " ".join(x for x in [first_name, last_name] if x).strip()
+            if full_name and username:
+                display_name = f"{full_name} (@{username})"
+            elif full_name:
+                display_name = full_name
+            elif username:
+                display_name = f"@{username}"
+            else:
+                display_name = f"User {user_id}"
+
+            role_label = "👑 Host" if is_host else "👤 Player"
+            lines.append(f"{idx}. <b>{role_label}:</b> {display_name}")
+
+    lines.extend([
+        "",
+        "Share the room code or invite link with your friends.",
+    ])
+
+    return "\n".join(lines)
 
 
 # ----Question Has Passage-----------
@@ -1915,59 +2030,224 @@ async def mockwaec_payment_success_handler(
     context: ContextTypes.DEFAULT_TYPE,
     tx_ref: str,
 ):
-    if not tx_ref:
+    async def send_response(
+        text: str,
+        *,
+        parse_mode: str | None = None,
+        reply_markup=None,
+        disable_web_page_preview: bool = False,
+    ):
+        if update.callback_query:
+            query = update.callback_query
+            try:
+                await query.answer()
+            except Exception:
+                pass
+
+            try:
+                await query.edit_message_text(
+                    text=text,
+                    parse_mode=parse_mode,
+                    reply_markup=reply_markup,
+                    disable_web_page_preview=disable_web_page_preview,
+                )
+            except Exception:
+                await query.message.reply_text(
+                    text=text,
+                    parse_mode=parse_mode,
+                    reply_markup=reply_markup,
+                    disable_web_page_preview=disable_web_page_preview,
+                )
+            return
+
         if update.message:
             await update.message.reply_text(
-                "⚠️ Payment reference is missing. Please try again."
+                text=text,
+                parse_mode=parse_mode,
+                reply_markup=reply_markup,
+                disable_web_page_preview=disable_web_page_preview,
             )
+
+    if not tx_ref:
+        await send_response("⚠️ Payment reference is missing. Please try again.")
         return
 
     async with get_async_session() as session:
         payment = await get_mockwaec_payment(session, tx_ref)
 
         if not payment:
-            if update.message:
-                await update.message.reply_text(
-                    "⚠️ Mock WAEC / NECO payment record not found. Please contact support if payment was deducted."
-                )
+            await send_response(
+                "⚠️ Mock WAEC / NECO payment record not found. Please contact support if payment was deducted."
+            )
             return
 
-        if str(payment.get("payment_status", "")).lower().strip() != "successful":
-            if update.message:
-                await update.message.reply_text(
-                    "⚠️ Your Mock WAEC / NECO payment is not yet marked successful. Please wait a moment and try again."
-                )
+        if str(payment.get("payment_status") or "").strip().lower() != "successful":
+            await send_response(
+                "⚠️ Your Mock WAEC / NECO payment is not yet marked successful. Please wait a moment and try again."
+            )
             return
 
         course_code = str(payment.get("course_code") or "").strip()
-        subject_codes_raw = payment.get("subject_codes_json")
-        exam_mode = str(payment.get("exam_mode") or "solo").strip()
+        subject_codes_raw = payment.get("subject_codes_json") or "[]"
+        exam_mode = str(payment.get("exam_mode") or "solo").strip().lower()
+        invitee_count = int(payment.get("invitee_count") or 0)
+        required_player_count = int(payment.get("required_player_count") or 0)
+        payer_user_id = int(payment.get("user_id") or 0)
 
-        if isinstance(subject_codes_raw, list):
-            subject_codes = subject_codes_raw
-        elif isinstance(subject_codes_raw, str):
-            try:
-                subject_codes = json.loads(subject_codes_raw)
-            except Exception:
-                subject_codes = []
-        else:
+        try:
+            subject_codes = json.loads(subject_codes_raw) if isinstance(subject_codes_raw, str) else subject_codes_raw
+        except Exception:
             subject_codes = []
 
-        if not course_code or not subject_codes:
-            if update.message:
-                await update.message.reply_text(
-                    "⚠️ Your saved Mock WAEC / NECO exam data is incomplete. Please contact support."
-                )
+        if not isinstance(subject_codes, list):
+            subject_codes = []
+
+        if not subject_codes or payer_user_id <= 0:
+            await send_response(
+                "⚠️ Your saved Mock WAEC / NECO exam data is incomplete. Please contact support."
+            )
             return
 
-        mw_session = await get_or_create_mockwaec_session_from_payment(
-            session,
-            payment_reference=tx_ref,
-            user_id=int(payment["user_id"]),
-            course_code=course_code,
-            subject_codes_json=json.dumps(subject_codes),
-        )
-        await session.commit()
+        # ============================================================
+        # FRIENDS / MULTIPLAYER FLOW
+        # ============================================================
+        if exam_mode == "friends":
+            room_code = ""
+            players = []
+            room = None
+
+            try:
+                total_required_players = (
+                    required_player_count
+                    if required_player_count > 0
+                    else max(2, invitee_count + 1)
+                )
+
+                duration_minutes = get_mockwaec_exam_duration_minutes(len(subject_codes))
+
+                room = await create_mockwaec_room(
+                    session,
+                    host_user_id=payer_user_id,
+                    duration_minutes=duration_minutes,
+                    required_player_count=total_required_players,
+                )
+
+                room_code = str((room or {}).get("room_code") or "").strip().upper()
+                if not room_code:
+                    raise ValueError("Room code was not created.")
+
+                payer_tg_user = update.effective_user
+
+                await add_mockwaec_room_player(
+                    session,
+                    room_code=room_code,
+                    user_id=payer_user_id,
+                    course_code=course_code,
+                    subject_codes_json=json.dumps(subject_codes),
+                    is_host=True,
+                    has_paid=True,
+                    first_name=(payer_tg_user.first_name if payer_tg_user else None),
+                    last_name=(payer_tg_user.last_name if payer_tg_user else None),
+                    username=(payer_tg_user.username if payer_tg_user else None),
+                )
+
+                players = await list_mockwaec_room_players(
+                    session,
+                    room_code=room_code,
+                )
+
+                await session.execute(
+                    text("""
+                        update public.mockwaec_payments
+                        set
+                            room_code = :room_code,
+                            updated_at = now()
+                        where payment_reference = :payment_reference
+                    """),
+                    {
+                        "room_code": room_code,
+                        "payment_reference": tx_ref,
+                    },
+                )
+
+                await session.commit()
+
+            except Exception as e:
+                await session.rollback()
+                logger.exception(
+                    "Failed to create paid WAEC multiplayer room | tx_ref=%s | user_id=%s | err=%s",
+                    tx_ref,
+                    payer_user_id,
+                    e,
+                )
+                await send_response(
+                    "⚠️ Payment succeeded, but room creation failed. Please try again. If it still fails, contact support."
+                )
+                return
+
+            context.user_data["mw_course_code"] = course_code
+            context.user_data["mw_subject_codes"] = subject_codes
+            context.user_data["mw_mode"] = "friends"
+            context.user_data["mw_room_code"] = room_code
+            context.user_data["mw_payment_reference"] = tx_ref
+            context.user_data["mw_session_id"] = None
+            context.user_data["mw_invitee_count"] = invitee_count
+            context.user_data["mw_required_player_count"] = total_required_players
+
+            bot_username = ""
+            try:
+                me = await context.bot.get_me()
+                bot_username = me.username or ""
+            except Exception:
+                bot_username = ""
+
+            invite_link = build_mockwaec_invite_link(bot_username, room_code)
+
+            message_text = build_mockwaec_waiting_room_text(
+                room_code=room_code,
+                invite_link=invite_link,
+                room_status="waiting",
+                players=players,
+                host_user_id=payer_user_id,
+                expected_players=int((room or {}).get("expected_players") or 0),
+            )
+
+            markup = make_mockwaec_room_waiting_keyboard(
+                is_host=True,
+                room_code=room_code,
+            )
+
+            await send_response(
+                message_text,
+                parse_mode="HTML",
+                reply_markup=markup,
+                disable_web_page_preview=True,
+            )
+            return
+
+        # ============================================================
+        # SOLO FLOW
+        # ============================================================
+        try:
+            mw_session = await get_or_create_mockwaec_session_from_payment(
+                session,
+                payment_reference=tx_ref,
+                user_id=payer_user_id,
+                course_code=course_code,
+                subject_codes_json=json.dumps(subject_codes),
+            )
+            await session.commit()
+        except Exception as e:
+            await session.rollback()
+            logger.exception(
+                "Failed to create Mock WAEC solo session | tx_ref=%s | err=%s",
+                tx_ref,
+                e,
+            )
+            await send_response(
+                "⚠️ Payment succeeded, but your exam session could not be created right now. Please try again."
+            )
+            return
 
     context.user_data["mw_course_code"] = course_code
     context.user_data["mw_subject_codes"] = subject_codes
@@ -1979,30 +2259,11 @@ async def mockwaec_payment_success_handler(
     message_text = build_mockwaec_exam_ready_text(subject_codes)
     markup = make_mockwaec_exam_ready_keyboard(subject_codes)
 
-    if update.message:
-        await update.message.reply_text(
-            message_text,
-            parse_mode="Markdown",
-            reply_markup=markup,
-        )
-        return
-
-    if update.callback_query:
-        query = update.callback_query
-        await query.answer()
-
-        try:
-            await query.edit_message_text(
-                message_text,
-                parse_mode="Markdown",
-                reply_markup=markup,
-            )
-        except Exception:
-            await query.message.reply_text(
-                message_text,
-                parse_mode="Markdown",
-                reply_markup=markup,
-            )
+    await send_response(
+        message_text,
+        parse_mode="Markdown",
+        reply_markup=markup,
+    )
 
 
 # ------------------------------------------------
