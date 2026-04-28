@@ -1,6 +1,6 @@
-# =============================================================
+# ====================================================================
 # handlers/mockwaec.py
-# =============================================================
+# ====================================================================
 
 import json
 import math
@@ -37,6 +37,8 @@ from services.mockwaec_exam_service import (
 from services.mockwaec_room_service import (
     create_mockwaec_room,
     add_mockwaec_room_player,
+    get_mockwaec_room_player,
+    get_mockwaec_room_by_code,
     list_mockwaec_room_players,
     build_mockwaec_invite_link,
 )
@@ -1811,6 +1813,103 @@ async def mockwaec_mode_friends_handler(update: Update, context: ContextTypes.DE
         )
 
 
+async def mockwaec_room_join_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    user = update.effective_user
+    if not user:
+        return
+
+    try:
+        _, room_code = query.data.split("::", 1)
+    except Exception:
+        return await query.answer("Invalid room join request.", show_alert=True)
+
+    room_code = str(room_code or "").strip().upper()
+    if not room_code:
+        return await query.answer("Invalid room code.", show_alert=True)
+
+    bot_username = ""
+    try:
+        me = await context.bot.get_me()
+        bot_username = me.username or ""
+    except Exception:
+        bot_username = ""
+
+    async with get_async_session() as session:
+        room = await get_mockwaec_room_by_code(session, room_code=room_code)
+        if not room:
+            return await query.answer("⚠️ Room not found.", show_alert=True)
+
+        room_status = str(room.get("status") or "").strip().lower()
+        if room_status != "waiting":
+            return await query.answer(
+                "⚠️ This room is no longer open for joining.",
+                show_alert=True,
+            )
+
+        existing_player = await get_mockwaec_room_player(
+            session,
+            room_code=room_code,
+            user_id=int(user.id),
+        )
+
+        if not existing_player:
+            await add_mockwaec_room_player(
+                session,
+                room_code=room_code,
+                user_id=int(user.id),
+                course_code=None,
+                subject_codes_json="[]",
+                first_name=user.first_name,
+                last_name=user.last_name,
+                username=user.username,
+            )
+
+        players = await list_mockwaec_room_players(
+            session,
+            room_code=room_code,
+        )
+
+        await session.commit()
+
+    context.user_data["mw_room_code"] = room_code
+    context.user_data["mw_is_host"] = int(room.get("host_user_id") or 0) == int(user.id)
+
+    invite_link = build_mockwaec_invite_link(bot_username, room_code)
+
+    message_text = build_mockwaec_waiting_room_text(
+        room_code=room_code,
+        invite_link=invite_link,
+        room_status="waiting",
+        players=players,
+        host_user_id=int(room.get("host_user_id") or 0),
+        expected_players=int((room or {}).get("expected_players") or 0),
+    )
+
+    markup = make_mockwaec_room_waiting_keyboard(
+        is_host=bool(context.user_data["mw_is_host"]),
+        room_code=room_code,
+    )
+
+    try:
+        await query.edit_message_text(
+            text=message_text,
+            parse_mode="HTML",
+            reply_markup=markup,
+            disable_web_page_preview=True,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text=message_text,
+            parse_mode="HTML",
+            reply_markup=markup,
+            disable_web_page_preview=True,
+        )
+
+
 async def mockwaec_invitee_count_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -3580,6 +3679,7 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_use_course_handler, pattern=r"^mw_use_course::"))
     application.add_handler(CallbackQueryHandler(mockwaec_mode_solo_handler, pattern=r"^mw_mode_solo$"))
     application.add_handler(CallbackQueryHandler(mockwaec_mode_friends_handler, pattern=r"^mw_mode_friends$"))
+    application.add_handler(CallbackQueryHandler(mockwaec_room_join_handler, pattern=r"^mwr_join::"))
     application.add_handler(CallbackQueryHandler(mockwaec_invitee_count_handler, pattern=r"^mw_invites_"))
     application.add_handler(CallbackQueryHandler(mockwaec_pay_solo_handler, pattern=r"^mw_pay_solo$"))
     application.add_handler(CallbackQueryHandler(mockwaec_start_subject_handler, pattern=r"^mw_start_subject::"))
@@ -3593,5 +3693,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
-
 
