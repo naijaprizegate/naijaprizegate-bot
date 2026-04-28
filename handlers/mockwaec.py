@@ -179,6 +179,15 @@ def make_mockwaec_exam_ready_keyboard(subject_codes: list[str]) -> InlineKeyboar
     return InlineKeyboardMarkup(rows)
 
 
+def make_mockwaec_join_room_keyboard(room_code: str) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("👥 Join Room", callback_data=f"mwr_join::{room_code}")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+
 def get_course_subjects_for_code(subject_code: str):
     from waec_loader import get_subject_by_code
     return get_subject_by_code(subject_code)
@@ -375,6 +384,23 @@ def format_mockwaec_duration_minutes(total_minutes: int) -> str:
     if hours > 0:
         return f"{hours}h"
     return f"{minutes}m"
+
+
+# -----------------------------------------------------
+# Extract Mock WAEC Room Code from Start Payload
+# ----------------------------------------------------
+def extract_mockwaec_room_code_from_start_payload(payload: str) -> str | None:
+    payload = str(payload or "").strip()
+
+    if not payload:
+        return None
+
+    if payload.startswith("wcroom_"):
+        room_code = payload.replace("wcroom_", "", 1).strip().upper()
+        return room_code or None
+
+    return None
+
 
 # ====================================================================
 # Message Builders
@@ -3567,4 +3593,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
+
 
