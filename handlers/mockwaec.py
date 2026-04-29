@@ -304,6 +304,7 @@ def make_mockwaec_room_waiting_keyboard(
     *,
     is_host: bool,
     room_code: str | None = None,
+    has_subjects: bool = False,
 ) -> InlineKeyboardMarkup:
     rows = []
 
@@ -334,6 +335,9 @@ def make_mockwaec_room_waiting_keyboard(
             rows.append([InlineKeyboardButton("📤 Share Room Link / Code", url=share_url)])
         rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
     else:
+        if not has_subjects:
+            rows.append([InlineKeyboardButton("📚 Choose My Subjects", callback_data="mwr_pick_subjects")])
+
         rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
 
     return InlineKeyboardMarkup(rows)
@@ -1570,8 +1574,6 @@ async def mockwaec_subjects_continue_handler(update: Update, context: ContextTyp
     if not query:
         return
 
-    await query.answer()
-
     selected_codes = context.user_data.get("mw_subject_codes") or []
 
     if len(selected_codes) < 7:
@@ -1592,6 +1594,91 @@ async def mockwaec_subjects_continue_handler(update: Update, context: ContextTyp
             show_alert=True,
         )
 
+    # ============================================================
+    # ROOM INVITEE SUBJECT SELECTION FLOW
+    # ============================================================
+    if context.user_data.get("mw_subject_select_from_room"):
+        room_code = str(context.user_data.get("mw_room_code") or "").strip().upper()
+        if not room_code:
+            return await query.answer("⚠️ No active room found.", show_alert=True)
+
+        user = update.effective_user
+        if not user:
+            return await query.answer("⚠️ User not found.", show_alert=True)
+
+        async with get_async_session() as session:
+            room = await get_mockwaec_room_by_code(session, room_code=room_code)
+            if not room:
+                return await query.answer("⚠️ Room not found.", show_alert=True)
+
+            await session.execute(
+                text("""
+                    update public.mockwaec_room_players
+                    set
+                        subject_codes_json = :subject_codes_json,
+                        updated_at = now()
+                    where upper(room_code) = :room_code
+                      and user_id = :user_id
+                """),
+                {
+                    "room_code": room_code,
+                    "user_id": int(user.id),
+                    "subject_codes_json": json.dumps(selected_codes),
+                },
+            )
+
+            players = await list_mockwaec_room_players(
+                session,
+                room_code=room_code,
+            )
+
+            await session.commit()
+
+        context.user_data["mw_subject_select_from_room"] = False
+
+        bot_username = ""
+        try:
+            me = await context.bot.get_me()
+            bot_username = me.username or ""
+        except Exception:
+            bot_username = ""
+
+        invite_link = build_mockwaec_invite_link(bot_username, room_code)
+
+        message_text = build_mockwaec_waiting_room_text(
+            room_code=room_code,
+            invite_link=invite_link,
+            room_status="waiting",
+            players=players,
+            host_user_id=int(room.get("host_user_id") or 0),
+            expected_players=int((room or {}).get("expected_players") or 0),
+        )
+
+        markup = make_mockwaec_room_waiting_keyboard(
+            is_host=False,
+            room_code=room_code,
+            has_subjects=True,
+        )
+
+        try:
+            await query.edit_message_text(
+                text=message_text,
+                parse_mode="HTML",
+                reply_markup=markup,
+                disable_web_page_preview=True,
+            )
+        except Exception:
+            await query.message.reply_text(
+                text=message_text,
+                parse_mode="HTML",
+                reply_markup=markup,
+                disable_web_page_preview=True,
+            )
+        return
+
+    # ============================================================
+    # NORMAL SOLO / DEFAULT FLOW
+    # ============================================================
     subject_lines = []
     for code in selected_codes:
         subject = get_subject_by_code(code)
@@ -1889,9 +1976,23 @@ async def mockwaec_room_join_handler(update: Update, context: ContextTypes.DEFAU
         expected_players=int((room or {}).get("expected_players") or 0),
     )
 
+    current_player = None
+    for player in players:
+        if int(player.get("user_id") or 0) == int(user.id):
+            current_player = player
+            break
+
+    has_subjects = False
+    try:
+        current_subjects = json.loads((current_player or {}).get("subject_codes_json") or "[]")
+        has_subjects = isinstance(current_subjects, list) and len(current_subjects) > 0
+    except Exception:
+        has_subjects = False
+
     markup = make_mockwaec_room_waiting_keyboard(
         is_host=bool(context.user_data["mw_is_host"]),
         room_code=room_code,
+        has_subjects=has_subjects,
     )
 
     try:
@@ -2031,6 +2132,60 @@ async def mockwaec_invitee_count_handler(update: Update, context: ContextTypes.D
     except Exception:
         await query.message.reply_text(
             message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
+
+async def mockwaec_room_pick_subjects_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    room_code = str(context.user_data.get("mw_room_code") or "").strip().upper()
+    if not room_code:
+        return await query.answer("⚠️ No active room found.", show_alert=True)
+
+    async with get_async_session() as session:
+        room = await get_mockwaec_room_by_code(session, room_code=room_code)
+        if not room:
+            return await query.answer("⚠️ Room not found.", show_alert=True)
+
+        player = await get_mockwaec_room_player(
+            session,
+            room_code=room_code,
+            user_id=int(query.from_user.id),
+        )
+        if not player:
+            return await query.answer("⚠️ You are not in this room.", show_alert=True)
+
+    context.user_data["mw_mode"] = "friends"
+    context.user_data["mw_subject_select_from_room"] = True
+
+    existing_subject_codes = []
+    try:
+        existing_subject_codes = json.loads(player.get("subject_codes_json") or "[]")
+    except Exception:
+        existing_subject_codes = []
+
+    if not isinstance(existing_subject_codes, list):
+        existing_subject_codes = []
+
+    context.user_data["mw_subject_codes"] = existing_subject_codes
+
+    text = build_mockwaec_subject_selection_text(existing_subject_codes)
+    markup = make_mockwaec_subject_selection_keyboard(existing_subject_codes)
+
+    try:
+        await query.edit_message_text(
+            text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text,
             parse_mode="Markdown",
             reply_markup=markup,
         )
@@ -3680,6 +3835,7 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_mode_solo_handler, pattern=r"^mw_mode_solo$"))
     application.add_handler(CallbackQueryHandler(mockwaec_mode_friends_handler, pattern=r"^mw_mode_friends$"))
     application.add_handler(CallbackQueryHandler(mockwaec_room_join_handler, pattern=r"^mwr_join::"))
+    application.add_handler(CallbackQueryHandler(mockwaec_room_pick_subjects_handler, pattern=r"^mwr_pick_subjects$"))
     application.add_handler(CallbackQueryHandler(mockwaec_invitee_count_handler, pattern=r"^mw_invites_"))
     application.add_handler(CallbackQueryHandler(mockwaec_pay_solo_handler, pattern=r"^mw_pay_solo$"))
     application.add_handler(CallbackQueryHandler(mockwaec_start_subject_handler, pattern=r"^mw_start_subject::"))
@@ -3693,4 +3849,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
+
 
