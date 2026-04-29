@@ -1685,7 +1685,7 @@ async def mockwaec_subjects_continue_handler(update: Update, context: ContextTyp
         if subject:
             subject_lines.append(f"• {subject['name']}")
 
-    text = (
+    message_text = (
         "✅ *Subjects Saved*\n\n"
         "*Your selected Mock WAEC / NECO subjects are:*\n"
         f"{chr(10).join(subject_lines)}\n\n"
@@ -1696,13 +1696,13 @@ async def mockwaec_subjects_continue_handler(update: Update, context: ContextTyp
 
     try:
         await query.edit_message_text(
-            text,
+            message_text,
             parse_mode="Markdown",
             reply_markup=markup,
         )
     except Exception:
         await query.message.reply_text(
-            text,
+            message_text,
             parse_mode="Markdown",
             reply_markup=markup,
         )
@@ -3849,5 +3849,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
-
 
