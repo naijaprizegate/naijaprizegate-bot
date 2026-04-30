@@ -1715,6 +1715,15 @@ async def mockwaec_subjects_continue_handler(update: Update, context: ContextTyp
                 reply_markup=markup,
                 disable_web_page_preview=True,
             )
+        
+        try:
+            await refresh_mockwaec_host_waiting_room(context, room_code)
+        except Exception:
+            logger.exception(
+                "Failed to auto-refresh WAEC host waiting room after subject selection | room_code=%s",
+                room_code,
+            )
+
         return
 
     # ============================================================
@@ -1940,6 +1949,76 @@ async def mockwaec_mode_friends_handler(update: Update, context: ContextTypes.DE
             reply_markup=markup,
         )
 
+async def refresh_mockwaec_host_waiting_room(
+    context: ContextTypes.DEFAULT_TYPE,
+    room_code: str,
+) -> None:
+    room_code = str(room_code or "").strip().upper()
+    if not room_code:
+        return
+
+    bot_username = ""
+    try:
+        me = await context.bot.get_me()
+        bot_username = me.username or ""
+    except Exception:
+        bot_username = ""
+
+    async with get_async_session() as session:
+        room = await get_mockwaec_room_by_code(
+            session,
+            room_code=room_code,
+        )
+        if not room:
+            return
+
+        host_user_id = int(room.get("host_user_id") or 0)
+        host_waiting_message_id = room.get("host_waiting_message_id")
+        room_status = str(room.get("status") or "waiting").strip().lower()
+
+        if not host_user_id or not host_waiting_message_id:
+            return
+
+        players = await list_mockwaec_room_players(
+            session,
+            room_code=room_code,
+        )
+
+    invite_link = build_mockwaec_invite_link(bot_username, room_code)
+
+    message_text = build_mockwaec_waiting_room_text(
+        room_code=room_code,
+        invite_link=invite_link,
+        room_status=room_status,
+        players=players,
+        host_user_id=host_user_id,
+        expected_players=int((room or {}).get("expected_players") or 0),
+    )
+
+    markup = make_mockwaec_room_waiting_keyboard(
+        is_host=True,
+        room_code=room_code,
+        has_subjects=True,
+        has_paid=True,
+        is_ready=True,
+    )
+
+    try:
+        await context.bot.edit_message_text(
+            chat_id=host_user_id,
+            message_id=int(host_waiting_message_id),
+            text=message_text,
+            parse_mode="HTML",
+            reply_markup=markup,
+            disable_web_page_preview=True,
+        )
+    except Exception:
+        logger.exception(
+            "Failed to auto-refresh WAEC host waiting room | room_code=%s | host_user_id=%s | message_id=%s",
+            room_code,
+            host_user_id,
+            host_waiting_message_id,
+        )
 
 async def mockwaec_room_pay_friend_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -2194,6 +2273,15 @@ async def mockwaec_room_ready_handler(update: Update, context: ContextTypes.DEFA
             disable_web_page_preview=True,
         )
 
+    try:
+        await refresh_mockwaec_host_waiting_room(context, room_code)
+    except Exception:
+        logger.exception(
+            "Failed to auto-refresh WAEC host waiting room after player ready | room_code=%s",
+            room_code,
+        )
+
+
 
 async def mockwaec_room_join_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -2308,6 +2396,14 @@ async def mockwaec_room_join_handler(update: Update, context: ContextTypes.DEFAU
             parse_mode="HTML",
             reply_markup=markup,
             disable_web_page_preview=True,
+        )
+
+    try:
+        await refresh_mockwaec_host_waiting_room(context, room_code)
+    except Exception:
+        logger.exception(
+            "Failed to auto-refresh WAEC host waiting room after join | room_code=%s",
+            room_code,
         )
 
 
@@ -2731,6 +2827,24 @@ async def mockwaec_payment_success_handler(
                     username=(payer_tg_user.username if payer_tg_user else None),
                 )
 
+                await session.execute(
+                    text("""
+                        update public.mockwaec_room_players
+                        set
+                            payment_status = 'successful',
+                            paid_at = coalesce(paid_at, now()),
+                            is_ready = true,
+                            ready_at = coalesce(ready_at, now()),
+                            updated_at = now()
+                        where upper(room_code) = :room_code
+                          and user_id = :user_id
+                    """),
+                    {
+                        "room_code": room_code,
+                        "user_id": payer_user_id,
+                    },
+                )
+                 
                 players = await list_mockwaec_room_players(
                     session,
                     room_code=room_code,
@@ -2797,12 +2911,55 @@ async def mockwaec_payment_success_handler(
                 room_code=room_code,
             )
 
-            await send_response(
-                message_text,
-                parse_mode="HTML",
-                reply_markup=markup,
-                disable_web_page_preview=True,
-            )
+            sent_message = None
+
+            if update.callback_query:
+                query = update.callback_query
+                try:
+                    await query.answer()
+                except Exception:
+                    pass
+
+                try:
+                    sent_message = await query.edit_message_text(
+                        text=message_text,
+                        parse_mode="HTML",
+                        reply_markup=markup,
+                        disable_web_page_preview=True,
+                    )
+                except Exception:
+                    sent_message = await query.message.reply_text(
+                        text=message_text,
+                        parse_mode="HTML",
+                        reply_markup=markup,
+                        disable_web_page_preview=True,
+                    )
+
+            elif update.message:
+                sent_message = await update.message.reply_text(
+                    text=message_text,
+                    parse_mode="HTML",
+                    reply_markup=markup,
+                    disable_web_page_preview=True,
+                )
+
+            if sent_message:
+                async with get_async_session() as save_session:
+                    await save_session.execute(
+                        text("""
+                            update public.mockwaec_rooms
+                            set
+                                host_waiting_message_id = :message_id,
+                                updated_at = now()
+                            where upper(room_code) = :room_code
+                        """),
+                        {
+                            "message_id": int(sent_message.message_id),
+                            "room_code": room_code,
+                        },
+                    )
+                    await save_session.commit()
+
             return
 
         # ============================================================
@@ -2934,6 +3091,15 @@ async def mockwaec_payment_success_handler(
                 reply_markup=markup,
                 disable_web_page_preview=True,
             )
+
+            try:
+                await refresh_mockwaec_host_waiting_room(context, room_code)
+            except Exception:
+                logger.exception(
+                    "Failed to auto-refresh WAEC host waiting room after invitee payment | room_code=%s",
+                    room_code,
+                )
+
             return
         
         # ============================================================
