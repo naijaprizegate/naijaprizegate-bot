@@ -305,6 +305,8 @@ def make_mockwaec_room_waiting_keyboard(
     is_host: bool,
     room_code: str | None = None,
     has_subjects: bool = False,
+    has_paid: bool = False,
+    is_ready: bool = False,
 ) -> InlineKeyboardMarkup:
     rows = []
 
@@ -337,10 +339,17 @@ def make_mockwaec_room_waiting_keyboard(
     else:
         if not has_subjects:
             rows.append([InlineKeyboardButton("📚 Choose My Subjects", callback_data="mwr_pick_subjects")])
+        elif not has_paid:
+            rows.append([InlineKeyboardButton("💳 Pay Now", callback_data="mwr_pay_friend")])
+        elif not is_ready:
+            rows.append([InlineKeyboardButton("✅ Ready", callback_data="mwr_ready")])
+        else:
+            rows.append([InlineKeyboardButton("✅ You Are Ready", callback_data="mwr_ready_done")])
 
         rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
 
     return InlineKeyboardMarkup(rows)
+
 
 
 # --------------------------------------
@@ -776,8 +785,32 @@ def build_mockwaec_waiting_room_text(
             else:
                 display_name = f"User {user_id}"
 
+            try:
+                subject_codes = json.loads(player.get("subject_codes_json") or "[]")
+            except Exception:
+                subject_codes = []
+
+            subject_names = []
+            if isinstance(subject_codes, list):
+                for code in subject_codes:
+                    subject = get_subject_by_code(str(code).strip().lower())
+                    if subject:
+                        subject_names.append(subject["name"])
+
+            subject_text = ", ".join(subject_names) if subject_names else "Not Set"
+
+            payment_status = str(player.get("payment_status") or "").strip().lower()
+            is_paid = payment_status == "successful"
+            is_ready = bool(player.get("is_ready"))
+
             role_label = "👑 Host" if is_host else "👤 Player"
+            payment_label = "💳 Paid" if is_paid else "💰 Not Paid"
+            ready_label = "✅ Ready" if is_ready else "⏳ Waiting"
+
             lines.append(f"{idx}. <b>{role_label}:</b> {display_name}")
+            lines.append(f"   • <b>Subjects:</b> {subject_text}")
+            lines.append(f"   • <b>Payment:</b> {payment_label}")
+            lines.append(f"   • <b>Readiness:</b> {ready_label}")
 
     lines.extend([
         "",
@@ -1654,10 +1687,18 @@ async def mockwaec_subjects_continue_handler(update: Update, context: ContextTyp
             expected_players=int((room or {}).get("expected_players") or 0),
         )
 
+        current_player = None
+        for player in players:
+            if int(player.get("user_id") or 0) == int(user.id):
+                current_player = player
+                break
+
         markup = make_mockwaec_room_waiting_keyboard(
             is_host=False,
             room_code=room_code,
             has_subjects=True,
+            has_paid=bool((current_player or {}).get("has_paid")),
+            is_ready=bool((current_player or {}).get("is_ready")),
         )
 
         try:
@@ -1900,6 +1941,260 @@ async def mockwaec_mode_friends_handler(update: Update, context: ContextTypes.DE
         )
 
 
+async def mockwaec_room_pay_friend_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    user = update.effective_user
+    if not user:
+        return
+
+    room_code = str(context.user_data.get("mw_room_code") or "").strip().upper()
+    if not room_code:
+        return await query.answer("⚠️ No active room found.", show_alert=True)
+
+    async with get_async_session() as session:
+        room = await get_mockwaec_room_by_code(
+            session,
+            room_code=room_code,
+        )
+        if not room:
+            return await query.answer("⚠️ Room not found.", show_alert=True)
+
+        player = await get_mockwaec_room_player(
+            session,
+            room_code=room_code,
+            user_id=int(user.id),
+        )
+        if not player:
+            return await query.answer("⚠️ You are not yet in this room.", show_alert=True)
+
+        subject_codes_json = str(player.get("subject_codes_json") or "[]")
+
+        try:
+            subject_codes = json.loads(subject_codes_json)
+        except Exception:
+            subject_codes = []
+
+        if not isinstance(subject_codes, list) or len(subject_codes) < 7:
+            return await query.answer(
+                "⚠️ Please choose your subjects first before payment.",
+                show_alert=True,
+            )
+
+        payment_status = str(player.get("payment_status") or "").strip().lower()
+        if payment_status == "successful":
+            return await query.answer(
+                "✅ You have already paid for this room.",
+                show_alert=True,
+            )
+
+        amount = MOCKWAEC_SOLO_FEE
+        tg_id = int(user.id)
+        username = user.username or f"user_{tg_id}"
+        email = f"{username}@naijaprizegate.ng"
+        tx_ref = build_tx_ref("MOCKWAECROOMFRIEND")
+
+        await create_pending_mockwaec_payment(
+            session,
+            payment_reference=tx_ref,
+            user_id=tg_id,
+            amount_paid=amount,
+            course_code="custom",
+            subject_codes_json=subject_codes_json,
+            exam_mode="room_friend",
+            invitee_count=0,
+            required_player_count=0,
+            room_code=room_code,
+        )
+        await session.commit()
+
+    checkout_url = await create_checkout(
+        user_id=tg_id,
+        amount=amount,
+        username=username,
+        email=email,
+        tx_ref=tx_ref,
+        meta={
+            "tg_id": str(tg_id),
+            "username": username,
+            "product_type": "MOCKWAEC",
+            "course_code": "custom",
+            "exam_mode": "room_friend",
+            "room_code": room_code,
+        },
+        product_type="MOCKWAEC",
+    )
+
+    if not checkout_url:
+        async with get_async_session() as session:
+            await session.execute(
+                text("""
+                    update public.mockwaec_payments
+                    set
+                        payment_status = 'expired',
+                        updated_at = now()
+                    where payment_reference = :payment_reference
+                      and lower(coalesce(payment_status, '')) = 'pending'
+                """),
+                {"payment_reference": tx_ref},
+            )
+            await session.commit()
+
+        return await query.answer(
+            "⚠️ Payment service is unavailable right now. Please try again shortly.",
+            show_alert=True,
+        )
+
+    message_text = (
+        "💳 *Mock WAEC Room Payment*\n\n"
+        f"*Room Code:* {room_code}\n"
+        f"*Amount:* ₦{amount}\n\n"
+        "Complete your payment to join this room as an active player."
+    )
+
+    markup = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
+            [InlineKeyboardButton("⬅️ Back to Room", callback_data=f"mwr_join::{room_code}")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+    try:
+        await query.edit_message_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
+async def mockwaec_room_ready_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    user = update.effective_user
+    if not user:
+        return
+
+    room_code = str(context.user_data.get("mw_room_code") or "").strip().upper()
+    if not room_code:
+        return await query.answer("⚠️ No active room found.", show_alert=True)
+
+    async with get_async_session() as session:
+        room = await get_mockwaec_room_by_code(
+            session,
+            room_code=room_code,
+        )
+        if not room:
+            return await query.answer("⚠️ Room not found.", show_alert=True)
+
+        player = await get_mockwaec_room_player(
+            session,
+            room_code=room_code,
+            user_id=int(user.id),
+        )
+        if not player:
+            return await query.answer("⚠️ You are not in this room.", show_alert=True)
+
+        payment_status = str(player.get("payment_status") or "").strip().lower()
+        if payment_status != "successful":
+            return await query.answer(
+                "⚠️ Please pay first before getting ready.",
+                show_alert=True,
+            )
+
+        try:
+            subject_codes = json.loads(player.get("subject_codes_json") or "[]")
+        except Exception:
+            subject_codes = []
+
+        if not isinstance(subject_codes, list) or len(subject_codes) < 7:
+            return await query.answer(
+                "⚠️ Please choose your subjects first.",
+                show_alert=True,
+            )
+
+        already_ready = bool(player.get("is_ready"))
+        if already_ready:
+            return await query.answer(
+                "✅ You are already marked ready.",
+                show_alert=True,
+            )
+
+        await session.execute(
+            text("""
+                update public.mockwaec_room_players
+                set
+                    is_ready = true,
+                    ready_at = coalesce(ready_at, now()),
+                    updated_at = now()
+                where upper(room_code) = :room_code
+                  and user_id = :user_id
+            """),
+            {
+                "room_code": room_code,
+                "user_id": int(user.id),
+            },
+        )
+
+        players = await list_mockwaec_room_players(
+            session,
+            room_code=room_code,
+        )
+
+        await session.commit()
+
+    bot_username = ""
+    try:
+        me = await context.bot.get_me()
+        bot_username = me.username or ""
+    except Exception:
+        bot_username = ""
+
+    invite_link = build_mockwaec_invite_link(bot_username, room_code)
+
+    message_text = build_mockwaec_waiting_room_text(
+        room_code=room_code,
+        invite_link=invite_link,
+        room_status="waiting",
+        players=players,
+        host_user_id=int(room.get("host_user_id") or 0),
+        expected_players=int((room or {}).get("expected_players") or 0),
+    )
+
+    markup = make_mockwaec_room_waiting_keyboard(
+        is_host=False,
+        room_code=room_code,
+        has_subjects=True,
+        has_paid=True,
+        is_ready=True,
+    )
+
+    try:
+        await query.edit_message_text(
+            text=message_text,
+            parse_mode="HTML",
+            reply_markup=markup,
+            disable_web_page_preview=True,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text=message_text,
+            parse_mode="HTML",
+            reply_markup=markup,
+            disable_web_page_preview=True,
+        )
+
+
 async def mockwaec_room_join_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -1989,10 +2284,15 @@ async def mockwaec_room_join_handler(update: Update, context: ContextTypes.DEFAU
     except Exception:
         has_subjects = False
 
+    has_paid = bool((current_player or {}).get("has_paid"))
+    is_ready = bool((current_player or {}).get("is_ready"))
+
     markup = make_mockwaec_room_waiting_keyboard(
         is_host=bool(context.user_data["mw_is_host"]),
         room_code=room_code,
         has_subjects=has_subjects,
+        has_paid=has_paid,
+        is_ready=is_ready,
     )
 
     try:
@@ -2505,6 +2805,137 @@ async def mockwaec_payment_success_handler(
             )
             return
 
+        # ============================================================
+        # ROOM INVITEE PAYMENT FLOW
+        # ============================================================
+        if exam_mode == "room_friend":
+            room_code = str(payment.get("room_code") or "").strip().upper()
+
+            if not room_code:
+                await send_response(
+                    "⚠️ Payment succeeded, but your room code is missing from the payment record. Please contact support."
+                )
+                return
+
+            try:
+                room = await get_mockwaec_room_by_code(
+                    session,
+                    room_code=room_code,
+                )
+                if not room:
+                    await send_response(
+                        "⚠️ Payment succeeded, but the room was not found."
+                    )
+                    return
+
+                payer_tg_user = update.effective_user
+
+                existing_player = await get_mockwaec_room_player(
+                    session,
+                    room_code=room_code,
+                    user_id=payer_user_id,
+                )
+
+                if existing_player:
+                    await session.execute(
+                        text("""
+                            update public.mockwaec_room_players
+                            set
+                                subject_codes_json = :subject_codes_json,
+                                payment_status = 'successful',
+                                paid_at = now(),
+                                updated_at = now()
+                            where upper(room_code) = :room_code
+                              and user_id = :user_id
+                        """),
+                        {
+                            "room_code": room_code,
+                            "user_id": payer_user_id,
+                            "subject_codes_json": json.dumps(subject_codes),
+                        },
+                    )
+                else:
+                    await add_mockwaec_room_player(
+                        session,
+                        room_code=room_code,
+                        user_id=payer_user_id,
+                        course_code="custom",
+                        subject_codes_json=json.dumps(subject_codes),
+                        is_host=False,
+                        has_paid=True,
+                        first_name=(payer_tg_user.first_name if payer_tg_user else None),
+                        last_name=(payer_tg_user.last_name if payer_tg_user else None),
+                        username=(payer_tg_user.username if payer_tg_user else None),
+                    )
+
+                players = await list_mockwaec_room_players(
+                    session,
+                    room_code=room_code,
+                )
+
+                await session.commit()
+
+            except Exception as e:
+                await session.rollback()
+                logger.exception(
+                    "Failed to complete WAEC room friend payment flow | tx_ref=%s | room_code=%s | user_id=%s | err=%s",
+                    tx_ref,
+                    room_code,
+                    payer_user_id,
+                    e,
+                )
+                await send_response(
+                    "⚠️ Payment succeeded, but your room access could not be updated right now. Please re-open the room."
+                )
+                return
+
+            context.user_data["mw_course_code"] = "custom"
+            context.user_data["mw_subject_codes"] = subject_codes
+            context.user_data["mw_mode"] = "friends"
+            context.user_data["mw_room_code"] = room_code
+            context.user_data["mw_payment_reference"] = tx_ref
+            context.user_data["mw_session_id"] = None
+
+            bot_username = ""
+            try:
+                me = await context.bot.get_me()
+                bot_username = me.username or ""
+            except Exception:
+                bot_username = ""
+
+            invite_link = build_mockwaec_invite_link(bot_username, room_code)
+
+            message_text = build_mockwaec_waiting_room_text(
+                room_code=room_code,
+                invite_link=invite_link,
+                room_status="waiting",
+                players=players,
+                host_user_id=int((room or {}).get("host_user_id") or 0),
+                expected_players=int((room or {}).get("expected_players") or 0),
+            )
+
+            current_player = None
+            for player in players:
+                if int(player.get("user_id") or 0) == int(payer_user_id):
+                    current_player = player
+                    break
+
+            markup = make_mockwaec_room_waiting_keyboard(
+                is_host=False,
+                room_code=room_code,
+                has_subjects=True,
+                has_paid=True,
+                is_ready=bool((current_player or {}).get("is_ready")),
+            )
+
+            await send_response(
+                message_text,
+                parse_mode="HTML",
+                reply_markup=markup,
+                disable_web_page_preview=True,
+            )
+            return
+        
         # ============================================================
         # SOLO FLOW
         # ============================================================
@@ -3834,7 +4265,9 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_use_course_handler, pattern=r"^mw_use_course::"))
     application.add_handler(CallbackQueryHandler(mockwaec_mode_solo_handler, pattern=r"^mw_mode_solo$"))
     application.add_handler(CallbackQueryHandler(mockwaec_mode_friends_handler, pattern=r"^mw_mode_friends$"))
+    application.add_handler(CallbackQueryHandler(mockwaec_room_pay_friend_handler, pattern=r"^mwr_pay_friend$"))
     application.add_handler(CallbackQueryHandler(mockwaec_room_join_handler, pattern=r"^mwr_join::"))
+    application.add_handler(CallbackQueryHandler(mockwaec_room_ready_handler, pattern=r"^mwr_ready(?:_done)?$"))
     application.add_handler(CallbackQueryHandler(mockwaec_room_pick_subjects_handler, pattern=r"^mwr_pick_subjects$"))
     application.add_handler(CallbackQueryHandler(mockwaec_invitee_count_handler, pattern=r"^mw_invites_"))
     application.add_handler(CallbackQueryHandler(mockwaec_pay_solo_handler, pattern=r"^mw_pay_solo$"))
@@ -3849,4 +4282,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
+
 
