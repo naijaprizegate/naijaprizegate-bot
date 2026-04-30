@@ -2883,7 +2883,7 @@ async def notify_mockwaec_room_players_match_started(
 
     markup = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("📝 Resume Match", callback_data="mock:waec")],
+            [InlineKeyboardButton("📝 Resume Match", callback_data=f"mwr_resume_match::{room_code}")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
@@ -2914,6 +2914,115 @@ async def notify_mockwaec_room_players_match_started(
                 room_code,
                 player_user_id,
             )
+
+
+async def mockwaec_room_resume_match_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    user = update.effective_user
+    if not user:
+        return
+
+    try:
+        _, room_code = query.data.split("::", 1)
+    except Exception:
+        return await query.answer("Invalid room resume request.", show_alert=True)
+
+    room_code = str(room_code or "").strip().upper()
+    if not room_code:
+        return await query.answer("Invalid room code.", show_alert=True)
+
+    await query.answer()
+
+    async with get_async_session() as session:
+        room = await get_mockwaec_room_by_code(session, room_code=room_code)
+        if not room:
+            return await query.answer("Room not found.", show_alert=True)
+
+        payment_result = await session.execute(
+            text("""
+                select
+                    payment_reference,
+                    subject_codes_json
+                from public.mockwaec_payments
+                where upper(room_code) = :room_code
+                  and user_id = :user_id
+                  and lower(coalesce(payment_status, '')) = 'successful'
+                order by updated_at desc, created_at desc
+                limit 1
+            """),
+            {
+                "room_code": room_code,
+                "user_id": int(user.id),
+            },
+        )
+        payment_row = payment_result.mappings().first()
+
+        if not payment_row:
+            return await query.answer(
+                "⚠️ Could not find your room payment record.",
+                show_alert=True,
+            )
+
+        payment_reference = str(payment_row.get("payment_reference") or "").strip()
+        raw_subject_codes = payment_row.get("subject_codes_json")
+
+        normalized_subject_codes = []
+        if isinstance(raw_subject_codes, list):
+            normalized_subject_codes = raw_subject_codes
+        elif isinstance(raw_subject_codes, str):
+            try:
+                parsed = json.loads(raw_subject_codes)
+                if isinstance(parsed, list):
+                    normalized_subject_codes = parsed
+            except Exception:
+                try:
+                    import ast
+                    parsed = ast.literal_eval(raw_subject_codes)
+                    if isinstance(parsed, list):
+                        normalized_subject_codes = parsed
+                except Exception:
+                    normalized_subject_codes = []
+
+        if not payment_reference or not normalized_subject_codes:
+            return await query.answer(
+                "⚠️ Your room subject data is incomplete.",
+                show_alert=True,
+            )
+
+        session_row = await get_or_create_mockwaec_session_from_payment(
+            session,
+            payment_reference=payment_reference,
+            user_id=int(user.id),
+            course_code="custom",
+            subject_codes_json=json.dumps(normalized_subject_codes),
+        )
+        await session.commit()
+
+    context.user_data["mw_course_code"] = "custom"
+    context.user_data["mw_subject_codes"] = normalized_subject_codes
+    context.user_data["mw_mode"] = "friends"
+    context.user_data["mw_room_code"] = room_code
+    context.user_data["mw_payment_reference"] = payment_reference
+    context.user_data["mw_session_id"] = session_row["id"]
+
+    message_text = build_mockwaec_exam_ready_text(normalized_subject_codes)
+    markup = make_mockwaec_exam_ready_keyboard(normalized_subject_codes)
+
+    try:
+        await query.edit_message_text(
+            text=message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text=message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
 
 
 async def mockwaec_room_pick_subjects_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -4816,6 +4925,7 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_room_pay_friend_handler, pattern=r"^mwr_pay_friend$"))
     application.add_handler(CallbackQueryHandler(mockwaec_room_join_handler, pattern=r"^mwr_join::"))
     application.add_handler(CallbackQueryHandler(mockwaec_room_ready_handler, pattern=r"^mwr_ready(?:_done)?$"))
+    application.add_handler(CallbackQueryHandler(mockwaec_room_resume_match_handler, pattern=r"^mwr_resume_match::"))
     application.add_handler(CallbackQueryHandler(mockwaec_room_pick_subjects_handler, pattern=r"^mwr_pick_subjects$"))
     application.add_handler(CallbackQueryHandler(mockwaec_room_refresh_handler, pattern=r"^mwr_refresh$"))
     application.add_handler(CallbackQueryHandler(mockwaec_room_start_handler, pattern=r"^mwr_start$"))
