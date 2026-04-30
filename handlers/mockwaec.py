@@ -335,6 +335,8 @@ def make_mockwaec_room_waiting_keyboard(
     if is_host:
         if share_url:
             rows.append([InlineKeyboardButton("📤 Share Room Link / Code", url=share_url)])
+        rows.append([InlineKeyboardButton("🔄 Refresh Room", callback_data="mwr_refresh")])
+        rows.append([InlineKeyboardButton("▶️ Start Match", callback_data="mwr_start")])
         rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
     else:
         if not has_subjects:
@@ -346,6 +348,7 @@ def make_mockwaec_room_waiting_keyboard(
         else:
             rows.append([InlineKeyboardButton("✅ You Are Ready", callback_data="mwr_ready_done")])
 
+        rows.append([InlineKeyboardButton("🔄 Refresh Room", callback_data="mwr_refresh")])
         rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
 
     return InlineKeyboardMarkup(rows)
@@ -2407,6 +2410,89 @@ async def mockwaec_room_join_handler(update: Update, context: ContextTypes.DEFAU
         )
 
 
+async def mockwaec_room_refresh_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    user = update.effective_user
+    if not user:
+        return
+
+    room_code = str(context.user_data.get("mw_room_code") or "").strip().upper()
+    if not room_code:
+        return await query.message.reply_text("⚠️ No active room found.")
+
+    bot_username = ""
+    try:
+        me = await context.bot.get_me()
+        bot_username = me.username or ""
+    except Exception:
+        bot_username = ""
+
+    async with get_async_session() as session:
+        room = await get_mockwaec_room_by_code(session, room_code=room_code)
+        if not room:
+            return await query.message.reply_text("⚠️ Room not found.")
+
+        players = await list_mockwaec_room_players(
+            session,
+            room_code=room_code,
+        )
+
+    invite_link = build_mockwaec_invite_link(bot_username, room_code)
+
+    message_text = build_mockwaec_waiting_room_text(
+        room_code=room_code,
+        invite_link=invite_link,
+        room_status=str(room.get("status") or "waiting"),
+        players=players,
+        host_user_id=int(room.get("host_user_id") or 0),
+        expected_players=int((room or {}).get("expected_players") or 0),
+    )
+
+    current_player = None
+    for player in players:
+        if int(player.get("user_id") or 0) == int(user.id):
+            current_player = player
+            break
+
+    has_subjects = False
+    try:
+        current_subjects = json.loads((current_player or {}).get("subject_codes_json") or "[]")
+        has_subjects = isinstance(current_subjects, list) and len(current_subjects) > 0
+    except Exception:
+        has_subjects = False
+
+    has_paid = bool((current_player or {}).get("has_paid"))
+    is_ready = bool((current_player or {}).get("is_ready"))
+
+    markup = make_mockwaec_room_waiting_keyboard(
+        is_host=int(room.get("host_user_id") or 0) == int(user.id),
+        room_code=room_code,
+        has_subjects=has_subjects,
+        has_paid=has_paid,
+        is_ready=is_ready,
+    )
+
+    try:
+        await query.edit_message_text(
+            text=message_text,
+            parse_mode="HTML",
+            reply_markup=markup,
+            disable_web_page_preview=True,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text=message_text,
+            parse_mode="HTML",
+            reply_markup=markup,
+            disable_web_page_preview=True,
+        )
+
+
 async def mockwaec_invitee_count_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -2532,6 +2618,270 @@ async def mockwaec_invitee_count_handler(update: Update, context: ContextTypes.D
             reply_markup=markup,
         )
 
+
+async def mockwaec_room_start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    user = update.effective_user
+    if not user:
+        return
+
+    room_code = str(context.user_data.get("mw_room_code") or "").strip().upper()
+    if not room_code:
+        return await query.answer("No active room found.", show_alert=True)
+
+    host_payment_reference = None
+    host_session = None
+    host_subject_codes = []
+    host_user_id = int(user.id)
+
+    async with get_async_session() as session:
+        room = await get_mockwaec_room_by_code(
+            session,
+            room_code=room_code,
+        )
+        if not room:
+            return await query.answer("Room not found.", show_alert=True)
+
+        room_host_user_id = int(room.get("host_user_id") or 0)
+        if int(user.id) != room_host_user_id:
+            return await query.answer("Only the host can start the match.", show_alert=True)
+
+        room_status = str(room.get("status") or "").strip().lower()
+
+        if room_status == "in_progress":
+            return await query.answer(
+                "⚠️ This match has already started. Use Resume Match.",
+                show_alert=True,
+            )
+
+        if room_status == "completed":
+            return await query.answer(
+                "⚠️ This match has already ended. Please create a new room for a new match.",
+                show_alert=True,
+            )
+
+        players = await list_mockwaec_room_players(
+            session,
+            room_code=room_code,
+        )
+
+        joined_count = len(players)
+
+        if joined_count < 2:
+            return await query.answer(
+                "⚠️ The Match needs at least 2 players.",
+                show_alert=True,
+            )
+
+        eligible_players = []
+        not_ready_players_exist = False
+
+        for player in players:
+            is_host = bool(player.get("is_host"))
+            payment_status = str(player.get("payment_status") or "").strip().lower()
+            is_ready = bool(player.get("is_ready"))
+
+            if is_host:
+                eligible_players.append(player)
+                continue
+
+            if payment_status == "successful" and is_ready:
+                eligible_players.append(player)
+            else:
+                not_ready_players_exist = True
+
+        if len(eligible_players) < 2:
+            if not_ready_players_exist:
+                return await query.answer(
+                    "⚠️ Players must be ready before you start.",
+                    show_alert=True,
+                )
+            return await query.answer(
+                "⚠️ The Match needs at least 2 players.",
+                show_alert=True,
+            )
+
+        try:
+            for player in eligible_players:
+                player_user_id = int(player.get("user_id") or 0)
+
+                payment_result = await session.execute(
+                    text("""
+                        select
+                            payment_reference,
+                            subject_codes_json
+                        from public.mockwaec_payments
+                        where upper(room_code) = :room_code
+                          and user_id = :user_id
+                          and lower(coalesce(payment_status, '')) = 'successful'
+                        order by updated_at desc, created_at desc
+                        limit 1
+                    """),
+                    {
+                        "room_code": room_code,
+                        "user_id": player_user_id,
+                    },
+                )
+                payment_row = payment_result.mappings().first()
+
+                if not payment_row:
+                    return await query.answer(
+                        f"⚠️ Could not find a successful payment record for player {player_user_id}.",
+                        show_alert=True,
+                    )
+
+                payment_reference = str(payment_row.get("payment_reference") or "").strip()
+                subject_codes_json = str(payment_row.get("subject_codes_json") or "[]")
+
+                if not payment_reference or not subject_codes_json:
+                    return await query.answer(
+                        f"⚠️ Payment data is incomplete for player {player_user_id}.",
+                        show_alert=True,
+                    )
+
+                session_row = await get_or_create_mockwaec_session_from_payment(
+                    session,
+                    payment_reference=payment_reference,
+                    user_id=player_user_id,
+                    course_code="custom",
+                    subject_codes_json=subject_codes_json,
+                )
+
+                if player_user_id == int(user.id):
+                    host_payment_reference = payment_reference
+                    host_session = session_row
+
+                    try:
+                        host_subject_codes = json.loads(subject_codes_json or "[]")
+                    except Exception:
+                        host_subject_codes = []
+
+            duration_minutes = int(room.get("duration_minutes") or 180)
+
+            await session.execute(
+                text("""
+                    update public.mockwaec_rooms
+                    set
+                        status = 'in_progress',
+                        all_players_ready = false,
+                        started_by_host = true,
+                        started_at = now(),
+                        ends_at = now() + make_interval(mins => :duration_minutes),
+                        updated_at = now()
+                    where upper(room_code) = :room_code
+                """),
+                {
+                    "room_code": room_code,
+                    "duration_minutes": duration_minutes,
+                },
+            )
+
+            await session.commit()
+
+        except Exception as e:
+            await session.rollback()
+            logger.exception(
+                "Failed to start multiplayer Mock WAEC room | room_code=%s | host_user_id=%s | err=%s",
+                room_code,
+                int(user.id),
+                e,
+            )
+            return await query.answer(
+                "⚠️ Could not start the match right now. Please try again.",
+                show_alert=True,
+            )
+
+    try:
+        await notify_mockwaec_room_players_match_started(
+            context,
+            room_code=room_code,
+            host_user_id=host_user_id,
+            players=eligible_players,
+        )
+    except Exception:
+        logger.exception(
+            "Failed to notify WAEC invitees that room match started | room_code=%s | host_user_id=%s",
+            room_code,
+            host_user_id,
+        )
+
+    if not host_payment_reference or not host_session or not host_subject_codes:
+        return await query.answer(
+            "⚠️ Match was marked started, but the host exam session could not be opened.",
+            show_alert=True,
+        )
+
+    context.user_data["mw_course_code"] = "custom"
+    context.user_data["mw_subject_codes"] = host_subject_codes
+    context.user_data["mw_mode"] = "friends"
+    context.user_data["mw_room_code"] = room_code
+    context.user_data["mw_payment_reference"] = host_payment_reference
+    context.user_data["mw_session_id"] = host_session["id"]
+
+    message_text = build_mockwaec_exam_ready_text(host_subject_codes)
+    markup = make_mockwaec_exam_ready_keyboard(host_subject_codes)
+
+    try:
+        await query.edit_message_text(
+            text=message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text=message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
+async def notify_mockwaec_room_players_match_started(
+    context: ContextTypes.DEFAULT_TYPE,
+    *,
+    room_code: str,
+    host_user_id: int,
+    players: list[dict],
+) -> None:
+    room_code = str(room_code or "").strip().upper()
+    if not room_code:
+        return
+
+    markup = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("📝 Resume Match", callback_data="mock:waec")],
+            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+        ]
+    )
+
+    message_text = (
+        "🚀 <b>Mock WAEC Multiplayer Match Started</b>\n\n"
+        f"<b>Room Code:</b> <code>{room_code}</code>\n\n"
+        "The host has started the match.\n"
+        "Tap below to enter your Mock WAEC exam."
+    )
+
+    for player in players:
+        player_user_id = int(player.get("user_id") or 0)
+        if not player_user_id or player_user_id == int(host_user_id):
+            continue
+
+        try:
+            await context.bot.send_message(
+                chat_id=player_user_id,
+                text=message_text,
+                parse_mode="HTML",
+                reply_markup=markup,
+                disable_web_page_preview=True,
+            )
+        except Exception:
+            logger.exception(
+                "Failed to notify WAEC room player that match started | room_code=%s | player_user_id=%s",
+                room_code,
+                player_user_id,
+            )
 
 
 async def mockwaec_room_pick_subjects_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -4435,6 +4785,8 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_room_join_handler, pattern=r"^mwr_join::"))
     application.add_handler(CallbackQueryHandler(mockwaec_room_ready_handler, pattern=r"^mwr_ready(?:_done)?$"))
     application.add_handler(CallbackQueryHandler(mockwaec_room_pick_subjects_handler, pattern=r"^mwr_pick_subjects$"))
+    application.add_handler(CallbackQueryHandler(mockwaec_room_refresh_handler, pattern=r"^mwr_refresh$"))
+    application.add_handler(CallbackQueryHandler(mockwaec_room_start_handler, pattern=r"^mwr_start$"))
     application.add_handler(CallbackQueryHandler(mockwaec_invitee_count_handler, pattern=r"^mw_invites_"))
     application.add_handler(CallbackQueryHandler(mockwaec_pay_solo_handler, pattern=r"^mw_pay_solo$"))
     application.add_handler(CallbackQueryHandler(mockwaec_start_subject_handler, pattern=r"^mw_start_subject::"))
