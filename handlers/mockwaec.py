@@ -2423,7 +2423,7 @@ async def mockwaec_room_refresh_handler(update: Update, context: ContextTypes.DE
 
     room_code = str(context.user_data.get("mw_room_code") or "").strip().upper()
     if not room_code:
-        return await query.message.reply_text("⚠️ No active room found.")
+        return await query.answer("⚠️ No active room found.", show_alert=True)
 
     bot_username = ""
     try:
@@ -2435,7 +2435,7 @@ async def mockwaec_room_refresh_handler(update: Update, context: ContextTypes.DE
     async with get_async_session() as session:
         room = await get_mockwaec_room_by_code(session, room_code=room_code)
         if not room:
-            return await query.message.reply_text("⚠️ Room not found.")
+            return await query.answer("⚠️ Room not found.", show_alert=True)
 
         players = await list_mockwaec_room_players(
             session,
@@ -2484,12 +2484,16 @@ async def mockwaec_room_refresh_handler(update: Update, context: ContextTypes.DE
             reply_markup=markup,
             disable_web_page_preview=True,
         )
-    except Exception:
-        await query.message.reply_text(
-            text=message_text,
-            parse_mode="HTML",
-            reply_markup=markup,
-            disable_web_page_preview=True,
+    except Exception as e:
+        error_text = str(e)
+
+        if "Message is not modified" in error_text:
+            return
+
+        logger.exception(
+            "Failed to refresh WAEC room message in place | room_code=%s | user_id=%s",
+            room_code,
+            int(user.id),
         )
 
 
