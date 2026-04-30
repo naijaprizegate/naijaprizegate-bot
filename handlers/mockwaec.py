@@ -2738,30 +2738,58 @@ async def mockwaec_room_start_handler(update: Update, context: ContextTypes.DEFA
                     )
 
                 payment_reference = str(payment_row.get("payment_reference") or "").strip()
-                subject_codes_json = str(payment_row.get("subject_codes_json") or "[]")
+                raw_subject_codes = payment_row.get("subject_codes_json")
 
-                if not payment_reference or not subject_codes_json:
+                if not payment_reference or raw_subject_codes is None:
                     return await query.answer(
                         f"⚠️ Payment data is incomplete for player {player_user_id}.",
                         show_alert=True,
                     )
+
+                normalized_subject_codes = []
+                if isinstance(raw_subject_codes, list):
+                    normalized_subject_codes = raw_subject_codes
+                elif isinstance(raw_subject_codes, str):
+                    try:
+                        parsed = json.loads(raw_subject_codes)
+                        if isinstance(parsed, list):
+                            normalized_subject_codes = parsed
+                        else:
+                            normalized_subject_codes = []
+                    except Exception:
+                        # fallback for old python-list-like strings
+                        try:
+                            import ast
+                            parsed = ast.literal_eval(raw_subject_codes)
+                            if isinstance(parsed, list):
+                                normalized_subject_codes = parsed
+                            else:
+                                normalized_subject_codes = []
+                        except Exception:
+                            normalized_subject_codes = []
+                else:
+                    normalized_subject_codes = []
+
+                if not normalized_subject_codes:
+                    return await query.answer(
+                        f"⚠️ Subject data is invalid for player {player_user_id}.",
+                        show_alert=True,
+                    )
+
+                normalized_subject_codes_json = json.dumps(normalized_subject_codes)
 
                 session_row = await get_or_create_mockwaec_session_from_payment(
                     session,
                     payment_reference=payment_reference,
                     user_id=player_user_id,
                     course_code="custom",
-                    subject_codes_json=subject_codes_json,
+                    subject_codes_json=normalized_subject_codes_json,
                 )
 
                 if player_user_id == int(user.id):
                     host_payment_reference = payment_reference
                     host_session = session_row
-
-                    try:
-                        host_subject_codes = json.loads(subject_codes_json or "[]")
-                    except Exception:
-                        host_subject_codes = []
+                    host_subject_codes = normalized_subject_codes
 
             duration_minutes = int(room.get("duration_minutes") or 180)
 
@@ -4804,5 +4832,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
-
 
