@@ -420,6 +420,34 @@ def extract_mockwaec_room_code_from_start_payload(payload: str) -> str | None:
     return None
 
 
+def get_mockwaec_live_room_status(room: dict, players: list[dict]) -> str:
+    room_status = str((room or {}).get("status") or "waiting").strip().lower()
+
+    if room_status in ("in_progress", "completed", "locked"):
+        return room_status
+
+    joined_count = len(players)
+
+    if joined_count < 2:
+        return "waiting"
+
+    eligible_players = 0
+
+    for player in players:
+        is_host = bool(player.get("is_host"))
+        payment_status = str(player.get("payment_status") or "").strip().lower()
+        is_ready = bool(player.get("is_ready"))
+
+        if is_host:
+            eligible_players += 1
+        elif payment_status == "successful" and is_ready:
+            eligible_players += 1
+
+    if eligible_players >= 2:
+        return "ready"
+
+    return "waiting"
+
 # ====================================================================
 # Message Builders
 # ====================================================================
@@ -743,11 +771,21 @@ def build_mockwaec_waiting_room_text(
     required_players = int(expected_players or 0) if expected_players else 0
     invited_friends_count = max(0, required_players - 1) if required_players else 0
 
+    normalized_status = str(room_status or "waiting").strip().lower()
+    status_map = {
+        "waiting": "⏳ Waiting",
+        "ready": "✅ Ready",
+        "in_progress": "📝 In Progress",
+        "completed": "🏁 Completed",
+        "locked": "🔒 Locked",
+    }
+    pretty_status = status_map.get(normalized_status, normalized_status.title())
+
     lines = [
         "👥 <b>Mock WAEC Multiplayer Room</b>",
         "",
         f"<b>Room Code:</b> <code>{room_code}</code>",
-        f"<b>Status:</b> {room_status.title()}",
+        f"<b>Status:</b> {pretty_status}",
     ]
 
     if required_players > 0:
@@ -815,10 +853,16 @@ def build_mockwaec_waiting_room_text(
             lines.append(f"   • <b>Payment:</b> {payment_label}")
             lines.append(f"   • <b>Readiness:</b> {ready_label}")
 
-    lines.extend([
-        "",
-        "Share the room code or invite link with your friends.",
-    ])
+    lines.append("")
+
+    if normalized_status == "ready":
+        lines.append("All required active players are ready. The host can now start the match.")
+    elif normalized_status == "in_progress":
+        lines.append("The match has started. Players can continue into the exam.")
+    elif normalized_status == "completed":
+        lines.append("This match has ended.")
+    else:
+        lines.append("Share the room code or invite link with your friends.")
 
     return "\n".join(lines)
 
@@ -1952,6 +1996,7 @@ async def mockwaec_mode_friends_handler(update: Update, context: ContextTypes.DE
             reply_markup=markup,
         )
 
+
 async def refresh_mockwaec_host_waiting_room(
     context: ContextTypes.DEFAULT_TYPE,
     room_code: str,
@@ -1977,7 +2022,6 @@ async def refresh_mockwaec_host_waiting_room(
 
         host_user_id = int(room.get("host_user_id") or 0)
         host_waiting_message_id = room.get("host_waiting_message_id")
-        room_status = str(room.get("status") or "waiting").strip().lower()
 
         if not host_user_id or not host_waiting_message_id:
             return
@@ -1987,12 +2031,44 @@ async def refresh_mockwaec_host_waiting_room(
             room_code=room_code,
         )
 
+        live_status = get_mockwaec_live_room_status(room, players)
+        all_players_ready = live_status == "ready"
+
+        stored_status = str(room.get("status") or "waiting").strip().lower()
+
+        # Auto-sync room status while still in lobby phase
+        if stored_status not in ("in_progress", "completed", "locked"):
+            if stored_status != live_status or bool(room.get("all_players_ready")) != all_players_ready:
+                await session.execute(
+                    text("""
+                        update public.mockwaec_rooms
+                        set
+                            status = :status,
+                            all_players_ready = :all_players_ready,
+                            updated_at = now()
+                        where upper(room_code) = :room_code
+                    """),
+                    {
+                        "room_code": room_code,
+                        "status": live_status,
+                        "all_players_ready": all_players_ready,
+                    },
+                )
+                await session.commit()
+
+                room["status"] = live_status
+                room["all_players_ready"] = all_players_ready
+            else:
+                room["status"] = stored_status
+        else:
+            live_status = stored_status
+
     invite_link = build_mockwaec_invite_link(bot_username, room_code)
 
     message_text = build_mockwaec_waiting_room_text(
         room_code=room_code,
         invite_link=invite_link,
-        room_status=room_status,
+        room_status=live_status,
         players=players,
         host_user_id=host_user_id,
         expected_players=int((room or {}).get("expected_players") or 0),
@@ -2022,6 +2098,7 @@ async def refresh_mockwaec_host_waiting_room(
             host_user_id,
             host_waiting_message_id,
         )
+
 
 async def mockwaec_room_pay_friend_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -4942,4 +5019,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
+
 
