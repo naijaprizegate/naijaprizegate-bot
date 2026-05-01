@@ -230,14 +230,20 @@ def make_mockjamb_submit_subject_confirm_keyboard() -> InlineKeyboardMarkup:
 
 def make_mockjamb_next_subject_keyboard(subject_codes: list[str]) -> InlineKeyboardMarkup:
     rows = []
+    seen = set()
 
     for code in subject_codes:
-        subject = get_subject_by_code(code)
+        normalized_code = str(code or "").strip().lower()
+        if not normalized_code or normalized_code in seen:
+            continue
+        seen.add(normalized_code)
+
+        subject = get_subject_by_code(normalized_code)
         if subject:
             rows.append([
                 InlineKeyboardButton(
                     f"📘 Start {subject['name']}",
-                    callback_data=f"mj_start_subject::{code}"
+                    callback_data=f"mj_start_subject::{normalized_code}"
                 )
             ])
 
@@ -444,6 +450,26 @@ def extract_mockjamb_room_code_from_start_payload(payload: str | None) -> str | 
         return None
 
     return room_code
+
+
+# -------------------------------------
+# Get Mock JAMB Remaining Subject Codes
+# -------------------------------------
+def get_mockjamb_remaining_subject_codes(
+    subject_codes: list[str],
+    completed_subjects: list[str],
+) -> list[str]:
+    normalized_completed = {
+        str(code).strip().lower()
+        for code in (completed_subjects or [])
+        if str(code).strip()
+    }
+
+    return [
+        str(code).strip().lower()
+        for code in (subject_codes or [])
+        if str(code).strip() and str(code).strip().lower() not in normalized_completed
+    ]
 
 # ====================================================================
 # Message Builders
@@ -1038,9 +1064,10 @@ def build_mockjamb_resume_prompt_text(
     course = get_course_by_code(course_code)
     course_name = course["course_name"] if course else course_code
 
-    remaining_subject_codes = [
-        code for code in subject_codes if code not in completed_subjects
-    ]
+    remaining_subject_codes = get_mockjamb_remaining_subject_codes(
+        subject_codes,
+        completed_subjects,
+    )
 
     lines = [
         "📝 *Resume Mock JAMB / UTME*",
@@ -4061,9 +4088,10 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                 except Exception:
                     scores = {}
 
-                remaining_subject_codes = [
-                    code for code in subject_codes if code not in completed_subjects
-                ]
+                remaining_subject_codes = get_mockjamb_remaining_subject_codes(
+                    subject_codes,
+                    completed_subjects,
+                )
                 context.user_data["mj_last_passage_id_shown"] = ""
 
                 if remaining_subject_codes:
@@ -4461,9 +4489,10 @@ async def mockjamb_resume_exam_handler(update: Update, context: ContextTypes.DEF
             )
         return
 
-    remaining_subject_codes = [
-        code for code in subject_codes if code not in completed_subjects
-    ]
+    remaining_subject_codes = get_mockjamb_remaining_subject_codes(
+        subject_codes,
+        completed_subjects,
+    )
 
     if current_subject_code:
         next_question_order = max(1, current_question_index + 1)
@@ -4722,10 +4751,10 @@ async def mockjamb_submit_subject_yes_handler(update: Update, context: ContextTy
     except Exception:
         completed_subjects = []
 
-    remaining_subject_codes = [
-        code for code in subject_codes
-        if code not in completed_subjects
-    ]
+    remaining_subject_codes = get_mockjamb_remaining_subject_codes(
+        subject_codes,
+        completed_subjects,
+    )
 
     if not remaining_subject_codes:
         result = await build_mockjamb_result_from_session(
@@ -4971,4 +5000,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_review_open_handler, pattern=r"^mj_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockjamb_review_nav_handler, pattern=r"^mj_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockjamb_back_to_result_handler, pattern=r"^mj_back_to_result$"))
+
 
