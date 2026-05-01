@@ -376,3 +376,4 @@ async def list_mockwaec_room_players(
 
     rows = result.mappings().all()
     return [dict(row) for row in rows]
+
