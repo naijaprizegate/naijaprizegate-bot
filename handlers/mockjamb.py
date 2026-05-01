@@ -3561,6 +3561,12 @@ async def mockjamb_start_subject_handler(update: Update, context: ContextTypes.D
 
     await query.answer()
 
+    if query.message:
+        await clear_mockjamb_passage_message(
+            chat_id=query.message.chat_id,
+            context=context,
+        )
+
     try:
         _, subject_code = query.data.split("::", 1)
     except Exception:
@@ -4019,10 +4025,12 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                 return
 
             if answer_result.get("status") == "completed_subject":
-                await clear_mockjamb_passage_message(
-                    chat_id=query.message.chat_id,
-                    context=context,
-                )
+                chat_id = update.effective_chat.id if update.effective_chat else None
+                if chat_id:
+                    await clear_mockjamb_passage_message(
+                        chat_id=query.message.chat_id,
+                        context=context,
+                    )
                 
                 score_info = await calculate_mockjamb_subject_score(
                     session,
@@ -4662,6 +4670,13 @@ async def mockjamb_submit_subject_yes_handler(update: Update, context: ContextTy
 
     await query.answer()
 
+    chat_id = update.effective_chat.id if update.effective_chat else None
+    if chat_id:
+        await clear_mockjamb_passage_message(
+            chat_id=int(chat_id),
+            context=context,
+        )
+
     payment_reference = str(context.user_data.get("mj_payment_reference") or "").strip()
     course_code = str(context.user_data.get("mj_course_code") or "").strip()
     subject_codes = context.user_data.get("mj_subject_codes") or []
@@ -4760,6 +4775,7 @@ async def mockjamb_submit_subject_yes_handler(update: Update, context: ContextTy
             reply_markup=markup,
         )
 
+
 # -------------------------------------------
 # MockJAMB Submit Exam Confirmation
 # -------------------------------------------
@@ -4809,6 +4825,13 @@ async def mockjamb_submit_exam_yes_handler(update: Update, context: ContextTypes
         return
 
     await query.answer()
+
+    chat_id = update.effective_chat.id if update.effective_chat else None
+    if chat_id:
+        await clear_mockjamb_passage_message(
+            chat_id=int(chat_id),
+            context=context,
+        )
 
     payment_reference = context.user_data.get("mj_payment_reference")
     course_code = context.user_data.get("mj_course_code")
@@ -4860,6 +4883,13 @@ async def mockjamb_end_exam_handler(update: Update, context: ContextTypes.DEFAUL
         return
 
     await query.answer()
+    
+    chat_id = update.effective_chat.id if update.effective_chat else None
+    if chat_id:
+        await clear_mockjamb_passage_message(
+            chat_id=int(chat_id),
+            context=context,
+        )
 
     payment_reference = context.user_data.get("mj_payment_reference")
     course_code = context.user_data.get("mj_course_code")
