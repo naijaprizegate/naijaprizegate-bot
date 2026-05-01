@@ -213,12 +213,20 @@ def make_mockjamb_question_answer_keyboard(
                 InlineKeyboardButton("C", callback_data=f"mj_ans::{subject_code}::{question_order}::C"),
                 InlineKeyboardButton("D", callback_data=f"mj_ans::{subject_code}::{question_order}::D"),
             ],
+            [InlineKeyboardButton("✅ Submit This Subject", callback_data="mj_submit_subject_confirm")],
             [InlineKeyboardButton("✅ Submit Exam Now", callback_data="mj_submit_exam_confirm")],
             [InlineKeyboardButton("🛑 End Exam", callback_data="mj_end_exam")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
 
+def make_mockjamb_submit_subject_confirm_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("✅ Yes, Submit This Subject", callback_data="mj_submit_subject_yes")],
+            [InlineKeyboardButton("❌ No, Continue This Subject", callback_data="mj_submit_subject_no")],
+        ]
+    )
 
 def make_mockjamb_next_subject_keyboard(subject_codes: list[str]) -> InlineKeyboardMarkup:
     rows = []
@@ -253,17 +261,6 @@ def make_mockjamb_submit_exam_confirm_keyboard() -> InlineKeyboardMarkup:
             [InlineKeyboardButton("✅ Yes, Submit Now", callback_data="mj_submit_exam_yes")],
             [InlineKeyboardButton("❌ No, Continue Exam", callback_data="mj_submit_exam_no")],
         ]
-    )
-
-
-def build_mockjamb_submit_exam_confirm_text() -> str:
-    return (
-        "⚠️ *Submit Mock JAMB / UTME Now?*\n\n"
-        "If you submit now:\n"
-        "• your exam will end immediately\n"
-        "• unanswered questions will count as zero\n"
-        "• your current scores will be calculated and shown\n\n"
-        "Are you sure you want to submit?"
     )
 
 
@@ -447,7 +444,6 @@ def extract_mockjamb_room_code_from_start_payload(payload: str | None) -> str | 
         return None
 
     return room_code
-
 
 # ====================================================================
 # Message Builders
@@ -683,6 +679,28 @@ def build_mockjamb_subject_completed_text(
         lines.append("All subjects completed.")
 
     return "\n".join(lines)
+
+
+def build_mockjamb_submit_subject_confirm_text() -> str:
+    return (
+        "⚠️ *Submit This Subject Now?*\n\n"
+        "If you submit this subject now:\n"
+        "• this subject will end immediately\n"
+        "• unanswered questions in this subject will count as zero\n"
+        "• you will move to your next remaining subject\n\n"
+        "Are you sure you want to submit this subject now?"
+    )
+
+
+def build_mockjamb_submit_exam_confirm_text() -> str:
+    return (
+        "⚠️ *Submit Mock JAMB / UTME Now?*\n\n"
+        "If you submit now:\n"
+        "• your exam will end immediately\n"
+        "• unanswered questions will count as zero\n"
+        "• your current scores will be calculated and shown\n\n"
+        "Are you sure you want to submit?"
+    )
 
 
 def build_mockjamb_final_result_text(
@@ -4600,6 +4618,148 @@ async def mockjamb_resume_exam_handler(update: Update, context: ContextTypes.DEF
         )
 
 
+# --------------------------------------------------
+# Mock JAMB Submit Subject Confirmation Handler
+# -------------------------------------------------
+async def mockjamb_submit_subject_confirm_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    message_text = build_mockjamb_submit_subject_confirm_text()
+    markup = make_mockjamb_submit_subject_confirm_keyboard()
+
+    try:
+        await query.edit_message_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
+async def mockjamb_submit_subject_no_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer("Continue your current subject.")
+
+    return await mockjamb_resume_exam_handler(update, context)
+
+
+async def mockjamb_submit_subject_yes_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    payment_reference = str(context.user_data.get("mj_payment_reference") or "").strip()
+    course_code = str(context.user_data.get("mj_course_code") or "").strip()
+    subject_codes = context.user_data.get("mj_subject_codes") or []
+
+    if not payment_reference or not course_code or not subject_codes:
+        return await query.message.reply_text(
+            "⚠️ No active exam session found."
+        )
+
+    async with get_async_session() as session:
+        session_row = await get_mockjamb_session_by_payment_reference(
+            session,
+            payment_reference,
+        )
+        if not session_row:
+            return await query.message.reply_text(
+                "⚠️ Exam session not found."
+            )
+
+        current_subject_code = str(session_row.get("current_subject_code") or "").strip()
+        if not current_subject_code:
+            return await query.message.reply_text(
+                "⚠️ No active subject found to submit."
+            )
+
+        score_info = await calculate_mockjamb_subject_score(
+            session,
+            payment_reference=payment_reference,
+            subject_code=current_subject_code,
+        )
+        score_100 = int(score_info.get("score_100") or 0)
+
+        updated_session = await mark_mockjamb_subject_completed(
+            session,
+            payment_reference=payment_reference,
+            subject_code=current_subject_code,
+            score=score_100,
+        )
+        await session.commit()
+
+    try:
+        completed_subjects = json.loads((updated_session or {}).get("completed_subjects_json") or "[]")
+    except Exception:
+        completed_subjects = []
+
+    remaining_subject_codes = [
+        code for code in subject_codes
+        if code not in completed_subjects
+    ]
+
+    if not remaining_subject_codes:
+        result = await build_mockjamb_result_from_session(
+            payment_reference=payment_reference,
+            course_code=course_code,
+            subject_codes=subject_codes,
+        )
+        if not result:
+            return await query.message.reply_text(
+                "⚠️ Subject submitted, but result could not be loaded."
+            )
+
+        message_text, markup = result
+
+        try:
+            await query.edit_message_text(
+                message_text,
+                parse_mode="Markdown",
+                reply_markup=markup,
+            )
+        except Exception:
+            await query.message.reply_text(
+                message_text,
+                parse_mode="Markdown",
+                reply_markup=markup,
+            )
+        return
+
+    message_text = build_mockjamb_subject_completed_text(
+        course_code=course_code,
+        completed_subject_code=current_subject_code,
+        score_100=score_100,
+        remaining_subject_codes=remaining_subject_codes,
+    )
+    markup = make_mockjamb_next_subject_keyboard(remaining_subject_codes)
+
+    try:
+        await query.edit_message_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
 # -------------------------------------------
 # MockJAMB Submit Exam Confirmation
 # -------------------------------------------
@@ -4771,6 +4931,9 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockjamb_submit_exam_confirm_handler, pattern=r"^mj_submit_exam_confirm$"))
     application.add_handler(CallbackQueryHandler(mockjamb_submit_exam_yes_handler, pattern=r"^mj_submit_exam_yes$"))
     application.add_handler(CallbackQueryHandler(mockjamb_submit_exam_no_handler, pattern=r"^mj_submit_exam_no$"))
+    application.add_handler(CallbackQueryHandler(mockjamb_submit_subject_confirm_handler, pattern=r"^mj_submit_subject_confirm$"))
+    application.add_handler(CallbackQueryHandler(mockjamb_submit_subject_yes_handler, pattern=r"^mj_submit_subject_yes$"))
+    application.add_handler(CallbackQueryHandler(mockjamb_submit_subject_no_handler, pattern=r"^mj_submit_subject_no$"))
     application.add_handler(CallbackQueryHandler(mockjamb_end_exam_handler, pattern=r"^mj_end_exam$"))
     application.add_handler(CallbackQueryHandler(mockjamb_answer_handler, pattern=r"^mj_ans::"))
     application.add_handler(CallbackQueryHandler(mockjamb_return_to_exam_ready_handler, pattern=r"^payok_mockjamb_return$"))
