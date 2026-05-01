@@ -209,7 +209,9 @@ def make_mockwaec_question_answer_keyboard(
                 InlineKeyboardButton("C", callback_data=f"mw_ans::{subject_code}::{question_order}::C"),
                 InlineKeyboardButton("D", callback_data=f"mw_ans::{subject_code}::{question_order}::D"),
             ],
+            [InlineKeyboardButton("✅ Submit This Subject", callback_data="mw_submit_subject_confirm")],
             [InlineKeyboardButton("✅ Submit Exam Now", callback_data="mw_submit_exam_confirm")],
+            [InlineKeyboardButton("🛑 End Exam", callback_data="mw_end_exam")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
@@ -230,6 +232,15 @@ def make_mockwaec_next_subject_keyboard(subject_codes: list[str]) -> InlineKeybo
 
     rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
     return InlineKeyboardMarkup(rows)
+
+
+def make_mockwaec_submit_subject_confirm_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("✅ Yes, Submit This Subject", callback_data="mw_submit_subject_yes")],
+            [InlineKeyboardButton("❌ No, Continue This Subject", callback_data="mw_submit_subject_no")],
+        ]
+    )
 
 
 def make_mockwaec_final_result_keyboard() -> InlineKeyboardMarkup:
@@ -647,6 +658,17 @@ def build_mockwaec_live_question_text(
     ])
 
     return "\n".join(lines)
+
+
+def build_mockwaec_submit_subject_confirm_text() -> str:
+    return (
+        "⚠️ *Submit This Subject Now?*\n\n"
+        "If you submit this subject now:\n"
+        "• this subject will end immediately\n"
+        "• unanswered questions in this subject will count as zero\n"
+        "• you will move to your next remaining subject\n\n"
+        "Are you sure you want to submit this subject now?"
+    )
 
 
 def build_mockwaec_subject_completed_text(
@@ -1405,6 +1427,172 @@ async def build_mockwaec_result_from_session(
     markup = make_mockwaec_final_result_keyboard()
     return message_text, markup
 
+# -------------------------------------
+# Mock WAEC submit Subject Confirm Handler
+# ---------------------------------------
+async def mockwaec_submit_subject_confirm_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    message_text = build_mockwaec_submit_subject_confirm_text()
+    markup = make_mockwaec_submit_subject_confirm_keyboard()
+
+    try:
+        await query.edit_message_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
+async def mockwaec_submit_subject_no_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer("Continue your current subject.")
+
+    return await mockwaec_resume_exam_handler(update, context)
+
+
+async def mockwaec_submit_subject_yes_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    payment_reference = str(context.user_data.get("mw_payment_reference") or "").strip()
+    course_code = str(context.user_data.get("mw_course_code") or "").strip()
+    subject_codes = context.user_data.get("mw_subject_codes") or []
+
+    if not payment_reference or not course_code or not subject_codes:
+        return await query.message.reply_text(
+            "⚠️ No active Mock WAEC / NECO exam session found."
+        )
+
+    async with get_async_session() as session:
+        session_row = await get_mockwaec_session_by_payment_reference(
+            session,
+            payment_reference,
+        )
+        if not session_row:
+            return await query.message.reply_text(
+                "⚠️ Exam session not found."
+            )
+
+        current_subject_code = str(session_row.get("current_subject_code") or "").strip()
+        if not current_subject_code:
+            return await query.message.reply_text(
+                "⚠️ No active subject found to submit."
+            )
+
+        await clear_mockwaec_passage_message(
+            chat_id=query.message.chat_id,
+            context=context,
+        )
+
+        score_info = await calculate_mockwaec_subject_score(
+            session,
+            payment_reference=payment_reference,
+            subject_code=current_subject_code,
+        )
+        score_100 = int(score_info.get("score_100") or 0)
+
+        updated_session = await mark_mockwaec_subject_completed(
+            session,
+            payment_reference=payment_reference,
+            subject_code=current_subject_code,
+            score=score_100,
+        )
+        await session.commit()
+
+    if not updated_session:
+        return await query.message.reply_text(
+            "⚠️ Could not finalize this subject."
+        )
+
+    try:
+        completed_subjects = json.loads((updated_session or {}).get("completed_subjects_json") or "[]")
+    except Exception:
+        completed_subjects = []
+
+    try:
+        scores = json.loads((updated_session or {}).get("scores_json") or "{}")
+    except Exception:
+        scores = {}
+
+    remaining_subject_codes = [
+        code for code in subject_codes
+        if code not in completed_subjects
+    ]
+
+    context.user_data["mw_last_passage_id_shown"] = ""
+
+    if remaining_subject_codes:
+        message_text = build_mockwaec_subject_completed_text(
+            completed_subject_code=current_subject_code,
+            score_100=score_100,
+            remaining_subject_codes=remaining_subject_codes,
+        )
+        markup = make_mockwaec_next_subject_keyboard(remaining_subject_codes)
+
+        try:
+            await query.edit_message_text(
+                message_text,
+                parse_mode="Markdown",
+                reply_markup=markup,
+            )
+        except Exception:
+            await query.message.reply_text(
+                message_text,
+                parse_mode="Markdown",
+                reply_markup=markup,
+            )
+        return
+
+    answered_counts = {}
+    correct_counts = {}
+
+    async with get_async_session() as session:
+        for code in subject_codes:
+            stats = await get_mockwaec_subject_result_stats(
+                session,
+                payment_reference=payment_reference,
+                subject_code=code,
+            )
+            answered_counts[code] = int(stats.get("answered_count") or 0)
+            correct_counts[code] = int(stats.get("correct_count") or 0)
+
+    message_text = build_mockwaec_final_result_text(
+        subject_codes=subject_codes,
+        scores=scores,
+        answered_counts=answered_counts,
+        correct_counts=correct_counts,
+    )
+    markup = make_mockwaec_final_result_keyboard()
+
+    try:
+        await query.edit_message_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            message_text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
 
 # ------------------------------------
 # Finalize Mockwaec Exam Now
@@ -1658,19 +1846,19 @@ async def mockwaec_subjects_continue_handler(update: Update, context: ContextTyp
 
     if len(selected_codes) < 7:
         return await query.answer(
-            "Number of subjects must be between 7 and 9.",
+            "⚠️ Please choose a minimum of 7 subjects.",
             show_alert=True,
         )
 
     if len(selected_codes) > 9:
         return await query.answer(
-            "Number of subjects must be between 7 and 9.",
+            "⚠️ Please choose a maximum of 9 subjects.",
             show_alert=True,
         )
 
     if "eng" not in selected_codes:
         return await query.answer(
-            "English Language is compulsory. Please add it before continuing.",
+            "⚠️ English Language is compulsory. Please add it before continuing.",
             show_alert=True,
         )
 
@@ -1762,15 +1950,6 @@ async def mockwaec_subjects_continue_handler(update: Update, context: ContextTyp
                 reply_markup=markup,
                 disable_web_page_preview=True,
             )
-        
-        try:
-            await refresh_mockwaec_host_waiting_room(context, room_code)
-        except Exception:
-            logger.exception(
-                "Failed to auto-refresh WAEC host waiting room after subject selection | room_code=%s",
-                room_code,
-            )
-
         return
 
     # ============================================================
@@ -5012,6 +5191,9 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_submit_exam_confirm_handler, pattern=r"^mw_submit_exam_confirm$"))
     application.add_handler(CallbackQueryHandler(mockwaec_submit_exam_yes_handler, pattern=r"^mw_submit_exam_yes$"))
     application.add_handler(CallbackQueryHandler(mockwaec_submit_exam_no_handler, pattern=r"^mw_submit_exam_no$"))
+    application.add_handler(CallbackQueryHandler(mockwaec_submit_subject_confirm_handler, pattern=r"^mw_submit_subject_confirm$"))
+    application.add_handler(CallbackQueryHandler(mockwaec_submit_subject_yes_handler, pattern=r"^mw_submit_subject_yes$"))
+    application.add_handler(CallbackQueryHandler(mockwaec_submit_subject_no_handler, pattern=r"^mw_submit_subject_no$"))
     application.add_handler(CallbackQueryHandler(mockwaec_end_exam_handler, pattern=r"^mw_end_exam$"))
     application.add_handler(CallbackQueryHandler(mockwaec_answer_handler, pattern=r"^mw_ans::"))
     application.add_handler(CallbackQueryHandler(mockwaec_return_to_exam_ready_handler, pattern=r"^payok_mockwaec_return$"))
