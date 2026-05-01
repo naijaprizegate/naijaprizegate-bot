@@ -941,3 +941,4 @@ async def get_mockwaec_subject_result_stats(
         "answered_count": int(row.get("answered_count") or 0),
         "correct_count": int(row.get("correct_count") or 0),
     }
+
