@@ -219,14 +219,20 @@ def make_mockwaec_question_answer_keyboard(
 
 def make_mockwaec_next_subject_keyboard(subject_codes: list[str]) -> InlineKeyboardMarkup:
     rows = []
+    seen = set()
 
     for code in subject_codes:
-        subject = get_subject_by_code(code)
+        normalized_code = str(code or "").strip().lower()
+        if not normalized_code or normalized_code in seen:
+            continue
+        seen.add(normalized_code)
+
+        subject = get_subject_by_code(normalized_code)
         if subject:
             rows.append([
                 InlineKeyboardButton(
                     f"📘 Start {subject['name']}",
-                    callback_data=f"mw_start_subject::{code}"
+                    callback_data=f"mw_start_subject::{normalized_code}"
                 )
             ])
 
@@ -458,6 +464,26 @@ def get_mockwaec_live_room_status(room: dict, players: list[dict]) -> str:
         return "ready"
 
     return "waiting"
+
+
+# -------------------------------------
+# Get Mock WAEC Remaining Subject Codes
+# -------------------------------------
+def get_mockwaec_remaining_subject_codes(
+    subject_codes: list[str],
+    completed_subjects: list[str],
+) -> list[str]:
+    normalized_completed = {
+        str(code).strip().lower()
+        for code in (completed_subjects or [])
+        if str(code).strip()
+    }
+
+    return [
+        str(code).strip().lower()
+        for code in (subject_codes or [])
+        if str(code).strip() and str(code).strip().lower() not in normalized_completed
+    ]
 
 # ====================================================================
 # Message Builders
@@ -1161,9 +1187,10 @@ def build_mockwaec_resume_prompt_text(
     current_question_index: int,
     exam_ends_at=None,
 ) -> str:
-    remaining_subject_codes = [
-        code for code in subject_codes if code not in completed_subjects
-    ]
+    remaining_subject_codes = get_mockjamb_remaining_subject_codes(
+        subject_codes,
+        completed_subjects,
+    )
 
     lines = [
         "📝 *Resume Mock WAEC / NECO*",
@@ -1531,10 +1558,10 @@ async def mockwaec_submit_subject_yes_handler(update: Update, context: ContextTy
     except Exception:
         scores = {}
 
-    remaining_subject_codes = [
-        code for code in subject_codes
-        if code not in completed_subjects
-    ]
+    remaining_subject_codes = get_mockjamb_remaining_subject_codes(
+        subject_codes,
+        completed_subjects,
+    )
 
     context.user_data["mw_last_passage_id_shown"] = ""
 
@@ -4415,9 +4442,10 @@ async def mockwaec_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                 except Exception:
                     scores = {}
 
-                remaining_subject_codes = [
-                    code for code in subject_codes if code not in completed_subjects
-                ]
+                remaining_subject_codes = get_mockjamb_remaining_subject_codes(
+                    subject_codes,
+                    completed_subjects,
+                )
                 context.user_data["mw_last_passage_id_shown"] = ""
 
                 if remaining_subject_codes:
@@ -4820,9 +4848,10 @@ async def mockwaec_resume_exam_handler(update: Update, context: ContextTypes.DEF
             )
         return
 
-    remaining_subject_codes = [
-        code for code in subject_codes if code not in completed_subjects
-    ]
+    remaining_subject_codes = get_mockjamb_remaining_subject_codes(
+        subject_codes,
+        completed_subjects,
+    )
 
     if current_subject_code:
         next_question_order = max(1, current_question_index + 1)
@@ -5201,5 +5230,6 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
+
 
 
