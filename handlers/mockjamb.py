@@ -4055,7 +4055,7 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                 chat_id = update.effective_chat.id if update.effective_chat else None
                 if chat_id:
                     await clear_mockjamb_passage_message(
-                        chat_id=query.message.chat_id,
+                        chat_id=chat_id,
                         context=context,
                     )
                 
@@ -4088,10 +4088,20 @@ async def mockjamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                 except Exception:
                     scores = {}
 
-                remaining_subject_codes = get_mockjamb_remaining_subject_codes(
-                    subject_codes,
-                    completed_subjects,
-                )
+                normalized_completed_subject_code = str(subject_code or "").strip().lower()
+
+                remaining_subject_codes = [
+                    str(code).strip().lower()
+                    for code in (subject_codes or [])
+                    if str(code).strip()
+                    and str(code).strip().lower() != normalized_completed_subject_code
+                    and str(code).strip().lower() not in {
+                        str(done_code).strip().lower()
+                        for done_code in (completed_subjects or [])
+                        if str(done_code).strip()
+                    }
+                ]
+
                 context.user_data["mj_last_passage_id_shown"] = ""
 
                 if remaining_subject_codes:
@@ -4751,10 +4761,19 @@ async def mockjamb_submit_subject_yes_handler(update: Update, context: ContextTy
     except Exception:
         completed_subjects = []
 
-    remaining_subject_codes = get_mockjamb_remaining_subject_codes(
-        subject_codes,
-        completed_subjects,
-    )
+    normalized_current_subject_code = str(current_subject_code or "").strip().lower()
+
+    remaining_subject_codes = [
+        str(code).strip().lower()
+        for code in (subject_codes or [])
+        if str(code).strip()
+        and str(code).strip().lower() != normalized_current_subject_code
+        and str(code).strip().lower() not in {
+            str(done_code).strip().lower()
+            for done_code in (completed_subjects or [])
+            if str(done_code).strip()
+        }
+    ]
 
     if not remaining_subject_codes:
         result = await build_mockjamb_result_from_session(
