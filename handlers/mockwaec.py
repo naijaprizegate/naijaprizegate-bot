@@ -1187,7 +1187,7 @@ def build_mockwaec_resume_prompt_text(
     current_question_index: int,
     exam_ends_at=None,
 ) -> str:
-    remaining_subject_codes = get_mockjamb_remaining_subject_codes(
+    remaining_subject_codes = get_mockwaec_remaining_subject_codes(
         subject_codes,
         completed_subjects,
     )
@@ -1558,7 +1558,7 @@ async def mockwaec_submit_subject_yes_handler(update: Update, context: ContextTy
     except Exception:
         scores = {}
 
-    remaining_subject_codes = get_mockjamb_remaining_subject_codes(
+    remaining_subject_codes = get_mockwaec_remaining_subject_codes(
         subject_codes,
         completed_subjects,
     )
@@ -4442,7 +4442,7 @@ async def mockwaec_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                 except Exception:
                     scores = {}
 
-                remaining_subject_codes = get_mockjamb_remaining_subject_codes(
+                remaining_subject_codes = get_mockwaec_remaining_subject_codes(
                     subject_codes,
                     completed_subjects,
                 )
@@ -4848,7 +4848,7 @@ async def mockwaec_resume_exam_handler(update: Update, context: ContextTypes.DEF
             )
         return
 
-    remaining_subject_codes = get_mockjamb_remaining_subject_codes(
+    remaining_subject_codes = get_mockwaec_remaining_subject_codes(
         subject_codes,
         completed_subjects,
     )
@@ -5230,6 +5230,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
-
-
 
