@@ -1,0 +1,34 @@
+{
+  "title": "Concord",
+  "intro": "Concord means agreement between parts of a sentence, especially between subject and verb.",
+  "sections": [
+    {
+      "title": "What is Concord?",
+      "explanation": [
+        "Concord is the agreement between subject and verb.",
+        "A singular subject takes a singular verb.",
+        "A plural subject takes a plural verb."
+      ],
+      "examples": [
+        "The boy goes to school.",
+        "The boys go to school."
+      ]
+    }
+  ],
+  "check_questions": [
+    {
+      "question": "Which is correct?",
+      "options": [
+        "The girl go to school.",
+        "The girl goes to school."
+      ],
+      "answer_index": 1,
+      "explanation": "Girl is singular, so we use 'goes'."
+    }
+  ],
+  "summary": [
+    "Concord means agreement.",
+    "Subject and verb must match.",
+    "Singular goes with singular."
+  ]
+}
