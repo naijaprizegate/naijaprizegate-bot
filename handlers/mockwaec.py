@@ -1553,15 +1553,24 @@ async def mockwaec_submit_subject_yes_handler(update: Update, context: ContextTy
     except Exception:
         completed_subjects = []
 
+    normalized_current_subject_code = str(current_subject_code or "").strip().lower()
+
+    remaining_subject_codes = [
+        str(code).strip().lower()
+        for code in (subject_codes or [])
+        if str(code).strip()
+        and str(code).strip().lower() != normalized_current_subject_code
+        and str(code).strip().lower() not in {
+            str(done_code).strip().lower()
+            for done_code in (completed_subjects or [])
+            if str(done_code).strip()
+        }
+    ]
+
     try:
         scores = json.loads((updated_session or {}).get("scores_json") or "{}")
     except Exception:
         scores = {}
-
-    remaining_subject_codes = get_mockwaec_remaining_subject_codes(
-        subject_codes,
-        completed_subjects,
-    )
 
     context.user_data["mw_last_passage_id_shown"] = ""
 
@@ -4437,15 +4446,25 @@ async def mockwaec_answer_handler(update: Update, context: ContextTypes.DEFAULT_
                 except Exception:
                     completed_subjects = []
 
+                normalized_completed_subject_code = str(subject_code or "").strip().lower()
+
+                remaining_subject_codes = [
+                    str(code).strip().lower()
+                    for code in (subject_codes or [])
+                    if str(code).strip()
+                    and str(code).strip().lower() != normalized_completed_subject_code
+                    and str(code).strip().lower() not in {
+                        str(done_code).strip().lower()
+                        for done_code in (completed_subjects or [])
+                        if str(done_code).strip()
+                    }
+                ]
+
                 try:
                     scores = json.loads(session_row.get("scores_json") or "{}")
                 except Exception:
                     scores = {}
 
-                remaining_subject_codes = get_mockwaec_remaining_subject_codes(
-                    subject_codes,
-                    completed_subjects,
-                )
                 context.user_data["mw_last_passage_id_shown"] = ""
 
                 if remaining_subject_codes:
@@ -5230,4 +5249,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(mockwaec_review_open_handler, pattern=r"^mw_review_(all|wrong)$"))
     application.add_handler(CallbackQueryHandler(mockwaec_review_nav_handler, pattern=r"^mw_review_nav::"))
     application.add_handler(CallbackQueryHandler(mockwaec_back_to_result_handler, pattern=r"^mw_back_to_result$"))
+
 
