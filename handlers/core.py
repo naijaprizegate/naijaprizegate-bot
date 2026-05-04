@@ -1,6 +1,6 @@
-# ==============================================================
+# ===============================================================
 # handlers/core.py — Compliance-Safe Version (Polished)
-# ==============================================================
+# ===============================================================
 import re
 import logging
 
@@ -129,6 +129,7 @@ def build_main_menu_keyboard():
             [InlineKeyboardButton("⚔️ Challenge Friends (Free)", callback_data="challenge:start")],
             [InlineKeyboardButton("🔥 Battle Mode (Free)", callback_data="battle:menu")],
             [InlineKeyboardButton("🎓 JAMB / WAEC / NECO Practice", callback_data="exam:hub")],
+            [InlineKeyboardButton("🎓 University Subjects", callback_data="uni_start")],
             [InlineKeyboardButton("📂 Other Menu", callback_data="menu:other")],
         ]
     )
