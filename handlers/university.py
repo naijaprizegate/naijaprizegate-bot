@@ -7,9 +7,9 @@ from telegram.ext import ContextTypes, CallbackQueryHandler
 from university_loader import get_university_categories
 
 
-# ====================================================================
+# ================================
 # Start University Section
-# ====================================================================
+# ================================
 async def university_start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
