@@ -70,6 +70,7 @@ from tasks import start_background_tasks, stop_background_tasks
 from handlers.mockjamb import register_handlers as register_mockjamb_handlers
 from handlers.mockwaec import register_handlers as register_mockwaec_handlers
 from handlers.waecpractice import register_handlers as register_waec_handlers
+from handlers.university import register_handlers as register_university_handlers
 
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
@@ -216,6 +217,7 @@ async def on_startup():
         register_waec_handlers(application)
         register_mockjamb_handlers(application)
         register_mockwaec_handlers(application)
+        register_university_handlers(application)
         battle.register_handlers(application)
         register_challenge_handlers(application)
         free.register_handlers(application)
@@ -497,4 +499,3 @@ async def save_winner(
         """,
         status_code=200
     )
-
