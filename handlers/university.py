@@ -6,6 +6,7 @@ from telegram.ext import ContextTypes, CallbackQueryHandler
 
 from university_loader import get_university_categories
 from university_loader import get_university_category_by_code, get_university_subject_by_code
+from university_loader import get_university_subject_by_code, get_university_subject_topics
 
 
 # ------------------------
@@ -144,6 +145,58 @@ async def university_category_handler(update: Update, context: ContextTypes.DEFA
             reply_markup=markup,
         )
 
+# ------------------------------------
+# University Subject Handler
+# ------------------------------------
+async def university_subject_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    try:
+        _, subject_code = query.data.split("::", 1)
+    except Exception:
+        return await query.answer("⚠️ Invalid subject.", show_alert=True)
+
+    subject = get_university_subject_by_code(subject_code)
+    if not subject:
+        return await query.answer("⚠️ Subject not found.", show_alert=True)
+
+    topics = get_university_subject_topics(subject_code)
+
+    rows = []
+    for topic in topics:
+        rows.append([
+            InlineKeyboardButton(
+                topic["title"],
+                callback_data=f"uni_topic::{topic['code']}"
+            )
+        ])
+
+    # Back button → back to category
+    rows.append([
+        InlineKeyboardButton("🔙 Back", callback_data=f"uni_cat::{subject['category_code']}")
+    ])
+
+    markup = InlineKeyboardMarkup(rows)
+
+    text = f"📖 *{subject['name']}*\n\nSelect a topic:"
+
+    try:
+        await query.edit_message_text(
+            text=text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text=text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
 # ====================================================================
 # Register Handlers
 # ====================================================================
@@ -160,4 +213,7 @@ def register_handlers(application):
         CallbackQueryHandler(university_category_handler, pattern=r"^uni_cat::")
     )
 
+    application.add_handler(
+        CallbackQueryHandler(university_subject_handler, pattern=r"^uni_sub::")
+    )
 
