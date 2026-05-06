@@ -441,10 +441,24 @@ async def university_quiz_answer_handler(update: Update, context: ContextTypes.D
 
     correct_index = question["answer_index"]
 
+    correct_option = question["options"][correct_index]
+
     if selected_index == correct_index:
-        result_text = "✅ Correct!\n\n"
+        # ✅ POPUP
+        await query.answer("✅ Correct!", show_alert=True)
+
+        result_text = "✅ *Correct!*\n\n"
     else:
-        result_text = "❌ Incorrect.\n\n"
+        # ❌ POPUP WITH CORRECT ANSWER
+        await query.answer(
+            f"❌ Wrong!\nCorrect answer:\n{correct_option}",
+            show_alert=True,
+        )
+
+        result_text = (
+            "❌ *Incorrect*\n\n"
+            f"*Correct Answer:* {correct_option}\n\n"
+        )
 
     result_text += f"*Explanation:*\n{question['explanation']}"
 
@@ -531,5 +545,4 @@ def register_handlers(application):
     application.add_handler(
         CallbackQueryHandler(university_quiz_answer_handler, pattern=r"^uni_quiz_answer::")
     )
-
 
