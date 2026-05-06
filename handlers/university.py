@@ -203,9 +203,9 @@ async def university_subject_handler(update: Update, context: ContextTypes.DEFAU
             reply_markup=markup,
         )
 
-# ==============================================
+# ---------------------------------------
 # University Topic Handler
-# ==============================================
+# --------------------------------------
 async def university_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
@@ -260,9 +260,126 @@ async def university_topic_handler(update: Update, context: ContextTypes.DEFAULT
         )
 
 
-# ====================================================================
+#-------------------------------------
+# University Start Lesson Handler
+# ------------------------------------
+async def university_start_lesson_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    subject_code = context.user_data.get("uni_subject_code")
+    topic_code = context.user_data.get("uni_topic_code")
+
+    if not subject_code or not topic_code:
+        return await query.answer("⚠️ Lesson data missing.", show_alert=True)
+
+    content = load_university_topic_content(subject_code, topic_code)
+    if not content:
+        return await query.answer("⚠️ Lesson not found.", show_alert=True)
+
+    steps = content.get("steps", [])
+    if not steps:
+        return await query.answer("⚠️ No lesson steps found.", show_alert=True)
+
+    context.user_data["uni_steps"] = steps
+    context.user_data["uni_step_index"] = 0
+
+    step = steps[0]
+
+    text = (
+        f"📘 *{step['title']}*\n\n"
+        f"{step['content']}"
+    )
+
+    markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton("⏭ Next", callback_data="uni_next_step")],
+        [InlineKeyboardButton("❌ Exit", callback_data=f"uni_topic::{topic_code}")]
+    ])
+
+    try:
+        await query.edit_message_text(
+            text=text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text=text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
+# -----------------------------------
+# University Next Step Handler
+# ----------------------------------
+async def university_next_step_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    steps = context.user_data.get("uni_steps", [])
+    index = context.user_data.get("uni_step_index", 0)
+
+    index += 1
+
+    if index >= len(steps):
+        text = "🎉 *Lesson Completed!*\n\nYou have finished this topic."
+
+        markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton("🔙 Back to Topics", callback_data=f"uni_sub::{context.user_data.get('uni_subject_code')}")]
+        ])
+
+        context.user_data["uni_step_index"] = 0
+
+        try:
+            await query.edit_message_text(
+                text=text,
+                parse_mode="Markdown",
+                reply_markup=markup,
+            )
+        except Exception:
+            await query.message.reply_text(
+                text=text,
+                parse_mode="Markdown",
+                reply_markup=markup,
+            )
+        return
+
+    context.user_data["uni_step_index"] = index
+    step = steps[index]
+
+    text = (
+        f"📘 *{step['title']}*\n\n"
+        f"{step['content']}"
+    )
+
+    markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton("⏭ Next", callback_data="uni_next_step")],
+        [InlineKeyboardButton("❌ Exit", callback_data=f"uni_topic::{context.user_data.get('uni_topic_code')}")]
+    ])
+
+    try:
+        await query.edit_message_text(
+            text=text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text=text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+# -----------------------------------------------------
 # Register Handlers
-# ====================================================================
+# ----------------------------------------------------
 def register_handlers(application):
     application.add_handler(
         CallbackQueryHandler(university_start_handler, pattern=r"^uni_start$")
@@ -283,3 +400,13 @@ def register_handlers(application):
     application.add_handler(
         CallbackQueryHandler(university_topic_handler, pattern=r"^uni_topic::")
     )
+
+    application.add_handler(
+        CallbackQueryHandler(university_start_lesson_handler, pattern=r"^uni_start_lesson$")
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(university_next_step_handler, pattern=r"^uni_next_step$")
+    )
+
+
