@@ -532,3 +532,4 @@ def register_handlers(application):
         CallbackQueryHandler(university_quiz_answer_handler, pattern=r"^uni_quiz_answer::")
     )
 
+
