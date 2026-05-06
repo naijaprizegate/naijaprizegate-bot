@@ -304,6 +304,7 @@ async def university_start_lesson_handler(update: Update, context: ContextTypes.
 
     context.user_data["uni_steps"] = steps
     context.user_data["uni_step_index"] = 0
+    context.user_data["uni_phase"] = "lesson"
 
     step = steps[0]
 
@@ -338,59 +339,162 @@ async def university_next_step_handler(update: Update, context: ContextTypes.DEF
 
     await query.answer()
 
-    steps = context.user_data.get("uni_steps", [])
-    index = context.user_data.get("uni_step_index", 0)
+    phase = context.user_data.get("uni_phase", "lesson")
 
-    index += 1
+    # -------------
+    # LESSON PHASE
+    # -------------
+    if phase == "lesson":
+        steps = context.user_data.get("uni_steps", [])
+        index = context.user_data.get("uni_step_index", 0)
 
-    if index >= len(steps):
-        text = "🎉 *Lesson Completed!*\n\nYou have finished this topic."
+        index += 1
+
+        if index >= len(steps):
+            # 🔥 MOVE TO QUIZ
+            context.user_data["uni_phase"] = "quiz"
+            context.user_data["uni_quiz_index"] = 0
+
+            subject_code = context.user_data.get("uni_subject_code")
+            topic_code = context.user_data.get("uni_topic_code")
+
+            content = load_university_topic_content(subject_code, topic_code)
+            questions = content.get("check_questions", [])
+
+            if not questions:
+                # Skip to summary if no quiz
+                context.user_data["uni_phase"] = "summary"
+                return await show_summary(query, context, content)
+
+            q = questions[0]
+
+            text = f"❓ *{q['question']}*"
+
+            rows = []
+            for i, opt in enumerate(q["options"]):
+                rows.append([
+                    InlineKeyboardButton(opt, callback_data=f"uni_quiz_answer::{i}")
+                ])
+
+            markup = InlineKeyboardMarkup(rows)
+
+            return await query.edit_message_text(
+                text=text,
+                parse_mode="Markdown",
+                reply_markup=markup,
+            )
+
+        context.user_data["uni_step_index"] = index
+        step = steps[index]
+
+        text = f"📘 *{step['title']}*\n\n{step['content']}"
 
         markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton("🔙 Back to Topics", callback_data=f"uni_sub::{context.user_data.get('uni_subject_code')}")]
+            [InlineKeyboardButton("⏭ Next", callback_data="uni_next_step")],
+            [InlineKeyboardButton("❌ Exit", callback_data=f"uni_topic::{context.user_data.get('uni_topic_code')}")]
         ])
 
-        context.user_data["uni_step_index"] = 0
+        return await query.edit_message_text(
+            text=text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
 
-        try:
-            await query.edit_message_text(
-                text=text,
-                parse_mode="Markdown",
-                reply_markup=markup,
-            )
-        except Exception:
-            await query.message.reply_text(
-                text=text,
-                parse_mode="Markdown",
-                reply_markup=markup,
-            )
+    # ------------------------
+    # SUMMARY PHASE (fallback)
+    # ------------------------
+    if phase == "summary":
+        subject_code = context.user_data.get("uni_subject_code")
+
+        return await query.edit_message_text(
+            text="🎉 *Lesson Completed!*",
+            parse_mode="Markdown",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("🔙 Back to Topics", callback_data=f"uni_sub::{subject_code}")]
+            ])
+        )
+
+# -----------------------------------
+# University Quiz Answer Handler
+# ----------------------------------
+async def university_quiz_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
         return
 
-    context.user_data["uni_step_index"] = index
-    step = steps[index]
-
-    text = (
-        f"📘 *{step['title']}*\n\n"
-        f"{step['content']}"
-    )
-
-    markup = InlineKeyboardMarkup([
-        [InlineKeyboardButton("⏭ Next", callback_data="uni_next_step")],
-        [InlineKeyboardButton("❌ Exit", callback_data=f"uni_topic::{context.user_data.get('uni_topic_code')}")]
-    ])
+    await query.answer()
 
     try:
-        await query.edit_message_text(
-            text=text,
-            parse_mode="Markdown",
-            reply_markup=markup,
-        )
+        _, selected_index = query.data.split("::", 1)
+        selected_index = int(selected_index)
     except Exception:
-        await query.message.reply_text(
-            text=text,
-            parse_mode="Markdown",
-            reply_markup=markup,
-        )
+        return
+
+    subject_code = context.user_data.get("uni_subject_code")
+    topic_code = context.user_data.get("uni_topic_code")
+
+    content = load_university_topic_content(subject_code, topic_code)
+    questions = content.get("check_questions", [])
+
+    q_index = context.user_data.get("uni_quiz_index", 0)
+    question = questions[q_index]
+
+    correct_index = question["answer_index"]
+
+    if selected_index == correct_index:
+        result_text = "✅ Correct!\n\n"
+    else:
+        result_text = "❌ Incorrect.\n\n"
+
+    result_text += f"*Explanation:*\n{question['explanation']}"
+
+    # Move to next question
+    q_index += 1
+    context.user_data["uni_quiz_index"] = q_index
+
+    if q_index >= len(questions):
+        # 🔥 MOVE TO SUMMARY
+        context.user_data["uni_phase"] = "summary"
+        return await show_summary(query, context, content)
+
+    next_q = questions[q_index]
+
+    rows = []
+    for i, opt in enumerate(next_q["options"]):
+        rows.append([
+            InlineKeyboardButton(opt, callback_data=f"uni_quiz_answer::{i}")
+        ])
+
+    markup = InlineKeyboardMarkup(rows)
+
+    return await query.edit_message_text(
+        text=result_text + f"\n\n❓ *{next_q['question']}*",
+        parse_mode="Markdown",
+        reply_markup=markup,
+    )
+
+
+# --------------------------
+# Show Summary
+# --------------------------
+async def show_summary(query, context, content):
+    summary = content.get("summary", [])
+
+    text = "📌 *Summary*\n\n"
+    for line in summary:
+        text += f"• {line}\n"
+
+    subject_code = context.user_data.get("uni_subject_code")
+
+    markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton("🔙 Back to Topics", callback_data=f"uni_sub::{subject_code}")]
+    ])
+
+    return await query.edit_message_text(
+        text=text,
+        parse_mode="Markdown",
+        reply_markup=markup,
+    )
 
 # -----------------------------------------------------
 # Register Handlers
@@ -422,5 +526,9 @@ def register_handlers(application):
 
     application.add_handler(
         CallbackQueryHandler(university_next_step_handler, pattern=r"^uni_next_step$")
+    )
+
+    application.add_handler(
+        CallbackQueryHandler(university_quiz_answer_handler, pattern=r"^uni_quiz_answer::")
     )
 
