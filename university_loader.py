@@ -1,6 +1,12 @@
-# =====================================================
+# ======================================================
 # university_loader.py
-# =====================================================
+# ======================================================
+import json
+import os
+
+BASE_PATH = "data/university"
+
+
 
 UNIVERSITY_CATEGORIES = {
     "gst": {
@@ -93,3 +99,13 @@ def get_university_subject_topics(subject_code: str) -> list[dict]:
             items.append(topic)
 
     return items
+
+
+def load_university_topic_content(subject_code: str, topic_code: str) -> dict | None:
+    try:
+        file_path = os.path.join(BASE_PATH, subject_code, f"{topic_code}.json")
+        with open(file_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return None
+
