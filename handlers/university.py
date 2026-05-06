@@ -422,8 +422,6 @@ async def university_quiz_answer_handler(update: Update, context: ContextTypes.D
     if not query:
         return
 
-    await query.answer()
-
     try:
         _, selected_index = query.data.split("::", 1)
         selected_index = int(selected_index)
@@ -545,4 +543,5 @@ def register_handlers(application):
     application.add_handler(
         CallbackQueryHandler(university_quiz_answer_handler, pattern=r"^uni_quiz_answer::")
     )
+
 
