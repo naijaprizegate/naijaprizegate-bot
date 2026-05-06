@@ -280,19 +280,34 @@ async def university_start_lesson_handler(update: Update, context: ContextTypes.
     if not content:
         return await query.answer("⚠️ Lesson not found.", show_alert=True)
 
-    steps = content.get("steps", [])
-    if not steps:
-        return await query.answer("⚠️ No lesson steps found.", show_alert=True)
+    sections = content.get("sections", [])
+    if not sections:
+        return await query.answer("⚠️ No lesson sections found.", show_alert=True)
+
+    # 🔥 Convert sections → steps
+    steps = []
+    for sec in sections:
+        text_parts = []
+
+        for line in sec.get("explanation", []):
+            text_parts.append(f"• {line}")
+
+        if sec.get("examples"):
+            text_parts.append("\n*Examples:*")
+            for ex in sec["examples"]:
+                text_parts.append(f"• {ex}")
+
+        steps.append({
+            "title": sec.get("title", "Lesson"),
+            "content": "\n".join(text_parts)
+        })
 
     context.user_data["uni_steps"] = steps
     context.user_data["uni_step_index"] = 0
 
     step = steps[0]
 
-    text = (
-        f"📘 *{step['title']}*\n\n"
-        f"{step['content']}"
-    )
+    text = f"📘 *{step['title']}*\n\n{step['content']}"
 
     markup = InlineKeyboardMarkup([
         [InlineKeyboardButton("⏭ Next", callback_data="uni_next_step")],
@@ -408,5 +423,4 @@ def register_handlers(application):
     application.add_handler(
         CallbackQueryHandler(university_next_step_handler, pattern=r"^uni_next_step$")
     )
-
 
