@@ -4,9 +4,15 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CallbackQueryHandler
 
-from university_loader import get_university_categories
-from university_loader import get_university_category_by_code, get_university_subject_by_code
-from university_loader import get_university_subject_by_code, get_university_subject_topics
+from university_loader import (
+    get_university_categories,
+    get_university_category_by_code,
+    get_university_subject_by_code,
+    get_university_subject_topics,
+    get_university_topic_by_code,
+    load_university_topic_content,
+)
+
 
 
 # ------------------------
@@ -197,6 +203,63 @@ async def university_subject_handler(update: Update, context: ContextTypes.DEFAU
             reply_markup=markup,
         )
 
+# ==============================================
+# University Topic Handler
+# ==============================================
+async def university_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    if not query:
+        return
+
+    await query.answer()
+
+    try:
+        _, topic_code = query.data.split("::", 1)
+    except Exception:
+        return await query.answer("⚠️ Invalid topic.", show_alert=True)
+
+    topic = get_university_topic_by_code(topic_code)
+    if not topic:
+        return await query.answer("⚠️ Topic not found.", show_alert=True)
+
+    subject_code = topic["subject_code"]
+
+    content = load_university_topic_content(subject_code, topic_code)
+    if not content:
+        return await query.answer("⚠️ Lesson content not found.", show_alert=True)
+
+    intro = content.get("intro", "No introduction available.")
+
+    # Save for next step
+    context.user_data["uni_subject_code"] = subject_code
+    context.user_data["uni_topic_code"] = topic_code
+    context.user_data["uni_step_index"] = 0
+
+    text = (
+        f"📖 *{topic['title']}*\n\n"
+        f"{intro}\n\n"
+        "Tap below to begin the lesson."
+    )
+
+    markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton("▶️ Start Lesson", callback_data="uni_start_lesson")],
+        [InlineKeyboardButton("🔙 Back", callback_data=f"uni_sub::{subject_code}")],
+    ])
+
+    try:
+        await query.edit_message_text(
+            text=text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+    except Exception:
+        await query.message.reply_text(
+            text=text,
+            parse_mode="Markdown",
+            reply_markup=markup,
+        )
+
+
 # ====================================================================
 # Register Handlers
 # ====================================================================
@@ -217,3 +280,6 @@ def register_handlers(application):
         CallbackQueryHandler(university_subject_handler, pattern=r"^uni_sub::")
     )
 
+    application.add_handler(
+        CallbackQueryHandler(university_topic_handler, pattern=r"^uni_topic::")
+    )
