@@ -14,3 +14,5 @@ def register_handlers(app):
             university_handler
         )
     )
+
+
