@@ -1,6 +1,6 @@
-# =====================================================================
+# ====================================================================
 # handlers/university.py
-# =====================================================================
+# ====================================================================
 
 import json
 import math
@@ -13,7 +13,7 @@ from telegram.ext import CommandHandler, CallbackQueryHandler, ContextTypes
 from sqlalchemy import text
 from helpers import md_escape
 
-from services.flutterwave_client import create_checkout, build_tx_ref, calculate_jamb_credits
+from services.flutterwave_client import create_checkout, build_tx_ref, calculate_university_credits
 from services.university_payments import create_pending_university_payment
 from db import get_async_session
 from university_loader import (
@@ -1637,7 +1637,7 @@ async def university_buy_pack_handler(update: Update, context: ContextTypes.DEFA
         )
 
     amount = pricing_map[pack_size]
-    credits = calculate_jamb_credits(amount)
+    credits = calculate_university_credits(amount)
 
     user = query.from_user
     tg_id = user.id
