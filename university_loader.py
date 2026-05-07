@@ -1,93 +1,76 @@
 # ======================================================
 # university_loader.py
 # ======================================================
+
 import json
 from pathlib import Path
+
+
+# ======================================================
+# BASE PATH
+# ======================================================
 
 BASE_PATH = Path("data/university")
 
 
-# ===================================
-# UNIVERSITY DATA
-# ===================================
+# ======================================================
+# UNIVERSITY CATEGORIES
+# ======================================================
 
 UNIVERSITY_CATEGORIES = [
 
+    # --------------------------------------------------
+    # GENERAL STUDIES
+    # --------------------------------------------------
     {
         "code": "general_studies",
         "name": "General Studies",
-        "subjects": [
-            "use_of_english",
-            "logic_philosophy",
-            "nigerian_culture",
-            "entrepreneurship",
-            "ict",
-            "library_study_skills",
-            "citizenship",
-        ]
     },
 
+    # --------------------------------------------------
+    # SCIENCE FOUNDATION
+    # --------------------------------------------------
     {
         "code": "science_foundation",
         "name": "Science Foundation",
-        "subjects": [
-            "general_biology",
-            "general_chemistry",
-            "general_physics",
-            "practical_biology",
-            "practical_chemistry",
-            "practical_physics",
-            "basic_mathematics",
-        ]
     },
 
+    # --------------------------------------------------
+    # ENGINEERING FOUNDATION
+    # --------------------------------------------------
     {
         "code": "engineering_foundation",
         "name": "Engineering Foundation",
-        "subjects": [
-            "algebra",
-            "calculus",
-            "engineering_physics",
-            "engineering_chemistry",
-            "engineering_drawing",
-            "basic_computing",
-        ]
     },
 
+    # --------------------------------------------------
+    # SOCIAL & MANAGEMENT
+    # --------------------------------------------------
     {
         "code": "social_management",
         "name": "Social and Management Sciences Foundation",
-        "subjects": [
-            "economics",
-            "accounting",
-            "social_science_mathematics",
-            "statistics",
-            "business_management",
-        ]
     },
 
+    # --------------------------------------------------
+    # ARTS & HUMANITIES
+    # --------------------------------------------------
     {
         "code": "arts_humanities",
         "name": "Arts and Humanities Foundation",
-        "subjects": [
-            "communication_english",
-            "history",
-            "literature",
-            "government",
-        ]
     },
 
 ]
 
-# ===================================
-# SUBJECTS
-# ===================================
+
+# ======================================================
+# UNIVERSITY SUBJECTS
+# ======================================================
 
 UNIVERSITY_SUBJECTS = [
 
-    # --------------------------------
+    # --------------------------------------------------
     # GENERAL STUDIES
-    # --------------------------------
+    # --------------------------------------------------
     {
         "code": "use_of_english",
         "name": "Use of English / Communication in English",
@@ -130,9 +113,9 @@ UNIVERSITY_SUBJECTS = [
         "category_code": "general_studies",
     },
 
-    # --------------------------------
+    # --------------------------------------------------
     # SCIENCE FOUNDATION
-    # --------------------------------
+    # --------------------------------------------------
     {
         "code": "general_biology",
         "name": "General Biology",
@@ -175,9 +158,9 @@ UNIVERSITY_SUBJECTS = [
         "category_code": "science_foundation",
     },
 
-    # --------------------------------
+    # --------------------------------------------------
     # ENGINEERING FOUNDATION
-    # --------------------------------
+    # --------------------------------------------------
     {
         "code": "algebra",
         "name": "Algebra",
@@ -214,9 +197,9 @@ UNIVERSITY_SUBJECTS = [
         "category_code": "engineering_foundation",
     },
 
-    # --------------------------------
+    # --------------------------------------------------
     # SOCIAL & MANAGEMENT
-    # --------------------------------
+    # --------------------------------------------------
     {
         "code": "economics",
         "name": "Economics",
@@ -247,9 +230,9 @@ UNIVERSITY_SUBJECTS = [
         "category_code": "social_management",
     },
 
-    # --------------------------------
+    # --------------------------------------------------
     # ARTS & HUMANITIES
-    # --------------------------------
+    # --------------------------------------------------
     {
         "code": "communication_english",
         "name": "Communication in English",
@@ -276,13 +259,40 @@ UNIVERSITY_SUBJECTS = [
 
 ]
 
+
+# ======================================================
+# GET ALL CATEGORIES
+# ======================================================
+
 def get_university_categories():
+
     return UNIVERSITY_CATEGORIES
 
 
-# ===================================
+# ======================================================
+# GET CATEGORY BY CODE
+# ======================================================
+
+def get_university_category_by_code(category_code: str):
+
+    return next(
+
+        (
+            category
+
+            for category in UNIVERSITY_CATEGORIES
+
+            if category["code"] == category_code
+        ),
+
+        None
+    )
+
+
+# ======================================================
 # GET SUBJECTS BY CATEGORY
-# ===================================
+# ======================================================
+
 def get_university_subjects_by_category(
     category_code: str
 ):
@@ -297,9 +307,10 @@ def get_university_subjects_by_category(
     ]
 
 
-# ===================================
+# ======================================================
 # GET SUBJECT BY CODE
-# ===================================
+# ======================================================
+
 def get_university_subject_by_code(
     subject_code: str
 ):
@@ -317,22 +328,16 @@ def get_university_subject_by_code(
         None
     )
 
-# ===================================
-# GET SUBJECT BY CODE
-# ===================================
-def get_university_subject_by_code(category_code: str, subject_code: str):
-    subjects = get_university_subjects(category_code)
 
-    return next(
-        (s for s in subjects if s["code"] == subject_code),
-        None
-    )
+# ======================================================
+# GET TOPICS
+# ======================================================
 
+def get_university_topics(
+    category_code: str,
+    subject_code: str,
+):
 
-# ===================================
-# TOPICS
-# ===================================
-def get_university_topics(category_code: str, subject_code: str):
     topics_path = (
         BASE_PATH
         / category_code
@@ -344,17 +349,20 @@ def get_university_topics(category_code: str, subject_code: str):
         return []
 
     with open(topics_path, "r", encoding="utf-8") as f:
+
         return json.load(f)
 
 
-# ===================================
-# LOAD QUESTIONS
-# ===================================
+# ======================================================
+# LOAD TOPIC QUESTIONS
+# ======================================================
+
 def load_university_topic_questions(
     category_code: str,
     subject_code: str,
     topic_id: str,
 ):
+
     question_file = (
         BASE_PATH
         / category_code
@@ -367,4 +375,5 @@ def load_university_topic_questions(
         return []
 
     with open(question_file, "r", encoding="utf-8") as f:
+
         return json.load(f)
