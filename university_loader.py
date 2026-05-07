@@ -2,110 +2,95 @@
 # university_loader.py
 # ======================================================
 import json
-import os
+from pathlib import Path
 
-BASE_PATH = "data/university"
+BASE_PATH = Path("data/university")
 
 
-
-UNIVERSITY_CATEGORIES = {
-    "gst": {
-        "name": "General Studies",
-        "subjects": ["comm_eng"],
+# ===================================
+# CATEGORIES
+# ===================================
+UNIVERSITY_CATEGORIES = [
+    {
+        "code": "science_foundation",
+        "name": "Science Foundation",
     },
-}
-
-UNIVERSITY_SUBJECTS = {
-    "comm_eng": {
-        "name": "Communication in English",
-        "category_code": "gst",
-        "topics": ["parts_of_speech", "tenses", "concord"],
-    },
-}
-
-UNIVERSITY_TOPICS = {
-    "parts_of_speech": {
-        "title": "Parts of Speech",
-        "subject_code": "comm_eng",
-    },
-    "tenses": {
-        "title": "Tenses",
-        "subject_code": "comm_eng",
-    },
-    "concord": {
-        "title": "Concord",
-        "subject_code": "comm_eng",
-    },
-}
+]
 
 
-def get_university_categories() -> list[dict]:
-    items = []
-    for code, data in UNIVERSITY_CATEGORIES.items():
-        items.append({
-            "code": code,
-            "name": data["name"],
-            "subjects": data["subjects"],
-        })
-    return items
+def get_university_categories():
+    return UNIVERSITY_CATEGORIES
 
 
-def get_university_category_by_code(category_code: str) -> dict | None:
-    category = UNIVERSITY_CATEGORIES.get(str(category_code or "").strip())
-    if not category:
-        return None
+# ===================================
+# SUBJECTS
+# ===================================
+def get_university_subjects(category_code: str):
+    category_path = BASE_PATH / category_code
 
-    return {
-        "code": str(category_code).strip(),
-        "name": category["name"],
-        "subjects": category["subjects"],
-    }
-
-
-def get_university_subject_by_code(subject_code: str) -> dict | None:
-    subject = UNIVERSITY_SUBJECTS.get(str(subject_code or "").strip())
-    if not subject:
-        return None
-
-    return {
-        "code": str(subject_code).strip(),
-        "name": subject["name"],
-        "category_code": subject["category_code"],
-        "topics": subject["topics"],
-    }
-
-
-def get_university_topic_by_code(topic_code: str) -> dict | None:
-    topic = UNIVERSITY_TOPICS.get(str(topic_code or "").strip())
-    if not topic:
-        return None
-
-    return {
-        "code": str(topic_code).strip(),
-        "title": topic["title"],
-        "subject_code": topic["subject_code"],
-    }
-
-
-def get_university_subject_topics(subject_code: str) -> list[dict]:
-    subject = get_university_subject_by_code(subject_code)
-    if not subject:
+    if not category_path.exists():
         return []
 
-    items = []
-    for topic_code in subject["topics"]:
-        topic = get_university_topic_by_code(topic_code)
-        if topic:
-            items.append(topic)
+    subjects = []
 
-    return items
+    for subject_dir in category_path.iterdir():
+        if subject_dir.is_dir():
+            subjects.append({
+                "code": subject_dir.name,
+                "name": subject_dir.name.replace("_", " ").title(),
+            })
+
+    return sorted(subjects, key=lambda x: x["name"])
 
 
-def load_university_topic_content(subject_code: str, topic_code: str) -> dict | None:
-    try:
-        file_path = os.path.join(BASE_PATH, subject_code, f"{topic_code}.json")
-        with open(file_path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception:
-        return None
+# ===================================
+# GET SUBJECT BY CODE
+# ===================================
+def get_university_subject_by_code(category_code: str, subject_code: str):
+    subjects = get_university_subjects(category_code)
 
+    return next(
+        (s for s in subjects if s["code"] == subject_code),
+        None
+    )
+
+
+# ===================================
+# TOPICS
+# ===================================
+def get_university_topics(category_code: str, subject_code: str):
+    topics_path = (
+        BASE_PATH
+        / category_code
+        / subject_code
+        / "topics.json"
+    )
+
+    if not topics_path.exists():
+        return []
+
+    with open(topics_path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+# ===================================
+# LOAD QUESTIONS
+# ===================================
+def load_university_topic_questions(
+    category_code: str,
+    subject_code: str,
+    topic_id: str,
+):
+    question_file = (
+        BASE_PATH
+        / category_code
+        / subject_code
+        / "questions"
+        / f"{topic_id}.json"
+    )
+
+    if not question_file.exists():
+        return []
+
+    with open(question_file, "r", encoding="utf-8") as f:
+        return json.load(f)
