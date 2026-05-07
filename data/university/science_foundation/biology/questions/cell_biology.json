@@ -1,0 +1,30 @@
+[
+  {
+    "id": "bio_cell_001",
+    "question": "The basic unit of life is called?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Nucleus"
+    },
+    "answer": "B",
+    "explanation": {
+      "simple_explanation": "The cell is the smallest structural and functional unit of life."
+    }
+  },
+  {
+    "id": "bio_cell_002",
+    "question": "Which organelle controls the activities of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Mitochondria",
+      "C": "Nucleus",
+      "D": "Cell membrane"
+    },
+    "answer": "C",
+    "explanation": {
+      "simple_explanation": "The nucleus acts as the control center of the cell."
+    }
+  }
+]
