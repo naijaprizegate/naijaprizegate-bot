@@ -1,0 +1,41 @@
+{
+  "module_id": "cell_biology",
+  "module_title": "Cell Biology",
+  "topics": [
+    {
+      "id": "gb_cell_001",
+      "number": 1,
+      "title": "Cell Theory",
+      "file": "../questions/gb_cell_001.json",
+      "active": true
+    },
+    {
+      "id": "gb_cell_002",
+      "number": 2,
+      "title": "Prokaryotic and Eukaryotic Cells",
+      "file": "../questions/gb_cell_002.json",
+      "active": true
+    },
+    {
+      "id": "gb_cell_003",
+      "number": 3,
+      "title": "Cell Organelles",
+      "file": "../questions/gb_cell_003.json",
+      "active": true
+    },
+    {
+      "id": "gb_cell_004",
+      "number": 4,
+      "title": "Cell Membrane",
+      "file": "../questions/gb_cell_004.json",
+      "active": true
+    },
+    {
+      "id": "gb_cell_005",
+      "number": 5,
+      "title": "Cell Transport",
+      "file": "../questions/gb_cell_005.json",
+      "active": true
+    }
+  ]
+}
