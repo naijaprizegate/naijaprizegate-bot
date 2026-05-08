@@ -22,15 +22,20 @@ from university_loader import (
     get_university_category_by_code,
     get_university_subjects_by_category,
     get_university_subject_by_code,
-    get_university_topics,
+
+    get_university_modules,
+    get_university_module_by_id,
+
+    get_university_module_topics,
+    get_university_topic_by_id,
+
+    load_university_topic_questions,
+
     prepare_university_topic_question_batch,
     prepare_university_course_mock_batch,
 )
 
 logger = logging.getLogger(__name__)
-
-TOPICS_PER_PAGE = 7
-
 
 # ---------------------
 # DB helpers
@@ -948,12 +953,50 @@ def make_subject_keyboard(category_code: str):
     return InlineKeyboardMarkup(rows)
 
 
+def make_module_keyboard(category_code: str, subject_code: str):
+    modules = get_university_modules(
+        category_code,
+        subject_code,
+    )
+
+    rows = []
+
+    for module in modules:
+        rows.append([
+            InlineKeyboardButton(
+                f"{module['number']}. {module['title']}",
+                callback_data=(
+                    f"ut_module::"
+                    f"{category_code}::"
+                    f"{subject_code}::"
+                    f"{module['id']}"
+                )
+            )
+        ])
+
+    rows.append([
+        InlineKeyboardButton(
+            "⬅️ Back to Subjects",
+            callback_data=f"ut_back_subjects::{category_code}"
+        )
+    ])
+
+    rows.append([
+        InlineKeyboardButton(
+            "🏠 Back to Main Menu",
+            callback_data="menu:main"
+        )
+    ])
+
+    return InlineKeyboardMarkup(rows)
+
+
 def make_mode_keyboard(subject_code: str):
     return InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("📚 By Topics", callback_data=f"ut_mode_topics_{subject_code}")],
             [InlineKeyboardButton("📝 Course Mock (By course)", callback_data=f"ut_mode_mock_{subject_code}")],
-            [InlineKeyboardButton("⬅️ Back to courses", callback_data="university")],
+            [InlineKeyboardButton("⬅️ Back to Subjects", callback_data=f"ut_back_subjects::{category_code}")]
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
@@ -962,47 +1005,49 @@ def make_mode_keyboard(subject_code: str):
 def make_topics_keyboard(
     category_code: str,
     subject_code: str,
-    page: int = 1,
+    module_id: str,
 ):
-    topics = get_university_topics(
+    topics = get_university_module_topics(
         category_code,
         subject_code,
+        module_id,
     )
-    total_topics = len(topics)
-    total_pages = max(1, math.ceil(total_topics / TOPICS_PER_PAGE))
-
-    page = max(1, min(page, total_pages))
-
-    start = (page - 1) * TOPICS_PER_PAGE
-    end = start + TOPICS_PER_PAGE
-    page_topics = topics[start:end]
 
     rows = []
 
-    for topic in page_topics:
+    for topic in topics:
         rows.append([
             InlineKeyboardButton(
                 f"{topic['number']}. {topic['title']}",
-                callback_data=f"ut_topic::{subject_code}::{topic['id']}"
+                callback_data=(
+                    f"ut_topic::"
+                    f"{category_code}::"
+                    f"{subject_code}::"
+                    f"{module_id}::"
+                    f"{topic['id']}"
+                )
             )
         ])
 
-    nav_row = []
-    if page > 1:
-        nav_row.append(
-            InlineKeyboardButton("◀ Prev", callback_data=f"ut_topicpage_{subject_code}_{page-1}")
+    rows.append([
+        InlineKeyboardButton(
+            "⬅️ Back to Modules",
+            callback_data=(
+                f"ut_back_modules::"
+                f"{category_code}::"
+                f"{subject_code}"
+            )
         )
-    if page < total_pages:
-        nav_row.append(
-            InlineKeyboardButton("Next ▶", callback_data=f"ut_topicpage_{subject_code}_{page+1}")
+    ])
+
+    rows.append([
+        InlineKeyboardButton(
+            "🏠 Back to Main Menu",
+            callback_data="menu:main"
         )
-    if nav_row:
-        rows.append(nav_row)
+    ])
 
-    rows.append([InlineKeyboardButton("⬅️ Back to Mode", callback_data=f"ut_back_mode_{subject_code}")])
-    rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
-
-    return InlineKeyboardMarkup(rows), page, total_pages
+    return InlineKeyboardMarkup(rows)
 
 
 def make_topic_access_keyboard_for_course(
@@ -1128,6 +1173,7 @@ async def university_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     context.user_data["ut_subject_code"] = None
     context.user_data["ut_mode"] = None
     context.user_data["ut_topic_id"] = None
+    context.user_data["ut_module_id"] = None
     context.user_data["ut_topic_page"] = 1
 
     text_msg = build_welcome_text(
@@ -1195,14 +1241,17 @@ async def university_subject_handler(update: Update, context: ContextTypes.DEFAU
     context.user_data["ut_subject_code"] = subject_code
     context.user_data["ut_mode"] = None
     context.user_data["ut_topic_id"] = None
+    context.user_data["ut_module_id"] = None
     context.user_data["ut_topic_page"] = 1
 
     await query.message.reply_text(
         f"📘 *You selected:* {subject['name']}\n\n"
         "How would you like to practice?",
         parse_mode="MarkdownV2",
-        reply_markup=make_mode_keyboard(subject_code),
-    )
+        reply_markup=make_mode_keyboard(
+            category_code, 
+            subject_code),
+        )
 
 # --------------------------------
 # UNIVERSITY course MOCK SCREEN
@@ -1215,6 +1264,7 @@ async def open_university_course_mock_screen(
     context.user_data["ut_subject_code"] = subject_code
     context.user_data["ut_mode"] = "course_mock"
     context.user_data["ut_topic_id"] = None
+    context.user_data["ut_module_id"] = None
 
     tg = update.effective_user
     user_id = tg.id
@@ -1370,29 +1420,21 @@ async def university_mode_handler(update: Update, context: ContextTypes.DEFAULT_
 
     if data.startswith("ut_mode_topics_"):
         subject_code = data.replace("ut_mode_topics_", "", 1)
-        context.user_data["ut_subject_code"] = subject_code
-        context.user_data["ut_mode"] = "topic_practice"
-        context.user_data["ut_topic_page"] = 1
 
-        subject = get_university_subject_by_code(subject_code)
         category_code = context.user_data.get("ut_category_code")
 
-        kb, page, total_pages = make_topics_keyboard(
-            category_code,
-            subject_code,
-            1,
-        )
-
-        safe_course_name = md_escape(str(subject["name"]))
-        safe_page = md_escape(str(page))
-        safe_total_pages = md_escape(str(total_pages))
+        context.user_data["ut_subject_code"] = subject_code
+        context.user_data["ut_mode"] = "topic_practice"
+        context.user_data["ut_module_id"] = None
+        context.user_data["ut_topic_id"] = None
 
         return await query.message.reply_text(
-            f"📚 *{safe_course_name} Topics*\n\n"
-            f"Choose a topic below\\.\n"
-            f"_Page {safe_page} of {safe_total_pages}_",
+            "📚 *Choose a Module*",
             parse_mode="MarkdownV2",
-            reply_markup=kb,
+            reply_markup=make_module_keyboard(
+                category_code,
+                subject_code,
+            ),
         )
 
     if data.startswith("ut_mode_mock_"):
@@ -1400,61 +1442,65 @@ async def university_mode_handler(update: Update, context: ContextTypes.DEFAULT_
         return await open_university_course_mock_screen(update, context, subject_code)
 
 
-# =============================
-# Topic pagination
-# =============================
-async def university_topic_page_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+# ---------------------------------
+# University Module Handler
+# ---------------------------------
+async def university_module_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
+
     if not query:
         return
 
     await query.answer()
 
     try:
-        _, _, subject_code, page_str = query.data.split("_", 3)
-        page = int(page_str)
+        _, category_code, subject_code, module_id = query.data.split("::")
     except Exception:
         return await query.message.reply_text(
-            "⚠️ Invalid topic page\\.",
-            parse_mode="MarkdownV2",
+            "⚠️ Invalid module selection."
         )
 
-    context.user_data["ut_subject_code"] = subject_code
-    context.user_data["ut_topic_page"] = page
-
-    subject = get_university_subject_by_code(subject_code)
-    category_code = context.user_data.get("ut_category_code")
-
-    kb, page, total_pages = make_topics_keyboard(
+    module = get_university_module_by_id(
         category_code,
         subject_code,
-        page,
+        module_id,
     )
 
-    safe_course_name = md_escape(str(subject["name"]))
-    safe_page = md_escape(str(page))
-    safe_total_pages = md_escape(str(total_pages))
+    if not module:
+        return await query.message.reply_text(
+            "⚠️ Module not found."
+        )
+
+    context.user_data["ut_category_code"] = category_code
+    context.user_data["ut_subject_code"] = subject_code
+    context.user_data["ut_module_id"] = module_id
 
     await query.message.reply_text(
-        f"📚 *{safe_course_name} Topics*\n\n"
-        f"Choose a topic below\\.\n"
-        f"_Page {safe_page} of {safe_total_pages}_",
+        f"📚 *{module['title']}*\n\nChoose a topic.",
         parse_mode="MarkdownV2",
-        reply_markup=kb,
+        reply_markup=make_topics_keyboard(
+            category_code,
+            subject_code,
+            module_id,
+        ),
     )
 
 
 async def send_university_topic_access_screen(
     message,
     context: ContextTypes.DEFAULT_TYPE,
+    category_code: str,
     subject_code: str,
+    module_id: str,
     topic_id: str,
     user_id: int,
 ):
     category_code = context.user_data.get("ut_category_code")
-    topics = get_university_topics(
+    module_id = context.user_data.get("ut_module_id")
+    topics = get_university_module_topics(
         category_code,
         subject_code,
+        module_id
     )
     selected_topic = next((t for t in topics if t["id"] == topic_id), None)
 
@@ -1492,25 +1538,34 @@ async def send_university_topic_access_screen(
         ),
     )
 
+
 async def university_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
+
     if not query:
         return
 
     await query.answer()
 
     try:
-        _, subject_code, topic_id = query.data.split("::")
+        _, category_code, subject_code, module_id, topic_id = query.data.split("::")
     except Exception:
         return await query.message.reply_text(
             "⚠️ Invalid topic selection\\.",
             parse_mode="MarkdownV2",
         )
 
+    context.user_data["ut_category_code"] = category_code
+    context.user_data["ut_subject_code"] = subject_code
+    context.user_data["ut_module_id"] = module_id
+    context.user_data["ut_topic_id"] = topic_id
+
     await send_university_topic_access_screen(
         query.message,
         context,
+        category_code=category_code,
         subject_code=subject_code,
+        module_id=module_id,
         topic_id=topic_id,
         user_id=update.effective_user.id,
     )
@@ -1531,8 +1586,9 @@ async def university_start_free_handler(update: Update, context: ContextTypes.DE
 
     subject_code = context.user_data.get("ut_subject_code")
     topic_id = context.user_data.get("ut_topic_id")
+    module_id = context.user_data.get("ut_module_id")
 
-    if not subject_code or not topic_id:
+    if not subject_code or not topic_id or not module_id:
         return await query.message.reply_text(
             "⚠️ Topic session data missing\\. Please choose your course and topic again\\.",
             parse_mode="MarkdownV2",
@@ -1561,6 +1617,7 @@ async def university_start_free_handler(update: Update, context: ContextTypes.DE
     batch = prepare_university_topic_question_batch(
         category_code=category_code,
         subject_code=subject_code,
+        module_id=module_id,
         topic_id=topic_id,
         requested_count=requested_count,
         seen_question_ids=seen_question_ids,
@@ -1606,9 +1663,10 @@ async def university_start_free_handler(update: Update, context: ContextTypes.DE
 
     topic = next(
         (
-            t for t in get_university_topics(
+            t for t in get_university_module_topics(
                 category_code,
                 subject_code,
+                module_id
             )
             if t["id"] == topic_id
         ),
@@ -2424,12 +2482,27 @@ async def university_back_mode_handler(update: Update, context: ContextTypes.DEF
 
     await query.answer()
 
-    subject_code = query.data.replace("ut_back_mode_", "", 1)
+    try:
+        _, category_code, subject_code = query.data.split("::")
+    except Exception:
+        return await query.message.reply_text(
+            "⚠️ Invalid back navigation\\.",
+            parse_mode="MarkdownV2",
+        )
+
     subject = get_university_subject_by_code(subject_code)
 
+    if not subject:
+        return await query.message.reply_text(
+            "⚠️ Subject not found\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    context.user_data["ut_category_code"] = category_code
     context.user_data["ut_subject_code"] = subject_code
     context.user_data["ut_mode"] = None
     context.user_data["ut_topic_id"] = None
+    context.user_data["ut_module_id"] = None
 
     safe_course_name = md_escape(str(subject["name"]))
 
@@ -2437,7 +2510,63 @@ async def university_back_mode_handler(update: Update, context: ContextTypes.DEF
         f"📘 *You selected:* {safe_course_name}\n\n"
         "How would you like to practice\\?",
         parse_mode="MarkdownV2",
-        reply_markup=make_mode_keyboard(subject_code),
+        reply_markup=make_mode_keyboard(
+            category_code,
+            subject_code,
+        ),
+    )
+
+
+# --------------------------------------
+# University Back Module Handler
+# ------------------------------------
+async def university_back_modules_handler(update, context):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    try:
+        _, category_code, subject_code = query.data.split("::")
+    except Exception:
+        return
+
+    await query.message.reply_text(
+        "📚 *Choose a Module*",
+        parse_mode="MarkdownV2",
+        reply_markup=make_module_keyboard(
+            category_code,
+            subject_code,
+        ),
+    )
+
+# --------------------------------------
+# University Back Subject Handler
+# ------------------------------------
+async def university_back_subjects_handler(update, context):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    try:
+        _, category_code = query.data.split("::")
+    except Exception:
+        return
+
+    category = get_university_category_by_code(category_code)
+
+    if not category:
+        return
+
+    await query.message.reply_text(
+        f"📚 *{md_escape(category['name'])}*\n\nChoose a subject\\.",
+        parse_mode="MarkdownV2",
+        reply_markup=make_subject_keyboard(category_code),
     )
 
 # --------------------------------------
@@ -2489,7 +2618,10 @@ async def university_paid_count_handler(update: Update, context: ContextTypes.DE
         )
 
     user_id = update.effective_user.id
+
+    category_code = context.user_data.get("ut_category_code")
     subject_code = context.user_data.get("ut_subject_code")
+    module_id = context.user_data.get("ut_module_id")
     topic_id = context.user_data.get("ut_topic_id")
 
     if not subject_code or not topic_id:
@@ -2516,6 +2648,7 @@ async def university_paid_count_handler(update: Update, context: ContextTypes.DE
     batch = prepare_university_topic_question_batch(
         category_code=category_code,
         subject_code=subject_code,
+        module_id=module_id,
         topic_id=topic_id,
         requested_count=actual_count,
         seen_question_ids=seen_question_ids,
@@ -2557,13 +2690,12 @@ async def university_paid_count_handler(update: Update, context: ContextTypes.DE
     context.user_data["ut_last_passage_id_shown"] = ""
     context.user_data["ut_active_passage_message_id"] = None
 
-    category_code = context.user_data.get("ut_category_code")
-
     topic = next(
         (
-            t for t in get_university_topics(
+            t for t in get_university_module_topics(
                 category_code,
                 subject_code,
+                module_id,
             )
             if t["id"] == topic_id
         ),
@@ -2572,7 +2704,10 @@ async def university_paid_count_handler(update: Update, context: ContextTypes.DE
     
     topic_title = topic["title"] if topic else topic_id
 
-    subject = get_university_subject_by_code(subject_code)
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
+    )
     course_name = subject["name"] if subject else subject_code
 
     safe_course_name = md_escape(str(course_name))
@@ -2684,6 +2819,7 @@ async def university_mock_start_paid_handler(update: Update, context: ContextTyp
     context.user_data["ut_session_mode"] = "course_mock"
     context.user_data["ut_mode"] = "course_mock"
     context.user_data["ut_topic_id"] = None
+    context.user_data["ut_module_id"] = None
     context.user_data["ut_question_batch"] = batch
     context.user_data["ut_question_ids"] = [str(q.get("id")) for q in batch if q.get("id")]
     context.user_data["ut_current_index"] = 0
@@ -2817,14 +2953,17 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(university_handler, pattern=r"^(university|uni_start)$"))
     application.add_handler(CallbackQueryHandler(university_category_handler, pattern=r"^ut_cat_"))
     application.add_handler(CallbackQueryHandler(university_subject_handler, pattern=r"^ut_subj_"))
+    application.add_handler(CallbackQueryHandler(university_module_handler, pattern=r"^ut_module::"))
     application.add_handler(CallbackQueryHandler(university_mode_handler, pattern=r"^ut_mode_"))
 
     application.add_handler(CallbackQueryHandler(university_mock_start_paid_handler, pattern=r"^ut_mock_start_paid$"))
     application.add_handler(CallbackQueryHandler(university_mock_resume_handler, pattern=r"^ut_mock_resume$"))
 
-    application.add_handler(CallbackQueryHandler(university_topic_page_handler, pattern=r"^ut_topicpage_"))
     application.add_handler(CallbackQueryHandler(university_topic_handler, pattern=r"^ut_topic::"))
     application.add_handler(CallbackQueryHandler(university_back_mode_handler, pattern=r"^ut_back_mode_"))
+    application.add_handler(CallbackQueryHandler(university_back_subjects_handler, pattern=r"^ut_back_subjects::"))
+
+    application.add_handler(CallbackQueryHandler(university_back_modules_handler, pattern=r"^ut_back_modules::"))
     application.add_handler(CallbackQueryHandler(university_start_free_handler, pattern=r"^ut_start_free$"))
     application.add_handler(CallbackQueryHandler(university_use_paid_handler, pattern=r"^ut_use_paid$"))
     application.add_handler(CallbackQueryHandler(university_paid_count_handler, pattern=r"^ut_paidcount_"))
