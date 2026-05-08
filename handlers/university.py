@@ -22,7 +22,8 @@ from university_loader import (
     get_university_subjects_by_category,
     get_university_subject_by_code,
     get_university_topics,
-    load_university_topic_questions,
+    prepare_university_topic_question_batch,
+    prepare_university_course_mock_batch,
 )
 
 logger = logging.getLogger(__name__)
@@ -30,9 +31,9 @@ logger = logging.getLogger(__name__)
 TOPICS_PER_PAGE = 7
 
 
-# =============================
+# ---------------------
 # DB helpers
-# =============================
+# --------------------
 async def ensure_university_user_access(user_id: int):
     async with get_async_session() as session:
         async with session.begin():
@@ -387,12 +388,12 @@ async def clear_university_session_state(context: ContextTypes.DEFAULT_TYPE):
 # =============================
 def get_university_mock_question_count(subject_code: str) -> int:
     subject_code = str(subject_code or "").strip().lower()
-    return 60 if subject_code == "eng" else 40
+    return 40
 
 
 def get_university_mock_duration_minutes(subject_code: str) -> int:
     subject_code = str(subject_code or "").strip().lower()
-    return 45 if subject_code == "eng" else 30
+    return 30
 
 
 def extract_correct_option(question: dict) -> str:
@@ -624,6 +625,7 @@ async def create_university_course_mock_paper_if_needed(
     user_id: int,
     session_id: int,
     subject_code: str,
+    category_code: str,
 ) -> dict:
     existing_paper = await get_university_session_paper(session_id)
     if existing_paper:
@@ -637,16 +639,12 @@ async def create_university_course_mock_paper_if_needed(
     seen_question_ids = await get_seen_question_ids_for_course(user_id, subject_code)
     requested_count = get_university_mock_question_count(subject_code)
 
-    if subject_code == "eng":
-        batch = prepare_use_of_english_batch(
-            seen_question_ids=seen_question_ids,
-        )
-    else:
-        batch = prepare_course_question_batch(
-            subject_code=subject_code,
-            requested_count=requested_count,
-            seen_question_ids=seen_question_ids,
-        )
+    batch = prepare_university_course_mock_batch(
+        category_code=category_code,
+        subject_code=subject_code,
+        requested_count=requested_count,
+        seen_question_ids=seen_question_ids,
+    )
 
     if batch.get("cycle_reset"):
         await reset_course_history(user_id, subject_code)
@@ -833,8 +831,7 @@ def build_university_mock_access_text(course_name: str, question_count: int, moc
         f"🎟 Mock Sessions Available: *{safe_mock_sessions}*\n\n"
         "*What this means:*\n"
         "• You will answer a *full paper* for this course\n"
-        "• *Use of English* has *60 questions*\n"
-        "• *Other courses* have *40 questions*\n\n"
+        "• *The courses* have *40 questions*\n\n"
         "• If you want to practise only one topic, use *By Topics*\n"
         "• If you want to write the full course like an exam, use *Course Mock \\(By course\\)*\n\n"
         "*Before you start:*\n"
@@ -961,8 +958,15 @@ def make_mode_keyboard(subject_code: str):
     )
 
 
-def make_topics_keyboard(subject_code: str, page: int = 1):
-    topics = get_course_topics(subject_code)
+def make_topics_keyboard(
+    category_code: str,
+    subject_code: str,
+    page: int = 1,
+):
+    topics = get_university_topics(
+        category_code,
+        subject_code,
+    )
     total_topics = len(topics)
     total_pages = max(1, math.ceil(total_topics / TOPICS_PER_PAGE))
 
@@ -1080,8 +1084,7 @@ def build_welcome_text(
         "   You choose one course, then choose one topic under that course, and practise questions from that topic\\.\n\n"
         "2\\. *Course Mock \\(By course\\)* \n"
         "   You choose one full course and answer it like an exam paper\\.\n"
-        "   *Use of English* has *60 questions*\\.\n"
-        "   *Other courses* have *40 questions*\\.\n\n"
+        "   *The courses* have *40 questions*\\.\n\n"
         "*How payment works:*\n"
         "• *First\\-time users* get *5 free questions* for *By Topics* practice only\n"
         "• *By Topics* uses *paid question credits*\n"
@@ -1183,7 +1186,7 @@ async def university_subject_handler(update: Update, context: ContextTypes.DEFAU
         return await query.message.reply_text("⚠️ Invalid course selection.")
 
     subject = get_university_subject_by_code(subject_code)
-    if not course:
+    if not subject:
         return await query.message.reply_text("⚠️ course not found or inactive.")
 
     context.user_data["ut_subject_code"] = subject_code
@@ -1192,7 +1195,7 @@ async def university_subject_handler(update: Update, context: ContextTypes.DEFAU
     context.user_data["ut_topic_page"] = 1
 
     await query.message.reply_text(
-        f"📘 *You selected:* {course['name']}\n\n"
+        f"📘 *You selected:* {subject['name']}\n\n"
         "How would you like to practice?",
         parse_mode="MarkdownV2",
         reply_markup=make_mode_keyboard(subject_code),
@@ -1214,7 +1217,7 @@ async def open_university_course_mock_screen(
     user_id = tg.id
 
     subject = get_university_subject_by_code(subject_code)
-    if not course:
+    if not subject:
         return await update.effective_message.reply_text(
             "⚠️ course not found\\.",
             parse_mode="MarkdownV2",
@@ -1369,7 +1372,13 @@ async def university_mode_handler(update: Update, context: ContextTypes.DEFAULT_
         context.user_data["ut_topic_page"] = 1
 
         subject = get_university_subject_by_code(subject_code)
-        kb, page, total_pages = make_topics_keyboard(subject_code, 1)
+        category_code = context.user_data.get("ut_category_code")
+
+        kb, page, total_pages = make_topics_keyboard(
+            category_code,
+            subject_code,
+            1,
+        )
 
         safe_course_name = md_escape(str(subject["name"]))
         safe_page = md_escape(str(page))
@@ -1411,7 +1420,13 @@ async def university_topic_page_handler(update: Update, context: ContextTypes.DE
     context.user_data["ut_topic_page"] = page
 
     subject = get_university_subject_by_code(subject_code)
-    kb, page, total_pages = make_topics_keyboard(subject_code, page)
+    category_code = context.user_data.get("ut_category_code")
+
+    kb, page, total_pages = make_topics_keyboard(
+        category_code,
+        subject_code,
+        page,
+    )
 
     safe_course_name = md_escape(str(subject["name"]))
     safe_page = md_escape(str(page))
@@ -1433,7 +1448,11 @@ async def send_university_topic_access_screen(
     topic_id: str,
     user_id: int,
 ):
-    topics = get_course_topics(subject_code)
+    category_code = context.user_data.get("ut_category_code")
+    topics = get_university_topics(
+        category_code,
+        subject_code,
+    )
     selected_topic = next((t for t in topics if t["id"] == topic_id), None)
 
     if not selected_topic:
@@ -1534,7 +1553,7 @@ async def university_start_free_handler(update: Update, context: ContextTypes.DE
         topic_id=topic_id,
     )
 
-    batch = prepare_topic_question_batch(
+    batch = prepare_university_topic_question_batch(
         subject_code=subject_code,
         topic_id=topic_id,
         requested_count=requested_count,
@@ -1577,11 +1596,23 @@ async def university_start_free_handler(update: Update, context: ContextTypes.DE
     context.user_data["ut_last_passage_id_shown"] = ""
     context.user_data["ut_active_passage_message_id"] = None
 
-    topic = next((t for t in get_course_topics(subject_code) if t["id"] == topic_id), None)
+    category_code = context.user_data.get("ut_category_code")
+
+    topic = next(
+        (
+            t for t in get_university_topics(
+                category_code,
+                subject_code,
+            )
+            if t["id"] == topic_id
+        ),
+        None,
+    )
+    
     topic_title = topic["title"] if topic else topic_id
 
     subject = get_university_subject_by_code(subject_code)
-    course_name = subject["name"] if course else subject_code
+    course_name = subject["name"] if subject else subject_code
 
     safe_course_name = md_escape(str(course_name))
     safe_topic_title = md_escape(str(topic_title))
@@ -2030,7 +2061,7 @@ async def send_current_university_question(update: Update, context: ContextTypes
         await set_university_session_current_question_index(int(session_id), current_index)
 
     subject = get_university_subject_by_code(subject_code) or {"name": subject_code}
-    course_name = course.get("name", subject_code)
+    course_name = subject.get("name", subject_code)
 
     # Tag question with session mode for builder
     question["_session_mode"] = session_mode
@@ -2430,7 +2461,7 @@ async def university_paid_count_handler(update: Update, context: ContextTypes.DE
         topic_id=topic_id,
     )
 
-    batch = prepare_topic_question_batch(
+    batch = prepare_university_topic_question_batch(
         subject_code=subject_code,
         topic_id=topic_id,
         requested_count=actual_count,
@@ -2473,11 +2504,23 @@ async def university_paid_count_handler(update: Update, context: ContextTypes.DE
     context.user_data["ut_last_passage_id_shown"] = ""
     context.user_data["ut_active_passage_message_id"] = None
 
-    topic = next((t for t in get_course_topics(subject_code) if t["id"] == topic_id), None)
+    category_code = context.user_data.get("ut_category_code")
+
+    topic = next(
+        (
+            t for t in get_university_topics(
+                category_code,
+                subject_code,
+            )
+            if t["id"] == topic_id
+        ),
+        None,
+    )
+    
     topic_title = topic["title"] if topic else topic_id
 
     subject = get_university_subject_by_code(subject_code)
-    course_name = subject["name"] if course else subject_code
+    course_name = subject["name"] if subject else subject_code
 
     safe_course_name = md_escape(str(course_name))
     safe_topic_title = md_escape(str(topic_title))
@@ -2534,7 +2577,7 @@ async def university_mock_start_paid_handler(update: Update, context: ContextTyp
         )
 
     subject = get_university_subject_by_code(subject_code)
-    if not course:
+    if not subject:
         return await query.message.reply_text(
             "⚠️ course not found\\.",
             parse_mode="MarkdownV2",
