@@ -13,7 +13,7 @@ from telegram.ext import CommandHandler, CallbackQueryHandler, ContextTypes
 from sqlalchemy import text
 from helpers import md_escape
 
-from services.flutterwave_client import create_checkout, build_tx_ref, calculate_university_credits
+from services.flutterwave_client import create_checkout, build_tx_ref
 from services.university_payments import create_pending_university_payment
 from db import get_async_session
 from university_loader import (
@@ -1668,7 +1668,7 @@ async def university_buy_pack_handler(update: Update, context: ContextTypes.DEFA
         )
 
     amount = pricing_map[pack_size]
-    credits = calculate_university_credits(amount)
+    credits = int(pack_size)
 
     user = query.from_user
     tg_id = user.id
@@ -2782,4 +2782,3 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(university_answer_handler, pattern=r"^ut_ans::"))
     application.add_handler(CallbackQueryHandler(university_answer_details_handler, pattern=r"^ut_details$"))
     application.add_handler(CallbackQueryHandler(university_next_handler, pattern=r"^ut_next$"))
-
