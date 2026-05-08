@@ -2761,7 +2761,7 @@ async def university_mock_resume_handler(update: Update, context: ContextTypes.D
 # =============================
 def register_handlers(application):
     application.add_handler(CommandHandler("university", university_handler))
-    application.add_handler(CallbackQueryHandler(university_handler, pattern=r"^university$"))
+    application.add_handler(CallbackQueryHandler(university_handler, pattern=r"^(university|uni_start)$"))
     application.add_handler(CallbackQueryHandler(university_category_handler, pattern=r"^ut_cat_"))
     application.add_handler(CallbackQueryHandler(university_subject_handler, pattern=r"^ut_subj_"))
     application.add_handler(CallbackQueryHandler(university_mode_handler, pattern=r"^ut_mode_"))
@@ -2782,3 +2782,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(university_answer_handler, pattern=r"^ut_ans::"))
     application.add_handler(CallbackQueryHandler(university_answer_details_handler, pattern=r"^ut_details$"))
     application.add_handler(CallbackQueryHandler(university_next_handler, pattern=r"^ut_next$"))
+
+
