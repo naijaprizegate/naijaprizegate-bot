@@ -1555,7 +1555,10 @@ async def university_start_free_handler(update: Update, context: ContextTypes.DE
         topic_id=topic_id,
     )
 
+    category_code = context.user_data.get("ut_category_code")
+
     batch = prepare_university_topic_question_batch(
+        category_code=category_code,
         subject_code=subject_code,
         topic_id=topic_id,
         requested_count=requested_count,
@@ -2464,6 +2467,7 @@ async def university_paid_count_handler(update: Update, context: ContextTypes.DE
     )
 
     batch = prepare_university_topic_question_batch(
+        category_code=category_code,
         subject_code=subject_code,
         topic_id=topic_id,
         requested_count=actual_count,
