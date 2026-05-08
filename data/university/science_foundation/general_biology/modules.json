@@ -1,0 +1,68 @@
+[
+  {
+    "id": "intro_biology",
+    "number": 1,
+    "title": "Introduction to Biology",
+    "active": true
+  },
+  {
+    "id": "cell_biology",
+    "number": 2,
+    "title": "Cell Biology",
+    "active": true
+  },
+  {
+    "id": "biochemistry",
+    "number": 3,
+    "title": "Biomolecules and Biochemistry",
+    "active": true
+  },
+  {
+    "id": "bioenergetics",
+    "number": 4,
+    "title": "Cellular Respiration and Photosynthesis",
+    "active": true
+  },
+  {
+    "id": "cell_division",
+    "number": 5,
+    "title": "Cell Division",
+    "active": true
+  },
+  {
+    "id": "genetics",
+    "number": 6,
+    "title": "Genetics",
+    "active": true
+  },
+  {
+    "id": "evolution",
+    "number": 7,
+    "title": "Evolution",
+    "active": true
+  },
+  {
+    "id": "classification",
+    "number": 8,
+    "title": "Classification and Diversity of Life",
+    "active": true
+  },
+  {
+    "id": "ecology",
+    "number": 9,
+    "title": "Ecology",
+    "active": true
+  },
+  {
+    "id": "physiology",
+    "number": 10,
+    "title": "Human Biology and Physiology",
+    "active": true
+  },
+  {
+    "id": "practical_biology",
+    "number": 11,
+    "title": "Practical Biology",
+    "active": true
+  }
+]
