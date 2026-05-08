@@ -7,6 +7,7 @@ import math
 import logging
 from datetime import datetime, timedelta, timezone
 from typing import Optional
+from html import escape
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import CommandHandler, CallbackQueryHandler, ContextTypes
@@ -2287,8 +2288,8 @@ async def university_answer_details_handler(update: Update, context: ContextType
     question = context.user_data.get("ut_current_question")
     if not question:
         return await query.message.reply_text(
-            "⚠️ No answered question found\\.",
-            parse_mode="MarkdownV2",
+            "⚠️ No answered question found.",
+            parse_mode="HTML",
         )
 
     explanation = question.get("explanation", {})
@@ -2303,46 +2304,76 @@ async def university_answer_details_handler(update: Update, context: ContextType
     final_answer = explanation.get("final_answer", "")
     beginner_summary = explanation.get("beginner_friendly_summary", "")
 
-    lines = ["📖 *Answer Details*\n"]
+    # SAFE HTML ESCAPING
+    safe_question_restate = escape(str(question_restate))
+    safe_core_concept = escape(str(core_concept))
+    safe_why_this_matters = escape(str(why_this_matters))
+    safe_real_life_connection = escape(str(real_life_connection))
+    safe_memory_tip = escape(str(memory_tip))
+    safe_final_answer = escape(str(final_answer))
+    safe_beginner_summary = escape(str(beginner_summary))
+
+    lines = ["📖 <b>Answer Details</b>\n"]
 
     if question_restate:
-        lines.append(f"🔹 *Question Restated*\n{question_restate}\n")
+        lines.append(
+            f"🔹 <b>Question Restated</b>\n{safe_question_restate}\n"
+        )
 
     if core_concept:
-        lines.append(f"🧠 *Core Concept*\n{core_concept}\n")
+        lines.append(
+            f"🧠 <b>Core Concept</b>\n{safe_core_concept}\n"
+        )
 
     if why_this_matters:
-        lines.append(f"🎯 *Why This Matters*\n{why_this_matters}\n")
+        lines.append(
+            f"🎯 <b>Why This Matters</b>\n{safe_why_this_matters}\n"
+        )
 
     if reasoning_steps:
-        lines.append("🪜 *Step-by-Step Reasoning*")
+        lines.append("🪜 <b>Step-by-Step Reasoning</b>")
+
         for i, step in enumerate(reasoning_steps, start=1):
-            lines.append(f"{i}. {step}")
+            safe_step = escape(str(step))
+            lines.append(f"{i}. {safe_step}")
+
         lines.append("")
 
     if wrong_options:
-        lines.append("❌ *Why Other Options Are Wrong*")
+        lines.append("❌ <b>Why Other Options Are Wrong</b>")
+
         for item in wrong_options:
-            lines.append(f"• {item}")
+            safe_item = escape(str(item))
+            lines.append(f"• {safe_item}")
+
         lines.append("")
 
     if real_life_connection:
-        lines.append(f"🌍 *Real-Life Connection*\n{real_life_connection}\n")
+        lines.append(
+            f"🌍 <b>Real-Life Connection</b>\n{safe_real_life_connection}\n"
+        )
 
     if memory_tip:
-        lines.append(f"🧩 *Memory Tip*\n{memory_tip}\n")
+        lines.append(
+            f"🧩 <b>Memory Tip</b>\n{safe_memory_tip}\n"
+        )
 
     if final_answer:
-        lines.append(f"✅ *Final Answer*\n{final_answer}\n")
+        lines.append(
+            f"✅ <b>Final Answer</b>\n{safe_final_answer}\n"
+        )
 
     if beginner_summary:
-        lines.append(f"📘 *Beginner-Friendly Summary*\n{beginner_summary}")
+        lines.append(
+            f"📘 <b>Beginner-Friendly Summary</b>\n{safe_beginner_summary}"
+        )
 
     await query.message.reply_text(
         "\n".join(lines),
-        parse_mode="MarkdownV2",
+        parse_mode="HTML",
         reply_markup=make_after_details_keyboard(),
     )
+
 
 # ------------------------------
 # UNIVERSITY Next Handler
