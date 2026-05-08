@@ -98,18 +98,79 @@ def get_university_subject_by_code(category_code: str, subject_code: str):
 
 
 # =========================================================
-# TOPIC LOADERS
+# COURSE METADATA
 # =========================================================
 
-def get_university_topics(category_code: str, subject_code: str):
-    topics_path = (
+def get_university_course_info(category_code: str, subject_code: str):
+    course_path = (
         BASE_DIR
         / category_code
         / subject_code
-        / "topics.json"
+        / "course.json"
     )
 
-    data = safe_load_json(topics_path)
+    return safe_load_json(course_path) or {}
+
+
+# =========================================================
+# MODULE LOADERS
+# =========================================================
+
+def get_university_modules(category_code: str, subject_code: str):
+    modules_path = (
+        BASE_DIR
+        / category_code
+        / subject_code
+        / "modules.json"
+    )
+
+    modules = safe_load_json(modules_path)
+
+    if not modules:
+        return []
+
+    return [
+        module
+        for module in modules
+        if module.get("active", True)
+    ]
+
+
+def get_university_module_by_id(
+    category_code: str,
+    subject_code: str,
+    module_id: str,
+):
+    modules = get_university_modules(
+        category_code,
+        subject_code,
+    )
+
+    for module in modules:
+        if module["id"] == module_id:
+            return module
+
+    return None
+
+
+# =========================================================
+# TOPIC LOADERS
+# =========================================================
+
+def get_university_module_topics(
+    category_code: str,
+    subject_code: str,
+    module_id: str,
+):
+    module_topics_path = (
+        BASE_DIR
+        / category_code
+        / subject_code
+        / "topics"
+        / f"{module_id}.json"
+    )
+
+    data = safe_load_json(module_topics_path)
 
     if not data:
         return []
@@ -123,6 +184,25 @@ def get_university_topics(category_code: str, subject_code: str):
     ]
 
 
+def get_university_topic_by_id(
+    category_code: str,
+    subject_code: str,
+    module_id: str,
+    topic_id: str,
+):
+    topics = get_university_module_topics(
+        category_code,
+        subject_code,
+        module_id,
+    )
+
+    for topic in topics:
+        if topic["id"] == topic_id:
+            return topic
+
+    return None
+
+
 # =========================================================
 # QUESTION LOADERS
 # =========================================================
@@ -130,23 +210,20 @@ def get_university_topics(category_code: str, subject_code: str):
 def load_university_topic_questions(
     category_code: str,
     subject_code: str,
+    module_id: str,
     topic_id: str,
 ):
-    topics = get_university_topics(category_code, subject_code)
-
-    selected_topic = next(
-        (
-            topic
-            for topic in topics
-            if topic["id"] == topic_id
-        ),
-        None,
+    topic = get_university_topic_by_id(
+        category_code,
+        subject_code,
+        module_id,
+        topic_id,
     )
 
-    if not selected_topic:
+    if not topic:
         return []
 
-    question_file = selected_topic.get("file")
+    question_file = topic.get("file")
 
     if not question_file:
         return []
@@ -155,7 +232,8 @@ def load_university_topic_questions(
         BASE_DIR
         / category_code
         / subject_code
-        / question_file
+        / "questions"
+        / Path(question_file).name
     )
 
     questions = safe_load_json(question_path)
@@ -171,12 +249,13 @@ def load_university_topic_questions(
 
 
 # =========================================================
-# QUESTION BATCHING
+# TOPIC PRACTICE BATCH
 # =========================================================
 
 def prepare_university_topic_question_batch(
     category_code: str,
     subject_code: str,
+    module_id: str,
     topic_id: str,
     requested_count: int,
     seen_question_ids: list[str] | None = None,
@@ -186,6 +265,7 @@ def prepare_university_topic_question_batch(
     questions = load_university_topic_questions(
         category_code=category_code,
         subject_code=subject_code,
+        module_id=module_id,
         topic_id=topic_id,
     )
 
@@ -229,21 +309,29 @@ def prepare_university_course_mock_batch(
 ):
     seen_question_ids = seen_question_ids or []
 
-    topics = get_university_topics(
+    modules = get_university_modules(
         category_code,
         subject_code,
     )
 
     all_questions = []
 
-    for topic in topics:
-        topic_questions = load_university_topic_questions(
-            category_code=category_code,
-            subject_code=subject_code,
-            topic_id=topic["id"],
+    for module in modules:
+        module_topics = get_university_module_topics(
+            category_code,
+            subject_code,
+            module["id"],
         )
 
-        all_questions.extend(topic_questions)
+        for topic in module_topics:
+            topic_questions = load_university_topic_questions(
+                category_code=category_code,
+                subject_code=subject_code,
+                module_id=module["id"],
+                topic_id=topic["id"],
+            )
+
+            all_questions.extend(topic_questions)
 
     unseen_questions = [
         q
@@ -271,4 +359,3 @@ def prepare_university_course_mock_batch(
         "selected_question_ids": selected_question_ids,
         "cycle_reset": cycle_reset,
     }
-
