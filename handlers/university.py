@@ -1164,8 +1164,10 @@ async def university_category_handler(update, context):
 
     context.user_data["ut_category_code"] = category_code
 
+    safe_category_name = md_escape(str(category["name"]))
+
     await query.message.reply_text(
-        f"📚 *{category['name']}*\n\nChoose a subject.",
+        f"📚 *{safe_category_name}*\n\nChoose a subject\\.",
         parse_mode="MarkdownV2",
         reply_markup=make_subject_keyboard(category_code),
     )
