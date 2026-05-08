@@ -129,7 +129,7 @@ def build_main_menu_keyboard():
             [InlineKeyboardButton("⚔️ Challenge Friends (Free)", callback_data="challenge:start")],
             [InlineKeyboardButton("🔥 Battle Mode (Free)", callback_data="battle:menu")],
             [InlineKeyboardButton("🎓 JAMB / WAEC / NECO Practice", callback_data="exam:hub")],
-            [InlineKeyboardButton("🎓 University Tutorials", callback_data="uni_start")],
+            [InlineKeyboardButton("🏛️ University Practice & Tutorials", callback_data="uni_start")],
             [InlineKeyboardButton("📂 Other Menu", callback_data="menu:other")],
         ]
     )
@@ -900,3 +900,5 @@ def register_handlers(application):
         ),
         group=20,
     )
+
+
