@@ -2294,33 +2294,49 @@ async def university_answer_details_handler(update: Update, context: ContextType
     explanation = question.get("explanation", {})
 
     question_restate = explanation.get("question_restate", "")
-    principle = explanation.get("principle", "")
-    steps = explanation.get("steps", [])
-    if not isinstance(steps, list):
-        steps = []
-
+    core_concept = explanation.get("core_concept", "")
+    why_this_matters = explanation.get("why_this_matters", "")
+    reasoning_steps = explanation.get("step_by_step_reasoning", [])
+    wrong_options = explanation.get("why_other_options_are_wrong", [])
+    real_life_connection = explanation.get("real_life_connection", "")
+    memory_tip = explanation.get("memory_tip", "")
     final_answer = explanation.get("final_answer", "")
-    simple_explanation = explanation.get("simple_explanation", "")
+    beginner_summary = explanation.get("beginner_friendly_summary", "")
 
     lines = ["📖 *Answer Details*\n"]
 
     if question_restate:
-        lines.append(f"*Question Restated*\n{md_escape(str(question_restate))}\n")
+        lines.append(f"🔹 *Question Restated*\n{question_restate}\n")
 
-    if principle:
-        lines.append(f"*Principle*\n{md_escape(str(principle))}\n")
+    if core_concept:
+        lines.append(f"🧠 *Core Concept*\n{core_concept}\n")
 
-    if steps:
-        lines.append("*Step\\-by\\-step Solution*")
-        for i, step in enumerate(steps, start=1):
-            lines.append(f"{i}\\. {md_escape(str(step))}")
+    if why_this_matters:
+        lines.append(f"🎯 *Why This Matters*\n{why_this_matters}\n")
+
+    if reasoning_steps:
+        lines.append("🪜 *Step-by-Step Reasoning*")
+        for i, step in enumerate(reasoning_steps, start=1):
+            lines.append(f"{i}. {step}")
         lines.append("")
 
-    if final_answer:
-        lines.append(f"*Final Answer*\n{md_escape(str(final_answer))}\n")
+    if wrong_options:
+        lines.append("❌ *Why Other Options Are Wrong*")
+        for item in wrong_options:
+            lines.append(f"• {item}")
+        lines.append("")
 
-    if simple_explanation:
-        lines.append(f"*Simple Explanation*\n{md_escape(str(simple_explanation))}")
+    if real_life_connection:
+        lines.append(f"🌍 *Real-Life Connection*\n{real_life_connection}\n")
+
+    if memory_tip:
+        lines.append(f"🧩 *Memory Tip*\n{memory_tip}\n")
+
+    if final_answer:
+        lines.append(f"✅ *Final Answer*\n{final_answer}\n")
+
+    if beginner_summary:
+        lines.append(f"📘 *Beginner-Friendly Summary*\n{beginner_summary}")
 
     await query.message.reply_text(
         "\n".join(lines),
