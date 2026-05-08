@@ -1,31 +1,3202 @@
 [
   {
     "id": "bio_cell_001",
-    "question": "The basic unit of life is called?",
+    "topic_id": "cell_structure",
+    "topic_title": "Cell Structure",
+    "question": "The basic structural and functional unit of life is known as?",
     "options": {
       "A": "Tissue",
       "B": "Cell",
       "C": "Organ",
-      "D": "Nucleus"
+      "D": "Organism"
     },
     "answer": "B",
     "explanation": {
-      "simple_explanation": "The cell is the smallest structural and functional unit of life."
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
     }
   },
   {
     "id": "bio_cell_002",
-    "question": "Which organelle controls the activities of the cell?",
+    "topic_id": "cell_membrane",
+    "topic_title": "Cell Membrane",
+    "question": "Which organelle is known as the control center of the cell?",
     "options": {
       "A": "Ribosome",
-      "B": "Mitochondria",
-      "C": "Nucleus",
-      "D": "Cell membrane"
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_003",
+    "topic_id": "organelles",
+    "topic_title": "Cell Organelles",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_004",
+    "topic_id": "transport",
+    "topic_title": "Transport Across Membrane",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
     },
     "answer": "C",
     "explanation": {
-      "simple_explanation": "The nucleus acts as the control center of the cell."
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_005",
+    "topic_id": "mitosis",
+    "topic_title": "Cell Division",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_006",
+    "topic_id": "microscopy",
+    "topic_title": "Microscopy",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "Think of the nucleus as the principal's office of a school.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_007",
+    "topic_id": "metabolism",
+    "topic_title": "Cell Metabolism",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_008",
+    "topic_id": "enzymes",
+    "topic_title": "Enzymes",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_009",
+    "topic_id": "genetics_intro",
+    "topic_title": "Introduction to Genetics",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_010",
+    "topic_id": "cell_energy",
+    "topic_title": "Cellular Energy",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "Think of the nucleus as the principal's office of a school.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_011",
+    "topic_id": "cell_structure",
+    "topic_title": "Cell Structure",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_012",
+    "topic_id": "cell_membrane",
+    "topic_title": "Cell Membrane",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_013",
+    "topic_id": "organelles",
+    "topic_title": "Cell Organelles",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "Think of the nucleus as the principal's office of a school.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_014",
+    "topic_id": "transport",
+    "topic_title": "Transport Across Membrane",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "Think of the nucleus as the principal's office of a school.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_015",
+    "topic_id": "mitosis",
+    "topic_title": "Cell Division",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_016",
+    "topic_id": "microscopy",
+    "topic_title": "Microscopy",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_017",
+    "topic_id": "metabolism",
+    "topic_title": "Cell Metabolism",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_018",
+    "topic_id": "enzymes",
+    "topic_title": "Enzymes",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_019",
+    "topic_id": "genetics_intro",
+    "topic_title": "Introduction to Genetics",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_020",
+    "topic_id": "cell_energy",
+    "topic_title": "Cellular Energy",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_021",
+    "topic_id": "cell_structure",
+    "topic_title": "Cell Structure",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_022",
+    "topic_id": "cell_membrane",
+    "topic_title": "Cell Membrane",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_023",
+    "topic_id": "organelles",
+    "topic_title": "Cell Organelles",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_024",
+    "topic_id": "transport",
+    "topic_title": "Transport Across Membrane",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_025",
+    "topic_id": "mitosis",
+    "topic_title": "Cell Division",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_026",
+    "topic_id": "microscopy",
+    "topic_title": "Microscopy",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_027",
+    "topic_id": "metabolism",
+    "topic_title": "Cell Metabolism",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_028",
+    "topic_id": "enzymes",
+    "topic_title": "Enzymes",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_029",
+    "topic_id": "genetics_intro",
+    "topic_title": "Introduction to Genetics",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_030",
+    "topic_id": "cell_energy",
+    "topic_title": "Cellular Energy",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_031",
+    "topic_id": "cell_structure",
+    "topic_title": "Cell Structure",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_032",
+    "topic_id": "cell_membrane",
+    "topic_title": "Cell Membrane",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_033",
+    "topic_id": "organelles",
+    "topic_title": "Cell Organelles",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_034",
+    "topic_id": "transport",
+    "topic_title": "Transport Across Membrane",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_035",
+    "topic_id": "mitosis",
+    "topic_title": "Cell Division",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_036",
+    "topic_id": "microscopy",
+    "topic_title": "Microscopy",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_037",
+    "topic_id": "metabolism",
+    "topic_title": "Cell Metabolism",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_038",
+    "topic_id": "enzymes",
+    "topic_title": "Enzymes",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_039",
+    "topic_id": "genetics_intro",
+    "topic_title": "Introduction to Genetics",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "Think of the nucleus as the principal's office of a school.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_040",
+    "topic_id": "cell_energy",
+    "topic_title": "Cellular Energy",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_041",
+    "topic_id": "cell_structure",
+    "topic_title": "Cell Structure",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_042",
+    "topic_id": "cell_membrane",
+    "topic_title": "Cell Membrane",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_043",
+    "topic_id": "organelles",
+    "topic_title": "Cell Organelles",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_044",
+    "topic_id": "transport",
+    "topic_title": "Transport Across Membrane",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_045",
+    "topic_id": "mitosis",
+    "topic_title": "Cell Division",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_046",
+    "topic_id": "microscopy",
+    "topic_title": "Microscopy",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_047",
+    "topic_id": "metabolism",
+    "topic_title": "Cell Metabolism",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_048",
+    "topic_id": "enzymes",
+    "topic_title": "Enzymes",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_049",
+    "topic_id": "genetics_intro",
+    "topic_title": "Introduction to Genetics",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_050",
+    "topic_id": "cell_energy",
+    "topic_title": "Cellular Energy",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_051",
+    "topic_id": "cell_structure",
+    "topic_title": "Cell Structure",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_052",
+    "topic_id": "cell_membrane",
+    "topic_title": "Cell Membrane",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_053",
+    "topic_id": "organelles",
+    "topic_title": "Cell Organelles",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_054",
+    "topic_id": "transport",
+    "topic_title": "Transport Across Membrane",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_055",
+    "topic_id": "mitosis",
+    "topic_title": "Cell Division",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "Think of the nucleus as the principal's office of a school.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_056",
+    "topic_id": "microscopy",
+    "topic_title": "Microscopy",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_057",
+    "topic_id": "metabolism",
+    "topic_title": "Cell Metabolism",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_058",
+    "topic_id": "enzymes",
+    "topic_title": "Enzymes",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_059",
+    "topic_id": "genetics_intro",
+    "topic_title": "Introduction to Genetics",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_060",
+    "topic_id": "cell_energy",
+    "topic_title": "Cellular Energy",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "Think of the nucleus as the principal's office of a school.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_061",
+    "topic_id": "cell_structure",
+    "topic_title": "Cell Structure",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_062",
+    "topic_id": "cell_membrane",
+    "topic_title": "Cell Membrane",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_063",
+    "topic_id": "organelles",
+    "topic_title": "Cell Organelles",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_064",
+    "topic_id": "transport",
+    "topic_title": "Transport Across Membrane",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_065",
+    "topic_id": "mitosis",
+    "topic_title": "Cell Division",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_066",
+    "topic_id": "microscopy",
+    "topic_title": "Microscopy",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_067",
+    "topic_id": "metabolism",
+    "topic_title": "Cell Metabolism",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_068",
+    "topic_id": "enzymes",
+    "topic_title": "Enzymes",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_069",
+    "topic_id": "genetics_intro",
+    "topic_title": "Introduction to Genetics",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_070",
+    "topic_id": "cell_energy",
+    "topic_title": "Cellular Energy",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "Think of the nucleus as the principal's office of a school.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_071",
+    "topic_id": "cell_structure",
+    "topic_title": "Cell Structure",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_072",
+    "topic_id": "cell_membrane",
+    "topic_title": "Cell Membrane",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_073",
+    "topic_id": "organelles",
+    "topic_title": "Cell Organelles",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_074",
+    "topic_id": "transport",
+    "topic_title": "Transport Across Membrane",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_075",
+    "topic_id": "mitosis",
+    "topic_title": "Cell Division",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_076",
+    "topic_id": "microscopy",
+    "topic_title": "Microscopy",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_077",
+    "topic_id": "metabolism",
+    "topic_title": "Cell Metabolism",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_078",
+    "topic_id": "enzymes",
+    "topic_title": "Enzymes",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_079",
+    "topic_id": "genetics_intro",
+    "topic_title": "Introduction to Genetics",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_080",
+    "topic_id": "cell_energy",
+    "topic_title": "Cellular Energy",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "Think of the nucleus as the principal's office of a school.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_081",
+    "topic_id": "cell_structure",
+    "topic_title": "Cell Structure",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "Think of the nucleus as the principal's office of a school.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_082",
+    "topic_id": "cell_membrane",
+    "topic_title": "Cell Membrane",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_083",
+    "topic_id": "organelles",
+    "topic_title": "Cell Organelles",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_084",
+    "topic_id": "transport",
+    "topic_title": "Transport Across Membrane",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Understanding membranes helps explain dehydration and IV fluid treatment in hospitals.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_085",
+    "topic_id": "mitosis",
+    "topic_title": "Cell Division",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_086",
+    "topic_id": "microscopy",
+    "topic_title": "Microscopy",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_087",
+    "topic_id": "metabolism",
+    "topic_title": "Cell Metabolism",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "Ribosomes can be remembered as protein factories.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_088",
+    "topic_id": "enzymes",
+    "topic_title": "Enzymes",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "Think of the nucleus as the principal's office of a school.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_089",
+    "topic_id": "genetics_intro",
+    "topic_title": "Introduction to Genetics",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "Think of the nucleus as the principal's office of a school.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_090",
+    "topic_id": "cell_energy",
+    "topic_title": "Cellular Energy",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_091",
+    "topic_id": "cell_structure",
+    "topic_title": "Cell Structure",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_092",
+    "topic_id": "cell_membrane",
+    "topic_title": "Cell Membrane",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_093",
+    "topic_id": "organelles",
+    "topic_title": "Cell Organelles",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_094",
+    "topic_id": "transport",
+    "topic_title": "Transport Across Membrane",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_095",
+    "topic_id": "mitosis",
+    "topic_title": "Cell Division",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
+    }
+  },
+  {
+    "id": "bio_cell_096",
+    "topic_id": "microscopy",
+    "topic_title": "Microscopy",
+    "question": "The basic structural and functional unit of life is known as?",
+    "options": {
+      "A": "Tissue",
+      "B": "Cell",
+      "C": "Organ",
+      "D": "Organism"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The basic structural and functional unit of life is known as?",
+      "core_concept": "Cells are the smallest living units capable of carrying out life processes.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "This concept is important in medicine because many diseases begin at the cellular level.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Cells are the smallest living units capable of carrying out life processes."
+    }
+  },
+  {
+    "id": "bio_cell_097",
+    "topic_id": "metabolism",
+    "topic_title": "Cell Metabolism",
+    "question": "Which organelle is known as the control center of the cell?",
+    "options": {
+      "A": "Ribosome",
+      "B": "Nucleus",
+      "C": "Golgi apparatus",
+      "D": "Mitochondrion"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is known as the control center of the cell?",
+      "core_concept": "The nucleus contains DNA and regulates cellular activities.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "The nucleus contains DNA and regulates cellular activities."
+    }
+  },
+  {
+    "id": "bio_cell_098",
+    "topic_id": "enzymes",
+    "topic_title": "Enzymes",
+    "question": "Which organelle is responsible for energy production in the cell?",
+    "options": {
+      "A": "Lysosome",
+      "B": "Mitochondrion",
+      "C": "Ribosome",
+      "D": "Vacuole"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which organelle is responsible for energy production in the cell?",
+      "core_concept": "Mitochondria produce ATP through aerobic respiration.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Cell division is important for growth, wound healing, and replacement of damaged tissues.",
+      "memory_tip": "Mitochondria are like generators supplying power to a building.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Mitochondria produce ATP through aerobic respiration."
+    }
+  },
+  {
+    "id": "bio_cell_099",
+    "topic_id": "genetics_intro",
+    "topic_title": "Introduction to Genetics",
+    "question": "The cell membrane is mainly composed of?",
+    "options": {
+      "A": "Protein only",
+      "B": "Lipids only",
+      "C": "Phospholipids and proteins",
+      "D": "Carbohydrates only"
+    },
+    "answer": "C",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: The cell membrane is mainly composed of?",
+      "core_concept": "The cell membrane follows the fluid mosaic model.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is C because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Athletes have cells with many mitochondria because muscles require large amounts of energy.",
+      "memory_tip": "The membrane acts like a security gate controlling entry and exit.",
+      "final_answer": "The correct answer is option C.",
+      "beginner_friendly_summary": "The cell membrane follows the fluid mosaic model."
+    }
+  },
+  {
+    "id": "bio_cell_100",
+    "topic_id": "cell_energy",
+    "topic_title": "Cellular Energy",
+    "question": "Which process involves movement of water across a semi-permeable membrane?",
+    "options": {
+      "A": "Diffusion",
+      "B": "Osmosis",
+      "C": "Active transport",
+      "D": "Endocytosis"
+    },
+    "answer": "B",
+    "explanation": {
+      "question_restate": "This question is asking about the biological concept behind: Which process involves movement of water across a semi-permeable membrane?",
+      "core_concept": "Osmosis specifically refers to water movement.",
+      "why_this_matters": "Understanding cell biology is foundational for anatomy, physiology, genetics, microbiology, and medicine.",
+      "step_by_step_reasoning": [
+        "First identify the main biological structure or process mentioned in the question.",
+        "Recall the primary function associated with that structure.",
+        "Compare all options carefully.",
+        "The correct option is B because it best matches the biological role described."
+      ],
+      "why_other_options_are_wrong": [
+        "The incorrect options either perform different cellular functions or belong to unrelated processes.",
+        "Some distractors are real organelles but do not carry out the role asked in the question."
+      ],
+      "real_life_connection": "Microscopes are used in hospitals to identify infections and abnormal cells.",
+      "memory_tip": "ATP is like rechargeable energy money for the cell.",
+      "final_answer": "The correct answer is option B.",
+      "beginner_friendly_summary": "Osmosis specifically refers to water movement."
     }
   }
 ]
-
