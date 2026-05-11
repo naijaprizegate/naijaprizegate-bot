@@ -1314,8 +1314,12 @@ async def university_category_handler(update, context):
 # =============================
 # course selected
 # =============================
-async def university_subject_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_subject_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
     query = update.callback_query
+
     if not query:
         return
 
@@ -1323,27 +1327,70 @@ async def university_subject_handler(update: Update, context: ContextTypes.DEFAU
 
     try:
         _, _, subject_code = query.data.split("_", 2)
+
     except Exception:
-        return await query.message.reply_text("⚠️ Invalid course selection.")
+        return await query.message.reply_text(
+            "⚠️ Invalid course selection\\.",
+            parse_mode="MarkdownV2",
+        )
 
-    subject = get_university_subject_by_code(subject_code)
+    # =====================================
+    # LOAD CATEGORY STATE
+    # =====================================
+    category_code = context.user_data.get(
+        "ut_category_code"
+    )
+
+    if not category_code:
+        return await query.message.reply_text(
+            "⚠️ Category session expired\\. Please start again\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    # =====================================
+    # LOAD SUBJECT
+    # =====================================
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
+    )
+
     if not subject:
-        return await query.message.reply_text("⚠️ course not found or inactive.")
+        return await query.message.reply_text(
+            "⚠️ Course not found or inactive\\.",
+            parse_mode="MarkdownV2",
+        )
 
+    # =====================================
+    # SAVE FLOW STATE
+    # =====================================
+    context.user_data["ut_category_code"] = category_code
     context.user_data["ut_subject_code"] = subject_code
     context.user_data["ut_mode"] = None
     context.user_data["ut_topic_id"] = None
     context.user_data["ut_module_id"] = None
     context.user_data["ut_topic_page"] = 1
 
+    # =====================================
+    # SAFE DISPLAY
+    # =====================================
+    safe_course_name = md_escape(
+        str(subject["name"])
+    )
+
+    # =====================================
+    # SEND MODE SCREEN
+    # =====================================
     await query.message.reply_text(
-        f"📘 *You selected:* {subject['name']}\n\n"
-        "How would you like to practice?",
+        f"📘 *You selected:* {safe_course_name}\n\n"
+        "How would you like to practice\\?",
         parse_mode="MarkdownV2",
         reply_markup=make_mode_keyboard(
-            category_code, 
-            subject_code),
-        )
+            category_code,
+            subject_code,
+        ),
+    )
+
 
 # --------------------------------
 # UNIVERSITY course MOCK SCREEN
@@ -1363,7 +1410,10 @@ async def open_university_course_mock_screen(
     tg = update.effective_user
     user_id = tg.id
 
-    subject = get_university_subject_by_code(subject_code)
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
+    )
 
     if not subject:
         return await update.effective_message.reply_text(
@@ -1910,7 +1960,10 @@ async def university_start_free_handler(update: Update, context: ContextTypes.DE
     # =============================
     # LOAD SUBJECT
     # =============================
-    subject = get_university_subject_by_code(subject_code)
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
+    )
 
     course_name = (
         subject["name"]
@@ -2476,7 +2529,10 @@ async def send_current_university_question(update: Update, context: ContextTypes
     # =============================
     # LOAD SUBJECT
     # =============================
-    subject = get_university_subject_by_code(subject_code)
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
+    )
 
     if not subject:
         subject = {"name": subject_code}
@@ -2900,7 +2956,10 @@ async def university_back_mode_handler(update: Update, context: ContextTypes.DEF
             parse_mode="MarkdownV2",
         )
 
-    subject = get_university_subject_by_code(subject_code)
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
+    )
 
     if not subject:
         return await query.message.reply_text(
@@ -2955,7 +3014,10 @@ async def university_back_to_module_topics_handler(
     context.user_data["ut_subject_code"] = subject_code
     context.user_data["ut_module_id"] = module_id
 
-    subject = get_university_subject_by_code(subject_code)
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
+    )
 
     topics = get_university_module_topics(
         category_code,
@@ -3212,7 +3274,10 @@ async def university_paid_count_handler(update: Update, context: ContextTypes.DE
     
     topic_title = topic["title"] if topic else topic_id
 
-    subject = get_university_subject_by_code(subject_code)
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
+    )
     course_name = subject["name"] if subject else subject_code
 
     safe_course_name = md_escape(str(course_name))
@@ -3270,7 +3335,10 @@ async def university_mock_start_paid_handler(update: Update, context: ContextTyp
             parse_mode="MarkdownV2",
         )
 
-    subject = get_university_subject_by_code(subject_code)
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
+    )
     if not subject:
         return await query.message.reply_text(
             "⚠️ course not found\\.",
