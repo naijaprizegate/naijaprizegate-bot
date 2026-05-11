@@ -1,5 +1,5 @@
 # ====================================================================
-# handlers/jambpractice.py
+# handlers/university.py
 # ====================================================================
 
 import json
@@ -7,38 +7,45 @@ import math
 import logging
 from datetime import datetime, timedelta, timezone
 from typing import Optional
+from html import escape
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import CommandHandler, CallbackQueryHandler, ContextTypes
 from sqlalchemy import text
 from helpers import md_escape
 
-from services.flutterwave_client import create_checkout, build_tx_ref, calculate_jamb_credits
-from services.jamb_payments import create_pending_jamb_payment
+from services.flutterwave_client import create_checkout, build_tx_ref
+from services.university_payments import create_pending_university_payment
 from db import get_async_session
-from jamb_loader import (
-    get_jamb_subjects,
-    get_subject_topics,
-    get_subject_by_code,
-    prepare_topic_question_batch,
-    prepare_subject_question_batch,
-    prepare_use_of_english_batch,
+from university_loader import (
+    get_university_categories,
+    get_university_category_by_code,
+    get_university_subjects_by_category,
+    get_university_subject_by_code,
+
+    get_university_modules,
+    get_university_module_by_id,
+
+    get_university_module_topics,
+    get_university_topic_by_id,
+
+    load_university_topic_questions,
+
+    prepare_university_topic_question_batch,
+    prepare_university_course_mock_batch,
 )
 
 logger = logging.getLogger(__name__)
 
-TOPICS_PER_PAGE = 7
-
-
-# =============================
+# ---------------------
 # DB helpers
-# =============================
-async def ensure_jamb_user_access(user_id: int):
+# --------------------
+async def ensure_university_user_access(user_id: int):
     async with get_async_session() as session:
         async with session.begin():
             await session.execute(
                 text("""
-                    insert into jamb_user_access (user_id)
+                    insert into university_user_access (user_id)
                     values (:user_id)
                     on conflict (user_id) do nothing
                 """),
@@ -46,7 +53,7 @@ async def ensure_jamb_user_access(user_id: int):
             )
 
 
-async def get_jamb_user_access(user_id: int) -> Optional[dict]:
+async def get_university_user_access(user_id: int) -> Optional[dict]:
     async with get_async_session() as session:
         result = await session.execute(
             text("""
@@ -55,7 +62,7 @@ async def get_jamb_user_access(user_id: int) -> Optional[dict]:
                     paid_question_credits,
                     mock_sessions_available,
                     total_questions_used
-                from jamb_user_access
+                from university_user_access
                 where user_id = :user_id
             """),
             {"user_id": user_id},
@@ -63,7 +70,7 @@ async def get_jamb_user_access(user_id: int) -> Optional[dict]:
         row = result.mappings().first()
         return dict(row) if row else None
 
-async def create_jamb_session(
+async def create_university_session(
     user_id: int,
     subject_code: str,
     topic_id: str,
@@ -74,7 +81,7 @@ async def create_jamb_session(
         async with session.begin():
             result = await session.execute(
                 text("""
-                    insert into jamb_sessions (
+                    insert into university_sessions (
                         user_id,
                         subject_code,
                         topic_id,
@@ -109,7 +116,7 @@ async def get_seen_question_ids_for_topic(user_id: int, subject_code: str, topic
         result = await session.execute(
             text("""
                 select question_id
-                from jamb_user_topic_history
+                from university_user_topic_history
                 where user_id = :user_id
                   and subject_code = :subject_code
                   and topic_id = :topic_id
@@ -129,7 +136,7 @@ async def reset_topic_history(user_id: int, subject_code: str, topic_id: str):
         async with session.begin():
             await session.execute(
                 text("""
-                    delete from jamb_user_topic_history
+                    delete from university_user_topic_history
                     where user_id = :user_id
                       and subject_code = :subject_code
                       and topic_id = :topic_id
@@ -143,11 +150,11 @@ async def reset_topic_history(user_id: int, subject_code: str, topic_id: str):
 
 
 async def get_paid_question_credits(user_id: int) -> int:
-    access = await get_jamb_user_access(user_id)
+    access = await get_university_user_access(user_id)
     return int((access or {}).get("paid_question_credits", 0))
 
 async def get_mock_sessions_available(user_id: int) -> int:
-    access = await get_jamb_user_access(user_id)
+    access = await get_university_user_access(user_id)
     return int((access or {}).get("mock_sessions_available", 0))
 
 
@@ -160,7 +167,7 @@ async def deduct_one_mock_session(user_id: int) -> bool:
         async with session.begin():
             result = await session.execute(
                 text("""
-                    update jamb_user_access
+                    update university_user_access
                     set
                         mock_sessions_available = mock_sessions_available - 1,
                         updated_at = now()
@@ -183,7 +190,7 @@ async def deduct_one_free_question(user_id: int) -> bool:
         async with session.begin():
             result = await session.execute(
                 text("""
-                    update jamb_user_access
+                    update university_user_access
                     set
                         free_questions_remaining = free_questions_remaining - 1,
                         total_questions_used = total_questions_used + 1,
@@ -207,7 +214,7 @@ async def deduct_one_paid_question(user_id: int) -> bool:
         async with session.begin():
             result = await session.execute(
                 text("""
-                    update jamb_user_access
+                    update university_user_access
                     set
                         paid_question_credits = paid_question_credits - 1,
                         total_questions_used = total_questions_used + 1,
@@ -232,7 +239,7 @@ async def add_question_to_topic_history(
         async with session.begin():
             await session.execute(
                 text("""
-                    insert into jamb_user_topic_history (
+                    insert into university_user_topic_history (
                         user_id,
                         subject_code,
                         topic_id,
@@ -255,7 +262,7 @@ async def add_question_to_topic_history(
             )
 
 
-async def record_jamb_attempt(
+async def record_university_attempt(
     session_id: int,
     user_id: int,
     subject_code: str,
@@ -269,7 +276,7 @@ async def record_jamb_attempt(
         async with session.begin():
             await session.execute(
                 text("""
-                    insert into jamb_attempts (
+                    insert into university_attempts (
                         session_id,
                         user_id,
                         subject_code,
@@ -303,12 +310,12 @@ async def record_jamb_attempt(
             )
 
 
-async def increment_jamb_session_served(session_id: int):
+async def increment_university_session_served(session_id: int):
     async with get_async_session() as session:
         async with session.begin():
             await session.execute(
                 text("""
-                    update jamb_sessions
+                    update university_sessions
                     set
                         questions_served = questions_served + 1
                     where id = :session_id
@@ -317,13 +324,13 @@ async def increment_jamb_session_served(session_id: int):
             )
 
 
-async def increment_jamb_session_result(session_id: int, is_correct: bool):
+async def increment_university_session_result(session_id: int, is_correct: bool):
     async with get_async_session() as session:
         async with session.begin():
             if is_correct:
                 await session.execute(
                     text("""
-                        update jamb_sessions
+                        update university_sessions
                         set
                             correct_count = correct_count + 1
                         where id = :session_id
@@ -333,7 +340,7 @@ async def increment_jamb_session_result(session_id: int, is_correct: bool):
             else:
                 await session.execute(
                     text("""
-                        update jamb_sessions
+                        update university_sessions
                         set
                             wrong_count = wrong_count + 1
                         where id = :session_id
@@ -342,12 +349,12 @@ async def increment_jamb_session_result(session_id: int, is_correct: bool):
                 )
 
 
-async def complete_jamb_session(session_id: int):
+async def complete_university_session(session_id: int):
     async with get_async_session() as session:
         async with session.begin():
             await session.execute(
                 text("""
-                    update jamb_sessions
+                    update university_sessions
                     set
                         status = 'completed',
                         ended_at = now()
@@ -357,25 +364,25 @@ async def complete_jamb_session(session_id: int):
             )
 
 
-async def clear_jamb_session_state(context: ContextTypes.DEFAULT_TYPE):
+async def clear_university_session_state(context: ContextTypes.DEFAULT_TYPE):
     keys_to_clear = [
-        "jp_session_id",
-        "jp_session_mode",
-        "jp_question_batch",
-        "jp_question_ids",
-        "jp_current_index",
-        "jp_session_target",
-        "jp_correct_count",
-        "jp_wrong_count",
-        "jp_current_question",
-        "jp_answered_current",
-        "jp_served_question_ids",
-        "jp_shown_passages",
-        "jp_last_passage",
-        "jp_last_passage_id_shown",
-        "jp_active_passage_message_id",
-        "jp_last_selected_option",
-        "jp_last_correct_option",
+        "ut_session_id",
+        "ut_session_mode",
+        "ut_question_batch",
+        "ut_question_ids",
+        "ut_current_index",
+        "ut_session_target",
+        "ut_correct_count",
+        "ut_wrong_count",
+        "ut_current_question",
+        "ut_answered_current",
+        "ut_served_question_ids",
+        "ut_shown_passages",
+        "ut_last_passage",
+        "ut_last_passage_id_shown",
+        "ut_active_passage_message_id",
+        "ut_last_selected_option",
+        "ut_last_correct_option",
     ]
 
     for key in keys_to_clear:
@@ -383,16 +390,16 @@ async def clear_jamb_session_state(context: ContextTypes.DEFAULT_TYPE):
 
 
 # =============================
-# Mock-by-subject helpers
+# Mock-by-course helpers
 # =============================
-def get_jamb_mock_question_count(subject_code: str) -> int:
+def get_university_mock_question_count(subject_code: str) -> int:
     subject_code = str(subject_code or "").strip().lower()
-    return 60 if subject_code == "eng" else 40
+    return 40
 
 
-def get_jamb_mock_duration_minutes(subject_code: str) -> int:
+def get_university_mock_duration_minutes(subject_code: str) -> int:
     subject_code = str(subject_code or "").strip().lower()
-    return 45 if subject_code == "eng" else 30
+    return 30
 
 
 def extract_correct_option(question: dict) -> str:
@@ -403,7 +410,7 @@ def extract_correct_option(question: dict) -> str:
     return ""
 
 
-def format_jamb_mock_time_remaining(exam_ends_at) -> str:
+def format_university_mock_time_remaining(exam_ends_at) -> str:
     if not exam_ends_at:
         return "Unknown"
 
@@ -432,7 +439,7 @@ def format_jamb_mock_time_remaining(exam_ends_at) -> str:
     return f"{minutes}m"
 
 
-def is_jamb_mock_time_expired(exam_ends_at) -> bool:
+def is_university_mock_time_expired(exam_ends_at) -> bool:
     if not exam_ends_at:
         return False
 
@@ -448,12 +455,12 @@ def is_jamb_mock_time_expired(exam_ends_at) -> bool:
     return datetime.now(timezone.utc) >= exam_ends_at
 
 
-async def get_seen_question_ids_for_subject(user_id: int, subject_code: str) -> list[str]:
+async def get_seen_question_ids_for_course(user_id: int, subject_code: str) -> list[str]:
     async with get_async_session() as session:
         result = await session.execute(
             text("""
                 select distinct question_id
-                from jamb_user_topic_history
+                from university_user_topic_history
                 where user_id = :user_id
                   and subject_code = :subject_code
             """),
@@ -466,12 +473,12 @@ async def get_seen_question_ids_for_subject(user_id: int, subject_code: str) -> 
         return [str(row[0]) for row in rows]
 
 
-async def reset_subject_history(user_id: int, subject_code: str):
+async def reset_course_history(user_id: int, subject_code: str):
     async with get_async_session() as session:
         async with session.begin():
             await session.execute(
                 text("""
-                    delete from jamb_user_topic_history
+                    delete from university_user_topic_history
                     where user_id = :user_id
                       and subject_code = :subject_code
                 """),
@@ -482,7 +489,7 @@ async def reset_subject_history(user_id: int, subject_code: str):
             )
 
 
-async def add_question_to_subject_history(
+async def add_question_to_course_history(
     user_id: int,
     subject_code: str,
     question_id: str,
@@ -492,7 +499,7 @@ async def add_question_to_subject_history(
         async with session.begin():
             await session.execute(
                 text("""
-                    insert into jamb_user_topic_history (
+                    insert into university_user_topic_history (
                         user_id,
                         subject_code,
                         topic_id,
@@ -509,7 +516,7 @@ async def add_question_to_subject_history(
                 {
                     "user_id": user_id,
                     "subject_code": subject_code,
-                    "topic_id": topic_id or "__mock_subject__",
+                    "topic_id": topic_id or "__mock_course__",
                     "question_id": question_id,
                 },
             )
@@ -520,7 +527,7 @@ async def deduct_paid_questions(user_id: int, question_count: int) -> bool:
         async with session.begin():
             result = await session.execute(
                 text("""
-                    update jamb_user_access
+                    update university_user_access
                     set
                         paid_question_credits = paid_question_credits - :question_count,
                         total_questions_used = total_questions_used + :question_count,
@@ -538,7 +545,7 @@ async def deduct_paid_questions(user_id: int, question_count: int) -> bool:
             return row is not None
 
 
-async def get_latest_active_jamb_mock_session_for_user(user_id: int, subject_code: str) -> Optional[dict]:
+async def get_latest_active_university_mock_session_for_user(user_id: int, subject_code: str) -> Optional[dict]:
     async with get_async_session() as session:
         result = await session.execute(
             text("""
@@ -558,10 +565,10 @@ async def get_latest_active_jamb_mock_session_for_user(user_id: int, subject_cod
                     created_at,
                     ended_at,
                     updated_at
-                from jamb_sessions
+                from university_sessions
                 where user_id = :user_id
                   and subject_code = :subject_code
-                  and mode = 'mock_utme'
+                  and mode = 'course_mock'
                   and status = 'active'
                 order by id desc
                 limit 1
@@ -575,12 +582,12 @@ async def get_latest_active_jamb_mock_session_for_user(user_id: int, subject_cod
         return dict(row) if row else None
 
 
-async def set_jamb_session_current_question_index(session_id: int, current_question_index: int):
+async def set_university_session_current_question_index(session_id: int, current_question_index: int):
     async with get_async_session() as session:
         async with session.begin():
             await session.execute(
                 text("""
-                    update jamb_sessions
+                    update university_sessions
                     set
                         current_question_index = :current_question_index,
                         updated_at = now()
@@ -593,7 +600,7 @@ async def set_jamb_session_current_question_index(session_id: int, current_quest
             )
 
 
-async def get_jamb_session_paper(session_id: int) -> list[dict]:
+async def get_university_session_paper(session_id: int) -> list[dict]:
     async with get_async_session() as session:
         result = await session.execute(
             text("""
@@ -610,7 +617,7 @@ async def get_jamb_session_paper(session_id: int) -> list[dict]:
                     is_correct,
                     created_at,
                     updated_at
-                from jamb_session_questions
+                from university_session_questions
                 where session_id = :session_id
                 order by question_order asc
             """),
@@ -620,12 +627,13 @@ async def get_jamb_session_paper(session_id: int) -> list[dict]:
         return [dict(row) for row in rows]
 
 
-async def create_jamb_subject_mock_paper_if_needed(
+async def create_university_course_mock_paper_if_needed(
     user_id: int,
     session_id: int,
     subject_code: str,
+    category_code: str,
 ) -> dict:
-    existing_paper = await get_jamb_session_paper(session_id)
+    existing_paper = await get_university_session_paper(session_id)
     if existing_paper:
         return {
             "created_now": False,
@@ -634,22 +642,18 @@ async def create_jamb_subject_mock_paper_if_needed(
             "cycle_reset": False,
         }
 
-    seen_question_ids = await get_seen_question_ids_for_subject(user_id, subject_code)
-    requested_count = get_jamb_mock_question_count(subject_code)
+    seen_question_ids = await get_seen_question_ids_for_course(user_id, subject_code)
+    requested_count = get_university_mock_question_count(subject_code)
 
-    if subject_code == "eng":
-        batch = prepare_use_of_english_batch(
-            seen_question_ids=seen_question_ids,
-        )
-    else:
-        batch = prepare_subject_question_batch(
-            subject_code=subject_code,
-            requested_count=requested_count,
-            seen_question_ids=seen_question_ids,
-        )
+    batch = prepare_university_course_mock_batch(
+        category_code=category_code,
+        subject_code=subject_code,
+        requested_count=requested_count,
+        seen_question_ids=seen_question_ids,
+    )
 
     if batch.get("cycle_reset"):
-        await reset_subject_history(user_id, subject_code)
+        await reset_course_history(user_id, subject_code)
 
     selected_questions = batch["selected_questions"]
 
@@ -658,7 +662,7 @@ async def create_jamb_subject_mock_paper_if_needed(
             for idx, question in enumerate(selected_questions, start=1):
                 await session.execute(
                     text("""
-                        insert into jamb_session_questions (
+                        insert into university_session_questions (
                             session_id,
                             user_id,
                             subject_code,
@@ -698,14 +702,14 @@ async def create_jamb_subject_mock_paper_if_needed(
                 )
 
     for question in selected_questions:
-        await add_question_to_subject_history(
+        await add_question_to_course_history(
             user_id=user_id,
             subject_code=subject_code,
             question_id=str(question.get("id")),
-            topic_id=str(question.get("topic_id") or "__mock_subject__"),
+            topic_id=str(question.get("topic_id") or "__mock_course__"),
         )
 
-    paper_rows = await get_jamb_session_paper(session_id)
+    paper_rows = await get_university_session_paper(session_id)
 
     return {
         "created_now": True,
@@ -715,20 +719,20 @@ async def create_jamb_subject_mock_paper_if_needed(
     }
 
 
-async def create_jamb_mock_session(
+async def create_university_mock_session(
     user_id: int,
     subject_code: str,
     question_target: int,
 ) -> int:
     exam_ends_at = datetime.now(timezone.utc) + timedelta(
-        minutes=get_jamb_mock_duration_minutes(subject_code)
+        minutes=get_university_mock_duration_minutes(subject_code)
     )
 
     async with get_async_session() as session:
         async with session.begin():
             result = await session.execute(
                 text("""
-                    insert into jamb_sessions (
+                    insert into university_sessions (
                         user_id,
                         subject_code,
                         topic_id,
@@ -743,7 +747,7 @@ async def create_jamb_mock_session(
                         :user_id,
                         :subject_code,
                         :topic_id,
-                        'mock_utme',
+                        'course_mock',
                         :question_target,
                         0,
                         :exam_ends_at,
@@ -755,7 +759,7 @@ async def create_jamb_mock_session(
                 {
                     "user_id": int(user_id),
                     "subject_code": subject_code,
-                    "topic_id": "__mock_subject__",
+                    "topic_id": "__mock_course__",
                     "question_target": int(question_target),
                     "exam_ends_at": exam_ends_at,
                 },
@@ -764,7 +768,7 @@ async def create_jamb_mock_session(
             return int(session_id)
 
 
-async def get_jamb_session_by_id(session_id: int) -> Optional[dict]:
+async def get_university_session_by_id(session_id: int) -> Optional[dict]:
     async with get_async_session() as session:
         result = await session.execute(
             text("""
@@ -784,7 +788,7 @@ async def get_jamb_session_by_id(session_id: int) -> Optional[dict]:
                     created_at,
                     ended_at,
                     updated_at
-                from jamb_sessions
+                from university_sessions
                 where id = :session_id
                 limit 1
             """),
@@ -794,49 +798,48 @@ async def get_jamb_session_by_id(session_id: int) -> Optional[dict]:
         return dict(row) if row else None
 
 
-def build_jamb_mock_resume_text(subject_name: str, next_question_no: int, exam_ends_at) -> str:
-    safe_subject_name = md_escape(str(subject_name))
+def build_university_mock_resume_text(course_name: str, next_question_no: int, exam_ends_at) -> str:
+    safe_course_name = md_escape(str(course_name))
     safe_next_question_no = md_escape(str(next_question_no))
-    safe_remaining = md_escape(format_jamb_mock_time_remaining(exam_ends_at))
+    safe_remaining = md_escape(format_university_mock_time_remaining(exam_ends_at))
 
     return (
-        f"📝 *Resume Mock UTME*\n\n"
-        f"📘 Subject: *{safe_subject_name}*\n"
+        f"📝 *Resume Course Mock*\n\n"
+        f"📘 course: *{safe_course_name}*\n"
         f"⏱ Time Remaining: *{safe_remaining}*\n"
         f"➡ Resume From: *Question {safe_next_question_no}*\n\n"
-        "Tap below to continue your subject mock\\."
+        "Tap below to continue your course mock\\."
     )
 
 
-def make_jamb_mock_resume_keyboard() -> InlineKeyboardMarkup:
+def make_university_mock_resume_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("▶ Resume Mock", callback_data="jp_mock_resume")],
+            [InlineKeyboardButton("▶ Resume Mock", callback_data="ut_mock_resume")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
 
 
-def build_jamb_mock_access_text(subject_name: str, question_count: int, mock_sessions_available: int) -> str:
-    safe_subject_name = md_escape(str(subject_name))
+def build_university_mock_access_text(course_name: str, question_count: int, mock_sessions_available: int) -> str:
+    safe_course_name = md_escape(str(course_name))
     safe_question_count = md_escape(str(question_count))
     safe_mock_sessions = md_escape(str(mock_sessions_available))
     duration_text = "45 minutes" if question_count == 60 else "30 minutes"
     safe_duration = md_escape(duration_text)
 
     return (
-        "📝 *Mock UTME \\(By Subject\\)*\n\n"
-        "This is a *full subject mock exam*\\.\n\n"
-        f"📘 Subject: *{safe_subject_name}*\n"
+        "📝 *Course Mock \\(By course\\)*\n\n"
+        "This is a *full course mock exam*\\.\n\n"
+        f"📘 course: *{safe_course_name}*\n"
         f"📚 Total Questions: *{safe_question_count}*\n"
         f"⏱ Time Allowed: *{safe_duration}*\n"
         f"🎟 Mock Sessions Available: *{safe_mock_sessions}*\n\n"
         "*What this means:*\n"
-        "• You will answer a *full paper* for this subject\n"
-        "• *Use of English* has *60 questions*\n"
-        "• *Other subjects* have *40 questions*\n\n"
+        "• You will answer a *full paper* for this course\n"
+        "• *The courses* have *40 questions*\n\n"
         "• If you want to practise only one topic, use *By Topics*\n"
-        "• If you want to write the full subject like an exam, use *Mock UTME \\(By Subject\\)*\n\n"
+        "• If you want to write the full course like an exam, use *Course Mock \\(By course\\)*\n\n"
         "*Before you start:*\n"
         "• If you already have at least *1 mock session*, you can start now\n"
         "• If your mock sessions are *0*, get a mock session first\n\n"
@@ -844,26 +847,43 @@ def build_jamb_mock_access_text(subject_name: str, question_count: int, mock_ses
     )
 
 
-def make_jamb_mock_access_keyboard(subject_code: str, can_start: bool) -> InlineKeyboardMarkup:
+def make_university_mock_access_keyboard(
+    category_code: str,
+    subject_code: str,
+    can_start: bool,
+) -> InlineKeyboardMarkup:
+
     rows = []
 
     if can_start:
-        rows.append([InlineKeyboardButton("▶ Start Mock Now", callback_data="jp_mock_start_paid")])
+        rows.append([
+            InlineKeyboardButton(
+                "▶ Start Mock Now",
+                callback_data="ut_mock_start_paid"
+            )
+        ])
 
     rows.extend([
-        [InlineKeyboardButton("🎟 Get 1 Mock Session — ₦100", callback_data="jp_mock_buy_1")],
-        [InlineKeyboardButton("🎟 Get 2 Mock Sessions — ₦200", callback_data="jp_mock_buy_2")],
-        [InlineKeyboardButton("🎟 Get 3 Mock Sessions — ₦300", callback_data="jp_mock_buy_3")],
-        [InlineKeyboardButton("🎟 Get 4 Mock Sessions — ₦400", callback_data="jp_mock_buy_4")],
-        [InlineKeyboardButton("🎟 Get 5 Mock Sessions — ₦500", callback_data="jp_mock_buy_5")],
-        [InlineKeyboardButton("⬅️ Back to Mode", callback_data=f"jp_back_mode_{subject_code}")],
+        [InlineKeyboardButton("🎟 Get 1 Mock Session — ₦100", callback_data="ut_mock_buy_1")],
+        [InlineKeyboardButton("🎟 Get 2 Mock Sessions — ₦200", callback_data="ut_mock_buy_2")],
+        [InlineKeyboardButton("🎟 Get 3 Mock Sessions — ₦300", callback_data="ut_mock_buy_3")],
+        [InlineKeyboardButton("🎟 Get 4 Mock Sessions — ₦400", callback_data="ut_mock_buy_4")],
+        [InlineKeyboardButton("🎟 Get 5 Mock Sessions — ₦500", callback_data="ut_mock_buy_5")],
+
+        [
+            InlineKeyboardButton(
+                "⬅️ Back to Mode",
+                callback_data=f"ut_back_mode::{category_code}::{subject_code}"
+            )
+        ],
+
         [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
     ])
 
     return InlineKeyboardMarkup(rows)
 
 
-def build_jamb_batch_from_paper_rows(paper_rows: list[dict]) -> list[dict]:
+def build_university_batch_from_paper_rows(paper_rows: list[dict]) -> list[dict]:
     batch = []
 
     for row in paper_rows:
@@ -884,18 +904,24 @@ def build_jamb_batch_from_paper_rows(paper_rows: list[dict]) -> list[dict]:
 # =============================
 # Keyboards
 # =============================
-def make_subject_keyboard():
-    subjects = get_jamb_subjects()
+
+# -----Category Keyboard------
+def make_category_keyboard():
+
+    categories = get_university_categories()
+
     rows = []
     row = []
 
-    for subject in subjects:
+    for category in categories:
+
         row.append(
             InlineKeyboardButton(
-                subject["name"],
-                callback_data=f"jp_subj_{subject['code']}"
+                category["name"],
+                callback_data=f"ut_cat_{category['code']}"
             )
         )
+
         if len(row) == 2:
             rows.append(row)
             row = []
@@ -903,81 +929,263 @@ def make_subject_keyboard():
     if row:
         rows.append(row)
 
-    rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
+    rows.append([
+        InlineKeyboardButton(
+            "🏠 Back to Main Menu",
+            callback_data="menu:main"
+        )
+    ])
+
+    return InlineKeyboardMarkup(rows)
+
+# ---Subject Keyboard---------
+def make_subject_keyboard(category_code: str):
+
+    subjects = get_university_subjects_by_category(category_code)
+
+    rows = []
+    row = []
+
+    for subject in subjects:
+
+        row.append(
+            InlineKeyboardButton(
+                subject["name"],
+                callback_data=f"ut_subj_{subject['code']}"
+            )
+        )
+
+        if len(row) == 2:
+            rows.append(row)
+            row = []
+
+    if row:
+        rows.append(row)
+
+    rows.append([
+        InlineKeyboardButton(
+            "⬅️ Back to Categories",
+            callback_data="university"
+        )
+    ])
+
     return InlineKeyboardMarkup(rows)
 
 
-def make_mode_keyboard(subject_code: str):
+# ---Module Keyboard-----
+def make_module_keyboard(category_code: str, subject_code: str):
+    modules = get_university_modules(
+        category_code,
+        subject_code,
+    )
+
+    rows = []
+
+    for module in modules:
+        rows.append([
+            InlineKeyboardButton(
+                f"{module['number']}. {module['title']}",
+                callback_data=(
+                    f"ut_module::"
+                    f"{category_code}::"
+                    f"{subject_code}::"
+                    f"{module['id']}"
+                )
+            )
+        ])
+
+    rows.append([
+        InlineKeyboardButton(
+            "⬅️ Back to Subjects",
+            callback_data=f"ut_back_subjects::{category_code}"
+        )
+    ])
+
+    rows.append([
+        InlineKeyboardButton(
+            "🏠 Back to Main Menu",
+            callback_data="menu:main"
+        )
+    ])
+
+    return InlineKeyboardMarkup(rows)
+
+
+# ---Mode Keyboard-------
+def make_mode_keyboard():
     return InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("📚 By Topics", callback_data=f"jp_mode_topics_{subject_code}")],
-            [InlineKeyboardButton("📝 Mock UTME (By Subject)", callback_data=f"jp_mode_mock_{subject_code}")],
-            [InlineKeyboardButton("⬅️ Back to Subjects", callback_data="jambpractice")],
-            [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+            [
+                InlineKeyboardButton(
+                    "📚 By Topics",
+                    callback_data="ut_mode_topics",
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    "📝 Course Mock (By course)",
+                    callback_data="ut_mode_mock",
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    "⬅️ Back to Subjects",
+                    callback_data="ut_back_subjects",
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    "🏠 Back to Main Menu",
+                    callback_data="menu:main",
+                )
+            ],
         ]
     )
 
 
-def make_topics_keyboard(subject_code: str, page: int = 1):
-    topics = get_subject_topics(subject_code)
-    total_topics = len(topics)
-    total_pages = max(1, math.ceil(total_topics / TOPICS_PER_PAGE))
-
-    page = max(1, min(page, total_pages))
-
-    start = (page - 1) * TOPICS_PER_PAGE
-    end = start + TOPICS_PER_PAGE
-    page_topics = topics[start:end]
+# ----Topic Keyboard------
+def make_topics_keyboard(
+    category_code: str,
+    subject_code: str,
+    module_id: str,
+):
+    topics = get_university_module_topics(
+        category_code,
+        subject_code,
+        module_id,
+    )
 
     rows = []
 
-    for topic in page_topics:
+    for topic in topics:
         rows.append([
             InlineKeyboardButton(
                 f"{topic['number']}. {topic['title']}",
-                callback_data=f"jp_topic::{subject_code}::{topic['id']}"
+                callback_data=(
+                    f"ut_topic::"
+                    f"{category_code}::"
+                    f"{subject_code}::"
+                    f"{module_id}::"
+                    f"{topic['id']}"
+                )
             )
         ])
 
-    nav_row = []
-    if page > 1:
-        nav_row.append(
-            InlineKeyboardButton("◀ Prev", callback_data=f"jp_topicpage_{subject_code}_{page-1}")
+    rows.append([
+        InlineKeyboardButton(
+            "⬅️ Back to Modules",
+            callback_data=(
+                f"ut_back_modules::"
+                f"{category_code}::"
+                f"{subject_code}"
+            )
         )
-    if page < total_pages:
-        nav_row.append(
-            InlineKeyboardButton("Next ▶", callback_data=f"jp_topicpage_{subject_code}_{page+1}")
+    ])
+
+    rows.append([
+        InlineKeyboardButton(
+            "🏠 Back to Main Menu",
+            callback_data="menu:main"
         )
-    if nav_row:
-        rows.append(nav_row)
+    ])
 
-    rows.append([InlineKeyboardButton("⬅️ Back to Mode", callback_data=f"jp_back_mode_{subject_code}")])
-    rows.append([InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")])
-
-    return InlineKeyboardMarkup(rows), page, total_pages
+    return InlineKeyboardMarkup(rows)
 
 
-def make_topic_access_keyboard_for_subject(
+# ---Topic Access Keyboard for Courses----
+def make_topic_access_keyboard_for_course(
+    category_code: str,
     subject_code: str,
+    module_id: str,
     has_free_trial: bool,
     has_paid_credits: bool,
 ):
     rows = []
 
+    # =====================================
+    # FREE TRIAL
+    # =====================================
     if has_free_trial:
-        rows.append([InlineKeyboardButton("🎁 Use Free Trial (5 Questions)", callback_data="jp_start_free")])
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    "🎁 Use Free Trial (5 Questions)",
+                    callback_data="ut_start_free",
+                )
+            ]
+        )
 
+    # =====================================
+    # USE PAID CREDITS
+    # =====================================
     if has_paid_credits:
-        rows.append([InlineKeyboardButton("✅ Use Paid Credits", callback_data="jp_use_paid")])
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    "✅ Use Paid Credits",
+                    callback_data="ut_use_paid",
+                )
+            ]
+        )
 
-    rows.extend([
-        [InlineKeyboardButton("💳 Get 50 Questions — ₦100", callback_data="jp_buy_50")],
-        [InlineKeyboardButton("💳 Get 100 Questions — ₦200", callback_data="jp_buy_100")],
-        [InlineKeyboardButton("💳 Get 150 Questions — ₦300", callback_data="jp_buy_150")],
-        [InlineKeyboardButton("💳 Get 200 Questions — ₦400", callback_data="jp_buy_200")],
-        [InlineKeyboardButton("⬅️ Back to Topics", callback_data=f"jp_topicpage_{subject_code}_1")],
-        [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
-    ])
+    # =====================================
+    # BUY QUESTION PACKS
+    # =====================================
+    rows.extend(
+        [
+            [
+                InlineKeyboardButton(
+                    "💳 Get 50 Questions — ₦100",
+                    callback_data="ut_buy_50",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "💳 Get 100 Questions — ₦200",
+                    callback_data="ut_buy_100",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "💳 Get 150 Questions — ₦300",
+                    callback_data="ut_buy_150",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "💳 Get 200 Questions — ₦400",
+                    callback_data="ut_buy_200",
+                )
+            ],
+
+            # =====================================
+            # BACK TO TOPICS
+            # =====================================
+            [
+                InlineKeyboardButton(
+                    "⬅️ Back to Topics",
+                    callback_data=(
+                        f"ut_back_module::{category_code}"
+                        f"::{subject_code}"
+                        f"::{module_id}"
+                    ),
+                )
+            ],
+
+            # =====================================
+            # MAIN MENU
+            # =====================================
+            [
+                InlineKeyboardButton(
+                    "🏠 Back to Main Menu",
+                    callback_data="menu:main",
+                )
+            ],
+        ]
+    )
 
     return InlineKeyboardMarkup(rows)
 
@@ -985,9 +1193,9 @@ def make_topic_access_keyboard_for_subject(
 def make_after_answer_keyboard():
     return InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("➡️ Next", callback_data="jp_next")],
-            [InlineKeyboardButton("📖 Answer Details", callback_data="jp_details")],
-            [InlineKeyboardButton("🏠 End Practice", callback_data="jp_end_session")],
+            [InlineKeyboardButton("➡️ Next", callback_data="ut_next")],
+            [InlineKeyboardButton("📖 Answer Details", callback_data="ut_details")],
+            [InlineKeyboardButton("🏠 End Practice", callback_data="ut_end_session")],
         ]
     )
 
@@ -995,8 +1203,8 @@ def make_after_answer_keyboard():
 def make_after_details_keyboard():
     return InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("➡️ Next", callback_data="jp_next")],
-            [InlineKeyboardButton("🏠 End Practice", callback_data="jp_end_session")],
+            [InlineKeyboardButton("➡️ Next", callback_data="ut_next")],
+            [InlineKeyboardButton("🏠 End Practice", callback_data="ut_end_session")],
         ]
     )
 
@@ -1005,14 +1213,14 @@ def make_paid_session_count_keyboard():
     return InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("10", callback_data="jp_paidcount_10"),
-                InlineKeyboardButton("20", callback_data="jp_paidcount_20"),
+                InlineKeyboardButton("10", callback_data="ut_paidcount_10"),
+                InlineKeyboardButton("20", callback_data="ut_paidcount_20"),
             ],
             [
-                InlineKeyboardButton("30", callback_data="jp_paidcount_30"),
-                InlineKeyboardButton("50", callback_data="jp_paidcount_50"),
+                InlineKeyboardButton("30", callback_data="ut_paidcount_30"),
+                InlineKeyboardButton("50", callback_data="ut_paidcount_50"),
             ],
-            [InlineKeyboardButton("⬅️ Back to JAMB Practice", callback_data="jambpractice")],
+            [InlineKeyboardButton("⬅️ Back to UNIVERSITY Practice", callback_data="university")],
             [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
         ]
     )
@@ -1031,36 +1239,35 @@ def build_welcome_text(
     safe_mock_sessions = md_escape(str(mock_sessions_available))
 
     return (
-        "🎓 *Welcome to JAMB Practice*\n\n"
-        "This section helps you practise for JAMB in *two different ways*:\n\n"
+        "🎓 *Welcome to University Tutorials*\n\n"
+        "This section helps you practise for UNIVERSITY in *two different ways*:\n\n"
         "1\\. *By Topics* \n"
-        "   You choose one subject, then choose one topic under that subject, and practise questions from that topic\\.\n\n"
-        "2\\. *Mock UTME \\(By Subject\\)* \n"
-        "   You choose one full subject and answer it like an exam paper\\.\n"
-        "   *Use of English* has *60 questions*\\.\n"
-        "   *Other subjects* have *40 questions*\\.\n\n"
+        "   You choose one course, then choose one topic under that course, and practise questions from that topic\\.\n\n"
+        "2\\. *Course Mock \\(By course\\)* \n"
+        "   You choose one full course and answer it like an exam paper\\.\n"
+        "   *The courses* have *40 questions*\\.\n\n"
         "*How payment works:*\n"
         "• *First\\-time users* get *5 free questions* for *By Topics* practice only\n"
         "• *By Topics* uses *paid question credits*\n"
-        "• *Mock UTME \\(By Subject\\)* does *not* use question credits\n"
-        "• *Mock UTME \\(By Subject\\)* uses *mock sessions* instead\n"
-        "• *1 subject mock \\= 1 mock session*\n\n"
+        "• *Course Mock \\(By course\\)* does *not* use question credits\n"
+        "• *Course Mock \\(By course\\)* uses *mock sessions* instead\n"
+        "• *1 course mock \\= 1 mock session*\n\n"
         "*Simple examples:*\n"
         "• If you want to practise *Chemistry \\> Acids, Bases and Salts*, use *By Topics*\n"
-        "• If you want to write a full *Chemistry mock exam*, use *Mock UTME \\(By Subject\\)*\n\n"
+        "• If you want to write a full *Chemistry mock exam*, use *Course Mock \\(By course\\)*\n\n"
         "*Your current balances:*\n"
         f"🎁 Free questions left: *{safe_free_remaining}*\n"
         f"💳 Paid question credits: *{safe_paid_credits}*\n"
         f"🎟 Mock sessions available: *{safe_mock_sessions}*\n\n"
         "*Disclaimer:*\n"
-        "This is an independent study tool and not an official JAMB platform\\.\n\n"
-        "Please choose a subject below\\."
+        "This is an independent study tool and not an official UNIVERSITY platform\\.\n\n"
+        "Please choose a course below\\."
     )
 
 # =============================
 # Entry point
 # =============================
-async def jambpractice_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg = update.effective_user
     if not tg:
         return
@@ -1071,17 +1278,18 @@ async def jambpractice_handler(update: Update, context: ContextTypes.DEFAULT_TYP
         except Exception:
             pass
 
-    await ensure_jamb_user_access(tg.id)
-    access = await get_jamb_user_access(tg.id)
+    await ensure_university_user_access(tg.id)
+    access = await get_university_user_access(tg.id)
 
     free_remaining = int((access or {}).get("free_questions_remaining", 5))
     paid_credits = int((access or {}).get("paid_question_credits", 0))
     mock_sessions_available = int((access or {}).get("mock_sessions_available", 0))
 
-    context.user_data["jp_subject_code"] = None
-    context.user_data["jp_mode"] = None
-    context.user_data["jp_topic_id"] = None
-    context.user_data["jp_topic_page"] = 1
+    context.user_data["ut_subject_code"] = None
+    context.user_data["ut_mode"] = None
+    context.user_data["ut_topic_id"] = None
+    context.user_data["ut_module_id"] = None
+    context.user_data["ut_topic_page"] = 1
 
     text_msg = build_welcome_text(
         free_remaining,
@@ -1092,15 +1300,49 @@ async def jambpractice_handler(update: Update, context: ContextTypes.DEFAULT_TYP
     await update.effective_message.reply_text(
         text_msg,
         parse_mode="MarkdownV2",
-        reply_markup=make_subject_keyboard(),
+        reply_markup=make_category_keyboard(),
     )
 
+# ==============================
+# University Category Handler
+# ==============================
+async def university_category_handler(update, context):
+
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    category_code = query.data.replace("ut_cat_", "", 1)
+
+    category = get_university_category_by_code(category_code)
+
+    if not category:
+        return await query.message.reply_text(
+            "⚠️ Category not found."
+        )
+
+    context.user_data["ut_category_code"] = category_code
+
+    safe_category_name = md_escape(str(category["name"]))
+
+    await query.message.reply_text(
+        f"📚 *{safe_category_name}*\n\nChoose a subject\\.",
+        parse_mode="MarkdownV2",
+        reply_markup=make_subject_keyboard(category_code),
+    )
 
 # =============================
-# Subject selected
+# course selected
 # =============================
-async def jamb_subject_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_subject_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
     query = update.callback_query
+
     if not query:
         return
 
@@ -1108,84 +1350,145 @@ async def jamb_subject_handler(update: Update, context: ContextTypes.DEFAULT_TYP
 
     try:
         _, _, subject_code = query.data.split("_", 2)
+
     except Exception:
-        return await query.message.reply_text("⚠️ Invalid subject selection.")
+        return await query.message.reply_text(
+            "⚠️ Invalid course selection\\.",
+            parse_mode="MarkdownV2",
+        )
 
-    subject = get_subject_by_code(subject_code)
-    if not subject:
-        return await query.message.reply_text("⚠️ Subject not found or inactive.")
-
-    context.user_data["jp_subject_code"] = subject_code
-    context.user_data["jp_mode"] = None
-    context.user_data["jp_topic_id"] = None
-    context.user_data["jp_topic_page"] = 1
-
-    await query.message.reply_text(
-        f"📘 *You selected:* {subject['name']}\n\n"
-        "How would you like to practice?",
-        parse_mode="MarkdownV2",
-        reply_markup=make_mode_keyboard(subject_code),
+    # =====================================
+    # LOAD CATEGORY STATE
+    # =====================================
+    category_code = context.user_data.get(
+        "ut_category_code"
     )
 
+    if not category_code:
+        return await query.message.reply_text(
+            "⚠️ Category session expired\\. Please start again\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    # =====================================
+    # LOAD SUBJECT
+    # =====================================
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
+    )
+
+    if not subject:
+        return await query.message.reply_text(
+            "⚠️ Course not found or inactive\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    # =====================================
+    # SAVE FLOW STATE
+    # =====================================
+    context.user_data["ut_category_code"] = category_code
+    context.user_data["ut_subject_code"] = subject_code
+    context.user_data["ut_mode"] = None
+    context.user_data["ut_topic_id"] = None
+    context.user_data["ut_module_id"] = None
+    context.user_data["ut_topic_page"] = 1
+
+    # =====================================
+    # SAFE DISPLAY
+    # =====================================
+    safe_course_name = md_escape(
+        str(subject["name"])
+    )
+
+    # =====================================
+    # SEND MODE SCREEN
+    # =====================================
+    await query.message.reply_text(
+        f"📘 *You selected:* {safe_course_name}\n\n"
+        "How would you like to practice\\?",
+        parse_mode="MarkdownV2",
+        reply_markup=make_mode_keyboard(),
+    )
+
+
 # --------------------------------
-# JAMB SUBJECT MOCK SCREEN
+# UNIVERSITY course MOCK SCREEN
 # -------------------------------- 
-async def open_jamb_subject_mock_screen(
+async def open_university_course_mock_screen(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
+    category_code: str,
     subject_code: str,
 ):
-    context.user_data["jp_subject_code"] = subject_code
-    context.user_data["jp_mode"] = "mock_utme"
-    context.user_data["jp_topic_id"] = None
+    context.user_data["ut_category_code"] = category_code
+    context.user_data["ut_subject_code"] = subject_code
+    context.user_data["ut_mode"] = "course_mock"
+    context.user_data["ut_topic_id"] = None
+    context.user_data["ut_module_id"] = None
 
     tg = update.effective_user
     user_id = tg.id
 
-    subject = get_subject_by_code(subject_code)
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
+    )
+
     if not subject:
         return await update.effective_message.reply_text(
-            "⚠️ Subject not found\\.",
+            "⚠️ Course not found\\.",
             parse_mode="MarkdownV2",
         )
 
-    active_session = await get_latest_active_jamb_mock_session_for_user(
+    active_session = await get_latest_active_university_mock_session_for_user(
         user_id=user_id,
         subject_code=subject_code,
     )
 
-    if active_session and not is_jamb_mock_time_expired(active_session.get("exam_ends_at")):
-        context.user_data["jp_session_id"] = int(active_session["id"])
-        context.user_data["jp_session_mode"] = "mock_utme"
+    if active_session and not is_university_mock_time_expired(
+        active_session.get("exam_ends_at")
+    ):
+        context.user_data["ut_session_id"] = int(active_session["id"])
+        context.user_data["ut_session_mode"] = "course_mock"
 
-        next_question_no = max(1, int(active_session.get("current_question_index") or 0) + 1)
+        next_question_no = max(
+            1,
+            int(active_session.get("current_question_index") or 0) + 1,
+        )
 
         return await update.effective_message.reply_text(
-            build_jamb_mock_resume_text(
-                subject_name=subject["name"],
+            build_university_mock_resume_text(
+                course_name=subject["name"],
                 next_question_no=next_question_no,
                 exam_ends_at=active_session.get("exam_ends_at"),
             ),
             parse_mode="MarkdownV2",
-            reply_markup=make_jamb_mock_resume_keyboard(),
+            reply_markup=make_university_mock_resume_keyboard(),
         )
 
     mock_sessions_available = await get_mock_sessions_available(user_id)
-    question_count = get_jamb_mock_question_count(subject_code)
+
+    question_count = get_university_mock_question_count(subject_code)
+
     can_start = mock_sessions_available >= 1
 
     return await update.effective_message.reply_text(
-        build_jamb_mock_access_text(
-            subject_name=subject["name"],
+        build_university_mock_access_text(
+            course_name=subject["name"],
             question_count=question_count,
             mock_sessions_available=mock_sessions_available,
         ),
         parse_mode="MarkdownV2",
-        reply_markup=make_jamb_mock_access_keyboard(subject_code, can_start),
+        reply_markup=make_university_mock_access_keyboard(
+            category_code,
+            subject_code,
+            can_start,
+        ),
     )
 
 
-async def jamb_mock_buy_session_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_mock_buy_session_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
@@ -1193,7 +1496,7 @@ async def jamb_mock_buy_session_handler(update: Update, context: ContextTypes.DE
     await query.answer()
 
     data = query.data or ""
-    session_count_str = data.replace("jp_mock_buy_", "", 1)
+    session_count_str = data.replace("ut_mock_buy_", "", 1)
 
     pricing_map = {
         "1": 100,
@@ -1209,10 +1512,10 @@ async def jamb_mock_buy_session_handler(update: Update, context: ContextTypes.DE
             parse_mode="MarkdownV2",
         )
 
-    subject_code = context.user_data.get("jp_subject_code")
+    subject_code = context.user_data.get("ut_subject_code")
     if not subject_code:
         return await query.message.reply_text(
-            "⚠️ Subject session data missing\\. Please choose your subject again\\.",
+            "⚠️ course session data missing\\. Please choose your course again\\.",
             parse_mode="MarkdownV2",
         )
 
@@ -1224,11 +1527,11 @@ async def jamb_mock_buy_session_handler(update: Update, context: ContextTypes.DE
     username = user.username or f"user_{tg_id}"
     email = f"{username}@naijaprizegate.ng"
 
-    tx_ref = build_tx_ref("JAMBMOCKSUBJECT")
+    tx_ref = build_tx_ref("UNIVERSITYMOCKcourse")
 
     async with get_async_session() as session:
         async with session.begin():
-            await create_pending_jamb_payment(
+            await create_pending_university_payment(
                 session,
                 payment_reference=tx_ref,
                 user_id=tg_id,
@@ -1248,10 +1551,10 @@ async def jamb_mock_buy_session_handler(update: Update, context: ContextTypes.DE
         meta={
             "tg_id": str(tg_id),
             "username": username,
-            "product_type": "JAMBMOCKSUBJECT",
+            "product_type": "UNIVERSITYMOCKcourse",
             "subject_code": subject_code,
         },
-        product_type="JAMBMOCKSUBJECT",
+        product_type="UNIVERSITYMOCKcourse",
     )
 
     if not checkout_url:
@@ -1264,7 +1567,7 @@ async def jamb_mock_buy_session_handler(update: Update, context: ContextTypes.DE
     safe_session_count = md_escape(str(session_count))
 
     await query.message.reply_text(
-        f"🎟 *Mock UTME Session Selected*\n\n"
+        f"🎟 *Course Mock Session Selected*\n\n"
         f"🧾 Sessions: *{safe_session_count}*\n"
         f"💰 Amount: *₦{safe_amount}*\n\n"
         "After successful payment, your mock session will be added automatically\\.\n\n"
@@ -1273,7 +1576,7 @@ async def jamb_mock_buy_session_handler(update: Update, context: ContextTypes.DE
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
-                [InlineKeyboardButton("⬅️ Back to Mock Screen", callback_data=f"jp_mode_mock_{subject_code}")],
+                [InlineKeyboardButton("⬅️ Back to Mock Screen", callback_data=f"ut_mode_mock_{subject_code}")],
                 [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
             ]
         ),
@@ -1282,7 +1585,7 @@ async def jamb_mock_buy_session_handler(update: Update, context: ContextTypes.DE
 # =============================
 # Mode selected
 # =============================
-async def jamb_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
@@ -1291,133 +1594,239 @@ async def jamb_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     data = query.data
 
-    if data.startswith("jp_mode_topics_"):
-        subject_code = data.replace("jp_mode_topics_", "", 1)
-        context.user_data["jp_subject_code"] = subject_code
-        context.user_data["jp_mode"] = "topic_practice"
-        context.user_data["jp_topic_page"] = 1
+    if data == "ut_mode_topics":
 
-        subject = get_subject_by_code(subject_code)
-        kb, page, total_pages = make_topics_keyboard(subject_code, 1)
+        category_code = context.user_data.get("ut_category_code")
+        subject_code = context.user_data.get("ut_subject_code")
 
-        safe_subject_name = md_escape(str(subject["name"]))
-        safe_page = md_escape(str(page))
-        safe_total_pages = md_escape(str(total_pages))
+        category_code = context.user_data.get("ut_category_code")
+
+        context.user_data["ut_subject_code"] = subject_code
+        context.user_data["ut_mode"] = "topic_practice"
+        context.user_data["ut_module_id"] = None
+        context.user_data["ut_topic_id"] = None
 
         return await query.message.reply_text(
-            f"📚 *{safe_subject_name} Topics*\n\n"
-            f"Choose a topic below\\.\n"
-            f"_Page {safe_page} of {safe_total_pages}_",
+            "📚 *Choose a Module*",
             parse_mode="MarkdownV2",
-            reply_markup=kb,
+            reply_markup=make_module_keyboard(
+                category_code,
+                subject_code,
+            ),
         )
 
-    if data.startswith("jp_mode_mock_"):
-        subject_code = data.replace("jp_mode_mock_", "", 1)
-        return await open_jamb_subject_mock_screen(update, context, subject_code)
+    if data == "ut_mode_mock":
+
+        category_code = context.user_data.get("ut_category_code")
+        subject_code = context.user_data.get("ut_subject_code")
+
+        category_code = context.user_data.get(
+            "ut_category_code"
+        )
+
+        return await open_university_course_mock_screen(
+            update,
+            context,
+            category_code,
+            subject_code,
+        )
 
 
-# =============================
-# Topic pagination
-# =============================
-async def jamb_topic_page_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+# ---------------------------------
+# University Module Handler
+# ---------------------------------
+async def university_module_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
+
     if not query:
         return
 
     await query.answer()
 
     try:
-        _, _, subject_code, page_str = query.data.split("_", 3)
-        page = int(page_str)
+        _, category_code, subject_code, module_id = query.data.split("::")
     except Exception:
         return await query.message.reply_text(
-            "⚠️ Invalid topic page\\.",
-            parse_mode="MarkdownV2",
+            "⚠️ Invalid module selection."
         )
 
-    context.user_data["jp_subject_code"] = subject_code
-    context.user_data["jp_topic_page"] = page
-
-    subject = get_subject_by_code(subject_code)
-    kb, page, total_pages = make_topics_keyboard(subject_code, page)
-
-    safe_subject_name = md_escape(str(subject["name"]))
-    safe_page = md_escape(str(page))
-    safe_total_pages = md_escape(str(total_pages))
-
-    await query.message.reply_text(
-        f"📚 *{safe_subject_name} Topics*\n\n"
-        f"Choose a topic below\\.\n"
-        f"_Page {safe_page} of {safe_total_pages}_",
-        parse_mode="MarkdownV2",
-        reply_markup=kb,
+    module = get_university_module_by_id(
+        category_code,
+        subject_code,
+        module_id,
     )
 
+    if not module:
+        return await query.message.reply_text(
+            "⚠️ Module not found."
+        )
 
-async def send_jamb_topic_access_screen(
+    context.user_data["ut_category_code"] = category_code
+    context.user_data["ut_subject_code"] = subject_code
+    context.user_data["ut_module_id"] = module_id
+
+    safe_module_title = md_escape(
+        str(module["title"])
+    )
+
+    await query.message.reply_text(
+        f"📚 *{safe_module_title}*\n\n"
+        "Choose a topic\\.",
+        parse_mode="MarkdownV2",
+        reply_markup=make_topics_keyboard(
+            category_code,
+            subject_code,
+            module_id,
+        ),
+    )
+
+# =========================================
+# Send University Topic Access Screen
+# =========================================
+async def send_university_topic_access_screen(
     message,
     context: ContextTypes.DEFAULT_TYPE,
+    category_code: str,
     subject_code: str,
+    module_id: str,
     topic_id: str,
     user_id: int,
 ):
-    topics = get_subject_topics(subject_code)
-    selected_topic = next((t for t in topics if t["id"] == topic_id), None)
+    # =====================================
+    # LOAD TOPICS
+    # =====================================
+    topics = get_university_module_topics(
+        category_code,
+        subject_code,
+        module_id,
+    )
 
+    selected_topic = next(
+        (
+            t for t in topics
+            if t["id"] == topic_id
+        ),
+        None,
+    )
+
+    # =====================================
+    # VALIDATE TOPIC
+    # =====================================
     if not selected_topic:
         return await message.reply_text(
             "⚠️ Topic not found\\.",
             parse_mode="MarkdownV2",
         )
 
-    context.user_data["jp_subject_code"] = subject_code
-    context.user_data["jp_topic_id"] = topic_id
+    # =====================================
+    # SAVE FLOW STATE
+    # =====================================
+    context.user_data["ut_category_code"] = category_code
+    context.user_data["ut_subject_code"] = subject_code
+    context.user_data["ut_module_id"] = module_id
+    context.user_data["ut_topic_id"] = topic_id
 
-    await ensure_jamb_user_access(user_id)
-    access = await get_jamb_user_access(user_id)
+    # =====================================
+    # ENSURE USER ACCESS
+    # =====================================
+    await ensure_university_user_access(user_id)
 
-    free_remaining = int((access or {}).get("free_questions_remaining", 0))
-    paid_credits = int((access or {}).get("paid_question_credits", 0))
+    access = await get_university_user_access(user_id)
+
+    free_remaining = int(
+        (access or {}).get(
+            "free_questions_remaining",
+            0,
+        )
+    )
+
+    paid_credits = int(
+        (access or {}).get(
+            "paid_question_credits",
+            0,
+        )
+    )
+
     has_free_trial = free_remaining > 0
     has_paid_credits = paid_credits > 0
 
-    safe_topic_title = md_escape(str(selected_topic["title"]))
-    safe_free_remaining = md_escape(str(free_remaining))
-    safe_paid_credits = md_escape(str(paid_credits))
+    # =====================================
+    # SAFE DISPLAY VALUES
+    # =====================================
+    safe_topic_title = md_escape(
+        str(selected_topic["title"])
+    )
 
+    safe_free_remaining = md_escape(
+        str(free_remaining)
+    )
+
+    safe_paid_credits = md_escape(
+        str(paid_credits)
+    )
+
+    # =====================================
+    # ACCESS SCREEN
+    # =====================================
     await message.reply_text(
         f"✅ Topic selected: *{safe_topic_title}*\n\n"
         f"🎁 Free questions left: *{safe_free_remaining}*\n"
         f"💳 Paid question credits: *{safe_paid_credits}*\n\n"
         "Choose how you want to continue:",
         parse_mode="MarkdownV2",
-        reply_markup=make_topic_access_keyboard_for_subject(
+        reply_markup=make_topic_access_keyboard_for_course(
+            category_code,
             subject_code,
+            module_id,
             has_free_trial,
             has_paid_credits,
         ),
     )
 
-async def jamb_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+# ====================================================
+# University Topic Handler
+# ====================================================
+async def university_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
+
     if not query:
         return
 
     await query.answer()
 
+    # =====================================
+    # CALLBACK FORMAT:
+    # ut_topic::category::subject::module::topic
+    # =====================================
     try:
-        _, subject_code, topic_id = query.data.split("::")
+        _, category_code, subject_code, module_id, topic_id = (
+            query.data.split("::")
+        )
+
     except Exception:
         return await query.message.reply_text(
             "⚠️ Invalid topic selection\\.",
             parse_mode="MarkdownV2",
         )
 
-    await send_jamb_topic_access_screen(
+    # =====================================
+    # SAVE FLOW STATE
+    # =====================================
+    context.user_data["ut_category_code"] = category_code
+    context.user_data["ut_subject_code"] = subject_code
+    context.user_data["ut_module_id"] = module_id
+    context.user_data["ut_topic_id"] = topic_id
+
+    # =====================================
+    # OPEN ACCESS SCREEN
+    # =====================================
+    await send_university_topic_access_screen(
         query.message,
         context,
+        category_code=category_code,
         subject_code=subject_code,
+        module_id=module_id,
         topic_id=topic_id,
         user_id=update.effective_user.id,
     )
@@ -1426,7 +1835,7 @@ async def jamb_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 # =============================
 # Free trial start
 # =============================
-async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_start_free_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
@@ -1436,42 +1845,69 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
     tg = update.effective_user
     user_id = tg.id
 
-    subject_code = context.user_data.get("jp_subject_code")
-    topic_id = context.user_data.get("jp_topic_id")
+    # =============================
+    # LOAD FLOW STATE
+    # =============================
+    category_code = context.user_data.get("ut_category_code")
+    subject_code = context.user_data.get("ut_subject_code")
+    module_id = context.user_data.get("ut_module_id")
+    topic_id = context.user_data.get("ut_topic_id")
 
-    if not subject_code or not topic_id:
+    # =============================
+    # VALIDATE FLOW STATE
+    # =============================
+    if not category_code or not subject_code or not module_id or not topic_id:
         return await query.message.reply_text(
-            "⚠️ Topic session data missing\\. Please choose your subject and topic again\\.",
+            "⚠️ Topic session data missing\\. Please choose your course and topic again\\.",
             parse_mode="MarkdownV2",
-            reply_markup=make_subject_keyboard(),
+            reply_markup=make_category_keyboard(),
         )
 
-    access = await get_jamb_user_access(user_id)
-    free_remaining = int((access or {}).get("free_questions_remaining", 0))
+    # =============================
+    # CHECK USER ACCESS
+    # =============================
+    access = await get_university_user_access(user_id)
+
+    free_remaining = int(
+        (access or {}).get("free_questions_remaining", 0)
+    )
 
     if free_remaining <= 0:
         return await query.message.reply_text(
-            "⚠️ You have no free JAMB questions left\\.\n\nPlease buy a question pack to continue\\.",
+            "⚠️ You have no free UNIVERSITY questions left\\.\n\n"
+            "Please buy a question pack to continue\\.",
             parse_mode="MarkdownV2",
         )
 
     requested_count = min(5, free_remaining)
 
+    # =============================
+    # LOAD HISTORY
+    # =============================
     seen_question_ids = await get_seen_question_ids_for_topic(
         user_id=user_id,
         subject_code=subject_code,
         topic_id=topic_id,
     )
 
-    batch = prepare_topic_question_batch(
+    # =============================
+    # PREPARE QUESTION BATCH
+    # =============================
+    batch = prepare_university_topic_question_batch(
+        category_code=category_code,
         subject_code=subject_code,
+        module_id=module_id,
         topic_id=topic_id,
         requested_count=requested_count,
         seen_question_ids=seen_question_ids,
     )
 
     if batch["cycle_reset"]:
-        await reset_topic_history(user_id, subject_code, topic_id)
+        await reset_topic_history(
+            user_id,
+            subject_code,
+            topic_id,
+        )
 
     selected_questions = batch["selected_questions"]
     selected_question_ids = batch["selected_question_ids"]
@@ -1482,7 +1918,10 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
             parse_mode="MarkdownV2",
         )
 
-    session_id = await create_jamb_session(
+    # =============================
+    # CREATE SESSION
+    # =============================
+    session_id = await create_university_session(
         user_id=user_id,
         subject_code=subject_code,
         topic_id=topic_id,
@@ -1490,31 +1929,75 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
         mode="topic_practice",
     )
 
-    context.user_data["jp_session_id"] = session_id
-    context.user_data["jp_session_mode"] = "free_trial"
-    context.user_data["jp_question_batch"] = selected_questions
-    context.user_data["jp_question_ids"] = selected_question_ids
-    context.user_data["jp_current_index"] = 0
-    context.user_data["jp_session_target"] = len(selected_questions)
-    context.user_data["jp_correct_count"] = 0
-    context.user_data["jp_wrong_count"] = 0
-    context.user_data["jp_current_question"] = None
-    context.user_data["jp_answered_current"] = False
-    context.user_data["jp_served_question_ids"] = []
-    context.user_data["jp_shown_passages"] = []
-    context.user_data["jp_last_passage"] = None
-    context.user_data["jp_last_passage_id_shown"] = ""
-    context.user_data["jp_active_passage_message_id"] = None
+    # =============================
+    # SAVE SESSION STATE
+    # =============================
+    context.user_data["ut_category_code"] = category_code
+    context.user_data["ut_subject_code"] = subject_code
+    context.user_data["ut_module_id"] = module_id
+    context.user_data["ut_topic_id"] = topic_id
 
-    topic = next((t for t in get_subject_topics(subject_code) if t["id"] == topic_id), None)
+    context.user_data["ut_session_id"] = session_id
+    context.user_data["ut_session_mode"] = "free_trial"
+
+    context.user_data["ut_question_batch"] = selected_questions
+    context.user_data["ut_question_ids"] = selected_question_ids
+
+    context.user_data["ut_current_index"] = 0
+    context.user_data["ut_session_target"] = len(selected_questions)
+
+    context.user_data["ut_correct_count"] = 0
+    context.user_data["ut_wrong_count"] = 0
+
+    context.user_data["ut_current_question"] = None
+    context.user_data["ut_answered_current"] = False
+
+    context.user_data["ut_served_question_ids"] = []
+
+    context.user_data["ut_shown_passages"] = []
+    context.user_data["ut_last_passage"] = None
+    context.user_data["ut_last_passage_id_shown"] = ""
+    context.user_data["ut_active_passage_message_id"] = None
+
+    # =============================
+    # LOAD TOPIC TITLE
+    # =============================
+    topic = next(
+        (
+            t for t in get_university_module_topics(
+                category_code,
+                subject_code,
+                module_id,
+            )
+            if t["id"] == topic_id
+        ),
+        None,
+    )
+
     topic_title = topic["title"] if topic else topic_id
 
-    subject = get_subject_by_code(subject_code)
-    subject_name = subject["name"] if subject else subject_code
+    # =============================
+    # LOAD SUBJECT
+    # =============================
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
+    )
 
-    safe_subject_name = md_escape(str(subject_name))
+    course_name = (
+        subject["name"]
+        if subject
+        else subject_code
+    )
+
+    # =============================
+    # SAFE DISPLAY TEXT
+    # =============================
+    safe_course_name = md_escape(str(course_name))
     safe_topic_title = md_escape(str(topic_title))
-    safe_question_count = md_escape(str(len(selected_questions)))
+    safe_question_count = md_escape(
+        str(len(selected_questions))
+    )
 
     reset_note = (
         "\n♻️ Topic cycle reset because you already exhausted this topic before\\."
@@ -1522,9 +2005,12 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
         else ""
     )
 
+    # =============================
+    # SUCCESS MESSAGE
+    # =============================
     await query.message.reply_text(
         f"🎉 *Free Trial Started*\n\n"
-        f"📘 Subject: *{safe_subject_name}*\n"
+        f"📘 Course: *{safe_course_name}*\n"
         f"🧪 Topic: *{safe_topic_title}*\n"
         f"📚 Questions in this session: *{safe_question_count}*"
         f"{reset_note}\n\n"
@@ -1532,8 +2018,18 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
         parse_mode="MarkdownV2",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("▶ Start Questions", callback_data="jp_serve_first")],
-                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+                [
+                    InlineKeyboardButton(
+                        "▶ Start Questions",
+                        callback_data="ut_serve_first",
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🏠 Back to Main Menu",
+                        callback_data="menu:main",
+                    )
+                ],
             ]
         ),
     )
@@ -1542,7 +2038,7 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
 # =============================
 # Buy question pack
 # =============================
-async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
@@ -1550,7 +2046,7 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
     await query.answer()
 
     data = query.data
-    pack_size = data.replace("jp_buy_", "", 1)
+    pack_size = data.replace("ut_buy_", "", 1)
 
     pricing_map = {
         "50": 100,
@@ -1561,25 +2057,25 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
 
     if pack_size not in pricing_map:
         return await query.message.reply_text(
-            "⚠️ Invalid JAMB package selected\\.",
+            "⚠️ Invalid UNIVERSITY package selected\\.",
             parse_mode="MarkdownV2",
         )
 
     amount = pricing_map[pack_size]
-    credits = calculate_jamb_credits(amount)
+    credits = int(pack_size)
 
     user = query.from_user
     tg_id = user.id
     username = user.username or f"user_{tg_id}"
     email = f"{username}@naijaprizegate.ng"
 
-    subject_code = context.user_data.get("jp_subject_code")
-    topic_id = context.user_data.get("jp_topic_id")
+    subject_code = context.user_data.get("ut_subject_code")
+    topic_id = context.user_data.get("ut_topic_id")
 
-    tx_ref = build_tx_ref("JAMB")
+    tx_ref = build_tx_ref("UNIVERSITY")
 
     async with get_async_session() as session:
-        await create_pending_jamb_payment(
+        await create_pending_university_payment(
             session,
             payment_reference=tx_ref,
             user_id=tg_id,
@@ -1599,18 +2095,18 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
         meta={
             "tg_id": str(tg_id),
             "username": username,
-            "product_type": "JAMB",
+            "product_type": "UNIVERSITY",
             "subject_code": str(subject_code) if subject_code else "",
             "topic_id": str(topic_id) if topic_id else "",
         },
-        product_type="JAMB",
+        product_type="UNIVERSITY",
     )
 
     if not checkout_url:
         async with get_async_session() as session:
             await session.execute(
                 text("""
-                    update jamb_payments
+                    update university_payments
                     set
                         payment_status = 'expired',
                         updated_at = now()
@@ -1630,23 +2126,23 @@ async def jamb_buy_pack_handler(update: Update, context: ContextTypes.DEFAULT_TY
     safe_amount = md_escape(str(amount))
 
     await query.message.reply_text(
-        f"💳 *JAMB Question Pack Selected*\n\n"
+        f"💳 *UNIVERSITY Question Pack Selected*\n\n"
         f"📚 Questions: *{safe_credits}*\n"
         f"💰 Amount: *₦{safe_amount}*\n\n"
-        "After successful payment, your JAMB question credits will be added automatically\\.\n\n"
+        "After successful payment, your UNIVERSITY question credits will be added automatically\\.\n\n"
         "Tap below to complete payment\\.",
         parse_mode="MarkdownV2",
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton("💳 Pay Securely", url=checkout_url)],
-                [InlineKeyboardButton("⬅️ Back to JAMB Practice", callback_data="jambpractice")],
+                [InlineKeyboardButton("⬅️ Back to UNIVERSITY Practice", callback_data="university")],
                 [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
             ]
         ),
     )
 
 
-def get_jp_passage_id(question: dict) -> str:
+def get_ut_passage_id(question: dict) -> str:
     """
     Return a stable passage identifier for a question.
     Prefer explicit passage_id. Fall back to question_type + passage text.
@@ -1670,7 +2166,7 @@ def question_has_passage(question: dict) -> bool:
     return bool(passage and question_type in {"comprehension_mcq", "summary_mcq"})
 
 
-def should_show_jp_passage_for_question(
+def should_show_ut_passage_for_question(
     question: dict,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> bool:
@@ -1682,30 +2178,30 @@ def should_show_jp_passage_for_question(
     if not question_has_passage(question):
         return False
 
-    current_passage_id = get_jp_passage_id(question)
-    last_passage_id = str(context.user_data.get("jp_last_passage_id_shown") or "").strip()
+    current_passage_id = get_ut_passage_id(question)
+    last_passage_id = str(context.user_data.get("ut_last_passage_id_shown") or "").strip()
 
     return current_passage_id != last_passage_id
 
 
-def mark_jp_passage_as_shown(question: dict, context: ContextTypes.DEFAULT_TYPE) -> None:
-    context.user_data["jp_last_passage_id_shown"] = get_jp_passage_id(question)
+def mark_ut_passage_as_shown(question: dict, context: ContextTypes.DEFAULT_TYPE) -> None:
+    context.user_data["ut_last_passage_id_shown"] = get_ut_passage_id(question)
 
 
-def store_jp_passage_message_id(
+def store_ut_passage_message_id(
     *,
     message_id: int | None,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    context.user_data["jp_active_passage_message_id"] = message_id
+    context.user_data["ut_active_passage_message_id"] = message_id
 
 
-async def clear_jp_passage_message(
+async def clear_ut_passage_message(
     *,
     chat_id: int,
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
-    passage_message_id = context.user_data.get("jp_active_passage_message_id")
+    passage_message_id = context.user_data.get("ut_active_passage_message_id")
     if not passage_message_id:
         return
 
@@ -1717,11 +2213,11 @@ async def clear_jp_passage_message(
     except Exception:
         pass
 
-    context.user_data["jp_active_passage_message_id"] = None
-    context.user_data["jp_last_passage_id_shown"] = ""
+    context.user_data["ut_active_passage_message_id"] = None
+    context.user_data["ut_last_passage_id_shown"] = ""
 
 
-def get_jp_passage_question_range(batch: list[dict], current_index: int) -> tuple[int, int]:
+def get_ut_passage_question_range(batch: list[dict], current_index: int) -> tuple[int, int]:
     """
     For the current question, find the full contiguous block of questions
     that belong to the same passage.
@@ -1731,7 +2227,7 @@ def get_jp_passage_question_range(batch: list[dict], current_index: int) -> tupl
         return (current_index + 1, current_index + 1)
 
     current_question = batch[current_index]
-    current_passage_id = get_jp_passage_id(current_question)
+    current_passage_id = get_ut_passage_id(current_question)
 
     if not current_passage_id:
         q_no = current_index + 1
@@ -1743,7 +2239,7 @@ def get_jp_passage_question_range(batch: list[dict], current_index: int) -> tupl
     # scan backward
     i = current_index - 1
     while i >= 0:
-        if get_jp_passage_id(batch[i]) == current_passage_id:
+        if get_ut_passage_id(batch[i]) == current_passage_id:
             start = i
             i -= 1
         else:
@@ -1752,7 +2248,7 @@ def get_jp_passage_question_range(batch: list[dict], current_index: int) -> tupl
     # scan forward
     i = current_index + 1
     while i < len(batch):
-        if get_jp_passage_id(batch[i]) == current_passage_id:
+        if get_ut_passage_id(batch[i]) == current_passage_id:
             end = i
             i += 1
         else:
@@ -1761,16 +2257,16 @@ def get_jp_passage_question_range(batch: list[dict], current_index: int) -> tupl
     return (start + 1, end + 1)
 
 
-def build_jp_passage_text(
+def build_ut_passage_text(
     *,
-    subject_name: str,
+    course_name: str,
     question_start: int,
     question_end: int,
     total_questions: int,
     exam_ends_at,
     question: dict,
 ) -> str:
-    safe_subject_name = md_escape(str(subject_name))
+    safe_course_name = md_escape(str(course_name))
     safe_q_start = md_escape(str(question_start))
     safe_q_end = md_escape(str(question_end))
     safe_total = md_escape(str(total_questions))
@@ -1782,14 +2278,14 @@ def build_jp_passage_text(
     safe_passage_text = md_escape(passage_text)
 
     lines = [
-        "📝 *Mock JAMB / UTME*" if str(question.get("_session_mode") or "") == "mock_utme" else "📘 *JAMB Practice*",
+        "📝 *Mock UNIVERSITY / UTME*" if str(question.get("_session_mode") or "") == "course_mock" else "📘 *UNIVERSITY Practice*",
         "",
-        f"Subject: *{safe_subject_name}*",
+        f"course: *{safe_course_name}*",
         f"Questions: *{safe_q_start} \\- {safe_q_end} of {safe_total}*",
     ]
 
     if exam_ends_at:
-        safe_remaining = md_escape(str(format_jamb_mock_time_remaining(exam_ends_at)))
+        safe_remaining = md_escape(str(format_university_mock_time_remaining(exam_ends_at)))
         lines.append(f"⏱ Time remaining: *{safe_remaining}*")
 
     lines.extend([
@@ -1806,82 +2302,119 @@ def build_jp_passage_text(
 # =============================
 # Question serving
 # =============================
-async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    session_mode = context.user_data.get("jp_session_mode")
-    session_id = context.user_data.get("jp_session_id")
-    batch = context.user_data.get("jp_question_batch") or []
-    current_index = int(context.user_data.get("jp_current_index", 0))
+async def send_current_university_question(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    session_mode = context.user_data.get("ut_session_mode")
+    session_id = context.user_data.get("ut_session_id")
+    batch = context.user_data.get("ut_question_batch") or []
+    current_index = int(context.user_data.get("ut_current_index", 0))
 
     # Reload mock paper from DB if needed
-    if session_mode == "mock_utme" and not batch and session_id:
-        paper_rows = await get_jamb_session_paper(int(session_id))
-        batch = build_jamb_batch_from_paper_rows(paper_rows)
-        context.user_data["jp_question_batch"] = batch
-        context.user_data["jp_question_ids"] = [str(q.get("id")) for q in batch if q.get("id")]
+    if session_mode == "course_mock" and not batch and session_id:
+        paper_rows = await get_university_session_paper(int(session_id))
+
+        batch = build_university_batch_from_paper_rows(paper_rows)
+
+        context.user_data["ut_question_batch"] = batch
+        context.user_data["ut_question_ids"] = [
+            str(q.get("id"))
+            for q in batch
+            if q.get("id")
+        ]
 
     if not batch:
         return await update.effective_message.reply_text(
-            "⚠️ No active JAMB question session found\\.",
+            "⚠️ No active UNIVERSITY question session found\\.",
             parse_mode="MarkdownV2",
         )
 
     session_row = None
-    if session_mode == "mock_utme" and session_id:
-        session_row = await get_jamb_session_by_id(int(session_id))
+
+    if session_mode == "course_mock" and session_id:
+        session_row = await get_university_session_by_id(int(session_id))
+
         if not session_row:
             return await update.effective_message.reply_text(
                 "⚠️ Mock session could not be reloaded\\.",
                 parse_mode="MarkdownV2",
             )
 
-        if is_jamb_mock_time_expired(session_row.get("exam_ends_at")):
-            await clear_jp_passage_message(
+        if is_university_mock_time_expired(session_row.get("exam_ends_at")):
+            await clear_ut_passage_message(
                 chat_id=update.effective_message.chat_id,
                 context=context,
             )
-            await complete_jamb_session(int(session_id))
+
+            await complete_university_session(int(session_id))
 
             safe_total = md_escape(str(len(batch)))
-            safe_correct_count = md_escape(str(session_row.get("correct_count") or 0))
-            safe_wrong_count = md_escape(str(session_row.get("wrong_count") or 0))
+            safe_correct_count = md_escape(
+                str(session_row.get("correct_count") or 0)
+            )
+            safe_wrong_count = md_escape(
+                str(session_row.get("wrong_count") or 0)
+            )
 
             return await update.effective_message.reply_text(
                 f"⏰ *Mock time is up\\.*\n\n"
                 f"📚 Total Questions: *{safe_total}*\n"
                 f"✅ Correct: *{safe_correct_count}*\n"
                 f"❌ Wrong: *{safe_wrong_count}*\n\n"
-                "This subject mock has ended\\.",
+                "This course mock has ended\\.",
                 parse_mode="MarkdownV2",
                 reply_markup=InlineKeyboardMarkup(
                     [
-                        [InlineKeyboardButton("🎓 JAMB Practice", callback_data="jambpractice")],
-                        [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+                        [
+                            InlineKeyboardButton(
+                                "🎓 UNIVERSITY Practice",
+                                callback_data="university",
+                            )
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                "🏠 Back to Main Menu",
+                                callback_data="menu:main",
+                            )
+                        ],
                     ]
                 ),
             )
 
+    # =============================
+    # SESSION COMPLETED
+    # =============================
     if current_index >= len(batch):
-        await clear_jp_passage_message(
+        await clear_ut_passage_message(
             chat_id=update.effective_message.chat_id,
             context=context,
         )
 
         if session_id:
-            await complete_jamb_session(int(session_id))
+            await complete_university_session(int(session_id))
 
-        correct_count = int(context.user_data.get("jp_correct_count", 0))
-        wrong_count = int(context.user_data.get("jp_wrong_count", 0))
+        correct_count = int(
+            context.user_data.get("ut_correct_count", 0)
+        )
+
+        wrong_count = int(
+            context.user_data.get("ut_wrong_count", 0)
+        )
+
         total = len(batch)
 
         safe_total = md_escape(str(total))
         safe_correct_count = md_escape(str(correct_count))
         safe_wrong_count = md_escape(str(wrong_count))
 
-        title = "✅ *Mock Completed*" if session_mode == "mock_utme" else "✅ *Practice Completed*"
+        title = (
+            "✅ *Mock Completed*"
+            if session_mode == "course_mock"
+            else "✅ *Practice Completed*"
+        )
+
         outro = (
-            "Great job\\. You can return to JAMB Practice for another subject\\."
-            if session_mode == "mock_utme"
-            else "Great job\\. You can return to JAMB Practice for another topic\\."
+            "Great job\\. You can return to UNIVERSITY Practice for another course\\."
+            if session_mode == "course_mock"
+            else "Great job\\. You can return to UNIVERSITY Practice for another topic\\."
         )
 
         return await update.effective_message.reply_text(
@@ -1893,27 +2426,61 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
             parse_mode="MarkdownV2",
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("🎓 JAMB Practice", callback_data="jambpractice")],
-                    [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+                    [
+                        InlineKeyboardButton(
+                            "🎓 UNIVERSITY Practice",
+                            callback_data="university",
+                        )
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            "🏠 Back to Main Menu",
+                            callback_data="menu:main",
+                        )
+                    ],
                 ]
             ),
         )
 
+    # =============================
+    # CURRENT QUESTION
+    # =============================
     question = batch[current_index]
 
     question_id = str(question["id"])
-    user_id = update.effective_user.id
-    subject_code = context.user_data.get("jp_subject_code")
-    topic_id = str(question.get("topic_id") or context.user_data.get("jp_topic_id") or "__mock_subject__")
-    served_question_ids = context.user_data.get("jp_served_question_ids", [])
 
-    # Charge and record history when question is served, not when answered
+    user_id = update.effective_user.id
+
+    category_code = context.user_data.get("ut_category_code")
+    subject_code = context.user_data.get("ut_subject_code")
+    module_id = context.user_data.get("ut_module_id")
+
+    # preserve module state
+    context.user_data["ut_module_id"] = module_id
+
+    topic_id = str(
+        question.get("topic_id")
+        or context.user_data.get("ut_topic_id")
+        or "__mock_course__"
+    )
+
+    served_question_ids = context.user_data.get(
+        "ut_served_question_ids",
+        [],
+    )
+
+    # =============================
+    # CHARGE ONLY WHEN SERVED
+    # =============================
     if question_id not in served_question_ids:
+
         if session_mode == "free_trial":
             deducted = await deduct_one_free_question(user_id)
+
             if not deducted:
                 return await update.effective_message.reply_text(
-                    "⚠️ You have no free question balance left\\.\n\nPlease buy a question pack to continue\\.",
+                    "⚠️ You have no free question balance left\\.\n\n"
+                    "Please buy a question pack to continue\\.",
                     parse_mode="MarkdownV2",
                 )
 
@@ -1925,13 +2492,17 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
             )
 
             if session_id:
-                await increment_jamb_session_served(int(session_id))
+                await increment_university_session_served(
+                    int(session_id)
+                )
 
         elif session_mode == "paid_session":
             deducted = await deduct_one_paid_question(user_id)
+
             if not deducted:
                 return await update.effective_message.reply_text(
-                    "⚠️ You have no paid JAMB question credits left\\.\n\nPlease buy another question pack to continue\\.",
+                    "⚠️ You have no paid UNIVERSITY question credits left\\.\n\n"
+                    "Please buy another question pack to continue\\.",
                     parse_mode="MarkdownV2",
                 )
 
@@ -1943,82 +2514,147 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
             )
 
             if session_id:
-                await increment_jamb_session_served(int(session_id))
+                await increment_university_session_served(
+                    int(session_id)
+                )
 
-        elif session_mode == "mock_utme":
+        elif session_mode == "course_mock":
             if session_id:
-                await increment_jamb_session_served(int(session_id))
+                await increment_university_session_served(
+                    int(session_id)
+                )
 
         served_question_ids.append(question_id)
-        context.user_data["jp_served_question_ids"] = served_question_ids
 
-    context.user_data["jp_current_question"] = question
-    context.user_data["jp_answered_current"] = False
+        context.user_data["ut_served_question_ids"] = (
+            served_question_ids
+        )
 
-    if session_mode == "mock_utme" and session_id:
-        await set_jamb_session_current_question_index(int(session_id), current_index)
+    # =============================
+    # STORE CURRENT QUESTION
+    # =============================
+    context.user_data["ut_current_question"] = question
+    context.user_data["ut_answered_current"] = False
 
-    subject = get_subject_by_code(subject_code) or {"name": subject_code}
-    subject_name = subject.get("name", subject_code)
+    # =============================
+    # UPDATE MOCK INDEX
+    # =============================
+    if session_mode == "course_mock" and session_id:
+        await set_university_session_current_question_index(
+            int(session_id),
+            current_index,
+        )
 
-    # Tag question with session mode for builder
+    # =============================
+    # LOAD SUBJECT
+    # =============================
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
+    )
+
+    if not subject:
+        subject = {"name": subject_code}
+
+    course_name = subject.get("name", subject_code)
+
+    # tag for downstream builders
     question["_session_mode"] = session_mode
 
-    # CASE 1: current question belongs to a passage block
+    # =============================
+    # PASSAGE HANDLING
+    # =============================
     if question_has_passage(question):
-        if should_show_jp_passage_for_question(question, context):
-            passage_start, passage_end = get_jp_passage_question_range(batch, current_index)
 
-            passage_text_msg = build_jp_passage_text(
-                subject_name=subject_name,
+        if should_show_ut_passage_for_question(question, context):
+
+            passage_start, passage_end = (
+                get_ut_passage_question_range(
+                    batch,
+                    current_index,
+                )
+            )
+
+            passage_text_msg = build_ut_passage_text(
+                course_name=course_name,
                 question_start=passage_start,
                 question_end=passage_end,
                 total_questions=len(batch),
-                exam_ends_at=(session_row or {}).get("exam_ends_at") if session_mode == "mock_utme" else None,
+                exam_ends_at=(
+                    (session_row or {}).get("exam_ends_at")
+                    if session_mode == "course_mock"
+                    else None
+                ),
                 question=question,
             )
 
-            mark_jp_passage_as_shown(question, context)
+            mark_ut_passage_as_shown(question, context)
 
             sent_passage = await update.effective_message.reply_text(
                 passage_text_msg,
                 parse_mode="MarkdownV2",
             )
 
-            store_jp_passage_message_id(
+            store_ut_passage_message_id(
                 message_id=sent_passage.message_id,
                 context=context,
             )
 
-    # CASE 2: current question does not belong to a passage block
     else:
-        await clear_jp_passage_message(
+        await clear_ut_passage_message(
             chat_id=update.effective_message.chat_id,
             context=context,
         )
 
+    # =============================
+    # QUESTION DISPLAY
+    # =============================
     options = question.get("options", {})
 
-    safe_question_text = md_escape(str(question.get("question") or "Question unavailable."))
+    safe_question_text = md_escape(
+        str(question.get("question") or "Question unavailable.")
+    )
+
     safe_question_no = md_escape(str(current_index + 1))
     safe_total = md_escape(str(len(batch)))
 
     header_lines = []
-    if session_mode == "mock_utme":
-        remaining = format_jamb_mock_time_remaining((session_row or {}).get("exam_ends_at"))
-        safe_remaining = md_escape(str(remaining))
-        header_lines.append("📝 *Mock UTME \\(By Subject\\)*")
-        header_lines.append(f"⏱ Time Remaining: *{safe_remaining}*")
-    else:
-        header_lines.append("📘 *JAMB Practice*")
 
-    header_lines.append(f"Question {safe_question_no} of {safe_total}")
+    if session_mode == "course_mock":
+        remaining = format_university_mock_time_remaining(
+            (session_row or {}).get("exam_ends_at")
+        )
+
+        safe_remaining = md_escape(str(remaining))
+
+        header_lines.append(
+            "📝 *University Course Mock*"
+        )
+
+        header_lines.append(
+            f"⏱ Time Remaining: *{safe_remaining}*"
+        )
+
+    else:
+        header_lines.append(
+            "📘 *UNIVERSITY Practice*"
+        )
+
+    header_lines.append(
+        f"Question {safe_question_no} of {safe_total}"
+    )
 
     option_lines = []
+
     for key in ["A", "B", "C", "D", "E"]:
         if key in options:
-            safe_option_text = md_escape(str(options[key]))
-            option_lines.append(f"{key}\\. {safe_option_text}")
+            safe_option_text = md_escape(
+                str(options[key])
+            )
+
+            option_lines.append(
+                f"{key}\\. {safe_option_text}"
+            )
 
     text_msg = (
         "\n".join(header_lines)
@@ -2027,14 +2663,22 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
         + "\n".join(option_lines)
     )
 
+    # =============================
+    # ANSWER BUTTONS
+    # =============================
     rows = []
     answer_row = []
 
     for key in ["A", "B", "C", "D", "E"]:
+
         if key in options:
             answer_row.append(
-                InlineKeyboardButton(key, callback_data=f"jp_ans::{key}")
+                InlineKeyboardButton(
+                    key,
+                    callback_data=f"ut_ans::{key}",
+                )
             )
+
             if len(answer_row) == 2:
                 rows.append(answer_row)
                 answer_row = []
@@ -2042,7 +2686,14 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
     if answer_row:
         rows.append(answer_row)
 
-    rows.append([InlineKeyboardButton("🏠 End Practice", callback_data="jp_end_session")])
+    rows.append(
+        [
+            InlineKeyboardButton(
+                "🏠 End Practice",
+                callback_data="ut_end_session",
+            )
+        ]
+    )
 
     await update.effective_message.reply_text(
         text_msg,
@@ -2053,26 +2704,26 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
 
 
 # ----------------------------------------
-# JAMB Serve First Handler
+# UNIVERSITY Serve First Handler
 # ----------------------------------------  
-async def jamb_serve_first_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_serve_first_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if query:
         await query.answer()
-    await send_current_jamb_question(update, context)
+    await send_current_university_question(update, context)
 
 
 # =============================
 # Answer handling
 # =============================
-async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
 
     await query.answer()
 
-    if context.user_data.get("jp_answered_current", False):
+    if context.user_data.get("ut_answered_current", False):
         return await query.answer("You already answered this question\\.", show_alert=False)
 
     try:
@@ -2083,7 +2734,7 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
             parse_mode="MarkdownV2",
         )
 
-    question = context.user_data.get("jp_current_question")
+    question = context.user_data.get("ut_current_question")
     if not question:
         return await query.message.reply_text(
             "⚠️ No active question found\\.",
@@ -2091,24 +2742,24 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         )
 
     user_id = update.effective_user.id
-    session_id_raw = context.user_data.get("jp_session_id")
+    session_id_raw = context.user_data.get("ut_session_id")
     if not session_id_raw:
         return await query.message.reply_text(
-            "⚠️ Session expired\\. Please start again from JAMB Practice\\.",
+            "⚠️ Session expired\\. Please start again from UNIVERSITY Practice\\.",
             parse_mode="MarkdownV2",
         )
 
     session_id = int(session_id_raw)
-    session_mode = context.user_data.get("jp_session_mode")
-    subject_code = context.user_data.get("jp_subject_code")
-    topic_id = str(question.get("topic_id") or context.user_data.get("jp_topic_id") or "__mock_subject__")
+    session_mode = context.user_data.get("ut_session_mode")
+    subject_code = context.user_data.get("ut_subject_code")
+    topic_id = str(question.get("topic_id") or context.user_data.get("ut_topic_id") or "__mock_course__")
     question_id = str(question["id"])
     correct_option = str(question["answer"]).strip().upper()
     selected_option = str(selected_option).strip().upper()
     is_correct = selected_option == correct_option
-    question_order = int(context.user_data.get("jp_current_index", 0)) + 1
+    question_order = int(context.user_data.get("ut_current_index", 0)) + 1
 
-    await record_jamb_attempt(
+    await record_university_attempt(
         session_id=session_id,
         user_id=user_id,
         subject_code=subject_code,
@@ -2119,14 +2770,14 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         is_correct=is_correct,
     )
 
-    await increment_jamb_session_result(session_id, is_correct)
+    await increment_university_session_result(session_id, is_correct)
 
-    if session_mode == "mock_utme":
+    if session_mode == "course_mock":
         async with get_async_session() as session:
             async with session.begin():
                 await session.execute(
                     text("""
-                        update jamb_session_questions
+                        update university_session_questions
                         set
                             selected_option = :selected_option,
                             is_correct = :is_correct,
@@ -2142,15 +2793,15 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
                     },
                 )
 
-    context.user_data["jp_answered_current"] = True
-    context.user_data["jp_last_selected_option"] = selected_option
-    context.user_data["jp_last_correct_option"] = correct_option
+    context.user_data["ut_answered_current"] = True
+    context.user_data["ut_last_selected_option"] = selected_option
+    context.user_data["ut_last_correct_option"] = correct_option
 
     if is_correct:
-        context.user_data["jp_correct_count"] = int(context.user_data.get("jp_correct_count", 0)) + 1
+        context.user_data["ut_correct_count"] = int(context.user_data.get("ut_correct_count", 0)) + 1
         result_text = "✅ *Correct\\!*"
     else:
-        context.user_data["jp_wrong_count"] = int(context.user_data.get("jp_wrong_count", 0)) + 1
+        context.user_data["ut_wrong_count"] = int(context.user_data.get("ut_wrong_count", 0)) + 1
 
         safe_correct_option = md_escape(str(correct_option))
         safe_correct_option_text = md_escape(str(question["options"].get(correct_option, "---")))
@@ -2168,94 +2819,140 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
 
 
 # --------------------------------------------
-# JAMB Answer Details Handler
+# UNIVERSITY Answer Details Handler
 # --------------------------------------------
-async def jamb_answer_details_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_answer_details_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
 
     await query.answer()
 
-    question = context.user_data.get("jp_current_question")
+    question = context.user_data.get("ut_current_question")
     if not question:
         return await query.message.reply_text(
-            "⚠️ No answered question found\\.",
-            parse_mode="MarkdownV2",
+            "⚠️ No answered question found.",
+            parse_mode="HTML",
         )
 
     explanation = question.get("explanation", {})
 
     question_restate = explanation.get("question_restate", "")
-    principle = explanation.get("principle", "")
-    steps = explanation.get("steps", [])
-    if not isinstance(steps, list):
-        steps = []
-
+    core_concept = explanation.get("core_concept", "")
+    why_this_matters = explanation.get("why_this_matters", "")
+    reasoning_steps = explanation.get("step_by_step_reasoning", [])
+    wrong_options = explanation.get("why_other_options_are_wrong", [])
+    real_life_connection = explanation.get("real_life_connection", "")
+    memory_tip = explanation.get("memory_tip", "")
     final_answer = explanation.get("final_answer", "")
-    simple_explanation = explanation.get("simple_explanation", "")
+    beginner_summary = explanation.get("beginner_friendly_summary", "")
 
-    lines = ["📖 *Answer Details*\n"]
+    # SAFE HTML ESCAPING
+    safe_question_restate = escape(str(question_restate))
+    safe_core_concept = escape(str(core_concept))
+    safe_why_this_matters = escape(str(why_this_matters))
+    safe_real_life_connection = escape(str(real_life_connection))
+    safe_memory_tip = escape(str(memory_tip))
+    safe_final_answer = escape(str(final_answer))
+    safe_beginner_summary = escape(str(beginner_summary))
+
+    lines = ["📖 <b>Answer Details</b>\n"]
 
     if question_restate:
-        lines.append(f"*Question Restated*\n{md_escape(str(question_restate))}\n")
+        lines.append(
+            f"🔹 <b>Question Restated</b>\n{safe_question_restate}\n"
+        )
 
-    if principle:
-        lines.append(f"*Principle*\n{md_escape(str(principle))}\n")
+    if core_concept:
+        lines.append(
+            f"🧠 <b>Core Concept</b>\n{safe_core_concept}\n"
+        )
 
-    if steps:
-        lines.append("*Step\\-by\\-step Solution*")
-        for i, step in enumerate(steps, start=1):
-            lines.append(f"{i}\\. {md_escape(str(step))}")
+    if why_this_matters:
+        lines.append(
+            f"🎯 <b>Why This Matters</b>\n{safe_why_this_matters}\n"
+        )
+
+    if reasoning_steps:
+        lines.append("🪜 <b>Step-by-Step Reasoning</b>")
+
+        for i, step in enumerate(reasoning_steps, start=1):
+            safe_step = escape(str(step))
+            lines.append(f"{i}. {safe_step}")
+
         lines.append("")
 
-    if final_answer:
-        lines.append(f"*Final Answer*\n{md_escape(str(final_answer))}\n")
+    if wrong_options:
+        lines.append("❌ <b>Why Other Options Are Wrong</b>")
 
-    if simple_explanation:
-        lines.append(f"*Simple Explanation*\n{md_escape(str(simple_explanation))}")
+        for item in wrong_options:
+            safe_item = escape(str(item))
+            lines.append(f"• {safe_item}")
+
+        lines.append("")
+
+    if real_life_connection:
+        lines.append(
+            f"🌍 <b>Real-Life Connection</b>\n{safe_real_life_connection}\n"
+        )
+
+    if memory_tip:
+        lines.append(
+            f"🧩 <b>Memory Tip</b>\n{safe_memory_tip}\n"
+        )
+
+    if final_answer:
+        lines.append(
+            f"✅ <b>Final Answer</b>\n{safe_final_answer}\n"
+        )
+
+    if beginner_summary:
+        lines.append(
+            f"📘 <b>Beginner-Friendly Summary</b>\n{safe_beginner_summary}"
+        )
 
     await query.message.reply_text(
         "\n".join(lines),
-        parse_mode="MarkdownV2",
+        parse_mode="HTML",
         reply_markup=make_after_details_keyboard(),
     )
 
+
 # ------------------------------
-# JAMB Next Handler
+# UNIVERSITY Next Handler
 # -----------------------------
-async def jamb_next_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_next_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if query:
         await query.answer()
 
-    current_index = int(context.user_data.get("jp_current_index", 0))
-    context.user_data["jp_current_index"] = current_index + 1
+    current_index = int(context.user_data.get("ut_current_index", 0))
+    context.user_data["ut_current_index"] = current_index + 1
 
-    await send_current_jamb_question(update, context)
+    await send_current_university_question(update, context)
 
 
 # ------------------------------
-# JAMB End Session Handler
+# UNIVERSITY End Session Handler
 # ------------------------------
-async def jamb_end_session_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_end_session_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
 
     await query.answer()
 
-    session_id = context.user_data.get("jp_session_id")
-    session_mode = context.user_data.get("jp_session_mode")
+    session_id = context.user_data.get("ut_session_id")
+    session_mode = context.user_data.get("ut_session_mode")
 
-    if session_mode == "mock_utme" and session_id:
-        await clear_jp_passage_message(
+    if session_mode == "course_mock" and session_id:
+        await clear_ut_passage_message(
             chat_id=query.message.chat_id,
             context=context,
         )
-        await complete_jamb_session(int(session_id))
+        await complete_university_session(int(session_id))
 
-    await clear_jamb_session_state(context)
+    await clear_university_session_state(context)
 
     from handlers.core import go_start_callback
     await go_start_callback(update, context)
@@ -2263,33 +2960,231 @@ async def jamb_end_session_handler(update: Update, context: ContextTypes.DEFAULT
 # =============================
 # Back to mode
 # =============================
-async def jamb_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
 
     await query.answer()
 
-    subject_code = query.data.replace("jp_back_mode_", "", 1)
-    subject = get_subject_by_code(subject_code)
+    try:
+        _, category_code, subject_code = query.data.split("::")
+    except Exception:
+        return await query.message.reply_text(
+            "⚠️ Invalid back navigation\\.",
+            parse_mode="MarkdownV2",
+        )
 
-    context.user_data["jp_subject_code"] = subject_code
-    context.user_data["jp_mode"] = None
-    context.user_data["jp_topic_id"] = None
-
-    safe_subject_name = md_escape(str(subject["name"]))
-
-    await query.message.reply_text(
-        f"📘 *You selected:* {safe_subject_name}\n\n"
-        "How would you like to practice\\?",
-        parse_mode="MarkdownV2",
-        reply_markup=make_mode_keyboard(subject_code),
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
     )
 
-# --------------------------------------
-# Jamb Use Paid Handler
+    if not subject:
+        return await query.message.reply_text(
+            "⚠️ Subject not found\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    context.user_data["ut_category_code"] = category_code
+    context.user_data["ut_subject_code"] = subject_code
+    context.user_data["ut_mode"] = None
+    context.user_data["ut_topic_id"] = None
+    context.user_data["ut_module_id"] = None
+
+    safe_course_name = md_escape(str(subject["name"]))
+
+    await query.message.reply_text(
+        f"📘 *You selected:* {safe_course_name}\n\n"
+        "How would you like to practice\\?",
+        parse_mode="MarkdownV2",
+        reply_markup=make_mode_keyboard(),
+    )
+
 # -------------------------------------
-async def jamb_use_paid_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+# University Back to Module Topics Handler
+# ----------------------------------------
+async def university_back_to_module_topics_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    try:
+        _, category_code, subject_code, module_id = (
+            query.data.split("::")
+        )
+
+    except Exception:
+        return await query.message.reply_text(
+            "⚠️ Invalid module navigation\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    context.user_data["ut_category_code"] = category_code
+    context.user_data["ut_subject_code"] = subject_code
+    context.user_data["ut_module_id"] = module_id
+
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
+    )
+
+    topics = get_university_module_topics(
+        category_code,
+        subject_code,
+        module_id,
+    )
+
+    if not topics:
+        return await query.message.reply_text(
+            "⚠️ No topics found for this module yet\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    rows = []
+
+    for topic in topics:
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    topic["title"],
+                    callback_data=(
+                        f"ut_topic::{category_code}"
+                        f"::{subject_code}"
+                        f"::{module_id}"
+                        f"::{topic['id']}"
+                    ),
+                )
+            ]
+        )
+
+    rows.append(
+        [
+            InlineKeyboardButton(
+                "🏠 Back to Main Menu",
+                callback_data="menu:main",
+            )
+        ]
+    )
+
+    course_name = (
+        subject["name"]
+        if subject
+        else subject_code
+    )
+
+    safe_course_name = md_escape(str(course_name))
+
+    await query.message.reply_text(
+        f"📚 *{safe_course_name} Topics*\n\n"
+        "Choose a topic below\\.",
+        parse_mode="MarkdownV2",
+        reply_markup=InlineKeyboardMarkup(rows),
+    )
+
+
+# --------------------------------------
+# University Back Module Handler
+# --------------------------------------
+async def university_back_modules_handler(update, context):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    try:
+        _, category_code, subject_code = (
+            query.data.split("::")
+        )
+
+    except Exception:
+        return await query.message.reply_text(
+            "⚠️ Invalid module navigation\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    # =====================================
+    # SAVE FLOW STATE
+    # =====================================
+    context.user_data["ut_category_code"] = category_code
+    context.user_data["ut_subject_code"] = subject_code
+    context.user_data["ut_module_id"] = None
+    context.user_data["ut_topic_id"] = None
+
+    await query.message.reply_text(
+        "📚 *Choose a Module*",
+        parse_mode="MarkdownV2",
+        reply_markup=make_module_keyboard(
+            category_code,
+            subject_code,
+        ),
+    )
+
+
+# --------------------------------------
+# University Back Subject Handler
+# ------------------------------------
+async def university_back_subjects_handler(update, context):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    # =====================================
+    # LOAD CATEGORY FROM FLOW STATE
+    # =====================================
+    category_code = context.user_data.get("ut_category_code")
+
+    if not category_code:
+        return await query.message.reply_text(
+            "⚠️ Category session expired\\. Please start again\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    # =====================================
+    # LOAD CATEGORY
+    # =====================================
+    category = get_university_category_by_code(category_code)
+
+    if not category:
+        return await query.message.reply_text(
+            "⚠️ Category not found\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    # =====================================
+    # RESET LOWER FLOW STATE
+    # =====================================
+    context.user_data["ut_subject_code"] = None
+    context.user_data["ut_module_id"] = None
+    context.user_data["ut_topic_id"] = None
+    context.user_data["ut_mode"] = None
+
+    # =====================================
+    # SHOW SUBJECTS
+    # =====================================
+    await query.message.reply_text(
+        f"📚 *{md_escape(category['name'])}*\n\n"
+        "Choose a subject\\.",
+        parse_mode="MarkdownV2",
+        reply_markup=make_subject_keyboard(category_code),
+    )
+
+
+# --------------------------------------
+# University Use Paid Handler
+# -------------------------------------
+async def university_use_paid_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
@@ -2301,7 +3196,7 @@ async def jamb_use_paid_handler(update: Update, context: ContextTypes.DEFAULT_TY
 
     if paid_credits <= 0:
         return await query.message.reply_text(
-            "⚠️ You do not have any paid JAMB question credits yet\\.\n\nPlease buy a question pack first\\.",
+            "⚠️ You do not have any paid UNIVERSITY question credits yet\\.\n\nPlease buy a question pack first\\.",
             parse_mode="MarkdownV2",
         )
 
@@ -2317,9 +3212,9 @@ async def jamb_use_paid_handler(update: Update, context: ContextTypes.DEFAULT_TY
 
 
 # ----------------------------------
-# JAMB Paid Count Handler
+# UNIVERSITY Paid Count Handler
 # ----------------------------------
-async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
@@ -2327,7 +3222,7 @@ async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
     await query.answer()
 
     try:
-        requested_count = int(query.data.replace("jp_paidcount_", "", 1))
+        requested_count = int(query.data.replace("ut_paidcount_", "", 1))
     except Exception:
         return await query.message.reply_text(
             "⚠️ Invalid paid session size\\.",
@@ -2335,19 +3230,22 @@ async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
         )
 
     user_id = update.effective_user.id
-    subject_code = context.user_data.get("jp_subject_code")
-    topic_id = context.user_data.get("jp_topic_id")
+
+    category_code = context.user_data.get("ut_category_code")
+    subject_code = context.user_data.get("ut_subject_code")
+    module_id = context.user_data.get("ut_module_id")
+    topic_id = context.user_data.get("ut_topic_id")
 
     if not subject_code or not topic_id:
         return await query.message.reply_text(
-            "⚠️ Topic session data missing\\. Please choose your subject and topic again\\.",
+            "⚠️ Topic session data missing\\. Please choose your course and topic again\\.",
             parse_mode="MarkdownV2",
         )
 
     paid_credits = await get_paid_question_credits(user_id)
     if paid_credits <= 0:
         return await query.message.reply_text(
-            "⚠️ You do not have enough paid JAMB credits\\.\n\nPlease buy a question pack first\\.",
+            "⚠️ You do not have enough paid UNIVERSITY credits\\.\n\nPlease buy a question pack first\\.",
             parse_mode="MarkdownV2",
         )
 
@@ -2359,8 +3257,10 @@ async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
         topic_id=topic_id,
     )
 
-    batch = prepare_topic_question_batch(
+    batch = prepare_university_topic_question_batch(
+        category_code=category_code,
         subject_code=subject_code,
+        module_id=module_id,
         topic_id=topic_id,
         requested_count=actual_count,
         seen_question_ids=seen_question_ids,
@@ -2378,7 +3278,7 @@ async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
             parse_mode="MarkdownV2",
         )
 
-    session_id = await create_jamb_session(
+    session_id = await create_university_session(
         user_id=user_id,
         subject_code=subject_code,
         topic_id=topic_id,
@@ -2386,29 +3286,43 @@ async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
         mode="topic_practice",
     )
 
-    context.user_data["jp_session_id"] = session_id
-    context.user_data["jp_session_mode"] = "paid_session"
-    context.user_data["jp_question_batch"] = selected_questions
-    context.user_data["jp_question_ids"] = selected_question_ids
-    context.user_data["jp_current_index"] = 0
-    context.user_data["jp_session_target"] = len(selected_questions)
-    context.user_data["jp_correct_count"] = 0
-    context.user_data["jp_wrong_count"] = 0
-    context.user_data["jp_current_question"] = None
-    context.user_data["jp_answered_current"] = False
-    context.user_data["jp_served_question_ids"] = []
-    context.user_data["jp_shown_passages"] = []
-    context.user_data["jp_last_passage"] = None
-    context.user_data["jp_last_passage_id_shown"] = ""
-    context.user_data["jp_active_passage_message_id"] = None
+    context.user_data["ut_session_id"] = session_id
+    context.user_data["ut_session_mode"] = "paid_session"
+    context.user_data["ut_question_batch"] = selected_questions
+    context.user_data["ut_question_ids"] = selected_question_ids
+    context.user_data["ut_current_index"] = 0
+    context.user_data["ut_session_target"] = len(selected_questions)
+    context.user_data["ut_correct_count"] = 0
+    context.user_data["ut_wrong_count"] = 0
+    context.user_data["ut_current_question"] = None
+    context.user_data["ut_answered_current"] = False
+    context.user_data["ut_served_question_ids"] = []
+    context.user_data["ut_shown_passages"] = []
+    context.user_data["ut_last_passage"] = None
+    context.user_data["ut_last_passage_id_shown"] = ""
+    context.user_data["ut_active_passage_message_id"] = None
 
-    topic = next((t for t in get_subject_topics(subject_code) if t["id"] == topic_id), None)
+    topic = next(
+        (
+            t for t in get_university_module_topics(
+                category_code,
+                subject_code,
+                module_id,
+            )
+            if t["id"] == topic_id
+        ),
+        None,
+    )
+    
     topic_title = topic["title"] if topic else topic_id
 
-    subject = get_subject_by_code(subject_code)
-    subject_name = subject["name"] if subject else subject_code
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
+    )
+    course_name = subject["name"] if subject else subject_code
 
-    safe_subject_name = md_escape(str(subject_name))
+    safe_course_name = md_escape(str(course_name))
     safe_topic_title = md_escape(str(topic_title))
     safe_question_count = md_escape(str(len(selected_questions)))
     safe_requested_count = md_escape(str(requested_count))
@@ -2429,7 +3343,7 @@ async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
 
     await query.message.reply_text(
         f"✅ *Paid Session Started*\n\n"
-        f"📘 Subject: *{safe_subject_name}*\n"
+        f"📘 course: *{safe_course_name}*\n"
         f"🧪 Topic: *{safe_topic_title}*\n"
         f"📚 Questions in this session: *{safe_question_count}*"
         f"{adjusted_note}"
@@ -2438,14 +3352,14 @@ async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
         parse_mode="MarkdownV2",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("▶ Start Questions", callback_data="jp_serve_first")],
+                [InlineKeyboardButton("▶ Start Questions", callback_data="ut_serve_first")],
                 [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
             ]
         ),
     )
 
 
-async def jamb_mock_start_paid_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_mock_start_paid_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
@@ -2455,17 +3369,21 @@ async def jamb_mock_start_paid_handler(update: Update, context: ContextTypes.DEF
     tg = update.effective_user
     user_id = tg.id
 
-    subject_code = context.user_data.get("jp_subject_code")
+    category_code = context.user_data.get("ut_category_code")
+    subject_code = context.user_data.get("ut_subject_code")
     if not subject_code:
         return await query.message.reply_text(
-            "⚠️ Subject session data missing\\. Please choose your subject again\\.",
+            "⚠️ course session data missing\\. Please choose your course again\\.",
             parse_mode="MarkdownV2",
         )
 
-    subject = get_subject_by_code(subject_code)
+    subject = get_university_subject_by_code(
+        category_code,
+        subject_code,
+    )
     if not subject:
         return await query.message.reply_text(
-            "⚠️ Subject not found\\.",
+            "⚠️ course not found\\.",
             parse_mode="MarkdownV2",
         )
 
@@ -2487,22 +3405,23 @@ async def jamb_mock_start_paid_handler(update: Update, context: ContextTypes.DEF
             parse_mode="MarkdownV2",
         )
 
-    question_target = get_jamb_mock_question_count(subject_code)
+    question_target = get_university_mock_question_count(subject_code)
 
-    session_id = await create_jamb_mock_session(
+    session_id = await create_university_mock_session(
         user_id=user_id,
         subject_code=subject_code,
         question_target=question_target,
     )
 
-    paper_info = await create_jamb_subject_mock_paper_if_needed(
+    paper_info = await create_university_course_mock_paper_if_needed(
         user_id=user_id,
         session_id=session_id,
         subject_code=subject_code,
+        category_code=category_code,
     )
 
     paper_rows = paper_info.get("paper_rows") or []
-    batch = build_jamb_batch_from_paper_rows(paper_rows)
+    batch = build_university_batch_from_paper_rows(paper_rows)
 
     if not batch:
         return await query.message.reply_text(
@@ -2510,40 +3429,41 @@ async def jamb_mock_start_paid_handler(update: Update, context: ContextTypes.DEF
             parse_mode="MarkdownV2",
         )
 
-    session_row = await get_jamb_session_by_id(session_id)
+    session_row = await get_university_session_by_id(session_id)
     exam_ends_at = (session_row or {}).get("exam_ends_at")
 
-    context.user_data["jp_session_id"] = session_id
-    context.user_data["jp_session_mode"] = "mock_utme"
-    context.user_data["jp_mode"] = "mock_utme"
-    context.user_data["jp_topic_id"] = None
-    context.user_data["jp_question_batch"] = batch
-    context.user_data["jp_question_ids"] = [str(q.get("id")) for q in batch if q.get("id")]
-    context.user_data["jp_current_index"] = 0
-    context.user_data["jp_session_target"] = len(batch)
-    context.user_data["jp_correct_count"] = 0
-    context.user_data["jp_wrong_count"] = 0
-    context.user_data["jp_current_question"] = None
-    context.user_data["jp_answered_current"] = False
-    context.user_data["jp_served_question_ids"] = []
-    context.user_data["jp_shown_passages"] = []
-    context.user_data["jp_last_passage"] = None
-    context.user_data["jp_last_passage_id_shown"] = ""
-    context.user_data["jp_active_passage_message_id"] = None
+    context.user_data["ut_session_id"] = session_id
+    context.user_data["ut_session_mode"] = "course_mock"
+    context.user_data["ut_mode"] = "course_mock"
+    context.user_data["ut_topic_id"] = None
+    context.user_data["ut_module_id"] = None
+    context.user_data["ut_question_batch"] = batch
+    context.user_data["ut_question_ids"] = [str(q.get("id")) for q in batch if q.get("id")]
+    context.user_data["ut_current_index"] = 0
+    context.user_data["ut_session_target"] = len(batch)
+    context.user_data["ut_correct_count"] = 0
+    context.user_data["ut_wrong_count"] = 0
+    context.user_data["ut_current_question"] = None
+    context.user_data["ut_answered_current"] = False
+    context.user_data["ut_served_question_ids"] = []
+    context.user_data["ut_shown_passages"] = []
+    context.user_data["ut_last_passage"] = None
+    context.user_data["ut_last_passage_id_shown"] = ""
+    context.user_data["ut_active_passage_message_id"] = None
 
-    safe_subject_name = md_escape(str(subject["name"]))
+    safe_course_name = md_escape(str(subject["name"]))
     safe_question_target = md_escape(str(question_target))
-    safe_duration = md_escape(format_jamb_mock_time_remaining(exam_ends_at))
+    safe_duration = md_escape(format_university_mock_time_remaining(exam_ends_at))
 
     reset_note = (
-        "\n♻️ Subject cycle reset because you already exhausted the unseen pool before\\."
+        "\n♻️ course cycle reset because you already exhausted the unseen pool before\\."
         if paper_info.get("cycle_reset")
         else ""
     )
 
     await query.message.reply_text(
-        f"📝 *Subject Mock Started*\n\n"
-        f"📘 Subject: *{safe_subject_name}*\n"
+        f"📝 *course Mock Started*\n\n"
+        f"📘 course: *{safe_course_name}*\n"
         f"📚 Questions: *{safe_question_target}*\n"
         f"⏱ Time Allowed: *{safe_duration}*"
         f"{reset_note}\n\n"
@@ -2551,14 +3471,14 @@ async def jamb_mock_start_paid_handler(update: Update, context: ContextTypes.DEF
         parse_mode="MarkdownV2",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("▶ Start Questions", callback_data="jp_serve_first")],
-                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="jp_end_session")],
+                [InlineKeyboardButton("▶ Start Questions", callback_data="ut_serve_first")],
+                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="ut_end_session")],
             ]
         ),
     )
 
 
-async def jamb_mock_resume_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_mock_resume_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
@@ -2567,29 +3487,29 @@ async def jamb_mock_resume_handler(update: Update, context: ContextTypes.DEFAULT
 
     tg = update.effective_user
     user_id = tg.id
-    subject_code = context.user_data.get("jp_subject_code")
+    subject_code = context.user_data.get("ut_subject_code")
 
     if not subject_code:
         return await query.message.reply_text(
-            "⚠️ Subject session data missing\\. Please choose your subject again\\.",
+            "⚠️ course session data missing\\. Please choose your course again\\.",
             parse_mode="MarkdownV2",
         )
 
-    active_session = await get_latest_active_jamb_mock_session_for_user(
+    active_session = await get_latest_active_university_mock_session_for_user(
         user_id=user_id,
         subject_code=subject_code,
     )
 
     if not active_session:
         return await query.message.reply_text(
-            "⚠️ No active subject mock was found for this subject\\.",
+            "⚠️ No active course mock was found for this course\\.",
             parse_mode="MarkdownV2",
         )
 
     session_id = int(active_session["id"])
 
-    if is_jamb_mock_time_expired(active_session.get("exam_ends_at")):
-        await complete_jamb_session(session_id)
+    if is_university_mock_time_expired(active_session.get("exam_ends_at")):
+        await complete_university_session(session_id)
 
         safe_correct = md_escape(str(active_session.get("correct_count") or 0))
         safe_wrong = md_escape(str(active_session.get("wrong_count") or 0))
@@ -2600,12 +3520,12 @@ async def jamb_mock_resume_handler(update: Update, context: ContextTypes.DEFAULT
             f"📚 Total Questions: *{safe_total}*\n"
             f"✅ Correct: *{safe_correct}*\n"
             f"❌ Wrong: *{safe_wrong}*\n\n"
-            "This subject mock has ended\\.",
+            "This course mock has ended\\.",
             parse_mode="MarkdownV2",
         )
 
-    paper_rows = await get_jamb_session_paper(session_id)
-    batch = build_jamb_batch_from_paper_rows(paper_rows)
+    paper_rows = await get_university_session_paper(session_id)
+    batch = build_university_batch_from_paper_rows(paper_rows)
 
     if not batch:
         return await query.message.reply_text(
@@ -2622,50 +3542,54 @@ async def jamb_mock_resume_handler(update: Update, context: ContextTypes.DEFAULT
             if qid:
                 already_served_ids.append(str(qid))
 
-    context.user_data["jp_session_id"] = session_id
-    context.user_data["jp_session_mode"] = "mock_utme"
-    context.user_data["jp_mode"] = "mock_utme"
-    context.user_data["jp_question_batch"] = batch
-    context.user_data["jp_question_ids"] = [str(q.get("id")) for q in batch if q.get("id")]
-    context.user_data["jp_current_index"] = current_index
-    context.user_data["jp_session_target"] = len(batch)
-    context.user_data["jp_correct_count"] = int(active_session.get("correct_count") or 0)
-    context.user_data["jp_wrong_count"] = int(active_session.get("wrong_count") or 0)
-    context.user_data["jp_current_question"] = None
-    context.user_data["jp_answered_current"] = False
-    context.user_data["jp_served_question_ids"] = already_served_ids
-    context.user_data["jp_shown_passages"] = []
-    context.user_data["jp_last_passage"] = None
-    context.user_data["jp_last_passage_id_shown"] = ""
-    context.user_data["jp_active_passage_message_id"] = None
+    context.user_data["ut_session_id"] = session_id
+    context.user_data["ut_session_mode"] = "course_mock"
+    context.user_data["ut_mode"] = "course_mock"
+    context.user_data["ut_question_batch"] = batch
+    context.user_data["ut_question_ids"] = [str(q.get("id")) for q in batch if q.get("id")]
+    context.user_data["ut_current_index"] = current_index
+    context.user_data["ut_session_target"] = len(batch)
+    context.user_data["ut_correct_count"] = int(active_session.get("correct_count") or 0)
+    context.user_data["ut_wrong_count"] = int(active_session.get("wrong_count") or 0)
+    context.user_data["ut_current_question"] = None
+    context.user_data["ut_answered_current"] = False
+    context.user_data["ut_served_question_ids"] = already_served_ids
+    context.user_data["ut_shown_passages"] = []
+    context.user_data["ut_last_passage"] = None
+    context.user_data["ut_last_passage_id_shown"] = ""
+    context.user_data["ut_active_passage_message_id"] = None
 
-    await send_current_jamb_question(update, context)
+    await send_current_university_question(update, context)
 
 
 # =============================
 # Register handlers
 # =============================
 def register_handlers(application):
-    application.add_handler(CommandHandler("jambpractice", jambpractice_handler))
-    application.add_handler(CallbackQueryHandler(jambpractice_handler, pattern=r"^jambpractice$"))
-    application.add_handler(CallbackQueryHandler(jamb_subject_handler, pattern=r"^jp_subj_"))
-    application.add_handler(CallbackQueryHandler(jamb_mode_handler, pattern=r"^jp_mode_"))
+    application.add_handler(CommandHandler("university", university_handler))
+    application.add_handler(CallbackQueryHandler(university_handler, pattern=r"^(university|uni_start)$"))
+    application.add_handler(CallbackQueryHandler(university_category_handler, pattern=r"^ut_cat_"))
+    application.add_handler(CallbackQueryHandler(university_subject_handler, pattern=r"^ut_subj_"))
+    application.add_handler(CallbackQueryHandler(university_module_handler, pattern=r"^ut_module::"))
+    application.add_handler(CallbackQueryHandler(university_mode_handler, pattern=r"^ut_mode_"))
 
-    application.add_handler(CallbackQueryHandler(jamb_mock_start_paid_handler, pattern=r"^jp_mock_start_paid$"))
-    application.add_handler(CallbackQueryHandler(jamb_mock_resume_handler, pattern=r"^jp_mock_resume$"))
+    application.add_handler(CallbackQueryHandler(university_mock_start_paid_handler, pattern=r"^ut_mock_start_paid$"))
+    application.add_handler(CallbackQueryHandler(university_mock_resume_handler, pattern=r"^ut_mock_resume$"))
 
-    application.add_handler(CallbackQueryHandler(jamb_topic_page_handler, pattern=r"^jp_topicpage_"))
-    application.add_handler(CallbackQueryHandler(jamb_topic_handler, pattern=r"^jp_topic::"))
-    application.add_handler(CallbackQueryHandler(jamb_back_mode_handler, pattern=r"^jp_back_mode_"))
-    application.add_handler(CallbackQueryHandler(jamb_start_free_handler, pattern=r"^jp_start_free$"))
-    application.add_handler(CallbackQueryHandler(jamb_use_paid_handler, pattern=r"^jp_use_paid$"))
-    application.add_handler(CallbackQueryHandler(jamb_paid_count_handler, pattern=r"^jp_paidcount_"))
-    application.add_handler(CallbackQueryHandler(jamb_buy_pack_handler, pattern=r"^jp_buy_"))
-    application.add_handler(CallbackQueryHandler(jamb_mock_buy_session_handler, pattern=r"^jp_mock_buy_"))
-    application.add_handler(CallbackQueryHandler(jamb_serve_first_handler, pattern=r"^jp_serve_first$"))
-    application.add_handler(CallbackQueryHandler(jamb_end_session_handler, pattern=r"^jp_end_session$"))
-    application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
-    application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
-    application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next$"))
-
-
+    application.add_handler(CallbackQueryHandler(university_topic_handler, pattern=r"^ut_topic::"))
+    application.add_handler(CallbackQueryHandler(university_back_mode_handler, pattern=r"^ut_back_mode::"))
+    application.add_handler(CallbackQueryHandler(university_back_subjects_handler, pattern=r"^ut_back_subjects$"))
+    application.add_handler(CallbackQueryHandler(university_back_to_module_topics_handler, pattern=r"^ut_back_module::"))
+    
+    application.add_handler(CallbackQueryHandler(university_back_modules_handler, pattern=r"^ut_back_modules::"))
+    application.add_handler(CallbackQueryHandler(university_start_free_handler, pattern=r"^ut_start_free$"))
+    application.add_handler(CallbackQueryHandler(university_use_paid_handler, pattern=r"^ut_use_paid$"))
+    application.add_handler(CallbackQueryHandler(university_paid_count_handler, pattern=r"^ut_paidcount_"))
+    application.add_handler(CallbackQueryHandler(university_buy_pack_handler, pattern=r"^ut_buy_"))
+    application.add_handler(CallbackQueryHandler(university_mock_buy_session_handler, pattern=r"^ut_mock_buy_"))
+    application.add_handler(CallbackQueryHandler(university_serve_first_handler, pattern=r"^ut_serve_first$"))
+    application.add_handler(CallbackQueryHandler(university_end_session_handler, pattern=r"^ut_end_session$"))
+    application.add_handler(CallbackQueryHandler(university_answer_handler, pattern=r"^ut_ans::"))
+    application.add_handler(CallbackQueryHandler(university_answer_details_handler, pattern=r"^ut_details$"))
+    application.add_handler(CallbackQueryHandler(university_next_handler, pattern=r"^ut_next$"))
+    
