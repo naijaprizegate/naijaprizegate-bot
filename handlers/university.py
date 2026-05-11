@@ -1011,6 +1011,43 @@ def make_module_keyboard(category_code: str, subject_code: str):
     return InlineKeyboardMarkup(rows)
 
 
+# ---Mode Keyboard-------
+def make_mode_keyboard(
+    category_code: str,
+    subject_code: str,
+):
+    return InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton(
+                    "📚 By Topics",
+                    callback_data=f"ut_mode_topics_{subject_code}",
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    "📝 Course Mock (By course)",
+                    callback_data=f"ut_mode_mock_{subject_code}",
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    "⬅️ Back to Subjects",
+                    callback_data=f"ut_back_subjects::{category_code}",
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    "🏠 Back to Main Menu",
+                    callback_data="menu:main",
+                )
+            ],
+        ]
+    )
+
 # ----Topic Keyboard------
 def make_topics_keyboard(
     category_code: str,
