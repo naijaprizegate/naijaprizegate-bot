@@ -847,11 +847,21 @@ def build_university_mock_access_text(course_name: str, question_count: int, moc
     )
 
 
-def make_university_mock_access_keyboard(subject_code: str, can_start: bool) -> InlineKeyboardMarkup:
+def make_university_mock_access_keyboard(
+    category_code: str,
+    subject_code: str,
+    can_start: bool,
+) -> InlineKeyboardMarkup:
+
     rows = []
 
     if can_start:
-        rows.append([InlineKeyboardButton("▶ Start Mock Now", callback_data="ut_mock_start_paid")])
+        rows.append([
+            InlineKeyboardButton(
+                "▶ Start Mock Now",
+                callback_data="ut_mock_start_paid"
+            )
+        ])
 
     rows.extend([
         [InlineKeyboardButton("🎟 Get 1 Mock Session — ₦100", callback_data="ut_mock_buy_1")],
@@ -859,7 +869,14 @@ def make_university_mock_access_keyboard(subject_code: str, can_start: bool) -> 
         [InlineKeyboardButton("🎟 Get 3 Mock Sessions — ₦300", callback_data="ut_mock_buy_3")],
         [InlineKeyboardButton("🎟 Get 4 Mock Sessions — ₦400", callback_data="ut_mock_buy_4")],
         [InlineKeyboardButton("🎟 Get 5 Mock Sessions — ₦500", callback_data="ut_mock_buy_5")],
-        [InlineKeyboardButton("⬅️ Back to Mode", callback_data=f"ut_back_mode_{subject_code}")],
+
+        [
+            InlineKeyboardButton(
+                "⬅️ Back to Mode",
+                callback_data=f"ut_back_mode::{category_code}::{subject_code}"
+            )
+        ],
+
         [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
     ])
 
@@ -887,6 +904,8 @@ def build_university_batch_from_paper_rows(paper_rows: list[dict]) -> list[dict]
 # =============================
 # Keyboards
 # =============================
+
+# -----Category Keyboard------
 def make_category_keyboard():
 
     categories = get_university_categories()
@@ -919,7 +938,7 @@ def make_category_keyboard():
 
     return InlineKeyboardMarkup(rows)
 
-
+# ---Subject Keyboard---------
 def make_subject_keyboard(category_code: str):
 
     subjects = get_university_subjects_by_category(category_code)
@@ -953,6 +972,7 @@ def make_subject_keyboard(category_code: str):
     return InlineKeyboardMarkup(rows)
 
 
+# ---Module Keyboard-----
 def make_module_keyboard(category_code: str, subject_code: str):
     modules = get_university_modules(
         category_code,
@@ -991,6 +1011,7 @@ def make_module_keyboard(category_code: str, subject_code: str):
     return InlineKeyboardMarkup(rows)
 
 
+# ---Mode Keyboard-------
 def make_mode_keyboard(subject_code: str):
     return InlineKeyboardMarkup(
         [
@@ -1002,6 +1023,7 @@ def make_mode_keyboard(subject_code: str):
     )
 
 
+# ----Topic Keyboard------
 def make_topics_keyboard(
     category_code: str,
     subject_code: str,
@@ -1050,27 +1072,97 @@ def make_topics_keyboard(
     return InlineKeyboardMarkup(rows)
 
 
+# ---Topic Access Keyboard for Courses----
 def make_topic_access_keyboard_for_course(
+    category_code: str,
     subject_code: str,
+    module_id: str,
     has_free_trial: bool,
     has_paid_credits: bool,
 ):
     rows = []
 
+    # =====================================
+    # FREE TRIAL
+    # =====================================
     if has_free_trial:
-        rows.append([InlineKeyboardButton("🎁 Use Free Trial (5 Questions)", callback_data="ut_start_free")])
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    "🎁 Use Free Trial (5 Questions)",
+                    callback_data="ut_start_free",
+                )
+            ]
+        )
 
+    # =====================================
+    # USE PAID CREDITS
+    # =====================================
     if has_paid_credits:
-        rows.append([InlineKeyboardButton("✅ Use Paid Credits", callback_data="ut_use_paid")])
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    "✅ Use Paid Credits",
+                    callback_data="ut_use_paid",
+                )
+            ]
+        )
 
-    rows.extend([
-        [InlineKeyboardButton("💳 Get 50 Questions — ₦100", callback_data="ut_buy_50")],
-        [InlineKeyboardButton("💳 Get 100 Questions — ₦200", callback_data="ut_buy_100")],
-        [InlineKeyboardButton("💳 Get 150 Questions — ₦300", callback_data="ut_buy_150")],
-        [InlineKeyboardButton("💳 Get 200 Questions — ₦400", callback_data="ut_buy_200")],
-        [InlineKeyboardButton("⬅️ Back to Topics", callback_data=f"ut_topicpage_{subject_code}_1")],
-        [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
-    ])
+    # =====================================
+    # BUY QUESTION PACKS
+    # =====================================
+    rows.extend(
+        [
+            [
+                InlineKeyboardButton(
+                    "💳 Get 50 Questions — ₦100",
+                    callback_data="ut_buy_50",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "💳 Get 100 Questions — ₦200",
+                    callback_data="ut_buy_100",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "💳 Get 150 Questions — ₦300",
+                    callback_data="ut_buy_150",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "💳 Get 200 Questions — ₦400",
+                    callback_data="ut_buy_200",
+                )
+            ],
+
+            # =====================================
+            # BACK TO TOPICS
+            # =====================================
+            [
+                InlineKeyboardButton(
+                    "⬅️ Back to Topics",
+                    callback_data=(
+                        f"ut_back_module::{category_code}"
+                        f"::{subject_code}"
+                        f"::{module_id}"
+                    ),
+                )
+            ],
+
+            # =====================================
+            # MAIN MENU
+            # =====================================
+            [
+                InlineKeyboardButton(
+                    "🏠 Back to Main Menu",
+                    callback_data="menu:main",
+                )
+            ],
+        ]
+    )
 
     return InlineKeyboardMarkup(rows)
 
@@ -1259,8 +1351,10 @@ async def university_subject_handler(update: Update, context: ContextTypes.DEFAU
 async def open_university_course_mock_screen(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
+    category_code: str,
     subject_code: str,
 ):
+    context.user_data["ut_category_code"] = category_code
     context.user_data["ut_subject_code"] = subject_code
     context.user_data["ut_mode"] = "course_mock"
     context.user_data["ut_topic_id"] = None
@@ -1270,9 +1364,10 @@ async def open_university_course_mock_screen(
     user_id = tg.id
 
     subject = get_university_subject_by_code(subject_code)
+
     if not subject:
         return await update.effective_message.reply_text(
-            "⚠️ course not found\\.",
+            "⚠️ Course not found\\.",
             parse_mode="MarkdownV2",
         )
 
@@ -1281,11 +1376,16 @@ async def open_university_course_mock_screen(
         subject_code=subject_code,
     )
 
-    if active_session and not is_university_mock_time_expired(active_session.get("exam_ends_at")):
+    if active_session and not is_university_mock_time_expired(
+        active_session.get("exam_ends_at")
+    ):
         context.user_data["ut_session_id"] = int(active_session["id"])
         context.user_data["ut_session_mode"] = "course_mock"
 
-        next_question_no = max(1, int(active_session.get("current_question_index") or 0) + 1)
+        next_question_no = max(
+            1,
+            int(active_session.get("current_question_index") or 0) + 1,
+        )
 
         return await update.effective_message.reply_text(
             build_university_mock_resume_text(
@@ -1298,7 +1398,9 @@ async def open_university_course_mock_screen(
         )
 
     mock_sessions_available = await get_mock_sessions_available(user_id)
+
     question_count = get_university_mock_question_count(subject_code)
+
     can_start = mock_sessions_available >= 1
 
     return await update.effective_message.reply_text(
@@ -1308,7 +1410,11 @@ async def open_university_course_mock_screen(
             mock_sessions_available=mock_sessions_available,
         ),
         parse_mode="MarkdownV2",
-        reply_markup=make_university_mock_access_keyboard(subject_code, can_start),
+        reply_markup=make_university_mock_access_keyboard(
+            category_code,
+            subject_code,
+            can_start,
+        ),
     )
 
 
@@ -1438,8 +1544,23 @@ async def university_mode_handler(update: Update, context: ContextTypes.DEFAULT_
         )
 
     if data.startswith("ut_mode_mock_"):
-        subject_code = data.replace("ut_mode_mock_", "", 1)
-        return await open_university_course_mock_screen(update, context, subject_code)
+
+        subject_code = data.replace(
+            "ut_mode_mock_",
+            "",
+            1,
+        )
+
+        category_code = context.user_data.get(
+            "ut_category_code"
+        )
+
+        return await open_university_course_mock_screen(
+            update,
+            context,
+            category_code,
+            subject_code,
+        )
 
 
 # ---------------------------------
@@ -1475,8 +1596,13 @@ async def university_module_handler(update: Update, context: ContextTypes.DEFAUL
     context.user_data["ut_subject_code"] = subject_code
     context.user_data["ut_module_id"] = module_id
 
+    safe_module_title = md_escape(
+        str(module["title"])
+    )
+
     await query.message.reply_text(
-        f"📚 *{module['title']}*\n\nChoose a topic.",
+        f"📚 *{safe_module_title}*\n\n"
+        "Choose a topic\\.",
         parse_mode="MarkdownV2",
         reply_markup=make_topics_keyboard(
             category_code,
@@ -1485,7 +1611,9 @@ async def university_module_handler(update: Update, context: ContextTypes.DEFAUL
         ),
     )
 
-
+# =========================================
+# Send University Topic Access Screen
+# =========================================
 async def send_university_topic_access_screen(
     message,
     context: ContextTypes.DEFAULT_TYPE,
@@ -1495,36 +1623,82 @@ async def send_university_topic_access_screen(
     topic_id: str,
     user_id: int,
 ):
-    category_code = context.user_data.get("ut_category_code")
-    module_id = context.user_data.get("ut_module_id")
+    # =====================================
+    # LOAD TOPICS
+    # =====================================
     topics = get_university_module_topics(
         category_code,
         subject_code,
-        module_id
+        module_id,
     )
-    selected_topic = next((t for t in topics if t["id"] == topic_id), None)
 
+    selected_topic = next(
+        (
+            t for t in topics
+            if t["id"] == topic_id
+        ),
+        None,
+    )
+
+    # =====================================
+    # VALIDATE TOPIC
+    # =====================================
     if not selected_topic:
         return await message.reply_text(
             "⚠️ Topic not found\\.",
             parse_mode="MarkdownV2",
         )
 
+    # =====================================
+    # SAVE FLOW STATE
+    # =====================================
+    context.user_data["ut_category_code"] = category_code
     context.user_data["ut_subject_code"] = subject_code
+    context.user_data["ut_module_id"] = module_id
     context.user_data["ut_topic_id"] = topic_id
 
+    # =====================================
+    # ENSURE USER ACCESS
+    # =====================================
     await ensure_university_user_access(user_id)
+
     access = await get_university_user_access(user_id)
 
-    free_remaining = int((access or {}).get("free_questions_remaining", 0))
-    paid_credits = int((access or {}).get("paid_question_credits", 0))
+    free_remaining = int(
+        (access or {}).get(
+            "free_questions_remaining",
+            0,
+        )
+    )
+
+    paid_credits = int(
+        (access or {}).get(
+            "paid_question_credits",
+            0,
+        )
+    )
+
     has_free_trial = free_remaining > 0
     has_paid_credits = paid_credits > 0
 
-    safe_topic_title = md_escape(str(selected_topic["title"]))
-    safe_free_remaining = md_escape(str(free_remaining))
-    safe_paid_credits = md_escape(str(paid_credits))
+    # =====================================
+    # SAFE DISPLAY VALUES
+    # =====================================
+    safe_topic_title = md_escape(
+        str(selected_topic["title"])
+    )
 
+    safe_free_remaining = md_escape(
+        str(free_remaining)
+    )
+
+    safe_paid_credits = md_escape(
+        str(paid_credits)
+    )
+
+    # =====================================
+    # ACCESS SCREEN
+    # =====================================
     await message.reply_text(
         f"✅ Topic selected: *{safe_topic_title}*\n\n"
         f"🎁 Free questions left: *{safe_free_remaining}*\n"
@@ -1532,13 +1706,18 @@ async def send_university_topic_access_screen(
         "Choose how you want to continue:",
         parse_mode="MarkdownV2",
         reply_markup=make_topic_access_keyboard_for_course(
+            category_code,
             subject_code,
+            module_id,
             has_free_trial,
             has_paid_credits,
         ),
     )
 
 
+# ====================================================
+# University Topic Handler
+# ====================================================
 async def university_topic_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
 
@@ -1547,19 +1726,32 @@ async def university_topic_handler(update: Update, context: ContextTypes.DEFAULT
 
     await query.answer()
 
+    # =====================================
+    # CALLBACK FORMAT:
+    # ut_topic::category::subject::module::topic
+    # =====================================
     try:
-        _, category_code, subject_code, module_id, topic_id = query.data.split("::")
+        _, category_code, subject_code, module_id, topic_id = (
+            query.data.split("::")
+        )
+
     except Exception:
         return await query.message.reply_text(
             "⚠️ Invalid topic selection\\.",
             parse_mode="MarkdownV2",
         )
 
+    # =====================================
+    # SAVE FLOW STATE
+    # =====================================
     context.user_data["ut_category_code"] = category_code
     context.user_data["ut_subject_code"] = subject_code
     context.user_data["ut_module_id"] = module_id
     context.user_data["ut_topic_id"] = topic_id
 
+    # =====================================
+    # OPEN ACCESS SCREEN
+    # =====================================
     await send_university_topic_access_screen(
         query.message,
         context,
@@ -1584,36 +1776,54 @@ async def university_start_free_handler(update: Update, context: ContextTypes.DE
     tg = update.effective_user
     user_id = tg.id
 
+    # =============================
+    # LOAD FLOW STATE
+    # =============================
+    category_code = context.user_data.get("ut_category_code")
     subject_code = context.user_data.get("ut_subject_code")
-    topic_id = context.user_data.get("ut_topic_id")
     module_id = context.user_data.get("ut_module_id")
+    topic_id = context.user_data.get("ut_topic_id")
 
-    if not subject_code or not topic_id or not module_id:
+    # =============================
+    # VALIDATE FLOW STATE
+    # =============================
+    if not category_code or not subject_code or not module_id or not topic_id:
         return await query.message.reply_text(
             "⚠️ Topic session data missing\\. Please choose your course and topic again\\.",
             parse_mode="MarkdownV2",
             reply_markup=make_category_keyboard(),
         )
 
+    # =============================
+    # CHECK USER ACCESS
+    # =============================
     access = await get_university_user_access(user_id)
-    free_remaining = int((access or {}).get("free_questions_remaining", 0))
+
+    free_remaining = int(
+        (access or {}).get("free_questions_remaining", 0)
+    )
 
     if free_remaining <= 0:
         return await query.message.reply_text(
-            "⚠️ You have no free UNIVERSITY questions left\\.\n\nPlease buy a question pack to continue\\.",
+            "⚠️ You have no free UNIVERSITY questions left\\.\n\n"
+            "Please buy a question pack to continue\\.",
             parse_mode="MarkdownV2",
         )
 
     requested_count = min(5, free_remaining)
 
+    # =============================
+    # LOAD HISTORY
+    # =============================
     seen_question_ids = await get_seen_question_ids_for_topic(
         user_id=user_id,
         subject_code=subject_code,
         topic_id=topic_id,
     )
 
-    category_code = context.user_data.get("ut_category_code")
-
+    # =============================
+    # PREPARE QUESTION BATCH
+    # =============================
     batch = prepare_university_topic_question_batch(
         category_code=category_code,
         subject_code=subject_code,
@@ -1624,7 +1834,11 @@ async def university_start_free_handler(update: Update, context: ContextTypes.DE
     )
 
     if batch["cycle_reset"]:
-        await reset_topic_history(user_id, subject_code, topic_id)
+        await reset_topic_history(
+            user_id,
+            subject_code,
+            topic_id,
+        )
 
     selected_questions = batch["selected_questions"]
     selected_question_ids = batch["selected_question_ids"]
@@ -1635,6 +1849,9 @@ async def university_start_free_handler(update: Update, context: ContextTypes.DE
             parse_mode="MarkdownV2",
         )
 
+    # =============================
+    # CREATE SESSION
+    # =============================
     session_id = await create_university_session(
         user_id=user_id,
         subject_code=subject_code,
@@ -1643,44 +1860,72 @@ async def university_start_free_handler(update: Update, context: ContextTypes.DE
         mode="topic_practice",
     )
 
+    # =============================
+    # SAVE SESSION STATE
+    # =============================
+    context.user_data["ut_category_code"] = category_code
+    context.user_data["ut_subject_code"] = subject_code
+    context.user_data["ut_module_id"] = module_id
+    context.user_data["ut_topic_id"] = topic_id
+
     context.user_data["ut_session_id"] = session_id
     context.user_data["ut_session_mode"] = "free_trial"
+
     context.user_data["ut_question_batch"] = selected_questions
     context.user_data["ut_question_ids"] = selected_question_ids
+
     context.user_data["ut_current_index"] = 0
     context.user_data["ut_session_target"] = len(selected_questions)
+
     context.user_data["ut_correct_count"] = 0
     context.user_data["ut_wrong_count"] = 0
+
     context.user_data["ut_current_question"] = None
     context.user_data["ut_answered_current"] = False
+
     context.user_data["ut_served_question_ids"] = []
+
     context.user_data["ut_shown_passages"] = []
     context.user_data["ut_last_passage"] = None
     context.user_data["ut_last_passage_id_shown"] = ""
     context.user_data["ut_active_passage_message_id"] = None
 
-    category_code = context.user_data.get("ut_category_code")
-
+    # =============================
+    # LOAD TOPIC TITLE
+    # =============================
     topic = next(
         (
             t for t in get_university_module_topics(
                 category_code,
                 subject_code,
-                module_id
+                module_id,
             )
             if t["id"] == topic_id
         ),
         None,
     )
-    
+
     topic_title = topic["title"] if topic else topic_id
 
+    # =============================
+    # LOAD SUBJECT
+    # =============================
     subject = get_university_subject_by_code(subject_code)
-    course_name = subject["name"] if subject else subject_code
 
+    course_name = (
+        subject["name"]
+        if subject
+        else subject_code
+    )
+
+    # =============================
+    # SAFE DISPLAY TEXT
+    # =============================
     safe_course_name = md_escape(str(course_name))
     safe_topic_title = md_escape(str(topic_title))
-    safe_question_count = md_escape(str(len(selected_questions)))
+    safe_question_count = md_escape(
+        str(len(selected_questions))
+    )
 
     reset_note = (
         "\n♻️ Topic cycle reset because you already exhausted this topic before\\."
@@ -1688,9 +1933,12 @@ async def university_start_free_handler(update: Update, context: ContextTypes.DE
         else ""
     )
 
+    # =============================
+    # SUCCESS MESSAGE
+    # =============================
     await query.message.reply_text(
         f"🎉 *Free Trial Started*\n\n"
-        f"📘 course: *{safe_course_name}*\n"
+        f"📘 Course: *{safe_course_name}*\n"
         f"🧪 Topic: *{safe_topic_title}*\n"
         f"📚 Questions in this session: *{safe_question_count}*"
         f"{reset_note}\n\n"
@@ -1698,8 +1946,18 @@ async def university_start_free_handler(update: Update, context: ContextTypes.DE
         parse_mode="MarkdownV2",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("▶ Start Questions", callback_data="ut_serve_first")],
-                [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+                [
+                    InlineKeyboardButton(
+                        "▶ Start Questions",
+                        callback_data="ut_serve_first",
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🏠 Back to Main Menu",
+                        callback_data="menu:main",
+                    )
+                ],
             ]
         ),
     )
@@ -1981,9 +2239,15 @@ async def send_current_university_question(update: Update, context: ContextTypes
     # Reload mock paper from DB if needed
     if session_mode == "course_mock" and not batch and session_id:
         paper_rows = await get_university_session_paper(int(session_id))
+
         batch = build_university_batch_from_paper_rows(paper_rows)
+
         context.user_data["ut_question_batch"] = batch
-        context.user_data["ut_question_ids"] = [str(q.get("id")) for q in batch if q.get("id")]
+        context.user_data["ut_question_ids"] = [
+            str(q.get("id"))
+            for q in batch
+            if q.get("id")
+        ]
 
     if not batch:
         return await update.effective_message.reply_text(
@@ -1992,8 +2256,10 @@ async def send_current_university_question(update: Update, context: ContextTypes
         )
 
     session_row = None
+
     if session_mode == "course_mock" and session_id:
         session_row = await get_university_session_by_id(int(session_id))
+
         if not session_row:
             return await update.effective_message.reply_text(
                 "⚠️ Mock session could not be reloaded\\.",
@@ -2005,11 +2271,16 @@ async def send_current_university_question(update: Update, context: ContextTypes
                 chat_id=update.effective_message.chat_id,
                 context=context,
             )
+
             await complete_university_session(int(session_id))
 
             safe_total = md_escape(str(len(batch)))
-            safe_correct_count = md_escape(str(session_row.get("correct_count") or 0))
-            safe_wrong_count = md_escape(str(session_row.get("wrong_count") or 0))
+            safe_correct_count = md_escape(
+                str(session_row.get("correct_count") or 0)
+            )
+            safe_wrong_count = md_escape(
+                str(session_row.get("wrong_count") or 0)
+            )
 
             return await update.effective_message.reply_text(
                 f"⏰ *Mock time is up\\.*\n\n"
@@ -2020,12 +2291,25 @@ async def send_current_university_question(update: Update, context: ContextTypes
                 parse_mode="MarkdownV2",
                 reply_markup=InlineKeyboardMarkup(
                     [
-                        [InlineKeyboardButton("🎓 UNIVERSITY Practice", callback_data="university")],
-                        [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+                        [
+                            InlineKeyboardButton(
+                                "🎓 UNIVERSITY Practice",
+                                callback_data="university",
+                            )
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                "🏠 Back to Main Menu",
+                                callback_data="menu:main",
+                            )
+                        ],
                     ]
                 ),
             )
 
+    # =============================
+    # SESSION COMPLETED
+    # =============================
     if current_index >= len(batch):
         await clear_ut_passage_message(
             chat_id=update.effective_message.chat_id,
@@ -2035,15 +2319,26 @@ async def send_current_university_question(update: Update, context: ContextTypes
         if session_id:
             await complete_university_session(int(session_id))
 
-        correct_count = int(context.user_data.get("ut_correct_count", 0))
-        wrong_count = int(context.user_data.get("ut_wrong_count", 0))
+        correct_count = int(
+            context.user_data.get("ut_correct_count", 0)
+        )
+
+        wrong_count = int(
+            context.user_data.get("ut_wrong_count", 0)
+        )
+
         total = len(batch)
 
         safe_total = md_escape(str(total))
         safe_correct_count = md_escape(str(correct_count))
         safe_wrong_count = md_escape(str(wrong_count))
 
-        title = "✅ *Mock Completed*" if session_mode == "course_mock" else "✅ *Practice Completed*"
+        title = (
+            "✅ *Mock Completed*"
+            if session_mode == "course_mock"
+            else "✅ *Practice Completed*"
+        )
+
         outro = (
             "Great job\\. You can return to UNIVERSITY Practice for another course\\."
             if session_mode == "course_mock"
@@ -2059,27 +2354,61 @@ async def send_current_university_question(update: Update, context: ContextTypes
             parse_mode="MarkdownV2",
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("🎓 UNIVERSITY Practice", callback_data="university")],
-                    [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
+                    [
+                        InlineKeyboardButton(
+                            "🎓 UNIVERSITY Practice",
+                            callback_data="university",
+                        )
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            "🏠 Back to Main Menu",
+                            callback_data="menu:main",
+                        )
+                    ],
                 ]
             ),
         )
 
+    # =============================
+    # CURRENT QUESTION
+    # =============================
     question = batch[current_index]
 
     question_id = str(question["id"])
-    user_id = update.effective_user.id
-    subject_code = context.user_data.get("ut_subject_code")
-    topic_id = str(question.get("topic_id") or context.user_data.get("ut_topic_id") or "__mock_course__")
-    served_question_ids = context.user_data.get("ut_served_question_ids", [])
 
-    # Charge and record history when question is served, not when answered
+    user_id = update.effective_user.id
+
+    category_code = context.user_data.get("ut_category_code")
+    subject_code = context.user_data.get("ut_subject_code")
+    module_id = context.user_data.get("ut_module_id")
+
+    # preserve module state
+    context.user_data["ut_module_id"] = module_id
+
+    topic_id = str(
+        question.get("topic_id")
+        or context.user_data.get("ut_topic_id")
+        or "__mock_course__"
+    )
+
+    served_question_ids = context.user_data.get(
+        "ut_served_question_ids",
+        [],
+    )
+
+    # =============================
+    # CHARGE ONLY WHEN SERVED
+    # =============================
     if question_id not in served_question_ids:
+
         if session_mode == "free_trial":
             deducted = await deduct_one_free_question(user_id)
+
             if not deducted:
                 return await update.effective_message.reply_text(
-                    "⚠️ You have no free question balance left\\.\n\nPlease buy a question pack to continue\\.",
+                    "⚠️ You have no free question balance left\\.\n\n"
+                    "Please buy a question pack to continue\\.",
                     parse_mode="MarkdownV2",
                 )
 
@@ -2091,13 +2420,17 @@ async def send_current_university_question(update: Update, context: ContextTypes
             )
 
             if session_id:
-                await increment_university_session_served(int(session_id))
+                await increment_university_session_served(
+                    int(session_id)
+                )
 
         elif session_mode == "paid_session":
             deducted = await deduct_one_paid_question(user_id)
+
             if not deducted:
                 return await update.effective_message.reply_text(
-                    "⚠️ You have no paid UNIVERSITY question credits left\\.\n\nPlease buy another question pack to continue\\.",
+                    "⚠️ You have no paid UNIVERSITY question credits left\\.\n\n"
+                    "Please buy another question pack to continue\\.",
                     parse_mode="MarkdownV2",
                 )
 
@@ -2109,38 +2442,74 @@ async def send_current_university_question(update: Update, context: ContextTypes
             )
 
             if session_id:
-                await increment_university_session_served(int(session_id))
+                await increment_university_session_served(
+                    int(session_id)
+                )
 
         elif session_mode == "course_mock":
             if session_id:
-                await increment_university_session_served(int(session_id))
+                await increment_university_session_served(
+                    int(session_id)
+                )
 
         served_question_ids.append(question_id)
-        context.user_data["ut_served_question_ids"] = served_question_ids
 
+        context.user_data["ut_served_question_ids"] = (
+            served_question_ids
+        )
+
+    # =============================
+    # STORE CURRENT QUESTION
+    # =============================
     context.user_data["ut_current_question"] = question
     context.user_data["ut_answered_current"] = False
 
+    # =============================
+    # UPDATE MOCK INDEX
+    # =============================
     if session_mode == "course_mock" and session_id:
-        await set_university_session_current_question_index(int(session_id), current_index)
+        await set_university_session_current_question_index(
+            int(session_id),
+            current_index,
+        )
 
-    subject = get_university_subject_by_code(subject_code) or {"name": subject_code}
+    # =============================
+    # LOAD SUBJECT
+    # =============================
+    subject = get_university_subject_by_code(subject_code)
+
+    if not subject:
+        subject = {"name": subject_code}
+
     course_name = subject.get("name", subject_code)
 
-    # Tag question with session mode for builder
+    # tag for downstream builders
     question["_session_mode"] = session_mode
 
-    # CASE 1: current question belongs to a passage block
+    # =============================
+    # PASSAGE HANDLING
+    # =============================
     if question_has_passage(question):
+
         if should_show_ut_passage_for_question(question, context):
-            passage_start, passage_end = get_ut_passage_question_range(batch, current_index)
+
+            passage_start, passage_end = (
+                get_ut_passage_question_range(
+                    batch,
+                    current_index,
+                )
+            )
 
             passage_text_msg = build_ut_passage_text(
                 course_name=course_name,
                 question_start=passage_start,
                 question_end=passage_end,
                 total_questions=len(batch),
-                exam_ends_at=(session_row or {}).get("exam_ends_at") if session_mode == "course_mock" else None,
+                exam_ends_at=(
+                    (session_row or {}).get("exam_ends_at")
+                    if session_mode == "course_mock"
+                    else None
+                ),
                 question=question,
             )
 
@@ -2156,35 +2525,61 @@ async def send_current_university_question(update: Update, context: ContextTypes
                 context=context,
             )
 
-    # CASE 2: current question does not belong to a passage block
     else:
         await clear_ut_passage_message(
             chat_id=update.effective_message.chat_id,
             context=context,
         )
 
+    # =============================
+    # QUESTION DISPLAY
+    # =============================
     options = question.get("options", {})
 
-    safe_question_text = md_escape(str(question.get("question") or "Question unavailable."))
+    safe_question_text = md_escape(
+        str(question.get("question") or "Question unavailable.")
+    )
+
     safe_question_no = md_escape(str(current_index + 1))
     safe_total = md_escape(str(len(batch)))
 
     header_lines = []
-    if session_mode == "course_mock":
-        remaining = format_university_mock_time_remaining((session_row or {}).get("exam_ends_at"))
-        safe_remaining = md_escape(str(remaining))
-        header_lines.append("📝 *Course Mock \\(By course\\)*")
-        header_lines.append(f"⏱ Time Remaining: *{safe_remaining}*")
-    else:
-        header_lines.append("📘 *UNIVERSITY Practice*")
 
-    header_lines.append(f"Question {safe_question_no} of {safe_total}")
+    if session_mode == "course_mock":
+        remaining = format_university_mock_time_remaining(
+            (session_row or {}).get("exam_ends_at")
+        )
+
+        safe_remaining = md_escape(str(remaining))
+
+        header_lines.append(
+            "📝 *University Course Mock*"
+        )
+
+        header_lines.append(
+            f"⏱ Time Remaining: *{safe_remaining}*"
+        )
+
+    else:
+        header_lines.append(
+            "📘 *UNIVERSITY Practice*"
+        )
+
+    header_lines.append(
+        f"Question {safe_question_no} of {safe_total}"
+    )
 
     option_lines = []
+
     for key in ["A", "B", "C", "D", "E"]:
         if key in options:
-            safe_option_text = md_escape(str(options[key]))
-            option_lines.append(f"{key}\\. {safe_option_text}")
+            safe_option_text = md_escape(
+                str(options[key])
+            )
+
+            option_lines.append(
+                f"{key}\\. {safe_option_text}"
+            )
 
     text_msg = (
         "\n".join(header_lines)
@@ -2193,14 +2588,22 @@ async def send_current_university_question(update: Update, context: ContextTypes
         + "\n".join(option_lines)
     )
 
+    # =============================
+    # ANSWER BUTTONS
+    # =============================
     rows = []
     answer_row = []
 
     for key in ["A", "B", "C", "D", "E"]:
+
         if key in options:
             answer_row.append(
-                InlineKeyboardButton(key, callback_data=f"ut_ans::{key}")
+                InlineKeyboardButton(
+                    key,
+                    callback_data=f"ut_ans::{key}",
+                )
             )
+
             if len(answer_row) == 2:
                 rows.append(answer_row)
                 answer_row = []
@@ -2208,7 +2611,14 @@ async def send_current_university_question(update: Update, context: ContextTypes
     if answer_row:
         rows.append(answer_row)
 
-    rows.append([InlineKeyboardButton("🏠 End Practice", callback_data="ut_end_session")])
+    rows.append(
+        [
+            InlineKeyboardButton(
+                "🏠 End Practice",
+                callback_data="ut_end_session",
+            )
+        ]
+    )
 
     await update.effective_message.reply_text(
         text_msg,
@@ -2516,10 +2926,94 @@ async def university_back_mode_handler(update: Update, context: ContextTypes.DEF
         ),
     )
 
+# -------------------------------------
+# University Back to Module Topics Handler
+# ----------------------------------------
+async def university_back_to_module_topics_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    try:
+        _, category_code, subject_code, module_id = (
+            query.data.split("::")
+        )
+
+    except Exception:
+        return await query.message.reply_text(
+            "⚠️ Invalid module navigation\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    context.user_data["ut_category_code"] = category_code
+    context.user_data["ut_subject_code"] = subject_code
+    context.user_data["ut_module_id"] = module_id
+
+    subject = get_university_subject_by_code(subject_code)
+
+    topics = get_university_module_topics(
+        category_code,
+        subject_code,
+        module_id,
+    )
+
+    if not topics:
+        return await query.message.reply_text(
+            "⚠️ No topics found for this module yet\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    rows = []
+
+    for topic in topics:
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    topic["title"],
+                    callback_data=(
+                        f"ut_topic::{category_code}"
+                        f"::{subject_code}"
+                        f"::{module_id}"
+                        f"::{topic['id']}"
+                    ),
+                )
+            ]
+        )
+
+    rows.append(
+        [
+            InlineKeyboardButton(
+                "🏠 Back to Main Menu",
+                callback_data="menu:main",
+            )
+        ]
+    )
+
+    course_name = (
+        subject["name"]
+        if subject
+        else subject_code
+    )
+
+    safe_course_name = md_escape(str(course_name))
+
+    await query.message.reply_text(
+        f"📚 *{safe_course_name} Topics*\n\n"
+        "Choose a topic below\\.",
+        parse_mode="MarkdownV2",
+        reply_markup=InlineKeyboardMarkup(rows),
+    )
+
 
 # --------------------------------------
 # University Back Module Handler
-# ------------------------------------
+# --------------------------------------
 async def university_back_modules_handler(update, context):
     query = update.callback_query
 
@@ -2529,9 +3023,23 @@ async def university_back_modules_handler(update, context):
     await query.answer()
 
     try:
-        _, category_code, subject_code = query.data.split("::")
+        _, category_code, subject_code = (
+            query.data.split("::")
+        )
+
     except Exception:
-        return
+        return await query.message.reply_text(
+            "⚠️ Invalid module navigation\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    # =====================================
+    # SAVE FLOW STATE
+    # =====================================
+    context.user_data["ut_category_code"] = category_code
+    context.user_data["ut_subject_code"] = subject_code
+    context.user_data["ut_module_id"] = None
+    context.user_data["ut_topic_id"] = None
 
     await query.message.reply_text(
         "📚 *Choose a Module*",
@@ -2704,10 +3212,7 @@ async def university_paid_count_handler(update: Update, context: ContextTypes.DE
     
     topic_title = topic["title"] if topic else topic_id
 
-    subject = get_university_subject_by_code(
-        category_code,
-        subject_code,
-    )
+    subject = get_university_subject_by_code(subject_code)
     course_name = subject["name"] if subject else subject_code
 
     safe_course_name = md_escape(str(course_name))
@@ -2757,6 +3262,7 @@ async def university_mock_start_paid_handler(update: Update, context: ContextTyp
     tg = update.effective_user
     user_id = tg.id
 
+    category_code = context.user_data.get("ut_category_code")
     subject_code = context.user_data.get("ut_subject_code")
     if not subject_code:
         return await query.message.reply_text(
@@ -2801,6 +3307,7 @@ async def university_mock_start_paid_handler(update: Update, context: ContextTyp
         user_id=user_id,
         session_id=session_id,
         subject_code=subject_code,
+        category_code=category_code,
     )
 
     paper_rows = paper_info.get("paper_rows") or []
@@ -2960,9 +3467,10 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(university_mock_resume_handler, pattern=r"^ut_mock_resume$"))
 
     application.add_handler(CallbackQueryHandler(university_topic_handler, pattern=r"^ut_topic::"))
-    application.add_handler(CallbackQueryHandler(university_back_mode_handler, pattern=r"^ut_back_mode_"))
+    application.add_handler(CallbackQueryHandler(university_back_mode_handler, pattern=r"^ut_back_mode::"))
     application.add_handler(CallbackQueryHandler(university_back_subjects_handler, pattern=r"^ut_back_subjects::"))
-
+    application.add_handler(CallbackQueryHandler(university_back_to_module_topics_handler, pattern=r"^ut_back_module::"))
+    
     application.add_handler(CallbackQueryHandler(university_back_modules_handler, pattern=r"^ut_back_modules::"))
     application.add_handler(CallbackQueryHandler(university_start_free_handler, pattern=r"^ut_start_free$"))
     application.add_handler(CallbackQueryHandler(university_use_paid_handler, pattern=r"^ut_use_paid$"))
@@ -2974,5 +3482,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(university_answer_handler, pattern=r"^ut_ans::"))
     application.add_handler(CallbackQueryHandler(university_answer_details_handler, pattern=r"^ut_details$"))
     application.add_handler(CallbackQueryHandler(university_next_handler, pattern=r"^ut_next$"))
-
-
+    
