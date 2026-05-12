@@ -985,19 +985,14 @@ def make_module_keyboard(category_code: str, subject_code: str):
         rows.append([
             InlineKeyboardButton(
                 f"{module['number']}. {module['title']}",
-                callback_data=(
-                    f"ut_module::"
-                    f"{category_code}::"
-                    f"{subject_code}::"
-                    f"{module['id']}"
-                )
+                callback_data=f"ut_module::{module['id']}"
             )
         ])
 
     rows.append([
         InlineKeyboardButton(
             "⬅️ Back to Subjects",
-            callback_data=f"ut_back_subjects::{category_code}"
+            callback_data="ut_back_subjects"
         )
     ])
 
@@ -1012,30 +1007,27 @@ def make_module_keyboard(category_code: str, subject_code: str):
 
 
 # ---Mode Keyboard-------
-def make_mode_keyboard(
-    category_code: str,
-    subject_code: str,
-):
+def make_mode_keyboard():
     return InlineKeyboardMarkup(
         [
             [
                 InlineKeyboardButton(
                     "📚 By Topics",
-                    callback_data=f"ut_mode_topics_{subject_code}",
+                    callback_data="ut_mode_topics",
                 )
             ],
 
             [
                 InlineKeyboardButton(
                     "📝 Course Mock (By course)",
-                    callback_data=f"ut_mode_mock_{subject_code}",
+                    callback_data="ut_mode_mock",
                 )
             ],
 
             [
                 InlineKeyboardButton(
                     "⬅️ Back to Subjects",
-                    callback_data=f"ut_back_subjects::{category_code}",
+                    callback_data="ut_back_subjects",
                 )
             ],
 
@@ -1047,6 +1039,7 @@ def make_mode_keyboard(
             ],
         ]
     )
+
 
 # ----Topic Keyboard------
 def make_topics_keyboard(
@@ -1410,10 +1403,7 @@ async def university_subject_handler(
         f"📘 *You selected:* {safe_course_name}\n\n"
         "How would you like to practice\\?",
         parse_mode="MarkdownV2",
-        reply_markup=make_mode_keyboard(
-            category_code,
-            subject_code,
-        ),
+        reply_markup=make_mode_keyboard(),
     )
 
 
@@ -1599,8 +1589,10 @@ async def university_mode_handler(update: Update, context: ContextTypes.DEFAULT_
 
     data = query.data
 
-    if data.startswith("ut_mode_topics_"):
-        subject_code = data.replace("ut_mode_topics_", "", 1)
+    if data == "ut_mode_topics":
+
+        category_code = context.user_data.get("ut_category_code")
+        subject_code = context.user_data.get("ut_subject_code")
 
         category_code = context.user_data.get("ut_category_code")
 
@@ -1618,13 +1610,10 @@ async def university_mode_handler(update: Update, context: ContextTypes.DEFAULT_
             ),
         )
 
-    if data.startswith("ut_mode_mock_"):
+    if data == "ut_mode_mock":
 
-        subject_code = data.replace(
-            "ut_mode_mock_",
-            "",
-            1,
-        )
+        category_code = context.user_data.get("ut_category_code")
+        subject_code = context.user_data.get("ut_subject_code")
 
         category_code = context.user_data.get(
             "ut_category_code"
@@ -1649,13 +1638,37 @@ async def university_module_handler(update: Update, context: ContextTypes.DEFAUL
 
     await query.answer()
 
+    # =====================================
+    # CALLBACK FORMAT:
+    # ut_module::module_id
+    # =====================================
     try:
-        _, category_code, subject_code, module_id = query.data.split("::")
+        _, module_id = query.data.split("::")
+
     except Exception:
         return await query.message.reply_text(
-            "⚠️ Invalid module selection."
+            "⚠️ Invalid module selection\\.",
+            parse_mode="MarkdownV2",
         )
 
+    # =====================================
+    # LOAD FLOW STATE
+    # =====================================
+    category_code = context.user_data.get("ut_category_code")
+    subject_code = context.user_data.get("ut_subject_code")
+
+    # =====================================
+    # VALIDATE FLOW STATE
+    # =====================================
+    if not category_code or not subject_code:
+        return await query.message.reply_text(
+            "⚠️ Session expired\\. Please start again\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    # =====================================
+    # LOAD MODULE
+    # =====================================
     module = get_university_module_by_id(
         category_code,
         subject_code,
@@ -1664,17 +1677,27 @@ async def university_module_handler(update: Update, context: ContextTypes.DEFAUL
 
     if not module:
         return await query.message.reply_text(
-            "⚠️ Module not found."
+            "⚠️ Module not found\\.",
+            parse_mode="MarkdownV2",
         )
 
+    # =====================================
+    # SAVE FLOW STATE
+    # =====================================
     context.user_data["ut_category_code"] = category_code
     context.user_data["ut_subject_code"] = subject_code
     context.user_data["ut_module_id"] = module_id
 
+    # =====================================
+    # SAFE DISPLAY
+    # =====================================
     safe_module_title = md_escape(
         str(module["title"])
     )
 
+    # =====================================
+    # SHOW TOPICS
+    # =====================================
     await query.message.reply_text(
         f"📚 *{safe_module_title}*\n\n"
         "Choose a topic\\.",
@@ -1685,6 +1708,7 @@ async def university_module_handler(update: Update, context: ContextTypes.DEFAUL
             module_id,
         ),
     )
+
 
 # =========================================
 # Send University Topic Access Screen
@@ -3004,10 +3028,7 @@ async def university_back_mode_handler(update: Update, context: ContextTypes.DEF
         f"📘 *You selected:* {safe_course_name}\n\n"
         "How would you like to practice\\?",
         parse_mode="MarkdownV2",
-        reply_markup=make_mode_keyboard(
-            category_code,
-            subject_code,
-        ),
+        reply_markup=make_mode_keyboard(),
     )
 
 # -------------------------------------
@@ -3137,6 +3158,7 @@ async def university_back_modules_handler(update, context):
         ),
     )
 
+
 # --------------------------------------
 # University Back Subject Handler
 # ------------------------------------
@@ -3148,21 +3170,46 @@ async def university_back_subjects_handler(update, context):
 
     await query.answer()
 
-    try:
-        _, category_code = query.data.split("::")
-    except Exception:
-        return
+    # =====================================
+    # LOAD CATEGORY FROM FLOW STATE
+    # =====================================
+    category_code = context.user_data.get("ut_category_code")
 
+    if not category_code:
+        return await query.message.reply_text(
+            "⚠️ Category session expired\\. Please start again\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    # =====================================
+    # LOAD CATEGORY
+    # =====================================
     category = get_university_category_by_code(category_code)
 
     if not category:
-        return
+        return await query.message.reply_text(
+            "⚠️ Category not found\\.",
+            parse_mode="MarkdownV2",
+        )
 
+    # =====================================
+    # RESET LOWER FLOW STATE
+    # =====================================
+    context.user_data["ut_subject_code"] = None
+    context.user_data["ut_module_id"] = None
+    context.user_data["ut_topic_id"] = None
+    context.user_data["ut_mode"] = None
+
+    # =====================================
+    # SHOW SUBJECTS
+    # =====================================
     await query.message.reply_text(
-        f"📚 *{md_escape(category['name'])}*\n\nChoose a subject\\.",
+        f"📚 *{md_escape(category['name'])}*\n\n"
+        "Choose a subject\\.",
         parse_mode="MarkdownV2",
         reply_markup=make_subject_keyboard(category_code),
     )
+
 
 # --------------------------------------
 # University Use Paid Handler
@@ -3561,7 +3608,7 @@ def register_handlers(application):
 
     application.add_handler(CallbackQueryHandler(university_topic_handler, pattern=r"^ut_topic::"))
     application.add_handler(CallbackQueryHandler(university_back_mode_handler, pattern=r"^ut_back_mode::"))
-    application.add_handler(CallbackQueryHandler(university_back_subjects_handler, pattern=r"^ut_back_subjects::"))
+    application.add_handler(CallbackQueryHandler(university_back_subjects_handler, pattern=r"^ut_back_subjects$"))
     application.add_handler(CallbackQueryHandler(university_back_to_module_topics_handler, pattern=r"^ut_back_module::"))
     
     application.add_handler(CallbackQueryHandler(university_back_modules_handler, pattern=r"^ut_back_modules::"))
