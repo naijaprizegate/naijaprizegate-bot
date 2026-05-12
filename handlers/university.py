@@ -974,6 +974,7 @@ def make_subject_keyboard(category_code: str):
 
 # ---Module Keyboard-----
 def make_module_keyboard(category_code: str, subject_code: str):
+
     modules = get_university_modules(
         category_code,
         subject_code,
@@ -982,23 +983,50 @@ def make_module_keyboard(category_code: str, subject_code: str):
     rows = []
 
     for module in modules:
+
+        module_id = str(module.get("id", "")).strip()
+        module_number = str(module.get("number", ""))
+        module_title = str(module.get("title", "Untitled Module"))
+
+        # Skip invalid IDs
+        if not module_id:
+            print(f"❌ Invalid module ID: {module}")
+            continue
+
+        callback_data = f"ut_module::{module_id}"
+
+        # Telegram limit safety check
+        if len(callback_data) > 64:
+            print(
+                f"❌ CALLBACK TOO LONG: "
+                f"{callback_data} "
+                f"(LEN={len(callback_data)})"
+            )
+            continue
+
+        print(
+            f"✅ BUTTON OK => "
+            f"{callback_data} "
+            f"(LEN={len(callback_data)})"
+        )
+
         rows.append([
             InlineKeyboardButton(
-                f"{module['number']}. {module['title']}",
-                callback_data=f"ut_module::{module['id']}"
+                text=f"{module_number}. {module_title}",
+                callback_data=callback_data
             )
         ])
 
     rows.append([
         InlineKeyboardButton(
-            "⬅️ Back to Subjects",
+            text="⬅️ Back to Subjects",
             callback_data="ut_back_subjects"
         )
     ])
 
     rows.append([
         InlineKeyboardButton(
-            "🏠 Back to Main Menu",
+            text="🏠 Back to Main Menu",
             callback_data="menu:main"
         )
     ])
@@ -3666,3 +3694,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(university_answer_details_handler, pattern=r"^ut_details$"))
     application.add_handler(CallbackQueryHandler(university_next_handler, pattern=r"^ut_next$"))
     
+
+
