@@ -1007,20 +1007,23 @@ def make_module_keyboard(category_code: str, subject_code: str):
 
 
 # ---Mode Keyboard-------
-def make_mode_keyboard():
+def make_mode_keyboard(
+    category_code: str,
+    subject_code: str,
+):
     return InlineKeyboardMarkup(
         [
             [
                 InlineKeyboardButton(
                     "📚 By Topics",
-                    callback_data="ut_mode_topics",
+                    callback_data=f"ut_mode_topics_{subject_code}",
                 )
             ],
 
             [
                 InlineKeyboardButton(
                     "📝 Course Mock (By course)",
-                    callback_data="ut_mode_mock",
+                    callback_data=f"ut_mode_mock_{subject_code}",
                 )
             ],
 
@@ -1393,7 +1396,10 @@ async def university_subject_handler(
         f"📘 *You selected:* {safe_course_name}\n\n"
         "How would you like to practice\\?",
         parse_mode="MarkdownV2",
-        reply_markup=make_mode_keyboard(),
+        reply_markup=make_mode_keyboard(
+            category_code,
+            subject_code,
+        ),
     )
 
 
@@ -3060,7 +3066,10 @@ async def university_back_mode_handler(
         f"📘 *You selected:* {safe_course_name}\n\n"
         "How would you like to practice\\?",
         parse_mode="MarkdownV2",
-        reply_markup=make_mode_keyboard(),
+        reply_markup=make_mode_keyboard(
+            category_code,
+            subject_code,
+        ),
     )
 
 
@@ -3657,4 +3666,3 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(university_answer_details_handler, pattern=r"^ut_details$"))
     application.add_handler(CallbackQueryHandler(university_next_handler, pattern=r"^ut_next$"))
     
-
