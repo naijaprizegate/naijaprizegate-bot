@@ -873,7 +873,7 @@ def make_university_mock_access_keyboard(
         [
             InlineKeyboardButton(
                 "⬅️ Back to Mode",
-                callback_data=f"ut_back_mode::{category_code}::{subject_code}"
+                callback_data="ut_back_mode"
             )
         ],
 
@@ -1059,24 +1059,14 @@ def make_topics_keyboard(
         rows.append([
             InlineKeyboardButton(
                 f"{topic['number']}. {topic['title']}",
-                callback_data=(
-                    f"ut_topic::"
-                    f"{category_code}::"
-                    f"{subject_code}::"
-                    f"{module_id}::"
-                    f"{topic['id']}"
-                )
+                callback_data=f"ut_topic::{topic['id']}"
             )
         ])
 
     rows.append([
         InlineKeyboardButton(
             "⬅️ Back to Modules",
-            callback_data=(
-                f"ut_back_modules::"
-                f"{category_code}::"
-                f"{subject_code}"
-            )
+            callback_data="ut_back_modules"
         )
     ])
 
@@ -1827,16 +1817,30 @@ async def university_topic_handler(update: Update, context: ContextTypes.DEFAULT
 
     # =====================================
     # CALLBACK FORMAT:
-    # ut_topic::category::subject::module::topic
+    # ut_topic::topic_id
     # =====================================
     try:
-        _, category_code, subject_code, module_id, topic_id = (
-            query.data.split("::")
-        )
+        _, topic_id = query.data.split("::")
 
     except Exception:
         return await query.message.reply_text(
             "⚠️ Invalid topic selection\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    # =====================================
+    # LOAD FLOW STATE
+    # =====================================
+    category_code = context.user_data.get("ut_category_code")
+    subject_code = context.user_data.get("ut_subject_code")
+    module_id = context.user_data.get("ut_module_id")
+
+    # =====================================
+    # VALIDATE FLOW STATE
+    # =====================================
+    if not category_code or not subject_code or not module_id:
+        return await query.message.reply_text(
+            "⚠️ Session expired\\. Please start again\\.",
             parse_mode="MarkdownV2",
         )
 
@@ -2990,21 +2994,40 @@ async def university_end_session_handler(update: Update, context: ContextTypes.D
 # =============================
 # Back to mode
 # =============================
-async def university_back_mode_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def university_back_mode_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
     query = update.callback_query
+
     if not query:
         return
 
     await query.answer()
 
-    try:
-        _, category_code, subject_code = query.data.split("::")
-    except Exception:
+    # =====================================
+    # LOAD FLOW STATE
+    # =====================================
+    category_code = context.user_data.get(
+        "ut_category_code"
+    )
+
+    subject_code = context.user_data.get(
+        "ut_subject_code"
+    )
+
+    # =====================================
+    # VALIDATE FLOW STATE
+    # =====================================
+    if not category_code or not subject_code:
         return await query.message.reply_text(
-            "⚠️ Invalid back navigation\\.",
+            "⚠️ Session expired\\. Please start again\\.",
             parse_mode="MarkdownV2",
         )
 
+    # =====================================
+    # LOAD SUBJECT
+    # =====================================
     subject = get_university_subject_by_code(
         category_code,
         subject_code,
@@ -3012,24 +3035,35 @@ async def university_back_mode_handler(update: Update, context: ContextTypes.DEF
 
     if not subject:
         return await query.message.reply_text(
-            "⚠️ Subject not found\\.",
+            "⚠️ Course not found\\.",
             parse_mode="MarkdownV2",
         )
 
-    context.user_data["ut_category_code"] = category_code
-    context.user_data["ut_subject_code"] = subject_code
+    # =====================================
+    # RESET FLOW STATE
+    # =====================================
     context.user_data["ut_mode"] = None
     context.user_data["ut_topic_id"] = None
     context.user_data["ut_module_id"] = None
 
-    safe_course_name = md_escape(str(subject["name"]))
+    # =====================================
+    # SAFE DISPLAY
+    # =====================================
+    safe_course_name = md_escape(
+        str(subject["name"])
+    )
 
+    # =====================================
+    # SHOW MODE SCREEN
+    # =====================================
     await query.message.reply_text(
         f"📘 *You selected:* {safe_course_name}\n\n"
         "How would you like to practice\\?",
         parse_mode="MarkdownV2",
         reply_markup=make_mode_keyboard(),
     )
+
+
 
 # -------------------------------------
 # University Back to Module Topics Handler
@@ -3607,7 +3641,7 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(university_mock_resume_handler, pattern=r"^ut_mock_resume$"))
 
     application.add_handler(CallbackQueryHandler(university_topic_handler, pattern=r"^ut_topic::"))
-    application.add_handler(CallbackQueryHandler(university_back_mode_handler, pattern=r"^ut_back_mode::"))
+    application.add_handler(CallbackQueryHandler(university_back_mode_handler, pattern=r"^ut_back_mode$"))
     application.add_handler(CallbackQueryHandler(university_back_subjects_handler, pattern=r"^ut_back_subjects$"))
     application.add_handler(CallbackQueryHandler(university_back_to_module_topics_handler, pattern=r"^ut_back_module::"))
     
@@ -3623,3 +3657,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(university_answer_details_handler, pattern=r"^ut_details$"))
     application.add_handler(CallbackQueryHandler(university_next_handler, pattern=r"^ut_next$"))
     
+
