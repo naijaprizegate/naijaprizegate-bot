@@ -1,0 +1,160 @@
+{
+  "subject_code": "eco",
+  "subject_name": "Economics",
+  "topics": [
+    {
+      "id": "eco_01",
+      "number": 1,
+      "title": "Meaning and Scope of Economics",
+      "file": "questions/eco_01.json",
+      "active": true
+    },
+    {
+      "id": "eco_02",
+      "number": 2,
+      "title": "Economic Methods and Tools",
+      "file": "questions/eco_02.json",
+      "active": true
+    },
+    {
+      "id": "eco_03",
+      "number": 3,
+      "title": "Theory of Demand",
+      "file": "questions/eco_03.json",
+      "active": true
+    },
+    {
+      "id": "eco_04",
+      "number": 4,
+      "title": "Theory of Supply",
+      "file": "questions/eco_04.json",
+      "active": true
+    },
+    {
+      "id": "eco_05",
+      "number": 5,
+      "title": "Price Determination",
+      "file": "questions/eco_05.json",
+      "active": true
+    },
+    {
+      "id": "eco_06",
+      "number": 6,
+      "title": "Theory of Production",
+      "file": "questions/eco_06.json",
+      "active": true
+    },
+    {
+      "id": "eco_07",
+      "number": 7,
+      "title": "Costs, Revenue and Profit",
+      "file": "questions/eco_07.json",
+      "active": true
+    },
+    {
+      "id": "eco_08",
+      "number": 8,
+      "title": "Business Organizations",
+      "file": "questions/eco_08.json",
+      "active": true
+    },
+    {
+      "id": "eco_09",
+      "number": 9,
+      "title": "Market Structures",
+      "file": "questions/eco_09.json",
+      "active": true
+    },
+    {
+      "id": "eco_10",
+      "number": 10,
+      "title": "Population and Labour Market",
+      "file": "questions/eco_10.json",
+      "active": true
+    },
+    {
+      "id": "eco_11",
+      "number": 11,
+      "title": "National Income",
+      "file": "questions/eco_11.json",
+      "active": true
+    },
+    {
+      "id": "eco_12",
+      "number": 12,
+      "title": "Money",
+      "file": "questions/eco_12.json",
+      "active": true
+    },
+    {
+      "id": "eco_13",
+      "number": 13,
+      "title": "Financial Institutions",
+      "file": "questions/eco_13.json",
+      "active": true
+    },
+    {
+      "id": "eco_14",
+      "number": 14,
+      "title": "Public Finance",
+      "file": "questions/eco_14.json",
+      "active": true
+    },
+    {
+      "id": "eco_15",
+      "number": 15,
+      "title": "Economic Development and Planning",
+      "file": "questions/eco_15.json",
+      "active": true
+    },
+    {
+      "id": "eco_16",
+      "number": 16,
+      "title": "Agriculture in Economics",
+      "file": "questions/eco_16.json",
+      "active": true
+    },
+    {
+      "id": "eco_17",
+      "number": 17,
+      "title": "Industrialization",
+      "file": "questions/eco_17.json",
+      "active": true
+    },
+    {
+      "id": "eco_18",
+      "number": 18,
+      "title": "Natural Resources and Nigerian Economy",
+      "file": "questions/eco_18.json",
+      "active": true
+    },
+    {
+      "id": "eco_19",
+      "number": 19,
+      "title": "International Trade",
+      "file": "questions/eco_19.json",
+      "active": true
+    },
+    {
+      "id": "eco_20",
+      "number": 20,
+      "title": "International Economic Organizations",
+      "file": "questions/eco_20.json",
+      "active": true
+    },
+    {
+      "id": "eco_21",
+      "number": 21,
+      "title": "Economic Systems",
+      "file": "questions/eco_21.json",
+      "active": true
+    },
+    {
+      "id": "eco_22",
+      "number": 22,
+      "title": "Economic Integration",
+      "file": "questions/eco_22.json",
+      "active": true
+    }
+  ]
+}
