@@ -1,0 +1,174 @@
+{
+  "subject_code": "agric",
+  "subject_name": "Agricultural Science",
+  "topics": [
+    {
+      "id": "agric_01",
+      "number": 1,
+      "title": "Meaning and Importance of Agriculture",
+      "file": "questions/agric_01.json",
+      "active": true
+    },
+    {
+      "id": "agric_02",
+      "number": 2,
+      "title": "Agricultural Ecology",
+      "file": "questions/agric_02.json",
+      "active": true
+    },
+    {
+      "id": "agric_03",
+      "number": 3,
+      "title": "Farm Surveying and Planning",
+      "file": "questions/agric_03.json",
+      "active": true
+    },
+    {
+      "id": "agric_04",
+      "number": 4,
+      "title": "Agricultural Engineering",
+      "file": "questions/agric_04.json",
+      "active": true
+    },
+    {
+      "id": "agric_05",
+      "number": 5,
+      "title": "Soil Science",
+      "file": "questions/agric_05.json",
+      "active": true
+    },
+    {
+      "id": "agric_06",
+      "number": 6,
+      "title": "Land Preparation and Tillage",
+      "file": "questions/agric_06.json",
+      "active": true
+    },
+    {
+      "id": "agric_07",
+      "number": 7,
+      "title": "Plant Forms and Functions",
+      "file": "questions/agric_07.json",
+      "active": true
+    },
+    {
+      "id": "agric_08",
+      "number": 8,
+      "title": "Crop Production",
+      "file": "questions/agric_08.json",
+      "active": true
+    },
+    {
+      "id": "agric_09",
+      "number": 9,
+      "title": "Pasture and Forage Crops",
+      "file": "questions/agric_09.json",
+      "active": true
+    },
+    {
+      "id": "agric_10",
+      "number": 10,
+      "title": "Weed Control",
+      "file": "questions/agric_10.json",
+      "active": true
+    },
+    {
+      "id": "agric_11",
+      "number": 11,
+      "title": "Crop Diseases",
+      "file": "questions/agric_11.json",
+      "active": true
+    },
+    {
+      "id": "agric_12",
+      "number": 12,
+      "title": "Crop Pests",
+      "file": "questions/agric_12.json",
+      "active": true
+    },
+    {
+      "id": "agric_13",
+      "number": 13,
+      "title": "Forestry",
+      "file": "questions/agric_13.json",
+      "active": true
+    },
+    {
+      "id": "agric_14",
+      "number": 14,
+      "title": "Ornamental Plants",
+      "file": "questions/agric_14.json",
+      "active": true
+    },
+    {
+      "id": "agric_15",
+      "number": 15,
+      "title": "Animal Nutrition",
+      "file": "questions/agric_15.json",
+      "active": true
+    },
+    {
+      "id": "agric_16",
+      "number": 16,
+      "title": "Farm Animals",
+      "file": "questions/agric_16.json",
+      "active": true
+    },
+    {
+      "id": "agric_17",
+      "number": 17,
+      "title": "Livestock Management",
+      "file": "questions/agric_17.json",
+      "active": true
+    },
+    {
+      "id": "agric_18",
+      "number": 18,
+      "title": "Animal Reproduction",
+      "file": "questions/agric_18.json",
+      "active": true
+    },
+    {
+      "id": "agric_19",
+      "number": 19,
+      "title": "Animal Health",
+      "file": "questions/agric_19.json",
+      "active": true
+    },
+    {
+      "id": "agric_20",
+      "number": 20,
+      "title": "Fisheries",
+      "file": "questions/agric_20.json",
+      "active": true
+    },
+    {
+      "id": "agric_21",
+      "number": 21,
+      "title": "Apiculture",
+      "file": "questions/agric_21.json",
+      "active": true
+    },
+    {
+      "id": "agric_22",
+      "number": 22,
+      "title": "Agricultural Economics",
+      "file": "questions/agric_22.json",
+      "active": true
+    },
+    {
+      "id": "agric_23",
+      "number": 23,
+      "title": "Agricultural Extension and Rural Sociology",
+      "file": "questions/agric_23.json",
+      "active": true
+    },
+    {
+      "id": "agric_24",
+      "number": 24,
+      "title": "Agricultural Policies and Programs",
+      "file": "questions/agric_24.json",
+      "active": true
+    }
+  ]
+}
