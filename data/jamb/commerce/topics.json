@@ -1,0 +1,174 @@
+{
+  "subject_code": "comm",
+  "subject_name": "Commerce",
+  "topics": [
+    {
+      "id": "comm_01",
+      "number": 1,
+      "title": "Introduction to Commerce",
+      "file": "questions/comm_01.json",
+      "active": true
+    },
+    {
+      "id": "comm_02",
+      "number": 2,
+      "title": "Production",
+      "file": "questions/comm_02.json",
+      "active": true
+    },
+    {
+      "id": "comm_03",
+      "number": 3,
+      "title": "Trade",
+      "file": "questions/comm_03.json",
+      "active": true
+    },
+    {
+      "id": "comm_04",
+      "number": 4,
+      "title": "Retail Trade",
+      "file": "questions/comm_04.json",
+      "active": true
+    },
+    {
+      "id": "comm_05",
+      "number": 5,
+      "title": "Wholesale Trade",
+      "file": "questions/comm_05.json",
+      "active": true
+    },
+    {
+      "id": "comm_06",
+      "number": 6,
+      "title": "Business Organizations",
+      "file": "questions/comm_06.json",
+      "active": true
+    },
+    {
+      "id": "comm_07",
+      "number": 7,
+      "title": "Finance",
+      "file": "questions/comm_07.json",
+      "active": true
+    },
+    {
+      "id": "comm_08",
+      "number": 8,
+      "title": "Banking",
+      "file": "questions/comm_08.json",
+      "active": true
+    },
+    {
+      "id": "comm_09",
+      "number": 9,
+      "title": "Insurance",
+      "file": "questions/comm_09.json",
+      "active": true
+    },
+    {
+      "id": "comm_10",
+      "number": 10,
+      "title": "Transportation",
+      "file": "questions/comm_10.json",
+      "active": true
+    },
+    {
+      "id": "comm_11",
+      "number": 11,
+      "title": "Communication",
+      "file": "questions/comm_11.json",
+      "active": true
+    },
+    {
+      "id": "comm_12",
+      "number": 12,
+      "title": "Warehousing",
+      "file": "questions/comm_12.json",
+      "active": true
+    },
+    {
+      "id": "comm_13",
+      "number": 13,
+      "title": "Advertising",
+      "file": "questions/comm_13.json",
+      "active": true
+    },
+    {
+      "id": "comm_14",
+      "number": 14,
+      "title": "Sales Promotion",
+      "file": "questions/comm_14.json",
+      "active": true
+    },
+    {
+      "id": "comm_15",
+      "number": 15,
+      "title": "Marketing",
+      "file": "questions/comm_15.json",
+      "active": true
+    },
+    {
+      "id": "comm_16",
+      "number": 16,
+      "title": "Consumer Protection",
+      "file": "questions/comm_16.json",
+      "active": true
+    },
+    {
+      "id": "comm_17",
+      "number": 17,
+      "title": "Business Documents",
+      "file": "questions/comm_17.json",
+      "active": true
+    },
+    {
+      "id": "comm_18",
+      "number": 18,
+      "title": "Trade Associations and Chambers of Commerce",
+      "file": "questions/comm_18.json",
+      "active": true
+    },
+    {
+      "id": "comm_19",
+      "number": 19,
+      "title": "Stock Exchange",
+      "file": "questions/comm_19.json",
+      "active": true
+    },
+    {
+      "id": "comm_20",
+      "number": 20,
+      "title": "Business Environment",
+      "file": "questions/comm_20.json",
+      "active": true
+    },
+    {
+      "id": "comm_21",
+      "number": 21,
+      "title": "Foreign Trade",
+      "file": "questions/comm_21.json",
+      "active": true
+    },
+    {
+      "id": "comm_22",
+      "number": 22,
+      "title": "International Organizations",
+      "file": "questions/comm_22.json",
+      "active": true
+    },
+    {
+      "id": "comm_23",
+      "number": 23,
+      "title": "Office Practice",
+      "file": "questions/comm_23.json",
+      "active": true
+    },
+    {
+      "id": "comm_24",
+      "number": 24,
+      "title": "Entrepreneurship",
+      "file": "questions/comm_24.json",
+      "active": true
+    }
+  ]
+}
