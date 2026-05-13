@@ -1,0 +1,167 @@
+{
+  "subject_code": "geo",
+  "subject_name": "Geography",
+  "topics": [
+    {
+      "id": "geo_01",
+      "number": 1,
+      "title": "Practical Geography",
+      "file": "questions/geo_01.json",
+      "active": true
+    },
+    {
+      "id": "geo_02",
+      "number": 2,
+      "title": "The Earth and the Solar System",
+      "file": "questions/geo_02.json",
+      "active": true
+    },
+    {
+      "id": "geo_03",
+      "number": 3,
+      "title": "Rocks",
+      "file": "questions/geo_03.json",
+      "active": true
+    },
+    {
+      "id": "geo_04",
+      "number": 4,
+      "title": "Earth Structure",
+      "file": "questions/geo_04.json",
+      "active": true
+    },
+    {
+      "id": "geo_05",
+      "number": 5,
+      "title": "Landforms",
+      "file": "questions/geo_05.json",
+      "active": true
+    },
+    {
+      "id": "geo_06",
+      "number": 6,
+      "title": "Weather",
+      "file": "questions/geo_06.json",
+      "active": true
+    },
+    {
+      "id": "geo_07",
+      "number": 7,
+      "title": "Climate",
+      "file": "questions/geo_07.json",
+      "active": true
+    },
+    {
+      "id": "geo_08",
+      "number": 8,
+      "title": "Vegetation",
+      "file": "questions/geo_08.json",
+      "active": true
+    },
+    {
+      "id": "geo_09",
+      "number": 9,
+      "title": "Soils",
+      "file": "questions/geo_09.json",
+      "active": true
+    },
+    {
+      "id": "geo_10",
+      "number": 10,
+      "title": "Water Bodies",
+      "file": "questions/geo_10.json",
+      "active": true
+    },
+    {
+      "id": "geo_11",
+      "number": 11,
+      "title": "Environmental Geography",
+      "file": "questions/geo_11.json",
+      "active": true
+    },
+    {
+      "id": "geo_12",
+      "number": 12,
+      "title": "Population Geography",
+      "file": "questions/geo_12.json",
+      "active": true
+    },
+    {
+      "id": "geo_13",
+      "number": 13,
+      "title": "Settlement",
+      "file": "questions/geo_13.json",
+      "active": true
+    },
+    {
+      "id": "geo_14",
+      "number": 14,
+      "title": "Economic Activities",
+      "file": "questions/geo_14.json",
+      "active": true
+    },
+    {
+      "id": "geo_15",
+      "number": 15,
+      "title": "Agriculture",
+      "file": "questions/geo_15.json",
+      "active": true
+    },
+    {
+      "id": "geo_16",
+      "number": 16,
+      "title": "Mining and Quarrying",
+      "file": "questions/geo_16.json",
+      "active": true
+    },
+    {
+      "id": "geo_17",
+      "number": 17,
+      "title": "Manufacturing Industries",
+      "file": "questions/geo_17.json",
+      "active": true
+    },
+    {
+      "id": "geo_18",
+      "number": 18,
+      "title": "Transportation",
+      "file": "questions/geo_18.json",
+      "active": true
+    },
+    {
+      "id": "geo_19",
+      "number": 19,
+      "title": "Trade and Commerce",
+      "file": "questions/geo_19.json",
+      "active": true
+    },
+    {
+      "id": "geo_20",
+      "number": 20,
+      "title": "Tourism",
+      "file": "questions/geo_20.json",
+      "active": true
+    },
+    {
+      "id": "geo_21",
+      "number": 21,
+      "title": "Regional Geography of Nigeria",
+      "file": "questions/geo_21.json",
+      "active": true
+    },
+    {
+      "id": "geo_22",
+      "number": 22,
+      "title": "Regional Geography of Africa",
+      "file": "questions/geo_22.json",
+      "active": true
+    },
+    {
+      "id": "geo_23",
+      "number": 23,
+      "title": "World Geography",
+      "file": "questions/geo_23.json",
+      "active": true
+    }
+  ]
+}
