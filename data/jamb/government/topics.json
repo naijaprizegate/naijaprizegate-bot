@@ -1,0 +1,167 @@
+{
+  "subject_code": "gov",
+  "subject_name": "Government",
+  "topics": [
+    {
+      "id": "gov_01",
+      "number": 1,
+      "title": "Basic Concepts in Government",
+      "file": "questions/gov_01.json",
+      "active": true
+    },
+    {
+      "id": "gov_02",
+      "number": 2,
+      "title": "Forms of Government",
+      "file": "questions/gov_02.json",
+      "active": true
+    },
+    {
+      "id": "gov_03",
+      "number": 3,
+      "title": "Arms of Government",
+      "file": "questions/gov_03.json",
+      "active": true
+    },
+    {
+      "id": "gov_04",
+      "number": 4,
+      "title": "Political Ideologies",
+      "file": "questions/gov_04.json",
+      "active": true
+    },
+    {
+      "id": "gov_05",
+      "number": 5,
+      "title": "Constitution",
+      "file": "questions/gov_05.json",
+      "active": true
+    },
+    {
+      "id": "gov_06",
+      "number": 6,
+      "title": "Principles of Democratic Government",
+      "file": "questions/gov_06.json",
+      "active": true
+    },
+    {
+      "id": "gov_07",
+      "number": 7,
+      "title": "Citizenship",
+      "file": "questions/gov_07.json",
+      "active": true
+    },
+    {
+      "id": "gov_08",
+      "number": 8,
+      "title": "Electoral Process",
+      "file": "questions/gov_08.json",
+      "active": true
+    },
+    {
+      "id": "gov_09",
+      "number": 9,
+      "title": "Political Parties and Party Systems",
+      "file": "questions/gov_09.json",
+      "active": true
+    },
+    {
+      "id": "gov_10",
+      "number": 10,
+      "title": "Public Administration",
+      "file": "questions/gov_10.json",
+      "active": true
+    },
+    {
+      "id": "gov_11",
+      "number": 11,
+      "title": "Political Participation",
+      "file": "questions/gov_11.json",
+      "active": true
+    },
+    {
+      "id": "gov_12",
+      "number": 12,
+      "title": "Systems of Government",
+      "file": "questions/gov_12.json",
+      "active": true
+    },
+    {
+      "id": "gov_13",
+      "number": 13,
+      "title": "Local Government",
+      "file": "questions/gov_13.json",
+      "active": true
+    },
+    {
+      "id": "gov_14",
+      "number": 14,
+      "title": "Colonial Administration in West Africa",
+      "file": "questions/gov_14.json",
+      "active": true
+    },
+    {
+      "id": "gov_15",
+      "number": 15,
+      "title": "Nationalism in West Africa",
+      "file": "questions/gov_15.json",
+      "active": true
+    },
+    {
+      "id": "gov_16",
+      "number": 16,
+      "title": "Constitutional Development in Nigeria",
+      "file": "questions/gov_16.json",
+      "active": true
+    },
+    {
+      "id": "gov_17",
+      "number": 17,
+      "title": "Nigerian Federalism",
+      "file": "questions/gov_17.json",
+      "active": true
+    },
+    {
+      "id": "gov_18",
+      "number": 18,
+      "title": "Organs of Government in Nigeria",
+      "file": "questions/gov_18.json",
+      "active": true
+    },
+    {
+      "id": "gov_19",
+      "number": 19,
+      "title": "Political Parties in Nigeria",
+      "file": "questions/gov_19.json",
+      "active": true
+    },
+    {
+      "id": "gov_20",
+      "number": 20,
+      "title": "Military Rule in Nigeria",
+      "file": "questions/gov_20.json",
+      "active": true
+    },
+    {
+      "id": "gov_21",
+      "number": 21,
+      "title": "Foreign Policy",
+      "file": "questions/gov_21.json",
+      "active": true
+    },
+    {
+      "id": "gov_22",
+      "number": 22,
+      "title": "International Organizations",
+      "file": "questions/gov_22.json",
+      "active": true
+    },
+    {
+      "id": "gov_23",
+      "number": 23,
+      "title": "Human Rights and Civic Responsibilities",
+      "file": "questions/gov_23.json",
+      "active": true
+    }
+  ]
+}
