@@ -1,0 +1,174 @@
+{
+  "subject_code": "crs",
+  "subject_name": "Christian Religious Studies",
+  "topics": [
+    {
+      "id": "crs_01",
+      "number": 1,
+      "title": "The Sovereignty of God",
+      "file": "questions/crs_01.json",
+      "active": true
+    },
+    {
+      "id": "crs_02",
+      "number": 2,
+      "title": "The Covenant",
+      "file": "questions/crs_02.json",
+      "active": true
+    },
+    {
+      "id": "crs_03",
+      "number": 3,
+      "title": "Leadership in Israel",
+      "file": "questions/crs_03.json",
+      "active": true
+    },
+    {
+      "id": "crs_04",
+      "number": 4,
+      "title": "Divine Guidance and Protection",
+      "file": "questions/crs_04.json",
+      "active": true
+    },
+    {
+      "id": "crs_05",
+      "number": 5,
+      "title": "Prophets and Prophecy",
+      "file": "questions/crs_05.json",
+      "active": true
+    },
+    {
+      "id": "crs_06",
+      "number": 6,
+      "title": "The Kingdom of Israel",
+      "file": "questions/crs_06.json",
+      "active": true
+    },
+    {
+      "id": "crs_07",
+      "number": 7,
+      "title": "Religious Reforms in Judah",
+      "file": "questions/crs_07.json",
+      "active": true
+    },
+    {
+      "id": "crs_08",
+      "number": 8,
+      "title": "Social Justice and True Religion",
+      "file": "questions/crs_08.json",
+      "active": true
+    },
+    {
+      "id": "crs_09",
+      "number": 9,
+      "title": "Holiness and Divine Call",
+      "file": "questions/crs_09.json",
+      "active": true
+    },
+    {
+      "id": "crs_10",
+      "number": 10,
+      "title": "Punishment and Hope",
+      "file": "questions/crs_10.json",
+      "active": true
+    },
+    {
+      "id": "crs_11",
+      "number": 11,
+      "title": "The Birth and Early Life of Jesus",
+      "file": "questions/crs_11.json",
+      "active": true
+    },
+    {
+      "id": "crs_12",
+      "number": 12,
+      "title": "The Ministry of Jesus",
+      "file": "questions/crs_12.json",
+      "active": true
+    },
+    {
+      "id": "crs_13",
+      "number": 13,
+      "title": "The Teachings of Jesus",
+      "file": "questions/crs_13.json",
+      "active": true
+    },
+    {
+      "id": "crs_14",
+      "number": 14,
+      "title": "The Parables of Jesus",
+      "file": "questions/crs_14.json",
+      "active": true
+    },
+    {
+      "id": "crs_15",
+      "number": 15,
+      "title": "The Miracles of Jesus",
+      "file": "questions/crs_15.json",
+      "active": true
+    },
+    {
+      "id": "crs_16",
+      "number": 16,
+      "title": "The Discipleship",
+      "file": "questions/crs_16.json",
+      "active": true
+    },
+    {
+      "id": "crs_17",
+      "number": 17,
+      "title": "The Passion of Christ",
+      "file": "questions/crs_17.json",
+      "active": true
+    },
+    {
+      "id": "crs_18",
+      "number": 18,
+      "title": "Resurrection and Ascension",
+      "file": "questions/crs_18.json",
+      "active": true
+    },
+    {
+      "id": "crs_19",
+      "number": 19,
+      "title": "The Early Church",
+      "file": "questions/crs_19.json",
+      "active": true
+    },
+    {
+      "id": "crs_20",
+      "number": 20,
+      "title": "The Missionary Activities of Paul",
+      "file": "questions/crs_20.json",
+      "active": true
+    },
+    {
+      "id": "crs_21",
+      "number": 21,
+      "title": "Christian Living",
+      "file": "questions/crs_21.json",
+      "active": true
+    },
+    {
+      "id": "crs_22",
+      "number": 22,
+      "title": "The Holy Spirit",
+      "file": "questions/crs_22.json",
+      "active": true
+    },
+    {
+      "id": "crs_23",
+      "number": 23,
+      "title": "Prayer and Worship",
+      "file": "questions/crs_23.json",
+      "active": true
+    },
+    {
+      "id": "crs_24",
+      "number": 24,
+      "title": "Christian Ethics",
+      "file": "questions/crs_24.json",
+      "active": true
+    }
+  ]
+}
