@@ -1,0 +1,167 @@
+{
+  "subject_code": "acct",
+  "subject_name": "Accounting",
+  "topics": [
+    {
+      "id": "acct_01",
+      "number": 1,
+      "title": "Introduction to Accounting",
+      "file": "questions/acc_01.json",
+      "active": true
+    },
+    {
+      "id": "acct_02",
+      "number": 2,
+      "title": "Source Documents and Books of Original Entry",
+      "file": "questions/acc_02.json",
+      "active": true
+    },
+    {
+      "id": "acct_03",
+      "number": 3,
+      "title": "Double Entry Principle",
+      "file": "questions/acc_03.json",
+      "active": true
+    },
+    {
+      "id": "acct_04",
+      "number": 4,
+      "title": "Cash Book and Bank Transactions",
+      "file": "questions/acc_04.json",
+      "active": true
+    },
+    {
+      "id": "acct_05",
+      "number": 5,
+      "title": "Final Accounts",
+      "file": "questions/acc_05.json",
+      "active": true
+    },
+    {
+      "id": "acct_06",
+      "number": 6,
+      "title": "Depreciation",
+      "file": "questions/acc_06.json",
+      "active": true
+    },
+    {
+      "id": "acct_07",
+      "number": 7,
+      "title": "Control Accounts and Self-Balancing Ledgers",
+      "file": "questions/acc_07.json",
+      "active": true
+    },
+    {
+      "id": "acct_08",
+      "number": 8,
+      "title": "Single Entry and Incomplete Records",
+      "file": "questions/acc_08.json",
+      "active": true
+    },
+    {
+      "id": "acct_09",
+      "number": 9,
+      "title": "Manufacturing Accounts",
+      "file": "questions/acc_09.json",
+      "active": true
+    },
+    {
+      "id": "acct_10",
+      "number": 10,
+      "title": "Accounts of Non-Profit Making Organizations",
+      "file": "questions/acc_10.json",
+      "active": true
+    },
+    {
+      "id": "acct_11",
+      "number": 11,
+      "title": "Partnership Accounts",
+      "file": "questions/acc_11.json",
+      "active": true
+    },
+    {
+      "id": "acct_12",
+      "number": 12,
+      "title": "Company Accounts",
+      "file": "questions/acc_12.json",
+      "active": true
+    },
+    {
+      "id": "acct_13",
+      "number": 13,
+      "title": "Departmental and Branch Accounts",
+      "file": "questions/acc_13.json",
+      "active": true
+    },
+    {
+      "id": "acct_14",
+      "number": 14,
+      "title": "Consignment Accounts",
+      "file": "questions/acc_14.json",
+      "active": true
+    },
+    {
+      "id": "acct_15",
+      "number": 15,
+      "title": "Joint Venture Accounts",
+      "file": "questions/acc_15.json",
+      "active": true
+    },
+    {
+      "id": "acct_16",
+      "number": 16,
+      "title": "Public Sector Accounting",
+      "file": "questions/acc_16.json",
+      "active": true
+    },
+    {
+      "id": "acct_17",
+      "number": 17,
+      "title": "Cost Accounting",
+      "file": "questions/acc_17.json",
+      "active": true
+    },
+    {
+      "id": "acct_18",
+      "number": 18,
+      "title": "Budgeting and Budgetary Control",
+      "file": "questions/acc_18.json",
+      "active": true
+    },
+    {
+      "id": "acct_19",
+      "number": 19,
+      "title": "Stock Valuation",
+      "file": "questions/acc_19.json",
+      "active": true
+    },
+    {
+      "id": "acct_20",
+      "number": 20,
+      "title": "Accounts Ratios",
+      "file": "questions/acc_20.json",
+      "active": true
+    },
+    {
+      "id": "acct_21",
+      "number": 21,
+      "title": "Interpretation of Accounts",
+      "file": "questions/acc_21.json",
+      "active": true
+    },
+    {
+      "id": "acct_22",
+      "number": 22,
+      "title": "Introduction to Auditing",
+      "file": "questions/acc_22.json",
+      "active": true
+    },
+    {
+      "id": "acct_23",
+      "number": 23,
+      "title": "Information and Communication Technology in Accounting",
+      "file": "questions/acc_23.json",
+      "active": true
+    }
+  ]
+}
