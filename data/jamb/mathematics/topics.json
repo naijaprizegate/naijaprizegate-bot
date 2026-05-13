@@ -1,191 +1,191 @@
 {
-  "subject_code": "mth",
+  "subject_code": "math",
   "subject_name": "Mathematics",
   "topics": [
     {
-      "id": "mth_01",
+      "id": "math_01",
       "number": 1,
       "title": "Number Bases",
       "file": "questions/mth_01.json",
       "active": true
     },
     {
-      "id": "mth_02",
+      "id": "math_02",
       "number": 2,
       "title": "Fractions, Decimals and Approximations",
       "file": "questions/mth_02.json",
       "active": true
     },
     {
-      "id": "mth_03",
+      "id": "math_03",
       "number": 3,
       "title": "Indices and Logarithms",
       "file": "questions/mth_03.json",
       "active": true
     },
     {
-      "id": "mth_04",
+      "id": "math_04",
       "number": 4,
       "title": "Sets",
       "file": "questions/mth_04.json",
       "active": true
     },
     {
-      "id": "mth_05",
+      "id": "math_05",
       "number": 5,
       "title": "Algebraic Expressions",
       "file": "questions/mth_05.json",
       "active": true
     },
     {
-      "id": "mth_06",
+      "id": "math_06",
       "number": 6,
       "title": "Linear Equations and Inequalities",
       "file": "questions/mth_06.json",
       "active": true
     },
     {
-      "id": "mth_07",
+      "id": "math_07",
       "number": 7,
       "title": "Quadratic Equations",
       "file": "questions/mth_07.json",
       "active": true
     },
     {
-      "id": "mth_08",
+      "id": "math_08",
       "number": 8,
       "title": "Variation",
       "file": "questions/mth_08.json",
       "active": true
     },
     {
-      "id": "mth_09",
+      "id": "math_09",
       "number": 9,
       "title": "Progressions",
       "file": "questions/mth_09.json",
       "active": true
     },
     {
-      "id": "mth_10",
+      "id": "math_10",
       "number": 10,
       "title": "Binomial Expansion",
       "file": "questions/mth_10.json",
       "active": true
     },
     {
-      "id": "mth_11",
+      "id": "math_11",
       "number": 11,
       "title": "Functions",
       "file": "questions/mth_11.json",
       "active": true
     },
     {
-      "id": "mth_12",
+      "id": "math_12",
       "number": 12,
       "title": "Relations",
       "file": "questions/mth_12.json",
       "active": true
     },
     {
-      "id": "mth_13",
+      "id": "math_13",
       "number": 13,
       "title": "Coordinate Geometry",
       "file": "questions/mth_13.json",
       "active": true
     },
     {
-      "id": "mth_14",
+      "id": "math_14",
       "number": 14,
       "title": "Trigonometric Ratios",
       "file": "questions/mth_14.json",
       "active": true
     },
     {
-      "id": "mth_15",
+      "id": "math_15",
       "number": 15,
       "title": "Trigonometric Identities",
       "file": "questions/mth_15.json",
       "active": true
     },
     {
-      "id": "mth_16",
+      "id": "math_16",
       "number": 16,
       "title": "Mensuration of Plane Shapes",
       "file": "questions/mth_16.json",
       "active": true
     },
     {
-      "id": "mth_17",
+      "id": "math_17",
       "number": 17,
       "title": "Mensuration of Solids",
       "file": "questions/mth_17.json",
       "active": true
     },
     {
-      "id": "mth_18",
+      "id": "math_18",
       "number": 18,
       "title": "Geometry",
       "file": "questions/mth_18.json",
       "active": true
     },
     {
-      "id": "mth_19",
+      "id": "math_19",
       "number": 19,
       "title": "Construction and Loci",
       "file": "questions/mth_19.json",
       "active": true
     },
     {
-      "id": "mth_20",
+      "id": "math_20",
       "number": 20,
       "title": "Statistics",
       "file": "questions/mth_20.json",
       "active": true
     },
     {
-      "id": "mth_21",
+      "id": "math_21",
       "number": 21,
       "title": "Probability",
       "file": "questions/mth_21.json",
       "active": true
     },
     {
-      "id": "mth_22",
+      "id": "math_22",
       "number": 22,
       "title": "Permutations and Combinations",
       "file": "questions/mth_22.json",
       "active": true
     },
     {
-      "id": "mth_23",
+      "id": "math_23",
       "number": 23,
       "title": "Matrices and Determinants",
       "file": "questions/mth_23.json",
       "active": true
     },
     {
-      "id": "mth_24",
+      "id": "math_24",
       "number": 24,
       "title": "Vectors",
       "file": "questions/mth_24.json",
       "active": true
     },
     {
-      "id": "mth_25",
+      "id": "math_25",
       "number": 25,
       "title": "Differentiation",
       "file": "questions/mth_25.json",
       "active": true
     },
     {
-      "id": "mth_26",
+      "id": "math_26",
       "number": 26,
       "title": "Integration",
       "file": "questions/mth_26.json",
       "active": true
     },
     {
-      "id": "mth_27",
+      "id": "math_27",
       "number": 27,
       "title": "Logical Reasoning",
       "file": "questions/mth_27.json",
