@@ -1,0 +1,111 @@
+{
+  "subject_code": "lit",
+  "subject_name": "Literature in English",
+  "topics": [
+    {
+      "id": "lit_01",
+      "number": 1,
+      "title": "Literary Appreciation",
+      "file": "questions/lit_01.json",
+      "active": true
+    },
+    {
+      "id": "lit_02",
+      "number": 2,
+      "title": "Poetry",
+      "file": "questions/lit_02.json",
+      "active": true
+    },
+    {
+      "id": "lit_03",
+      "number": 3,
+      "title": "Drama",
+      "file": "questions/lit_03.json",
+      "active": true
+    },
+    {
+      "id": "lit_04",
+      "number": 4,
+      "title": "Prose",
+      "file": "questions/lit_04.json",
+      "active": true
+    },
+    {
+      "id": "lit_05",
+      "number": 5,
+      "title": "Literary Devices",
+      "file": "questions/lit_05.json",
+      "active": true
+    },
+    {
+      "id": "lit_06",
+      "number": 6,
+      "title": "African Poetry",
+      "file": "questions/lit_06.json",
+      "active": true
+    },
+    {
+      "id": "lit_07",
+      "number": 7,
+      "title": "Non-African Poetry",
+      "file": "questions/lit_07.json",
+      "active": true
+    },
+    {
+      "id": "lit_08",
+      "number": 8,
+      "title": "African Drama",
+      "file": "questions/lit_08.json",
+      "active": true
+    },
+    {
+      "id": "lit_09",
+      "number": 9,
+      "title": "Non-African Drama",
+      "file": "questions/lit_09.json",
+      "active": true
+    },
+    {
+      "id": "lit_10",
+      "number": 10,
+      "title": "African Prose",
+      "file": "questions/lit_10.json",
+      "active": true
+    },
+    {
+      "id": "lit_11",
+      "number": 11,
+      "title": "Non-African Prose",
+      "file": "questions/lit_11.json",
+      "active": true
+    },
+    {
+      "id": "lit_12",
+      "number": 12,
+      "title": "Oral Literature",
+      "file": "questions/lit_12.json",
+      "active": true
+    },
+    {
+      "id": "lit_13",
+      "number": 13,
+      "title": "Themes in Literature",
+      "file": "questions/lit_13.json",
+      "active": true
+    },
+    {
+      "id": "lit_14",
+      "number": 14,
+      "title": "Characterization",
+      "file": "questions/lit_14.json",
+      "active": true
+    },
+    {
+      "id": "lit_15",
+      "number": 15,
+      "title": "Literary Principles and Criticism",
+      "file": "questions/lit_15.json",
+      "active": true
+    }
+  ]
+}
