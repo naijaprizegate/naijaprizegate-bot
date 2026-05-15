@@ -1,1 +1,335 @@
-
+{
+  "subject_code": "phys",
+  "subject_name": "Physics",
+  "topics": [
+    {
+      "id": "phys_01",
+      "number": 1,
+      "title": "Concepts of Matter",
+      "file": "questions/phys_01.json",
+      "active": true
+    },
+    {
+      "id": "phys_02",
+      "number": 2,
+      "title": "Fundamental and Derived Quantities",
+      "file": "questions/phys_02.json",
+      "active": true
+    },
+    {
+      "id": "phys_03",
+      "number": 3,
+      "title": "Position Distance and Displacement",
+      "file": "questions/phys_03.json",
+      "active": true
+    },
+    {
+      "id": "phys_04",
+      "number": 4,
+      "title": "Mass Weight and Time",
+      "file": "questions/phys_04.json",
+      "active": true
+    },
+    {
+      "id": "phys_05",
+      "number": 5,
+      "title": "Scalars and Vectors",
+      "file": "questions/phys_05.json",
+      "active": true
+    },
+    {
+      "id": "phys_06",
+      "number": 6,
+      "title": "Motion",
+      "file": "questions/phys_06.json",
+      "active": true
+    },
+    {
+      "id": "phys_07",
+      "number": 7,
+      "title": "Projectile Motion",
+      "file": "questions/phys_07.json",
+      "active": true
+    },
+    {
+      "id": "phys_08",
+      "number": 8,
+      "title": "Newton Laws of Motion",
+      "file": "questions/phys_08.json",
+      "active": true
+    },
+    {
+      "id": "phys_09",
+      "number": 9,
+      "title": "Friction",
+      "file": "questions/phys_09.json",
+      "active": true
+    },
+    {
+      "id": "phys_10",
+      "number": 10,
+      "title": "Equilibrium of Forces",
+      "file": "questions/phys_10.json",
+      "active": true
+    },
+    {
+      "id": "phys_11",
+      "number": 11,
+      "title": "Simple Machines",
+      "file": "questions/phys_11.json",
+      "active": true
+    },
+    {
+      "id": "phys_12",
+      "number": 12,
+      "title": "Work Energy and Power",
+      "file": "questions/phys_12.json",
+      "active": true
+    },
+    {
+      "id": "phys_13",
+      "number": 13,
+      "title": "Momentum and Collisions",
+      "file": "questions/phys_13.json",
+      "active": true
+    },
+    {
+      "id": "phys_14",
+      "number": 14,
+      "title": "Circular Motion",
+      "file": "questions/phys_14.json",
+      "active": true
+    },
+    {
+      "id": "phys_15",
+      "number": 15,
+      "title": "Gravitation",
+      "file": "questions/phys_15.json",
+      "active": true
+    },
+    {
+      "id": "phys_16",
+      "number": 16,
+      "title": "Fluid at Rest",
+      "file": "questions/phys_16.json",
+      "active": true
+    },
+    {
+      "id": "phys_17",
+      "number": 17,
+      "title": "Surface Tension and Capillarity",
+      "file": "questions/phys_17.json",
+      "active": true
+    },
+    {
+      "id": "phys_18",
+      "number": 18,
+      "title": "Elasticity",
+      "file": "questions/phys_18.json",
+      "active": true
+    },
+    {
+      "id": "phys_19",
+      "number": 19,
+      "title": "Temperature and Measurement",
+      "file": "questions/phys_19.json",
+      "active": true
+    },
+    {
+      "id": "phys_20",
+      "number": 20,
+      "title": "Thermal Expansion",
+      "file": "questions/phys_20.json",
+      "active": true
+    },
+    {
+      "id": "phys_21",
+      "number": 21,
+      "title": "Gas Laws",
+      "file": "questions/phys_21.json",
+      "active": true
+    },
+    {
+      "id": "phys_22",
+      "number": 22,
+      "title": "Heat Transfer",
+      "file": "questions/phys_22.json",
+      "active": true
+    },
+    {
+      "id": "phys_23",
+      "number": 23,
+      "title": "Heat Capacity and Latent Heat",
+      "file": "questions/phys_23.json",
+      "active": true
+    },
+    {
+      "id": "phys_24",
+      "number": 24,
+      "title": "Wave Motion",
+      "file": "questions/phys_24.json",
+      "active": true
+    },
+    {
+      "id": "phys_25",
+      "number": 25,
+      "title": "Wave Properties",
+      "file": "questions/phys_25.json",
+      "active": true
+    },
+    {
+      "id": "phys_26",
+      "number": 26,
+      "title": "Sound Waves",
+      "file": "questions/phys_26.json",
+      "active": true
+    },
+    {
+      "id": "phys_27",
+      "number": 27,
+      "title": "Light Reflection",
+      "file": "questions/phys_27.json",
+      "active": true
+    },
+    {
+      "id": "phys_28",
+      "number": 28,
+      "title": "Light Refraction",
+      "file": "questions/phys_28.json",
+      "active": true
+    },
+    {
+      "id": "phys_29",
+      "number": 29,
+      "title": "Lenses and Optical Instruments",
+      "file": "questions/phys_29.json",
+      "active": true
+    },
+    {
+      "id": "phys_30",
+      "number": 30,
+      "title": "Dispersion and Colour",
+      "file": "questions/phys_30.json",
+      "active": true
+    },
+    {
+      "id": "phys_31",
+      "number": 31,
+      "title": "Electrostatics",
+      "file": "questions/phys_31.json",
+      "active": true
+    },
+    {
+      "id": "phys_32",
+      "number": 32,
+      "title": "Electric Fields",
+      "file": "questions/phys_32.json",
+      "active": true
+    },
+    {
+      "id": "phys_33",
+      "number": 33,
+      "title": "Current Electricity",
+      "file": "questions/phys_33.json",
+      "active": true
+    },
+    {
+      "id": "phys_34",
+      "number": 34,
+      "title": "Electrical Resistance",
+      "file": "questions/phys_34.json",
+      "active": true
+    },
+    {
+      "id": "phys_35",
+      "number": 35,
+      "title": "Electrical Energy and Power",
+      "file": "questions/phys_35.json",
+      "active": true
+    },
+    {
+      "id": "phys_36",
+      "number": 36,
+      "title": "Magnetic Fields",
+      "file": "questions/phys_36.json",
+      "active": true
+    },
+    {
+      "id": "phys_37",
+      "number": 37,
+      "title": "Electromagnetic Induction",
+      "file": "questions/phys_37.json",
+      "active": true
+    },
+    {
+      "id": "phys_38",
+      "number": 38,
+      "title": "Simple AC Circuits",
+      "file": "questions/phys_38.json",
+      "active": true
+    },
+    {
+      "id": "phys_39",
+      "number": 39,
+      "title": "Conduction Through Liquids",
+      "file": "questions/phys_39.json",
+      "active": true
+    },
+    {
+      "id": "phys_40",
+      "number": 40,
+      "title": "Conduction Through Gases",
+      "file": "questions/phys_40.json",
+      "active": true
+    },
+    {
+      "id": "phys_41",
+      "number": 41,
+      "title": "Structure of the Atom",
+      "file": "questions/phys_41.json",
+      "active": true
+    },
+    {
+      "id": "phys_42",
+      "number": 42,
+      "title": "Photoelectric Effect",
+      "file": "questions/phys_42.json",
+      "active": true
+    },
+    {
+      "id": "phys_43",
+      "number": 43,
+      "title": "X Rays",
+      "file": "questions/phys_43.json",
+      "active": true
+    },
+    {
+      "id": "phys_44",
+      "number": 44,
+      "title": "Radioactivity",
+      "file": "questions/phys_44.json",
+      "active": true
+    },
+    {
+      "id": "phys_45",
+      "number": 45,
+      "title": "Nuclear Energy",
+      "file": "questions/phys_45.json",
+      "active": true
+    },
+    {
+      "id": "phys_46",
+      "number": 46,
+      "title": "Semiconductors and Electronics",
+      "file": "questions/phys_46.json",
+      "active": true
+    },
+    {
+      "id": "phys_47",
+      "number": 47,
+      "title": "Practical Physics",
+      "file": "questions/phys_47.json",
+      "active": true
+    }
+  ]
+}
