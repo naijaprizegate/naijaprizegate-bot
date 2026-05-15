@@ -1,0 +1,342 @@
+{
+  "subject_code": "gov",
+  "subject_name": "Government",
+  "topics": [
+    {
+      "id": "gov_01",
+      "number": 1,
+      "title": "Meaning and Scope of Government",
+      "file": "questions/gov_01.json",
+      "active": true
+    },
+    {
+      "id": "gov_02",
+      "number": 2,
+      "title": "State",
+      "file": "questions/gov_02.json",
+      "active": true
+    },
+    {
+      "id": "gov_03",
+      "number": 3,
+      "title": "Society",
+      "file": "questions/gov_03.json",
+      "active": true
+    },
+    {
+      "id": "gov_04",
+      "number": 4,
+      "title": "Nation",
+      "file": "questions/gov_04.json",
+      "active": true
+    },
+    {
+      "id": "gov_05",
+      "number": 5,
+      "title": "Power",
+      "file": "questions/gov_05.json",
+      "active": true
+    },
+    {
+      "id": "gov_06",
+      "number": 6,
+      "title": "Authority",
+      "file": "questions/gov_06.json",
+      "active": true
+    },
+    {
+      "id": "gov_07",
+      "number": 7,
+      "title": "Legitimacy",
+      "file": "questions/gov_07.json",
+      "active": true
+    },
+    {
+      "id": "gov_08",
+      "number": 8,
+      "title": "Sovereignty",
+      "file": "questions/gov_08.json",
+      "active": true
+    },
+    {
+      "id": "gov_09",
+      "number": 9,
+      "title": "Democracy",
+      "file": "questions/gov_09.json",
+      "active": true
+    },
+    {
+      "id": "gov_10",
+      "number": 10,
+      "title": "Political Culture and Socialization",
+      "file": "questions/gov_10.json",
+      "active": true
+    },
+    {
+      "id": "gov_11",
+      "number": 11,
+      "title": "Communalism",
+      "file": "questions/gov_11.json",
+      "active": true
+    },
+    {
+      "id": "gov_12",
+      "number": 12,
+      "title": "Feudalism",
+      "file": "questions/gov_12.json",
+      "active": true
+    },
+    {
+      "id": "gov_13",
+      "number": 13,
+      "title": "Liberalism",
+      "file": "questions/gov_13.json",
+      "active": true
+    },
+    {
+      "id": "gov_14",
+      "number": 14,
+      "title": "Socialism",
+      "file": "questions/gov_14.json",
+      "active": true
+    },
+    {
+      "id": "gov_15",
+      "number": 15,
+      "title": "Communism",
+      "file": "questions/gov_15.json",
+      "active": true
+    },
+    {
+      "id": "gov_16",
+      "number": 16,
+      "title": "Capitalism",
+      "file": "questions/gov_16.json",
+      "active": true
+    },
+    {
+      "id": "gov_17",
+      "number": 17,
+      "title": "Fascism",
+      "file": "questions/gov_17.json",
+      "active": true
+    },
+    {
+      "id": "gov_18",
+      "number": 18,
+      "title": "Rule of Law",
+      "file": "questions/gov_18.json",
+      "active": true
+    },
+    {
+      "id": "gov_19",
+      "number": 19,
+      "title": "Fundamental Human Rights",
+      "file": "questions/gov_19.json",
+      "active": true
+    },
+    {
+      "id": "gov_20",
+      "number": 20,
+      "title": "Separation of Powers and Checks and Balances",
+      "file": "questions/gov_20.json",
+      "active": true
+    },
+    {
+      "id": "gov_21",
+      "number": 21,
+      "title": "Constitution",
+      "file": "questions/gov_21.json",
+      "active": true
+    },
+    {
+      "id": "gov_22",
+      "number": 22,
+      "title": "Legislature",
+      "file": "questions/gov_22.json",
+      "active": true
+    },
+    {
+      "id": "gov_23",
+      "number": 23,
+      "title": "Executive",
+      "file": "questions/gov_23.json",
+      "active": true
+    },
+    {
+      "id": "gov_24",
+      "number": 24,
+      "title": "Judiciary",
+      "file": "questions/gov_24.json",
+      "active": true
+    },
+    {
+      "id": "gov_25",
+      "number": 25,
+      "title": "Unitary Government",
+      "file": "questions/gov_25.json",
+      "active": true
+    },
+    {
+      "id": "gov_26",
+      "number": 26,
+      "title": "Federal Government",
+      "file": "questions/gov_26.json",
+      "active": true
+    },
+    {
+      "id": "gov_27",
+      "number": 27,
+      "title": "Confederal Government",
+      "file": "questions/gov_27.json",
+      "active": true
+    },
+    {
+      "id": "gov_28",
+      "number": 28,
+      "title": "Parliamentary System",
+      "file": "questions/gov_28.json",
+      "active": true
+    },
+    {
+      "id": "gov_29",
+      "number": 29,
+      "title": "Presidential System",
+      "file": "questions/gov_29.json",
+      "active": true
+    },
+    {
+      "id": "gov_30",
+      "number": 30,
+      "title": "Monarchical and Republican Government",
+      "file": "questions/gov_30.json",
+      "active": true
+    },
+    {
+      "id": "gov_31",
+      "number": 31,
+      "title": "Citizenship",
+      "file": "questions/gov_31.json",
+      "active": true
+    },
+    {
+      "id": "gov_32",
+      "number": 32,
+      "title": "Political Parties",
+      "file": "questions/gov_32.json",
+      "active": true
+    },
+    {
+      "id": "gov_33",
+      "number": 33,
+      "title": "Party Systems",
+      "file": "questions/gov_33.json",
+      "active": true
+    },
+    {
+      "id": "gov_34",
+      "number": 34,
+      "title": "Pressure Groups",
+      "file": "questions/gov_34.json",
+      "active": true
+    },
+    {
+      "id": "gov_35",
+      "number": 35,
+      "title": "Public Opinion",
+      "file": "questions/gov_35.json",
+      "active": true
+    },
+    {
+      "id": "gov_36",
+      "number": 36,
+      "title": "Electoral Systems and Electoral Process",
+      "file": "questions/gov_36.json",
+      "active": true
+    },
+    {
+      "id": "gov_37",
+      "number": 37,
+      "title": "Public Administration",
+      "file": "questions/gov_37.json",
+      "active": true
+    },
+    {
+      "id": "gov_38",
+      "number": 38,
+      "title": "Civil Service",
+      "file": "questions/gov_38.json",
+      "active": true
+    },
+    {
+      "id": "gov_39",
+      "number": 39,
+      "title": "Local Government",
+      "file": "questions/gov_39.json",
+      "active": true
+    },
+    {
+      "id": "gov_40",
+      "number": 40,
+      "title": "Public Corporations",
+      "file": "questions/gov_40.json",
+      "active": true
+    },
+    {
+      "id": "gov_41",
+      "number": 41,
+      "title": "Pre-Colonial Political Systems",
+      "file": "questions/gov_41.json",
+      "active": true
+    },
+    {
+      "id": "gov_42",
+      "number": 42,
+      "title": "Colonial Administration",
+      "file": "questions/gov_42.json",
+      "active": true
+    },
+    {
+      "id": "gov_43",
+      "number": 43,
+      "title": "Nationalism in West Africa",
+      "file": "questions/gov_43.json",
+      "active": true
+    },
+    {
+      "id": "gov_44",
+      "number": 44,
+      "title": "Constitutional Development in Nigeria",
+      "file": "questions/gov_44.json",
+      "active": true
+    },
+    {
+      "id": "gov_45",
+      "number": 45,
+      "title": "Military Rule in Nigeria",
+      "file": "questions/gov_45.json",
+      "active": true
+    },
+    {
+      "id": "gov_46",
+      "number": 46,
+      "title": "Nigerian Federalism",
+      "file": "questions/gov_46.json",
+      "active": true
+    },
+    {
+      "id": "gov_47",
+      "number": 47,
+      "title": "Foreign Policy",
+      "file": "questions/gov_47.json",
+      "active": true
+    },
+    {
+      "id": "gov_48",
+      "number": 48,
+      "title": "International Organizations",
+      "file": "questions/gov_48.json",
+      "active": true
+    }
+  ]
+}
