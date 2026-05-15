@@ -1,0 +1,370 @@
+{
+  "subject_code": "acct",
+  "subject_name": "Financial Accounting",
+  "topics": [
+    {
+      "id": "acct_01",
+      "number": 1,
+      "title": "History, Nature and Functions of Accounting",
+      "file": "questions/acct_01.json",
+      "active": true
+    },
+    {
+      "id": "acct_02",
+      "number": 2,
+      "title": "Users of Accounting Information",
+      "file": "questions/acct_02.json",
+      "active": true
+    },
+    {
+      "id": "acct_03",
+      "number": 3,
+      "title": "Stages in the Accounting Process",
+      "file": "questions/acct_03.json",
+      "active": true
+    },
+    {
+      "id": "acct_04",
+      "number": 4,
+      "title": "Characteristics of Accounting Information",
+      "file": "questions/acct_04.json",
+      "active": true
+    },
+    {
+      "id": "acct_05",
+      "number": 5,
+      "title": "Accounting Equation",
+      "file": "questions/acct_05.json",
+      "active": true
+    },
+    {
+      "id": "acct_06",
+      "number": 6,
+      "title": "Source Documents",
+      "file": "questions/acct_06.json",
+      "active": true
+    },
+    {
+      "id": "acct_07",
+      "number": 7,
+      "title": "Subsidiary Books",
+      "file": "questions/acct_07.json",
+      "active": true
+    },
+    {
+      "id": "acct_08",
+      "number": 8,
+      "title": "Classification of Accounts",
+      "file": "questions/acct_08.json",
+      "active": true
+    },
+    {
+      "id": "acct_09",
+      "number": 9,
+      "title": "Double Entry Principle",
+      "file": "questions/acct_09.json",
+      "active": true
+    },
+    {
+      "id": "acct_10",
+      "number": 10,
+      "title": "Ledger Accounts",
+      "file": "questions/acct_10.json",
+      "active": true
+    },
+    {
+      "id": "acct_11",
+      "number": 11,
+      "title": "Cash Book",
+      "file": "questions/acct_11.json",
+      "active": true
+    },
+    {
+      "id": "acct_12",
+      "number": 12,
+      "title": "Petty Cash Book",
+      "file": "questions/acct_12.json",
+      "active": true
+    },
+    {
+      "id": "acct_13",
+      "number": 13,
+      "title": "Trial Balance",
+      "file": "questions/acct_13.json",
+      "active": true
+    },
+    {
+      "id": "acct_14",
+      "number": 14,
+      "title": "Bank Reconciliation Statement",
+      "file": "questions/acct_14.json",
+      "active": true
+    },
+    {
+      "id": "acct_15",
+      "number": 15,
+      "title": "Correction of Errors",
+      "file": "questions/acct_15.json",
+      "active": true
+    },
+    {
+      "id": "acct_16",
+      "number": 16,
+      "title": "Suspense Account",
+      "file": "questions/acct_16.json",
+      "active": true
+    },
+    {
+      "id": "acct_17",
+      "number": 17,
+      "title": "Accounting Concepts",
+      "file": "questions/acct_17.json",
+      "active": true
+    },
+    {
+      "id": "acct_18",
+      "number": 18,
+      "title": "Accounting Conventions",
+      "file": "questions/acct_18.json",
+      "active": true
+    },
+    {
+      "id": "acct_19",
+      "number": 19,
+      "title": "Trading Account",
+      "file": "questions/acct_19.json",
+      "active": true
+    },
+    {
+      "id": "acct_20",
+      "number": 20,
+      "title": "Profit and Loss Account",
+      "file": "questions/acct_20.json",
+      "active": true
+    },
+    {
+      "id": "acct_21",
+      "number": 21,
+      "title": "Balance Sheet",
+      "file": "questions/acct_21.json",
+      "active": true
+    },
+    {
+      "id": "acct_22",
+      "number": 22,
+      "title": "Adjustments to Final Accounts",
+      "file": "questions/acct_22.json",
+      "active": true
+    },
+    {
+      "id": "acct_23",
+      "number": 23,
+      "title": "Provision for Doubtful Debts",
+      "file": "questions/acct_23.json",
+      "active": true
+    },
+    {
+      "id": "acct_24",
+      "number": 24,
+      "title": "Provision for Discounts",
+      "file": "questions/acct_24.json",
+      "active": true
+    },
+    {
+      "id": "acct_25",
+      "number": 25,
+      "title": "Depreciation",
+      "file": "questions/acct_25.json",
+      "active": true
+    },
+    {
+      "id": "acct_26",
+      "number": 26,
+      "title": "Straight Line Method",
+      "file": "questions/acct_26.json",
+      "active": true
+    },
+    {
+      "id": "acct_27",
+      "number": 27,
+      "title": "Reducing Balance Method",
+      "file": "questions/acct_27.json",
+      "active": true
+    },
+    {
+      "id": "acct_28",
+      "number": 28,
+      "title": "Revaluation Method",
+      "file": "questions/acct_28.json",
+      "active": true
+    },
+    {
+      "id": "acct_29",
+      "number": 29,
+      "title": "Revenue and Capital Reserves",
+      "file": "questions/acct_29.json",
+      "active": true
+    },
+    {
+      "id": "acct_30",
+      "number": 30,
+      "title": "Manufacturing Accounts",
+      "file": "questions/acct_30.json",
+      "active": true
+    },
+    {
+      "id": "acct_31",
+      "number": 31,
+      "title": "Cost Classification",
+      "file": "questions/acct_31.json",
+      "active": true
+    },
+    {
+      "id": "acct_32",
+      "number": 32,
+      "title": "Control Accounts",
+      "file": "questions/acct_32.json",
+      "active": true
+    },
+    {
+      "id": "acct_33",
+      "number": 33,
+      "title": "Self Balancing Ledgers",
+      "file": "questions/acct_33.json",
+      "active": true
+    },
+    {
+      "id": "acct_34",
+      "number": 34,
+      "title": "Single Entry and Incomplete Records",
+      "file": "questions/acct_34.json",
+      "active": true
+    },
+    {
+      "id": "acct_35",
+      "number": 35,
+      "title": "Statement of Affairs",
+      "file": "questions/acct_35.json",
+      "active": true
+    },
+    {
+      "id": "acct_36",
+      "number": 36,
+      "title": "Mark-Up and Margin",
+      "file": "questions/acct_36.json",
+      "active": true
+    },
+    {
+      "id": "acct_37",
+      "number": 37,
+      "title": "Receipts and Payments Account",
+      "file": "questions/acct_37.json",
+      "active": true
+    },
+    {
+      "id": "acct_38",
+      "number": 38,
+      "title": "Income and Expenditure Account",
+      "file": "questions/acct_38.json",
+      "active": true
+    },
+    {
+      "id": "acct_39",
+      "number": 39,
+      "title": "Subscription Account",
+      "file": "questions/acct_39.json",
+      "active": true
+    },
+    {
+      "id": "acct_40",
+      "number": 40,
+      "title": "Partnership Accounts",
+      "file": "questions/acct_40.json",
+      "active": true
+    },
+    {
+      "id": "acct_41",
+      "number": 41,
+      "title": "Profit and Loss Appropriation Account",
+      "file": "questions/acct_41.json",
+      "active": true
+    },
+    {
+      "id": "acct_42",
+      "number": 42,
+      "title": "Goodwill",
+      "file": "questions/acct_42.json",
+      "active": true
+    },
+    {
+      "id": "acct_43",
+      "number": 43,
+      "title": "Admission of a New Partner",
+      "file": "questions/acct_43.json",
+      "active": true
+    },
+    {
+      "id": "acct_44",
+      "number": 44,
+      "title": "Dissolution of Partnership",
+      "file": "questions/acct_44.json",
+      "active": true
+    },
+    {
+      "id": "acct_45",
+      "number": 45,
+      "title": "Company Formation",
+      "file": "questions/acct_45.json",
+      "active": true
+    },
+    {
+      "id": "acct_46",
+      "number": 46,
+      "title": "Types of Companies",
+      "file": "questions/acct_46.json",
+      "active": true
+    },
+    {
+      "id": "acct_47",
+      "number": 47,
+      "title": "Types of Shares",
+      "file": "questions/acct_47.json",
+      "active": true
+    },
+    {
+      "id": "acct_48",
+      "number": 48,
+      "title": "Issue of Shares",
+      "file": "questions/acct_48.json",
+      "active": true
+    },
+    {
+      "id": "acct_49",
+      "number": 49,
+      "title": "Debentures and Loan Capital",
+      "file": "questions/acct_49.json",
+      "active": true
+    },
+    {
+      "id": "acct_50",
+      "number": 50,
+      "title": "Ratio Analysis",
+      "file": "questions/acct_50.json",
+      "active": true
+    },
+    {
+      "id": "acct_51",
+      "number": 51,
+      "title": "Departmental Accounts",
+      "file": "questions/acct_51.json",
+      "active": true
+    },
+    {
+      "id": "acct_52",
+      "number": 52,
+      "title": "Branch Accounts",
+      "file": "questions/acct_52.json",
+      "active": true
+    }
+  ]
+}
