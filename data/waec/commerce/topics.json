@@ -1,0 +1,426 @@
+{
+  "subject_code": "comm",
+  "subject_name": "Commerce",
+  "topics": [
+    {
+      "id": "comm_01",
+      "number": 1,
+      "title": "Introduction to Commerce",
+      "file": "questions/comm_01.json",
+      "active": true
+    },
+    {
+      "id": "comm_02",
+      "number": 2,
+      "title": "E-Commerce",
+      "file": "questions/comm_02.json",
+      "active": true
+    },
+    {
+      "id": "comm_03",
+      "number": 3,
+      "title": "Occupations",
+      "file": "questions/comm_03.json",
+      "active": true
+    },
+    {
+      "id": "comm_04",
+      "number": 4,
+      "title": "Career Opportunities",
+      "file": "questions/comm_04.json",
+      "active": true
+    },
+    {
+      "id": "comm_05",
+      "number": 5,
+      "title": "Production",
+      "file": "questions/comm_05.json",
+      "active": true
+    },
+    {
+      "id": "comm_06",
+      "number": 6,
+      "title": "Factors of Production",
+      "file": "questions/comm_06.json",
+      "active": true
+    },
+    {
+      "id": "comm_07",
+      "number": 7,
+      "title": "Division of Labour and Specialization",
+      "file": "questions/comm_07.json",
+      "active": true
+    },
+    {
+      "id": "comm_08",
+      "number": 8,
+      "title": "Business Units",
+      "file": "questions/comm_08.json",
+      "active": true
+    },
+    {
+      "id": "comm_09",
+      "number": 9,
+      "title": "Sole Proprietorship",
+      "file": "questions/comm_09.json",
+      "active": true
+    },
+    {
+      "id": "comm_10",
+      "number": 10,
+      "title": "Partnership",
+      "file": "questions/comm_10.json",
+      "active": true
+    },
+    {
+      "id": "comm_11",
+      "number": 11,
+      "title": "Co-operative Societies",
+      "file": "questions/comm_11.json",
+      "active": true
+    },
+    {
+      "id": "comm_12",
+      "number": 12,
+      "title": "Public Enterprises",
+      "file": "questions/comm_12.json",
+      "active": true
+    },
+    {
+      "id": "comm_13",
+      "number": 13,
+      "title": "Companies",
+      "file": "questions/comm_13.json",
+      "active": true
+    },
+    {
+      "id": "comm_14",
+      "number": 14,
+      "title": "Mergers and Acquisitions",
+      "file": "questions/comm_14.json",
+      "active": true
+    },
+    {
+      "id": "comm_15",
+      "number": 15,
+      "title": "Trusts, Cartels and Consortiums",
+      "file": "questions/comm_15.json",
+      "active": true
+    },
+    {
+      "id": "comm_16",
+      "number": 16,
+      "title": "Trade Associations",
+      "file": "questions/comm_16.json",
+      "active": true
+    },
+    {
+      "id": "comm_17",
+      "number": 17,
+      "title": "Chamber of Commerce",
+      "file": "questions/comm_17.json",
+      "active": true
+    },
+    {
+      "id": "comm_18",
+      "number": 18,
+      "title": "Consumerism",
+      "file": "questions/comm_18.json",
+      "active": true
+    },
+    {
+      "id": "comm_19",
+      "number": 19,
+      "title": "Business Capital",
+      "file": "questions/comm_19.json",
+      "active": true
+    },
+    {
+      "id": "comm_20",
+      "number": 20,
+      "title": "Working Capital",
+      "file": "questions/comm_20.json",
+      "active": true
+    },
+    {
+      "id": "comm_21",
+      "number": 21,
+      "title": "Profit",
+      "file": "questions/comm_21.json",
+      "active": true
+    },
+    {
+      "id": "comm_22",
+      "number": 22,
+      "title": "Turnover",
+      "file": "questions/comm_22.json",
+      "active": true
+    },
+    {
+      "id": "comm_23",
+      "number": 23,
+      "title": "Credit",
+      "file": "questions/comm_23.json",
+      "active": true
+    },
+    {
+      "id": "comm_24",
+      "number": 24,
+      "title": "Home Trade",
+      "file": "questions/comm_24.json",
+      "active": true
+    },
+    {
+      "id": "comm_25",
+      "number": 25,
+      "title": "Foreign Trade",
+      "file": "questions/comm_25.json",
+      "active": true
+    },
+    {
+      "id": "comm_26",
+      "number": 26,
+      "title": "Retail Trade",
+      "file": "questions/comm_26.json",
+      "active": true
+    },
+    {
+      "id": "comm_27",
+      "number": 27,
+      "title": "Wholesale Trade",
+      "file": "questions/comm_27.json",
+      "active": true
+    },
+    {
+      "id": "comm_28",
+      "number": 28,
+      "title": "Channels of Distribution",
+      "file": "questions/comm_28.json",
+      "active": true
+    },
+    {
+      "id": "comm_29",
+      "number": 29,
+      "title": "Trade Documents",
+      "file": "questions/comm_29.json",
+      "active": true
+    },
+    {
+      "id": "comm_30",
+      "number": 30,
+      "title": "Terms of Trade and Payments",
+      "file": "questions/comm_30.json",
+      "active": true
+    },
+    {
+      "id": "comm_31",
+      "number": 31,
+      "title": "Money",
+      "file": "questions/comm_31.json",
+      "active": true
+    },
+    {
+      "id": "comm_32",
+      "number": 32,
+      "title": "Banking",
+      "file": "questions/comm_32.json",
+      "active": true
+    },
+    {
+      "id": "comm_33",
+      "number": 33,
+      "title": "Electronic Banking",
+      "file": "questions/comm_33.json",
+      "active": true
+    },
+    {
+      "id": "comm_34",
+      "number": 34,
+      "title": "Insurance",
+      "file": "questions/comm_34.json",
+      "active": true
+    },
+    {
+      "id": "comm_35",
+      "number": 35,
+      "title": "Stock Exchange",
+      "file": "questions/comm_35.json",
+      "active": true
+    },
+    {
+      "id": "comm_36",
+      "number": 36,
+      "title": "Transport",
+      "file": "questions/comm_36.json",
+      "active": true
+    },
+    {
+      "id": "comm_37",
+      "number": 37,
+      "title": "Tourism",
+      "file": "questions/comm_37.json",
+      "active": true
+    },
+    {
+      "id": "comm_38",
+      "number": 38,
+      "title": "Communication",
+      "file": "questions/comm_38.json",
+      "active": true
+    },
+    {
+      "id": "comm_39",
+      "number": 39,
+      "title": "Warehousing",
+      "file": "questions/comm_39.json",
+      "active": true
+    },
+    {
+      "id": "comm_40",
+      "number": 40,
+      "title": "Advertising",
+      "file": "questions/comm_40.json",
+      "active": true
+    },
+    {
+      "id": "comm_41",
+      "number": 41,
+      "title": "Marketing",
+      "file": "questions/comm_41.json",
+      "active": true
+    },
+    {
+      "id": "comm_42",
+      "number": 42,
+      "title": "Customer Services",
+      "file": "questions/comm_42.json",
+      "active": true
+    },
+    {
+      "id": "comm_43",
+      "number": 43,
+      "title": "Sales Promotion",
+      "file": "questions/comm_43.json",
+      "active": true
+    },
+    {
+      "id": "comm_44",
+      "number": 44,
+      "title": "Personal Selling",
+      "file": "questions/comm_44.json",
+      "active": true
+    },
+    {
+      "id": "comm_45",
+      "number": 45,
+      "title": "Contract",
+      "file": "questions/comm_45.json",
+      "active": true
+    },
+    {
+      "id": "comm_46",
+      "number": 46,
+      "title": "Agency",
+      "file": "questions/comm_46.json",
+      "active": true
+    },
+    {
+      "id": "comm_47",
+      "number": 47,
+      "title": "Hire Purchase",
+      "file": "questions/comm_47.json",
+      "active": true
+    },
+    {
+      "id": "comm_48",
+      "number": 48,
+      "title": "Consumer Protection",
+      "file": "questions/comm_48.json",
+      "active": true
+    },
+    {
+      "id": "comm_49",
+      "number": 49,
+      "title": "Business Registration",
+      "file": "questions/comm_49.json",
+      "active": true
+    },
+    {
+      "id": "comm_50",
+      "number": 50,
+      "title": "Commercialization",
+      "file": "questions/comm_50.json",
+      "active": true
+    },
+    {
+      "id": "comm_51",
+      "number": 51,
+      "title": "Privatization",
+      "file": "questions/comm_51.json",
+      "active": true
+    },
+    {
+      "id": "comm_52",
+      "number": 52,
+      "title": "Deregulation",
+      "file": "questions/comm_52.json",
+      "active": true
+    },
+    {
+      "id": "comm_53",
+      "number": 53,
+      "title": "Business Management",
+      "file": "questions/comm_53.json",
+      "active": true
+    },
+    {
+      "id": "comm_54",
+      "number": 54,
+      "title": "Business Environment",
+      "file": "questions/comm_54.json",
+      "active": true
+    },
+    {
+      "id": "comm_55",
+      "number": 55,
+      "title": "ECOWAS",
+      "file": "questions/comm_55.json",
+      "active": true
+    },
+    {
+      "id": "comm_56",
+      "number": 56,
+      "title": "Niger Basin Commission",
+      "file": "questions/comm_56.json",
+      "active": true
+    },
+    {
+      "id": "comm_57",
+      "number": 57,
+      "title": "Lake Chad Basin Commission",
+      "file": "questions/comm_57.json",
+      "active": true
+    },
+    {
+      "id": "comm_58",
+      "number": 58,
+      "title": "Mano River Union",
+      "file": "questions/comm_58.json",
+      "active": true
+    },
+    {
+      "id": "comm_59",
+      "number": 59,
+      "title": "European Union",
+      "file": "questions/comm_59.json",
+      "active": true
+    },
+    {
+      "id": "comm_60",
+      "number": 60,
+      "title": "West African Clearing House",
+      "file": "questions/comm_60.json",
+      "active": true
+    }
+  ]
+}
