@@ -1,0 +1,370 @@
+{
+  "subject_code": "agric",
+  "subject_name": "Agricultural Science",
+  "topics": [
+    {
+      "id": "agric_01",
+      "number": 1,
+      "title": "Meaning and Branches of Agriculture",
+      "file": "questions/agric_01.json",
+      "active": true
+    },
+    {
+      "id": "agric_02",
+      "number": 2,
+      "title": "Importance of Agriculture",
+      "file": "questions/agric_02.json",
+      "active": true
+    },
+    {
+      "id": "agric_03",
+      "number": 3,
+      "title": "Problems of Agricultural Development",
+      "file": "questions/agric_03.json",
+      "active": true
+    },
+    {
+      "id": "agric_04",
+      "number": 4,
+      "title": "Land Tenure Systems",
+      "file": "questions/agric_04.json",
+      "active": true
+    },
+    {
+      "id": "agric_05",
+      "number": 5,
+      "title": "Agricultural Ecology",
+      "file": "questions/agric_05.json",
+      "active": true
+    },
+    {
+      "id": "agric_06",
+      "number": 6,
+      "title": "Climatic Factors",
+      "file": "questions/agric_06.json",
+      "active": true
+    },
+    {
+      "id": "agric_07",
+      "number": 7,
+      "title": "Biotic and Abiotic Factors",
+      "file": "questions/agric_07.json",
+      "active": true
+    },
+    {
+      "id": "agric_08",
+      "number": 8,
+      "title": "Farming Systems",
+      "file": "questions/agric_08.json",
+      "active": true
+    },
+    {
+      "id": "agric_09",
+      "number": 9,
+      "title": "Soil Formation",
+      "file": "questions/agric_09.json",
+      "active": true
+    },
+    {
+      "id": "agric_10",
+      "number": 10,
+      "title": "Soil Profile",
+      "file": "questions/agric_10.json",
+      "active": true
+    },
+    {
+      "id": "agric_11",
+      "number": 11,
+      "title": "Physical Properties of Soil",
+      "file": "questions/agric_11.json",
+      "active": true
+    },
+    {
+      "id": "agric_12",
+      "number": 12,
+      "title": "Chemical Properties of Soil",
+      "file": "questions/agric_12.json",
+      "active": true
+    },
+    {
+      "id": "agric_13",
+      "number": 13,
+      "title": "Soil Organisms",
+      "file": "questions/agric_13.json",
+      "active": true
+    },
+    {
+      "id": "agric_14",
+      "number": 14,
+      "title": "Soil Fertility",
+      "file": "questions/agric_14.json",
+      "active": true
+    },
+    {
+      "id": "agric_15",
+      "number": 15,
+      "title": "Soil Erosion",
+      "file": "questions/agric_15.json",
+      "active": true
+    },
+    {
+      "id": "agric_16",
+      "number": 16,
+      "title": "Soil Conservation",
+      "file": "questions/agric_16.json",
+      "active": true
+    },
+    {
+      "id": "agric_17",
+      "number": 17,
+      "title": "Farm Tools",
+      "file": "questions/agric_17.json",
+      "active": true
+    },
+    {
+      "id": "agric_18",
+      "number": 18,
+      "title": "Farm Machinery",
+      "file": "questions/agric_18.json",
+      "active": true
+    },
+    {
+      "id": "agric_19",
+      "number": 19,
+      "title": "Farm Power",
+      "file": "questions/agric_19.json",
+      "active": true
+    },
+    {
+      "id": "agric_20",
+      "number": 20,
+      "title": "Farm Tractor",
+      "file": "questions/agric_20.json",
+      "active": true
+    },
+    {
+      "id": "agric_21",
+      "number": 21,
+      "title": "Farm Surveying",
+      "file": "questions/agric_21.json",
+      "active": true
+    },
+    {
+      "id": "agric_22",
+      "number": 22,
+      "title": "Seeds and Seed Germination",
+      "file": "questions/agric_22.json",
+      "active": true
+    },
+    {
+      "id": "agric_23",
+      "number": 23,
+      "title": "Crop Classification",
+      "file": "questions/agric_23.json",
+      "active": true
+    },
+    {
+      "id": "agric_24",
+      "number": 24,
+      "title": "Planting Materials and Propagation",
+      "file": "questions/agric_24.json",
+      "active": true
+    },
+    {
+      "id": "agric_25",
+      "number": 25,
+      "title": "Land Preparation",
+      "file": "questions/agric_25.json",
+      "active": true
+    },
+    {
+      "id": "agric_26",
+      "number": 26,
+      "title": "Cultural Practices",
+      "file": "questions/agric_26.json",
+      "active": true
+    },
+    {
+      "id": "agric_27",
+      "number": 27,
+      "title": "Fertilizers and Manures",
+      "file": "questions/agric_27.json",
+      "active": true
+    },
+    {
+      "id": "agric_28",
+      "number": 28,
+      "title": "Irrigation and Drainage",
+      "file": "questions/agric_28.json",
+      "active": true
+    },
+    {
+      "id": "agric_29",
+      "number": 29,
+      "title": "Weeds and Weed Control",
+      "file": "questions/agric_29.json",
+      "active": true
+    },
+    {
+      "id": "agric_30",
+      "number": 30,
+      "title": "Crop Pests",
+      "file": "questions/agric_30.json",
+      "active": true
+    },
+    {
+      "id": "agric_31",
+      "number": 31,
+      "title": "Crop Diseases",
+      "file": "questions/agric_31.json",
+      "active": true
+    },
+    {
+      "id": "agric_32",
+      "number": 32,
+      "title": "Forestry",
+      "file": "questions/agric_32.json",
+      "active": true
+    },
+    {
+      "id": "agric_33",
+      "number": 33,
+      "title": "Ornamental Plants",
+      "file": "questions/agric_33.json",
+      "active": true
+    },
+    {
+      "id": "agric_34",
+      "number": 34,
+      "title": "Pasture and Forage Crops",
+      "file": "questions/agric_34.json",
+      "active": true
+    },
+    {
+      "id": "agric_35",
+      "number": 35,
+      "title": "Farm Animals Classification",
+      "file": "questions/agric_35.json",
+      "active": true
+    },
+    {
+      "id": "agric_36",
+      "number": 36,
+      "title": "Anatomy and Physiology of Farm Animals",
+      "file": "questions/agric_36.json",
+      "active": true
+    },
+    {
+      "id": "agric_37",
+      "number": 37,
+      "title": "Animal Nutrition",
+      "file": "questions/agric_37.json",
+      "active": true
+    },
+    {
+      "id": "agric_38",
+      "number": 38,
+      "title": "Livestock Management Systems",
+      "file": "questions/agric_38.json",
+      "active": true
+    },
+    {
+      "id": "agric_39",
+      "number": 39,
+      "title": "Animal Reproduction",
+      "file": "questions/agric_39.json",
+      "active": true
+    },
+    {
+      "id": "agric_40",
+      "number": 40,
+      "title": "Animal Improvement",
+      "file": "questions/agric_40.json",
+      "active": true
+    },
+    {
+      "id": "agric_41",
+      "number": 41,
+      "title": "Livestock Diseases",
+      "file": "questions/agric_41.json",
+      "active": true
+    },
+    {
+      "id": "agric_42",
+      "number": 42,
+      "title": "Animal Parasites",
+      "file": "questions/agric_42.json",
+      "active": true
+    },
+    {
+      "id": "agric_43",
+      "number": 43,
+      "title": "Fisheries",
+      "file": "questions/agric_43.json",
+      "active": true
+    },
+    {
+      "id": "agric_44",
+      "number": 44,
+      "title": "Bee Keeping",
+      "file": "questions/agric_44.json",
+      "active": true
+    },
+    {
+      "id": "agric_45",
+      "number": 45,
+      "title": "Agricultural Economics",
+      "file": "questions/agric_45.json",
+      "active": true
+    },
+    {
+      "id": "agric_46",
+      "number": 46,
+      "title": "Farm Records and Accounts",
+      "file": "questions/agric_46.json",
+      "active": true
+    },
+    {
+      "id": "agric_47",
+      "number": 47,
+      "title": "Farm Budgeting",
+      "file": "questions/agric_47.json",
+      "active": true
+    },
+    {
+      "id": "agric_48",
+      "number": 48,
+      "title": "Agricultural Marketing",
+      "file": "questions/agric_48.json",
+      "active": true
+    },
+    {
+      "id": "agric_49",
+      "number": 49,
+      "title": "Agricultural Cooperatives",
+      "file": "questions/agric_49.json",
+      "active": true
+    },
+    {
+      "id": "agric_50",
+      "number": 50,
+      "title": "Agricultural Extension",
+      "file": "questions/agric_50.json",
+      "active": true
+    },
+    {
+      "id": "agric_51",
+      "number": 51,
+      "title": "Agricultural Development Programmes",
+      "file": "questions/agric_51.json",
+      "active": true
+    },
+    {
+      "id": "agric_52",
+      "number": 52,
+      "title": "Agricultural Practicals and Specimens",
+      "file": "questions/agric_52.json",
+      "active": true
+    }
+  ]
+}
