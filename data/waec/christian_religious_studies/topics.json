@@ -1,0 +1,286 @@
+{
+  "subject_code": "crs",
+  "subject_name": "Christian Religious Studies",
+  "topics": [
+    {
+      "id": "crs_01",
+      "number": 1,
+      "title": "God the Creator",
+      "file": "questions/crs_01.json",
+      "active": true
+    },
+    {
+      "id": "crs_02",
+      "number": 2,
+      "title": "God the Controller of the Universe",
+      "file": "questions/crs_02.json",
+      "active": true
+    },
+    {
+      "id": "crs_03",
+      "number": 3,
+      "title": "Leadership of Joseph",
+      "file": "questions/crs_03.json",
+      "active": true
+    },
+    {
+      "id": "crs_04",
+      "number": 4,
+      "title": "Leadership of Moses",
+      "file": "questions/crs_04.json",
+      "active": true
+    },
+    {
+      "id": "crs_05",
+      "number": 5,
+      "title": "Leadership of Joshua",
+      "file": "questions/crs_05.json",
+      "active": true
+    },
+    {
+      "id": "crs_06",
+      "number": 6,
+      "title": "Leadership of Deborah",
+      "file": "questions/crs_06.json",
+      "active": true
+    },
+    {
+      "id": "crs_07",
+      "number": 7,
+      "title": "Parental Responsibility of Eli",
+      "file": "questions/crs_07.json",
+      "active": true
+    },
+    {
+      "id": "crs_08",
+      "number": 8,
+      "title": "Samuel and Corrupt Children",
+      "file": "questions/crs_08.json",
+      "active": true
+    },
+    {
+      "id": "crs_09",
+      "number": 9,
+      "title": "Consequences of Saul's Disobedience",
+      "file": "questions/crs_09.json",
+      "active": true
+    },
+    {
+      "id": "crs_10",
+      "number": 10,
+      "title": "David's Submission to God's Will",
+      "file": "questions/crs_10.json",
+      "active": true
+    },
+    {
+      "id": "crs_11",
+      "number": 11,
+      "title": "David's Sin Repentance and Forgiveness",
+      "file": "questions/crs_11.json",
+      "active": true
+    },
+    {
+      "id": "crs_12",
+      "number": 12,
+      "title": "Solomon's Wisdom",
+      "file": "questions/crs_12.json",
+      "active": true
+    },
+    {
+      "id": "crs_13",
+      "number": 13,
+      "title": "Solomon and Rehoboam's Wrong Decisions",
+      "file": "questions/crs_13.json",
+      "active": true
+    },
+    {
+      "id": "crs_14",
+      "number": 14,
+      "title": "Religious Tensions During Ahab's Reign",
+      "file": "questions/crs_14.json",
+      "active": true
+    },
+    {
+      "id": "crs_15",
+      "number": 15,
+      "title": "Elijah at Mount Carmel",
+      "file": "questions/crs_15.json",
+      "active": true
+    },
+    {
+      "id": "crs_16",
+      "number": 16,
+      "title": "Ahab and Greed",
+      "file": "questions/crs_16.json",
+      "active": true
+    },
+    {
+      "id": "crs_17",
+      "number": 17,
+      "title": "Gehazi and Greed",
+      "file": "questions/crs_17.json",
+      "active": true
+    },
+    {
+      "id": "crs_18",
+      "number": 18,
+      "title": "Religious Reforms of Josiah",
+      "file": "questions/crs_18.json",
+      "active": true
+    },
+    {
+      "id": "crs_19",
+      "number": 19,
+      "title": "Concern for One's Nation",
+      "file": "questions/crs_19.json",
+      "active": true
+    },
+    {
+      "id": "crs_20",
+      "number": 20,
+      "title": "Faith and Courage",
+      "file": "questions/crs_20.json",
+      "active": true
+    },
+    {
+      "id": "crs_21",
+      "number": 21,
+      "title": "Faith and Power",
+      "file": "questions/crs_21.json",
+      "active": true
+    },
+    {
+      "id": "crs_22",
+      "number": 22,
+      "title": "True Religion and Social Justice",
+      "file": "questions/crs_22.json",
+      "active": true
+    },
+    {
+      "id": "crs_23",
+      "number": 23,
+      "title": "God's Divine Love",
+      "file": "questions/crs_23.json",
+      "active": true
+    },
+    {
+      "id": "crs_24",
+      "number": 24,
+      "title": "Baptism of Jesus",
+      "file": "questions/crs_24.json",
+      "active": true
+    },
+    {
+      "id": "crs_25",
+      "number": 25,
+      "title": "Temptation of Jesus",
+      "file": "questions/crs_25.json",
+      "active": true
+    },
+    {
+      "id": "crs_26",
+      "number": 26,
+      "title": "Call and Demands of Discipleship",
+      "file": "questions/crs_26.json",
+      "active": true
+    },
+    {
+      "id": "crs_27",
+      "number": 27,
+      "title": "Jesus' Teaching on Forgiveness",
+      "file": "questions/crs_27.json",
+      "active": true
+    },
+    {
+      "id": "crs_28",
+      "number": 28,
+      "title": "Jesus at Gethsemane",
+      "file": "questions/crs_28.json",
+      "active": true
+    },
+    {
+      "id": "crs_29",
+      "number": 29,
+      "title": "Peter's Denial",
+      "file": "questions/crs_29.json",
+      "active": true
+    },
+    {
+      "id": "crs_30",
+      "number": 30,
+      "title": "Condemnation of Jesus",
+      "file": "questions/crs_30.json",
+      "active": true
+    },
+    {
+      "id": "crs_31",
+      "number": 31,
+      "title": "Crucifixion and Burial of Jesus",
+      "file": "questions/crs_31.json",
+      "active": true
+    },
+    {
+      "id": "crs_32",
+      "number": 32,
+      "title": "Resurrection of Jesus",
+      "file": "questions/crs_32.json",
+      "active": true
+    },
+    {
+      "id": "crs_33",
+      "number": 33,
+      "title": "Fellowship in the Early Church",
+      "file": "questions/crs_33.json",
+      "active": true
+    },
+    {
+      "id": "crs_34",
+      "number": 34,
+      "title": "Holy Spirit at Pentecost",
+      "file": "questions/crs_34.json",
+      "active": true
+    },
+    {
+      "id": "crs_35",
+      "number": 35,
+      "title": "Mission to the Gentiles",
+      "file": "questions/crs_35.json",
+      "active": true
+    },
+    {
+      "id": "crs_36",
+      "number": 36,
+      "title": "Faith and Works",
+      "file": "questions/crs_36.json",
+      "active": true
+    },
+    {
+      "id": "crs_37",
+      "number": 37,
+      "title": "Impartiality",
+      "file": "questions/crs_37.json",
+      "active": true
+    },
+    {
+      "id": "crs_38",
+      "number": 38,
+      "title": "Effective Prayer",
+      "file": "questions/crs_38.json",
+      "active": true
+    },
+    {
+      "id": "crs_39",
+      "number": 39,
+      "title": "Christian Living in the Community",
+      "file": "questions/crs_39.json",
+      "active": true
+    },
+    {
+      "id": "crs_40",
+      "number": 40,
+      "title": "Good Citizenship",
+      "file": "questions/crs_40.json",
+      "active": true
+    }
+  ]
+}
