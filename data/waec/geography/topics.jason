@@ -1,0 +1,300 @@
+{
+  "subject_code": "geo",
+  "subject_name": "Geography",
+  "topics": [
+    {
+      "id": "geo_01",
+      "number": 1,
+      "title": "Map Reading and Interpretation",
+      "file": "questions/geo_01.json",
+      "active": true
+    },
+    {
+      "id": "geo_02",
+      "number": 2,
+      "title": "Scale and Map Measurement",
+      "file": "questions/geo_02.json",
+      "active": true
+    },
+    {
+      "id": "geo_03",
+      "number": 3,
+      "title": "Direction and Bearing",
+      "file": "questions/geo_03.json",
+      "active": true
+    },
+    {
+      "id": "geo_04",
+      "number": 4,
+      "title": "Gradient and Cross Profiles",
+      "file": "questions/geo_04.json",
+      "active": true
+    },
+    {
+      "id": "geo_05",
+      "number": 5,
+      "title": "Relief Features",
+      "file": "questions/geo_05.json",
+      "active": true
+    },
+    {
+      "id": "geo_06",
+      "number": 6,
+      "title": "Drainage Patterns",
+      "file": "questions/geo_06.json",
+      "active": true
+    },
+    {
+      "id": "geo_07",
+      "number": 7,
+      "title": "Settlement and Land Use Patterns",
+      "file": "questions/geo_07.json",
+      "active": true
+    },
+    {
+      "id": "geo_08",
+      "number": 8,
+      "title": "Elementary Surveying",
+      "file": "questions/geo_08.json",
+      "active": true
+    },
+    {
+      "id": "geo_09",
+      "number": 9,
+      "title": "Geographical Information System (GIS)",
+      "file": "questions/geo_09.json",
+      "active": true
+    },
+    {
+      "id": "geo_10",
+      "number": 10,
+      "title": "Statistical Maps and Diagrams",
+      "file": "questions/geo_10.json",
+      "active": true
+    },
+    {
+      "id": "geo_11",
+      "number": 11,
+      "title": "The Earth as a Planet",
+      "file": "questions/geo_11.json",
+      "active": true
+    },
+    {
+      "id": "geo_12",
+      "number": 12,
+      "title": "Latitude Longitude and Time",
+      "file": "questions/geo_12.json",
+      "active": true
+    },
+    {
+      "id": "geo_13",
+      "number": 13,
+      "title": "Earth Rotation and Revolution",
+      "file": "questions/geo_13.json",
+      "active": true
+    },
+    {
+      "id": "geo_14",
+      "number": 14,
+      "title": "Structure of the Earth",
+      "file": "questions/geo_14.json",
+      "active": true
+    },
+    {
+      "id": "geo_15",
+      "number": 15,
+      "title": "Rocks",
+      "file": "questions/geo_15.json",
+      "active": true
+    },
+    {
+      "id": "geo_16",
+      "number": 16,
+      "title": "Weathering",
+      "file": "questions/geo_16.json",
+      "active": true
+    },
+    {
+      "id": "geo_17",
+      "number": 17,
+      "title": "Mass Wasting",
+      "file": "questions/geo_17.json",
+      "active": true
+    },
+    {
+      "id": "geo_18",
+      "number": 18,
+      "title": "Volcanicity and Earthquakes",
+      "file": "questions/geo_18.json",
+      "active": true
+    },
+    {
+      "id": "geo_19",
+      "number": 19,
+      "title": "Folding and Faulting",
+      "file": "questions/geo_19.json",
+      "active": true
+    },
+    {
+      "id": "geo_20",
+      "number": 20,
+      "title": "River Processes and Landforms",
+      "file": "questions/geo_20.json",
+      "active": true
+    },
+    {
+      "id": "geo_21",
+      "number": 21,
+      "title": "Wind and Desert Landforms",
+      "file": "questions/geo_21.json",
+      "active": true
+    },
+    {
+      "id": "geo_22",
+      "number": 22,
+      "title": "Coastal and Marine Landforms",
+      "file": "questions/geo_22.json",
+      "active": true
+    },
+    {
+      "id": "geo_23",
+      "number": 23,
+      "title": "Weather",
+      "file": "questions/geo_23.json",
+      "active": true
+    },
+    {
+      "id": "geo_24",
+      "number": 24,
+      "title": "Climate",
+      "file": "questions/geo_24.json",
+      "active": true
+    },
+    {
+      "id": "geo_25",
+      "number": 25,
+      "title": "Climate Change",
+      "file": "questions/geo_25.json",
+      "active": true
+    },
+    {
+      "id": "geo_26",
+      "number": 26,
+      "title": "Vegetation",
+      "file": "questions/geo_26.json",
+      "active": true
+    },
+    {
+      "id": "geo_27",
+      "number": 27,
+      "title": "Soils",
+      "file": "questions/geo_27.json",
+      "active": true
+    },
+    {
+      "id": "geo_28",
+      "number": 28,
+      "title": "Population",
+      "file": "questions/geo_28.json",
+      "active": true
+    },
+    {
+      "id": "geo_29",
+      "number": 29,
+      "title": "Settlement",
+      "file": "questions/geo_29.json",
+      "active": true
+    },
+    {
+      "id": "geo_30",
+      "number": 30,
+      "title": "Migration and Urbanization",
+      "file": "questions/geo_30.json",
+      "active": true
+    },
+    {
+      "id": "geo_31",
+      "number": 31,
+      "title": "Agriculture",
+      "file": "questions/geo_31.json",
+      "active": true
+    },
+    {
+      "id": "geo_32",
+      "number": 32,
+      "title": "Fishing",
+      "file": "questions/geo_32.json",
+      "active": true
+    },
+    {
+      "id": "geo_33",
+      "number": 33,
+      "title": "Forestry",
+      "file": "questions/geo_33.json",
+      "active": true
+    },
+    {
+      "id": "geo_34",
+      "number": 34,
+      "title": "Mining",
+      "file": "questions/geo_34.json",
+      "active": true
+    },
+    {
+      "id": "geo_35",
+      "number": 35,
+      "title": "Manufacturing Industries",
+      "file": "questions/geo_35.json",
+      "active": true
+    },
+    {
+      "id": "geo_36",
+      "number": 36,
+      "title": "Transportation",
+      "file": "questions/geo_36.json",
+      "active": true
+    },
+    {
+      "id": "geo_37",
+      "number": 37,
+      "title": "Trade and Commerce",
+      "file": "questions/geo_37.json",
+      "active": true
+    },
+    {
+      "id": "geo_38",
+      "number": 38,
+      "title": "Tourism",
+      "file": "questions/geo_38.json",
+      "active": true
+    },
+    {
+      "id": "geo_39",
+      "number": 39,
+      "title": "Environmental Problems",
+      "file": "questions/geo_39.json",
+      "active": true
+    },
+    {
+      "id": "geo_40",
+      "number": 40,
+      "title": "Regional Geography of Nigeria",
+      "file": "questions/geo_40.json",
+      "active": true
+    },
+    {
+      "id": "geo_41",
+      "number": 41,
+      "title": "ECOWAS",
+      "file": "questions/geo_41.json",
+      "active": true
+    },
+    {
+      "id": "geo_42",
+      "number": 42,
+      "title": "Regional Geography of Africa",
+      "file": "questions/geo_42.json",
+      "active": true
+    }
+  ]
+}
