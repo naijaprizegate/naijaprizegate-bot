@@ -1,1 +1,377 @@
-
+{
+  "subject_code": "eng",
+  "subject_name": "English Language",
+  "topics": [
+    {
+      "id": "eng_01",
+      "number": 1,
+      "title": "Synonyms",
+      "file": "questions/eng_01.json",
+      "active": true
+    },
+    {
+      "id": "eng_02",
+      "number": 2,
+      "title": "Antonyms",
+      "file": "questions/eng_02.json",
+      "active": true
+    },
+    {
+      "id": "eng_03",
+      "number": 3,
+      "title": "Words in Context",
+      "file": "questions/eng_03.json",
+      "active": true
+    },
+    {
+      "id": "eng_04",
+      "number": 4,
+      "title": "Vocabulary Development",
+      "file": "questions/eng_04.json",
+      "active": true
+    },
+    {
+      "id": "eng_05",
+      "number": 5,
+      "title": "Occupation Register",
+      "file": "questions/eng_05.json",
+      "active": true
+    },
+    {
+      "id": "eng_06",
+      "number": 6,
+      "title": "Law and Order Register",
+      "file": "questions/eng_06.json",
+      "active": true
+    },
+    {
+      "id": "eng_07",
+      "number": 7,
+      "title": "Agriculture Register",
+      "file": "questions/eng_07.json",
+      "active": true
+    },
+    {
+      "id": "eng_08",
+      "number": 8,
+      "title": "Health Register",
+      "file": "questions/eng_08.json",
+      "active": true
+    },
+    {
+      "id": "eng_09",
+      "number": 9,
+      "title": "Sports Register",
+      "file": "questions/eng_09.json",
+      "active": true
+    },
+    {
+      "id": "eng_10",
+      "number": 10,
+      "title": "Stock Exchange Register",
+      "file": "questions/eng_10.json",
+      "active": true
+    },
+    {
+      "id": "eng_11",
+      "number": 11,
+      "title": "Environment Register",
+      "file": "questions/eng_11.json",
+      "active": true
+    },
+    {
+      "id": "eng_12",
+      "number": 12,
+      "title": "Building and Construction Register",
+      "file": "questions/eng_12.json",
+      "active": true
+    },
+    {
+      "id": "eng_13",
+      "number": 13,
+      "title": "Culture and Ceremonies Register",
+      "file": "questions/eng_13.json",
+      "active": true
+    },
+    {
+      "id": "eng_14",
+      "number": 14,
+      "title": "Idioms",
+      "file": "questions/eng_14.json",
+      "active": true
+    },
+    {
+      "id": "eng_15",
+      "number": 15,
+      "title": "Phrasal Verbs",
+      "file": "questions/eng_15.json",
+      "active": true
+    },
+    {
+      "id": "eng_16",
+      "number": 16,
+      "title": "Collocations",
+      "file": "questions/eng_16.json",
+      "active": true
+    },
+    {
+      "id": "eng_17",
+      "number": 17,
+      "title": "Euphemisms",
+      "file": "questions/eng_17.json",
+      "active": true
+    },
+    {
+      "id": "eng_18",
+      "number": 18,
+      "title": "Homonyms",
+      "file": "questions/eng_18.json",
+      "active": true
+    },
+    {
+      "id": "eng_19",
+      "number": 19,
+      "title": "Homophones",
+      "file": "questions/eng_19.json",
+      "active": true
+    },
+    {
+      "id": "eng_20",
+      "number": 20,
+      "title": "Confusing Words",
+      "file": "questions/eng_20.json",
+      "active": true
+    },
+    {
+      "id": "eng_21",
+      "number": 21,
+      "title": "Word Formation",
+      "file": "questions/eng_21.json",
+      "active": true
+    },
+    {
+      "id": "eng_22",
+      "number": 22,
+      "title": "Prefixes",
+      "file": "questions/eng_22.json",
+      "active": true
+    },
+    {
+      "id": "eng_23",
+      "number": 23,
+      "title": "Suffixes",
+      "file": "questions/eng_23.json",
+      "active": true
+    },
+    {
+      "id": "eng_24",
+      "number": 24,
+      "title": "Nouns",
+      "file": "questions/eng_24.json",
+      "active": true
+    },
+    {
+      "id": "eng_25",
+      "number": 25,
+      "title": "Pronouns",
+      "file": "questions/eng_25.json",
+      "active": true
+    },
+    {
+      "id": "eng_26",
+      "number": 26,
+      "title": "Verbs",
+      "file": "questions/eng_26.json",
+      "active": true
+    },
+    {
+      "id": "eng_27",
+      "number": 27,
+      "title": "Adjectives",
+      "file": "questions/eng_27.json",
+      "active": true
+    },
+    {
+      "id": "eng_28",
+      "number": 28,
+      "title": "Adverbs",
+      "file": "questions/eng_28.json",
+      "active": true
+    },
+    {
+      "id": "eng_29",
+      "number": 29,
+      "title": "Prepositions",
+      "file": "questions/eng_29.json",
+      "active": true
+    },
+    {
+      "id": "eng_30",
+      "number": 30,
+      "title": "Conjunctions",
+      "file": "questions/eng_30.json",
+      "active": true
+    },
+    {
+      "id": "eng_31",
+      "number": 31,
+      "title": "Tenses",
+      "file": "questions/eng_31.json",
+      "active": true
+    },
+    {
+      "id": "eng_32",
+      "number": 32,
+      "title": "Concord",
+      "file": "questions/eng_32.json",
+      "active": true
+    },
+    {
+      "id": "eng_33",
+      "number": 33,
+      "title": "Active and Passive Voice",
+      "file": "questions/eng_33.json",
+      "active": true
+    },
+    {
+      "id": "eng_34",
+      "number": 34,
+      "title": "Direct and Indirect Speech",
+      "file": "questions/eng_34.json",
+      "active": true
+    },
+    {
+      "id": "eng_35",
+      "number": 35,
+      "title": "Question Tags",
+      "file": "questions/eng_35.json",
+      "active": true
+    },
+    {
+      "id": "eng_36",
+      "number": 36,
+      "title": "Clauses and Phrases",
+      "file": "questions/eng_36.json",
+      "active": true
+    },
+    {
+      "id": "eng_37",
+      "number": 37,
+      "title": "Simple, Compound and Complex Sentences",
+      "file": "questions/eng_37.json",
+      "active": true
+    },
+    {
+      "id": "eng_38",
+      "number": 38,
+      "title": "Punctuation",
+      "file": "questions/eng_38.json",
+      "active": true
+    },
+    {
+      "id": "eng_39",
+      "number": 39,
+      "title": "Spelling",
+      "file": "questions/eng_39.json",
+      "active": true
+    },
+    {
+      "id": "eng_40",
+      "number": 40,
+      "title": "Comprehension",
+      "file": "questions/eng_40.json",
+      "active": true
+    },
+    {
+      "id": "eng_41",
+      "number": 41,
+      "title": "Summary Writing",
+      "file": "questions/eng_41.json",
+      "active": true
+    },
+    {
+      "id": "eng_42",
+      "number": 42,
+      "title": "Narrative Essay",
+      "file": "questions/eng_42.json",
+      "active": true
+    },
+    {
+      "id": "eng_43",
+      "number": 43,
+      "title": "Descriptive Essay",
+      "file": "questions/eng_43.json",
+      "active": true
+    },
+    {
+      "id": "eng_44",
+      "number": 44,
+      "title": "Argumentative Essay",
+      "file": "questions/eng_44.json",
+      "active": true
+    },
+    {
+      "id": "eng_45",
+      "number": 45,
+      "title": "Expository Essay",
+      "file": "questions/eng_45.json",
+      "active": true
+    },
+    {
+      "id": "eng_46",
+      "number": 46,
+      "title": "Informal Letter",
+      "file": "questions/eng_46.json",
+      "active": true
+    },
+    {
+      "id": "eng_47",
+      "number": 47,
+      "title": "Formal Letter",
+      "file": "questions/eng_47.json",
+      "active": true
+    },
+    {
+      "id": "eng_48",
+      "number": 48,
+      "title": "Speech Writing",
+      "file": "questions/eng_48.json",
+      "active": true
+    },
+    {
+      "id": "eng_49",
+      "number": 49,
+      "title": "Report Writing",
+      "file": "questions/eng_49.json",
+      "active": true
+    },
+    {
+      "id": "eng_50",
+      "number": 50,
+      "title": "Oral English - Vowels",
+      "file": "questions/eng_50.json",
+      "active": true
+    },
+    {
+      "id": "eng_51",
+      "number": 51,
+      "title": "Oral English - Consonants",
+      "file": "questions/eng_51.json",
+      "active": true
+    },
+    {
+      "id": "eng_52",
+      "number": 52,
+      "title": "Minimal Pairs",
+      "file": "questions/eng_52.json",
+      "active": true
+    },
+    {
+      "id": "eng_53",
+      "number": 53,
+      "title": "Stress and Intonation",
+      "file": "questions/eng_53.json",
+      "active": true
+    }
+  ]
+}
