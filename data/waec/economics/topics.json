@@ -1,0 +1,363 @@
+{
+  "subject_code": "econ",
+  "subject_name": "Economics",
+  "topics": [
+    {
+      "id": "econ_01",
+      "number": 1,
+      "title": "Scarcity and Choice",
+      "file": "questions/econ_01.json",
+      "active": true
+    },
+    {
+      "id": "econ_02",
+      "number": 2,
+      "title": "Scale of Preference",
+      "file": "questions/econ_02.json",
+      "active": true
+    },
+    {
+      "id": "econ_03",
+      "number": 3,
+      "title": "Opportunity Cost",
+      "file": "questions/econ_03.json",
+      "active": true
+    },
+    {
+      "id": "econ_04",
+      "number": 4,
+      "title": "Production Possibility Curve",
+      "file": "questions/econ_04.json",
+      "active": true
+    },
+    {
+      "id": "econ_05",
+      "number": 5,
+      "title": "Economic Activities",
+      "file": "questions/econ_05.json",
+      "active": true
+    },
+    {
+      "id": "econ_06",
+      "number": 6,
+      "title": "Factors of Production",
+      "file": "questions/econ_06.json",
+      "active": true
+    },
+    {
+      "id": "econ_07",
+      "number": 7,
+      "title": "Land",
+      "file": "questions/econ_07.json",
+      "active": true
+    },
+    {
+      "id": "econ_08",
+      "number": 8,
+      "title": "Labour",
+      "file": "questions/econ_08.json",
+      "active": true
+    },
+    {
+      "id": "econ_09",
+      "number": 9,
+      "title": "Capital",
+      "file": "questions/econ_09.json",
+      "active": true
+    },
+    {
+      "id": "econ_10",
+      "number": 10,
+      "title": "Entrepreneurship",
+      "file": "questions/econ_10.json",
+      "active": true
+    },
+    {
+      "id": "econ_11",
+      "number": 11,
+      "title": "Economic Systems",
+      "file": "questions/econ_11.json",
+      "active": true
+    },
+    {
+      "id": "econ_12",
+      "number": 12,
+      "title": "Capitalism",
+      "file": "questions/econ_12.json",
+      "active": true
+    },
+    {
+      "id": "econ_13",
+      "number": 13,
+      "title": "Socialism",
+      "file": "questions/econ_13.json",
+      "active": true
+    },
+    {
+      "id": "econ_14",
+      "number": 14,
+      "title": "Mixed Economy",
+      "file": "questions/econ_14.json",
+      "active": true
+    },
+    {
+      "id": "econ_15",
+      "number": 15,
+      "title": "Tables, Graphs and Charts",
+      "file": "questions/econ_15.json",
+      "active": true
+    },
+    {
+      "id": "econ_16",
+      "number": 16,
+      "title": "Mean, Median and Mode",
+      "file": "questions/econ_16.json",
+      "active": true
+    },
+    {
+      "id": "econ_17",
+      "number": 17,
+      "title": "Demand",
+      "file": "questions/econ_17.json",
+      "active": true
+    },
+    {
+      "id": "econ_18",
+      "number": 18,
+      "title": "Elasticity of Demand",
+      "file": "questions/econ_18.json",
+      "active": true
+    },
+    {
+      "id": "econ_19",
+      "number": 19,
+      "title": "Supply",
+      "file": "questions/econ_19.json",
+      "active": true
+    },
+    {
+      "id": "econ_20",
+      "number": 20,
+      "title": "Elasticity of Supply",
+      "file": "questions/econ_20.json",
+      "active": true
+    },
+    {
+      "id": "econ_21",
+      "number": 21,
+      "title": "Utility",
+      "file": "questions/econ_21.json",
+      "active": true
+    },
+    {
+      "id": "econ_22",
+      "number": 22,
+      "title": "Consumer Behaviour",
+      "file": "questions/econ_22.json",
+      "active": true
+    },
+    {
+      "id": "econ_23",
+      "number": 23,
+      "title": "Price Determination",
+      "file": "questions/econ_23.json",
+      "active": true
+    },
+    {
+      "id": "econ_24",
+      "number": 24,
+      "title": "Theory of Production",
+      "file": "questions/econ_24.json",
+      "active": true
+    },
+    {
+      "id": "econ_25",
+      "number": 25,
+      "title": "Division of Labour and Specialization",
+      "file": "questions/econ_25.json",
+      "active": true
+    },
+    {
+      "id": "econ_26",
+      "number": 26,
+      "title": "Scale of Production",
+      "file": "questions/econ_26.json",
+      "active": true
+    },
+    {
+      "id": "econ_27",
+      "number": 27,
+      "title": "Theory of Cost",
+      "file": "questions/econ_27.json",
+      "active": true
+    },
+    {
+      "id": "econ_28",
+      "number": 28,
+      "title": "Theory of Revenue",
+      "file": "questions/econ_28.json",
+      "active": true
+    },
+    {
+      "id": "econ_29",
+      "number": 29,
+      "title": "Market Structures",
+      "file": "questions/econ_29.json",
+      "active": true
+    },
+    {
+      "id": "econ_30",
+      "number": 30,
+      "title": "Perfect Competition",
+      "file": "questions/econ_30.json",
+      "active": true
+    },
+    {
+      "id": "econ_31",
+      "number": 31,
+      "title": "Monopoly",
+      "file": "questions/econ_31.json",
+      "active": true
+    },
+    {
+      "id": "econ_32",
+      "number": 32,
+      "title": "Monopolistic Competition",
+      "file": "questions/econ_32.json",
+      "active": true
+    },
+    {
+      "id": "econ_33",
+      "number": 33,
+      "title": "Oligopoly",
+      "file": "questions/econ_33.json",
+      "active": true
+    },
+    {
+      "id": "econ_34",
+      "number": 34,
+      "title": "Business Organizations",
+      "file": "questions/econ_34.json",
+      "active": true
+    },
+    {
+      "id": "econ_35",
+      "number": 35,
+      "title": "Distributive Trade",
+      "file": "questions/econ_35.json",
+      "active": true
+    },
+    {
+      "id": "econ_36",
+      "number": 36,
+      "title": "Population",
+      "file": "questions/econ_36.json",
+      "active": true
+    },
+    {
+      "id": "econ_37",
+      "number": 37,
+      "title": "Labour Market",
+      "file": "questions/econ_37.json",
+      "active": true
+    },
+    {
+      "id": "econ_38",
+      "number": 38,
+      "title": "Agriculture",
+      "file": "questions/econ_38.json",
+      "active": true
+    },
+    {
+      "id": "econ_39",
+      "number": 39,
+      "title": "Industrialization",
+      "file": "questions/econ_39.json",
+      "active": true
+    },
+    {
+      "id": "econ_40",
+      "number": 40,
+      "title": "National Income",
+      "file": "questions/econ_40.json",
+      "active": true
+    },
+    {
+      "id": "econ_41",
+      "number": 41,
+      "title": "Money",
+      "file": "questions/econ_41.json",
+      "active": true
+    },
+    {
+      "id": "econ_42",
+      "number": 42,
+      "title": "Inflation",
+      "file": "questions/econ_42.json",
+      "active": true
+    },
+    {
+      "id": "econ_43",
+      "number": 43,
+      "title": "Financial Institutions",
+      "file": "questions/econ_43.json",
+      "active": true
+    },
+    {
+      "id": "econ_44",
+      "number": 44,
+      "title": "Public Finance",
+      "file": "questions/econ_44.json",
+      "active": true
+    },
+    {
+      "id": "econ_45",
+      "number": 45,
+      "title": "Taxation",
+      "file": "questions/econ_45.json",
+      "active": true
+    },
+    {
+      "id": "econ_46",
+      "number": 46,
+      "title": "Economic Development and Planning",
+      "file": "questions/econ_46.json",
+      "active": true
+    },
+    {
+      "id": "econ_47",
+      "number": 47,
+      "title": "International Trade",
+      "file": "questions/econ_47.json",
+      "active": true
+    },
+    {
+      "id": "econ_48",
+      "number": 48,
+      "title": "Balance of Payments",
+      "file": "questions/econ_48.json",
+      "active": true
+    },
+    {
+      "id": "econ_49",
+      "number": 49,
+      "title": "Economic Integration",
+      "file": "questions/econ_49.json",
+      "active": true
+    },
+    {
+      "id": "econ_50",
+      "number": 50,
+      "title": "International Economic Organizations",
+      "file": "questions/econ_50.json",
+      "active": true
+    },
+    {
+      "id": "econ_51",
+      "number": 51,
+      "title": "Natural Resources",
+      "file": "questions/econ_51.json",
+      "active": true
+    }
+  ]
+}
