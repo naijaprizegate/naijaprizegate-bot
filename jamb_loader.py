@@ -294,9 +294,186 @@ def get_questions_for_topic(subject_code: str, topic_id: str) -> List[Dict[str, 
     question_file = subject_folder / relative_file
     questions = load_json_file(question_file)
 
-    active_questions = [q for q in questions if q.get("active") is True]
+    active_questions=[]
+
+    for q in questions:
+
+        if q.get("active") is not True:
+            continue
+
+        q["_has_media"]=question_has_media(q)
+
+        q["_media_type"]=get_question_media_type(q)
+
+        active_questions.append(q)
+
     return active_questions
 
+
+# ====================================================================
+# QUESTION MEDIA SUPPORT
+# ====================================================================
+
+SUPPORTED_MEDIA_TYPES = {
+    "image",
+    "photo",
+    "svg",
+    "diagram"
+}
+
+
+def question_has_media(question: Dict[str, Any]) -> bool:
+    """
+    Return True if a question contains usable media.
+
+    Expected schema:
+
+    "media":{
+        "enabled":true,
+        "type":"image",
+        "file":"media/physics/circuit_01.png",
+        "caption":"Circuit diagram"
+    }
+
+    Older questions safely return False.
+    """
+
+    media = question.get("media")
+
+    if not isinstance(media, dict):
+        return False
+
+    if media.get("enabled") is not True:
+        return False
+
+    file_path = str(media.get("file") or "").strip()
+
+    if not file_path:
+        return False
+
+    return True
+
+
+def get_question_media(question: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    """
+    Return media object or None.
+    """
+
+    media = question.get("media")
+
+    if not isinstance(media, dict):
+        return None
+
+    return media
+
+
+def get_question_media_type(
+    question: Dict[str, Any]
+) -> Optional[str]:
+
+    media = get_question_media(question)
+
+    if not media:
+        return None
+
+    media_type = str(
+        media.get("type") or ""
+    ).strip().lower()
+
+    if media_type not in SUPPORTED_MEDIA_TYPES:
+        return None
+
+    return media_type
+
+
+def get_question_media_caption(
+    question: Dict[str, Any]
+) -> str:
+
+    media = get_question_media(question)
+
+    if not media:
+        return ""
+
+    return str(
+        media.get("caption") or ""
+    ).strip()
+
+
+def get_question_media_path(
+    subject_code: str,
+    question: Dict[str, Any]
+) -> Optional[Path]:
+    """
+    Resolve full filesystem path.
+
+    Example:
+
+    data/jamb/physics/media/circuit01.png
+    """
+
+    if not question_has_media(question):
+        return None
+
+    media = question["media"]
+
+    relative_file = str(
+        media.get("file") or ""
+    ).strip()
+
+    if not relative_file:
+        return None
+
+    subject_folder = get_subject_folder(
+        subject_code
+    )
+
+    path = subject_folder / relative_file
+
+    if not path.exists():
+        return None
+
+    return path
+
+
+def validate_question_media(
+    subject_code: str,
+    question: Dict[str, Any]
+) -> List[str]:
+    """
+    Validate media setup.
+
+    Returns:
+        [] if valid
+    """
+
+    errors = []
+
+    if not question_has_media(question):
+        return errors
+
+    media = question["media"]
+
+    media_type = get_question_media_type(question)
+
+    if not media_type:
+        errors.append(
+            f"{question.get('id')} invalid media type."
+        )
+
+    path = get_question_media_path(
+        subject_code,
+        question
+    )
+
+    if path is None:
+
+        errors.append(
+            f"{question.get('id')} media file missing: "
+            f"{media.get('file')}"
+        )
+
+    return errors
 
 def get_questions_for_topic_ids(
     subject_code: str,
@@ -808,6 +985,3 @@ def format_course_subjects_for_message(course_code: str) -> str:
         lines.extend(["", f"Note: {notes}"])
 
     return "\n".join(lines)
-
-
-
