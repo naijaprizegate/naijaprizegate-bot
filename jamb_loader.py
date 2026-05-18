@@ -12,51 +12,61 @@ BASE_DIR = Path(__file__).resolve().parent
 JAMB_DATA_DIR = BASE_DIR / "data" / "jamb"
 
 ENG_EXACT_BLUEPRINT = [
-    {"name": "comprehension", "topic_ids": ["eng_01"], "count": 5},
+    {
+        "name": "comprehension",
+        "topic_ids": ["eng_01"],
+        "count": 5
+    },
 
-    {"name": "cloze", "topic_ids": ["eng_03"], "count": 10},
+    {
+        "name": "summary",
+        "topic_ids": ["eng_02"],
+        "count": 10
+    },
 
-    {"name": "summary", "topic_ids": ["eng_02"], "count": 10},
+    {
+        "name": "cloze",
+        "topic_ids": ["eng_03"],
+        "count": 10
+    },
 
     {
         "name": "sentence_interpretation",
         "topic_ids": ["eng_05"],
-        "count": 5,
-    },
-
-    {
-        "name": "antonyms",
-        "topic_ids": ["eng_07"],
-        "count": 5,
+        "count": 5
     },
 
     {
         "name": "synonyms",
         "topic_ids": ["eng_06"],
-        "count": 5,
+        "count": 5
+    },
+
+    {
+        "name": "antonyms",
+        "topic_ids": ["eng_07"],
+        "count": 5
     },
 
     {
         "name": "sentence_completion",
         "topic_ids": [
-            "eng_04",
-            "eng_08",
-            "eng_09",
-            "eng_10",
-            "eng_11",
-            "eng_12",
-            "eng_13",
-            "eng_14",
-            "eng_15",
-            "eng_16",
-            "eng_17",
-            "eng_18",
-            "eng_19",
-            "eng_20",
-            "eng_21",
-            "eng_22",
-            "eng_23",
-            "eng_24"
+            "eng_04",  # Sentence Completion
+            "eng_08",  # Homonyms
+            "eng_09",  # Homophones
+            "eng_10",  # Phrasal Verbs
+            "eng_11",  # Idioms and Figurative Expressions
+            "eng_12",  # Collocations
+            "eng_13",  # Registers
+            "eng_14",  # Word Classes and Their Functions
+            "eng_15",  # Clauses
+            "eng_16",  # Sentence Patterns
+            "eng_17",  # Tense and Aspect
+            "eng_18",  # Concord
+            "eng_19",  # Degree of Comparison
+            "eng_20",  # Question Tags
+            "eng_21",  # Active and Passive Voice
+            "eng_22"   # Direct and Indirect Speech
         ],
         "count": 10
     },
@@ -64,16 +74,16 @@ ENG_EXACT_BLUEPRINT = [
     {
         "name": "oral_forms",
         "topic_ids": [
-            "eng_25",
-            "eng_26",
-            "eng_27",
-            "eng_28",
-            "eng_29",
-            "eng_30",
-            "eng_31",
-            "eng_32",
-            "eng_33",
-            "eng_34"
+            "eng_25",  # Vowels
+            "eng_26",  # Monophthongs
+            "eng_27",  # Diphthongs
+            "eng_28",  # Consonants
+            "eng_29",  # Consonant Clusters
+            "eng_30",  # Rhymes
+            "eng_31",  # Minimal Pairs
+            "eng_32",  # Word Stress
+            "eng_33",  # Emphatic Stress
+            "eng_34"   # Intonation
         ],
         "count": 10
     }
