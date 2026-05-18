@@ -5,169 +5,337 @@
     {
       "id": "crs_01",
       "number": 1,
-      "title": "The Sovereignty of God",
+      "title": "Creation of the World",
       "file": "questions/crs_01.json",
       "active": true
     },
     {
       "id": "crs_02",
       "number": 2,
-      "title": "The Covenant",
+      "title": "Creation of Man",
       "file": "questions/crs_02.json",
       "active": true
     },
     {
       "id": "crs_03",
       "number": 3,
-      "title": "Leadership in Israel",
+      "title": "God's Sovereignty",
       "file": "questions/crs_03.json",
       "active": true
     },
     {
       "id": "crs_04",
       "number": 4,
-      "title": "Divine Guidance and Protection",
+      "title": "Covenant with Noah",
       "file": "questions/crs_04.json",
       "active": true
     },
     {
       "id": "crs_05",
       "number": 5,
-      "title": "Prophets and Prophecy",
+      "title": "Covenant with Abraham",
       "file": "questions/crs_05.json",
       "active": true
     },
     {
       "id": "crs_06",
       "number": 6,
-      "title": "The Kingdom of Israel",
+      "title": "Covenant at Sinai",
       "file": "questions/crs_06.json",
       "active": true
     },
     {
       "id": "crs_07",
       "number": 7,
-      "title": "Religious Reforms in Judah",
+      "title": "Leadership of Moses",
       "file": "questions/crs_07.json",
       "active": true
     },
     {
       "id": "crs_08",
       "number": 8,
-      "title": "Social Justice and True Religion",
+      "title": "Leadership of Joshua",
       "file": "questions/crs_08.json",
       "active": true
     },
     {
       "id": "crs_09",
       "number": 9,
-      "title": "Holiness and Divine Call",
+      "title": "Leadership of Deborah",
       "file": "questions/crs_09.json",
       "active": true
     },
     {
       "id": "crs_10",
       "number": 10,
-      "title": "Punishment and Hope",
+      "title": "Leadership of Samuel",
       "file": "questions/crs_10.json",
       "active": true
     },
     {
       "id": "crs_11",
       "number": 11,
-      "title": "The Birth and Early Life of Jesus",
+      "title": "Guidance Through Dreams and Visions",
       "file": "questions/crs_11.json",
       "active": true
     },
     {
       "id": "crs_12",
       "number": 12,
-      "title": "The Ministry of Jesus",
+      "title": "Divine Protection of Israel",
       "file": "questions/crs_12.json",
       "active": true
     },
     {
       "id": "crs_13",
       "number": 13,
-      "title": "The Teachings of Jesus",
+      "title": "Call of the Prophets",
       "file": "questions/crs_13.json",
       "active": true
     },
     {
       "id": "crs_14",
       "number": 14,
-      "title": "The Parables of Jesus",
+      "title": "Prophet Elijah",
       "file": "questions/crs_14.json",
       "active": true
     },
     {
       "id": "crs_15",
       "number": 15,
-      "title": "The Miracles of Jesus",
+      "title": "Prophet Elisha",
       "file": "questions/crs_15.json",
       "active": true
     },
     {
       "id": "crs_16",
       "number": 16,
-      "title": "The Discipleship",
+      "title": "Prophet Isaiah",
       "file": "questions/crs_16.json",
       "active": true
     },
     {
       "id": "crs_17",
       "number": 17,
-      "title": "The Passion of Christ",
+      "title": "Prophet Jeremiah",
       "file": "questions/crs_17.json",
       "active": true
     },
     {
       "id": "crs_18",
       "number": 18,
-      "title": "Resurrection and Ascension",
+      "title": "Prophet Ezekiel",
       "file": "questions/crs_18.json",
       "active": true
     },
     {
       "id": "crs_19",
       "number": 19,
-      "title": "The Early Church",
+      "title": "Saul as King",
       "file": "questions/crs_19.json",
       "active": true
     },
     {
       "id": "crs_20",
       "number": 20,
-      "title": "The Missionary Activities of Paul",
+      "title": "David as King",
       "file": "questions/crs_20.json",
       "active": true
     },
     {
       "id": "crs_21",
       "number": 21,
-      "title": "Christian Living",
+      "title": "Solomon as King",
       "file": "questions/crs_21.json",
       "active": true
     },
     {
       "id": "crs_22",
       "number": 22,
-      "title": "The Holy Spirit",
+      "title": "Division of the Kingdom",
       "file": "questions/crs_22.json",
       "active": true
     },
     {
       "id": "crs_23",
       "number": 23,
-      "title": "Prayer and Worship",
+      "title": "Religious Reforms of Josiah",
       "file": "questions/crs_23.json",
       "active": true
     },
     {
       "id": "crs_24",
       "number": 24,
-      "title": "Christian Ethics",
+      "title": "Social Justice",
       "file": "questions/crs_24.json",
+      "active": true
+    },
+    {
+      "id": "crs_25",
+      "number": 25,
+      "title": "Holiness of God",
+      "file": "questions/crs_25.json",
+      "active": true
+    },
+    {
+      "id": "crs_26",
+      "number": 26,
+      "title": "Exile and Restoration",
+      "file": "questions/crs_26.json",
+      "active": true
+    },
+    {
+      "id": "crs_27",
+      "number": 27,
+      "title": "Birth of Jesus",
+      "file": "questions/crs_27.json",
+      "active": true
+    },
+    {
+      "id": "crs_28",
+      "number": 28,
+      "title": "Baptism and Temptation of Jesus",
+      "file": "questions/crs_28.json",
+      "active": true
+    },
+    {
+      "id": "crs_29",
+      "number": 29,
+      "title": "Teaching Ministry of Jesus",
+      "file": "questions/crs_29.json",
+      "active": true
+    },
+    {
+      "id": "crs_30",
+      "number": 30,
+      "title": "Sermon on the Mount",
+      "file": "questions/crs_30.json",
+      "active": true
+    },
+    {
+      "id": "crs_31",
+      "number": 31,
+      "title": "Parable of the Good Samaritan",
+      "file": "questions/crs_31.json",
+      "active": true
+    },
+    {
+      "id": "crs_32",
+      "number": 32,
+      "title": "Parable of the Prodigal Son",
+      "file": "questions/crs_32.json",
+      "active": true
+    },
+    {
+      "id": "crs_33",
+      "number": 33,
+      "title": "Miracles of Jesus",
+      "file": "questions/crs_33.json",
+      "active": true
+    },
+    {
+      "id": "crs_34",
+      "number": 34,
+      "title": "Call of the Disciples",
+      "file": "questions/crs_34.json",
+      "active": true
+    },
+    {
+      "id": "crs_35",
+      "number": 35,
+      "title": "Cost of Discipleship",
+      "file": "questions/crs_35.json",
+      "active": true
+    },
+    {
+      "id": "crs_36",
+      "number": 36,
+      "title": "Last Supper and Betrayal",
+      "file": "questions/crs_36.json",
+      "active": true
+    },
+    {
+      "id": "crs_37",
+      "number": 37,
+      "title": "Trial and Crucifixion of Jesus",
+      "file": "questions/crs_37.json",
+      "active": true
+    },
+    {
+      "id": "crs_38",
+      "number": 38,
+      "title": "Resurrection of Jesus",
+      "file": "questions/crs_38.json",
+      "active": true
+    },
+    {
+      "id": "crs_39",
+      "number": 39,
+      "title": "Ascension and Great Commission",
+      "file": "questions/crs_39.json",
+      "active": true
+    },
+    {
+      "id": "crs_40",
+      "number": 40,
+      "title": "Pentecost and the Early Church",
+      "file": "questions/crs_40.json",
+      "active": true
+    },
+    {
+      "id": "crs_41",
+      "number": 41,
+      "title": "Missionary Journeys of Paul",
+      "file": "questions/crs_41.json",
+      "active": true
+    },
+    {
+      "id": "crs_42",
+      "number": 42,
+      "title": "Christian Love and Service",
+      "file": "questions/crs_42.json",
+      "active": true
+    },
+    {
+      "id": "crs_43",
+      "number": 43,
+      "title": "Christian Marriage and Family Life",
+      "file": "questions/crs_43.json",
+      "active": true
+    },
+    {
+      "id": "crs_44",
+      "number": 44,
+      "title": "Gifts and Fruits of the Holy Spirit",
+      "file": "questions/crs_44.json",
+      "active": true
+    },
+    {
+      "id": "crs_45",
+      "number": 45,
+      "title": "Prayer",
+      "file": "questions/crs_45.json",
+      "active": true
+    },
+    {
+      "id": "crs_46",
+      "number": 46,
+      "title": "Worship",
+      "file": "questions/crs_46.json",
+      "active": true
+    },
+    {
+      "id": "crs_47",
+      "number": 47,
+      "title": "Integrity and Honesty",
+      "file": "questions/crs_47.json",
+      "active": true
+    },
+    {
+      "id": "crs_48",
+      "number": 48,
+      "title": "Justice and Peace",
+      "file": "questions/crs_48.json",
       "active": true
     }
   ]
