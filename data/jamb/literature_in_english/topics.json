@@ -5,106 +5,211 @@
     {
       "id": "lit_01",
       "number": 1,
-      "title": "Literary Appreciation",
+      "title": "Drama: Types and Forms",
       "file": "questions/lit_01.json",
       "active": true
     },
     {
       "id": "lit_02",
       "number": 2,
-      "title": "Poetry",
+      "title": "Drama: Dramatic Techniques",
       "file": "questions/lit_02.json",
       "active": true
     },
     {
       "id": "lit_03",
       "number": 3,
-      "title": "Drama",
+      "title": "Drama: Plot, Theme and Setting",
       "file": "questions/lit_03.json",
       "active": true
     },
     {
       "id": "lit_04",
       "number": 4,
-      "title": "Prose",
+      "title": "Drama: Characterization",
       "file": "questions/lit_04.json",
       "active": true
     },
     {
       "id": "lit_05",
       "number": 5,
-      "title": "Literary Devices",
+      "title": "African Drama Texts",
       "file": "questions/lit_05.json",
       "active": true
     },
     {
       "id": "lit_06",
       "number": 6,
-      "title": "African Poetry",
+      "title": "Non-African Drama Texts",
       "file": "questions/lit_06.json",
       "active": true
     },
     {
       "id": "lit_07",
       "number": 7,
-      "title": "Non-African Poetry",
+      "title": "Shakespearean Drama",
       "file": "questions/lit_07.json",
       "active": true
     },
     {
       "id": "lit_08",
       "number": 8,
-      "title": "African Drama",
+      "title": "Prose: Types and Forms",
       "file": "questions/lit_08.json",
       "active": true
     },
     {
       "id": "lit_09",
       "number": 9,
-      "title": "Non-African Drama",
+      "title": "Prose: Narrative Techniques",
       "file": "questions/lit_09.json",
       "active": true
     },
     {
       "id": "lit_10",
       "number": 10,
-      "title": "African Prose",
+      "title": "Prose: Point of View",
       "file": "questions/lit_10.json",
       "active": true
     },
     {
       "id": "lit_11",
       "number": 11,
-      "title": "Non-African Prose",
+      "title": "Prose: Plot, Theme and Setting",
       "file": "questions/lit_11.json",
       "active": true
     },
     {
       "id": "lit_12",
       "number": 12,
-      "title": "Oral Literature",
+      "title": "Prose: Characterization",
       "file": "questions/lit_12.json",
       "active": true
     },
     {
       "id": "lit_13",
       "number": 13,
-      "title": "Themes in Literature",
+      "title": "African Prose Texts",
       "file": "questions/lit_13.json",
       "active": true
     },
     {
       "id": "lit_14",
       "number": 14,
-      "title": "Characterization",
+      "title": "Non-African Prose Texts",
       "file": "questions/lit_14.json",
       "active": true
     },
     {
       "id": "lit_15",
       "number": 15,
-      "title": "Literary Principles and Criticism",
+      "title": "Poetry: Types and Forms",
       "file": "questions/lit_15.json",
+      "active": true
+    },
+    {
+      "id": "lit_16",
+      "number": 16,
+      "title": "Poetry: Sound Devices",
+      "file": "questions/lit_16.json",
+      "active": true
+    },
+    {
+      "id": "lit_17",
+      "number": 17,
+      "title": "Poetry: Imagery and Diction",
+      "file": "questions/lit_17.json",
+      "active": true
+    },
+    {
+      "id": "lit_18",
+      "number": 18,
+      "title": "Poetry: Persona, Mood and Tone",
+      "file": "questions/lit_18.json",
+      "active": true
+    },
+    {
+      "id": "lit_19",
+      "number": 19,
+      "title": "Poetry: Theme and Interpretation",
+      "file": "questions/lit_19.json",
+      "active": true
+    },
+    {
+      "id": "lit_20",
+      "number": 20,
+      "title": "African Poetry Texts",
+      "file": "questions/lit_20.json",
+      "active": true
+    },
+    {
+      "id": "lit_21",
+      "number": 21,
+      "title": "Non-African Poetry Texts",
+      "file": "questions/lit_21.json",
+      "active": true
+    },
+    {
+      "id": "lit_22",
+      "number": 22,
+      "title": "Figures of Speech",
+      "file": "questions/lit_22.json",
+      "active": true
+    },
+    {
+      "id": "lit_23",
+      "number": 23,
+      "title": "Literary Terms and Concepts",
+      "file": "questions/lit_23.json",
+      "active": true
+    },
+    {
+      "id": "lit_24",
+      "number": 24,
+      "title": "Literary Principles",
+      "file": "questions/lit_24.json",
+      "active": true
+    },
+    {
+      "id": "lit_25",
+      "number": 25,
+      "title": "Themes in Literature",
+      "file": "questions/lit_25.json",
+      "active": true
+    },
+    {
+      "id": "lit_26",
+      "number": 26,
+      "title": "Oral Literature",
+      "file": "questions/lit_26.json",
+      "active": true
+    },
+    {
+      "id": "lit_27",
+      "number": 27,
+      "title": "Literary Appreciation: Unseen Drama",
+      "file": "questions/lit_27.json",
+      "active": true
+    },
+    {
+      "id": "lit_28",
+      "number": 28,
+      "title": "Literary Appreciation: Unseen Prose",
+      "file": "questions/lit_28.json",
+      "active": true
+    },
+    {
+      "id": "lit_29",
+      "number": 29,
+      "title": "Literary Appreciation: Unseen Poetry",
+      "file": "questions/lit_29.json",
+      "active": true
+    },
+    {
+      "id": "lit_30",
+      "number": 30,
+      "title": "Literary Criticism and Interpretation",
+      "file": "questions/lit_30.json",
       "active": true
     }
   ]
