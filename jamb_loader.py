@@ -13,15 +13,33 @@ JAMB_DATA_DIR = BASE_DIR / "data" / "jamb"
 
 ENG_EXACT_BLUEPRINT = [
     {"name": "comprehension", "topic_ids": ["eng_01"], "count": 5},
+
     {"name": "cloze", "topic_ids": ["eng_03"], "count": 10},
+
     {"name": "summary", "topic_ids": ["eng_02"], "count": 10},
-    {"name": "sentence_interpretation", "topic_ids": ["eng_04"], "count": 5},
-    {"name": "antonyms", "topic_ids": ["eng_06"], "count": 5},
-    {"name": "synonyms", "topic_ids": ["eng_05"], "count": 5},
+
+    {
+        "name": "sentence_interpretation",
+        "topic_ids": ["eng_05"],
+        "count": 5,
+    },
+
+    {
+        "name": "antonyms",
+        "topic_ids": ["eng_07"],
+        "count": 5,
+    },
+
+    {
+        "name": "synonyms",
+        "topic_ids": ["eng_06"],
+        "count": 5,
+    },
+
     {
         "name": "sentence_completion",
         "topic_ids": [
-            "eng_07",
+            "eng_04",
             "eng_08",
             "eng_09",
             "eng_10",
@@ -30,16 +48,36 @@ ENG_EXACT_BLUEPRINT = [
             "eng_13",
             "eng_14",
             "eng_15",
+            "eng_16",
+            "eng_17",
+            "eng_18",
+            "eng_19",
+            "eng_20",
+            "eng_21",
+            "eng_22",
+            "eng_23",
+            "eng_24"
         ],
-        "count": 10,
+        "count": 10
     },
+
     {
         "name": "oral_forms",
-        "topic_ids": ["eng_16", "eng_17", "eng_18", "eng_19", "eng_20"],
-        "count": 10,
-    },
+        "topic_ids": [
+            "eng_25",
+            "eng_26",
+            "eng_27",
+            "eng_28",
+            "eng_29",
+            "eng_30",
+            "eng_31",
+            "eng_32",
+            "eng_33",
+            "eng_34"
+        ],
+        "count": 10
+    }
 ]
-
 
 def load_json_file(file_path: Path) -> Any:
     """
