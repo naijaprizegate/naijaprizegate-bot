@@ -1,0 +1,120 @@
+{
+  "vernier": [
+    {
+      "id":"vernier_001",
+      "file":"media/vernier/vernier_001.png",
+      "reading":"1.65 cm",
+      "main_scale":"1.60 cm",
+      "coincidence":5,
+      "least_count":"0.01 cm"
+    },
+    {
+      "id":"vernier_002",
+      "file":"media/vernier/vernier_002.png",
+      "reading":"2.36 cm",
+      "main_scale":"2.30 cm",
+      "coincidence":6,
+      "least_count":"0.01 cm"
+    }
+  ],
+
+  "micrometer":[
+    {
+      "id":"micro_001",
+      "file":"media/micrometer/micro_001.png",
+      "reading":"3.25 mm",
+      "main_scale":"3.00 mm",
+      "thimble":25,
+      "least_count":"0.01 mm"
+    },
+    {
+      "id":"micro_002",
+      "file":"media/micrometer/micro_002.png",
+      "reading":"4.72 mm",
+      "main_scale":"4.50 mm",
+      "thimble":22,
+      "least_count":"0.01 mm"
+    },
+    {
+      "id":"micro_003",
+      "file":"media/micrometer/micro_003.png",
+      "reading":"5.38 mm",
+      "main_scale":"5.00 mm",
+      "thimble":38,
+      "least_count":"0.01 mm"
+    }
+  ],
+
+  "beam_balance":[
+    {
+      "id":"beam_001",
+      "file":"media/beam_balance/beam_001.png",
+      "reading":"50 g"
+    },
+    {
+      "id":"beam_002",
+      "file":"media/beam_balance/beam_002.png",
+      "reading":"75 g"
+    },
+    {
+      "id":"beam_003",
+      "file":"media/beam_balance/beam_003.png",
+      "reading":"120 g"
+    }
+  ],
+
+  "metre_rule":[
+    {
+      "id":"rule_001",
+      "file":"media/metre_rule/rule_001.png",
+      "reading":"6.4 cm"
+    },
+    {
+      "id":"rule_002",
+      "file":"media/metre_rule/rule_002.png",
+      "reading":"12.8 cm"
+    }
+  ],
+
+  "measuring_cylinder":[
+    {
+      "id":"cylinder_001",
+      "file":"media/measuring_cylinder/cylinder_001.png",
+      "reading":"32 cm³"
+    },
+    {
+      "id":"cylinder_002",
+      "file":"media/measuring_cylinder/cylinder_002.png",
+      "reading":"46 cm³"
+    }
+  ],
+
+  "stopwatch":[
+    {
+      "id":"watch_001",
+      "file":"media/stopwatch/watch_001.png",
+      "reading":"25.4 s"
+    }
+  ],
+
+  "errors":[
+    {
+      "id":"zero_error_001",
+      "file":"media/errors/zero_error_001.png",
+      "type":"positive_zero_error"
+    },
+    {
+      "id":"zero_error_002",
+      "file":"media/errors/zero_error_002.png",
+      "type":"negative_zero_error"
+    }
+  ],
+
+  "scales":[
+    {
+      "id":"scale_001",
+      "file":"media/scales/scale_001.png",
+      "type":"instrument_reading"
+    }
+  ]
+}
