@@ -2194,6 +2194,7 @@ async def jamb_answer_details_handler(update: Update, context: ContextTypes.DEFA
 
     final_answer = explanation.get("final_answer", "")
     simple_explanation = explanation.get("simple_explanation", "")
+    exam_tip = explanation.get("exam_tip", "")
 
     lines = ["📖 *Answer Details*\n"]
 
@@ -2212,6 +2213,9 @@ async def jamb_answer_details_handler(update: Update, context: ContextTypes.DEFA
     if final_answer:
         lines.append(f"*Final Answer*\n{md_escape(str(final_answer))}\n")
 
+    if exam_tip:
+        lines.append(f"*Exam Tip*\n{md_escape(str(exam_tip))}\n")
+
     if simple_explanation:
         lines.append(f"*Simple Explanation*\n{md_escape(str(simple_explanation))}")
 
@@ -2220,7 +2224,7 @@ async def jamb_answer_details_handler(update: Update, context: ContextTypes.DEFA
         parse_mode="MarkdownV2",
         reply_markup=make_after_details_keyboard(),
     )
-
+    
 # ------------------------------
 # JAMB Next Handler
 # -----------------------------
