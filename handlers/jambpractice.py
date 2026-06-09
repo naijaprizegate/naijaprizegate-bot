@@ -2270,6 +2270,7 @@ async def jamb_answer_details_handler(
         )
 
         lines.append("")
+        lines.append("━━━━━━━━━━━━")
 
     # ----------------------------------------
     # Exam Tip
