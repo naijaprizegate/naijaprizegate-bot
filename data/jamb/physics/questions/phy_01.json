@@ -1,494 +1,313 @@
 [
   {
-    "id":"phy_01_q001",
-    "subject_code":"phy",
-    "subject_name":"Physics",
-    "topic_id":"phy_01",
-    "topic_title":"Measurements, Units and Dimensions",
-    "subtopic":"Introduction to Measurement",
-    "difficulty":"medium",
-    "question_type":"mcq",
-
-    "question":"The main reason physical quantities are measured in standard units is to ensure",
-
-    "options":{
-      "A":"that calculations become longer",
-      "B":"uniformity and easy comparison of results",
-      "C":"all instruments give identical readings",
-      "D":"experimental errors are completely eliminated"
+    "id": "phy_01_q001",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Various",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sample JAMB-standard Physics question 1.",
+    "options": {
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-
-    "answer":"B",
-    "answer_text":"uniformity and easy comparison of results",
-
-    "explanation":{
-      "question_restate":"The question tests why standard measurement systems are important in Physics.",
-
-      "principle":"Measurements become scientifically useful only when everyone uses agreed standards.",
-
-      "steps":[
-        "Imagine two students measuring the same table using different personal units such as hand spans and footsteps.",
-        "Their results may differ even if they measured correctly.",
-        "To solve this problem, Physics uses standard units such as metre (m), kilogram (kg) and second (s).",
-        "These units make measurements universal and allow scientists around the world to compare results reliably.",
-        "Standard units improve consistency, but they do not remove all experimental errors.",
-        "Therefore the correct answer is uniformity and easy comparison of results."
+    "answer": "A",
+    "answer_text": "Option A",
+    "explanation": {
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
+      "steps": [
+        "Step 1",
+        "Step 2"
       ],
-
-      "final_answer":"B. uniformity and easy comparison of results",
-
-      "simple_explanation":"JAMB often asks questions that test why standard units exist rather than simply asking students to memorize units. Think of standard units as a common language for scientists. For fuller beginner lessons and worked examples, visit our Tutorial section."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-
-    "tags":[
-      "measurement",
-      "SI_units",
-      "standards"
-    ],
-
-    "active":true
+    "active": true
   },
-
   {
-    "id":"phy_01_q002",
-    "subject_code":"phy",
-    "subject_name":"Physics",
-    "topic_id":"phy_01",
-    "topic_title":"Measurements, Units and Dimensions",
-    "subtopic":"Physical Quantities",
-
-    "difficulty":"medium",
-    "question_type":"mcq",
-
-    "question":"Which of the following quantities is fundamental rather than derived?",
-
-    "options":{
-      "A":"Density",
-      "B":"Velocity",
-      "C":"Length",
-      "D":"Pressure"
+    "id": "phy_01_q002",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Various",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sample JAMB-standard Physics question 2.",
+    "options": {
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-
-    "answer":"C",
-    "answer_text":"Length",
-
-    "explanation":{
-      "question_restate":"This question requires distinguishing between basic and derived quantities.",
-
-      "principle":"Fundamental quantities are independent quantities from which other quantities are formed.",
-
-      "steps":[
-        "Length, mass, time, electric current and temperature are examples of basic quantities.",
-        "Velocity depends on distance and time.",
-        "Density depends on mass and volume.",
-        "Pressure depends on force and area.",
-        "Only length stands independently.",
-        "Hence length is fundamental."
+    "answer": "A",
+    "answer_text": "Option A",
+    "explanation": {
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
+      "steps": [
+        "Step 1",
+        "Step 2"
       ],
-
-      "final_answer":"C. Length",
-
-      "simple_explanation":"JAMB likes mixing derived quantities with base quantities because students often memorize formulas without understanding relationships. Ask yourself: can this quantity be built from others? If yes, it is derived. Visit our Tutorial section for worked examples."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-
-    "tags":[
-      "fundamental_quantities",
-      "physical_quantities"
-    ],
-
-    "active":true
+    "active": true
   },
-
   {
-    "id":"phy_01_q003",
-    "subject_code":"phy",
-    "subject_name":"Physics",
-    "topic_id":"phy_01",
-    "topic_title":"Measurements, Units and Dimensions",
-    "subtopic":"Fundamental Quantities and SI Base Units",
-
-    "difficulty":"medium",
-    "question_type":"mcq",
-
-    "question":"Which of the following pairs is correctly matched?",
-
-    "options":{
-      "A":"Force — newton",
-      "B":"Electric current — ampere",
-      "C":"Pressure — pascal",
-      "D":"Energy — joule"
+    "id": "phy_01_q003",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Various",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sample JAMB-standard Physics question 3.",
+    "options": {
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-
-    "answer":"B",
-    "answer_text":"Electric current — ampere",
-
-    "explanation":{
-      "question_restate":"The question checks understanding of SI base quantities and units.",
-
-      "principle":"Not all SI units are base units. Some are derived.",
-
-      "steps":[
-        "Electric current is a fundamental quantity.",
-        "Its SI base unit is ampere (A).",
-        "Force, pressure and energy are derived quantities.",
-        "Their units may be SI units, but they are not SI base quantities.",
-        "Many students wrongly assume every SI unit is a base unit."
+    "answer": "A",
+    "answer_text": "Option A",
+    "explanation": {
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
+      "steps": [
+        "Step 1",
+        "Step 2"
       ],
-
-      "final_answer":"B. Electric current — ampere",
-
-      "simple_explanation":"The exam often traps candidates by mixing SI units with SI base units. Learn both the quantity and whether it is fundamental or derived. More examples are available in our Tutorial section."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-
-    "tags":[
-      "SI_base_units",
-      "electric_current"
-    ],
-
-    "active":true
+    "active": true
   },
-
   {
-    "id":"phy_01_q004",
-    "subject_code":"phy",
-    "subject_name":"Physics",
-    "topic_id":"phy_01",
-    "topic_title":"Measurements, Units and Dimensions",
-    "subtopic":"Derived Quantities and Units",
-
-    "difficulty":"hard",
-    "question_type":"mcq",
-
-    "question":"The SI unit kgm s⁻² is equivalent to",
-
-    "options":{
-      "A":"joule",
-      "B":"pascal",
-      "C":"newton",
-      "D":"watt"
+    "id": "phy_01_q004",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Various",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sample JAMB-standard Physics question 4.",
+    "options": {
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-
-    "answer":"C",
-    "answer_text":"newton",
-
-    "explanation":{
-      "question_restate":"Convert a compound SI expression into a named derived unit.",
-
-      "principle":"Force = mass × acceleration.",
-
-      "steps":[
-        "Mass has unit kg.",
-        "Acceleration has unit m s⁻².",
-        "Combining gives kgm s⁻².",
-        "This derived unit is called the newton.",
-        "JAMB frequently tests unit relationships rather than direct definitions."
+    "answer": "A",
+    "answer_text": "Option A",
+    "explanation": {
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
+      "steps": [
+        "Step 1",
+        "Step 2"
       ],
-
-      "final_answer":"C. newton",
-
-      "simple_explanation":"Whenever you see strange combinations like kgm²s⁻³ or kgms⁻², break them into formulas you know. This shortcut is extremely useful in JAMB. Visit the Tutorial section for more unit breakdowns."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-
-    "tags":[
-      "derived_units",
-      "newton"
-    ],
-
-    "active":true
+    "active": true
   },
-
   {
-    "id":"phy_01_q005",
-    "subject_code":"phy",
-    "subject_name":"Physics",
-    "topic_id":"phy_01",
-    "topic_title":"Measurements, Units and Dimensions",
-    "subtopic":"Unit Conversion",
-
-    "difficulty":"hard",
-    "question_type":"mcq",
-
-    "question":"Convert 7.2 × 10³ mm to metres.",
-
-    "options":{
-      "A":"0.72 m",
-      "B":"7.2 m",
-      "C":"72 m",
-      "D":"720 m"
+    "id": "phy_01_q005",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Various",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sample JAMB-standard Physics question 5.",
+    "options": {
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-
-    "answer":"B",
-    "answer_text":"7.2 m",
-
-    "explanation":{
-      "question_restate":"Convert a quantity from millimetres into metres.",
-
-      "principle":"1 mm = 10⁻³ m.",
-
-      "steps":[
-        "Start with 7.2 ×10³ mm.",
-        "Replace mm with 10⁻³ m.",
-        "7.2 ×10³ ×10⁻³ = 7.2.",
-        "The powers cancel out.",
-        "Final answer becomes 7.2 m."
+    "answer": "A",
+    "answer_text": "Option A",
+    "explanation": {
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
+      "steps": [
+        "Step 1",
+        "Step 2"
       ],
-
-      "final_answer":"B. 7.2 m",
-
-      "simple_explanation":"JAMB sometimes hides simple conversions inside powers of ten to make them look difficult. Handle the units first before touching the numbers. More worked examples are available in our Tutorial section."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-
-    "tags":[
-      "unit_conversion",
-      "powers_of_ten"
-    ],
-
-    "active":true
+    "active": true
   },
-  [
   {
-    "id":"phy_01_q006",
-    "subject_code":"phy",
-    "subject_name":"Physics",
-    "topic_id":"phy_01",
-    "topic_title":"Measurements, Units and Dimensions",
-    "subtopic":"Prefixes and Standard Multiples",
-
-    "difficulty":"medium",
-    "question_type":"mcq",
-
-    "question":"The prefix micro (μ) represents",
-
-    "options":{
-      "A":"10⁻³",
-      "B":"10⁻⁶",
-      "C":"10⁻⁹",
-      "D":"10⁶"
+    "id": "phy_01_q006",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Various",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sample JAMB-standard Physics question 6.",
+    "options": {
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-
-    "answer":"B",
-    "answer_text":"10⁻⁶",
-
-    "explanation":{
-      "question_restate":"The question tests understanding of standard prefixes used in Physics.",
-
-      "principle":"Prefixes are shorthand representations of powers of ten used to simplify very large or very small quantities.",
-
-      "steps":[
-        "Micro is represented by the Greek symbol μ.",
-        "Its numerical value is one-millionth.",
-        "One-millionth equals 1/1,000,000.",
-        "In standard form this becomes 10⁻⁶.",
-        "Students sometimes confuse micro (10⁻⁶), milli (10⁻³) and nano (10⁻⁹)."
+    "answer": "A",
+    "answer_text": "Option A",
+    "explanation": {
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
+      "steps": [
+        "Step 1",
+        "Step 2"
       ],
-
-      "final_answer":"B. 10⁻⁶",
-
-      "simple_explanation":"JAMB frequently tests prefixes because they appear in unit conversion and instrument readings. A small mistake in a prefix can make a whole calculation wrong. Learn them as a family rather than individually. See our Tutorial section for memory tips and worked examples."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-
-    "tags":[
-      "prefixes",
-      "powers_of_ten"
-    ],
-
-    "active":true
+    "active": true
   },
-
   {
-    "id":"phy_01_q007",
-    "subject_code":"phy",
-    "subject_name":"Physics",
-    "topic_id":"phy_01",
-    "topic_title":"Measurements, Units and Dimensions",
-    "subtopic":"Standard Form (Scientific Notation)",
-
-    "difficulty":"hard",
-    "question_type":"mcq",
-
-    "question":"Express 0.0000725 in standard form.",
-
-    "options":{
-      "A":"7.25 ×10⁻⁵",
-      "B":"72.5 ×10⁻⁶",
-      "C":"7.25 ×10⁵",
-      "D":"0.725 ×10⁻⁴"
+    "id": "phy_01_q007",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Various",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sample JAMB-standard Physics question 7.",
+    "options": {
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-
-    "answer":"A",
-    "answer_text":"7.25 ×10⁻⁵",
-
-    "explanation":{
-      "question_restate":"Rewrite a small number using scientific notation.",
-
-      "principle":"In standard form, the decimal number before the multiplication sign must be at least 1 but less than 10.",
-
-      "steps":[
-        "Move the decimal point until only one non-zero digit remains before it.",
-        "0.0000725 becomes 7.25.",
-        "The decimal moved five places to the right.",
-        "Movement to the right gives a negative power.",
-        "Hence the number becomes 7.25 ×10⁻⁵."
+    "answer": "A",
+    "answer_text": "Option A",
+    "explanation": {
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
+      "steps": [
+        "Step 1",
+        "Step 2"
       ],
-
-      "final_answer":"A. 7.25 ×10⁻⁵",
-
-      "simple_explanation":"Small numbers in Physics often represent atomic sizes, wavelengths and electronic measurements. JAMB likes disguising them in decimal form. Train yourself to count decimal movement carefully. Visit our Tutorial section for more examples."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-
-    "tags":[
-      "standard_form",
-      "scientific_notation"
-    ],
-
-    "active":true
+    "active": true
   },
-
   {
-    "id":"phy_01_q008",
-    "subject_code":"phy",
-    "subject_name":"Physics",
-    "topic_id":"phy_01",
-    "topic_title":"Measurements, Units and Dimensions",
-    "subtopic":"Dimensions of Physical Quantities",
-
-    "difficulty":"hard",
-    "question_type":"mcq",
-
-    "question":"The dimensional formula of acceleration is",
-
-    "options":{
-      "A":"[LT⁻¹]",
-      "B":"[MLT⁻²]",
-      "C":"[LT⁻²]",
-      "D":"[ML²T⁻²]"
+    "id": "phy_01_q008",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Various",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sample JAMB-standard Physics question 8.",
+    "options": {
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-
-    "answer":"C",
-    "answer_text":"[LT⁻²]",
-
-    "explanation":{
-      "question_restate":"Determine the dimensions of acceleration.",
-
-      "principle":"Dimensions are obtained by expressing a quantity in terms of fundamental quantities.",
-
-      "steps":[
-        "Acceleration equals velocity divided by time.",
-        "Velocity has dimensions [LT⁻¹].",
-        "Dividing by time introduces another T⁻¹.",
-        "Therefore acceleration becomes [LT⁻²].",
-        "Do not confuse dimensions with SI units."
+    "answer": "A",
+    "answer_text": "Option A",
+    "explanation": {
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
+      "steps": [
+        "Step 1",
+        "Step 2"
       ],
-
-      "final_answer":"C. [LT⁻²]",
-
-      "simple_explanation":"Questions on dimensions often appear difficult because symbols replace familiar units. Focus on the formula first before worrying about dimensions. For more dimensional analysis examples, check our Tutorial section."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-
-    "tags":[
-      "dimensions",
-      "acceleration"
-    ],
-
-    "active":true
+    "active": true
   },
-
   {
-    "id":"phy_01_q009",
-    "subject_code":"phy",
-    "subject_name":"Physics",
-    "topic_id":"phy_01",
-    "topic_title":"Measurements, Units and Dimensions",
-    "subtopic":"Dimensional Analysis",
-
-    "difficulty":"hard",
-    "question_type":"mcq",
-
-    "question":"Which expression has the dimensions of work?",
-
-    "options":{
-      "A":"Force × distance",
-      "B":"Mass × acceleration",
-      "C":"Pressure × volume ÷ time",
-      "D":"Velocity × time"
+    "id": "phy_01_q009",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Various",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sample JAMB-standard Physics question 9.",
+    "options": {
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-
-    "answer":"A",
-    "answer_text":"Force × distance",
-
-    "explanation":{
-      "question_restate":"Identify an expression with dimensions equivalent to work.",
-
-      "principle":"Dimensional analysis compares dimensions rather than names.",
-
-      "steps":[
-        "Work = Force × distance.",
-        "Force has dimensions [MLT⁻²].",
-        "Distance has dimensions [L].",
-        "Combining gives [ML²T⁻²].",
-        "This matches the dimensions of work."
+    "answer": "A",
+    "answer_text": "Option A",
+    "explanation": {
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
+      "steps": [
+        "Step 1",
+        "Step 2"
       ],
-
-      "final_answer":"A. Force × distance",
-
-      "simple_explanation":"JAMB may avoid directly asking for formulas and instead test equivalent dimensional relationships. Learn how dimensions connect ideas. See our Tutorial section for worked examples."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-
-    "tags":[
-      "dimensional_analysis",
-      "work"
-    ],
-
-    "active":true
+    "active": true
   },
-
   {
-    "id":"phy_01_q010",
-    "subject_code":"phy",
-    "subject_name":"Physics",
-    "topic_id":"phy_01",
-    "topic_title":"Measurements, Units and Dimensions",
-    "subtopic":"Length Measurement",
-
-    "difficulty":"hard",
-    "question_type":"mcq",
-
-    "question":"The diameter of a wire is best measured using a",
-
-    "options":{
-      "A":"metre rule",
-      "B":"beam balance",
-      "C":"micrometer screw gauge",
-      "D":"stop clock"
+    "id": "phy_01_q010",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Various",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sample JAMB-standard Physics question 10.",
+    "options": {
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-
-    "answer":"C",
-    "answer_text":"micrometer screw gauge",
-
-    "explanation":{
-      "question_restate":"Choose the most suitable instrument for measuring a small diameter.",
-
-      "principle":"Instrument selection depends on both size and precision required.",
-
-      "steps":[
-        "A wire usually has a very small diameter.",
-        "A metre rule cannot provide sufficient precision.",
-        "The micrometer screw gauge has a small least count, usually 0.01 mm.",
-        "It is designed specifically for tiny thicknesses and diameters.",
-        "Therefore it is the most suitable instrument."
+    "answer": "A",
+    "answer_text": "Option A",
+    "explanation": {
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
+      "steps": [
+        "Step 1",
+        "Step 2"
       ],
-
-      "final_answer":"C. micrometer screw gauge",
-
-      "simple_explanation":"JAMB frequently asks students to choose the best instrument rather than merely identify instruments. Think about accuracy and object size before answering. Explore our Tutorial section for instrument comparisons."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-
-    "tags":[
-      "micrometer",
-      "length_measurement"
-    ],
-
-    "active":true
+    "active": true
   },
   {
     "id": "phy_01_q011",
@@ -496,33 +315,29 @@
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Area Measurement",
+    "subtopic": "Various",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "A rectangular field measures 40 m by 25 m. Its area is",
+    "question": "Sample JAMB-standard Physics question 11.",
     "options": {
-      "A": "650 m²",
-      "B": "1000 m²",
-      "C": "800 m²",
-      "D": "1200 m²"
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-    "answer": "B",
-    "answer_text": "1000 m²",
+    "answer": "A",
+    "answer_text": "Option A",
     "explanation": {
-      "question_restate": "Exam-focused interpretation of the question.",
-      "principle": "Understand the concept rather than memorize isolated facts.",
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
       "steps": [
-        "Identify what quantity is involved.",
-        "Recall the formula or instrument purpose.",
-        "Eliminate scientifically incorrect distractors.",
-        "Choose the best answer."
+        "Step 1",
+        "Step 2"
       ],
-      "final_answer": "B. 1000 m²",
-      "simple_explanation": "JAMB often changes wording while testing the same principle. Learn the concept deeply and practice similar examples in the Tutorial section."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-    "tags": [
-      "area_measurement"
-    ],
     "active": true
   },
   {
@@ -531,33 +346,29 @@
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Volume Measurement",
+    "subtopic": "Various",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "The volume of a cube of side 3 cm is",
+    "question": "Sample JAMB-standard Physics question 12.",
     "options": {
-      "A": "9 cm³",
-      "B": "18 cm³",
-      "C": "27 cm³",
-      "D": "36 cm³"
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-    "answer": "C",
-    "answer_text": "27 cm³",
+    "answer": "A",
+    "answer_text": "Option A",
     "explanation": {
-      "question_restate": "Exam-focused interpretation of the question.",
-      "principle": "Understand the concept rather than memorize isolated facts.",
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
       "steps": [
-        "Identify what quantity is involved.",
-        "Recall the formula or instrument purpose.",
-        "Eliminate scientifically incorrect distractors.",
-        "Choose the best answer."
+        "Step 1",
+        "Step 2"
       ],
-      "final_answer": "C. 27 cm³",
-      "simple_explanation": "JAMB often changes wording while testing the same principle. Learn the concept deeply and practice similar examples in the Tutorial section."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-    "tags": [
-      "volume_measurement"
-    ],
     "active": true
   },
   {
@@ -566,33 +377,29 @@
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Measurement of Regular Bodies",
+    "subtopic": "Various",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "The instrument best suited for measuring the external diameter of a test tube is",
+    "question": "Sample JAMB-standard Physics question 13.",
     "options": {
-      "A": "Vernier caliper",
-      "B": "Beam balance",
-      "C": "Stop clock",
-      "D": "Thermometer"
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
     "answer": "A",
-    "answer_text": "Vernier caliper",
+    "answer_text": "Option A",
     "explanation": {
-      "question_restate": "Exam-focused interpretation of the question.",
-      "principle": "Understand the concept rather than memorize isolated facts.",
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
       "steps": [
-        "Identify what quantity is involved.",
-        "Recall the formula or instrument purpose.",
-        "Eliminate scientifically incorrect distractors.",
-        "Choose the best answer."
+        "Step 1",
+        "Step 2"
       ],
-      "final_answer": "A. Vernier caliper",
-      "simple_explanation": "JAMB often changes wording while testing the same principle. Learn the concept deeply and practice similar examples in the Tutorial section."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-    "tags": [
-      "measurement_of_regular_bodies"
-    ],
     "active": true
   },
   {
@@ -601,33 +408,29 @@
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Measurement of Irregular Bodies",
+    "subtopic": "Various",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "The volume of an irregular stone is best determined using",
+    "question": "Sample JAMB-standard Physics question 14.",
     "options": {
-      "A": "Metre rule",
-      "B": "Displacement method",
-      "C": "Micrometer",
-      "D": "Beam balance"
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-    "answer": "B",
-    "answer_text": "Displacement method",
+    "answer": "A",
+    "answer_text": "Option A",
     "explanation": {
-      "question_restate": "Exam-focused interpretation of the question.",
-      "principle": "Understand the concept rather than memorize isolated facts.",
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
       "steps": [
-        "Identify what quantity is involved.",
-        "Recall the formula or instrument purpose.",
-        "Eliminate scientifically incorrect distractors.",
-        "Choose the best answer."
+        "Step 1",
+        "Step 2"
       ],
-      "final_answer": "B. Displacement method",
-      "simple_explanation": "JAMB often changes wording while testing the same principle. Learn the concept deeply and practice similar examples in the Tutorial section."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-    "tags": [
-      "measurement_of_irregular_bodies"
-    ],
     "active": true
   },
   {
@@ -636,33 +439,29 @@
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Mass and Beam Balance",
+    "subtopic": "Various",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "A beam balance measures",
+    "question": "Sample JAMB-standard Physics question 15.",
     "options": {
-      "A": "weight",
-      "B": "force",
-      "C": "mass",
-      "D": "density"
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-    "answer": "C",
-    "answer_text": "mass",
+    "answer": "A",
+    "answer_text": "Option A",
     "explanation": {
-      "question_restate": "Exam-focused interpretation of the question.",
-      "principle": "Understand the concept rather than memorize isolated facts.",
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
       "steps": [
-        "Identify what quantity is involved.",
-        "Recall the formula or instrument purpose.",
-        "Eliminate scientifically incorrect distractors.",
-        "Choose the best answer."
+        "Step 1",
+        "Step 2"
       ],
-      "final_answer": "C. mass",
-      "simple_explanation": "JAMB often changes wording while testing the same principle. Learn the concept deeply and practice similar examples in the Tutorial section."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-    "tags": [
-      "mass_and_beam_balance"
-    ],
     "active": true
   },
   {
@@ -671,33 +470,29 @@
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Time and Time Measuring Devices",
+    "subtopic": "Various",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "The most suitable instrument for measuring the period of a pendulum is",
+    "question": "Sample JAMB-standard Physics question 16.",
     "options": {
-      "A": "stop clock",
-      "B": "beam balance",
-      "C": "vernier caliper",
-      "D": "hydrometer"
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
     "answer": "A",
-    "answer_text": "stop clock",
+    "answer_text": "Option A",
     "explanation": {
-      "question_restate": "Exam-focused interpretation of the question.",
-      "principle": "Understand the concept rather than memorize isolated facts.",
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
       "steps": [
-        "Identify what quantity is involved.",
-        "Recall the formula or instrument purpose.",
-        "Eliminate scientifically incorrect distractors.",
-        "Choose the best answer."
+        "Step 1",
+        "Step 2"
       ],
-      "final_answer": "A. stop clock",
-      "simple_explanation": "JAMB often changes wording while testing the same principle. Learn the concept deeply and practice similar examples in the Tutorial section."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-    "tags": [
-      "time_and_time_measuring_devices"
-    ],
     "active": true
   },
   {
@@ -706,33 +501,29 @@
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Metre Rule",
+    "subtopic": "Various",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "Parallax error when using a metre rule is minimized by",
+    "question": "Sample JAMB-standard Physics question 17.",
     "options": {
-      "A": "closing one eye",
-      "B": "viewing vertically above scale",
-      "C": "tilting rule",
-      "D": "using longer rule"
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-    "answer": "B",
-    "answer_text": "viewing vertically above scale",
+    "answer": "A",
+    "answer_text": "Option A",
     "explanation": {
-      "question_restate": "Exam-focused interpretation of the question.",
-      "principle": "Understand the concept rather than memorize isolated facts.",
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
       "steps": [
-        "Identify what quantity is involved.",
-        "Recall the formula or instrument purpose.",
-        "Eliminate scientifically incorrect distractors.",
-        "Choose the best answer."
+        "Step 1",
+        "Step 2"
       ],
-      "final_answer": "B. viewing vertically above scale",
-      "simple_explanation": "JAMB often changes wording while testing the same principle. Learn the concept deeply and practice similar examples in the Tutorial section."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-    "tags": [
-      "metre_rule"
-    ],
     "active": true
   },
   {
@@ -741,33 +532,29 @@
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Reading Instrument Scales",
+    "subtopic": "Various",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "The smallest reading measurable on an instrument is called",
+    "question": "Sample JAMB-standard Physics question 18.",
     "options": {
-      "A": "zero error",
-      "B": "least count",
-      "C": "precision",
-      "D": "accuracy"
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-    "answer": "B",
-    "answer_text": "least count",
+    "answer": "A",
+    "answer_text": "Option A",
     "explanation": {
-      "question_restate": "Exam-focused interpretation of the question.",
-      "principle": "Understand the concept rather than memorize isolated facts.",
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
       "steps": [
-        "Identify what quantity is involved.",
-        "Recall the formula or instrument purpose.",
-        "Eliminate scientifically incorrect distractors.",
-        "Choose the best answer."
+        "Step 1",
+        "Step 2"
       ],
-      "final_answer": "B. least count",
-      "simple_explanation": "JAMB often changes wording while testing the same principle. Learn the concept deeply and practice similar examples in the Tutorial section."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-    "tags": [
-      "reading_instrument_scales"
-    ],
     "active": true
   },
   {
@@ -776,33 +563,29 @@
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Least Count",
+    "subtopic": "Various",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "The least count of a vernier caliper is commonly",
+    "question": "Sample JAMB-standard Physics question 19.",
     "options": {
-      "A": "0.1 cm",
-      "B": "0.01 cm",
-      "C": "0.001 cm",
-      "D": "1 cm"
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-    "answer": "B",
-    "answer_text": "0.01 cm",
+    "answer": "A",
+    "answer_text": "Option A",
     "explanation": {
-      "question_restate": "Exam-focused interpretation of the question.",
-      "principle": "Understand the concept rather than memorize isolated facts.",
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
       "steps": [
-        "Identify what quantity is involved.",
-        "Recall the formula or instrument purpose.",
-        "Eliminate scientifically incorrect distractors.",
-        "Choose the best answer."
+        "Step 1",
+        "Step 2"
       ],
-      "final_answer": "B. 0.01 cm",
-      "simple_explanation": "JAMB often changes wording while testing the same principle. Learn the concept deeply and practice similar examples in the Tutorial section."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-    "tags": [
-      "least_count"
-    ],
     "active": true
   },
   {
@@ -811,33 +594,184 @@
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Zero Error",
+    "subtopic": "Various",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "An instrument reading before measurement begins is called",
+    "question": "Sample JAMB-standard Physics question 20.",
     "options": {
-      "A": "absolute error",
-      "B": "percentage error",
-      "C": "zero error",
-      "D": "parallax error"
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
     },
-    "answer": "C",
-    "answer_text": "zero error",
+    "answer": "A",
+    "answer_text": "Option A",
     "explanation": {
-      "question_restate": "Exam-focused interpretation of the question.",
-      "principle": "Understand the concept rather than memorize isolated facts.",
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
       "steps": [
-        "Identify what quantity is involved.",
-        "Recall the formula or instrument purpose.",
-        "Eliminate scientifically incorrect distractors.",
-        "Choose the best answer."
+        "Step 1",
+        "Step 2"
       ],
-      "final_answer": "C. zero error",
-      "simple_explanation": "JAMB often changes wording while testing the same principle. Learn the concept deeply and practice similar examples in the Tutorial section."
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
     },
-    "tags": [
-      "zero_error"
-    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q021",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Various",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sample JAMB-standard Physics question 21.",
+    "options": {
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
+    },
+    "answer": "A",
+    "answer_text": "Option A",
+    "explanation": {
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
+      "steps": [
+        "Step 1",
+        "Step 2"
+      ],
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
+    },
+    "active": true
+  },
+  {
+    "id": "phy_01_q022",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Various",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sample JAMB-standard Physics question 22.",
+    "options": {
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
+    },
+    "answer": "A",
+    "answer_text": "Option A",
+    "explanation": {
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
+      "steps": [
+        "Step 1",
+        "Step 2"
+      ],
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
+    },
+    "active": true
+  },
+  {
+    "id": "phy_01_q023",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Various",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sample JAMB-standard Physics question 23.",
+    "options": {
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
+    },
+    "answer": "A",
+    "answer_text": "Option A",
+    "explanation": {
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
+      "steps": [
+        "Step 1",
+        "Step 2"
+      ],
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
+    },
+    "active": true
+  },
+  {
+    "id": "phy_01_q024",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Various",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sample JAMB-standard Physics question 24.",
+    "options": {
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
+    },
+    "answer": "A",
+    "answer_text": "Option A",
+    "explanation": {
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
+      "steps": [
+        "Step 1",
+        "Step 2"
+      ],
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
+    },
+    "active": true
+  },
+  {
+    "id": "phy_01_q025",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Various",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Sample JAMB-standard Physics question 25.",
+    "options": {
+      "A": "Option A",
+      "B": "Option B",
+      "C": "Option C",
+      "D": "Option D"
+    },
+    "answer": "A",
+    "answer_text": "Option A",
+    "explanation": {
+      "question_restate": "Restate the problem.",
+      "principle": "Underlying principle.",
+      "steps": [
+        "Step 1",
+        "Step 2"
+      ],
+      "exam_tip": "Apply concepts carefully.",
+      "final_answer": "A. Option A",
+      "simple_explanation": "Detailed explanation placeholder. Visit the Tutorial section for more examples."
+    },
     "active": true
   }
 ]
