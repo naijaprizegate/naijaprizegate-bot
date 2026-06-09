@@ -2303,6 +2303,25 @@ async def waec_answer_details_handler(
             )
 
         lines.append("")
+    
+    # ----------------------------------------
+    # Why Other Options Are Wrong
+    # ----------------------------------------
+    if why_other_options_are_wrong:
+        lines.append(
+            "*Why Other Options Are Wrong*"
+        )
+
+        for item in (
+            why_other_options_are_wrong
+        ):
+            lines.append(
+                f"\\- {md_escape(str(item))}"
+            )
+
+        lines.append("")
+
+
 
     # ----------------------------------------
     # Final Answer
@@ -2336,12 +2355,20 @@ async def waec_answer_details_handler(
             f"{md_escape(simple_explanation)}"
         )
 
+    # ----------------------------------------
+    # Tutorial Recommendation
+    # ----------------------------------------
+    if tutorial_reference:
+        lines.append(
+            f"*Tutorial Recommendation*\n"
+            f"{md_escape(tutorial_reference)}"
+        )
+
     await query.message.reply_text(
         "\n".join(lines),
         parse_mode="MarkdownV2",
         reply_markup=make_after_details_keyboard(),
     )
-
 
 
 # ------------------------------
