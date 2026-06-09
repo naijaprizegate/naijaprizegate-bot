@@ -1,6 +1,6 @@
-# =================================================================
+# ====================================================================
 # handlers/jambpractice.py
-# ==================================================================
+# ====================================================================
 
 import json
 import math
@@ -376,6 +376,7 @@ async def clear_jamb_session_state(context: ContextTypes.DEFAULT_TYPE):
         "jp_active_passage_message_id",
         "jp_last_selected_option",
         "jp_last_correct_option",
+        "jp_last_answered_question",
     ]
 
     for key in keys_to_clear:
@@ -2146,6 +2147,9 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
     context.user_data["jp_last_selected_option"] = selected_option
     context.user_data["jp_last_correct_option"] = correct_option
 
+    # Store the last answered question for Answer Details
+    context.user_data["jp_last_answered_question"] = question
+
     if is_correct:
         context.user_data["jp_correct_count"] = int(context.user_data.get("jp_correct_count", 0)) + 1
         result_text = "✅ *Correct\\!*"
@@ -2167,17 +2171,27 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
     )
 
 
+
 # --------------------------------------------
 # JAMB Answer Details Handler
 # --------------------------------------------
-async def jamb_answer_details_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def jamb_answer_details_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
     query = update.callback_query
+
     if not query:
         return
 
     await query.answer()
 
-    question = context.user_data.get("jp_current_question")
+    # Use the most recently answered question.
+    question = (
+        context.user_data.get("jp_last_answered_question")
+        or context.user_data.get("jp_current_question")
+    )
+
     if not question:
         return await query.message.reply_text(
             "⚠️ No answered question found\\.",
@@ -2186,45 +2200,103 @@ async def jamb_answer_details_handler(update: Update, context: ContextTypes.DEFA
 
     explanation = question.get("explanation", {})
 
-    question_restate = explanation.get("question_restate", "")
-    principle = explanation.get("principle", "")
+    question_restate = str(
+        explanation.get("question_restate", "")
+    ).strip()
+
+    principle = str(
+        explanation.get("principle", "")
+    ).strip()
+
     steps = explanation.get("steps", [])
+
     if not isinstance(steps, list):
         steps = []
 
-    final_answer = explanation.get("final_answer", "")
-    simple_explanation = explanation.get("simple_explanation", "")
-    exam_tip = explanation.get("exam_tip", "")
+    final_answer = str(
+        explanation.get("final_answer", "")
+    ).strip()
 
-    lines = ["📖 *Answer Details*\n"]
+    exam_tip = str(
+        explanation.get("exam_tip", "")
+    ).strip()
 
+    simple_explanation = str(
+        explanation.get("simple_explanation", "")
+    ).strip()
+
+    lines = ["📚 *Answer Details*\n"]
+
+    # ----------------------------------------
+    # Question Restated
+    # ----------------------------------------
     if question_restate:
-        lines.append(f"*Question Restated*\n{md_escape(str(question_restate))}\n")
+        lines.append(
+            f"*Question Restated*\n"
+            f"{md_escape(question_restate)}\n"
+        )
 
+    # ----------------------------------------
+    # Principle
+    # ----------------------------------------
     if principle:
-        lines.append(f"*Principle*\n{md_escape(str(principle))}\n")
+        lines.append(
+            f"*Principle*\n"
+            f"{md_escape(principle)}\n"
+        )
 
+    # ----------------------------------------
+    # Step-by-step Solution
+    # ----------------------------------------
     if steps:
         lines.append("*Step\\-by\\-step Solution*")
+
         for i, step in enumerate(steps, start=1):
-            lines.append(f"{i}\\. {md_escape(str(step))}")
+            lines.append(
+                f"{i}\\. {md_escape(str(step))}"
+            )
+
         lines.append("")
 
+    # ----------------------------------------
+    # Final Answer
+    # ----------------------------------------
     if final_answer:
-        lines.append(f"*Final Answer*\n{md_escape(str(final_answer))}\n")
+        lines.append("━━━━━━━━━━━━")
 
+        lines.append(
+            f"*Final Answer*\n"
+            f"{md_escape(final_answer)}"
+        )
+
+        lines.append("")
+
+    # ----------------------------------------
+    # Exam Tip
+    # ----------------------------------------
     if exam_tip:
-        lines.append(f"*Exam Tip*\n{md_escape(str(exam_tip))}\n")
+        lines.append(
+            f"*Exam Tip*\n"
+            f"{md_escape(exam_tip)}\n"
+        )
 
+    # ----------------------------------------
+    # Simple Explanation
+    # ----------------------------------------
     if simple_explanation:
-        lines.append(f"*Simple Explanation*\n{md_escape(str(simple_explanation))}")
+        lines.append(
+            f"*Simple Explanation*\n"
+            f"{md_escape(simple_explanation)}"
+        )
 
     await query.message.reply_text(
         "\n".join(lines),
         parse_mode="MarkdownV2",
         reply_markup=make_after_details_keyboard(),
     )
-    
+
+
+
 # ------------------------------
 # JAMB Next Handler
 # -----------------------------
@@ -2671,5 +2743,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next$"))
-
 
