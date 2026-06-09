@@ -2259,6 +2259,17 @@ async def waec_answer_details_handler(
     if not isinstance(steps, list):
         steps = []
 
+    why_other_options_are_wrong = explanation.get(
+        "why_other_options_are_wrong",
+        []
+    )
+
+    if not isinstance(
+        why_other_options_are_wrong,
+        list,
+    ):
+        why_other_options_are_wrong = []
+
     final_answer = str(
         explanation.get("final_answer", "")
     ).strip()
@@ -2269,6 +2280,10 @@ async def waec_answer_details_handler(
 
     simple_explanation = str(
         explanation.get("simple_explanation", "")
+    ).strip()
+
+    tutorial_reference = str(
+        explanation.get("tutorial_reference", "")
     ).strip()
 
     lines = ["📚 *Answer Details*\n"]
@@ -2297,13 +2312,17 @@ async def waec_answer_details_handler(
     if steps:
         lines.append("*Step\\-by\\-step Solution*")
 
-        for i, step in enumerate(steps, start=1):
+        for i, step in enumerate(
+            steps,
+            start=1,
+        ):
             lines.append(
-                f"{i}\\. {md_escape(str(step))}"
+                f"{i}\\. "
+                f"{md_escape(str(step))}"
             )
 
         lines.append("")
-    
+
     # ----------------------------------------
     # Why Other Options Are Wrong
     # ----------------------------------------
@@ -2320,8 +2339,6 @@ async def waec_answer_details_handler(
             )
 
         lines.append("")
-
-
 
     # ----------------------------------------
     # Final Answer
@@ -2352,7 +2369,7 @@ async def waec_answer_details_handler(
     if simple_explanation:
         lines.append(
             f"*Simple Explanation*\n"
-            f"{md_escape(simple_explanation)}"
+            f"{md_escape(simple_explanation)}\n"
         )
 
     # ----------------------------------------
