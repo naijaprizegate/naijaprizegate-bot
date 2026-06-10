@@ -43,7 +43,6 @@
     ],
     "active": true
   },
-  [
   {
     "id": "phy_01_q002",
     "subject_code": "phy",
@@ -450,5 +449,206 @@
       "frame_reference"
     ],
     "active": true
+  },
+  [
+  {
+    "id": "phy_01_q012",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Measurement of irregular bodies",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A student records the volume of water in a measuring cylinder as 28 cm³. After carefully lowering a small stone tied with a thread into the cylinder, the water level rises to 45 cm³. What is the volume of the stone?",
+    "options": {
+      "A": "17 cm³",
+      "B": "28 cm³",
+      "C": "45 cm³",
+      "D": "73 cm³"
+    },
+    "answer": "A",
+    "answer_text": "17 cm³",
+    "explanation": {
+      "question_restate": "Determine the volume of an irregularly shaped stone using the displacement method.",
+      "concept_teaching": "Irregular bodies cannot be measured using ordinary geometric formulas because they do not have regular shapes. Instead, their volumes are determined using the displacement method based on Archimedes' principle. When an object is completely immersed in water, it displaces a volume of water equal to its own volume.",
+      "step_by_step_solution": [
+        "Initial water volume = 28 cm³.",
+        "Final water volume after immersion = 45 cm³.",
+        "Volume of stone = Final reading − Initial reading.",
+        "Volume = 45 − 28 = 17 cm³."
+      ],
+      "why_other_options_are_wrong": [
+        "B represents the initial water volume, not the stone's volume.",
+        "C represents the final cylinder reading, not the displaced volume.",
+        "D is obtained by adding the readings instead of subtracting them."
+      ],
+      "common_jamb_traps": "JAMB often presents both the initial and final readings to tempt candidates into adding them. Always subtract.",
+      "exam_strategy_notes": "Underline or identify the words 'before' and 'after' in the question. The difference between the two readings is the answer.",
+      "beginner_friendly_explanation": "Imagine entering a bathtub filled with water. The water level rises because your body occupies space. The amount by which the water rises corresponds to your volume. The same idea applies to the stone.",
+      "illustrative_diagram": "Textual diagram: Measuring cylinder before immersion → Water level at 28 cm³. Measuring cylinder after immersion → Water level at 45 cm³. Difference = 17 cm³.",
+      "final_answer": "A. 17 cm³",
+      "tutorial_reference": "Need more help? Visit Tutorials → Physics → Measurement of Irregular Bodies."
+    }
+  },
+  {
+    "id": "phy_01_q013",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Measuring cylinder",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following instruments is most suitable for measuring 22.5 cm³ of ethanol in a school laboratory?",
+    "options": {
+      "A": "Beam balance",
+      "B": "Micrometer screw gauge",
+      "C": "Measuring cylinder",
+      "D": "Metre rule"
+    },
+    "answer": "C",
+    "answer_text": "Measuring cylinder",
+    "explanation": {
+      "question_restate": "Identify the appropriate instrument for measuring the volume of a liquid.",
+      "concept_teaching": "Different measuring instruments are designed for specific quantities. A measuring cylinder is used for determining the volume of liquids. It is graduated with markings that allow readings in cm³ or mL.",
+      "step_by_step_solution": [
+        "Identify the quantity being measured: volume of ethanol.",
+        "Determine whether ethanol is a liquid or solid.",
+        "Recall the instrument used for liquid volume measurements.",
+        "Select the measuring cylinder."
+      ],
+      "why_other_options_are_wrong": [
+        "A beam balance measures mass.",
+        "B a micrometer screw gauge measures small diameters and thicknesses.",
+        "D a metre rule measures length."
+      ],
+      "common_jamb_traps": "Candidates sometimes confuse mass and volume instruments. Read the quantity carefully.",
+      "exam_strategy_notes": "Create a mental association: liquid → measuring cylinder; mass → beam balance; length → metre rule.",
+      "beginner_friendly_explanation": "If you want to know how much liquid is in a container, you use a measuring cylinder because it has calibrated markings showing volume directly.",
+      "illustrative_diagram": "Textual diagram: A tall transparent cylinder with graduation marks labelled 5 cm³, 10 cm³, 15 cm³ ... up to 100 cm³.",
+      "final_answer": "C. Measuring cylinder",
+      "tutorial_reference": "Need additional practice? Visit Tutorials → Physics → Measuring Cylinder."
+    }
+  },
+  {
+    "id": "phy_01_q014",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Beam balance",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The major function of a beam balance in the laboratory is to determine the",
+    "options": {
+      "A": "density of an object",
+      "B": "mass of an object",
+      "C": "weight of an object",
+      "D": "volume of an object"
+    },
+    "answer": "B",
+    "answer_text": "mass of an object",
+    "explanation": {
+      "question_restate": "Determine the physical quantity measured by a beam balance.",
+      "concept_teaching": "Mass is the amount of matter contained in a body. A beam balance compares the mass of an unknown object with standard masses. Unlike spring balances, beam balances are not affected significantly by changes in gravitational field strength.",
+      "step_by_step_solution": [
+        "Recall the use of common laboratory instruments.",
+        "Beam balance → mass.",
+        "Spring balance → weight.",
+        "Select the correct option."
+      ],
+      "why_other_options_are_wrong": [
+        "A density requires mass and volume calculations.",
+        "C weight is measured using a spring balance or Newton meter.",
+        "D volume is measured using geometric methods or displacement."
+      ],
+      "common_jamb_traps": "JAMB frequently tests the distinction between mass and weight.",
+      "exam_strategy_notes": "Remember: beam balance balances masses; spring balance stretches under weight.",
+      "beginner_friendly_explanation": "Mass tells us how much matter an object contains. Whether on Earth or the Moon, the mass remains the same.",
+      "illustrative_diagram": "Textual diagram: Two-pan beam balance with an object on one side and standard masses on the other until equilibrium is reached.",
+      "final_answer": "B. Mass of an object",
+      "tutorial_reference": "Need more explanation? Visit Tutorials → Physics → Beam Balance."
+    }
+  },
+  {
+    "id": "phy_01_q015",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Measurement of time",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Convert 2.5 hours to seconds.",
+    "options": {
+      "A": "1500 s",
+      "B": "3600 s",
+      "C": "7500 s",
+      "D": "9000 s"
+    },
+    "answer": "D",
+    "answer_text": "9000 s",
+    "explanation": {
+      "question_restate": "Express a time interval given in hours in terms of seconds.",
+      "concept_teaching": "Time is a fundamental quantity in Physics. The SI unit of time is the second (s). To convert hours to seconds, first convert hours to minutes and then minutes to seconds.",
+      "step_by_step_solution": [
+        "1 hour = 60 minutes.",
+        "2.5 hours = 2.5 × 60 = 150 minutes.",
+        "1 minute = 60 seconds.",
+        "150 × 60 = 9000 seconds."
+      ],
+      "why_other_options_are_wrong": [
+        "A results from multiplying by 600.",
+        "B is the number of seconds in one hour.",
+        "C is an incomplete conversion.",
+        "D is the correct conversion."
+      ],
+      "common_jamb_traps": "Some candidates multiply by 60 only once instead of twice.",
+      "exam_strategy_notes": "Memorize: 1 h = 3600 s. Multiply the number of hours directly by 3600.",
+      "beginner_friendly_explanation": "Since there are 60 seconds in one minute and 60 minutes in one hour, an hour contains 60 × 60 = 3600 seconds.",
+      "illustrative_diagram": "Textual diagram: Hours → Minutes → Seconds. Multiply by 60 at each step.",
+      "final_answer": "D. 9000 s",
+      "tutorial_reference": "Need more worked examples? Visit Tutorials → Physics → Measurement of Time."
+    }
+  },
+  {
+    "id": "phy_01_q016",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Time-measuring devices",
+    "difficulty": "easy",
+    "question_type": "mcq",
+    "question": "Which of the following devices is most appropriate for measuring the time taken by an athlete to complete a 100 m race?",
+    "options": {
+      "A": "Calendar",
+      "B": "Stopwatch",
+      "C": "Pendulum bob",
+      "D": "Wall clock"
+    },
+    "answer": "B",
+    "answer_text": "Stopwatch",
+    "explanation": {
+      "question_restate": "Choose the best instrument for measuring short time intervals accurately.",
+      "concept_teaching": "Different devices measure time over different durations. Stopwatches are designed to measure short intervals with precision, making them suitable for laboratory experiments and sporting events.",
+      "step_by_step_solution": [
+        "Identify the type of event involved: a short race.",
+        "Determine the required level of precision.",
+        "Select the instrument designed for short intervals."
+      ],
+      "why_other_options_are_wrong": [
+        "A calendars measure days, weeks, and months.",
+        "C a pendulum is not a direct timing device in this context.",
+        "D wall clocks lack the precision required for races."
+      ],
+      "common_jamb_traps": "Candidates sometimes choose wall clocks because they measure time generally, ignoring the need for precision.",
+      "exam_strategy_notes": "For races and experiments involving seconds, think 'stopwatch'.",
+      "beginner_friendly_explanation": "A stopwatch can be started and stopped instantly, making it ideal for recording the exact duration of an event.",
+      "illustrative_diagram": "Textual diagram: Official holding a stopwatch at the starting line; timer starts at 'Go!' and stops at the finish line.",
+      "final_answer": "B. Stopwatch",
+      "tutorial_reference": "Need additional guidance? Visit Tutorials → Physics → Time-Measuring Devices."
+    }
   }
 ]
