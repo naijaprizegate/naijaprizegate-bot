@@ -1,13 +1,7 @@
 [
   {
     "id": "phy_01_q001",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Fundamental Quantities",
-    "difficulty": "medium",
-    "question_type": "mcq",
+    "subtopic": "Fundamental quantities",
     "question": "Which of the following physical quantities is fundamental in the International System of Units (SI)?",
     "options": {
       "A": "Density",
@@ -18,40 +12,37 @@
     "answer": "C",
     "answer_text": "Mass",
     "explanation": {
-      "question_restate": "The question requires you to identify which quantity belongs to the seven fundamental (base) quantities in the SI system.",
-      "principle": "Fundamental quantities are independent physical quantities from which all other physical quantities are derived. The SI base quantities are length, mass, time, electric current, thermodynamic temperature, amount of substance, and luminous intensity.",
-      "steps": [
+      "question_restate": "Identify the quantity that belongs to the seven SI fundamental quantities.",
+      "concept_teaching": "Fundamental quantities are independent physical quantities that cannot be expressed in terms of other quantities. The seven SI base quantities are length, mass, time, electric current, thermodynamic temperature, amount of substance, and luminous intensity.",
+      "step_by_step_solution": [
         "Recall the seven SI base quantities.",
-        "Examine each option carefully.",
-        "Determine whether the quantity can be expressed in terms of other quantities.",
-        "Select the quantity that stands alone as a base quantity."
+        "Examine each option.",
+        "Identify the quantity that is not derived from others.",
+        "Mass is a fundamental quantity."
       ],
       "why_other_options_are_wrong": [
-        "A. Density is a derived quantity because it is defined as mass per unit volume (kg m⁻³).",
-        "B. Force is a derived quantity because it is obtained from mass × acceleration (kg m s⁻²).",
-        "D. Pressure is a derived quantity because it is force per unit area (N m⁻²)."
+        "Density = mass/volume, so it is derived.",
+        "Force = mass × acceleration, so it is derived.",
+        "Pressure = force/area, so it is derived."
       ],
-      "exam_tip": "JAMB frequently tests the distinction between fundamental and derived quantities. Memorize the seven SI base quantities and their units.",
+      "common_jamb_traps": "JAMB often mixes fundamental and derived quantities in the same question.",
+      "exam_strategy_notes": "Memorize the seven SI base quantities and their units.",
+      "beginner_friendly_explanation": "Think of fundamental quantities as the building blocks of Physics. Mass is one of those building blocks.",
+      "illustrative_diagram": "Base quantities → Derived quantities (e.g. Mass → Force → Pressure).",
       "final_answer": "C. Mass",
-      "simple_explanation": "Think of fundamental quantities as the building blocks of Physics. Mass is one of these building blocks. Quantities like force and pressure are obtained by combining the building blocks together.",
-      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Fundamental and Derived Quantities."
+      "tutorial_reference": "Visit Tutorials → Physics → Fundamental Quantities."
     },
-    "tags": [
-      "fundamental_quantities",
-      "si_units",
-      "phy_01"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q002",
     "subject_code": "phy",
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Length measurement",
     "difficulty": "medium",
     "question_type": "mcq",
+    "active": true
+  },
+  {
+    "id": "phy_01_q002",
+    "subtopic": "Length measurement",
     "question": "A student measures the length of a laboratory bench using a metre rule graduated in millimetres. The reading obtained is 124.6 cm. Express this value in metres.",
     "options": {
       "A": "0.1246 m",
@@ -63,38 +54,35 @@
     "answer_text": "1.246 m",
     "explanation": {
       "question_restate": "Convert a length measured in centimetres into metres.",
-      "principle": "Since 100 cm = 1 m, dividing the value in centimetres by 100 gives the value in metres.",
-      "steps": [
+      "concept_teaching": "Length is a fundamental quantity measured in metres in the SI system. Converting between units of length is essential in Physics.",
+      "step_by_step_solution": [
         "Given length = 124.6 cm.",
-        "Divide by 100.",
+        "Recall: 100 cm = 1 m.",
         "124.6 ÷ 100 = 1.246 m."
       ],
       "why_other_options_are_wrong": [
-        "A is obtained by dividing by 1000.",
-        "C is obtained by multiplying instead of dividing.",
-        "D ignores the relationship between centimetres and metres."
+        "A uses the wrong conversion factor.",
+        "C multiplies instead of dividing.",
+        "D ignores the unit relationship."
       ],
-      "exam_tip": "Always write down the conversion factor before attempting unit conversion questions.",
+      "common_jamb_traps": "Students often divide by 1000 instead of 100.",
+      "exam_strategy_notes": "Moving from a smaller unit to a larger unit reduces the numerical value.",
+      "beginner_friendly_explanation": "Since 100 centimetres make 1 metre, divide by 100 to convert cm to m.",
+      "illustrative_diagram": "124.6 cm = 100 cm + 24.6 cm = 1 m + 0.246 m.",
       "final_answer": "B. 1.246 m",
-      "simple_explanation": "There are 100 centimetres in one metre. Therefore, 124.6 cm is slightly more than 1 metre.",
-      "tutorial_reference": "Visit Tutorials → Physics → Measurements → Length Measurement."
+      "tutorial_reference": "Visit Tutorials → Physics → Length Measurement."
     },
-    "tags": [
-      "length_measurement",
-      "unit_conversion",
-      "phy_01"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q003",
     "subject_code": "phy",
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Area measurement",
     "difficulty": "medium",
     "question_type": "mcq",
+    "active": true
+  },
+  {
+    "id": "phy_01_q003",
+    "subtopic": "Area measurement",
     "question": "The length and breadth of a rectangular cardboard are 12 cm and 8 cm respectively. What is its area?",
     "options": {
       "A": "20 cm²",
@@ -105,36 +93,36 @@
     "answer": "C",
     "answer_text": "96 cm²",
     "explanation": {
-      "question_restate": "Determine the area of a rectangle.",
-      "principle": "Area = length × breadth.",
-      "steps": [
-        "Substitute values: 12 × 8.",
+      "question_restate": "Calculate the area of a rectangle.",
+      "concept_teaching": "Area is the amount of surface occupied by a two-dimensional object. For rectangles, area equals length multiplied by breadth.",
+      "step_by_step_solution": [
+        "Area = length × breadth.",
+        "Area = 12 × 8.",
         "Area = 96 cm²."
       ],
       "why_other_options_are_wrong": [
-        "A is the sum.",
-        "B is half the correct value.",
-        "D is double the correct value."
+        "A adds the dimensions.",
+        "B gives half the correct value.",
+        "D doubles the correct answer."
       ],
-      "exam_tip": "Always attach the correct squared unit when dealing with area.",
+      "common_jamb_traps": "Forgetting to include the squared unit.",
+      "exam_strategy_notes": "Write the formula before substituting values.",
+      "beginner_friendly_explanation": "Area tells you how much space covers a flat surface.",
+      "illustrative_diagram": "Rectangle: Length = 12 cm, Breadth = 8 cm.",
       "final_answer": "C. 96 cm²",
-      "simple_explanation": "Area tells us the amount of surface covered.",
       "tutorial_reference": "Visit Tutorials → Physics → Area Measurement."
     },
-    "tags": [
-      "area_measurement"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q004",
     "subject_code": "phy",
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Volume measurement",
     "difficulty": "medium",
     "question_type": "mcq",
+    "active": true
+  },
+  {
+    "id": "phy_01_q004",
+    "subtopic": "Volume measurement",
     "question": "A cube has edges of 4 cm each. Calculate its volume.",
     "options": {
       "A": "16 cm³",
@@ -146,35 +134,35 @@
     "answer_text": "64 cm³",
     "explanation": {
       "question_restate": "Find the volume of a cube.",
-      "principle": "Volume of a cube = side³.",
-      "steps": [
+      "concept_teaching": "Volume is the amount of space occupied by a body. For a cube, volume is obtained by cubing the length of one side.",
+      "step_by_step_solution": [
+        "Volume = side³.",
         "Volume = 4³.",
         "Volume = 64 cm³."
       ],
       "why_other_options_are_wrong": [
-        "A is side².",
-        "B is incorrect multiplication.",
-        "D is side⁴."
+        "A uses side².",
+        "B is an incorrect calculation.",
+        "D uses side⁴."
       ],
-      "exam_tip": "For cubes, remember that all sides are equal.",
+      "common_jamb_traps": "Confusing area formulas with volume formulas.",
+      "exam_strategy_notes": "Volume always has cubic units.",
+      "beginner_friendly_explanation": "Volume tells us how much a container can hold.",
+      "illustrative_diagram": "Cube with all edges labelled 4 cm.",
       "final_answer": "C. 64 cm³",
-      "simple_explanation": "Volume measures the amount of space occupied.",
       "tutorial_reference": "Visit Tutorials → Physics → Volume Measurement."
     },
-    "tags": [
-      "volume_measurement"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q005",
     "subject_code": "phy",
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Vernier calipers",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question_type": "mcq",
+    "active": true
+  },
+  {
+    "id": "phy_01_q005",
+    "subtopic": "Vernier calipers",
     "question": "A vernier caliper has a main scale reading of 2.30 cm. The 7th vernier division coincides with a main scale mark. If the least count is 0.01 cm, determine the reading.",
     "options": {
       "A": "2.37 cm",
@@ -185,26 +173,31 @@
     "answer": "A",
     "answer_text": "2.37 cm",
     "explanation": {
-      "question_restate": "Combine main scale reading and vernier reading.",
-      "principle": "Reading = main scale + (coinciding division × least count).",
-      "steps": [
-        "Vernier reading = 7 × 0.01 = 0.07 cm.",
-        "Total = 2.30 + 0.07.",
+      "question_restate": "Determine the reading of a vernier caliper.",
+      "concept_teaching": "A vernier caliper measures lengths more accurately than a metre rule. Its reading is obtained by adding the main scale reading to the vernier scale contribution.",
+      "step_by_step_solution": [
+        "Vernier reading = 7 × 0.01 cm = 0.07 cm.",
+        "Total reading = 2.30 + 0.07.",
         "Reading = 2.37 cm."
       ],
       "why_other_options_are_wrong": [
-        "B ignores the vernier contribution.",
-        "C uses wrong decimal placement.",
-        "D uses only one vernier division."
+        "B ignores the vernier scale.",
+        "C misplaces the decimal point.",
+        "D uses an incorrect vernier contribution."
       ],
-      "exam_tip": "JAMB frequently tests the addition of main scale and vernier readings.",
+      "common_jamb_traps": "Ignoring the least count of the instrument.",
+      "exam_strategy_notes": "Always calculate the vernier contribution before adding it to the main scale.",
+      "beginner_friendly_explanation": "The vernier scale helps you read tiny fractions that the main scale cannot show clearly.",
+      "illustrative_diagram": "Main scale = 2.30 cm; 7th vernier division coincides; least count = 0.01 cm.",
       "final_answer": "A. 2.37 cm",
-      "simple_explanation": "The vernier scale helps us read fractions more accurately.",
       "tutorial_reference": "Visit Tutorials → Physics → Vernier Calipers."
     },
-    "tags": [
-      "vernier_calipers"
-    ],
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "difficulty": "medium",
+    "question_type": "mcq",
     "active": true
   },
   {
@@ -227,25 +220,23 @@
     "answer_text": "5.78 mm",
     "explanation": {
       "question_restate": "Determine the reading of a micrometer screw gauge.",
-      "principle": "Reading = main scale + (thimble divisions × least count).",
-      "steps": [
-        "Thimble reading = 28 × 0.01 = 0.28 mm.",
-        "Total = 5.5 + 0.28.",
-        "Diameter = 5.78 mm."
+      "concept_teaching": "A micrometer screw gauge measures small diameters and thicknesses accurately. The reading is the sum of the main scale and thimble scale readings.",
+      "step_by_step_solution": [
+        "Thimble reading = 28 × 0.01 mm = 0.28 mm.",
+        "Total reading = 5.50 + 0.28 = 5.78 mm."
       ],
       "why_other_options_are_wrong": [
-        "B ignores the main scale decimal.",
+        "B ignores part of the thimble reading.",
         "C ignores the thimble contribution.",
-        "D uses the wrong thimble value."
+        "D uses an incorrect calculation."
       ],
-      "exam_tip": "Check for zero error when provided.",
+      "common_jamb_traps": "Candidates often forget to multiply the thimble divisions by the least count.",
+      "exam_strategy_notes": "Always determine the thimble reading before adding it to the main scale reading.",
+      "beginner_friendly_explanation": "The thimble scale provides the tiny fractions needed for precise measurements.",
+      "illustrative_diagram": "Main scale = 5.5 mm; Thimble = 28 divisions; Least count = 0.01 mm.",
       "final_answer": "A. 5.78 mm",
-      "simple_explanation": "Micrometers measure very small dimensions accurately.",
       "tutorial_reference": "Visit Tutorials → Physics → Micrometer Screw Gauge."
     },
-    "tags": [
-      "micrometer"
-    ],
     "active": true
   },
   {
@@ -268,24 +259,24 @@
     "answer_text": "Mass",
     "explanation": {
       "question_restate": "Identify the SI base quantity.",
-      "principle": "Fundamental quantities are independent quantities.",
-      "steps": [
-        "Recall SI base quantities.",
-        "Mass is among them."
+      "concept_teaching": "Fundamental quantities are independent quantities from which derived quantities are obtained.",
+      "step_by_step_solution": [
+        "Recall the seven SI base quantities.",
+        "Identify the option that is not derived from others.",
+        "Mass is fundamental."
       ],
       "why_other_options_are_wrong": [
         "Velocity is derived.",
         "Force is derived.",
         "Density is derived."
       ],
-      "exam_tip": "Memorize the seven SI base quantities.",
+      "common_jamb_traps": "JAMB mixes derived quantities with fundamental quantities.",
+      "exam_strategy_notes": "Memorize the seven SI base quantities and their units.",
+      "beginner_friendly_explanation": "Fundamental quantities are the building blocks of Physics.",
+      "illustrative_diagram": "Fundamental quantities → Derived quantities.",
       "final_answer": "C. Mass",
-      "simple_explanation": "Derived quantities are formed from fundamental quantities.",
       "tutorial_reference": "Visit Tutorials → Physics → Fundamental Quantities."
     },
-    "tags": [
-      "fundamental_quantities"
-    ],
     "active": true
   },
   {
@@ -307,25 +298,25 @@
     "answer": "D",
     "answer_text": "Pressure",
     "explanation": {
-      "question_restate": "Identify the quantity obtained from other quantities.",
-      "principle": "Pressure = Force/Area.",
-      "steps": [
-        "Pressure depends on force and area.",
-        "Hence it is derived."
+      "question_restate": "Identify the quantity derived from other quantities.",
+      "concept_teaching": "Derived quantities are obtained by combining fundamental quantities mathematically.",
+      "step_by_step_solution": [
+        "Pressure = Force ÷ Area.",
+        "Force itself depends on mass and acceleration.",
+        "Therefore pressure is derived."
       ],
       "why_other_options_are_wrong": [
         "Length is fundamental.",
         "Time is fundamental.",
         "Temperature is fundamental."
       ],
-      "exam_tip": "Derived quantities can be expressed using base units.",
+      "common_jamb_traps": "Students confuse SI units with derived quantities.",
+      "exam_strategy_notes": "Ask yourself whether the quantity can be expressed using base quantities.",
+      "beginner_friendly_explanation": "Derived quantities are built from the fundamental ones.",
+      "illustrative_diagram": "Mass + Acceleration → Force; Force + Area → Pressure.",
       "final_answer": "D. Pressure",
-      "simple_explanation": "Pressure uses combinations of other quantities.",
       "tutorial_reference": "Visit Tutorials → Physics → Derived Quantities."
     },
-    "tags": [
-      "derived_quantities"
-    ],
     "active": true
   },
   {
@@ -348,25 +339,24 @@
     "answer_text": "5.6 × 10⁻⁴",
     "explanation": {
       "question_restate": "Write the number in scientific notation.",
-      "principle": "Standard form is a × 10ⁿ where 1 ≤ a < 10.",
-      "steps": [
-        "Move decimal four places right.",
-        "Exponent becomes −4.",
+      "concept_teaching": "Scientific notation expresses numbers as a × 10ⁿ where 1 ≤ a < 10.",
+      "step_by_step_solution": [
+        "Move the decimal four places right.",
+        "The exponent becomes −4.",
         "Result = 5.6 × 10⁻⁴."
       ],
       "why_other_options_are_wrong": [
-        "B has wrong sign.",
-        "C coefficient is not standard.",
-        "D coefficient is below 1."
+        "B uses a positive exponent.",
+        "C has an invalid coefficient.",
+        "D has a coefficient less than 1."
       ],
-      "exam_tip": "Small numbers have negative powers.",
+      "common_jamb_traps": "For small numbers, the exponent is negative.",
+      "exam_strategy_notes": "Ensure the coefficient lies between 1 and 10.",
+      "beginner_friendly_explanation": "Scientific notation simplifies writing very large or very small numbers.",
+      "illustrative_diagram": "0.00056 → 0.0056 → 0.056 → 0.56 → 5.6 × 10⁻⁴.",
       "final_answer": "A. 5.6 × 10⁻⁴",
-      "simple_explanation": "Scientific notation makes very large or small numbers easier to write.",
       "tutorial_reference": "Visit Tutorials → Physics → Scientific Notation."
     },
-    "tags": [
-      "scientific_notation"
-    ],
     "active": true
   },
   {
@@ -388,26 +378,25 @@
     "answer": "B",
     "answer_text": "5 km",
     "explanation": {
-      "question_restate": "Find the resultant displacement.",
-      "principle": "Use Pythagoras theorem for perpendicular movements.",
-      "steps": [
-        "Displacement² = 3² + 4².",
-        "= 25.",
+      "question_restate": "Calculate the displacement resulting from two perpendicular movements.",
+      "concept_teaching": "Displacement is the shortest distance between the initial and final positions.",
+      "step_by_step_solution": [
+        "Use Pythagoras theorem.",
+        "Displacement² = 3² + 4² = 25.",
         "Displacement = 5 km."
       ],
       "why_other_options_are_wrong": [
         "A is too small.",
-        "C is total distance.",
-        "D is incorrect."
+        "C is the total distance travelled.",
+        "D is an incorrect calculation."
       ],
-      "exam_tip": "Distance is scalar; displacement has magnitude and direction.",
+      "common_jamb_traps": "Students often confuse distance with displacement.",
+      "exam_strategy_notes": "Use Pythagoras whenever the motion forms a right angle.",
+      "beginner_friendly_explanation": "Displacement is the straight-line route from start to finish.",
+      "illustrative_diagram": "3 km east ⟂ 4 km north → hypotenuse = 5 km.",
       "final_answer": "B. 5 km",
-      "simple_explanation": "Displacement measures the shortest path from start to finish.",
       "tutorial_reference": "Visit Tutorials → Physics → Distance and Displacement."
     },
-    "tags": [
-      "distance_displacement"
-    ],
     "active": true
   },
   {
@@ -429,25 +418,25 @@
     "answer": "C",
     "answer_text": "frame of reference",
     "explanation": {
-      "question_restate": "Identify the concept describing observed motion.",
-      "principle": "Motion depends on the observer's frame of reference.",
-      "steps": [
-        "The two passengers share the same moving frame.",
-        "Relative to each other, they are at rest."
+      "question_restate": "Identify the concept that explains why motion depends on the observer.",
+      "concept_teaching": "A frame of reference is the viewpoint from which motion is observed.",
+      "step_by_step_solution": [
+        "The two passengers move together.",
+        "Relative to each other, there is no motion.",
+        "They share the same frame of reference."
       ],
       "why_other_options_are_wrong": [
         "Force is unrelated.",
         "Momentum is not the basis.",
         "Power concerns energy transfer."
       ],
-      "exam_tip": "JAMB often asks conceptual questions on relative motion.",
+      "common_jamb_traps": "Candidates ignore the phrase 'relative to'.",
+      "exam_strategy_notes": "Always identify who the observer is.",
+      "beginner_friendly_explanation": "Whether something is moving or not can depend on who is watching it.",
+      "illustrative_diagram": "Passenger A ↔ Passenger B inside moving bus → both at rest relative to each other.",
       "final_answer": "C. Frame of reference",
-      "simple_explanation": "Whether an object appears moving or stationary can depend on who is observing it.",
       "tutorial_reference": "Visit Tutorials → Physics → Frame of Reference."
     },
-    "tags": [
-      "frame_reference"
-    ],
     "active": true
   },
   {
