@@ -221,6 +221,217 @@
       "phy_01"
     ],
     "active": true
+  },
+  {
+    "id": "phy_01_q006",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Measurement of irregular bodies",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The water level in a measuring cylinder rises from 45 cm³ to 58 cm³ when a stone is completely immersed in it. What is the volume of the stone?",
+    "options": {
+      "A": "13 cm³",
+      "B": "45 cm³",
+      "C": "58 cm³",
+      "D": "103 cm³"
+    },
+    "answer": "A",
+    "answer_text": "13 cm³",
+    "explanation": {
+      "question_restate": "Find the volume of an irregular solid using water displacement.",
+      "principle": "The volume of an irregular object equals the volume of water it displaces.",
+      "steps": [
+        "Initial volume = 45 cm³.",
+        "Final volume = 58 cm³.",
+        "Volume displaced = 58 − 45 = 13 cm³.",
+        "Therefore, the stone's volume is 13 cm³."
+      ],
+      "why_other_options_are_wrong": [
+        "B is the initial water level.",
+        "C is the final water level.",
+        "D results from adding the readings."
+      ],
+      "exam_tip": "JAMB frequently tests displacement. Always subtract final and initial readings.",
+      "final_answer": "A. 13 cm³",
+      "simple_explanation": "The stone takes up the same space as the water it pushes aside.",
+      "tutorial_reference": "Visit Tutorials → Physics → Measurement of Irregular Bodies."
+    },
+    "tags": [
+      "irregular_bodies",
+      "phy_01"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q007",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Vernier calipers",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A Vernier caliper has a least count of 0.01 cm. The Vernier zero lies between 2.3 cm and 2.4 cm on the main scale, while the 6th Vernier division coincides with a main-scale mark. Determine the reading.",
+    "options": {
+      "A": "2.30 cm",
+      "B": "2.36 cm",
+      "C": "2.46 cm",
+      "D": "2.60 cm"
+    },
+    "answer": "B",
+    "answer_text": "2.36 cm",
+    "explanation": {
+      "question_restate": "Determine a Vernier caliper reading from a textual description.",
+      "principle": "Reading = Main scale reading + (coinciding Vernier division × least count).",
+      "steps": [
+        "Main scale reading = 2.30 cm.",
+        "Vernier contribution = 6 × 0.01 = 0.06 cm.",
+        "Total reading = 2.30 + 0.06 = 2.36 cm."
+      ],
+      "why_other_options_are_wrong": [
+        "A ignores the Vernier contribution.",
+        "C uses an incorrect addition.",
+        "D overestimates the measurement."
+      ],
+      "exam_tip": "Read the main scale first before applying the Vernier correction.",
+      "final_answer": "B. 2.36 cm",
+      "simple_explanation": "The Vernier scale helps you read small fractions accurately.",
+      "tutorial_reference": "Visit Tutorials → Physics → Vernier Calipers."
+    },
+    "tags": [
+      "vernier",
+      "phy_01"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q008",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Micrometer screw gauge",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "A micrometer screw gauge has a least count of 0.01 mm. The sleeve reading is 7.5 mm and the 28th thimble division coincides with the reference line. Determine the reading.",
+    "options": {
+      "A": "7.28 mm",
+      "B": "7.50 mm",
+      "C": "7.78 mm",
+      "D": "7.98 mm"
+    },
+    "answer": "C",
+    "answer_text": "7.78 mm",
+    "explanation": {
+      "question_restate": "Determine the measurement shown by a micrometer screw gauge.",
+      "principle": "Micrometer reading = Sleeve reading + (Thimble division × least count).",
+      "steps": [
+        "Sleeve reading = 7.50 mm.",
+        "Thimble contribution = 28 × 0.01 = 0.28 mm.",
+        "Total reading = 7.50 + 0.28 = 7.78 mm."
+      ],
+      "why_other_options_are_wrong": [
+        "A omits the sleeve reading.",
+        "B ignores the thimble reading.",
+        "D uses an incorrect thimble value."
+      ],
+      "exam_tip": "Always multiply the thimble division by the least count.",
+      "final_answer": "C. 7.78 mm",
+      "simple_explanation": "The sleeve gives the main value, while the thimble gives the finer reading.",
+      "tutorial_reference": "Visit Tutorials → Physics → Micrometer Screw Gauge."
+    },
+    "tags": [
+      "micrometer",
+      "phy_01"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q009",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Unit conversion",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Convert 3.5 km to metres.",
+    "options": {
+      "A": "35 m",
+      "B": "350 m",
+      "C": "3,500 m",
+      "D": "35,000 m"
+    },
+    "answer": "C",
+    "answer_text": "3,500 m",
+    "explanation": {
+      "question_restate": "Convert kilometres to metres.",
+      "principle": "1 km = 1,000 m.",
+      "steps": [
+        "Write the conversion factor.",
+        "Multiply 3.5 by 1,000.",
+        "Answer = 3,500 m."
+      ],
+      "why_other_options_are_wrong": [
+        "A and B underestimate the value.",
+        "D uses an incorrect factor."
+      ],
+      "exam_tip": "Moving from larger units to smaller units requires multiplication.",
+      "final_answer": "C. 3,500 m",
+      "simple_explanation": "Each kilometre contains 1,000 metres.",
+      "tutorial_reference": "Visit Tutorials → Physics → Unit Conversion."
+    },
+    "tags": [
+      "unit_conversion",
+      "phy_01"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q010",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Distance and displacement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A student walks 3 km east and then 4 km west. What are the student's distance and displacement respectively?",
+    "options": {
+      "A": "7 km, 1 km west",
+      "B": "7 km, 7 km west",
+      "C": "1 km, 7 km west",
+      "D": "1 km, 1 km east"
+    },
+    "answer": "A",
+    "answer_text": "7 km, 1 km west",
+    "explanation": {
+      "question_restate": "Differentiate between distance and displacement.",
+      "principle": "Distance is total path covered; displacement is change in position with direction.",
+      "steps": [
+        "Distance = 3 + 4 = 7 km.",
+        "Take east as positive.",
+        "Displacement = 3 − 4 = −1 km.",
+        "Negative means west."
+      ],
+      "why_other_options_are_wrong": [
+        "B confuses displacement with distance.",
+        "C gives the wrong distance.",
+        "D gives the wrong direction."
+      ],
+      "exam_tip": "Displacement always requires direction.",
+      "final_answer": "A. 7 km, 1 km west",
+      "simple_explanation": "The student travelled 7 km but ended 1 km west of the starting point.",
+      "tutorial_reference": "Visit Tutorials → Physics → Distance and Displacement."
+    },
+    "tags": [
+      "distance_displacement",
+      "phy_01"
+    ],
+    "active": true
   }
 ]
 
