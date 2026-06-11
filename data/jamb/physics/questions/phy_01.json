@@ -432,6 +432,216 @@
       "phy_01"
     ],
     "active": true
+  },
+  {
+    "id": "phy_01_q011",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Beam balance",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The major advantage of using a beam balance for measuring mass is that it A. measures weight directly B. gives the same mass value irrespective of location C. can measure only liquids D. is more sensitive than a micrometer screw gauge",
+    "options": {
+      "A": "measures weight directly",
+      "B": "gives the same mass value irrespective of location",
+      "C": "can measure only liquids",
+      "D": "is more sensitive than a micrometer screw gauge"
+    },
+    "answer": "B",
+    "answer_text": "gives the same mass value irrespective of location",
+    "explanation": {
+      "question_restate": "Identify why a beam balance is preferred for mass measurement.",
+      "principle": "Mass is the amount of matter in a body and does not depend on gravity. A beam balance compares an unknown mass with standard masses.",
+      "steps": [
+        "Recall that beam balances compare masses.",
+        "Remember that both sides experience the same gravitational field.",
+        "Conclude that the balance gives the same mass value anywhere."
+      ],
+      "why_other_options_are_wrong": [
+        "A: Weight is measured using spring balances.",
+        "C: Beam balances are not restricted to liquids.",
+        "D: Micrometers measure length, not mass."
+      ],
+      "exam_tip": "JAMB often tests the difference between mass and weight.",
+      "final_answer": "B. gives the same mass value irrespective of location",
+      "simple_explanation": "A beam balance compares one mass against another, so gravity cancels out.",
+      "tutorial_reference": "Visit Tutorials → Physics → Beam Balance."
+    },
+    "tags": [
+      "beam_balance",
+      "mass"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q012",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Measurement of time",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A stopwatch records an event lasting 2 minutes 35 seconds. Express this time in seconds.",
+    "options": {
+      "A": "125 s",
+      "B": "135 s",
+      "C": "145 s",
+      "D": "155 s"
+    },
+    "answer": "D",
+    "answer_text": "155 s",
+    "explanation": {
+      "question_restate": "Convert a time interval from minutes and seconds into seconds.",
+      "principle": "One minute equals 60 seconds.",
+      "steps": [
+        "Convert 2 minutes to seconds: 2 × 60 = 120 s.",
+        "Add the remaining 35 s.",
+        "120 + 35 = 155 s."
+      ],
+      "why_other_options_are_wrong": [
+        "A, B and C result from incorrect conversion or addition."
+      ],
+      "exam_tip": "Always convert the larger unit first before combining values.",
+      "final_answer": "D. 155 s",
+      "simple_explanation": "Two minutes already contain 120 seconds. Adding 35 gives 155 seconds.",
+      "tutorial_reference": "Visit Tutorials → Physics → Measurement of Time."
+    },
+    "tags": [
+      "time"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q013",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Derived quantities",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is a derived quantity?",
+    "options": {
+      "A": "Time",
+      "B": "Length",
+      "C": "Force",
+      "D": "Mass"
+    },
+    "answer": "C",
+    "answer_text": "Force",
+    "explanation": {
+      "question_restate": "Identify a quantity obtained from fundamental quantities.",
+      "principle": "Derived quantities are formed by mathematical combinations of base quantities.",
+      "steps": [
+        "Recall SI base quantities.",
+        "Note that force = mass × acceleration.",
+        "Since acceleration depends on length and time, force is derived."
+      ],
+      "why_other_options_are_wrong": [
+        "Time, length and mass are SI base quantities."
+      ],
+      "exam_tip": "Memorize the seven SI base quantities.",
+      "final_answer": "C. Force",
+      "simple_explanation": "Force is built from other quantities; it is not fundamental.",
+      "tutorial_reference": "Visit Tutorials → Physics → Derived Quantities."
+    },
+    "tags": [
+      "derived_quantities"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q014",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "SI units",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "What is the SI unit of electric current?",
+    "options": {
+      "A": "Volt",
+      "B": "Coulomb",
+      "C": "Ampere",
+      "D": "Ohm"
+    },
+    "answer": "C",
+    "answer_text": "Ampere",
+    "explanation": {
+      "question_restate": "Identify the SI base unit associated with electric current.",
+      "principle": "Each SI base quantity has a unique SI unit.",
+	"steps": [
+  	  "Understand that electric current is one of the seven SI base quantities.",
+          "The seven SI base quantities and their units are: length (metre, m), mass (kilogram, kg), time (second, s), electric current (ampere, A), thermodynamic temperature (kelvin, K), amount of substance (mole, mol), and luminous intensity (candela, cd).",
+          "Locate the quantity mentioned in the question, which is electric current.",
+          "Identify its corresponding SI unit, which is the ampere (A).",
+          "Therefore, the correct answer is Ampere."
+         ],
+      "why_other_options_are_wrong": [
+        "Volt measures potential difference.",
+        "Coulomb measures electric charge.",
+        "Ohm measures resistance."
+      ],
+      "exam_tip": "Questions on SI units are common in JAMB.",
+      "final_answer": "C. Ampere",
+      "simple_explanation": "The ampere is the standard unit used worldwide for current.",
+      "tutorial_reference": "Visit Tutorials → Physics → SI Units."
+    },
+    "tags": [
+      "si_units"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q015",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Dimensions of physical quantities",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "What is the dimensional formula of force?",
+    "options": {
+      "A": "[MLT⁻²]",
+      "B": "[ML²T⁻²]",
+      "C": "[ML⁻¹T⁻²]",
+      "D": "[M⁰LT⁻¹]"
+    },
+    "answer": "A",
+    "answer_text": "[MLT⁻²]",
+    "explanation": {
+      "question_restate": "Determine the dimensions of force.",
+      "principle": "Dimensional analysis involves expressing physical quantities in terms of the fundamental dimensions of mass (M), length (L), and time (T). To determine the dimensional formula of a derived quantity such as force, we first express that quantity using a known Physics equation. Force is defined as the product of mass and acceleration. Since acceleration itself is derived from velocity and time, we may need to break the process into smaller steps until every quantity is expressed entirely in terms of the fundamental dimensions.",
+      "steps": [
+        "Start with the formula for force: Force = Mass × Acceleration.",
+  	"Mass is a fundamental quantity. Its dimensional formula is [M].",
+  	"Acceleration means the rate of change of velocity with time. Mathematically, Acceleration = Velocity ÷ Time.",
+  	"Velocity is distance travelled per unit time. Therefore, Velocity = Length ÷ Time.",
+  	"The dimensional formula for length is [L], while that of time is [T]. Therefore, the dimensions of velocity are [L]/[T] = [LT⁻¹].",
+  "Since Acceleration = Velocity ÷ Time, divide [LT⁻¹] by [T]. This gives [LT⁻¹]/[T] = [LT⁻²].",
+  	"Substitute the dimensions into the force equation: Force = Mass × Acceleration = [M] × [LT⁻²].",
+  	"Multiplying these dimensions gives [MLT⁻²].",
+  	"Therefore, the dimensional formula of force is [MLT⁻²]."
+      ],
+      "why_other_options_are_wrong": [
+        "B corresponds to work/energy dimensions.",
+        "C corresponds to pressure dimensions.",
+        "D corresponds to velocity dimensions."
+      ],
+      "exam_tip": "Start from familiar formulas when solving dimensional-analysis questions.",
+      "final_answer": "A. [MLT⁻²]",
+      "simple_explanation": "Force depends on how much mass is accelerated and how quickly its velocity changes.",
+      "tutorial_reference": "Visit Tutorials → Physics → Dimensions of Physical Quantities."
+    },
+    "tags": [
+      "dimensions"
+    ],
+    "active": true
   }
 ]
 
