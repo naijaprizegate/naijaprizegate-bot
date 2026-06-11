@@ -10,13 +10,13 @@
     "question_type": "mcq",
     "question": "A student measures the length of a metal rod using a metre rule graduated in millimetres. The reading at one end of the rod is 12.4 cm while the reading at the other end is 68.9 cm. What is the length of the rod?",
     "options": {
-      "A": "56.3 cm",
+      "A": "56.5 cm",
       "B": "81.3 cm",
       "C": "57.5 cm",
       "D": "55.5 cm"
     },
     "answer": "A",
-    "answer_text": "56.3 cm",
+    "answer_text": "56.5 cm",
     "explanation": {
       "question_restate": "You are required to determine the actual length of an object from two scale readings taken on a metre rule.",
       "principle": "When measuring length with a metre rule, the true length of an object is obtained by subtracting the initial reading from the final reading. This method helps eliminate errors that may arise if the zero mark of the rule is worn out.",
@@ -25,7 +25,7 @@
         "Identify the final reading: 68.9 cm.",
         "Subtract the initial reading from the final reading.",
         "68.9 cm − 12.4 cm = 56.5 cm? Recalculate carefully.",
-        "68.9 − 12.4 = 56.3 cm."
+        "68.9 − 12.4 = 56.5 cm."
       ],
       "why_other_options_are_wrong": [
         "B. 81.3 cm is obtained by adding the readings instead of subtracting them.",
