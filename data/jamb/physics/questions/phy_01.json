@@ -1,246 +1,185 @@
 [
   {
     "id": "phy_01_q001",
-    "subtopic": "Fundamental quantities",
-    "question": "Which of the following physical quantities is fundamental in the International System of Units (SI)?",
-    "options": {
-      "A": "Density",
-      "B": "Force",
-      "C": "Mass",
-      "D": "Pressure"
-    },
-    "answer": "C",
-    "answer_text": "Mass",
-    "explanation": {
-      "question_restate": "Identify the quantity that belongs to the seven SI fundamental quantities.",
-      "concept_teaching": "Fundamental quantities are independent physical quantities that cannot be expressed in terms of other quantities. The seven SI base quantities are length, mass, time, electric current, thermodynamic temperature, amount of substance, and luminous intensity.",
-      "step_by_step_solution": [
-        "Recall the seven SI base quantities.",
-        "Examine each option.",
-        "Identify the quantity that is not derived from others.",
-        "Mass is a fundamental quantity."
-      ],
-      "why_other_options_are_wrong": [
-        "Density = mass/volume, so it is derived.",
-        "Force = mass × acceleration, so it is derived.",
-        "Pressure = force/area, so it is derived."
-      ],
-      "common_jamb_traps": "JAMB often mixes fundamental and derived quantities in the same question.",
-      "exam_strategy_notes": "Memorize the seven SI base quantities and their units.",
-      "beginner_friendly_explanation": "Think of fundamental quantities as the building blocks of Physics. Mass is one of those building blocks.",
-      "illustrative_diagram": "Base quantities → Derived quantities (e.g. Mass → Force → Pressure).",
-      "final_answer": "C. Mass",
-      "tutorial_reference": "Visit Tutorials → Physics → Fundamental Quantities."
-    },
     "subject_code": "phy",
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Length measurement",
     "difficulty": "medium",
     "question_type": "mcq",
+    "question": "A student measures the length of a metal rod using a metre rule graduated in millimetres. The reading at one end of the rod is 12.4 cm while the reading at the other end is 68.9 cm. What is the length of the rod?",
+    "options": {
+      "A": "56.3 cm",
+      "B": "81.3 cm",
+      "C": "57.5 cm",
+      "D": "55.5 cm"
+    },
+    "answer": "A",
+    "answer_text": "56.3 cm",
+    "explanation": {
+      "question_restate": "You are required to determine the actual length of an object from two scale readings taken on a metre rule.",
+      "principle": "When measuring length with a metre rule, the true length of an object is obtained by subtracting the initial reading from the final reading. This method helps eliminate errors that may arise if the zero mark of the rule is worn out.",
+      "steps": [
+        "Identify the initial reading: 12.4 cm.",
+        "Identify the final reading: 68.9 cm.",
+        "Subtract the initial reading from the final reading.",
+        "68.9 cm − 12.4 cm = 56.5 cm? Recalculate carefully.",
+        "68.9 − 12.4 = 56.3 cm."
+      ],
+      "why_other_options_are_wrong": [
+        "B. 81.3 cm is obtained by adding the readings instead of subtracting them.",
+        "C. 57.5 cm results from careless subtraction.",
+        "D. 55.5 cm does not agree with the actual scale difference."
+      ],
+      "exam_tip": "JAMB frequently tests the use of initial and final readings, especially when the zero end of the metre rule is not used.",
+      "final_answer": "A. 56.3 cm",
+      "simple_explanation": "Think of the metre rule as a number line. The rod started at 12.4 cm and ended at 68.9 cm, so its length is the difference between those two positions.",
+      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Length Measurement."
+    },
+    "tags": [
+      "length_measurement",
+      "metre_rule",
+      "phy_01"
+    ],
     "active": true
   },
   {
     "id": "phy_01_q002",
-    "subtopic": "Length measurement",
-    "question": "A student measures the length of a laboratory bench using a metre rule graduated in millimetres. The reading obtained is 124.6 cm. Express this value in metres.",
-    "options": {
-      "A": "0.1246 m",
-      "B": "1.246 m",
-      "C": "12.46 m",
-      "D": "12460 m"
-    },
-    "answer": "B",
-    "answer_text": "1.246 m",
-    "explanation": {
-      "question_restate": "Convert a length measured in centimetres into metres.",
-      "concept_teaching": "Length is a fundamental quantity measured in metres in the SI system. Converting between units of length is essential in Physics.",
-      "step_by_step_solution": [
-        "Given length = 124.6 cm.",
-        "Recall: 100 cm = 1 m.",
-        "124.6 ÷ 100 = 1.246 m."
-      ],
-      "why_other_options_are_wrong": [
-        "A uses the wrong conversion factor.",
-        "C multiplies instead of dividing.",
-        "D ignores the unit relationship."
-      ],
-      "common_jamb_traps": "Students often divide by 1000 instead of 100.",
-      "exam_strategy_notes": "Moving from a smaller unit to a larger unit reduces the numerical value.",
-      "beginner_friendly_explanation": "Since 100 centimetres make 1 metre, divide by 100 to convert cm to m.",
-      "illustrative_diagram": "124.6 cm = 100 cm + 24.6 cm = 1 m + 0.246 m.",
-      "final_answer": "B. 1.246 m",
-      "tutorial_reference": "Visit Tutorials → Physics → Length Measurement."
-    },
     "subject_code": "phy",
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Area measurement",
     "difficulty": "medium",
     "question_type": "mcq",
+    "question": "A rectangular classroom floor measures 8.5 m by 6.0 m. What is the area of the floor?",
+    "options": {
+      "A": "14.5 m²",
+      "B": "28.0 m²",
+      "C": "51.0 m²",
+      "D": "57.0 m²"
+    },
+    "answer": "C",
+    "answer_text": "51.0 m²",
+    "explanation": {
+      "question_restate": "You are asked to calculate the area enclosed by a rectangular surface.",
+      "principle": "The area of a rectangle is obtained by multiplying its length by its breadth. The SI unit of area is the square metre (m²).",
+      "steps": [
+        "Write the formula: Area = Length × Breadth.",
+        "Substitute the values: 8.5 m × 6.0 m.",
+        "Perform the multiplication: 8.5 × 6.0 = 51.0.",
+        "Attach the correct unit, m²."
+      ],
+      "why_other_options_are_wrong": [
+        "A. 14.5 m² is obtained through incorrect arithmetic.",
+        "B. 28.0 m² underestimates the actual surface area.",
+        "D. 57.0 m² results from multiplication errors."
+      ],
+      "exam_tip": "Always include the correct unit. Area is measured in square units such as cm² or m².",
+      "final_answer": "C. 51.0 m²",
+      "simple_explanation": "Area tells us how much surface is covered. Since the floor is rectangular, multiply its length by its width.",
+      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Area Measurement."
+    },
+    "tags": [
+      "area_measurement",
+      "derived_quantities",
+      "phy_01"
+    ],
     "active": true
   },
   {
     "id": "phy_01_q003",
-    "subtopic": "Area measurement",
-    "question": "The length and breadth of a rectangular cardboard are 12 cm and 8 cm respectively. What is its area?",
-    "options": {
-      "A": "20 cm²",
-      "B": "48 cm²",
-      "C": "96 cm²",
-      "D": "192 cm²"
-    },
-    "answer": "C",
-    "answer_text": "96 cm²",
-    "explanation": {
-      "question_restate": "Calculate the area of a rectangle.",
-      "concept_teaching": "Area is the amount of surface occupied by a two-dimensional object. For rectangles, area equals length multiplied by breadth.",
-      "step_by_step_solution": [
-        "Area = length × breadth.",
-        "Area = 12 × 8.",
-        "Area = 96 cm²."
-      ],
-      "why_other_options_are_wrong": [
-        "A adds the dimensions.",
-        "B gives half the correct value.",
-        "D doubles the correct answer."
-      ],
-      "common_jamb_traps": "Forgetting to include the squared unit.",
-      "exam_strategy_notes": "Write the formula before substituting values.",
-      "beginner_friendly_explanation": "Area tells you how much space covers a flat surface.",
-      "illustrative_diagram": "Rectangle: Length = 12 cm, Breadth = 8 cm.",
-      "final_answer": "C. 96 cm²",
-      "tutorial_reference": "Visit Tutorials → Physics → Area Measurement."
-    },
     "subject_code": "phy",
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Volume measurement",
     "difficulty": "medium",
     "question_type": "mcq",
-    "active": true
-  },
-  {
-    "id": "phy_01_q004",
-    "subtopic": "Volume measurement",
-    "question": "A cube has edges of 4 cm each. Calculate its volume.",
+    "question": "A cube has an edge length of 4 cm. What is its volume?",
     "options": {
       "A": "16 cm³",
       "B": "48 cm³",
       "C": "64 cm³",
-      "D": "256 cm³"
+      "D": "96 cm³"
     },
     "answer": "C",
     "answer_text": "64 cm³",
     "explanation": {
-      "question_restate": "Find the volume of a cube.",
-      "concept_teaching": "Volume is the amount of space occupied by a body. For a cube, volume is obtained by cubing the length of one side.",
-      "step_by_step_solution": [
-        "Volume = side³.",
-        "Volume = 4³.",
-        "Volume = 64 cm³."
+      "question_restate": "The question tests your ability to determine the volume of a regular solid body.",
+      "principle": "The volume of a cube is given by V = a³, where a is the length of one edge of the cube.",
+      "steps": [
+        "Identify the edge length: a = 4 cm.",
+        "Use the formula V = a³.",
+        "Substitute the value: V = 4³.",
+        "Calculate: 4 × 4 × 4 = 64.",
+        "Write the answer with the correct unit, cm³."
       ],
       "why_other_options_are_wrong": [
-        "A uses side².",
-        "B is an incorrect calculation.",
-        "D uses side⁴."
+        "A. 16 cm³ is obtained by squaring instead of cubing the edge.",
+        "B. 48 cm³ does not follow the cube formula.",
+        "D. 96 cm³ is an arithmetic error."
       ],
-      "common_jamb_traps": "Confusing area formulas with volume formulas.",
-      "exam_strategy_notes": "Volume always has cubic units.",
-      "beginner_friendly_explanation": "Volume tells us how much a container can hold.",
-      "illustrative_diagram": "Cube with all edges labelled 4 cm.",
+      "exam_tip": "For regular solids, memorize the common formulas. JAMB often tests cubes, cuboids and cylinders.",
       "final_answer": "C. 64 cm³",
-      "tutorial_reference": "Visit Tutorials → Physics → Volume Measurement."
+      "simple_explanation": "Volume measures the amount of space occupied by an object. Since all sides of a cube are equal, multiply the edge length by itself three times.",
+      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Volume Measurement."
     },
+    "tags": [
+      "volume_measurement",
+      "regular_bodies",
+      "phy_01"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q004",
     "subject_code": "phy",
     "subject_name": "Physics",
     "topic_id": "phy_01",
     "topic_title": "Measurements, Units and Dimensions",
-    "difficulty": "medium",
+    "subtopic": "Scientific notation",
+    "difficulty": "hard",
     "question_type": "mcq",
+    "question": "Express 0.0000725 in standard form.",
+    "options": {
+      "A": "7.25 × 10⁻⁴",
+      "B": "7.25 × 10⁻⁵",
+      "C": "72.5 × 10⁻⁶",
+      "D": "0.725 × 10⁻⁵"
+    },
+    "answer": "B",
+    "answer_text": "7.25 × 10⁻⁵",
+    "explanation": {
+      "question_restate": "You are required to write a very small number in scientific notation.",
+      "principle": "In scientific notation, a number is written as A × 10ⁿ, where 1 ≤ A < 10. For numbers less than 1, the power of ten is negative.",
+      "steps": [
+        "Locate the first non-zero digit in 0.0000725.",
+        "Move the decimal point until the number becomes 7.25.",
+        "Count the number of places moved: 5 places.",
+        "Because the original number is less than 1, use a negative exponent.",
+        "Therefore, 0.0000725 = 7.25 × 10⁻⁵."
+      ],
+      "why_other_options_are_wrong": [
+        "A. The exponent should not be −4 because the decimal moved five places.",
+        "C. The coefficient 72.5 is greater than 10 and violates standard form rules.",
+        "D. The coefficient 0.725 is less than 1 and is not acceptable in scientific notation."
+      ],
+      "exam_tip": "The coefficient in standard form must always lie between 1 and 10.",
+      "final_answer": "B. 7.25 × 10⁻⁵",
+      "simple_explanation": "Scientific notation makes very small or very large numbers easier to handle. Simply move the decimal point and count how many places it moves.",
+      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Scientific Notation."
+    },
+    "tags": [
+      "scientific_notation",
+      "unit_conversion",
+      "phy_01"
+    ],
     "active": true
   },
   {
     "id": "phy_01_q005",
-    "subtopic": "Vernier calipers",
-    "question": "A vernier caliper has a main scale reading of 2.30 cm. The 7th vernier division coincides with a main scale mark. If the least count is 0.01 cm, determine the reading.",
-    "options": {
-      "A": "2.37 cm",
-      "B": "2.30 cm",
-      "C": "2.77 cm",
-      "D": "2.31 cm"
-    },
-    "answer": "A",
-    "answer_text": "2.37 cm",
-    "explanation": {
-      "question_restate": "Determine the reading of a vernier caliper.",
-      "concept_teaching": "A vernier caliper measures lengths more accurately than a metre rule. Its reading is obtained by adding the main scale reading to the vernier scale contribution.",
-      "step_by_step_solution": [
-        "Vernier reading = 7 × 0.01 cm = 0.07 cm.",
-        "Total reading = 2.30 + 0.07.",
-        "Reading = 2.37 cm."
-      ],
-      "why_other_options_are_wrong": [
-        "B ignores the vernier scale.",
-        "C misplaces the decimal point.",
-        "D uses an incorrect vernier contribution."
-      ],
-      "common_jamb_traps": "Ignoring the least count of the instrument.",
-      "exam_strategy_notes": "Always calculate the vernier contribution before adding it to the main scale.",
-      "beginner_friendly_explanation": "The vernier scale helps you read tiny fractions that the main scale cannot show clearly.",
-      "illustrative_diagram": "Main scale = 2.30 cm; 7th vernier division coincides; least count = 0.01 cm.",
-      "final_answer": "A. 2.37 cm",
-      "tutorial_reference": "Visit Tutorials → Physics → Vernier Calipers."
-    },
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "active": true
-  },
-  {
-    "id": "phy_01_q006",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Micrometer screw gauge",
-    "difficulty": "hard",
-    "question_type": "mcq",
-    "question": "A micrometer screw gauge shows a main scale reading of 5.5 mm and a thimble reading of 28 divisions. If the least count is 0.01 mm, what is the diameter measured?",
-    "options": {
-      "A": "5.78 mm",
-      "B": "5.28 mm",
-      "C": "5.50 mm",
-      "D": "5.82 mm"
-    },
-    "answer": "A",
-    "answer_text": "5.78 mm",
-    "explanation": {
-      "question_restate": "Determine the reading of a micrometer screw gauge.",
-      "concept_teaching": "A micrometer screw gauge measures small diameters and thicknesses accurately. The reading is the sum of the main scale and thimble scale readings.",
-      "step_by_step_solution": [
-        "Thimble reading = 28 × 0.01 mm = 0.28 mm.",
-        "Total reading = 5.50 + 0.28 = 5.78 mm."
-      ],
-      "why_other_options_are_wrong": [
-        "B ignores part of the thimble reading.",
-        "C ignores the thimble contribution.",
-        "D uses an incorrect calculation."
-      ],
-      "common_jamb_traps": "Candidates often forget to multiply the thimble divisions by the least count.",
-      "exam_strategy_notes": "Always determine the thimble reading before adding it to the main scale reading.",
-      "beginner_friendly_explanation": "The thimble scale provides the tiny fractions needed for precise measurements.",
-      "illustrative_diagram": "Main scale = 5.5 mm; Thimble = 28 divisions; Least count = 0.01 mm.",
-      "final_answer": "A. 5.78 mm",
-      "tutorial_reference": "Visit Tutorials → Physics → Micrometer Screw Gauge."
-    },
-    "active": true
-  },
-  {
-    "id": "phy_01_q007",
     "subject_code": "phy",
     "subject_name": "Physics",
     "topic_id": "phy_01",
@@ -248,395 +187,39 @@
     "subtopic": "Fundamental quantities",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "Which of the following is a fundamental quantity?",
+    "question": "Which of the following is an SI base quantity?",
     "options": {
-      "A": "Velocity",
-      "B": "Force",
+      "A": "Force",
+      "B": "Pressure",
       "C": "Mass",
       "D": "Density"
     },
     "answer": "C",
     "answer_text": "Mass",
     "explanation": {
-      "question_restate": "Identify the SI base quantity.",
-      "concept_teaching": "Fundamental quantities are independent quantities from which derived quantities are obtained.",
-      "step_by_step_solution": [
+      "question_restate": "You need to identify a quantity that is independent and not defined in terms of other physical quantities.",
+      "principle": "Fundamental quantities are the basic quantities upon which all other physical quantities are built. The seven SI base quantities include length, mass, time, electric current, thermodynamic temperature, amount of substance and luminous intensity.",
+      "steps": [
         "Recall the seven SI base quantities.",
-        "Identify the option that is not derived from others.",
-        "Mass is fundamental."
+        "Examine each option carefully.",
+        "Determine whether the quantity can be expressed in terms of other quantities.",
+        "Select the quantity that stands alone."
       ],
       "why_other_options_are_wrong": [
-        "Velocity is derived.",
-        "Force is derived.",
-        "Density is derived."
+        "A. Force is derived from mass × acceleration.",
+        "B. Pressure is force per unit area.",
+        "D. Density is mass per unit volume."
       ],
-      "common_jamb_traps": "JAMB mixes derived quantities with fundamental quantities.",
-      "exam_strategy_notes": "Memorize the seven SI base quantities and their units.",
-      "beginner_friendly_explanation": "Fundamental quantities are the building blocks of Physics.",
-      "illustrative_diagram": "Fundamental quantities → Derived quantities.",
+      "exam_tip": "JAMB loves testing the distinction between fundamental and derived quantities. Memorize the SI base quantities and their units.",
       "final_answer": "C. Mass",
-      "tutorial_reference": "Visit Tutorials → Physics → Fundamental Quantities."
+      "simple_explanation": "Fundamental quantities are like building blocks. Mass is one of those blocks, while force and density are combinations of other quantities.",
+      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Fundamental Quantities."
     },
+    "tags": [
+      "fundamental_quantities",
+      "si_units",
+      "phy_01"
+    ],
     "active": true
-  },
-  {
-    "id": "phy_01_q008",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Derived quantities",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "Which of the following is a derived quantity?",
-    "options": {
-      "A": "Length",
-      "B": "Time",
-      "C": "Temperature",
-      "D": "Pressure"
-    },
-    "answer": "D",
-    "answer_text": "Pressure",
-    "explanation": {
-      "question_restate": "Identify the quantity derived from other quantities.",
-      "concept_teaching": "Derived quantities are obtained by combining fundamental quantities mathematically.",
-      "step_by_step_solution": [
-        "Pressure = Force ÷ Area.",
-        "Force itself depends on mass and acceleration.",
-        "Therefore pressure is derived."
-      ],
-      "why_other_options_are_wrong": [
-        "Length is fundamental.",
-        "Time is fundamental.",
-        "Temperature is fundamental."
-      ],
-      "common_jamb_traps": "Students confuse SI units with derived quantities.",
-      "exam_strategy_notes": "Ask yourself whether the quantity can be expressed using base quantities.",
-      "beginner_friendly_explanation": "Derived quantities are built from the fundamental ones.",
-      "illustrative_diagram": "Mass + Acceleration → Force; Force + Area → Pressure.",
-      "final_answer": "D. Pressure",
-      "tutorial_reference": "Visit Tutorials → Physics → Derived Quantities."
-    },
-    "active": true
-  },
-  {
-    "id": "phy_01_q009",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Scientific notation",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "Express 0.00056 in standard form.",
-    "options": {
-      "A": "5.6 × 10⁻⁴",
-      "B": "5.6 × 10⁴",
-      "C": "56 × 10⁻⁵",
-      "D": "0.56 × 10⁻³"
-    },
-    "answer": "A",
-    "answer_text": "5.6 × 10⁻⁴",
-    "explanation": {
-      "question_restate": "Write the number in scientific notation.",
-      "concept_teaching": "Scientific notation expresses numbers as a × 10ⁿ where 1 ≤ a < 10.",
-      "step_by_step_solution": [
-        "Move the decimal four places right.",
-        "The exponent becomes −4.",
-        "Result = 5.6 × 10⁻⁴."
-      ],
-      "why_other_options_are_wrong": [
-        "B uses a positive exponent.",
-        "C has an invalid coefficient.",
-        "D has a coefficient less than 1."
-      ],
-      "common_jamb_traps": "For small numbers, the exponent is negative.",
-      "exam_strategy_notes": "Ensure the coefficient lies between 1 and 10.",
-      "beginner_friendly_explanation": "Scientific notation simplifies writing very large or very small numbers.",
-      "illustrative_diagram": "0.00056 → 0.0056 → 0.056 → 0.56 → 5.6 × 10⁻⁴.",
-      "final_answer": "A. 5.6 × 10⁻⁴",
-      "tutorial_reference": "Visit Tutorials → Physics → Scientific Notation."
-    },
-    "active": true
-  },
-  {
-    "id": "phy_01_q010",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Distance and displacement",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "A student walks 3 km east and then 4 km north. What is the magnitude of the displacement?",
-    "options": {
-      "A": "1 km",
-      "B": "5 km",
-      "C": "7 km",
-      "D": "12 km"
-    },
-    "answer": "B",
-    "answer_text": "5 km",
-    "explanation": {
-      "question_restate": "Calculate the displacement resulting from two perpendicular movements.",
-      "concept_teaching": "Displacement is the shortest distance between the initial and final positions.",
-      "step_by_step_solution": [
-        "Use Pythagoras theorem.",
-        "Displacement² = 3² + 4² = 25.",
-        "Displacement = 5 km."
-      ],
-      "why_other_options_are_wrong": [
-        "A is too small.",
-        "C is the total distance travelled.",
-        "D is an incorrect calculation."
-      ],
-      "common_jamb_traps": "Students often confuse distance with displacement.",
-      "exam_strategy_notes": "Use Pythagoras whenever the motion forms a right angle.",
-      "beginner_friendly_explanation": "Displacement is the straight-line route from start to finish.",
-      "illustrative_diagram": "3 km east ⟂ 4 km north → hypotenuse = 5 km.",
-      "final_answer": "B. 5 km",
-      "tutorial_reference": "Visit Tutorials → Physics → Distance and Displacement."
-    },
-    "active": true
-  },
-  {
-    "id": "phy_01_q011",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Frame of reference",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "A passenger sitting in a moving bus says that another passenger seated beside him is at rest. This statement is based on the concept of",
-    "options": {
-      "A": "force",
-      "B": "momentum",
-      "C": "frame of reference",
-      "D": "power"
-    },
-    "answer": "C",
-    "answer_text": "frame of reference",
-    "explanation": {
-      "question_restate": "Identify the concept that explains why motion depends on the observer.",
-      "concept_teaching": "A frame of reference is the viewpoint from which motion is observed.",
-      "step_by_step_solution": [
-        "The two passengers move together.",
-        "Relative to each other, there is no motion.",
-        "They share the same frame of reference."
-      ],
-      "why_other_options_are_wrong": [
-        "Force is unrelated.",
-        "Momentum is not the basis.",
-        "Power concerns energy transfer."
-      ],
-      "common_jamb_traps": "Candidates ignore the phrase 'relative to'.",
-      "exam_strategy_notes": "Always identify who the observer is.",
-      "beginner_friendly_explanation": "Whether something is moving or not can depend on who is watching it.",
-      "illustrative_diagram": "Passenger A ↔ Passenger B inside moving bus → both at rest relative to each other.",
-      "final_answer": "C. Frame of reference",
-      "tutorial_reference": "Visit Tutorials → Physics → Frame of Reference."
-    },
-    "active": true
-  },
-  {
-    "id": "phy_01_q012",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Measurement of irregular bodies",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "A student records the volume of water in a measuring cylinder as 28 cm³. After carefully lowering a small stone tied with a thread into the cylinder, the water level rises to 45 cm³. What is the volume of the stone?",
-    "options": {
-      "A": "17 cm³",
-      "B": "28 cm³",
-      "C": "45 cm³",
-      "D": "73 cm³"
-    },
-    "answer": "A",
-    "answer_text": "17 cm³",
-    "explanation": {
-      "question_restate": "Determine the volume of an irregularly shaped stone using the displacement method.",
-      "concept_teaching": "Irregular bodies cannot be measured using ordinary geometric formulas because they do not have regular shapes. Instead, their volumes are determined using the displacement method based on Archimedes' principle. When an object is completely immersed in water, it displaces a volume of water equal to its own volume.",
-      "step_by_step_solution": [
-        "Initial water volume = 28 cm³.",
-        "Final water volume after immersion = 45 cm³.",
-        "Volume of stone = Final reading − Initial reading.",
-        "Volume = 45 − 28 = 17 cm³."
-      ],
-      "why_other_options_are_wrong": [
-        "B represents the initial water volume, not the stone's volume.",
-        "C represents the final cylinder reading, not the displaced volume.",
-        "D is obtained by adding the readings instead of subtracting them."
-      ],
-      "common_jamb_traps": "JAMB often presents both the initial and final readings to tempt candidates into adding them. Always subtract.",
-      "exam_strategy_notes": "Underline or identify the words 'before' and 'after' in the question. The difference between the two readings is the answer.",
-      "beginner_friendly_explanation": "Imagine entering a bathtub filled with water. The water level rises because your body occupies space. The amount by which the water rises corresponds to your volume. The same idea applies to the stone.",
-      "illustrative_diagram": "Textual diagram: Measuring cylinder before immersion → Water level at 28 cm³. Measuring cylinder after immersion → Water level at 45 cm³. Difference = 17 cm³.",
-      "final_answer": "A. 17 cm³",
-      "tutorial_reference": "Need more help? Visit Tutorials → Physics → Measurement of Irregular Bodies."
-    }
-  },
-  {
-    "id": "phy_01_q013",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Measuring cylinder",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "Which of the following instruments is most suitable for measuring 22.5 cm³ of ethanol in a school laboratory?",
-    "options": {
-      "A": "Beam balance",
-      "B": "Micrometer screw gauge",
-      "C": "Measuring cylinder",
-      "D": "Metre rule"
-    },
-    "answer": "C",
-    "answer_text": "Measuring cylinder",
-    "explanation": {
-      "question_restate": "Identify the appropriate instrument for measuring the volume of a liquid.",
-      "concept_teaching": "Different measuring instruments are designed for specific quantities. A measuring cylinder is used for determining the volume of liquids. It is graduated with markings that allow readings in cm³ or mL.",
-      "step_by_step_solution": [
-        "Identify the quantity being measured: volume of ethanol.",
-        "Determine whether ethanol is a liquid or solid.",
-        "Recall the instrument used for liquid volume measurements.",
-        "Select the measuring cylinder."
-      ],
-      "why_other_options_are_wrong": [
-        "A beam balance measures mass.",
-        "B a micrometer screw gauge measures small diameters and thicknesses.",
-        "D a metre rule measures length."
-      ],
-      "common_jamb_traps": "Candidates sometimes confuse mass and volume instruments. Read the quantity carefully.",
-      "exam_strategy_notes": "Create a mental association: liquid → measuring cylinder; mass → beam balance; length → metre rule.",
-      "beginner_friendly_explanation": "If you want to know how much liquid is in a container, you use a measuring cylinder because it has calibrated markings showing volume directly.",
-      "illustrative_diagram": "Textual diagram: A tall transparent cylinder with graduation marks labelled 5 cm³, 10 cm³, 15 cm³ ... up to 100 cm³.",
-      "final_answer": "C. Measuring cylinder",
-      "tutorial_reference": "Need additional practice? Visit Tutorials → Physics → Measuring Cylinder."
-    }
-  },
-  {
-    "id": "phy_01_q014",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Beam balance",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "The major function of a beam balance in the laboratory is to determine the",
-    "options": {
-      "A": "density of an object",
-      "B": "mass of an object",
-      "C": "weight of an object",
-      "D": "volume of an object"
-    },
-    "answer": "B",
-    "answer_text": "mass of an object",
-    "explanation": {
-      "question_restate": "Determine the physical quantity measured by a beam balance.",
-      "concept_teaching": "Mass is the amount of matter contained in a body. A beam balance compares the mass of an unknown object with standard masses. Unlike spring balances, beam balances are not affected significantly by changes in gravitational field strength.",
-      "step_by_step_solution": [
-        "Recall the use of common laboratory instruments.",
-        "Beam balance → mass.",
-        "Spring balance → weight.",
-        "Select the correct option."
-      ],
-      "why_other_options_are_wrong": [
-        "A density requires mass and volume calculations.",
-        "C weight is measured using a spring balance or Newton meter.",
-        "D volume is measured using geometric methods or displacement."
-      ],
-      "common_jamb_traps": "JAMB frequently tests the distinction between mass and weight.",
-      "exam_strategy_notes": "Remember: beam balance balances masses; spring balance stretches under weight.",
-      "beginner_friendly_explanation": "Mass tells us how much matter an object contains. Whether on Earth or the Moon, the mass remains the same.",
-      "illustrative_diagram": "Textual diagram: Two-pan beam balance with an object on one side and standard masses on the other until equilibrium is reached.",
-      "final_answer": "B. Mass of an object",
-      "tutorial_reference": "Need more explanation? Visit Tutorials → Physics → Beam Balance."
-    }
-  },
-  {
-    "id": "phy_01_q015",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Measurement of time",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "Convert 2.5 hours to seconds.",
-    "options": {
-      "A": "1500 s",
-      "B": "3600 s",
-      "C": "7500 s",
-      "D": "9000 s"
-    },
-    "answer": "D",
-    "answer_text": "9000 s",
-    "explanation": {
-      "question_restate": "Express a time interval given in hours in terms of seconds.",
-      "concept_teaching": "Time is a fundamental quantity in Physics. The SI unit of time is the second (s). To convert hours to seconds, first convert hours to minutes and then minutes to seconds.",
-      "step_by_step_solution": [
-        "1 hour = 60 minutes.",
-        "2.5 hours = 2.5 × 60 = 150 minutes.",
-        "1 minute = 60 seconds.",
-        "150 × 60 = 9000 seconds."
-      ],
-      "why_other_options_are_wrong": [
-        "A results from multiplying by 600.",
-        "B is the number of seconds in one hour.",
-        "C is an incomplete conversion.",
-        "D is the correct conversion."
-      ],
-      "common_jamb_traps": "Some candidates multiply by 60 only once instead of twice.",
-      "exam_strategy_notes": "Memorize: 1 h = 3600 s. Multiply the number of hours directly by 3600.",
-      "beginner_friendly_explanation": "Since there are 60 seconds in one minute and 60 minutes in one hour, an hour contains 60 × 60 = 3600 seconds.",
-      "illustrative_diagram": "Textual diagram: Hours → Minutes → Seconds. Multiply by 60 at each step.",
-      "final_answer": "D. 9000 s",
-      "tutorial_reference": "Need more worked examples? Visit Tutorials → Physics → Measurement of Time."
-    }
-  },
-  {
-    "id": "phy_01_q016",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Time-measuring devices",
-    "difficulty": "easy",
-    "question_type": "mcq",
-    "question": "Which of the following devices is most appropriate for measuring the time taken by an athlete to complete a 100 m race?",
-    "options": {
-      "A": "Calendar",
-      "B": "Stopwatch",
-      "C": "Pendulum bob",
-      "D": "Wall clock"
-    },
-    "answer": "B",
-    "answer_text": "Stopwatch",
-    "explanation": {
-      "question_restate": "Choose the best instrument for measuring short time intervals accurately.",
-      "concept_teaching": "Different devices measure time over different durations. Stopwatches are designed to measure short intervals with precision, making them suitable for laboratory experiments and sporting events.",
-      "step_by_step_solution": [
-        "Identify the type of event involved: a short race.",
-        "Determine the required level of precision.",
-        "Select the instrument designed for short intervals."
-      ],
-      "why_other_options_are_wrong": [
-        "A calendars measure days, weeks, and months.",
-        "C a pendulum is not a direct timing device in this context.",
-        "D wall clocks lack the precision required for races."
-      ],
-      "common_jamb_traps": "Candidates sometimes choose wall clocks because they measure time generally, ignoring the need for precision.",
-      "exam_strategy_notes": "For races and experiments involving seconds, think 'stopwatch'.",
-      "beginner_friendly_explanation": "A stopwatch can be started and stopped instantly, making it ideal for recording the exact duration of an event.",
-      "illustrative_diagram": "Textual diagram: Official holding a stopwatch at the starting line; timer starts at 'Go!' and stops at the finish line.",
-      "final_answer": "B. Stopwatch",
-      "tutorial_reference": "Need additional guidance? Visit Tutorials → Physics → Time-Measuring Devices."
-    }
   }
 ]
