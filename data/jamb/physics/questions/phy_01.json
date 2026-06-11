@@ -642,6 +642,223 @@
       "dimensions"
     ],
     "active": true
+  },
+  {
+    "id": "phy_01_q016",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Dimensional analysis",
+    "difficulty": "hard",
+    "question_type": "mcq",
+    "question": "The dimensional formula of pressure is",
+    "options": {
+      "A": "[ML⁻¹T⁻²]",
+      "B": "[MLT⁻²]",
+      "C": "[ML²T⁻²]",
+      "D": "[M⁻¹LT⁻²]"
+    },
+    "answer": "A",
+    "answer_text": "[ML⁻¹T⁻²]",
+    "explanation": {
+      "question_restate": "Find the dimensions of pressure.",
+      "principle": "Pressure is force per unit area. To find its dimensions, express force and area in terms of fundamental dimensions M, L and T.",
+      "steps": [
+        "Pressure = Force ÷ Area.",
+        "Force = Mass × Acceleration. Mass has dimensions [M].",
+        "Acceleration = Velocity ÷ Time. Velocity = Length ÷ Time = [LT⁻¹]. Therefore acceleration = [LT⁻²].",
+        "Hence Force = [M] × [LT⁻²] = [MLT⁻²].",
+        "Area = Length × Length = [L²].",
+        "Pressure = [MLT⁻²]/[L²] = [ML⁻¹T⁻²]."
+      ],
+      "why_other_options_are_wrong": [
+        "B is the dimension of force.",
+        "C is the dimension of energy/work.",
+        "D does not represent pressure."
+      ],
+      "exam_tip": "Break derived quantities into simpler formulas until only M, L and T remain.",
+      "final_answer": "A. [ML⁻¹T⁻²]",
+      "simple_explanation": "Pressure tells us how concentrated a force is over an area.",
+      "tutorial_reference": "Visit Tutorials → Physics → Dimensional Analysis."
+    },
+    "tags": [
+      "dimensional_analysis"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q017",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Position and coordinates",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A point has coordinates (−3, 4). In which quadrant does it lie?",
+    "options": {
+      "A": "First quadrant",
+      "B": "Second quadrant",
+      "C": "Third quadrant",
+      "D": "Fourth quadrant"
+    },
+    "answer": "B",
+    "answer_text": "Second quadrant",
+    "explanation": {
+      "question_restate": "Determine the quadrant containing the point (−3, 4).",
+      "principle": "In the Cartesian plane, the sign of x and y determines the quadrant.",
+      "steps": [
+        "cartesian plane (x,y)",
+	"First quadrant: (+,+).",
+        "Second quadrant: (−,+).",
+        "Third quadrant: (−,−).",
+        "Fourth quadrant: (+,−).",
+        "Since x = −3 and y = 4, the point lies in the second quadrant."
+      ],
+      "why_other_options_are_wrong": [
+        "A requires both coordinates to be positive.",
+        "C requires both coordinates to be negative.",
+        "D requires positive x and negative y."
+      ],
+      "exam_tip": "Always examine the signs of the coordinates before deciding.",
+      "final_answer": "B. Second quadrant",
+      "simple_explanation": "Negative x means left of the origin, positive y means above it.",
+      "tutorial_reference": "Visit Tutorials → Physics → Position and Coordinates."
+    },
+    "tags": [
+      "coordinates"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q018",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Frame of reference",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A passenger seated inside a moving bus says that another seated passenger is at rest. This statement is based on",
+    "options": {
+      "A": "universal motion",
+      "B": "frame of reference",
+      "C": "Newton's law",
+      "D": "dimensional analysis"
+    },
+    "answer": "B",
+    "answer_text": "frame of reference",
+    "explanation": {
+      "question_restate": "Identify the concept used when describing motion relative to an observer.",
+      "principle": "Motion and rest are relative. A frame of reference is the viewpoint from which observations are made.",
+      "steps": [
+        "The two passengers move together with the bus.",
+        "Relative to each other, their positions do not change.",
+        "Therefore each passenger appears at rest to the other.",
+        "This judgement depends on the observer's frame of reference."
+      ],
+      "why_other_options_are_wrong": [
+        "A is not the concept being tested.",
+        "C concerns forces and motion, not observers.",
+        "D deals with dimensions of quantities."
+      ],
+      "exam_tip": "JAMB often asks whether an object is moving or at rest relative to an observer.",
+      "final_answer": "B. frame of reference",
+      "simple_explanation": "Whether something is moving depends on who is observing it.",
+      "tutorial_reference": "Visit Tutorials → Physics → Frame of Reference."
+    },
+    "tags": [
+      "frame_of_reference"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q019",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Scientific notation",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Express 5,280,000 in standard form.",
+    "options": {
+      "A": "5.28 × 10⁵",
+      "B": "52.8 × 10⁵",
+      "C": "5.28 × 10⁶",
+      "D": "0.528 × 10⁷"
+    },
+    "answer": "C",
+    "answer_text": "5.28 × 10⁶",
+    "explanation": {
+      "question_restate": "Write a large number in scientific notation.",
+      "principle": "In standard form, a number is written as A × 10ⁿ where 1 ≤ A < 10.",
+      "steps": [
+        "Move the decimal point in 5,280,000 until the number becomes 5.28.",
+        "The decimal point moves six places to the left.",
+        "Therefore the exponent is +6.",
+        "Hence 5,280,000 = 5.28 × 10⁶."
+      ],
+      "why_other_options_are_wrong": [
+        "A uses the wrong exponent.",
+        "B has a coefficient greater than 10.",
+        "D has a coefficient less than 1."
+      ],
+      "exam_tip": "Always ensure the coefficient lies between 1 and 10.",
+      "final_answer": "C. 5.28 × 10⁶",
+      "simple_explanation": "Count how many places the decimal point moves.",
+      "tutorial_reference": "Visit Tutorials → Physics → Scientific Notation."
+    },
+    "tags": [
+      "scientific_notation"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q020",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Measurement of mass",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The SI unit of mass is",
+    "options": {
+      "A": "gram (g)",
+      "B": "newton (N)",
+      "C": "kilogram (kg)",
+      "D": "tonne (t)"
+    },
+    "answer": "C",
+    "answer_text": "kilogram (kg)",
+    "explanation": {
+      "question_restate": "Identify the SI base unit used for measuring mass.",
+      "principle": "The International System of Units (SI) is the globally accepted system used by scientists to measure physical quantities. Some quantities are called fundamental or base quantities because they are independent and cannot be expressed in terms of other physical quantities. There are seven SI base quantities: length measured in metre (m), mass measured in kilogram (kg), time measured in second (s), electric current measured in ampere (A), thermodynamic temperature measured in kelvin (K), amount of substance measured in mole (mol), and luminous intensity measured in candela (cd). Mass is one of these seven fundamental quantities, and its SI unit is the kilogram (kg).",
+      "steps": [
+  	"First, understand that mass refers to the amount of matter contained in an object. For example, a bag of rice has mass because it contains matter.",
+  	"Scientists all over the world use a standard measurement system called the International System of Units (SI) to ensure consistency in measurements.",
+  	"Within the SI system, there are seven fundamental quantities and their units: length (metre, m), mass (kilogram, kg), time (second, s), electric current (ampere, A), thermodynamic temperature (kelvin, K), amount of substance (mole, mol), and luminous intensity (candela, cd).",
+  	"Since the question asks for the SI unit of mass, locate 'mass' in the list of SI base quantities.",
+  	"The corresponding SI unit of mass is kilogram (kg).",
+  	"Therefore, the correct answer is kilogram (kg)."
+     ],
+      "why_other_options_are_wrong": [
+        "A is a smaller metric unit but not the SI base unit.",
+        "B measures force, not mass.",
+        "D is a larger metric unit but not the SI base unit."
+      ],
+      "exam_tip": "Do not confuse kilogram (mass) with newton (weight/force).",
+      "final_answer": "C. kilogram (kg)",
+      "simple_explanation": "Scientists around the world use kilograms as the standard unit of mass.",
+      "tutorial_reference": "Visit Tutorials → Physics → Measurement of Mass."
+    },
+    "tags": [
+      "mass",
+      "si_units"
+    ],
+    "active": true
   }
 ]
 
