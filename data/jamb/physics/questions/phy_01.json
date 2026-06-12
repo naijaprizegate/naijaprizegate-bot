@@ -4783,6 +4783,1018 @@
 "phy_01"
 ],
 "active": true
+},
+{
+"id": "phy_01_q101",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Metre rule",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A student wants to determine the diameter of a uniform cylindrical rod using only a metre rule. Which of the following procedures would give the most accurate result?",
+"options": {
+"A": "Measure the diameter once and record the value obtained.",
+"B": "Measure the circumference of the rod and divide by 2.",
+"C": "Arrange several identical rods side by side, measure their total width and divide by the number of rods.",
+"D": "Estimate the diameter by comparing it with the millimetre divisions on the metre rule."
+},
+"answer": "C",
+"answer_text": "Arrange several identical rods side by side, measure their total width and divide by the number of rods.",
+"explanation": {
+"question_restate": "The question requires you to identify the best experimental procedure for obtaining an accurate measurement of the diameter of a cylindrical rod using a metre rule.",
+"principle": "The accuracy of a measurement depends partly on the measuring instrument used. A metre rule has a least count of 1 mm, which may not be sufficiently precise for measuring the diameter of a small cylindrical object directly. One way to improve accuracy when using an instrument with limited precision is to measure several identical objects together and then divide by the number of objects.\n\nA beginner may ask: 'Why not just measure one rod directly?' The reason is that the uncertainty associated with the metre rule becomes relatively large when the object being measured is small. Measuring many identical rods at once reduces the percentage error in the final result.",
+"steps": [
+"Step 1: Identify the instrument available. The student has only a metre rule.",
+"Step 2: Recognize that a metre rule is not ideal for measuring very small diameters directly.",
+"Step 3: Consider methods that improve accuracy despite the instrument's limitations.",
+"Step 4: Placing several identical rods side by side increases the total width being measured.",
+"Step 5: Measure the combined width carefully using the metre rule.",
+"Step 6: Divide the total width by the number of rods to obtain the average diameter of one rod.",
+"Therefore, the most accurate procedure is to arrange several identical rods side by side, measure their total width and divide by the number of rods."
+],
+"why_other_options_are_wrong": [
+"A. Measuring the diameter once provides no opportunity to reduce experimental uncertainty or random error.",
+"B. The circumference divided by 2 does not give the diameter. The correct relationship is Circumference = πd, so d = Circumference/π.",
+"D. Estimation is subjective and generally less accurate than systematic measurement procedures."
+],
+"exam_tip": "JAMB frequently tests practical Physics concepts rather than direct calculations. Whenever a very small quantity is to be measured using a less sensitive instrument, think of methods that increase the size of the measurement, such as measuring several identical objects together and finding the average.",
+"final_answer": "C. Arrange several identical rods side by side, measure their total width and divide by the number of rods.",
+"simple_explanation": "If one rod is too small to measure accurately with a metre rule, measure many rods together. Since the total width is larger, the reading becomes more reliable. Dividing by the number of rods then gives a more accurate value for the diameter of one rod.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Metre Rule to learn practical techniques for improving measurement accuracy and reducing experimental errors. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions."
+},
+"tags": [
+"metre_rule",
+"measurement_techniques",
+"experimental_physics",
+"accuracy",
+"phy_01"
+],
+"active": true
+},
+{
+  "id": "phy_01_q102",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Vernier calipers",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A student is required to determine the external diameter of a metal pipe in the laboratory. Which of the following instruments would provide the most suitable measurement with reasonable accuracy?",
+  "options": {
+    "A": "Metre rule",
+    "B": "Beam balance",
+    "C": "Vernier calipers",
+    "D": "Stopwatch"
+  },
+  "answer": "C",
+  "answer_text": "Vernier calipers",
+  "explanation": {
+    "question_restate": "The question asks you to identify the most appropriate instrument for measuring the external diameter of a cylindrical object such as a metal pipe.",
+    "principle": "Different measuring instruments are designed for specific purposes. A Vernier caliper is used for measuring external diameters, internal diameters and depths with greater precision than a metre rule. A beam balance measures mass, while a stopwatch measures time intervals.",
+    "steps": [
+      "Identify the quantity to be measured: the external diameter of a metal pipe.",
+      "Recall the functions of common laboratory instruments.",
+      "A metre rule can measure length but lacks the precision needed for small diameters.",
+      "A Vernier caliper has external jaws specially designed for measuring external diameters accurately.",
+      "Beam balances measure mass, while stopwatches measure time.",
+      "Therefore, the most suitable instrument is the Vernier caliper."
+    ],
+    "why_other_options_are_wrong": [
+      "A. A metre rule is less precise and is unsuitable for obtaining accurate diameter measurements of small objects.",
+      "B. A beam balance measures mass, not length or diameter.",
+      "D. A stopwatch is used for measuring time intervals."
+    ],
+    "exam_tip": "JAMB frequently tests your ability to select the most appropriate instrument for a particular measurement. Learn the specific uses of metre rules, Vernier calipers, micrometer screw gauges, beam balances and measuring cylinders.",
+    "final_answer": "C. Vernier calipers",
+    "simple_explanation": "The Vernier caliper has jaws that can grip the outside of a pipe, allowing its diameter to be measured more accurately than with a metre rule.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Vernier Calipers."
+  },
+  "tags": [
+    "vernier_calipers",
+    "measurement_of_diameter",
+    "laboratory_instruments",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+"id": "phy_01_q103",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Micrometer screw gauge",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A laboratory assistant needs to determine whether a batch of electrical fuse wires meets the manufacturer's specification of 0.50 mm diameter. Which of the following instruments would provide the most reliable measurement for this purpose?",
+"options": {
+"A": "Metre rule",
+"B": "Tape measure",
+"C": "Micrometer screw gauge",
+"D": "Measuring cylinder"
+},
+"answer": "C",
+"answer_text": "Micrometer screw gauge",
+"explanation": {
+"question_restate": "The question requires you to identify the most suitable instrument for accurately measuring the small diameter of fuse wires.",
+"principle": "Different measuring instruments are designed for different levels of precision. When measuring very small diameters or thicknesses, the choice of instrument depends on its least count and ability to provide accurate readings.\n\nA micrometer screw gauge is specially designed for measuring very small external diameters and thicknesses with high precision. It commonly has a least count of 0.01 mm, making it more suitable than ordinary length-measuring instruments.\n\nTypical applications of a micrometer screw gauge include measuring the diameter of wires, the thickness of metal sheets, the thickness of coins, and the diameter of small spherical objects.",
+"steps": [
+"Step 1: Identify the quantity being measured. The diameter of a fuse wire is a length measurement.",
+"Step 2: Recognize that fuse wires have very small diameters, usually measured in millimetres.",
+"Step 3: Determine the level of precision required to decide whether the wire meets the manufacturer's specification.",
+"Step 4: Compare the suitability of the instruments listed.",
+"Step 5: Since the micrometer screw gauge is specifically designed to measure very small diameters accurately, it is the most appropriate choice."
+],
+"why_other_options_are_wrong": [
+"A. A metre rule has a larger least count and cannot accurately measure the diameter of a thin fuse wire.",
+"B. A tape measure is intended for measuring larger lengths and lacks the precision required for this task.",
+"D. A measuring cylinder is used to measure the volume of liquids and cannot measure diameter."
+],
+"exam_tip": "In JAMB Physics, questions involving measuring instruments often require you to select the instrument that provides the greatest accuracy for the situation described. Always consider both the size of the object and the precision required.",
+"final_answer": "C. Micrometer screw gauge",
+"simple_explanation": "Trying to measure the diameter of a fuse wire with a ruler is like trying to weigh a grain of rice with a bathroom scale. The micrometer screw gauge is specially made for such tiny measurements, making it the best instrument for the task.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Micrometer Screw Gauge to learn about its parts, least count, method of use, zero error and practical applications. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical examples."
+},
+"tags": [
+"micrometer_screw_gauge",
+"measuring_instruments",
+"diameter_measurement",
+"precision",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q104",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Measuring cylinder",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "During a practical lesson, a student was instructed to measure 50 cm³ of water using a measuring cylinder. Which of the following practices would most likely lead to an inaccurate reading?",
+"options": {
+"A": "Placing the measuring cylinder on a horizontal bench before taking the reading",
+"B": "Taking the reading at eye level",
+"C": "Reading the volume from the bottom of the meniscus",
+"D": "Holding the measuring cylinder above eye level while taking the reading"
+},
+"answer": "D",
+"answer_text": "Holding the measuring cylinder above eye level while taking the reading",
+"explanation": {
+"question_restate": "The question tests your understanding of the correct procedure for obtaining accurate measurements with a measuring cylinder.",
+"principle": "A measuring cylinder is used to determine the volume of liquids. Accurate readings depend not only on the instrument itself but also on the observer's technique. One common source of error is parallax error, which occurs when the observer's eye is not at the same level as the liquid surface being read.\n\nFor transparent liquids such as water, the surface forms a concave meniscus. To obtain the correct volume, the observer should place the measuring cylinder on a level surface and read the scale at the bottom of the meniscus with the eye positioned horizontally with the liquid level.",
+"steps": [
+"Step 1: Identify the quantity being measured. In this case, it is the volume of a liquid.",
+"Step 2: Recall the correct procedure for using a measuring cylinder.",
+"Step 3: The cylinder should be placed upright on a horizontal surface before taking the reading.",
+"Step 4: The observer's eye should be at the same level as the meniscus to avoid parallax error.",
+"Step 5: For water and most transparent liquids, the reading is taken at the bottom of the meniscus.",
+"Step 6: Holding the cylinder above eye level causes the observer to view the scale from an angle, leading to an inaccurate reading.",
+"Step 7: Therefore, the incorrect practice is holding the measuring cylinder above eye level while taking the reading."
+],
+"why_other_options_are_wrong": [
+"A. Placing the measuring cylinder on a horizontal bench provides stability and is part of the correct procedure.",
+"B. Taking the reading at eye level helps eliminate parallax error and improves accuracy.",
+"C. Water forms a concave meniscus, so its volume should be read at the bottom of the meniscus."
+],
+"exam_tip": "JAMB practical questions often test experimental procedures rather than calculations. Whenever a scale is involved, think about parallax error and the correct eye position before selecting an answer.",
+"final_answer": "D. Holding the measuring cylinder above eye level while taking the reading",
+"simple_explanation": "Imagine trying to read the markings on a bottle while looking at it from above. The reading may appear different from the actual value. Looking straight across at the liquid level gives the correct answer.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measuring Cylinder to learn about meniscus reading, sources of error and proper laboratory techniques. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions."
+},
+"tags": [
+"measuring_cylinder",
+"volume_measurement",
+"laboratory_techniques",
+"parallax_error",
+"experimental_procedure",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q105",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Beam balance",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "During a practical lesson, a student places an object on one pan of a beam balance and standard masses on the other pan. The beam finally becomes horizontal when 200 g, 100 g and 50 g masses are used. What is the mass of the object?",
+"options": {
+"A": "150 g",
+"B": "250 g",
+"C": "300 g",
+"D": "350 g"
+},
+"answer": "D",
+"answer_text": "350 g",
+"explanation": {
+"question_restate": "The question requires you to determine the mass of an object using the principle of operation of a beam balance.",
+"principle": "A beam balance is an instrument used to measure mass by comparing an unknown mass with known standard masses. When the beam becomes horizontal, the turning effects on both sides are equal, indicating that the mass of the object is equal to the total mass of the standard weights used.\n\nUnlike a spring balance, which measures weight and depends on gravitational force, a beam balance compares masses directly. Because both sides experience the same gravitational field, the measured mass remains the same irrespective of location. This makes the beam balance a reliable instrument for laboratory measurements.",
+"steps": [
+"Step 1: Recognize that the beam balance is in equilibrium because the beam is horizontal.",
+"Step 2: Understand that equilibrium implies that the mass of the object equals the total mass of the standard masses placed on the opposite pan.",
+"Step 3: Identify the standard masses used: 200 g, 100 g and 50 g.",
+"Step 4: Add the masses together: 200 + 100 + 50 = 350 g.",
+"Step 5: Therefore, the mass of the object is 350 g."
+],
+"why_other_options_are_wrong": [
+"A. 150 g results from adding only 100 g and 50 g while ignoring the 200 g mass.",
+"B. 250 g results from adding 200 g and 50 g only.",
+"C. 300 g results from omitting the 50 g mass.",
+"D. 350 g is correct because it represents the total mass required to balance the beam."
+],
+"exam_tip": "JAMB often presents beam-balance questions in practical contexts. Remember that when the pointer is centred and the beam is horizontal, the unknown mass is equal to the sum of the standard masses used.",
+"final_answer": "D. 350 g",
+"simple_explanation": "Think of the beam balance as a seesaw. When both sides balance perfectly, whatever is on one side must have the same mass as everything on the other side. Since the standard masses add up to 350 g, the object must also have a mass of 350 g.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Beam Balance to learn about the structure, operation and applications of beam balances. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical examples."
+},
+"tags": [
+"beam_balance",
+"mass_measurement",
+"laboratory_practical",
+"measuring_instruments",
+"phy_01"
+],
+"active": true
+},
+{
+  "id": "phy_01_q106",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measurement of mass",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "During a Physics practical lesson, a student is asked to determine the mass of a small metal block as accurately as possible. Which of the following instruments is most suitable for carrying out this measurement?",
+  "options": {
+    "A": "Spring balance",
+    "B": "Beam balance",
+    "C": "Measuring cylinder",
+    "D": "Stopwatch"
+  },
+  "answer": "B",
+  "answer_text": "Beam balance",
+  "explanation": {
+    "question_restate": "The question requires you to identify the most appropriate instrument for accurately measuring the mass of a solid object during a Physics practical.",
+    "principle": "Mass is the amount of matter contained in a body and is one of the seven SI base quantities. Its SI unit is the kilogram (kg). In practical Physics, different instruments are designed to measure different physical quantities.\n\nA beam balance determines mass by comparing an unknown mass with standard masses placed on the opposite pan. Since both sides of the balance experience the same gravitational field, the measurement obtained is independent of location. A spring balance, on the other hand, measures weight, which depends on gravitational acceleration.\n\nWhen selecting an instrument, candidates should first identify the quantity being measured before considering the instrument's function and accuracy.",
+    "steps": [
+      "Step 1: Identify the physical quantity involved. The question concerns mass.",
+      "Step 2: Recall that mass is measured using instruments designed for comparison with standard masses.",
+      "Step 3: Recognize that a beam balance compares an unknown mass against known masses until equilibrium is achieved.",
+      "Step 4: Eliminate instruments used for measuring other quantities such as force, volume and time.",
+      "Step 5: Therefore, the most suitable instrument for accurately measuring the mass of the metal block is the beam balance."
+    ],
+    "why_other_options_are_wrong": [
+      "A. A spring balance measures weight (force due to gravity), not mass. Its reading varies with changes in gravitational field strength.",
+      "C. A measuring cylinder is used to measure the volume of liquids and can also help determine the volume of irregular solids through displacement.",
+      "D. A stopwatch is used for measuring time intervals and has no application in measuring mass."
+    ],
+    "exam_tip": "JAMB often tests your ability to distinguish between mass and weight. Remember: beam balance → mass; spring balance → weight. Always identify the quantity before selecting the instrument.",
+    "final_answer": "B. Beam balance",
+    "simple_explanation": "Suppose two students use the same beam balance to compare a stone with standard masses. As long as the balance is level, the stone has the same mass anywhere. This is why a beam balance is the preferred instrument for measuring mass accurately.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Mass to learn about mass, weight, and the instruments used to measure them. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical examples."
+  },
+  "tags": [
+    "measurement_of_mass",
+    "beam_balance",
+    "mass",
+    "measuring_instruments",
+    "practical_physics",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q107",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measurement of time",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "During a simple pendulum experiment, a student records the time taken for 20 complete oscillations as 38.4 s. Why is it preferable to measure the time for many oscillations instead of timing just one oscillation?",
+  "options": {
+    "A": "To increase the length of the pendulum",
+    "B": "To reduce the effect of reaction-time errors",
+    "C": "To increase the amplitude of oscillation",
+    "D": "To make the pendulum swing faster"
+  },
+  "answer": "B",
+  "answer_text": "To reduce the effect of reaction-time errors",
+  "explanation": {
+    "question_restate": "The question tests your understanding of why repeated oscillations are timed in practical Physics experiments involving pendulums.",
+    "principle": "Measurement of time is an important aspect of experimental Physics. In practice, no observer can start or stop a stopwatch at the exact instant an event begins or ends. The delay associated with human response is known as reaction time. To improve accuracy, physicists often measure the total time for a large number of repeated events and then divide by the number of events to obtain the average time for one event.\n\nA beginner may ask: 'Why not simply measure one oscillation?' The reason is that the reaction-time error becomes a significant fraction of a very short interval. By timing many oscillations, the same reaction-time error is spread over a longer interval, reducing its overall effect on the final result.",
+    "steps": [
+      "Step 1: Identify the experiment described. The question involves measuring the time of oscillations of a simple pendulum.",
+      "Step 2: Recall that starting and stopping a stopwatch introduces a small reaction-time error.",
+      "Step 3: Recognize that timing only one oscillation makes this error relatively large compared with the measured interval.",
+      "Step 4: Understand that timing many oscillations increases the total measured time without significantly increasing the reaction-time error.",
+      "Step 5: Therefore, measuring the time for many oscillations reduces the percentage error and improves the reliability of the result."
+    ],
+    "why_other_options_are_wrong": [
+      "A. The number of oscillations timed does not affect the length of the pendulum.",
+      "C. Timing more oscillations does not change the amplitude of the pendulum's motion.",
+      "D. The speed of oscillation depends on the properties of the pendulum, not on the number of oscillations chosen for timing."
+    ],
+    "exam_tip": "JAMB frequently tests practical skills and sources of experimental error. Whenever repeated measurements are taken, ask yourself whether the purpose is to improve accuracy, reduce random errors or obtain an average value.",
+    "final_answer": "B. To reduce the effect of reaction-time errors",
+    "simple_explanation": "Imagine trying to clap exactly when a stopwatch starts and stops. You may be slightly late each time. If you measure only one swing of a pendulum, this delay matters a lot. But if you measure 20 swings, the same delay has a much smaller effect on the final answer.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Time to learn about reaction time, repeated measurements and techniques for improving experimental accuracy. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical examples."
+  },
+  "tags": [
+    "measurement_of_time",
+    "pendulum_experiment",
+    "reaction_time",
+    "experimental_errors",
+    "practical_physics",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q108",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Time-measuring devices",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "During a school Physics practical, students were asked to determine the period of oscillation of a simple pendulum. Which of the following time-measuring devices would be most suitable for obtaining accurate measurements of the oscillations?",
+  "options": {
+    "A": "Wall clock",
+    "B": "Calendar",
+    "C": "Stopwatch",
+    "D": "Hourglass"
+  },
+  "answer": "C",
+  "answer_text": "Stopwatch",
+  "explanation": {
+    "question_restate": "The question requires you to identify the most appropriate device for measuring the time taken for repeated oscillations in a pendulum experiment.",
+    "principle": "Different time-measuring devices are designed for different purposes and levels of precision. In Physics experiments, the choice of a timing instrument depends on the duration of the event and the degree of accuracy required.\n\nA beginner may ask: 'Why can't an ordinary clock be used for all timing activities?' The reason is that some experiments involve very short time intervals, requiring instruments that can start and stop instantly and display time accurately.\n\nCommon time-measuring devices include:\n\n• Wall clock – used for measuring long durations such as hours of the day.\n• Calendar – used for measuring intervals of days, weeks and months.\n• Hourglass – provides approximate timing over fixed intervals.\n• Stopwatch – specifically designed for measuring short time intervals accurately, especially during scientific experiments and sporting events.",
+    "steps": [
+      "Step 1: Identify the activity described in the question. Students are timing oscillations of a pendulum.",
+      "Step 2: Recognize that the period of a pendulum is usually only a few seconds.",
+      "Step 3: Determine the type of instrument required to measure short time intervals with good precision.",
+      "Step 4: A stopwatch can be started and stopped instantly and records time accurately to fractions of a second.",
+      "Step 5: Therefore, the most suitable time-measuring device is the stopwatch."
+    ],
+    "why_other_options_are_wrong": [
+      "A. A wall clock is designed for measuring longer durations and is not sufficiently precise for pendulum experiments.",
+      "B. A calendar measures dates and long time intervals, not seconds.",
+      "D. An hourglass provides only approximate timing and lacks the precision required for Physics practical work."
+    ],
+    "exam_tip": "JAMB frequently tests the ability to select the most appropriate instrument for a particular measurement. For short time intervals in laboratory experiments, a stopwatch is usually the correct choice.",
+    "final_answer": "C. Stopwatch",
+    "simple_explanation": "If you want to know how long a pendulum takes to swing several times, you need an instrument that measures seconds accurately. A stopwatch is designed for exactly that purpose.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Time-Measuring Devices to learn about the uses and applications of common timing instruments. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical examples."
+  },
+  "tags": [
+    "time_measuring_devices",
+    "stopwatch",
+    "simple_pendulum",
+    "physics_practical",
+    "measuring_instruments",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+"id": "phy_01_q109",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Fundamental quantities",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "During a Physics practical lesson, students were asked to record the physical quantities measured directly while determining the density of a metal block. Which of the following quantities is NOT measured as a fundamental quantity?",
+"options": {
+"A": "Mass",
+"B": "Length",
+"C": "Time",
+"D": "Density"
+},
+"answer": "D",
+"answer_text": "Density",
+"explanation": {
+"question_restate": "The question requires you to identify the quantity that is not fundamental among those listed in a practical Physics context.",
+"principle": "Fundamental quantities are independent physical quantities that cannot be expressed in terms of other physical quantities. They form the foundation of the International System of Units (SI).\n\nThe seven SI fundamental quantities are:\n\n• Length (metre, m)\n• Mass (kilogram, kg)\n• Time (second, s)\n• Electric current (ampere, A)\n• Thermodynamic temperature (kelvin, K)\n• Amount of substance (mole, mol)\n• Luminous intensity (candela, cd)\n\nDerived quantities, on the other hand, are obtained by combining two or more fundamental quantities mathematically. For example, density is defined as mass divided by volume. Since volume itself is derived from length measurements, density is not a fundamental quantity.\n\nIn practical Physics experiments, students often measure fundamental quantities directly using instruments such as metre rules, beam balances and stopwatches, while derived quantities are calculated from these measurements.",
+"steps": [
+"Step 1: Recall the seven SI fundamental quantities.",
+"Step 2: Examine each option carefully.",
+"Step 3: Identify quantities that can be measured directly using standard laboratory instruments.",
+"Step 4: Recognize that density is calculated using the relationship Density = Mass ÷ Volume.",
+"Step 5: Since density depends on other quantities, it is a derived quantity rather than a fundamental quantity.",
+"Step 6: Therefore, the correct answer is Density."
+],
+"why_other_options_are_wrong": [
+"A. Mass is a fundamental quantity measured using instruments such as a beam balance.",
+"B. Length is a fundamental quantity commonly measured using a metre rule, Vernier calipers or a micrometer screw gauge.",
+"C. Time is a fundamental quantity measured using clocks and stopwatches.",
+"D. Density is correct because it is obtained from mass and volume measurements and is therefore derived."
+],
+"exam_tip": "JAMB often tests the distinction between fundamental and derived quantities within practical situations. Memorize the seven SI fundamental quantities and be able to identify quantities that are calculated from them.",
+"final_answer": "D. Density",
+"simple_explanation": "Think of fundamental quantities as the 'building blocks' of Physics. Mass, length and time are building blocks that can be measured directly. Density is not a building block because you have to calculate it using other measurements.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Fundamental Quantities to learn the SI base quantities, their units and how they differ from derived quantities. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical examples."
+},
+"tags": [
+"fundamental_quantities",
+"si_base_quantities",
+"derived_quantities",
+"practical_physics",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q110",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Derived quantities",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "During a Physics practical lesson, students were asked to classify some physical quantities listed on the laboratory board: force, mass, pressure and time. Which of these quantities is derived from only fundamental quantities?",
+"options": {
+"A": "Mass",
+"B": "Time",
+"C": "Pressure",
+"D": "Force"
+},
+"answer": "D",
+"answer_text": "Force",
+"explanation": {
+"question_restate": "The question requires you to identify a derived quantity formed directly from fundamental quantities.",
+"principle": "Physical quantities are grouped into fundamental quantities and derived quantities. Fundamental quantities are independent quantities that cannot be expressed in terms of other physical quantities. The seven SI fundamental quantities are length, mass, time, electric current, thermodynamic temperature, amount of substance and luminous intensity.\n\nDerived quantities are obtained by combining fundamental quantities mathematically. However, some derived quantities are obtained directly from fundamental quantities, while others are derived from already-derived quantities.\n\nForce is obtained directly from mass and acceleration, where acceleration itself can be expressed using length and time. Thus, force can be written entirely in terms of the fundamental quantities mass, length and time. Pressure, on the other hand, is obtained from force per unit area and therefore represents a further level of derivation.",
+"steps": [
+"Step 1: Identify the fundamental quantities among the options.",
+"Step 2: Recall that mass and time are SI base quantities.",
+"Step 3: Recognize that force is defined by Newton's second law as Force = Mass × Acceleration.",
+"Step 4: Acceleration can be expressed in terms of length and time, making force directly expressible using fundamental quantities.",
+"Step 5: Note that pressure is defined as Force ÷ Area and therefore depends on an already-derived quantity (force).",
+"Step 6: Therefore, the correct answer is force."
+],
+"why_other_options_are_wrong": [
+"A. Mass is a fundamental quantity and not a derived quantity.",
+"B. Time is also a fundamental quantity.",
+"C. Pressure is a derived quantity, but it is obtained from force per unit area rather than directly from fundamental quantities.",
+"D. Force is obtained from the combination of mass, length and time, all of which are fundamental quantities."
+],
+"exam_tip": "JAMB frequently tests the distinction between fundamental and derived quantities. Learn not only which quantities are derived, but also the relationships used to obtain them.",
+"final_answer": "D. Force",
+"simple_explanation": "Think of fundamental quantities as building blocks. Force is built directly from these blocks, while pressure is built using force, which is already a derived quantity.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Derived Quantities to study examples of fundamental and derived quantities and their practical applications."
+},
+"tags": [
+"derived_quantities",
+"fundamental_quantities",
+"classification_of_quantities",
+"measurement",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q111",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "SI units",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A newly employed laboratory assistant was instructed to label the quantities recorded during an experiment using their correct SI units. Which of the following quantity–unit pairs is correctly matched?",
+"options": {
+"A": "Force — kilogram (kg)",
+"B": "Pressure — newton (N)",
+"C": "Electric current — ampere (A)",
+"D": "Energy — watt (W)"
+},
+"answer": "C",
+"answer_text": "Electric current — ampere (A)",
+"explanation": {
+"question_restate": "The question tests your knowledge of the correct SI units assigned to common physical quantities used in Physics measurements.",
+"principle": "The International System of Units (SI) provides a standardized set of units that scientists all over the world use when reporting measurements. Correct use of SI units ensures uniformity, reduces ambiguity and allows experimental results obtained in different locations to be compared reliably.\n\nSome quantities have base SI units, while others have derived SI units. The seven SI base units are metre (m), kilogram (kg), second (s), ampere (A), kelvin (K), mole (mol) and candela (cd). Derived units are formed from combinations of these base units.",
+"steps": [
+"Step 1: Examine each quantity–unit pair carefully.",
+"Step 2: Recall that electric current is one of the seven fundamental quantities in Physics.",
+"Step 3: The SI base unit of electric current is the ampere (A).",
+"Step 4: Check the remaining options for correctness.",
+"Step 5: Since electric current is correctly paired with ampere, the correct answer is Option C."
+],
+"why_other_options_are_wrong": [
+"A. Force is measured in newton (N), not kilogram (kg). Kilogram is the SI unit of mass.",
+"B. Pressure is measured in pascal (Pa), not newton (N). The newton is the SI unit of force.",
+"D. Energy is measured in joule (J), not watt (W). Watt is the SI unit of power."
+],
+"exam_tip": "JAMB frequently tests candidates on SI units by presenting quantity–unit combinations. Learn the SI base units thoroughly and understand the derived units associated with commonly encountered physical quantities.",
+"final_answer": "C. Electric current — ampere (A)",
+"simple_explanation": "Scientists everywhere use the same measurement units so that results can be understood universally. The SI unit for electric current is the ampere, symbolized by the letter A.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → SI Units to study the SI base quantities, their units and symbols, as well as commonly used derived units. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical examples."
+},
+"tags": [
+"si_units",
+"fundamental_quantities",
+"derived_units",
+"measurement",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q112",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Dimensions of physical quantities",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A Physics student was checking whether the equations obtained in an experiment were dimensionally correct before including them in a laboratory report. Which of the following quantities has the dimensional formula [MLT⁻²]?",
+"options": {
+"A": "Pressure",
+"B": "Force",
+"C": "Momentum",
+"D": "Power"
+},
+"answer": "B",
+"answer_text": "Force",
+"explanation": {
+"question_restate": "The question tests your ability to identify a physical quantity from its dimensional formula. Specifically, you are required to determine which quantity has the dimensions [MLT⁻²].",
+"principle": "Dimensions describe how a physical quantity depends on the fundamental quantities of mass (M), length (L) and time (T). They provide a way of checking the consistency of physical equations and identifying relationships among quantities.\n\nA beginner may ask: 'Why are dimensions important if we already have units?' Dimensions reveal the nature of a quantity independent of the unit system being used. For example, whether force is measured in newtons or dynes, its dimensional formula remains the same.\n\nSome common dimensional formulae are:\n\n• Force = [MLT⁻²]\n• Pressure = [ML⁻¹T⁻²]\n• Momentum = [MLT⁻¹]\n• Power = [ML²T⁻³]\n\nKnowledge of these relationships helps students verify equations and avoid errors in calculations.",
+"steps": [
+"Step 1: Recall that force is defined as mass × acceleration.",
+"Step 2: Write the dimensions of mass as [M].",
+"Step 3: Recall that acceleration has dimensions [LT⁻²].",
+"Step 4: Multiply the dimensions: [M] × [LT⁻²] = [MLT⁻²].",
+"Step 5: Therefore, the quantity with dimensional formula [MLT⁻²] is force."
+],
+"why_other_options_are_wrong": [
+"A. Pressure is force per unit area. Its dimensional formula is [ML⁻¹T⁻²], not [MLT⁻²].",
+"C. Momentum is the product of mass and velocity, giving dimensions [MLT⁻¹].",
+"D. Power is the rate of doing work. Its dimensional formula is [ML²T⁻³]."
+],
+"exam_tip": "JAMB often tests dimensions by asking candidates to identify a quantity from its dimensional formula rather than derive the formula from scratch. Memorizing the dimensional formulae of common physical quantities can save time during the examination.",
+"final_answer": "B. Force",
+"simple_explanation": "Think of dimensions as the 'fingerprints' of physical quantities. Since force equals mass multiplied by acceleration, its fingerprint becomes [M] × [LT⁻²] = [MLT⁻²].",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Dimensions of Physical Quantities to learn how dimensional formulae are derived and applied in checking the validity of physical equations. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practice questions."
+},
+"tags": [
+"dimensions_of_physical_quantities",
+"dimensional_formula",
+"force",
+"measurements_units_and_dimensions",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q113",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Dimensional analysis",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A physicist proposes that the period, T, of oscillation of a simple pendulum depends on its length, l, and the acceleration due to gravity, g, according to the relation T = klᵃgᵇ, where k is a dimensionless constant. Using dimensional analysis, what is the value of a?",
+"options": {
+"A": "−1",
+"B": "1/2",
+"C": "1",
+"D": "2"
+},
+"answer": "B",
+"answer_text": "1/2",
+"explanation": {
+"question_restate": "The question requires you to apply dimensional analysis to determine the exponent of the pendulum length in an assumed formula for the period of oscillation.",
+"principle": "Dimensional analysis is a powerful tool used in Physics to check whether equations are dimensionally consistent and to predict relationships between physical quantities. It relies on the principle that both sides of a valid physical equation must have the same dimensions.\n\nIn practical Physics, scientists often use dimensional analysis to test proposed formulae before carrying out detailed experiments. Although dimensional analysis cannot determine numerical constants such as 2π, it can reveal how one quantity depends on others.\n\nThe dimensions involved in this problem are:\n\n• Period, T → [T]\n• Length, l → [L]\n• Acceleration due to gravity, g → [LT⁻²]",
+"steps": [
+"Step 1: Write the proposed relationship: T = klᵃgᵇ.",
+"Step 2: Replace each quantity with its dimensions:",
+"[T] = [L]ᵃ[LT⁻²]ᵇ.",
+"Step 3: Expand the right-hand side:",
+"[T] = [L]ᵃ⁺ᵇ[T]⁻²ᵇ.",
+"Step 4: Compare powers of T on both sides:",
+"1 = −2b, therefore b = −1/2.",
+"Step 5: Compare powers of L on both sides:",
+"0 = a + b.",
+"Step 6: Substitute b = −1/2:",
+"a − 1/2 = 0.",
+"Step 7: Hence, a = 1/2."
+],
+"why_other_options_are_wrong": [
+"A. −1 is incorrect because the dimensional balance of length does not produce a negative exponent of this value.",
+"C. 1 is incorrect because substituting a = 1 violates dimensional consistency.",
+"D. 2 is incorrect because it leads to unequal dimensions on both sides of the equation."
+],
+"exam_tip": "JAMB may present dimensional analysis through practical situations involving pendulums, waves or fluid flow. When solving such questions, first express each quantity in terms of M, L and T before equating powers of corresponding dimensions.",
+"final_answer": "B. 1/2",
+"simple_explanation": "Dimensional analysis works like checking whether the units on both sides of an equation match. By ensuring that the dimensions of time and length are balanced correctly, the exponent of the pendulum length is found to be 1/2.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Dimensional Analysis to learn how dimensions are used to verify equations and derive relationships among physical quantities. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and worked examples."
+},
+"tags": [
+"dimensional_analysis",
+"simple_pendulum",
+"physical_relationships",
+"dimensions",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q114",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Unit conversion",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A water treatment engineer recorded the depth of a reservoir as 2.5 m in a field report. For consistency with the specifications of a pumping system calibrated in centimetres, the depth had to be expressed in cm. What value should be entered in the report?",
+"options": {
+"A": "0.025 cm",
+"B": "25 cm",
+"C": "250 cm",
+"D": "2500 cm"
+},
+"answer": "C",
+"answer_text": "250 cm",
+"explanation": {
+"question_restate": "The question requires the conversion of a measurement from metres to centimetres in a practical engineering context.",
+"principle": "Unit conversion is an important aspect of Physics because measurements obtained using one unit system often need to be expressed in another. Scientists, engineers and technicians must ensure that quantities are reported using appropriate and consistent units.\n\nThe metric system is based on powers of ten, making conversions straightforward. Since 1 metre is equal to 100 centimetres, converting from metres to centimetres involves multiplying by 100. Conversely, converting from centimetres to metres involves dividing by 100.\n\nUnderstanding these relationships prevents costly errors in scientific investigations, engineering designs and industrial applications.",
+"steps": [
+"Step 1: Identify the original quantity and unit. The depth is 2.5 m.",
+"Step 2: Recall the conversion relationship: 1 m = 100 cm.",
+"Step 3: Multiply the value in metres by 100 to obtain the equivalent value in centimetres.",
+"Step 4: 2.5 × 100 = 250.",
+"Step 5: Therefore, the depth of the reservoir is 250 cm."
+],
+"why_other_options_are_wrong": [
+"A. This value is obtained by converting in the wrong direction and is much too small.",
+"B. This results from multiplying incorrectly and underestimates the actual depth.",
+"D. This value would correspond to 25 m rather than 2.5 m.",
+"Unit conversions should always be checked for reasonableness by comparing the sizes of the units involved."
+],
+"exam_tip": "In JAMB Physics, unit conversion questions often appear within practical situations rather than as isolated calculations. Always ask yourself whether the numerical value should increase or decrease after conversion. When converting from a larger unit to a smaller unit, the numerical value becomes larger.",
+"final_answer": "C. 250 cm",
+"simple_explanation": "A centimetre is smaller than a metre. Since 1 metre contains 100 centimetres, 2.5 metres contain 2.5 × 100 = 250 centimetres.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Unit Conversion to learn systematic approaches to converting between SI units and their submultiples. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard examples and practical applications."
+},
+"tags": [
+"unit_conversion",
+"metric_system",
+"si_units",
+"measurement",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q115",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Scientific notation",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "The average distance between the Earth and the Sun is approximately 150 000 000 000 m. For ease of calculation in astronomical studies, scientists often express such large values in scientific notation. How should this distance be written correctly in scientific notation?",
+"options": {
+"A": "1.5 × 10¹⁰ m",
+"B": "1.5 × 10¹¹ m",
+"C": "15 × 10¹⁰ m",
+"D": "0.15 × 10¹² m"
+},
+"answer": "B",
+"answer_text": "1.5 × 10¹¹ m",
+"explanation": {
+"question_restate": "The question requires you to express a very large physical quantity—the average Earth–Sun distance—in proper scientific notation.",
+"principle": "Scientific notation is a method of writing extremely large or very small numbers in a compact form. It is widely used in Physics because many quantities encountered in astronomy, atomic physics and electronics are inconvenient to write using ordinary decimal notation.\n\nA number written in scientific notation has the form:\n\na × 10ⁿ\n\nwhere 1 ≤ a < 10 and n is an integer.\n\nThe coefficient (a) must contain only one non-zero digit to the left of the decimal point. This standard form reduces errors in calculations and simplifies the comparison of physical quantities.",
+"steps": [
+"Step 1: Write the given quantity: 150 000 000 000 m.",
+"Step 2: Move the decimal point so that only one non-zero digit remains to its left.",
+"Step 3: The number becomes 1.5.",
+"Step 4: Count the number of places the decimal point was moved to the left. It was moved 11 places.",
+"Step 5: Therefore, the number is written as 1.5 × 10¹¹ m."
+],
+"why_other_options_are_wrong": [
+"A. 1.5 × 10¹⁰ m represents 15 000 000 000 m, which is ten times smaller than the given value.",
+"C. Although numerically equivalent to the original value, 15 × 10¹⁰ m is not in proper scientific notation because the coefficient is greater than 10.",
+"D. 0.15 × 10¹² m is also not in standard scientific notation because the coefficient is less than 1."
+],
+"exam_tip": "In JAMB, scientific notation questions often test whether candidates know the correct form rather than simple place-value counting. Always ensure that the coefficient lies between 1 and 10.",
+"final_answer": "B. 1.5 × 10¹¹ m",
+"simple_explanation": "Think of scientific notation as a shorthand method used by physicists. Instead of writing many zeros, we write the number as a value between 1 and 10 multiplied by a power of ten. Since 150 000 000 000 has 11 places after moving the decimal point to form 1.5, the correct answer is 1.5 × 10¹¹.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Scientific Notation to learn how to express very large and very small physical quantities correctly. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practice questions."
+},
+"tags": [
+"scientific_notation",
+"standard_form",
+"astronomical_quantities",
+"measurements",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q116",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Position and coordinates",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A robotic cart used in a school Physics exhibition moves on a horizontal surface marked with x- and y-axes. Relative to the origin O, the control screen indicates that the cart is at the coordinate (4 m, -3 m). Which of the following correctly describes the position of the cart?",
+"options": {
+"A": "4 m along the negative x-axis and 3 m along the positive y-axis",
+"B": "4 m along the positive x-axis and 3 m along the negative y-axis",
+"C": "3 m along the positive x-axis and 4 m along the negative y-axis",
+"D": "3 m along the negative x-axis and 4 m along the positive y-axis"
+},
+"answer": "B",
+"answer_text": "4 m along the positive x-axis and 3 m along the negative y-axis",
+"explanation": {
+"question_restate": "The question tests your understanding of how position coordinates specify the location of an object relative to a chosen origin.",
+"principle": "In Physics, the position of an object in a plane can be represented using coordinates. The first coordinate gives the displacement along the x-axis, while the second coordinate gives the displacement along the y-axis.\n\nPositive values indicate movement in the positive direction of an axis, whereas negative values indicate movement in the opposite direction.\n\nFor a point represented by (x, y):\n• x > 0 means movement to the right of the origin.\n• x < 0 means movement to the left of the origin.\n• y > 0 means movement above the origin.\n• y < 0 means movement below the origin.",
+"steps": [
+"Step 1: Identify the given coordinates of the cart as (4 m, -3 m).",
+"Step 2: Interpret the first coordinate, +4 m, as 4 m along the positive x-axis.",
+"Step 3: Interpret the second coordinate, -3 m, as 3 m along the negative y-axis.",
+"Step 4: Combine both descriptions to determine the cart's position.",
+"Step 5: Therefore, the cart is 4 m along the positive x-axis and 3 m along the negative y-axis."
+],
+"why_other_options_are_wrong": [
+"A. This reverses the directions indicated by the signs of both coordinates.",
+"C. This interchanges the x- and y-coordinates.",
+"D. This both interchanges the coordinates and assigns incorrect directions."
+],
+"exam_tip": "JAMB may present coordinates using maps, laboratory setups, robots, moving objects or grid systems. Always remember that the first value refers to the x-axis and the second value refers to the y-axis.",
+"final_answer": "B. 4 m along the positive x-axis and 3 m along the negative y-axis",
+"simple_explanation": "Think of the coordinate (4, -3) as an instruction: move 4 m to the right from the origin, then move 3 m downward. That gives the exact position of the cart.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Position and Coordinates to learn how coordinate systems are used to describe the positions of objects in one and two dimensions. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and applications."
+},
+"tags": [
+"position_and_coordinates",
+"coordinate_system",
+"x_axis",
+"y_axis",
+"location_of_objects",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q117",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Distance and displacement",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A rescue team moved 3 km east from their base camp to a flooded village. They then travelled 4 km north to deliver supplies to another settlement. What was the displacement of the team from the base camp?",
+"options": {
+"A": "5 km",
+"B": "7 km",
+"C": "1 km",
+"D": "12 km"
+},
+"answer": "A",
+"answer_text": "5 km",
+"explanation": {
+"question_restate": "The question requires you to distinguish between distance and displacement by determining the straight-line separation between the rescue team's final position and their starting point.",
+"principle": "Distance is the total length of the actual path travelled, irrespective of direction. It is a scalar quantity and has magnitude only. Displacement, on the other hand, is the shortest straight-line distance from the initial position to the final position, measured in a specified direction. It is a vector quantity because it possesses both magnitude and direction.\n\nIn situations involving movement at right angles, the magnitude of displacement can be determined using the Pythagorean relationship. However, the emphasis in this question is understanding the physical meaning of displacement rather than performing extensive calculations.\n\nCandidates should remember that JAMB often tests the distinction between distance and displacement using real-life contexts such as journeys, sporting activities and field operations.",
+"steps": [
+"Step 1: Identify the two successive movements made by the rescue team: 3 km east and 4 km north.",
+"Step 2: Recognize that these two directions are perpendicular to each other.",
+"Step 3: Draw an imaginary right-angled triangle in which the two movements form the perpendicular sides.",
+"Step 4: The displacement is represented by the straight-line distance from the base camp to the team's final position.",
+"Step 5: Applying the Pythagorean relationship gives √(3² + 4²) = √25 = 5 km.",
+"Step 6: Therefore, the displacement of the team from the base camp is 5 km."
+],
+"why_other_options_are_wrong": [
+"A. Correct. The straight-line separation between the starting point and final position is 5 km.",
+"B. 7 km represents the total distance travelled (3 km + 4 km), not the displacement.",
+"C. 1 km does not correspond to either the distance travelled or the displacement.",
+"D. 12 km results from an incorrect manipulation of the given values."
+],
+"exam_tip": "Whenever JAMB presents movements in different directions, first decide whether the question asks for distance or displacement. Distance involves the entire path travelled, whereas displacement involves the straight-line change in position.",
+"final_answer": "A. 5 km",
+"simple_explanation": "Imagine walking 3 km east and then 4 km north. Instead of retracing the path you followed, displacement asks: 'How far are you from where you started if you could fly straight back?' In this case, that straight-line distance is 5 km.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Distance and Displacement to study the differences between scalar and vector quantities, practical examples of displacement, and common JAMB question patterns. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and applications."
+},
+"tags": [
+"distance",
+"displacement",
+"scalar_quantities",
+"vector_quantities",
+"motion",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q118",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Frame of reference",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "Passengers waiting at a bus stop observed a moving bus travelling along the road. A child seated inside the bus tossed a ball vertically upward and noticed that it returned to his hand. Relative to the child, the ball was",
+"options": {
+"A": "moving backward throughout its motion",
+"B": "moving forward with increasing speed",
+"C": "moving only vertically upward and downward",
+"D": "stationary throughout the motion"
+},
+"answer": "C",
+"answer_text": "moving only vertically upward and downward",
+"explanation": {
+"question_restate": "The question tests your understanding of how the description of motion depends on the observer's frame of reference.",
+"principle": "A frame of reference is the viewpoint from which the position or motion of an object is described. Different observers may describe the same motion differently depending on whether they are stationary or moving.\n\nFor an observer inside a vehicle moving with constant velocity, objects within the vehicle appear to share the vehicle's horizontal motion. Consequently, only the motion relative to that observer is noticed.\n\nThis idea explains why passengers can walk, throw objects, or perform simple activities inside a smoothly moving vehicle without experiencing any unusual horizontal effects.",
+"steps": [
+"Step 1: Identify the observer specified in the question. The observer is the child inside the moving bus.",
+"Step 2: Recognize that the child and the ball already share the same horizontal velocity as the bus.",
+"Step 3: When the child tosses the ball upward, he observes only the ball's motion relative to himself.",
+"Step 4: Since there is no relative horizontal motion between the child and the ball, the ball appears to move straight upward and downward.",
+"Step 5: Therefore, relative to the child, the ball moves only vertically."
+],
+"why_other_options_are_wrong": [
+"A. The ball does not appear to move backward relative to the child because both have the same horizontal motion as the bus.",
+"B. The child does not observe the ball moving forward with increasing speed; its noticeable motion is vertical.",
+"D. The ball cannot be stationary because it rises and falls relative to the child's position."
+],
+"exam_tip": "In frame-of-reference questions, always identify WHO is making the observation. The same event may be described differently by observers in different states of motion.",
+"final_answer": "C. moving only vertically upward and downward",
+"simple_explanation": "Imagine sitting in a smoothly moving bus and throwing a coin straight up. To you, the coin goes up and comes back down into your hand. However, someone standing outside the bus would see the coin moving forward together with the bus while also moving up and down.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Frame of Reference to learn how different observers describe motion and how JAMB tests relative motion concepts using everyday situations."
+},
+"tags": [
+"frame_of_reference",
+"relative_motion",
+"observers",
+"conceptual_physics",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q119",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Length measurement",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A civil engineer supervising the construction of a bridge needs to determine the width of a large expansion joint that spans several metres. Which of the following instruments would be most appropriate for obtaining this measurement?",
+"options": {
+"A": "Micrometer screw gauge",
+"B": "Vernier calipers",
+"C": "Tape measure",
+"D": "Measuring cylinder"
+},
+"answer": "C",
+"answer_text": "Tape measure",
+"explanation": {
+"question_restate": "The question requires you to identify the most suitable instrument for measuring a relatively large length in an engineering setting.",
+"principle": "The choice of a measuring instrument depends on the size of the object being measured and the degree of precision required. Instruments designed for very small measurements are unsuitable for large distances, while instruments used for long lengths may not provide the precision needed for tiny objects.\n\nCommon instruments for length measurements include:\n\n• Tape measure – used for measuring relatively long distances and dimensions in construction work.\n• Metre rule – suitable for ordinary classroom and laboratory measurements.\n• Vernier calipers – used for measuring external diameters, internal diameters and depths with moderate precision.\n• Micrometer screw gauge – used for measuring very small thicknesses and diameters with high precision.",
+"steps": [
+"Step 1: Identify what is being measured. The quantity involved is the width of an expansion joint, which is a length measurement.",
+"Step 2: Recognize that the measurement extends over a relatively large distance of several metres.",
+"Step 3: Consider the measuring range of the instruments listed.",
+"Step 4: Tape measures are specifically designed to measure long lengths conveniently and accurately in construction and field applications.",
+"Step 5: Therefore, the most appropriate instrument is the tape measure."
+],
+"why_other_options_are_wrong": [
+"A. A micrometer screw gauge is intended for measuring very small thicknesses and diameters, not large distances.",
+"B. Vernier calipers have a limited measuring range and are unsuitable for measurements spanning several metres.",
+"D. A measuring cylinder is used for measuring the volume of liquids and irregular solids by displacement, not length."
+],
+"exam_tip": "JAMB often tests the ability to select the most appropriate measuring instrument for a given situation. Always consider both the size of the object and the precision required before making your choice.",
+"final_answer": "C. Tape measure",
+"simple_explanation": "If you want to measure the size of a bridge component that stretches over several metres, using a micrometer or vernier calipers would be impractical. A tape measure is designed specifically for such long measurements.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Length Measurement to study the uses, ranges and limitations of common measuring instruments. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard examples and explanations."
+},
+"tags": [
+"length_measurement",
+"measuring_instruments",
+"tape_measure",
+"engineering_applications",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q120",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Area measurement",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A school agricultural science club plans to fence a rectangular vegetable garden. Before purchasing the fencing materials, the students need to determine the area of the garden. If the garden measures 18 m in length and 12 m in width, what is its area?",
+"options": {
+"A": "30 m²",
+"B": "60 m²",
+"C": "216 m²",
+"D": "432 m²"
+},
+"answer": "C",
+"answer_text": "216 m²",
+"explanation": {
+"question_restate": "The question requires you to determine the area of a rectangular piece of land using its measured length and width.",
+"principle": "Area is a derived quantity that describes the extent of a surface. In Physics and other sciences, area measurements are important in experiments and practical applications involving pressure, heat transfer, solar panels, land use and construction.\n\nFor regular shapes such as rectangles, the area can be obtained from their dimensions. The area of a rectangle is given by multiplying its length by its width.\n\nThe SI unit of area is the square metre (m²). The square in the unit indicates that two length measurements have been multiplied together.",
+"steps": [
+"Step 1: Identify the shape involved. The vegetable garden is rectangular.",
+"Step 2: Recall the formula for the area of a rectangle: Area = Length × Width.",
+"Step 3: Substitute the given values: Area = 18 m × 12 m.",
+"Step 4: Perform the calculation: 18 × 12 = 216.",
+"Step 5: Attach the correct SI unit for area, which is square metres (m²). Therefore, the area of the garden is 216 m²."
+],
+"why_other_options_are_wrong": [
+"A. 30 m² is obtained by adding the length and width rather than calculating area.",
+"B. 60 m² does not result from the correct application of the area formula.",
+"D. 432 m² is twice the correct value and may arise from an incorrect computation."
+],
+"exam_tip": "JAMB often tests whether candidates can distinguish between formulas for perimeter, area and volume. Always identify the quantity required before selecting a formula.",
+"final_answer": "C. 216 m²",
+"simple_explanation": "If you want to know how much ground a rectangular garden covers, multiply its length by its width. Since 18 × 12 = 216, the garden covers an area of 216 square metres.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Area Measurement to learn how to determine the areas of regular surfaces and apply area concepts in practical situations. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and worked examples."
+},
+"tags": [
+"area_measurement",
+"derived_quantities",
+"regular_shapes",
+"practical_application",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q121",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Volume measurement",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A laboratory assistant needs to prepare exactly 75 cm³ of a chemical solution for an experiment. Which of the following instruments would provide the most direct and reliable measurement of this volume?",
+"options": {
+"A": "Metre rule",
+"B": "Beam balance",
+"C": "Measuring cylinder",
+"D": "Micrometer screw gauge"
+},
+"answer": "C",
+"answer_text": "Measuring cylinder",
+"explanation": {
+"question_restate": "The question tests your ability to identify the most appropriate instrument for measuring a specified volume of liquid accurately.",
+"principle": "Volume is the amount of space occupied by a substance. In Physics practical work, different instruments are designed for measuring different physical quantities. Selecting the correct instrument is essential for obtaining reliable experimental results.\n\nLiquids are commonly measured using instruments calibrated in units of volume such as cubic centimetres (cm³) or millilitres (mL). A measuring cylinder has graduations that allow direct reading of liquid volume. Since 1 cm³ is equivalent to 1 mL, a measuring cylinder can conveniently measure liquid volumes required in many laboratory activities.",
+"steps": [
+"Step 1: Identify the physical quantity involved. The quantity to be measured is volume.",
+"Step 2: Determine whether the substance involved is a liquid or a solid. The question refers to preparing a chemical solution, which is a liquid.",
+"Step 3: Recall the instruments used for measuring various quantities.",
+"Step 4: Recognize that a measuring cylinder is specifically calibrated for measuring liquid volumes directly.",
+"Step 5: Therefore, the most appropriate instrument for obtaining 75 cm³ of the solution is the measuring cylinder."
+],
+"why_other_options_are_wrong": [
+"A. A metre rule is used for measuring length and cannot directly measure liquid volume.",
+"B. A beam balance measures mass, not volume.",
+"D. A micrometer screw gauge measures very small thicknesses and diameters and is unsuitable for measuring liquids."
+],
+"exam_tip": "JAMB often tests your knowledge of the appropriate instrument for measuring a particular physical quantity. Always identify the quantity first before selecting the instrument.",
+"final_answer": "C. Measuring cylinder",
+"simple_explanation": "If you need a specific amount of liquid, you should use an instrument marked in volume units. A measuring cylinder is designed for this purpose, making it the correct choice.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Volume Measurement to study the uses of measuring cylinders, overflow cans and displacement methods. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and explanations."
+},
+"tags": [
+"volume_measurement",
+"measuring_cylinder",
+"laboratory_instruments",
+"practical_physics",
+"phy_01"
+],
+"active": true
 }
 
 ]
