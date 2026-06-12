@@ -859,6 +859,219 @@
       "si_units"
     ],
     "active": true
+  },
+  {
+    "id": "phy_01_q021",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Time-measuring devices",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following instruments is most suitable for measuring the time taken by an athlete to complete a 100 m race?",
+    "options": {
+      "A": "Beam balance",
+      "B": "Metre rule",
+      "C": "Stopwatch",
+      "D": "Measuring cylinder"
+    },
+    "answer": "C",
+    "answer_text": "Stopwatch",
+    "explanation": {
+      "question_restate": "Choose the most appropriate instrument for measuring a short time interval.",
+      "principle": "Time is one of the seven SI base quantities, and its SI unit is the second (s). Other SI base quantities are length (metre, m), mass (kilogram, kg), electric current (ampere, A), thermodynamic temperature (kelvin, K), amount of substance (mole, mol), and luminous intensity (candela, cd). Different instruments measure different physical quantities. Beam balances measure mass, metre rules measure length, ammeter measures electric current, thermometer measure temperature, photometer for luminous intensity, measuring cylinders measure volume, while stopwatches are specially designed to measure short time intervals accurately.",
+      "steps": [
+        "Identify the quantity being measured: time.",
+        "Recognize that a 100 m race lasts only a few seconds.",
+        "Know that stopwatches can start and stop instantly, making them suitable for timing events.",
+        "Eliminate instruments used for mass, length and volume.",
+        "Select the stopwatch."
+      ],
+      "why_other_options_are_wrong": [
+        "A measures mass.",
+        "B measures length.",
+        "D measures volume of liquids."
+      ],
+      "exam_tip": "Always identify the physical quantity before choosing the instrument.",
+      "final_answer": "C. Stopwatch",
+      "simple_explanation": "A stopwatch is like a clock designed specifically for timing short events.",
+      "tutorial_reference": "Visit Tutorials → Physics → Time-Measuring Devices."
+    },
+    "tags": [
+      "time_measuring_devices"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q022",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Measurement of regular bodies",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A rectangular block has dimensions 8 cm, 5 cm and 3 cm. What is its volume?",
+    "options": {
+      "A": "16 cm³",
+      "B": "40 cm³",
+      "C": "120 cm³",
+      "D": "240 cm³"
+    },
+    "answer": "C",
+    "answer_text": "120 cm³",
+    "explanation": {
+      "question_restate": "The question requires us to calculate the volume of a cuboid.",
+      "principle": "Volume is the amount of space occupied by an object and is measured in cubic units such as cm³ or m³. Regular bodies are objects with definite geometric shapes whose volumes can be determined using mathematical formulas. For example, the volume of a cuboid is given by Length × Breadth × Height (V = lbh), the volume of a cube is Side³ (V = a³), the volume of a cylinder is πr²h, the volume of a sphere is ⁴⁄₃ πr³, and the volume of a cone is ¹⁄₃ πr²h. Since the object in this question is a rectangular block (cuboid), the appropriate formula is V = lbh.",
+      "steps": [
+        "Length = 8 cm, breadth = 5 cm, height = 3 cm.",
+        "Apply the formula V = l × b × h.",
+        "Multiply: 8 × 5 = 40.",
+        "Multiply: 40 × 3 = 120.",
+	"Note that the dimensions are in 'cm'"
+        "Write the unit as cm³ because three lengths were multiplied."
+      ],
+      "why_other_options_are_wrong": [
+        "A results from incorrect multiplication.",
+        "B ignores one dimension.",
+        "D doubles the correct answer."
+      ],
+      "exam_tip": "Regular bodies use geometric formulas; irregular bodies use displacement methods.",
+      "final_answer": "C. 120 cm³",
+      "simple_explanation": "Volume tells us how much space the block occupies.",
+      "tutorial_reference": "Visit Tutorials → Physics → Measurement of Regular Bodies."
+    },
+    "tags": [
+      "regular_bodies"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q023",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Metre rule",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "What is the least count of a metre rule graduated in millimetres?",
+    "options": {
+      "A": "1 cm",
+      "B": "0.1 cm",
+      "C": "1 mm",
+      "D": "10 mm"
+    },
+    "answer": "C",
+    "answer_text": "1 mm",
+    "explanation": {
+      "question_restate": "Determine the smallest measurement that can be read directly on a metre rule.",
+      "principle": "The least count of an instrument is the smallest value that the instrument can measure directly. A metre rule marked in millimetres has millimetre divisions as its smallest markings.",
+      "steps": [
+        "Understand that 'graduated in millimetres' means the scale is divided into millimetres.",
+        "Identify the smallest visible division.",
+        "The smallest division is 1 mm.",
+        "Therefore, the least count is 1 mm."
+      ],
+      "why_other_options_are_wrong": [
+        "A and D represent larger intervals.",
+        "B equals 1 mm but the question specifically asks for the millimetre graduation."
+      ],
+      "exam_tip": "Check the smallest scale marking whenever asked for least count.",
+      "final_answer": "C. 1 mm",
+      "simple_explanation": "The least count is simply the smallest space marked on the instrument.",
+      "tutorial_reference": "Visit Tutorials → Physics → Metre Rule."
+    },
+    "tags": [
+      "metre_rule"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q024",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Area measurement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A square plot has sides of length 12 m. What is its area?",
+    "options": {
+      "A": "24 m²",
+      "B": "48 m²",
+      "C": "144 m²",
+      "D": "288 m²"
+    },
+    "answer": "C",
+    "answer_text": "144 m²",
+    "explanation": {
+      "question_restate": "Determine the area of a square.",
+      "principle": "Area is the amount of surface enclosed by a two-dimensional shape and is measured in square units such as cm² and m². Different plane shapes have different formulas for calculating area. For example, the area of a rectangle is Length × Breadth (A = lb), the area of a square is Side × Side (A = a²), the area of a triangle is ½ × Base × Height (A = ½bh), and the area of a circle is πr², where r is the radius. Since the shape in this question is a square, the appropriate formula is A = a².",
+      "steps": [
+        "Identify the side length: 12 m.",
+        "Use the formula: Area = side × side, A = a²",
+        "Calculate: 12 × 12 = 144.",
+        "Attach the correct unit, m²."
+      ],
+      "why_other_options_are_wrong": [
+        "A adds two sides.",
+        "B uses incorrect multiplication.",
+        "D doubles the correct value."
+      ],
+      "exam_tip": "Area always has square units such as cm² or m².",
+      "final_answer": "C. 144 m²",
+      "simple_explanation": "Since all sides of a square are equal, multiply one side by itself.",
+      "tutorial_reference": "Visit Tutorials → Physics → Area Measurement."
+    },
+    "tags": [
+      "area_measurement"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q025",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Fundamental quantities",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "Which of the following is NOT an SI base quantity?",
+    "options": {
+      "A": "Length",
+      "B": "Temperature",
+      "C": "Force",
+      "D": "Time"
+    },
+    "answer": "C",
+    "answer_text": "Force",
+    "explanation": {
+      "question_restate": "Identify the quantity that is derived rather than fundamental.",
+      "principle": "Fundamental quantities are independent quantities from which others are derived. The seven SI base quantities are: length (metre, m), mass (kilogram, kg), time (second, s), electric current (ampere, A), thermodynamic temperature (kelvin, K), amount of substance (mole, mol), and luminous intensity (candela, cd). Derived quantities are formed from these base quantities. Force is derived because Force = Mass × Acceleration.",
+      "steps": [
+        "Study the seven SI base quantities and their units.",
+        "Observe that length, temperature and time belong to this list.",
+        "Understand that acceleration depends on length and time.",
+        "Since force = mass × acceleration, force depends on other quantities.",
+        "Therefore, force is derived, not fundamental."
+      ],
+      "why_other_options_are_wrong": [
+        "Length is a base quantity.",
+        "Temperature is a base quantity.",
+        "Time is a base quantity."
+      ],
+      "exam_tip": "JAMB frequently tests the difference between fundamental and derived quantities.",
+      "final_answer": "C. Force",
+      "simple_explanation": "Force is made from other quantities, so it is not one of the basic building blocks.",
+      "tutorial_reference": "Visit Tutorials → Physics → Fundamental Quantities."
+    },
+    "tags": [
+      "fundamental_quantities"
+    ],
+    "active": true
   }
 ]
 
