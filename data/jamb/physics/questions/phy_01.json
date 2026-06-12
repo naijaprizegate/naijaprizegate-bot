@@ -4736,7 +4736,55 @@
 "phy_01"
 ],
 "active": true
+},
+{
+"id": "phy_01_q100",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Measurement of irregular bodies",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A student uses an overflow can to determine the volume of a piece of rock. The water displaced by the rock is collected in a measuring cylinder and found to occupy 32 cm³. Which of the following statements is correct?",
+"options": {
+"A": "The mass of the rock is 32 g",
+"B": "The density of the rock is 32 g cm⁻³",
+"C": "The volume of the rock is 32 cm³",
+"D": "The weight of the rock is 32 N"
+},
+"answer": "C",
+"answer_text": "The volume of the rock is 32 cm³",
+"explanation": {
+"question_restate": "The question requires you to apply the principle of displacement to determine what can be concluded when an irregular solid displaces a known volume of water.",
+"principle": "Irregular bodies are objects whose dimensions cannot be measured easily using ordinary geometric formulas. Examples include stones, pieces of metal with uneven shapes, and lumps of clay.\n\nA beginner may ask: 'How do we measure the volume of an object that has no regular shape?' The answer is by using the displacement method.\n\nThe displacement method is based on the principle that:\n\nVolume of irregular body = Volume of liquid displaced.\n\nAn overflow can is a container with a spout near its top. When a completely immersed object is placed in the can, the volume of water that flows out through the spout is exactly equal to the volume of the object submerged.\n\nThe displaced water is usually collected in a measuring cylinder so that its volume can be measured accurately.",
+"steps": [
+"Step 1: Identify what was measured experimentally. The student measured the volume of water displaced.",
+"Step 2: Recall the displacement principle:\n\nVolume of object = Volume of liquid displaced.",
+"Step 3: The measuring cylinder shows that 32 cm³ of water was displaced.",
+"Step 4: Therefore, the volume of the rock must also be 32 cm³.",
+"Step 5: Observe that no information was provided about the mass or weight of the rock. Therefore, these quantities cannot be determined from the given data."
+],
+"why_other_options_are_wrong": [
+"A. Mass cannot be determined because the rock was not weighed using a balance.",
+"B. Density cannot be calculated because density requires both mass and volume. Only the volume was obtained in the experiment.",
+"D. Weight cannot be determined because neither the mass of the rock nor the gravitational field strength was provided."
+],
+"exam_tip": "JAMB often tests whether candidates understand the physical meaning of displacement experiments rather than simply performing subtraction. Remember this key idea:\n\nVolume of irregular object = Volume of fluid displaced.\n\nDo not confuse volume with mass, density or weight.",
+"final_answer": "C. The volume of the rock is 32 cm³",
+"simple_explanation": "Imagine placing a stone into a completely filled container of water. The amount of water pushed out occupies exactly the same space as the stone. Therefore, if the displaced water has a volume of 32 cm³, the stone must also have a volume of 32 cm³.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Irregular Bodies to learn the displacement method using overflow cans and measuring cylinders. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical examples."
+},
+"tags": [
+"measurement_of_irregular_bodies",
+"displacement_method",
+"overflow_can",
+"volume_measurement",
+"phy_01"
+],
+"active": true
 }
+
 ]
 
 
