@@ -1072,6 +1072,232 @@
       "fundamental_quantities"
     ],
     "active": true
+  },
+  {
+    "id": "phy_01_q026",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Length measurement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A ribbon is measured with a metre rule and its length is found to be 76.4 cm. Express this length in metres.",
+    "options": {
+      "A": "0.0764 m",
+      "B": "0.764 m",
+      "C": "7.64 m",
+      "D": "76.4 m"
+    },
+    "answer": "B",
+    "answer_text": "0.764 m",
+    "explanation": {
+      "question_restate": "Convert a measurement from centimetres to metres.",
+      "principle": "Length is one of the seven SI base quantities. Its SI unit is the metre (m). Common instruments used for measuring length include the metre rule, tape measure, Vernier calipers and micrometer screw gauge. Since 1 m = 100 cm, converting centimetres to metres involves dividing by 100.",
+      "steps": [
+        "Identify the quantity involved: length.",
+        "Note the relationship between the units: 1 m = 100 cm.",
+        "Write the conversion: 76.4 cm ÷ 100.",
+        "Perform the calculation: 76.4 ÷ 100 = 0.764.",
+        "Attach the correct SI unit, metre (m)."
+      ],
+      "why_other_options_are_wrong": [
+        "A results from dividing by 1000 instead of 100.",
+        "C results from multiplying instead of dividing.",
+        "D leaves the value unchanged despite changing the unit."
+      ],
+      "exam_tip": "When converting from a smaller unit to a larger unit, divide by the conversion factor.",
+      "final_answer": "B. 0.764 m",
+      "simple_explanation": "Since a metre is bigger than a centimetre, the numerical value becomes smaller after conversion.",
+      "tutorial_reference": "Visit Tutorials → Physics → Length Measurement."
+    },
+    "tags": [
+      "length_measurement",
+      "unit_conversion",
+      "phy_01"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q027",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Measuring cylinder",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A measuring cylinder contains 32 cm³ of water. Additional water is poured into it until the reading becomes 57 cm³. What volume of water was added?",
+    "options": {
+      "A": "25 cm³",
+      "B": "57 cm³",
+      "C": "89 cm³",
+      "D": "15 cm³"
+    },
+    "answer": "A",
+    "answer_text": "25 cm³",
+    "explanation": {
+      "question_restate": "Determine the volume of liquid added using measuring cylinder readings.",
+      "principle": "A measuring cylinder is used to measure the volume of liquids. Volume is the amount of space occupied by a substance and is commonly measured in cm³ or mL. For liquids, the change in cylinder reading gives the volume added.",
+      "steps": [
+        "Record the initial reading: 32 cm³.",
+        "Record the final reading: 57 cm³.",
+        "Subtract the initial reading from the final reading.",
+        "57 − 32 = 25 cm³.",
+        "Therefore, the volume of water added is 25 cm³."
+      ],
+      "why_other_options_are_wrong": [
+        "B is the final reading, not the volume added.",
+        "C is obtained by adding instead of subtracting.",
+        "D results from incorrect subtraction."
+      ],
+      "exam_tip": "For measuring cylinder problems involving change, use: Change = Final reading − Initial reading.",
+      "final_answer": "A. 25 cm³",
+      "simple_explanation": "The extra water occupies the additional space shown on the scale.",
+      "tutorial_reference": "Visit Tutorials → Physics → Measuring Cylinder."
+    },
+    "tags": [
+      "measuring_cylinder",
+      "volume",
+      "phy_01"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q028",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Volume measurement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "The volume of a cylinder of radius 7 cm and height 10 cm is given by V = πr²h. Taking π = 22/7, calculate its volume.",
+    "options": {
+      "A": "1,540 cm³",
+      "B": "770 cm³",
+      "C": "490 cm³",
+      "D": "3,080 cm³"
+    },
+    "answer": "A",
+    "answer_text": "1,540 cm³",
+    "explanation": {
+      "question_restate": "Calculate the volume of a cylinder using its formula.",
+      "principle": "Volume is the amount of space occupied by an object. Different regular solids have different volume formulas. For example: cuboid = lbh, cube = a³, cylinder = πr²h, cone = ⅓πr²h, and sphere = ⁴⁄₃πr³. Since this question involves a cylinder, V = πr²h is the appropriate formula.",
+      "steps": [
+        "Write the formula: V = πr²h.",
+        "Substitute the values: V = (22/7) × 7² × 10.",
+        "Calculate the radius squared: 7² = 49.",
+        "V = (22/7) × 49 × 10 = 22 × 7 × 10.",
+        "22 × 7 × 10 = 1,540.",
+        "Therefore, the volume is 1,540 cm³."
+      ],
+      "why_other_options_are_wrong": [
+        "B results from omitting one factor of the radius.",
+        "C is obtained by using r²h without multiplying by π.",
+        "D is exactly twice the correct answer."
+      ],
+      "exam_tip": "Always identify the shape first before selecting the appropriate volume formula.",
+      "final_answer": "A. 1,540 cm³",
+      "simple_explanation": "A cylinder is like a can; its volume depends on the size of its circular base and its height.",
+      "tutorial_reference": "Visit Tutorials → Physics → Volume Measurement."
+    },
+    "tags": [
+      "volume_measurement",
+      "cylinder",
+      "phy_01"
+    ],
+    "active": true
+  }, 
+   {
+    "id": "phy_01_q029",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Length measurement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "When using a metre rule to measure the length of an object, parallax error can be minimized by ensuring that the observer's eye is",
+    "options": {
+      "A": "directly above the mark being read",
+      "B": "to the left of the scale",
+      "C": "to the right of the scale",
+      "D": "as far away from the scale as possible"
+    },
+    "answer": "A",
+    "answer_text": "directly above the mark being read",
+    "explanation": {
+      "question_restate": "Identify the correct way to avoid parallax error during length measurement.",
+      "principle": "Length is one of the seven SI base quantities and is measured in metres (m). Common instruments used for measuring length include metre rules, tape measures, Vernier calipers and micrometer screw gauges. A parallax error occurs when a scale is viewed from an angle rather than directly in line with the measurement mark, causing the reading obtained to differ from the true value.",
+      "steps": [
+        "Understand that the question concerns the accurate reading of a scale.",
+        "Recognize that viewing a scale from the side changes the apparent position of the mark.",
+        "Know that this effect is called parallax error.",
+        "To eliminate this error, position the eye vertically above the mark being read.",
+        "Therefore, the correct option is that the observer's eye should be directly above the mark."
+      ],
+      "why_other_options_are_wrong": [
+        "Option B places the eye at an angle to the scale, leading to parallax error.",
+        "Option C also causes an angular view and inaccurate readings.",
+        "Option D increases difficulty in reading the scale accurately and does not eliminate parallax error."
+      ],
+      "exam_tip": "JAMB frequently tests sources of experimental errors. Remember that parallax error is avoided by viewing scales perpendicularly.",
+      "final_answer": "A. directly above the mark being read",
+      "simple_explanation": "Looking straight down at the scale helps you see the true position of the measurement mark.",
+      "tutorial_reference": "Visit Tutorials → Physics → Length Measurement."
+    },
+    "tags": [
+      "length_measurement",
+      "parallax_error",
+      "phy_01"
+    ],
+    "active": true
+  },
+  {
+    "id": "phy_01_q030",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Measuring cylinder",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "When reading the volume of water in a measuring cylinder, the correct reading should be taken at the",
+    "options": {
+      "A": "top of the meniscus",
+      "B": "middle of the meniscus",
+      "C": "bottom of the meniscus",
+      "D": "highest point on the cylinder wall"
+    },
+    "answer": "C",
+    "answer_text": "bottom of the meniscus",
+    "explanation": {
+      "question_restate": "Determine the correct part of the water surface to use when reading a measuring cylinder.",
+      "principle": "A measuring cylinder is used to measure the volume of liquids. Many liquids, including water, form a curved surface called a meniscus because of the interaction between the liquid molecules and the walls of the container. Water forms a concave meniscus, meaning the centre is lower than the edges. To obtain an accurate measurement, the reading is taken at the lowest point of the meniscus with the eye positioned at the same level as the liquid surface.",
+      "steps": [
+        "Identify the liquid involved: water.",
+        "Understand that water forms a concave meniscus in a measuring cylinder.",
+        "Locate the lowest point of the curved surface.",
+        "Ensure the eye is at the same horizontal level as the meniscus to avoid parallax error.",
+        "Read the scale at the bottom of the meniscus."
+      ],
+      "why_other_options_are_wrong": [
+        "Option A is incorrect because the top of the meniscus is not used for water measurements.",
+        "Option B is incorrect because the middle does not correspond to the standard reading position.",
+        "Option D does not represent any accepted method of reading a measuring cylinder."
+      ],
+      "exam_tip": "For JAMB practical questions, remember: water is read at the bottom of the meniscus, while mercury is read at the top.",
+      "final_answer": "C. bottom of the meniscus",
+      "simple_explanation": "The curved surface of water dips in the middle, so that lowest point gives the correct reading.",
+      "tutorial_reference": "Visit Tutorials → Physics → Measuring Cylinder."
+    },
+    "tags": [
+      "measuring_cylinder",
+      "meniscus",
+      "phy_01"
+    ],
+    "active": true
   }
 ]
 
