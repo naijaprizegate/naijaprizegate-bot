@@ -1547,7 +1547,194 @@
     "phy_01"
   ],
   "active": true
+},
+{
+"id": "phy_01_q036",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Vernier calipers",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A student uses a vernier caliper to measure the external diameter of a metal rod. The zero mark of the vernier scale lies between 2.4 cm and 2.5 cm on the main scale, while the 6th division on the vernier scale coincides exactly with a mark on the main scale. If the least count of the vernier caliper is 0.01 cm, what is the diameter of the rod?",
+"options": {
+"A": "2.40 cm",
+"B": "2.46 cm",
+"C": "2.56 cm",
+"D": "2.64 cm"
+},
+"answer": "B",
+"answer_text": "2.46 cm",
+"explanation": {
+"question_restate": "The question requires you to determine the diameter of a metal rod using the readings obtained from a vernier caliper. You are given the main scale reading, the coinciding vernier division, and the least count of the instrument.",
+"principle": "A vernier caliper is a measuring instrument used to obtain more accurate measurements than an ordinary metre rule. It is commonly used to measure external diameters, internal diameters, and depths. The reading of a vernier caliper is obtained using the formula:\n\nVernier Caliper Reading = Main Scale Reading + Vernier Scale Reading\n\nThe Vernier Scale Reading is calculated as:\n\nVernier Scale Reading = (Coinciding Vernier Division) × (Least Count)\n\nBefore using this formula, it is important to understand the terms involved.\n\nMain Scale Reading (MSR): This is the value on the main scale immediately to the left of the zero mark of the vernier scale.\n\nVernier Scale Reading (VSR): This is obtained from the vernier division that lines up exactly with a division on the main scale.\n\nLeast Count (LC): This is the smallest measurement that an instrument can accurately measure. For a vernier caliper, it is usually 0.01 cm or 0.1 mm.\n\nA complete beginner may ask: 'Why do we add the two readings?' The answer is that the main scale gives the whole part of the measurement, while the vernier scale provides the additional fractional part needed for greater precision.",
+"steps": [
+"Step 1: Identify the Main Scale Reading (MSR). The zero mark of the vernier scale lies between 2.4 cm and 2.5 cm. Therefore, the main scale reading is the value immediately to the left of the zero mark, which is 2.40 cm.",
+"Step 2: Determine the Vernier Scale Reading (VSR). The 6th vernier division coincides with a main scale mark. Therefore:\n\nVSR = 6 × 0.01 cm = 0.06 cm.",
+"Step 3: Add the two readings.\n\nTotal Reading = MSR + VSR\n= 2.40 cm + 0.06 cm\n= 2.46 cm.",
+"Step 4: Compare the result with the options provided. The correct option is 2.46 cm."
+],
+"why_other_options_are_wrong": [
+"A. 2.40 cm: This option considers only the main scale reading and ignores the contribution of the vernier scale. This is a common JAMB mistake.",
+"C. 2.56 cm: This result would arise from incorrectly identifying the main scale reading as 2.50 cm instead of 2.40 cm.",
+"D. 2.64 cm: This may result from reversing the digits of the vernier contribution or adding the vernier reading incorrectly."
+],
+"exam_tip": "JAMB frequently tests the ability to interpret readings from vernier calipers and micrometer screw gauges. Always remember these three steps:\n1. Read the main scale.\n2. Identify the coinciding vernier division.\n3. Multiply by the least count and add the result to the main scale reading.\n\nDo not rush. Most errors occur because candidates choose the wrong main scale reading.",
+"final_answer": "B. 2.46 cm",
+"simple_explanation": "Imagine measuring a pencil with a ruler that can only show centimetres. You might know the pencil is longer than 2.4 cm but shorter than 2.5 cm. The vernier caliper helps you find the extra tiny part between those marks. In this question, the ruler part says 2.40 cm, while the vernier part adds another 0.06 cm. Therefore, the actual measurement is 2.46 cm.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Vernier Calipers to learn how to read vernier scales using worked examples and practice exercises. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations."
+},
+"tags": [
+"vernier_calipers",
+"instrument_reading",
+"measurements",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q037",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Dimensions of physical quantities",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "The dimensional formula for pressure is",
+"options": {
+"A": "ML⁻¹T⁻²",
+"B": "MLT⁻²",
+"C": "ML²T⁻²",
+"D": "M⁻¹LT⁻²"
+},
+"answer": "A",
+"answer_text": "ML⁻¹T⁻²",
+"explanation": {
+"question_restate": "The question asks you to determine the dimensional formula of pressure using the relationships among physical quantities.",
+"principle": "A dimensional formula shows how a physical quantity depends on the fundamental quantities of mass (M), length (L), and time (T). It tells us the powers to which these fundamental quantities are raised in expressing a derived quantity.\n\nA complete beginner may ask, 'What are dimensions?' Dimensions describe the nature of a physical quantity in terms of fundamental quantities. For example, length has the dimension L, mass has the dimension M, and time has the dimension T.\n\nPressure is defined as the force acting per unit area.\n\nPressure = Force / Area\n\nBefore finding the dimensions of pressure, we must first know the dimensions of force.\n\nForce is given by Newton's Second Law:\n\nForce = Mass × Acceleration\n\nAcceleration is the rate of change of velocity with time.\n\nVelocity = Distance / Time\n\nTherefore, the dimensions of velocity are LT⁻¹.\n\nAcceleration = Velocity / Time = LT⁻¹ / T = LT⁻².\n\nThus,\n\nForce = M × LT⁻² = MLT⁻².\n\nArea is obtained by multiplying length by length.\n\nArea = L × L = L².",
+"steps": [
+"Step 1: Recall that Pressure = Force / Area.",
+"Step 2: Determine the dimensions of force.\n\nForce = Mass × Acceleration\n= M × LT⁻²\n= MLT⁻².",
+"Step 3: Determine the dimensions of area.\n\nArea = L².",
+"Step 4: Substitute into the pressure formula.\n\nPressure = Force / Area\n= (MLT⁻²) / L².",
+"Step 5: Simplify the powers of L.\n\nL¹ / L² = L⁻¹.",
+"Therefore,\n\nPressure = ML⁻¹T⁻²."
+],
+"why_other_options_are_wrong": [
+"B. MLT⁻² is the dimensional formula for force, not pressure. Candidates often stop after finding the dimensions of force and forget to divide by area.",
+"C. ML²T⁻² does not correspond to pressure. In fact, ML²T⁻² is associated with quantities such as work or energy when expressed dimensionally.",
+"D. M⁻¹LT⁻² incorrectly places mass in the denominator. Pressure increases with force, which depends directly on mass, so the mass dimension should be positive."
+],
+"exam_tip": "JAMB frequently tests dimensions of common derived quantities such as force, pressure, density, momentum, and energy. Instead of memorizing every dimensional formula, learn how to derive them from their defining equations. This approach helps you answer unfamiliar questions correctly.",
+"final_answer": "A. ML⁻¹T⁻²",
+"simple_explanation": "Pressure tells us how concentrated a force is over an area. Since force has dimensions MLT⁻² and area has dimensions L², dividing force by area removes one length factor from the numerator and leaves L⁻¹. Therefore, the dimensions of pressure are ML⁻¹T⁻².",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Dimensions of Physical Quantities and Dimensional Analysis for step-by-step derivations and additional JAMB practice questions. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more beginner-friendly explanations."
+},
+"tags": [
+"dimensions",
+"pressure",
+"derived_quantities",
+"dimensional_analysis",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q037",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Dimensions of physical quantities",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "What is the dimensional formula of density?",
+"options": {
+"A": "ML⁻³",
+"B": "ML⁻¹T⁻²",
+"C": "MLT⁻²",
+"D": "M⁻¹L³"
+},
+"answer": "A",
+"answer_text": "ML⁻³",
+"explanation": {
+"question_restate": "The question requires you to determine the dimensional formula of density by expressing it in terms of the fundamental quantities mass (M), length (L), and time (T).",
+"principle": "A dimensional formula expresses a physical quantity in terms of fundamental quantities. The fundamental dimensions commonly used in Mechanics are mass (M), length (L), and time (T). Density is a derived quantity defined as the mass of a substance per unit volume.\n\nA beginner may ask: 'What is density?' Density tells us how much mass is packed into a given volume. For example, iron is denser than wood because the same volume of iron contains more mass.\n\nThe formula for density is:\n\nDensity = Mass / Volume\n\nBefore finding the dimensions of density, we need to know the dimensions of mass and volume.\n\nMass has the dimension M.\n\nVolume is obtained by multiplying three lengths together:\n\nVolume = Length × Length × Length = L³.",
+"steps": [
+"Step 1: Recall the formula for density:\n\nDensity = Mass / Volume.",
+"Step 2: Write the dimensions of mass:\n\nMass = M.",
+"Step 3: Determine the dimensions of volume:\n\nVolume = L × L × L = L³.",
+"Step 4: Substitute the dimensions into the density formula:\n\nDensity = M / L³.",
+"Step 5: Express the result using negative indices:\n\nDensity = ML⁻³."
+],
+"why_other_options_are_wrong": [
+"B. ML⁻¹T⁻² is the dimensional formula for pressure, not density.",
+"C. MLT⁻² is the dimensional formula for force.",
+"D. M⁻¹L³ places mass in the denominator and does not represent density."
+],
+"exam_tip": "JAMB frequently tests dimensional formulas of common derived quantities such as density, force, pressure, momentum, and energy. Instead of memorizing all of them, learn the defining equations and derive the dimensions step by step.",
+"final_answer": "A. ML⁻³",
+"simple_explanation": "Density means 'mass per unit volume.' Since mass has dimension M and volume has dimension L³, dividing by volume gives M/L³, which is written as ML⁻³.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Dimensions of Physical Quantities. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more beginner-friendly JAMB explanations and worked examples."
+},
+"tags": [
+"dimensions",
+"density",
+"derived_quantities",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q038",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Frame of reference",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A woman sitting in a moving train observes that the trees by the railway track appear to move backward. This observation illustrates the concept of",
+"options": {
+"A": "dimensional analysis",
+"B": "relative motion",
+"C": "uniform acceleration",
+"D": "scientific notation"
+},
+"answer": "B",
+"answer_text": "relative motion",
+"explanation": {
+"question_restate": "The question requires you to identify the concept that explains why stationary objects appear to move when viewed from a moving observer's frame of reference.",
+"principle": "Motion is not absolute; it depends on the observer's frame of reference. A frame of reference is the viewpoint or coordinate system from which an observer describes the position or motion of objects.\n\nA complete beginner may ask, 'What does relative motion mean?' Relative motion means that the motion of an object is described with respect to another object or observer. An object that appears to be moving to one observer may appear to be at rest to another observer.\n\nFor example, a passenger sitting inside a smoothly moving train is at rest relative to another passenger sitting beside him. However, to a person standing on the platform, both passengers are moving with the train.\n\nIn this question, the trees are actually stationary with respect to the ground. However, because the observer is moving with the train, the trees appear to move backward. This apparent motion arises because motion is being described relative to the observer.",
+"steps": [
+"Step 1: Identify the observer in the question. The observer is the woman inside the moving train.",
+"Step 2: Identify the object being observed. The objects are the trees by the railway track.",
+"Step 3: Determine the actual state of the trees. Relative to the Earth, the trees are stationary.",
+"Step 4: Recognize that the apparent backward motion of the trees is due to the motion of the observer.",
+"Step 5: Conclude that the situation demonstrates relative motion."
+],
+"why_other_options_are_wrong": [
+"A. Dimensional analysis involves expressing physical quantities in terms of fundamental dimensions such as M, L and T. It has nothing to do with observers and motion.",
+"C. Uniform acceleration refers to motion in which velocity changes by equal amounts in equal intervals of time. The question does not provide information about acceleration.",
+"D. Scientific notation is a method of expressing very large or very small numbers in standard form. It is unrelated to motion."
+],
+"exam_tip": "JAMB frequently tests the idea that motion and rest depend on the observer's frame of reference. If an object appears to move differently to different observers, think of relative motion.",
+"final_answer": "B. relative motion",
+"simple_explanation": "Imagine sitting in a moving bus when another bus beside you starts moving. For a moment, it may seem as if your own bus is moving backward. This happens because your judgment of motion depends on what you use as a reference point. In the same way, the trees only appear to move backward because the train is moving forward.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Frame of Reference and Relative Motion. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practice questions."
+},
+"tags": [
+"frame_of_reference",
+"relative_motion",
+"motion",
+"phy_01"
+],
+"active": true
 }
 ]
+
+
 	
 
