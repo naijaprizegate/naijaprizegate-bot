@@ -1298,6 +1298,256 @@
       "phy_01"
     ],
     "active": true
-  }
+  },
+	{
+  "id": "phy_01_q031",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Unit conversion",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "Convert 450 cm to metres.",
+  "options": {
+    "A": "0.45 m",
+    "B": "4.5 m",
+    "C": "45 m",
+    "D": "4500 m"
+  },
+  "answer": "B",
+  "answer_text": "4.5 m",
+  "explanation": {
+    "question_restate": "The question requires you to convert a length measurement from centimetres (cm) to metres (m).",
+    "principle": "Length is one of the seven fundamental (base) quantities in the International System of Units (SI). The SI system is the internationally accepted system of measurement used by scientists and engineers. The seven SI base quantities are: length measured in metre (m), mass measured in kilogram (kg), time measured in second (s), electric current measured in ampere (A), thermodynamic temperature measured in kelvin (K), amount of substance measured in mole (mol), and luminous intensity measured in candela (cd). Common instruments used for measuring length include the metre rule, tape measure, Vernier calipers, and micrometer screw gauge. Since the metre is a larger unit than the centimetre, converting from centimetres to metres involves dividing by 100 because 1 metre = 100 centimetres.",
+    "steps": [
+      "Identify the physical quantity involved. In this question, the quantity is length.",
+      "Recognize that the question requires conversion from centimetres (cm) to metres (m).",
+      "Recall the relationship between the two units: 1 m = 100 cm.",
+      "Since you are converting from a smaller unit (cm) to a larger unit (m), divide the numerical value by 100.",
+      "Perform the calculation: 450 ÷ 100 = 4.5.",
+      "Attach the appropriate unit, metre (m).",
+      "Therefore, 450 cm = 4.5 m."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 0.45 m: This answer would be obtained by dividing 450 by 1000 instead of 100. The conversion factor used is incorrect.",
+      "C. 45 m: This answer results from dividing by 10 instead of 100. The decimal point was shifted incorrectly.",
+      "D. 4500 m: This answer results from multiplying instead of dividing. When converting from a smaller unit to a larger unit, the numerical value should decrease, not increase."
+    ],
+    "exam_tip": "JAMB frequently tests unit conversions. Remember this rule: when converting from a smaller unit to a larger unit, divide by the conversion factor; when converting from a larger unit to a smaller unit, multiply by the conversion factor.",
+    "final_answer": "B. 4.5 m",
+    "simple_explanation": "A centimetre is smaller than a metre. Since 100 centimetres make 1 metre, you divide 450 by 100 to find how many metres are equivalent to 450 centimetres. Therefore, 450 cm is equal to 4.5 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Unit Conversion."
+  },
+  "tags": [
+    "unit_conversion",
+    "length_measurement",
+    "si_units",
+    "phy_01"
+  ],
+  "active": true
+},
+	{
+  "id": "phy_01_q032",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Scientific notation",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "Express 0.00072 in standard form.",
+  "options": {
+    "A": "7.2 × 10⁻⁵",
+    "B": "7.2 × 10⁻⁴",
+    "C": "72 × 10⁻⁵",
+    "D": "0.72 × 10⁻³"
+  },
+  "answer": "B",
+  "answer_text": "7.2 × 10⁻⁴",
+  "explanation": {
+    "question_restate": "The question requires you to express the decimal number 0.00072 in scientific notation, also known as standard form.",
+    "principle": "Scientific notation, also called standard form, is a method of writing very large or very small numbers in a compact and convenient way. Scientists use this method to simplify calculations and reduce errors when dealing with numbers that contain many zeros. A number written in standard form has the structure A × 10ⁿ, where A is a number greater than or equal to 1 but less than 10 (1 ≤ A < 10), and n is an integer called the exponent or power of 10. If the original number is greater than 10, the exponent is positive because the decimal point is moved to the left. If the original number is less than 1, the exponent is negative because the decimal point is moved to the right.",
+    "steps": [
+      "Observe that the given number, 0.00072, is less than 1.",
+      "To express it in standard form, move the decimal point to the right until the number becomes a value between 1 and 10.",
+      "Moving the decimal point four places to the right changes 0.00072 to 7.2.",
+      "Since the decimal point was moved to the right, the exponent of 10 will be negative.",
+      "The number of places moved gives the magnitude of the exponent. Therefore, the exponent is 4.",
+      "Write the number in the form A × 10ⁿ: 7.2 × 10⁻⁴.",
+      "Therefore, 0.00072 = 7.2 × 10⁻⁴."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 7.2 × 10⁻⁵: This would represent 0.000072, which is ten times smaller than the given number. The exponent is incorrect.",
+      "C. 72 × 10⁻⁵: Although mathematically equivalent to 7.2 × 10⁻⁴, it is not in standard form because the coefficient 72 is not between 1 and 10.",
+      "D. 0.72 × 10⁻³: This is not in standard form because the coefficient 0.72 is less than 1. In scientific notation, the coefficient must satisfy the condition 1 ≤ A < 10."
+    ],
+    "exam_tip": "For JAMB questions on scientific notation, first check whether the coefficient lies between 1 and 10. Then determine whether the exponent should be positive or negative based on the direction in which the decimal point was moved.",
+    "final_answer": "B. 7.2 × 10⁻⁴",
+    "simple_explanation": "To write a small number in standard form, move the decimal point to the right until only one non-zero digit remains before it. Count how many places you moved it. Since 0.00072 becomes 7.2 after moving the decimal point four places to the right, the answer is 7.2 × 10⁻⁴.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Scientific Notation."
+  },
+  "tags": [
+    "scientific_notation",
+    "standard_form",
+    "unit_conversion",
+    "phy_01"
+  ],
+  "active": true
+},
+	{
+  "id": "phy_01_q033",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Area measurement",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A triangular piece of cardboard has a base of 10 cm and a perpendicular height of 8 cm. What is its area?",
+  "options": {
+    "A": "18 cm²",
+    "B": "40 cm²",
+    "C": "80 cm²",
+    "D": "160 cm²"
+  },
+  "answer": "B",
+  "answer_text": "40 cm²",
+  "explanation": {
+    "question_restate": "The question requires you to determine the area of a triangle using its base and perpendicular height.",
+    "principle": "Area is the amount of surface enclosed by a two-dimensional shape. It tells us how much space is covered by the surface of an object and is measured in square units such as cm², m², and mm². Different plane shapes have different formulas for calculating their areas. For example, the area of a rectangle is Length × Breadth (A = lb), the area of a square is Side × Side (A = a²), the area of a circle is πr², where r is the radius, and the area of a triangle is ½ × Base × Height (A = ½bh), where the height must be perpendicular to the base. Since the shape in this question is a triangle, the appropriate formula is A = ½bh.",
+    "steps": [
+      "Identify the shape involved. The question states that the object is a triangular piece of cardboard, so the formula for the area of a triangle should be used.",
+      "Write the formula for the area of a triangle: A = ½bh, where b is the base and h is the perpendicular height.",
+      "Identify the given values: Base, b = 10 cm and Height, h = 8 cm.",
+      "Substitute the values into the formula: A = ½ × 10 × 8.",
+      "Multiply the base and height first: 10 × 8 = 80.",
+      "Take half of the result: ½ × 80 = 40.",
+      "Attach the appropriate unit. Since area is obtained by multiplying two lengths together, the unit becomes square centimetres (cm²).",
+      "Therefore, the area of the triangular cardboard is 40 cm²."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 18 cm²: This answer results from incorrect substitution or arithmetic and does not follow the formula A = ½bh correctly.",
+      "C. 80 cm²: This answer is obtained by multiplying the base and height without taking half of the product. The factor ½ in the triangle formula was ignored.",
+      "D. 160 cm²: This answer is twice the product obtained using the correct formula and does not represent the area of the triangle."
+    ],
+    "exam_tip": "JAMB frequently tests students on selecting the correct formula for different plane shapes. Always identify the shape first before substituting values into a formula. For triangles, ensure that the height used is perpendicular to the base.",
+    "final_answer": "B. 40 cm²",
+    "simple_explanation": "A triangle occupies half the area of a rectangle having the same base and height. If a rectangle with base 10 cm and height 8 cm has an area of 80 cm², then the triangle will have half of that area, which is 40 cm².",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Area Measurement."
+  },
+  "tags": [
+    "area_measurement",
+    "triangle_area",
+    "geometry",
+    "phy_01"
+  ],
+  "active": true
+},
+	{
+  "id": "phy_01_q034",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Distance and displacement",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A car travels 6 km north and then 8 km south. Determine its distance and displacement respectively.",
+  "options": {
+    "A": "14 km, 2 km south",
+    "B": "14 km, 14 km south",
+    "C": "2 km, 14 km south",
+    "D": "2 km, 2 km north"
+  },
+  "answer": "A",
+  "answer_text": "14 km, 2 km south",
+  "explanation": {
+    "question_restate": "The question requires you to distinguish between distance and displacement by calculating both for a car that moves in opposite directions along the same straight line.",
+    "principle": "Distance and displacement are two important concepts used to describe motion, but they do not mean the same thing. Distance is the total length of the actual path travelled by an object, irrespective of direction. It is a scalar quantity, meaning that it has magnitude only and no direction. Its SI unit is the metre (m). Displacement, on the other hand, is the straight-line change in position of an object from its starting point to its final position. It is a vector quantity because it has both magnitude and direction. The direction is an essential part of displacement. When motion occurs along the same straight line but in opposite directions, one direction is usually assigned a positive sign while the opposite direction is assigned a negative sign. This allows displacement to be determined mathematically.",
+    "steps": [
+      "Identify the two quantities that need to be calculated: distance and displacement.",
+      "To calculate distance, add all the lengths of the paths travelled, regardless of direction.",
+      "The car travels 6 km north and then 8 km south.",
+      "Distance = 6 km + 8 km = 14 km.",
+      "To calculate displacement, choose one direction as positive. Let north be positive and south be negative.",
+      "Represent the first movement as +6 km because it is towards the north.",
+      "Represent the second movement as -8 km because it is towards the south.",
+      "Displacement = (+6) + (-8) km.",
+      "Displacement = -2 km.",
+      "The negative sign indicates that the final position is 2 km towards the south of the starting point.",
+      "Therefore, the displacement is 2 km south."
+    ],
+    "why_other_options_are_wrong": [
+      "B. 14 km, 14 km south: The distance is correct, but the displacement is incorrect. Displacement depends on the net change in position, not the total distance travelled.",
+      "C. 2 km, 14 km south: The values for distance and displacement have been interchanged. Distance should be 14 km, while displacement should be 2 km south.",
+      "D. 2 km, 2 km north: The distance is incorrect because the total path travelled is 14 km. The direction of the displacement is also incorrect because the car ends up 2 km south of its starting point."
+    ],
+    "exam_tip": "JAMB frequently tests the distinction between distance and displacement. Remember that distance is always positive and has no direction, while displacement requires both magnitude and direction. If an object moves in opposite directions along the same line, displacement is obtained by finding the difference between the distances and attaching the direction of the larger movement.",
+    "final_answer": "A. 14 km, 2 km south",
+    "simple_explanation": "Imagine walking 6 steps forward and then 8 steps backward. Altogether, you have walked 14 steps, so your distance is 14. However, you would end up 2 steps behind where you started. That final change in position is your displacement, which is 2 km south in this question.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Distance and Displacement."
+  },
+  "tags": [
+    "distance",
+    "displacement",
+    "scalar_quantities",
+    "vector_quantities",
+    "phy_01"
+  ],
+  "active": true
+},
+	{
+  "id": "phy_01_q035",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measurement of time",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "Convert 2 hours 15 minutes to minutes.",
+  "options": {
+    "A": "125 min",
+    "B": "130 min",
+    "C": "135 min",
+    "D": "145 min"
+  },
+  "answer": "C",
+  "answer_text": "135 min",
+  "explanation": {
+    "question_restate": "The question requires you to convert a time interval expressed in hours and minutes entirely into minutes.",
+    "principle": "Time is one of the seven fundamental (base) quantities in the International System of Units (SI). The SI unit of time is the second (s). The seven SI base quantities and their units are: length measured in metre (m), mass measured in kilogram (kg), time measured in second (s), electric current measured in ampere (A), thermodynamic temperature measured in kelvin (K), amount of substance measured in mole (mol), and luminous intensity measured in candela (cd). Although the second is the SI unit of time, larger units such as minutes and hours are commonly used in everyday life. The relationships between these units are: 1 minute = 60 seconds and 1 hour = 60 minutes. Time is measured using instruments such as clocks, watches, stopwatches, and digital timers. When converting a larger time unit to a smaller one, multiplication is used.",
+    "steps": [
+      "Identify the units involved in the question. The time interval is given in hours and minutes.",
+      "Recognize that the final answer is required entirely in minutes.",
+      "Recall the relationship between hours and minutes: 1 hour = 60 minutes.",
+      "Convert 2 hours to minutes by multiplying by 60.",
+      "2 × 60 = 120 minutes.",
+      "The question also includes an additional 15 minutes.",
+      "Add the converted value to the existing minutes: 120 + 15.",
+      "120 + 15 = 135 minutes.",
+      "Therefore, the time interval expressed entirely in minutes is 135 minutes."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 125 min: This value results from an incorrect conversion of hours to minutes or an error in addition.",
+      "B. 130 min: This answer is obtained if the additional 15 minutes are incorrectly treated as 10 minutes.",
+      "D. 145 min: This answer results from adding an incorrect value to the converted 120 minutes."
+    ],
+    "exam_tip": "JAMB often tests unit conversions involving time. Remember these important relationships: 1 minute = 60 seconds, 1 hour = 60 minutes, and 1 day = 24 hours. Always convert the larger unit first before combining it with the smaller unit.",
+    "final_answer": "C. 135 min",
+    "simple_explanation": "Two hours contain 120 minutes because each hour has 60 minutes. After adding the extra 15 minutes, the total becomes 135 minutes.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Time."
+  },
+  "tags": [
+    "measurement_of_time",
+    "time_conversion",
+    "si_units",
+    "fundamental_quantities",
+    "phy_01"
+  ],
+  "active": true
+}
 ]
+	
 
