@@ -487,46 +487,52 @@
     "active": true
     },
   {
-    "id": "phy_01_q011",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Beam balance",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "The major advantage of using a beam balance for measuring mass is that it A. measures weight directly B. gives the same mass value irrespective of location C. can measure only liquids D. is more sensitive than a micrometer screw gauge",
-    "options": {
-      "A": "measures weight directly",
-      "B": "gives the same mass value irrespective of location",
-      "C": "can measure only liquids",
-      "D": "is more sensitive than a micrometer screw gauge"
-    },
-    "answer": "B",
-    "answer_text": "gives the same mass value irrespective of location",
-    "explanation": {
-      "question_restate": "Identify why a beam balance is preferred for mass measurement.",
-      "principle": "Mass is the amount of matter in a body and does not depend on gravity. A beam balance compares an unknown mass with standard masses.",
-      "steps": [
-        "Recall that beam balances compare masses.",
-        "Remember that both sides experience the same gravitational field.",
-        "Conclude that the balance gives the same mass value anywhere."
-      ],
-      "why_other_options_are_wrong": [
-        "A: Weight is measured using spring balances.",
-        "C: Beam balances are not restricted to liquids.",
-        "D: Micrometers measure length, not mass."
-      ],
-      "exam_tip": "JAMB often tests the difference between mass and weight.",
-      "final_answer": "B. gives the same mass value irrespective of location",
-      "simple_explanation": "A beam balance compares one mass against another, so gravity cancels out.",
-      "tutorial_reference": "Visit Tutorials → Physics → Beam Balance."
-    },
-    "tags": [
-      "beam_balance",
-      "mass"
-    ],
-    "active": true
+  "id": "phy_01_q011",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Beam balance",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "During a Physics practical lesson, students used a beam balance to determine the mass of a metal object. The teacher explained one important advantage of the beam balance in giving reliable results. Which statement best explains this advantage?",
+  "options": {
+  "A": "It measures the weight of the object directly.",
+  "B": "It gives the same mass value irrespective of location.",
+  "C": "It is specially designed for measuring liquids only.",
+  "D": "It is more sensitive than a micrometer screw gauge."
+  },
+  "answer": "B",
+  "answer_text": "It gives the same mass value irrespective of location.",
+  "explanation": {
+  "question_restate": "The question tests your understanding of why a beam balance is preferred for measuring mass in laboratory work.",
+  "principle": "Mass is the quantity of matter contained in a body and remains constant irrespective of location.\n\nA beam balance determines mass by comparing an unknown mass with standard masses placed on opposite pans. Since both sides of the balance experience the same gravitational field, the effect of gravity cancels out. Consequently, the measured mass remains the same whether the experiment is carried out at sea level, on a mountain, or at another location on Earth.",
+  "steps": [
+  "Step 1: Recall the distinction between mass and weight. Mass is constant, whereas weight depends on gravitational field strength.",
+  "Step 2: Recognize that a beam balance operates by comparing an unknown mass with known standard masses.",
+  "Step 3: Understand that both pans of the balance are affected equally by gravity at any given location.",
+  "Step 4: Since gravity acts equally on both sides, the comparison remains unchanged.",
+  "Step 5: Therefore, the beam balance gives the same mass value irrespective of location."
+  ],
+  "why_other_options_are_wrong": [
+  "A. A beam balance does not measure weight directly; it compares masses. Weight is commonly measured using a spring balance.",
+  "C. Beam balances can be used for solids and containers of liquids; they are not restricted to liquids only.",
+  "D. A micrometer screw gauge measures small lengths or diameters, not mass. Therefore, sensitivity comparisons between the two instruments are inappropriate in this context."
+  ],
+  "exam_tip": "JAMB frequently tests the distinction between mass and weight. Remember that mass is independent of gravity, while weight varies with gravitational field strength. Instruments that compare masses, such as beam balances, therefore give consistent mass values in different locations.",
+  "final_answer": "B. It gives the same mass value irrespective of location.",
+  "simple_explanation": "A beam balance compares one mass against another. Because gravity affects both sides equally, the measured mass remains the same wherever the measurement is taken.",
+  "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Beam Balance to learn the differences between mass and weight, the operation of beam balances and spring balances, and common JAMB practical applications involving measurement instruments. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations and practice questions."
+  },
+  "tags": [
+  "beam_balance",
+  "mass_measurement",
+  "mass_and_weight",
+  "laboratory_instruments",
+  "practical_physics",
+  "phy_01"
+  ],
+  "active": true
   },
   {
     "id": "phy_01_q012",
@@ -537,7 +543,7 @@
     "subtopic": "Measurement of time",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "A stopwatch records an event lasting 2 minutes 35 seconds. Express this time in seconds.",
+    "question": "A student uses a stopwatch to determine the period of a pendulum experiment. The total time recorded for the observation is 2 minutes 35 seconds. Express this time interval in seconds.",
     "options": {
       "A": "125 s",
       "B": "135 s",
@@ -547,64 +553,81 @@
     "answer": "D",
     "answer_text": "155 s",
     "explanation": {
-      "question_restate": "Convert a time interval from minutes and seconds into seconds.",
-      "principle": "One minute equals 60 seconds.",
+      "question_restate": "The question tests your ability to convert a measured time interval from minutes and seconds into seconds, a common requirement in Physics experiments.",
+      "principle": "Time is an SI base quantity measured in seconds (s). Although stopwatches may display readings in minutes and seconds, calculations in Physics are often performed using seconds alone.\n\nSince 1 minute contains 60 seconds, any time given in minutes and seconds must first be converted entirely into seconds before it is used in formulas or experimental analysis.",
       "steps": [
-        "Convert 2 minutes to seconds: 2 × 60 = 120 s.",
-        "Add the remaining 35 s.",
-        "120 + 35 = 155 s."
+        "Step 1: Identify the time interval recorded by the stopwatch: 2 minutes 35 seconds.",
+        "Step 2: Convert the minutes to seconds using 1 minute = 60 seconds.",
+        "Step 3: 2 minutes = 2 × 60 = 120 seconds.",
+        "Step 4: Add the remaining 35 seconds to the converted value.",
+        "Step 5: Total time = 120 s + 35 s = 155 s.",
+        "Step 6: Therefore, the recorded time interval expressed in seconds is 155 s."
       ],
       "why_other_options_are_wrong": [
-        "A, B and C result from incorrect conversion or addition."
+        "A. 125 s results from an incorrect conversion of the minutes into seconds.",
+        "B. 135 s arises from adding the values incorrectly after conversion.",
+        "C. 145 s is obtained when part of the recorded time is omitted or wrongly converted."
       ],
-      "exam_tip": "Always convert the larger unit first before combining values.",
+      "exam_tip": "JAMB frequently presents time measurements in mixed units. Always convert the entire quantity into SI units before carrying out calculations.",
       "final_answer": "D. 155 s",
-      "simple_explanation": "Two minutes already contain 120 seconds. Adding 35 gives 155 seconds.",
-      "tutorial_reference": "Visit Tutorials → Physics → Measurement of Time."
+      "simple_explanation": "Two minutes contain 120 seconds. Adding the extra 35 seconds gives 155 seconds altogether.",
+      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Time to study the use of stopwatches, SI units of time and time conversion techniques. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and explanations."
     },
     "tags": [
-      "time"
+      "measurement_of_time",
+      "stopwatch",
+      "si_units",
+      "practical_physics",
+      "phy_01"
     ],
     "active": true
   },
   {
-    "id": "phy_01_q013",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Derived quantities",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "Which of the following is a derived quantity?",
-    "options": {
-      "A": "Time",
-      "B": "Length",
-      "C": "Force",
-      "D": "Mass"
-    },
-    "answer": "C",
-    "answer_text": "Force",
-    "explanation": {
-      "question_restate": "Identify a quantity obtained from fundamental quantities.",
-      "principle": "Derived quantities are formed by mathematical combinations of base quantities.",
-      "steps": [
-        "Recall SI base quantities.",
-        "Note that force = mass × acceleration.",
-        "Since acceleration depends on length and time, force is derived."
-      ],
-      "why_other_options_are_wrong": [
-        "Time, length and mass are SI base quantities."
-      ],
-      "exam_tip": "Memorize the seven SI base quantities.",
-      "final_answer": "C. Force",
-      "simple_explanation": "Force is built from other quantities; it is not fundamental.",
-      "tutorial_reference": "Visit Tutorials → Physics → Derived Quantities."
-    },
-    "tags": [
-      "derived_quantities"
-    ],
-    "active": true
+  "id": "phy_01_q013",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Derived quantities",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "During a Physics lesson, students were asked to classify some physical quantities as either fundamental or derived quantities. Which of the following quantities would be correctly identified as a derived quantity?",
+  "options": {
+  "A": "Time",
+  "B": "Length",
+  "C": "Force",
+  "D": "Mass"
+  },
+  "answer": "C",
+  "answer_text": "Force",
+  "explanation": {
+  "question_restate": "The question tests your understanding of the difference between fundamental (base) quantities and derived quantities in Physics.",
+  "principle": "Fundamental quantities are independent physical quantities that cannot be expressed in terms of other quantities. Derived quantities, on the other hand, are obtained by combining fundamental quantities mathematically.\n\nThe seven SI base quantities include length, mass, time, electric current, thermodynamic temperature, amount of substance, and luminous intensity. Quantities such as force, pressure, density, velocity and energy are derived because they depend on one or more base quantities.",
+  "steps": [
+  "Step 1: Recall the SI base quantities commonly encountered in introductory Physics.",
+  "Step 2: Examine each option to determine whether it can be expressed in terms of other quantities.",
+  "Step 3: Time, length and mass are fundamental quantities because they are defined independently.",
+  "Step 4: Force is determined using Newton's Second Law, F = ma, where mass is a base quantity and acceleration itself depends on length and time.",
+  "Step 5: Since force is obtained from a combination of other quantities, it is a derived quantity."
+  ],
+  "why_other_options_are_wrong": [
+  "A. Time is an SI base quantity measured in seconds (s) and is not derived from other quantities.",
+  "B. Length is an SI base quantity measured in metres (m).",
+  "D. Mass is an SI base quantity measured in kilograms (kg)."
+  ],
+  "exam_tip": "JAMB frequently tests the distinction between fundamental and derived quantities. Memorize the seven SI base quantities and recognize common derived quantities such as force, density, pressure, velocity and energy.",
+  "final_answer": "C. Force",
+  "simple_explanation": "Force is not measured independently. It is calculated from mass and acceleration, making it a derived quantity.",
+  "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Fundamental and Derived Quantities to learn how SI base quantities combine to form derived quantities and their units. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations and practical applications."
+  },
+  "tags": [
+  "derived_quantities",
+  "fundamental_quantities",
+  "si_units",
+  "measurements",
+  "phy_01"
+  ],
+  "active": true
   },
   {
     "id": "phy_01_q014",
@@ -615,7 +638,7 @@
     "subtopic": "SI units",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "What is the SI unit of electric current?",
+    "question": "During a practical lesson, students connected an electric circuit containing a battery, switch and ammeter. The teacher asked them to state the SI unit used to measure electric current in the circuit. Which of the following is the correct SI unit of electric current?",
     "options": {
       "A": "Volt",
       "B": "Coulomb",
@@ -625,27 +648,32 @@
     "answer": "C",
     "answer_text": "Ampere",
     "explanation": {
-      "question_restate": "Identify the SI base unit associated with electric current.",
-      "principle": "Each SI base quantity has a unique SI unit.",
-	"steps": [
-  	  "Understand that electric current is one of the seven SI base quantities.",
-          "The seven SI base quantities and their units are: length (metre, m), mass (kilogram, kg), time (second, s), electric current (ampere, A), thermodynamic temperature (kelvin, K), amount of substance (mole, mol), and luminous intensity (candela, cd).",
-          "Locate the quantity mentioned in the question, which is electric current.",
-          "Identify its corresponding SI unit, which is the ampere (A).",
-          "Therefore, the correct answer is Ampere."
-         ],
-      "why_other_options_are_wrong": [
-        "Volt measures potential difference.",
-        "Coulomb measures electric charge.",
-        "Ohm measures resistance."
+      "question_restate": "This question tests your knowledge of the SI base unit assigned to the physical quantity known as electric current.",
+      "principle": "The International System of Units (SI) provides standard units for measuring physical quantities.\n\nElectric current is one of the seven SI base quantities. Its SI base unit is the ampere (A), named after the French physicist André-Marie Ampère. Standard units ensure that measurements made in different laboratories and countries can be communicated and interpreted consistently.",
+      "steps": [
+        "Step 1: Identify the physical quantity mentioned in the question. The quantity involved is electric current.",
+        "Step 2: Recall that electric current is among the seven SI base quantities used in Physics.",
+        "Step 3: Match the quantity with its SI base unit.",
+        "Step 4: Electric current is measured in amperes, symbolized by A.",
+        "Step 5: Therefore, the correct answer is Ampere."
       ],
-      "exam_tip": "Questions on SI units are common in JAMB.",
+      "why_other_options_are_wrong": [
+        "A. Volt is the SI derived unit of potential difference (voltage), not electric current.",
+        "B. Coulomb is the SI derived unit of electric charge. One coulomb represents the quantity of charge transported by a current of one ampere in one second.",
+        "D. Ohm is the SI derived unit of electrical resistance and is used to express opposition to the flow of electric current."
+      ],
+      "exam_tip": "JAMB frequently tests SI units and symbols. Learn the seven SI base quantities together with their units and symbols to avoid confusion during examinations.\n\nFor example: metre (m), kilogram (kg), second (s), ampere (A), kelvin (K), mole (mol) and candela (cd).",
       "final_answer": "C. Ampere",
-      "simple_explanation": "The ampere is the standard unit used worldwide for current.",
-      "tutorial_reference": "Visit Tutorials → Physics → SI Units."
+      "simple_explanation": "Electric current is the flow of electric charge through a conductor. The standard unit used worldwide to measure it is the ampere (A).",
+      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → SI Units to study SI base quantities, SI derived units and their applications in practical Physics. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations and practice questions."
     },
     "tags": [
-      "si_units"
+      "si_units",
+      "electric_current",
+      "si_base_quantities",
+      "measurements",
+      "practical_physics",
+      "phy_01"
     ],
     "active": true
   },
@@ -658,7 +686,7 @@
     "subtopic": "Dimensions of physical quantities",
     "difficulty": "hard",
     "question_type": "mcq",
-    "question": "What is the dimensional formula of force?",
+    "question": "During a Physics practical lesson, students were reminded that force is not a fundamental quantity but a derived quantity obtained from Newton's Second Law of Motion. Using dimensional analysis, what is the dimensional formula of force?",
     "options": {
       "A": "[MLT⁻²]",
       "B": "[ML²T⁻²]",
@@ -668,31 +696,35 @@
     "answer": "A",
     "answer_text": "[MLT⁻²]",
     "explanation": {
-      "question_restate": "Determine the dimensions of force.",
-      "principle": "Dimensional analysis involves expressing physical quantities in terms of the fundamental dimensions of mass (M), length (L), and time (T). To determine the dimensional formula of a derived quantity such as force, we first express that quantity using a known Physics equation. Force is defined as the product of mass and acceleration. Since acceleration itself is derived from velocity and time, we may need to break the process into smaller steps until every quantity is expressed entirely in terms of the fundamental dimensions.",
+      "question_restate": "The question requires you to determine the dimensional formula of force by expressing it in terms of the fundamental dimensions of mass, length and time.",
+      "principle": "Dimensional analysis is used to express derived physical quantities in terms of fundamental quantities such as mass (M), length (L) and time (T).\n\nAccording to Newton's Second Law of Motion, force is equal to the product of mass and acceleration. Therefore, to obtain the dimensions of force, the dimensions of acceleration must first be determined and then combined with those of mass.",
       "steps": [
-        "Start with the formula for force: Force = Mass × Acceleration.",
-  	"Mass is a fundamental quantity. Its dimensional formula is [M].",
-  	"Acceleration means the rate of change of velocity with time. Mathematically, Acceleration = Velocity ÷ Time.",
-  	"Velocity is distance travelled per unit time. Therefore, Velocity = Length ÷ Time.",
-  	"The dimensional formula for length is [L], while that of time is [T]. Therefore, the dimensions of velocity are [L]/[T] = [LT⁻¹].",
-  "Since Acceleration = Velocity ÷ Time, divide [LT⁻¹] by [T]. This gives [LT⁻¹]/[T] = [LT⁻²].",
-  	"Substitute the dimensions into the force equation: Force = Mass × Acceleration = [M] × [LT⁻²].",
-  	"Multiplying these dimensions gives [MLT⁻²].",
-  	"Therefore, the dimensional formula of force is [MLT⁻²]."
+        "Step 1: Recall Newton's Second Law of Motion: Force = Mass × Acceleration.",
+        "Step 2: Recognize that mass is a fundamental quantity with dimensional formula [M].",
+        "Step 3: Recall that Acceleration = Velocity ÷ Time.",
+        "Step 4: Velocity = Distance ÷ Time = Length ÷ Time.",
+        "Step 5: Therefore, the dimensions of velocity are [LT⁻¹].",
+        "Step 6: Divide the dimensions of velocity by time to obtain acceleration: [LT⁻¹] ÷ [T] = [LT⁻²].",
+        "Step 7: Substitute into the force equation: Force = [M] × [LT⁻²].",
+        "Step 8: Multiply the dimensions to obtain [MLT⁻²].",
+        "Step 9: Therefore, the dimensional formula of force is [MLT⁻²]."
       ],
       "why_other_options_are_wrong": [
-        "B corresponds to work/energy dimensions.",
-        "C corresponds to pressure dimensions.",
-        "D corresponds to velocity dimensions."
+        "B. [ML²T⁻²] represents the dimensions of work or energy, since Work = Force × Distance.",
+        "C. [ML⁻¹T⁻²] represents the dimensions of pressure because Pressure = Force ÷ Area.",
+        "D. [M⁰LT⁻¹] simplifies to [LT⁻¹], which represents velocity."
       ],
-      "exam_tip": "Start from familiar formulas when solving dimensional-analysis questions.",
+      "exam_tip": "JAMB often tests dimensional analysis by asking candidates to derive dimensions from familiar Physics equations rather than memorising formulas directly. Start with the relevant equation and reduce all quantities to M, L and T.",
       "final_answer": "A. [MLT⁻²]",
-      "simple_explanation": "Force depends on how much mass is accelerated and how quickly its velocity changes.",
-      "tutorial_reference": "Visit Tutorials → Physics → Dimensions of Physical Quantities."
+      "simple_explanation": "Force depends on both mass and acceleration. Since acceleration has dimensions [LT⁻²], multiplying it by mass [M] gives [MLT⁻²].",
+      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Dimensions of Physical Quantities to learn how derived quantities are expressed in terms of fundamental dimensions. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics questions and explanations."
     },
     "tags": [
-      "dimensions"
+      "dimensions",
+      "dimensional_analysis",
+      "derived_quantities",
+      "newtons_second_law",
+      "phy_01"
     ],
     "active": true
   },
