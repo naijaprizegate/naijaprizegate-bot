@@ -1,157 +1,157 @@
 [
-{
-  "id": "phy_01_q001",
-  "subject_code": "phy",
-  "subject_name": "Physics",
-  "topic_id": "phy_01",
-  "topic_title": "Measurements, Units and Dimensions",
-  "subtopic": "Length measurement",
-  "difficulty": "medium",
-  "question_type": "mcq",
-  "question": "During a Physics practical lesson, a student measures the length of a metal rod using a metre rule. The rod extends from the 12.4 cm mark to the 68.9 cm mark on the scale. What is the actual length of the rod?",
-  "options": {
-    "A": "56.5 cm",
-    "B": "81.3 cm",
-    "C": "57.5 cm",
-    "D": "55.5 cm"
-  },
-  "answer": "A",
-  "answer_text": "56.5 cm",
-  "explanation": {
-    "question_restate": "The question requires you to determine the true length of an object from its initial and final readings on a metre rule.",
+    {
+    "id": "phy_01_q001",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Length measurement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "During a Physics practical lesson, a student measures the length of a metal rod using a metre rule. The rod extends from the 12.4 cm mark to the 68.9 cm mark on the scale. What is the actual length of the rod?",
+    "options": {
+        "A": "56.5 cm",
+        "B": "81.3 cm",
+        "C": "57.5 cm",
+        "D": "55.5 cm"
+    },
+    "answer": "A",
+    "answer_text": "56.5 cm",
+    "explanation": {
+        "question_restate": "The question requires you to determine the true length of an object from its initial and final readings on a metre rule.",
 
-    "principle": "In practical Physics, the length of an object is obtained by finding the difference between the final reading and the initial reading on the measuring instrument. This method is particularly useful when the zero end of the metre rule is worn out or when measurements do not begin exactly at the zero mark. Accurate use of scale readings is an important experimental skill frequently assessed in JAMB Physics.",
+        "principle": "In practical Physics, the length of an object is obtained by finding the difference between the final reading and the initial reading on the measuring instrument. This method is particularly useful when the zero end of the metre rule is worn out or when measurements do not begin exactly at the zero mark. Accurate use of scale readings is an important experimental skill frequently assessed in JAMB Physics.",
 
+        "steps": [
+        "Step 1: Identify the initial reading on the metre rule, which is 12.4 cm.",
+        "Step 2: Identify the final reading on the metre rule, which is 68.9 cm.",
+        "Step 3: Apply the relationship: Length = Final reading − Initial reading.",
+        "Step 4: Substitute the values: Length = 68.9 cm − 12.4 cm.",
+        "Step 5: Perform the subtraction to obtain 56.5 cm.",
+        "Step 6: Therefore, the actual length of the metal rod is 56.5 cm."
+        ],
+
+        "why_other_options_are_wrong": [
+        "B. 81.3 cm is obtained by adding the two readings instead of finding their difference.",
+        "C. 57.5 cm results from an error in subtraction and does not represent the actual scale interval.",
+        "D. 55.5 cm is inconsistent with the readings provided on the metre rule."
+        ],
+
+        "exam_tip": "JAMB often presents metre rule readings that do not start from the zero mark. Always subtract the initial reading from the final reading to obtain the correct length.",
+
+        "final_answer": "A. 56.5 cm",
+
+        "simple_explanation": "The rod occupies only the space between the two marks on the ruler. Since it begins at 12.4 cm and ends at 68.9 cm, its length is the difference between these readings.",
+
+        "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Length Measurement to study the correct use of metre rules, vernier calipers and micrometer screw gauges. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and explanations."
+    },
+
+    "tags": [
+        "length_measurement",
+        "metre_rule",
+        "practical_physics",
+        "laboratory_measurement",
+        "phy_01"
+    ],
+
+    "active": true
+    },
+    {
+    "id": "phy_01_q002",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Area measurement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "A technician is required to cover the floor of a rectangular laboratory with protective material before an experiment begins. If the laboratory floor measures 8.5 m in length and 6.0 m in breadth, what area of material is needed to cover the entire floor?",
+    "options": {
+    "A": "14.5 m²",
+    "B": "28.0 m²",
+    "C": "51.0 m²",
+    "D": "57.0 m²"
+    },
+    "answer": "C",
+    "answer_text": "51.0 m²",
+    "explanation": {
+    "question_restate": "The question requires you to determine the surface area of a rectangular laboratory floor in order to estimate the amount of protective material needed to cover it.",
+    "principle": "Area is a derived physical quantity that describes the extent of a surface. In Physics and laboratory practice, determining area is important when estimating materials needed for covering surfaces, designing experimental setups, or analysing quantities distributed over a surface.\n\nFor a rectangle, the area is obtained by multiplying its length by its breadth. Since both dimensions are measured in metres (m), the resulting unit of area is square metres (m²).",
     "steps": [
-      "Step 1: Identify the initial reading on the metre rule, which is 12.4 cm.",
-      "Step 2: Identify the final reading on the metre rule, which is 68.9 cm.",
-      "Step 3: Apply the relationship: Length = Final reading − Initial reading.",
-      "Step 4: Substitute the values: Length = 68.9 cm − 12.4 cm.",
-      "Step 5: Perform the subtraction to obtain 56.5 cm.",
-      "Step 6: Therefore, the actual length of the metal rod is 56.5 cm."
+    "Step 1: Identify the quantity to be determined. The required quantity is the area of the floor.",
+    "Step 2: Recall the formula for the area of a rectangle: Area = Length × Breadth.",
+    "Step 3: Substitute the given values: Area = 8.5 m × 6.0 m.",
+    "Step 4: Perform the multiplication: 8.5 × 6.0 = 51.0.",
+    "Step 5: Attach the appropriate unit for area, giving 51.0 m²."
     ],
-
     "why_other_options_are_wrong": [
-      "B. 81.3 cm is obtained by adding the two readings instead of finding their difference.",
-      "C. 57.5 cm results from an error in subtraction and does not represent the actual scale interval.",
-      "D. 55.5 cm is inconsistent with the readings provided on the metre rule."
+    "A. 14.5 m² results from incorrect manipulation of the given dimensions and does not represent the product of length and breadth.",
+    "B. 28.0 m² is smaller than the actual area and arises from computational errors.",
+    "D. 57.0 m² is obtained from inaccurate multiplication and exceeds the correct value."
     ],
-
-    "exam_tip": "JAMB often presents metre rule readings that do not start from the zero mark. Always subtract the initial reading from the final reading to obtain the correct length.",
-
-    "final_answer": "A. 56.5 cm",
-
-    "simple_explanation": "The rod occupies only the space between the two marks on the ruler. Since it begins at 12.4 cm and ends at 68.9 cm, its length is the difference between these readings.",
-
-    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Length Measurement to study the correct use of metre rules, vernier calipers and micrometer screw gauges. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and explanations."
-  },
-
-  "tags": [
-    "length_measurement",
-    "metre_rule",
+    "exam_tip": "Whenever dimensions are given in metres, remember that multiplying two lengths produces an area measured in square metres (m²). JAMB frequently tests the distinction between length units and area units.",
+    "final_answer": "C. 51.0 m²",
+    "simple_explanation": "The floor is rectangular, so you multiply its length by its width. Therefore, 8.5 × 6.0 gives an area of 51.0 m².",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Area Measurement to learn how derived quantities such as area are determined and applied in practical situations. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics questions and explanations."
+    },
+    "tags": [
+    "area_measurement",
+    "derived_quantities",
+    "rectangular_surfaces",
     "practical_physics",
-    "laboratory_measurement",
     "phy_01"
-  ],
-
-  "active": true
-},
-{
-"id": "phy_01_q002",
-"subject_code": "phy",
-"subject_name": "Physics",
-"topic_id": "phy_01",
-"topic_title": "Measurements, Units and Dimensions",
-"subtopic": "Area measurement",
-"difficulty": "medium",
-"question_type": "mcq",
-"question": "A technician is required to cover the floor of a rectangular laboratory with protective material before an experiment begins. If the laboratory floor measures 8.5 m in length and 6.0 m in breadth, what area of material is needed to cover the entire floor?",
-"options": {
-"A": "14.5 m²",
-"B": "28.0 m²",
-"C": "51.0 m²",
-"D": "57.0 m²"
-},
-"answer": "C",
-"answer_text": "51.0 m²",
-"explanation": {
-"question_restate": "The question requires you to determine the surface area of a rectangular laboratory floor in order to estimate the amount of protective material needed to cover it.",
-"principle": "Area is a derived physical quantity that describes the extent of a surface. In Physics and laboratory practice, determining area is important when estimating materials needed for covering surfaces, designing experimental setups, or analysing quantities distributed over a surface.\n\nFor a rectangle, the area is obtained by multiplying its length by its breadth. Since both dimensions are measured in metres (m), the resulting unit of area is square metres (m²).",
-"steps": [
-"Step 1: Identify the quantity to be determined. The required quantity is the area of the floor.",
-"Step 2: Recall the formula for the area of a rectangle: Area = Length × Breadth.",
-"Step 3: Substitute the given values: Area = 8.5 m × 6.0 m.",
-"Step 4: Perform the multiplication: 8.5 × 6.0 = 51.0.",
-"Step 5: Attach the appropriate unit for area, giving 51.0 m²."
-],
-"why_other_options_are_wrong": [
-"A. 14.5 m² results from incorrect manipulation of the given dimensions and does not represent the product of length and breadth.",
-"B. 28.0 m² is smaller than the actual area and arises from computational errors.",
-"D. 57.0 m² is obtained from inaccurate multiplication and exceeds the correct value."
-],
-"exam_tip": "Whenever dimensions are given in metres, remember that multiplying two lengths produces an area measured in square metres (m²). JAMB frequently tests the distinction between length units and area units.",
-"final_answer": "C. 51.0 m²",
-"simple_explanation": "The floor is rectangular, so you multiply its length by its width. Therefore, 8.5 × 6.0 gives an area of 51.0 m².",
-"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Area Measurement to learn how derived quantities such as area are determined and applied in practical situations. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics questions and explanations."
-},
-"tags": [
-"area_measurement",
-"derived_quantities",
-"rectangular_surfaces",
-"practical_physics",
-"phy_01"
-],
-"active": true
-},
-{
-"id": "phy_01_q003",
-"subject_code": "phy",
-"subject_name": "Physics",
-"topic_id": "phy_01",
-"topic_title": "Measurements, Units and Dimensions",
-"subtopic": "Volume measurement",
-"difficulty": "medium",
-"question_type": "mcq",
-"question": "During a laboratory demonstration, a teacher displays a solid metal cube used for density experiments. If each edge of the cube measures 4 cm, what is the volume of the cube?",
-"options": {
-"A": "16 cm³",
-"B": "48 cm³",
-"C": "64 cm³",
-"D": "96 cm³"
-},
-"answer": "C",
-"answer_text": "64 cm³",
-"explanation": {
-"question_restate": "The question tests your ability to determine the volume of a regular solid body from its dimensions in a practical Physics context.",
-"principle": "Volume is the amount of space occupied by a body. In Physics, the volume of regular solids can be calculated from their measured dimensions using appropriate mathematical relationships. For a cube, all edges are equal, and its volume is given by the formula V = a³, where a represents the length of one edge.\n\nKnowledge of volume determination is important in experiments involving density, buoyancy and material properties because density depends on both mass and volume.",
-"steps": [
-"Step 1: Identify the shape of the object. The object is a cube.",
-"Step 2: Recall the formula for the volume of a cube: V = a³.",
-"Step 3: Note the edge length of the cube: a = 4 cm.",
-"Step 4: Substitute the value into the formula: V = 4³.",
-"Step 5: Calculate the result: 4 × 4 × 4 = 64.",
-"Step 6: Express the answer using the correct unit for volume, cm³."
-],
-"why_other_options_are_wrong": [
-"A. 16 cm³ results from squaring the edge length instead of cubing it.",
-"B. 48 cm³ is obtained from an incorrect application of the formula.",
-"D. 96 cm³ is an arithmetic error and does not represent the volume of a cube with 4 cm edges."
-],
-"exam_tip": "JAMB may present regular solids such as cubes, cuboids and cylinders within practical situations. Always identify the shape first, recall the appropriate formula, substitute carefully and include the correct unit.",
-"final_answer": "C. 64 cm³",
-"simple_explanation": "A cube has equal sides. To find its volume, multiply the edge length by itself three times. Since 4 × 4 × 4 = 64, the volume is 64 cm³.",
-"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Volume Measurement to learn how to determine the volumes of regular and irregular bodies and how these measurements are applied in density experiments."
-},
-"tags": [
-"volume_measurement",
-"regular_solids",
-"density_experiments",
-"practical_physics",
-"phy_01"
-],
-"active": true
-},
-  {
+    ],
+    "active": true
+    },
+    {
+    "id": "phy_01_q003",
+    "subject_code": "phy",
+    "subject_name": "Physics",
+    "topic_id": "phy_01",
+    "topic_title": "Measurements, Units and Dimensions",
+    "subtopic": "Volume measurement",
+    "difficulty": "medium",
+    "question_type": "mcq",
+    "question": "During a laboratory demonstration, a teacher displays a solid metal cube used for density experiments. If each edge of the cube measures 4 cm, what is the volume of the cube?",
+    "options": {
+    "A": "16 cm³",
+    "B": "48 cm³",
+    "C": "64 cm³",
+    "D": "96 cm³"
+    },
+    "answer": "C",
+    "answer_text": "64 cm³",
+    "explanation": {
+    "question_restate": "The question tests your ability to determine the volume of a regular solid body from its dimensions in a practical Physics context.",
+    "principle": "Volume is the amount of space occupied by a body. In Physics, the volume of regular solids can be calculated from their measured dimensions using appropriate mathematical relationships. For a cube, all edges are equal, and its volume is given by the formula V = a³, where a represents the length of one edge.\n\nKnowledge of volume determination is important in experiments involving density, buoyancy and material properties because density depends on both mass and volume.",
+    "steps": [
+    "Step 1: Identify the shape of the object. The object is a cube.",
+    "Step 2: Recall the formula for the volume of a cube: V = a³.",
+    "Step 3: Note the edge length of the cube: a = 4 cm.",
+    "Step 4: Substitute the value into the formula: V = 4³.",
+    "Step 5: Calculate the result: 4 × 4 × 4 = 64.",
+    "Step 6: Express the answer using the correct unit for volume, cm³."
+    ],
+    "why_other_options_are_wrong": [
+    "A. 16 cm³ results from squaring the edge length instead of cubing it.",
+    "B. 48 cm³ is obtained from an incorrect application of the formula.",
+    "D. 96 cm³ is an arithmetic error and does not represent the volume of a cube with 4 cm edges."
+    ],
+    "exam_tip": "JAMB may present regular solids such as cubes, cuboids and cylinders within practical situations. Always identify the shape first, recall the appropriate formula, substitute carefully and include the correct unit.",
+    "final_answer": "C. 64 cm³",
+    "simple_explanation": "A cube has equal sides. To find its volume, multiply the edge length by itself three times. Since 4 × 4 × 4 = 64, the volume is 64 cm³.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Volume Measurement to learn how to determine the volumes of regular and irregular bodies and how these measurements are applied in density experiments."
+    },
+    "tags": [
+    "volume_measurement",
+    "regular_solids",
+    "density_experiments",
+    "practical_physics",
+    "phy_01"
+    ],
+    "active": true
+    },
+    {
     "id": "phy_01_q004",
     "subject_code": "phy",
     "subject_name": "Physics",
@@ -160,43 +160,54 @@
     "subtopic": "Scientific notation",
     "difficulty": "hard",
     "question_type": "mcq",
-    "question": "Express 0.0000725 in standard form.",
+    "question": "During a Physics practical session, a student records the diameter of a fine wire as 0.0000725 m. Express this measurement in standard form.",
     "options": {
-      "A": "7.25 × 10⁻⁴",
-      "B": "7.25 × 10⁻⁵",
-      "C": "72.5 × 10⁻⁶",
-      "D": "0.725 × 10⁻⁵"
+        "A": "7.25 × 10⁻⁴ m",
+        "B": "7.25 × 10⁻⁵ m",
+        "C": "72.5 × 10⁻⁶ m",
+        "D": "0.725 × 10⁻⁵ m"
     },
     "answer": "B",
-    "answer_text": "7.25 × 10⁻⁵",
+    "answer_text": "7.25 × 10⁻⁵ m",
     "explanation": {
-      "question_restate": "You are required to write a very small number in scientific notation.",
-      "principle": "In scientific notation, a number is written as A × 10ⁿ, where 1 ≤ A < 10. For numbers less than 1, the power of ten is negative.",
-      "steps": [
-        "Locate the first non-zero digit in 0.0000725.",
-        "Move the decimal point until the number becomes 7.25.",
-        "Count the number of places moved: 5 places.",
-        "Because the original number is less than 1, use a negative exponent.",
-        "Therefore, 0.0000725 = 7.25 × 10⁻⁵."
-      ],
-      "why_other_options_are_wrong": [
-        "A. The exponent should not be −4 because the decimal moved five places.",
-        "C. The coefficient 72.5 is greater than 10 and violates standard form rules.",
-        "D. The coefficient 0.725 is less than 1 and is not acceptable in scientific notation."
-      ],
-      "exam_tip": "The coefficient in standard form must always lie between 1 and 10.",
-      "final_answer": "B. 7.25 × 10⁻⁵",
-      "simple_explanation": "Scientific notation makes very small or very large numbers easier to handle. Simply move the decimal point and count how many places it moves.",
-      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Scientific Notation."
+        "question_restate": "The question tests your ability to express a very small physical measurement in scientific notation, also known as standard form.",
+
+        "principle": "Scientific notation is widely used in Physics to represent extremely small or very large quantities conveniently.\n\nA number written in standard form has the structure A × 10ⁿ, where 1 ≤ A < 10 and n is an integer.\n\nWhen the original number is less than 1, the exponent is negative because the decimal point is moved to the right to obtain a coefficient between 1 and 10.",
+
+        "steps": [
+        "Step 1: Identify the first non-zero digit in the measurement 0.0000725 m.",
+        "Step 2: Move the decimal point to the right until the number becomes 7.25.",
+        "Step 3: Count the number of places the decimal point has moved. The decimal moves 5 places.",
+        "Step 4: Since the original measurement is less than 1, assign a negative exponent to 10.",
+        "Step 5: Therefore, 0.0000725 m = 7.25 × 10⁻⁵ m."
+        ],
+
+        "why_other_options_are_wrong": [
+        "A. The exponent −4 indicates that the decimal point moved only four places, whereas it actually moved five places.",
+        "C. Although 72.5 × 10⁻⁶ has the same numerical value, the coefficient 72.5 is greater than 10 and therefore does not satisfy the conditions for standard form.",
+        "D. The coefficient 0.725 is less than 1, which violates the requirement that the coefficient in standard form must lie between 1 and 10."
+        ],
+
+        "exam_tip": "In JAMB examinations, standard form questions often appear within experimental measurements involving quantities such as diameters, wavelengths, masses and distances. Always ensure that the coefficient lies between 1 and 10 before choosing your answer.",
+
+        "final_answer": "B. 7.25 × 10⁻⁵ m",
+
+        "simple_explanation": "To write a small measurement in standard form, move the decimal point until only one non-zero digit remains to its left. The number of places moved gives the magnitude of the exponent, while the fact that the original number is less than 1 makes the exponent negative.",
+
+        "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Scientific Notation to study the use of standard form in expressing very small and very large physical quantities encountered in Physics."
     },
+
     "tags": [
-      "scientific_notation",
-      "unit_conversion",
-      "phy_01"
+        "scientific_notation",
+        "standard_form",
+        "physical_measurements",
+        "practical_physics",
+        "phy_01"
     ],
+
     "active": true
-  },
-  {
+    },
+    {
     "id": "phy_01_q005",
     "subject_code": "phy",
     "subject_name": "Physics",
@@ -205,42 +216,46 @@
     "subtopic": "Fundamental quantities",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "Which of the following is an SI base quantity?",
+    "question": "During a Physics practical lesson, students were asked to identify a physical quantity that does not depend on any other quantity for its definition. Which of the following is an SI base quantity?",
     "options": {
-      "A": "Force",
-      "B": "Pressure",
-      "C": "Mass",
-      "D": "Density"
+    "A": "Force",
+    "B": "Pressure",
+    "C": "Mass",
+    "D": "Density"
     },
     "answer": "C",
     "answer_text": "Mass",
     "explanation": {
-      "question_restate": "You need to identify a quantity that is independent and not defined in terms of other physical quantities.",
-      "principle": "Fundamental quantities are the basic quantities upon which all other physical quantities are built. The seven SI base quantities include length, mass, time, electric current, thermodynamic temperature, amount of substance and luminous intensity.",
-      "steps": [
-        "Recall the seven SI base quantities.",
-        "Examine each option carefully.",
-        "Determine whether the quantity can be expressed in terms of other quantities.",
-        "Select the quantity that stands alone."
-      ],
-      "why_other_options_are_wrong": [
-        "A. Force is derived from mass × acceleration.",
-        "B. Pressure is force per unit area.",
-        "D. Density is mass per unit volume."
-      ],
-      "exam_tip": "JAMB loves testing the distinction between fundamental and derived quantities. Memorize the SI base quantities and their units.",
-      "final_answer": "C. Mass",
-      "simple_explanation": "Fundamental quantities are like building blocks. Mass is one of those blocks, while force and density are combinations of other quantities.",
-      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Fundamental Quantities."
+    "question_restate": "The question tests your understanding of the distinction between fundamental (base) quantities and derived quantities in the International System of Units (SI).",
+    "principle": "Physical quantities are classified as either fundamental or derived./n/nFundamental quantities are independent quantities that form the foundation of measurement in Physics. They cannot be expressed in terms of other physical quantities. The seven SI base quantities are length, mass, time, electric current, thermodynamic temperature, amount of substance and luminous intensity./n/nDerived quantities, on the other hand, are obtained by combining fundamental quantities mathematically. Recognising this distinction is essential because many Physics formulae and dimensional analyses are built upon SI base quantities and their units.",
+    "steps": [
+    "Step 1: Recall the seven SI base quantities used in Physics.",
+    "Step 2: Examine each option to determine whether it is independent or derived from other quantities.",
+    "Step 3: Note that mass is a fundamental quantity measured in kilograms (kg).",
+    "Step 4: Recognise that force, pressure and density can all be expressed in terms of combinations of fundamental quantities.",
+    "Step 5: Therefore, the only SI base quantity among the options is mass."
+    ],
+    "why_other_options_are_wrong": [
+    "A. Force is a derived quantity because Force = mass × acceleration. Its SI unit, the newton (N), is equivalent to kg m s⁻².",
+    "B. Pressure is a derived quantity defined as force per unit area. Its SI unit, the pascal (Pa), is equivalent to N m⁻².",
+    "D. Density is a derived quantity obtained by dividing mass by volume. Its SI unit is kg m⁻³."
+    ],
+    "exam_tip": "JAMB frequently tests candidates' ability to distinguish between fundamental and derived quantities. Memorising the seven SI base quantities and their corresponding units can help you answer such questions quickly and accurately.",
+    "final_answer": "C. Mass",
+    "simple_explanation": "Fundamental quantities are the basic building blocks used in Physics measurements. Mass is one of these building blocks, while force, pressure and density are formed from combinations of other quantities.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Fundamental Quantities to study SI base quantities, derived quantities and dimensional relationships. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations and practical examples."
     },
     "tags": [
-      "fundamental_quantities",
-      "si_units",
-      "phy_01"
+    "fundamental_quantities",
+    "si_base_quantities",
+    "derived_quantities",
+    "measurements",
+    "practical_physics",
+    "phy_01"
     ],
     "active": true
-  },
-  {
+    },
+    {
     "id": "phy_01_q006",
     "subject_code": "phy",
     "subject_name": "Physics",
@@ -249,41 +264,44 @@
     "subtopic": "Measurement of irregular bodies",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "The water level in a measuring cylinder rises from 45 cm³ to 58 cm³ when a stone is completely immersed in it. What is the volume of the stone?",
+    "question": "During a Physics practical lesson, a student partially fills a measuring cylinder with water to a level of 45 cm³. When a small stone is carefully lowered into the cylinder until it is completely submerged, the water level rises to 58 cm³. What is the volume of the stone?",
     "options": {
-      "A": "13 cm³",
-      "B": "45 cm³",
-      "C": "58 cm³",
-      "D": "103 cm³"
+        "A": "13 cm³",
+        "B": "45 cm³",
+        "C": "58 cm³",
+        "D": "103 cm³"
     },
     "answer": "A",
     "answer_text": "13 cm³",
     "explanation": {
-      "question_restate": "Find the volume of an irregular solid using water displacement.",
-      "principle": "The volume of an irregular object equals the volume of water it displaces.",
-      "steps": [
-        "Initial volume = 45 cm³.",
-        "Final volume = 58 cm³.",
-        "Volume displaced = 58 − 45 = 13 cm³.",
-        "Therefore, the stone's volume is 13 cm³."
-      ],
-      "why_other_options_are_wrong": [
-        "B is the initial water level.",
-        "C is the final water level.",
-        "D results from adding the readings."
-      ],
-      "exam_tip": "JAMB frequently tests displacement. Always subtract final and initial readings.",
-      "final_answer": "A. 13 cm³",
-      "simple_explanation": "The stone takes up the same space as the water it pushes aside.",
-      "tutorial_reference": "Visit Tutorials → Physics → Measurement of Irregular Bodies."
+        "question_restate": "The question tests your understanding of how the displacement method is used to determine the volume of an irregular solid object that cannot be measured directly using a ruler.\n\nA stone is immersed in water, causing the water level in a measuring cylinder to rise. The increase in water level represents the volume of the stone.",
+        "principle": "Irregular solids often lack regular geometric shapes, making direct calculation of their volumes difficult.\n\nAccording to the displacement principle, when an object is completely immersed in a liquid, it displaces a volume of liquid equal to its own volume. Therefore, the difference between the final and initial readings of the measuring cylinder gives the volume of the object.",
+        "steps": [
+        "Step 1: Identify the initial volume of water in the measuring cylinder.\n\nInitial volume = 45 cm³.",
+        "Step 2: Identify the final volume after the stone has been completely immersed.\n\nFinal volume = 58 cm³.",
+        "Step 3: Determine the volume of water displaced by subtracting the initial reading from the final reading.\n\nVolume displaced = 58 − 45 = 13 cm³.",
+        "Step 4: Since the volume of the displaced water equals the volume of the stone, the stone's volume is 13 cm³."
+        ],
+        "why_other_options_are_wrong": [
+        "B. 45 cm³ represents the initial water level before the stone was introduced and is not the stone's volume.",
+        "C. 58 cm³ is the final reading of the measuring cylinder and includes both the water and the displaced volume.",
+        "D. 103 cm³ is obtained by adding the two readings instead of finding their difference."
+        ],
+        "exam_tip": "JAMB frequently tests the displacement method using measuring cylinders and overflow cans. Always remember that:\n\nVolume of object = Final reading − Initial reading.",
+        "final_answer": "A. 13 cm³",
+        "simple_explanation": "When the stone enters the water, it pushes some water aside. The amount by which the water level rises is exactly equal to the volume of the stone.",
+        "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Irregular Bodies to study the displacement method, overflow cans and measuring cylinder applications. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and explanations."
     },
     "tags": [
-      "irregular_bodies",
-      "phy_01"
+        "measurement_of_irregular_bodies",
+        "water_displacement",
+        "measuring_cylinder",
+        "practical_physics",
+        "phy_01"
     ],
     "active": true
-  },
-  {
+    },
+    {
     "id": "phy_01_q007",
     "subject_code": "phy",
     "subject_name": "Physics",
@@ -292,39 +310,44 @@
     "subtopic": "Vernier calipers",
     "difficulty": "hard",
     "question_type": "mcq",
-    "question": "A Vernier caliper has a least count of 0.01 cm. The Vernier zero lies between 2.3 cm and 2.4 cm on the main scale, while the 6th Vernier division coincides with a main-scale mark. Determine the reading.",
+    "question": "During a Physics practical class, a student uses a Vernier caliper to measure the external diameter of a cylindrical metal rod. The Vernier caliper has a least count of 0.01 cm. The zero of the Vernier scale lies between 2.3 cm and 2.4 cm on the main scale, while the 6th Vernier division coincides exactly with a mark on the main scale. What is the diameter of the rod?",
     "options": {
-      "A": "2.30 cm",
-      "B": "2.36 cm",
-      "C": "2.46 cm",
-      "D": "2.60 cm"
+    "A": "2.30 cm",
+    "B": "2.36 cm",
+    "C": "2.46 cm",
+    "D": "2.60 cm"
     },
     "answer": "B",
     "answer_text": "2.36 cm",
     "explanation": {
-      "question_restate": "Determine a Vernier caliper reading from a textual description.",
-      "principle": "Reading = Main scale reading + (coinciding Vernier division × least count).",
-      "steps": [
-        "Main scale reading = 2.30 cm.",
-        "Vernier contribution = 6 × 0.01 = 0.06 cm.",
-        "Total reading = 2.30 + 0.06 = 2.36 cm."
-      ],
-      "why_other_options_are_wrong": [
-        "A ignores the Vernier contribution.",
-        "C uses an incorrect addition.",
-        "D overestimates the measurement."
-      ],
-      "exam_tip": "Read the main scale first before applying the Vernier correction.",
-      "final_answer": "B. 2.36 cm",
-      "simple_explanation": "The Vernier scale helps you read small fractions accurately.",
-      "tutorial_reference": "Visit Tutorials → Physics → Vernier Calipers."
+    "question_restate": "The question tests your ability to determine the reading of a Vernier caliper from information obtained during a laboratory measurement.",
+    "principle": "A Vernier caliper is used to measure lengths, diameters and depths more accurately than an ordinary ruler. The instrument consists of a main scale and a Vernier scale. The total reading is obtained by adding the main scale reading to the Vernier scale contribution.\n\nThe Vernier contribution is calculated by multiplying the least count of the instrument by the number of the Vernier division that coincides exactly with a main-scale mark.\n\nReading of Vernier caliper = Main scale reading + (Coinciding Vernier division × Least count).",
+    "steps": [
+    "Step 1: Identify the main scale reading. Since the Vernier zero lies between 2.3 cm and 2.4 cm, the main scale reading is 2.30 cm.",
+    "Step 2: Determine the Vernier scale contribution. The 6th Vernier division coincides with a main-scale mark.",
+    "Step 3: Calculate the Vernier contribution using the least count.\n\nVernier contribution = 6 × 0.01 cm = 0.06 cm.",
+    "Step 4: Add the Vernier contribution to the main scale reading.\n\nTotal reading = 2.30 cm + 0.06 cm = 2.36 cm.",
+    "Step 5: Therefore, the diameter of the metal rod is 2.36 cm."
+    ],
+    "why_other_options_are_wrong": [
+    "A. 2.30 cm represents only the main scale reading and ignores the Vernier scale contribution.",
+    "C. 2.46 cm results from an incorrect addition of the Vernier contribution.",
+    "D. 2.60 cm assumes that 0.30 cm was added instead of the correct Vernier contribution of 0.06 cm."
+    ],
+    "exam_tip": "In JAMB questions involving Vernier calipers, always read the main scale first before calculating the Vernier contribution. Avoid the common mistake of using the wrong Vernier division or forgetting to apply the least count.",
+    "final_answer": "B. 2.36 cm",
+    "simple_explanation": "The main scale gives 2.30 cm, while the Vernier scale adds an extra 0.06 cm. Together, they give a final reading of 2.36 cm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Vernier Calipers to learn how to determine least count, interpret Vernier coincidences and solve JAMB-standard practical measurement questions. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more practical Physics applications."
     },
     "tags": [
-      "vernier",
-      "phy_01"
+    "vernier_calipers",
+    "least_count",
+    "measurement_of_diameter",
+    "practical_physics",
+    "phy_01"
     ],
     "active": true
-  },
+    },
   {
     "id": "phy_01_q008",
     "subject_code": "phy",
@@ -367,7 +390,7 @@
     ],
     "active": true
   },
-  {
+    {
     "id": "phy_01_q009",
     "subject_code": "phy",
     "subject_name": "Physics",
@@ -376,39 +399,45 @@
     "subtopic": "Unit conversion",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "Convert 3.5 km to metres.",
+    "question": "During a road safety awareness campaign, students were informed that the distance between two neighbouring towns is 3.5 km. Express this distance in metres.",
     "options": {
-      "A": "35 m",
-      "B": "350 m",
-      "C": "3,500 m",
-      "D": "35,000 m"
+    "A": "35 m",
+    "B": "350 m",
+    "C": "3,500 m",
+    "D": "35,000 m"
     },
     "answer": "C",
     "answer_text": "3,500 m",
     "explanation": {
-      "question_restate": "Convert kilometres to metres.",
-      "principle": "1 km = 1,000 m.",
-      "steps": [
-        "Write the conversion factor.",
-        "Multiply 3.5 by 1,000.",
-        "Answer = 3,500 m."
-      ],
-      "why_other_options_are_wrong": [
-        "A and B underestimate the value.",
-        "D uses an incorrect factor."
-      ],
-      "exam_tip": "Moving from larger units to smaller units requires multiplication.",
-      "final_answer": "C. 3,500 m",
-      "simple_explanation": "Each kilometre contains 1,000 metres.",
-      "tutorial_reference": "Visit Tutorials → Physics → Unit Conversion."
+    "question_restate": "The question tests your ability to convert a distance given in kilometres to metres using the appropriate metric conversion factor.",
+    "principle": "Physical quantities are often expressed using different units within the same measurement system. In the SI system, length may be measured in kilometres (km), metres (m), centimetres (cm) or millimetres (mm).\n\nSince the prefix 'kilo-' means one thousand, 1 kilometre is equal to 1,000 metres. Therefore, converting from kilometres to metres requires multiplication by 1,000. Mastery of unit conversion is essential in Physics because calculations must be carried out using consistent units.",
+    "steps": [
+    "Step 1: Identify the given quantity. The distance is 3.5 km.",
+    "Step 2: Recall the conversion relationship: 1 km = 1,000 m.",
+    "Step 3: Multiply the value in kilometres by 1,000.\n\n3.5 × 1,000 = 3,500.",
+    "Step 4: Attach the appropriate unit.\n\nTherefore, 3.5 km = 3,500 m."
+    ],
+    "why_other_options_are_wrong": [
+    "A. 35 m results from using an incorrect conversion factor and greatly underestimates the actual distance.",
+    "B. 350 m is also obtained from an incorrect factor and is too small for a distance of several kilometres.",
+    "D. 35,000 m overestimates the value by multiplying by 10,000 instead of 1,000."
+    ],
+    "exam_tip": "JAMB frequently tests metric conversions. When converting from a larger unit to a smaller unit, multiply by the appropriate factor. When converting from a smaller unit to a larger unit, divide.",
+    "final_answer": "C. 3,500 m",
+    "simple_explanation": "One kilometre contains 1,000 metres. Therefore, 3.5 kilometres contains 3.5 × 1,000 = 3,500 metres.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Unit Conversion to study metric prefixes, SI units and common JAMB conversion techniques. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics questions and explanations."
     },
     "tags": [
-      "unit_conversion",
-      "phy_01"
+    "unit_conversion",
+    "metric_system",
+    "si_units",
+    "length_measurement",
+    "practical_physics",
+    "phy_01"
     ],
     "active": true
-  },
-  {
+    },
+    {
     "id": "phy_01_q010",
     "subject_code": "phy",
     "subject_name": "Physics",
@@ -417,40 +446,46 @@
     "subtopic": "Distance and displacement",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "A student walks 3 km east and then 4 km west. What are the student's distance and displacement respectively?",
+    "question": "During a school cross-country exercise, a student jogs 3 km east from the starting point to a checkpoint and then continues 4 km west to another checkpoint. What are the student's distance and displacement respectively?",
     "options": {
-      "A": "7 km, 1 km west",
-      "B": "7 km, 7 km west",
-      "C": "1 km, 7 km west",
-      "D": "1 km, 1 km east"
+    "A": "7 km, 1 km west",
+    "B": "7 km, 7 km west",
+    "C": "1 km, 7 km west",
+    "D": "1 km, 1 km east"
     },
     "answer": "A",
     "answer_text": "7 km, 1 km west",
     "explanation": {
-      "question_restate": "Differentiate between distance and displacement.",
-      "principle": "Distance is total path covered; displacement is change in position with direction.",
-      "steps": [
-        "Distance = 3 + 4 = 7 km.",
-        "Take east as positive.",
-        "Displacement = 3 − 4 = −1 km.",
-        "Negative means west."
-      ],
-      "why_other_options_are_wrong": [
-        "B confuses displacement with distance.",
-        "C gives the wrong distance.",
-        "D gives the wrong direction."
-      ],
-      "exam_tip": "Displacement always requires direction.",
-      "final_answer": "A. 7 km, 1 km west",
-      "simple_explanation": "The student travelled 7 km but ended 1 km west of the starting point.",
-      "tutorial_reference": "Visit Tutorials → Physics → Distance and Displacement."
+    "question_restate": "This question tests your understanding of the difference between distance and displacement using motion along a straight line.",
+    "principle": "Distance is the total length of the actual path travelled by an object, irrespective of direction.\n\nDisplacement is the shortest straight-line distance from the initial position to the final position, together with its direction. While distance is a scalar quantity, displacement is a vector quantity because direction must be specified.\n\nIn problems involving motion along a straight line, choosing a positive direction helps in determining displacement correctly.",
+    "steps": [
+    "Step 1: Identify the total path travelled by the student. The student moves 3 km east and then 4 km west.",
+    "Step 2: Calculate the distance travelled.\n\nDistance = 3 km + 4 km = 7 km.",
+    "Step 3: Choose a reference direction. Let east be positive and west be negative.",
+    "Step 4: Determine the net change in position.\n\nDisplacement = (+3 km) + (−4 km) = −1 km.",
+    "Step 5: Interpret the sign of the answer. The negative sign indicates that the final position is 1 km west of the starting point.",
+    "Step 6: Therefore, the student's distance is 7 km, while the displacement is 1 km west."
+    ],
+    "why_other_options_are_wrong": [
+    "B. The distance is correctly stated as 7 km, but the displacement cannot be 7 km west because displacement depends on the net change in position, not the total distance travelled.",
+    "C. The displacement direction is correct, but the distance is incorrect because it ignores part of the journey.",
+    "D. Both the distance and the displacement direction are incorrect. The student finally ends up west of the starting point, not east."
+    ],
+    "exam_tip": "JAMB frequently tests the distinction between distance and displacement. Remember that distance involves the entire path covered, whereas displacement considers only the overall change in position together with direction.",
+    "final_answer": "A. 7 km, 1 km west",
+    "simple_explanation": "The student covered a total path of 7 km. However, because the student walked 1 km farther west than east, the final position is 1 km west of where the journey started.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Distance and Displacement to learn more about scalar and vector quantities, practical motion examples, and JAMB-standard applications. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more Physics practice questions and detailed explanations."
     },
     "tags": [
-      "distance_displacement",
-      "phy_01"
+    "distance_displacement",
+    "scalar_quantities",
+    "vector_quantities",
+    "motion_in_a_straight_line",
+    "practical_physics",
+    "phy_01"
     ],
     "active": true
-  },
+    },
   {
     "id": "phy_01_q011",
     "subject_code": "phy",
@@ -5816,7 +5851,4 @@
 }
 
 ]
-
-
-	
 
