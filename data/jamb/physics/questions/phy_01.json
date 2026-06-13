@@ -1,138 +1,156 @@
 [
-  {
-    "id": "phy_01_q001",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Length measurement",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "A student measures the length of a metal rod using a metre rule graduated in millimetres. The reading at one end of the rod is 12.4 cm while the reading at the other end is 68.9 cm. What is the length of the rod?",
-    "options": {
-      "A": "56.5 cm",
-      "B": "81.3 cm",
-      "C": "57.5 cm",
-      "D": "55.5 cm"
-    },
-    "answer": "A",
-    "answer_text": "56.5 cm",
-    "explanation": {
-      "question_restate": "You are required to determine the actual length of an object from two scale readings taken on a metre rule.",
-      "principle": "When measuring length with a metre rule, the true length of an object is obtained by subtracting the initial reading from the final reading. This method helps eliminate errors that may arise if the zero mark of the rule is worn out.",
-      "steps": [
-        "Identify the initial reading: 12.4 cm.",
-        "Identify the final reading: 68.9 cm.",
-        "Subtract the initial reading from the final reading.",
-        "68.9 cm − 12.4 cm = 56.5 cm? Recalculate carefully.",
-        "68.9 − 12.4 = 56.5 cm."
-      ],
-      "why_other_options_are_wrong": [
-        "B. 81.3 cm is obtained by adding the readings instead of subtracting them.",
-        "C. 57.5 cm results from careless subtraction.",
-        "D. 55.5 cm does not agree with the actual scale difference."
-      ],
-      "exam_tip": "JAMB frequently tests the use of initial and final readings, especially when the zero end of the metre rule is not used.",
-      "final_answer": "A. 56.3 cm",
-      "simple_explanation": "Think of the metre rule as a number line. The rod started at 12.4 cm and ended at 68.9 cm, so its length is the difference between those two positions.",
-      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Length Measurement."
-    },
-    "tags": [
-      "length_measurement",
-      "metre_rule",
-      "phy_01"
-    ],
-    "active": true
+{
+  "id": "phy_01_q001",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Length measurement",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "During a Physics practical lesson, a student measures the length of a metal rod using a metre rule. The rod extends from the 12.4 cm mark to the 68.9 cm mark on the scale. What is the actual length of the rod?",
+  "options": {
+    "A": "56.5 cm",
+    "B": "81.3 cm",
+    "C": "57.5 cm",
+    "D": "55.5 cm"
   },
-  {
-    "id": "phy_01_q002",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Area measurement",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "A rectangular classroom floor measures 8.5 m by 6.0 m. What is the area of the floor?",
-    "options": {
-      "A": "14.5 m²",
-      "B": "28.0 m²",
-      "C": "51.0 m²",
-      "D": "57.0 m²"
-    },
-    "answer": "C",
-    "answer_text": "51.0 m²",
-    "explanation": {
-      "question_restate": "You are asked to calculate the area enclosed by a rectangular surface.",
-      "principle": "The area of a rectangle is obtained by multiplying its length by its breadth. The SI unit of area is the square metre (m²).",
-      "steps": [
-        "Write the formula: Area = Length × Breadth.",
-        "Substitute the values: 8.5 m × 6.0 m.",
-        "Perform the multiplication: 8.5 × 6.0 = 51.0.",
-        "Attach the correct unit, m²."
-      ],
-      "why_other_options_are_wrong": [
-        "A. 14.5 m² is obtained through incorrect arithmetic.",
-        "B. 28.0 m² underestimates the actual surface area.",
-        "D. 57.0 m² results from multiplication errors."
-      ],
-      "exam_tip": "Always include the correct unit. Area is measured in square units such as cm² or m².",
-      "final_answer": "C. 51.0 m²",
-      "simple_explanation": "Area tells us how much surface is covered. Since the floor is rectangular, multiply its length by its width.",
-      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Area Measurement."
-    },
-    "tags": [
-      "area_measurement",
-      "derived_quantities",
-      "phy_01"
+  "answer": "A",
+  "answer_text": "56.5 cm",
+  "explanation": {
+    "question_restate": "The question requires you to determine the true length of an object from its initial and final readings on a metre rule.",
+
+    "principle": "In practical Physics, the length of an object is obtained by finding the difference between the final reading and the initial reading on the measuring instrument. This method is particularly useful when the zero end of the metre rule is worn out or when measurements do not begin exactly at the zero mark. Accurate use of scale readings is an important experimental skill frequently assessed in JAMB Physics.",
+
+    "steps": [
+      "Step 1: Identify the initial reading on the metre rule, which is 12.4 cm.",
+      "Step 2: Identify the final reading on the metre rule, which is 68.9 cm.",
+      "Step 3: Apply the relationship: Length = Final reading − Initial reading.",
+      "Step 4: Substitute the values: Length = 68.9 cm − 12.4 cm.",
+      "Step 5: Perform the subtraction to obtain 56.5 cm.",
+      "Step 6: Therefore, the actual length of the metal rod is 56.5 cm."
     ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q003",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Volume measurement",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "A cube has an edge length of 4 cm. What is its volume?",
-    "options": {
-      "A": "16 cm³",
-      "B": "48 cm³",
-      "C": "64 cm³",
-      "D": "96 cm³"
-    },
-    "answer": "C",
-    "answer_text": "64 cm³",
-    "explanation": {
-      "question_restate": "The question tests your ability to determine the volume of a regular solid body.",
-      "principle": "The volume of a cube is given by V = a³, where a is the length of one edge of the cube.",
-      "steps": [
-        "Identify the edge length: a = 4 cm.",
-        "Use the formula V = a³.",
-        "Substitute the value: V = 4³.",
-        "Calculate: 4 × 4 × 4 = 64.",
-        "Write the answer with the correct unit, cm³."
-      ],
-      "why_other_options_are_wrong": [
-        "A. 16 cm³ is obtained by squaring instead of cubing the edge.",
-        "B. 48 cm³ does not follow the cube formula.",
-        "D. 96 cm³ is an arithmetic error."
-      ],
-      "exam_tip": "For regular solids, memorize the common formulas. JAMB often tests cubes, cuboids and cylinders.",
-      "final_answer": "C. 64 cm³",
-      "simple_explanation": "Volume measures the amount of space occupied by an object. Since all sides of a cube are equal, multiply the edge length by itself three times.",
-      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Volume Measurement."
-    },
-    "tags": [
-      "volume_measurement",
-      "regular_bodies",
-      "phy_01"
+
+    "why_other_options_are_wrong": [
+      "B. 81.3 cm is obtained by adding the two readings instead of finding their difference.",
+      "C. 57.5 cm results from an error in subtraction and does not represent the actual scale interval.",
+      "D. 55.5 cm is inconsistent with the readings provided on the metre rule."
     ],
-    "active": true
+
+    "exam_tip": "JAMB often presents metre rule readings that do not start from the zero mark. Always subtract the initial reading from the final reading to obtain the correct length.",
+
+    "final_answer": "A. 56.5 cm",
+
+    "simple_explanation": "The rod occupies only the space between the two marks on the ruler. Since it begins at 12.4 cm and ends at 68.9 cm, its length is the difference between these readings.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Length Measurement to study the correct use of metre rules, vernier calipers and micrometer screw gauges. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and explanations."
   },
+
+  "tags": [
+    "length_measurement",
+    "metre_rule",
+    "practical_physics",
+    "laboratory_measurement",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+"id": "phy_01_q002",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Area measurement",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A technician is required to cover the floor of a rectangular laboratory with protective material before an experiment begins. If the laboratory floor measures 8.5 m in length and 6.0 m in breadth, what area of material is needed to cover the entire floor?",
+"options": {
+"A": "14.5 m²",
+"B": "28.0 m²",
+"C": "51.0 m²",
+"D": "57.0 m²"
+},
+"answer": "C",
+"answer_text": "51.0 m²",
+"explanation": {
+"question_restate": "The question requires you to determine the surface area of a rectangular laboratory floor in order to estimate the amount of protective material needed to cover it.",
+"principle": "Area is a derived physical quantity that describes the extent of a surface. In Physics and laboratory practice, determining area is important when estimating materials needed for covering surfaces, designing experimental setups, or analysing quantities distributed over a surface.\n\nFor a rectangle, the area is obtained by multiplying its length by its breadth. Since both dimensions are measured in metres (m), the resulting unit of area is square metres (m²).",
+"steps": [
+"Step 1: Identify the quantity to be determined. The required quantity is the area of the floor.",
+"Step 2: Recall the formula for the area of a rectangle: Area = Length × Breadth.",
+"Step 3: Substitute the given values: Area = 8.5 m × 6.0 m.",
+"Step 4: Perform the multiplication: 8.5 × 6.0 = 51.0.",
+"Step 5: Attach the appropriate unit for area, giving 51.0 m²."
+],
+"why_other_options_are_wrong": [
+"A. 14.5 m² results from incorrect manipulation of the given dimensions and does not represent the product of length and breadth.",
+"B. 28.0 m² is smaller than the actual area and arises from computational errors.",
+"D. 57.0 m² is obtained from inaccurate multiplication and exceeds the correct value."
+],
+"exam_tip": "Whenever dimensions are given in metres, remember that multiplying two lengths produces an area measured in square metres (m²). JAMB frequently tests the distinction between length units and area units.",
+"final_answer": "C. 51.0 m²",
+"simple_explanation": "The floor is rectangular, so you multiply its length by its width. Therefore, 8.5 × 6.0 gives an area of 51.0 m².",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Area Measurement to learn how derived quantities such as area are determined and applied in practical situations. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics questions and explanations."
+},
+"tags": [
+"area_measurement",
+"derived_quantities",
+"rectangular_surfaces",
+"practical_physics",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q003",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Volume measurement",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "During a laboratory demonstration, a teacher displays a solid metal cube used for density experiments. If each edge of the cube measures 4 cm, what is the volume of the cube?",
+"options": {
+"A": "16 cm³",
+"B": "48 cm³",
+"C": "64 cm³",
+"D": "96 cm³"
+},
+"answer": "C",
+"answer_text": "64 cm³",
+"explanation": {
+"question_restate": "The question tests your ability to determine the volume of a regular solid body from its dimensions in a practical Physics context.",
+"principle": "Volume is the amount of space occupied by a body. In Physics, the volume of regular solids can be calculated from their measured dimensions using appropriate mathematical relationships. For a cube, all edges are equal, and its volume is given by the formula V = a³, where a represents the length of one edge.\n\nKnowledge of volume determination is important in experiments involving density, buoyancy and material properties because density depends on both mass and volume.",
+"steps": [
+"Step 1: Identify the shape of the object. The object is a cube.",
+"Step 2: Recall the formula for the volume of a cube: V = a³.",
+"Step 3: Note the edge length of the cube: a = 4 cm.",
+"Step 4: Substitute the value into the formula: V = 4³.",
+"Step 5: Calculate the result: 4 × 4 × 4 = 64.",
+"Step 6: Express the answer using the correct unit for volume, cm³."
+],
+"why_other_options_are_wrong": [
+"A. 16 cm³ results from squaring the edge length instead of cubing it.",
+"B. 48 cm³ is obtained from an incorrect application of the formula.",
+"D. 96 cm³ is an arithmetic error and does not represent the volume of a cube with 4 cm edges."
+],
+"exam_tip": "JAMB may present regular solids such as cubes, cuboids and cylinders within practical situations. Always identify the shape first, recall the appropriate formula, substitute carefully and include the correct unit.",
+"final_answer": "C. 64 cm³",
+"simple_explanation": "A cube has equal sides. To find its volume, multiply the edge length by itself three times. Since 4 × 4 × 4 = 64, the volume is 64 cm³.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Volume Measurement to learn how to determine the volumes of regular and irregular bodies and how these measurements are applied in density experiments."
+},
+"tags": [
+"volume_measurement",
+"regular_solids",
+"density_experiments",
+"practical_physics",
+"phy_01"
+],
+"active": true
+},
   {
     "id": "phy_01_q004",
     "subject_code": "phy",
