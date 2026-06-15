@@ -1013,21 +1013,46 @@ def make_topic_access_keyboard_for_subject(
     return InlineKeyboardMarkup(rows)
 
 
-def make_after_answer_keyboard():
+def make_after_answer_keyboard(question_order: int):
     return InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("➡️ Next", callback_data="wp_next")],
-            [InlineKeyboardButton("📖 Answer Details", callback_data="wp_details")],
-            [InlineKeyboardButton("🏠 End Practice", callback_data="wp_end_session")],
+            [
+                InlineKeyboardButton(
+                    "➡️ Next",
+                    callback_data=f"wp_next::{question_order}",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "📖 Answer Details",
+                    callback_data=f"wp_details",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "🏠 End Practice",
+                    callback_data="wp_end_session",
+                )
+            ],
         ]
     )
 
 
-def make_after_details_keyboard():
+def make_after_details_keyboard(question_order: int):
     return InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("➡️ Next", callback_data="wp_next")],
-            [InlineKeyboardButton("🏠 End Practice", callback_data="wp_end_session")],
+            [
+                InlineKeyboardButton(
+                    "➡️ Next",
+                    callback_data=f"wp_next::{question_order}",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "🏠 End Practice",
+                    callback_data="wp_end_session",
+                )
+            ],
         ]
     )
 
@@ -2110,112 +2135,249 @@ async def waec_serve_first_handler(update: Update, context: ContextTypes.DEFAULT
     await send_current_waec_question(update, context)
 
 
+
 # =============================
 # Answer handling
 # =============================
+from telegram.error import BadRequest
+
+
 async def waec_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
+
     if not query:
         return
 
-    await query.answer()
+    # Safely acknowledge callback immediately
+    try:
+        await query.answer()
 
+    except BadRequest as e:
+
+        error_text = str(e).lower()
+
+        if (
+            "query is too old" in error_text
+            or "response timeout expired" in error_text
+            or "query id is invalid" in error_text
+        ):
+
+            logger.warning(
+                f"Expired WAEC callback ignored. "
+                f"user_id={query.from_user.id}, "
+                f"data={query.data}"
+            )
+
+            return
+
+        raise
+
+    # Prevent duplicate answers
     if context.user_data.get("wp_answered_current", False):
-        return await query.answer("You already answered this question\\.", show_alert=False)
+        return
+
+    # Lock immediately to prevent rapid double taps
+    context.user_data["wp_answered_current"] = True
 
     try:
-        _, selected_option = query.data.split("::", 1)
-    except Exception:
-        return await query.message.reply_text(
-            "⚠️ Invalid answer selection\\.",
-            parse_mode="MarkdownV2",
+
+        try:
+            _, selected_option = query.data.split("::", 1)
+
+        except Exception:
+
+            context.user_data["wp_answered_current"] = False
+
+            return await query.message.reply_text(
+                "⚠️ Invalid answer selection\\.",
+                parse_mode="MarkdownV2",
+            )
+
+        question = context.user_data.get("wp_current_question")
+
+        if not question:
+
+            context.user_data["wp_answered_current"] = False
+
+            return await query.message.reply_text(
+                "⚠️ No active question found\\.",
+                parse_mode="MarkdownV2",
+            )
+
+        user_id = update.effective_user.id
+
+        session_id_raw = context.user_data.get("wp_session_id")
+
+        if not session_id_raw:
+
+            context.user_data["wp_answered_current"] = False
+
+            return await query.message.reply_text(
+                "⚠️ Session expired\\. Please start again from WAEC / NECO Practice\\.",
+                parse_mode="MarkdownV2",
+            )
+
+        session_id = int(session_id_raw)
+
+        session_mode = context.user_data.get("wp_session_mode")
+
+        subject_code = context.user_data.get("wp_subject_code")
+
+        topic_id = str(
+            question.get("topic_id")
+            or context.user_data.get("wp_topic_id")
+            or "__mock_subject__"
         )
 
-    question = context.user_data.get("wp_current_question")
-    if not question:
-        return await query.message.reply_text(
-            "⚠️ No active question found\\.",
-            parse_mode="MarkdownV2",
+        question_id = str(question["id"])
+
+        correct_option = str(
+            question["answer"]
+        ).strip().upper()
+
+        selected_option = str(
+            selected_option
+        ).strip().upper()
+
+        is_correct = (
+            selected_option == correct_option
         )
 
-    user_id = update.effective_user.id
-    session_id_raw = context.user_data.get("wp_session_id")
-    if not session_id_raw:
-        return await query.message.reply_text(
-            "⚠️ Session expired\\. Please start again from WAEC / NECO Practice\\.",
-            parse_mode="MarkdownV2",
-        )
-
-    session_id = int(session_id_raw)
-    session_mode = context.user_data.get("wp_session_mode")
-    subject_code = context.user_data.get("wp_subject_code")
-    topic_id = str(question.get("topic_id") or context.user_data.get("wp_topic_id") or "__mock_subject__")
-    question_id = str(question["id"])
-    correct_option = str(question["answer"]).strip().upper()
-    selected_option = str(selected_option).strip().upper()
-    is_correct = selected_option == correct_option
-    question_order = int(context.user_data.get("wp_current_index", 0)) + 1
-
-    await record_waec_attempt(
-        session_id=session_id,
-        user_id=user_id,
-        subject_code=subject_code,
-        topic_id=topic_id,
-        question_id=question_id,
-        selected_option=selected_option,
-        correct_option=correct_option,
-        is_correct=is_correct,
-    )
-
-    await increment_waec_session_result(session_id, is_correct)
-
-    if session_mode == "mock_by_subject":
-        async with get_async_session() as session:
-            async with session.begin():
-                await session.execute(
-                    text("""
-                        update waec_session_questions
-                        set
-                            selected_option = :selected_option,
-                            is_correct = :is_correct,
-                            updated_at = now()
-                        where session_id = :session_id
-                          and question_order = :question_order
-                    """),
-                    {
-                        "session_id": int(session_id),
-                        "question_order": int(question_order),
-                        "selected_option": selected_option,
-                        "is_correct": bool(is_correct),
-                    },
+        question_order = (
+            int(
+                context.user_data.get(
+                    "wp_current_index",
+                    0,
                 )
-
-    context.user_data["wp_answered_current"] = True
-    context.user_data["wp_last_selected_option"] = selected_option
-    context.user_data["wp_last_correct_option"] = correct_option
-
-    # Store the last answered question for Answer Details
-    context.user_data["wp_last_answered_question"] = question
-
-    if is_correct:
-        context.user_data["wp_correct_count"] = int(context.user_data.get("wp_correct_count", 0)) + 1
-        result_text = "✅ *Correct\\!*"
-    else:
-        context.user_data["wp_wrong_count"] = int(context.user_data.get("wp_wrong_count", 0)) + 1
-
-        safe_correct_option = md_escape(str(correct_option))
-        safe_correct_option_text = md_escape(str(question["options"].get(correct_option, "---")))
-
-        result_text = (
-            f"❌ *Wrong\\!*\n\n"
-            f"Correct answer: *{safe_correct_option}* \\- {safe_correct_option_text}"
+            )
+            + 1
         )
 
-    await query.message.reply_text(
-        result_text,
-        parse_mode="MarkdownV2",
-        reply_markup=make_after_answer_keyboard(),
-    )
+        await record_waec_attempt(
+            session_id=session_id,
+            user_id=user_id,
+            subject_code=subject_code,
+            topic_id=topic_id,
+            question_id=question_id,
+            selected_option=selected_option,
+            correct_option=correct_option,
+            is_correct=is_correct,
+        )
+
+        await increment_waec_session_result(
+            session_id,
+            is_correct,
+        )
+
+        if session_mode == "mock_by_subject":
+
+            async with get_async_session() as session:
+
+                async with session.begin():
+
+                    await session.execute(
+                        text("""
+                            UPDATE waec_session_questions
+                            SET
+                                selected_option = :selected_option,
+                                is_correct = :is_correct,
+                                updated_at = NOW()
+                            WHERE session_id = :session_id
+                              AND question_order = :question_order
+                        """),
+                        {
+                            "session_id": session_id,
+                            "question_order": question_order,
+                            "selected_option": selected_option,
+                            "is_correct": is_correct,
+                        },
+                    )
+
+        context.user_data[
+            "wp_last_selected_option"
+        ] = selected_option
+
+        context.user_data[
+            "wp_last_correct_option"
+        ] = correct_option
+
+        context.user_data[
+            "wp_last_answered_question"
+        ] = question
+
+        if is_correct:
+
+            context.user_data[
+                "wp_correct_count"
+            ] = (
+                int(
+                    context.user_data.get(
+                        "wp_correct_count",
+                        0,
+                    )
+                )
+                + 1
+            )
+
+            result_text = (
+                "✅ *Correct\\!*"
+            )
+
+        else:
+
+            context.user_data[
+                "wp_wrong_count"
+            ] = (
+                int(
+                    context.user_data.get(
+                        "wp_wrong_count",
+                        0,
+                    )
+                )
+                + 1
+            )
+
+            safe_correct_option = md_escape(
+                correct_option
+            )
+
+            safe_correct_option_text = md_escape(
+                str(
+                    question["options"].get(
+                        correct_option,
+                        "---",
+                    )
+                )
+            )
+
+            result_text = (
+                f"❌ *Wrong\\!*\n\n"
+                f"Correct answer: "
+                f"*{safe_correct_option}* "
+                f"\\- {safe_correct_option_text}"
+            )
+
+        await query.message.reply_text(
+            result_text,
+            parse_mode="MarkdownV2",
+            reply_markup=make_after_answer_keyboard(
+                question_order
+            ),
+        )
+
+    except Exception:
+
+        # Release lock if processing failed
+        context.user_data[
+            "wp_answered_current"
+        ] = False
+
+        logger.exception(
+            f"Error processing WAEC answer. "
+            f"user_id={user_id}"
+        )
+
+        raise
 
 
 # --------------------------------------------
@@ -2381,11 +2543,24 @@ async def waec_answer_details_handler(
             f"{md_escape(tutorial_reference)}"
         )
 
+    question_order = (
+        int(
+            context.user_data.get(
+                "wp_current_index",
+                0,
+            )
+        )
+        + 1
+    )
+
     await query.message.reply_text(
         "\n".join(lines),
         parse_mode="MarkdownV2",
-        reply_markup=make_after_details_keyboard(),
+        reply_markup=make_after_details_keyboard(
+            question_order
+        ),
     )
+
 
 
 # ------------------------------
@@ -2393,13 +2568,65 @@ async def waec_answer_details_handler(
 # -----------------------------
 async def waec_next_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
-    if query:
+
+    if not query:
+        return
+
+    try:
         await query.answer()
 
-    current_index = int(context.user_data.get("wp_current_index", 0))
-    context.user_data["wp_current_index"] = current_index + 1
+    except Exception:
+        return
 
-    await send_current_waec_question(update, context)
+    # ------------------------------------
+    # Extract question order from callback
+    # ------------------------------------
+    try:
+        _, callback_order_str = query.data.split("::", 1)
+
+        callback_order = int(callback_order_str)
+
+    except Exception:
+
+        return await query.message.reply_text(
+            "⚠️ Invalid navigation request\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    # ------------------------------------
+    # Determine expected question order
+    # ------------------------------------
+    expected_order = (
+        int(
+            context.user_data.get(
+                "wp_current_index",
+                0,
+            )
+        )
+        + 1
+    )
+
+    # ------------------------------------
+    # Reject stale Next buttons
+    # ------------------------------------
+    if callback_order != expected_order:
+
+        return await query.answer(
+            "⚠️ This Next button has expired.",
+            show_alert=True,
+        )
+
+    # ------------------------------------
+    # Advance normally
+    # ------------------------------------
+    context.user_data[
+        "wp_current_index"
+    ] = expected_order
+
+    await send_current_waec_question(
+        update,
+        context,
+    )
 
 
 # ------------------------------
@@ -2842,5 +3069,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(waec_end_session_handler, pattern=r"^wp_end_session$"))
     application.add_handler(CallbackQueryHandler(waec_answer_handler, pattern=r"^wp_ans::"))
     application.add_handler(CallbackQueryHandler(waec_answer_details_handler, pattern=r"^wp_details$"))
-    application.add_handler(CallbackQueryHandler(waec_next_handler, pattern=r"^wp_next$"))
+    application.add_handler(CallbackQueryHandler(waec_next_handler, pattern=r"^wp_next::"))
 
