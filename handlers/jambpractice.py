@@ -983,21 +983,46 @@ def make_topic_access_keyboard_for_subject(
     return InlineKeyboardMarkup(rows)
 
 
-def make_after_answer_keyboard():
+def make_after_answer_keyboard(question_order: int):
     return InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("➡️ Next", callback_data="jp_next")],
-            [InlineKeyboardButton("📖 Answer Details", callback_data="jp_details")],
-            [InlineKeyboardButton("🏠 End Practice", callback_data="jp_end_session")],
+            [
+                InlineKeyboardButton(
+                    "➡️ Next",
+                    callback_data=f"jp_next::{question_order}",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "📖 Answer Details",
+                    callback_data="jp_details",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "🏠 End Practice",
+                    callback_data="jp_end_session",
+                )
+            ],
         ]
     )
 
 
-def make_after_details_keyboard():
+def make_after_details_keyboard(question_order: int):
     return InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("➡️ Next", callback_data="jp_next")],
-            [InlineKeyboardButton("🏠 End Practice", callback_data="jp_end_session")],
+            [
+                InlineKeyboardButton(
+                    "➡️ Next",
+                    callback_data=f"jp_next::{question_order}",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "🏠 End Practice",
+                    callback_data="jp_end_session",
+                )
+            ],
         ]
     )
 
@@ -2231,7 +2256,9 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         await query.message.reply_text(
             result_text,
             parse_mode="MarkdownV2",
-            reply_markup=make_after_answer_keyboard(),
+            reply_markup=make_after_answer_keyboard(
+                question_order=question_order,
+            ),
         )
 
     except Exception:
@@ -2412,23 +2439,81 @@ async def jamb_answer_details_handler(
     await query.message.reply_text(
         "\n".join(lines),
         parse_mode="MarkdownV2",
-        reply_markup=make_after_details_keyboard(),
+        reply_markup=make_after_details_keyboard(
+            question_order=int(
+                context.user_data.get(
+                    "jp_current_index",
+                    0,
+                )
+            ) + 1,
+        ),
     )
 
 
 
-# ------------------------------
-# JAMB Next Handler
-# -----------------------------
-async def jamb_next_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def jamb_next_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
     query = update.callback_query
-    if query:
-        await query.answer()
 
-    current_index = int(context.user_data.get("jp_current_index", 0))
-    context.user_data["jp_current_index"] = current_index + 1
+    if not query:
+        return
 
-    await send_current_jamb_question(update, context)
+    await query.answer()
+
+    try:
+        _, callback_question_order = query.data.split("::", 1)
+
+        callback_question_order = int(
+            callback_question_order
+        )
+
+    except Exception:
+
+        return await query.answer(
+            "⚠️ Invalid Next button.",
+            show_alert=True,
+        )
+
+    expected_question_order = (
+        int(
+            context.user_data.get(
+                "jp_current_index",
+                0,
+            )
+        )
+        + 1
+    )
+
+    if callback_question_order != expected_question_order:
+
+        return await query.answer(
+            "⚠️ This Next button has expired. Please continue with the current question.",
+            show_alert=True,
+        )
+
+    try:
+        await query.edit_message_reply_markup(
+            reply_markup=None,
+        )
+    except Exception:
+        pass
+
+    context.user_data["jp_current_index"] = (
+        int(
+            context.user_data.get(
+                "jp_current_index",
+                0,
+            )
+        )
+        + 1
+    )
+
+    await send_current_jamb_question(
+        update,
+        context,
+    )
 
 
 # ------------------------------
@@ -2862,5 +2947,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_end_session_handler, pattern=r"^jp_end_session$"))
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
-    application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next$"))
+    application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next::"))
 
