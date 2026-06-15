@@ -1912,6 +1912,40 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
             else "Great job\\. You can return to JAMB Practice for another topic\\."
         )
 
+        wrong_questions = context.user_data.get(
+            "jp_wrong_questions",
+            [],
+        )
+
+        completion_rows = []
+
+        if wrong_questions:
+            completion_rows.append(
+                [
+                    InlineKeyboardButton(
+                        "📖 Review Wrong Answers",
+                        callback_data="jp_review_wrong",
+                    )
+                ]
+            )
+
+        completion_rows.extend(
+            [
+                [
+                    InlineKeyboardButton(
+                        "🎓 JAMB Practice",
+                        callback_data="jambpractice",
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🏠 Back to Main Menu",
+                        callback_data="menu:main",
+                    )
+                ],
+            ]
+        )
+
         return await update.effective_message.reply_text(
             f"{title}\n\n"
             f"📚 Total Questions: *{safe_total}*\n"
@@ -1920,11 +1954,9 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
             f"{outro}",
             parse_mode="MarkdownV2",
             reply_markup=InlineKeyboardMarkup(
-                [
-                    [InlineKeyboardButton("🎓 JAMB Practice", callback_data="jambpractice")],
-                    [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
-                ]
+                completion_rows
             ),
+        
         )
 
     question = batch[current_index]
@@ -2077,6 +2109,7 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
         parse_mode="MarkdownV2",
         reply_markup=InlineKeyboardMarkup(rows),
     )
+
 
 
 
@@ -2970,5 +3003,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next::"))
-
 
