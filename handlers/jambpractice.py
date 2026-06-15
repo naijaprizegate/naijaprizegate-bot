@@ -377,6 +377,7 @@ async def clear_jamb_session_state(context: ContextTypes.DEFAULT_TYPE):
         "jp_last_selected_option",
         "jp_last_correct_option",
         "jp_last_answered_question",
+        "jp_wrong_questions",
     ]
 
     for key in keys_to_clear:
@@ -1524,6 +1525,7 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["jp_session_target"] = len(selected_questions)
     context.user_data["jp_correct_count"] = 0
     context.user_data["jp_wrong_count"] = 0
+    context.user_data["jp_wrong_questions"] = []
     context.user_data["jp_current_question"] = None
     context.user_data["jp_answered_current"] = False
     context.user_data["jp_served_question_ids"] = []
@@ -2235,6 +2237,24 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
                 int(context.user_data.get("jp_wrong_count", 0)) + 1
             )
 
+            # Store wrong question for review later
+            wrong_questions = context.user_data.get(
+                "jp_wrong_questions",
+                [],
+            )
+
+            wrong_questions.append(
+                {
+                    "question": question,
+                    "selected_option": selected_option,
+                    "correct_option": correct_option,
+                }
+            )
+
+            context.user_data[
+                "jp_wrong_questions"
+            ] = wrong_questions
+
             safe_correct_option = md_escape(correct_option)
 
             safe_correct_option_text = md_escape(
@@ -2675,6 +2695,7 @@ async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["jp_session_target"] = len(selected_questions)
     context.user_data["jp_correct_count"] = 0
     context.user_data["jp_wrong_count"] = 0
+    context.user_data["jp_wrong_questions"] = []
     context.user_data["jp_current_question"] = None
     context.user_data["jp_answered_current"] = False
     context.user_data["jp_served_question_ids"] = []
@@ -2804,6 +2825,7 @@ async def jamb_mock_start_paid_handler(update: Update, context: ContextTypes.DEF
     context.user_data["jp_session_target"] = len(batch)
     context.user_data["jp_correct_count"] = 0
     context.user_data["jp_wrong_count"] = 0
+    context.user_data["jp_wrong_questions"] = []
     context.user_data["jp_current_question"] = None
     context.user_data["jp_answered_current"] = False
     context.user_data["jp_served_question_ids"] = []
@@ -2948,4 +2970,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next::"))
+
 
