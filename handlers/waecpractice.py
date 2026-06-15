@@ -407,6 +407,7 @@ async def clear_waec_session_state(context: ContextTypes.DEFAULT_TYPE):
         "wp_last_selected_option",
         "wp_last_correct_option",
         "wp_last_answered_question",
+        "wp_wrong_questions",
     ]
 
     for key in keys_to_clear:
@@ -1554,6 +1555,7 @@ async def waec_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["wp_session_target"] = len(selected_questions)
     context.user_data["wp_correct_count"] = 0
     context.user_data["wp_wrong_count"] = 0
+    context.user_data["wp_wrong_questions"] = []
     context.user_data["wp_current_question"] = None
     context.user_data["wp_answered_current"] = False
     context.user_data["wp_served_question_ids"] = []
@@ -2337,6 +2339,24 @@ async def waec_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
                 + 1
             )
 
+            # Store wrong question for review later
+            wrong_questions = context.user_data.get(
+                "wp_wrong_questions",
+                [],
+            )
+
+            wrong_questions.append(
+                {
+                    "question": question,
+                    "selected_option": selected_option,
+                    "correct_option": correct_option,
+                }
+            )
+
+            context.user_data[
+                "wp_wrong_questions"
+            ] = wrong_questions
+
             safe_correct_option = md_escape(
                 correct_option
             )
@@ -2788,6 +2808,7 @@ async def waec_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["wp_session_target"] = len(selected_questions)
     context.user_data["wp_correct_count"] = 0
     context.user_data["wp_wrong_count"] = 0
+    context.user_data["wp_wrong_questions"] = []
     context.user_data["wp_current_question"] = None
     context.user_data["wp_answered_current"] = False
     context.user_data["wp_served_question_ids"] = []
@@ -2916,6 +2937,7 @@ async def waec_mock_start_paid_handler(update: Update, context: ContextTypes.DEF
     context.user_data["wp_session_target"] = len(batch)
     context.user_data["wp_correct_count"] = 0
     context.user_data["wp_wrong_count"] = 0
+    context.user_data["wp_wrong_questions"] = []
     context.user_data["wp_current_question"] = None
     context.user_data["wp_answered_current"] = False
     context.user_data["wp_served_question_ids"] = []
@@ -3070,4 +3092,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(waec_answer_handler, pattern=r"^wp_ans::"))
     application.add_handler(CallbackQueryHandler(waec_answer_details_handler, pattern=r"^wp_details$"))
     application.add_handler(CallbackQueryHandler(waec_next_handler, pattern=r"^wp_next::"))
+
 
