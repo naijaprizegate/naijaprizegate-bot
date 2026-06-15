@@ -2066,110 +2066,184 @@ async def jamb_serve_first_handler(update: Update, context: ContextTypes.DEFAULT
 # =============================
 # Answer handling
 # =============================
+from telegram.error import BadRequest
+
+
 async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if not query:
         return
 
-    await query.answer()
+    # Acknowledge callback immediately and safely
+    try:
+        await query.answer()
+    except BadRequest as e:
+        error_text = str(e).lower()
 
+        if (
+            "query is too old" in error_text
+            or "response timeout expired" in error_text
+            or "query id is invalid" in error_text
+        ):
+            logger.warning(
+                f"Expired callback ignored. "
+                f"user_id={query.from_user.id}, "
+                f"data={query.data}"
+            )
+            return
+
+        raise
+
+    # Prevent duplicate answers
     if context.user_data.get("jp_answered_current", False):
-        return await query.answer("You already answered this question\\.", show_alert=False)
+        return
+
+    # Lock immediately to prevent rapid double taps
+    context.user_data["jp_answered_current"] = True
 
     try:
         _, selected_option = query.data.split("::", 1)
     except Exception:
+        context.user_data["jp_answered_current"] = False
+
         return await query.message.reply_text(
             "⚠️ Invalid answer selection\\.",
             parse_mode="MarkdownV2",
         )
 
     question = context.user_data.get("jp_current_question")
+
     if not question:
+        context.user_data["jp_answered_current"] = False
+
         return await query.message.reply_text(
             "⚠️ No active question found\\.",
             parse_mode="MarkdownV2",
         )
 
     user_id = update.effective_user.id
+
     session_id_raw = context.user_data.get("jp_session_id")
+
     if not session_id_raw:
+        context.user_data["jp_answered_current"] = False
+
         return await query.message.reply_text(
             "⚠️ Session expired\\. Please start again from JAMB Practice\\.",
             parse_mode="MarkdownV2",
         )
 
-    session_id = int(session_id_raw)
-    session_mode = context.user_data.get("jp_session_mode")
-    subject_code = context.user_data.get("jp_subject_code")
-    topic_id = str(question.get("topic_id") or context.user_data.get("jp_topic_id") or "__mock_subject__")
-    question_id = str(question["id"])
-    correct_option = str(question["answer"]).strip().upper()
-    selected_option = str(selected_option).strip().upper()
-    is_correct = selected_option == correct_option
-    question_order = int(context.user_data.get("jp_current_index", 0)) + 1
+    try:
+        session_id = int(session_id_raw)
 
-    await record_jamb_attempt(
-        session_id=session_id,
-        user_id=user_id,
-        subject_code=subject_code,
-        topic_id=topic_id,
-        question_id=question_id,
-        selected_option=selected_option,
-        correct_option=correct_option,
-        is_correct=is_correct,
-    )
+        session_mode = context.user_data.get("jp_session_mode")
+        subject_code = context.user_data.get("jp_subject_code")
 
-    await increment_jamb_session_result(session_id, is_correct)
-
-    if session_mode == "mock_utme":
-        async with get_async_session() as session:
-            async with session.begin():
-                await session.execute(
-                    text("""
-                        update jamb_session_questions
-                        set
-                            selected_option = :selected_option,
-                            is_correct = :is_correct,
-                            updated_at = now()
-                        where session_id = :session_id
-                          and question_order = :question_order
-                    """),
-                    {
-                        "session_id": int(session_id),
-                        "question_order": int(question_order),
-                        "selected_option": selected_option,
-                        "is_correct": bool(is_correct),
-                    },
-                )
-
-    context.user_data["jp_answered_current"] = True
-    context.user_data["jp_last_selected_option"] = selected_option
-    context.user_data["jp_last_correct_option"] = correct_option
-
-    # Store the last answered question for Answer Details
-    context.user_data["jp_last_answered_question"] = question
-
-    if is_correct:
-        context.user_data["jp_correct_count"] = int(context.user_data.get("jp_correct_count", 0)) + 1
-        result_text = "✅ *Correct\\!*"
-    else:
-        context.user_data["jp_wrong_count"] = int(context.user_data.get("jp_wrong_count", 0)) + 1
-
-        safe_correct_option = md_escape(str(correct_option))
-        safe_correct_option_text = md_escape(str(question["options"].get(correct_option, "---")))
-
-        result_text = (
-            f"❌ *Wrong\\!*\n\n"
-            f"Correct answer: *{safe_correct_option}* \\- {safe_correct_option_text}"
+        topic_id = str(
+            question.get("topic_id")
+            or context.user_data.get("jp_topic_id")
+            or "__mock_subject__"
         )
 
-    await query.message.reply_text(
-        result_text,
-        parse_mode="MarkdownV2",
-        reply_markup=make_after_answer_keyboard(),
-    )
+        question_id = str(question["id"])
 
+        correct_option = str(question["answer"]).strip().upper()
+
+        selected_option = str(selected_option).strip().upper()
+
+        is_correct = selected_option == correct_option
+
+        question_order = (
+            int(context.user_data.get("jp_current_index", 0)) + 1
+        )
+
+        await record_jamb_attempt(
+            session_id=session_id,
+            user_id=user_id,
+            subject_code=subject_code,
+            topic_id=topic_id,
+            question_id=question_id,
+            selected_option=selected_option,
+            correct_option=correct_option,
+            is_correct=is_correct,
+        )
+
+        await increment_jamb_session_result(
+            session_id,
+            is_correct,
+        )
+
+        if session_mode == "mock_utme":
+            async with get_async_session() as session:
+                async with session.begin():
+                    await session.execute(
+                        text("""
+                            UPDATE jamb_session_questions
+                            SET
+                                selected_option = :selected_option,
+                                is_correct = :is_correct,
+                                updated_at = NOW()
+                            WHERE session_id = :session_id
+                              AND question_order = :question_order
+                        """),
+                        {
+                            "session_id": session_id,
+                            "question_order": question_order,
+                            "selected_option": selected_option,
+                            "is_correct": is_correct,
+                        },
+                    )
+
+        context.user_data["jp_last_selected_option"] = selected_option
+        context.user_data["jp_last_correct_option"] = correct_option
+        context.user_data["jp_last_answered_question"] = question
+
+        if is_correct:
+            context.user_data["jp_correct_count"] = (
+                int(context.user_data.get("jp_correct_count", 0)) + 1
+            )
+
+            result_text = "✅ *Correct\\!*"
+
+        else:
+            context.user_data["jp_wrong_count"] = (
+                int(context.user_data.get("jp_wrong_count", 0)) + 1
+            )
+
+            safe_correct_option = md_escape(correct_option)
+
+            safe_correct_option_text = md_escape(
+                str(
+                    question["options"].get(
+                        correct_option,
+                        "---",
+                    )
+                )
+            )
+
+            result_text = (
+                f"❌ *Wrong\\!*\n\n"
+                f"Correct answer: "
+                f"*{safe_correct_option}* "
+                f"\\- {safe_correct_option_text}"
+            )
+
+        await query.message.reply_text(
+            result_text,
+            parse_mode="MarkdownV2",
+            reply_markup=make_after_answer_keyboard(),
+        )
+
+    except Exception:
+        # Release lock if processing failed
+        context.user_data["jp_answered_current"] = False
+
+        logger.exception(
+            f"Error processing JAMB answer. "
+            f"user_id={user_id}"
+        )
+
+        raise
 
 
 # --------------------------------------------
