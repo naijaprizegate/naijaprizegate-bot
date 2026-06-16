@@ -378,6 +378,8 @@ async def clear_jamb_session_state(context: ContextTypes.DEFAULT_TYPE):
         "jp_last_correct_option",
         "jp_last_answered_question",
         "jp_wrong_questions",
+        "jp_review_index",
+        "jp_review_question",
     ]
 
     for key in keys_to_clear:
@@ -1026,6 +1028,41 @@ def make_after_details_keyboard(question_order: int):
             ],
         ]
     )
+
+
+def make_jp_review_keyboard(
+    *,
+    has_next: bool,
+):
+    rows = [
+        [
+            InlineKeyboardButton(
+                "📖 Answer Details",
+                callback_data="jp_review_details",
+            )
+        ]
+    ]
+
+    if has_next:
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    "➡ Next Wrong Question",
+                    callback_data="jp_review_next",
+                )
+            ]
+        )
+
+    rows.append(
+        [
+            InlineKeyboardButton(
+                "🏠 End Review",
+                callback_data="jp_end_session",
+            )
+        ]
+    )
+
+    return InlineKeyboardMarkup(rows)
 
 
 def make_paid_session_count_keyboard():
@@ -2503,7 +2540,6 @@ async def jamb_answer_details_handler(
     )
 
 
-
 async def jamb_next_handler(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
@@ -2567,6 +2603,429 @@ async def jamb_next_handler(
         update,
         context,
     )
+
+async def jp_review_wrong_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    wrong_questions = context.user_data.get(
+        "jp_wrong_questions",
+        [],
+    )
+
+    if not wrong_questions:
+        return await query.message.reply_text(
+            "⚠️ No wrong answers found\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    # Start review from the first wrong question
+    context.user_data["jp_review_index"] = 0
+
+    review_item = wrong_questions[0]
+
+    question = review_item["question"]
+
+    selected_option = review_item[
+        "selected_option"
+    ]
+
+    correct_option = review_item[
+        "correct_option"
+    ]
+
+    context.user_data[
+        "jp_review_question"
+    ] = question
+
+    question_text = md_escape(
+        str(
+            question.get(
+                "question",
+                "Question unavailable.",
+            )
+        )
+    )
+
+    options = question.get(
+        "options",
+        {},
+    )
+
+    option_lines = []
+
+    for key in ["A", "B", "C", "D", "E"]:
+
+        if key in options:
+
+            option_lines.append(
+                f"{key}\\. "
+                f"{md_escape(str(options[key]))}"
+            )
+
+    safe_selected = md_escape(
+        selected_option
+    )
+
+    safe_correct = md_escape(
+        correct_option
+    )
+
+    safe_position = md_escape(
+        f"1"
+    )
+
+    safe_total = md_escape(
+        str(len(wrong_questions))
+    )
+
+    await query.message.reply_text(
+        f"📖 *Wrong Answer Review*\n\n"
+        f"Question *{safe_position}* "
+        f"of *{safe_total}*\n\n"
+        f"{question_text}\n\n"
+        f"{chr(10).join(option_lines)}\n\n"
+        f"❌ Your Answer: "
+        f"*{safe_selected}*\n"
+        f"✅ Correct Answer: "
+        f"*{safe_correct}*",
+        parse_mode="MarkdownV2",
+        reply_markup=make_jp_review_keyboard(
+            has_next=(
+                len(wrong_questions) > 1
+            )
+        ),
+    )
+
+
+async def jp_review_next_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    wrong_questions = context.user_data.get(
+        "jp_wrong_questions",
+        [],
+    )
+
+    if not wrong_questions:
+        return await query.message.reply_text(
+            "⚠️ No wrong answers found\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    current_review_index = int(
+        context.user_data.get(
+            "jp_review_index",
+            0,
+        )
+    )
+
+    next_review_index = current_review_index + 1
+
+    if next_review_index >= len(wrong_questions):
+        return await query.message.reply_text(
+            "✅ You have reviewed all your wrong answers\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    context.user_data[
+        "jp_review_index"
+    ] = next_review_index
+
+    review_item = wrong_questions[
+        next_review_index
+    ]
+
+    question = review_item[
+        "question"
+    ]
+
+    selected_option = review_item[
+        "selected_option"
+    ]
+
+    correct_option = review_item[
+        "correct_option"
+    ]
+
+    context.user_data[
+        "jp_review_question"
+    ] = question
+
+    question_text = md_escape(
+        str(
+            question.get(
+                "question",
+                "Question unavailable.",
+            )
+        )
+    )
+
+    options = question.get(
+        "options",
+        {},
+    )
+
+    option_lines = []
+
+    for key in ["A", "B", "C", "D", "E"]:
+
+        if key in options:
+
+            option_lines.append(
+                f"{key}\\. "
+                f"{md_escape(str(options[key]))}"
+            )
+
+    safe_selected = md_escape(
+        selected_option
+    )
+
+    safe_correct = md_escape(
+        correct_option
+    )
+
+    safe_position = md_escape(
+        str(next_review_index + 1)
+    )
+
+    safe_total = md_escape(
+        str(len(wrong_questions))
+    )
+
+    has_next = (
+        next_review_index
+        < len(wrong_questions) - 1
+    )
+
+    await query.message.reply_text(
+        f"📖 *Wrong Answer Review*\n\n"
+        f"Question *{safe_position}* "
+        f"of *{safe_total}*\n\n"
+        f"{question_text}\n\n"
+        f"{chr(10).join(option_lines)}\n\n"
+        f"❌ Your Answer: "
+        f"*{safe_selected}*\n"
+        f"✅ Correct Answer: "
+        f"*{safe_correct}*",
+        parse_mode="MarkdownV2",
+        reply_markup=make_jp_review_keyboard(
+            has_next=has_next,
+        ),
+    )
+
+
+async def jp_review_details_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    question = context.user_data.get(
+        "jp_review_question"
+    )
+
+    if not question:
+        return await query.message.reply_text(
+            "⚠️ No review question found\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    explanation = question.get(
+        "explanation",
+        {},
+    )
+
+    question_restate = str(
+        explanation.get(
+            "question_restate",
+            "",
+        )
+    ).strip()
+
+    principle = str(
+        explanation.get(
+            "principle",
+            "",
+        )
+    ).strip()
+
+    steps = explanation.get(
+        "steps",
+        [],
+    )
+
+    if not isinstance(
+        steps,
+        list,
+    ):
+        steps = []
+
+    why_other_options_are_wrong = (
+        explanation.get(
+            "why_other_options_are_wrong",
+            [],
+        )
+    )
+
+    if not isinstance(
+        why_other_options_are_wrong,
+        list,
+    ):
+        why_other_options_are_wrong = []
+
+    final_answer = str(
+        explanation.get(
+            "final_answer",
+            "",
+        )
+    ).strip()
+
+    exam_tip = str(
+        explanation.get(
+            "exam_tip",
+            "",
+        )
+    ).strip()
+
+    simple_explanation = str(
+        explanation.get(
+            "simple_explanation",
+            "",
+        )
+    ).strip()
+
+    tutorial_reference = str(
+        explanation.get(
+            "tutorial_reference",
+            "",
+        )
+    ).strip()
+
+    lines = [
+        "📚 *Answer Details*\n"
+    ]
+
+    if question_restate:
+        lines.append(
+            f"*Question Restated*\n"
+            f"{md_escape(question_restate)}\n"
+        )
+
+    if principle:
+        lines.append(
+            f"*Principle*\n"
+            f"{md_escape(principle)}\n"
+        )
+
+    if steps:
+        lines.append(
+            "*Step\\-by\\-step Solution*"
+        )
+
+        for i, step in enumerate(
+            steps,
+            start=1,
+        ):
+            lines.append(
+                f"{i}\\. "
+                f"{md_escape(str(step))}"
+            )
+
+        lines.append("")
+
+    if why_other_options_are_wrong:
+        lines.append(
+            "*Why Other Options Are Wrong*"
+        )
+
+        for item in (
+            why_other_options_are_wrong
+        ):
+            lines.append(
+                f"\\- "
+                f"{md_escape(str(item))}"
+            )
+
+        lines.append("")
+
+    if final_answer:
+        lines.append(
+            "━━━━━━━━━━━━"
+        )
+
+        lines.append(
+            f"*Final Answer*\n"
+            f"{md_escape(final_answer)}"
+        )
+
+        lines.append("")
+        lines.append(
+            "━━━━━━━━━━━━"
+        )
+
+    if exam_tip:
+        lines.append(
+            f"*Exam Tip*\n"
+            f"{md_escape(exam_tip)}\n"
+        )
+
+    if simple_explanation:
+        lines.append(
+            f"*Simple Explanation*\n"
+            f"{md_escape(simple_explanation)}\n"
+        )
+
+    if tutorial_reference:
+        lines.append(
+            f"*Tutorial Recommendation*\n"
+            f"{md_escape(tutorial_reference)}"
+        )
+
+    wrong_questions = context.user_data.get(
+        "jp_wrong_questions",
+        [],
+    )
+
+    current_index = int(
+        context.user_data.get(
+            "jp_review_index",
+            0,
+        )
+    )
+
+    has_next = (
+        current_index
+        < len(wrong_questions) - 1
+    )
+
+    await query.message.reply_text(
+        "\n".join(lines),
+        parse_mode="MarkdownV2",
+        reply_markup=make_jp_review_keyboard(
+            has_next=has_next,
+        ),
+    )
+
 
 
 # ------------------------------
@@ -2999,6 +3458,9 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_buy_pack_handler, pattern=r"^jp_buy_"))
     application.add_handler(CallbackQueryHandler(jamb_mock_buy_session_handler, pattern=r"^jp_mock_buy_"))
     application.add_handler(CallbackQueryHandler(jamb_serve_first_handler, pattern=r"^jp_serve_first$"))
+    application.add_handler(CallbackQueryHandler(jp_review_wrong_handler, pattern=r"^jp_review_wrong$"))
+    application.add_handler(CallbackQueryHandler(jp_review_next_handler, pattern=r"^jp_review_next$"))
+    application.add_handler(CallbackQueryHandler(jp_review_details_handler, pattern=r"^jp_review_details$"))
     application.add_handler(CallbackQueryHandler(jamb_end_session_handler, pattern=r"^jp_end_session$"))
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
