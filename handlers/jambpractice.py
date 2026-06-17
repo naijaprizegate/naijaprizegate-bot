@@ -2100,6 +2100,8 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
     safe_question_no = md_escape(str(current_index + 1))
     safe_total = md_escape(str(len(batch)))
 
+    question_order = current_index + 1
+
     header_lines = []
     if session_mode == "mock_utme":
         remaining = format_jamb_mock_time_remaining((session_row or {}).get("exam_ends_at"))
@@ -2130,7 +2132,7 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
     for key in ["A", "B", "C", "D", "E"]:
         if key in options:
             answer_row.append(
-                InlineKeyboardButton(key, callback_data=f"jp_ans::{key}")
+                InlineKeyboardButton(key, callback_data=f"jp_ans::{question_order}::{key}")
             )
             if len(answer_row) == 2:
                 rows.append(answer_row)
@@ -3465,4 +3467,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next::"))
+
 
