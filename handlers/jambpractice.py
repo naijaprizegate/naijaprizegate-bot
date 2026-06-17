@@ -2788,7 +2788,9 @@ async def jp_review_wrong_handler(
         ),
     )
 
-
+# --------------------------------
+# JAMB Review Next Handler
+# -------------------------------
 async def jp_review_next_handler(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
@@ -2829,6 +2831,10 @@ async def jp_review_next_handler(
     context.user_data[
         "jp_review_index"
     ] = next_review_index
+
+    context.user_data[
+        "jp_review_details_opened"
+    ] = False
 
     review_item = wrong_questions[
         next_review_index
@@ -2913,6 +2919,9 @@ async def jp_review_next_handler(
     )
 
 
+# -----------------------------
+# JAMB Review Details Handler
+# -----------------------------
 async def jp_review_details_handler(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
@@ -2924,6 +2933,12 @@ async def jp_review_details_handler(
 
     await query.answer()
 
+    if context.user_data.get(
+        "jp_review_details_opened",
+        False,
+    ):
+        return
+
     question = context.user_data.get(
         "jp_review_question"
     )
@@ -2933,6 +2948,10 @@ async def jp_review_details_handler(
             "⚠️ No review question found\\.",
             parse_mode="MarkdownV2",
         )
+    
+    context.user_data[
+        "jp_review_details_opened"
+    ] = True
 
     explanation = question.get(
         "explanation",
