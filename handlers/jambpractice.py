@@ -364,6 +364,7 @@ async def clear_jamb_session_state(context: ContextTypes.DEFAULT_TYPE):
         "jp_question_batch",
         "jp_question_ids",
         "jp_current_index",
+        "jp_first_question_started",
         "jp_session_target",
         "jp_correct_count",
         "jp_wrong_count",
@@ -1559,6 +1560,7 @@ async def jamb_start_free_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["jp_question_batch"] = selected_questions
     context.user_data["jp_question_ids"] = selected_question_ids
     context.user_data["jp_current_index"] = 0
+    context.user_data["jp_first_question_started"] = False
     context.user_data["jp_session_target"] = len(selected_questions)
     context.user_data["jp_correct_count"] = 0
     context.user_data["jp_wrong_count"] = 0
@@ -2159,6 +2161,12 @@ async def jamb_serve_first_handler(update: Update, context: ContextTypes.DEFAULT
     query = update.callback_query
     if query:
         await query.answer()
+
+    if context.user_data.get("jp_first_question_started", False):
+        return
+    
+    context.user_data["jp_first_question_started"] = True
+
     await send_current_jamb_question(update, context)
 
 
@@ -3243,6 +3251,7 @@ async def jamb_paid_count_handler(update: Update, context: ContextTypes.DEFAULT_
     context.user_data["jp_question_batch"] = selected_questions
     context.user_data["jp_question_ids"] = selected_question_ids
     context.user_data["jp_current_index"] = 0
+    context.user_data["jp_first_question_started"] = False
     context.user_data["jp_session_target"] = len(selected_questions)
     context.user_data["jp_correct_count"] = 0
     context.user_data["jp_wrong_count"] = 0
@@ -3373,6 +3382,7 @@ async def jamb_mock_start_paid_handler(update: Update, context: ContextTypes.DEF
     context.user_data["jp_question_batch"] = batch
     context.user_data["jp_question_ids"] = [str(q.get("id")) for q in batch if q.get("id")]
     context.user_data["jp_current_index"] = 0
+    context.user_data["jp_first_question_started"] = False
     context.user_data["jp_session_target"] = len(batch)
     context.user_data["jp_correct_count"] = 0
     context.user_data["jp_wrong_count"] = 0
@@ -3524,5 +3534,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details::"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next::"))
-
 
