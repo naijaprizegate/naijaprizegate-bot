@@ -998,7 +998,7 @@ def make_after_answer_keyboard(question_order: int):
             [
                 InlineKeyboardButton(
                     "📖 Answer Details",
-                    callback_data="jp_details",
+                    callback_data=f"jp_details::{question_order}",
                 )
             ],
             [
