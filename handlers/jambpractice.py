@@ -370,6 +370,8 @@ async def clear_jamb_session_state(context: ContextTypes.DEFAULT_TYPE):
         "jp_wrong_count",
         "jp_current_question",
         "jp_answered_current",
+        "jp_details_opened",
+        "jp_last_answered_question_order",
         "jp_served_question_ids",
         "jp_shown_passages",
         "jp_last_passage",
@@ -381,6 +383,7 @@ async def clear_jamb_session_state(context: ContextTypes.DEFAULT_TYPE):
         "jp_wrong_questions",
         "jp_review_index",
         "jp_review_question",
+        "jp_review_details_opened",
     ]
 
     for key in keys_to_clear:
@@ -2053,6 +2056,7 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
 
     context.user_data["jp_current_question"] = question
     context.user_data["jp_answered_current"] = False
+    context.user_data["jp_details_opened"] = False
 
     if session_mode == "mock_utme" and session_id:
         await set_jamb_session_current_question_index(int(session_id), current_index)
@@ -2420,6 +2424,9 @@ async def jamb_answer_details_handler(
 
     await query.answer()
 
+    if context.user_data.get("jp_details_opened", False):
+        return
+
     try:
         _, question_order_str = query.data.split("::", 1)
         clicked_question_order = int(question_order_str)
@@ -2444,6 +2451,7 @@ async def jamb_answer_details_handler(
             parse_mode="MarkdownV2",
         )
 
+
     # Use the most recently answered question.
     question = (
         context.user_data.get("jp_last_answered_question")
@@ -2455,6 +2463,8 @@ async def jamb_answer_details_handler(
             "⚠️ No answered question found\\.",
             parse_mode="MarkdownV2",
         )
+
+    context.user_data["jp_details_opened"] = True
 
     explanation = question.get("explanation", {})
 
@@ -2606,7 +2616,9 @@ async def jamb_answer_details_handler(
         ),
     )
 
-
+# ---------------------------
+# JAMB Next Handler
+# ----------------------------
 async def jamb_next_handler(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
@@ -2649,6 +2661,8 @@ async def jamb_next_handler(
             show_alert=True,
         )
 
+    context.user_data["jp_details_opened"] = False
+
     try:
         await query.edit_message_reply_markup(
             reply_markup=None,
@@ -2671,6 +2685,9 @@ async def jamb_next_handler(
         context,
     )
 
+# ----------------------------
+# JAMB Review Wrong Handler
+# ----------------------------
 async def jp_review_wrong_handler(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
@@ -3534,4 +3551,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details::"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next::"))
+
 
