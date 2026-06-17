@@ -2326,6 +2326,10 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         context.user_data["jp_last_correct_option"] = correct_option
         context.user_data["jp_last_answered_question"] = question
 
+        context.user_data[
+            "jp_last_answered_question_order"
+        ] = question_order
+
         if is_correct:
             context.user_data["jp_correct_count"] = (
                 int(context.user_data.get("jp_correct_count", 0)) + 1
@@ -2407,6 +2411,30 @@ async def jamb_answer_details_handler(
         return
 
     await query.answer()
+
+    try:
+        _, question_order_str = query.data.split("::", 1)
+        clicked_question_order = int(question_order_str)
+
+    except Exception:
+        return await query.message.reply_text(
+            "⚠️ Invalid answer details request\\.",
+            parse_mode="MarkdownV2",
+        )
+    
+    expected_question_order = int(
+        context.user_data.get(
+            "jp_last_answered_question_order",
+            0,
+        )
+    )
+
+    if clicked_question_order != expected_question_order:
+        return await query.message.reply_text(
+            "⚠️ These answer details are no longer active\\. "
+            "Please use the latest question controls\\.",
+            parse_mode="MarkdownV2",
+        )
 
     # Use the most recently answered question.
     question = (
@@ -3494,7 +3522,7 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jp_review_details_handler, pattern=r"^jp_review_details$"))
     application.add_handler(CallbackQueryHandler(jamb_end_session_handler, pattern=r"^jp_end_session$"))
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
-    application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details$"))
+    application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details::"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next::"))
 
 
