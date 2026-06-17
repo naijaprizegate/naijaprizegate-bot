@@ -2201,8 +2201,16 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
     context.user_data["jp_answered_current"] = True
 
     try:
-        _, selected_option = query.data.split("::", 1)
+        _, callback_question_order, selected_option = (
+            query.data.split("::")
+        )
+
+        callback_question_order = int(
+            callback_question_order
+        )
+
     except Exception:
+
         context.user_data["jp_answered_current"] = False
 
         return await query.message.reply_text(
@@ -2255,6 +2263,27 @@ async def jamb_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         question_order = (
             int(context.user_data.get("jp_current_index", 0)) + 1
         )
+
+        if callback_question_order != question_order:
+
+            context.user_data["jp_answered_current"] = False
+
+            try:
+                await query.answer(
+                    "This question is no longer active.",
+                    show_alert=False,
+                )
+            except Exception:
+                pass
+
+            logger.warning(
+                f"Stale JAMB answer ignored. "
+                f"user_id={user_id}, "
+                f"callback_question={callback_question_order}, "
+                f"current_question={question_order}"
+            )
+
+            return
 
         await record_jamb_attempt(
             session_id=session_id,
