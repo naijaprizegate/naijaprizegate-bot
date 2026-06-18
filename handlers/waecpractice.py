@@ -2062,7 +2062,7 @@ async def send_current_waec_question(update: Update, context: ContextTypes.DEFAU
             f"📚 Total Questions: *{safe_total}*\n"
             f"✅ Correct: *{safe_correct_count}*\n"
             f"❌ Wrong: *{safe_wrong_count}*\n"
-            f"💯 Score: *{safe_score_100}/100 ({safe_percentage}%)*\n"
+            f"💯 Score: *{safe_score_100}/100 \\({safe_percentage}%\\)*\n"
             f"🏅 Grade: *{safe_grade}*\n\n"
             f"{outro}",
             parse_mode="MarkdownV2",
@@ -3730,4 +3730,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(waec_answer_handler, pattern=r"^wp_ans::"))
     application.add_handler(CallbackQueryHandler(waec_answer_details_handler, pattern=r"^wp_details::"))
     application.add_handler(CallbackQueryHandler(waec_next_handler, pattern=r"^wp_next::"))
+
 
