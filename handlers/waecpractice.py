@@ -394,6 +394,7 @@ async def clear_waec_session_state(context: ContextTypes.DEFAULT_TYPE):
         "wp_question_batch",
         "wp_question_ids",
         "wp_current_index",
+        "wp_first_question_started",
         "wp_session_target",
         "wp_correct_count",
         "wp_wrong_count",
@@ -407,7 +408,12 @@ async def clear_waec_session_state(context: ContextTypes.DEFAULT_TYPE):
         "wp_last_selected_option",
         "wp_last_correct_option",
         "wp_last_answered_question",
+        "wp_last_answered_question_order",
         "wp_wrong_questions",
+        "wp_details_opened",
+        "wp_review_index",
+        "wp_review_question",
+        "wp_review_details_opened",
     ]
 
     for key in keys_to_clear:
@@ -989,6 +995,41 @@ def make_topics_keyboard(subject_code: str, page: int = 1):
     return InlineKeyboardMarkup(rows), page, total_pages
 
 
+def make_wp_review_keyboard(
+    has_next: bool,
+):
+    rows = [
+        [
+            InlineKeyboardButton(
+                "📖 Answer Details",
+                callback_data="wp_review_details",
+            )
+        ]
+    ]
+
+    if has_next:
+        rows.append(
+            [
+                InlineKeyboardButton(
+                    "➡️ Next Wrong Question",
+                    callback_data="wp_review_next",
+                )
+            ]
+        )
+
+    rows.append(
+        [
+            InlineKeyboardButton(
+                "🎓 WAEC / NECO Practice",
+                callback_data="waecpractice",
+            )
+        ]
+    )
+
+    return InlineKeyboardMarkup(
+        rows
+    )
+
 def make_topic_access_keyboard_for_subject(
     subject_code: str,
     has_free_trial: bool,
@@ -1026,7 +1067,7 @@ def make_after_answer_keyboard(question_order: int):
             [
                 InlineKeyboardButton(
                     "📖 Answer Details",
-                    callback_data=f"wp_details",
+                    callback_data=f"wp_details::{question_order}",
                 )
             ],
             [
@@ -1957,6 +1998,40 @@ async def send_current_waec_question(update: Update, context: ContextTypes.DEFAU
             else "Great job\\. You can return to WAEC / NECO Practice for another topic\\."
         )
 
+        wrong_questions = context.user_data.get(
+            "wp_wrong_questions",
+            [],
+        )
+
+        completion_rows = []
+
+        if wrong_questions:
+            completion_rows.append(
+                [
+                    InlineKeyboardButton(
+                        "📖 Review Wrong Answers",
+                        callback_data="wp_review_wrong",
+                    )
+                ]
+            )
+
+        completion_rows.extend(
+            [
+                [
+                    InlineKeyboardButton(
+                        "🎓 WAEC / NECO Practice",
+                        callback_data="waecpractice",
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🏠 Back to Main Menu",
+                        callback_data="menu:main",
+                    )
+                ],
+            ]
+        )
+
         return await update.effective_message.reply_text(
             f"{title}\n\n"
             f"📚 Total Questions: *{safe_total}*\n"
@@ -1967,10 +2042,7 @@ async def send_current_waec_question(update: Update, context: ContextTypes.DEFAU
             f"{outro}",
             parse_mode="MarkdownV2",
             reply_markup=InlineKeyboardMarkup(
-                [
-                    [InlineKeyboardButton("🎓 WAEC / NECO Practice", callback_data="waecpractice")],
-                    [InlineKeyboardButton("🏠 Back to Main Menu", callback_data="menu:main")],
-                ]
+                completion_rows
             ),
         )
 
@@ -2102,13 +2174,15 @@ async def send_current_waec_question(update: Update, context: ContextTypes.DEFAU
         + "\n".join(option_lines)
     )
 
+    question_order = current_index + 1
+    
     rows = []
     answer_row = []
 
     for key in ["A", "B", "C", "D", "E"]:
         if key in options:
             answer_row.append(
-                InlineKeyboardButton(key, callback_data=f"wp_ans::{key}")
+                InlineKeyboardButton(key, callback_data=f"wp_ans::{question_order}::{key}")
             )
             if len(answer_row) == 2:
                 rows.append(answer_row)
@@ -2132,8 +2206,20 @@ async def send_current_waec_question(update: Update, context: ContextTypes.DEFAU
 # ----------------------------------------  
 async def waec_serve_first_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
+
     if query:
         await query.answer()
+
+    if context.user_data.get(
+        "wp_first_question_started",
+        False,
+    ):
+        return
+
+    context.user_data[
+        "wp_first_question_started"
+    ] = True    
+    
     await send_current_waec_question(update, context)
 
 
@@ -2184,7 +2270,13 @@ async def waec_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
     try:
 
         try:
-            _, selected_option = query.data.split("::", 1)
+            _, clicked_question_order, selected_option = (
+                query.data.split("::")
+            )
+
+            clicked_question_order = int(
+                clicked_question_order
+            )
 
         except Exception:
 
@@ -2204,6 +2296,27 @@ async def waec_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
             return await query.message.reply_text(
                 "⚠️ No active question found\\.",
                 parse_mode="MarkdownV2",
+            )
+
+        expected_question_order = (
+            int(
+                context.user_data.get(
+                    "wp_current_index",
+                    0,
+                )
+            )
+            + 1
+        )
+
+        if clicked_question_order != expected_question_order:
+
+            context.user_data[
+                "wp_answered_current"
+            ] = False
+
+            return await query.answer(
+                "⚠️ This answer button belongs to an older question.",
+                show_alert=True,
             )
 
         user_id = update.effective_user.id
@@ -2307,6 +2420,10 @@ async def waec_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
             "wp_last_answered_question"
         ] = question
 
+        context.user_data[
+            "wp_last_answered_question_order"
+        ] = question_order
+
         if is_correct:
 
             context.user_data[
@@ -2400,6 +2517,7 @@ async def waec_answer_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         raise
 
 
+
 # --------------------------------------------
 # WAEC Answer Details Handler
 # --------------------------------------------
@@ -2414,6 +2532,42 @@ async def waec_answer_details_handler(
 
     await query.answer()
 
+    if context.user_data.get(
+        "wp_details_opened",
+        False,
+    ):
+        return
+    
+    try:
+        _, question_order_str = query.data.split(
+            "::",
+            1,
+        )
+
+        clicked_question_order = int(
+            question_order_str
+        )
+
+    except Exception:
+        return await query.message.reply_text(
+            "⚠️ Invalid answer details request\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    expected_question_order = int(
+        context.user_data.get(
+            "wp_last_answered_question_order",
+            0,
+        )
+    )
+
+    if clicked_question_order != expected_question_order:
+        return await query.message.reply_text(
+            "⚠️ These answer details are no longer active\\. "
+            "Please use the latest question controls\\.",
+            parse_mode="MarkdownV2",
+        )    
+
     # Use the most recently answered question.
     question = (
         context.user_data.get("wp_last_answered_question")
@@ -2425,6 +2579,10 @@ async def waec_answer_details_handler(
             "⚠️ No answered question found\\.",
             parse_mode="MarkdownV2",
         )
+
+    context.user_data[
+        "wp_details_opened"
+    ] = True
 
     explanation = question.get("explanation", {})
 
@@ -2582,6 +2740,447 @@ async def waec_answer_details_handler(
     )
 
 
+# ----------------------------------
+# WAEC Review Details Handler
+# ---------------------------------
+async def wp_review_details_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    if context.user_data.get(
+        "wp_review_details_opened",
+        False,
+    ):
+        return
+
+    question = context.user_data.get(
+        "wp_review_question"
+    )
+
+    if not question:
+        return await query.message.reply_text(
+            "⚠️ No review question found\\.",
+            parse_mode="MarkdownV2",
+        )
+    
+    context.user_data[
+        "wp_review_details_opened"
+    ] = True
+
+    explanation = question.get(
+        "explanation",
+        {},
+    )
+
+    question_restate = str(
+        explanation.get(
+            "question_restate",
+            "",
+        )
+    ).strip()
+
+    principle = str(
+        explanation.get(
+            "principle",
+            "",
+        )
+    ).strip()
+
+    steps = explanation.get(
+        "steps",
+        [],
+    )
+
+    if not isinstance(
+        steps,
+        list,
+    ):
+        steps = []   
+
+    why_other_options_are_wrong = (
+        explanation.get(
+            "why_other_options_are_wrong",
+            [],
+        )
+    )
+
+    if not isinstance(
+        why_other_options_are_wrong,
+        list,
+    ):
+        why_other_options_are_wrong = []
+
+    final_answer = str(
+        explanation.get(
+            "final_answer",
+            "",
+        )
+    ).strip()
+
+    exam_tip = str(
+        explanation.get(
+            "exam_tip",
+            "",
+        )
+    ).strip()
+
+    simple_explanation = str(
+        explanation.get(
+            "simple_explanation",
+            "",
+        )
+    ).strip()
+
+    tutorial_reference = str(
+        explanation.get(
+            "tutorial_reference",
+            "",
+        )
+    ).strip()
+
+    lines = [
+        "📚 *Answer Details*\n"
+    ]
+
+    if question_restate:
+        lines.append(
+            f"*Question Restated*\n"
+            f"{md_escape(question_restate)}\n"
+        )
+
+    if principle:
+        lines.append(
+            f"*Principle*\n"
+            f"{md_escape(principle)}\n"
+        )
+
+    if steps:
+        lines.append(
+            "*Step\\-by\\-step Solution*"
+        )
+
+        for i, step in enumerate(
+            steps,
+            start=1,
+        ):
+            lines.append(
+                f"{i}\\. "
+                f"{md_escape(str(step))}"
+            )
+    
+    if why_other_options_are_wrong:
+        lines.append(
+            ""
+        )
+
+        lines.append(
+            "*Why Other Options Are Wrong*"
+        )
+
+        for item in (
+            why_other_options_are_wrong
+        ):
+            lines.append(
+                f"\\- "
+                f"{md_escape(str(item))}"
+            )
+
+    if final_answer:
+        lines.append("")
+        lines.append("━━━━━━━━━━━━")
+
+        lines.append(
+            f"*Final Answer*\n"
+            f"{md_escape(final_answer)}"
+        )
+
+        lines.append("━━━━━━━━━━━━")
+
+    if exam_tip:
+        lines.append(
+            f"\n*Exam Tip*\n"
+            f"{md_escape(exam_tip)}"
+        )
+
+    if simple_explanation:
+        lines.append(
+            f"\n*Simple Explanation*\n"
+            f"{md_escape(simple_explanation)}"
+        )
+
+    if tutorial_reference:
+        lines.append(
+            f"\n*Tutorial Recommendation*\n"
+            f"{md_escape(tutorial_reference)}"
+        )
+
+    wrong_questions = context.user_data.get(
+        "wp_wrong_questions",
+        [],
+    )
+
+    current_index = int(
+        context.user_data.get(
+            "wp_review_index",
+            0,
+        )
+    )
+
+    has_next = (
+        current_index
+        < len(wrong_questions) - 1
+    )
+
+    await query.message.reply_text(
+        "\n".join(lines),
+        parse_mode="MarkdownV2",
+        reply_markup=make_wp_review_keyboard(
+            has_next=has_next,
+        ),
+    )
+
+
+# ----------------------------------
+# WAEC Review Wrong Handler
+# ---------------------------------
+async def wp_review_wrong_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    wrong_questions = context.user_data.get(
+        "wp_wrong_questions",
+        [],
+    )
+
+    if not wrong_questions:
+        return await query.message.reply_text(
+            "⚠️ No wrong answers found\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    context.user_data[
+        "wp_review_index"
+    ] = 0
+
+    review_item = wrong_questions[0]
+
+    question = review_item[
+        "question"
+    ]
+
+    selected_option = review_item[
+        "selected_option"
+    ]
+
+    correct_option = review_item[
+        "correct_option"
+    ]
+
+    context.user_data[
+        "wp_review_question"
+    ] = question
+
+    question_text = md_escape(
+        str(
+            question.get(
+                "question",
+                "Question unavailable.",
+            )
+        )
+    )
+
+    options = question.get(
+        "options",
+        {},
+    )
+
+    option_lines = []
+
+    for key in ["A", "B", "C", "D", "E"]:
+
+        if key in options:
+
+            option_lines.append(
+                f"{key}\\. "
+                f"{md_escape(str(options[key]))}"
+            )
+
+    safe_selected = md_escape(
+        selected_option
+    )
+
+    safe_correct = md_escape(
+        correct_option
+    )
+
+    safe_total = md_escape(
+        str(len(wrong_questions))
+    )
+
+    has_next = len(wrong_questions) > 1
+
+    await query.message.reply_text(
+        f"📖 *Wrong Answer Review*\n\n"
+        f"Question *1* of *{safe_total}*\n\n"
+        f"{question_text}\n\n"
+        f"{chr(10).join(option_lines)}\n\n"
+        f"❌ Your Answer: "
+        f"*{safe_selected}*\n"
+        f"✅ Correct Answer: "
+        f"*{safe_correct}*",
+        parse_mode="MarkdownV2",
+        reply_markup=make_wp_review_keyboard(
+            has_next=has_next,
+        ),
+    )
+
+# --------------------------------------
+# WAEC Review Next Handler
+# -------------------------------------
+async def wp_review_next_handler(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE,
+):
+    query = update.callback_query
+
+    if not query:
+        return
+
+    await query.answer()
+
+    wrong_questions = context.user_data.get(
+        "wp_wrong_questions",
+        [],
+    )
+
+    if not wrong_questions:
+        return await query.message.reply_text(
+            "⚠️ No wrong answers found\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    current_review_index = int(
+        context.user_data.get(
+            "wp_review_index",
+            0,
+        )
+    )
+
+    next_review_index = (
+        current_review_index + 1
+    )
+
+    if next_review_index >= len(
+        wrong_questions
+    ):
+        return await query.message.reply_text(
+            "✅ You have reviewed all your wrong answers\\.",
+            parse_mode="MarkdownV2",
+        )
+
+    context.user_data[
+        "wp_review_index"
+    ] = next_review_index
+
+    context.user_data[
+        "wp_review_details_opened"
+    ] = False
+
+    review_item = wrong_questions[
+        next_review_index
+    ]
+
+    question = review_item[
+        "question"
+    ]
+
+    selected_option = review_item[
+        "selected_option"
+    ]
+
+    correct_option = review_item[
+        "correct_option"
+    ]
+
+    context.user_data[
+        "wp_review_question"
+    ] = question
+
+    question_text = md_escape(
+        str(
+            question.get(
+                "question",
+                "Question unavailable.",
+            )
+        )
+    )
+
+    options = question.get(
+        "options",
+        {},
+    )
+
+    option_lines = []
+
+    for key in ["A", "B", "C", "D", "E"]:
+
+        if key in options:
+
+            option_lines.append(
+                f"{key}\\. "
+                f"{md_escape(str(options[key]))}"
+            )
+
+    safe_selected = md_escape(
+        selected_option
+    )
+
+    safe_correct = md_escape(
+        correct_option
+    )
+
+    safe_position = md_escape(
+        str(next_review_index + 1)
+    )
+
+    safe_total = md_escape(
+        str(len(wrong_questions))
+    )
+
+    has_next = (
+        next_review_index
+        < len(wrong_questions) - 1
+    )
+
+    await query.message.reply_text(
+        f"📖 *Wrong Answer Review*\n\n"
+        f"Question *{safe_position}* "
+        f"of *{safe_total}*\n\n"
+        f"{question_text}\n\n"
+        f"{chr(10).join(option_lines)}\n\n"
+        f"❌ Your Answer: "
+        f"*{safe_selected}*\n"
+        f"✅ Correct Answer: "
+        f"*{safe_correct}*",
+        parse_mode="MarkdownV2",
+        reply_markup=make_wp_review_keyboard(
+            has_next=has_next,
+        ),
+    )
 
 # ------------------------------
 # waec Next Handler
@@ -2639,6 +3238,17 @@ async def waec_next_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # ------------------------------------
     # Advance normally
     # ------------------------------------
+    try:
+        await query.edit_message_reply_markup(
+            reply_markup=None,
+        )
+    except Exception:
+        pass
+    
+    context.user_data[
+        "wp_details_opened"
+    ] = False
+
     context.user_data[
         "wp_current_index"
     ] = expected_order
@@ -3088,9 +3698,11 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(waec_buy_pack_handler, pattern=r"^wp_buy_"))
     application.add_handler(CallbackQueryHandler(waec_mock_buy_session_handler, pattern=r"^wp_mock_buy_"))
     application.add_handler(CallbackQueryHandler(waec_serve_first_handler, pattern=r"^wp_serve_first$"))
+    application.add_handler(CallbackQueryHandler(wp_review_wrong_handler, pattern=r"^wp_review_wrong$"))
+    application.add_handler(CallbackQueryHandler(wp_review_next_handler, pattern=r"^wp_review_next$"))
+    application.add_handler(CallbackQueryHandler(wp_review_details_handler, pattern=r"^wp_review_details$"))
     application.add_handler(CallbackQueryHandler(waec_end_session_handler, pattern=r"^wp_end_session$"))
     application.add_handler(CallbackQueryHandler(waec_answer_handler, pattern=r"^wp_ans::"))
-    application.add_handler(CallbackQueryHandler(waec_answer_details_handler, pattern=r"^wp_details$"))
+    application.add_handler(CallbackQueryHandler(waec_answer_details_handler, pattern=r"^wp_details::"))
     application.add_handler(CallbackQueryHandler(waec_next_handler, pattern=r"^wp_next::"))
-
 
