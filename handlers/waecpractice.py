@@ -1950,6 +1950,11 @@ async def send_current_waec_question(update: Update, context: ContextTypes.DEFAU
             safe_correct_count = md_escape(str(correct_count))
             safe_wrong_count = md_escape(str(wrong_count))
             safe_score_100 = md_escape(str(score_100))
+
+            safe_percentage = md_escape(
+                str(score_100)
+            )
+
             safe_grade = md_escape(grade)
 
             return await update.effective_message.reply_text(
@@ -1989,14 +1994,34 @@ async def send_current_waec_question(update: Update, context: ContextTypes.DEFAU
         safe_correct_count = md_escape(str(correct_count))
         safe_wrong_count = md_escape(str(wrong_count))
         safe_score_100 = md_escape(str(score_100))
+
+        safe_percentage = md_escape(
+            str(score_100)
+        )
+
         safe_grade = md_escape(grade)
 
         title = "✅ *Mock Completed*" if session_mode == "mock_by_subject" else "✅ *Practice Completed*"
-        outro = (
-            "Great job\\. You can return to WAEC / NECO Practice for another subject\\."
-            if session_mode == "mock_by_subject"
-            else "Great job\\. You can return to WAEC / NECO Practice for another topic\\."
-        )
+        if score_100 >= 70:
+
+            outro = (
+                "🌟 Excellent performance\\!\n\n"
+                "You demonstrated a strong understanding of this topic\\. Keep it up\\."
+            )
+
+        elif score_100 >= 50:
+
+            outro = (
+                "👍 Good performance\\!\n\n"
+                "You passed this topic\\. Review the questions you missed and aim even higher next time\\."
+            )
+
+        else:
+
+            outro = (
+                "📚 More practice is needed\\.\n\n"
+                "Review your wrong answers carefully and try this topic again\\. Improvement comes with practice\\."
+            )
 
         wrong_questions = context.user_data.get(
             "wp_wrong_questions",
@@ -2037,7 +2062,7 @@ async def send_current_waec_question(update: Update, context: ContextTypes.DEFAU
             f"📚 Total Questions: *{safe_total}*\n"
             f"✅ Correct: *{safe_correct_count}*\n"
             f"❌ Wrong: *{safe_wrong_count}*\n"
-            f"💯 Score: *{safe_score_100}/100*\n"
+            f"💯 Score: *{safe_score_100}/100 ({safe_percentage}%)*\n"
             f"🏅 Grade: *{safe_grade}*\n\n"
             f"{outro}",
             parse_mode="MarkdownV2",
