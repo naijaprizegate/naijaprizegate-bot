@@ -2055,6 +2055,11 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
             f"❌ Wrong: *{safe_wrong_count}*\n"
             f"💯 Score: *{safe_percentage}%*\n\n"
             f"{outro}",
+            parse_mode="MarkdownV2",
+            reply_markup=InlineKeyboardMarkup(
+                completion_rows
+            ),
+        )
 
     question = batch[current_index]
 
