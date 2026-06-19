@@ -8209,6 +8209,1338 @@
     "phy_01"
   ],
   "active": true
+},
+{
+  "id": "phy_01_q166",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Area measurement",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A solar-energy technician is installing a rectangular solar panel on the roof of a research station. The panel measures 2.4 m in length and 1.5 m in width. To estimate the amount of sunlight the panel can intercept, the technician first determines its surface area. What is the area of the solar panel?",
+  "options": {
+    "A": "3.6 m²",
+    "B": "3.9 m²",
+    "C": "4.8 m²",
+    "D": "5.4 m²"
+  },
+  "answer": "A",
+  "answer_text": "3.6 m²",
+  "explanation": {
+    "question_restate": "The question requires you to determine the surface area of a rectangular solar panel from its measured dimensions.",
+    
+    "principle": "Area is a derived physical quantity that describes the amount of surface occupied by an object.\n\nIn Physics and engineering, area measurements are important because many physical processes depend on surface size. For example, the amount of sunlight collected by a solar panel, the pressure exerted on a surface, and the rate of heat transfer often depend on area.\n\nA beginner may ask: 'Why is area important when installing solar panels?' Solar panels collect energy from sunlight falling on their surfaces. A larger surface area can intercept more sunlight and potentially generate more electrical energy.\n\nFor rectangular surfaces, the area is obtained by multiplying the length by the width (or breadth).\n\nArea = Length × Width\n\nSince both dimensions are measured in metres, the resulting unit is square metres (m²).",
+    
+    "steps": [
+      "Step 1: Identify the shape of the object.\n\nThe solar panel is rectangular.",
+      "Step 2: Recall the formula for the area of a rectangle.\n\nArea = Length × Width.",
+      "Step 3: Identify the given dimensions.\n\nLength = 2.4 m\nWidth = 1.5 m.",
+      "Step 4: Substitute the values into the formula.\n\nArea = 2.4 × 1.5.",
+      "Step 5: Perform the multiplication.\n\nArea = 3.6.",
+      "Step 6: Attach the correct unit.\n\nArea = 3.6 m².",
+      "Step 7: Therefore, the surface area of the solar panel is 3.6 m²."
+    ],
+    
+    "why_other_options_are_wrong": [
+      "A. Correct. Multiplying 2.4 m by 1.5 m gives 3.6 m².",
+      "B. 3.9 m² results from an incorrect multiplication of the given dimensions and does not represent the actual area.",
+      "C. 4.8 m² could arise from mistakenly doubling one of the dimensions before calculation.",
+      "D. 5.4 m² is larger than the true area and results from incorrect numerical manipulation of the measurements."
+    ],
+    
+    "exam_tip": "JAMB frequently embeds area calculations within practical contexts such as roofing, flooring, solar panels, laboratory benches and land measurements. Always identify the shape first before selecting the appropriate area formula.",
+    
+    "final_answer": "A. 3.6 m²",
+    
+    "simple_explanation": "The panel is rectangular, so its area is found by multiplying its length by its width. Therefore, 2.4 × 1.5 = 3.6 m².",
+    
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Area Measurement to learn how surface areas are determined for different shapes and how area measurements are applied in engineering, energy systems and practical Physics investigations. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and application-based questions."
+  },
+  "tags": [
+    "area_measurement",
+    "derived_quantities",
+    "solar_panel",
+    "surface_area",
+    "practical_physics",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q166",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Area measurement",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A solar-energy technician is installing a rectangular solar panel on the roof of a research station. The panel measures 2.4 m in length and 1.5 m in width. To estimate the amount of sunlight the panel can intercept, the technician first determines its surface area. What is the area of the solar panel?",
+  "options": {
+    "A": "3.6 m²",
+    "B": "3.9 m²",
+    "C": "4.8 m²",
+    "D": "5.4 m²"
+  },
+  "answer": "A",
+  "answer_text": "3.6 m²",
+  "explanation": {
+    "question_restate": "The question requires you to determine the surface area of a rectangular solar panel from its measured dimensions.",
+    
+    "principle": "Area is a derived physical quantity that describes the amount of surface occupied by an object.\n\nIn Physics and engineering, area measurements are important because many physical processes depend on surface size. For example, the amount of sunlight collected by a solar panel, the pressure exerted on a surface, and the rate of heat transfer often depend on area.\n\nA beginner may ask: 'Why is area important when installing solar panels?' Solar panels collect energy from sunlight falling on their surfaces. A larger surface area can intercept more sunlight and potentially generate more electrical energy.\n\nFor rectangular surfaces, the area is obtained by multiplying the length by the width (or breadth).\n\nArea = Length × Width\n\nSince both dimensions are measured in metres, the resulting unit is square metres (m²).",
+    
+    "steps": [
+      "Step 1: Identify the shape of the object.\n\nThe solar panel is rectangular.",
+      "Step 2: Recall the formula for the area of a rectangle.\n\nArea = Length × Width.",
+      "Step 3: Identify the given dimensions.\n\nLength = 2.4 m\nWidth = 1.5 m.",
+      "Step 4: Substitute the values into the formula.\n\nArea = 2.4 × 1.5.",
+      "Step 5: Perform the multiplication.\n\nArea = 3.6.",
+      "Step 6: Attach the correct unit.\n\nArea = 3.6 m².",
+      "Step 7: Therefore, the surface area of the solar panel is 3.6 m²."
+    ],
+    
+    "why_other_options_are_wrong": [
+      "A. Correct. Multiplying 2.4 m by 1.5 m gives 3.6 m².",
+      "B. 3.9 m² results from an incorrect multiplication of the given dimensions and does not represent the actual area.",
+      "C. 4.8 m² could arise from mistakenly doubling one of the dimensions before calculation.",
+      "D. 5.4 m² is larger than the true area and results from incorrect numerical manipulation of the measurements."
+    ],
+    
+    "exam_tip": "JAMB frequently embeds area calculations within practical contexts such as roofing, flooring, solar panels, laboratory benches and land measurements. Always identify the shape first before selecting the appropriate area formula.",
+    
+    "final_answer": "A. 3.6 m²",
+    
+    "simple_explanation": "The panel is rectangular, so its area is found by multiplying its length by its width. Therefore, 2.4 × 1.5 = 3.6 m².",
+    
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Area Measurement to learn how surface areas are determined for different shapes and how area measurements are applied in engineering, energy systems and practical Physics investigations. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and application-based questions."
+  },
+  "tags": [
+    "area_measurement",
+    "derived_quantities",
+    "solar_panel",
+    "surface_area",
+    "practical_physics",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q167",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Volume measurement",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A manufacturer of storage tanks is evaluating the capacity of a cubical container intended for laboratory use. If each internal edge of the container measures 0.5 m, what volume of liquid can the container hold when completely filled?",
+  "options": {
+    "A": "0.025 m³",
+    "B": "0.125 m³",
+    "C": "0.250 m³",
+    "D": "1.500 m³"
+  },
+  "answer": "B",
+  "answer_text": "0.125 m³",
+  "explanation": {
+    "question_restate": "The question requires you to determine the volume of a cubical container from its dimensions and interpret the result as the capacity of the container.",
+    "principle": "Volume is the amount of three-dimensional space occupied by a body or available within a container. In Physics, volume measurement is important in experiments involving density, fluid storage, buoyancy and material properties.\n\nA beginner may ask: 'Why is volume important when dealing with containers?' The reason is that the volume of a container determines the maximum quantity of liquid or gas it can hold. Engineers, laboratory technicians and manufacturers often calculate volume before designing or selecting storage vessels.\n\nA cube is a regular solid whose length, breadth and height are equal. The volume of a cube is obtained by multiplying the edge length by itself three times.\n\nMathematically:\n\nVolume of a cube = Edge × Edge × Edge = Edge³.\n\nWhen dimensions are measured in metres, the volume is expressed in cubic metres (m³).",
+    "steps": [
+      "Step 1: Identify the shape of the container.\n\nThe container is a cube.",
+      "Step 2: Recall the formula for the volume of a cube.\n\nVolume = Edge³.",
+      "Step 3: Identify the edge length.\n\nEdge = 0.5 m.",
+      "Step 4: Substitute the value into the formula.\n\nVolume = (0.5)³.",
+      "Step 5: Perform the calculation.\n\n0.5 × 0.5 × 0.5 = 0.125.",
+      "Step 6: Attach the correct unit.\n\nVolume = 0.125 m³.",
+      "Step 7: Therefore, the container can hold 0.125 m³ of liquid when completely filled."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 0.025 m³ results from an incorrect multiplication of the cube dimensions and significantly underestimates the container's capacity.",
+      "C. 0.250 m³ is twice the correct value and would not result from cubing an edge length of 0.5 m.",
+      "D. 1.500 m³ is far greater than the actual volume and would correspond to a much larger container."
+    ],
+    "exam_tip": "JAMB frequently presents volume questions within practical contexts such as tanks, containers, blocks and laboratory equipment. Always identify the shape first before selecting the appropriate volume formula.",
+    "final_answer": "B. 0.125 m³",
+    "simple_explanation": "The container is a cube, so its volume is found by multiplying its edge length three times. Since 0.5 × 0.5 × 0.5 = 0.125, the volume is 0.125 m³.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Volume Measurement to learn how to determine the volumes of cubes, cuboids, cylinders and other bodies used in practical Physics. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations, practical applications and examination tips."
+  },
+  "tags": [
+    "volume_measurement",
+    "cube",
+    "container_capacity",
+    "regular_solids",
+    "practical_physics",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q168",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measurement of regular bodies",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A manufacturer of wooden educational blocks needs to determine the volume of a cuboid-shaped block before calculating its density. Measurements taken with a metre rule show that the block is 12 cm long, 5 cm wide and 4 cm high. What is the volume of the block?",
+  "options": {
+    "A": "21 cm³",
+    "B": "60 cm³",
+    "C": "240 cm³",
+    "D": "480 cm³"
+  },
+  "answer": "C",
+  "answer_text": "240 cm³",
+  "explanation": {
+    "question_restate": "The question requires you to determine the volume of a regular solid body in the shape of a cuboid using its measured dimensions.",
+
+    "principle": "Regular bodies are objects whose shapes have well-defined geometrical forms such as cubes, cuboids, cylinders and spheres.\n\nUnlike irregular bodies, whose volumes are often determined using displacement methods, the volumes of regular bodies can be calculated directly from their measured dimensions.\n\nA beginner may ask: 'Why do we calculate volume before finding density?' The reason is that density depends on both mass and volume. In many Physics experiments, the dimensions of a regular object are measured first so that its volume can be determined accurately.\n\nA cuboid is a three-dimensional object with rectangular faces. Its volume is obtained by multiplying its length, width (breadth) and height.\n\nVolume = Length × Width × Height\n\nThe unit of volume is a cubic unit. When dimensions are measured in centimetres, the volume is expressed in cubic centimetres (cm³).",
+
+    "steps": [
+      "Step 1: Identify the shape of the object.\n\nThe wooden block is a cuboid, which is a regular solid body.",
+      "Step 2: Recall the formula for the volume of a cuboid.\n\nVolume = Length × Width × Height.",
+      "Step 3: Substitute the measured dimensions into the formula.\n\nVolume = 12 cm × 5 cm × 4 cm.",
+      "Step 4: Multiply the dimensions.\n\n12 × 5 = 60.",
+      "Step 5: Multiply the result by the remaining dimension.\n\n60 × 4 = 240.",
+      "Step 6: Attach the correct unit.\n\nVolume = 240 cm³.",
+      "Step 7: Therefore, the volume of the wooden block is 240 cm³."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 21 cm³ is not obtained from the correct cuboid volume formula and is far smaller than the actual volume of the block.",
+      "B. 60 cm³ results from multiplying only the length and width while ignoring the height of the cuboid.",
+      "D. 480 cm³ is twice the correct value and results from an incorrect multiplication procedure."
+    ],
+
+    "exam_tip": "JAMB frequently tests the measurement of regular bodies through practical situations involving density experiments and material testing. Always identify the shape of the object first and then apply the appropriate volume formula before carrying out calculations.",
+
+    "final_answer": "C. 240 cm³",
+
+    "simple_explanation": "A cuboid's volume is found by multiplying its length, width and height together. Therefore, 12 × 5 × 4 = 240, giving a volume of 240 cm³.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Regular Bodies to learn how to determine the dimensions, volumes and densities of regular solids such as cubes, cuboids, cylinders and spheres. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions, detailed explanations and examination tips."
+  },
+  "tags": [
+    "measurement_of_regular_bodies",
+    "cuboid",
+    "volume",
+    "density_experiments",
+    "practical_physics",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q169",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measurement of irregular bodies",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A geology team collecting rock samples from a riverbed needed to determine the volume of a pebble with an irregular shape. An overflow can was filled to the spout and the pebble was completely immersed. The water collected from the spout measured 22 cm³ in a measuring cylinder. What is the volume of the pebble?",
+  "options": {
+    "A": "11 cm³",
+    "B": "22 cm³",
+    "C": "44 cm³",
+    "D": "66 cm³"
+  },
+  "answer": "B",
+  "answer_text": "22 cm³",
+  "explanation": {
+    "question_restate": "The question requires you to determine the volume of an irregularly shaped pebble using the overflow-can method of volume measurement.",
+    
+    "principle": "Many objects encountered in Physics and everyday life do not have regular geometric shapes. Examples include stones, pebbles, metal castings and pieces of ore.\n\nBecause such objects lack definite dimensions that can be substituted into geometric formulas, their volumes cannot be calculated directly using equations for cubes, cylinders or spheres.\n\nA beginner may ask: 'How then can the volume of an irregular object be determined?' The answer lies in the displacement principle.\n\nWhen an object is completely immersed in a liquid, it displaces a volume of liquid equal to its own volume.\n\nAn overflow can is specially designed to make use of this principle. When the object is immersed, excess water flows out through the spout and can be collected in a measuring cylinder.\n\nThe volume of the collected water is exactly equal to the volume of the immersed object.\n\nThis technique is widely used in Physics laboratories, geology, engineering and materials testing when dealing with irregular bodies.",
+    
+    "steps": [
+      "Step 1: Identify the method used in the experiment. The overflow-can method is being used.",
+      "Step 2: Recall the displacement principle, which states that the volume of liquid displaced equals the volume of the immersed object.",
+      "Step 3: Determine the volume of water collected from the overflow can.",
+      "Step 4: The measuring cylinder shows that 22 cm³ of water was collected.",
+      "Step 5: Since the displaced water volume equals the pebble's volume, the volume of the pebble is 22 cm³."
+    ],
+    
+    "why_other_options_are_wrong": [
+      "A. 11 cm³ is only half of the displaced water volume and has no basis in the experiment described.",
+      "B. Correct. The volume of water displaced is equal to the volume of the pebble, giving 22 cm³.",
+      "C. 44 cm³ is obtained by incorrectly doubling the displaced volume.",
+      "D. 66 cm³ is three times the measured displaced volume and does not correspond to the experimental observation."
+    ],
+    
+    "exam_tip": "JAMB frequently tests measurement of irregular bodies through displacement methods involving measuring cylinders or overflow cans. Remember the key idea: Volume of object = Volume of liquid displaced.",
+    
+    "final_answer": "B. 22 cm³",
+    
+    "simple_explanation": "The pebble pushes water out of the overflow can when it is immersed. Since 22 cm³ of water is displaced, the pebble itself must occupy 22 cm³ of space.",
+    
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Irregular Bodies to learn how overflow cans, measuring cylinders and displacement methods are used to determine the volumes of irregular objects. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions, experimental applications and beginner-friendly explanations."
+  },
+  
+  "tags": [
+    "measurement_of_irregular_bodies",
+    "overflow_can",
+    "water_displacement",
+    "volume_measurement",
+    "practical_physics",
+    "phy_01"
+  ],
+  
+  "active": true
+},
+{
+  "id": "phy_01_q170",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Metre rule",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "While checking the dimensions of a machine component, an apprentice engineer noticed that the zero end of a metre rule was damaged. To obtain an accurate measurement of the component's length, which of the following procedures is most appropriate?",
+  "options": {
+    "A": "Measure from the damaged zero mark and record the reading directly",
+    "B": "Place the component against any convenient point on the scale and subtract the initial reading from the final reading",
+    "C": "Estimate the missing portion of the scale by eye and add it to the reading",
+    "D": "Use only the final reading because the initial reading is unnecessary"
+  },
+  "answer": "B",
+  "answer_text": "Place the component against any convenient point on the scale and subtract the initial reading from the final reading",
+  "explanation": {
+    "question_restate": "The question tests your understanding of the correct procedure for using a metre rule when the zero end is damaged or worn out.",
+    
+    "principle": "In practical Physics, accurate measurements are often more important than the condition of the instrument itself. A common problem encountered with frequently used metre rules is damage to the zero end. If the zero mark is chipped, worn out or no longer clearly visible, measurements taken directly from that point may be inaccurate.\n\nA beginner may ask: 'Does a damaged zero end mean the metre rule cannot be used?' The answer is no. The metre rule can still provide accurate measurements if the user adopts the correct technique.\n\nInstead of starting from the damaged zero mark, the object should be placed so that one end aligns with another clearly visible mark on the scale. The reading at the second end of the object is then recorded. The true length of the object is obtained by subtracting the initial reading from the final reading.\n\nThis method eliminates errors associated with a damaged zero mark and is widely used in laboratory measurements. JAMB frequently tests this practical skill because it demonstrates an understanding of experimental accuracy rather than simple scale reading.",
+    
+    "steps": [
+      "Step 1: Identify the problem described in the question. The zero end of the metre rule is damaged.",
+      "Step 2: Recognize that measurements taken directly from a damaged zero mark may be inaccurate.",
+      "Step 3: Recall the standard laboratory procedure for overcoming this problem.",
+      "Step 4: Place one end of the object at another clearly visible mark on the scale, such as 2 cm or 5 cm.",
+      "Step 5: Record both the initial and final scale readings.",
+      "Step 6: Calculate the length using: Length = Final Reading − Initial Reading.",
+      "Step 7: Therefore, the correct procedure is to subtract the initial reading from the final reading after measuring from a convenient point on the scale."
+    ],
+    
+    "why_other_options_are_wrong": [
+      "A. Measuring directly from a damaged zero mark can introduce systematic error because the true zero position is no longer known accurately.",
+      "C. Estimating the missing portion of the scale by eye introduces unnecessary uncertainty and reduces measurement reliability.",
+      "D. The final reading alone does not represent the object's length unless the measurement begins exactly at a known zero point."
+    ],
+    
+    "exam_tip": "JAMB frequently tests practical measurement techniques rather than calculations alone. Whenever a metre rule has a damaged zero end, remember that the correct approach is to take both initial and final readings and find their difference.",
+    
+    "final_answer": "B. Place the component against any convenient point on the scale and subtract the initial reading from the final reading",
+    
+    "simple_explanation": "If the zero end of a ruler is damaged, do not start measuring from that point. Start from another clear mark on the ruler and subtract the starting reading from the ending reading. This gives the correct length.",
+    
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Metre Rule to learn about correct scale reading, least count, parallax error, damaged-zero correction and other practical measurement techniques. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and detailed explanations."
+  },
+  "tags": [
+    "metre_rule",
+    "length_measurement",
+    "experimental_accuracy",
+    "damaged_zero_error",
+    "practical_physics",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q171",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Vernier calipers",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A machinist producing metal washers needs to verify the internal diameter of a washer before it is fitted into an assembly. A Vernier caliper with a least count of 0.01 cm is used. The zero of the Vernier scale lies between 4.1 cm and 4.2 cm on the main scale, while the 8th Vernier division coincides exactly with a main-scale mark. What is the internal diameter of the washer?",
+  "options": {
+    "A": "4.08 cm",
+    "B": "4.18 cm",
+    "C": "4.28 cm",
+    "D": "4.80 cm"
+  },
+  "answer": "B",
+  "answer_text": "4.18 cm",
+  "explanation": {
+    "question_restate": "The question requires you to determine the internal diameter of a metal washer from Vernier caliper readings obtained during a quality-control measurement.",
+
+    "principle": "A Vernier caliper is a precision instrument used for measuring external diameters, internal diameters and depths more accurately than an ordinary ruler.\n\nA beginner may ask: 'Why use a Vernier caliper for a washer?' The reason is that the opening of a washer must often meet specific engineering tolerances. Small errors in measurement may prevent proper fitting of machine parts.\n\nThe Vernier caliper consists of a main scale and a Vernier scale. The final reading is obtained by combining both readings.\n\nReading = Main Scale Reading + (Coinciding Vernier Division × Least Count).\n\nThe least count represents the smallest value that the instrument can measure directly. Accurate interpretation of Vernier readings is an important practical skill frequently tested in JAMB Physics.",
+
+    "steps": [
+      "Step 1: Identify the main scale reading.\n\nSince the Vernier zero lies between 4.1 cm and 4.2 cm, the main scale reading is 4.10 cm.",
+      "Step 2: Identify the coinciding Vernier division.\n\nThe 8th Vernier division coincides with a main-scale mark.",
+      "Step 3: Calculate the Vernier contribution.\n\nVernier contribution = 8 × 0.01 cm = 0.08 cm.",
+      "Step 4: Add the Vernier contribution to the main scale reading.\n\nTotal reading = 4.10 cm + 0.08 cm.",
+      "Step 5: Obtain the final measurement.\n\nTotal reading = 4.18 cm.",
+      "Step 6: Therefore, the internal diameter of the washer is 4.18 cm."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 4.08 cm ignores the main scale reading and uses only the Vernier contribution.",
+      "C. 4.28 cm would require a Vernier contribution of 0.18 cm rather than 0.08 cm.",
+      "D. 4.80 cm results from misinterpreting the Vernier reading and incorrectly reversing the digits."
+    ],
+
+    "exam_tip": "In JAMB questions involving Vernier calipers, first determine the main scale reading immediately before the Vernier zero. Then add the Vernier contribution obtained from the coinciding division and the least count.",
+
+    "final_answer": "B. 4.18 cm",
+
+    "simple_explanation": "The main scale gives 4.10 cm while the Vernier scale contributes 0.08 cm. Adding them gives 4.18 cm.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Vernier Calipers to learn how to measure internal diameters, external diameters and depths accurately. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and explanations."
+  },
+
+  "tags": [
+    "vernier_calipers",
+    "internal_diameter",
+    "precision_measurement",
+    "quality_control",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+  "id": "phy_01_q172",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Micrometer screw gauge",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A manufacturing company checks the thickness of a metal coin before packaging. A micrometer screw gauge with a least count of 0.01 mm is used. The sleeve scale reading is 3.5 mm and the 34th division on the thimble coincides with the reference line. What is the thickness of the coin?",
+  "options": {
+    "A": "3.34 mm",
+    "B": "3.50 mm",
+    "C": "3.84 mm",
+    "D": "4.34 mm"
+  },
+  "answer": "C",
+  "answer_text": "3.84 mm",
+  "explanation": {
+    "question_restate": "The question requires you to determine the thickness of a coin using readings obtained from a micrometer screw gauge.",
+
+    "principle": "The micrometer screw gauge is one of the most precise instruments used in school Physics laboratories for measuring small thicknesses and diameters.\n\nA beginner may ask: 'Why not use a ruler?' The thickness of objects such as coins, thin sheets and small machine components is often too small to be measured accurately with an ordinary ruler.\n\nA micrometer screw gauge provides high precision because it combines a sleeve scale with a rotating thimble scale.\n\nThe total reading is obtained using:\n\nMicrometer Reading = Sleeve Reading + (Thimble Division × Least Count).\n\nUnderstanding how to combine these two readings correctly is essential for practical Physics and engineering measurements.",
+
+    "steps": [
+      "Step 1: Identify the sleeve reading.\n\nSleeve reading = 3.50 mm.",
+      "Step 2: Identify the coinciding thimble division.\n\nThe 34th division coincides with the reference line.",
+      "Step 3: Calculate the thimble contribution.\n\nThimble contribution = 34 × 0.01 mm = 0.34 mm.",
+      "Step 4: Add the sleeve reading and the thimble contribution.\n\nTotal reading = 3.50 mm + 0.34 mm.",
+      "Step 5: Calculate the final value.\n\nTotal reading = 3.84 mm.",
+      "Step 6: Therefore, the thickness of the coin is 3.84 mm."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 3.34 mm ignores part of the sleeve reading and therefore underestimates the thickness.",
+      "B. 3.50 mm represents only the sleeve reading and neglects the thimble contribution.",
+      "D. 4.34 mm results from adding an incorrect thimble contribution of 0.84 mm instead of 0.34 mm."
+    ],
+
+    "exam_tip": "JAMB frequently tests micrometer screw gauge readings. Always read the sleeve scale first, calculate the thimble contribution using the least count, and then add both values carefully.",
+
+    "final_answer": "C. 3.84 mm",
+
+    "simple_explanation": "The sleeve contributes 3.50 mm and the thimble contributes 0.34 mm. Together they give a thickness of 3.84 mm.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Micrometer Screw Gauge to study sleeve readings, thimble readings, least count, zero error and practical measurement applications. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations and worked examples."
+  },
+
+  "tags": [
+    "micrometer_screw_gauge",
+    "thickness_measurement",
+    "precision_measurement",
+    "manufacturing",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+  "id": "phy_01_q173",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measuring cylinder",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A chemistry laboratory requires exactly 50 cm³ of distilled water for an experiment. A student pours water into a measuring cylinder and observes the liquid level from above the meniscus. Which of the following is the most likely consequence of this method of observation?",
+  "options": {
+    "A": "The reading may be affected by parallax error",
+    "B": "The volume of the water will increase",
+    "C": "The mass of the water will decrease",
+    "D": "The measuring cylinder will become less sensitive"
+  },
+  "answer": "A",
+  "answer_text": "The reading may be affected by parallax error",
+  "explanation": {
+    "question_restate": "The question tests your understanding of the correct procedure for taking readings from a measuring cylinder and the error that may arise when the liquid level is viewed incorrectly.",
+
+    "principle": "A measuring cylinder is commonly used in Physics and Chemistry laboratories to measure the volume of liquids.\n\nTo obtain an accurate reading, the observer's eye must be placed at the same horizontal level as the meniscus. The meniscus is the curved surface formed by a liquid inside a container.\n\nA beginner may ask: 'Why does eye position matter?' When the liquid level is viewed from above or below, the apparent position of the meniscus changes. This creates an observational error known as parallax error.\n\nParallax error does not change the actual volume of the liquid. Instead, it causes the observer to record an incorrect reading.\n\nAccurate volume measurement is important because errors in volume can affect calculations involving density, concentration and other experimental results.",
+
+    "steps": [
+      "Step 1: Identify the instrument involved, which is a measuring cylinder.",
+      "Step 2: Note that the liquid level is viewed from above rather than at eye level.",
+      "Step 3: Recall that readings should be taken with the eye level with the meniscus.",
+      "Step 4: Recognize that viewing from an incorrect angle introduces parallax error.",
+      "Step 5: Conclude that the recorded volume may be inaccurate because of parallax error."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. Correct. Looking at the meniscus from above can produce parallax error and lead to an incorrect reading.",
+      "B. The actual volume of water does not increase simply because it is observed from a different angle.",
+      "C. The mass of the water remains unchanged during observation.",
+      "D. Sensitivity is a property of the instrument and is not altered by the observer's viewing position."
+    ],
+
+    "exam_tip": "JAMB frequently tests practical measurement skills. Whenever a liquid is measured with a measuring cylinder, remember that the reading should be taken at eye level and from the correct meniscus position.",
+
+    "final_answer": "A. The reading may be affected by parallax error",
+
+    "simple_explanation": "Looking at the liquid from above makes the level appear different from its true position. This causes parallax error and may lead to a wrong volume reading.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measuring Cylinder to learn about meniscus readings, parallax error, volume measurements and practical laboratory techniques. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics explanations and examples."
+  },
+
+  "tags": [
+    "measuring_cylinder",
+    "volume_measurement",
+    "parallax_error",
+    "meniscus",
+    "practical_physics",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+  "id": "phy_01_q174",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Beam balance",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "While preparing samples for a density experiment, a laboratory assistant notices that the beam balance tilts downward on the side containing the metal specimen. What does this observation indicate before any adjustment is made?",
+  "options": {
+    "A": "The specimen has less mass than the standard masses",
+    "B": "The specimen and standard masses are balanced",
+    "C": "The specimen has greater mass than the standard masses",
+    "D": "The beam balance is measuring the volume of the specimen"
+  },
+  "answer": "C",
+  "answer_text": "The specimen has greater mass than the standard masses",
+  "explanation": {
+    "question_restate": "The question tests your understanding of how a beam balance indicates whether an object's mass is greater than, less than or equal to the masses placed on the opposite pan.",
+
+    "principle": "A beam balance is used to compare an unknown mass with known standard masses.\n\nThe instrument operates on the principle of moments and equilibrium. When the masses on both sides are equal, the beam remains horizontal.\n\nA beginner may ask: 'What causes the beam to tilt?' The side with the greater mass produces a larger turning effect and moves downward.\n\nBy observing the direction of tilt, an experimenter can determine whether additional standard masses should be added or removed.\n\nBeam balances are widely used in laboratories because they provide reliable measurements of mass and are not significantly affected by local variations in gravitational field strength.",
+
+    "steps": [
+      "Step 1: Identify the observation given in the question.",
+      "Step 2: The side containing the metal specimen tilts downward.",
+      "Step 3: Recall that the heavier side of a beam balance moves downward.",
+      "Step 4: Compare the specimen side with the side containing standard masses.",
+      "Step 5: Conclude that the specimen currently has greater mass than the standard masses on the opposite pan."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. If the specimen had less mass, the opposite side would tilt downward instead.",
+      "B. A balanced condition would leave the beam horizontal rather than tilted.",
+      "C. Correct. The downward movement indicates that the specimen side is heavier.",
+      "D. A beam balance measures mass by comparison and does not directly measure volume."
+    ],
+
+    "exam_tip": "In beam-balance questions, always observe which side moves downward. The lower side corresponds to the greater mass, while a horizontal beam indicates equal masses.",
+
+    "final_answer": "C. The specimen has greater mass than the standard masses",
+
+    "simple_explanation": "A beam balance behaves like a seesaw. The heavier side goes down. Since the specimen side tilts downward, the specimen is heavier than the masses on the other pan.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Beam Balance to learn how beam balances operate, how equilibrium is achieved and how mass measurements are carried out in practical Physics experiments. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and detailed explanations."
+  },
+
+  "tags": [
+    "beam_balance",
+    "mass_measurement",
+    "equilibrium",
+    "laboratory_instruments",
+    "practical_physics",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+  "id": "phy_01_q175",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measurement of mass",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A geologist collected rock samples from different locations during a field survey. Before comparing the samples in the laboratory, she needed an instrument that would determine the amount of matter contained in each sample rather than the gravitational force acting on it. Which instrument is most suitable for this purpose?",
+  "options": {
+    "A": "Spring balance",
+    "B": "Beam balance",
+    "C": "Stopwatch",
+    "D": "Measuring cylinder"
+  },
+  "answer": "B",
+  "answer_text": "Beam balance",
+  "explanation": {
+    "question_restate": "The question requires you to identify the instrument that measures mass rather than weight when comparing rock samples collected from different locations.",
+
+    "principle": "Mass and weight are related but different physical quantities.\n\nMass is the amount of matter contained in an object and remains constant regardless of location. It is measured in kilograms (kg).\n\nWeight is the gravitational force acting on an object. Since gravitational field strength can vary slightly from one location to another, weight may change even when mass remains the same.\n\nA beginner may ask: 'Why is it important to distinguish between mass and weight?' In scientific investigations, researchers often need to compare the actual quantity of matter in different samples. For such comparisons, mass is more reliable because it does not depend on local gravitational conditions.\n\nA beam balance measures mass by comparing an unknown mass with standard masses. Because both sides of the balance experience the same gravitational effects, the comparison remains valid and the mass can be determined accurately.",
+
+    "steps": [
+      "Step 1: Identify the quantity the geologist wants to measure.",
+      "Step 2: The question specifically refers to the amount of matter in each sample, which is mass.",
+      "Step 3: Recall the instrument commonly used to measure mass in laboratories.",
+      "Step 4: A beam balance compares an unknown mass with known standard masses.",
+      "Step 5: Unlike a spring balance, its measurement is not based directly on gravitational force.",
+      "Step 6: Therefore, the most suitable instrument is a beam balance."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. A spring balance measures weight, which is a force. Its reading depends on gravitational field strength and does not directly measure mass.",
+      "C. A stopwatch is used for measuring time intervals and has no role in determining mass.",
+      "D. A measuring cylinder is used for measuring the volume of liquids or determining the volume of irregular solids by displacement."
+    ],
+
+    "exam_tip": "JAMB frequently tests the distinction between mass and weight. Remember that beam balances measure mass through comparison, while spring balances measure weight as a force.",
+
+    "final_answer": "B. Beam balance",
+
+    "simple_explanation": "The geologist wants to know how much matter each rock contains. A beam balance is designed for measuring mass, while a spring balance measures weight.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Mass to learn about beam balances, spring balances, mass-weight differences and practical laboratory applications. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical examples."
+  },
+
+  "tags": [
+    "measurement_of_mass",
+    "beam_balance",
+    "mass_and_weight",
+    "laboratory_measurement",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+  "id": "phy_01_q176",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measurement of time",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "An engineer evaluating the performance of an automated factory machine recorded the duration of one operating cycle as 3 minutes 48 seconds. Before using the value in a Physics calculation, the duration must be expressed in SI units. What is the correct time interval?",
+  "options": {
+    "A": "188 s",
+    "B": "208 s",
+    "C": "228 s",
+    "D": "248 s"
+  },
+  "answer": "C",
+  "answer_text": "228 s",
+  "explanation": {
+    "question_restate": "The question requires you to convert a measured time interval from minutes and seconds into seconds, the SI unit of time.",
+
+    "principle": "Time is one of the seven fundamental quantities in Physics.\n\nThe SI unit of time is the second (s), and most Physics equations are designed to work with SI units.\n\nA beginner may ask: 'Why must time be converted into seconds before calculations?' Using standard SI units ensures consistency and prevents errors when substituting values into equations involving speed, acceleration, frequency, period and other physical quantities.\n\nIn practical situations, clocks, watches and timers may display time in mixed units such as hours, minutes and seconds. Before performing scientific calculations, these measurements should usually be converted into seconds.\n\nUseful relationships include:\n\n• 1 minute = 60 seconds\n• 1 hour = 3600 seconds\n\nCareful unit conversion is an essential skill frequently tested in JAMB Physics.",
+
+    "steps": [
+      "Step 1: Identify the recorded duration.",
+      "Step 2: The machine cycle lasted 3 minutes 48 seconds.",
+      "Step 3: Convert the minutes into seconds.",
+      "Step 4: 3 minutes = 3 × 60 = 180 seconds.",
+      "Step 5: Add the remaining 48 seconds.",
+      "Step 6: Total time = 180 + 48 = 228 seconds.",
+      "Step 7: Express the result in SI units as 228 s."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 188 s results from an incorrect conversion of the minutes into seconds.",
+      "B. 208 s is obtained when either the minutes or the additional seconds are handled incorrectly during conversion.",
+      "D. 248 s is larger than the correct value and results from an arithmetic error during addition."
+    ],
+
+    "exam_tip": "Whenever JAMB provides time in minutes and seconds, convert the minutes completely into seconds before adding the remaining seconds. This avoids mistakes and ensures that the answer is expressed in SI units.",
+
+    "final_answer": "C. 228 s",
+
+    "simple_explanation": "Three minutes contain 180 seconds. Adding the extra 48 seconds gives a total of 228 seconds.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Time to learn about SI units of time, stopwatches, clocks, timers and common JAMB conversion techniques. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more beginner-friendly JAMB-standard explanations and practical examples."
+  },
+
+  "tags": [
+    "measurement_of_time",
+    "time_conversion",
+    "si_units",
+    "fundamental_quantities",
+    "factory_operations",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+  "id": "phy_01_q177",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Time-measuring devices",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "Engineers testing an automatic railway crossing barrier needed to determine the time taken for the barrier to move from the fully open position to the fully closed position. Which of the following instruments would be most suitable for obtaining this measurement accurately?",
+  "options": {
+    "A": "Measuring cylinder",
+    "B": "Stopwatch",
+    "C": "Beam balance",
+    "D": "Vernier calipers"
+  },
+  "answer": "B",
+  "answer_text": "Stopwatch",
+  "explanation": {
+    "question_restate": "The question requires you to identify the most appropriate instrument for measuring the duration of an event involving the movement of a railway crossing barrier.",
+    "principle": "Time is one of the seven fundamental quantities in Physics and is measured in seconds (s) in the International System of Units (SI).\n\nIn practical Physics, selecting the correct measuring instrument is just as important as performing calculations correctly. Different instruments are designed to measure different physical quantities.\n\nA beginner may ask: 'Why can't any instrument be used to measure time?' The answer is that measuring instruments are designed for specific quantities. An instrument that measures mass cannot measure time, just as an instrument designed for volume cannot determine distance.\n\nWhen measuring the duration of events that last only a few seconds or minutes, a stopwatch is usually the preferred instrument because it can be started and stopped precisely at the required moments.\n\nExamples of applications include timing races, measuring the period of a pendulum, determining reaction times and monitoring industrial processes.",
+    "steps": [
+      "Step 1: Identify the quantity being measured in the scenario.",
+      "Step 2: The engineers need to determine how long the barrier takes to move from one position to another.",
+      "Step 3: Recognize that the required quantity is time.",
+      "Step 4: Recall the instrument specifically designed for measuring short time intervals accurately.",
+      "Step 5: A stopwatch is designed to start, stop and record elapsed time.",
+      "Step 6: Therefore, the most suitable instrument is the stopwatch."
+    ],
+    "why_other_options_are_wrong": [
+      "A. A measuring cylinder is used for measuring the volume of liquids and cannot determine time intervals.",
+      "C. A beam balance is used for comparing masses and measuring mass, not time.",
+      "D. Vernier calipers are used for measuring lengths, diameters and depths with high precision and are unsuitable for timing events."
+    ],
+    "exam_tip": "JAMB frequently tests the relationship between physical quantities and their measuring instruments. Always identify the quantity first before selecting the instrument.",
+    "final_answer": "B. Stopwatch",
+    "simple_explanation": "The engineers want to know how long the barrier takes to move. Since time is being measured, a stopwatch is the correct instrument.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Time-Measuring Devices to learn about stopwatches, clocks, electronic timers and their practical applications. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics questions and explanations."
+  },
+  "tags": [
+    "time_measuring_devices",
+    "stopwatch",
+    "time_measurement",
+    "industrial_applications",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q178",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Fundamental quantities",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A calibration specialist was checking the sensors installed in a weather-monitoring station. One of the sensors measures a quantity whose SI base unit is the kelvin (K). Which physical quantity does this sensor measure?",
+  "options": {
+    "A": "Temperature",
+    "B": "Pressure",
+    "C": "Energy",
+    "D": "Density"
+  },
+  "answer": "A",
+  "answer_text": "Temperature",
+  "explanation": {
+    "question_restate": "The question requires you to identify the fundamental physical quantity that is measured in kelvin (K).",
+    "principle": "Fundamental quantities are independent physical quantities that form the foundation of measurement in Physics.\n\nA beginner may ask: 'Why are they called fundamental quantities?' They are called fundamental because they do not depend on other physical quantities for their definition. Many other quantities in Physics are derived from them.\n\nThe seven SI base quantities are length, mass, time, electric current, thermodynamic temperature, amount of substance and luminous intensity.\n\nEach fundamental quantity has a corresponding SI base unit. For thermodynamic temperature, the SI base unit is the kelvin (K).\n\nTemperature plays an important role in scientific investigations, weather monitoring, industrial production, refrigeration systems and many laboratory experiments.",
+    "steps": [
+      "Step 1: Identify the SI unit mentioned in the question.",
+      "Step 2: The unit given is the kelvin (K).",
+      "Step 3: Recall the SI base quantities and their corresponding units.",
+      "Step 4: Kelvin is the SI base unit assigned to thermodynamic temperature.",
+      "Step 5: Examine the options provided.",
+      "Step 6: Therefore, the physical quantity measured in kelvin is temperature."
+    ],
+    "why_other_options_are_wrong": [
+      "B. Pressure is a derived quantity measured in pascals (Pa), not kelvin.",
+      "C. Energy is a derived quantity measured in joules (J), not kelvin.",
+      "D. Density is a derived quantity measured in kilograms per cubic metre (kg m⁻³), not kelvin."
+    ],
+    "exam_tip": "JAMB frequently asks candidates to match SI units with their corresponding physical quantities. Learn the seven SI base quantities and their units thoroughly.",
+    "final_answer": "A. Temperature",
+    "simple_explanation": "Kelvin (K) is the standard SI unit used for measuring temperature. Therefore, a sensor calibrated in kelvin measures temperature.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Fundamental Quantities to study SI base quantities, SI units and their practical applications in science and technology. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations and examination tips."
+  },
+  "tags": [
+    "fundamental_quantities",
+    "temperature",
+    "kelvin",
+    "si_base_quantities",
+    "weather_monitoring",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q179",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Derived quantities",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A weather station monitors several physical quantities to study atmospheric conditions. Which of the following quantities is obtained by combining fundamental quantities and is therefore classified as a derived quantity?",
+  "options": {
+    "A": "Temperature",
+    "B": "Time",
+    "C": "Density",
+    "D": "Mass"
+  },
+  "answer": "C",
+  "answer_text": "Density",
+  "explanation": {
+    "question_restate": "The question requires you to identify the quantity that is formed from other physical quantities and is therefore classified as a derived quantity.",
+
+    "principle": "Physical quantities in Physics are grouped into two broad classes: fundamental quantities and derived quantities.\n\nFundamental quantities are independent quantities that do not depend on any other physical quantities for their definition. Examples include mass, length, time and temperature.\n\nDerived quantities are obtained by combining two or more fundamental quantities through mathematical relationships. They are called 'derived' because their values are derived from basic measurements.\n\nA beginner may ask: 'Why do scientists classify quantities this way?' The reason is that all measurements in Physics ultimately begin with a small number of base quantities. More complex quantities are then formed from these base quantities.\n\nDensity is a good example of a derived quantity because it is calculated by dividing mass by volume. Since mass and volume are measured separately before density is determined, density is classified as a derived quantity.",
+
+    "steps": [
+      "Step 1: Recall the meaning of a derived quantity.",
+      "Step 2: Examine each option and determine whether it can be measured directly or must be calculated from other quantities.",
+      "Step 3: Note that mass, time and temperature are SI base quantities.",
+      "Step 4: Recall that density is calculated using the relationship Density = Mass ÷ Volume.",
+      "Step 5: Since density depends on other measured quantities, it is a derived quantity.",
+      "Step 6: Therefore, the correct answer is density."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. Temperature is a fundamental quantity measured in kelvin (K) and does not depend on other quantities for its definition.",
+      "B. Time is a fundamental quantity measured in seconds (s) and is one of the SI base quantities.",
+      "D. Mass is a fundamental quantity measured in kilograms (kg) and is not derived from other measurements."
+    ],
+
+    "exam_tip": "JAMB frequently tests your ability to distinguish between fundamental and derived quantities. Whenever you see a quantity that can be expressed using a formula involving other quantities, it is usually a derived quantity.",
+
+    "final_answer": "C. Density",
+
+    "simple_explanation": "Density is calculated from mass and volume. Since it comes from combining other quantities, it is a derived quantity.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Derived Quantities to learn how quantities such as density, force, pressure, velocity and energy are obtained from SI base quantities. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical applications."
+  },
+
+  "tags": [
+    "derived_quantities",
+    "density",
+    "fundamental_quantities",
+    "si_units",
+    "physical_measurements",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+  "id": "phy_01_q180",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "SI units",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A laboratory report on fluid flow requires the pressure inside a hydraulic system to be stated using the correct SI unit. Which of the following SI units should be used?",
+  "options": {
+    "A": "Joule (J)",
+    "B": "Pascal (Pa)",
+    "C": "Newton (N)",
+    "D": "Watt (W)"
+  },
+  "answer": "B",
+  "answer_text": "Pascal (Pa)",
+  "explanation": {
+    "question_restate": "The question requires you to identify the correct SI unit used for measuring pressure in a hydraulic system.",
+
+    "principle": "The International System of Units (SI) provides standardized units for physical quantities so that measurements can be communicated and compared worldwide.\n\nA beginner may ask: 'Why is it important to use the correct SI unit?' Using the wrong unit can lead to confusion, incorrect calculations and engineering errors.\n\nPressure is a derived physical quantity that describes how much force acts on a unit area.\n\nIn Physics, pressure is defined as:\n\nPressure = Force ÷ Area.\n\nThe SI unit of pressure is the pascal (Pa), named after the French scientist Blaise Pascal.\n\nPressure measurements are important in hydraulic machines, vehicle tyres, weather forecasting, gas cylinders and many industrial applications.\n\nWhenever pressure is measured in scientific work, the accepted SI unit is the pascal.",
+
+    "steps": [
+      "Step 1: Identify the physical quantity mentioned in the question.",
+      "Step 2: The quantity is pressure.",
+      "Step 3: Recall the SI unit associated with pressure.",
+      "Step 4: Pressure is measured in pascals (Pa).",
+      "Step 5: Compare this unit with the options provided.",
+      "Step 6: Therefore, the correct answer is Pascal (Pa)."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. Joule (J) is the SI unit of work and energy, not pressure.",
+      "C. Newton (N) is the SI unit of force. Pressure depends on force but is not measured in newtons.",
+      "D. Watt (W) is the SI unit of power and represents the rate of doing work."
+    ],
+
+    "exam_tip": "JAMB often links physical quantities to their SI units. Learn common quantity-unit pairs such as Force → Newton, Energy → Joule, Power → Watt and Pressure → Pascal.",
+
+    "final_answer": "B. Pascal (Pa)",
+
+    "simple_explanation": "Pressure tells us how much force acts on a given area. The SI unit used to measure pressure is the pascal (Pa).",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → SI Units to study SI base units, SI derived units and their practical applications in science and engineering. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics questions and detailed explanations."
+  },
+
+  "tags": [
+    "si_units",
+    "pressure",
+    "pascal",
+    "derived_units",
+    "hydraulics",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+  "id": "phy_01_q181",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Dimensions of physical quantities",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "While evaluating the performance of a water pump, an engineer examined the quantity known as power, which describes the rate at which work is done. Which of the following represents the dimensional formula of power?",
+  "options": {
+    "A": "[ML²T⁻³]",
+    "B": "[MLT⁻²]",
+    "C": "[ML⁻¹T⁻²]",
+    "D": "[M⁰L²T⁻²]"
+  },
+  "answer": "A",
+  "answer_text": "[ML²T⁻³]",
+  "explanation": {
+    "question_restate": "The question requires you to identify the dimensional formula of power by expressing it in terms of the fundamental dimensions mass (M), length (L) and time (T).",
+
+    "principle": "Dimensions describe how a physical quantity depends on the fundamental quantities of mass, length and time.\n\nA beginner may ask: 'Why do engineers and physicists care about dimensions?' Dimensions help verify equations, check calculations and ensure that physical relationships are meaningful.\n\nPower is an important quantity in Physics and engineering because it measures how quickly work is done or energy is transferred. Electrical appliances, engines, pumps and machines are often rated according to their power output.\n\nPower is defined as:\n\nPower = Work ÷ Time.\n\nTherefore, to determine the dimensions of power, we first need the dimensions of work.",
+
+    "steps": [
+      "Step 1: Recall the relationship Power = Work ÷ Time.",
+      "Step 2: Recall that Work = Force × Distance.",
+      "Step 3: Write the dimensions of force as [MLT⁻²].",
+      "Step 4: Multiply by distance [L] to obtain the dimensions of work.\n\nWork = [MLT⁻²] × [L] = [ML²T⁻²].",
+      "Step 5: Divide the dimensions of work by time [T].",
+      "Step 6: Power = [ML²T⁻²] ÷ [T] = [ML²T⁻³].",
+      "Step 7: Therefore, the dimensional formula of power is [ML²T⁻³]."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. Correct. Power has dimensions [ML²T⁻³] because it is work done per unit time.",
+      "B. [MLT⁻²] is the dimensional formula of force, not power.",
+      "C. [ML⁻¹T⁻²] is the dimensional formula of pressure, which is force per unit area.",
+      "D. [M⁰L²T⁻²] lacks the mass dimension and therefore cannot represent power."
+    ],
+
+    "exam_tip": "JAMB frequently tests dimensional formulas through familiar quantities such as force, pressure, work, energy and power. Instead of memorizing dimensions, derive them from known Physics relationships whenever possible.",
+
+    "final_answer": "A. [ML²T⁻³]",
+
+    "simple_explanation": "Power tells us how fast work is done. Since work has dimensions [ML²T⁻²], dividing by time gives [ML²T⁻³].",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Dimensions of Physical Quantities to learn how dimensional formulas are derived from standard Physics equations. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and worked examples."
+  },
+
+  "tags": [
+    "dimensions_of_physical_quantities",
+    "power",
+    "work",
+    "dimensional_formula",
+    "engineering_applications",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+  "id": "phy_01_q182",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Dimensional analysis",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A student proposed that the period T of a simple pendulum could be calculated using the expression T = √(L/g), where L is length and g is acceleration due to gravity. Using dimensional analysis, which statement best describes the expression?",
+  "options": {
+    "A": "It is dimensionally correct because it has the dimensions of time.",
+    "B": "It is dimensionally incorrect because it has the dimensions of length.",
+    "C": "It is dimensionally incorrect because it has the dimensions of velocity.",
+    "D": "It is dimensionally correct because it has the dimensions of force."
+  },
+  "answer": "A",
+  "answer_text": "It is dimensionally correct because it has the dimensions of time.",
+  "explanation": {
+    "question_restate": "The question requires you to use dimensional analysis to determine whether the expression T = √(L/g) is dimensionally consistent with the quantity period.",
+
+    "principle": "Dimensional analysis is a powerful method used by physicists to test whether an equation is physically reasonable.\n\nA beginner may ask: 'Can dimensions prove that a formula is correct?' Not completely. Dimensional analysis cannot determine numerical constants such as 2, π or ½. However, it can reveal whether the dimensions on both sides of an equation are compatible.\n\nFor an equation to be dimensionally correct, both sides must have the same dimensions.\n\nThe period of a pendulum is a measure of time. Therefore, any valid expression for period must ultimately have the dimensions of time.\n\nThis technique is widely used in Physics, engineering and scientific research to detect errors before performing experiments or calculations.",
+
+    "steps": [
+      "Step 1: Recall the dimensions of length.\n\nL = [L].",
+      "Step 2: Recall the dimensions of acceleration due to gravity.\n\ng = [LT⁻²].",
+      "Step 3: Substitute these dimensions into the expression L/g.",
+      "Step 4: L/g = [L] ÷ [LT⁻²] = [T²].",
+      "Step 5: Take the square root of both sides.\n\n√([T²]) = [T].",
+      "Step 6: The resulting dimensions are those of time.",
+      "Step 7: Therefore, the expression is dimensionally correct for a period."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. Correct. The dimensions reduce to [T], which is the dimension of period.",
+      "B. The dimensions do not reduce to length. The length dimensions cancel during simplification.",
+      "C. Velocity has dimensions [LT⁻¹], which are not obtained from the expression.",
+      "D. Force has dimensions [MLT⁻²], which are completely different from the dimensions obtained."
+    ],
+
+    "exam_tip": "When using dimensional analysis, substitute dimensions first and simplify carefully before making conclusions. JAMB often tests whether candidates can verify equations without carrying out numerical calculations.",
+
+    "final_answer": "A. It is dimensionally correct because it has the dimensions of time.",
+
+    "simple_explanation": "Length divided by acceleration gives T². Taking the square root gives T, which represents time. Therefore, the expression is dimensionally consistent with period.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Dimensional Analysis to learn how dimensions are used to test equations, derive relationships and detect errors in Physics formulas. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard conceptual and application-based questions."
+  },
+
+  "tags": [
+    "dimensional_analysis",
+    "pendulum",
+    "period",
+    "equation_verification",
+    "physics_formulas",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+  "id": "phy_01_q183",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Unit conversion",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "An environmental scientist monitoring coastal erosion records that a section of shoreline has retreated by 0.085 km over a certain period. To compare the result with measurements obtained using SI base units, what is this distance in metres?",
+  "options": {
+    "A": "8.5 m",
+    "B": "85 m",
+    "C": "850 m",
+    "D": "8,500 m"
+  },
+  "answer": "B",
+  "answer_text": "85 m",
+  "explanation": {
+    "question_restate": "The question requires you to convert a distance measured in kilometres into metres, which is the SI base unit of length.",
+    "principle": "Unit conversion is an important aspect of Physics because measurements are often obtained in different units depending on the scale of the phenomenon being studied.\n\nScientists usually convert measurements into SI units before comparing results, performing calculations or presenting data. This helps to maintain consistency and reduces the likelihood of errors.\n\nA beginner may ask: 'Why can't we simply leave the answer in kilometres?' While kilometres are convenient for describing large distances, many Physics calculations require the SI base unit of length, which is the metre (m).\n\nThe metric prefix 'kilo-' means one thousand.\n\nTherefore:\n\n1 km = 1,000 m.\n\nWhenever a value is converted from kilometres to metres, the numerical value must be multiplied by 1,000.",
+    "steps": [
+      "Step 1: Identify the quantity given in the question.\n\nThe shoreline retreat is 0.085 km.",
+      "Step 2: Recall the conversion factor.\n\n1 km = 1,000 m.",
+      "Step 3: Multiply the value in kilometres by 1,000.\n\n0.085 × 1,000 = 85.",
+      "Step 4: Attach the appropriate SI unit.\n\nDistance = 85 m.",
+      "Step 5: Therefore, the shoreline retreated by 85 metres."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 8.5 m results from multiplying by 100 instead of 1,000.",
+      "C. 850 m is ten times larger than the correct value and results from an incorrect decimal-point shift.",
+      "D. 8,500 m is obtained by multiplying incorrectly and greatly overestimates the measured retreat."
+    ],
+    "exam_tip": "JAMB frequently tests metric conversions involving prefixes such as kilo-, centi-, milli- and micro-. Always recall the meaning of the prefix before performing the conversion.",
+    "final_answer": "B. 85 m",
+    "simple_explanation": "Since one kilometre equals 1,000 metres, multiplying 0.085 by 1,000 gives 85 metres.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Unit Conversion to learn metric prefixes, SI units and common JAMB conversion techniques. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations and practical applications."
+  },
+  "tags": [
+    "unit_conversion",
+    "metric_system",
+    "si_units",
+    "length_conversion",
+    "environmental_measurement",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q184",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Scientific notation",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "Engineers testing a communication system found that an electromagnetic wave travelled a distance of 92,000,000 m during a specified interval. How should this distance be expressed in standard form?",
+  "options": {
+    "A": "9.2 × 10⁶ m",
+    "B": "92 × 10⁶ m",
+    "C": "9.2 × 10⁷ m",
+    "D": "0.92 × 10⁸ m"
+  },
+  "answer": "C",
+  "answer_text": "9.2 × 10⁷ m",
+  "explanation": {
+    "question_restate": "The question requires you to express a very large measured distance in scientific notation, also called standard form.",
+    "principle": "Scientific notation is widely used in Physics to represent very large or very small quantities in a compact and convenient form.\n\nExamples include astronomical distances, wavelengths, particle sizes, radio-wave propagation distances and many other physical measurements.\n\nA beginner may ask: 'Why not write the full number?' Large numbers can be difficult to read, compare and use in calculations. Scientific notation makes calculations easier and reduces the risk of errors.\n\nA number is said to be in standard form when it is written as:\n\nA × 10ⁿ\n\nwhere:\n\n• A is greater than or equal to 1 but less than 10.\n• n is an integer.\n\nFor large numbers, the decimal point is moved to the left and the exponent becomes positive.",
+    "steps": [
+      "Step 1: Write the number.\n\n92,000,000.",
+      "Step 2: Move the decimal point until only one non-zero digit remains to its left.\n\n9.2.",
+      "Step 3: Count the number of places the decimal point was moved.\n\nThe decimal point moves 7 places.",
+      "Step 4: Since the decimal point was moved to the left, the exponent is positive.\n\nExponent = +7.",
+      "Step 5: Write the number in standard form.\n\n92,000,000 = 9.2 × 10⁷.",
+      "Step 6: Include the appropriate unit.\n\nDistance = 9.2 × 10⁷ m."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 9.2 × 10⁶ m represents 9,200,000 m, which is ten times smaller than the given value.",
+      "B. Although numerically equivalent to the given distance, the coefficient 92 is greater than 10 and therefore does not satisfy the conditions for standard form.",
+      "D. Although numerically equivalent to the value, the coefficient 0.92 is less than 1 and is not written in proper standard form."
+    ],
+    "exam_tip": "In JAMB, scientific notation questions often include distractors that have the correct value but are not written in proper standard form. Always ensure that the coefficient lies between 1 and 10.",
+    "final_answer": "C. 9.2 × 10⁷ m",
+    "simple_explanation": "Move the decimal point until the number becomes 9.2. Since it moved seven places to the left, the exponent is 7. Therefore, the answer is 9.2 × 10⁷ m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Scientific Notation to learn how physicists express very large and very small quantities. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations, worked examples and examination tips."
+  },
+  "tags": [
+    "scientific_notation",
+    "standard_form",
+    "large_numbers",
+    "electromagnetic_waves",
+    "physical_measurements",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q185",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Position and coordinates",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A drone operator monitoring an agricultural field uses a coordinate grid to track the location of a spraying drone. At a particular instant, the drone is recorded at coordinates (5, -2). Relative to the origin, where is the drone located?",
+  "options": {
+    "A": "First quadrant",
+    "B": "Second quadrant",
+    "C": "Third quadrant",
+    "D": "Fourth quadrant"
+  },
+  "answer": "D",
+  "answer_text": "Fourth quadrant",
+  "explanation": {
+    "question_restate": "The question requires you to determine the quadrant in which a drone is located when its position is given as (5, -2) on a coordinate grid.",
+
+    "principle": "Coordinates are used in Physics, navigation, engineering and surveying to specify the exact position of an object relative to a chosen reference point.\n\nThe reference point is called the origin and has coordinates (0, 0).\n\nA beginner may ask: 'Why are coordinates important in Physics?' Coordinates allow scientists and engineers to describe positions accurately and monitor how objects move from one location to another.\n\nThe Cartesian plane is divided into four quadrants:\n\n• First Quadrant: (+, +)\n• Second Quadrant: (-, +)\n• Third Quadrant: (-, -)\n• Fourth Quadrant: (+, -)\n\nThe signs of the x-coordinate and y-coordinate determine the quadrant in which an object is located.",
+
+    "steps": [
+      "Step 1: Identify the coordinates given in the question: (5, -2).",
+      "Step 2: Examine the x-coordinate. The value 5 is positive.",
+      "Step 3: Examine the y-coordinate. The value -2 is negative.",
+      "Step 4: Recall the sign combinations for the four quadrants.",
+      "Step 5: A point with a positive x-coordinate and a negative y-coordinate lies in the fourth quadrant.",
+      "Step 6: Therefore, the drone is located in the fourth quadrant."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. The first quadrant contains points with positive x-coordinates and positive y-coordinates.",
+      "B. The second quadrant contains points with negative x-coordinates and positive y-coordinates.",
+      "C. The third quadrant contains points with negative x-coordinates and negative y-coordinates.",
+      "D. Correct. The fourth quadrant contains points with positive x-coordinates and negative y-coordinates."
+    ],
+
+    "exam_tip": "For JAMB questions involving coordinates, focus first on the signs of the coordinates rather than their numerical values. The sign combination immediately identifies the quadrant.",
+
+    "final_answer": "D. Fourth quadrant",
+
+    "simple_explanation": "The coordinate 5 places the drone to the right of the origin, while -2 places it below the origin. A point that is right of the origin and below it lies in the fourth quadrant.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Position and Coordinates to learn how coordinate systems are used to describe locations, motion and reference points. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations and practical applications."
+  },
+
+  "tags": [
+    "position_and_coordinates",
+    "coordinate_system",
+    "quadrants",
+    "reference_points",
+    "drone_navigation",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+  "id": "phy_01_q186",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Distance and displacement",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A field engineer inspecting a pipeline walks 120 m north from a monitoring station and then 50 m south to examine a valve. Which of the following correctly gives the engineer's distance travelled and displacement?",
+  "options": {
+    "A": "170 m, 70 m north",
+    "B": "170 m, 170 m north",
+    "C": "70 m, 170 m north",
+    "D": "70 m, 70 m south"
+  },
+  "answer": "A",
+  "answer_text": "170 m, 70 m north",
+  "explanation": {
+    "question_restate": "The question tests your understanding of the difference between distance and displacement when motion occurs along the same straight line but in opposite directions.",
+
+    "principle": "Distance and displacement are closely related but distinct physical quantities.\n\nDistance is the total length of the path travelled regardless of direction. It is a scalar quantity because it has magnitude only.\n\nDisplacement is the straight-line change in position from the starting point to the final position together with direction. It is a vector quantity because it has both magnitude and direction.\n\nA beginner may ask: 'Why are distance and displacement sometimes different?' They differ whenever an object changes direction during its journey.\n\nIn practical situations such as surveying, navigation, pipeline inspection and transportation, engineers often need displacement because it indicates the actual change in position rather than the total path covered.",
+
+    "steps": [
+      "Step 1: Identify the first part of the journey. The engineer walks 120 m north.",
+      "Step 2: Identify the second part of the journey. The engineer walks 50 m south.",
+      "Step 3: Calculate the total distance travelled by adding the lengths of both journeys.",
+      "Step 4: Distance = 120 m + 50 m = 170 m.",
+      "Step 5: Determine the displacement by considering direction.",
+      "Step 6: Net displacement = 120 m north − 50 m south = 70 m north.",
+      "Step 7: Therefore, the distance travelled is 170 m and the displacement is 70 m north."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. Correct. The engineer travels a total distance of 170 m and ends up 70 m north of the starting point.",
+      "B. This incorrectly treats the total distance travelled as the displacement.",
+      "C. This incorrectly uses the displacement value as the distance travelled.",
+      "D. Although the magnitude of the displacement is 70 m, the direction is north rather than south."
+    ],
+
+    "exam_tip": "In JAMB questions, calculate distance by adding all path lengths travelled. Then calculate displacement separately by considering the final position relative to the starting position.",
+
+    "final_answer": "A. 170 m, 70 m north",
+
+    "simple_explanation": "The engineer walks a total of 170 m. However, because part of the journey is in the opposite direction, the final position is only 70 m north of where the journey started.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Distance and Displacement to learn the difference between scalar and vector quantities, practical navigation examples and common JAMB applications. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations and worked examples."
+  },
+
+  "tags": [
+    "distance_displacement",
+    "scalar_quantities",
+    "vector_quantities",
+    "pipeline_inspection",
+    "straight_line_motion",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+  "id": "phy_01_q187",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Frame of reference",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A drone pilot observes that a package suspended beneath a drone appears motionless while the drone flies at constant speed. However, an observer standing on the ground sees both the drone and the package moving across the sky. This difference in observation is best explained by the concept of",
+  "options": {
+    "A": "dimensional analysis",
+    "B": "frame of reference",
+    "C": "scientific notation",
+    "D": "fundamental quantities"
+  },
+  "answer": "B",
+  "answer_text": "frame of reference",
+  "explanation": {
+    "question_restate": "The question tests your understanding of why the same object can appear stationary to one observer and moving to another observer at the same time.",
+    "principle": "One of the most important ideas in Physics is that motion is relative.\n\nA beginner may ask: 'How can an object be moving and not moving at the same time?' The answer is that motion is always described relative to a chosen observer or reference point.\n\nA frame of reference is the viewpoint, coordinate system or object relative to which motion is described.\n\nIf two objects move together with the same velocity, they may appear stationary relative to each other even though both are moving relative to the ground.\n\nThis concept is encountered in everyday life. Passengers seated inside an aircraft appear at rest relative to one another, yet they are moving at high speed relative to the Earth below.\n\nIn Physics, every statement about motion should ideally specify the frame of reference being used.",
+    "steps": [
+      "Step 1: Identify the two observers involved in the situation.",
+      "Step 2: The drone pilot observes the package from the drone itself.",
+      "Step 3: Since the package and drone move together, the package appears stationary relative to the pilot.",
+      "Step 4: The observer on the ground uses the Earth as the reference point.",
+      "Step 5: Relative to the ground, both the drone and package are moving.",
+      "Step 6: The differing observations arise because different frames of reference are being used.",
+      "Step 7: Therefore, the correct answer is frame of reference."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Dimensional analysis is used to check the consistency of physical equations and does not explain relative observations of motion.",
+      "C. Scientific notation is a method of expressing very large or very small numbers and is unrelated to motion.",
+      "D. Fundamental quantities are basic measurable quantities such as length, mass and time and do not explain why observers perceive motion differently."
+    ],
+    "exam_tip": "Whenever JAMB presents two observers describing the same motion differently, immediately think about frame of reference. Motion and rest are relative concepts, not absolute ones.",
+    "final_answer": "B. frame of reference",
+    "simple_explanation": "The pilot and the ground observer are viewing the package from different reference points. Because they use different frames of reference, they describe its motion differently.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Frame of Reference to learn how observers describe motion differently and why motion is considered relative. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard conceptual Physics questions and explanations."
+  },
+  "tags": [
+    "frame_of_reference",
+    "relative_motion",
+    "observers",
+    "drone_motion",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q188",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Length measurement",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "An engineer inspecting newly manufactured steel pipes needs to determine the length of a pipe accurately. One end of the pipe is aligned with the 18.6 cm mark on a measuring scale, while the other end aligns with the 74.2 cm mark. What is the length of the pipe?",
+  "options": {
+    "A": "55.6 cm",
+    "B": "56.8 cm",
+    "C": "92.8 cm",
+    "D": "54.6 cm"
+  },
+  "answer": "A",
+  "answer_text": "55.6 cm",
+  "explanation": {
+    "question_restate": "The question requires you to determine the actual length of an object when its ends correspond to two different scale readings.",
+    "principle": "Length is one of the fundamental quantities in Physics and is commonly measured using instruments such as metre rules, measuring tapes and Vernier calipers.\n\nA beginner may ask: 'Why do we subtract readings instead of simply using the final reading?' The reason is that the object may not begin exactly at the zero mark of the measuring instrument.\n\nIn many practical situations, measurements are taken from arbitrary positions on a scale. When this happens, the actual length is obtained by subtracting the initial reading from the final reading.\n\nThis technique is frequently used when the zero edge of a ruler is damaged or when several objects are being measured on the same scale.\n\nAccurate interpretation of scale readings is an important practical skill tested in Physics examinations and laboratory work.",
+    "steps": [
+      "Step 1: Identify the initial scale reading.",
+      "Step 2: The pipe begins at the 18.6 cm mark.",
+      "Step 3: Identify the final scale reading.",
+      "Step 4: The pipe ends at the 74.2 cm mark.",
+      "Step 5: Apply the relationship: Length = Final Reading − Initial Reading.",
+      "Step 6: Substitute the values: Length = 74.2 cm − 18.6 cm.",
+      "Step 7: Calculate the difference to obtain 55.6 cm.",
+      "Step 8: Therefore, the length of the pipe is 55.6 cm."
+    ],
+    "why_other_options_are_wrong": [
+      "B. 56.8 cm results from an incorrect subtraction of the scale readings.",
+      "C. 92.8 cm is obtained by adding the two readings rather than finding their difference.",
+      "D. 54.6 cm is a computational error and does not correspond to the actual interval occupied by the pipe."
+    ],
+    "exam_tip": "JAMB frequently presents measurements that do not start from the zero mark. Always calculate the difference between the final and initial readings rather than assuming the final reading is the object's length.",
+    "final_answer": "A. 55.6 cm",
+    "simple_explanation": "The pipe occupies only the distance between the two marks. Subtracting 18.6 cm from 74.2 cm gives the actual length of 55.6 cm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Length Measurement to learn how to read scales correctly, avoid measurement errors and determine lengths accurately. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and explanations."
+  },
+  "tags": [
+    "length_measurement",
+    "scale_reading",
+    "metre_rule",
+    "practical_physics",
+    "phy_01"
+  ],
+  "active": true
 }
 
 
