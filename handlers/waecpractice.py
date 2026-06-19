@@ -1957,14 +1957,35 @@ async def send_current_waec_question(update: Update, context: ContextTypes.DEFAU
 
             safe_grade = md_escape(grade)
 
+            if score_100 >= 70:
+
+                outro = (
+                    "🌟 Excellent performance\\!\n\n"
+                    "You demonstrated a strong understanding of this subject\\. Keep it up\\."
+                )
+
+            elif score_100 >= 50:
+
+                outro = (
+                    "👍 Good performance\\!\n\n"
+                    "You passed this subject\\. Review the questions you missed and aim even higher next time\\."
+                )
+
+            else:
+
+                outro = (
+                    "📚 More practice is needed\\.\n\n"
+                    "Review your wrong answers carefully and try again\\. Improvement comes with practice\\."
+                )
+
             return await update.effective_message.reply_text(
                 f"⏰ *Mock time is up\\.*\n\n"
                 f"📚 Total Questions: *{safe_total}*\n"
                 f"✅ Correct: *{safe_correct_count}*\n"
                 f"❌ Wrong: *{safe_wrong_count}*\n"
-                f"💯 Score: *{safe_score_100}/100*\n"
+                f"💯 Score: *{safe_score_100}/100 \\({safe_percentage}%\\)*\n"
                 f"🏅 Grade: *{safe_grade}*\n\n"
-                "This subject mock has ended\\.",
+                f"{outro}",
                 parse_mode="MarkdownV2",
                 reply_markup=InlineKeyboardMarkup(
                     [
@@ -3730,5 +3751,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(waec_answer_handler, pattern=r"^wp_ans::"))
     application.add_handler(CallbackQueryHandler(waec_answer_details_handler, pattern=r"^wp_details::"))
     application.add_handler(CallbackQueryHandler(waec_next_handler, pattern=r"^wp_next::"))
-
 
