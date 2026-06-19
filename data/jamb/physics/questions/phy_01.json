@@ -6414,6 +6414,477 @@
     "phy_01"
   ],
   "active": true
+},
+{
+  "id": "phy_01_q131",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Time-measuring devices",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A sports official needs to determine the time taken by athletes to complete a 100 m race with an accuracy of a fraction of a second. Which of the following devices is most suitable for this purpose?",
+  "options": {
+    "A": "Wall clock",
+    "B": "Calendar",
+    "C": "Stopwatch",
+    "D": "Sundial"
+  },
+  "answer": "C",
+  "answer_text": "Stopwatch",
+  "explanation": {
+    "question_restate": "The question requires you to identify the most appropriate device for measuring a short time interval during a sporting event.",
+    "principle": "Different devices are designed to measure time over different ranges and with different levels of accuracy.\n\nIn Physics, the choice of a time-measuring device depends on the duration being measured and the precision required.\n\nA wall clock is useful for everyday activities such as knowing the time of day, while a calendar is used for measuring long periods such as days, months and years.\n\nA sundial is an ancient instrument that estimates time using the position of the Sun and is not suitable for precise measurements.\n\nA stopwatch is specifically designed to measure short time intervals accurately. For this reason, it is commonly used in laboratories, sporting events and scientific investigations.",
+    "steps": [
+      "Step 1: Identify the quantity being measured, which is time.",
+      "Step 2: Observe that the event lasts only a few seconds.",
+      "Step 3: Recognize that high precision is required.",
+      "Step 4: Compare the available devices based on their intended use.",
+      "Step 5: Conclude that a stopwatch is the most suitable device."
+    ],
+    "why_other_options_are_wrong": [
+      "A. A wall clock shows the time of day but is not sufficiently precise for timing a short race.",
+      "B. A calendar measures long periods such as days and months, not seconds.",
+      "D. A sundial depends on sunlight and cannot provide accurate timing for a race."
+    ],
+    "exam_tip": "Whenever JAMB asks for the most suitable time-measuring device, first consider the duration involved and the level of accuracy required.",
+    "final_answer": "C. Stopwatch",
+    "simple_explanation": "Athletes can finish a race within seconds. A stopwatch is designed to measure such short intervals accurately.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Time-Measuring Devices to learn the uses and limitations of clocks, stopwatches and other timing instruments."
+  },
+  "tags": [
+    "time_measuring_devices",
+    "stopwatch",
+    "measurement",
+    "timing",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q132",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Fundamental quantities",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A student preparing a laboratory report listed the quantities length, mass, density and time. Which of these quantities is NOT a fundamental quantity?",
+  "options": {
+    "A": "Length",
+    "B": "Mass",
+    "C": "Density",
+    "D": "Time"
+  },
+  "answer": "C",
+  "answer_text": "Density",
+  "explanation": {
+    "question_restate": "The question asks you to identify which quantity is derived rather than fundamental.",
+    "principle": "Fundamental quantities are basic physical quantities that cannot be expressed in terms of other physical quantities.\n\nThe SI system is built on fundamental quantities such as length, mass, time, electric current, temperature, amount of substance and luminous intensity.\n\nDerived quantities are obtained by combining fundamental quantities mathematically.\n\nDensity is defined as mass divided by volume. Since volume itself is derived from length measurements, density is a derived quantity rather than a fundamental quantity.",
+    "steps": [
+      "Step 1: Recall the meaning of a fundamental quantity.",
+      "Step 2: Examine each quantity listed.",
+      "Step 3: Identify quantities that exist independently.",
+      "Step 4: Recognize that density depends on mass and volume.",
+      "Step 5: Therefore density is not fundamental."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Length is one of the SI fundamental quantities.",
+      "B. Mass is a fundamental quantity measured in kilograms.",
+      "D. Time is a fundamental quantity measured in seconds."
+    ],
+    "exam_tip": "JAMB frequently tests the distinction between fundamental and derived quantities. Memorize the SI base quantities.",
+    "final_answer": "C. Density",
+    "simple_explanation": "Density is calculated from other quantities, so it is derived. Length, mass and time are fundamental quantities.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Fundamental Quantities."
+  },
+  "tags": [
+    "fundamental_quantities",
+    "density",
+    "si_system",
+    "base_quantities",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q133",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Derived quantities",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "An engineer evaluating the performance of a pumping system needed a quantity that describes the amount of space occupied by water. Which of the following is a derived quantity?",
+  "options": {
+    "A": "Mass",
+    "B": "Time",
+    "C": "Length",
+    "D": "Volume"
+  },
+  "answer": "D",
+  "answer_text": "Volume",
+  "explanation": {
+    "question_restate": "The question asks you to identify the derived quantity among the options given.",
+    "principle": "Derived quantities are obtained from combinations of fundamental quantities.\n\nVolume is calculated as length × width × height.\n\nSince it is obtained from multiplying three length measurements together, it depends on the fundamental quantity length.\n\nMass, length and time are fundamental quantities, whereas volume is derived.",
+    "steps": [
+      "Step 1: Recall the meaning of a derived quantity.",
+      "Step 2: Examine how each quantity is obtained.",
+      "Step 3: Note that volume depends on length measurements.",
+      "Step 4: Recognize that mass, length and time are base quantities.",
+      "Step 5: Therefore volume is the derived quantity."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Mass is a fundamental quantity.",
+      "B. Time is a fundamental quantity.",
+      "C. Length is a fundamental quantity.",
+      "D. Volume is derived from length measurements."
+    ],
+    "exam_tip": "A quick way to identify derived quantities is to ask whether the quantity can be expressed using other physical quantities.",
+    "final_answer": "D. Volume",
+    "simple_explanation": "Volume is calculated using length measurements, so it is a derived quantity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Derived Quantities."
+  },
+  "tags": [
+    "derived_quantities",
+    "volume",
+    "measurement",
+    "physical_quantities",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q134",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "SI units",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A manufacturer exporting laboratory equipment to different countries labels all instruments using internationally accepted units. Which SI unit should be used for measuring thermodynamic temperature?",
+  "options": {
+    "A": "Degree Celsius",
+    "B": "Kelvin",
+    "C": "Fahrenheit",
+    "D": "Joule"
+  },
+  "answer": "B",
+  "answer_text": "Kelvin",
+  "explanation": {
+    "question_restate": "The question asks for the SI base unit of thermodynamic temperature.",
+    "principle": "The International System of Units (SI) provides standard units that are accepted worldwide.\n\nUsing SI units allows scientists and engineers in different countries to communicate measurements consistently.\n\nThe SI base unit for thermodynamic temperature is the kelvin (K).\n\nAlthough degree Celsius is commonly used in everyday life, kelvin is the official SI base unit.",
+    "steps": [
+      "Step 1: Identify the physical quantity involved.",
+      "Step 2: Recall the SI base units.",
+      "Step 3: Match temperature with its SI unit.",
+      "Step 4: Distinguish between common units and SI base units.",
+      "Step 5: Select kelvin."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Degree Celsius is widely used but is not the SI base unit.",
+      "C. Fahrenheit is mainly used in a few countries and is not an SI unit.",
+      "D. Joule is the SI unit of energy."
+    ],
+    "exam_tip": "Memorizing the seven SI base units is one of the easiest ways to earn marks in JAMB Physics.",
+    "final_answer": "B. Kelvin",
+    "simple_explanation": "Scientists use kelvin as the standard SI unit for temperature measurements.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → SI Units."
+  },
+  "tags": [
+    "si_units",
+    "temperature",
+    "kelvin",
+    "measurement",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q135",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Dimensions of physical quantities",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "While checking the consistency of a Physics equation, a student needed the dimensional formula of velocity. Which of the following correctly represents the dimensions of velocity?",
+  "options": {
+    "A": "MLT⁻¹",
+    "B": "LT⁻¹",
+    "C": "ML²T⁻²",
+    "D": "L²T⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "LT⁻¹",
+  "explanation": {
+    "question_restate": "The question requires you to identify the correct dimensional formula for velocity.",
+    "principle": "Dimensions describe how a physical quantity depends on fundamental quantities.\n\nVelocity is defined as displacement divided by time.\n\nDisplacement has the dimension L, while time has the dimension T.\n\nTherefore, velocity has dimensions L/T, written as LT⁻¹.\n\nDimensional formulas help physicists check whether equations are physically meaningful.",
+    "steps": [
+      "Step 1: Recall the definition of velocity.",
+      "Step 2: Write velocity = displacement ÷ time.",
+      "Step 3: Replace displacement with L and time with T.",
+      "Step 4: Obtain L/T.",
+      "Step 5: Express it as LT⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "A. This incorrectly includes mass.",
+      "C. This is the dimensional formula for energy or work.",
+      "D. This has an incorrect power of length."
+    ],
+    "exam_tip": "When solving dimensional questions, start from the definition of the quantity and replace each quantity with its fundamental dimensions.",
+    "final_answer": "B. LT⁻¹",
+    "simple_explanation": "Velocity means distance travelled per unit time, so its dimensions are length divided by time.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Dimensions of Physical Quantities."
+  },
+  "tags": [
+    "dimensions",
+    "velocity",
+    "dimensional_formula",
+    "measurement",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q136",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Dimensional analysis",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A researcher proposes that the time period T of a vibrating system is given by T = m/k, where m is mass and k is a spring constant with dimensions [MLT⁻²]. Using dimensional analysis, what conclusion should be drawn?",
+  "options": {
+    "A": "The equation is dimensionally correct",
+    "B": "The equation gives the dimensions of velocity",
+    "C": "The equation is dimensionally inconsistent",
+    "D": "The equation gives the dimensions of force"
+  },
+  "answer": "C",
+  "answer_text": "The equation is dimensionally inconsistent",
+  "explanation": {
+    "question_restate": "The question asks you to use dimensional analysis to verify whether the proposed relationship for time period is physically acceptable.",
+    "principle": "Dimensional analysis is a powerful tool used in Physics to test whether an equation is likely to be correct.\n\nFor any valid physical equation, the dimensions on both sides of the equation must be identical.\n\nIf the dimensions do not match, the equation is immediately rejected because quantities with different dimensions cannot be equal.\n\nScientists and engineers often perform dimensional checks before conducting experiments or calculations.\n\nAlthough dimensional consistency does not guarantee that an equation is correct, dimensional inconsistency proves that it is wrong.",
+    "steps": [
+      "Step 1: Identify the dimensions of the right-hand side.",
+      "Step 2: Mass m has dimensions [M].",
+      "Step 3: Spring constant k has dimensions [MLT⁻²].",
+      "Step 4: Therefore m/k = [M]/[MLT⁻²] = [T²L⁻¹].",
+      "Step 5: Since [T²L⁻¹] is not the dimension of time [T], the equation is dimensionally inconsistent."
+    ],
+    "why_other_options_are_wrong": [
+      "A. The dimensions on both sides are not identical, so the equation cannot be correct dimensionally.",
+      "B. Velocity has dimensions [LT⁻¹], which is different from [T²L⁻¹].",
+      "D. Force has dimensions [MLT⁻²], which is also different from [T²L⁻¹]."
+    ],
+    "exam_tip": "Whenever JAMB asks about dimensional analysis, first write the dimensions of each quantity and simplify systematically before comparing both sides.",
+    "final_answer": "C. The equation is dimensionally inconsistent",
+    "simple_explanation": "The dimensions obtained from m/k are not the same as the dimensions of time. Therefore, the proposed formula cannot be correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Dimensional Analysis to learn how dimensions are used to test physical equations."
+  },
+  "tags": [
+    "dimensional_analysis",
+    "dimensions",
+    "physical_equations",
+    "consistency",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q137",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Unit conversion",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "An engineer receives the specification of a steel rod as 2.5 m long. For a manufacturing report that requires dimensions in millimetres, what length should be recorded?",
+  "options": {
+    "A": "25 mm",
+    "B": "250 mm",
+    "C": "2,500 mm",
+    "D": "25,000 mm"
+  },
+  "answer": "C",
+  "answer_text": "2,500 mm",
+  "explanation": {
+    "question_restate": "The question requires the conversion of a length given in metres into millimetres.",
+    "principle": "Unit conversion is important because measurements are often expressed in different units depending on the application.\n\nIn the SI system, prefixes are used to represent multiples or fractions of base units.\n\nThe prefix 'milli' means one-thousandth.\n\nTherefore, 1 metre contains 1000 millimetres.\n\nEngineers frequently convert dimensions into millimetres because small differences in size can be represented more conveniently.",
+    "steps": [
+      "Step 1: Recall that 1 m = 1000 mm.",
+      "Step 2: Multiply 2.5 by 1000.",
+      "Step 3: 2.5 × 1000 = 2500.",
+      "Step 4: Attach the correct unit.",
+      "Step 5: The required length is 2,500 mm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. This value is far smaller than the actual length.",
+      "B. This represents 0.25 m, not 2.5 m.",
+      "D. This would correspond to 25 m."
+    ],
+    "exam_tip": "Memorize common SI conversions such as km–m, m–cm and m–mm because they appear frequently in JAMB.",
+    "final_answer": "C. 2,500 mm",
+    "simple_explanation": "Since one metre contains 1000 millimetres, multiply 2.5 by 1000 to obtain 2,500 mm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Unit Conversion for more examples involving SI prefixes."
+  },
+  "tags": [
+    "unit_conversion",
+    "si_units",
+    "length_conversion",
+    "metric_system",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q138",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Scientific notation",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "Astronomers often work with extremely large distances. The distance of a celestial object is recorded as 450,000,000 m. How is this value expressed in standard scientific notation?",
+  "options": {
+    "A": "4.5 × 10⁶ m",
+    "B": "4.5 × 10⁷ m",
+    "C": "4.5 × 10⁸ m",
+    "D": "45 × 10⁸ m"
+  },
+  "answer": "C",
+  "answer_text": "4.5 × 10⁸ m",
+  "explanation": {
+    "question_restate": "The question requires the expression of a large number in scientific notation.",
+    "principle": "Scientific notation is used to express very large or very small numbers conveniently.\n\nIn scientific notation, a number is written as a value between 1 and 10 multiplied by a power of ten.\n\nThis approach reduces errors when writing lengthy numerical values.\n\nScientists use scientific notation extensively in astronomy, atomic physics and engineering.\n\nIt also makes calculations involving extremely large or small quantities easier.",
+    "steps": [
+      "Step 1: Write the number 450,000,000.",
+      "Step 2: Move the decimal point until only one non-zero digit remains before it.",
+      "Step 3: This gives 4.5.",
+      "Step 4: The decimal point moved eight places to the left.",
+      "Step 5: Therefore the number is 4.5 × 10⁸."
+    ],
+    "why_other_options_are_wrong": [
+      "A. This equals 4,500,000, which is too small.",
+      "B. This equals 45,000,000, still smaller than the original number.",
+      "D. Scientific notation requires the first number to be at least 1 but less than 10."
+    ],
+    "exam_tip": "For large numbers, count how many places the decimal point moves to the left. That count becomes the positive exponent.",
+    "final_answer": "C. 4.5 × 10⁸ m",
+    "simple_explanation": "Move the decimal point eight places to obtain 4.5. Therefore the exponent is 8.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Scientific Notation for more worked examples."
+  },
+  "tags": [
+    "scientific_notation",
+    "large_numbers",
+    "astronomy",
+    "powers_of_ten",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q139",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Position and coordinates",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A rescue drone is programmed to hover directly above a point represented by the coordinates (4, -3) on a horizontal coordinate grid. What does the coordinate indicate?",
+  "options": {
+    "A": "4 units left and 3 units up from the origin",
+    "B": "4 units right and 3 units down from the origin",
+    "C": "3 units right and 4 units down from the origin",
+    "D": "3 units left and 4 units up from the origin"
+  },
+  "answer": "B",
+  "answer_text": "4 units right and 3 units down from the origin",
+  "explanation": {
+    "question_restate": "The question asks for the physical interpretation of a position represented by coordinates on a plane.",
+    "principle": "Coordinates are used to specify the exact location of an object relative to a chosen reference point called the origin.\n\nThe first coordinate represents displacement along the horizontal axis while the second coordinate represents displacement along the vertical axis.\n\nPositive horizontal values indicate movement to the right, while negative horizontal values indicate movement to the left.\n\nSimilarly, positive vertical values indicate upward movement and negative values indicate downward movement.\n\nCoordinate systems are widely used in navigation, robotics and satellite tracking.",
+    "steps": [
+      "Step 1: Identify the x-coordinate, which is 4.",
+      "Step 2: A positive x-coordinate means 4 units to the right.",
+      "Step 3: Identify the y-coordinate, which is -3.",
+      "Step 4: A negative y-coordinate means 3 units downward.",
+      "Step 5: Therefore the point lies 4 units right and 3 units down from the origin."
+    ],
+    "why_other_options_are_wrong": [
+      "A. The signs of the coordinates are interpreted incorrectly.",
+      "C. The x- and y-values have been interchanged.",
+      "D. Both direction assignments are incorrect."
+    ],
+    "exam_tip": "Always interpret coordinates as (x, y). Read horizontal movement first before considering vertical movement.",
+    "final_answer": "B. 4 units right and 3 units down from the origin",
+    "simple_explanation": "The positive 4 means move right. The negative 3 means move down.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Position and Coordinates for graphical illustrations and navigation examples."
+  },
+  "tags": [
+    "position",
+    "coordinates",
+    "reference_point",
+    "location",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q140",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Distance and displacement",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A field technician walks 60 m east to inspect a power pole and then walks 60 m west back to the starting point. Which statement is correct?",
+  "options": {
+    "A": "Distance travelled is 0 m and displacement is 120 m",
+    "B": "Distance travelled is 60 m and displacement is 60 m",
+    "C": "Distance travelled is 120 m and displacement is 0 m",
+    "D": "Distance travelled is 120 m and displacement is 120 m"
+  },
+  "answer": "C",
+  "answer_text": "Distance travelled is 120 m and displacement is 0 m",
+  "explanation": {
+    "question_restate": "The question tests your understanding of the difference between distance and displacement.",
+    "principle": "Distance is the total length of the actual path travelled by an object.\n\nDisplacement is the straight-line change in position from the starting point to the final point, including direction.\n\nDistance is a scalar quantity because it has magnitude only.\n\nDisplacement is a vector quantity because it has both magnitude and direction.\n\nWhenever an object returns to its starting position, its displacement becomes zero even though it may have travelled a considerable distance.",
+    "steps": [
+      "Step 1: Calculate total path travelled.",
+      "Step 2: The technician walks 60 m east and 60 m west.",
+      "Step 3: Total distance = 60 + 60 = 120 m.",
+      "Step 4: Final position is the same as the starting position.",
+      "Step 5: Therefore displacement = 0 m."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Distance cannot be zero because movement occurred.",
+      "B. Both values are underestimated.",
+      "D. Displacement is not 120 m because the technician returned to the starting point."
+    ],
+    "exam_tip": "If an object returns to where it started, displacement is always zero regardless of the distance travelled.",
+    "final_answer": "C. Distance travelled is 120 m and displacement is 0 m",
+    "simple_explanation": "The technician covered a total path of 120 m but ended where the journey started, so displacement is zero.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Distance and Displacement for additional practical examples and JAMB-style questions."
+  },
+  "tags": [
+    "distance",
+    "displacement",
+    "scalar",
+    "vector",
+    "phy_01"
+  ],
+  "active": true
 }
 
 ]
