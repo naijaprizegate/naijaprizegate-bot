@@ -691,961 +691,1035 @@
 ],
 "active": true
 },
-  {
-    "id": "phy_01_q015",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Dimensions of physical quantities",
-    "difficulty": "hard",
-    "question_type": "mcq",
-    "question": "During a Physics practical lesson, students were reminded that force is not a fundamental quantity but a derived quantity obtained from Newton's Second Law of Motion. Using dimensional analysis, what is the dimensional formula of force?",
-    "options": {
-      "A": "[MLT⁻²]",
-      "B": "[ML²T⁻²]",
-      "C": "[ML⁻¹T⁻²]",
-      "D": "[M⁰LT⁻¹]"
-    },
-    "answer": "A",
-    "answer_text": "[MLT⁻²]",
-    "explanation": {
-      "question_restate": "The question requires you to determine the dimensional formula of force by expressing it in terms of the fundamental dimensions of mass, length and time.",
-      "principle": "Dimensional analysis is used to express derived physical quantities in terms of fundamental quantities such as mass (M), length (L) and time (T).\n\nAccording to Newton's Second Law of Motion, force is equal to the product of mass and acceleration. Therefore, to obtain the dimensions of force, the dimensions of acceleration must first be determined and then combined with those of mass.",
-      "steps": [
-        "Step 1: Recall Newton's Second Law of Motion: Force = Mass × Acceleration.",
-        "Step 2: Recognize that mass is a fundamental quantity with dimensional formula [M].",
-        "Step 3: Recall that Acceleration = Velocity ÷ Time.",
-        "Step 4: Velocity = Distance ÷ Time = Length ÷ Time.",
-        "Step 5: Therefore, the dimensions of velocity are [LT⁻¹].",
-        "Step 6: Divide the dimensions of velocity by time to obtain acceleration: [LT⁻¹] ÷ [T] = [LT⁻²].",
-        "Step 7: Substitute into the force equation: Force = [M] × [LT⁻²].",
-        "Step 8: Multiply the dimensions to obtain [MLT⁻²].",
-        "Step 9: Therefore, the dimensional formula of force is [MLT⁻²]."
-      ],
-      "why_other_options_are_wrong": [
-        "B. [ML²T⁻²] represents the dimensions of work or energy, since Work = Force × Distance.",
-        "C. [ML⁻¹T⁻²] represents the dimensions of pressure because Pressure = Force ÷ Area.",
-        "D. [M⁰LT⁻¹] simplifies to [LT⁻¹], which represents velocity."
-      ],
-      "exam_tip": "JAMB often tests dimensional analysis by asking candidates to derive dimensions from familiar Physics equations rather than memorising formulas directly. Start with the relevant equation and reduce all quantities to M, L and T.",
-      "final_answer": "A. [MLT⁻²]",
-      "simple_explanation": "Force depends on both mass and acceleration. Since acceleration has dimensions [LT⁻²], multiplying it by mass [M] gives [MLT⁻²].",
-      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Dimensions of Physical Quantities to learn how derived quantities are expressed in terms of fundamental dimensions. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics questions and explanations."
-    },
-    "tags": [
-      "dimensions",
-      "dimensional_analysis",
-      "derived_quantities",
-      "newtons_second_law",
-      "phy_01"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q016",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Dimensional analysis",
-    "difficulty": "hard",
-    "question_type": "mcq",
-    "question": "The dimensional formula of pressure is",
-    "options": {
-      "A": "[ML⁻¹T⁻²]",
-      "B": "[MLT⁻²]",
-      "C": "[ML²T⁻²]",
-      "D": "[M⁻¹LT⁻²]"
-    },
-    "answer": "A",
-    "answer_text": "[ML⁻¹T⁻²]",
-    "explanation": {
-      "question_restate": "Find the dimensions of pressure.",
-      "principle": "Pressure is force per unit area. To find its dimensions, express force and area in terms of fundamental dimensions M, L and T.",
-      "steps": [
-        "Pressure = Force ÷ Area.",
-        "Force = Mass × Acceleration. Mass has dimensions [M].",
-        "Acceleration = Velocity ÷ Time. Velocity = Length ÷ Time = [LT⁻¹]. Therefore acceleration = [LT⁻²].",
-        "Hence Force = [M] × [LT⁻²] = [MLT⁻²].",
-        "Area = Length × Length = [L²].",
-        "Pressure = [MLT⁻²]/[L²] = [ML⁻¹T⁻²]."
-      ],
-      "why_other_options_are_wrong": [
-        "B is the dimension of force.",
-        "C is the dimension of energy/work.",
-        "D does not represent pressure."
-      ],
-      "exam_tip": "Break derived quantities into simpler formulas until only M, L and T remain.",
-      "final_answer": "A. [ML⁻¹T⁻²]",
-      "simple_explanation": "Pressure tells us how concentrated a force is over an area.",
-      "tutorial_reference": "Visit Tutorials → Physics → Dimensional Analysis."
-    },
-    "tags": [
-      "dimensional_analysis"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q017",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Position and coordinates",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "A point has coordinates (−3, 4). In which quadrant does it lie?",
-    "options": {
-      "A": "First quadrant",
-      "B": "Second quadrant",
-      "C": "Third quadrant",
-      "D": "Fourth quadrant"
-    },
-    "answer": "B",
-    "answer_text": "Second quadrant",
-    "explanation": {
-      "question_restate": "Determine the quadrant containing the point (−3, 4).",
-      "principle": "In the Cartesian plane, the sign of x and y determines the quadrant.",
-      "steps": [
-        "cartesian plane (x,y)",
-	"First quadrant: (+,+).",
-        "Second quadrant: (−,+).",
-        "Third quadrant: (−,−).",
-        "Fourth quadrant: (+,−).",
-        "Since x = −3 and y = 4, the point lies in the second quadrant."
-      ],
-      "why_other_options_are_wrong": [
-        "A requires both coordinates to be positive.",
-        "C requires both coordinates to be negative.",
-        "D requires positive x and negative y."
-      ],
-      "exam_tip": "Always examine the signs of the coordinates before deciding.",
-      "final_answer": "B. Second quadrant",
-      "simple_explanation": "Negative x means left of the origin, positive y means above it.",
-      "tutorial_reference": "Visit Tutorials → Physics → Position and Coordinates."
-    },
-    "tags": [
-      "coordinates"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q018",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Frame of reference",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "A passenger seated inside a moving bus says that another seated passenger is at rest. This statement is based on",
-    "options": {
-      "A": "universal motion",
-      "B": "frame of reference",
-      "C": "Newton's law",
-      "D": "dimensional analysis"
-    },
-    "answer": "B",
-    "answer_text": "frame of reference",
-    "explanation": {
-      "question_restate": "Identify the concept used when describing motion relative to an observer.",
-      "principle": "Motion and rest are relative. A frame of reference is the viewpoint from which observations are made.",
-      "steps": [
-        "The two passengers move together with the bus.",
-        "Relative to each other, their positions do not change.",
-        "Therefore each passenger appears at rest to the other.",
-        "This judgement depends on the observer's frame of reference."
-      ],
-      "why_other_options_are_wrong": [
-        "A is not the concept being tested.",
-        "C concerns forces and motion, not observers.",
-        "D deals with dimensions of quantities."
-      ],
-      "exam_tip": "JAMB often asks whether an object is moving or at rest relative to an observer.",
-      "final_answer": "B. frame of reference",
-      "simple_explanation": "Whether something is moving depends on who is observing it.",
-      "tutorial_reference": "Visit Tutorials → Physics → Frame of Reference."
-    },
-    "tags": [
-      "frame_of_reference"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q019",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Scientific notation",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "Express 5,280,000 in standard form.",
-    "options": {
-      "A": "5.28 × 10⁵",
-      "B": "52.8 × 10⁵",
-      "C": "5.28 × 10⁶",
-      "D": "0.528 × 10⁷"
-    },
-    "answer": "C",
-    "answer_text": "5.28 × 10⁶",
-    "explanation": {
-      "question_restate": "Write a large number in scientific notation.",
-      "principle": "In standard form, a number is written as A × 10ⁿ where 1 ≤ A < 10.",
-      "steps": [
-        "Move the decimal point in 5,280,000 until the number becomes 5.28.",
-        "The decimal point moves six places to the left.",
-        "Therefore the exponent is +6.",
-        "Hence 5,280,000 = 5.28 × 10⁶."
-      ],
-      "why_other_options_are_wrong": [
-        "A uses the wrong exponent.",
-        "B has a coefficient greater than 10.",
-        "D has a coefficient less than 1."
-      ],
-      "exam_tip": "Always ensure the coefficient lies between 1 and 10.",
-      "final_answer": "C. 5.28 × 10⁶",
-      "simple_explanation": "Count how many places the decimal point moves.",
-      "tutorial_reference": "Visit Tutorials → Physics → Scientific Notation."
-    },
-    "tags": [
-      "scientific_notation"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q020",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Measurement of mass",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "The SI unit of mass is",
-    "options": {
-      "A": "gram (g)",
-      "B": "newton (N)",
-      "C": "kilogram (kg)",
-      "D": "tonne (t)"
-    },
-    "answer": "C",
-    "answer_text": "kilogram (kg)",
-    "explanation": {
-      "question_restate": "Identify the SI base unit used for measuring mass.",
-      "principle": "The International System of Units (SI) is the globally accepted system used by scientists to measure physical quantities. Some quantities are called fundamental or base quantities because they are independent and cannot be expressed in terms of other physical quantities. There are seven SI base quantities: length measured in metre (m), mass measured in kilogram (kg), time measured in second (s), electric current measured in ampere (A), thermodynamic temperature measured in kelvin (K), amount of substance measured in mole (mol), and luminous intensity measured in candela (cd). Mass is one of these seven fundamental quantities, and its SI unit is the kilogram (kg).",
-      "steps": [
-  	"First, understand that mass refers to the amount of matter contained in an object. For example, a bag of rice has mass because it contains matter.",
-  	"Scientists all over the world use a standard measurement system called the International System of Units (SI) to ensure consistency in measurements.",
-  	"Within the SI system, there are seven fundamental quantities and their units: length (metre, m), mass (kilogram, kg), time (second, s), electric current (ampere, A), thermodynamic temperature (kelvin, K), amount of substance (mole, mol), and luminous intensity (candela, cd).",
-  	"Since the question asks for the SI unit of mass, locate 'mass' in the list of SI base quantities.",
-  	"The corresponding SI unit of mass is kilogram (kg).",
-  	"Therefore, the correct answer is kilogram (kg)."
-     ],
-      "why_other_options_are_wrong": [
-        "A is a smaller metric unit but not the SI base unit.",
-        "B measures force, not mass.",
-        "D is a larger metric unit but not the SI base unit."
-      ],
-      "exam_tip": "Do not confuse kilogram (mass) with newton (weight/force).",
-      "final_answer": "C. kilogram (kg)",
-      "simple_explanation": "Scientists around the world use kilograms as the standard unit of mass.",
-      "tutorial_reference": "Visit Tutorials → Physics → Measurement of Mass."
-    },
-    "tags": [
-      "mass",
-      "si_units"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q021",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Time-measuring devices",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "Which of the following instruments is most suitable for measuring the time taken by an athlete to complete a 100 m race?",
-    "options": {
-      "A": "Beam balance",
-      "B": "Metre rule",
-      "C": "Stopwatch",
-      "D": "Measuring cylinder"
-    },
-    "answer": "C",
-    "answer_text": "Stopwatch",
-    "explanation": {
-      "question_restate": "Choose the most appropriate instrument for measuring a short time interval.",
-      "principle": "Time is one of the seven SI base quantities, and its SI unit is the second (s). Other SI base quantities are length (metre, m), mass (kilogram, kg), electric current (ampere, A), thermodynamic temperature (kelvin, K), amount of substance (mole, mol), and luminous intensity (candela, cd). Different instruments measure different physical quantities. Beam balances measure mass, metre rules measure length, ammeter measures electric current, thermometer measure temperature, photometer for luminous intensity, measuring cylinders measure volume, while stopwatches are specially designed to measure short time intervals accurately.",
-      "steps": [
-        "Identify the quantity being measured: time.",
-        "Recognize that a 100 m race lasts only a few seconds.",
-        "Know that stopwatches can start and stop instantly, making them suitable for timing events.",
-        "Eliminate instruments used for mass, length and volume.",
-        "Select the stopwatch."
-      ],
-      "why_other_options_are_wrong": [
-        "A measures mass.",
-        "B measures length.",
-        "D measures volume of liquids."
-      ],
-      "exam_tip": "Always identify the physical quantity before choosing the instrument.",
-      "final_answer": "C. Stopwatch",
-      "simple_explanation": "A stopwatch is like a clock designed specifically for timing short events.",
-      "tutorial_reference": "Visit Tutorials → Physics → Time-Measuring Devices."
-    },
-    "tags": [
-      "time_measuring_devices"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q022",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Measurement of regular bodies",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "A rectangular block has dimensions 8 cm, 5 cm and 3 cm. What is its volume?",
-    "options": {
-      "A": "16 cm³",
-      "B": "40 cm³",
-      "C": "120 cm³",
-      "D": "240 cm³"
-    },
-    "answer": "C",
-    "answer_text": "120 cm³",
-    "explanation": {
-      "question_restate": "The question requires us to calculate the volume of a cuboid.",
-      "principle": "Volume is the amount of space occupied by an object and is measured in cubic units such as cm³ or m³. Regular bodies are objects with definite geometric shapes whose volumes can be determined using mathematical formulas. For example, the volume of a cuboid is given by Length × Breadth × Height (V = lbh), the volume of a cube is Side³ (V = a³), the volume of a cylinder is πr²h, the volume of a sphere is ⁴⁄₃ πr³, and the volume of a cone is ¹⁄₃ πr²h. Since the object in this question is a rectangular block (cuboid), the appropriate formula is V = lbh.",
-      "steps": [
-        "Length = 8 cm, breadth = 5 cm, height = 3 cm.",
-        "Apply the formula V = l × b × h.",
-        "Multiply: 8 × 5 = 40.",
-        "Multiply: 40 × 3 = 120.",
-		"Note that the dimensions are in 'cm'",
-        "Write the unit as cm³ because three lengths were multiplied."
-      ],
-      "why_other_options_are_wrong": [
-        "A results from incorrect multiplication.",
-        "B ignores one dimension.",
-        "D doubles the correct answer."
-      ],
-      "exam_tip": "Regular bodies use geometric formulas; irregular bodies use displacement methods.",
-      "final_answer": "C. 120 cm³",
-      "simple_explanation": "Volume tells us how much space the block occupies.",
-      "tutorial_reference": "Visit Tutorials → Physics → Measurement of Regular Bodies."
-    },
-    "tags": [
-      "regular_bodies"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q023",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Metre rule",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "What is the least count of a metre rule graduated in millimetres?",
-    "options": {
-      "A": "1 cm",
-      "B": "0.1 cm",
-      "C": "1 mm",
-      "D": "10 mm"
-    },
-    "answer": "C",
-    "answer_text": "1 mm",
-    "explanation": {
-      "question_restate": "Determine the smallest measurement that can be read directly on a metre rule.",
-      "principle": "The least count of an instrument is the smallest value that the instrument can measure directly. A metre rule marked in millimetres has millimetre divisions as its smallest markings.",
-      "steps": [
-        "Understand that 'graduated in millimetres' means the scale is divided into millimetres.",
-        "Identify the smallest visible division.",
-        "The smallest division is 1 mm.",
-        "Therefore, the least count is 1 mm."
-      ],
-      "why_other_options_are_wrong": [
-        "A and D represent larger intervals.",
-        "B equals 1 mm but the question specifically asks for the millimetre graduation."
-      ],
-      "exam_tip": "Check the smallest scale marking whenever asked for least count.",
-      "final_answer": "C. 1 mm",
-      "simple_explanation": "The least count is simply the smallest space marked on the instrument.",
-      "tutorial_reference": "Visit Tutorials → Physics → Metre Rule."
-    },
-    "tags": [
-      "metre_rule"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q024",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Area measurement",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "A square plot has sides of length 12 m. What is its area?",
-    "options": {
-      "A": "24 m²",
-      "B": "48 m²",
-      "C": "144 m²",
-      "D": "288 m²"
-    },
-    "answer": "C",
-    "answer_text": "144 m²",
-    "explanation": {
-      "question_restate": "Determine the area of a square.",
-      "principle": "Area is the amount of surface enclosed by a two-dimensional shape and is measured in square units such as cm² and m². Different plane shapes have different formulas for calculating area. For example, the area of a rectangle is Length × Breadth (A = lb), the area of a square is Side × Side (A = a²), the area of a triangle is ½ × Base × Height (A = ½bh), and the area of a circle is πr², where r is the radius. Since the shape in this question is a square, the appropriate formula is A = a².",
-      "steps": [
-        "Identify the side length: 12 m.",
-        "Use the formula: Area = side × side, A = a²",
-        "Calculate: 12 × 12 = 144.",
-        "Attach the correct unit, m²."
-      ],
-      "why_other_options_are_wrong": [
-        "A adds two sides.",
-        "B uses incorrect multiplication.",
-        "D doubles the correct value."
-      ],
-      "exam_tip": "Area always has square units such as cm² or m².",
-      "final_answer": "C. 144 m²",
-      "simple_explanation": "Since all sides of a square are equal, multiply one side by itself.",
-      "tutorial_reference": "Visit Tutorials → Physics → Area Measurement."
-    },
-    "tags": [
-      "area_measurement"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q025",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Fundamental quantities",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "Which of the following is NOT an SI base quantity?",
-    "options": {
-      "A": "Length",
-      "B": "Temperature",
-      "C": "Force",
-      "D": "Time"
-    },
-    "answer": "C",
-    "answer_text": "Force",
-    "explanation": {
-      "question_restate": "Identify the quantity that is derived rather than fundamental.",
-      "principle": "Fundamental quantities are independent quantities from which others are derived. The seven SI base quantities are: length (metre, m), mass (kilogram, kg), time (second, s), electric current (ampere, A), thermodynamic temperature (kelvin, K), amount of substance (mole, mol), and luminous intensity (candela, cd). Derived quantities are formed from these base quantities. Force is derived because Force = Mass × Acceleration.",
-      "steps": [
-        "Study the seven SI base quantities and their units.",
-        "Observe that length, temperature and time belong to this list.",
-        "Understand that acceleration depends on length and time.",
-        "Since force = mass × acceleration, force depends on other quantities.",
-        "Therefore, force is derived, not fundamental."
-      ],
-      "why_other_options_are_wrong": [
-        "Length is a base quantity.",
-        "Temperature is a base quantity.",
-        "Time is a base quantity."
-      ],
-      "exam_tip": "JAMB frequently tests the difference between fundamental and derived quantities.",
-      "final_answer": "C. Force",
-      "simple_explanation": "Force is made from other quantities, so it is not one of the basic building blocks.",
-      "tutorial_reference": "Visit Tutorials → Physics → Fundamental Quantities."
-    },
-    "tags": [
-      "fundamental_quantities"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q026",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Length measurement",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "A ribbon is measured with a metre rule and its length is found to be 76.4 cm. Express this length in metres.",
-    "options": {
-      "A": "0.0764 m",
-      "B": "0.764 m",
-      "C": "7.64 m",
-      "D": "76.4 m"
-    },
-    "answer": "B",
-    "answer_text": "0.764 m",
-    "explanation": {
-      "question_restate": "Convert a measurement from centimetres to metres.",
-      "principle": "Length is one of the seven SI base quantities. Its SI unit is the metre (m). Common instruments used for measuring length include the metre rule, tape measure, Vernier calipers and micrometer screw gauge. Since 1 m = 100 cm, converting centimetres to metres involves dividing by 100.",
-      "steps": [
-        "Identify the quantity involved: length.",
-        "Note the relationship between the units: 1 m = 100 cm.",
-        "Write the conversion: 76.4 cm ÷ 100.",
-        "Perform the calculation: 76.4 ÷ 100 = 0.764.",
-        "Attach the correct SI unit, metre (m)."
-      ],
-      "why_other_options_are_wrong": [
-        "A results from dividing by 1000 instead of 100.",
-        "C results from multiplying instead of dividing.",
-        "D leaves the value unchanged despite changing the unit."
-      ],
-      "exam_tip": "When converting from a smaller unit to a larger unit, divide by the conversion factor.",
-      "final_answer": "B. 0.764 m",
-      "simple_explanation": "Since a metre is bigger than a centimetre, the numerical value becomes smaller after conversion.",
-      "tutorial_reference": "Visit Tutorials → Physics → Length Measurement."
-    },
-    "tags": [
-      "length_measurement",
-      "unit_conversion",
-      "phy_01"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q027",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Measuring cylinder",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "A measuring cylinder contains 32 cm³ of water. Additional water is poured into it until the reading becomes 57 cm³. What volume of water was added?",
-    "options": {
-      "A": "25 cm³",
-      "B": "57 cm³",
-      "C": "89 cm³",
-      "D": "15 cm³"
-    },
-    "answer": "A",
-    "answer_text": "25 cm³",
-    "explanation": {
-      "question_restate": "Determine the volume of liquid added using measuring cylinder readings.",
-      "principle": "A measuring cylinder is used to measure the volume of liquids. Volume is the amount of space occupied by a substance and is commonly measured in cm³ or mL. For liquids, the change in cylinder reading gives the volume added.",
-      "steps": [
-        "Record the initial reading: 32 cm³.",
-        "Record the final reading: 57 cm³.",
-        "Subtract the initial reading from the final reading.",
-        "57 − 32 = 25 cm³.",
-        "Therefore, the volume of water added is 25 cm³."
-      ],
-      "why_other_options_are_wrong": [
-        "B is the final reading, not the volume added.",
-        "C is obtained by adding instead of subtracting.",
-        "D results from incorrect subtraction."
-      ],
-      "exam_tip": "For measuring cylinder problems involving change, use: Change = Final reading − Initial reading.",
-      "final_answer": "A. 25 cm³",
-      "simple_explanation": "The extra water occupies the additional space shown on the scale.",
-      "tutorial_reference": "Visit Tutorials → Physics → Measuring Cylinder."
-    },
-    "tags": [
-      "measuring_cylinder",
-      "volume",
-      "phy_01"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q028",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Volume measurement",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "The volume of a cylinder of radius 7 cm and height 10 cm is _____.",
-    "options": {
-      "A": "1,540 cm³",
-      "B": "770 cm³",
-      "C": "490 cm³",
-      "D": "3,080 cm³"
-    },
-    "answer": "A",
-    "answer_text": "1,540 cm³",
-    "explanation": {
-      "question_restate": "Calculate the volume of a cylinder using its formula.",
-      "principle": "Volume is the amount of space occupied by an object. Different regular solids have different volume formulas. For example: cuboid = lbh, cube = a³, cylinder = πr²h, cone = ⅓πr²h, and sphere = ⁴⁄₃πr³. Since this question involves a cylinder, V = πr²h is the appropriate formula.",
-      "steps": [
-        "Write the formula: V = πr²h.",
-        "Substitute the values: V = (22/7) × 7² × 10.",
-        "Calculate the radius squared: 7² = 49.",
-        "V = (22/7) × 49 × 10 = 22 × 7 × 10.",
-        "22 × 7 × 10 = 1,540.",
-        "Therefore, the volume is 1,540 cm³."
-      ],
-      "why_other_options_are_wrong": [
-        "B results from omitting one factor of the radius.",
-        "C is obtained by using r²h without multiplying by π.",
-        "D is exactly twice the correct answer."
-      ],
-      "exam_tip": "Always identify the shape first before selecting the appropriate volume formula.",
-      "final_answer": "A. 1,540 cm³",
-      "simple_explanation": "A cylinder is like a can; its volume depends on the size of its circular base and its height.",
-      "tutorial_reference": "Visit Tutorials → Physics → Volume Measurement."
-    },
-    "tags": [
-      "volume_measurement",
-      "cylinder",
-      "phy_01"
-    ],
-    "active": true
-  }, 
-   {
-    "id": "phy_01_q029",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Length measurement",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "When using a metre rule to measure the length of an object, parallax error can be minimized by ensuring that the observer's eye is",
-    "options": {
-      "A": "directly above the mark being read",
-      "B": "to the left of the scale",
-      "C": "to the right of the scale",
-      "D": "as far away from the scale as possible"
-    },
-    "answer": "A",
-    "answer_text": "directly above the mark being read",
-    "explanation": {
-      "question_restate": "Identify the correct way to avoid parallax error during length measurement.",
-      "principle": "Length is one of the seven SI base quantities and is measured in metres (m). Common instruments used for measuring length include metre rules, tape measures, Vernier calipers and micrometer screw gauges. A parallax error occurs when a scale is viewed from an angle rather than directly in line with the measurement mark, causing the reading obtained to differ from the true value.",
-      "steps": [
-        "Understand that the question concerns the accurate reading of a scale.",
-        "Recognize that viewing a scale from the side changes the apparent position of the mark.",
-        "Know that this effect is called parallax error.",
-        "To eliminate this error, position the eye vertically above the mark being read.",
-        "Therefore, the correct option is that the observer's eye should be directly above the mark."
-      ],
-      "why_other_options_are_wrong": [
-        "Option B places the eye at an angle to the scale, leading to parallax error.",
-        "Option C also causes an angular view and inaccurate readings.",
-        "Option D increases difficulty in reading the scale accurately and does not eliminate parallax error."
-      ],
-      "exam_tip": "JAMB frequently tests sources of experimental errors. Remember that parallax error is avoided by viewing scales perpendicularly.",
-      "final_answer": "A. directly above the mark being read",
-      "simple_explanation": "Looking straight down at the scale helps you see the true position of the measurement mark.",
-      "tutorial_reference": "Visit Tutorials → Physics → Length Measurement."
-    },
-    "tags": [
-      "length_measurement",
-      "parallax_error",
-      "phy_01"
-    ],
-    "active": true
-  },
-  {
-    "id": "phy_01_q030",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Measuring cylinder",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "When reading the volume of water in a measuring cylinder, the correct reading should be taken at the",
-    "options": {
-      "A": "top of the meniscus",
-      "B": "middle of the meniscus",
-      "C": "bottom of the meniscus",
-      "D": "highest point on the cylinder wall"
-    },
-    "answer": "C",
-    "answer_text": "bottom of the meniscus",
-    "explanation": {
-      "question_restate": "Determine the correct part of the water surface to use when reading a measuring cylinder.",
-      "principle": "A measuring cylinder is used to measure the volume of liquids. Many liquids, including water, form a curved surface called a meniscus because of the interaction between the liquid molecules and the walls of the container. Water forms a concave meniscus, meaning the centre is lower than the edges. To obtain an accurate measurement, the reading is taken at the lowest point of the meniscus with the eye positioned at the same level as the liquid surface.",
-      "steps": [
-        "Identify the liquid involved: water.",
-        "Understand that water forms a concave meniscus in a measuring cylinder.",
-        "Locate the lowest point of the curved surface.",
-        "Ensure the eye is at the same horizontal level as the meniscus to avoid parallax error.",
-        "Read the scale at the bottom of the meniscus."
-      ],
-      "why_other_options_are_wrong": [
-        "Option A is incorrect because the top of the meniscus is not used for water measurements.",
-        "Option B is incorrect because the middle does not correspond to the standard reading position.",
-        "Option D does not represent any accepted method of reading a measuring cylinder."
-      ],
-      "exam_tip": "For JAMB practical questions, remember: water is read at the bottom of the meniscus, while mercury is read at the top.",
-      "final_answer": "C. bottom of the meniscus",
-      "simple_explanation": "The curved surface of water dips in the middle, so that lowest point gives the correct reading.",
-      "tutorial_reference": "Visit Tutorials → Physics → Measuring Cylinder."
-    },
-    "tags": [
-      "measuring_cylinder",
-      "meniscus",
-      "phy_01"
-    ],
-    "active": true
-  },
-	{
-  "id": "phy_01_q031",
-  "subject_code": "phy",
-  "subject_name": "Physics",
-  "topic_id": "phy_01",
-  "topic_title": "Measurements, Units and Dimensions",
-  "subtopic": "Unit conversion",
-  "difficulty": "medium",
-  "question_type": "mcq",
-  "question": "Convert 450 cm to metres.",
-  "options": {
-    "A": "0.45 m",
-    "B": "4.5 m",
-    "C": "45 m",
-    "D": "4500 m"
-  },
-  "answer": "B",
-  "answer_text": "4.5 m",
-  "explanation": {
-    "question_restate": "The question requires you to convert a length measurement from centimetres (cm) to metres (m).",
-    "principle": "Length is one of the seven fundamental (base) quantities in the International System of Units (SI). The SI system is the internationally accepted system of measurement used by scientists and engineers. The seven SI base quantities are: length measured in metre (m), mass measured in kilogram (kg), time measured in second (s), electric current measured in ampere (A), thermodynamic temperature measured in kelvin (K), amount of substance measured in mole (mol), and luminous intensity measured in candela (cd). Common instruments used for measuring length include the metre rule, tape measure, Vernier calipers, and micrometer screw gauge. Since the metre is a larger unit than the centimetre, converting from centimetres to metres involves dividing by 100 because 1 metre = 100 centimetres.",
-    "steps": [
-      "Identify the physical quantity involved. In this question, the quantity is length.",
-      "Recognize that the question requires conversion from centimetres (cm) to metres (m).",
-      "Recall the relationship between the two units: 1 m = 100 cm.",
-      "Since you are converting from a smaller unit (cm) to a larger unit (m), divide the numerical value by 100.",
-      "Perform the calculation: 450 ÷ 100 = 4.5.",
-      "Attach the appropriate unit, metre (m).",
-      "Therefore, 450 cm = 4.5 m."
-    ],
-    "why_other_options_are_wrong": [
-      "A. 0.45 m: This answer would be obtained by dividing 450 by 1000 instead of 100. The conversion factor used is incorrect.",
-      "C. 45 m: This answer results from dividing by 10 instead of 100. The decimal point was shifted incorrectly.",
-      "D. 4500 m: This answer results from multiplying instead of dividing. When converting from a smaller unit to a larger unit, the numerical value should decrease, not increase."
-    ],
-    "exam_tip": "JAMB frequently tests unit conversions. Remember this rule: when converting from a smaller unit to a larger unit, divide by the conversion factor; when converting from a larger unit to a smaller unit, multiply by the conversion factor.",
-    "final_answer": "B. 4.5 m",
-    "simple_explanation": "A centimetre is smaller than a metre. Since 100 centimetres make 1 metre, you divide 450 by 100 to find how many metres are equivalent to 450 centimetres. Therefore, 450 cm is equal to 4.5 m.",
-    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Unit Conversion."
-  },
-  "tags": [
-    "unit_conversion",
-    "length_measurement",
-    "si_units",
-    "phy_01"
-  ],
-  "active": true
+{
+"id": "phy_01_q015",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Dimensions of physical quantities",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "An engineer designing a force sensor needed to verify that the equation used in the device was dimensionally correct. Which of the following represents the dimensional formula of force?",
+"options": {
+"A": "[MLT⁻²]",
+"B": "[ML²T⁻²]",
+"C": "[ML⁻¹T⁻²]",
+"D": "[LT⁻¹]"
 },
-	{
-  "id": "phy_01_q032",
-  "subject_code": "phy",
-  "subject_name": "Physics",
-  "topic_id": "phy_01",
-  "topic_title": "Measurements, Units and Dimensions",
-  "subtopic": "Scientific notation",
-  "difficulty": "medium",
-  "question_type": "mcq",
-  "question": "Express 0.00072 in standard form.",
-  "options": {
-    "A": "7.2 × 10⁻⁵",
-    "B": "7.2 × 10⁻⁴",
-    "C": "72 × 10⁻⁵",
-    "D": "0.72 × 10⁻³"
-  },
-  "answer": "B",
-  "answer_text": "7.2 × 10⁻⁴",
-  "explanation": {
-    "question_restate": "The question requires you to express the decimal number 0.00072 in scientific notation, also known as standard form.",
-    "principle": "Scientific notation, also called standard form, is a method of writing very large or very small numbers in a compact and convenient way. Scientists use this method to simplify calculations and reduce errors when dealing with numbers that contain many zeros. A number written in standard form has the structure A × 10ⁿ, where A is a number greater than or equal to 1 but less than 10 (1 ≤ A < 10), and n is an integer called the exponent or power of 10. If the original number is greater than 10, the exponent is positive because the decimal point is moved to the left. If the original number is less than 1, the exponent is negative because the decimal point is moved to the right.",
-    "steps": [
-      "Observe that the given number, 0.00072, is less than 1.",
-      "To express it in standard form, move the decimal point to the right until the number becomes a value between 1 and 10.",
-      "Moving the decimal point four places to the right changes 0.00072 to 7.2.",
-      "Since the decimal point was moved to the right, the exponent of 10 will be negative.",
-      "The number of places moved gives the magnitude of the exponent. Therefore, the exponent is 4.",
-      "Write the number in the form A × 10ⁿ: 7.2 × 10⁻⁴.",
-      "Therefore, 0.00072 = 7.2 × 10⁻⁴."
-    ],
-    "why_other_options_are_wrong": [
-      "A. 7.2 × 10⁻⁵: This would represent 0.000072, which is ten times smaller than the given number. The exponent is incorrect.",
-      "C. 72 × 10⁻⁵: Although mathematically equivalent to 7.2 × 10⁻⁴, it is not in standard form because the coefficient 72 is not between 1 and 10.",
-      "D. 0.72 × 10⁻³: This is not in standard form because the coefficient 0.72 is less than 1. In scientific notation, the coefficient must satisfy the condition 1 ≤ A < 10."
-    ],
-    "exam_tip": "For JAMB questions on scientific notation, first check whether the coefficient lies between 1 and 10. Then determine whether the exponent should be positive or negative based on the direction in which the decimal point was moved.",
-    "final_answer": "B. 7.2 × 10⁻⁴",
-    "simple_explanation": "To write a small number in standard form, move the decimal point to the right until only one non-zero digit remains before it. Count how many places you moved it. Since 0.00072 becomes 7.2 after moving the decimal point four places to the right, the answer is 7.2 × 10⁻⁴.",
-    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Scientific Notation."
-  },
-  "tags": [
-    "scientific_notation",
-    "standard_form",
-    "unit_conversion",
-    "phy_01"
-  ],
-  "active": true
+"answer": "A",
+"answer_text": "[MLT⁻²]",
+"explanation": {
+"question_restate": "The question requires you to identify the dimensional formula of force by expressing it in terms of the fundamental dimensions mass (M), length (L) and time (T).",
+"principle": "Dimensional analysis is a powerful tool in Physics used to express derived quantities in terms of fundamental quantities. It helps scientists and engineers check whether physical equations are consistent and meaningful.\n\nA beginner may ask: 'Why are dimensions important?' Dimensions act like a language for physical quantities. If the dimensions on both sides of an equation do not match, the equation cannot be physically correct.\n\nForce is not a fundamental quantity. It is derived from Newton's Second Law of Motion, which states that force is equal to the product of mass and acceleration.\n\nTherefore, the dimensions of force can be obtained by combining the dimensions of mass and acceleration.",
+"steps": [
+"Step 1: Recall Newton's Second Law:\n\nForce = Mass × Acceleration.",
+"Step 2: Write the dimension of mass.\n\nMass has dimension [M].",
+"Step 3: Determine the dimension of acceleration.\n\nAcceleration = Velocity ÷ Time.",
+"Step 4: Recall that velocity is distance divided by time.\n\nVelocity = Length ÷ Time = [LT⁻¹].",
+"Step 5: Divide velocity by time.\n\nAcceleration = [LT⁻¹] ÷ [T] = [LT⁻²].",
+"Step 6: Substitute into the force equation.\n\nForce = [M] × [LT⁻²].",
+"Step 7: Multiply the dimensions.\n\nForce = [MLT⁻²].",
+"Step 8: Conclude that the dimensional formula of force is [MLT⁻²]."
+],
+"why_other_options_are_wrong": [
+"B. [ML²T⁻²] represents the dimensions of work or energy because Work = Force × Distance.",
+"C. [ML⁻¹T⁻²] represents the dimensions of pressure since Pressure = Force ÷ Area.",
+"D. [LT⁻¹] represents velocity, which describes the rate of change of displacement."
+],
+"exam_tip": "JAMB frequently tests dimensions through familiar Physics formulas. Instead of memorising dimensional formulas blindly, start with the relevant equation and reduce every quantity to the fundamental dimensions M, L and T.",
+"final_answer": "A. [MLT⁻²]",
+"simple_explanation": "Force depends on mass and acceleration. Mass contributes M, while acceleration contributes LT⁻². Combining them gives MLT⁻².",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Dimensions of Physical Quantities to learn how dimensional formulas are derived and how dimensional analysis is used to verify Physics equations. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations, worked examples and examination tips."
 },
-	{
-  "id": "phy_01_q033",
-  "subject_code": "phy",
-  "subject_name": "Physics",
-  "topic_id": "phy_01",
-  "topic_title": "Measurements, Units and Dimensions",
-  "subtopic": "Area measurement",
-  "difficulty": "medium",
-  "question_type": "mcq",
-  "question": "A triangular piece of cardboard has a base of 10 cm and a perpendicular height of 8 cm. What is its area?",
-  "options": {
-    "A": "18 cm²",
-    "B": "40 cm²",
-    "C": "80 cm²",
-    "D": "160 cm²"
-  },
-  "answer": "B",
-  "answer_text": "40 cm²",
-  "explanation": {
-    "question_restate": "The question requires you to determine the area of a triangle using its base and perpendicular height.",
-    "principle": "Area is the amount of surface enclosed by a two-dimensional shape. It tells us how much space is covered by the surface of an object and is measured in square units such as cm², m², and mm². Different plane shapes have different formulas for calculating their areas. For example, the area of a rectangle is Length × Breadth (A = lb), the area of a square is Side × Side (A = a²), the area of a circle is πr², where r is the radius, and the area of a triangle is ½ × Base × Height (A = ½bh), where the height must be perpendicular to the base. Since the shape in this question is a triangle, the appropriate formula is A = ½bh.",
-    "steps": [
-      "Identify the shape involved. The question states that the object is a triangular piece of cardboard, so the formula for the area of a triangle should be used.",
-      "Write the formula for the area of a triangle: A = ½bh, where b is the base and h is the perpendicular height.",
-      "Identify the given values: Base, b = 10 cm and Height, h = 8 cm.",
-      "Substitute the values into the formula: A = ½ × 10 × 8.",
-      "Multiply the base and height first: 10 × 8 = 80.",
-      "Take half of the result: ½ × 80 = 40.",
-      "Attach the appropriate unit. Since area is obtained by multiplying two lengths together, the unit becomes square centimetres (cm²).",
-      "Therefore, the area of the triangular cardboard is 40 cm²."
-    ],
-    "why_other_options_are_wrong": [
-      "A. 18 cm²: This answer results from incorrect substitution or arithmetic and does not follow the formula A = ½bh correctly.",
-      "C. 80 cm²: This answer is obtained by multiplying the base and height without taking half of the product. The factor ½ in the triangle formula was ignored.",
-      "D. 160 cm²: This answer is twice the product obtained using the correct formula and does not represent the area of the triangle."
-    ],
-    "exam_tip": "JAMB frequently tests students on selecting the correct formula for different plane shapes. Always identify the shape first before substituting values into a formula. For triangles, ensure that the height used is perpendicular to the base.",
-    "final_answer": "B. 40 cm²",
-    "simple_explanation": "A triangle occupies half the area of a rectangle having the same base and height. If a rectangle with base 10 cm and height 8 cm has an area of 80 cm², then the triangle will have half of that area, which is 40 cm².",
-    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Area Measurement."
-  },
-  "tags": [
-    "area_measurement",
-    "triangle_area",
-    "geometry",
-    "phy_01"
-  ],
-  "active": true
+"tags": [
+"dimensions_of_physical_quantities",
+"dimensional_analysis",
+"force",
+"newtons_second_law",
+"derived_quantities",
+"phy_01"
+],
+"active": true
 },
-	{
-  "id": "phy_01_q034",
-  "subject_code": "phy",
-  "subject_name": "Physics",
-  "topic_id": "phy_01",
-  "topic_title": "Measurements, Units and Dimensions",
-  "subtopic": "Distance and displacement",
-  "difficulty": "medium",
-  "question_type": "mcq",
-  "question": "A car travels 6 km north and then 8 km south. Determine its distance and displacement respectively.",
-  "options": {
-    "A": "14 km, 2 km south",
-    "B": "14 km, 14 km south",
-    "C": "2 km, 14 km south",
-    "D": "2 km, 2 km north"
-  },
-  "answer": "A",
-  "answer_text": "14 km, 2 km south",
-  "explanation": {
-    "question_restate": "The question requires you to distinguish between distance and displacement by calculating both for a car that moves in opposite directions along the same straight line.",
-    "principle": "Distance and displacement are two important concepts used to describe motion, but they do not mean the same thing. Distance is the total length of the actual path travelled by an object, irrespective of direction. It is a scalar quantity, meaning that it has magnitude only and no direction. Its SI unit is the metre (m). Displacement, on the other hand, is the straight-line change in position of an object from its starting point to its final position. It is a vector quantity because it has both magnitude and direction. The direction is an essential part of displacement. When motion occurs along the same straight line but in opposite directions, one direction is usually assigned a positive sign while the opposite direction is assigned a negative sign. This allows displacement to be determined mathematically.",
-    "steps": [
-      "Identify the two quantities that need to be calculated: distance and displacement.",
-      "To calculate distance, add all the lengths of the paths travelled, regardless of direction.",
-      "The car travels 6 km north and then 8 km south.",
-      "Distance = 6 km + 8 km = 14 km.",
-      "To calculate displacement, choose one direction as positive. Let north be positive and south be negative.",
-      "Represent the first movement as +6 km because it is towards the north.",
-      "Represent the second movement as -8 km because it is towards the south.",
-      "Displacement = (+6) + (-8) km.",
-      "Displacement = -2 km.",
-      "The negative sign indicates that the final position is 2 km towards the south of the starting point.",
-      "Therefore, the displacement is 2 km south."
-    ],
-    "why_other_options_are_wrong": [
-      "B. 14 km, 14 km south: The distance is correct, but the displacement is incorrect. Displacement depends on the net change in position, not the total distance travelled.",
-      "C. 2 km, 14 km south: The values for distance and displacement have been interchanged. Distance should be 14 km, while displacement should be 2 km south.",
-      "D. 2 km, 2 km north: The distance is incorrect because the total path travelled is 14 km. The direction of the displacement is also incorrect because the car ends up 2 km south of its starting point."
-    ],
-    "exam_tip": "JAMB frequently tests the distinction between distance and displacement. Remember that distance is always positive and has no direction, while displacement requires both magnitude and direction. If an object moves in opposite directions along the same line, displacement is obtained by finding the difference between the distances and attaching the direction of the larger movement.",
-    "final_answer": "A. 14 km, 2 km south",
-    "simple_explanation": "Imagine walking 6 steps forward and then 8 steps backward. Altogether, you have walked 14 steps, so your distance is 14. However, you would end up 2 steps behind where you started. That final change in position is your displacement, which is 2 km south in this question.",
-    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Distance and Displacement."
-  },
-  "tags": [
-    "distance",
-    "displacement",
-    "scalar_quantities",
-    "vector_quantities",
-    "phy_01"
-  ],
-  "active": true
+{
+"id": "phy_01_q016",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Dimensional analysis",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "An engineer is designing a hydraulic press and needs to verify the dimensional formula of pressure before completing the calculations, which of the following represents the dimensional formula of pressure?",
+"options": {
+"A": "[ML⁻¹T⁻²]",
+"B": "[MLT⁻²]",
+"C": "[ML²T⁻²]",
+"D": "[M⁻¹LT⁻²]"
 },
-	{
-  "id": "phy_01_q035",
-  "subject_code": "phy",
-  "subject_name": "Physics",
-  "topic_id": "phy_01",
-  "topic_title": "Measurements, Units and Dimensions",
-  "subtopic": "Measurement of time",
-  "difficulty": "medium",
-  "question_type": "mcq",
-  "question": "Convert 2 hours 15 minutes to minutes.",
-  "options": {
-    "A": "125 min",
-    "B": "130 min",
-    "C": "135 min",
-    "D": "145 min"
-  },
-  "answer": "C",
-  "answer_text": "135 min",
-  "explanation": {
-    "question_restate": "The question requires you to convert a time interval expressed in hours and minutes entirely into minutes.",
-    "principle": "Time is one of the seven fundamental (base) quantities in the International System of Units (SI). The SI unit of time is the second (s). The seven SI base quantities and their units are: length measured in metre (m), mass measured in kilogram (kg), time measured in second (s), electric current measured in ampere (A), thermodynamic temperature measured in kelvin (K), amount of substance measured in mole (mol), and luminous intensity measured in candela (cd). Although the second is the SI unit of time, larger units such as minutes and hours are commonly used in everyday life. The relationships between these units are: 1 minute = 60 seconds and 1 hour = 60 minutes. Time is measured using instruments such as clocks, watches, stopwatches, and digital timers. When converting a larger time unit to a smaller one, multiplication is used.",
-    "steps": [
-      "Identify the units involved in the question. The time interval is given in hours and minutes.",
-      "Recognize that the final answer is required entirely in minutes.",
-      "Recall the relationship between hours and minutes: 1 hour = 60 minutes.",
-      "Convert 2 hours to minutes by multiplying by 60.",
-      "2 × 60 = 120 minutes.",
-      "The question also includes an additional 15 minutes.",
-      "Add the converted value to the existing minutes: 120 + 15.",
-      "120 + 15 = 135 minutes.",
-      "Therefore, the time interval expressed entirely in minutes is 135 minutes."
-    ],
-    "why_other_options_are_wrong": [
-      "A. 125 min: This value results from an incorrect conversion of hours to minutes or an error in addition.",
-      "B. 130 min: This answer is obtained if the additional 15 minutes are incorrectly treated as 10 minutes.",
-      "D. 145 min: This answer results from adding an incorrect value to the converted 120 minutes."
-    ],
-    "exam_tip": "JAMB often tests unit conversions involving time. Remember these important relationships: 1 minute = 60 seconds, 1 hour = 60 minutes, and 1 day = 24 hours. Always convert the larger unit first before combining it with the smaller unit.",
-    "final_answer": "C. 135 min",
-    "simple_explanation": "Two hours contain 120 minutes because each hour has 60 minutes. After adding the extra 15 minutes, the total becomes 135 minutes.",
-    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Time."
-  },
-  "tags": [
-    "measurement_of_time",
-    "time_conversion",
-    "si_units",
-    "fundamental_quantities",
-    "phy_01"
-  ],
-  "active": true
+"answer": "A",
+"answer_text": "[ML⁻¹T⁻²]",
+"explanation": {
+"question_restate": "The question requires you to determine the dimensional formula of pressure using its relationship with force and area.",
+"principle": "Dimensional analysis is a useful Physics tool for expressing physical quantities in terms of fundamental dimensions such as mass (M), length (L) and time (T). It helps scientists and engineers check whether equations are physically meaningful and dimensionally consistent.\n\nA beginner may ask: 'Why do we use dimensions?' Dimensions help us identify relationships between quantities, verify formulas and detect mistakes in calculations.\n\nPressure is a derived quantity because it is obtained from other physical quantities. It is defined as:\n\nPressure = Force ÷ Area.\n\nTo determine the dimensions of pressure, we must first express force and area in terms of the fundamental dimensions M, L and T.",
+"steps": [
+"Step 1: Recall the formula for pressure.\n\nPressure = Force ÷ Area.",
+"Step 2: Determine the dimensions of force.\n\nForce = Mass × Acceleration.",
+"Step 3: Express acceleration in fundamental dimensions.\n\nAcceleration = Length ÷ Time² = [LT⁻²].",
+"Step 4: Determine the dimensions of force.\n\nForce = [M] × [LT⁻²] = [MLT⁻²].",
+"Step 5: Determine the dimensions of area.\n\nArea = Length × Length = [L²].",
+"Step 6: Substitute into the pressure formula.\n\nPressure = [MLT⁻²] ÷ [L²].",
+"Step 7: Simplify the expression.\n\nPressure = [ML⁻¹T⁻²].",
+"Step 8: Conclude that the dimensional formula of pressure is [ML⁻¹T⁻²]."
+],
+"why_other_options_are_wrong": [
+"A. Correct. Pressure has dimensions [ML⁻¹T⁻²].",
+"B. This is the dimensional formula of force, not pressure.",
+"C. This corresponds to the dimensions of work or energy, not pressure.",
+"D. This does not correspond to pressure and is dimensionally incorrect for force per unit area."
+],
+"exam_tip": "JAMB frequently tests dimensional analysis by asking candidates to derive dimensions from familiar formulas. Instead of memorizing dimensions, learn how to break quantities into simpler relationships involving mass, length and time.",
+"final_answer": "A. [ML⁻¹T⁻²]",
+"simple_explanation": "Pressure tells us how much force acts on a given area. Since force has dimensions [MLT⁻²] and area has dimensions [L²], dividing them gives [ML⁻¹T⁻²].",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Dimensional Analysis to learn how to derive dimensions of force, pressure, energy, power and other physical quantities. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical Physics applications."
+},
+"tags": [
+"dimensional_analysis",
+"pressure",
+"dimensions",
+"derived_quantities",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q017",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Position and coordinates",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A technician monitoring the position of an object on a coordinate grid records its location as (−3, 4). Relative to the origin, in which quadrant is the object located?",
+"options": {
+"A": "First quadrant",
+"B": "Second quadrant",
+"C": "Third quadrant",
+"D": "Fourth quadrant"
+},
+"answer": "B",
+"answer_text": "Second quadrant",
+"explanation": {
+"question_restate": "The question requires you to determine the quadrant in which an object is located when its coordinates are given as (−3, 4).",
+"principle": "Coordinates are used in Physics to describe the position of objects relative to a chosen reference point called the origin. The Cartesian coordinate system consists of two perpendicular axes:\n\n• The horizontal x-axis.\n• The vertical y-axis.\n\nThe point where the two axes intersect is called the origin and has coordinates (0, 0).\n\nA beginner may ask: 'Why are coordinates important in Physics?' Coordinates help scientists, engineers and technicians specify the exact position of an object, track motion and describe locations in a precise way.\n\nThe Cartesian plane is divided into four quadrants:\n\n• First Quadrant: (+, +)\n• Second Quadrant: (−, +)\n• Third Quadrant: (−, −)\n• Fourth Quadrant: (+, −)\n\nThe signs of the x-coordinate and y-coordinate determine the quadrant in which a point lies.",
+"steps": [
+"Step 1: Identify the coordinates of the object.\n\nThe coordinates are (−3, 4).",
+"Step 2: Examine the sign of the x-coordinate.\n\nThe x-coordinate is −3, which is negative.",
+"Step 3: Examine the sign of the y-coordinate.\n\nThe y-coordinate is 4, which is positive.",
+"Step 4: Recall the quadrant signs.\n\nA point with a negative x-coordinate and a positive y-coordinate lies in the second quadrant.",
+"Step 5: Match the coordinate signs with the appropriate quadrant.",
+"Step 6: Conclude that the object is located in the second quadrant."
+],
+"why_other_options_are_wrong": [
+"A. The first quadrant contains points with positive x and positive y coordinates.",
+"C. The third quadrant contains points with negative x and negative y coordinates.",
+"D. The fourth quadrant contains points with positive x and negative y coordinates."
+],
+"exam_tip": "For coordinate questions, do not focus on the numerical values first. Check the signs of the coordinates. The combination of signs immediately identifies the quadrant.",
+"final_answer": "B. Second quadrant",
+"simple_explanation": "The x-coordinate is negative, so the point is to the left of the origin. The y-coordinate is positive, so the point is above the origin. A point that is left of the origin and above it lies in the second quadrant.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Position and Coordinates to learn how coordinates are used to describe locations, motion and reference points. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical Physics examples."
+},
+"tags": [
+"position_and_coordinates",
+"cartesian_plane",
+"quadrants",
+"reference_points",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q018",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Frame of reference",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "While travelling in a bus moving along a highway, a passenger notices that another passenger seated beside him appears stationary even though both are moving relative to roadside trees. This observation is based on the concept of",
+"options": {
+"A": "universal motion",
+"B": "frame of reference",
+"C": "Newton's first law of motion",
+"D": "dimensional analysis"
+},
+"answer": "B",
+"answer_text": "frame of reference",
+"explanation": {
+"question_restate": "The question requires you to identify the concept that explains why two passengers moving together in a bus can appear to be at rest relative to each other.",
+"principle": "In Physics, motion and rest are relative concepts. Whether an object is considered to be moving or at rest depends on the observer and the point from which the observation is made.\n\nA beginner may ask: 'How can a person be moving and at rest at the same time?' The answer is that the description depends on the observer's frame of reference.\n\nA frame of reference is the viewpoint, coordinate system, or object relative to which motion is described.\n\nFor example:\n\n• A passenger sitting inside a moving bus is at rest relative to another passenger in the same bus.\n• The same passenger is moving relative to a pedestrian standing by the roadside.\n• The same passenger is also moving relative to trees, buildings and electric poles outside the bus.\n\nThus, motion cannot be described meaningfully without specifying the observer or frame of reference.",
+"steps": [
+"Step 1: Identify the observers involved in the situation.",
+"Step 2: Note that both passengers are travelling with the same bus and have the same velocity.",
+"Step 3: Since their positions do not change relative to one another, each passenger appears stationary to the other.",
+"Step 4: However, both passengers are moving relative to objects outside the bus such as trees and buildings.",
+"Step 5: The difference in these observations arises because different frames of reference are being used.",
+"Step 6: Therefore, the correct concept is frame of reference."
+],
+"why_other_options_are_wrong": [
+"A. Universal motion is not the Physics concept used to explain why an object may appear at rest to one observer and moving to another.",
+"B. Correct. The observation depends on the observer's frame of reference.",
+"C. Newton's first law explains the behaviour of objects when no resultant force acts on them; it does not define how motion is judged relative to observers.",
+"D. Dimensional analysis is used to study relationships among physical quantities and their dimensions, not to describe relative motion."
+],
+"exam_tip": "JAMB frequently tests the idea that motion and rest are relative. Whenever a question compares observations made by different observers, think about the frame of reference being used.",
+"final_answer": "B. Frame of reference",
+"simple_explanation": "The two passengers move together with the bus, so neither appears to move relative to the other. However, both appear to move relative to objects outside the bus. This difference is due to the frame of reference chosen by the observer.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Frame of Reference to learn how observers describe motion differently and why motion is considered relative rather than absolute. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard conceptual and application-based Physics questions."
+},
+"tags": [
+"frame_of_reference",
+"relative_motion",
+"motion_and_rest",
+"observers",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q019",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Scientific notation",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "The distance travelled by a radio signal during a particular experiment was recorded as 5,280,000 m. How is this distance expressed in standard form?",
+"options": {
+"A": "5.28 × 10⁵ m",
+"B": "52.8 × 10⁵ m",
+"C": "5.28 × 10⁶ m",
+"D": "0.528 × 10⁷ m"
+},
+"answer": "C",
+"answer_text": "5.28 × 10⁶ m",
+"explanation": {
+"question_restate": "The question requires you to express a measured distance of 5,280,000 metres in scientific notation (standard form).",
+"principle": "Scientific notation, also called standard form, is widely used in Physics to represent very large or very small quantities conveniently. Examples include astronomical distances, wavelengths of light, the size of atoms, and the speed of electromagnetic waves.\n\nA beginner may ask: 'Why do physicists use scientific notation?' Writing very large numbers repeatedly can be difficult and increases the likelihood of errors. Scientific notation makes calculations, comparisons and communication much easier.\n\nA number written in standard form has the structure:\n\nA × 10ⁿ\n\nwhere:\n\n• A is greater than or equal to 1 but less than 10.\n• n is an integer representing the number of places the decimal point has been moved.\n\nFor large numbers, the decimal point is moved to the left, producing a positive exponent.",
+"steps": [
+"Step 1: Write the number.\n\n5,280,000",
+"Step 2: Move the decimal point until only one non-zero digit remains to the left of the decimal point.\n\n5.28",
+"Step 3: Count the number of places the decimal point was moved.\n\nThe decimal point moves 6 places to the left.",
+"Step 4: Since the movement is to the left, the exponent is positive.\n\nExponent = +6",
+"Step 5: Write the number in standard form.\n\n5,280,000 = 5.28 × 10⁶",
+"Step 6: Include the unit.\n\nDistance = 5.28 × 10⁶ m"
+],
+"why_other_options_are_wrong": [
+"A. 5.28 × 10⁵ equals 528,000, which is ten times smaller than the given distance.",
+"B. Although numerically equivalent to 5.28 × 10⁶, the coefficient 52.8 is greater than 10, so it is not in proper standard form.",
+"D. Although numerically equivalent to 5.28 × 10⁶, the coefficient 0.528 is less than 1, violating the rules of standard form."
+],
+"exam_tip": "JAMB frequently tests scientific notation through physical quantities such as distances, wavelengths, masses and particle counts. Always ensure that the coefficient lies between 1 and 10 before selecting your answer.",
+"final_answer": "C. 5.28 × 10⁶ m",
+"simple_explanation": "Move the decimal point until the number becomes 5.28. Since the decimal point moved six places to the left, the exponent is +6. Therefore, 5,280,000 becomes 5.28 × 10⁶.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Scientific Notation to learn how physicists represent very large and very small quantities. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations, worked examples and examination tips."
+},
+"tags": [
+"scientific_notation",
+"standard_form",
+"large_numbers",
+"distance_measurement",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q020",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Measurement of mass",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A scientist in Nigeria collaborates with researchers in different countries and needs to report the mass of a laboratory sample using the internationally accepted standard unit. Which SI unit should be used for the mass of the sample?",
+"options": {
+"A": "gram (g)",
+"B": "newton (N)",
+"C": "kilogram (kg)",
+"D": "tonne (t)"
+},
+"answer": "C",
+"answer_text": "kilogram (kg)",
+"explanation": {
+"question_restate": "The question requires you to identify the internationally accepted SI base unit used for measuring mass.",
+"principle": "The International System of Units (SI) is the standard measurement system used worldwide in science, engineering and technology. It ensures that measurements made in different countries can be compared and understood without confusion.\n\nA beginner may ask: 'Why do scientists need standard units?' Imagine one scientist measuring mass in one unit while another uses a completely different unit. Comparing results would become difficult. The SI system solves this problem by providing universally accepted units.\n\nMass is one of the seven fundamental (base) physical quantities. It represents the amount of matter contained in an object.\n\nThe SI base unit for mass is the kilogram (kg).\n\nThe seven SI base quantities and units are:\n\n• Length — metre (m)\n• Mass — kilogram (kg)\n• Time — second (s)\n• Electric current — ampere (A)\n• Thermodynamic temperature — kelvin (K)\n• Amount of substance — mole (mol)\n• Luminous intensity — candela (cd)",
+"steps": [
+"Step 1: Identify the physical quantity mentioned in the question.\n\nThe quantity is mass.",
+"Step 2: Recall that mass is one of the seven SI base quantities.",
+"Step 3: Determine the internationally accepted SI unit assigned to mass.",
+"Step 4: The SI base unit for mass is the kilogram (kg).",
+"Step 5: Therefore, the correct unit for reporting the mass of the sample is kilogram (kg)."
+],
+"why_other_options_are_wrong": [
+"A. Gram (g) is a metric unit of mass, but the SI base unit is kilogram (kg).",
+"B. Newton (N) is the SI unit of force or weight, not mass.",
+"D. Tonne (t) is used for very large masses, but it is not the SI base unit of mass."
+],
+"exam_tip": "JAMB frequently tests the difference between mass and weight. Remember that mass is measured in kilograms (kg), while weight is a force measured in newtons (N).",
+"final_answer": "C. kilogram (kg)",
+"simple_explanation": "Mass tells us how much matter an object contains. Scientists everywhere use the kilogram (kg) as the standard SI unit for measuring mass.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Mass to learn the difference between mass and weight, SI base units, and common measuring instruments used in Physics laboratories. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practice questions."
+},
+"tags": [
+"measurement_of_mass",
+"mass",
+"si_units",
+"fundamental_quantities",
+"physics_measurement",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q021",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Time-measuring devices",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "Officials at an inter-house sports competition need to determine the exact time taken by runners in a 100 m sprint event. Which of the following instruments would provide the most appropriate measurement?",
+"options": {
+"A": "Beam balance",
+"B": "Metre rule",
+"C": "Stopwatch",
+"D": "Measuring cylinder"
+},
+"answer": "C",
+"answer_text": "Stopwatch",
+"explanation": {
+"question_restate": "The question requires you to identify the most suitable instrument for measuring the time taken by athletes during a short race.",
+"principle": "Time is a fundamental physical quantity measured in seconds (s). In Physics and sporting activities, different instruments are used depending on the duration and precision required.\n\nA beginner may ask: 'Why can't an ordinary wall clock be used?' While a wall clock indicates time, it is not designed to measure short intervals accurately. Sporting events often require measurements to fractions of a second.\n\nA stopwatch is specifically designed to start, stop and reset quickly, making it ideal for timing events such as races, laboratory experiments and other activities that last only a short period.",
+"steps": [
+"Step 1: Identify the quantity being measured.\n\nThe quantity is time.",
+"Step 2: Consider the nature of the event.\n\nA 100 m race usually lasts only a few seconds.",
+"Step 3: Determine the level of accuracy required.\n\nRace officials need precise timing to distinguish between competitors.",
+"Step 4: Recall the instrument designed for measuring short time intervals.\n\nA stopwatch is specifically built for this purpose.",
+"Step 5: Therefore, the most appropriate instrument is the stopwatch."
+],
+"why_other_options_are_wrong": [
+"A. A beam balance measures mass and cannot measure time intervals.",
+"B. A metre rule is used for measuring length or distance, not time.",
+"D. A measuring cylinder is used for measuring the volume of liquids."
+],
+"exam_tip": "JAMB frequently tests your ability to match physical quantities with their measuring instruments. First identify the quantity involved, then choose the instrument specifically designed to measure it.",
+"final_answer": "C. Stopwatch",
+"simple_explanation": "A stopwatch is like a special clock used for races and experiments. It can start and stop instantly, making it suitable for measuring short periods of time accurately.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Time-Measuring Devices to learn about stopwatches, clocks, electronic timers and their applications. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and detailed explanations."
+},
+"tags": [
+"time_measuring_devices",
+"stopwatch",
+"time_measurement",
+"sporting_events",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q022",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Measurement of regular bodies",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A laboratory technician is preparing a density experiment using a rectangular wooden block. Measurements taken with a metre rule show that the block has a length of 8 cm, a breadth of 5 cm and a height of 3 cm. What is the volume of the block?",
+"options": {
+"A": "16 cm³",
+"B": "40 cm³",
+"C": "120 cm³",
+"D": "240 cm³"
+},
+"answer": "C",
+"answer_text": "120 cm³",
+"explanation": {
+"question_restate": "The question requires you to determine the volume of a rectangular wooden block using its measured dimensions.",
+"principle": "Volume is the amount of space occupied by a body. In Physics, the volume of regular bodies can be calculated directly from their geometric dimensions because they have well-defined shapes.\n\nA beginner may ask: 'What is a regular body?' A regular body is an object whose shape follows a known geometric form such as a cube, cuboid, cylinder, cone or sphere.\n\nThe rectangular block described in this question is a cuboid. The volume of a cuboid is obtained by multiplying its length, breadth and height.\n\nVolume of a cuboid:\n\nV = Length × Breadth × Height\n\nThe SI unit of volume is cubic metre (m³), but laboratory measurements of small objects are often expressed in cubic centimetres (cm³).",
+"steps": [
+"Step 1: Identify the dimensions of the block.\n\nLength = 8 cm\nBreadth = 5 cm\nHeight = 3 cm.",
+"Step 2: Recall the formula for the volume of a cuboid.\n\nV = l × b × h.",
+"Step 3: Substitute the given values.\n\nV = 8 × 5 × 3.",
+"Step 4: Multiply the first two dimensions.\n\n8 × 5 = 40.",
+"Step 5: Multiply by the remaining dimension.\n\n40 × 3 = 120.",
+"Step 6: Write the answer in cubic units because three lengths were multiplied.\n\nVolume = 120 cm³."
+],
+"why_other_options_are_wrong": [
+"A. 16 cm³ does not result from applying the cuboid volume formula correctly.",
+"B. 40 cm³ is obtained by multiplying only the length and breadth while ignoring the height.",
+"D. 240 cm³ is twice the correct value and results from an incorrect calculation."
+],
+"exam_tip": "JAMB frequently tests the measurement of regular bodies by providing dimensions obtained from instruments such as metre rules or vernier calipers. Always identify the shape first and then apply the correct volume formula.",
+"final_answer": "C. 120 cm³",
+"simple_explanation": "A rectangular block is a cuboid. To find its volume, multiply its length, breadth and height. Therefore, 8 × 5 × 3 = 120 cm³.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Regular Bodies to learn how to determine the volume of cubes, cuboids, cylinders, spheres and other regular objects. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and beginner-friendly explanations."
+},
+"tags": [
+"measurement_of_regular_bodies",
+"volume_of_cuboid",
+"regular_bodies",
+"volume_measurement",
+"metre_rule",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q023",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Metre rule",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A student measuring the length of a wooden strip with a metre rule notices that the smallest divisions on the scale are marked in millimetres. What is the least count of the metre rule?",
+"options": {
+"A": "1 cm",
+"B": "0.1 cm",
+"C": "1 mm",
+"D": "10 mm"
+},
+"answer": "C",
+"answer_text": "1 mm",
+"explanation": {
+"question_restate": "The question requires you to identify the least count of a metre rule whose smallest scale divisions are marked in millimetres.",
+"principle": "The least count of a measuring instrument is the smallest value that can be measured directly using that instrument. It determines the precision of the instrument and indicates the smallest change in measurement that can be detected.\n\nA beginner may ask: 'Why is the least count important?' The answer is that the least count tells us how accurately an instrument can measure. Instruments with smaller least counts generally provide more precise measurements.\n\nA standard metre rule is usually graduated in centimetres and millimetres. Each centimetre is divided into ten equal parts, and each of these smaller divisions represents one millimetre.\n\nTherefore, the smallest marking visible on a metre rule graduated in millimetres is 1 mm, which becomes its least count.",
+"steps": [
+"Step 1: Recall the meaning of least count.\n\nLeast count is the smallest value that can be read directly on an instrument.",
+"Step 2: Examine the scale markings described in the question.\n\nThe smallest divisions on the metre rule are in millimetres.",
+"Step 3: Identify the value represented by one smallest division.\n\nEach smallest division corresponds to 1 mm.",
+"Step 4: Apply the definition of least count.\n\nSince 1 mm is the smallest readable division, it is the least count.",
+"Step 5: Conclude that the least count of the metre rule is 1 mm."
+],
+"why_other_options_are_wrong": [
+"A. 1 cm is larger than the smallest division on the metre rule and therefore cannot be the least count.",
+"B. 0.1 cm is numerically equal to 1 mm, but the instrument is described as being graduated in millimetres, making 1 mm the appropriate expression of the least count.",
+"D. 10 mm is equal to 1 cm and is much larger than the smallest division on the scale."
+],
+"exam_tip": "JAMB frequently tests the least counts of common measuring instruments. Remember: metre rule = 1 mm, Vernier calipers ≈ 0.1 mm, and micrometer screw gauge ≈ 0.01 mm.",
+"final_answer": "C. 1 mm",
+"simple_explanation": "The least count is the smallest mark on the instrument. Since the metre rule's smallest markings are millimetres, its least count is 1 mm.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Metre Rule to learn about scale readings, least count, parallax error and accurate length measurement. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical examples."
+},
+"tags": [
+"metre_rule",
+"least_count",
+"length_measurement",
+"measuring_instruments",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q024",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Area measurement",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A technician needs to determine the surface area of a square metal plate for a laboratory experiment. Using a metre rule, he finds that each side of the plate measures 12 m. What is the surface area of the plate?",
+"options": {
+"A": "24 m²",
+"B": "48 m²",
+"C": "144 m²",
+"D": "288 m²"
+},
+"answer": "C",
+"answer_text": "144 m²",
+"explanation": {
+"question_restate": "The question requires you to calculate the area of a square metal plate whose side length has been measured as 12 m.",
+"principle": "Area is the amount of surface covered by a two-dimensional object. In Physics and engineering, area measurements are important when determining quantities such as pressure, heat transfer, solar energy collection and material requirements.\n\nA beginner may ask: 'Why do we measure area instead of just length?' Length describes only one dimension, whereas area describes the entire surface occupied by an object.\n\nDifferent shapes have different area formulas:\n\n• Rectangle: Area = Length × Breadth\n• Square: Area = Side × Side = Side²\n• Triangle: Area = ½ × Base × Height\n• Circle: Area = πr²\n\nSince the metal plate is square, all its sides are equal and the appropriate formula is:\n\nArea = Side².",
+"steps": [
+"Step 1: Identify the shape.\n\nThe metal plate is a square.",
+"Step 2: Identify the measured side length.\n\nSide = 12 m.",
+"Step 3: Recall the formula for the area of a square.\n\nArea = Side × Side.",
+"Step 4: Substitute the given value.\n\nArea = 12 × 12.",
+"Step 5: Perform the calculation.\n\nArea = 144.",
+"Step 6: Attach the correct unit.\n\nArea = 144 m²."
+],
+"why_other_options_are_wrong": [
+"A. 24 m² is obtained by adding two sides rather than calculating area.",
+"B. 48 m² results from using an incorrect operation instead of squaring the side length.",
+"D. 288 m² is twice the correct value and does not represent the area of the square."
+],
+"exam_tip": "JAMB often tests whether candidates can distinguish between length, perimeter and area. Remember that area is measured in square units such as cm² and m², while length is measured in cm or m.",
+"final_answer": "C. 144 m²",
+"simple_explanation": "A square has four equal sides. To find its area, multiply one side by itself. Therefore, 12 × 12 = 144 m².",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Area Measurement to learn how areas of common shapes are determined from measured dimensions. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and detailed explanations."
+},
+"tags": [
+"area_measurement",
+"surface_area",
+"metre_rule",
+"measurement_of_dimensions",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q025",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Fundamental quantities",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "While organizing measurements recorded during an experiment, a student separated physical quantities into fundamental and derived categories. Which of the following quantities should be placed in the derived category rather than the fundamental category?",
+"options": {
+"A": "Length",
+"B": "Temperature",
+"C": "Force",
+"D": "Time"
+},
+"answer": "C",
+"answer_text": "Force",
+"explanation": {
+"question_restate": "The question requires you to identify the quantity that is derived from other physical quantities rather than being a fundamental quantity.",
+"principle": "In Physics, measurements are built around a small number of independent quantities known as fundamental (base) quantities. These quantities do not depend on any other physical quantities for their definition.\n\nA beginner may ask: 'Why are they called fundamental quantities?' They are called fundamental because they form the foundation from which many other quantities are obtained.\n\nThe seven SI fundamental quantities are:\n\n• Length\n• Mass\n• Time\n• Electric current\n• Thermodynamic temperature\n• Amount of substance\n• Luminous intensity\n\nEach of these has its own SI base unit.\n\nDerived quantities are obtained by combining two or more fundamental quantities through mathematical relationships.\n\nFor example:\n\nForce = Mass × Acceleration\n\nSince acceleration itself depends on length and time, force ultimately depends on several fundamental quantities. Therefore, force is a derived quantity rather than a fundamental quantity.",
+"steps": [
+"Step 1: Recall the seven SI fundamental quantities.",
+"Step 2: Examine each option carefully.",
+"Step 3: Length is a fundamental quantity measured in metres (m).",
+"Step 4: Temperature is a fundamental quantity measured in kelvin (K).",
+"Step 5: Time is a fundamental quantity measured in seconds (s).",
+"Step 6: Force is calculated from mass and acceleration.",
+"Step 7: Since force depends on other quantities, it is a derived quantity.",
+"Step 8: Therefore, force is the correct answer."
+],
+"why_other_options_are_wrong": [
+"A. Length is one of the seven SI fundamental quantities and has the base unit metre (m).",
+"B. Temperature is a fundamental quantity and has the SI base unit kelvin (K).",
+"D. Time is a fundamental quantity and has the SI base unit second (s)."
+],
+"exam_tip": "JAMB frequently tests the distinction between fundamental and derived quantities. Rather than memorizing isolated facts, learn the formulas that connect physical quantities. If a quantity can be expressed using other quantities, it is usually derived.",
+"final_answer": "C. Force",
+"simple_explanation": "Length, temperature and time are basic quantities that stand on their own. Force is obtained from mass and acceleration, so it is built from other quantities and is therefore a derived quantity.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Fundamental Quantities to learn the seven SI base quantities, their units and how they are used to define derived quantities such as force, pressure, energy and power. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practice questions."
+},
+"tags": [
+"fundamental_quantities",
+"derived_quantities",
+"si_base_quantities",
+"force",
+"measurements",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q026",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Length measurement",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "An engineer records the length of a fibre-optic cable as 76.4 cm during installation. To enter the value into a technical report that uses SI units, what length should be recorded?",
+"options": {
+"A": "0.0764 m",
+"B": "0.764 m",
+"C": "7.64 m",
+"D": "76.4 m"
+},
+"answer": "B",
+"answer_text": "0.764 m",
+"explanation": {
+"question_restate": "The question requires you to convert a measured length from centimetres to metres, the SI unit of length.",
+"principle": "Length is one of the seven fundamental physical quantities in the International System of Units (SI). The SI base unit of length is the metre (m).\n\nA beginner may ask: 'Why do scientists prefer metres instead of centimetres?' The reason is that SI units provide a standard system that allows measurements to be communicated and compared consistently around the world.\n\nCommon instruments used for measuring length include:\n\n• Metre rule\n• Tape measure\n• Vernier calipers\n• Micrometer screw gauge\n\nWhen converting between units of length, it is important to remember that:\n\n1 metre = 100 centimetres.\n\nTherefore, converting a measurement from centimetres to metres requires dividing by 100.",
+"steps": [
+"Step 1: Identify the quantity involved.\n\nThe quantity measured is length.",
+"Step 2: Identify the given value.\n\nLength = 76.4 cm.",
+"Step 3: Recall the relationship between the units.\n\n1 m = 100 cm.",
+"Step 4: Convert centimetres to metres.\n\n76.4 ÷ 100 = 0.764.",
+"Step 5: Attach the correct SI unit.\n\nLength = 0.764 m.",
+"Step 6: Conclude that the value to be entered in the SI-based report is 0.764 m."
+],
+"why_other_options_are_wrong": [
+"A. 0.0764 m results from dividing by 1000 instead of 100.",
+"B. Correct. 76.4 cm ÷ 100 = 0.764 m.",
+"C. 7.64 m results from multiplying instead of dividing when converting to a larger unit.",
+"D. 76.4 m incorrectly keeps the numerical value unchanged despite changing the unit."
+],
+"exam_tip": "JAMB frequently tests unit conversion within practical measurement situations. Remember: when converting from a smaller unit to a larger unit, divide by the conversion factor.",
+"final_answer": "B. 0.764 m",
+"simple_explanation": "Since a metre is larger than a centimetre, the number becomes smaller when converting from centimetres to metres. Dividing 76.4 by 100 gives 0.764 m.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Length Measurement to learn about SI units, common measuring instruments and unit conversions. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations and practical examples."
+},
+"tags": [
+"length_measurement",
+"si_units",
+"unit_conversion",
+"physical_quantities",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q027",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Measuring cylinder",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "While preparing a solution for a laboratory investigation, a technician observed that a measuring cylinder initially contained 32 cm³ of water. After more water was added, the level rose to 57 cm³. What volume of water was added to the cylinder?",
+"options": {
+"A": "25 cm³",
+"B": "57 cm³",
+"C": "89 cm³",
+"D": "15 cm³"
+},
+"answer": "A",
+"answer_text": "25 cm³",
+"explanation": {
+"question_restate": "The question requires you to determine the volume of water added to a measuring cylinder using the initial and final volume readings.",
+"principle": "A measuring cylinder is a laboratory instrument used for measuring the volume of liquids. The scale on the cylinder is usually calibrated in cubic centimetres (cm³) or millilitres (mL).\n\nA beginner may ask: 'How can we know the amount of liquid added?' The answer is that the increase in the cylinder reading represents the volume of liquid introduced into the container.\n\nFor volume changes in a measuring cylinder:\n\nVolume Added = Final Reading − Initial Reading.\n\nThis principle is similar to determining how much water has been poured into a container by comparing the new level with the original level.\n\nIn practical Physics, accurate volume measurement is important when preparing solutions, conducting density experiments and investigating the properties of materials.",
+"steps": [
+"Step 1: Identify the initial volume reading.\n\nThe cylinder initially contained 32 cm³ of water.",
+"Step 2: Identify the final volume reading.\n\nAfter additional water was added, the reading became 57 cm³.",
+"Step 3: Apply the relationship:\n\nVolume Added = Final Reading − Initial Reading.",
+"Step 4: Substitute the values:\n\nVolume Added = 57 cm³ − 32 cm³.",
+"Step 5: Perform the subtraction:\n\nVolume Added = 25 cm³.",
+"Step 6: Conclude that the volume of water added is 25 cm³."
+],
+"why_other_options_are_wrong": [
+"B. 57 cm³ is the final volume in the cylinder, not the volume added.",
+"C. 89 cm³ is obtained by incorrectly adding the two readings together.",
+"D. 15 cm³ results from an incorrect subtraction and does not represent the increase in volume."
+],
+"exam_tip": "Whenever JAMB presents initial and final readings from a measuring instrument, pay attention to what is being asked. If the question asks for the increase or change, subtract the initial reading from the final reading.",
+"final_answer": "A. 25 cm³",
+"simple_explanation": "The measuring cylinder first showed 32 cm³ and later showed 57 cm³. The extra water occupies the additional space between these readings. Therefore, 57 − 32 = 25 cm³.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measuring Cylinder to learn how to read liquid levels correctly, interpret meniscus readings and determine volume changes in laboratory experiments. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and detailed explanations."
+},
+"tags": [
+"measuring_cylinder",
+"volume_measurement",
+"liquid_volume",
+"laboratory_measurement",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q028",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Volume measurement",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A cylindrical metal container used in a Physics laboratory has an internal radius of 7 cm and a height of 10 cm. What volume of liquid can the container hold when completely filled?",
+"options": {
+"A": "1,540 cm³",
+"B": "770 cm³",
+"C": "490 cm³",
+"D": "3,080 cm³"
+},
+"answer": "A",
+"answer_text": "1,540 cm³",
+"explanation": {
+"question_restate": "The question requires you to determine the volume of liquid that a cylindrical container can hold using its dimensions.",
+"principle": "Volume is the amount of space occupied by a substance or enclosed within a container. In Physics, volume measurement is important when determining the capacity of containers, measuring liquids, calculating densities and analysing experimental results.\n\nA beginner may ask: 'Why is the volume of a container important?' The answer is that the volume tells us the maximum amount of liquid or material the container can hold.\n\nDifferent regular solids have different volume formulas:\n\n• Cuboid: V = lbh\n• Cube: V = a³\n• Cylinder: V = πr²h\n• Cone: V = ⅓πr²h\n• Sphere: V = ⁴⁄₃πr³\n\nSince the container is cylindrical, the appropriate formula is:\n\nV = πr²h.",
+"steps": [
+"Step 1: Identify the shape of the container.\n\nThe container is a cylinder.",
+"Step 2: Recall the volume formula for a cylinder.\n\nV = πr²h.",
+"Step 3: Substitute the given values.\n\nV = (22/7) × 7² × 10.",
+"Step 4: Calculate the square of the radius.\n\n7² = 49.",
+"Step 5: Simplify the expression.\n\nV = (22/7) × 49 × 10 = 22 × 7 × 10.",
+"Step 6: Evaluate the result.\n\nV = 1,540 cm³.",
+"Step 7: Therefore, the container can hold 1,540 cm³ of liquid."
+],
+"why_other_options_are_wrong": [
+"A. Correct. This is obtained by properly applying the cylinder volume formula.",
+"B. This results from an incomplete calculation and underestimates the container's capacity.",
+"C. This value is obtained when π is omitted from the formula.",
+"D. This is twice the correct volume and results from an incorrect multiplication."
+],
+"exam_tip": "JAMB frequently presents volume questions through practical situations such as tanks, containers, pipes and laboratory apparatus. Always identify the shape first before selecting the appropriate volume formula.",
+"final_answer": "A. 1,540 cm³",
+"simple_explanation": "The container has a circular base and a height, so it is a cylinder. Using the cylinder formula, its capacity is 1,540 cm³.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Volume Measurement to learn how to determine the volumes of regular solids and how volume is applied in density calculations and laboratory measurements. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and beginner-friendly explanations."
+},
+"tags": [
+"volume_measurement",
+"cylinder",
+"capacity",
+"regular_solids",
+"laboratory_applications",
+"phy_01"
+],
+"active": true
+}, 
+{
+"id": "phy_01_q029",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Length measurement",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "While measuring the length of a metal rod with a metre rule, a student notices that different observers obtain slightly different readings. Which of the following practices would best minimize parallax error during the measurement?",
+"options": {
+"A": "Position the eye directly above the mark being read",
+"B": "View the scale from the left side",
+"C": "View the scale from the right side",
+"D": "Hold the metre rule farther away from the object"
+},
+"answer": "A",
+"answer_text": "Position the eye directly above the mark being read",
+"explanation": {
+"question_restate": "The question tests your understanding of how to reduce parallax error when taking measurements with a metre rule.",
+"principle": "Accurate measurement is an important part of Physics experiments. Even when a measuring instrument is functioning correctly, errors can arise from the way observations are made.\n\nOne common source of error is parallax error. Parallax error occurs when a scale is viewed from an angle instead of directly in line with the point being measured. Because of this angular view, the mark appears to shift position relative to the scale, resulting in an incorrect reading.\n\nA beginner may ask: 'Why do different people sometimes obtain different readings from the same scale?' The answer is that each observer may view the scale from a slightly different angle. Unless the eye is placed correctly, the reading may appear larger or smaller than the true value.\n\nParallax error can occur when using metre rules, measuring cylinders, thermometers and other graduated instruments.",
+"steps": [
+"Step 1: Identify the source of error mentioned in the question.\n\nThe question refers to parallax error.",
+"Step 2: Recall how parallax error occurs.\n\nIt occurs when a scale is viewed from an angle.",
+"Step 3: Determine the correct viewing position.\n\nThe observer's eye should be placed directly in line with the measurement mark.",
+"Step 4: For a metre rule, this means looking vertically above the point being read.",
+"Step 5: This viewing position eliminates apparent shifts in the mark and gives the most accurate reading.",
+"Step 6: Therefore, the correct option is to position the eye directly above the mark being read."
+],
+"why_other_options_are_wrong": [
+"A. Correct. Looking directly above the mark ensures the reading is taken perpendicular to the scale and minimizes parallax error.",
+"B. Viewing from the left side creates an angular line of sight and may produce an incorrect reading.",
+"C. Viewing from the right side also introduces parallax error because the eye is not directly aligned with the measurement mark.",
+"D. Increasing the distance between the observer and the scale does not eliminate parallax error and may make accurate reading more difficult."
+],
+"exam_tip": "JAMB frequently tests practical measurement errors. Whenever you see the term 'parallax error', remember that the solution is to view the scale perpendicularly and keep the eye directly in line with the reading.",
+"final_answer": "A. Position the eye directly above the mark being read",
+"simple_explanation": "If you look at a scale from the side, the mark may appear to be in the wrong position. Looking straight down at the mark helps you see the true reading and avoids parallax error.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Length Measurement to learn about metre rules, sources of experimental errors, parallax error, least count and techniques for improving measurement accuracy. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics explanations and worked examples."
+},
+"tags": [
+"length_measurement",
+"parallax_error",
+"measurement_errors",
+"metre_rule",
+"practical_physics",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q030",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Measuring cylinder",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "While preparing a solution in the laboratory, a student observes that the surface of water in a measuring cylinder is curved. To obtain the most accurate volume reading, the scale should be read at the",
+"options": {
+"A": "top of the meniscus",
+"B": "middle of the meniscus",
+"C": "bottom of the meniscus",
+"D": "highest point on the cylinder wall"
+},
+"answer": "C",
+"answer_text": "bottom of the meniscus",
+"explanation": {
+"question_restate": "The question tests your understanding of how the volume of water should be read correctly in a measuring cylinder.",
+"principle": "A measuring cylinder is a graduated instrument used for measuring the volume of liquids. When a liquid is poured into the cylinder, its surface is often curved rather than perfectly flat. This curved surface is known as the meniscus.\n\nA beginner may ask: 'Why does the surface become curved?' The answer is that attractive forces exist between the liquid molecules and the walls of the container. For water, the attraction between water molecules and the glass wall is stronger than the attraction among the water molecules themselves. As a result, water climbs slightly up the sides of the cylinder and forms a concave meniscus.\n\nTo obtain an accurate measurement, the observer's eye must be placed at the same horizontal level as the liquid surface. This helps to eliminate parallax error, which occurs when a scale is viewed from above or below its correct reading position.\n\nFor water and most common laboratory liquids, the correct reading is taken at the lowest point of the meniscus.",
+"steps": [
+"Step 1: Identify the liquid involved. The question refers to water in a measuring cylinder.",
+"Step 2: Recall that water forms a concave meniscus.",
+"Step 3: Locate the lowest point of the curved liquid surface.",
+"Step 4: Position the eye at the same level as the meniscus to avoid parallax error.",
+"Step 5: Read the graduation mark corresponding to the bottom of the meniscus.",
+"Step 6: Therefore, the correct reading should be taken at the bottom of the meniscus."
+],
+"why_other_options_are_wrong": [
+"A. The top of the meniscus is not used when reading the volume of water because it gives an incorrect value.",
+"B. The middle of the meniscus is not the accepted reference point for laboratory measurements.",
+"D. The highest point on the cylinder wall is unrelated to the liquid level and provides no valid volume reading."
+],
+"exam_tip": "JAMB frequently tests practical measurement skills. Remember that water is read at the bottom of a concave meniscus, while mercury is read at the top of a convex meniscus.",
+"final_answer": "C. bottom of the meniscus",
+"simple_explanation": "Water curves downward in the middle when placed in a measuring cylinder. The lowest point of this curve gives the correct volume reading when viewed at eye level.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measuring Cylinder to learn about meniscus formation, parallax error, displacement methods and accurate volume measurement. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and detailed explanations."
+},
+"tags": [
+"measuring_cylinder",
+"volume_measurement",
+"meniscus",
+"parallax_error",
+"laboratory_measurement",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q031",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Unit conversion",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A technician measured the length of an electrical cable and recorded it as 450 cm. To prepare a report using SI units, what value should be entered for the length in metres?",
+"options": {
+"A": "0.45 m",
+"B": "4.5 m",
+"C": "45 m",
+"D": "4500 m"
+},
+"answer": "B",
+"answer_text": "4.5 m",
+"explanation": {
+"question_restate": "The question requires you to convert a cable length recorded in centimetres into metres, the SI unit of length.",
+"principle": "Length is one of the seven fundamental quantities in Physics and its SI unit is the metre (m). Scientists, engineers and technicians use SI units to ensure that measurements are communicated in a standard form worldwide.\n\nA beginner may ask: 'Why convert centimetres to metres?' The reason is that Physics calculations and scientific reports are usually expressed in SI units. Using standard units helps avoid confusion and ensures consistency in measurements.\n\nThe relationship between the two units is:\n\n1 metre = 100 centimetres.\n\nTherefore, converting from centimetres to metres requires dividing the numerical value by 100.\n\nThis is because the metre is a larger unit than the centimetre.",
+"steps": [
+"Step 1: Identify the physical quantity involved.\n\nThe quantity being measured is length.",
+"Step 2: Recognize the units involved.\n\nThe measurement is given in centimetres (cm) and must be expressed in metres (m).",
+"Step 3: Recall the conversion relationship.\n\n1 m = 100 cm.",
+"Step 4: Convert from the smaller unit to the larger unit.\n\n450 ÷ 100 = 4.5.",
+"Step 5: Attach the correct SI unit.\n\nLength = 4.5 m.",
+"Step 6: Therefore, the value to be entered in the report is 4.5 m."
+],
+"why_other_options_are_wrong": [
+"A. 0.45 m results from dividing by 1000 instead of 100.",
+"C. 45 m results from an incorrect decimal-point placement and does not represent 450 cm.",
+"D. 4500 m results from multiplying instead of dividing. When converting from a smaller unit to a larger unit, the numerical value should decrease."
+],
+"exam_tip": "JAMB frequently embeds unit conversions within practical situations involving laboratory measurements, engineering applications or experimental reports. Always identify whether you are converting from a smaller unit to a larger unit or vice versa before deciding whether to divide or multiply.",
+"final_answer": "B. 4.5 m",
+"simple_explanation": "Since 100 centimetres make 1 metre, divide 450 by 100. The cable length becomes 4.5 metres.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Unit Conversion to learn how to convert between SI and non-SI units commonly tested in JAMB. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations, worked examples and practice questions."
+},
+"tags": [
+"unit_conversion",
+"length_measurement",
+"si_units",
+"engineering_measurements",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q032",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Scientific notation",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A laboratory report states that the thickness of a thin metallic coating is 0.00072 m. How should this measurement be written in scientific notation?",
+"options": {
+"A": "7.2 × 10⁻⁵ m",
+"B": "7.2 × 10⁻⁴ m",
+"C": "72 × 10⁻⁵ m",
+"D": "0.72 × 10⁻³ m"
+},
+"answer": "B",
+"answer_text": "7.2 × 10⁻⁴ m",
+"explanation": {
+"question_restate": "The question requires you to express the measured thickness 0.00072 m in scientific notation, also known as standard form.",
+"principle": "Scientific notation is a standard method used by scientists to represent very large or very small measurements conveniently. In Physics, quantities such as atomic dimensions, wavelengths, electrical charges and microscopic thicknesses are often too small to write efficiently in ordinary decimal form.\n\nA beginner may ask: 'Why do scientists use scientific notation?' The reason is that it makes calculations easier, reduces the chances of writing errors and allows measurements to be communicated clearly.\n\nA number written in scientific notation has the form:\n\nA × 10ⁿ\n\nwhere:\n\n• A is a number greater than or equal to 1 but less than 10.\n• n is an integer called the exponent.\n\nFor numbers less than 1, the exponent is negative because the decimal point is moved to the right to obtain a coefficient between 1 and 10.",
+"steps": [
+"Step 1: Observe that the given measurement, 0.00072 m, is less than 1.",
+"Step 2: Move the decimal point to the right until the number becomes a value between 1 and 10.",
+"Step 3: Moving the decimal point four places to the right changes 0.00072 to 7.2.",
+"Step 4: Since the decimal point was moved to the right, the exponent must be negative.",
+"Step 5: The number of places moved is 4, so the exponent is −4.",
+"Step 6: Write the measurement in the form A × 10ⁿ.",
+"Step 7: Therefore, 0.00072 m = 7.2 × 10⁻⁴ m."
+],
+"why_other_options_are_wrong": [
+"A. 7.2 × 10⁻⁵ m represents 0.000072 m, which is ten times smaller than the given measurement.",
+"C. 72 × 10⁻⁵ m is mathematically equivalent to the correct value but is not written in scientific notation because the coefficient must be between 1 and 10.",
+"D. 0.72 × 10⁻³ m is not in proper scientific notation because the coefficient is less than 1."
+],
+"exam_tip": "For JAMB questions on scientific notation, first ensure that the coefficient lies between 1 and 10. Then determine whether the exponent should be positive or negative based on the direction in which the decimal point was moved.",
+"final_answer": "B. 7.2 × 10⁻⁴ m",
+"simple_explanation": "The decimal point is moved four places to the right to change 0.00072 into 7.2. Because the movement is to the right, the exponent is negative. Therefore, the measurement becomes 7.2 × 10⁻⁴ m.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Scientific Notation to learn how scientists represent extremely large and extremely small measurements. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practice questions."
+},
+"tags": [
+"scientific_notation",
+"standard_form",
+"small_measurements",
+"physics_measurements",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q033",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Area measurement",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A surveyor is preparing a triangular warning sign for a road construction site. After measuring the sign, he finds that its base is 10 cm and its perpendicular height is 8 cm. What area of metal sheet is required to produce the sign?",
+"options": {
+"A": "18 cm²",
+"B": "40 cm²",
+"C": "80 cm²",
+"D": "160 cm²"
+},
+"answer": "B",
+"answer_text": "40 cm²",
+"explanation": {
+"question_restate": "The question requires you to determine the area of a triangular warning sign using its measured base and perpendicular height.",
+"principle": "Area measurement is an important aspect of Physics and engineering because it helps determine the amount of surface occupied by an object. In practical situations, area calculations are used when estimating materials required for construction, manufacturing, painting, roofing and sign production.\n\nA beginner may ask: 'Why is area measured in square units?' Area is obtained by multiplying one length by another length. Therefore, the units also multiply, giving square units such as cm² or m².\n\nFor different shapes, different formulas are used:\n\n• Rectangle: Area = Length × Breadth\n• Square: Area = Side²\n• Circle: Area = πr²\n• Triangle: Area = ½ × Base × Height\n\nSince the warning sign is triangular, the appropriate formula is:\n\nArea = ½ × Base × Height.",
+"steps": [
+"Step 1: Identify the shape involved.\n\nThe warning sign is triangular.",
+"Step 2: Recall the formula for the area of a triangle.\n\nArea = ½ × Base × Height.",
+"Step 3: Identify the measured dimensions.\n\nBase = 10 cm\nHeight = 8 cm.",
+"Step 4: Substitute the values into the formula.\n\nArea = ½ × 10 × 8.",
+"Step 5: Multiply the base and height.\n\n10 × 8 = 80.",
+"Step 6: Take half of the product.\n\n½ × 80 = 40.",
+"Step 7: Attach the correct unit.\n\nThe area is 40 cm²."
+],
+"why_other_options_are_wrong": [
+"A. 18 cm² results from an incorrect calculation and does not follow the triangle area formula.",
+"C. 80 cm² is obtained by multiplying the base and height without applying the required factor of one-half.",
+"D. 160 cm² is greater than the product of the base and height and does not result from the correct formula."
+],
+"exam_tip": "When solving area questions in JAMB Physics, first identify the shape before selecting a formula. Many mistakes occur because candidates use the wrong formula or forget the factor of one-half in triangular areas.",
+"final_answer": "B. 40 cm²",
+"simple_explanation": "A triangle occupies half the area of a rectangle with the same base and height. Since 10 × 8 = 80 cm², half of that is 40 cm².",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Area Measurement to learn how areas of regular and irregular surfaces are determined in practical measurement situations. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics questions and detailed explanations."
+},
+"tags": [
+"area_measurement",
+"triangle_area",
+"surface_measurement",
+"practical_application",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q034",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Distance and displacement",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A surveyor starts from a reference point on a straight road and walks 6 km east to inspect a pipeline. He then turns around and walks 8 km west to examine another section of the same pipeline. What are the total distance travelled and the displacement of the surveyor from his starting point respectively?",
+"options": {
+"A": "14 km, 2 km west",
+"B": "14 km, 14 km west",
+"C": "2 km, 14 km west",
+"D": "2 km, 2 km east"
+},
+"answer": "A",
+"answer_text": "14 km, 2 km west",
+"explanation": {
+"question_restate": "The question requires you to determine both the distance travelled and the displacement of a surveyor who moves along the same straight road in opposite directions.",
+"principle": "Distance and displacement are related but distinct concepts in Physics.\n\nDistance is the total length of the actual path travelled by an object. It is a scalar quantity, meaning that it has magnitude only and no direction.\n\nDisplacement is the straight-line change in position from the starting point to the final position. It is a vector quantity because both magnitude and direction are required.\n\nA beginner may ask: 'Why can distance and displacement have different values?' This happens because distance considers the entire journey, while displacement depends only on the starting and ending positions.\n\nWhenever motion occurs along a straight line in opposite directions, displacement is obtained from the difference between the movements, while distance is obtained from their sum.",
+"steps": [
+"Step 1: Identify all movements made by the surveyor.",
+"Step 2: The surveyor first walks 6 km east.",
+"Step 3: He then walks 8 km west.",
+"Step 4: Calculate the distance travelled.\n\nDistance = 6 km + 8 km = 14 km.",
+"Step 5: Calculate the displacement.\n\nTake east as positive and west as negative.\n\nDisplacement = (+6 km) + (-8 km).",
+"Step 6: Simplify.\n\nDisplacement = -2 km.",
+"Step 7: The negative sign indicates the westward direction.",
+"Step 8: Therefore, the displacement is 2 km west."
+],
+"why_other_options_are_wrong": [
+"A. Correct. The total distance travelled is 14 km, while the final position is 2 km west of the starting point.",
+"B. The distance is correct, but displacement is not equal to the total path travelled.",
+"C. The values of distance and displacement have been interchanged.",
+"D. Both the magnitude of the distance and the direction of displacement are incorrect."
+],
+"exam_tip": "JAMB frequently tests the distinction between scalar and vector quantities. Remember that distance depends on the entire path travelled, whereas displacement depends only on the initial and final positions.",
+"final_answer": "A. 14 km, 2 km west",
+"simple_explanation": "The surveyor walks a total of 14 km, so his distance is 14 km. However, because he ends up 2 km west of where he started, his displacement is 2 km west.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Distance and Displacement to learn how scalar and vector quantities are used to describe motion. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical examples."
+},
+"tags": [
+"distance",
+"displacement",
+"scalar_quantities",
+"vector_quantities",
+"motion",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q035",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Measurement of time",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "An athlete participated in a long-distance endurance test that started at 9:00 a.m. and ended at 11:15 a.m. What was the duration of the exercise in minutes?",
+"options": {
+"A": "125 min",
+"B": "130 min",
+"C": "135 min",
+"D": "145 min"
+},
+"answer": "C",
+"answer_text": "135 min",
+"explanation": {
+"question_restate": "The question requires you to determine the duration of an activity and express the answer entirely in minutes.",
+"principle": "Time is one of the seven fundamental quantities in Physics and is measured in seconds (s), the SI base unit. However, in everyday activities and many scientific observations, larger units such as minutes and hours are commonly used.\n\nA beginner may ask: 'Why is time important in Physics?' Time is required for describing motion, speed, oscillations, experiments and many physical processes. Without measuring time accurately, it would be difficult to compare events or determine how fast changes occur.\n\nCommon instruments used for measuring time include clocks, wristwatches, stopwatches, digital timers and electronic timing systems.\n\nWhen a duration is expressed in hours and minutes, it can be converted entirely into minutes using the relationship:\n\n1 hour = 60 minutes.",
+"steps": [
+"Step 1: Determine the duration between the start time and end time.",
+"Step 2: From 9:00 a.m. to 11:00 a.m. is 2 hours.",
+"Step 3: From 11:00 a.m. to 11:15 a.m. is an additional 15 minutes.",
+"Step 4: Convert 2 hours to minutes.\n\n2 × 60 = 120 minutes.",
+"Step 5: Add the remaining 15 minutes.\n\n120 + 15 = 135 minutes.",
+"Step 6: Therefore, the duration of the exercise is 135 minutes."
+],
+"why_other_options_are_wrong": [
+"A. 125 min results from an incorrect conversion of hours into minutes.",
+"B. 130 min is obtained if the additional 15 minutes are incorrectly counted.",
+"D. 145 min results from adding more minutes than actually elapsed."
+],
+"exam_tip": "When solving time-conversion questions, first determine the actual time interval before converting units. JAMB often presents timing questions in practical situations such as experiments, sporting activities and motion studies.",
+"final_answer": "C. 135 min",
+"simple_explanation": "The activity lasted 2 hours and 15 minutes. Since 2 hours equals 120 minutes, adding 15 minutes gives a total of 135 minutes.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Time to learn about time intervals, SI units of time, stopwatches, clocks and common JAMB time-conversion questions. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more practical and beginner-friendly Physics explanations."
+},
+"tags": [
+"time_measurement",
+"time_interval",
+"fundamental_quantities",
+"physical_measurement",
+"phy_01"
+],
+"active": true
 },
 {
 "id": "phy_01_q036",
