@@ -1915,12 +1915,48 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
             safe_correct_count = md_escape(str(session_row.get("correct_count") or 0))
             safe_wrong_count = md_escape(str(session_row.get("wrong_count") or 0))
 
+            correct_count = int(
+                session_row.get("correct_count") or 0
+            )
+
+            total = len(batch)
+
+            score_100 = round(
+                (correct_count / total) * 100
+            ) if total > 0 else 0
+
+            safe_percentage = md_escape(
+                str(score_100)
+            )
+            if score_100 >= 70:
+
+                outro = (
+                    "🌟 Excellent performance\\!\n\n"
+                    "You demonstrated a strong understanding of this subject\\. Keep it up\\."
+                )
+
+            elif score_100 >= 50:
+
+                outro = (
+                    "👍 Good performance\\!\n\n"
+                    "You passed this subject\\. Review the questions you missed and aim even higher next time\\."
+                )
+
+            else:
+
+                outro = (
+                    "📚 More practice is needed\\.\n\n"
+                    "Review your wrong answers carefully and try again\\. Improvement comes with practice\\."
+                )        
+
             return await update.effective_message.reply_text(
+            
                 f"⏰ *Mock time is up\\.*\n\n"
                 f"📚 Total Questions: *{safe_total}*\n"
                 f"✅ Correct: *{safe_correct_count}*\n"
-                f"❌ Wrong: *{safe_wrong_count}*\n\n"
-                "This subject mock has ended\\.",
+                f"❌ Wrong: *{safe_wrong_count}*\n"
+                f"💯 Score: *{safe_percentage}%*\n\n"
+                f"{outro}",
                 parse_mode="MarkdownV2",
                 reply_markup=InlineKeyboardMarkup(
                     [
@@ -1943,16 +1979,40 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
         wrong_count = int(context.user_data.get("jp_wrong_count", 0))
         total = len(batch)
 
+        score_100 = round(
+            (correct_count / total) * 100
+        ) if total > 0 else 0
+
         safe_total = md_escape(str(total))
         safe_correct_count = md_escape(str(correct_count))
         safe_wrong_count = md_escape(str(wrong_count))
 
-        title = "✅ *Mock Completed*" if session_mode == "mock_utme" else "✅ *Practice Completed*"
-        outro = (
-            "Great job\\. You can return to JAMB Practice for another subject\\."
-            if session_mode == "mock_utme"
-            else "Great job\\. You can return to JAMB Practice for another topic\\."
+
+        safe_percentage = md_escape(
+            str(score_100)
         )
+
+        title = "✅ *Mock Completed*" if session_mode == "mock_utme" else "✅ *Practice Completed*"
+        if score_100 >= 70:
+
+            outro = (
+                "🌟 Excellent performance\\!\n\n"
+                "You demonstrated a strong understanding of this topic\\. Keep it up\\."
+            )
+
+        elif score_100 >= 50:
+
+            outro = (
+                "👍 Good performance\\!\n\n"
+                "You passed this topic\\. Review the questions you missed and aim even higher next time\\."
+            )
+
+        else:
+
+            outro = (
+                "📚 More practice is needed\\.\n\n"
+                "Review your wrong answers carefully and try this topic again\\. Improvement comes with practice\\."
+            )
 
         wrong_questions = context.user_data.get(
             "jp_wrong_questions",
@@ -1992,14 +2052,9 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
             f"{title}\n\n"
             f"📚 Total Questions: *{safe_total}*\n"
             f"✅ Correct: *{safe_correct_count}*\n"
-            f"❌ Wrong: *{safe_wrong_count}*\n\n"
+            f"❌ Wrong: *{safe_wrong_count}*\n"
+            f"💯 Score: *{safe_percentage}%*\n\n"
             f"{outro}",
-            parse_mode="MarkdownV2",
-            reply_markup=InlineKeyboardMarkup(
-                completion_rows
-            ),
-        
-        )
 
     question = batch[current_index]
 
