@@ -349,334 +349,348 @@
     "active": true
     },
   {
-    "id": "phy_01_q008",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Micrometer screw gauge",
-    "difficulty": "hard",
-    "question_type": "mcq",
-    "question": "A micrometer screw gauge has a least count of 0.01 mm. The sleeve reading is 7.5 mm and the 28th thimble division coincides with the reference line. Determine the reading.",
-    "options": {
-      "A": "7.28 mm",
-      "B": "7.50 mm",
-      "C": "7.78 mm",
-      "D": "7.98 mm"
-    },
-    "answer": "C",
-    "answer_text": "7.78 mm",
-    "explanation": {
-      "question_restate": "Determine the measurement shown by a micrometer screw gauge.",
-      "principle": "Micrometer reading = Sleeve reading + (Thimble division × least count).",
-      "steps": [
-        "Sleeve reading = 7.50 mm.",
-        "Thimble contribution = 28 × 0.01 = 0.28 mm.",
-        "Total reading = 7.50 + 0.28 = 7.78 mm."
-      ],
-      "why_other_options_are_wrong": [
-        "A omits the sleeve reading.",
-        "B ignores the thimble reading.",
-        "D uses an incorrect thimble value."
-      ],
-      "exam_tip": "Always multiply the thimble division by the least count.",
-      "final_answer": "C. 7.78 mm",
-      "simple_explanation": "The sleeve gives the main value, while the thimble gives the finer reading.",
-      "tutorial_reference": "Visit Tutorials → Physics → Micrometer Screw Gauge."
-    },
-    "tags": [
-      "micrometer",
-      "phy_01"
-    ],
-    "active": true
-  },
-    {
-    "id": "phy_01_q009",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Unit conversion",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "During a road safety awareness campaign, students were informed that the distance between two neighbouring towns is 3.5 km. Express this distance in metres.",
-    "options": {
-    "A": "35 m",
-    "B": "350 m",
-    "C": "3,500 m",
-    "D": "35,000 m"
-    },
-    "answer": "C",
-    "answer_text": "3,500 m",
-    "explanation": {
-    "question_restate": "The question tests your ability to convert a distance given in kilometres to metres using the appropriate metric conversion factor.",
-    "principle": "Physical quantities are often expressed using different units within the same measurement system. In the SI system, length may be measured in kilometres (km), metres (m), centimetres (cm) or millimetres (mm).\n\nSince the prefix 'kilo-' means one thousand, 1 kilometre is equal to 1,000 metres. Therefore, converting from kilometres to metres requires multiplication by 1,000. Mastery of unit conversion is essential in Physics because calculations must be carried out using consistent units.",
-    "steps": [
-    "Step 1: Identify the given quantity. The distance is 3.5 km.",
-    "Step 2: Recall the conversion relationship: 1 km = 1,000 m.",
-    "Step 3: Multiply the value in kilometres by 1,000.\n\n3.5 × 1,000 = 3,500.",
-    "Step 4: Attach the appropriate unit.\n\nTherefore, 3.5 km = 3,500 m."
-    ],
-    "why_other_options_are_wrong": [
-    "A. 35 m results from using an incorrect conversion factor and greatly underestimates the actual distance.",
-    "B. 350 m is also obtained from an incorrect factor and is too small for a distance of several kilometres.",
-    "D. 35,000 m overestimates the value by multiplying by 10,000 instead of 1,000."
-    ],
-    "exam_tip": "JAMB frequently tests metric conversions. When converting from a larger unit to a smaller unit, multiply by the appropriate factor. When converting from a smaller unit to a larger unit, divide.",
-    "final_answer": "C. 3,500 m",
-    "simple_explanation": "One kilometre contains 1,000 metres. Therefore, 3.5 kilometres contains 3.5 × 1,000 = 3,500 metres.",
-    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Unit Conversion to study metric prefixes, SI units and common JAMB conversion techniques. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics questions and explanations."
-    },
-    "tags": [
-    "unit_conversion",
-    "metric_system",
-    "si_units",
-    "length_measurement",
-    "practical_physics",
-    "phy_01"
-    ],
-    "active": true
-    },
-    {
-    "id": "phy_01_q010",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Distance and displacement",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "During a school cross-country exercise, a student jogs 3 km east from the starting point to a checkpoint and then continues 4 km west to another checkpoint. What are the student's distance and displacement respectively?",
-    "options": {
-    "A": "7 km, 1 km west",
-    "B": "7 km, 7 km west",
-    "C": "1 km, 7 km west",
-    "D": "1 km, 1 km east"
-    },
-    "answer": "A",
-    "answer_text": "7 km, 1 km west",
-    "explanation": {
-    "question_restate": "This question tests your understanding of the difference between distance and displacement using motion along a straight line.",
-    "principle": "Distance is the total length of the actual path travelled by an object, irrespective of direction.\n\nDisplacement is the shortest straight-line distance from the initial position to the final position, together with its direction. While distance is a scalar quantity, displacement is a vector quantity because direction must be specified.\n\nIn problems involving motion along a straight line, choosing a positive direction helps in determining displacement correctly.",
-    "steps": [
-    "Step 1: Identify the total path travelled by the student. The student moves 3 km east and then 4 km west.",
-    "Step 2: Calculate the distance travelled.\n\nDistance = 3 km + 4 km = 7 km.",
-    "Step 3: Choose a reference direction. Let east be positive and west be negative.",
-    "Step 4: Determine the net change in position.\n\nDisplacement = (+3 km) + (−4 km) = −1 km.",
-    "Step 5: Interpret the sign of the answer. The negative sign indicates that the final position is 1 km west of the starting point.",
-    "Step 6: Therefore, the student's distance is 7 km, while the displacement is 1 km west."
-    ],
-    "why_other_options_are_wrong": [
-    "B. The distance is correctly stated as 7 km, but the displacement cannot be 7 km west because displacement depends on the net change in position, not the total distance travelled.",
-    "C. The displacement direction is correct, but the distance is incorrect because it ignores part of the journey.",
-    "D. Both the distance and the displacement direction are incorrect. The student finally ends up west of the starting point, not east."
-    ],
-    "exam_tip": "JAMB frequently tests the distinction between distance and displacement. Remember that distance involves the entire path covered, whereas displacement considers only the overall change in position together with direction.",
-    "final_answer": "A. 7 km, 1 km west",
-    "simple_explanation": "The student covered a total path of 7 km. However, because the student walked 1 km farther west than east, the final position is 1 km west of where the journey started.",
-    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Distance and Displacement to learn more about scalar and vector quantities, practical motion examples, and JAMB-standard applications. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more Physics practice questions and detailed explanations."
-    },
-    "tags": [
-    "distance_displacement",
-    "scalar_quantities",
-    "vector_quantities",
-    "motion_in_a_straight_line",
-    "practical_physics",
-    "phy_01"
-    ],
-    "active": true
-    },
-  {
-  "id": "phy_01_q011",
+  "id": "phy_01_q008",
   "subject_code": "phy",
   "subject_name": "Physics",
   "topic_id": "phy_01",
   "topic_title": "Measurements, Units and Dimensions",
-  "subtopic": "Beam balance",
-  "difficulty": "medium",
+  "subtopic": "Micrometer screw gauge",
+  "difficulty": "hard",
   "question_type": "mcq",
-  "question": "During a Physics practical lesson, students used a beam balance to determine the mass of a metal object. The teacher explained one important advantage of the beam balance in giving reliable results. Which statement best explains this advantage?",
+  "question": "A quality-control engineer is checking whether a metal wire meets the required diameter specification for use in an electrical device. Using a micrometer screw gauge with a least count of 0.01 mm, the sleeve reading is 7.5 mm while the 28th division on the thimble coincides with the reference line. What is the diameter of the wire?",
   "options": {
-  "A": "It measures the weight of the object directly.",
-  "B": "It gives the same mass value irrespective of location.",
-  "C": "It is specially designed for measuring liquids only.",
-  "D": "It is more sensitive than a micrometer screw gauge."
-  },
-  "answer": "B",
-  "answer_text": "It gives the same mass value irrespective of location.",
-  "explanation": {
-  "question_restate": "The question tests your understanding of why a beam balance is preferred for measuring mass in laboratory work.",
-  "principle": "Mass is the quantity of matter contained in a body and remains constant irrespective of location.\n\nA beam balance determines mass by comparing an unknown mass with standard masses placed on opposite pans. Since both sides of the balance experience the same gravitational field, the effect of gravity cancels out. Consequently, the measured mass remains the same whether the experiment is carried out at sea level, on a mountain, or at another location on Earth.",
-  "steps": [
-  "Step 1: Recall the distinction between mass and weight. Mass is constant, whereas weight depends on gravitational field strength.",
-  "Step 2: Recognize that a beam balance operates by comparing an unknown mass with known standard masses.",
-  "Step 3: Understand that both pans of the balance are affected equally by gravity at any given location.",
-  "Step 4: Since gravity acts equally on both sides, the comparison remains unchanged.",
-  "Step 5: Therefore, the beam balance gives the same mass value irrespective of location."
-  ],
-  "why_other_options_are_wrong": [
-  "A. A beam balance does not measure weight directly; it compares masses. Weight is commonly measured using a spring balance.",
-  "C. Beam balances can be used for solids and containers of liquids; they are not restricted to liquids only.",
-  "D. A micrometer screw gauge measures small lengths or diameters, not mass. Therefore, sensitivity comparisons between the two instruments are inappropriate in this context."
-  ],
-  "exam_tip": "JAMB frequently tests the distinction between mass and weight. Remember that mass is independent of gravity, while weight varies with gravitational field strength. Instruments that compare masses, such as beam balances, therefore give consistent mass values in different locations.",
-  "final_answer": "B. It gives the same mass value irrespective of location.",
-  "simple_explanation": "A beam balance compares one mass against another. Because gravity affects both sides equally, the measured mass remains the same wherever the measurement is taken.",
-  "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Beam Balance to learn the differences between mass and weight, the operation of beam balances and spring balances, and common JAMB practical applications involving measurement instruments. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations and practice questions."
-  },
-  "tags": [
-  "beam_balance",
-  "mass_measurement",
-  "mass_and_weight",
-  "laboratory_instruments",
-  "practical_physics",
-  "phy_01"
-  ],
-  "active": true
-  },
-  {
-    "id": "phy_01_q012",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "Measurement of time",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "A student uses a stopwatch to determine the period of a pendulum experiment. The total time recorded for the observation is 2 minutes 35 seconds. Express this time interval in seconds.",
-    "options": {
-      "A": "125 s",
-      "B": "135 s",
-      "C": "145 s",
-      "D": "155 s"
-    },
-    "answer": "D",
-    "answer_text": "155 s",
-    "explanation": {
-      "question_restate": "The question tests your ability to convert a measured time interval from minutes and seconds into seconds, a common requirement in Physics experiments.",
-      "principle": "Time is an SI base quantity measured in seconds (s). Although stopwatches may display readings in minutes and seconds, calculations in Physics are often performed using seconds alone.\n\nSince 1 minute contains 60 seconds, any time given in minutes and seconds must first be converted entirely into seconds before it is used in formulas or experimental analysis.",
-      "steps": [
-        "Step 1: Identify the time interval recorded by the stopwatch: 2 minutes 35 seconds.",
-        "Step 2: Convert the minutes to seconds using 1 minute = 60 seconds.",
-        "Step 3: 2 minutes = 2 × 60 = 120 seconds.",
-        "Step 4: Add the remaining 35 seconds to the converted value.",
-        "Step 5: Total time = 120 s + 35 s = 155 s.",
-        "Step 6: Therefore, the recorded time interval expressed in seconds is 155 s."
-      ],
-      "why_other_options_are_wrong": [
-        "A. 125 s results from an incorrect conversion of the minutes into seconds.",
-        "B. 135 s arises from adding the values incorrectly after conversion.",
-        "C. 145 s is obtained when part of the recorded time is omitted or wrongly converted."
-      ],
-      "exam_tip": "JAMB frequently presents time measurements in mixed units. Always convert the entire quantity into SI units before carrying out calculations.",
-      "final_answer": "D. 155 s",
-      "simple_explanation": "Two minutes contain 120 seconds. Adding the extra 35 seconds gives 155 seconds altogether.",
-      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Time to study the use of stopwatches, SI units of time and time conversion techniques. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and explanations."
-    },
-    "tags": [
-      "measurement_of_time",
-      "stopwatch",
-      "si_units",
-      "practical_physics",
-      "phy_01"
-    ],
-    "active": true
-  },
-  {
-  "id": "phy_01_q013",
-  "subject_code": "phy",
-  "subject_name": "Physics",
-  "topic_id": "phy_01",
-  "topic_title": "Measurements, Units and Dimensions",
-  "subtopic": "Derived quantities",
-  "difficulty": "medium",
-  "question_type": "mcq",
-  "question": "During a Physics lesson, students were asked to classify some physical quantities as either fundamental or derived quantities. Which of the following quantities would be correctly identified as a derived quantity?",
-  "options": {
-  "A": "Time",
-  "B": "Length",
-  "C": "Force",
-  "D": "Mass"
+  "A": "7.28 mm",
+  "B": "7.50 mm",
+  "C": "7.78 mm",
+  "D": "7.98 mm"
   },
   "answer": "C",
-  "answer_text": "Force",
+  "answer_text": "7.78 mm",
   "explanation": {
-  "question_restate": "The question tests your understanding of the difference between fundamental (base) quantities and derived quantities in Physics.",
-  "principle": "Fundamental quantities are independent physical quantities that cannot be expressed in terms of other quantities. Derived quantities, on the other hand, are obtained by combining fundamental quantities mathematically.\n\nThe seven SI base quantities include length, mass, time, electric current, thermodynamic temperature, amount of substance, and luminous intensity. Quantities such as force, pressure, density, velocity and energy are derived because they depend on one or more base quantities.",
+  "question_restate": "The question requires you to determine the diameter of a wire from the readings obtained on a micrometer screw gauge.",
+  "principle": "The micrometer screw gauge is a precision instrument used for measuring very small lengths, thicknesses and diameters that cannot be measured accurately with an ordinary metre rule.\n\nA beginner may ask: 'Why use a micrometer screw gauge instead of a ruler?' The reason is that the micrometer screw gauge has a much smaller least count, allowing it to measure tiny dimensions with greater accuracy.\n\nThe reading on a micrometer screw gauge consists of two parts:\n\n• The sleeve (main scale) reading.\n• The thimble scale reading.\n\nThe total measurement is obtained from:\n\nMicrometer Reading = Sleeve Reading + (Thimble Reading × Least Count).\n\nThe least count represents the smallest value that can be measured directly by the instrument. For many school micrometer screw gauges, the least count is 0.01 mm.",
   "steps": [
-  "Step 1: Recall the SI base quantities commonly encountered in introductory Physics.",
-  "Step 2: Examine each option to determine whether it can be expressed in terms of other quantities.",
-  "Step 3: Time, length and mass are fundamental quantities because they are defined independently.",
-  "Step 4: Force is determined using Newton's Second Law, F = ma, where mass is a base quantity and acceleration itself depends on length and time.",
-  "Step 5: Since force is obtained from a combination of other quantities, it is a derived quantity."
+  "Step 1: Identify the sleeve reading.\n\nThe sleeve reading is 7.50 mm.",
+  "Step 2: Identify the coinciding thimble division.\n\nThe 28th division aligns with the reference line.",
+  "Step 3: Calculate the thimble contribution.\n\nThimble Reading = 28 × 0.01 mm = 0.28 mm.",
+  "Step 4: Add the sleeve reading and the thimble contribution.\n\nTotal Reading = 7.50 mm + 0.28 mm.",
+  "Step 5: Obtain the final measurement.\n\nTotal Reading = 7.78 mm.",
+  "Step 6: Conclude that the measured diameter of the wire is 7.78 mm."
   ],
   "why_other_options_are_wrong": [
-  "A. Time is an SI base quantity measured in seconds (s) and is not derived from other quantities.",
-  "B. Length is an SI base quantity measured in metres (m).",
-  "D. Mass is an SI base quantity measured in kilograms (kg)."
+  "A. 7.28 mm results from incorrectly using only part of the main-scale reading.",
+  "B. 7.50 mm ignores the contribution from the thimble scale.",
+  "D. 7.98 mm would require a thimble contribution of 0.48 mm rather than 0.28 mm."
   ],
-  "exam_tip": "JAMB frequently tests the distinction between fundamental and derived quantities. Memorize the seven SI base quantities and recognize common derived quantities such as force, density, pressure, velocity and energy.",
-  "final_answer": "C. Force",
-  "simple_explanation": "Force is not measured independently. It is calculated from mass and acceleration, making it a derived quantity.",
-  "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Fundamental and Derived Quantities to learn how SI base quantities combine to form derived quantities and their units. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations and practical applications."
+  "exam_tip": "In JAMB examinations, questions involving micrometer screw gauges often test whether candidates can correctly combine the sleeve reading and the thimble reading. Always read both scales before calculating the final measurement.",
+  "final_answer": "C. 7.78 mm",
+  "simple_explanation": "The sleeve gives the main reading of 7.50 mm. The thimble adds a finer reading of 0.28 mm. Adding both values gives 7.78 mm.",
+  "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Micrometer Screw Gauge to learn how to read the sleeve scale, thimble scale, least count and zero correction. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and detailed explanations."
   },
   "tags": [
-  "derived_quantities",
-  "fundamental_quantities",
-  "si_units",
-  "measurements",
+  "micrometer_screw_gauge",
+  "diameter_measurement",
+  "precision_measurement",
+  "measuring_instruments",
   "phy_01"
   ],
   "active": true
   },
   {
-    "id": "phy_01_q014",
-    "subject_code": "phy",
-    "subject_name": "Physics",
-    "topic_id": "phy_01",
-    "topic_title": "Measurements, Units and Dimensions",
-    "subtopic": "SI units",
-    "difficulty": "medium",
-    "question_type": "mcq",
-    "question": "During a practical lesson, students connected an electric circuit containing a battery, switch and ammeter. The teacher asked them to state the SI unit used to measure electric current in the circuit. Which of the following is the correct SI unit of electric current?",
-    "options": {
-      "A": "Volt",
-      "B": "Coulomb",
-      "C": "Ampere",
-      "D": "Ohm"
-    },
-    "answer": "C",
-    "answer_text": "Ampere",
-    "explanation": {
-      "question_restate": "This question tests your knowledge of the SI base unit assigned to the physical quantity known as electric current.",
-      "principle": "The International System of Units (SI) provides standard units for measuring physical quantities.\n\nElectric current is one of the seven SI base quantities. Its SI base unit is the ampere (A), named after the French physicist André-Marie Ampère. Standard units ensure that measurements made in different laboratories and countries can be communicated and interpreted consistently.",
-      "steps": [
-        "Step 1: Identify the physical quantity mentioned in the question. The quantity involved is electric current.",
-        "Step 2: Recall that electric current is among the seven SI base quantities used in Physics.",
-        "Step 3: Match the quantity with its SI base unit.",
-        "Step 4: Electric current is measured in amperes, symbolized by A.",
-        "Step 5: Therefore, the correct answer is Ampere."
-      ],
-      "why_other_options_are_wrong": [
-        "A. Volt is the SI derived unit of potential difference (voltage), not electric current.",
-        "B. Coulomb is the SI derived unit of electric charge. One coulomb represents the quantity of charge transported by a current of one ampere in one second.",
-        "D. Ohm is the SI derived unit of electrical resistance and is used to express opposition to the flow of electric current."
-      ],
-      "exam_tip": "JAMB frequently tests SI units and symbols. Learn the seven SI base quantities together with their units and symbols to avoid confusion during examinations.\n\nFor example: metre (m), kilogram (kg), second (s), ampere (A), kelvin (K), mole (mol) and candela (cd).",
-      "final_answer": "C. Ampere",
-      "simple_explanation": "Electric current is the flow of electric charge through a conductor. The standard unit used worldwide to measure it is the ampere (A).",
-      "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → SI Units to study SI base quantities, SI derived units and their applications in practical Physics. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations and practice questions."
-    },
-    "tags": [
-      "si_units",
-      "electric_current",
-      "si_base_quantities",
-      "measurements",
-      "practical_physics",
-      "phy_01"
-    ],
-    "active": true
+  "id": "phy_01_q009",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Unit conversion",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A surveyor preparing a site plan recorded the distance between two boundary markers as 3.5 km. To enter the measurement into a report that requires SI base units, what is the distance in metres?",
+  "options": {
+  "A": "35 m",
+  "B": "350 m",
+  "C": "3,500 m",
+  "D": "35,000 m"
   },
+  "answer": "C",
+  "answer_text": "3,500 m",
+  "explanation": {
+  "question_restate": "The question requires you to convert a distance measured in kilometres into metres, which is the SI base unit for length.",
+  "principle": "Physics measurements are often expressed in different units depending on the scale of the quantity being measured. However, scientific calculations are usually carried out using SI units to ensure consistency and accuracy.\n\nA beginner may ask: 'Why convert kilometres to metres?' The metre (m) is the SI base unit of length, while the kilometre (km) is simply a larger multiple of the metre.\n\nThe metric prefix 'kilo-' means one thousand (1,000).\n\nTherefore:\n\n1 km = 1,000 m.\n\nWhenever a length is converted from kilometres to metres, the numerical value must be multiplied by 1,000.",
+  "steps": [
+  "Step 1: Identify the given distance.\n\nDistance = 3.5 km.",
+  "Step 2: Recall the metric conversion factor.\n\n1 km = 1,000 m.",
+  "Step 3: Multiply the value in kilometres by 1,000.\n\n3.5 × 1,000 = 3,500.",
+  "Step 4: Attach the appropriate unit.\n\nDistance = 3,500 m.",
+  "Step 5: Conclude that the distance between the boundary markers is 3,500 metres."
+  ],
+  "why_other_options_are_wrong": [
+  "A. 35 m is far smaller than the actual distance and results from using an incorrect conversion factor.",
+  "B. 350 m is obtained by multiplying incorrectly and underestimates the true distance.",
+  "D. 35,000 m results from multiplying by 10,000 instead of 1,000."
+  ],
+  "exam_tip": "When converting from a larger metric unit to a smaller metric unit, multiply by the conversion factor. For example, km → m requires multiplication by 1,000, while m → km requires division by 1,000.",
+  "final_answer": "C. 3,500 m",
+  "simple_explanation": "One kilometre contains 1,000 metres. Therefore, 3.5 kilometres contains 3.5 × 1,000 = 3,500 metres.",
+  "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Unit Conversion to learn metric prefixes, SI units and common JAMB conversion techniques. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics questions, practical examples and beginner-friendly explanations."
+  },
+  "tags": [
+  "unit_conversion",
+  "metric_system",
+  "si_units",
+  "length_measurement",
+  "surveying",
+  "phy_01"
+  ],
+  "active": true
+  },
+    {
+"id": "phy_01_q010",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Distance and displacement",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A surveyor mapping a proposed road route travels 3 km east from a reference point before moving 4 km west to a second location. Which of the following correctly describes the surveyor's distance travelled and displacement?",
+"options": {
+"A": "7 km, 1 km west",
+"B": "7 km, 7 km west",
+"C": "1 km, 7 km west",
+"D": "1 km, 1 km east"
+},
+"answer": "A",
+"answer_text": "7 km, 1 km west",
+"explanation": {
+"question_restate": "The question tests your understanding of the difference between distance and displacement for motion along a straight line.",
+"principle": "Distance and displacement are related but different quantities in Physics.\n\nDistance is the total length of the path covered during motion. It depends on every part of the journey and does not include direction. Distance is therefore a scalar quantity.\n\nDisplacement is the straight-line change in position from the starting point to the final position, together with direction. Displacement is therefore a vector quantity.\n\nA beginner may ask: 'Can distance and displacement have different values?' Yes. Whenever an object changes direction during its motion, the distance travelled is usually greater than the magnitude of its displacement.",
+"steps": [
+"Step 1: Identify the total journey made by the surveyor.",
+"Step 2: The surveyor moves 3 km east and then 4 km west.",
+"Step 3: Calculate the total distance travelled.\n\nDistance = 3 km + 4 km = 7 km.",
+"Step 4: Determine the displacement by considering direction.\n\nLet east be positive and west be negative.",
+"Step 5: Calculate the net change in position.\n\nDisplacement = (+3 km) + (-4 km) = -1 km.",
+"Step 6: The negative sign indicates that the final position is west of the starting point.",
+"Step 7: Therefore, the displacement is 1 km west."
+],
+"why_other_options_are_wrong": [
+"A. Correct. The distance is 7 km and the displacement is 1 km west.",
+"B. This incorrectly treats displacement as the total path travelled.",
+"C. This incorrectly uses the displacement value as the distance travelled.",
+"D. Both the distance and the displacement direction are incorrect."
+],
+"exam_tip": "When solving JAMB questions on distance and displacement, first calculate the total path travelled to obtain the distance. Then determine the final position relative to the starting point to obtain the displacement.",
+"final_answer": "A. 7 km, 1 km west",
+"simple_explanation": "The surveyor travelled a total of 7 km. However, because the final position is 1 km west of the starting point, the displacement is 1 km west.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Distance and Displacement to learn the difference between scalar and vector quantities, practical navigation examples, and JAMB-standard applications. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more detailed explanations and practice questions."
+},
+"tags": [
+"distance_displacement",
+"scalar_quantities",
+"vector_quantities",
+"surveying",
+"motion_in_a_straight_line",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q011",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Beam balance",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A research team measured the mass of a rock sample at different locations and obtained the same value each time using a beam balance. Which property of the beam balance best explains this observation?",
+"options": {
+"A": "It measures the weight of the object directly.",
+"B": "It gives the same mass value irrespective of location.",
+"C": "It is specially designed for measuring liquids only.",
+"D": "It is more sensitive than a micrometer screw gauge."
+},
+"answer": "B",
+"answer_text": "It gives the same mass value irrespective of location.",
+"explanation": {
+"question_restate": "The question tests your understanding of why a beam balance provides consistent mass measurements even when measurements are taken at different locations.",
+"principle": "Mass is the amount of matter contained in a body and remains constant regardless of location. Weight, however, depends on the gravitational field strength acting on the body.\n\nA beam balance measures mass by comparing an unknown mass with standard masses placed on opposite pans. Since gravity acts equally on both sides of the balance, its effect cancels out during the comparison.\n\nA beginner may ask: 'If gravity changes from place to place, why does the beam balance still work?' The answer is that both the object and the standard masses experience the same gravitational pull at that location. As a result, the balance condition remains unchanged and the measured mass stays the same.",
+"steps": [
+"Step 1: Recall that mass and weight are different physical quantities.",
+"Step 2: Mass is constant, while weight depends on gravitational field strength.",
+"Step 3: A beam balance compares an unknown mass with known standard masses.",
+"Step 4: Gravity acts equally on both pans of the balance.",
+"Step 5: The gravitational effect therefore cancels out during the comparison.",
+"Step 6: Consequently, the measured mass remains the same irrespective of location."
+],
+"why_other_options_are_wrong": [
+"A. A beam balance does not measure weight directly. Weight is commonly measured using a spring balance.",
+"C. A beam balance can be used to determine the mass of many types of objects and is not restricted to liquids.",
+"D. A micrometer screw gauge measures small lengths and diameters, not mass. The comparison is therefore inappropriate."
+],
+"exam_tip": "JAMB frequently tests the distinction between mass and weight. Remember that mass remains constant everywhere, whereas weight varies with gravitational field strength. Instruments that compare masses, such as beam balances, therefore provide location-independent mass measurements.",
+"final_answer": "B. It gives the same mass value irrespective of location.",
+"simple_explanation": "A beam balance compares one mass with another. Since gravity affects both sides equally, the comparison remains unchanged and the measured mass stays the same wherever the measurement is carried out.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Beam Balance to learn the differences between mass and weight, the operation of beam balances and spring balances, and common JAMB applications involving mass measurement. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics explanations and questions."
+},
+"tags": [
+"beam_balance",
+"mass_measurement",
+"mass_and_weight",
+"gravitational_field",
+"laboratory_instruments",
+"practical_physics",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q012",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Measurement of time",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "While investigating the motion of a simple pendulum, a laboratory assistant recorded an elapsed time of 2 minutes 35 seconds using a stopwatch. What is this time interval when expressed in SI units?",
+"options": {
+"A": "125 s",
+"B": "135 s",
+"C": "145 s",
+"D": "155 s"
+},
+"answer": "D",
+"answer_text": "155 s",
+"explanation": {
+"question_restate": "The question requires you to convert a stopwatch reading given in minutes and seconds into seconds, which is the SI unit of time.",
+"principle": "Time is one of the seven fundamental quantities in Physics. Its SI unit is the second (s).\n\nA beginner may ask: 'Why do physicists convert time into seconds before performing calculations?' The reason is that Physics equations are based on SI units. Using non-standard units can lead to incorrect results.\n\nMany timing devices such as stopwatches and clocks display time in mixed units such as minutes and seconds. Before using such measurements in calculations involving speed, acceleration, frequency or period, the time should first be converted completely into seconds.\n\nRecall that:\n\n• 1 minute = 60 seconds\n• 1 hour = 60 minutes = 3600 seconds",
+"steps": [
+"Step 1: Identify the recorded time.\n\nThe stopwatch reading is 2 minutes 35 seconds.",
+"Step 2: Convert the minutes into seconds.\n\n2 minutes = 2 × 60 = 120 seconds.",
+"Step 3: Add the remaining seconds.\n\nTotal time = 120 seconds + 35 seconds.",
+"Step 4: Calculate the final value.\n\nTotal time = 155 seconds.",
+"Step 5: Express the answer in SI units.\n\nThe time interval is 155 s."
+],
+"why_other_options_are_wrong": [
+"A. 125 s results from an incorrect conversion of the minutes into seconds.",
+"B. 135 s is obtained when the additional seconds are not added correctly.",
+"C. 145 s results from a calculation error during conversion.",
+"D. 155 s is correct because 2 minutes equals 120 seconds and 120 + 35 = 155 seconds."
+],
+"exam_tip": "JAMB frequently requires candidates to convert quantities into SI units before solving problems. Always convert mixed time units into seconds before substituting values into Physics formulas.",
+"final_answer": "D. 155 s",
+"simple_explanation": "Two minutes contain 120 seconds. Adding the extra 35 seconds gives a total of 155 seconds.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Time to learn about stopwatches, clocks, SI units of time, timing techniques and common JAMB conversion questions. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more beginner-friendly JAMB-standard explanations and practical examples."
+},
+"tags": [
+"measurement_of_time",
+"time_conversion",
+"stopwatch",
+"si_units",
+"fundamental_quantities",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q013",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "Derived quantities",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "A force meter is calibrated using relationships among several physical quantities. Which of the following quantities is obtained directly by combining SI base quantities mathematically?",
+"options": {
+"A": "Mass",
+"B": "Time",
+"C": "Force",
+"D": "Length"
+},
+"answer": "C",
+"answer_text": "Force",
+"explanation": {
+"question_restate": "The question requires you to identify the quantity that is formed by combining SI base quantities and is therefore classified as a derived quantity.",
+"principle": "In Physics, physical quantities are classified as either fundamental (base) quantities or derived quantities.\n\nA beginner may ask: 'What is the difference between them?' Fundamental quantities are independent quantities that do not depend on other physical quantities for their definition. Derived quantities are obtained by combining two or more fundamental quantities through mathematical relationships.\n\nThe seven SI base quantities are:\n\n• Length (metre, m)\n• Mass (kilogram, kg)\n• Time (second, s)\n• Electric current (ampere, A)\n• Thermodynamic temperature (kelvin, K)\n• Amount of substance (mole, mol)\n• Luminous intensity (candela, cd)\n\nForce is a derived quantity because it is defined by Newton's Second Law:\n\nForce = Mass × Acceleration.\n\nSince acceleration depends on length and time, force ultimately depends on multiple base quantities and is therefore derived.",
+"steps": [
+"Step 1: Identify the quantities listed in the options.",
+"Step 2: Recall the SI base quantities.",
+"Step 3: Observe that mass, time and length are among the SI base quantities.",
+"Step 4: Recall that force is calculated from mass and acceleration using Newton's Second Law.",
+"Step 5: Since force is obtained by combining other quantities mathematically, it is a derived quantity.",
+"Step 6: Therefore, the correct answer is force."
+],
+"why_other_options_are_wrong": [
+"A. Mass is an SI base quantity measured in kilograms (kg) and is not derived from other quantities.",
+"B. Time is an SI base quantity measured in seconds (s).",
+"D. Length is an SI base quantity measured in metres (m)."
+],
+"exam_tip": "When studying derived quantities, focus on the formulas that define them. JAMB frequently links quantities such as force, pressure, density, velocity and energy to their underlying SI base quantities.",
+"final_answer": "C. Force",
+"simple_explanation": "Mass, length and time can be measured directly as basic quantities. Force is calculated from mass and acceleration, so it is a derived quantity.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Derived Quantities to learn how SI base quantities combine to form derived quantities such as force, pressure, density, velocity and energy. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations and practical applications."
+},
+"tags": [
+"derived_quantities",
+"force",
+"fundamental_quantities",
+"si_units",
+"phy_01"
+],
+"active": true
+},
+{
+"id": "phy_01_q014",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_01",
+"topic_title": "Measurements, Units and Dimensions",
+"subtopic": "SI units",
+"difficulty": "medium",
+"question_type": "mcq",
+"question": "An electrician uses an ammeter while troubleshooting a household electrical circuit. The instrument is used to measure electric current flowing through the circuit. In which SI unit will the ammeter reading be expressed?",
+"options": {
+"A": "Volt",
+"B": "Coulomb",
+"C": "Ampere",
+"D": "Ohm"
+},
+"answer": "C",
+"answer_text": "Ampere",
+"explanation": {
+"question_restate": "The question requires you to identify the SI unit used for measuring electric current with an ammeter.",
+"principle": "The International System of Units (SI) provides a standard set of units used worldwide in science, engineering and technology. Each physical quantity is assigned a specific SI unit to ensure consistency in measurements.\n\nA beginner may ask: 'What is electric current?' Electric current is the rate at which electric charge flows through a conductor.\n\nElectric current is one of the seven SI base quantities and has a special SI base unit known as the ampere (A).\n\nCommon electrical quantities and their SI units include:\n\n• Electric current → ampere (A)\n• Potential difference (voltage) → volt (V)\n• Resistance → ohm (Ω)\n• Electric charge → coulomb (C)\n\nBecause an ammeter is specifically designed to measure electric current, its readings are expressed in amperes.",
+"steps": [
+"Step 1: Identify the instrument mentioned in the question.",
+"Step 2: Recall the function of an ammeter.",
+"Step 3: An ammeter measures electric current in a circuit.",
+"Step 4: Recall the SI unit assigned to electric current.",
+"Step 5: Electric current is measured in amperes (A).",
+"Step 6: Therefore, the correct answer is Ampere."
+],
+"why_other_options_are_wrong": [
+"A. Volt is the SI unit of potential difference (voltage), not electric current.",
+"B. Coulomb is the SI unit of electric charge, not current.",
+"D. Ohm is the SI unit of electrical resistance and measures opposition to current flow."
+],
+"exam_tip": "JAMB frequently links measuring instruments to the quantities they measure. Learn common instrument-quantity-unit combinations such as:\n\n• Ammeter → Current → Ampere\n• Voltmeter → Potential Difference → Volt\n• Ohmmeter → Resistance → Ohm\n• Thermometer → Temperature → Kelvin or degree Celsius.",
+"final_answer": "C. Ampere",
+"simple_explanation": "An ammeter measures electric current. The SI unit of electric current is the ampere (A), so ammeter readings are expressed in amperes.",
+"tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → SI Units to study SI base quantities, SI derived units and their practical applications. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations, instrument-based questions and examination tips."
+},
+"tags": [
+"si_units",
+"electric_current",
+"ammeter",
+"si_base_quantities",
+"electrical_measurements",
+"phy_01"
+],
+"active": true
+},
   {
     "id": "phy_01_q015",
     "subject_code": "phy",
@@ -1257,7 +1271,7 @@
     "subtopic": "Volume measurement",
     "difficulty": "medium",
     "question_type": "mcq",
-    "question": "The volume of a cylinder of radius 7 cm and height 10 cm is given by V = πr²h. Taking π = 22/7, calculate its volume.",
+    "question": "The volume of a cylinder of radius 7 cm and height 10 cm is _____.",
     "options": {
       "A": "1,540 cm³",
       "B": "770 cm³",
@@ -5883,4 +5897,3 @@
 }
 
 ]
-
