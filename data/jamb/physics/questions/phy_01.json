@@ -5968,6 +5968,452 @@
 "phy_01"
 ],
 "active": true
+},
+{
+  "id": "phy_01_q122",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measurement of regular bodies",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A manufacturer needs to determine the volume of a rectangular metal block before packaging it for shipment. Which set of measurements is sufficient for calculating the volume of the block?",
+  "options": {
+    "A": "Length, width and height",
+    "B": "Length and mass only",
+    "C": "Width and density only",
+    "D": "Height and temperature only"
+  },
+  "answer": "A",
+  "answer_text": "Length, width and height",
+  "explanation": {
+    "question_restate": "The question asks which measurements are required to determine the volume of a rectangular metal block, which is a regular solid.",
+    "principle": "Regular bodies have well-defined geometric shapes whose dimensions can be measured directly. Unlike irregular bodies, their volumes are obtained using mathematical relationships based on their shapes.\n\nExamples of regular bodies include cubes, cuboids, cylinders and spheres. Because their dimensions follow known geometrical patterns, it is unnecessary to use displacement methods for volume determination.\n\nFor a rectangular block (cuboid), the volume is determined from its three perpendicular dimensions: length, width and height.",
+    "steps": [
+      "Step 1: Identify the object as a rectangular metal block, which is a regular body.",
+      "Step 2: Recall that the volume of a cuboid depends on its three dimensions.",
+      "Step 3: Determine which option contains all the dimensions needed.",
+      "Step 4: Length, width and height completely describe the size of the block.",
+      "Step 5: Therefore, these measurements are sufficient for calculating the volume."
+    ],
+    "why_other_options_are_wrong": [
+      "B. Length and mass alone cannot determine volume because the width and height are unknown.",
+      "C. Width and density do not provide enough information to calculate the volume of the block directly.",
+      "D. Height and temperature are insufficient because temperature is not a dimension used in determining volume."
+    ],
+    "exam_tip": "For regular bodies, JAMB frequently tests your ability to identify the measurements required for determining dimensions, area or volume. Always relate the object to its geometric shape before selecting the required measurements.",
+    "final_answer": "A. Length, width and height",
+    "simple_explanation": "A rectangular block has three sides: length, width and height. Measuring all three allows you to determine its volume accurately.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Regular Bodies to learn how the dimensions of cubes, cuboids, cylinders and spheres are measured and used in practical Physics calculations. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and worked examples."
+  },
+  "tags": [
+    "measurement_of_regular_bodies",
+    "volume",
+    "cuboid",
+    "geometrical_measurement",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q123",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measurement of irregular bodies",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A metal fabrication company receives a small machine component with an irregular shape. The engineer needs to determine its volume accurately before using it in a density test. Which of the following methods would provide the most reliable measurement of the component's volume?",
+  "options": {
+    "A": "Measure its longest dimension with a metre rule and estimate the volume",
+    "B": "Immerse it completely in water and determine the volume of water displaced",
+    "C": "Place it on a beam balance and record its mass",
+    "D": "Use a stopwatch to determine the time taken to sink in water"
+  },
+  "answer": "B",
+  "answer_text": "Immerse it completely in water and determine the volume of water displaced",
+  "explanation": {
+    "question_restate": "The question asks for the most appropriate method of determining the volume of an object that does not have a regular geometric shape.",
+    "principle": "Regular objects such as cubes, cylinders and spheres have dimensions that can be measured and substituted into mathematical formulas to obtain volume. Irregular bodies, however, do not possess simple geometric shapes. Their volumes are therefore commonly determined using the displacement method.\n\nThe displacement method is based on the principle that when an object is completely immersed in a liquid, it displaces a volume of liquid equal to its own volume. This makes the method especially useful for solid objects whose dimensions cannot be measured accurately using ordinary geometric formulas.\n\nIn Physics laboratories, measuring cylinders, overflow cans and collecting vessels are commonly used for such measurements.",
+    "steps": [
+      "Step 1: Identify the nature of the object. The component is irregular in shape.",
+      "Step 2: Recognize that geometric formulas are unsuitable because the object's dimensions do not correspond to a standard shape.",
+      "Step 3: Recall that the displacement method is specifically designed for measuring the volume of irregular solids.",
+      "Step 4: Completely immerse the object in water and determine the volume of water displaced.",
+      "Step 5: Since the volume of displaced water equals the volume of the object, the displacement method provides the required volume."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Measuring only the longest dimension cannot provide an accurate volume for an irregular object.",
+      "C. A beam balance measures mass, not volume.",
+      "D. The sinking time of an object does not directly determine its volume."
+    ],
+    "exam_tip": "Whenever JAMB mentions an irregular solid such as a stone, metal fragment, key, bolt, or machine component, think of the displacement method as the standard procedure for determining volume.",
+    "final_answer": "B. Immerse it completely in water and determine the volume of water displaced",
+    "simple_explanation": "An irregular object cannot usually be measured with ordinary volume formulas. By placing it in water and observing how much water it displaces, its volume can be determined accurately.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Irregular Bodies to learn how measuring cylinders and overflow cans are used to determine the volume of irregular solids. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and explanations."
+  },
+  "tags": [
+    "measurement_of_irregular_bodies",
+    "displacement_method",
+    "volume_measurement",
+    "measuring_cylinder",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q124",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Metre rule",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "While constructing a wooden laboratory stand, a technician measured a plank using a metre rule. To reduce error caused by incorrect eye position when taking the reading, the technician should observe the scale",
+  "options": {
+    "A": "from either end of the rule",
+    "B": "with the eye directly above the mark being read",
+    "C": "from an angle that shows more scale divisions",
+    "D": "while holding the rule slightly above the plank"
+  },
+  "answer": "B",
+  "answer_text": "with the eye directly above the mark being read",
+  "explanation": {
+    "question_restate": "The question tests your understanding of the correct way to read a metre rule in order to avoid measurement errors caused by viewing the scale from the wrong position.",
+    "principle": "One of the most common errors encountered when using a metre rule is parallax error. Parallax error occurs when the observer's eye is not placed directly in line with the scale marking being read.\n\nWhen the eye views the scale from the side, the reading appears shifted from its true position. This can make the measured length either larger or smaller than the actual value.\n\nTo obtain an accurate measurement, the observer's eye should be positioned vertically above the point on the scale being read. This ensures that the line of sight is perpendicular to the scale and eliminates parallax error.\n\nJAMB frequently tests candidates on practical measurement techniques, sources of error and methods of improving accuracy in laboratory measurements.",
+    "steps": [
+      "Step 1: Identify the source of error mentioned in the question. The error arises from incorrect eye position while reading a scale.",
+      "Step 2: Recall that this type of error is called parallax error.",
+      "Step 3: Determine the correct observation method that eliminates parallax.",
+      "Step 4: The eye should be placed directly above the mark being observed on the metre rule.",
+      "Step 5: Therefore, the correct option is the one that places the eye directly above the reading."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Reading from either end of the rule does not eliminate parallax error and may introduce additional inaccuracies.",
+      "C. Viewing the scale from an angle actually causes parallax error rather than reducing it.",
+      "D. Holding the rule above the plank does not address the problem of incorrect eye position and may make accurate measurement more difficult."
+    ],
+    "exam_tip": "Whenever JAMB asks how to improve the accuracy of a scale reading, think about possible sources of error. For metre rules, the most common source is parallax error, which is avoided by placing the eye directly above the mark being read.",
+    "final_answer": "B. with the eye directly above the mark being read",
+    "simple_explanation": "Imagine trying to look at a ruler from the side. The mark may appear to be at a different position from where it really is. Looking straight down at the mark gives the correct reading and prevents parallax error.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Metre Rule to learn about proper scale reading, least count, parallax error and practical measurement techniques. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and laboratory-based examples."
+  },
+  "tags": [
+    "metre_rule",
+    "parallax_error",
+    "measurement_accuracy",
+    "scale_reading",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q125",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Vernier calipers",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A machine workshop produces metal rods that must fit precisely into circular holes of matching diameter. To verify that each rod meets the required specification, which measuring instrument would provide the most suitable measurement of the rod's external diameter?",
+  "options": {
+    "A": "Metre rule",
+    "B": "Vernier calipers",
+    "C": "Beam balance",
+    "D": "Stopwatch"
+  },
+  "answer": "B",
+  "answer_text": "Vernier calipers",
+  "explanation": {
+    "question_restate": "The question requires you to identify the most suitable instrument for accurately measuring the external diameter of a metal rod.",
+    "principle": "In Physics and engineering, different measuring instruments are designed for different types of measurements. Choosing the correct instrument is just as important as taking the measurement itself.\n\nThe external diameter of a cylindrical object refers to the distance across its outer surface through the centre. Measuring such a dimension accurately requires an instrument capable of gripping the object from opposite sides while providing a precise reading.\n\nA Vernier caliper is specially designed for this purpose. It can measure external diameters, internal diameters and depths with greater precision than an ordinary metre rule.\n\nThe instrument consists of a main scale and a sliding Vernier scale. By combining readings from both scales, measurements can be obtained with a precision typically much finer than that of a metre rule.\n\nIn industrial settings, workshops, laboratories and engineering applications, Vernier calipers are commonly used whenever accurate diameter measurements are required.\n\nUnderstanding the appropriate use of measuring instruments is a frequent area tested by JAMB because it reflects practical Physics knowledge rather than simple memorization.",
+    "steps": [
+      "Step 1: Identify the quantity being measured. The quantity is the external diameter of a cylindrical metal rod.",
+      "Step 2: Consider the instrument needed for measuring diameters accurately.",
+      "Step 3: Recall that Vernier calipers are specifically designed for measuring external and internal diameters as well as depths.",
+      "Step 4: Compare the options provided and eliminate instruments that measure unrelated quantities.",
+      "Step 5: Therefore, the most suitable instrument is the Vernier calipers."
+    ],
+    "why_other_options_are_wrong": [
+      "A. A metre rule can measure length but is not sufficiently suitable for obtaining accurate external diameter measurements of cylindrical objects.",
+      "C. A beam balance measures mass and cannot be used to determine diameter.",
+      "D. A stopwatch measures time intervals and has no application in measuring dimensions of objects."
+    ],
+    "exam_tip": "JAMB frequently tests the ability to match a measuring instrument with the physical quantity it is best suited to measure. Always identify the quantity first before selecting the instrument.",
+    "final_answer": "B. Vernier calipers",
+    "simple_explanation": "If you want to know exactly how thick a metal rod is across its width, you need an instrument that can hold the rod between measuring jaws and give a precise reading. A Vernier caliper is designed specifically for that purpose.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Vernier Calipers to learn about the parts of a Vernier caliper, least count determination, measurement techniques and common examination applications. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions."
+  },
+  "tags": [
+    "vernier_calipers",
+    "diameter_measurement",
+    "measuring_instruments",
+    "precision_measurement",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q126",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Micrometer screw gauge",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A manufacturing company that produces electrical wires carries out quality-control checks to ensure that the diameter of each wire meets specification. Which of the following instruments would provide the most accurate measurement of the wire's diameter?",
+  "options": {
+    "A": "Metre rule",
+    "B": "Measuring tape",
+    "C": "Micrometer screw gauge",
+    "D": "Measuring cylinder"
+  },
+  "answer": "C",
+  "answer_text": "Micrometer screw gauge",
+  "explanation": {
+    "question_restate": "The question asks you to identify the most suitable instrument for accurately measuring the small diameter of an electrical wire.",
+    
+    "principle": "Many physical objects have dimensions that are too small to be measured accurately with ordinary measuring instruments. In Physics and engineering, selecting the correct measuring instrument is just as important as taking the measurement itself.\n\nThe diameter of an electrical wire is usually very small, often only a few millimetres or fractions of a millimetre. To measure such dimensions accurately, an instrument with a very small least count is required.\n\nA micrometer screw gauge is specifically designed for measuring very small diameters and thicknesses. It typically has a least count of 0.01 mm, making it more precise than a metre rule and many other common measuring instruments.\n\nThe instrument works using a finely threaded screw mechanism. As the spindle moves toward the anvil, the object is gently clamped between them, allowing highly accurate measurements to be obtained.\n\nIn industrial production, accurate measurement of wire diameter is important because even small deviations can affect electrical resistance, current-carrying capacity and product quality.",
+    
+    "steps": [
+      "Step 1: Identify the quantity being measured. The question concerns the diameter of a wire.",
+      "Step 2: Recognize that the diameter of a wire is very small and requires a precise measuring instrument.",
+      "Step 3: Compare the instruments provided in the options.",
+      "Step 4: Recall that a micrometer screw gauge is specifically designed for measuring small diameters and thicknesses with high accuracy.",
+      "Step 5: Therefore, the most suitable instrument is the micrometer screw gauge."
+    ],
+    
+    "why_other_options_are_wrong": [
+      "A. Metre rule: A metre rule can measure length but is not sufficiently precise for determining the small diameter of a wire.",
+      "B. Measuring tape: A measuring tape is intended for larger measurements such as room dimensions and is unsuitable for accurately measuring tiny diameters.",
+      "D. Measuring cylinder: A measuring cylinder is used for measuring the volume of liquids and, in some cases, determining the volume of irregular solids by displacement. It cannot measure wire diameter."
+    ],
+    
+    "exam_tip": "JAMB frequently tests the ability to match measuring instruments with their most appropriate applications. Whenever the object is extremely small in diameter or thickness, think of the micrometer screw gauge before considering other instruments.",
+    
+    "final_answer": "C. Micrometer screw gauge",
+    
+    "simple_explanation": "An electrical wire is very thin. To measure its diameter accurately, a highly precise instrument is needed. The micrometer screw gauge is designed for this purpose, making it the best choice.",
+    
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Micrometer Screw Gauge to learn about its parts, least count, reading procedure, sources of error and practical applications. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and instrument-based questions."
+  },
+  "tags": [
+    "micrometer_screw_gauge",
+    "measuring_instruments",
+    "diameter_measurement",
+    "precision_measurement",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q127",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measuring cylinder",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A scientist investigating the properties of an irregular stone first records the water level in a measuring cylinder as 45 cm³. After carefully lowering the stone into the cylinder, the water level rises to 61 cm³. Which physical quantity has been determined using this procedure?",
+  "options": {
+    "A": "Mass of the stone",
+    "B": "Density of the stone",
+    "C": "Volume of the stone",
+    "D": "Weight of the stone"
+  },
+  "answer": "C",
+  "answer_text": "Volume of the stone",
+  "explanation": {
+    "question_restate": "The question asks you to identify the physical quantity obtained when the rise in water level in a measuring cylinder is measured after an irregular stone is immersed in it.",
+    "principle": "A measuring cylinder is commonly used to determine the volume of liquids. It can also be used to find the volume of irregular solids through the displacement method.\n\nMany objects such as stones, keys and pieces of metal have irregular shapes. Their dimensions cannot easily be measured using ordinary geometric formulas. In such situations, the displacement method provides a simple and reliable solution.\n\nThe method is based on the principle that when an object is completely immersed in a liquid, it displaces a volume of liquid equal to its own volume.\n\nThis means that the increase in the liquid level inside the measuring cylinder is numerically equal to the volume of the object placed inside it.\n\nThe displacement method is one of the most important practical applications of measuring cylinders in Physics laboratories and is frequently tested in JAMB examinations.",
+    "steps": [
+      "Step 1: Identify the initial water level in the measuring cylinder, which is 45 cm³.",
+      "Step 2: Note the final water level after the stone is immersed, which is 61 cm³.",
+      "Step 3: Determine what the increase in water level represents.",
+      "Step 4: The rise in water level is caused by the stone displacing water in the cylinder.",
+      "Step 5: Therefore, the procedure determines the volume of the stone, irrespective of its shape."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Mass cannot be determined using a measuring cylinder alone. A beam balance or electronic balance is required to measure mass.",
+      "B. Density cannot be obtained directly from the procedure because density requires both mass and volume. Only the volume has been determined.",
+      "D. Weight is a force measured using a spring balance or force meter, not a measuring cylinder."
+    ],
+    "exam_tip": "Whenever JAMB presents a measuring cylinder containing water before and after an object is immersed, immediately think of the displacement method and volume determination of irregular objects.",
+    "final_answer": "C. Volume of the stone",
+    "simple_explanation": "When the stone is placed in the water, it pushes some water aside. The amount by which the water level rises is exactly equal to the volume of the stone. Therefore, the procedure is used to determine volume.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measuring Cylinder to learn how measuring cylinders are used for liquid measurements, displacement methods and volume determination of irregular objects. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics explanations."
+  },
+  "tags": [
+    "measuring_cylinder",
+    "displacement_method",
+    "volume_measurement",
+    "irregular_objects",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q128",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Beam balance",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A science club was comparing the masses of different metal samples. One of the members suggested using a beam balance because it compares an unknown mass directly with known standard masses. Which of the following is the primary quantity measured with a beam balance?",
+  "options": {
+    "A": "Weight",
+    "B": "Density",
+    "C": "Mass",
+    "D": "Volume"
+  },
+  "answer": "C",
+  "answer_text": "Mass",
+  "explanation": {
+    "question_restate": "The question tests your understanding of the purpose of a beam balance and the physical quantity it is designed to measure.",
+    
+    "principle": "A beam balance is one of the most common instruments used in Physics laboratories for measuring mass.\n\nMass is the amount of matter contained in a body. Unlike weight, mass does not depend on the strength of the gravitational field and remains constant regardless of location.\n\nA beam balance works by comparing the mass of an unknown object with known standard masses placed on the opposite pan. When the beam becomes horizontal and balanced, the masses on both sides are equal.\n\nMany beginners confuse mass with weight because both are related to matter. However, they are different quantities. Mass is measured in kilograms (kg), while weight is a force measured in newtons (N).\n\nSince a beam balance relies on comparison rather than gravitational force measurements, it is primarily used to determine mass.\n\nThis is why beam balances are widely used in school laboratories, scientific investigations and commercial applications where accurate mass determination is required.",
+    
+    "steps": [
+      "Step 1: Identify the instrument mentioned in the question, which is a beam balance.",
+      "Step 2: Recall the purpose of a beam balance in Physics experiments.",
+      "Step 3: Understand that the instrument compares an unknown quantity with standard masses.",
+      "Step 4: Recognize that the comparison is based on mass rather than force.",
+      "Step 5: Therefore, the quantity measured with a beam balance is mass."
+    ],
+    
+    "why_other_options_are_wrong": [
+      "A. Weight is a gravitational force acting on an object. Although related to mass, a beam balance does not directly measure weight.",
+      "B. Density is the mass per unit volume of a substance and cannot be measured directly with a beam balance alone.",
+      "D. Volume refers to the space occupied by a substance and is measured using instruments such as measuring cylinders or calculated from dimensions."
+    ],
+    
+    "exam_tip": "JAMB frequently tests the distinction between mass and weight. Remember that a beam balance measures mass, while instruments such as spring balances are used to measure weight.",
+    
+    "final_answer": "C. Mass",
+    
+    "simple_explanation": "Think of a beam balance as a device that checks whether an object has the same amount of matter as known standard masses. Since it compares matter on both sides, it measures mass, not weight.",
+    
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Beam Balance to learn the structure, operation, applications and differences between beam balances and spring balances. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical examples."
+  },
+  "tags": [
+    "beam_balance",
+    "mass_measurement",
+    "measuring_instruments",
+    "mass_and_weight",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q129",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measurement of mass",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A scientist conducting field research in a remote location needs to determine whether the mass of a rock sample changes when it is transported from sea level to the top of a mountain. Which of the following statements is correct?",
+  "options": {
+    "A": "The mass increases because gravitational force is weaker on the mountain",
+    "B": "The mass decreases because the rock is farther from the Earth's centre",
+    "C": "The mass remains unchanged because mass is independent of location",
+    "D": "The mass becomes zero if the altitude is sufficiently high"
+  },
+  "answer": "C",
+  "answer_text": "The mass remains unchanged because mass is independent of location",
+  "explanation": {
+    "question_restate": "The question tests your understanding of the difference between mass and weight by asking whether the mass of an object changes when it is moved from one location to another.",
+    
+    "principle": "Mass is the quantity of matter contained in an object. It is an intrinsic property of the object and does not depend on where the object is located.\n\nA beginner may ask: 'If mass does not change, why do people sometimes weigh less in certain places?' The answer is that weight and mass are different physical quantities.\n\nWeight is the gravitational force acting on an object. Since the strength of gravity varies slightly from one location to another, weight can change while mass remains constant.\n\nFor example, an astronaut has the same mass on Earth and on the Moon because the amount of matter in the astronaut's body does not change. However, the astronaut's weight is much smaller on the Moon because the Moon's gravitational field is weaker.\n\nIn measurement, beam balances are often preferred for determining mass because they compare an unknown mass with standard masses. Since both sides of the balance are affected equally by gravity, the measured mass remains the same regardless of location.\n\nJAMB frequently tests candidates on the distinction between mass and weight. Remember that mass is measured in kilograms (kg), while weight is measured in newtons (N).",
+    
+    "steps": [
+      "Step 1: Identify the quantity being discussed. The question concerns mass, not weight.",
+      "Step 2: Recall the definition of mass as the amount of matter contained in an object.",
+      "Step 3: Recognize that changing location does not change the amount of matter present in the rock sample.",
+      "Step 4: Understand that gravity affects weight but does not affect mass.",
+      "Step 5: Therefore, the mass of the rock remains unchanged when moved from sea level to the top of a mountain."
+    ],
+    
+    "why_other_options_are_wrong": [
+      "A. This is incorrect because a weaker gravitational field may reduce weight, but it does not increase mass. Mass remains constant.",
+      "B. This is incorrect because moving farther from the Earth's centre may slightly reduce weight, but the quantity of matter in the rock remains unchanged.",
+      "C. This is correct because mass is an intrinsic property of matter and does not depend on location.",
+      "D. This is incorrect because mass can never become zero simply because an object is moved to a higher altitude."
+    ],
+    
+    "exam_tip": "Whenever JAMB asks whether a quantity changes from one location to another, first determine whether the quantity is mass or weight. Mass remains constant, whereas weight depends on gravitational field strength.",
+    
+    "final_answer": "C. The mass remains unchanged because mass is independent of location",
+    
+    "simple_explanation": "Think of mass as the amount of material inside an object. Whether you carry a bag of rice from Lagos to Jos, the amount of rice inside remains the same. Therefore, its mass does not change, although its weight may change slightly because gravity varies from place to place.",
+    
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Mass to learn the difference between mass and weight, the operation of beam balances, and common JAMB examination applications involving mass measurements."
+  },
+  "tags": [
+    "measurement_of_mass",
+    "mass",
+    "weight",
+    "gravitational_field",
+    "beam_balance",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q130",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measurement of time",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A student investigating the motion of a toy car needs to determine the time taken for the car to travel between two marked points on a track. Which of the following instruments is most suitable for obtaining this measurement accurately?",
+  "options": {
+    "A": "Beam balance",
+    "B": "Stopwatch",
+    "C": "Metre rule",
+    "D": "Measuring cylinder"
+  },
+  "answer": "B",
+  "answer_text": "Stopwatch",
+  "explanation": {
+    "question_restate": "The question asks you to identify the most appropriate instrument for measuring the time taken by a moving object to travel between two points.",
+    "principle": "Time is one of the fundamental quantities in Physics. Many experiments require accurate measurement of time because quantities such as speed, velocity, acceleration and frequency are calculated using time measurements.\n\nDifferent measuring instruments are designed for different physical quantities. To obtain reliable experimental results, the instrument chosen must be suitable for the quantity being measured.\n\nWhen studying motion, a stopwatch is commonly used because it is specifically designed to measure time intervals. Modern stopwatches can measure very short durations with high precision.\n\nA beginner may ask: 'Why not use any instrument available in the laboratory?' The reason is that each instrument serves a specific purpose. An instrument designed to measure mass, length or volume cannot accurately measure time.\n\nIn practical Physics, selecting the correct measuring instrument is often the first step toward obtaining accurate and meaningful results.",
+    "steps": [
+      "Step 1: Identify the quantity to be measured. The student wants to measure how long the toy car takes to move between two points.",
+      "Step 2: Recognize that the required quantity is time.",
+      "Step 3: Recall the instrument commonly used for measuring time intervals in Physics experiments.",
+      "Step 4: A stopwatch is specifically designed to start, stop and record elapsed time accurately.",
+      "Step 5: Therefore, the most suitable instrument is the stopwatch."
+    ],
+    "why_other_options_are_wrong": [
+      "A. A beam balance is used to measure mass and cannot measure time intervals.",
+      "C. A metre rule measures length or distance, not time.",
+      "D. A measuring cylinder is used to determine the volume of liquids and irregular solids through displacement methods, not time."
+    ],
+    "exam_tip": "JAMB frequently tests knowledge of laboratory instruments. Always associate each instrument with the physical quantity it is designed to measure: metre rule for length, beam balance for mass, measuring cylinder for volume and stopwatch for time.",
+    "final_answer": "B. Stopwatch",
+    "simple_explanation": "The student wants to know how long the toy car takes to move. Since time is being measured, the correct instrument is a stopwatch. The other instruments measure different quantities such as mass, length and volume.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Time to learn about stopwatches, clocks, reaction-time errors, timing techniques and their applications in Physics experiments. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical examples."
+  },
+  "tags": [
+    "measurement_of_time",
+    "stopwatch",
+    "laboratory_instruments",
+    "motion_experiments",
+    "phy_01"
+  ],
+  "active": true
 }
 
 ]
