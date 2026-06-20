@@ -9541,7 +9541,660 @@
     "phy_01"
   ],
   "active": true
-}
+},
 
+{
+  "id": "phy_01_q189",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Area measurement",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A solar-energy technician is designing a rectangular panel to be mounted on the roof of a laboratory building. The panel measures 2.4 m in length and 1.8 m in width. What surface area of the panel will be exposed to sunlight?",
+  "options": {
+    "A": "4.20 m²",
+    "B": "4.32 m²",
+    "C": "6.24 m²",
+    "D": "8.64 m²"
+  },
+  "answer": "B",
+  "answer_text": "4.32 m²",
+  "explanation": {
+    "question_restate": "The question requires you to determine the exposed surface area of a rectangular solar panel from its measured dimensions.",
+
+    "principle": "Area is a derived physical quantity that describes the extent of a surface. In Physics and Engineering, area measurements are important when studying solar energy collection, pressure, heat transfer, painting surfaces, and material coverage.\n\nA beginner may ask: 'Why is area important for a solar panel?' The amount of sunlight a solar panel can receive depends largely on the size of its exposed surface. A larger surface area can intercept more sunlight under similar conditions.\n\nFor rectangular surfaces, the area is obtained by multiplying the length by the width. Since both dimensions are measured in metres, the resulting unit is square metres (m²).\n\nUnderstanding area measurement is important because many Physics quantities such as pressure, surface density and heat flow involve area directly.",
+
+    "steps": [
+      "Step 1: Identify the quantity to be determined.\n\nThe required quantity is the surface area of the solar panel.",
+      "Step 2: Recall the formula for the area of a rectangle.\n\nArea = Length × Width.",
+      "Step 3: Substitute the given dimensions.\n\nArea = 2.4 m × 1.8 m.",
+      "Step 4: Perform the multiplication.\n\nArea = 4.32.",
+      "Step 5: Attach the correct unit.\n\nArea = 4.32 m².",
+      "Step 6: Therefore, the exposed surface area of the panel is 4.32 m²."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 4.20 m² results from inaccurate multiplication of the given dimensions and does not represent the correct area.",
+      "C. 6.24 m² is larger than the actual area and may result from interchanging digits during calculation.",
+      "D. 8.64 m² is obtained by doubling the correct answer and does not correspond to the dimensions provided."
+    ],
+
+    "exam_tip": "JAMB frequently presents area questions through practical situations such as flooring, roofing, painting, solar panels and laboratory surfaces. Always identify the shape first and then apply the correct area formula.",
+
+    "final_answer": "B. 4.32 m²",
+
+    "simple_explanation": "The panel is rectangular. To find its area, multiply its length by its width. Therefore, 2.4 × 1.8 = 4.32 m².",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Area Measurement to learn how area is measured for different shapes and how it is applied in practical Physics situations. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and worked examples."
+  },
+  "tags": [
+    "area_measurement",
+    "derived_quantities",
+    "solar_panel",
+    "surface_area",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q190",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Volume measurement",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A laboratory stores distilled water in a cubical container used for cooling experimental equipment. If each internal edge of the container measures 25 cm, what volume of water can the container hold when completely filled?",
+  "options": {
+    "A": "625 cm³",
+    "B": "3,125 cm³",
+    "C": "15,625 cm³",
+    "D": "18,750 cm³"
+  },
+  "answer": "C",
+  "answer_text": "15,625 cm³",
+  "explanation": {
+    "question_restate": "The question requires you to determine the volume of a cubical container from the length of one of its edges.",
+
+    "principle": "Volume is the amount of three-dimensional space occupied by a substance or container. In Physics laboratories, volume measurements are important when storing liquids, determining density, preparing solutions and carrying out cooling experiments.\n\nA beginner may ask: 'Why do we measure volume?' Many physical properties depend on volume. For example, density is calculated from mass and volume, while liquid storage capacity is determined directly from volume.\n\nA cube is a regular solid with all edges equal in length. The volume of a cube is obtained by multiplying the edge length by itself three times.\n\nMathematically:\n\nVolume = Edge × Edge × Edge.\n\nThe unit of volume is cubic units such as cm³ or m³.",
+
+    "steps": [
+      "Step 1: Identify the shape of the container.\n\nThe container is a cube.",
+      "Step 2: Recall the formula for the volume of a cube.\n\nVolume = Edge³.",
+      "Step 3: Substitute the given edge length.\n\nVolume = 25³ cm³.",
+      "Step 4: Calculate the square of 25.\n\n25 × 25 = 625.",
+      "Step 5: Multiply by 25 again.\n\n625 × 25 = 15,625.",
+      "Step 6: Therefore, the volume of the container is 15,625 cm³."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 625 cm³ represents only 25² and results from stopping the calculation too early.",
+      "B. 3,125 cm³ results from incorrect multiplication and does not equal 25³.",
+      "D. 18,750 cm³ is larger than the correct value and arises from arithmetic errors during evaluation."
+    ],
+
+    "exam_tip": "In JAMB questions involving volume, first identify the shape of the object. Cubes, cuboids and cylinders each have different volume formulas, so choosing the correct formula is essential.",
+
+    "final_answer": "C. 15,625 cm³",
+
+    "simple_explanation": "Since all sides of a cube are equal, multiply 25 by itself three times. Therefore, 25 × 25 × 25 = 15,625 cm³.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Volume Measurement to learn how to determine the volumes of regular and irregular bodies and how volume measurements are applied in density and laboratory experiments. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical applications."
+  },
+  "tags": [
+    "volume_measurement",
+    "regular_solids",
+    "cube",
+    "laboratory_storage",
+    "phy_01"
+  ],
+  "active": true
+},
+
+{
+  "id": "phy_01_q191",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measurement of regular bodies",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A manufacturing company produces rectangular metal blocks that are later used in density experiments. One block has a measured length of 12 cm, width of 4 cm and thickness of 3 cm. What is the volume of the block?",
+  "options": {
+    "A": "19 cm³",
+    "B": "48 cm³",
+    "C": "144 cm³",
+    "D": "228 cm³"
+  },
+  "answer": "C",
+  "answer_text": "144 cm³",
+  "explanation": {
+    "question_restate": "The question requires you to determine the volume of a regular rectangular solid from its measured dimensions.",
+
+    "principle": "Regular bodies are objects whose shapes follow known geometrical forms such as cubes, cuboids, cylinders and spheres.\n\nBecause their dimensions can be measured directly, their volumes can be calculated using established mathematical relationships.\n\nA beginner may ask: 'Why is volume important in Physics?' Volume is required when determining important physical quantities such as density, buoyancy and pressure.\n\nFor a rectangular block (cuboid), the volume is obtained by multiplying the length, width and thickness.\n\nVolume = Length × Width × Height.\n\nSince all dimensions are measured in centimetres, the resulting unit becomes cubic centimetres (cm³).",
+
+    "steps": [
+      "Step 1: Identify the shape of the object.\n\nThe object is a rectangular block (cuboid).",
+      "Step 2: Recall the formula for the volume of a cuboid.\n\nVolume = Length × Width × Height.",
+      "Step 3: Substitute the measured values.\n\nVolume = 12 × 4 × 3.",
+      "Step 4: Multiply the dimensions.\n\nVolume = 144.",
+      "Step 5: Attach the correct unit.\n\nVolume = 144 cm³.",
+      "Step 6: Therefore, the volume of the metal block is 144 cm³."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 19 cm³ does not result from applying the cuboid volume formula and is far smaller than the actual volume.",
+      "B. 48 cm³ results from multiplying only two of the three dimensions and ignoring the thickness.",
+      "D. 228 cm³ is obtained from incorrect multiplication and does not correspond to the given dimensions."
+    ],
+
+    "exam_tip": "JAMB frequently tests the measurement of regular bodies by embedding geometric calculations within practical Physics contexts such as density experiments and material testing. Always identify the shape before selecting the appropriate formula.",
+
+    "final_answer": "C. 144 cm³",
+
+    "simple_explanation": "A rectangular block occupies space in three dimensions. Multiply the length, width and thickness together. Therefore, 12 × 4 × 3 = 144 cm³.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Regular Bodies to learn how the volumes of cubes, cuboids, cylinders and spheres are determined and applied in practical Physics experiments. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and worked examples."
+  },
+
+  "tags": [
+    "measurement_of_regular_bodies",
+    "cuboid",
+    "volume",
+    "density_experiments",
+    "practical_physics",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+  "id": "phy_01_q192",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measurement of irregular bodies",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "An environmental scientist recovered an irregular mineral sample from a river bed and needed to determine its volume. Water in a measuring cylinder initially stood at 72 cm³. After the sample was completely submerged, the water level rose to 89 cm³. What is the volume of the mineral sample?",
+  "options": {
+    "A": "11 cm³",
+    "B": "17 cm³",
+    "C": "72 cm³",
+    "D": "89 cm³"
+  },
+  "answer": "B",
+  "answer_text": "17 cm³",
+  "explanation": {
+    "question_restate": "The question tests your understanding of the displacement method used to determine the volume of an irregular solid.",
+
+    "principle": "Many objects found in nature, such as stones, mineral samples and pieces of ore, do not have regular geometric shapes.\n\nBecause their dimensions cannot be measured directly using ordinary geometric formulas, their volumes are often determined using the displacement method.\n\nA beginner may ask: 'Why does the water level rise when an object is immersed?' When a solid object is submerged in water, it pushes water aside. The volume of water displaced is exactly equal to the volume of the object.\n\nThis principle makes it possible to determine the volume of irregular bodies accurately using a measuring cylinder or overflow can.\n\nVolume of object = Final reading − Initial reading.",
+
+    "steps": [
+      "Step 1: Identify the initial water level in the measuring cylinder.\n\nInitial reading = 72 cm³.",
+      "Step 2: Identify the final water level after immersion.\n\nFinal reading = 89 cm³.",
+      "Step 3: Apply the displacement principle.\n\nVolume of object = Final reading − Initial reading.",
+      "Step 4: Substitute the values.\n\nVolume = 89 − 72.",
+      "Step 5: Calculate the difference.\n\nVolume = 17 cm³.",
+      "Step 6: Therefore, the volume of the mineral sample is 17 cm³."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 11 cm³ results from an incorrect subtraction and does not represent the displaced volume.",
+      "C. 72 cm³ is merely the initial water level before the sample was introduced.",
+      "D. 89 cm³ is the final cylinder reading and includes both the original water volume and the displaced volume."
+    ],
+
+    "exam_tip": "Whenever JAMB presents initial and final measuring-cylinder readings, remember that the volume of the irregular object is the increase in the liquid level, not either reading taken separately.",
+
+    "final_answer": "B. 17 cm³",
+
+    "simple_explanation": "The mineral sample caused the water level to rise from 72 cm³ to 89 cm³. The increase, which is 17 cm³, represents the volume of the sample.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Irregular Bodies to learn the displacement method, overflow can technique and their applications in density and buoyancy experiments. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and detailed explanations."
+  },
+
+  "tags": [
+    "measurement_of_irregular_bodies",
+    "water_displacement",
+    "measuring_cylinder",
+    "volume_measurement",
+    "practical_physics",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+  "id": "phy_01_q193",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Metre rule",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A student measuring the length of a wooden strip places one end of the strip at the 5.0 cm mark of a metre rule because the zero end is damaged. The other end coincides with the 42.8 cm mark. Which of the following best explains why the student started the measurement from the 5.0 cm mark instead of the zero mark?",
+  "options": {
+    "A": "To increase the least count of the metre rule",
+    "B": "To avoid error caused by a damaged zero end",
+    "C": "To convert the reading into SI units",
+    "D": "To eliminate temperature effects on the ruler"
+  },
+  "answer": "B",
+  "answer_text": "To avoid error caused by a damaged zero end",
+  "explanation": {
+    "question_restate": "The question tests your understanding of a common practical technique used when the zero end of a metre rule is worn out or damaged.",
+    
+    "principle": "A metre rule is one of the most widely used instruments for measuring length in Physics laboratories.\n\nFor accurate measurements, readings should ideally begin from the zero mark. However, the edge of a metre rule may become worn, chipped or damaged after prolonged use.\n\nA beginner may ask: 'What happens if the zero end is damaged?' If the measurement starts from a defective zero mark, the recorded length may be larger or smaller than the true value.\n\nTo overcome this problem, physicists often begin measurements from another clearly visible graduation such as 1 cm, 2 cm or 5 cm. The initial reading is then subtracted from the final reading.\n\nThis method improves accuracy and is commonly used in practical examinations.",
+    
+    "steps": [
+      "Step 1: Identify the reason given in the question for not using the zero mark.",
+      "Step 2: Recall that a damaged or worn-out zero end can introduce measurement errors.",
+      "Step 3: Recognize that starting from another graduation helps avoid this source of error.",
+      "Step 4: Understand that the true length can still be obtained by subtracting the initial reading from the final reading.",
+      "Step 5: Therefore, the student started from the 5.0 cm mark to avoid error caused by the damaged zero end."
+    ],
+    
+    "why_other_options_are_wrong": [
+      "A. The least count of a metre rule remains unchanged regardless of where the measurement begins.",
+      "C. Starting from the 5.0 cm mark does not convert the reading into SI units. Unit conversion is a separate process.",
+      "D. Temperature effects are not eliminated simply by choosing a different starting point on the metre rule."
+    ],
+    
+    "exam_tip": "JAMB frequently tests practical measurement techniques. Whenever a question mentions a damaged or worn-out zero mark, think about avoiding zero error by measuring from another graduation and subtracting the initial reading.",
+    
+    "final_answer": "B. To avoid error caused by a damaged zero end",
+    
+    "simple_explanation": "If the zero end of a ruler is damaged, measurements taken from it may be inaccurate. Starting from another mark and subtracting the initial reading gives a more reliable result.",
+    
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Metre Rule to learn about least count, parallax error, zero error and practical measurement techniques. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics explanations and examples."
+  },
+  "tags": [
+    "metre_rule",
+    "length_measurement",
+    "measurement_errors",
+    "practical_physics",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q194",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Vernier calipers",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A technician inspecting a hollow metal pipe needs to determine the diameter of the opening inside the pipe without cutting it open. Which feature of a Vernier caliper makes this measurement possible?",
+  "options": {
+    "A": "The external jaws",
+    "B": "The depth gauge",
+    "C": "The internal jaws",
+    "D": "The main scale only"
+  },
+  "answer": "C",
+  "answer_text": "The internal jaws",
+  "explanation": {
+    "question_restate": "The question requires you to identify the part of a Vernier caliper used for measuring the internal diameter of a hollow object.",
+    
+    "principle": "The Vernier caliper is a versatile measuring instrument capable of measuring external diameters, internal diameters and depths.\n\nA beginner may ask: 'Why is the Vernier caliper more useful than an ordinary ruler?' Unlike a ruler, the Vernier caliper contains specialized measuring parts designed for different applications.\n\nThe instrument typically consists of:\n\n• External jaws for measuring outside dimensions.\n\n• Internal jaws for measuring inside diameters.\n\n• A depth gauge for measuring depths of holes and containers.\n\n• A main scale and Vernier scale for obtaining accurate readings.\n\nBecause hollow objects such as pipes, tubes and rings have internal openings, the internal jaws are specifically designed to fit into these openings and measure their diameters accurately.",
+    
+    "steps": [
+      "Step 1: Identify the quantity being measured.",
+      "Step 2: The technician wants to measure the diameter of the opening inside a pipe.",
+      "Step 3: Recall the different parts of a Vernier caliper and their functions.",
+      "Step 4: Recognize that internal jaws are used for measuring internal dimensions.",
+      "Step 5: Therefore, the appropriate feature is the internal jaws."
+    ],
+    
+    "why_other_options_are_wrong": [
+      "A. External jaws are used for measuring outside diameters and thicknesses, not internal openings.",
+      "B. The depth gauge is used to determine the depth of holes, slots and containers rather than internal diameter.",
+      "D. The main scale helps provide numerical readings but does not perform the measurement by itself."
+    ],
+    
+    "exam_tip": "JAMB often tests candidates' knowledge of the different parts of measuring instruments. Learn the specific functions of the external jaws, internal jaws and depth gauge of a Vernier caliper.",
+    
+    "final_answer": "C. The internal jaws",
+    
+    "simple_explanation": "The opening inside a pipe is an internal measurement. The internal jaws of a Vernier caliper are specially designed to fit inside the opening and measure its diameter.",
+    
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Vernier Calipers to learn about internal measurements, external measurements, depth measurements, least count and practical applications. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard instrument-based Physics questions and detailed explanations."
+  },
+  "tags": [
+    "vernier_calipers",
+    "internal_diameter",
+    "measuring_instruments",
+    "practical_physics",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q195",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Micrometer screw gauge",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A manufacturer of injection needles conducts a quality-control inspection to verify that the needles meet the required diameter specification. A micrometer screw gauge with a least count of 0.01 mm gives a sleeve reading of 5.0 mm, while the 37th division on the thimble coincides with the reference line. What is the diameter of the needle?",
+  "options": {
+    "A": "5.37 mm",
+    "B": "5.73 mm",
+    "C": "5.07 mm",
+    "D": "5.47 mm"
+  },
+  "answer": "A",
+  "answer_text": "5.37 mm",
+  "explanation": {
+    "question_restate": "The question requires you to determine the diameter of a needle from the readings obtained on a micrometer screw gauge.",
+
+    "principle": "The micrometer screw gauge is one of the most precise instruments used in Physics laboratories for measuring very small diameters and thicknesses.\n\nIt is commonly used in engineering workshops, manufacturing industries, quality-control laboratories and scientific investigations where high accuracy is required.\n\nA beginner may ask: 'Why is a micrometer screw gauge preferred to an ordinary ruler?' The reason is that the micrometer screw gauge can measure lengths much more accurately because its least count is very small.\n\nThe reading of a micrometer screw gauge consists of two parts:\n\n• Sleeve (main scale) reading.\n• Thimble scale reading.\n\nThe total reading is obtained by adding the sleeve reading to the thimble contribution.\n\nMicrometer Reading = Sleeve Reading + (Thimble Division × Least Count).",
+
+    "steps": [
+      "Step 1: Identify the sleeve reading.\n\nSleeve reading = 5.0 mm.",
+      "Step 2: Identify the coinciding thimble division.\n\nThimble division = 37.",
+      "Step 3: Determine the thimble contribution.\n\n37 × 0.01 mm = 0.37 mm.",
+      "Step 4: Add the sleeve reading and the thimble contribution.\n\nTotal reading = 5.0 mm + 0.37 mm.",
+      "Step 5: Calculate the final diameter.\n\nDiameter = 5.37 mm."
+    ],
+
+    "why_other_options_are_wrong": [
+      "B. 5.73 mm results from reversing the digits of the thimble contribution and does not correspond to the instrument reading.",
+      "C. 5.07 mm ignores most of the thimble contribution and significantly underestimates the diameter.",
+      "D. 5.47 mm would require the 47th thimble division to coincide rather than the 37th division."
+    ],
+
+    "exam_tip": "JAMB frequently tests your ability to combine sleeve and thimble readings correctly. Always calculate the thimble contribution first before adding it to the sleeve reading.",
+
+    "final_answer": "A. 5.37 mm",
+
+    "simple_explanation": "The sleeve gives 5.0 mm and the thimble adds 0.37 mm. Adding them together gives 5.37 mm.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Micrometer Screw Gauge to learn about least count, sleeve readings, thimble readings, zero error and practical industrial applications. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations and practical examples."
+  },
+
+  "tags": [
+    "micrometer_screw_gauge",
+    "precision_measurement",
+    "diameter_measurement",
+    "quality_control",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+  "id": "phy_01_q196",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measuring cylinder",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A chemist preparing a solution for an experiment pours liquid into a measuring cylinder and observes that the lower meniscus coincides with the 72 cm³ mark. What volume of liquid should be recorded?",
+  "options": {
+    "A": "70 cm³",
+    "B": "71 cm³",
+    "C": "72 cm³",
+    "D": "74 cm³"
+  },
+  "answer": "C",
+  "answer_text": "72 cm³",
+  "explanation": {
+    "question_restate": "The question requires you to determine the correct volume reading from a measuring cylinder using the position of the meniscus.",
+
+    "principle": "A measuring cylinder is a laboratory instrument used for measuring the volume of liquids.\n\nWhen a liquid is placed inside a measuring cylinder, its surface is usually curved rather than flat. This curved surface is called the meniscus.\n\nA beginner may ask: 'Why is the meniscus important?' The reason is that accurate volume measurements depend on reading the correct part of the liquid surface.\n\nFor most liquids such as water, the meniscus is concave. The correct reading is taken at the lowest point of the meniscus while the observer's eye is level with the liquid surface.\n\nFailure to read the meniscus correctly can introduce parallax error and lead to inaccurate measurements.\n\nAccurate volume measurements are essential in Physics, Chemistry and Biology experiments because many calculations depend on precise volume values.",
+
+    "steps": [
+      "Step 1: Identify the instrument used.\n\nThe instrument is a measuring cylinder.",
+      "Step 2: Recall how volume is read from a measuring cylinder.\n\nThe reading is taken at the lower meniscus for most liquids.",
+      "Step 3: Observe the position of the lower meniscus.\n\nThe lower meniscus coincides with the 72 cm³ mark.",
+      "Step 4: Record the value indicated by the lower meniscus.",
+      "Step 5: Therefore, the volume of liquid is 72 cm³."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 70 cm³ is below the actual position of the lower meniscus and underestimates the volume.",
+      "B. 71 cm³ does not correspond to the indicated meniscus position.",
+      "D. 74 cm³ is above the meniscus level and overestimates the volume of the liquid."
+    ],
+
+    "exam_tip": "JAMB often tests practical measurement skills. Whenever a measuring cylinder is involved, remember to read the lower meniscus at eye level to avoid parallax error.",
+
+    "final_answer": "C. 72 cm³",
+
+    "simple_explanation": "The lowest point of the liquid surface is exactly at 72 cm³. Therefore, the correct volume reading is 72 cm³.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measuring Cylinder to learn about meniscus reading, parallax error, volume measurement and displacement applications. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and detailed explanations."
+  },
+
+  "tags": [
+    "measuring_cylinder",
+    "volume_measurement",
+    "meniscus",
+    "laboratory_measurement",
+    "phy_01"
+  ],
+
+  "active": true
+},
+{
+  "id": "phy_01_q197",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Beam balance",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A geology laboratory receives rock samples from different mining sites for analysis. Before conducting density tests, a scientist determines the mass of each sample using a beam balance. Why is a beam balance preferred for this purpose?",
+  "options": {
+    "A": "It measures volume directly.",
+    "B": "It compares masses and is unaffected by changes in gravitational field strength.",
+    "C": "It measures weight in newtons.",
+    "D": "It determines the density of the sample automatically."
+  },
+  "answer": "B",
+  "answer_text": "It compares masses and is unaffected by changes in gravitational field strength.",
+  "explanation": {
+    "question_restate": "The question requires you to identify the reason a beam balance is suitable for obtaining reliable mass measurements of rock samples.",
+    
+    "principle": "A beam balance is one of the most important instruments used in Physics laboratories for measuring mass.\n\nUnlike a spring balance, which depends on the weight of an object, a beam balance works by comparing an unknown mass with known standard masses.\n\nA beginner may ask: 'Why does comparison matter?' The reason is that both the object and the standard masses experience the same gravitational pull at a given location.\n\nBecause gravity acts equally on both sides of the beam balance, any change in gravitational field strength affects both sides equally. As a result, the balance still gives the correct mass.\n\nThis makes the beam balance especially useful in scientific work where accurate mass measurements are required before experiments involving density, specific heat capacity, or chemical analysis.",
+    
+    "steps": [
+      "Step 1: Identify the quantity being measured. The scientist wants to determine mass.",
+      "Step 2: Recall how a beam balance operates.",
+      "Step 3: A beam balance compares an unknown mass with known standard masses.",
+      "Step 4: Recognize that both sides of the balance are affected equally by gravity.",
+      "Step 5: Therefore, changes in gravitational field strength do not affect the comparison.",
+      "Step 6: Conclude that the beam balance provides reliable measurements of mass."
+    ],
+    
+    "why_other_options_are_wrong": [
+      "A. A beam balance does not measure volume. Volume is determined using dimensional measurements or displacement methods.",
+      "C. Weight is a force measured in newtons and is commonly measured using a spring balance, not a beam balance.",
+      "D. Density cannot be measured directly by a beam balance because density depends on both mass and volume."
+    ],
+    
+    "exam_tip": "JAMB frequently tests the distinction between mass and weight. Remember that a beam balance measures mass through comparison, while a spring balance measures weight through the stretching effect of a spring.",
+    
+    "final_answer": "B. It compares masses and is unaffected by changes in gravitational field strength.",
+    
+    "simple_explanation": "A beam balance works by comparing one mass with another. Since gravity affects both sides equally, the measured mass remains correct even if the measurement location changes.",
+    
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Beam Balance to learn how beam balances operate, why they measure mass rather than weight, and how they are applied in laboratory investigations. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard Physics explanations and practical examples."
+  },
+  "tags": [
+    "beam_balance",
+    "mass_measurement",
+    "laboratory_instruments",
+    "mass_and_weight",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q198",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measurement of mass",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "Engineers testing components for a communication satellite must record measurements using internationally accepted standards. Which of the following units should be used when reporting the mass of a satellite component in scientific documents?",
+  "options": {
+    "A": "Newton (N)",
+    "B": "Kilogram (kg)",
+    "C": "Pascal (Pa)",
+    "D": "Joule (J)"
+  },
+  "answer": "B",
+  "answer_text": "Kilogram (kg)",
+  "explanation": {
+    "question_restate": "The question requires you to identify the SI unit used for reporting the mass of an object in scientific and engineering work.",
+    
+    "principle": "Mass is one of the seven fundamental quantities in Physics.\n\nA beginner may ask: 'What exactly is mass?' Mass is the amount of matter contained in a body.\n\nTo ensure that measurements are understood everywhere in the world, scientists use the International System of Units (SI).\n\nWithin the SI system, each fundamental quantity has a specific base unit. The SI base unit for mass is the kilogram (kg).\n\nUsing standard units is extremely important in engineering, medicine, aviation, space science and laboratory work because measurements must be interpreted consistently regardless of country or organization.\n\nWhenever mass is reported in scientific documents, the accepted SI unit is the kilogram.",
+    
+    "steps": [
+      "Step 1: Identify the physical quantity mentioned in the question.",
+      "Step 2: The quantity is mass.",
+      "Step 3: Recall the SI base unit assigned to mass.",
+      "Step 4: The SI system uses the kilogram as its base unit of mass.",
+      "Step 5: Compare this with the units listed in the options.",
+      "Step 6: Conclude that kilogram (kg) is the correct answer."
+    ],
+    
+    "why_other_options_are_wrong": [
+      "A. Newton (N) is the SI unit of force or weight, not mass.",
+      "C. Pascal (Pa) is the SI unit of pressure and is used when describing force acting on a unit area.",
+      "D. Joule (J) is the SI unit of energy or work and does not measure mass."
+    ],
+    
+    "exam_tip": "JAMB often asks candidates to distinguish between physical quantities and their SI units. Learn the SI base units thoroughly, especially metre, kilogram, second, ampere, kelvin, mole and candela.",
+    
+    "final_answer": "B. Kilogram (kg)",
+    
+    "simple_explanation": "Mass tells us how much matter an object contains. Scientists all over the world use the kilogram (kg) as the standard SI unit for measuring mass.",
+    
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Mass to study SI base quantities, mass measuring instruments, and the distinction between mass and weight. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical Physics applications."
+  },
+  "tags": [
+    "measurement_of_mass",
+    "si_units",
+    "fundamental_quantities",
+    "mass",
+    "physics_measurement",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q199",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Measurement of time",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "Engineers testing an automatic railway crossing system observed that the warning barrier remained closed for 3 minutes 20 seconds after a train passed. For documentation purposes, the duration had to be recorded in SI units. What was the recorded time interval?",
+  "options": {
+    "A": "180 s",
+    "B": "190 s",
+    "C": "200 s",
+    "D": "320 s"
+  },
+  "answer": "C",
+  "answer_text": "200 s",
+  "explanation": {
+    "question_restate": "The question requires you to convert a time interval given in minutes and seconds into seconds, which is the SI unit of time.",
+    "principle": "Time is one of the seven SI fundamental quantities, and its SI unit is the second (s).\n\nIn Physics, measurements are usually converted into SI units before they are used in calculations. This ensures consistency and prevents errors when applying equations involving speed, acceleration, frequency, energy and other physical quantities.\n\nA beginner may ask: 'Why not leave the answer in minutes and seconds?' The reason is that most Physics formulae are derived using SI units. Converting all quantities into standard units makes calculations easier and more reliable.\n\nWhenever a time interval is expressed in minutes and seconds, the minutes must first be converted into seconds before the values are added together.\n\nRecall that:\n\n• 1 minute = 60 seconds\n• 1 hour = 3600 seconds",
+    "steps": [
+      "Step 1: Identify the time interval given in the question.",
+      "Step 2: The duration is 3 minutes 20 seconds.",
+      "Step 3: Convert the minutes into seconds.\n\n3 minutes = 3 × 60 = 180 seconds.",
+      "Step 4: Add the remaining 20 seconds.\n\n180 + 20 = 200 seconds.",
+      "Step 5: Express the result in SI units.\n\nTime interval = 200 s."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 180 s represents only the converted minutes and ignores the additional 20 seconds.",
+      "B. 190 s results from adding an incorrect number of seconds after conversion.",
+      "D. 320 s is obtained by incorrectly combining the numerical values without proper unit conversion."
+    ],
+    "exam_tip": "JAMB frequently requires candidates to convert quantities into SI units before selecting an answer. For time measurements, always convert minutes and hours completely into seconds.",
+    "final_answer": "C. 200 s",
+    "simple_explanation": "Three minutes equals 180 seconds. Adding the extra 20 seconds gives a total of 200 seconds.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Measurement of Time to learn about SI units of time, timing techniques and common JAMB conversion questions. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard explanations and practical examples."
+  },
+  "tags": [
+    "measurement_of_time",
+    "si_units",
+    "time_conversion",
+    "fundamental_quantities",
+    "phy_01"
+  ],
+  "active": true
+},
+{
+  "id": "phy_01_q200",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_01",
+  "topic_title": "Measurements, Units and Dimensions",
+  "subtopic": "Time-measuring devices",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A technician investigating the oscillation of a vibrating metal strip needs to determine the time taken for twenty complete vibrations with high precision. Which of the following instruments would be most appropriate for this measurement?",
+  "options": {
+    "A": "Stopwatch",
+    "B": "Beam balance",
+    "C": "Metre rule",
+    "D": "Measuring cylinder"
+  },
+  "answer": "A",
+  "answer_text": "Stopwatch",
+  "explanation": {
+    "question_restate": "The question requires you to identify the most suitable instrument for accurately measuring the duration of repeated vibrations in an experiment.",
+    "principle": "Different physical quantities require different measuring instruments. Selecting the correct instrument is an important aspect of experimental Physics.\n\nTime is a fundamental quantity measured in seconds. When scientists and technicians need to determine the duration of an event, an instrument capable of measuring time intervals accurately must be used.\n\nA beginner may ask: 'Why is a stopwatch commonly used in experiments?' A stopwatch can be started and stopped precisely, allowing short and moderate time intervals to be measured with reasonable accuracy.\n\nIn vibration and pendulum experiments, the time for several oscillations is often measured and then divided by the number of oscillations to improve accuracy.\n\nTherefore, a stopwatch is one of the most widely used instruments for experimental timing.",
+    "steps": [
+      "Step 1: Identify the physical quantity being measured.",
+      "Step 2: The quantity is time taken for twenty vibrations.",
+      "Step 3: Consider the instruments listed in the options.",
+      "Step 4: Determine which instrument is specifically designed to measure time intervals.",
+      "Step 5: Recognize that a stopwatch is designed for accurate timing of events.",
+      "Step 6: Conclude that the stopwatch is the most suitable instrument."
+    ],
+    "why_other_options_are_wrong": [
+      "B. A beam balance measures mass by comparison and cannot measure time intervals.",
+      "C. A metre rule measures length and distance, not time.",
+      "D. A measuring cylinder is used to determine the volume of liquids and cannot be used for timing events."
+    ],
+    "exam_tip": "JAMB often tests the relationship between physical quantities and measuring instruments. First identify the quantity involved, then choose the instrument specifically designed for that quantity.",
+    "final_answer": "A. Stopwatch",
+    "simple_explanation": "The experiment requires measuring how long the vibrations last. A stopwatch is designed to measure time intervals accurately, making it the correct choice.",
+    "tutorial_reference": "Visit Tutorials → Physics → Measurements, Units and Dimensions → Time-Measuring Devices to learn about stopwatches, electronic timers, clocks and their applications in Physics experiments. Continue your preparation with NaijaPrizeGate CBT Tutorial Centre for more JAMB-standard practical Physics questions and detailed explanations."
+  },
+  "tags": [
+    "time_measuring_devices",
+    "stopwatch",
+    "oscillations",
+    "experimental_physics",
+    "phy_01"
+  ],
+  "active": true
+}
 
 ]
