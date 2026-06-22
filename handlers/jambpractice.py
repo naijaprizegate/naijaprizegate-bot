@@ -889,6 +889,49 @@ def build_jamb_batch_from_paper_rows(paper_rows: list[dict]) -> list[dict]:
 
     return batch
 
+# ----------------------------------------
+# Send long MarkdownV2 messages safely
+# ----------------------------------------
+async def send_long_markdown_message(
+    message,
+    text,
+    reply_markup=None,
+):
+    MAX_LENGTH = 3500
+
+    chunks = []
+
+    while len(text) > MAX_LENGTH:
+
+        split_at = text.rfind(
+            "\n",
+            0,
+            MAX_LENGTH,
+        )
+
+        if split_at == -1:
+            split_at = MAX_LENGTH
+
+        chunks.append(
+            text[:split_at]
+        )
+
+        text = text[split_at:]
+
+    chunks.append(text)
+
+    for index, chunk in enumerate(chunks):
+
+        await message.reply_text(
+            chunk,
+            parse_mode="MarkdownV2",
+            reply_markup=(
+                reply_markup
+                if index == len(chunks) - 1
+                else None
+            ),
+        )
+
 # =============================
 # Keyboards
 # =============================
@@ -2061,6 +2104,7 @@ async def send_current_jamb_question(update: Update, context: ContextTypes.DEFAU
             ),
         )
 
+
     question = batch[current_index]
 
     question_id = str(question["id"])
@@ -2663,18 +2707,18 @@ async def jamb_answer_details_handler(
             f"{md_escape(tutorial_reference)}"
         )
 
-    await query.message.reply_text(
-        "\n".join(lines),
-        parse_mode="MarkdownV2",
+    question_order = expected_question_order
+    
+    details_text = "\n".join(lines)
+
+    await send_long_markdown_message(
+        query.message,
+        details_text,
         reply_markup=make_after_details_keyboard(
-            question_order=int(
-                context.user_data.get(
-                    "jp_current_index",
-                    0,
-                )
-            ) + 1,
+            question_order
         ),
     )
+
 
 # ---------------------------
 # JAMB Next Handler
@@ -3630,5 +3674,3 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details::"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next::"))
-
-
