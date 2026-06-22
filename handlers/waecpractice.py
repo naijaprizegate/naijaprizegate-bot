@@ -919,6 +919,50 @@ def build_waec_batch_from_paper_rows(paper_rows: list[dict]) -> list[dict]:
 
     return batch
 
+# ------------------------------------
+# Send Long Markdown Message
+# -----------------------------------
+async def send_long_markdown_message(
+    message,
+    text,
+    reply_markup=None,
+):
+    MAX_LENGTH = 3500
+
+    chunks = []
+
+    while len(text) > MAX_LENGTH:
+
+        split_at = text.rfind(
+            "\n",
+            0,
+            MAX_LENGTH,
+        )
+
+        if split_at == -1:
+            split_at = MAX_LENGTH
+
+        chunks.append(
+            text[:split_at]
+        )
+
+        text = text[split_at:]
+
+    chunks.append(text)
+
+    for index, chunk in enumerate(chunks):
+
+        await message.reply_text(
+            chunk,
+            parse_mode="MarkdownV2",
+            reply_markup=(
+                reply_markup
+                if index == len(chunks) - 1
+                else None
+            ),
+        )
+
+
 # =============================
 # Keyboards
 # =============================
@@ -2777,11 +2821,13 @@ async def waec_answer_details_handler(
         + 1
     )
 
-    await query.message.reply_text(
-        "\n".join(lines),
-        parse_mode="MarkdownV2",
+    details_text = "\n".join(lines)
+
+    await send_long_markdown_message(
+        query.message,
+        details_text,
         reply_markup=make_after_details_keyboard(
-            question_order
+            question_order,
         ),
     )
 
@@ -2984,9 +3030,11 @@ async def wp_review_details_handler(
         < len(wrong_questions) - 1
     )
 
-    await query.message.reply_text(
-        "\n".join(lines),
-        parse_mode="MarkdownV2",
+    details_text = "\n".join(lines)
+
+    await send_long_markdown_message(
+        query.message,
+        details_text,
         reply_markup=make_wp_review_keyboard(
             has_next=has_next,
         ),
@@ -3751,4 +3799,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(waec_answer_handler, pattern=r"^wp_ans::"))
     application.add_handler(CallbackQueryHandler(waec_answer_details_handler, pattern=r"^wp_details::"))
     application.add_handler(CallbackQueryHandler(waec_next_handler, pattern=r"^wp_next::"))
+
 
