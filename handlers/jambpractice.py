@@ -3225,9 +3225,11 @@ async def jp_review_details_handler(
         < len(wrong_questions) - 1
     )
 
-    await query.message.reply_text(
-        "\n".join(lines),
-        parse_mode="MarkdownV2",
+    details_text = "\n".join(lines)
+
+    await send_long_markdown_message(
+        query.message,
+        details_text,
         reply_markup=make_jp_review_keyboard(
             has_next=has_next,
         ),
@@ -3674,4 +3676,5 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details::"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next::"))
+
 
