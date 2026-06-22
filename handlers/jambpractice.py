@@ -3674,3 +3674,4 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(jamb_answer_handler, pattern=r"^jp_ans::"))
     application.add_handler(CallbackQueryHandler(jamb_answer_details_handler, pattern=r"^jp_details::"))
     application.add_handler(CallbackQueryHandler(jamb_next_handler, pattern=r"^jp_next::"))
+
