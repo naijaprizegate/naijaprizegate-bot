@@ -3173,6 +3173,58 @@
 "phy_02"
 ],
 "active": true
+},
+{
+"id": "phy_02_q062",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Significant figures",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician used a micrometer screw gauge to determine the diameter of a resistance wire. After several careful measurements, the mean diameter was obtained as 0.0037864 m. In preparing the final laboratory report, the result was required to be stated to three significant figures in order to reflect the precision of the instrument. Which of the following values should appear in the report?",
+"options": {
+"A": "0.00379 m",
+"B": "0.00379 × 10⁰ m",
+"C": "0.00379 m correct to three decimal places",
+"D": "0.00379 m correct to three significant figures"
+},
+"answer": "D",
+"answer_text": "0.00379 m correct to three significant figures",
+"explanation": {
+"question_restate": "A micrometer screw gauge was used to measure the diameter of a resistance wire. The average measurement obtained was 0.0037864 m. The question asks how this result should be correctly reported to three significant figures in a laboratory report.",
+"principle": "Significant figures are the digits in a measured quantity that carry meaningful information about the precision of the measurement.\n\nA beginner may ask: 'Why don't scientists write every digit produced by a calculator?' Not every digit is meaningful. Measuring instruments have limits, and reporting too many digits can create a false impression of accuracy.\n\nAnother beginner may ask: 'What is a significant figure?' Significant figures are digits that contribute to the precision of a measured value. They include all certain digits plus the first uncertain digit.\n\nA beginner may also ask: 'Do leading zeros count as significant figures?' No. Zeros placed before the first non-zero digit merely locate the decimal point and are not significant.\n\nFor example:\n\n0.0037864\n\nThe leading zeros are not significant.\nThe significant digits begin at 3.\n\nTherefore, the significant figures are:\n\n3, 7, 8, 6, 4\n\nJAMB frequently tests candidates on distinguishing significant figures from decimal places. These concepts are not the same.\n\nSignificant Figures → Count meaningful digits from the first non-zero digit.\n\nDecimal Places → Count digits to the right of the decimal point.",
+"steps": [
+"Step 1: Write the measurement.\n\n0.0037864 m",
+"Step 2: Locate the first non-zero digit.\n\nThe first non-zero digit is 3.",
+"Step 3: Count three significant figures from the first non-zero digit.\n\n1st significant figure = 3\n2nd significant figure = 7\n3rd significant figure = 8",
+"Step 4: Look at the next digit.\n\nThe next digit is 6.",
+"Step 5: Apply the rounding rule.\n\nSince 6 is greater than or equal to 5, increase the third significant figure by one.",
+"Step 6: Therefore:\n\n0.0037864 m → 0.00379 m",
+"Step 7: Examine the options carefully.\n\nSeveral options contain the same numerical value but differ in scientific correctness.",
+"Step 8: Option D is the best answer because it correctly identifies the value as being expressed to three significant figures."
+],
+"why_other_options_are_wrong": [
+"A. 0.00379 m — Although the numerical value is correct, the option does not address the requirement concerning significant figures. JAMB often tests both the value and the correctness of scientific reporting.",
+"B. 0.00379 × 10⁰ m — This notation is unnecessary and not the standard form normally expected for this result. It adds no useful information.",
+"C. 0.00379 m correct to three decimal places — This is incorrect because the value has been expressed to three significant figures, not three decimal places. Candidates frequently confuse these two concepts.",
+"D. 0.00379 m correct to three significant figures — Correct. The reported value has been properly rounded and correctly described."
+],
+"exam_tip": "JAMB frequently creates distractors that exploit confusion between significant figures and decimal places.\n\nCommon trap:\n\n0.00379\n\nMany candidates count three decimal places instead of three significant figures.\n\nRemember:\n\nIgnore leading zeros.\nBegin counting from the first non-zero digit.\n\nAnother JAMB pattern is to provide several options with identical numerical values but different scientific descriptions. Always read the entire option before selecting an answer.",
+"final_answer": "D. 0.00379 m correct to three significant figures",
+"simple_explanation": "The zeros before 3 do not count as significant figures. Start counting from 3. The first three significant figures are 3, 7 and 8. The next digit is 6, so the 8 is rounded up to 9. The final value becomes 0.00379 m. Since the question specifically asks for three significant figures, Option D is the most complete and correct answer.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Significant Figures to learn how scientists report measurements, distinguish significant figures from decimal places, and avoid common examination mistakes. Explore worked examples involving micrometer screw gauges, vernier calipers, laboratory reports, and scientific notation.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for detailed lessons, examiner insights, practical measurement guides, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"significant_figures",
+"laboratory_reporting",
+"micrometer_screw_gauge",
+"measurement_precision",
+"scientific_reporting",
+"phy_02"
+],
+"active": true
 }
 
 
