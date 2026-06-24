@@ -2389,7 +2389,792 @@
 "phy_02"
 ],
 "active": true
+},
+{
+"id": "phy_02_q047",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Zero error",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A vernier caliper was used by four laboratory groups to measure the external diameter of the same metal cylinder. After the measurements had been completed, the laboratory technician discovered that when the jaws of the vernier caliper were fully closed, the zero of the vernier scale coincided with the 0.04 cm mark on the main scale. Which conclusion is most justified from this observation?",
+"options": {
+"A": "The measurements are likely to contain a systematic error and should be corrected accordingly",
+"B": "The measurements are unreliable because the least count of the instrument is too large",
+"C": "The measurements are affected mainly by random errors arising from repeated observations",
+"D": "The measurements are invalid because precision cannot be achieved with a vernier caliper"
+},
+"answer": "A",
+"answer_text": "The measurements are likely to contain a systematic error and should be corrected accordingly",
+"explanation": {
+"question_restate": "A vernier caliper was used for a series of measurements. Later, it was discovered that when the jaws were completely closed, the instrument did not read zero but instead showed 0.04 cm. The question asks for the most reasonable conclusion regarding the measurements already taken.",
+"principle": "A zero error occurs when a measuring instrument gives a non-zero reading when the true value being measured should be zero.\n\nA beginner may ask: 'Why should the instrument read zero when the jaws are closed?' When the jaws of a vernier caliper are fully closed, there is no gap between them. Since the measured length is zero, the instrument should display a reading of zero. Any other reading indicates a zero error.\n\nAnother beginner may ask: 'What is a vernier caliper?' A vernier caliper is a precision measuring instrument used to measure external diameters, internal diameters, depths, and thicknesses more accurately than an ordinary metre rule.\n\nA beginner may also ask: 'What is systematic error?' A systematic error is an error that affects measurements in a consistent and predictable manner. Unlike random errors, which vary from one observation to another, systematic errors shift measurements in the same direction.\n\nZero error is one of the most common causes of systematic error. If an instrument begins every measurement with an incorrect starting point, every reading obtained from that instrument will be affected.\n\nAnother important question is: 'Does zero error mean the measurements must be discarded?' Not necessarily. If the zero error is known, appropriate corrections can often be applied to obtain corrected values.\n\nJAMB frequently links zero error with vernier calipers and micrometer screw gauges. Candidates are expected to recognize that a zero error affects all measurements systematically.",
+"steps": [
+"Step 1: Examine the condition of the instrument.\n\nThe vernier caliper reads 0.04 cm when it should read 0.00 cm.",
+"Step 2: Identify the type of fault.\n\nSince the instrument gives a reading when no length is being measured, the instrument has a zero error.",
+"Step 3: Determine the effect of the fault.\n\nEvery measurement taken with the instrument will be shifted by approximately the same amount.",
+"Step 4: Classify the resulting error.\n\nAn error that affects all measurements in the same direction is a systematic error.",
+"Step 5: Evaluate the options.\n\nOption A correctly links zero error with systematic error and recognizes that corrections may be required.",
+"Step 6: Therefore, the most reasonable conclusion is Option A."
+],
+"why_other_options_are_wrong": [
+"B. The measurements are unreliable because the least count of the instrument is too large — The question provides no evidence that the least count is inappropriate. The problem identified is a zero error, not poor instrument resolution.",
+"C. The measurements are affected mainly by random errors arising from repeated observations — Random errors vary unpredictably from one observation to another. The discovered fault affects every measurement in a consistent way, making it a systematic error rather than a random error.",
+"D. The measurements are invalid because precision cannot be achieved with a vernier caliper — Vernier calipers are specifically designed to improve precision. The existence of a zero error does not mean the instrument cannot produce precise measurements."
+],
+"exam_tip": "JAMB frequently presents practical scenarios involving vernier calipers and micrometer screw gauges with hidden instrument defects.\n\nA common trap is confusing zero error with random error.\n\nRemember:\n\n• Zero error originates from the instrument.\n• Random error originates from unpredictable variations in measurement.\n• Zero error usually produces a systematic error.\n\nWhenever JAMB mentions that an instrument does not read zero when it should, immediately think about zero error and the need for correction.",
+"final_answer": "A. The measurements are likely to contain a systematic error and should be corrected accordingly",
+"simple_explanation": "Imagine using a ruler that starts at the wrong place. Every measurement you take will be slightly wrong in the same direction. That is what happened here. Because the vernier caliper already showed 0.04 cm before any measurement was taken, all the measurements are likely to contain the same built-in error. This type of error is called a systematic error.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Zero Error to learn how zero errors occur in vernier calipers and micrometer screw gauges, how corrections are applied, and how JAMB tests these concepts in practical Physics questions.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for detailed lessons, practical demonstrations, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"zero_error",
+"vernier_caliper",
+"systematic_error",
+"instrument_calibration",
+"measurement_error",
+"experimental_physics",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q048",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Zero error",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician noticed that when the jaws of a vernier caliper were completely closed, the zero mark of the vernier scale was displaced slightly to the right of the zero mark of the main scale. Several diameter measurements were subsequently taken with the instrument without applying any correction. The recorded values were found to be consistently larger than the actual diameters of the objects measured. Which conclusion is most appropriate?",
+"options": {
+"A": "The instrument introduced a positive zero error resulting in a systematic error",
+"B": "The instrument introduced a negative zero error resulting in a random error",
+"C": "The measurements were affected mainly by parallax error arising from poor observation",
+"D": "The measurements were unreliable because the least count of the instrument was too large"
+},
+"answer": "A",
+"answer_text": "The instrument introduced a positive zero error resulting in a systematic error",
+"explanation": {
+"question_restate": "A vernier caliper failed to read zero when its jaws were fully closed. Instead, the vernier zero lay slightly to the right of the main-scale zero. Measurements taken with the instrument were consistently larger than the true values. The question asks for the most appropriate interpretation of this observation.",
+"principle": "A zero error occurs when a measuring instrument gives a reading other than zero when the quantity being measured is actually zero.\n\nA beginner may ask: 'Why should the instrument read zero when nothing is being measured?' Measuring instruments are designed so that their reference point corresponds to zero when no quantity is present. If the instrument does not start from zero, every subsequent measurement will contain an error.\n\nA beginner may also ask: 'What is a vernier caliper?' A vernier caliper is a precision measuring instrument used for measuring internal diameters, external diameters, thicknesses, and depths more accurately than a metre rule.\n\nWhen the zero mark of the vernier scale lies to the right of the zero mark of the main scale while the jaws are fully closed, the instrument possesses a positive zero error.\n\nAnother beginner may ask: 'Why is it called a positive zero error?' The instrument already shows a positive reading before any object is measured. As a result, the instrument adds an extra amount to every reading.\n\nBecause the same error affects every measurement in the same direction, the resulting error is classified as a systematic error.\n\nSystematic errors differ from random errors. Random errors vary unpredictably from one measurement to another, whereas systematic errors consistently shift measurements in one direction.",
+"steps": [
+"Step 1: Examine the condition of the instrument.\n\nThe jaws are fully closed, yet the instrument does not read zero.",
+"Step 2: Identify the type of defect.\n\nSince the vernier zero lies to the right of the main-scale zero, the instrument possesses a positive zero error.",
+"Step 3: Consider the effect on measurements.\n\nA positive zero error adds an extra amount to every reading.",
+"Step 4: Compare this prediction with the information provided.\n\nThe question states that the recorded diameters were consistently larger than the actual diameters.",
+"Step 5: Determine the nature of the resulting error.\n\nSince every reading is shifted upward by approximately the same amount, the error is systematic.",
+"Step 6: Evaluate the options.\n\nOnly Option A correctly combines positive zero error with systematic error.",
+"Step 7: Therefore, Option A is correct."
+],
+"why_other_options_are_wrong": [
+"A. Correct. A positive zero error causes the instrument to overestimate measurements. Because the effect is consistent, it produces a systematic error.",
+"B. A negative zero error occurs when the vernier zero lies to the left of the main-scale zero. Furthermore, zero errors produce systematic errors, not random errors.",
+"C. Parallax error arises when a scale is viewed from an incorrect angle. The question identifies an instrument defect rather than an observational problem.",
+"D. Least count determines the smallest value an instrument can measure directly. A large least count may reduce precision, but it does not explain why all readings are consistently larger than the true values."
+],
+"exam_tip": "JAMB frequently combines two concepts in a single question. In this case, candidates must recognize both the type of zero error and the type of measurement error that results from it.\n\nA useful shortcut is:\n\n• Positive zero error → readings are too large.\n• Negative zero error → readings are too small.\n\nAlso remember:\n\n• Zero error originates from the instrument.\n• Parallax error originates from the observer.\n• Random error causes scatter.\n• Systematic error shifts all readings in the same direction.",
+"final_answer": "A. The instrument introduced a positive zero error resulting in a systematic error",
+"simple_explanation": "Imagine a weighing scale that already shows 2 kg before anything is placed on it. Every object weighed with that scale will appear heavier than it really is. The same idea applies here. The vernier caliper already had a reading when it should have shown zero, so it added extra values to every measurement. Because the error affected all measurements in the same way, it is a systematic error.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Zero Error to learn how positive and negative zero errors occur in vernier calipers, micrometer screw gauges, and other measuring instruments. Study worked examples showing how to identify, calculate, and correct zero errors in JAMB-style practical Physics questions.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for detailed lessons, laboratory demonstrations, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"zero_error",
+"vernier_caliper",
+"systematic_error",
+"instrument_calibration",
+"measurement_error",
+"practical_physics",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q049",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Significant figures",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician used a digital balance and obtained a mass of 0.007850 kg for a metal sample. Four students reported the result as part of their laboratory write-up:\n\nStudent I: 0.00785 kg\nStudent II: 7.85 × 10⁻³ kg\nStudent III: 0.0078500 kg\nStudent IV: 7.850 × 10⁻³ kg\n\nIf the balance records measurements to four significant figures, which student's report best preserves the precision of the original measurement while expressing it in standard form?",
+"options": {
+"A": "Student I",
+"B": "Student II",
+"C": "Student III",
+"D": "Student IV"
+},
+"answer": "D",
+"answer_text": "Student IV",
+"explanation": {
+"question_restate": "A digital balance produced a reading of 0.007850 kg. Four students reported the measurement differently. The task is to identify the report that correctly expresses the value in standard form while preserving the precision implied by the original instrument reading.",
+"principle": "Significant figures are the digits in a measurement that carry meaningful information about its precision.\n\nA beginner may ask: 'Why are significant figures important?' In Physics, measurements are never perfectly exact. Significant figures communicate how precisely an instrument measured a quantity.\n\nAnother beginner may ask: 'What is precision?' Precision refers to the degree of detail or resolution contained in a measurement. A measurement recorded as 0.007850 kg contains more information than 0.00785 kg because the final zero was actually measured and therefore carries meaning.\n\nA beginner may also ask: 'What is standard form?' Standard form, also called scientific notation, expresses a number as:\n\nA × 10ⁿ\n\nwhere A is a number greater than or equal to 1 but less than 10, and n is an integer.\n\nFor example:\n\n0.007850 = 7.850 × 10⁻³\n\nAnother important question is: 'Do trailing zeros matter?' Yes, if they appear after a decimal point and are part of a measured quantity. Such zeros are significant because they indicate the precision of the measuring instrument.\n\nJAMB frequently tests candidates on the relationship between significant figures, standard form, and experimental reporting.",
+"steps": [
+"Step 1: Determine the number of significant figures in the original measurement.\n\nOriginal value = 0.007850 kg.",
+"Step 2: Ignore leading zeros.\n\nThe zeros before 7 are placeholders and are not significant.",
+"Step 3: Count the significant figures.\n\nDigits = 7, 8, 5, 0.\n\nTherefore, the measurement contains four significant figures.",
+"Step 4: Convert the value into standard form.\n\n0.007850 = 7.850 × 10⁻³.",
+"Step 5: Examine each student's report.\n\nStudent I: 0.00785 kg → only three significant figures preserved.\n\nStudent II: 7.85 × 10⁻³ kg → only three significant figures preserved.\n\nStudent III: 0.0078500 kg → introduces an additional significant figure not supported by the instrument.\n\nStudent IV: 7.850 × 10⁻³ kg → preserves four significant figures and correctly uses standard form.",
+"Step 6: Select the report that preserves both the value and its precision.\n\nTherefore, Student IV's report is the best choice."
+],
+"why_other_options_are_wrong": [
+"A. Student I — Although the numerical value is correct, the report does not express the result in standard form as requested. In addition, candidates may overlook the importance of preserving measurement precision when reporting scientific data.",
+"B. Student II — This correctly uses standard form but loses the trailing zero that was part of the original measurement. As a result, the implied precision is reduced.",
+"C. Student III — This introduces extra precision that the instrument did not actually measure. Scientific reports should never imply greater accuracy or precision than the instrument can provide.",
+"D. Student IV — Correct. The value is expressed in proper standard form and retains all four significant figures contained in the original measurement."
+],
+"exam_tip": "JAMB frequently tests significant figures through scientific reporting rather than through direct definition questions.\n\nA common trap is assuming that all zeros are insignificant. In reality:\n\n• Leading zeros are not significant.\n• Trailing zeros after a decimal point are usually significant.\n\nAnother common mistake is reporting more significant figures than the measuring instrument supports.\n\nAlways preserve the precision of the original measurement when converting to standard form.",
+"final_answer": "D. Student IV",
+"simple_explanation": "The original measurement contains four significant figures: 7, 8, 5, and the final 0. When converting the number to standard form, we should keep all four of those significant figures. Student IV did this correctly by writing 7.850 × 10⁻³ kg.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Significant Figures to learn how scientists report measurements, identify significant digits, convert values to standard form, and avoid overstating precision. Explore additional JAMB-style questions involving laboratory data reporting, scientific notation, and measurement uncertainty.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"significant_figures",
+"scientific_notation",
+"standard_form",
+"laboratory_reporting",
+"measurement_precision",
+"experimental_physics",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q050",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Zero error",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician observed that a vernier caliper gave a reading of 0.04 cm when its jaws were completely closed. Several students subsequently used the instrument to measure the external diameter of identical metal rods. Their readings were highly consistent but were all slightly greater than values obtained using a properly calibrated micrometer screw gauge. Which conclusion is most justified from the observations?",
+"options": {
+"A": "The measurements were affected mainly by random errors arising from inconsistent observation",
+"B": "The vernier caliper introduced a systematic error because of a positive zero error",
+"C": "The micrometer screw gauge was less reliable than the vernier caliper",
+"D": "The differences occurred because the vernier caliper had a larger least count"
+},
+"answer": "B",
+"answer_text": "The vernier caliper introduced a systematic error because of a positive zero error",
+"explanation": {
+"question_restate": "A vernier caliper shows 0.04 cm even when its jaws are fully closed. Students then use it to measure identical rods and obtain readings that are consistently larger than those obtained with a properly calibrated micrometer screw gauge. You are required to identify the most reasonable explanation for this pattern.",
+"principle": "A zero error occurs when a measuring instrument gives a non-zero reading when it should read exactly zero.\n\nA beginner may ask: 'Why should the instrument read zero?' When no object is being measured and the jaws of a vernier caliper are completely closed, the correct reading should be 0.00 cm. Any non-zero reading indicates that the instrument is not perfectly calibrated.\n\nAnother beginner may ask: 'What is calibration?' Calibration is the process of adjusting or checking an instrument to ensure that it gives correct readings according to accepted standards.\n\nA beginner may also ask: 'What is a positive zero error?' A positive zero error occurs when the instrument displays a value greater than zero when the true value should be zero.\n\nIn this question, the vernier caliper reads 0.04 cm even when nothing is being measured. Therefore, every measurement taken with the instrument will include an extra 0.04 cm unless a correction is applied.\n\nThis type of error affects all measurements in the same direction and by approximately the same amount. Such an error is known as a systematic error.\n\nA systematic error differs from a random error. Random errors cause readings to fluctuate unpredictably. Systematic errors introduce a consistent bias into all measurements.\n\nJAMB frequently combines the concepts of zero error, calibration, accuracy, reliability, and systematic error within the same practical question.",
+"steps": [
+"Step 1: Examine the condition of the instrument.\n\nThe vernier caliper reads 0.04 cm when its jaws are closed.",
+"Step 2: Determine whether this reading should occur.\n\nNo. The correct reading should be 0.00 cm.",
+"Step 3: Identify the type of instrument defect.\n\nSince the reading is greater than zero, the instrument has a positive zero error.",
+"Step 4: Examine the pattern of measurements.\n\nThe students' readings are highly consistent. This means the measurements are repeatable and reliable.",
+"Step 5: Compare the readings with those obtained from a properly calibrated micrometer screw gauge.\n\nThe vernier readings are consistently larger.",
+"Step 6: Ask whether random error can produce this pattern.\n\nNo. Random errors produce scattered readings above and below the true value. They do not usually shift all measurements in the same direction.",
+"Step 7: Determine the most likely explanation.\n\nThe positive zero error adds approximately the same amount to every measurement.",
+"Step 8: Classify the resulting error.\n\nBecause the error consistently affects all measurements in one direction, it is a systematic error.",
+"Step 9: Therefore, the correct answer is Option B."
+],
+"why_other_options_are_wrong": [
+"A. The measurements were affected mainly by random errors arising from inconsistent observation — Random errors produce unpredictable variations. However, the readings in the question are highly consistent and are all shifted in the same direction. This pattern is characteristic of systematic error rather than random error.",
+"B. The vernier caliper introduced a systematic error because of a positive zero error — Correct. The instrument already reads 0.04 cm when it should read zero. Consequently, every measurement contains an additional error of approximately the same magnitude.",
+"C. The micrometer screw gauge was less reliable than the vernier caliper — The question does not indicate poor reliability of the micrometer. In fact, the micrometer is described as properly calibrated and is being used as a reference for comparison.",
+"D. The differences occurred because the vernier caliper had a larger least count — A larger least count affects precision and resolution, but it does not explain why all readings are consistently greater than those obtained from a calibrated instrument."
+],
+"exam_tip": "JAMB frequently tests zero error using vernier calipers and micrometer screw gauges.\n\nA common trap is confusing zero error with random error.\n\nRemember:\n\n• Zero error originates from the instrument.\n• Random error originates from unpredictable measurement variations.\n• Systematic error produces a consistent bias.\n• Reliability refers to consistency of repeated measurements.\n\nAnother common trap is assuming that highly consistent readings must be correct. Measurements can be very reliable yet inaccurate if a zero error is present.",
+"final_answer": "B. The vernier caliper introduced a systematic error because of a positive zero error",
+"simple_explanation": "Imagine a bathroom scale that shows 2 kg even when nobody is standing on it. Every person's weight measured with that scale would be 2 kg too high. The same thing happened here. The vernier caliper already showed 0.04 cm before any object was measured. Therefore, all the measurements became slightly larger than they should have been. This is a positive zero error that causes a systematic error.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Zero Error to learn how positive and negative zero errors affect measurements taken with vernier calipers and micrometer screw gauges. Study detailed JAMB-style examples involving calibration, systematic errors, instrument correction, and measurement accuracy.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, practical demonstrations, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"zero_error",
+"vernier_caliper",
+"systematic_error",
+"calibration",
+"measurement_accuracy",
+"instrument_error",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q051",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Least count",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician was instructed to measure the diameter of a thin copper wire as accurately as possible. The available instruments were: a metre rule with a least count of 1 mm, a vernier caliper with a least count of 0.1 mm, a micrometer screw gauge with a least count of 0.01 mm, and a measuring tape graduated in millimetres. After examining the instruments, the technician selected one instrument for the measurement. Which factor most strongly justifies the choice of the micrometer screw gauge?",
+"options": {
+"A": "It has the longest measuring range among the instruments",
+"B": "It has the smallest least count and therefore the highest resolution",
+"C": "It eliminates all forms of measurement error",
+"D": "It is easier to read than the vernier caliper"
+},
+"answer": "B",
+"answer_text": "It has the smallest least count and therefore the highest resolution",
+"explanation": {
+"question_restate": "A laboratory technician needs to measure the diameter of a thin copper wire using the most suitable instrument. Several instruments with different least counts are available. The question asks why the micrometer screw gauge is the best choice.",
+"principle": "Least count is the smallest measurement that an instrument can directly measure or resolve.\n\nA beginner may ask: 'What does resolve mean?' Resolution refers to the ability of an instrument to distinguish between two very close values. An instrument with higher resolution can detect smaller differences in measurements.\n\nA beginner may also ask: 'Why is least count important?' The smaller the least count, the more detailed and precise the measurement can be.\n\nAnother beginner may ask: 'Is least count the same as accuracy?' Not exactly. A smaller least count generally improves precision and measurement quality, but accuracy also depends on calibration, proper use of the instrument, and the absence of systematic errors.\n\nThe common measuring instruments in introductory Physics have approximate least counts as follows:\n\nMetre rule = 1 mm\nVernier caliper = 0.1 mm\nMicrometer screw gauge = 0.01 mm\n\nNotice that the micrometer screw gauge has the smallest least count. This makes it particularly suitable for measuring very small diameters such as wires, pins, and thin metal sheets.\n\nJAMB frequently tests the relationship between least count, instrument selection, precision, and measurement quality.",
+"steps": [
+"Step 1: Identify the quantity being measured.\n\nThe technician wants to measure the diameter of a thin copper wire.",
+"Step 2: Consider the requirements of the measurement.\n\nA thin wire has a very small diameter. Therefore, an instrument capable of measuring very small dimensions accurately is required.",
+"Step 3: Compare the least counts of the available instruments.\n\nMetre rule = 1 mm\nVernier caliper = 0.1 mm\nMicrometer screw gauge = 0.01 mm",
+"Step 4: Determine which instrument can detect the smallest change in diameter.\n\nThe micrometer screw gauge can distinguish changes as small as 0.01 mm.",
+"Step 5: Recall the relationship between least count and resolution.\n\nSmaller least count → Higher resolution → Better ability to measure small dimensions.",
+"Step 6: Evaluate the options.\n\nThe most important reason for choosing the micrometer screw gauge is its very small least count.",
+"Step 7: Select the correct answer.\n\nThe correct option is B."
+],
+"why_other_options_are_wrong": [
+"A. It has the longest measuring range among the instruments — Incorrect. The micrometer screw gauge usually has a much smaller measuring range than a metre rule or measuring tape. Range is not the reason it is preferred for measuring a thin wire.",
+"C. It eliminates all forms of measurement error — Incorrect. No measuring instrument completely eliminates error. Errors may still arise from zero error, parallax, calibration defects, environmental conditions, or user mistakes.",
+"D. It is easier to read than the vernier caliper — Incorrect. Ease of reading is subjective and is not the primary scientific reason for selecting the instrument. Instrument selection should be based on measurement requirements and least count.",
+"B. It has the smallest least count and therefore the highest resolution — Correct. This allows the technician to measure the diameter of the thin wire with greater precision than the other available instruments."
+],
+"exam_tip": "JAMB frequently presents several measuring instruments and asks candidates to select the most suitable one for a particular task.\n\nA common trap is choosing an instrument because it looks more sophisticated or has a larger measuring range.\n\nRemember:\n\nMetre rule → General length measurements.\nVernier caliper → Small external and internal dimensions.\nMicrometer screw gauge → Very small diameters and thicknesses.\n\nWhen the object is extremely small, the instrument with the smallest least count is often the best choice.",
+"final_answer": "B. It has the smallest least count and therefore the highest resolution",
+"simple_explanation": "Suppose you want to measure the thickness of a human hair. A metre rule would not be very useful because its divisions are too large. A micrometer screw gauge has much smaller divisions, allowing you to see tiny differences in size. Because it has the smallest least count, it is the most suitable instrument for measuring a thin wire.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Least Count to learn how least count affects instrument selection, precision, measurement quality, and experimental uncertainty. Study detailed JAMB-style examples involving metre rules, vernier calipers, micrometer screw gauges, and laboratory measurements.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, practical demonstrations, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"least_count",
+"micrometer_screw_gauge",
+"instrument_selection",
+"measurement_precision",
+"resolution",
+"experimental_physics",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q052",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Least count",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician had to choose one of four instruments for measuring the diameter of a thin copper wire as accurately as possible. The available instruments had the following characteristics:\n\nInstrument I: Metre rule with least count 1.0 mm\nInstrument II: Vernier caliper with least count 0.10 mm\nInstrument III: Vernier caliper with least count 0.02 mm\nInstrument IV: Micrometer screw gauge with least count 0.01 mm\n\nIgnoring zero errors and assuming all instruments are in good condition, which instrument would provide the highest measurement resolution for the task?",
+"options": {
+"A": "Instrument I",
+"B": "Instrument II",
+"C": "Instrument III",
+"D": "Instrument IV"
+},
+"answer": "D",
+"answer_text": "Instrument IV",
+"explanation": {
+"question_restate": "Four measuring instruments with different least counts are available for measuring the diameter of a thin copper wire. The question asks which instrument provides the highest measurement resolution.",
+"principle": "Least count is the smallest measurement that an instrument can read directly.\n\nA beginner may ask: 'What does least count mean?' Imagine a ruler marked only in centimetres. You cannot confidently measure 1.1 cm or 1.2 cm because the scale is too coarse. The smallest division available determines how finely you can measure.\n\nAnother beginner may ask: 'What is measurement resolution?' Resolution refers to the ability of an instrument to detect very small changes in the quantity being measured. Instruments with smaller least counts generally have higher resolution.\n\nA beginner may also ask: 'Does a smaller least count always improve measurements?' In practical Physics, a smaller least count allows finer measurements and usually reduces uncertainty, provided the instrument is properly used and free from significant errors.\n\nCommon laboratory instruments have typical least counts:\n\nMetre rule ≈ 1 mm\nVernier caliper ≈ 0.1 mm or 0.02 mm depending on design\nMicrometer screw gauge ≈ 0.01 mm\n\nJAMB frequently tests candidates' understanding of instrument selection. Rather than asking for a formula directly, the examination often presents a practical situation and asks which instrument is most suitable.",
+"steps": [
+"Step 1: Recall the relationship between least count and resolution.\n\nThe smaller the least count, the higher the resolution.",
+"Step 2: Compare the instruments.\n\nInstrument I = 1.0 mm\nInstrument II = 0.10 mm\nInstrument III = 0.02 mm\nInstrument IV = 0.01 mm",
+"Step 3: Arrange the least counts from largest to smallest.\n\n1.0 mm > 0.10 mm > 0.02 mm > 0.01 mm",
+"Step 4: Identify the smallest least count.\n\nInstrument IV has the smallest least count of 0.01 mm.",
+"Step 5: Interpret the result.\n\nBecause Instrument IV can detect the smallest change in diameter, it provides the highest measurement resolution.",
+"Step 6: Select the correct option.\n\nTherefore, Instrument IV is the best choice."
+],
+"why_other_options_are_wrong": [
+"A. Instrument I — A metre rule is useful for measuring relatively large lengths, but its least count of 1.0 mm is too large for precise measurement of a thin wire's diameter. Candidates sometimes choose it because it is familiar, but familiarity does not imply suitability.",
+"B. Instrument II — This instrument is more precise than a metre rule, but its least count is still larger than those of Instruments III and IV.",
+"C. Instrument III — A vernier caliper with a least count of 0.02 mm is a very precise instrument and would be a reasonable choice. However, Instrument IV has an even smaller least count and therefore a higher resolution.",
+"D. Instrument IV — Correct. It has the smallest least count and therefore the highest measurement resolution among the four instruments."
+],
+"exam_tip": "JAMB frequently asks candidates to select the most appropriate instrument for a particular measurement.\n\nA common trap is confusing 'most suitable instrument' with 'most commonly used instrument.' The correct choice depends on the required precision.\n\nRemember:\n\nMetre rule → ordinary lengths\nVernier caliper → small diameters and thicknesses\nMicrometer screw gauge → very small diameters and thicknesses\n\nWhen all other factors are equal, the instrument with the smallest least count generally provides the highest resolution.",
+"final_answer": "D. Instrument IV",
+"simple_explanation": "Think of least count as the smallest step an instrument can detect. An instrument that can notice very tiny changes is more useful for measuring something as thin as a copper wire. Since Instrument IV can measure changes as small as 0.01 mm, it can distinguish finer details than the others. Therefore, it gives the highest resolution.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Least Count to learn how least count affects precision, resolution, uncertainty, and instrument selection. Study worked examples involving metre rules, vernier calipers, micrometer screw gauges, and JAMB-style practical Physics questions.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for detailed lessons, instrument demonstrations, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"least_count",
+"measurement_resolution",
+"vernier_caliper",
+"micrometer_screw_gauge",
+"instrument_selection",
+"experimental_physics",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q053",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Least count",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician was required to measure the thickness of a thin aluminium sheet whose thickness was expected to be about 0.35 mm. Four measuring instruments were available:\n\nInstrument I: Metre rule (least count = 1 mm)\nInstrument II: Vernier caliper (least count = 0.10 mm)\nInstrument III: Vernier caliper (least count = 0.02 mm)\nInstrument IV: Micrometer screw gauge (least count = 0.01 mm)\n\nIf the objective is to obtain the most reliable measurement with the smallest instrumental uncertainty, which instrument should be selected?",
+"options": {
+"A": "Instrument I",
+"B": "Instrument II",
+"C": "Instrument III",
+"D": "Instrument IV"
+},
+"answer": "D",
+"answer_text": "Instrument IV",
+"explanation": {
+"question_restate": "A laboratory technician needs to measure the thickness of a very thin aluminium sheet. Four instruments with different least counts are available. The task is to identify which instrument would provide the most reliable measurement with the smallest instrumental uncertainty.",
+"principle": "The least count of a measuring instrument is the smallest measurement that the instrument can directly measure or resolve.\n\nA beginner may ask: 'What does resolve mean?' Resolution refers to the ability of an instrument to distinguish between two very close values. An instrument with better resolution can detect smaller differences.\n\nAnother beginner may ask: 'Why is least count important?' The least count determines the precision of the instrument. Generally, the smaller the least count, the greater the precision of the measurement.\n\nA beginner may also ask: 'What is instrumental uncertainty?' Every measuring instrument has a limit to how accurately it can measure. Measurements are uncertain to at least about half the smallest scale division. Instruments with smaller least counts usually have smaller uncertainties.\n\nIn practical Physics, instrument selection is extremely important. The most appropriate instrument is not always the largest or most expensive one; it is usually the instrument whose range and least count best suit the quantity being measured.\n\nFor measuring very small dimensions such as the thickness of a metal sheet, wire diameter, or paper thickness, micrometer screw gauges are generally preferred because they possess very small least counts.\n\nJAMB frequently tests candidates' understanding of instrument selection rather than merely asking them to calculate least count.",
+"steps": [
+"Step 1: Identify the quantity to be measured.\n\nThe thickness of the aluminium sheet is approximately 0.35 mm.",
+"Step 2: Examine Instrument I.\n\nLeast count = 1 mm.\n\nThis least count is larger than the thickness being measured. Therefore, the instrument cannot provide a sufficiently precise measurement.",
+"Step 3: Examine Instrument II.\n\nLeast count = 0.10 mm.\n\nThis instrument can measure the sheet, but the resolution is relatively coarse for such a small thickness.",
+"Step 4: Examine Instrument III.\n\nLeast count = 0.02 mm.\n\nThis provides better precision than Instrument II and is suitable for measuring small thicknesses.",
+"Step 5: Examine Instrument IV.\n\nLeast count = 0.01 mm.\n\nThis is the smallest least count among the available instruments.",
+"Step 6: Compare the instruments.\n\nInstrument I = 1 mm\nInstrument II = 0.10 mm\nInstrument III = 0.02 mm\nInstrument IV = 0.01 mm",
+"Step 7: Apply the principle.\n\nFor measurements requiring the smallest uncertainty and highest precision, the instrument with the smallest least count is generally preferred.",
+"Step 8: Draw the conclusion.\n\nInstrument IV has the smallest least count and is specifically designed for measuring small thicknesses.",
+"Step 9: Therefore, the correct answer is Instrument IV."
+],
+"why_other_options_are_wrong": [
+"A. Instrument I — A metre rule with a least count of 1 mm is unsuitable for measuring a thickness of about 0.35 mm. The quantity being measured is smaller than the smallest graduation of the instrument.",
+"B. Instrument II — Although a least count of 0.10 mm is better than that of a metre rule, it is still less precise than the other available options.",
+"C. Instrument III — This instrument is a reasonable choice because its least count is 0.02 mm. However, Instrument IV provides even finer resolution and therefore lower instrumental uncertainty.",
+"D. Instrument IV — Correct. The micrometer screw gauge has the smallest least count (0.01 mm) and is the most suitable instrument for measuring very small thicknesses."
+],
+"exam_tip": "JAMB frequently presents situations where several measuring instruments are available and asks candidates to choose the most appropriate one.\n\nA common trap is assuming that any instrument capable of measuring the quantity is automatically the best choice. In practical Physics, the instrument with the most suitable least count often provides the most reliable result.\n\nRemember:\n\nMetre rule → larger dimensions.\nVernier caliper → moderate precision.\nMicrometer screw gauge → very high precision for small dimensions.\n\nAnother common mistake is confusing range with precision. A larger range does not necessarily imply a better measurement.",
+"final_answer": "D. Instrument IV",
+"simple_explanation": "The aluminium sheet is very thin. To measure something very small accurately, we need an instrument that can detect very tiny differences. The micrometer screw gauge can measure changes as small as 0.01 mm, making it the best choice among the four instruments.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Least Count to learn how least count affects measurement precision, instrument selection, uncertainty, and reliability. Study worked examples involving metre rules, vernier calipers, and micrometer screw gauges using authentic JAMB-style scenarios.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, practical demonstrations, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"least_count",
+"instrument_selection",
+"micrometer_screw_gauge",
+"vernier_caliper",
+"measurement_precision",
+"instrumental_uncertainty",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q054",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Least count",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician was asked to determine the thickness of a thin aluminium sheet expected to be approximately 0.18 mm. The available instruments were:\n\nInstrument I: Metre rule (least count = 1 mm)\nInstrument II: Vernier caliper (least count = 0.1 mm)\nInstrument III: Micrometer screw gauge (least count = 0.01 mm)\nInstrument IV: Measuring tape (least count = 1 mm)\n\nConsidering the expected thickness of the sheet and the limitations of the instruments, which instrument would provide the most reliable measurement and why?",
+"options": {
+"A": "Instrument I, because metre rules are easier to use than precision instruments",
+"B": "Instrument II, because its least count is smaller than the expected thickness",
+"C": "Instrument III, because its least count allows the thickness to be resolved with the greatest precision",
+"D": "Instrument IV, because measuring tapes can measure both large and small dimensions"
+},
+"answer": "C",
+"answer_text": "Instrument III, because its least count allows the thickness to be resolved with the greatest precision",
+"explanation": {
+"question_restate": "A laboratory technician needs to measure the thickness of a very thin aluminium sheet approximately 0.18 mm thick. Four measuring instruments with different least counts are available. The question asks which instrument is most suitable and why.",
+"principle": "The least count of an instrument is the smallest value that the instrument can measure directly. It is sometimes called the resolution of the instrument.\n\nA beginner may ask: 'Why is least count important?' The least count determines how finely an instrument can distinguish between two nearby measurements. An instrument with a smaller least count can detect smaller differences and generally provides more precise measurements.\n\nAnother beginner may ask: 'What is precision?' Precision refers to the ability of an instrument to measure small changes in a quantity. Instruments with smaller least counts usually provide greater precision.\n\nA beginner may also ask: 'Does the instrument with the smallest least count always give the best measurement?' For a given measurement, the instrument should have a least count that is sufficiently small compared with the quantity being measured. If the least count is too large, important details of the measurement may be lost.\n\nConsider the instruments given:\n\nMetre rule: least count = 1 mm\nVernier caliper: least count = 0.1 mm\nMicrometer screw gauge: least count = 0.01 mm\nMeasuring tape: least count = 1 mm\n\nThe thickness of the aluminium sheet is about 0.18 mm. Therefore, an instrument must be capable of resolving measurements significantly smaller than this value.\n\nJAMB frequently tests least count through practical laboratory situations rather than direct calculations. Candidates are often required to select the most suitable instrument for a given measurement.",
+"steps": [
+"Step 1: Identify the quantity to be measured.\n\nThickness of aluminium sheet ≈ 0.18 mm.",
+"Step 2: Compare the thickness with the least count of Instrument I.\n\nLeast count = 1 mm.\n\nSince 1 mm is much larger than 0.18 mm, the instrument cannot measure the thickness accurately.",
+"Step 3: Compare the thickness with the least count of Instrument II.\n\nLeast count = 0.1 mm.\n\nAlthough this is smaller than the thickness, the resolution is still limited because the measurement differs from the least count by only a small amount.",
+"Step 4: Compare the thickness with the least count of Instrument III.\n\nLeast count = 0.01 mm.\n\nThis allows the thickness to be measured to the nearest hundredth of a millimetre and provides significantly greater precision.",
+"Step 5: Examine Instrument IV.\n\nLeast count = 1 mm.\n\nLike the metre rule, it is unsuitable for measuring such a small thickness.",
+"Step 6: Identify the best instrument.\n\nThe micrometer screw gauge has the smallest least count and is specifically designed for measuring small thicknesses and diameters.",
+"Step 7: Therefore, Instrument III is the most appropriate choice."
+],
+"why_other_options_are_wrong": [
+"A. Instrument I — Ease of use is not the determining factor. The least count of 1 mm is larger than the thickness being measured, making the instrument unsuitable.",
+"B. Instrument II — A vernier caliper could measure the sheet, but it would not provide the highest precision among the available instruments. The micrometer screw gauge has a ten-times smaller least count.",
+"C. Instrument III — Correct. The micrometer screw gauge has a least count of 0.01 mm, allowing the thickness to be measured with the greatest precision and reliability.",
+"D. Instrument IV — Measuring tapes are intended for larger dimensions and have insufficient resolution for such a small thickness."
+],
+"exam_tip": "JAMB frequently asks candidates to select the most suitable instrument for a measurement task.\n\nA common trap is choosing an instrument simply because it can measure the quantity. The correct choice is usually the instrument that measures the quantity with the highest practical precision.\n\nRemember these typical least counts:\n\nMetre rule → 1 mm\nVernier caliper → 0.1 mm or 0.01 cm\nMicrometer screw gauge → 0.01 mm\n\nFor very small thicknesses and wire diameters, the micrometer screw gauge is usually the preferred instrument.",
+"final_answer": "C. Instrument III, because its least count allows the thickness to be resolved with the greatest precision",
+"simple_explanation": "The aluminium sheet is very thin, only about 0.18 mm thick. An instrument must be able to detect very small distances to measure it properly. The micrometer screw gauge can measure as little as 0.01 mm, making it much more suitable than the other instruments. Therefore, it gives the most precise measurement.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Least Count to learn how least count affects measurement precision, instrument selection, and experimental uncertainty. Study worked examples involving metre rules, vernier calipers, micrometer screw gauges, and laboratory measurement techniques.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, practical demonstrations, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"least_count",
+"instrument_selection",
+"micrometer_screw_gauge",
+"vernier_caliper",
+"measurement_precision",
+"experimental_physics",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q055",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Least count",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician was required to measure the thickness of a razor blade as accurately as possible. Four instruments were available:\n\nI. A metre rule with a least count of 1 mm\nII. A vernier caliper with a least count of 0.1 mm\nIII. A micrometer screw gauge with a least count of 0.01 mm\nIV. A measuring tape with a least count of 1 mm\n\nWhich instrument would provide the measurement with the smallest instrumental uncertainty and why?",
+"options": {
+"A": "Instrument I, because metre rules are commonly used in laboratories",
+"B": "Instrument II, because vernier calipers can measure both internal and external dimensions",
+"C": "Instrument III, because it has the smallest least count among the instruments listed",
+"D": "Instrument IV, because long scales reduce observational errors"
+},
+"answer": "C",
+"answer_text": "Instrument III, because it has the smallest least count among the instruments listed",
+"explanation": {
+"question_restate": "A laboratory technician must measure the thickness of a razor blade. Four measuring instruments with different least counts are available. The task is to identify the instrument that would produce the smallest instrumental uncertainty and explain why.",
+"principle": "Least count is the smallest value that a measuring instrument can directly measure.\n\nA beginner may ask: 'Why is least count important?' The least count determines the resolution of an instrument. Resolution refers to the ability of an instrument to distinguish between very small differences in a quantity being measured.\n\nAnother beginner may ask: 'What is instrumental uncertainty?' Every measuring instrument has limitations. Because of these limitations, no measurement is perfectly exact. Instrumental uncertainty refers to the uncertainty introduced by the measuring instrument itself.\n\nIn general, an instrument with a smaller least count can detect smaller changes in a measurement and usually provides more precise readings.\n\nA beginner may also ask: 'Does a smaller least count automatically guarantee accuracy?' Not necessarily. Accuracy also depends on calibration, correct usage, and absence of systematic errors. However, when all instruments are assumed to be functioning correctly, the instrument with the smallest least count is usually preferred for measuring very small dimensions.\n\nJAMB frequently tests candidates' ability to select the most suitable measuring instrument for a particular task rather than simply calculating least count values.",
+"steps": [
+"Step 1: Identify the quantity being measured.\n\nThe technician wants to measure the thickness of a razor blade.",
+"Step 2: Consider the nature of the object.\n\nA razor blade is very thin. Therefore, an instrument capable of measuring very small dimensions accurately is required.",
+"Step 3: Examine the least counts of the instruments.\n\nMetre rule = 1 mm\nVernier caliper = 0.1 mm\nMicrometer screw gauge = 0.01 mm\nMeasuring tape = 1 mm",
+"Step 4: Compare the resolutions.\n\nThe smaller the least count, the finer the resolution and the smaller the instrumental uncertainty.",
+"Step 5: Identify the smallest least count.\n\nAmong all the instruments, the micrometer screw gauge has the smallest least count of 0.01 mm.",
+"Step 6: Relate this to the measurement task.\n\nSince the razor blade is very thin, the micrometer screw gauge can detect much smaller differences in thickness than the other instruments.",
+"Step 7: Draw the conclusion.\n\nThe micrometer screw gauge is the most suitable instrument because it offers the highest resolution and the smallest instrumental uncertainty among the options provided.",
+"Step 8: Therefore, Option C is correct."
+],
+"why_other_options_are_wrong": [
+"A. Instrument I — A metre rule is useful for measuring larger dimensions such as length and width. However, its least count of 1 mm is too large for accurately measuring the thickness of a razor blade. The error here is confusing common usage with suitability.",
+"B. Instrument II — A vernier caliper is more suitable than a metre rule and can indeed measure external and internal dimensions. However, its least count of 0.1 mm is still larger than the 0.01 mm least count of a micrometer screw gauge.",
+"D. Instrument IV — A measuring tape is designed mainly for measuring long lengths. Although it may reduce some observational difficulties over long distances, its least count remains too large for measuring the thickness of a razor blade accurately.",
+"C. Instrument III — Correct. The micrometer screw gauge has the smallest least count and therefore provides the finest resolution and smallest instrumental uncertainty."
+],
+"exam_tip": "JAMB frequently presents several measuring instruments and asks candidates to choose the most appropriate one for a given task.\n\nA common trap is selecting an instrument because it is familiar rather than because it is the most suitable.\n\nRemember the general order of increasing precision:\n\nMetre Rule → Vernier Caliper → Micrometer Screw Gauge\n\nSmaller Least Count → Better Resolution → Smaller Instrumental Uncertainty\n\nHowever, never assume that precision automatically means accuracy. A highly precise instrument can still produce inaccurate results if it has a zero error or calibration defect.",
+"final_answer": "C. Instrument III, because it has the smallest least count among the instruments listed",
+"simple_explanation": "Think of least count as the smallest step an instrument can detect. If one instrument can measure up to 1 mm and another can measure up to 0.01 mm, the second instrument can notice much smaller differences. Since a razor blade is very thin, the micrometer screw gauge is the best choice because it can measure tiny thicknesses more accurately.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Least Count to learn how least count affects precision, instrumental uncertainty, and instrument selection. Study detailed examples involving metre rules, vernier calipers, micrometer screw gauges, and laboratory measurements.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, practical demonstrations, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"least_count",
+"instrument_selection",
+"micrometer_screw_gauge",
+"vernier_caliper",
+"resolution",
+"instrumental_uncertainty",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q056",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Least count",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician was asked to measure the diameter of a thin copper wire whose diameter was expected to be approximately 0.48 mm. Four measuring instruments were available:\n\nInstrument I: Metre rule (least count = 1 mm)\nInstrument II: Vernier caliper (least count = 0.10 mm)\nInstrument III: Vernier caliper (least count = 0.02 mm)\nInstrument IV: Micrometer screw gauge (least count = 0.01 mm)\n\nIf the objective is to obtain the most reliable measurement with the smallest uncertainty, which instrument should be selected?",
+"options": {
+"A": "Instrument I",
+"B": "Instrument II",
+"C": "Instrument III",
+"D": "Instrument IV"
+},
+"answer": "D",
+"answer_text": "Instrument IV",
+"explanation": {
+"question_restate": "Four instruments with different least counts are available for measuring the diameter of a very thin copper wire. The question asks which instrument would produce the most reliable measurement with the smallest uncertainty.",
+"principle": "The least count of a measuring instrument is the smallest value that can be measured directly using that instrument. It is sometimes called the resolution of the instrument.\n\nA beginner may ask: 'Why is least count important?' The least count determines how finely an instrument can distinguish between two nearby measurements. Generally, the smaller the least count, the greater the instrument's ability to detect small differences in size.\n\nAnother beginner may ask: 'What is uncertainty?' Measurement uncertainty is the doubt associated with a measurement. No physical measurement is perfectly exact. Instruments with smaller least counts generally produce smaller uncertainties.\n\nA beginner may also ask: 'Does the instrument with the smallest least count always give the best result?' In practical Physics, the instrument must also be suitable for the quantity being measured. For small diameters such as wires, micrometer screw gauges are specifically designed to provide highly precise measurements.\n\nThe common instruments used for length measurements are:\n\n• Metre rule → suitable for large lengths.\n• Vernier caliper → suitable for external and internal diameters of moderate size.\n• Micrometer screw gauge → suitable for very small diameters and thicknesses.\n\nJAMB frequently tests the relationship between least count, measurement uncertainty, and instrument selection.",
+"steps": [
+"Step 1: Identify the quantity being measured.\n\nThe diameter of a thin copper wire is approximately 0.48 mm.",
+"Step 2: Examine Instrument I.\n\nLeast count = 1 mm.\n\nThe least count is larger than the expected diameter itself. This instrument is unsuitable.",
+"Step 3: Examine Instrument II.\n\nLeast count = 0.10 mm.\n\nAlthough better than a metre rule, its resolution is relatively coarse for measuring a diameter near 0.48 mm.",
+"Step 4: Examine Instrument III.\n\nLeast count = 0.02 mm.\n\nThis provides improved precision and would be acceptable.",
+"Step 5: Examine Instrument IV.\n\nLeast count = 0.01 mm.\n\nThis is the smallest least count among the available instruments and is specifically designed for measuring wire diameters.",
+"Step 6: Compare all instruments.\n\nInstrument IV offers the finest resolution and therefore the smallest measurement uncertainty.",
+"Step 7: Select the best instrument.\n\nThe most appropriate instrument is Instrument IV."
+],
+"why_other_options_are_wrong": [
+"A. Instrument I — A metre rule with a least count of 1 mm cannot reliably measure a wire whose diameter is less than 1 mm. The uncertainty would be extremely large relative to the measurement.",
+"B. Instrument II — Although a vernier caliper is more precise than a metre rule, a least count of 0.10 mm is relatively large when measuring a diameter near 0.48 mm.",
+"C. Instrument III — This is a good instrument and would provide a reasonably accurate measurement. However, its least count is larger than that of the micrometer screw gauge.",
+"D. Instrument IV — Correct. It has the smallest least count and is specifically designed for measuring very small diameters such as wires."
+],
+"exam_tip": "JAMB frequently presents instrument-selection questions rather than direct least-count calculations.\n\nA common trap is choosing an instrument simply because it can measure the quantity. The better question is: Which instrument can measure it with the smallest uncertainty?\n\nRemember:\n\nMetre rule → large lengths.\nVernier caliper → moderate precision.\nMicrometer screw gauge → highest precision for small diameters and thicknesses.\n\nSmaller least count generally means higher resolution and lower uncertainty.",
+"final_answer": "D. Instrument IV",
+"simple_explanation": "If you want to measure something very small, such as a thin wire, you should use an instrument that can detect very tiny differences in size. The micrometer screw gauge can measure in steps as small as 0.01 mm, making it the most suitable instrument among the four options.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Least Count to learn how least count affects precision, uncertainty, and instrument selection. Study JAMB-style examples involving metre rules, vernier calipers, and micrometer screw gauges.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for detailed lessons, practical demonstrations, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"least_count",
+"instrument_selection",
+"micrometer_screw_gauge",
+"vernier_caliper",
+"measurement_uncertainty",
+"experimental_physics",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q057",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Significant figures",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician measured the diameter of a metal sphere using a micrometer screw gauge and obtained 2.486 mm. After further calculations, the diameter was reported in a practical report as 2.49 mm. Which statement best justifies the reported value?",
+"options": {
+"A": "The value was expressed to three significant figures because the fourth significant figure was 6",
+"B": "The value was expressed to two decimal places because the least count of the micrometer is 0.01 mm",
+"C": "The value was approximated to the nearest whole number before recording",
+"D": "The value was rounded to one significant figure to match the instrument precision"
+},
+"answer": "A",
+"answer_text": "The value was expressed to three significant figures because the fourth significant figure was 6",
+"explanation": {
+"question_restate": "A diameter measured as 2.486 mm was reported as 2.49 mm in a laboratory report. The question asks why this reported value is scientifically acceptable.",
+"principle": "Significant figures are the digits in a measured quantity that carry meaningful information about its precision.\n\nA beginner may ask: 'Why don't scientists always write every digit obtained during a calculation?' The reason is that measurements are never perfectly exact. The number of digits reported should reflect the precision of the measuring instrument and the reliability of the measurement.\n\nAnother beginner may ask: 'What is a significant figure?' A significant figure is a digit that contributes to the accuracy and precision of a measurement. Significant figures include all certain digits and the first uncertain digit in a measured quantity.\n\nFor example:\n\n2.486 mm contains four significant figures:\n\n2, 4, 8 and 6.\n\nA beginner may also ask: 'How do we round a value to a given number of significant figures?'\n\nThe rule is:\n\n• Identify the last significant figure to be retained.\n• Look at the next digit immediately after it.\n• If the next digit is 5 or greater, increase the retained digit by 1.\n• If the next digit is less than 5, leave the retained digit unchanged.\n\nJAMB frequently tests significant figures through laboratory reports, instrument readings, density calculations, and scientific data presentation rather than through direct definitions.",
+"steps": [
+"Step 1: Write the measured value.\n\nMeasured diameter = 2.486 mm.",
+"Step 2: Identify the number of significant figures in the reported value.\n\nReported value = 2.49 mm.\n\nThe digits 2, 4 and 9 represent three significant figures.",
+"Step 3: Determine which digit was used to make the rounding decision.\n\nTo express 2.486 to three significant figures, we retain:\n\n2.48\n\nand examine the next digit.\n\nThe next digit is 6.",
+"Step 4: Apply the rounding rule.\n\nSince 6 is greater than 5, the last retained digit (8) must be increased by 1.",
+"Step 5: Perform the rounding.\n\n2.48 becomes 2.49.",
+"Step 6: Compare the result with the reported value.\n\nThe reported value matches the correct three-significant-figure result.",
+"Step 7: Select the correct option.\n\nTherefore, Option A is correct."
+],
+"why_other_options_are_wrong": [
+"A. Correct. The value 2.486 mm rounded to three significant figures becomes 2.49 mm because the fourth significant figure is 6, which causes the third significant figure to increase by one.",
+"B. This option confuses decimal places with significant figures. Although 2.49 mm contains two decimal places, the scientific justification for the change from 2.486 mm to 2.49 mm is the application of significant-figure rounding rules, not merely the number of decimal places.",
+"C. If the value had been approximated to the nearest whole number, the result would have been 2 mm, not 2.49 mm.",
+"D. Rounding 2.486 mm to one significant figure would produce 2 mm, not 2.49 mm. This option incorrectly interprets the concept of significant figures."
+],
+"exam_tip": "JAMB frequently disguises significant-figure questions as laboratory reporting questions.\n\nA common trap is confusing significant figures with decimal places.\n\nFor example:\n\n2.490\n\ncontains:\n\n• Four significant figures\n• Three decimal places\n\nThese are not the same thing.\n\nAlways identify which concept the examiner is testing before performing any rounding.\n\nAnother common mistake is forgetting to inspect the digit immediately after the last retained significant figure.",
+"final_answer": "A. The value was expressed to three significant figures because the fourth significant figure was 6",
+"simple_explanation": "The measurement was 2.486 mm. To write it to three significant figures, we keep the first three significant digits: 2, 4 and 8. We then look at the next digit, which is 6. Since 6 is greater than 5, we increase 8 by 1. This gives 2.49 mm.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Significant Figures to learn how scientists report measurements from metre rules, vernier calipers, micrometer screw gauges, and laboratory calculations. Study worked JAMB-style examples involving significant figures, decimal places, scientific notation, and experimental reporting.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for detailed lessons, examiner insights, practical demonstrations, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"significant_figures",
+"micrometer_screw_gauge",
+"laboratory_reporting",
+"measurement_precision",
+"rounding",
+"experimental_data",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q058",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Significant figures",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician used a digital balance to determine the mass of a metal sphere and obtained a reading of 0.004786 kg. In preparing the official laboratory report, the result was required to be recorded to three significant figures. Which of the following entries should appear in the report?",
+"options": {
+"A": "0.00479 kg",
+"B": "0.00478 kg",
+"C": "0.00480 kg",
+"D": "0.00500 kg"
+},
+"answer": "A",
+"answer_text": "0.00479 kg",
+"explanation": {
+"question_restate": "A mass measurement of 0.004786 kg was obtained using a digital balance. The laboratory report requires the value to be expressed to three significant figures. The task is to identify the correctly reported value.",
+"principle": "Significant figures are the digits in a measurement that carry meaningful information about its precision.\n\nA beginner may ask: 'Why do scientists use significant figures?' No measuring instrument can measure with infinite precision. Significant figures communicate the degree of confidence and precision associated with a measurement.\n\nAnother beginner may ask: 'Which digits are significant?' The rules include:\n\n1. All non-zero digits are significant.\n2. Zeros between non-zero digits are significant.\n3. Leading zeros are not significant.\n4. Trailing zeros may or may not be significant depending on the context and notation.\n\nA beginner may ask: 'What are leading zeros?' These are zeros that appear before the first non-zero digit. Their purpose is only to locate the decimal point and they do not count as significant figures.\n\nThe recorded value is:\n\n0.004786 kg\n\nThe leading zeros are not significant.\n\nThe significant digits are:\n\n4, 7, 8, 6\n\nThis means the measurement contains four significant figures.\n\nSince the report requires three significant figures, one digit must be removed using the standard rounding rule.\n\nThe rounding rule states:\n\n• If the first digit removed is less than 5, leave the last retained digit unchanged.\n• If the first digit removed is 5 or greater, increase the last retained digit by 1.\n\nJAMB frequently tests significant figures using laboratory measurements, density calculations, instrument readings, and scientific reports rather than asking candidates to merely state the definition.",
+"steps": [
+"Step 1: Write the measured value.\n\n0.004786 kg.",
+"Step 2: Identify the significant digits.\n\nIgnore the leading zeros.\n\nThe significant digits are:\n4, 7, 8, 6.",
+"Step 3: Determine how many significant figures are required.\n\nThe question requires three significant figures.",
+"Step 4: Retain the first three significant digits.\n\n4, 7, 8.",
+"Step 5: Inspect the next digit.\n\nThe next digit is 6.",
+"Step 6: Apply the rounding rule.\n\nSince 6 is greater than 5, increase the last retained digit (8) by 1.",
+"Step 7: The retained digits become:\n\n4, 7, 9.",
+"Step 8: Restore the decimal position.\n\nThe correctly rounded value is:\n\n0.00479 kg.",
+"Step 9: Compare with the options.\n\nOption A matches the correct result."
+],
+"why_other_options_are_wrong": [
+"A. 0.00479 kg — Correct. The fourth significant figure is 6, so the third significant figure (8) must be increased by 1.",
+"B. 0.00478 kg — This would be correct only if the discarded digit were less than 5. Since the discarded digit is 6, rounding up is required.",
+"C. 0.00480 kg — This result incorrectly changes the significant-figure structure and does not represent the correct rounding of 0.004786 kg to three significant figures.",
+"D. 0.00500 kg — This is an excessive rounding that removes too much information from the measurement and does not preserve three significant figures correctly."
+],
+"exam_tip": "JAMB frequently disguises significant-figure questions inside laboratory reports, density calculations, instrument readings, and scientific notation.\n\nA common trap is counting leading zeros as significant figures. They are not.\n\nAnother common mistake is confusing significant figures with decimal places.\n\nRemember:\n\nSignificant figures focus on meaningful digits.\n\nDecimal places focus on digits after the decimal point.\n\nThese are not the same thing.",
+"final_answer": "A. 0.00479 kg",
+"simple_explanation": "Ignore the zeros before the number because they only help position the decimal point. The important digits are 4, 7, 8, and 6. Since only three significant figures are required, keep 4, 7, and 8. The next digit is 6, so round the 8 up to 9. The final answer becomes 0.00479 kg.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Significant Figures to learn how scientists report measurements correctly, distinguish significant figures from decimal places, and apply rounding rules in laboratory calculations.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for detailed lessons, worked examples, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"significant_figures",
+"scientific_reporting",
+"laboratory_measurement",
+"digital_balance",
+"rounding",
+"measurement_precision",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q059",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Significant figures",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician used a micrometer screw gauge to measure the diameter of a resistance wire and obtained a value of 0.7634 mm. The least count of the instrument was 0.01 mm. When preparing the practical report, the technician was advised to express the measurement in a form consistent with the precision of the instrument. Which of the following values should be reported?",
+"options": {
+"A": "0.8 mm",
+"B": "0.76 mm",
+"C": "0.763 mm",
+"D": "0.7634 mm"
+},
+"answer": "B",
+"answer_text": "0.76 mm",
+"explanation": {
+"question_restate": "A micrometer screw gauge reading of 0.7634 mm was obtained, but the instrument has a least count of 0.01 mm. The question asks which value should be reported so that the stated precision matches the capability of the measuring instrument.",
+"principle": "Significant figures are the meaningful digits in a measurement that convey its precision. They include all certain digits and the first uncertain digit.\n\nA beginner may ask: 'Why can't we simply write all the digits shown in a calculation?' In Physics, the number of digits reported should reflect the precision of the measuring instrument. Reporting more digits than the instrument can justify creates a false impression of accuracy.\n\nAnother beginner may ask: 'What is least count?' The least count of an instrument is the smallest value that the instrument can directly measure.\n\nFor a micrometer screw gauge with a least count of 0.01 mm, measurements are reliable only to the nearest hundredth of a millimetre.\n\nA beginner may also ask: 'How are significant figures related to instrument precision?' The instrument determines how many digits are meaningful. If an instrument measures only up to 0.01 mm, digits beyond that level are not justified unless additional statistical analysis is performed.\n\nJAMB frequently combines significant figures with practical measurements involving metre rules, vernier calipers, micrometer screw gauges, densities, and experimental reports.",
+"steps": [
+"Step 1: Identify the recorded measurement.\n\nMeasured diameter = 0.7634 mm.",
+"Step 2: Identify the least count of the instrument.\n\nLeast count = 0.01 mm.",
+"Step 3: Interpret what the least count means.\n\nA least count of 0.01 mm means the instrument can reliably measure to two decimal places.",
+"Step 4: Examine the reported value.\n\nThe value 0.7634 mm contains four decimal places, implying a precision much greater than the instrument can support.",
+"Step 5: Round the measurement to match the instrument precision.\n\n0.7634 mm rounded to two decimal places becomes 0.76 mm.",
+"Step 6: Verify the result.\n\nThe reported value now matches the measurement capability of the micrometer screw gauge.",
+"Step 7: Select the correct option.\n\nTherefore, the correct answer is 0.76 mm."
+],
+"why_other_options_are_wrong": [
+"A. 0.8 mm — This value has been rounded excessively. Too much information from the original measurement has been lost, reducing the usefulness of the result.",
+"C. 0.763 mm — This value implies precision to three decimal places (0.001 mm), which exceeds the least count of the instrument. The instrument cannot justify this level of precision.",
+"D. 0.7634 mm — This reports four decimal places and suggests a precision far greater than the micrometer screw gauge can directly measure. It gives a misleading impression of accuracy.",
+"B. 0.76 mm — Correct. The measurement has been reported to a precision consistent with the least count of 0.01 mm."
+],
+"exam_tip": "JAMB frequently tests significant figures through laboratory measurements rather than through pure arithmetic exercises.\n\nA common trap is selecting the value with the largest number of digits because it 'looks more accurate.' In Physics, more digits do not automatically mean a better answer.\n\nAlways ask:\n\n• What instrument was used?\n• What is its least count?\n• Does the reported answer match the precision of the instrument?\n\nRemember that measurements should not imply a precision that the instrument cannot provide.",
+"final_answer": "B. 0.76 mm",
+"simple_explanation": "Think of the instrument as a ruler that can only see up to a certain level of detail. Since the micrometer screw gauge can measure only up to 0.01 mm, it does not make sense to report extra digits beyond that precision. Therefore, 0.7634 mm should be written as 0.76 mm.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Significant Figures to learn how physicists report measurements, determine meaningful digits, and match answers to the precision of measuring instruments. Study additional JAMB-style examples involving micrometer screw gauges, vernier calipers, density calculations, and laboratory reports.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for detailed lessons, worked examples, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"significant_figures",
+"micrometer_screw_gauge",
+"least_count",
+"laboratory_reporting",
+"measurement_precision",
+"experimental_physics",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q060",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Significant figures",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician used a micrometer screw gauge to measure the diameter of a metal wire and obtained 0.4836 cm. The result was later used in a report where all measurements were required to be recorded to three significant figures. Which of the following should appear in the final report?",
+"options": {
+"A": "0.484 cm",
+"B": "0.483 cm",
+"C": "0.480 cm",
+"D": "0.500 cm"
+},
+"answer": "A",
+"answer_text": "0.484 cm",
+"explanation": {
+"question_restate": "A micrometer screw gauge reading of 0.4836 cm was obtained during a laboratory measurement. The result must be reported to three significant figures. The question asks for the correctly reported value.",
+"principle": "Significant figures are the digits in a measured quantity that carry meaningful information about its precision. They include all certain digits plus the first uncertain digit estimated from the measuring instrument.\n\nA beginner may ask: 'Why do scientists use significant figures?' Measurements are never perfectly exact. The number of significant figures communicates the precision of the instrument used and prevents reporting a measurement with unrealistic accuracy.\n\nAnother beginner may ask: 'What is the difference between significant figures and decimal places?' Significant figures begin counting from the first non-zero digit, whereas decimal places count the digits after the decimal point.\n\nFor example:\n\n0.4836 has:\n\n• 4 significant figures.\n• 4 decimal places.\n\nThese are not the same concept.\n\nA beginner may also ask: 'How do we reduce a number to fewer significant figures?' The procedure is:\n\n1. Identify the required number of significant figures.\n2. Locate the last digit to be retained.\n3. Examine the next digit.\n4. If the next digit is 5 or greater, increase the last retained digit by 1.\n5. If the next digit is less than 5, leave the last retained digit unchanged.\n\nJAMB frequently tests significant figures through laboratory reports, experimental results, density calculations, and instrument readings rather than through simple counting exercises.",
+"steps": [
+"Step 1: Write the measured value.\n\nMeasured diameter = 0.4836 cm.",
+"Step 2: Determine the required number of significant figures.\n\nThe report requires 3 significant figures.",
+"Step 3: Identify the first three significant figures.\n\nIgnoring the leading zero, the first three significant figures are:\n\n4, 8, and 3.",
+"Step 4: Locate the next digit.\n\nThe next digit after 3 is 6.",
+"Step 5: Apply the rounding rule.\n\nSince 6 is greater than 5, increase the last retained digit (3) by 1.",
+"Step 6: Perform the rounding.\n\n0.4836 cm becomes 0.484 cm.",
+"Step 7: Verify the answer.\n\n0.484 cm contains exactly three significant figures: 4, 8, and 4.",
+"Step 8: Therefore, the value that should appear in the report is 0.484 cm."
+],
+"why_other_options_are_wrong": [
+"A. 0.484 cm — Correct. The fourth significant figure is 6, so the third significant figure must be increased by one.",
+"B. 0.483 cm — This would be correct only if the discarded digit were less than 5. Since the next digit is 6, rounding upward is required.",
+"C. 0.480 cm — Although this contains three significant figures when written carefully, it is not the correct rounded value obtained from 0.4836 cm.",
+"D. 0.500 cm — This changes the measurement substantially and does not result from applying the rules of significant figures."
+],
+"exam_tip": "JAMB frequently presents significant-figure questions in the context of laboratory reports and experimental data.\n\nA common trap is confusing significant figures with decimal places.\n\nFor example:\n\n0.4836 rounded to:\n\n• 3 decimal places = 0.484\n• 3 significant figures = 0.484\n\nIn this case they happen to be the same, but that is not always true.\n\nAnother common mistake is forgetting to inspect the digit immediately after the last significant figure being retained.",
+"final_answer": "A. 0.484 cm",
+"simple_explanation": "The measurement is 0.4836 cm. We want only three significant figures. The first three significant figures are 4, 8, and 3. The next digit is 6, so we round the 3 up to 4. Therefore, the correct reported value is 0.484 cm.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Significant Figures to learn how scientists report measurements, round experimental results, and express laboratory data correctly. Study additional JAMB-style examples involving micrometer screw gauges, vernier calipers, density calculations, and scientific notation.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for detailed lessons, examiner insights, worked examples, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"significant_figures",
+"laboratory_reporting",
+"micrometer_screw_gauge",
+"measurement_precision",
+"experimental_data",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q061",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Significant figures",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician used a micrometer screw gauge to measure the diameter of a wire and obtained 0.486 mm. The wire was then used in an experiment and the calculated cross-sectional area was reported as 0.185302 mm². To maintain a level of precision consistent with the original measurement, how should the area be reported?",
+"options": {
+"A": "0.185 mm²",
+"B": "0.19 mm²",
+"C": "0.1853 mm²",
+"D": "0.18530 mm²"
+},
+"answer": "A",
+"answer_text": "0.185 mm²",
+"explanation": {
+"question_restate": "A micrometer screw gauge measurement of a wire diameter was recorded as 0.486 mm. A later calculation produced an area of 0.185302 mm². The question asks how the calculated result should be reported so that it reflects the precision of the original measurement.",
+"principle": "Significant figures are the meaningful digits in a measurement that convey its precision.\n\nA beginner may ask: 'Why don't scientists simply write all the digits shown by a calculator?' The reason is that a calculator may display many digits that are not actually justified by the precision of the original measurements. Reporting too many digits can give a false impression of accuracy.\n\nAnother beginner may ask: 'What determines the number of significant figures in a calculated result?' In experimental science, the final answer should generally not contain more significant figures than the least precise measurement used in the calculation.\n\nA beginner may also ask: 'What are significant figures exactly?' Significant figures include all certain digits plus the first uncertain digit in a measurement.\n\nFor example:\n\n0.486 mm contains three significant figures:\n\n4, 8 and 6.\n\nThe leading zero is not significant because it merely indicates the position of the decimal point.\n\nWhen calculations are performed using measured quantities, the final reported result should normally preserve the same level of precision as the measurements that produced it.\n\nJAMB frequently tests significant figures through laboratory reports, density calculations, electrical measurements, and experimental data analysis rather than through direct counting exercises.",
+"steps": [
+"Step 1: Identify the precision of the original measurement.\n\nThe diameter was recorded as 0.486 mm.",
+"Step 2: Count the significant figures.\n\n0.486 contains three significant figures.\n\nThe digits are 4, 8 and 6.",
+"Step 3: Examine the calculated result.\n\nCalculated area = 0.185302 mm².",
+"Step 4: Determine the number of significant figures that should be retained.\n\nSince the original measurement contains three significant figures, the reported area should also contain three significant figures.",
+"Step 5: Round the area appropriately.\n\n0.185302\n\nThe first three significant figures are:\n\n1, 8 and 5.",
+"Step 6: Examine the next digit.\n\nThe next digit is 3.\n\nSince 3 is less than 5, the third significant figure remains unchanged.",
+"Step 7: Write the final reported value.\n\n0.185 mm².",
+"Step 8: Compare with the options provided.\n\nOption A is correct."
+],
+"why_other_options_are_wrong": [
+"A. 0.185 mm² — Correct. This value contains three significant figures, matching the precision of the original measurement.",
+"B. 0.19 mm² — This contains only two significant figures. Useful information from the measurement has been unnecessarily discarded.",
+"C. 0.1853 mm² — This contains four significant figures. It implies a level of precision that was not present in the original measurement.",
+"D. 0.18530 mm² — This contains five significant figures and exaggerates the certainty of the experimental result. Reporting excessive digits is a common mistake in laboratory work."
+],
+"exam_tip": "JAMB frequently embeds significant-figure questions inside practical Physics situations rather than asking candidates to count digits directly.\n\nA common trap is selecting the answer with the most digits because it appears more accurate. In scientific reporting, more digits do not necessarily mean greater accuracy.\n\nRemember:\n\n• Measurements determine precision.\n• Calculators do not determine precision.\n• Do not report more significant figures than the experimental data can justify.\n\nWhenever JAMB presents a calculated value with many digits, compare it with the precision of the original measurement before choosing an answer.",
+"final_answer": "A. 0.185 mm²",
+"simple_explanation": "The wire diameter was measured as 0.486 mm, which contains three significant figures. Therefore, the calculated area should also be reported using three significant figures. The value 0.185302 mm² rounded to three significant figures becomes 0.185 mm².",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Significant Figures to learn how physicists report experimental results, round calculated values, and avoid overstating precision. Study worked examples involving micrometer screw gauges, vernier calipers, density calculations, and laboratory reports.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, examiner-style explanations, practical demonstrations, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"significant_figures",
+"micrometer_screw_gauge",
+"laboratory_reporting",
+"precision",
+"experimental_data",
+"measurement_analysis",
+"phy_02"
+],
+"active": true
 }
+
 
 ]
 
