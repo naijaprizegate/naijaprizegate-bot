@@ -3643,6 +3643,531 @@
 "phy_02"
 ],
 "active": true
+},
+{
+"id": "phy_02_q071",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Approximation",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician used a vernier caliper to measure the external diameter of a cylindrical rod. The measured value was 2.984 cm. While preparing a summary report for a preliminary feasibility study where an accuracy of 0.1 cm was considered sufficient, the technician approximated the measurement before submission. Which of the following values is the most appropriate approximation for the report?",
+"options": {
+"A": "2.9 cm",
+"B": "2.98 cm",
+"C": "3.0 cm",
+"D": "3 cm"
+},
+"answer": "C",
+"answer_text": "3.0 cm",
+"explanation": {
+"question_restate": "A vernier caliper measurement of 2.984 cm was obtained for the diameter of a cylindrical rod. Because only an accuracy of 0.1 cm was required in the report, the value had to be approximated. The question asks for the most appropriate reported value.",
+"principle": "Approximation is the process of replacing a measured value with a nearby value that is sufficiently accurate for a particular purpose.\n\nA beginner may ask: 'Why do scientists approximate measurements?' In Physics, the required level of accuracy depends on the purpose of the measurement. Some investigations require extremely precise values, while others only require values that are reasonably close to the actual measurement.\n\nAnother beginner may ask: 'What does an accuracy of 0.1 cm mean?' An accuracy of 0.1 cm means that the measurement only needs to be reported to one decimal place. Any digits beyond the tenths position are not required for the intended purpose.\n\nApproximation is closely related to rounding off, but the emphasis is slightly different. Approximation focuses on selecting a value that is suitable for the required level of precision, whereas rounding off focuses on applying numerical rules to reduce the number of digits.\n\nA beginner may also ask: 'Why not always keep all the digits?' Retaining unnecessary digits can give a false impression of precision. Scientific reporting requires that measurements be presented with a level of precision that reflects the purpose of the experiment.\n\nJAMB often tests approximation through practical measurement situations involving metre rules, vernier calipers, micrometer screw gauges, densities, volumes, and experimental reports.",
+"steps": [
+"Step 1: Identify the original measurement.\n\nMeasured diameter = 2.984 cm.",
+"Step 2: Determine the level of accuracy required.\n\nThe report requires an accuracy of 0.1 cm.",
+"Step 3: Recall what accuracy of 0.1 cm implies.\n\nThe value should be expressed to one decimal place.",
+"Step 4: Locate the tenths digit.\n\nIn 2.984, the tenths digit is 9.",
+"Step 5: Examine the next digit.\n\nThe hundredths digit is 8.",
+"Step 6: Apply the approximation rule.\n\nSince 8 is greater than 5, the tenths digit is increased by 1.",
+"Step 7: Increasing 2.9 by one-tenth gives 3.0.",
+"Step 8: Compare with the options.\n\nThe value that correctly represents the measurement to the nearest 0.1 cm is 3.0 cm.",
+"Step 9: Therefore, the correct answer is Option C."
+],
+"why_other_options_are_wrong": [
+"A. 2.9 cm — This ignores the effect of the next digit. Since the hundredths digit is 8, the tenths digit should be increased.",
+"B. 2.98 cm — This is reported to two decimal places rather than the required one decimal place. It provides more precision than requested.",
+"D. 3 cm — Although numerically close, this suggests approximation to the nearest whole centimetre rather than to the nearest 0.1 cm. Scientific reports should reflect the required precision level.",
+"C. 3.0 cm — Correct. This value is approximated to one decimal place and properly reflects the required accuracy of 0.1 cm."
+],
+"exam_tip": "JAMB frequently embeds approximation questions inside laboratory and measurement scenarios rather than presenting them as pure arithmetic.\n\nA common trap is choosing a value with either too many digits or too few digits. Always identify the level of accuracy required before approximating.\n\nRemember:\n\n• Accuracy of 1 cm → nearest whole number.\n• Accuracy of 0.1 cm → one decimal place.\n• Accuracy of 0.01 cm → two decimal places.\n\nCandidates often confuse approximation with significant figures. Always check what the question specifically requests.",
+"final_answer": "C. 3.0 cm",
+"simple_explanation": "The measurement obtained was 2.984 cm, but the report only needed accuracy up to 0.1 cm. This means we keep only one digit after the decimal point. Since the next digit after 2.9 is 8, we round upward to 3.0 cm. Therefore, 3.0 cm is the best approximation for the report.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Approximation to learn how scientists report measurements at different levels of accuracy. Study additional JAMB-style examples involving laboratory reports, vernier calipers, micrometer screw gauges, densities, and measurement analysis.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, practical demonstrations, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"approximation",
+"vernier_caliper",
+"measurement_reporting",
+"experimental_data",
+"laboratory_physics",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q072",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Approximation",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician used a vernier caliper to measure the diameter of a metal sphere and obtained 2.486 cm. For inclusion in a summary table where all measurements were to be recorded to the nearest tenth of a centimetre, the value was reported as 2.5 cm. Which statement best describes the reporting process that was carried out?",
+"options": {
+"A": "A systematic correction was applied to eliminate instrumental error",
+"B": "The value was approximated to a specified level of precision",
+"C": "The measurement was converted into scientific notation",
+"D": "A percentage error was introduced into the result"
+},
+"answer": "B",
+"answer_text": "The value was approximated to a specified level of precision",
+"explanation": {
+"question_restate": "A diameter measured with a vernier caliper was recorded as 2.486 cm. The value was later reported as 2.5 cm because all entries in a summary table had to be written to the nearest tenth of a centimetre. The question asks you to identify the process involved in changing 2.486 cm to 2.5 cm.",
+"principle": "Approximation is the process of expressing a measured or calculated value in a simpler form that is sufficiently close to the original value for a particular purpose.\n\nA beginner may ask: 'Why do scientists approximate values?' In practical Physics, measurements often contain more digits than are necessary for reporting, comparing, or presenting results. Scientists therefore approximate values to an agreed level of precision.\n\nAnother beginner may ask: 'What does nearest tenth mean?' The nearest tenth means retaining one digit after the decimal point. For example, 2.5 cm is written to the nearest tenth of a centimetre.\n\nA beginner may also ask: 'Is approximation the same as making a mistake?' No. Approximation is a deliberate and accepted scientific procedure. It is performed according to established rules and helps communicate results clearly.\n\nApproximation is closely related to rounding off, but the emphasis here is on representing a value at a required level of precision. Scientists often approximate measurements when preparing laboratory reports, summary tables, graphs, and published results.\n\nJAMB frequently tests approximation through practical measurement situations rather than through isolated arithmetic exercises.",
+"steps": [
+"Step 1: Identify the original measurement.\n\nThe vernier caliper reading is 2.486 cm.",
+"Step 2: Identify the reporting requirement.\n\nAll values must be reported to the nearest tenth of a centimetre.",
+"Step 3: Recall what nearest tenth means.\n\nOnly one digit is retained after the decimal point.",
+"Step 4: Examine the digits.\n\n2.486 cm contains:\n\nTenths digit = 4\nHundredths digit = 8",
+"Step 5: Apply the approximation rule.\n\nSince the hundredths digit is 8, which is greater than 5, the tenths digit increases from 4 to 5.",
+"Step 6: Write the approximated value.\n\n2.486 cm becomes 2.5 cm.",
+"Step 7: Identify the scientific process involved.\n\nThe measurement has been approximated to a specified level of precision rather than corrected, converted, or used to calculate an error.",
+"Step 8: Therefore, Option B is correct."
+],
+"why_other_options_are_wrong": [
+"A. A systematic correction was applied to eliminate instrumental error — This is incorrect. A systematic correction involves adjusting measurements to compensate for known instrument defects such as zero error or calibration errors. No such correction was described in the question.",
+"B. The value was approximated to a specified level of precision — Correct. The original measurement was expressed in a simpler form according to a stated reporting requirement.",
+"C. The measurement was converted into scientific notation — Scientific notation expresses numbers as a value multiplied by a power of ten, such as 2.486 × 10⁰. No such conversion occurred here.",
+"D. A percentage error was introduced into the result — Percentage error compares an error with a true or accepted value. The question does not involve determining the accuracy of the measurement relative to a known value."
+],
+"exam_tip": "JAMB frequently embeds approximation inside laboratory reporting situations. A common trap is to confuse approximation with error correction.\n\nRemember:\n\n• Approximation changes the way a value is reported.\n• Systematic correction changes a value to compensate for a known defect.\n• Scientific notation changes the format of writing a number.\n• Percentage error compares a measurement with an accepted value.\n\nWhen JAMB asks why a value was rewritten to a particular number of decimal places or level of precision, approximation is often the key concept being tested.",
+"final_answer": "B. The value was approximated to a specified level of precision",
+"simple_explanation": "The technician measured the sphere carefully and obtained 2.486 cm. However, the report required all measurements to be written to one decimal place. Therefore, 2.486 cm was written as 2.5 cm. This is an example of approximation because the value was expressed in a simpler form while remaining very close to the original measurement.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Approximation to learn how scientists report measurements, simplify experimental results, and choose appropriate levels of precision in laboratory work. Study additional JAMB-style examples involving vernier calipers, micrometer screw gauges, scientific reporting, and data presentation.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"approximation",
+"vernier_caliper",
+"measurement_reporting",
+"precision",
+"laboratory_data",
+"experimental_physics",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q073",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Rounding off",
+"difficulty": "medium-hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician determined the density of a metal sample as 8.7468 g cm⁻³ after a series of measurements using a balance and a measuring cylinder. The laboratory manual requires all final answers to be reported to three significant figures. Which of the following values should appear in the experimental report?",
+"options": {
+"A": "8.74 g cm⁻³",
+"B": "8.75 g cm⁻³",
+"C": "8.747 g cm⁻³",
+"D": "8.700 g cm⁻³"
+},
+"answer": "B",
+"answer_text": "8.75 g cm⁻³",
+"explanation": {
+"question_restate": "A density value obtained from a laboratory experiment is 8.7468 g cm⁻³. The laboratory requires the result to be reported to three significant figures. The task is to determine the correctly rounded value.",
+"principle": "Rounding off is the process of reducing the number of digits used to express a measurement while retaining an acceptable level of accuracy.\n\nA beginner may ask: 'Why do scientists round off measurements?' No measuring instrument is perfectly exact. Reporting too many digits may suggest a level of accuracy that the experiment does not actually possess. Scientists therefore report results using an appropriate number of significant figures.\n\nAnother beginner may ask: 'What are significant figures?' Significant figures are the meaningful digits in a measurement. They include all certain digits and the first uncertain digit.\n\nA beginner may also ask: 'How is rounding off related to significant figures?' When a result is required to a specified number of significant figures, digits beyond that limit are removed using standard rounding rules.\n\nThe standard rounding rule is:\n\n• If the first digit to be discarded is less than 5, leave the preceding digit unchanged.\n• If the first digit to be discarded is 5 or greater, increase the preceding digit by 1.\n\nJAMB frequently combines significant figures and rounding-off concepts in practical Physics questions involving density, volume, mass, resistance, and other experimentally determined quantities.",
+"steps": [
+"Step 1: Write the reported density.\n\nDensity = 8.7468 g cm⁻³.",
+"Step 2: Identify the first three significant figures.\n\nThe first three significant figures are:\n\n8, 7, and 4.\n\nTherefore, the preliminary three-significant-figure form is 8.74.",
+"Step 3: Examine the next digit.\n\nThe next digit after 8.74 is 6.",
+"Step 4: Apply the rounding rule.\n\nSince 6 is greater than 5, the last retained digit (4) must be increased by 1.",
+"Step 5: Perform the adjustment.\n\n8.74 becomes 8.75.",
+"Step 6: Verify the answer.\n\nThe correctly rounded value to three significant figures is 8.75 g cm⁻³.",
+"Step 7: Compare with the available options.\n\nOption B matches the correctly rounded value."
+],
+"why_other_options_are_wrong": [
+"A. 8.74 g cm⁻³ — This option ignores the fact that the next digit is 6. Since 6 is greater than 5, the final retained digit should have been increased by 1.",
+"B. 8.75 g cm⁻³ — Correct. The value 8.7468 rounded to three significant figures becomes 8.75.",
+"C. 8.747 g cm⁻³ — This value contains four significant figures, not the required three significant figures stated in the question.",
+"D. 8.700 g cm⁻³ — Although this contains four significant figures, it does not result from the correct rounding procedure and significantly alters the reported value."
+],
+"exam_tip": "JAMB frequently embeds rounding-off questions inside practical Physics contexts rather than asking candidates to round numbers directly.\n\nA common trap is confusing decimal places with significant figures.\n\nFor example:\n\n8.7468 rounded to:\n\n• Three decimal places = 8.747\n• Three significant figures = 8.75\n\nThese are not the same.\n\nAlways identify whether the question asks for decimal places or significant figures before performing any rounding.",
+"final_answer": "B. 8.75 g cm⁻³",
+"simple_explanation": "The number is 8.7468. To keep only three significant figures, we keep 8.74 and look at the next digit, which is 6. Since 6 is greater than 5, we increase the 4 by 1. Therefore, 8.74 becomes 8.75. The correct answer is 8.75 g cm⁻³.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Rounding Off to learn how experimental results are rounded and reported in laboratory work. Study additional JAMB-style examples involving significant figures, decimal places, density calculations, and scientific reporting.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"rounding_off",
+"significant_figures",
+"density",
+"experimental_reporting",
+"laboratory_measurement",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q074",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Rounding off",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician used a vernier caliper to determine the diameter of a cylindrical metal rod. After several measurements, the mean diameter was calculated as 2.4768 cm. The laboratory manual requires all final answers obtained with the instrument to be reported to three significant figures. Which of the following is the most appropriate value to record in the experiment report?",
+"options": {
+"A": "2.47 cm",
+"B": "2.48 cm",
+"C": "2.477 cm",
+"D": "2.500 cm"
+},
+"answer": "B",
+"answer_text": "2.48 cm",
+"explanation": {
+"question_restate": "A vernier caliper was used to obtain several measurements of a metal rod. The mean value was found to be 2.4768 cm, but the laboratory instructions require the final answer to be reported to three significant figures. The task is to determine the correctly rounded result.",
+"principle": "Rounding off is the process of reducing the number of digits in a measurement while preserving a level of accuracy appropriate to the measuring instrument used.\n\nA beginner may ask: 'Why do scientists round off measurements?' In experimental Physics, measurements are never perfectly exact. Reporting too many digits may falsely suggest a level of precision that the instrument cannot actually provide.\n\nAnother beginner may ask: 'What is a significant figure?' Significant figures are the meaningful digits in a measurement. They include all certain digits and the first uncertain digit.\n\nA beginner may also ask: 'Why is the instrument important when reporting results?' Every measuring instrument has a limit to how accurately it can measure. The final reported answer should reflect the precision of the instrument used.\n\nThe rule for rounding to significant figures is:\n\n1. Identify the required number of significant figures.\n2. Look at the digit immediately after the last significant figure to be retained.\n3. If that digit is 5 or greater, increase the last retained digit by 1.\n4. If that digit is less than 5, leave the last retained digit unchanged.\n\nJAMB often tests rounding off within practical contexts such as density determination, vernier caliper readings, micrometer measurements, and experimental reports rather than as a pure mathematics exercise.",
+"steps": [
+"Step 1: Write down the calculated mean diameter.\n\nMean diameter = 2.4768 cm.",
+"Step 2: Identify the number of significant figures required.\n\nThe laboratory manual requires three significant figures.",
+"Step 3: Count the first three significant figures.\n\nIn 2.4768:\n\n1st significant figure = 2\n2nd significant figure = 4\n3rd significant figure = 7",
+"Step 4: Examine the next digit.\n\nThe digit immediately after 7 is 6.",
+"Step 5: Apply the rounding rule.\n\nSince 6 is greater than 5, increase the third significant figure by 1.\n\nTherefore:\n\n2.47 becomes 2.48.",
+"Step 6: Verify the result.\n\n2.48 cm contains exactly three significant figures and correctly represents the original measurement to the required precision.",
+"Step 7: Select the correct option.\n\nThe correct answer is Option B."
+],
+"why_other_options_are_wrong": [
+"A. 2.47 cm — This would be correct only if the next digit after 7 were less than 5. Since the next digit is 6, the value must be rounded upward to 2.48 cm.",
+"B. 2.48 cm — Correct. The fourth significant figure is 6, which causes the third significant figure (7) to increase by one.",
+"C. 2.477 cm — This retains four significant figures rather than the three significant figures required by the laboratory instruction.",
+"D. 2.500 cm — This value is not obtained from the original measurement and incorrectly suggests a different result and level of precision."
+],
+"exam_tip": "JAMB frequently embeds rounding-off questions inside laboratory reports, density calculations, vernier caliper measurements, and micrometer screw gauge investigations.\n\nA common trap is confusing decimal places with significant figures.\n\nRemember:\n\n• Significant figures begin from the first non-zero digit.\n• Decimal places count digits after the decimal point.\n\nCandidates who fail to distinguish between these two concepts often select otherwise plausible distractors.",
+"final_answer": "B. 2.48 cm",
+"simple_explanation": "The answer 2.4768 cm contains more digits than the laboratory wants. We keep only the first three significant figures: 2, 4, and 7. The next digit is 6, so we increase 7 by 1. This gives 2.48 cm.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Rounding Off to learn how scientists report experimental results using appropriate precision, significant figures, and decimal places. Study additional JAMB-style questions involving vernier calipers, micrometer screw gauges, density experiments, and laboratory reports.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for detailed lessons, worked examples, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"rounding_off",
+"significant_figures",
+"vernier_caliper",
+"experimental_reporting",
+"measurement_precision",
+"laboratory_physics",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q075",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Rounding off",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician used a digital balance to determine the mass of a metal sphere and obtained a value of 24.7865 g. The laboratory manual requires all masses to be reported to three significant figures to maintain consistency in experimental records. Which of the following should appear in the final laboratory report?",
+"options": {
+"A": "24.7 g",
+"B": "24.8 g",
+"C": "24.79 g",
+"D": "24.786 g"
+},
+"answer": "B",
+"answer_text": "24.8 g",
+"explanation": {
+"question_restate": "A digital balance measured the mass of a metal sphere as 24.7865 g. The laboratory requires results to be reported to three significant figures. The question asks for the correctly rounded value that should be entered into the final report.",
+"principle": "Rounding off is the process of reducing the number of digits used to express a measured value while preserving an appropriate level of accuracy.\n\nA beginner may ask: 'Why do scientists round off measurements?' Measuring instruments have limitations. Reporting too many digits can imply a level of precision that the instrument may not actually provide. Scientists therefore report measurements using an appropriate number of significant figures.\n\nA significant figure is any digit that contributes meaningfully to the precision of a measurement.\n\nA beginner may ask: 'How do I round a number to a given number of significant figures?'\n\nThe procedure is:\n\n1. Identify the required number of significant figures.\n2. Locate the last significant figure to be retained.\n3. Examine the digit immediately to its right.\n4. If that digit is 5 or greater, increase the retained digit by 1.\n5. If that digit is less than 5, leave the retained digit unchanged.\n\nJAMB frequently combines rounding off with practical measurements, laboratory reports, density calculations, instrument readings, and scientific notation.",
+"steps": [
+"Step 1: Write the measured value.\n\nMass = 24.7865 g.",
+"Step 2: Identify the first three significant figures.\n\nThe first three significant figures are:\n\n2, 4, and 7.\n\nTherefore, the provisional answer is 24.7.",
+"Step 3: Examine the next digit.\n\nThe digit immediately after 24.7 is 8.",
+"Step 4: Apply the rounding rule.\n\nSince 8 is greater than 5, the digit 7 must be increased by 1.",
+"Step 5: Obtain the rounded value.\n\n24.7 becomes 24.8.",
+"Step 6: Verify the result.\n\n24.8 contains three significant figures:\n\n2, 4, and 8.",
+"Step 7: Select the correct option.\n\nThe correct answer is Option B."
+],
+"why_other_options_are_wrong": [
+"A. 24.7 g — This value ignores the next digit (8). Since the next digit is greater than 5, the retained digit should have been increased.",
+"C. 24.79 g — This value is reported to four significant figures rather than the required three significant figures.",
+"D. 24.786 g — This value retains too many digits and does not satisfy the reporting requirement of three significant figures.",
+"B. 24.8 g — Correct. It contains three significant figures and follows the proper rounding rule."
+],
+"exam_tip": "JAMB frequently tests candidates on the distinction between decimal places and significant figures.\n\nCommon trap:\n\nA candidate may correctly round the value but report the wrong number of significant figures.\n\nRemember:\n\nDecimal places count digits after the decimal point.\n\nSignificant figures count meaningful digits beginning from the first non-zero digit.\n\nAlways read the reporting instruction carefully before rounding.",
+"final_answer": "B. 24.8 g",
+"simple_explanation": "The measurement is 24.7865 g, but only three significant figures are allowed. The first three significant figures are 2, 4, and 7. The next digit is 8, so the 7 is increased to 8. Therefore, the reported value becomes 24.8 g.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Rounding Off to learn how scientists report measurements correctly using significant figures, decimal places, and scientific notation. Study worked JAMB-style examples involving laboratory data, instrument readings, and experimental reports.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, examiner insights, practical examples, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"rounding_off",
+"significant_figures",
+"laboratory_reporting",
+"measurement_accuracy",
+"experimental_data",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q076",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Rounding off",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician used a vernier caliper to determine the diameter of a cylindrical rod. After several measurements and calculations, the mean diameter was obtained as 2.4867 cm. The laboratory manual requires all final answers to be reported to three significant figures. Which of the following values should appear in the technician's report?",
+"options": {
+"A": "2.48 cm",
+"B": "2.49 cm",
+"C": "2.487 cm",
+"D": "2.500 cm"
+},
+"answer": "B",
+"answer_text": "2.49 cm",
+"explanation": {
+"question_restate": "A vernier caliper was used to obtain several measurements of a cylindrical rod. The calculated mean diameter was 2.4867 cm, and the result must be reported to three significant figures. The question asks for the correctly rounded value that should be included in the laboratory report.",
+"principle": "Rounding off is the process of reducing the number of digits used to express a measurement while preserving an appropriate level of accuracy.\n\nA beginner may ask: 'Why do scientists round off measurements?' Measurements obtained in experiments often contain more digits than are justified by the precision of the instrument. Reporting too many digits may give a false impression of accuracy. Therefore, scientists round values to a suitable number of significant figures or decimal places.\n\nAnother beginner may ask: 'What are significant figures?' Significant figures are the digits in a number that carry meaningful information about the precision of a measurement.\n\nFor example:\n\n2.4867 has five significant figures:\n2, 4, 8, 6, and 7.\n\nA beginner may also ask: 'How do we round to a given number of significant figures?' The procedure is:\n\n1. Identify the last significant figure that should remain.\n2. Look at the digit immediately after it.\n3. If that digit is 5 or greater, increase the last retained digit by 1.\n4. If that digit is less than 5, leave the last retained digit unchanged.\n\nJAMB frequently tests candidates' ability to report experimental results correctly because scientific measurements must reflect the precision of the measuring instrument.",
+"steps": [
+"Step 1: Write down the measured value.\n\nMean diameter = 2.4867 cm.",
+"Step 2: Determine the number of significant figures required.\n\nThe laboratory manual requires three significant figures.",
+"Step 3: Identify the first three significant figures.\n\n2.4867 → 2, 4, and 8.\n\nThe third significant figure is 8.",
+"Step 4: Examine the next digit.\n\nThe digit immediately after 8 is 6.",
+"Step 5: Apply the rounding rule.\n\nSince 6 is greater than 5, increase the third significant figure by 1.\n\nTherefore:\n2.48 becomes 2.49.",
+"Step 6: Verify the result.\n\n2.49 contains exactly three significant figures:\n2, 4, and 9.",
+"Step 7: Select the correct option.\n\nThe correct laboratory report should state 2.49 cm."
+],
+"why_other_options_are_wrong": [
+"A. 2.48 cm — This option ignores the digit following the third significant figure. Since the next digit is 6, the final retained digit should be increased. This is a common rounding error made by candidates.",
+"B. 2.49 cm — Correct. The digit following the third significant figure is 6, so the final retained digit must be increased by one.",
+"C. 2.487 cm — This value is rounded to four significant figures rather than the required three significant figures. Although mathematically reasonable, it does not satisfy the reporting instruction.",
+"D. 2.500 cm — This value is not obtained from correct rounding of the given measurement and incorrectly suggests a higher level of precision."
+],
+"exam_tip": "JAMB frequently embeds rounding-off questions inside laboratory situations involving vernier calipers, micrometer screw gauges, density calculations, and experimental reports.\n\nA common trap is confusing decimal places with significant figures.\n\nRemember:\n\n• Significant figures begin counting from the first non-zero digit.\n• Decimal places count digits after the decimal point.\n\nAnother common mistake is failing to inspect the digit immediately after the final significant figure. Always check that digit before deciding whether to round up or leave the number unchanged.",
+"final_answer": "B. 2.49 cm",
+"simple_explanation": "The value is 2.4867 cm. To keep three significant figures, we keep 2, 4, and 8. The next digit is 6. Since 6 is greater than 5, we increase 8 to 9. Therefore, the reported value becomes 2.49 cm.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Rounding Off to learn how scientists report measurements using significant figures and decimal places. Study worked examples involving vernier calipers, micrometer screw gauges, density calculations, and laboratory reports.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, practical examples, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"rounding_off",
+"significant_figures",
+"vernier_caliper",
+"laboratory_reporting",
+"measurement_precision",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q077",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Rounding off",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician determined the density of a metallic sample from experimental measurements and obtained a value of 8.7468 × 10³ kg m⁻³. According to the reporting guideline for the experiment, final answers must be recorded to four significant figures. Which of the following should appear in the laboratory report?",
+"options": {
+"A": "8.746 × 10³ kg m⁻³",
+"B": "8.747 × 10³ kg m⁻³",
+"C": "8.750 × 10³ kg m⁻³",
+"D": "8.700 × 10³ kg m⁻³"
+},
+"answer": "B",
+"answer_text": "8.747 × 10³ kg m⁻³",
+"explanation": {
+"question_restate": "A density value obtained from an experiment must be reported to four significant figures. The task is to determine the correctly rounded value that should appear in the laboratory report.",
+"principle": "Rounding off is the process of reducing the number of digits used to express a quantity while retaining an appropriate level of accuracy. In Physics, experimental results are often rounded before they are reported because no measuring instrument is perfectly exact.\n\nA beginner may ask: 'Why don't scientists write all the digits obtained from a calculator?' The answer is that some digits may suggest a level of precision that the measuring instruments cannot actually support. Reporting too many digits can therefore be misleading.\n\nAnother beginner may ask: 'What are significant figures?' Significant figures are the digits in a number that carry meaningful information about the precision of a measurement. They include all certain digits and the first uncertain digit.\n\nA beginner may also ask: 'How do I round a number to a specified number of significant figures?' First identify the last significant digit to be retained. Then examine the digit immediately after it.\n\n• If the next digit is less than 5, leave the retained digit unchanged.\n• If the next digit is 5 or greater, increase the retained digit by 1.\n\nJAMB frequently embeds rounding-off questions within laboratory reports, density calculations, resistance measurements, and scientific notation rather than asking a direct mathematics-style rounding question.",
+"steps": [
+"Step 1: Write the reported value.\n\n8.7468 × 10³ kg m⁻³.",
+"Step 2: Count the significant figures currently present.\n\nThe digits 8, 7, 4, 6, and 8 give five significant figures.",
+"Step 3: Identify the number of significant figures required.\n\nThe question requires four significant figures.",
+"Step 4: Locate the fourth significant figure.\n\nThe first four significant figures are 8, 7, 4, and 6.",
+"Step 5: Examine the next digit.\n\nThe digit immediately after 6 is 8.",
+"Step 6: Apply the rounding rule.\n\nSince 8 is greater than 5, increase the fourth significant figure by one.\n\nTherefore, 8.746 becomes 8.747.",
+"Step 7: Preserve the power of ten and unit.\n\nThe exponent 10³ and the unit kg m⁻³ remain unchanged.",
+"Step 8: The correctly reported value is 8.747 × 10³ kg m⁻³."
+],
+"why_other_options_are_wrong": [
+"A. 8.746 × 10³ kg m⁻³ — This option truncates the number without applying the rounding rule. The next digit after 6 is 8, so the last retained digit should increase.",
+"B. 8.747 × 10³ kg m⁻³ — Correct. The fifth significant figure is 8, which rounds the fourth significant figure upward.",
+"C. 8.750 × 10³ kg m⁻³ — This over-rounds the value and changes more digits than required. It does not follow the standard significant-figure procedure.",
+"D. 8.700 × 10³ kg m⁻³ — This incorrectly reduces the value and suggests a measurement that differs significantly from the experimental result."
+],
+"exam_tip": "JAMB frequently combines rounding-off with significant figures and scientific notation. A common trap is to simply remove unwanted digits without checking the next digit.\n\nRemember:\n\n• Next digit less than 5 → leave unchanged.\n• Next digit 5 or greater → round upward.\n\nCandidates also sometimes alter the exponent in scientific notation unnecessarily. Unless instructed otherwise, only the coefficient is rounded.",
+"final_answer": "B. 8.747 × 10³ kg m⁻³",
+"simple_explanation": "The value is 8.7468 × 10³. We want four significant figures, so we keep 8.746 and check the next digit, which is 8. Because 8 is greater than 5, we increase the last retained digit by one. Therefore, the answer becomes 8.747 × 10³ kg m⁻³.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Rounding Off to learn how experimental results are reported using significant figures, decimal places, and scientific notation. Study worked examples involving laboratory measurements, density calculations, and JAMB-style scientific reporting questions.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for detailed lessons, examiner insights, practical examples, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"rounding_off",
+"significant_figures",
+"scientific_notation",
+"density",
+"laboratory_report",
+"experimental_results",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q078",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Percentage error",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "In a practical investigation, a laboratory technician used a vernier caliper to determine the diameter of a metal sphere supplied by a manufacturer. The accepted diameter supplied by the manufacturer was 25.00 mm. After applying all necessary zero-error corrections, the technician reported the diameter as 24.50 mm in the laboratory report. Which of the following best describes the percentage error in the reported measurement?",
+"options": {
+"A": "1%",
+"B": "2%",
+"C": "4%",
+"D": "8%"
+},
+"answer": "B",
+"answer_text": "2%",
+"explanation": {
+"question_restate": "A vernier caliper was used to measure the diameter of a metal sphere. The accepted value is 25.00 mm while the corrected measured value is 24.50 mm. The question asks for the percentage error associated with the reported measurement.",
+"principle": "Percentage error is used to express the size of a measurement error relative to the accepted or true value. Scientists often prefer percentage error because it allows the quality of measurements to be compared even when the quantities being measured are different.\n\nA beginner may ask: 'Why do we not simply use the error itself?' Suppose one experiment has an error of 1 mm and another has an error of 1 m. Although the numerical errors are both 1, their significance is very different. Percentage error helps us understand how important the error is compared with the true value.\n\nA beginner may also ask: 'What is the accepted value?' The accepted value is the value regarded as correct based on standards, reliable measurements, or manufacturer's specifications.\n\nBefore calculating percentage error, we must first calculate the absolute error.\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nThe vertical bars mean that only the magnitude of the difference is used.\n\nOnce the absolute error has been obtained, the percentage error is calculated using:\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%\n\nJAMB frequently tests percentage error within practical situations involving metre rules, vernier calipers, micrometer screw gauges, density experiments, and laboratory reports.",
+"steps": [
+"Step 1: Identify the accepted value.\n\nAccepted diameter = 25.00 mm.",
+"Step 2: Identify the measured value.\n\nMeasured diameter = 24.50 mm.",
+"Step 3: Calculate the absolute error.\n\nAbsolute Error = |24.50 − 25.00|\n\nAbsolute Error = 0.50 mm.",
+"Step 4: Recall the percentage error formula.\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%",
+"Step 5: Substitute the values.\n\nPercentage Error = (0.50 ÷ 25.00) × 100%",
+"Step 6: Evaluate the fraction.\n\n0.50 ÷ 25.00 = 0.02",
+"Step 7: Convert to percentage.\n\n0.02 × 100 = 2%",
+"Step 8: Compare with the options provided.\n\nThe correct answer is 2%."
+],
+"why_other_options_are_wrong": [
+"A. 1% — This would result from underestimating the error or incorrectly dividing by twice the accepted value. Candidates sometimes make this mistake when they misread the scale difference.",
+"C. 4% — This can arise when a candidate mistakenly doubles the absolute error before applying the formula or incorrectly uses 12.5 mm as the accepted value.",
+"D. 8% — This is a much larger percentage than justified by the data and often results from incorrect decimal-point handling during calculation.",
+"B. 2% — Correct. The absolute error is 0.50 mm and the accepted value is 25.00 mm. Applying the formula gives a percentage error of 2%."
+],
+"exam_tip": "JAMB frequently tests the relationship among absolute error, relative error, and percentage error.\n\nA common trap is to use the measured value as the denominator instead of the accepted value.\n\nRemember:\n\nAbsolute Error = |Measured − Accepted|\n\nRelative Error = Absolute Error ÷ Accepted Value\n\nPercentage Error = Relative Error × 100%\n\nAnother common mistake is forgetting to convert the final answer into a percentage.",
+"final_answer": "B. 2%",
+"simple_explanation": "The measurement differs from the accepted value by 0.50 mm. To see how important that error is, we compare it with the correct value of 25.00 mm. The error is 0.50 out of 25.00, which equals 0.02. Converting 0.02 to a percentage gives 2%. Therefore, the percentage error is 2%.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Percentage Error to learn how percentage error is calculated and interpreted in practical Physics. Study worked examples involving vernier calipers, micrometer screw gauges, density experiments, and scientific reporting.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for detailed lessons, examiner insights, practical demonstrations, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"percentage_error",
+"vernier_caliper",
+"laboratory_report",
+"error_analysis",
+"measurement_accuracy",
+"experimental_physics",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q079",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Percentage error",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "A physics laboratory technician used a micrometer screw gauge to verify the diameter of a standard calibration wire certified to have a diameter of 2.50 mm. After taking several readings and eliminating obvious outliers, the mean measured diameter was reported as 2.45 mm. The technician concluded that the instrument was still suitable for routine school laboratory work because the percentage error was small. What percentage error was associated with the reported measurement?",
+"options": {
+"A": "1%",
+"B": "2%",
+"C": "4%",
+"D": "5%"
+},
+"answer": "B",
+"answer_text": "2%",
+"explanation": {
+"question_restate": "A standard wire with a certified diameter of 2.50 mm was measured using a micrometer screw gauge. The average measured diameter obtained was 2.45 mm. The question requires the percentage error associated with the measurement.",
+"principle": "Percentage error is a measure of how large a measurement error is relative to the accepted or true value. It allows scientists to judge the quality of a measurement independently of the size of the quantity being measured.\n\nA beginner may ask: 'Why not simply use the error itself?' Suppose one experiment has an error of 0.05 mm while another has an error of 0.05 m. Although the numerical errors are the same, their significance is very different. Percentage error allows fair comparison by relating the error to the true value.\n\nAnother beginner may ask: 'What is a certified value?' A certified value is a value that has been established through highly reliable calibration procedures and is treated as the accepted or true value for comparison purposes.\n\nBefore calculating percentage error, we first calculate the absolute error.\n\nAbsolute Error = |Measured Value − True Value|\n\nThe vertical bars indicate that only the magnitude of the difference is used.\n\nOnce the absolute error is known:\n\nPercentage Error = (Absolute Error ÷ True Value) × 100%\n\nA beginner may also ask: 'Why multiply by 100?' Multiplying by 100 converts the relative error into a percentage, making the result easier to interpret.\n\nJAMB frequently tests percentage error through practical measurement situations involving metre rules, vernier calipers, micrometer screw gauges, density experiments, and calibration exercises.",
+"steps": [
+"Step 1: Identify the true (certified) value.\n\nTrue diameter = 2.50 mm.",
+"Step 2: Identify the measured value.\n\nMeasured diameter = 2.45 mm.",
+"Step 3: Calculate the absolute error.\n\nAbsolute Error = |2.45 − 2.50|\n\nAbsolute Error = 0.05 mm.",
+"Step 4: Recall the percentage error formula.\n\nPercentage Error = (Absolute Error ÷ True Value) × 100%",
+"Step 5: Substitute the values.\n\nPercentage Error = (0.05 ÷ 2.50) × 100%",
+"Step 6: Perform the division.\n\n0.05 ÷ 2.50 = 0.02",
+"Step 7: Convert to percentage.\n\n0.02 × 100 = 2%",
+"Step 8: Verify the result.\n\nA 0.05 mm error in a quantity of 2.50 mm represents 2% of the true value.",
+"Step 9: Therefore, the percentage error is 2%."
+],
+"why_other_options_are_wrong": [
+"A. 1% — This would correspond to an absolute error of 0.025 mm for a true value of 2.50 mm. Candidates may arrive at this answer by incorrectly halving the actual error.",
+"C. 4% — This often results from dividing by the measured value incorrectly or doubling the absolute error before substitution.",
+"D. 5% — This is a common mistake made when candidates compare 0.05 directly with 1 instead of relating it to the true value of 2.50 mm.",
+"B. 2% — Correct. The absolute error is 0.05 mm and the true value is 2.50 mm, giving a percentage error of 2%."
+],
+"exam_tip": "JAMB frequently embeds percentage-error calculations inside practical laboratory scenarios rather than asking for the formula directly.\n\nA common trap is confusing absolute error, relative error, and percentage error.\n\nRemember:\n\nAbsolute Error = Difference between measured and true values.\n\nRelative Error = Absolute Error ÷ True Value.\n\nPercentage Error = Relative Error × 100%.\n\nAnother common mistake is dividing by the measured value instead of the accepted value. Unless otherwise specified, JAMB usually expects percentage error to be calculated using the accepted or true value in the denominator.",
+"final_answer": "B. 2%",
+"simple_explanation": "The measurement differs from the correct value by 0.05 mm. To know how important that error is, we compare it with the true diameter of 2.50 mm.\n\n0.05 ÷ 2.50 = 0.02.\n\nMultiplying by 100 gives 2%.\n\nTherefore, the percentage error is 2%.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Percentage Error to learn how physicists evaluate the quality of measurements, compare experimental results with accepted values, and interpret calibration data. Study additional JAMB-style questions involving micrometer screw gauges, vernier calipers, density experiments, and laboratory reporting.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner insights, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"percentage_error",
+"micrometer_screw_gauge",
+"calibration",
+"experimental_measurement",
+"laboratory_reporting",
+"measurement_accuracy",
+"phy_02"
+],
+"active": true
+},
+{
+"id": "phy_02_q080",
+"subject_code": "phy",
+"subject_name": "Physics",
+"topic_id": "phy_02",
+"topic_title": "Errors, Accuracy and Significant Figures",
+"subtopic": "Percentage error",
+"difficulty": "hard",
+"question_type": "mcq",
+"question": "During a density determination experiment, a laboratory technician used a vernier caliper to measure the diameter of a metallic sphere. The accepted diameter supplied by the manufacturer was 2.50 cm, while the average diameter obtained from repeated measurements was 2.45 cm. A report was prepared to assess the quality of the measurement process. Which of the following percentage errors should be recorded in the report?",
+"options": {
+"A": "0.5%",
+"B": "2.0%",
+"C": "5.0%",
+"D": "20.0%"
+},
+"answer": "B",
+"answer_text": "2.0%",
+"explanation": {
+"question_restate": "A vernier caliper was used to measure the diameter of a metallic sphere. The accepted diameter is 2.50 cm, while the experimentally obtained average diameter is 2.45 cm. The task is to determine the percentage error that should be reported.",
+"principle": "Percentage error is a measure of how far an experimental result differs from an accepted or true value, expressed as a percentage.\n\nA beginner may ask: 'Why do scientists use percentage error instead of just stating the error?' Percentage error allows measurements of different sizes to be compared fairly. An error of 0.05 cm may be significant in one experiment but negligible in another. Expressing the error as a percentage provides a standard basis for comparison.\n\nAnother beginner may ask: 'What is the accepted value?' The accepted value is the value regarded as correct based on reliable standards, precise measurements, manufacturer specifications, or established scientific references.\n\nBefore calculating percentage error, we first calculate the absolute error.\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nThe vertical bars mean that only the magnitude of the difference is considered.\n\nOnce the absolute error is known, percentage error is calculated using:\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100\n\nA beginner may ask: 'Why do we divide by the accepted value?' We divide by the accepted value because it represents the standard against which the measurement is being judged.\n\nJAMB frequently embeds percentage error calculations within practical contexts involving vernier calipers, micrometer screw gauges, metre rules, density experiments, and laboratory reports.",
+"steps": [
+"Step 1: Identify the accepted value.\n\nAccepted diameter = 2.50 cm.",
+"Step 2: Identify the measured value.\n\nMeasured diameter = 2.45 cm.",
+"Step 3: Calculate the absolute error.\n\nAbsolute Error = |2.45 − 2.50|\n\n= |−0.05|\n\n= 0.05 cm.",
+"Step 4: Recall the percentage error formula.\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100.",
+"Step 5: Substitute the values.\n\nPercentage Error = (0.05 ÷ 2.50) × 100.",
+"Step 6: Perform the division.\n\n0.05 ÷ 2.50 = 0.02.",
+"Step 7: Convert to percentage.\n\n0.02 × 100 = 2.0%.",
+"Step 8: Verify the calculation.\n\nAbsolute Error = 0.05 cm.\n\n0.05 ÷ 2.50 = 0.02.\n\n0.02 × 100 = 2.0%.\n\nThe calculation is correct.",
+"Step 9: Select the correct option.\n\nTherefore, the percentage error is 2.0%."
+],
+"why_other_options_are_wrong": [
+"A. 0.5% — This value may result from dividing the absolute error by 10 instead of by the accepted value. It underestimates the actual percentage error.",
+"B. 2.0% — Correct. This is obtained using the proper percentage error formula.",
+"C. 5.0% — This often results from treating the absolute error (0.05) directly as a percentage without comparing it with the accepted value.",
+"D. 20.0% — This may result from a decimal-point mistake during conversion from relative error to percentage error."
+],
+"exam_tip": "JAMB frequently tests percentage error through practical measurement situations rather than direct formula recall.\n\nA common trap is confusing absolute error, relative error, and percentage error.\n\nRemember:\n\nAbsolute Error = Difference between measured and accepted values.\n\nRelative Error = Absolute Error ÷ Accepted Value.\n\nPercentage Error = Relative Error × 100.\n\nAlways calculate the absolute error first before attempting percentage error calculations.",
+"final_answer": "B. 2.0%",
+"simple_explanation": "The measured diameter differs from the accepted diameter by 0.05 cm. To know how important this error is, we compare it with the accepted diameter of 2.50 cm and convert the result into a percentage. Doing this gives 2.0%, so the percentage error is 2.0%.",
+"tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Percentage Error to learn how percentage error is used in practical Physics experiments involving vernier calipers, micrometer screw gauges, density determination, and laboratory data analysis.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for detailed lessons, examiner insights, practical demonstrations, and thousands of carefully structured JAMB preparation questions."
+},
+"tags": [
+"percentage_error",
+"vernier_caliper",
+"density_experiment",
+"laboratory_report",
+"error_analysis",
+"measurement_accuracy",
+"phy_02"
+],
+"active": true
 }
 
 
