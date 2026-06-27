@@ -4744,6 +4744,268 @@
     "phy_02"
   ],
   "active": true
+},
+{
+  "id": "phy_02_q091",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Reliability of measurements (Mean value)",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A student used a metre rule to measure the length of a wooden rod five times during a laboratory practical. The readings obtained were 24.8 cm, 25.0 cm, 24.9 cm, 25.1 cm and 24.9 cm. To improve the reliability of the reported result, the teacher instructed the student to record the mean length of the rod. What is the most reliable value to report?",
+  "options": {
+    "A": "24.9 cm",
+    "B": "25.0 cm",
+    "C": "25.1 cm",
+    "D": "124.7 cm"
+  },
+  "answer": "A",
+  "answer_text": "24.9 cm",
+  "explanation": {
+    "question_restate": "A wooden rod was measured five times using a metre rule, giving slightly different readings. The task is to calculate the mean value, which provides the most reliable estimate of the true length of the rod.",
+    "principle": "No measuring instrument is perfectly free from small random errors. Even when the same object is measured repeatedly under similar conditions, slight differences in the readings are expected because of factors such as observer judgment, instrument limitations and environmental conditions.\n\nA beginner may ask: 'Why don't we simply choose one of the readings?' A single measurement may be slightly higher or lower than the true value because of random error. Taking several measurements and calculating their mean helps to reduce the effect of these random variations.\n\nAnother beginner may ask: 'Why is the mean considered more reliable?' Positive and negative random errors tend to cancel one another when many measurements are averaged, making the mean closer to the true value than most individual readings.\n\nThe mean value is calculated as:\n\nMean = (Sum of all measurements) ÷ (Number of measurements)\n\nRepeated measurements and averaging are standard laboratory practices used to improve the reliability of experimental results. JAMB frequently tests this concept using practical measurement data rather than asking candidates to recall the definition of reliability.",
+    "steps": [
+      "Step 1: Write down all the measurements.\n\n24.8 cm, 25.0 cm, 24.9 cm, 25.1 cm and 24.9 cm.",
+      "Step 2: Find the total of the readings.\n\n24.8 + 25.0 + 24.9 + 25.1 + 24.9 = 124.7 cm.",
+      "Step 3: Count the number of measurements.\n\nThere are 5 readings.",
+      "Step 4: Calculate the mean.\n\nMean = 124.7 ÷ 5 = 24.94 cm.",
+      "Step 5: Report the result using the precision of the original measurements.\n\n24.94 cm rounds to 24.9 cm (to one decimal place).",
+      "Step 6: Therefore, the most reliable value to report is 24.9 cm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 24.9 cm — Correct. It is the mean of the repeated measurements, rounded to the same precision as the original readings.",
+      "B. 25.0 cm — This is one of the individual measurements, not the calculated mean.",
+      "C. 25.1 cm — This is simply the highest reading obtained and does not represent the average.",
+      "D. 124.7 cm — This is the total of all the readings before dividing by the number of measurements. It is not the mean."
+    ],
+    "exam_tip": "Whenever JAMB provides several repeated laboratory measurements, first calculate the average before selecting the final answer. The purpose of repeated measurements is to improve reliability by reducing the effect of random errors.\n\nRemember:\n\nMean = (Sum of all readings) ÷ (Number of readings)\n\nAlso ensure that your final answer is reported to the same level of precision as the original measurements unless instructed otherwise.",
+    "final_answer": "A. 24.9 cm",
+    "simple_explanation": "The five measurements add up to 124.7 cm.\n\nDivide by the five readings:\n\n124.7 ÷ 5 = 24.94 cm.\n\nSince all the measurements were recorded to one decimal place, report the answer as 24.9 cm.\n\nTherefore, the most reliable value is 24.9 cm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Reliability of Measurements to learn why scientists repeat measurements, calculate mean values, identify outliers and improve the quality of laboratory results. Study additional JAMB-style practical questions involving metre rules, vernier calipers, micrometer screw gauges, measuring cylinders and experimental data tables.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "reliability_of_measurements",
+    "mean_value",
+    "metre_rule",
+    "repeated_measurements",
+    "random_error",
+    "laboratory_data",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q092",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Reliability of Measurements (Repeatability)",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A student used the same vernier caliper to measure the external diameter of a metal rod five times under identical laboratory conditions. The readings obtained were 18.42 mm, 18.43 mm, 18.42 mm, 18.44 mm and 18.42 mm. Which conclusion best describes the reliability of these measurements?",
+  "options": {
+    "A": "The measurements have poor repeatability because the readings are not exactly the same.",
+    "B": "The measurements have good repeatability because repeated readings are very close to one another.",
+    "C": "The measurements are unreliable because the true diameter is not known.",
+    "D": "The measurements are inaccurate because the average value was not calculated."
+  },
+  "answer": "B",
+  "answer_text": "The measurements have good repeatability because repeated readings are very close to one another.",
+  "explanation": {
+    "question_restate": "A vernier caliper was used several times to measure the same metal rod. The readings differ only slightly. The task is to identify what this says about the reliability of the measurements.",
+    "principle": "Reliability refers to the consistency of repeated measurements made under the same conditions. One important indicator of reliability is repeatability.\n\nA beginner may ask: 'What is repeatability?' Repeatability is the ability of an instrument or an experiment to produce nearly the same result when the same quantity is measured repeatedly by the same observer using the same instrument under the same conditions.\n\nAnother beginner may ask: 'Do repeated readings have to be exactly identical?' No. Small differences are expected because of unavoidable random errors. If the readings are clustered closely together, the measurements are considered highly repeatable and therefore reliable.\n\nRepeatability does not necessarily mean the measurements are accurate. An instrument may consistently produce nearly identical readings yet still be affected by a systematic error such as a zero error. JAMB often tests the distinction between reliability, repeatability and accuracy using practical laboratory situations.",
+    "steps": [
+      "Step 1: Examine the repeated readings.\n\n18.42 mm, 18.43 mm, 18.42 mm, 18.44 mm and 18.42 mm.",
+      "Step 2: Observe the spread of the values.\n\nThe largest reading is 18.44 mm while the smallest is 18.42 mm, giving a spread of only 0.02 mm.",
+      "Step 3: Recognize that such a small variation indicates that repeated measurements are very consistent.",
+      "Step 4: Recall that consistency of repeated measurements is known as repeatability.",
+      "Step 5: Since the readings show good repeatability, the measurements are considered reliable."
+    ],
+    "why_other_options_are_wrong": [
+      "A. The measurements have poor repeatability because the readings are not exactly the same. — Incorrect. Experimental readings are rarely identical because random errors always exist. Small variations are normal.",
+      "B. The measurements have good repeatability because repeated readings are very close to one another. — Correct. The readings differ by only 0.02 mm, indicating high consistency.",
+      "C. The measurements are unreliable because the true diameter is not known. — Incorrect. Reliability depends on consistency of repeated measurements, not on knowing the true value.",
+      "D. The measurements are inaccurate because the average value was not calculated. — Incorrect. Calculating the mean improves reporting but does not determine whether the measurements are repeatable."
+    ],
+    "exam_tip": "Whenever JAMB presents several repeated laboratory readings from instruments such as vernier calipers, micrometer screw gauges, metre rules or measuring cylinders, first examine how closely the readings agree.\n\nClosely grouped readings indicate good repeatability and therefore high reliability.\n\nRemember:\n\nRepeatability → Consistency of repeated measurements.\nReliability → Confidence that repeated measurements give similar results.\nAccuracy → Closeness to the true value.\n\nDo not confuse reliability with accuracy. A set of measurements may be highly reliable but still inaccurate if the instrument has a systematic error.",
+    "final_answer": "B. The measurements have good repeatability because repeated readings are very close to one another.",
+    "simple_explanation": "The five readings are almost the same. Their difference is only 0.02 mm, which is very small.\n\nWhen repeated measurements are very close to one another, the instrument shows good repeatability. Good repeatability means the measurements are reliable.\n\nTherefore, the correct answer is B.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Reliability of Measurements to learn about repeatability, reproducibility, random errors, systematic errors, accuracy, precision and the interpretation of repeated laboratory measurements. Study additional JAMB-style questions involving vernier calipers, micrometer screw gauges, metre rules, measuring cylinders and experimental data analysis.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "reliability_of_measurements",
+    "repeatability",
+    "vernier_caliper",
+    "laboratory_measurements",
+    "experimental_data",
+    "measurement_consistency",
+    "random_error",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q093",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Systematic error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "During a Physics practical, a student used a metre rule to measure the length of several metal rods. Unknown to the student, the metre rule had worn-out edges, causing its zero mark to be shifted by 0.4 cm. Although the student measured carefully and repeated each measurement three times, every recorded value was consistently 0.4 cm less than the actual length. Which type of error best describes this situation?",
+  "options": {
+    "A": "Random error",
+    "B": "Parallax error",
+    "C": "Systematic error",
+    "D": "Percentage error"
+  },
+  "answer": "C",
+  "answer_text": "Systematic error",
+  "explanation": {
+    "question_restate": "A metre rule with a defective zero mark was used to measure several metal rods. Every measurement was consistently 0.4 cm smaller than the true value. The task is to identify the type of error responsible for this consistent deviation.",
+    "principle": "A systematic error is an error that affects every measurement in the same way, producing results that are consistently too high or consistently too low. It usually arises from faulty or poorly calibrated instruments, worn-out measuring scales, incorrect zero settings, or an experimental procedure that introduces the same bias into every observation.\n\nA beginner may ask: 'Why is it called systematic?' It is called systematic because the error follows a consistent pattern. Unlike random errors, it does not change unpredictably from one measurement to another.\n\nAnother beginner may ask: 'Can repeating the measurement remove a systematic error?' No. Repeating the measurement only helps reduce random errors. If the instrument itself is faulty, every repeated measurement will still contain the same error.\n\nIn practical Physics, systematic errors commonly result from defective metre rules, zero errors in vernier calipers and micrometer screw gauges, poorly calibrated measuring cylinders, and improperly adjusted electrical instruments.",
+    "steps": [
+      "Step 1: Identify whether the error changes from one measurement to another.\n\nThe error remains exactly 0.4 cm for every measurement.",
+      "Step 2: Determine the source of the error.\n\nThe metre rule has a shifted zero mark caused by worn-out edges.",
+      "Step 3: Observe the effect on all readings.\n\nEvery measurement is consistently smaller than the true value by the same amount.",
+      "Step 4: Compare with the characteristics of common measurement errors.\n\nA constant bias caused by a faulty instrument is the hallmark of a systematic error.",
+      "Step 5: Therefore, the correct answer is Systematic error."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Random error — Incorrect. Random errors vary unpredictably from one measurement to another and are reduced by taking repeated readings. Here, the error is constant.",
+      "B. Parallax error — Incorrect. Parallax error occurs when the observer's eye is not directly above the scale during reading. The problem here is the faulty metre rule, not the observer's viewing position.",
+      "C. Systematic error — Correct. The faulty zero mark introduces the same error into every measurement, producing a consistent bias.",
+      "D. Percentage error — Incorrect. Percentage error is a method of expressing the size of an error, not a type of measurement error."
+    ],
+    "exam_tip": "JAMB often tests systematic errors using practical laboratory situations rather than asking for the definition directly. Whenever an instrument is faulty, poorly calibrated, or has a zero defect that affects every reading in the same direction, think of systematic error.\n\nRemember:\n\n• Systematic errors are consistent.\n• They are usually caused by defective instruments or incorrect calibration.\n• Repeating measurements does not eliminate them.\n• Calibration or instrument correction is required.",
+    "final_answer": "C. Systematic error",
+    "simple_explanation": "The metre rule has a faulty zero mark, so every measurement is wrong by exactly the same amount (0.4 cm). Since the error is consistent for all measurements, it is called a systematic error.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Systematic Errors to learn how faulty instruments, calibration errors, zero errors, and experimental techniques produce consistent measurement errors. Practice additional JAMB-style questions involving metre rules, vernier calipers, micrometer screw gauges, measuring cylinders, and laboratory experiments.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips, and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "systematic_error",
+    "faulty_instrument",
+    "metre_rule",
+    "measurement_error",
+    "laboratory_measurement",
+    "experimental_physics",
+    "instrument_calibration",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q094",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Systematic error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A student used a metre rule to measure the lengths of several laboratory rods. Unknown to the student, the metre rule had expanded slightly due to prolonged exposure to high temperature, causing every 100.0 cm on the rule to actually measure 100.5 cm. The student carefully avoided parallax error and repeated each measurement three times, obtaining consistent readings. Which statement best describes the error affecting the measurements?",
+  "options": {
+    "A": "It is a random error because the measurements were repeated several times.",
+    "B": "It is a systematic error because the measuring instrument is incorrectly calibrated, making all readings consistently inaccurate.",
+    "C": "It is a gross error because the student forgot to read the scale correctly.",
+    "D": "It is a parallax error because the rule expanded due to heat."
+  },
+  "answer": "B",
+  "answer_text": "It is a systematic error because the measuring instrument is incorrectly calibrated, making all readings consistently inaccurate.",
+  "explanation": {
+    "question_restate": "A metre rule that has expanded due to heat is used to measure several objects. Since the scale is no longer accurate, every measurement is affected in the same direction. The task is to identify the type of measurement error involved.",
+
+    "principle": "A systematic error is an error that affects all measurements in a consistent and predictable way. It usually results from a faulty or improperly calibrated measuring instrument, poor experimental design, or environmental conditions that remain unchanged throughout the experiment.\n\nA beginner may ask: 'Why is the error called systematic?' It is because the error follows a definite pattern. Every reading is either consistently too high or consistently too low.\n\nAnother beginner may ask: 'Can repeating the measurement remove a systematic error?' No. Repeating the measurement only reduces random errors. If the instrument itself is faulty, every repeated reading will still contain the same error.\n\nExamples of systematic errors include an incorrectly calibrated metre rule, a zero error in a vernier caliper or micrometer screw gauge, a clock that runs slow, or a thermometer with an incorrect calibration.\n\nIn this question, the metre rule has expanded, so its graduations are no longer correct. Consequently, every measured length is affected in the same direction, making this a systematic error.",
+
+    "steps": [
+      "Step 1: Identify the condition affecting the measurements.\n\nThe metre rule has expanded because of heat, so its scale is no longer correctly calibrated.",
+      "Step 2: Determine whether the error changes from one reading to another.\n\nNo. Every measurement made with the faulty rule is affected in the same way.",
+      "Step 3: Consider whether repeating the measurements removes the error.\n\nNo. Although repeated readings are consistent, they are all based on the same faulty scale.",
+      "Step 4: Classify the error.\n\nA consistent error caused by an incorrectly calibrated measuring instrument is a systematic error.",
+      "Step 5: Therefore, the correct answer is that the measurements are affected by systematic error."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. It is a random error because the measurements were repeated several times. — Incorrect. Repetition reduces random errors but does not create them. The faulty metre rule produces the same error every time.",
+      "B. It is a systematic error because the measuring instrument is incorrectly calibrated, making all readings consistently inaccurate. — Correct. The expanded metre rule causes every measurement to be biased in the same direction.",
+      "C. It is a gross error because the student forgot to read the scale correctly. — Incorrect. There is no evidence of carelessness or human mistake in taking the readings.",
+      "D. It is a parallax error because the rule expanded due to heat. — Incorrect. Parallax error occurs when the observer's eye is not directly above the scale, not because of changes in the measuring instrument."
+    ],
+
+    "exam_tip": "JAMB frequently tests systematic error through practical laboratory situations involving faulty or improperly calibrated measuring instruments rather than asking for the definition directly.\n\nRemember:\n\n• Faulty instrument or incorrect calibration → Systematic error.\n• Unpredictable variations between readings → Random error.\n• Incorrect eye position while reading a scale → Parallax error.\n• Carelessness or mistakes by the observer → Gross error.\n\nWhenever every measurement is consistently too high or too low, think of systematic error first.",
+
+    "final_answer": "B. It is a systematic error because the measuring instrument is incorrectly calibrated, making all readings consistently inaccurate.",
+
+    "simple_explanation": "The metre rule has expanded, so its markings are no longer correct. Every measurement taken with it will contain the same type of error.\n\nEven if the student repeats the measurements many times, the readings will still be wrong because the instrument itself is faulty.\n\nThis is called a systematic error.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Systematic Errors to learn how faulty instruments, calibration errors, zero errors, and environmental conditions affect laboratory measurements. Study additional JAMB-style questions involving metre rules, vernier calipers, micrometer screw gauges, thermometers, measuring cylinders, and instrument calibration.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "systematic_error",
+    "metre_rule",
+    "instrument_calibration",
+    "laboratory_measurement",
+    "measurement_error",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q095",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Random errors",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A student used a metre rule to measure the length of a metal rod five times under the same laboratory conditions. The readings obtained were 48.6 cm, 48.9 cm, 48.7 cm, 48.8 cm and 48.5 cm. The teacher explained that the small differences among the readings were mainly due to random errors. Which statement best describes random errors in this experiment?",
+  "options": {
+    "A": "They produce the same error in every measurement because the metre rule is incorrectly calibrated.",
+    "B": "They arise from unpredictable variations in observation and measurement conditions, causing readings to scatter around the true value.",
+    "C": "They are caused only by a damaged metre rule and cannot occur with a properly manufactured instrument.",
+    "D": "They always make every measured value greater than the true value."
+  },
+  "answer": "B",
+  "answer_text": "They arise from unpredictable variations in observation and measurement conditions, causing readings to scatter around the true value.",
+  "explanation": {
+    "question_restate": "A student obtained slightly different measurements of the same metal rod using a metre rule. The question asks for the correct description of the random errors responsible for the variations in the readings.",
+    "principle": "Random errors are small, unpredictable variations that occur whenever a measurement is repeated. They may result from slight changes in eye position, human reaction time, environmental conditions or the observer's judgment when reading an instrument.\n\nA beginner may ask: 'Why do repeated measurements differ even when measuring the same object?' No measurement can be made under perfectly identical conditions. Tiny unavoidable variations occur during each observation.\n\nAnother beginner may ask: 'Do random errors always increase or decrease the reading?' No. Random errors may make a reading slightly higher or slightly lower than the true value. Because they occur in both directions, repeated measurements tend to scatter around the true value.\n\nScientists reduce the effect of random errors by taking several readings and calculating their mean value rather than relying on a single measurement. This improves the reliability of experimental results. JAMB frequently tests this concept using repeated laboratory measurements involving metre rules, vernier calipers, micrometer screw gauges and measuring cylinders.",
+    "steps": [
+      "Step 1: Observe that several measurements of the same rod were taken.",
+      "Step 2: Notice that the readings are close to one another but not exactly the same.",
+      "Step 3: Recognize that these small unpredictable differences are characteristic of random errors.",
+      "Step 4: Recall that random errors cause measurements to fluctuate above and below the true value rather than remaining identical.",
+      "Step 5: Therefore, the correct description is that random errors arise from unpredictable variations during measurement and produce scattered readings around the true value."
+    ],
+    "why_other_options_are_wrong": [
+      "A. They produce the same error in every measurement because the metre rule is incorrectly calibrated. — This describes a systematic error caused by incorrect calibration, not a random error.",
+      "B. They arise from unpredictable variations in observation and measurement conditions, causing readings to scatter around the true value. — Correct. This is the defining characteristic of random errors.",
+      "C. They are caused only by a damaged metre rule and cannot occur with a properly manufactured instrument. — Incorrect. Random errors occur even when the measuring instrument is in good condition.",
+      "D. They always make every measured value greater than the true value. — Incorrect. Random errors may increase or decrease the measured value."
+    ],
+    "exam_tip": "Whenever JAMB presents several repeated measurements of the same quantity with small differences between the readings, think of random errors.\n\nRemember:\n\n• Random errors are unpredictable.\n• They cause readings to fluctuate above and below the true value.\n• They can be reduced by taking repeated measurements and calculating the mean.\n• They are different from systematic errors, which shift all readings in the same direction.",
+    "final_answer": "B. They arise from unpredictable variations in observation and measurement conditions, causing readings to scatter around the true value.",
+    "simple_explanation": "The student measured the same rod several times but obtained slightly different readings. This happens because of small unpredictable changes during measurement, such as slight differences in reading the scale or positioning the eye. These are called random errors. They make some readings slightly higher and others slightly lower than the true value, so the readings scatter around the correct value.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Random Errors to learn how repeated measurements improve experimental reliability, how random errors differ from systematic errors, and why scientists calculate the mean of repeated observations. Practice additional JAMB-style questions involving metre rules, vernier calipers, micrometer screw gauges, measuring cylinders and laboratory experiments.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "random_errors",
+    "metre_rule",
+    "repeated_measurements",
+    "laboratory_measurement",
+    "experimental_physics",
+    "measurement_reliability",
+    "errors_in_measurement",
+    "phy_02"
+  ],
+  "active": true
 }
 
 ]
