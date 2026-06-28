@@ -5006,7 +5006,265 @@
     "phy_02"
   ],
   "active": true
+},
+{
+  "id": "phy_02_q096",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Random errors",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A student measured the diameter of a metal rod five times using a micrometer screw gauge. The readings obtained were 12.48 mm, 12.50 mm, 12.47 mm, 12.49 mm and 12.51 mm. The micrometer was correctly calibrated and no zero error was detected. Which statement best explains why the readings are slightly different?",
+  "options": {
+    "A": "The micrometer has a constant positive zero error.",
+    "B": "The instrument has developed a systematic calibration fault.",
+    "C": "The small differences arise from random errors that cannot be completely eliminated during repeated measurements.",
+    "D": "The diameter of the metal rod changes permanently after every measurement."
+  },
+  "answer": "C",
+  "answer_text": "The small differences arise from random errors that cannot be completely eliminated during repeated measurements.",
+  "explanation": {
+    "question_restate": "A correctly calibrated micrometer screw gauge is used to measure the same metal rod several times. Although there is no zero error, the readings differ slightly. The task is to identify the cause of these small variations.",
+    "principle": "Random errors are unpredictable variations that occur during repeated measurements, even when the measuring instrument is functioning correctly. They arise from unavoidable factors such as slight changes in the observer's judgment, tiny variations in instrument positioning, environmental conditions, or the pressure applied while taking measurements.\n\nA beginner may ask: 'If the instrument is correct, why don't all the readings agree exactly?' In practice, no measurement is perfectly repeatable. Small unavoidable fluctuations always exist, causing readings to scatter slightly around the true value.\n\nAnother beginner may ask: 'How are random errors different from systematic errors?' Systematic errors shift measurements consistently in one direction due to faults such as zero error or poor calibration. Random errors, however, sometimes increase a reading and sometimes decrease it, producing a spread of values.\n\nThe best way to reduce the effect of random errors is to take several measurements and calculate their mean value. This average is usually closer to the true value than any single measurement. JAMB frequently tests the ability to distinguish between random and systematic errors using practical laboratory situations rather than asking for direct definitions.",
+    "steps": [
+      "Step 1: Observe that the same quantity is measured several times using the same micrometer screw gauge.",
+      "Step 2: Notice that the readings differ only slightly (12.47 mm to 12.51 mm).",
+      "Step 3: The question states that the micrometer has no zero error and is correctly calibrated, so systematic error is ruled out.",
+      "Step 4: The small variations occur in both directions around approximately 12.49 mm rather than remaining consistently higher or lower.",
+      "Step 5: Such unpredictable scatter is the characteristic feature of random errors.",
+      "Step 6: Therefore, the correct explanation is that the differences are due to random errors that cannot be completely avoided during measurement."
+    ],
+    "why_other_options_are_wrong": [
+      "A. The micrometer has a constant positive zero error. — Incorrect. The question clearly states that no zero error was detected.",
+      "B. The instrument has developed a systematic calibration fault. — Incorrect. A systematic calibration fault would make the readings consistently too high or too low, not randomly scattered.",
+      "C. The small differences arise from random errors that cannot be completely eliminated during repeated measurements. — Correct. Small unpredictable variations between repeated readings are characteristic of random errors.",
+      "D. The diameter of the metal rod changes permanently after every measurement. — Incorrect. The rod's diameter does not change simply because it is being measured."
+    ],
+    "exam_tip": "Whenever repeated measurements of the same quantity show small unpredictable differences despite using a properly calibrated instrument, think of random errors. The usual remedy is to repeat the measurement several times and calculate the mean value.\n\nRemember:\n\n• Random errors cause readings to scatter above and below the true value.\n• Systematic errors shift all readings in the same direction.\n• Repeated measurements and averaging help reduce the influence of random errors.",
+    "final_answer": "C. The small differences arise from random errors that cannot be completely eliminated during repeated measurements.",
+    "simple_explanation": "The micrometer is working correctly and has no zero error. Even so, repeated measurements are not exactly the same because tiny uncontrollable factors affect each reading.\n\nThese small unpredictable differences are called random errors. Scientists reduce their effect by taking several readings and calculating the average.\n\nTherefore, the correct answer is C.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Random Errors to learn how repeated measurements are analysed, why random errors occur, how mean values improve reliability, and how to distinguish random errors from systematic errors in JAMB practical-style questions involving micrometer screw gauges, vernier calipers, metre rules and other laboratory instruments."
+  },
+  "tags": [
+    "random_errors",
+    "micrometer_screw_gauge",
+    "repeated_measurements",
+    "laboratory_measurement",
+    "measurement_reliability",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q097",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Accuracy",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A physics student measured the length of a metal rod using two different metre rules. The accepted length of the rod, determined using a calibrated standard instrument, is 75.00 cm. Instrument X gave readings of 74.99 cm, 75.01 cm and 75.00 cm, while Instrument Y gave readings of 72.50 cm, 72.49 cm and 72.51 cm. Based on these observations, which statement correctly describes Instrument Y?",
+  "options": {
+    "A": "It is accurate because its readings are consistent.",
+    "B": "It is both accurate and precise because the readings are close together.",
+    "C": "It is precise but not accurate because its readings are consistent but far from the accepted value.",
+    "D": "It is neither accurate nor precise because the readings differ from one another."
+  },
+  "answer": "C",
+  "answer_text": "It is precise but not accurate because its readings are consistent but far from the accepted value.",
+  "explanation": {
+    "question_restate": "Two instruments were used to measure the same metal rod. The accepted length is 75.00 cm. Instrument Y repeatedly gives values around 72.50 cm. The task is to determine what this says about the accuracy of Instrument Y.",
+    "principle": "Accuracy refers to how close a measured value is to the true or accepted value. Precision refers to how close repeated measurements are to one another, regardless of whether they are correct.\n\nA beginner may ask: 'Can an instrument be precise but inaccurate?' Yes. If an instrument consistently gives nearly the same reading each time but those readings are all far from the true value, it is precise but not accurate. This usually indicates a systematic error such as poor calibration or zero error.\n\nIn this question, Instrument Y produces almost identical readings (72.49–72.51 cm), showing good repeatability (precision), but they are about 2.5 cm below the accepted value of 75.00 cm, indicating poor accuracy.",
+    "steps": [
+      "Step 1: Identify the accepted (true) value.\n\nAccepted length = 75.00 cm.",
+      "Step 2: Examine Instrument Y's readings.\n\n72.50 cm, 72.49 cm and 72.51 cm are very close to one another.",
+      "Step 3: Determine precision.\n\nSince the readings are almost identical, Instrument Y is precise.",
+      "Step 4: Compare the readings with the accepted value.\n\nAll the readings are about 2.5 cm lower than 75.00 cm.",
+      "Step 5: Determine accuracy.\n\nBecause the readings are far from the accepted value, Instrument Y is not accurate.",
+      "Step 6: Select the correct description.\n\nInstrument Y is precise but not accurate."
+    ],
+    "why_other_options_are_wrong": [
+      "A. It is accurate because its readings are consistent. — Consistency indicates precision, not accuracy. The readings are far from the accepted value.",
+      "B. It is both accurate and precise because the readings are close together. — Although the readings are close together, they are not close to the accepted value.",
+      "C. It is precise but not accurate because its readings are consistent but far from the accepted value. — Correct. The readings show high precision but poor accuracy.",
+      "D. It is neither accurate nor precise because the readings differ from one another. — Incorrect. The readings differ only slightly, demonstrating good precision."
+    ],
+    "exam_tip": "JAMB frequently tests the distinction between accuracy and precision using laboratory data rather than asking for definitions directly.\n\nRemember:\n\n• Accuracy → Closeness to the accepted (true) value.\n• Precision → Closeness of repeated measurements to one another.\n\nAn instrument affected by a systematic error may produce highly precise but inaccurate results.",
+    "final_answer": "C. It is precise but not accurate because its readings are consistent but far from the accepted value.",
+    "simple_explanation": "Instrument Y gives almost the same reading every time, so it is precise. However, all its readings are much lower than the correct length of 75.00 cm, so it is not accurate. Therefore, it is precise but not accurate.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Accuracy and Precision to learn how scientists distinguish between accurate and precise measurements, identify systematic and random errors, interpret laboratory data, and analyse calibration results. Practice additional JAMB-style questions involving metre rules, vernier calipers, micrometer screw gauges, laboratory reports and instrument calibration.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "accuracy",
+    "precision",
+    "metre_rule",
+    "laboratory_measurement",
+    "accepted_value",
+    "systematic_error",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q098",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Precision",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A student used the same vernier calipers to measure the external diameter of a metal rod five times and obtained the following readings: 18.62 mm, 18.63 mm, 18.62 mm, 18.63 mm and 18.62 mm. The manufacturer's certified diameter of the rod is 19.10 mm. Which statement best describes the quality of these measurements?",
+  "options": {
+    "A": "The measurements are both accurate and precise.",
+    "B": "The measurements are accurate but not precise.",
+    "C": "The measurements are precise but not accurate.",
+    "D": "The measurements are neither accurate nor precise."
+  },
+  "answer": "C",
+  "answer_text": "The measurements are precise but not accurate.",
+  "explanation": {
+    "question_restate": "Five measurements of the same metal rod using a vernier calipers are almost identical, but they differ noticeably from the certified diameter of the rod. The task is to determine whether the measurements demonstrate accuracy, precision, both, or neither.",
+    "principle": "Precision describes how closely repeated measurements agree with one another, regardless of whether they are close to the true value. Accuracy describes how close a measurement is to the accepted or true value.\n\nA beginner may ask: 'Can measurements be precise without being accurate?' Yes. If an instrument has a calibration error or zero error, it may produce nearly identical readings every time, making the measurements highly consistent (precise), yet all the readings may be displaced from the true value.\n\nAnother beginner may ask: 'How do I identify precision in an examination question?' Look for repeated readings that are almost identical. Little variation among repeated measurements indicates high precision.\n\nTo identify accuracy, compare the measurements with the accepted or certified value. If they are far from the accepted value, they are not accurate.\n\nJAMB often tests the distinction between accuracy and precision using repeated laboratory measurements rather than asking for the definitions directly.",
+    "steps": [
+      "Step 1: Examine the repeated measurements.\n\n18.62 mm, 18.63 mm, 18.62 mm, 18.63 mm and 18.62 mm are almost identical.",
+      "Step 2: Determine whether the readings are precise.\n\nBecause the measurements are very close to one another, they show high precision.",
+      "Step 3: Compare the measurements with the certified diameter.\n\nCertified diameter = 19.10 mm.\n\nMeasured values are about 18.62–18.63 mm.",
+      "Step 4: Determine whether the readings are accurate.\n\nSince the measurements differ significantly from the true value, they are not accurate.",
+      "Step 5: Draw the correct conclusion.\n\nThe measurements are precise because they are consistent, but they are not accurate because they are not close to the accepted value."
+    ],
+    "why_other_options_are_wrong": [
+      "A. The measurements are both accurate and precise — Incorrect. Although the readings are consistent, they are not close to the certified diameter of 19.10 mm.",
+      "B. The measurements are accurate but not precise — Incorrect. The readings are not close to the true value, but they are highly consistent with one another.",
+      "C. The measurements are precise but not accurate — Correct. The repeated readings agree closely with one another but differ noticeably from the accepted value.",
+      "D. The measurements are neither accurate nor precise — Incorrect. The measurements clearly demonstrate high precision because there is very little variation among them."
+    ],
+    "exam_tip": "Whenever JAMB presents several repeated measurements, first check whether they are close to one another. If they are, the measurements are precise.\n\nNext, compare them with the accepted or true value.\n\nRemember:\n\n• Precision → Agreement among repeated measurements.\n• Accuracy → Closeness to the accepted value.\n\nA faulty but consistently calibrated instrument often produces measurements that are precise but not accurate.",
+    "final_answer": "C. The measurements are precise but not accurate.",
+    "simple_explanation": "The five readings are almost exactly the same, showing that the instrument gives consistent results. This means the measurements are precise.\n\nHowever, all the readings are much smaller than the certified diameter of 19.10 mm. Since they are not close to the true value, they are not accurate.\n\nTherefore, the correct answer is that the measurements are precise but not accurate.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Precision to learn the difference between precision and accuracy using vernier calipers, micrometer screw gauges, metre rules, laboratory experiments and calibration exercises. Practice additional JAMB-style questions on repeated measurements, instrument consistency, zero error and experimental analysis.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "precision",
+    "accuracy",
+    "vernier_calipers",
+    "laboratory_measurement",
+    "repeated_measurements",
+    "experimental_physics",
+    "measurement_quality",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q099",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Errors in Measurement",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A student used a metre rule to measure the length of a wooden rod five times and obtained the following readings: 48.2 cm, 48.1 cm, 48.3 cm, 48.2 cm and 49.6 cm. The teacher observed that one of the readings resulted from the student's eye not being properly aligned with the scale during measurement. Which of the following best describes the error responsible for the unusual reading?",
+  "options": {
+    "A": "Zero error",
+    "B": "Parallax error",
+    "C": "Systematic error",
+    "D": "Random error"
+  },
+  "answer": "B",
+  "answer_text": "Parallax error",
+  "explanation": {
+    "question_restate": "A student measured the same rod several times using a metre rule. Four readings are close together, but one reading is much larger because the student's eye was not directly above the scale. The task is to identify the type of measurement error responsible for this incorrect reading.",
+    "principle": "Errors in measurement arise whenever the measured value differs from the true value. Different sources produce different kinds of errors.\n\nParallax error occurs when an observer reads the position of a pointer or object from an angle instead of viewing it perpendicularly. The apparent position shifts, causing an incorrect reading.\n\nA beginner may ask: 'Why does the object appear to move?' This happens because viewing from different angles changes the apparent alignment of the object with the scale markings.\n\nRandom errors produce unpredictable variations between repeated measurements due to unavoidable small fluctuations, while systematic errors consistently shift measurements in the same direction because of faulty instruments or experimental methods. Zero error specifically occurs when an instrument does not read zero when it should.\n\nSince the question explicitly states that the student's eye was not properly aligned with the metre-rule scale, the error is due to incorrect observation rather than a faulty instrument.",
+    "steps": [
+      "Step 1: Examine the repeated measurements.\n\nMost readings are between 48.1 cm and 48.3 cm, indicating good consistency.",
+      "Step 2: Identify the abnormal reading.\n\nThe value 49.6 cm is much higher than the others and is therefore an outlier.",
+      "Step 3: Read the information given in the question.\n\nThe teacher states that the student's eye was not properly aligned with the scale during the measurement.",
+      "Step 4: Recall the definition of parallax error.\n\nParallax error occurs when a scale is viewed from an angle rather than directly above the mark being read.",
+      "Step 5: Compare with the other options.\n\nThere is no evidence that the metre rule had a zero error or was permanently faulty, and the cause of the incorrect reading is specifically identified as poor eye positioning.",
+      "Step 6: Therefore, the unusual reading resulted from parallax error."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Zero error — Incorrect. Zero error occurs when an instrument fails to read zero before measurement begins. The question does not indicate any fault with the metre rule.",
+      "B. Parallax error — Correct. Viewing the scale from an incorrect angle causes the reading to appear larger or smaller than the actual value.",
+      "C. Systematic error — Incorrect. A systematic error affects measurements consistently in the same direction throughout the experiment, not just one reading caused by improper observation.",
+      "D. Random error — Incorrect. Although repeated measurements naturally vary slightly, the question clearly identifies the specific cause as incorrect eye alignment, which is parallax error."
+    ],
+    "exam_tip": "JAMB frequently tests errors in measurement through practical laboratory situations rather than asking for definitions alone. Whenever the question mentions reading a scale from an angle, eye position, or not viewing directly above a pointer or mark, immediately think of parallax error.\n\nRemember these common measurement errors:\n\n• Zero error → Instrument does not start from zero.\n• Parallax error → Eye not directly above the scale.\n• Systematic error → Consistent error caused by faulty equipment or procedure.\n• Random error → Small unpredictable variations between repeated measurements.",
+    "final_answer": "B. Parallax error",
+    "simple_explanation": "Four measurements are almost the same, but one is much larger because the student looked at the metre-rule scale from the wrong angle. Reading a scale without placing the eye directly above it causes parallax error. Therefore, the correct answer is Parallax error.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Errors in Measurement to learn about zero error, parallax error, systematic error and random error. Study worked examples involving metre rules, thermometers, vernier calipers, micrometer screw gauges and analogue meters, together with JAMB-style practical questions."
+  },
+  "tags": [
+    "errors_in_measurement",
+    "parallax_error",
+    "metre_rule",
+    "laboratory_measurement",
+    "experimental_physics",
+    "measurement_errors",
+    "practical_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q100",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Integration of Absolute Error and Relative Error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A student used a standard metre rule to measure the length of a wooden rod. The accepted length of the rod was 50.0 cm, but the student recorded a measured length of 49.2 cm. In preparing the laboratory report, the student was required to determine both the absolute error and the relative error of the measurement. Which of the following pairs is correct?",
+  "options": {
+    "A": "Absolute error = 0.8 cm; Relative error = 0.016",
+    "B": "Absolute error = 0.8 cm; Relative error = 0.800",
+    "C": "Absolute error = 1.6 cm; Relative error = 0.032",
+    "D": "Absolute error = 49.2 cm; Relative error = 0.984"
+  },
+  "answer": "A",
+  "answer_text": "Absolute error = 0.8 cm; Relative error = 0.016",
+  "explanation": {
+    "question_restate": "A metre rule measurement of a wooden rod gives 49.2 cm instead of the accepted value of 50.0 cm. Determine both the absolute error and the relative error of the measurement.",
+    "principle": "Measurement errors are commonly expressed in different forms. The absolute error tells us the actual numerical difference between the measured value and the accepted value, regardless of whether the measurement is too high or too low.\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nThe relative error shows the size of the absolute error compared with the accepted value.\n\nRelative Error = Absolute Error ÷ Accepted Value\n\nUnlike percentage error, relative error has no percentage sign. If required, multiplying the relative error by 100 gives the percentage error.\n\nScientists often report both absolute and relative errors because the absolute error alone does not indicate whether the error is large or small compared with the quantity being measured.",
+    "steps": [
+      "Step 1: Identify the accepted value.\n\nAccepted length = 50.0 cm.",
+      "Step 2: Identify the measured value.\n\nMeasured length = 49.2 cm.",
+      "Step 3: Calculate the absolute error.\n\nAbsolute Error = |49.2 − 50.0| = 0.8 cm.",
+      "Step 4: Calculate the relative error.\n\nRelative Error = 0.8 ÷ 50.0 = 0.016.",
+      "Step 5: Therefore, the correct pair is:\n\nAbsolute error = 0.8 cm\nRelative error = 0.016."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Absolute error = 0.8 cm; Relative error = 0.016 — Correct. The absolute difference is 0.8 cm, and dividing by the accepted value of 50.0 cm gives a relative error of 0.016.",
+      "B. Absolute error = 0.8 cm; Relative error = 0.800 — This incorrectly treats the absolute error itself as the relative error without dividing by the accepted value.",
+      "C. Absolute error = 1.6 cm; Relative error = 0.032 — These values result from doubling the actual error before calculating the relative error.",
+      "D. Absolute error = 49.2 cm; Relative error = 0.984 — This mistake occurs when the measured value is incorrectly taken as the absolute error and divided by the accepted value."
+    ],
+    "exam_tip": "JAMB frequently integrates absolute error, relative error and percentage error within practical laboratory situations rather than asking for their definitions separately.\n\nAlways follow this sequence:\n\n1. Determine the accepted (true) value.\n2. Calculate the absolute error.\n3. Divide the absolute error by the accepted value to obtain the relative error.\n4. Multiply the relative error by 100 only if the question asks for percentage error.\n\nRemember:\n\nAbsolute Error = |Measured − Accepted|\n\nRelative Error = Absolute Error ÷ Accepted Value\n\nPercentage Error = Relative Error × 100%",
+    "final_answer": "A. Absolute error = 0.8 cm; Relative error = 0.016",
+    "simple_explanation": "The accepted length is 50.0 cm, while the measured length is 49.2 cm.\n\nDifference = 50.0 − 49.2 = 0.8 cm.\n\nSo, the absolute error is 0.8 cm.\n\nRelative error = 0.8 ÷ 50.0 = 0.016.\n\nTherefore, the correct answer is Option A.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Absolute Error, Relative Error and Percentage Error to learn how physicists evaluate measurement quality, analyse laboratory results and report experimental uncertainties. Practice additional JAMB-style questions involving metre rules, vernier calipers, micrometer screw gauges, measuring cylinders, laboratory reports and instrument calibration.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "absolute_error",
+    "relative_error",
+    "metre_rule",
+    "laboratory_measurement",
+    "measurement_errors",
+    "experimental_physics",
+    "measurement_accuracy",
+    "phy_02"
+  ],
+  "active": true
 }
+
 
 ]
 
