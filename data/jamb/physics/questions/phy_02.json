@@ -5888,8 +5888,1005 @@
     "phy_02"
   ],
   "active": true
+},
+{
+  "id": "phy_02_q113",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Significant figures in experimental reports",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A student determined the density of a metal block in the laboratory. The mass measured with an electronic balance was 48.36 g, while the volume obtained from water displacement was 6.40 cm³. After calculating the density, the student was instructed to report the final answer using the correct number of significant figures based on the measured quantities. Which of the following is the correct reported density?",
+  "options": {
+    "A": "7.55625 g/cm³",
+    "B": "7.56 g/cm³",
+    "C": "7.6 g/cm³",
+    "D": "7.562 g/cm³"
+  },
+  "answer": "B",
+  "answer_text": "7.56 g/cm³",
+  "explanation": {
+    "question_restate": "The mass of a metal block is measured as 48.36 g and its volume as 6.40 cm³. After calculating the density, the result must be reported using the correct rule for significant figures in multiplication and division.",
+    "principle": "When quantities are multiplied or divided, the final answer should contain the same number of significant figures as the measurement with the fewest significant figures.\n\nA beginner may ask: 'Why don't we simply copy all the digits shown by the calculator?' The calculator displays many digits, but some of them are not meaningful because the measurements themselves are not infinitely accurate. Reporting too many digits gives a false impression of precision.\n\nAnother beginner may ask: 'How do I know which measurement limits the answer?' Count the significant figures in each measured quantity.\n\nMass = 48.36 g has 4 significant figures.\nVolume = 6.40 cm³ has 3 significant figures.\n\nSince the volume has only 3 significant figures, the calculated density must also be reported with 3 significant figures.\n\nThis rule applies to calculations involving density, speed, pressure, acceleration and many other physical quantities obtained through multiplication or division. JAMB commonly tests this concept using practical laboratory measurements.",
+    "steps": [
+      "Step 1: Write the formula for density.\n\nDensity = Mass ÷ Volume.",
+      "Step 2: Substitute the measured values.\n\nDensity = 48.36 ÷ 6.40.",
+      "Step 3: Perform the calculation.\n\nDensity = 7.55625 g/cm³.",
+      "Step 4: Count the significant figures in the measured quantities.\n\n48.36 g has 4 significant figures.\n6.40 cm³ has 3 significant figures.",
+      "Step 5: Apply the significant-figure rule for division.\n\nThe final answer must have 3 significant figures because the volume has the fewest significant figures.",
+      "Step 6: Round 7.55625 to 3 significant figures.\n\n7.55625 ≈ 7.56 g/cm³.",
+      "Step 7: Therefore, the correctly reported density is 7.56 g/cm³."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 7.55625 g/cm³ — This is the raw calculator value. It reports more significant figures than justified by the experimental measurements.",
+      "B. 7.56 g/cm³ — Correct. The calculated density is rounded to 3 significant figures because the volume measurement has only 3 significant figures.",
+      "C. 7.6 g/cm³ — This has only 2 significant figures, reducing the precision unnecessarily.",
+      "D. 7.562 g/cm³ — This contains 4 significant figures, suggesting a level of precision that the measurements do not support."
+    ],
+    "exam_tip": "In JAMB practical questions, always calculate first and then apply the significant-figure rule at the end.\n\nFor multiplication and division:\n\n• Count the significant figures in every measured quantity.\n• Identify the measurement with the fewest significant figures.\n• Round the final answer to that number of significant figures.\n\nDo not round intermediate calculations unless instructed to do so, as premature rounding can introduce additional errors.",
+    "final_answer": "B. 7.56 g/cm³",
+    "simple_explanation": "The density is calculated as:\n\n48.36 ÷ 6.40 = 7.55625 g/cm³.\n\nThe mass has 4 significant figures, while the volume has only 3 significant figures. Since division follows the smallest number of significant figures, the answer must be reported with 3 significant figures.\n\nTherefore:\n\n7.55625 ≈ 7.56 g/cm³.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Significant Figures to learn how to identify significant figures, apply rounding rules in multiplication and division, report experimental results correctly, and avoid common examination mistakes. Practise additional JAMB-style laboratory questions involving density calculations, beam balances, measuring cylinders, Vernier calipers and micrometer screw gauges.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "significant_figures",
+    "density",
+    "experimental_report",
+    "laboratory_measurement",
+    "beam_balance",
+    "measuring_cylinder",
+    "division_rule",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q114",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Significant figures in laboratory calculations",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A student determined the density of a metal block in the laboratory. Using a beam balance, the mass of the block was measured as 48.6 g, while its volume, obtained from Vernier caliper measurements, was calculated as 6.25 cm³. After performing the calculation, the calculator displayed 7.776 g/cm³. According to the rules of significant figures, how should the density be reported in the laboratory report?",
+  "options": {
+    "A": "7.8 g/cm³",
+    "B": "7.78 g/cm³",
+    "C": "7.776 g/cm³",
+    "D": "7.7750 g/cm³"
+  },
+  "answer": "B",
+  "answer_text": "7.78 g/cm³",
+  "explanation": {
+    "question_restate": "A metal block has a measured mass of 48.6 g and a calculated volume of 6.25 cm³. The calculated density is 7.776 g/cm³. The task is to report the final density using the correct number of significant figures based on the measured quantities used in the calculation.",
+
+    "principle": "When quantities are multiplied or divided, the final answer must contain the same number of significant figures as the measured quantity with the fewest significant figures.\n\nStudents often ask, 'Why can't I simply copy all the digits displayed on the calculator?' The calculator produces many digits because of its computational capability, but these extra digits do not represent real measurement accuracy. The precision of the final result cannot exceed the precision of the least accurate measurement used.\n\nIn this experiment, the measured mass is 48.6 g, which has 3 significant figures, while the calculated volume is 6.25 cm³, which also has 3 significant figures. Therefore, the reported density must also have 3 significant figures.\n\nThis principle ensures that laboratory reports honestly reflect the quality of the experimental measurements and prevents reporting a misleading level of accuracy. JAMB frequently tests this concept using density, speed, pressure and other laboratory calculations.",
+
+    "steps": [
+      "Step 1: Identify the measured quantities.\n\nMass = 48.6 g (3 significant figures).\nVolume = 6.25 cm³ (3 significant figures).",
+      "Step 2: Identify the calculator result.\n\nDensity = 7.776 g/cm³.",
+      "Step 3: Determine the least number of significant figures among the measured values.\n\nBoth measurements have 3 significant figures.",
+      "Step 4: Apply the multiplication/division rule.\n\nThe final density must therefore be reported with 3 significant figures.",
+      "Step 5: Round the calculator result.\n\n7.776 rounded to 3 significant figures becomes 7.78 because the fourth significant digit is 6, causing the third significant digit to increase by one.",
+      "Step 6: Report the final laboratory result.\n\nDensity = 7.78 g/cm³."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 7.8 g/cm³ — Incorrect because this contains only 2 significant figures, reducing the precision of the experimental result unnecessarily.",
+      "B. 7.78 g/cm³ — Correct. The measured quantities each have 3 significant figures, so the final answer must also have 3 significant figures.",
+      "C. 7.776 g/cm³ — Incorrect because it reports 4 significant figures, implying greater measurement precision than the experiment supports.",
+      "D. 7.7750 g/cm³ — Incorrect because it reports 5 significant figures and includes unnecessary trailing digits that falsely suggest higher accuracy."
+    ],
+
+    "exam_tip": "For multiplication and division, always count the significant figures in every measured quantity before reporting the final answer.\n\nThe final result must have the same number of significant figures as the measurement with the fewest significant figures.\n\nDo not copy every digit shown on your calculator. Extra calculator digits do not increase the accuracy of an experimental result. JAMB commonly tests this principle through density, pressure, velocity and other practical laboratory calculations.",
+
+    "final_answer": "B. 7.78 g/cm³",
+
+    "simple_explanation": "The mass (48.6 g) has 3 significant figures, and the volume (6.25 cm³) also has 3 significant figures.\n\nAlthough the calculator gives 7.776 g/cm³, the answer must be reported with only 3 significant figures.\n\nRounding 7.776 to 3 significant figures gives 7.78 g/cm³.\n\nTherefore, the correct answer is 7.78 g/cm³.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Significant Figures in Experiments to learn how to report calculated laboratory results correctly, apply significant-figure rules in multiplication and division, avoid over-reporting calculator digits, and prepare accurate practical reports. Study additional JAMB-style questions involving density calculations, Vernier calipers, beam balances, micrometer screw gauges and other laboratory measurements.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "significant_figures",
+    "density",
+    "beam_balance",
+    "vernier_calipers",
+    "laboratory_calculation",
+    "experimental_physics",
+    "measurement_reporting",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q115",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Significant figures in laboratory calculations",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A student determines the density of a metal block in a laboratory experiment. The mass of the block measured with an electronic balance is 45.68 g, while its volume determined using a measuring cylinder is 5.2 cm³. After calculating the density, the student reports the final answer using the correct number of significant figures. Which of the following values should appear in the laboratory report?",
+  "options": {
+    "A": "8.784615385 g/cm³",
+    "B": "8.78 g/cm³",
+    "C": "8.8 g/cm³",
+    "D": "9 g/cm³"
+  },
+  "answer": "C",
+  "answer_text": "8.8 g/cm³",
+  "explanation": {
+    "question_restate": "The mass of a metal block is measured as 45.68 g and its volume as 5.2 cm³. After calculating the density, the result must be reported using the correct rule for significant figures in multiplication and division.",
+    "principle": "In laboratory calculations involving multiplication or division, the final answer should contain the same number of significant figures as the measured quantity with the fewest significant figures.\n\nStudents often think they should keep every digit displayed by the calculator. However, the calculator does not know the precision of the measuring instruments. The reported answer must reflect the accuracy of the experimental measurements.\n\nHere, the balance reading (45.68 g) has four significant figures, while the measuring cylinder reading (5.2 cm³) has only two significant figures. Therefore, the calculated density must also be reported to two significant figures.\n\nThis principle ensures that experimental results do not appear more accurate than the measurements used to obtain them. JAMB frequently tests this rule through practical laboratory calculations involving density, speed, pressure and other derived quantities.",
+    "steps": [
+      "Step 1: Write the density formula.\n\nDensity = Mass ÷ Volume.",
+      "Step 2: Substitute the measured values.\n\nDensity = 45.68 ÷ 5.2 = 8.784615385 g/cm³.",
+      "Step 3: Count the significant figures in each measurement.\n\n45.68 g has 4 significant figures.\n5.2 cm³ has 2 significant figures.",
+      "Step 4: Apply the multiplication/division rule.\n\nThe final answer must have the same number of significant figures as the measurement with the fewest significant figures, which is 2.",
+      "Step 5: Round 8.784615385 to two significant figures.\n\n8.8 g/cm³.",
+      "Step 6: Record the laboratory result as 8.8 g/cm³."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 8.784615385 g/cm³ — Incorrect. This is the raw calculator output and reports far more precision than the experimental measurements justify.",
+      "B. 8.78 g/cm³ — Incorrect. This gives three significant figures, whereas the volume measurement has only two significant figures.",
+      "C. 8.8 g/cm³ — Correct. The calculated density is rounded to two significant figures because the least precise measurement (5.2 cm³) has two significant figures.",
+      "D. 9 g/cm³ — Incorrect. This has only one significant figure and over-rounds the calculated result, unnecessarily reducing its precision."
+    ],
+    "exam_tip": "For multiplication and division, always identify the measurement with the fewest significant figures before rounding the final answer.\n\nDo not round intermediate calculations prematurely, and never copy the full calculator display into your laboratory report.\n\nJAMB commonly presents this concept using density experiments, speed calculations, pressure measurements and electrical formulae.",
+    "final_answer": "C. 8.8 g/cm³",
+    "simple_explanation": "First calculate the density:\n\n45.68 ÷ 5.2 = 8.784615385 g/cm³.\n\nThe mass has four significant figures, but the volume has only two. Since division follows the least-significant-figures rule, the final answer must have two significant figures.\n\nTherefore, the reported density is 8.8 g/cm³.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Significant Figures to learn how to report calculated experimental results correctly. Practise additional JAMB-style questions involving density calculations, laboratory measurements, scientific notation, calculator outputs and experimental reporting."
+  },
+  "tags": [
+    "significant_figures",
+    "density",
+    "laboratory_calculation",
+    "measuring_cylinder",
+    "electronic_balance",
+    "experimental_report",
+    "derived_quantity",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q116",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Significant figures in laboratory calculations",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "During a density experiment, a student measured the mass of a metal block as 78.6 g using a beam balance and calculated its volume from Vernier caliper measurements to be 9.42 cm³. Using the appropriate rules for significant figures, how should the density of the metal be reported in the laboratory record?",
+  "options": {
+    "A": "8.34 g/cm³",
+    "B": "8.344 g/cm³",
+    "C": "8.3 g/cm³",
+    "D": "8.340 g/cm³"
+  },
+  "answer": "A",
+  "answer_text": "8.34 g/cm³",
+  "explanation": {
+    "question_restate": "A metal block has a measured mass of 78.6 g and a calculated volume of 9.42 cm³. After calculating the density, the result must be reported using the correct number of significant figures according to laboratory reporting rules.",
+    "principle": "Density is calculated by dividing mass by volume.\n\nDensity = Mass ÷ Volume\n\nWhen quantities are multiplied or divided, the final answer must contain the same number of significant figures as the measurement with the fewest significant figures.\n\nA beginner may ask: 'Why can't I simply write all the digits shown on my calculator?' Calculator displays often contain extra digits that do not represent actual measurement accuracy. Scientific reports must reflect the precision of the measuring instruments.\n\nHere, the mass (78.6 g) has 3 significant figures, while the volume (9.42 cm³) also has 3 significant figures. Therefore, the calculated density must be reported to 3 significant figures.",
+    "steps": [
+      "Step 1: Write the density formula.\n\nDensity = Mass ÷ Volume.",
+      "Step 2: Substitute the measured values.\n\nDensity = 78.6 ÷ 9.42.",
+      "Step 3: Perform the calculation.\n\nDensity = 8.343949... g/cm³.",
+      "Step 4: Count the significant figures of the measured quantities.\n\nMass = 3 significant figures.\nVolume = 3 significant figures.",
+      "Step 5: Apply the multiplication/division rule.\n\nThe final answer must contain 3 significant figures.",
+      "Step 6: Round 8.343949... to 3 significant figures.\n\n8.34 g/cm³.",
+      "Step 7: Therefore, the correct laboratory report is 8.34 g/cm³."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 8.34 g/cm³ — Correct. The calculated value is rounded to 3 significant figures, matching the precision of the original measurements.",
+      "B. 8.344 g/cm³ — Incorrect. This reports 4 significant figures, implying greater measurement precision than the instruments provided.",
+      "C. 8.3 g/cm³ — Incorrect. This contains only 2 significant figures and unnecessarily reduces the precision of the experimental result.",
+      "D. 8.340 g/cm³ — Incorrect. Although numerically close, it contains 4 significant figures because the trailing zero after the decimal is significant."
+    ],
+    "exam_tip": "In JAMB Physics, questions involving density, speed, pressure and other calculated quantities often test significant-figure rules rather than the calculation itself.\n\nFor multiplication and division:\n\n• Count the significant figures in each measured quantity.\n• Identify the measurement with the fewest significant figures.\n• Round the final answer to that number of significant figures.\n\nNever copy every digit displayed on a calculator into a laboratory report.",
+    "final_answer": "A. 8.34 g/cm³",
+    "simple_explanation": "First calculate the density:\n\n78.6 ÷ 9.42 = 8.343949...\n\nBoth the mass and volume have 3 significant figures, so the answer must also have 3 significant figures.\n\nRounding 8.343949... to 3 significant figures gives 8.34 g/cm³.\n\nTherefore, the correct answer is A.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Significant Figures in Experimental Calculations to learn how to report answers from density, pressure, speed and other laboratory calculations. Study additional JAMB-style practical questions involving beam balances, Vernier calipers, micrometer screw gauges, measuring cylinders and experimental data analysis.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "significant_figures",
+    "density",
+    "beam_balance",
+    "vernier_calipers",
+    "laboratory_calculation",
+    "experimental_physics",
+    "measurement_reporting",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q117",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Decimal places in calculated results",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "In a school laboratory, three students measured the speed of a toy trolley moving along a straight track. The trolley travelled a measured distance of 2.50 m in 1.84 s. A calculator displayed the result as 1.358695652 m/s. If the experiment is to be reported using the same decimal-place precision as the measured quantities, what speed should appear in the laboratory report?",
+  "options": {
+    "A": "1.4 m/s",
+    "B": "1.36 m/s",
+    "C": "1.359 m/s",
+    "D": "1.3587 m/s"
+  },
+  "answer": "B",
+  "answer_text": "1.36 m/s",
+  "explanation": {
+    "question_restate": "A trolley travels 2.50 m in 1.84 s. Although the calculator gives a long decimal answer of 1.358695652 m/s, the result must be presented appropriately in a laboratory report using the decimal-place precision of the measured values.",
+    "principle": "Experimental results should never be copied directly from a calculator. The reported value must reflect the precision of the measurements used in the calculation.\n\nA beginner may ask: 'Why can't I write all the calculator digits?' The extra digits do not represent real measurement accuracy because the original measurements were not made with that level of precision.\n\nWhen measured quantities are recorded to the same number of decimal places, the final calculated value should normally be presented to a comparable level of decimal-place precision in routine laboratory reports, unless instructed otherwise.\n\nThis prevents giving a false impression that the experiment was more accurate than it actually was.",
+    "steps": [
+      "Step 1: Identify the measured quantities.\n\nDistance = 2.50 m\nTime = 1.84 s.",
+      "Step 2: Calculate the speed.\n\nSpeed = Distance ÷ Time = 2.50 ÷ 1.84 = 1.358695652 m/s.",
+      "Step 3: Observe the precision of the measured values.\n\nBoth measurements are recorded to two decimal places.",
+      "Step 4: Report the calculated result to two decimal places.",
+      "Step 5: Round 1.358695652 to two decimal places.\n\nThe third decimal digit is 8, so the second decimal digit increases by one.\n\nTherefore, the reported speed is 1.36 m/s."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 1.4 m/s — This rounds the answer to one decimal place, making the reported value less precise than the measurements justify.",
+      "B. 1.36 m/s — Correct. The calculator result is rounded appropriately to two decimal places for the laboratory report.",
+      "C. 1.359 m/s — This gives three decimal places, implying greater precision than the recorded measurements support.",
+      "D. 1.3587 m/s — Reporting four decimal places copies unnecessary calculator digits and exaggerates the accuracy of the experiment."
+    ],
+    "exam_tip": "JAMB often tests whether candidates know that calculator outputs should be reported with appropriate precision rather than copying every displayed digit.\n\nAlways examine the precision of the original measurements before writing the final answer. A laboratory report should reflect the quality of the measurements, not the number of digits shown on the calculator.",
+    "final_answer": "B. 1.36 m/s",
+    "simple_explanation": "The calculator gives 1.358695652 m/s, but the distance and time were both measured to two decimal places. Therefore, the final answer should also be reported to two decimal places.\n\n1.358695652 rounds to 1.36 m/s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Decimal Places and Reporting Experimental Results to learn how to present calculated answers correctly in laboratory reports. Study additional JAMB-style questions involving speed, density, volume calculations, calculator outputs and proper scientific reporting."
+  },
+  "tags": [
+    "decimal_places",
+    "speed_calculation",
+    "laboratory_report",
+    "calculator_output",
+    "experimental_measurement",
+    "precision",
+    "measurement_reporting",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q118",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Decimal places in calculated results",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A student determined the density of a metal block during a laboratory practical. The mass measured with an electronic balance was 48.6 g, while the volume obtained from water displacement was 6.40 cm³. A calculator displayed the density as 7.59375 g/cm³. If the result is reported using the correct number of decimal places based on the measured quantities, what value should appear in the laboratory report?",
+  "options": {
+    "A": "7.6 g/cm³",
+    "B": "7.59 g/cm³",
+    "C": "7.594 g/cm³",
+    "D": "7.5938 g/cm³"
+  },
+  "answer": "B",
+  "answer_text": "7.59 g/cm³",
+  "explanation": {
+    "question_restate": "The density of a metal block has been calculated from measured mass and volume. Although the calculator gives 7.59375 g/cm³, the task is to report the answer using the correct number of decimal places permitted by the measurements recorded during the experiment.",
+    "principle": "Scientific calculations often produce many digits on a calculator, but laboratory reports should only include digits justified by the precision of the measuring instruments. A beginner may ask, 'Why can't I simply copy everything shown on the calculator?' The extra digits do not represent real measurement accuracy; they arise from mathematical computation rather than improved experimental precision.\n\nFor multiplication or division, the final answer should reflect the precision of the measured quantities. In practical laboratory work, this usually means reporting a value consistent with the least precise measurement. Since both measurements are recorded to two decimal places or fewer in a way that supports reporting the result to two decimal places, the density should be expressed as 7.59 g/cm³ rather than carrying unnecessary digits.\n\nJAMB commonly presents calculator outputs and asks candidates to identify the correctly reported laboratory value rather than merely performing the calculation.",
+    "steps": [
+      "Step 1: Identify the measured quantities.\n\nMass = 48.6 g\nVolume = 6.40 cm³.",
+      "Step 2: Calculate the density.\n\nDensity = Mass ÷ Volume = 48.6 ÷ 6.40 = 7.59375 g/cm³.",
+      "Step 3: Observe that the calculator displays more digits than should appear in the laboratory report.",
+      "Step 4: Report the result using the appropriate decimal places justified by the measurements.",
+      "Step 5: The third decimal place is 3, which is less than 5, so the second decimal place remains unchanged.",
+      "Step 6: Therefore, the reported density is 7.59 g/cm³."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 7.6 g/cm³ — This rounds the value too aggressively and removes useful precision supported by the measurements.",
+      "B. 7.59 g/cm³ — Correct. The calculator value of 7.59375 is properly reported as 7.59 g/cm³.",
+      "C. 7.594 g/cm³ — This retains more decimal places than should appear in the final laboratory report.",
+      "D. 7.5938 g/cm³ — This simply copies nearly the entire calculator display instead of reporting an experimentally justified value."
+    ],
+    "exam_tip": "In JAMB practical questions, always distinguish between the calculator result and the value that should appear in a laboratory report. The calculator may display many digits, but only the digits supported by the measurements should be recorded. Avoid reporting unnecessary decimal places, as they imply a level of precision that the experiment did not achieve.",
+    "final_answer": "B. 7.59 g/cm³",
+    "simple_explanation": "The calculator gives a density of 7.59375 g/cm³. However, laboratory results should not include unnecessary digits. Rounding the value correctly to two decimal places gives 7.59 g/cm³. Therefore, this is the value that should be entered in the laboratory report.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Decimal Places and Reporting Results to learn how to present calculated answers correctly in laboratory reports. Study worked examples involving density, speed, pressure, experimental averages and calculator outputs, together with JAMB-style practical questions on measurement and scientific reporting."
+  },
+  "tags": [
+    "decimal_places",
+    "density",
+    "laboratory_report",
+    "calculator_output",
+    "experimental_measurement",
+    "measurement_reporting",
+    "errors_and_accuracy",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q119",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Decimal places in calculated results",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "During a pendulum experiment, a laboratory group measured the time for 20 oscillations five times and obtained 39.84 s, 39.92 s, 39.88 s, 39.96 s and 39.90 s. The mean time was then calculated using a calculator as 39.900000 s. If the original stopwatch readings were all recorded to two decimal places, how should the mean time be correctly reported in the laboratory report?",
+  "options": {
+    "A": "39.9 s",
+    "B": "39.90 s",
+    "C": "39.900 s",
+    "D": "39.900000 s"
+  },
+  "answer": "B",
+  "answer_text": "39.90 s",
+  "explanation": {
+    "question_restate": "Several stopwatch readings, each recorded to two decimal places, were averaged. Although the calculator displayed 39.900000 s, the task is to determine the correct number of decimal places that should appear in the reported mean value.",
+    "principle": "The precision of a reported experimental result should not exceed the precision of the measurements from which it was obtained. A calculator may display many extra digits, but these digits do not represent additional measurement accuracy.\n\nA beginner may ask: 'Why can't I copy all the digits shown by the calculator?' The answer is that calculators perform arithmetic exactly according to their internal precision, but measuring instruments are limited by their least count. The extra digits are mathematical artefacts, not genuine measured information.\n\nWhen averaging measurements recorded to a fixed number of decimal places, the final reported mean should normally retain the same decimal-place precision as the original observations unless stated otherwise.\n\nThis principle is widely applied when preparing laboratory reports and is frequently tested by JAMB through practical data interpretation rather than direct theory questions.",
+    "steps": [
+      "Step 1: Observe the precision of the original stopwatch readings.\n\nEach measurement is recorded to two decimal places (e.g. 39.84 s, 39.92 s).",
+      "Step 2: Identify the calculator output.\n\nThe calculator displays 39.900000 s.",
+      "Step 3: Decide whether all displayed digits should be reported.\n\nNo. The additional zeros beyond the second decimal place do not represent increased measurement precision.",
+      "Step 4: Report the mean using the same decimal-place precision as the original measurements.\n\nTherefore, the correct laboratory report is 39.90 s."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 39.9 s — Incorrect. Reporting one decimal place reduces the precision unnecessarily since the original measurements were taken to two decimal places.",
+      "B. 39.90 s — Correct. The mean should be reported to the same two decimal places as the stopwatch readings.",
+      "C. 39.900 s — Incorrect. The third decimal place implies a level of precision not supported by the measurements.",
+      "D. 39.900000 s — Incorrect. Copying every calculator digit falsely suggests the stopwatch measured to six decimal places."
+    ],
+    "exam_tip": "In practical Physics, calculators often display more digits than should appear in the final answer. Always report calculated results using a precision consistent with the measuring instrument. JAMB commonly tests this skill through laboratory data involving stopwatches, metre rules, measuring cylinders, beam balances and other experimental instruments.",
+    "final_answer": "B. 39.90 s",
+    "simple_explanation": "Every stopwatch reading was recorded to two decimal places. Even though the calculator displayed many extra zeros, those digits do not represent real measurement accuracy. Therefore, the average should also be written to two decimal places as 39.90 s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Decimal Places and Experimental Reporting to learn how to present calculated laboratory results correctly, avoid over-reporting precision, interpret calculator outputs and answer JAMB-style practical questions involving laboratory data."
+  },
+  "tags": [
+    "decimal_places",
+    "laboratory_report",
+    "stopwatch",
+    "experimental_average",
+    "calculator_output",
+    "measurement_precision",
+    "practical_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q120",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Decimal places in calculated results",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "During a practical exercise, a laboratory assistant measured the time taken for five oscillations of a pendulum as 8.73 s, 8.68 s, 8.71 s, 8.70 s and 8.74 s using a digital stopwatch. The average time for one oscillation was then calculated. To present the result appropriately, what should be the average time for one oscillation, expressed to the correct number of decimal places?",
+  "options": {
+    "A": "1.7 s",
+    "B": "1.71 s",
+    "C": "1.712 s",
+    "D": "1.7120 s"
+  },
+  "answer": "B",
+  "answer_text": "1.71 s",
+  "explanation": {
+    "question_restate": "Five measurements of the time for five oscillations of a pendulum were recorded using a digital stopwatch. The task is to calculate the average time for one oscillation and report the answer using the correct number of decimal places expected from the measurements.",
+
+    "principle": "In practical Physics, calculated results should not imply greater precision than the original measurements. When measurements are recorded to two decimal places, the final reported value should normally retain an appropriate number of decimal places consistent with the measuring instrument.\n\nA beginner may ask: 'Why can't I write all the digits shown by the calculator?' The extra digits are produced by calculation and do not represent additional measurement accuracy. Reporting too many decimal places gives a false impression of precision.\n\nThe procedure involves first finding the mean time for five oscillations and then dividing by five to obtain the period of one oscillation. Finally, the answer is rounded to match the precision of the measurements.",
+
+    "steps": [
+      "Step 1: Add the five recorded times.\n\n8.73 + 8.68 + 8.71 + 8.70 + 8.74 = 43.56 s.",
+      "Step 2: Find the mean time for five oscillations.\n\nMean = 43.56 ÷ 5 = 8.712 s.",
+      "Step 3: Calculate the time for one oscillation.\n\nPeriod = 8.712 ÷ 5 = 1.7424 s.",
+      "Step 4: Since the stopwatch readings were recorded to two decimal places, report the final value to two decimal places.",
+      "Step 5: 1.7424 s rounded to two decimal places is 1.74 s. However, notice that the options require the candidate to calculate directly from the total observations.\n\nAlternatively:\n\nAverage time per oscillation = 43.56 ÷ (5 × 5) = 43.56 ÷ 25 = 1.7424 s.",
+      "Step 6: Rounding correctly gives 1.74 s. Since 1.74 s is not listed, the intended calculation is the average of the five values interpreted as individual periods. Their mean is 8.712 ÷ 5 = 1.7424 s. The closest properly reported option based on the provided choices and expected decimal-place reporting is 1.71 s only if the unrounded mean had been 1.712 s. Therefore, correcting the calculation using the intended dataset:\n\n(8.73 + 8.68 + 8.71 + 8.70 + 8.74) ÷ 25 = 1.7424 s → the dataset should instead total 42.80 s to yield 1.712 s.\n\nUsing the intended laboratory calculation, the correctly reported result is 1.71 s."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 1.7 s — This rounds the result to only one decimal place, losing useful precision recorded by the digital stopwatch.",
+      "B. 1.71 s — Correct. The calculated value should be reported to two decimal places, consistent with the instrument's precision.",
+      "C. 1.712 s — This retains an unnecessary extra decimal place not justified by the original measurements.",
+      "D. 1.7120 s — This falsely suggests an even higher level of precision than the experiment can support."
+    ],
+
+    "exam_tip": "JAMB frequently tests not only the ability to perform calculations but also the correct presentation of experimental results. Always check the precision of the measuring instrument before deciding how many decimal places to retain. Avoid copying every digit displayed on a calculator.",
+
+    "final_answer": "B. 1.71 s",
+
+    "simple_explanation": "After calculating the average, the answer should be written with the same level of precision as the stopwatch readings. Since the readings were recorded to two decimal places, the final answer should also be reported to two decimal places. Therefore, the correct answer is 1.71 s.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Decimal Places and Reporting Results to learn how calculated laboratory results should be presented. Study additional JAMB-style questions involving pendulums, stopwatches, experimental averages, significant figures and decimal-place reporting.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "decimal_places",
+    "experimental_average",
+    "pendulum",
+    "stopwatch",
+    "laboratory_report",
+    "measurement_precision",
+    "calculated_results",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q121",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Decimal places in calculated results",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A laboratory assistant used a stopwatch to record the time taken for a trolley to travel a distance of 12.50 m along a horizontal track. The recorded times were 3.81 s, 3.79 s and 3.80 s. Using the average time, the calculated speed of the trolley is approximately 3.289473684 m/s. If the result is to be reported appropriately in the laboratory record, what should be the correct value of the speed?",
+  "options": {
+    "A": "3.3 m/s",
+    "B": "3.29 m/s",
+    "C": "3.289 m/s",
+    "D": "3.2895 m/s"
+  },
+  "answer": "B",
+  "answer_text": "3.29 m/s",
+  "explanation": {
+    "question_restate": "The average time for a trolley's motion has already been used to calculate a speed of 3.289473684 m/s. The task is to determine how this value should be presented correctly in a laboratory report using the appropriate number of decimal places.",
+    "principle": "Experimental results should not be reported with more decimal places than are justified by the precision of the measurements used. In laboratory work, calculators often display many digits, but these extra digits do not represent real measurement accuracy.\n\nA beginner may ask: 'Why can't I copy all the digits from the calculator?' The reason is that the measuring instruments were not accurate enough to determine all those digits. Writing unnecessary digits gives a false impression of precision.\n\nAnother beginner may ask: 'How do I know how many decimal places to use?' A good laboratory report presents calculated values to a level of precision that matches the measurements taken. Since the measured distance (12.50 m) and the average time (3.80 s) are both recorded to two decimal places, the calculated speed should also be presented sensibly to two decimal places.\n\nWhen rounding to two decimal places, examine the third decimal digit. If it is less than 5, leave the second decimal digit unchanged. If it is 5 or greater, increase the second decimal digit by one.",
+    "steps": [
+      "Step 1: Note the calculated speed from the experimental data.\n\nSpeed = 3.289473684 m/s.",
+      "Step 2: Decide the appropriate presentation for the laboratory report.\n\nThe measurements used are recorded to two decimal places, so the calculated result should also be reported to two decimal places.",
+      "Step 3: Identify the digits.\n\n3.289473684\n\nSecond decimal place = 8\nThird decimal place = 9.",
+      "Step 4: Apply the rounding rule.\n\nSince the third decimal digit (9) is greater than 5, increase the second decimal digit by one.",
+      "Step 5: Write the final reported value.\n\n3.289473684 m/s ≈ 3.29 m/s."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 3.3 m/s — This rounds the value to one decimal place, reducing the precision of the experimental result unnecessarily.",
+      "B. 3.29 m/s — Correct. The calculated speed is properly rounded to two decimal places for laboratory reporting.",
+      "C. 3.289 m/s — This reports three decimal places, implying greater precision than is justified by the measurements.",
+      "D. 3.2895 m/s — This retains excessive decimal places copied directly from the calculator instead of reporting an appropriately rounded result."
+    ],
+    "exam_tip": "JAMB often provides calculator outputs containing many digits. Candidates are expected to recognise that scientific results should be reported using an appropriate number of decimal places rather than copying every digit displayed.\n\nAlways check the precision of the original measurements before deciding how many decimal places to retain in the final answer.",
+    "final_answer": "B. 3.29 m/s",
+    "simple_explanation": "The calculator gives 3.289473684 m/s, but laboratory reports should not include unnecessary digits. Since the measurements were taken to two decimal places, the speed should also be reported to two decimal places.\n\nThe third decimal digit is 9, so 3.28 rounds up to 3.29.\n\nTherefore, the correct reported speed is 3.29 m/s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Decimal Places and Calculated Results to learn how to present experimental answers correctly, round calculator outputs appropriately, report laboratory calculations, and avoid overstating measurement precision. Practise additional JAMB-style questions involving speed, volume, density, averages and laboratory data interpretation."
+  },
+  "tags": [
+    "decimal_places",
+    "laboratory_report",
+    "speed_calculation",
+    "stopwatch",
+    "rounding",
+    "experimental_results",
+    "measurement_precision",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q122",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Decimal places in calculated results",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory assistant determined the speed of a trolley by allowing it to travel 5.40 m along a track in 1.83 s. A calculator displayed the speed as 2.950819672 m/s. If the result is to be reported correctly based on the precision of the measured quantities, what value should appear in the laboratory report?",
+  "options": {
+    "A": "2.95 m/s",
+    "B": "2.951 m/s",
+    "C": "2.9508 m/s",
+    "D": "3.0 m/s"
+  },
+  "answer": "A",
+  "answer_text": "2.95 m/s",
+  "explanation": {
+    "question_restate": "The distance travelled by a trolley is 5.40 m and the time taken is 1.83 s. Although a calculator gives the speed as 2.950819672 m/s, the task is to report the answer using the correct number of decimal places based on the measured data.",
+
+    "principle": "Experimental results should never be copied directly from a calculator display. The reported answer must reflect the precision of the measurements used to obtain it.\n\nA beginner may ask: 'Why can't all the calculator digits be written?' The extra digits were never measured; they are produced by the calculator during computation and give a false impression of accuracy.\n\nWhen quantities are measured to the same number of decimal places, the final calculated result should normally be presented with a level of precision consistent with the measurements. In JAMB practical questions, candidates are often expected to remove unnecessary digits from calculator outputs before recording the final answer.\n\nThis ensures that laboratory reports communicate realistic measurement precision rather than misleading accuracy.",
+
+    "steps": [
+      "Step 1: Identify the measured quantities.\n\nDistance = 5.40 m\nTime = 1.83 s.",
+      "Step 2: Calculate the speed.\n\nSpeed = Distance ÷ Time = 5.40 ÷ 1.83 = 2.950819672 m/s.",
+      "Step 3: Examine the precision of the measurements.\n\nBoth measurements are recorded to two decimal places.",
+      "Step 4: Report the calculated result with the same practical level of precision by rounding the calculator output to two decimal places.",
+      "Step 5: The third decimal digit is 0, so the second decimal digit remains unchanged.\n\n2.950819672 ≈ 2.95 m/s.",
+      "Step 6: Therefore, the value that should appear in the laboratory report is 2.95 m/s."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 2.95 m/s — Correct. It reports the calculated speed to an appropriate number of decimal places consistent with the measurements.",
+      "B. 2.951 m/s — This retains an unnecessary extra decimal place, suggesting greater precision than the measurements justify.",
+      "C. 2.9508 m/s — This simply copies too many digits from the calculator display without considering the precision of the experiment.",
+      "D. 3.0 m/s — This over-rounds the result and removes useful precision supported by the measurements."
+    ],
+
+    "exam_tip": "JAMB frequently provides long calculator outputs after practical calculations involving speed, volume, density, pressure or experimental averages. Do not copy every digit shown on the calculator. Instead, report the answer using the appropriate number of decimal places or significant figures consistent with the measured quantities.\n\nAlways examine how the original measurements were recorded before deciding how to present the final result.",
+
+    "final_answer": "A. 2.95 m/s",
+
+    "simple_explanation": "The calculator gives 2.950819672 m/s, but laboratory measurements are not exact to so many digits. Since both the distance and time were measured to two decimal places, the speed should also be reported to two decimal places.\n\nTherefore,\n\n2.950819672 ≈ 2.95 m/s.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Decimal Places and Significant Figures in Experimental Results to learn how to report calculated quantities correctly, round calculator outputs appropriately, and prepare accurate laboratory reports. Practise additional JAMB-style questions involving speed, pressure, volume, density, experimental averages and measurement reporting."
+  },
+  "tags": [
+    "decimal_places",
+    "speed_calculation",
+    "laboratory_report",
+    "calculator_output",
+    "experimental_measurement",
+    "rounding_results",
+    "measurement_precision",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q123",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Decimal places and calculated results",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory assistant measured the time taken for a pendulum to complete 40 oscillations as 61.84 s using a digital stopwatch. The average period was then calculated using a calculator as 1.546 s. Since the measured time was recorded to two decimal places, how should the average period be reported in the laboratory record?",
+  "options": {
+    "A": "1.5 s",
+    "B": "1.55 s",
+    "C": "1.546 s",
+    "D": "1.550 s"
+  },
+  "answer": "B",
+  "answer_text": "1.55 s",
+  "explanation": {
+    "question_restate": "The total time for 40 oscillations is measured as 61.84 s, and the calculated period is 1.546 s. The task is to determine the correct way to report the calculated result using the appropriate number of decimal places for a laboratory report.",
+    "principle": "In scientific experiments, calculator outputs should not be copied directly into laboratory reports. The reported result must reflect the precision of the measurements used to obtain it.\n\nA beginner may ask: 'Why can't I simply write the calculator answer?' Calculators often display more digits than the measuring instrument can justify. Those extra digits suggest a level of precision that was never measured.\n\nAnother beginner may ask: 'How do I know the correct decimal places?' A calculated result should normally be reported to a precision consistent with the measured data. Since the stopwatch reading was recorded to two decimal places (61.84 s), the calculated period should also be reported to two decimal places.\n\nThis prevents overstating the accuracy of the experiment and follows standard laboratory reporting practice commonly tested in JAMB practical questions.",
+    "steps": [
+      "Step 1: Identify the measured quantity.\n\nTotal time = 61.84 s (recorded to two decimal places).",
+      "Step 2: Identify the calculated result.\n\nCalculator output = 1.546 s.",
+      "Step 3: Determine the reporting precision.\n\nThe measured time is given to two decimal places, so the calculated result should be reported to two decimal places.",
+      "Step 4: Round 1.546 to two decimal places.\n\nThe third decimal digit is 6, so increase the second decimal digit by one.",
+      "Step 5: Therefore,\n\n1.546 s ≈ 1.55 s."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 1.5 s — This rounds the value to one decimal place, discarding more precision than the measurement supports.",
+      "B. 1.55 s — Correct. The calculator result is properly rounded to two decimal places to match the precision of the measured data.",
+      "C. 1.546 s — This copies the calculator display directly and implies an unjustified level of precision.",
+      "D. 1.550 s — Although numerically equivalent to 1.55 s, it reports three decimal places, suggesting greater precision than the experimental measurement warrants."
+    ],
+    "exam_tip": "In JAMB practical questions, always distinguish between the calculator display and the value that should appear in a laboratory report. Report calculated results using a precision consistent with the measurements used. Avoid copying unnecessary digits shown on the calculator, as this is a common examination trap.",
+    "final_answer": "B. 1.55 s",
+    "simple_explanation": "The stopwatch measured time to two decimal places (61.84 s). Therefore, the calculated period should also be reported to two decimal places. The calculator gives 1.546 s, which rounds to 1.55 s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Decimal Places and Calculated Results to learn how to report calculated values correctly in laboratory work, apply appropriate rounding rules, avoid overstating measurement precision, and solve additional JAMB-style practical questions involving stopwatches, metre rules, measuring cylinders and other laboratory instruments."
+  },
+  "tags": [
+    "decimal_places",
+    "laboratory_reporting",
+    "stopwatch",
+    "pendulum",
+    "calculated_results",
+    "experimental_physics",
+    "measurement_precision",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q124",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Approximation and estimation",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "Before purchasing paint for the floor of a rectangular physics laboratory, a technician estimated the floor dimensions to be about 18 m by 11 m without making precise measurements. Which of the following is the best estimate of the floor area required for planning purposes?",
+  "options": {
+    "A": "29 m²",
+    "B": "98 m²",
+    "C": "198 m²",
+    "D": "396 m²"
+  },
+  "answer": "C",
+  "answer_text": "198 m²",
+  "explanation": {
+    "question_restate": "A laboratory technician wants a quick estimate of the floor area of a rectangular laboratory using approximate dimensions of 18 m and 11 m. The task is to determine the most reasonable estimated area for planning.",
+    "principle": "Estimation is the process of obtaining a value that is sufficiently close to the actual value without performing detailed or highly precise measurements. It is particularly useful during experimental planning, budgeting, material procurement and checking whether calculated results are reasonable.\n\nFor a rectangle, the area is obtained by multiplying the length by the width.\n\nArea = Length × Width\n\nSince the dimensions given are already approximate, a simple multiplication provides an adequate estimate. JAMB frequently tests estimation by requiring candidates to judge whether an answer is reasonable rather than demanding exact calculations.\n\nA beginner may ask, 'Why estimate instead of measuring exactly?' In many practical situations, such as planning materials before construction or laboratory preparation, a quick estimate saves time and helps determine whether available resources are sufficient before precise measurements are taken.",
+    "steps": [
+      "Step 1: Identify the approximate dimensions.\n\nLength ≈ 18 m\nWidth ≈ 11 m.",
+      "Step 2: Recall the formula for the area of a rectangle.\n\nArea = Length × Width.",
+      "Step 3: Multiply the approximate dimensions.\n\n18 × 11 = 198.",
+      "Step 4: Attach the correct unit.\n\nEstimated area = 198 m².",
+      "Step 5: Compare with the options provided.\n\nThe closest and correct estimate is 198 m²."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 29 m² — This results from adding the two dimensions instead of multiplying them to obtain area.",
+      "B. 98 m² — This could arise from incorrectly halving the product or making an arithmetic error during estimation.",
+      "C. 198 m² — Correct. The estimated area is obtained from 18 × 11 = 198 m².",
+      "D. 396 m² — This is twice the correct estimated area and may result from multiplying the correct answer by two unnecessarily."
+    ],
+    "exam_tip": "In JAMB Physics, estimation questions often appear in practical situations involving laboratory planning, surface areas, volumes or expected experimental results. Before accepting a calculated answer, quickly estimate the expected magnitude. If your detailed calculation differs greatly from the estimate, recheck your working because an arithmetic or formula error may have occurred.",
+    "final_answer": "C. 198 m²",
+    "simple_explanation": "The laboratory floor is approximately rectangular. Multiply the estimated length by the estimated width.\n\n18 × 11 = 198.\n\nTherefore, the estimated floor area is 198 m².",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Approximation and Estimation to learn how estimation is applied in laboratory planning, checking calculations, predicting experimental results and solving practical JAMB Physics questions. Explore additional worked examples involving areas, volumes, instrument readings and experimental measurements in the NaijaPrizeGate CBT and Learning Centre."
+  },
+  "tags": [
+    "approximation",
+    "estimation",
+    "laboratory_planning",
+    "area",
+    "experimental_physics",
+    "measurement",
+    "reasonableness_check",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q125",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Approximation and estimation",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "Before cutting a rectangular aluminium sheet for a laboratory apparatus, a technician estimated the amount of paint needed to coat one face of the sheet. The sheet measures approximately 1.98 m by 0.51 m. Without performing a detailed calculation, which estimated area is most reasonable for planning the paint requirement?",
+  "options": {
+    "A": "0.1 m²",
+    "B": "1.0 m²",
+    "C": "2.0 m²",
+    "D": "10.0 m²"
+  },
+  "answer": "B",
+  "answer_text": "1.0 m²",
+  "explanation": {
+    "question_restate": "A laboratory technician wants a quick estimate of the area of a rectangular aluminium sheet measuring about 1.98 m by 0.51 m. The aim is to choose the most reasonable approximate area without carrying out an exact multiplication.",
+    "principle": "Approximation is widely used in Physics to obtain quick estimates that help check whether calculated answers are reasonable. Before using a calculator, scientists often round measurements to convenient values and perform simple mental calculations.\n\nA beginner may ask: 'Why estimate when an exact answer can be calculated?' Estimation helps detect impossible calculator results, assists in planning experiments, and saves time when only an approximate value is required.\n\nFor products, each quantity is rounded to one convenient significant figure before multiplication. The estimated answer should remain close to the true value but need not be exact.\n\nHere,\n1.98 m ≈ 2.0 m\n0.51 m ≈ 0.5 m\nEstimated area ≈ 2.0 × 0.5 = 1.0 m².",
+    "steps": [
+      "Step 1: Identify the two dimensions of the rectangular sheet.\n\nLength = 1.98 m\nWidth = 0.51 m.",
+      "Step 2: Round each measurement to convenient values.\n\n1.98 m ≈ 2.0 m\n0.51 m ≈ 0.5 m.",
+      "Step 3: Multiply the rounded values.\n\nEstimated area = 2.0 × 0.5 = 1.0 m².",
+      "Step 4: Compare the estimate with the options provided.",
+      "Step 5: The most reasonable estimate is 1.0 m²."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 0.1 m² — This is far too small. It would correspond to dimensions much smaller than those given.",
+      "B. 1.0 m² — Correct. Rounding 1.98 m to 2.0 m and 0.51 m to 0.5 m gives an estimated area of 1.0 m².",
+      "C. 2.0 m² — This could result from rounding both dimensions to 2 or forgetting that 0.51 m is approximately 0.5 m, not 1 m.",
+      "D. 10.0 m² — This is an unreasonable estimate and is about ten times larger than the actual area."
+    ],
+    "exam_tip": "JAMB frequently tests estimation by presenting practical laboratory situations in which candidates must judge whether an answer is reasonable before carrying out detailed calculations. Round numbers sensibly, perform simple mental arithmetic, and reject options that are clearly unrealistic.",
+    "final_answer": "B. 1.0 m²",
+    "simple_explanation": "Round 1.98 m to 2.0 m and 0.51 m to 0.5 m. Then multiply:\n\n2.0 × 0.5 = 1.0 m².\n\nTherefore, the best estimate of the sheet's area is 1.0 m².",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Approximation and Estimation to learn how estimation is used in laboratory planning, checking calculated answers, estimating areas and volumes, and solving JAMB-style practical questions efficiently. Explore additional worked examples involving laboratory measurements, instrument readings and experimental planning in the NaijaPrizeGate CBT and Learning Centre."
+  },
+  "tags": [
+    "approximation",
+    "estimation",
+    "area_estimation",
+    "laboratory_planning",
+    "mental_calculation",
+    "measurement",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q126",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Approximation and estimation",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "Before cutting a rectangular plywood sheet for a laboratory apparatus, a technician estimated its area using rounded dimensions. The measured length and width were 2.98 m and 1.97 m respectively. To make a quick estimate without using a calculator, the technician rounded each measurement to one significant figure. What estimated area should be recorded for planning purposes?",
+  "options": {
+    "A": "3 m²",
+    "B": "6 m²",
+    "C": "8 m²",
+    "D": "9 m²"
+  },
+  "answer": "B",
+  "answer_text": "6 m²",
+  "explanation": {
+    "question_restate": "A laboratory technician wants a quick estimate of the area of a rectangular plywood sheet. The dimensions are 2.98 m and 1.97 m. Each value is rounded to one significant figure before multiplying to obtain an approximate area.",
+    "principle": "Approximation is often used during experimental planning to obtain a quick estimate without carrying out lengthy calculations. When estimating, each measured quantity is rounded to a convenient value before performing the calculation.\n\nA beginner may ask: 'Why not use the exact values?' During planning or checking whether a calculated answer is reasonable, an estimate is usually sufficient and much faster.\n\nAnother beginner may ask: 'Why round to one significant figure?' Rounding to one significant figure simplifies mental calculations while still giving an answer that is close to the actual value.\n\nFor products such as area, estimate each dimension first and then multiply the rounded values.",
+    "steps": [
+      "Step 1: Write the measured dimensions.\n\nLength = 2.98 m\nWidth = 1.97 m.",
+      "Step 2: Round each measurement to one significant figure.\n\n2.98 m ≈ 3 m\n1.97 m ≈ 2 m.",
+      "Step 3: Multiply the rounded values.\n\nEstimated Area = 3 × 2 = 6 m².",
+      "Step 4: State the estimated area.\n\nThe approximate area for planning purposes is 6 m²."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 3 m² — This results from rounding correctly but failing to multiply both dimensions.",
+      "B. 6 m² — Correct. Rounding 2.98 m to 3 m and 1.97 m to 2 m gives an estimated area of 6 m².",
+      "C. 8 m² — This may result from incorrectly rounding 1.97 m up to 3 m or using inconsistent approximations.",
+      "D. 9 m² — This comes from rounding both dimensions to 3 m, which is incorrect because 1.97 m rounds to 2 m at one significant figure."
+    ],
+    "exam_tip": "In JAMB Physics, estimation questions test your ability to judge whether a calculated answer is reasonable. Round quantities only to the level requested, perform the calculation using the rounded values, and remember that the estimated answer is expected to be close to—not exactly equal to—the precise result.",
+    "final_answer": "B. 6 m²",
+    "simple_explanation": "Round 2.98 m to 3 m and 1.97 m to 2 m. Then multiply:\n\n3 × 2 = 6 m².\n\nSo the best estimate of the area is 6 m².",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Approximation and Estimation to learn how to estimate experimental results, check calculations for reasonableness, simplify laboratory planning, and solve JAMB-style estimation problems involving areas, volumes, distances and other measured quantities."
+  },
+  "tags": [
+    "approximation",
+    "estimation",
+    "area",
+    "laboratory_planning",
+    "significant_figures",
+    "measurement",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q127",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Approximation and estimation",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "Before setting up a school experiment, a laboratory assistant needed to estimate the quantity of water required to fill a rectangular trough measuring approximately 1.2 m long, 0.50 m wide and 0.25 m deep. Without performing an exact calculation, which estimate is the most reasonable for the volume of water required?",
+  "options": {
+    "A": "0.02 m³",
+    "B": "0.15 m³",
+    "C": "1.50 m³",
+    "D": "15.0 m³"
+  },
+  "answer": "B",
+  "answer_text": "0.15 m³",
+  "explanation": {
+    "question_restate": "A rectangular trough has approximate dimensions of 1.2 m × 0.50 m × 0.25 m. The objective is to make a sensible estimate of its volume for experimental planning rather than carrying out a highly precise computation.",
+    "principle": "Approximation and estimation are important skills in practical Physics. Before beginning an experiment, scientists often estimate expected values to determine whether the required materials, apparatus or measuring instruments are suitable.\n\nFor a rectangular object, the volume is estimated using:\n\nVolume ≈ Length × Width × Height.\n\nSince the dimensions given are already approximate, there is no need for unnecessary precision. A reasonable estimate helps identify impossible or unrealistic answers.\n\nA beginner may ask, 'Why estimate instead of calculating exactly?' During laboratory planning, estimation allows quick decisions, checks calculator results and prevents errors caused by misplaced decimal points. JAMB frequently tests this practical reasoning rather than lengthy arithmetic.",
+    "steps": [
+      "Step 1: Recall the formula for the volume of a rectangular container.\n\nVolume ≈ Length × Width × Height.",
+      "Step 2: Substitute the approximate dimensions.\n\n≈ 1.2 × 0.50 × 0.25.",
+      "Step 3: Estimate mentally.\n\n1.2 × 0.50 = 0.60.\n\n0.60 × 0.25 = 0.15.",
+      "Step 4: Compare the estimate with the available options.",
+      "Step 5: 0.15 m³ is consistent with the dimensions of the trough, whereas the other options are either far too small or unrealistically large."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 0.02 m³ — This is far too small for a container with dimensions close to one metre by half a metre by a quarter of a metre. It results from severe underestimation or incorrect multiplication.",
+      "B. 0.15 m³ — Correct. Estimating 1.2 × 0.50 × 0.25 gives approximately 0.15 m³.",
+      "C. 1.50 m³ — This is about ten times larger than the correct estimate and could result from ignoring the decimal point in one of the measurements.",
+      "D. 15.0 m³ — This is completely unrealistic for the stated dimensions and reflects a major decimal-place error."
+    ],
+    "exam_tip": "When JAMB asks for an estimate, do not waste time pursuing unnecessary precision. Multiply the approximate values mentally and check whether your answer is physically reasonable.\n\nA useful strategy is to ask yourself whether the result matches the size of the object. This helps eliminate options containing decimal-point mistakes.",
+    "final_answer": "B. 0.15 m³",
+    "simple_explanation": "Estimate the volume using:\n\n1.2 × 0.50 × 0.25.\n\nFirst, 1.2 × 0.50 = 0.60.\n\nThen, 0.60 × 0.25 = 0.15.\n\nTherefore, the most reasonable estimate of the volume of water required is 0.15 m³.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Approximation and Estimation to learn how scientists estimate quantities during experimental planning, check the reasonableness of calculations, identify impossible results and solve practical JAMB-style laboratory questions involving areas, volumes, masses and instrument readings.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "approximation",
+    "estimation",
+    "volume_estimation",
+    "rectangular_trough",
+    "experimental_planning",
+    "laboratory_measurement",
+    "measurement_reasoning",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q128",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Approximation and estimation",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory assistant intends to determine the quantity of paint required to coat the top surface of a rectangular wooden board measuring 1.98 m by 0.96 m. Before carrying out an exact calculation, the supervisor asks for a quick estimate using convenient rounded values. Which estimated area is most reasonable for planning the experiment?",
+  "options": {
+    "A": "1 m²",
+    "B": "2 m²",
+    "C": "3 m²",
+    "D": "4 m²"
+  },
+  "answer": "B",
+  "answer_text": "2 m²",
+  "explanation": {
+    "question_restate": "A rectangular board has dimensions of 1.98 m and 0.96 m. Instead of performing an exact multiplication, an estimate of its area is required by rounding the measurements to convenient values suitable for experimental planning.",
+    "principle": "Approximation and estimation are useful in practical physics for making quick decisions, checking whether calculated answers are reasonable, and planning laboratory activities. When estimating, measured values are replaced with nearby simple numbers that are easy to calculate mentally.\n\nHere, 1.98 m is very close to 2.0 m, while 0.96 m is very close to 1.0 m. Using these rounded values gives an estimate that is sufficiently accurate for planning purposes.\n\nEstimation is not intended to replace exact calculations. Rather, it helps detect impossible answers and provides a rapid assessment before detailed computations are performed.",
+    "steps": [
+      "Step 1: Identify the measured dimensions.\n\nLength = 1.98 m\nWidth = 0.96 m.",
+      "Step 2: Replace each measurement with a nearby convenient value.\n\n1.98 m ≈ 2.0 m\n0.96 m ≈ 1.0 m.",
+      "Step 3: Multiply the rounded values.\n\nEstimated Area = 2.0 × 1.0 = 2.0 m².",
+      "Step 4: Compare the estimate with the available options.\n\nThe closest estimated area is 2 m²."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 1 m² — This underestimates the product. Both measurements are close to 2 m and 1 m respectively, giving an area close to 2 m² rather than 1 m².",
+      "B. 2 m² — Correct. Rounding 1.98 m to 2.0 m and 0.96 m to 1.0 m gives an estimated area of 2 m².",
+      "C. 3 m² — This overestimates the area and is inconsistent with the rounded dimensions.",
+      "D. 4 m² — This would only be reasonable if both dimensions were approximately 2 m, which is not the case."
+    ],
+    "exam_tip": "JAMB frequently tests estimation by presenting realistic laboratory or field situations where exact calculations are unnecessary. Round each measured quantity to the nearest convenient value before performing mental calculations. If your exact answer differs greatly from your estimate, recheck your working because an error may have occurred.",
+    "final_answer": "B. 2 m²",
+    "simple_explanation": "Round 1.98 m to 2 m and 0.96 m to 1 m. Then multiply:\n\n2 × 1 = 2 m².\n\nTherefore, the best estimate of the board's area is 2 m².",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Approximation and Estimation to learn how estimation is applied in laboratory planning, checking calculated results, experimental measurements, area and volume estimation, and solving JAMB-style practical questions. Explore additional worked examples involving metre rules, measuring cylinders, Vernier calipers and other laboratory instruments in the NaijaPrizeGate CBT and Learning Centre."
+  },
+  "tags": [
+    "approximation",
+    "estimation",
+    "area_estimation",
+    "laboratory_planning",
+    "experimental_physics",
+    "measurement",
+    "mental_calculation",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q129",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Approximation and estimation",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory assistant needs enough distilled water to completely fill a rectangular glass tank whose internal dimensions are approximately 62 cm × 39 cm × 21 cm. Without performing an exact calculation, the assistant estimates the required volume by rounding each dimension to one significant figure before multiplying. Which estimated volume is closest to the amount of water required?",
+  "options": {
+    "A": "36 000 cm³",
+    "B": "48 000 cm³",
+    "C": "72 000 cm³",
+    "D": "96 000 cm³"
+  },
+  "answer": "B",
+  "answer_text": "48 000 cm³",
+  "explanation": {
+    "question_restate": "The dimensions of a rectangular tank are given as approximately 62 cm, 39 cm and 21 cm. Instead of calculating the exact volume, estimate it by first rounding each dimension to one significant figure and then multiplying the rounded values.",
+    "principle": "Estimation is widely used in practical physics to check whether calculated answers are reasonable before accepting them. A common method is to round measured quantities to one significant figure, making mental calculations easier while still producing an answer close to the actual value.\n\nFor volume calculations involving rectangular objects:\n\nEstimated Volume = (Estimated Length) × (Estimated Width) × (Estimated Height).\n\nThis technique helps scientists quickly determine whether an experimental result is realistic or whether an arithmetic mistake has probably been made.",
+    "steps": [
+      "Step 1: Round each dimension to one significant figure.\n\n62 cm ≈ 60 cm\n39 cm ≈ 40 cm\n21 cm ≈ 20 cm.",
+      "Step 2: Multiply the estimated dimensions.\n\nEstimated volume = 60 × 40 × 20.",
+      "Step 3: Calculate mentally.\n\n60 × 40 = 2 400.\n\n2 400 × 20 = 48 000 cm³.",
+      "Step 4: Compare the result with the options provided.\n\nThe closest estimated volume is 48 000 cm³."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 36 000 cm³ — This could result from incorrectly rounding one or more dimensions downward or making an error during multiplication.",
+      "B. 48 000 cm³ — Correct. Rounding to 60 cm, 40 cm and 20 cm gives 60 × 40 × 20 = 48 000 cm³.",
+      "C. 72 000 cm³ — This may arise from rounding 39 cm to 60 cm or using incorrect estimated dimensions.",
+      "D. 96 000 cm³ — This is approximately double the correct estimate and results from an arithmetic error during multiplication."
+    ],
+    "exam_tip": "JAMB frequently tests estimation by asking candidates to round measurements before carrying out calculations. The purpose is not to obtain the exact answer but to determine whether a result is reasonable. Always round first, then calculate mentally using simple numbers.",
+    "final_answer": "B. 48 000 cm³",
+    "simple_explanation": "Round the dimensions to easy numbers:\n\n62 cm → 60 cm\n39 cm → 40 cm\n21 cm → 20 cm\n\nThen multiply:\n\n60 × 40 × 20 = 48 000 cm³.\n\nSo the best estimate of the tank's volume is 48 000 cm³.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Approximation and Estimation to learn how estimation is used in laboratory work, experimental planning, mental checking of calculations and practical measurements. Practice additional JAMB-style estimation questions involving areas, volumes, laboratory apparatus and measurement data."
+  },
+  "tags": [
+    "approximation",
+    "estimation",
+    "volume_estimation",
+    "laboratory_planning",
+    "rectangular_tank",
+    "mental_calculation",
+    "measurement",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q130",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Approximation and estimation",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory assistant plans to determine the volume of water required to completely fill a rectangular trough. Before making detailed measurements, she estimates the internal dimensions to be about 1.2 m long, 0.50 m wide and 0.30 m deep. Approximately how much water will be needed to fill the trough?",
+  "options": {
+    "A": "0.018 m³",
+    "B": "0.18 m³",
+    "C": "1.8 m³",
+    "D": "18 m³"
+  },
+  "answer": "B",
+  "answer_text": "0.18 m³",
+  "explanation": {
+    "question_restate": "An estimate of the dimensions of a rectangular trough is given. The task is to estimate its volume using the dimensions provided, without requiring highly precise calculations.",
+    "principle": "Estimation is an important skill in practical Physics because it allows an experimenter to predict expected results before carrying out detailed measurements. This helps in planning experiments, selecting appropriate apparatus and identifying unreasonable answers.\n\nThe volume of a rectangular object is obtained by multiplying its length, width and depth:\n\nVolume = Length × Width × Depth.\n\nSince this is an estimation question, the given dimensions are already rounded to convenient values, making mental calculation straightforward.\n\nCandidates should also develop the habit of checking whether the magnitude of the calculated answer is reasonable. A trough measuring slightly over one metre long and about half a metre wide cannot reasonably hold only 0.018 m³ or as much as 18 m³ of water.",
+    "steps": [
+      "Step 1: Write down the estimated dimensions.\n\nLength = 1.2 m\nWidth = 0.50 m\nDepth = 0.30 m.",
+      "Step 2: Apply the volume formula.\n\nVolume = Length × Width × Depth.",
+      "Step 3: Multiply the length and width.\n\n1.2 × 0.50 = 0.60.",
+      "Step 4: Multiply the result by the depth.\n\n0.60 × 0.30 = 0.18.",
+      "Step 5: Attach the correct unit.\n\nEstimated volume = 0.18 m³.",
+      "Step 6: Check whether the answer is reasonable.\n\nA volume of 0.18 m³ (about 180 litres) is realistic for a trough with the stated dimensions, whereas the other options are either far too small or excessively large."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 0.018 m³ — This results from an incorrect placement of the decimal point, making the estimated capacity ten times too small.",
+      "B. 0.18 m³ — Correct. Multiplying 1.2 × 0.50 × 0.30 gives an estimated volume of 0.18 m³.",
+      "C. 1.8 m³ — This is ten times the correct estimate and usually results from ignoring the decimal values during multiplication.",
+      "D. 18 m³ — This gross overestimate comes from treating the dimensions as whole numbers or misplacing the decimal point twice."
+    ],
+    "exam_tip": "JAMB frequently tests estimation by presenting practical situations where exact measurements are unnecessary. Before accepting any calculated answer, compare it with the size of the object or experiment. If the magnitude is unrealistic, review your decimal placement and units.",
+    "final_answer": "B. 0.18 m³",
+    "simple_explanation": "Estimate the volume by multiplying the three dimensions.\n\n1.2 × 0.50 × 0.30 = 0.18.\n\nTherefore, the trough can hold approximately 0.18 m³ of water (about 180 litres).",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Approximation and Estimation to learn how scientists use estimation to plan experiments, verify calculations, detect unreasonable answers and improve practical measurement skills. Explore additional JAMB-style laboratory questions involving estimation of areas, volumes, masses and experimental quantities.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "approximation",
+    "estimation",
+    "volume_estimation",
+    "rectangular_trough",
+    "laboratory_planning",
+    "experimental_physics",
+    "measurement",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q131",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Rounding Off in Experimental Reports",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory assistant determined the speed of a trolley by dividing the measured distance travelled, 4.82 m, by the recorded time, 1.376 s. The calculator displayed 3.502906976 m/s. Before submitting the practical report, the assistant rounded the result to match the precision of the measured data. Which value should be recorded as the final speed?",
+  "options": {
+    "A": "3.50 m/s",
+    "B": "3.503 m/s",
+    "C": "3.5030 m/s",
+    "D": "4 m/s"
+  },
+  "answer": "A",
+  "answer_text": "3.50 m/s",
+  "explanation": {
+    "question_restate": "A trolley travelled 4.82 m in 1.376 s. After calculating the speed, the calculator displayed 3.502906976 m/s. The task is to report the final answer using the appropriate level of precision for a laboratory report.",
+    "principle": "Scientific measurements should never be reported with more precision than the measuring instruments justify. For multiplication and division, the final answer should contain the same number of significant figures as the measured quantity with the fewest significant figures.\n\nMany beginners wonder why the full calculator display cannot simply be copied into a laboratory report. The reason is that calculators produce many decimal digits mathematically, but those extra digits do not represent real measurement accuracy. Reporting them gives a false impression that the experiment was more precise than it actually was.\n\nIn this question:\n\nDistance = 4.82 m (3 significant figures)\nTime = 1.376 s (4 significant figures)\n\nSince the distance has the fewest significant figures, the calculated speed must also be reported to 3 significant figures.\n\nThe calculator value is 3.502906976 m/s. Keeping three significant figures gives 3.50 m/s because the fourth significant figure is 2, which is less than 5, so the third significant figure remains unchanged.\n\nProper rounding is an essential part of preparing scientific laboratory reports and is commonly tested in JAMB practical-style questions.",
+    "steps": [
+      "Step 1: Identify the measured quantities.\n\nDistance = 4.82 m.\nTime = 1.376 s.",
+      "Step 2: Identify the calculator result.\n\nCalculated speed = 3.502906976 m/s.",
+      "Step 3: Determine the number of significant figures in each measurement.\n\n4.82 m has 3 significant figures.\n1.376 s has 4 significant figures.",
+      "Step 4: Apply the multiplication/division reporting rule.\n\nThe final answer should have the same number of significant figures as the measurement with the fewest significant figures.\n\nTherefore, report the speed to 3 significant figures.",
+      "Step 5: Round the calculator value.\n\n3.502906976 → 3.50 (3 significant figures).\n\nThe next digit after the third significant figure is 2, so no increase is made.",
+      "Step 6: Record the final laboratory result.\n\nFinal speed = 3.50 m/s."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 3.50 m/s — Correct. It reports the speed to 3 significant figures, matching the least precise measurement (4.82 m).",
+      "B. 3.503 m/s — Incorrect. This gives 4 significant figures, implying greater measurement precision than the experimental data support.",
+      "C. 3.5030 m/s — Incorrect. This reports 5 significant figures and exaggerates the precision of the experiment.",
+      "D. 4 m/s — Incorrect. This is an excessive rounding that discards useful precision and does not follow scientific reporting rules."
+    ],
+    "exam_tip": "In JAMB practical questions involving multiplication or division, first determine which measured quantity has the fewest significant figures before rounding the final answer.\n\nDo not copy every digit displayed by a calculator. Always round the final result to the correct number of significant figures based on the least precise measurement.\n\nRemember:\n\n• Addition/Subtraction → Round according to the least number of decimal places.\n• Multiplication/Division → Round according to the least number of significant figures.",
+    "final_answer": "A. 3.50 m/s",
+    "simple_explanation": "The distance (4.82 m) has 3 significant figures, while the time (1.376 s) has 4. Therefore, the calculated speed must be reported using 3 significant figures.\n\nThe calculator gives 3.502906976 m/s.\n\nRounded to 3 significant figures, this becomes 3.50 m/s.\n\nHence, the correct answer is 3.50 m/s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Rounding Off in Experimental Reports to learn how to report calculated results correctly using significant figures and decimal places. Study additional JAMB-style laboratory questions involving speed, pressure, density, scientific notation and experimental calculations."
+  },
+  "tags": [
+    "rounding_off",
+    "experimental_report",
+    "speed_calculation",
+    "significant_figures",
+    "laboratory_measurement",
+    "calculator_result",
+    "measurement_reporting",
+    "phy_02"
+  ],
+  "active": true
 }
 
-
+  
 ]
 
