@@ -7904,9 +7904,516 @@
     "phy_02"
   ],
   "active": true
+},
+{
+  "id": "phy_02_q151",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Zero error (Positive micrometer)",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A quality-control inspector used a micrometer screw gauge to measure the diameter of a steel pin. Before taking the measurement, the instrument was checked and found to have a positive zero error of 0.03 mm. The observed reading for the diameter of the pin was 8.46 mm. What is the correct diameter of the steel pin?",
+  "options": {
+    "A": "8.43 mm",
+    "B": "8.46 mm",
+    "C": "8.49 mm",
+    "D": "8.50 mm"
+  },
+  "answer": "A",
+  "answer_text": "8.43 mm",
+  "explanation": {
+    "question_restate": "A micrometer screw gauge has a positive zero error of 0.03 mm and gives an observed reading of 8.46 mm for the diameter of a steel pin. Determine the true diameter after applying the zero-error correction.",
+    "principle": "A zero error occurs when a measuring instrument does not read zero when it should. For a micrometer screw gauge, a positive zero error means the instrument reads a value greater than the true measurement even when no object is between the anvil and spindle.\n\nA beginner may ask: 'What does positive zero error mean?' It means the instrument adds an extra amount to every measurement. Therefore, every observed reading is larger than the actual value.\n\nAnother beginner may ask: 'How is the correction applied?' Since the instrument overestimates the measurement, the zero error must be subtracted from every observed reading.\n\nThe relationship is:\n\nCorrect Reading = Observed Reading − Positive Zero Error\n\nThis correction is essential in laboratory work because even a small calibration error can affect the accuracy of experimental results. JAMB frequently tests candidates on whether they know when to add or subtract zero-error corrections.",
+    "steps": [
+      "Step 1: Identify the observed reading.\n\nObserved reading = 8.46 mm.",
+      "Step 2: Identify the type and magnitude of the zero error.\n\nPositive zero error = 0.03 mm.",
+      "Step 3: Recall the correction rule.\n\nFor a positive zero error, subtract the zero error from the observed reading.",
+      "Step 4: Perform the calculation.\n\nCorrect reading = 8.46 mm − 0.03 mm = 8.43 mm.",
+      "Step 5: Express the final answer using the same precision as the instrument.\n\nCorrect diameter = 8.43 mm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 8.43 mm — Correct. A positive zero error is subtracted from the observed reading, giving 8.46 mm − 0.03 mm = 8.43 mm.",
+      "B. 8.46 mm — This is the uncorrected micrometer reading and ignores the zero error.",
+      "C. 8.49 mm — This results from incorrectly adding the positive zero error instead of subtracting it.",
+      "D. 8.50 mm — This could arise from both applying the correction in the wrong direction and making an arithmetic error."
+    ],
+    "exam_tip": "Always determine whether the zero error is positive or negative before applying any correction.\n\nRemember:\n\nPositive zero error → Subtract the zero error.\n\nNegative zero error → Add the magnitude of the zero error.\n\nA common JAMB trap is reversing these rules, leading to the wrong corrected measurement.",
+    "final_answer": "A. 8.43 mm",
+    "simple_explanation": "The micrometer overreads every measurement by 0.03 mm because it has a positive zero error.\n\nTo obtain the true diameter, subtract the error from the observed reading.\n\n8.46 mm − 0.03 mm = 8.43 mm.\n\nTherefore, the correct diameter of the steel pin is 8.43 mm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Zero Error to learn how to identify positive and negative zero errors, apply the correct corrections for vernier calipers and micrometer screw gauges, and solve JAMB-style practical measurement questions involving instrument calibration and laboratory reporting."
+  },
+  "tags": [
+    "zero_error",
+    "positive_zero_error",
+    "micrometer_screw_gauge",
+    "calibration",
+    "corrected_reading",
+    "laboratory_measurement",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q152",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Zero error (Positive micrometer screw gauge)",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A quality-control officer used a micrometer screw gauge to measure the diameter of a steel wire. Before taking the measurement, the instrument was checked and found to have a positive zero error of 0.03 mm. The observed diameter of the wire was 2.58 mm. What is the correct diameter of the wire after applying the zero-error correction?",
+  "options": {
+    "A": "2.55 mm",
+    "B": "2.58 mm",
+    "C": "2.61 mm",
+    "D": "2.63 mm"
+  },
+  "answer": "A",
+  "answer_text": "2.55 mm",
+  "explanation": {
+    "question_restate": "A micrometer screw gauge has a positive zero error of 0.03 mm and gives an observed reading of 2.58 mm for the diameter of a steel wire. The task is to determine the true diameter after correcting for the zero error.",
+    "principle": "A zero error occurs when a measuring instrument does not read zero when it should. For a micrometer screw gauge, a positive zero error means the instrument reads a value greater than the true value even when measuring nothing. Therefore, every measurement made with the instrument is too large by the amount of the positive zero error.\n\nTo obtain the correct measurement, subtract the positive zero error from the observed reading.\n\nCorrection formula:\n\nCorrect Reading = Observed Reading − Positive Zero Error\n\nThis principle is commonly tested in JAMB practical questions involving instrument calibration and measurement correction.",
+    "steps": [
+      "Step 1: Identify the observed reading.\n\nObserved diameter = 2.58 mm.",
+      "Step 2: Identify the type and magnitude of the zero error.\n\nPositive zero error = 0.03 mm.",
+      "Step 3: Recall the correction rule.\n\nFor a positive zero error, subtract the zero error from the observed reading.",
+      "Step 4: Perform the calculation.\n\nCorrect diameter = 2.58 mm − 0.03 mm = 2.55 mm.",
+      "Step 5: State the corrected measurement.\n\nThe true diameter of the steel wire is 2.55 mm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 2.55 mm — Correct. A positive zero error is removed by subtracting it from the observed reading.",
+      "B. 2.58 mm — This ignores the zero-error correction completely.",
+      "C. 2.61 mm — This results from adding the positive zero error instead of subtracting it.",
+      "D. 2.63 mm — This comes from adding an incorrect correction of 0.05 mm or misunderstanding the effect of a positive zero error."
+    ],
+    "exam_tip": "A quick way to remember zero-error corrections is:\n\n• Positive zero error → Instrument reads too high → Subtract the error.\n• Negative zero error → Instrument reads too low → Add the error.\n\nJAMB often disguises these questions as laboratory calibration or quality-control exercises rather than asking directly about the correction formula.",
+    "final_answer": "A. 2.55 mm",
+    "simple_explanation": "The micrometer reads 0.03 mm more than the actual value because of its positive zero error. Therefore, remove this excess by subtracting it from the observed reading:\n\n2.58 mm − 0.03 mm = 2.55 mm.\n\nHence, the correct diameter is 2.55 mm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Zero Error to learn how to identify positive and negative zero errors on vernier calipers and micrometer screw gauges, apply the correct corrections, interpret calibration reports, and solve JAMB practical measurement questions with confidence."
+  },
+  "tags": [
+    "zero_error",
+    "positive_zero_error",
+    "micrometer_screw_gauge",
+    "calibration",
+    "diameter_measurement",
+    "laboratory_measurement",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q153",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Zero error (complex applications)",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "During the calibration of a micrometer screw gauge, the instrument was found to have a negative zero error of 0.03 mm. The external diameter of a metal rod was measured three times, giving observed readings of 18.42 mm, 18.40 mm and 18.41 mm. Assuming the instrument maintained the same zero error throughout the measurements, what is the correct mean diameter of the rod?",
+  "options": {
+    "A": "18.38 mm",
+    "B": "18.40 mm",
+    "C": "18.43 mm",
+    "D": "18.44 mm"
+  },
+  "answer": "D",
+  "answer_text": "18.44 mm",
+  "explanation": {
+    "question_restate": "A micrometer screw gauge has a negative zero error of 0.03 mm. Three measurements of the same metal rod are taken. The task is to correct each reading for the zero error and determine the correct mean diameter of the rod.",
+    "principle": "A zero error occurs when a measuring instrument does not read zero when it should. Every measurement made with such an instrument contains the same error and must be corrected before being reported.\n\nFor a micrometer screw gauge:\n\nCorrect Reading = Observed Reading − Zero Error\n\nSince the zero error in this question is negative (−0.03 mm), subtracting a negative value is equivalent to adding 0.03 mm.\n\nTherefore:\n\nCorrect Reading = Observed Reading + 0.03 mm\n\nWhen several observations are taken, each reading should first be corrected individually before calculating the mean. Because the same correction is added to every observation, the correction may also be added to the mean of the observed readings. This is a common laboratory practice and is frequently tested in JAMB practical questions.",
+    "steps": [
+      "Step 1: Identify the observed readings.\n\n18.42 mm, 18.40 mm and 18.41 mm.",
+      "Step 2: Calculate the mean of the observed readings.\n\nMean observed reading = (18.42 + 18.40 + 18.41) ÷ 3 = 55.23 ÷ 3 = 18.41 mm.",
+      "Step 3: Identify the zero error.\n\nNegative zero error = −0.03 mm.",
+      "Step 4: Apply the correction.\n\nCorrect Reading = Observed Reading − (−0.03) = Observed Reading + 0.03 mm.",
+      "Step 5: Correct the mean reading.\n\nCorrect mean = 18.41 + 0.03 = 18.44 mm.",
+      "Step 6: Therefore, the correct mean diameter of the rod is 18.44 mm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 18.38 mm — This results from subtracting 0.03 mm instead of adding it, as though the zero error were positive.",
+      "B. 18.40 mm — This could arise from calculating the average incorrectly or ignoring the zero-error correction.",
+      "C. 18.43 mm — This is an arithmetic error that may result from adding an incorrect correction of 0.02 mm.",
+      "D. 18.44 mm — Correct. The mean observed reading is 18.41 mm, and a negative zero error of 0.03 mm requires adding 0.03 mm, giving 18.44 mm."
+    ],
+    "exam_tip": "For zero-error questions, first determine whether the error is positive or negative before applying any correction.\n\nRemember:\n\nCorrect Reading = Observed Reading − Zero Error\n\n• Positive zero error → subtract the correction.\n• Negative zero error → add the correction.\n\nIn questions involving repeated measurements, ensure that the zero-error correction is applied before reporting the final mean.",
+    "final_answer": "D. 18.44 mm",
+    "simple_explanation": "The average of the three observed readings is 18.41 mm.\n\nSince the micrometer has a negative zero error of 0.03 mm, the correct reading must be increased by 0.03 mm.\n\n18.41 + 0.03 = 18.44 mm.\n\nTherefore, the correct mean diameter is 18.44 mm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Zero Error to learn how to identify positive and negative zero errors, apply corrections to repeated measurements, analyse laboratory calibration reports, and solve JAMB-style practical questions involving micrometer screw gauges, vernier calipers and other precision instruments."
+  },
+  "tags": [
+    "zero_error",
+    "negative_zero_error",
+    "micrometer_screw_gauge",
+    "mean_measurement",
+    "calibration",
+    "laboratory_measurement",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q154",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Parallax error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "During an electrical practical, a candidate was instructed to record the current flowing through a circuit using an analogue ammeter. While taking the reading, the candidate viewed the pointer from the left side instead of directly above it. Which error is most likely introduced into the measurement, and what is the correct way to avoid it?",
+  "options": {
+    "A": "Zero error; reset the pointer to zero before taking the reading.",
+    "B": "Random error; repeat the measurement several times and calculate the average.",
+    "C": "Parallax error; position the eye directly in line with the pointer before taking the reading.",
+    "D": "Systematic error; replace the ammeter with one of higher sensitivity."
+  },
+  "answer": "C",
+  "answer_text": "Parallax error; position the eye directly in line with the pointer before taking the reading.",
+  "explanation": {
+    "question_restate": "An analogue ammeter was read with the observer's eye positioned to one side instead of directly in front of the pointer. The task is to identify the type of error introduced and the proper method of preventing it.",
+    "principle": "Parallax error occurs when the position of the observer's eye is not perpendicular to the scale of an analogue instrument. Because the pointer is viewed from an angle, it appears to indicate a different value from its true position. This error is common with analogue ammeters, voltmeters, thermometers and measuring cylinders.\n\nA beginner may ask: 'Why does changing my eye position change the reading?' The pointer and the scale are separated by a small distance. Looking from an angle causes the pointer to appear displaced relative to the graduation marks.\n\nAnother beginner may ask: 'How can this error be avoided?' The eye should be placed directly in line with the pointer and the scale. Many analogue meters also have a mirror strip behind the pointer. The correct viewing position is reached when the pointer completely covers its reflection in the mirror, eliminating parallax error.\n\nParallax error is an observational error and does not indicate that the instrument itself is faulty.",
+    "steps": [
+      "Step 1: Identify how the reading was taken.\n\nThe observer viewed the ammeter from the left side rather than directly above the pointer.",
+      "Step 2: Recall the error caused by viewing an analogue scale from an angle.\n\nThis produces parallax error.",
+      "Step 3: Determine the correct preventive measure.\n\nThe observer should position the eye directly in line with the pointer and the scale before reading the instrument.",
+      "Step 4: Evaluate the options.\n\nOnly Option C correctly identifies both the error and the appropriate method of avoiding it."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Zero error; reset the pointer to zero before taking the reading. — Zero error occurs when an instrument does not read zero before use. It is unrelated to the observer's viewing position.",
+      "B. Random error; repeat the measurement several times and calculate the average. — Random errors arise from unpredictable fluctuations. The situation described is specifically caused by incorrect eye position, not random variation.",
+      "C. Parallax error; position the eye directly in line with the pointer before taking the reading. — Correct. Viewing an analogue scale from an angle causes parallax error, which is eliminated by aligning the eye with the pointer.",
+      "D. Systematic error; replace the ammeter with one of higher sensitivity. — Systematic error results from consistent instrument or experimental bias. The ammeter is not described as faulty; the problem is incorrect observation."
+    ],
+    "exam_tip": "JAMB frequently tests parallax error through practical situations involving analogue ammeters, voltmeters, thermometers, measuring cylinders and metre rules rather than asking for the definition directly.\n\nWhenever a question mentions reading an analogue scale from the side, above, below or at an angle, immediately think of parallax error.\n\nRemember:\n\n• Incorrect eye position → Parallax error.\n• Correct eye position (or aligning the pointer with its mirror image) → Accurate reading.",
+    "final_answer": "C. Parallax error; position the eye directly in line with the pointer before taking the reading.",
+    "simple_explanation": "The candidate looked at the ammeter from the side instead of straight in front. This makes the pointer appear to point to the wrong value, producing parallax error.\n\nTo prevent this, the eye should be placed directly in line with the pointer before reading the scale.\n\nTherefore, the correct answer is Option C.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Parallax Error to learn how observational errors occur in analogue measuring instruments, how mirror scales are used to eliminate parallax, and how to answer JAMB practical questions involving ammeters, voltmeters, thermometers, measuring cylinders and metre rules."
+  },
+  "tags": [
+    "parallax_error",
+    "analogue_ammeter",
+    "laboratory_measurement",
+    "observational_error",
+    "measurement_accuracy",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q155",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Parallax error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "While recording the potential difference across a resistor, a laboratory assistant noticed that the pointer of an analogue voltmeter appeared to shift against the scale when viewed from different angles. To obtain the most accurate reading and eliminate parallax error, where should the observer's eye be positioned?",
+  "options": {
+    "A": "Directly above the pointer so that the pointer completely covers its reflection in the mirror strip",
+    "B": "At the left-hand side of the scale so the graduations appear larger",
+    "C": "Slightly below the pointer to avoid blocking the scale markings",
+    "D": "At any convenient position provided the voltmeter is held steady"
+  },
+  "answer": "A",
+  "answer_text": "Directly above the pointer so that the pointer completely covers its reflection in the mirror strip",
+  "explanation": {
+    "question_restate": "An analogue voltmeter fitted with a mirror strip is being used to measure potential difference. Because the pointer appears to move relative to the scale when viewed from different positions, the task is to identify the correct viewing position that removes parallax error and gives the true reading.",
+    "principle": "Parallax error occurs when the line of sight is not perpendicular to the scale of an analogue measuring instrument. As a result, the pointer appears to indicate different values when viewed from different angles.\n\nMany analogue voltmeters and ammeters are fitted with a mirror strip beneath the scale. The purpose of the mirror is to help the observer position the eye correctly. When the observer's eye is directly in front of the pointer, the pointer completely hides its reflection in the mirror. At this position, the line of sight is perpendicular to the scale and parallax error is eliminated.\n\nIf the pointer and its reflection are seen separately, the observer is viewing the scale from an angle, causing a reading that may be higher or lower than the true value.",
+    "steps": [
+      "Step 1: Recognize that the instrument described is an analogue voltmeter with a mirror strip.",
+      "Step 2: Recall that the mirror strip is provided specifically to eliminate parallax error.",
+      "Step 3: Position the eye directly in front of the pointer, perpendicular to the scale.",
+      "Step 4: Check the mirror image. If the pointer still appears beside its reflection, adjust the viewing position.",
+      "Step 5: Continue adjusting until the pointer completely covers its reflection.",
+      "Step 6: Read the scale only after the reflection is hidden, since this represents the true reading with negligible parallax error."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Correct. When the pointer exactly covers its reflection, the observer's eye is perpendicular to the scale and parallax error is eliminated.",
+      "B. Viewing from the side increases parallax error because the line of sight is no longer perpendicular to the scale.",
+      "C. Looking from below also introduces parallax error and does not improve the accuracy of the reading.",
+      "D. Keeping the instrument steady is important, but it does not eliminate parallax error if the eye is incorrectly positioned."
+    ],
+    "exam_tip": "Whenever an analogue ammeter, voltmeter or galvanometer has a mirror strip, always read the scale only after the pointer completely hides its reflection. JAMB frequently tests this practical laboratory skill. A common misconception is that holding the instrument steady alone removes parallax error; the observer's eye position is equally important.",
+    "final_answer": "A. Directly above the pointer so that the pointer completely covers its reflection in the mirror strip.",
+    "simple_explanation": "The pointer seems to change position if you look at it from different angles. To avoid this error, place your eye directly in front of the pointer until the pointer hides its reflection in the mirror. This ensures the reading is the correct one.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Parallax Error to learn how mirror scales improve measurement accuracy in analogue instruments, including voltmeters, ammeters, thermometers and measuring cylinders. The tutorial contains worked JAMB-style practical questions, examiner tips and laboratory demonstrations."
+  },
+  "tags": [
+    "parallax_error",
+    "analogue_voltmeter",
+    "mirror_scale",
+    "laboratory_measurement",
+    "measurement_accuracy",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q156",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Parallax error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "While determining the boiling point of a liquid, a laboratory assistant noticed that different observers recorded slightly different temperatures from the same analogue thermometer because they viewed the mercury level from different positions. Which laboratory practice would best eliminate this source of error?",
+  "options": {
+    "A": "Read the thermometer with the eye level directly in line with the top of the mercury column.",
+    "B": "Tilt the thermometer slightly towards the observer before taking the reading.",
+    "C": "Take several readings from different viewing angles and calculate their average.",
+    "D": "Hold the thermometer farther away from the eye so that the scale can be seen completely."
+  },
+  "answer": "A",
+  "answer_text": "Read the thermometer with the eye level directly in line with the top of the mercury column.",
+  "explanation": {
+    "question_restate": "Different observers obtained different readings from the same analogue thermometer because they looked at the mercury column from different angles. The question asks for the correct laboratory practice that removes this parallax error.",
+    "principle": "Parallax error occurs when the observer's eye is not positioned directly in line with the pointer, liquid level or scale marking being read. Looking from above or below makes the object appear displaced relative to the scale, leading to an incorrect reading. This error is common with analogue instruments such as thermometers, ammeters, voltmeters, measuring cylinders and metre rules.\n\nTo eliminate parallax error, the observer's eye must be placed at the same level as the point being read. This ensures that the line of sight is perpendicular to the scale and the correct value is obtained.\n\nJAMB often tests this concept through practical laboratory situations rather than by asking for the definition of parallax error directly.",
+    "steps": [
+      "Step 1: Identify the cause of the different readings. The observers viewed the mercury level from different positions.",
+      "Step 2: Recognize that this is a parallax error, which results from an incorrect line of sight.",
+      "Step 3: Recall the correct laboratory technique for analogue instruments.",
+      "Step 4: Position the eye horizontally at the same level as the top of the mercury column before taking the reading.",
+      "Step 5: This viewing position removes the apparent displacement and gives the true thermometer reading."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Correct. Viewing the mercury level with the eye directly in line with it eliminates parallax error.",
+      "B. Tilting the thermometer changes the orientation of the scale and may introduce additional reading errors rather than removing parallax.",
+      "C. Averaging incorrect readings obtained from different viewing angles does not eliminate the systematic error caused by parallax.",
+      "D. Moving farther away does not ensure the eye is level with the mercury column; the parallax error may still remain."
+    ],
+    "exam_tip": "Whenever an analogue instrument is involved, first ask whether the observer's eye is at the same level as the pointer or liquid surface. If not, parallax error is present. The standard correction is never to tilt the instrument or average several incorrect readings, but to observe the scale with the eye directly in line with the point being measured.",
+    "final_answer": "A. Read the thermometer with the eye level directly in line with the top of the mercury column.",
+    "simple_explanation": "The observers obtained different readings because they looked at the thermometer from different angles. Looking straight at the mercury level with the eye at the same height removes the apparent shift on the scale. Therefore, the correct laboratory practice is to read the thermometer at eye level.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Parallax Error to learn how viewing angle affects measurements on thermometers, analogue ammeters, voltmeters, measuring cylinders and metre rules. The tutorial includes worked JAMB-style practical questions, laboratory demonstrations and examiner tips for avoiding common measurement errors."
+  },
+  "tags": [
+    "parallax_error",
+    "thermometer",
+    "analogue_instrument",
+    "laboratory_practice",
+    "measurement_error",
+    "experimental_physics",
+    "eye_level",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q157",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Parallax error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "While determining the length of a metal strip with a metre rule placed on a laboratory bench, a candidate observed that the eye was not directly above the end of the strip when taking the reading. Which action would best eliminate parallax error and give the most reliable reading?",
+  "options": {
+    "A": "Tilt the metre rule slightly until the scale is easier to read.",
+    "B": "Move the eye vertically until it is directly above the mark being read.",
+    "C": "Read the scale from either end and calculate the average.",
+    "D": "Estimate the reading to the nearest whole centimetre."
+  },
+  "answer": "B",
+  "answer_text": "Move the eye vertically until it is directly above the mark being read.",
+  "explanation": {
+    "question_restate": "A candidate is measuring the length of a metal strip using a metre rule. The eye is not directly above the scale when taking the reading. The task is to identify the correct procedure for eliminating parallax error.",
+    "principle": "Parallax error occurs when a measuring scale is viewed from an angle instead of along a line perpendicular to the scale. Because of this change in viewing position, the apparent position of the object relative to the scale changes, leading to an incorrect reading.\n\nA beginner may ask: 'Why does my eye position matter?' When your eye is to one side, the object appears shifted against the scale markings. The reading therefore depends on where you stand rather than on the true measurement.\n\nAnother beginner may ask: 'How can I avoid this error?' The correct technique is to position the eye directly above the graduation being read so that the line of sight is perpendicular to the scale. This removes the apparent shift and gives the true reading.\n\nParallax error commonly affects measurements taken with metre rules, thermometers, measuring cylinders and analogue electrical meters. It is a reading error caused by improper observation rather than by a faulty instrument.",
+    "steps": [
+      "Step 1: Identify the source of the error. The observer's eye is not directly above the scale.",
+      "Step 2: Recognise that viewing the scale from an angle produces parallax error.",
+      "Step 3: Recall the standard laboratory practice for avoiding parallax error.",
+      "Step 4: Position the eye vertically above the graduation or pointer before taking the reading.",
+      "Step 5: Read the scale only after ensuring that the line of sight is perpendicular to the scale.",
+      "Step 6: Therefore, the correct action is to move the eye directly above the mark being read."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Tilt the metre rule slightly until the scale is easier to read. — Tilting the instrument changes its position and can introduce additional measurement errors instead of removing parallax error.",
+      "B. Move the eye vertically until it is directly above the mark being read. — Correct. Viewing the scale perpendicularly eliminates parallax error and gives the true reading.",
+      "C. Read the scale from either end and calculate the average. — Averaging two incorrect observations does not eliminate parallax error because both readings may still be affected by incorrect eye position.",
+      "D. Estimate the reading to the nearest whole centimetre. — Reducing precision does not remove parallax error; the observation method remains incorrect."
+    ],
+    "exam_tip": "JAMB often tests parallax error through practical laboratory situations rather than by asking for its definition. Whenever you see a metre rule, thermometer, measuring cylinder or analogue meter, remember that the observer's eye should be directly in line with the reading. Never read a scale from the side.",
+    "final_answer": "B. Move the eye vertically until it is directly above the mark being read.",
+    "simple_explanation": "The error occurs because the observer is looking at the scale from the side. To obtain the correct measurement, the eye must be directly above the mark being read. This removes parallax error and gives the true reading.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Parallax Error to learn how improper eye position affects measurements taken with metre rules, thermometers, measuring cylinders and analogue meters. Study additional JAMB-style practical questions on correct laboratory measurement techniques, sources of experimental error and methods of improving measurement accuracy."
+  },
+  "tags": [
+    "parallax_error",
+    "metre_rule",
+    "laboratory_measurement",
+    "measurement_technique",
+    "experimental_physics",
+    "reading_scales",
+    "measurement_accuracy",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q158",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Parallax error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "While measuring the length of a wooden strip with a metre rule placed on a laboratory bench, a candidate viewed the scale from an angle instead of directly above the end of the strip. The recorded length differed slightly from the actual value even though the metre rule was correctly calibrated. Which action would best eliminate this source of error?",
+  "options": {
+    "A": "Use a metre rule with finer graduations.",
+    "B": "Take several readings and calculate the average.",
+    "C": "Read the scale with the eye vertically above the point being measured.",
+    "D": "Measure the strip with a longer metre rule."
+  },
+  "answer": "C",
+  "answer_text": "Read the scale with the eye vertically above the point being measured.",
+  "explanation": {
+    "question_restate": "A length measurement made with a correctly calibrated metre rule is inaccurate because the observer viewed the scale from an angle. The task is to identify the best method of eliminating the resulting parallax error.",
+    "principle": "Parallax error occurs when the observer's eye is not positioned directly in line with the scale and the object or pointer being observed. Because the line of sight is inclined, the apparent position of the object on the scale shifts, producing a reading that is either too high or too low.\n\nA beginner may ask: 'Does this mean the metre rule is faulty?' No. The instrument is functioning correctly. The error arises solely from the observer's viewing position.\n\nAnother beginner may ask: 'Can averaging several readings remove parallax error?' Not if the observer makes the same viewing mistake each time. Repeating an incorrect technique simply repeats the same error.\n\nThe correct laboratory practice is to position the eye vertically above the mark being read so that the line of sight is perpendicular to the scale. This ensures the apparent and actual positions coincide, eliminating parallax error.",
+    "steps": [
+      "Step 1: Identify the source of the inaccurate reading. The observer viewed the metre rule from an angle.",
+      "Step 2: Recognise that this is a parallax error caused by incorrect eye position rather than a defective instrument.",
+      "Step 3: Recall the correct laboratory technique: the eye should be directly above the graduation or object being read.",
+      "Step 4: Evaluate the options. Finer graduations, averaging readings, or using a longer rule do not correct an incorrect line of sight.",
+      "Step 5: Therefore, the correct procedure is to read the scale with the eye vertically above the point being measured."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Use a metre rule with finer graduations. — Smaller divisions improve resolution but do not eliminate parallax caused by improper viewing.",
+      "B. Take several readings and calculate the average. — Averaging repeated readings made with the same incorrect eye position does not remove parallax error.",
+      "C. Read the scale with the eye vertically above the point being measured. — Correct. This aligns the line of sight with the measurement and removes parallax error.",
+      "D. Measure the strip with a longer metre rule. — The length of the rule has no effect on parallax error."
+    ],
+    "exam_tip": "JAMB frequently tests parallax error through practical situations involving metre rules, thermometers, measuring cylinders and analogue meters. Whenever a question mentions reading a scale 'from an angle' or 'not directly above the mark,' think of parallax error. The standard remedy is to position the eye perpendicular to and directly above the scale.",
+    "final_answer": "C. Read the scale with the eye vertically above the point being measured.",
+    "simple_explanation": "The metre rule is not the problem. The observer looked at the scale from the side, causing the reading to appear different from its true value. Looking straight down at the mark removes this parallax error and gives the correct reading.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Parallax Error to learn how incorrect viewing angles affect measurements made with metre rules, thermometers, measuring cylinders, ammeters and voltmeters. The tutorial includes practical demonstrations, worked examples and JAMB-style questions on avoiding observational errors in laboratory measurements."
+  },
+  "tags": [
+    "parallax_error",
+    "metre_rule",
+    "laboratory_measurement",
+    "observational_error",
+    "measurement_techniques",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q159",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Parallax error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory assistant was instructed to measure the length of a metal strip using a metre rule placed flat on a workbench. The assistant observed the reading while looking at the scale from one side instead of directly above the strip. Which of the following practices would best eliminate the parallax error in the measurement?",
+  "options": {
+    "A": "Place the eye directly above the mark being read on the metre rule.",
+    "B": "Read the metre rule from a greater distance to view the entire scale.",
+    "C": "Tilt the metre rule slightly towards the eye before taking the reading.",
+    "D": "Repeat the measurement several times from different viewing angles and calculate the average."
+  },
+  "answer": "A",
+  "answer_text": "Place the eye directly above the mark being read on the metre rule.",
+  "explanation": {
+    "question_restate": "The question asks for the correct laboratory practice that prevents parallax error when taking a reading from a metre rule.",
+    "principle": "Parallax error occurs when the observer's line of sight is not perpendicular to the scale being read. Looking at a scale from an angle makes the object appear to coincide with a different graduation, leading to an incorrect reading. To eliminate parallax error, the eye must be positioned vertically above the mark so that the line of sight is perpendicular to the scale.\n\nThis principle applies to analogue instruments such as metre rules, measuring cylinders, thermometers, ammeters and voltmeters. It is one of the most common sources of reading errors in practical physics examinations.",
+    "steps": [
+      "Step 1: Identify the source of the error described. The assistant viewed the metre rule from one side rather than directly above it.",
+      "Step 2: Recognize that this viewing position causes parallax error because the apparent position of the strip changes with the observer's angle.",
+      "Step 3: Recall the standard laboratory practice for eliminating parallax error.",
+      "Step 4: Position the eye vertically above the graduation being read so that the line of sight is perpendicular to the scale.",
+      "Step 5: Therefore, the correct choice is to place the eye directly above the mark on the metre rule."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Place the eye directly above the mark being read on the metre rule. — Correct. This ensures the line of sight is perpendicular to the scale and eliminates parallax error.",
+      "B. Read the metre rule from a greater distance to view the entire scale. — Increasing the viewing distance does not remove the error if the eye is still at an angle.",
+      "C. Tilt the metre rule slightly towards the eye before taking the reading. — Tilting the instrument changes the geometry of the measurement and may introduce additional error instead of eliminating parallax.",
+      "D. Repeat the measurement several times from different viewing angles and calculate the average. — Averaging incorrect readings taken from different angles does not eliminate the systematic error caused by parallax."
+    ],
+    "exam_tip": "Whenever reading an analogue instrument, first check your eye position. For metre rules, thermometers, measuring cylinders, ammeters and voltmeters, always view the scale with your eye directly in line with the reading. JAMB often tests parallax error by asking candidates to identify the correct laboratory practice rather than defining the term.",
+    "final_answer": "A. Place the eye directly above the mark being read on the metre rule.",
+    "simple_explanation": "The assistant looked at the metre rule from the side. This changes the apparent position of the mark and gives a wrong reading. Looking straight down at the scale removes this effect and gives the correct measurement.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Parallax Error to learn how to avoid reading errors on analogue instruments such as metre rules, measuring cylinders, thermometers, ammeters and voltmeters. The lesson includes practical demonstrations, examiner tips and additional JAMB-style questions."
+  },
+  "tags": [
+    "parallax_error",
+    "metre_rule",
+    "laboratory_practice",
+    "measurement",
+    "analogue_instruments",
+    "experimental_physics",
+    "reading_error",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q160",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Parallax error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "While measuring the length of a brass strip with a metre rule placed on a laboratory bench, a laboratory assistant noticed that different observers obtained slightly different readings because they viewed the scale from different positions. Which practice would best eliminate the source of this error?",
+  "options": {
+    "A": "Hold the metre rule at an angle to the brass strip while taking the reading.",
+    "B": "View the graduation directly above the end of the brass strip with the eye perpendicular to the scale.",
+    "C": "Take the reading from either end of the metre rule and calculate the average.",
+    "D": "Increase the distance between the eye and the metre rule before reading the scale."
+  },
+  "answer": "B",
+  "answer_text": "View the graduation directly above the end of the brass strip with the eye perpendicular to the scale.",
+  "explanation": {
+    "question_restate": "A metre rule is being used to measure the length of a brass strip. Different observers obtain different readings because they look at the scale from different angles. The task is to identify the correct laboratory practice that eliminates this parallax error.",
+    "principle": "Parallax error occurs when a scale is viewed from an angle instead of along a line perpendicular to the scale at the point of measurement. Because the eye is not directly above the mark being read, the apparent position of the object shifts relative to the graduations, leading to an incorrect reading.\n\nA beginner may ask: 'Why do different observers obtain different readings?' Each observer may place their eye at a different angle, causing the mark to appear against different scale divisions.\n\nAnother beginner may ask: 'How can this be prevented?' The observer should position the eye directly above the point being read so that the line of sight is perpendicular to the scale. This removes the apparent shift and gives the true reading.\n\nParallax error is common when using metre rules, thermometers, measuring cylinders, analogue ammeters and voltmeters. JAMB frequently tests this concept through practical laboratory situations rather than by asking for its definition.",
+    "steps": [
+      "Step 1: Identify the problem described in the experiment.\n\nDifferent observers obtain different readings because they view the scale from different positions.",
+      "Step 2: Recognise the type of measurement error.\n\nThis is parallax error, caused by viewing the scale from an angle.",
+      "Step 3: Recall the correct laboratory technique.\n\nThe eye should be placed directly above the graduation being read so that the line of sight is perpendicular to the scale.",
+      "Step 4: Evaluate the options.\n\nOnly one option correctly describes this standard laboratory practice.",
+      "Step 5: Therefore, the correct procedure is to view the graduation directly above the end of the brass strip with the eye perpendicular to the metre rule."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Hold the metre rule at an angle to the brass strip while taking the reading. — Tilting the metre rule can introduce additional measurement errors instead of eliminating parallax.",
+      "B. View the graduation directly above the end of the brass strip with the eye perpendicular to the scale. — Correct. This is the standard method of eliminating parallax error.",
+      "C. Take the reading from either end of the metre rule and calculate the average. — Averaging does not remove parallax if every reading is taken incorrectly.",
+      "D. Increase the distance between the eye and the metre rule before reading the scale. — Moving farther away does not eliminate parallax; correct eye alignment is what matters."
+    ],
+    "exam_tip": "Whenever a question mentions that different observers obtain different readings because they look from different positions, think of parallax error. The correct remedy is always to position the eye directly above the mark being read (line of sight perpendicular to the scale). Do not confuse this with calibration errors or zero error, which have different causes.",
+    "final_answer": "B. View the graduation directly above the end of the brass strip with the eye perpendicular to the scale.",
+    "simple_explanation": "The observers obtained different readings because they looked at the metre rule from different angles. To avoid parallax error, the eye must be placed directly above the graduation being read. This ensures the object lines up with the correct scale mark.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Parallax Error to learn how incorrect eye position affects measurements on metre rules, thermometers, measuring cylinders, analogue ammeters and voltmeters. Practise more JAMB-style laboratory questions on avoiding observational errors and improving measurement accuracy."
+  },
+  "tags": [
+    "parallax_error",
+    "metre_rule",
+    "laboratory_measurement",
+    "observational_error",
+    "measurement_technique",
+    "experimental_physics",
+    "measurement_accuracy",
+    "phy_02"
+  ],
+  "active": true
 }
-
-
 
   
 ]
