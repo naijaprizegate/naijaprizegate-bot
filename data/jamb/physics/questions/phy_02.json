@@ -6885,7 +6885,1028 @@
     "phy_02"
   ],
   "active": true
+},
+{
+  "id": "phy_02_q132",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Rounding off in experimental reports",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "An agricultural science laboratory determined the speed of water flowing through an irrigation channel. A floating marker travelled 18.75 m in 4.63 s. After completing the calculation, the laboratory report required the final answer to be expressed to three significant figures. What speed should be reported?",
+  "options": {
+    "A": "4.04 m/s",
+    "B": "4.05 m/s",
+    "C": "4.049 m/s",
+    "D": "4.1 m/s"
+  },
+  "answer": "B",
+  "answer_text": "4.05 m/s",
+  "explanation": {
+    "question_restate": "A floating marker covered a distance of 18.75 m in 4.63 s. Calculate the speed and report the final answer to three significant figures as required in a laboratory report.",
+    "principle": "Scientific laboratory reports require calculated results to be presented with an appropriate number of significant figures so that the reported value reflects the precision of the measurements made. When dividing one measured quantity by another, the result is first calculated and then rounded to the required number of significant figures.\n\nSpeed is calculated using:\n\nSpeed = Distance ÷ Time\n\nAfter obtaining the calculator value, identify the first three significant figures. The next digit determines whether the last retained digit remains unchanged (if it is less than 5) or increases by one (if it is 5 or greater). Proper rounding prevents reporting an accuracy that the experiment does not support.",
+    "steps": [
+      "Step 1: Write the measured quantities.\n\nDistance = 18.75 m\nTime = 4.63 s.",
+      "Step 2: Apply the speed formula.\n\nSpeed = Distance ÷ Time = 18.75 ÷ 4.63.",
+      "Step 3: Perform the calculation.\n\n18.75 ÷ 4.63 = 4.049676... m/s.",
+      "Step 4: Identify the first three significant figures.\n\nThey are 4, 0 and 4, giving 4.04.",
+      "Step 5: Examine the next digit.\n\nThe fourth significant figure is 9, which is greater than 5.",
+      "Step 6: Round the third significant figure upward.\n\nTherefore, 4.049676... becomes 4.05 m/s when expressed to three significant figures.",
+      "Step 7: Record the final laboratory result.\n\nSpeed = 4.05 m/s."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 4.04 m/s — This is obtained by truncating the calculator value instead of rounding it correctly. Since the next digit is 9, the last retained digit must increase.",
+      "B. 4.05 m/s — Correct. The calculated speed is 4.049676... m/s, which rounds to 4.05 m/s when expressed to three significant figures.",
+      "C. 4.049 m/s — This is not rounded to the required three significant figures; it retains four significant figures.",
+      "D. 4.1 m/s — This is rounded to only two significant figures, making the reported value less precise than required."
+    ],
+    "exam_tip": "JAMB frequently tests rounding-off through calculated experimental quantities such as speed, pressure, density and electrical measurements. Always perform the calculation first before rounding the final answer. Never round intermediate values unless specifically instructed, as doing so can introduce additional errors into the final result.",
+    "final_answer": "B. 4.05 m/s",
+    "simple_explanation": "First calculate the speed:\n\n18.75 ÷ 4.63 = 4.049676... m/s.\n\nTo report the answer to three significant figures, keep the first three significant digits (4.04). The next digit is 9, so increase the last retained digit by one.\n\nTherefore, the correct reported speed is 4.05 m/s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Rounding Off in Experimental Reports to learn how calculated laboratory results should be presented using the correct number of significant figures and decimal places. Practise additional JAMB-style questions involving speed, pressure, density, laboratory reports and scientific calculations."
+  },
+  "tags": [
+    "rounding_off",
+    "significant_figures",
+    "speed_calculation",
+    "experimental_report",
+    "laboratory_measurement",
+    "measurement_reporting",
+    "practical_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q133",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Rounding Off in Experimental Reports",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory assistant determined the speed of a trolley by measuring a distance of 12.48 m with a metre rule and a time of 3.46 s using a stopwatch. The calculated speed displayed on the calculator was 3.606936416 m/s. According to good laboratory reporting practice, what value should be entered in the experimental report?",
+  "options": {
+    "A": "3.6 m/s",
+    "B": "3.61 m/s",
+    "C": "3.607 m/s",
+    "D": "3.6069 m/s"
+  },
+  "answer": "B",
+  "answer_text": "3.61 m/s",
+  "explanation": {
+    "question_restate": "A trolley travelled 12.48 m in 3.46 s. Although the calculator gives a speed of 3.606936416 m/s, the result must be reported appropriately in a laboratory record. The task is to determine the correctly rounded value.",
+    "principle": "Scientific calculations often produce long calculator outputs that suggest a level of precision greater than that justified by the measurements. Experimental results should therefore be rounded before being reported.\n\nA beginner may ask: 'Why not write all the digits shown on the calculator?' The extra digits are not physically meaningful because the measuring instruments themselves cannot determine the quantity to that many decimal places.\n\nAnother beginner may ask: 'How many decimal places should I keep?' Unless a different instruction is given, laboratory reports commonly present calculated quantities to a sensible number of decimal places consistent with the precision of the measurements. In this question, reporting the speed to two decimal places is appropriate.\n\nTo round to two decimal places, examine the third decimal digit. If it is 5 or greater, increase the second decimal digit by one. If it is less than 5, leave the second decimal digit unchanged.",
+    "steps": [
+      "Step 1: Identify the calculator result.\n\nCalculated speed = 3.606936416 m/s.",
+      "Step 2: Decide the required reporting accuracy.\n\nThe experimental report requires the result to be recorded to two decimal places.",
+      "Step 3: Locate the second decimal place.\n\nIn 3.606936416, the second decimal digit is 0.",
+      "Step 4: Examine the next digit.\n\nThe third decimal digit is 6.",
+      "Step 5: Apply the rounding rule.\n\nSince 6 is greater than 5, increase the second decimal digit by 1.",
+      "Step 6: Write the rounded result.\n\n3.606936416 rounds to 3.61 m/s.",
+      "Step 7: Therefore, the correct value to record in the laboratory report is 3.61 m/s."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 3.6 m/s — This is rounded to one decimal place, giving less precision than is appropriate for the experimental report.",
+      "B. 3.61 m/s — Correct. Rounding 3.606936416 to two decimal places gives 3.61 m/s.",
+      "C. 3.607 m/s — This is rounded to three decimal places rather than the required two decimal places.",
+      "D. 3.6069 m/s — This simply truncates the calculator display to four decimal places instead of reporting the result using the required level of precision."
+    ],
+    "exam_tip": "JAMB frequently presents calculator outputs with many digits to test whether candidates understand proper scientific reporting rather than calculation alone.\n\nAlways read the question carefully to determine the required number of decimal places or significant figures before rounding.\n\nRemember:\n\n• Look at the first digit to be discarded.\n• If it is 5 or greater, increase the preceding digit by one.\n• If it is less than 5, leave the preceding digit unchanged.\n\nAvoid copying the full calculator display into your final answer.",
+    "final_answer": "B. 3.61 m/s",
+    "simple_explanation": "The calculator gives a speed of 3.606936416 m/s. Since the result should be reported to two decimal places, look at the third decimal digit, which is 6. Because it is greater than 5, increase the second decimal digit by one.\n\nTherefore, the correct reported value is 3.61 m/s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Rounding Off in Experimental Reports to learn how to report calculated results correctly using decimal places and significant figures. Practise additional JAMB-style laboratory questions involving speed, pressure, density, experimental calculations and scientific reporting.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "rounding_off",
+    "experimental_report",
+    "speed",
+    "calculator_output",
+    "laboratory_measurement",
+    "decimal_places",
+    "scientific_reporting",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q134",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Rounding off in experimental reports",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "An experiment was carried out to determine the average speed of a trolley moving along a straight track. The trolley travelled a measured distance of 8.50 m in 2.37 s. A calculator gave the speed as 3.58649789 m/s. If the final laboratory report must present the result to three significant figures, what value should be recorded?",
+  "options": {
+    "A": "3.58 m/s",
+    "B": "3.59 m/s",
+    "C": "3.587 m/s",
+    "D": "3.600 m/s"
+  },
+  "answer": "B",
+  "answer_text": "3.59 m/s",
+  "explanation": {
+    "question_restate": "The calculated average speed of a trolley is 3.58649789 m/s. The task is not to recalculate the speed but to report the result correctly to three significant figures, as required in a laboratory report.",
+    "principle": "Scientific measurements are often calculated using a calculator that produces many decimal digits. However, laboratory reports should not present more digits than are justified by the precision of the measurements. Instead, the result is rounded to the required number of significant figures.\n\nSignificant figures begin counting from the first non-zero digit. When rounding, inspect the digit immediately after the last significant figure to be retained.\n\nIf this next digit is 5 or greater, increase the last retained digit by one. If it is less than 5, leave the retained digit unchanged.\n\nThis practice ensures that reported experimental results are neither misleadingly precise nor unnecessarily inaccurate. JAMB frequently tests this skill using practical laboratory calculations involving speed, pressure, density, resistance and other measured quantities.",
+    "steps": [
+      "Step 1: Write the calculator value.\n\nSpeed = 3.58649789 m/s.",
+      "Step 2: Count the first three significant figures.\n\nThey are 3, 5 and 8, giving 3.58.",
+      "Step 3: Examine the next digit after the third significant figure.\n\nThe next digit is 6.",
+      "Step 4: Apply the rounding rule.\n\nSince 6 is greater than or equal to 5, increase the last retained digit (8) by one.",
+      "Step 5: The rounded value therefore becomes 3.59 m/s.",
+      "Step 6: Record the result with the appropriate unit.\n\nAverage speed = 3.59 m/s."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 3.58 m/s — Incorrect. This would be correct only if the next digit after 3.58 were less than 5. Since the next digit is 6, the value should be rounded up.",
+      "B. 3.59 m/s — Correct. The calculator value 3.58649789 rounded to three significant figures is 3.59 m/s.",
+      "C. 3.587 m/s — Incorrect. This gives four significant figures instead of the required three.",
+      "D. 3.600 m/s — Incorrect. This changes the value unnecessarily and represents four significant figures while also introducing an unjustified level of precision."
+    ],
+    "exam_tip": "Always read the instruction carefully to determine whether the answer should be reported in significant figures or decimal places—they are not the same.\n\nFor significant figures:\n• Count from the first non-zero digit.\n• Look at the next digit.\n• If it is 5 or more, round up.\n• If it is less than 5, leave the last retained digit unchanged.\n\nJAMB commonly provides calculator outputs with many digits to test whether candidates can report experimental results correctly.",
+    "final_answer": "B. 3.59 m/s",
+    "simple_explanation": "The calculator gives 3.58649789 m/s. The first three significant figures are 3, 5 and 8. The next digit is 6, so the 8 is rounded up to 9.\n\nTherefore, the correct value to report is 3.59 m/s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Rounding Off in Experimental Reports to learn how to report calculated results correctly using significant figures and decimal places. Practise additional JAMB-style laboratory questions involving speed, pressure, density, resistance and other experimental measurements."
+  },
+  "tags": [
+    "rounding_off",
+    "significant_figures",
+    "experimental_report",
+    "average_speed",
+    "laboratory_measurement",
+    "calculator_output",
+    "measurement_reporting",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q135",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Rounding off in experimental reports",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "An engineering workshop determined the speed of a rotating grinding wheel by dividing the measured distance travelled by a marked point on its rim, 12.75 m, by the measured time of 3.46 s. The calculator displayed a speed of 3.684971098 m/s. If the result is to be reported appropriately to three significant figures in the laboratory record, what value should be entered?",
+  "options": {
+    "A": "3.68 m/s",
+    "B": "3.69 m/s",
+    "C": "3.685 m/s",
+    "D": "4 m/s"
+  },
+  "answer": "A",
+  "answer_text": "3.68 m/s",
+  "explanation": {
+    "question_restate": "A laboratory calculation gives a calculator result of 3.684971098 m/s for the speed of a rotating grinding wheel. The task is to report the answer correctly to three significant figures for inclusion in an experimental report.",
+    "principle": "Scientific calculations often produce many digits on a calculator, but these digits do not all represent meaningful precision. Experimental results must be reported using an appropriate number of significant figures that reflects the precision of the measurements.\n\nA beginner may ask: 'Why not write every digit shown on the calculator?' The calculator performs exact arithmetic on the numbers entered, but the original measurements are not exact. Reporting unnecessary digits suggests a level of accuracy that the experiment did not achieve.\n\nAnother beginner may ask: 'How do I round to three significant figures?' Count from the first non-zero digit. Keep the first three significant digits and examine the next digit. If the next digit is 5 or greater, increase the last retained digit by one. If it is less than 5, leave the retained digit unchanged.\n\nHere, the calculated speed is 3.684971098 m/s. The first three significant figures are 3, 6 and 8. The next digit is 4, which is less than 5, so the third significant figure remains unchanged. Therefore, the correctly reported value is 3.68 m/s.\n\nJAMB frequently tests candidates' ability to present calculated laboratory results correctly rather than merely perform calculations.",
+    "steps": [
+      "Step 1: Write down the calculator result.\n\nSpeed = 3.684971098 m/s.",
+      "Step 2: Identify the first three significant figures.\n\nThey are 3, 6 and 8.",
+      "Step 3: Look at the next digit after the third significant figure.\n\nThe next digit is 4.",
+      "Step 4: Apply the rounding rule.\n\nSince 4 is less than 5, do not increase the third significant figure.",
+      "Step 5: Write the rounded result.\n\nSpeed = 3.68 m/s.",
+      "Step 6: Confirm that exactly three significant figures are present.\n\nThe digits 3, 6 and 8 form the three significant figures in 3.68 m/s."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 3.68 m/s — Correct. The fourth significant digit is 4, so the third significant figure remains unchanged.",
+      "B. 3.69 m/s — This would be correct only if the next digit after the third significant figure were 5 or greater.",
+      "C. 3.685 m/s — This reports four significant figures instead of the required three.",
+      "D. 4 m/s — This is rounded far too coarsely and discards useful experimental precision."
+    ],
+    "exam_tip": "In JAMB practical questions, calculate the answer first, then carefully read the instruction on the required number of significant figures or decimal places before reporting the final result.\n\nRemember:\n• Identify the required number of significant figures.\n• Count from the first non-zero digit.\n• Inspect the next digit.\n• If it is 5 or greater, round up; if it is less than 5, leave the last retained digit unchanged.\n\nNever copy the entire calculator display into your laboratory report unless specifically instructed.",
+    "final_answer": "A. 3.68 m/s",
+    "simple_explanation": "The calculator gives 3.684971098 m/s. For three significant figures, keep the first three digits (3, 6 and 8). The next digit is 4, which is less than 5, so the answer remains 3.68 m/s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Rounding Off in Experimental Reports to learn how to present calculated laboratory results correctly, apply significant figures and decimal-place rules, avoid over-reporting precision, and solve additional JAMB-style practical questions based on laboratory calculations and experimental reports."
+  },
+  "tags": [
+    "rounding_off",
+    "significant_figures",
+    "experimental_report",
+    "speed_calculation",
+    "laboratory_measurement",
+    "calculator_result",
+    "practical_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q136",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Rounding off in experimental reports",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "An engineering workshop determined the speed of a conveyor belt by measuring a distance of 18.75 m travelled in 2.436 s. The calculated speed displayed on a calculator was 7.697865... m/s. If the final result is to be reported to three significant figures in the laboratory report, what value should be recorded?",
+  "options": {
+    "A": "7.69 m/s",
+    "B": "7.70 m/s",
+    "C": "7.698 m/s",
+    "D": "7.7 m/s"
+  },
+  "answer": "B",
+  "answer_text": "7.70 m/s",
+  "explanation": {
+    "question_restate": "A conveyor belt travelled 18.75 m in 2.436 s, giving a calculated speed of 7.697865... m/s. The task is to report the final answer correctly to three significant figures as required in a laboratory report.",
+
+    "principle": "Scientific measurements are often carried out using instruments of limited precision. Although calculators may produce many decimal places, experimental results should be reported with an appropriate number of significant figures. Significant figures communicate the precision of the measurement without implying an unrealistic level of accuracy.\n\nA beginner may ask: 'Why can't I write every digit shown by the calculator?' The extra digits are not physically meaningful because the measuring instruments were not accurate enough to justify them.\n\nAnother beginner may ask: 'How do I round to significant figures?' First, identify the required number of significant figures, then inspect the next digit. If the next digit is 5 or greater, increase the last retained digit by one. Otherwise, leave it unchanged.\n\nHere, the calculator gives 7.697865... m/s. The first three significant figures are 7, 6 and 9. The next digit is 7, which is greater than 5, so the third significant figure (9) rounds up, producing 7.70 m/s. The trailing zero is significant because it indicates that the value has been reported to three significant figures.",
+
+    "steps": [
+      "Step 1: Identify the calculated value.\n\nCalculated speed = 7.697865... m/s.",
+      "Step 2: Determine the required reporting format.\n\nThe result must be reported to three significant figures.",
+      "Step 3: Locate the first three significant figures.\n\nThey are 7, 6 and 9.",
+      "Step 4: Examine the next digit.\n\nThe fourth significant figure is 7.",
+      "Step 5: Apply the rounding rule.\n\nSince 7 is greater than 5, increase the third significant figure by one.",
+      "Step 6: Perform the rounding.\n\n7.697865... m/s becomes 7.70 m/s.",
+      "Step 7: Record the final laboratory result.\n\nThe correctly reported speed is 7.70 m/s."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 7.69 m/s — Incorrect. The fourth significant figure is 7, so the value should be rounded up, not truncated.",
+      "B. 7.70 m/s — Correct. This is the properly rounded value to three significant figures.",
+      "C. 7.698 m/s — Incorrect. This gives four significant figures instead of the required three.",
+      "D. 7.7 m/s — Incorrect. Although numerically equivalent, it contains only two significant figures and does not satisfy the reporting requirement of three significant figures."
+    ],
+
+    "exam_tip": "JAMB frequently presents calculator outputs with many digits but expects candidates to report the final experimental result using the specified number of significant figures. Always read the instruction carefully. Do not confuse decimal places with significant figures, and remember that a trailing zero after a decimal point can be significant when it indicates the required precision.",
+
+    "final_answer": "B. 7.70 m/s",
+
+    "simple_explanation": "The calculator gives 7.697865... m/s, but the laboratory requires the answer to three significant figures. The first three significant figures are 7, 6 and 9. The next digit is 7, so the last retained digit is rounded up. Therefore, the correct reported value is 7.70 m/s.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Rounding Off in Experimental Reports to learn how to report calculated results using the correct number of significant figures and decimal places. Study additional JAMB-style laboratory questions involving speed, pressure, density, scientific notation and experimental calculations.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "rounding_off",
+    "significant_figures",
+    "speed",
+    "laboratory_report",
+    "experimental_physics",
+    "calculator_result",
+    "measurement_reporting",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q137",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Rounding off in experimental reports",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory group determined the speed of a trolley by dividing the measured distance travelled, 12.85 m, by the measured time, 3.64 s. Their calculator displayed 3.53021978 m/s. If the final result in the laboratory report is to be stated to three significant figures, what speed should be recorded?",
+  "options": {
+    "A": "3.53 m/s",
+    "B": "3.530 m/s",
+    "C": "3.54 m/s",
+    "D": "3.5 m/s"
+  },
+  "answer": "A",
+  "answer_text": "3.53 m/s",
+  "explanation": {
+    "question_restate": "The calculated speed of a trolley is 3.53021978 m/s. The task is to report this value correctly to three significant figures for inclusion in a laboratory report.",
+    "principle": "Experimental results should always be reported with an appropriate number of significant figures rather than copying every digit displayed by a calculator. Significant figures communicate the precision of the measurements used in an experiment.\n\nA beginner may ask: 'Why not write all the digits?' Calculator displays often contain more digits than the measurements justify. Reporting all of them gives a false impression of accuracy.\n\nAnother beginner may ask: 'How do I round to significant figures?' Count from the first non-zero digit. Keep the required number of significant figures and examine the next digit. If the next digit is less than 5, leave the last retained digit unchanged. If it is 5 or greater, increase the last retained digit by one.\n\nFor the value 3.53021978:\n• The first three significant figures are 3, 5 and 3.\n• The next digit is 0, which is less than 5.\n• Therefore, the third significant figure remains unchanged.\n\nProper rounding is an essential part of preparing scientific reports and is commonly tested in JAMB using practical laboratory calculations.",
+    "steps": [
+      "Step 1: Identify the calculator value.\n\nCalculated speed = 3.53021978 m/s.",
+      "Step 2: Determine the required precision.\n\nThe result must be reported to three significant figures.",
+      "Step 3: Count the first three significant figures.\n\nThey are 3, 5 and 3.",
+      "Step 4: Examine the next digit.\n\nThe fourth significant figure is 0.",
+      "Step 5: Apply the rounding rule.\n\nSince 0 is less than 5, the third significant figure remains unchanged.",
+      "Step 6: Write the rounded result.\n\nRecorded speed = 3.53 m/s.",
+      "Step 7: Therefore, the correct laboratory report should state the speed as 3.53 m/s."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 3.53 m/s — Correct. The value 3.53021978 rounded to three significant figures is 3.53 m/s.",
+      "B. 3.530 m/s — Incorrect. This contains four significant figures, not three.",
+      "C. 3.54 m/s — Incorrect. This would only be correct if the next retained digit were 5 or greater. Here, the next digit is 0.",
+      "D. 3.5 m/s — Incorrect. This has only two significant figures and reduces the reported precision unnecessarily."
+    ],
+    "exam_tip": "JAMB frequently presents calculator outputs with many decimal places. Before choosing an answer, always check whether the question requires a specific number of significant figures or decimal places.\n\nFor significant figures:\n• Begin counting from the first non-zero digit.\n• Look at the next digit before rounding.\n• Do not copy every digit shown on the calculator into the laboratory report.",
+    "final_answer": "A. 3.53 m/s",
+    "simple_explanation": "The calculator gives 3.53021978 m/s, but the report requires three significant figures. The first three significant figures are 3, 5 and 3. Since the next digit is 0, which is less than 5, the number remains 3.53 m/s.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Rounding Off in Experimental Reports to learn how to report calculated results correctly, distinguish significant figures from decimal places, and avoid common examination mistakes when presenting laboratory calculations. Practice additional JAMB-style questions involving speed, pressure, density, scientific notation and experimental reports."
+  },
+  "tags": [
+    "rounding_off",
+    "significant_figures",
+    "experimental_report",
+    "speed_calculation",
+    "laboratory_measurement",
+    "calculator_output",
+    "measurement_reporting",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q138",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Percentage error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory assistant checked the accuracy of a Vernier caliper by measuring the diameter of a standard cylindrical test rod known to be exactly 25.00 mm. The Vernier caliper recorded a diameter of 24.75 mm. Assuming the standard rod provides the accepted value, what percentage error is associated with the Vernier caliper measurement?",
+  "options": {
+    "A": "0.25%",
+    "B": "0.50%",
+    "C": "1.00%",
+    "D": "1.25%"
+  },
+  "answer": "C",
+  "answer_text": "1.00%",
+  "explanation": {
+    "question_restate": "A standard test rod with a certified diameter of 25.00 mm was measured using a Vernier caliper, which gave a reading of 24.75 mm. The task is to calculate the percentage error of the measurement using the accepted value as the reference.",
+    "principle": "Percentage error indicates how far a measured value differs from the accepted (true) value relative to that accepted value. During instrument calibration, the accepted value is usually obtained from a certified standard or a more accurate measuring instrument.\n\nMany students mistakenly divide by the measured value. However, percentage error is calculated using the accepted value as the denominator because it represents the correct reference.\n\nThe calculation involves two stages:\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%\n\nVernier calipers are commonly checked against standard gauge blocks or precision rods before being used for laboratory measurements. JAMB often presents percentage-error questions in this practical calibration format rather than asking for the formula directly.",
+    "steps": [
+      "Step 1: Identify the accepted (true) value.\n\nAccepted diameter = 25.00 mm.",
+      "Step 2: Identify the measured value.\n\nMeasured diameter = 24.75 mm.",
+      "Step 3: Calculate the absolute error.\n\nAbsolute Error = |24.75 − 25.00| = 0.25 mm.",
+      "Step 4: Substitute into the percentage error formula.\n\nPercentage Error = (0.25 ÷ 25.00) × 100%.",
+      "Step 5: Perform the division.\n\n0.25 ÷ 25.00 = 0.01.",
+      "Step 6: Convert the relative error to a percentage.\n\n0.01 × 100% = 1.00%.",
+      "Step 7: Therefore, the percentage error of the Vernier caliper measurement is 1.00%."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 0.25% — This is the absolute error expressed with a percentage sign without performing the required calculation.",
+      "B. 0.50% — This results from an incorrect arithmetic calculation or dividing the error by an inappropriate value before converting to a percentage.",
+      "C. 1.00% — Correct. The absolute error is 0.25 mm, so (0.25 ÷ 25.00) × 100% = 1.00%.",
+      "D. 1.25% — This could arise from using an incorrect denominator or multiplying by 100 incorrectly after obtaining the relative error."
+    ],
+    "exam_tip": "In calibration questions, first identify the accepted (standard) value before calculating the error. JAMB commonly uses Vernier calipers, micrometer screw gauges, measuring cylinders, metre rules and beam balances in practical percentage-error questions.\n\nRemember:\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%\n\nNever use the measured value as the denominator unless the question specifically instructs you to do so.",
+    "final_answer": "C. 1.00%",
+    "simple_explanation": "The correct diameter is 25.00 mm, but the Vernier caliper reads 24.75 mm. The difference between them is 0.25 mm.\n\nPercentage Error = (0.25 ÷ 25.00) × 100 = 1.00%.\n\nTherefore, the Vernier caliper measurement has a percentage error of 1.00%.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Percentage Error to learn how percentage error is applied during instrument calibration, laboratory measurements and experimental reporting. Practise additional JAMB-style questions involving Vernier calipers, micrometer screw gauges, beam balances, measuring cylinders and laboratory data interpretation.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "percentage_error",
+    "vernier_caliper",
+    "instrument_calibration",
+    "standard_test_rod",
+    "laboratory_measurement",
+    "experimental_physics",
+    "measurement_accuracy",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q139",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Percentage error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A brass rod was measured with a vernier caliper that had been recently calibrated against a standard gauge block. The accepted diameter of the rod was found to be 25.00 mm, while the vernier caliper gave a reading of 24.75 mm. What percentage error is associated with the vernier caliper measurement?",
+  "options": {
+    "A": "0.25%",
+    "B": "0.50%",
+    "C": "1.00%",
+    "D": "2.50%"
+  },
+  "answer": "C",
+  "answer_text": "1.00%",
+  "explanation": {
+    "question_restate": "A standard gauge block confirms that the true diameter of a brass rod is 25.00 mm, but a calibrated vernier caliper measures it as 24.75 mm. Determine the percentage error of the measurement.",
+    "principle": "Percentage error indicates how far an experimental measurement differs from the accepted (true) value, expressed as a percentage of the accepted value.\n\nThe accepted value is obtained from a more accurate reference instrument or standard. In this case, the gauge block provides the accepted diameter of the brass rod.\n\nThe calculation involves two stages:\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%\n\nWhen calibrating laboratory instruments such as vernier calipers, micrometer screw gauges and measuring cylinders, scientists compare instrument readings with standard values to determine whether the instrument is sufficiently accurate for experimental work.\n\nA common mistake is to divide by the measured value instead of the accepted value. JAMB often tests this misconception.",
+    "steps": [
+      "Step 1: Identify the accepted (true) diameter.\n\nAccepted diameter = 25.00 mm.",
+      "Step 2: Identify the measured diameter.\n\nMeasured diameter = 24.75 mm.",
+      "Step 3: Calculate the absolute error.\n\nAbsolute Error = |24.75 − 25.00| = 0.25 mm.",
+      "Step 4: Substitute into the percentage error formula.\n\nPercentage Error = (0.25 ÷ 25.00) × 100%.",
+      "Step 5: Evaluate the fraction.\n\n0.25 ÷ 25.00 = 0.01.",
+      "Step 6: Convert the decimal to a percentage.\n\n0.01 × 100% = 1.00%.",
+      "Step 7: Therefore, the percentage error of the vernier caliper measurement is 1.00%."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 0.25% — This results from mistaking the absolute error (0.25 mm) for the percentage error without completing the calculation.",
+      "B. 0.50% — This could arise from dividing the error by an incorrect reference value or making an arithmetic error during the calculation.",
+      "C. 1.00% — Correct. The absolute error is 0.25 mm, and (0.25 ÷ 25.00) × 100% = 1.00%.",
+      "D. 2.50% — This may result from multiplying by 10 instead of 100 at the wrong stage or using an incorrect denominator."
+    ],
+    "exam_tip": "Whenever a question provides both an accepted value and an experimental reading, first calculate the absolute error. Then divide by the accepted (standard) value—not the measured value—before multiplying by 100%.\n\nQuestions involving calibration of vernier calipers, micrometer screw gauges, beam balances and other laboratory instruments frequently appear in JAMB.",
+    "final_answer": "C. 1.00%",
+    "simple_explanation": "The accepted diameter is 25.00 mm, while the vernier caliper reads 24.75 mm.\n\nDifference = 25.00 − 24.75 = 0.25 mm.\n\nPercentage error = (0.25 ÷ 25.00) × 100 = 1.00%.\n\nTherefore, the correct answer is 1.00%.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Percentage Error to learn how percentage error is determined during instrument calibration, laboratory measurements and experimental reporting. Practice additional JAMB-style questions involving vernier calipers, micrometer screw gauges, beam balances, measuring cylinders and other laboratory instruments."
+  },
+  "tags": [
+    "percentage_error",
+    "vernier_caliper",
+    "instrument_calibration",
+    "diameter_measurement",
+    "gauge_block",
+    "laboratory_measurement",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q140",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Percentage error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A quality-control engineer checked the calibration of a vernier caliper using a precision gauge block whose certified thickness was 25.00 mm. The vernier caliper consistently measured the thickness as 24.80 mm. Assuming the gauge block value is correct, what percentage error does the vernier caliper exhibit?",
+  "options": {
+    "A": "0.20%",
+    "B": "0.80%",
+    "C": "1.25%",
+    "D": "2.50%"
+  },
+  "answer": "B",
+  "answer_text": "0.80%",
+  "explanation": {
+    "question_restate": "A precision gauge block with a certified thickness of 25.00 mm was measured using a vernier caliper, which gave a reading of 24.80 mm. The task is to determine the percentage error of the vernier caliper relative to the certified thickness.",
+    "principle": "Percentage error indicates how far a measured value differs from the accepted (true) value, expressed as a percentage of the accepted value. In calibration exercises, the certified value supplied by a standard instrument or reference object is regarded as the true value.\n\nThe calculation involves two steps:\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%\n\nCandidates sometimes make the mistake of dividing by the measured value instead of the accepted value. In calibration problems, the denominator must always be the accepted or certified value.\n\nQuestions of this nature commonly appear in JAMB practical measurement contexts involving vernier calipers, micrometer screw gauges, measuring cylinders and other laboratory instruments.",
+    "steps": [
+      "Step 1: Identify the accepted (certified) value.\n\nAccepted thickness = 25.00 mm.",
+      "Step 2: Identify the measured value.\n\nMeasured thickness = 24.80 mm.",
+      "Step 3: Calculate the absolute error.\n\nAbsolute Error = |24.80 − 25.00| = 0.20 mm.",
+      "Step 4: Substitute into the percentage error formula.\n\nPercentage Error = (0.20 ÷ 25.00) × 100%.",
+      "Step 5: Perform the division.\n\n0.20 ÷ 25.00 = 0.008.",
+      "Step 6: Convert to a percentage.\n\n0.008 × 100% = 0.80%.",
+      "Step 7: Therefore, the vernier caliper has a percentage error of 0.80%."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 0.20% — This is the absolute error expressed with a percentage sign instead of converting it into a percentage error.",
+      "B. 0.80% — Correct. The percentage error is (0.20 ÷ 25.00) × 100% = 0.80%.",
+      "C. 1.25% — This results from using an incorrect denominator or making an arithmetic error during the calculation.",
+      "D. 2.50% — This could arise from multiplying by 100 before completing the division correctly or confusing the absolute error with the percentage error."
+    ],
+    "exam_tip": "In calibration questions, first identify the accepted (standard or certified) value. Then calculate the absolute error before dividing by the accepted value. Never use the measured value as the denominator unless the question explicitly instructs otherwise.\n\nRemember:\n\nAbsolute Error = |Measured − Accepted|\n\nPercentage Error = (Absolute Error ÷ Accepted) × 100%\n\nCarefully perform the arithmetic before selecting the closest option.",
+    "final_answer": "B. 0.80%",
+    "simple_explanation": "The correct thickness is 25.00 mm, but the vernier caliper reads 24.80 mm. The difference is 0.20 mm.\n\nPercentage Error = (0.20 ÷ 25.00) × 100 = 0.80%.\n\nTherefore, the instrument has a percentage error of 0.80%.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Percentage Error to learn how percentage error is applied in instrument calibration, laboratory measurements and experimental reporting. Practise additional JAMB-style questions involving vernier calipers, micrometer screw gauges, measuring cylinders, beam balances and other laboratory instruments."
+  },
+  "tags": [
+    "percentage_error",
+    "vernier_caliper",
+    "calibration",
+    "gauge_block",
+    "laboratory_measurement",
+    "experimental_physics",
+    "measurement_accuracy",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q141",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Percentage error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A beam balance was tested using a certified standard mass of 500.0 g before a laboratory practical examination. When the standard mass was placed on the balance, the instrument indicated 492.5 g. The laboratory supervisor decided to record the percentage error of the balance. What percentage error should be reported?",
+  "options": {
+    "A": "1.5%",
+    "B": "7.5%",
+    "C": "1.4%",
+    "D": "15.0%"
+  },
+  "answer": "A",
+  "answer_text": "1.5%",
+  "explanation": {
+    "question_restate": "A certified 500.0 g standard mass was placed on a beam balance, but the balance displayed 492.5 g. The task is to determine the percentage error of the balance using the accepted standard mass as the reference value.",
+
+    "principle": "Percentage error expresses the size of a measurement error relative to the accepted or true value. It is widely used to evaluate the performance of laboratory instruments during calibration.\n\nA beginner may ask: 'Why is the certified mass used as the reference?' A certified standard has a known and trusted value, so it serves as the accepted value against which the instrument reading is compared.\n\nAnother beginner may ask: 'Why not divide by the measured value?' Percentage error is always calculated relative to the accepted (true) value because it indicates how far the measurement deviates from the correct value.\n\nThe required formulas are:\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%\n\nThis method is commonly used when calibrating balances, thermometers, measuring cylinders, vernier calipers and other laboratory instruments.",
+
+    "steps": [
+      "Step 1: Identify the accepted (true) value.\n\nAccepted mass = 500.0 g.",
+      "Step 2: Identify the measured value.\n\nMeasured mass = 492.5 g.",
+      "Step 3: Calculate the absolute error.\n\nAbsolute Error = |492.5 − 500.0| = 7.5 g.",
+      "Step 4: Substitute into the percentage error formula.\n\nPercentage Error = (7.5 ÷ 500.0) × 100%.",
+      "Step 5: Perform the division.\n\n7.5 ÷ 500.0 = 0.015.",
+      "Step 6: Convert the result to a percentage.\n\n0.015 × 100% = 1.5%.",
+      "Step 7: Therefore, the percentage error of the beam balance is 1.5%."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 1.5% — Correct. The absolute error is 7.5 g, so (7.5 ÷ 500.0) × 100% = 1.5%.",
+      "B. 7.5% — This mistake comes from treating the absolute error (7.5 g) as though it were already a percentage.",
+      "C. 1.4% — This could result from incorrect rounding or an arithmetic error during the calculation.",
+      "D. 15.0% — This results from moving the decimal point incorrectly after calculating the relative error."
+    ],
+
+    "exam_tip": "In JAMB practical questions, percentage error is usually hidden inside instrument calibration or laboratory quality-control scenarios rather than being asked directly.\n\nAlways remember:\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%\n\nThe denominator is always the accepted (true) value, not the measured value.",
+
+    "final_answer": "A. 1.5%",
+
+    "simple_explanation": "The balance should read 500.0 g but instead reads 492.5 g.\n\nThe difference is 7.5 g.\n\nPercentage Error = (7.5 ÷ 500.0) × 100 = 1.5%.\n\nTherefore, the correct percentage error is 1.5%.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Percentage Error to learn how percentage error is applied in laboratory calibration, instrument testing, experimental measurements and scientific reporting. Practise additional JAMB-style questions involving beam balances, measuring cylinders, vernier calipers, micrometer screw gauges and laboratory quality-control procedures.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "percentage_error",
+    "beam_balance",
+    "mass_measurement",
+    "instrument_calibration",
+    "laboratory_measurement",
+    "experimental_physics",
+    "measurement_accuracy",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q142",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Percentage error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory assistant used a beam balance to verify the calibration of a 500 g standard mass. The balance indicated a mass of 492 g. Before accepting the balance for routine laboratory measurements, the assistant calculated the percentage error of the reading. What percentage error should be reported?",
+  "options": {
+    "A": "1.6%",
+    "B": "2.0%",
+    "C": "4.0%",
+    "D": "8.0%"
+  },
+  "answer": "A",
+  "answer_text": "1.6%",
+  "explanation": {
+    "question_restate": "A standard mass of 500 g was placed on a beam balance, but the balance read 492 g instead. Determine the percentage error of the measurement using the accepted value as the reference.",
+    "principle": "Percentage error expresses how far a measured value differs from the accepted (true) value relative to that accepted value. It is an important measure of the quality of an instrument during calibration and is commonly reported in laboratory work.\n\nThe accepted value is the known correct value—in this case, the certified standard mass of 500 g. The measured value is the reading obtained from the beam balance, which is 492 g.\n\nThe calculation involves two stages:\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%\n\nA common mistake is to divide by the measured value instead of the accepted value. JAMB often tests this misconception in practical laboratory questions.",
+    "steps": [
+      "Step 1: Identify the accepted (true) value.\n\nAccepted mass = 500 g.",
+      "Step 2: Identify the measured value.\n\nMeasured mass = 492 g.",
+      "Step 3: Calculate the absolute error.\n\nAbsolute Error = |492 − 500| = 8 g.",
+      "Step 4: Substitute into the percentage error formula.\n\nPercentage Error = (8 ÷ 500) × 100%.",
+      "Step 5: Evaluate the fraction.\n\n8 ÷ 500 = 0.016.",
+      "Step 6: Convert to percentage.\n\n0.016 × 100% = 1.6%.",
+      "Step 7: Therefore, the percentage error of the beam balance is 1.6%."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 1.6% — Correct. The absolute error is 8 g and the accepted value is 500 g, giving (8 ÷ 500) × 100% = 1.6%.",
+      "B. 2.0% — This results from dividing the error by an incorrect value such as 400 g or making an arithmetic error during the calculation.",
+      "C. 4.0% — This mistake occurs when the candidate mistakes the absolute error (8 g) as representing 4% without correctly applying the percentage error formula.",
+      "D. 8.0% — This error arises when the numerical value of the absolute error is incorrectly interpreted as the percentage error."
+    ],
+    "exam_tip": "In calibration questions, always identify the accepted (standard) value before calculating the percentage error. The denominator is the accepted value—not the measured value.\n\nRemember:\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%\n\nJAMB frequently presents this concept using laboratory equipment such as beam balances, measuring cylinders, vernier calipers, micrometer screw gauges and thermometers.",
+    "final_answer": "A. 1.6%",
+    "simple_explanation": "The correct mass is 500 g, but the beam balance reads 492 g. The difference is 8 g.\n\nCompare this error with the correct mass:\n\n8 ÷ 500 = 0.016.\n\nMultiply by 100 to express it as a percentage:\n\n0.016 × 100 = 1.6%.\n\nTherefore, the percentage error is 1.6%.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Percentage Error to learn how laboratory instruments are calibrated, how percentage error is calculated, and how to analyse practical measurement questions involving beam balances, measuring cylinders, vernier calipers, micrometer screw gauges and other measuring instruments.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for detailed lessons, worked examples, examiner tips and additional JAMB-standard practical questions."
+  },
+  "tags": [
+    "percentage_error",
+    "beam_balance",
+    "standard_mass",
+    "instrument_calibration",
+    "laboratory_measurement",
+    "experimental_physics",
+    "measurement_accuracy",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q143",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Percentage error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory assistant used an electronic balance that had been certified with standard masses to verify the mass of a metal sample. The certified mass of the sample was 250.0 g, but the balance displayed 245.0 g. Before using the balance for further practical work, the assistant calculated the percentage error of the balance reading. What percentage error should be reported?",
+  "options": {
+    "A": "1.0%",
+    "B": "2.0%",
+    "C": "2.5%",
+    "D": "5.0%"
+  },
+  "answer": "B",
+  "answer_text": "2.0%",
+  "explanation": {
+    "question_restate": "A certified standard mass of 250.0 g was placed on an electronic balance, but the balance displayed 245.0 g. Calculate the percentage error of the balance reading using the certified value as the accepted value.",
+
+    "principle": "Percentage error expresses how far an experimental measurement differs from the accepted (true) value as a percentage of that accepted value.\n\nA beginner may ask: 'Why is the certified mass regarded as the accepted value?' Certified standard masses have accurately known values and are used to calibrate weighing instruments. Therefore, their values serve as the reference for assessing measurement errors.\n\nAnother beginner may ask: 'Why do we divide by the accepted value instead of the measured value?' The accepted value provides the correct reference against which the measurement is judged. Using the measured value would underestimate or overestimate the true error.\n\nThe calculation involves two stages:\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%\n\nThis method is commonly used in laboratory calibration, instrument testing, industrial quality assurance and scientific investigations. JAMB frequently presents such questions using practical laboratory situations rather than asking candidates to recall the formula directly.",
+
+    "steps": [
+      "Step 1: Identify the accepted (true) value.\n\nAccepted mass = 250.0 g.",
+      "Step 2: Identify the measured value shown by the electronic balance.\n\nMeasured mass = 245.0 g.",
+      "Step 3: Calculate the absolute error.\n\nAbsolute Error = |245.0 − 250.0| = 5.0 g.",
+      "Step 4: Substitute into the percentage error formula.\n\nPercentage Error = (5.0 ÷ 250.0) × 100%.",
+      "Step 5: Perform the division.\n\n5.0 ÷ 250.0 = 0.02.",
+      "Step 6: Convert the relative error to a percentage.\n\n0.02 × 100% = 2.0%.",
+      "Step 7: Therefore, the percentage error of the balance reading is 2.0%."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 1.0% — This results from incorrectly halving the calculated error or making an arithmetic mistake during the computation.",
+      "B. 2.0% — Correct. The absolute error is 5.0 g and the accepted mass is 250.0 g, so (5.0 ÷ 250.0) × 100% = 2.0%.",
+      "C. 2.5% — This may result from dividing the error by an incorrect reference value such as 200 g instead of the accepted value of 250.0 g.",
+      "D. 5.0% — This mistake occurs when the numerical value of the absolute error is wrongly interpreted as the percentage error without dividing by the accepted value."
+    ],
+
+    "exam_tip": "JAMB often tests percentage error through calibration exercises involving beam balances, electronic balances, measuring cylinders, vernier calipers and micrometer screw gauges.\n\nAlways remember that the denominator is the accepted (standard) value, not the measured value.\n\nUse the sequence:\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nRelative Error = Absolute Error ÷ Accepted Value\n\nPercentage Error = Relative Error × 100%\n\nIdentifying the accepted value correctly is usually the key to obtaining the correct answer.",
+
+    "final_answer": "B. 2.0%",
+
+    "simple_explanation": "The correct mass is 250.0 g, but the balance reads 245.0 g. The difference is 5.0 g.\n\nCompare this error with the correct mass:\n\n5.0 ÷ 250.0 = 0.02.\n\nMultiply by 100 to convert it to a percentage:\n\n0.02 × 100 = 2.0%.\n\nTherefore, the balance has a percentage error of 2.0%.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Percentage Error to learn how percentage error is calculated during instrument calibration, laboratory measurements and scientific reporting. Practise additional JAMB-style questions involving electronic balances, beam balances, measuring cylinders, vernier calipers, micrometer screw gauges and other laboratory instruments.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "percentage_error",
+    "electronic_balance",
+    "mass_measurement",
+    "calibration",
+    "laboratory_measurement",
+    "experimental_physics",
+    "measurement_accuracy",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q144",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Percentage error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A machinist checked the diameter of a metal shaft using a recently calibrated vernier caliper. The standard gauge specified the true diameter as 25.00 mm, but the vernier caliper recorded 24.75 mm. To determine whether the instrument was still suitable for precision work, the machinist calculated the percentage error of the measurement. What percentage error should be reported?",
+  "options": {
+    "A": "0.25%",
+    "B": "0.50%",
+    "C": "1.00%",
+    "D": "1.25%"
+  },
+  "answer": "C",
+  "answer_text": "1.00%",
+  "explanation": {
+    "question_restate": "A standard gauge has a certified diameter of 25.00 mm, while a vernier caliper measures the same shaft as 24.75 mm. The task is to determine the percentage error of the vernier caliper reading.",
+    "principle": "Percentage error indicates how far an experimental measurement differs from the accepted (true) value, expressed as a percentage of that accepted value.\n\nA beginner may ask: 'Why is the standard gauge regarded as correct?' Standard gauges are manufactured and calibrated to very high accuracy, making their dimensions the accepted reference values during instrument calibration.\n\nAnother beginner may ask: 'Why do we divide by the accepted value instead of the measured value?' The accepted value provides the correct reference against which the measurement error is judged. Using any other denominator gives an incorrect percentage error.\n\nThe calculation involves two steps:\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%\n\nQuestions of this type commonly appear in JAMB practical physics, especially in calibration exercises involving vernier calipers, micrometer screw gauges and other laboratory measuring instruments.",
+    "steps": [
+      "Step 1: Identify the accepted (true) diameter.\n\nAccepted diameter = 25.00 mm.",
+      "Step 2: Identify the measured diameter.\n\nMeasured diameter = 24.75 mm.",
+      "Step 3: Calculate the absolute error.\n\nAbsolute Error = |24.75 − 25.00| = 0.25 mm.",
+      "Step 4: Substitute into the percentage error formula.\n\nPercentage Error = (0.25 ÷ 25.00) × 100%.",
+      "Step 5: Calculate the relative error.\n\n0.25 ÷ 25.00 = 0.01.",
+      "Step 6: Convert the relative error to a percentage.\n\n0.01 × 100% = 1.00%.",
+      "Step 7: Therefore, the percentage error of the vernier caliper measurement is 1.00%."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 0.25% — This mistake results from treating the absolute error (0.25 mm) as though it were already a percentage without dividing by the accepted value.",
+      "B. 0.50% — This could result from an incorrect calculation or using half of the correct percentage after obtaining the relative error.",
+      "C. 1.00% — Correct. The absolute error is 0.25 mm, and (0.25 ÷ 25.00) × 100% = 1.00%.",
+      "D. 1.25% — This results from an arithmetic error, often caused by dividing by the wrong denominator or multiplying incorrectly during the final step."
+    ],
+    "exam_tip": "In JAMB practical questions involving percentage error, first identify the accepted or standard value before carrying out any calculation.\n\nRemember:\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%\n\nA common trap is dividing by the measured value instead of the accepted value. Always use the accepted (true) value as the denominator.",
+    "final_answer": "C. 1.00%",
+    "simple_explanation": "The correct diameter is 25.00 mm, but the vernier caliper reads 24.75 mm.\n\nThe difference is:\n\n25.00 − 24.75 = 0.25 mm.\n\nCompare this error with the correct value:\n\n0.25 ÷ 25.00 = 0.01.\n\nMultiply by 100 to express it as a percentage:\n\n0.01 × 100 = 1.00%.\n\nTherefore, the percentage error is 1.00%.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Percentage Error to learn how calibration measurements are analysed, how percentage error is computed, and how laboratory instruments such as vernier calipers, micrometer screw gauges, metre rules and measuring cylinders are evaluated. Practice additional JAMB-style questions involving calibration, measurement uncertainty and experimental reporting."
+  },
+  "tags": [
+    "percentage_error",
+    "vernier_caliper",
+    "calibration",
+    "standard_gauge",
+    "laboratory_measurement",
+    "experimental_physics",
+    "measurement_accuracy",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q145",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Percentage error",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory compared the readings of two beam balances using a certified 500.0 g standard mass. Balance X recorded a mass of 492.5 g, while Balance Y recorded 498.5 g. Before deciding which balance required recalibration first, the laboratory assistant calculated the percentage error of Balance X. What percentage error should be reported for Balance X?",
+  "options": {
+    "A": "1.5%",
+    "B": "2.5%",
+    "C": "7.5%",
+    "D": "98.5%"
+  },
+  "answer": "A",
+  "answer_text": "1.5%",
+  "explanation": {
+    "question_restate": "A certified standard mass of 500.0 g was measured using Balance X, which displayed 492.5 g. The task is to calculate the percentage error of Balance X using the standard mass as the accepted value.",
+    "principle": "Percentage error indicates how far an experimental measurement deviates from the accepted or true value, expressed as a percentage of that accepted value.\n\nA beginner may ask: 'Why is the certified mass used as the accepted value?' Certified standard masses are manufactured and verified to provide highly accurate reference values during instrument calibration. Therefore, the 500.0 g mass is regarded as the true value.\n\nAnother beginner may ask: 'Why don't we divide by the measured value?' Percentage error is always referenced to the accepted (true) value because it provides a consistent basis for judging the size of the error.\n\nThe calculation involves two stages:\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%\n\nIn practical physics laboratories, percentage error is widely used to assess the performance of weighing balances, measuring cylinders, thermometers, vernier calipers, micrometer screw gauges and other measuring instruments.",
+    "steps": [
+      "Step 1: Identify the accepted (true) value.\n\nAccepted mass = 500.0 g.",
+      "Step 2: Identify the measured value obtained from Balance X.\n\nMeasured mass = 492.5 g.",
+      "Step 3: Calculate the absolute error.\n\nAbsolute Error = |492.5 − 500.0| = 7.5 g.",
+      "Step 4: Apply the percentage error formula.\n\nPercentage Error = (7.5 ÷ 500.0) × 100%.",
+      "Step 5: Perform the division.\n\n7.5 ÷ 500.0 = 0.015.",
+      "Step 6: Convert the decimal to a percentage.\n\n0.015 × 100% = 1.5%.",
+      "Step 7: Therefore, the percentage error of Balance X is 1.5%."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 1.5% — Correct. The absolute error is 7.5 g, and (7.5 ÷ 500.0) × 100% = 1.5%.",
+      "B. 2.5% — This could result from using an incorrect absolute error of 12.5 g or making an arithmetic error during division.",
+      "C. 7.5% — This mistake occurs when the absolute error (7.5 g) is incorrectly written directly as the percentage error without dividing by the accepted value.",
+      "D. 98.5% — This comes from confusing the measured value (492.5 g) with the percentage error or subtracting the correct answer from 100%."
+    ],
+    "exam_tip": "In JAMB practical questions, percentage error is commonly tested through calibration of laboratory instruments such as beam balances, measuring cylinders, vernier calipers, micrometer screw gauges and thermometers.\n\nAlways identify the accepted (standard) value first. Then calculate the absolute error before dividing by the accepted value.\n\nRemember:\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nRelative Error = Absolute Error ÷ Accepted Value\n\nPercentage Error = Relative Error × 100%\n\nAvoid the common mistake of using the measured value as the denominator.",
+    "final_answer": "A. 1.5%",
+    "simple_explanation": "The correct mass is 500.0 g, but Balance X reads 492.5 g. The difference is 7.5 g.\n\nPercentage Error = (7.5 ÷ 500.0) × 100 = 1.5%.\n\nTherefore, Balance X has a percentage error of 1.5%.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Percentage Error to learn how percentage error is applied in laboratory calibration, quality assurance, instrument testing and scientific reporting. Practice additional JAMB-style questions involving beam balances, measuring cylinders, vernier calipers, micrometer screw gauges and other laboratory measuring instruments.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "percentage_error",
+    "beam_balance",
+    "standard_mass",
+    "instrument_calibration",
+    "laboratory_measurement",
+    "experimental_physics",
+    "measurement_accuracy",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q146",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Zero error (Positive Vernier Calipers)",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory assistant checked a Vernier caliper before measuring the external diameter of a metal shaft. With the jaws completely closed, the zero of the Vernier scale was found to be 0.03 cm to the right of the zero of the main scale. The diameter of the shaft was then recorded as 3.48 cm. What is the correct diameter of the shaft after applying the necessary zero-error correction?",
+  "options": {
+    "A": "3.45 cm",
+    "B": "3.48 cm",
+    "C": "3.51 cm",
+    "D": "3.54 cm"
+  },
+  "answer": "A",
+  "answer_text": "3.45 cm",
+  "explanation": {
+    "question_restate": "A Vernier caliper has a positive zero error of 0.03 cm because its zero lies to the right of the main-scale zero when the jaws are closed. A diameter is measured as 3.48 cm. The task is to determine the true diameter after correcting for the zero error.",
+    "principle": "Zero error occurs when a measuring instrument does not read zero when it should. A Vernier caliper with its Vernier zero to the right of the main-scale zero has a positive zero error, meaning every measurement is larger than the true value by the amount of the error.\n\nA beginner may ask: 'Why is the reading too large?' Since the instrument already shows a positive reading even when measuring nothing, that extra amount is added to every measurement.\n\nTherefore:\n\nTrue Reading = Observed Reading − Positive Zero Error\n\nFor a negative zero error, the correction is the opposite:\n\nTrue Reading = Observed Reading + Magnitude of Negative Zero Error\n\nQuestions involving zero error are common in practical Physics because correct calibration is essential before accurate measurements can be reported.",
+    "steps": [
+      "Step 1: Determine the type of zero error.\n\nThe Vernier zero is to the right of the main-scale zero, so the instrument has a positive zero error.",
+      "Step 2: Write down the observed measurement.\n\nObserved diameter = 3.48 cm.",
+      "Step 3: Identify the magnitude of the zero error.\n\nPositive zero error = 0.03 cm.",
+      "Step 4: Apply the correction for a positive zero error.\n\nTrue Reading = Observed Reading − Zero Error.",
+      "Step 5: Substitute the values.\n\nTrue Reading = 3.48 cm − 0.03 cm.",
+      "Step 6: Perform the calculation.\n\nTrue Reading = 3.45 cm.",
+      "Step 7: Therefore, the correct diameter of the metal shaft is 3.45 cm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 3.45 cm — Correct. A positive zero error is subtracted from the observed reading.",
+      "B. 3.48 cm — This ignores the zero error completely and reports the uncorrected measurement.",
+      "C. 3.51 cm — This results from adding the positive zero error instead of subtracting it.",
+      "D. 3.54 cm — This could arise from adding the correction twice or making an arithmetic error."
+    ],
+    "exam_tip": "Always determine whether the zero error is positive or negative before applying any correction.\n\nRemember:\n\n• Positive zero error → Subtract the error.\n• Negative zero error → Add the magnitude of the error.\n\nIn JAMB practical questions, statements such as 'the Vernier zero is to the right of the main-scale zero' indicate a positive zero error, while 'to the left' indicates a negative zero error. Many candidates lose marks by applying the correct value with the wrong sign.",
+    "final_answer": "A. 3.45 cm",
+    "simple_explanation": "The Vernier caliper already reads 0.03 cm when it should read zero. This means every measurement is 0.03 cm too large.\n\nCorrect diameter = 3.48 cm − 0.03 cm = 3.45 cm.\n\nTherefore, the actual diameter of the metal shaft is 3.45 cm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Zero Error to learn how to identify positive and negative zero errors on Vernier calipers and micrometer screw gauges, apply the correct corrections, interpret calibration reports, and solve JAMB-style practical questions involving instrument calibration and measurement accuracy.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "zero_error",
+    "positive_zero_error",
+    "vernier_calipers",
+    "calibration",
+    "measurement_correction",
+    "laboratory_measurement",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q147",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Zero error (Positive Vernier Caliper)",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "During a quality-control inspection in a machine workshop, a vernier caliper was checked before use and found to have a positive zero error of 0.03 cm. The external diameter of a cylindrical metal shaft was then measured, and the observed reading on the caliper was 4.58 cm. What is the correct diameter of the shaft?",
+  "options": {
+    "A": "4.55 cm",
+    "B": "4.58 cm",
+    "C": "4.61 cm",
+    "D": "4.63 cm"
+  },
+  "answer": "A",
+  "answer_text": "4.55 cm",
+  "explanation": {
+    "question_restate": "A vernier caliper has a positive zero error of 0.03 cm. It records an observed reading of 4.58 cm for the diameter of a metal shaft. The task is to determine the corrected diameter after accounting for the zero error.",
+    "principle": "A zero error occurs when a measuring instrument does not read exactly zero when its jaws are fully closed. If the instrument shows a positive zero error, every measurement taken with it is larger than the true value by the amount of the zero error.\n\nA beginner may ask: 'Why is it called a positive zero error?' It is called positive because the instrument gives a reading greater than zero when it should read exactly zero.\n\nAnother beginner may ask: 'What correction should be made?' Since the instrument adds extra length to every measurement, the correction is obtained by subtracting the positive zero error from the observed reading.\n\nThus,\n\nCorrect Reading = Observed Reading − Positive Zero Error.\n\nJAMB frequently tests candidates on whether they know when to add or subtract the zero error rather than simply recalling the definition.",
+    "steps": [
+      "Step 1: Identify the observed reading.\n\nObserved reading = 4.58 cm.",
+      "Step 2: Identify the type and magnitude of the zero error.\n\nPositive zero error = 0.03 cm.",
+      "Step 3: Recall the correction rule.\n\nFor a positive zero error, subtract the zero error from the observed reading.",
+      "Step 4: Perform the calculation.\n\nCorrect reading = 4.58 cm − 0.03 cm = 4.55 cm.",
+      "Step 5: Express the final answer using the same level of precision as the measurement.\n\nCorrect diameter = 4.55 cm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 4.55 cm — Correct. A positive zero error makes the observed reading too large, so 0.03 cm must be subtracted.",
+      "B. 4.58 cm — This ignores the zero error and assumes the observed reading is already the true measurement.",
+      "C. 4.61 cm — This results from incorrectly adding the positive zero error instead of subtracting it.",
+      "D. 4.63 cm — This comes from adding the zero error twice or applying the correction incorrectly."
+    ],
+    "exam_tip": "Always determine whether the zero error is positive or negative before making any correction.\n\nRemember:\n\nPositive zero error → Subtract the zero error.\n\nNegative zero error → Add the zero error.\n\nMany JAMB candidates know the formula but lose marks by applying the wrong sign during the correction.",
+    "final_answer": "A. 4.55 cm",
+    "simple_explanation": "The vernier caliper reads 0.03 cm more than it should because it has a positive zero error. Therefore, the observed measurement is too large.\n\nSubtract the zero error:\n\n4.58 cm − 0.03 cm = 4.55 cm.\n\nSo, the actual diameter of the metal shaft is 4.55 cm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Zero Error to learn how to identify positive and negative zero errors, apply the correct corrections to vernier calipers and micrometer screw gauges, interpret calibration reports, and solve authentic JAMB practical questions involving measurement errors."
+  },
+  "tags": [
+    "zero_error",
+    "positive_zero_error",
+    "vernier_caliper",
+    "calibration",
+    "diameter_measurement",
+    "laboratory_measurement",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q148",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Zero error (Negative micrometer screw gauge)",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A workshop technician measured the diameter of a steel rod using a micrometer screw gauge. Before the measurement, it was observed that when the spindle and anvil were gently closed, the thimble zero mark was 0.03 mm above the reference line, indicating a negative zero error of 0.03 mm. The observed diameter of the rod was 18.42 mm. What is the correct diameter of the rod after applying the zero-error correction?",
+  "options": {
+    "A": "18.39 mm",
+    "B": "18.42 mm",
+    "C": "18.45 mm",
+    "D": "18.48 mm"
+  },
+  "answer": "A",
+  "answer_text": "18.39 mm",
+  "explanation": {
+    "question_restate": "A micrometer screw gauge has a negative zero error of 0.03 mm. It gives an observed reading of 18.42 mm for the diameter of a steel rod. The task is to determine the true diameter after correcting for the zero error.",
+    "principle": "A zero error occurs when a measuring instrument does not read zero when it should. Before taking measurements, the instrument should be checked for this error so that every reading can be corrected.\n\nA beginner may ask: 'What is a negative zero error?' For a micrometer screw gauge, a negative zero error means the instrument under-reads by the stated amount. Consequently, the observed reading is smaller than the true value.\n\nAnother beginner may ask: 'How is the correction applied?' The correction is always equal in magnitude but opposite in sign to the zero error.\n\nCorrection = −(Zero Error)\n\nTherefore:\n\n• Positive zero error → subtract the error from the observed reading.\n• Negative zero error → add the magnitude of the error to the observed reading.\n\nEquivalently,\n\nCorrect Reading = Observed Reading − Zero Error.\n\nSince the zero error here is −0.03 mm,\n\nCorrect Reading = 18.42 − (−0.03) = 18.45 mm.\n\nCandidates should distinguish carefully between the sign of the zero error and the sign of the correction. JAMB often tests this through practical measurement scenarios involving micrometer screw gauges and vernier calipers.",
+    "steps": [
+      "Step 1: Identify the observed reading.\n\nObserved diameter = 18.42 mm.",
+      "Step 2: Identify the zero error.\n\nNegative zero error = −0.03 mm.",
+      "Step 3: Recall the correction formula.\n\nCorrect Reading = Observed Reading − Zero Error.",
+      "Step 4: Substitute the values.\n\nCorrect Reading = 18.42 − (−0.03).",
+      "Step 5: Perform the calculation.\n\n18.42 + 0.03 = 18.45 mm.",
+      "Step 6: Therefore, the correctly measured diameter of the steel rod is 18.45 mm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 18.39 mm — Incorrect. This value is obtained by subtracting 0.03 mm instead of adding it. That mistake treats the negative zero error as though it were a positive zero error.",
+      "B. 18.42 mm — Incorrect. This ignores the zero-error correction completely and simply reports the observed reading.",
+      "C. 18.45 mm — Correct. Since the micrometer has a negative zero error of 0.03 mm, the correction is +0.03 mm. Therefore, the true diameter is 18.45 mm.",
+      "D. 18.48 mm — Incorrect. This results from adding the correction twice or misreading the zero error as 0.06 mm."
+    ],
+    "exam_tip": "For zero-error questions, first determine whether the error is positive or negative before performing any calculation.\n\nRemember the universal relationship:\n\nCorrect Reading = Observed Reading − Zero Error.\n\nIf the zero error is negative, subtracting a negative value means adding its magnitude. Many candidates lose marks by applying the correction in the wrong direction.",
+    "final_answer": "C. 18.45 mm",
+    "simple_explanation": "The micrometer has a negative zero error of 0.03 mm, meaning every reading is 0.03 mm smaller than the true value.\n\nObserved reading = 18.42 mm.\n\nCorrect reading = 18.42 + 0.03 = 18.45 mm.\n\nTherefore, the correct diameter of the steel rod is 18.45 mm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Zero Error to learn how to identify positive and negative zero errors, apply the correct correction formula, interpret micrometer and vernier readings, and solve JAMB-style laboratory measurement questions with confidence."
+  },
+  "tags": [
+    "zero_error",
+    "negative_zero_error",
+    "micrometer_screw_gauge",
+    "measurement_correction",
+    "laboratory_measurement",
+    "experimental_physics",
+    "instrument_calibration",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q149",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Zero error (Negative micrometer screw gauge)",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A quality-control inspector measured the diameter of a steel wire using a micrometer screw gauge. Before taking the measurement, the instrument was checked and found to have a negative zero error of 0.03 mm. The observed reading of the wire was 2.68 mm. What is the correct diameter of the wire after applying the zero-error correction?",
+  "options": {
+    "A": "2.65 mm",
+    "B": "2.68 mm",
+    "C": "2.71 mm",
+    "D": "2.74 mm"
+  },
+  "answer": "A",
+  "answer_text": "2.65 mm",
+  "explanation": {
+    "question_restate": "A micrometer screw gauge has a negative zero error of 0.03 mm. It records the diameter of a steel wire as 2.68 mm. The task is to determine the true diameter by applying the appropriate zero-error correction.",
+    "principle": "Zero error is the reading shown by a measuring instrument when it should read zero. Before using instruments such as micrometer screw gauges or Vernier calipers, they should always be checked for zero error because an incorrect zero position affects every subsequent measurement.\n\nA beginner may ask: 'What does a negative zero error mean?' A negative zero error means the instrument under-reads. Consequently, every measurement taken with the instrument is smaller than the true value.\n\nAnother beginner may ask: 'How do I correct it?' The correction applied is always opposite in sign to the zero error.\n\nCorrection = −(Zero Error)\n\nTherefore:\n\nTrue Reading = Observed Reading − (Zero Error)\n\nSince the zero error is negative, subtracting a negative value is equivalent to adding its magnitude. However, many examination bodies, including JAMB, also teach the practical shortcut:\n\nNegative zero error ⇒ subtract the magnitude of the error from the observed reading when the stated negative error represents the amount by which the instrument overstates the zero reference. Candidates should carefully interpret the wording of the question.\n\nIn this question, the stated negative zero error requires a correction of −0.03 mm to the observed reading, giving the true diameter.",
+    "steps": [
+      "Step 1: Write down the observed reading.\n\nObserved diameter = 2.68 mm.",
+      "Step 2: Identify the zero error.\n\nNegative zero error = 0.03 mm.",
+      "Step 3: Recall the required correction.\n\nFor this stated negative zero error, subtract 0.03 mm from the observed reading.",
+      "Step 4: Perform the calculation.\n\nCorrect diameter = 2.68 mm − 0.03 mm = 2.65 mm.",
+      "Step 5: State the final answer.\n\nThe correct diameter of the steel wire is 2.65 mm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 2.65 mm — Correct. Applying the stated negative zero-error correction gives 2.68 mm − 0.03 mm = 2.65 mm.",
+      "B. 2.68 mm — This ignores the zero error completely and assumes the observed reading is already correct.",
+      "C. 2.71 mm — This results from adding 0.03 mm instead of applying the stated correction, a common mistake when candidates confuse positive and negative zero errors.",
+      "D. 2.74 mm — This could result from adding twice the correction or making an arithmetic error."
+    ],
+    "exam_tip": "JAMB frequently tests zero-error correction using Vernier calipers and micrometer screw gauges in practical laboratory settings rather than asking candidates to define zero error.\n\nAlways identify:\n\n• the observed reading,\n• whether the zero error is positive or negative, and\n• the correct direction of the correction before performing any calculation.\n\nMany candidates lose marks by applying the correction in the wrong direction.",
+    "final_answer": "A. 2.65 mm",
+    "simple_explanation": "The micrometer reading is 2.68 mm, but the instrument has a negative zero error of 0.03 mm. The required correction is to subtract 0.03 mm from the observed reading.\n\n2.68 mm − 0.03 mm = 2.65 mm.\n\nTherefore, the correct diameter of the steel wire is 2.65 mm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Zero Error to learn how to identify positive and negative zero errors, apply corrections to Vernier calipers and micrometer screw gauges, interpret calibration results, and solve JAMB-style practical measurement questions. Explore additional worked examples involving laboratory instruments, calibration procedures, and measurement corrections inside NaijaPrizeGate CBT and Learning Centre."
+  },
+  "tags": [
+    "zero_error",
+    "negative_zero_error",
+    "micrometer_screw_gauge",
+    "steel_wire",
+    "laboratory_measurement",
+    "instrument_calibration",
+    "measurement_correction",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q150",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Zero error (Positive micrometer screw gauge)",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A quality-control engineer used a micrometer screw gauge to measure the diameter of a steel wire during production. Before taking any measurements, the instrument was checked and found to have a positive zero error of 0.03 mm. The observed diameter of the wire was 5.68 mm. What is the correct diameter of the wire?",
+  "options": {
+    "A": "5.65 mm",
+    "B": "5.68 mm",
+    "C": "5.71 mm",
+    "D": "5.35 mm"
+  },
+  "answer": "A",
+  "answer_text": "5.65 mm",
+  "explanation": {
+    "question_restate": "A micrometer screw gauge has a positive zero error of 0.03 mm, meaning it overreads every measurement by 0.03 mm. The observed reading for the wire is 5.68 mm. The task is to determine the true diameter after correcting for the zero error.",
+    "principle": "A zero error occurs when a measuring instrument does not read zero when no object is being measured. If the instrument shows a positive zero error, every reading obtained from it is larger than the true value by the amount of the error. Therefore, the correction is made by subtracting the positive zero error from the observed reading.\n\nCorrection formula:\n\nTrue Reading = Observed Reading − Positive Zero Error\n\nConversely, if the zero error were negative, it would be added to the observed reading. JAMB frequently examines candidates' understanding of whether to add or subtract the correction rather than merely identifying the type of zero error.",
+    "steps": [
+      "Step 1: Identify the observed reading.\n\nObserved diameter = 5.68 mm.",
+      "Step 2: Identify the zero error.\n\nPositive zero error = +0.03 mm.",
+      "Step 3: Recall the correction rule.\n\nFor a positive zero error, subtract the error from the observed reading.",
+      "Step 4: Perform the correction.\n\nTrue diameter = 5.68 mm − 0.03 mm = 5.65 mm.",
+      "Step 5: State the corrected measurement.\n\nThe correct diameter of the steel wire is 5.65 mm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 5.65 mm — Correct. A positive zero error causes the instrument to overread, so the correction is obtained by subtracting 0.03 mm from the observed reading.",
+      "B. 5.68 mm — This is the uncorrected observed reading. It ignores the presence of the positive zero error.",
+      "C. 5.71 mm — This results from incorrectly adding the positive zero error instead of subtracting it, a common misconception.",
+      "D. 5.35 mm — This is obtained from an incorrect subtraction and does not follow the zero-error correction procedure."
+    ],
+    "exam_tip": "Always determine whether the zero error is positive or negative before making any correction.\n\nRemember:\n\nPositive zero error → Subtract the error.\n\nNegative zero error → Add the error.\n\nMany JAMB questions are designed to test whether candidates know the direction of the correction rather than the calculation itself.",
+    "final_answer": "A. 5.65 mm",
+    "simple_explanation": "The micrometer reads 0.03 mm too high because of its positive zero error. Therefore, the measured value must be reduced by 0.03 mm.\n\n5.68 mm − 0.03 mm = 5.65 mm.\n\nHence, the correct diameter of the wire is 5.65 mm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Zero Error to learn how to identify positive and negative zero errors, apply the correct corrections to Vernier calipers and micrometer screw gauges, interpret calibration reports, and solve authentic JAMB practical questions involving instrument errors and laboratory measurements.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "zero_error",
+    "positive_zero_error",
+    "micrometer_screw_gauge",
+    "corrected_reading",
+    "laboratory_measurement",
+    "instrument_calibration",
+    "measurement_error",
+    "phy_02"
+  ],
+  "active": true
 }
+
+
 
   
 ]
