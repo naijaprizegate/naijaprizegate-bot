@@ -5836,6 +5836,58 @@
     "phy_02"
   ],
   "active": true
+},
+{
+  "id": "phy_02_q112",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Significant figures in experiments",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "In a laboratory experiment, the mass of a metal block was measured as 48.6 g using a beam balance, while its volume determined by water displacement was 18.25 cm³. A student calculated the density using the formula Density = Mass ÷ Volume. According to the rules of significant figures, how should the final answer be correctly reported?",
+  "options": {
+    "A": "2.663 g/cm³",
+    "B": "2.66 g/cm³",
+    "C": "2.7 g/cm³",
+    "D": "2.662 g/cm³"
+  },
+  "answer": "B",
+  "answer_text": "2.66 g/cm³",
+  "explanation": {
+    "question_restate": "A metal block has a measured mass of 48.6 g (3 significant figures) and a measured volume of 18.25 cm³ (4 significant figures). Calculate its density and report the answer using the correct number of significant figures.",
+    "principle": "When multiplying or dividing measured quantities, the final answer must contain the same number of significant figures as the measured quantity with the fewest significant figures.\n\nMany beginners mistakenly think the calculator display should be copied exactly into the laboratory report. However, experimental results should never imply greater precision than the measuring instruments provide.\n\nHere, the mass (48.6 g) has 3 significant figures, while the volume (18.25 cm³) has 4 significant figures. Therefore, although the calculator produces more digits, the density must be reported to 3 significant figures.\n\nThis principle ensures that the reported result reflects the actual precision of the experimental measurements rather than the precision of the calculator.",
+    "steps": [
+      "Step 1: Identify the measured quantities.\n\nMass = 48.6 g (3 significant figures).\nVolume = 18.25 cm³ (4 significant figures).",
+      "Step 2: Apply the density formula.\n\nDensity = Mass ÷ Volume = 48.6 ÷ 18.25.",
+      "Step 3: Perform the calculation.\n\nDensity = 2.663013699... g/cm³.",
+      "Step 4: Determine the limiting significant figures.\n\nThe mass has only 3 significant figures, while the volume has 4. Therefore, the final answer must have 3 significant figures.",
+      "Step 5: Round the calculator value correctly.\n\n2.663013699... becomes 2.66 g/cm³ (3 significant figures).",
+      "Step 6: Report the final laboratory result.\n\nDensity = 2.66 g/cm³."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 2.663 g/cm³ — Incorrect because it reports 4 significant figures, suggesting greater precision than the measurements justify.",
+      "B. 2.66 g/cm³ — Correct. The result is rounded to 3 significant figures, matching the measurement with the fewest significant figures.",
+      "C. 2.7 g/cm³ — Incorrect because it has only 2 significant figures, unnecessarily reducing the precision of the result.",
+      "D. 2.662 g/cm³ — Incorrect because it reports 4 significant figures and truncates instead of properly rounding the calculator value."
+    ],
+    "exam_tip": "For multiplication and division, always count the significant figures in each measured quantity before performing the calculation. Your final answer must have the same number of significant figures as the quantity with the fewest significant figures.\n\nDo not copy every digit shown on your calculator. JAMB frequently tests this rule using density, speed, pressure, and other practical laboratory calculations.",
+    "final_answer": "B. 2.66 g/cm³",
+    "simple_explanation": "First calculate the density:\n\n48.6 ÷ 18.25 = 2.663013699...\n\nThe mass has 3 significant figures, while the volume has 4. Since multiplication and division use the smallest number of significant figures, the answer must be written with 3 significant figures.\n\nTherefore, the correct density is 2.66 g/cm³.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Significant Figures in Experiments to learn how to report calculated laboratory results correctly. Study worked examples involving density, speed, pressure, and other JAMB-style practical calculations where significant figures determine the final reported answer."
+  },
+  "tags": [
+    "significant_figures",
+    "density",
+    "laboratory_calculation",
+    "beam_balance",
+    "water_displacement",
+    "experimental_reporting",
+    "measurement_precision",
+    "phy_02"
+  ],
+  "active": true
 }
 
 
