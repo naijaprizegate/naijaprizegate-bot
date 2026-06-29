@@ -5679,9 +5679,164 @@
     "phy_02"
   ],
   "active": true
+},
+{
+  "id": "phy_02_q109",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Significant figures in experiments",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A student determines the density of a metal block in the laboratory. The mass measured with a digital balance is 56.8 g, while the volume obtained from a measuring cylinder is 7.25 cm³. Using the appropriate rule for significant figures, how should the density be reported?",
+  "options": {
+    "A": "7.83448 g/cm³",
+    "B": "7.83 g/cm³",
+    "C": "7.834 g/cm³",
+    "D": "7.8 g/cm³"
+  },
+  "answer": "B",
+  "answer_text": "7.83 g/cm³",
+  "explanation": {
+    "question_restate": "The mass of a metal block is measured as 56.8 g and its volume as 7.25 cm³. The task is to calculate the density and report the final answer using the correct number of significant figures for a multiplication/division calculation.",
+    "principle": "Density is calculated using:\n\nDensity = Mass ÷ Volume\n\nWhen quantities are multiplied or divided, the final answer should contain the same number of significant figures as the measured quantity with the fewest significant figures.\n\nA beginner may ask: 'Why can't I write all the digits shown by my calculator?' Calculator digits are often more precise than the measurements used. Reporting too many digits suggests an accuracy that the experiment did not achieve.\n\nAnother beginner may ask: 'How do I know the correct number of significant figures?' Count the significant figures in each measurement. The mass (56.8 g) has 3 significant figures, while the volume (7.25 cm³) also has 3 significant figures. Therefore, the calculated density must also be reported to 3 significant figures.\n\nProper reporting of experimental results is an important laboratory skill and is frequently tested in JAMB practical-style questions.",
+    "steps": [
+      "Step 1: Write the formula.\n\nDensity = Mass ÷ Volume.",
+      "Step 2: Substitute the measured values.\n\nDensity = 56.8 ÷ 7.25.",
+      "Step 3: Perform the calculation.\n\nDensity = 7.834482758... g/cm³.",
+      "Step 4: Determine the limiting significant figures.\n\nMass = 3 significant figures.\nVolume = 3 significant figures.\nTherefore, the answer must have 3 significant figures.",
+      "Step 5: Round the calculator value.\n\n7.834482758... becomes 7.83 g/cm³.",
+      "Step 6: Report the final experimental result.\n\nDensity = 7.83 g/cm³."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 7.83448 g/cm³ — Incorrect because it reports too many significant figures, implying a level of precision not supported by the measurements.",
+      "B. 7.83 g/cm³ — Correct. The calculated value is rounded to 3 significant figures, matching the precision of the measured quantities.",
+      "C. 7.834 g/cm³ — Incorrect because it is reported to 4 significant figures instead of the required 3.",
+      "D. 7.8 g/cm³ — Incorrect because it has only 2 significant figures, unnecessarily reducing the precision of the experimental result."
+    ],
+    "exam_tip": "For multiplication and division, the final answer must have the same number of significant figures as the measurement with the fewest significant figures.\n\nDo not simply copy every digit displayed on your calculator. Always check the precision of the original measurements before reporting the final answer.",
+    "final_answer": "B. 7.83 g/cm³",
+    "simple_explanation": "First calculate the density:\n\n56.8 ÷ 7.25 = 7.83448...\n\nBoth the mass (56.8) and volume (7.25) have 3 significant figures, so the answer must also have 3 significant figures.\n\nTherefore, the density is reported as 7.83 g/cm³.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Significant Figures to learn how to report calculated results correctly in laboratory experiments. Study worked examples involving density calculations, scientific notation, multiplication and division rules, experimental measurements, and JAMB-style practical questions."
+  },
+  "tags": [
+    "significant_figures",
+    "density",
+    "laboratory_calculation",
+    "experimental_report",
+    "measurement",
+    "mass",
+    "volume",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q110",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Significant Figures in Experimental Calculations",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "During a density experiment, a student measured the mass of a metal block as 45.62 g using an electronic balance and its volume as 5.3 cm³ using a measuring cylinder. The student calculated the density using the formula Density = Mass ÷ Volume. According to the rules of significant figures, how should the density be reported?",
+  "options": {
+    "A": "8.6075 g/cm³",
+    "B": "8.61 g/cm³",
+    "C": "8.6 g/cm³",
+    "D": "9 g/cm³"
+  },
+  "answer": "C",
+  "answer_text": "8.6 g/cm³",
+  "explanation": {
+    "question_restate": "A metal block has a measured mass of 45.62 g and a measured volume of 5.3 cm³. After calculating the density, the result must be reported using the correct number of significant figures based on the measurements obtained.",
+    "principle": "When quantities are multiplied or divided, the final answer must contain the same number of significant figures as the measurement with the fewest significant figures.\n\nMany beginners ask, 'Why can't we keep all the calculator digits?' The reason is that the measuring instruments did not determine those extra digits. Reporting them would falsely suggest a level of precision that the experiment did not achieve.\n\nIn this experiment:\n• Mass = 45.62 g has 4 significant figures.\n• Volume = 5.3 cm³ has 2 significant figures.\n\nSince the volume has the fewest significant figures, the calculated density must also be reported with only 2 significant figures.\n\nThis rule is commonly tested in JAMB practical questions involving density, speed, pressure, electrical calculations and other laboratory computations.",
+    "steps": [
+      "Step 1: Identify the measured quantities.\n\nMass = 45.62 g\nVolume = 5.3 cm³.",
+      "Step 2: Calculate the density.\n\nDensity = 45.62 ÷ 5.3 = 8.607547... g/cm³.",
+      "Step 3: Count the significant figures in each measurement.\n\n45.62 g has 4 significant figures.\n5.3 cm³ has 2 significant figures.",
+      "Step 4: Apply the multiplication/division rule.\n\nThe final answer must have the same number of significant figures as the quantity with the fewest significant figures, which is 2.",
+      "Step 5: Round 8.607547... to 2 significant figures.\n\n8.607547... ≈ 8.6 g/cm³.",
+      "Step 6: Therefore, the correctly reported density is 8.6 g/cm³."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 8.6075 g/cm³ — Incorrect. This keeps too many digits and implies greater experimental precision than the measurements justify.",
+      "B. 8.61 g/cm³ — Incorrect. This is reported to 3 significant figures, whereas the volume measurement limits the result to 2 significant figures.",
+      "C. 8.6 g/cm³ — Correct. The answer is rounded to 2 significant figures because the volume measurement has only 2 significant figures.",
+      "D. 9 g/cm³ — Incorrect. This has only 1 significant figure and over-rounds the calculated result, reducing its accuracy."
+    ],
+    "exam_tip": "In JAMB practical questions, always calculate first before applying the significant-figure rule. For multiplication and division, the final answer should have the same number of significant figures as the least precise measurement.\n\nDo not round intermediate calculations too early. Keep the calculator value until the final step, then round appropriately.",
+    "final_answer": "C. 8.6 g/cm³",
+    "simple_explanation": "The calculator gives a density of about 8.6075 g/cm³. However, the volume measurement (5.3 cm³) has only 2 significant figures, so the final answer must also have 2 significant figures.\n\nTherefore, 8.6075 becomes 8.6 g/cm³.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Significant Figures to learn how significant figures are applied in density calculations, laboratory reports, scientific notation and other experimental computations. Practice additional JAMB-style questions involving laboratory measurements, experimental data analysis and proper reporting of calculated results.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "significant_figures",
+    "density",
+    "experimental_calculation",
+    "laboratory_report",
+    "measurement",
+    "mass",
+    "volume",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q111",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Significant figures in experiments",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A student determines the density of a metal block during a laboratory practical. The mass measured with a beam balance is 24.6 g, while the volume obtained from a measuring cylinder is 3.25 cm³. After calculating the density, how should the final answer be correctly reported using significant figures?",
+  "options": {
+    "A": "7.569230769 g/cm³",
+    "B": "7.57 g/cm³",
+    "C": "7.6 g/cm³",
+    "D": "8 g/cm³"
+  },
+  "answer": "B",
+  "answer_text": "7.57 g/cm³",
+  "explanation": {
+    "question_restate": "A metal block has a measured mass of 24.6 g and a measured volume of 3.25 cm³. Calculate its density and report the answer using the correct number of significant figures for multiplication and division.",
+    "principle": "When quantities are multiplied or divided, the final answer must contain the same number of significant figures as the measured quantity with the fewest significant figures.\n\nA beginner may ask: 'Why don't we keep all the calculator digits?' The extra digits produced by a calculator do not represent real measurement accuracy. They arise from computation rather than from the precision of the measuring instruments.\n\nAnother beginner may ask: 'How do I know the required number of significant figures?' Count the significant figures in each measured value. Here, 24.6 g has 3 significant figures and 3.25 cm³ also has 3 significant figures. Therefore, the calculated density must be reported to 3 significant figures.\n\nDensity is calculated using:\n\nDensity = Mass ÷ Volume\n\nAfter performing the calculation, the result should be rounded appropriately to preserve the accuracy of the original measurements.",
+    "steps": [
+      "Step 1: Write the formula.\n\nDensity = Mass ÷ Volume.",
+      "Step 2: Substitute the measured values.\n\nDensity = 24.6 ÷ 3.25.",
+      "Step 3: Perform the calculation.\n\nDensity = 7.569230769 g/cm³.",
+      "Step 4: Determine the number of significant figures in the measurements.\n\n24.6 has 3 significant figures.\n3.25 has 3 significant figures.",
+      "Step 5: Apply the multiplication/division rule.\n\nThe final answer must also have 3 significant figures.",
+      "Step 6: Round 7.569230769 to 3 significant figures.\n\nThe first three significant digits are 7, 5 and 6. The next digit is 9, so the 6 rounds up to 7.",
+      "Step 7: Therefore, the correctly reported density is 7.57 g/cm³."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 7.569230769 g/cm³ — This incorrectly reports all the calculator digits instead of limiting the answer to the appropriate significant figures.",
+      "B. 7.57 g/cm³ — Correct. The calculated density is rounded to 3 significant figures, matching the precision of the measurements.",
+      "C. 7.6 g/cm³ — This has only 2 significant figures and loses useful precision from the measurements.",
+      "D. 8 g/cm³ — This is rounded far too much and contains only 1 significant figure, making the reported value much less precise than the experimental data."
+    ],
+    "exam_tip": "In JAMB practical questions, always calculate using the full calculator value first. Only round the final answer after completing the calculation. For multiplication and division, the result must have the same number of significant figures as the measured quantity with the fewest significant figures. Do not copy every digit displayed on the calculator into your laboratory report.",
+    "final_answer": "B. 7.57 g/cm³",
+    "simple_explanation": "The density is calculated as:\n\n24.6 ÷ 3.25 = 7.569230769 g/cm³.\n\nBoth the mass and volume measurements have 3 significant figures. Therefore, the density must also be reported to 3 significant figures.\n\nRounding 7.569230769 to 3 significant figures gives 7.57 g/cm³.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Significant Figures to learn how to report calculated experimental results correctly, apply significant-figure rules in multiplication and division, avoid common calculator mistakes, and solve more JAMB-style laboratory questions involving density, volume, mass and experimental measurements.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "significant_figures",
+    "density",
+    "beam_balance",
+    "measuring_cylinder",
+    "laboratory_calculation",
+    "experimental_physics",
+    "measurement_reporting",
+    "phy_02"
+  ],
+  "active": true
 }
-
-
 
 
 ]
