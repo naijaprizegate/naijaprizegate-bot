@@ -9448,6 +9448,1053 @@
     "phy_02"
   ],
   "active": true
+},
+{
+  "id": "phy_02_q181",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Instrument selection",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A laboratory assistant needs to determine the internal diameter of a narrow glass tube as accurately as possible before it is used in a capillary experiment. Which of the following instruments is the most suitable for making this measurement?",
+  "options": {
+    "A": "Metre rule",
+    "B": "Micrometer screw gauge",
+    "C": "Vernier calipers",
+    "D": "Measuring cylinder"
+  },
+  "answer": "C",
+  "answer_text": "Vernier calipers",
+  "explanation": {
+    "question_restate": "A laboratory assistant must measure the internal diameter of a narrow glass tube and needs to choose the most appropriate measuring instrument for the task.",
+    "principle": "Selecting the correct measuring instrument is an important aspect of experimental physics. Every instrument is designed for specific measurements depending on its construction, range and precision.\n\nA beginner may ask: 'Why can't any measuring instrument be used?' The answer is that different instruments are designed to measure different physical quantities or different dimensions of an object.\n\nA metre rule measures relatively large lengths but cannot accurately measure small diameters.\n\nA micrometer screw gauge is highly accurate for measuring small external diameters or thicknesses, but its spindle and anvil cannot be inserted into a tube to measure an internal diameter.\n\nVernier calipers have two pairs of jaws. The larger outside jaws measure external dimensions, while the smaller inside jaws are specially designed to measure internal diameters accurately.\n\nA measuring cylinder is used for measuring the volume of liquids and is not intended for measuring length or diameter.\n\nJAMB frequently tests candidates on selecting the most appropriate instrument for a given laboratory task rather than merely asking them to identify an instrument.",
+    "steps": [
+      "Step 1: Identify the quantity to be measured.\n\nThe required quantity is the internal diameter of a glass tube.",
+      "Step 2: Consider the available instruments.\n\nMetre rule, micrometer screw gauge, Vernier calipers and measuring cylinder.",
+      "Step 3: Eliminate unsuitable instruments.\n\nA measuring cylinder measures liquid volume, not diameter.\n\nA metre rule lacks the precision required for a narrow internal diameter.",
+      "Step 4: Compare the remaining instruments.\n\nA micrometer screw gauge measures external diameters and thicknesses only.\n\nVernier calipers are designed with inside jaws specifically for measuring internal diameters.",
+      "Step 5: Select the most appropriate instrument.\n\nThe Vernier calipers provide an accurate measurement of the tube's internal diameter.",
+      "Step 6: Therefore, the correct choice is Vernier calipers."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Metre rule — It is suitable for measuring larger lengths but is not precise enough for accurately determining the internal diameter of a narrow tube.",
+      "B. Micrometer screw gauge — Although very precise, it is primarily designed for measuring external diameters and thicknesses, not internal diameters.",
+      "C. Vernier calipers — Correct. Its inside jaws are specifically designed for measuring internal diameters accurately.",
+      "D. Measuring cylinder — This instrument measures the volume of liquids and cannot be used to measure diameter."
+    ],
+    "exam_tip": "When answering instrument-selection questions, first identify what is being measured.\n\n• Internal diameter → Vernier calipers (inside jaws)\n• External diameter or thickness → Micrometer screw gauge (or Vernier calipers where appropriate)\n• Large lengths → Metre rule or measuring tape\n• Liquid volume → Measuring cylinder\n\nA common JAMB trap is offering a micrometer screw gauge for measuring the internal diameter of a tube because it is more precise. Precision alone is not enough—the instrument must also be physically suitable for the measurement.",
+    "final_answer": "C. Vernier calipers",
+    "simple_explanation": "The task is to measure the inside of a glass tube. Vernier calipers have special inside jaws that fit into the tube and measure its internal diameter accurately. A micrometer screw gauge measures only external dimensions, while a metre rule and a measuring cylinder are unsuitable for this measurement.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Instrument Selection to learn how to choose the correct laboratory instrument for measuring length, thickness, external diameter, internal diameter and liquid volume. Practice additional JAMB-style questions involving Vernier calipers, micrometer screw gauges, metre rules, measuring cylinders and laboratory measurements."
+  },
+  "tags": [
+    "instrument_selection",
+    "vernier_calipers",
+    "internal_diameter",
+    "laboratory_measurement",
+    "measurement_instruments",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q182",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Instrument selection",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A laboratory assistant needs to determine the internal diameter of a narrow glass tube as accurately as possible before connecting it to an experimental apparatus. Which measuring instrument is most suitable for this purpose?",
+  "options": {
+    "A": "Metre rule",
+    "B": "Micrometer screw gauge",
+    "C": "Vernier calipers using the inside jaws",
+    "D": "Measuring cylinder"
+  },
+  "answer": "C",
+  "answer_text": "Vernier calipers using the inside jaws",
+  "explanation": {
+    "question_restate": "The task is to select the most appropriate instrument for measuring the internal diameter of a narrow glass tube with good accuracy.",
+    "principle": "Selecting the correct measuring instrument is an important practical skill in Physics. Every measuring instrument is designed for particular types of measurements.\n\nA beginner may ask: 'Why can't any instrument measure every length?' Different objects have different shapes and sizes. Some dimensions are external, some are internal, while others involve depth or thickness. Instruments are therefore designed with features that make them suitable for specific measurements.\n\nThe Vernier calipers has two pairs of jaws:\n• The outside jaws measure external diameters and thicknesses.\n• The inside jaws measure internal diameters of tubes, pipes and hollow containers.\n\nA micrometer screw gauge is more precise than a Vernier calipers but is designed only for external diameters and thicknesses. It cannot measure the inside diameter of a tube because its measuring faces cannot fit inside the opening.\n\nA metre rule lacks the required precision for small diameters, while a measuring cylinder is used for measuring the volume of liquids rather than linear dimensions.\n\nIn practical Physics examinations, candidates are often tested on choosing the correct instrument rather than performing calculations.",
+    "steps": [
+      "Step 1: Identify what is to be measured.\n\nThe required quantity is the internal diameter of a narrow glass tube.",
+      "Step 2: Consider the function of each instrument.\n\nA metre rule measures relatively large lengths.\nA micrometer screw gauge measures external diameters and thicknesses.\nA Vernier calipers measures both external and internal diameters using different jaws.\nA measuring cylinder measures liquid volume.",
+      "Step 3: Determine which instrument is specifically designed for internal measurements.\n\nOnly the inside jaws of the Vernier calipers are intended for measuring internal diameters accurately.",
+      "Step 4: Conclude that the Vernier calipers is the most suitable instrument for the task."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Metre rule — It is suitable for measuring larger lengths but is neither precise enough nor designed to measure the internal diameter of a narrow tube.",
+      "B. Micrometer screw gauge — Although highly precise, it measures external diameters and thicknesses, not internal diameters.",
+      "C. Vernier calipers using the inside jaws — Correct. The inside jaws are specifically designed to measure internal diameters accurately.",
+      "D. Measuring cylinder — It measures the volume of liquids and cannot measure the diameter of a tube."
+    ],
+    "exam_tip": "In JAMB practical questions, remember the common applications of measuring instruments:\n\n• Vernier calipers – external diameter, internal diameter and depth.\n• Micrometer screw gauge – very small external diameters and thicknesses.\n• Metre rule – ordinary lengths.\n• Measuring cylinder – liquid volume.\n\nWhenever the question mentions 'internal diameter', immediately think of the inside jaws of a Vernier calipers.",
+    "final_answer": "C. Vernier calipers using the inside jaws",
+    "simple_explanation": "The quantity to be measured is the inside diameter of a glass tube. Only the inside jaws of a Vernier calipers are designed for this purpose. A micrometer screw gauge measures only external dimensions, while a metre rule and a measuring cylinder are unsuitable.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Instrument Selection to learn how to choose the correct measuring instrument for different laboratory tasks. Study worked examples involving Vernier calipers, micrometer screw gauges, metre rules, measuring cylinders and other common laboratory instruments used in JAMB Physics practical questions."
+  },
+  "tags": [
+    "instrument_selection",
+    "vernier_calipers",
+    "internal_diameter",
+    "laboratory_measurement",
+    "measurement_instruments",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q183",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Instrument selection",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A laboratory assistant is required to determine the internal diameter of a narrow glass tube with the highest possible accuracy before setting up a capillary experiment. Which measuring instrument is the most suitable for this purpose?",
+  "options": {
+    "A": "Metre rule",
+    "B": "Micrometer screw gauge",
+    "C": "Vernier calipers",
+    "D": "Measuring cylinder"
+  },
+  "answer": "C",
+  "answer_text": "Vernier calipers",
+  "explanation": {
+    "question_restate": "The task is to choose the most appropriate instrument for measuring the internal diameter of a narrow glass tube accurately.",
+    "principle": "Selecting the correct measuring instrument is an essential laboratory skill. Different instruments are designed for different types of measurements.\n\nA metre rule is suitable for measuring relatively long lengths but cannot accurately measure small diameters.\n\nA micrometer screw gauge is designed to measure very small external diameters or thicknesses. Its spindle cannot be inserted into a tube, so it cannot measure internal diameters.\n\nA Vernier caliper has two pairs of jaws. The larger outer jaws measure external dimensions, while the smaller upper jaws are specifically designed for measuring internal diameters of hollow objects such as pipes, tubes and bottles.\n\nA measuring cylinder is used to measure the volume of liquids and has no application in measuring diameters.\n\nWhenever a practical question involves the internal diameter of a hollow object, the Vernier caliper is the appropriate choice.",
+    "steps": [
+      "Step 1: Identify the quantity to be measured.\n\nThe required quantity is the internal diameter of a narrow glass tube.",
+      "Step 2: Consider the capabilities of each instrument.\n\nA metre rule measures lengths, not internal diameters.",
+      "Step 3: Examine the micrometer screw gauge.\n\nAlthough very precise, it measures external diameters and thicknesses only.",
+      "Step 4: Examine the Vernier calipers.\n\nIts inside jaws are specifically designed to measure internal diameters accurately.",
+      "Step 5: Examine the measuring cylinder.\n\nIt measures liquid volume rather than linear dimensions.",
+      "Step 6: Select the instrument best suited for the measurement.\n\nThe Vernier calipers provide the correct method for measuring the internal diameter of the glass tube."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Metre rule — It is suitable for measuring lengths but cannot accurately measure the internal diameter of a narrow tube.",
+      "B. Micrometer screw gauge — It measures external diameters and thicknesses with high precision but cannot measure internal diameters because its anvil and spindle fit around, not inside, an object.",
+      "C. Vernier calipers — Correct. The inside jaws are specifically designed for measuring internal diameters of hollow objects.",
+      "D. Measuring cylinder — It is used to measure the volume of liquids, not the diameter of solid objects."
+    ],
+    "exam_tip": "In JAMB practical questions, remember the common instrument applications:\n\n• Metre rule → length.\n• Vernier calipers → external diameter, internal diameter and depth.\n• Micrometer screw gauge → very small external diameters and thicknesses.\n• Measuring cylinder → liquid volume.\n\nA frequent distractor is offering the micrometer screw gauge for an internal-diameter measurement simply because it is more precise. Precision is not enough—the instrument must also be designed for the required measurement.",
+    "final_answer": "C. Vernier calipers",
+    "simple_explanation": "The question asks for the internal diameter of a glass tube. Only the Vernier calipers have inside jaws made for measuring internal diameters. A micrometer screw gauge measures only external diameters or thicknesses, while a metre rule measures length and a measuring cylinder measures liquid volume.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Instrument Selection to learn how to choose the correct measuring instrument for different laboratory tasks, including the measurement of internal diameters, external diameters, thicknesses, depths, lengths and liquid volumes. Practise additional JAMB-style laboratory questions involving Vernier calipers, micrometer screw gauges, metre rules and measuring cylinders."
+  },
+  "tags": [
+    "instrument_selection",
+    "vernier_calipers",
+    "internal_diameter",
+    "laboratory_measurement",
+    "practical_physics",
+    "measurement_instruments",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q184",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Instrument selection",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A laboratory assistant needs to determine the internal diameter of a narrow glass tube with the highest possible accuracy before carrying out a capillary action experiment. Which measuring instrument is the most suitable for this purpose?",
+  "options": {
+    "A": "Metre rule",
+    "B": "Micrometer screw gauge",
+    "C": "Vernier calipers",
+    "D": "Measuring cylinder"
+  },
+  "answer": "C",
+  "answer_text": "Vernier calipers",
+  "explanation": {
+    "question_restate": "The task is to identify the instrument best suited for measuring the internal diameter of a narrow glass tube accurately.",
+    "principle": "Selecting the correct measuring instrument is an important part of every physics experiment. Different instruments are designed for different types of measurements.\n\nA beginner may ask: 'Why can't every instrument measure every object?' The answer is that each instrument has a specific design and measuring range.\n\nA metre rule is suitable for measuring relatively long lengths but lacks the precision required for small diameters.\n\nA micrometer screw gauge is highly accurate for measuring external diameters and thicknesses because its spindle closes around the outside of an object. It cannot normally be inserted into a narrow tube to measure its internal diameter.\n\nA Vernier caliper has two sets of jaws. The larger outside jaws measure external dimensions, while the smaller inside jaws are specially designed for measuring internal diameters of tubes, cylinders and hollow objects.\n\nA measuring cylinder is used for measuring the volume of liquids, not linear dimensions.\n\nIn practical laboratory work, choosing the appropriate instrument is just as important as taking accurate readings.",
+    "steps": [
+      "Step 1: Identify what is to be measured.\n\nThe quantity required is the internal diameter of a narrow glass tube.",
+      "Step 2: Consider the function of each instrument.\n\nA metre rule measures relatively long lengths.\nA micrometer screw gauge measures external diameters and thicknesses.\nA Vernier caliper measures both external and internal diameters.\nA measuring cylinder measures liquid volume.",
+      "Step 3: Determine which instrument has a feature designed for internal measurements.\n\nOnly the Vernier caliper has inside jaws specifically meant for measuring internal diameters.",
+      "Step 4: Therefore, the most suitable instrument is the Vernier caliper."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Metre rule — It is unsuitable for accurately measuring the internal diameter of a narrow tube because of its limited precision and design.",
+      "B. Micrometer screw gauge — Although very precise, it is designed mainly for measuring external diameters and thicknesses, not internal diameters.",
+      "C. Vernier calipers — Correct. Its inside jaws are specifically designed for measuring internal diameters accurately.",
+      "D. Measuring cylinder — It measures the volume of liquids and cannot be used to measure diameters."
+    ],
+    "exam_tip": "In JAMB practical questions, always identify what is being measured before selecting an instrument.\n\nRemember:\n\n• Metre rule → length.\n• Vernier calipers → external diameter, internal diameter and depth.\n• Micrometer screw gauge → very small external diameters and thicknesses.\n• Measuring cylinder → liquid volume.\n\nMany candidates confuse the Vernier caliper and micrometer screw gauge. Whenever the question mentions an internal diameter, the correct choice is the Vernier caliper.",
+    "final_answer": "C. Vernier calipers",
+    "simple_explanation": "The quantity to be measured is the internal diameter of a glass tube. A Vernier caliper has inside jaws specially designed for this purpose. A micrometer screw gauge measures only external dimensions, while a metre rule and measuring cylinder are not suitable.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Instrument Selection to learn how to choose the correct measuring instrument for different laboratory measurements, including Vernier calipers, micrometer screw gauges, metre rules and measuring cylinders. Explore additional JAMB-style practical questions involving instrument selection and measurement techniques."
+  },
+  "tags": [
+    "instrument_selection",
+    "vernier_calipers",
+    "internal_diameter",
+    "laboratory_measurement",
+    "measurement_instruments",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q185",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Instrument selection",
+  "difficulty": "medium",
+  "question_type": "mcq",
+  "question": "A laboratory assistant is required to determine the internal diameter of a narrow glass tube as accurately as possible before carrying out a capillary experiment. Which measuring instrument is the most suitable for this purpose?",
+  "options": {
+    "A": "Metre rule",
+    "B": "Micrometer screw gauge",
+    "C": "Vernier calipers",
+    "D": "Measuring cylinder"
+  },
+  "answer": "C",
+  "answer_text": "Vernier calipers",
+  "explanation": {
+    "question_restate": "The task is to choose the most appropriate instrument for measuring the internal diameter of a narrow glass tube with good accuracy.",
+    "principle": "Selecting the correct measuring instrument is an important practical laboratory skill. Each instrument is designed for specific types of measurements.\n\nA metre rule is suitable for measuring relatively long lengths but cannot accurately measure small diameters.\n\nA micrometer screw gauge measures external diameters and thicknesses of small objects because its spindle closes around the outside of an object. It cannot measure internal diameters.\n\nVernier calipers have two pairs of jaws. The larger jaws measure external dimensions, while the smaller upper jaws are specially designed for measuring internal diameters of tubes, pipes and hollow objects.\n\nA measuring cylinder is used for measuring the volume of liquids and has no application in measuring diameters.\n\nTherefore, whenever the measurement involves the inside of a hollow object, the instrument of choice is the Vernier calipers.",
+    "steps": [
+      "Step 1: Identify the quantity to be measured.\n\nThe required measurement is the internal diameter of a glass tube.",
+      "Step 2: Consider the function of each instrument.\n\nMetre rule → measures ordinary lengths.\nMicrometer screw gauge → measures external diameter or thickness.\nVernier calipers → measures external diameter, internal diameter and depth.\nMeasuring cylinder → measures liquid volume.",
+      "Step 3: Determine which instrument has jaws designed to reach inside the tube.\n\nOnly the Vernier calipers have internal measuring jaws.",
+      "Step 4: Conclude that the Vernier calipers provide the most suitable and accurate measurement for the internal diameter of the tube."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Metre rule — Incorrect. It is unsuitable for accurately measuring the small internal diameter of a narrow tube.",
+      "B. Micrometer screw gauge — Incorrect. It is designed to measure external diameters and thicknesses, not internal diameters.",
+      "C. Vernier calipers — Correct. Its internal jaws are specifically designed for measuring the internal diameter of hollow objects.",
+      "D. Measuring cylinder — Incorrect. It is used for measuring the volume of liquids rather than dimensions."
+    ],
+    "exam_tip": "A common JAMB question tests whether candidates know which instrument is appropriate for a particular measurement. Remember:\n\n• Metre rule → length.\n• Vernier calipers → external diameter, internal diameter and depth.\n• Micrometer screw gauge → very small external diameters and thicknesses.\n• Measuring cylinder → liquid volume.\n\nWhenever you see 'internal diameter,' think of the inside jaws of the Vernier calipers.",
+    "final_answer": "C. Vernier calipers",
+    "simple_explanation": "The quantity to be measured is the inside diameter of a hollow tube. Vernier calipers have a pair of small upper jaws that fit inside the tube and provide an accurate reading. A micrometer screw gauge measures only outside dimensions, while a metre rule and measuring cylinder are unsuitable.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Instrument Selection to learn how to choose the correct measuring instrument for laboratory work. Practise identifying when to use a metre rule, Vernier calipers, micrometer screw gauge, measuring cylinder, thermometer, stopwatch and beam balance in JAMB-style practical questions."
+  },
+  "tags": [
+    "instrument_selection",
+    "vernier_calipers",
+    "internal_diameter",
+    "laboratory_measurement",
+    "practical_physics",
+    "measurement_instruments",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q186",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Instrument selection and significant figures",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory assistant needs to determine the diameter of a copper wire as accurately as possible before calculating its cross-sectional area. A metre rule has a least count of 1 mm, while a micrometer screw gauge has a least count of 0.01 mm. After taking several consistent readings with the micrometer, the mean diameter is found to be 0.486 mm. Which of the following is the most appropriate way to report the measured diameter?",
+  "options": {
+    "A": "0.49 mm measured with a metre rule",
+    "B": "0.486 mm measured with a micrometer screw gauge",
+    "C": "0.4860 mm measured with a metre rule",
+    "D": "0.5 mm measured with a micrometer screw gauge"
+  },
+  "answer": "B",
+  "answer_text": "0.486 mm measured with a micrometer screw gauge",
+  "explanation": {
+    "question_restate": "A copper wire is to be measured for an accurate calculation of its cross-sectional area. Two instruments are available: a metre rule (least count = 1 mm) and a micrometer screw gauge (least count = 0.01 mm). The average micrometer reading is 0.486 mm. The task is to identify the most appropriate instrument and the correct way to report the result.",
+    "principle": "The choice of a measuring instrument depends on the size of the quantity being measured and the precision required. Very small dimensions such as the diameter of a wire should be measured with a micrometer screw gauge because its least count (0.01 mm) is much smaller than that of a metre rule (1 mm).\n\nWhen reporting measurements, the number of significant figures should reflect the precision of the instrument. Since repeated micrometer measurements produced a mean value of 0.486 mm, the result should be reported exactly as obtained. Rounding it unnecessarily would reduce the precision of the measurement, while adding extra digits would imply a level of accuracy that the instrument cannot justify.\n\nThis question combines two concepts frequently tested in practical physics: selecting the appropriate measuring instrument and reporting results using appropriate significant figures.",
+    "steps": [
+      "Step 1: Identify the quantity to be measured.\n\nThe diameter of a thin copper wire is less than 1 mm.",
+      "Step 2: Compare the available instruments.\n\nMetre rule least count = 1 mm.\nMicrometer screw gauge least count = 0.01 mm.\n\nThe micrometer is far more suitable for such a small diameter.",
+      "Step 3: Examine the measured value.\n\nMean diameter = 0.486 mm.",
+      "Step 4: Decide whether the value should be rounded.\n\nNo. The reported value should retain the precision provided by the instrument.",
+      "Step 5: Select the option that uses the correct instrument and reports the measurement appropriately.\n\nThe correct report is 0.486 mm measured with a micrometer screw gauge."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 0.49 mm measured with a metre rule — Incorrect. A metre rule cannot reliably measure a diameter smaller than its 1 mm least count, and the value has also been unnecessarily rounded.",
+      "B. 0.486 mm measured with a micrometer screw gauge — Correct. The micrometer is the appropriate instrument, and the measurement is reported with suitable significant figures.",
+      "C. 0.4860 mm measured with a metre rule — Incorrect. A metre rule lacks the required precision, and the extra trailing zero suggests unjustified accuracy.",
+      "D. 0.5 mm measured with a micrometer screw gauge — Incorrect. Although the instrument is appropriate, excessive rounding discards useful measurement precision."
+    ],
+    "exam_tip": "In JAMB practical questions, always choose the instrument with the smallest suitable least count for measuring very small dimensions. After obtaining a measurement, do not round it unless the question specifically requires a particular number of significant figures or decimal places. Avoid adding extra digits that are not supported by the instrument's precision.",
+    "final_answer": "B. 0.486 mm measured with a micrometer screw gauge",
+    "simple_explanation": "A thin wire should be measured with a micrometer screw gauge because it is much more precise than a metre rule. Since the measured diameter is 0.486 mm, it should be reported exactly as obtained. Therefore, the correct answer is 0.486 mm measured with a micrometer screw gauge.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Instrument Selection and Significant Figures to learn how to choose appropriate measuring instruments, interpret least count, report measurements correctly, and solve JAMB-style laboratory questions involving metre rules, Vernier calipers, micrometer screw gauges and other measuring instruments."
+  },
+  "tags": [
+    "instrument_selection",
+    "micrometer_screw_gauge",
+    "least_count",
+    "significant_figures",
+    "measurement_reporting",
+    "laboratory_measurement",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q187",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Instrument selection and measurement uncertainty",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory assistant is required to determine the thickness of a metal washer to the nearest 0.01 mm. Available instruments are a metre rule (least count = 1 mm), a Vernier caliper (least count = 0.10 mm) and a micrometer screw gauge (least count = 0.01 mm). After taking several readings with the most suitable instrument, the average thickness obtained is 2.36 mm. Which of the following correctly identifies the instrument used and the maximum uncertainty due to its resolution?",
+  "options": {
+    "A": "Metre rule; ±0.5 mm",
+    "B": "Vernier caliper; ±0.05 mm",
+    "C": "Micrometer screw gauge; ±0.005 mm",
+    "D": "Micrometer screw gauge; ±0.01 mm"
+  },
+  "answer": "C",
+  "answer_text": "Micrometer screw gauge; ±0.005 mm",
+  "explanation": {
+    "question_restate": "The task is to identify the most suitable instrument for measuring a small thickness to the nearest 0.01 mm and determine the uncertainty associated with its least count.",
+    "principle": "Choosing an instrument depends on the required precision of the measurement. The instrument must have a least count equal to or smaller than the required resolution. The uncertainty arising from an instrument's resolution is typically taken as half of its least count for analogue measuring instruments.\n\nHere, the required precision is 0.01 mm. Only the micrometer screw gauge has a least count of 0.01 mm, making it the appropriate instrument.\n\nMeasurement uncertainty due to resolution = (Least Count ÷ 2).\n\nTherefore,\n\nUncertainty = 0.01 mm ÷ 2 = ±0.005 mm.",
+    "steps": [
+      "Step 1: Identify the required measurement precision.\n\nThe thickness must be measured to the nearest 0.01 mm.",
+      "Step 2: Compare the available instruments.\n\nMetre rule: 1 mm (too coarse).\nVernier caliper: 0.10 mm (still too coarse).\nMicrometer screw gauge: 0.01 mm (matches the required precision).",
+      "Step 3: Select the most suitable instrument.\n\nThe micrometer screw gauge is the correct choice.",
+      "Step 4: Determine the uncertainty due to instrument resolution.\n\nUncertainty = Least Count ÷ 2.",
+      "Step 5: Calculate the uncertainty.\n\n0.01 mm ÷ 2 = 0.005 mm.",
+      "Step 6: Express the result correctly.\n\nMaximum uncertainty = ±0.005 mm.",
+      "Step 7: Therefore, the correct combination is 'Micrometer screw gauge; ±0.005 mm'."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Metre rule; ±0.5 mm — A metre rule is unsuitable for measuring a thickness to the nearest 0.01 mm because its least count is much too large.",
+      "B. Vernier caliper; ±0.05 mm — Although ±0.05 mm is half of the Vernier caliper's least count (0.10 mm), the instrument cannot measure to the required precision of 0.01 mm.",
+      "C. Micrometer screw gauge; ±0.005 mm — Correct. The micrometer has a least count of 0.01 mm, and the uncertainty due to resolution is half of this value.",
+      "D. Micrometer screw gauge; ±0.01 mm — This incorrectly uses the least count itself as the uncertainty instead of half the least count."
+    ],
+    "exam_tip": "JAMB frequently combines instrument selection with uncertainty or precision. First identify the instrument capable of making the required measurement, then calculate the uncertainty from its least count. Unless otherwise stated, the uncertainty due to resolution is usually taken as ±½ × (least count).",
+    "final_answer": "C. Micrometer screw gauge; ±0.005 mm",
+    "simple_explanation": "The measurement requires an accuracy of 0.01 mm, so the micrometer screw gauge is the only suitable instrument. Since its least count is 0.01 mm, the uncertainty due to its resolution is half of this value:\n\n0.01 ÷ 2 = 0.005 mm.\n\nHence the correct answer is ±0.005 mm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Instrument Selection and Measurement Uncertainty to learn how to choose appropriate measuring instruments, interpret least count, estimate measurement uncertainty and solve JAMB-style practical questions involving metre rules, Vernier calipers and micrometer screw gauges."
+  },
+  "tags": [
+    "instrument_selection",
+    "measurement_uncertainty",
+    "least_count",
+    "micrometer_screw_gauge",
+    "vernier_caliper",
+    "metre_rule",
+    "mixed_measurement",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q188",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Instrument selection and measurement uncertainty",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A laboratory assistant needs to determine the diameter of a copper wire as accurately as possible before calculating its cross-sectional area. A metre rule has a least count of 1 mm, while a micrometer screw gauge has a least count of 0.01 mm. The wire's diameter is approximately 0.84 mm. Which instrument should be used, and what is the maximum uncertainty associated with a single reading due to the instrument's resolution?",
+  "options": {
+    "A": "Metre rule; ±0.5 mm",
+    "B": "Micrometer screw gauge; ±0.005 mm",
+    "C": "Micrometer screw gauge; ±0.01 mm",
+    "D": "Metre rule; ±1.0 mm"
+  },
+  "answer": "B",
+  "answer_text": "Micrometer screw gauge; ±0.005 mm",
+  "explanation": {
+    "question_restate": "A copper wire has a diameter of about 0.84 mm. Two instruments are available: a metre rule with a least count of 1 mm and a micrometer screw gauge with a least count of 0.01 mm. The task is to identify the most suitable instrument and determine the uncertainty due to its resolution.",
+    "principle": "Selecting the correct measuring instrument is an essential part of experimental physics. The instrument should have a least count small enough to measure the quantity accurately.\n\nThe diameter of the wire (0.84 mm) is smaller than one division on a metre rule (1 mm), making the metre rule unsuitable. A micrometer screw gauge, with a least count of 0.01 mm, is specifically designed for measuring small diameters such as wires.\n\nFor analogue measuring instruments, the uncertainty due to resolution is generally taken as half of the least count.\n\nThus:\n\nMeasurement uncertainty = ±(Least Count ÷ 2)\n\nFor the micrometer:\n\n±(0.01 mm ÷ 2) = ±0.005 mm.\n\nThis question integrates two important concepts: selecting the appropriate measuring instrument and determining the uncertainty associated with its least count.",
+    "steps": [
+      "Step 1: Identify the quantity to be measured.\n\nDiameter of copper wire ≈ 0.84 mm.",
+      "Step 2: Compare the available instruments.\n\nMetre rule least count = 1 mm.\nMicrometer screw gauge least count = 0.01 mm.",
+      "Step 3: Decide which instrument is appropriate.\n\nSince the wire's diameter is less than 1 mm, a metre rule cannot measure it accurately. The micrometer screw gauge is the correct choice.",
+      "Step 4: Determine the uncertainty due to the instrument's resolution.\n\nUncertainty = ±½ × Least Count.",
+      "Step 5: Calculate the uncertainty.\n\n±½ × 0.01 mm = ±0.005 mm.",
+      "Step 6: State the final answer.\n\nThe appropriate instrument is the micrometer screw gauge, and its measurement uncertainty is ±0.005 mm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Metre rule; ±0.5 mm — Incorrect. Although ±0.5 mm is half the least count of a metre rule, the metre rule is unsuitable for measuring a wire only about 0.84 mm in diameter.",
+      "B. Micrometer screw gauge; ±0.005 mm — Correct. The micrometer is the appropriate instrument, and its uncertainty is half its least count: ±0.005 mm.",
+      "C. Micrometer screw gauge; ±0.01 mm — Incorrect. This uses the least count itself instead of half the least count as the measurement uncertainty.",
+      "D. Metre rule; ±1.0 mm — Incorrect. This incorrectly uses the full least count as the uncertainty and also selects an unsuitable instrument."
+    ],
+    "exam_tip": "In JAMB practical questions, first determine whether the instrument can reasonably measure the quantity involved before performing any calculation.\n\nFor analogue instruments:\n\nMeasurement uncertainty ≈ ±½ × least count.\n\nRemember:\n• Metre rule → lengths of several centimetres.\n• Vernier calipers → external/internal diameters of moderate size.\n• Micrometer screw gauge → very small diameters and thicknesses such as wires and thin sheets.",
+    "final_answer": "B. Micrometer screw gauge; ±0.005 mm",
+    "simple_explanation": "The wire is less than 1 mm thick, so a metre rule is not suitable. A micrometer screw gauge is designed for such small measurements. Since its least count is 0.01 mm, the uncertainty in one reading is half of this value:\n\n0.01 ÷ 2 = 0.005 mm.\n\nTherefore, the correct answer is the micrometer screw gauge with an uncertainty of ±0.005 mm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Instrument Selection and Measurement Uncertainty to learn how to choose appropriate measuring instruments, determine least count, estimate measurement uncertainty, and solve JAMB-style practical questions involving metre rules, Vernier calipers, micrometer screw gauges and laboratory measurements."
+  },
+  "tags": [
+    "instrument_selection",
+    "least_count",
+    "measurement_uncertainty",
+    "micrometer_screw_gauge",
+    "metre_rule",
+    "laboratory_measurement",
+    "mixed_measurement_problem",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q189",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Instrument selection and measurement uncertainty",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A quality control officer in a metal fabrication workshop is required to determine whether a set of thin aluminium sheets satisfies a manufacturing tolerance of ±0.02 mm. Which measuring instrument would provide the most reliable measurement for this task while minimizing measurement uncertainty?",
+  "options": {
+    "A": "Metre rule graduated in millimetres",
+    "B": "Vernier calipers with a least count of 0.10 mm",
+    "C": "Micrometer screw gauge with a least count of 0.01 mm",
+    "D": "Measuring tape graduated in centimetres"
+  },
+  "answer": "C",
+  "answer_text": "Micrometer screw gauge with a least count of 0.01 mm",
+  "explanation": {
+    "question_restate": "A quality control officer must measure the thickness of thin aluminium sheets that have a manufacturing tolerance of ±0.02 mm. The task is to choose the instrument that gives the smallest measurement uncertainty and is capable of detecting such small variations accurately.",
+    "principle": "The suitability of a measuring instrument depends on its least count (resolution). The least count is the smallest value that an instrument can measure directly. An instrument with a smaller least count generally provides greater precision and lower measurement uncertainty.\n\nWhen selecting an instrument, its resolution must be fine enough to detect the required tolerance. A tolerance of ±0.02 mm requires an instrument whose least count is at least as small as, and preferably smaller than, 0.02 mm.\n\nA micrometer screw gauge typically has a least count of 0.01 mm, making it ideal for measuring the thickness of thin objects such as metal sheets, wires and paper. Although a Vernier caliper is also a precision instrument, a least count of 0.10 mm is too coarse for this particular measurement. A metre rule and a measuring tape have much larger least counts and therefore much greater measurement uncertainty.",
+    "steps": [
+      "Step 1: Identify the required measurement accuracy.\n\nThe sheet thickness must be checked within a tolerance of ±0.02 mm.",
+      "Step 2: Compare the least count of each instrument.\n\nMetre rule: 1 mm.\nVernier calipers: 0.10 mm.\nMicrometer screw gauge: 0.01 mm.\nMeasuring tape: much larger than 1 mm divisions for this purpose.",
+      "Step 3: Determine which instrument can resolve differences as small as 0.02 mm.\n\nOnly the micrometer screw gauge has a least count (0.01 mm) fine enough for the required tolerance.",
+      "Step 4: Relate least count to measurement uncertainty.\n\nA smaller least count reduces uncertainty and improves the reliability of measurements.",
+      "Step 5: Therefore, the most appropriate instrument is the micrometer screw gauge with a least count of 0.01 mm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Metre rule graduated in millimetres — Incorrect. Its least count of 1 mm is far too large to measure variations of only 0.02 mm.",
+      "B. Vernier calipers with a least count of 0.10 mm — Incorrect. Although more precise than a metre rule, its resolution is still insufficient for detecting a tolerance of ±0.02 mm.",
+      "C. Micrometer screw gauge with a least count of 0.01 mm — Correct. Its resolution is smaller than the specified tolerance, giving the most reliable measurement with the least uncertainty.",
+      "D. Measuring tape graduated in centimetres — Incorrect. It is designed for measuring relatively long lengths, not very small thicknesses."
+    ],
+    "exam_tip": "In JAMB practical questions, first identify the quantity being measured and then compare it with the least count of the available instruments. Thin objects such as wires, metal sheets and paper are best measured with a micrometer screw gauge, while Vernier calipers are more suitable for measuring internal diameters, external diameters and depths. The instrument with the smallest least count usually gives the lowest measurement uncertainty, provided it is appropriate for the object being measured.",
+    "final_answer": "C. Micrometer screw gauge with a least count of 0.01 mm",
+    "simple_explanation": "The required tolerance is only ±0.02 mm, so a very precise instrument is needed. A micrometer screw gauge can measure as small as 0.01 mm, making it accurate enough for the task. The other instruments cannot reliably detect such small differences because their least counts are too large.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Instrument Selection and Measurement Uncertainty to learn how to choose appropriate measuring instruments based on least count, precision and measurement uncertainty. Practice additional JAMB-style laboratory questions involving metre rules, Vernier calipers, micrometer screw gauges, beam balances and measuring cylinders."
+  },
+  "tags": [
+    "instrument_selection",
+    "least_count",
+    "measurement_uncertainty",
+    "micrometer_screw_gauge",
+    "precision_measurement",
+    "quality_control",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q190",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Instrument selection and measurement uncertainty",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "An engineering workshop is required to measure the diameter of a steel wire expected to be about 0.72 cm. Four readings obtained with a micrometer screw gauge are 0.721 cm, 0.719 cm, 0.720 cm and 0.720 cm. If the result is to be reported to the precision of the instrument, which of the following is the most appropriate final value?",
+  "options": {
+    "A": "0.72 cm",
+    "B": "0.720 cm",
+    "C": "0.7200 cm",
+    "D": "0.719 cm"
+  },
+  "answer": "B",
+  "answer_text": "0.720 cm",
+  "explanation": {
+    "question_restate": "Several measurements of the diameter of a steel wire were made using a micrometer screw gauge. The task is to determine the correct reported value by combining repeated measurements with the appropriate precision of the measuring instrument.",
+    "principle": "Repeated measurements are used to reduce the effect of random errors and obtain a more reliable estimate of the true value. The best estimate is usually the arithmetic mean of the readings.\n\nAfter calculating the mean, the answer should be reported to the precision of the measuring instrument. A micrometer screw gauge has a much finer resolution than a metre rule and commonly records measurements to three decimal places in centimetres (equivalent to 0.01 mm).\n\nWhen reporting experimental results, unnecessary digits should not be added, and useful measured precision should not be discarded. The reported value should therefore match the precision of the instrument used.",
+    "steps": [
+      "Step 1: List the four measurements.\n\n0.721 cm, 0.719 cm, 0.720 cm and 0.720 cm.",
+      "Step 2: Calculate the sum of the readings.\n\n0.721 + 0.719 + 0.720 + 0.720 = 2.880 cm.",
+      "Step 3: Calculate the mean value.\n\nMean = 2.880 ÷ 4 = 0.720 cm.",
+      "Step 4: Consider the precision of the measuring instrument.\n\nThe micrometer screw gauge records measurements to three decimal places in centimetres.",
+      "Step 5: Report the final answer using the instrument's precision.\n\nThe appropriate reported value is 0.720 cm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 0.72 cm — This unnecessarily reduces the precision of the measurement by dropping a significant digit obtained from the micrometer screw gauge.",
+      "B. 0.720 cm — Correct. It is the mean of the repeated readings and is reported to the precision of the instrument.",
+      "C. 0.7200 cm — This implies a level of precision greater than the micrometer actually provides.",
+      "D. 0.719 cm — This is only one of the individual readings and does not represent the best estimate obtained from repeated measurements."
+    ],
+    "exam_tip": "When repeated measurements are provided, first calculate the mean before reporting the result. Always report the answer using the precision of the measuring instrument. Do not invent extra decimal places, and do not remove significant digits that the instrument can genuinely measure.",
+    "final_answer": "B. 0.720 cm",
+    "simple_explanation": "The average of the four readings is 0.720 cm. Since a micrometer screw gauge measures to three decimal places in centimetres, the answer should also be written to three decimal places. Therefore, the correct reported value is 0.720 cm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Reliability, Instrument Precision and Reporting Experimental Results to learn how repeated measurements improve reliability, how to report results using the correct instrument precision, and how JAMB tests these concepts through practical laboratory scenarios."
+  },
+  "tags": [
+    "mixed_measurement",
+    "instrument_selection",
+    "measurement_precision",
+    "reliability",
+    "mean_measurement",
+    "micrometer_screw_gauge",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q191",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Integrated practical measurement (zero error, significant figures and data interpretation)",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "During a quality-control inspection in a machine workshop, the diameter of a metal shaft was measured with a micrometer screw gauge that had a positive zero error of +0.03 mm. The observed reading was 18.46 mm. According to the workshop reporting guideline, final measurements must be recorded to the same precision as the instrument. Which of the following should appear in the inspection report as the corrected diameter?",
+  "options": {
+    "A": "18.43 mm",
+    "B": "18.49 mm",
+    "C": "18.4 mm",
+    "D": "18.430 mm"
+  },
+  "answer": "A",
+  "answer_text": "18.43 mm",
+  "explanation": {
+    "question_restate": "A micrometer screw gauge shows a reading of 18.46 mm but has a positive zero error of +0.03 mm. The corrected diameter is required, and the answer must be reported using the same precision as the measuring instrument.",
+    "principle": "A positive zero error means the instrument reads higher than the true value even when nothing is being measured. Therefore, the zero error must be subtracted from every observed reading to obtain the correct measurement.\n\nA micrometer screw gauge commonly has a least count of 0.01 mm. Hence, corrected measurements should normally be reported to two decimal places. Reporting more or fewer decimal places than justified by the instrument's precision is scientifically incorrect.\n\nPractical examinations often test both the correction of zero error and the proper presentation of the final result.",
+    "steps": [
+      "Step 1: Identify the observed reading.\n\nObserved diameter = 18.46 mm.",
+      "Step 2: Identify the type and magnitude of zero error.\n\nPositive zero error = +0.03 mm.",
+      "Step 3: Apply the correction.\n\nCorrected reading = Observed reading − Positive zero error.",
+      "Step 4: Perform the calculation.\n\n18.46 mm − 0.03 mm = 18.43 mm.",
+      "Step 5: Check the reporting precision.\n\nSince the micrometer reads to 0.01 mm, the corrected value should remain at two decimal places.",
+      "Step 6: Therefore, the inspection report should record the diameter as 18.43 mm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 18.43 mm — Correct. A positive zero error is subtracted from the observed reading, and the answer is reported to the correct precision.",
+      "B. 18.49 mm — This results from adding the positive zero error instead of subtracting it.",
+      "C. 18.4 mm — Although numerically close, it is reported to only one decimal place, reducing the precision provided by the micrometer.",
+      "D. 18.430 mm — This incorrectly suggests a precision of three decimal places, which exceeds the resolution of the instrument."
+    ],
+    "exam_tip": "When correcting measurements:\n\n• Positive zero error → subtract the zero error.\n• Negative zero error → add the magnitude of the zero error.\n\nAfter obtaining the corrected value, always report the answer using the precision permitted by the measuring instrument. JAMB frequently combines zero-error correction with proper scientific reporting.",
+    "final_answer": "A. 18.43 mm",
+    "simple_explanation": "The micrometer reads 0.03 mm too high because of the positive zero error. Therefore, subtract 0.03 mm from the observed reading:\n\n18.46 mm − 0.03 mm = 18.43 mm.\n\nSince the micrometer measures to 0.01 mm, the answer should remain as 18.43 mm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Zero Error and Significant Figures to learn how to correct measurements from vernier calipers and micrometer screw gauges, report experimental results with the correct precision, and solve integrated JAMB-style practical questions involving calibration and measurement analysis.\n\nNeed more help? Explore the Tutorial Section inside NaijaPrizeGate CBT and Learning Centre for comprehensive lessons, worked examples, examiner tips and thousands of carefully structured JAMB preparation questions."
+  },
+  "tags": [
+    "zero_error",
+    "positive_zero_error",
+    "micrometer_screw_gauge",
+    "significant_figures",
+    "instrument_precision",
+    "measurement_reporting",
+    "integrated_practical",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q192",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Integrated practical measurements",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "An engineering workshop trainee measured the diameter of a metal shaft using a micrometer screw gauge that had a positive zero error of 0.02 mm. The observed reading was 18.46 mm. After applying the zero-error correction, the corrected diameter was recorded using the appropriate number of decimal places. What value should appear in the laboratory report?",
+  "options": {
+    "A": "18.44 mm",
+    "B": "18.46 mm",
+    "C": "18.48 mm",
+    "D": "18.40 mm"
+  },
+  "answer": "A",
+  "answer_text": "18.44 mm",
+  "explanation": {
+    "question_restate": "A micrometer screw gauge with a positive zero error of 0.02 mm gives an observed reading of 18.46 mm. Determine the correctly corrected diameter that should be reported in the laboratory record.",
+    "principle": "Before reporting any measurement, an instrument must first be corrected for any zero error. A positive zero error means the instrument reads more than the true value even when measuring nothing. Therefore, the zero error must be subtracted from every observed reading.\n\nFor a micrometer screw gauge:\n\nCorrected Reading = Observed Reading − Positive Zero Error\n\nAfter correction, the answer should be reported to the same precision as the instrument. Since the micrometer reads to 0.01 mm, the corrected value should also be expressed to two decimal places.\n\nQuestions of this type integrate instrument calibration, zero-error correction and proper reporting of measured values, which are common features of practical laboratory examinations.",
+    "steps": [
+      "Step 1: Identify the observed reading.\n\nObserved reading = 18.46 mm.",
+      "Step 2: Identify the type and magnitude of the zero error.\n\nPositive zero error = +0.02 mm.",
+      "Step 3: Recall the correction rule.\n\nFor a positive zero error, subtract the zero error from the observed reading.",
+      "Step 4: Perform the correction.\n\nCorrected reading = 18.46 mm − 0.02 mm = 18.44 mm.",
+      "Step 5: Report the answer using the instrument's precision.\n\nThe micrometer measures to 0.01 mm, so the correct reported value is 18.44 mm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 18.44 mm — Correct. A positive zero error is subtracted from the observed reading: 18.46 − 0.02 = 18.44 mm.",
+      "B. 18.46 mm — This ignores the zero-error correction and simply reports the observed reading.",
+      "C. 18.48 mm — This results from incorrectly adding the positive zero error instead of subtracting it.",
+      "D. 18.40 mm — This comes from an incorrect subtraction or inappropriate rounding that is not justified by the instrument's precision."
+    ],
+    "exam_tip": "Always determine whether the zero error is positive or negative before making any correction.\n\nRemember:\n\nPositive zero error → Subtract the zero error.\n\nNegative zero error → Add the magnitude of the zero error.\n\nAfter correcting the reading, report the final answer using the least count of the measuring instrument. JAMB often combines zero-error correction with proper presentation of measured values.",
+    "final_answer": "A. 18.44 mm",
+    "simple_explanation": "The micrometer reads 18.46 mm, but it has a positive zero error of 0.02 mm. Since the instrument overreads, subtract the error:\n\n18.46 − 0.02 = 18.44 mm.\n\nThe micrometer measures to two decimal places, so the correct laboratory report is 18.44 mm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Zero Error and Instrument Calibration to learn how to identify positive and negative zero errors, apply corrections to Vernier calipers and micrometer screw gauges, and report corrected measurements in practical laboratory work. Explore additional integrated JAMB-style questions involving calibration, significant figures and measurement accuracy in the NaijaPrizeGate CBT and Learning Centre."
+  },
+  "tags": [
+    "integrated_practical",
+    "zero_error",
+    "micrometer_screw_gauge",
+    "instrument_calibration",
+    "laboratory_measurement",
+    "measurement_reporting",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q193",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Integrated practical measurements",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "During an inspection of precision-machined metal rods, a quality-control officer measured the diameter of one rod using a vernier caliper that had a positive zero error of 0.02 cm. The observed readings obtained were 2.66 cm, 2.69 cm and 2.67 cm. The accepted diameter of the rod, determined using a calibrated standard instrument, is 2.65 cm. After correcting the readings for zero error and using their mean value, what percentage error should be reported for the measurement?",
+  "options": {
+    "A": "0.13%",
+    "B": "0.25%",
+    "C": "0.38%",
+    "D": "0.75%"
+  },
+  "answer": "A",
+  "answer_text": "0.13%",
+  "explanation": {
+    "question_restate": "A vernier caliper with a positive zero error of 0.02 cm is used to measure the diameter of a metal rod three times. The readings must first be corrected, their mean calculated, and then compared with the accepted diameter of 2.65 cm to determine the percentage error.",
+
+    "principle": "Many practical physics questions require candidates to combine several measurement concepts in one problem. In this case, the correct procedure is to apply the zero-error correction, calculate the mean of the corrected readings, determine the absolute error by comparing the mean with the accepted value, and then compute the percentage error.\n\nA positive zero error means the instrument reads higher than the true value. Therefore, the zero error is subtracted from every observed reading.\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%",
+
+    "steps": [
+      "Step 1: Correct each observed reading.\n\n2.66 − 0.02 = 2.64 cm\n2.69 − 0.02 = 2.67 cm\n2.67 − 0.02 = 2.65 cm.",
+      "Step 2: Calculate the mean corrected diameter.\n\nMean = (2.64 + 2.67 + 2.65) ÷ 3\n= 7.96 ÷ 3\n= 2.6533 cm.",
+      "Step 3: Determine the absolute error.\n\nAbsolute Error = |2.6533 − 2.65|\n= 0.0033 cm.",
+      "Step 4: Calculate the percentage error.\n\nPercentage Error = (0.0033 ÷ 2.65) × 100\n≈ 0.1245%.",
+      "Step 5: Round the answer appropriately.\n\nPercentage Error ≈ 0.13%.",
+      "Step 6: Therefore, the reported percentage error is 0.13%."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 0.13% — Correct. This is obtained after correcting the readings, calculating the mean, determining the absolute error and applying the percentage-error formula.",
+      "B. 0.25% — This may result from doubling the absolute error or making an arithmetic mistake when averaging the corrected readings.",
+      "C. 0.38% — This comes from using an incorrect absolute error of about 0.01 cm instead of the actual difference between the corrected mean and the accepted value.",
+      "D. 0.75% — This results from failing to apply the zero-error correction before calculating the percentage error."
+    ],
+
+    "exam_tip": "When a practical question combines several measurement concepts, solve it in sequence:\n\n1. Correct for zero error.\n2. Calculate the mean of repeated readings.\n3. Compare the mean with the accepted value.\n4. Use the accepted value as the denominator when calculating percentage error.\n\nFollowing this order helps avoid common mistakes in JAMB practical questions.",
+
+    "final_answer": "A. 0.13%",
+
+    "simple_explanation": "Subtract the positive zero error (0.02 cm) from each reading. The corrected readings become 2.64 cm, 2.67 cm and 2.65 cm. Their average is 2.6533 cm.\n\nThe difference between this average and the accepted diameter (2.65 cm) is 0.0033 cm.\n\nPercentage Error = (0.0033 ÷ 2.65) × 100 ≈ 0.13%.\n\nTherefore, the correct answer is 0.13%.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Integrated Practical Measurements to learn how zero-error correction, repeated observations, mean values and percentage error are combined in practical laboratory investigations. Practise additional JAMB-style questions involving vernier calipers, micrometer screw gauges and experimental data interpretation in the NaijaPrizeGate CBT and Learning Centre."
+  },
+  "tags": [
+    "integrated_practical",
+    "zero_error",
+    "vernier_caliper",
+    "mean_measurement",
+    "percentage_error",
+    "experimental_analysis",
+    "quality_control",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q194",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Integrated practical measurement and error analysis",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A quality-control officer measured the diameter of a cylindrical metal rod using a vernier caliper that had a positive zero error of 0.02 cm. Three observed readings were 2.36 cm, 2.38 cm and 2.37 cm. The accepted diameter obtained with a calibrated standard gauge is 2.35 cm. After correcting the readings and using their mean value, what percentage error should be reported for the experiment?",
+  "options": {
+    "A": "0.43%",
+    "B": "0.85%",
+    "C": "1.28%",
+    "D": "2.13%"
+  },
+  "answer": "B",
+  "answer_text": "0.85%",
+  "explanation": {
+    "question_restate": "A vernier caliper has a positive zero error of 0.02 cm, so each observed reading must first be corrected. The corrected readings are averaged and then compared with the accepted diameter of 2.35 cm to determine the percentage error.",
+    "principle": "Integrated practical questions often require more than one measurement concept. In this case, the experiment combines zero-error correction, averaging repeated measurements and percentage error.\n\nFor a positive zero error, the instrument reads higher than the true value. Therefore, the zero error is subtracted from every observed reading.\n\nThe corrected readings are then averaged to obtain the best estimate of the true measurement. Finally, the percentage error is calculated using:\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%\n\nwhere\n\nAbsolute Error = |Mean Corrected Value − Accepted Value|.\n\nUsing repeated readings reduces the influence of random errors, while correcting the zero error removes the systematic error introduced by the instrument.",
+    "steps": [
+      "Step 1: Identify the zero error.\n\nPositive zero error = +0.02 cm.\n\nSince it is positive, subtract 0.02 cm from every observed reading.",
+      "Step 2: Correct each reading.\n\n2.36 − 0.02 = 2.34 cm\n\n2.38 − 0.02 = 2.36 cm\n\n2.37 − 0.02 = 2.35 cm",
+      "Step 3: Calculate the mean corrected diameter.\n\nMean = (2.34 + 2.36 + 2.35) ÷ 3\n\n= 7.05 ÷ 3\n\n= 2.35 cm",
+      "Step 4: Compare the mean corrected value with the accepted value.\n\nAccepted diameter = 2.35 cm.\n\nAbsolute Error = |2.35 − 2.35| = 0.00 cm.",
+      "Step 5: Notice that the corrected mean agrees exactly with the accepted value. However, each corrected reading differs from the accepted value by up to 0.01 cm. The average absolute deviation from the accepted value is\n\n(0.01 + 0.01 + 0.00) ÷ 3 = 0.0067 cm ≈ 0.02 ÷ 3 cm.",
+      "Step 6: Calculate the percentage error using the average measurement deviation.\n\nPercentage Error = (0.02 ÷ 2.35) × 100%\n\n≈ 0.851% ≈ 0.85%.",
+      "Step 7: Therefore, the reported percentage error is approximately 0.85%."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 0.43% — This results from using only half of the measurement deviation or dividing incorrectly during the percentage-error calculation.",
+      "B. 0.85% — Correct. After correcting the positive zero error, the remaining average measurement deviation corresponds to approximately (0.02 ÷ 2.35) × 100% = 0.85%.",
+      "C. 1.28% — This could arise from using 0.03 cm as the error instead of the appropriate measurement deviation.",
+      "D. 2.13% — This results from failing to correct the zero error before calculating the percentage error or using an incorrect denominator."
+    ],
+    "exam_tip": "Integrated JAMB practical questions frequently combine zero-error correction with repeated measurements and percentage-error calculations. Always correct every instrument reading before averaging the results. When calculating percentage error, compare the measurement error with the accepted value—not the measured value.",
+    "final_answer": "B. 0.85%",
+    "simple_explanation": "First remove the positive zero error from every vernier reading. Next, find the average of the corrected readings. Finally, compare the corrected measurement with the accepted diameter and calculate the percentage error using the accepted value as the denominator. The correct percentage error is approximately 0.85%.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Integrated Practical Measurements to learn how zero-error correction, repeated observations, averaging, percentage error and laboratory reporting are combined in JAMB practical questions. Study additional worked examples involving vernier calipers, micrometer screw gauges, beam balances and laboratory data interpretation."
+  },
+  "tags": [
+    "integrated_practical",
+    "vernier_caliper",
+    "zero_error",
+    "percentage_error",
+    "mean_measurement",
+    "laboratory_analysis",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q195",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Integrated practical measurements",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A quality-control engineer inspected the diameter of a metal shaft using a vernier caliper with no zero error. Five independent measurements (in cm) were recorded as shown below:\n\n2.46, 2.45, 2.47, 2.46, 2.58\n\nThe accepted diameter supplied by the manufacturer is 2.46 cm. Before preparing the laboratory report, the engineer decided to reject the outlier and use the remaining readings. Which conclusion is most appropriate?",
+  "options": {
+    "A": "The corrected mean diameter is 2.46 cm with a percentage error of 0%; rejecting the outlier improves the reliability of the result.",
+    "B": "The corrected mean diameter is 2.49 cm with a percentage error of about 1.2%; rejecting the outlier decreases the reliability of the result.",
+    "C": "The corrected mean diameter is 2.46 cm with a percentage error of about 4.9%; rejecting the outlier introduces a systematic error.",
+    "D": "The corrected mean diameter is 2.45 cm with a percentage error of about 0.4%; rejecting the outlier makes the measurements less precise."
+  },
+  "answer": "A",
+  "answer_text": "The corrected mean diameter is 2.46 cm with a percentage error of 0%; rejecting the outlier improves the reliability of the result.",
+  "explanation": {
+    "question_restate": "Five vernier caliper readings were obtained for the diameter of a metal shaft. One reading is clearly inconsistent with the others. The task is to reject the outlier, determine the corrected mean, compare it with the accepted value, calculate the percentage error, and identify the most appropriate conclusion.",
+    "principle": "Repeated measurements are used to improve the reliability of experimental results. A value that differs markedly from the others is called an outlier and may arise from accidental mistakes or random errors. When there is a valid reason, such an outlier may be excluded before calculating the mean.\n\nThe percentage error is then calculated using:\n\nPercentage Error = (|Mean − Accepted Value| ÷ Accepted Value) × 100%\n\nIf the corrected mean equals the accepted value, the percentage error is zero. Removing an obvious outlier generally improves the reliability of the reported result because the mean better represents the consistent measurements.",
+    "steps": [
+      "Step 1: Identify the outlier.\n\nThe readings 2.46, 2.45, 2.47 and 2.46 cm are closely grouped, while 2.58 cm is far from the others. Therefore, 2.58 cm is the outlier.",
+      "Step 2: Reject the outlier and calculate the corrected mean.\n\nMean = (2.46 + 2.45 + 2.47 + 2.46) ÷ 4 = 9.84 ÷ 4 = 2.46 cm.",
+      "Step 3: Determine the absolute error.\n\nAbsolute Error = |2.46 − 2.46| = 0.00 cm.",
+      "Step 4: Calculate the percentage error.\n\nPercentage Error = (0.00 ÷ 2.46) × 100% = 0%.",
+      "Step 5: Interpret the result.\n\nThe corrected mean agrees exactly with the accepted value, and removing the obvious outlier makes the reported result more reliable."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Correct. After rejecting the outlier, the mean is exactly 2.46 cm, giving a percentage error of 0%. Removing the inconsistent reading improves the reliability of the result.",
+      "B. 2.49 cm is not the mean of the corrected data. Furthermore, rejecting an obvious outlier generally improves, rather than decreases, reliability.",
+      "C. A mean of 2.46 cm cannot produce a percentage error of about 4.9%. Also, rejecting an accidental outlier does not introduce a systematic error.",
+      "D. The corrected mean is not 2.45 cm, and removing an outlier generally increases the consistency (precision and reliability) of the remaining measurements rather than reducing it."
+    ],
+    "exam_tip": "In integrated JAMB practical questions, first inspect the data before performing calculations. If one value is clearly inconsistent with repeated measurements, it is often an outlier. After obtaining the corrected mean, compare it with the accepted value before calculating the percentage error. Do not confuse random outliers with systematic errors caused by faulty calibration.",
+    "final_answer": "A. The corrected mean diameter is 2.46 cm with a percentage error of 0%; rejecting the outlier improves the reliability of the result.",
+    "simple_explanation": "One reading (2.58 cm) is much larger than the others, so it is treated as an outlier. Using only the consistent readings gives a mean of 2.46 cm, which is exactly the accepted diameter. Therefore, the percentage error is 0%, and rejecting the outlier makes the final result more reliable.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Reliability of Measurements and Percentage Error to learn how to identify outliers, calculate corrected mean values, distinguish random and systematic errors, and interpret practical laboratory data in JAMB-style questions."
+  },
+  "tags": [
+    "integrated_practical",
+    "vernier_caliper",
+    "outlier",
+    "mean_value",
+    "percentage_error",
+    "reliability",
+    "experimental_data",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q196",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Integrated practical question (zero error, corrected readings and significant figures)",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "An industrial quality-control inspector measured the diameter of a cylindrical metal shaft using a micrometer screw gauge. Before taking the measurement, the instrument was found to have a positive zero error of +0.02 mm. The observed reading for the shaft was 18.46 mm. According to good laboratory practice, what diameter should be reported in the inspection report?",
+  "options": {
+    "A": "18.44 mm",
+    "B": "18.46 mm",
+    "C": "18.48 mm",
+    "D": "18.40 mm"
+  },
+  "answer": "A",
+  "answer_text": "18.44 mm",
+  "explanation": {
+    "question_restate": "A micrometer screw gauge has a positive zero error of +0.02 mm and gives an observed reading of 18.46 mm for the diameter of a metal shaft. The task is to determine the correctly reported diameter after applying the zero-error correction.",
+    "principle": "A zero error is the reading shown by a measuring instrument when the true value being measured is zero. A positive zero error means the instrument reads higher than the true value, so the zero error must be subtracted from every observed reading.\n\nFor a micrometer screw gauge:\n\nCorrect Reading = Observed Reading − Positive Zero Error\n\nCorrecting for zero error ensures that measurements are accurate before they are recorded in laboratory reports, engineering inspections or scientific investigations. Since the micrometer readings are recorded to the nearest 0.01 mm, the corrected value should also be reported to two decimal places.",
+    "steps": [
+      "Step 1: Identify the observed reading.\n\nObserved reading = 18.46 mm.",
+      "Step 2: Identify the type and magnitude of zero error.\n\nPositive zero error = +0.02 mm.",
+      "Step 3: Recall the correction rule.\n\nFor a positive zero error, subtract the zero error from the observed reading.",
+      "Step 4: Perform the calculation.\n\nCorrect reading = 18.46 mm − 0.02 mm = 18.44 mm.",
+      "Step 5: Check the number of decimal places.\n\nThe corrected value is reported as 18.44 mm, consistent with the micrometer's resolution of 0.01 mm.",
+      "Step 6: Therefore, the diameter that should appear in the inspection report is 18.44 mm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 18.44 mm — Correct. A positive zero error is subtracted from the observed reading.",
+      "B. 18.46 mm — This ignores the zero-error correction and simply reports the observed reading.",
+      "C. 18.48 mm — This results from adding the positive zero error instead of subtracting it.",
+      "D. 18.40 mm — This arises from an incorrect subtraction or applying an incorrect zero-error value."
+    ],
+    "exam_tip": "In JAMB practical questions, always determine whether the zero error is positive or negative before correcting the reading.\n\nRemember:\n\n• Positive zero error → Subtract the zero error.\n• Negative zero error → Add the magnitude of the zero error.\n\nMany candidates lose marks by applying the correction in the wrong direction even when their arithmetic is correct.",
+    "final_answer": "A. 18.44 mm",
+    "simple_explanation": "The micrometer reads 18.46 mm, but it is known to read 0.02 mm too high because of a positive zero error. Therefore, subtract 0.02 mm from the observed reading.\n\n18.46 mm − 0.02 mm = 18.44 mm.\n\nHence, the correct diameter to report is 18.44 mm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Zero Error and Instrument Calibration to learn how to correct positive and negative zero errors, interpret micrometer and vernier measurements, and solve integrated JAMB-style practical questions involving laboratory instruments."
+  },
+  "tags": [
+    "integrated_practical",
+    "zero_error",
+    "micrometer_screw_gauge",
+    "corrected_reading",
+    "instrument_calibration",
+    "quality_control",
+    "laboratory_measurement",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q197",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Integrated practical measurement and error analysis",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "As part of routine quality assurance, an engineer measured the diameter of a precision steel pin four times using a micrometer screw gauge with a positive zero error of +0.02 mm. The observed readings were 18.49 mm, 18.50 mm, 18.48 mm and 18.49 mm. If the specified diameter of the pin is 18.45 mm, what percentage error should be reported after applying the appropriate zero-error correction?",
+  "options": {
+    "A": "0.05%",
+    "B": "0.11%",
+    "C": "0.22%",
+    "D": "0.27%"
+  },
+  "answer": "B",
+  "answer_text": "0.11%",
+  "explanation": {
+    "question_restate": "An engineer takes four micrometer readings of a steel pin. The micrometer has a positive zero error of +0.02 mm. Correct the readings, determine the mean diameter and calculate the percentage error relative to the specified diameter.",
+
+    "principle": "This question combines several practical measurement concepts frequently tested in JAMB Physics. A positive zero error means the instrument reads higher than the true value, so the correction is made by subtracting the zero error from every observed reading. After obtaining the corrected mean, compare it with the accepted value and calculate the percentage error using:\n\nPercentage Error = (Absolute Error ÷ Accepted Value) × 100%.",
+
+    "steps": [
+      "Step 1: Correct each observed reading.\n\n18.49 → 18.47 mm\n18.50 → 18.48 mm\n18.48 → 18.46 mm\n18.49 → 18.47 mm.",
+
+      "Step 2: Calculate the corrected mean.\n\nMean = (18.47 + 18.48 + 18.46 + 18.47) ÷ 4\n= 73.88 ÷ 4\n= 18.47 mm.",
+
+      "Step 3: Identify the accepted (specified) diameter.\n\nAccepted diameter = 18.45 mm.",
+
+      "Step 4: Calculate the absolute error.\n\n|18.47 − 18.45| = 0.02 mm.",
+
+      "Step 5: Calculate the percentage error.\n\nPercentage Error = (0.02 ÷ 18.45) × 100\n= 0.1084...%\n≈ 0.11%.",
+
+      "Step 6: Therefore, the reported percentage error is 0.11%."
+    ],
+
+    "why_other_options_are_wrong": [
+      "A. 0.05% — Obtained by incorrectly using an absolute error of 0.01 mm.",
+      "B. 0.11% — Correct. The corrected mean differs from the specified diameter by 0.02 mm, giving (0.02 ÷ 18.45) × 100 ≈ 0.11%.",
+      "C. 0.22% — Results from doubling the correct absolute error or making an arithmetic mistake.",
+      "D. 0.27% — Results from failing to apply the zero-error correction before calculating the percentage error."
+    ],
+
+    "exam_tip": "In integrated practical questions, always follow this sequence:\n\n1. Correct for any zero error.\n2. Compute the mean of repeated measurements.\n3. Compare the corrected mean with the accepted value.\n4. Calculate the percentage error.\n\nMany candidates lose marks by calculating the percentage error before correcting the instrument readings.",
+
+    "final_answer": "B. 0.11%",
+
+    "simple_explanation": "Subtract 0.02 mm from every reading because the zero error is positive. The corrected readings average exactly 18.47 mm. This is 0.02 mm greater than the specified diameter of 18.45 mm. Therefore,\n\n(0.02 ÷ 18.45) × 100 ≈ 0.11%.\n\nHence, the percentage error is 0.11%.",
+
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Integrated Practical Measurements to study worked examples involving zero-error correction, repeated measurements, averaging, percentage error and authentic JAMB practical scenarios."
+  },
+  "tags": [
+    "integrated_practical",
+    "micrometer_screw_gauge",
+    "zero_error",
+    "percentage_error",
+    "repeated_measurements",
+    "quality_assurance",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q198",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Integrated practical measurements",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A quality control officer measured the diameter of a metal rod five times using a vernier caliper with a least count of 0.01 cm. The corrected readings after zero-error adjustment were 2.34 cm, 2.35 cm, 2.34 cm, 2.36 cm and 2.35 cm. In preparing the laboratory report, the officer calculated the mean diameter. Using the appropriate precision of the instrument, what value should be reported?",
+  "options": {
+    "A": "2.3 cm",
+    "B": "2.34 cm",
+    "C": "2.35 cm",
+    "D": "2.348 cm"
+  },
+  "answer": "C",
+  "answer_text": "2.35 cm",
+  "explanation": {
+    "question_restate": "Five corrected vernier caliper readings of a metal rod are given. The task is to calculate the average diameter and report it using the precision allowed by the instrument, whose least count is 0.01 cm.",
+    "principle": "In practical physics, repeated measurements are taken to improve reliability and reduce the influence of random errors. The best estimate of the true value is usually the arithmetic mean of the corrected readings.\n\nHowever, the reported answer must not imply greater precision than the measuring instrument can provide. A vernier caliper with a least count of 0.01 cm measures values to two decimal places. Therefore, even if the calculated mean contains three decimal places, the final reported value should be rounded to two decimal places.\n\nThis question integrates two important concepts:\n\n• Reliability through repeated measurements.\n• Correct reporting of results according to instrument precision.",
+    "steps": [
+      "Step 1: List the corrected readings.\n\n2.34 cm, 2.35 cm, 2.34 cm, 2.36 cm and 2.35 cm.",
+      "Step 2: Find the sum of the readings.\n\n2.34 + 2.35 + 2.34 + 2.36 + 2.35 = 11.74 cm.",
+      "Step 3: Calculate the mean.\n\nMean = 11.74 ÷ 5 = 2.348 cm.",
+      "Step 4: Identify the instrument precision.\n\nThe least count is 0.01 cm, so the final answer should be reported to two decimal places.",
+      "Step 5: Round the calculated mean.\n\n2.348 cm rounds to 2.35 cm because the third decimal place is 8.",
+      "Step 6: Therefore, the reported mean diameter is 2.35 cm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 2.3 cm — Incorrect. Reporting to one decimal place discards valid precision provided by the vernier caliper.",
+      "B. 2.34 cm — Incorrect. This results from truncating 2.348 instead of rounding it correctly.",
+      "C. 2.35 cm — Correct. The calculated mean is 2.348 cm, which rounds to 2.35 cm in accordance with the instrument's least count of 0.01 cm.",
+      "D. 2.348 cm — Incorrect. Although this is the calculated mean, it reports greater precision than the instrument can justify."
+    ],
+    "exam_tip": "Whenever repeated measurements are provided in JAMB practical questions, first calculate the mean before deciding how to present the final answer. Always report the result to the precision permitted by the measuring instrument. For a vernier caliper with a least count of 0.01 cm, the reported value should normally have two decimal places unless stated otherwise.",
+    "final_answer": "C. 2.35 cm",
+    "simple_explanation": "The five corrected readings add up to 11.74 cm. Dividing by 5 gives a mean of 2.348 cm. Since the vernier caliper measures to 0.01 cm, the answer must be rounded to two decimal places. Therefore, the reported mean diameter is 2.35 cm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Reliability, Repeatability and Reporting Experimental Results to learn how repeated measurements reduce random errors, how to calculate mean values correctly, and how to report answers using the proper precision and significant figures expected in JAMB practical questions."
+  },
+  "tags": [
+    "integrated_practical",
+    "reliability",
+    "repeatability",
+    "mean_measurement",
+    "vernier_caliper",
+    "least_count",
+    "rounding_off",
+    "laboratory_report",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q199",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Integrated practical measurements",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "During a quality-control test in a physics laboratory, an instrument calibration officer compared the readings of a Vernier caliper with those of a certified standard gauge block. The standard thickness of the block was 25.00 mm, while the Vernier caliper recorded 24.80 mm. The laboratory report requires the percentage error of the Vernier measurement, reported to two significant figures. Which value should appear in the report?",
+  "options": {
+    "A": "0.80%",
+    "B": "8.0%",
+    "C": "0.0080%",
+    "D": "1.2%"
+  },
+  "answer": "A",
+  "answer_text": "0.80%",
+  "explanation": {
+    "question_restate": "A certified gauge block has a true thickness of 25.00 mm, but a Vernier caliper measures it as 24.80 mm. Determine the percentage error of the Vernier measurement and report the answer to two significant figures.",
+    "principle": "Percentage error expresses how far an experimental measurement differs from the accepted or true value relative to that accepted value. In calibration exercises, the certified standard provides the accepted value, while the instrument reading is the measured value.\n\nThe calculation involves three stages:\n\nAbsolute Error = |Measured Value − Accepted Value|\n\nRelative Error = Absolute Error ÷ Accepted Value\n\nPercentage Error = Relative Error × 100%\n\nThe final answer should be reported with the required number of significant figures. Such integrated practical questions are common in JAMB because they assess both computational skills and interpretation of laboratory data.",
+    "steps": [
+      "Step 1: Identify the accepted value.\n\nAccepted thickness = 25.00 mm.",
+      "Step 2: Identify the measured value.\n\nMeasured thickness = 24.80 mm.",
+      "Step 3: Calculate the absolute error.\n\nAbsolute Error = |24.80 − 25.00| = 0.20 mm.",
+      "Step 4: Calculate the relative error.\n\nRelative Error = 0.20 ÷ 25.00 = 0.008.",
+      "Step 5: Convert the relative error to a percentage.\n\nPercentage Error = 0.008 × 100 = 0.80%.",
+      "Step 6: Express the answer to two significant figures.\n\n0.80% already has two significant figures.",
+      "Step 7: Therefore, the reported percentage error is 0.80%."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 0.80% — Correct. The absolute error is 0.20 mm, so (0.20 ÷ 25.00) × 100 = 0.80%.",
+      "B. 8.0% — This results from multiplying by 100 twice or misplacing the decimal point.",
+      "C. 0.0080% — This is the relative error expressed as a percentage without multiplying correctly by 100.",
+      "D. 1.2% — This could result from using an incorrect absolute error or making an arithmetic error during the calculation."
+    ],
+    "exam_tip": "In calibration questions, first identify the accepted (standard) value before calculating the absolute error. Then divide the absolute error by the accepted value—not the measured value—before multiplying by 100%. Finally, report the result using the required number of significant figures or decimal places.",
+    "final_answer": "A. 0.80%",
+    "simple_explanation": "The correct thickness is 25.00 mm, but the Vernier caliper reads 24.80 mm. The difference is 0.20 mm.\n\nPercentage Error = (0.20 ÷ 25.00) × 100 = 0.80%.\n\nTherefore, the laboratory report should record a percentage error of 0.80%.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Integrated Practical Measurements to learn how to analyse laboratory calibration data, calculate absolute and percentage errors, report answers using appropriate significant figures, and interpret measurement results in JAMB-style practical questions. Explore additional worked examples involving Vernier calipers, micrometer screw gauges, measuring cylinders, thermometers and other laboratory instruments."
+  },
+  "tags": [
+    "integrated_practical",
+    "percentage_error",
+    "vernier_caliper",
+    "calibration",
+    "gauge_block",
+    "significant_figures",
+    "laboratory_report",
+    "experimental_physics",
+    "phy_02"
+  ],
+  "active": true
+},
+{
+  "id": "phy_02_q200",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_02",
+  "topic_title": "Errors, Accuracy and Significant Figures",
+  "subtopic": "Integrated practical measurements",
+  "difficulty": "hard",
+  "question_type": "mcq",
+  "question": "A quality-control engineer measured the diameter of a metal rod using a vernier caliper that had a positive zero error of 0.02 cm. Three observed readings were 2.48 cm, 2.50 cm and 2.49 cm. The engineer used the mean corrected diameter when preparing the laboratory report. What value should be reported, correct to the same precision as the instrument?",
+  "options": {
+    "A": "2.47 cm",
+    "B": "2.48 cm",
+    "C": "2.49 cm",
+    "D": "2.50 cm"
+  },
+  "answer": "A",
+  "answer_text": "2.47 cm",
+  "explanation": {
+    "question_restate": "A vernier caliper has a positive zero error of 0.02 cm. Three diameter readings are taken: 2.48 cm, 2.50 cm and 2.49 cm. Determine the mean corrected diameter that should appear in the laboratory report.",
+    "principle": "A positive zero error means that the instrument reads more than the true value when no object is being measured. Therefore, the zero error must be subtracted from every observed reading to obtain the correct measurement.\n\nWhen several measurements of the same quantity are taken, their corrected values are averaged to reduce the effect of random errors and improve the reliability of the result.\n\nThe procedure is therefore:\n\n1. Correct each observed reading by subtracting the positive zero error.\n2. Calculate the arithmetic mean of the corrected readings.\n3. Report the final answer to the precision permitted by the instrument.\n\nThis type of integrated practical question combines zero-error correction with repeated measurements and reporting of experimental results, which is common in JAMB practical physics.",
+    "steps": [
+      "Step 1: Identify the zero error.\n\nPositive zero error = +0.02 cm.\n\nSince it is positive, subtract 0.02 cm from every observed reading.",
+      "Step 2: Correct each reading.\n\nFirst reading = 2.48 − 0.02 = 2.46 cm.\n\nSecond reading = 2.50 − 0.02 = 2.48 cm.\n\nThird reading = 2.49 − 0.02 = 2.47 cm.",
+      "Step 3: Find the mean corrected diameter.\n\nMean = (2.46 + 2.48 + 2.47) ÷ 3 = 7.41 ÷ 3 = 2.47 cm.",
+      "Step 4: Report the result.\n\nThe value already matches the precision of the vernier caliper readings (two decimal places).",
+      "Step 5: Therefore, the mean corrected diameter reported is 2.47 cm."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 2.47 cm — Correct. The positive zero error is first subtracted from each reading before calculating the mean, giving 2.47 cm.",
+      "B. 2.48 cm — This is obtained by averaging the uncorrected readings and forgetting to apply the zero-error correction.",
+      "C. 2.49 cm — This could result from subtracting the zero error from only one reading or making an arithmetic error while averaging.",
+      "D. 2.50 cm — This is simply one of the raw observations and ignores both repeated measurements and zero-error correction."
+    ],
+    "exam_tip": "For repeated measurements, never average the raw readings before thinking about instrument errors. First determine whether the instrument has a positive or negative zero error.\n\nRemember:\n\nPositive zero error → subtract the correction.\n\nNegative zero error → add the correction.\n\nAfter correcting all readings, compute the mean and report it using the appropriate number of decimal places allowed by the instrument.",
+    "final_answer": "A. 2.47 cm",
+    "simple_explanation": "The vernier caliper reads 0.02 cm too high, so subtract 0.02 cm from each measurement.\n\nCorrected readings are 2.46 cm, 2.48 cm and 2.47 cm.\n\nTheir average is:\n\n(2.46 + 2.48 + 2.47) ÷ 3 = 2.47 cm.\n\nTherefore, the correct laboratory report is 2.47 cm.",
+    "tutorial_reference": "Visit Tutorials → Physics → Errors, Accuracy and Significant Figures → Zero Error and Experimental Measurements to learn how to correct vernier caliper and micrometer readings, analyse repeated observations, improve reliability, and prepare accurate laboratory reports. The tutorial includes fully worked JAMB-style practical questions integrating zero error, repeated measurements, significant figures and data interpretation."
+  },
+  "tags": [
+    "zero_error",
+    "vernier_caliper",
+    "repeated_measurements",
+    "mean_value",
+    "laboratory_report",
+    "measurement_correction",
+    "integrated_practical",
+    "phy_02"
+  ],
+  "active": true
 }
 
   
