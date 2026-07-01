@@ -7767,8 +7767,8 @@
     "C": "18.45 mm",
     "D": "18.48 mm"
   },
-  "answer": "A",
-  "answer_text": "18.39 mm",
+  "answer": "C",
+  "answer_text": "18.45 mm",
   "explanation": {
     "question_restate": "A micrometer screw gauge has a negative zero error of 0.03 mm. It gives an observed reading of 18.42 mm for the diameter of a steel rod. The task is to determine the true diameter after correcting for the zero error.",
     "principle": "A zero error occurs when a measuring instrument does not read zero when it should. Before taking measurements, the instrument should be checked for this error so that every reading can be corrected.\n\nA beginner may ask: 'What is a negative zero error?' For a micrometer screw gauge, a negative zero error means the instrument under-reads by the stated amount. Consequently, the observed reading is smaller than the true value.\n\nAnother beginner may ask: 'How is the correction applied?' The correction is always equal in magnitude but opposite in sign to the zero error.\n\nCorrection = −(Zero Error)\n\nTherefore:\n\n• Positive zero error → subtract the error from the observed reading.\n• Negative zero error → add the magnitude of the error to the observed reading.\n\nEquivalently,\n\nCorrect Reading = Observed Reading − Zero Error.\n\nSince the zero error here is −0.03 mm,\n\nCorrect Reading = 18.42 − (−0.03) = 18.45 mm.\n\nCandidates should distinguish carefully between the sign of the zero error and the sign of the correction. JAMB often tests this through practical measurement scenarios involving micrometer screw gauges and vernier calipers.",
@@ -8125,7 +8125,7 @@
     "D": "At any convenient position provided the voltmeter is held steady"
   },
   "answer": "A",
-  "answer_text": "Directly above the pointer so that the pointer completely covers its reflection in the mirror strip",
+  "answer_text": "Directly above the pointer so that the pointer completely covers its reflection in the mirror strip.",
   "explanation": {
     "question_restate": "An analogue voltmeter fitted with a mirror strip is being used to measure potential difference. Because the pointer appears to move relative to the scale when viewed from different positions, the task is to identify the correct viewing position that removes parallax error and gives the true reading.",
     "principle": "Parallax error occurs when the line of sight is not perpendicular to the scale of an analogue measuring instrument. As a result, the pointer appears to indicate different values when viewed from different angles.\n\nMany analogue voltmeters and ammeters are fitted with a mirror strip beneath the scale. The purpose of the mirror is to help the observer position the eye correctly. When the observer's eye is directly in front of the pointer, the pointer completely hides its reflection in the mirror. At this position, the line of sight is perpendicular to the scale and parallax error is eliminated.\n\nIf the pointer and its reflection are seen separately, the observer is viewing the scale from an angle, causing a reading that may be higher or lower than the true value.",
@@ -10498,4 +10498,3 @@
 }
   
 ]
-
