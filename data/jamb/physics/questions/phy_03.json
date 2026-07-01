@@ -1,1 +1,492 @@
+[
+  {
+  "id": "phy_03_q001",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Scalar quantities",
+  "difficulty": "medium",
+  "cognitive_level": "comprehension",
+  "question_type": "mcq",
+  "question": "A laboratory technician records the following physical quantities while carrying out an experiment:\n\nI. Mass of a metal block = 2.5 kg\nII. Temperature of water = 40°C\nIII. Displacement of the metal block = 3 m due east\nIV. Time taken for the experiment = 120 s\n\nWhich combination consists entirely of scalar quantities?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I, III and IV only",
+    "C": "II and III only",
+    "D": "III and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "The question tests your understanding of scalar quantities by asking you to identify which of the listed physical quantities can be completely described by their magnitude (size) alone without specifying a direction.",
+    "principle": "Before solving this question, let us first understand what a physical quantity is.\n\nA physical quantity is any measurable property of an object or event. Examples include mass, length, speed, force, temperature and time.\n\nPhysical quantities are broadly divided into two groups:\n\n1. Scalar quantities\n2. Vector quantities\n\nA beginner may ask, 'What is magnitude?'\n\nMagnitude simply means the numerical size or amount of a quantity together with its unit. For example:\n\n• 5 kg\n• 20 m\n• 35°C\n• 12 s\n\nEach of these tells us 'how much' of something.\n\nAnother beginner may ask, 'Why do some quantities need direction?'\n\nImagine someone tells you to walk 5 metres. You may ask, 'In which direction?' If direction is important for describing the quantity completely, then the quantity is a vector.\n\nHowever, if knowing the size alone completely describes the quantity, then it is a scalar.\n\nTherefore:\n\nScalar quantity = Magnitude only.\n\nVector quantity = Magnitude + Direction.\n\nCommon scalar quantities include:\n• Mass\n• Time\n• Distance\n• Speed\n• Temperature\n• Energy\n• Work\n• Power\n• Volume\n• Density\n\nCommon vector quantities include:\n• Displacement\n• Velocity\n• Acceleration\n• Force\n• Momentum\n• Weight\n\nNotice that displacement always requires a direction such as east, west, north or south. Without the direction, displacement is incomplete.",
+    "steps": [
+      "Step 1: Examine Quantity I.\n\nMass = 2.5 kg.\n\nMass tells us only how much matter an object contains. It does not require a direction.\n\nTherefore, mass is a scalar quantity.",
+      "Step 2: Examine Quantity II.\n\nTemperature = 40°C.\n\nTemperature measures how hot or cold an object is. It does not point in any direction.\n\nTherefore, temperature is also a scalar quantity.",
+      "Step 3: Examine Quantity III.\n\nDisplacement = 3 m due east.\n\nNotice the words 'due east.' They indicate direction.\n\nDisplacement cannot be fully described without stating both the distance moved and the direction of movement.\n\nTherefore, displacement is a vector quantity.",
+      "Step 4: Examine Quantity IV.\n\nTime = 120 s.\n\nTime simply tells us the duration of an event. It has magnitude only and no direction.\n\nTherefore, time is a scalar quantity.",
+      "Step 5: Collect all the scalar quantities.\n\nScalars are:\n• Mass (I)\n• Temperature (II)\n• Time (IV)\n\nHence, the correct answer is I, II and IV only."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (I, III and IV only) is incorrect because it includes displacement. Displacement is a vector quantity since it must have both magnitude and direction. Omitting this distinction is a common JAMB mistake.",
+      "Option C (II and III only) is incorrect because although temperature is a scalar, displacement is not. The presence of one vector makes the entire combination incorrect.",
+      "Option D (III and IV only) is incorrect because displacement is a vector while time is a scalar. They do not belong to the same category."
+    ],
+    "exam_tip": "JAMB frequently tests your ability to distinguish between similar quantities. One of the most common traps is confusing:\n\n• Distance (scalar) with displacement (vector).\n• Speed (scalar) with velocity (vector).\n\nWhenever you see words like 'north', 'south', 'east', 'west', 'upward', 'downward', or 'towards', immediately check whether the quantity is a vector because direction has been introduced. If direction is essential for describing the quantity completely, it is not a scalar.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Think of a scalar as a quantity that answers only the question 'How much?'\n\nFor example:\n\n• How heavy is the object? → 2.5 kg.\n• How hot is the water? → 40°C.\n• How long did it take? → 120 s.\n\nNo direction is needed for any of these.\n\nDisplacement is different because saying '3 m' is not enough. You must also say where the object moved, for example '3 m due east.' Since direction is necessary, displacement is a vector.\n\nTherefore, only I, II and IV are scalar quantities.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Scalar Quantities to learn the differences between scalar and vector quantities, memory tricks for identifying them quickly, worked JAMB examples, and practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed beginner-friendly lessons and exam-focused revision."
+  },
+  "tags": [
+    "scalar_quantities",
+    "classification_of_physical_quantities",
+    "introductory_vectors",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q002",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Scalar quantities",
+  "difficulty": "medium",
+  "cognitive_level": "comprehension",
+  "question_type": "mcq",
+  "question": "A student tells his friend, \"The school laboratory is 45 m from the classroom.\" Another student replies, \"That information alone cannot tell someone exactly where the laboratory is.\" Which statement best explains why the quantity given is regarded as a scalar quantity?",
+  "options": {
+    "A": "It gives only the magnitude of the distance without specifying any direction.",
+    "B": "It can only be measured using vector addition.",
+    "C": "It always acts in a particular direction.",
+    "D": "It changes its value whenever the direction changes."
+  },
+  "answer": "A",
+  "answer_text": "It gives only the magnitude of the distance without specifying any direction.",
+  "explanation": {
+    "question_restate": "The question asks you to identify why the value '45 m' is classified as a scalar quantity. You are expected to understand the defining characteristic of scalar quantities rather than simply memorizing examples.",
+    "principle": "Physics deals with quantities that can be measured. A physical quantity is anything that can be measured and expressed using a number and a unit.\n\nA beginner may ask, 'What is a unit?' A unit is an agreed standard used for measurement. For example, metre (m) is the SI unit of length, kilogram (kg) is the SI unit of mass, and second (s) is the SI unit of time.\n\nAnother beginner may ask, 'What is magnitude?' Magnitude simply means the size or numerical value of a quantity. For example, saying a rope is 10 m long tells us its magnitude is 10 and its unit is metres.\n\nPhysical quantities are divided into two major classes:\n\n• Scalar quantities\n• Vector quantities\n\nA scalar quantity is completely described by its magnitude (numerical value) and unit only. No direction is required to describe it fully.\n\nExamples of scalar quantities include mass, distance, time, temperature, speed, energy, work, power, volume and density.\n\nA vector quantity, on the other hand, requires both magnitude and direction before it is completely described. Examples include displacement, velocity, force, acceleration and momentum.\n\nIn this question, the student only states that the laboratory is 45 m away. The statement gives the distance but does not tell whether the laboratory is north, south, east or west of the classroom. Therefore, the information provides only magnitude and not direction.\n\nOne important distinction beginners often confuse is the difference between distance and displacement. Distance is the total length travelled and is a scalar because only the length matters. Displacement describes the change in position from one point to another together with its direction, making it a vector.",
+    "steps": [
+      "Step 1: Identify the quantity given in the statement. The value provided is '45 m', which represents a distance.",
+      "Step 2: Recall the defining property of a scalar quantity. A scalar requires only magnitude and unit for complete description.",
+      "Step 3: Ask whether any direction has been provided. The statement does not mention north, south, east, west, upward, downward or any other direction.",
+      "Step 4: Since only the magnitude (45) and the unit (m) are given, the quantity satisfies the definition of a scalar.",
+      "Step 5: Therefore, the correct explanation is that the quantity gives only magnitude without specifying direction."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B: This is incorrect because scalar quantities are added using ordinary arithmetic. Vector addition is a special method used only for vector quantities because direction must also be considered.",
+      "Option C: This is incorrect because acting in a particular direction is a property of vectors, not scalars. Scalars have no direction attached to them.",
+      "Option D: This is incorrect because a scalar quantity does not depend on direction. Since direction is not part of its definition, changing direction does not change the value of a scalar."
+    ],
+    "exam_tip": "JAMB frequently tests your understanding of the definitions of scalar and vector quantities rather than asking you to memorize examples alone. Whenever you see a quantity, immediately ask yourself: 'Do I need direction to describe it completely?' If the answer is NO, it is a scalar. If the answer is YES, it is a vector. Also watch out for the common JAMB trap of confusing distance (scalar) with displacement (vector), and speed (scalar) with velocity (vector).",
+    "final_answer": "A. It gives only the magnitude of the distance without specifying any direction.",
+    "simple_explanation": "Think of telling someone, 'The shop is 45 metres away.' They still cannot find the shop because they do not know which way to walk. The number '45 m' only tells how far the shop is, not where it is. Since only the size of the quantity is given and no direction is included, it is a scalar quantity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Scalar Quantities to learn the meaning of physical quantities, magnitude, SI units, and the differences between scalar and vector quantities. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, worked JAMB-style examples, and additional practice questions."
+  },
+  "tags": [
+    "scalar_quantities",
+    "physical_quantities",
+    "magnitude",
+    "distance",
+    "classification",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q003",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Scalar quantities",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A student records the following physical quantities while carrying out an experiment:\n\nI. Mass of a metal block = 2.5 kg\nII. Temperature of the laboratory = 30°C\nIII. Weight of the metal block = 24.5 N downward\nIV. Time taken for the experiment = 180 s\n\nWhich combination consists entirely of scalar quantities?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I, III and IV only",
+    "C": "II and III only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "The question asks you to identify which of the listed physical quantities are scalars. To answer correctly, you must distinguish between scalar quantities, which require only magnitude, and vector quantities, which require both magnitude and direction.",
+    "principle": "Before answering this question, let us understand what a physical quantity is.\n\nA physical quantity is any measurable property that can be expressed using a number and a unit. Examples include length, mass, force, speed and temperature.\n\nA beginner may ask, 'What is magnitude?' Magnitude simply means the size or numerical value of a quantity together with its unit. For example, saying a book has a mass of 2.5 kg tells us how much matter it contains. No direction is needed.\n\nAnother beginner may ask, 'What is direction?' Direction tells us where something acts or points. Words such as north, south, east, west, upward, downward, left and right describe direction.\n\nA scalar quantity is a physical quantity that is completely described by its magnitude alone. Once you know its numerical value and unit, you have all the information needed.\n\nExamples of scalar quantities include mass, time, distance, speed, temperature, energy, work, power, density and volume.\n\nA vector quantity is different. It requires both magnitude and direction for its complete description. If the direction is omitted, the information is incomplete.\n\nExamples of vector quantities include displacement, velocity, acceleration, force, momentum and weight.\n\nA beginner may wonder why weight is a vector while mass is a scalar. Mass is simply the amount of matter in an object and has no direction. Weight, however, is the gravitational force acting on the object. Since force always acts in a particular direction, weight always acts vertically downward toward the centre of the Earth. Therefore, weight is a vector quantity.\n\nOne important JAMB observation is that the presence of words such as 'upward,' 'downward,' 'north,' 'south,' 'east' or 'west' often indicates that the quantity is being treated as a vector.",
+    "steps": [
+      "Step 1: Examine Quantity I.\n\nMass = 2.5 kg.\n\nMass tells us only how much matter the object contains. No direction is involved.\n\nTherefore, Quantity I is a scalar.",
+      "Step 2: Examine Quantity II.\n\nTemperature = 30°C.\n\nTemperature measures the degree of hotness or coldness of a body. It does not point in any direction.\n\nTherefore, Quantity II is a scalar.",
+      "Step 3: Examine Quantity III.\n\nWeight = 24.5 N downward.\n\nWeight is a force due to gravity. Since force always has both magnitude and direction, and the direction is downward, this is a vector quantity.\n\nTherefore, Quantity III is NOT a scalar.",
+      "Step 4: Examine Quantity IV.\n\nTime = 180 s.\n\nTime measures the duration of an event. It has magnitude only and no direction.\n\nTherefore, Quantity IV is a scalar.",
+      "Step 5: Collect all the scalar quantities.\n\nScalars are:\n\n• I (Mass)\n• II (Temperature)\n• IV (Time)\n\nHence, the correct answer is I, II and IV only."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (I, III and IV only) is incorrect because it wrongly includes weight. Many students confuse weight with mass. Weight is actually a force, and every force has both magnitude and direction, making it a vector.",
+      "Option C (II and III only) is incorrect because although temperature is a scalar, weight is not. It also incorrectly excludes mass and time, which are both scalar quantities.",
+      "Option D (I, II, III and IV) is incorrect because not every physical quantity listed is scalar. Weight remains a vector because it acts vertically downward under gravity."
+    ],
+    "exam_tip": "JAMB frequently tests your ability to distinguish between mass and weight. Remember:\n\n• Mass → Scalar → measured in kilograms (kg).\n• Weight → Vector → measured in newtons (N).\n\nAlso remember that whenever a quantity naturally involves a direction of action, it is usually a vector. If only a numerical value and unit are sufficient to describe it completely, it is a scalar.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Think of scalar quantities as measurements that answer only the question 'How much?' Examples are 5 kg, 20°C and 3 hours.\n\nVector quantities answer two questions: 'How much?' and 'In which direction?' Weight is not just 24.5 N—it acts downward. Because direction is important, weight is a vector.\n\nTherefore, only mass, temperature and time are scalar quantities.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Scalar Quantities to learn how to distinguish scalars from vectors, understand common JAMB trick questions involving mass and weight, and practise additional exam-standard questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for more beginner-friendly lessons and worked examples."
+  },
+  "tags": [
+    "scalar_quantities",
+    "mass",
+    "weight",
+    "temperature",
+    "time",
+    "classification_of_quantities",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q004",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Scalar quantities",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A Physics teacher tells four students to identify a quantity that can always be completely described without stating a direction. Which of the following quantities satisfies the teacher's description?",
+  "options": {
+    "A": "Force",
+    "B": "Momentum",
+    "C": "Energy",
+    "D": "Displacement"
+  },
+  "answer": "C",
+  "answer_text": "Energy",
+  "explanation": {
+    "question_restate": "The question is asking you to identify the physical quantity whose complete description requires only its numerical value and unit, without mentioning any direction.",
+    "principle": "Before answering this question, it is important to understand what physicists mean by a 'physical quantity.' A physical quantity is anything that can be measured and expressed using a number together with a unit. Examples include length, time, mass, force and energy.\n\nA beginner may ask, 'What is a scalar quantity?' A scalar quantity is a physical quantity that is completely described by only two things:\n\n• Its magnitude (numerical value).\n• Its unit.\n\nThe word 'magnitude' simply means the size or amount of something. For example, saying that a bag has a mass of 5 kg completely describes its mass. There is no need to say whether the mass is toward the north, south, east or west because mass has no direction.\n\nAnother beginner may ask, 'What is a vector quantity?' A vector quantity is different because it requires both magnitude and direction before it is fully described. For example, saying that a force is 20 N is incomplete. One must also state whether the force acts upward, downward, eastward, westward or in another direction.\n\nOne useful way to distinguish the two is to ask yourself this question:\n\n'If I remove the direction, does the quantity still make complete physical sense?'\n\nIf the answer is YES, it is likely a scalar.\n\nIf the answer is NO, it is a vector.\n\nEnergy represents the capacity to do work. Whether an object possesses 50 J or 500 J of energy, no direction is attached to that quantity. Therefore, energy is a scalar quantity.",
+    "steps": [
+      "Step 1: Identify the key phrase in the question: 'completely described without stating a direction.' This is the defining property of a scalar quantity.",
+      "Step 2: Examine each option carefully instead of choosing the familiar one immediately.",
+      "Step 3: Force is measured in newtons (N), but a force must act in a particular direction. Therefore, force is a vector.",
+      "Step 4: Momentum is measured in kg m s⁻¹ and always has the same direction as the object's velocity. Therefore, momentum is also a vector.",
+      "Step 5: Energy is measured in joules (J). Knowing its numerical value and unit completely describes it. No direction is required. Therefore, energy is a scalar.",
+      "Step 6: Displacement describes the straight-line change in position from one point to another. Since it requires a direction (for example, 8 m east), displacement is a vector.",
+      "Step 7: The only option that satisfies the definition of a scalar quantity is Energy."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Force is incorrect because a force must always act in a particular direction. For example, two forces of 10 N acting in opposite directions produce different physical effects even though their magnitudes are equal.",
+      "B. Momentum is incorrect because momentum depends on both the mass of an object and the direction in which it moves. If the object reverses direction, its momentum also changes direction.",
+      "D. Displacement is incorrect because it tells not only how far an object has moved but also the direction of that movement. Saying '15 m' alone is incomplete; it must be stated as, for example, '15 m north.'"
+    ],
+    "exam_tip": "JAMB frequently mixes scalar and vector quantities in the options. Do not rely on memorising lists alone. Instead, apply the definition. Ask yourself: 'Can this quantity be fully described without mentioning a direction?' If the answer is yes, it is a scalar. Common scalars include mass, time, temperature, energy, speed, distance, work and power. Common vectors include force, displacement, velocity, acceleration, momentum and weight.",
+    "final_answer": "C. Energy",
+    "simple_explanation": "Imagine you are told that a battery stores 200 J of energy. That information is already complete because energy has no direction. However, if someone says a force is 20 N, you will immediately ask, 'In which direction?' Since energy does not require that extra information, it is a scalar quantity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Scalar Quantities to learn how to distinguish scalars from vectors using definitions, everyday examples, memory techniques, comparison tables and additional JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and exam-focused practice."
+  },
+  "tags": [
+    "scalar_quantities",
+    "classification_of_physical_quantities",
+    "energy",
+    "vectors_vs_scalars",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q005",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Scalar quantities",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A student argues that any physical quantity measured with an instrument must be a scalar because it can be assigned a numerical value. Which statement best explains why this conclusion is incorrect?",
+  "options": {
+    "A": "Every measurable physical quantity is a scalar because measurements produce numerical values only.",
+    "B": "A quantity is classified as a scalar or a vector based on whether both magnitude and direction are required for its complete description, not merely because it is measured.",
+    "C": "Only quantities measured with electronic instruments can be vectors, while those measured with analogue instruments are scalars.",
+    "D": "A quantity becomes a vector only if its SI unit contains more than one base unit."
+  },
+  "answer": "B",
+  "answer_text": "A quantity is classified as a scalar or a vector based on whether both magnitude and direction are required for its complete description, not merely because it is measured.",
+  "explanation": {
+    "question_restate": "The question tests whether you understand the fundamental difference between scalar and vector quantities. It is designed to expose the common misconception that simply because a quantity can be measured and assigned a number, it must automatically be a scalar.",
+    "principle": "Physics deals with quantities that describe the physical world. A physical quantity is any measurable property of an object or event. Examples include length, mass, time, force, temperature and velocity.\n\nA beginner may ask, 'What does measurable mean?' A quantity is measurable if it can be compared with an agreed standard called a unit. For example, length is measured in metres (m), mass in kilograms (kg), and time in seconds (s).\n\nAnother beginner may ask, 'If both scalars and vectors are measured, what makes them different?' The answer is that measurement alone does not determine whether a quantity is a scalar or a vector.\n\nA scalar quantity is completely described by its magnitude only.\n\nMagnitude simply means the size or numerical value of a quantity together with its unit. For example, saying that a bag has a mass of 5 kg completely describes its mass. No direction is needed.\n\nA vector quantity requires both magnitude and direction for its complete description. Direction tells us where the quantity acts or points. For example, saying that a car moves at 60 km/h is incomplete if the quantity is velocity. A complete description would be '60 km/h due east.' Without the direction, the velocity is not fully specified.\n\nTherefore, both scalars and vectors can be measured using instruments. What distinguishes them is whether direction is an essential part of their description.",
+    "steps": [
+      "Step 1: Identify the student's claim. The student believes that because a quantity is measured with an instrument, it must be a scalar.",
+      "Step 2: Recall the definition of a scalar. A scalar requires only magnitude for complete description.",
+      "Step 3: Recall the definition of a vector. A vector requires both magnitude and direction for complete description.",
+      "Step 4: Ask whether measurement alone determines the classification. The answer is no. Many vector quantities are also measured. For example, force can be measured using a force meter, while velocity can be determined using measuring instruments and calculations.",
+      "Step 5: Evaluate the options.\n\nOption A is incorrect because vectors are also measurable.\n\nOption B correctly states that the deciding factor is whether direction is necessary.\n\nOption C incorrectly links the classification to the type of measuring instrument.\n\nOption D incorrectly links the classification to the form of the SI unit.\n\nTherefore, Option B is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A: This is the misconception presented in the question. Although every physical quantity has a measurable magnitude, many physical quantities such as force, displacement and velocity also require direction. Therefore, being measurable does not make a quantity a scalar.",
+      "Option C: Whether an instrument is analogue or digital has absolutely nothing to do with whether a quantity is scalar or vector. Both types of instruments can be used to measure quantities belonging to either category.",
+      "Option D: The SI unit of a quantity does not determine whether it is scalar or vector. For example, work (joule) is a scalar, while force (newton) is a vector, even though both are derived SI units."
+    ],
+    "exam_tip": "JAMB frequently tests the definitions of scalar and vector quantities by presenting statements that sound reasonable but are scientifically incorrect. Always ask yourself this question:\n\n'Can this quantity be completely described without mentioning a direction?'\n\nIf the answer is yes, it is a scalar. If direction is essential, it is a vector.\n\nNever classify a quantity based on its unit, measuring instrument, or whether it has a numerical value. Those features do not determine whether it is a scalar or vector.",
+    "final_answer": "B. A quantity is classified as a scalar or a vector based on whether both magnitude and direction are required for its complete description, not merely because it is measured.",
+    "simple_explanation": "Think of telling someone about a bottle of water. If you say it has a mass of 2 kg, that is enough information. You do not need to say 'towards the east' because mass has no direction. Mass is therefore a scalar.\n\nNow imagine pushing a box with a force of 20 N. Simply saying '20 N' is incomplete because someone will naturally ask, 'In which direction?' You must say something like '20 N to the north.' Since direction is necessary, force is a vector.\n\nSo, being measured does not make a quantity a scalar. The important question is whether direction is needed to describe it completely.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Scalar Quantities to learn how physicists classify physical quantities, understand the differences between scalars and vectors, avoid common JAMB misconceptions, and practise additional worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for more beginner-friendly, exam-focused lessons."
+  },
+  "tags": [
+    "scalar_quantities",
+    "physical_quantities",
+    "magnitude",
+    "classification",
+    "conceptual_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q006",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Scalar quantities",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A laboratory technician records the following physical quantities during an experiment: mass of a metal block, temperature of water, force applied to a spring, and electric current flowing through a circuit. Which pair consists entirely of scalar quantities?",
+  "options": {
+    "A": "Mass and temperature",
+    "B": "Force and electric current",
+    "C": "Force and mass",
+    "D": "Temperature and force"
+  },
+  "answer": "A",
+  "answer_text": "Mass and temperature",
+  "explanation": {
+    "question_restate": "The question asks you to identify the pair of physical quantities that are both scalar quantities. To answer correctly, you must know the difference between scalar and vector quantities rather than simply recognizing familiar physics terms.",
+    "principle": "Physics deals with quantities that can be measured. These measurable quantities are called physical quantities.\n\nA beginner may ask, 'What is a physical quantity?' A physical quantity is any property that can be measured and expressed using a number and a unit. For example, 5 kg, 20 m, and 37°C are all physical quantities because they have numerical values and units.\n\nPhysical quantities are grouped into two major classes:\n\n1. Scalar quantities.\nA scalar quantity is completely described by its magnitude (size or numerical value) alone. It does not require any direction to describe it fully.\n\nExamples include:\n• Mass\n• Time\n• Temperature\n• Distance\n• Speed\n• Energy\n• Work\n• Power\n• Volume\n• Density\n• Electric current\n\n2. Vector quantities.\nA vector quantity requires both magnitude and direction before it is completely described.\n\nExamples include:\n• Force\n• Velocity\n• Displacement\n• Acceleration\n• Momentum\n• Weight\n\nA beginner may ask, 'Why is direction important?' Imagine someone says a force of 20 N acts on an object. You may immediately ask, 'In which direction?' Without the direction, the information is incomplete because different directions produce different effects. On the other hand, if someone says the mass of an object is 5 kg, there is no need to ask for a direction because mass has no direction.\n\nAnother beginner may ask, 'Is electric current a scalar even though electricity moves?' Yes. Electric current has magnitude and is treated as a scalar quantity in elementary physics. Although current has an assigned conventional direction in circuit analysis, it does not obey vector addition in the way forces or velocities do. Therefore, it is classified as a scalar quantity in JAMB Physics.\n\nWhenever JAMB asks you to classify quantities, first ask yourself: 'Do I need a direction before the quantity is fully described?' If the answer is no, it is a scalar. If the answer is yes, it is a vector.",
+    "steps": [
+      "Step 1: Examine Option A.\n\nMass is a scalar because only its magnitude is needed.\n\nTemperature is also a scalar because it measures how hot or cold a body is without any direction.\n\nTherefore, Option A contains two scalar quantities.",
+      "Step 2: Examine Option B.\n\nForce is a vector because it has both magnitude and direction.\n\nElectric current is a scalar.\n\nSince the pair contains one vector and one scalar, it is incorrect.",
+      "Step 3: Examine Option C.\n\nForce is a vector, while mass is a scalar.\n\nAgain, this is a mixed pair and therefore incorrect.",
+      "Step 4: Examine Option D.\n\nTemperature is a scalar, whereas force is a vector.\n\nSince both are not scalars, this option is also incorrect.",
+      "Step 5: The only option consisting entirely of scalar quantities is Mass and Temperature."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (Force and electric current) is incorrect because force is a vector quantity. Many students wrongly assume that because electric current has a direction in circuit diagrams, it must also be a vector. In elementary Physics, electric current is classified as a scalar quantity.",
+      "Option C (Force and mass) is incorrect because force requires direction while mass does not. Mixing one vector with one scalar does not satisfy the question.",
+      "Option D (Temperature and force) is incorrect because temperature is a scalar but force is a vector. JAMB often includes such mixed pairs to test whether candidates truly understand the classification rather than memorizing examples."
+    ],
+    "exam_tip": "JAMB frequently tests your ability to distinguish scalar and vector quantities by presenting mixed pairs. Instead of memorizing long lists, remember this simple rule:\n\n• If only the size (magnitude) is needed, the quantity is a scalar.\n• If both size (magnitude) and direction are required, the quantity is a vector.\n\nAlso remember that electric current, energy, work, power, temperature, mass, time, and speed are scalars, while force, displacement, velocity, acceleration, momentum, and weight are vectors.",
+    "final_answer": "A. Mass and temperature",
+    "simple_explanation": "Think of a bag of rice. If someone says it has a mass of 25 kg, you already know everything about its mass. There is no need to ask whether the mass is 'north' or 'south.' The same is true for temperature. Saying water is 80°C completely describes its temperature.\n\nForce is different. If someone pushes a table with a force of 30 N, you must ask, 'In which direction?' Without the direction, the description is incomplete. Therefore, force is a vector, while mass and temperature are scalars.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Scalar Quantities to learn how to distinguish scalars from vectors, understand why some quantities require direction while others do not, and practise additional JAMB-style classification questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for more beginner-friendly lessons, worked examples, and exam-focused practice."
+  },
+  "tags": [
+    "scalar_quantities",
+    "classification_of_quantities",
+    "physical_quantities",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q007",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Scalar quantities",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A laboratory technician records the following quantities during an experiment: temperature of 35 °C, mass of 2.5 kg, force of 18 N acting eastward, and time of 45 s. Which combination consists entirely of scalar quantities?",
+  "options": {
+    "A": "Temperature, mass and time",
+    "B": "Mass, force and time",
+    "C": "Temperature, force and mass",
+    "D": "Force, temperature and time"
+  },
+  "answer": "A",
+  "answer_text": "Temperature, mass and time",
+  "explanation": {
+    "question_restate": "The question asks you to identify which of the listed physical quantities are scalars. To answer correctly, you must distinguish between scalar quantities, which require only magnitude, and vector quantities, which require both magnitude and direction.",
+    "principle": "Physics deals with measurable quantities called physical quantities. A physical quantity is any property that can be measured and expressed using a numerical value together with an appropriate unit.\n\nA complete beginner may ask, 'What is a magnitude?' Magnitude simply means the size or numerical amount of a quantity. For example, saying that a bag has a mass of 5 kg tells us how heavy it is without indicating any direction.\n\nAnother beginner may ask, 'What is direction?' Direction tells where something points or acts. Examples include north, south, east, west, upward, downward, or at a certain angle.\n\nA scalar quantity is a physical quantity that is completely described by its magnitude alone. It does not require any direction to have a complete meaning.\n\nExamples of scalar quantities include:\n• Mass (kg)\n• Time (s)\n• Temperature (°C or K)\n• Distance (m)\n• Speed (m s⁻¹)\n• Energy (J)\n• Power (W)\n• Volume (m³)\n• Density (kg m⁻³)\n\nA vector quantity is a physical quantity that requires both magnitude and direction for complete description.\n\nExamples of vector quantities include:\n• Force (N)\n• Velocity (m s⁻¹)\n• Displacement (m)\n• Acceleration (m s⁻²)\n• Momentum (kg m s⁻¹)\n• Weight (N)\n\nA useful way to remember this distinction is to ask yourself: 'If I remove the direction, is the information still complete?' If the answer is yes, the quantity is a scalar. If removing the direction changes the meaning or makes the information incomplete, then it is a vector.\n\nNotice that in this question, the force is described as '18 N acting eastward.' The phrase 'acting eastward' provides a direction. Even if the direction had not been written, force would still be classified as a vector because direction is an essential property of force.",
+    "steps": [
+      "Step 1: List all the quantities given in the question.\n\n• Temperature = 35 °C\n• Mass = 2.5 kg\n• Force = 18 N acting eastward\n• Time = 45 s.",
+      "Step 2: Classify each quantity.\n\nTemperature is a scalar because only its numerical value is needed.\n\nMass is a scalar because it measures the amount of matter and has no direction.\n\nForce is a vector because it always acts in a particular direction.\n\nTime is a scalar because it simply measures duration.",
+      "Step 3: Compare your classification with the answer options.\n\nOption A contains temperature, mass and time only. These are all scalar quantities.\n\nThe remaining options include force, which is a vector.",
+      "Step 4: Therefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B: This option includes force. Although mass and time are scalar quantities, force is a vector because it requires both magnitude and direction. Therefore, the group is not made up entirely of scalars.",
+      "Option C: Temperature and mass are scalars, but force is a vector quantity. Including one vector makes the entire option incorrect.",
+      "Option D: Force is again included. Many candidates wrongly think that because a force is expressed by a number and a unit (newton), it is a scalar. This is incorrect because every force acts in a definite direction."
+    ],
+    "exam_tip": "JAMB frequently mixes scalar and vector quantities in the same option to test whether candidates truly understand their differences. Do not memorize isolated examples alone. Instead, remember the rule:\n\n• Scalar = magnitude only.\n• Vector = magnitude plus direction.\n\nWhenever you see words such as 'towards', 'eastward', 'northward', 'upward', 'downward' or 'at an angle', immediately consider whether the quantity involved is a vector. Also remember that some vector quantities, such as force and weight, remain vectors even if the direction is not explicitly written in the question because direction is an inherent part of their definition.",
+    "final_answer": "A. Temperature, mass and time",
+    "simple_explanation": "Think of a scalar as something you can completely describe using just a number and a unit. Saying '45 seconds', '2.5 kilograms' or '35 °C' is enough because no direction is needed.\n\nA vector is different. If someone says '18 N of force', you will naturally ask, 'In which direction?' The direction is necessary before the information is complete. Therefore, force is a vector, while temperature, mass and time are scalars.",
+    "tutorial_reference": "Tutorials → Physics → Scalars and Vectors → Scalar Quantities. Study the definitions, characteristics, common examples, and techniques for distinguishing scalars from vectors in JAMB examinations. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, worked examples, and additional exam-focused practice questions."
+  },
+  "tags": [
+    "scalar_quantities",
+    "classification_of_physical_quantities",
+    "vectors_vs_scalars",
+    "foundation_concepts",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q008",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Scalar quantities",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A student argues that every physical quantity measured with an instrument must be a scalar because it has a numerical value and a unit. Which statement best evaluates the student's claim?",
+  "options": {
+    "A": "The claim is correct because all measured quantities are scalars.",
+    "B": "The claim is correct because direction is never measured in Physics.",
+    "C": "The claim is incorrect because some measured quantities require both magnitude and direction to be completely described.",
+    "D": "The claim is incorrect because all quantities measured in a laboratory are vectors."
+  },
+  "answer": "C",
+  "answer_text": "The claim is incorrect because some measured quantities require both magnitude and direction to be completely described.",
+  "explanation": {
+    "question_restate": "The question asks you to determine whether every quantity that can be measured is automatically a scalar, or whether some measured quantities are actually vectors because they require direction in addition to magnitude.",
+    "principle": "Before answering this question, a beginner may ask, 'What is a physical quantity?'\n\nA physical quantity is any property that can be measured and expressed using a number together with a unit. Examples include 5 kg, 20 m, 60 s, and 100 N.\n\nAnother beginner may ask, 'What is a unit?'\n\nA unit is an agreed standard used for measurement. For example, the metre (m) is the SI unit of length, the kilogram (kg) is the SI unit of mass, and the second (s) is the SI unit of time.\n\nA very important question then arises: 'If every physical quantity has a number and a unit, why are they not all scalars?'\n\nThe answer is that physical quantities are divided into two major classes based on the information needed to describe them completely.\n\nA scalar quantity is a quantity that is completely specified by its magnitude alone.\n\nMagnitude simply means the size or amount of the quantity. For example, saying that a container holds 5 litres of water gives complete information because no direction is involved.\n\nExamples of scalar quantities include mass, time, temperature, distance, speed, energy, work, power and volume.\n\nA vector quantity is different. It cannot be fully described unless both its magnitude and its direction are given.\n\nDirection tells us where the quantity acts or points. For example, saying that a car moves with a velocity of 20 m s⁻¹ is incomplete until a direction such as east or north is added.\n\nExamples of vectors include displacement, velocity, acceleration, force, momentum and weight.\n\nA common misconception is to think that every measured quantity is a scalar simply because it has a numerical value. This is incorrect. Many vector quantities are measured experimentally. For example, a force meter can measure the magnitude of a force, but the direction in which the force acts must also be specified before the force is completely described.\n\nTherefore, having a numerical value and a unit does not automatically make a quantity a scalar. The deciding factor is whether direction is required for complete description.",
+    "steps": [
+      "Step 1: Identify the student's claim. The student believes that every measurable quantity is a scalar simply because it has a number and a unit.",
+      "Step 2: Recall the definition of a scalar quantity. A scalar requires only magnitude for complete description.",
+      "Step 3: Recall the definition of a vector quantity. A vector requires both magnitude and direction for complete description.",
+      "Step 4: Ask whether some measurable quantities require direction. Yes. Quantities such as force, displacement, velocity and acceleration all require direction.",
+      "Step 5: Since there are measurable quantities that require direction, the student's statement cannot be correct.",
+      "Step 6: Therefore, the correct evaluation is that the claim is incorrect because some measured quantities require both magnitude and direction."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because many measurable quantities are vectors. Examples include force, displacement and velocity. Their magnitudes alone do not completely describe them.",
+      "Option B is incorrect because direction is an essential part of many areas of Physics. It is measured or specified whenever vector quantities are involved.",
+      "Option D is incorrect because many quantities measured in laboratories are scalars, such as mass, temperature, time and volume. Therefore, not every laboratory measurement is a vector."
+    ],
+    "exam_tip": "JAMB frequently tests your understanding of the difference between scalar and vector quantities using conceptual statements rather than direct definitions. Whenever you are unsure, ask yourself one question: 'Is direction necessary to describe this quantity completely?' If the answer is 'No,' it is a scalar. If the answer is 'Yes,' it is a vector. Be careful not to assume that every measurable quantity is a scalar simply because it has a numerical value and a unit.",
+    "final_answer": "C. The claim is incorrect because some measured quantities require both magnitude and direction to be completely described.",
+    "simple_explanation": "Every physical quantity has a number and a unit, but that does not make it a scalar. A scalar only needs a size or amount, such as 10 kg or 5 s. Some quantities also need a direction before they make sense. For example, a force of 20 N is incomplete until you say where it acts. Because some measured quantities need direction, not every measured quantity is a scalar.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Scalar Quantities to learn how to distinguish scalars from vectors, identify common examples, understand why direction matters, and practise additional JAMB-style conceptual questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed beginner-friendly lessons, worked examples and exam-focused practice."
+  },
+  "tags": [
+    "scalar_quantities",
+    "classification_of_physical_quantities",
+    "magnitude",
+    "vectors_vs_scalars",
+    "conceptual_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q009",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Scalar quantities",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A student argues that because speed can increase or decrease, it should be regarded as a vector quantity. Which statement best explains why this conclusion is incorrect?",
+  "options": {
+    "A": "Speed is a scalar because only its magnitude is specified, irrespective of direction.",
+    "B": "Speed is a vector because it can have positive or negative values.",
+    "C": "Speed becomes a vector whenever it changes with time.",
+    "D": "Speed is neither a scalar nor a vector because it depends on motion."
+  },
+  "answer": "A",
+  "answer_text": "Speed is a scalar because only its magnitude is specified, irrespective of direction.",
+  "explanation": {
+    "question_restate": "The question tests whether you understand the fundamental difference between scalar and vector quantities. Specifically, it asks whether the fact that speed can change makes it a vector quantity.",
+    "principle": "Physics classifies quantities into two major groups: scalar quantities and vector quantities.\n\nA quantity is anything that can be measured and expressed with a number and a unit. Examples include 5 kg, 10 m, 30 s and 15 m s⁻¹.\n\nA beginner may ask, 'What is magnitude?'\n\nMagnitude simply means the size or numerical value of a quantity together with its unit. For example, saying an object has a mass of 8 kg tells us how much matter it contains. The number '8' together with the unit 'kg' gives its magnitude.\n\nAnother beginner may ask, 'What is direction?'\n\nDirection tells us where something points or moves. Examples include north, south, east, west, upward, downward or 30° east of north.\n\nA scalar quantity is completely described by its magnitude alone. No direction is required.\n\nA vector quantity requires BOTH magnitude and direction before it is completely described.\n\nFor example:\n\n• Mass = 50 kg (complete description) → Scalar.\n• Temperature = 28°C (complete description) → Scalar.\n• Distance = 200 m (complete description) → Scalar.\n• Force = 40 N east (requires direction) → Vector.\n• Velocity = 15 m s⁻¹ north (requires direction) → Vector.\n\nNow consider speed. Speed tells us how fast an object moves. If someone says a car is travelling at 80 km h⁻¹, the description is already complete. We do not need to know whether the car is travelling north, south, east or west before understanding its speed.\n\nThe fact that speed may increase, decrease or remain constant does not change its classification. A quantity is classified as scalar or vector based on whether direction is required to describe it, not on whether its value changes.",
+    "steps": [
+      "Step 1: Identify the quantity being discussed. The quantity is speed.",
+      "Step 2: Ask the most important Physics question: 'Does this quantity require direction before it is completely described?'",
+      "Step 3: Consider an example. Saying a runner moves at 7 m s⁻¹ already tells us the runner's speed. No direction is needed.",
+      "Step 4: Since only the magnitude is needed, speed satisfies the definition of a scalar quantity.",
+      "Step 5: Therefore, the correct explanation is that speed is a scalar because only its magnitude is specified, regardless of direction."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B: This is incorrect because positive and negative signs alone do not make a quantity a vector. In many situations, a negative sign simply indicates a chosen mathematical convention or reference point. A true vector must possess both magnitude and direction.",
+      "Option C: This is incorrect because a quantity does not become a vector merely because its value changes with time. Temperature, pressure and mass can change with time, yet they remain scalar quantities.",
+      "Option D: This is incorrect because speed is definitely classified as a scalar quantity in Physics. Although speed describes motion, it belongs to the scalar class because direction is not part of its definition."
+    ],
+    "exam_tip": "JAMB frequently tests the distinction between speed and velocity. Remember this simple rule:\n\n• Speed tells 'how fast' an object moves and is a scalar.\n• Velocity tells 'how fast and in what direction' an object moves and is a vector.\n\nWhenever direction such as 'north', 'south', 'east' or an angle is included, think carefully about whether the quantity is a vector. Do not be misled simply because a quantity increases, decreases or changes with time.",
+    "final_answer": "A. Speed is a scalar because only its magnitude is specified, irrespective of direction.",
+    "simple_explanation": "Think of the speedometer in a car. It may read 20 km h⁻¹, 60 km h⁻¹ or 100 km h⁻¹. The speedometer only tells how fast the car is moving. It does not tell whether the car is travelling north, south, east or west. Since direction is not needed, speed is a scalar quantity. Changing speed does not turn it into a vector.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Scalar Quantities to learn how to distinguish scalar and vector quantities, understand why speed and velocity are different, and practise more JAMB-style questions with detailed worked solutions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and exam-focused practice."
+  },
+  "tags": [
+    "scalar_quantities",
+    "speed",
+    "magnitude",
+    "classification_of_quantities",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q010",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Scalar quantities",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A student claims that every physical quantity with a unit is a scalar quantity. Which of the following observations best shows that the student's claim is incorrect?",
+  "options": {
+    "A": "Some physical quantities require both magnitude and direction before they are completely described.",
+    "B": "Some physical quantities are measured using calibrated instruments only.",
+    "C": "Some physical quantities have SI units that are derived from base units.",
+    "D": "Some physical quantities can be expressed in decimal fractions."
+  },
+  "answer": "A",
+  "answer_text": "Some physical quantities require both magnitude and direction before they are completely described.",
+  "explanation": {
+    "question_restate": "The question tests whether you understand the fundamental difference between scalar and vector quantities. It asks you to identify the statement that proves having a unit alone does not make a physical quantity a scalar.",
+    "principle": "Physics deals with measurable quantities known as physical quantities. A physical quantity is any property that can be measured and expressed using a numerical value together with a unit.\n\nA beginner may ask, 'What is a unit?' A unit is an agreed standard used to measure a quantity. For example, the metre (m) is the SI unit of length, the kilogram (kg) is the SI unit of mass, and the second (s) is the SI unit of time.\n\nAnother beginner may ask, 'What is a scalar quantity?' A scalar quantity is a physical quantity that is completely described by its magnitude (size or numerical value) together with its unit only. No direction is required.\n\nExamples of scalar quantities include mass, time, temperature, energy, speed, distance, work, power and volume.\n\nA student may then ask, 'If every physical quantity has a unit, why aren't they all scalars?' The answer is that some physical quantities require not only magnitude but also direction before they are fully described. Such quantities are called vector quantities.\n\nA vector quantity has two essential parts:\n\n• Magnitude — how much or how large.\n• Direction — where the quantity acts or points.\n\nFor example, saying 'a force of 20 N' is incomplete because the direction is missing. However, saying 'a force of 20 N due east' completely describes the force.\n\nTherefore, merely possessing a unit does not determine whether a quantity is scalar. The deciding factor is whether direction is required for its complete description.",
+    "steps": [
+      "Step 1: Identify the statement made by the student. The student believes that having a unit automatically makes a quantity a scalar.",
+      "Step 2: Recall the definition of a scalar quantity. A scalar is completely described by magnitude and unit only.",
+      "Step 3: Recall the definition of a vector quantity. A vector requires magnitude, unit and direction.",
+      "Step 4: Look for the option that contradicts the student's claim by showing that some quantities need more than just magnitude and unit.",
+      "Step 5: Option A states that some physical quantities require both magnitude and direction before they are completely described. This is exactly the property of vectors and proves that not every quantity with a unit is a scalar.",
+      "Step 6: Therefore, Option A is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B: It is true that many physical quantities are measured using calibrated instruments, but this has nothing to do with whether the quantity is scalar or vector. Both scalars (such as temperature) and vectors (such as force) can be measured using appropriate instruments.",
+      "Option C: Many physical quantities have derived SI units, such as the newton (N), joule (J) and watt (W). However, both scalar and vector quantities may have derived units. Therefore, this statement does not distinguish scalars from vectors.",
+      "Option D: Being expressed as a decimal number simply reflects measurement precision. Both scalar and vector quantities may have decimal values. This does not determine the type of quantity."
+    ],
+    "exam_tip": "JAMB often tests your understanding of definitions rather than simple memorisation. Whenever you are asked to distinguish a scalar from a vector, immediately ask yourself one question: 'Is direction necessary to describe this quantity completely?' If the answer is YES, it is a vector. If the answer is NO, it is a scalar. Do not be distracted by the presence of units because every physical quantity has a unit.",
+    "final_answer": "A. Some physical quantities require both magnitude and direction before they are completely described.",
+    "simple_explanation": "Having a unit does not automatically make a quantity a scalar. Every physical quantity has a unit. What makes a quantity a scalar is that only its size is needed. If you also need to state the direction, then the quantity is a vector. Therefore, Option A correctly explains why the student's statement is wrong.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Scalar Quantities to learn the differences between scalar and vector quantities, how JAMB tests these concepts, common examination traps, and numerous worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and exam-focused practice."
+  },
+  "tags": [
+    "scalar_quantities",
+    "physical_quantities",
+    "vectors_intro",
+    "definitions",
+    "phy_03"
+  ],
+  "active": true
+}
 
+]
