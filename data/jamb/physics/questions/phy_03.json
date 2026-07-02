@@ -3690,6 +3690,299 @@
     "phy_03"
   ],
   "active": true
+},
+{
+  "id": "phy_03_q076",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Subtraction of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An autonomous warehouse robot is programmed to move 18 m due east to deliver a package. During operation, a correction command instructs it to move 7 m due west before continuing. Which of the following best represents the robot's net displacement from its starting point?",
+  "options": {
+    "A": "11 m due east",
+    "B": "25 m due east",
+    "C": "11 m due west",
+    "D": "25 m due west"
+  },
+  "answer": "A",
+  "answer_text": "11 m due east",
+  "explanation": {
+    "question_restate": "This question tests your understanding of vector subtraction using a practical warehouse automation scenario. It requires you to determine the robot's net displacement after moving in opposite directions.",
+    "principle": "A vector is a quantity that has both magnitude and direction. Examples include displacement, velocity, force and acceleration.\n\nVector subtraction occurs when one vector acts in the opposite direction to another. Instead of simply adding magnitudes, the directions must first be compared.\n\nWhen two vectors act along the same straight line but in opposite directions, the smaller magnitude is subtracted from the larger magnitude. The resultant takes the direction of the larger vector.\n\nMathematically,\n\nResultant = Larger vector − Smaller vector\n\nprovided the vectors are collinear and point in opposite directions.",
+    "steps": [
+      "Step 1: Identify the two displacement vectors.\n\nInitial displacement = 18 m due east.\n\nCorrection displacement = 7 m due west.",
+      "Step 2: Observe that the vectors act in opposite directions.\n\nSince east and west are opposite directions, the vectors oppose each other.",
+      "Step 3: Subtract the smaller magnitude from the larger magnitude.\n\nResultant displacement = 18 m − 7 m = 11 m.",
+      "Step 4: Determine the direction.\n\nBecause the eastward displacement (18 m) is greater than the westward displacement (7 m), the resultant points due east.",
+      "Step 5: Compare with the options.\n\nThe correct answer is 11 m due east, which corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it adds the two magnitudes. Addition is used only when the vectors act in the same direction.",
+      "Option C is incorrect because although the magnitude is obtained by subtraction, the resultant cannot point west since the eastward displacement is larger.",
+      "Option D is incorrect because it both adds the magnitudes and assigns the wrong direction."
+    ],
+    "common_misconception": "A common mistake is to add the magnitudes whenever two vectors are mentioned. In vector subtraction, direction is just as important as magnitude. Opposite directions require subtraction, not addition.",
+    "exam_tip": "In JAMB examinations, whenever two vectors lie on the same straight line:\n\n• Same direction → Add the magnitudes.\n• Opposite directions → Subtract the magnitudes.\n• The resultant always points in the direction of the larger vector.\n\nAlways identify the directions before performing any calculation.",
+    "final_answer": "A. 11 m due east",
+    "simple_explanation": "Imagine taking 18 steps forward and then 7 steps backward. You have effectively moved only 11 steps forward from where you started. The same idea applies to vector subtraction because the backward movement cancels part of the forward movement.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Subtraction of Vectors for a complete revision of vector subtraction, opposite-direction vectors, sign convention, resultant displacement, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "subtraction_of_vectors",
+    "collinear_vectors",
+    "resultant_displacement",
+    "warehouse_robot",
+    "concept_application",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q077",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Subtraction of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An autonomous warehouse robot first moves 18 m due east to deliver a package. It then moves 10 m due west to return towards its charging station. Which vector represents the robot's net displacement from its starting point?",
+  "options": {
+    "A": "8 m due east",
+    "B": "8 m due west",
+    "C": "28 m due east",
+    "D": "28 m due west"
+  },
+  "answer": "A",
+  "answer_text": "8 m due east",
+  "explanation": {
+    "question_restate": "This question tests your understanding of vector subtraction using motion along the same straight line but in opposite directions. You are required to determine the robot's net displacement after moving east and then west.",
+    "principle": "A vector is a quantity that has both magnitude and direction. Displacement is a vector because it describes both how far an object moves and the direction of that movement.\n\nWhen two vectors act along the same straight line but in opposite directions, they are combined by subtracting their magnitudes. The direction of the larger vector becomes the direction of the resultant vector.\n\nA beginner may ask, 'Why do we subtract instead of add?'\n\nThe second movement opposes the first movement. Since the robot moves back towards its starting point, part of its initial displacement is cancelled. Therefore, only the difference between the two distances remains.\n\nRule:\n\n• Same direction → add the magnitudes.\n• Opposite directions → subtract the magnitudes.\n• The resultant points in the direction of the larger vector.",
+    "steps": [
+      "Step 1: Identify the first vector.\n\nThe robot moves 18 m due east.",
+      "Step 2: Identify the second vector.\n\nThe robot then moves 10 m due west. Since west is opposite to east, this vector opposes the first one.",
+      "Step 3: Perform vector subtraction.\n\nResultant displacement = 18 m − 10 m = 8 m.",
+      "Step 4: Determine the direction.\n\nThe larger displacement is 18 m due east, so the resultant also points due east.",
+      "Step 5: Compare with the options.\n\nThe correct vector is 8 m due east, which corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because although the magnitude is 8 m, the resultant cannot point west since the eastward displacement is greater than the westward displacement.",
+      "Option C is incorrect because it adds the magnitudes instead of subtracting them. Addition is only appropriate when both vectors act in the same direction.",
+      "Option D is incorrect because it both adds the magnitudes incorrectly and assigns the wrong direction."
+    ],
+    "exam_tip": "Whenever two vectors act along the same straight line in opposite directions, think of one vector cancelling part of the other. Subtract their magnitudes and assign the direction of the larger vector. JAMB frequently tests this basic principle before introducing more advanced vector problems.",
+    "final_answer": "A. 8 m due east",
+    "simple_explanation": "Imagine walking 18 m forward and then walking back 10 m. You have not travelled a total of 28 m away from where you started. Instead, you are only 8 m from your starting point in the forward direction. The same idea applies to vector subtraction.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Subtraction of Vectors for a complete revision of opposite-direction vectors, signed vector representation, displacement problems, force subtraction, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "subtraction_of_vectors",
+    "displacement",
+    "opposite_direction_vectors",
+    "warehouse_robot",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q078",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Subtraction of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An autonomous warehouse robot first moves 18 m due east to deliver a package. It is then required to return towards its charging station by moving 7 m due west. Which of the following correctly represents the robot's net displacement after these two movements?",
+  "options": {
+    "A": "11 m due east",
+    "B": "25 m due east",
+    "C": "11 m due west",
+    "D": "25 m due west"
+  },
+  "answer": "A",
+  "answer_text": "11 m due east",
+  "explanation": {
+    "question_restate": "This question tests your understanding of vector subtraction using a practical warehouse robotics scenario. You are required to determine the resultant displacement when two vectors act in opposite directions.",
+    "principle": "A vector is a quantity that has both magnitude and direction. Displacement is a vector because it describes not only how far an object moves but also the direction of movement.\n\nVector subtraction occurs naturally whenever one vector acts in the opposite direction to another. Instead of simply adding the distances travelled, the directions must first be considered.\n\nFor motion along the same straight line:\n\n• Vectors in the same direction are added.\n• Vectors in opposite directions are subtracted.\n• The direction of the larger vector becomes the direction of the resultant.\n\nA beginner may ask, 'Why do we subtract instead of add?'\n\nThe westward movement partially cancels the earlier eastward movement. Therefore, only the difference between the two magnitudes remains as the net displacement.",
+    "steps": [
+      "Step 1: Identify the first displacement.\n\nThe robot moves 18 m due east.",
+      "Step 2: Identify the second displacement.\n\nThe robot then moves 7 m due west, which is opposite to the first displacement.",
+      "Step 3: Apply the rule for opposite vectors.\n\nResultant displacement = 18 m − 7 m = 11 m.",
+      "Step 4: Determine the direction.\n\nSince the eastward displacement (18 m) is greater than the westward displacement (7 m), the resultant points due east.",
+      "Step 5: Compare with the options.\n\nThe correct answer is 11 m due east."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it adds the magnitudes (18 + 7 = 25 m), ignoring that the vectors act in opposite directions.",
+      "Option C is incorrect because although the magnitude is obtained by subtraction, it assigns the direction incorrectly. The larger displacement is towards the east.",
+      "Option D is incorrect because it both adds the magnitudes and assigns the wrong direction."
+    ],
+    "exam_tip": "Whenever two vectors lie along the same straight line, check their directions before performing any calculation. If they point in opposite directions, subtract their magnitudes and assign the direction of the larger vector. Many JAMB candidates lose marks by adding magnitudes without considering direction.",
+    "final_answer": "A. 11 m due east",
+    "simple_explanation": "Imagine walking 18 steps forward and then 7 steps backward. You have not travelled 25 steps away from your starting point. Instead, the backward movement cancels part of the forward movement, leaving you 11 steps in front of where you started. The same idea applies to vector subtraction.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Subtraction of Vectors for complete lessons on opposite vectors, sign convention, displacement problems, force subtraction, velocity subtraction, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and additional practice questions."
+  },
+  "tags": [
+    "subtraction_of_vectors",
+    "displacement",
+    "opposite_vectors",
+    "warehouse_robotics",
+    "vector_application",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q079",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Subtraction of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An autonomous warehouse robot moves 18 m due east to collect a package. It then needs to determine the vector that must be subtracted from its first displacement so that the resulting displacement is 12 m due east. Which vector should be subtracted?",
+  "options": {
+    "A": "6 m due east",
+    "B": "6 m due west",
+    "C": "30 m due east",
+    "D": "30 m due west"
+  },
+  "answer": "A",
+  "answer_text": "6 m due east",
+  "explanation": {
+    "question_restate": "This question tests your understanding of vector subtraction. You are required to determine the vector that should be removed from an initial displacement of 18 m east to leave a resultant displacement of 12 m east.",
+    "principle": "A vector is a quantity that possesses both magnitude and direction. Examples include displacement, velocity, force and acceleration.\n\nVector subtraction means removing the effect of one vector from another.\n\nMathematically,\n\nA − B = Resultant\n\nwhere:\n• A is the original vector.\n• B is the vector being subtracted.\n• The resultant is the remaining vector after subtraction.\n\nUnlike ordinary numbers, vectors must always be treated with their directions. When vectors act along the same straight line, east may be taken as positive while west is taken as negative.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nOriginal displacement = 18 m east.\n\nRequired resultant displacement = 12 m east.",
+      "Step 2: Write the vector equation.\n\nOriginal vector − Unknown vector = Resultant vector.\n\n18 m east − X = 12 m east.",
+      "Step 3: Solve for the unknown vector.\n\nX = 18 m east − 12 m east.\n\nX = 6 m east.",
+      "Step 4: Verify the result.\n\nSubtracting 6 m east from 18 m east leaves 12 m east.\n\nTherefore, the required vector is 6 m due east."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because subtracting a westward vector is equivalent to adding an eastward vector, giving 24 m east instead of 12 m east.",
+      "Option C is incorrect because subtracting 30 m east from 18 m east gives 12 m west, not 12 m east.",
+      "Option D is incorrect because subtracting 30 m west is equivalent to adding 30 m east, giving 48 m east."
+    ],
+    "exam_tip": "When vectors lie along the same straight line, first assign opposite directions opposite signs. Write the subtraction as an equation before solving. Always verify that the direction of the final vector agrees with the question.",
+    "final_answer": "A. 6 m due east",
+    "simple_explanation": "Imagine you have travelled 18 m east but want your final journey to be only 12 m east. You simply remove 6 m of the eastward movement. Therefore, the vector that must be subtracted is 6 m due east.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Subtraction of Vectors for a complete revision of vector subtraction using algebraic methods, graphical interpretation, opposite directions, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "subtraction_of_vectors",
+    "collinear_vectors",
+    "vector_displacement",
+    "warehouse_robot",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q080",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Subtraction of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a rescue operation, an emergency response boat travels 18 km due north from the base camp to reach a flooded village. It then returns by travelling 11 km due south to deliver supplies to another community. Which vector represents the boat's displacement from the base camp after the second journey?",
+  "options": {
+    "A": "7 km due north",
+    "B": "7 km due south",
+    "C": "29 km due north",
+    "D": "29 km due south"
+  },
+  "answer": "A",
+  "answer_text": "7 km due north",
+  "explanation": {
+    "question_restate": "This question tests your understanding of vector subtraction by determining the final displacement after two journeys made in opposite directions.",
+    "principle": "A vector is a quantity that has both magnitude and direction. Displacement is a vector because it describes not only how far an object moves but also the direction of the movement.\n\nWhen two vectors act in opposite directions along the same straight line, vector subtraction is used. Instead of adding the magnitudes directly, the smaller magnitude is subtracted from the larger one, and the resultant takes the direction of the larger vector.\n\nThis principle is commonly applied in navigation, transportation, rescue operations and motion along a straight path.",
+    "steps": [
+      "Step 1: Identify the first displacement.\n\nThe boat travels 18 km due north.\n\nRepresent this as +18 km.",
+      "Step 2: Identify the second displacement.\n\nThe boat then travels 11 km due south.\n\nSince south is opposite to north, represent this as −11 km.",
+      "Step 3: Perform the vector subtraction.\n\nResultant displacement = 18 km − 11 km = 7 km.",
+      "Step 4: Determine the direction.\n\nThe larger displacement is towards the north, so the resultant displacement is 7 km due north.",
+      "Step 5: Compare with the options.\n\nOption A correctly gives 7 km due north."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the final displacement cannot be south. The initial northward journey is greater than the southward return.",
+      "Option C is incorrect because it adds the two distances instead of subtracting opposite vectors. This gives the total distance travelled, not the displacement.",
+      "Option D is incorrect because it both adds the distances incorrectly and assigns the wrong direction."
+    ],
+    "exam_tip": "Whenever two vectors act in opposite directions along the same straight line, subtract their magnitudes and assign the direction of the larger vector. Remember that JAMB often tests the difference between total distance travelled and resultant displacement.",
+    "final_answer": "A. 7 km due north",
+    "simple_explanation": "Imagine walking 18 km north and then coming back 11 km south. You have not returned to where you started. You are still 7 km north of your starting point. Therefore, your displacement is 7 km due north.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Subtraction of Vectors for a complete revision of opposite vectors, resultant displacement, relative motion, graphical subtraction methods and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries and additional exam-focused practice."
+  },
+  "tags": [
+    "subtraction_of_vectors",
+    "displacement",
+    "opposite_vectors",
+    "rescue_operations",
+    "vector_application",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q081",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Subtraction of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An autonomous delivery drone flies 26 km due north from its charging station to Location P. It is later instructed to fly directly to Location Q, which is 9 km due north of the same charging station. Which vector correctly represents the drone's displacement from Location P to Location Q?",
+  "options": {
+    "A": "17 km due south",
+    "B": "17 km due north",
+    "C": "35 km due north",
+    "D": "35 km due south"
+  },
+  "answer": "A",
+  "answer_text": "17 km due south",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of vector subtraction by determining the displacement from one position to another using their position vectors measured from the same reference point.",
+    "principle": "A vector has both magnitude and direction. When two locations are described relative to the same origin, the displacement from one location to the other is obtained by subtracting their position vectors.\n\nIf the initial position vector is A and the final position vector is B, then:\n\nDisplacement = B − A\n\nThe sign of the result indicates direction. A negative value means the displacement is opposite to the chosen positive direction.",
+    "steps": [
+      "Step 1: Identify the position vectors.\n\nLocation P = 26 km due north.\n\nLocation Q = 9 km due north.",
+      "Step 2: Apply vector subtraction.\n\nDisplacement from P to Q = Q − P\n\n= 9 km north − 26 km north\n\n= −17 km north.",
+      "Step 3: Interpret the negative sign.\n\nA negative northward displacement means the drone must travel 17 km due south.",
+      "Step 4: Compare with the options.\n\nTherefore, the correct answer is 17 km due south."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it ignores the change in direction after subtraction.",
+      "Option C is incorrect because it adds the two position vectors instead of subtracting them.",
+      "Option D is incorrect because the direction is correct but the magnitude results from incorrect addition."
+    ],
+    "exam_tip": "In JAMB questions, when two positions are measured from the same reference point, always subtract the initial position vector from the final position vector. After obtaining the numerical answer, interpret its sign before deciding the direction.",
+    "final_answer": "A. 17 km due south",
+    "simple_explanation": "The drone first reaches a point 26 km north of its station. Since the destination is only 9 km north of the station, the drone has gone too far and must return. The difference is 17 km, so it flies 17 km due south.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Subtraction of Vectors for a complete revision of vector subtraction, position vectors, relative displacement, opposite directions, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "subtraction_of_vectors",
+    "relative_displacement",
+    "position_vectors",
+    "drone_navigation",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
 }
 
 
