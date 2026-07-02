@@ -1219,6 +1219,203 @@
     "phy_03"
   ],
   "active": true
+},
+{
+  "id": "phy_03_q026",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector quantities",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A student was asked to identify the characteristic that distinguishes a vector quantity from a scalar quantity. He made the following statements:\n\nI. A vector quantity has both magnitude and direction.\nII. A vector quantity can be completely described by its magnitude alone.\nIII. Two vectors with equal magnitudes may represent different quantities if they act in different directions.\nIV. Every vector quantity must have an SI derived unit.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I and III only",
+    "B": "I, II and III only",
+    "C": "II and IV only",
+    "D": "I, III and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I and III only",
+  "explanation": {
+    "question_restate": "The question requires you to identify the statements that correctly describe vector quantities. Rather than recalling examples, you must understand the defining properties of vectors and use that understanding to evaluate each statement individually.",
+    "principle": "Before answering this question, let us understand what a vector quantity really is.\n\nA physical quantity is any measurable property that can be expressed using a numerical value and a unit. Examples include mass, force, time, velocity and energy.\n\nA beginner may ask, 'What is the difference between a scalar and a vector?'\n\nPhysical quantities are divided into two broad classes:\n\n• Scalar quantities\n• Vector quantities\n\nA scalar quantity is completely described by only its magnitude.\n\nA beginner may ask, 'What is magnitude?'\n\nMagnitude simply means the size, amount or numerical value of a quantity together with its unit. For example, saying that a bag has a mass of 12 kg completely describes its mass. No direction is required.\n\nA vector quantity is different. It requires BOTH:\n\n• Magnitude\n• Direction\n\nbefore it is completely described.\n\nA beginner may then ask, 'Why is direction necessary?'\n\nImagine two students push a cupboard with equal forces of 40 N. If both push eastward, the cupboard moves easily. However, if one pushes eastward while the other pushes westward with the same force, the cupboard may not move at all because the forces oppose each other.\n\nAlthough both forces have the same magnitude (40 N), they produce different effects because their directions are different.\n\nThis shows that direction is an essential property of vector quantities.\n\nAnother beginner may ask, 'Do all vectors have derived SI units?'\n\nNo. The type of SI unit does not determine whether a quantity is a scalar or a vector.\n\nFor example:\n\n• Displacement is measured in metres (m), which is an SI base unit, yet displacement is a vector.\n• Force is measured in newtons (N), a derived SI unit, and is also a vector.\n\nTherefore, vectors may have either base or derived SI units. The defining property is not the unit but the requirement for direction.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\n'A vector quantity has both magnitude and direction.'\n\nThis is the correct definition of a vector quantity.\n\nTherefore, Statement I is TRUE.",
+      "Step 2: Examine Statement II.\n\n'A vector quantity can be completely described by its magnitude alone.'\n\nThis is the definition of a scalar quantity, not a vector quantity.\n\nWithout direction, a vector is incomplete.\n\nTherefore, Statement II is FALSE.",
+      "Step 3: Examine Statement III.\n\n'Two vectors with equal magnitudes may represent different quantities if they act in different directions.'\n\nConsider two forces, each equal to 10 N. One acts eastward while the other acts westward.\n\nAlthough their magnitudes are equal, they are not identical because their directions differ.\n\nTherefore, Statement III is TRUE.",
+      "Step 4: Examine Statement IV.\n\n'Every vector quantity must have an SI derived unit.'\n\nThis statement is incorrect.\n\nDisplacement is a vector quantity measured in metres (m), which is an SI base unit.\n\nHence, not every vector has a derived SI unit.\n\nTherefore, Statement IV is FALSE.",
+      "Step 5: Collect the true statements.\n\nOnly Statements I and III are correct.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (I, II and III only) is incorrect because Statement II is false. A vector cannot be completely described without specifying its direction.",
+      "Option C (II and IV only) is incorrect because both statements are false. Statement II wrongly describes a vector as if it were a scalar, while Statement IV wrongly assumes that all vectors must have derived SI units.",
+      "Option D (I, III and IV only) is incorrect because Statement IV is false. The nature of the SI unit does not determine whether a quantity is a vector."
+    ],
+    "exam_tip": "JAMB often tests your understanding of definitions by asking you to judge several statements rather than identify examples. Whenever you see a question on vectors, ask yourself these two questions:\n\n1. Does the quantity require direction before it is completely described?\n2. Is the statement talking about the defining property of the quantity, or merely its unit?\n\nRemember that vectors are classified by the need for direction, not by the type of SI unit they possess.",
+    "final_answer": "A. I and III only",
+    "simple_explanation": "A vector is like giving someone directions to a place. Saying 'walk 100 metres' is incomplete because the person will ask, 'In which direction?'\n\nYou must say something like 'walk 100 metres north.'\n\nThat is why vectors always need both a size (magnitude) and a direction.\n\nAlso, the unit of a quantity does not determine whether it is a vector. What matters is whether direction is necessary.\n\nTherefore, only Statements I and III correctly describe vector quantities.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Quantities to learn the defining properties of vectors, how to distinguish them from scalar quantities, common JAMB misconceptions, and worked examples involving force, displacement, velocity and acceleration. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, detailed explanations and additional JAMB-standard practice questions."
+  },
+  "tags": [
+    "vector_quantities",
+    "classification_of_physical_quantities",
+    "magnitude_and_direction",
+    "conceptual_vectors",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q027",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector quantities",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A pilot reports that an aircraft is flying at a velocity of 250 m s⁻¹. An air traffic controller responds that the information is incomplete. Which additional information is necessary before the aircraft's velocity is completely specified?",
+  "options": {
+    "A": "The mass of the aircraft",
+    "B": "The direction in which the aircraft is moving",
+    "C": "The altitude of the aircraft above sea level",
+    "D": "The time taken for the journey"
+  },
+  "answer": "B",
+  "answer_text": "The direction in which the aircraft is moving",
+  "explanation": {
+    "question_restate": "The question tests whether you understand the defining property of a vector quantity. You are required to identify the missing piece of information needed to describe the aircraft's velocity completely.",
+    "principle": "Before solving this question, let us first understand what the term 'velocity' means.\n\nA beginner may ask, 'What is velocity?'\n\nVelocity is the rate at which an object changes its position in a particular direction. In simple terms, it tells us not only how fast an object moves but also the direction in which it moves.\n\nAnother beginner may ask, 'What is meant by "rate"?'\n\nA rate compares one quantity with another. In Physics, velocity compares the change in position (called displacement) with the time taken.\n\nMathematically,\n\nVelocity = Displacement ÷ Time\n\nwhere:\n• Velocity is measured in metres per second (m s⁻¹).\n• Displacement is measured in metres (m).\n• Time is measured in seconds (s).\n\nA beginner may now ask, 'What is displacement?'\n\nDisplacement is the straight-line change in position of an object together with its direction. For example, '200 m east' is a displacement because it includes both the distance travelled in a straight line and the direction.\n\nVelocity is classified as a vector quantity because it has two essential parts:\n\n• Magnitude – the numerical value together with its unit.\n• Direction – the line along which the object moves, such as north, south, east, west, upward or at a specified angle.\n\nMagnitude simply means the size or amount of the quantity. In this question, the magnitude is 250 m s⁻¹.\n\nHowever, magnitude alone does not completely describe a vector quantity.\n\nFor example:\n\n• '250 m s⁻¹ due north' describes a different velocity from\n• '250 m s⁻¹ due south',\n\nalthough both have the same magnitude.\n\nThis illustrates why direction is an essential part of every vector quantity.\n\nOne common JAMB misconception is to confuse speed with velocity.\n\n• Speed tells only how fast an object moves. It is a scalar quantity because only magnitude is required.\n• Velocity tells how fast and in which direction an object moves. It is therefore a vector quantity.",
+    "steps": [
+      "Step 1: Identify the quantity mentioned in the question.\n\nThe quantity is velocity.",
+      "Step 2: Recall the definition of a vector quantity.\n\nA vector quantity requires both magnitude and direction before it is completely described.",
+      "Step 3: Examine the information already provided.\n\nThe pilot states that the aircraft is flying at 250 m s⁻¹.\n\nThis gives only the magnitude of the velocity.",
+      "Step 4: Determine what information is still missing.\n\nThe statement does not indicate whether the aircraft is travelling north, south, east, west, northeast, or in any other direction.",
+      "Step 5: Evaluate the options.\n\nOption A (mass) does not define velocity.\n\nOption B (direction) is exactly what is missing.\n\nOption C (altitude) describes the aircraft's height above sea level but does not specify its velocity.\n\nOption D (time taken) is unrelated because the velocity has already been stated numerically.",
+      "Step 6: Therefore, the aircraft's velocity can only be completely specified by stating the direction of motion.\n\nHence, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A: The mass of the aircraft does not determine whether its velocity is completely described. Two aircraft with different masses may have exactly the same velocity if they move with the same speed in the same direction.",
+      "Option C: Altitude tells how high the aircraft is above sea level. It gives information about position but does not indicate the direction of motion required to define velocity.",
+      "Option D: Time is involved in calculating velocity from displacement, but once a velocity of 250 m s⁻¹ has already been stated, providing the journey time does not complete the vector description. The missing requirement remains the direction."
+    ],
+    "exam_tip": "JAMB frequently tests the distinction between speed and velocity. Whenever you see the word 'velocity', immediately ask yourself, 'Has the direction been stated?' If the answer is no, then the description is incomplete. Remember:\n\n• Speed = Magnitude only (Scalar).\n• Velocity = Magnitude + Direction (Vector).\n\nDo not be distracted by options such as mass, height, temperature or time when the question is testing the defining property of a vector quantity.",
+    "final_answer": "B. The direction in which the aircraft is moving",
+    "simple_explanation": "Imagine your friend tells you, 'The aircraft is moving at 250 m s⁻¹.' You will naturally ask, 'Which way is it going?'\n\nWithout knowing whether it is flying north, south, east or west, you do not know its complete velocity.\n\nVelocity always needs two pieces of information:\n\n• How fast the object is moving.\n• The direction in which it is moving.\n\nSince only the speed has been given, the missing information is the direction.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Quantities to learn why velocity, force, acceleration, displacement and momentum are vectors, how to distinguish vectors from scalars, and how JAMB commonly tests these concepts using conceptual and application-based questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, worked examples and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "vector_quantities",
+    "velocity",
+    "direction",
+    "classification_of_physical_quantities",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q028",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector quantities",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a classroom discussion, four students each described a physical quantity. Which student's description correctly identifies a vector quantity?",
+  "options": {
+    "A": "Ayo: \"A quantity is a vector if it has a numerical value and an SI unit.\"",
+    "B": "Bisi: \"A quantity is a vector if it can be measured with a laboratory instrument.\"",
+    "C": "Chinedu: \"A quantity is a vector if both its magnitude and direction are required before it is completely described.\"",
+    "D": "Dare: \"A quantity is a vector if its value changes during motion.\""
+  },
+  "answer": "C",
+  "answer_text": "A quantity is a vector if both its magnitude and direction are required before it is completely described.",
+  "explanation": {
+    "question_restate": "The question tests your understanding of the fundamental definition of a vector quantity. Instead of asking you to identify examples, it asks you to evaluate four different statements and choose the one that correctly defines a vector.",
+    "principle": "Before solving this question, let us first understand what a physical quantity is.\n\nA physical quantity is any property that can be measured and expressed using a numerical value together with a unit. Examples include mass, time, length, force and velocity.\n\nA beginner may ask, 'What is a unit?'\n\nA unit is an agreed standard used for measurement. For example:\n\n• metre (m) measures length.\n• kilogram (kg) measures mass.\n• second (s) measures time.\n• newton (N) measures force.\n\nAnother beginner may ask, 'What is magnitude?'\n\nMagnitude simply means the size or numerical value of a quantity together with its unit. For example, saying that a force has a magnitude of 15 N tells us how large the force is.\n\nAnother important question is, 'What is direction?'\n\nDirection tells us where a quantity points or acts. Examples include north, south, east, west, upward, downward or at a specified angle.\n\nPhysical quantities are grouped into two categories:\n\n1. Scalar quantities.\nA scalar quantity is completely described by its magnitude only. Examples include mass, time, temperature, energy, distance and speed.\n\n2. Vector quantities.\nA vector quantity requires BOTH magnitude and direction before it is completely described. If the direction is omitted, the description is incomplete.\n\nExamples of vector quantities include:\n• Force\n• Velocity\n• Displacement\n• Acceleration\n• Momentum\n• Weight\n\nA useful question to ask yourself whenever you meet a physical quantity is:\n\n'Do I need to know its direction before I completely understand it?'\n\nIf the answer is YES, then it is a vector.\n\nIf the answer is NO, then it is a scalar.\n\nNotice that the way a quantity is measured, the type of instrument used, or whether its value changes does not determine whether it is a vector. The deciding factor is whether direction is an essential part of its description.",
+    "steps": [
+      "Step 1: Examine Option A.\n\n'A quantity is a vector if it has a numerical value and an SI unit.'\n\nEvery physical quantity—whether scalar or vector—has a numerical value and a unit. For example, mass is measured in kilograms and temperature in degrees Celsius or kelvin, yet they are scalars.\n\nTherefore, this statement is incorrect.",
+      "Step 2: Examine Option B.\n\n'A quantity is a vector if it can be measured with a laboratory instrument.'\n\nMany scalar quantities, such as mass and temperature, are measured with instruments. Likewise, vector quantities such as force are also measured. The measuring instrument does not determine whether a quantity is scalar or vector.\n\nTherefore, this statement is incorrect.",
+      "Step 3: Examine Option C.\n\n'A quantity is a vector if both its magnitude and direction are required before it is completely described.'\n\nThis is the accepted scientific definition of a vector quantity.\n\nTherefore, this statement is correct.",
+      "Step 4: Examine Option D.\n\n'A quantity is a vector if its value changes during motion.'\n\nMany scalar quantities change during motion. For example, speed and temperature can change with time, yet they remain scalar quantities. Changing value does not make a quantity a vector.\n\nTherefore, this statement is incorrect.",
+      "Step 5: Compare all four statements.\n\nOnly Option C gives the correct definition of a vector quantity.\n\nHence, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because both scalar and vector quantities have numerical values and units. For example, mass (5 kg) is a scalar, while force (5 N east) is a vector. The presence of a unit alone does not determine the classification.",
+      "Option B is incorrect because the use of a measuring instrument has nothing to do with whether a quantity is scalar or vector. A thermometer measures temperature (scalar), while a spring balance measures force (vector).",
+      "Option D is incorrect because many scalar quantities change with time or during motion. For example, the speed of a moving car may increase or decrease, but speed remains a scalar quantity because it does not require direction."
+    ],
+    "exam_tip": "JAMB frequently tests definitions indirectly by presenting statements made by students, teachers or candidates. Rather than memorising lists, understand the definition. Whenever you see a question on scalars and vectors, ask yourself one simple question:\n\n'Is direction necessary before this quantity is completely described?'\n\nIf yes, it is a vector.\n\nIf no, it is a scalar.\n\nDo not be distracted by statements about measuring instruments, SI units or changing values, because these do not determine whether a quantity is a vector.",
+    "final_answer": "C. A quantity is a vector if both its magnitude and direction are required before it is completely described.",
+    "simple_explanation": "Imagine someone says, 'A force of 25 N acts on a box.' You will naturally ask, 'In which direction?' The information is incomplete until the direction is given.\n\nNow imagine someone says, 'The mass of the box is 25 kg.' You already have complete information because mass has no direction.\n\nThis is the easiest way to distinguish vectors from scalars. Vectors always need both size (magnitude) and direction, while scalars need only size.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Quantities to learn the formal definition of vectors, compare vectors with scalars, understand common JAMB misconceptions, and practise additional exam-standard questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, worked examples and detailed exam-focused practice."
+  },
+  "tags": [
+    "vector_quantities",
+    "definition_of_vectors",
+    "classification_of_physical_quantities",
+    "conceptual_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q029",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector quantities",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A student states that every vector quantity must always be written with a compass direction such as north, south, east or west. Which of the following observations best shows that the student's statement is incorrect?",
+  "options": {
+    "A": "A force of 25 N acting vertically upward is a vector even though no compass direction is used.",
+    "B": "A distance of 50 m due east is a vector because east is a compass direction.",
+    "C": "A speed of 30 m s⁻¹ due north is a vector because north is specified.",
+    "D": "A temperature of 45 °C is a vector because it can increase or decrease."
+  },
+  "answer": "A",
+  "answer_text": "A force of 25 N acting vertically upward is a vector even though no compass direction is used.",
+  "explanation": {
+    "question_restate": "This question tests whether you understand what actually makes a physical quantity a vector. Specifically, it examines whether a vector must always be expressed using compass directions such as north, south, east or west, or whether any specified direction is sufficient.",
+    "principle": "Before solving this question, let us first understand what a vector quantity is.\n\nA physical quantity is any measurable property that can be expressed using a numerical value and a unit. Physical quantities are divided into two broad classes:\n\n• Scalar quantities\n• Vector quantities.\n\nA beginner may ask, 'What is a vector quantity?'\n\nA vector quantity is a physical quantity that requires BOTH:\n\n• magnitude (the numerical size together with its unit), and\n• direction.\n\nA beginner may also ask, 'What exactly is direction?'\n\nDirection simply tells where a quantity acts or points. Many beginners think direction must always be written as north, south, east or west. This is not true.\n\nDirection may be expressed in many different ways, including:\n\n• north, south, east or west;\n• upward or downward;\n• left or right;\n• towards or away from an object;\n• at an angle such as 30° above the horizontal or 45° south of east.\n\nAs long as the direction is clearly stated, the quantity can be completely described.\n\nFor example:\n\n• A force of 15 N upward is a vector.\n• A velocity of 20 m s⁻¹ due east is a vector.\n• An acceleration of 4 m s⁻² downward is a vector.\n\nNotice that 'upward' and 'downward' are not compass directions, yet they still specify direction.\n\nTherefore, a quantity does not need compass directions to qualify as a vector. It only needs a clearly defined direction.\n\nAnother beginner may ask, 'Can adding a direction turn any quantity into a vector?'\n\nNo. A scalar quantity remains a scalar even if someone incorrectly attaches a direction to it. For example, saying '30 m s⁻¹ due north' is still incorrect if the quantity is speed because speed, by definition, does not include direction. Once direction is included, the correct quantity becomes velocity, not speed.",
+    "steps": [
+      "Step 1: Identify the student's claim.\n\nThe student believes that every vector must be written using compass directions such as north, south, east or west.",
+      "Step 2: Recall the definition of a vector.\n\nA vector requires magnitude and ANY valid direction. Physics does not restrict direction to compass points alone.",
+      "Step 3: Examine Option A.\n\n'A force of 25 N acting vertically upward.'\n\nThe magnitude is 25 N.\n\nThe direction is vertically upward.\n\nAlthough 'upward' is not a compass direction, it is still a valid direction.\n\nTherefore, this statement disproves the student's claim.",
+      "Step 4: Examine Option B.\n\nDistance is a scalar quantity. Adding the words 'due east' does not change distance into a vector. The correct vector quantity would be displacement.",
+      "Step 5: Examine Option C.\n\nSpeed is a scalar quantity. Once direction is included, the correct physical quantity should be velocity. Therefore, this statement is scientifically incorrect.",
+      "Step 6: Examine Option D.\n\nTemperature is always a scalar quantity. The fact that it may increase or decrease does not make it a vector because it does not require direction.",
+      "Step 7: Therefore, the statement that correctly disproves the student's claim is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because distance is defined as the total length of the path travelled and is a scalar quantity. Merely attaching a compass direction does not convert distance into displacement. JAMB often uses this as a conceptual trap.",
+      "Option C is incorrect because speed is a scalar quantity. The phrase 'due north' belongs to velocity, not speed. Candidates who confuse speed with velocity frequently choose this option.",
+      "Option D is incorrect because temperature measures the degree of hotness or coldness of a body. It has magnitude only and never requires direction, even when its value changes."
+    ],
+    "exam_tip": "JAMB frequently tests your understanding of the meaning of 'direction.' Remember that a vector does not require compass directions specifically. Any valid directional description—such as upward, downward, left, right, towards, away, or a stated angle—is sufficient. Also beware of questions that deliberately attach a direction to scalar quantities such as speed or distance. Adding a direction does not change the physical definition of the quantity.",
+    "final_answer": "A. A force of 25 N acting vertically upward is a vector even though no compass direction is used.",
+    "simple_explanation": "A vector needs two things: a size and a direction.\n\nThe direction does not have to be north or south. Words like 'upward', 'downward', 'to the left', 'to the right' or 'at 30°' are also directions.\n\nFor example, a force of 25 N upward is a complete vector because it tells both how large the force is and where it acts.\n\nTherefore, the student's statement is wrong because vectors can use many different kinds of directions, not only compass directions.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Quantities to learn how vectors are represented, the different ways direction can be expressed, common JAMB misconceptions about vectors, and additional worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, detailed explanations, and exam-focused practice questions."
+  },
+  "tags": [
+    "vector_quantities",
+    "direction",
+    "classification_of_physical_quantities",
+    "conceptual_vectors",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
 }
 
 ]
