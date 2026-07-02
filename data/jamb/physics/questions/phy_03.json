@@ -637,5 +637,105 @@
     "phy_03"
   ],
   "active": true
+},
+{
+  "id": "phy_03_q014",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Scalar quantities",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A student claims that every physical quantity with a numerical value and a unit is a scalar quantity. Which of the following statements best evaluates the student's claim?",
+  "options": {
+    "A": "The claim is correct because all physical quantities are completely described by magnitude alone.",
+    "B": "The claim is incorrect because some physical quantities require both magnitude and direction before they are completely described.",
+    "C": "The claim is correct because every physical quantity can be measured using the SI system of units.",
+    "D": "The claim is incorrect because only quantities measured in metres and kilograms are scalar quantities."
+  },
+  "answer": "B",
+  "answer_text": "The claim is incorrect because some physical quantities require both magnitude and direction before they are completely described.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what distinguishes scalar quantities from vector quantities. You are required to decide whether having only a numerical value (magnitude) and a unit is enough to classify every physical quantity as a scalar.",
+    "principle": "Physics deals with measurable properties known as physical quantities. A physical quantity is any property that can be measured and expressed using a number together with a unit. For example, 5 kg, 20 m, and 300 K are all physical quantities because they consist of a numerical value and a unit.\n\nA beginner may ask, 'What is a unit?' A unit is an agreed standard used for measuring a physical quantity. For example, the metre (m) is the SI unit of length, the kilogram (kg) is the SI unit of mass, and the second (s) is the SI unit of time.\n\nAnother beginner may ask, 'What is magnitude?' Magnitude simply means the size or numerical amount of a quantity without considering any direction. For example, saying that a bag has a mass of 8 kg tells us how heavy it is, but no direction is involved.\n\nPhysical quantities are classified into two major groups:\n\n• Scalar quantities: These are quantities that are completely described by magnitude (numerical value) and unit only. They do not require direction. Examples include mass, time, temperature, energy, speed, distance, volume and density.\n\n• Vector quantities: These are quantities that require both magnitude and direction before they are fully described. Examples include displacement, velocity, acceleration, force, momentum and weight.\n\nA beginner may now ask, 'Why is direction important?' Imagine two football players each move 20 m. If one moves east and the other moves west, the distances travelled are equal (20 m), but their final positions are different because they moved in different directions. Direction therefore becomes essential for quantities such as displacement and velocity.\n\nThe student's statement is therefore incorrect. Although every physical quantity has a magnitude and a unit, not every physical quantity is a scalar because many physical quantities also require direction.",
+    "steps": [
+      "Step 1: Identify the student's claim. The student believes that every physical quantity having a numerical value and a unit must be a scalar.",
+      "Step 2: Recall the definition of a scalar quantity. A scalar quantity is completely described by magnitude and unit only.",
+      "Step 3: Recall the definition of a vector quantity. A vector quantity requires magnitude, unit and direction for complete description.",
+      "Step 4: Think of a counterexample. A force of 20 N is incomplete unless its direction is stated. Likewise, a velocity of 15 m s⁻¹ is incomplete unless the direction is given, such as east or north.",
+      "Step 5: Since some physical quantities need direction in addition to magnitude, the student's claim cannot be correct.",
+      "Step 6: Therefore, the correct option is B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A: This option wrongly assumes that every physical quantity is fully described by magnitude alone. This ignores vector quantities such as force, displacement and acceleration, all of which require direction.",
+      "Option C: The fact that a quantity is measured using SI units has nothing to do with whether it is scalar or vector. Both scalar and vector quantities have SI units. For example, mass is measured in kilograms (kg), while force is measured in newtons (N).",
+      "Option D: This option incorrectly suggests that only quantities measured in metres and kilograms are scalars. Scalar quantities are measured using many different units such as seconds (time), kelvin (temperature), joules (energy), litres (volume) and pascals (pressure)."
+    ],
+    "exam_tip": "JAMB frequently tests your ability to distinguish scalar and vector quantities using definitions rather than simple memorisation of examples. Whenever you encounter a physical quantity, ask yourself this question: 'Can this quantity be completely described without mentioning a direction?' If the answer is yes, it is a scalar. If the answer is no, it is a vector. Be careful not to confuse speed (scalar) with velocity (vector), or distance (scalar) with displacement (vector).",
+    "final_answer": "B. The claim is incorrect because some physical quantities require both magnitude and direction before they are completely described.",
+    "simple_explanation": "Having a number and a unit does not automatically make a quantity a scalar. Some quantities, like mass and temperature, only need a value, so they are scalars. Others, like force and velocity, must also tell us the direction in which they act. Therefore, not every physical quantity is a scalar.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Scalar Quantities to learn how to distinguish scalars from vectors, understand why direction is important in Physics, and practise more JAMB-style questions with detailed worked explanations. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for structured lessons and exam-focused practice."
+  },
+  "tags": [
+    "scalar_quantities",
+    "classification_of_physical_quantities",
+    "magnitude",
+    "vector_introduction",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q015",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Scalar quantities",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A student claims that every physical quantity measured with a numerical value and a unit must also have a direction. Which of the following observations best proves that the student's claim is incorrect?",
+  "options": {
+    "A": "The mass of a textbook is 2.5 kg regardless of the direction in which it is placed.",
+    "B": "A car travels 80 km due east from one town to another.",
+    "C": "A force of 40 N acts vertically downward on a suspended object.",
+    "D": "An aircraft flies at a velocity of 250 m s⁻¹ due north."
+  },
+  "answer": "A",
+  "answer_text": "The mass of a textbook is 2.5 kg regardless of the direction in which it is placed.",
+  "explanation": {
+    "question_restate": "The question tests your understanding of what makes a physical quantity a scalar. You are required to identify the observation showing that some physical quantities do not require direction for their complete description.",
+    "principle": "Physics deals with quantities that describe measurable properties of objects and events. Every physical quantity consists of a numerical value (called the magnitude) and a unit. However, not every physical quantity requires direction.\n\nA beginner may ask, 'What is magnitude?' Magnitude simply means the size or amount of a quantity. For example, 5 kg, 20 m and 37°C are magnitudes when written together with their appropriate units.\n\nAnother beginner may ask, 'What is direction?' Direction tells where something points or moves, such as north, south, east, west, upward or downward.\n\nPhysical quantities are classified into two major groups:\n\n• Scalar quantities: These are quantities that are completely described by only their magnitude and unit. They do not need direction. Examples include mass, time, temperature, distance, speed, energy, volume and density.\n\n• Vector quantities: These are quantities that require both magnitude and direction before they are completely described. Examples include displacement, velocity, acceleration, force, momentum and weight.\n\nThe important distinction is that a scalar quantity remains the same irrespective of orientation or direction, whereas a vector changes meaning if its direction changes.\n\nJAMB frequently tests this concept by presenting quantities that appear similar, such as speed versus velocity or distance versus displacement. A careful understanding of whether direction is necessary helps in selecting the correct answer.",
+    "steps": [
+      "Step 1: Read the student's claim carefully. The student says every physical quantity must have a direction.",
+      "Step 2: To disprove the claim, look for a quantity that is fully described without mentioning any direction.",
+      "Step 3: Examine Option A. 'The mass of a textbook is 2.5 kg regardless of the direction in which it is placed.' Mass tells the amount of matter contained in the object. Whether the book lies flat, stands upright or is turned upside down, its mass remains 2.5 kg. No direction is needed. Therefore, mass is a scalar quantity.",
+      "Step 4: Examine Option B. 'A car travels 80 km due east.' The phrase 'due east' gives a direction. This statement describes displacement rather than merely distance because direction is included.",
+      "Step 5: Examine Option C. A force of 40 N acts vertically downward. Force always acts in a particular direction. Without the direction, the force is not completely specified.",
+      "Step 6: Examine Option D. Velocity is defined as speed in a specified direction. Therefore, '250 m s⁻¹ due north' is a vector quantity.",
+      "Step 7: Since Option A is the only observation demonstrating that direction is unnecessary, it correctly disproves the student's claim."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B: Although 80 km is a numerical value with a unit, the phrase 'due east' introduces direction. This makes the statement describe displacement rather than a pure scalar quantity. It therefore cannot be used to prove that direction is unnecessary.",
+      "Option C: Force is a vector quantity. Its effect depends on both magnitude and direction. Removing the direction would leave the description incomplete.",
+      "Option D: Velocity is different from speed. Speed is scalar, but velocity is vector because it specifies both magnitude and direction. Therefore, this option actually supports the importance of direction rather than disproving it."
+    ],
+    "exam_tip": "JAMB often pairs similar quantities to test whether you can distinguish scalars from vectors. Remember these common pairs:\n\n• Distance (scalar) ↔ Displacement (vector)\n• Speed (scalar) ↔ Velocity (vector)\n• Mass (scalar) ↔ Weight (vector)\n\nWhenever the question asks whether direction is necessary, immediately ask yourself: 'Can this quantity be completely described without mentioning north, south, east, west, upward or downward?' If the answer is yes, it is a scalar quantity.",
+    "final_answer": "A. The mass of a textbook is 2.5 kg regardless of the direction in which it is placed.",
+    "simple_explanation": "Mass tells us how much matter an object contains. A book has the same mass whether it is standing, lying flat or turned upside down. Since its value does not depend on direction, mass is a scalar quantity. Force, velocity and displacement all need direction before they are fully described, so they are vectors.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Scalar Quantities to learn how to distinguish scalars from vectors, compare commonly confused quantities, and practise more JAMB-style questions with detailed explanations. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and exam-focused practice."
+  },
+  "tags": [
+    "scalar_quantities",
+    "classification_of_physical_quantities",
+    "magnitude",
+    "vectors_vs_scalars",
+    "phy_03"
+  ],
+  "active": true
 }
+
 ]
