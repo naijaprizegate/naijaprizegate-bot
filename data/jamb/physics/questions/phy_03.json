@@ -2446,6 +2446,1252 @@
     "phy_03"
   ],
   "active": true
+},
+{
+  "id": "phy_03_q051",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Examples of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A surveyor records the following measurements during a field exercise:\n\nI. The mass of a rock sample is 3.5 kg.\nII. A vehicle travels 40 km due east.\nIII. The temperature of the surrounding air is 30°C.\nIV. A wind blows at 12 m s⁻¹ towards the south-west.\n\nWhich combination consists only of vector quantities?",
+  "options": {
+    "A": "I and III only",
+    "B": "II and IV only",
+    "C": "I, II and IV only",
+    "D": "II, III and IV only"
+  },
+  "answer": "B",
+  "answer_text": "II and IV only",
+  "explanation": {
+    "question_restate": "The question asks you to identify which of the listed physical quantities are vectors. To answer correctly, you must understand the difference between scalar and vector quantities rather than merely memorising examples.",
+    "principle": "Physics deals with quantities that describe the physical world. A physical quantity is any measurable property such as length, mass, force or temperature.\n\nA beginner may ask, 'What is a scalar quantity?'\n\nA scalar quantity is a physical quantity that is completely described by its magnitude (size or numerical value) and unit only. It does not require a direction to be fully specified.\n\nExamples include mass, distance, time, energy, work, speed, power, temperature and volume.\n\nAnother beginner may ask, 'What is a vector quantity?'\n\nA vector quantity is a physical quantity that requires BOTH magnitude and direction before it is completely described.\n\nMagnitude simply means the size or amount of the quantity.\n\nDirection tells where the quantity acts or points. Examples of direction include north, south, east, west, north-east, upward, downward, clockwise and anti-clockwise.\n\nIf the direction is removed from a vector quantity, the information becomes incomplete.\n\nCommon vector quantities include displacement, velocity, acceleration, force, momentum, weight and electric field strength.\n\nA useful memory guide is:\n\nScalar = Magnitude only.\n\nVector = Magnitude + Direction.\n\nWhenever you see words such as 'due east', 'towards the south-west', 'northward', 'upward' or '30° above the horizontal', immediately consider whether the quantity may be a vector.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThe mass of the rock is 3.5 kg.\n\nMass tells only 'how much matter' the object contains. It has magnitude but no direction.\n\nTherefore, mass is a scalar quantity.",
+      "Step 2: Examine Statement II.\n\nThe vehicle travels 40 km due east.\n\nThe measurement contains both a magnitude (40 km) and a direction (due east).\n\nThis describes a vector quantity. In practical physics, this represents displacement because both distance moved and direction are specified.",
+      "Step 3: Examine Statement III.\n\nThe temperature is 30°C.\n\nTemperature only indicates how hot or cold an object is. It has no direction.\n\nTherefore, temperature is a scalar quantity.",
+      "Step 4: Examine Statement IV.\n\nThe wind blows at 12 m s⁻¹ towards the south-west.\n\nThe statement gives a magnitude (12 m s⁻¹) and a direction (towards the south-west).\n\nThis describes velocity because the speed is accompanied by direction.\n\nVelocity is a vector quantity.",
+      "Step 5: Identify the vector quantities.\n\nStatement II is a vector.\n\nStatement IV is a vector.\n\nTherefore, the correct answer is II and IV only."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (I and III only) is incorrect because both mass and temperature are scalar quantities. Neither requires direction to describe it completely.",
+      "Option C (I, II and IV only) is incorrect because it wrongly classifies mass as a vector. A common JAMB mistake is assuming every quantity with a unit is a vector. Units alone do not determine whether a quantity is scalar or vector.",
+      "Option D (II, III and IV only) is incorrect because temperature is always a scalar quantity, even though it changes from place to place."
+    ],
+    "exam_tip": "JAMB frequently tests whether candidates truly understand the distinction between scalar and vector quantities by mixing familiar quantities in one question. Do not rely on memorising examples alone. Always ask yourself:\n\n1. Does this quantity have a magnitude?\n2. Is a direction necessary before the description is complete?\n\nIf the answer to the second question is 'Yes', the quantity is a vector. If 'No', it is a scalar.\n\nAlso be careful with similar-looking pairs:\n• Distance (scalar) vs Displacement (vector).\n• Speed (scalar) vs Velocity (vector).",
+    "final_answer": "B. II and IV only",
+    "simple_explanation": "Think of a scalar as a number with a unit only. For example, '5 kg' or '20°C' is complete by itself.\n\nA vector is different because it needs a direction. Saying '40 km' is incomplete if you are describing displacement. You must also say '40 km due east' or another direction.\n\nIn this question, only Statements II and IV include both size and direction, so they are vectors.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Examples of Scalars and Vectors to learn how to distinguish scalar and vector quantities, avoid common JAMB traps such as distance versus displacement and speed versus velocity, and practise additional worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and exam-focused practice."
+  },
+  "tags": [
+    "vectors",
+    "scalar_vs_vector",
+    "classification",
+    "physical_quantities",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q052",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Examples of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A student claims that every physical quantity involving motion is a vector quantity. Which of the following quantities best disproves the student's claim because it is associated with motion but does not require direction for its complete description?",
+  "options": {
+    "A": "Velocity",
+    "B": "Acceleration",
+    "C": "Speed",
+    "D": "Displacement"
+  },
+  "answer": "C",
+  "answer_text": "Speed",
+  "explanation": {
+    "question_restate": "The question asks you to identify the quantity that is related to motion but is not a vector. In other words, you are looking for a quantity that describes motion completely without stating any direction.",
+    "principle": "Before answering this question, it is important to understand the difference between scalar and vector quantities.\n\nA physical quantity is any measurable property of an object or event. Examples include mass, length, time, speed and force.\n\nA beginner may ask, 'What is a scalar quantity?'\n\nA scalar quantity is a physical quantity that is completely described by its magnitude (size or numerical value) alone. It does not require a direction.\n\nExamples of scalar quantities include mass, distance, time, temperature, energy, work, power, density and speed.\n\nAnother beginner may ask, 'What is a vector quantity?'\n\nA vector quantity is a physical quantity that requires both magnitude and direction before it is completely described.\n\nMagnitude tells us 'how much' of a quantity exists, while direction tells us 'where' the quantity acts or points.\n\nExamples of vector quantities include displacement, velocity, acceleration, force, momentum and weight.\n\nMany students develop the misconception that every quantity associated with motion must automatically be a vector. This is not true.\n\nSome quantities describe only how fast an object moves, while others describe both how fast and in which direction it moves.\n\nOne of the most important distinctions tested by JAMB is the difference between speed and velocity.\n\nSpeed tells us only how fast an object moves. Since only magnitude is required, speed is a scalar quantity.\n\nVelocity tells us both the speed of an object and the direction in which it moves. Since both magnitude and direction are required, velocity is a vector quantity.\n\nSimilarly, displacement describes the change in position together with direction, while acceleration describes the rate of change of velocity and also has direction. Therefore, both are vectors.",
+    "steps": [
+      "Step 1: Read the statement carefully. The student believes that every quantity involving motion is a vector.",
+      "Step 2: Examine each option to determine whether direction is necessary for its complete description.",
+      "Step 3: Velocity requires magnitude and direction (for example, 20 m s⁻¹ east), so it is a vector.",
+      "Step 4: Acceleration also has magnitude and direction (for example, 3 m s⁻² downward), making it a vector.",
+      "Step 5: Speed simply tells how fast an object moves, such as 20 m s⁻¹. No direction is needed. Therefore, speed is a scalar.",
+      "Step 6: Displacement describes both the distance moved from the starting point and the direction of that movement, so it is a vector.",
+      "Step 7: Since speed is connected with motion but does not require direction, it disproves the student's claim. Therefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Velocity is incorrect because it is a vector quantity. Saying a car moves at 60 km h⁻¹ is incomplete if the quantity is velocity. You must also state the direction, such as north or east.",
+      "B. Acceleration is incorrect because it describes how velocity changes with time. Since velocity already includes direction, acceleration must also have direction and is therefore a vector quantity.",
+      "C. Speed is correct because it tells only how fast an object moves. For example, '80 km h⁻¹' is a complete description of speed even if no direction is given.",
+      "D. Displacement is incorrect because it measures the change in position from one point to another together with direction. A statement like '10 m' is incomplete unless the direction is also given."
+    ],
+    "exam_tip": "JAMB frequently tests the distinction between similar quantities. Learn these common pairs:\n\n• Distance (scalar) versus Displacement (vector)\n• Speed (scalar) versus Velocity (vector)\n\nWhenever two quantities appear similar, ask yourself this question: 'Does the quantity require direction before its description is complete?' If the answer is yes, it is a vector. If the answer is no, it is a scalar.",
+    "final_answer": "C. Speed",
+    "simple_explanation": "Imagine two cars.\n\nCar A travels at 90 km h⁻¹.\n\nCar B travels at 90 km h⁻¹ east.\n\nThe first statement gives only the speed. It tells us how fast the car is moving but not where it is going. That is a scalar quantity.\n\nThe second statement gives both speed and direction. This is velocity, which is a vector quantity.\n\nTherefore, speed is the only option that is related to motion but does not require direction.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Examples of Scalars and Vectors to learn how to distinguish between commonly confused quantities such as speed and velocity, distance and displacement, and mass and weight. The NaijaPrizeGate CBT Tutorial Centre also provides beginner-friendly explanations, worked JAMB-style examples, memory aids and additional practice questions to strengthen your understanding."
+  },
+  "tags": [
+    "scalar_quantities",
+    "vector_quantities",
+    "speed",
+    "velocity",
+    "examples_of_vectors",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q053",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Examples of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A surveyor records the following quantities while mapping a piece of land: the area of the land, the elevation above sea level, the displacement from a reference point to a boundary marker, and the temperature of the surrounding air. Which of these quantities is a vector?",
+  "options": {
+    "A": "Area of the land",
+    "B": "Elevation above sea level",
+    "C": "Displacement from the reference point to the boundary marker",
+    "D": "Temperature of the surrounding air"
+  },
+  "answer": "C",
+  "answer_text": "Displacement from the reference point to the boundary marker",
+  "explanation": {
+    "question_restate": "The question tests your ability to distinguish between scalar and vector quantities by identifying which measured quantity requires both magnitude and direction for its complete description.",
+    "principle": "Physics classifies measurable quantities into two broad groups: scalar quantities and vector quantities.\n\nA quantity is anything that can be measured and expressed with a numerical value and a unit. Examples include 5 m, 20 kg, 30 s and 15 N.\n\nA beginner may ask, 'What is magnitude?' Magnitude simply means the size or numerical value of a quantity together with its unit. For example, saying that a road is 8 km long gives its magnitude.\n\nAnother beginner may ask, 'What is direction?' Direction tells where something points or occurs relative to a chosen reference, such as north, south, east, west, upward, downward or at a specified angle.\n\nA scalar quantity is completely described by its magnitude alone. Once its numerical value and unit are known, no additional directional information is required.\n\nA vector quantity, on the other hand, is completely described only when both its magnitude and its direction are specified.\n\nOne of the most common vector quantities encountered in introductory Physics is displacement. Displacement describes the straight-line change in position from an initial point to a final point. Since two people can move the same distance but end up in different directions, displacement must always include direction.\n\nJAMB frequently tests candidates by presenting several familiar quantities together and asking them to identify the only vector among them. Success depends on understanding the meaning of each quantity rather than memorising lists.",
+    "steps": [
+      "Step 1: Examine Option A (Area of the land).\n\nArea measures the extent of a surface and is expressed in square units such as m². Knowing that a land area is 600 m² completely describes the quantity. It does not require a direction. Therefore, area is a scalar quantity.",
+      "Step 2: Examine Option B (Elevation above sea level).\n\nElevation tells how high a place is relative to mean sea level. For example, an elevation of 250 m already gives complete information about the quantity. It does not require a compass direction. Hence, elevation is treated as a scalar quantity.",
+      "Step 3: Examine Option C (Displacement from the reference point to the boundary marker).\n\nDisplacement describes the change in position between two points. Suppose the marker is 40 m east of the reference point. Saying only '40 m' is incomplete because another marker could also be 40 m north or 40 m south. Therefore, displacement must include both magnitude (40 m) and direction (east), making it a vector quantity.",
+      "Step 4: Examine Option D (Temperature of the surrounding air).\n\nTemperature indicates the degree of hotness or coldness of a body and is measured in degrees Celsius (°C), kelvin (K) or degrees Fahrenheit (°F). Temperature has magnitude only and no direction. It is therefore a scalar quantity.",
+      "Step 5: Compare all four options.\n\nOnly displacement requires both magnitude and direction for its complete description. Therefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A: Area is a scalar because it measures the size of a surface only. Students sometimes confuse area with vectors because it has units involving squared dimensions (m²), but squared units do not make a quantity a vector.",
+      "Option B: Elevation tells how high a point is relative to sea level. Although it refers to height, it is simply a measured value and does not specify a direction of motion or action. Hence, it is a scalar.",
+      "Option D: Temperature has only magnitude. A common misconception is to think that 'heat rises', so temperature must have direction. In reality, temperature itself has no direction; only heat transfer has a direction."
+    ],
+    "exam_tip": "In JAMB examinations, questions on scalar and vector quantities often include familiar everyday measurements. Instead of memorising examples, ask yourself one question: 'Do I need to state a direction before the quantity is completely described?' If the answer is yes, it is a vector. If the answer is no, it is a scalar.",
+    "final_answer": "C. Displacement from the reference point to the boundary marker.",
+    "simple_explanation": "Imagine two students each walk 50 m. One walks east while the other walks west. They covered the same distance, but they did not end up at the same place. To describe where each student finally is, you must mention both the distance moved and the direction. That is why displacement is a vector. The other quantities in the question—area, elevation and temperature—can all be fully described without mentioning any direction, so they are scalars.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Examples of Vectors to learn how to distinguish vectors from scalars using practical situations, worked JAMB-style examples, comparison tables and memory techniques. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for more beginner-friendly lessons and exam-focused practice."
+  },
+  "tags": [
+    "vectors",
+    "examples_of_vectors",
+    "displacement",
+    "scalar_and_vector_classification",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q054",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Examples of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "comprehension",
+  "question_type": "mcq",
+  "question": "A student claims that any physical quantity measured in newtons or metres must be a vector. Which of the following quantities is correctly identified as a vector?",
+  "options": {
+    "A": "Pressure",
+    "B": "Work",
+    "C": "Momentum",
+    "D": "Energy"
+  },
+  "answer": "C",
+  "answer_text": "Momentum",
+  "explanation": {
+    "question_restate": "The question tests your ability to recognize a genuine vector quantity and distinguish it from scalar quantities that may have units commonly associated with force or distance.",
+    "principle": "In Physics, every measurable quantity is called a physical quantity. Physical quantities are divided into two major groups: scalar quantities and vector quantities.\n\nA beginner may ask, 'What is a scalar quantity?' A scalar quantity is a quantity that is completely described by its magnitude (size or numerical value) alone. It does not require a direction. Examples include mass, time, temperature, energy, work, distance and pressure.\n\nAnother beginner may ask, 'What is a vector quantity?' A vector quantity is a quantity that requires both magnitude and direction before it is completely described. Knowing only its size is not enough. Examples include displacement, velocity, acceleration, force, momentum and weight.\n\nA common misconception is to classify quantities according to their units. This is incorrect. The unit of a quantity does not determine whether it is scalar or vector. Instead, ask this question: 'Does this quantity require a direction to describe it completely?'\n\nMomentum is defined as the product of mass and velocity.\n\nMomentum = Mass × Velocity\n\nMass is a scalar quantity, while velocity is a vector quantity. Multiplying a scalar by a vector produces another vector. Therefore, momentum has both magnitude and direction.\n\nPressure is force acting per unit area. Although force is a vector, pressure at a point is treated as a scalar because it has magnitude only and acts equally in all directions within a fluid.\n\nWork is defined as the product of force and displacement in the direction of the force. Even though it involves vectors in its calculation, the result is a scalar quantity.\n\nEnergy measures the capacity to do work. It has magnitude only and no direction, making it a scalar.",
+    "steps": [
+      "Step 1: Read each option carefully without being influenced by its unit.",
+      "Step 2: Ask whether the quantity requires a direction for complete description.",
+      "Step 3: Pressure has magnitude only, so it is a scalar.",
+      "Step 4: Work has magnitude only, even though it is calculated using force and displacement. It is a scalar.",
+      "Step 5: Momentum always has the same direction as the object's velocity. Therefore, it possesses both magnitude and direction and is a vector.",
+      "Step 6: Energy has magnitude only and is therefore a scalar.",
+      "Step 7: The only correctly identified vector quantity is Momentum."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Pressure is a scalar quantity. Many candidates mistakenly think it is a vector because it is calculated using force. However, the final quantity, pressure, does not require a direction for its description.",
+      "B. Work is a scalar quantity. Although force and displacement are vectors, their combined effect in calculating work produces a scalar result. JAMB often tests this misconception.",
+      "D. Energy is a scalar quantity. It tells how much ability a system has to perform work but does not indicate any direction."
+    ],
+    "exam_tip": "JAMB frequently mixes scalar and vector quantities in the options. Do not classify a quantity based on its unit or the formula used to calculate it. Instead, always ask yourself: 'Does this quantity require a direction before it is completely described?' If the answer is yes, it is a vector. If not, it is a scalar.",
+    "final_answer": "C. Momentum",
+    "simple_explanation": "Imagine pushing a shopping trolley. Saying the trolley has a momentum of 15 kg m s⁻¹ is incomplete unless you also say the direction in which it is moving. That is why momentum is a vector. On the other hand, saying an object has 500 J of energy or has done 500 J of work is complete without mentioning any direction. Those are scalar quantities.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Examples of Scalars and Vectors to learn how to distinguish vector quantities from scalar quantities, understand common examination traps, and practise additional JAMB-style questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and worked examples."
+  },
+  "tags": [
+    "vectors",
+    "momentum",
+    "scalar_and_vector_quantities",
+    "classification_of_quantities",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q055",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Examples of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A surveyor recorded the following observations during a field exercise:\n\nI. The distance between two boundary pillars is 120 m.\nII. The wind blows at 15 m s⁻¹ towards the south-west.\nIII. The mass of a concrete block is 80 kg.\nIV. A force of 250 N acts vertically upward on a crane hook.\n\nWhich combination consists entirely of vector quantities?",
+  "options": {
+    "A": "I and III only",
+    "B": "II and IV only",
+    "C": "I, II and IV only",
+    "D": "II, III and IV only"
+  },
+  "answer": "B",
+  "answer_text": "II and IV only",
+  "explanation": {
+    "question_restate": "The question asks you to identify which of the listed physical quantities are vectors. To answer correctly, you must distinguish between scalar quantities, which have magnitude only, and vector quantities, which have both magnitude and direction.",
+    "principle": "Before solving this question, let us first understand the fundamental ideas.\n\nA physical quantity is any measurable property that can be expressed using a number and a unit. Examples include length, time, speed, force and mass.\n\nPhysical quantities are grouped into two broad classes:\n\n1. Scalar quantities.\nA scalar quantity has only magnitude. Magnitude simply means the numerical size or amount of a quantity. A scalar tells us 'how much' but not 'which direction.' Examples include mass, distance, time, temperature, energy, volume, density and speed.\n\nA beginner may ask, 'Why is direction not important for a scalar?' The answer is that describing the size alone completely defines the quantity. For example, saying a bag has a mass of 5 kg is sufficient. Adding 'towards the east' would make no physical sense because mass does not have direction.\n\n2. Vector quantities.\nA vector quantity possesses both magnitude and direction. Both pieces of information are necessary to describe the quantity completely. If either the magnitude or the direction is missing, the description is incomplete.\n\nExamples of vectors include displacement, velocity, acceleration, force, momentum and weight.\n\nA beginner may also ask, 'Is every quantity measured in metres a vector?' No. Distance and displacement are both measured in metres, yet distance is a scalar while displacement is a vector. The difference is that displacement specifies direction whereas distance does not.\n\nLikewise, speed and velocity have similar units (m s⁻¹), but speed is scalar while velocity is vector because velocity includes direction.\n\nWhenever you encounter words such as 'towards the north', 'south-west', 'eastward', 'vertically upward', or 'at an angle of 30°', they often indicate that the quantity is being described as a vector. However, always identify the physical quantity itself before making your decision.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\n'The distance between two boundary pillars is 120 m.'\n\nDistance tells only how far apart two points are. It does not specify any direction. Therefore, distance is a scalar quantity.",
+      "Step 2: Examine Statement II.\n\n'The wind blows at 15 m s⁻¹ towards the south-west.'\n\nThe physical quantity here is velocity because both the speed (15 m s⁻¹) and the direction (towards the south-west) are given. Velocity is a vector quantity.",
+      "Step 3: Examine Statement III.\n\n'The mass of a concrete block is 80 kg.'\n\nMass tells only the amount of matter contained in the object. It has magnitude but no direction. Therefore, mass is a scalar quantity.",
+      "Step 4: Examine Statement IV.\n\n'A force of 250 N acts vertically upward on a crane hook.'\n\nForce requires both magnitude (250 N) and direction (vertically upward). Therefore, force is a vector quantity.",
+      "Step 5: Collect the vector quantities.\n\nStatement II is a vector.\nStatement IV is a vector.\n\nTherefore, the correct answer is II and IV only."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (I and III only) is incorrect because both distance and mass are scalar quantities. Neither requires direction for complete description.",
+      "Option C (I, II and IV only) is incorrect because it wrongly classifies distance as a vector. Distance measures only the length of a path travelled and has no direction.",
+      "Option D (II, III and IV only) is incorrect because although velocity and force are vectors, mass is not. Many candidates confuse mass with weight. Weight is a force and is therefore a vector, whereas mass is a scalar."
+    ],
+    "exam_tip": "JAMB frequently tests your ability to distinguish between similar quantities. Pay special attention to these common pairs:\n\n• Distance (scalar) vs Displacement (vector)\n• Speed (scalar) vs Velocity (vector)\n• Mass (scalar) vs Weight (vector)\n\nDo not decide based only on the unit. Always ask yourself: 'Does this quantity require a direction to describe it completely?' If the answer is yes, it is a vector.",
+    "final_answer": "B. II and IV only",
+    "simple_explanation": "Think of a scalar as a quantity that answers only the question 'How much?'\n\nThink of a vector as a quantity that answers both 'How much?' and 'In which direction?'\n\nDistance (120 m) simply tells how far apart two points are, so it is a scalar.\n\nMass (80 kg) tells the amount of matter in an object, so it is also a scalar.\n\nThe wind moving at 15 m s⁻¹ towards the south-west gives both speed and direction, making it a vector.\n\nForce of 250 N acting vertically upward also gives both magnitude and direction, so it is a vector.\n\nHence, only Statements II and IV are vectors.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Examples of Scalars and Vectors to learn how to distinguish scalar and vector quantities, understand common examination traps such as mass versus weight and speed versus velocity, and practise additional JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive lessons, interactive quizzes and exam-focused practice."
+  },
+  "tags": [
+    "vectors",
+    "scalar_vs_vector",
+    "examples_of_vectors",
+    "velocity",
+    "force",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q056",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Examples of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A pilot reports that an aircraft travelled 480 km due east from City P to City Q. Which physical quantity is correctly represented by the statement '480 km due east'?",
+  "options": {
+    "A": "Distance, because it gives the length of the journey.",
+    "B": "Speed, because it describes how fast the aircraft moved.",
+    "C": "Displacement, because it specifies both the magnitude and the direction of the change in position.",
+    "D": "Time, because the duration of the flight can be estimated from the distance travelled."
+  },
+  "answer": "C",
+  "answer_text": "Displacement, because it specifies both the magnitude and the direction of the change in position.",
+  "explanation": {
+    "question_restate": "This question tests your ability to recognize a vector quantity from the information given in a real-life situation involving an aircraft. You must identify the quantity that requires both magnitude and direction.",
+    "principle": "Before answering the question, it is important to understand the difference between scalar and vector quantities.\n\nA physical quantity is any measurable property in Physics. Examples include length, mass, force, speed and temperature.\n\nPhysical quantities are classified into two groups:\n\n• Scalar quantities\n• Vector quantities\n\nA scalar quantity is a quantity that is completely described by its magnitude (size or numerical value) alone. It does not require a direction.\n\nExamples of scalar quantities include:\n• Distance\n• Mass\n• Time\n• Speed\n• Temperature\n• Energy\n• Volume\n\nA vector quantity is a quantity that requires BOTH:\n1. Magnitude (how much or how large), and\n2. Direction (where it acts or where it points).\n\nWithout both pieces of information, a vector is not completely described.\n\nA beginner may ask, 'What is magnitude?'\n\nMagnitude simply means the numerical size or amount of a quantity together with its unit. For example, 480 km is the magnitude of the journey.\n\nAnother beginner may ask, 'What is direction?'\n\nDirection tells where the quantity points or acts. Examples include due north, due south, due east, due west, northeast, southwest, upward and downward.\n\nAnother important question is, 'What is displacement?'\n\nDisplacement is the straight-line change in position of an object from its starting point to its final point, together with the direction of that change.\n\nNotice that displacement is different from distance.\n\n• Distance is the total length of the actual path travelled and is a scalar quantity.\n• Displacement is the shortest straight-line path from the starting point to the ending point together with its direction, making it a vector quantity.\n\nWhenever a statement contains both a numerical value and a clearly stated direction, JAMB often expects you to recognise it as describing a vector quantity.",
+    "steps": [
+      "Step 1: Read the information given carefully.\n\nThe aircraft travelled '480 km due east.'",
+      "Step 2: Identify the magnitude.\n\nThe magnitude is 480 km.",
+      "Step 3: Identify the direction.\n\nThe direction given is 'due east.'",
+      "Step 4: Since the description contains BOTH magnitude (480 km) and direction (due east), it satisfies the definition of a vector quantity.",
+      "Step 5: Among the options, displacement is the quantity that describes a change in position using both magnitude and direction.\n\nTherefore, the correct answer is Displacement."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Distance is incorrect because distance measures only the total length of the path travelled. Although the statement contains a distance value, the inclusion of 'due east' means the information is describing displacement rather than merely distance. JAMB often uses this distinction to test candidates.",
+      "B. Speed is incorrect because speed tells how fast an object moves. To calculate speed, information about time is also required. The question provides neither the travel time nor the rate of motion.",
+      "D. Time is incorrect because no duration of travel is given. Time is measured in seconds, minutes or hours, not in kilometres. Estimating time would require additional information such as speed."
+    ],
+    "exam_tip": "One of JAMB's favourite ways of testing vectors is by including words such as 'due north', 'due east', 'southwest' or 'at an angle of 30°'. Whenever you see a numerical value accompanied by a direction, immediately ask yourself whether the quantity being described is a vector. Remember that displacement, velocity, acceleration, force and momentum require direction, while distance, speed, mass and time do not.",
+    "final_answer": "C. Displacement, because it specifies both the magnitude and the direction of the change in position.",
+    "simple_explanation": "Think of telling a friend where your house is. If you simply say '480 km', your friend still does not know where to go. But if you say '480 km due east', your friend now knows both how far and in which direction to travel.\n\nThat is exactly how vectors work. A vector always tells you both 'how much' and 'which way.' Since the statement '480 km due east' includes both pieces of information, it describes displacement, which is a vector quantity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Examples of Vectors to learn how to distinguish between scalar and vector quantities, understand the difference between distance and displacement, and practise more JAMB-style questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed beginner-friendly lessons, worked examples and exam-focused practice."
+  },
+  "tags": [
+    "vectors",
+    "displacement",
+    "examples_of_vectors",
+    "scalar_and_vector_quantities",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q057",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Examples of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A student observes the following quantities during a physics practical:\n\nI. A force of 25 N acting due east.\nII. A speed of 15 m s⁻¹.\nIII. An acceleration of 3 m s⁻² directed vertically downward.\nIV. A mass of 4.5 kg.\n\nWhich combination consists entirely of vector quantities?",
+  "options": {
+    "A": "I and II only",
+    "B": "II and IV only",
+    "C": "I and III only",
+    "D": "I, III and IV only"
+  },
+  "answer": "C",
+  "answer_text": "I and III only",
+  "explanation": {
+    "question_restate": "The question tests your ability to distinguish between scalar and vector quantities by examining whether each quantity has only magnitude or has both magnitude and direction.",
+    "principle": "Before answering this question, a beginner must first understand the difference between scalar and vector quantities.\n\nA physical quantity is any measurable property in Physics. Examples include mass, length, force, speed, time and temperature.\n\nA beginner may ask, 'What is magnitude?'\n\nMagnitude simply means the numerical size or amount of a quantity together with its unit. For example, saying a table is 2 m long tells us its magnitude.\n\nAnother beginner may ask, 'What is direction?'\n\nDirection tells us where something points or moves. Examples include north, south, east, west, upward, downward, north-east and so on.\n\nA scalar quantity is a physical quantity that is completely described by its magnitude alone. It does not require any direction to have complete meaning.\n\nExamples of scalar quantities include:\n• Mass\n• Time\n• Distance\n• Speed\n• Energy\n• Temperature\n• Volume\n• Density\n\nA vector quantity is a physical quantity that requires both magnitude and direction before it is completely described.\n\nExamples of vector quantities include:\n• Force\n• Velocity\n• Acceleration\n• Displacement\n• Momentum\n• Weight\n\nOne common source of confusion in JAMB examinations is the difference between speed and velocity.\n\nSpeed tells us how fast an object moves and is a scalar because no direction is required.\n\nVelocity tells us both the speed and the direction of motion. Therefore, velocity is a vector.\n\nLikewise, distance is a scalar because it measures only how much ground is covered, whereas displacement is a vector because it tells both the distance moved and the direction from the starting point.",
+    "steps": [
+      "Step 1: Examine Quantity I.\n\n'A force of 25 N acting due east.'\n\nThe magnitude is 25 N.\n\nThe direction is due east.\n\nSince both magnitude and direction are given, force is a vector quantity.",
+      "Step 2: Examine Quantity II.\n\n'A speed of 15 m s⁻¹.'\n\nOnly the magnitude (15 m s⁻¹) is given.\n\nSpeed does not require direction for its definition.\n\nTherefore, speed is a scalar quantity.",
+      "Step 3: Examine Quantity III.\n\n'An acceleration of 3 m s⁻² directed vertically downward.'\n\nThe magnitude is 3 m s⁻².\n\nThe direction is vertically downward.\n\nAcceleration always has both magnitude and direction because it describes how velocity changes.\n\nTherefore, acceleration is a vector quantity.",
+      "Step 4: Examine Quantity IV.\n\n'A mass of 4.5 kg.'\n\nMass only tells the amount of matter in an object.\n\nIt does not point in any direction.\n\nTherefore, mass is a scalar quantity.",
+      "Step 5: Identify the quantities that are vectors.\n\nVectors are:\n• I (Force)\n• III (Acceleration)\n\nHence, the correct answer is 'I and III only.'"
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (I and II only) is incorrect because although force is a vector, speed is not. Many students confuse speed with velocity. Remember that speed has magnitude only, whereas velocity has both magnitude and direction.",
+      "Option B (II and IV only) is incorrect because both speed and mass are scalar quantities. This option contains no vector quantity at all.",
+      "Option D (I, III and IV only) is incorrect because mass is always a scalar quantity, regardless of its value. Having a unit such as kilogram (kg) does not make a quantity a vector."
+    ],
+    "exam_tip": "JAMB frequently tests your understanding of scalar and vector quantities by presenting a mixed list of physical quantities. Instead of memorising long lists, ask yourself two questions:\n\n1. Does the quantity have a numerical value (magnitude)?\n2. Must I also state a direction before the quantity is complete?\n\nIf the answer to the second question is 'Yes,' the quantity is a vector. If 'No,' it is a scalar.\n\nAlso pay special attention to commonly confused pairs:\n• Speed → Scalar\n• Velocity → Vector\n• Distance → Scalar\n• Displacement → Vector\n• Mass → Scalar\n• Weight → Vector",
+    "final_answer": "C. I and III only",
+    "simple_explanation": "Think of a vector as giving two pieces of information: 'How much?' and 'Which direction?'\n\nForce tells us both how large the force is and where it acts.\n\nAcceleration tells us both how quickly velocity changes and the direction of that change.\n\nSpeed only tells how fast something moves, while mass only tells the amount of matter in an object. Neither requires direction.\n\nTherefore, only force and acceleration are vectors in this question.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Examples of Vectors to learn how to distinguish between scalar and vector quantities, understand commonly confused pairs such as speed versus velocity and distance versus displacement, and practise additional JAMB-style questions with detailed worked solutions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for more beginner-friendly lessons and exam-focused practice."
+  },
+  "tags": [
+    "vectors",
+    "scalar_and_vector_quantities",
+    "examples_of_vectors",
+    "classification_of_physical_quantities",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q058",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Examples of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A student walks 40 m due east from the school gate to the library and then 30 m due north to the laboratory. Which of the following physical quantities best describes the student's overall change in position from the school gate to the laboratory?",
+  "options": {
+    "A": "Distance because it is measured in metres",
+    "B": "Displacement because it has both magnitude and direction",
+    "C": "Speed because the student covered a measurable path",
+    "D": "Mass because it remains unchanged during the movement"
+  },
+  "answer": "B",
+  "answer_text": "Displacement because it has both magnitude and direction",
+  "explanation": {
+    "question_restate": "This question asks you to identify the physical quantity that describes the student's overall change in position after moving first east and then north. Although several quantities are mentioned in the options, only one correctly describes both how far and in which direction the student ends up relative to the starting point.",
+    "principle": "Before answering this question, it is important to understand the difference between scalar and vector quantities.\n\nA physical quantity is any measurable property in Physics. Examples include length, time, mass, force, speed and velocity.\n\nPhysical quantities are divided into two broad groups:\n\n• Scalar quantities\nA scalar quantity is completely described by its magnitude (size or numerical value) only. It does not require a direction. Examples include mass, time, temperature, energy, work, volume, density, speed and distance.\n\n• Vector quantities\nA vector quantity requires both magnitude and direction before it is completely described. Magnitude tells us 'how much', while direction tells us 'which way'. Examples include displacement, velocity, acceleration, force, momentum and weight.\n\nA beginner may ask, 'What is magnitude?'\nMagnitude simply means the numerical size of a quantity together with its unit. For example, 40 m, 5 kg and 20 s are magnitudes.\n\nAnother beginner may ask, 'What is direction?'\nDirection tells us where something points or moves. Examples include north, south, east, west, upward, downward, northeast and southwest.\n\nA very important distinction that JAMB frequently tests is the difference between distance and displacement.\n\nDistance is the total length of the actual path travelled. It is a scalar quantity because only the length of the path matters.\n\nDisplacement is the straight-line change in position from the starting point to the final point together with the direction. Since both magnitude and direction are required, displacement is a vector quantity.\n\nNotice that two people may travel the same distance but have different displacements if they finish at different locations.",
+    "steps": [
+      "Step 1: Identify what happened during the movement.\n\nThe student first walked 40 m due east and then 30 m due north. The movement therefore occurred in two different directions.",
+      "Step 2: Read carefully what the question is asking.\n\nThe question does not ask for the total path covered. Instead, it asks for the student's overall change in position from the starting point to the final point.",
+      "Step 3: Recall the Physics definition.\n\nOverall change in position is called displacement.\n\nDisplacement depends on where the journey started and where it ended, not on every part of the path travelled.",
+      "Step 4: Observe that the final position can be described by both a magnitude and a direction.\n\nThe student is somewhere to the northeast of the school gate. Therefore, the answer must be a vector quantity.",
+      "Step 5: Compare with the options.\n\nOption B correctly states that the required quantity is displacement because it possesses both magnitude and direction."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A: Distance is measured in metres, but merely having the unit metre does not make it the correct answer. The question asks for the overall change in position, not the total path length. Many JAMB candidates confuse distance with displacement because both are measured in metres.",
+      "Option C: Speed tells how fast an object moves. It does not describe where the object ends up relative to its starting point. Furthermore, no time was given, so speed cannot even be determined from the information provided.",
+      "Option D: Mass is the amount of matter in an object. Walking from one place to another does not describe mass, and the question is about motion rather than the properties of matter."
+    ],
+    "exam_tip": "JAMB regularly tests the distinction between distance and displacement. Whenever you see expressions such as 'overall change in position', 'from the starting point to the final point', or 'straight-line separation', immediately think of displacement, which is a vector quantity. Do not choose distance simply because both quantities use the unit metre.",
+    "final_answer": "B. Displacement because it has both magnitude and direction.",
+    "simple_explanation": "Imagine drawing a straight line from the school gate directly to the laboratory. That straight line, together with the direction it points, represents the student's displacement. It does not matter that the student first walked east and then north. Since the answer must include both how far and in which direction the student ended up, the correct quantity is displacement.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Examples of Vectors to learn the differences between distance and displacement, speed and velocity, force and weight, together with worked JAMB-style examples and practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for more beginner-friendly lessons and exam-focused practice."
+  },
+  "tags": [
+    "vectors",
+    "displacement",
+    "distance",
+    "examples_of_vectors",
+    "scalar_and_vector_quantities",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q059",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Examples of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A student observes the following quantities during a field experiment:\n\nI. The tension in a stretched rope pulling a cart.\nII. The amount of heat supplied to a metal block.\nIII. The displacement of a surveyor from one reference point to another.\nIV. The mass of the metal block.\n\nWhich combination consists entirely of vector quantities?",
+  "options": {
+    "A": "I and II only",
+    "B": "II and IV only",
+    "C": "I and III only",
+    "D": "III and IV only"
+  },
+  "answer": "C",
+  "answer_text": "I and III only",
+  "explanation": {
+    "question_restate": "The question tests your ability to distinguish between scalar and vector quantities by identifying which of the listed physical quantities require both magnitude and direction for complete description.",
+    "principle": "Before solving this question, a beginner should first understand what physicists mean by a 'physical quantity.' A physical quantity is anything that can be measured and expressed using a number together with a unit. Examples include 5 kg, 12 m, 30 s and 40 N.\n\nPhysical quantities are grouped into two major classes:\n\n1. Scalar quantities.\nA scalar quantity is completely described by its magnitude (size or numerical value) and unit alone. It does not require any direction. For example, saying that a body has a mass of 8 kg gives complete information because mass has no direction.\n\n2. Vector quantities.\nA vector quantity requires both magnitude and direction before it is completely described. For example, saying that a force is 20 N is incomplete unless the direction is also given, such as 20 N eastward or 20 N upward.\n\nA beginner may ask, 'What is magnitude?' Magnitude simply means the amount or size of a quantity. For example, in '15 m', the magnitude is 15 while the unit is metre (m).\n\nAnother beginner may ask, 'Why do some quantities need direction?' Many physical effects depend not only on how large a quantity is but also on the direction in which it acts. A force pulling east does not have the same effect as an equal force pulling west.\n\nSome common scalar quantities are:\n• Mass\n• Time\n• Temperature\n• Distance\n• Speed\n• Energy\n• Work\n• Heat\n• Volume\n• Density\n\nSome common vector quantities are:\n• Displacement\n• Velocity\n• Acceleration\n• Force\n• Weight\n• Momentum\n• Tension\n\nNotice that 'tension' is actually a force transmitted through a rope, string or cable. Since every force has both magnitude and direction, tension is a vector quantity.",
+    "steps": [
+      "Step 1: Examine Quantity I.\n\n'Tension in a stretched rope' is a pulling force transmitted through the rope.\n\nSince force always has both magnitude and direction, tension is a vector quantity.",
+      "Step 2: Examine Quantity II.\n\n'Heat supplied' is a form of energy transfer.\n\nEnergy has magnitude but no direction. Heat is therefore a scalar quantity.",
+      "Step 3: Examine Quantity III.\n\n'Displacement' describes the change in position from one point to another together with the direction of movement.\n\nFor example, moving 25 m north is different from moving 25 m south. Therefore, displacement is a vector quantity.",
+      "Step 4: Examine Quantity IV.\n\n'Mass' measures the amount of matter in an object.\n\nMass has magnitude only and does not point in any direction. Therefore, it is a scalar quantity.",
+      "Step 5: Identify the quantities that are vectors.\n\nVectors are:\n• I (Tension)\n• III (Displacement)\n\nHence, the correct answer is I and III only."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (I and II only) is incorrect because although tension is a vector, heat is a scalar quantity. Heat describes the amount of thermal energy transferred and does not possess direction.",
+      "Option B (II and IV only) is incorrect because both heat and mass are scalar quantities. This option contains no vector quantity at all. Students sometimes confuse heat flow with heat itself. Heat may flow in a direction, but the quantity 'heat' is treated as a scalar.",
+      "Option D (III and IV only) is incorrect because displacement is indeed a vector, but mass is a scalar. A common misconception is to think that anything associated with motion must be a vector, but mass is independent of direction."
+    ],
+    "exam_tip": "JAMB frequently mixes familiar scalar and vector quantities in the same question to test conceptual understanding rather than memorization. Learn the standard examples thoroughly. In particular, remember that force, tension, weight, displacement, velocity and acceleration are vectors, whereas heat, work, energy, mass, time, temperature and speed are scalars. Whenever you see the words 'force', 'pull', 'push' or 'displacement', immediately check whether direction is involved.",
+    "final_answer": "C. I and III only.",
+    "simple_explanation": "Think of vectors as quantities that need an arrow showing where they act. Tension pulls along a rope, so its direction matters. Displacement tells both how far and in which direction an object moves, so it is also a vector.\n\nHeat and mass do not point in any direction. They are described completely by their numerical values and units. Therefore, only I and III are vector quantities.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Examples of Vectors to learn how to distinguish vectors from scalars using memory aids, practical examples, and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for more beginner-friendly lessons, detailed explanations and exam-focused practice."
+  },
+  "tags": [
+    "vectors",
+    "scalar_and_vector_classification",
+    "tension",
+    "displacement",
+    "heat",
+    "mass",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q060",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Examples of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A pilot reports that an aircraft flew 420 km due east from City P to City Q before turning and flying 180 km due north to City R. Which physical quantity is represented by the straight-line displacement from City P directly to City R?",
+  "options": {
+    "A": "Distance because it measures the total length of the route travelled.",
+    "B": "Speed because it describes how fast the aircraft moved.",
+    "C": "Displacement because it has both magnitude and direction from the starting point to the final position.",
+    "D": "Time because it indicates how long the journey lasted."
+  },
+  "answer": "C",
+  "answer_text": "Displacement because it has both magnitude and direction from the starting point to the final position.",
+  "explanation": {
+    "question_restate": "The question describes an aircraft travelling first due east and then due north. It asks you to identify the physical quantity represented by the straight-line path joining the starting point directly to the final destination.",
+    "principle": "Physics classifies quantities into two major groups: scalar quantities and vector quantities.\n\nA physical quantity is any measurable property of an object or event. Examples include mass, length, force, temperature and velocity.\n\nA scalar quantity is completely described by its magnitude (size or numerical value) only. It does not require a direction. Examples are mass, distance, time, energy, speed and temperature.\n\nA vector quantity requires both magnitude and direction before it is completely described. Magnitude tells 'how much,' while direction tells 'which way.' Examples include displacement, velocity, acceleration, force, momentum and weight.\n\nA beginner may ask, 'What is displacement?' Displacement is the shortest straight-line distance from the initial position to the final position together with its direction. It is different from distance.\n\nAnother beginner may ask, 'What is distance?' Distance is the total length of the actual path travelled, regardless of direction. Distance is a scalar, while displacement is a vector.\n\nIn this question, the aircraft followed two separate paths, but the quantity being considered is the straight-line path from the starting point directly to the final position. Since this path has both a magnitude and a direction, it represents displacement, which is a vector quantity.",
+    "steps": [
+      "Step 1: Identify what the aircraft actually did. It first travelled 420 km due east and then 180 km due north.",
+      "Step 2: Notice that the question does not ask for the total route travelled. Instead, it refers to the straight-line path joining the starting point (City P) directly to the final position (City R).",
+      "Step 3: Recall the definition of displacement. Displacement is the shortest straight-line distance from the starting point to the finishing point together with its direction.",
+      "Step 4: Since the straight-line path has both a measurable length (magnitude) and a definite direction (towards the north-east of City P), it is a vector quantity.",
+      "Step 5: Therefore, the correct answer is displacement."
+    ],
+    "why_other_options_are_wrong": [
+      "A. Distance refers to the total length of the actual route travelled. In this journey, the aircraft travelled 420 km + 180 km = 600 km along the route. The straight-line path from the starting point to the final point is not the distance travelled but the displacement.",
+      "B. Speed describes how fast an object moves and is measured as distance travelled per unit time. The question gives no information about time taken, and the straight-line path itself does not represent speed.",
+      "D. Time measures the duration of an event. The straight-line connection between two positions cannot represent time because time has no direction and is not related to position in this way."
+    ],
+    "exam_tip": "JAMB frequently tests the distinction between distance and displacement. Whenever a question mentions the 'straight-line distance from the starting point to the final position,' immediately think of displacement. If the question refers to the 'total path covered,' think of distance. Many candidates lose marks because they confuse these two related quantities.",
+    "final_answer": "C. Displacement because it has both magnitude and direction from the starting point to the final position.",
+    "simple_explanation": "Imagine walking from your house to a shop and then to your friend's house. The distance is the total length of the roads you walked. However, if someone draws a straight line from your house directly to your friend's house, that straight line represents your displacement. Since it tells both how far away your friend's house is and in which direction it lies, displacement is a vector quantity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Examples of Vectors to learn the differences between distance and displacement, speed and velocity, and other commonly confused scalar and vector quantities. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, worked examples and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "vectors",
+    "displacement",
+    "examples_of_vectors",
+    "scalar_vs_vector",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q061",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Addition of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A student walks 8 m due east and then 6 m due north. Treating each movement as a vector, what is the magnitude of the student's resultant displacement from the starting point?",
+  "options": {
+    "A": "10 m",
+    "B": "14 m",
+    "C": "7 m",
+    "D": "2 m"
+  },
+  "answer": "A",
+  "answer_text": "10 m",
+  "explanation": {
+    "question_restate": "The question asks you to find the single vector, called the resultant displacement, that has the same overall effect as two successive movements: 8 m east followed by 6 m north.",
+    "principle": "Before solving this question, it is important to understand what a vector is.\n\nA vector is a physical quantity that has both magnitude and direction. Magnitude simply means the size or numerical value of the quantity, while direction tells us where it points. For example, '8 m due east' is a vector because it tells us both how far (8 m) and in which direction (east).\n\nDisplacement is a vector quantity. It describes the shortest straight-line distance from the starting point to the final position, together with the direction of that straight line.\n\nA beginner may ask, 'Why can't we simply add 8 m and 6 m to get 14 m?' The reason is that the two movements are not along the same straight line. One movement is towards the east while the other is towards the north. Since the directions are different, ordinary arithmetic addition cannot be used.\n\nWhenever two vectors act at right angles (90°) to each other, they form a right-angled triangle. The magnitude of the resultant vector is then obtained using Pythagoras' theorem.\n\nPythagoras' theorem states that for a right-angled triangle:\n\nHypotenuse² = Base² + Height²\n\nIn vector addition, the hypotenuse represents the resultant vector. Therefore,\n\nResultant² = (Horizontal Vector)² + (Vertical Vector)²\n\nor\n\nR² = X² + Y²\n\nwhere:\nR = magnitude of the resultant vector,\nX = horizontal component,\nY = vertical component.\n\nThis formula is only valid when the two vectors are perpendicular to each other (that is, they meet at an angle of 90°).",
+    "steps": [
+      "Step 1: Identify the given vectors.\n\nHorizontal movement = 8 m due east.\n\nVertical movement = 6 m due north.",
+      "Step 2: Observe that east and north are perpendicular directions. Since they are at right angles, Pythagoras' theorem can be applied.",
+      "Step 3: Write the formula.\n\nR² = X² + Y²",
+      "Step 4: Substitute the values.\n\nR² = 8² + 6²",
+      "Step 5: Evaluate each square.\n\n8² = 64\n\n6² = 36",
+      "Step 6: Add the squared values.\n\nR² = 64 + 36 = 100",
+      "Step 7: Take the square root of both sides.\n\nR = √100 = 10 m",
+      "Step 8: Compare the calculated value with the available options.\n\nThe correct answer is 10 m."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (14 m) is obtained by adding 8 m and 6 m directly (8 + 6 = 14). This would only be correct if both movements were in exactly the same direction. Since one movement is east and the other is north, direct addition is incorrect.",
+      "Option C (7 m) is smaller than the larger of the two individual movements (8 m). The resultant of two non-zero perpendicular vectors must always be greater than either individual vector but less than their arithmetic sum. Therefore, 7 m is impossible.",
+      "Option D (2 m) is obtained by subtracting the two distances (8 − 6 = 2). Subtraction is inappropriate because the vectors are not acting in opposite directions. East and north are perpendicular directions, not opposite directions."
+    ],
+    "exam_tip": "JAMB frequently tests vector addition using movements due east, west, north and south. Whenever two vectors are perpendicular, immediately think of Pythagoras' theorem rather than ordinary addition. Be careful not to confuse total distance travelled with resultant displacement. In this question, the total distance travelled is 14 m, but the displacement is only 10 m.",
+    "final_answer": "A. 10 m",
+    "simple_explanation": "Imagine walking 8 m along one street and then turning left to walk 6 m along another street. You did not travel in a straight line. If you stretch a rope directly from where you started to where you stopped, the rope represents your displacement. Since the two paths form a right angle, the straight-line distance is found using Pythagoras' theorem. The answer is 10 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Addition of Vectors to learn how vectors are added using head-to-tail, triangle and parallelogram methods. Study worked JAMB-style examples involving displacement, force and velocity. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for more beginner-friendly lessons, detailed illustrations and exam-focused practice questions."
+  },
+  "tags": [
+    "addition_of_vectors",
+    "resultant_displacement",
+    "right_angle_vectors",
+    "pythagoras",
+    "vector_addition",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q062",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Addition of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "Two mechanics are pushing a disabled vehicle along a straight road. One mechanic exerts a force of 180 N due east while the other exerts a force of 120 N in the same direction. Assuming no other horizontal forces act on the vehicle, what is the resultant force acting on it?",
+  "options": {
+    "A": "60 N due east",
+    "B": "180 N due east",
+    "C": "300 N due east",
+    "D": "300 N due west"
+  },
+  "answer": "C",
+  "answer_text": "300 N due east",
+  "explanation": {
+    "question_restate": "The question asks you to determine the resultant of two forces acting along the same straight line and in the same direction. You are expected to know when vectors can be added using ordinary arithmetic.",
+    "principle": "Before solving this question, let us understand what a force is.\n\nA force is a push or a pull that can change the motion of an object or try to change its shape. Force is measured in newtons (N) and is a vector quantity because it has both magnitude and direction.\n\nA beginner may ask, 'What is magnitude?' Magnitude simply means the numerical size of a quantity together with its unit. For example, 180 N tells us the size of the force.\n\nAnother beginner may ask, 'Why is direction important?' Imagine one person pushes a car eastward while another pushes it westward. Although both may push with equal strength, their effects oppose each other. Therefore, direction affects the final result.\n\nThe combined effect of two or more vectors is called the resultant vector.\n\nA beginner may now ask, 'Must vectors always be added using Pythagoras' theorem?' The answer is No.\n\nThere are different methods of adding vectors depending on their directions.\n\n• If the vectors act in the same direction along one straight line, they are added by ordinary arithmetic.\n\nResultant = First Vector + Second Vector\n\n• If they act in opposite directions along the same straight line, they are subtracted.\n\n• If they act at right angles, methods such as Pythagoras' theorem are used.\n\nSince both mechanics push due east, their forces reinforce one another. Therefore, their magnitudes are simply added.",
+    "steps": [
+      "Step 1: Identify the two forces.\n\nFirst force = 180 N due east.\n\nSecond force = 120 N due east.",
+      "Step 2: Compare their directions.\n\nBoth forces act due east. Since they point in exactly the same direction, they reinforce each other.",
+      "Step 3: Recall the appropriate formula.\n\nFor vectors acting in the same direction:\n\nResultant = F₁ + F₂",
+      "Step 4: Substitute the values.\n\nResultant = 180 N + 120 N\n\n= 300 N.",
+      "Step 5: State the direction.\n\nBecause both original forces act due east, the resultant force also acts due east.",
+      "Step 6: Therefore, the resultant force is 300 N due east."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (60 N due east) is obtained by subtracting the two forces instead of adding them. Subtraction is only used when the vectors act in opposite directions.",
+      "Option B (180 N due east) ignores the contribution of the second mechanic. The resultant must include the effect of both forces.",
+      "Option D (300 N due west) has the correct magnitude but the wrong direction. Since both mechanics push eastward, the resultant cannot point westward."
+    ],
+    "exam_tip": "One of JAMB's favourite vector questions is deciding whether to add or subtract vectors. Before carrying out any calculation, always compare the directions.\n\n• Same direction → Add.\n• Opposite directions → Subtract.\n• Perpendicular directions → Use Pythagoras' theorem.\n\nMany candidates lose marks because they immediately begin calculating without first checking the directions.",
+    "final_answer": "C. 300 N due east",
+    "simple_explanation": "Imagine two people pushing a broken-down car from behind. Since both push in exactly the same direction, each person's effort helps the other. Their forces therefore combine.\n\nThe first mechanic pushes with 180 N and the second pushes with 120 N.\n\n180 N + 120 N = 300 N.\n\nSince both are pushing eastward, the total force is also eastward.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Addition of Vectors to learn when vectors are added by ordinary arithmetic, when subtraction is required, and when graphical or trigonometric methods must be used. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, worked JAMB examples, and additional exam-focused practice."
+  },
+  "tags": [
+    "addition_of_vectors",
+    "collinear_vectors",
+    "resultant_force",
+    "same_direction_vectors",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q063",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Addition of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During a tugging operation at a dockyard, three workers pull a heavy crate using ropes attached in the same straight line. Worker P pulls with a force of 150 N due east, Worker Q pulls with a force of 90 N due east, while Worker R also pulls with a force of 60 N due east. Assuming the forces act simultaneously and no opposing horizontal force is present, what is the resultant force on the crate?",
+  "options": {
+    "A": "180 N due east",
+    "B": "240 N due east",
+    "C": "300 N due east",
+    "D": "300 N due west"
+  },
+  "answer": "C",
+  "answer_text": "300 N due east",
+  "explanation": {
+    "question_restate": "The question requires you to determine the resultant force produced when three forces act along the same straight line in the same direction. You must know that vectors pointing in the same direction are added directly.",
+    "principle": "Before attempting this question, it is important to understand what a vector is.\n\nA vector quantity is a physical quantity that possesses both magnitude and direction. Force is a vector because saying '150 N' alone is incomplete. You must also specify the direction in which the force acts.\n\nA beginner may ask, 'What is a resultant force?'\n\nThe resultant force is a single force that has the same overall effect as all the individual forces acting together. Instead of considering several forces separately, Physics often combines them into one equivalent force called the resultant.\n\nAnother beginner may ask, 'Must vector addition always involve triangles or Pythagoras' theorem?'\n\nNo. The method used depends on the directions of the vectors.\n\n• If all the vectors act in exactly the same direction along one straight line, their magnitudes are added using ordinary arithmetic.\n\n• If they act in opposite directions along the same straight line, subtraction is required.\n\n• If they act at angles to one another, graphical methods or trigonometric methods may be required.\n\nSince all three workers pull due east, each force reinforces the others. Therefore, the resultant is obtained by adding all three magnitudes.",
+    "steps": [
+      "Step 1: Write down the forces acting on the crate.\n\nForce by Worker P = 150 N due east.\n\nForce by Worker Q = 90 N due east.\n\nForce by Worker R = 60 N due east.",
+      "Step 2: Examine their directions.\n\nAll three forces act due east. None opposes another.",
+      "Step 3: Recall the rule.\n\nFor vectors acting in the same direction:\n\nResultant = F₁ + F₂ + F₃",
+      "Step 4: Substitute the given values.\n\nResultant = 150 N + 90 N + 60 N",
+      "Step 5: Perform the calculation.\n\n150 + 90 = 240 N.\n\n240 + 60 = 300 N.",
+      "Step 6: State the direction.\n\nSince every force acts due east, the resultant force also acts due east.\n\nTherefore, the resultant force is 300 N due east."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (180 N due east) is obtained by adding only two of the three forces and ignoring one worker's contribution. Every force acting on the crate must be included.",
+      "Option B (240 N due east) results from adding 150 N and 90 N but forgetting the additional 60 N supplied by Worker R.",
+      "Option D (300 N due west) has the correct magnitude but the wrong direction. Since every worker pulls eastward, the resultant cannot point westward."
+    ],
+    "exam_tip": "JAMB often includes questions involving three or more collinear vectors. Before performing any calculation, check whether all the vectors act in the same direction. If they do, simply add all their magnitudes. Do not introduce subtraction unless at least one vector acts in the opposite direction.",
+    "final_answer": "C. 300 N due east",
+    "simple_explanation": "Imagine three people pushing a broken-down truck from behind. Since everyone pushes in exactly the same direction, each person's effort helps the others.\n\nSo you simply add their forces:\n\n150 N + 90 N + 60 N = 300 N.\n\nBecause nobody pushes in the opposite direction, the total force is also due east.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Addition of Vectors to learn how to determine resultant forces when two or more vectors act along the same straight line. The NaijaPrizeGate CBT Tutorial Centre also provides beginner-friendly lessons, worked JAMB examples, common examination pitfalls, and additional practice questions."
+  },
+  "tags": [
+    "addition_of_vectors",
+    "collinear_vectors",
+    "resultant_force",
+    "same_direction_vectors",
+    "multiple_forces",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q064",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Addition of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A heavy wooden crate rests on a smooth factory floor. Two workers pull it simultaneously using ropes attached along the same straight line. One worker pulls with a force of 250 N due east while the other pulls with an equal force of 250 N due west. Ignoring friction, what is the resultant force acting on the crate?",
+  "options": {
+    "A": "0 N",
+    "B": "250 N due east",
+    "C": "250 N due west",
+    "D": "500 N"
+  },
+  "answer": "A",
+  "answer_text": "0 N",
+  "explanation": {
+    "question_restate": "The question asks you to determine the resultant of two equal forces acting along the same straight line but in opposite directions. You must consider both magnitude and direction before combining the vectors.",
+    "principle": "Before solving this question, let us understand what a force is.\n\nA force is a push or a pull that can change the state of motion of an object. Force is measured in newtons (N) and is a vector quantity because it has both magnitude and direction.\n\nA beginner may ask, 'Why does direction matter?' Imagine two equally strong people pulling a rope from opposite ends. Although each person pulls with a large force, neither side wins because the pulls oppose one another.\n\nThe combined effect of all the forces acting on an object is called the resultant force (or net force).\n\nWhen vectors act along the same straight line:\n\n• If they act in the same direction, their magnitudes are added.\n\n• If they act in opposite directions, one magnitude is subtracted from the other.\n\nMathematically:\n\nResultant = Larger force − Smaller force\n\nIf both forces are exactly equal, then:\n\nResultant = 250 N − 250 N = 0 N.\n\nA resultant force of zero is called a balanced force. Balanced forces do not change the state of motion of an object. If the object is at rest, it remains at rest. If it is moving at constant velocity, it continues moving at that constant velocity.",
+    "steps": [
+      "Step 1: Identify the forces.\n\nForce 1 = 250 N due east.\n\nForce 2 = 250 N due west.",
+      "Step 2: Compare their directions.\n\nThe forces act in opposite directions.",
+      "Step 3: Recall the rule.\n\nFor opposite collinear vectors:\n\nResultant = Larger force − Smaller force.",
+      "Step 4: Substitute the values.\n\nResultant = 250 N − 250 N = 0 N.",
+      "Step 5: Interpret the answer.\n\nSince the resultant force is zero, neither force overcomes the other. The forces are balanced.",
+      "Step 6: Therefore, the correct answer is 0 N."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (250 N due east) assumes only the eastward pull acts and completely ignores the equally large westward pull.",
+      "Option C (250 N due west) makes the same mistake in the opposite direction by ignoring the eastward force.",
+      "Option D (500 N) is obtained by adding the magnitudes without considering that the forces act in opposite directions. Vectors cannot be added by magnitude alone when their directions differ."
+    ],
+    "exam_tip": "JAMB frequently tests balanced and unbalanced forces. Before adding any vectors, always examine their directions.\n\n• Same direction → Add.\n• Opposite directions → Subtract.\n• Equal and opposite → Resultant = 0 N (balanced forces).\n\nNever add the magnitudes of opposite vectors directly.",
+    "final_answer": "A. 0 N",
+    "simple_explanation": "Imagine two equally strong people playing tug-of-war. If both pull with exactly the same force in opposite directions, neither side moves the rope.\n\nThe two pulls cancel each other.\n\n250 N east and 250 N west give a total (resultant) force of 0 N.\n\nThis means the forces are balanced.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Addition of Vectors to learn how vectors are combined in the same direction, opposite directions, and at angles. The NaijaPrizeGate CBT Tutorial Centre also contains beginner-friendly lessons, worked JAMB examples, common examination mistakes, and additional practice questions."
+  },
+  "tags": [
+    "addition_of_vectors",
+    "balanced_forces",
+    "resultant_force",
+    "collinear_vectors",
+    "net_force",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q065",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Addition of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A student is told that three forces acting on an object have been replaced by a single equivalent force. In vector addition, this single equivalent force is known as the",
+  "options": {
+    "A": "balanced force",
+    "B": "component force",
+    "C": "resultant force",
+    "D": "equilibrium force"
+  },
+  "answer": "C",
+  "answer_text": "resultant force",
+  "explanation": {
+    "question_restate": "The question asks you to identify the name given to a single force that produces exactly the same overall effect as several forces acting together.",
+    "principle": "Before answering this question, let us understand what happens when several forces act on the same object.\n\nA force is a push or a pull acting on an object. Because force has both magnitude and direction, it is a vector quantity.\n\nA beginner may ask, 'If several forces act together, do we always analyse each one separately?'\n\nNot necessarily. In Physics, several forces can often be replaced by one equivalent force that produces exactly the same effect on the object. This equivalent force is called the resultant force.\n\nThe word 'resultant' simply means 'the final result obtained after combining all the vectors.' Instead of dealing with many forces individually, we replace them with one force that represents their combined effect.\n\nAnother beginner may ask, 'Does the resultant always have a larger magnitude than the individual forces?'\n\nNo. The magnitude of the resultant depends on the magnitudes and directions of all the vectors involved.\n\n• If all forces act in the same direction, the resultant is larger.\n\n• If some forces oppose one another, the resultant becomes smaller.\n\n• If equal forces act in opposite directions, the resultant becomes zero.\n\nTherefore, the resultant force is not simply the largest force. It is the single force that represents the combined effect of all the individual forces.",
+    "steps": [
+      "Step 1: Read the important phrase in the question: 'a single equivalent force.'",
+      "Step 2: Recall the definition of a resultant force.\n\nA resultant force is a single force that has the same effect as two or more forces acting together.",
+      "Step 3: Compare this definition with the options provided.",
+      "Step 4: Option C matches the definition exactly.",
+      "Step 5: Therefore, the correct answer is Resultant Force."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (Balanced force) is incorrect because balanced forces describe a situation in which the resultant force is zero. Balanced force is therefore a condition, not the name of the equivalent single force.",
+      "Option B (Component force) is incorrect because component forces are the individual forces into which a vector may be resolved. They are not the combined effect of several vectors.",
+      "Option D (Equilibrium force) is incorrect because an equilibrium force is a force equal in magnitude but opposite in direction to the resultant force. It is introduced to bring an object into equilibrium and is therefore different from the resultant itself."
+    ],
+    "exam_tip": "JAMB frequently asks for the meanings of common vector terms. Do not confuse:\n\n• Resultant force → the combined effect of all the forces.\n\n• Component forces → the individual parts of a vector.\n\n• Equilibrant (equilibrium force) → a force equal and opposite to the resultant.\n\nUnderstanding these definitions will help you answer conceptual questions quickly without lengthy calculations.",
+    "final_answer": "C. Resultant force",
+    "simple_explanation": "Imagine four friends pushing a car together. Instead of describing the push made by each friend separately, Physics allows us to replace all their pushes with one imaginary force that has exactly the same effect. That one force is called the resultant force.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Addition of Vectors and Resultant Vectors to learn how several vectors are combined into a single equivalent vector, understand common JAMB terminology, and practise additional worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and exam-focused practice."
+  },
+  "tags": [
+    "addition_of_vectors",
+    "resultant_force",
+    "vector_addition",
+    "vector_concepts",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q066",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Addition of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A Physics teacher explains vector addition by saying, \"To add two displacement vectors, place the tail of the second vector at the head of the first vector. The vector drawn from the tail of the first vector to the head of the second vector represents the final answer.\" What is the name of this method of adding vectors?",
+  "options": {
+    "A": "Head-to-tail method",
+    "B": "Vector resolution method",
+    "C": "Component method",
+    "D": "Cancellation method"
+  },
+  "answer": "A",
+  "answer_text": "Head-to-tail method",
+  "explanation": {
+    "question_restate": "The question describes a procedure for adding vectors without showing a diagram. You are required to identify the name of the vector addition method being described.",
+    "principle": "Before answering this question, let us understand why vectors cannot always be added like ordinary numbers.\n\nA vector quantity has both magnitude and direction. Therefore, when adding vectors, we must consider not only their sizes but also the directions in which they act.\n\nA beginner may ask, 'What do the words head and tail mean?'\n\nA vector is usually represented by an arrow.\n\n• The tail is the point where the arrow begins.\n• The head is the pointed end of the arrow, showing the direction of the vector.\n\nOne of the simplest graphical methods of adding vectors is the head-to-tail method. In this method:\n\n1. Draw the first vector.\n2. Place the tail of the second vector at the head of the first vector.\n3. Draw a new arrow from the tail of the first vector to the head of the second vector.\n\nThis new arrow represents the resultant vector.\n\nA beginner may ask, 'Why does this method work?'\n\nIt works because it represents the actual path followed when one displacement occurs after another. The resultant connects the starting point directly to the final position.\n\nAlthough this question describes the method in words, the same principle applies whether vectors represent force, displacement, or velocity.",
+    "steps": [
+      "Step 1: Read the description carefully rather than looking for numbers to calculate.",
+      "Step 2: Notice the instruction: 'Place the tail of the second vector at the head of the first vector.'",
+      "Step 3: Recall the names of common vector methods.\n\nThe described procedure is known as the head-to-tail method of vector addition.",
+      "Step 4: The final vector drawn from the starting point to the finishing point is called the resultant vector.",
+      "Step 5: Therefore, the correct answer is Head-to-tail method."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (Vector resolution method) is incorrect because vector resolution is the process of splitting a single vector into components, not combining vectors.",
+      "Option C (Component method) is incorrect because component methods involve resolving vectors into horizontal and vertical components before combining them mathematically. That is not the procedure described in the question.",
+      "Option D (Cancellation method) is incorrect because there is no standard vector-addition technique in elementary Physics known as the cancellation method."
+    ],
+    "exam_tip": "JAMB sometimes describes a scientific procedure instead of mentioning its name directly. Learn to recognise the wording associated with common vector methods. Whenever you read 'place the tail of one vector at the head of another,' immediately think of the head-to-tail method used for vector addition.",
+    "final_answer": "A. Head-to-tail method",
+    "simple_explanation": "Imagine taking two journeys. First, you walk from your house to the market. Without returning home, you continue from the market to the bank. The second journey starts where the first one ends. That is exactly what the head-to-tail method does. The straight arrow from your house to the bank represents the resultant vector.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Addition of Vectors to learn graphical methods of vector addition, including the head-to-tail technique, triangle law, and parallelogram law. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, worked JAMB examples, and additional exam-focused practice."
+  },
+  "tags": [
+    "addition_of_vectors",
+    "head_to_tail_method",
+    "graphical_vector_addition",
+    "resultant_vector",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q067",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Addition of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A surveyor walks 5 km due east from a reference point to inspect a pipeline. He then walks 12 km due north to another inspection point. Which of the following correctly represents his resultant displacement from the reference point?",
+  "options": {
+    "A": "13 km in a north-east direction",
+    "B": "17 km due north",
+    "C": "7 km in a north-east direction",
+    "D": "12 km due east"
+  },
+  "answer": "A",
+  "answer_text": "13 km in a north-east direction",
+  "explanation": {
+    "question_restate": "The question requires you to determine the resultant displacement after two successive movements made at right angles to each other. Since displacement is a vector quantity, the final answer must include both its magnitude and its direction.",
+    "principle": "Before solving this question, let us understand the key ideas involved.\n\nA beginner may ask, 'What is displacement?'\n\nDisplacement is the straight-line distance from the starting point to the final position together with the direction of that straight line. It is different from distance because distance measures the total path travelled, whereas displacement considers only the starting and ending positions.\n\nAnother beginner may ask, 'Why can't I simply add 5 km and 12 km to obtain 17 km?'\n\nYou can only add distances directly when the movements are along the same straight line and in the same direction. In this question, the surveyor first walks east and then north. East and north are perpendicular directions, meaning they meet at an angle of 90°.\n\nWhen two displacement vectors are perpendicular, they form two sides of a right-angled triangle. The straight line joining the starting point to the final position is called the **resultant displacement**.\n\nTo calculate the magnitude of the resultant displacement, we use **Pythagoras' theorem**.\n\nPythagoras' theorem states:\n\nResultant² = (Horizontal displacement)² + (Vertical displacement)²\n\nor simply:\n\nR² = x² + y²\n\nwhere:\n\n• R is the resultant displacement.\n• x is the horizontal displacement.\n• y is the vertical displacement.\n\nThe direction of the resultant is between east and north, which is described as north-east.",
+    "steps": [
+      "Step 1: Identify the two displacement vectors.\n\nHorizontal displacement = 5 km due east.\n\nVertical displacement = 12 km due north.",
+      "Step 2: Observe that the two directions are perpendicular.\n\nSince east and north are 90° apart, the displacements form a right-angled triangle.",
+      "Step 3: Recall the appropriate formula.\n\nR² = x² + y²",
+      "Step 4: Substitute the given values.\n\nR² = 5² + 12²\n\n= 25 + 144\n\n= 169",
+      "Step 5: Take the square root of both sides.\n\nR = √169\n\n= 13 km.",
+      "Step 6: Determine the direction.\n\nThe final position is east of the starting point and also north of it. Therefore, the resultant displacement points towards the north-east.\n\nHence, the resultant displacement is **13 km in a north-east direction**."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (17 km due north) is obtained by simply adding the two distances (5 + 12). This ignores the fact that the movements occur in different directions. It also gives the wrong direction.",
+      "Option C (7 km in a north-east direction) results from subtracting the two displacements (12 − 5). Subtraction is inappropriate because the vectors are perpendicular rather than opposite.",
+      "Option D (12 km due east) is incorrect because it ignores the northward movement entirely. The surveyor's final position depends on both movements."
+    ],
+    "exam_tip": "One of JAMB's favourite vector questions involves movement first towards the east or west and then towards the north or south. Whenever the two directions are perpendicular, immediately think of a right-angled triangle and apply Pythagoras' theorem. Also remember that displacement is incomplete unless both its magnitude and direction are stated.",
+    "final_answer": "A. 13 km in a north-east direction",
+    "simple_explanation": "Suppose you stand at the starting point. First, you walk 5 km towards the east. Next, you turn and walk 12 km towards the north.\n\nInstead of following the path you walked, imagine drawing a straight line directly from where you started to where you finished. That straight line is your displacement.\n\nBecause the two movements are at right angles, we use Pythagoras' theorem.\n\n5² = 25\n\n12² = 144\n\n25 + 144 = 169\n\n√169 = 13 km.\n\nSince your final position is both east and north of the starting point, the direction is north-east.\n\nTherefore, the resultant displacement is **13 km in a north-east direction**.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Addition of Vectors → Displacement Addition to learn how to distinguish distance from displacement, apply Pythagoras' theorem to perpendicular vector addition, determine the direction of resultant displacement, and solve JAMB-style movement problems step by step. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for more beginner-friendly lessons, worked examples, and exam-focused practice."
+  },
+  "tags": [
+    "addition_of_vectors",
+    "displacement",
+    "resultant_displacement",
+    "pythagoras_theorem",
+    "right_angle_vectors",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q068",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Addition of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A mobile network field engineer walks 60 m due east from a service vehicle to inspect a signal mast. He then walks 80 m due north to reach the control panel. To determine his final position relative to the service vehicle, he uses the head-to-tail method of vector addition. Which statement correctly describes the head-to-tail method used in obtaining the resultant displacement?",
+  "options": {
+    "A": "The tail of the second vector is placed at the head of the first vector, and the resultant is drawn from the tail of the first vector to the head of the second vector.",
+    "B": "The heads of both vectors are joined together, and the resultant is drawn between their tails.",
+    "C": "The tails of both vectors are placed together, and the resultant is always equal to their arithmetic sum.",
+    "D": "The second vector is reversed before joining it to the first vector, and the resultant is drawn between the two heads."
+  },
+  "answer": "A",
+  "answer_text": "The tail of the second vector is placed at the head of the first vector, and the resultant is drawn from the tail of the first vector to the head of the second vector.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the head-to-tail method of vector addition. Rather than calculating the magnitude of the resultant, you are required to identify the correct procedure for adding two vectors graphically.",
+    "principle": "Before solving this question, let us understand what a vector is.\n\nA vector is a physical quantity that has both magnitude and direction. Magnitude tells us how much of the quantity there is, while direction tells us where it acts or points. Examples include displacement, velocity, acceleration and force.\n\nA beginner may ask, 'Why can't we simply add vectors like ordinary numbers?'\n\nThe reason is that vectors may point in different directions. Two vectors of equal magnitude can produce different results depending on the angle between them. Therefore, both magnitude and direction must be considered during addition.\n\nOne graphical method of adding vectors is called the head-to-tail method (also called the tip-to-tail method).\n\nA beginner may then ask, 'What do "head" and "tail" mean?'\n\nEvery vector is represented by an arrow.\n\n• The tail is the point where the arrow starts.\n• The head (or tip) is the pointed end of the arrow indicating the direction.\n\nIn the head-to-tail method:\n\n1. Draw the first vector to scale in its correct direction.\n2. Place the tail of the second vector exactly at the head of the first vector.\n3. Draw the second vector to the same scale.\n4. The resultant vector is drawn from the tail of the first vector directly to the head of the last vector.\n\nThe resultant vector represents the combined effect of all the vectors added together.\n\nThis method works for two vectors as well as several vectors arranged consecutively.",
+    "steps": [
+      "Step 1: Identify what the engineer is doing.\n\nThe engineer first walks 60 m due east and then 80 m due north. These two movements are displacement vectors because each has both magnitude and direction.",
+      "Step 2: Recall the rule for the head-to-tail method.\n\nAfter drawing the first vector, the second vector must begin where the first one ends. In other words, the tail of the second vector is placed at the head of the first vector.",
+      "Step 3: Determine how the resultant is drawn.\n\nThe resultant does not start from the second vector. Instead, it starts from the very beginning (the tail of the first vector) and ends at the final position (the head of the second vector).",
+      "Step 4: Compare this procedure with the options provided.\n\nOnly Option A correctly describes both the placement of the vectors and the correct way of drawing the resultant vector.",
+      "Step 5: Therefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because simply joining the heads of two vectors does not represent vector addition. The head-to-tail method requires the second vector to begin where the first vector ends.",
+      "Option C is incorrect because placing both tails together describes the starting arrangement for the parallelogram law of vector addition, not the head-to-tail method. Furthermore, the resultant is not always equal to the ordinary arithmetic sum because direction must be considered.",
+      "Option D is incorrect because reversing the second vector changes its direction and therefore changes the physical situation. Reversing a vector is associated with vector subtraction, not vector addition."
+    ],
+    "exam_tip": "JAMB frequently tests your understanding of graphical vector addition by asking about the correct construction rather than requiring lengthy calculations.\n\nRemember these key ideas:\n\n• Head-to-tail method → Tail of the second vector joins the head of the first.\n• Resultant → Drawn from the tail of the first vector to the head of the final vector.\n• Never reverse a vector unless you are performing vector subtraction.\n\nA quick memory aid is:\n\n'Join Head to Tail, then draw Start to Finish.'",
+    "final_answer": "A. The tail of the second vector is placed at the head of the first vector, and the resultant is drawn from the tail of the first vector to the head of the second vector.",
+    "simple_explanation": "Imagine walking from your house to a shop and then from the shop to a friend's house.\n\nYour first journey ends at the shop. Your second journey begins from the shop. This is exactly how the head-to-tail method works.\n\nThe first vector ends where the second one begins.\n\nAfter drawing both movements, you simply draw one straight arrow from where you started to where you finally ended. That single arrow is called the resultant vector because it represents your overall movement.\n\nTherefore, Option A correctly explains the head-to-tail method.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Addition of Vectors → Head-to-Tail Method to learn how to construct vector diagrams, distinguish the head-to-tail method from the parallelogram law, determine resultant vectors graphically, and solve JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, interactive illustrations and additional practice questions."
+  },
+  "tags": [
+    "addition_of_vectors",
+    "head_to_tail_method",
+    "graphical_vector_addition",
+    "resultant_vector",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q069",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Addition of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A mobile network field engineer needs to move communication equipment across a construction site. A scale drawing is prepared to represent two successive movements using the graphical head-to-tail method. The first movement is represented by an arrow 4 cm long due east, while the second movement is represented by an arrow 3 cm long due north starting from the head of the first arrow. If the chosen scale is 1 cm represents 10 m, what is the actual magnitude of the engineer's resultant displacement?",
+  "options": {
+    "A": "50 m",
+    "B": "60 m",
+    "C": "70 m",
+    "D": "80 m"
+  },
+  "answer": "A",
+  "answer_text": "50 m",
+  "explanation": {
+    "question_restate": "This question tests your understanding of graphical vector addition using the head-to-tail method. You are required to interpret a scale drawing, determine the length of the resultant vector, and convert it into the actual distance represented by the chosen scale.",
+    "principle": "Before solving this question, let us understand what graphical vector addition means.\n\nA vector is a physical quantity that has both magnitude (size) and direction. Examples include displacement, velocity and force.\n\nWhen two or more vectors act one after another, they can be combined into a single vector called the **resultant vector**. The resultant vector produces the same overall effect as all the individual vectors acting together.\n\nOne common method of adding vectors graphically is the **head-to-tail method**.\n\nA beginner may ask, 'Why is it called the head-to-tail method?'\n\nEvery vector is drawn as an arrow.\n\n• The tail is where the arrow begins.\n• The head is the pointed end showing the direction.\n\nTo add vectors graphically, the tail of the second vector is placed exactly at the head of the first vector. If there are more vectors, the process continues in the same way.\n\nAfter all vectors have been drawn, the resultant vector is obtained by drawing a single arrow from the tail of the first vector to the head of the last vector.\n\nAnother beginner may ask, 'Why do we use a scale?'\n\nIn real life, vectors may represent distances of several metres or kilometres. It is not practical to draw such large distances on paper. Therefore, we choose a convenient scale.\n\nFor this question:\n\n1 cm on the drawing = 10 m in reality.\n\nThis means every centimetre measured on the paper represents 10 metres on the ground.\n\nThe two given movements are perpendicular because one is due east while the other is due north. Whenever two vectors are at right angles (90°), the length of the resultant can be obtained using **Pythagoras' theorem**.\n\nPythagoras' theorem states:\n\nResultant² = Horizontal² + Vertical²\n\nThis formula comes from the geometry of a right-angled triangle and is valid only when the two vectors are perpendicular.\n\nRelated formulas that are useful in this topic include:\n\n• Resultant = √(Horizontal² + Vertical²) for perpendicular vectors.\n• Scale conversion = Measured drawing length × Scale value.",
+    "steps": [
+      "Step 1: Identify the lengths shown on the scale drawing.\n\nHorizontal vector = 4 cm due east.\n\nVertical vector = 3 cm due north.",
+      "Step 2: Recognize that the two vectors are perpendicular because east and north are directions that form an angle of 90°.",
+      "Step 3: Apply Pythagoras' theorem to determine the length of the resultant on the drawing.\n\nResultant² = 4² + 3²\n\n= 16 + 9\n\n= 25",
+      "Step 4: Take the square root of both sides.\n\nResultant = √25 = 5 cm.\n\nThis means the resultant vector measures 5 cm on the drawing.",
+      "Step 5: Convert the drawing measurement to the actual displacement.\n\nGiven scale:\n\n1 cm = 10 m\n\nTherefore,\n\n5 cm = 5 × 10 m = 50 m.",
+      "Step 6: Compare your answer with the available options.\n\nThe correct answer is **50 m**."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (60 m) is incorrect. This would correspond to a resultant drawing length of 6 cm. Some candidates obtain this by adding 4 cm and 3 cm incorrectly before making another arithmetic error during conversion. Vectors at right angles are not added by simple arithmetic.",
+      "Option C (70 m) is incorrect. This comes from adding the two drawing lengths directly (4 cm + 3 cm = 7 cm) and converting 7 cm into 70 m. This ignores the fact that the vectors act at 90°, so the resultant must be found using Pythagoras' theorem.",
+      "Option D (80 m) is incorrect. This value does not correspond to the correct graphical construction. It may arise from misreading the scale or using an incorrect drawing length. Always measure or calculate the resultant first before applying the scale."
+    ],
+    "exam_tip": "JAMB frequently tests graphical vector addition in two stages:\n\n• First, determine the length of the resultant vector on the scale drawing.\n• Second, convert the measured length using the given scale.\n\nDo not convert each vector into actual units before determining the graphical resultant unless the question specifically requires an analytical solution. Also remember that vectors acting at right angles should not be added arithmetically; they are combined using Pythagoras' theorem.",
+    "final_answer": "A. 50 m",
+    "simple_explanation": "Imagine walking 4 cm to the right on a map and then 3 cm upward. Your final position is not 7 cm away because the two movements are at right angles.\n\nInstead, they form a right-angled triangle.\n\nUsing Pythagoras' theorem:\n\n4² + 3² = 16 + 9 = 25\n\n√25 = 5 cm.\n\nSince every 1 cm represents 10 m, the real displacement is:\n\n5 × 10 = 50 m.\n\nTherefore, the engineer's resultant displacement is **50 m**.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Addition of Vectors → Graphical Addition to learn how to draw vectors using the head-to-tail method, choose suitable scales, determine resultants from scale diagrams, and solve JAMB-style graphical vector problems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed beginner-friendly lessons, animated illustrations, and additional practice questions."
+  },
+  "tags": [
+    "graphical_vector_addition",
+    "head_to_tail_method",
+    "scale_drawing",
+    "resultant_displacement",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q070",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Addition of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A road construction engineer walks 24 m due east from a survey point to inspect a drainage channel. He then walks 18 m due north to examine a road embankment. What is the magnitude of his resultant displacement from the survey point?",
+  "options": {
+    "A": "30 m",
+    "B": "36 m",
+    "C": "42 m",
+    "D": "54 m"
+  },
+  "answer": "A",
+  "answer_text": "30 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the resultant displacement produced when two successive displacements act at right angles to each other. You must identify the appropriate method of vector addition and calculate the magnitude of the resultant vector.",
+    "principle": "To solve this question, we must first understand what **displacement** means.\n\nA beginner may ask, 'What is the difference between distance and displacement?'\n\nDistance is the total length of the path travelled. It is a scalar quantity because it has magnitude only.\n\nDisplacement is the straight-line change in position from the starting point to the final position. It is a vector quantity because it has both magnitude and direction.\n\nAnother beginner may ask, 'What is a resultant vector?'\n\nWhen two or more vectors act together, they can be replaced by one single vector that produces exactly the same overall effect. This single vector is called the **resultant vector**.\n\nIn this question, the engineer first walks east and then north. Since east and north are perpendicular directions, the two displacement vectors form a right-angled triangle.\n\nWhenever two vectors are perpendicular, the magnitude of the resultant is calculated using **Pythagoras' theorem**.\n\nBefore using the formula, let us understand where it comes from.\n\nPythagoras' theorem is a mathematical relationship that applies to every right-angled triangle. It states that the square of the longest side (called the hypotenuse) is equal to the sum of the squares of the other two sides.\n\nIn vector addition:\n\nResultant² = Horizontal Component² + Vertical Component²\n\nor\n\nR² = x² + y²\n\nwhere:\n\n• R is the magnitude of the resultant vector.\n• x is the horizontal vector.\n• y is the vertical vector.\n\nAfter finding R², take the square root to obtain the magnitude of the resultant.\n\nThis formula is valid only when the two vectors are at an angle of 90°.\n\nRelated formulas you should know include:\n\n• Resultant = Sum of vectors (same direction).\n• Resultant = Difference of vectors (opposite directions).\n• Resultant = √(x² + y²) (perpendicular vectors).",
+    "steps": [
+      "Step 1: Identify the two displacement vectors.\n\nHorizontal displacement = 24 m due east.\n\nVertical displacement = 18 m due north.",
+      "Step 2: Observe that east and north are perpendicular directions, meaning the vectors meet at an angle of 90°.\n\nTherefore, Pythagoras' theorem can be used.",
+      "Step 3: Write the formula.\n\nR² = x² + y²",
+      "Step 4: Substitute the given values.\n\nR² = 24² + 18²",
+      "Step 5: Square each value separately.\n\n24² = 576\n\n18² = 324",
+      "Step 6: Add the squares.\n\nR² = 576 + 324 = 900",
+      "Step 7: Take the square root of both sides.\n\nR = √900 = 30 m.",
+      "Step 8: Compare the calculated value with the available options.\n\nTherefore, the magnitude of the resultant displacement is **30 m**."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (36 m) is incorrect. This value may result from an incorrect calculation or from applying Pythagoras' theorem improperly. Always square the individual vectors before adding them.",
+      "Option C (42 m) is incorrect. This is obtained by simply adding the two displacements (24 + 18). That method is only correct when both vectors act in exactly the same direction. East and north are perpendicular directions, so simple addition is not appropriate.",
+      "Option D (54 m) is incorrect. This value exaggerates the resultant and may come from adding the two vectors first and then performing another incorrect calculation. The resultant of two perpendicular vectors must always be shorter than their arithmetic sum."
+    ],
+    "exam_tip": "JAMB frequently presents displacement, force and velocity questions involving movements due east and due north. Whenever you notice two vectors acting at right angles, immediately think of a right-angled triangle and apply Pythagoras' theorem.\n\nAlso remember this important comparison:\n\n• Same direction → Add the magnitudes.\n• Opposite directions → Subtract the magnitudes.\n• Perpendicular directions → Use Pythagoras' theorem.\n\nRecognising the relationship between the vectors is often the key to selecting the correct method before doing any calculation.",
+    "final_answer": "A. 30 m",
+    "simple_explanation": "Imagine standing at one corner of a field.\n\nYou walk 24 m towards the east and then 18 m towards the north. Instead of retracing your path, imagine drawing a straight line from where you started directly to where you ended.\n\nThat straight line is called the **resultant displacement**.\n\nBecause the two movements are at right angles, they form a right-angled triangle.\n\nUsing Pythagoras' theorem:\n\n24² = 576\n\n18² = 324\n\n576 + 324 = 900\n\n√900 = 30 m.\n\nSo, although the total distance walked is 42 m, the engineer ends up only 30 m away from the starting point in a straight line. That straight-line distance is the resultant displacement.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Addition of Vectors → Resultant of Two Perpendicular Vectors to learn how to determine resultants using graphical methods, Pythagoras' theorem, and practical JAMB-style applications involving displacement, force and velocity. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, fully worked examples and additional exam-focused practice questions."
+  },
+  "tags": [
+    "addition_of_vectors",
+    "resultant_vector",
+    "resultant_displacement",
+    "pythagoras_theorem",
+    "vector_addition",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q071",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Addition of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A warehouse manager observes that a heavy generator is being pushed simultaneously by two workers from different directions so that it moves smoothly toward the loading bay. Why is the addition of vectors necessary when analysing the motion of the generator?",
+  "options": {
+    "A": "Because the combined effect of both applied forces determines the actual motion of the generator.",
+    "B": "Because every force automatically becomes a scalar when two people apply it.",
+    "C": "Because the masses of the workers must first be added before the generator can move.",
+    "D": "Because forces acting in different directions always cancel each other completely."
+  },
+  "answer": "A",
+  "answer_text": "Because the combined effect of both applied forces determines the actual motion of the generator.",
+  "explanation": {
+    "question_restate": "This question examines whether you understand why vectors are added in practical situations involving two or more forces acting simultaneously on the same object.",
+    "principle": "A force is a vector quantity because it has both magnitude and direction. Whenever two or more forces act on the same object at the same time, the object does not respond to each force separately. Instead, it responds to a single force known as the resultant force.\n\nA beginner may ask, 'What does resultant mean?'\n\nThe resultant force is the single force that has the same overall effect as all the individual forces acting together.\n\nAnother beginner may ask, 'Why can't we simply add the numbers?'\n\nUnlike scalar quantities, vectors have direction. This means that two forces of equal magnitude may strengthen each other, weaken each other or produce motion in an entirely new direction depending on how they are applied.\n\nThat is why vector addition is necessary whenever several forces act simultaneously.\n\nIn warehouse operations, cranes, towing vehicles, robotics and engineering, the direction of every applied force is just as important as its magnitude.",
+    "steps": [
+      "Step 1: Identify the physical quantity involved. The workers are pushing the generator, so the quantity involved is force.",
+      "Step 2: Recall that force is a vector quantity because it has magnitude and direction.",
+      "Step 3: Since two forces act on the same object simultaneously, they combine to produce one overall effect called the resultant force.",
+      "Step 4: Therefore, vector addition is required to determine the generator's actual motion.",
+      "Step 5: Hence, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a force never becomes a scalar simply because more than one person applies it. Force is always a vector quantity.",
+      "Option C is incorrect because the masses of the workers are irrelevant to why vector addition is used. The question concerns the forces they apply, not their masses.",
+      "Option D is incorrect because forces acting in different directions do not always cancel completely. Whether they cancel depends on their magnitudes and directions."
+    ],
+    "exam_tip": "JAMB often tests your understanding of why vector addition is required before asking you to perform calculations. Whenever more than one force, velocity or displacement acts simultaneously, immediately think of the resultant vector.",
+    "final_answer": "A. Because the combined effect of both applied forces determines the actual motion of the generator.",
+    "simple_explanation": "Imagine two friends pushing a broken car. The car does not respond to each person's push separately. Instead, it moves according to the combined push of both people. Physics calls this combined push the resultant force. Finding that combined force is called vector addition.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Addition of Vectors → Practical Applications to learn how vector addition is applied in engineering, transportation, robotics, warehouse operations and other real-life situations. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations, worked examples and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "addition_of_vectors",
+    "resultant_force",
+    "real_life_application",
+    "warehouse",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q072",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Addition of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During a laboratory practical, two students investigate the effect of combining forces on a metal ring placed on a smooth horizontal board. One spring balance pulls the ring with a force of 8 N towards the east, while a second spring balance simultaneously pulls it with a force of 6 N towards the north. Which statement best describes the resultant force acting on the ring?",
+  "options": {
+    "A": "The resultant force has a magnitude of 10 N and acts in a direction between east and north.",
+    "B": "The resultant force is 14 N because the two forces are simply added together.",
+    "C": "The resultant force is 2 N because the smaller force is subtracted from the larger one.",
+    "D": "The forces cancel each other because they act simultaneously."
+  },
+  "answer": "A",
+  "answer_text": "The resultant force has a magnitude of 10 N and acts in a direction between east and north.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how forces acting at right angles combine to produce a single resultant force during a laboratory experiment. Rather than merely adding the numerical values, you must consider both the magnitudes and the directions of the forces.",
+    "principle": "Before solving the question, let us understand the important ideas involved.\n\nA force is a push or a pull that can change the state of motion of an object. Force is a vector quantity because it has both magnitude and direction.\n\nA beginner may ask, 'Why is direction important?'\n\nSuppose two people push a table with equal strength but in different directions. The table does not respond as if only one person is pushing. Instead, the combined effect depends on both the sizes of the pushes and the directions in which they act.\n\nWhen two or more vectors act together, they can be replaced by a single vector known as the **resultant vector**. The resultant produces exactly the same effect as all the individual vectors acting together.\n\nIf two vectors act in the same direction, their magnitudes are added directly.\n\nIf they act in opposite directions, their magnitudes are subtracted.\n\nHowever, if they act at right angles (90°), neither simple addition nor subtraction is correct. Instead, the resultant is found using **Pythagoras' theorem**:\n\nR² = x² + y²\n\nwhere:\n\n• R is the magnitude of the resultant force.\n• x and y are the two perpendicular forces.\n\nThe direction of the resultant always lies between the directions of the two original vectors.",
+    "steps": [
+      "Step 1: Identify the two forces.\n\nForce 1 = 8 N towards the east.\n\nForce 2 = 6 N towards the north.",
+      "Step 2: Observe that east and north are perpendicular directions. Therefore, the forces meet at an angle of 90°.",
+      "Step 3: Apply Pythagoras' theorem.\n\nR² = 8² + 6²",
+      "Step 4: Square each force.\n\n8² = 64\n\n6² = 36",
+      "Step 5: Add the squares.\n\n64 + 36 = 100",
+      "Step 6: Take the square root.\n\nR = √100 = 10 N.",
+      "Step 7: Determine the direction.\n\nThe resultant force cannot point exactly east or exactly north because both forces contribute to it.\n\nIt acts in a direction between east and north.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because forces acting at right angles cannot be added arithmetically. Adding 8 N and 6 N to obtain 14 N ignores the directions of the forces. This is one of the most common mistakes made by candidates.",
+      "Option C is incorrect because subtraction is used only when two vectors act along the same straight line but in opposite directions. In this experiment, the forces are perpendicular, not opposite.",
+      "Option D is incorrect because perpendicular forces do not cancel one another. Forces cancel only when they have equal magnitudes and act in exactly opposite directions."
+    ],
+    "exam_tip": "JAMB often tests whether candidates know **when to add, subtract or apply Pythagoras' theorem**.\n\nRemember these three rules:\n\n• Same direction → Add the vectors.\n\n• Opposite direction → Subtract the vectors.\n\n• Right-angle directions → Use Pythagoras' theorem.\n\nBefore performing any calculation, always examine the directions of the vectors. The correct method depends on the angle between them.",
+    "final_answer": "A. The resultant force has a magnitude of 10 N and acts in a direction between east and north.",
+    "simple_explanation": "Imagine tying two ropes to a ring.\n\nOne person pulls towards the east with 8 N, while another pulls towards the north with 6 N.\n\nThe ring feels both pulls at the same time.\n\nIt does not move only east or only north. Instead, it moves in a direction between the two pulls.\n\nUsing Pythagoras' theorem:\n\n8² + 6² = 64 + 36 = 100\n\n√100 = 10 N.\n\nSo, the two forces combine to produce a single force of 10 N acting between east and north.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Addition of Vectors → Experimental Applications to learn how laboratory apparatus such as spring balances are used to demonstrate vector addition, how to determine resultants experimentally and analytically, and how JAMB applies these concepts in examination questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed beginner-friendly lessons, practical demonstrations, and additional exam-focused practice."
+  },
+  "tags": [
+    "addition_of_vectors",
+    "force_vectors",
+    "experimental_physics",
+    "spring_balance",
+    "resultant_force",
+    "laboratory_practical",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q073",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Addition of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During the installation of a high-voltage transmission line, a steel support mast is held in position by three tension cables attached simultaneously. The first cable exerts a force of 80 N due north, the second exerts a force of 60 N due south, while the third exerts a force of 40 N due north. What is the magnitude and direction of the resultant force acting on the mast due to the three cables?",
+  "options": {
+    "A": "60 N due north",
+    "B": "100 N due north",
+    "C": "20 N due north",
+    "D": "180 N due north"
+  },
+  "answer": "A",
+  "answer_text": "60 N due north",
+  "explanation": {
+    "question_restate": "This question requires you to determine the single force that has the same overall effect as three forces acting along the same straight line. The skill being tested is multi-stage vector addition, where vectors are added one after another while considering their directions.",
+    "principle": "Before solving the question, let us understand what happens when several vectors act together.\n\nA vector is a physical quantity that has both magnitude and direction. Force is a vector because saying '80 N' is not enough—you must also specify the direction in which the force acts.\n\nWhen more than two vectors act on an object, they are added one after another. This process is called **multi-stage vector addition**.\n\nA beginner may ask, 'Do I always use Pythagoras' theorem when adding vectors?'\n\nNo.\n\nThe method depends on the directions of the vectors.\n\n• If all the vectors act along the same straight line, simply assign one direction as positive and the opposite direction as negative, then perform ordinary algebraic addition.\n\n• If the vectors are perpendicular, use Pythagoras' theorem.\n\n• If the vectors act at other angles, methods such as the triangle law, parallelogram law or trigonometry may be required.\n\nIn this question, every force acts either due north or due south. Since all the forces lie along one straight line, they can be added algebraically after taking account of their directions.",
+    "steps": [
+      "Step 1: Choose one direction as positive.\n\nLet north be positive (+).\n\nTherefore:\n\n80 N north = +80 N\n\n60 N south = -60 N\n\n40 N north = +40 N.",
+      "Step 2: Add the vectors one after another.\n\nResultant = (+80) + (-60) + (+40)",
+      "Step 3: Perform the calculation.\n\n80 - 60 + 40 = 60 N.",
+      "Step 4: Interpret the sign of the answer.\n\nThe answer is positive, meaning the resultant force acts towards the north.",
+      "Step 5: State the final answer.\n\nThe resultant force is **60 N due north**."
+    ],
+    "why_other_options_are_wrong": [
+      "A. 60 N due north is correct because the northward forces are added together before the southward force is subtracted: 80 + 40 - 60 = 60 N.",
+      "B. 100 N due north is obtained by adding only the two northward forces and forgetting to subtract the southward force. This is a common mistake when candidates ignore opposite directions.",
+      "C. 20 N due north results from subtracting the forces incorrectly, such as calculating 80 - 60 - 40. The third force actually acts northward and should increase, not decrease, the resultant.",
+      "D. 180 N due north is simply the arithmetic sum of all three magnitudes. This ignores the fact that one of the forces acts in the opposite direction."
+    ],
+    "exam_tip": "One of JAMB's favourite tricks is to include several vectors acting along the same line. Before calculating, always group vectors according to their directions.\n\nRemember this simple rule:\n\n• Same direction → Add.\n• Opposite direction → Subtract.\n\nDo not automatically use Pythagoras' theorem unless the vectors are perpendicular.",
+    "final_answer": "A. 60 N due north",
+    "simple_explanation": "Imagine three people pulling a pole.\n\nTwo people pull towards the north with forces of 80 N and 40 N. Together they pull with 120 N.\n\nAnother person pulls towards the south with 60 N.\n\nSince the pulls are in opposite directions, the smaller pull reduces the larger one.\n\n120 N - 60 N = 60 N.\n\nTherefore, the pole experiences a resultant force of **60 N towards the north**.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Addition of Vectors → Multi-stage Vector Addition to learn how to combine three or more vectors, recognise when to add or subtract vectors, and solve JAMB-style questions involving forces, velocities and displacements. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, worked examples and additional exam-focused practice."
+  },
+  "tags": [
+    "addition_of_vectors",
+    "multi_stage_vector_addition",
+    "force_vectors",
+    "resultant_force",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q074",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Addition of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a practical lesson, students discussed the addition of two force vectors acting simultaneously on a steel ring. Four students made the following statements:\n\nStudent I: 'The resultant of two vectors is always equal to the arithmetic sum of their magnitudes.'\n\nStudent II: 'The direction of each vector must be considered when adding vectors.'\n\nStudent III: 'Two vectors of equal magnitude always produce a resultant equal to twice either vector.'\n\nStudent IV: 'The magnitude of the resultant depends on both the magnitudes of the vectors and the angle between them.'\n\nWhich combination of students made correct statements?",
+  "options": {
+    "A": "I and III only",
+    "B": "II and IV only",
+    "C": "I, II and IV only",
+    "D": "II, III and IV only"
+  },
+  "answer": "B",
+  "answer_text": "II and IV only",
+  "explanation": {
+    "question_restate": "This question tests your conceptual understanding of vector addition by asking you to identify common misconceptions. Rather than performing calculations, you must determine which statements correctly describe how vectors are added.",
+    "principle": "Before answering this question, it is important to understand what a vector is.\n\nA vector is a physical quantity that has both magnitude and direction. Magnitude tells us how large the quantity is, while direction tells us where it acts.\n\nExamples of vector quantities include force, displacement, velocity, acceleration and momentum.\n\nWhen two or more vectors act together, they can be replaced by a single vector called the **resultant vector**. The resultant produces exactly the same overall effect as all the individual vectors acting together.\n\nA beginner may ask, 'Why can't we simply add the numbers?'\n\nUnlike ordinary numbers, vectors possess direction. Two forces of 10 N may reinforce each other if they act in the same direction, partially cancel if they act at an angle, or cancel completely if they act in opposite directions.\n\nTherefore, vector addition depends on:\n\n• the magnitude of each vector; and\n• the angle between the vectors.\n\nThis is one of the most important ideas in elementary vector physics and is frequently tested by JAMB through conceptual questions.",
+    "steps": [
+      "Step 1: Examine Student I's statement.\n\n'The resultant of two vectors is always equal to the arithmetic sum of their magnitudes.'\n\nThis statement is incorrect.\n\nSimple arithmetic addition is valid only when the vectors act in exactly the same direction. If they act at an angle or in opposite directions, the resultant is different.",
+      "Step 2: Examine Student II's statement.\n\n'The direction of each vector must be considered when adding vectors.'\n\nThis statement is correct.\n\nDirection is one of the defining properties of a vector. Ignoring direction leads to incorrect results.",
+      "Step 3: Examine Student III's statement.\n\n'Two vectors of equal magnitude always produce a resultant equal to twice either vector.'\n\nThis statement is incorrect.\n\nIf two equal vectors act in the same direction, the resultant is indeed twice one vector.\n\nHowever, if they act in opposite directions, the resultant is zero.\n\nIf they act at right angles, the resultant is √2 times one vector.\n\nTherefore, the word 'always' makes the statement false.",
+      "Step 4: Examine Student IV's statement.\n\n'The magnitude of the resultant depends on both the magnitudes of the vectors and the angle between them.'\n\nThis statement is correct.\n\nThe angle between vectors is an essential factor in determining the magnitude and direction of the resultant vector.",
+      "Step 5: Identify all correct statements.\n\nCorrect statements are those made by Student II and Student IV.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (I and III only) is incorrect because both statements contain the word 'always', making them scientifically false. Vector addition depends on direction and the angle between vectors.",
+      "Option C (I, II and IV only) is incorrect because Student I wrongly assumes vectors can always be added arithmetically without considering direction.",
+      "Option D (II, III and IV only) is incorrect because Student III ignores the effect of the angle between vectors. Equal vectors do not always produce the same resultant."
+    ],
+    "exam_tip": "JAMB frequently includes words such as 'always', 'never', 'only' and 'must' in conceptual Physics questions. These words often signal statements that should be examined carefully.\n\nFor vector addition, remember this golden rule:\n\n**The magnitude of the resultant is determined not only by the sizes of the vectors but also by the angle between them.**\n\nNever assume that vectors can be treated like ordinary numbers unless they act along exactly the same line and in the same direction.",
+    "final_answer": "B. II and IV only",
+    "simple_explanation": "Think of two people pushing a stalled vehicle.\n\nIf both push in exactly the same direction, their efforts add together.\n\nIf one pushes from the side, part of the force changes the direction of motion instead of increasing the forward push.\n\nIf they push in opposite directions with equal force, the vehicle may not move at all.\n\nThis shows that adding vectors is different from adding ordinary numbers. The direction in which each vector acts is just as important as its size.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Addition of Vectors → Common Misconceptions to learn why vectors cannot always be added arithmetically, how direction influences the resultant, common JAMB traps involving vector addition, and worked conceptual examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and extensive exam-focused practice."
+  },
+  "tags": [
+    "addition_of_vectors",
+    "vector_concepts",
+    "vector_misconceptions",
+    "resultant_vector",
+    "conceptual_physics",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q075",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Addition of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a practical lesson on vector addition, four students made the following statements:\n\nStudent I: 'The resultant of two vectors is always equal to the arithmetic sum of their magnitudes.'\n\nStudent II: 'The resultant vector represents the single vector that has the same overall effect as all the vectors acting together.'\n\nStudent III: 'When adding vectors, both magnitude and direction must be considered.'\n\nStudent IV: 'Graphical methods such as the head-to-tail and parallelogram methods can be used to add vectors.'\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "II, III and IV only",
+    "B": "I, II and III only",
+    "C": "I and IV only",
+    "D": "I, III and IV only"
+  },
+  "answer": "A",
+  "answer_text": "II, III and IV only",
+  "explanation": {
+    "question_restate": "This question is a comprehensive review of vector addition. Instead of performing calculations, it tests your understanding of the fundamental principles governing how vectors are added and interpreted.",
+    "principle": "Before answering this question, it is important to understand what vector addition means.\n\nA vector is a physical quantity that possesses both magnitude and direction. Examples include force, displacement, velocity, acceleration and momentum.\n\nA beginner may ask, 'What does it mean to add vectors?'\n\nVector addition is the process of combining two or more vectors to produce another vector called the **resultant vector**.\n\nAnother beginner may ask, 'What is a resultant vector?'\n\nThe resultant vector is the single vector that can replace all the individual vectors while producing exactly the same overall effect.\n\nUnlike ordinary numbers, vectors cannot always be added by simply adding their magnitudes because direction influences the final result.\n\nFor example:\n\n• Two forces acting in exactly the same direction reinforce each other, so their magnitudes are added.\n\n• Two forces acting in opposite directions oppose each other, so their magnitudes are subtracted.\n\n• Two vectors acting at an angle require graphical methods or mathematical techniques such as the triangle law, parallelogram law or vector resolution.\n\nTherefore, successful vector addition always considers both magnitude and direction.\n\nCommon graphical methods include:\n\n• Head-to-tail method.\n• Triangle method.\n• Parallelogram method.\n\nThese methods all produce the same resultant when applied correctly.",
+    "steps": [
+      "Step 1: Examine Student I's statement.\n\n'The resultant of two vectors is always equal to the arithmetic sum of their magnitudes.'\n\nThis statement is incorrect.\n\nVectors are influenced by direction. The arithmetic sum is obtained only when the vectors act in exactly the same direction. In many situations, such as perpendicular or opposite vectors, the resultant is different.",
+      "Step 2: Examine Student II's statement.\n\nThis statement correctly defines a resultant vector as the single vector that has the same overall effect as all the individual vectors combined.\n\nTherefore, Student II is correct.",
+      "Step 3: Examine Student III's statement.\n\nThis statement is also correct because vector addition requires consideration of both magnitude and direction.\n\nIgnoring direction is one of the most common mistakes students make.",
+      "Step 4: Examine Student IV's statement.\n\nThis statement is correct.\n\nThe head-to-tail method and the parallelogram method are both recognised graphical techniques for adding vectors.",
+      "Step 5: Identify the correct combination.\n\nStudent I is incorrect.\n\nStudents II, III and IV are correct.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Student I. The arithmetic sum of magnitudes is not always the resultant. Direction must always be considered.",
+      "Option C is incorrect because Student I is false, while Student II and Student III, which are correct, have been omitted.",
+      "Option D is incorrect because although Students III and IV are correct, Student I is still incorrect. Including one incorrect statement makes the entire combination wrong."
+    ],
+    "exam_tip": "JAMB does not always test vector addition through calculations. Many questions assess your conceptual understanding.\n\nMemorise these key ideas:\n\n• Scalars are added algebraically.\n• Vectors are added by considering both magnitude and direction.\n• The resultant is the single vector that produces the same effect as all the original vectors combined.\n• Graphical methods include the head-to-tail, triangle and parallelogram methods.\n\nWhenever you see the word 'always' in a physics statement, examine it carefully. Absolute statements are frequently used by JAMB to test conceptual understanding.",
+    "final_answer": "A. II, III and IV only",
+    "simple_explanation": "Imagine several people pushing a stalled vehicle.\n\nInstead of calculating the effect of each person's push separately, you can replace all the pushes with one imaginary push that has exactly the same effect. That single push is called the resultant force.\n\nTo find this resultant, you must consider not only how hard each person pushes but also the direction in which they push.\n\nThis is why Student II, Student III and Student IV are correct.\n\nStudent I is wrong because vectors cannot always be added like ordinary numbers.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Addition of Vectors for a complete revision of vector addition, including same-direction vectors, opposite-direction vectors, graphical methods, triangle law, parallelogram law, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "addition_of_vectors",
+    "resultant_vector",
+    "graphical_methods",
+    "conceptual_vectors",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
 }
+
+
 
 ]
