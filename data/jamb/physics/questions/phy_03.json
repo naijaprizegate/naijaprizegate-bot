@@ -3983,6 +3983,214 @@
     "phy_03"
   ],
   "active": true
+},
+{
+  "id": "phy_03_q082",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Subtraction of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An autonomous warehouse robot first moves 42 m due north to deliver a package. It then receives a correction command requiring it to return along the same path by 17 m before proceeding to another location. Which vector correctly represents the robot's net displacement after the correction?",
+  "options": {
+    "A": "25 m due north",
+    "B": "59 m due north",
+    "C": "25 m due south",
+    "D": "17 m due north"
+  },
+  "answer": "A",
+  "answer_text": "25 m due north",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret vector subtraction in a real-life situation. A robot moves in one direction and then reverses part of its journey. You are required to determine the remaining displacement after the reverse movement.",
+    "principle": "A vector is a quantity that possesses both magnitude and direction. When a body reverses part of its motion along the same straight line, the second displacement acts in the opposite direction. In vector mathematics, subtracting a vector is equivalent to adding another vector that points in the opposite direction.\n\nWhen two vectors act along the same straight line but in opposite directions, their magnitudes are subtracted, and the direction of the larger vector is retained.",
+    "definitions": "Displacement is the straight-line change in position from the starting point to the final position and has both magnitude and direction.\n\nVector subtraction determines the difference between two vectors by accounting for both their magnitudes and directions.",
+    "foundational_knowledge": "Suppose an object moves forward and then partly retraces its path. The backward movement reduces the original displacement rather than increasing it. This is why opposite-direction vectors are subtracted instead of added.",
+    "formula_introduction": "For vectors acting along the same straight line in opposite directions:\n\nNet displacement = Larger displacement − Smaller opposite displacement\n\nThis rule applies only because both vectors are collinear.",
+    "steps": [
+      "Step 1: Identify the initial displacement.\n\nThe robot moves 42 m due north.",
+      "Step 2: Identify the second displacement.\n\nThe robot moves 17 m back along the same path. This displacement is therefore due south relative to the first movement.",
+      "Step 3: Apply vector subtraction.\n\nNet displacement = 42 m − 17 m = 25 m.",
+      "Step 4: Determine the direction.\n\nSince the initial northward displacement is larger, the resultant displacement remains due north.",
+      "Step 5: Compare with the options.\n\nThe correct answer is 25 m due north."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it adds the two magnitudes instead of recognising that the second displacement is in the opposite direction.",
+      "Option C is incorrect because although subtraction was performed correctly, the direction is wrong. The larger displacement is northward, so the resultant cannot be southward.",
+      "Option D is incorrect because it gives only the magnitude of the reverse movement rather than the overall displacement."
+    ],
+    "common_misconceptions": "A common mistake is to add the distances whenever two movements occur. In vector problems, direction determines whether magnitudes should be added or subtracted.",
+    "exam_tip": "Whenever expressions such as 'returns', 'moves back', 'retraces', or 'reverses direction' appear in a question, first check whether the second vector is opposite to the first. If it is, subtract the magnitudes and retain the direction of the larger vector.",
+    "final_answer": "A. 25 m due north",
+    "simple_explanation": "Imagine walking 42 m forward along a corridor and then walking back 17 m. You are not 59 m from where you started. Instead, you are only 25 m ahead of your starting point. Since you are still ahead in the original direction, your displacement is 25 m due north.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Subtraction of Vectors for detailed lessons on opposite-direction vectors, reverse motion, graphical subtraction methods, and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept-based practice and examination tips."
+  },
+  "tags": [
+    "subtraction_of_vectors",
+    "net_displacement",
+    "collinear_vectors",
+    "warehouse_robot",
+    "application",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q083",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Subtraction of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An autonomous inspection robot first moves with a displacement vector of (14 m east, 9 m north). It then receives a correction command represented by the displacement vector (6 m east, 4 m north).\n\nIf the required displacement is obtained by subtracting the correction vector from the original displacement, what is the resulting vector?",
+  "options": {
+    "A": "8 m east, 5 m north",
+    "B": "20 m east, 13 m north",
+    "C": "8 m east, 13 m north",
+    "D": "20 m east, 5 m north"
+  },
+  "answer": "A",
+  "answer_text": "8 m east, 5 m north",
+  "explanation": {
+    "question_restate": "This question tests your understanding of vector subtraction using rectangular components. Instead of subtracting only the magnitudes, each corresponding component must be subtracted separately.",
+    "principle": "A vector is a quantity that possesses both magnitude and direction.\n\nWhen a vector is expressed in terms of its horizontal (east-west) and vertical (north-south) components, subtraction is carried out by subtracting corresponding components.\n\nIf\n\nA = (Ax, Ay)\n\nand\n\nB = (Bx, By),\n\nthen\n\nA − B = (Ax − Bx, Ay − By).\n\nThis method is widely used in robotics, navigation, engineering and computer-controlled motion because each direction is treated independently.",
+    "steps": [
+      "Step 1: Identify the two vectors.\n\nOriginal displacement:\nA = (14 m east, 9 m north)\n\nCorrection displacement:\nB = (6 m east, 4 m north).",
+      "Step 2: Subtract the eastward components.\n\n14 − 6 = 8 m east.",
+      "Step 3: Subtract the northward components.\n\n9 − 4 = 5 m north.",
+      "Step 4: Combine the new components.\n\nResulting vector = (8 m east, 5 m north).",
+      "Step 5: Compare with the options.\n\nOnly Option A matches the calculated vector."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is obtained by adding both components instead of subtracting them.",
+      "Option C correctly subtracts the eastward components but incorrectly adds the northward components.",
+      "Option D incorrectly adds the eastward components while subtracting the northward components."
+    ],
+    "exam_tip": "Whenever vectors are given as components, never subtract their magnitudes directly.\n\nSubtract each pair of corresponding components separately before writing the final vector.\n\nA common JAMB trap is to add one component while subtracting the other.",
+    "final_answer": "A. 8 m east, 5 m north",
+    "simple_explanation": "Imagine the robot has to reduce its planned movement by a correction instruction.\n\nIt reduces its eastward movement from 14 m to 8 m and its northward movement from 9 m to 5 m.\n\nTherefore, the remaining displacement is 8 m east and 5 m north.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Subtraction of Vectors to learn how vectors are subtracted using graphical methods, opposite vectors, rectangular components, and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive concept reviews and examination-focused practice."
+  },
+  "tags": [
+    "subtraction_of_vectors",
+    "vector_components",
+    "robotics",
+    "component_method",
+    "application",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q084",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Subtraction of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A robotics engineer programs an autonomous inspection robot to move according to two displacement vectors.\n\nVector A has components (14 m east, 9 m north), while Vector B has components (6 m east, 4 m north).\n\nWhat is the vector A − B?",
+  "options": {
+    "A": "8 m east, 5 m north",
+    "B": "20 m east, 13 m north",
+    "C": "8 m east, 13 m north",
+    "D": "20 m east, 5 m north"
+  },
+  "answer": "A",
+  "answer_text": "8 m east, 5 m north",
+  "explanation": {
+    "question_restate": "This question tests your understanding of vector subtraction using components. Instead of subtracting the magnitudes of the vectors directly, you must subtract their corresponding horizontal and vertical components separately.",
+    "principle": "A vector has both magnitude and direction. One convenient way to represent a vector is by resolving it into horizontal (x) and vertical (y) components.\n\nWhen subtracting two vectors, subtract each corresponding component independently.\n\nIf\n\nA = (Aₓ, Aᵧ)\n\nand\n\nB = (Bₓ, Bᵧ),\n\nthen\n\nA − B = (Aₓ − Bₓ, Aᵧ − Bᵧ).\n\nThis method is widely used in robotics, engineering, navigation and computer graphics because it simplifies vector calculations.",
+    "steps": [
+      "Step 1: Write the components of each vector.\n\nA = (14 m east, 9 m north)\n\nB = (6 m east, 4 m north).",
+      "Step 2: Subtract the horizontal components.\n\n14 − 6 = 8.\n\nTherefore, the horizontal component is 8 m east.",
+      "Step 3: Subtract the vertical components.\n\n9 − 4 = 5.\n\nTherefore, the vertical component is 5 m north.",
+      "Step 4: Combine the two results.\n\nA − B = (8 m east, 5 m north).",
+      "Step 5: Compare the result with the options.\n\nOnly Option A matches the calculated vector."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is obtained by adding the corresponding components instead of subtracting them.",
+      "Option C results from subtracting the horizontal components correctly but adding the vertical components.",
+      "Option D results from adding the horizontal components while subtracting only the vertical components."
+    ],
+    "common_misconceptions": [
+      "Many candidates add the components because they overlook the subtraction sign.",
+      "Some students subtract the magnitudes of the vectors instead of subtracting each corresponding component.",
+      "Others ignore direction and treat vectors as ordinary numbers."
+    ],
+    "exam_tip": "Whenever vectors are presented in component form, subtract the x-components separately and the y-components separately. Never combine the magnitudes first. This approach reduces errors and is the standard method used in JAMB vector questions.",
+    "final_answer": "A. 8 m east, 5 m north",
+    "simple_explanation": "Imagine the robot first follows Vector A and then you want to remove the effect of Vector B. You simply remove B's eastward movement from A's eastward movement and B's northward movement from A's northward movement.\n\nEast: 14 − 6 = 8 m.\n\nNorth: 9 − 4 = 5 m.\n\nSo the remaining displacement is 8 m east and 5 m north.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Subtraction of Vectors to learn vector subtraction using components, graphical methods, opposite vectors, relative displacement and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries and additional exam-focused practice."
+  },
+  "tags": [
+    "subtraction_of_vectors",
+    "vector_components",
+    "robotics",
+    "component_method",
+    "analysis",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q085",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Subtraction of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A drone inspection team is required to compare two displacement vectors recorded during separate pipeline surveys.\n\nThe first displacement vector is 32 km due north, while the second displacement vector is 20 km due north.\n\nWhich of the following represents the vector difference obtained by subtracting the second displacement from the first?",
+  "options": {
+    "A": "12 km due north",
+    "B": "52 km due north",
+    "C": "12 km due south",
+    "D": "20 km due north"
+  },
+  "answer": "A",
+  "answer_text": "12 km due north",
+  "explanation": {
+    "question_restate": "This question tests your understanding of vector subtraction when two displacement vectors act along the same straight line and in the same direction. You are required to determine the vector difference between the two displacements.",
+    "principle": "A vector is a quantity that possesses both magnitude and direction. Examples include displacement, velocity, force and acceleration.\n\nVector subtraction means finding the difference between two vectors.\n\nA beginner may ask, 'How is vector subtraction different from ordinary subtraction?'\n\nIn ordinary arithmetic, only the numbers are considered. In vector subtraction, both the magnitude and the direction must be taken into account.\n\nWhen two vectors act along the same straight line and point in the same direction, subtracting one from the other simply gives the difference in their magnitudes, while the direction of the larger vector is retained.\n\nMathematically,\n\nA − B = Difference in magnitude, directed along the larger vector.",
+    "steps": [
+      "Step 1: Identify the vectors.\n\nFirst displacement, A = 32 km due north.\n\nSecond displacement, B = 20 km due north.",
+      "Step 2: Since both vectors point due north, subtract their magnitudes.\n\nA − B = 32 − 20 = 12 km.",
+      "Step 3: Determine the direction.\n\nThe larger vector (32 km) points due north, so the difference also points due north.",
+      "Step 4: Compare with the options.\n\n12 km due north corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it adds the two vectors instead of subtracting them.",
+      "Option C is incorrect because the direction remains due north. Subtracting a smaller northward vector from a larger northward vector does not reverse the direction.",
+      "Option D is incorrect because 20 km is merely the magnitude of the second displacement and not the vector difference."
+    ],
+    "common_misconceptions": [
+      "Many candidates automatically add vector magnitudes whenever two vectors point in the same direction. The question specifically requires subtraction.",
+      "Some candidates believe subtraction always reverses the direction. The direction only changes if the second vector has the greater magnitude."
+    ],
+    "exam_tip": "In JAMB examinations, always determine whether the question requires vector addition or vector subtraction before carrying out any calculation.\n\nFor vectors acting along the same line:\n\n• Same direction → subtract magnitudes for A − B.\n• Opposite directions → first account for the opposite direction before determining the resultant.\n\nAlways assign the direction of the larger vector after subtraction.",
+    "final_answer": "A. 12 km due north",
+    "simple_explanation": "Imagine walking 32 km north and comparing that journey with another journey of 20 km north.\n\nThe first journey is 12 km longer than the second.\n\nSince both journeys are in the same direction, the difference is still directed north.\n\nTherefore, the vector difference is 12 km due north.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Subtraction of Vectors for a complete revision of vector subtraction involving same-direction vectors, opposite-direction vectors, graphical interpretation, relative displacement and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries and additional exam-focused practice."
+  },
+  "tags": [
+    "subtraction_of_vectors",
+    "vector_difference",
+    "displacement",
+    "pipeline_inspection",
+    "analysis",
+    "phy_03"
+  ],
+  "active": true
 }
 
 
