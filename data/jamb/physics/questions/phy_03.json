@@ -6766,6 +6766,789 @@
     "phy_03"
   ],
   "active": true
+},
+{
+  "id": "phy_03_q137",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector Components",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During the design of a pedestrian bridge, an engineer represents a supporting cable by a force of 50 N acting at an angle of 37° above the horizontal.\n\nWhich pair correctly represents the horizontal and vertical components of the force?",
+  "options": {
+    "A": "40 N horizontally and 30 N vertically",
+    "B": "30 N horizontally and 40 N vertically",
+    "C": "50 N horizontally and 37 N vertically",
+    "D": "37 N horizontally and 50 N vertically"
+  },
+  "answer": "A",
+  "answer_text": "40 N horizontally and 30 N vertically",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret the horizontal and vertical components of a vector when its magnitude and direction are known. Rather than finding the magnitude of the vector, you are required to identify the correct pair of perpendicular components.",
+    "principle": "Many physical quantities such as force, velocity and displacement are vectors because they possess both magnitude and direction.\n\nA vector can often be resolved into two mutually perpendicular components:\n\n• Horizontal component (along the x-axis)\n• Vertical component (along the y-axis)\n\nThese components are not separate forces acting independently. Instead, they are two perpendicular vectors whose combined effect is exactly the same as the original vector.\n\nWhen the angle is measured from the horizontal:\n\nHorizontal component = Fcosθ\n\nVertical component = Fsinθ\n\nwhere:\n\nF = magnitude of the vector\nθ = angle measured from the horizontal.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nMagnitude of the force, F = 50 N\n\nAngle with the horizontal, θ = 37°.",
+      "Step 2: Determine the horizontal component.\n\nHorizontal component = Fcosθ\n\n= 50 × cos37°\n\nUsing cos37° ≈ 0.80,\n\nHorizontal component ≈ 50 × 0.80 = 40 N.",
+      "Step 3: Determine the vertical component.\n\nVertical component = Fsinθ\n\n= 50 × sin37°\n\nUsing sin37° ≈ 0.60,\n\nVertical component ≈ 50 × 0.60 = 30 N.",
+      "Step 4: Compare the calculated values with the options.\n\nThe correct pair is 40 N horizontally and 30 N vertically.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B interchanges the horizontal and vertical components. Since the angle is measured from the horizontal, the horizontal component must be obtained using cosine, making it larger than the vertical component in this case.",
+      "Option C incorrectly treats the angle value as a component of the vector. An angle measured in degrees cannot be used directly as a force component.",
+      "Option D wrongly assigns the entire vector magnitude as one component and the angle as the other. A component cannot be greater than the original vector, and an angle is not a force."
+    ],
+    "exam_tip": "Always identify the reference axis before resolving a vector.\n\n• If the angle is measured from the horizontal, use cosine for the horizontal component and sine for the vertical component.\n\n• If the angle is measured from the vertical, the roles of sine and cosine are reversed.\n\nA common JAMB mistake is to interchange these components without first checking the reference axis.",
+    "final_answer": "A. 40 N horizontally and 30 N vertically",
+    "simple_explanation": "Imagine pulling a cable diagonally.\n\nPart of the pull acts horizontally, while the remaining part acts vertically. These two perpendicular components work together to produce the original diagonal force.\n\nSince the cable makes an angle with the horizontal, the horizontal component is found using cosine and the vertical component using sine. This gives 40 N horizontally and 30 N vertically.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Components to learn how vectors are resolved into horizontal and vertical components, how the reference axis affects the choice of sine or cosine, and how these ideas are applied in engineering, mechanics and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations and additional practice questions."
+  },
+  "tags": [
+    "vector_components",
+    "horizontal_component",
+    "vertical_component",
+    "bridge_engineering",
+    "vector_resolution",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q138",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector Components",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An emergency rescue drone flies such that its displacement consists of a horizontal component of 24 m and a vertical component of 32 m.\n\nWhat is the magnitude of the drone's resultant displacement?",
+  "options": {
+    "A": "40 m",
+    "B": "56 m",
+    "C": "8 m",
+    "D": "768 m"
+  },
+  "answer": "A",
+  "answer_text": "40 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the magnitude of a vector when its horizontal and vertical components are known. It applies the concept of vector components in the context of an emergency rescue drone.",
+    "principle": "A vector component is one of the perpendicular parts into which a vector is divided.\n\nFor example, a drone moving through the air may travel both horizontally and vertically at the same time. Instead of analysing the complete motion directly, we split the displacement into two perpendicular components:\n\n• Horizontal component\n• Vertical component\n\nThese two components form the perpendicular sides of a right-angled triangle, while the original displacement is the hypotenuse.\n\nTo recover the original vector from its components, we use Pythagoras' theorem:\n\nMagnitude of vector = √[(Horizontal component)² + (Vertical component)²]\n\nThis relationship works because the components are at right angles (90°) to each other.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHorizontal component = 24 m\nVertical component = 32 m",
+      "Step 2: State the required quantity.\n\nRequired: Magnitude of the resultant displacement.",
+      "Step 3: Write the appropriate formula.\n\nResultant magnitude = √(Horizontal² + Vertical²)",
+      "Step 4: Substitute the given values.\n\nResultant = √(24² + 32²)\n= √(576 + 1024)\n= √1600",
+      "Step 5: Evaluate the square root.\n\n√1600 = 40\n\nTherefore, the magnitude of the drone's displacement is 40 m."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (56 m) is obtained by simply adding the two components (24 + 32). Vector components that are perpendicular must not be added directly when determining the vector's magnitude.",
+      "Option C (8 m) results from subtracting the components (32 − 24). Subtraction does not give the magnitude of the original vector in this situation.",
+      "Option D (768 m) comes from multiplying the components (24 × 32). Multiplication has no physical meaning in determining the magnitude of a vector from perpendicular components."
+    ],
+    "exam_tip": "Whenever a question gives horizontal and vertical components of a vector, immediately think of a right-angled triangle.\n\nRemember:\n\n• Components are perpendicular.\n• Use Pythagoras' theorem to determine the original vector.\n• Never add or subtract perpendicular components directly when finding the magnitude.\n\nJAMB frequently tests this concept using displacement, velocity, force and acceleration.",
+    "final_answer": "A. 40 m",
+    "simple_explanation": "Imagine the drone first moves 24 m horizontally and then rises 32 m vertically.\n\nIts actual path is the straight-line distance from the starting point to its final position. Since the horizontal and vertical movements are perpendicular, they form a right-angled triangle.\n\nUsing Pythagoras' theorem:\n\n24² + 32² = 576 + 1024 = 1600\n\n√1600 = 40 m\n\nTherefore, the drone's resultant displacement is 40 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Components to learn how vectors are resolved into perpendicular components, how to determine the magnitude and direction of a vector from its components, and how these ideas are applied in engineering, aviation, navigation and JAMB examination questions."
+  },
+  "tags": [
+    "vector_components",
+    "resultant_magnitude",
+    "pythagoras",
+    "drone_navigation",
+    "application",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q139",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector Components",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a Physics lesson, a teacher explained that any vector can be resolved into two perpendicular components along mutually perpendicular axes.\n\nWhy are the components chosen to be perpendicular to each other?",
+  "options": {
+    "A": "Because perpendicular components can be treated independently and combined to reproduce the original vector accurately.",
+    "B": "Because perpendicular components always have equal magnitudes.",
+    "C": "Because every vector naturally acts only in vertical and horizontal directions.",
+    "D": "Because using perpendicular components increases the magnitude of the original vector."
+  },
+  "answer": "A",
+  "answer_text": "Because perpendicular components can be treated independently and combined to reproduce the original vector accurately.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of why vector components are resolved along two perpendicular directions rather than along any two arbitrary directions.",
+    "principle": "A vector is a quantity that possesses both magnitude and direction. In Physics, a vector can be represented by two independent components that act at right angles (90°) to each other.\n\nThese are usually the horizontal (x-axis) and vertical (y-axis) components.\n\nA beginner may ask, 'Why must the components be perpendicular?'\n\nPerpendicular directions are mathematically independent. This means that motion or force in one direction does not directly affect the other. Because of this independence, each component can be analysed separately before they are combined to recover the original vector.\n\nThis approach greatly simplifies calculations in mechanics, engineering, navigation, electricity and many other areas of Physics.",
+    "steps": [
+      "Step 1: Recall the meaning of vector components.\n\nVector components are smaller vectors whose combined effect is exactly the same as the original vector.",
+      "Step 2: Understand why perpendicular directions are preferred.\n\nWhen two components are at right angles (90°), each represents an independent effect along its own axis. This independence allows each component to be calculated separately.",
+      "Step 3: Examine Option A.\n\nThis correctly explains that perpendicular components can be analysed independently and later combined to reproduce the original vector.\n\nTherefore, Option A is correct.",
+      "Step 4: Examine the remaining options.\n\nThey each contain misconceptions about vector components and do not explain the real reason for choosing perpendicular axes."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because perpendicular components do not have to be equal in magnitude. Their values depend on the direction of the original vector.",
+      "Option C is incorrect because a vector may point in any direction. Horizontal and vertical directions are simply convenient reference axes for analysis.",
+      "Option D is incorrect because resolving a vector into components does not increase its magnitude. The components combine vectorially to reproduce exactly the original vector."
+    ],
+    "exam_tip": "Whenever JAMB asks about vector components, remember that the horizontal and vertical components are chosen because they are perpendicular and therefore independent. This makes calculations involving forces, displacement and velocity much easier.\n\nDo not confuse 'perpendicular components' with 'equal components.' They are not necessarily the same.",
+    "final_answer": "A. Because perpendicular components can be treated independently and combined to reproduce the original vector accurately.",
+    "simple_explanation": "Imagine pushing a box across a floor while also lifting it slightly. The forward push and the upward lift act in different directions and do not interfere with each other.\n\nPhysicists treat these two directions separately because they are perpendicular. After analysing each one, they combine them to obtain the overall effect. This is why vector components are chosen to be at right angles.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Components to learn why vectors are resolved into perpendicular components, how horizontal and vertical components are obtained, and how they are applied in mechanics, engineering and navigation. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, worked examples and JAMB-focused practice."
+  },
+  "tags": [
+    "vector_components",
+    "perpendicular_components",
+    "conceptual_vectors",
+    "physics_foundation",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q140",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector Components",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An airport radar detects an aircraft moving with a velocity of 85 m s⁻¹. If its horizontal component of velocity is 36 m s⁻¹, what is the vertical component of its velocity?",
+  "options": {
+    "A": "49 m s⁻¹",
+    "B": "77 m s⁻¹",
+    "C": "93 m s⁻¹",
+    "D": "121 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "77 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the missing vertical component of an aircraft's velocity when the total velocity (resultant vector) and the horizontal component are known.",
+    "principle": "A vector can be resolved into two mutually perpendicular components, usually the horizontal and vertical components.\n\nThese components combine to produce the original vector. Since they are at right angles to each other, they form a right-angled triangle.\n\nThe relationship between the vector and its components is given by the Pythagorean theorem:\n\nV² = Vₓ² + Vᵧ²\n\nwhere:\n• V is the magnitude of the original vector.\n• Vₓ is the horizontal component.\n• Vᵧ is the vertical component.\n\nWhenever the resultant and one component are known, the missing component can be obtained by rearranging the formula.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nMagnitude of velocity, V = 85 m s⁻¹\nHorizontal component, Vₓ = 36 m s⁻¹\nVertical component, Vᵧ = ?",
+      "Step 2: Write the appropriate formula.\n\nV² = Vₓ² + Vᵧ²\n\nRearranging,\n\nVᵧ = √(V² − Vₓ²)",
+      "Step 3: Substitute the given values.\n\nVᵧ = √(85² − 36²)\n\n= √(7225 − 1296)\n\n= √5929",
+      "Step 4: Evaluate the square root.\n\n√5929 = 77\n\nTherefore, the vertical component is 77 m s⁻¹.",
+      "Step 5: Compare the result with the options.\n\nOption B matches the calculated value."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (49 m s⁻¹) is incorrect. It may result from an arithmetic error when subtracting the squared values.",
+      "Option C (93 m s⁻¹) is incorrect because a component of a vector cannot be greater than the magnitude of the vector itself.",
+      "Option D (121 m s⁻¹) is incorrect because it could result from adding the squared quantities instead of taking the square root correctly."
+    ],
+    "exam_tip": "Whenever a vector is resolved into horizontal and vertical components, remember that the components are perpendicular.\n\nDo not subtract the magnitudes directly. Always apply the Pythagorean theorem using the squared values before taking the square root.\n\nAlso check that the calculated component is less than the magnitude of the original vector.",
+    "final_answer": "B. 77 m s⁻¹",
+    "simple_explanation": "Imagine the aircraft's velocity as the longest side of a right-angled triangle. The horizontal and vertical components form the other two sides.\n\nSince one side and the longest side are known, you can use Pythagoras' theorem to find the remaining side.\n\nThis gives a vertical component of 77 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Components for detailed lessons on resolving vectors, determining unknown components, using the Pythagorean theorem, and solving JAMB-style application questions involving velocity, force and displacement."
+  },
+  "tags": [
+    "vector_components",
+    "velocity_components",
+    "pythagoras",
+    "airport_radar",
+    "vectors",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q141",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector Components",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Two mobile robots are programmed to move across a factory floor.\n\nRobot P has horizontal and vertical velocity components of 18 m s⁻¹ and 24 m s⁻¹ respectively.\n\nRobot Q has horizontal and vertical velocity components of 15 m s⁻¹ and 20 m s⁻¹ respectively.\n\nWhich of the following statements correctly compares the motions of the two robots?",
+  "options": {
+    "A": "Robot P has the greater speed because both of its velocity components are larger than those of Robot Q.",
+    "B": "Both robots have the same speed because they move in the same general direction.",
+    "C": "Robot Q has the greater speed because its horizontal and vertical components are more nearly equal.",
+    "D": "The speeds of the robots cannot be compared unless the angles of motion are known."
+  },
+  "answer": "A",
+  "answer_text": "Robot P has the greater speed because both of its velocity components are larger than those of Robot Q.",
+  "explanation": {
+    "question_restate": "This question tests your ability to compare two vectors using their horizontal and vertical components rather than by looking at only one component or requiring the direction angles.",
+    "principle": "A vector can be represented by two perpendicular components: a horizontal component and a vertical component.\n\nThese components combine to produce the original vector.\n\nThe magnitude (or size) of a vector is obtained using Pythagoras' theorem:\n\nVector magnitude = √[(horizontal component)² + (vertical component)²]\n\nWhenever both perpendicular components of one vector are greater than the corresponding components of another vector, the first vector must also have the greater magnitude.\n\nTherefore, comparing components is often sufficient to compare the magnitudes of vectors without first determining their directions.",
+    "steps": [
+      "Step 1: Examine Robot P.\n\nHorizontal component = 18 m s⁻¹\n\nVertical component = 24 m s⁻¹\n\nMagnitude = √(18² + 24²)\n\n= √(324 + 576)\n\n= √900\n\n= 30 m s⁻¹.",
+      "Step 2: Examine Robot Q.\n\nHorizontal component = 15 m s⁻¹\n\nVertical component = 20 m s⁻¹\n\nMagnitude = √(15² + 20²)\n\n= √(225 + 400)\n\n= √625\n\n= 25 m s⁻¹.",
+      "Step 3: Compare the magnitudes.\n\nRobot P has a speed of 30 m s⁻¹, while Robot Q has a speed of 25 m s⁻¹.\n\nSince 30 m s⁻¹ is greater than 25 m s⁻¹, Robot P moves faster.",
+      "Step 4: Select the correct statement.\n\nOption A correctly states that Robot P has the greater speed because both of its velocity components are larger, leading to a larger resultant velocity."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because moving in roughly the same direction does not imply equal speed. Speed depends on the magnitude of the velocity vector.",
+      "Option C is incorrect because having components that are closer in value does not necessarily produce a larger vector magnitude. The actual sizes of the components determine the magnitude.",
+      "Option D is incorrect because the speeds can be determined directly from the components using Pythagoras' theorem. The direction angles are not required for this comparison."
+    ],
+    "common_misconceptions": [
+      "Believing that vectors can only be compared if their directions are known.",
+      "Assuming that one larger component alone guarantees a larger vector.",
+      "Thinking that vectors with similar component values must have equal magnitudes.",
+      "Comparing only the horizontal or only the vertical component instead of considering both together."
+    ],
+    "exam_tip": "In JAMB, when two vectors are expressed in terms of perpendicular components, compare both components carefully. If necessary, calculate the resultant magnitude using Pythagoras' theorem before drawing a conclusion. Never compare vectors using only one component.",
+    "final_answer": "A. Robot P has the greater speed because both of its velocity components are larger than those of Robot Q.",
+    "simple_explanation": "Imagine each robot moves partly sideways and partly forward.\n\nIts overall speed depends on the combination of both movements.\n\nRobot P moves faster sideways and faster forward than Robot Q, so its overall speed is also greater.\n\nCalculating the magnitudes confirms this:\n\nRobot P = 30 m s⁻¹\n\nRobot Q = 25 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Components to learn how horizontal and vertical components combine to produce the original vector, how to compare vectors using their components, and how these ideas are applied in robotics, engineering, navigation and JAMB examination questions."
+  },
+  "tags": [
+    "vector_components",
+    "vector_comparison",
+    "robotics",
+    "velocity_components",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q142",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector Components",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An autonomous delivery vehicle is programmed to move with a velocity of 25 m s⁻¹ at an angle of 37° north of east while travelling across a large industrial facility.\n\nFor its navigation software, the velocity must be expressed as horizontal and vertical components.\n\nUsing cos 37° = 0.80 and sin 37° = 0.60, what are the horizontal and vertical components of the vehicle's velocity respectively?",
+  "options": {
+    "A": "20 m s⁻¹ east and 15 m s⁻¹ north",
+    "B": "15 m s⁻¹ east and 20 m s⁻¹ north",
+    "C": "25 m s⁻¹ east and 15 m s⁻¹ north",
+    "D": "20 m s⁻¹ east and 25 m s⁻¹ north"
+  },
+  "answer": "A",
+  "answer_text": "20 m s⁻¹ east and 15 m s⁻¹ north",
+  "explanation": {
+    "question_restate": "This question tests your ability to resolve the velocity of an autonomous vehicle into its horizontal (eastward) and vertical (northward) components using trigonometric ratios.",
+    "principle": "Many physical quantities such as displacement, velocity, force and acceleration are vectors because they possess both magnitude and direction.\n\nA vector can be represented by two perpendicular components. These components together produce exactly the same effect as the original vector.\n\nWhen a vector makes an angle with the horizontal:\n\n• Horizontal component = V cos θ\n• Vertical component = V sin θ\n\nwhere:\n\nV = magnitude of the vector\nθ = angle measured from the horizontal.\n\nUsing vector components allows engineers, robotic systems and navigation software to analyse motion independently along the horizontal and vertical directions.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nMagnitude of velocity, V = 25 m s⁻¹\nAngle, θ = 37° north of east\ncos 37° = 0.80\nsin 37° = 0.60",
+      "Step 2: Calculate the horizontal component.\n\nHorizontal component = V cos θ\n= 25 × 0.80\n= 20 m s⁻¹ east",
+      "Step 3: Calculate the vertical component.\n\nVertical component = V sin θ\n= 25 × 0.60\n= 15 m s⁻¹ north",
+      "Step 4: Compare the result with the options.\n\nThe correct pair is 20 m s⁻¹ east and 15 m s⁻¹ north.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it interchanges the horizontal and vertical components. Since the angle is measured from the horizontal (east), cosine gives the horizontal component and sine gives the vertical component.",
+      "Option C is incorrect because it incorrectly assumes the original vector magnitude is the horizontal component. A component can never exceed the magnitude of the original vector.",
+      "Option D is incorrect because it treats the original vector magnitude as the vertical component, which is impossible since the components together combine to produce the original vector."
+    ],
+    "exam_tip": "Always identify the reference axis before choosing between sine and cosine.\n\nIf the angle is measured from the horizontal:\n\n• Horizontal component = V cos θ\n• Vertical component = V sin θ\n\nIf the angle is measured from the vertical, the roles of sine and cosine are reversed.\n\nOne of the most common JAMB mistakes is using the correct formula with the wrong reference axis.",
+    "final_answer": "A. 20 m s⁻¹ east and 15 m s⁻¹ north",
+    "simple_explanation": "Imagine looking at the vehicle's movement from above. Although it travels in a slanting direction, its motion can be split into two simpler movements:\n\n• one towards the east,\n• one towards the north.\n\nThese two component motions work together to produce the actual path of the vehicle. Here, the eastward motion is 20 m s⁻¹, while the northward motion is 15 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Components to learn how vectors are resolved into horizontal and vertical components, how the reference axis determines the correct trigonometric ratio, and how these ideas are applied in robotics, autonomous navigation, aviation and engineering through detailed JAMB-style worked examples."
+  },
+  "tags": [
+    "vector_components",
+    "velocity_components",
+    "autonomous_vehicle",
+    "application_of_vectors",
+    "navigation",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q143",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector Components",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "While reviewing an engineering laboratory exercise, an instructor noticed that a trainee made the following conclusion:\n\n'A vector can be replaced by any two smaller vectors, even if they are not perpendicular, because vector components simply divide the original vector into parts.' \n\nWhich aspect of the trainee's reasoning is incorrect?",
+  "options": {
+    "A": "Vector components must always be perpendicular to one another for the chosen coordinate axes.",
+    "B": "A vector can only be resolved into components if its magnitude is unknown.",
+    "C": "The sum of the magnitudes of the components must always equal the magnitude of the original vector.",
+    "D": "Only force vectors can be resolved into components."
+  },
+  "answer": "A",
+  "answer_text": "Vector components must always be perpendicular to one another for the chosen coordinate axes.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to identify a common misconception about vector components. Rather than performing a calculation, you must determine why the trainee's explanation of vector components is scientifically incorrect.",
+    "principle": "A vector is a quantity that possesses both magnitude and direction. Examples include displacement, velocity, acceleration, force and momentum.\n\nVery often, it is easier to analyse a vector by splitting it into two mutually perpendicular components. These are called vector components.\n\nA beginner may ask, 'Why are the components perpendicular?'\n\nIn elementary Physics, vectors are usually resolved along two coordinate axes that meet at right angles, such as the horizontal (x-axis) and vertical (y-axis). These perpendicular components combine vectorially to reproduce exactly the original vector.\n\nAlthough a vector may be expressed in different coordinate systems, the standard vector components used for analysis are taken along perpendicular axes because this greatly simplifies calculations in mechanics, engineering and navigation.",
+    "steps": [
+      "Step 1: Examine the trainee's statement.\n\nThe trainee believes that any two smaller vectors can serve as vector components, even when they are not perpendicular.",
+      "Step 2: Recall the definition of vector components.\n\nVector components are the projections of a vector along selected coordinate axes. In elementary Physics, these axes are perpendicular to one another.",
+      "Step 3: Identify the misconception.\n\nThe error is not that a vector can be divided into parts, but that the trainee ignores the perpendicular nature of standard vector components used in analysis.",
+      "Step 4: Evaluate the options.\n\nOption A correctly identifies the mistake.\n\nThe remaining options introduce statements that are not true properties of vector components."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a vector can be resolved into components whether its magnitude is known or unknown. Knowing the magnitude is not a requirement for defining vector components.",
+      "Option C is incorrect because the magnitudes of perpendicular components do not generally add arithmetically to give the original vector. Instead, they combine according to the Pythagorean relationship.",
+      "Option D is incorrect because vector components are used for many vector quantities, including displacement, velocity, acceleration and momentum—not only force."
+    ],
+    "exam_tip": "Whenever JAMB asks about vector components, remember that they are not arbitrary pieces of a vector. They are projections along chosen coordinate axes, which are usually perpendicular. Also avoid confusing the magnitude of a vector with the magnitudes of its individual components.",
+    "final_answer": "A. Vector components must always be perpendicular to one another for the chosen coordinate axes.",
+    "simple_explanation": "Imagine pulling a suitcase with a rope held at an angle.\n\nInstead of studying the angled pull directly, you split it into two simpler pushes: one horizontal and one vertical. These two directions are at right angles to each other. That is why vector components are normally perpendicular.\n\nThe trainee's mistake was assuming that any two smaller vectors, regardless of their directions, automatically qualify as vector components.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Components for a detailed lesson on resolving vectors into horizontal and vertical components, understanding perpendicular coordinate axes, interpreting vector projections, and avoiding common JAMB examination mistakes."
+  },
+  "tags": [
+    "vector_components",
+    "error_analysis",
+    "perpendicular_components",
+    "engineering_application",
+    "conceptual_vectors",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q144",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector Components",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During the installation of an offshore wind turbine, a tension force acting on a support cable is resolved into two perpendicular components: 48 N horizontally and 64 N vertically.\n\nWhat is the magnitude of the original tension force acting on the cable?",
+  "options": {
+    "A": "56 N",
+    "B": "80 N",
+    "C": "96 N",
+    "D": "112 N"
+  },
+  "answer": "B",
+  "answer_text": "80 N",
+  "explanation": {
+    "question_restate": "This question requires you to determine the magnitude of an original vector when its horizontal and vertical components are known. It applies the relationship between perpendicular vector components and the resultant vector.",
+    "principle": "A vector can be resolved into two mutually perpendicular components, usually one horizontal and one vertical.\n\nThese components combine to produce the original vector. Since the components are at right angles (90°) to each other, they form the two shorter sides of a right-angled triangle, while the original vector forms the longest side (the hypotenuse).\n\nA beginner may ask, 'Why can't I simply add the two components?'\n\nThe answer is that the components act in different directions. Because they are perpendicular, their combined effect is found using Pythagoras' theorem rather than ordinary addition.\n\nThe relationship is:\n\nR² = H² + V²\n\nwhere:\n\n• R = magnitude of the original vector (resultant)\n• H = horizontal component\n• V = vertical component\n\nThis relationship is widely applied in engineering, mechanics, aviation, navigation and construction whenever forces or motions occur in two perpendicular directions.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHorizontal component, H = 48 N\n\nVertical component, V = 64 N",
+      "Step 2: State the required quantity.\n\nDetermine the magnitude of the original tension force, R.",
+      "Step 3: Apply the appropriate formula.\n\nR² = H² + V²",
+      "Step 4: Substitute the values.\n\nR² = (48)² + (64)²\n\n= 2304 + 4096\n\n= 6400",
+      "Step 5: Find the square root.\n\nR = √6400\n\n= 80 N",
+      "Step 6: Compare with the options.\n\nThe correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (56 N) is incorrect. It does not satisfy Pythagoras' theorem and may result from an incorrect calculation.",
+      "Option C (96 N) is incorrect. It may arise from adding the components incorrectly or using an inappropriate formula.",
+      "Option D (112 N) is incorrect. It is obtained by simply adding 48 N and 64 N, ignoring that the components are perpendicular."
+    ],
+    "exam_tip": "Whenever horizontal and vertical vector components are given, immediately recognise that they are perpendicular.\n\nDo not add the components directly. Instead, use Pythagoras' theorem:\n\nR = √(H² + V²)\n\nIn JAMB examinations, one of the most common mistakes is treating perpendicular vector components as though they act in the same direction.",
+    "final_answer": "B. 80 N",
+    "simple_explanation": "Imagine pulling a cable that is stretched both sideways and upward.\n\nThe sideways pull is 48 N while the upward pull is 64 N. Together, these two perpendicular pulls combine to form one larger pull along the cable.\n\nSince the pulls are at right angles, they form a right-angled triangle. Using Pythagoras' theorem gives the total pull as 80 N.\n\nTherefore, the original tension force acting on the cable is 80 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Components to learn how horizontal and vertical components combine to produce the original vector. The lesson includes worked examples on forces, velocity, displacement and engineering applications, together with beginner-friendly explanations and JAMB-style practice questions available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "vector_components",
+    "pythagoras",
+    "resultant_magnitude",
+    "engineering_application",
+    "offshore_wind_energy",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q145",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector Components",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a technical college workshop on vector analysis, an instructor asked four trainees to describe vector components.\n\nTrainee I: \"The horizontal and vertical components of a vector are perpendicular to each other.\"\n\nTrainee II: \"The vector components combine to reproduce the original vector.\"\n\nTrainee III: \"A vector component always has a greater magnitude than the original vector.\"\n\nTrainee IV: \"Vector components can be used to simplify the analysis of forces acting at an angle.\"\n\nFrom the statements above, identify the correct combination.",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I and III only",
+    "C": "II, III and IV only",
+    "D": "I, III and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of the properties and applications of vector components rather than your ability to perform calculations. You are required to identify which statements about vector components are scientifically correct.",
+    "principle": "A vector is a quantity that has both magnitude and direction. Examples include force, displacement, velocity and acceleration.\n\nMany vectors act at an angle, making them difficult to analyse directly. To simplify such situations, the vector is resolved into two mutually perpendicular components, usually a horizontal component and a vertical component.\n\nThese components are not separate vectors acting independently. Instead, they are parts of the original vector. When combined vectorially, they produce exactly the same magnitude and direction as the original vector.\n\nBecause the components are perpendicular, they can be analysed independently using trigonometry and then combined whenever necessary. This method greatly simplifies problems in mechanics, engineering, navigation and many other areas of physics.",
+    "steps": [
+      "Step 1: Examine Trainee I's statement.\n\nThe horizontal and vertical components of a vector are at right angles (90°) to each other.\n\nTherefore, Trainee I is correct.",
+      "Step 2: Examine Trainee II's statement.\n\nVector components are obtained by resolving the original vector. When these perpendicular components are combined vectorially, they reproduce the original vector.\n\nTherefore, Trainee II is correct.",
+      "Step 3: Examine Trainee III's statement.\n\nA component is only a part of the original vector. Its magnitude cannot exceed that of the original vector because it represents only one direction of the vector.\n\nTherefore, Trainee III is incorrect.",
+      "Step 4: Examine Trainee IV's statement.\n\nResolving vectors into components simplifies the analysis of inclined forces and motions. This technique is widely used in engineering, construction, aviation and mechanics.\n\nTherefore, Trainee IV is correct.",
+      "Step 5: Determine the correct combination.\n\nThe correct statements are I, II and IV only.\n\nHence, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Trainee III, whose statement is false, and excludes Trainee II and Trainee IV, which are correct.",
+      "Option C is incorrect because although Trainee II and Trainee IV are correct, Trainee III is incorrect, while Trainee I has been wrongly omitted.",
+      "Option D is incorrect because Trainee III is false. Including an incorrect statement makes the entire combination incorrect."
+    ],
+    "exam_tip": "When answering conceptual questions on vector components, remember these key facts:\n\n• Vector components are perpendicular to one another.\n• Their vector combination reproduces the original vector.\n• A component is never greater than the original vector.\n• Resolving vectors into components simplifies the analysis of forces and motion in physics.\n\nJAMB frequently tests these ideas through statement-based questions rather than calculations.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Imagine pulling a heavy object with a rope inclined to the ground. The pull can be separated into a horizontal part and a vertical part.\n\nThese two parts are called vector components. They work together to produce the original pull. Neither component is larger than the original force because each represents only part of it.\n\nTherefore, only the statements made by Trainees I, II and IV are correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Components to learn how vectors are resolved into perpendicular components, why the components are mutually perpendicular, how they reproduce the original vector, and how they are applied in mechanics, engineering, navigation and JAMB-style examination questions."
+  },
+  "tags": [
+    "vector_components",
+    "multiple_statements",
+    "conceptual_understanding",
+    "engineering_applications",
+    "phy_03",
+    "jamb_revision"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q146",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector Components",
+  "difficulty": "medium",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "An engineer is inspecting a high-voltage transmission tower. A supporting cable exerts a force of magnitude F, making an angle θ with the vertical mast.\n\nWhich expression correctly represents the horizontal component of the force?",
+  "options": {
+    "A": "F sin θ",
+    "B": "F cos θ",
+    "C": "F tan θ",
+    "D": "F sec θ"
+  },
+  "answer": "A",
+  "answer_text": "F sin θ",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how to express the horizontal and vertical components of a vector when the angle is measured from the vertical rather than from the horizontal.",
+    "principle": "A vector can be resolved into two perpendicular components, usually horizontal and vertical.\n\nVector components are the projections of a vector along chosen axes. They simplify the analysis of forces, velocities, displacements and other vector quantities.\n\nA common source of confusion is the reference axis used to measure the angle.\n\nIf the angle is measured from the horizontal:\n\n• Horizontal component = F cos θ\n• Vertical component = F sin θ\n\nHowever, if the angle is measured from the vertical:\n\n• Vertical component = F cos θ\n• Horizontal component = F sin θ\n\nThis is because the vertical component is adjacent to the given angle, while the horizontal component is opposite the angle.",
+    "steps": [
+      "Step 1: Identify the reference axis.\n\nThe question states that the angle θ is measured from the vertical mast, not from the horizontal.",
+      "Step 2: Recall the trigonometric relationships.\n\nFor a right-angled triangle:\n\n• Cosine relates the adjacent side to the hypotenuse.\n• Sine relates the opposite side to the hypotenuse.",
+      "Step 3: Identify the horizontal component.\n\nSince the horizontal component is opposite the angle measured from the vertical, it is given by:\n\nHorizontal component = F sin θ.",
+      "Step 4: Select the correct option.\n\nTherefore, the correct expression is F sin θ."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because F cos θ represents the vertical component when the angle is measured from the vertical.",
+      "Option C is incorrect because tangent gives the ratio of the opposite side to the adjacent side, not a vector component.",
+      "Option D is incorrect because secant is the reciprocal of cosine and is not used directly to determine a vector component."
+    ],
+    "exam_tip": "Always read carefully to determine whether the angle is measured from the horizontal or from the vertical.\n\nA useful memory aid is:\n\n• Angle from the horizontal → horizontal uses cosine.\n• Angle from the vertical → vertical uses cosine.\n\nThe component adjacent to the given angle always involves cosine, while the opposite component involves sine.",
+    "final_answer": "A. F sin θ",
+    "simple_explanation": "Imagine shining a light on the cable so that its shadow falls separately on the horizontal ground and the vertical mast.\n\nThe horizontal shadow represents the horizontal component.\n\nBecause the angle is measured from the vertical, the horizontal side is opposite the angle. Opposite sides are found using sine.\n\nTherefore, the horizontal component is F sin θ.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Components to learn how vectors are resolved when angles are measured from either the horizontal or the vertical. The lesson includes memory aids, worked examples, common examination mistakes, and JAMB-style practice questions available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "vector_components",
+    "component_expression",
+    "horizontal_component",
+    "vertical_reference",
+    "vectors",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q147",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector Components",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An aircraft maintains a speed of 180 m s⁻¹ along a straight flight path inclined at 35° above the horizontal. Determine the horizontal and vertical components of its velocity.\n\n(Take cos 35° = 0.82 and sin 35° = 0.57.)",
+  "options": {
+    "A": "147.6 m s⁻¹ horizontally and 102.6 m s⁻¹ vertically",
+    "B": "102.6 m s⁻¹ horizontally and 147.6 m s⁻¹ vertically",
+    "C": "180.0 m s⁻¹ horizontally and 35.0 m s⁻¹ vertically",
+    "D": "250.2 m s⁻¹ horizontally and 77.4 m s⁻¹ vertically"
+  },
+  "answer": "A",
+  "answer_text": "147.6 m s⁻¹ horizontally and 102.6 m s⁻¹ vertically",
+  "explanation": {
+    "question_restate": "This question requires you to resolve an aircraft's velocity into its horizontal and vertical components when the direction of motion is known. It tests your ability to apply trigonometry to vector components in an aviation context.",
+    "principle": "A vector has both magnitude and direction.\n\nIn many engineering and aviation problems, it is often easier to analyse a vector by separating it into two mutually perpendicular components.\n\nThese are called the horizontal component and the vertical component.\n\nWhen the angle is measured from the horizontal:\n\n• Horizontal component = V cos θ\n• Vertical component = V sin θ\n\nwhere:\n\n• V is the magnitude of the vector.\n• θ is the angle the vector makes with the horizontal.\n\nThe cosine function gives the component adjacent to the angle, while the sine function gives the component opposite the angle.\n\nThis is why the horizontal component is obtained using cosine and the vertical component using sine whenever the angle is measured from the horizontal.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nMagnitude of velocity, V = 180 m s⁻¹\n\nAngle with the horizontal, θ = 35°",
+      "Step 2: Calculate the horizontal component.\n\nHorizontal component = V cos θ\n\n= 180 × 0.82\n\n= 147.6 m s⁻¹",
+      "Step 3: Calculate the vertical component.\n\nVertical component = V sin θ\n\n= 180 × 0.57\n\n= 102.6 m s⁻¹",
+      "Step 4: Compare the result with the options.\n\nThe horizontal component is 147.6 m s⁻¹, while the vertical component is 102.6 m s⁻¹.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B interchanges the horizontal and vertical components. This mistake occurs when sine and cosine are incorrectly swapped.",
+      "Option C incorrectly treats the angle itself as a velocity component. An angle cannot be used directly as a component.",
+      "Option D gives values that cannot represent the components of a vector of magnitude 180 m s⁻¹ because a component cannot exceed the original vector's magnitude."
+    ],
+    "exam_tip": "Always check the reference axis before selecting the trigonometric function.\n\nIf the angle is measured from the horizontal:\n\n• Use cosine for the horizontal component.\n• Use sine for the vertical component.\n\nIf the angle is measured from the vertical, the functions are reversed.\n\nOne of the most common JAMB mistakes is using sine where cosine should be used or vice versa.",
+    "final_answer": "A. 147.6 m s⁻¹ horizontally and 102.6 m s⁻¹ vertically",
+    "simple_explanation": "Imagine looking at an aircraft climbing into the sky.\n\nAlthough it moves along a sloping path, part of its motion carries it forward while another part carries it upward.\n\nThe forward motion is the horizontal component, while the upward motion is the vertical component.\n\nSince the angle is measured from the horizontal, the forward motion is obtained using cosine and the upward motion using sine.\n\nThis gives:\n\n• Horizontal component = 147.6 m s⁻¹\n• Vertical component = 102.6 m s⁻¹",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Components for a complete lesson on resolving vectors into horizontal and vertical components, selecting the appropriate trigonometric function based on the reference axis, and solving aviation, engineering and navigation problems with fully worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and revision."
+  },
+  "tags": [
+    "vector_components",
+    "aircraft_velocity",
+    "horizontal_component",
+    "vertical_component",
+    "aviation",
+    "trigonometry",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q148",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector Components",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "Engineers inspecting a long underground oil pipeline use vector components when analysing the movement of an inspection robot through sections that are inclined and curved.\n\nWhat is the main advantage of resolving the robot's displacement into horizontal and vertical components during the analysis?",
+  "options": {
+    "A": "It allows the motion along each perpendicular direction to be analysed independently before combining the results.",
+    "B": "It increases the magnitude of the robot's displacement, making calculations easier.",
+    "C": "It removes the need to consider the direction of the robot's movement.",
+    "D": "It ensures that the horizontal and vertical components are always equal in magnitude."
+  },
+  "answer": "A",
+  "answer_text": "It allows the motion along each perpendicular direction to be analysed independently before combining the results.",
+  "explanation": {
+    "question_restate": "This question examines why engineers resolve a vector into its horizontal and vertical components when analysing motion in practical engineering applications such as pipeline inspection.",
+    "principle": "A vector is a quantity that has both magnitude and direction. Examples include displacement, velocity, acceleration and force.\n\nA vector component is one of the perpendicular parts into which a vector is divided, usually along the horizontal (x-axis) and vertical (y-axis).\n\nA beginner may ask, 'Why divide one vector into two smaller vectors?'\n\nThe reason is that many engineering and physics problems become much easier when motion or forces are analysed separately along two perpendicular directions. After analysing each direction independently, the results are combined to describe the original vector.\n\nThis method simplifies calculations and helps engineers understand how a system behaves in each direction.",
+    "steps": [
+      "Step 1: Identify what the engineers are trying to achieve.\n\nThey want to analyse the robot's movement through a pipeline that changes direction. Such movement is easier to study when separated into horizontal and vertical components.",
+      "Step 2: Examine Option A.\n\nThis option correctly states that resolving a vector allows the motion in each perpendicular direction to be treated independently before the overall motion is determined.\n\nThis is the fundamental purpose of vector components.",
+      "Step 3: Examine Option B.\n\nResolving a vector does not increase its magnitude. The original vector remains unchanged; only its representation changes.",
+      "Step 4: Examine Option C.\n\nDirection remains an essential property of a vector. Resolving a vector does not eliminate the need to consider direction.",
+      "Step 5: Examine Option D.\n\nHorizontal and vertical components are not generally equal. Their magnitudes depend on the direction of the original vector."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because vector components do not alter the magnitude of the original vector. They simply express it along chosen perpendicular axes.",
+      "Option C is incorrect because direction is the defining feature of a vector. Component analysis retains, rather than ignores, directional information.",
+      "Option D is incorrect because the horizontal and vertical components are equal only for specific directions, such as a vector inclined at 45° to the horizontal. They are not always equal."
+    ],
+    "exam_tip": "Whenever JAMB asks about vector components in engineering, mechanics or navigation, remember that the primary purpose is to simplify analysis by treating motion or forces independently along perpendicular directions. Vector components do not change the original vector; together they reproduce it.",
+    "final_answer": "A. It allows the motion along each perpendicular direction to be analysed independently before combining the results.",
+    "simple_explanation": "Imagine pushing a trolley up a sloping path. Instead of studying the push all at once, you can think of part of the push acting forward and another part acting upward. Studying these two parts separately makes the problem much easier. This is exactly why engineers use vector components.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Components to learn how vectors are resolved into horizontal and vertical components, why perpendicular components simplify engineering analysis, and how these ideas are applied in mechanics, transportation, robotics and industrial systems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons, worked examples and JAMB-focused practice."
+  },
+  "tags": [
+    "vector_components",
+    "engineering_application",
+    "pipeline_inspection",
+    "component_analysis",
+    "scalars_and_vectors",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q149",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector Components",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "An engineer monitoring an elevator system observes that the elevator moves straight upward inside its vertical shaft at a constant speed. If the elevator's velocity is resolved into horizontal and vertical components, what does a zero horizontal component indicate?",
+  "options": {
+    "A": "The elevator has no motion in the horizontal direction but continues moving vertically.",
+    "B": "The elevator is completely at rest because one component is zero.",
+    "C": "The elevator's vertical component is also zero.",
+    "D": "The elevator is accelerating horizontally while moving upward."
+  },
+  "answer": "A",
+  "answer_text": "The elevator has no motion in the horizontal direction but continues moving vertically.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the physical meaning of vector components. Specifically, it asks what it means when the horizontal component of an object's velocity is zero while the object is moving vertically.",
+    "principle": "A vector can be resolved into two mutually perpendicular components, usually the horizontal (x-axis) component and the vertical (y-axis) component.\n\nThese components together completely describe the vector.\n\nA beginner may ask, 'What is a vector component?'\n\nA vector component is the part of a vector that acts along a particular direction. The horizontal component describes motion along the horizontal axis, while the vertical component describes motion along the vertical axis.\n\nAnother beginner may ask, 'Can one component be zero while the other is not?'\n\nYes. If an object moves entirely in one direction, only the component along that direction exists. The component perpendicular to the motion is zero.\n\nTherefore, an object moving straight upward has a vertical velocity component but no horizontal velocity component.",
+    "steps": [
+      "Step 1: Identify the direction of motion.\n\nThe elevator moves only upward inside a vertical shaft. There is no sideways movement.",
+      "Step 2: Interpret the horizontal component.\n\nSince there is no motion to the left or right, the horizontal component of the velocity is zero.",
+      "Step 3: Interpret the vertical component.\n\nThe elevator is still moving upward, so its vertical component is not zero.",
+      "Step 4: Evaluate the options.\n\nOption A correctly states that the elevator has no horizontal motion while continuing to move vertically.\n\nTherefore, Option A is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a zero horizontal component does not mean the object is stationary. The elevator is still moving vertically.",
+      "Option C is incorrect because the vertical component remains present as long as the elevator continues moving upward.",
+      "Option D is incorrect because the scenario states that the elevator moves only vertically. There is no horizontal acceleration or motion."
+    ],
+    "exam_tip": "In JAMB examinations, remember that each vector component describes motion along one particular direction.\n\nA zero component means there is no motion along that specific axis only—not that the entire vector is zero.\n\nAlways interpret each component independently before drawing conclusions about the object's overall motion.",
+    "final_answer": "A. The elevator has no motion in the horizontal direction but continues moving vertically.",
+    "simple_explanation": "Imagine riding an elevator in a tall building.\n\nAs it moves upward, you are not moving sideways across the floor. This means your horizontal velocity is zero.\n\nHowever, you are still moving upward, so your vertical velocity is not zero.\n\nTherefore, a zero horizontal component simply means there is no sideways motion, not that the elevator has stopped moving.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Components for a complete lesson on resolving vectors into horizontal and vertical components, interpreting zero and non-zero components, and applying vector components to motion, forces and engineering systems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations, worked examples and JAMB-style practice questions."
+  },
+  "tags": [
+    "vector_components",
+    "interpretation",
+    "velocity_components",
+    "elevator_system",
+    "conceptual_vectors",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q150",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector Components",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During the installation of a satellite communication mast, an engineer explains that the tension in a support cable can be resolved into horizontal and vertical components to simplify structural analysis.\n\nAssertion (A): The horizontal and vertical components of a vector combine vectorially to reproduce the original vector.\n\nReason (R): Vector components are chosen along two mutually perpendicular directions so that each component can be analysed independently.\n\nWhich of the following options is correct?",
+  "options": {
+    "A": "Both Assertion and Reason are true, and the Reason is the correct explanation of the Assertion.",
+    "B": "Both Assertion and Reason are true, but the Reason is not the correct explanation of the Assertion.",
+    "C": "The Assertion is true, but the Reason is false.",
+    "D": "The Assertion is false, but the Reason is true."
+  },
+  "answer": "A",
+  "answer_text": "Both Assertion and Reason are true, and the Reason is the correct explanation of the Assertion.",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of why vector components are resolved along perpendicular directions and how these components relate to the original vector.",
+    "principle": "A vector is a physical quantity that possesses both magnitude and direction.\n\nExamples include force, displacement, velocity, acceleration and momentum.\n\nA beginner may ask, 'What are vector components?'\n\nVector components are the individual vectors obtained when a single vector is split into two perpendicular directions, usually horizontal and vertical.\n\nAnother beginner may ask, 'Why do we split a vector into components?'\n\nMany physical problems are easier to solve when motion or force is considered separately along mutually perpendicular axes. After solving each direction independently, the components are combined vectorially to recover the original vector.\n\nThe original vector is therefore not lost. Instead, it is represented completely by its perpendicular components.",
+    "steps": [
+      "Step 1: Examine the Assertion.\n\nIt states that the horizontal and vertical components combine vectorially to reproduce the original vector.\n\nThis is correct. The original vector is exactly equivalent to the vector sum of its perpendicular components.",
+      "Step 2: Examine the Reason.\n\nThe Reason states that vector components are chosen along two mutually perpendicular directions so that each component can be analysed independently.\n\nThis statement is also correct. Resolving vectors into perpendicular components simplifies calculations because the horizontal and vertical motions or forces can be treated separately.",
+      "Step 3: Determine whether the Reason explains the Assertion.\n\nYes. Because the components are perpendicular and independent, they completely describe the original vector. Their vector addition reconstructs the original vector.\n\nTherefore, the Reason correctly explains why the Assertion is true.",
+      "Step 4: Select the correct option.\n\nBoth statements are true, and the Reason correctly explains the Assertion.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the Reason directly explains why the perpendicular components reproduce the original vector.",
+      "Option C is incorrect because the Reason is true. Vector components are intentionally resolved along perpendicular directions for easier analysis.",
+      "Option D is incorrect because the Assertion is also true. The original vector is obtained by the vector sum of its components."
+    ],
+    "exam_tip": "In JAMB, Assertion–Reason questions require you to judge both the truth of each statement and whether the second statement explains the first.\n\nRemember these key ideas:\n\n• Vector components are usually resolved into horizontal and vertical directions.\n• These directions are mutually perpendicular.\n• Each component can be analysed independently.\n• The vector sum of the components always reproduces the original vector.\n\nDo not confuse vector addition with ordinary arithmetic addition. Components combine according to the rules of vectors.",
+    "final_answer": "A. Both Assertion and Reason are true, and the Reason is the correct explanation of the Assertion.",
+    "simple_explanation": "Imagine pulling a support cable attached to a communication mast.\n\nInstead of studying the pull in one slanting direction, engineers split it into a horizontal pull and a vertical pull.\n\nThese two smaller pulls together have exactly the same effect as the original pull.\n\nThis is why the Assertion is true.\n\nThe Reason is also true because resolving vectors into perpendicular directions makes calculations much easier while still preserving the original vector.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Components to learn how vectors are resolved into perpendicular components, why perpendicular axes are used, how components are recombined to obtain the original vector, and how these ideas are applied in engineering, mechanics and navigation. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed beginner-friendly lessons and additional JAMB-style practice."
+  },
+  "tags": [
+    "vector_components",
+    "assertion_reason",
+    "perpendicular_components",
+    "engineering_applications",
+    "scalars_and_vectors",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q151",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector Components",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A tower crane is stabilized by two support cables attached at right angles. One cable exerts a horizontal force of 54 N, while the other exerts a vertical force of 72 N. To keep the crane in equilibrium, a balancing force must be applied.\n\nWhat should be the magnitude of the balancing force?",
+  "options": {
+    "A": "18 N",
+    "B": "90 N",
+    "C": "126 N",
+    "D": "54 N"
+  },
+  "answer": "B",
+  "answer_text": "90 N",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of how perpendicular vector components combine and how equilibrium is maintained. You are required to determine the magnitude of the balancing force needed to keep a tower crane in equilibrium.",
+    "principle": "Before solving the problem, it is important to understand what equilibrium means.\n\nA body is said to be in equilibrium when the vector sum of all the forces acting on it is zero. This means there is no resultant force, so the body remains at rest or continues moving with constant velocity.\n\nIn many engineering structures such as cranes, bridges and towers, several forces act simultaneously. Instead of acting in the same direction, these forces often act at right angles. Such forces are called perpendicular vector components.\n\nWhen two perpendicular vector components combine, they produce a single vector known as the resultant. The balancing force required for equilibrium has the same magnitude as this resultant but acts in the opposite direction.\n\nFor perpendicular components, the magnitude of the resultant is obtained using Pythagoras' theorem:\n\nResultant = √(Horizontal² + Vertical²)\n\nThis relationship is used because the horizontal and vertical components form the two shorter sides of a right-angled triangle.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHorizontal component = 54 N\nVertical component = 72 N",
+      "Step 2: State the required quantity.\n\nMagnitude of the balancing force.",
+      "Step 3: Calculate the resultant of the two perpendicular forces.\n\nR = √(54² + 72²)\n\n= √(2916 + 5184)\n\n= √8100\n\n= 90 N",
+      "Step 4: Relate the resultant to equilibrium.\n\nFor equilibrium, the balancing force must exactly cancel the resultant.\n\nTherefore, its magnitude is also 90 N, although it acts in the opposite direction."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (18 N) is obtained by incorrectly subtracting the two perpendicular components. Perpendicular vectors are not subtracted directly.",
+      "Option C (126 N) is the arithmetic sum of the two forces. This ignores the fact that the forces act at right angles.",
+      "Option D (54 N) represents only the horizontal component and does not account for the vertical component."
+    ],
+    "exam_tip": "Whenever JAMB asks for the balancing force of two perpendicular forces, first calculate the resultant using Pythagoras' theorem. Remember that the balancing force has the same magnitude as the resultant but points in the opposite direction.\n\nA common mistake is to add or subtract the force magnitudes directly instead of combining them vectorially.",
+    "final_answer": "B. 90 N",
+    "simple_explanation": "Imagine two workers pulling a crane from two directions that are at right angles. Their pulls combine to produce one overall pull called the resultant. To keep the crane perfectly balanced, another force must exactly oppose this overall pull.\n\nSince the horizontal and vertical forces are perpendicular, Pythagoras' theorem gives the resultant:\n\n√(54² + 72²) = 90 N.\n\nTherefore, the balancing force must have a magnitude of 90 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Components for a complete lesson on horizontal and vertical components, equilibrium of forces, free-body diagrams, resultant vectors, balancing forces, and worked JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and additional practice questions."
+  },
+  "tags": [
+    "vector_components",
+    "equilibrium_of_forces",
+    "tower_crane",
+    "engineering_application",
+    "pythagoras",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q152",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Vector Components",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An industrial robotic arm moves with a resultant force whose horizontal component is 56 N towards the east and whose vertical component is 42 N towards the north.\n\nMeasured from the eastward horizontal, what is the direction of the resultant force?",
+  "options": {
+    "A": "36.9° north of east",
+    "B": "53.1° north of east",
+    "C": "36.9° east of north",
+    "D": "53.1° east of north"
+  },
+  "answer": "A",
+  "answer_text": "36.9° north of east",
+  "explanation": {
+    "question_restate": "This question requires you to determine the direction of a resultant vector when its horizontal and vertical components are known. Instead of finding the magnitude, you are expected to calculate the angle the vector makes with the horizontal axis.",
+    "principle": "A vector can be resolved into two perpendicular components: a horizontal component and a vertical component.\n\nThese components combine to produce the original vector.\n\nWhen the components are known, the direction of the vector can be determined using trigonometry.\n\nIf the angle is measured from the horizontal (eastward) axis, the tangent ratio is used:\n\n tan θ = (Vertical component)/(Horizontal component)\n\nwhere:\n• θ is the angle measured from the horizontal.\n• The vertical component is the side opposite the angle.\n• The horizontal component is the side adjacent to the angle.\n\nA common mistake is to interchange the opposite and adjacent sides or to measure the angle from the wrong reference axis.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHorizontal component = 56 N east\n\nVertical component = 42 N north",
+      "Step 2: Write the appropriate trigonometric relationship.\n\nSince the angle is measured from the eastward horizontal,\n\n tan θ = 42/56",
+      "Step 3: Simplify the fraction.\n\n42/56 = 0.75",
+      "Step 4: Determine the angle.\n\nθ = tan⁻¹(0.75)\n\nθ ≈ 36.9°",
+      "Step 5: State the direction correctly.\n\nThe vector is directed 36.9° above the eastward horizontal.\n\nTherefore, its direction is 36.9° north of east."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because 53.1° is obtained by reversing the component ratio and calculating tan⁻¹(56/42), which measures a different angle.",
+      "Option C is incorrect because although 36.9° is a correct numerical value, it is referenced to the northward axis rather than the eastward horizontal specified in the question.",
+      "Option D is incorrect because it combines both an incorrect angle and an incorrect reference axis."
+    ],
+    "exam_tip": "Always identify the reference direction stated in the question before choosing a trigonometric ratio.\n\nIf the angle is measured from the horizontal, use:\n\n tan θ = Vertical/Horizontal\n\nIf the angle is measured from the vertical, use:\n\n tan θ = Horizontal/Vertical\n\nMany JAMB candidates calculate the correct angle but lose marks by expressing the direction from the wrong axis.",
+    "final_answer": "A. 36.9° north of east",
+    "simple_explanation": "Imagine standing facing east.\n\nThe robotic arm pushes mostly towards the east but also slightly towards the north.\n\nBecause the eastward component is larger than the northward component, the direction is closer to east than to north.\n\nUsing the tangent ratio gives an angle of 36.9°, so the force acts 36.9° north of east.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Vector Components to learn how horizontal and vertical components determine both the magnitude and direction of a vector. The tutorial includes worked JAMB-style examples on navigation, engineering, robotics and equilibrium, together with step-by-step explanations suitable for beginners."
+  },
+  "tags": [
+    "vector_components",
+    "direction_of_vector",
+    "trigonometry",
+    "robotics",
+    "industrial_applications",
+    "phy_03"
+  ],
+  "active": true
 }
 
 
