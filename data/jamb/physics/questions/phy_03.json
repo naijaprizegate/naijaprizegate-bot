@@ -4191,6 +4191,262 @@
     "phy_03"
   ],
   "active": true
+},
+{
+  "id": "phy_03_q086",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Subtraction of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An inspection robot moved 42 m due north along an oil pipeline before later moving 27 m due north to examine a damaged section.\n\nTo determine the position of the damaged section relative to the robot's first inspection point, which vector operation should be performed?",
+  "options": {
+    "A": "Subtract the first displacement vector from the second displacement vector (27 m − 42 m)",
+    "B": "Subtract the second displacement vector from the first displacement vector (42 m − 27 m)",
+    "C": "Add the two displacement vectors (42 m + 27 m)",
+    "D": "Multiply the two displacement vectors"
+  },
+  "answer": "B",
+  "answer_text": "Subtract the second displacement vector from the first displacement vector (42 m − 27 m)",
+  "explanation": {
+    "question_restate": "This question tests your understanding of when vector subtraction is used to determine the displacement between two positions along the same line.",
+    "principle": "A vector describes both magnitude and direction.\n\nVector subtraction is used whenever we wish to determine the difference between two vectors or find the displacement of one position relative to another.\n\nA beginner may ask, 'Why do we subtract vectors?'\n\nSuppose an object reaches two different positions along the same direction. To know how far apart those positions are, we find the difference between their displacement vectors.\n\nIf both vectors act in the same direction, subtraction simply gives the difference in their magnitudes while retaining the common direction.\n\nThis should not be confused with vector addition, which is used when determining the total displacement after successive movements.",
+    "steps": [
+      "Step 1: Identify the two displacement vectors.\n\nFirst position = 42 m due north.\n\nSecond position = 27 m due north.",
+      "Step 2: Determine what the question requires.\n\nThe question asks for the displacement of one inspection point relative to the other, not the total distance travelled.",
+      "Step 3: Apply the correct vector operation.\n\nTo compare two displacement vectors, subtract the smaller displacement vector from the larger one:\n\n42 m − 27 m = 15 m due north.",
+      "Step 4: Identify the correct option.\n\nOption B correctly represents the required vector subtraction."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A reverses the subtraction and represents the displacement in the opposite sense to that requested.",
+      "Option C is incorrect because adding the vectors would give the total displacement from the starting point rather than the separation between the two inspection positions.",
+      "Option D is incorrect because vectors are not multiplied to determine the displacement between two positions."
+    ],
+    "common_misconceptions": [
+      "Many students automatically add vectors whenever they see two displacements mentioned. The required operation depends on what the question asks.",
+      "Another common mistake is to ignore the meaning of 'relative to', which often signals that vector subtraction is required."
+    ],
+    "exam_tip": "In JAMB Physics, expressions such as 'difference between', 'relative to', 'separation between positions', or 'how much farther' usually indicate that vector subtraction—not addition—is required. Always identify the quantity being asked for before selecting an operation.",
+    "final_answer": "B. Subtract the second displacement vector from the first displacement vector (42 m − 27 m).",
+    "simple_explanation": "Imagine placing two markers on the same straight pipeline.\n\nOne marker is 42 m from the starting point, while the other is 27 m from the same starting point.\n\nTo know how far apart the two markers are, you find the difference between their positions:\n\n42 m − 27 m = 15 m.\n\nThis is why vector subtraction is used.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Subtraction of Vectors to learn when vectors should be added or subtracted, how to interpret 'relative displacement', and how JAMB applies vector subtraction in engineering, transportation, navigation and practical problem-solving."
+  },
+  "tags": [
+    "subtraction_of_vectors",
+    "relative_displacement",
+    "pipeline_inspection",
+    "vector_operations",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q087",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Subtraction of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers monitoring a telecommunications network compare the direction of an incoming signal with the direction of an interfering signal. To determine the directional difference between the two signals, they perform a vector subtraction.\n\nWhich statement correctly describes the graphical method for subtracting one vector from another?",
+  "options": {
+    "A": "Place the vectors head-to-head and join their tails.",
+    "B": "Reverse the direction of the vector being subtracted before adding it to the other vector.",
+    "C": "Add the magnitudes of both vectors regardless of their directions.",
+    "D": "Draw both vectors from the same origin without changing their directions and measure the longer one."
+  },
+  "answer": "B",
+  "answer_text": "Reverse the direction of the vector being subtracted before adding it to the other vector.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the graphical principle used in vector subtraction rather than your ability to perform numerical calculations. You are required to identify the correct procedure for obtaining the difference between two vectors.",
+    "principle": "A vector is a quantity that has both magnitude and direction.\n\nSubtraction of vectors is not carried out by simply reducing one magnitude from another because direction plays an important role.\n\nA beginner may ask, 'Why can't we subtract vectors like ordinary numbers?'\n\nUnlike ordinary numbers, vectors describe movement or action in specific directions. Therefore, changing the direction of a vector changes its physical meaning.\n\nTo subtract vector B from vector A, we first replace B with its opposite vector, written as −B. The opposite vector has exactly the same magnitude as B but points in the opposite direction.\n\nThe subtraction A − B is therefore treated as:\n\nA + (−B)\n\nAfter reversing B, the vectors are added using an accepted vector addition method such as the head-to-tail method.",
+    "steps": [
+      "Step 1: Identify what vector subtraction means.\n\nSubtracting one vector from another means adding the opposite of the second vector.",
+      "Step 2: Recall the graphical procedure.\n\nThe vector being subtracted is first reversed so that it points in the opposite direction while keeping the same magnitude.",
+      "Step 3: Add the original vector and the reversed vector using the head-to-tail method.",
+      "Step 4: Compare this procedure with the options provided.\n\nOnly Option B correctly describes the standard graphical method for vector subtraction."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because placing vectors head-to-head is not the standard graphical procedure for subtracting vectors.",
+      "Option C is incorrect because vectors cannot be combined by considering magnitudes alone. Direction must always be taken into account.",
+      "Option D is incorrect because simply drawing both vectors from the same origin without reversing the vector being subtracted does not perform vector subtraction."
+    ],
+    "common_misconceptions": [
+      "Many students think vector subtraction means subtracting only the numerical values of the magnitudes. This ignores direction and gives incorrect results.",
+      "Another common mistake is forgetting to reverse the direction of the vector being subtracted before performing vector addition."
+    ],
+    "exam_tip": "Whenever you see an expression such as A − B in JAMB Physics, immediately think:\n\n'A plus the opposite of B.'\n\nRemember the simple rule:\n\nSubtract → Reverse → Add.\n\nThis shortcut helps you solve both graphical and numerical vector subtraction questions correctly.",
+    "final_answer": "B. Reverse the direction of the vector being subtracted before adding it to the other vector.",
+    "simple_explanation": "Imagine two people pulling a rope in different directions. If you want to subtract one pull from the other, you first imagine the second person pulling in the opposite direction. You then combine the two pulls. That is exactly how vector subtraction works.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Subtraction of Vectors to learn how to subtract vectors graphically, reverse vectors correctly, apply the head-to-tail method, and solve JAMB-style conceptual and application questions with detailed worked examples."
+  },
+  "tags": [
+    "subtraction_of_vectors",
+    "graphical_subtraction",
+    "telecommunications",
+    "vector_operations",
+    "conceptual_vectors",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q088",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Subtraction of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Consider the following assertion and reason.\n\nAssertion (A): In determining the directional difference between two communication signal vectors acting from the same transmission station, vector subtraction is the appropriate operation.\n\nReason (R): Vector subtraction is carried out by adding one vector to the reverse of the other vector.\n\nWhich of the following options is correct?",
+  "options": {
+    "A": "Both Assertion and Reason are true, and the Reason correctly explains the Assertion.",
+    "B": "Both Assertion and Reason are true, but the Reason does not correctly explain the Assertion.",
+    "C": "The Assertion is true, but the Reason is false.",
+    "D": "The Assertion is false, but the Reason is true."
+  },
+  "answer": "A",
+  "answer_text": "Both Assertion and Reason are true, and the Reason correctly explains the Assertion.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the principle behind vector subtraction rather than numerical computation. It examines whether you know why vector subtraction is used to determine the difference between two vectors and how the operation is performed.",
+    "principle": "A vector is a quantity that possesses both magnitude and direction. Examples include displacement, force, velocity and electric field.\n\nWhen comparing two vectors, we are often interested in finding how one vector differs from another. This difference is obtained through vector subtraction.\n\nA beginner may ask, 'How do we subtract vectors?'\n\nUnlike ordinary numbers, vectors cannot simply be subtracted by subtracting their magnitudes because direction must also be considered.\n\nThe standard procedure is to reverse the direction of the vector being subtracted and then perform ordinary vector addition.\n\nMathematically,\n\nA − B = A + (−B)\n\nwhere −B has exactly the same magnitude as B but points in the opposite direction.\n\nThis principle is widely used in telecommunications, navigation, robotics, engineering and relative motion problems.",
+    "steps": [
+      "Step 1: Examine the Assertion.\n\nThe assertion states that vector subtraction is used when determining the directional difference between two communication signal vectors.\n\nThis is correct because the difference between two vectors is represented mathematically by subtraction.",
+      "Step 2: Examine the Reason.\n\nThe reason states that vector subtraction is performed by adding one vector to the reverse (negative) of the other vector.\n\nThis is the accepted procedure for subtracting vectors.",
+      "Step 3: Determine whether the Reason explains the Assertion.\n\nThe reason explains exactly why vector subtraction is the correct operation. Since subtraction is defined as addition of the opposite vector, it justifies the assertion.\n\nTherefore, both statements are true and the reason correctly explains the assertion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the Reason directly explains why vector subtraction is used to determine the difference between vectors.",
+      "Option C is incorrect because the Reason is scientifically correct. Vector subtraction is always carried out by adding the negative (reverse) of the second vector.",
+      "Option D is incorrect because the Assertion is also true. Determining the difference between two vectors requires vector subtraction."
+    ],
+    "common_misconception": "Many students think vector subtraction means subtracting only the numerical magnitudes. This is incorrect because vectors have direction. The correct procedure is to reverse the direction of the vector being subtracted before adding the vectors.",
+    "exam_tip": "Whenever JAMB asks about vector subtraction, remember the golden rule:\n\nA − B = A + (−B)\n\nDo not subtract magnitudes unless the vectors act along the same straight line in appropriate directions. In all other cases, direction must first be accounted for.",
+    "final_answer": "A. Both Assertion and Reason are true, and the Reason correctly explains the Assertion.",
+    "simple_explanation": "Imagine two communication antennas transmitting signals in different directions.\n\nIf an engineer wants to know how one signal direction differs from the other, the engineer does not simply subtract the numbers. Instead, the direction of one signal is first reversed and then added to the other. That is the meaning of vector subtraction.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Subtraction of Vectors for beginner-friendly lessons on reversing vectors, graphical subtraction, analytical methods, practical engineering applications and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and detailed concept reviews."
+  },
+  "tags": [
+    "subtraction_of_vectors",
+    "assertion_reason",
+    "telecommunications",
+    "vector_operations",
+    "conceptual_vectors",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q089",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Subtraction of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a laboratory practical on vectors, two displacement vectors A and B were drawn from the same origin on a sheet of graph paper.\n\nA student was instructed to obtain the vector difference A − B graphically.\n\nWhich of the following procedures would produce the correct vector difference?",
+  "options": {
+    "A": "Draw the reverse of vector B and then add it to vector A using the head-to-tail method.",
+    "B": "Join the heads of vectors A and B directly without reversing either vector.",
+    "C": "Add vectors A and B directly using the parallelogram method.",
+    "D": "Subtract only the magnitudes of A and B without considering their directions."
+  },
+  "answer": "A",
+  "answer_text": "Draw the reverse of vector B and then add it to vector A using the head-to-tail method.",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of the correct graphical procedure for subtracting one vector from another. Instead of performing calculations, it tests whether you know how vector subtraction is represented on a diagram.",
+    "principle": "A vector is a quantity that possesses both magnitude and direction.\n\nWhen subtracting vectors, the operation is not carried out by simply reducing one magnitude from another because direction is an essential part of every vector.\n\nTo subtract a vector graphically, we use the principle:\n\nA − B = A + (−B)\n\nwhere −B is a vector that has the same magnitude as B but points in the opposite direction.\n\nOnce the direction of B has been reversed, the new vector (−B) is added to A using an accepted graphical method such as the head-to-tail method.\n\nThis procedure produces the correct vector difference.",
+    "steps": [
+      "Step 1: Recall the meaning of vector subtraction.\n\nSubtracting a vector means adding its opposite (reverse) vector.",
+      "Step 2: Reverse the direction of vector B.\n\nThe reversed vector has the same magnitude as B but points in the opposite direction. It is represented as −B.",
+      "Step 3: Add vector A and vector −B.\n\nPlace the tail of −B at the head of A (or use an equivalent head-to-tail construction).",
+      "Step 4: Draw the resultant.\n\nThe resultant drawn from the tail of A to the head of −B represents A − B.\n\nTherefore, Option A correctly describes the graphical procedure."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because merely joining the heads of two vectors does not generally represent vector subtraction unless a specific construction has already been established.",
+      "Option C is incorrect because adding A and B gives the vector sum, not the vector difference.",
+      "Option D is incorrect because vectors cannot be subtracted using magnitudes alone. Direction must always be taken into account."
+    ],
+    "common_misconceptions": [
+      "Many students believe that vector subtraction is performed by subtracting numerical magnitudes only. This is true for scalars but not for vectors.",
+      "Another common mistake is using vector addition methods without first reversing the direction of the vector being subtracted."
+    ],
+    "exam_tip": "Whenever you see A − B in JAMB Physics, immediately rewrite it mentally as A + (−B).\n\nRemember that graphical subtraction begins by reversing the direction of the vector being subtracted before carrying out ordinary vector addition.",
+    "final_answer": "A. Draw the reverse of vector B and then add it to vector A using the head-to-tail method.",
+    "simple_explanation": "Imagine you walk forward and then wish to 'subtract' another journey.\n\nInstead of following that second journey in its original direction, you first imagine travelling exactly the opposite way. After reversing its direction, you combine it with the first journey.\n\nThis is exactly how vector subtraction works.\n\nAlways remember:\n\nA − B = A + (−B).",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Subtraction of Vectors for a complete explanation of graphical vector subtraction, reverse vectors, head-to-tail construction, common examination mistakes, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and additional practice questions."
+  },
+  "tags": [
+    "subtraction_of_vectors",
+    "graphical_subtraction",
+    "reverse_vector",
+    "head_to_tail_method",
+    "laboratory_vectors",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q090",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Subtraction of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During the testing of a telecommunications antenna, an engineer explains that determining the change in the direction of a transmitted signal involves vector subtraction. A trainee makes the following statements:\n\nI. Vector subtraction can be carried out by adding the first vector to the reverse of the second vector.\n\nII. To subtract one vector from another, the direction of the vector being subtracted is reversed while its magnitude remains unchanged.\n\nIII. The difference between two vectors is obtained by adding their magnitudes irrespective of their directions.\n\nIV. Graphically, vector subtraction may be performed using the head-to-tail method after reversing the second vector.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I and III only",
+    "C": "II, III and IV only",
+    "D": "I, II and III only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of the principles of vector subtraction. Rather than performing calculations, it tests whether you understand the correct procedure for subtracting vectors and the common mistakes students make.",
+    "principle": "A vector is a quantity that possesses both magnitude and direction. Examples include displacement, velocity, force, acceleration and momentum.\n\nA beginner may ask, 'How is vector subtraction different from ordinary subtraction?'\n\nUnlike ordinary numbers, vectors cannot simply be subtracted by comparing their magnitudes because direction is equally important.\n\nThe standard rule for subtracting vectors is:\n\nA − B = A + (−B)\n\nHere, −B represents the reverse of vector B.\n\nNotice that only the direction of B changes. Its magnitude remains exactly the same.\n\nAfter reversing B, the vectors are added using the normal head-to-tail graphical method or equivalent analytical methods.\n\nIgnoring the direction of vectors is one of the most common examination errors.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThis statement is correct.\n\nVector subtraction is performed by replacing the second vector with its opposite (reverse) vector and then carrying out vector addition.",
+      "Step 2: Examine Statement II.\n\nThis statement is also correct.\n\nReversing a vector changes only its direction. The magnitude does not change.",
+      "Step 3: Examine Statement III.\n\nThis statement is incorrect.\n\nThe difference between two vectors is not obtained by merely adding their magnitudes. Both magnitude and direction must always be considered.",
+      "Step 4: Examine Statement IV.\n\nThis statement is correct.\n\nAfter reversing the second vector, the head-to-tail graphical method can be used to obtain the resultant difference vector.",
+      "Step 5: Determine the correct combination.\n\nStatements I, II and IV are correct, while Statement III is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Statement III is false. Vector subtraction cannot ignore direction.",
+      "Option C is incorrect because it includes Statement III, which incorrectly assumes that magnitudes alone determine the vector difference.",
+      "Option D is incorrect because although Statements I and II are correct, Statement III remains incorrect. Any option containing Statement III must be rejected."
+    ],
+    "common_misconception": "Many students believe that subtracting vectors means subtracting or adding only their magnitudes. This misconception arises from treating vectors like ordinary numbers. In reality, vectors always require consideration of both magnitude and direction.",
+    "exam_tip": "Whenever JAMB asks about vector subtraction, immediately remember the rule:\n\nA − B = A + (−B)\n\nReverse the direction of the second vector without changing its magnitude, then perform ordinary vector addition.\n\nQuestions testing this concept are often conceptual rather than computational.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Imagine walking 8 steps east and then wanting to subtract a movement of 5 steps north.\n\nYou do not simply subtract the numbers 8 and 5.\n\nInstead, you first imagine the northward movement pointing south while keeping its length the same. You then combine the two vectors.\n\nThat is exactly how vector subtraction works: reverse the direction of the second vector and then add.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Subtraction of Vectors to learn why A − B is treated as A + (−B), how to reverse vectors correctly, graphical subtraction using the head-to-tail method, analytical methods, and common JAMB examination traps. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "subtraction_of_vectors",
+    "vector_subtraction",
+    "graphical_vectors",
+    "telecommunications",
+    "conceptual_physics",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
 }
 
 
