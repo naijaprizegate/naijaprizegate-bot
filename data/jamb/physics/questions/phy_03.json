@@ -4447,6 +4447,506 @@
     "phy_03"
   ],
   "active": true
+},
+{
+  "id": "phy_03_q091",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Triangle law of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A marine survey vessel first sails 9 km due east and then changes course to travel 12 km due north-east. To determine the vessel's overall displacement from its starting point, a navigator decides to apply the triangle law of vectors.\n\nWhich of the following procedures correctly represents the triangle law of vector addition?",
+  "options": {
+    "A": "Place the tail of the second displacement at the head of the first displacement and draw the resultant from the starting point to the final point.",
+    "B": "Place both displacement vectors so that their tails meet at the same point and draw the diagonal between their heads.",
+    "C": "Subtract the smaller displacement from the larger displacement since the directions are different.",
+    "D": "Add only the magnitudes of the two displacements because displacement is measured in kilometres."
+  },
+  "answer": "A",
+  "answer_text": "Place the tail of the second displacement at the head of the first displacement and draw the resultant from the starting point to the final point.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the triangle law of vector addition. Instead of carrying out a calculation, you are required to identify the correct graphical procedure for applying the law.",
+    "principle": "A vector is a quantity that possesses both magnitude and direction. Since direction is important, vectors cannot always be combined by simply adding their numerical values.\n\nOne recognised method of adding vectors is the triangle law of vectors.\n\nA beginner may ask, 'Why is it called the triangle law?'\n\nIt is called the triangle law because when one vector is placed head-to-tail with another, the two vectors form two sides of a triangle. The third side, drawn from the starting point of the first vector to the end point of the second vector, represents the resultant vector.\n\nThe triangle law is especially useful for combining successive displacements, velocities and forces acting at different directions.",
+    "steps": [
+      "Step 1: Identify what the question is asking.\n\nThe question is not asking for the magnitude of the resultant. Instead, it asks for the correct procedure used in the triangle law.",
+      "Step 2: Recall the triangle law.\n\nDraw the first vector.\n\nMove the second vector so that its tail begins exactly where the first vector ends.\n\nFinally, draw a single vector from the starting point of the first vector to the end of the second vector. This final vector is called the resultant.",
+      "Step 3: Examine Option A.\n\nThis option correctly describes the head-to-tail arrangement required by the triangle law.\n\nTherefore, it is the correct answer.",
+      "Step 4: Examine the remaining options.\n\nOption B describes the parallelogram method, not the triangle law.\n\nOption C incorrectly assumes vectors travelling in different directions should be subtracted.\n\nOption D ignores direction and treats vectors as ordinary numbers, which is incorrect."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because placing both vectors with a common tail describes the parallelogram law of vector addition rather than the triangle law.",
+      "Option C is incorrect because vectors are not subtracted simply because they point in different directions. The required operation depends on the physical situation.",
+      "Option D is incorrect because displacement is a vector quantity. Both magnitude and direction must always be considered."
+    ],
+    "exam_tip": "Whenever a question mentions the triangle law, remember the phrase 'head-to-tail.' The second vector always begins where the first vector ends. If both vectors start from the same point, the question is referring to the parallelogram law instead.",
+    "final_answer": "A. Place the tail of the second displacement at the head of the first displacement and draw the resultant from the starting point to the final point.",
+    "simple_explanation": "Imagine walking along one road and then turning onto another road.\n\nInstead of measuring the two journeys separately, you can draw one straight line from where you started to where you finally stopped. That straight line represents the resultant displacement.\n\nTo obtain it, the second journey must begin where the first one ended. This is exactly how the triangle law works.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Triangle Law of Vectors for a complete explanation of the head-to-tail method, construction of vector triangles, determination of resultant vectors, and worked JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and additional practice."
+  },
+  "tags": [
+    "triangle_law_of_vectors",
+    "vector_addition",
+    "graphical_vectors",
+    "marine_navigation",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q092",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Triangle law of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A surveyor walks 15 m due east to a reference point and then 20 m due north to another point. Using the triangle law of vectors, what is the magnitude of the resultant displacement from the starting point to the final position?",
+  "options": {
+    "A": "25 m",
+    "B": "35 m",
+    "C": "18 m",
+    "D": "5 m"
+  },
+  "answer": "A",
+  "answer_text": "25 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to apply the triangle law of vectors to determine the resultant displacement produced by two successive movements at right angles.",
+    "principle": "Before solving the problem, it is important to understand what the triangle law of vectors means.\n\nA vector is a quantity that has both magnitude and direction. Examples include displacement, velocity, force and acceleration.\n\nWhen one vector is followed immediately by another, the second vector is drawn from the head (tip) of the first vector. This arrangement forms two sides of a triangle. The vector drawn from the tail of the first vector to the head of the second vector represents the resultant vector.\n\nThis method is known as the **triangle law of vectors** because the vectors are placed head-to-tail to form a triangle.\n\nIn this question, the surveyor first moves east and then north. Since these directions are perpendicular, the two movements form a right-angled triangle.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nFirst displacement = 15 m east.\n\nSecond displacement = 20 m north.\n\nRequired quantity = Resultant displacement.",
+      "Step 2: Recognise the shape formed.\n\nEast and north are at right angles (90°), so the two displacements form a right-angled triangle.",
+      "Step 3: Introduce the appropriate formula.\n\nFor two perpendicular vectors, the magnitude of the resultant is obtained using Pythagoras' theorem:\n\nR = √(A² + B²)\n\nwhere:\n\nR = resultant displacement\nA = first displacement\nB = second displacement",
+      "Step 4: Substitute the values.\n\nR = √(15² + 20²)\n\n= √(225 + 400)\n\n= √625\n\n= 25 m",
+      "Step 5: Verify the answer.\n\nThe calculated resultant is 25 m, which corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (35 m) is obtained by simply adding the magnitudes of the two displacements. This ignores the fact that the vectors act at right angles.",
+      "Option C (18 m) is not the correct value obtained from the triangle law and may result from incorrect arithmetic or misuse of the formula.",
+      "Option D (5 m) is the numerical difference between the two magnitudes. Subtraction is not appropriate because the vectors are neither opposite nor collinear."
+    ],
+    "exam_tip": "Whenever two successive displacements are at right angles, think of a right-angled triangle. Apply Pythagoras' theorem to obtain the magnitude of the resultant.\n\nRemember that displacement is a vector quantity, so both magnitude and direction are important. JAMB frequently tests your ability to recognise when successive movements should be treated using the triangle law.",
+    "final_answer": "A. 25 m",
+    "simple_explanation": "Imagine walking 15 m along one street and then turning 90° to walk another 20 m.\n\nInstead of following both paths, imagine drawing a straight line from where you started directly to where you finished. That straight line is the resultant displacement.\n\nSince the two paths meet at a right angle, they form a right-angled triangle. Using Pythagoras' theorem gives:\n\n√(15² + 20²) = 25 m.\n\nTherefore, the correct answer is 25 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Triangle Law of Vectors to learn how successive vectors are added using the head-to-tail method, when to apply Pythagoras' theorem, how to determine the resultant vector graphically and mathematically, and how to solve similar JAMB-style questions with detailed worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive lessons and additional practice."
+  },
+  "tags": [
+    "triangle_law_of_vectors",
+    "successive_displacement",
+    "surveying",
+    "resultant_displacement",
+    "vector_addition",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q093",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Triangle law of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "understanding",
+  "question_type": "mcq",
+  "question": "At a construction site, an engineer needs to represent two successive displacement vectors while planning the movement of a mobile crane. Which method is most appropriate for combining the two vectors into a single resultant vector?",
+  "options": {
+    "A": "Triangle law of vectors",
+    "B": "Parallelogram law of vectors",
+    "C": "Scalar addition",
+    "D": "Resolution of vectors into components"
+  },
+  "answer": "A",
+  "answer_text": "Triangle law of vectors",
+  "explanation": {
+    "question_restate": "This question tests your ability to recognise when the triangle law of vectors is the appropriate method for adding vectors. Instead of performing calculations, you are expected to identify the correct graphical method for combining two successive vectors.",
+    "principle": "A vector is a quantity that has both magnitude and direction. When two vectors act one after the other (that is, successively), they can be added graphically using the triangle law of vectors.\n\nThe triangle law states that if the second vector is drawn from the head (tip) of the first vector, the resultant vector is represented by the line drawn from the tail of the first vector to the head of the second vector.\n\nA beginner may ask, 'Why is it called the triangle law?'\n\nIt is because the two vectors and the resultant together form a triangle when drawn correctly.\n\nThe triangle law is especially useful when describing successive movements or displacements, such as a vehicle moving along one path and then changing direction, or equipment moving from one position to another in stages.",
+    "steps": [
+      "Step 1: Identify the situation described.\n\nThe crane undergoes two successive displacements. This means one movement follows another.",
+      "Step 2: Recall the graphical method used for successive vectors.\n\nWhen vectors are arranged head-to-tail to represent successive movements, the triangle law is the appropriate method for obtaining the resultant.",
+      "Step 3: Evaluate the options.\n\nOption A correctly identifies the triangle law of vectors.\n\nOption B is mainly used when two vectors act simultaneously from the same point.\n\nOption C is incorrect because vectors cannot generally be combined using ordinary scalar addition since direction must be considered.\n\nOption D is a useful analytical technique for resolving vectors into components, but it is not the graphical method requested in this question.",
+      "Step 4: Therefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the parallelogram law is most suitable when two vectors act simultaneously from a common point, not when they represent successive movements.",
+      "Option C is incorrect because scalar addition ignores direction, whereas vectors must always be added by considering both magnitude and direction.",
+      "Option D is incorrect because resolving vectors into components is an analytical method for simplifying calculations, not the graphical method used to combine successive vectors."
+    ],
+    "common_misconception": "Many students believe the triangle law and the parallelogram law can always be used interchangeably. Although both can produce the same resultant under suitable conditions, the triangle law is specifically associated with successive (head-to-tail) vector addition, while the parallelogram law is commonly applied when vectors originate from the same point.",
+    "exam_tip": "Whenever a question mentions words such as 'successive movements', 'one displacement followed by another', or 'head-to-tail arrangement', immediately think of the triangle law of vectors. If two vectors are described as acting from the same point at the same time, consider the parallelogram law instead.",
+    "final_answer": "A. Triangle law of vectors",
+    "simple_explanation": "Imagine walking from one point to another and then changing direction to continue your journey. Since the second movement starts where the first one ends, the movements are successive. This is exactly the situation represented by the triangle law of vectors.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Triangle Law of Vectors to learn how successive vectors are added graphically using the head-to-tail method, how to distinguish the triangle law from the parallelogram law, and how these concepts are tested in JAMB examinations. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations and additional worked examples."
+  },
+  "tags": [
+    "triangle_law",
+    "vector_addition",
+    "graphical_method",
+    "successive_displacement",
+    "construction_site",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q094",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Triangle law of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a laboratory practical, a student represented two displacement vectors using the triangle law.\n\nThe first vector was drawn as a straight arrow pointing east. The second vector started from the head of the first vector and pointed north-east. A third arrow was then drawn from the tail of the first vector directly to the head of the second vector.\n\nWhat does the third arrow represent?",
+  "options": {
+    "A": "The difference between the two vectors",
+    "B": "The resultant of the two vectors",
+    "C": "The average of the two vectors",
+    "D": "The reverse direction of the first vector"
+  },
+  "answer": "B",
+  "answer_text": "The resultant of the two vectors",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret a vector diagram described in words rather than shown as a picture. It focuses on the triangle law of vector addition and asks you to identify the meaning of the final arrow drawn in the construction.",
+    "principle": "The triangle law of vectors states that when two vectors are represented in magnitude and direction by two sides of a triangle taken in order (head-to-tail), the third side drawn from the tail of the first vector to the head of the second vector represents their resultant.\n\nA vector is a quantity that has both magnitude and direction. When vectors are added graphically, their directions are just as important as their magnitudes.\n\nA beginner may ask, 'Why is the second vector drawn from the head of the first one?'\n\nThis arrangement is called the head-to-tail method. It ensures that the vectors are added correctly according to the triangle law.\n\nThe resultant vector is the single vector that has the same overall effect as the two original vectors acting together.",
+    "steps": [
+      "Step 1: Identify how the vectors are arranged.\n\nThe second vector begins at the head of the first vector. This is the correct head-to-tail arrangement required by the triangle law.",
+      "Step 2: Examine the third arrow.\n\nThe third arrow is drawn from the tail of the first vector directly to the head of the second vector.",
+      "Step 3: Recall the triangle law.\n\nAccording to the triangle law, this third arrow represents the single vector equivalent to the combined effect of the two successive vectors.",
+      "Step 4: Choose the correct interpretation.\n\nTherefore, the third arrow is the resultant vector.\n\nHence, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because vector subtraction is represented differently and is not obtained by drawing the third side of a head-to-tail triangle.",
+      "Option C is incorrect because the triangle law is used to determine the resultant vector, not the average of two vectors.",
+      "Option D is incorrect because reversing the direction of a vector produces its negative vector, which is unrelated to the third arrow described."
+    ],
+    "common_misconceptions": [
+      "Many students think the final arrow simply joins two points without any physical meaning. In fact, it represents the resultant vector.",
+      "Another common mistake is confusing vector addition with vector subtraction because both involve multiple arrows. The arrangement and purpose of the construction determine the operation being performed."
+    ],
+    "exam_tip": "Whenever JAMB describes a vector diagram in words, mentally picture the arrows.\n\nIf one vector starts from the head of another and a final arrow is drawn from the starting point of the first vector to the end of the second vector, think immediately of the triangle law and identify that final arrow as the resultant vector.",
+    "final_answer": "B. The resultant of the two vectors",
+    "simple_explanation": "Imagine walking first towards the east and then turning to walk towards the north-east.\n\nInstead of describing your journey in two separate stages, you can replace both movements with one single movement that takes you straight from where you started to where you finally stopped.\n\nThat single movement is called the resultant vector, and it is represented by the third arrow in the triangle law construction.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Triangle Law of Vectors to learn how vectors are added using the head-to-tail method, how to interpret text-described vector diagrams, and how to identify the resultant in JAMB-style questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed worked examples and concept-based practice."
+  },
+  "tags": [
+    "triangle_law_of_vectors",
+    "vector_interpretation",
+    "head_to_tail_method",
+    "graphical_vector_addition",
+    "resultant_vector",
+    "laboratory_practical",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q095",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Triangle law of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "While assembling a lifting mechanism in an engineering workshop, two technicians discussed methods of adding vectors.\n\nOne technician stated that the triangle law is suitable when vectors are placed one after another in a head-to-tail arrangement, whereas the parallelogram law is used when two vectors act simultaneously from the same point.\n\nWhich statement correctly distinguishes the triangle law from the parallelogram law?",
+  "options": {
+    "A": "The triangle law is used for successive vectors arranged head-to-tail, while the parallelogram law combines two vectors acting from the same point.",
+    "B": "The triangle law is applied only to perpendicular vectors, whereas the parallelogram law is used only for parallel vectors.",
+    "C": "The triangle law determines scalar quantities, while the parallelogram law determines vector quantities.",
+    "D": "The triangle law always produces a larger resultant than the parallelogram law for the same pair of vectors."
+  },
+  "answer": "A",
+  "answer_text": "The triangle law is used for successive vectors arranged head-to-tail, while the parallelogram law combines two vectors acting from the same point.",
+  "explanation": {
+    "question_restate": "This question tests your ability to distinguish between two important graphical methods of vector addition: the triangle law and the parallelogram law. Rather than performing calculations, it examines your understanding of when each method should be applied.",
+    "principle": "Before answering this question, it is important to understand that vectors possess both magnitude and direction.\n\nWhenever two or more vectors are added, the direction of each vector must be considered. Physicists therefore use graphical methods to obtain a single vector known as the resultant.\n\nThe two most common graphical methods are the triangle law and the parallelogram law.\n\nA beginner may ask, 'Do these methods give different answers?'\n\nNo. When applied correctly to the same pair of vectors, both methods produce the same resultant vector.\n\nThe difference lies in how the vectors are drawn.\n\nIn the triangle law, the second vector begins where the first vector ends. This is called a head-to-tail arrangement.\n\nIn the parallelogram law, both vectors are drawn from the same starting point, and a parallelogram is completed. The diagonal of the parallelogram represents the resultant vector.",
+    "steps": [
+      "Step 1: Recall the triangle law.\n\nThe triangle law is used by placing the tail of the second vector at the head of the first vector. The resultant is then drawn from the tail of the first vector to the head of the second vector.",
+      "Step 2: Recall the parallelogram law.\n\nThe parallelogram law begins by drawing both vectors from the same point. A parallelogram is then completed using lines parallel to the original vectors. The diagonal passing through the common starting point represents the resultant.",
+      "Step 3: Compare the two methods.\n\nAlthough both methods are graphical techniques for vector addition and both give the same resultant, they differ in their construction.\n\nThe triangle law uses a successive head-to-tail arrangement.\n\nThe parallelogram law starts with both vectors acting from the same point.",
+      "Step 4: Evaluate the options.\n\nOption A correctly describes this distinction.\n\nTherefore, Option A is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because neither method is restricted to perpendicular or parallel vectors. Both methods can be applied to vectors making any angle with one another.",
+      "Option C is incorrect because both the triangle law and the parallelogram law are methods for adding vectors, not scalar quantities.",
+      "Option D is incorrect because both methods produce the same resultant when applied correctly to the same vectors. One method does not produce a larger resultant than the other."
+    ],
+    "common_misconceptions": [
+      "Many students think the triangle law and the parallelogram law produce different answers. In reality, they are simply different graphical constructions leading to the same resultant.",
+      "Another common misconception is that one method is valid only for special angles. Both methods can be used for vectors inclined at any angle."
+    ],
+    "exam_tip": "Whenever JAMB asks you to compare the triangle law and the parallelogram law, remember this simple distinction:\n\n• Triangle law → vectors are arranged head-to-tail.\n• Parallelogram law → vectors start from the same point.\n\nDo not confuse the construction method with the final result. Both methods yield the same resultant vector when used correctly.",
+    "final_answer": "A. The triangle law is used for successive vectors arranged head-to-tail, while the parallelogram law combines two vectors acting from the same point.",
+    "simple_explanation": "Imagine carrying a toolbox across a workshop.\n\nIf you first walk forward and then turn to the right, your movements happen one after another. This situation is represented by the triangle law because each movement begins where the previous one ended.\n\nNow imagine two workers pulling the same machine at the same time using two ropes attached to one point. Since both forces act from the same point simultaneously, the parallelogram law is the appropriate method.\n\nAlthough the drawings are different, both methods help you find the same resultant vector.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Triangle Law of Vectors for a complete lesson comparing the triangle law and the parallelogram law, including graphical construction techniques, worked examples, common examination mistakes, and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and guided revision."
+  },
+  "tags": [
+    "triangle_law_of_vectors",
+    "parallelogram_law",
+    "vector_addition",
+    "graphical_methods",
+    "comparison",
+    "engineering_workshop",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q096",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Triangle law of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "While programming a mobile robot, an engineer represented two successive displacement vectors using the triangle law.\n\nHe first drew the second vector starting from the same point as the first vector instead of placing its tail at the head of the first vector. He then joined the starting point of the first vector directly to the end of the second vector and claimed that this represented the resultant.\n\nWhich mistake made his construction inconsistent with the triangle law of vectors?",
+  "options": {
+    "A": "The second vector should have been drawn from the head of the first vector.",
+    "B": "The resultant should have been drawn from the head of the second vector to the tail of the first vector.",
+    "C": "The magnitudes of both vectors should first have been added arithmetically before drawing them.",
+    "D": "The order of the two vectors must always be reversed before constructing the diagram."
+  },
+  "answer": "A",
+  "answer_text": "The second vector should have been drawn from the head of the first vector.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to identify an error in the graphical construction of the triangle law of vectors rather than performing a numerical calculation. It focuses on the correct head-to-tail arrangement of successive vectors.",
+    "principle": "The triangle law of vectors states that when two vectors are added, the second vector is drawn so that its tail begins exactly at the head of the first vector.\n\nThis arrangement is often called the head-to-tail method.\n\nA beginner may ask, 'Why must the vectors be joined this way?'\n\nThe purpose is to represent successive movements or actions correctly. If one displacement is followed immediately by another, the second naturally starts where the first ends.\n\nAfter arranging the vectors head-to-tail, the resultant vector is drawn from the tail of the first vector to the head of the second vector. This resultant represents the combined effect of the two vectors.\n\nIf both vectors are drawn from the same starting point, the construction no longer follows the triangle law. That arrangement corresponds to a different graphical method known as the parallelogram law.",
+    "steps": [
+      "Step 1: Identify how the engineer drew the vectors.\n\nThe second vector was drawn from the same starting point as the first vector instead of beginning where the first vector ended.",
+      "Step 2: Recall the correct triangle-law procedure.\n\nFor the triangle law, the tail of the second vector must be placed at the head of the first vector.",
+      "Step 3: Compare the engineer's method with the correct method.\n\nBecause the vectors were not arranged head-to-tail, the graphical construction violated the basic rule of the triangle law.",
+      "Step 4: Select the option that correctly identifies the error.\n\nOption A correctly states that the second vector should have started from the head of the first vector."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the resultant of the triangle law is drawn from the tail of the first vector to the head of the second vector, not in the opposite direction.",
+      "Option C is incorrect because vector addition cannot generally be performed by simply adding magnitudes. Direction must always be taken into account.",
+      "Option D is incorrect because the order of the vectors does not have to be reversed. Although vector addition is commutative, the essential requirement is that the vectors be drawn head-to-tail."
+    ],
+    "exam_tip": "Whenever a JAMB question asks about the triangle law, first check whether the vectors are arranged head-to-tail.\n\nA common source of confusion is between the triangle law and the parallelogram law.\n\n• Triangle law: second vector starts at the head of the first.\n• Parallelogram law: both vectors start from the same point.\n\nRecognising this distinction will help you answer many conceptual questions correctly.",
+    "final_answer": "A. The second vector should have been drawn from the head of the first vector.",
+    "simple_explanation": "Imagine a robot walks to one location and then continues from there to another location.\n\nThe second movement must begin where the first movement ended. If both movements are drawn from the same starting point, they no longer represent successive movements. That is why the engineer's construction was incorrect.\n\nThe triangle law always requires the vectors to be joined head-to-tail.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Triangle Law of Vectors to learn the correct graphical construction of the triangle law, understand common examination mistakes, compare it with the parallelogram law, and practise additional JAMB-style worked examples at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "triangle_law_of_vectors",
+    "head_to_tail_method",
+    "graphical_construction",
+    "error_analysis",
+    "robotics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q097",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Triangle law of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A robotics company is testing a drone that must travel between three checkpoints. During a training session, four technicians described how the triangle law of vectors should be applied when drawing successive displacement vectors.\n\nTechnician I: Draw the second vector so that its tail begins at the head of the first vector.\n\nTechnician II: Join the tail of the first vector directly to the head of the last vector to obtain the resultant.\n\nTechnician III: Reverse the direction of the second vector before joining it to the first vector.\n\nTechnician IV: Preserve both the magnitude and direction of each vector while repositioning it during construction.\n\nWhich of the following combinations correctly describes the proper head-to-tail sequence for applying the triangle law of vectors?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I and III only",
+    "C": "II, III and IV only",
+    "D": "I, III and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of the correct sequence for constructing vectors using the triangle law. Rather than performing calculations, you must identify which statements correctly describe the head-to-tail procedure used to obtain the resultant vector.",
+    "principle": "The triangle law of vectors states that if two vectors are represented in magnitude and direction by two sides of a triangle taken in order, then the third side of the triangle drawn from the tail of the first vector to the head of the second vector represents the resultant vector.\n\nA beginner may ask, 'Why can a vector be moved without changing its effect?'\n\nA vector is completely defined by its magnitude and direction. Therefore, it may be shifted to a new position provided neither its length (magnitude) nor its direction is altered.\n\nWhen applying the triangle law:\n\n• Draw the first vector.\n• Move the second vector so that its tail starts exactly where the first vector ends.\n• Keep the second vector's magnitude and direction unchanged.\n• Draw the resultant from the tail of the first vector to the head of the second vector.",
+    "steps": [
+      "Step 1: Examine Technician I's statement.\n\nThis is correct because the head-to-tail method requires the tail of the second vector to begin at the head of the first vector.",
+      "Step 2: Examine Technician II's statement.\n\nThis is correct. After arranging the vectors head-to-tail, the resultant is obtained by drawing a vector from the tail of the first vector directly to the head of the final vector.",
+      "Step 3: Examine Technician III's statement.\n\nThis is incorrect. The direction of a vector must never be reversed unless the problem specifically requires the opposite vector. Reversing the direction changes the vector completely and gives an incorrect resultant.",
+      "Step 4: Examine Technician IV's statement.\n\nThis is correct. Translating a vector during construction does not change its magnitude or direction. Both properties must be preserved.",
+      "Step 5: Identify the correct combination.\n\nTechnicians I, II and IV are correct, while Technician III is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Technician III is wrong, while Technician II, which is correct, has been omitted.",
+      "Option C is incorrect because it includes Technician III, whose statement incorrectly suggests reversing the direction of the second vector.",
+      "Option D is incorrect because it also includes Technician III, making the combination incorrect."
+    ],
+    "exam_tip": "Whenever a JAMB question asks about the triangle law, remember the phrase 'head-to-tail'. The second vector always begins where the first one ends, and the resultant is drawn from the starting point of the first vector to the endpoint of the last vector. Never reverse or shorten a vector unless the question specifically instructs you to do so.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Imagine walking along two connected paths. You first walk along one path and then continue along the next without turning back. The straight line from where you started to where you finally stopped represents the resultant displacement. This is exactly how the triangle law works. The vectors are joined head-to-tail, while their lengths and directions remain unchanged.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Triangle Law of Vectors for a complete lesson on head-to-tail vector construction, graphical interpretation, successive displacement, common examination mistakes, and fully worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed beginner-friendly explanations and additional practice questions."
+  },
+  "tags": [
+    "triangle_law_of_vectors",
+    "head_to_tail_method",
+    "graphical_vector_construction",
+    "vector_resultant",
+    "conceptual_vectors",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q098",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Triangle law of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A river patrol boat first travels at a velocity of 15 m s⁻¹ due north. It then changes course and moves at 20 m s⁻¹ due east.\n\nAssuming the two successive velocity vectors are represented head-to-tail according to the triangle law of vectors, what is the magnitude of the resultant velocity of the boat?",
+  "options": {
+    "A": "5 m s⁻¹",
+    "B": "25 m s⁻¹",
+    "C": "35 m s⁻¹",
+    "D": "400 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "25 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to apply the triangle law of vectors to determine the resultant of two successive velocity vectors acting at right angles during river transport.",
+    "principle": "Velocity is a vector quantity because it has both magnitude and direction.\n\nWhenever an object changes its direction of motion, its successive velocities can be represented graphically using the triangle law of vectors. In this method, the tail of the second vector is placed at the head of the first vector. The resultant vector is then drawn from the tail of the first vector to the head of the second vector.\n\nSince the first velocity is due north and the second is due east, the two vectors are perpendicular to each other, forming a right-angled triangle.\n\nFor perpendicular vectors, the magnitude of the resultant is obtained using Pythagoras' theorem:\n\nResultant, R = √(A² + B²)\n\nwhere:\n• A = magnitude of the first vector\n• B = magnitude of the second vector\n• R = magnitude of the resultant vector.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nFirst velocity = 15 m s⁻¹ north\nSecond velocity = 20 m s⁻¹ east",
+      "Step 2: Recognise that north and east are perpendicular directions.\n\nTherefore, the two velocity vectors form a right-angled triangle when arranged head-to-tail according to the triangle law.",
+      "Step 3: Apply Pythagoras' theorem.\n\nR = √(15² + 20²)\n\n= √(225 + 400)\n\n= √625\n\n= 25 m s⁻¹",
+      "Step 4: Compare the calculated value with the options provided.\n\nThe correct option is 25 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (5 m s⁻¹) is obtained by subtracting the magnitudes of the two vectors. This is incorrect because the vectors act at right angles, not in opposite directions.",
+      "Option C (35 m s⁻¹) is obtained by adding the magnitudes directly. Vectors at right angles cannot be added arithmetically.",
+      "Option D (400 m s⁻¹) is the square of one of the quantities involved and does not represent the magnitude of the resultant velocity."
+    ],
+    "common_misconceptions": [
+      "Many candidates simply add the magnitudes of perpendicular vectors.",
+      "Some candidates subtract the magnitudes because the object changes direction.",
+      "Others forget that the triangle law requires consideration of both magnitude and direction before determining the resultant."
+    ],
+    "exam_tip": "Whenever two successive vectors act at right angles, first draw or imagine the head-to-tail triangle. Then use Pythagoras' theorem to calculate the magnitude of the resultant. JAMB frequently combines graphical vector concepts with simple numerical calculations.",
+    "final_answer": "B. 25 m s⁻¹",
+    "simple_explanation": "Imagine walking 15 m north and then 20 m east without returning to your starting point. Instead of adding the two distances directly, you draw a straight line from where you started to where you finished. That straight line represents the resultant vector. Because the two directions are at right angles, Pythagoras' theorem gives the length of this straight line as 25 m. The same idea applies to successive velocity vectors arranged using the triangle law.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Triangle Law of Vectors to learn how successive displacement, velocity and force vectors are represented using the head-to-tail method. The lesson includes graphical constructions, worked examples, examination tips and additional JAMB-style practice questions available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "triangle_law_of_vectors",
+    "successive_velocity",
+    "river_transport",
+    "vector_addition",
+    "resultant_velocity",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q099",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Triangle law of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During the installation of a heavy generator, a crane holds the load stationary using two supporting cables attached to the hook. One cable exerts a force of 9 kN while the other exerts a force of 12 kN. The two forces act successively with an angle of 90° between them.\n\nUsing the triangle law of vectors, what is the magnitude of the single equilibrant force required to keep the load in equilibrium?",
+  "options": {
+    "A": "15 kN",
+    "B": "18 kN",
+    "C": "21 kN",
+    "D": "24 kN"
+  },
+  "answer": "A",
+  "answer_text": "15 kN",
+  "explanation": {
+    "question_restate": "This question examines how the triangle law of vectors can be applied to determine the equilibrant force in a practical crane operation. Since the load remains stationary, the equilibrant must have the same magnitude as the resultant of the two supporting forces but act in the opposite direction.",
+    "principle": "A vector is a quantity that possesses both magnitude and direction.\n\nWhen two vectors act successively, they can be combined using the triangle law of vectors. According to this law, if one vector is drawn head-to-tail with another, the vector joining the tail of the first to the head of the second represents the resultant.\n\nA beginner may ask, 'What is an equilibrant?'\n\nAn equilibrant is a single force that exactly balances the resultant of all the other forces acting on an object. It has the same magnitude as the resultant but points in the opposite direction.\n\nIf an object is in equilibrium, the resultant force and the equilibrant cancel each other, leaving the object at rest or moving with constant velocity.\n\nWhen two vectors are perpendicular, the magnitude of the resultant is obtained using Pythagoras' theorem:\n\nR = √(A² + B²)\n\nwhere:\nA = first vector,\nB = second vector,\nR = resultant vector.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nFirst force = 9 kN\nSecond force = 12 kN\nAngle between them = 90°",
+      "Step 2: Since the forces are perpendicular, apply Pythagoras' theorem.\n\nR = √(9² + 12²)",
+      "Step 3: Perform the calculation.\n\nR = √(81 + 144)\n\nR = √225\n\nR = 15 kN",
+      "Step 4: Recall the relationship between the resultant and the equilibrant.\n\nThe equilibrant has the same magnitude as the resultant but acts in the opposite direction.\n\nTherefore, the required equilibrant force is 15 kN.",
+      "Step 5: Compare with the options.\n\n15 kN corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (18 kN) is incorrect because it does not result from applying the triangle law or Pythagoras' theorem to the given perpendicular forces.",
+      "Option C (21 kN) is incorrect because it overestimates the resultant. Students sometimes obtain this value by adding the forces incorrectly or making an arithmetic error.",
+      "Option D (24 kN) is incorrect because it is simply twice the smaller force and has no basis in vector addition."
+    ],
+    "exam_tip": "Whenever a JAMB question states that two vectors are at right angles, immediately think of Pythagoras' theorem for finding the resultant.\n\nAlso remember that an equilibrant is not a different-sized force. It has exactly the same magnitude as the resultant but acts in the opposite direction to produce equilibrium.",
+    "final_answer": "A. 15 kN",
+    "simple_explanation": "Imagine two people pulling a heavy object in different directions while a crane keeps it perfectly still.\n\nThe combined effect of the two pulls is called the resultant. To prevent the object from moving, another force must exactly oppose this resultant. That balancing force is the equilibrant.\n\nFor perpendicular forces of 9 kN and 12 kN, the resultant is 15 kN. Therefore, the equilibrant must also have a magnitude of 15 kN.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Triangle Law of Vectors to learn how successive vectors are combined graphically, how equilibrant forces are related to resultants, and how to solve JAMB-style problems involving forces, navigation and engineering applications."
+  },
+  "tags": [
+    "triangle_law_of_vectors",
+    "equilibrant",
+    "force_equilibrium",
+    "crane_operation",
+    "vector_addition",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q100",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Triangle law of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a Physics lesson, a student used the triangle law to combine two displacement vectors. After drawing the first vector, the student placed the tail of the second vector at the head of the first vector and then drew a third vector from the tail of the first vector to the head of the second vector.\n\nThe student concluded that this third vector represented the resultant displacement because it had the same overall effect as the two successive displacements.\n\nWhich of the following best explains whether the student's conclusion is correct?",
+  "options": {
+    "A": "The conclusion is correct because the resultant vector is obtained by joining the tail of the first vector to the head of the last vector in a head-to-tail arrangement.",
+    "B": "The conclusion is incorrect because the magnitudes of the two vectors should first be added arithmetically before drawing the resultant.",
+    "C": "The conclusion is incorrect because the triangle law requires both vectors to start from the same point before the resultant can be drawn.",
+    "D": "The conclusion is incorrect because the resultant must always have the same magnitude as the larger of the two vectors."
+  },
+  "answer": "A",
+  "answer_text": "The conclusion is correct because the resultant vector is obtained by joining the tail of the first vector to the head of the last vector in a head-to-tail arrangement.",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of why the triangle law of vectors works rather than your ability to perform a numerical calculation. You are required to evaluate a student's conclusion after correctly constructing two vectors using the head-to-tail method.",
+    "principle": "The triangle law of vectors states that if two vectors are represented in magnitude and direction by two sides of a triangle taken in order, then the third side drawn from the tail of the first vector to the head of the second vector represents the resultant vector.\n\nA beginner may ask, 'Why is it called the triangle law?'\n\nIt is called the triangle law because placing one vector after another (head-to-tail) forms a triangle. The third side of this triangle shows the single vector that has the same overall effect as the two original vectors acting successively.\n\nAnother beginner may ask, 'What is a resultant vector?'\n\nA resultant vector is a single vector that can replace two or more vectors while producing exactly the same effect. It has both magnitude and direction.",
+    "steps": [
+      "Step 1: Examine the student's construction.\n\nThe student placed the tail of the second vector at the head of the first vector. This is the correct head-to-tail arrangement required by the triangle law.",
+      "Step 2: Examine how the resultant was drawn.\n\nThe student joined the tail of the first vector directly to the head of the second vector. This is exactly how the resultant is represented in the triangle law of vectors.",
+      "Step 3: Evaluate the conclusion.\n\nSince both the construction and the interpretation follow the triangle law correctly, the student's conclusion is valid.\n\nTherefore, Option A is the best explanation."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because vectors cannot generally be combined by simply adding their magnitudes. Direction must always be considered.",
+      "Option C is incorrect because vectors starting from the same point describes the parallelogram law, not the triangle law.",
+      "Option D is incorrect because the magnitude of the resultant depends on both the magnitudes and directions of the vectors. It is not always equal to the larger vector."
+    ],
+    "exam_tip": "A common JAMB trap is to confuse the triangle law with the parallelogram law.\n\nRemember these key ideas:\n\n• Triangle law: vectors are arranged head-to-tail.\n\n• Parallelogram law: vectors begin from the same point.\n\nIn both methods, the resultant is a single vector that has the same overall effect as the original vectors.",
+    "final_answer": "A. The conclusion is correct because the resultant vector is obtained by joining the tail of the first vector to the head of the last vector in a head-to-tail arrangement.",
+    "simple_explanation": "Imagine walking along one road and then immediately turning onto another road.\n\nInstead of describing the journey in two separate parts, you can draw one straight arrow from where you started to where you finally stopped. That single arrow is called the resultant displacement.\n\nThe student followed this idea correctly by arranging the vectors head-to-tail and drawing the resultant from the starting point to the final point. Therefore, the student's conclusion is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Triangle Law of Vectors to learn how vectors are added graphically using the head-to-tail method, how the resultant is identified, how this method differs from the parallelogram law, and how similar questions are tested in JAMB. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and additional worked examples."
+  },
+  "tags": [
+    "triangle_law_of_vectors",
+    "head_to_tail_method",
+    "resultant_vector",
+    "graphical_vector_addition",
+    "conceptual_reasoning",
+    "phy_03"
+  ],
+  "active": true
 }
 
 
