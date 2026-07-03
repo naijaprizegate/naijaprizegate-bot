@@ -5951,6 +5951,315 @@
     "phy_03"
   ],
   "active": true
+},
+{
+  "id": "phy_03_q121",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resolution of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During the installation of a tower crane at a construction site, an engineer analysed the tension in a supporting cable that was inclined to the ground. Instead of working with the inclined force directly, the engineer first resolved it into horizontal and vertical components.\n\nWhy is this approach useful?",
+  "options": {
+    "A": "It makes it easier to analyse the effect of the force in mutually perpendicular directions.",
+    "B": "It increases the magnitude of the original force so that calculations become more accurate.",
+    "C": "It changes the inclined force into two independent forces that act separately from the original force.",
+    "D": "It eliminates the need to consider the direction of the force during calculations."
+  },
+  "answer": "A",
+  "answer_text": "It makes it easier to analyse the effect of the force in mutually perpendicular directions.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the purpose of resolving a vector into horizontal and vertical components before solving practical engineering problems.",
+    "principle": "Many physical quantities, such as force, velocity, displacement and acceleration, are vectors because they possess both magnitude and direction.\n\nWhen a vector acts at an angle, analysing its effect directly can be difficult. To simplify the analysis, the vector is resolved into two components that act at right angles (perpendicular) to each other, usually a horizontal component and a vertical component.\n\nA beginner may ask, 'What is vector resolution?'\n\nVector resolution is the process of expressing a single vector as two or more perpendicular component vectors whose combined effect is exactly the same as that of the original vector.\n\nAnother beginner may ask, 'Does resolving a vector create new forces?'\n\nNo. The horizontal and vertical components are not additional forces. They are simply different representations of the same original vector. When these perpendicular components are combined, they reproduce the original vector exactly.\n\nResolving vectors allows engineers and physicists to analyse motion and forces independently along each axis. This greatly simplifies calculations involving equilibrium, motion, structures and machines.",
+    "steps": [
+      "Step 1: Identify the engineering task.\n\nThe engineer is dealing with a force that acts at an angle. Such a force has effects in both the horizontal and vertical directions.",
+      "Step 2: Recall the purpose of vector resolution.\n\nThe purpose is not to change the force but to express it as perpendicular components that are easier to analyse separately.",
+      "Step 3: Examine Option A.\n\nThis option correctly states that resolving the vector simplifies analysis by separating its effects into mutually perpendicular directions. This is the fundamental reason vector resolution is used.",
+      "Step 4: Examine the remaining options.\n\nNone of them correctly describes what vector resolution does. They either suggest that the force changes, increases or loses its direction, which is incorrect.",
+      "Step 5: Choose the correct answer.\n\nThe correct option is A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because resolving a vector does not increase or decrease its magnitude. The original vector remains unchanged; it is only expressed in terms of components.",
+      "Option C is incorrect because the horizontal and vertical components are not separate new forces. Together, they represent the same original inclined force.",
+      "Option D is incorrect because direction is one of the most important characteristics of a vector. Resolving a vector helps account for direction rather than eliminating it."
+    ],
+    "exam_tip": "Whenever JAMB asks why vectors are resolved, remember that the objective is to simplify the analysis of vectors acting at an angle.\n\nKeep these facts in mind:\n\n• Resolution does not change the original vector.\n• The components are perpendicular to each other.\n• The components combine to produce the original vector.\n• Vector resolution is useful for forces, velocities, accelerations, displacements and other vector quantities.\n\nAvoid the common misconception that vector resolution creates additional forces or changes the magnitude of the original vector.",
+    "final_answer": "A. It makes it easier to analyse the effect of the force in mutually perpendicular directions.",
+    "simple_explanation": "Imagine pulling a heavy object with a rope that slopes upward.\n\nPart of your pull moves the object forward, while another part pulls upward. Instead of studying the sloping pull all at once, it is easier to separate it into a horizontal part and a vertical part.\n\nThis process is called vector resolution. It makes calculations easier without changing the original force.\n\nThat is why Option A is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resolution of Vectors to learn why vectors are resolved into components, how horizontal and vertical components are obtained, the role of perpendicular axes, and how vector resolution is applied in engineering, construction, transportation and other JAMB-style problem-solving situations. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations and worked examples."
+  },
+  "tags": [
+    "resolution_of_vectors",
+    "vector_components",
+    "engineering_application",
+    "construction",
+    "vector_analysis",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q122",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resolution of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During the installation of a roof truss, a support cable exerts a force of 50 N at an angle of 37° above the horizontal. What is the horizontal component of the force?\n\n(Take cos 37° = 0.80.)",
+  "options": {
+    "A": "30 N",
+    "B": "40 N",
+    "C": "50 N",
+    "D": "62.5 N"
+  },
+  "answer": "B",
+  "answer_text": "40 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to resolve an inclined force into its horizontal and vertical components. Specifically, you are required to determine the horizontal component of a 50 N force acting at an angle of 37° above the horizontal.",
+    "principle": "Many forces in nature do not act purely horizontally or vertically. Instead, they act at an angle. To analyse such forces more easily, physicists split, or resolve, the force into two mutually perpendicular components:\n\n• Horizontal component\n• Vertical component\n\nThese two components together produce exactly the same effect as the original force.\n\nWhen the angle is measured from the horizontal, the horizontal component is obtained using the cosine of the angle, while the vertical component is obtained using the sine of the angle.",
+    "definitions": "Vector resolution is the process of breaking a single vector into two perpendicular components that together are equivalent to the original vector.\n\nThe horizontal component represents the part of the vector acting parallel to the horizontal direction, while the vertical component represents the part acting vertically upward or downward.",
+    "formula_introduction": "If a vector of magnitude F makes an angle θ with the horizontal, then:\n\nHorizontal component = F cos θ\n\nVertical component = F sin θ\n\nwhere:\n\nF = magnitude of the vector\nθ = angle measured from the horizontal.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nForce, F = 50 N\n\nAngle, θ = 37°\n\ncos 37° = 0.80",
+      "Step 2: Identify the required quantity.\n\nHorizontal component of the force.",
+      "Step 3: Select the appropriate formula.\n\nHorizontal component = F cos θ",
+      "Step 4: Substitute the given values.\n\nHorizontal component = 50 × 0.80",
+      "Step 5: Perform the calculation.\n\nHorizontal component = 40 N",
+      "Step 6: Compare the result with the options.\n\n40 N corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (30 N) is incorrect. It could result from using an incorrect trigonometric ratio or an incorrect calculation.",
+      "Option C (50 N) is incorrect because it is the magnitude of the original force. A component of a vector acting at an angle must be smaller than the original vector.",
+      "Option D (62.5 N) is incorrect because a component cannot be greater than the magnitude of the original force. This value could arise from dividing by the cosine instead of multiplying by it."
+    ],
+    "common_misconceptions": [
+      "Using sine instead of cosine when the angle is measured from the horizontal.",
+      "Thinking the horizontal component is equal to the original force.",
+      "Dividing by the trigonometric ratio instead of multiplying.",
+      "Believing that one component can be greater than the original vector."
+    ],
+    "exam_tip": "Always identify where the angle is measured from before choosing a trigonometric ratio.\n\n• Angle from the horizontal → horizontal component = F cos θ.\n• Angle from the horizontal → vertical component = F sin θ.\n\nIn JAMB examinations, many candidates lose marks simply by interchanging sine and cosine.",
+    "final_answer": "B. 40 N",
+    "simple_explanation": "Imagine pulling a roof support cable that slopes upward. Not all of your pulling force moves the structure horizontally because part of the force acts upward. By multiplying the force by the cosine of the angle, you find the portion acting horizontally.\n\nTherefore, the horizontal component is 40 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resolution of Vectors to learn how inclined forces are resolved into horizontal and vertical components using sine and cosine, with beginner-friendly explanations, worked examples, and additional JAMB-style practice questions available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "resolution_of_vectors",
+    "horizontal_component",
+    "trigonometry",
+    "forces",
+    "roof_construction",
+    "application",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q123",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resolution of Vectors",
+  "difficulty": "medium",
+  "cognitive_level": "understanding",
+  "question_type": "mcq",
+  "question": "At an airport baggage handling area, a conveyor belt pulls a suitcase along an inclined path. A technician explains that the pulling force can be resolved into a horizontal component and a vertical component.\n\nWhat does this description imply about the two components of the pulling force?",
+  "options": {
+    "A": "They are two perpendicular parts whose combined effect is equal to the original pulling force.",
+    "B": "They are two independent forces acting separately on the suitcase.",
+    "C": "Each component has the same magnitude as the original pulling force but acts in a different direction.",
+    "D": "The horizontal component alone produces exactly the same effect as the original pulling force."
+  },
+  "answer": "A",
+  "answer_text": "They are two perpendicular parts whose combined effect is equal to the original pulling force.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what it means to resolve a vector into horizontal and vertical components. Rather than performing calculations, you are required to interpret the physical meaning of vector components in a practical engineering situation.",
+    "principle": "Many physical quantities such as force, velocity and displacement are vectors because they possess both magnitude and direction.\n\nSometimes a vector acts at an angle, making it difficult to analyse its effect directly. To simplify the analysis, the vector is resolved into two mutually perpendicular components—usually a horizontal component and a vertical component.\n\nA beginner may ask, 'Does resolving a vector create new forces?'\n\nNo. Vector resolution does not create additional forces. Instead, it expresses one original vector as two perpendicular parts that, when combined, reproduce exactly the same vector.\n\nAnother beginner may ask, 'Why must the components be perpendicular?'\n\nPerpendicular components are independent of one another, making it easier to analyse motion or forces separately along the horizontal and vertical directions.",
+    "steps": [
+      "Step 1: Identify what is being described.\n\nThe technician says that the pulling force is resolved into horizontal and vertical components. This means the original force has been split into two perpendicular parts for easier analysis.",
+      "Step 2: Recall the purpose of vector resolution.\n\nThe horizontal and vertical components together represent exactly the same force as the original inclined force. They are not additional forces but parts of the same vector.",
+      "Step 3: Evaluate the options.\n\nOption A correctly states that the components are perpendicular parts whose combined effect is equal to the original pulling force.\n\nTherefore, Option A is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the components are not separate independent forces. They are simply different directional parts of one original vector.",
+      "Option C is incorrect because each component is smaller than or, at most, equal to the original vector. A component cannot generally have the same magnitude as the original vector.",
+      "Option D is incorrect because the horizontal component alone cannot replace the original inclined force. Both the horizontal and vertical components are required to reproduce the original vector."
+    ],
+    "exam_tip": "Whenever JAMB refers to the horizontal and vertical components of a vector, remember that they are perpendicular parts of a single vector. Do not mistake them for separate forces acting independently. The original vector is obtained only when both components are combined.",
+    "final_answer": "A. They are two perpendicular parts whose combined effect is equal to the original pulling force.",
+    "simple_explanation": "Imagine pushing a trolley up a ramp. Instead of looking at the push as one slanted force, you can think of it as having two parts:\n\n• one acting horizontally;\n• one acting vertically.\n\nThese two parts are at right angles to each other. When they are combined, they produce exactly the same slanted push you started with. They are not new forces—they are simply different parts of the same original force.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resolution of Vectors to learn why vectors are resolved into horizontal and vertical components, how perpendicular components are interpreted, and how vector resolution is applied in engineering, transportation, navigation and JAMB-style examination questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations and worked examples."
+  },
+  "tags": [
+    "resolution_of_vectors",
+    "vector_components",
+    "horizontal_component",
+    "vertical_component",
+    "interpretation",
+    "airport_baggage_handling",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q124",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resolution of Vectors",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During the design of a pedestrian bridge, two structural engineers discussed how to determine the combined effect of two forces acting at an angle on a support beam.\n\nEngineer I suggested resolving each force into horizontal and vertical components before combining the components.\n\nEngineer II suggested using the parallelogram law directly to obtain the resultant of the two forces.\n\nWhich of the following statements is correct?",
+  "options": {
+    "A": "Only Engineer I's method is correct because the parallelogram law cannot be used for forces acting at an angle.",
+    "B": "Only Engineer II's method is correct because vectors should never be resolved into components.",
+    "C": "Both methods are correct because they can produce the same resultant when applied correctly.",
+    "D": "Neither method is correct because forces acting at an angle must always be added arithmetically."
+  },
+  "answer": "C",
+  "answer_text": "Both methods are correct because they can produce the same resultant when applied correctly.",
+  "explanation": {
+    "question_restate": "This question compares two different methods used to solve force problems involving vectors. It asks whether resolving vectors into perpendicular components and using the parallelogram law are alternative approaches that lead to the same resultant.",
+    "principle": "A vector is a quantity that has both magnitude and direction. When two or more vectors act together, they may be combined to obtain a single equivalent vector known as the resultant.\n\nThere are several accepted methods of finding the resultant of vectors. Two of the most common are:\n\n• The parallelogram law.\n• Resolution of vectors into horizontal and vertical components.\n\nA beginner may ask, 'Why are there different methods?'\n\nDifferent methods are more convenient in different situations. The parallelogram law provides a graphical or geometrical approach, while vector resolution converts each vector into perpendicular components that can easily be added algebraically.\n\nAlthough the procedures differ, both methods are based on the same principles of vector addition and will produce the same resultant when applied correctly.",
+    "steps": [
+      "Step 1: Examine Engineer I's method.\n\nResolving each force into horizontal and vertical components is a standard analytical technique used in physics and engineering.\n\nAfter resolving the forces, the horizontal components are added together and the vertical components are added together to determine the resultant.\n\nTherefore, Engineer I's method is correct.",
+      "Step 2: Examine Engineer II's method.\n\nThe parallelogram law is another recognised method for adding two vectors acting at an angle.\n\nBy constructing a parallelogram using the two vectors as adjacent sides, the diagonal represents the resultant vector.\n\nTherefore, Engineer II's method is also correct.",
+      "Step 3: Compare the two methods.\n\nThe methods differ only in approach.\n\n• Vector resolution is usually preferred for calculations involving components.\n• The parallelogram law is useful for graphical representation and for understanding how vectors combine.\n\nWhen performed correctly, both methods give the same resultant vector.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the parallelogram law is a recognised method for combining two vectors acting at an angle.",
+      "Option B is incorrect because resolving vectors into perpendicular components is one of the most widely used analytical methods in mechanics.",
+      "Option D is incorrect because vectors cannot generally be added by simply adding their magnitudes. Direction must also be taken into account."
+    ],
+    "exam_tip": "In JAMB examinations, questions may ask you to compare different vector methods rather than perform calculations.\n\nRemember these key facts:\n\n• Vector resolution and the parallelogram law are complementary methods.\n• Both produce the same resultant when used correctly.\n• Resolution is generally more convenient for numerical calculations involving forces, velocities and displacements.\n• The parallelogram law is especially useful for visualising how two vectors combine.\n\nDo not assume that every force problem must first be solved by resolving vectors into components. Choose the method that best suits the problem.",
+    "final_answer": "C. Both methods are correct because they can produce the same resultant when applied correctly.",
+    "simple_explanation": "Imagine two friends pulling a heavy cart using ropes tied at different angles.\n\nOne engineer decides to split each pulling force into horizontal and vertical parts before adding them.\n\nAnother engineer draws a parallelogram to combine the two pulls.\n\nAlthough the methods look different, they both determine the same overall pulling force. They are simply two valid ways of solving the same vector problem.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resolution of Vectors for a complete lesson on resolving vectors into components, comparing analytical and graphical methods, understanding when to use the parallelogram law, and solving JAMB-style force problems with detailed worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations, practice questions, and examination tips."
+  },
+  "tags": [
+    "resolution_of_vectors",
+    "parallelogram_law",
+    "vector_comparison",
+    "engineering_application",
+    "conceptual_vectors",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q125",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resolution of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "In a warehouse, a worker pulls a loaded trolley using a rope with a force of 72 N. The rope makes an angle of 40° with the horizontal floor.\n\nWhat is the horizontal component of the pulling force?\n\n(Take cos 40° = 0.77.)",
+  "options": {
+    "A": "55.4 N",
+    "B": "46.3 N",
+    "C": "61.7 N",
+    "D": "72.0 N"
+  },
+  "answer": "A",
+  "answer_text": "55.4 N",
+  "explanation": {
+    "question_restate": "This question requires you to resolve an inclined force into its horizontal component. Although the worker pulls with a force of 72 N, only the part of the force acting horizontally moves the trolley forward.",
+    "principle": "Many forces in Physics act at an angle rather than purely horizontally or vertically. To determine how much of such a force acts in a particular direction, the force is resolved into two perpendicular components:\n\n• Horizontal component\n• Vertical component\n\nResolving a vector means splitting one vector into two mutually perpendicular vectors whose combined effect is exactly the same as the original vector.\n\nWhen the angle is measured from the horizontal:\n\nHorizontal component = F cos θ\n\nVertical component = F sin θ\n\nwhere:\n\n• F = magnitude of the original force\n• θ = angle the force makes with the horizontal\n\nThe cosine function is used for the horizontal component because it represents the side adjacent to the given angle in a right-angled triangle.",
+    "steps": [
+      "Step 1: Write down the known quantities.\n\nMagnitude of force, F = 72 N\n\nAngle with the horizontal, θ = 40°\n\ncos 40° = 0.77",
+      "Step 2: Identify the quantity required.\n\nWe need the horizontal component of the force.",
+      "Step 3: Select the appropriate formula.\n\nHorizontal component = F cos θ",
+      "Step 4: Substitute the given values.\n\nHorizontal component = 72 × 0.77",
+      "Step 5: Perform the calculation.\n\n72 × 0.77 = 55.44 N\n\n≈ 55.4 N",
+      "Step 6: Compare the result with the options.\n\n55.4 N corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (46.3 N) is incorrect. It results from using an incorrect trigonometric ratio or an arithmetic error during multiplication.",
+      "Option C (61.7 N) is incorrect. It is a plausible distractor obtained from using an incorrect value for cos 40° or rounding improperly.",
+      "Option D (72.0 N) is incorrect because it is the magnitude of the original pulling force. The horizontal component must be smaller than the original force since the force acts at an angle."
+    ],
+    "common_misconceptions": [
+      "Using sine instead of cosine when the angle is measured from the horizontal.",
+      "Assuming the horizontal component is equal to the original force.",
+      "Forgetting that a component of a vector is always less than the magnitude of the original vector unless the angle is 0°."
+    ],
+    "exam_tip": "Whenever a force makes an angle with the horizontal, immediately identify which component is required.\n\n• Horizontal component → use cosine.\n• Vertical component → use sine.\n\nA quick memory aid is:\n\n'H for Horizontal goes with Cosine when the angle is from the Horizontal.'",
+    "final_answer": "A. 55.4 N",
+    "simple_explanation": "Imagine pulling a trolley with a rope that is slanted upward. Not all of your pulling force moves the trolley forward. Part of the force lifts upward, while the remaining part pushes the trolley horizontally.\n\nThe forward (horizontal) part is obtained using:\n\nHorizontal component = Force × cos(angle)\n\n= 72 × 0.77\n\n= 55.4 N\n\nTherefore, the horizontal component of the pulling force is 55.4 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resolution of Vectors to learn how inclined forces are resolved into horizontal and vertical components, when to use sine or cosine, common examination mistakes, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and additional practice."
+  },
+  "tags": [
+    "resolution_of_vectors",
+    "horizontal_component",
+    "inclined_force",
+    "warehouse_logistics",
+    "trigonometry",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q126",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resolution of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a physics laboratory practical, a learner was asked to resolve a 64 N force acting at an angle of 30° above the horizontal into its horizontal and vertical components.\n\nThe learner wrote:\n\nHorizontal component = 64 sin30°\n\nVertical component = 64 cos30°\n\nAssuming the angle is correctly measured from the horizontal, what mistake did the learner make?",
+  "options": {
+    "A": "The sine and cosine ratios were interchanged for the given reference angle.",
+    "B": "The force should first have been converted to kilograms before resolving it.",
+    "C": "The horizontal and vertical components should be added before applying trigonometric ratios.",
+    "D": "Vector resolution can only be carried out when the force acts at 45°."
+  },
+  "answer": "A",
+  "answer_text": "The sine and cosine ratios were interchanged for the given reference angle.",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify a common error made when resolving a vector into perpendicular components. Rather than carrying out a calculation, you are required to analyse a learner's method and determine why it is incorrect.",
+    "principle": "Vector resolution is the process of splitting a single vector into two mutually perpendicular components, usually horizontal and vertical. These components combine to produce the original vector.\n\nBefore using any trigonometric ratio, you must identify the reference angle. The reference angle is the angle between the vector and one of the coordinate axes.\n\nWhen the angle is measured from the horizontal:\n\n• Horizontal component = F cosθ\n• Vertical component = F sinθ\n\nwhere:\n\nF = magnitude of the vector\nθ = angle measured from the horizontal\n\nThe cosine ratio gives the component adjacent to the reference angle, while the sine ratio gives the component opposite the reference angle.",
+    "steps": [
+      "Step 1: Identify the reference axis.\n\nThe question states that the 30° angle is measured from the horizontal direction.",
+      "Step 2: Recall the correct expressions.\n\nFor an angle measured from the horizontal:\n\nHorizontal component = F cosθ\n\nVertical component = F sinθ",
+      "Step 3: Compare the learner's method.\n\nThe learner wrote:\n\nHorizontal component = 64 sin30°\n\nVertical component = 64 cos30°\n\nThese expressions are reversed.",
+      "Step 4: Identify the misconception.\n\nThe learner confused the trigonometric ratios by assigning sine to the adjacent side and cosine to the opposite side. This is one of the most common mistakes made when resolving vectors.",
+      "Step 5: Select the correct option.\n\nThe error is that the sine and cosine ratios were interchanged.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because force is already measured in newtons (N). There is no need to convert it to kilograms before resolving it into components.",
+      "Option C is incorrect because vector components are obtained first. They are not added before applying trigonometric ratios.",
+      "Option D is incorrect because vector resolution can be carried out for any angle. It is not restricted to 45°."
+    ],
+    "common_misconception": "Many students memorise formulas without first identifying the reference angle. As a result, they interchange sine and cosine or use the correct formulas with the wrong angle. Always determine whether the given angle is measured from the horizontal or the vertical before selecting the appropriate trigonometric ratio.",
+    "exam_tip": "In JAMB examinations, carefully note where the angle is measured from.\n\nIf the angle is measured from the horizontal:\n\n• Horizontal → cosine\n• Vertical → sine\n\nIf the angle is measured from the vertical, these relationships are reversed. Drawing a simple right-angled triangle often helps you choose the correct ratio.",
+    "final_answer": "A. The sine and cosine ratios were interchanged for the given reference angle.",
+    "simple_explanation": "Imagine shining a torch so that its beam makes an angle with the floor.\n\nThe beam can be thought of as having a horizontal part and a vertical part.\n\nWhen the angle is measured from the floor (horizontal), the horizontal part is always found using cosine, while the vertical part is found using sine.\n\nThe learner swapped these two ratios, which is why the solution is incorrect.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resolution of Vectors to learn how to identify the reference angle, choose the correct trigonometric ratio, resolve vectors into horizontal and vertical components, and avoid common examination mistakes. Continue practising with the NaijaPrizeGate CBT Tutorial Centre for detailed worked examples and JAMB-focused revision."
+  },
+  "tags": [
+    "resolution_of_vectors",
+    "vector_components",
+    "error_analysis",
+    "trigonometric_ratios",
+    "physics_laboratory",
+    "phy_03"
+  ],
+  "active": true
 }
 
 
