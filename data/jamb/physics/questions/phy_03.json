@@ -5598,6 +5598,359 @@
     "phy_03"
   ],
   "active": true
+},
+{
+  "id": "phy_03_q114",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Parallelogram law",
+  "difficulty": "medium",
+  "cognitive_level": "understanding",
+  "question_type": "mcq",
+  "question": "During a Physics lesson on the parallelogram law of vectors, a teacher asked four students to describe the method. They made the following statements:\n\nStudent I: 'The parallelogram law is used to determine the resultant of two vectors acting simultaneously from the same point.'\n\nStudent II: 'The resultant vector is represented by the diagonal of the parallelogram drawn from the common point of the two vectors.'\n\nStudent III: 'The magnitude of the resultant is always equal to the sum of the magnitudes of the two vectors.'\n\nStudent IV: 'The parallelogram law can be applied to vector quantities other than forces, provided the vectors act from a common point.'\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I, III and IV only",
+    "C": "II and III only",
+    "D": "I, II and III only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of the principles of the parallelogram law of vectors by asking you to identify which statements correctly describe the law and its applications.",
+    "principle": "The parallelogram law of vectors is a graphical method used to combine two vectors that act simultaneously from the same point. It states that if the two vectors are represented in magnitude and direction by the two adjacent sides of a parallelogram drawn from a common point, then the diagonal passing through that common point represents the resultant vector in both magnitude and direction.\n\nA beginner may ask, 'Why is it called the parallelogram law?'\n\nIt is because the construction requires a parallelogram to be drawn using the two vectors as adjacent sides.\n\nAnother beginner may ask, 'Does this method apply only to forces?'\n\nNo. It applies to any vector quantities, such as velocity, displacement, acceleration and momentum, provided two vectors originate from the same point and are being combined.\n\nOne common misconception is believing that the resultant is always equal to the arithmetic sum of the magnitudes. This is true only when both vectors act in exactly the same direction. When the vectors are inclined to one another, the included angle affects the magnitude of the resultant.",
+    "steps": [
+      "Step 1: Examine Student I's statement.\n\nThis statement is correct.\n\nThe parallelogram law is specifically used to obtain the resultant of two vectors acting simultaneously from a common point.",
+      "Step 2: Examine Student II's statement.\n\nThis statement is correct.\n\nAfter constructing the parallelogram, the diagonal drawn from the common point represents the resultant vector.",
+      "Step 3: Examine Student III's statement.\n\nThis statement is incorrect.\n\nThe resultant is not always the arithmetic sum of the magnitudes. Its value depends on both the magnitudes of the vectors and the angle between them.",
+      "Step 4: Examine Student IV's statement.\n\nThis statement is correct.\n\nThe parallelogram law is a general method for adding vectors and is not restricted to forces alone.",
+      "Step 5: Determine the correct combination.\n\nStudents I, II and IV are correct, while Student III is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Student III, whose statement ignores the effect of the included angle between vectors.",
+      "Option C is incorrect because although Student II is correct, Student III is not. It also omits Students I and IV, which are correct.",
+      "Option D is incorrect because it also includes Student III, making the combination incorrect."
+    ],
+    "exam_tip": "Whenever JAMB asks conceptual questions on the parallelogram law, remember these key facts:\n\n• The vectors must originate from the same point.\n\n• The two vectors form the adjacent sides of a parallelogram.\n\n• The diagonal from the common point gives the resultant.\n\n• The resultant depends on both magnitude and the included angle.\n\nBe cautious of statements containing the word 'always.' In vector problems, such statements are often incorrect unless special conditions are specified.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Imagine two people pushing a heavy machine at the same time from the same position but in different directions.\n\nInstead of considering each push separately, the parallelogram law helps us find one imaginary push that produces the same overall effect.\n\nThe diagonal of the parallelogram represents that single combined push, called the resultant.\n\nBecause the direction of each push matters, you cannot always add their magnitudes directly. That is why Student III is wrong, while Students I, II and IV are correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Parallelogram Law of Vectors to learn how the law is constructed, why the diagonal represents the resultant, when the method should be used, how it differs from the triangle law, and how JAMB tests conceptual and calculation-based questions on this topic."
+  },
+  "tags": [
+    "parallelogram_law",
+    "simultaneous_vectors",
+    "resultant_vector",
+    "multiple_statements",
+    "conceptual_vectors",
+    "phy_03",
+    "jamb_revision"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q115",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Parallelogram law",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A warehouse uses two forklifts to pull a heavy machine simultaneously from the same point in different directions. Four technicians describe different graphical constructions for obtaining the single force that represents the combined effect of the two pulls.\n\nTechnician I: Place the two force vectors tail-to-tail, complete a parallelogram using the vectors as adjacent sides, and draw the diagonal from their common starting point.\n\nTechnician II: Place the vectors head-to-head and join their free ends with a straight line.\n\nTechnician III: Draw the two vectors separately without a common starting point, then measure the distance between their tips.\n\nTechnician IV: Add the magnitudes of the two forces directly and represent the answer as the resultant regardless of the angle between them.\n\nWhich technician has correctly represented the graphical construction required by the parallelogram law?",
+  "options": {
+    "A": "Technician I only",
+    "B": "Technician II only",
+    "C": "Technician III only",
+    "D": "Technician IV only"
+  },
+  "answer": "A",
+  "answer_text": "Technician I only",
+  "explanation": {
+    "question_restate": "This question tests your ability to recognise the correct graphical construction used in the parallelogram law of vector addition. Rather than performing a calculation, you are expected to identify the proper procedure for obtaining the resultant of two vectors acting simultaneously.",
+    "principle": "The parallelogram law is a graphical method used to add two vectors that act simultaneously from the same point.\n\nA vector is a quantity that has both magnitude and direction.\n\nExamples include force, displacement, velocity, acceleration and momentum.\n\nWhen two vectors act at the same point, they can be represented as two adjacent sides of a parallelogram.\n\nThe diagonal drawn from the common starting point (tail) to the opposite corner of the parallelogram represents the resultant vector.\n\nA beginner may ask, 'Why is the diagonal used?'\n\nThe diagonal combines the effects of both vectors into one equivalent vector that produces exactly the same overall effect as the two original vectors acting together.",
+    "steps": [
+      "Step 1: Examine Technician I's description.\n\nThe two vectors are drawn from the same starting point, a parallelogram is completed, and the diagonal from the common origin is taken as the resultant.\n\nThis is the correct graphical construction for the parallelogram law.",
+      "Step 2: Examine Technician II's description.\n\nPlacing vectors head-to-head does not produce the standard parallelogram construction for vector addition. The resultant is not obtained by simply joining their free ends.\n\nTherefore, Technician II is incorrect.",
+      "Step 3: Examine Technician III's description.\n\nDrawing vectors without a common origin and measuring the distance between their tips does not represent vector addition.\n\nTherefore, Technician III is incorrect.",
+      "Step 4: Examine Technician IV's description.\n\nSimply adding the magnitudes ignores the directions of the vectors. This method is valid only when both vectors act in exactly the same direction.\n\nSince the vectors act in different directions, this procedure is incorrect.",
+      "Step 5: Select the correct technician.\n\nOnly Technician I correctly applies the parallelogram law.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because placing vectors head-to-head is not the graphical procedure used in the parallelogram law.",
+      "Option C is incorrect because vectors must originate from the same point before constructing the parallelogram. Measuring the distance between vector tips does not produce the resultant.",
+      "Option D is incorrect because vector addition depends on both magnitude and direction. Adding magnitudes directly ignores the included angle between the vectors."
+    ],
+    "exam_tip": "In JAMB examinations, questions on the parallelogram law are not always numerical. You should also know the correct graphical construction.\n\nRemember these key points:\n\n• The vectors must start from the same point.\n• The vectors form two adjacent sides of a parallelogram.\n• The resultant is the diagonal drawn from the common starting point.\n• Direction is just as important as magnitude when adding vectors.",
+    "final_answer": "A. Technician I only",
+    "simple_explanation": "Imagine two people pulling a heavy crate at the same time from the same point but in different directions.\n\nTo find one force that has the same overall effect as both pulls, draw the two force vectors from the same starting point, complete a parallelogram, and draw the diagonal beginning from that common point.\n\nThat diagonal is called the resultant vector.\n\nOnly Technician I described this correctly.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Parallelogram Law of Vectors to learn the graphical construction of the parallelogram method, why the diagonal represents the resultant, common examination mistakes, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "parallelogram_law",
+    "graphical_construction",
+    "resultant_vector",
+    "simultaneous_vectors",
+    "warehouse_application",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q116",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Parallelogram law",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During an emergency rescue operation, two rescue teams pull a trapped vehicle simultaneously using separate ropes. One team exerts a force of 65 N while the other exerts a force of 48 N. The angle between the two ropes is 120°.\n\nUsing the parallelogram law of vectors, what is the magnitude of the resultant pulling force on the vehicle?",
+  "options": {
+    "A": "59 N",
+    "B": "81 N",
+    "C": "113 N",
+    "D": "97 N"
+  },
+  "answer": "A",
+  "answer_text": "59 N",
+  "explanation": {
+    "question_restate": "This question requires you to determine the single resultant force produced when two rescue teams pull simultaneously in different directions. Since the two forces act at an angle, the parallelogram law of vectors is used.",
+    "principle": "A vector is a quantity that has both magnitude and direction. Force is a vector quantity because it describes not only how large a push or pull is but also the direction in which it acts.\n\nWhen two forces act simultaneously at the same point and are inclined to each other, they can be replaced by one equivalent force called the **resultant**. The parallelogram law states that if the two forces are represented in magnitude and direction by the two adjacent sides of a parallelogram, then the diagonal drawn from their common point represents the resultant.\n\nFor calculations, the magnitude of the resultant is obtained using:\n\nR = √(P² + Q² + 2PQ cos θ)\n\nwhere:\n\n• R = resultant force\n• P and Q = magnitudes of the two forces\n• θ = included angle between the forces\n\nThe value of the cosine depends on the angle. For 120°, cos120° = -0.5. The negative value indicates that the forces oppose each other to some extent, making the resultant smaller than the arithmetic sum of the forces.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nP = 65 N\nQ = 48 N\nθ = 120°",
+      "Step 2: Write the appropriate formula.\n\nR = √(P² + Q² + 2PQ cos θ)",
+      "Step 3: Substitute the given values.\n\nR = √(65² + 48² + 2 × 65 × 48 × cos120°)",
+      "Step 4: Evaluate each term.\n\n65² = 4225\n48² = 2304\n2 × 65 × 48 = 6240\ncos120° = -0.5\n\nTherefore,\n\n6240 × (-0.5) = -3120",
+      "Step 5: Complete the calculation.\n\nR = √(4225 + 2304 - 3120)\n\nR = √3409\n\nR ≈ 58.4 N",
+      "Step 6: Select the nearest option.\n\n58.4 N ≈ 59 N.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (81 N) is incorrect. It may result from using an incorrect trigonometric value or ignoring the effect of the 120° angle.",
+      "Option C (113 N) is incorrect because it is simply the arithmetic sum of the two forces (65 N + 48 N). This would only be correct if both forces acted in exactly the same direction.",
+      "Option D (97 N) is incorrect because it results from an incorrect application of the formula or treating the forces as though they acted at a much smaller angle."
+    ],
+    "exam_tip": "Whenever two vectors act simultaneously at an angle, first identify the included angle before attempting any calculation.\n\nRemember these important facts:\n\n• Angle 0° gives the maximum possible resultant.\n• Angle 180° gives the minimum possible resultant.\n• Angle 90° removes the cosine term because cos90° = 0.\n• Angles greater than 90° have a negative cosine value, reducing the resultant.\n\nIn JAMB, many mistakes occur because candidates either add the forces directly or ignore the cosine of the included angle.",
+    "final_answer": "A. 59 N",
+    "simple_explanation": "Imagine two rescue teams pulling the same vehicle from different directions.\n\nBecause they are not pulling along the same straight line, their efforts do not add directly. Some of each team's pulling force works against the other because the angle between the ropes is 120°.\n\nThe parallelogram law combines both the magnitudes and the directions of the forces to produce one equivalent pulling force. After calculation, the combined pull is approximately 59 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Parallelogram Law of Vectors to learn how simultaneous forces are combined graphically and mathematically. The tutorial includes worked examples involving rescue operations, engineering applications, transportation, and other JAMB-style practice questions."
+  },
+  "tags": [
+    "parallelogram_law",
+    "resultant_force",
+    "simultaneous_forces",
+    "vector_calculation",
+    "emergency_rescue",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q117",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Parallelogram law",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During the installation of a heavy pipeline on an offshore oil and gas platform, two support cables pull simultaneously on the same lifting hook from different directions to keep the pipe stable while it is being raised.\n\nThe engineering supervisor instructs the crew to determine the combined effect of the two pulls before lifting begins.\n\nWhich principle of vector addition is most appropriate for analysing this situation?",
+  "options": {
+    "A": "Parallelogram law of vectors, because the two forces act simultaneously at the same point",
+    "B": "Triangle law of vectors, because the two forces must always act one after the other",
+    "C": "Simple algebraic addition, because forces can be added without considering direction",
+    "D": "Vector subtraction, because simultaneous forces always oppose one another"
+  },
+  "answer": "A",
+  "answer_text": "Parallelogram law of vectors, because the two forces act simultaneously at the same point",
+  "explanation": {
+    "question_restate": "This question tests your ability to recognise a real-life engineering situation where the parallelogram law of vectors is the appropriate method for combining two concurrent forces acting simultaneously.",
+    "principle": "The parallelogram law of vectors is used to determine the resultant of two vectors that act simultaneously from the same point.\n\nA vector is a physical quantity that has both magnitude and direction. Examples include force, displacement, velocity and acceleration.\n\nWhen two forces act on the same object at the same time and from the same point, they are called concurrent forces.\n\nA beginner may ask, 'Why can't we simply add the numbers?'\n\nUnlike scalar quantities, vectors depend on direction as well as magnitude. Two forces pulling in different directions do not produce the same effect as two forces acting along the same straight line.\n\nThe parallelogram law accounts for both the magnitudes of the forces and the angle between them, making it suitable for analysing simultaneous forces in engineering, construction, marine operations, lifting systems and many other practical applications.",
+    "steps": [
+      "Step 1: Identify the situation described.\n\nThe two support cables pull on the same lifting hook at the same time. Their forces are therefore acting simultaneously on a single point.",
+      "Step 2: Recall the appropriate vector principle.\n\nWhenever two vectors act simultaneously from a common point, the parallelogram law provides the correct graphical and mathematical method for finding their resultant.",
+      "Step 3: Examine Option A.\n\nThis correctly identifies the parallelogram law and gives the correct reason why it is applicable. Therefore, Option A is correct.",
+      "Step 4: Examine the remaining options.\n\nThe triangle law is commonly applied when vectors are added successively using the head-to-tail method, not because simultaneous forces cannot be analysed. Although both methods can produce the same resultant mathematically, the scenario described specifically involves concurrent forces acting together, making the parallelogram law the most appropriate choice.\n\nSimple arithmetic addition ignores direction and is only valid when vectors act along the same straight line in the same direction.\n\nVector subtraction is used only when determining the difference between vectors or when vectors act in opposite senses under appropriate conditions. Simultaneous forces do not necessarily oppose each other."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it assumes the triangle law is used simply because forces are added. In this engineering situation involving concurrent forces acting simultaneously at one point, the parallelogram law is the standard and most appropriate representation.",
+      "Option C is incorrect because vectors cannot generally be added by ordinary arithmetic. Their directions must also be considered.",
+      "Option D is incorrect because simultaneous forces are not always opposite in direction. Their combined effect is obtained through vector addition, not automatic subtraction."
+    ],
+    "exam_tip": "Whenever a question mentions two forces, tensions, pulls, thrusts or velocities acting simultaneously on the same object from a common point, think first of the parallelogram law of vectors.\n\nDo not be misled into adding magnitudes directly. Always ask yourself whether direction and the angle between the vectors must also be considered.",
+    "final_answer": "A. Parallelogram law of vectors, because the two forces act simultaneously at the same point.",
+    "simple_explanation": "Imagine two tugboats pulling a large floating platform using two ropes attached to the same point.\n\nThe platform moves according to the combined effect of both pulls, not just one of them. The parallelogram law helps engineers determine this combined force, called the resultant, by considering both the strength and the direction of each pull.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Parallelogram Law of Vectors to learn how concurrent vectors are combined using graphical construction and calculations. The tutorial includes engineering, transportation, marine and lifting-system examples with fully worked JAMB-style practice questions."
+  },
+  "tags": [
+    "parallelogram_law",
+    "concurrent_forces",
+    "vector_addition",
+    "engineering_application",
+    "oil_and_gas",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q118",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Parallelogram law",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An engineering laboratory group investigated the addition of two concurrent force vectors using the parallelogram law. After completing the graphical construction, one student concluded:\n\n\"The diagonal drawn from the point where the two vectors start represents the combined effect of both forces because it gives the resultant vector.\"\n\nWhich option best explains whether the student's conclusion is correct?",
+  "options": {
+    "A": "The conclusion is correct because the diagonal drawn from the common point of the two vectors represents the resultant vector.",
+    "B": "The conclusion is incorrect because the longest side of the parallelogram always represents the resultant vector.",
+    "C": "The conclusion is incorrect because the parallelogram law can only be applied when the two vectors are perpendicular.",
+    "D": "The conclusion is incorrect because the resultant vector is obtained by adding only the magnitudes of the two vectors."
+  },
+  "answer": "A",
+  "answer_text": "The conclusion is correct because the diagonal drawn from the common point of the two vectors represents the resultant vector.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to analyse a student's interpretation of the parallelogram law of vectors rather than perform a calculation. You are required to determine whether the student's conclusion about the resultant vector is scientifically correct.",
+    "principle": "The parallelogram law states that when two vectors act simultaneously from the same point, they can be represented by the two adjacent sides of a parallelogram. The diagonal of the parallelogram drawn from their common point represents the resultant vector.\n\nA vector is a quantity that possesses both magnitude and direction.\n\nThe resultant vector is the single vector that has the same overall effect as all the individual vectors acting together.\n\nA beginner may ask, \"Why is the diagonal used?\"\n\nThe diagonal naturally combines both the magnitudes and directions of the two vectors. It therefore represents the overall effect of the simultaneous vectors, not merely their numerical values.",
+    "steps": [
+      "Step 1: Identify what the student described.\n\nThe student referred to the diagonal drawn from the common starting point of the two vectors after constructing a parallelogram.",
+      "Step 2: Recall the parallelogram law.\n\nAccording to the parallelogram law, the two vectors are drawn from the same point as adjacent sides of a parallelogram. The diagonal originating from that same point represents the resultant vector.",
+      "Step 3: Compare the student's statement with the principle.\n\nThe student's explanation agrees exactly with the definition of the parallelogram law because the diagonal represents the combined effect of both vectors.",
+      "Step 4: Select the best explanation.\n\nSince the student's conclusion is scientifically correct, Option A is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the resultant is not determined by whichever side of the parallelogram is longest. It is specifically represented by the diagonal drawn from the common point.",
+      "Option C is incorrect because the parallelogram law applies to vectors acting at any included angle, not only at 90°.",
+      "Option D is incorrect because vectors cannot generally be combined by adding magnitudes alone. Their directions must also be taken into account."
+    ],
+    "common_misconceptions": [
+      "Many students mistakenly believe the longest side of the parallelogram represents the resultant.",
+      "Some think the parallelogram law is applicable only to perpendicular vectors.",
+      "Others assume vectors are combined by adding magnitudes without considering direction."
+    ],
+    "exam_tip": "Whenever a JAMB question refers to the parallelogram law, remember these key ideas:\n\n• The vectors must act from a common point.\n• They form the adjacent sides of a parallelogram.\n• The diagonal drawn from the common point represents the resultant vector.\n\nDo not confuse the diagonal with any side of the parallelogram, and do not ignore the directions of the vectors.",
+    "final_answer": "A. The conclusion is correct because the diagonal drawn from the common point of the two vectors represents the resultant vector.",
+    "simple_explanation": "Imagine two people pushing a heavy machine at the same time but in different directions.\n\nInstead of considering each push separately, both pushes can be replaced by one imaginary push that produces the same overall effect. In the parallelogram method, this single equivalent push is represented by the diagonal drawn from the point where both pushes begin.\n\nThat is why the student's conclusion is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Parallelogram Law of Vectors to learn how concurrent vectors are represented graphically, why the diagonal gives the resultant vector, common examination misconceptions, and worked JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice."
+  },
+  "tags": [
+    "parallelogram_law",
+    "resultant_vector",
+    "graphical_vector_addition",
+    "engineering_application",
+    "vector_analysis",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q119",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Parallelogram law",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An aircraft is fitted with two auxiliary thrust units that operate simultaneously during take-off. One unit produces a thrust of 280 N while the other produces a thrust of 360 N. If the angle between the two thrust vectors is 30°, what is the magnitude of the resultant thrust acting on the aircraft according to the parallelogram law of vectors?",
+  "options": {
+    "A": "620 N",
+    "B": "640 N",
+    "C": "460 N",
+    "D": "80 N"
+  },
+  "answer": "A",
+  "answer_text": "620 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the resultant of two concurrent vectors acting at an angle using the parallelogram law of vectors. The two thrust forces act simultaneously on the aircraft, so they must be combined using the appropriate vector formula rather than by simple arithmetic addition.",
+    "principle": "The parallelogram law of vectors states that when two vectors act simultaneously from the same point, they can be represented as two adjacent sides of a parallelogram. The diagonal drawn from their common point gives the magnitude and direction of the resultant vector.\n\nA beginner may ask, 'Why can't we simply add 280 N and 360 N?'\n\nThe answer is that force is a vector quantity. A vector has both magnitude and direction. Since the two thrusts act at an angle of 30° to each other, their directions are different. Therefore, their magnitudes cannot be added directly.\n\nFor two vectors of magnitudes P and Q separated by an angle θ, the magnitude of the resultant R is given by:\n\nR = √(P² + Q² + 2PQ cos θ)\n\nwhere:\n\n• R = resultant vector\n• P = magnitude of the first vector\n• Q = magnitude of the second vector\n• θ = included angle between the vectors\n\nThis formula is obtained from the cosine rule applied to the parallelogram formed by the two vectors.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nFirst thrust, P = 280 N\n\nSecond thrust, Q = 360 N\n\nIncluded angle, θ = 30°",
+      "Step 2: Write the appropriate formula.\n\nR = √(P² + Q² + 2PQ cos θ)",
+      "Step 3: Substitute the given values.\n\nR = √[(280)² + (360)² + 2 × 280 × 360 × cos30°]",
+      "Step 4: Evaluate each quantity.\n\n280² = 78,400\n\n360² = 129,600\n\ncos30° ≈ 0.866\n\n2 × 280 × 360 × 0.866 ≈ 174,586\n\nTherefore,\n\nR = √(78,400 + 129,600 + 174,586)\n\nR = √382,586",
+      "Step 5: Find the square root.\n\nR ≈ 618.5 N\n\nTo the nearest whole-number option provided,\n\nR ≈ 620 N.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (640 N) is incorrect because it is simply the arithmetic sum of 280 N and 360 N. Direct addition is only correct when both vectors act in exactly the same direction (angle = 0°).",
+      "Option C (460 N) is incorrect because it underestimates the resultant. A small included angle such as 30° produces a resultant much closer to the sum of the two vectors than to either individual vector.",
+      "Option D (80 N) is incorrect because it is obtained by subtracting the two magnitudes (360 N − 280 N). Subtraction is appropriate only when vectors act in exactly opposite directions (180°), not when they are separated by 30°."
+    ],
+    "common_misconceptions": [
+      "Assuming vector quantities are always added arithmetically.",
+      "Ignoring the included angle between vectors.",
+      "Using subtraction simply because one force is smaller than the other.",
+      "Applying the parallelogram law without using the cosine term."
+    ],
+    "exam_tip": "Whenever two forces, velocities or other vectors act simultaneously from the same point at an angle, think of the parallelogram law.\n\nRemember these special cases:\n\n• θ = 0° → Resultant = P + Q\n• θ = 180° → Resultant = |P − Q|\n• θ = 90° → Use Pythagoras because cos90° = 0\n\nFor every other angle, apply:\n\nR = √(P² + Q² + 2PQ cos θ)\n\nIn JAMB examinations, always check whether the question asks for the nearest value after your calculation.",
+    "final_answer": "A. 620 N",
+    "simple_explanation": "Imagine two engines pushing an aircraft at slightly different directions.\n\nBecause the pushes are not in exactly the same direction, their effects combine to produce one overall push called the resultant thrust.\n\nThe parallelogram law helps us calculate this single equivalent thrust.\n\nUsing the given values (280 N, 360 N and 30°), the resultant is approximately 618.5 N, which is closest to 620 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Parallelogram Law of Vectors to learn how concurrent vectors are combined, why the cosine rule is used, how to solve worked examples involving forces at different angles, and how to answer JAMB-style calculation questions confidently. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons, practice exercises and exam-focused revision."
+  },
+  "tags": [
+    "parallelogram_law",
+    "resultant_force",
+    "concurrent_vectors",
+    "aviation",
+    "vector_calculation",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q120",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Parallelogram law",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "A renewable energy engineer made the following statements while analysing the forces acting simultaneously on the support structure of a wind turbine:\n\nAssertion (A): The parallelogram law can be used to determine the resultant of two forces acting simultaneously at a point.\n\nReason (R): In the parallelogram law, the diagonal drawn from the common point of the two vectors represents their resultant.\n\nWhich of the following options is correct?",
+  "options": {
+    "A": "Both Assertion and Reason are true, and the Reason is the correct explanation of the Assertion.",
+    "B": "Both Assertion and Reason are true, but the Reason is not the correct explanation of the Assertion.",
+    "C": "The Assertion is true, but the Reason is false.",
+    "D": "The Assertion is false, but the Reason is true."
+  },
+  "answer": "A",
+  "answer_text": "Both Assertion and Reason are true, and the Reason is the correct explanation of the Assertion.",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of the principle behind the parallelogram law of vectors using an Assertion–Reason format. Rather than performing a calculation, you are required to evaluate whether each statement is correct and whether the second statement explains the first.",
+    "principle": "The parallelogram law of vectors is a graphical method used to combine two vectors acting simultaneously at the same point.\n\nA vector is a quantity that has both magnitude and direction. Examples include force, displacement and velocity.\n\nWhen two forces act at the same point but in different directions, they produce a single combined effect called the **resultant vector**.\n\nThe parallelogram law states that if the two vectors are represented by the two adjacent sides of a parallelogram drawn from the same point, then the diagonal drawn from that common point represents the magnitude and direction of the resultant vector.\n\nA beginner may ask, 'Why is the diagonal used?'\n\nThe diagonal naturally combines the effects of both vectors because it extends from their common point to the opposite corner of the parallelogram. It therefore represents the single vector that would have the same overall effect as the two original vectors acting together.",
+    "steps": [
+      "Step 1: Examine the Assertion.\n\nThe Assertion states that the parallelogram law can be used to determine the resultant of two forces acting simultaneously at a point.\n\nThis statement is correct. The parallelogram law was developed specifically for combining concurrent vectors such as forces acting simultaneously.",
+      "Step 2: Examine the Reason.\n\nThe Reason states that the diagonal drawn from the common point of the two vectors represents their resultant.\n\nThis is also correct because it is the fundamental construction used in the parallelogram law.",
+      "Step 3: Determine whether the Reason explains the Assertion.\n\nThe Assertion is true because the resultant is obtained by constructing a parallelogram and drawing its diagonal from the common point.\n\nTherefore, the Reason correctly explains why the parallelogram law is used to obtain the resultant.",
+      "Step 4: Select the correct option.\n\nBoth statements are true, and the Reason correctly explains the Assertion.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the Reason is not merely true; it directly explains why the parallelogram law determines the resultant of two simultaneous vectors.",
+      "Option C is incorrect because the Reason is a correct statement describing the graphical construction of the parallelogram law.",
+      "Option D is incorrect because the Assertion is also true. The parallelogram law is one of the standard methods for finding the resultant of two concurrent vectors."
+    ],
+    "exam_tip": "In JAMB Assertion–Reason questions, do not stop after deciding whether each statement is true.\n\nAlways ask a second question:\n\n'Does the Reason explain the Assertion?'\n\nFor the parallelogram law, remember these key ideas:\n\n• It applies to vectors acting simultaneously at the same point.\n\n• The vectors form two adjacent sides of a parallelogram.\n\n• The diagonal from the common point represents the resultant.\n\nStudents often lose marks by recognising that both statements are true but failing to decide whether one explains the other.",
+    "final_answer": "A. Both Assertion and Reason are true, and the Reason is the correct explanation of the Assertion.",
+    "simple_explanation": "Imagine two ropes pulling a wind turbine support from different directions at the same time.\n\nInstead of considering each pull separately, both pulls can be replaced by one imaginary pull that has exactly the same effect. The parallelogram law helps us find this single equivalent pull.\n\nTo do this, the two force vectors are drawn from the same point as adjacent sides of a parallelogram. The diagonal starting from that common point gives the resultant force.\n\nThis is why both the Assertion and the Reason are true, and the Reason correctly explains the Assertion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Parallelogram Law of Vectors to study graphical vector addition, concurrent forces, construction of the parallelogram, interpretation of the resultant, and worked JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and additional exam-focused practice."
+  },
+  "tags": [
+    "parallelogram_law",
+    "assertion_reason",
+    "concurrent_forces",
+    "resultant_vector",
+    "renewable_energy",
+    "phy_03"
+  ],
+  "active": true
 }
 
 
