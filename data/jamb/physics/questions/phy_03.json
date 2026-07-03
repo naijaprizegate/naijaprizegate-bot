@@ -7549,6 +7549,162 @@
     "phy_03"
   ],
   "active": true
+},
+{
+  "id": "phy_03_q153",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resultant vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During the operation of a mobile harbour crane, two perpendicular forces act simultaneously on a suspended container. One force has a magnitude of 63 N directed east, while the other has a magnitude of 84 N directed north.\n\nWhat is the magnitude of the single resultant force acting on the container?",
+  "options": {
+    "A": "21 N",
+    "B": "105 N",
+    "C": "147 N",
+    "D": "98 N"
+  },
+  "answer": "B",
+  "answer_text": "105 N",
+  "explanation": {
+    "question_restate": "This question requires you to determine the magnitude of the resultant of two perpendicular forces acting on the same object. Since the forces act at right angles, the Pythagorean theorem is used to obtain the resultant.",
+    "principle": "A resultant vector is the single vector that has the same overall effect as two or more vectors acting together.\n\nIn Physics, forces are vectors because they possess both magnitude and direction.\n\nWhen two vectors are perpendicular (that is, they make an angle of 90° with each other), they form the two shorter sides of a right-angled triangle. The resultant vector forms the longest side (the hypotenuse).\n\nThe magnitude of the resultant is therefore obtained using the Pythagorean theorem:\n\nR = √(P² + Q²)\n\nwhere:\n\n• R = magnitude of the resultant vector\n• P = magnitude of the first vector\n• Q = magnitude of the second vector\n\nThis method is applicable only when the vectors are perpendicular.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nFirst force, P = 63 N east\n\nSecond force, Q = 84 N north\n\nRequired:\nMagnitude of the resultant force, R.",
+      "Step 2: Select the appropriate formula.\n\nSince the two forces are perpendicular, use:\n\nR = √(P² + Q²)",
+      "Step 3: Substitute the given values.\n\nR = √(63² + 84²)\n\n= √(3969 + 7056)\n\n= √11025",
+      "Step 4: Evaluate the square root.\n\n√11025 = 105\n\nTherefore,\n\nR = 105 N.",
+      "Step 5: Compare the calculated value with the options.\n\nOption B corresponds to 105 N and is therefore the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (21 N) is obtained by subtracting the magnitudes (84 − 63). This method is only valid when vectors act along the same straight line in opposite directions, not at right angles.",
+      "Option C (147 N) is the arithmetic sum of the two forces (63 + 84). Students often make this mistake by ignoring the angle between the vectors.",
+      "Option D (98 N) is a plausible computational error resulting from incorrect use of the Pythagorean theorem or an arithmetic mistake during calculation."
+    ],
+    "exam_tip": "Whenever two vectors are stated to be perpendicular, right-angled or acting at 90° to each other, immediately think of the Pythagorean theorem.\n\nDo not add the magnitudes directly unless the vectors act in exactly the same direction.\n\nLikewise, do not subtract them unless they act along the same straight line in opposite directions.\n\nRecognising the angle between vectors is often the key to solving JAMB questions on resultant vectors correctly.",
+    "final_answer": "B. 105 N",
+    "simple_explanation": "Imagine two workers pulling a heavy container using ropes fixed at right angles.\n\nInstead of considering the pulls separately, they can be replaced by one imaginary pull that produces exactly the same effect. That single pull is called the resultant force.\n\nBecause the pulls are perpendicular, they form a right-angled triangle. Applying the Pythagorean theorem gives a resultant force of 105 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resultant Vectors for a comprehensive lesson on calculating the resultant of perpendicular and inclined vectors using the Pythagorean theorem and cosine rule. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed worked examples, exam tips and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "resultant_vectors",
+    "perpendicular_forces",
+    "pythagoras",
+    "force_vectors",
+    "calculation",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q154",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resultant vectors",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An exploration rover travelling across a planetary surface first moves 20 km due east and then 15 km due north to reach a scientific observation point.\n\nAssuming the two displacements are perpendicular, what is the magnitude of the rover's resultant displacement from its starting position?",
+  "options": {
+    "A": "25 km",
+    "B": "35 km",
+    "C": "5 km",
+    "D": "18 km"
+  },
+  "answer": "A",
+  "answer_text": "25 km",
+  "explanation": {
+    "question_restate": "This question requires you to determine the single displacement that has the same overall effect as two successive perpendicular displacements made by an exploration rover. This single equivalent displacement is called the resultant displacement.",
+    "principle": "A displacement is a vector quantity because it has both magnitude and direction.\n\nWhen two displacements are at right angles (90°) to each other, they form the two shorter sides of a right-angled triangle. The straight-line displacement from the starting point to the final position is the resultant displacement.\n\nA beginner may ask, 'Why can't we simply add 20 km and 15 km?'\n\nThe answer is that the rover does not move in the same direction throughout its journey. Since the two displacements are perpendicular, the magnitude of the resultant is obtained using Pythagoras' theorem rather than simple arithmetic addition.\n\nFor perpendicular vectors:\n\nResultant magnitude, R = √(x² + y²)\n\nwhere:\n\n• x = horizontal displacement\n• y = vertical displacement\n• R = resultant displacement",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHorizontal displacement = 20 km east\n\nVertical displacement = 15 km north",
+      "Step 2: Identify the required quantity.\n\nRequired: Magnitude of the resultant displacement.",
+      "Step 3: Select the appropriate formula.\n\nSince the displacements are perpendicular:\n\nR = √(x² + y²)",
+      "Step 4: Substitute the values.\n\nR = √(20² + 15²)\n\n= √(400 + 225)\n\n= √625",
+      "Step 5: Evaluate the expression.\n\nR = 25 km",
+      "Step 6: Compare the result with the options.\n\nOption A gives 25 km, which agrees with the calculated value.\n\nTherefore, Option A is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (35 km) is incorrect because it is obtained by simply adding 20 km and 15 km. Simple addition is valid only when vectors act in the same direction.",
+      "Option C (5 km) is incorrect because it results from subtracting the two displacements, which is inappropriate in this situation.",
+      "Option D (18 km) is incorrect because it does not satisfy Pythagoras' theorem for the given perpendicular displacements and is therefore not the correct resultant."
+    ],
+    "common_misconceptions": [
+      "Believing that perpendicular vectors can always be added arithmetically.",
+      "Subtracting the magnitudes instead of combining them as vectors.",
+      "Forgetting that displacement depends on both magnitude and direction.",
+      "Using Pythagoras' theorem for vectors that are not perpendicular."
+    ],
+    "exam_tip": "Whenever JAMB states that two displacements, forces or velocities are at right angles, immediately think of Pythagoras' theorem for the magnitude of the resultant.\n\nRemember:\n\n• Same direction → Add magnitudes.\n• Opposite directions → Subtract magnitudes.\n• Perpendicular directions → Use Pythagoras' theorem.\n\nAlways identify the angle between vectors before selecting a formula.",
+    "final_answer": "A. 25 km",
+    "simple_explanation": "Imagine walking 20 km east and then 15 km north. Instead of following the two sides of the journey, imagine drawing a straight line from where you started directly to where you finished. That straight line is the resultant displacement.\n\nBecause the two paths are at right angles, they form a right-angled triangle. Using Pythagoras' theorem:\n\n√(20² + 15²) = √625 = 25 km.\n\nTherefore, the rover's resultant displacement is 25 km.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resultant Vectors to learn how to determine the magnitude and direction of resultant displacements, forces and velocities using Pythagoras' theorem, the cosine rule and practical JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and additional practice questions."
+  },
+  "tags": [
+    "resultant_vectors",
+    "resultant_displacement",
+    "pythagoras",
+    "perpendicular_vectors",
+    "planetary_exploration",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q155",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resultant vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An inland rescue boat moves at 22 m s⁻¹ due east while simultaneously being carried by a water current at 40 m s⁻¹ due north.\n\nAssuming both velocities remain constant, what is the magnitude of the boat's resultant velocity?",
+  "options": {
+    "A": "46 m s⁻¹",
+    "B": "62 m s⁻¹",
+    "C": "18 m s⁻¹",
+    "D": "40 m s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "46 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the magnitude of the resultant velocity of a rescue boat moving east while a river current carries it north. Since the two velocities are perpendicular to each other, the resultant velocity is obtained using the Pythagorean theorem.",
+    "principle": "Velocity is a vector quantity because it has both magnitude and direction.\n\nWhen two velocities act at right angles, they combine to produce a single velocity called the **resultant velocity**.\n\nA beginner may ask, 'Why can't we simply add the two speeds?'\n\nThe reason is that the two velocities act in different directions. Ordinary addition is only valid when vectors act along the same straight line.\n\nWhenever two vectors are perpendicular, they form the two shorter sides of a right-angled triangle, while the resultant forms the longest side (the hypotenuse).\n\nTherefore, the magnitude of the resultant is found using the Pythagorean theorem:\n\nR = √(V₁² + V₂²)\n\nwhere:\n\n• R = resultant velocity\n• V₁ = first velocity component\n• V₂ = second velocity component",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nVelocity due east = 22 m s⁻¹\n\nVelocity due north = 40 m s⁻¹",
+      "Step 2: Identify what is required.\n\nRequired quantity = magnitude of the resultant velocity.",
+      "Step 3: Select the appropriate formula.\n\nSince the two velocities are perpendicular:\n\nR = √(V₁² + V₂²)",
+      "Step 4: Substitute the given values.\n\nR = √(22² + 40²)\n\n= √(484 + 1600)\n\n= √2084",
+      "Step 5: Evaluate the square root.\n\n√2084 ≈ 45.7 m s⁻¹\n\nRounded to the nearest whole number:\n\nR ≈ 46 m s⁻¹",
+      "Step 6: Compare with the options.\n\nThe correct option is A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (62 m s⁻¹) is obtained by incorrectly adding the two velocity magnitudes directly (22 + 40). This ignores the fact that the velocities are perpendicular.",
+      "Option C (18 m s⁻¹) is incorrect because it does not result from any valid vector operation and is smaller than either component, which is impossible in this situation.",
+      "Option D (40 m s⁻¹) is incorrect because it represents only one component of the motion and ignores the boat's eastward velocity."
+    ],
+    "exam_tip": "Whenever two vectors act at right angles, immediately think of the Pythagorean theorem. Before calculating, always check whether the vectors are parallel, opposite or perpendicular, because the method depends on their relative directions. JAMB frequently tests this concept using forces, displacements and velocities in practical situations.",
+    "final_answer": "A. 46 m s⁻¹",
+    "simple_explanation": "Imagine watching the rescue boat from above. The boat moves east while the river pushes it north at the same time. The actual path is a diagonal line. The speed along this diagonal is the resultant velocity, which is calculated using the Pythagorean theorem because the two motions are at right angles.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resultant Vectors to learn how to determine the magnitude and direction of resultant forces, displacements and velocities using vector addition, the Pythagorean theorem and trigonometric methods. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed worked examples and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "resultant_vectors",
+    "resultant_velocity",
+    "perpendicular_vectors",
+    "pythagoras",
+    "marine_physics",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
 }
 
 
