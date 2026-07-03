@@ -4947,6 +4947,263 @@
     "phy_03"
   ],
   "active": true
+},
+{
+  "id": "phy_03_q101",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Triangle law of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An aircraft first flies 160 km due north and then changes course to fly 120 km due east.\n\nAssuming the two successive displacements are represented using the triangle law of vectors, what is the magnitude of the aircraft's resultant displacement from its starting point?",
+  "options": {
+    "A": "200 km",
+    "B": "280 km",
+    "C": "140 km",
+    "D": "190 km"
+  },
+  "answer": "A",
+  "answer_text": "200 km",
+  "explanation": {
+    "question_restate": "This question tests your ability to apply the triangle law of vectors to determine the resultant displacement of an aircraft after making two successive flights in perpendicular directions.",
+    "principle": "A vector is a quantity that possesses both magnitude and direction. Displacement is a vector because it describes both how far an object moves and the direction of that movement.\n\nWhen two displacements occur one after the other, they can be added using the triangle law of vectors. The first vector is drawn, and the second vector begins where the first one ends (head-to-tail arrangement). The resultant vector is then drawn from the starting point of the first vector to the endpoint of the second vector.\n\nIf the two vectors are perpendicular, they form a right-angled triangle. The magnitude of the resultant is obtained using Pythagoras' theorem:\n\nR² = a² + b²\n\nwhere:\nR = resultant displacement\n\na = first displacement\n\nb = second displacement.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nFirst displacement = 160 km due north.\n\nSecond displacement = 120 km due east.\n\nSince north and east are perpendicular directions, the two vectors form a right-angled triangle.",
+      "Step 2: Write the appropriate formula.\n\nR² = a² + b²",
+      "Step 3: Substitute the given values.\n\nR² = (160)² + (120)²\n\n= 25,600 + 14,400\n\n= 40,000",
+      "Step 4: Find the square root.\n\nR = √40,000\n\n= 200 km.",
+      "Step 5: Compare the result with the options.\n\nThe calculated resultant displacement is 200 km.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (280 km) is obtained by adding the two distances directly (160 + 120). This ignores the fact that the displacements act at right angles.",
+      "Option C (140 km) is incorrect because it underestimates the resultant and may arise from an incorrect subtraction of the vector magnitudes.",
+      "Option D (190 km) is incorrect because it does not satisfy the Pythagorean relationship required for perpendicular vectors."
+    ],
+    "common_misconceptions": [
+      "Many students assume that successive displacements are always added arithmetically. This is only true when both vectors act in exactly the same direction.",
+      "Some candidates forget that perpendicular vectors require the use of Pythagoras' theorem when applying the triangle law."
+    ],
+    "exam_tip": "Whenever two successive displacements are along perpendicular directions such as north and east, east and south, or west and north, immediately recognise the right-angled triangle formed. In such cases, apply the triangle law together with Pythagoras' theorem to determine the magnitude of the resultant.",
+    "final_answer": "A. 200 km",
+    "simple_explanation": "Imagine the aircraft first flies straight north and then turns to fly east. Instead of measuring the two journeys separately, you can draw them head-to-tail to form a triangle. The direct line from the airport to the aircraft's final position is the resultant displacement. Since the two flight paths are at right angles, Pythagoras' theorem gives the direct distance as 200 km.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Triangle Law of Vectors to learn how successive displacements, velocities and forces are added using the head-to-tail method, including worked JAMB-style examples and navigation applications."
+  },
+  "tags": [
+    "triangle_law_of_vectors",
+    "aircraft_navigation",
+    "successive_displacement",
+    "vector_addition",
+    "resultant_displacement",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q102",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Triangle law of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A warehouse robot moves 14 m due north to deliver a package and then 9 m due east to another storage point. According to the triangle law of vectors, which of the following best represents the resultant displacement of the robot?",
+  "options": {
+    "A": "A single vector drawn from the robot's starting point directly to its final position",
+    "B": "A vector equal to the arithmetic sum of the two distances, directed due north",
+    "C": "Two separate vectors showing each movement independently",
+    "D": "A vector drawn from the end of the second movement back to the starting point"
+  },
+  "answer": "A",
+  "answer_text": "A single vector drawn from the robot's starting point directly to its final position",
+  "explanation": {
+    "question_restate": "This question examines your understanding of how the triangle law of vectors represents the overall effect of two successive movements. Instead of performing a calculation, you are required to identify the correct graphical representation of the resultant displacement.",
+    "principle": "The triangle law of vectors states that when two vectors act successively, the second vector is drawn from the head (end) of the first vector. The resultant vector is then represented by a single vector drawn from the tail (starting point) of the first vector to the head (end) of the second vector.\n\nA beginner may ask, 'What is meant by successive movements?'\n\nSuccessive movements are movements made one after another. The object first completes one displacement before beginning the next.\n\nAnother beginner may ask, 'What is the resultant displacement?'\n\nThe resultant displacement is the single vector that has the same overall effect as all the individual displacements combined. It connects the initial position directly to the final position without following the actual path travelled.",
+    "steps": [
+      "Step 1: Identify the two successive movements.\n\nThe robot first moves 14 m due north and then 9 m due east.\n\nThese are two displacement vectors carried out one after the other.",
+      "Step 2: Apply the triangle law.\n\nDraw the second displacement from the head of the first displacement. This forms a triangle representing the successive movements.",
+      "Step 3: Locate the resultant.\n\nThe resultant is not one of the sides already travelled. It is the single vector drawn from the robot's starting position directly to its final position.",
+      "Step 4: Select the correct representation.\n\nOption A correctly describes the resultant vector obtained using the triangle law."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because vector addition is not generally performed by simply adding magnitudes. The resultant is not necessarily directed due north.",
+      "Option C is incorrect because it only shows the original displacements and does not represent their combined effect with a single resultant vector.",
+      "Option D is incorrect because the vector described points from the final position back to the starting position. That represents the opposite direction of the resultant displacement."
+    ],
+    "exam_tip": "Whenever a question asks for the graphical meaning of the triangle law, remember this simple rule:\n\n• Draw vectors head-to-tail.\n• Join the starting point of the first vector to the end point of the last vector.\n\nThat connecting vector is always the resultant.\n\nJAMB frequently tests the correct construction of vector diagrams rather than numerical calculations.",
+    "final_answer": "A. A single vector drawn from the robot's starting point directly to its final position",
+    "simple_explanation": "Imagine walking from one shelf to another in a warehouse and then turning to another aisle.\n\nAlthough you walked along two different paths, someone could simply draw one straight arrow from where you started to where you finally stopped.\n\nThat straight arrow is called the resultant displacement. It represents the combined effect of both movements according to the triangle law of vectors.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Triangle Law of Vectors to learn how vectors are added using the head-to-tail method, how to identify the resultant vector from a graphical construction, and how to solve JAMB-style questions involving successive displacements, velocities and forces. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations and additional practice."
+  },
+  "tags": [
+    "triangle_law_of_vectors",
+    "successive_displacement",
+    "graphical_vectors",
+    "resultant_vector",
+    "warehouse_logistics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q103",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Triangle law of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During the installation of a telecommunications relay station, an engineer observed a trainee using the triangle law of vectors to represent two successive cable-pulling forces.\n\nThe trainee made the following statements:\n\nI. The triangle law requires the second vector to begin from the head of the first vector.\n\nII. The resultant vector is drawn from the tail of the first vector to the head of the second vector.\n\nIII. The triangle law can only be applied when the two vectors are perpendicular to each other.\n\nIV. The order in which successive vectors are drawn head-to-tail does not change the magnitude or direction of the resultant.\n\nWhich of the following correctly identifies the true statements?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I and III only",
+    "C": "II, III and IV only",
+    "D": "I, II and III only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question assesses your ability to evaluate several statements about the triangle law of vectors and determine which ones correctly describe how the law is applied in practice.",
+    "principle": "The triangle law of vectors is a graphical method used to add two vectors acting successively.\n\nA vector is a physical quantity that possesses both magnitude and direction. Examples include displacement, force, velocity, acceleration and momentum.\n\nA beginner may ask, 'Why is it called the triangle law?'\n\nIt is called the triangle law because when two vectors are drawn one after the other (head-to-tail), they form two sides of a triangle. The third side of the triangle, drawn from the starting point of the first vector to the ending point of the second vector, represents the resultant vector.\n\nAnother beginner may ask, 'Must the vectors meet at right angles?'\n\nNo. The triangle law works for vectors making any angle with one another. They do not have to be perpendicular.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThis statement is correct.\n\nTo apply the triangle law, the tail of the second vector is placed at the head of the first vector. This arrangement is known as the head-to-tail method.",
+      "Step 2: Examine Statement II.\n\nThis statement is also correct.\n\nAfter arranging the vectors head-to-tail, the resultant is drawn from the tail of the first vector directly to the head of the second vector.",
+      "Step 3: Examine Statement III.\n\nThis statement is incorrect.\n\nThe triangle law is not restricted to perpendicular vectors. It can be used to add vectors inclined at any angle.",
+      "Step 4: Examine Statement IV.\n\nThis statement is correct.\n\nVector addition is commutative. Reversing the order of successive vectors still produces the same resultant, provided the head-to-tail construction is carried out correctly.",
+      "Step 5: Identify the correct combination.\n\nStatements I, II and IV are true, while Statement III is false.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement III, which falsely limits the triangle law to perpendicular vectors, and omits Statement II and Statement IV, both of which are correct.",
+      "Option C is incorrect because although Statements II and IV are correct, Statement III is false. Including it makes the combination incorrect.",
+      "Option D is incorrect because Statement III is false. Therefore, the combination cannot be correct despite including Statements I and II."
+    ],
+    "exam_tip": "When solving JAMB questions on the triangle law of vectors, always remember these key points:\n\n• Draw vectors head-to-tail.\n• Draw the resultant from the starting point of the first vector to the ending point of the last vector.\n• The triangle law is applicable regardless of the angle between the vectors.\n• Do not confuse the triangle law with the parallelogram law, where both vectors start from the same point.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Imagine two workers pulling a heavy cable one after the other.\n\nTo represent their pulls using the triangle law, you first draw the first pull. Then you start the second pull exactly where the first one ends. Finally, you draw one straight arrow from where the first pull began to where the second pull ended. That arrow is called the resultant.\n\nThis method works whether the pulls are at small angles, large angles or right angles. It is not limited to perpendicular vectors.\n\nTherefore, only Statements I, II and IV are correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Triangle Law of Vectors for a complete explanation of head-to-tail vector addition, graphical construction of resultants, comparison with the parallelogram law, common examination mistakes, and fully worked JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and additional practice questions."
+  },
+  "tags": [
+    "triangle_law_of_vectors",
+    "statement_analysis",
+    "head_to_tail_method",
+    "resultant_vector",
+    "telecommunications",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q104",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Triangle law of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During a flood rescue operation, an emergency response team first moves 15 km due north to reach an affected community. From there, they immediately travel 20 km in a direction 60° east of north to deliver relief materials.\n\nUsing the triangle law of vectors, what is the magnitude of the team's resultant displacement from their starting point?",
+  "options": {
+    "A": "30.4 km",
+    "B": "32.8 km",
+    "C": "18.0 km",
+    "D": "35.0 km"
+  },
+  "answer": "A",
+  "answer_text": "30.4 km",
+  "explanation": {
+    "question_restate": "This question tests your ability to apply the triangle law of vectors to determine the single resultant displacement produced by two successive movements made by a rescue team.",
+    "principle": "A vector is a quantity that possesses both magnitude and direction. Examples include displacement, velocity, force and acceleration.\n\nWhen an object undergoes two successive displacements, the triangle law of vectors can be used to determine the overall displacement.\n\nThe triangle law states that if one vector is drawn head-to-tail with another vector, the vector joining the tail of the first to the head of the second represents the resultant.\n\nFor two vectors of magnitudes A and B with an included angle θ, the magnitude R of the resultant is obtained from the cosine rule:\n\nR² = A² + B² − 2AB cos C\n\nwhere C is the interior angle of the triangle.\n\nIn this question, the first displacement is due north while the second is 60° east of north. When the vectors are arranged head-to-tail, the interior angle of the triangle is 120°.\n\nSince cos120° = -0.5,\n\nR² = A² + B² − 2AB(-0.5)\n\nwhich simplifies to:\n\nR² = A² + B² + AB.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nFirst displacement, A = 15 km.\n\nSecond displacement, B = 20 km.\n\nInterior angle, C = 120°.",
+      "Step 2: Write the appropriate formula.\n\nR² = A² + B² − 2AB cos C",
+      "Step 3: Substitute the values.\n\nR² = 15² + 20² − 2(15)(20)cos120°",
+      "Step 4: Evaluate the expression.\n\nSince cos120° = -0.5,\n\nR² = 225 + 400 − 600(-0.5)\n\nR² = 225 + 400 + 300\n\nR² = 925",
+      "Step 5: Determine the resultant.\n\nR = √925 ≈ 30.4 km.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (32.8 km) results from an incorrect substitution or an error in evaluating the cosine term.",
+      "Option C (18.0 km) is far too small because it ignores the geometry of the two successive displacements and treats the vectors incorrectly.",
+      "Option D (35.0 km) is obtained by simply adding the magnitudes (15 km + 20 km), which would only be correct if both displacements were in exactly the same direction."
+    ],
+    "common_misconceptions": [
+      "Assuming vectors can always be added arithmetically regardless of direction.",
+      "Using an included angle of 60° instead of the correct interior angle of 120° after arranging the vectors head-to-tail.",
+      "Confusing displacement (a vector) with distance (a scalar)."
+    ],
+    "exam_tip": "Whenever JAMB presents two successive movements, first imagine drawing the vectors head-to-tail.\n\nIdentify the interior angle of the triangle before applying the cosine rule. Many candidates lose marks by using the wrong angle or by adding the magnitudes directly.",
+    "final_answer": "A. 30.4 km",
+    "simple_explanation": "The rescue team travelled in two different directions, so their movements cannot be added like ordinary numbers.\n\nThe triangle law combines both the lengths and the directions of the movements to produce one equivalent displacement.\n\nAfter applying the cosine rule correctly, the team's resultant displacement from the starting point is approximately 30.4 km.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Triangle Law of Vectors to learn how successive displacements are represented graphically, how to identify the correct interior angle, and how to solve JAMB-style questions involving navigation, rescue operations and other real-life applications."
+  },
+  "tags": [
+    "triangle_law_of_vectors",
+    "successive_displacement",
+    "rescue_operations",
+    "vector_addition",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q105",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Triangle law of vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "Which of the following field activities is best represented by the triangle law of vector addition?\n\nA team of environmental scientists is carrying out an ecological survey in a forest reserve. During the exercise, one researcher walks 450 m north-east to inspect a wetland and then immediately proceeds 320 m due north to collect water samples.\n\nWhich aspect of the survey is most appropriately analysed using the triangle law of vectors?",
+  "options": {
+    "A": "Determining the researcher's overall displacement from the starting point",
+    "B": "Calculating the total distance covered by adding the lengths of the two paths",
+    "C": "Estimating the time taken to complete the survey",
+    "D": "Finding the average speed of the researcher during the exercise"
+  },
+  "answer": "A",
+  "answer_text": "Determining the researcher's overall displacement from the starting point",
+  "explanation": {
+    "question_restate": "This question examines your ability to recognise a real-life situation in which the triangle law of vectors should be applied. Rather than performing calculations, you are expected to identify the physical quantity that involves successive vector addition.",
+    "principle": "The triangle law of vectors is used to add two vectors that act one after the other (successive vectors).\n\nTo apply the law, the second vector is drawn from the head (tip) of the first vector. The resultant vector is then drawn from the tail of the first vector directly to the head of the second vector.\n\nA beginner may ask, 'Why is this called the triangle law?'\n\nIt is because placing the vectors head-to-tail forms two sides of a triangle, while the resultant forms the third side.\n\nThe law is especially useful when analysing successive displacements, successive velocities or successive forces acting in different directions.\n\nIt does not determine distance travelled, time or speed directly. Instead, it determines the resultant vector, which combines both magnitude and direction.",
+    "steps": [
+      "Step 1: Identify the quantities involved.\n\nThe researcher first walks in one direction and then immediately walks in another direction. These are two successive displacement vectors.",
+      "Step 2: Recall what the triangle law determines.\n\nThe triangle law combines successive vectors to obtain a single equivalent vector called the resultant.",
+      "Step 3: Examine the options.\n\nOption A asks for the overall displacement from the starting point. This is exactly the resultant displacement obtained by applying the triangle law.",
+      "Step 4: Consider the remaining options.\n\nDistance travelled is simply the total length of the path and does not require vector addition.\n\nTime and average speed are scalar quantities and are not determined by the triangle law.",
+      "Step 5: Select the correct answer.\n\nTherefore, the field activity best represented by the triangle law is determining the researcher's overall displacement from the starting point."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because total distance is the sum of the lengths of the paths travelled. Distance is a scalar quantity and does not require the triangle law.",
+      "Option C is incorrect because time is a scalar quantity measured independently of vector addition.",
+      "Option D is incorrect because average speed is calculated from total distance divided by total time. It is not obtained using the triangle law of vectors."
+    ],
+    "common_misconceptions": [
+      "Many students confuse distance with displacement. Distance is the actual path travelled, whereas displacement is the straight-line vector from the starting point to the final position.",
+      "Some learners believe every movement problem requires vector addition. The triangle law is used only when the direction of successive vectors is important."
+    ],
+    "exam_tip": "Whenever a question describes an object or person moving successively in different directions and asks for the overall movement from the starting point, think of the triangle law of vector addition. If the question asks only for the total path covered, simply add the distances instead.",
+    "final_answer": "A. Determining the researcher's overall displacement from the starting point",
+    "simple_explanation": "Imagine walking from your house to a shop and then from the shop to a park. If someone asks, 'Where are you now relative to your house?' you need one straight-line vector from your house to the park. The triangle law helps you find that single overall displacement, not the total distance you walked.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Triangle Law of Vectors for beginner-friendly lessons on head-to-tail vector addition, successive displacement, graphical construction of resultants, common examination misconceptions, and fully worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive revision and practice."
+  },
+  "tags": [
+    "triangle_law_of_vectors",
+    "successive_displacement",
+    "environmental_survey",
+    "vector_application",
+    "graphical_vector_addition",
+    "phy_03"
+  ],
+  "active": true
 }
 
 
