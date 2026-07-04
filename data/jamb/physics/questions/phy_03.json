@@ -7705,6 +7705,679 @@
     "phy_03"
   ],
   "active": true
+},
+{
+  "id": "phy_03_q156",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resultant vectors",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A warehouse uses two motorised conveyors to move a large crate simultaneously. After combining the effects of both conveyor motions, the crate moves in one definite direction with a single overall motion.\n\nWhat does this single overall motion represent?",
+  "options": {
+    "A": "The resultant vector produced by combining the two motions",
+    "B": "The average of the magnitudes of the two motions",
+    "C": "The larger of the two individual motion vectors",
+    "D": "The difference between the magnitudes of the two motions"
+  },
+  "answer": "A",
+  "answer_text": "The resultant vector produced by combining the two motions",
+  "explanation": {
+    "question_restate": "This question examines your understanding of the physical meaning of a resultant vector. Rather than carrying out a calculation, you are expected to identify what a single overall motion represents when two vector motions act together.",
+    "principle": "A vector is a quantity that possesses both magnitude and direction. Examples include displacement, velocity, acceleration, force and momentum.\n\nWhen two or more vectors act on the same object, their combined effect can be replaced by one equivalent vector known as the **resultant vector**.\n\nA beginner may ask, 'Why do we need a resultant vector?'\n\nInstead of describing the effect of several vectors separately, physicists often replace them with one vector that produces exactly the same overall effect. This makes the analysis of motion much simpler.\n\nThe resultant vector therefore represents the combined magnitude and direction of all the vectors acting together. It is not merely the largest vector, the average of the vectors or the numerical difference between them.",
+    "steps": [
+      "Step 1: Identify what is happening in the scenario.\n\nThe crate is influenced by two conveyor motions acting simultaneously.",
+      "Step 2: Determine the meaning of the single overall motion.\n\nThe question states that the crate finally moves in one definite direction. This indicates the combined effect of both motions.",
+      "Step 3: Recall the definition of a resultant vector.\n\nA resultant vector is the single vector that has the same effect as all the individual vectors acting together.",
+      "Step 4: Select the correct option.\n\nOption A correctly describes the single overall motion as the resultant vector."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because vectors are not generally combined by averaging their magnitudes. Direction must also be considered.",
+      "Option C is incorrect because the largest individual vector alone does not usually represent the combined effect of all the vectors.",
+      "Option D is incorrect because the resultant vector is not simply the numerical difference between magnitudes except in special cases where vectors act along the same straight line in opposite directions."
+    ],
+    "exam_tip": "Whenever JAMB refers to the 'overall effect', 'combined effect', 'single equivalent vector' or 'net motion', it is usually referring to the resultant vector.\n\nRemember that a resultant vector combines both magnitude and direction. Never choose an option that considers magnitude alone.",
+    "final_answer": "A. The resultant vector produced by combining the two motions",
+    "simple_explanation": "Imagine two people pushing a heavy trolley from different directions. Instead of describing each push separately, you can describe the trolley's movement using one imaginary push that has exactly the same overall effect. That single equivalent push is called the **resultant vector**.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resultant Vectors to learn how individual vectors combine into a single equivalent vector, understand the physical meaning of a resultant, and practise JAMB-style questions involving force, displacement and velocity in everyday situations."
+  },
+  "tags": [
+    "resultant_vectors",
+    "vector_interpretation",
+    "combined_motion",
+    "warehouse_logistics",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q157",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resultant vectors",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "While repairing a bridge maintenance platform, two winches pull a suspended equipment box simultaneously. One winch exerts a horizontal force of 72 N, while the other exerts a vertical force of 96 N.\n\nAssuming the two forces act at right angles to each other, what is the magnitude of the resultant force acting on the equipment?",
+  "options": {
+    "A": "120 N",
+    "B": "168 N",
+    "C": "24 N",
+    "D": "112 N"
+  },
+  "answer": "A",
+  "answer_text": "120 N",
+  "explanation": {
+    "question_restate": "This question requires you to determine the magnitude of the single force that has the same overall effect as two perpendicular forces acting simultaneously on a suspended load.",
+    "principle": "A resultant vector is the single vector that produces exactly the same effect as two or more vectors acting together.\n\nIn Physics, forces are vectors because they possess both magnitude and direction.\n\nWhen two forces act at right angles (90°) to each other, they form the two perpendicular sides of a right-angled triangle. The resultant force forms the hypotenuse of this triangle.\n\nFor such situations, the magnitude of the resultant is obtained using Pythagoras' theorem:\n\nR = √(F₁² + F₂²)\n\nwhere:\n\n• R = resultant force\n• F₁ = first force\n• F₂ = second force\n\nThis formula applies only when the vectors are mutually perpendicular.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHorizontal force, F₁ = 72 N\nVertical force, F₂ = 96 N",
+      "Step 2: Identify the quantity required.\n\nRequired:\nMagnitude of the resultant force, R.",
+      "Step 3: Select the appropriate formula.\n\nSince the forces act at right angles,\n\nR = √(F₁² + F₂²)",
+      "Step 4: Substitute the given values.\n\nR = √(72² + 96²)\n\n= √(5184 + 9216)\n\n= √14400",
+      "Step 5: Evaluate the square root.\n\nR = 120 N",
+      "Step 6: Compare with the options.\n\nThe correct option is A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (168 N) is obtained by simply adding the two force magnitudes (72 + 96). This ignores the fact that the forces act at right angles.",
+      "Option C (24 N) results from subtracting the forces. Subtraction is only appropriate when forces act directly opposite each other along the same line.",
+      "Option D (112 N) is a plausible arithmetic error that does not satisfy Pythagoras' theorem for perpendicular vectors."
+    ],
+    "common_misconceptions": [
+      "Many students add the magnitudes directly without considering the angle between the vectors.",
+      "Some candidates subtract the forces because they assume forces always oppose one another.",
+      "Others forget that Pythagoras' theorem applies only when the vectors are perpendicular."
+    ],
+    "exam_tip": "Whenever a JAMB Physics question states that two vectors act 'at right angles', 'perpendicular to each other' or '90° apart', immediately think of Pythagoras' theorem for finding the magnitude of the resultant.\n\nDo not simply add or subtract the magnitudes unless the vectors act along the same straight line.",
+    "final_answer": "A. 120 N",
+    "simple_explanation": "Imagine two people pulling a heavy object—one pulls straight forward while the other pulls sideways. The object moves in a direction between the two pulls.\n\nThe combined pull is called the resultant force. Since the two pulls are perpendicular, they form a right-angled triangle, and the combined pull is found using Pythagoras' theorem.\n\nUsing the given values, the resultant force is 120 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resultant Vectors to learn how to calculate the resultant of perpendicular and inclined vectors, determine their directions, and solve JAMB-style worked examples involving forces, displacement and velocity. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations and additional practice questions."
+  },
+  "tags": [
+    "resultant_vectors",
+    "perpendicular_forces",
+    "pythagoras",
+    "force_vectors",
+    "engineering_application",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q158",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resultant vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "While preparing for take-off at a regional airport, an aircraft maintains an airspeed of 80 m s⁻¹ due north. At the same time, a steady crosswind blows at 60 m s⁻¹ due east.\n\nAssuming both velocities remain constant throughout the flight, what is the magnitude of the aircraft's ground velocity?",
+  "options": {
+    "A": "20 m s⁻¹",
+    "B": "100 m s⁻¹",
+    "C": "140 m s⁻¹",
+    "D": "110 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "100 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the aircraft's ground velocity by combining two perpendicular velocity vectors: the aircraft's velocity through the air and the wind velocity.",
+    "principle": "A vector is a quantity that has both magnitude and direction. Velocity is a vector because it tells us not only how fast an object moves but also the direction of motion.\n\nWhen two velocity vectors act at right angles to each other, they combine to form a single equivalent vector called the resultant velocity.\n\nA beginner may ask, 'Why don't we simply add the two speeds?'\n\nThe answer is that the aircraft and the wind act in different directions. Since direction matters, ordinary arithmetic addition cannot be used.\n\nFor perpendicular vectors, the magnitude of the resultant is obtained using Pythagoras' theorem:\n\nR = √(V₁² + V₂²)\n\nwhere:\n\n• R = resultant velocity\n• V₁ = first velocity component\n• V₂ = second velocity component",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nAircraft velocity = 80 m s⁻¹ due north.\n\nWind velocity = 60 m s⁻¹ due east.",
+      "Step 2: Identify the required quantity.\n\nWe need the magnitude of the aircraft's ground velocity (resultant velocity).",
+      "Step 3: Select the appropriate formula.\n\nSince the two velocities are perpendicular,\n\nR = √(V₁² + V₂²).",
+      "Step 4: Substitute the values.\n\nR = √(80² + 60²)\n\n= √(6400 + 3600)\n\n= √10000\n\n= 100 m s⁻¹.",
+      "Step 5: Compare the calculated value with the options.\n\nThe correct option is 100 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (20 m s⁻¹) is obtained by subtracting the two speeds. Subtraction is inappropriate because the velocities are perpendicular, not opposite.",
+      "Option C (140 m s⁻¹) results from adding the magnitudes directly without considering direction. This is a common mistake when dealing with vectors.",
+      "Option D (110 m s⁻¹) is a plausible calculation error arising from incorrect application of Pythagoras' theorem or arithmetic."
+    ],
+    "exam_tip": "Whenever two vectors act at right angles, think of a right-angled triangle. Use Pythagoras' theorem to determine the magnitude of the resultant. Do not add or subtract the magnitudes directly unless the vectors act along the same straight line.",
+    "final_answer": "B. 100 m s⁻¹",
+    "simple_explanation": "Imagine the aircraft is moving north while the wind pushes it east at the same time. The aircraft does not move purely north or purely east. Instead, it travels diagonally across the ground.\n\nThe diagonal of the right-angled triangle formed by the two velocity vectors is the resultant (ground velocity). Using Pythagoras' theorem gives a ground velocity of 100 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resultant Vectors to learn how velocity vectors combine, when to apply Pythagoras' theorem, how to determine resultant direction, and how these principles are applied to aircraft, boats, forces and other JAMB-standard practical situations."
+  },
+  "tags": [
+    "resultant_vectors",
+    "velocity_vectors",
+    "aircraft_motion",
+    "ground_velocity",
+    "pythagoras",
+    "application",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q159",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resultant vectors",
+  "difficulty": "medium",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "While carrying out a vector experiment in a physics laboratory, a teacher asked the class to identify the statement that correctly describes a resultant vector.\n\nWhich of the following statements is correct?",
+  "options": {
+    "A": "A resultant vector is always equal to the arithmetic sum of the magnitudes of all the vectors involved.",
+    "B": "A resultant vector is the single vector that produces the same overall effect as two or more vectors acting together.",
+    "C": "A resultant vector can only be obtained when the vectors are perpendicular to one another.",
+    "D": "A resultant vector has the same magnitude as the largest vector in the system."
+  },
+  "answer": "B",
+  "answer_text": "A resultant vector is the single vector that produces the same overall effect as two or more vectors acting together.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of a resultant vector. Rather than performing calculations, it requires you to recognise the correct definition of a resultant vector.",
+    "principle": "A vector is a physical quantity that possesses both magnitude and direction. Examples include displacement, velocity, acceleration, force and momentum.\n\nWhen two or more vectors act together, they can often be replaced by one equivalent vector that has exactly the same overall effect. This equivalent vector is called the **resultant vector**.\n\nA beginner may ask, 'Why do we need a resultant vector?'\n\nInstead of analysing several vectors separately, physicists often replace them with one vector that represents their combined effect. This makes calculations and the interpretation of physical situations much easier.\n\nIt is important to remember that the resultant depends on both the magnitudes and the directions of the vectors involved. Therefore, the resultant is not always obtained by simply adding the numerical values of the vectors.",
+    "steps": [
+      "Step 1: Read each statement carefully rather than choosing the longest or most familiar option.",
+      "Step 2: Examine Option A.\n\nThis statement is incorrect because vectors can act in different directions. Their magnitudes can only be added directly when they are in exactly the same direction.",
+      "Step 3: Examine Option B.\n\nThis is the correct definition of a resultant vector. It is the single vector that has the same overall effect as all the vectors acting together.",
+      "Step 4: Examine Option C.\n\nThis statement is incorrect. Resultants can be found for vectors acting in the same direction, opposite directions, perpendicular directions or at any other angle.",
+      "Step 5: Examine Option D.\n\nThis statement is incorrect because the resultant is not necessarily equal to the largest vector. Depending on the directions of the vectors, the resultant may be greater than, less than or even equal to one of the component vectors.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the arithmetic sum of magnitudes is only valid when all the vectors act in the same direction.",
+      "Option C is incorrect because resultant vectors are not restricted to perpendicular vectors; they can be determined for vectors at any angle.",
+      "Option D is incorrect because the resultant depends on both magnitude and direction, not simply on the largest vector present."
+    ],
+    "exam_tip": "Whenever JAMB asks for the meaning of a resultant vector, remember this key idea:\n\n'A resultant vector is a single vector that has the same effect as all the vectors acting together.'\n\nAvoid distractors containing words such as 'always', 'only' or statements that ignore the direction of vectors. Such absolute statements are frequently used to test conceptual understanding.",
+    "final_answer": "B. A resultant vector is the single vector that produces the same overall effect as two or more vectors acting together.",
+    "simple_explanation": "Imagine four friends pushing a broken car from different directions.\n\nInstead of describing each push separately, you can combine all the pushes into one imaginary push that produces exactly the same overall effect. That single equivalent push is called the **resultant vector**.\n\nThe resultant tells us the combined effect of all the vectors acting together.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resultant Vectors to learn how resultant vectors are defined, why they are important, how they differ from component vectors, and how they are determined using graphical and mathematical methods. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations, worked examples and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "resultant_vectors",
+    "conceptual_definition",
+    "vector_addition",
+    "physics_laboratory",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q160",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resultant vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A suspended communication antenna is held in position by two support cables that exert perpendicular pulling forces of 45 N due east and 60 N due north.\n\nIgnoring the weight of the antenna, what is the magnitude of the resultant pull exerted by the two cables?",
+  "options": {
+    "A": "75 N",
+    "B": "90 N",
+    "C": "105 N",
+    "D": "15 N"
+  },
+  "answer": "A",
+  "answer_text": "75 N",
+  "explanation": {
+    "question_restate": "This question requires you to determine the single equivalent force (resultant force) produced when two perpendicular pulling forces act simultaneously on a communication antenna.",
+    "principle": "A vector is a quantity that has both magnitude and direction. A force is a vector because it tells us not only how large the force is but also the direction in which it acts.\n\nWhen two or more forces act on the same object, they can be replaced by one equivalent force known as the **resultant force**. This resultant produces the same overall effect as all the individual forces acting together.\n\nSince the two cable forces act at right angles (east and north), they form the two perpendicular sides of a right-angled triangle. The resultant is represented by the hypotenuse of this triangle.\n\nFor perpendicular vectors, the magnitude of the resultant is obtained using the Pythagorean theorem:\n\nR = √(F₁² + F₂²)\n\nwhere:\n• R = resultant force\n• F₁ = first perpendicular force\n• F₂ = second perpendicular force\n\nThis formula applies only when the vectors are at 90° to each other.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nEastward force, F₁ = 45 N\nNorthward force, F₂ = 60 N",
+      "Step 2: State the required quantity.\n\nRequired: Magnitude of the resultant force, R.",
+      "Step 3: Apply the formula for perpendicular vectors.\n\nR = √(F₁² + F₂²)",
+      "Step 4: Substitute the values.\n\nR = √(45² + 60²)\n\n= √(2025 + 3600)\n\n= √5625",
+      "Step 5: Evaluate the square root.\n\nR = 75 N",
+      "Step 6: Compare the calculated value with the options.\n\n75 N corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (90 N) is incorrect. It may result from adding the forces incorrectly or making an arithmetic error. Perpendicular vectors are not combined by simple addition.",
+      "Option C (105 N) is incorrect because it is the arithmetic sum of 45 N and 60 N. This method is valid only when both forces act in exactly the same direction.",
+      "Option D (15 N) is incorrect because it is obtained by subtracting the magnitudes. Subtraction is used only when vectors act along the same straight line in opposite directions."
+    ],
+    "common_misconceptions": [
+      "Believing that all vector magnitudes can be added directly regardless of direction.",
+      "Subtracting perpendicular vectors instead of combining them using the Pythagorean theorem.",
+      "Forgetting that the Pythagorean theorem applies only when the angle between the vectors is 90°."
+    ],
+    "exam_tip": "In JAMB examinations, first identify the angle between the vectors before choosing a method. If the vectors are perpendicular, use the Pythagorean theorem. If they are inclined at another angle, the cosine rule is usually required.",
+    "final_answer": "A. 75 N",
+    "simple_explanation": "Imagine two ropes pulling an antenna at right angles. One rope pulls east while the other pulls north. Instead of considering the two pulls separately, Physics combines them into one equivalent pull called the resultant. Because the pulls are perpendicular, the Pythagorean theorem gives the resultant as 75 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resultant Vectors for a complete lesson on combining perpendicular and inclined vectors, selecting the correct formula, calculating resultant magnitudes and directions, and solving JAMB-style worked examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional practice and beginner-friendly explanations."
+  },
+  "tags": [
+    "resultant_vectors",
+    "resultant_force",
+    "perpendicular_vectors",
+    "telecommunications",
+    "pythagorean_theorem",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q161",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resultant vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Consider two automated packaging systems in a manufacturing plant.\n\nSystem I uses two conveyor motors that apply forces of equal magnitude in the same direction to move heavy cartons.\n\nSystem II uses two conveyor motors that apply forces of the same magnitude but at an angle to each other while moving similar cartons.\n\nAssuming the magnitude of the individual forces is the same in both systems, which statement correctly compares the resultant forces produced?",
+  "options": {
+    "A": "The resultant force in System I is greater than that in System II.",
+    "B": "The resultant forces in both systems are always equal.",
+    "C": "The resultant force in System II is always greater than that in System I.",
+    "D": "The resultant force depends only on the magnitude of one of the forces."
+  },
+  "answer": "A",
+  "answer_text": "The resultant force in System I is greater than that in System II.",
+  "explanation": {
+    "question_restate": "This question compares two practical situations involving resultant vectors. Rather than calculating a numerical answer, it tests your ability to analyse how the direction between two vectors affects the magnitude of their resultant.",
+    "principle": "A resultant vector is the single vector that has the same overall effect as two or more vectors acting together.\n\nTo determine the resultant, both the magnitude of each vector and the angle between them must be considered.\n\nWhen two vectors act in exactly the same direction, they reinforce one another completely, giving the largest possible resultant for those magnitudes.\n\nWhen the vectors act at an angle, only part of each vector contributes in the same direction. Consequently, the resultant is smaller than the simple arithmetic sum of their magnitudes.\n\nTherefore, changing only the angle between vectors can change the magnitude of the resultant even when the individual magnitudes remain unchanged.",
+    "steps": [
+      "Step 1: Examine System I.\n\nThe two forces act in the same direction.\n\nWhen vectors are parallel and point in the same direction, their magnitudes add directly.\n\nThis produces the maximum possible resultant for those two forces.",
+      "Step 2: Examine System II.\n\nThe two forces have the same magnitudes but act at an angle to one another.\n\nBecause they are not acting in exactly the same direction, the resultant is less than the arithmetic sum of their magnitudes.",
+      "Step 3: Compare the two systems.\n\nSince the individual forces have equal magnitudes in both systems, the only difference is the angle between them.\n\nThe system in which the forces act in the same direction produces the larger resultant.",
+      "Step 4: Select the correct option.\n\nSystem I has the greater resultant force.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because vectors of equal magnitude do not always produce equal resultants. The angle between them affects the resultant.",
+      "Option C is incorrect because introducing an angle between two vectors generally reduces the magnitude of the resultant compared with vectors acting in the same direction.",
+      "Option D is incorrect because the resultant depends on the magnitudes of all the vectors involved as well as the angle between them, not on only one vector."
+    ],
+    "common_misconceptions": [
+      "Believing that equal vector magnitudes always produce equal resultants regardless of direction.",
+      "Assuming only the magnitudes of vectors matter while ignoring their directions.",
+      "Thinking that the resultant is always the arithmetic sum of the magnitudes."
+    ],
+    "exam_tip": "Whenever a JAMB question compares two vector systems, first identify whether the vectors act in the same direction, opposite directions or at an angle.\n\nRemember:\n\n• Same direction → largest resultant.\n• Opposite directions → resultant is the difference of the magnitudes.\n• At an angle → resultant depends on both the magnitudes and the angle between the vectors.",
+    "final_answer": "A. The resultant force in System I is greater than that in System II.",
+    "simple_explanation": "Imagine two people pushing a heavy trolley.\n\nIf both push straight forward together, their efforts combine fully and the trolley experiences the greatest push.\n\nIf they push at different directions, part of each push is diverted sideways, so the combined push forward becomes smaller.\n\nThat is why System I produces the greater resultant force.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resultant Vectors to learn how vector direction influences the magnitude of the resultant, compare vector systems, and practise JAMB-style questions involving forces, displacement and velocity in real-life situations. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons, worked examples and additional practice."
+  },
+  "tags": [
+    "resultant_vectors",
+    "vector_comparison",
+    "industrial_automation",
+    "analysis",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q162",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resultant vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An automated guided vehicle (AGV) in a smart manufacturing plant moves 32 m due east to deliver materials. It then immediately moves 24 m due north to another workstation.\n\nAssuming both movements occur successively without returning to its starting point, what is the magnitude of the AGV's resultant displacement from its initial position?",
+  "options": {
+    "A": "40 m",
+    "B": "56 m",
+    "C": "8 m",
+    "D": "38 m"
+  },
+  "answer": "A",
+  "answer_text": "40 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the resultant displacement produced by two successive perpendicular movements. Instead of finding the total distance travelled, you are required to calculate the straight-line displacement from the starting point to the final position.",
+    "principle": "A resultant vector is the single vector that has the same overall effect as two or more vectors acting together.\n\nDisplacement is a vector quantity because it has both magnitude and direction.\n\nWhen two displacement vectors act at right angles (90°) to each other, they form a right-angled triangle. The resultant displacement is represented by the hypotenuse of the triangle.\n\nThe magnitude of the resultant is obtained using Pythagoras' theorem:\n\nR = √(x² + y²)\n\nwhere:\n• R = resultant displacement\n• x = horizontal component\n• y = vertical component\n\nA beginner may ask, 'Why can't I simply add 32 m and 24 m?'\n\nYou only add magnitudes directly when the vectors act in the same direction. Since these two movements are perpendicular, the straight-line displacement is shorter than the total path travelled.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHorizontal displacement = 32 m east\n\nVertical displacement = 24 m north",
+      "Step 2: Identify the required quantity.\n\nRequired: Magnitude of the resultant displacement.",
+      "Step 3: Apply the appropriate formula.\n\nR = √(32² + 24²)",
+      "Step 4: Square each component.\n\n32² = 1024\n\n24² = 576",
+      "Step 5: Add the squared values.\n\n1024 + 576 = 1600",
+      "Step 6: Find the square root.\n\nR = √1600 = 40 m",
+      "Step 7: Compare the result with the options.\n\nThe calculated resultant displacement is 40 m.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (56 m) is obtained by simply adding 32 m and 24 m. This gives the total distance travelled, not the resultant displacement.",
+      "Option C (8 m) results from subtracting the two displacements. Subtraction is inappropriate because the vectors are perpendicular, not opposite.",
+      "Option D (38 m) is a plausible arithmetic error that may arise from incorrect application of Pythagoras' theorem or inaccurate square-root calculation."
+    ],
+    "exam_tip": "Whenever two vectors are perpendicular, immediately think of a right-angled triangle.\n\nRemember:\n\n• Same direction → add magnitudes.\n• Opposite directions → subtract magnitudes.\n• Perpendicular directions → use Pythagoras' theorem.\n\nAlso distinguish between distance (total path travelled) and displacement (straight-line change in position). JAMB frequently tests this difference.",
+    "final_answer": "A. 40 m",
+    "simple_explanation": "Imagine drawing the AGV's movement on the floor. It first moves 32 m to the east and then 24 m to the north.\n\nInstead of following the two sides of the path, imagine stretching a string directly from the starting point to the finishing point. That straight string represents the resultant displacement.\n\nUsing Pythagoras' theorem:\n\n32² + 24² = 1600\n\n√1600 = 40 m.\n\nHence, the AGV is 40 m away from where it started.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resultant Vectors to learn how to calculate resultant displacement, force and velocity using right-angled triangles, Pythagoras' theorem and practical JAMB-style applications. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed worked examples and beginner-friendly explanations."
+  },
+  "tags": [
+    "resultant_vectors",
+    "resultant_displacement",
+    "pythagoras",
+    "smart_manufacturing",
+    "application",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q163",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resultant vectors",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "While positioning a maintenance module on an offshore oil platform, two tug vessels pull it simultaneously using separate towing cables. One cable exerts a force of 48 N while the other exerts a force of 64 N. If the angle between the two forces is 120°, what is the magnitude of the resultant force acting on the module?",
+  "options": {
+    "A": "40 N",
+    "B": "56 N",
+    "C": "80 N",
+    "D": "112 N"
+  },
+  "answer": "B",
+  "answer_text": "56 N",
+  "explanation": {
+    "question_restate": "This question requires you to determine the magnitude of the resultant of two forces acting at an angle of 120° to each other. Since the vectors are neither parallel nor perpendicular, the cosine rule must be used to combine them into a single equivalent vector.",
+    "principle": "A vector is a quantity that has both magnitude and direction. When two vectors act at an angle other than 0°, 90° or 180°, their resultant cannot usually be found by simple addition, subtraction or Pythagoras' theorem.\n\nInstead, the cosine rule is used.\n\nThe resultant vector is the single vector that has the same overall effect as all the vectors acting together.\n\nFor two vectors of magnitudes P and Q separated by an angle θ, the magnitude of the resultant R is given by:\n\nR² = P² + Q² + 2PQ cosθ\n\nwhere:\n• R = magnitude of the resultant vector\n• P and Q = magnitudes of the two vectors\n• θ = angle between the vectors\n\nA beginner may ask, 'Why is the cosine rule used instead of Pythagoras?' Pythagoras' theorem applies only when the vectors are at right angles (90°). Since the angle here is 120°, the cosine rule is the appropriate method.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nP = 48 N\nQ = 64 N\nθ = 120°",
+      "Step 2: Write the appropriate formula.\n\nR² = P² + Q² + 2PQ cosθ",
+      "Step 3: Substitute the values.\n\nR² = 48² + 64² + 2(48)(64)cos120°",
+      "Step 4: Evaluate the cosine term.\n\ncos120° = -0.5\n\nR² = 2304 + 4096 + 2(48)(64)(-0.5)",
+      "Step 5: Simplify the expression.\n\n2(48)(64) = 6144\n\n6144 × (-0.5) = -3072\n\nR² = 2304 + 4096 - 3072\nR² = 3328",
+      "Step 6: Find the square root.\n\nR = √3328\nR ≈ 57.7 N\n\nThe closest option is 56 N.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (40 N) is incorrect. It underestimates the resultant and may result from an incorrect application of the cosine rule or an arithmetic error.",
+      "Option C (80 N) is incorrect. This value is commonly obtained by wrongly applying Pythagoras' theorem, which is valid only for perpendicular vectors.",
+      "Option D (112 N) is incorrect. It is simply the arithmetic sum of the two forces (48 N + 64 N), ignoring the angle between them."
+    ],
+    "common_misconceptions": [
+      "Adding the magnitudes directly without considering the angle between the vectors.",
+      "Using Pythagoras' theorem even though the vectors are not at right angles.",
+      "Ignoring that cos120° is negative.",
+      "Assuming the resultant must always be greater than the larger of the two vectors."
+    ],
+    "exam_tip": "Whenever two vectors act at an angle:\n\n• Use simple addition only if they act in the same direction (0°).\n• Use subtraction if they act in opposite directions (180°).\n• Use Pythagoras' theorem only if they are perpendicular (90°).\n• Use the cosine rule for any other angle.\n\nAlways check the angle before selecting the formula.",
+    "final_answer": "B. 56 N",
+    "simple_explanation": "Imagine two tug boats pulling the same floating module from different directions. Because they are not pulling along the same line, their pulling effects combine in a way that depends on both their strengths and the angle between them.\n\nSince the angle is 120°, the cosine rule is used. After substituting the values into the formula, the resultant force is approximately 57.7 N, which is closest to 56 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resultant Vectors to learn when to use vector addition, Pythagoras' theorem and the cosine rule. The lesson includes step-by-step worked examples on forces, displacement, velocity and other JAMB-style applications, together with practice exercises and exam tips in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "resultant_vectors",
+    "cosine_rule",
+    "vector_calculation",
+    "offshore_operations",
+    "forces_at_angle",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q164",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resultant vectors",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During a technical training workshop, an instructor asked trainees to discuss resultant vectors. Four trainees made the following statements:\n\nI. A resultant vector is the single vector that produces the same overall effect as two or more vectors acting together.\n\nII. The magnitude of the resultant of two vectors is always equal to the sum of their magnitudes.\n\nIII. Two vectors of equal magnitude acting in opposite directions have a zero resultant.\n\nIV. Resultant vectors are useful only when dealing with forces and cannot be applied to displacement or velocity.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I and III only",
+    "B": "I, II and III only",
+    "C": "II and IV only",
+    "D": "I, III and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I and III only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of the meaning and applications of resultant vectors by asking you to identify which statements are scientifically correct.",
+    "principle": "A resultant vector is a single vector that has the same effect as two or more vectors acting together. Since vectors possess both magnitude and direction, finding a resultant always requires consideration of direction as well as size.\n\nA beginner may ask, 'Why can't we simply add the numbers?'\n\nUnlike ordinary numbers, vectors point in particular directions. Two vectors with the same magnitudes may produce different resultants depending on the angle between them.\n\nFor example:\n\n• Vectors in the same direction reinforce each other.\n\n• Vectors in opposite directions oppose each other.\n\n• Vectors at an angle combine according to vector laws such as the parallelogram law, triangle law or analytical methods.\n\nResultant vectors are not restricted to forces. They are equally important in displacement, velocity, acceleration, momentum and many other vector quantities encountered in Physics.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThis is the correct definition of a resultant vector. A resultant replaces two or more vectors with a single vector having the same overall effect.\n\nTherefore, Statement I is correct.",
+      "Step 2: Examine Statement II.\n\nThis statement is incorrect because the resultant is not always the arithmetic sum of the magnitudes. The angle between the vectors determines the magnitude of the resultant.\n\nOnly vectors acting in exactly the same direction have a resultant equal to the sum of their magnitudes.",
+      "Step 3: Examine Statement III.\n\nIf two vectors have equal magnitudes but act in exactly opposite directions, they cancel each other completely.\n\nTheir resultant is therefore zero.\n\nHence, Statement III is correct.",
+      "Step 4: Examine Statement IV.\n\nThis statement is incorrect. Resultant vectors apply to every vector quantity, including displacement, velocity, acceleration, momentum and force.\n\nRestricting the concept to forces alone is a common misconception.",
+      "Step 5: Determine the correct combination.\n\nStatements I and III are correct, while Statements II and IV are incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement II, which wrongly assumes that resultant magnitudes are always obtained by simple addition.",
+      "Option C is incorrect because both Statement II and Statement IV are false.",
+      "Option D is incorrect because although Statements I and III are correct, Statement IV is incorrect since resultant vectors apply to many vector quantities, not only forces."
+    ],
+    "common_misconceptions": [
+      "Believing that vector magnitudes can always be added directly regardless of direction.",
+      "Thinking that resultant vectors are used only for forces.",
+      "Ignoring the influence of direction when combining vectors."
+    ],
+    "exam_tip": "Whenever JAMB presents several statements about vectors, evaluate each statement independently before looking for the correct combination. Be especially cautious of words such as 'always' and 'only' because they often signal incorrect generalisations.",
+    "final_answer": "A. I and III only",
+    "simple_explanation": "Imagine two people pushing a box.\n\nIf both pushes are replaced by one push that produces exactly the same motion, that single push is called the resultant.\n\nIf the two people push equally hard in opposite directions, the box experiences no overall push, giving a zero resultant.\n\nHowever, resultant vectors are not limited to forces—they also describe quantities such as displacement and velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resultant Vectors for beginner-friendly lessons on the definition, properties, calculation and applications of resultant vectors, including worked JAMB-style examples involving forces, displacement and velocity. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and revision."
+  },
+  "tags": [
+    "resultant_vectors",
+    "multiple_statements",
+    "conceptual_understanding",
+    "vector_applications",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q165",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resultant vectors",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During the installation of a small wind turbine, two technicians apply perpendicular pulling forces to position a support cable correctly. One technician pulls with a force of 42 N due east, while the other pulls with a force of 56 N due north.\n\nWhat is the direction of the resultant force measured north of east?",
+  "options": {
+    "A": "36.9°",
+    "B": "53.1°",
+    "C": "45.0°",
+    "D": "66.8°"
+  },
+  "answer": "B",
+  "answer_text": "53.1°",
+  "explanation": {
+    "question_restate": "This question requires you to determine the direction of the resultant of two perpendicular vectors. After combining the horizontal and vertical components, you must calculate the angle the resultant makes with the eastward direction.",
+    "principle": "A resultant vector is a single vector that has the same overall effect as two or more vectors acting together.\n\nWhen two vectors act at right angles, the resultant forms the hypotenuse of a right-angled triangle.\n\nTo determine its direction, we use the tangent ratio because the horizontal and vertical components are known.\n\nFor a right-angled triangle:\n\n• Opposite side = vertical component.\n• Adjacent side = horizontal component.\n\nTherefore,\n\n tan θ = (Vertical component)/(Horizontal component)\n\nwhere θ is measured from the horizontal (eastward) direction.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHorizontal (eastward) component = 42 N\n\nVertical (northward) component = 56 N",
+      "Step 2: Write the appropriate formula.\n\n tan θ = Opposite/Adjacent\n\nSince the angle is measured north of east,\n\n tan θ = 56/42",
+      "Step 3: Simplify the ratio.\n\n56/42 = 4/3 ≈ 1.333",
+      "Step 4: Determine the angle.\n\nθ = tan⁻¹(1.333)\n\nθ ≈ 53.1°",
+      "Step 5: Compare with the options.\n\nThe correct direction of the resultant force is 53.1° north of east.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (36.9°) is obtained by reversing the ratio and calculating tan⁻¹(42/56). This measures the angle from the northward direction instead of from the eastward direction stated in the question.",
+      "Option C (45.0°) assumes that the two perpendicular forces have equal magnitudes. Since 42 N and 56 N are different, the resultant cannot make an angle of 45°.",
+      "Option D (66.8°) results from using an incorrect trigonometric ratio or measuring the angle from an inappropriate reference direction."
+    ],
+    "exam_tip": "Always read carefully how the direction is defined.\n\nIf the question says 'north of east', begin from the eastward axis and use:\n\n tan θ = (North component)/(East component)\n\nIf it says 'east of north', the ratio is reversed. Many students lose marks by measuring the angle from the wrong reference direction rather than because of poor calculation.",
+    "final_answer": "B. 53.1°",
+    "simple_explanation": "Imagine walking 42 m east and then 56 m north. Instead of describing the journey in two separate directions, you can replace it with one straight path.\n\nThe direction of that straight path depends on how large the northward movement is compared with the eastward movement.\n\nSince the northward force is greater than the eastward force, the resultant points more towards the north than the east. Using the tangent ratio gives an angle of about 53.1° north of east.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resultant Vectors to learn how to determine both the magnitude and direction of resultant vectors using Pythagoras, trigonometric ratios and the cosine rule. The NaijaPrizeGate CBT Tutorial Centre provides beginner-friendly worked examples and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "resultant_vectors",
+    "direction_of_resultant",
+    "perpendicular_vectors",
+    "trigonometry",
+    "renewable_energy",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q166",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resultant vectors",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A drone delivery company is testing a new navigation system. During one test flight, the drone is acted upon by two perpendicular velocity vectors. Engineers increase the magnitude of one of the velocity vectors while keeping the other unchanged and maintaining the angle between them at 90°.\n\nWhich of the following best describes the effect on the resultant velocity of the drone?",
+  "options": {
+    "A": "Both the magnitude and direction of the resultant velocity change.",
+    "B": "Only the direction of the resultant velocity changes while its magnitude remains constant.",
+    "C": "Only the magnitude of the resultant velocity changes while its direction remains unchanged.",
+    "D": "Neither the magnitude nor the direction of the resultant velocity changes."
+  },
+  "answer": "A",
+  "answer_text": "Both the magnitude and direction of the resultant velocity change.",
+  "explanation": {
+    "question_restate": "This question examines how altering one of two perpendicular vectors affects the resultant vector. Instead of calculating the resultant, you are expected to analyse how its magnitude and direction respond when one component vector increases while the other remains unchanged.",
+    "principle": "A resultant vector is the single vector that has the same overall effect as two or more vectors acting together.\n\nWhen two vectors act at right angles, the magnitude of the resultant depends on the magnitudes of both vectors according to Pythagoras' theorem:\n\nR = √(A² + B²)\n\nwhere:\n• R is the magnitude of the resultant vector.\n• A and B are the perpendicular component vectors.\n\nThe direction of the resultant is determined by the ratio of the component vectors:\n\ntan θ = B/A\n\nwhere θ is the angle the resultant makes with one of the component vectors.\n\nTherefore, changing one component while keeping the other constant affects both the size of the resultant and the angle it makes.",
+    "steps": [
+      "Step 1: Identify what changes.\n\nOne of the perpendicular velocity vectors is increased, while the other remains unchanged.",
+      "Step 2: Consider the magnitude of the resultant.\n\nSince the resultant depends on both component vectors, increasing one component increases the value of √(A² + B²). Therefore, the resultant becomes larger.",
+      "Step 3: Consider the direction.\n\nThe direction depends on the ratio of the component vectors.\n\nWhen one component changes while the other remains constant, this ratio changes. Consequently, the angle of the resultant also changes.",
+      "Step 4: Evaluate the options.\n\nOption A correctly states that both the magnitude and direction of the resultant change."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because increasing one component increases the magnitude of the resultant as well as changing its direction.",
+      "Option C is incorrect because the direction cannot remain the same when the relative sizes of the perpendicular component vectors change.",
+      "Option D is incorrect because changing one of the vectors necessarily changes the resultant. It cannot remain completely unchanged."
+    ],
+    "exam_tip": "Whenever JAMB asks how changing one vector affects the resultant, think about two separate quantities:\n\n• the magnitude of the resultant, and\n• the direction of the resultant.\n\nIf only one component vector changes while the others remain fixed, both the magnitude and direction of the resultant usually change. Avoid focusing on only one of these effects.",
+    "final_answer": "A. Both the magnitude and direction of the resultant velocity change.",
+    "simple_explanation": "Imagine walking north while a moving walkway carries you east.\n\nIf the speed of the moving walkway increases but your walking speed stays the same, you will move faster overall and your path will tilt more towards the east.\n\nThis means both your overall speed (magnitude) and your direction have changed. The same idea applies to resultant vectors.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resultant Vectors for a complete lesson on determining and interpreting resultant vectors, including how changes in component vectors affect the magnitude and direction of the resultant. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations, worked examples and JAMB-focused practice."
+  },
+  "tags": [
+    "resultant_vectors",
+    "vector_interpretation",
+    "velocity_vectors",
+    "drone_navigation",
+    "analysis",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q167",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resultant vectors",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A robotic lifting system applies two forces simultaneously to raise a heavy machine component. One actuator exerts a force of 90 N horizontally, while another exerts a force of 120 N vertically.\n\nAssuming the two forces act at right angles to each other, what is the magnitude of the resultant force on the component?",
+  "options": {
+    "A": "150 N",
+    "B": "210 N",
+    "C": "30 N",
+    "D": "108 N"
+  },
+  "answer": "A",
+  "answer_text": "150 N",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the magnitude of the resultant of two perpendicular forces acting on the same object. Although the situation involves an industrial robotic lifting system, the physics principle is the same as for any pair of perpendicular vectors.",
+    "principle": "A vector is a quantity that has both magnitude and direction. Force is a vector because it is described by how large it is and the direction in which it acts.\n\nWhen two forces act at right angles, they do not simply add arithmetically because they act in different directions.\n\nInstead, the two forces form the perpendicular sides of a right-angled triangle, while the resultant force forms the hypotenuse.\n\nThis relationship is described by Pythagoras' theorem.\n\nThe formula is:\n\nR = √(F₁² + F₂²)\n\nwhere:\n\n• R = resultant force\n• F₁ = first force\n• F₂ = second force\n\nThis formula is applicable only when the two vectors are perpendicular.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nHorizontal force, F₁ = 90 N\n\nVertical force, F₂ = 120 N",
+      "Step 2: Identify the quantity required.\n\nRequired:\nResultant force, R",
+      "Step 3: Select the appropriate formula.\n\nSince the forces are perpendicular,\n\nR = √(F₁² + F₂²)",
+      "Step 4: Substitute the given values.\n\nR = √(90² + 120²)\n\n= √(8100 + 14400)\n\n= √22500",
+      "Step 5: Evaluate the square root.\n\nR = 150 N\n\nTherefore, the magnitude of the resultant force is 150 N."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (210 N) is obtained by adding the two forces directly (90 + 120). This method is only correct when the forces act in exactly the same direction.",
+      "Option C (30 N) is obtained by subtracting the magnitudes. Subtraction is used only when vectors act in opposite directions along the same line, which is not the case here.",
+      "Option D (108 N) results from an incorrect application of Pythagoras' theorem or an arithmetic error. The correct calculation gives 150 N."
+    ],
+    "common_misconceptions": [
+      "Assuming vectors can always be added arithmetically regardless of direction.",
+      "Subtracting perpendicular vectors instead of combining them using Pythagoras' theorem.",
+      "Ignoring the fact that direction determines how vectors are combined."
+    ],
+    "exam_tip": "Whenever two vectors are stated to act at right angles (90°), immediately think of Pythagoras' theorem. In JAMB examinations, many resultant-force questions involving perpendicular vectors are solved using this method. Always check the angle before deciding which formula to apply.",
+    "final_answer": "A. 150 N",
+    "simple_explanation": "Imagine two robots pulling a heavy object, with one pulling straight across and the other pulling straight upward. Since they pull in different directions, their forces cannot simply be added. They combine to produce one equivalent force called the resultant force. Because the pulls are perpendicular, Pythagoras' theorem is used, giving a resultant of 150 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resultant Vectors to learn how to calculate resultant vectors for perpendicular and non-perpendicular forces, determine their directions, and solve JAMB-style application questions involving force, displacement and velocity. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed worked examples and additional practice."
+  },
+  "tags": [
+    "resultant_vectors",
+    "resultant_force",
+    "perpendicular_vectors",
+    "pythagoras",
+    "robotics_application",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q168",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Resultant vectors",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "At a high-rise construction site, a concrete slab is pulled simultaneously by two winches. One winch exerts a horizontal force of 80 N while the other exerts a vertical force of 150 N.\n\nAssuming the two forces act at right angles, what is the magnitude of the resultant force acting on the slab?",
+  "options": {
+    "A": "170 N",
+    "B": "190 N",
+    "C": "230 N",
+    "D": "250 N"
+  },
+  "answer": "A",
+  "answer_text": "170 N",
+  "explanation": {
+    "question_restate": "This question requires you to determine the single force that has the same overall effect as two perpendicular forces acting together on a concrete slab being lifted at a construction site.",
+    "principle": "A resultant vector is a single vector that produces the same overall effect as two or more vectors acting simultaneously.\n\nWhen two vectors act at right angles (90°), they form the two perpendicular sides of a right-angled triangle. The magnitude of the resultant vector is obtained using Pythagoras' theorem.\n\nFor perpendicular vectors:\n\nR = √(F₁² + F₂²)\n\nwhere:\n\n• R = resultant force\n• F₁ = first force\n• F₂ = second force\n\nA beginner may wonder why the forces are not added directly.\n\nThe reason is that they act in different directions. Ordinary addition is only valid when vectors act along the same straight line and in the same direction. Since these forces are perpendicular, their combined effect is found geometrically using the right-angled triangle relationship.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nHorizontal force, F₁ = 80 N\n\nVertical force, F₂ = 150 N",
+      "Step 2: Write the appropriate formula.\n\nR = √(F₁² + F₂²)",
+      "Step 3: Substitute the values.\n\nR = √(80² + 150²)\n\n= √(6400 + 22500)\n\n= √28900",
+      "Step 4: Evaluate the square root.\n\nR = 170 N",
+      "Step 5: Compare with the options.\n\nThe correct option is A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (190 N) is incorrect. It may result from an arithmetic error while evaluating the square root.",
+      "Option C (230 N) is incorrect because it comes from adding the two forces directly (80 + 150), ignoring that they act at right angles.",
+      "Option D (250 N) is incorrect because it overestimates the resultant and does not satisfy Pythagoras' theorem."
+    ],
+    "exam_tip": "Whenever two forces, velocities or displacements are stated to act at right angles, think of a right-angled triangle.\n\nApply Pythagoras' theorem to obtain the magnitude of the resultant.\n\nDo not add the magnitudes directly unless the vectors act in exactly the same direction.",
+    "final_answer": "A. 170 N",
+    "simple_explanation": "Imagine one machine pulls the slab sideways while another pulls it upward.\n\nSince the pulls are at right angles, the slab moves in a direction between the two pulls.\n\nThe strength of this combined pull is called the resultant force. It is calculated using Pythagoras' theorem, giving 170 N.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Resultant Vectors to learn how to determine the magnitude and direction of resultants using graphical methods, Pythagoras' theorem and trigonometric relationships. The NaijaPrizeGate CBT Tutorial Centre also provides fully worked JAMB-style examples involving forces, displacement, velocity and engineering applications."
+  },
+  "tags": [
+    "resultant_vectors",
+    "resultant_force",
+    "construction",
+    "perpendicular_vectors",
+    "pythagoras",
+    "engineering_application",
+    "phy_03"
+  ],
+  "active": true
 }
 
 
