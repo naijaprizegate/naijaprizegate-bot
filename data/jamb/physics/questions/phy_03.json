@@ -8378,6 +8378,839 @@
     "phy_03"
   ],
   "active": true
+},
+{
+  "id": "phy_03_q169",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During a domestic flight, an aircraft maintains an airspeed of 210 km h⁻¹ due east. At the same time, a steady wind blows due north at 56 km h⁻¹.\n\nAssuming the wind acts at right angles to the aircraft's direction of motion, what is the aircraft's resultant ground speed?",
+  "options": {
+    "A": "217 km h⁻¹",
+    "B": "154 km h⁻¹",
+    "C": "266 km h⁻¹",
+    "D": "210 km h⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "217 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the ground speed of an aircraft when a crosswind acts at right angles to its direction of flight. It introduces one of the most common real-life applications of relative velocity in aviation.",
+    "principle": "Relative velocity describes the velocity of one object as observed from another object or with respect to a moving medium.\n\nIn aviation, an aircraft moves through the air, but the air itself may also be moving because of the wind.\n\nA beginner may ask, 'Why is the aircraft's speed through the air not the same as its speed over the ground?'\n\nThe answer is that the aircraft's engine produces its **airspeed**, which is the velocity of the aircraft relative to the surrounding air. If the air is moving, the aircraft is carried along by the wind. Therefore, an observer standing on the ground measures the **ground velocity**, which is the vector sum of the aircraft's airspeed and the wind velocity.\n\nWhen the wind blows exactly at right angles to the aircraft's direction of motion, the two velocities are perpendicular vectors. In this case, the magnitude of the resultant ground velocity is obtained using **Pythagoras' theorem**:\n\nGround speed = √[(airspeed)² + (wind speed)²]\n\nThis relationship applies only because the two vectors are perpendicular.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nAirspeed of the aircraft = 210 km h⁻¹ due east.\n\nWind speed = 56 km h⁻¹ due north.\n\nSince east and north are perpendicular directions, the vectors form a right-angled triangle.",
+      "Step 2: Identify the required quantity.\n\nWe are required to calculate the aircraft's resultant ground speed.",
+      "Step 3: Write the appropriate formula.\n\nGround speed = √[(airspeed)² + (wind speed)²]",
+      "Step 4: Substitute the given values.\n\nGround speed = √[(210)² + (56)²]\n\n= √(44100 + 3136)\n\n= √47236",
+      "Step 5: Evaluate the square root.\n\n√47236 ≈ 217.34 km h⁻¹\n\nTo the nearest whole number,\n\nGround speed ≈ 217 km h⁻¹.",
+      "Step 6: Compare the calculated value with the options.\n\nOption A matches the calculated ground speed."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (154 km h⁻¹) is incorrect because it results from an inappropriate subtraction of the two speeds. Since the wind is perpendicular to the aircraft's motion, subtraction is not applicable.",
+      "Option C (266 km h⁻¹) is incorrect because it is obtained by adding the two speeds arithmetically (210 + 56). Velocities acting at right angles must be added as vectors, not as ordinary numbers.",
+      "Option D (210 km h⁻¹) is incorrect because it ignores the effect of the crosswind entirely. The aircraft's ground speed differs from its airspeed whenever the wind has a velocity component."
+    ],
+    "common_misconceptions": [
+      "Assuming relative velocity always involves subtraction.",
+      "Adding perpendicular velocities directly instead of using vector addition.",
+      "Confusing airspeed with ground speed.",
+      "Ignoring the direction of the wind and treating velocity as a scalar quantity."
+    ],
+    "exam_tip": "Whenever an aircraft, boat or swimmer moves while the surrounding medium (air or water) is also moving, first identify the direction of each velocity.\n\nIf the velocities are perpendicular, use Pythagoras' theorem.\n\nIf they are in the same or opposite direction, use vector addition or subtraction as appropriate.\n\nAlways remember that velocity has both magnitude and direction.",
+    "final_answer": "A. 217 km h⁻¹",
+    "simple_explanation": "Imagine walking straight across an airport conveyor while the conveyor itself moves sideways. Your own walking speed and the conveyor's speed combine to determine how fast you move relative to the floor.\n\nSimilarly, the aircraft moves through the air at 210 km h⁻¹, while the wind carries it northward at 56 km h⁻¹. Because these motions are at right angles, they combine to produce a ground speed of approximately 217 km h⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Relative Velocity to learn the difference between airspeed, ground speed, wind velocity and relative velocity. The lesson includes worked examples on aircraft in crosswinds, boats crossing rivers, swimmers in flowing streams, trains, road traffic and other JAMB-style applications with step-by-step explanations."
+  },
+  "tags": [
+    "relative_velocity",
+    "airspeed",
+    "ground_speed",
+    "crosswind",
+    "aviation",
+    "vector_addition",
+    "application",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q170",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "While attempting to cross a straight river, a canoe is paddled at a speed of 8 m s⁻¹ perpendicular to the river bank. The river current flows downstream at 6 m s⁻¹.\n\nWhat is the magnitude of the canoe's resultant velocity relative to an observer standing on the river bank?",
+  "options": {
+    "A": "2 m s⁻¹",
+    "B": "10 m s⁻¹",
+    "C": "14 m s⁻¹",
+    "D": "48 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "10 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of relative velocity when a canoe crosses a flowing river. You are required to determine the canoe's actual speed relative to the ground by combining the canoe's velocity across the river with the river current.",
+    "principle": "Relative velocity describes the velocity of one object as observed from another reference frame.\n\nIn this case, there are two velocities acting simultaneously:\n\n• The velocity of the canoe relative to the water (8 m s⁻¹ across the river).\n• The velocity of the river current relative to the ground (6 m s⁻¹ downstream).\n\nA beginner may ask, 'Why can't we simply add 8 and 6?'\n\nThe answer is that the two velocities act at right angles to each other. Since velocity is a vector quantity, both magnitude and direction must be considered.\n\nWhen two perpendicular vectors act together, the magnitude of the resultant velocity is obtained using Pythagoras' theorem:\n\nResultant velocity, R = √(u² + v²)\n\nwhere:\n\n• u = velocity of the canoe relative to the water.\n• v = velocity of the river current.\n• R = actual velocity of the canoe relative to the river bank.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nVelocity of canoe across the river, u = 8 m s⁻¹.\n\nVelocity of river current, v = 6 m s⁻¹.",
+      "Step 2: Identify what is required.\n\nDetermine the magnitude of the canoe's resultant velocity relative to the observer on the river bank.",
+      "Step 3: Select the appropriate formula.\n\nSince the two velocities are perpendicular,\n\nR = √(u² + v²).",
+      "Step 4: Substitute the given values.\n\nR = √(8² + 6²)\n\n= √(64 + 36)\n\n= √100\n\n= 10 m s⁻¹.",
+      "Step 5: Compare the calculated value with the options.\n\nThe correct option is **B (10 m s⁻¹)**."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2 m s⁻¹) is obtained by subtracting the two speeds. This is incorrect because the canoe and the current move in perpendicular directions, not opposite directions.",
+      "Option C (14 m s⁻¹) is obtained by adding the two speeds directly. This ignores the fact that velocities at right angles must be combined using vector addition.",
+      "Option D (48 m s⁻¹) is obtained by multiplying 8 by 6, which has no physical meaning in determining relative velocity."
+    ],
+    "common_misconceptions": [
+      "Believing that velocities can always be added arithmetically.",
+      "Ignoring the directions of the velocity vectors.",
+      "Confusing the canoe's speed through the water with its speed relative to the ground.",
+      "Thinking relative velocity is always found by subtraction."
+    ],
+    "exam_tip": "Whenever a canoe, swimmer or boat moves across a river while the current flows downstream, first determine the angle between the two velocities.\n\nIf they are perpendicular, use Pythagoras' theorem.\n\nIf they act in the same or opposite directions, use vector addition or subtraction as appropriate.\n\nAlways remember that velocity is a vector quantity, so direction is just as important as magnitude.",
+    "final_answer": "B. 10 m s⁻¹",
+    "simple_explanation": "Imagine trying to walk straight across a moving walkway at an airport. While you move across it, the walkway also carries you forward.\n\nYour actual movement is a combination of both motions.\n\nSimilarly, the canoe moves across the river at 8 m s⁻¹ while the river carries it downstream at 6 m s⁻¹. Because these motions are at right angles, they combine to produce a resultant speed of 10 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Relative Velocity to learn how to solve river-crossing, swimmer, boat, aircraft and wind problems using vector addition, Pythagoras' theorem and practical JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations, worked examples and additional practice questions."
+  },
+  "tags": [
+    "relative_velocity",
+    "canoe_crossing",
+    "river_current",
+    "vector_addition",
+    "application",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q171",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "While travelling along an expressway in the same direction, a delivery van moves at 72 km h⁻¹ and a maintenance truck ahead moves at 54 km h⁻¹. What is the velocity of the delivery van relative to the maintenance truck?",
+  "options": {
+    "A": "18 km h⁻¹",
+    "B": "126 km h⁻¹",
+    "C": "63 km h⁻¹",
+    "D": "27 km h⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "18 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of relative velocity when two objects move in the same direction. You are required to determine how fast one vehicle appears to move with respect to the other.",
+    "principle": "Relative velocity is the velocity of one object as observed from another moving object.\n\nVelocity is a vector quantity because it has both magnitude and direction.\n\nWhen two objects move in the **same direction**, the relative velocity is obtained by subtracting the smaller velocity from the larger velocity.\n\nFormula:\n\nRelative velocity = Faster object's velocity − Slower object's velocity\n\nThis subtraction is necessary because both vehicles are already moving in the same direction. The faster vehicle gains on the slower one only by the difference between their speeds.\n\nIf the vehicles were travelling in opposite directions, their velocities would instead be added because they approach each other more rapidly.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nVelocity of the delivery van = 72 km h⁻¹\n\nVelocity of the maintenance truck = 54 km h⁻¹",
+      "Step 2: Identify the required quantity.\n\nRequired: Velocity of the delivery van relative to the maintenance truck.",
+      "Step 3: Select the appropriate formula.\n\nSince both vehicles move in the same direction:\n\nRelative velocity = 72 − 54",
+      "Step 4: Perform the calculation.\n\nRelative velocity = 18 km h⁻¹",
+      "Step 5: Compare the result with the options.\n\nOption A gives 18 km h⁻¹, which is the correct relative velocity."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (126 km h⁻¹) is obtained by adding the two velocities. Addition is used when objects move in opposite directions, not in the same direction.",
+      "Option C (63 km h⁻¹) is an incorrect value that does not result from any valid relative velocity calculation.",
+      "Option D (27 km h⁻¹) is an arithmetic error and does not represent the difference between the two velocities."
+    ],
+    "common_misconceptions": [
+      "Believing that relative velocity always requires addition.",
+      "Ignoring the direction of motion before choosing whether to add or subtract velocities.",
+      "Confusing ordinary speed with relative velocity between two moving objects."
+    ],
+    "exam_tip": "In JAMB Physics, first determine whether the objects move in the **same direction** or in **opposite directions**.\n\n• Same direction → subtract the velocities.\n• Opposite directions → add the velocities.\n\nAlways pay attention to the phrase 'relative to' because it indicates whose motion is being observed.",
+    "final_answer": "A. 18 km h⁻¹",
+    "simple_explanation": "Imagine you are sitting in the delivery van. Although the van moves at 72 km h⁻¹ relative to the road, the truck ahead is already moving at 54 km h⁻¹. Therefore, the van closes the gap at only 18 km h⁻¹. That closing speed is the relative velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Relative Velocity to learn how to solve same-direction and opposite-direction motion problems involving cars, buses, trains, boats, aircraft and other JAMB-style applications with fully worked examples."
+  },
+  "tags": [
+    "relative_velocity",
+    "same_direction_motion",
+    "expressway_transport",
+    "application",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q172",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "At a busy railway station, two passengers are standing on different platforms.\n\nPassenger X is inside a train that begins to move slowly out of the station, while Passenger Y remains standing on the platform.\n\nAfter a short time, Passenger X remarks, 'The people on the platform appear to be moving backward, even though they are standing still.'\n\nWhich statement best explains this observation?",
+  "options": {
+    "A": "The platform and the people on it have acquired a backward velocity equal to the train's speed.",
+    "B": "The apparent backward motion is due to the relative velocity between Passenger X and the stationary people on the platform.",
+    "C": "The train produces a force that causes nearby stationary objects to move in the opposite direction.",
+    "D": "The platform is actually moving backward, but the motion is too small for Passenger Y to notice."
+  },
+  "answer": "B",
+  "answer_text": "The apparent backward motion is due to the relative velocity between Passenger X and the stationary people on the platform.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of relative velocity by asking why a passenger inside a moving train perceives stationary people on a platform as moving backward.",
+    "principle": "Relative velocity is the velocity of one object as observed from another object. It depends on the observer's frame of reference.\n\nA beginner may ask, 'What is a frame of reference?'\n\nA frame of reference is the position or viewpoint from which motion is observed and measured.\n\nMotion is not always described with respect to the ground. Instead, it can be described relative to another moving object.\n\nWhen an observer is inside a moving train, objects that are stationary on the ground appear to move in the opposite direction. This apparent motion is not because the objects have started moving but because the observer is changing position.\n\nTherefore, relative velocity explains why different observers may describe the same motion differently.",
+    "steps": [
+      "Step 1: Identify the observer.\n\nPassenger X is inside the moving train. Therefore, Passenger X's frame of reference is the moving train.",
+      "Step 2: Identify the object being observed.\n\nThe people standing on the platform remain stationary with respect to the ground.",
+      "Step 3: Interpret what Passenger X sees.\n\nSince Passenger X is moving forward, the stationary platform appears to move backward relative to the train.",
+      "Step 4: Select the correct explanation.\n\nThe apparent backward motion is caused by relative velocity, not because the platform is actually moving.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the people on the platform do not actually acquire a backward velocity. Their apparent motion is only relative to the moving observer.",
+      "Option C is incorrect because the train does not exert a force that makes nearby stationary objects move backward. The observation is purely a consequence of relative motion.",
+      "Option D is incorrect because the platform remains stationary relative to the ground. It only appears to move backward from the viewpoint of someone inside the moving train."
+    ],
+    "exam_tip": "Whenever JAMB presents two observers in different states of motion, first identify whose viewpoint is being described.\n\nRemember that relative velocity depends on the observer's frame of reference. A stationary object may appear to move if the observer is moving.\n\nDo not confuse apparent motion with actual motion.",
+    "final_answer": "B. The apparent backward motion is due to the relative velocity between Passenger X and the stationary people on the platform.",
+    "simple_explanation": "Imagine you are sitting inside a bus that has just started moving. Trees, buildings and people outside may seem to move backward even though they are not moving.\n\nThis happens because you are changing your position while they remain fixed. The apparent motion is explained by relative velocity, which depends on the observer's point of view.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Relative Velocity to learn about frames of reference, apparent motion, same-direction and opposite-direction relative motion, river-crossing problems, aircraft in wind, and other JAMB-style applications with fully worked examples."
+  },
+  "tags": [
+    "relative_velocity",
+    "frame_of_reference",
+    "apparent_motion",
+    "railway_station",
+    "interpretation",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q173",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A signalling officer observes two trains travelling towards each other on the same railway track. One train moves at 52 km h⁻¹ while the other moves at 68 km h⁻¹. What is the relative speed of one train with respect to the other?\n\n(Neglect any effects due to acceleration.)",
+  "options": {
+    "A": "16 km h⁻¹",
+    "B": "60 km h⁻¹",
+    "C": "116 km h⁻¹",
+    "D": "120 km h⁻¹"
+  },
+  "answer": "D",
+  "answer_text": "120 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of relative velocity when two objects move directly towards each other. You are required to determine how fast one train appears to approach the other.",
+    "principle": "Relative velocity is the velocity of one object as observed from another moving object.\n\nA beginner may ask, 'What does relative velocity mean?'\n\nRelative velocity tells us how quickly the distance between two moving objects changes from the viewpoint of either object.\n\nThe method used depends on the direction of motion:\n\n• If the objects move in the **same direction**, their relative speed is obtained by subtracting their speeds.\n\n• If the objects move in **opposite directions**, their relative speed is obtained by adding their speeds because they are moving towards each other.\n\nFor motion along the same straight line:\n\nRelative speed (same direction) = |v₁ − v₂|\n\nRelative speed (opposite directions) = v₁ + v₂\n\nwhere:\n\n• v₁ = speed of the first object\n• v₂ = speed of the second object\n\nSince the trains are moving towards each other, the second formula applies.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nSpeed of the first train, v₁ = 52 km h⁻¹\n\nSpeed of the second train, v₂ = 68 km h⁻¹",
+      "Step 2: Determine the direction of motion.\n\nThe trains are travelling towards each other, which means they are moving in opposite directions.",
+      "Step 3: Select the appropriate formula.\n\nRelative speed = v₁ + v₂",
+      "Step 4: Substitute the given values.\n\nRelative speed = 52 + 68\n\n= 120 km h⁻¹",
+      "Step 5: Compare the result with the options.\n\nThe calculated relative speed is 120 km h⁻¹.\n\nTherefore, the correct answer is **Option D**."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (16 km h⁻¹) is obtained by subtracting the two speeds (68 − 52). Subtraction is used only when the objects move in the same direction, not when they move towards each other.",
+      "Option B (60 km h⁻¹) results from an incorrect calculation that neither represents the sum nor the difference of the given speeds.",
+      "Option C (116 km h⁻¹) is an arithmetic error. The correct sum of 52 and 68 is 120 km h⁻¹, not 116 km h⁻¹."
+    ],
+    "exam_tip": "Always read the direction of motion carefully before performing any calculation.\n\nRemember these simple rules:\n\n• Same direction → subtract the speeds.\n• Opposite directions → add the speeds.\n\nIn JAMB examinations, many candidates lose marks because they apply subtraction whenever they see the phrase 'relative velocity.' The direction of motion determines whether you add or subtract.",
+    "final_answer": "D. 120 km h⁻¹",
+    "simple_explanation": "Imagine two friends cycling directly towards each other. From the viewpoint of either cyclist, the other seems to approach much faster than if one person were standing still.\n\nSince both trains are moving towards each other, their speeds combine.\n\n52 km h⁻¹ + 68 km h⁻¹ = 120 km h⁻¹.\n\nTherefore, the relative speed is 120 km h⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Relative Velocity to learn how to solve problems involving trains, vehicles, boats crossing rivers, swimmers in streams, aircraft in wind, and other JAMB-style applications. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons, worked examples, and exam-focused practice."
+  },
+  "tags": [
+    "relative_velocity",
+    "opposite_direction_motion",
+    "rail_transportation",
+    "velocity_calculation",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q174",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During an inter-school swimming competition, a swimmer can swim at 5 m s⁻¹ in still water. She attempts to cross a river flowing at 3 m s⁻¹ by always pointing directly across the river.\n\nWhich of the following best describes her motion relative to an observer standing on the riverbank?",
+  "options": {
+    "A": "She reaches the opposite bank directly opposite her starting point with a speed of 5 m s⁻¹.",
+    "B": "She is carried downstream while moving across the river with a ground speed of approximately 5.8 m s⁻¹.",
+    "C": "She moves upstream because her swimming speed is greater than the river current.",
+    "D": "She remains stationary because the river current opposes her motion."
+  },
+  "answer": "B",
+  "answer_text": "She is carried downstream while moving across the river with a ground speed of approximately 5.8 m s⁻¹.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of relative velocity using the familiar situation of a swimmer crossing a flowing river. It requires you to determine how the swimmer appears to move when observed from the riverbank.",
+    "principle": "Relative velocity describes the velocity of one object as observed from another frame of reference.\n\nIn this situation, two velocities act simultaneously:\n\n• The swimmer's velocity relative to the water is directed straight across the river.\n\n• The river current carries the swimmer downstream.\n\nAn observer standing on the riverbank sees the combined effect of these two velocities. Since the two velocities act at right angles to each other, they are added using the Pythagorean theorem.\n\nThe magnitude of the resultant (ground) velocity is given by:\n\nv = √(u² + w²)\n\nwhere:\n\n• u = swimmer's speed in still water\n• w = speed of the river current\n• v = swimmer's velocity relative to the ground.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nSwimmer's speed in still water, u = 5 m s⁻¹\n\nRiver current, w = 3 m s⁻¹.",
+      "Step 2: Recognise the directions.\n\nThe swimmer heads straight across the river while the current flows downstream.\n\nThese two velocities are perpendicular to each other.",
+      "Step 3: Calculate the resultant (ground) speed.\n\nv = √(5² + 3²)\n\n= √(25 + 9)\n\n= √34\n\n≈ 5.83 m s⁻¹.",
+      "Step 4: Interpret the result.\n\nAlthough the swimmer aims directly across the river, the current continually pushes her downstream.\n\nTherefore, she does not land directly opposite her starting point. Instead, she follows a diagonal path across the river and is observed from the bank to have a ground speed of about 5.8 m s⁻¹.",
+      "Step 5: Select the correct option.\n\nOption B correctly describes both the direction of motion and the approximate ground speed."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the swimmer is carried downstream by the river current. Her speed relative to the ground is greater than 5 m s⁻¹, and she does not arrive directly opposite her starting point.",
+      "Option C is incorrect because pointing directly across the river does not produce an upstream motion. To move upstream, the swimmer would have to aim upstream.",
+      "Option D is incorrect because the river current does not cancel the swimmer's motion. Instead, both motions combine to produce a resultant velocity."
+    ],
+    "common_misconceptions": [
+      "Believing that the swimmer's speed in still water is the same as her speed relative to the ground.",
+      "Ignoring the effect of the river current when determining the observed motion.",
+      "Assuming that a stronger swimming speed automatically prevents downstream drift.",
+      "Confusing relative velocity with ordinary arithmetic addition or subtraction without considering direction."
+    ],
+    "exam_tip": "In river-crossing questions, first identify the frame of reference.\n\nIf the observer is on the riverbank, combine the swimmer's velocity and the river current as vectors.\n\nRemember that when the swimmer heads directly across the river, the current still carries the swimmer downstream unless he or she deliberately aims upstream.",
+    "final_answer": "B. She is carried downstream while moving across the river with a ground speed of approximately 5.8 m s⁻¹.",
+    "simple_explanation": "Imagine trying to walk straight across the floor of a moving train. To someone inside the train, you walk straight across.\n\nHowever, to someone standing outside, you move diagonally because your own motion combines with the train's motion.\n\nThe same thing happens to a swimmer in a flowing river. The swimmer moves across the water while the current pushes downstream, producing a diagonal path and a greater speed relative to the riverbank.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Relative Velocity to learn how to solve river-crossing problems, aircraft-in-wind questions, train and vehicle relative motion, and other JAMB-style applications. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for detailed worked examples and beginner-friendly explanations."
+  },
+  "tags": [
+    "relative_velocity",
+    "swimmer_crossing_river",
+    "application_of_vectors",
+    "vector_addition",
+    "river_current",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q175",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Relative velocity",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a revision class, a Physics teacher asked students to describe the meaning of relative velocity.\n\nWhich statement correctly explains the concept of relative velocity?",
+  "options": {
+    "A": "It is the velocity of one object as observed from another moving object or observer.",
+    "B": "It is always obtained by subtracting the smaller velocity from the larger velocity.",
+    "C": "It is the same as the resultant velocity produced when two vectors act on one object.",
+    "D": "It is the speed of an object measured without considering direction."
+  },
+  "answer": "A",
+  "answer_text": "It is the velocity of one object as observed from another moving object or observer.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of relative velocity. Rather than performing a calculation, it examines whether you know how the motion of one object is described with respect to another observer or moving object.",
+    "principle": "Velocity is a vector quantity because it has both magnitude and direction.\n\nA beginner may ask, 'What does relative mean?'\n\nThe word 'relative' means 'in comparison with' or 'with respect to.' Therefore, relative velocity is the velocity of one object as measured or observed from another object that may also be moving.\n\nFor example, imagine you are travelling in a bus while another bus moves beside you. If both buses travel at the same speed and in the same direction, the other bus may appear almost stationary to you, even though both buses are moving relative to the ground.\n\nThis illustrates that the observed motion depends on the observer's own motion.\n\nRelative velocity is different from resultant velocity.\n\n• Relative velocity compares the motion of one object with another.\n\n• Resultant velocity combines two or more vectors acting on the same object to produce a single equivalent vector.\n\nAlso, relative velocity is not always found by subtraction. When objects move in opposite directions, their relative velocity is obtained by vector addition, while subtraction applies only in certain same-direction situations.",
+    "steps": [
+      "Step 1: Examine Option A.\n\nThis correctly defines relative velocity as the velocity of one object with respect to another moving observer or object.\n\nTherefore, Option A is correct.",
+      "Step 2: Examine Option B.\n\nThis statement is incorrect because relative velocity is not always obtained by subtraction. Whether velocities are added or subtracted depends on the directions of motion.",
+      "Step 3: Examine Option C.\n\nThis statement confuses relative velocity with resultant velocity. Although both involve vectors, they describe different physical situations.",
+      "Step 4: Examine Option D.\n\nThis statement is incorrect because speed has magnitude only, whereas velocity includes both magnitude and direction. Relative velocity is therefore a vector quantity."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because subtraction is only applicable in certain cases, such as objects moving in the same direction. Relative velocity is determined using vector principles, not a fixed arithmetic rule.",
+      "Option C is incorrect because resultant velocity refers to the combined effect of vectors acting on the same object, whereas relative velocity compares the motion of different objects or observers.",
+      "Option D is incorrect because it describes speed rather than velocity. Direction is an essential part of relative velocity."
+    ],
+    "exam_tip": "Whenever JAMB asks about relative velocity, first identify the observer.\n\nAsk yourself:\n\n'Whose point of view is being considered?'\n\nRemember these distinctions:\n\n• Relative velocity compares the motion of different objects.\n\n• Resultant velocity combines vectors acting on one object.\n\n• Velocity always has both magnitude and direction.",
+    "final_answer": "A. It is the velocity of one object as observed from another moving object or observer.",
+    "simple_explanation": "Imagine you are sitting inside a moving train while another train moves beside yours.\n\nEven though both trains are moving, the other train may appear to move slowly, remain stationary, or move backwards depending on how your own train is moving.\n\nThis observed motion is called relative velocity because it describes the motion of one object relative to another observer.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Relative Velocity to learn the meaning of relative velocity, frames of reference, same-direction and opposite-direction motion, river-crossing problems, aircraft-in-wind questions, and other JAMB-style applications with fully worked examples."
+  },
+  "tags": [
+    "relative_velocity",
+    "conceptual_physics",
+    "frames_of_reference",
+    "vectors",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q176",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During a drone delivery trial, an unmanned aerial vehicle is programmed to fly due east at an airspeed of 22 m s⁻¹. A steady wind blows due east at 8 m s⁻¹ throughout the flight.\n\nAssuming the drone maintains its intended heading, what is its ground speed?",
+  "options": {
+    "A": "14 m s⁻¹",
+    "B": "22 m s⁻¹",
+    "C": "30 m s⁻¹",
+    "D": "176 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "30 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of relative velocity by asking you to determine the ground speed of a drone flying in the same direction as the wind.",
+    "principle": "Relative velocity describes the velocity of one object as observed from another object or medium.\n\nFor aircraft and drones, three velocities are commonly involved:\n\n• Airspeed — the speed of the aircraft relative to the surrounding air.\n• Wind velocity — the speed and direction of the moving air.\n• Ground speed — the actual speed of the aircraft relative to the ground.\n\nA beginner may ask, 'Why is the wind important?'\n\nThe drone moves through the air, but the air itself may also be moving. Therefore, an observer standing on the ground sees the combined effect of the drone's motion and the wind.\n\nWhen the wind blows in the same direction as the drone, it assists the motion, so the velocities are added.\n\nWhen the wind blows against the drone, it opposes the motion, so the velocities are subtracted.\n\nMathematically,\n\nGround velocity = Air velocity + Wind velocity\n\nwhen both are in the same direction.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nDrone airspeed = 22 m s⁻¹ east.\n\nWind speed = 8 m s⁻¹ east.",
+      "Step 2: Determine the relationship between the two velocities.\n\nBoth velocities act in the same direction (east).\n\nTherefore, they reinforce each other.",
+      "Step 3: Apply the formula.\n\nGround speed = Airspeed + Wind speed",
+      "Step 4: Substitute the values.\n\nGround speed = 22 + 8 = 30 m s⁻¹.",
+      "Step 5: Compare the result with the options.\n\nThe calculated ground speed is 30 m s⁻¹.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (14 m s⁻¹) is obtained by subtracting the wind speed from the drone's airspeed. Subtraction is appropriate only when the wind blows directly against the drone.",
+      "Option B (22 m s⁻¹) ignores the effect of the wind completely. Since the air is moving, the ground speed cannot remain equal to the airspeed.",
+      "Option D (176 m s⁻¹) is obtained by multiplying 22 by 8. Relative velocity problems require vector addition or subtraction, not multiplication."
+    ],
+    "common_misconceptions": [
+      "Believing that relative velocity always involves subtraction.",
+      "Confusing airspeed with ground speed.",
+      "Ignoring the direction of the wind.",
+      "Using ordinary arithmetic operations such as multiplication instead of vector addition."
+    ],
+    "exam_tip": "In JAMB examinations, always identify whether the wind or current assists or opposes the motion before performing any calculation.\n\nRemember:\n\n• Same direction → Add the velocities.\n• Opposite direction → Subtract the velocities.\n\nPay close attention to the directions stated in the question before choosing the appropriate operation.",
+    "final_answer": "C. 30 m s⁻¹",
+    "simple_explanation": "Imagine running on a moving walkway at an airport.\n\nIf the walkway moves in the same direction as you, someone standing outside sees you moving faster than your own running speed.\n\nSimilarly, the eastward wind helps the drone move faster over the ground.\n\nDrone speed = 22 m s⁻¹\n\nWind speed = 8 m s⁻¹\n\nGround speed = 22 + 8 = 30 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Relative Velocity to learn how airspeed, wind speed and ground speed are related. The lesson also covers boats crossing rivers, swimmers in flowing streams, trains, road transport and other JAMB-style applications, with fully worked examples and beginner-friendly explanations in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "relative_velocity",
+    "ground_speed",
+    "drone_navigation",
+    "wind_velocity",
+    "vectors",
+    "application",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q177",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An urban transport planner is comparing two traffic situations.\n\nSituation I: Two buses travel along the same straight road in the same direction at different speeds.\n\nSituation II: Two buses travel along the same straight road towards each other.\n\nIgnoring changes in speed, which statement correctly compares the relative velocity in the two situations?",
+  "options": {
+    "A": "The relative velocity is obtained by subtracting the speeds in both situations.",
+    "B": "The relative velocity is obtained by adding the speeds in both situations.",
+    "C": "The relative velocity is obtained by subtracting the speeds in Situation I but adding the speeds in Situation II.",
+    "D": "The relative velocity is zero in Situation I but equal to the average of the speeds in Situation II."
+  },
+  "answer": "C",
+  "answer_text": "The relative velocity is obtained by subtracting the speeds in Situation I but adding the speeds in Situation II.",
+  "explanation": {
+    "question_restate": "This question compares two common transportation scenarios to test your understanding of how relative velocity depends on the direction of motion of the objects involved. Rather than performing calculations, you are required to analyse the situations and identify the correct method for determining the relative velocity.",
+    "principle": "Relative velocity is the velocity of one moving object as observed from another moving object.\n\nA beginner may ask, 'What does relative mean?'\n\nThe word 'relative' means 'with respect to another object.' Instead of describing how fast an object moves relative to the ground, relative velocity describes how fast one object appears to move when viewed from another moving object.\n\nThe direction of motion is very important.\n\n• When two objects move in the **same direction**, the distance between them changes slowly, so their relative velocity is the **difference** between their velocities.\n\n• When two objects move **towards each other in opposite directions**, the distance between them changes more rapidly. Their relative velocity is therefore the **sum** of their velocities.\n\nThis is a fundamental principle frequently tested in JAMB questions involving road traffic, railway systems, aircraft and boats.",
+    "steps": [
+      "Step 1: Examine Situation I.\n\nThe buses are travelling in the same direction.\n\nOne bus gains on the other at a rate equal to the difference between their speeds.\n\nTherefore, relative velocity is found by subtraction.",
+      "Step 2: Examine Situation II.\n\nThe buses are travelling towards each other.\n\nSince both vehicles are closing the gap simultaneously, the closing speed is the sum of their speeds.\n\nTherefore, relative velocity is found by addition.",
+      "Step 3: Compare the two situations.\n\nSituation I requires subtraction.\n\nSituation II requires addition.\n\nOnly Option C correctly compares both situations."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because subtraction applies only when the objects move in the same direction. It is not used when they move towards each other.",
+      "Option B is incorrect because addition is used only for objects moving towards each other, not for those travelling in the same direction.",
+      "Option D is incorrect because the relative velocity in the same direction is not necessarily zero unless both objects have exactly the same velocity. Also, the relative velocity in opposite directions is not the average of their speeds."
+    ],
+    "exam_tip": "Always identify the direction of motion before choosing a formula.\n\nRemember these rules:\n\n• Same direction → Relative velocity = Difference of velocities.\n\n• Opposite directions (moving towards each other) → Relative velocity = Sum of velocities.\n\nMany students lose marks because they apply subtraction in every relative velocity question without considering the direction of motion.",
+    "final_answer": "C. The relative velocity is obtained by subtracting the speeds in Situation I but adding the speeds in Situation II.",
+    "simple_explanation": "Imagine you are sitting in one moving bus.\n\nIf another bus is travelling ahead of you in the same direction, it seems to move away from you slowly because you are both moving forward. The speed you notice is the difference between your speeds.\n\nIf another bus is coming directly towards you, both buses are approaching each other at the same time. The gap closes much faster, so their relative velocity is the sum of their speeds.\n\nThat is why Option C is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Relative Velocity to learn how to determine relative velocity for objects moving in the same direction, opposite directions, across rivers, in moving air, and other real-life JAMB applications. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations, worked examples, and additional exam-focused practice."
+  },
+  "tags": [
+    "relative_velocity",
+    "comparison_analysis",
+    "transportation",
+    "same_direction_motion",
+    "opposite_direction_motion",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q178",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "Following a flood, a rescue team uses a motorboat to reach people trapped on the opposite bank of a river. The boat can move at 10 m s⁻¹ relative to the water, while the river current flows downstream at 4 m s⁻¹. If the pilot steers the boat straight across the river, which statement best describes the boat's motion relative to the ground?",
+  "options": {
+    "A": "The boat reaches the opposite bank directly without drifting because its speed is greater than the river current.",
+    "B": "The boat moves across the river while drifting downstream because its ground velocity is the combination of the boat's velocity and the river current.",
+    "C": "The boat is carried entirely downstream because the river current determines its motion relative to the ground.",
+    "D": "The boat moves upstream because the boat's velocity opposes the direction of the river current."
+  },
+  "answer": "B",
+  "answer_text": "The boat moves across the river while drifting downstream because its ground velocity is the combination of the boat's velocity and the river current.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of relative velocity by applying it to a flood rescue operation. It examines how the motion of a boat is affected when it travels across a flowing river.",
+    "principle": "Relative velocity describes the velocity of one object as observed from another object or medium.\n\nIn river-crossing problems, two velocities are involved:\n\n• The velocity of the boat relative to the water.\n• The velocity of the river current relative to the ground.\n\nThe actual motion of the boat as seen by someone standing on the river bank is called the ground velocity. It is obtained by combining the boat's velocity with the velocity of the flowing water.\n\nWhen a pilot points the boat straight across the river, the boat still moves with the current because the water itself is moving. As a result, the boat follows a diagonal path and lands downstream unless the pilot deliberately aims upstream to compensate for the current.",
+    "steps": [
+      "Step 1: Identify the given information.\n\nBoat's velocity relative to the water = 10 m s⁻¹ directed straight across the river.\n\nRiver current = 4 m s⁻¹ directed downstream.",
+      "Step 2: Determine the observer.\n\nThe question asks about the boat's motion relative to the ground, that is, as observed by someone standing on the river bank.",
+      "Step 3: Apply the principle of relative velocity.\n\nThe ground velocity is the vector combination of the boat's velocity through the water and the river current.\n\nSince these velocities act in different directions, the boat simultaneously moves across the river and downstream.",
+      "Step 4: Interpret the motion.\n\nThe boat successfully crosses the river but does not travel along a straight line directly opposite its starting point. Instead, it drifts downstream while crossing.",
+      "Step 5: Select the correct option.\n\nOption B correctly describes the boat's motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a higher boat speed does not automatically prevent downstream drift. The river current still contributes to the boat's ground velocity unless the pilot aims upstream.",
+      "Option C is incorrect because the boat's own engine provides motion across the river. The current does not completely determine the boat's movement.",
+      "Option D is incorrect because steering straight across the river does not produce upstream motion. The current carries the boat downstream, not upstream."
+    ],
+    "exam_tip": "Whenever a question involves boats, swimmers or aircraft moving through a flowing medium, first identify the two velocities involved.\n\nAsk yourself:\n\n• What is the object's velocity relative to the medium?\n• What is the medium's velocity relative to the ground?\n\nThe observed motion is obtained by combining these velocities as vectors. Remember that relative velocity is a vector quantity, so direction is just as important as magnitude.",
+    "final_answer": "B. The boat moves across the river while drifting downstream because its ground velocity is the combination of the boat's velocity and the river current.",
+    "simple_explanation": "Imagine trying to walk straight across a moving walkway at an airport. Although you walk directly across it, the walkway also carries you forward.\n\nThe same thing happens to the rescue boat. The engine pushes it across the river, while the flowing water carries it downstream. Therefore, the boat follows a slanting path instead of reaching the point directly opposite where it started.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Relative Velocity to learn how to solve river-crossing, swimmer, rescue boat, aircraft-in-wind and transportation problems using vector addition. The NaijaPrizeGate CBT Tutorial Centre provides beginner-friendly explanations, worked examples and JAMB-style practice questions."
+  },
+  "tags": [
+    "relative_velocity",
+    "rescue_boat",
+    "river_crossing",
+    "application_of_vectors",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q179",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "In a packaging factory, cartons are carried by a conveyor belt moving eastward at 2.8 m s⁻¹. A quality-control robot moves along the belt in the same direction at 1.9 m s⁻¹ relative to the belt.\n\nWhat is the speed of the robot relative to a stationary observer standing beside the conveyor belt?",
+  "options": {
+    "A": "0.9 m s⁻¹",
+    "B": "2.35 m s⁻¹",
+    "C": "4.7 m s⁻¹",
+    "D": "5.3 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "4.7 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of relative velocity when two objects move in the same direction. You are required to determine the robot's speed relative to the ground by combining its speed relative to the conveyor belt with the speed of the conveyor belt itself.",
+    "principle": "Relative velocity describes the velocity of one object as observed from another moving object or reference frame.\n\nBefore solving the problem, it is important to understand the different velocities involved.\n\nThe conveyor belt is moving relative to the ground.\n\nThe robot is moving relative to the conveyor belt.\n\nA stationary observer beside the conveyor belt is interested in the robot's velocity relative to the ground.\n\nWhen an object moves in the same direction as a moving platform, its velocity relative to the ground is obtained by adding:\n\nVelocity of object relative to platform + Velocity of platform relative to ground.\n\nMathematically:\n\nv₍robot, ground₎ = v₍robot, belt₎ + v₍belt, ground₎\n\nThis is because both velocities act in the same direction.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nVelocity of conveyor belt relative to the ground = 2.8 m s⁻¹ east.\n\nVelocity of robot relative to the conveyor belt = 1.9 m s⁻¹ east.",
+      "Step 2: Determine the required quantity.\n\nRequired:\nVelocity of the robot relative to the ground.",
+      "Step 3: Select the appropriate formula.\n\nSince both the robot and the conveyor belt move eastward, their velocities are added.\n\nv = 2.8 + 1.9",
+      "Step 4: Perform the calculation.\n\nv = 4.7 m s⁻¹",
+      "Step 5: Compare with the options.\n\nThe calculated value, 4.7 m s⁻¹, corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (0.9 m s⁻¹) is obtained by subtracting the two velocities. Subtraction is used only when finding the relative speed between objects moving in the same direction or when one object moves opposite to the other in the chosen reference frame. It is not applicable here.",
+      "Option B (2.35 m s⁻¹) is the arithmetic average of the two speeds and has no physical meaning in this situation.",
+      "Option D (5.3 m s⁻¹) results from an incorrect calculation and does not equal the sum of the given velocities."
+    ],
+    "exam_tip": "Always identify the reference frame before performing any calculation involving relative velocity.\n\nIf an object moves in the same direction as a moving platform (such as a conveyor belt, escalator or moving walkway), add the velocities.\n\nIf the object moves against the motion of the platform, subtract the velocities.\n\nJAMB often tests whether candidates can identify the correct operation before carrying out the calculation.",
+    "final_answer": "C. 4.7 m s⁻¹",
+    "simple_explanation": "Imagine standing beside a moving conveyor belt.\n\nThe belt carries the robot forward at 2.8 m s⁻¹, while the robot also walks forward on the belt at 1.9 m s⁻¹.\n\nSince both movements are in the same direction, they work together.\n\nTherefore, the robot appears to move at:\n\n2.8 + 1.9 = 4.7 m s⁻¹\n\nrelative to someone standing on the ground.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Relative Velocity for a complete explanation of motion relative to moving reference frames, including conveyor belts, moving walkways, river crossings, aircraft in wind, trains, and other JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and additional exam-focused practice."
+  },
+  "tags": [
+    "relative_velocity",
+    "conveyor_belt",
+    "moving_reference_frame",
+    "manufacturing",
+    "application",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q180",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During a technical college workshop on motion, an instructor asked trainees to discuss relative velocity. Four statements were presented:\n\nI. Relative velocity is the velocity of one object measured with respect to another moving object.\n\nII. When two objects move in the same direction, their relative speed is obtained by finding the difference between their speeds.\n\nIII. When two objects move directly towards each other, their relative speed is equal to the sum of their speeds.\n\nIV. Relative velocity depends only on the speed of the observed object and is not affected by the motion of the observer.\n\nWhich set of statements is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "I, III and IV only",
+    "C": "II and IV only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, II and III only",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of the meaning of relative velocity and how it is determined when objects move in the same direction or in opposite directions. It also tests whether you recognise the effect of the observer's motion on the measured velocity.",
+    "principle": "Relative velocity describes the velocity of one object as observed from another object that may also be moving.\n\nA beginner may ask, 'Why is it called relative velocity?'\n\nThe word 'relative' means 'compared with something else.' Instead of measuring an object's motion from the ground, we compare its motion with another moving object.\n\nFor example, if you are sitting in a moving bus and another bus is travelling beside you at the same speed and in the same direction, the other bus appears almost stationary relative to you, even though both buses are moving relative to the ground.\n\nImportant rules include:\n\n• When two objects move in the same direction, the relative speed is the difference between their speeds.\n\n• When two objects move directly towards each other, the relative speed is the sum of their speeds.\n\n• Relative velocity always depends on the motions of both the observer and the object being observed.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThis is the correct definition of relative velocity. It describes the velocity of one object with respect to another moving object.\n\nTherefore, Statement I is correct.",
+      "Step 2: Examine Statement II.\n\nFor two objects moving in the same direction, one object gains on the other at a rate equal to the difference between their speeds.\n\nTherefore, Statement II is correct.",
+      "Step 3: Examine Statement III.\n\nWhen two objects move directly towards each other, the distance between them decreases at a rate equal to the sum of their speeds.\n\nTherefore, Statement III is correct.",
+      "Step 4: Examine Statement IV.\n\nThis statement is incorrect because relative velocity depends on the motion of both the observed object and the observer. Ignoring the observer's motion gives an incorrect description of relative motion.",
+      "Step 5: Identify the correct combination.\n\nStatements I, II and III are correct, while Statement IV is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement IV, which falsely assumes that the observer's motion has no effect on relative velocity.",
+      "Option C is incorrect because Statement I is a correct definition of relative velocity, while Statement IV is incorrect.",
+      "Option D is incorrect because Statement IV is false. Since one incorrect statement is included, the entire combination cannot be correct."
+    ],
+    "exam_tip": "When answering JAMB questions on relative velocity, first identify who is observing the motion.\n\nRemember these key ideas:\n\n• Relative velocity compares the motion of two objects.\n• Same direction → subtract the speeds.\n• Opposite directions → add the speeds.\n• The observer's motion always influences the relative velocity.\n\nQuestions often include one statement that ignores the observer's motion. Such statements are usually incorrect.",
+    "final_answer": "A. I, II and III only",
+    "simple_explanation": "Imagine you are riding in a train while another train moves beside you.\n\nIf both trains travel at the same speed in the same direction, the other train seems almost motionless. This is because you are measuring its motion relative to yourself, not relative to the ground.\n\nRelative velocity therefore depends on the movement of both objects. Statements I, II and III correctly describe this idea, while Statement IV does not.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Relative Velocity to learn the meaning of relative velocity, same-direction and opposite-direction motion, observer effects, river-crossing problems, aircraft-in-wind applications, and worked JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and additional practice questions."
+  },
+  "tags": [
+    "relative_velocity",
+    "multiple_statements",
+    "conceptual_physics",
+    "motion",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q181",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A pilot intends to fly an aircraft due north at an airspeed of 240 km h⁻¹. A steady wind blows from the west to the east at 70 km h⁻¹.\n\nTo ensure that the aircraft follows a ground track due north, the pilot should head",
+  "options": {
+    "A": "slightly west of north",
+    "B": "slightly east of north",
+    "C": "due north",
+    "D": "due south"
+  },
+  "answer": "A",
+  "answer_text": "slightly west of north",
+  "explanation": {
+    "question_restate": "This question examines how a pilot compensates for the effect of wind when navigating an aircraft. It tests your understanding of relative velocity and the direction in which an aircraft must be pointed so that its actual path over the ground remains along the intended route.",
+    "principle": "Relative velocity describes the motion of one object as observed from another object or medium. In aviation, the aircraft moves through the air, while the moving air (wind) also contributes to the aircraft's motion relative to the ground.\n\nThree important velocities are involved:\n\n• **Airspeed** – the velocity of the aircraft relative to the surrounding air.\n\n• **Wind velocity** – the velocity of the moving air relative to the ground.\n\n• **Ground velocity** – the actual velocity of the aircraft relative to the ground.\n\nThese quantities are vectors, meaning they possess both magnitude and direction. Therefore, they are combined using vector addition rather than ordinary arithmetic.\n\nWhen wind blows sideways across the intended route, the aircraft would naturally drift in the direction of the wind. To prevent this drift, the pilot deliberately points the aircraft slightly into the wind. This correction is called the **crab angle** or **wind correction angle**.",
+    "steps": [
+      "Step 1: Identify the known information.\n\n• Airspeed = 240 km h⁻¹ due north (relative to the air).\n\n• Wind blows from west to east at 70 km h⁻¹.\n\nThis means the wind pushes the aircraft towards the east.",
+      "Step 2: Predict what would happen if the pilot flew due north.\n\nThe aircraft would be carried eastward by the wind while moving northward.\n\nIts ground path would therefore be towards the north-east instead of due north.",
+      "Step 3: Determine the required correction.\n\nTo cancel the eastward drift caused by the wind, the pilot must intentionally point the aircraft slightly towards the west while still generally travelling north.\n\nThe westward component of the aircraft's airspeed balances the eastward wind.",
+      "Step 4: Select the correct option.\n\nThe correct heading is therefore **slightly west of north**.\n\nAlthough the given speeds (240 km h⁻¹ and 70 km h⁻¹) determine the exact correction angle mathematically, the question requires only the correct direction of the heading, not the angle itself.\n\nHence, the correct answer is **Option A**."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because heading slightly east of north would increase the eastward drift produced by the wind instead of cancelling it.",
+      "Option C is incorrect because flying due north without correction allows the wind to push the aircraft eastward, causing it to miss the intended ground track.",
+      "Option D is incorrect because flying due south sends the aircraft in the opposite direction of the intended journey."
+    ],
+    "common_misconceptions": [
+      "Many students assume that the aircraft should simply point in the direction it wishes to travel. In reality, the wind changes the ground path.",
+      "Some learners believe that wind only changes speed. Wind can also change the direction of motion because velocity is a vector quantity.",
+      "A common mistake is to ignore the direction from which the wind blows. A wind blowing from west to east pushes the aircraft towards the east."
+    ],
+    "exam_tip": "For JAMB questions involving aircraft and wind:\n\n• Identify the direction in which the wind pushes the aircraft.\n\n• The aircraft must always head **into the wind** to maintain its intended ground path.\n\n• Remember that velocities are vectors, so both magnitude and direction must be considered.\n\nA useful memory aid is:\n\n**'If the wind pushes you one way, point slightly the opposite way.'**",
+    "final_answer": "A. slightly west of north",
+    "simple_explanation": "Imagine trying to walk straight across an open field while a strong wind pushes you to your right. If you keep facing straight ahead, you will gradually drift to the right.\n\nTo arrive exactly where you want, you must face a little to the left while walking.\n\nThe same idea applies to an aircraft. Since the wind pushes it eastward, the pilot points the aircraft slightly west of north so that the wind carries it back onto the intended path.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Relative Velocity to learn how airspeed, wind velocity and ground velocity are represented using vectors. Study worked examples involving aircraft navigation, boats crossing rivers, swimmers in streams and other JAMB-style applications at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "relative_velocity",
+    "aircraft_navigation",
+    "wind_correction",
+    "ground_velocity",
+    "vectors",
+    "jamb_revision",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q182",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "While navigating across a tidal channel, a ship's captain notices that the ocean current has become much stronger than it was earlier, while the ship maintains the same speed relative to the surrounding water and continues to point in the same direction.\n\nWhich of the following best describes the effect of the stronger ocean current on the ship's motion relative to the shore?",
+  "options": {
+    "A": "The ship's velocity relative to the shore changes because the current contributes to its ground motion.",
+    "B": "The ship's velocity relative to the shore remains unchanged because its speed through the water is constant.",
+    "C": "The ship's velocity relative to the shore becomes zero because the current cancels the ship's motion.",
+    "D": "The ship's velocity relative to the shore depends only on the ship's engine power and not on the current."
+  },
+  "answer": "A",
+  "answer_text": "The ship's velocity relative to the shore changes because the current contributes to its ground motion.",
+  "explanation": {
+    "question_restate": "This question examines your understanding of how a change in the velocity of a moving medium, such as an ocean current, affects the relative motion of an object travelling through that medium. Instead of performing calculations, you are required to interpret the physical situation correctly.",
+    "principle": "Relative velocity is the velocity of one object measured with respect to another object or reference frame.\n\nIn marine navigation, a ship usually moves relative to the surrounding water, while the water itself may also be moving because of an ocean current.\n\nA beginner may ask, 'Why are there two velocities?'\n\nThis is because the ship has one velocity relative to the water, while the water has another velocity relative to the shore.\n\nThe actual velocity observed from the shore, often called the ground velocity, is obtained by combining these two velocities as vectors.\n\nTherefore:\n\nGround velocity = Ship's velocity relative to water + Water current velocity\n\nSince velocity has both magnitude and direction, any change in the current can alter the ship's actual motion relative to the shore, even if the ship's own speed through the water remains unchanged.",
+    "steps": [
+      "Step 1: Identify the quantities that remain constant.\n\nThe question states that the ship keeps the same speed relative to the water and continues to point in the same direction.\n\nTherefore, the ship's own velocity through the water does not change.",
+      "Step 2: Identify what has changed.\n\nThe ocean current becomes stronger.\n\nThis means the velocity of the moving medium (the water) has changed.",
+      "Step 3: Determine the effect on the ship's motion relative to the shore.\n\nThe ship's observed motion from the shore depends on both its velocity through the water and the velocity of the current.\n\nSince one of these vectors has changed, the resultant or ground velocity must also change.",
+      "Step 4: Evaluate the options.\n\nOption A correctly states that the stronger current contributes to the ship's ground motion, causing its velocity relative to the shore to change.\n\nTherefore, Option A is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a constant speed through the water does not guarantee a constant velocity relative to the shore. A change in the current changes the resultant velocity.",
+      "Option C is incorrect because a stronger current does not automatically cancel the ship's motion. The resultant velocity becomes zero only in a very special case where the vectors exactly oppose each other with equal magnitudes, which is not stated.",
+      "Option D is incorrect because although engine power helps the ship maintain its speed through the water, the observed motion relative to the shore is also influenced by the ocean current."
+    ],
+    "exam_tip": "Whenever a question involves boats, ships or swimmers moving in flowing water, identify two separate motions:\n\n• The object's velocity relative to the water.\n• The water's velocity relative to the ground.\n\nThe actual motion observed from the shore depends on both velocities.\n\nA common JAMB mistake is to ignore the motion of the surrounding medium and consider only the object's own speed.",
+    "final_answer": "A. The ship's velocity relative to the shore changes because the current contributes to its ground motion.",
+    "simple_explanation": "Imagine you are walking forward on a moving walkway at an airport.\n\nEven if you keep walking at exactly the same speed, you reach the end sooner when the walkway moves faster.\n\nSimilarly, a ship travelling through water is also affected by the movement of the water itself. If the ocean current becomes stronger, the ship's motion relative to the shore changes even though the ship continues moving through the water at the same speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Relative Velocity to learn how moving media such as rivers, ocean currents and wind affect the motion of boats, ships, swimmers and aircraft. The lesson includes vector illustrations, worked JAMB-style examples and practical applications in navigation."
+  },
+  "tags": [
+    "relative_velocity",
+    "ocean_current",
+    "marine_navigation",
+    "interpretation",
+    "moving_medium",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q183",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An automated warehouse uses a moving platform to transport goods in a straight line at a speed of 2.8 m s⁻¹ east. A maintenance robot moves on the platform in the same direction at a speed of 6.3 m s⁻¹ relative to the platform.\n\nWhat is the speed of the maintenance robot relative to the ground?",
+  "options": {
+    "A": "3.5 m s⁻¹",
+    "B": "6.3 m s⁻¹",
+    "C": "9.1 m s⁻¹",
+    "D": "17.6 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "9.1 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the velocity of an object moving on another object that is already in motion. You are required to find the maintenance robot's velocity relative to the ground.",
+    "principle": "Relative velocity describes the velocity of one object as observed from another reference frame.\n\nA beginner may ask, 'Why do we need relative velocity?'\n\nSometimes an object is moving on another object that is also moving. In such situations, the actual motion observed from the ground depends on the motions of both objects.\n\nThe relationship is:\n\nVelocity of object relative to ground = Velocity of object relative to moving platform + Velocity of platform relative to ground\n\nThis addition applies because both the robot and the platform are moving in the same direction.\n\nIf they were moving in opposite directions, subtraction would be required instead.\n\nRemember that velocity is a vector quantity, meaning that both magnitude and direction must always be considered.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nVelocity of the moving platform relative to the ground = 2.8 m s⁻¹ east.\n\nVelocity of the robot relative to the platform = 6.3 m s⁻¹ east.",
+      "Step 2: Determine whether the velocities should be added or subtracted.\n\nSince both motions are towards the east, they reinforce one another. Therefore, the velocities are added.",
+      "Step 3: Apply the relative velocity relationship.\n\nVelocity of robot relative to ground = 6.3 + 2.8",
+      "Step 4: Perform the calculation.\n\n6.3 + 2.8 = 9.1 m s⁻¹",
+      "Step 5: Compare the result with the options.\n\nThe calculated value is 9.1 m s⁻¹.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (3.5 m s⁻¹) is obtained by subtracting the velocities. Subtraction is only appropriate when the two objects move in opposite directions.",
+      "Option B (6.3 m s⁻¹) ignores the motion of the moving platform and considers only the robot's speed relative to the platform.",
+      "Option D (17.6 m s⁻¹) results from an incorrect multiplication of the given values instead of applying the principle of relative velocity."
+    ],
+    "common_misconceptions": [
+      "Believing that relative velocity always involves subtraction.",
+      "Ignoring the motion of the platform and using only the robot's speed.",
+      "Confusing speed relative to the platform with speed relative to the ground.",
+      "Forgetting that direction determines whether velocities are added or subtracted."
+    ],
+    "exam_tip": "In JAMB examinations, first identify the reference frame.\n\n• If the object and the reference frame move in the same direction, add their velocities.\n\n• If they move in opposite directions, subtract their velocities.\n\nAlways read carefully to determine whether the question asks for velocity relative to the ground or relative to another moving object.",
+    "final_answer": "C. 9.1 m s⁻¹",
+    "simple_explanation": "Imagine standing on a moving walkway at an airport while walking forward.\n\nSomeone standing on the ground sees you moving faster than either your walking speed alone or the walkway's speed alone because both motions combine.\n\nSimilarly, the robot moves at 6.3 m s⁻¹ on a platform already moving at 2.8 m s⁻¹. Therefore, its speed relative to the ground is:\n\n6.3 + 2.8 = 9.1 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Relative Velocity to learn how to solve problems involving moving platforms, conveyor systems, vehicles, boats crossing rivers, aircraft in wind, and other JAMB-style applications. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons, worked examples, and exam-focused practice."
+  },
+  "tags": [
+    "relative_velocity",
+    "moving_platform",
+    "industrial_automation",
+    "application",
+    "velocity",
+    "phy_03"
+  ],
+  "active": true
+},
+{
+  "id": "phy_03_q184",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_03",
+  "topic_title": "Scalars and Vectors",
+  "subtopic": "Relative velocity",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "Mission controllers observe that a spacecraft is approaching a space station along the same straight line. The space station is moving at 12 m s⁻¹ relative to Earth, while the spacecraft is travelling at 18 m s⁻¹ in the same direction.\n\nFor a safe docking operation, the pilot needs to know the spacecraft's velocity relative to the space station.\n\nWhat is the relative velocity of the spacecraft with respect to the space station?",
+  "options": {
+    "A": "6 m s⁻¹",
+    "B": "30 m s⁻¹",
+    "C": "15 m s⁻¹",
+    "D": "216 m s⁻¹"
+  },
+  "answer": "A",
+  "answer_text": "6 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the relative velocity of a spacecraft approaching a moving space station. Since both objects are travelling in the same direction, you must apply the correct rule for relative velocity rather than simply adding their speeds.",
+    "principle": "Relative velocity is the velocity of one moving object as observed from another moving object.\n\nA beginner may ask, 'Why do we need relative velocity?'\n\nIn many practical situations, what matters is not how fast an object moves relative to the Earth but how fast it moves relative to another object. Examples include two cars on a highway, a boat approaching a ship, an aircraft flying in wind, or a spacecraft docking with a space station.\n\nWhen two objects move in the **same direction**, their relative velocity is obtained by subtracting their velocities because the object in front is already moving away from the one behind.\n\nThe formula is:\n\nRelative velocity = Faster object's velocity − Slower object's velocity\n\nWhen two objects move in **opposite directions**, their relative velocity is found by adding their speeds because they approach each other more quickly.\n\nOne of the most common mistakes in JAMB is adding velocities even when both objects move in the same direction.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nVelocity of the spacecraft, v₁ = 18 m s⁻¹\n\nVelocity of the space station, v₂ = 12 m s⁻¹",
+      "Step 2: Determine the direction of motion.\n\nBoth the spacecraft and the space station are travelling in the same direction.\n\nTherefore, the appropriate formula is:\n\nRelative velocity = v₁ − v₂",
+      "Step 3: Substitute the values.\n\nRelative velocity = 18 − 12\n\n= 6 m s⁻¹",
+      "Step 4: Verify the result.\n\nA relative velocity of 6 m s⁻¹ means that, from the viewpoint of an astronaut on the space station, the spacecraft is approaching at 6 m s⁻¹. This relatively low approach speed is appropriate for a controlled docking manoeuvre.",
+      "Step 5: Compare with the options.\n\nOption A corresponds to 6 m s⁻¹ and is therefore the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (30 m s⁻¹) is incorrect because it is obtained by adding the two velocities. Addition is used when the objects move in opposite directions, not in the same direction.",
+      "Option C (15 m s⁻¹) is incorrect because it does not result from the correct application of the relative velocity formula and reflects an arithmetic error.",
+      "Option D (216 m s⁻¹) is incorrect because it is the product of the two given velocities (18 × 12), which has no physical meaning in this context."
+    ],
+    "common_misconceptions": [
+      "Believing that relative velocity always requires addition.",
+      "Ignoring the direction in which the objects are moving.",
+      "Confusing relative velocity with resultant velocity.",
+      "Using multiplication or other unrelated operations instead of the appropriate vector relationship."
+    ],
+    "exam_tip": "Always begin by asking whether the objects are moving in the **same direction** or in **opposite directions**.\n\n• Same direction → subtract the velocities.\n• Opposite directions → add the velocities.\n\nThis simple check prevents one of the most common mistakes made in JAMB Physics.",
+    "final_answer": "A. 6 m s⁻¹",
+    "simple_explanation": "Imagine you are in a bus travelling at 12 m s⁻¹, and another bus behind you is moving at 18 m s⁻¹ in the same direction. Although the second bus is moving at 18 m s⁻¹ relative to the ground, it catches up with your bus at only 6 m s⁻¹.\n\nThe same idea applies to the spacecraft and the space station. The spacecraft approaches the station at a relative speed of 6 m s⁻¹, making Option A the correct answer.",
+    "tutorial_reference": "Visit Tutorials → Physics → Scalars and Vectors → Relative Velocity to learn how to solve JAMB-style questions involving vehicles, trains, boats, aircraft, drones and spacecraft. The NaijaPrizeGate CBT Tutorial Centre provides beginner-friendly explanations, worked examples and exam-focused practice on relative motion."
+  },
+  "tags": [
+    "relative_velocity",
+    "spacecraft_docking",
+    "space_technology",
+    "same_direction_motion",
+    "application",
+    "jamb_physics",
+    "phy_03"
+  ],
+  "active": true
 }
 
 
