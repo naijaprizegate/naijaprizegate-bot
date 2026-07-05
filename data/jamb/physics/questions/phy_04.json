@@ -1,1 +1,754 @@
+[
+  {
+  "id": "phy_04_q001",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Types of Motion",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a Basic Science lesson, a teacher demonstrates different kinds of motion using common objects. She rolls a toy car along a straight track, spins a classroom globe about its axis, swings a pendulum to and fro, and releases a small amount of perfume into the air. Which of these activities illustrates translational motion?",
+  "options": {
+    "A": "The toy car rolling along the straight track",
+    "B": "The classroom globe spinning about its axis",
+    "C": "The pendulum swinging to and fro",
+    "D": "The perfume spreading through the air"
+  },
+  "answer": "A",
+  "answer_text": "The toy car rolling along the straight track",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify translational motion from everyday examples. You are expected to distinguish translational motion from rotational, oscillatory and random motion.",
+    "principle": "Motion is the change in the position of an object with time relative to a reference point.\n\nThere are different types of motion depending on how an object moves.\n\n**Translational motion** occurs when every point on an object moves the same distance in the same direction during a given time.\n\nOther common types of motion include:\n\n• **Rotational motion** — an object turns about a fixed axis.\n• **Oscillatory motion** — an object moves repeatedly to and fro about its equilibrium position.\n• **Random motion** — an object moves irregularly in different directions without a predictable path.\n\nRecognising these different types of motion is an important foundation for studying linear motion.",
+    "steps": [
+      "Step 1: Examine the motion of the toy car.\n\nThe entire toy car moves from one point on the track to another in the same direction. Every part of the car changes position together.\n\nThis is translational motion.",
+      "Step 2: Examine the classroom globe.\n\nThe globe turns about its own axis while remaining in the same place.\n\nThis is rotational motion.",
+      "Step 3: Examine the pendulum.\n\nThe pendulum repeatedly moves to and fro through the same path.\n\nThis is oscillatory motion.",
+      "Step 4: Examine the perfume.\n\nThe perfume particles spread irregularly in all directions due to continuous random molecular motion.\n\nThis represents random motion.",
+      "Step 5: Compare all the options.\n\nOnly the toy car demonstrates translational motion.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because spinning about an axis is rotational motion, not translational motion.",
+      "Option C is incorrect because repeated to-and-fro movement is oscillatory motion.",
+      "Option D is incorrect because the perfume particles spread in an irregular and unpredictable manner, which is random motion."
+    ],
+    "common_misconception": "Many students think that any moving object is undergoing translational motion. However, the type of motion depends on how the object moves. An object that spins in one position undergoes rotational motion, while one that swings repeatedly undergoes oscillatory motion.",
+    "exam_tip": "For JAMB examinations, learn to associate common everyday examples with their types of motion:\n\n• Moving vehicle → Translational motion\n• Ceiling fan or spinning globe → Rotational motion\n• Swing or pendulum → Oscillatory motion\n• Smoke or perfume particles → Random motion\n\nQuestions often test these associations using familiar situations.",
+    "final_answer": "A. The toy car rolling along the straight track",
+    "simple_explanation": "Imagine pushing a book across a table. Every part of the book moves forward together from one place to another without spinning about its own axis. That is translational motion.\n\nA spinning globe rotates in one position, a pendulum swings back and forth, and perfume particles move randomly. Therefore, only the toy car represents translational motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Types of Motion to learn the characteristics and everyday examples of translational, rotational, oscillatory, random, circular and curvilinear motion. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, worked examples and JAMB-style practice questions."
+  },
+  "tags": [
+    "types_of_motion",
+    "translational_motion",
+    "classification_of_motion",
+    "introductory_kinematics",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q002",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Types of Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An engineer observes the operation of a bicycle and makes the following statements:\n\nI. The centre of the bicycle moves forward in translational motion as the bicycle travels along a straight road.\n\nII. Every point on the rim of the bicycle wheel undergoes rotational motion about the axle.\n\nIII. The translational motion of the bicycle automatically prevents the wheels from rotating.\n\nIV. During normal motion, the bicycle can exhibit both translational and rotational motion at the same time.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I and III only",
+    "C": "II and III only",
+    "D": "I, III and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question tests your ability to distinguish between translational motion and rotational motion using the familiar example of a moving bicycle. It also examines whether you understand that different parts of the same object can undergo different types of motion simultaneously.",
+    "principle": "Motion is the change in the position of an object with time relative to a reference point.\n\nThere are different types of motion depending on how an object moves.\n\n**Translational motion** occurs when every point of an object moves the same distance in the same direction over a given time. Examples include a moving car, a train travelling along a track, or the body of a bicycle moving forward.\n\nA beginner may ask, 'Does every part of the object move together?'\n\nYes. In translational motion, all parts of the object move together without rotating relative to one another.\n\n**Rotational motion** occurs when an object turns about a fixed axis. Every point on the object follows a circular path around the axis of rotation. Examples include a ceiling fan, a gear, or a bicycle wheel rotating about its axle.\n\nA single system can experience more than one type of motion at the same time. For example, as a bicycle moves along a road, its frame undergoes translational motion while its wheels rotate about their axles.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThe bicycle as a whole moves from one place to another. This is translational motion.\n\nTherefore, Statement I is correct.",
+      "Step 2: Examine Statement II.\n\nEach point on the wheel moves in a circular path around the axle as the wheel turns.\n\nTherefore, Statement II is correct.",
+      "Step 3: Examine Statement III.\n\nThis statement is incorrect. The forward movement of the bicycle does not stop the wheels from rotating. In fact, the rotation of the wheels enables the bicycle to move forward under normal riding conditions.",
+      "Step 4: Examine Statement IV.\n\nThe bicycle frame translates while the wheels rotate simultaneously.\n\nTherefore, Statement IV is correct.",
+      "Step 5: Identify the correct combination.\n\nStatements I, II and IV are correct, while Statement III is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Statement III is false. A moving bicycle does not prevent its wheels from rotating.",
+      "Option C is incorrect because although Statement II is correct, Statement III is false and Statement I has been wrongly omitted.",
+      "Option D is incorrect because it includes Statement III, which is incorrect."
+    ],
+    "exam_tip": "JAMB frequently tests the ability to distinguish different types of motion in everyday situations. Remember that one object can exhibit more than one type of motion simultaneously. A moving bicycle, a rolling drum and a moving vehicle with rotating wheels are common examples.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Imagine riding a bicycle.\n\nYour bicycle moves forward along the road. That is translational motion.\n\nAt the same time, the wheels keep turning about their axles. That is rotational motion.\n\nBoth types of motion occur together. Therefore, Statements I, II and IV are correct, while Statement III is not.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Types of Motion to learn the differences between translational, rotational, circular, oscillatory and random motion. Study additional JAMB-style examples showing objects that undergo more than one type of motion simultaneously."
+  },
+  "tags": [
+    "types_of_motion",
+    "translational_motion",
+    "rotational_motion",
+    "comparison_of_motion",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q003",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Types of motion",
+  "difficulty": "easy",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During an inter-house athletics competition, a sprinter covers a straight distance of 210 m in 14 s at a constant speed.\n\nWhat is the speed of the sprinter?",
+  "options": {
+    "A": "12 m s⁻¹",
+    "B": "15 m s⁻¹",
+    "C": "16 m s⁻¹",
+    "D": "18 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "15 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the speed of an object moving in a straight line when the distance travelled and the time taken are known.",
+    "principle": "Motion is the change in the position of an object with time.\n\nOne of the simplest ways to describe motion is by determining its speed.\n\nSpeed is a scalar quantity that tells us how fast an object moves. Since it is a scalar, it has magnitude only and no direction.\n\nThe SI unit of speed is metre per second (m s⁻¹).\n\nThe mathematical relationship is:\n\nSpeed = Distance ÷ Time\n\nwhere:\n• Speed is measured in m s⁻¹.\n• Distance is measured in metres (m).\n• Time is measured in seconds (s).\n\nThis formula is used whenever an object's distance travelled and the corresponding time are known.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nDistance travelled = 210 m\n\nTime taken = 14 s",
+      "Step 2: Identify the required quantity.\n\nRequired = Speed",
+      "Step 3: Write the appropriate formula.\n\nSpeed = Distance ÷ Time",
+      "Step 4: Substitute the given values.\n\nSpeed = 210 ÷ 14",
+      "Step 5: Perform the calculation.\n\nSpeed = 15 m s⁻¹\n\nTherefore, the sprinter's speed is 15 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (12 m s⁻¹) is incorrect because it does not equal 210 ÷ 14. It may result from an incorrect division.",
+      "Option C (16 m s⁻¹) is incorrect because it is greater than the calculated value obtained from the given data.",
+      "Option D (18 m s⁻¹) is incorrect because it does not satisfy the relationship Speed = Distance ÷ Time."
+    ],
+    "common_misconceptions": [
+      "Confusing speed with velocity. Speed does not include direction, whereas velocity does.",
+      "Using multiplication instead of division when applying the speed formula.",
+      "Ignoring SI units or expressing the answer without the correct unit."
+    ],
+    "exam_tip": "Whenever JAMB provides distance and time, first identify the quantity being asked.\n\nIf only 'how fast' is required and no direction is involved, use:\n\nSpeed = Distance ÷ Time\n\nAlways express the final answer in the appropriate SI unit, m s⁻¹.",
+    "final_answer": "B. 15 m s⁻¹",
+    "simple_explanation": "Imagine a runner completing a race. If the runner covers 210 metres in 14 seconds, divide the distance by the time:\n\n210 ÷ 14 = 15.\n\nThis means the runner covers 15 metres every second, so the speed is 15 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Types of Motion → Speed to learn how to calculate speed, distinguish it from velocity, solve JAMB-style numerical problems, and practise additional worked examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "linear_motion",
+    "types_of_motion",
+    "speed",
+    "kinematics",
+    "athletics",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q004",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Types of Motion",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During a road safety inspection, a delivery van travelled 630 m in the first part of its journey in 42 s and another 870 m in the second part in 58 s.\n\nWhat was the average speed of the van for the entire journey?",
+  "options": {
+    "A": "12 m s⁻¹",
+    "B": "15 m s⁻¹",
+    "C": "18 m s⁻¹",
+    "D": "20 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "15 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the average speed of an object that travels different distances over different time intervals during a single journey.",
+    "principle": "Before solving the problem, it is important to understand what average speed means.\n\nSpeed is the distance travelled per unit time.\n\nAverage speed is the total distance travelled divided by the total time taken for the entire journey.\n\nUnlike speed over a single section of a journey, average speed considers the complete distance covered and the total time spent moving.\n\nThe formula is:\n\nAverage speed = Total distance ÷ Total time\n\nwhere:\n• Total distance is the sum of all distances travelled.\n• Total time is the sum of all the time intervals.\n\nA common mistake is to calculate the speeds for each section separately and then find their arithmetic mean. This gives the wrong answer unless both sections take exactly the same time.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nFirst distance = 630 m\nSecond distance = 870 m\nFirst time = 42 s\nSecond time = 58 s",
+      "Step 2: Calculate the total distance.\n\nTotal distance = 630 + 870 = 1500 m",
+      "Step 3: Calculate the total time.\n\nTotal time = 42 + 58 = 100 s",
+      "Step 4: Apply the average speed formula.\n\nAverage speed = Total distance ÷ Total time\n\n= 1500 ÷ 100\n\n= 15 m s⁻¹",
+      "Step 5: Compare the calculated value with the options.\n\n15 m s⁻¹ corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (12 m s⁻¹) is incorrect because it underestimates the average speed by using an incorrect ratio of distance to time.",
+      "Option C (18 m s⁻¹) is incorrect because it results from an incorrect calculation or an incorrect addition of the journey data.",
+      "Option D (20 m s⁻¹) is incorrect because it does not represent the total distance divided by the total time for the entire journey."
+    ],
+    "common_misconceptions": [
+      "Adding the two speeds and dividing by two instead of using total distance and total time.",
+      "Using only one section of the journey in the calculation.",
+      "Adding the distances correctly but forgetting to add the times.",
+      "Confusing average speed with instantaneous speed."
+    ],
+    "exam_tip": "Whenever JAMB asks for average speed over a journey with several stages, always:\n\n1. Add all the distances.\n2. Add all the times.\n3. Divide the total distance by the total time.\n\nDo not average the individual speeds unless specifically instructed.",
+    "final_answer": "B. 15 m s⁻¹",
+    "simple_explanation": "Imagine driving to two different locations without stopping.\n\nTo know how fast you travelled overall, you do not average the speeds for each part of the trip. Instead, you add all the distances travelled, add all the times taken, and divide the total distance by the total time.\n\nThat gives the average speed for the whole journey.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Types of Motion → Average Speed to learn how to calculate average speed in one-stage and multi-stage journeys, understand the difference between speed and average speed, and practise additional JAMB-style worked examples in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "types_of_motion",
+    "average_speed",
+    "linear_motion",
+    "transportation",
+    "kinematics",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q005",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Types of Motion",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "A ferry moves straight across a calm river from one jetty to another. The displacement between the two jetties is 84 m, and the crossing takes 7 s.\n\nAssume the ferry travels in a straight line at constant velocity.\n\nWhat is the velocity of the ferry across the river?",
+  "options": {
+    "A": "10 m s⁻¹",
+    "B": "12 m s⁻¹",
+    "C": "13 m s⁻¹",
+    "D": "14 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "12 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate velocity from the displacement covered and the time taken during straight-line motion.",
+    "principle": "Before solving the question, it is important to understand what velocity means.\n\nVelocity is the rate at which displacement changes with time. Unlike speed, which considers only the total distance travelled, velocity depends on both the magnitude of the displacement and its direction.\n\nA beginner may ask, 'What is displacement?'\n\nDisplacement is the straight-line distance from the starting point to the finishing point, together with the direction of motion.\n\nA beginner may also ask, 'Why is velocity used instead of speed here?'\n\nThe question provides the displacement between the two jetties and states that the ferry travels straight across the river at constant velocity. Therefore, the appropriate quantity to calculate is velocity.\n\nThe formula for velocity is:\n\nVelocity = Displacement ÷ Time\n\nwhere:\n\n• Velocity is measured in metres per second (m s⁻¹).\n• Displacement is measured in metres (m).\n• Time is measured in seconds (s).",
+    "steps": [
+      "Step 1: Identify the known values.\n\nDisplacement = 84 m\n\nTime = 7 s",
+      "Step 2: Write the appropriate formula.\n\nVelocity = Displacement ÷ Time",
+      "Step 3: Substitute the given values.\n\nVelocity = 84 ÷ 7",
+      "Step 4: Perform the calculation.\n\nVelocity = 12 m s⁻¹",
+      "Step 5: Compare the calculated value with the options.\n\n12 m s⁻¹ corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (10 m s⁻¹) is incorrect because dividing 84 by 7 does not give 10.",
+      "Option C (13 m s⁻¹) is incorrect because it results from an incorrect calculation of the displacement-time ratio.",
+      "Option D (14 m s⁻¹) is incorrect because it overestimates the velocity. The correct computation gives 12 m s⁻¹."
+    ],
+    "exam_tip": "In JAMB Physics, always identify whether the question refers to distance or displacement before selecting a formula.\n\n• Use speed = Distance ÷ Time when total distance is given.\n• Use velocity = Displacement ÷ Time when displacement or direction is specified.\n\nReading these keywords carefully helps you avoid selecting the wrong formula.",
+    "final_answer": "B. 12 m s⁻¹",
+    "simple_explanation": "Imagine drawing a straight line from one river bank to the other. That straight-line separation is the displacement.\n\nSince the ferry covers a displacement of 84 m in 7 s, its velocity is:\n\n84 ÷ 7 = 12 m s⁻¹.\n\nTherefore, the correct answer is Option B.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Types of Motion → Velocity for a beginner-friendly explanation of the difference between speed and velocity, worked examples, practical applications, and additional JAMB-style practice questions. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for comprehensive lessons and exam-focused exercises."
+  },
+  "tags": [
+    "types_of_motion",
+    "velocity",
+    "displacement",
+    "linear_motion",
+    "calculation",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q006",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Types of motion",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a visit to a children's recreation park, a physics teacher asked learners to observe different moving objects. One object repeatedly moved to and fro about the same central position at regular intervals.\n\nWhich type of motion is best illustrated by this observation?",
+  "options": {
+    "A": "Oscillatory motion",
+    "B": "Random motion",
+    "C": "Rotational motion",
+    "D": "Translational motion"
+  },
+  "answer": "A",
+  "answer_text": "Oscillatory motion",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify oscillatory motion from a real-life situation rather than from a formal definition.",
+    "principle": "Motion is the change in the position of an object with time. Physicists classify motion according to how an object moves.\n\nOscillatory motion is a repeated to-and-fro movement of a body about a fixed or equilibrium position. After moving to one extreme, the object returns through the central position to the opposite extreme and continues repeating the same pattern.\n\nA beginner may ask, 'What is the equilibrium position?'\n\nThe equilibrium position is the central or resting position about which the object moves. When undisturbed, the object naturally comes to rest at this position.\n\nCommon examples of oscillatory motion include:\n\n• A child on a playground swing.\n• The bob of a simple pendulum.\n• A vibrating guitar string.\n• A mass attached to a spring.\n\nThe defining feature is the regular back-and-forth motion about the same central position.",
+    "steps": [
+      "Step 1: Identify the key description in the question.\n\nThe object moves repeatedly to and fro about the same central position.",
+      "Step 2: Recall the characteristics of oscillatory motion.\n\nOscillatory motion always involves repeated movement between two extreme positions through an equilibrium position.",
+      "Step 3: Compare the options.\n\nOnly oscillatory motion matches the description given.",
+      "Step 4: Select the correct answer.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because random motion has no definite path or predictable pattern. Examples include the motion of smoke or gas particles.",
+      "Option C is incorrect because rotational motion involves turning about a fixed axis, such as the blades of a ceiling fan or a spinning wheel.",
+      "Option D is incorrect because translational motion occurs when every point of a body moves the same distance in the same direction, such as a trolley moving along a straight track."
+    ],
+    "common_misconceptions": [
+      "Students often confuse oscillatory motion with rotational motion because both involve repeated movement. However, rotational motion is circular about an axis, whereas oscillatory motion is back-and-forth about an equilibrium position.",
+      "Another common mistake is to think every repeated motion is oscillatory. Repetition alone is not enough; the motion must occur to and fro about the same central position."
+    ],
+    "exam_tip": "Whenever JAMB uses expressions such as 'to and fro', 'back and forth', 'repeatedly', or 'about the same position', immediately think of oscillatory motion. Pay attention to the description of the movement rather than the object itself.",
+    "final_answer": "A. Oscillatory motion",
+    "simple_explanation": "Imagine pushing a child on a swing. The swing moves forward, returns through the middle, moves backward, and repeats the same movement again and again. This repeated back-and-forth movement about the same central position is called oscillatory motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Types of Motion to study oscillatory, translational, rotational, circular and random motion with beginner-friendly explanations, practical examples and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "types_of_motion",
+    "oscillatory_motion",
+    "linear_motion",
+    "jamb_physics",
+    "motion_classification",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q007",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Types of Motion",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "While testing a newly serviced delivery van, a mechanic observes that its velocity increases uniformly from 12 m s⁻¹ to 42 m s⁻¹ in 10 s along a straight road.\n\nWhat is the acceleration of the van?",
+  "options": {
+    "A": "2.0 m s⁻²",
+    "B": "3.0 m s⁻²",
+    "C": "4.2 m s⁻²",
+    "D": "5.4 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "3.0 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the acceleration of an object when its velocity changes uniformly over a known time interval.",
+    "principle": "Acceleration describes how quickly the velocity of an object changes with time.\n\nBefore using the formula, it is important to understand the terms involved.\n\n• Velocity is the rate of change of displacement and includes both magnitude and direction.\n• Acceleration is the rate at which velocity changes with time.\n\nIf the velocity increases uniformly, the acceleration remains constant.\n\nThe relationship is given by:\n\na = (v − u)/t\n\nwhere:\n\n• a = acceleration (m s⁻²)\n• u = initial velocity (m s⁻¹)\n• v = final velocity (m s⁻¹)\n• t = time taken (s)",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 12 m s⁻¹\nFinal velocity, v = 42 m s⁻¹\nTime, t = 10 s",
+      "Step 2: State the required quantity.\n\nRequired: Acceleration (a).",
+      "Step 3: Apply the formula.\n\na = (v − u)/t",
+      "Step 4: Substitute the values.\n\na = (42 − 12)/10\n\n= 30/10\n\n= 3.0 m s⁻²",
+      "Step 5: Compare with the options.\n\nOption B corresponds to 3.0 m s⁻².\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.0 m s⁻²) is incorrect because it underestimates the change in velocity over the given time.",
+      "Option C (4.2 m s⁻²) is incorrect because it results from an incorrect calculation or misuse of the formula.",
+      "Option D (5.4 m s⁻²) is incorrect because it does not follow from the given values and indicates an arithmetic error."
+    ],
+    "common_misconception": "Many students mistakenly divide the final velocity by the time taken instead of first finding the change in velocity (v − u). Always calculate the change in velocity before dividing by time.",
+    "exam_tip": "Whenever a JAMB question provides an initial velocity, a final velocity and the time taken, immediately think of the acceleration formula:\n\na = (v − u)/t\n\nAlways check that the answer is expressed in m s⁻².",
+    "final_answer": "B. 3.0 m s⁻²",
+    "simple_explanation": "Imagine pressing the accelerator of a vehicle. If its speed changes steadily from 12 m s⁻¹ to 42 m s⁻¹ in 10 seconds, the vehicle gains 30 m s⁻¹ of velocity over that time.\n\nDividing the change in velocity by the time gives:\n\n30 ÷ 10 = 3.0 m s⁻².\n\nSo, the acceleration is 3.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Types of Motion → Acceleration to learn how to calculate acceleration, distinguish it from speed and velocity, solve JAMB-style worked examples, and avoid common examination mistakes through the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "linear_motion",
+    "types_of_motion",
+    "acceleration",
+    "uniform_acceleration",
+    "kinematics",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q008",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Types of motion",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "During a routine railway inspection, a monitoring system records the motion of four commuter trains over equal time intervals.\n\nTrain I covers equal distances in each successive interval.\n\nTrain II covers increasingly larger distances in each successive interval.\n\nTrain III covers decreasing distances in each successive interval.\n\nTrain IV remains stationary throughout the observation period.\n\nWhich of the following correctly identifies the trains that are in uniform motion?",
+  "options": {
+    "A": "Train I only",
+    "B": "Train I and Train IV only",
+    "C": "Train II and Train III only",
+    "D": "Train II only"
+  },
+  "answer": "A",
+  "answer_text": "Train I only",
+  "explanation": {
+    "question_restate": "This question tests your ability to distinguish between uniform motion, non-uniform motion and an object at rest by interpreting how far different trains travel during equal intervals of time.",
+    "principle": "Motion occurs when an object changes its position with time.\n\nUniform motion is a type of motion in which an object covers equal distances in equal intervals of time. This means the object's speed remains constant throughout the journey.\n\nNon-uniform motion occurs when an object covers unequal distances in equal intervals of time. In this case, the speed changes with time.\n\nAn object at rest does not change its position with time. Although it has zero speed, it is not regarded as being in motion.\n\nA beginner may ask, 'Why do we compare equal time intervals?'\n\nEqual time intervals provide a fair basis for determining whether the speed remains constant. If the distances covered during these equal intervals remain the same, the motion is uniform. If they differ, the motion is non-uniform.",
+    "steps": [
+      "Step 1: Examine Train I.\n\nIt covers equal distances during equal time intervals.\n\nThis is the defining characteristic of uniform motion.\n\nTherefore, Train I is in uniform motion.",
+      "Step 2: Examine Train II.\n\nIt covers increasingly larger distances during equal time intervals.\n\nIts speed is increasing, indicating acceleration.\n\nTherefore, Train II is in non-uniform motion.",
+      "Step 3: Examine Train III.\n\nIt covers smaller distances during successive equal time intervals.\n\nIts speed is decreasing, indicating deceleration.\n\nTherefore, Train III is also in non-uniform motion.",
+      "Step 4: Examine Train IV.\n\nIt remains stationary throughout the observation period.\n\nSince its position does not change with time, it is at rest rather than in uniform motion.",
+      "Step 5: Identify the correct option.\n\nOnly Train I satisfies the definition of uniform motion.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Train IV is stationary. Being at rest is different from being in uniform motion.",
+      "Option C is incorrect because both Train II and Train III have changing speeds, so they are in non-uniform motion.",
+      "Option D is incorrect because Train II accelerates, meaning its motion is not uniform."
+    ],
+    "common_misconceptions": [
+      "Believing that an object at rest is undergoing uniform motion because its speed is constantly zero.",
+      "Thinking that any moving object is in uniform motion regardless of whether its speed changes.",
+      "Confusing acceleration or deceleration with constant-speed motion."
+    ],
+    "exam_tip": "In JAMB examinations, whenever a question states that an object covers equal distances in equal intervals of time, immediately associate this with uniform motion. If the distances change during equal intervals, the motion is non-uniform. Remember that an object at rest is not considered to be in motion.",
+    "final_answer": "A. Train I only",
+    "simple_explanation": "Imagine watching four trains from a station.\n\nOne train moves steadily so that it covers the same distance every minute. That train is in uniform motion.\n\nAnother speeds up, a third slows down, and the last does not move at all. Only the steadily moving train is in uniform motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Types of Motion to learn the differences between uniform motion, non-uniform motion, translational motion, speed, velocity and acceleration, with beginner-friendly explanations and additional JAMB-style practice questions available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "linear_motion",
+    "types_of_motion",
+    "uniform_motion",
+    "non_uniform_motion",
+    "railway_transport",
+    "motion_classification",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q009",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Types of motion",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An automated packaging system uses a conveyor belt that moves at a constant speed of 14 m s⁻¹ to transport sealed cartons between two processing units. If a carton remains on the conveyor belt for 22 s before reaching the next unit, what distance does it travel?\n\n(Assume the conveyor belt moves with uniform speed throughout the journey.)",
+  "options": {
+    "A": "308 m",
+    "B": "286 m",
+    "C": "336 m",
+    "D": "324 m"
+  },
+  "answer": "A",
+  "answer_text": "308 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the distance travelled by an object moving with uniform speed. Since the conveyor belt moves at a constant speed, the relationship between distance, speed and time can be applied directly.",
+    "principle": "Before solving this question, it is important to understand the meaning of uniform motion.\n\nUniform motion is motion in which an object covers equal distances in equal intervals of time. This means the speed remains constant throughout the journey.\n\nA beginner may ask, 'What is speed?'\n\nSpeed is the rate at which distance is covered. It tells us how fast an object is moving, irrespective of direction.\n\nThe basic relationship among speed, distance and time is:\n\nSpeed = Distance ÷ Time\n\nRearranging the formula to find distance gives:\n\nDistance = Speed × Time\n\nwhere:\n\n• Distance (d) is measured in metres (m).\n• Speed (v) is measured in metres per second (m s⁻¹).\n• Time (t) is measured in seconds (s).\n\nThis formula is applicable whenever the speed remains constant.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nSpeed, v = 14 m s⁻¹\n\nTime, t = 22 s",
+      "Step 2: Identify the required quantity.\n\nDistance travelled, d.",
+      "Step 3: Select the appropriate formula.\n\nSince the motion is uniform:\n\nDistance = Speed × Time",
+      "Step 4: Substitute the given values.\n\nd = 14 × 22",
+      "Step 5: Perform the calculation.\n\n14 × 22 = 308\n\nTherefore,\n\nd = 308 m",
+      "Step 6: Compare the calculated value with the options.\n\nOption A corresponds to 308 m and is therefore the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (286 m) results from an incorrect multiplication and does not satisfy the relationship between speed and time.",
+      "Option C (336 m) is greater than the correct value and may arise from using an incorrect time or speed during substitution.",
+      "Option D (324 m) is obtained from an arithmetic error and is not the product of 14 and 22."
+    ],
+    "common_misconceptions": [
+      "Confusing speed with velocity. Speed depends only on the distance covered and not on direction.",
+      "Using the formula Distance = Speed ÷ Time instead of Distance = Speed × Time.",
+      "Failing to check that the units are compatible before performing the calculation."
+    ],
+    "exam_tip": "In JAMB examinations, whenever an object moves at a constant speed and both the speed and time are given, first think of the simple relationship:\n\nDistance = Speed × Time.\n\nAlways write down the known quantities before substituting into the formula to minimise calculation errors.",
+    "final_answer": "A. 308 m",
+    "simple_explanation": "Imagine standing beside a moving conveyor belt at a factory. If the belt moves 14 metres every second and a carton stays on it for 22 seconds, it covers 14 metres during each of the 22 seconds.\n\nDistance travelled = 14 × 22 = 308 metres.\n\nTherefore, the carton travels 308 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Types of Motion for a complete lesson on speed, distance, time, uniform motion, worked examples, and JAMB-style practice questions. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and additional exam-focused exercises."
+  },
+  "tags": [
+    "types_of_motion",
+    "uniform_motion",
+    "speed",
+    "distance",
+    "linear_motion",
+    "kinematics",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q010",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Types of motion",
+  "difficulty": "easy",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During an environmental science demonstration, a teacher releases a small amount of smoke into a transparent glass chamber. The smoke particles are observed to move continuously in irregular and unpredictable directions without following a fixed path.\n\nWhich type of motion best describes the movement of the smoke particles?",
+  "options": {
+    "A": "Random motion",
+    "B": "Oscillatory motion",
+    "C": "Rotational motion",
+    "D": "Translational motion"
+  },
+  "answer": "A",
+  "answer_text": "Random motion",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify a type of motion from a real-life observation. You are required to recognise the kind of motion exhibited by smoke particles moving irregularly in all directions.",
+    "principle": "Motion is the change in the position of an object with time. Depending on how an object moves, motion can be classified into different types.\n\nRandom motion is a type of motion in which an object moves in an irregular and unpredictable manner. The object has no fixed path, no regular pattern and frequently changes direction.\n\nSmoke particles suspended in air are a common example of random motion. Their irregular movement results from continuous collisions with rapidly moving air molecules.\n\nOther common examples of random motion include:\n• Dust particles floating in air.\n• Pollen grains suspended in water.\n• Tiny insects flying aimlessly.\n\nBy contrast:\n• Oscillatory motion involves repeated movement to and fro about a fixed equilibrium position.\n• Rotational motion occurs when a body spins about its own axis.\n• Translational motion occurs when every point of an object moves the same distance in the same direction.",
+    "steps": [
+      "Step 1: Observe the description carefully.\n\nThe smoke particles move continuously in irregular and unpredictable directions.",
+      "Step 2: Check whether the particles move back and forth along the same path.\n\nThey do not, so the motion is not oscillatory.",
+      "Step 3: Determine whether the particles rotate about a fixed axis.\n\nThey do not, so the motion is not rotational.",
+      "Step 4: Determine whether the particles move together along one definite direction.\n\nThey do not, so the motion is not translational.",
+      "Step 5: Since the motion has no fixed direction or regular path, it is random motion.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because oscillatory motion is a repeated to-and-fro movement about a fixed position, such as the motion of a simple pendulum or a playground swing.",
+      "Option C is incorrect because rotational motion involves turning about an axis, such as a ceiling fan or a spinning wheel. The smoke particles are not rotating as a single body.",
+      "Option D is incorrect because translational motion occurs when an entire object moves from one place to another in a definite direction. The smoke particles change direction continuously and unpredictably."
+    ],
+    "common_misconceptions": [
+      "Many students think any moving particle is undergoing translational motion. Translational motion requires movement along a definite direction.",
+      "Some students confuse random motion with oscillatory motion because both involve continuous movement. However, oscillatory motion follows a regular repeating path, whereas random motion does not."
+    ],
+    "exam_tip": "Whenever JAMB describes smoke, dust or pollen particles moving irregularly in different directions, immediately think of random motion. Focus on the pattern of movement rather than simply the fact that the object is moving.",
+    "final_answer": "A. Random motion",
+    "simple_explanation": "Imagine watching tiny dust particles in a beam of sunlight entering a room. They move about in different directions without following any regular path. This unpredictable movement is called random motion. Smoke particles behave in the same way.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Types of Motion to study translational, rotational, oscillatory, circular and random motion with worked JAMB-style examples, everyday applications and concept comparisons available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "types_of_motion",
+    "random_motion",
+    "linear_motion",
+    "classification",
+    "environmental_science",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q011",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Types of Motion",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An engineer is testing a newly installed elevator in a high-rise building. Starting from rest, the elevator moves upward with a constant acceleration of 1.8 m s⁻² for the first 5 s before continuing at a constant speed.\n\nWhich statement best describes the motion of the elevator during the first 5 s?",
+  "options": {
+    "A": "It undergoes uniformly accelerated translational motion.",
+    "B": "It undergoes uniform translational motion because it moves upward.",
+    "C": "It undergoes oscillatory motion because its speed changes.",
+    "D": "It undergoes random motion because it starts from rest."
+  },
+  "answer": "A",
+  "answer_text": "It undergoes uniformly accelerated translational motion.",
+  "explanation": {
+    "question_restate": "This question tests your ability to recognise the type of motion of an object from a practical situation. You are required to identify the correct description of an elevator that starts from rest and increases its speed at a constant rate.",
+    "principle": "Motion describes how the position of an object changes with time.\n\nTranslational motion occurs when every point of an object moves through the same distance in the same direction.\n\nAcceleration is the rate at which velocity changes with time.\n\nWhen the acceleration remains constant, the motion is called uniformly accelerated motion.\n\nAn elevator moving vertically without rotating is an example of translational motion because the entire cabin moves together as one body.\n\nSince the elevator's acceleration is constant at 1.8 m s⁻² during the first 5 s, its velocity increases uniformly throughout this period.",
+    "steps": [
+      "Step 1: Identify the path of motion.\n\nThe elevator moves only upward along a straight vertical path. Therefore, its motion is translational.",
+      "Step 2: Examine the acceleration.\n\nThe question states that the elevator accelerates at a constant rate of 1.8 m s⁻².\n\nA constant acceleration means the velocity increases by equal amounts in equal intervals of time.",
+      "Step 3: Classify the motion.\n\nBecause the elevator is moving in a straight line while experiencing constant acceleration, its motion is uniformly accelerated translational motion.",
+      "Step 4: Select the correct option.\n\nOption A correctly combines both the nature of the motion (translational) and the manner in which the velocity changes (uniformly accelerated)."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because uniform motion means constant velocity. During the first 5 s, the elevator's speed is increasing, so its velocity is not constant.",
+      "Option C is incorrect because oscillatory motion involves repeated to-and-fro movement about a fixed equilibrium position. The elevator only moves upward and does not reverse direction.",
+      "Option D is incorrect because random motion has no definite path or predictable direction, such as the motion of smoke particles. The elevator follows a fixed vertical path."
+    ],
+    "common_misconceptions": [
+      "Thinking that any object moving in a straight line has uniform motion, even when its speed is changing.",
+      "Confusing acceleration with speed. An object can be accelerating even if it has not yet reached a high speed.",
+      "Believing that starting from rest automatically means random motion."
+    ],
+    "exam_tip": "Whenever JAMB describes an object moving in a straight line with a constant acceleration, identify it as uniformly accelerated translational motion. Remember that 'uniform' can describe constant acceleration as well as constant velocity, depending on the quantity being discussed.",
+    "final_answer": "A. It undergoes uniformly accelerated translational motion.",
+    "simple_explanation": "Imagine standing inside an elevator that has just begun to move upward. At first, it speeds up smoothly because the motor provides a constant acceleration. The elevator is not swinging, rotating or moving unpredictably. It simply moves upward in a straight line while increasing its speed steadily. Therefore, it is undergoing uniformly accelerated translational motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Types of Motion to learn the differences between translational, rotational, oscillatory and random motion, as well as the meaning of uniform and uniformly accelerated motion. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons, worked examples and JAMB-style practice questions."
+  },
+  "tags": [
+    "types_of_motion",
+    "translational_motion",
+    "uniformly_accelerated_motion",
+    "elevator",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q012",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Types of Motion",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "As an aircraft approaches the runway for landing, the pilot applies the braking system immediately after touchdown. The aircraft's speed decreases uniformly from 47 m s⁻¹ to 11 m s⁻¹ in 9 s.\n\nWhat is the magnitude of the aircraft's deceleration?",
+  "options": {
+    "A": "2.0 m s⁻²",
+    "B": "3.0 m s⁻²",
+    "C": "4.0 m s⁻²",
+    "D": "5.2 m s⁻²"
+  },
+  "answer": "C",
+  "answer_text": "4.0 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the deceleration of an object whose speed decreases uniformly over a given time interval. Although the situation involves an aircraft landing, the same principle applies to any object slowing down in a straight line.",
+    "principle": "Before solving the problem, it is important to understand the meaning of acceleration and deceleration.\n\nAcceleration is the rate at which velocity changes with time. It tells us how quickly an object's velocity increases or decreases.\n\nA beginner may ask, 'What is deceleration?'\n\nDeceleration is simply negative acceleration. It occurs whenever an object's velocity decreases with time. In many examination questions, you may be asked for the **magnitude of the deceleration**, which is always expressed as a positive value.\n\nThe relationship between acceleration, change in velocity and time is given by:\n\n**a = (v − u) / t**\n\nwhere:\n\n• a = acceleration (m s⁻²)\n• u = initial velocity (m s⁻¹)\n• v = final velocity (m s⁻¹)\n• t = time taken (s)\n\nSince the aircraft is slowing down, the calculated acceleration will be negative. Its magnitude represents the deceleration.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 47 m s⁻¹\nFinal velocity, v = 11 m s⁻¹\nTime, t = 9 s",
+      "Step 2: State the required quantity.\n\nDetermine the magnitude of the deceleration.",
+      "Step 3: Apply the formula.\n\nAcceleration, a = (v − u) / t",
+      "Step 4: Substitute the values.\n\na = (11 − 47) / 9\n\n= −36 / 9\n\n= −4.0 m s⁻²",
+      "Step 5: Interpret the result.\n\nThe negative sign indicates that the aircraft is slowing down.\n\nTherefore, the magnitude of the deceleration is **4.0 m s⁻²**.\n\nHence, the correct answer is **Option C**."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.0 m s⁻²) results from an incorrect calculation of the change in velocity or an arithmetic error.",
+      "Option B (3.0 m s⁻²) may be obtained by using an incorrect time interval or dividing incorrectly.",
+      "Option D (5.2 m s⁻²) is greater than the correct value and results from applying the formula incorrectly or making an arithmetic mistake."
+    ],
+    "common_misconceptions": [
+      "Believing deceleration is a different formula from acceleration.",
+      "Ignoring the negative sign without understanding that it simply indicates a reduction in velocity.",
+      "Subtracting the velocities in the wrong order and treating the negative value as an incorrect answer.",
+      "Confusing speed with acceleration."
+    ],
+    "exam_tip": "In JAMB examinations, whenever an object slows down uniformly, use the acceleration formula first. If the question asks for the **magnitude of the deceleration**, report only the positive numerical value. Always write down the known values before substituting into the formula to minimise calculation errors.",
+    "final_answer": "C. 4.0 m s⁻²",
+    "simple_explanation": "Imagine riding in a car that slows down smoothly before stopping at a traffic light. The car's speed decreases every second. The rate at which the speed decreases is called the deceleration.\n\nHere, the aircraft loses 36 m s⁻¹ of speed in 9 s.\n\n36 ÷ 9 = 4.\n\nSo, the aircraft decelerates at **4.0 m s⁻²**.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Types of Motion → Acceleration and Deceleration for beginner-friendly lessons on calculating acceleration, interpreting negative acceleration, and solving JAMB-style kinematics questions involving vehicles, trains, aircraft and other moving objects."
+  },
+  "tags": [
+    "types_of_motion",
+    "deceleration",
+    "acceleration",
+    "linear_motion",
+    "aircraft_landing",
+    "kinematics",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q013",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Types of Motion",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A maintenance technician inspects equipment in a manufacturing plant and makes the following observations:\n\nI. The blades of an industrial cooling fan spin about a fixed central shaft.\n\nII. A communication satellite travels around the Earth along a nearly circular path.\n\nWhich of the following correctly describes the motions observed?",
+  "options": {
+    "A": "I is rotational motion, while II is circular motion.",
+    "B": "I and II are both rotational motions.",
+    "C": "I and II are both circular motions.",
+    "D": "I is circular motion, while II is rotational motion."
+  },
+  "answer": "A",
+  "answer_text": "I is rotational motion, while II is circular motion.",
+  "explanation": {
+    "question_restate": "This question tests your ability to distinguish between rotational motion and circular motion using practical examples from manufacturing and space technology. Although the two types of motion appear similar because both involve movement around a centre, they describe different physical situations.",
+    "principle": "Motion is the change in the position of an object with time.\n\nDifferent types of motion are classified according to how an object moves.\n\n**Rotational motion** occurs when a body spins about its own fixed axis. Every point on the body moves in a circular path around that axis, but the body itself remains centred on the same position.\n\nExamples include:\n• A ceiling fan.\n• A turbine.\n• A grinding wheel.\n• The Earth spinning about its axis.\n\n**Circular motion** occurs when an object moves along a circular path around another point or object. The object changes its position continuously while maintaining an approximately constant distance from the centre of the circular path.\n\nExamples include:\n• A satellite orbiting the Earth.\n• A stone tied to a string and whirled in a circle.\n• A car moving round a circular track.\n\nA common beginner's mistake is to think that every object moving in a circle is undergoing rotational motion. In Physics, rotational motion specifically refers to spinning about the object's own axis, whereas circular motion refers to travelling around an external centre.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThe fan blades spin about a fixed shaft. This is the definition of rotational motion because the object rotates about its own axis.\n\nTherefore, Statement I describes rotational motion.",
+      "Step 2: Examine Statement II.\n\nThe satellite moves around the Earth along an approximately circular orbit. The satellite is changing its position around the Earth rather than spinning about its own axis.\n\nTherefore, Statement II describes circular motion.",
+      "Step 3: Compare the options.\n\nOnly Option A correctly identifies Statement I as rotational motion and Statement II as circular motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a satellite orbiting the Earth is an example of circular motion, not rotational motion.",
+      "Option C is incorrect because the spinning fan is classified as rotational motion rather than circular motion.",
+      "Option D is incorrect because the two types of motion have been interchanged. The fan rotates about its own axis, whereas the satellite travels in a circular orbit."
+    ],
+    "common_misconceptions": [
+      "Assuming that every motion involving a circle is rotational motion.",
+      "Confusing spinning about an object's own axis with moving around another object.",
+      "Believing that circular motion and rotational motion always mean the same thing."
+    ],
+    "exam_tip": "In JAMB examinations, remember this simple distinction:\n\n• **Rotational motion** → an object spins about its own axis.\n• **Circular motion** → an object moves around an external centre.\n\nWhen answering such questions, first identify the axis of rotation or the centre of the path before selecting your answer.",
+    "final_answer": "A. I is rotational motion, while II is circular motion.",
+    "simple_explanation": "Imagine standing beside a table fan. The fan blades spin around the motor shaft without moving from one place. That is rotational motion.\n\nNow imagine the Moon or a satellite travelling around the Earth. It moves around the Earth instead of remaining fixed at one point. That is circular motion.\n\nTherefore, the fan represents rotational motion, while the satellite represents circular motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Types of Motion to study rotational motion, circular motion, translational motion, oscillatory motion and random motion with beginner-friendly explanations, real-life examples and additional JAMB-style practice questions at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "types_of_motion",
+    "rotational_motion",
+    "circular_motion",
+    "motion_classification",
+    "manufacturing",
+    "space_technology",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q014",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Types of motion",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An engineer is evaluating the motion of different parts of an automated packaging machine in a factory. The system includes:\n\nI. Packages moving in a straight line on a conveyor belt.\nII. A drive shaft spinning about its fixed axis.\nIII. A robotic gripper moving repeatedly up and down through the same path while picking cartons.\nIV. Fine dust particles drifting unpredictably around the machine due to air currents.\n\nWhich option gives the most appropriate description of the four motions?",
+  "options": {
+    "A": "I – Translational motion; II – Rotational motion; III – Oscillatory motion; IV – Random motion",
+    "B": "I – Rotational motion; II – Circular motion; III – Random motion; IV – Oscillatory motion",
+    "C": "I – Translational motion; II – Oscillatory motion; III – Circular motion; IV – Random motion",
+    "D": "I – Circular motion; II – Translational motion; III – Oscillatory motion; IV – Uniform motion"
+  },
+  "answer": "A",
+  "answer_text": "I – Translational motion; II – Rotational motion; III – Oscillatory motion; IV – Random motion",
+  "explanation": {
+    "question_restate": "This question assesses your ability to recognise and correctly classify different types of motion from a real-life industrial automation system. Rather than performing calculations, you are required to evaluate each description and match it with the appropriate type of motion.",
+    "principle": "Motion is the change in the position of an object with time relative to a reference point.\n\nObjects can move in different ways depending on how their positions change.\n\nThe common types of motion include:\n\n• Translational motion – the entire object moves from one position to another without rotating about its own axis.\n\n• Rotational motion – the object turns about a fixed axis.\n\n• Oscillatory motion – the object moves repeatedly to and fro about a mean (equilibrium) position.\n\n• Random motion – the object moves irregularly without a definite path or predictable direction.\n\nA beginner may ask, 'Can one machine contain different types of motion?'\n\nYes. Modern industrial machines often combine several types of motion. Different components perform different functions, so each part may exhibit a different type of motion.",
+    "steps": [
+      "Step 1: Examine Motion I.\n\nPackages on a conveyor belt move from one location to another along a straight path without rotating about their own axes.\n\nThis is translational motion.",
+      "Step 2: Examine Motion II.\n\nA drive shaft spins continuously about its fixed axis.\n\nThis is rotational motion because every point on the shaft rotates around the same axis.",
+      "Step 3: Examine Motion III.\n\nThe robotic gripper repeatedly moves upward and downward through the same path while collecting cartons.\n\nRepeated to-and-fro motion about the same position is oscillatory motion.",
+      "Step 4: Examine Motion IV.\n\nDust particles carried by air currents move irregularly in different directions with no fixed pattern.\n\nThis is random motion.",
+      "Step 5: Compare the options.\n\nOnly Option A correctly identifies all four motions."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because packages moving on a conveyor belt do not rotate about their own axes. The robotic gripper also does not move randomly, and dust particles do not oscillate about a fixed position.",
+      "Option C is incorrect because a drive shaft does not perform oscillatory motion, and the robotic gripper does not move in a circular path. Its repeated up-and-down movement is oscillatory.",
+      "Option D is incorrect because packages on a straight conveyor belt do not undergo circular motion, a drive shaft does not undergo translational motion, and the movement of dust particles is random rather than uniform."
+    ],
+    "common_misconceptions": [
+      "Confusing rotational motion with circular motion.",
+      "Assuming every repeated movement is circular instead of oscillatory.",
+      "Believing that random motion follows a regular path.",
+      "Thinking translational motion must always occur at constant speed."
+    ],
+    "exam_tip": "In JAMB examinations, carefully identify what each object itself is doing.\n\nAsk these questions:\n\n• Is the whole object changing position without spinning? → Translational motion.\n\n• Is it turning about an axis? → Rotational motion.\n\n• Is it moving repeatedly to and fro? → Oscillatory motion.\n\n• Is its path irregular and unpredictable? → Random motion.\n\nCorrect classification is often more important than memorising definitions.",
+    "final_answer": "A. I – Translational motion; II – Rotational motion; III – Oscillatory motion; IV – Random motion",
+    "simple_explanation": "Imagine watching a factory at work.\n\nA box travels along a conveyor belt from one station to another. That is translational motion.\n\nThe machine's shaft spins in place. That is rotational motion.\n\nA robotic arm keeps moving up and down repeatedly. That is oscillatory motion.\n\nTiny dust particles float in different directions because of moving air. That is random motion.\n\nOnly Option A correctly matches all these motions.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Types of Motion for a complete revision of translational, rotational, oscillatory, circular and random motion. The lesson includes everyday examples, engineering applications, comparison tables, common examination mistakes and additional JAMB-style practice questions available in the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "types_of_motion",
+    "translational_motion",
+    "rotational_motion",
+    "oscillatory_motion",
+    "random_motion",
+    "industrial_automation",
+    "motion_classification",
+    "phy_04"
+  ],
+  "active": true
+}
+
+
+]
 
