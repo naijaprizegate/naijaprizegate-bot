@@ -2632,6 +2632,501 @@
     "phy_04"
   ],
   "active": true
+},
+{
+  "id": "phy_04_q053",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An inland cargo vessel maintains a steady velocity of 15 m s⁻¹ due east while transporting goods across a straight channel. If it continues at this velocity for 80 s, what is its displacement?",
+  "options": {
+    "A": "1 200 m due east",
+    "B": "1 095 m due east",
+    "C": "1 200 m",
+    "D": "95 m due east"
+  },
+  "answer": "A",
+  "answer_text": "1 200 m due east",
+  "explanation": {
+    "question_restate": "This question tests your ability to apply the relationship between velocity, displacement and time in a practical marine navigation scenario.\n\nSince velocity already includes direction, the calculated displacement must also include the stated direction.",
+    "principle": "Velocity is defined as the rate of change of displacement with time.\n\nUnlike speed, which is a scalar quantity, velocity is a vector quantity because it has both magnitude and direction.\n\nA beginner may ask, 'Why do we use displacement instead of distance?'\n\nDisplacement measures the straight-line change in position in a specified direction, whereas distance measures the total path travelled without considering direction.\n\nFor motion at constant velocity in a straight line, displacement is calculated using:\n\nDisplacement = Velocity × Time\n\nwhere:\n\n• Displacement is measured in metres (m).\n• Velocity is measured in metres per second (m s⁻¹).\n• Time is measured in seconds (s).",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nVelocity, v = 15 m s⁻¹ due east\n\nTime, t = 80 s",
+      "Step 2: Identify the required quantity.\n\nRequired: Displacement.",
+      "Step 3: Apply the formula.\n\nDisplacement = Velocity × Time",
+      "Step 4: Substitute the values.\n\nDisplacement = 15 × 80\n\n= 1 200 m",
+      "Step 5: Include the direction.\n\nSince the vessel moved due east throughout the journey, the displacement is 1 200 m due east.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because 1 095 m is obtained from an incorrect calculation and does not satisfy the given data.",
+      "Option C is incorrect because although the magnitude is correct, displacement is a vector quantity and its direction must be stated.",
+      "Option D is incorrect because it results from an incorrect application of the velocity formula."
+    ],
+    "exam_tip": "Whenever JAMB asks about displacement using velocity, remember that velocity already contains direction. Always include the direction in your final answer. Answers that give only the magnitude are incomplete.",
+    "final_answer": "A. 1 200 m due east",
+    "simple_explanation": "Imagine the cargo vessel sailing straight towards the east without changing direction.\n\nIf it covers 15 metres every second for 80 seconds, it moves:\n\n15 × 80 = 1 200 metres.\n\nBecause it never changes direction, its displacement is 1 200 m due east.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity to learn how to calculate displacement, distinguish velocity from speed, solve navigation problems, and practise additional JAMB-style questions on velocity and displacement."
+  },
+  "tags": [
+    "velocity",
+    "marine_navigation",
+    "displacement",
+    "linear_motion",
+    "application",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q054",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An inspection drone flies in a straight line toward an overhead transmission tower. During one stage of the mission, its GPS records show that it moved 756 m due east in 21 s.\n\nWhat was the average velocity of the drone during this stage of the flight?",
+  "options": {
+    "A": "30 m s⁻¹ east",
+    "B": "33 m s⁻¹ east",
+    "C": "36 m s⁻¹ east",
+    "D": "39 m s⁻¹ east"
+  },
+  "answer": "C",
+  "answer_text": "36 m s⁻¹ east",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the average velocity of a drone from its recorded displacement and the time taken. Since velocity is a vector quantity, the direction of motion must be included in the final answer.",
+    "principle": "Velocity is the rate at which displacement changes with time.\n\nUnlike speed, which depends on the total distance travelled, velocity depends on displacement and includes both magnitude and direction.\n\nThe average velocity is given by:\n\nVelocity = Displacement ÷ Time\n\nwhere:\n\n• Velocity is measured in metres per second (m s⁻¹).\n• Displacement is the straight-line change in position, measured in metres (m).\n• Time is measured in seconds (s).\n\nWhenever the displacement is given together with its direction, the calculated velocity must also be expressed with that same direction.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nDisplacement = 756 m east\n\nTime = 21 s",
+      "Step 2: Write the appropriate formula.\n\nAverage velocity = Displacement ÷ Time",
+      "Step 3: Substitute the values.\n\nAverage velocity = 756 ÷ 21",
+      "Step 4: Perform the calculation.\n\n756 ÷ 21 = 36\n\nTherefore,\n\nAverage velocity = 36 m s⁻¹ east.",
+      "Step 5: Compare the result with the options.\n\nOption C matches both the calculated magnitude and the correct direction."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (30 m s⁻¹ east) is obtained from an incorrect calculation of the displacement divided by time.",
+      "Option B (33 m s⁻¹ east) results from an arithmetic error during the division.",
+      "Option D (39 m s⁻¹ east) is greater than the correct value and does not follow from the given data."
+    ],
+    "exam_tip": "For velocity calculations, always check whether the question provides distance or displacement.\n\nIf displacement is given, use the velocity formula and include the direction in your final answer. Omitting the direction is a common JAMB mistake because velocity is a vector quantity.",
+    "final_answer": "C. 36 m s⁻¹ east",
+    "simple_explanation": "The drone changed its position by 756 m toward the east in 21 seconds.\n\nDividing the displacement by the time gives:\n\n756 ÷ 21 = 36.\n\nSince the motion was toward the east, the average velocity is 36 m s⁻¹ east.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity to learn how to calculate average velocity, distinguish velocity from speed, determine displacement and time, interpret direction correctly, and solve additional JAMB-style questions involving vector motion."
+  },
+  "tags": [
+    "linear_motion",
+    "velocity",
+    "average_velocity",
+    "displacement",
+    "drone_navigation",
+    "calculation",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q055",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During an athletics training session, an athlete runs one complete lap around a circular stadium track and finishes exactly at the starting point without stopping.\n\nWhich statement best explains the athlete's average velocity for the entire run?",
+  "options": {
+    "A": "It is zero because the athlete's displacement is zero.",
+    "B": "It is equal to the athlete's average speed because the motion was continuous.",
+    "C": "It is equal to the total distance covered divided by the time taken.",
+    "D": "It cannot be determined because the direction of motion keeps changing."
+  },
+  "answer": "A",
+  "answer_text": "It is zero because the athlete's displacement is zero.",
+  "explanation": {
+    "question_restate": "This question examines your understanding of average velocity when an object returns to its starting point. It tests whether you can distinguish between distance travelled and displacement.",
+    "principle": "Velocity is a vector quantity. Average velocity is defined as the total displacement divided by the total time taken.\n\nA beginner may ask, 'What is displacement?'\n\nDisplacement is the straight-line change in position from the starting point to the ending point, together with direction.\n\nAnother beginner may ask, 'How is displacement different from distance?'\n\nDistance is the total length of the path travelled, whereas displacement depends only on the initial and final positions.\n\nIf an object returns to its starting point, its displacement is zero regardless of how far it travelled. Consequently, its average velocity is zero because:\n\nAverage velocity = Total displacement ÷ Total time.\n\nSince the displacement is zero, the average velocity must also be zero.",
+    "steps": [
+      "Step 1: Identify the athlete's starting and finishing positions.\n\nThe athlete finishes exactly where the run began.",
+      "Step 2: Determine the displacement.\n\nBecause the initial and final positions are the same, the displacement is 0 m.",
+      "Step 3: Recall the formula.\n\nAverage velocity = Total displacement ÷ Total time.",
+      "Step 4: Substitute the displacement.\n\nAverage velocity = 0 ÷ Total time = 0 m s⁻¹.",
+      "Step 5: Select the correct option.\n\nOption A correctly explains why the average velocity is zero."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because average speed depends on distance travelled, whereas average velocity depends on displacement. They are not generally equal.",
+      "Option C is incorrect because total distance divided by time gives average speed, not average velocity.",
+      "Option D is incorrect because although the direction changes during the run, the average velocity can still be determined from the overall displacement, which is zero."
+    ],
+    "exam_tip": "Whenever a body returns to its starting point, remember:\n\n• Total displacement = 0.\n• Average velocity = 0 m s⁻¹.\n• Average speed is NOT zero because the body has travelled a certain distance.\n\nJAMB frequently tests the distinction between average speed and average velocity using return journeys or motion around a track.",
+    "final_answer": "A. It is zero because the athlete's displacement is zero.",
+    "simple_explanation": "Imagine walking around your house and ending exactly where you started.\n\nAlthough you have walked a certain distance, you have not changed your overall position. Your displacement is therefore zero.\n\nSince average velocity depends on displacement rather than distance, your average velocity for the entire journey is 0 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity to learn the difference between speed and velocity, calculate average velocity, interpret displacement, and solve JAMB-style questions involving return journeys and directional motion. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and revision exercises."
+  },
+  "tags": [
+    "velocity",
+    "average_velocity",
+    "zero_average_velocity",
+    "displacement",
+    "return_journey",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q056",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity in industrial automation",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An automated guided vehicle (AGV) in a manufacturing plant transports components from the assembly section to the quality control unit. It travels 216 m due west in 18 s while maintaining a constant velocity.\n\nWhich of the following best represents the velocity of the AGV?",
+  "options": {
+    "A": "12 m s⁻¹ west",
+    "B": "12 m s⁻¹",
+    "C": "234 m s⁻¹ west",
+    "D": "198 m s⁻¹ west"
+  },
+  "answer": "A",
+  "answer_text": "12 m s⁻¹ west",
+  "explanation": {
+    "question_restate": "This question tests your ability to apply the concept of velocity in an industrial automation setting by determining both the magnitude and direction of motion from the given displacement and time.",
+    "principle": "Velocity is the rate of change of displacement with time.\n\nUnlike speed, velocity is a vector quantity because it has both magnitude and direction.\n\nBefore solving the problem, remember:\n\n• Displacement is the straight-line distance from the starting point to the final position together with its direction.\n• Time is the duration taken to complete the motion.\n• Velocity is calculated using:\n\nVelocity = Displacement ÷ Time\n\nwhere:\n• Displacement is measured in metres (m).\n• Time is measured in seconds (s).\n• Velocity is expressed in metres per second (m s⁻¹) together with the direction of motion.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nDisplacement = 216 m west\n\nTime = 18 s",
+      "Step 2: State the required quantity.\n\nRequired: Velocity of the AGV.",
+      "Step 3: Apply the formula.\n\nVelocity = Displacement ÷ Time",
+      "Step 4: Substitute the given values.\n\nVelocity = 216 ÷ 18\n\nVelocity = 12 m s⁻¹",
+      "Step 5: Include the direction.\n\nSince the AGV moved due west, its velocity is 12 m s⁻¹ west.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it gives only the magnitude. Velocity must include direction.",
+      "Option C is incorrect because 234 m s⁻¹ is not obtained from the calculation. It results from an incorrect manipulation of the given values.",
+      "Option D is incorrect because 198 m s⁻¹ is also an incorrect calculation and does not represent the AGV's velocity."
+    ],
+    "exam_tip": "Whenever a question asks for velocity, always check whether the direction has been included. A numerical value without direction represents speed, not velocity. JAMB frequently uses this distinction when setting distractors.",
+    "final_answer": "A. 12 m s⁻¹ west",
+    "simple_explanation": "The AGV travelled 216 m in 18 s.\n\n216 ÷ 18 = 12.\n\nBecause it moved towards the west, its velocity is 12 m s⁻¹ west, not simply 12 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity to learn how to calculate velocity, distinguish it from speed, interpret direction correctly, and solve JAMB-style application questions involving transportation, robotics and industrial automation. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and practice tests."
+  },
+  "tags": [
+    "velocity",
+    "industrial_automation",
+    "automated_guided_vehicle",
+    "displacement",
+    "vector_quantity",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q057",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A pipeline inspection robot travels 630 m due east along an oil pipeline before returning 630 m due west to its starting point in a total time of 210 s.\n\nWhat is the robot's average velocity for the entire journey?",
+  "options": {
+    "A": "0 m s⁻¹",
+    "B": "3.0 m s⁻¹ east",
+    "C": "6.0 m s⁻¹ west",
+    "D": "12.0 m s⁻¹ east"
+  },
+  "answer": "A",
+  "answer_text": "0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your understanding of average velocity during a return journey. Although the robot travels a considerable distance, you must remember that average velocity depends on displacement, not total distance travelled.",
+    "principle": "Velocity is defined as the rate of change of displacement with time.\n\nUnlike speed, which depends on the total distance travelled, velocity depends only on displacement.\n\nAverage velocity is given by:\n\nAverage velocity = Total displacement ÷ Total time\n\nwhere:\n\n• Displacement is the straight-line change in position from the starting point to the final position.\n\n• Time is the total duration of the journey.\n\nIf an object returns to its starting point, its displacement is zero regardless of how far it has travelled. Consequently, its average velocity is zero.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nDistance travelled east = 630 m\n\nDistance travelled west = 630 m\n\nTotal time = 210 s",
+      "Step 2: Determine the displacement.\n\nThe robot returns to its starting position.\n\nTherefore,\n\nTotal displacement = 0 m",
+      "Step 3: Apply the formula.\n\nAverage velocity = Total displacement ÷ Total time",
+      "Step 4: Substitute the values.\n\nAverage velocity = 0 ÷ 210 = 0 m s⁻¹",
+      "Step 5: Compare with the options.\n\nOption A correctly states that the average velocity is 0 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it treats the journey as though the robot had a net eastward displacement. Returning to the starting point means the displacement is zero.",
+      "Option C is incorrect because there is no net westward displacement after the complete journey.",
+      "Option D is incorrect because it is based on an incorrect use of distance instead of displacement and ignores the return journey."
+    ],
+    "exam_tip": "For every JAMB question involving average velocity, first ask yourself:\n\n'Where did the object finally end up compared with where it started?'\n\nIf it returns to its starting point, the displacement is zero. Therefore, the average velocity is always 0 m s⁻¹, regardless of the total distance travelled or the time taken.",
+    "final_answer": "A. 0 m s⁻¹",
+    "simple_explanation": "Imagine walking from your house to a nearby shop and then walking straight back home.\n\nAlthough you covered a long distance, you finished exactly where you started.\n\nSince your overall change in position (displacement) is zero, your average velocity is also zero.\n\nAverage velocity depends on displacement, not on the total distance travelled.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity for a complete lesson on average velocity, displacement, direction, return journeys, vector quantities and worked JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional practice and detailed concept reviews."
+  },
+  "tags": [
+    "velocity",
+    "average_velocity",
+    "return_journey",
+    "displacement",
+    "vector_quantity",
+    "pipeline_inspection",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q058",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A railway signalling system defines motion toward the central station as the positive direction and motion away from the station as the negative direction.\n\nA maintenance trolley is recorded as moving with a velocity of -9 m s⁻¹.\n\nWhat does the negative sign indicate?",
+  "options": {
+    "A": "The trolley is slowing down while moving toward the station.",
+    "B": "The trolley is moving away from the station at a speed of 9 m s⁻¹.",
+    "C": "The trolley has stopped because its velocity is negative.",
+    "D": "The trolley is accelerating toward the station at 9 m s⁻²."
+  },
+  "answer": "B",
+  "answer_text": "The trolley is moving away from the station at a speed of 9 m s⁻¹.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the sign convention used in velocity. Specifically, it asks what a negative velocity means when a positive direction has already been defined.",
+    "principle": "Velocity is a vector quantity, meaning it has both magnitude and direction.\n\nBefore interpreting a velocity value, a reference direction must first be chosen.\n\nThe positive (+) and negative (-) signs do not describe how fast an object moves; they indicate the direction of motion relative to the chosen reference direction.\n\nIn this question:\n\n• Motion toward the station is defined as the positive direction.\n• Motion away from the station is therefore the negative direction.\n\nHence, a velocity of -9 m s⁻¹ means the trolley is moving in the opposite direction to the chosen positive direction, with a speed (magnitude) of 9 m s⁻¹.",
+    "steps": [
+      "Step 1: Identify the chosen positive direction.\n\nThe question states that movement toward the central station is positive.",
+      "Step 2: Interpret the negative sign.\n\nA negative velocity means the object is travelling opposite to the chosen positive direction.",
+      "Step 3: Determine the actual direction.\n\nSince positive is toward the station, the opposite direction is away from the station.",
+      "Step 4: Interpret the magnitude.\n\nThe value 9 m s⁻¹ represents the speed of the trolley.\n\nTherefore, the trolley is moving away from the station at a speed of 9 m s⁻¹.",
+      "Step 5: Select the correct option.\n\nOption B correctly interprets both the magnitude and the direction represented by the negative velocity."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a negative velocity does not mean the object is slowing down. It only specifies direction.",
+      "Option C is incorrect because an object can be moving while having a negative velocity. Zero velocity, not negative velocity, indicates that the object is momentarily at rest.",
+      "Option D is incorrect because the quantity given is velocity (m s⁻¹), not acceleration (m s⁻²). It also incorrectly states that the trolley is moving toward the station."
+    ],
+    "exam_tip": "Always read how the positive direction is defined before interpreting the sign of a velocity.\n\nRemember:\n\n• Positive velocity → motion in the chosen positive direction.\n• Negative velocity → motion in the opposite direction.\n• The sign indicates direction, while the numerical value indicates magnitude.\n\nA common JAMB trap is to confuse a negative velocity with deceleration. They are not the same.",
+    "final_answer": "B. The trolley is moving away from the station at a speed of 9 m s⁻¹.",
+    "simple_explanation": "Imagine walking along a straight road.\n\nIf you decide that walking toward your school is the positive direction, then walking back toward your home is the negative direction.\n\nThe negative sign does not mean you are walking slowly or standing still. It simply tells you that you are moving in the opposite direction.\n\nLikewise, a velocity of -9 m s⁻¹ means the trolley is travelling away from the station at a speed of 9 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity to learn about velocity as a vector quantity, sign conventions, displacement, average velocity, and the distinction between speed and velocity. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons, worked examples, and authentic JAMB-style practice questions."
+  },
+  "tags": [
+    "velocity",
+    "sign_convention",
+    "vector_quantity",
+    "direction_of_motion",
+    "railway_operations",
+    "conceptual_velocity",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q059",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An airfield maintenance vehicle travels 360 m due east from the control tower to inspect a runway marker. It then changes direction and travels 120 m due west to repair a lighting unit before stopping.\n\nWhich statement correctly describes the vehicle's motion at the end of the journey?",
+  "options": {
+    "A": "Its displacement is 240 m due east, so its average velocity is directed eastward.",
+    "B": "Its displacement is 480 m due east because the distances travelled are added together.",
+    "C": "Its average velocity is zero because the vehicle changed direction during the journey.",
+    "D": "Its displacement is 120 m due west because the final movement determines the direction."
+  },
+  "answer": "A",
+  "answer_text": "Its displacement is 240 m due east, so its average velocity is directed eastward.",
+  "explanation": {
+    "question_restate": "This question tests your ability to analyse directional motion by distinguishing between total distance travelled and displacement, and then relating displacement to the direction of average velocity.",
+    "principle": "Velocity is the rate of change of displacement with time. Unlike distance, displacement considers both magnitude and direction.\n\nA beginner may ask, 'What is displacement?'\n\nDisplacement is the straight-line change in position from the starting point to the final position, together with its direction.\n\nAverage velocity is defined as:\n\nAverage velocity = Displacement ÷ Time\n\nEven when the time is not given, the direction of the average velocity is always the same as the direction of the displacement.",
+    "steps": [
+      "Step 1: Identify the outward journey.\n\nThe vehicle travels 360 m due east.",
+      "Step 2: Identify the return movement.\n\nIt then travels 120 m due west.",
+      "Step 3: Determine the net displacement.\n\nDisplacement = 360 m east − 120 m west = 240 m due east.",
+      "Step 4: Relate displacement to average velocity.\n\nSince average velocity depends on displacement, its direction is also due east.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because 480 m is the total distance travelled, not the displacement.",
+      "Option C is incorrect because changing direction does not automatically make average velocity zero. Average velocity is zero only when the final position is the same as the starting position.",
+      "Option D is incorrect because displacement depends on the overall change in position, not merely the direction of the final stage of the journey."
+    ],
+    "exam_tip": "Whenever a question involves a change in direction, first determine the displacement before thinking about velocity.\n\nRemember:\n\n• Distance is the total path travelled.\n• Displacement is the straight-line change in position with direction.\n• The direction of average velocity is always the direction of the displacement.",
+    "final_answer": "A. Its displacement is 240 m due east, so its average velocity is directed eastward.",
+    "simple_explanation": "Imagine walking 360 m away from a building and then returning only 120 m.\n\nYou are still 240 m away from where you started, in the original direction.\n\nBecause velocity depends on displacement rather than total distance, the average velocity points due east.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity to revise displacement, average velocity, directional motion, return journeys, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept summaries and examination-focused practice."
+  },
+  "tags": [
+    "velocity",
+    "directional_motion",
+    "displacement",
+    "average_velocity",
+    "vector_quantity",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q060",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A laboratory technician investigates the motion of a trolley on a straight air track. The trolley's displacement from the starting point is recorded every 2 s as shown below.\n\nTime (s):        0      2      4      6      8\nDisplacement (m): 0     10     20     30     40\n\nAssuming the trolley moves uniformly throughout the experiment, what is its average velocity?",
+  "options": {
+    "A": "2.5 m s⁻¹",
+    "B": "5.0 m s⁻¹",
+    "C": "8.0 m s⁻¹",
+    "D": "10.0 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "5.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the average velocity of a trolley from experimental displacement observations recorded at equal time intervals on an air track.",
+    "principle": "Velocity is the rate at which displacement changes with time.\n\nUnlike speed, velocity is a vector quantity because it includes both magnitude and direction. Since the trolley moves along a straight line in one direction throughout the experiment, its average velocity is obtained by dividing the total displacement by the total time taken.\n\nThe formula for average velocity is:\n\nAverage velocity = Total displacement ÷ Total time\n\nwhere:\n• Average velocity is measured in metres per second (m s⁻¹).\n• Total displacement is the straight-line change in position (m).\n• Total time is the duration of motion (s).\n\nBecause the displacement increases by equal amounts during equal time intervals, the motion is uniform and the average velocity is equal to the constant velocity.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial displacement = 0 m\nFinal displacement = 40 m\nTotal displacement = 40 − 0 = 40 m\n\nTotal time = 8 s.",
+      "Step 2: Select the appropriate formula.\n\nAverage velocity = Total displacement ÷ Total time.",
+      "Step 3: Substitute the values.\n\nAverage velocity = 40 ÷ 8\n= 5.0 m s⁻¹.",
+      "Step 4: Compare the calculated value with the options.\n\nThe calculated average velocity is 5.0 m s⁻¹, which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.5 m s⁻¹) results from incorrectly dividing the displacement by 16 s or misinterpreting the time intervals.",
+      "Option C (8.0 m s⁻¹) is obtained from an incorrect calculation and does not agree with the experimental data.",
+      "Option D (10.0 m s⁻¹) would imply the trolley covered 40 m in only 4 s, which contradicts the observations."
+    ],
+    "exam_tip": "When interpreting experimental tables, always use the total displacement between the initial and final positions and the corresponding total time. Do not divide by the number of observations or the number of intervals unless the question specifically requires it.",
+    "final_answer": "B. 5.0 m s⁻¹",
+    "simple_explanation": "The trolley moves 40 m from its starting point in 8 s.\n\nAverage velocity = 40 ÷ 8 = 5.0 m s⁻¹.\n\nTherefore, the correct answer is Option B.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity for a complete lesson on average velocity, displacement-time data, laboratory investigations, experimental interpretation and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and concept-based revision."
+  },
+  "tags": [
+    "velocity",
+    "average_velocity",
+    "experimental_data",
+    "air_track",
+    "linear_motion",
+    "laboratory_investigation",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q061",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During an inspection of an underground mining conveyor system, a maintenance robot travelled 560 m due east, then 240 m due west, before finally moving 180 m due east. If the entire inspection took 50 s, what was the robot's average velocity?",
+  "options": {
+    "A": "10.0 m s⁻¹ east",
+    "B": "8.0 m s⁻¹ east",
+    "C": "19.6 m s⁻¹ east",
+    "D": "16.0 m s⁻¹ west"
+  },
+  "answer": "A",
+  "answer_text": "10.0 m s⁻¹ east",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the average velocity of an object that moves in different directions during a journey. You must first determine the resultant displacement before dividing by the total time taken.",
+    "principle": "Velocity is the rate of change of displacement with time.\n\nUnlike speed, which depends on the total distance travelled, average velocity depends only on the overall displacement and the total time taken.\n\nAverage velocity is therefore given by:\n\nAverage velocity = Displacement ÷ Time\n\nwhere:\n• Displacement is the straight-line change in position, including direction.\n• Time is the total duration of the motion.\n\nA beginner may ask, 'Why don't we use the total distance travelled?'\n\nThe reason is that velocity is a vector quantity. It depends on both magnitude and direction, so only the net displacement is used.",
+    "steps": [
+      "Step 1: Write down the known quantities.\n\nEastward movement = 560 m\nWestward movement = 240 m\nFinal eastward movement = 180 m\nTotal time = 50 s",
+      "Step 2: Determine the resultant displacement.\n\nTake east as the positive direction.\n\nNet displacement = 560 − 240 + 180\n= 500 m east.",
+      "Step 3: Apply the average velocity formula.\n\nAverage velocity = Displacement ÷ Time\n= 500 ÷ 50\n= 10.0 m s⁻¹ east.",
+      "Step 4: Compare the calculated value with the options.\n\nThe correct option is 10.0 m s⁻¹ east."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (8.0 m s⁻¹ east) is incorrect because it results from using an incorrect displacement or arithmetic error.",
+      "Option C (19.6 m s⁻¹ east) is incorrect because it is based on using the total distance travelled (980 m) instead of the displacement.",
+      "Option D (16.0 m s⁻¹ west) is incorrect because both the magnitude and the direction are wrong. The net displacement is toward the east, not the west."
+    ],
+    "exam_tip": "Whenever a body changes direction, first calculate the net displacement before using the velocity formula. Remember that average velocity is based on displacement, whereas average speed is based on total distance travelled. JAMB frequently tests this distinction.",
+    "final_answer": "A. 10.0 m s⁻¹ east",
+    "simple_explanation": "Imagine walking forward, then backward, and finally forward again. Even though you walked a longer total distance, what matters for average velocity is how far you finally ended up from where you started and in which direction. After the robot's movements, it was 500 m east of its starting point. Dividing this displacement by 50 s gives an average velocity of 10.0 m s⁻¹ east.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity for a complete discussion of displacement, average velocity, direction, multi-stage motion, return journeys, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and detailed concept reviews."
+  },
+  "tags": [
+    "velocity",
+    "average_velocity",
+    "displacement",
+    "multi_stage_motion",
+    "mining_operations",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q062",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "Engineers evaluating an autonomous warehouse transport system observed that the vehicles travelled at the same speed along different aisles but frequently changed their directions while delivering goods.\n\nWhich statement best explains why the engineers monitored the vehicles' velocity rather than their speed?",
+  "options": {
+    "A": "Velocity accounts for both the magnitude of motion and its direction, making it suitable for analysing changes in movement.",
+    "B": "Velocity depends only on the total distance travelled, whereas speed depends on displacement.",
+    "C": "Velocity remains constant whenever the speed of an object is constant, regardless of direction.",
+    "D": "Velocity is a scalar quantity that is easier to measure than speed."
+  },
+  "answer": "A",
+  "answer_text": "Velocity accounts for both the magnitude of motion and its direction, making it suitable for analysing changes in movement.",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of why velocity is more useful than speed when analysing motion involving changes in direction.",
+    "principle": "Velocity is defined as the rate of change of displacement with time.\n\nDisplacement is the straight-line change in position from the starting point to the ending point and includes direction.\n\nSince velocity depends on displacement, it possesses both magnitude and direction, making it a vector quantity.\n\nSpeed, on the other hand, is the rate at which distance is covered. Distance has magnitude only, so speed is a scalar quantity.\n\nWhenever an object changes direction, its velocity changes even if its speed remains unchanged. This makes velocity the more appropriate quantity for analysing the motion of autonomous vehicles navigating different routes.",
+    "steps": [
+      "Step 1: Identify the key feature of the warehouse vehicles.\n\nThe vehicles move at the same speed but frequently change direction while transporting goods.",
+      "Step 2: Recall the difference between speed and velocity.\n\nSpeed describes only how fast an object moves.\n\nVelocity describes both how fast the object moves and the direction of its motion.",
+      "Step 3: Evaluate each option.\n\nOption A correctly states that velocity includes both magnitude and direction, making it suitable for analysing directional changes.",
+      "Step 4: Eliminate incorrect statements.\n\nOption B reverses the meanings of distance and displacement.\n\nOption C is false because changing direction changes velocity even when speed is constant.\n\nOption D is incorrect because velocity is a vector quantity, not a scalar quantity.",
+      "Step 5: Select the best explanation.\n\nTherefore, Option A is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because speed is based on distance travelled, whereas velocity is based on displacement.",
+      "Option C is incorrect because a change in direction changes velocity, even if the speed remains constant.",
+      "Option D is incorrect because velocity is a vector quantity, while speed is the scalar quantity."
+    ],
+    "exam_tip": "In JAMB Physics, remember this simple distinction:\n\n• Speed = Distance ÷ Time (Scalar)\n• Velocity = Displacement ÷ Time (Vector)\n\nWhenever a question mentions a change in direction, think about velocity rather than speed.",
+    "final_answer": "A. Velocity accounts for both the magnitude of motion and its direction, making it suitable for analysing changes in movement.",
+    "simple_explanation": "Imagine pushing a shopping trolley through a supermarket.\n\nIf you keep moving at the same speed but turn into different aisles, your speed may remain unchanged, but your direction changes.\n\nBecause velocity includes direction, your velocity changes each time you turn. That is why engineers monitor velocity when studying the movement of automated warehouse vehicles.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity for a detailed discussion of speed, velocity, displacement, vector quantities, and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept reviews and examination practice."
+  },
+  "tags": [
+    "velocity",
+    "vector_quantity",
+    "speed_vs_velocity",
+    "warehouse_automation",
+    "conceptual_evaluation",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
 }
 
 ]
