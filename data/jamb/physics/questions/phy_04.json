@@ -1440,6 +1440,803 @@
     "phy_04"
   ],
   "active": true
+},
+{
+  "id": "phy_04_q029",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Speed",
+  "difficulty": "easy",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An express train travels in a straight route between two cities, covering a total distance of 648 km in 9 hours.\n\nWhat is the average speed of the train?",
+  "options": {
+    "A": "60 km h⁻¹",
+    "B": "66 km h⁻¹",
+    "C": "72 km h⁻¹",
+    "D": "81 km h⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "72 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the average speed of an express train from the total distance travelled and the total time taken.",
+    "principle": "Speed describes how fast an object moves. It is a scalar quantity because it has magnitude only and no direction.\n\nAverage speed is defined as the total distance travelled divided by the total time taken.\n\nThe formula is:\n\nAverage Speed = Total Distance ÷ Total Time\n\nwhere:\n\n• Average Speed is measured in km h⁻¹ or m s⁻¹.\n• Total Distance is the entire length of the journey.\n• Total Time is the total duration of the journey.\n\nAverage speed does not depend on the direction of motion. It simply tells us how much distance is covered per unit time.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nTotal distance = 648 km\n\nTotal time = 9 h",
+      "Step 2: Write the appropriate formula.\n\nAverage Speed = Total Distance ÷ Total Time",
+      "Step 3: Substitute the given values.\n\nAverage Speed = 648 ÷ 9",
+      "Step 4: Perform the calculation.\n\nAverage Speed = 72 km h⁻¹",
+      "Step 5: Compare the result with the options provided.\n\n72 km h⁻¹ corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (60 km h⁻¹) results from an incorrect division and underestimates the train's speed.",
+      "Option B (66 km h⁻¹) is obtained from an incorrect calculation and does not satisfy the speed formula.",
+      "Option D (81 km h⁻¹) overestimates the average speed and is not obtained from dividing 648 km by 9 h."
+    ],
+    "exam_tip": "Whenever a question asks for average speed, remember the simple relationship:\n\nAverage Speed = Total Distance ÷ Total Time.\n\nAlways ensure that the distance and time are expressed in compatible units before performing the calculation.",
+    "final_answer": "C. 72 km h⁻¹",
+    "simple_explanation": "Imagine a train completing a journey of 648 km in 9 hours. If it covered the same amount of distance every hour, it would travel:\n\n648 ÷ 9 = 72 km each hour.\n\nTherefore, its average speed is 72 km h⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Speed to learn the meaning of speed, the difference between speed and velocity, average speed calculations, SI units, unit conversions, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and examination tips."
+  },
+  "tags": [
+    "speed",
+    "average_speed",
+    "linear_motion",
+    "transportation",
+    "calculation",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q030",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Speed",
+  "difficulty": "easy",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A medical drone travels at a constant speed of 28 m s⁻¹ while delivering an emergency blood sample to a nearby hospital. If the journey lasts for 45 s, what distance does the drone cover?",
+  "options": {
+    "A": "630 m",
+    "B": "1,260 m",
+    "C": "840 m",
+    "D": "73 m"
+  },
+  "answer": "B",
+  "answer_text": "1,260 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the distance travelled by an object when its speed and the time taken are known. The context involves a medical drone delivering an emergency blood sample.",
+    "principle": "Speed describes how fast an object moves. It is defined as the distance travelled per unit time.\n\nThe relationship between speed, distance and time is:\n\nSpeed = Distance ÷ Time\n\nFrom this relationship, we obtain:\n\nDistance = Speed × Time\n\nwhere:\n\n• Distance is measured in metres (m).\n• Speed is measured in metres per second (m s⁻¹).\n• Time is measured in seconds (s).\n\nThis formula is used whenever the speed remains constant throughout the motion.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nSpeed, v = 28 m s⁻¹\n\nTime, t = 45 s\n\nRequired quantity = Distance, d",
+      "Step 2: Write the appropriate formula.\n\nDistance = Speed × Time\n\nTherefore,\n\nd = vt",
+      "Step 3: Substitute the given values.\n\nDistance = 28 × 45",
+      "Step 4: Perform the calculation.\n\n28 × 45 = 1,260\n\nTherefore,\n\nDistance = 1,260 m",
+      "Step 5: Compare the result with the options.\n\nOption B corresponds to 1,260 m.\n\nTherefore, Option B is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (630 m) is incorrect. It is exactly half of the correct distance and may result from an incorrect multiplication or using half the time.",
+      "Option C (840 m) is incorrect. This value could arise from multiplying the speed by 30 s instead of the given 45 s.",
+      "Option D (73 m) is incorrect. It results from an incorrect operation and does not satisfy the relationship between speed, time and distance."
+    ],
+    "exam_tip": "Whenever a question provides speed and time, think immediately of the formula:\n\nDistance = Speed × Time.\n\nBefore calculating, always ensure the units are compatible. When speed is in m s⁻¹ and time is in seconds, the answer will be in metres.",
+    "final_answer": "B. 1,260 m",
+    "simple_explanation": "Imagine the drone travels 28 metres every second.\n\nAfter 45 seconds, it would have travelled:\n\n28 × 45 = 1,260 metres.\n\nSo, the drone covers 1,260 m during the journey.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Speed to learn how to calculate speed, distance and time, solve JAMB-style numerical problems, interpret real-life applications of speed, and practise additional worked examples at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "speed",
+    "distance_calculation",
+    "linear_motion",
+    "medical_drone",
+    "kinematics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q031",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Speed",
+  "difficulty": "easy",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During an emergency response, an ambulance travels 875 m at a constant speed of 7 m s⁻¹. How long does it take the ambulance to cover the distance?",
+  "options": {
+    "A": "115 s",
+    "B": "120 s",
+    "C": "125 s",
+    "D": "130 s"
+  },
+  "answer": "C",
+  "answer_text": "125 s",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the time taken for an ambulance to travel a known distance when its speed is constant.",
+    "principle": "Speed describes how fast an object moves. It is defined as the distance travelled per unit time.\n\nThe relationship among speed, distance and time is expressed as:\n\nSpeed = Distance ÷ Time\n\nwhere:\n• Speed (v) is measured in metres per second (m s⁻¹).\n• Distance (d) is measured in metres (m).\n• Time (t) is measured in seconds (s).\n\nIf the required quantity is time, rearrange the formula to:\n\nTime = Distance ÷ Speed\n\nThis formula is used whenever the distance travelled and the speed are known.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nDistance, d = 875 m\nSpeed, v = 7 m s⁻¹\n\nRequired quantity:\nTime, t",
+      "Step 2: Select the appropriate formula.\n\nTime = Distance ÷ Speed",
+      "Step 3: Substitute the given values.\n\nt = 875 ÷ 7",
+      "Step 4: Perform the calculation.\n\n875 ÷ 7 = 125\n\nTherefore,\nTime = 125 s.",
+      "Step 5: Compare the result with the options.\n\nOption C corresponds to 125 s and is therefore the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (115 s) is incorrect because it results from an incorrect division of the given values.",
+      "Option B (120 s) is incorrect because it underestimates the calculated time for the given speed and distance.",
+      "Option D (130 s) is incorrect because it overestimates the actual time obtained using the speed formula."
+    ],
+    "exam_tip": "Whenever a question asks for time, first check whether the distance and speed are given. If they are, use:\n\nTime = Distance ÷ Speed\n\nAlways ensure the units are consistent before substituting values. If distance is in metres and speed is in m s⁻¹, the answer will be in seconds.",
+    "final_answer": "C. 125 s",
+    "simple_explanation": "Suppose an ambulance moves at a steady speed of 7 metres every second. To travel a total distance of 875 metres, divide the distance by the speed:\n\n875 ÷ 7 = 125 seconds.\n\nSo, the ambulance takes 125 seconds to reach its destination.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Speed to learn how to calculate speed, distance and time, solve unit conversion problems, and practise additional JAMB-style questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations and guided practice."
+  },
+  "tags": [
+    "speed",
+    "time_calculation",
+    "linear_motion",
+    "ambulance_response",
+    "kinematics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q032",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Speed",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Traffic officers monitoring vehicles on a highway record that a car is travelling at 25 m s⁻¹. What is the speed of the car in km h⁻¹?",
+  "options": {
+    "A": "72 km h⁻¹",
+    "B": "81 km h⁻¹",
+    "C": "90 km h⁻¹",
+    "D": "100 km h⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "90 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to convert a speed expressed in metres per second (m s⁻¹) into kilometres per hour (km h⁻¹), a common skill required in JAMB Physics.",
+    "principle": "Speed is the distance travelled per unit time and is a scalar quantity because it has magnitude only.\n\nThe SI unit of speed is metre per second (m s⁻¹), while road speed limits and vehicle speedometers commonly display speed in kilometres per hour (km h⁻¹).\n\nTo convert from m s⁻¹ to km h⁻¹, multiply the value by 3.6.\n\nThis conversion factor comes from the relationships:\n\n• 1 km = 1000 m\n• 1 h = 3600 s\n\nTherefore:\n\n1 m s⁻¹ = (3600 ÷ 1000) km h⁻¹ = 3.6 km h⁻¹.\n\nHence,\n\nSpeed (km h⁻¹) = Speed (m s⁻¹) × 3.6.",
+    "steps": [
+      "Step 1: Identify the known quantity.\n\nSpeed = 25 m s⁻¹.",
+      "Step 2: Identify the required quantity.\n\nConvert the speed to km h⁻¹.",
+      "Step 3: Apply the conversion formula.\n\nSpeed (km h⁻¹) = 25 × 3.6.",
+      "Step 4: Perform the calculation.\n\n25 × 3.6 = 90.",
+      "Step 5: Compare with the options.\n\n90 km h⁻¹ corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (72 km h⁻¹) is incorrect because it results from using an incorrect conversion factor.",
+      "Option B (81 km h⁻¹) is incorrect because the multiplication has been carried out wrongly.",
+      "Option D (100 km h⁻¹) is incorrect because it overestimates the converted speed and does not follow the correct conversion rule."
+    ],
+    "exam_tip": "Memorise these two important speed conversions:\n\n• m s⁻¹ → km h⁻¹ : Multiply by 3.6.\n• km h⁻¹ → m s⁻¹ : Divide by 3.6.\n\nJAMB frequently tests these conversions either directly or within longer calculation problems.",
+    "final_answer": "C. 90 km h⁻¹",
+    "simple_explanation": "Imagine looking at a car's speed on a scientific instrument, which reads 25 m s⁻¹, but the highway speed limit is written in km h⁻¹. To compare the two, simply multiply 25 by 3.6.\n\n25 × 3.6 = 90.\n\nSo the car is travelling at 90 km h⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Speed for a complete lesson on the definition of speed, SI units, unit conversions, average speed calculations and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and detailed explanations."
+  },
+  "tags": [
+    "speed",
+    "unit_conversion",
+    "metre_per_second",
+    "kilometre_per_hour",
+    "linear_motion",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q033",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Speed",
+  "difficulty": "easy",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An airport shuttle bus travels at a constant speed of 126 km h⁻¹ while transporting passengers between two terminals. What is this speed in m s⁻¹?",
+  "options": {
+    "A": "31.5 m s⁻¹",
+    "B": "35.0 m s⁻¹",
+    "C": "38.5 m s⁻¹",
+    "D": "45.4 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "35.0 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to convert a speed given in kilometres per hour (km h⁻¹) into metres per second (m s⁻¹), which is the SI unit of speed.",
+    "principle": "Speed is the distance travelled per unit time.\n\nThe SI unit of speed is metres per second (m s⁻¹), whereas road and transport speeds are often expressed in kilometres per hour (km h⁻¹).\n\nTo convert from km h⁻¹ to m s⁻¹, use the relationship:\n\n1 km = 1000 m\n1 h = 3600 s\n\nTherefore,\n\n1 km h⁻¹ = (1000/3600) m s⁻¹ = 5/18 m s⁻¹.\n\nHence,\n\nSpeed (m s⁻¹) = Speed (km h⁻¹) × 5/18.",
+    "steps": [
+      "Step 1: Identify the known quantity.\n\nSpeed = 126 km h⁻¹.",
+      "Step 2: Identify the required quantity.\n\nConvert the speed to m s⁻¹.",
+      "Step 3: Apply the conversion formula.\n\nSpeed = 126 × 5/18.",
+      "Step 4: Simplify the calculation.\n\n126 ÷ 18 = 7\n\n7 × 5 = 35.",
+      "Step 5: State the answer.\n\nThe shuttle bus travels at 35.0 m s⁻¹.\n\nTherefore, the correct option is B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (31.5 m s⁻¹) results from an incorrect conversion factor or arithmetic error.",
+      "Option C (38.5 m s⁻¹) is obtained by using the conversion formula incorrectly.",
+      "Option D (45.4 m s⁻¹) is much greater than the correct converted value and reflects a calculation mistake."
+    ],
+    "exam_tip": "For JAMB, remember these two common conversions:\n\n• km h⁻¹ → m s⁻¹ : multiply by 5/18.\n• m s⁻¹ → km h⁻¹ : multiply by 18/5.\n\nThese conversion factors appear frequently in speed and motion questions.",
+    "final_answer": "B. 35.0 m s⁻¹",
+    "simple_explanation": "Imagine the shuttle's speed is written on a road sign as 126 km h⁻¹. A physics calculation, however, uses metres and seconds. Multiplying by 5/18 changes the unit to m s⁻¹, giving 35.0 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Speed → Unit Conversion to learn how to convert between km h⁻¹ and m s⁻¹, with worked examples and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided lessons and revision exercises."
+  },
+  "tags": [
+    "speed",
+    "unit_conversion",
+    "kmh_to_ms",
+    "linear_motion",
+    "airport_transport",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q034",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Speed",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A delivery truck transports goods from a distribution centre to two different towns. It travels 360 km in 4 hours during the first stage of the journey and then covers another 240 km in 5 hours because of heavy traffic.\n\nWhat is the average speed of the truck for the entire journey?",
+  "options": {
+    "A": "60 km h⁻¹",
+    "B": "66.7 km h⁻¹",
+    "C": "75 km h⁻¹",
+    "D": "90 km h⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "66.7 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the average speed of an object that completes a journey in two stages with different travelling times.",
+    "principle": "Average speed describes how fast an object moves over an entire journey.\n\nIt is defined as the total distance travelled divided by the total time taken.\n\nAverage speed is a scalar quantity because it has magnitude only and no direction.\n\nThe formula is:\n\nAverage Speed = Total Distance ÷ Total Time\n\nwhere:\n• Total Distance is the sum of all distances covered.\n• Total Time is the sum of all time intervals spent travelling.\n\nA common mistake is to average the two stage speeds directly. This is incorrect unless both stages take exactly the same conditions in a way that justifies it. Always use the total distance and the total time.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nFirst stage distance = 360 km\nFirst stage time = 4 h\n\nSecond stage distance = 240 km\nSecond stage time = 5 h",
+      "Step 2: Calculate the total distance travelled.\n\nTotal distance = 360 + 240 = 600 km",
+      "Step 3: Calculate the total time taken.\n\nTotal time = 4 + 5 = 9 h",
+      "Step 4: Apply the average speed formula.\n\nAverage speed = Total Distance ÷ Total Time\n\n= 600 ÷ 9\n\n= 66.7 km h⁻¹ (to one decimal place).",
+      "Step 5: Compare the calculated value with the options.\n\n66.7 km h⁻¹ corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (60 km h⁻¹) is obtained from an incorrect calculation of the total distance or total time.",
+      "Option C (75 km h⁻¹) is the arithmetic mean of the two stage speeds (90 km h⁻¹ and 48 km h⁻¹ is not 75, but students often average incorrectly instead of using total distance and total time).",
+      "Option D (90 km h⁻¹) is only the speed during the first stage and ignores the slower second stage."
+    ],
+    "exam_tip": "Whenever a journey has two or more stages, never average the individual speeds directly. JAMB expects you to first determine the total distance travelled and the total time taken before applying the average speed formula.",
+    "final_answer": "B. 66.7 km h⁻¹",
+    "simple_explanation": "Imagine checking how fast the truck travelled for the whole trip rather than for each part separately. Add all the distances together, add all the times together, then divide the total distance by the total time.\n\n600 km ÷ 9 h = 66.7 km h⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Speed for a detailed explanation of average speed, multi-stage journeys, common mistakes, worked examples and additional JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive revision and exam-focused exercises."
+  },
+  "tags": [
+    "speed",
+    "average_speed",
+    "multi_stage_journey",
+    "logistics",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q035",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Speed",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During an athletics training session, a coach reminds the athletes that speed and velocity are not the same physical quantity.\n\nWhich of the following correctly describes speed?",
+  "options": {
+    "A": "A scalar quantity that describes the distance travelled per unit time",
+    "B": "A vector quantity that describes the displacement covered per unit time",
+    "C": "A scalar quantity that describes the displacement covered per unit time",
+    "D": "A vector quantity that describes the distance travelled per unit time"
+  },
+  "answer": "A",
+  "answer_text": "A scalar quantity that describes the distance travelled per unit time",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the nature of speed. Specifically, it asks whether speed is a scalar or a vector quantity and what physical quantity it relates to.",
+    "principle": "Speed is one of the fundamental quantities used to describe motion.\n\nA beginner may ask, 'What is speed?'\n\nSpeed is the rate at which an object covers distance. It tells us how fast an object moves without indicating the direction of motion.\n\nMathematically,\n\nSpeed = Distance ÷ Time\n\nwhere:\n• Distance is the total path travelled.\n• Time is the duration of the motion.\n\nAnother beginner may ask, 'Why is speed called a scalar quantity?'\n\nA scalar quantity has magnitude only and does not require a direction for its complete description. Knowing that a runner moves at 8 m s⁻¹ tells us how fast the runner is moving but not the direction.\n\nVelocity, on the other hand, is a vector quantity because it combines both magnitude and direction and is based on displacement rather than distance.",
+    "steps": [
+      "Step 1: Identify the quantity being described.\n\nThe question asks for the correct description of speed.",
+      "Step 2: Recall the defining characteristics of speed.\n\nSpeed is based on the total distance travelled per unit time and has magnitude only.",
+      "Step 3: Examine the options.\n\nOption A correctly states that speed is a scalar quantity based on distance travelled per unit time.\n\nOptions B and D incorrectly describe speed as a vector quantity.\n\nOption C is incorrect because displacement is associated with velocity, not speed.",
+      "Step 4: Select the correct answer.\n\nTherefore, the correct option is A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because displacement per unit time defines velocity, which is a vector quantity.",
+      "Option C is incorrect because speed is calculated using distance, not displacement, even though it is correctly identified as a scalar quantity.",
+      "Option D is incorrect because speed has no direction and is therefore not a vector quantity."
+    ],
+    "common_misconceptions": [
+      "Many students mistakenly think speed and velocity mean exactly the same thing.",
+      "Some learners confuse distance with displacement when defining speed.",
+      "Others incorrectly believe that every quantity describing motion must have a direction."
+    ],
+    "exam_tip": "Whenever JAMB asks you to distinguish between speed and velocity, remember:\n\n• Speed → Scalar → Distance ÷ Time.\n• Velocity → Vector → Displacement ÷ Time.\n\nA quick memory aid is:\n'S' in Speed stands for Scalar, while 'V' in Velocity stands for Vector.",
+    "final_answer": "A. A scalar quantity that describes the distance travelled per unit time",
+    "simple_explanation": "Imagine two athletes running around a circular track.\n\nIf you only know that one athlete runs at 7 m s⁻¹, you know how fast the athlete is moving, but you do not know the direction of motion. Since no direction is involved, speed is a scalar quantity.\n\nThis is why Option A is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Speed to learn the meaning of speed, the difference between speed and velocity, the speed formula, SI units, worked examples, and authentic JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed concept explanations and revision exercises."
+  },
+  "tags": [
+    "speed",
+    "scalar_quantity",
+    "distance",
+    "linear_motion",
+    "conceptual_physics",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q036",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Speed",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A packaging factory uses a conveyor belt to transport sealed cartons from the filling section to the sealing section. The cartons move at a constant speed of 1.8 m s⁻¹. If the two sections are 27 m apart, how long does it take a carton to travel from the filling section to the sealing section?",
+  "options": {
+    "A": "12 s",
+    "B": "15 s",
+    "C": "18 s",
+    "D": "49 s"
+  },
+  "answer": "B",
+  "answer_text": "15 s",
+  "explanation": {
+    "question_restate": "This question tests your ability to apply the relationship between speed, distance and time in a practical manufacturing process involving a conveyor belt.",
+    "principle": "Speed describes how fast an object moves and is defined as the distance travelled per unit time.\n\nIt is a scalar quantity because it has magnitude only and no direction.\n\nThe mathematical relationship is:\n\nSpeed = Distance ÷ Time\n\nFrom this relationship, time can be obtained by rearranging the formula:\n\nTime = Distance ÷ Speed\n\nwhere:\n\n• Distance is measured in metres (m).\n• Speed is measured in metres per second (m s⁻¹).\n• Time is measured in seconds (s).\n\nConveyor belts in manufacturing are often designed to move at nearly constant speed so that products arrive at each stage of production at predictable intervals.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nDistance = 27 m\nSpeed = 1.8 m s⁻¹",
+      "Step 2: Identify the quantity required.\n\nTime taken by a carton to travel between the two sections.",
+      "Step 3: Apply the appropriate formula.\n\nTime = Distance ÷ Speed",
+      "Step 4: Substitute the given values.\n\nTime = 27 ÷ 1.8",
+      "Step 5: Perform the calculation.\n\nTime = 15 s",
+      "Step 6: Compare the result with the options.\n\nThe correct option is B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (12 s) results from an incorrect calculation of the division.",
+      "Option C (18 s) may be obtained by using an incorrect formula or arithmetic error.",
+      "Option D (49 s) is far greater than the correct value and does not agree with the given speed and distance."
+    ],
+    "exam_tip": "Whenever a question asks for time, first check whether distance and speed have been provided. If they are, use:\n\nTime = Distance ÷ Speed.\n\nAlso ensure that the units are consistent before substituting into the formula.",
+    "final_answer": "B. 15 s",
+    "simple_explanation": "Imagine standing beside a moving conveyor belt in a factory. If the belt moves 1.8 metres every second and the next machine is 27 metres away, the carton simply needs:\n\n27 ÷ 1.8 = 15 seconds\n\nto reach the next stage of production.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Speed to learn how to calculate speed, distance and time, solve practical manufacturing and transportation problems, and practise additional JAMB-style questions with the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "speed",
+    "linear_motion",
+    "conveyor_belt",
+    "manufacturing",
+    "application",
+    "time_calculation",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q037",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Speed",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "Records from an inland water ferry show that it travelled 936 m across a river channel in 24 s while maintaining a steady motion.\n\nWhat was the average speed of the ferry during the journey?",
+  "options": {
+    "A": "22 m s⁻¹",
+    "B": "34 m s⁻¹",
+    "C": "39 m s⁻¹",
+    "D": "48 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "39 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the average speed of an inland water ferry from the distance it travelled and the time taken for the journey.",
+    "principle": "Speed describes how fast an object moves. It is defined as the distance travelled per unit time.\n\nA beginner may ask, 'What is distance?'\n\nDistance is the total length of the path covered by a moving object, regardless of direction. It is a scalar quantity because it has magnitude only.\n\nA beginner may also ask, 'What is average speed?'\n\nAverage speed is the total distance travelled divided by the total time taken.\n\nThe formula is:\n\nSpeed = Distance ÷ Time\n\nwhere:\n• Speed is measured in metres per second (m s⁻¹).\n• Distance is measured in metres (m).\n• Time is measured in seconds (s).\n\nThis formula applies whenever the total distance travelled and the corresponding time are known.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nDistance travelled = 936 m\nTime taken = 24 s",
+      "Step 2: Write the appropriate formula.\n\nAverage Speed = Distance ÷ Time",
+      "Step 3: Substitute the given values.\n\nAverage Speed = 936 ÷ 24",
+      "Step 4: Perform the calculation.\n\n936 ÷ 24 = 39",
+      "Step 5: Attach the correct SI unit.\n\nAverage Speed = 39 m s⁻¹\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (22 m s⁻¹) is incorrect because it results from an incorrect division of the distance by the time.",
+      "Option B (34 m s⁻¹) is incorrect because the calculation does not agree with the speed formula.",
+      "Option D (48 m s⁻¹) is incorrect because it overestimates the speed and would correspond to travelling a greater distance in the same time."
+    ],
+    "exam_tip": "Whenever a question asks for average speed, first identify the total distance travelled and the total time taken. Then apply:\n\nSpeed = Distance ÷ Time\n\nAlways ensure the units are consistent before performing the calculation. If distance is in metres and time is in seconds, the answer should be in m s⁻¹.",
+    "final_answer": "C. 39 m s⁻¹",
+    "simple_explanation": "Imagine watching a ferry move from one river terminal to another. If it covers 936 m in 24 s, you can find how fast it travelled by dividing the distance by the time.\n\n936 ÷ 24 = 39.\n\nSo, the ferry's average speed is 39 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Speed to learn how to calculate speed, determine distance or time from the speed formula, solve average-speed problems, and practise additional JAMB-style questions. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for step-by-step lessons and exam-focused practice."
+  },
+  "tags": [
+    "speed",
+    "average_speed",
+    "linear_motion",
+    "marine_transport",
+    "calculation",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q038",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Speed",
+  "difficulty": "medium",
+  "cognitive_level": "analyse",
+  "question_type": "mcq",
+  "question": "A laboratory technician investigates the motion of a dynamics trolley moving along a straight horizontal track. The total distance travelled by the trolley is recorded at different times as shown below.\n\n| Time (s) | Distance (m) |\n|----------|--------------|\n| 0        | 0            |\n| 4        | 12           |\n| 8        | 24           |\n| 12       | 36           |\n| 16       | 48           |\n\nBased on the data, which conclusion is most appropriate about the motion of the trolley?",
+  "options": {
+    "A": "The trolley moves with a constant speed of 3 m s⁻¹.",
+    "B": "The trolley accelerates uniformly throughout the experiment.",
+    "C": "The trolley's speed decreases steadily with time.",
+    "D": "The trolley is at rest during the first 4 seconds."
+  },
+  "answer": "A",
+  "answer_text": "The trolley moves with a constant speed of 3 m s⁻¹.",
+  "explanation": {
+    "question_restate": "This question requires you to analyse a table of experimental data to determine whether the trolley's speed changes or remains constant during its motion.",
+    "principle": "Speed is the distance travelled per unit time.\n\nIt is calculated using:\n\nSpeed = Distance ÷ Time\n\nwhere:\n\n• Speed is measured in metres per second (m s⁻¹).\n• Distance is measured in metres (m).\n• Time is measured in seconds (s).\n\nWhen equal distances are covered in equal time intervals, the object is moving with constant (uniform) speed. A table of distance against time can therefore be used to determine the nature of an object's motion without the need for a graph.",
+    "steps": [
+      "Step 1: Examine the first interval.\n\nFrom 0 s to 4 s:\nDistance travelled = 12 m\n\nSpeed = 12 ÷ 4 = 3 m s⁻¹.",
+      "Step 2: Examine the second interval.\n\nFrom 4 s to 8 s:\nAdditional distance = 24 − 12 = 12 m\nTime taken = 4 s\n\nSpeed = 12 ÷ 4 = 3 m s⁻¹.",
+      "Step 3: Examine the remaining intervals.\n\nFrom 8 s to 12 s:\n36 − 24 = 12 m in 4 s\nSpeed = 3 m s⁻¹.\n\nFrom 12 s to 16 s:\n48 − 36 = 12 m in 4 s\nSpeed = 3 m s⁻¹.",
+      "Step 4: Interpret the result.\n\nSince the trolley covers the same distance (12 m) during every equal time interval (4 s), its speed remains constant throughout the experiment.\n\nTherefore, the motion is uniform, and the correct conclusion is that the trolley moves with a constant speed of 3 m s⁻¹."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the data do not show increasing speed. Uniform acceleration would produce progressively larger distances in equal time intervals.",
+      "Option C is incorrect because the speed remains the same in every interval; it does not decrease.",
+      "Option D is incorrect because the trolley covers 12 m during the first 4 s, showing that it is moving rather than at rest."
+    ],
+    "exam_tip": "Whenever JAMB presents a distance-time table, compare the distances covered during equal time intervals.\n\n• Equal distances in equal times → constant (uniform) speed.\n• Increasing distances in equal times → increasing speed.\n• Decreasing distances in equal times → decreasing speed.\n\nDo not simply look at the total distance; examine what happens in each interval.",
+    "final_answer": "A. The trolley moves with a constant speed of 3 m s⁻¹.",
+    "simple_explanation": "Imagine pushing a toy car so that it travels exactly 12 metres every 4 seconds. Since it covers the same distance in the same amount of time repeatedly, it is moving at a constant speed of 3 m s⁻¹. That is exactly what the table shows.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Speed for a complete lesson on speed, distance-time tables, uniform motion, experimental data interpretation and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and beginner-friendly explanations."
+  },
+  "tags": [
+    "speed",
+    "experimental_data",
+    "distance_time_table",
+    "uniform_speed",
+    "laboratory_experiment",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q039",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Speed",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An inspection robot travels through an oil pipeline to examine its inner surface. During one inspection run, it covers a distance of 736 m in 23 s at a nearly constant rate.\n\nWhat is the speed of the inspection robot?",
+  "options": {
+    "A": "28 m s⁻¹",
+    "B": "30 m s⁻¹",
+    "C": "32 m s⁻¹",
+    "D": "34 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "32 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the speed of an object from the distance it travels and the time taken. The practical context is an inspection robot moving through an oil pipeline.",
+    "principle": "Speed describes how fast an object moves. It is defined as the distance travelled per unit time.\n\nBefore using the formula, it is important to understand the quantities involved.\n\n• Distance is the total length of the path travelled by the object.\n• Time is the duration taken to cover that distance.\n• Speed is a scalar quantity, meaning it has magnitude only and no direction.\n\nThe relationship between these quantities is:\n\nSpeed = Distance ÷ Time\n\nSymbolically,\n\nv = d/t\n\nwhere:\n\n• v = speed (m s⁻¹)\n• d = distance (m)\n• t = time (s)\n\nSince the distance is given in metres and the time in seconds, the answer will naturally be in metres per second (m s⁻¹).",
+    "steps": [
+      "Step 1: Identify the known values.\n\nDistance, d = 736 m\n\nTime, t = 23 s",
+      "Step 2: Write the appropriate formula.\n\nSpeed = Distance ÷ Time\n\nv = d/t",
+      "Step 3: Substitute the given values.\n\nv = 736/23",
+      "Step 4: Perform the calculation.\n\nv = 32 m s⁻¹",
+      "Step 5: Compare the calculated value with the options provided.\n\nThe correct option is C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (28 m s⁻¹) is incorrect because it results from an incorrect division of the distance by the time.",
+      "Option B (30 m s⁻¹) is incorrect because it underestimates the calculated speed and does not satisfy v = d/t.",
+      "Option D (34 m s⁻¹) is incorrect because it overestimates the speed obtained from the given data."
+    ],
+    "exam_tip": "Whenever a question gives distance and time, think immediately of the speed formula:\n\nSpeed = Distance ÷ Time.\n\nAlways check that the units are consistent before calculating. If distance is in metres and time is in seconds, the answer should be in m s⁻¹.",
+    "final_answer": "C. 32 m s⁻¹",
+    "simple_explanation": "Imagine the inspection robot moving steadily inside a long pipeline. To know how fast it moves, simply divide the total distance travelled by the time taken.\n\n736 ÷ 23 = 32.\n\nTherefore, the robot's speed is 32 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Speed for a complete lesson on calculating speed, determining distance and time, SI units, average speed, and worked JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional practice and beginner-friendly explanations."
+  },
+  "tags": [
+    "speed",
+    "speed_calculation",
+    "pipeline_inspection",
+    "robotics",
+    "linear_motion",
+    "kinematics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q040",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Speed",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A combine harvester moves across a rectangular farmland at a constant speed of 3.5 m s⁻¹ while harvesting crops. If it operates continuously for 240 s without stopping or changing speed, what total distance does it cover?",
+  "options": {
+    "A": "700 m",
+    "B": "770 m",
+    "C": "840 m",
+    "D": "980 m"
+  },
+  "answer": "C",
+  "answer_text": "840 m",
+  "explanation": {
+    "question_restate": "This question applies the concept of speed to an agricultural operation. You are required to determine the total distance travelled by a combine harvester moving at a constant speed over a given time.",
+    "principle": "Speed describes how fast an object moves and is defined as the distance travelled per unit time.\n\nIt is a scalar quantity because it has magnitude only and no direction.\n\nThe mathematical relationship is:\n\nSpeed = Distance ÷ Time\n\nRearranging the formula to find distance gives:\n\nDistance = Speed × Time\n\nwhere:\n\n• Distance is measured in metres (m).\n• Speed is measured in metres per second (m s⁻¹).\n• Time is measured in seconds (s).\n\nThis formula is appropriate whenever an object moves at a constant speed.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nSpeed = 3.5 m s⁻¹\n\nTime = 240 s",
+      "Step 2: Identify the required quantity.\n\nDistance travelled.",
+      "Step 3: Select the appropriate formula.\n\nDistance = Speed × Time",
+      "Step 4: Substitute the given values.\n\nDistance = 3.5 × 240",
+      "Step 5: Perform the calculation.\n\nDistance = 840 m",
+      "Step 6: Compare your result with the options provided.\n\n840 m corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (700 m) results from an incorrect multiplication or premature rounding.",
+      "Option B (770 m) is obtained from using an incorrect value for either the speed or the time.",
+      "Option D (980 m) overestimates the distance and does not satisfy the relationship Distance = Speed × Time for the given data."
+    ],
+    "exam_tip": "Whenever speed and time are given, first determine what the question requires.\n\n• To find distance, multiply speed by time.\n• To find speed, divide distance by time.\n• To find time, divide distance by speed.\n\nAlways ensure that the units are compatible before performing calculations.",
+    "final_answer": "C. 840 m",
+    "simple_explanation": "The harvester moves 3.5 metres every second. In 240 seconds, it covers:\n\n3.5 × 240 = 840 metres.\n\nTherefore, the correct answer is 840 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Speed to learn how to calculate speed, distance and time, solve practical JAMB-style questions, and apply speed concepts in transportation, agriculture, manufacturing and other real-life situations. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and revision."
+  },
+  "tags": [
+    "speed",
+    "distance_calculation",
+    "agriculture",
+    "linear_motion",
+    "application_of_speed",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q041",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Speed",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During a flood rescue operation, a fire service vehicle travelled 42 km from the fire station to an affected community in 35 minutes. A trainee concluded that because the vehicle moved very fast, its speed alone was sufficient to describe the journey.\n\nWhich statement best interprets the situation?",
+  "options": {
+    "A": "The speed indicates how fast the vehicle travelled but does not specify the direction of motion.",
+    "B": "The speed completely describes the vehicle's motion because it includes both magnitude and direction.",
+    "C": "The speed is equal to the vehicle's displacement divided by the time taken.",
+    "D": "The speed must be zero because the vehicle eventually stopped at the rescue location."
+  },
+  "answer": "A",
+  "answer_text": "The speed indicates how fast the vehicle travelled but does not specify the direction of motion.",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of what speed represents in a practical rescue operation. It tests whether you can distinguish speed from velocity rather than perform a numerical calculation.",
+    "principle": "Speed is a scalar quantity that tells us how fast an object moves. It is defined as the distance travelled per unit time.\n\nA scalar quantity has magnitude only.\n\nVelocity, on the other hand, is a vector quantity because it describes both the magnitude of motion and its direction.\n\nAlthough the vehicle covered 42 km in 35 minutes, the information about speed only indicates how rapidly it travelled. Without stating the direction of travel, the motion is not completely described.",
+    "steps": [
+      "Step 1: Identify the physical quantity under discussion.\n\nThe question focuses on speed, not velocity.",
+      "Step 2: Recall the definition of speed.\n\nSpeed is the distance travelled per unit time and has magnitude only.",
+      "Step 3: Evaluate the trainee's conclusion.\n\nThe trainee is incorrect because speed alone does not include direction, which is required to fully describe motion.",
+      "Step 4: Examine the options.\n\nOption A correctly states that speed tells how fast the vehicle travelled but gives no information about direction.\n\nTherefore, Option A is the correct interpretation."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because speed does not include direction. A quantity that includes both magnitude and direction is velocity.",
+      "Option C is incorrect because displacement divided by time gives average velocity, not speed. Speed is calculated using distance travelled divided by time.",
+      "Option D is incorrect because stopping at the destination does not mean the vehicle's speed throughout the journey was zero. It merely indicates that its final speed became zero after the trip."
+    ],
+    "exam_tip": "Whenever JAMB asks about speed and velocity, remember this simple distinction:\n\n• Speed = distance ÷ time (scalar, no direction).\n• Velocity = displacement ÷ time (vector, includes direction).\n\nIf a statement mentions 'how fast' without referring to direction, it is describing speed.",
+    "final_answer": "A. The speed indicates how fast the vehicle travelled but does not specify the direction of motion.",
+    "simple_explanation": "Imagine telling your friend that a rescue vehicle travelled at a high speed. Your friend knows how fast it moved but still does not know whether it travelled north, south, east or west.\n\nThat is why speed alone cannot completely describe motion. Direction must be included before the quantity becomes velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Speed to learn the meaning of speed, its SI unit, the difference between speed and velocity, average speed calculations, and practical JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and concept-based revision."
+  },
+  "tags": [
+    "speed",
+    "scalar_quantity",
+    "speed_vs_velocity",
+    "rescue_operations",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q042",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Speed",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A mining haul truck transports ore from a loading point to a processing plant. During one trip, it travels 252 km in 4 h and then covers another 168 km in 3 h after slowing down because of rough terrain.\n\nWhat is the average speed of the haul truck for the entire journey?",
+  "options": {
+    "A": "54 km h⁻¹",
+    "B": "60 km h⁻¹",
+    "C": "63 km h⁻¹",
+    "D": "70 km h⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "60 km h⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the average speed of a mining haul truck that completes a journey in two stages with different distances and travel times.",
+    "principle": "Speed describes how fast an object moves. It is a scalar quantity because it has magnitude only and no direction.\n\nWhen an object travels in more than one stage, the average speed is obtained by dividing the total distance travelled by the total time taken.\n\nThe formula is:\n\nAverage Speed = Total Distance ÷ Total Time\n\nwhere:\n• Total Distance is the sum of all distances travelled.\n• Total Time is the sum of all the times taken.\n\nA common mistake is to calculate the arithmetic mean of the individual speeds. This is only valid in special situations and should not be used unless the travel times or distances satisfy the required conditions.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nFirst stage:\nDistance = 252 km\nTime = 4 h\n\nSecond stage:\nDistance = 168 km\nTime = 3 h.",
+      "Step 2: Calculate the total distance.\n\nTotal Distance = 252 km + 168 km = 420 km.",
+      "Step 3: Calculate the total time.\n\nTotal Time = 4 h + 3 h = 7 h.",
+      "Step 4: Apply the average speed formula.\n\nAverage Speed = Total Distance ÷ Total Time\n= 420 km ÷ 7 h\n= 60 km h⁻¹.",
+      "Step 5: Compare with the options.\n\nThe calculated value is 60 km h⁻¹, which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (54 km h⁻¹) results from an incorrect computation of either the total distance or the total time.",
+      "Option C (63 km h⁻¹) may be obtained by incorrectly averaging the two stage speeds or making an arithmetic error.",
+      "Option D (70 km h⁻¹) is obtained by dividing the total distance by only the first stage time instead of the total journey time."
+    ],
+    "exam_tip": "For journeys completed in several stages, always add all the distances together and all the times together before applying the average speed formula. Never average individual speeds directly unless the question specifically justifies doing so.",
+    "final_answer": "B. 60 km h⁻¹",
+    "simple_explanation": "Think of the journey as one complete trip instead of two separate parts. First, find the total distance travelled. Next, find the total time taken. Finally, divide the total distance by the total time to obtain the average speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Speed for a complete lesson on speed, average speed, multi-stage journeys, SI units, worked examples and authentic JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided revision."
+  },
+  "tags": [
+    "speed",
+    "average_speed",
+    "multi_stage_journey",
+    "mining_transport",
+    "kinematics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q043",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Speed",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A campus electric shuttle transports students between lecture halls. During one trip, it travels 260 m in 20 s and then continues for another 390 m in 30 s.\n\nWhat is the average speed of the shuttle for the entire journey?",
+  "options": {
+    "A": "10 m s⁻¹",
+    "B": "11 m s⁻¹",
+    "C": "13 m s⁻¹",
+    "D": "15 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "13 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the average speed of an object that travels unequal distances during different time intervals. To obtain the correct answer, you must use the total distance travelled and the total time taken for the complete journey.",
+    "principle": "Speed is a scalar quantity that describes how fast an object moves. It is defined as the distance travelled per unit time.\n\nFor journeys made up of more than one stage, the average speed is **not** obtained by averaging the speeds of the individual stages unless the time intervals are identical.\n\nInstead, average speed is calculated using:\n\nAverage speed = Total distance travelled ÷ Total time taken\n\nwhere:\n\n• Total distance is the sum of all distances covered.\n• Total time is the sum of the corresponding time intervals.\n\nThis method works regardless of whether the distances or times are equal.",
+    "steps": [
+      "Step 1: Identify the given values.\n\nFirst distance = 260 m\n\nFirst time = 20 s\n\nSecond distance = 390 m\n\nSecond time = 30 s.",
+      "Step 2: Determine the total distance travelled.\n\nTotal distance = 260 + 390 = 650 m.",
+      "Step 3: Determine the total time taken.\n\nTotal time = 20 + 30 = 50 s.",
+      "Step 4: Apply the average speed formula.\n\nAverage speed = Total distance ÷ Total time\n\n= 650 ÷ 50\n\n= 13 m s⁻¹.",
+      "Step 5: Compare the result with the options.\n\n13 m s⁻¹ corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (10 m s⁻¹) is incorrect. It results from using an incorrect distance or time in the calculation instead of the totals.",
+      "Option B (11 m s⁻¹) is incorrect. It reflects an arithmetic error during division or an incorrect combination of the journey data.",
+      "Option D (15 m s⁻¹) is incorrect. It overestimates the average speed because the total distance and total time were not correctly combined."
+    ],
+    "exam_tip": "Whenever a journey has two or more stages, first add all the distances together and then add all the times together before dividing. Do not simply average the speeds of the separate stages unless specifically instructed and the conditions justify it.",
+    "final_answer": "C. 13 m s⁻¹",
+    "simple_explanation": "Think of the shuttle making one complete trip instead of two separate ones.\n\nIt travelled a total of 650 m in a total of 50 s.\n\nSince speed tells us how much distance is covered each second,\n\n650 ÷ 50 = 13.\n\nSo the shuttle's average speed for the whole journey is 13 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Speed for a complete lesson on average speed, multi-stage journeys, unequal-distance problems, common examination mistakes, and additional JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for guided practice and concept mastery."
+  },
+  "tags": [
+    "speed",
+    "average_speed",
+    "multi_stage_journey",
+    "campus_transport",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q044",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Speed",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An automated warehouse uses robotic carts to transport packages between storage shelves and loading bays. During a safety briefing, the supervisor makes the following statements about speed:\n\nI. Speed describes how fast an object moves regardless of its direction.\n\nII. Two robotic carts travelling at the same speed but in different directions have different speeds.\n\nIII. The SI unit of speed is metre per second (m s⁻¹).\n\nIV. Average speed is obtained by dividing the total distance travelled by the total time taken.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, III and IV only",
+    "B": "I, II and III only",
+    "C": "II and IV only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, III and IV only",
+  "explanation": {
+    "question_restate": "This question assesses your ability to evaluate statements about speed by identifying those that correctly describe its meaning, unit and method of calculation.",
+    "principle": "Speed is a scalar quantity that indicates how fast an object moves. A scalar quantity has magnitude only and does not include direction.\n\nSpeed is defined as the distance travelled per unit time.\n\nMathematically,\n\nSpeed = Total Distance ÷ Total Time\n\nThe SI unit of speed is metre per second (m s⁻¹).\n\nBecause speed has no direction, two objects moving at the same rate but in different directions still have the same speed. Direction only becomes important when discussing velocity, which is a vector quantity.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\n'Speed describes how fast an object moves regardless of its direction.'\n\nThis is correct because speed depends only on the magnitude of motion and not on direction.",
+      "Step 2: Examine Statement II.\n\n'Two robotic carts travelling at the same speed but in different directions have different speeds.'\n\nThis is incorrect.\n\nTheir directions are different, but if they move equally fast, their speeds are the same. It is their velocities that differ.",
+      "Step 3: Examine Statement III.\n\n'The SI unit of speed is metre per second (m s⁻¹).'\n\nThis is correct.",
+      "Step 4: Examine Statement IV.\n\n'Average speed is obtained by dividing the total distance travelled by the total time taken.'\n\nThis is the correct definition of average speed.",
+      "Step 5: Identify the correct combination.\n\nStatements I, III and IV are correct, while Statement II is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement II, which wrongly assumes that direction changes speed. Direction changes velocity, not speed.",
+      "Option C is incorrect because Statement II is false, while Statements I and III, which are correct, have been omitted.",
+      "Option D is incorrect because Statement II is incorrect. Including one false statement makes the entire combination incorrect."
+    ],
+    "exam_tip": "JAMB frequently tests the distinction between speed and velocity.\n\nRemember these key facts:\n\n• Speed is a scalar quantity.\n• Velocity is a vector quantity.\n• Speed depends on distance.\n• Velocity depends on displacement.\n• Average speed = Total distance ÷ Total time.\n• The SI unit of speed is m s⁻¹.\n\nWhenever a question introduces direction, first determine whether it is referring to speed or velocity before choosing your answer.",
+    "final_answer": "A. I, III and IV only",
+    "simple_explanation": "Imagine two warehouse robots moving at exactly the same rate. One moves north while the other moves south.\n\nAlthough they travel in different directions, they are moving equally fast, so they have the same speed.\n\nDirection does not affect speed; it affects velocity. Therefore, Statements I, III and IV are correct, while Statement II is incorrect.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Speed for a complete lesson on the meaning of speed, scalar quantities, average speed, SI units, unit conversions, worked examples and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive revision and exam-focused exercises."
+  },
+  "tags": [
+    "linear_motion",
+    "speed",
+    "scalar_quantity",
+    "average_speed",
+    "si_unit",
+    "warehouse_logistics",
+    "conceptual_evaluation",
+    "phy_04"
+  ],
+  "active": true
 }
 
 ]
