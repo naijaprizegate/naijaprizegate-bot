@@ -747,8 +747,700 @@
     "phy_04"
   ],
   "active": true
+},
+{
+  "id": "phy_04_q015",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Translational motion",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "An airport baggage conveyor carries suitcases in a straight line from the check-in area to the sorting section. Throughout the motion, each suitcase changes its position without spinning about its own axis.\n\nThe motion of each suitcase is best described as",
+  "options": {
+    "A": "pure translational motion",
+    "B": "rotational motion",
+    "C": "oscillatory motion",
+    "D": "random motion"
+  },
+  "answer": "A",
+  "answer_text": "pure translational motion",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify translational motion from a practical situation commonly found in airports.",
+    "principle": "Motion is the change in the position of an object with time.\n\nThere are different types of motion, including translational, rotational, oscillatory and random motion.\n\nTranslational motion occurs when every point of an object moves the same distance in the same direction during a given time interval.\n\nIn pure translational motion, the object moves as a whole from one position to another without rotating about its own axis.\n\nA beginner may ask, 'What does translating mean?'\n\nIt simply means moving from one place to another without turning around. Imagine sliding a book smoothly across a table without twisting it. Every part of the book moves together in the same direction. That is translational motion.\n\nTranslational motion may occur along a straight path (rectilinear translation) or along a curved path (curvilinear translation). In both cases, the body changes position as a whole.",
+    "steps": [
+      "Step 1: Identify what the suitcase is doing.\n\nThe suitcase is being carried from one location to another along a straight path.",
+      "Step 2: Check whether the suitcase is rotating.\n\nThe question clearly states that the suitcase does not spin about its own axis.",
+      "Step 3: Match the description with the correct type of motion.\n\nSince the suitcase changes position as a whole without rotating, it undergoes pure translational motion.",
+      "Step 4: Select the correct option.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because rotational motion involves an object turning about its own axis. The suitcase is specifically stated not to be spinning.",
+      "Option C is incorrect because oscillatory motion is repeated to-and-fro motion about a fixed equilibrium position, such as the motion of a pendulum. The suitcase moves in only one direction.",
+      "Option D is incorrect because random motion has no definite path or predictable direction, as seen in the motion of gas molecules. The suitcase follows a definite straight path."
+    ],
+    "common_misconceptions": [
+      "Many students think every moving object is rotating. Rotation occurs only when the object turns about its own axis.",
+      "Some learners believe translational motion must always be along a straight line. In reality, translational motion can also follow a curved path provided the body moves as a whole."
+    ],
+    "exam_tip": "In JAMB Physics, pay close attention to expressions such as 'moves as a whole', 'without spinning', 'without turning', or 'every point moves together'. These are strong indicators of translational motion.",
+    "final_answer": "A. pure translational motion",
+    "simple_explanation": "Imagine placing a closed textbook on a table and pushing it straight forward without twisting it. Every part of the book moves together, and the book does not rotate. That is pure translational motion. The suitcase on the airport conveyor behaves in the same way.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Translational Motion to learn the characteristics of translational motion, the difference between translational, rotational and oscillatory motion, and practise additional JAMB-style questions with detailed explanations."
+  },
+  "tags": [
+    "linear_motion",
+    "translational_motion",
+    "classification_of_motion",
+    "airport_conveyor",
+    "conceptual_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q016",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Translational Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A mobile crane moves slowly across a construction site to a new location while its boom remains fixed relative to the vehicle. Which statement correctly distinguishes the crane's motion from rotational motion during this movement?\n\nA. Every point on the crane moves through the same distance in the same direction without turning about a fixed axis.\n\nB. The crane rotates about its own centre because all moving objects undergo rotational motion.\n\nC. Different parts of the crane move through different distances because translational motion affects only the driver's cabin.\n\nD. The crane undergoes rotational motion because its tyres rotate while the vehicle moves.",
+  "options": {
+    "A": "Every point on the crane moves through the same distance in the same direction without turning about a fixed axis.",
+    "B": "The crane rotates about its own centre because all moving objects undergo rotational motion.",
+    "C": "Different parts of the crane move through different distances because translational motion affects only the driver's cabin.",
+    "D": "The crane undergoes rotational motion because its tyres rotate while the vehicle moves."
+  },
+  "answer": "A",
+  "answer_text": "Every point on the crane moves through the same distance in the same direction without turning about a fixed axis.",
+  "explanation": {
+    "question_restate": "This question tests your ability to distinguish translational motion from rotational motion using the example of a mobile crane moving across a construction site.",
+    "principle": "Motion is described according to how an object's points move.\n\nTranslational motion occurs when every point on a body moves the same distance in the same direction during the same time interval. The body changes its position as a whole without rotating about its own axis.\n\nRotational motion, on the other hand, occurs when a body turns about a fixed axis so that different points of the body trace circular paths of different radii.\n\nA beginner may ask, 'Can an object translate even if some of its parts rotate?'\n\nYes. A vehicle such as a mobile crane can undergo translational motion as a whole while its wheels rotate. The rotation of the wheels does not mean that the entire vehicle is undergoing rotational motion.",
+    "steps": [
+      "Step 1: Identify the motion of the mobile crane as a whole.\n\nThe crane changes its position from one place to another without turning about its own axis.\n\nThis is translational motion.",
+      "Step 2: Recall the defining characteristic of translational motion.\n\nEvery point on the body moves through the same distance in the same direction over the same time interval.",
+      "Step 3: Examine the options.\n\nOption A correctly describes translational motion.\n\nOption B incorrectly assumes that every moving object must rotate.\n\nOption C wrongly suggests that only one part of the crane undergoes translation.\n\nOption D confuses the rotational motion of the tyres with the motion of the entire crane.",
+      "Step 4: Select the correct answer.\n\nTherefore, Option A is the correct distinction between translational and rotational motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because motion from one location to another does not automatically mean the entire object is rotating about its own axis.",
+      "Option C is incorrect because in pure translational motion, every point on the body moves together, not just one section.",
+      "Option D is incorrect because although the tyres rotate, the crane itself is translating. The rotation of individual components does not change the overall translational motion of the vehicle."
+    ],
+    "exam_tip": "In JAMB, distinguish between the motion of an entire object and the motion of its individual parts. A vehicle moving along a road is in translational motion even though its wheels are rotating. Focus on the motion of the body as a whole unless the question specifically asks about a component.",
+    "final_answer": "A. Every point on the crane moves through the same distance in the same direction without turning about a fixed axis.",
+    "simple_explanation": "Imagine pushing a cupboard straight across a room without turning it. Every part of the cupboard moves together in the same direction. That is translational motion.\n\nSimilarly, when a mobile crane moves across a construction site without turning its body, it undergoes translational motion, even though its tyres are rotating.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Translational Motion for a complete revision of translational motion, its characteristics, differences from rotational motion, rectilinear and curvilinear translation, practical engineering applications, and additional JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons and detailed concept reviews."
+  },
+  "tags": [
+    "linear_motion",
+    "translational_motion",
+    "rotation_vs_translation",
+    "construction",
+    "conceptual_analysis",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q017",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Translational Motion - Average Speed",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An autonomous warehouse robot transports cartons along a straight aisle, covering a total distance of 252 m in 18 s without changing its orientation.\n\nWhat is the robot's average speed during the motion?",
+  "options": {
+    "A": "12 m s⁻¹",
+    "B": "14 m s⁻¹",
+    "C": "16 m s⁻¹",
+    "D": "18 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "14 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the average speed of an object undergoing translational motion using the distance travelled and the time taken.",
+    "principle": "Before solving the question, it is important to understand the concept of average speed.\n\nSpeed is the rate at which an object covers distance. It tells us how fast the object is moving, irrespective of its direction.\n\nAverage speed is calculated by dividing the total distance travelled by the total time taken.\n\nThe mathematical expression is:\n\nAverage speed = Total distance ÷ Total time\n\nor\n\nv = d/t\n\nwhere:\n\n• v = average speed (m s⁻¹)\n• d = total distance travelled (m)\n• t = time taken (s)\n\nSince speed is a scalar quantity, only the magnitude of the distance is considered; direction is not required.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nDistance travelled, d = 252 m\n\nTime taken, t = 18 s",
+      "Step 2: State the required quantity.\n\nRequired: Average speed, v",
+      "Step 3: Apply the appropriate formula.\n\nv = d/t",
+      "Step 4: Substitute the given values.\n\nv = 252/18",
+      "Step 5: Perform the calculation.\n\nv = 14 m s⁻¹",
+      "Step 6: Compare the result with the options provided.\n\n14 m s⁻¹ corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (12 m s⁻¹) is incorrect because it results from an incorrect calculation of the ratio of distance to time.",
+      "Option C (16 m s⁻¹) is incorrect because the distance divided by the time does not equal 16 m s⁻¹.",
+      "Option D (18 m s⁻¹) is incorrect because it may arise from confusing the time value with the calculated speed."
+    ],
+    "exam_tip": "For JAMB calculations involving speed, first determine whether the question asks for speed, velocity or acceleration.\n\nIf only the distance travelled and time taken are given, use:\n\nAverage speed = Total distance ÷ Total time.\n\nAlways ensure your answer carries the correct SI unit of metres per second (m s⁻¹).",
+    "final_answer": "B. 14 m s⁻¹",
+    "simple_explanation": "Imagine timing a warehouse robot as it moves from one end of an aisle to the other.\n\nIf it travels 252 metres in 18 seconds, then every second it covers an average of:\n\n252 ÷ 18 = 14 metres.\n\nTherefore, its average speed is 14 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Translational Motion → Average Speed to learn how to distinguish distance from displacement, calculate average speed, and solve additional JAMB-style questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons, worked examples and exam-focused practice."
+  },
+  "tags": [
+    "linear_motion",
+    "translational_motion",
+    "average_speed",
+    "warehouse_robot",
+    "kinematics",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q018",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Translational Motion - Displacement",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a surveying operation, a mapping trolley moves in a straight line from a reference marker to a new survey point located 168 m due east. If the trolley starts from the reference marker and travels directly to the new point without changing direction, what is its displacement?",
+  "options": {
+    "A": "168 m due east",
+    "B": "168 m",
+    "C": "14 m due east",
+    "D": "336 m due east"
+  },
+  "answer": "A",
+  "answer_text": "168 m due east",
+  "explanation": {
+    "question_restate": "This question tests your understanding of displacement during translational motion. You are required to identify the displacement of a survey trolley that moves directly from one point to another along a straight path.",
+    "principle": "Displacement is the straight-line change in position of an object from its starting point to its ending point. It is a vector quantity, meaning that both magnitude and direction must be stated.\n\nTranslational motion occurs when every point of a body moves the same distance in the same direction over the same time interval. During such motion, the entire object changes position without rotating about its own axis.\n\nUnlike distance, which measures the total length of the path travelled, displacement depends only on the initial and final positions of the object.",
+    "steps": [
+      "Step 1: Identify the known information.\n\nInitial position: Reference marker.\n\nFinal position: 168 m due east of the reference marker.\n\nThe trolley moves directly to the new point without changing direction.",
+      "Step 2: Recall the meaning of displacement.\n\nDisplacement is the shortest straight-line distance from the starting point to the ending point together with its direction.",
+      "Step 3: Apply the definition.\n\nSince the trolley travels in a straight line directly east from the starting point to the final point, the displacement is equal to the straight-line separation between the two positions.\n\nDisplacement = 168 m due east.",
+      "Step 4: Select the correct option.\n\nOption A correctly gives both the magnitude and the direction of the displacement."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it gives only the magnitude. Displacement is a vector quantity and must include direction.",
+      "Option C is incorrect because 14 m is not the displacement. It may mislead candidates who confuse the given time in similar motion problems with displacement.",
+      "Option D is incorrect because doubling the separation has no physical basis in this situation. The displacement is simply the change in position from the start to the finish."
+    ],
+    "exam_tip": "In JAMB Physics, always distinguish between distance and displacement.\n\n• Distance is a scalar quantity and has magnitude only.\n• Displacement is a vector quantity and must include both magnitude and direction.\n\nWhenever an object moves directly from one point to another in a straight line, the displacement is simply the straight-line separation together with its direction.",
+    "final_answer": "A. 168 m due east",
+    "simple_explanation": "Imagine walking straight from your house to a shop located 168 m east of your home without taking any detours. Your displacement is simply 168 m due east because that describes both how far you are from where you started and the direction in which you moved.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Translational Motion → Displacement for a complete explanation of displacement, distance, rectilinear motion, curvilinear motion, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice questions and beginner-friendly lessons."
+  },
+  "tags": [
+    "linear_motion",
+    "translational_motion",
+    "displacement",
+    "surveying",
+    "vector_quantity",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q019",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Translational Motion",
+  "difficulty": "easy",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "While transporting a patient through a long, straight hospital corridor, a nurse pushes a patient trolley so that every point on the trolley moves the same distance in the same direction without the trolley changing its orientation.\n\nThe motion of the trolley is best described as",
+  "options": {
+    "A": "Rectilinear translational motion",
+    "B": "Rotational motion",
+    "C": "Oscillatory motion",
+    "D": "Random motion"
+  },
+  "answer": "A",
+  "answer_text": "Rectilinear translational motion",
+  "explanation": {
+    "question_restate": "This question tests your ability to recognise rectilinear translational motion from a practical healthcare situation. Rather than performing calculations, you are required to identify the type of motion exhibited by the patient trolley.",
+    "principle": "Motion is the change in the position of an object with time.\n\nTranslational motion occurs when every point of a body moves through the same distance in the same direction during the same time interval.\n\nA beginner may ask, 'Why is it called translational motion?'\n\nIt is called translational motion because the entire body shifts from one position to another without one part moving differently from another.\n\nTranslational motion can occur in two main forms:\n\n• Rectilinear translation, where the object moves along a straight path.\n\n• Curvilinear translation, where the object follows a curved path while the whole body continues to translate.\n\nIn this question, the patient trolley moves along a straight corridor without changing its orientation. Every point on the trolley moves together in the same direction. This satisfies the conditions for rectilinear translational motion.",
+    "steps": [
+      "Step 1: Identify the path of motion.\n\nThe trolley moves along a straight hospital corridor.\n\nTherefore, its path is straight.",
+      "Step 2: Determine how the body moves.\n\nEvery point on the trolley moves the same distance in the same direction.\n\nThis is the defining characteristic of translational motion.",
+      "Step 3: Check whether the trolley rotates.\n\nThe question states that the trolley does not change its orientation.\n\nHence, the motion is not rotational.",
+      "Step 4: Classify the translational motion.\n\nSince the path is straight, the motion is rectilinear translational motion.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because rotational motion involves turning about an axis. The trolley does not rotate while moving.",
+      "Option C is incorrect because oscillatory motion is a repeated to-and-fro movement about a mean position, which is not described here.",
+      "Option D is incorrect because random motion has no definite path or direction, whereas the trolley moves along a straight, well-defined corridor."
+    ],
+    "exam_tip": "Whenever JAMB describes an object whose entire body moves together, first ask yourself two questions:\n\n• Do all parts of the object move the same distance in the same direction?\n• Is the path straight or curved?\n\nIf the answer to the first question is 'Yes' and the path is straight, the motion is rectilinear translational motion.",
+    "final_answer": "A. Rectilinear translational motion",
+    "simple_explanation": "Imagine pushing a hospital patient trolley along a straight corridor.\n\nThe entire trolley moves forward together without spinning or moving back and forth. Since every part of the trolley moves in the same direction along a straight path, it undergoes rectilinear translational motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Translational Motion to learn the characteristics of translational motion, the differences between rectilinear and curvilinear translation, and how to distinguish translation from rotational and oscillatory motion. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-style practice questions and detailed explanations."
+  },
+  "tags": [
+    "linear_motion",
+    "translational_motion",
+    "rectilinear_motion",
+    "healthcare_application",
+    "motion_classification",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q020",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Translational Motion",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "While inspecting a wind turbine, a drone flies smoothly along a curved path around the tower without spinning about its own axis. Throughout the flight, every point on the drone moves together as it changes position.\n\nWhich type of motion is best illustrated by the drone?",
+  "options": {
+    "A": "Curvilinear translational motion",
+    "B": "Rotational motion",
+    "C": "Oscillatory motion",
+    "D": "Random motion"
+  },
+  "answer": "A",
+  "answer_text": "Curvilinear translational motion",
+  "explanation": {
+    "question_restate": "This question tests your ability to recognise curvilinear translational motion from a real-life engineering scenario involving a drone flying along a curved path.",
+    "principle": "Motion is described according to how an object changes its position.\n\nTranslational motion occurs when every point of an object moves through the same distance in the same direction at a given instant. The object moves as a whole without rotating about its own axis.\n\nTranslational motion may occur in two forms:\n\n• Rectilinear translation, where the path is straight.\n• Curvilinear translation, where the path is curved.\n\nA curved path does not automatically imply rotational motion. Rotational motion occurs only when the body turns about its own axis or about a fixed point.",
+    "steps": [
+      "Step 1: Identify the path followed by the drone.\n\nThe drone moves around the wind turbine along a curved path.",
+      "Step 2: Examine the orientation of the drone.\n\nThe question states that the drone does not spin about its own axis while moving.",
+      "Step 3: Determine the type of motion.\n\nSince the entire drone changes position together without rotating, it undergoes translational motion.",
+      "Step 4: Classify the translation.\n\nBecause the path is curved rather than straight, the motion is specifically curvilinear translational motion.",
+      "Step 5: Select the correct option.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because rotational motion requires the object to turn about its own axis or a fixed point. The drone is stated not to spin.",
+      "Option C is incorrect because oscillatory motion is a repeated to-and-fro motion about an equilibrium position, which is not described here.",
+      "Option D is incorrect because random motion has no definite path or predictable direction. The drone follows a planned inspection route."
+    ],
+    "exam_tip": "A common JAMB misconception is to assume that every object moving along a curved path is rotating. Always check whether the object is turning about its own axis. If it simply changes position as a whole along a curved path, the motion is curvilinear translational motion.",
+    "final_answer": "A. Curvilinear translational motion",
+    "simple_explanation": "Imagine carrying a tray while walking around a circular flower bed. Even though your path is curved, the tray moves with you as one object without spinning. That is an example of curvilinear translational motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Translational Motion to learn the characteristics of rectilinear and curvilinear translation, how they differ from rotational and oscillatory motion, and practise additional JAMB-style questions with the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "linear_motion",
+    "translational_motion",
+    "curvilinear_translation",
+    "drone_motion",
+    "motion_classification",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q021",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Translational Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a routine inspection of an oil pipeline, a robotic inspection vehicle moves in a straight line, covering a displacement of 315 m due north in 21 s. Assuming it maintains translational motion throughout the journey, what is its average velocity?",
+  "options": {
+    "A": "12 m s⁻¹ due north",
+    "B": "15 m s⁻¹ due north",
+    "C": "18 m s⁻¹ due north",
+    "D": "21 m s⁻¹ due north"
+  },
+  "answer": "B",
+  "answer_text": "15 m s⁻¹ due north",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the average velocity of an object undergoing translational motion from its displacement and the time taken.",
+    "principle": "Velocity is the rate at which displacement changes with time.\n\nBefore solving the question, it is important to understand the difference between distance and displacement.\n\nDistance is the total length of the path travelled, irrespective of direction.\n\nDisplacement is the straight-line change in position from the starting point to the ending point and always has a direction.\n\nVelocity is therefore a vector quantity because it depends on both magnitude and direction.\n\nFor motion in a straight line, the average velocity is obtained using:\n\nVelocity = Displacement ÷ Time\n\nwhere:\n\n• Velocity is measured in metres per second (m s⁻¹).\n• Displacement is measured in metres (m).\n• Time is measured in seconds (s).\n\nSince the robot moves due north, the direction must be included in the final answer.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nDisplacement = 315 m due north\n\nTime = 21 s",
+      "Step 2: State the required quantity.\n\nRequired: Average velocity.",
+      "Step 3: Write the appropriate formula.\n\nVelocity = Displacement ÷ Time",
+      "Step 4: Substitute the given values.\n\nVelocity = 315 ÷ 21",
+      "Step 5: Perform the calculation.\n\nVelocity = 15 m s⁻¹",
+      "Step 6: Include the direction.\n\nSince the displacement is due north, the average velocity is 15 m s⁻¹ due north.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (12 m s⁻¹ due north) results from an incorrect calculation of the ratio of displacement to time.",
+      "Option C (18 m s⁻¹ due north) is obtained by using an incorrect arithmetic result after substitution.",
+      "Option D (21 m s⁻¹ due north) incorrectly assumes that the numerical value of the time is the velocity."
+    ],
+    "exam_tip": "Whenever JAMB asks for velocity, first check whether the question provides displacement rather than distance.\n\nRemember:\n\n• Speed = Distance ÷ Time.\n• Velocity = Displacement ÷ Time.\n\nAlways include the direction when stating a velocity because velocity is a vector quantity.",
+    "final_answer": "B. 15 m s⁻¹ due north",
+    "simple_explanation": "Imagine the robot starts at one point on the pipeline and finishes 315 m due north after 21 seconds.\n\nTo find how fast it changes position, divide the displacement by the time:\n\n315 ÷ 21 = 15.\n\nBecause the movement is towards the north, the velocity is 15 m s⁻¹ due north.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Translational Motion → Velocity in Translational Motion for detailed lessons on displacement, average velocity, worked examples and additional JAMB-style practice. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations and exam-focused revision."
+  },
+  "tags": [
+    "translational_motion",
+    "average_velocity",
+    "displacement",
+    "pipeline_robot",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q022",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Translational motion",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During the production of metal components in a factory, an engineer observes a solid steel cylinder rolling smoothly along a horizontal conveyor without slipping.\n\nWhich statement best describes the motion of the cylinder?",
+  "options": {
+    "A": "The cylinder undergoes rotational motion only because it spins about its axis.",
+    "B": "The cylinder undergoes translational motion only because its centre moves forward.",
+    "C": "The cylinder undergoes both translational and rotational motions simultaneously.",
+    "D": "The cylinder undergoes oscillatory motion because different parts of it move continuously."
+  },
+  "answer": "C",
+  "answer_text": "The cylinder undergoes both translational and rotational motions simultaneously.",
+  "explanation": {
+    "question_restate": "This question tests your ability to recognise that a rolling object can possess more than one type of motion at the same time. Specifically, it examines whether you can distinguish pure translational motion from combined translational and rotational motion.",
+    "principle": "Motion describes how an object's position or orientation changes with time.\n\nTranslational motion occurs when every point of an object moves through the same displacement in the same direction over the same time interval.\n\nRotational motion occurs when an object turns about a fixed axis.\n\nA common question beginners ask is:\n\n'Can an object translate and rotate at the same time?'\n\nYes. Many everyday objects do this. For example, a wheel, ball or cylinder rolling along a surface moves forward while simultaneously spinning about its axis. The forward movement is translational motion, while the spinning is rotational motion.\n\nTherefore, rolling motion is generally a combination of translation and rotation.",
+    "steps": [
+      "Step 1: Identify what the cylinder is doing.\n\nThe cylinder is rolling along the conveyor, meaning its centre moves from one position to another.",
+      "Step 2: Determine whether translation occurs.\n\nSince the entire cylinder changes its position as it moves forward, translational motion is present.",
+      "Step 3: Determine whether rotation occurs.\n\nThe cylinder is also spinning about its own central axis while rolling. This is rotational motion.",
+      "Step 4: Combine both observations.\n\nBecause the cylinder moves forward and spins simultaneously, its motion is a combination of translational and rotational motions.",
+      "Step 5: Select the correct option.\n\nOption C correctly describes the motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the cylinder does more than spin. Its centre also moves forward, so translation is present.",
+      "Option B is incorrect because rolling requires the cylinder to rotate as it moves. Ignoring the spinning motion gives an incomplete description.",
+      "Option D is incorrect because oscillatory motion involves repeated to-and-fro movement about a mean position. A rolling cylinder does not exhibit this type of motion."
+    ],
+    "exam_tip": "Whenever JAMB describes an object as 'rolling', immediately ask yourself two questions:\n\n• Is the object moving from one place to another?\n• Is it also turning about its own axis?\n\nIf the answer to both questions is yes, the object undergoes combined translational and rotational motion.",
+    "final_answer": "C. The cylinder undergoes both translational and rotational motions simultaneously.",
+    "simple_explanation": "Imagine pushing a tin can across the floor.\n\nAs the can moves forward, its centre changes position. At the same time, the can keeps spinning around its axis.\n\nThese two motions happen together. The forward movement is translational motion, while the spinning is rotational motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Translational Motion to learn the differences between pure translation, pure rotation and combined motion. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-standard worked examples and practice questions."
+  },
+  "tags": [
+    "linear_motion",
+    "translational_motion",
+    "rotational_motion",
+    "combined_motion",
+    "manufacturing",
+    "rolling_objects",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q023",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Translational Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "In an automated warehouse, an automated guided vehicle (AGV) transports cartons along a straight aisle at a constant speed of 22 m s⁻¹ for 16 s.\n\nWhat distance does the AGV travel during this motion?",
+  "options": {
+    "A": "352 m",
+    "B": "338 m",
+    "C": "368 m",
+    "D": "176 m"
+  },
+  "answer": "A",
+  "answer_text": "352 m",
+  "explanation": {
+    "question_restate": "This question requires you to determine the distance travelled by an object undergoing translational motion when its speed and the time of travel are known.",
+    "principle": "Translational motion occurs when every point of an object moves the same distance in the same direction over the same time interval. When an object moves at a constant speed, the distance travelled depends on both the speed and the time taken.\n\nDistance is the total length of the path covered by an object, irrespective of direction.\n\nThe relationship is:\n\nDistance = Speed × Time\n\nwhere:\n• Distance is measured in metres (m).\n• Speed is measured in metres per second (m s⁻¹).\n• Time is measured in seconds (s).",
+    "steps": [
+      "Step 1: Identify the known values.\n\nSpeed, v = 22 m s⁻¹\nTime, t = 16 s",
+      "Step 2: State the appropriate formula.\n\nDistance = Speed × Time",
+      "Step 3: Substitute the given values.\n\nDistance = 22 × 16",
+      "Step 4: Perform the calculation.\n\nDistance = 352 m",
+      "Step 5: Compare the calculated value with the options.\n\n352 m corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (338 m) results from an incorrect multiplication of the given values.",
+      "Option C (368 m) is greater than the correct product and does not satisfy the relationship Distance = Speed × Time.",
+      "Option D (176 m) is exactly half of the correct value and could result from mistakenly using only half the time."
+    ],
+    "exam_tip": "Whenever speed and time are given, first determine whether the question requires distance, speed or time.\n\nRemember the three related equations:\n• Distance = Speed × Time\n• Speed = Distance ÷ Time\n• Time = Distance ÷ Speed\n\nAlways check that the units are compatible before performing any calculation.",
+    "final_answer": "A. 352 m",
+    "simple_explanation": "Imagine the AGV moving steadily along a warehouse aisle. If it covers 22 metres every second and continues for 16 seconds, it travels 22 × 16 = 352 metres altogether.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Translational Motion for a complete lesson on translational motion, including distance, displacement, speed and velocity calculations, worked examples and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept reviews and examination-focused exercises."
+  },
+  "tags": [
+    "linear_motion",
+    "translational_motion",
+    "distance",
+    "uniform_speed",
+    "warehouse_agv",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q024",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Translational Motion in Marine Transport",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "While crossing a river, a ferry is carried slightly downstream by the river current as it moves toward the opposite bank. Throughout the journey, the ferry remains upright without turning about its own axis.\n\nWhich statement best describes the motion of the ferry?",
+  "options": {
+    "A": "It undergoes curvilinear translational motion because every point on the ferry moves together along a curved path.",
+    "B": "It undergoes rotational motion because its path across the river is curved.",
+    "C": "It undergoes oscillatory motion because the river current changes its direction continuously.",
+    "D": "It remains at rest because its orientation does not change during the crossing."
+  },
+  "answer": "A",
+  "answer_text": "It undergoes curvilinear translational motion because every point on the ferry moves together along a curved path.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to identify translational motion in a real-life marine transportation scenario where a ferry follows a curved path due to the effect of river current.",
+    "principle": "Translational motion occurs when every point of an object moves through the same distance in the same direction during a given interval of time. The object moves as a whole without rotating about its own axis.\n\nA beginner may ask, 'Must translational motion always be in a straight line?'\n\nNo. Translational motion can be:\n\n• Rectilinear, when the object moves along a straight path.\n• Curvilinear, when the object follows a curved path.\n\nThe important requirement is that the body moves as one unit without spinning about its own axis. In this scenario, the river current changes the ferry's path, making it curved, but since the ferry does not rotate, its motion remains translational.",
+    "steps": [
+      "Step 1: Observe the ferry's motion.\n\nThe ferry moves from one bank to the other while being carried slightly downstream by the current, producing a curved path.",
+      "Step 2: Determine whether the ferry rotates.\n\nThe question states that the ferry remains upright and does not turn about its own axis. Therefore, rotational motion is absent.",
+      "Step 3: Classify the motion.\n\nSince the ferry moves as a single body and every point on it changes position together along a curved path, it undergoes curvilinear translational motion.",
+      "Step 4: Select the correct option.\n\nOption A correctly describes the motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a curved path does not automatically mean rotational motion. Rotation involves turning about an internal axis.",
+      "Option C is incorrect because oscillatory motion is a repeated to-and-fro motion about a fixed equilibrium position, which does not occur here.",
+      "Option D is incorrect because the ferry is clearly changing its position across the river. An object can move without changing its orientation."
+    ],
+    "exam_tip": "A common JAMB misconception is to associate every curved path with rotational motion. Remember that an object can undergo translational motion along either a straight or a curved path, provided it does not rotate about its own axis.",
+    "final_answer": "A. It undergoes curvilinear translational motion because every point on the ferry moves together along a curved path.",
+    "simple_explanation": "Imagine placing a cup on a tray and carrying the tray around a gentle bend without twisting it. Although the tray follows a curved path, the cup moves together with the tray without spinning. The ferry behaves in the same way, so its motion is curvilinear translation.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Translational Motion to study rectilinear and curvilinear translation, their characteristics, practical examples in transportation and engineering, and additional JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive concept reviews and worked examples."
+  },
+  "tags": [
+    "linear_motion",
+    "translational_motion",
+    "curvilinear_translation",
+    "marine_transport",
+    "scenario_interpretation",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q025",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Translational Motion",
+  "difficulty": "medium",
+  "cognitive_level": "application",
+  "question_type": "mcq",
+  "question": "An agricultural engineer observes a tractor spraying crops as it moves steadily across a large farmland. Throughout the operation, every point on the tractor advances the same distance in the same direction over equal time intervals, while the tractor itself does not spin about its own body.\n\nWhich statement best describes the motion of the tractor?",
+  "options": {
+    "A": "It undergoes pure translational motion.",
+    "B": "It undergoes pure rotational motion.",
+    "C": "It undergoes oscillatory motion.",
+    "D": "It remains at rest because its orientation is unchanged."
+  },
+  "answer": "A",
+  "answer_text": "It undergoes pure translational motion.",
+  "explanation": {
+    "question_restate": "This question examines your ability to identify translational motion from a practical agricultural operation. Rather than performing calculations, you are expected to recognise the defining characteristics of pure translational motion.",
+    "principle": "Motion is the change in the position of an object with time.\n\nTranslational motion occurs when every point of an object moves the same distance in the same direction during the same time interval.\n\nIn pure translational motion, the entire body changes position without rotating about its own axis. The object's orientation remains unchanged while it moves from one location to another.\n\nExamples include a patient trolley pushed along a corridor, a baggage cart moving through an airport, a warehouse robot travelling along an aisle and a tractor moving straight across a field.",
+    "steps": [
+      "Step 1: Identify the type of movement described.\n\nThe tractor moves steadily across the farmland, meaning its position changes continuously.",
+      "Step 2: Examine how different parts of the tractor move.\n\nThe question states that every point on the tractor moves the same distance in the same direction over equal time intervals. This is the defining feature of translational motion.",
+      "Step 3: Check for rotation.\n\nThe tractor is specifically stated not to spin about its own body. Therefore, rotational motion is absent.",
+      "Step 4: Eliminate incorrect options.\n\nSince there is no spinning, rotational motion is incorrect.\n\nThe tractor is not moving back and forth about a fixed position, so oscillatory motion is also incorrect.\n\nBecause the tractor changes its position, it is certainly not at rest.",
+      "Step 5: Select the correct option.\n\nThe motion described is pure translational motion.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because rotational motion involves turning about an axis. The question clearly states that the tractor does not spin about its own body.",
+      "Option C is incorrect because oscillatory motion is a repeated to-and-fro movement about a mean position, which is not occurring here.",
+      "Option D is incorrect because the tractor changes its position across the farmland. An unchanged orientation does not mean the object is at rest."
+    ],
+    "exam_tip": "When identifying translational motion, focus on how every point of the object moves.\n\nIf all parts of the object move together in the same direction by the same amount without the body rotating about its own axis, the motion is translational.\n\nDo not confuse translational motion with rotational motion simply because an object is moving.",
+    "final_answer": "A. It undergoes pure translational motion.",
+    "simple_explanation": "Imagine pushing a cupboard straight across a room without turning it. Every part of the cupboard moves together in the same direction, and it does not spin.\n\nThe tractor in this question behaves in the same way. It moves as one whole object across the farmland, so it undergoes pure translational motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Translational Motion to learn the characteristics of translational motion, how it differs from rotational and oscillatory motion, and how to identify it in transportation, agriculture, engineering, healthcare and industrial applications. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-style practice questions and detailed concept reviews."
+  },
+  "tags": [
+    "translational_motion",
+    "pure_translation",
+    "linear_motion",
+    "agriculture",
+    "application",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q026",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Translational Motion",
+  "difficulty": "easy",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A rail maintenance vehicle moves in a straight line along a section of railway track, covering a distance of 432 m at a constant speed of 24 m s⁻¹.\n\nHow long does it take the vehicle to complete the journey?",
+  "options": {
+    "A": "16 s",
+    "B": "18 s",
+    "C": "20 s",
+    "D": "24 s"
+  },
+  "answer": "B",
+  "answer_text": "18 s",
+  "explanation": {
+    "question_restate": "This question requires you to determine the time taken by a rail maintenance vehicle to travel a known distance at a constant speed during translational motion.",
+    "principle": "Translational motion is the motion of an object in which every point of the object moves the same distance in the same direction over the same time interval.\n\nWhen an object moves with constant speed in a straight line, the relationship among distance, speed and time is given by:\n\nSpeed = Distance ÷ Time\n\nThis formula can be rearranged to find time:\n\nTime = Distance ÷ Speed\n\nWhere:\n• Distance is measured in metres (m).\n• Speed is measured in metres per second (m s⁻¹).\n• Time is measured in seconds (s).",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nDistance = 432 m\nSpeed = 24 m s⁻¹",
+      "Step 2: Identify the required quantity.\n\nRequired: Time",
+      "Step 3: Use the appropriate formula.\n\nTime = Distance ÷ Speed",
+      "Step 4: Substitute the given values.\n\nTime = 432 ÷ 24",
+      "Step 5: Perform the calculation.\n\nTime = 18 s",
+      "Step 6: Compare with the options.\n\n18 s corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (16 s) is incorrect. It results from an incorrect calculation of the division.",
+      "Option C (20 s) is incorrect. It does not satisfy the relationship between distance, speed and time for the given values.",
+      "Option D (24 s) is incorrect. It may arise from confusing the numerical value of the speed with the required time."
+    ],
+    "exam_tip": "Remember the speed triangle:\n\nSpeed = Distance ÷ Time\nDistance = Speed × Time\nTime = Distance ÷ Speed\n\nBefore substituting values, always identify what quantity the question asks you to calculate and use the correctly rearranged formula.",
+    "final_answer": "B. 18 s",
+    "simple_explanation": "Imagine a maintenance vehicle travelling along a railway track.\n\nIf it covers 24 metres every second, then after 18 seconds it will have travelled:\n\n24 × 18 = 432 m.\n\nTherefore, the journey takes 18 seconds.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Translational Motion for a complete revision of translational motion, including calculations involving distance, displacement, speed, velocity and time, with worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept summaries and examination-focused practice."
+  },
+  "tags": [
+    "linear_motion",
+    "translational_motion",
+    "time_of_motion",
+    "speed_distance_time",
+    "rail_transport",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q027",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Translational Motion",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "An engineer is inspecting an industrial robotic carriage that moves components from one workstation to another along a guided track. Four trainees make the following statements about the carriage's motion:\n\nStatement I: Every point on the carriage moves the same distance in the same direction during pure translational motion.\n\nStatement II: An object following a curved path cannot undergo translational motion.\n\nStatement III: A body may undergo translational motion without rotating about its own axis.\n\nStatement IV: During pure translational motion, the orientation of the body remains unchanged throughout the motion.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, III and IV only",
+    "B": "I and II only",
+    "C": "II, III and IV only",
+    "D": "I, II and III only"
+  },
+  "answer": "A",
+  "answer_text": "I, III and IV only",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of the defining characteristics of translational motion by asking you to evaluate several statements describing the motion of an industrial robotic carriage.",
+    "principle": "Translational motion occurs when every point of a body moves through the same distance in the same direction during the same time interval.\n\nA beginner may ask, 'What makes translational motion different from rotational motion?'\n\nIn translational motion, the entire body changes position together without one part moving differently from another. During pure translation, the body does not rotate about its own axis, so its orientation remains unchanged.\n\nAnother beginner may ask, 'Can translational motion occur along a curved path?'\n\nYes. Translational motion may be rectilinear (straight-line) or curvilinear (curved-path) provided the body translates as a whole without rotating. Therefore, a curved path does not automatically mean rotational motion.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThis statement is correct. In pure translational motion, every point on the body moves the same distance in the same direction during the same time interval.",
+      "Step 2: Examine Statement II.\n\nThis statement is incorrect. Translational motion is not limited to straight-line motion. An object can undergo curvilinear translational motion if it moves as a whole without rotating.",
+      "Step 3: Examine Statement III.\n\nThis statement is correct. Pure translational motion occurs without rotation about the body's own axis.",
+      "Step 4: Examine Statement IV.\n\nThis statement is correct. Since the body does not rotate during pure translation, its orientation remains unchanged throughout the motion.",
+      "Step 5: Identify the correct combination.\n\nStatements I, III and IV are correct, while Statement II is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement II, which wrongly assumes that motion along a curved path cannot be translational.",
+      "Option C is incorrect because Statement II is false, even though Statements III and IV are correct.",
+      "Option D is incorrect because it includes the incorrect Statement II while omitting the correct Statement IV."
+    ],
+    "exam_tip": "A common JAMB misconception is to associate every curved path with rotational motion. Remember that translational motion can be either rectilinear or curvilinear. The key feature is that the body moves as a whole, with all its points undergoing the same displacement pattern and, in pure translation, without changing orientation.",
+    "final_answer": "A. I, III and IV only",
+    "simple_explanation": "Imagine a robotic carriage sliding smoothly along a factory guide rail. Every part of the carriage moves together from one position to another. If the carriage does not twist or spin, it is undergoing pure translational motion. Even if the guide rail bends gently, the carriage can still translate provided it does not rotate about its own axis.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Translational Motion to study the characteristics of translational motion, rectilinear and curvilinear translation, pure translation, combined translation and rotation, and authentic JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive concept reviews and additional practice questions."
+  },
+  "tags": [
+    "translational_motion",
+    "pure_translation",
+    "curvilinear_translation",
+    "industrial_automation",
+    "conceptual_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q028",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Translational Motion",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An engineer is evaluating the movement of an automated warehouse shuttle that transports cartons between storage racks. During operation, every point on the shuttle moves the same distance in the same direction at each instant while the shuttle follows a designated path without rotating about its own axis.\n\nWhich statement best explains why the shuttle is undergoing translational motion?",
+  "options": {
+    "A": "Its centre of mass changes position while every part of the shuttle undergoes the same displacement without changing its orientation.",
+    "B": "It continually rotates about its own axis while remaining at the same location.",
+    "C": "Different parts of the shuttle move through different distances at the same time.",
+    "D": "It repeatedly swings to and fro about a fixed point without changing its overall position."
+  },
+  "answer": "A",
+  "answer_text": "Its centre of mass changes position while every part of the shuttle undergoes the same displacement without changing its orientation.",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify the best explanation of translational motion in a practical engineering application rather than simply recalling its definition.",
+    "principle": "Motion is the change in position of an object with time.\n\nTranslational motion is a type of motion in which every point of a body moves through the same distance in the same direction during the same time interval. The body changes its position as a whole without rotating about its own axis.\n\nA beginner may ask, 'Why is every point important?'\n\nImagine carrying a closed box across a room while keeping it upright. Every corner of the box moves together in the same direction and by the same amount. This is translational motion.\n\nIf the box is simultaneously spinning, then the motion is no longer pure translation because rotation has been introduced.\n\nTranslational motion may occur along either a straight path (rectilinear translation) or a curved path (curvilinear translation), provided the body does not rotate about its own axis during the motion.",
+    "steps": [
+      "Step 1: Examine the description of the shuttle.\n\nThe question states that every point on the shuttle moves the same distance in the same direction and that the shuttle does not rotate about its own axis.",
+      "Step 2: Recall the defining characteristic of translational motion.\n\nA body is in translational motion when all its points experience identical displacement while maintaining the same orientation.",
+      "Step 3: Evaluate Option A.\n\nThis option correctly states that the shuttle changes position as a whole and that every part undergoes the same displacement without changing orientation. This is the defining feature of translational motion.",
+      "Step 4: Evaluate the remaining options.\n\nOptions B, C and D each describe other forms of motion or incorrect characteristics that do not satisfy the definition of pure translational motion.",
+      "Step 5: Select the best explanation.\n\nTherefore, Option A provides the most accurate explanation of why the warehouse shuttle is undergoing translational motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because rotation about an object's own axis is rotational motion, not pure translational motion.",
+      "Option C is incorrect because in translational motion every point of the body moves through the same displacement. Different displacements indicate that the body is not undergoing pure translation.",
+      "Option D is incorrect because swinging to and fro about a fixed point describes oscillatory motion rather than translational motion."
+    ],
+    "exam_tip": "JAMB often tests the defining characteristics of translational motion using practical situations rather than direct definitions.\n\nRemember these key ideas:\n\n• Every point of the body moves through the same displacement.\n• The body changes position as a whole.\n• Pure translational motion does not involve rotation about the body's own axis.\n• A translational path may be straight or curved provided the body's orientation remains unchanged.",
+    "final_answer": "A. Its centre of mass changes position while every part of the shuttle undergoes the same displacement without changing its orientation.",
+    "simple_explanation": "Imagine pushing a cupboard straight across a smooth floor without turning it. Every part of the cupboard moves together in the same direction and by the same amount. That is translational motion.\n\nThe warehouse shuttle behaves in the same way, so Option A is the correct explanation.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Translational Motion for a complete lesson on pure translation, rectilinear and curvilinear translation, differences between translational, rotational and oscillatory motion, practical engineering applications, and additional JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed concept reviews and examination-focused exercises."
+  },
+  "tags": [
+    "linear_motion",
+    "translational_motion",
+    "warehouse_automation",
+    "engineering_applications",
+    "conceptual_physics",
+    "evaluation",
+    "phy_04"
+  ],
+  "active": true
 }
-
 
 ]
 
