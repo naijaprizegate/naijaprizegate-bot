@@ -2237,6 +2237,401 @@
     "phy_04"
   ],
   "active": true
+},
+{
+  "id": "phy_04_q045",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A high-speed passenger train travels 540 m due north in 18 s along a straight railway track.\n\nWhat is the average velocity of the train?",
+  "options": {
+    "A": "30 m s⁻¹ due north",
+    "B": "30 m s⁻¹",
+    "C": "28 m s⁻¹ due north",
+    "D": "32 m s⁻¹ due north"
+  },
+  "answer": "A",
+  "answer_text": "30 m s⁻¹ due north",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the average velocity of an object moving in a straight line with a specified direction.\n\nUnlike speed, velocity requires both magnitude and direction.",
+    "principle": "Velocity is the rate at which displacement changes with time.\n\nDisplacement is the shortest straight-line distance from the starting point to the finishing point together with the direction of motion.\n\nVelocity is therefore a vector quantity because it possesses both magnitude and direction.\n\nThe average velocity of an object is calculated using:\n\nAverage velocity = Displacement ÷ Time\n\nwhere:\n\n• Displacement is measured in metres (m).\n• Time is measured in seconds (s).\n• Velocity is expressed in metres per second (m s⁻¹).\n\nWhenever a direction such as north, south, east or west is given, it must be included in the final answer because direction is an essential part of velocity.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nDisplacement = 540 m due north\n\nTime = 18 s",
+      "Step 2: State the appropriate formula.\n\nAverage velocity = Displacement ÷ Time",
+      "Step 3: Substitute the given values.\n\nAverage velocity = 540 ÷ 18",
+      "Step 4: Perform the calculation.\n\n540 ÷ 18 = 30",
+      "Step 5: Attach the correct SI unit and direction.\n\nAverage velocity = 30 m s⁻¹ due north.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it gives only the magnitude. Velocity must include both magnitude and direction.",
+      "Option C is incorrect because the calculated value is not 28 m s⁻¹.",
+      "Option D is incorrect because the displacement divided by the time does not give 32 m s⁻¹."
+    ],
+    "exam_tip": "A common JAMB mistake is to calculate the numerical value correctly but omit the direction.\n\nRemember:\n\n• Speed = Distance ÷ Time (scalar).\n• Velocity = Displacement ÷ Time (vector).\n\nWhenever a question asks for velocity, always check whether the direction should be included.",
+    "final_answer": "A. 30 m s⁻¹ due north",
+    "simple_explanation": "Imagine travelling from one station directly to another without changing direction.\n\nIf you cover 540 m towards the north in 18 seconds, you move 30 metres every second in that same direction.\n\nBecause the question asks for velocity, the direction 'due north' must be included.\n\nHence, the average velocity is 30 m s⁻¹ due north.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity to learn the meaning of velocity, the difference between speed and velocity, average velocity calculations, displacement, direction in motion, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional exam-focused practice and concept reinforcement."
+  },
+  "tags": [
+    "velocity",
+    "average_velocity",
+    "displacement",
+    "vector_quantity",
+    "linear_motion",
+    "rail_transport",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q046",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "easy",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An autonomous delivery robot moves due east at a constant velocity of 16 m s⁻¹ for 55 s while transporting packages within a smart warehouse.\n\nWhat is the robot's displacement at the end of the motion?",
+  "options": {
+    "A": "880 m east",
+    "B": "871 m east",
+    "C": "39 m east",
+    "D": "880 m"
+  },
+  "answer": "A",
+  "answer_text": "880 m east",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate displacement when the velocity and time of motion are known. Since velocity already includes direction, the final displacement must also include the correct direction.",
+    "principle": "Velocity is defined as the rate of change of displacement with time.\n\nUnlike speed, velocity is a vector quantity because it has both magnitude and direction.\n\nDisplacement refers to the straight-line change in position from the starting point to the ending point, together with its direction.\n\nWhen an object moves with constant velocity in a straight line, its displacement is obtained using:\n\nDisplacement = Velocity × Time\n\nor\n\ns = vt\n\nwhere:\n\n• s = displacement (m)\n• v = velocity (m s⁻¹)\n• t = time (s)",
+    "steps": [
+      "Step 1: Write down the known quantities.\n\nVelocity, v = 16 m s⁻¹ east\n\nTime, t = 55 s",
+      "Step 2: Identify the required quantity.\n\nRequired: Displacement, s",
+      "Step 3: Select the appropriate formula.\n\ns = vt",
+      "Step 4: Substitute the given values.\n\ns = 16 × 55",
+      "Step 5: Perform the calculation.\n\ns = 880 m",
+      "Step 6: Include the direction.\n\nSince the robot travelled due east throughout the journey, its displacement is 880 m east.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (871 m east) is incorrect because it results from an arithmetic error during multiplication.",
+      "Option C (39 m east) is incorrect because it is obtained by wrongly subtracting or manipulating the given values instead of multiplying velocity by time.",
+      "Option D (880 m) has the correct magnitude but omits the direction. Since displacement is a vector quantity, its direction must be stated."
+    ],
+    "exam_tip": "Whenever JAMB asks for displacement using velocity and time, remember that velocity already contains direction.\n\nFirst calculate the magnitude using s = vt, then attach the correct direction.\n\nDo not confuse displacement with distance, and never omit the direction when giving a displacement.",
+    "final_answer": "A. 880 m east",
+    "simple_explanation": "Imagine the robot moving along a straight warehouse aisle without turning.\n\nIf it moves 16 metres every second for 55 seconds, it covers:\n\n16 × 55 = 880 metres.\n\nBecause it always moves east, its displacement is 880 m east.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity to learn how velocity differs from speed, how to calculate displacement, determine time from velocity, interpret direction in motion, and solve additional JAMB-style questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive concept reviews and worked examples."
+  },
+  "tags": [
+    "velocity",
+    "displacement",
+    "constant_velocity",
+    "linear_motion",
+    "robotics",
+    "warehouse_automation",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q047",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a coastguard rescue mission, a rescue boat travels 960 m due west at a constant velocity of 12 m s⁻¹.\n\nHow long does the boat take to reach the stranded vessel?",
+  "options": {
+    "A": "60 s",
+    "B": "72 s",
+    "C": "80 s",
+    "D": "92 s"
+  },
+  "answer": "C",
+  "answer_text": "80 s",
+  "explanation": {
+    "question_restate": "This question requires you to determine the time taken for a rescue boat to cover a known displacement when its constant velocity is given.",
+    "principle": "Velocity is the rate at which displacement changes with time.\n\nUnlike speed, velocity has both magnitude and direction. In calculations involving time, the direction indicates the vector nature of the motion but does not affect the numerical value of the time.\n\nThe relationship between displacement, velocity and time is:\n\nVelocity = Displacement ÷ Time\n\nwhere:\n\n• Velocity (v) is measured in metres per second (m s⁻¹).\n• Displacement (s) is measured in metres (m).\n• Time (t) is measured in seconds (s).\n\nRearranging the formula to make time the subject gives:\n\nTime = Displacement ÷ Velocity.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nDisplacement, s = 960 m west\n\nVelocity, v = 12 m s⁻¹",
+      "Step 2: Identify the required quantity.\n\nTime, t",
+      "Step 3: Select the appropriate formula.\n\nTime = Displacement ÷ Velocity",
+      "Step 4: Substitute the values.\n\nt = 960 ÷ 12",
+      "Step 5: Perform the calculation.\n\n960 ÷ 12 = 80\n\nTherefore, the rescue boat takes 80 s to reach the stranded vessel."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (60 s) is incorrect because it results from an incorrect calculation of the displacement divided by the velocity.",
+      "Option B (72 s) is incorrect because it does not satisfy the relationship between displacement, velocity and time.",
+      "Option D (92 s) is incorrect because it is obtained from an arithmetic error. Using this time with the given velocity would produce a displacement greater than 960 m."
+    ],
+    "exam_tip": "Whenever you are asked to calculate time in linear motion, first identify the known quantities and then rearrange the velocity formula correctly.\n\nRemember:\n\nTime = Displacement ÷ Velocity\n\nAlways check that the units are compatible before substituting values.",
+    "final_answer": "C. 80 s",
+    "simple_explanation": "Imagine the rescue boat moving steadily towards the stranded vessel without changing its speed.\n\nIf it covers 12 m every second, then the number of seconds required to cover 960 m is:\n\n960 ÷ 12 = 80.\n\nSo, the journey takes 80 seconds.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity to learn how velocity, displacement and time are related, including worked JAMB-style examples on finding unknown quantities using the velocity equation. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided practice and examination tips."
+  },
+  "tags": [
+    "velocity",
+    "time_calculation",
+    "linear_motion",
+    "coastguard_rescue",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q048",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a 100 m athletics training session, a coach records the motion of four sprinters as follows:\n\nSprinter I: Runs at 8.5 m s⁻¹.\n\nSprinter II: Runs at 8.5 m s⁻¹ due east.\n\nSprinter III: Covers 100 m in 12 s.\n\nSprinter IV: Runs faster than the others.\n\nWhich sprinter's motion is described in terms of velocity?",
+  "options": {
+    "A": "Sprinter I only",
+    "B": "Sprinter II only",
+    "C": "Sprinter III only",
+    "D": "Sprinter IV only"
+  },
+  "answer": "B",
+  "answer_text": "Sprinter II only",
+  "explanation": {
+    "question_restate": "This question tests your understanding of velocity by asking you to identify which description includes both the magnitude of motion and its direction.",
+    "principle": "Velocity is the rate of change of displacement with time. It is a vector quantity because it has both magnitude and direction.\n\nA beginner may ask, 'What makes velocity different from speed?'\n\nSpeed tells us only how fast an object moves.\n\nVelocity tells us both how fast the object moves and the direction in which it moves.\n\nTherefore, any complete description of velocity must include a numerical value (or magnitude) together with a specified direction such as north, south, east or west.",
+    "steps": [
+      "Step 1: Examine Sprinter I.\n\n'Runs at 8.5 m s⁻¹' gives only the magnitude of motion. No direction is stated, so this describes speed, not velocity.",
+      "Step 2: Examine Sprinter II.\n\n'Runs at 8.5 m s⁻¹ due east' includes both magnitude (8.5 m s⁻¹) and direction (due east). This is a correct description of velocity.",
+      "Step 3: Examine Sprinter III.\n\n'Covers 100 m in 12 s' provides information that can be used to calculate speed, but no direction is given. It does not directly describe velocity.",
+      "Step 4: Examine Sprinter IV.\n\n'Runs faster than the others' is only a comparison of speed and contains neither a numerical value nor a direction.",
+      "Step 5: Identify the correct option.\n\nOnly Sprinter II is described using both magnitude and direction. Therefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a numerical value without direction represents speed, not velocity.",
+      "Option C is incorrect because distance covered and time alone do not specify direction, which is essential for velocity.",
+      "Option D is incorrect because 'faster' is only a relative description of speed and does not describe velocity."
+    ],
+    "exam_tip": "Whenever JAMB asks about velocity, immediately check whether a direction is included. A value expressed in m s⁻¹ becomes a velocity only when its direction is stated.",
+    "final_answer": "B. Sprinter II only",
+    "simple_explanation": "Imagine two runners moving at the same speed.\n\nIf one runs east and the other runs west, they have the same speed but different velocities because their directions are different.\n\nVelocity always combines speed with direction.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity to learn the meaning of velocity, how it differs from speed, how to calculate average velocity, and how direction affects motion. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-style practice questions and detailed explanations."
+  },
+  "tags": [
+    "velocity",
+    "vector_quantity",
+    "direction",
+    "athletics",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q049",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "A smart highway monitoring system records that two vehicles each travel at a speed of 25 m s⁻¹. Vehicle X maintains its motion due east throughout the journey, while Vehicle Y travels at the same speed but changes direction several times before reaching its destination.\n\nWhich statement best explains why the two vehicles can have the same speed but different velocities?",
+  "options": {
+    "A": "Velocity depends only on the magnitude of motion, whereas speed depends on direction.",
+    "B": "Both speed and velocity are unaffected by changes in direction if the magnitude remains constant.",
+    "C": "Speed is a scalar quantity, while velocity depends on both magnitude and direction.",
+    "D": "Velocity is always greater than speed whenever an object changes direction."
+  },
+  "answer": "C",
+  "answer_text": "Speed is a scalar quantity, while velocity depends on both magnitude and direction.",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of the fundamental difference between speed and velocity. Although the two vehicles move with the same speed, one changes direction while the other does not. You are required to identify the statement that correctly explains why their velocities may differ.",
+    "principle": "Speed and velocity are related but not identical.\n\nSpeed is the distance travelled per unit time and has only magnitude. It is therefore a scalar quantity.\n\nVelocity is the displacement per unit time and has both magnitude and direction. It is therefore a vector quantity.\n\nBecause direction forms part of velocity, any change in direction changes the velocity, even if the speed remains constant.\n\nA beginner may ask, 'Can two objects have the same speed but different velocities?'\n\nYes. If they move in different directions or one changes direction during motion, their velocities are different even though their speeds are equal.",
+    "steps": [
+      "Step 1: Identify what is the same.\n\nBoth vehicles move at a speed of 25 m s⁻¹. Therefore, their magnitudes of motion are equal.",
+      "Step 2: Examine the direction of motion.\n\nVehicle X continues due east, whereas Vehicle Y changes direction several times.",
+      "Step 3: Recall the definition of velocity.\n\nVelocity depends on both magnitude and direction. A change in either quantity changes the velocity.",
+      "Step 4: Evaluate the options.\n\nOption C correctly states that speed is a scalar quantity, while velocity depends on both magnitude and direction.\n\nTherefore, Option C is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it reverses the definitions. Speed depends only on magnitude, whereas velocity depends on both magnitude and direction.",
+      "Option B is incorrect because changing direction affects velocity, even if speed remains constant.",
+      "Option D is incorrect because velocity is not always greater than speed. Speed and velocity measure different physical quantities, so one is not generally greater than the other."
+    ],
+    "exam_tip": "In JAMB examinations, questions often test whether you can distinguish scalar quantities from vector quantities.\n\nRemember:\n\n• Speed = Distance ÷ Time (Scalar)\n• Velocity = Displacement ÷ Time (Vector)\n\nWhenever the direction of motion changes, think immediately about velocity because direction is part of its definition.",
+    "final_answer": "C. Speed is a scalar quantity, while velocity depends on both magnitude and direction.",
+    "simple_explanation": "Imagine two cars travelling at exactly the same speed.\n\nIf one drives straight east while the other turns north and then east, both may maintain the same speed, but they do not have the same velocity because their directions differ.\n\nDirection is what distinguishes velocity from speed.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity to learn the difference between speed and velocity, scalar and vector quantities, displacement, average velocity, and direction in motion. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive explanations, worked examples, and authentic JAMB-style practice questions."
+  },
+  "tags": [
+    "velocity",
+    "speed_vs_velocity",
+    "scalar_and_vector",
+    "direction",
+    "conceptual_physics",
+    "evaluation",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q050",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a land surveying operation, a survey team moves 560 m due north in 35 s to reach the first reference point. They then continue a further 240 m due north in 15 s to the second reference point.\n\nWhat is the team's average velocity for the entire journey?",
+  "options": {
+    "A": "12 m s⁻¹ north",
+    "B": "16 m s⁻¹ north",
+    "C": "20 m s⁻¹ north",
+    "D": "24 m s⁻¹ north"
+  },
+  "answer": "B",
+  "answer_text": "16 m s⁻¹ north",
+  "explanation": {
+    "question_restate": "This question requires you to determine the average velocity of a survey team that travels in two successive stages in the same direction. Since the direction remains unchanged, the total displacement is the sum of the two displacements, after which the average velocity is obtained by dividing the total displacement by the total time.",
+    "principle": "Velocity is the rate of change of displacement with time.\n\nUnlike speed, velocity depends on both magnitude and direction.\n\nAverage velocity is defined as:\n\nAverage velocity = Total displacement ÷ Total time\n\nBefore applying this formula, remember that:\n\n• Displacement is the straight-line change in position together with its direction.\n• Time is the total duration of the entire journey.\n• If every stage of motion is along the same straight line and in the same direction, the total displacement is simply the sum of the individual displacements.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nFirst displacement = 560 m north\n\nFirst time = 35 s\n\nSecond displacement = 240 m north\n\nSecond time = 15 s",
+      "Step 2: Determine the total displacement.\n\nSince both movements are due north:\n\nTotal displacement = 560 + 240 = 800 m north.",
+      "Step 3: Determine the total time.\n\nTotal time = 35 + 15 = 50 s.",
+      "Step 4: Apply the average velocity formula.\n\nAverage velocity = Total displacement ÷ Total time\n\n= 800 ÷ 50\n\n= 16 m s⁻¹ north.",
+      "Step 5: Compare with the options.\n\nThe calculated value is 16 m s⁻¹ north.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (12 m s⁻¹ north) is incorrect because it results from an incorrect calculation of either the total displacement or the total time.",
+      "Option C (20 m s⁻¹ north) is incorrect because it may be obtained by dividing the total displacement by only part of the total time, instead of the complete journey time.",
+      "Option D (24 m s⁻¹ north) is incorrect because it overestimates the average velocity and does not satisfy the relationship between total displacement and total time."
+    ],
+    "exam_tip": "Whenever a journey occurs in several stages, first determine the total displacement and the total time before calculating average velocity. Do not average the individual velocities unless the question specifically requires it. Also remember that average velocity depends on displacement, not total distance travelled.",
+    "final_answer": "B. 16 m s⁻¹ north",
+    "simple_explanation": "Imagine walking from one survey marker to another without changing direction. Instead of considering each part separately, combine the total displacement and the total time. Dividing the total displacement of 800 m by the total time of 50 s gives an average velocity of 16 m s⁻¹ north.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity to learn about average velocity, displacement, direction, multi-stage motion, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice questions and beginner-friendly explanations."
+  },
+  "tags": [
+    "velocity",
+    "average_velocity",
+    "multi_stage_motion",
+    "surveying",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q051",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "An elevator in a multi-storey office building moves upward with a velocity of +2.5 m s⁻¹ while another identical elevator in the same shaft system moves downward with a velocity of -2.5 m s⁻¹.\n\nWhich statement correctly interprets these velocities?",
+  "options": {
+    "A": "The two elevators have the same speed but opposite directions of motion.",
+    "B": "The upward-moving elevator has a greater speed because its velocity is positive.",
+    "C": "The downward-moving elevator is moving faster because negative velocity represents a greater magnitude.",
+    "D": "The elevators have different speeds because their velocities have different signs."
+  },
+  "answer": "A",
+  "answer_text": "The two elevators have the same speed but opposite directions of motion.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how the sign of velocity indicates direction without changing the magnitude of motion.\n\nYou are required to interpret the meaning of positive and negative velocities for two elevators moving in opposite directions.",
+    "principle": "Velocity is defined as the rate of change of displacement with time.\n\nUnlike speed, velocity is a vector quantity because it possesses both magnitude and direction.\n\nThe numerical value (magnitude) tells us how fast an object is moving, while the positive or negative sign simply indicates the chosen direction of motion.\n\nFor example, if upward motion is defined as positive, then downward motion is represented by a negative velocity. The negative sign does not mean the object is moving more slowly; it only shows that it is travelling in the opposite direction.",
+    "steps": [
+      "Step 1: Identify the magnitudes of the two velocities.\n\nBoth elevators have a velocity magnitude of 2.5 m s⁻¹.",
+      "Step 2: Interpret the signs.\n\nThe '+' sign indicates motion in the chosen positive direction (upward), while the '−' sign indicates motion in the opposite direction (downward).",
+      "Step 3: Compare their speeds.\n\nSpeed depends only on magnitude. Since both magnitudes are 2.5 m s⁻¹, the elevators have equal speeds.",
+      "Step 4: Draw the correct conclusion.\n\nThe elevators are moving equally fast but in opposite directions.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a positive velocity does not indicate a greater speed. The positive sign only specifies direction.",
+      "Option C is incorrect because a negative velocity does not mean an object is moving faster. It merely represents motion in the opposite direction.",
+      "Option D is incorrect because different signs indicate different directions, not different speeds."
+    ],
+    "exam_tip": "Whenever velocity is written with a '+' or '−' sign, remember that the sign represents direction only.\n\nTo determine speed, consider only the magnitude (numerical value) of the velocity.\n\nA common JAMB misconception is to interpret a negative velocity as a slower motion. This is incorrect.",
+    "final_answer": "A. The two elevators have the same speed but opposite directions of motion.",
+    "simple_explanation": "Imagine two identical elevators moving at exactly the same rate.\n\nOne goes up while the other comes down.\n\nThey are travelling equally fast, but because they move in opposite directions, one velocity is written as positive and the other as negative.\n\nThe sign tells you the direction, not how fast the elevator moves.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity to learn the difference between speed and velocity, understand sign conventions, interpret positive and negative velocities, and practise JAMB-style questions involving directional motion."
+  },
+  "tags": [
+    "velocity",
+    "vector_quantity",
+    "direction",
+    "sign_convention",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q052",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a laboratory investigation, a dynamics trolley moved along a straight track while its velocity was recorded at regular intervals as shown below.\n\n| Time (s) | Velocity (m s⁻¹ east) |\n|----------|------------------------|\n| 0 | 0 |\n| 2 | 3 |\n| 4 | 3 |\n| 6 | 5 |\n\nFrom the data obtained, during which time interval did the trolley move with a constant velocity?",
+  "options": {
+    "A": "0–2 s",
+    "B": "2–4 s",
+    "C": "4–6 s",
+    "D": "0–6 s"
+  },
+  "answer": "B",
+  "answer_text": "2–4 s",
+  "explanation": {
+    "question_restate": "This question requires you to analyse a velocity-time data table to identify the interval during which the trolley maintained a constant velocity. Instead of performing lengthy calculations, you must interpret the experimental observations correctly.",
+    "principle": "Velocity is the rate of change of displacement with time and includes both magnitude and direction.\n\nA body is said to move with constant velocity when both its speed (magnitude of velocity) and direction remain unchanged.\n\nIn a velocity-time table, constant velocity is identified by equal velocity values over successive time intervals. If the recorded velocity changes, the body is accelerating or decelerating and therefore does not have constant velocity.\n\nSince the trolley moves along a straight track towards the east throughout the experiment, the direction remains the same. Therefore, only changes in the numerical value of the velocity need to be examined.",
+    "steps": [
+      "Step 1: Examine the velocity between 0 s and 2 s.\n\nThe velocity changes from 0 m s⁻¹ to 3 m s⁻¹.\n\nSince the velocity changes, this interval is not one of constant velocity.",
+      "Step 2: Examine the velocity between 2 s and 4 s.\n\nThe velocity remains 3 m s⁻¹ throughout this interval.\n\nBoth the magnitude and direction remain unchanged.\n\nTherefore, the trolley moves with constant velocity during this interval.",
+      "Step 3: Examine the velocity between 4 s and 6 s.\n\nThe velocity increases from 3 m s⁻¹ to 5 m s⁻¹.\n\nThis indicates acceleration, so the velocity is not constant.",
+      "Step 4: Consider the entire period from 0 s to 6 s.\n\nThe velocity changes several times during the experiment.\n\nTherefore, the trolley does not move with constant velocity throughout the entire duration.",
+      "Step 5: Select the correct option.\n\nOnly the interval from 2 s to 4 s shows an unchanged velocity.\n\nHence, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the velocity increases from 0 m s⁻¹ to 3 m s⁻¹, indicating acceleration.",
+      "Option C is incorrect because the velocity increases from 3 m s⁻¹ to 5 m s⁻¹, so it is not constant.",
+      "Option D is incorrect because the velocity changes during several parts of the experiment and is therefore not constant throughout the entire 0–6 s interval."
+    ],
+    "exam_tip": "When interpreting velocity-time tables in JAMB, do not rush into calculations.\n\nFirst check whether the velocity values remain the same over the interval being considered.\n\nRemember:\n\n• Constant velocity means constant magnitude and constant direction.\n• A changing velocity indicates acceleration or deceleration.\n• Always read the table carefully before selecting an option.",
+    "final_answer": "B. 2–4 s",
+    "simple_explanation": "Imagine pushing a trolley in a straight line.\n\nIf it keeps moving at exactly 3 m s⁻¹ for a period of time without speeding up or slowing down, its velocity is constant.\n\nIn the table, only the interval from 2 s to 4 s has the same velocity value (3 m s⁻¹), so that is the correct answer.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Velocity to learn how to interpret velocity-time tables, distinguish constant velocity from acceleration, and solve JAMB-style experimental data questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and practical applications."
+  },
+  "tags": [
+    "velocity",
+    "velocity_time_table",
+    "experimental_data",
+    "constant_velocity",
+    "linear_motion",
+    "laboratory",
+    "phy_04"
+  ],
+  "active": true
 }
 
 ]
