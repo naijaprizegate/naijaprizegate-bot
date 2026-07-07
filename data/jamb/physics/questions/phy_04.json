@@ -3127,6 +3127,898 @@
     "phy_04"
   ],
   "active": true
+},
+{
+  "id": "phy_04_q063",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An electric commuter bus leaves a terminal and increases its velocity uniformly from 8 m s⁻¹ to 26 m s⁻¹ in 6 s.\n\nWhat is the average acceleration of the bus?",
+  "options": {
+    "A": "2 m s⁻²",
+    "B": "3 m s⁻²",
+    "C": "4 m s⁻²",
+    "D": "6 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "3 m s⁻²",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the average acceleration of an electric commuter bus from its initial velocity, final velocity and the time taken for the change in velocity.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nA beginner may ask, 'What is acceleration?'\n\nAcceleration tells us how quickly an object's velocity changes. Since velocity includes both speed and direction, acceleration occurs whenever the velocity changes.\n\nAcceleration may be positive when an object speeds up, negative when it slows down (deceleration), or zero when the velocity remains constant.\n\nThe formula for average acceleration is:\n\n a = (v − u)/t\n\nwhere:\n\n• a = average acceleration (m s⁻²)\n• u = initial velocity (m s⁻¹)\n• v = final velocity (m s⁻¹)\n• t = time taken (s)\n\nThe SI unit of acceleration is metre per second squared (m s⁻²).",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 8 m s⁻¹\nFinal velocity, v = 26 m s⁻¹\nTime taken, t = 6 s",
+      "Step 2: State the required quantity.\n\nRequired: Average acceleration (a).",
+      "Step 3: Apply the acceleration formula.\n\n a = (v − u)/t",
+      "Step 4: Substitute the given values.\n\n a = (26 − 8)/6\n\n = 18/6\n\n = 3 m s⁻²",
+      "Step 5: Verify the result.\n\nThe velocity increases by 18 m s⁻¹ over 6 s.\n\nAn increase of 18 divided equally over 6 seconds gives 3 m s⁻¹ every second.\n\nTherefore, the average acceleration is 3 m s⁻²."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2 m s⁻²) is incorrect because it results from an incorrect calculation of the change in velocity or an error in division.",
+      "Option C (4 m s⁻²) is incorrect because it overestimates the rate of change of velocity and does not satisfy the given data.",
+      "Option D (6 m s⁻²) is incorrect because it may result from confusing the time with the acceleration or failing to subtract the initial velocity from the final velocity before dividing."
+    ],
+    "exam_tip": "Whenever JAMB asks for acceleration, first identify the initial velocity, final velocity and time.\n\nDo not use the total distance travelled. Acceleration depends on the change in velocity, not on the distance covered.\n\nAlways check that your final answer carries the correct SI unit, m s⁻².",
+    "final_answer": "B. 3 m s⁻²",
+    "simple_explanation": "Imagine the bus becoming faster every second after leaving the terminal.\n\nIt gains a total of 18 m s⁻¹ in velocity over 6 seconds.\n\nSince 18 ÷ 6 = 3, the bus gains 3 m s⁻¹ of velocity every second.\n\nTherefore, its average acceleration is 3 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration to learn how to calculate average acceleration, distinguish acceleration from velocity, identify positive and negative acceleration, and solve JAMB-style questions involving change in velocity and time. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons, worked examples and additional practice questions."
+  },
+  "tags": [
+    "acceleration",
+    "average_acceleration",
+    "rate_of_change_of_velocity",
+    "linear_motion",
+    "calculation",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q064",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An airport shuttle vehicle leaves the terminal with an initial velocity of 14 m s⁻¹ and accelerates uniformly at 3 m s⁻² for 5 s before reaching the next stop.\n\nWhat is its final velocity?",
+  "options": {
+    "A": "17 m s⁻¹",
+    "B": "25 m s⁻¹",
+    "C": "29 m s⁻¹",
+    "D": "34 m s⁻¹"
+  },
+  "answer": "C",
+  "answer_text": "29 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the final velocity of an object moving with uniform acceleration when the initial velocity, acceleration and time are known.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nWhen an object moves with constant (uniform) acceleration, its final velocity can be calculated using the first equation of motion:\n\nv = u + at\n\nwhere:\n\n• v = final velocity (m s⁻¹)\n• u = initial velocity (m s⁻¹)\n• a = acceleration (m s⁻²)\n• t = time taken (s)\n\nThe term 'at' represents the increase (or decrease) in velocity produced by the acceleration during the given time.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 14 m s⁻¹\nAcceleration, a = 3 m s⁻²\nTime, t = 5 s",
+      "Step 2: Write the appropriate formula.\n\nv = u + at",
+      "Step 3: Substitute the values.\n\nv = 14 + (3 × 5)",
+      "Step 4: Perform the calculation.\n\nv = 14 + 15\n\nv = 29 m s⁻¹",
+      "Step 5: Compare the result with the options.\n\nThe calculated final velocity is 29 m s⁻¹, which corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (17 m s⁻¹) is incorrect because it underestimates the increase in velocity due to acceleration.",
+      "Option B (25 m s⁻¹) is incorrect because the acceleration term has not been evaluated correctly.",
+      "Option D (34 m s⁻¹) is incorrect because it overestimates the increase in velocity and does not satisfy v = u + at."
+    ],
+    "exam_tip": "Whenever a question provides the initial velocity, constant acceleration and time, the first equation of motion, v = u + at, is usually the quickest method to determine the final velocity. Always check that your final answer has the correct SI unit of m s⁻¹.",
+    "final_answer": "C. 29 m s⁻¹",
+    "simple_explanation": "Imagine the airport shuttle is already moving at 14 m s⁻¹. Every second, its speed increases by 3 m s⁻¹ because of the constant acceleration. After 5 seconds, its speed has increased by 15 m s⁻¹.\n\nAdding this increase to the initial velocity gives:\n\n14 + 15 = 29 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration → Determining Final Velocity for a complete lesson on acceleration, the first equation of motion, worked examples and additional JAMB-style practice. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for concept summaries and exam-focused revision."
+  },
+  "tags": [
+    "acceleration",
+    "final_velocity",
+    "first_equation_of_motion",
+    "uniform_acceleration",
+    "linear_motion",
+    "airport_transport",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q065",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a routine inspection of overhead power lines, a high-speed inspection drone accelerates uniformly at 5 m s⁻² for 4 s until it reaches a velocity of 38 m s⁻¹.\n\nWhat was the drone's initial velocity?",
+  "options": {
+    "A": "12 m s⁻¹",
+    "B": "18 m s⁻¹",
+    "C": "22 m s⁻¹",
+    "D": "58 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "18 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question requires you to determine the initial velocity of an object when its final velocity, acceleration and time of motion are known.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nMathematically,\n\na = (v − u) / t\n\nwhere:\n\n• a = acceleration (m s⁻²)\n• u = initial velocity (m s⁻¹)\n• v = final velocity (m s⁻¹)\n• t = time taken (s)\n\nA beginner may ask, 'Why do we subtract the initial velocity from the final velocity?'\n\nAcceleration measures how much the velocity has changed during a given time interval. Therefore, the change in velocity is obtained by subtracting the initial velocity from the final velocity.\n\nWhen the required quantity is the initial velocity, rearrange the formula:\n\nu = v − at",
+    "steps": [
+      "Step 1: Write down the known quantities.\n\nFinal velocity, v = 38 m s⁻¹\nAcceleration, a = 5 m s⁻²\nTime, t = 4 s\nInitial velocity, u = ?",
+      "Step 2: Select the appropriate formula.\n\nu = v − at",
+      "Step 3: Substitute the given values.\n\nu = 38 − (5 × 4)",
+      "Step 4: Perform the calculation.\n\n5 × 4 = 20\n\nu = 38 − 20 = 18 m s⁻¹",
+      "Step 5: Compare the result with the options.\n\n18 m s⁻¹ corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (12 m s⁻¹) is incorrect because it results from an incorrect subtraction and does not satisfy the given acceleration equation.",
+      "Option C (22 m s⁻¹) is incorrect because it represents an incorrect value for the initial velocity after misapplying the formula.",
+      "Option D (58 m s⁻¹) is incorrect because it is obtained by adding instead of subtracting the quantity at. With positive acceleration, the final velocity is greater than the initial velocity, so the initial velocity cannot exceed the final velocity."
+    ],
+    "exam_tip": "Whenever JAMB provides the final velocity, acceleration and time but asks for the initial velocity, immediately think of the relation:\n\nu = v − at\n\nBefore substituting values, always rearrange the formula correctly. One of the common mistakes is adding at instead of subtracting it.",
+    "final_answer": "B. 18 m s⁻¹",
+    "simple_explanation": "Imagine the drone is already moving before it begins to speed up.\n\nDuring the next 4 seconds, its speed increases because of its acceleration.\n\nSince the acceleration adds 20 m s⁻¹ (5 × 4) to its speed, removing this increase from the final velocity gives the speed it had at the beginning:\n\n38 − 20 = 18 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration for a complete lesson on acceleration, determining initial and final velocities, calculating time, interpreting acceleration, and solving JAMB-style kinematics questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "acceleration",
+    "initial_velocity",
+    "uniform_acceleration",
+    "drone_motion",
+    "kinematics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q066",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a cycling competition, four cyclists experience different changes in motion while travelling along a straight section of the track.\n\nCyclist I increases speed steadily.\nCyclist II reduces speed steadily before approaching a sharp bend.\nCyclist III maintains a constant velocity throughout the section.\nCyclist IV slows down because of fatigue.\n\nWhich of the following correctly identifies the cyclists experiencing positive and negative acceleration respectively?",
+  "options": {
+    "A": "Positive: I only; Negative: II and IV",
+    "B": "Positive: I and III; Negative: II only",
+    "C": "Positive: II only; Negative: I and IV",
+    "D": "Positive: III only; Negative: I, II and IV"
+  },
+  "answer": "A",
+  "answer_text": "Positive: I only; Negative: II and IV",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of positive acceleration, negative acceleration (deceleration), and zero acceleration by relating them to the motion of cyclists during a race.",
+    "principle": "Acceleration is the rate of change of velocity with time.\n\nVelocity changes whenever an object's speed or direction changes.\n\nPositive acceleration occurs when an object's velocity increases in the chosen positive direction.\n\nNegative acceleration, often called deceleration in straight-line motion, occurs when an object's velocity decreases with time.\n\nIf an object moves with constant velocity, its acceleration is zero because there is no change in velocity.",
+    "steps": [
+      "Step 1: Examine Cyclist I.\n\nCyclist I increases speed steadily.\n\nAn increase in velocity means positive acceleration.\n\nTherefore, Cyclist I experiences positive acceleration.",
+      "Step 2: Examine Cyclist II.\n\nCyclist II reduces speed steadily.\n\nA decrease in velocity means negative acceleration.\n\nTherefore, Cyclist II experiences negative acceleration.",
+      "Step 3: Examine Cyclist III.\n\nCyclist III maintains a constant velocity.\n\nSince the velocity does not change, the acceleration is zero.\n\nTherefore, Cyclist III experiences neither positive nor negative acceleration.",
+      "Step 4: Examine Cyclist IV.\n\nCyclist IV slows down because of fatigue.\n\nA reduction in velocity indicates negative acceleration.\n\nTherefore, Cyclist IV experiences negative acceleration.",
+      "Step 5: Select the correct combination.\n\nPositive acceleration: Cyclist I only.\n\nNegative acceleration: Cyclists II and IV.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Cyclist III has zero acceleration, not positive acceleration. It also omits Cyclist IV, who is slowing down.",
+      "Option C is incorrect because Cyclist II is slowing down and therefore has negative, not positive, acceleration. Cyclist I is speeding up and cannot have negative acceleration.",
+      "Option D is incorrect because Cyclist III maintains constant velocity and therefore has zero acceleration. Cyclist I is speeding up and should not be classified as having negative acceleration."
+    ],
+    "exam_tip": "Do not confuse acceleration with speed.\n\nRemember:\n\n• Speeding up in the positive direction → Positive acceleration.\n• Slowing down in straight-line motion → Negative acceleration (deceleration).\n• Constant velocity → Zero acceleration.\n\nJAMB frequently tests whether you understand that acceleration describes a change in velocity, not simply movement.",
+    "final_answer": "A. Positive: I only; Negative: II and IV",
+    "simple_explanation": "Imagine cyclists in a race.\n\nA cyclist who pedals harder and goes faster has positive acceleration.\n\nA cyclist who applies the brakes or becomes tired and slows down has negative acceleration.\n\nA cyclist who continues at exactly the same speed in the same direction has zero acceleration because the velocity does not change.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration to learn about positive acceleration, negative acceleration, zero acceleration, average acceleration, and practical JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional concept-based practice and detailed explanations."
+  },
+  "tags": [
+    "acceleration",
+    "positive_acceleration",
+    "negative_acceleration",
+    "deceleration",
+    "cycling_competition",
+    "conceptual_classification",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q067",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "A smart traffic monitoring system observes two vehicles moving along a straight highway.\n\nVehicle P travels at a constant velocity of 22 m s⁻¹ throughout the observation period.\n\nVehicle Q maintains the same average speed as Vehicle P but slows down briefly before accelerating back to its original speed because of changing traffic conditions.\n\nWhich statement best explains the difference between the motions of the two vehicles?",
+  "options": {
+    "A": "Vehicle P and Vehicle Q have the same acceleration because their average speeds are equal.",
+    "B": "Vehicle Q experiences acceleration because its velocity changes, while Vehicle P has zero acceleration because its velocity remains constant.",
+    "C": "Vehicle P has greater acceleration because it maintains a constant velocity throughout the journey.",
+    "D": "Vehicle Q cannot be accelerating since it eventually returns to its original speed."
+  },
+  "answer": "B",
+  "answer_text": "Vehicle Q experiences acceleration because its velocity changes, while Vehicle P has zero acceleration because its velocity remains constant.",
+  "explanation": {
+    "question_restate": "This question tests whether you can distinguish between velocity and acceleration by analysing the motion of two vehicles under different traffic conditions.\n\nRather than performing calculations, you are expected to evaluate which statement correctly explains when acceleration occurs.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nVelocity is a vector quantity that describes both the speed and direction of motion.\n\nAcceleration is also a vector quantity because it depends on changes in velocity.\n\nA change in velocity may occur when:\n\n• speed increases,\n• speed decreases,\n• direction changes, or\n• both speed and direction change.\n\nIf the velocity remains constant, there is no acceleration, even though the object continues moving.\n\nThis is one of the most frequently tested concepts in JAMB Physics.",
+    "steps": [
+      "Step 1: Examine Vehicle P.\n\nVehicle P moves with a constant velocity of 22 m s⁻¹.\n\nSince neither its speed nor its direction changes, its velocity remains constant.\n\nTherefore, its acceleration is zero.",
+      "Step 2: Examine Vehicle Q.\n\nVehicle Q slows down and later speeds up again because of traffic conditions.\n\nThese changes mean its velocity changes during the journey.",
+      "Step 3: Recall the definition of acceleration.\n\nAcceleration measures how quickly velocity changes with time.\n\nAny increase or decrease in velocity indicates acceleration, even if the object later returns to its original speed.",
+      "Step 4: Evaluate the options.\n\nOnly Option B correctly explains that Vehicle Q accelerates because its velocity changes, whereas Vehicle P has zero acceleration because its velocity remains constant."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because equal average speeds do not necessarily imply equal acceleration. Acceleration depends on changes in velocity, not on average speed alone.",
+      "Option C is incorrect because constant velocity means zero acceleration, not greater acceleration.",
+      "Option D is incorrect because returning to the original speed does not mean acceleration never occurred. Vehicle Q accelerated while its velocity was changing."
+    ],
+    "exam_tip": "Remember this simple rule:\n\n• Constant velocity → Zero acceleration.\n• Changing velocity → Acceleration.\n\nDo not confuse speed with velocity. A moving object can have zero acceleration only if its velocity remains constant throughout the motion.",
+    "final_answer": "B. Vehicle Q experiences acceleration because its velocity changes, while Vehicle P has zero acceleration because its velocity remains constant.",
+    "simple_explanation": "Imagine driving on an empty road.\n\nIf you keep the same speed and continue in the same direction, you have zero acceleration.\n\nIf you slow down because of traffic and later speed up again, your velocity changes. That means you are accelerating, even if you eventually return to your original speed.\n\nTherefore, Vehicle Q experiences acceleration, while Vehicle P does not.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration to learn the difference between velocity and acceleration, positive and negative acceleration, zero acceleration, and practical JAMB-style examples involving transportation, laboratory investigations, and real-life motion analysis. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept reviews and examination-focused practice."
+  },
+  "tags": [
+    "acceleration",
+    "velocity",
+    "constant_velocity",
+    "conceptual_acceleration",
+    "smart_traffic_monitoring",
+    "best_explanation",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q068",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A metro train departs a station at a velocity of 5 m s⁻¹. It accelerates uniformly to 17 m s⁻¹ in 6 s. It then continues to accelerate uniformly to 29 m s⁻¹ over the next 4 s.\n\nWhat is the average acceleration of the train for the entire 10-second journey?",
+  "options": {
+    "A": "1.8 m s⁻²",
+    "B": "2.0 m s⁻²",
+    "C": "2.4 m s⁻²",
+    "D": "2.9 m s⁻²"
+  },
+  "answer": "C",
+  "answer_text": "2.4 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the average acceleration of a body that undergoes motion in two successive stages. Rather than calculating the acceleration for each stage separately, you must consider the overall change in velocity during the entire time interval.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nThe average acceleration of an object is calculated using:\n\na = (v − u) / t\n\nwhere:\n\n• a = average acceleration (m s⁻²)\n• u = initial velocity (m s⁻¹)\n• v = final velocity (m s⁻¹)\n• t = total time taken (s)\n\nEven if motion occurs in several stages, the average acceleration over the entire journey depends only on the overall change in velocity and the total time taken, provided the required information is available.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 5 m s⁻¹\n\nFinal velocity, v = 29 m s⁻¹\n\nTotal time, t = 6 s + 4 s = 10 s.",
+      "Step 2: Determine the total change in velocity.\n\nChange in velocity = 29 − 5 = 24 m s⁻¹.",
+      "Step 3: Apply the average acceleration formula.\n\nAverage acceleration = Change in velocity / Total time\n\n= 24 / 10\n\n= 2.4 m s⁻².",
+      "Step 4: Compare the calculated value with the options.\n\nOption C matches the calculated average acceleration."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (1.8 m s⁻²) is incorrect because it underestimates the total change in velocity or overestimates the time taken.",
+      "Option B (2.0 m s⁻²) is incorrect because it results from an incorrect substitution into the acceleration formula.",
+      "Option D (2.9 m s⁻²) is incorrect because it overestimates the acceleration and does not agree with the given velocities and total time."
+    ],
+    "exam_tip": "When a motion occurs in successive stages, read the question carefully before performing separate calculations. If the question asks for the average acceleration over the entire motion, use the overall initial velocity, overall final velocity and total time. This saves time and avoids unnecessary calculations during the examination.",
+    "final_answer": "C. 2.4 m s⁻²",
+    "simple_explanation": "Imagine the metro train gradually increases its speed from 5 m s⁻¹ to 29 m s⁻¹ during a total of 10 seconds. The train gains 24 m s⁻¹ in velocity over those 10 seconds.\n\nAverage acceleration = 24 ÷ 10 = 2.4 m s⁻².\n\nTherefore, the correct answer is Option C.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration for a complete lesson on average acceleration, uniform acceleration, multi-stage motion and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice questions and detailed concept reviews."
+  },
+  "tags": [
+    "acceleration",
+    "average_acceleration",
+    "multi_stage_motion",
+    "metro_transport",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q069",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "During an emergency response, an ambulance travelling in a straight line approaches a busy intersection. The driver applies the brakes uniformly, causing the ambulance's speed to decrease steadily from 32 m s⁻¹ to 14 m s⁻¹ over a short period while it continues moving forward.\n\nWhich statement best describes the ambulance's acceleration during braking?",
+  "options": {
+    "A": "The ambulance has negative acceleration because its velocity decreases with time while continuing in the same direction.",
+    "B": "The ambulance has zero acceleration because it is still moving forward.",
+    "C": "The ambulance has positive acceleration because its velocity remains in the forward direction.",
+    "D": "The ambulance has constant speed but changing acceleration."
+  },
+  "answer": "A",
+  "answer_text": "The ambulance has negative acceleration because its velocity decreases with time while continuing in the same direction.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of deceleration during braking. It requires you to interpret what happens to an object's acceleration when its velocity decreases uniformly while it continues moving in the same direction.",
+    "principle": "Acceleration is the rate of change of velocity with respect to time.\n\nIt is given by:\n\na = Δv/t = (v - u)/t\n\nwhere:\n\n• a = acceleration\n• u = initial velocity\n• v = final velocity\n• t = time taken\n\nAcceleration is a vector quantity because velocity has both magnitude and direction.\n\nMany students think acceleration only occurs when an object speeds up. This is incorrect. Whenever velocity changes—whether by increasing, decreasing or changing direction—the object is accelerating.\n\nWhen an object's speed decreases while it continues moving in the same direction, the acceleration acts opposite to the direction of motion. This is called negative acceleration or deceleration.",
+    "steps": [
+      "Step 1: Examine the motion described.\n\nThe ambulance continues moving forward but its speed decreases steadily from 32 m s⁻¹ to 14 m s⁻¹ after the brakes are applied.",
+      "Step 2: Determine whether the velocity is changing.\n\nYes. The magnitude of the velocity decreases with time, so the velocity is changing.",
+      "Step 3: Interpret the acceleration.\n\nSince the change in velocity is opposite to the direction of motion, the acceleration is negative (deceleration).",
+      "Step 4: Select the correct statement.\n\nOption A correctly explains that the ambulance experiences negative acceleration because its velocity decreases while it continues moving forward."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because an object can be moving and still have acceleration. Motion does not imply zero acceleration.",
+      "Option C is incorrect because the direction of motion alone does not determine the sign of acceleration. Since the speed is decreasing, the acceleration is negative, not positive.",
+      "Option D is incorrect because the speed is not constant. The question clearly states that the speed decreases steadily during braking."
+    ],
+    "exam_tip": "In JAMB Physics, remember that acceleration depends on changes in velocity, not simply on whether an object is moving.\n\nIf an object slows down while moving in the same direction, it experiences negative acceleration (deceleration).\n\nDo not confuse 'still moving' with 'zero acceleration.'",
+    "final_answer": "A. The ambulance has negative acceleration because its velocity decreases with time while continuing in the same direction.",
+    "simple_explanation": "Imagine riding in a vehicle when the driver presses the brake pedal. You continue moving forward, but your speed reduces.\n\nSince your velocity is becoming smaller every second, the vehicle is accelerating in the direction opposite to its motion. This is called negative acceleration or deceleration.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration to learn about positive acceleration, negative acceleration (deceleration), zero acceleration, velocity-time relationships, and authentic JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive revision and additional practice questions."
+  },
+  "tags": [
+    "acceleration",
+    "negative_acceleration",
+    "deceleration",
+    "braking",
+    "scenario_interpretation",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q070",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a laboratory air-track experiment, a trolley moved along a straight, nearly frictionless track while its velocity was recorded at equal time intervals. The observations are shown below:\n\nTime (s):      0     2     4     6     8\nVelocity (m s⁻¹):  5     9    13    17    21\n\nBased on the experimental data, what is the acceleration of the trolley?",
+  "options": {
+    "A": "2.0 m s⁻²",
+    "B": "2.5 m s⁻²",
+    "C": "2.8 m s⁻²",
+    "D": "3.2 m s⁻²"
+  },
+  "answer": "A",
+  "answer_text": "2.0 m s⁻²",
+  "explanation": {
+    "question_restate": "This question presents velocity measurements obtained from a laboratory air-track experiment. Your task is to analyse the velocity-time data and determine the trolley's acceleration.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nIt tells us how quickly an object's velocity increases or decreases.\n\nThe mathematical expression is:\n\na = Δv/t = (v − u)/t\n\nwhere:\n\n• a = acceleration (m s⁻²)\n• u = initial velocity (m s⁻¹)\n• v = final velocity (m s⁻¹)\n• t = time taken (s)\n\nIn a velocity-time experiment, a constant increase in velocity over equal time intervals indicates uniform acceleration.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial velocity, u = 5 m s⁻¹\n\nFinal velocity, v = 21 m s⁻¹\n\nTime elapsed = 8 s.",
+      "Step 2: Calculate the change in velocity.\n\nΔv = v − u\n\n= 21 − 5\n\n= 16 m s⁻¹.",
+      "Step 3: Apply the acceleration formula.\n\na = Δv/t\n\n= 16/8\n\n= 2.0 m s⁻².",
+      "Step 4: Verify the result using intermediate readings.\n\nFrom 0 s to 2 s:\nVelocity changes from 5 to 9 m s⁻¹.\n\nAcceleration = (9 − 5)/2 = 2.0 m s⁻².\n\nFrom 2 s to 4 s:\nAcceleration = (13 − 9)/2 = 2.0 m s⁻².\n\nThe same value is obtained throughout, confirming that the trolley moved with uniform acceleration.",
+      "Step 5: Compare with the options.\n\nThe calculated acceleration is 2.0 m s⁻².\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (2.5 m s⁻²) is incorrect. It results from an incorrect calculation of the change in velocity or time interval.",
+      "Option C (2.8 m s⁻²) is incorrect because it does not agree with the experimental data and overestimates the rate of change of velocity.",
+      "Option D (3.2 m s⁻²) is incorrect. It is obtained by using an incorrect formula or by confusing velocity with acceleration."
+    ],
+    "exam_tip": "When analysing a velocity-time table, first check whether the velocity changes by equal amounts during equal time intervals. If it does, the motion has uniform acceleration. Always use the total change in velocity divided by the corresponding total time unless instructed otherwise.",
+    "final_answer": "A. 2.0 m s⁻²",
+    "simple_explanation": "Imagine pushing a trolley along a smooth track. If its speed increases by the same amount every two seconds, it has a constant acceleration.\n\nHere, the velocity increases steadily from 5 m s⁻¹ to 21 m s⁻¹ in 8 seconds.\n\nThe increase in velocity is 16 m s⁻¹.\n\nDividing this by 8 seconds gives an acceleration of 2.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration for a complete lesson on average acceleration, velocity-time graphs, experimental determination of acceleration, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly explanations, concept summaries, and additional practice questions."
+  },
+  "tags": [
+    "acceleration",
+    "velocity_time_data",
+    "laboratory_experiment",
+    "air_track",
+    "experimental_analysis",
+    "uniform_acceleration",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q071",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "While leaving a harbour for a rescue patrol, a patrol boat increases its velocity uniformly from 9 m s⁻¹ to 24 m s⁻¹ in 5 s.\n\nWhat is the average acceleration of the boat?",
+  "options": {
+    "A": "1.8 m s⁻²",
+    "B": "3.0 m s⁻²",
+    "C": "4.8 m s⁻²",
+    "D": "6.6 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "3.0 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your ability to apply the definition of average acceleration to a practical marine transportation situation involving a harbour patrol boat.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nBefore solving the problem, it is important to understand that velocity is a vector quantity because it has both magnitude and direction. Whenever the velocity of an object changes, either in magnitude or direction, the object experiences acceleration.\n\nAverage acceleration is calculated using:\n\n a = (v − u)/t\n\nwhere:\n\n• a = average acceleration (m s⁻²)\n• u = initial velocity (m s⁻¹)\n• v = final velocity (m s⁻¹)\n• t = time taken (s)\n\nThis formula tells us how much the velocity changes every second.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial velocity, u = 9 m s⁻¹\nFinal velocity, v = 24 m s⁻¹\nTime, t = 5 s",
+      "Step 2: State the required quantity.\n\nFind the average acceleration, a.",
+      "Step 3: Apply the acceleration formula.\n\na = (v − u)/t",
+      "Step 4: Substitute the values.\n\na = (24 − 9)/5\n\n= 15/5\n\n= 3.0 m s⁻²",
+      "Step 5: Compare with the options.\n\nThe calculated value is 3.0 m s⁻², which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (1.8 m s⁻²) is incorrect because it results from an incorrect calculation of the change in velocity or division.",
+      "Option C (4.8 m s⁻²) is incorrect because it overestimates the acceleration by using an incorrect change in velocity.",
+      "Option D (6.6 m s⁻²) is incorrect because it does not follow the acceleration formula and greatly exaggerates the rate of change of velocity."
+    ],
+    "exam_tip": "Whenever JAMB provides an initial velocity, a final velocity and the time taken, immediately think of the acceleration formula:\n\n a = (v − u)/t\n\nAlways subtract the initial velocity from the final velocity before dividing by the time. Do not use the total distance travelled unless the question specifically requires it.",
+    "final_answer": "B. 3.0 m s⁻²",
+    "simple_explanation": "Imagine the patrol boat gradually gaining speed as it leaves the harbour. Its velocity increases by 15 m s⁻¹ over 5 seconds. Since the increase is the same throughout the motion, the boat gains 3 m s⁻¹ of velocity every second. Therefore, its average acceleration is 3.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration to learn how to calculate average acceleration, distinguish acceleration from velocity, interpret practical transportation scenarios, and solve additional JAMB-style application questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and guided practice."
+  },
+  "tags": [
+    "phy_04",
+    "linear_motion",
+    "acceleration",
+    "average_acceleration",
+    "marine_transportation",
+    "harbour_patrol_boat",
+    "application",
+    "jamb_physics"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q072",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a performance test in an automated warehouse, an autonomous robot travels in a straight line while increasing its velocity uniformly from 9 m s⁻¹ to 33 m s⁻¹ over a period of 8 s.\n\nWhat is the robot's average acceleration during the test?",
+  "options": {
+    "A": "2.0 m s⁻²",
+    "B": "3.0 m s⁻²",
+    "C": "4.125 m s⁻²",
+    "D": "5.25 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "3.0 m s⁻²",
+  "explanation": {
+    "question_restate": "This question assesses your ability to calculate the average acceleration of an object from practical observations of its initial velocity, final velocity and the time taken for the change to occur. The situation involves an autonomous warehouse robot that speeds up uniformly while transporting goods.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nA beginner may ask, 'What is acceleration?'\n\nAcceleration tells us how quickly an object's velocity changes. Since velocity includes both speed and direction, acceleration occurs whenever velocity changes.\n\nThe average acceleration of an object is calculated using:\n\n a = (v − u)/t\n\nwhere:\n\n• a = average acceleration (m s⁻²)\n• u = initial velocity (m s⁻¹)\n• v = final velocity (m s⁻¹)\n• t = time taken (s)\n\nNotice that the formula uses the **change in velocity** (v − u), not simply the final velocity or the distance travelled.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 9 m s⁻¹\nFinal velocity, v = 33 m s⁻¹\nTime taken, t = 8 s",
+      "Step 2: Determine the change in velocity.\n\nΔv = v − u\n= 33 − 9\n= 24 m s⁻¹",
+      "Step 3: Apply the acceleration formula.\n\na = Δv/t\n= 24/8\n= 3.0 m s⁻²",
+      "Step 4: Compare the calculated value with the options.\n\nThe calculated acceleration is 3.0 m s⁻².\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.0 m s⁻²) is incorrect because it underestimates the rate of change of velocity. It results from an incorrect calculation of the change in velocity or an incorrect division.",
+      "Option C (4.125 m s⁻²) is incorrect because it can arise from wrongly dividing the final velocity (33 m s⁻¹) by the time instead of using the change in velocity.",
+      "Option D (5.25 m s⁻²) is incorrect because it does not follow the acceleration formula and may result from using inappropriate values during substitution."
+    ],
+    "exam_tip": "Whenever JAMB asks you to calculate acceleration, first identify the initial velocity, final velocity and time taken. Always subtract the initial velocity from the final velocity before dividing by time. Remember that acceleration has the SI unit m s⁻².",
+    "final_answer": "B. 3.0 m s⁻²",
+    "simple_explanation": "Imagine the warehouse robot starts moving at 9 m s⁻¹ and later reaches 33 m s⁻¹ after 8 seconds. Its velocity has increased by 24 m s⁻¹. Since this change happened over 8 seconds, the robot gained 3 m s⁻¹ of velocity every second. Therefore, its acceleration is 3.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration to learn how to calculate average acceleration, distinguish acceleration from velocity, solve practical JAMB-style problems, and interpret real-life motion scenarios involving transportation, robotics and laboratory investigations. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "acceleration",
+    "average_acceleration",
+    "warehouse_robot",
+    "rate_of_change_of_velocity",
+    "linear_motion",
+    "practical_application",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q073",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "A car is travelling along a straight highway with its cruise control engaged. The system maintains the vehicle at a constant velocity for several minutes without changing its speed or direction.\n\nWhich statement best explains the acceleration of the car during this period?",
+  "options": {
+    "A": "The car has zero acceleration because its velocity remains constant.",
+    "B": "The car has positive acceleration because the engine continues to produce power.",
+    "C": "The car has negative acceleration because friction acts on the tyres.",
+    "D": "The car has constant acceleration because it continues moving."
+  },
+  "answer": "A",
+  "answer_text": "The car has zero acceleration because its velocity remains constant.",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of zero acceleration. It requires you to recognise that acceleration depends on changes in velocity, not simply on whether an object is moving.",
+    "principle": "Acceleration is defined as the rate of change of velocity with respect to time.\n\nMathematically,\n\na = Δv/t\n\nwhere:\n• a = acceleration\n• Δv = change in velocity\n• t = time taken\n\nVelocity is a vector quantity, meaning it has both magnitude (speed) and direction. Therefore, acceleration occurs only when the magnitude of the velocity changes, the direction changes, or both change.\n\nIf an object continues to move with constant speed in a straight line, its velocity remains unchanged. Since there is no change in velocity (Δv = 0), its acceleration is zero.",
+    "steps": [
+      "Step 1: Identify the motion described.\n\nThe car moves with constant velocity. This means both its speed and direction remain unchanged.",
+      "Step 2: Recall the meaning of acceleration.\n\nAcceleration measures how quickly velocity changes with time. If velocity does not change, acceleration is zero.",
+      "Step 3: Evaluate each option.\n\nOption A correctly states that constant velocity results in zero acceleration.\n\nOption B is incorrect because an engine may produce power simply to balance resistive forces. Engine operation alone does not imply acceleration.\n\nOption C is incorrect because the presence of friction does not necessarily produce deceleration. During cruise control, the engine provides enough driving force to balance friction and air resistance, keeping the velocity constant.\n\nOption D is incorrect because continuous motion does not imply continuous acceleration. An object can move at constant velocity without accelerating.",
+      "Step 4: Select the best explanation.\n\nThe correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because acceleration depends on a change in velocity, not on whether the engine is running.",
+      "Option C is incorrect because balanced forces produce zero resultant force and therefore zero acceleration.",
+      "Option D is incorrect because an object may continue moving with constant velocity while its acceleration remains zero."
+    ],
+    "exam_tip": "A common JAMB misconception is to think that every moving object is accelerating.\n\nRemember:\n\n• Moving at constant velocity → Zero acceleration.\n• Increasing speed → Positive acceleration.\n• Decreasing speed → Negative acceleration (deceleration).\n• Changing direction, even at constant speed, also produces acceleration.",
+    "final_answer": "A. The car has zero acceleration because its velocity remains constant.",
+    "simple_explanation": "Imagine driving on a long, straight highway with cruise control switched on. Your car keeps the same speed and does not turn.\n\nAlthough the engine is working, your velocity is not changing. Since acceleration measures changes in velocity, the acceleration is zero.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration to learn about average acceleration, positive acceleration, negative acceleration, zero acceleration, and practical JAMB-style examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and examination practice."
+  },
+  "tags": [
+    "acceleration",
+    "zero_acceleration",
+    "constant_velocity",
+    "cruise_control",
+    "conceptual_physics",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q074",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An automated packaging conveyor in a manufacturing plant is programmed to increase the speed of product trays as they move to the sealing unit. The conveyor's velocity increases uniformly from 5 m s⁻¹ to 17 m s⁻¹ in 4 s.\n\nWhich statement best describes the acceleration of the conveyor during this interval?",
+  "options": {
+    "A": "The conveyor has a constant acceleration of 3.0 m s⁻² because its velocity increases uniformly with time.",
+    "B": "The conveyor has a constant acceleration of 4.25 m s⁻² because its final velocity is divided by the time taken.",
+    "C": "The conveyor has a variable acceleration of 3.0 m s⁻² because its speed is changing.",
+    "D": "The conveyor has zero acceleration because it continues moving in the same direction."
+  },
+  "answer": "A",
+  "answer_text": "The conveyor has a constant acceleration of 3.0 m s⁻² because its velocity increases uniformly with time.",
+  "explanation": {
+    "question_restate": "This question tests your ability to apply the concept of acceleration to an industrial automation system. You are expected to determine the acceleration from the change in velocity and identify the statement that correctly explains the motion.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nIt is given by the relation:\n\na = (v − u)/t\n\nwhere:\n\n• a = acceleration (m s⁻²)\n• u = initial velocity (m s⁻¹)\n• v = final velocity (m s⁻¹)\n• t = time taken (s)\n\nWhen an object's velocity changes by equal amounts in equal time intervals, the object is said to have **constant (uniform) acceleration**.\n\nIndustrial conveyor systems often operate with controlled acceleration so that products move smoothly without slipping or becoming damaged.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 5 m s⁻¹\nFinal velocity, v = 17 m s⁻¹\nTime, t = 4 s",
+      "Step 2: Calculate the change in velocity.\n\nΔv = v − u\n= 17 − 5\n= 12 m s⁻¹",
+      "Step 3: Apply the acceleration formula.\n\na = Δv/t\n= 12/4\n= 3.0 m s⁻²",
+      "Step 4: Interpret the result.\n\nSince the question states that the velocity increases **uniformly**, the acceleration remains constant throughout the motion.\n\nTherefore, the correct statement is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because acceleration is calculated using the **change in velocity**, not the final velocity divided by time. Dividing 17 by 4 gives 4.25 m s⁻², which is not the correct method.",
+      "Option C is incorrect because a changing speed does not necessarily mean changing acceleration. The question states that the velocity increases uniformly, indicating constant acceleration.",
+      "Option D is incorrect because an object can accelerate while moving in the same direction if its velocity is increasing. Zero acceleration occurs only when velocity remains constant."
+    ],
+    "exam_tip": "Whenever you are given initial velocity, final velocity and time, first calculate the **change in velocity** before applying the acceleration formula.\n\nDo not confuse:\n\n• final velocity ÷ time\nwith\n• change in velocity ÷ time.\n\nAlso remember that acceleration can exist even when an object continues moving in the same direction, provided its velocity changes.",
+    "final_answer": "A. The conveyor has a constant acceleration of 3.0 m s⁻² because its velocity increases uniformly with time.",
+    "simple_explanation": "Imagine standing beside a conveyor belt in a factory.\n\nAt first, the trays move at 5 m s⁻¹. After 4 seconds, they are moving at 17 m s⁻¹.\n\nThe speed has increased by 12 m s⁻¹ over 4 seconds.\n\nSince the increase happens uniformly, the conveyor gains 3 m s⁻¹ of velocity every second.\n\nThat means its acceleration is 3.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration to learn how to calculate acceleration, distinguish constant and variable acceleration, interpret industrial and transportation applications, and solve JAMB-style questions involving the rate of change of velocity. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and concept-based practice."
+  },
+  "tags": [
+    "acceleration",
+    "industrial_automation",
+    "conveyor_system",
+    "uniform_acceleration",
+    "application",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q075",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "While testing an automated railway signalling system, engineers observe that a train is travelling along a straight track in the positive direction. As it approaches a red signal, its speed decreases uniformly until it comes to rest.\n\nWhich statement correctly describes the train's acceleration during the braking process?",
+  "options": {
+    "A": "The acceleration is negative because it acts opposite to the direction of motion.",
+    "B": "The acceleration is positive because the train is still moving in the positive direction.",
+    "C": "The acceleration is zero because the train remains on the same straight track.",
+    "D": "The acceleration changes from positive to zero immediately braking begins."
+  },
+  "answer": "A",
+  "answer_text": "The acceleration is negative because it acts opposite to the direction of motion.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the sign convention of acceleration. It requires you to determine whether acceleration is positive, negative or zero when an object moving in the positive direction slows down.",
+    "principle": "Acceleration is the rate of change of velocity with time.\n\nMathematically,\n\na = Δv / t\n\nwhere:\n• a = acceleration\n• Δv = change in velocity\n• t = time taken\n\nAcceleration is a vector quantity because velocity has both magnitude and direction.\n\nThe sign of acceleration depends on the chosen positive direction.\n\nIf acceleration acts in the same direction as the motion, it is positive.\n\nIf acceleration acts opposite to the direction of motion, it is negative.\n\nA negative acceleration does not mean the object is moving backwards. It simply indicates that the acceleration is directed opposite to the chosen positive direction.",
+    "steps": [
+      "Step 1: Identify the direction of motion.\n\nThe train is moving along the positive direction of the track.",
+      "Step 2: Observe what happens to its speed.\n\nThe train slows down uniformly while approaching the red signal.",
+      "Step 3: Interpret the direction of acceleration.\n\nWhenever an object moving in the positive direction slows down, its acceleration acts opposite to the motion.",
+      "Step 4: Apply the sign convention.\n\nSince the acceleration is opposite to the positive direction, it is negative.",
+      "Step 5: Select the correct option.\n\nOption A correctly explains the sign of the acceleration."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the direction of motion does not determine the sign of acceleration. A moving object can have negative acceleration if it is slowing down.",
+      "Option C is incorrect because travelling in a straight line does not imply zero acceleration. Since the train's velocity is changing, its acceleration cannot be zero.",
+      "Option D is incorrect because the acceleration remains negative throughout the uniform braking process until the train stops. It does not become zero immediately braking begins."
+    ],
+    "exam_tip": "JAMB frequently tests the difference between velocity and acceleration.\n\nRemember:\n\n• Positive acceleration means acceleration acts in the chosen positive direction.\n• Negative acceleration means acceleration acts opposite to the chosen positive direction.\n• An object can still move forward while having negative acceleration if it is slowing down.\n\nDo not confuse the direction of motion with the direction of acceleration.",
+    "final_answer": "A. The acceleration is negative because it acts opposite to the direction of motion.",
+    "simple_explanation": "Imagine riding a bicycle straight ahead and squeezing the brakes.\n\nYou are still moving forward, but the force slowing you down acts backward.\n\nIn the same way, the train continues moving forward while braking, but its acceleration points opposite to its motion. Therefore, the acceleration is negative.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration for a complete lesson on positive acceleration, negative acceleration, zero acceleration, sign conventions, braking motion, velocity-time interpretation and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed concept reviews and additional examination-focused exercises."
+  },
+  "tags": [
+    "acceleration",
+    "negative_acceleration",
+    "sign_convention",
+    "railway_motion",
+    "conceptual_acceleration",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q076",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An engineering team monitoring an autonomous mining truck observed that it travelled along a straight haul road while its speed reduced uniformly from 20 m s⁻¹ to 8 m s⁻¹ over a period of 6 s as it approached a loading zone.\n\nWhich interpretation best describes the truck's motion during this interval?",
+  "options": {
+    "A": "The truck experienced a constant negative acceleration because its velocity decreased uniformly with time.",
+    "B": "The truck had zero acceleration because it was still moving forward.",
+    "C": "The truck's acceleration was positive because its velocity remained in the forward direction.",
+    "D": "The truck moved with constant velocity because it covered successive portions of the road."
+  },
+  "answer": "A",
+  "answer_text": "The truck experienced a constant negative acceleration because its velocity decreased uniformly with time.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to interpret a real-life motion scenario rather than perform a calculation. You are required to determine what the observed change in velocity implies about the truck's acceleration.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nVelocity is a vector quantity, meaning it has both magnitude and direction.\n\nWhenever the magnitude of velocity decreases uniformly while the direction remains unchanged, the object is said to have a constant negative acceleration, also called uniform deceleration.\n\nNegative acceleration does not mean the object is moving backwards. It simply means the acceleration acts opposite to the direction of motion, causing the speed to decrease.",
+    "steps": [
+      "Step 1: Observe the change in velocity.\n\nThe truck's velocity decreases steadily from 20 m s⁻¹ to 8 m s⁻¹ while continuing in the same direction.",
+      "Step 2: Interpret the word 'uniformly'.\n\nA uniform reduction in velocity over equal intervals of time indicates that the acceleration is constant.",
+      "Step 3: Determine the sign of the acceleration.\n\nSince the velocity is decreasing, the acceleration is opposite to the direction of motion. Therefore, the acceleration is negative.",
+      "Step 4: Select the correct interpretation.\n\nThe truck is undergoing constant negative acceleration (uniform deceleration).\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because an object can still be moving and have a non-zero acceleration if its velocity is changing.",
+      "Option C is incorrect because acceleration depends on the change in velocity, not merely the direction of motion. Since the velocity is decreasing, the acceleration is negative.",
+      "Option D is incorrect because constant velocity means both speed and direction remain unchanged. Here, the speed is decreasing, so the velocity is changing."
+    ],
+    "exam_tip": "JAMB frequently tests the idea that acceleration is any change in velocity. Remember:\n\n• Increasing speed → positive acceleration.\n• Decreasing speed → negative acceleration (deceleration).\n• Constant velocity → zero acceleration.\n• A moving object can still have negative acceleration if it is slowing down.",
+    "final_answer": "A. The truck experienced a constant negative acceleration because its velocity decreased uniformly with time.",
+    "simple_explanation": "Imagine driving towards a toll gate. You gradually press the brake so that your car slows down smoothly without changing direction.\n\nAlthough the car is still moving forward, its speed is reducing every second. This means it has negative acceleration (deceleration).\n\nThe autonomous mining truck behaves in exactly the same way.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration to learn about positive acceleration, negative acceleration, zero acceleration, uniform acceleration, deceleration, velocity-time relationships, and JAMB-style interpretation questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and examination practice."
+  },
+  "tags": [
+    "acceleration",
+    "negative_acceleration",
+    "uniform_deceleration",
+    "scenario_interpretation",
+    "mining_operations",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q077",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An engineering team investigates the motion of a dynamics trolley moving along a straight track. The trolley passes a marked point with a velocity of 5 m s⁻¹, and 8 s later its velocity is measured as 29 m s⁻¹.\n\nAssuming the trolley accelerates uniformly throughout the investigation, what is its acceleration?",
+  "options": {
+    "A": "2.0 m s⁻²",
+    "B": "2.5 m s⁻²",
+    "C": "3.0 m s⁻²",
+    "D": "3.5 m s⁻²"
+  },
+  "answer": "C",
+  "answer_text": "3.0 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the uniform acceleration of a dynamics trolley from experimental velocity measurements obtained during a laboratory investigation.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nBefore using the formula, it is important to understand the quantities involved.\n\nVelocity is the rate of change of displacement and has both magnitude and direction.\n\nAcceleration describes how quickly that velocity changes. It may be positive, negative or zero depending on the nature of the motion.\n\nFor uniformly accelerated motion, acceleration is calculated using:\n\na = (v − u)/t\n\nwhere:\n\n• a = acceleration (m s⁻²)\n• u = initial velocity (m s⁻¹)\n• v = final velocity (m s⁻¹)\n• t = time taken (s)\n\nThe unit m s⁻² means that the velocity changes by a certain number of metres per second every second.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 5 m s⁻¹\nFinal velocity, v = 29 m s⁻¹\nTime, t = 8 s",
+      "Step 2: State the required quantity.\n\nRequired: Acceleration, a",
+      "Step 3: Apply the acceleration formula.\n\na = (v − u)/t",
+      "Step 4: Substitute the given values.\n\na = (29 − 5)/8\n\n= 24/8\n\n= 3.0 m s⁻²",
+      "Step 5: Verify the result.\n\nAn acceleration of 3.0 m s⁻² means the trolley's velocity increases by 3.0 m s⁻¹ every second.\n\nOver 8 s:\n\nIncrease in velocity = 3.0 × 8 = 24 m s⁻¹\n\nFinal velocity = 5 + 24 = 29 m s⁻¹\n\nThis agrees exactly with the experimental observation."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (2.0 m s⁻²) is incorrect because it underestimates the rate of change of velocity. It would produce a velocity increase of only 16 m s⁻¹ in 8 s.",
+      "Option B (2.5 m s⁻²) is incorrect because it results from an incorrect calculation of the change in velocity or an arithmetic error during division.",
+      "Option D (3.5 m s⁻²) is incorrect because it overestimates the acceleration. It would give a velocity increase of 28 m s⁻¹ in 8 s, leading to a final velocity of 33 m s⁻¹ instead of 29 m s⁻¹."
+    ],
+    "exam_tip": "In laboratory-based JAMB questions, first identify the initial velocity, final velocity and time before selecting a formula. Always calculate the change in velocity (v − u), not the total distance travelled. Finally, check your answer by substituting it back into the motion to confirm it reproduces the given experimental result.",
+    "final_answer": "C. 3.0 m s⁻²",
+    "simple_explanation": "Imagine pushing a trolley in a laboratory. If its speed increases from 5 m s⁻¹ to 29 m s⁻¹ in 8 seconds, its velocity has increased by 24 m s⁻¹. Dividing this increase by the time taken gives the acceleration:\n\n24 ÷ 8 = 3.0 m s⁻².\n\nTherefore, the trolley accelerates at 3.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration → Experimental Determination of Acceleration to learn how laboratory measurements of velocity and time are used to calculate acceleration. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for practical investigations, worked examples and authentic JAMB-style practice questions."
+  },
+  "tags": [
+    "acceleration",
+    "experimental_determination",
+    "dynamics_trolley",
+    "laboratory_investigation",
+    "uniform_acceleration",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q078",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a routine inspection of a wind farm, a wind turbine maintenance vehicle moves along a straight service road. It accelerates uniformly from 12 m s⁻¹ to 30 m s⁻¹ in 8 s. The vehicle then travels at a constant velocity of 30 m s⁻¹ for 5 s before accelerating uniformly again to 38 m s⁻¹ in 5 s.\n\nWhat is the average acceleration of the vehicle during the two periods in which its velocity changes?",
+  "options": {
+    "A": "1.5 m s⁻²",
+    "B": "1.8 m s⁻²",
+    "C": "2.0 m s⁻²",
+    "D": "2.4 m s⁻²"
+  },
+  "answer": "C",
+  "answer_text": "2.0 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your understanding of average acceleration during multiple accelerating intervals. You must identify the periods during which the vehicle's velocity changes and ignore the interval of constant velocity.",
+    "principle": "Acceleration is the rate of change of velocity with time.\n\nIt is expressed as\n\na = Δv/t\n\nwhere:\n\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• t = time during which the velocity changes (s)\n\nWhen a question specifies the periods during which the velocity changes, intervals of constant velocity are excluded because the acceleration during those intervals is zero.",
+    "steps": [
+      "Step 1: Identify the accelerating intervals.\n\nFirst interval:\n12 m s⁻¹ to 30 m s⁻¹ in 8 s.\n\nSecond interval:\n30 m s⁻¹ to 38 m s⁻¹ in 5 s.",
+      "Step 2: Determine the total change in velocity.\n\nOverall change in velocity = 38 − 12 = 26 m s⁻¹.",
+      "Step 3: Determine the total accelerating time.\n\nAccelerating time = 8 s + 5 s = 13 s.\n\nThe 5 s interval at constant velocity is excluded because no acceleration occurs during that period.",
+      "Step 4: Apply the formula.\n\nAverage acceleration = Δv/t\n\n= 26/13\n\n= 2.0 m s⁻².",
+      "Step 5: Compare with the options.\n\nThe calculated value is exactly 2.0 m s⁻².\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (1.5 m s⁻²) results from an incorrect calculation of the change in velocity or time.",
+      "Option B (1.8 m s⁻²) underestimates the average acceleration.",
+      "Option D (2.4 m s⁻²) overestimates the calculated value."
+    ],
+    "exam_tip": "Always determine whether the question requires the average acceleration over the entire journey or only during the intervals when the velocity changes. Read the wording carefully before substituting values into the formula.",
+    "final_answer": "C. 2.0 m s⁻²",
+    "simple_explanation": "The vehicle speeds up twice.\n\nIts total increase in velocity is 26 m s⁻¹.\n\nThe total time during which it accelerates is 13 s.\n\nAverage acceleration = 26 ÷ 13 = 2.0 m s⁻².\n\nSo, Option C is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration for detailed lessons on average acceleration, multi-stage motion and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional practice and revision."
+  },
+  "tags": [
+    "acceleration",
+    "average_acceleration",
+    "multi_step_calculation",
+    "renewable_energy",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q079",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a motion sensor investigation, a laboratory technician recorded the velocity of a trolley moving along a straight track.\n\nThe motion sensor produced the following data:\n\nTime (s):        0.0      0.5      1.0      1.5\nVelocity (m s⁻¹): 3.0      4.5      6.0      7.5\n\nAssuming the acceleration remained uniform throughout the experiment, what was the acceleration of the trolley?",
+  "options": {
+    "A": "1.5 m s⁻²",
+    "B": "2.0 m s⁻²",
+    "C": "3.0 m s⁻²",
+    "D": "4.5 m s⁻²"
+  },
+  "answer": "C",
+  "answer_text": "3.0 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine acceleration from experimental observations obtained using a motion sensor. Instead of being given the acceleration directly, you must analyse the recorded velocity data and calculate the rate at which the velocity changes with time.",
+    "principle": "Acceleration is the rate of change of velocity with respect to time.\n\nMathematically,\n\na = Δv / Δt\n\nwhere:\n• a = acceleration (m s⁻²)\n• Δv = change in velocity (m s⁻¹)\n• Δt = time interval (s)\n\nA motion sensor automatically measures the velocity of a moving object at regular time intervals. When the increase in velocity is the same for equal intervals of time, the object is moving with uniform acceleration.",
+    "steps": [
+      "Step 1: Identify suitable readings from the table.\n\nInitial velocity, u = 3.0 m s⁻¹ at 0.0 s.\nFinal velocity, v = 7.5 m s⁻¹ at 1.5 s.",
+      "Step 2: Determine the change in velocity.\n\nΔv = v − u\n= 7.5 − 3.0\n= 4.5 m s⁻¹.",
+      "Step 3: Determine the time taken.\n\nΔt = 1.5 − 0.0\n= 1.5 s.",
+      "Step 4: Apply the acceleration formula.\n\na = Δv / Δt\n= 4.5 / 1.5\n= 3.0 m s⁻².",
+      "Step 5: Compare with the options.\n\nThe calculated acceleration is 3.0 m s⁻².\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (1.5 m s⁻²) results from incorrectly dividing the change in velocity by 3.0 instead of the elapsed time.",
+      "Option B (2.0 m s⁻²) is obtained from an incorrect substitution into the acceleration formula or using inconsistent data from the table.",
+      "Option D (4.5 m s⁻²) is the change in velocity, not the acceleration. It ignores the time interval over which the change occurred."
+    ],
+    "exam_tip": "Whenever JAMB presents a table of velocity readings, first check whether the measurements are taken at equal time intervals. If they are, calculate the total change in velocity over the total elapsed time. Remember that acceleration depends on how quickly velocity changes, not simply on how much it changes.",
+    "final_answer": "C. 3.0 m s⁻²",
+    "simple_explanation": "Imagine watching a trolley through a motion sensor. Every half-second, it is moving 1.5 m s⁻¹ faster than before. Over 1.5 seconds, its velocity increases by 4.5 m s⁻¹. Dividing the increase in velocity by the time taken gives an acceleration of 3.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration for a complete lesson on calculating acceleration from experimental observations, interpreting motion sensor data, analysing velocity-time measurements, and solving JAMB-style laboratory questions. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "acceleration",
+    "motion_sensor",
+    "experimental_data",
+    "laboratory_investigation",
+    "velocity_change",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q080",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Acceleration",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During the testing of autonomous vehicles in a logistics warehouse, an engineer made the following observations about acceleration:\n\nI. A vehicle moving at constant velocity has zero acceleration.\n\nII. A vehicle can have acceleration even when its speed remains constant if its direction changes.\n\nIII. Negative acceleration always means the vehicle is moving backward.\n\nIV. Acceleration is a vector quantity because it depends on the change in velocity.\n\nWhich option correctly identifies the valid observations?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I and III only",
+    "C": "II, III and IV only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of the meaning and properties of acceleration by asking you to distinguish correct scientific statements from common misconceptions.\n\nRather than performing calculations, you are required to analyse each statement based on the principles of linear motion.",
+    "principle": "Acceleration is defined as the rate of change of velocity with respect to time.\n\nMathematically,\n\na = Δv/t\n\nwhere:\n• a = acceleration (m s⁻²)\n• Δv = change in velocity\n• t = time taken.\n\nA beginner may ask, 'What does change in velocity mean?'\n\nVelocity changes whenever:\n• the speed changes,\n• the direction changes,\n• or both speed and direction change.\n\nSince velocity has both magnitude and direction, acceleration is also a vector quantity.\n\nAcceleration may be:\n• positive,\n• negative (deceleration in many straight-line situations), or\n• zero.\n\nNegative acceleration does not necessarily mean an object is moving backward. It simply means the acceleration acts opposite to the chosen positive direction.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\n'A vehicle moving at constant velocity has zero acceleration.'\n\nThis statement is correct.\n\nConstant velocity means both speed and direction remain unchanged. Since there is no change in velocity, the acceleration is zero.",
+      "Step 2: Examine Statement II.\n\n'A vehicle can have acceleration even when its speed remains constant if its direction changes.'\n\nThis statement is correct.\n\nChanging direction changes velocity even if the speed remains constant. Therefore, acceleration exists. Motion around a bend is a familiar example.",
+      "Step 3: Examine Statement III.\n\n'Negative acceleration always means the vehicle is moving backward.'\n\nThis statement is incorrect.\n\nNegative acceleration simply indicates that the acceleration is directed opposite to the chosen positive direction. A vehicle moving forward while slowing down has negative acceleration but is not moving backward.",
+      "Step 4: Examine Statement IV.\n\n'Acceleration is a vector quantity because it depends on the change in velocity.'\n\nThis statement is correct.\n\nSince velocity has both magnitude and direction, any quantity describing its rate of change must also possess both magnitude and direction.",
+      "Step 5: Determine the correct combination.\n\nStatements I, II and IV are correct, while Statement III is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Statement III is false. Negative acceleration does not always imply backward motion, and Statement II has been wrongly omitted.",
+      "Option C is incorrect because it includes Statement III, which is scientifically incorrect, and excludes Statement I, which is correct.",
+      "Option D is incorrect because not all four statements are correct. Statement III contains a common misconception about negative acceleration."
+    ],
+    "exam_tip": "When answering JAMB questions on acceleration, remember these important facts:\n\n• Acceleration measures the rate of change of velocity, not merely an increase in speed.\n• Constant velocity implies zero acceleration.\n• A change in direction alone produces acceleration.\n• Negative acceleration indicates direction relative to the chosen axis; it does not automatically mean backward motion.\n• Because velocity is a vector, acceleration is also a vector quantity.\n\nBe cautious whenever a statement contains absolute words such as 'always' or 'never.' Such statements are often used to test conceptual understanding.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Imagine an autonomous warehouse vehicle carrying goods.\n\nIf it moves straight at the same speed all the time, its velocity does not change, so its acceleration is zero.\n\nIf it turns around a corner without changing speed, its direction changes. Since velocity includes direction, the vehicle is accelerating.\n\nIf the vehicle slows down while still moving forward, it has negative acceleration, but it is not moving backward.\n\nTherefore, only Statements I, II and IV are correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Acceleration for a complete revision of the meaning of acceleration, positive and negative acceleration, zero acceleration, vector properties of acceleration, and practical JAMB-style applications. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept reviews, worked examples and examination-focused practice."
+  },
+  "tags": [
+    "acceleration",
+    "vector_quantity",
+    "negative_acceleration",
+    "zero_acceleration",
+    "conceptual_evaluation",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
 }
 
 ]
