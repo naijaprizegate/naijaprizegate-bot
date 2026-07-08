@@ -4712,6 +4712,701 @@
     "phy_04"
   ],
   "active": true
+},
+{
+  "id": "phy_04_q095",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Non-uniform Motion",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "As vehicles move through a busy urban traffic intersection, a traffic engineer observes that some vehicles continually speed up, slow down or change direction to respond to traffic signals and other road users.\n\nWhich characteristic best identifies this as non-uniform motion?",
+  "options": {
+    "A": "The vehicle covers equal distances in equal time intervals.",
+    "B": "The vehicle's velocity changes during motion.",
+    "C": "The vehicle moves with constant speed in a straight line.",
+    "D": "The vehicle remains at rest for part of the journey."
+  },
+  "answer": "B",
+  "answer_text": "The vehicle's velocity changes during motion.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the defining feature of non-uniform motion by using the familiar situation of vehicles moving through a busy traffic intersection.",
+    "principle": "Motion is described as non-uniform whenever the velocity of an object changes with time.\n\nBefore answering this question, it is important to understand what velocity means.\n\nVelocity is the rate of change of displacement and has both magnitude (speed) and direction.\n\nA beginner may ask, 'What makes motion non-uniform?'\n\nMotion becomes non-uniform whenever there is a change in velocity. This change may occur because:\n\n• the speed increases,\n• the speed decreases,\n• the direction changes, or\n• both speed and direction change simultaneously.\n\nWhenever velocity changes, acceleration is present, even if the object is slowing down.\n\nIn everyday life, most moving vehicles experience non-uniform motion because they frequently accelerate, brake or turn.",
+    "steps": [
+      "Step 1: Examine Option A.\n\nEqual distances covered in equal time intervals describe uniform motion, not non-uniform motion.\n\nTherefore, Option A is incorrect.",
+      "Step 2: Examine Option B.\n\nA change in velocity is the defining characteristic of non-uniform motion.\n\nVelocity changes whenever speed changes, direction changes or both change.\n\nTherefore, Option B is correct.",
+      "Step 3: Examine Option C.\n\nMoving with constant speed in a straight line means the velocity remains constant.\n\nThis describes uniform motion.\n\nTherefore, Option C is incorrect.",
+      "Step 4: Examine Option D.\n\nRemaining at rest does not define non-uniform motion. An object at rest is not in motion.\n\nTherefore, Option D is incorrect.",
+      "Step 5: Select the correct answer.\n\nSince non-uniform motion is identified by a change in velocity, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because equal distances covered in equal time intervals are a characteristic of uniform motion.",
+      "Option C is incorrect because constant speed in a straight line means both speed and direction remain unchanged, giving constant velocity.",
+      "Option D is incorrect because being at rest is not a characteristic of non-uniform motion. The question concerns objects that are already moving."
+    ],
+    "exam_tip": "In JAMB Physics, remember that velocity depends on both speed and direction.\n\nWhenever either speed or direction changes, the velocity changes, and the motion becomes non-uniform.\n\nA common misconception is to think that only changing speed produces non-uniform motion. A vehicle travelling at constant speed around a bend is also in non-uniform motion because its direction changes continuously.",
+    "final_answer": "B. The vehicle's velocity changes during motion.",
+    "simple_explanation": "Imagine driving through a city.\n\nYou may accelerate when the traffic light turns green, slow down near a pedestrian crossing or turn into another street.\n\nEach of these actions changes your velocity.\n\nBecause the velocity keeps changing, the motion is non-uniform.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Non-uniform Motion to learn the characteristics of changing motion, acceleration, practical examples, graphical interpretation and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive concept reviews and examination-focused exercises."
+  },
+  "tags": [
+    "linear_motion",
+    "non_uniform_motion",
+    "changing_velocity",
+    "conceptual_kinematics",
+    "urban_transportation",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q096",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Non-uniform Motion",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "An airport operations manager observes a shuttle bus travelling from the terminal to a remote parking area. During four successive intervals of 20 s each, the bus covers 120 m, 165 m, 215 m and 270 m respectively.\n\nWhat does this observation suggest about the motion of the shuttle bus?",
+  "options": {
+    "A": "The shuttle bus is moving with uniform motion because it travels continuously.",
+    "B": "The shuttle bus is moving with non-uniform motion because it covers unequal distances in equal time intervals.",
+    "C": "The shuttle bus is at rest because its speed is changing.",
+    "D": "The shuttle bus has zero acceleration because it travels in the same direction."
+  },
+  "answer": "B",
+  "answer_text": "The shuttle bus is moving with non-uniform motion because it covers unequal distances in equal time intervals.",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify non-uniform motion from observations made over equal time intervals. The key idea is to determine whether the object covers equal or unequal distances in the same amount of time.",
+    "principle": "Motion is described as uniform when an object covers equal distances in equal intervals of time while moving in a straight line. If the distances covered during equal time intervals are unequal, the object's velocity is changing, indicating non-uniform motion.\n\nNon-uniform motion occurs whenever velocity changes. This change may result from an increase in speed, a decrease in speed, a change in direction, or a combination of both.\n\nIn this question, the time interval remains constant at 20 s, but the distances covered keep increasing. This means the shuttle bus is travelling faster as time progresses, so its velocity is changing. Therefore, the motion is non-uniform and the bus is accelerating.",
+    "steps": [
+      "Step 1: Identify the time intervals.\n\nEach interval lasts 20 s, so the time intervals are equal.",
+      "Step 2: Compare the distances travelled.\n\nThe shuttle bus covers:\n• 120 m\n• 165 m\n• 215 m\n• 270 m\n\nThese distances are different and increase from one interval to the next.",
+      "Step 3: Apply the definition of uniform motion.\n\nIn uniform motion, equal distances are covered in equal time intervals.\n\nSince this condition is not satisfied, the motion cannot be uniform.",
+      "Step 4: Draw the correct conclusion.\n\nBecause the shuttle bus covers unequal distances in equal time intervals, its velocity is changing. Therefore, it is undergoing non-uniform motion.\n\nHence, Option B is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because continuous movement alone does not imply uniform motion. Uniform motion requires equal distances to be covered in equal time intervals.",
+      "Option C is incorrect because the shuttle bus is clearly moving. A change in speed does not mean an object is at rest.",
+      "Option D is incorrect because travelling in the same direction does not necessarily mean acceleration is zero. Since the distance covered every 20 s increases, the speed is increasing, indicating positive acceleration."
+    ],
+    "exam_tip": "Whenever a question states that equal time intervals are involved, immediately compare the distances covered.\n\n• Equal distances in equal time intervals → Uniform motion.\n• Unequal distances in equal time intervals → Non-uniform motion.\n\nJAMB frequently tests this concept through practical situations rather than direct definitions.",
+    "final_answer": "B. The shuttle bus is moving with non-uniform motion because it covers unequal distances in equal time intervals.",
+    "simple_explanation": "Imagine walking with a friend for four periods of 20 seconds each.\n\nIf you walk 120 m, then 165 m, then 215 m, and finally 270 m, you are travelling farther during each equal period of time. This means you are speeding up.\n\nSince your speed is changing, your motion is non-uniform.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Non-uniform Motion to learn how to distinguish uniform and non-uniform motion using everyday examples, distance-time relationships, velocity changes and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed concept reviews and examination-focused exercises."
+  },
+  "tags": [
+    "linear_motion",
+    "non_uniform_motion",
+    "unequal_distances",
+    "equal_time_intervals",
+    "scenario_interpretation",
+    "airport_transport",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q097",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Non-uniform Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "While testing an electric delivery van, an engineer observes that its velocity increases uniformly from 5 m s⁻¹ to 17 m s⁻¹ over a period of 6 s after leaving a charging station.\n\nWhat is the average acceleration of the van during this interval?",
+  "options": {
+    "A": "1.0 m s⁻²",
+    "B": "2.0 m s⁻²",
+    "C": "3.0 m s⁻²",
+    "D": "3.7 m s⁻²"
+  },
+  "answer": "B",
+  "answer_text": "2.0 m s⁻²",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the average acceleration of an object whose velocity increases uniformly over a given time interval.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nBefore using the formula, it is important to understand the quantities involved.\n\nVelocity is the speed of an object in a specified direction.\n\nAcceleration tells us how quickly the velocity changes. If the velocity increases, the acceleration is positive. If the velocity decreases, the acceleration is negative (deceleration).\n\nThe formula for average acceleration is:\n\na = (v − u) / t\n\nwhere:\n\n• a = average acceleration (m s⁻²)\n• u = initial velocity (m s⁻¹)\n• v = final velocity (m s⁻¹)\n• t = time taken (s)\n\nThis formula works because acceleration is defined as the change in velocity divided by the time taken for that change.",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial velocity, u = 5 m s⁻¹\nFinal velocity, v = 17 m s⁻¹\nTime taken, t = 6 s",
+      "Step 2: State the required quantity.\n\nRequired: Average acceleration, a.",
+      "Step 3: Apply the formula.\n\na = (v − u) / t",
+      "Step 4: Substitute the given values.\n\na = (17 − 5) / 6\n= 12 / 6\n= 2.0 m s⁻²",
+      "Step 5: Compare the result with the options.\n\nThe calculated acceleration is 2.0 m s⁻², which corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (1.0 m s⁻²) is incorrect because it underestimates the change in velocity, possibly due to dividing incorrectly.",
+      "Option C (3.0 m s⁻²) is incorrect because it results from an incorrect calculation of the change in velocity or time.",
+      "Option D (3.7 m s⁻²) is incorrect because it does not follow the acceleration formula and may result from dividing the final velocity directly by the time."
+    ],
+    "exam_tip": "In JAMB examinations, always write down the initial velocity, final velocity and time before substituting into the formula.\n\nRemember:\n\n• Use the change in velocity (v − u), not the final velocity alone.\n• A positive answer indicates speeding up.\n• The SI unit of acceleration is m s⁻².",
+    "final_answer": "B. 2.0 m s⁻²",
+    "simple_explanation": "Imagine the delivery van gradually gains speed after leaving the charging station.\n\nIt increases its velocity by 12 m s⁻¹ in 6 seconds.\n\nSince acceleration is the change in velocity divided by time:\n\n12 ÷ 6 = 2.0 m s⁻².\n\nTherefore, the average acceleration is 2.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Non-uniform Motion to learn how to calculate average acceleration, distinguish acceleration from deceleration, and solve additional JAMB-style problems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for step-by-step lessons and practice questions."
+  },
+  "tags": [
+    "linear_motion",
+    "non_uniform_motion",
+    "average_acceleration",
+    "acceleration_calculation",
+    "electric_vehicle",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q098",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Non-uniform Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An automated warehouse robot moves along a straight aisle while transporting packages. During three successive equal time intervals of 4 s each, it covers distances of 28 m, 41 m and 57 m respectively.\n\nWhat does this observation indicate about the robot's motion?",
+  "options": {
+    "A": "The robot is moving with uniform motion because it travels in a straight line.",
+    "B": "The robot is moving with non-uniform motion because it covers unequal distances in equal time intervals.",
+    "C": "The robot is stationary during part of its motion.",
+    "D": "The robot maintains a constant velocity throughout the journey."
+  },
+  "answer": "B",
+  "answer_text": "The robot is moving with non-uniform motion because it covers unequal distances in equal time intervals.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret information that would normally be presented on a distance-time graph. Instead of seeing the graph, you are given the distances travelled during equal time intervals and asked to determine the nature of the motion.",
+    "principle": "Motion is described as uniform when an object covers equal distances in equal intervals of time. Conversely, motion is non-uniform when unequal distances are covered in equal intervals of time.\n\nA distance-time graph helps us identify the type of motion.\n\n• A straight line with a constant slope represents uniform motion because the speed remains constant.\n\n• A graph whose slope changes (becomes steeper or less steep) represents non-uniform motion because the speed is changing.\n\nThe slope of a distance-time graph represents speed. Therefore, whenever the slope changes, the speed also changes.",
+    "steps": [
+      "Step 1: Examine the given data.\n\nEqual time interval = 4 s each.\n\nDistances travelled = 28 m, 41 m and 57 m.",
+      "Step 2: Compare the distances.\n\nThe robot does not cover the same distance every 4 s.\n\nInstead, the distances increase from 28 m to 41 m and then to 57 m.",
+      "Step 3: Interpret the motion.\n\nSince unequal distances are covered in equal time intervals, the speed is changing.\n\nA changing speed means the velocity is changing (assuming motion is along the same straight path), so the motion is non-uniform.",
+      "Step 4: Relate this to the distance-time graph.\n\nIf these values were plotted on a distance-time graph, the graph would become progressively steeper with time.\n\nA changing slope confirms that the motion is non-uniform.",
+      "Step 5: Select the correct option.\n\nOption B correctly describes the observed motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because moving in a straight line alone does not guarantee uniform motion. Uniform motion requires equal distances to be covered in equal time intervals.",
+      "Option C is incorrect because nothing in the data suggests that the robot stopped. The distances covered continue to increase throughout the motion.",
+      "Option D is incorrect because constant velocity would require equal distances to be travelled in equal time intervals. The given data clearly shows otherwise."
+    ],
+    "exam_tip": "In JAMB Physics, whenever equal time intervals produce unequal distances, immediately think of non-uniform motion.\n\nRemember:\n\n• Equal distances in equal time → Uniform motion.\n• Unequal distances in equal time → Non-uniform motion.\n• On a distance-time graph, the slope represents speed. A changing slope indicates changing speed.",
+    "final_answer": "B. The robot is moving with non-uniform motion because it covers unequal distances in equal time intervals.",
+    "simple_explanation": "Imagine walking for 4 minutes at a time.\n\nIf you walk 28 m in the first 4 minutes, 41 m in the next 4 minutes and 57 m in the last 4 minutes, you are covering more distance during each equal time interval.\n\nThis means your speed is changing, so your motion is non-uniform.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Non-uniform Motion to learn how to interpret distance-time and velocity-time graphs, recognise changing speed, identify acceleration, and solve authentic JAMB-style questions. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "linear_motion",
+    "non_uniform_motion",
+    "distance_time_graph",
+    "graph_interpretation",
+    "changing_speed",
+    "warehouse_robot",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q099",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Non-uniform Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A high-speed rail operator observes that a train increases its speed steadily after departing a station before later travelling at a constant speed. Which stage of the journey best illustrates non-uniform motion?",
+  "options": {
+    "A": "The train remains stationary at the platform before departure.",
+    "B": "The train moves at a constant speed along a straight section of the track.",
+    "C": "The train increases its speed steadily after leaving the station.",
+    "D": "The train waits at the next station for passengers to board."
+  },
+  "answer": "C",
+  "answer_text": "The train increases its speed steadily after leaving the station.",
+  "explanation": {
+    "question_restate": "This question tests your ability to identify non-uniform motion in a practical transportation system. You are required to recognise the stage during which the train's velocity changes.",
+    "principle": "Motion is described as either uniform or non-uniform depending on whether the velocity remains constant.\n\nBefore answering this question, it is important to understand the meaning of velocity.\n\nVelocity is the speed of an object in a specified direction.\n\nNon-uniform motion occurs whenever velocity changes with time.\n\nA change in velocity can occur because:\n\n• the speed changes,\n• the direction changes, or\n• both change simultaneously.\n\nWhenever velocity changes, the object experiences acceleration.\n\nUniform motion, on the other hand, occurs only when both the speed and direction remain constant throughout the motion.",
+    "steps": [
+      "Step 1: Examine Option A.\n\nA stationary train is not moving, so it does not represent motion at all.\n\nTherefore, Option A is incorrect.",
+      "Step 2: Examine Option B.\n\nA train travelling at a constant speed in a straight line has constant velocity.\n\nThis is an example of uniform motion rather than non-uniform motion.\n\nTherefore, Option B is incorrect.",
+      "Step 3: Examine Option C.\n\nWhen the train increases its speed after leaving the station, its velocity changes with time.\n\nSince the velocity is changing, the train is accelerating.\n\nThis is the defining characteristic of non-uniform motion.\n\nTherefore, Option C is correct.",
+      "Step 4: Examine Option D.\n\nA train waiting at a station is stationary.\n\nSince there is no motion, this cannot be classified as non-uniform motion.\n\nTherefore, Option D is incorrect.",
+      "Step 5: Select the correct option.\n\nOnly the stage during which the train is increasing its speed represents non-uniform motion.\n\nHence, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a stationary object is not in motion and therefore cannot be classified as exhibiting uniform or non-uniform motion.",
+      "Option B is incorrect because constant speed in a straight line means constant velocity, which is uniform motion.",
+      "Option D is incorrect because a train waiting at a station is at rest and does not exhibit motion."
+    ],
+    "exam_tip": "In JAMB Physics, remember that non-uniform motion is identified by a change in velocity.\n\nDo not think only about speeding up.\n\nWhenever an object speeds up, slows down or changes direction, its velocity changes and it is undergoing non-uniform motion.\n\nA common mistake is to confuse constant speed in a straight line with non-uniform motion. Constant speed in a straight line is uniform motion because the velocity does not change.",
+    "final_answer": "C. The train increases its speed steadily after leaving the station.",
+    "simple_explanation": "Imagine riding on a train.\n\nAs it leaves the station, you feel yourself being pushed slightly backward because the train is speeding up. During this period, the train's velocity is changing, so it is in non-uniform motion.\n\nOnce the train reaches a steady cruising speed on a straight track, the motion becomes uniform because the velocity remains constant.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Non-uniform Motion for a detailed explanation of changing velocity, acceleration, practical transportation examples, graphical interpretation, and additional JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for concept summaries, worked examples and exam-focused revision."
+  },
+  "tags": [
+    "linear_motion",
+    "non_uniform_motion",
+    "transportation",
+    "high_speed_rail",
+    "changing_velocity",
+    "application",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q100",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Non-uniform Motion",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During a 100 m sprint, an athletics coach observes that an athlete leaves the starting blocks, steadily increases speed for several seconds, and then maintains an almost constant speed before crossing the finish line.\n\nWhich statement best explains why the athlete experiences acceleration only during the first part of the race?",
+  "options": {
+    "A": "Acceleration occurs because the athlete is covering equal distances in equal intervals of time throughout the race.",
+    "B": "Acceleration is present only while the athlete's velocity is changing; once the velocity becomes nearly constant, the acceleration is approximately zero.",
+    "C": "Acceleration exists throughout the race because the athlete continues moving until the finish line.",
+    "D": "Acceleration depends only on the total distance covered and not on changes in velocity."
+  },
+  "answer": "B",
+  "answer_text": "Acceleration is present only while the athlete's velocity is changing; once the velocity becomes nearly constant, the acceleration is approximately zero.",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of when acceleration occurs during motion. It requires you to distinguish between motion with changing velocity and motion with nearly constant velocity in a real-life athletics event.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nVelocity describes both the speed of an object and the direction in which it moves.\n\nMathematically,\n\na = Δv / Δt\n\nwhere:\n• a = acceleration\n• Δv = change in velocity\n• Δt = time interval.\n\nWhenever an object's velocity changes, acceleration is present. If the velocity remains constant, the acceleration is zero.\n\nIn a sprint race, an athlete first increases speed after leaving the starting blocks. During this period, the velocity changes continuously, so acceleration exists. Once the athlete reaches an almost constant speed, the velocity changes very little, making the acceleration approximately zero.",
+    "steps": [
+      "Step 1: Identify the stage immediately after the start.\n\nThe athlete increases speed, meaning the velocity changes with time.\n\nTherefore, acceleration is present.",
+      "Step 2: Consider the later stage of the race.\n\nThe athlete moves at an almost constant speed in the same direction.\n\nSince the velocity is nearly constant, the acceleration becomes approximately zero.",
+      "Step 3: Evaluate the options.\n\nOption B correctly states that acceleration exists only while the velocity is changing.\n\nThis agrees with the definition of acceleration."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because equal distances covered in equal time intervals describe uniform motion, not acceleration.",
+      "Option C is incorrect because an object can continue moving without accelerating if its velocity remains constant.",
+      "Option D is incorrect because acceleration depends on changes in velocity, not simply on the total distance travelled."
+    ],
+    "exam_tip": "A common JAMB misconception is to assume that every moving object is accelerating. Remember that motion and acceleration are different ideas.\n\n• Moving with constant velocity means zero acceleration.\n• Speeding up, slowing down or changing direction means acceleration is present.\n\nWhenever you see the phrase 'changing velocity,' immediately think of acceleration.",
+    "final_answer": "B. Acceleration is present only while the athlete's velocity is changing; once the velocity becomes nearly constant, the acceleration is approximately zero.",
+    "simple_explanation": "Imagine riding a bicycle.\n\nWhen you begin pedalling, you gradually speed up. Your speed is changing, so you are accelerating.\n\nAfter reaching a comfortable speed and maintaining it, you are still moving, but your speed is no longer changing. At that stage, your acceleration is zero.\n\nThe athlete in the race behaves in the same way, so Option B is correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Non-uniform Motion to learn how changes in speed or direction produce acceleration. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, worked examples, graph interpretation, and JAMB-style practice questions."
+  },
+  "tags": [
+    "linear_motion",
+    "non_uniform_motion",
+    "acceleration",
+    "velocity",
+    "athletics",
+    "conceptual_reasoning",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q101",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Non-uniform Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During a braking test, an autonomous emergency vehicle reduces its velocity uniformly from 30 m s⁻¹ to 12 m s⁻¹ in 6 s. What is the average acceleration of the vehicle during the braking period?",
+  "options": {
+    "A": "-3.0 m s⁻²",
+    "B": "3.0 m s⁻²",
+    "C": "-5.0 m s⁻²",
+    "D": "5.0 m s⁻²"
+  },
+  "answer": "A",
+  "answer_text": "-3.0 m s⁻²",
+  "explanation": {
+    "question_restate": "This question requires you to calculate the average acceleration of an autonomous emergency vehicle that slows down uniformly during braking. Since the vehicle is losing speed, the acceleration will be negative.",
+    "principle": "Acceleration is the rate at which velocity changes with time.\n\nVelocity is a vector quantity because it has both magnitude and direction. Whenever the velocity of an object changes, either by increasing, decreasing or changing direction, the object experiences acceleration.\n\nWhen a moving object slows down while continuing in the same direction, the acceleration is negative. This negative acceleration is commonly called deceleration, although it is still a form of acceleration.\n\nThe average acceleration is calculated using:\n\na = (v - u) / t\n\nwhere:\n\n• a = average acceleration\n• u = initial velocity\n• v = final velocity\n• t = time taken",
+    "steps": [
+      "Step 1: Identify the known values.\n\nInitial velocity, u = 30 m s⁻¹\nFinal velocity, v = 12 m s⁻¹\nTime taken, t = 6 s",
+      "Step 2: Write the appropriate formula.\n\nAverage acceleration:\n\na = (v - u) / t",
+      "Step 3: Substitute the values.\n\na = (12 - 30) / 6\n= -18 / 6\n= -3.0 m s⁻²",
+      "Step 4: Interpret the result.\n\nThe negative sign indicates that the vehicle is slowing down. Therefore, its average acceleration during braking is -3.0 m s⁻².",
+      "Step 5: Select the correct option.\n\nOption A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it ignores the negative sign. During braking, acceleration is negative because the velocity decreases.",
+      "Option C is incorrect because it results from an incorrect calculation of the change in velocity or division.",
+      "Option D is incorrect because it is both numerically incorrect and has the wrong sign for a braking motion."
+    ],
+    "exam_tip": "Whenever a question involves braking or slowing down, expect the acceleration to be negative if the positive direction is taken as the direction of motion. Always calculate the change in velocity first before dividing by the time taken.",
+    "final_answer": "A. -3.0 m s⁻²",
+    "simple_explanation": "Imagine riding in a car that slows down before reaching a traffic light. The car's speed decreases every second. This decrease in velocity means the car has negative acceleration (deceleration). Using the acceleration formula gives -3.0 m s⁻².",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Non-uniform Motion → Average Acceleration for a complete explanation of acceleration, deceleration, velocity changes, worked examples and additional JAMB-style practice. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for concept reviews and exam-focused exercises."
+  },
+  "tags": [
+    "linear_motion",
+    "non_uniform_motion",
+    "average_acceleration",
+    "deceleration",
+    "braking",
+    "transportation",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q102",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Non-uniform Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "From the velocity-time graph described below, a metro train moves with velocities of 7 m s⁻¹, 11 m s⁻¹, 16 m s⁻¹ and 22 m s⁻¹ at successive equal time intervals after leaving a station.\n\nWhich conclusion about the train's motion is most appropriate?",
+  "options": {
+    "A": "The train is moving with uniform velocity because its speed remains positive.",
+    "B": "The train is undergoing non-uniform motion because its velocity changes with time.",
+    "C": "The train is at rest during part of its journey because the graph rises upward.",
+    "D": "The train covers equal distances in equal time intervals because its velocity keeps increasing."
+  },
+  "answer": "B",
+  "answer_text": "The train is undergoing non-uniform motion because its velocity changes with time.",
+  "explanation": {
+    "question_restate": "This question describes a velocity-time graph for a metro train. Instead of performing calculations, you are required to interpret what the changing velocities reveal about the nature of the train's motion.",
+    "principle": "Motion is described using quantities such as distance, speed and velocity.\n\nVelocity is the speed of an object in a specified direction.\n\nA beginner may ask, 'What makes motion non-uniform?'\n\nNon-uniform motion occurs whenever the velocity of an object changes with time.\n\nThe change may result from:\n\n• an increase in speed,\n• a decrease in speed,\n• a change in direction, or\n• both speed and direction changing.\n\nA velocity-time graph shows how velocity varies with time.\n\nIf the graph is horizontal, the velocity is constant and the motion is uniform.\n\nIf the graph rises or falls, the velocity is changing, indicating acceleration or deceleration. Therefore, the motion is non-uniform.",
+    "steps": [
+      "Step 1: Examine the given velocities.\n\nThe train has velocities of 7 m s⁻¹, 11 m s⁻¹, 16 m s⁻¹ and 22 m s⁻¹ at equal time intervals.\n\nThese values are different, showing that the velocity is changing with time.",
+      "Step 2: Interpret the velocity-time graph.\n\nSince the graph rises from one interval to the next, the train is speeding up.\n\nA rising velocity-time graph indicates positive acceleration.",
+      "Step 3: Identify the type of motion.\n\nBecause the velocity is not constant, the motion is non-uniform.\n\nTherefore, Option B is the correct conclusion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because uniform velocity requires the velocity to remain constant. Here, the velocity increases with time.",
+      "Option C is incorrect because an upward-sloping velocity-time graph does not indicate that the train is at rest. The listed velocities are all greater than zero.",
+      "Option D is incorrect because equal distances are covered in equal time intervals only during uniform motion. Since the velocity changes, the distances covered in equal time intervals also change."
+    ],
+    "exam_tip": "Whenever JAMB presents a velocity-time graph, first determine whether the graph is horizontal, rising or falling.\n\n• Horizontal graph → constant velocity → uniform motion.\n• Rising graph → increasing velocity → positive acceleration.\n• Falling graph → decreasing velocity → deceleration (negative acceleration).\n\nRemember that any change in velocity means the motion is non-uniform.",
+    "final_answer": "B. The train is undergoing non-uniform motion because its velocity changes with time.",
+    "simple_explanation": "Imagine riding on a metro train that keeps gaining speed after leaving a station.\n\nEach moment, the train is travelling faster than before.\n\nSince its velocity is changing, it is not moving uniformly. Instead, it is undergoing non-uniform motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Non-uniform Motion → Velocity-Time Graphs for a complete explanation of how to interpret velocity-time graphs, identify acceleration and distinguish uniform from non-uniform motion. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-style worked examples and graph interpretation practice."
+  },
+  "tags": [
+    "non_uniform_motion",
+    "velocity_time_graph",
+    "graph_interpretation",
+    "metro_train",
+    "changing_velocity",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q103",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Non-uniform Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An engineering technician observes an automated packaging machine on a production line. As each package approaches the sealing unit, the conveyor belt slows down to ensure accurate sealing and then speeds up again after the package leaves the station.\n\nWhich statement best describes the motion of the conveyor belt during this operation?",
+  "options": {
+    "A": "It is in uniform motion because it continues moving in the same direction throughout.",
+    "B": "It is in non-uniform motion because its velocity changes as it slows down and speeds up.",
+    "C": "It is at rest because it briefly reduces its speed before accelerating again.",
+    "D": "It is in uniform motion because equal distances are covered regardless of the change in speed."
+  },
+  "answer": "B",
+  "answer_text": "It is in non-uniform motion because its velocity changes as it slows down and speeds up.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to recognise non-uniform motion in an industrial automation system. You are required to identify how changes in speed affect the nature of motion.",
+    "principle": "Motion is said to be **uniform** when an object moves with constant velocity, meaning both its speed and direction remain unchanged.\n\n**Non-uniform motion** occurs whenever the velocity changes. Velocity can change because:\n\n• the speed changes,\n• the direction changes, or\n• both speed and direction change.\n\nIn this situation, the conveyor belt first slows down and later speeds up while moving in the same direction. Since its speed is changing, its velocity is also changing. Therefore, the motion is non-uniform, and acceleration is present during both the slowing down (deceleration) and speeding up processes.",
+    "steps": [
+      "Step 1: Identify what happens to the conveyor belt.\n\nIt slows down before the sealing unit and speeds up afterwards.",
+      "Step 2: Determine whether the velocity remains constant.\n\nSince the speed changes, the velocity is not constant even though the direction remains the same.",
+      "Step 3: Recall the definition of non-uniform motion.\n\nAny motion in which velocity changes with time is non-uniform motion.",
+      "Step 4: Select the option that correctly describes the situation.\n\nOption B correctly states that the conveyor belt is in non-uniform motion because its velocity changes."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because moving in the same direction alone does not guarantee uniform motion. The speed must also remain constant.",
+      "Option C is incorrect because reducing speed does not mean the conveyor belt is at rest. It continues moving throughout the process.",
+      "Option D is incorrect because uniform motion requires constant velocity. A change in speed means equal distances are generally not covered in equal time intervals."
+    ],
+    "exam_tip": "Whenever JAMB describes an object that speeds up, slows down or changes direction, immediately think about velocity.\n\nIf velocity changes in any way, the motion is non-uniform and acceleration is present. Remember that deceleration is also a form of acceleration because it involves a change in velocity.",
+    "final_answer": "B. It is in non-uniform motion because its velocity changes as it slows down and speeds up.",
+    "simple_explanation": "Imagine walking through a doorway. You naturally slow down to pass through safely and then walk faster again afterwards.\n\nEven though you keep moving forward, your speed changes. That means your velocity changes, so your motion is non-uniform.\n\nThe conveyor belt behaves in the same way during the packaging process.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Non-uniform Motion to learn how changing speed or direction affects velocity, recognise acceleration in everyday situations, interpret motion graphs, and solve JAMB-style application questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept reviews and practice exercises."
+  },
+  "tags": [
+    "linear_motion",
+    "non_uniform_motion",
+    "industrial_automation",
+    "packaging_system",
+    "changing_velocity",
+    "application",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q104",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Non-uniform Motion",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "While approaching a designated landing zone, a drone delivering a medical parcel gradually reduces its speed from 15 m s⁻¹ to 6 m s⁻¹ before touching down. Which statement best describes the drone's motion during this period?",
+  "options": {
+    "A": "The drone is in non-uniform motion because its velocity is changing, so it is experiencing deceleration.",
+    "B": "The drone is in uniform motion because it is still moving in the same direction.",
+    "C": "The drone has zero acceleration because it has not yet come to rest.",
+    "D": "The drone is covering equal distances in equal time intervals because it is descending smoothly."
+  },
+  "answer": "A",
+  "answer_text": "The drone is in non-uniform motion because its velocity is changing, so it is experiencing deceleration.",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of how a change in speed affects the type of motion of an object. It requires you to recognise that a drone slowing down while moving is undergoing non-uniform motion.",
+    "principle": "Non-uniform motion occurs whenever an object's velocity changes with time.\n\nVelocity is a vector quantity, meaning it has both magnitude (speed) and direction.\n\nIf either the speed changes, the direction changes, or both change, the velocity changes.\n\nWhenever velocity changes, the object experiences acceleration.\n\nIf the speed decreases, the acceleration is called deceleration (negative acceleration).\n\nIn this case, the drone's speed decreases from 15 m s⁻¹ to 6 m s⁻¹ while preparing to land. Since its velocity is changing, the motion is non-uniform.",
+    "steps": [
+      "Step 1: Identify what changes during the motion.\n\nThe drone's speed decreases from 15 m s⁻¹ to 6 m s⁻¹.",
+      "Step 2: Recall the definition of non-uniform motion.\n\nAn object is in non-uniform motion whenever its velocity changes with time.",
+      "Step 3: Determine whether acceleration is present.\n\nBecause the velocity is changing, acceleration exists.\n\nSince the speed is decreasing, the acceleration is negative and is known as deceleration.",
+      "Step 4: Evaluate the options.\n\nOnly Option A correctly states that the drone is undergoing non-uniform motion because its velocity is changing."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because moving in the same direction does not guarantee uniform motion. A change in speed means the velocity has changed.",
+      "Option C is incorrect because an object can have acceleration even while it is still moving. Acceleration depends on a change in velocity, not on whether the object has stopped.",
+      "Option D is incorrect because a smoothly slowing object generally does not cover equal distances in equal time intervals. Equal distances in equal time intervals are characteristic of uniform motion."
+    ],
+    "exam_tip": "A common JAMB misconception is that acceleration means only 'speeding up.' Remember that slowing down is also a form of acceleration because the velocity is changing. Whenever you notice words such as 'slows down,' 'brakes,' or 'reduces speed,' think of deceleration and non-uniform motion.",
+    "final_answer": "A. The drone is in non-uniform motion because its velocity is changing, so it is experiencing deceleration.",
+    "simple_explanation": "Imagine riding a bicycle toward a gate. You squeeze the brakes and gradually slow down before stopping. Even though you are still moving forward, your speed is changing. That means your velocity is changing, so your motion is non-uniform.\n\nThe drone behaves in exactly the same way as it slows from 15 m s⁻¹ to 6 m s⁻¹ before landing.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Non-uniform Motion for a complete revision of changing velocity, acceleration, deceleration, distance-time graphs, velocity-time graphs and practical JAMB-style applications. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations, worked examples and additional practice questions."
+  },
+  "tags": [
+    "non_uniform_motion",
+    "deceleration",
+    "changing_velocity",
+    "drone_delivery",
+    "linear_motion",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q105",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Non-uniform Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "While observing movements within a busy harbour, a marine operations supervisor noticed that one service boat travelled in a straight channel at a constant speed, whereas another repeatedly accelerated, slowed down and changed direction while assisting larger vessels.\n\nWhich statement best compares the motions of the two boats?",
+  "options": {
+    "A": "The first boat exhibits uniform motion because its velocity remains constant, while the second exhibits non-uniform motion because its velocity changes.",
+    "B": "Both boats exhibit uniform motion because they are moving on water.",
+    "C": "The first boat exhibits non-uniform motion because every moving object experiences acceleration.",
+    "D": "The second boat exhibits uniform motion because changing direction does not affect velocity."
+  },
+  "answer": "A",
+  "answer_text": "The first boat exhibits uniform motion because its velocity remains constant, while the second exhibits non-uniform motion because its velocity changes.",
+  "explanation": {
+    "question_restate": "This question compares uniform motion with non-uniform motion using the practical example of two harbour service boats. You are required to identify which description correctly explains the motion of each boat.",
+    "principle": "Motion is described using velocity, which is a vector quantity having both magnitude (speed) and direction.\n\nUniform motion occurs when an object moves with constant velocity. This means both its speed and direction remain unchanged over time.\n\nNon-uniform motion occurs whenever velocity changes. The change may result from:\n\n• an increase in speed,\n• a decrease in speed,\n• a change in direction, or\n• both speed and direction changing simultaneously.\n\nWhenever velocity changes, the object is accelerating. Acceleration therefore includes both speeding up and slowing down, as well as changing direction.",
+    "steps": [
+      "Step 1: Examine the first service boat.\n\nIt travels at a constant speed in a straight channel.\n\nSince both its speed and direction remain constant, its velocity remains constant.\n\nTherefore, it is in uniform motion.",
+      "Step 2: Examine the second service boat.\n\nIt accelerates, slows down and changes direction while assisting larger vessels.\n\nEach of these actions changes its velocity.\n\nTherefore, it is in non-uniform motion.",
+      "Step 3: Evaluate the options.\n\nOption A correctly distinguishes between constant velocity (uniform motion) and changing velocity (non-uniform motion).\n\nHence, Option A is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the type of surface on which an object moves does not determine whether its motion is uniform or non-uniform. The determining factor is whether its velocity remains constant.",
+      "Option C is incorrect because an object moving with constant velocity has zero acceleration. Not every moving object is accelerating.",
+      "Option D is incorrect because velocity depends on both speed and direction. A change in direction changes velocity, making the motion non-uniform."
+    ],
+    "exam_tip": "Whenever you compare uniform and non-uniform motion, focus on velocity rather than speed alone.\n\nRemember:\n\n• Constant speed in a straight line means constant velocity.\n• Any change in speed or direction changes velocity.\n• A change in velocity means acceleration is present.\n\nJAMB often uses changing direction as a distractor because many candidates mistakenly consider only changes in speed.",
+    "final_answer": "A. The first boat exhibits uniform motion because its velocity remains constant, while the second exhibits non-uniform motion because its velocity changes.",
+    "simple_explanation": "Imagine two boats.\n\nOne sails straight ahead at the same speed without turning. Its velocity does not change, so it is moving uniformly.\n\nThe other speeds up, slows down and turns while helping ships dock. Since its velocity keeps changing, it is in non-uniform motion.\n\nTherefore, Option A correctly compares the two motions.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Non-uniform Motion to learn how to distinguish uniform motion from non-uniform motion using real-life examples, motion graphs and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for concept reviews, worked examples and examination-focused exercises."
+  },
+  "tags": [
+    "linear_motion",
+    "non_uniform_motion",
+    "uniform_motion",
+    "velocity",
+    "comparison",
+    "marine_transport",
+    "conceptual_physics",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q106",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Non-uniform Motion",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An engineering supervisor is evaluating the understanding of four trainee technicians about the motion of an AI-guided inspection robot moving through a factory. The robot sometimes speeds up, sometimes slows down, and occasionally changes direction while inspecting equipment.\n\nThe trainees make the following statements:\n\nI. The robot is in non-uniform motion whenever its velocity changes.\n\nII. If the robot moves at a constant speed but continuously changes direction, its motion is still non-uniform.\n\nIII. A decrease in the robot's speed means it has no acceleration because it is slowing down.\n\nIV. During non-uniform motion, the robot generally covers unequal distances in equal time intervals.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I and III only",
+    "C": "II, III and IV only",
+    "D": "I, III and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of the characteristics of non-uniform motion by asking you to determine which statements correctly describe the motion of an AI-guided inspection robot.",
+    "principle": "Motion is described using quantities such as distance, displacement, speed, velocity and acceleration.\n\nVelocity is the rate of change of displacement and includes both magnitude (speed) and direction.\n\nAcceleration is the rate at which velocity changes.\n\nA change in velocity may result from:\n\n• a change in speed,\n• a change in direction, or\n• both occurring together.\n\nTherefore, any motion in which velocity changes is called non-uniform motion.\n\nMany beginners wrongly believe that acceleration only occurs when an object speeds up. In reality, slowing down (deceleration) is also a form of acceleration because the velocity is changing.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\n'The robot is in non-uniform motion whenever its velocity changes.'\n\nThis is correct because non-uniform motion is defined by changing velocity.",
+      "Step 2: Examine Statement II.\n\n'If the robot moves at a constant speed but continuously changes direction, its motion is still non-uniform.'\n\nThis statement is correct.\n\nAlthough the speed remains constant, the direction changes. Since velocity depends on both speed and direction, the velocity changes, making the motion non-uniform.",
+      "Step 3: Examine Statement III.\n\n'A decrease in the robot's speed means it has no acceleration because it is slowing down.'\n\nThis statement is incorrect.\n\nSlowing down means the velocity is changing with time. This is negative acceleration (deceleration), which is still acceleration.",
+      "Step 4: Examine Statement IV.\n\n'During non-uniform motion, the robot generally covers unequal distances in equal time intervals.'\n\nThis statement is correct because changing velocity usually causes different distances to be covered during successive equal time intervals.",
+      "Step 5: Determine the correct combination.\n\nStatements I, II and IV are correct, while Statement III is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement III, which wrongly assumes that slowing down means there is no acceleration. It also omits Statement II and Statement IV, both of which are correct.",
+      "Option C is incorrect because although Statements II and IV are correct, Statement III is false, while Statement I has been wrongly omitted.",
+      "Option D is incorrect because it includes the incorrect Statement III. A single incorrect statement makes the entire combination incorrect."
+    ],
+    "exam_tip": "Whenever JAMB asks about non-uniform motion, remember that velocity depends on both speed and direction.\n\nAsk yourself these questions:\n\n• Has the speed changed?\n• Has the direction changed?\n\nIf the answer to either question is 'Yes', then the velocity has changed, meaning acceleration is present and the motion is non-uniform.\n\nBe careful with statements suggesting that slowing down means 'no acceleration.' Deceleration is simply acceleration acting opposite to the direction of motion.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Imagine riding a bicycle.\n\nIf you pedal faster, your speed changes.\n\nIf you apply the brakes, your speed decreases.\n\nIf you ride around a bend without changing your speed, your direction changes.\n\nIn all these situations, your velocity changes, so your motion is non-uniform.\n\nTherefore, Statements I, II and IV are correct, while Statement III is incorrect because slowing down is still acceleration.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Non-uniform Motion for a complete explanation of changing velocity, acceleration, deceleration, distance-time graphs, velocity-time graphs and practical JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept reviews and examination practice."
+  },
+  "tags": [
+    "non_uniform_motion",
+    "changing_velocity",
+    "acceleration",
+    "deceleration",
+    "conceptual_reasoning",
+    "robotics",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q107",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Non-uniform Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An airport operations manager observes that immediately after touchdown, a passenger aircraft slows uniformly from 36 m s⁻¹ to 12 m s⁻¹ in 8 s during its landing rollout.\n\nWhich statement best describes the aircraft's motion during this interval?",
+  "options": {
+    "A": "The aircraft experiences a constant negative acceleration because its velocity decreases uniformly with time.",
+    "B": "The aircraft moves with uniform motion because it covers the runway in a straight line.",
+    "C": "The aircraft has zero acceleration because it is still moving forward throughout the rollout.",
+    "D": "The aircraft's acceleration is positive because its direction of motion does not change."
+  },
+  "answer": "A",
+  "answer_text": "The aircraft experiences a constant negative acceleration because its velocity decreases uniformly with time.",
+  "explanation": {
+    "question_restate": "This question assesses your understanding of deceleration as a form of non-uniform motion. It requires you to recognise that a moving object can still be accelerating even when its speed is decreasing.",
+    "principle": "Non-uniform motion occurs whenever velocity changes with time.\n\nVelocity is a vector quantity, meaning it has both magnitude (speed) and direction.\n\nAcceleration is defined as the rate of change of velocity.\n\nThe average acceleration is given by:\n\na = (v - u)/t\n\nwhere:\n\n• a = acceleration\n• u = initial velocity\n• v = final velocity\n• t = time taken\n\nWhen the final velocity is less than the initial velocity, the calculated acceleration is negative. This negative acceleration is called deceleration or retardation. It does not mean the object moves backward; it simply indicates that the object's speed is reducing.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 36 m s⁻¹\nFinal velocity, v = 12 m s⁻¹\nTime, t = 8 s.",
+      "Step 2: Apply the acceleration formula.\n\na = (v - u)/t\n\n= (12 - 36)/8\n\n= -24/8\n\n= -3 m s⁻².",
+      "Step 3: Interpret the result.\n\nThe negative sign shows that the aircraft is slowing down at a constant rate. Therefore, it experiences constant negative acceleration (deceleration).",
+      "Step 4: Select the option that correctly describes the motion.\n\nOption A correctly explains that the aircraft undergoes constant negative acceleration because its velocity decreases uniformly with time."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because travelling in a straight line alone does not imply uniform motion. Uniform motion requires constant velocity, whereas the aircraft's velocity is decreasing.",
+      "Option C is incorrect because any change in velocity means acceleration is present. The aircraft is slowing down, so its acceleration is not zero.",
+      "Option D is incorrect because acceleration depends on the change in velocity, not merely the direction of motion. Since the speed is decreasing, the acceleration is negative rather than positive."
+    ],
+    "exam_tip": "In JAMB Physics, remember that acceleration is any change in velocity.\n\nA moving object that slows down still has acceleration.\n\nWhenever the calculated acceleration is negative, the motion is described as deceleration or retardation. Do not confuse negative acceleration with moving backward.",
+    "final_answer": "A. The aircraft experiences a constant negative acceleration because its velocity decreases uniformly with time.",
+    "simple_explanation": "Imagine riding a bicycle and gently applying the brakes. You continue moving forward, but your speed becomes smaller every second.\n\nEven though you have not changed direction, your velocity is changing because its magnitude is decreasing. That means you are accelerating in the negative direction, which is called deceleration.\n\nThe aircraft behaves in exactly the same way during landing.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Non-uniform Motion for a complete explanation of acceleration, deceleration, velocity changes, distance-time graphs, velocity-time graphs, and authentic JAMB-style worked examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional practice and concept reinforcement."
+  },
+  "tags": [
+    "linear_motion",
+    "non_uniform_motion",
+    "deceleration",
+    "negative_acceleration",
+    "aviation",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q108",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Non-uniform motion",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During a training session at a smart manufacturing facility, four trainee technicians made the following observations about the motion of automated guided vehicles (AGVs):\n\nTechnician I: \"A vehicle moving with constant speed around a curved path is in non-uniform motion because its direction changes continuously.\"\n\nTechnician II: \"If a vehicle covers equal distances in equal time intervals, it must always be in non-uniform motion.\"\n\nTechnician III: \"Whenever the velocity of a moving object changes, the object experiences acceleration.\"\n\nTechnician IV: \"A vehicle that slows down while approaching a loading station is undergoing negative acceleration (deceleration).\"\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, III and IV only",
+    "B": "I and II only",
+    "C": "II, III and IV only",
+    "D": "I, II and III only"
+  },
+  "answer": "A",
+  "answer_text": "I, III and IV only",
+  "explanation": {
+    "question_restate": "This question evaluates your overall understanding of the characteristics of non-uniform motion by asking you to identify which statements correctly describe situations involving changing velocity and acceleration.",
+    "principle": "Non-uniform motion occurs whenever the velocity of an object changes with time.\n\nVelocity is a vector quantity, meaning it has both magnitude (speed) and direction.\n\nTherefore, motion is non-uniform if:\n\n• the speed changes,\n• the direction changes,\n• or both the speed and direction change.\n\nAcceleration is defined as the rate of change of velocity.\n\nMathematically,\n\nAcceleration = Change in velocity ÷ Time taken\n\nWhenever the velocity changes, acceleration is present. If the speed decreases, the acceleration is negative and is commonly called deceleration.\n\nObjects in uniform motion generally cover equal distances in equal time intervals while maintaining constant velocity.",
+    "steps": [
+      "Step 1: Examine Technician I's statement.\n\nA vehicle moving at constant speed around a curved path changes its direction continuously. Since velocity depends on both speed and direction, its velocity changes even though its speed remains constant.\n\nTherefore, Technician I is correct.",
+      "Step 2: Examine Technician II's statement.\n\nCovering equal distances in equal time intervals is a characteristic of uniform motion, provided the direction also remains constant.\n\nTherefore, this statement is incorrect.",
+      "Step 3: Examine Technician III's statement.\n\nAcceleration occurs whenever velocity changes, whether due to an increase in speed, a decrease in speed or a change in direction.\n\nTherefore, Technician III is correct.",
+      "Step 4: Examine Technician IV's statement.\n\nWhen a vehicle slows down while approaching a loading station, its speed decreases with time. This is negative acceleration, also known as deceleration.\n\nTherefore, Technician IV is correct.",
+      "Step 5: Determine the correct combination.\n\nTechnicians I, III and IV are correct, while Technician II is incorrect.\n\nHence, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Technician II is wrong. Equal distances covered in equal time intervals describe uniform motion, not non-uniform motion.",
+      "Option C is incorrect because it omits Technician I, whose statement correctly recognises that changing direction alone produces non-uniform motion.",
+      "Option D is incorrect because it includes Technician II, whose statement incorrectly identifies a characteristic of uniform motion as non-uniform motion."
+    ],
+    "exam_tip": "In JAMB Physics, remember that velocity depends on both speed and direction.\n\nA change in either quantity means the velocity has changed, so acceleration exists.\n\nAlso remember:\n\n• Equal distances in equal time intervals indicate uniform motion.\n• Slowing down is still a form of acceleration called deceleration.\n• Constant speed does not always mean uniform motion if the direction is changing.",
+    "final_answer": "A. I, III and IV only",
+    "simple_explanation": "Imagine an automated factory vehicle.\n\nIf it turns around a bend, its direction changes, so its motion is non-uniform even if its speed stays the same.\n\nIf it slows down before stopping to collect materials, it is decelerating, which is negative acceleration.\n\nOnly Technician II is incorrect because equal distances covered in equal time intervals describe uniform motion, not non-uniform motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Non-uniform Motion to learn how changes in speed and direction affect velocity, understand acceleration and deceleration, interpret motion graphs, compare uniform and non-uniform motion, and practise additional JAMB-standard questions with the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "linear_motion",
+    "non_uniform_motion",
+    "changing_velocity",
+    "acceleration",
+    "deceleration",
+    "conceptual_reasoning",
+    "multiple_statements",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
 }
 
 ]
