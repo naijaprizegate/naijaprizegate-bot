@@ -6510,6 +6510,309 @@
     "phy_04"
   ],
   "active": true
+},
+{
+  "id": "phy_04_q131",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Equations of Motion",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During a physics laboratory discussion on the equations of motion, four trainees made the following statements:\n\nStudent I: \"The equations of motion can be applied only when the acceleration remains constant.\"\n\nStudent II: \"The equations of motion are suitable for analysing motion in which acceleration changes continuously with time.\"\n\nStudent III: \"Using the equations of motion for an object with varying acceleration may produce incorrect results.\"\n\nStudent IV: \"Before applying any equation of motion, it is important to verify that the motion involves constant acceleration.\"\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, III and IV only",
+    "B": "I and II only",
+    "C": "II, III and IV only",
+    "D": "I, II and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I, III and IV only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of an important limitation of the SUVAT equations. Rather than performing calculations, you are required to determine the conditions under which the equations of motion are valid.",
+    "principle": "The equations of motion, commonly called the SUVAT equations, describe the relationship between displacement (s), initial velocity (u), final velocity (v), acceleration (a) and time (t).\n\nThese equations were derived on the assumption that acceleration remains constant throughout the motion.\n\nA beginner may ask, \"Why is constant acceleration important?\"\n\nThe mathematical relationships among displacement, velocity and time remain valid only when acceleration does not change. If acceleration varies from one instant to another, the equations no longer describe the motion accurately, and other methods, such as calculus or graphical analysis, may be required.\n\nTherefore, checking whether acceleration is constant is an essential first step before selecting any SUVAT equation.",
+    "steps": [
+      "Step 1: Examine Student I's statement.\n\nThis statement is correct. The SUVAT equations are valid only for motion with constant acceleration.",
+      "Step 2: Examine Student II's statement.\n\nThis statement is incorrect. If acceleration changes continuously with time, the standard equations of motion cannot be applied directly because one of their fundamental assumptions has been violated.",
+      "Step 3: Examine Student III's statement.\n\nThis statement is correct. Applying the equations to motion with varying acceleration can lead to inaccurate or misleading results.",
+      "Step 4: Examine Student IV's statement.\n\nThis statement is correct. Before choosing any SUVAT equation, you should first confirm that the motion involves constant acceleration.",
+      "Step 5: Identify the correct combination.\n\nStudents I, III and IV are correct, while Student II is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Student II, whose statement is false, and omits Students III and IV, which are correct.",
+      "Option C is incorrect because Student II is incorrect. Including an incorrect statement makes the entire combination wrong.",
+      "Option D is incorrect because Student II is false even though Students I and IV are correct."
+    ],
+    "exam_tip": "A common JAMB mistake is to memorise the equations of motion without remembering the condition under which they apply.\n\nWhenever you encounter a SUVAT problem, first ask yourself:\n\n• Is the acceleration constant?\n\nIf the answer is yes, the equations of motion may be used.\n\nIf the acceleration changes continuously, the standard SUVAT equations are not applicable.",
+    "final_answer": "A. I, III and IV only",
+    "simple_explanation": "Imagine driving a car with cruise control switched on so that it gains speed steadily. The SUVAT equations work well because the acceleration remains constant.\n\nIf the driver keeps pressing and releasing the accelerator so that the acceleration changes all the time, those equations no longer describe the motion accurately.\n\nThat is why only Students I, III and IV are correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Equations of Motion to learn how the SUVAT equations are derived, when each equation should be used, their limitations, and how to identify situations involving constant acceleration. Continue practising with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-style worked examples and concept reviews."
+  },
+  "tags": [
+    "equations_of_motion",
+    "suvat",
+    "constant_acceleration",
+    "limitations_of_suvat",
+    "conceptual_evaluation",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q132",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Equations of Motion",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An oil and gas company deploys an inspection robot to travel along a pipeline. The robot moves with a constant acceleration from an initial velocity of 7 m s⁻¹ to a final velocity of 31 m s⁻¹ in 8 s.\n\nAn engineer makes the following statements about the robot's motion:\n\nI. The robot's acceleration is 3 m s⁻².\n\nII. The average velocity of the robot during the motion is 19 m s⁻¹.\n\nIII. The displacement covered by the robot during the 8 s is 152 m.\n\nIV. The equation v² = u² + 2as is the only equation that can be used to determine the displacement in this situation.\n\nWhich of the following options is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "I and IV only",
+    "C": "II, III and IV only",
+    "D": "I, III and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and III only",
+  "explanation": {
+    "question_restate": "This question combines calculation with conceptual reasoning. It requires you to determine whether several statements about uniformly accelerated motion are correct by applying the equations of motion and understanding when each equation is appropriate.",
+    "principle": "The equations of motion, often called the SUVAT equations, describe motion with constant acceleration.\n\nThe five variables are:\n\n• u = initial velocity\n• v = final velocity\n• a = acceleration\n• t = time\n• s = displacement\n\nSince the acceleration is constant, the average velocity is given by:\n\nAverage velocity = (u + v)/2\n\nThe displacement can then be obtained from:\n\ns = Average velocity × time\n\nAlternatively,\n\ns = ut + ½at²\n\nor\n\nv² = u² + 2as\n\nEach equation is selected according to the known and unknown quantities. There is usually more than one suitable equation for a given motion.",
+    "steps": [
+      "Step 1: Calculate the acceleration.\n\nUsing\n\nv = u + at\n\n31 = 7 + 8a\n\n24 = 8a\n\na = 3 m s⁻²\n\nStatement I is correct.",
+      "Step 2: Determine the average velocity.\n\nAverage velocity = (u + v)/2\n\n= (7 + 31)/2\n\n= 38/2\n\n= 19 m s⁻¹\n\nStatement II is correct.",
+      "Step 3: Calculate the displacement.\n\ns = Average velocity × time\n\n= 19 × 8\n\n= 152 m\n\nStatement III is correct.",
+      "Step 4: Examine Statement IV.\n\nAlthough the equation v² = u² + 2as can be used to determine displacement, it is not the only suitable equation.\n\nSince u, a and t are known, s = ut + ½at² can also be used.\n\nLikewise, because the average velocity is known, s = ((u + v)/2)t is equally valid.\n\nTherefore, Statement IV is incorrect.",
+      "Step 5: Identify the correct combination.\n\nStatements I, II and III are correct, while Statement IV is incorrect.\n\nHence, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because Statement IV is false, while Statement II is correctly omitted.",
+      "Option C is incorrect because it excludes Statement I, even though the calculated acceleration is correctly 3 m s⁻². It also wrongly includes Statement IV.",
+      "Option D is incorrect because although Statements I and III are correct, Statement IV is false."
+    ],
+    "exam_tip": "In JAMB examinations, candidates are often asked to evaluate several statements together. Do not assume that only one equation of motion can solve a problem. First identify the quantities given, then choose any equation that relates the known variables to the required quantity under constant acceleration.",
+    "final_answer": "A. I, II and III only",
+    "simple_explanation": "The robot speeds up uniformly from 7 m s⁻¹ to 31 m s⁻¹.\n\nIts acceleration is 3 m s⁻², its average speed during the motion is 19 m s⁻¹, and in 8 seconds it travels 152 m.\n\nThe last statement is incorrect because more than one equation of motion can be used to calculate the displacement when acceleration is constant.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Equations of Motion for a complete lesson on selecting the appropriate SUVAT equation, calculating acceleration, displacement and average velocity, and solving authentic JAMB-style application questions involving transportation, engineering and industrial systems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "equations_of_motion",
+    "suvat",
+    "constant_acceleration",
+    "average_velocity",
+    "mixed_reasoning",
+    "oil_and_gas",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q133",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Equations of Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A transport analyst reviews data from a light rail system. One train leaves a station at a speed of 12 m s⁻¹ and accelerates uniformly to 36 m s⁻¹ in 8 s.\n\nBased on the recorded data, what distance does the train travel during this interval?",
+  "options": {
+    "A": "144 m",
+    "B": "168 m",
+    "C": "192 m",
+    "D": "288 m"
+  },
+  "answer": "C",
+  "answer_text": "192 m",
+  "explanation": {
+    "question_restate": "This question presents motion data from a light rail system and requires you to interpret the information to determine the distance travelled while the train accelerates uniformly. Rather than using trial and error, you must identify the equation that matches the available variables and apply it correctly.",
+    "principle": "The equations of motion (SUVAT equations) describe motion with constant acceleration.\n\nThe five standard variables are:\n\n• u = initial velocity\n• v = final velocity\n• a = acceleration\n• t = time taken\n• s = displacement\n\nIn this question, the initial velocity, final velocity and time are known, while acceleration is not given. Therefore, the most suitable equation is:\n\ns = ((u + v)/2)t\n\nThis equation is based on the fact that, for motion with constant acceleration, the average velocity equals (u + v)/2. Multiplying the average velocity by the time gives the displacement.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 12 m s⁻¹\nFinal velocity, v = 36 m s⁻¹\nTime, t = 8 s",
+      "Step 2: Determine the required quantity.\n\nRequired: Displacement, s",
+      "Step 3: Select the appropriate equation.\n\nSince u, v and t are known, use:\n\ns = ((u + v)/2)t",
+      "Step 4: Substitute the values.\n\ns = ((12 + 36)/2) × 8\n\n= (48/2) × 8\n\n= 24 × 8\n\n= 192 m",
+      "Step 5: Compare with the options.\n\nThe calculated displacement is 192 m.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (144 m) is incorrect. It results from using an incorrect average velocity or making an arithmetic error during calculation.",
+      "Option B (168 m) is incorrect. It is obtained if the average velocity is wrongly calculated as 21 m s⁻¹ instead of 24 m s⁻¹.",
+      "Option D (288 m) is incorrect. This value comes from multiplying the final velocity by the time, incorrectly assuming the train moved at its final speed throughout the journey."
+    ],
+    "exam_tip": "Before substituting values into a SUVAT equation, list the known and unknown quantities.\n\nWhen initial velocity, final velocity and time are known, the average velocity equation, s = ((u + v)/2)t, is often the quickest and simplest method.\n\nRemember that this relationship is valid only when the acceleration is constant.",
+    "final_answer": "C. 192 m",
+    "simple_explanation": "The train did not travel at 12 m s⁻¹ throughout the journey, nor did it travel at 36 m s⁻¹ throughout. Since it accelerated uniformly, its average speed is halfway between the two speeds.\n\nAverage speed = (12 + 36)/2 = 24 m s⁻¹.\n\nDistance = Average speed × Time = 24 × 8 = 192 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Equations of Motion to learn how to select the correct SUVAT equation, calculate displacement using average velocity, and solve authentic JAMB-style kinematics problems. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and revision exercises."
+  },
+  "tags": [
+    "equations_of_motion",
+    "suvat",
+    "average_velocity",
+    "displacement",
+    "transportation",
+    "data_interpretation",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q134",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Equations of Motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A mining engineer analyses the motion of an automated mining vehicle that accelerates uniformly along a straight tunnel. The vehicle starts at an initial velocity of 12 m s⁻¹ and reaches a final velocity of 30 m s⁻¹ after travelling 294 m.\n\nAn apprentice suggests using the equation v = u + at, while another recommends v² = u² + 2as.\n\nWhich statement correctly compares the suitability of the two equations for determining the vehicle's acceleration?",
+  "options": {
+    "A": "The equation v = u + at is more suitable because it contains the displacement.",
+    "B": "Both equations are equally unsuitable because neither can determine acceleration directly.",
+    "C": "The equation v² = u² + 2as is more suitable because it relates the known quantities without requiring time.",
+    "D": "The equation s = ut + ½at² is more suitable because final velocity is not required."
+  },
+  "answer": "C",
+  "answer_text": "The equation v² = u² + 2as is more suitable because it relates the known quantities without requiring time.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to compare different equations of motion and identify the most appropriate one based on the information provided. Rather than performing lengthy calculations, you must recognise which equation contains the known variables and excludes the unknown quantity that has not been given.",
+    "principle": "The equations of motion (SUVAT equations) describe motion with constant acceleration.\n\nThe five variables are:\n\n• u = initial velocity\n• v = final velocity\n• a = acceleration\n• s = displacement\n• t = time\n\nEach equation is designed for situations involving particular combinations of these variables.\n\nThe principal equations are:\n\n• v = u + at\n• s = ut + ½at²\n• v² = u² + 2as\n• s = ((u + v)/2)t\n\nSelecting the correct equation is often more important than carrying out the calculation itself.",
+    "steps": [
+      "Step 1: Identify the quantities provided.\n\nKnown:\n• Initial velocity, u = 12 m s⁻¹\n• Final velocity, v = 30 m s⁻¹\n• Displacement, s = 294 m\n\nRequired:\n• Acceleration, a\n\nTime, t, is not given.",
+      "Step 2: Examine the first suggested equation.\n\nv = u + at\n\nAlthough this equation can determine acceleration, it requires the value of time.\n\nSince time is not provided, this equation cannot be applied directly.",
+      "Step 3: Examine the second suggested equation.\n\nv² = u² + 2as\n\nThis equation contains exactly the known quantities (u, v and s) together with the required quantity (a).\n\nIt does not require time, making it the most appropriate equation.",
+      "Step 4: Verify mathematically.\n\nv² = u² + 2as\n\n30² = 12² + 2(a)(294)\n\n900 = 144 + 588a\n\n756 = 588a\n\na = 756/588\n\na ≈ 1.29 m s⁻²\n\nThe calculation confirms that the equation successfully determines the acceleration without needing time.",
+      "Step 5: Select the correct option.\n\nThe third equation is the appropriate choice because it relates all the available quantities while excluding the unknown time.\n\nTherefore, Option C is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because the equation v = u + at does not include displacement. It requires time, which has not been provided.",
+      "Option B is incorrect because the equation v² = u² + 2as can be rearranged directly to determine acceleration.",
+      "Option D is incorrect because although s = ut + ½at² includes displacement, it also requires time. Furthermore, saying that final velocity is not required does not make it the best equation when time is unknown."
+    ],
+    "exam_tip": "Before substituting values into any equation of motion, list the known and unknown quantities.\n\nThen choose the equation that:\n\n• contains all the known quantities,\n• includes the quantity to be determined, and\n• excludes any unknown quantity that has not been provided.\n\nMany JAMB questions test equation selection rather than arithmetic.",
+    "final_answer": "C. The equation v² = u² + 2as is more suitable because it relates the known quantities without requiring time.",
+    "simple_explanation": "Suppose you want to bake a cake and have flour, eggs and sugar, but no butter. You would choose a recipe that does not require butter.\n\nSimilarly, in this question, the time is not given. Therefore, you should choose the equation that does not require time.\n\nThe equation v² = u² + 2as uses only the values you already know, making it the correct choice.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Equations of Motion for a complete lesson on selecting and applying the appropriate SUVAT equation, including worked examples, common examination mistakes, and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive concept reviews and additional exam-focused exercises."
+  },
+  "tags": [
+    "equations_of_motion",
+    "suvat",
+    "equation_selection",
+    "constant_acceleration",
+    "comparative_reasoning",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q135",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Equations of Motion",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During the field testing of a space rover prototype, engineers observed that the rover accelerated uniformly from an initial speed of 7 m s⁻¹ to 25 m s⁻¹ in 6 s before continuing its mission.\n\nUsing the appropriate equations of motion, determine the total displacement covered by the rover during this period.",
+  "options": {
+    "A": "96 m",
+    "B": "84 m",
+    "C": "108 m",
+    "D": "72 m"
+  },
+  "answer": "A",
+  "answer_text": "96 m",
+  "explanation": {
+    "question_restate": "This question requires you to identify the most suitable equation of motion before calculating the displacement of a space rover moving with constant acceleration. Rather than applying a formula at random, you must recognise the available variables and choose the equation that fits them.",
+    "principle": "The equations of motion (SUVAT equations) describe motion under constant acceleration.\n\nThe five variables are:\n\n• u = initial velocity\n• v = final velocity\n• a = acceleration\n• t = time\n• s = displacement\n\nA beginner may ask, 'Why are there several equations instead of one?'\n\nEach equation relates different combinations of the five variables. Selecting the correct equation makes the calculation easier.\n\nIn this question, the known quantities are:\n\n• Initial velocity (u)\n• Final velocity (v)\n• Time (t)\n\nSince displacement is required and both initial and final velocities are known together with time, the most direct equation is:\n\ns = ((u + v) / 2)t\n\nThis equation is based on the fact that, under constant acceleration, the average velocity is:\n\nAverage velocity = (u + v) / 2\n\nDisplacement is then obtained by multiplying the average velocity by the time taken.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nu = 7 m s⁻¹\nv = 25 m s⁻¹\nt = 6 s",
+      "Step 2: Select the appropriate equation.\n\nSince u, v and t are known, use:\n\ns = ((u + v) / 2)t",
+      "Step 3: Substitute the values.\n\ns = ((7 + 25) / 2) × 6",
+      "Step 4: Simplify.\n\n7 + 25 = 32\n\n32 / 2 = 16 m s⁻¹",
+      "Step 5: Calculate the displacement.\n\ns = 16 × 6 = 96 m",
+      "Step 6: Compare with the options.\n\n96 m corresponds to Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (84 m) is incorrect. It may result from using an incorrect average velocity or making an arithmetic error during substitution.",
+      "Option C (108 m) is incorrect. This value could arise from selecting an unsuitable equation or incorrectly handling the velocities.",
+      "Option D (72 m) is incorrect. It commonly results from averaging the velocities incorrectly or omitting part of the calculation."
+    ],
+    "exam_tip": "Before substituting into any SUVAT equation, list the known and unknown variables.\n\nThen choose the equation containing only those variables.\n\nMany JAMB candidates lose marks because they memorise formulas without knowing when each should be applied.\n\nRemember that the equation s = ((u + v) / 2)t is often the quickest method whenever initial velocity, final velocity and time are given.",
+    "final_answer": "A. 96 m",
+    "simple_explanation": "Imagine the rover gradually increases its speed from 7 m s⁻¹ to 25 m s⁻¹ without changing its rate of acceleration.\n\nIts average speed during the journey is halfway between the two speeds:\n\n(7 + 25) / 2 = 16 m s⁻¹.\n\nTravelling at an average speed of 16 m s⁻¹ for 6 seconds gives:\n\n16 × 6 = 96 m.\n\nTherefore, the rover covers 96 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Equations of Motion to learn how to identify known variables, select the correct SUVAT equation, solve displacement, velocity, acceleration and time problems, and practise additional JAMB-style worked examples at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "equations_of_motion",
+    "suvat",
+    "displacement",
+    "average_velocity",
+    "constant_acceleration",
+    "space_technology",
+    "mixed_reasoning",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q136",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Equations of Motion",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During a quality review at an advanced manufacturing facility, four trainee engineers discussed the use of the equations of motion for analysing machine-guided vehicles moving with constant acceleration.\n\nTrainee I: \"The equations of motion can only be applied correctly when the acceleration remains constant throughout the motion.\"\n\nTrainee II: \"The equation v² = u² + 2as is particularly useful when the time taken for the motion is not known.\"\n\nTrainee III: \"The equation s = ut + ½at² can be used directly even when the acceleration changes continuously with time.\"\n\nTrainee IV: \"For motion with constant acceleration, the average velocity is equal to (u + v)/2.\"\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and IV only",
+    "B": "I, III and IV only",
+    "C": "II and III only",
+    "D": "I, II, III and IV"
+  },
+  "answer": "A",
+  "answer_text": "I, II and IV only",
+  "explanation": {
+    "question_restate": "This question serves as a comprehensive review of the equations of motion (SUVAT equations). Instead of requiring numerical calculations, it evaluates your understanding of the conditions under which these equations are applicable, how each equation is selected, and the assumptions on which they are based.",
+    "principle": "The equations of motion describe the relationship between displacement (s), initial velocity (u), final velocity (v), acceleration (a) and time (t) for objects moving with constant acceleration.\n\nThe five variables are:\n\n• u = initial velocity\n• v = final velocity\n• a = constant acceleration\n• t = time taken\n• s = displacement\n\nThe commonly used equations are:\n\n• v = u + at\n• s = ut + ½at²\n• v² = u² + 2as\n• s = ((u + v)/2)t\n\nThese equations are valid only when acceleration remains constant during the motion. If acceleration varies continuously, more advanced methods beyond basic SUVAT equations are required.",
+    "steps": [
+      "Step 1: Examine Trainee I's statement.\n\nThe equations of motion are derived assuming constant acceleration. If acceleration changes continuously, these equations no longer describe the motion accurately.\n\nTherefore, Trainee I is correct.",
+      "Step 2: Examine Trainee II's statement.\n\nThe equation v² = u² + 2as does not contain the variable t. Therefore, it is the preferred equation whenever time is unknown or unnecessary.\n\nHence, Trainee II is correct.",
+      "Step 3: Examine Trainee III's statement.\n\nThe equation s = ut + ½at² assumes that acceleration remains constant throughout the motion. It cannot be applied directly when acceleration changes continuously.\n\nTherefore, Trainee III is incorrect.",
+      "Step 4: Examine Trainee IV's statement.\n\nFor motion with constant acceleration, the average velocity equals (u + v)/2 because the velocity changes uniformly between the initial and final values.\n\nThus, Trainee IV is correct.",
+      "Step 5: Determine the correct combination.\n\nCorrect statements: I, II and IV.\n\nIncorrect statement: III.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Trainee III, whose statement is false. The second equation of motion cannot be applied directly when acceleration varies continuously.",
+      "Option C is incorrect because it omits Trainee I and Trainee IV, both of which are correct statements about the equations of motion.",
+      "Option D is incorrect because it assumes all four statements are correct. Since Trainee III's statement is false, this option cannot be correct."
+    ],
+    "exam_tip": "In JAMB examinations, many questions on the equations of motion test your understanding of when each equation should be used rather than your ability to memorise formulas.\n\nRemember these key facts:\n\n• All SUVAT equations require constant acceleration.\n• Use v = u + at when displacement is not involved.\n• Use s = ut + ½at² when final velocity is not required.\n• Use v² = u² + 2as when time is absent.\n• Use average velocity = (u + v)/2 only for constant acceleration.\n\nWhenever a statement contains words such as \"always\" or ignores the assumption of constant acceleration, examine it carefully because it is often testing a common misconception.",
+    "final_answer": "A. I, II and IV only",
+    "simple_explanation": "Imagine an automated vehicle moving through a factory. If it speeds up at the same rate every second, the equations of motion work perfectly.\n\nIf the vehicle keeps changing its acceleration unpredictably, those equations are no longer suitable.\n\nAlso, when the time taken is unknown, the equation v² = u² + 2as becomes very useful because it relates velocity, acceleration and displacement without using time.\n\nTherefore, only Trainees I, II and IV made correct statements.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Equations of Motion to learn how to identify the known and unknown variables, select the correct SUVAT equation, understand the assumptions behind each formula, and solve authentic JAMB-style questions. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and concept-based practice."
+  },
+  "tags": [
+    "equations_of_motion",
+    "suvat",
+    "constant_acceleration",
+    "multiple_statements",
+    "conceptual_evaluation",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
 }
 
 ]
