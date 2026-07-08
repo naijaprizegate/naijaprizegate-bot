@@ -4019,6 +4019,699 @@
     "phy_04"
   ],
   "active": true
+},
+{
+  "id": "phy_04_q081",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Uniform motion",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "During a quality-control inspection in a beverage factory, bottles are transported along a straight conveyor belt without any change in speed or direction.\n\nWhich statement best describes the motion of the bottles?",
+  "options": {
+    "A": "They move with constant velocity and zero acceleration.",
+    "B": "They move with constant speed but continuously changing direction.",
+    "C": "Their velocity changes uniformly with time.",
+    "D": "They accelerate because they are in continuous motion."
+  },
+  "answer": "A",
+  "answer_text": "They move with constant velocity and zero acceleration.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the defining characteristic of uniform motion using the example of bottles moving on a straight conveyor belt at an unchanging speed.",
+    "principle": "Uniform motion is the simplest form of motion in mechanics.\n\nAn object is said to be in uniform motion when its **velocity remains constant throughout the motion**.\n\nVelocity is a vector quantity, meaning it has both **magnitude (speed)** and **direction**.\n\nTherefore, for velocity to remain constant:\n\n• the speed must remain constant, and\n• the direction must also remain constant.\n\nSince acceleration is the rate of change of velocity, an object moving with constant velocity has **zero acceleration**.\n\nA common misunderstanding is to think that every moving object must be accelerating. This is incorrect. An object can continue moving at a constant velocity without accelerating.",
+    "steps": [
+      "Step 1: Examine the description of the conveyor belt.\n\nThe bottles move in a straight line without any change in speed or direction.",
+      "Step 2: Determine whether the velocity changes.\n\nSince neither the speed nor the direction changes, the velocity remains constant.",
+      "Step 3: Recall the relationship between acceleration and velocity.\n\nAcceleration measures how quickly velocity changes. If velocity does not change, acceleration is zero.",
+      "Step 4: Identify the correct option.\n\nThe motion is therefore described as constant velocity with zero acceleration.\n\nHence, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because a continuously changing direction means the velocity changes, even if the speed remains constant. Such motion is not uniform motion.",
+      "Option C is incorrect because changing velocity implies the presence of acceleration. Uniform motion requires the velocity to remain unchanged.",
+      "Option D is incorrect because motion alone does not imply acceleration. An object can move steadily with zero acceleration."
+    ],
+    "exam_tip": "For JAMB, remember that **uniform motion means constant velocity**, not merely constant speed.\n\nWhenever you encounter uniform motion:\n\n• Speed is constant.\n• Direction is constant.\n• Velocity is constant.\n• Acceleration is zero.\n\nAlso remember that zero acceleration does **not** mean the object is at rest. It may still be moving at a constant velocity.",
+    "final_answer": "A. They move with constant velocity and zero acceleration.",
+    "simple_explanation": "Imagine standing beside a conveyor belt carrying bottles.\n\nIf every bottle moves at exactly the same speed and keeps travelling in the same straight direction, nothing about its velocity changes.\n\nSince acceleration is simply a change in velocity, there is no acceleration. The bottles are therefore in uniform motion.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Uniform Motion to learn the characteristics of uniform motion, constant velocity, zero acceleration, distance-time graphs, velocity-time graphs, and common JAMB misconceptions. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused practice."
+  },
+  "tags": [
+    "uniform_motion",
+    "constant_velocity",
+    "zero_acceleration",
+    "linear_motion",
+    "conceptual_understanding",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q082",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Uniform motion",
+  "difficulty": "easy",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An airport baggage conveyor moves luggage in a straight line at a constant speed of 4.5 m s⁻¹ for 24 s without changing direction.\n\nWhat distance does a piece of luggage travel during this time?",
+  "options": {
+    "A": "28 m",
+    "B": "96 m",
+    "C": "108 m",
+    "D": "120 m"
+  },
+  "answer": "C",
+  "answer_text": "108 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the distance travelled by an object moving with uniform motion. Since the conveyor moves at a constant speed in a straight line, the luggage covers equal distances in equal intervals of time.",
+    "principle": "Uniform motion is motion in which an object moves with constant velocity. This means that both the speed and the direction remain unchanged, so the acceleration is zero.\n\nA beginner may ask, 'How can I find the distance travelled when I know the speed and time?'\n\nThe relationship between distance, speed and time is:\n\nv = d/t\n\nwhere:\n\n• v = speed (or velocity in straight-line motion)\n• d = distance travelled\n• t = time taken\n\nRearranging the formula to make distance the subject gives:\n\nd = vt\n\nThis formula is used whenever an object moves with constant speed or constant velocity.",
+    "steps": [
+      "Step 1: Write down the known values.\n\nSpeed, v = 4.5 m s⁻¹\n\nTime, t = 24 s",
+      "Step 2: Identify the required quantity.\n\nRequired: Distance travelled, d",
+      "Step 3: Apply the appropriate formula.\n\nDistance = Speed × Time\n\nTherefore,\n\nd = vt",
+      "Step 4: Substitute the given values.\n\n d = 4.5 × 24",
+      "Step 5: Perform the calculation.\n\n4.5 × 24 = 108\n\nTherefore,\n\nd = 108 m",
+      "Step 6: Compare your result with the options.\n\n108 m corresponds to Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (28 m) is incorrect because it results from an incorrect calculation and greatly underestimates the distance travelled.",
+      "Option B (96 m) is incorrect because it could arise from multiplying the time by an incorrect speed or making an arithmetic error.",
+      "Option D (120 m) is incorrect because it overestimates the distance and does not equal the product of 4.5 m s⁻¹ and 24 s."
+    ],
+    "exam_tip": "For objects moving with uniform motion, remember the simple relationship:\n\nDistance = Speed × Time.\n\nAlways write the formula first, substitute the given values carefully, include the correct SI units, and check that your final answer matches one of the available options.",
+    "final_answer": "C. 108 m",
+    "simple_explanation": "Imagine standing beside the baggage conveyor at an airport. If the conveyor moves every second at the same speed without slowing down or speeding up, the luggage travels the same distance every second.\n\nSince it moves at 4.5 m every second for 24 s, the total distance is:\n\n4.5 × 24 = 108 m.\n\nTherefore, the correct answer is 108 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Uniform Motion to learn how to calculate speed, distance and time in uniform motion, understand constant velocity and zero acceleration, and practise additional JAMB-style questions with step-by-step solutions at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "linear_motion",
+    "uniform_motion",
+    "distance",
+    "constant_speed",
+    "kinematics",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q083",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Uniform motion",
+  "difficulty": "easy",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An automated warehouse robot moves along a straight aisle with a constant speed of 6 m s⁻¹. If it travels a distance of 270 m without changing its speed or direction, how long does it take the robot to complete the journey?",
+  "options": {
+    "A": "35 s",
+    "B": "40 s",
+    "C": "45 s",
+    "D": "48 s"
+  },
+  "answer": "C",
+  "answer_text": "45 s",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the time taken for an object moving with uniform motion when its speed and the distance travelled are known.",
+    "principle": "Uniform motion is motion in which an object moves with constant velocity. This means that both its speed and direction remain unchanged throughout the motion.\n\nA beginner may ask, 'How can I find the time taken if I already know the distance and speed?'\n\nThe relationship between speed, distance and time is given by:\n\nv = d/t\n\nwhere:\n\n• v = speed (or velocity in straight-line motion)\n• d = distance travelled\n• t = time taken\n\nRearranging the formula to make time the subject gives:\n\nt = d/v\n\nThis formula is used whenever the motion is uniform and both the distance travelled and the constant speed are known.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nDistance, d = 270 m\n\nSpeed, v = 6 m s⁻¹",
+      "Step 2: Identify the required quantity.\n\nRequired: Time taken, t",
+      "Step 3: Write the appropriate formula.\n\n t = d/v",
+      "Step 4: Substitute the known values.\n\n t = 270/6",
+      "Step 5: Perform the calculation.\n\n t = 45 s\n\nTherefore, the warehouse robot takes 45 seconds to complete the journey."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (35 s) is incorrect because it results from an incorrect calculation or the use of the wrong formula.",
+      "Option B (40 s) is incorrect because the distance divided by the speed does not equal 40 s.",
+      "Option D (48 s) is incorrect because it overestimates the travel time. A constant speed of 6 m s⁻¹ covers 270 m in exactly 45 s, not 48 s."
+    ],
+    "exam_tip": "In uniform motion questions, first identify the quantity being asked.\n\n• To find distance: d = vt\n• To find speed: v = d/t\n• To find time: t = d/v\n\nAlways ensure that the units are compatible before substituting values into the formula.",
+    "final_answer": "C. 45 s",
+    "simple_explanation": "Imagine the robot covers exactly 6 metres every second without slowing down.\n\nTo travel 270 metres, divide the total distance by the distance covered each second:\n\n270 ÷ 6 = 45.\n\nSo, the robot needs 45 seconds to complete the journey.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Uniform Motion for a complete lesson on constant velocity, calculating speed, distance and time, interpreting motion graphs, and solving JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and exam-focused revision."
+  },
+  "tags": [
+    "linear_motion",
+    "uniform_motion",
+    "time_calculation",
+    "constant_velocity",
+    "warehouse_robot",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q084",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Uniform motion",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A campus shuttle operates along a straight road between two terminals without changing its speed or direction. During routine monitoring, it is observed that the shuttle covers 180 m in the first 15 s, another 180 m in the next 15 s, and the same distance again in the following 15 s.\n\nWhat does this observation indicate about the shuttle's motion?",
+  "options": {
+    "A": "The shuttle is moving with uniform motion because it covers equal distances in equal time intervals.",
+    "B": "The shuttle is accelerating because it continues to move throughout the journey.",
+    "C": "The shuttle is slowing down because the distance covered remains unchanged.",
+    "D": "The shuttle is moving with non-uniform motion because its position changes continuously."
+  },
+  "answer": "A",
+  "answer_text": "The shuttle is moving with uniform motion because it covers equal distances in equal time intervals.",
+  "explanation": {
+    "question_restate": "This question tests your ability to recognise one of the defining characteristics of uniform motion from a real-life situation rather than by performing calculations.\n\nThe shuttle covers the same distance of 180 m during each successive 15-second interval. You are required to identify what this pattern tells you about its motion.",
+    "principle": "Uniform motion is motion in which an object moves with constant velocity.\n\nFor motion to be uniform, both the magnitude of the velocity (speed) and its direction must remain unchanged.\n\nOne important characteristic of uniform motion is that the object covers equal distances in equal intervals of time.\n\nSince the shuttle travels along a straight road without changing speed or direction, its velocity remains constant. Consequently, its acceleration is zero because there is no change in velocity.",
+    "steps": [
+      "Step 1: Examine the distances travelled.\n\nThe shuttle covers 180 m during each 15-second interval.\n\nThe distances are equal.",
+      "Step 2: Examine the time intervals.\n\nEach distance is covered in the same time of 15 s.\n\nThe time intervals are also equal.",
+      "Step 3: Apply the defining characteristic of uniform motion.\n\nWhen equal distances are covered in equal intervals of time, the object is moving with constant velocity (provided the direction remains unchanged).\n\nThe question states that the shuttle does not change its speed or direction.\n\nTherefore, the shuttle is in uniform motion.",
+      "Step 4: Select the correct option.\n\nOption A correctly describes the observed motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because an object does not accelerate simply because it is moving. Acceleration occurs only when velocity changes.",
+      "Option C is incorrect because covering equal distances in equal times indicates constant speed, not slowing down.",
+      "Option D is incorrect because a change in position occurs in every type of motion. Non-uniform motion specifically involves a change in speed, direction or both, which is not observed here."
+    ],
+    "exam_tip": "Whenever a JAMB question mentions that equal distances are covered in equal time intervals, immediately think of uniform motion.\n\nAlso remember:\n\n• Uniform motion means constant velocity.\n• Constant velocity means constant speed in an unchanged direction.\n• Zero acceleration does not mean the object has stopped moving; it simply means its velocity is not changing.",
+    "final_answer": "A. The shuttle is moving with uniform motion because it covers equal distances in equal time intervals.",
+    "simple_explanation": "Imagine travelling in a shuttle that moves steadily along a straight road. If it covers exactly the same distance every 15 seconds without speeding up, slowing down or turning, its motion is uniform.\n\nThat is exactly what happens in this question, so the correct answer is Option A.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Uniform Motion to learn the characteristics of uniform motion, constant velocity, zero acceleration, distance-time relationships, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept reviews and examination-focused practice."
+  },
+  "tags": [
+    "uniform_motion",
+    "equal_distances_equal_times",
+    "constant_velocity",
+    "scenario_interpretation",
+    "linear_motion",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q085",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Uniform motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An engineering team monitored an agricultural irrigation vehicle moving along a straight farm lane.\n\nThe distance-time graph recorded for the vehicle is described as follows:\n\n• The graph starts at the origin.\n• It is a straight line throughout the journey.\n• The distance increases by 45 m every 9 s.\n\nWhat does this graph indicate about the motion of the irrigation vehicle?",
+  "options": {
+    "A": "The vehicle is moving with constant velocity and zero acceleration.",
+    "B": "The vehicle is speeding up because the distance covered keeps increasing.",
+    "C": "The vehicle is slowing down because time is increasing continuously.",
+    "D": "The vehicle is accelerating uniformly since the graph is a straight line."
+  },
+  "answer": "A",
+  "answer_text": "The vehicle is moving with constant velocity and zero acceleration.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret a distance-time graph. Instead of calculating values, you are required to identify the type of motion represented by a straight-line distance-time graph with a constant slope.",
+    "principle": "A distance-time graph shows how the distance travelled by an object changes with time.\n\nFor a beginner, you may ask, 'What does the slope of a distance-time graph represent?'\n\nThe slope (or gradient) of a distance-time graph represents the speed or velocity of the object when it moves along a straight path without changing direction.\n\nWhen the graph is a straight line with a constant slope:\n\n• Equal distances are covered in equal intervals of time.\n• The speed (and velocity, since the direction is unchanged) remains constant.\n• There is no change in velocity.\n• Therefore, the acceleration is zero.\n\nIn this question, the vehicle covers 45 m every 9 s throughout its journey, showing that its velocity remains constant.",
+    "steps": [
+      "Step 1: Observe the shape of the graph.\n\nThe graph is a straight line from the origin with a constant slope.",
+      "Step 2: Interpret the equal distance intervals.\n\nThe vehicle covers 45 m every 9 s repeatedly. This means equal distances are covered in equal intervals of time.",
+      "Step 3: Determine the nature of the motion.\n\nSince the speed does not change and the vehicle continues along a straight path, its velocity remains constant. Uniform motion therefore occurs.",
+      "Step 4: Consider the acceleration.\n\nAcceleration is the rate of change of velocity.\n\nBecause the velocity remains constant, there is no change in velocity.\n\nHence, the acceleration is zero.",
+      "Step 5: Select the correct option.\n\nThe graph represents motion with constant velocity and zero acceleration.\n\nTherefore, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because increasing distance with time does not necessarily mean the object is speeding up. The constant slope shows the speed remains unchanged.",
+      "Option C is incorrect because time always increases during motion. This alone does not indicate that the object is slowing down.",
+      "Option D is incorrect because a straight-line distance-time graph represents constant velocity, not uniform acceleration. Uniform acceleration would produce a curved distance-time graph."
+    ],
+    "exam_tip": "Whenever JAMB presents a distance-time graph, first examine its slope.\n\n• A straight line with a constant slope indicates uniform motion.\n• A steeper straight line represents a higher constant speed.\n• A curved distance-time graph indicates changing speed (non-uniform motion).\n\nDo not confuse a straight-line distance-time graph with a velocity-time graph. They convey different information.",
+    "final_answer": "A. The vehicle is moving with constant velocity and zero acceleration.",
+    "simple_explanation": "Imagine walking along a straight road and covering exactly the same distance every minute.\n\nBecause you keep moving at the same rate without speeding up or slowing down, your motion is uniform.\n\nA straight-line distance-time graph represents this kind of steady motion, so the acceleration is zero.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Uniform Motion to learn how to interpret distance-time and velocity-time graphs, distinguish uniform motion from non-uniform motion, and solve authentic JAMB-style graph interpretation questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations and additional practice."
+  },
+  "tags": [
+    "uniform_motion",
+    "distance_time_graph",
+    "graph_interpretation",
+    "constant_velocity",
+    "zero_acceleration",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q086",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Uniform motion",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "During an athletics training session, a coach observes an athlete running around a standard oval track. The athlete maintains the same speed throughout the run but continuously changes direction while moving along the curved sections of the track.\n\nWhich statement best explains the athlete's motion?",
+  "options": {
+    "A": "The athlete is in uniform motion because the speed remains constant throughout the run.",
+    "B": "The athlete is in uniform motion because no external force acts while running.",
+    "C": "The athlete is not in uniform motion because the direction of motion changes even though the speed remains constant.",
+    "D": "The athlete is not moving with constant speed because changing direction automatically changes the speed."
+  },
+  "answer": "C",
+  "answer_text": "The athlete is not in uniform motion because the direction of motion changes even though the speed remains constant.",
+  "explanation": {
+    "question_restate": "This question tests whether you can distinguish between constant speed and constant velocity. Although the athlete keeps the same speed, the path followed is curved, causing the direction of motion to change continuously.",
+    "principle": "Uniform motion is motion with constant velocity.\n\nVelocity is a vector quantity. It has both magnitude (speed) and direction.\n\nFor motion to be uniform:\n\n• the speed must remain constant,\n• the direction must remain constant, and\n• the acceleration must be zero.\n\nMany beginners assume that constant speed automatically means uniform motion. This is incorrect. Whenever the direction changes, the velocity changes, even if the speed remains unchanged.\n\nRunning around an oval or circular track is a common example. The athlete may maintain the same speed, but because the direction changes at every point on the curve, the velocity is continually changing. Therefore, the motion is not uniform.",
+    "steps": [
+      "Step 1: Identify what remains unchanged.\n\nThe question states that the athlete maintains the same speed throughout the run. Therefore, the magnitude of the velocity remains constant.",
+      "Step 2: Determine whether the direction changes.\n\nThe athlete runs around an oval track. Along the curved sections, the direction of motion changes continuously.",
+      "Step 3: Recall the definition of uniform motion.\n\nUniform motion requires constant velocity, not merely constant speed. Since velocity depends on both magnitude and direction, a change in direction means the velocity has changed.",
+      "Step 4: Evaluate the options.\n\nOption C correctly states that the motion is not uniform because the direction changes despite the speed remaining constant."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because constant speed alone does not guarantee uniform motion. Direction must also remain constant.",
+      "Option B is incorrect because an external force is required to continuously change the direction of motion on a curved path. Moreover, the absence or presence of force is not the defining criterion for uniform motion.",
+      "Option D is incorrect because changing direction does not necessarily change speed. An object can maintain constant speed while continuously changing direction."
+    ],
+    "exam_tip": "Whenever JAMB asks about uniform motion, first ask yourself two questions:\n\n• Is the speed constant?\n• Is the direction also constant?\n\nUniform motion requires both answers to be 'Yes.' If either the speed or the direction changes, the motion is not uniform.\n\nRemember:\n\n• Constant speed along a straight line can be uniform motion.\n• Constant speed along a curved or circular path is not uniform motion because the direction changes continuously.",
+    "final_answer": "C. The athlete is not in uniform motion because the direction of motion changes even though the speed remains constant.",
+    "simple_explanation": "Imagine driving a car around a roundabout at exactly the same speed.\n\nEven though the speedometer shows the same reading, you keep turning the steering wheel. Every turn changes the direction in which the car moves.\n\nSince velocity depends on both speed and direction, the velocity changes whenever the direction changes.\n\nThat is why motion around a curved path is not uniform motion, even if the speed never changes.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Uniform Motion to learn the difference between speed and velocity, the conditions for uniform motion, zero acceleration, distance-time and velocity-time graphs, and why constant speed on a curved path does not represent uniform motion. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-style practice questions and concept reviews."
+  },
+  "tags": [
+    "uniform_motion",
+    "constant_speed",
+    "constant_velocity",
+    "direction_of_motion",
+    "curved_path",
+    "athletics",
+    "conceptual_reasoning",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q087",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Uniform Motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "An engineering team monitors an oil pipeline inspection robot moving in a straight pipeline. During a routine inspection, the robot travels 525 m in 35 s without changing either its speed or direction.\n\nWhat is the constant speed of the robot?",
+  "options": {
+    "A": "12 m s⁻¹",
+    "B": "15 m s⁻¹",
+    "C": "18 m s⁻¹",
+    "D": "20 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "15 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to calculate the constant speed of an object undergoing uniform motion from the measured distance travelled and the time taken.",
+    "principle": "Uniform motion occurs when an object moves with constant velocity, meaning both its speed and direction remain unchanged throughout the motion.\n\nIn a straight-line journey where the direction does not change, the speed is calculated using:\n\nv = d/t\n\nwhere:\n\n• v = speed (m s⁻¹)\n• d = distance travelled (m)\n• t = time taken (s)\n\nThis relationship shows that speed tells us how much distance is covered every second.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nDistance travelled, d = 525 m\n\nTime taken, t = 35 s",
+      "Step 2: Recall the formula.\n\nv = d/t",
+      "Step 3: Substitute the given values.\n\nv = 525/35",
+      "Step 4: Perform the calculation.\n\nv = 15 m s⁻¹",
+      "Step 5: Compare with the options.\n\nThe calculated speed is 15 m s⁻¹.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (12 m s⁻¹) is incorrect because it underestimates the speed obtained from the given distance and time.",
+      "Option C (18 m s⁻¹) is incorrect because it would require the robot to cover a greater distance than 525 m in 35 s.",
+      "Option D (20 m s⁻¹) is incorrect because it overestimates the speed and does not satisfy the relationship between the given distance and time."
+    ],
+    "exam_tip": "Whenever a question provides only distance travelled and time taken during steady motion, immediately think of the formula:\n\nv = d/t\n\nAlways check that the distance is in metres and the time is in seconds so that the answer is obtained directly in m s⁻¹.",
+    "final_answer": "B. 15 m s⁻¹",
+    "simple_explanation": "If the robot covers 525 metres in 35 seconds while moving steadily, it travels the same distance every second.\n\nDividing the total distance by the total time gives:\n\n525 ÷ 35 = 15.\n\nSo the robot moves at a constant speed of 15 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Uniform Motion for a complete lesson on calculating speed, distance and time in uniform motion, interpreting motion graphs, and solving additional JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed concept reviews and exam-focused exercises."
+  },
+  "tags": [
+    "linear_motion",
+    "uniform_motion",
+    "constant_speed",
+    "speed_calculation",
+    "oil_pipeline_inspection",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q088",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Uniform motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An engineering team monitoring a metro rail service records the following motion:\n\n'A velocity-time graph consists of a horizontal line at 18 m s⁻¹ extending uniformly from 0 s to 12 s.'\n\nWhich conclusion can be drawn correctly from the graph?",
+  "options": {
+    "A": "The train accelerates uniformly throughout the 12 s.",
+    "B": "The train moves with constant velocity and zero acceleration.",
+    "C": "The train gradually loses speed while covering equal distances.",
+    "D": "The train remains at rest because its acceleration is zero."
+  },
+  "answer": "B",
+  "answer_text": "The train moves with constant velocity and zero acceleration.",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret a velocity-time graph. A horizontal line on such a graph indicates that the object's velocity does not change with time. You are required to identify what this says about the train's motion.",
+    "principle": "A velocity-time graph shows how velocity changes with time.\n\nThe slope (gradient) of a velocity-time graph represents acceleration.\n\nWhen the graph is a horizontal line, its slope is zero. Therefore, the acceleration is zero.\n\nSince the velocity remains unchanged throughout the motion, the object is moving with constant velocity, which is the defining characteristic of uniform motion.\n\nA beginner may ask, 'Can an object move even when its acceleration is zero?'\n\nYes. Zero acceleration simply means the velocity is not changing. The object may still be moving at a constant velocity.",
+    "steps": [
+      "Step 1: Examine the graph described.\n\nThe graph is a horizontal line at 18 m s⁻¹ from 0 s to 12 s.\n\nThis means the train maintains the same velocity throughout the entire interval.",
+      "Step 2: Recall the meaning of the slope of a velocity-time graph.\n\nAcceleration equals the slope (gradient) of the graph.\n\nSince the graph is horizontal, its slope is zero.",
+      "Step 3: Determine the acceleration.\n\nAcceleration = 0 m s⁻².",
+      "Step 4: Interpret the motion.\n\nThe train continues moving at a constant velocity of 18 m s⁻¹ while experiencing zero acceleration.\n\nTherefore, it is undergoing uniform motion.",
+      "Step 5: Select the correct option.\n\nOption B correctly describes the motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a horizontal velocity-time graph has zero slope, indicating zero acceleration rather than uniform acceleration.",
+      "Option C is incorrect because a reduction in speed would appear as a downward-sloping line, not a horizontal one.",
+      "Option D is incorrect because zero acceleration does not imply zero velocity. The train is moving steadily at 18 m s⁻¹."
+    ],
+    "exam_tip": "In JAMB Physics, remember these key graph interpretations:\n\n• Horizontal distance-time graph → object at rest.\n• Straight sloping distance-time graph → constant speed.\n• Horizontal velocity-time graph → constant velocity and zero acceleration.\n• The slope of a velocity-time graph always represents acceleration.",
+    "final_answer": "B. The train moves with constant velocity and zero acceleration.",
+    "simple_explanation": "Imagine a train travelling steadily without speeding up or slowing down. Every second it moves at exactly 18 m s⁻¹.\n\nBecause its velocity never changes, its acceleration is zero, even though it is still moving.\n\nThat is exactly what a horizontal velocity-time graph represents.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Uniform Motion → Velocity-Time Graphs to learn how to interpret velocity-time graphs, determine acceleration from gradients, calculate displacement from graph areas, and solve authentic JAMB-style questions. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and concept reviews."
+  },
+  "tags": [
+    "uniform_motion",
+    "velocity_time_graph",
+    "graph_interpretation",
+    "zero_acceleration",
+    "constant_velocity",
+    "metro_transport",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q089",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Uniform motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "During the commissioning of an automated packaging line, cartons are transported along a straight conveyor at a constant velocity of 3.8 m s⁻¹. If a carton remains on the conveyor for 40 s before reaching the sealing unit, what distance does it travel?",
+  "options": {
+    "A": "112 m",
+    "B": "152 m",
+    "C": "168 m",
+    "D": "190 m"
+  },
+  "answer": "B",
+  "answer_text": "152 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to apply the concept of uniform motion to an industrial automation system by calculating the distance travelled when an object moves with constant velocity.",
+    "principle": "Uniform motion is motion in which an object moves with constant velocity. This means that both the speed and the direction remain unchanged throughout the motion.\n\nWhen velocity is constant, equal distances are covered in equal intervals of time and the acceleration is zero.\n\nThe relationship connecting distance, velocity and time is:\n\nv = d/t\n\nwhere:\n\n• v = velocity (m s⁻¹)\n• d = distance travelled (m)\n• t = time taken (s)\n\nRearranging the formula to make distance the subject gives:\n\nd = vt",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nVelocity, v = 3.8 m s⁻¹\n\nTime, t = 40 s",
+      "Step 2: Identify the required quantity.\n\nDistance travelled, d.",
+      "Step 3: Apply the appropriate formula.\n\n d = vt",
+      "Step 4: Substitute the given values.\n\n d = 3.8 × 40",
+      "Step 5: Perform the calculation.\n\n d = 152 m",
+      "Step 6: Compare the result with the options.\n\n152 m corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (112 m) is incorrect because it results from an incorrect multiplication and does not satisfy d = vt.",
+      "Option C (168 m) is incorrect because it overestimates the distance travelled for the given velocity and time.",
+      "Option D (190 m) is incorrect because it would require either a higher constant velocity or a longer travel time than stated in the question."
+    ],
+    "exam_tip": "For uniform motion, always remember the simple relationship:\n\nDistance = Velocity × Time.\n\nBefore substituting values, check that the units are consistent. Velocity should be in metres per second (m s⁻¹) and time in seconds (s), so the distance obtained will be in metres (m).",
+    "final_answer": "B. 152 m",
+    "simple_explanation": "Imagine the conveyor carries every carton at exactly the same speed without speeding up or slowing down. Since it moves at 3.8 metres every second for 40 seconds, multiply 3.8 by 40.\n\nDistance = 3.8 × 40 = 152 m.\n\nTherefore, the carton travels 152 m before reaching the sealing unit.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Uniform Motion to learn how to calculate speed, distance and time, recognise zero acceleration, interpret motion graphs and solve additional JAMB-style questions on steady motion. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive revision and guided practice."
+  },
+  "tags": [
+    "uniform_motion",
+    "industrial_automation",
+    "distance_calculation",
+    "constant_velocity",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q090",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Uniform motion",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An engineering team is testing a highway vehicle fitted with a cruise-control system. Once activated, the vehicle travels along a straight section of road without changing either its speed or direction.\n\nFour trainees make the following statements about the vehicle's motion:\n\nI. Since the vehicle is moving, it must have a positive acceleration.\n\nII. The vehicle's acceleration is zero because its velocity remains constant.\n\nIII. Zero acceleration means the vehicle has stopped moving.\n\nIV. The vehicle continues to cover equal distances in equal intervals of time.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I and III only",
+    "B": "II and IV only",
+    "C": "I, II and IV only",
+    "D": "II, III and IV only"
+  },
+  "answer": "B",
+  "answer_text": "II and IV only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of zero acceleration during uniform motion. It requires you to determine which statements correctly describe a vehicle moving with constant velocity on a straight road.",
+    "principle": "Uniform motion occurs when an object moves with constant velocity.\n\nVelocity is a vector quantity, meaning it has both magnitude (speed) and direction.\n\nIf neither the speed nor the direction changes, the velocity remains constant.\n\nAcceleration is defined as the rate of change of velocity.\n\nMathematically,\n\na = Δv/Δt\n\nwhere:\n• a = acceleration\n• Δv = change in velocity\n• Δt = time taken for the change.\n\nWhen there is no change in velocity (Δv = 0), the acceleration is zero.\n\nAn object can therefore continue moving at a constant velocity while having zero acceleration. One important characteristic of uniform motion is that equal distances are covered in equal intervals of time.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\n'Since the vehicle is moving, it must have a positive acceleration.'\n\nThis statement is incorrect.\n\nMotion does not necessarily imply acceleration. An object moving with constant velocity has zero acceleration.",
+      "Step 2: Examine Statement II.\n\n'The vehicle's acceleration is zero because its velocity remains constant.'\n\nThis statement is correct.\n\nSince neither the speed nor the direction changes, there is no change in velocity.",
+      "Step 3: Examine Statement III.\n\n'Zero acceleration means the vehicle has stopped moving.'\n\nThis statement is incorrect.\n\nZero acceleration simply means the velocity is not changing. The object may still be moving at a constant velocity.",
+      "Step 4: Examine Statement IV.\n\n'The vehicle continues to cover equal distances in equal intervals of time.'\n\nThis is one of the defining characteristics of uniform motion and is therefore correct.",
+      "Step 5: Identify the correct combination.\n\nOnly Statements II and IV are correct.\n\nTherefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because Statement I is false. A moving object does not always have positive acceleration, and Statement III is also false.",
+      "Option C is incorrect because it includes Statement I, which wrongly assumes that motion always requires acceleration.",
+      "Option D is incorrect because although Statements II and IV are correct, Statement III is false since zero acceleration does not imply zero velocity."
+    ],
+    "exam_tip": "JAMB frequently tests the distinction between velocity and acceleration.\n\nRemember these important facts:\n\n• Constant velocity means zero acceleration.\n• Zero acceleration does not mean zero speed.\n• Equal distances covered in equal intervals of time indicate uniform motion.\n• A moving object requires acceleration only when its velocity changes, either in magnitude or direction.",
+    "final_answer": "B. II and IV only",
+    "simple_explanation": "Imagine setting a car's cruise control on a straight expressway.\n\nIf the car keeps the same speed and continues in the same direction, its velocity remains constant. Since the velocity does not change, the acceleration is zero.\n\nThe car is still moving, and it keeps covering equal distances in equal intervals of time.\n\nTherefore, only Statements II and IV are correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Uniform Motion to revise constant velocity, zero acceleration, distance-time relationships, velocity-time graphs, and the differences between constant speed and constant velocity. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed explanations, worked examples, and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "uniform_motion",
+    "zero_acceleration",
+    "constant_velocity",
+    "conceptual_reasoning",
+    "highway_transportation",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q091",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Uniform motion",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A coastal survey vessel travels across calm water in a straight line at a constant velocity of 8 m s⁻¹ for 75 s while collecting seabed data. Assuming the vessel maintains the same speed and direction throughout the journey, what displacement does it cover during this period?",
+  "options": {
+    "A": "600 m",
+    "B": "83 m",
+    "C": "67 m",
+    "D": "9.4 m"
+  },
+  "answer": "A",
+  "answer_text": "600 m",
+  "explanation": {
+    "question_restate": "This question tests your ability to apply the concept of uniform motion by calculating the displacement of a survey vessel moving with constant velocity over a given time.",
+    "principle": "Uniform motion occurs when an object moves with constant velocity. This means that both its speed and direction remain unchanged throughout the motion.\n\nBecause the direction does not change, the displacement is obtained directly from the relationship:\n\nv = d/t\n\nwhere:\n\n• v = velocity (m s⁻¹)\n• d = displacement (m)\n• t = time (s)\n\nRearranging the formula gives:\n\n d = vt\n\nThis equation is valid only when the velocity remains constant during the motion.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nVelocity, v = 8 m s⁻¹\nTime, t = 75 s",
+      "Step 2: Write the appropriate formula.\n\nDisplacement = Velocity × Time\n\n d = vt",
+      "Step 3: Substitute the given values.\n\n d = 8 × 75",
+      "Step 4: Perform the calculation.\n\n d = 600 m",
+      "Step 5: Compare the calculated value with the options.\n\nThe correct displacement is 600 m.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B (83 m) is incorrect because it does not result from multiplying the given velocity by the time.",
+      "Option C (67 m) is incorrect because it greatly underestimates the distance travelled during 75 seconds at 8 m s⁻¹.",
+      "Option D (9.4 m) is incorrect because it may result from an incorrect mathematical operation such as dividing instead of multiplying."
+    ],
+    "exam_tip": "Whenever an object moves with constant velocity in a straight line, remember that displacement is obtained by multiplying velocity by time.\n\nDo not confuse displacement with speed. Velocity already includes direction, so when the direction remains unchanged, displacement and distance have the same numerical value.",
+    "final_answer": "A. 600 m",
+    "simple_explanation": "Imagine a survey boat moving steadily without speeding up, slowing down or changing direction.\n\nIf it travels 8 metres every second, then in 75 seconds it covers:\n\n8 × 75 = 600 metres.\n\nSo, the vessel's displacement is 600 m.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Uniform Motion to learn how to calculate distance, displacement, speed and time in uniform motion, understand zero acceleration, interpret motion graphs and solve additional JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and exam-focused revision."
+  },
+  "tags": [
+    "uniform_motion",
+    "marine_transportation",
+    "constant_velocity",
+    "displacement",
+    "linear_motion",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q092",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Uniform motion",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A hospital uses an autonomous medicine delivery robot that travels along a straight corridor between the pharmacy and the wards. During one delivery, the robot moves without changing either its speed or its direction until it reaches its destination.\n\nWhich conclusion about the robot's motion is correct?",
+  "options": {
+    "A": "Its velocity is changing because it is in motion.",
+    "B": "Its acceleration is zero because its velocity remains constant.",
+    "C": "Its acceleration is constant because its speed is increasing uniformly.",
+    "D": "Its motion is non-uniform because it continues to cover more distance with time."
+  },
+  "answer": "B",
+  "answer_text": "Its acceleration is zero because its velocity remains constant.",
+  "explanation": {
+    "question_restate": "This question assesses your ability to interpret a real-life situation involving uniform motion. You are required to identify the correct conclusion when an object moves in a straight line without changing its speed or direction.",
+    "principle": "Uniform motion occurs when an object moves with constant velocity.\n\nVelocity describes both the speed of an object and the direction in which it moves.\n\nFor motion to remain uniform:\n\n• the speed must remain constant;\n• the direction must remain constant; and\n• the acceleration must be zero because acceleration is the rate of change of velocity.\n\nAcceleration does not measure whether an object is moving; it measures whether its velocity is changing. Therefore, an object can move continuously while having zero acceleration if its velocity remains unchanged.",
+    "steps": [
+      "Step 1: Identify the type of motion described.\n\nThe robot moves along a straight corridor without changing either its speed or its direction.\n\nThis is uniform motion because its velocity remains constant.",
+      "Step 2: Recall the meaning of acceleration.\n\nAcceleration is the rate at which velocity changes.\n\nIf there is no change in velocity, the acceleration is zero.",
+      "Step 3: Evaluate the options.\n\nOption B correctly states that the robot's acceleration is zero because its velocity remains constant.\n\nThis matches the definition of uniform motion."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because an object's velocity does not change simply because it is moving. If both speed and direction remain constant, the velocity also remains constant.",
+      "Option C is incorrect because the question clearly states that the robot does not change its speed. Therefore, its speed is not increasing.",
+      "Option D is incorrect because covering more distance as time passes is normal for every moving object. Uniform motion depends on covering equal distances in equal time intervals, not on whether the total distance increases."
+    ],
+    "exam_tip": "Whenever a JAMB question states that an object moves in a straight line without changing its speed or direction, immediately think of uniform motion.\n\nRemember these key facts:\n\n• Constant velocity.\n• Zero acceleration.\n• Equal distances covered in equal time intervals.\n\nDo not confuse 'moving' with 'accelerating.' A body may be moving continuously while its acceleration is zero.",
+    "final_answer": "B. Its acceleration is zero because its velocity remains constant.",
+    "simple_explanation": "Imagine pushing a trolley straight down a smooth hallway at exactly the same speed all the way.\n\nSince neither the speed nor the direction changes, the trolley's velocity stays constant.\n\nBecause acceleration only occurs when velocity changes, the acceleration is zero throughout the journey.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Uniform Motion for a complete explanation of constant velocity, zero acceleration, equal distances in equal time intervals, and the interpretation of real-life examples and graphs. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional JAMB-style practice questions and detailed concept reviews."
+  },
+  "tags": [
+    "uniform_motion",
+    "constant_velocity",
+    "zero_acceleration",
+    "healthcare_logistics",
+    "scenario_interpretation",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q093",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Uniform motion",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "Engineers monitoring an autonomous drone corridor observe two delivery drones travelling along separate straight flight paths.\n\nDrone P maintains the same speed and the same direction throughout its journey.\n\nDrone Q maintains the same direction but its speed increases gradually with time.\n\nWhich statement correctly compares the motion of the two drones?",
+  "options": {
+    "A": "Drone P is in uniform motion, while Drone Q is in non-uniform motion because its velocity changes.",
+    "B": "Both drones are in uniform motion because they move in the same direction.",
+    "C": "Drone P is in non-uniform motion because every moving object has acceleration.",
+    "D": "Both drones are in non-uniform motion because motion cannot occur without acceleration."
+  },
+  "answer": "A",
+  "answer_text": "Drone P is in uniform motion, while Drone Q is in non-uniform motion because its velocity changes.",
+  "explanation": {
+    "question_restate": "This question compares two moving drones to determine which one exhibits uniform motion and which one exhibits non-uniform motion based on changes in velocity.",
+    "principle": "Uniform motion occurs when an object moves with constant velocity.\n\nVelocity is a vector quantity, meaning it has both magnitude (speed) and direction.\n\nFor motion to be uniform, neither the speed nor the direction should change.\n\nAcceleration is the rate of change of velocity. Therefore, when velocity remains constant, acceleration is zero.\n\nIf either the speed or the direction changes, the velocity changes and the motion becomes non-uniform.",
+    "steps": [
+      "Step 1: Examine Drone P.\n\nDrone P maintains the same speed and the same direction throughout its motion.\n\nIts velocity remains constant.\n\nTherefore, Drone P is in uniform motion and has zero acceleration.",
+      "Step 2: Examine Drone Q.\n\nAlthough Drone Q continues in the same direction, its speed increases gradually.\n\nAn increase in speed means the magnitude of its velocity changes.\n\nTherefore, Drone Q has acceleration and is in non-uniform motion.",
+      "Step 3: Compare the two motions.\n\nDrone P has constant velocity.\n\nDrone Q has changing velocity.\n\nHence, only Drone P exhibits uniform motion.",
+      "Step 4: Select the correct option.\n\nOption A correctly describes both motions."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because moving in the same direction alone does not guarantee uniform motion. The speed must also remain constant.",
+      "Option C is incorrect because an object can continue moving with zero acceleration if its velocity remains constant.",
+      "Option D is incorrect because acceleration is not required to maintain uniform motion. Acceleration is only present when velocity changes."
+    ],
+    "exam_tip": "In JAMB Physics, always remember that uniform motion refers to constant velocity—not merely movement.\n\nAsk yourself two questions:\n\n• Is the speed constant?\n• Is the direction constant?\n\nIf the answer to both is 'Yes', the motion is uniform and the acceleration is zero.",
+    "final_answer": "A. Drone P is in uniform motion, while Drone Q is in non-uniform motion because its velocity changes.",
+    "simple_explanation": "Imagine two cyclists riding along a straight road.\n\nOne rides at exactly the same speed all the way. The other starts slowly and keeps pedalling faster.\n\nThe first cyclist is in uniform motion because the speed and direction remain unchanged.\n\nThe second cyclist is in non-uniform motion because the speed changes, causing the velocity to change.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Uniform Motion to learn the characteristics of uniform motion, the meaning of constant velocity, the relationship between velocity and acceleration, and how to distinguish uniform motion from non-uniform motion using practical examples and JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive revision and exam-focused exercises."
+  },
+  "tags": [
+    "uniform_motion",
+    "constant_velocity",
+    "non_uniform_motion",
+    "acceleration",
+    "conceptual_comparison",
+    "drone_operations",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q094",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Uniform motion",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An engineering supervisor reviews the operation of an automated carrier in a smart logistics distribution centre. Four trainees make the following statements about the carrier while it moves in a straight line with uniform motion:\n\nStatement I: 'The carrier covers equal distances in equal intervals of time.'\n\nStatement II: 'Its acceleration is zero because its velocity remains constant.'\n\nStatement III: 'The carrier must continuously accelerate in order to keep moving at a constant velocity.'\n\nStatement IV: 'If the carrier changes direction while maintaining the same speed, it is still in uniform motion.'\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I and II only",
+    "B": "I, II and III only",
+    "C": "II, III and IV only",
+    "D": "I, II and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I and II only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of the defining characteristics of uniform motion by asking you to identify which statements correctly describe an object moving with constant velocity in a straight line.",
+    "principle": "Uniform motion is motion in which an object moves with constant velocity.\n\nVelocity is a vector quantity, meaning it has both magnitude (speed) and direction.\n\nFor motion to remain uniform:\n\n• the speed must remain constant,\n• the direction must remain unchanged,\n• equal distances are covered in equal intervals of time, and\n• acceleration is zero because there is no change in velocity.\n\nA common misunderstanding is to think that a moving object must always be accelerating. In reality, acceleration occurs only when velocity changes in magnitude, direction or both.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThe carrier covers equal distances in equal intervals of time.\n\nThis is a defining characteristic of uniform motion.\n\nTherefore, Statement I is correct.",
+      "Step 2: Examine Statement II.\n\nAcceleration is the rate of change of velocity.\n\nSince the carrier's velocity remains constant, there is no change in velocity and its acceleration is zero.\n\nTherefore, Statement II is correct.",
+      "Step 3: Examine Statement III.\n\nThe statement claims that continuous acceleration is required to maintain constant velocity.\n\nThis is incorrect.\n\nAn object moving with constant velocity has zero acceleration because its velocity is not changing.",
+      "Step 4: Examine Statement IV.\n\nAlthough the speed remains the same, changing direction changes the velocity.\n\nOnce velocity changes, the motion is no longer uniform.\n\nTherefore, Statement IV is incorrect.",
+      "Step 5: Identify the correct combination.\n\nOnly Statements I and II are correct.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement III, which wrongly assumes that continuous acceleration is required to maintain constant velocity.",
+      "Option C is incorrect because Statements III and IV are both incorrect. Uniform motion does not require continuous acceleration, and changing direction changes velocity.",
+      "Option D is incorrect because although Statements I and II are correct, Statement IV is false since a change in direction means the velocity has changed."
+    ],
+    "exam_tip": "When answering JAMB questions on uniform motion, always remember that velocity includes both speed and direction.\n\nAn object is in uniform motion only when both remain constant.\n\nIf either the speed or the direction changes, the velocity changes and acceleration is no longer zero.\n\nDo not confuse constant speed with constant velocity.",
+    "final_answer": "A. I and II only",
+    "simple_explanation": "Imagine an automated carrier moving along a perfectly straight track at exactly the same speed throughout its journey.\n\nIt covers equal distances every second and its direction never changes.\n\nBecause its velocity stays the same, its acceleration is zero.\n\nIf the carrier turns a corner, even without changing speed, its direction changes. That means its velocity changes, so it is no longer in uniform motion.\n\nTherefore, only Statements I and II are correct.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Uniform Motion for a complete revision of constant velocity, zero acceleration, distance-time graphs, velocity-time graphs, and the distinction between constant speed and constant velocity. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional JAMB-style practice questions."
+  },
+  "tags": [
+    "uniform_motion",
+    "constant_velocity",
+    "zero_acceleration",
+    "conceptual_reasoning",
+    "multiple_statements",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
 }
 
 ]
