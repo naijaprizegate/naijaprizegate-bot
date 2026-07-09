@@ -9026,6 +9026,649 @@
     "phy_04"
   ],
   "active": true
+},
+{
+  "id": "phy_04_q177",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Velocity",
+  "difficulty": "easy",
+  "cognitive_level": "remember",
+  "question_type": "mcq",
+  "question": "A transport engineer checks the digital dashboard of a test vehicle while it is moving along a straight road. At one particular moment, the speed display reads 72 km h⁻¹. Which statement best describes the quantity represented by this reading?",
+  "options": {
+    "A": "The average velocity of the vehicle over the entire journey",
+    "B": "The instantaneous velocity of the vehicle at that particular moment",
+    "C": "The total distance travelled by the vehicle up to that moment",
+    "D": "The acceleration of the vehicle at that instant"
+  },
+  "answer": "B",
+  "answer_text": "The instantaneous velocity of the vehicle at that particular moment",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of instantaneous velocity using a familiar real-life situation involving a vehicle's dashboard display.",
+    "principle": "Instantaneous velocity is the velocity of an object at a specific instant of time. It describes how fast the object is moving and the direction of its motion at that exact moment.\n\nUnlike average velocity, which is calculated over a time interval, instantaneous velocity refers to only one instant.\n\nIn everyday driving, the dashboard speedometer or digital speed display provides the driver's current speed. When the vehicle is moving in a straight line without changing direction, this reading represents the magnitude of the instantaneous velocity.",
+    "steps": [
+      "Step 1: Identify what is being measured.\n\nThe dashboard display shows the vehicle's motion at one particular moment rather than over a period of time.",
+      "Step 2: Recall the definition.\n\nInstantaneous velocity is the velocity of an object at a specific instant.",
+      "Step 3: Compare the options.\n\nOption A refers to average velocity, which requires information over an interval of time.\n\nOption C refers to distance travelled, which is not displayed by the speed reading.\n\nOption D refers to acceleration, which measures the rate of change of velocity and is not indicated by the speed display.\n\nTherefore, the correct interpretation is instantaneous velocity."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because average velocity describes motion over a time interval, not at a single instant.",
+      "Option C is incorrect because distance travelled is measured separately, usually by an odometer, not by the current speed display.",
+      "Option D is incorrect because acceleration is the rate at which velocity changes with time and cannot be obtained directly from a single speed reading."
+    ],
+    "common_misconceptions": [
+      "Many students confuse instantaneous velocity with average velocity.",
+      "Some believe that a speedometer measures acceleration because the reading changes as the vehicle speeds up or slows down.",
+      "Others mistakenly think that the dashboard speed reading indicates the total distance travelled."
+    ],
+    "exam_tip": "Whenever a question mentions a speedometer or a dashboard speed reading at a particular moment, think of instantaneous velocity rather than average velocity. Watch carefully for phrases such as at that instant, at that moment or at a particular time.",
+    "final_answer": "B. The instantaneous velocity of the vehicle at that particular moment",
+    "simple_explanation": "Imagine looking at the dashboard of a moving vehicle. The number you see tells you how fast the vehicle is moving right then, not how fast it has travelled throughout the journey. That is the idea of instantaneous velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Velocity to learn the difference between average velocity and instantaneous velocity, understand how speedometers relate to motion, interpret displacement–time graphs, and practise additional JAMB-style questions with the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "instantaneous_velocity",
+    "linear_motion",
+    "dashboard_reading",
+    "conceptual_recall",
+    "transportation",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q178",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A highway traffic monitoring officer explains the difference between average velocity and instantaneous velocity to trainee officers. Which statement correctly distinguishes the two quantities?",
+  "options": {
+    "A": "Average velocity is the velocity of an object at one particular instant, while instantaneous velocity is measured over an entire journey.",
+    "B": "Average velocity considers only the total distance travelled, whereas instantaneous velocity considers only the direction of motion.",
+    "C": "Average velocity describes motion over a time interval, whereas instantaneous velocity describes the velocity of an object at a particular instant.",
+    "D": "Average velocity and instantaneous velocity always have the same value for every type of motion."
+  },
+  "answer": "C",
+  "answer_text": "Average velocity describes motion over a time interval, whereas instantaneous velocity describes the velocity of an object at a particular instant.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the distinction between average velocity and instantaneous velocity, two closely related but different concepts in linear motion.",
+    "principle": "Velocity is the rate of change of displacement and includes both magnitude and direction.\n\nAverage velocity describes the overall rate of change of displacement during a specified time interval.\n\nInstantaneous velocity describes the velocity of an object at one particular moment in time.\n\nA beginner may ask, What is the difference?\n\nImagine a car travelling from one city to another. Its average velocity depends on the entire journey, whereas the value shown on the speedometer at a given moment represents its instantaneous speed. If the direction of travel is also known, this corresponds to the instantaneous velocity.\n\nIn uniformly accelerated motion, the instantaneous velocity at any specified instant can be determined using the equation:\n\nv = u + at\n\nwhere:\n\nu = initial velocity\n\na = acceleration\n\nt = time elapsed\n\nv = velocity at the specified instant.",
+    "steps": [
+      "Step 1: Identify what average velocity represents.\n\nAverage velocity is calculated over a time interval using total displacement divided by total time taken.",
+      "Step 2: Recall the meaning of instantaneous velocity.\n\nInstantaneous velocity is the velocity of an object at a particular instant of time.",
+      "Step 3: Examine the options.\n\nOption C correctly states that average velocity applies to an interval, while instantaneous velocity applies to a single instant.",
+      "Step 4: Select the correct option.\n\nTherefore, the correct answer is Option C."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A reverses the meanings of the two quantities. Average velocity is measured over an interval, not at a single instant.",
+      "Option B is incorrect because average velocity is based on displacement, not total distance. Instantaneous velocity also has both magnitude and direction, not direction alone.",
+      "Option D is incorrect because average velocity and instantaneous velocity are equal only in special cases such as motion with constant velocity. They are generally different in non-uniform motion."
+    ],
+    "common_misconceptions": [
+      "Confusing average velocity with instantaneous velocity.",
+      "Thinking a speedometer measures average velocity.",
+      "Believing velocity depends only on speed and not on direction.",
+      "Assuming average and instantaneous velocity are always equal."
+    ],
+    "exam_tip": "Whenever JAMB asks about instantaneous velocity, look for expressions such as at a particular instant, at that moment, or at a specified time. Expressions such as during the journey, over the interval, or for the entire trip usually indicate average velocity.",
+    "final_answer": "C. Average velocity describes motion over a time interval, whereas instantaneous velocity describes the velocity of an object at a particular instant.",
+    "simple_explanation": "Suppose you travel from home to school in 20 minutes. Your average velocity depends on the whole journey.\n\nHowever, the reading on your vehicle's dashboard at exactly one moment represents how fast you are moving at that instant. That is the instantaneous velocity (when direction is included).\n\nTherefore, average velocity refers to an interval, while instantaneous velocity refers to one particular instant.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Velocity to learn the difference between average and instantaneous velocity, graphical interpretation of displacement–time graphs, velocity at a specified instant, and worked JAMB-style examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for beginner-friendly lessons, concept summaries, and additional exam-focused practice."
+  },
+  "tags": [
+    "linear_motion",
+    "instantaneous_velocity",
+    "average_velocity",
+    "conceptual_comparison",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q179",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "A drone delivery system accelerates uniformly along a straight path after take-off. The drone has an initial velocity of 7 m s⁻¹ and accelerates at 3 m s⁻² for 6 s. What is the instantaneous velocity of the drone at the end of the 6 s interval?",
+  "options": {
+    "A": "18 m s⁻¹",
+    "B": "25 m s⁻¹",
+    "C": "31 m s⁻¹",
+    "D": "42 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "25 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine the instantaneous velocity of an object moving with uniform acceleration by applying the appropriate SUVAT equation.",
+    "principle": "Instantaneous velocity is the velocity of an object at a particular instant of time. For motion with constant acceleration, the velocity at any specified instant can be calculated using the first equation of motion.\n\nThe equation is:\n\nv = u + at\n\nwhere:\n\nu = initial velocity\nv = velocity at the required instant\na = constant acceleration\nt = time elapsed\n\nThis equation is appropriate because the question provides the initial velocity, acceleration and time, while asking for the velocity at a particular instant.",
+    "steps": [
+      "Step 1: Identify the known quantities.\n\nInitial velocity, u = 7 m s⁻¹\nAcceleration, a = 3 m s⁻²\nTime, t = 6 s\nRequired quantity: Instantaneous velocity, v.",
+      "Step 2: Select the appropriate formula.\n\nUse:\n\nv = u + at",
+      "Step 3: Substitute the known values.\n\nv = 7 + (3 × 6)",
+      "Step 4: Perform the calculation.\n\nv = 7 + 18\n\nv = 25 m s⁻¹",
+      "Step 5: Compare the result with the options.\n\n25 m s⁻¹ corresponds to Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A (18 m s⁻¹) is incorrect because it represents only the increase in velocity due to acceleration (at) and ignores the initial velocity.",
+      "Option C (31 m s⁻¹) is incorrect because it results from an incorrect substitution or arithmetic error.",
+      "Option D (42 m s⁻¹) is incorrect because it does not satisfy the equation v = u + at for the given data."
+    ],
+    "common_misconceptions": [
+      "Confusing instantaneous velocity with average velocity.",
+      "Ignoring the initial velocity and using only the term at.",
+      "Selecting the wrong SUVAT equation when all the required variables are already provided.",
+      "Mistaking acceleration for velocity because both involve SI units containing seconds."
+    ],
+    "exam_tip": "Whenever JAMB asks for the velocity at a particular instant during uniformly accelerated motion and provides the initial velocity, acceleration and time, immediately think of the equation v = u + at. Before substituting values, always write down what each symbol represents to avoid mixing them up.",
+    "final_answer": "B. 25 m s⁻¹",
+    "simple_explanation": "Imagine the drone is already moving at 7 m s⁻¹ when its engines continue to increase its speed. Every second, its velocity increases by 3 m s⁻¹. After 6 s, the increase is 18 m s⁻¹. Adding this to the initial 7 m s⁻¹ gives a final instantaneous velocity of 25 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Velocity to learn how to distinguish instantaneous velocity from average velocity, select the correct SUVAT equation, solve velocity-at-an-instant problems, and practise additional JAMB-style questions at the NaijaPrizeGate CBT Tutorial Centre."
+  },
+  "tags": [
+    "linear_motion",
+    "instantaneous_velocity",
+    "suvat",
+    "uniform_acceleration",
+    "drone_delivery",
+    "kinematics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q180",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A robotics laboratory monitors the motion of an automated inspection robot moving along a straight track. The robot's displacement-time graph is described as follows:\n\n• From 0 s to 2 s, the graph rises uniformly from 0 m to 8 m.\n• From 2 s to 5 s, the graph continues to rise uniformly from 8 m to 20 m.\n• From 5 s to 7 s, the graph is horizontal at 20 m.\n\nBased on this description, what is the instantaneous velocity of the robot at exactly 3 s?",
+  "options": {
+    "A": "0 m s⁻¹",
+    "B": "4 m s⁻¹",
+    "C": "6 m s⁻¹",
+    "D": "10 m s⁻¹"
+  },
+  "answer": "B",
+  "answer_text": "4 m s⁻¹",
+  "explanation": {
+    "question_restate": "This question tests your ability to determine instantaneous velocity from the gradient of a displacement-time graph described in words rather than shown as a diagram.",
+    "principle": "Instantaneous velocity is the velocity of an object at a particular instant in time.\n\nOn a displacement-time graph, instantaneous velocity is represented by the gradient (slope) of the graph at that instant.\n\nA straight-line section has a constant gradient, meaning the instantaneous velocity is the same everywhere along that section.\n\nThe gradient is calculated as:\n\nInstantaneous velocity = Change in displacement ÷ Change in time",
+    "steps": [
+      "Step 1: Identify where 3 s lies.\n\nThe time 3 s falls within the second straight-line section, which extends from 2 s to 5 s.",
+      "Step 2: Determine the gradient of that section.\n\nDisplacement changes from 8 m to 20 m.\n\nChange in displacement = 20 − 8 = 12 m.\n\nTime changes from 2 s to 5 s.\n\nChange in time = 5 − 2 = 3 s.",
+      "Step 3: Calculate the gradient.\n\nInstantaneous velocity = 12 ÷ 3 = 4 m s⁻¹.",
+      "Step 4: Compare with the options.\n\nThe correct instantaneous velocity at 3 s is 4 m s⁻¹.\n\nTherefore, Option B is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a zero velocity would correspond to the horizontal section of the graph between 5 s and 7 s, not at 3 s.",
+      "Option C is incorrect because it does not match the gradient of the relevant section of the graph.",
+      "Option D is incorrect because it overestimates the gradient and may result from using incorrect displacement or time values."
+    ],
+    "common_misconceptions": [
+      "Confusing the displacement value with the gradient of the graph.",
+      "Using the average velocity over the entire journey instead of the gradient at the specified instant.",
+      "Assuming instantaneous velocity changes within a straight-line section of a displacement-time graph."
+    ],
+    "exam_tip": "Whenever a displacement-time graph consists of straight-line segments, first identify the segment containing the specified time. Then calculate the gradient of only that segment. Do not use the entire graph unless the question specifically asks for average velocity.",
+    "final_answer": "B. 4 m s⁻¹",
+    "simple_explanation": "At 3 s, the robot is moving along a straight-line portion of the displacement-time graph. Since that section has a constant slope, its velocity remains constant. Dividing the increase in displacement (12 m) by the corresponding time interval (3 s) gives 4 m s⁻¹.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Velocity to learn how to determine instantaneous velocity from displacement-time graphs, identify stationary points, interpret graph gradients, and solve authentic JAMB-style questions. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and practice exercises."
+  },
+  "tags": [
+    "linear_motion",
+    "instantaneous_velocity",
+    "displacement_time_graph",
+    "graph_interpretation",
+    "gradient",
+    "robotics",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q181",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "An elevator in a high-rise building is monitored using a displacement–time graph. The graph rises steadily as the elevator moves upward, then becomes horizontal for a short interval before sloping downward as the elevator descends.\n\nAt which stage is the instantaneous velocity of the elevator equal to zero?",
+  "options": {
+    "A": "While the graph is rising steadily",
+    "B": "While the graph is horizontal",
+    "C": "While the graph is sloping downward",
+    "D": "At every point on the graph"
+  },
+  "answer": "B",
+  "answer_text": "While the graph is horizontal",
+  "explanation": {
+    "question_restate": "This question tests your ability to interpret a displacement–time graph and identify the point at which an object has zero instantaneous velocity.",
+    "principle": "Instantaneous velocity is the velocity of an object at a particular instant. On a displacement–time graph, the instantaneous velocity is represented by the gradient (slope) of the graph at that point.\n\nA positive gradient indicates positive velocity, a negative gradient indicates negative velocity, and a horizontal graph has zero gradient. Since zero gradient means the displacement is not changing with time, the instantaneous velocity is zero.",
+    "definitions": "Displacement is the change in an object's position from its starting point.\n\nInstantaneous velocity is the velocity of an object at one specific instant.\n\nThe gradient of a displacement–time graph is calculated as:\n\nGradient = Change in displacement / Change in time\n\nThis gradient represents the instantaneous velocity.",
+    "steps": [
+      "Step 1: Recall that the slope of a displacement–time graph represents instantaneous velocity.",
+      "Step 2: Examine each section of the graph described.\n\n• Rising graph: positive slope, so the elevator is moving upward with positive velocity.\n\n• Horizontal graph: zero slope, meaning the displacement remains constant while time passes.\n\n• Downward-sloping graph: negative slope, indicating motion in the opposite direction.",
+      "Step 3: Since a horizontal graph has zero gradient, the instantaneous velocity during this interval is zero.",
+      "Step 4: Therefore, the correct answer is Option B."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because a rising graph has a positive gradient, indicating a positive instantaneous velocity.",
+      "Option C is incorrect because a downward-sloping graph has a negative gradient, not zero velocity.",
+      "Option D is incorrect because the instantaneous velocity changes throughout the motion and is only zero when the graph is horizontal."
+    ],
+    "common_misconceptions": [
+      "Confusing the height of the graph with its slope.",
+      "Assuming the object has zero velocity whenever it is above its starting position.",
+      "Believing that a downward slope means the object has stopped instead of moving in the opposite direction."
+    ],
+    "exam_tip": "Whenever you encounter a displacement–time graph in JAMB Physics, focus on the slope rather than the position of the graph. A horizontal section always represents zero instantaneous velocity because the object's displacement is not changing at that instant.",
+    "final_answer": "B. While the graph is horizontal",
+    "simple_explanation": "Imagine an elevator that moves upward, stops briefly to allow passengers to enter or leave, and then moves downward.\n\nDuring the brief stop, its position does not change even though time continues to pass. Since its displacement remains constant, its instantaneous velocity is zero. On a displacement–time graph, this appears as a horizontal line.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Velocity to learn how to interpret displacement–time graphs, determine instantaneous velocity from graph gradients, identify stationary points, and solve additional JAMB-style questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for detailed lessons and exam-focused practice."
+  },
+  "tags": [
+    "instantaneous_velocity",
+    "displacement_time_graph",
+    "graph_interpretation",
+    "zero_velocity",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q182",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "understand",
+  "question_type": "mcq",
+  "question": "A railway signalling engineer is explaining why train control systems monitor instantaneous velocity rather than average velocity when approaching a station. Which statement best explains the significance of instantaneous velocity?",
+  "options": {
+    "A": "It gives the displacement covered during the entire journey regardless of direction.",
+    "B": "It describes the velocity of the train at one particular instant, including both its speed and direction.",
+    "C": "It is obtained by dividing the total distance travelled by the total time taken for the journey.",
+    "D": "It remains constant throughout the motion of every moving train."
+  },
+  "answer": "B",
+  "answer_text": "It describes the velocity of the train at one particular instant, including both its speed and direction.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of the meaning of instantaneous velocity and why it is more useful than average velocity in situations requiring real-time monitoring of motion.",
+    "principle": "Instantaneous velocity is the velocity of an object at a particular instant of time. It is a vector quantity because it specifies both magnitude and direction.\n\nAverage velocity describes motion over an interval of time, whereas instantaneous velocity describes the motion at one exact moment.\n\nIn transportation systems such as railway signalling, the control system must know how fast and in which direction the train is moving at every instant so that braking and safety decisions can be made immediately.",
+    "definitions": "Velocity is the rate of change of displacement with time.\n\nInstantaneous velocity refers to the velocity at a specific instant.\n\nAverage velocity is the total displacement divided by the total time taken.",
+    "foundational_knowledge": "A speedometer or electronic motion sensor provides information corresponding to instantaneous speed or instantaneous velocity at that moment. Railway safety systems rely on continuous monitoring of this quantity because the train's velocity can change from one moment to another.",
+    "steps": [
+      "Step 1: Identify what the question asks.\n\nThe question asks for the statement that correctly explains instantaneous velocity.",
+      "Step 2: Examine Option A.\n\nThis refers to displacement over an entire journey, not velocity at a particular instant.\n\nTherefore, Option A is incorrect.",
+      "Step 3: Examine Option B.\n\nThis correctly states that instantaneous velocity describes the velocity of the train at one particular instant and includes both magnitude and direction.\n\nTherefore, Option B is correct.",
+      "Step 4: Examine Option C.\n\nThis is the definition of average speed, not instantaneous velocity.\n\nTherefore, Option C is incorrect.",
+      "Step 5: Examine Option D.\n\nA moving train may accelerate or decelerate, so its instantaneous velocity does not have to remain constant.\n\nTherefore, Option D is incorrect."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because it refers to the overall displacement during the journey rather than the velocity at a particular instant.",
+      "Option C is incorrect because dividing total distance by total time gives average speed, not instantaneous velocity.",
+      "Option D is incorrect because instantaneous velocity can change continuously during non-uniform motion."
+    ],
+    "common_misconceptions": [
+      "Confusing instantaneous velocity with average velocity.",
+      "Believing that speed and velocity always mean the same thing.",
+      "Assuming that instantaneous velocity must remain constant during motion.",
+      "Ignoring the importance of direction when describing velocity."
+    ],
+    "exam_tip": "Whenever a question mentions a specific moment, a speedometer reading, a motion sensor or real-time monitoring, think of instantaneous velocity rather than average velocity. Also remember that velocity always includes direction.",
+    "final_answer": "B. It describes the velocity of the train at one particular instant, including both its speed and direction.",
+    "simple_explanation": "Imagine looking at a train's control screen at exactly one moment. The value displayed tells the operator how fast the train is moving and the direction in which it is moving at that instant. That is instantaneous velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Velocity to learn the difference between average and instantaneous velocity, graph interpretation, speedometer applications and additional JAMB-style practice questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive concept reviews and exam-focused exercises."
+  },
+  "tags": [
+    "instantaneous_velocity",
+    "velocity_direction",
+    "transportation",
+    "railway_systems",
+    "conceptual_understanding",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q183",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A laboratory instructor demonstrates the measurement of the instantaneous velocity of a battery-powered trolley moving along a straight track. A motion sensor connected to a computer records the trolley's displacement continuously and determines its velocity at every moment.\n\nWhich feature of the experimental setup enables the instantaneous velocity of the trolley to be determined most accurately at a particular instant?",
+  "options": {
+    "A": "Recording the total distance covered after the experiment has ended",
+    "B": "Calculating the average velocity over the entire journey",
+    "C": "Using continuously recorded displacement-time data to determine the gradient at the required instant",
+    "D": "Measuring the time taken for the trolley to complete several repeated runs and averaging the results"
+  },
+  "answer": "C",
+  "answer_text": "Using continuously recorded displacement-time data to determine the gradient at the required instant",
+  "explanation": {
+    "question_restate": "This question tests your understanding of how instantaneous velocity is determined experimentally rather than how average velocity is calculated. It focuses on interpreting data collected by modern motion sensors.",
+    "principle": "Instantaneous velocity is the velocity of an object at one specific moment in time. In laboratory experiments, motion sensors or computer data loggers continuously record displacement as time changes. The instantaneous velocity at any chosen instant is obtained from the gradient, or slope, of the displacement-time graph at that point.\n\nUnlike average velocity, which is calculated over a time interval, instantaneous velocity describes motion at only one instant.",
+    "definitions": "Instantaneous velocity is the velocity of an object at a particular instant.\n\nAverage velocity is the total displacement divided by the total time taken.\n\nThe gradient of a displacement-time graph represents velocity. A steeper positive gradient indicates a greater positive velocity, while a horizontal graph indicates zero velocity.",
+    "steps": [
+      "Step 1: Identify what quantity the question requires.\n\nThe question asks how instantaneous velocity is measured experimentally.",
+      "Step 2: Recall how modern laboratory equipment works.\n\nMotion sensors collect displacement readings continuously, allowing the computer to determine the slope of the displacement-time graph at any selected instant.",
+      "Step 3: Evaluate each option.\n\nOption A gives only the total distance after the motion has finished, which cannot provide velocity at one specific instant.\n\nOption B calculates average velocity over the whole journey, not instantaneous velocity.\n\nOption C correctly identifies the use of continuously recorded displacement-time data to obtain the gradient at the required instant.\n\nOption D improves the reliability of average timing measurements but still does not directly determine velocity at a particular instant.",
+      "Step 4: Select the correct option.\n\nTherefore, Option C is the correct answer."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because total distance alone cannot determine the velocity at a particular instant.",
+      "Option B is incorrect because average velocity describes motion over an interval, not at one specific moment.",
+      "Option D is incorrect because repeating the experiment and averaging the times improves consistency but does not provide the instantaneous velocity directly."
+    ],
+    "common_misconceptions": "Many candidates confuse average velocity with instantaneous velocity. Another common misconception is believing that measuring the total distance or total time is sufficient to determine the velocity at any instant. In reality, instantaneous velocity requires information about the motion at that specific moment.",
+    "exam_tip": "Whenever a JAMB question mentions motion sensors, computer data logging or displacement-time graphs, remember that the instantaneous velocity is obtained from the gradient of the displacement-time graph at the point of interest, not from the overall distance or time.",
+    "final_answer": "C. Using continuously recorded displacement-time data to determine the gradient at the required instant",
+    "simple_explanation": "Imagine watching a replay of a moving trolley frame by frame. Instead of asking how fast it travelled during the whole experiment, you want to know how fast it was moving at one exact moment. A motion sensor provides enough continuous information to calculate the slope of the displacement-time graph at that instant, giving the instantaneous velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Velocity for detailed lessons on displacement-time graphs, motion sensors, graphical determination of velocity, average versus instantaneous velocity, and additional JAMB-style worked examples. Continue your revision with the NaijaPrizeGate CBT Tutorial Centre for comprehensive concept explanations and practice questions."
+  },
+  "tags": [
+    "instantaneous_velocity",
+    "motion_sensor",
+    "laboratory_experiment",
+    "displacement_time_graph",
+    "graph_gradient",
+    "experimental_reasoning",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q184",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "apply",
+  "question_type": "mcq",
+  "question": "The digital speedometer of a car in a driving simulator displays 78 km h⁻¹ as the vehicle passes a checkpoint. Which statement best describes this reading?",
+  "options": {
+    "A": "It is the average velocity of the car from the beginning of the journey to the checkpoint.",
+    "B": "It is the instantaneous speed of the car at that particular moment and indicates the magnitude of its instantaneous velocity.",
+    "C": "It is the acceleration of the car at the checkpoint.",
+    "D": "It is the total distance travelled by the car up to the checkpoint."
+  },
+  "answer": "B",
+  "answer_text": "It is the instantaneous speed of the car at that particular moment and indicates the magnitude of its instantaneous velocity.",
+  "explanation": {
+    "question_restate": "This question tests your understanding of what a speedometer measures and how that measurement relates to instantaneous velocity.",
+    "principle": "Instantaneous velocity is the velocity of an object at a particular instant of time. A speedometer measures the instantaneous speed of a moving vehicle, which is the magnitude of its instantaneous velocity. Since speed does not include direction, the speedometer alone cannot completely specify the velocity vector.\n\nA beginner may ask: What is the difference between speed and velocity?\n\nSpeed tells us how fast an object is moving and is a scalar quantity.\n\nVelocity tells us both how fast the object is moving and the direction of motion, making it a vector quantity.\n\nTherefore, when a vehicle continues in a known direction, the speedometer reading gives the magnitude of its instantaneous velocity.",
+    "steps": [
+      "Step 1: Identify the instrument mentioned.\n\nThe instrument is a digital speedometer installed in the vehicle.",
+      "Step 2: Recall the function of a speedometer.\n\nA speedometer displays how fast the vehicle is moving at a particular instant rather than over an entire journey.",
+      "Step 3: Interpret the reading.\n\nThe displayed value of 78 km h⁻¹ represents the instantaneous speed at the exact moment the vehicle passes the checkpoint.",
+      "Step 4: Relate speed to velocity.\n\nInstantaneous velocity has both magnitude and direction. The speedometer provides only the magnitude, not the direction.",
+      "Step 5: Select the correct option.\n\nOption B correctly explains that the reading is the instantaneous speed and represents the magnitude of the instantaneous velocity."
+    ],
+    "why_other_options_are_wrong": [
+      "Option A is incorrect because average velocity is determined over a time interval, not at a single instant.",
+      "Option C is incorrect because acceleration measures the rate of change of velocity and is not displayed by a speedometer.",
+      "Option D is incorrect because a speedometer does not measure distance travelled. Distance is measured by an odometer."
+    ],
+    "exam_tip": "Whenever JAMB mentions a speedometer, remember that it measures instantaneous speed, not average speed, acceleration or distance travelled. Also remember that speed is the magnitude of velocity and does not include direction.",
+    "final_answer": "B. It is the instantaneous speed of the car at that particular moment and indicates the magnitude of its instantaneous velocity.",
+    "simple_explanation": "Imagine looking at the dashboard of a moving car. If the speedometer reads 78 km h⁻¹, it tells you how fast the car is moving at that exact moment. It does not tell you the average speed since the journey began, how far the car has travelled or whether it is accelerating.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Velocity to learn how instantaneous velocity differs from average velocity, how speedometers work, how to interpret displacement–time graphs, and how to solve JAMB-style application questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional guided lessons and exam-focused practice."
+  },
+  "tags": [
+    "instantaneous_velocity",
+    "speedometer",
+    "application",
+    "transportation",
+    "linear_motion",
+    "jamb_revision",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q185",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "During a classroom discussion on instantaneous velocity, four students made the following statements:\n\nStudent I: Instantaneous velocity describes the velocity of an object at a particular instant of time.\n\nStudent II: A vehicle's speedometer gives the average velocity of the vehicle throughout its journey.\n\nStudent III: On a displacement-time graph, the instantaneous velocity at a given point is represented by the gradient of the graph at that point.\n\nStudent IV: An object can have zero instantaneous velocity at a particular instant even though it continues moving before and after that instant.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, III and IV only",
+    "B": "I, II and III only",
+    "C": "II and IV only",
+    "D": "I, II and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I, III and IV only",
+  "explanation": {
+    "question_restate": "This question assesses your ability to analyse common statements about instantaneous velocity and identify which correctly describe the concept.",
+    "principle": "Instantaneous velocity is the velocity of an object at one specific instant. It is a vector quantity because it has both magnitude and direction.\n\nUnlike average velocity, which is calculated over a time interval, instantaneous velocity describes motion at a single moment.\n\nFor a displacement-time graph, the gradient (slope) of the tangent to the graph at any point gives the instantaneous velocity at that instant. A speedometer indicates the instantaneous speed of a vehicle, not its average velocity. During certain motions, such as a ball projected vertically upward, the instantaneous velocity becomes zero at the highest point even though the ball continues its motion afterwards.",
+    "steps": [
+      "Step 1: Examine Student I.\n\nThis statement is correct because instantaneous velocity refers to the velocity of an object at a particular instant of time.",
+      "Step 2: Examine Student II.\n\nThis statement is incorrect. A speedometer indicates the instantaneous speed at the moment of observation. It does not display the average velocity for the entire journey.",
+      "Step 3: Examine Student III.\n\nThis statement is correct. The gradient of a displacement-time graph at a particular point represents the instantaneous velocity at that instant.",
+      "Step 4: Examine Student IV.\n\nThis statement is correct. For example, a ball thrown vertically upward has zero instantaneous velocity at its highest point before it begins to descend.",
+      "Step 5: Determine the correct combination.\n\nStudents I, III and IV are correct, while Student II is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Student II, whose statement about a speedometer is false.",
+      "Option C is incorrect because Student II is incorrect, while Students I and III, which are correct, have been omitted.",
+      "Option D is incorrect because it also includes Student II, making the combination incorrect."
+    ],
+    "common_misconceptions": [
+      "Confusing instantaneous velocity with average velocity.",
+      "Believing that a speedometer measures average velocity.",
+      "Thinking that the value of a displacement-time graph, rather than its gradient, represents instantaneous velocity.",
+      "Assuming that zero instantaneous velocity means the object has permanently stopped moving."
+    ],
+    "exam_tip": "When JAMB presents several statements, evaluate each independently before selecting the correct combination. Remember that the gradient of a displacement-time graph gives instantaneous velocity, while a vehicle's speedometer indicates instantaneous speed.",
+    "final_answer": "A. I, III and IV only",
+    "simple_explanation": "Instantaneous velocity tells you how fast and in which direction an object is moving at one particular moment. A speedometer shows the speed at that instant, not the average for the whole trip. The slope of a displacement-time graph gives instantaneous velocity, and an object can momentarily have zero instantaneous velocity without remaining at rest.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Velocity for a complete revision of instantaneous velocity, graph interpretation, speedometer applications, and common JAMB misconceptions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional worked examples and examination-focused practice."
+  },
+  "tags": [
+    "instantaneous_velocity",
+    "graph_interpretation",
+    "speedometer",
+    "conceptual_analysis",
+    "linear_motion",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q186",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous velocity",
+  "difficulty": "medium",
+  "cognitive_level": "analysis",
+  "question_type": "mcq",
+  "question": "A smart transportation centre analyses the motion of an automated shuttle using a displacement–time graph. The graph begins at the origin, rises uniformly to a displacement of 24 m after 6 s, remains horizontal from 6 s to 10 s, and then rises uniformly to 40 m at 14 s.\n\nBased on the graph, which statement correctly describes the shuttle's instantaneous velocity?",
+  "options": {
+    "A": "Its instantaneous velocity is zero only during the horizontal section of the graph.",
+    "B": "Its instantaneous velocity increases continuously throughout the entire journey.",
+    "C": "Its instantaneous velocity is greatest when the graph reaches its highest displacement.",
+    "D": "Its instantaneous velocity is the same at every instant because the total displacement increases."
+  },
+  "answer": "A",
+  "answer_text": "Its instantaneous velocity is zero only during the horizontal section of the graph.",
+  "explanation": {
+    "question_restate": "The question tests your ability to interpret instantaneous velocity from a displacement–time graph. Instead of calculating average velocity, you must recognise how the slope of the graph represents the velocity at a particular instant.",
+    "principle": "Instantaneous velocity is the velocity of an object at a specific instant in time. On a displacement–time graph, instantaneous velocity is represented by the gradient (slope) of the graph at that point.\n\nA positive slope indicates positive velocity, a steeper slope indicates a greater velocity, and a horizontal line has zero slope, meaning the object is momentarily at rest.\n\nThe actual value of displacement does not determine instantaneous velocity. Rather, it is the rate at which displacement changes with time.",
+    "steps": [
+      "Step 1: Recall that the gradient of a displacement–time graph represents instantaneous velocity.",
+      "Step 2: From 0 s to 6 s, the graph has a constant positive slope, so the shuttle has a constant positive instantaneous velocity.",
+      "Step 3: From 6 s to 10 s, the graph is horizontal. Since the slope is zero, the instantaneous velocity during this interval is zero.",
+      "Step 4: From 10 s to 14 s, the graph again has a positive constant slope, indicating another constant positive instantaneous velocity.",
+      "Step 5: Therefore, the only interval during which the instantaneous velocity is zero is the horizontal section of the graph. Hence, Option A is correct."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because the graph contains a horizontal section where the instantaneous velocity becomes zero. The velocity does not increase continuously.",
+      "Option C is incorrect because the greatest displacement does not necessarily correspond to the greatest instantaneous velocity. Velocity depends on the slope, not the height of the graph.",
+      "Option D is incorrect because the graph contains sections with different slopes, including a horizontal segment. Therefore, the instantaneous velocity is not the same throughout the motion."
+    ],
+    "common_misconceptions": "Many students mistakenly interpret the height of a displacement–time graph as velocity. In reality, the height represents displacement, while the slope represents instantaneous velocity. Another common mistake is assuming that a moving object must always have a non-zero velocity, even during a horizontal section where displacement remains constant.",
+    "exam_tip": "Whenever you are given a displacement–time graph in JAMB, focus first on the slope rather than the position of the graph. A horizontal section always represents zero instantaneous velocity because the displacement is not changing with time.",
+    "final_answer": "A. Its instantaneous velocity is zero only during the horizontal section of the graph.",
+    "simple_explanation": "Imagine watching a lift move upward, stop briefly, and then continue upward. While it is stopped, its position does not change even though time is passing. That stationary period appears as a horizontal line on a displacement–time graph, showing that the instantaneous velocity is zero at that interval.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Velocity to learn how to interpret displacement–time graphs, identify graph gradients, recognise stationary intervals, and solve additional JAMB-style questions. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive lessons and guided practice."
+  },
+  "tags": [
+    "instantaneous_velocity",
+    "displacement_time_graph",
+    "graph_interpretation",
+    "linear_motion",
+    "data_interpretation",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q187",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Velocity",
+  "difficulty": "hard",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An autonomous vehicle testing team evaluates the motion of a prototype car travelling along a straight test track. The onboard computer reports that at exactly 8 s after the start of the test, the vehicle has an instantaneous velocity of 24 m s⁻¹. Four engineers make the following statements:\n\nEngineer I: The reported value represents the vehicle's velocity at that particular instant.\n\nEngineer II: The reported value must also be equal to the vehicle's average velocity over the entire 8 s interval.\n\nEngineer III: If the vehicle was accelerating, its instantaneous velocity at 8 s could differ from its average velocity during the first 8 s.\n\nEngineer IV: The instantaneous velocity at 8 s can be determined using the appropriate kinematic equation for uniformly accelerated motion or from the gradient of a displacement-time graph at that instant.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, III and IV only",
+    "B": "I and II only",
+    "C": "II, III and IV only",
+    "D": "I, II and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I, III and IV only",
+  "explanation": {
+    "question_restate": "This question assesses your ability to evaluate statements about instantaneous velocity and distinguish it from average velocity while recognising valid methods of determining velocity at a particular instant.",
+    "principle": "Instantaneous velocity is the velocity of an object at one specific moment in time. It differs from average velocity, which describes the overall rate of change of displacement over a time interval.\n\nFor uniformly accelerated motion, the instantaneous velocity at a specified instant can be calculated using:\n\nv = u + at\n\nwhere:\n\nu = initial velocity\n\na = acceleration\n\nt = time elapsed\n\nAnother important method is graphical analysis. The gradient of a displacement-time graph at a particular point represents the instantaneous velocity at that instant.",
+    "steps": [
+      "Step 1: Evaluate Engineer I.\n\nThis statement is correct because instantaneous velocity always refers to the velocity at one particular instant.",
+      "Step 2: Evaluate Engineer II.\n\nThis statement is incorrect. Instantaneous velocity is not generally equal to average velocity over an interval. They are equal only in special cases such as uniform velocity.",
+      "Step 3: Evaluate Engineer III.\n\nThis statement is correct. During accelerated motion, the instantaneous velocity at a particular time is usually different from the average velocity over the elapsed interval.",
+      "Step 4: Evaluate Engineer IV.\n\nThis statement is correct. Instantaneous velocity can be obtained using an appropriate SUVAT equation for uniformly accelerated motion or by finding the gradient of a displacement-time graph at the required instant.",
+      "Step 5: Identify the correct combination.\n\nEngineers I, III and IV are correct, while Engineer II is incorrect.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Engineer II, whose statement is generally false, and omits Engineers III and IV, which are correct.",
+      "Option C is incorrect because Engineer II is incorrect even though Engineers III and IV are correct.",
+      "Option D is incorrect because Engineer II is still included, making the combination incorrect."
+    ],
+    "common_misconceptions": [
+      "Confusing instantaneous velocity with average velocity.",
+      "Believing that a speed measured at one instant always represents motion over an entire journey.",
+      "Thinking that the value shown by a speedometer is an average speed or average velocity.",
+      "Confusing the value of displacement on a graph with the gradient of the graph."
+    ],
+    "exam_tip": "Whenever JAMB refers to velocity at a particular instant, focus on instantaneous velocity rather than average velocity. Remember that the slope of a displacement-time graph gives instantaneous velocity, while average velocity is calculated using total displacement divided by total time.",
+    "final_answer": "A. I, III and IV only",
+    "simple_explanation": "Imagine looking at a car's speedometer. The reading you see at that exact moment is its instantaneous velocity. It does not necessarily tell you how fast the car has travelled on average since the journey began. Therefore, Engineers I, III and IV correctly describe instantaneous velocity, while Engineer II incorrectly assumes that instantaneous and average velocities are always the same.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Velocity to study the difference between instantaneous and average velocity, interpretation of displacement-time graphs, application of SUVAT equations, and additional JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for comprehensive concept reviews and examination practice."
+  },
+  "tags": [
+    "instantaneous_velocity",
+    "linear_motion",
+    "graph_interpretation",
+    "suvat",
+    "conceptual_evaluation",
+    "autonomous_vehicle",
+    "phy_04"
+  ],
+  "active": true
+},
+{
+  "id": "phy_04_q188",
+  "subject_code": "phy",
+  "subject_name": "Physics",
+  "topic_id": "phy_04",
+  "topic_title": "Linear Motion",
+  "subtopic": "Instantaneous Velocity",
+  "difficulty": "medium",
+  "cognitive_level": "evaluate",
+  "question_type": "mcq",
+  "question": "An Artificial Intelligence mobility research team evaluates the following statements about instantaneous velocity while analysing the movement of an autonomous delivery robot:\n\nStatement I: Instantaneous velocity is the velocity of an object at a particular instant of time.\n\nStatement II: The gradient of a displacement-time graph at a given point represents the instantaneous velocity at that instant.\n\nStatement III: A horizontal section of a displacement-time graph indicates that the instantaneous velocity is zero during that interval.\n\nStatement IV: The reading on a vehicle's speedometer at a particular instant gives the instantaneous velocity because it includes both speed and direction.\n\nWhich of the following combinations is correct?",
+  "options": {
+    "A": "I, II and III only",
+    "B": "I, II and IV only",
+    "C": "II, III and IV only",
+    "D": "I, III and IV only"
+  },
+  "answer": "A",
+  "answer_text": "I, II and III only",
+  "explanation": {
+    "question_restate": "This question evaluates your understanding of the concept of instantaneous velocity by asking you to identify which statements correctly describe its meaning, graphical interpretation and practical measurement.",
+    "principle": "Instantaneous velocity is the velocity of an object at a particular moment in time. It is a vector quantity because it possesses both magnitude and direction.\n\nIn graphical analysis, the instantaneous velocity at any instant is represented by the gradient (slope) of the displacement-time graph at that point.\n\nIf the graph becomes horizontal, the gradient is zero, showing that the object is temporarily at rest.\n\nAlthough a speedometer provides the instantaneous speed of a vehicle, it does not indicate the direction of motion. Therefore, it does not by itself provide the complete instantaneous velocity.",
+    "steps": [
+      "Step 1: Examine Statement I.\n\nThis is the correct definition of instantaneous velocity.\n\nTherefore, Statement I is correct.",
+      "Step 2: Examine Statement II.\n\nThe gradient of a displacement-time graph at a particular point represents the instantaneous velocity.\n\nTherefore, Statement II is correct.",
+      "Step 3: Examine Statement III.\n\nA horizontal displacement-time graph has zero gradient, meaning the object has zero instantaneous velocity during that interval.\n\nTherefore, Statement III is correct.",
+      "Step 4: Examine Statement IV.\n\nA speedometer measures only the instantaneous speed. Since direction is not indicated, it cannot by itself provide the complete instantaneous velocity.\n\nTherefore, Statement IV is incorrect.",
+      "Step 5: Identify the correct combination.\n\nOnly Statements I, II and III are correct.\n\nTherefore, the correct answer is Option A."
+    ],
+    "why_other_options_are_wrong": [
+      "Option B is incorrect because it includes Statement IV, which wrongly assumes that a speedometer measures velocity rather than speed.",
+      "Option C is incorrect because it omits Statement I, which correctly defines instantaneous velocity, while still including the incorrect Statement IV.",
+      "Option D is incorrect because although Statements I and III are correct, it excludes the correct Statement II and includes the incorrect Statement IV."
+    ],
+    "common_misconceptions": "A common misconception is that speed and velocity are identical. Speed is a scalar quantity with magnitude only, whereas velocity is a vector quantity with both magnitude and direction. Another misconception is that a speedometer directly measures velocity. It actually measures only instantaneous speed.",
+    "exam_tip": "In JAMB examinations, remember these key facts:\n\n• Instantaneous velocity refers to one specific instant.\n• The gradient of a displacement-time graph gives instantaneous velocity.\n• A horizontal displacement-time graph represents zero instantaneous velocity.\n• A speedometer measures instantaneous speed, not velocity, because it does not provide direction.",
+    "final_answer": "A. I, II and III only",
+    "simple_explanation": "Imagine taking a photograph of a moving vehicle at one exact moment. Its velocity at that instant is its instantaneous velocity. If the vehicle is temporarily stopped, its instantaneous velocity is zero. A speedometer tells you how fast the vehicle is moving but not the direction, so it measures speed rather than complete velocity.",
+    "tutorial_reference": "Visit Tutorials → Physics → Linear Motion → Instantaneous Velocity for detailed lessons on the meaning of instantaneous velocity, displacement-time graphs, graph gradients, stationary points, practical applications and JAMB-style worked examples. Continue your preparation with the NaijaPrizeGate CBT Tutorial Centre for additional concept reviews and examination practice."
+  },
+  "tags": [
+    "linear_motion",
+    "instantaneous_velocity",
+    "graph_interpretation",
+    "displacement_time_graph",
+    "speed_vs_velocity",
+    "multiple_statements",
+    "jamb_physics",
+    "phy_04"
+  ],
+  "active": true
 }
 
 
